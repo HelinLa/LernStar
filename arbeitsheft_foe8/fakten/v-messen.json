@@ -92,72 +92,432 @@
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
    },
    {
+    "einstellung": "langsam · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: langsam|220.00|22.00"
+   },
+   {
+    "einstellung": "langsam · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: langsam|220.00|22.00"
+   },
+   {
+    "einstellung": "langsam · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: langsam|220.00|22.00"
+   },
+   {
+    "einstellung": "langsam · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: langsam|220.00|22.00"
+   },
+   {
     "einstellung": "mittel",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
+   },
+   {
+    "einstellung": "mittel · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "mittel · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "mittel · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "mittel · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "schnell",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
    },
    {
+    "einstellung": "schnell · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
+    "einstellung": "schnell · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
+    "einstellung": "schnell · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
+    "einstellung": "schnell · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
     "einstellung": "▶ Messung starten",
     "text": "vmsStatus: Der Wagen fährt … die Stoppuhr läuft. Strecke s = 10 m."
+   },
+   {
+    "einstellung": "▶ Messung starten · nach 50 Frames",
+    "text": "vmsStatus: Der Wagen fährt … die Stoppuhr läuft. Strecke s = 10 m.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|140.64,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|147.64,160.00,5.00,0.00,6.28 | arc|165.64,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,6s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
+    "einstellung": "▶ Messung starten · nach 75 Frames",
+    "text": "vmsStatus: Der Wagen fährt … die Stoppuhr läuft. Strecke s = 10 m.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|196.96,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|203.96,160.00,5.00,0.00,6.28 | arc|221.96,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|1,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
+    "einstellung": "▶ Messung starten · nach 100 Frames",
+    "text": "vmsStatus: Der Wagen fährt … die Stoppuhr läuft. Strecke s = 10 m.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|253.28,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|260.28,160.00,5.00,0.00,6.28 | arc|278.28,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|1,3s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
+   },
+   {
+    "einstellung": "▶ Messung starten · nach 125 Frames",
+    "text": "vmsStatus: Der Wagen fährt … die Stoppuhr läuft. Strecke s = 10 m.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|309.60,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|316.60,160.00,5.00,0.00,6.28 | arc|334.60,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|1,6s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: schnell|220.00|22.00"
    },
    {
     "einstellung": "↺ Zurücksetzen",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\"."
    },
    {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "Nur die Zeit",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Zeit allein reicht nicht."
+   },
+   {
+    "einstellung": "Nur die Zeit · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Zeit allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur die Zeit · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Zeit allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur die Zeit · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Zeit allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur die Zeit · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Zeit allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "Strecke und Zeit",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✓ Richtig! Man braucht die Strecke s und die Zeit t."
    },
    {
+    "einstellung": "Strecke und Zeit · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✓ Richtig! Man braucht die Strecke s und die Zeit t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Strecke und Zeit · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✓ Richtig! Man braucht die Strecke s und die Zeit t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Strecke und Zeit · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✓ Richtig! Man braucht die Strecke s und die Zeit t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Strecke und Zeit · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✓ Richtig! Man braucht die Strecke s und die Zeit t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "Nur die Strecke",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht."
+   },
+   {
+    "einstellung": "Nur die Strecke · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur die Strecke · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur die Strecke · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur die Strecke · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "v = s · t",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ Multipliziert wird nicht."
    },
    {
+    "einstellung": "v = s · t · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ Multipliziert wird nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = s · t · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ Multipliziert wird nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = s · t · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ Multipliziert wird nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = s · t · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ Multipliziert wird nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "v = s / t",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✓ Richtig! v = s / t (Strecke durch Zeit)."
+   },
+   {
+    "einstellung": "v = s / t · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✓ Richtig! v = s / t (Strecke durch Zeit).",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = s / t · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✓ Richtig! v = s / t (Strecke durch Zeit).",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = s / t · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✓ Richtig! v = s / t (Strecke durch Zeit).",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = s / t · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✓ Richtig! v = s / t (Strecke durch Zeit).",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "v = t / s",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch."
    },
    {
+    "einstellung": "v = t / s · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = t / s · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = t / s · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "v = t / s · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "0,5 m/s",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ Das wäre t/s statt s/t."
+   },
+   {
+    "einstellung": "0,5 m/s · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ Das wäre t/s statt s/t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "0,5 m/s · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ Das wäre t/s statt s/t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "0,5 m/s · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ Das wäre t/s statt s/t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "0,5 m/s · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ Das wäre t/s statt s/t.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "2 m/s",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✓ Richtig! v = 10 m / 5 s = 2 m/s."
    },
    {
+    "einstellung": "2 m/s · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✓ Richtig! v = 10 m / 5 s = 2 m/s.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "2 m/s · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✓ Richtig! v = 10 m / 5 s = 2 m/s.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "2 m/s · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✓ Richtig! v = 10 m / 5 s = 2 m/s.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "2 m/s · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✓ Richtig! v = 10 m / 5 s = 2 m/s.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "50 m/s",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht."
+   },
+   {
+    "einstellung": "50 m/s · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "50 m/s · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "50 m/s · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "50 m/s · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "😐 geht so",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.  ||  vmsSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    },
    {
     "einstellung": "😃 sicher",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht."
    },
    {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "vmsStatus: Bereit. Messstrecke s = 10 m. Drücke „Messung starten\".  ||  vmsFb0: ✗ Die Strecke allein reicht nicht.  ||  vmsFb1: ✗ So herum ist es falsch.  ||  vmsFb2: ✗ So groß ist die Geschwindigkeit nicht.",
+    "bild": "set:lineWidth=2 | setLineDash|3,3 | beginPath| | moveTo|396.00,120.00 | lineTo|396.00,170.00 | stroke| | setLineDash| | set:fillStyle=#fda4af | set:font=9px sans-serif | set:textAlign=center | fillText|Ziel|396.00|114.00 | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|s = 10 m|220.00|190.00 | set:fillStyle=#22c55e | fillRect|28.00,142.00,32.00,16.00 | set:fillStyle=#0f172a | beginPath| | arc|35.00,160.00,5.00,0.00,6.28 | arc|53.00,160.00,5.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:strokeStyle=#38bdf8 | set:lineWidth=2 | beginPath| | arc|220.00,60.00,26.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#fde047 | set:font=700 14px monospace | set:textAlign=center | fillText|0,0s|220.00|65.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|⏱ Stoppuhr|220.00|96.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|Tempo: mittel|220.00|22.00"
    }
   ],
   "bildtexte": [
@@ -168,20 +528,23 @@
    "⏱ Stoppuhr",
    "Tempo: mittel",
    "Tempo: langsam",
-   "Tempo: schnell"
-  ],
-  "nachgemessen": {
-   "warum": "simfakten fotografiert vor dem Lauf und sieht deshalb nur '0,0s'. Aus physics-sim.js (_VMS_SPEED, _VMS_S, _vmsDraw) ausgelesen: nach dem Lauf zeichnet die Sim Stoppuhrzeit UND die fertige Rechnung.",
-   "werte": [
-    "Strecke immer s = 10 m",
-    "langsam: v = 1 m/s -> Stoppuhr 10,0s -> Anzeige 'v = s / t = 10 m / 10,0 s = 1,0 m/s'",
-    "mittel:  v = 2 m/s -> Stoppuhr  5,0s -> Anzeige 'v = s / t = 10 m / 5,0 s = 2,0 m/s'",
-    "schnell: v = 5 m/s -> Stoppuhr  2,0s -> Anzeige 'v = s / t = 10 m / 2,0 s = 5,0 m/s'",
-    "Statuszeile rechts NACH dem Lauf (_vmsStatus, Zweig fertig): 'Gemessen: s = 10 m, t = 5,0 s → v = s / t = 2,0 m/s.' - ebenso mit 10,0 s / 1,0 m/s und 2,0 s / 5,0 m/s",
-    "Die Fahrt dauert bei JEDEM Tempo gleich lang: prog += dt / 2.5, also rund 2,5 s Wanduhrzeit. Nur die Zahl auf der Stoppuhr unterscheidet sich - Wartezeit ist NICHT Messzeit.",
-    "Bildpositionen (_vmsDraw): Ergebniszeile ganz oben, Stoppuhr darunter mittig ('⏱ Stoppuhr'), 's = 10 m' unter der Messstrecke, 'Start' und 'Ziel' an den gestrichelten Linien."
-   ],
-   "folge": "Die Tabelle darf Zeit und Geschwindigkeit verlangen - aber erst NACH 'Messung starten'. Der Forschen-Schritt muss das Druecken ausdruecklich nennen. ACHTUNG Gate: Das Protokoll unter der Simulation (_abWrap, _AB_PW, _abUnlocked=false) ist beim Oeffnen passwortgeschuetzt. Die drei Minidiagnose-Fragen samt Rueckmeldungen ('✓ Richtig! Man braucht die Strecke s und die Zeit t.' usw.) und die Knoepfe _vmsAns/_vmsSelf/_abClear stehen zwar im DOM - simfakten sieht und drueckt sie -, sind fuer Lernende aber nicht erreichbar. Heftseiten duerfen weder dorthin schicken noch diese Rueckmeldungen zitieren."
-  }
+   "Tempo: schnell",
+   "0,1s",
+   "0,2s",
+   "0,3s",
+   "0,4s",
+   "0,5s",
+   "0,6s",
+   "0,7s",
+   "0,8s",
+   "0,9s",
+   "1,0s",
+   "1,1s",
+   "1,2s",
+   "1,3s",
+   "1,4s",
+   "1,5s",
+   "1,6s"
+  ]
  }
 ]

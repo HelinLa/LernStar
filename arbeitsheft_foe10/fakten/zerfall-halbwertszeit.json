@@ -46,47 +46,171 @@
    },
    {
     "einstellung": "⏭ eine Halbwertszeit weiter",
-    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 107 von 200 Kernen übrig (53,5 %). | Erwartet hätte man 100. Im letzten Schritt sind 93 Kerne zerfallen."
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 86 von 200 Kernen übrig (43,0 %). | Erwartet hätte man 100. Im letzten Schritt sind 114 Kerne zerfallen."
+   },
+   {
+    "einstellung": "⏭ eine Halbwertszeit weiter · nach 50 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 86 von 200 Kernen übrig (43,0 %). | Erwartet hätte man 100. Im letzten Schritt sind 114 Kerne zerfallen.",
+    "bild": "lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | beginPath| | arc|107.67,249.82,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | lineTo|107.67,249.82 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "⏭ eine Halbwertszeit weiter · nach 75 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 86 von 200 Kernen übrig (43,0 %). | Erwartet hätte man 100. Im letzten Schritt sind 114 Kerne zerfallen.",
+    "bild": "lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | beginPath| | arc|107.67,249.82,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | lineTo|107.67,249.82 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "⏭ eine Halbwertszeit weiter · nach 100 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 86 von 200 Kernen übrig (43,0 %). | Erwartet hätte man 100. Im letzten Schritt sind 114 Kerne zerfallen.",
+    "bild": "lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | beginPath| | arc|107.67,249.82,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | lineTo|107.67,249.82 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "⏭ eine Halbwertszeit weiter · nach 125 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach einer Halbwertszeit – das sind 55,6 s – sind noch 86 von 200 Kernen übrig (43,0 %). | Erwartet hätte man 100. Im letzten Schritt sind 114 Kerne zerfallen.",
+    "bild": "lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | beginPath| | arc|107.67,249.82,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | lineTo|107.67,249.82 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    },
    {
     "einstellung": "↺ Zurücksetzen",
     "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
    },
    {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
     "einstellung": "Radon-220",
     "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Radon-220 · nach 50 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Radon-220 · nach 75 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Radon-220 · nach 100 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Radon-220 · nach 125 Frames",
+    "text": "hwzStatus: Radon-220, Halbwertszeit 55,6 s. | Nach 0 Halbwertszeiten – das sind 0 s – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    },
    {
     "einstellung": "Iod-131",
     "text": "hwzStatus: Iod-131, Halbwertszeit 8,02 Tage. | Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
    },
    {
+    "einstellung": "Iod-131 · nach 50 Frames",
+    "text": "hwzStatus: Iod-131, Halbwertszeit 8,02 Tage. | Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Iod-131 · nach 75 Frames",
+    "text": "hwzStatus: Iod-131, Halbwertszeit 8,02 Tage. | Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Iod-131 · nach 100 Frames",
+    "text": "hwzStatus: Iod-131, Halbwertszeit 8,02 Tage. | Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Iod-131 · nach 125 Frames",
+    "text": "hwzStatus: Iod-131, Halbwertszeit 8,02 Tage. | Nach 0 Halbwertszeiten – das sind 0 Tage – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
     "einstellung": "Kohlenstoff-14",
     "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
+   },
+   {
+    "einstellung": "Kohlenstoff-14 · nach 50 Frames",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Kohlenstoff-14 · nach 75 Frames",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Kohlenstoff-14 · nach 100 Frames",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Kohlenstoff-14 · nach 125 Frames",
+    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    },
    {
     "einstellung": "Cäsium-137",
     "text": "hwzStatus: Cäsium-137, Halbwertszeit 30,17 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
    },
    {
+    "einstellung": "Cäsium-137 · nach 50 Frames",
+    "text": "hwzStatus: Cäsium-137, Halbwertszeit 30,17 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Cäsium-137 · nach 75 Frames",
+    "text": "hwzStatus: Cäsium-137, Halbwertszeit 30,17 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Cäsium-137 · nach 100 Frames",
+    "text": "hwzStatus: Cäsium-137, Halbwertszeit 30,17 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
+    "einstellung": "Cäsium-137 · nach 125 Frames",
+    "text": "hwzStatus: Cäsium-137, Halbwertszeit 30,17 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
+   },
+   {
     "einstellung": "Plutonium-239",
     "text": "hwzStatus: Plutonium-239, Halbwertszeit 24.110 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200."
    },
    {
-    "einstellung": "Kohlenstoff-14, dann 1x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
-    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach einer Halbwertszeit – das sind 5.730 Jahre – sind noch 103 von 200 Kernen übrig (51,5 %). | Erwartet hätte man 100. Im letzten Schritt sind 97 Kerne zerfallen."
+    "einstellung": "Plutonium-239 · nach 50 Frames",
+    "text": "hwzStatus: Plutonium-239, Halbwertszeit 24.110 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    },
    {
-    "einstellung": "Kohlenstoff-14, dann 2x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
-    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 2 Halbwertszeiten – das sind 11.460 Jahre – sind noch 49 von 200 Kernen übrig (24,5 %). | Erwartet hätte man 50. Im letzten Schritt sind 54 Kerne zerfallen."
+    "einstellung": "Plutonium-239 · nach 75 Frames",
+    "text": "hwzStatus: Plutonium-239, Halbwertszeit 24.110 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    },
    {
-    "einstellung": "Kohlenstoff-14, dann 3x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
-    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 3 Halbwertszeiten – das sind 17.190 Jahre – sind noch 22 von 200 Kernen übrig (11,0 %). | Erwartet hätte man 25. Im letzten Schritt sind 27 Kerne zerfallen."
+    "einstellung": "Plutonium-239 · nach 100 Frames",
+    "text": "hwzStatus: Plutonium-239, Halbwertszeit 24.110 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    },
    {
-    "einstellung": "Kohlenstoff-14, dann 4x eine Halbwertszeit weiter (nachgemessen 05.09.2026)",
-    "text": "hwzStatus: Kohlenstoff-14, Halbwertszeit 5730 Jahre. | Nach 4 Halbwertszeiten – das sind 22.920 Jahre – sind noch 14 von 200 Kernen übrig (7,0 %). | Erwartet hätte man 13. Im letzten Schritt sind 17 Kerne zerfallen."
+    "einstellung": "Plutonium-239 · nach 125 Frames",
+    "text": "hwzStatus: Plutonium-239, Halbwertszeit 24.110 Jahre. | Nach 0 Halbwertszeiten – das sind 0 Jahre – sind noch 200 von 200 Kernen übrig (100,0 %). | Erwartet hätte man 200.",
+    "bild": "lineTo|359.15,299.92 | lineTo|362.33,300.06 | lineTo|365.52,300.20 | lineTo|368.70,300.33 | lineTo|371.88,300.45 | lineTo|375.07,300.57 | lineTo|378.25,300.69 | lineTo|381.43,300.80 | lineTo|384.62,300.91 | lineTo|387.80,301.02 | lineTo|390.98,301.12 | lineTo|394.17,301.22 | lineTo|397.35,301.31 | lineTo|400.53,301.40 | lineTo|403.72,301.49 | lineTo|406.90,301.58 | lineTo|410.08,301.66 | lineTo|413.27,301.74 | lineTo|416.45,301.82 | lineTo|419.63,301.89 | lineTo|422.82,301.96 | lineTo|426.00,302.03 | stroke| | setLineDash| | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=left | fillText|erwartet: jedes Mal die Hälfte|177.70|266.61 | set:fillStyle=#38bdf8 | beginPath| | arc|44.00,178.00,4.00,0.00,6.28 | fill| | set:strokeStyle=rgba(56,189,248,0.7) | set:lineWidth=1.6 | beginPath| | moveTo|44.00,178.00 | stroke| | set:fillStyle=#38bdf8 | set:font=700 10px sans-serif | fillText|gemessen|53.55|170.00"
    }
   ],
   "bildtexte": [
@@ -107,15 +231,6 @@
    "Zahl der Kerne",
    "erwartet: jedes Mal die Hälfte",
    "gemessen"
-  ],
-  "nachgemessen": {
-   "wann": "2026-09-05",
-   "womit": "node simcheck/werte.js physics-sim.js zerfall-halbwertszeit (Knopffolge _hwzSetNuk('c14') + _hwzSchritt, vier Laeufe)",
-   "warum": "simfakten drueckt jeden Knopf nur EINMAL. Im Dump war fuer Kohlenstoff-14 nur der Startzustand belegt (0 Halbwertszeiten, 0 Jahre, 200 von 200). Ohne diese Messung durfte fn7 keine Jahreszahl ausser 5730 drucken - die Altersbestimmung haette keine belegte Tabellenspalte gehabt.",
-   "deterministisch": "Jahreszahl und erwartete Kernzahl. 0 Jahre / 200 · 5730 Jahre / 100 · 11460 Jahre / 50 · 17190 Jahre / 25 · 22920 Jahre / 13. Die Wortform wechselt: 'Nach 0 Halbwertszeiten', 'Nach einer Halbwertszeit', danach 'Nach 2/3/4 Halbwertszeiten'.",
-   "zufaellig": "Die gemessene Zahl der uebrigen Kerne und der Prozentwert. Vier Laeufe nach einem Schritt: 117, 103, 104, 107 (Radon). Nach zwei Schritten: 69, 49, 52. Nach drei: 31, 22, 27. Diese Zahlen duerfen NIE als gedruckte Loesung erscheinen.",
-   "schrittzaehler": "Ein Druck auf einen Nuklid-Knopf setzt den Schrittzaehler zurueck - nachgemessen: nach zwei Schritten mit Radon-220 zeigte 'Kohlenstoff-14' sofort wieder 'Nach 0 Halbwertszeiten'. Ein vorheriges 'Zuruecksetzen' ist also nicht noetig (offene Frage aus fn6 damit beantwortet).",
-   "tausenderpunkt": "Der erste Teil der Statuszeile schreibt 'Halbwertszeit 5730 Jahre' OHNE Trennzeichen, der zweite Teil 'das sind 5.730 Jahre' MIT Tausenderpunkt. Dieselbe Zahl steht auf einem Bildschirm in zwei Schreibweisen. Das Foerderheft druckt sie nach der Hausregel 'Dezimalkomma, nie Dezimalpunkt' ohne Punkt: 5730, 11460, 17190."
-  }
+  ]
  }
 ]

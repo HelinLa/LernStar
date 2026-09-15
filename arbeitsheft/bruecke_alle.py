@@ -51,6 +51,13 @@ for skript in HEFTE:
                        cwd=os.path.dirname(skript), capture_output=True, text=True)
     if r.returncode != 0:
         print("FEHLER in", os.path.relpath(skript, WURZEL)); print(r.stderr[-800:]); raise SystemExit(1)
+    # Warnungen der Exporter DURCHLASSEN. capture_output verschluckt stderr; der
+    # Exporter meldet dort, wenn build/seiten.json fehlt oder eine Kennung nicht
+    # gemessen wurde - genau die stille Stelle, vor der CLAUDE.md warnt. Bis zum
+    # 15.09.2026 kam die Meldung nirgends an: sie wurde geschrieben und
+    # weggeworfen.
+    for _z in (r.stderr or "").splitlines():
+        if _z.strip(): print("  " + _z.strip())
     teil = json.loads(r.stdout.strip().splitlines()[-1])
     alle += teil
     print(f"  {os.path.relpath(skript, WURZEL):34} {len(teil):3} Heftseiten")

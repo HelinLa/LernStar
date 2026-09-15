@@ -62,172 +62,432 @@
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
+    "einstellung": "▶ Hochziehen · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,179.20,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|197.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|387.15,75.35 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,8 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "▶ Hochziehen · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,176.80,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|194.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|391.01,78.15 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|1,2 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "▶ Hochziehen · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,174.40,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|192.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|394.04,81.82 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|1,6 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "▶ Hochziehen · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,172.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|190.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|396.07,86.13 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|2,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "÷2 Zeit",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf"
+   },
+   {
+    "einstellung": "÷2 Zeit · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 5 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "÷2 Zeit · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 5 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "÷2 Zeit · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 5 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "÷2 Zeit · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 5 s geschafft | Leistung P = 1962 J / 5 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 5 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "↺ zurücksetzen",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
+    "einstellung": "↺ zurücksetzen · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "↺ zurücksetzen · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 10",
     "text": "lrsStatus: Arbeit W = 10 kg · 9,81 N/kg · 4 m = 392 J | in 10 s geschafft | Leistung P = 392 J / 10 s = 39 W | das sind 0,039 kW oder 0,053 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 10 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 10 kg · 9,81 N/kg · 4 m = 392 J | in 10 s geschafft | Leistung P = 392 J / 10 s = 39 W | das sind 0,039 kW oder 0,053 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|138.20,190.40,23.60,23.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|150.00|205.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 392 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,5.38,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 39 W = 0,05 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 10 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 10 kg · 9,81 N/kg · 4 m = 392 J | in 10 s geschafft | Leistung P = 392 J / 10 s = 39 W | das sind 0,039 kW oder 0,053 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|138.20,190.40,23.60,23.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|150.00|205.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 392 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,5.38,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 39 W = 0,05 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 10 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 10 kg · 9,81 N/kg · 4 m = 392 J | in 10 s geschafft | Leistung P = 392 J / 10 s = 39 W | das sind 0,039 kW oder 0,053 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|138.20,190.40,23.60,23.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|150.00|205.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 392 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,5.38,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 39 W = 0,05 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 10 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 10 kg · 9,81 N/kg · 4 m = 392 J | in 10 s geschafft | Leistung P = 392 J / 10 s = 39 W | das sind 0,039 kW oder 0,053 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|138.20,190.40,23.60,23.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|10 kg|150.00|205.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 392 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,5.38,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 39 W = 0,05 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 20",
     "text": "lrsStatus: Arbeit W = 20 kg · 9,81 N/kg · 4 m = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W | das sind 0,079 kW oder 0,11 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
    },
    {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 20 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 20 kg · 9,81 N/kg · 4 m = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W | das sind 0,079 kW oder 0,11 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|137.40,188.80,25.20,25.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|150.00|204.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 785 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,10.78,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 79 W = 0,11 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 20 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 20 kg · 9,81 N/kg · 4 m = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W | das sind 0,079 kW oder 0,11 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|137.40,188.80,25.20,25.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|150.00|204.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 785 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,10.78,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 79 W = 0,11 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 20 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 20 kg · 9,81 N/kg · 4 m = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W | das sind 0,079 kW oder 0,11 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|137.40,188.80,25.20,25.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|150.00|204.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 785 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,10.78,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 79 W = 0,11 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 20 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 20 kg · 9,81 N/kg · 4 m = 785 J | in 10 s geschafft | Leistung P = 785 J / 10 s = 79 W | das sind 0,079 kW oder 0,11 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|137.40,188.80,25.20,25.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|20 kg|150.00|204.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 785 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,10.78,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 79 W = 0,11 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 30",
     "text": "lrsStatus: Arbeit W = 30 kg · 9,81 N/kg · 4 m = 1177 J | in 10 s geschafft | Leistung P = 1177 J / 10 s = 118 W | das sind 0,12 kW oder 0,16 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 30 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 30 kg · 9,81 N/kg · 4 m = 1177 J | in 10 s geschafft | Leistung P = 1177 J / 10 s = 118 W | das sind 0,12 kW oder 0,16 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|136.60,187.20,26.80,26.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|30 kg|150.00|203.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1177 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,16.16,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 118 W = 0,16 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 30 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 30 kg · 9,81 N/kg · 4 m = 1177 J | in 10 s geschafft | Leistung P = 1177 J / 10 s = 118 W | das sind 0,12 kW oder 0,16 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|136.60,187.20,26.80,26.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|30 kg|150.00|203.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1177 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,16.16,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 118 W = 0,16 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 30 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 30 kg · 9,81 N/kg · 4 m = 1177 J | in 10 s geschafft | Leistung P = 1177 J / 10 s = 118 W | das sind 0,12 kW oder 0,16 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|136.60,187.20,26.80,26.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|30 kg|150.00|203.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1177 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,16.16,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 118 W = 0,16 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 30 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 30 kg · 9,81 N/kg · 4 m = 1177 J | in 10 s geschafft | Leistung P = 1177 J / 10 s = 118 W | das sind 0,12 kW oder 0,16 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|136.60,187.20,26.80,26.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|30 kg|150.00|203.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1177 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,16.16,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 118 W = 0,16 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 40",
     "text": "lrsStatus: Arbeit W = 40 kg · 9,81 N/kg · 4 m = 1570 J | in 10 s geschafft | Leistung P = 1570 J / 10 s = 157 W | das sind 0,16 kW oder 0,21 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
    },
    {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 40 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 40 kg · 9,81 N/kg · 4 m = 1570 J | in 10 s geschafft | Leistung P = 1570 J / 10 s = 157 W | das sind 0,16 kW oder 0,21 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.80,185.60,28.40,28.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|40 kg|150.00|202.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1570 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,21.56,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 157 W = 0,21 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 40 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 40 kg · 9,81 N/kg · 4 m = 1570 J | in 10 s geschafft | Leistung P = 1570 J / 10 s = 157 W | das sind 0,16 kW oder 0,21 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.80,185.60,28.40,28.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|40 kg|150.00|202.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1570 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,21.56,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 157 W = 0,21 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 40 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 40 kg · 9,81 N/kg · 4 m = 1570 J | in 10 s geschafft | Leistung P = 1570 J / 10 s = 157 W | das sind 0,16 kW oder 0,21 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.80,185.60,28.40,28.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|40 kg|150.00|202.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1570 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,21.56,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 157 W = 0,21 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 40 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 40 kg · 9,81 N/kg · 4 m = 1570 J | in 10 s geschafft | Leistung P = 1570 J / 10 s = 157 W | das sind 0,16 kW oder 0,21 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.80,185.60,28.40,28.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|40 kg|150.00|202.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1570 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,21.56,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 157 W = 0,21 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 60",
     "text": "lrsStatus: Arbeit W = 60 kg · 9,81 N/kg · 4 m = 2354 J | in 10 s geschafft | Leistung P = 2354 J / 10 s = 235 W | das sind 0,24 kW oder 0,32 PS | ungefähr wie: Radfahrer bergauf"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 60 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 60 kg · 9,81 N/kg · 4 m = 2354 J | in 10 s geschafft | Leistung P = 2354 J / 10 s = 235 W | das sind 0,24 kW oder 0,32 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|134.20,182.40,31.60,31.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|60 kg|150.00|201.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2354 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,32.33,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 235 W = 0,32 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 60 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 60 kg · 9,81 N/kg · 4 m = 2354 J | in 10 s geschafft | Leistung P = 2354 J / 10 s = 235 W | das sind 0,24 kW oder 0,32 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|134.20,182.40,31.60,31.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|60 kg|150.00|201.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2354 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,32.33,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 235 W = 0,32 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 60 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 60 kg · 9,81 N/kg · 4 m = 2354 J | in 10 s geschafft | Leistung P = 2354 J / 10 s = 235 W | das sind 0,24 kW oder 0,32 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|134.20,182.40,31.60,31.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|60 kg|150.00|201.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2354 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,32.33,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 235 W = 0,32 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 60 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 60 kg · 9,81 N/kg · 4 m = 2354 J | in 10 s geschafft | Leistung P = 2354 J / 10 s = 235 W | das sind 0,24 kW oder 0,32 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|134.20,182.40,31.60,31.60 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|60 kg|150.00|201.20 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2354 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,32.33,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 235 W = 0,32 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 70",
     "text": "lrsStatus: Arbeit W = 70 kg · 9,81 N/kg · 4 m = 2747 J | in 10 s geschafft | Leistung P = 2747 J / 10 s = 275 W | das sind 0,27 kW oder 0,37 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 70 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 70 kg · 9,81 N/kg · 4 m = 2747 J | in 10 s geschafft | Leistung P = 2747 J / 10 s = 275 W | das sind 0,27 kW oder 0,37 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|133.40,180.80,33.20,33.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|70 kg|150.00|200.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2747 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,37.73,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 275 W = 0,37 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 70 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 70 kg · 9,81 N/kg · 4 m = 2747 J | in 10 s geschafft | Leistung P = 2747 J / 10 s = 275 W | das sind 0,27 kW oder 0,37 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|133.40,180.80,33.20,33.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|70 kg|150.00|200.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2747 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,37.73,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 275 W = 0,37 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 70 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 70 kg · 9,81 N/kg · 4 m = 2747 J | in 10 s geschafft | Leistung P = 2747 J / 10 s = 275 W | das sind 0,27 kW oder 0,37 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|133.40,180.80,33.20,33.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|70 kg|150.00|200.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2747 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,37.73,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 275 W = 0,37 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 70 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 70 kg · 9,81 N/kg · 4 m = 2747 J | in 10 s geschafft | Leistung P = 2747 J / 10 s = 275 W | das sind 0,27 kW oder 0,37 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|133.40,180.80,33.20,33.20 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|70 kg|150.00|200.40 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2747 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,37.73,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 275 W = 0,37 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 80",
     "text": "lrsStatus: Arbeit W = 80 kg · 9,81 N/kg · 4 m = 3139 J | in 10 s geschafft | Leistung P = 3139 J / 10 s = 314 W | das sind 0,31 kW oder 0,43 PS | ungefähr wie: Radfahrer bergauf"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 80 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 80 kg · 9,81 N/kg · 4 m = 3139 J | in 10 s geschafft | Leistung P = 3139 J / 10 s = 314 W | das sind 0,31 kW oder 0,43 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|132.60,179.20,34.80,34.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|80 kg|150.00|199.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3139 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,43.11,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 314 W = 0,43 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 80 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 80 kg · 9,81 N/kg · 4 m = 3139 J | in 10 s geschafft | Leistung P = 3139 J / 10 s = 314 W | das sind 0,31 kW oder 0,43 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|132.60,179.20,34.80,34.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|80 kg|150.00|199.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3139 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,43.11,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 314 W = 0,43 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 80 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 80 kg · 9,81 N/kg · 4 m = 3139 J | in 10 s geschafft | Leistung P = 3139 J / 10 s = 314 W | das sind 0,31 kW oder 0,43 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|132.60,179.20,34.80,34.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|80 kg|150.00|199.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3139 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,43.11,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 314 W = 0,43 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 80 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 80 kg · 9,81 N/kg · 4 m = 3139 J | in 10 s geschafft | Leistung P = 3139 J / 10 s = 314 W | das sind 0,31 kW oder 0,43 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|132.60,179.20,34.80,34.80 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|80 kg|150.00|199.60 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3139 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,43.11,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 314 W = 0,43 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 90",
     "text": "lrsStatus: Arbeit W = 90 kg · 9,81 N/kg · 4 m = 3532 J | in 10 s geschafft | Leistung P = 3532 J / 10 s = 353 W | das sind 0,35 kW oder 0,48 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 90 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 90 kg · 9,81 N/kg · 4 m = 3532 J | in 10 s geschafft | Leistung P = 3532 J / 10 s = 353 W | das sind 0,35 kW oder 0,48 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.80,177.60,36.40,36.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|90 kg|150.00|198.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3532 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,48.51,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 353 W = 0,48 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 90 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 90 kg · 9,81 N/kg · 4 m = 3532 J | in 10 s geschafft | Leistung P = 3532 J / 10 s = 353 W | das sind 0,35 kW oder 0,48 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.80,177.60,36.40,36.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|90 kg|150.00|198.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3532 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,48.51,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 353 W = 0,48 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 90 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 90 kg · 9,81 N/kg · 4 m = 3532 J | in 10 s geschafft | Leistung P = 3532 J / 10 s = 353 W | das sind 0,35 kW oder 0,48 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.80,177.60,36.40,36.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|90 kg|150.00|198.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3532 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,48.51,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 353 W = 0,48 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 90 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 90 kg · 9,81 N/kg · 4 m = 3532 J | in 10 s geschafft | Leistung P = 3532 J / 10 s = 353 W | das sind 0,35 kW oder 0,48 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.80,177.60,36.40,36.40 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|90 kg|150.00|198.80 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3532 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,48.51,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 353 W = 0,48 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 100",
     "text": "lrsStatus: Arbeit W = 100 kg · 9,81 N/kg · 4 m = 3924 J | in 10 s geschafft | Leistung P = 3924 J / 10 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 100 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 100 kg · 9,81 N/kg · 4 m = 3924 J | in 10 s geschafft | Leistung P = 3924 J / 10 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.00,176.00,38.00,38.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|100 kg|150.00|198.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3924 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 100 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 100 kg · 9,81 N/kg · 4 m = 3924 J | in 10 s geschafft | Leistung P = 3924 J / 10 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.00,176.00,38.00,38.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|100 kg|150.00|198.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3924 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 100 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 100 kg · 9,81 N/kg · 4 m = 3924 J | in 10 s geschafft | Leistung P = 3924 J / 10 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.00,176.00,38.00,38.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|100 kg|150.00|198.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3924 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 100 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 100 kg · 9,81 N/kg · 4 m = 3924 J | in 10 s geschafft | Leistung P = 3924 J / 10 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|131.00,176.00,38.00,38.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|100 kg|150.00|198.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 3924 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,53.89,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 392 W = 0,53 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 50",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 50 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 50 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 50 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "tton> ↺ zurücksetzen Masse m: 50 kg = 50 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "Höhe h: 4 m = 1",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 1 m = 491 J | in 10 s geschafft | Leistung P = 491 J / 10 s = 49 W | das sind 0,049 kW oder 0,067 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 1 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 1 m = 491 J | in 10 s geschafft | Leistung P = 491 J / 10 s = 49 W | das sind 0,049 kW oder 0,067 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 491 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,6.74,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 49 W = 0,07 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 1 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 1 m = 491 J | in 10 s geschafft | Leistung P = 491 J / 10 s = 49 W | das sind 0,049 kW oder 0,067 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 491 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,6.74,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 49 W = 0,07 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 1 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 1 m = 491 J | in 10 s geschafft | Leistung P = 491 J / 10 s = 49 W | das sind 0,049 kW oder 0,067 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 491 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,6.74,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 49 W = 0,07 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 1 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 1 m = 491 J | in 10 s geschafft | Leistung P = 491 J / 10 s = 49 W | das sind 0,049 kW oder 0,067 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 491 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,6.74,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 49 W = 0,07 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "Höhe h: 4 m = 2",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 2 m = 981 J | in 10 s geschafft | Leistung P = 981 J / 10 s = 98 W | das sind 0,098 kW oder 0,13 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
    },
    {
+    "einstellung": "Höhe h: 4 m = 2 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 2 m = 981 J | in 10 s geschafft | Leistung P = 981 J / 10 s = 98 W | das sind 0,098 kW oder 0,13 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 981 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,13.47,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 98 W = 0,13 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 2 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 2 m = 981 J | in 10 s geschafft | Leistung P = 981 J / 10 s = 98 W | das sind 0,098 kW oder 0,13 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 981 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,13.47,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 98 W = 0,13 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 2 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 2 m = 981 J | in 10 s geschafft | Leistung P = 981 J / 10 s = 98 W | das sind 0,098 kW oder 0,13 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 981 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,13.47,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 98 W = 0,13 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 2 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 2 m = 981 J | in 10 s geschafft | Leistung P = 981 J / 10 s = 98 W | das sind 0,098 kW oder 0,13 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 981 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,13.47,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 98 W = 0,13 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "Höhe h: 4 m = 3",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 3 m = 1472 J | in 10 s geschafft | Leistung P = 1472 J / 10 s = 147 W | das sind 0,15 kW oder 0,20 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 3 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 3 m = 1472 J | in 10 s geschafft | Leistung P = 1472 J / 10 s = 147 W | das sind 0,15 kW oder 0,20 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1472 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,20.22,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 147 W = 0,20 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 3 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 3 m = 1472 J | in 10 s geschafft | Leistung P = 1472 J / 10 s = 147 W | das sind 0,15 kW oder 0,20 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1472 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,20.22,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 147 W = 0,20 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 3 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 3 m = 1472 J | in 10 s geschafft | Leistung P = 1472 J / 10 s = 147 W | das sind 0,15 kW oder 0,20 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1472 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,20.22,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 147 W = 0,20 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 3 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 3 m = 1472 J | in 10 s geschafft | Leistung P = 1472 J / 10 s = 147 W | das sind 0,15 kW oder 0,20 PS | ungefähr wie: Mensch, der dauerhaft arbeitet",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1472 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,20.22,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 147 W = 0,20 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
     "einstellung": "Höhe h: 4 m = 4",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
+    "einstellung": "Höhe h: 4 m = 4 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 4 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 4 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
+    "einstellung": "Höhe h: 4 m = 4 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 4 m = 1962 J | in 10 s geschafft | Leistung P = 1962 J / 10 s = 196 W | das sind 0,20 kW oder 0,27 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 1962 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,26.94,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 196 W = 0,27 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
+   },
+   {
     "einstellung": "Höhe h: 4 m = 6",
     "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 6 m = 2943 J | in 10 s geschafft | Leistung P = 2943 J / 10 s = 294 W | das sind 0,29 kW oder 0,40 PS | ungefähr wie: Radfahrer bergauf"
    },
    {
-    "einstellung": "Höhe h: 4 m = 7",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 7 m = 3434 J | in 10 s geschafft | Leistung P = 3434 J / 10 s = 343 W | das sind 0,34 kW oder 0,47 PS | ungefähr wie: Radfahrer bergauf"
+    "einstellung": "Höhe h: 4 m = 6 · nach 50 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 6 m = 2943 J | in 10 s geschafft | Leistung P = 2943 J / 10 s = 294 W | das sind 0,29 kW oder 0,40 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2943 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,40.42,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 294 W = 0,40 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
-    "einstellung": "Höhe h: 4 m = 8",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 8 m = 3924 J | in 10 s geschafft | Leistung P = 3924 J / 10 s = 392 W | das sind 0,39 kW oder 0,53 PS | ungefähr wie: Radfahrer bergauf"
+    "einstellung": "Höhe h: 4 m = 6 · nach 75 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 6 m = 2943 J | in 10 s geschafft | Leistung P = 2943 J / 10 s = 294 W | das sind 0,29 kW oder 0,40 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2943 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,40.42,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 294 W = 0,40 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
-    "einstellung": "Höhe h: 4 m = 9",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 9 m = 4415 J | in 10 s geschafft | Leistung P = 4415 J / 10 s = 442 W | das sind 0,44 kW oder 0,60 PS | ungefähr wie: Radfahrer bergauf"
+    "einstellung": "Höhe h: 4 m = 6 · nach 100 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 6 m = 2943 J | in 10 s geschafft | Leistung P = 2943 J / 10 s = 294 W | das sind 0,29 kW oder 0,40 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2943 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,40.42,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 294 W = 0,40 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    },
    {
-    "einstellung": "Höhe h: 4 m = 10",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 10 m = 4905 J | in 10 s geschafft | Leistung P = 4905 J / 10 s = 491 W | das sind 0,49 kW oder 0,67 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "Höhe h: 4 m = 5",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 10 s geschafft | Leistung P = 2453 J / 10 s = 245 W | das sind 0,25 kW oder 0,33 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 1",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 1 s geschafft | Leistung P = 2453 J / 1 s = 2453 W | das sind 2,45 kW oder 3,34 PS | ungefähr wie: Staubsauger, kräftig"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 3",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 3 s geschafft | Leistung P = 2453 J / 3 s = 818 W | das sind 0,82 kW oder 1,11 PS | ungefähr wie: Wasserkocher"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 6",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 6 s geschafft | Leistung P = 2453 J / 6 s = 409 W | das sind 0,41 kW oder 0,56 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 8",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 8 s geschafft | Leistung P = 2453 J / 8 s = 307 W | das sind 0,31 kW oder 0,42 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 11",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 11 s geschafft | Leistung P = 2453 J / 11 s = 223 W | das sind 0,22 kW oder 0,30 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 13",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 13 s geschafft | Leistung P = 2453 J / 13 s = 189 W | das sind 0,19 kW oder 0,26 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 15",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 15 s geschafft | Leistung P = 2453 J / 15 s = 164 W | das sind 0,16 kW oder 0,22 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 18",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 18 s geschafft | Leistung P = 2453 J / 18 s = 136 W | das sind 0,14 kW oder 0,19 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 20",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 20 s geschafft | Leistung P = 2453 J / 20 s = 123 W | das sind 0,12 kW oder 0,17 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 2",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 2 s geschafft | Leistung P = 2453 J / 2 s = 1227 W | das sind 1,23 kW oder 1,67 PS | ungefähr wie: Wasserkocher"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 4",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 4 s geschafft | Leistung P = 2453 J / 4 s = 613 W | das sind 0,61 kW oder 0,83 PS | ungefähr wie: Wasserkocher"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 5",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 5 s geschafft | Leistung P = 2453 J / 5 s = 491 W | das sind 0,49 kW oder 0,67 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 7",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 7 s geschafft | Leistung P = 2453 J / 7 s = 350 W | das sind 0,35 kW oder 0,48 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 9",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 9 s geschafft | Leistung P = 2453 J / 9 s = 273 W | das sind 0,27 kW oder 0,37 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 10",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 10 s geschafft | Leistung P = 2453 J / 10 s = 245 W | das sind 0,25 kW oder 0,33 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 12",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 12 s geschafft | Leistung P = 2453 J / 12 s = 204 W | das sind 0,20 kW oder 0,28 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 14",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 14 s geschafft | Leistung P = 2453 J / 14 s = 175 W | das sind 0,18 kW oder 0,24 PS | ungefähr wie: Radfahrer bergauf"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 16",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 16 s geschafft | Leistung P = 2453 J / 16 s = 153 W | das sind 0,15 kW oder 0,21 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 17",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 17 s geschafft | Leistung P = 2453 J / 17 s = 144 W | das sind 0,14 kW oder 0,20 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
-   },
-   {
-    "einstellung": "gebrauchte Zeit t: 10 s = 19",
-    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 5 m = 2453 J | in 19 s geschafft | Leistung P = 2453 J / 19 s = 129 W | das sind 0,13 kW oder 0,18 PS | ungefähr wie: Mensch, der dauerhaft arbeitet"
+    "einstellung": "Höhe h: 4 m = 6 · nach 125 Frames",
+    "text": "lrsStatus: Arbeit W = 50 kg · 9,81 N/kg · 6 m = 2943 J | in 10 s geschafft | Leistung P = 2943 J / 10 s = 294 W | das sind 0,29 kW oder 0,40 PS | ungefähr wie: Radfahrer bergauf",
+    "bild": "set:lineWidth=2 | strokeRect|135.00,184.00,30.00,30.00 | set:fillStyle=#fef3c7 | set:font=700 10px sans-serif | set:textAlign=center | fillText|50 kg|150.00|202.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Arbeit W = 2943 J  (ändert sich durch die Zeit NICHT)|14.00|22.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,34.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,34.00,40.42,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|Leistung P = 294 W = 0,40 PS|20.00|46.00 | beginPath| | arc|378.00,92.00,26.00,0.00,6.28 | set:fillStyle=#fff | fill| | set:strokeStyle=#334155 | set:lineWidth=2 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=2.5 | beginPath| | moveTo|378.00,92.00 | lineTo|378.00,73.00 | stroke| | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|0,0 s|378.00|136.00 | set:font=9px sans-serif | set:fillStyle=#475569 | fillText|von 10 s|378.00|149.00 | set:font=700 11px sans-serif | set:fillStyle=#0f172a | fillText|halbe Zeit → doppelte Leistung, gleiche Arbeit|220.00|242.00"
    }
   ],
   "bildtexte": [
@@ -238,6 +498,26 @@
    "0,0 s",
    "von 10 s",
    "halbe Zeit → doppelte Leistung, gleiche Arbeit",
+   "0,1 s",
+   "0,2 s",
+   "0,3 s",
+   "0,4 s",
+   "0,5 s",
+   "0,6 s",
+   "0,7 s",
+   "0,8 s",
+   "0,9 s",
+   "1,0 s",
+   "1,1 s",
+   "1,2 s",
+   "1,3 s",
+   "1,4 s",
+   "1,5 s",
+   "1,6 s",
+   "1,7 s",
+   "1,8 s",
+   "1,9 s",
+   "2,0 s",
    "Leistung P = 392 W = 0,53 PS",
    "von 5 s",
    "10 kg",
@@ -277,56 +557,7 @@
    "Leistung P = 147 W = 0,20 PS",
    "h = 6 m",
    "Arbeit W = 2943 J  (ändert sich durch die Zeit NICHT)",
-   "Leistung P = 294 W = 0,40 PS",
-   "h = 7 m",
-   "Arbeit W = 3434 J  (ändert sich durch die Zeit NICHT)",
-   "Leistung P = 343 W = 0,47 PS",
-   "h = 8 m",
-   "h = 9 m",
-   "Arbeit W = 4415 J  (ändert sich durch die Zeit NICHT)",
-   "Leistung P = 442 W = 0,60 PS",
-   "h = 10 m",
-   "Arbeit W = 4905 J  (ändert sich durch die Zeit NICHT)",
-   "Leistung P = 491 W = 0,67 PS",
-   "h = 5 m",
-   "Arbeit W = 2453 J  (ändert sich durch die Zeit NICHT)",
-   "Leistung P = 245 W = 0,33 PS",
-   "Leistung P = 2453 W = 3,34 PS",
-   "von 1 s",
-   "Leistung P = 818 W = 1,11 PS",
-   "von 3 s",
-   "Leistung P = 409 W = 0,56 PS",
-   "von 6 s",
-   "Leistung P = 307 W = 0,42 PS",
-   "von 8 s",
-   "Leistung P = 223 W = 0,30 PS",
-   "von 11 s",
-   "Leistung P = 189 W = 0,26 PS",
-   "von 13 s",
-   "Leistung P = 164 W = 0,22 PS",
-   "von 15 s",
-   "Leistung P = 136 W = 0,19 PS",
-   "von 18 s",
-   "Leistung P = 123 W = 0,17 PS",
-   "von 20 s",
-   "Leistung P = 1227 W = 1,67 PS",
-   "von 2 s",
-   "Leistung P = 613 W = 0,83 PS",
-   "von 4 s",
-   "Leistung P = 350 W = 0,48 PS",
-   "von 7 s",
-   "Leistung P = 273 W = 0,37 PS",
-   "von 9 s",
-   "Leistung P = 204 W = 0,28 PS",
-   "von 12 s",
-   "Leistung P = 175 W = 0,24 PS",
-   "von 14 s",
-   "Leistung P = 153 W = 0,21 PS",
-   "von 16 s",
-   "Leistung P = 144 W = 0,20 PS",
-   "von 17 s",
-   "Leistung P = 129 W = 0,18 PS",
-   "von 19 s"
+   "Leistung P = 294 W = 0,40 PS"
   ]
  }
 ]

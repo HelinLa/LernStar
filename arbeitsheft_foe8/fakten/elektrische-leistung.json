@@ -100,80 +100,432 @@
     "text": "elpStatus: U = 1,5 V, I = 0,10 A → Leistung P = U · I = 0,15 W. Mehr Spannung oder mehr Strom → mehr Leistung."
    },
    {
+    "einstellung": "1,5 V · nach 50 Frames",
+    "text": "elpStatus: U = 1,5 V, I = 0,10 A → Leistung P = U · I = 0,15 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,10 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|54.21,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|304.21,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|385.79,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|135.79,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,15 W|220.00|22.00"
+   },
+   {
+    "einstellung": "1,5 V · nach 75 Frames",
+    "text": "elpStatus: U = 1,5 V, I = 0,10 A → Leistung P = U · I = 0,15 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,10 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|60.61,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|310.61,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|379.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|129.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,15 W|220.00|22.00"
+   },
+   {
+    "einstellung": "1,5 V · nach 100 Frames",
+    "text": "elpStatus: U = 1,5 V, I = 0,10 A → Leistung P = U · I = 0,15 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,10 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|67.01,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|317.01,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|372.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|122.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,15 W|220.00|22.00"
+   },
+   {
+    "einstellung": "1,5 V · nach 125 Frames",
+    "text": "elpStatus: U = 1,5 V, I = 0,10 A → Leistung P = U · I = 0,15 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,10 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|73.41,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|323.41,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|366.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|116.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,15 W|220.00|22.00"
+   },
+   {
     "einstellung": "3 V",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "3 V · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|91.01,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|341.01,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|348.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|98.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "3 V · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|99.81,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|349.81,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|340.19,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|90.19,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "3 V · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|108.61,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|358.61,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|331.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|81.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "3 V · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|117.41,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|367.41,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|322.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|72.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
     "einstellung": "6 V",
     "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung."
    },
    {
+    "einstellung": "6 V · nach 50 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|144.61,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|311.27,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,129.94,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|295.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|128.73,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,114.06,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
+    "einstellung": "6 V · nach 75 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|158.21,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|324.87,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,143.54,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|281.79,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|115.13,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,100.46,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
+    "einstellung": "6 V · nach 100 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|171.81,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|338.47,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,157.14,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|268.19,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|101.53,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,86.86,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
+    "einstellung": "6 V · nach 125 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|185.41,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|352.07,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,170.74,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|254.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|87.93,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,73.26,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
     "einstellung": "viel Strom",
     "text": "elpStatus: U = 6 V, I = 1,20 A → Leistung P = U · I = 7,20 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "viel Strom · nach 50 Frames",
+    "text": "elpStatus: U = 6 V, I = 1,20 A → Leistung P = U · I = 7,20 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|218.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|159.58,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|100.76,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|41.93,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,135.11,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,76.29,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|74.54,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.36,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|192.18,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 7,20 W|220.00|22.00"
+   },
+   {
+    "einstellung": "viel Strom · nach 75 Frames",
+    "text": "elpStatus: U = 6 V, I = 1,20 A → Leistung P = U · I = 7,20 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|185.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|126.78,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|67.96,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,161.13,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,102.31,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|48.51,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|107.34,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|166.16,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|224.98,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 7,20 W|220.00|22.00"
+   },
+   {
+    "einstellung": "viel Strom · nach 100 Frames",
+    "text": "elpStatus: U = 6 V, I = 1,20 A → Leistung P = U · I = 7,20 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|152.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|93.98,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,187.16,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,128.33,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,69.51,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|81.31,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|140.14,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|198.96,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|257.78,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 7,20 W|220.00|22.00"
+   },
+   {
+    "einstellung": "viel Strom · nach 125 Frames",
+    "text": "elpStatus: U = 6 V, I = 1,20 A → Leistung P = U · I = 7,20 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|120.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|61.18,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,154.36,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,95.53,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|55.29,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|114.11,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|172.94,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|231.76,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|290.58,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 7,20 W|220.00|22.00"
    },
    {
     "einstellung": "mittel",
     "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung."
    },
    {
+    "einstellung": "mittel · nach 50 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|376.61,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|396.73,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|230.06,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|63.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|43.27,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|209.94,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
+    "einstellung": "mittel · nach 75 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|390.21,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|383.13,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|216.46,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|49.79,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|56.87,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|223.54,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
+    "einstellung": "mittel · nach 100 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,55.81,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|369.53,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|202.86,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,188.19,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|70.47,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|237.14,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
+    "einstellung": "mittel · nach 125 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,40 A → Leistung P = U · I = 2,40 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,40 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,69.41,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|355.93,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|189.26,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,174.59,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|84.07,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.74,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 2,40 W|220.00|22.00"
+   },
+   {
     "einstellung": "wenig Strom",
     "text": "elpStatus: U = 6 V, I = 0,13 A → Leistung P = U · I = 0,80 W. Mehr Spannung oder mehr Strom → mehr Leistung."
+   },
+   {
+    "einstellung": "wenig Strom · nach 50 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,13 A → Leistung P = U · I = 0,80 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,13 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,83.81,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|258.19,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,160.19,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|181.81,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,80 W|220.00|22.00"
+   },
+   {
+    "einstellung": "wenig Strom · nach 75 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,13 A → Leistung P = U · I = 0,80 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,13 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,91.01,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,152.99,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|189.01,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,80 W|220.00|22.00"
+   },
+   {
+    "einstellung": "wenig Strom · nach 100 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,13 A → Leistung P = U · I = 0,80 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,13 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,98.21,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|243.79,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,145.79,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|196.21,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,80 W|220.00|22.00"
+   },
+   {
+    "einstellung": "wenig Strom · nach 125 Frames",
+    "text": "elpStatus: U = 6 V, I = 0,13 A → Leistung P = U · I = 0,80 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,13 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,105.41,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|236.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,138.59,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|203.41,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,80 W|220.00|22.00"
    },
    {
     "einstellung": "↺",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung."
    },
    {
+    "einstellung": "↺ · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|57.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|307.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|382.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|132.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|66.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|316.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|373.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|123.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|75.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|325.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|364.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|114.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|84.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|334.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|356.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|106.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
     "einstellung": "P = U + I",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Addiert wird nichts."
+   },
+   {
+    "einstellung": "P = U + I · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Addiert wird nichts.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|101.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|351.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|338.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|88.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U + I · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Addiert wird nichts.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|110.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|360.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|329.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|79.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U + I · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Addiert wird nichts.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|119.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|369.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|320.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|70.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U + I · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Addiert wird nichts.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|128.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|378.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|312.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|62.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
     "einstellung": "P = U · I",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✓ Richtig! P = U · I (Spannung mal Stromstärke)."
    },
    {
+    "einstellung": "P = U · I · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✓ Richtig! P = U · I (Spannung mal Stromstärke).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|145.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|395.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|294.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|44.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U · I · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✓ Richtig! P = U · I (Spannung mal Stromstärke).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|154.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,56.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|285.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,187.60,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U · I · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✓ Richtig! P = U · I (Spannung mal Stromstärke).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|163.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,65.20,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|276.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,178.80,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U · I · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✓ Richtig! P = U · I (Spannung mal Stromstärke).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|172.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,74.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|268.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,170.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
     "einstellung": "P = U / I",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht."
+   },
+   {
+    "einstellung": "P = U / I · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|189.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,91.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,152.40,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U / I · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|198.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,100.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|241.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,143.60,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U / I · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|207.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,109.20,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|232.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,134.80,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "P = U / I · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|216.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,118.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|224.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,126.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
     "einstellung": "Volt (V)",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Volt ist die Einheit der Spannung."
    },
    {
+    "einstellung": "Volt (V) · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Volt ist die Einheit der Spannung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|233.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,135.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|206.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,108.40,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Volt (V) · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Volt ist die Einheit der Spannung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|242.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,144.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|197.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,99.60,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Volt (V) · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Volt ist die Einheit der Spannung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|251.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,153.20,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|188.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,90.80,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Volt (V) · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Volt ist die Einheit der Spannung.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|260.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,162.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|180.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,82.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
     "einstellung": "Watt (W)",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✓ Richtig! Die Leistung wird in Watt (W) gemessen."
+   },
+   {
+    "einstellung": "Watt (W) · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✓ Richtig! Die Leistung wird in Watt (W) gemessen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|277.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,179.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|162.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,64.40,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Watt (W) · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✓ Richtig! Die Leistung wird in Watt (W) gemessen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|286.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,188.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|153.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,55.60,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Watt (W) · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✓ Richtig! Die Leistung wird in Watt (W) gemessen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|295.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|394.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|144.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|45.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Watt (W) · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✓ Richtig! Die Leistung wird in Watt (W) gemessen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|304.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|386.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|136.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|54.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
     "einstellung": "Ohm (Ω)",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands."
    },
    {
+    "einstellung": "Ohm (Ω) · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|321.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|368.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|118.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|71.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Ohm (Ω) · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|330.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|359.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|109.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|80.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Ohm (Ω) · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|339.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|350.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|100.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|89.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Ohm (Ω) · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|348.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|342.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|92.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|98.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
     "einstellung": "Sie wird größer",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✓ Richtig! Mehr Spannung → mehr Leistung (P = U·I)."
+   },
+   {
+    "einstellung": "Sie wird größer · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✓ Richtig! Mehr Spannung → mehr Leistung (P = U·I).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|365.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|324.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|74.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|115.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie wird größer · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✓ Richtig! Mehr Spannung → mehr Leistung (P = U·I).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|374.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|315.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|65.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|124.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie wird größer · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✓ Richtig! Mehr Spannung → mehr Leistung (P = U·I).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|383.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|306.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|56.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie wird größer · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✓ Richtig! Mehr Spannung → mehr Leistung (P = U·I).",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|392.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|298.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|48.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|142.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
     "einstellung": "Sie wird kleiner",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Mehr Spannung macht die Leistung nicht kleiner."
    },
    {
+    "einstellung": "Sie wird kleiner · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Mehr Spannung macht die Leistung nicht kleiner.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,61.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|280.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,182.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|159.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie wird kleiner · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Mehr Spannung macht die Leistung nicht kleiner.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,70.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|271.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,173.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|168.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie wird kleiner · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Mehr Spannung macht die Leistung nicht kleiner.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,79.20,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|262.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,164.80,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|177.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie wird kleiner · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Mehr Spannung macht die Leistung nicht kleiner.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,88.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|254.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,156.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|186.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
     "einstellung": "Sie bleibt gleich",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich."
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,105.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|236.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,138.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|203.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,114.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|227.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,129.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|212.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,123.20,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|218.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,120.80,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|221.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie bleibt gleich · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,132.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|210.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,112.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|230.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,149.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|192.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,94.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,158.40,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|183.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,85.60,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|256.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,167.20,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|174.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,76.80,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|265.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,176.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|166.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,68.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|274.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
     "einstellung": "😐 geht so",
     "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Übe noch ein bisschen."
    },
    {
-    "einstellung": "😃 sicher",
-    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich."
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|398.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|148.40,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|41.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|291.60,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    },
    {
-    "einstellung": "🗑 Protokoll zurücksetzen",
-    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich."
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|389.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|139.60,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|50.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|300.40,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|380.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|130.80,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|59.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|309.20,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "elpStatus: U = 3 V, I = 0,20 A → Leistung P = U · I = 0,60 W. Mehr Spannung oder mehr Strom → mehr Leistung.  ||  elpFb0: ✗ Geteilt wird hier nicht.  ||  elpFb1: ✗ Ohm ist die Einheit des Widerstands.  ||  elpFb2: ✗ Die Leistung ändert sich.  ||  elpSelfOut: Übe noch ein bisschen.",
+    "bild": "beginPath| | moveTo|211.00,43.00 | lineTo|229.00,61.00 | moveTo|229.00,43.00 | lineTo|211.00,61.00 | stroke| | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,122.00,15.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 13px sans-serif | set:textAlign=center | fillText|A|400.00|127.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | fillText|0,20 A|368.00|126.00 | set:fillStyle=#60a5fa | beginPath| | arc|372.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|122.00,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|68.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|318.00,52.00,3.20,0.00,6.28 | fill| | set:fillStyle=#fde047 | set:font=700 15px sans-serif | set:textAlign=center | fillText|P = 0,60 W|220.00|22.00"
    }
   ],
   "bildtexte": [

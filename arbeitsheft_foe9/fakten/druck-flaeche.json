@@ -58,296 +58,432 @@
     "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 588,6 N / 0,0001 m² | p = 5,89 MPa = 5886,0 kPa | | Zum Vergleich | Das ist 300-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche."
    },
    {
+    "einstellung": "Stöckelabsatz · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 588,6 N / 0,0001 m² | p = 5,89 MPa = 5886,0 kPa | | Zum Vergleich | Das ist 300-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche.",
+    "bild": "lineTo|290.00,186.70 | stroke| | beginPath| | moveTo|290.00,192.70 | lineTo|284.00,181.70 | lineTo|296.00,181.70 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|217.00,254.70 | lineTo|223.00,254.70 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 1 cm²|220.00|270.70 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#dc2626 | fillRect|24.00,24.00,228.95,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 5,89 MPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Stöckelabsatz · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 588,6 N / 0,0001 m² | p = 5,89 MPa = 5886,0 kPa | | Zum Vergleich | Das ist 300-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche.",
+    "bild": "lineTo|290.00,191.14 | stroke| | beginPath| | moveTo|290.00,197.14 | lineTo|284.00,186.14 | lineTo|296.00,186.14 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|217.00,259.14 | lineTo|223.00,259.14 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 1 cm²|220.00|275.14 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#dc2626 | fillRect|24.00,24.00,228.95,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 5,89 MPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Stöckelabsatz · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 588,6 N / 0,0001 m² | p = 5,89 MPa = 5886,0 kPa | | Zum Vergleich | Das ist 300-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche.",
+    "bild": "lineTo|290.00,193.46 | stroke| | beginPath| | moveTo|290.00,199.46 | lineTo|284.00,188.46 | lineTo|296.00,188.46 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|217.00,261.46 | lineTo|223.00,261.46 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 1 cm²|220.00|277.46 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#dc2626 | fillRect|24.00,24.00,228.95,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 5,89 MPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Stöckelabsatz · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 588,6 N / 0,0001 m² | p = 5,89 MPa = 5886,0 kPa | | Zum Vergleich | Das ist 300-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche.",
+    "bild": "lineTo|290.00,194.67 | stroke| | beginPath| | moveTo|290.00,200.67 | lineTo|284.00,189.67 | lineTo|296.00,189.67 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|217.00,262.67 | lineTo|223.00,262.67 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 1 cm²|220.00|278.67 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#dc2626 | fillRect|24.00,24.00,228.95,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 5,89 MPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Turnschuhe",
     "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark."
+   },
+   {
+    "einstellung": "Turnschuhe · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark.",
+    "bild": "lineTo|290.00,168.32 | stroke| | beginPath| | moveTo|290.00,174.32 | lineTo|284.00,163.32 | lineTo|296.00,163.32 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|173.23,236.32 | lineTo|266.77,236.32 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 300 cm²|220.00|252.32 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.05,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 19,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Turnschuhe · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark.",
+    "bild": "lineTo|290.00,169.45 | stroke| | beginPath| | moveTo|290.00,175.45 | lineTo|284.00,164.45 | lineTo|296.00,164.45 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|173.23,237.45 | lineTo|266.77,237.45 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 300 cm²|220.00|253.45 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.05,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 19,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Turnschuhe · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark.",
+    "bild": "lineTo|290.00,170.04 | stroke| | beginPath| | moveTo|290.00,176.04 | lineTo|284.00,165.04 | lineTo|296.00,165.04 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|173.23,238.04 | lineTo|266.77,238.04 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 300 cm²|220.00|254.04 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.05,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 19,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Turnschuhe · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 588,6 N / 0,0300 m² | p = 19,6 kPa | | Zum Vergleich | Das ist genau der Vergleichsfall: eine Person von 60 kg auf Turnschuhen. | | Willst du den Druck halbieren, musst du entweder die Kraft halbieren oder die Fläche verdoppeln. Beides wirkt gleich stark.",
+    "bild": "lineTo|290.00,162.86 | stroke| | beginPath| | moveTo|290.00,168.86 | lineTo|284.00,157.86 | lineTo|296.00,157.86 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|173.23,230.86 | lineTo|266.77,230.86 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 300 cm²|220.00|246.86 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.05,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 19,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Skier",
     "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 588,6 N / 0,2800 m² | p = 2,1 kPa | | Zum Vergleich | Das ist nur 9,3-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
    },
    {
+    "einstellung": "Skier · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 588,6 N / 0,2800 m² | p = 2,1 kPa | | Zum Vergleich | Das ist nur 9,3-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,164.07 | stroke| | beginPath| | moveTo|290.00,170.07 | lineTo|284.00,159.07 | lineTo|296.00,159.07 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.07 | lineTo|335.00,232.07 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2800 cm²|220.00|248.07 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,63.49,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 2,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Skier · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 588,6 N / 0,2800 m² | p = 2,1 kPa | | Zum Vergleich | Das ist nur 9,3-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,164.44 | stroke| | beginPath| | moveTo|290.00,170.44 | lineTo|284.00,159.44 | lineTo|296.00,159.44 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.44 | lineTo|335.00,232.44 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2800 cm²|220.00|248.44 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,63.49,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 2,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Skier · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 588,6 N / 0,2800 m² | p = 2,1 kPa | | Zum Vergleich | Das ist nur 9,3-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,164.63 | stroke| | beginPath| | moveTo|290.00,170.63 | lineTo|284.00,159.63 | lineTo|296.00,159.63 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.63 | lineTo|335.00,232.63 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2800 cm²|220.00|248.63 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,63.49,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 2,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Skier · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 60 kg · 9,81 N/kg = 588,6 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 588,6 N / 0,2800 m² | p = 2,1 kPa | | Zum Vergleich | Das ist nur 9,3-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,164.73 | stroke| | beginPath| | moveTo|290.00,170.73 | lineTo|284.00,159.73 | lineTo|296.00,159.73 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 589 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.73 | lineTo|335.00,232.73 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2800 cm²|220.00|248.73 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,63.49,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 2,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Elefant",
     "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Elefant · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,182.39 | stroke| | beginPath| | moveTo|290.00,188.39 | lineTo|284.00,177.39 | lineTo|296.00,177.39 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,250.39 | lineTo|335.00,250.39 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|266.39 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Elefant · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,186.05 | stroke| | beginPath| | moveTo|290.00,192.05 | lineTo|284.00,181.05 | lineTo|296.00,181.05 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,254.05 | lineTo|335.00,254.05 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|270.05 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Elefant · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,187.96 | stroke| | beginPath| | moveTo|290.00,193.96 | lineTo|284.00,182.96 | lineTo|296.00,182.96 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,255.96 | lineTo|335.00,255.96 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|271.96 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Elefant · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,164.77 | stroke| | beginPath| | moveTo|290.00,170.77 | lineTo|284.00,159.77 | lineTo|296.00,159.77 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.77 | lineTo|335.00,232.77 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|248.77 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 10",
     "text": "druStatus: Die Kraft | F = m · g = 10 kg · 9,81 N/kg = 98,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 98,1 N / 0,2400 m² | p = 0,4 kPa | | Zum Vergleich | Das ist nur 48,0-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
    },
    {
+    "einstellung": "Masse: 60 kg = 10 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 10 kg · 9,81 N/kg = 98,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 98,1 N / 0,2400 m² | p = 0,4 kPa | | Zum Vergleich | Das ist nur 48,0-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,163.67 | stroke| | beginPath| | moveTo|290.00,169.67 | lineTo|284.00,158.67 | lineTo|296.00,158.67 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 98 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.67 | lineTo|335.00,231.67 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.67 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,29.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 0,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 10 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 10 kg · 9,81 N/kg = 98,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 98,1 N / 0,2400 m² | p = 0,4 kPa | | Zum Vergleich | Das ist nur 48,0-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,163.47 | stroke| | beginPath| | moveTo|290.00,169.47 | lineTo|284.00,158.47 | lineTo|296.00,158.47 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 98 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.47 | lineTo|335.00,231.47 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.47 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,29.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 0,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 10 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 10 kg · 9,81 N/kg = 98,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 98,1 N / 0,2400 m² | p = 0,4 kPa | | Zum Vergleich | Das ist nur 48,0-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,163.37 | stroke| | beginPath| | moveTo|290.00,169.37 | lineTo|284.00,158.37 | lineTo|296.00,158.37 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 98 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.37 | lineTo|335.00,231.37 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.37 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,29.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 0,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 10 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 10 kg · 9,81 N/kg = 98,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 98,1 N / 0,2400 m² | p = 0,4 kPa | | Zum Vergleich | Das ist nur 48,0-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,163.31 | stroke| | beginPath| | moveTo|290.00,169.31 | lineTo|284.00,158.31 | lineTo|296.00,158.31 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 98 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.31 | lineTo|335.00,231.31 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.31 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,29.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 0,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 630",
     "text": "druStatus: Die Kraft | F = m · g = 630 kg · 9,81 N/kg = 6180,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 6180,3 N / 0,2400 m² | p = 25,8 kPa | | Zum Vergleich | Das ist 1,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 630 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 630 kg · 9,81 N/kg = 6180,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 6180,3 N / 0,2400 m² | p = 25,8 kPa | | Zum Vergleich | Das ist 1,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,169.60 | stroke| | beginPath| | moveTo|290.00,175.60 | lineTo|284.00,164.60 | lineTo|296.00,164.60 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 6180 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,237.60 | lineTo|335.00,237.60 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|253.60 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,115.72,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 25,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 630 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 630 kg · 9,81 N/kg = 6180,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 6180,3 N / 0,2400 m² | p = 25,8 kPa | | Zum Vergleich | Das ist 1,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,170.72 | stroke| | beginPath| | moveTo|290.00,176.72 | lineTo|284.00,165.72 | lineTo|296.00,165.72 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 6180 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,238.72 | lineTo|335.00,238.72 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|254.72 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,115.72,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 25,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 630 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 630 kg · 9,81 N/kg = 6180,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 6180,3 N / 0,2400 m² | p = 25,8 kPa | | Zum Vergleich | Das ist 1,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,171.31 | stroke| | beginPath| | moveTo|290.00,177.31 | lineTo|284.00,166.31 | lineTo|296.00,166.31 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 6180 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,239.31 | lineTo|335.00,239.31 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|255.31 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,115.72,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 25,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 630 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 630 kg · 9,81 N/kg = 6180,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 6180,3 N / 0,2400 m² | p = 25,8 kPa | | Zum Vergleich | Das ist 1,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,162.98 | stroke| | beginPath| | moveTo|290.00,168.98 | lineTo|284.00,157.98 | lineTo|296.00,157.98 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 6180 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,230.98 | lineTo|335.00,230.98 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|246.98 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,115.72,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 25,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 1260",
     "text": "druStatus: Die Kraft | F = m · g = 1260 kg · 9,81 N/kg = 12360,6 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12360,6 N / 0,2400 m² | p = 51,5 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
    },
    {
+    "einstellung": "Masse: 60 kg = 1260 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1260 kg · 9,81 N/kg = 12360,6 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12360,6 N / 0,2400 m² | p = 51,5 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,172.50 | stroke| | beginPath| | moveTo|290.00,178.50 | lineTo|284.00,167.50 | lineTo|296.00,167.50 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12361 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,240.50 | lineTo|335.00,240.50 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|256.50 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.17,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,5 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1260 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1260 kg · 9,81 N/kg = 12360,6 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12360,6 N / 0,2400 m² | p = 51,5 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,174.21 | stroke| | beginPath| | moveTo|290.00,180.21 | lineTo|284.00,169.21 | lineTo|296.00,169.21 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12361 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,242.21 | lineTo|335.00,242.21 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|258.21 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.17,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,5 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1260 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1260 kg · 9,81 N/kg = 12360,6 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12360,6 N / 0,2400 m² | p = 51,5 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,175.11 | stroke| | beginPath| | moveTo|290.00,181.11 | lineTo|284.00,170.11 | lineTo|296.00,170.11 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12361 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,243.11 | lineTo|335.00,243.11 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|259.11 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.17,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,5 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1260 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1260 kg · 9,81 N/kg = 12360,6 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12360,6 N / 0,2400 m² | p = 51,5 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,175.58 | stroke| | beginPath| | moveTo|290.00,181.58 | lineTo|284.00,170.58 | lineTo|296.00,170.58 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12361 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,243.58 | lineTo|335.00,243.58 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|259.58 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.17,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,5 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 1880",
     "text": "druStatus: Die Kraft | F = m · g = 1880 kg · 9,81 N/kg = 18442,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 18442,8 N / 0,2400 m² | p = 76,8 kPa | | Zum Vergleich | Das ist 3,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1880 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1880 kg · 9,81 N/kg = 18442,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 18442,8 N / 0,2400 m² | p = 76,8 kPa | | Zum Vergleich | Das ist 3,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,178.21 | stroke| | beginPath| | moveTo|290.00,184.21 | lineTo|284.00,173.21 | lineTo|296.00,173.21 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 18443 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,246.21 | lineTo|335.00,246.21 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|262.21 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,138.51,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 76,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1880 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1880 kg · 9,81 N/kg = 18442,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 18442,8 N / 0,2400 m² | p = 76,8 kPa | | Zum Vergleich | Das ist 3,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,178.69 | stroke| | beginPath| | moveTo|290.00,184.69 | lineTo|284.00,173.69 | lineTo|296.00,173.69 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 18443 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,246.69 | lineTo|335.00,246.69 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|262.69 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,138.51,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 76,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1880 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1880 kg · 9,81 N/kg = 18442,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 18442,8 N / 0,2400 m² | p = 76,8 kPa | | Zum Vergleich | Das ist 3,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,178.94 | stroke| | beginPath| | moveTo|290.00,184.94 | lineTo|284.00,173.94 | lineTo|296.00,173.94 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 18443 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,246.94 | lineTo|335.00,246.94 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|262.94 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,138.51,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 76,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1880 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1880 kg · 9,81 N/kg = 18442,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 18442,8 N / 0,2400 m² | p = 76,8 kPa | | Zum Vergleich | Das ist 3,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,163.70 | stroke| | beginPath| | moveTo|290.00,169.70 | lineTo|284.00,158.70 | lineTo|296.00,158.70 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 18443 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.70 | lineTo|335.00,231.70 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.70 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,138.51,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 76,8 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 2510",
     "text": "druStatus: Die Kraft | F = m · g = 2510 kg · 9,81 N/kg = 24623,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24623,1 N / 0,2400 m² | p = 102,6 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
    },
    {
+    "einstellung": "Masse: 60 kg = 2510 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 2510 kg · 9,81 N/kg = 24623,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24623,1 N / 0,2400 m² | p = 102,6 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,176.91 | stroke| | beginPath| | moveTo|290.00,182.91 | lineTo|284.00,171.91 | lineTo|296.00,171.91 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 24623 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,244.91 | lineTo|335.00,244.91 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|260.91 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,144.53,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 102,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2510 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 2510 kg · 9,81 N/kg = 24623,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24623,1 N / 0,2400 m² | p = 102,6 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,179.28 | stroke| | beginPath| | moveTo|290.00,185.28 | lineTo|284.00,174.28 | lineTo|296.00,174.28 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 24623 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,247.28 | lineTo|335.00,247.28 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|263.28 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,144.53,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 102,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2510 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 2510 kg · 9,81 N/kg = 24623,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24623,1 N / 0,2400 m² | p = 102,6 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,180.52 | stroke| | beginPath| | moveTo|290.00,186.52 | lineTo|284.00,175.52 | lineTo|296.00,175.52 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 24623 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,248.52 | lineTo|335.00,248.52 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|264.52 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,144.53,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 102,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 2510 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 2510 kg · 9,81 N/kg = 24623,1 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24623,1 N / 0,2400 m² | p = 102,6 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,181.17 | stroke| | beginPath| | moveTo|290.00,187.17 | lineTo|284.00,176.17 | lineTo|296.00,176.17 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 24623 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,249.17 | lineTo|335.00,249.17 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|265.17 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,144.53,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 102,6 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 3130",
     "text": "druStatus: Die Kraft | F = m · g = 3130 kg · 9,81 N/kg = 30705,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 30705,3 N / 0,2400 m² | p = 127,9 kPa | | Zum Vergleich | Das ist 6,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3130 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3130 kg · 9,81 N/kg = 30705,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 30705,3 N / 0,2400 m² | p = 127,9 kPa | | Zum Vergleich | Das ist 6,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,183.37 | stroke| | beginPath| | moveTo|290.00,189.37 | lineTo|284.00,178.37 | lineTo|296.00,178.37 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 30705 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,251.37 | lineTo|335.00,251.37 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|267.37 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,149.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 127,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3130 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3130 kg · 9,81 N/kg = 30705,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 30705,3 N / 0,2400 m² | p = 127,9 kPa | | Zum Vergleich | Das ist 6,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,183.77 | stroke| | beginPath| | moveTo|290.00,189.77 | lineTo|284.00,178.77 | lineTo|296.00,178.77 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 30705 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,251.77 | lineTo|335.00,251.77 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|267.77 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,149.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 127,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3130 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3130 kg · 9,81 N/kg = 30705,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 30705,3 N / 0,2400 m² | p = 127,9 kPa | | Zum Vergleich | Das ist 6,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,183.98 | stroke| | beginPath| | moveTo|290.00,189.98 | lineTo|284.00,178.98 | lineTo|296.00,178.98 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 30705 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,251.98 | lineTo|335.00,251.98 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|267.98 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,149.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 127,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3130 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3130 kg · 9,81 N/kg = 30705,3 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 30705,3 N / 0,2400 m² | p = 127,9 kPa | | Zum Vergleich | Das ist 6,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,164.19 | stroke| | beginPath| | moveTo|290.00,170.19 | lineTo|284.00,159.19 | lineTo|296.00,159.19 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 30705 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.19 | lineTo|335.00,232.19 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|248.19 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,149.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 127,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 3750",
     "text": "druStatus: Die Kraft | F = m · g = 3750 kg · 9,81 N/kg = 36787,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 36787,5 N / 0,2400 m² | p = 153,3 kPa | | Zum Vergleich | Das ist 7,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
    },
    {
+    "einstellung": "Masse: 60 kg = 3750 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3750 kg · 9,81 N/kg = 36787,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 36787,5 N / 0,2400 m² | p = 153,3 kPa | | Zum Vergleich | Das ist 7,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,180.26 | stroke| | beginPath| | moveTo|290.00,186.26 | lineTo|284.00,175.26 | lineTo|296.00,175.26 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 36788 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,248.26 | lineTo|335.00,248.26 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|264.26 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,152.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 153,3 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3750 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3750 kg · 9,81 N/kg = 36787,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 36787,5 N / 0,2400 m² | p = 153,3 kPa | | Zum Vergleich | Das ist 7,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,183.14 | stroke| | beginPath| | moveTo|290.00,189.14 | lineTo|284.00,178.14 | lineTo|296.00,178.14 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 36788 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,251.14 | lineTo|335.00,251.14 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|267.14 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,152.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 153,3 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3750 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3750 kg · 9,81 N/kg = 36787,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 36787,5 N / 0,2400 m² | p = 153,3 kPa | | Zum Vergleich | Das ist 7,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,184.65 | stroke| | beginPath| | moveTo|290.00,190.65 | lineTo|284.00,179.65 | lineTo|296.00,179.65 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 36788 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,252.65 | lineTo|335.00,252.65 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|268.65 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,152.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 153,3 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 3750 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 3750 kg · 9,81 N/kg = 36787,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 36787,5 N / 0,2400 m² | p = 153,3 kPa | | Zum Vergleich | Das ist 7,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,185.44 | stroke| | beginPath| | moveTo|290.00,191.44 | lineTo|284.00,180.44 | lineTo|296.00,180.44 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 36788 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,253.44 | lineTo|335.00,253.44 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|269.44 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,152.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 153,3 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 4380",
     "text": "druStatus: Die Kraft | F = m · g = 4380 kg · 9,81 N/kg = 42967,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 42967,8 N / 0,2400 m² | p = 179,0 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4380 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 4380 kg · 9,81 N/kg = 42967,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 42967,8 N / 0,2400 m² | p = 179,0 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,187.49 | stroke| | beginPath| | moveTo|290.00,193.49 | lineTo|284.00,182.49 | lineTo|296.00,182.49 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 42968 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,255.49 | lineTo|335.00,255.49 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|271.49 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,156.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 179,0 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4380 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 4380 kg · 9,81 N/kg = 42967,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 42967,8 N / 0,2400 m² | p = 179,0 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,187.86 | stroke| | beginPath| | moveTo|290.00,193.86 | lineTo|284.00,182.86 | lineTo|296.00,182.86 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 42968 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,255.86 | lineTo|335.00,255.86 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|271.86 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,156.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 179,0 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4380 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 4380 kg · 9,81 N/kg = 42967,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 42967,8 N / 0,2400 m² | p = 179,0 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,188.05 | stroke| | beginPath| | moveTo|290.00,194.05 | lineTo|284.00,183.05 | lineTo|296.00,183.05 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 42968 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,256.05 | lineTo|335.00,256.05 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|272.05 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,156.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 179,0 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 4380 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 4380 kg · 9,81 N/kg = 42967,8 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 42967,8 N / 0,2400 m² | p = 179,0 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,164.59 | stroke| | beginPath| | moveTo|290.00,170.59 | lineTo|284.00,159.59 | lineTo|296.00,159.59 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 42968 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,232.59 | lineTo|335.00,232.59 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|248.59 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,156.14,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 179,0 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 5000",
     "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
    },
    {
+    "einstellung": "Masse: 60 kg = 5000 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,183.10 | stroke| | beginPath| | moveTo|290.00,189.10 | lineTo|284.00,178.10 | lineTo|296.00,178.10 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,251.10 | lineTo|335.00,251.10 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|267.10 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 5000 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,186.42 | stroke| | beginPath| | moveTo|290.00,192.42 | lineTo|284.00,181.42 | lineTo|296.00,181.42 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,254.42 | lineTo|335.00,254.42 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|270.42 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 5000 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,188.16 | stroke| | beginPath| | moveTo|290.00,194.16 | lineTo|284.00,183.16 | lineTo|296.00,183.16 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,256.16 | lineTo|335.00,256.16 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|272.16 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 5000 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 5000 kg · 9,81 N/kg = 49050,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 49050,0 N / 0,2400 m² | p = 204,4 kPa | | Zum Vergleich | Das ist 10,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,189.07 | stroke| | beginPath| | moveTo|290.00,195.07 | lineTo|284.00,184.07 | lineTo|296.00,184.07 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 49050 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,257.07 | lineTo|335.00,257.07 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|273.07 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,158.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 204,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 250",
     "text": "druStatus: Die Kraft | F = m · g = 250 kg · 9,81 N/kg = 2452,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 2452,5 N / 0,2400 m² | p = 10,2 kPa | | Zum Vergleich | Das ist nur 1,9-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 250 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 250 kg · 9,81 N/kg = 2452,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 2452,5 N / 0,2400 m² | p = 10,2 kPa | | Zum Vergleich | Das ist nur 1,9-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,173.96 | stroke| | beginPath| | moveTo|290.00,179.96 | lineTo|284.00,168.96 | lineTo|296.00,168.96 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 2453 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,241.96 | lineTo|335.00,241.96 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|257.96 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,96.45,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 10,2 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 250 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 250 kg · 9,81 N/kg = 2452,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 2452,5 N / 0,2400 m² | p = 10,2 kPa | | Zum Vergleich | Das ist nur 1,9-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,171.25 | stroke| | beginPath| | moveTo|290.00,177.25 | lineTo|284.00,166.25 | lineTo|296.00,166.25 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 2453 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,239.25 | lineTo|335.00,239.25 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|255.25 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,96.45,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 10,2 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 250 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 250 kg · 9,81 N/kg = 2452,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 2452,5 N / 0,2400 m² | p = 10,2 kPa | | Zum Vergleich | Das ist nur 1,9-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,169.83 | stroke| | beginPath| | moveTo|290.00,175.83 | lineTo|284.00,164.83 | lineTo|296.00,164.83 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 2453 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,237.83 | lineTo|335.00,237.83 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|253.83 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,96.45,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 10,2 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 250 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 250 kg · 9,81 N/kg = 2452,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 2452,5 N / 0,2400 m² | p = 10,2 kPa | | Zum Vergleich | Das ist nur 1,9-mal weniger als dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,162.62 | stroke| | beginPath| | moveTo|290.00,168.62 | lineTo|284.00,157.62 | lineTo|296.00,157.62 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 2453 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,230.62 | lineTo|335.00,230.62 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|246.62 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,96.45,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 10,2 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 500",
     "text": "druStatus: Die Kraft | F = m · g = 500 kg · 9,81 N/kg = 4905,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 4905,0 N / 0,2400 m² | p = 20,4 kPa | | Zum Vergleich | Das ist 1,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
    },
    {
+    "einstellung": "Masse: 60 kg = 500 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 500 kg · 9,81 N/kg = 4905,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 4905,0 N / 0,2400 m² | p = 20,4 kPa | | Zum Vergleich | Das ist 1,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,168.62 | stroke| | beginPath| | moveTo|290.00,174.62 | lineTo|284.00,163.62 | lineTo|296.00,163.62 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 4905 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,236.62 | lineTo|335.00,236.62 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|252.62 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 20,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 500 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 500 kg · 9,81 N/kg = 4905,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 4905,0 N / 0,2400 m² | p = 20,4 kPa | | Zum Vergleich | Das ist 1,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,169.69 | stroke| | beginPath| | moveTo|290.00,175.69 | lineTo|284.00,164.69 | lineTo|296.00,164.69 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 4905 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,237.69 | lineTo|335.00,237.69 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|253.69 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 20,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 500 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 500 kg · 9,81 N/kg = 4905,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 4905,0 N / 0,2400 m² | p = 20,4 kPa | | Zum Vergleich | Das ist 1,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,170.26 | stroke| | beginPath| | moveTo|290.00,176.26 | lineTo|284.00,165.26 | lineTo|296.00,165.26 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 4905 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,238.26 | lineTo|335.00,238.26 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|254.26 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 20,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 500 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 500 kg · 9,81 N/kg = 4905,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 4905,0 N / 0,2400 m² | p = 20,4 kPa | | Zum Vergleich | Das ist 1,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,170.55 | stroke| | beginPath| | moveTo|290.00,176.55 | lineTo|284.00,165.55 | lineTo|296.00,165.55 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 4905 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,238.55 | lineTo|335.00,238.55 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|254.55 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,110.90,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 20,4 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 750",
     "text": "druStatus: Die Kraft | F = m · g = 750 kg · 9,81 N/kg = 7357,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 7357,5 N / 0,2400 m² | p = 30,7 kPa | | Zum Vergleich | Das ist 1,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt."
+   },
+   {
+    "einstellung": "Masse: 60 kg = 750 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 750 kg · 9,81 N/kg = 7357,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 7357,5 N / 0,2400 m² | p = 30,7 kPa | | Zum Vergleich | Das ist 1,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,172.24 | stroke| | beginPath| | moveTo|290.00,178.24 | lineTo|284.00,167.24 | lineTo|296.00,167.24 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 7358 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,240.24 | lineTo|335.00,240.24 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|256.24 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,119.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 30,7 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 750 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 750 kg · 9,81 N/kg = 7357,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 7357,5 N / 0,2400 m² | p = 30,7 kPa | | Zum Vergleich | Das ist 1,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,172.54 | stroke| | beginPath| | moveTo|290.00,178.54 | lineTo|284.00,167.54 | lineTo|296.00,167.54 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 7358 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,240.54 | lineTo|335.00,240.54 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|256.54 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,119.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 30,7 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 750 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 750 kg · 9,81 N/kg = 7357,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 7357,5 N / 0,2400 m² | p = 30,7 kPa | | Zum Vergleich | Das ist 1,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,172.70 | stroke| | beginPath| | moveTo|290.00,178.70 | lineTo|284.00,167.70 | lineTo|296.00,167.70 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 7358 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,240.70 | lineTo|335.00,240.70 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|256.70 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,119.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 30,7 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 750 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 750 kg · 9,81 N/kg = 7357,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 7357,5 N / 0,2400 m² | p = 30,7 kPa | | Zum Vergleich | Das ist 1,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Genau dafür sind Skier da: Dieselbe Person, dieselbe Kraft – aber verteilt auf so viel Fläche, dass der Schnee sie trägt.",
+    "bild": "lineTo|290.00,163.07 | stroke| | beginPath| | moveTo|290.00,169.07 | lineTo|284.00,158.07 | lineTo|296.00,158.07 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 7358 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.07 | lineTo|335.00,231.07 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.07 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,119.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 30,7 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
     "einstellung": "Masse: 60 kg = 1000",
     "text": "druStatus: Die Kraft | F = m · g = 1000 kg · 9,81 N/kg = 9810,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 9810,0 N / 0,2400 m² | p = 40,9 kPa | | Zum Vergleich | Das ist 2,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
    },
    {
+    "einstellung": "Masse: 60 kg = 1000 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1000 kg · 9,81 N/kg = 9810,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 9810,0 N / 0,2400 m² | p = 40,9 kPa | | Zum Vergleich | Das ist 2,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,171.41 | stroke| | beginPath| | moveTo|290.00,177.41 | lineTo|284.00,166.41 | lineTo|296.00,166.41 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 9810 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,239.41 | lineTo|335.00,239.41 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|255.41 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,125.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 40,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1000 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1000 kg · 9,81 N/kg = 9810,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 9810,0 N / 0,2400 m² | p = 40,9 kPa | | Zum Vergleich | Das ist 2,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,172.91 | stroke| | beginPath| | moveTo|290.00,178.91 | lineTo|284.00,167.91 | lineTo|296.00,167.91 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 9810 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,240.91 | lineTo|335.00,240.91 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|256.91 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,125.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 40,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1000 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1000 kg · 9,81 N/kg = 9810,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 9810,0 N / 0,2400 m² | p = 40,9 kPa | | Zum Vergleich | Das ist 2,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,173.69 | stroke| | beginPath| | moveTo|290.00,179.69 | lineTo|284.00,168.69 | lineTo|296.00,168.69 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 9810 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,241.69 | lineTo|335.00,241.69 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|257.69 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,125.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 40,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
+    "einstellung": "Masse: 60 kg = 1000 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1000 kg · 9,81 N/kg = 9810,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 9810,0 N / 0,2400 m² | p = 40,9 kPa | | Zum Vergleich | Das ist 2,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,174.10 | stroke| | beginPath| | moveTo|290.00,180.10 | lineTo|284.00,169.10 | lineTo|296.00,169.10 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 9810 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,242.10 | lineTo|335.00,242.10 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|258.10 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#16a34a | fillRect|24.00,24.00,125.35,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 40,9 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
+   },
+   {
     "einstellung": "Masse: 60 kg = 1250",
     "text": "druStatus: Die Kraft | F = m · g = 1250 kg · 9,81 N/kg = 12262,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12262,5 N / 0,2400 m² | p = 51,1 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
    },
    {
-    "einstellung": "Masse: 60 kg = 1500",
-    "text": "druStatus: Die Kraft | F = m · g = 1500 kg · 9,81 N/kg = 14715,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 14715,0 N / 0,2400 m² | p = 61,3 kPa | | Zum Vergleich | Das ist 3,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+    "einstellung": "Masse: 60 kg = 1250 · nach 50 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1250 kg · 9,81 N/kg = 12262,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12262,5 N / 0,2400 m² | p = 51,1 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,175.50 | stroke| | beginPath| | moveTo|290.00,181.50 | lineTo|284.00,170.50 | lineTo|296.00,170.50 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12263 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,243.50 | lineTo|335.00,243.50 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|259.50 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.00,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
-    "einstellung": "Masse: 60 kg = 1750",
-    "text": "druStatus: Die Kraft | F = m · g = 1750 kg · 9,81 N/kg = 17167,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 17167,5 N / 0,2400 m² | p = 71,5 kPa | | Zum Vergleich | Das ist 3,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+    "einstellung": "Masse: 60 kg = 1250 · nach 75 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1250 kg · 9,81 N/kg = 12262,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12262,5 N / 0,2400 m² | p = 51,1 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,175.76 | stroke| | beginPath| | moveTo|290.00,181.76 | lineTo|284.00,170.76 | lineTo|296.00,170.76 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12263 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,243.76 | lineTo|335.00,243.76 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|259.76 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.00,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
-    "einstellung": "Masse: 60 kg = 2000",
-    "text": "druStatus: Die Kraft | F = m · g = 2000 kg · 9,81 N/kg = 19620,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 19620,0 N / 0,2400 m² | p = 81,8 kPa | | Zum Vergleich | Das ist 4,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+    "einstellung": "Masse: 60 kg = 1250 · nach 100 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1250 kg · 9,81 N/kg = 12262,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12262,5 N / 0,2400 m² | p = 51,1 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,175.89 | stroke| | beginPath| | moveTo|290.00,181.89 | lineTo|284.00,170.89 | lineTo|296.00,170.89 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12263 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,243.89 | lineTo|335.00,243.89 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|259.89 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.00,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    },
    {
-    "einstellung": "Masse: 60 kg = 2250",
-    "text": "druStatus: Die Kraft | F = m · g = 2250 kg · 9,81 N/kg = 22072,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 22072,5 N / 0,2400 m² | p = 92,0 kPa | | Zum Vergleich | Das ist 4,7-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 2500",
-    "text": "druStatus: Die Kraft | F = m · g = 2500 kg · 9,81 N/kg = 24525,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 24525,0 N / 0,2400 m² | p = 102,2 kPa | | Zum Vergleich | Das ist 5,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 2750",
-    "text": "druStatus: Die Kraft | F = m · g = 2750 kg · 9,81 N/kg = 26977,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 26977,5 N / 0,2400 m² | p = 112,4 kPa | | Zum Vergleich | Das ist 5,7-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 3000",
-    "text": "druStatus: Die Kraft | F = m · g = 3000 kg · 9,81 N/kg = 29430,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 29430,0 N / 0,2400 m² | p = 122,6 kPa | | Zum Vergleich | Das ist 6,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 3250",
-    "text": "druStatus: Die Kraft | F = m · g = 3250 kg · 9,81 N/kg = 31882,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 31882,5 N / 0,2400 m² | p = 132,8 kPa | | Zum Vergleich | Das ist 6,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 3500",
-    "text": "druStatus: Die Kraft | F = m · g = 3500 kg · 9,81 N/kg = 34335,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 34335,0 N / 0,2400 m² | p = 143,1 kPa | | Zum Vergleich | Das ist 7,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 4000",
-    "text": "druStatus: Die Kraft | F = m · g = 4000 kg · 9,81 N/kg = 39240,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 39240,0 N / 0,2400 m² | p = 163,5 kPa | | Zum Vergleich | Das ist 8,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 4250",
-    "text": "druStatus: Die Kraft | F = m · g = 4250 kg · 9,81 N/kg = 41692,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 41692,5 N / 0,2400 m² | p = 173,7 kPa | | Zum Vergleich | Das ist 8,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 4500",
-    "text": "druStatus: Die Kraft | F = m · g = 4500 kg · 9,81 N/kg = 44145,0 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 44145,0 N / 0,2400 m² | p = 183,9 kPa | | Zum Vergleich | Das ist 9,4-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Masse: 60 kg = 4750",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 46597,5 N / 0,2400 m² | p = 194,2 kPa | | Zum Vergleich | Das ist 9,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1 cm² = 0,0001 m² | p = F / A = 46597,5 N / 0,0001 m² | p = 465,98 MPa = 465975,0 kPa | | Zum Vergleich | Das ist 23750-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 376",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 376 cm² = 0,0376 m² | p = F / A = 46597,5 N / 0,0376 m² | p = 1,24 MPa = 1239,3 kPa | | Zum Vergleich | Das ist 63-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 751",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 751 cm² = 0,0751 m² | p = F / A = 46597,5 N / 0,0751 m² | p = 620,5 kPa | | Zum Vergleich | Das ist 32-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1126",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1126 cm² = 0,1126 m² | p = F / A = 46597,5 N / 0,1126 m² | p = 413,8 kPa | | Zum Vergleich | Das ist 21-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1501",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1501 cm² = 0,1501 m² | p = F / A = 46597,5 N / 0,1501 m² | p = 310,4 kPa | | Zum Vergleich | Das ist 15,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1875",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1875 cm² = 0,1875 m² | p = F / A = 46597,5 N / 0,1875 m² | p = 248,5 kPa | | Zum Vergleich | Das ist 12,7-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2250",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2250 cm² = 0,2250 m² | p = F / A = 46597,5 N / 0,2250 m² | p = 207,1 kPa | | Zum Vergleich | Das ist 10,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2625",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2625 cm² = 0,2625 m² | p = F / A = 46597,5 N / 0,2625 m² | p = 177,5 kPa | | Zum Vergleich | Das ist 9,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 3000",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 3000 cm² = 0,3000 m² | p = F / A = 46597,5 N / 0,3000 m² | p = 155,3 kPa | | Zum Vergleich | Das ist 7,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 100",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 100 cm² = 0,0100 m² | p = F / A = 46597,5 N / 0,0100 m² | p = 4,66 MPa = 4659,8 kPa | | Zum Vergleich | Das ist 238-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 200",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 200 cm² = 0,0200 m² | p = F / A = 46597,5 N / 0,0200 m² | p = 2,33 MPa = 2329,9 kPa | | Zum Vergleich | Das ist 119-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 300",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 300 cm² = 0,0300 m² | p = F / A = 46597,5 N / 0,0300 m² | p = 1,55 MPa = 1553,2 kPa | | Zum Vergleich | Das ist 79-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 400",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 400 cm² = 0,0400 m² | p = F / A = 46597,5 N / 0,0400 m² | p = 1,16 MPa = 1164,9 kPa | | Zum Vergleich | Das ist 59-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 500",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 500 cm² = 0,0500 m² | p = F / A = 46597,5 N / 0,0500 m² | p = 932,0 kPa | | Zum Vergleich | Das ist 48-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 600",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 600 cm² = 0,0600 m² | p = F / A = 46597,5 N / 0,0600 m² | p = 776,6 kPa | | Zum Vergleich | Das ist 40-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 700",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 700 cm² = 0,0700 m² | p = F / A = 46597,5 N / 0,0700 m² | p = 665,7 kPa | | Zum Vergleich | Das ist 34-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 800",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 800 cm² = 0,0800 m² | p = F / A = 46597,5 N / 0,0800 m² | p = 582,5 kPa | | Zum Vergleich | Das ist 30-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 900",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 900 cm² = 0,0900 m² | p = F / A = 46597,5 N / 0,0900 m² | p = 517,7 kPa | | Zum Vergleich | Das ist 26-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1000",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1000 cm² = 0,1000 m² | p = F / A = 46597,5 N / 0,1000 m² | p = 466,0 kPa | | Zum Vergleich | Das ist 24-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1100",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1100 cm² = 0,1100 m² | p = F / A = 46597,5 N / 0,1100 m² | p = 423,6 kPa | | Zum Vergleich | Das ist 22-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1200",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1200 cm² = 0,1200 m² | p = F / A = 46597,5 N / 0,1200 m² | p = 388,3 kPa | | Zum Vergleich | Das ist 19,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1300",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1300 cm² = 0,1300 m² | p = F / A = 46597,5 N / 0,1300 m² | p = 358,4 kPa | | Zum Vergleich | Das ist 18,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1400",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1400 cm² = 0,1400 m² | p = F / A = 46597,5 N / 0,1400 m² | p = 332,8 kPa | | Zum Vergleich | Das ist 17,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1500",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1500 cm² = 0,1500 m² | p = F / A = 46597,5 N / 0,1500 m² | p = 310,6 kPa | | Zum Vergleich | Das ist 15,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1600",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1600 cm² = 0,1600 m² | p = F / A = 46597,5 N / 0,1600 m² | p = 291,2 kPa | | Zum Vergleich | Das ist 14,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1700",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1700 cm² = 0,1700 m² | p = F / A = 46597,5 N / 0,1700 m² | p = 274,1 kPa | | Zum Vergleich | Das ist 14,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1800",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1800 cm² = 0,1800 m² | p = F / A = 46597,5 N / 0,1800 m² | p = 258,9 kPa | | Zum Vergleich | Das ist 13,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1900",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1900 cm² = 0,1900 m² | p = F / A = 46597,5 N / 0,1900 m² | p = 245,3 kPa | | Zum Vergleich | Das ist 12,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2000",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2000 cm² = 0,2000 m² | p = F / A = 46597,5 N / 0,2000 m² | p = 233,0 kPa | | Zum Vergleich | Das ist 11,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2100",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2100 cm² = 0,2100 m² | p = F / A = 46597,5 N / 0,2100 m² | p = 221,9 kPa | | Zum Vergleich | Das ist 11,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2200",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2200 cm² = 0,2200 m² | p = F / A = 46597,5 N / 0,2200 m² | p = 211,8 kPa | | Zum Vergleich | Das ist 10,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2300",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2300 cm² = 0,2300 m² | p = F / A = 46597,5 N / 0,2300 m² | p = 202,6 kPa | | Zum Vergleich | Das ist 10,3-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2400",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 46597,5 N / 0,2400 m² | p = 194,2 kPa | | Zum Vergleich | Das ist 9,9-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2500",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2500 cm² = 0,2500 m² | p = F / A = 46597,5 N / 0,2500 m² | p = 186,4 kPa | | Zum Vergleich | Das ist 9,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2600",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2600 cm² = 0,2600 m² | p = F / A = 46597,5 N / 0,2600 m² | p = 179,2 kPa | | Zum Vergleich | Das ist 9,1-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2700",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2700 cm² = 0,2700 m² | p = F / A = 46597,5 N / 0,2700 m² | p = 172,6 kPa | | Zum Vergleich | Das ist 8,8-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2800",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2800 cm² = 0,2800 m² | p = F / A = 46597,5 N / 0,2800 m² | p = 166,4 kPa | | Zum Vergleich | Das ist 8,5-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2900",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2900 cm² = 0,2900 m² | p = F / A = 46597,5 N / 0,2900 m² | p = 160,7 kPa | | Zum Vergleich | Das ist 8,2-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 250",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 250 cm² = 0,0250 m² | p = F / A = 46597,5 N / 0,0250 m² | p = 1,86 MPa = 1863,9 kPa | | Zum Vergleich | Das ist 95-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 750",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 750 cm² = 0,0750 m² | p = F / A = 46597,5 N / 0,0750 m² | p = 621,3 kPa | | Zum Vergleich | Das ist 32-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1250",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1250 cm² = 0,1250 m² | p = F / A = 46597,5 N / 0,1250 m² | p = 372,8 kPa | | Zum Vergleich | Das ist 19,0-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 1750",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 1750 cm² = 0,1750 m² | p = F / A = 46597,5 N / 0,1750 m² | p = 266,3 kPa | | Zum Vergleich | Das ist 13,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
-   },
-   {
-    "einstellung": "Auflagefläche: 300 cm² = 2750",
-    "text": "druStatus: Die Kraft | F = m · g = 4750 kg · 9,81 N/kg = 46597,5 N | | Der Druck | A = 2750 cm² = 0,2750 m² | p = F / A = 46597,5 N / 0,2750 m² | p = 169,4 kPa | | Zum Vergleich | Das ist 8,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß."
+    "einstellung": "Masse: 60 kg = 1250 · nach 125 Frames",
+    "text": "druStatus: Die Kraft | F = m · g = 1250 kg · 9,81 N/kg = 12262,5 N | | Der Druck | A = 2400 cm² = 0,2400 m² | p = F / A = 12262,5 N / 0,2400 m² | p = 51,1 kPa | | Zum Vergleich | Das ist 2,6-mal so viel wie dieselbe Person auf Turnschuhen (19,6 kPa). | | Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.",
+    "bild": "lineTo|290.00,163.38 | stroke| | beginPath| | moveTo|290.00,169.38 | lineTo|284.00,158.38 | lineTo|296.00,158.38 | closePath| | set:fillStyle=#dc2626 | fill| | set:font=bold 11px system-ui | set:textAlign=left | fillText|F = 12263 N|300.00|100.00 | set:strokeStyle=#2563eb | set:lineWidth=2 | beginPath| | moveTo|105.00,231.38 | lineTo|335.00,231.38 | stroke| | set:fillStyle=#1d4ed8 | set:font=bold 11px system-ui | set:textAlign=center | fillText|A = 2400 cm²|220.00|247.38 | set:fillStyle=#e2e8f0 | fillRect|24.00,24.00,240.00,18.00 | set:fillStyle=#f59e0b | fillRect|24.00,24.00,130.00,18.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|24.00,24.00,240.00,18.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=left | fillText|Druck: 51,1 kPa|24.00|58.00 | set:fillStyle=#64748b | set:font=9px system-ui | fillText|(Balken logarithmisch)|150.00|58.00 | set:fillStyle=#0f172a | set:font=bold 12px system-ui | set:textAlign=center | fillText|p = F / A|220.00|322.00"
    }
   ],
   "bildtexte": [
@@ -388,114 +524,7 @@
    "F = 9810 N",
    "Druck: 40,9 kPa",
    "F = 12263 N",
-   "Druck: 51,1 kPa",
-   "F = 14715 N",
-   "Druck: 61,3 kPa",
-   "F = 17168 N",
-   "Druck: 71,5 kPa",
-   "F = 19620 N",
-   "Druck: 81,8 kPa",
-   "F = 22073 N",
-   "Druck: 92,0 kPa",
-   "F = 24525 N",
-   "Druck: 102,2 kPa",
-   "F = 26978 N",
-   "Druck: 112,4 kPa",
-   "F = 29430 N",
-   "Druck: 122,6 kPa",
-   "F = 31883 N",
-   "Druck: 132,8 kPa",
-   "F = 34335 N",
-   "Druck: 143,1 kPa",
-   "F = 39240 N",
-   "Druck: 163,5 kPa",
-   "F = 41693 N",
-   "Druck: 173,7 kPa",
-   "F = 44145 N",
-   "Druck: 183,9 kPa",
-   "F = 46598 N",
-   "Druck: 194,2 kPa",
-   "Druck: 465,98 MPa",
-   "A = 376 cm²",
-   "Druck: 1,24 MPa",
-   "A = 751 cm²",
-   "Druck: 620,5 kPa",
-   "A = 1126 cm²",
-   "Druck: 413,8 kPa",
-   "A = 1501 cm²",
-   "Druck: 310,4 kPa",
-   "A = 1875 cm²",
-   "Druck: 248,5 kPa",
-   "A = 2250 cm²",
-   "Druck: 207,1 kPa",
-   "A = 2625 cm²",
-   "Druck: 177,5 kPa",
-   "A = 3000 cm²",
-   "Druck: 155,3 kPa",
-   "A = 100 cm²",
-   "Druck: 4,66 MPa",
-   "A = 200 cm²",
-   "Druck: 2,33 MPa",
-   "Druck: 1,55 MPa",
-   "A = 400 cm²",
-   "Druck: 1,16 MPa",
-   "A = 500 cm²",
-   "Druck: 932,0 kPa",
-   "A = 600 cm²",
-   "Druck: 776,6 kPa",
-   "A = 700 cm²",
-   "Druck: 665,7 kPa",
-   "A = 800 cm²",
-   "Druck: 582,5 kPa",
-   "A = 900 cm²",
-   "Druck: 517,7 kPa",
-   "A = 1000 cm²",
-   "Druck: 466,0 kPa",
-   "A = 1100 cm²",
-   "Druck: 423,6 kPa",
-   "A = 1200 cm²",
-   "Druck: 388,3 kPa",
-   "A = 1300 cm²",
-   "Druck: 358,4 kPa",
-   "A = 1400 cm²",
-   "Druck: 332,8 kPa",
-   "A = 1500 cm²",
-   "Druck: 310,6 kPa",
-   "A = 1600 cm²",
-   "Druck: 291,2 kPa",
-   "A = 1700 cm²",
-   "Druck: 274,1 kPa",
-   "A = 1800 cm²",
-   "Druck: 258,9 kPa",
-   "A = 1900 cm²",
-   "Druck: 245,3 kPa",
-   "A = 2000 cm²",
-   "Druck: 233,0 kPa",
-   "A = 2100 cm²",
-   "Druck: 221,9 kPa",
-   "A = 2200 cm²",
-   "Druck: 211,8 kPa",
-   "A = 2300 cm²",
-   "Druck: 202,6 kPa",
-   "A = 2500 cm²",
-   "Druck: 186,4 kPa",
-   "A = 2600 cm²",
-   "Druck: 179,2 kPa",
-   "A = 2700 cm²",
-   "Druck: 172,6 kPa",
-   "Druck: 166,4 kPa",
-   "A = 2900 cm²",
-   "Druck: 160,7 kPa",
-   "A = 250 cm²",
-   "Druck: 1,86 MPa",
-   "A = 750 cm²",
-   "Druck: 621,3 kPa",
-   "A = 1250 cm²",
-   "Druck: 372,8 kPa",
-   "A = 1750 cm²",
-   "Druck: 266,3 kPa",
-   "A = 2750 cm²",
-   "Druck: 169,4 kPa"
+   "Druck: 51,1 kPa"
   ]
  }
 ]

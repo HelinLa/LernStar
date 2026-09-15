@@ -2,7 +2,48 @@
  {
   "sim": "arbeit",
   "ueberschrift": "💪 Wann leistet man wirklich Arbeit?",
-  "regler": [],
+  "regler": [
+   {
+    "id": "arbF",
+    "beschriftung": "Schiebekraft F: 100",
+    "bereich": {
+     "min": "20",
+     "max": "200",
+     "step": "10",
+     "start": "100"
+    }
+   },
+   {
+    "id": "arbS",
+    "beschriftung": "Weg s: 4",
+    "bereich": {
+     "min": "1",
+     "max": "10",
+     "step": "1",
+     "start": "4"
+    }
+   },
+   {
+    "id": "arbM",
+    "beschriftung": "Masse der Kiste m: 20",
+    "bereich": {
+     "min": "5",
+     "max": "50",
+     "step": "5",
+     "start": "20"
+    }
+   },
+   {
+    "id": "arbH",
+    "beschriftung": "Höhe h: 2,0",
+    "bereich": {
+     "min": "0.5",
+     "max": "5",
+     "step": "0.5",
+     "start": "2"
+    }
+   }
+  ],
   "knoepfe": [
    {
     "aufschrift": "Schieben",
@@ -126,6 +167,342 @@
     "einstellung": "▶ Ausführen · nach 125 Frames",
     "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J | ✓ ausgeführt",
     "bild": "beginPath| | moveTo|256.00,106.00 | lineTo|259.50,114.29 | lineTo|252.50,114.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,122.00 | stroke| | beginPath| | moveTo|158.00,122.00 | lineTo|161.50,130.29 | lineTo|154.50,130.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|98.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 20",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 20 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 20 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 20 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 20 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 40",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 40 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 40 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 40 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 40 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 70",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 70 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 70 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 70 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 70 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 90",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 90 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 90 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 90 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 90 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 110",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 110 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 110 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 110 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 110 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 130",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 130 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 130 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 130 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 130 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 160",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 160 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 160 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 160 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 160 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 180",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 180 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 180 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 180 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 180 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 200",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 200 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 200 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 200 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 200 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 30",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 30 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 30 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 30 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 30 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 50",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 50 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 50 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 50 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 50 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 60",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 60 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 60 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 60 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 60 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 80",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 80 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 80 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 80 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 80 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 100",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 100 · nach 50 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 100 · nach 75 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 100 · nach 100 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
+   },
+   {
+    "einstellung": "Schiebekraft F: 100 = 100 · nach 125 Frames",
+    "text": "arbRegler: Masse der Kiste m: 20 Höhe h: 2,0  ||  arbStatus: Du hebst 20 kg um 2,0 m hoch. | Hubarbeit W = 20 kg · 9,81 N/kg · 2,0 m = 392 J",
+    "bild": "beginPath| | moveTo|256.00,154.00 | lineTo|259.50,162.29 | lineTo|252.50,162.29 | closePath| | fill| | set:strokeStyle=#2563eb | set:fillStyle=#2563eb | set:lineWidth=3 | beginPath| | moveTo|158.00,180.00 | lineTo|158.00,170.00 | stroke| | beginPath| | moveTo|158.00,170.00 | lineTo|161.50,178.29 | lineTo|154.50,178.29 | closePath| | fill| | set:font=700 11px sans-serif | set:textAlign=center | set:fillStyle=#dc2626 | fillText|Kraft F|256.00|146.00 | set:fillStyle=#2563eb | fillText|Weg s|158.00|172.00 | set:textAlign=left | set:font=700 12px sans-serif | set:fillStyle=#0f172a | fillText|Kiste hochheben|14.00|24.00 | set:fillStyle=rgba(15,23,42,0.10) | fillRect|14.00,40.00,412.00,16.00 | set:fillStyle=#16a34a | fillRect|14.00,40.00,80.83,16.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | fillText|verrichtete Arbeit: 392 J|20.00|52.00 | set:textAlign=center | set:font=700 11px sans-serif | set:fillStyle=#166534 | fillText|Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet|220.00|240.00"
    }
   ],
   "bildtexte": [

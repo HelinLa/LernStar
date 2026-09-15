@@ -101,320 +101,432 @@
     "text": ""
    },
    {
+    "einstellung": "🧵 Feldlinien · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|419.34,283.25 | stroke| | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🧵 Feldlinien · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|419.34,283.25 | stroke| | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🧵 Feldlinien · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|419.34,283.25 | stroke| | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🧵 Feldlinien · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|419.34,283.25 | stroke| | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "🧭 Kompass-Raster",
     "text": ""
+   },
+   {
+    "einstellung": "🧭 Kompass-Raster · nach 50 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🧭 Kompass-Raster · nach 75 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🧭 Kompass-Raster · nach 100 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🧭 Kompass-Raster · nach 125 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "Mit Feldlinien",
     "text": "mffFb0: ✓ Richtig! Feldlinien zeigen Richtung und Stärke des Feldes."
    },
    {
+    "einstellung": "Mit Feldlinien · nach 50 Frames",
+    "text": "mffFb0: ✓ Richtig! Feldlinien zeigen Richtung und Stärke des Feldes.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Feldlinien · nach 75 Frames",
+    "text": "mffFb0: ✓ Richtig! Feldlinien zeigen Richtung und Stärke des Feldes.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Feldlinien · nach 100 Frames",
+    "text": "mffFb0: ✓ Richtig! Feldlinien zeigen Richtung und Stärke des Feldes.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Feldlinien · nach 125 Frames",
+    "text": "mffFb0: ✓ Richtig! Feldlinien zeigen Richtung und Stärke des Feldes.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "Mit Zahlen",
     "text": "mffFb0: ✗ Zahlen allein zeigen die Form des Feldes nicht."
+   },
+   {
+    "einstellung": "Mit Zahlen · nach 50 Frames",
+    "text": "mffFb0: ✗ Zahlen allein zeigen die Form des Feldes nicht.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Zahlen · nach 75 Frames",
+    "text": "mffFb0: ✗ Zahlen allein zeigen die Form des Feldes nicht.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Zahlen · nach 100 Frames",
+    "text": "mffFb0: ✗ Zahlen allein zeigen die Form des Feldes nicht.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Zahlen · nach 125 Frames",
+    "text": "mffFb0: ✗ Zahlen allein zeigen die Form des Feldes nicht.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "Mit Farben allein",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen."
    },
    {
+    "einstellung": "Mit Farben allein · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Farben allein · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Farben allein · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Mit Farben allein · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "Von Süd zu Nord",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Andersherum: außen von Nord nach Süd."
+   },
+   {
+    "einstellung": "Von Süd zu Nord · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Andersherum: außen von Nord nach Süd.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Von Süd zu Nord · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Andersherum: außen von Nord nach Süd.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Von Süd zu Nord · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Andersherum: außen von Nord nach Süd.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Von Süd zu Nord · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Andersherum: außen von Nord nach Süd.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "Von Nord zu Süd",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✓ Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol."
    },
    {
+    "einstellung": "Von Nord zu Süd · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✓ Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Von Nord zu Süd · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✓ Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Von Nord zu Süd · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✓ Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Von Nord zu Süd · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✓ Richtig! Außerhalb zeigen die Linien vom Nordpol zum Südpol.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "Im Kreis um die Mitte",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis."
+   },
+   {
+    "einstellung": "Im Kreis um die Mitte · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Im Kreis um die Mitte · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Im Kreis um die Mitte · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Im Kreis um die Mitte · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "Weit weg vom Magneten",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Weit weg wird das Feld schwächer."
    },
    {
+    "einstellung": "Weit weg vom Magneten · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Weit weg wird das Feld schwächer.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Weit weg vom Magneten · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Weit weg wird das Feld schwächer.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Weit weg vom Magneten · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Weit weg wird das Feld schwächer.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Weit weg vom Magneten · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Weit weg wird das Feld schwächer.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "Nah an den Polen",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✓ Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten."
+   },
+   {
+    "einstellung": "Nah an den Polen · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✓ Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Nah an den Polen · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✓ Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Nah an den Polen · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✓ Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Nah an den Polen · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✓ Richtig! Nah an den Polen sind die Linien dicht – dort ist das Feld am stärksten.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "Überall gleich",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
    },
    {
+    "einstellung": "Überall gleich · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Überall gleich · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Überall gleich · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "Überall gleich · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "😟 unsicher",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "😐 geht so",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Übe noch ein bisschen."
    },
    {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Übe noch ein bisschen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Übe noch ein bisschen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Übe noch ein bisschen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.  ||  mffSelfOut: Übe noch ein bisschen.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "😃 sicher",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
    },
    {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
    },
    {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|292.77,211.06,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|292.77,211.06 | lineTo|290.20,198.32 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|292.77,211.06 | lineTo|295.35,223.81 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|292.77,211.06,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|292.77|243.06"
+   },
+   {
     "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 0",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 0 · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|315.00,150.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|315.00,150.00 | lineTo|302.00,150.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|315.00,150.00 | lineTo|328.00,150.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|315.00,150.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|315.00|182.00"
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 0 · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|315.00,150.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|315.00,150.00 | lineTo|302.00,150.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|315.00,150.00 | lineTo|328.00,150.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|315.00,150.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|315.00|182.00"
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 0 · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|315.00,150.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|315.00,150.00 | lineTo|302.00,150.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|315.00,150.00 | lineTo|328.00,150.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|315.00,150.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|315.00|182.00"
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 0 · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|315.00,150.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|315.00,150.00 | lineTo|302.00,150.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|315.00,150.00 | lineTo|328.00,150.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|315.00,150.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|315.00|182.00"
    },
    {
     "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 45",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
    },
    {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 45 · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|287.18,217.18,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|287.18,217.18 | lineTo|286.61,204.19 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|287.18,217.18 | lineTo|287.75,230.16 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|287.18,217.18,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|287.18|249.18"
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 45 · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|287.18,217.18,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|287.18,217.18 | lineTo|286.61,204.19 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|287.18,217.18 | lineTo|287.75,230.16 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|287.18,217.18,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|287.18|249.18"
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 45 · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|287.18,217.18,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|287.18,217.18 | lineTo|286.61,204.19 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|287.18,217.18 | lineTo|287.75,230.16 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|287.18,217.18,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|287.18|249.18"
+   },
+   {
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 45 · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|287.18,217.18,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|287.18,217.18 | lineTo|286.61,204.19 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|287.18,217.18 | lineTo|287.75,230.16 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|287.18,217.18,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|287.18|249.18"
+   },
+   {
     "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 90",
     "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
    },
    {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 135",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 90 · nach 50 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|220.00,245.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|220.00,245.00 | lineTo|233.00,245.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|220.00,245.00 | lineTo|207.00,245.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|220.00,245.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|220.00|277.00"
    },
    {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 180",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 90 · nach 75 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|220.00,245.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|220.00,245.00 | lineTo|233.00,245.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|220.00,245.00 | lineTo|207.00,245.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|220.00,245.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|220.00|277.00"
    },
    {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 225",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 90 · nach 100 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|220.00,245.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|220.00,245.00 | lineTo|233.00,245.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|220.00,245.00 | lineTo|207.00,245.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|220.00,245.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|220.00|277.00"
    },
    {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 270",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 315",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 360",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 10",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 20",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 30",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 40",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 50",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 60",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 70",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 80",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 100",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 110",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 120",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 130",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 140",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 150",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 160",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 170",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 190",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 200",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 210",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 220",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 230",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 240",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 250",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 260",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 280",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 290",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 300",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 310",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 320",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 330",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 340",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 350",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 25",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 75",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 125",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 175",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 275",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 325",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 55",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 65",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 75",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 85",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 100",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 110",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 120",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 130",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 140",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 60",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 70",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 80",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 90",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 95",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 105",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 115",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 125",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
-   },
-   {
-    "einstellung": "Abstand des Prüfkompasses vom Magneten: 95 = 135",
-    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark."
+    "einstellung": "s bewegen Stelle am Magneten (0° = am Ende, 90° = über der Mitte): 40° = 90 · nach 125 Frames",
+    "text": "mffFb0: ✗ Man braucht Linien, die die Richtung zeigen.  ||  mffFb1: ✗ Beim Stabmagneten laufen sie von Pol zu Pol, nicht im Kreis.  ||  mffFb2: ✗ Das Feld ist nicht überall gleich stark.",
+    "bild": "set:fillStyle=#f8fafc | fillRect|0.00,0.00,440.00,300.00 | set:fillStyle=#dc2626 | fillRect|174.00,135.00,46.00,30.00 | set:fillStyle=#2563eb | fillRect|220.00,135.00,46.00,30.00 | set:fillStyle=#fff | set:font=700 15px sans-serif | set:textAlign=center | set:textBaseline=middle | fillText|N|197.00|150.00 | fillText|S|243.00|150.00 | set:textBaseline=alphabetic | set:strokeStyle=#f59e0b | set:lineWidth=2 | set:fillStyle=#fffbeb | beginPath| | arc|220.00,245.00,18.00,0.00,6.28 | fill| | stroke| | set:lineWidth=4 | set:lineCap=round | set:strokeStyle=#dc2626 | beginPath| | moveTo|220.00,245.00 | lineTo|233.00,245.00 | stroke| | set:strokeStyle=#2563eb | beginPath| | moveTo|220.00,245.00 | lineTo|207.00,245.00 | stroke| | set:fillStyle=#1e293b | beginPath| | arc|220.00,245.00,3.00,0.00,6.28 | fill| | set:fillStyle=#92400e | set:font=700 10px sans-serif | set:textAlign=center | fillText|Prüfkompass|220.00|277.00"
    }
   ],
   "bildtexte": [

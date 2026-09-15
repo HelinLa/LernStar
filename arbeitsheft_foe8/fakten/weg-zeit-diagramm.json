@@ -92,72 +92,432 @@
     "text": "stdStatus: Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg."
    },
    {
+    "einstellung": "langsam · nach 50 Frames",
+    "text": "stdStatus: Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.",
+    "bild": "lineTo|220.67,115.42 | lineTo|224.00,114.58 | lineTo|227.33,113.74 | lineTo|230.67,112.89 | lineTo|234.00,112.05 | lineTo|237.33,111.21 | lineTo|240.67,110.37 | lineTo|244.00,109.53 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|langsam|420.00|22.00"
+   },
+   {
+    "einstellung": "langsam · nach 75 Frames",
+    "text": "stdStatus: Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.",
+    "bild": "lineTo|220.67,115.42 | lineTo|224.00,114.58 | lineTo|227.33,113.74 | lineTo|230.67,112.89 | lineTo|234.00,112.05 | lineTo|237.33,111.21 | lineTo|240.67,110.37 | lineTo|244.00,109.53 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|langsam|420.00|22.00"
+   },
+   {
+    "einstellung": "langsam · nach 100 Frames",
+    "text": "stdStatus: Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.",
+    "bild": "lineTo|220.67,115.42 | lineTo|224.00,114.58 | lineTo|227.33,113.74 | lineTo|230.67,112.89 | lineTo|234.00,112.05 | lineTo|237.33,111.21 | lineTo|240.67,110.37 | lineTo|244.00,109.53 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|langsam|420.00|22.00"
+   },
+   {
+    "einstellung": "langsam · nach 125 Frames",
+    "text": "stdStatus: Langsame Fahrt: flache Gerade – in gleicher Zeit wenig Weg.",
+    "bild": "lineTo|220.67,115.42 | lineTo|224.00,114.58 | lineTo|227.33,113.74 | lineTo|230.67,112.89 | lineTo|234.00,112.05 | lineTo|237.33,111.21 | lineTo|240.67,110.37 | lineTo|244.00,109.53 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|langsam|420.00|22.00"
+   },
+   {
     "einstellung": "schnell",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg."
+   },
+   {
+    "einstellung": "schnell · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "schnell · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "schnell · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "schnell · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "mit Pause",
     "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder."
    },
    {
+    "einstellung": "mit Pause · nach 50 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|220.67,90.60 | lineTo|224.00,88.50 | lineTo|227.33,86.40 | lineTo|230.67,84.29 | lineTo|234.00,82.19 | lineTo|237.33,80.09 | lineTo|240.67,77.99 | lineTo|244.00,75.88 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
+    "einstellung": "mit Pause · nach 75 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|220.67,90.60 | lineTo|224.00,88.50 | lineTo|227.33,86.40 | lineTo|230.67,84.29 | lineTo|234.00,82.19 | lineTo|237.33,80.09 | lineTo|240.67,77.99 | lineTo|244.00,75.88 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
+    "einstellung": "mit Pause · nach 100 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|220.67,90.60 | lineTo|224.00,88.50 | lineTo|227.33,86.40 | lineTo|230.67,84.29 | lineTo|234.00,82.19 | lineTo|237.33,80.09 | lineTo|240.67,77.99 | lineTo|244.00,75.88 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
+    "einstellung": "mit Pause · nach 125 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|220.67,90.60 | lineTo|224.00,88.50 | lineTo|227.33,86.40 | lineTo|230.67,84.29 | lineTo|234.00,82.19 | lineTo|237.33,80.09 | lineTo|240.67,77.99 | lineTo|244.00,75.88 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
     "einstellung": "▶ Fahren",
     "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder."
+   },
+   {
+    "einstellung": "▶ Fahren · nach 50 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|244.00,75.88 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|47.33,157.90 | lineTo|50.67,155.79 | lineTo|54.00,153.69 | lineTo|57.33,151.59 | lineTo|60.67,149.49 | lineTo|64.00,147.38 | lineTo|67.33,145.28 | lineTo|70.67,143.18 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|70.67,143.18,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|75.07,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|82.07,201.00,4.00,0.00,6.28 | arc|98.07,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
+    "einstellung": "▶ Fahren · nach 75 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "beginPath| | moveTo|44.00,160.00 | lineTo|47.33,157.90 | lineTo|50.67,155.79 | lineTo|54.00,153.69 | lineTo|57.33,151.59 | lineTo|60.67,149.49 | lineTo|64.00,147.38 | lineTo|67.33,145.28 | lineTo|70.67,143.18 | lineTo|74.00,141.07 | lineTo|77.33,138.97 | lineTo|80.67,136.87 | lineTo|84.00,134.76 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|84.00,134.76,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|98.11,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|105.11,201.00,4.00,0.00,6.28 | arc|121.11,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
+    "einstellung": "▶ Fahren · nach 100 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|54.00,153.69 | lineTo|57.33,151.59 | lineTo|60.67,149.49 | lineTo|64.00,147.38 | lineTo|67.33,145.28 | lineTo|70.67,143.18 | lineTo|74.00,141.07 | lineTo|77.33,138.97 | lineTo|80.67,136.87 | lineTo|84.00,134.76 | lineTo|87.33,132.66 | lineTo|90.67,130.56 | lineTo|94.00,128.46 | lineTo|97.33,126.35 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|97.33,126.35,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|121.14,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|128.14,201.00,4.00,0.00,6.28 | arc|144.14,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
+   },
+   {
+    "einstellung": "▶ Fahren · nach 125 Frames",
+    "text": "stdStatus: Mit Pause: erst steigt die Linie, dann waagerecht (Stillstand), dann steigt sie wieder.",
+    "bild": "lineTo|67.33,145.28 | lineTo|70.67,143.18 | lineTo|74.00,141.07 | lineTo|77.33,138.97 | lineTo|80.67,136.87 | lineTo|84.00,134.76 | lineTo|87.33,132.66 | lineTo|90.67,130.56 | lineTo|94.00,128.46 | lineTo|97.33,126.35 | lineTo|100.67,124.25 | lineTo|104.00,122.15 | lineTo|107.33,120.04 | lineTo|110.67,117.94 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|110.67,117.94,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|144.18,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|151.18,201.00,4.00,0.00,6.28 | arc|167.18,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|mit Pause|420.00|22.00"
    },
    {
     "einstellung": "↺ Zurücksetzen",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg."
    },
    {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "Langsame Fahrt",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Flach wäre langsam."
+   },
+   {
+    "einstellung": "Langsame Fahrt · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Flach wäre langsam.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Langsame Fahrt · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Flach wäre langsam.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Langsame Fahrt · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Flach wäre langsam.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Langsame Fahrt · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Flach wäre langsam.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "Schnelle Fahrt",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✓ Richtig! Steil = in gleicher Zeit viel Weg = schnell."
    },
    {
+    "einstellung": "Schnelle Fahrt · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✓ Richtig! Steil = in gleicher Zeit viel Weg = schnell.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Schnelle Fahrt · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✓ Richtig! Steil = in gleicher Zeit viel Weg = schnell.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Schnelle Fahrt · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✓ Richtig! Steil = in gleicher Zeit viel Weg = schnell.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Schnelle Fahrt · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✓ Richtig! Steil = in gleicher Zeit viel Weg = schnell.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "Stillstand",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht."
+   },
+   {
+    "einstellung": "Stillstand · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "Sehr schnell",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Waagerecht bedeutet kein Weg pro Zeit."
    },
    {
+    "einstellung": "Sehr schnell · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Waagerecht bedeutet kein Weg pro Zeit.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Sehr schnell · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Waagerecht bedeutet kein Weg pro Zeit.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Sehr schnell · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Waagerecht bedeutet kein Weg pro Zeit.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Sehr schnell · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Waagerecht bedeutet kein Weg pro Zeit.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "Der Körper steht still",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✓ Richtig! Der Weg ändert sich nicht – Stillstand."
+   },
+   {
+    "einstellung": "Der Körper steht still · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✓ Richtig! Der Weg ändert sich nicht – Stillstand.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Der Körper steht still · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✓ Richtig! Der Weg ändert sich nicht – Stillstand.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Der Körper steht still · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✓ Richtig! Der Weg ändert sich nicht – Stillstand.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Der Körper steht still · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✓ Richtig! Der Weg ändert sich nicht – Stillstand.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "Er fährt rückwärts",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen."
    },
    {
+    "einstellung": "Er fährt rückwärts · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Er fährt rückwärts · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Er fährt rückwärts · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Er fährt rückwärts · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "Eine Gerade",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✓ Richtig! Konstante Geschwindigkeit → Gerade."
+   },
+   {
+    "einstellung": "Eine Gerade · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✓ Richtig! Konstante Geschwindigkeit → Gerade.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Gerade · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✓ Richtig! Konstante Geschwindigkeit → Gerade.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Gerade · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✓ Richtig! Konstante Geschwindigkeit → Gerade.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Gerade · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✓ Richtig! Konstante Geschwindigkeit → Gerade.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "Eine Kurve",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Eine Kurve wäre beschleunigt."
    },
    {
+    "einstellung": "Eine Kurve · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Eine Kurve wäre beschleunigt.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Kurve · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Eine Kurve wäre beschleunigt.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Kurve · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Eine Kurve wäre beschleunigt.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Kurve · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Eine Kurve wäre beschleunigt.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "Eine Zickzacklinie",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht."
+   },
+   {
+    "einstellung": "Eine Zickzacklinie · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Zickzacklinie · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Zickzacklinie · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "Eine Zickzacklinie · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "😐 geht so",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.  ||  stdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    },
    {
     "einstellung": "😃 sicher",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht."
    },
    {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "stdStatus: Schnelle Fahrt: steile Gerade – in gleicher Zeit viel Weg.  ||  stdFb0: ✗ Stillstand wäre waagerecht.  ||  stdFb1: ✗ Rückwärts würde die Linie fallen.  ||  stdFb2: ✗ Zickzack passt hier nicht.",
+    "bild": "lineTo|220.67,48.54 | lineTo|224.00,46.44 | lineTo|227.33,44.34 | lineTo|230.67,42.24 | lineTo|234.00,40.13 | lineTo|237.33,38.03 | lineTo|240.67,35.93 | lineTo|244.00,33.82 | stroke| | set:strokeStyle=#38bdf8 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Fahrbahn|44.00|178.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=right | fillText|schnell|420.00|22.00"
    }
   ],
   "bildtexte": [

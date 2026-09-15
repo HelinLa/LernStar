@@ -59,6 +59,7 @@ SCHLUSSZEILE=("in einfacher Sprache – orientiert an den Themen des "
 
 def _load(n): return json.load(open(os.path.join(HERE,"content",n),encoding="utf-8"))
 SEITEN=bp.SEITEN
+HEFTSEITE={}                    # Kennung -> Seite im Schuelerband
 LOES=bp.LOES
 TESTS={o["theme"]:o for o in _load("foerdertests.json")}
 
@@ -856,6 +857,7 @@ if __name__=="__main__":
             lbl=cfg.get("titel") or cfg["name"]
             chap["subs"].append((lbl,pn)); chap["topics"].append((lbl,pn))
             qrpages[pn]=tid
+            HEFTSEITE[tid]=pn                    # welche Seite traegt die Einheit
             _a=bp.seite_a(cfg,pn,nr+1); body+=_a; pn+=len(_a)
             qrpages[pn]=tid                      # der Code steht auf Seite A UND B
             _b=bp.seite_b(cfg,pn,nr+1); body+=_b; pn+=len(_b)
@@ -875,6 +877,13 @@ if __name__=="__main__":
     # vorigen Laufs stehen lassen, sonst misst simcheck/seitenzahlen.py Geisterseiten.
     for _alt in glob.glob(os.path.join(bd,"book_p*.png")): os.remove(_alt)
     for i,p in enumerate(pages): p.save(os.path.join(bd,f"book_p{i+1}.png"))
+    # WELCHE SEITE TRAEGT WELCHE EINHEIT? Der Satz weiss es genau. Aufgeschrieben,
+    # weil simcheck/seitenzahlen.py nur Seiten mit QR-Code messen kann - die
+    # Datenblattseiten drucken keinen, und fuer sie trug die Bruecke bis zum
+    # 15.09.2026 eine GESCHAETZTE Zahl. export_bruecke.py fuellt damit die
+    # Luecken; die gemessenen Zahlen behalten den Vorrang.
+    json.dump(HEFTSEITE, open(os.path.join(bd,"seiten_gebaut.json"),"w",encoding="utf-8"),
+              ensure_ascii=False, indent=1, sort_keys=True)
     seitentexte=[SEITENTEXTE.get(id(p),[]) for p in pages]
     fehlend=[i+1 for i,s in enumerate(seitentexte) if not s]
     if fehlend: print("ohne Textprotokoll:",fehlend)
@@ -893,7 +902,15 @@ if __name__=="__main__":
         print(f"   {_a:22s} {_art[_a]:4d}")
 
     # ── Satzspiegel-Probe: wie tief laeuft jede Seite wirklich? ──
-    ueber=[p for p in bp.PROBE if p[2]>fd.UNTEN+0.5]
+    # Die Schwelle ist 1,5 Einheiten, nicht 0,5. Gemessen wird mit
+    # `_unterkante()` die TIEFSTE TINTE im Seitenbild, nicht die gerechnete
+    # Bausteinhoehe - eine Unterlaenge oder eine Zierlinie liegt ein Pixel
+    # tiefer als der Block, der sie traegt. Bei 150 dpi ist eine Einheit
+    # genau ein Pixel (0,48 pt). Mit 0,5 meldete `arbeitsheft_foe9` seit
+    # dem Umbau dauerhaft EINE Seite ("Lehrerteil fe8 1/4 endet 1675, +1"),
+    # und eine Warnung, die man jedes Mal wegliest, ist keine mehr. Die
+    # Probe ist fuer die echten Faelle gebaut: 1833 bis 2817 statt 1674.
+    ueber=[p for p in bp.PROBE if p[2]>fd.UNTEN+1.5]
     print(f"\nSatzspiegel-Probe: {len(bp.PROBE)} Seiten gemessen, Grenze {fd.UNTEN:.0f} "
           f"Einheiten ({fd.punkt(fd.UNTEN):.0f} pt)")
     if ueber:

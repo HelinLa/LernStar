@@ -50,212 +50,432 @@
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°."
    },
    {
+    "einstellung": "↺ Spiegel zurückstellen · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|192.40,117.48,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|301.01,-11.97,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|83.78,89.08,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "↺ Spiegel zurückstellen · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|247.14,52.24,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|355.75,-77.21,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|138.52,154.32,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "↺ Spiegel zurückstellen · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|301.88,-13.00,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|84.65,90.12,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|193.26,116.44,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "↺ Spiegel zurückstellen · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|356.62,-78.24,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|139.39,155.36,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|248.01,51.20,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "↓ Strahl auf das Lot",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°."
+   },
+   {
+    "einstellung": "↓ Strahl auf das Lot · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,134.80,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,61.86,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-77.47,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "↓ Strahl auf das Lot · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,130.97,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-8.36,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,65.69,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "↓ Strahl auf das Lot · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,60.75,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-78.59,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,135.92,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "↓ Strahl auf das Lot · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-9.48,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,66.81,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,129.86,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 0",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 0 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,67.92,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,128.74,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-10.59,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 0 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,138.15,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,58.52,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-80.81,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 0 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,127.63,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-11.71,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,69.04,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 0 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 0°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|150.00,-132.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.00,57.40,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,-81.93,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.00,139.26,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.57,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.57 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|0°|150.00|120.00 | set:fillStyle=#fde047 | fillText|0°|150.00|112.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 10",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 10°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 10 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 10°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|202.09,-127.44 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|193.59,-79.23,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|145.20,140.80,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|169.40,57.99,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.75,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.40 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|10°|145.47|120.20 | set:fillStyle=#fde047 | fillText|10°|155.23|112.23 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 10 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 10°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|202.09,-127.44 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|133.20,72.74,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|157.40,126.05,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|181.59,-11.17,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.75,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.40 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|10°|145.47|120.20 | set:fillStyle=#fde047 | fillText|10°|155.23|112.23 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 10 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 10°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|202.09,-127.44 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|145.40,141.89,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|169.59,56.89,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|193.79,-80.33,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.75,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.40 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|10°|145.47|120.20 | set:fillStyle=#fde047 | fillText|10°|155.23|112.23 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 10 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 10°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|202.09,-127.44 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|157.59,124.95,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|181.79,-12.27,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|133.40,73.84,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.75,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.40 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|10°|145.47|120.20 | set:fillStyle=#fde047 | fillText|10°|155.23|112.23 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 20",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 20°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 20 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 20°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|252.61,-113.91 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|212.99,-5.06,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|117.68,79.20,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|165.33,125.87,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.92,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.22 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|20°|140.97|120.79 | set:fillStyle=#fde047 | fillText|20°|160.42|112.91 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 20 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 20°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|252.61,-113.91 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|237.01,-71.05,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|141.70,145.19,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|189.35,59.88,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.92,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.22 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|20°|140.97|120.79 | set:fillStyle=#fde047 | fillText|20°|160.42|112.91 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 20 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 20°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|252.61,-113.91 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|118.06,80.24,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|165.71,124.83,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|213.37,-6.10,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.92,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.22 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|20°|140.97|120.79 | set:fillStyle=#fde047 | fillText|20°|160.42|112.91 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 20 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 20°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|252.61,-113.91 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|142.08,146.23,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|189.73,58.84,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|237.39,-72.09,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.92,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.22 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|20°|140.97|120.79 | set:fillStyle=#fde047 | fillText|20°|160.42|112.91 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 30",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 30°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 30 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 30°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|300.00,-91.81 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|208.64,66.43,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|278.31,-54.24,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|138.98,148.90,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.09,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.05 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|30°|136.54|121.77 | set:fillStyle=#fde047 | fillText|30°|165.53|114.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 30 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 30°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|300.00,-91.81 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|243.75,5.61,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|104.42,89.05,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|174.09,126.28,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.09,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.05 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|30°|136.54|121.77 | set:fillStyle=#fde047 | fillText|30°|165.53|114.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 30 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 30°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|300.00,-91.81 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|278.87,-55.20,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|139.53,149.87,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|209.20,65.46,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.09,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.05 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|30°|136.54|121.77 | set:fillStyle=#fde047 | fillText|30°|165.53|114.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 30 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 30°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|300.00,-91.81 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|104.98,90.02,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|174.64,125.31,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|244.31,4.65,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.09,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.05 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|30°|136.54|121.77 | set:fillStyle=#fde047 | fillText|30°|165.53|114.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 40",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 40 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|205.43,101.94,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|314.05,-27.50,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|96.81,104.61,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 40 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|260.17,36.70,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|368.79,-92.74,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|151.56,166.15,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 40 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|314.91,-28.54,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|97.68,105.65,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|206.30,100.91,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 40 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 40°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-129.94 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|369.66,-93.78,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|152.42,165.11,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|261.04,35.67,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.27,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.87 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|40°|132.21|123.14 | set:fillStyle=#fde047 | fillText|40°|170.52|115.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 50",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 50 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-41.77 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|142.28,161.52,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|255.75,79.27,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|369.21,-15.94,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.44,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.70 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|50°|128.02|124.87 | set:fillStyle=#fde047 | fillText|50°|175.36|117.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 50 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-41.77 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|199.47,126.49,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|312.93,31.28,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|86.00,114.30,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.44,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.70 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|50°|128.02|124.87 | set:fillStyle=#fde047 | fillText|50°|175.36|117.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 50 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-41.77 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|256.65,78.51,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|370.12,-16.70,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|143.19,162.29,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.44,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.70 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|50°|128.02|124.87 | set:fillStyle=#fde047 | fillText|50°|175.36|117.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 50 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-41.77 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|313.84,30.52,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|86.91,115.06,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|200.38,125.73,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.44,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.70 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|50°|128.02|124.87 | set:fillStyle=#fde047 | fillText|50°|175.36|117.62 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 60",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 60 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,23.66,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|77.00,125.85,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|194.40,142.37,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|311.79,74.59,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.62,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.52 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|60°|124.00|126.97 | set:fillStyle=#fde047 | fillText|60°|180.00|120.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 60 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,23.66,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|136.17,160.01,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|253.56,108.21,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|370.96,40.43,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.62,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.52 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|60°|124.00|126.97 | set:fillStyle=#fde047 | fillText|60°|180.00|120.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 60 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,23.66,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|195.33,141.83,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|312.73,74.05,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|77.94,126.39,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.62,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.52 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|60°|124.00|126.97 | set:fillStyle=#fde047 | fillText|60°|180.00|120.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 60 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,23.66,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|254.50,107.67,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|371.90,39.89,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|137.11,160.56,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.62,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.52 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|60°|124.00|126.97 | set:fillStyle=#fde047 | fillText|60°|180.00|120.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 70",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 70 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,77.01,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|372.17,87.14,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|131.58,161.30,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|251.87,130.92,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.79,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.35 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|70°|120.17|129.40 | set:fillStyle=#fde047 | fillText|70°|184.41|122.85 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 70 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,77.01,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|71.91,139.58,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|192.21,152.64,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|312.50,108.85,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.79,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.35 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|70°|120.17|129.40 | set:fillStyle=#fde047 | fillText|70°|184.41|122.85 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 70 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,77.01,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|132.54,161.65,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|252.84,130.57,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|373.13,86.79,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.79,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.35 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|70°|120.17|129.40 | set:fillStyle=#fde047 | fillText|70°|184.41|122.85 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 70 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,77.01,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|193.17,152.29,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|313.46,108.50,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|72.88,139.93,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.79,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.35 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|70°|120.17|129.40 | set:fillStyle=#fde047 | fillText|70°|184.41|122.85 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 80",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 80 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,123.92,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|313.16,139.23,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|69.03,153.72,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|191.10,160.75,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.97,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.17 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|80°|116.58|132.17 | set:fillStyle=#fde047 | fillText|80°|188.57|126.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 80 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,123.92,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|374.69,128.38,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|130.55,164.57,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|252.62,149.91,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.97,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.17 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|80°|116.58|132.17 | set:fillStyle=#fde047 | fillText|80°|188.57|126.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 80 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,123.92,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|70.00,153.89,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|192.07,160.58,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|314.14,139.06,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.97,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.17 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|80°|116.58|132.17 | set:fillStyle=#fde047 | fillText|80°|188.57|126.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 80 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,123.92,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|131.53,164.74,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|253.60,149.73,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|375.66,128.21,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.97,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.17 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|80°|116.58|132.17 | set:fillStyle=#fde047 | fillText|80°|188.57|126.04 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 5",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 5°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 5 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 5°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|176.15,-130.86 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|161.68,34.51,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|173.82,-104.30,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|149.54,162.69,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.66,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.48 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|5°|147.73|120.05 | set:fillStyle=#fde047 | fillText|5°|152.62|112.06 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 5 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 5°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|176.15,-130.86 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|167.80,-35.45,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|143.51,93.84,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|155.66,103.35,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.66,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.48 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|5°|147.73|120.05 | set:fillStyle=#fde047 | fillText|5°|152.62|112.06 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 5 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 5°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|176.15,-130.86 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|173.92,-105.41,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|149.63,163.80,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|161.78,33.40,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.66,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.48 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|5°|147.73|120.05 | set:fillStyle=#fde047 | fillText|5°|152.62|112.06 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 5 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 5°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|176.15,-130.86 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|143.61,94.95,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|155.75,102.24,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|167.90,-36.56,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.66,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.48 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|5°|147.73|120.05 | set:fillStyle=#fde047 | fillText|5°|152.62|112.06 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 15",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 15°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 15 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 15°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|227.65,-121.78 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|167.37,103.16,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|203.44,-31.42,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|131.31,98.25,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.83,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.31 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|15°|143.21|120.44 | set:fillStyle=#fde047 | fillText|15°|157.83|112.51 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 15 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 15°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|227.65,-121.78 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|185.55,35.33,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|221.61,-99.25,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|149.49,166.08,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.83,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.31 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|15°|143.21|120.44 | set:fillStyle=#fde047 | fillText|15°|157.83|112.51 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 15 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 15°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|227.65,-121.78 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|203.72,-32.50,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|131.60,99.33,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|167.66,102.09,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.83,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.31 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|15°|143.21|120.44 | set:fillStyle=#fde047 | fillText|15°|157.83|112.51 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 15 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 15°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|227.65,-121.78 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|221.90,-100.33,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|149.77,167.16,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|185.84,34.26,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-1.83,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.31 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|15°|143.21|120.44 | set:fillStyle=#fde047 | fillText|15°|157.83|112.51 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 25",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 25°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 25 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 25°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|276.79,-103.89 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|150.10,167.78,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|208.99,41.50,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|267.87,-84.78,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.01,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.13 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|25°|138.75|121.23 | set:fillStyle=#fde047 | fillText|25°|162.99|113.42 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 25 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 25°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|276.79,-103.89 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|179.78,104.13,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|238.67,-22.14,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|120.90,105.59,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.01,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.13 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|25°|138.75|121.23 | set:fillStyle=#fde047 | fillText|25°|162.99|113.42 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 25 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 25°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|276.79,-103.89 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|209.46,40.49,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|268.34,-85.79,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|150.57,166.77,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.01,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.13 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|25°|138.75|121.23 | set:fillStyle=#fde047 | fillText|25°|162.99|113.42 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 25 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 25°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|276.79,-103.89 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|239.14,-23.15,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|121.37,106.60,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|180.25,103.12,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.01,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-1.13 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|25°|138.75|121.23 | set:fillStyle=#fde047 | fillText|25°|162.99|113.42 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 35",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 35°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 35 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 35°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|322.07,-77.75 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|111.78,113.41,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|191.70,108.45,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|271.62,-5.69,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.18,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.96 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|35°|134.36|122.41 | set:fillStyle=#fde047 | fillText|35°|168.04|114.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 35 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 35°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|322.07,-77.75 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|152.06,165.06,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|231.98,50.93,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|311.89,-63.21,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.18,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.96 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|35°|134.36|122.41 | set:fillStyle=#fde047 | fillText|35°|168.04|114.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 35 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 35°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|322.07,-77.75 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|192.34,107.54,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|272.26,-6.60,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|112.42,114.33,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.18,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.96 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|35°|134.36|122.41 | set:fillStyle=#fde047 | fillText|35°|168.04|114.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 35 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 35°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|322.07,-77.75 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|232.62,50.01,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|312.53,-64.12,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|152.70,164.15,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.18,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.96 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|35°|134.36|122.41 | set:fillStyle=#fde047 | fillText|35°|168.04|114.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 45",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 45°."
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 45 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 45°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-82.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|387.62,-69.62,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|165.33,152.67,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|276.48,41.52,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.36,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.79 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|45°|130.10|123.96 | set:fillStyle=#fde047 | fillText|45°|172.96|116.57 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 45 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 45°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-82.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|110.20,128.20,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|221.35,96.65,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|332.49,-14.49,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.36,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.79 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|45°|130.10|123.96 | set:fillStyle=#fde047 | fillText|45°|172.96|116.57 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 45 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 45°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-82.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|166.22,151.78,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|277.37,40.63,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|388.51,-70.51,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.36,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.79 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|45°|130.10|123.96 | set:fillStyle=#fde047 | fillText|45°|172.96|116.57 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 45 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 45°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-82.00 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|222.24,95.76,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|333.38,-15.38,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|111.09,129.09,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.36,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.79 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|45°|130.10|123.96 | set:fillStyle=#fde047 | fillText|45°|172.96|116.57 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 55",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°."
    },
    {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 55 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-7.05 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|331.67,40.80,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|100.56,133.38,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|216.11,121.71,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.53,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.61 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|55°|125.99|125.88 | set:fillStyle=#fde047 | fillText|55°|177.70|118.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 55 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-7.05 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|389.91,0.02,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|158.80,161.84,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|274.35,80.93,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.53,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.61 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|55°|125.99|125.88 | set:fillStyle=#fde047 | fillText|55°|177.70|118.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 55 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-7.05 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|101.48,134.03,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|217.04,121.06,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|332.59,40.15,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.53,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.61 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|55°|125.99|125.88 | set:fillStyle=#fde047 | fillText|55°|177.70|118.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 55 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°.",
+    "bild": "moveTo|150.00,168.00 | lineTo|400.00,-7.05 | stroke| | set:shadowBlur=0 | set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|159.72,161.19,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|275.28,80.28,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|390.83,-0.63,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.53,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.61 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|55°|125.99|125.88 | set:fillStyle=#fde047 | fillText|55°|177.70|118.78 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
+   },
+   {
     "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 65",
     "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°."
    },
    {
-    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 75",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 75°."
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 65 · nach 50 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,51.42,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|272.53,110.86,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|391.51,55.38,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|153.55,166.35,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.71,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.44 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|65°|122.06|128.14 | set:fillStyle=#fde047 | fillText|65°|182.24|121.40 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
-    "einstellung": "Spiegel drehen: 0° = -25",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 50°. Spiegel um 25° gedreht → Strahl um 50° geschwenkt."
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 65 · nach 75 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,51.42,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|332.49,82.90,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|94.53,142.13,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|213.51,138.38,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.71,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.44 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|65°|122.06|128.14 | set:fillStyle=#fde047 | fillText|65°|182.24|121.40 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
-    "einstellung": "Spiegel drehen: 0° = -19",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 56°. Spiegel um 19° gedreht → Strahl um 38° geschwenkt."
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 65 · nach 100 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,51.42,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|392.46,54.94,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|154.50,165.90,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|273.48,110.42,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.71,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.44 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|65°|122.06|128.14 | set:fillStyle=#fde047 | fillText|65°|182.24|121.40 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    },
    {
-    "einstellung": "Spiegel drehen: 0° = -12",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 63°. Spiegel um 12° gedreht → Strahl um 24° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -6",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 69°. Spiegel um 6° gedreht → Strahl um 12° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 0",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 75°."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 6",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 81°. Spiegel um 6° gedreht → Strahl um 12° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 13",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 88°. Spiegel um 13° gedreht → Strahl um 26° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 19",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 86°. Spiegel um 19° gedreht → Strahl um 38° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 25",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°. Spiegel um 25° gedreht → Strahl um 50° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -24",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 51°. Spiegel um 24° gedreht → Strahl um 48° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -22",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 53°. Spiegel um 22° gedreht → Strahl um 44° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -20",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 55°. Spiegel um 20° gedreht → Strahl um 40° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -18",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 57°. Spiegel um 18° gedreht → Strahl um 36° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -16",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 59°. Spiegel um 16° gedreht → Strahl um 32° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -14",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 61°. Spiegel um 14° gedreht → Strahl um 28° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -10",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°. Spiegel um 10° gedreht → Strahl um 20° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -8",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 67°. Spiegel um 8° gedreht → Strahl um 16° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -4",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 71°. Spiegel um 4° gedreht → Strahl um 8° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -2",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 73°. Spiegel um 2° gedreht → Strahl um 4° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 2",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 77°. Spiegel um 2° gedreht → Strahl um 4° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 4",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 79°. Spiegel um 4° gedreht → Strahl um 8° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 8",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 83°. Spiegel um 8° gedreht → Strahl um 16° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 10",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 85°. Spiegel um 10° gedreht → Strahl um 20° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 12",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 87°. Spiegel um 12° gedreht → Strahl um 24° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 14",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 89°. Spiegel um 14° gedreht → Strahl um 28° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 16",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 89°. Spiegel um 16° gedreht → Strahl um 32° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 18",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 87°. Spiegel um 18° gedreht → Strahl um 36° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 20",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 85°. Spiegel um 20° gedreht → Strahl um 40° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 22",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 83°. Spiegel um 22° gedreht → Strahl um 44° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 24",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 81°. Spiegel um 24° gedreht → Strahl um 48° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -15",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 60°. Spiegel um 15° gedreht → Strahl um 30° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = -5",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 70°. Spiegel um 5° gedreht → Strahl um 10° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 5",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 80°. Spiegel um 5° gedreht → Strahl um 10° geschwenkt."
-   },
-   {
-    "einstellung": "Spiegel drehen: 0° = 15",
-    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 90°. Spiegel um 15° gedreht → Strahl um 30° geschwenkt."
+    "einstellung": "Strahl auf das Lot Einfallswinkel zum Lot: 40° = 65 · nach 125 Frames",
+    "text": "rfgStatus: 📐 Einfallswinkel = Reflexionswinkel = 65°.",
+    "bild": "set:strokeStyle=#f87171 | set:lineWidth=2 | beginPath| | arc|418.00,96.00,11.00,0.00,6.28 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|404.00,51.42,16.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|95.48,142.58,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|214.47,137.94,7.00,0.00,6.28 | fill| | set:fillStyle=[object Object] | beginPath| | arc|333.45,82.46,7.00,0.00,6.28 | fill| | set:lineWidth=1.6 | set:strokeStyle=#fbbf24 | beginPath| | arc|150.00,168.00,32.00,-2.71,-1.57 | stroke| | set:strokeStyle=#fde047 | beginPath| | arc|150.00,168.00,42.00,-1.57,-0.44 | stroke| | set:fillStyle=#fbbf24 | set:font=700 11px sans-serif | set:textAlign=center | fillText|65°|122.06|128.14 | set:fillStyle=#fde047 | fillText|65°|182.24|121.40 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|Einfallswinkel = Reflexionswinkel|200.00|242.00"
    }
   ],
   "bildtexte": [
@@ -276,29 +496,7 @@
    "35°",
    "45°",
    "55°",
-   "65°",
-   "75°",
-   "56°",
-   "63°",
-   "69°",
-   "81°",
-   "88°",
-   "86°",
-   "51°",
-   "53°",
-   "57°",
-   "59°",
-   "61°",
-   "67°",
-   "71°",
-   "73°",
-   "77°",
-   "79°",
-   "83°",
-   "85°",
-   "87°",
-   "89°",
-   "90°"
+   "65°"
   ]
  }
 ]

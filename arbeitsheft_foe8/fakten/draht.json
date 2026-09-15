@@ -104,84 +104,432 @@
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A."
    },
    {
+    "einstellung": "kurz · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|397.87,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,128.48,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|386.90,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|310.28,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|233.67,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|157.05,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|80.44,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,155.82,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,79.21,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "kurz · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,75.67,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,152.28,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|363.10,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|286.48,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|209.87,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.25,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|56.64,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,132.02,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,55.41,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "kurz · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,99.47,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,176.08,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|339.30,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|262.68,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|186.07,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|109.45,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,184.84,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,108.22,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|62.39,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "kurz · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,123.27,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|392.12,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|315.50,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|238.88,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|162.27,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|85.65,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,161.04,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,84.42,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|86.19,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "lang",
     "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A."
+   },
+   {
+    "einstellung": "lang · nach 50 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|190.61,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|356.61,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,176.61,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|249.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|83.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,69.39,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "lang · nach 75 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|204.51,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|370.51,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,190.51,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|235.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|69.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,55.49,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "lang · nach 100 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|218.41,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|384.41,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|387.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|221.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|55.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|52.41,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "lang · nach 125 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|232.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|398.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|373.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|207.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|41.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|66.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
    },
    {
     "einstellung": "dick",
     "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A."
    },
    {
+    "einstellung": "dick · nach 50 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|260.11,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,80.11,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|345.89,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|179.89,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,165.89,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|94.11,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "dick · nach 75 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|274.01,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,94.01,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|331.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|165.99,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,151.99,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|108.01,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "dick · nach 100 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|287.91,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,107.91,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|318.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|152.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,138.09,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|121.91,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "dick · nach 125 Frames",
+    "text": "drtStatus: Kupfer, lang, dick: Widerstand R = 10 Ω → bei 4,5 V fließt I = 0,45 A.",
+    "bild": "set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,45 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|301.81,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,121.81,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|304.19,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|138.19,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,124.19,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|135.81,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 10 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "dünn",
     "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A."
    },
    {
+    "einstellung": "dünn · nach 50 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|319.71,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|369.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|120.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|70.71,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "dünn · nach 75 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|328.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|360.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|111.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|79.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "dünn · nach 100 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|337.61,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|351.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|102.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|88.61,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "dünn · nach 125 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|346.56,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|342.44,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|93.44,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|97.56,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "Kupfer",
     "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A."
+   },
+   {
+    "einstellung": "Kupfer · nach 50 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|364.46,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|324.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|75.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|115.46,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Kupfer · nach 75 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|373.41,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|315.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|66.59,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|124.41,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Kupfer · nach 100 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|382.36,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|306.64,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|57.64,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.36,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Kupfer · nach 125 Frames",
+    "text": "drtStatus: Kupfer, lang, dünn: Widerstand R = 20 Ω → bei 4,5 V fließt I = 0,23 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Kupfer-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,23 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|391.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|297.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|48.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|142.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 20 Ω|220.00|22.00"
    },
    {
     "einstellung": "Eisen",
     "text": "drtStatus: Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A."
    },
    {
+    "einstellung": "Eisen · nach 50 Frames",
+    "text": "drtStatus: Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Eisen-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,07 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,56.61,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|286.39,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,189.39,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|153.61,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 60 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Eisen · nach 75 Frames",
+    "text": "drtStatus: Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Eisen-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,07 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,62.26,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|280.74,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,183.74,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|159.26,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 60 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Eisen · nach 100 Frames",
+    "text": "drtStatus: Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Eisen-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,07 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,67.91,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|275.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,178.09,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|164.91,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 60 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Eisen · nach 125 Frames",
+    "text": "drtStatus: Eisen, lang, dünn: Widerstand R = 60 Ω → bei 4,5 V fließt I = 0,07 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Eisen-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,07 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,73.56,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|269.44,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,172.44,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|170.56,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 60 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "Konstantan",
     "text": "drtStatus: Konstantan, lang, dünn: Widerstand R = 180 Ω → bei 4,5 V fließt I = 0,03 A."
+   },
+   {
+    "einstellung": "Konstantan · nach 50 Frames",
+    "text": "drtStatus: Konstantan, lang, dünn: Widerstand R = 180 Ω → bei 4,5 V fließt I = 0,03 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Konstantan-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,03 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,82.66,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|260.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,163.34,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|179.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 180 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Konstantan · nach 75 Frames",
+    "text": "drtStatus: Konstantan, lang, dünn: Widerstand R = 180 Ω → bei 4,5 V fließt I = 0,03 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Konstantan-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,03 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,87.21,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|255.79,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,158.79,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|184.21,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 180 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Konstantan · nach 100 Frames",
+    "text": "drtStatus: Konstantan, lang, dünn: Widerstand R = 180 Ω → bei 4,5 V fließt I = 0,03 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Konstantan-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,03 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,91.76,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|251.24,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,154.24,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|188.76,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 180 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Konstantan · nach 125 Frames",
+    "text": "drtStatus: Konstantan, lang, dünn: Widerstand R = 180 Ω → bei 4,5 V fließt I = 0,03 A.",
+    "bild": "lineTo|310.00,48.00 | lineTo|310.00,54.00 | stroke| | set:fillStyle=#e2e8f0 | set:font=10px sans-serif | fillText|Konstantan-Draht|220.00|38.00 | set:fillStyle=#0b1020 | set:strokeStyle=#38bdf8 | set:lineWidth=3 | beginPath| | arc|400.00,123.00,16.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#38bdf8 | set:font=700 14px sans-serif | set:textAlign=center | fillText|A|400.00|128.00 | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | fillText|0,03 A|364.00|127.00 | set:fillStyle=#60a5fa | beginPath| | arc|400.00,96.31,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|246.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,149.69,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|193.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 180 Ω|220.00|22.00"
    },
    {
     "einstellung": "↺",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A."
    },
    {
+    "einstellung": "↺ · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|394.06,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,124.68,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|390.71,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|314.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|237.48,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|160.86,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|84.25,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,159.63,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,83.02,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,71.86,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,148.48,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|366.91,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|290.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|213.68,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|137.06,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|60.45,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,135.83,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,59.22,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,95.66,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,172.28,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|343.11,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|266.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|189.88,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|113.26,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,188.65,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,112.03,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|58.58,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,119.46,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|395.92,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|319.31,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|242.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|166.08,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|89.46,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,164.85,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,88.23,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|82.38,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "Wenn er kurz und dick ist",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Kurz und dick bedeutet wenig Widerstand."
+   },
+   {
+    "einstellung": "Wenn er kurz und dick ist · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Kurz und dick bedeutet wenig Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,167.06,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|348.32,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|271.71,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|195.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|118.48,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|41.86,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,117.25,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|53.37,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|129.98,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er kurz und dick ist · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Kurz und dick bedeutet wenig Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,190.86,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|324.52,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.91,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|171.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|94.68,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,170.06,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,93.45,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|77.17,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|153.78,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er kurz und dick ist · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Kurz und dick bedeutet wenig Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|377.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|300.72,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|224.11,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|147.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|70.88,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,146.26,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,69.65,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|100.97,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|177.58,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er kurz und dick ist · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Kurz und dick bedeutet wenig Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|353.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|276.92,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|200.31,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|123.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|47.08,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,122.46,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|48.15,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|124.77,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|201.38,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
     "einstellung": "Wenn er lang und dünn ist",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✓ Richtig! Länger und dünner → mehr Widerstand."
    },
    {
+    "einstellung": "Wenn er lang und dünn ist · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✓ Richtig! Länger und dünner → mehr Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|305.94,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|229.32,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|152.71,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|76.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,151.48,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,74.86,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|95.75,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|172.37,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|248.98,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er lang und dünn ist · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✓ Richtig! Länger und dünner → mehr Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|282.14,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|205.52,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|128.91,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|52.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,127.68,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|42.94,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|119.55,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|196.17,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|272.78,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er lang und dünn ist · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✓ Richtig! Länger und dünner → mehr Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|258.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|181.72,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|105.11,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,180.49,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,103.88,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|66.74,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|143.35,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|219.97,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|296.58,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er lang und dünn ist · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✓ Richtig! Länger und dünner → mehr Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|234.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|157.92,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|81.31,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,156.69,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,80.08,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|90.54,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|167.15,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|243.77,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|320.38,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "Wenn er kalt ist",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend."
+   },
+   {
+    "einstellung": "Wenn er kalt ist · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|186.94,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|110.32,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,185.71,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,109.09,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|61.52,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|138.14,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|214.75,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|291.37,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|367.98,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er kalt ist · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|163.14,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|86.52,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,161.91,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,85.29,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|85.32,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|161.94,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|238.55,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|315.17,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|391.78,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er kalt ist · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|139.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|62.72,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,138.11,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,61.49,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|109.12,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|185.74,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|262.35,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|338.97,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,69.58,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Wenn er kalt ist · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|115.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,190.92,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,114.31,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|56.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|132.92,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|209.54,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|286.15,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|362.77,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,93.38,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
     "einstellung": "Kupfer",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✓ Richtig! Kupfer ist ein sehr guter Leiter."
    },
    {
+    "einstellung": "Kupfer · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✓ Richtig! Kupfer ist ein sehr guter Leiter.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|67.94,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,143.32,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,66.71,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|103.91,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|180.52,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|257.14,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|333.75,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,64.37,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,140.98,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Kupfer · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✓ Richtig! Kupfer ist ein sehr guter Leiter.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|44.14,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,119.52,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|51.09,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|127.71,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|204.32,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|280.94,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|357.55,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,88.17,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,164.78,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Kupfer · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✓ Richtig! Kupfer ist ein sehr guter Leiter.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|40.00,172.34,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,95.72,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|74.89,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|151.51,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|228.12,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|304.74,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|381.35,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,111.97,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,188.58,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Kupfer · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✓ Richtig! Kupfer ist ein sehr guter Leiter.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|40.00,148.54,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,71.92,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|98.69,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|175.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|251.92,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|328.54,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,59.15,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,135.77,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|379.62,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "Konstantan",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Konstantan leitet schlecht (großer Widerstand)."
+   },
+   {
+    "einstellung": "Konstantan · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Konstantan leitet schlecht (großer Widerstand).",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|40.00,100.94,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|69.68,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|146.29,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|222.91,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|299.52,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|376.14,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,106.75,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,183.37,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|332.02,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Konstantan · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Konstantan leitet schlecht (großer Widerstand).",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|40.00,77.14,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|93.48,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|170.09,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|246.71,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|323.32,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|399.94,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,130.55,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|384.83,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|308.22,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Konstantan · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Konstantan leitet schlecht (großer Widerstand).",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|40.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|117.28,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|193.89,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|270.51,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|347.12,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,77.74,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,154.35,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|361.03,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|284.42,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Konstantan · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Konstantan leitet schlecht (großer Widerstand).",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|64.46,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|141.08,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|217.69,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|294.31,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|370.92,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,101.54,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,178.15,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|337.23,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|260.62,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
     "einstellung": "Eisen",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen."
    },
    {
+    "einstellung": "Eisen · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|112.06,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|188.68,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|265.29,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|341.91,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,72.52,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,149.14,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|366.25,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|289.63,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|213.02,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Eisen · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|135.86,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|212.48,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|289.09,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|365.71,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,96.32,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,172.94,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|342.45,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|265.83,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|189.22,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Eisen · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|159.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|236.28,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|312.89,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|389.51,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,120.12,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|395.26,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|318.65,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|242.03,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|165.42,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "Eisen · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|183.46,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|260.08,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|336.69,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,67.31,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,143.92,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|371.46,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|294.85,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|218.23,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|141.62,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "wird kleiner",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Länger bedeutet nicht weniger Widerstand."
+   },
+   {
+    "einstellung": "wird kleiner · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Länger bedeutet nicht weniger Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|231.06,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|307.68,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|384.29,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,114.91,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,191.52,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|323.86,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.25,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|170.63,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|94.02,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "wird kleiner · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Länger bedeutet nicht weniger Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|254.86,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|331.48,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,62.09,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,138.71,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|376.68,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|300.06,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|223.45,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|146.83,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|70.22,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "wird kleiner · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Länger bedeutet nicht weniger Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|278.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|355.28,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,85.89,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,162.51,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|352.88,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|276.26,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|199.65,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|123.03,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|46.42,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "wird kleiner · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Länger bedeutet nicht weniger Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|302.46,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|379.08,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,109.69,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,186.31,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|329.08,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|252.46,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|175.85,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|99.23,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,174.62,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
     "einstellung": "wird größer",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✓ Richtig! Doppelte Länge → etwa doppelter Widerstand."
    },
    {
+    "einstellung": "wird größer · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✓ Richtig! Doppelte Länge → etwa doppelter Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|350.06,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,80.68,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,157.29,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|358.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|281.48,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|204.86,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|128.25,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|51.63,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,127.02,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "wird größer · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✓ Richtig! Doppelte Länge → etwa doppelter Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|373.86,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,104.48,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,181.09,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|334.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|257.68,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|181.06,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|104.45,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,179.83,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,103.22,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "wird größer · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✓ Richtig! Doppelte Länge → etwa doppelter Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|397.66,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,128.28,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|387.11,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|310.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|233.88,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|157.26,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|80.65,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,156.03,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,79.42,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "wird größer · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✓ Richtig! Doppelte Länge → etwa doppelter Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,75.46,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|400.00,152.08,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|363.31,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|286.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|210.08,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.46,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|56.85,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,132.23,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,55.62,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
     "einstellung": "bleibt gleich",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand."
+   },
+   {
+    "einstellung": "bleibt gleich · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,123.06,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|392.32,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|315.71,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|239.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|162.48,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|85.86,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,161.25,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,84.63,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|85.98,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "bleibt gleich · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,146.86,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|368.52,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|291.91,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|215.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|138.68,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|62.06,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,137.45,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,60.83,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|109.78,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "bleibt gleich · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|400.00,170.66,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|344.72,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|268.11,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|191.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|114.88,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,190.26,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,113.65,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|56.97,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.58,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "bleibt gleich · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|397.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|320.92,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|244.31,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|167.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|91.08,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,166.46,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,89.85,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|80.77,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|157.38,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
-    "einstellung": "😐 geht so",
-    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Übe noch ein bisschen."
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|349.94,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|273.32,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|196.71,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|120.09,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|43.48,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,118.86,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|51.75,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|128.37,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|204.98,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
-    "einstellung": "😃 sicher",
-    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand."
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|326.14,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|249.52,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|172.91,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|96.29,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,171.68,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,95.06,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|75.55,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|152.17,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|228.78,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    },
    {
-    "einstellung": "🗑 Protokoll zurücksetzen",
-    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand."
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|302.34,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|225.72,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|149.11,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|72.49,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,147.88,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,71.26,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|99.35,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|175.97,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|252.58,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "drtStatus: Kupfer, kurz, dick: Widerstand R = 5 Ω → bei 4,5 V fließt I = 0,90 A.  ||  drtFb0: ✗ Die Länge und Dicke sind hier entscheidend.  ||  drtFb1: ✗ Eisen liegt dazwischen.  ||  drtFb2: ✗ Die Länge verändert den Widerstand.  ||  drtSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:fillStyle=#60a5fa | beginPath| | arc|278.54,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|201.92,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|125.31,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|48.69,192.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.00,124.08,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|46.54,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|123.15,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|199.77,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|276.38,54.00,3.20,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|R = 5 Ω|220.00|22.00"
    }
   ],
   "bildtexte": [

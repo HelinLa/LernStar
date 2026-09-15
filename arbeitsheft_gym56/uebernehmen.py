@@ -47,7 +47,13 @@ def _aufraeumen(t):
     t = re.sub(r"([„«(\[])\s+", r"\1", t)          # kein Leerzeichen NACH dem Oeffnen
     t = re.sub(r"\s+([»)\]])", r"\1", t)           # keines VOR dem Schliessen
     t = re.sub(r'\s+([“"])', r"\1", t)              # keines vor dem schliessenden Zitat
-    t = re.sub(r"\s+([,.;:!?])", r"\1", t)          # keines vor Satzzeichen
+    t = re.sub(r"\s+([,.;!?])", r"\1", t)           # keines vor Satzzeichen
+    # Der Doppelpunkt braucht eine Ausnahme: Mit Leerzeichen auf BEIDEN Seiten
+    # ist er ein Divisionszeichen ("4,08 m/s : 2,04 s", "a1 : a2 = m2 : m1"),
+    # kein Satzzeichen. Die alte Regel strich dort das Leerzeichen und machte
+    # aus der Rechnung eine Beschriftung ("4,08 m/s: 2,04 s") - gefunden am
+    # 15.09.2026, als uebernehmen.py einmal ueber die Oberstufe lief.
+    t = re.sub(r"\s+:(?!\s)", ":", t)
     return t.strip()
 
 

@@ -28,3 +28,10 @@ __pycache__/
 # "plan 2.py" an. Sie sehen aus wie Quellen, sind aber aeltere Staende - und
 # simcheck/seitenzahlen.py hat sich frueher daran verschluckt.
 * [0-9].*
+
+# Der Faktenspeicher von simcheck/fakten_ziehen.py. 196 Dumps, 28 MB - und
+# jeder traegt kein Datum: Nach jeder Aenderung an physics-sim.js oder an
+# simfakten.js sind ALLE alt. Was in Minuten wieder da ist und still veraltet,
+# gehoert nicht in die Versionsverwaltung. Die Dumps IN den Baenden bleiben
+# getrackt: Sie sind der Stand, gegen den die Seiten geschrieben wurden.
+simcheck/fakten/

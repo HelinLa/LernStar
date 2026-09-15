@@ -32,7 +32,43 @@ for ch in CHAPTERS:
 # Tritt, sobald eine Seite dazukam.
 _gemessen = os.path.join(HERE, "build", "seiten.json")
 if os.path.exists(_gemessen):
-    seiten.update(json.load(open(_gemessen, encoding="utf-8")))
+    _gem = json.load(open(_gemessen, encoding="utf-8"))
+    seiten.update(_gem)
+    # Auch WENN die Datei da ist, kann eine Kennung fehlen - etwa weil ihr
+    # QR-Code beim Messen unlesbar war. Dann traegt genau diese Seite die
+    # geschaetzte Zahl, und niemand sieht es.
+    # Die Luecken fuellt der SATZ selbst: build/seiten_gebaut.json haelt fest,
+    # mit welchem `pn` jede Einheit gesetzt wurde. Die gemessenen Zahlen behalten
+    # den Vorrang - sie sind die unabhaengige Gegenprobe -, aber geschaetzt wird
+    # nichts mehr. Betroffen sind die Datenblattseiten: Sie drucken keinen
+    # QR-Code, also kann seitenzahlen.py sie nicht lesen.
+    _gebaut_p = os.path.join(HERE, "build", "seiten_gebaut.json")
+    _gebaut = {}
+    if os.path.exists(_gebaut_p):
+        _gebaut = json.load(open(_gebaut_p, encoding="utf-8"))
+        for _k, _v in _gebaut.items():
+            if _k not in _gem:
+                seiten[_k] = _v
+        # Weichen Messung und Satz fuer eine Seite MIT QR-Code voneinander ab,
+        # ist eines von beiden falsch - das muss man sehen.
+        _uneins = sorted(k for k in _gem if k in _gebaut and _gem[k] != _gebaut[k])
+        if _uneins:
+            print("WARNUNG %s: gemessene und gesetzte Seitenzahl weichen ab bei %s"
+                  % (os.path.basename(HERE), ", ".join(
+                      "%s (%s statt %s)" % (k, _gem[k], _gebaut[k]) for k in _uneins)),
+                  file=sys.stderr)
+    _nur_geschaetzt = sorted(k for k in seiten if k not in _gem and k not in _gebaut)
+    if _nur_geschaetzt:
+        print("WARNUNG %s: %d Kennung(en) weder gemessen noch im Satz verzeichnet, "
+              "sie tragen die GESCHAETZTE Seitenzahl: %s" % (os.path.basename(HERE),
+              len(_nur_geschaetzt), ", ".join(_nur_geschaetzt)), file=sys.stderr)
+else:
+    # DER STILLE RUECKFALL, vor dem CLAUDE.md warnt. Ohne diese Zeile faellt
+    # eine fehlende Messung niemandem auf.
+    print("WARNUNG %s: build/seiten.json fehlt - ALLE Seitenzahlen sind "
+          "geschaetzt und wahrscheinlich falsch. Erst "
+          "'python3 simcheck/seitenzahlen.py %s' laufen lassen."
+          % (os.path.basename(HERE), os.path.basename(HERE)), file=sys.stderr)
 
 eintraege = []
 for ch in CHAPTERS:

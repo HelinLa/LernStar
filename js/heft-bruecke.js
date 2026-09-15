@@ -130,7 +130,7 @@ const HEFT_SEITEN = {
   },
   "s6": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: null, seite: 39,
+    sim: null, seite: 87,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Der Schalter",
     titel: "Muss der Schalter an die Batterie?",
@@ -1228,7 +1228,7 @@ const HEFT_SEITEN = {
   },
   "kw1": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 105,
+    sim: null, seite: 239,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Woher der Strom kommt",
     titel: "Der Schalter und das Kraftwerk",
@@ -1246,7 +1246,7 @@ const HEFT_SEITEN = {
   },
   "kw3": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 109,
+    sim: null, seite: 249,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Ein Prinzip, viele Brennstoffe",
     titel: "Der gleiche Dampf hinter jeder Flamme",
@@ -1255,7 +1255,7 @@ const HEFT_SEITEN = {
   },
   "kw4": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 111,
+    sim: null, seite: 254,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Was vom Brennstoff bleibt",
     titel: "Verbrannt ist nicht verschwunden",
@@ -1264,7 +1264,7 @@ const HEFT_SEITEN = {
   },
   "kw5": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 113,
+    sim: null, seite: 259,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Strom ohne Feuer",
     titel: "Das Solardach der Turnhalle",
@@ -1273,7 +1273,7 @@ const HEFT_SEITEN = {
   },
   "kw6": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 115,
+    sim: null, seite: 264,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Sonne, Wind und Wasser",
     titel: "Was am Ende eines Jahres zusammenkommt",
@@ -1282,7 +1282,7 @@ const HEFT_SEITEN = {
   },
   "kw7": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 117,
+    sim: null, seite: 269,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Zu viel und zu wenig",
     titel: "Der Wind macht keinen Stundenplan",
@@ -1291,7 +1291,7 @@ const HEFT_SEITEN = {
   },
   "kw8": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 119,
+    sim: null, seite: 274,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Speicher für später",
     titel: "Sonne von mittags, Licht am Abend",
@@ -1300,7 +1300,7 @@ const HEFT_SEITEN = {
   },
   "kw9": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 121,
+    sim: null, seite: 279,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Kohlenstoff wird zu Kohlendioxid",
     titel: "Die Luft merkt sich jedes Feuer",
@@ -1309,7 +1309,7 @@ const HEFT_SEITEN = {
   },
   "kw10": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 123,
+    sim: null, seite: 284,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Der natürliche Treibhauseffekt",
     titel: "Die Decke aus Gas",
@@ -1318,7 +1318,7 @@ const HEFT_SEITEN = {
   },
   "kw11": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 125,
+    sim: null, seite: 289,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Ein Jahr macht kein Klima",
     titel: "Der Schneewinter und die lange Kurve",
@@ -1327,7 +1327,7 @@ const HEFT_SEITEN = {
   },
   "kw12": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 127,
+    sim: null, seite: 294,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "CO₂ über den ganzen Lebensweg",
     titel: "Der Rucksack des Solarmoduls",
@@ -1336,7 +1336,7 @@ const HEFT_SEITEN = {
   },
   "kw13": {
     klasse: 9, schulform: "Realschule NRW",
-    sim: null, seite: 129,
+    sim: null, seite: 299,
     kapitel: "Kraftwerke, Energieversorgung & Klimaschutz",
     name: "Strom aus der eigenen Stadt",
     titel: "Alle Dächer, alle Windräder",
@@ -1489,7 +1489,7 @@ const HEFT_SEITEN = {
   },
   "ge6": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 45,
+    sim: null, seite: 94,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Gleichstrom und Wechselstrom",
     titel: "Zwei Sorten Strom in einem einzigen Gerät",
@@ -1534,7 +1534,7 @@ const HEFT_SEITEN = {
   },
   "ge11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 55,
+    sim: null, seite: 119,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Vom Kraftwerk in die Steckdose",
     titel: "Vier Spannungen auf demselben Weg",
@@ -1633,7 +1633,7 @@ const HEFT_SEITEN = {
   },
   "ak11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 85,
+    sim: null, seite: 181,
     kapitel: "Atomkern und Strahlung",
     name: "Die drei Strahlungsarten unterscheiden",
     titel: "Ein Präparat ohne Beschriftung",
@@ -1669,7 +1669,7 @@ const HEFT_SEITEN = {
   },
   "ke1": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 101,
+    sim: null, seite: 209,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Strahlung in der Medizin",
     titel: "Warum Mia die Spritze in einem Bleibehälter holt",
@@ -1678,7 +1678,7 @@ const HEFT_SEITEN = {
   },
   "ke2": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 103,
+    sim: null, seite: 214,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Strahlung in der Technik",
     titel: "Der Sensor über dem Fließband",
@@ -1687,7 +1687,7 @@ const HEFT_SEITEN = {
   },
   "ke3": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 105,
+    sim: null, seite: 219,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Strahlung im Alltag",
     titel: "Die Dosis, die jeder mitbringt",
@@ -1732,7 +1732,7 @@ const HEFT_SEITEN = {
   },
   "ke8": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 115,
+    sim: null, seite: 243,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Wenn ein Reaktor außer Kontrolle gerät",
     titel: "Zwei Daten, die niemand vergisst",
@@ -1759,7 +1759,7 @@ const HEFT_SEITEN = {
   },
   "ke11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 121,
+    sim: null, seite: 258,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Kernenergie bewerten",
     titel: "Zwei Listen und eine eigene Entscheidung",
@@ -2578,7 +2578,7 @@ const HEFT_SEITEN = {
   },
   "ev12": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 27,
+    sim: null, seite: 62,
     kapitel: "Woher der Strom kommt",
     name: "Welche Kraftwerke liefern unseren Strom?",
     titel: "Steckbriefe für Kraftwerke",
@@ -2605,7 +2605,7 @@ const HEFT_SEITEN = {
   },
   "ev15": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 33,
+    sim: null, seite: 77,
     kapitel: "Woher der Strom kommt",
     name: "Was haben elektrisches, magnetisches und Gravitationsfeld gemeinsam?",
     titel: "Zwei Schilder am Zaun",
@@ -2713,7 +2713,7 @@ const HEFT_SEITEN = {
   },
   "rk12": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 65,
+    sim: null, seite: 147,
     kapitel: "Aus dem Atomkern",
     name: "Wohin mit dem, was übrig bleibt?",
     titel: "Der abgeschlossene Raum im Keller",
@@ -2740,7 +2740,7 @@ const HEFT_SEITEN = {
   },
   "rk15": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 71,
+    sim: null, seite: 162,
     kapitel: "Aus dem Atomkern",
     name: "Wie hilft Strahlung in der Medizin?",
     titel: "Die Liste im Vorbereitungsraum",
@@ -2758,7 +2758,7 @@ const HEFT_SEITEN = {
   },
   "rk17": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 75,
+    sim: null, seite: 172,
     kapitel: "Aus dem Atomkern",
     name: "Kernenergie: Wie stehst du dazu?",
     titel: "Die Folie, die noch fehlt",
@@ -3811,7 +3811,7 @@ const HEFT_SEITEN = {
   },
   "ep5": {
     klasse: 9, schulform: "Gymnasium NRW",
-    sim: null, seite: 57,
+    sim: null, seite: 112,
     kapitel: "Energie, Leistung, Sicherheit",
     name: "Wie ist das Haus verkabelt?",
     titel: "Hinter dem Sicherungskasten",
@@ -4027,7 +4027,7 @@ const HEFT_SEITEN = {
   },
   "eg11": {
     klasse: 10, schulform: "Gymnasium NRW",
-    sim: null, seite: 59,
+    sim: null, seite: 132,
     kapitel: "Strom für alle",
     name: "Welches Kraftwerk für welche Aufgabe?",
     titel: "Kein Kraftwerk kann alles",
@@ -4936,7 +4936,7 @@ const HEFT_SEITEN = {
   },
   "ki7": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 15,
+    sim: null, seite: 29,
     kapitel: "Grundlagen der Mechanik",
     name: "Eine Kraft, zwei Richtungen",
     titel: "Zwei Kisten, ein schräges Seil",
@@ -5071,7 +5071,7 @@ const HEFT_SEITEN = {
   },
   "gw6": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 53,
+    sim: null, seite: 109,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was ist ein Feld?",
     titel: "Vier Orte, ein Feld",
@@ -5080,7 +5080,7 @@ const HEFT_SEITEN = {
   },
   "gw7": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 55,
+    sim: null, seite: 114,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Wie wiegt man die Erde?",
     titel: "Die Drehwaage im Gartenhaus",
@@ -5098,7 +5098,7 @@ const HEFT_SEITEN = {
   },
   "gw9": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 59,
+    sim: null, seite: 124,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was verrät die Umlaufzeit über den Bahnradius?",
     titel: "Sechs Planeten, eine Konstante",
@@ -5116,7 +5116,7 @@ const HEFT_SEITEN = {
   },
   "gw11": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 63,
+    sim: null, seite: 135,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Wem glaubt man ein Weltbild?",
     titel: "Vier Quellen, eine Behauptung",

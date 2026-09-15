@@ -93,208 +93,432 @@
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Nein – es ist umgekehrt."
    },
    {
+    "einstellung": "aufrecht und vergrößert · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Nein – es ist umgekehrt.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "aufrecht und vergrößert · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Nein – es ist umgekehrt.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "aufrecht und vergrößert · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Nein – es ist umgekehrt.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "aufrecht und vergrößert · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Nein – es ist umgekehrt.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "umgekehrt und verkleinert",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✓ Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild."
+   },
+   {
+    "einstellung": "umgekehrt und verkleinert · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✓ Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "umgekehrt und verkleinert · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✓ Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "umgekehrt und verkleinert · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✓ Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "umgekehrt und verkleinert · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✓ Richtig! Auf der Netzhaut entsteht ein umgekehrtes, verkleinertes, reelles Bild.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "virtuell",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell."
    },
    {
+    "einstellung": "virtuell · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "virtuell · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "virtuell · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "virtuell · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "Die Linse verformt sich (Akkommodation)",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✓ Richtig! Die Augenlinse verformt sich zum Scharfstellen."
+   },
+   {
+    "einstellung": "Die Linse verformt sich (Akkommodation) · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✓ Richtig! Die Augenlinse verformt sich zum Scharfstellen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Linse verformt sich (Akkommodation) · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✓ Richtig! Die Augenlinse verformt sich zum Scharfstellen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Linse verformt sich (Akkommodation) · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✓ Richtig! Die Augenlinse verformt sich zum Scharfstellen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Linse verformt sich (Akkommodation) · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✓ Richtig! Die Augenlinse verformt sich zum Scharfstellen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "Die Netzhaut bewegt sich",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Netzhaut sitzt fest."
    },
    {
+    "einstellung": "Die Netzhaut bewegt sich · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Netzhaut sitzt fest.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Netzhaut bewegt sich · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Netzhaut sitzt fest.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Netzhaut bewegt sich · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Netzhaut sitzt fest.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Netzhaut bewegt sich · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Netzhaut sitzt fest.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "Die Pupille wird größer",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit."
+   },
+   {
+    "einstellung": "Die Pupille wird größer · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Pupille wird größer · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Pupille wird größer · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Die Pupille wird größer · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "Dem Sensor",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Der Sensor entspricht der Netzhaut."
    },
    {
+    "einstellung": "Dem Sensor · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Der Sensor entspricht der Netzhaut.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Dem Sensor · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Der Sensor entspricht der Netzhaut.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Dem Sensor · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Der Sensor entspricht der Netzhaut.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Dem Sensor · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Der Sensor entspricht der Netzhaut.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "Der Blende",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✓ Richtig! Die Pupille ist die Blende des Auges."
+   },
+   {
+    "einstellung": "Der Blende · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✓ Richtig! Die Pupille ist die Blende des Auges.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Der Blende · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✓ Richtig! Die Pupille ist die Blende des Auges.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Der Blende · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✓ Richtig! Die Pupille ist die Blende des Auges.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Der Blende · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✓ Richtig! Die Pupille ist die Blende des Auges.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "Der Brennweite",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
    },
    {
+    "einstellung": "Der Brennweite · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Der Brennweite · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Der Brennweite · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Der Brennweite · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "😟 unsicher",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "😐 geht so",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Übe noch ein bisschen."
    },
    {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.  ||  augSelfOut: Übe noch ein bisschen.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "😃 sicher",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
    },
    {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,15.83,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|100.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "Abstand des Gegenstands: weit = 60",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 60 · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,23.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 60 · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,23.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 60 · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,23.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 60 · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,23.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|190.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "Abstand des Gegenstands: weit = 80",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
    },
    {
+    "einstellung": "Abstand des Gegenstands: weit = 80 · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,21.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 80 · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,21.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 80 · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,21.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 80 · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,21.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|170.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "Abstand des Gegenstands: weit = 100",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 100 · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,20.00,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 100 · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,20.00,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 100 · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,20.00,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 100 · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,20.00,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|150.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
     "einstellung": "Abstand des Gegenstands: weit = 120",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
    },
    {
+    "einstellung": "Abstand des Gegenstands: weit = 120 · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,18.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 120 · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,18.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 120 · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,18.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
+    "einstellung": "Abstand des Gegenstands: weit = 120 · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,18.33,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|130.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
+   },
+   {
     "einstellung": "Abstand des Gegenstands: weit = 140",
     "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
    },
    {
-    "einstellung": "Abstand des Gegenstands: weit = 160",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+    "einstellung": "Abstand des Gegenstands: weit = 140 · nach 50 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,16.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
-    "einstellung": "Abstand des Gegenstands: weit = 180",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+    "einstellung": "Abstand des Gegenstands: weit = 140 · nach 75 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,16.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
-    "einstellung": "Abstand des Gegenstands: weit = 200",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+    "einstellung": "Abstand des Gegenstands: weit = 140 · nach 100 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,16.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    },
    {
-    "einstellung": "Abstand des Gegenstands: weit = 220",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 65",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 70",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 75",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 85",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 90",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 95",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse stark gewölbt (nah), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 105",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 110",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 115",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 125",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 130",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 135",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 145",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 150",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 155",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 165",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 170",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 175",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 185",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 190",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 195",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 205",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 210",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Abstand des Gegenstands: weit = 215",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Pupille (Helligkeit): mittel = 1",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille eng.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Pupille (Helligkeit): mittel = 2",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille eng.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Pupille (Helligkeit): mittel = 3",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Pupille (Helligkeit): mittel = 4",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Pupille (Helligkeit): mittel = 5",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille weit.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
-   },
-   {
-    "einstellung": "Pupille (Helligkeit): mittel = 6",
-    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille weit.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung."
+    "einstellung": "Abstand des Gegenstands: weit = 140 · nach 125 Frames",
+    "text": "augStatus: 👁️ Bild scharf auf der Netzhaut (umgekehrt). Linse flacher (fern), Pupille mittel.  ||  augFb0: ✗ Es ist reell (auffangbar), nicht virtuell.  ||  augFb1: ✗ Die Pupille regelt nur die Helligkeit.  ||  augFb2: ✗ Die Brennweite ist keine Bauteil-Öffnung.",
+    "bild": "set:lineWidth=2 | beginPath| | ellipse|292.00,112.00,16.67,26.00,0.00,0.00,6.28 | fill| | stroke| | set:fillStyle=#1e293b | fillRect|289.00,80.00,6.00,4.00 | set:fillStyle=#334155 | set:font=9px sans-serif | set:textAlign=center | fillText|Linse|292.00|152.00 | set:strokeStyle=rgba(245,158,11,0.6) | set:lineWidth=1.4 | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,92.00 | lineTo|396.00,132.00 | stroke| | beginPath| | moveTo|110.00,72.00 | lineTo|292.00,112.00 | lineTo|396.00,132.00 | stroke| | set:strokeStyle=#dc2626 | set:lineWidth=3 | beginPath| | moveTo|396.00,112.00 | lineTo|396.00,132.00 | stroke| | set:fillStyle=#dc2626 | beginPath| | moveTo|396.00,138.00 | lineTo|393.00,132.00 | lineTo|399.00,132.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=700 11px sans-serif | set:textAlign=center | fillText|umgekehrtes Bild auf der Netzhaut|220.00|18.00"
    }
   ],
   "bildtexte": [

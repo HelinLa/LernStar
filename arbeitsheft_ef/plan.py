@@ -69,7 +69,7 @@ KAPITEL = [
             "später eine Feder und zwei zusammenstoßende Schlitten. Sie lernen, dass "
             "eine Messung erst dann etwas wert ist, wenn man ihre Unsicherheit kennt."),
         "themen": [
-            {"id": "ki1",  "name": "Wie schnell fährt der Wagen wirklich?",                       "sim": "gleichfoermig"},
+            {"id": "ki1",  "name": "Wie schnell läuft sie wirklich?",                             "sim": "gleichfoermig"},
             {"id": "ki3",  "name": "Wie schnell wird der Wagen schneller?",                       "sim": "beschleunigung-ef"},
             {"id": "ki4",  "name": "Warum trägt man t² auf?",                                     "sim": "beschleunigung-ef"},
             {"id": "ki5",  "name": "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?", "sim": "freierfall"},
@@ -119,6 +119,12 @@ NEUBAU = ("wurf-waagerecht", "wechselwirkung-ef", "spannenergie", "zentripetalkr
 FERTIG = []
 ALLE_KAPITEL = KAPITEL
 THEMEN = [th for k in KAPITEL for th in k["themen"]]
+# Welche Einheit gehoert zu welchem Kapitel? uebernehmen.py braucht das fuer
+# formregeln.pruefe_verteilung - und hat es hier GEFEHLT: Das Skript, das die
+# Formregeln prueft, BEVOR content/forscherseiten.json geschrieben wird, lief
+# fuer diesen Band deshalb in einen AttributeError. Die dreizehn Baende der
+# Sekundarstufe I fuehren es laengst (plan.py, letzte Zeile).
+KAPITEL_VON = {th["id"]: k["id"] for k in KAPITEL for th in k["themen"]}
 SIM = {th["id"]: th["sim"] for th in THEMEN if th.get("sim")}
 QUELLE = {}
 AM_BILDSCHIRM = {th["id"] for th in THEMEN if th.get("sim")}

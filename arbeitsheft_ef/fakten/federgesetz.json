@@ -84,7 +84,8 @@
   "hinweise": [
    "Hänge verschiedene Kräfte an dieselbe Feder und miss die Dehnung. Nimm Messpunkte auf. Welche Form hat die Kurve?",
    "Die Messpunkte liegen auf einer Geraden durch den Ursprung: Die Dehnung s ist proportional zur Kraft F. Das Verhältnis D = F/s bleibt gleich – das ist das Hooke'sche Gesetz (F = D · s). Im Diagramm ist D die Steigung: Die harte Feder ergibt die steilere Gerade.",
-   "Doppelte Kraft → doppelte Dehnung. | F = D · s · D = F/s bleibt konstant (Federkonstante)."
+   "Doppelte Kraft → doppelte Dehnung. | F = D · s · D = F/s bleibt konstant (Federkonstante).",
+   "Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt\"."
   ],
   "status": [
    {

@@ -47,7 +47,13 @@ def _aufraeumen(t):
     t = re.sub(r"([„«(\[])\s+", r"\1", t)          # kein Leerzeichen NACH dem Oeffnen
     t = re.sub(r"\s+([»)\]])", r"\1", t)           # keines VOR dem Schliessen
     t = re.sub(r'\s+([“"])', r"\1", t)              # keines vor dem schliessenden Zitat
-    t = re.sub(r"\s+([,.;:!?])", r"\1", t)          # keines vor Satzzeichen
+    t = re.sub(r"\s+([,.;!?])", r"\1", t)           # keines vor Satzzeichen
+    # Der Doppelpunkt braucht eine Ausnahme: Mit Leerzeichen auf BEIDEN Seiten
+    # ist er ein Divisionszeichen ("4,08 m/s : 2,04 s", "a1 : a2 = m2 : m1"),
+    # kein Satzzeichen. Die alte Regel strich dort das Leerzeichen und machte
+    # aus der Rechnung eine Beschriftung ("4,08 m/s: 2,04 s") - gefunden am
+    # 15.09.2026, als uebernehmen.py einmal ueber die Oberstufe lief.
+    t = re.sub(r"\s+:(?!\s)", ":", t)
     return t.strip()
 
 
@@ -77,6 +83,17 @@ def pruefen(seiten):
 
 
 def main(quelle):
+    # SCHUTZ: Dieser Band pflegt seinen Arbeitsstand einheitenweise in
+    # content/seiten/<id>.json und laesst ihn von zusammenfuehren.py
+    # zusammensetzen. uebernehmen.py ist das Werkzeug des SCHREIB-Workflows und
+    # schreibt dieselbe Zieldatei aus einer anderen Quelle - ein Lauf aus
+    # Versehen macht die Zusammenfuehrung zunichte. Am 15.09.2026 genau so
+    # passiert: `name` fiel auf den Stand von plan.py zurueck und die
+    # Divisions-Doppelpunkte wurden geglaettet.
+    if os.path.isdir(os.path.join(HERE, "content", "seiten")):
+        sys.exit("Dieser Band wird mit zusammenfuehren.py gebaut, nicht mit "
+                 "uebernehmen.py:\n    python3 zusammenfuehren.py\n"
+                 "Der Arbeitsstand liegt einheitenweise in content/seiten/.")
     roh = json.load(open(quelle, encoding="utf-8"))
     if isinstance(roh, dict):
         roh = roh.get("seiten") or roh.get("result", {}).get("seiten") or []

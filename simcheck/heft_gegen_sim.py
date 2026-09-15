@@ -21,7 +21,18 @@ import json, re, sys, importlib.util, collections
 # "0,8888 1/kg" blieb unbemerkt, ein richtiger Wert wurde nie geprueft. Der
 # Zaehler bleibt eine harte 1, damit "1/2" (ein Bruch) nicht mitgeht; nach dem
 # Schraegstrich MUSS ein Buchstabe stehen.
-ZAHL = re.compile(r'(\d[\d\u00a0\u202f]*(?:\.\d{3})*(?:,\d+)?)(?!\.)\s*([°%]|1/[A-Za-zµΩ][A-Za-zäöüß/²³·]*|[A-Za-zµΩ][A-Za-zäöüß/²³·]*)')
+#
+# Der Tausendertrenner darf auch ein NORMALES Leerzeichen sein. Die Regel kannte
+# nur die geschuetzten (U+00A0, U+202F) - eine Heftseite mit "1 000 000 J" wurde
+# deshalb als "000 J" gelesen und "10 194 m" als "194 m", und beide Werte
+# meldete der Pruefer als "steht nicht am Bildschirm", obwohl die Simulation
+# genau 1000000 J und 10194 m anzeigt (gefunden 15.09.2026 beim ERSTEN Lauf
+# ueber die Sekundarstufe I, Einheit en1 in Klasse 9).
+# Die Gruppen muessen GENAU DREI Ziffern haben. Mit der alten, weiten
+# Zeichenklasse [\d\u00a0\u202f]* wuerde "in 3 Schritten 20 cm" zu "320 cm" -
+# ein neuer Fehlalarm anstelle des alten.
+ZAHL = re.compile(r'(\d+(?:[\u00a0\u202f ]\d{3})*(?:\.\d{3})*(?:,\d+)?)(?!\.)\s*'
+                  r'([°%]|1/[A-Za-zµΩ][A-Za-zäöüß/²³·]*|[A-Za-zµΩ][A-Za-zäöüß/²³·]*)')
 
 # Woerter, nach denen eine Zahl KEINE Messgroesse ist - sonst meldet der Pruefer
 # jede Aufzaehlung ("3 Geraete", "zwei Schritte") als fehlenden Messwert.
@@ -115,7 +126,10 @@ def zwischenwerte(f):
     """Alle Zahlen, die die Simulation irgendwo zeigt - normalisiert."""
     t = faktentext(f)
     roh = set()
-    for m in re.finditer(r'\d[\d\u00a0\u202f]*(?:\.\d{3})*(?:,\d+)?', t):
+    # Dieselbe Gruppierung wie in ZAHL - auch die BILDSCHIRMSEITE kann ihre
+    # grossen Zahlen mit Leerzeichen gruppieren, und ein halb gelesener
+    # Bildschirmwert deckt einen richtigen Heftwert nicht.
+    for m in re.finditer(r'\d+(?:[\u00a0\u202f ]\d{3})*(?:\.\d{3})*(?:,\d+)?', t):
         v = wert(m.group(0))
         if v is not None:
             roh.add(v)
@@ -284,8 +298,51 @@ def _streut(s):
     return bool(STREUSATZ.search(text))
 
 
+def _gerundet(v, roh, gezeigt):
+    """Deckt ein Bildschirmwert einen SICHTBAR GERUNDETEN Heftwert?
+
+    Der Kommentar in pruefe() versprach das seit Monaten ("auf die Stellen
+    gerundet, mit denen er auf der Seite steht") - der Code verglich aber
+    exakt. Aufgefallen am 15.09.2026: Die Heftseite g7 (Klasse 7) schreibt
+    "Merkur misst rund 4 900 km, die Erde rund 12 800 km", die Simulation
+    `sonnensystem` zeigt 4.879 km und 12.756 km. Vier richtige, bewusst
+    gerundete Zahlen galten als "steht nicht am Bildschirm".
+
+    Zwei Bedingungen, damit daraus kein Scheunentor wird:
+
+    1. Der Heftwert muss SICHTBAR gerundet sein, also auf mindestens einer
+       Null enden ("4 900", nicht "4 879"). Eine Seite, die 147 J schreibt,
+       behauptet 147 J und bekommt keine Toleranz.
+    2. Der Bildschirmwert muss innerhalb EINES PROZENTS liegen. Ueber die
+       Stellenzahl allein waere "1 000 000 J" auf eine Million genau gerundet
+       und haette jeden Wert zwischen einer halben und 1,5 Millionen gedeckt.
+       Gemessen an den vier Planetenzahlen: 0,011 % bis 0,43 % Abweichung.
+       Ein Prozent laesst sie durch und meldet "200 g gegen 250 g" (25 %)
+       weiterhin.
+    """
+    # Die Ziffern aus DEM GANZEN Zahlentoken holen, nicht aus dem ersten Wort:
+    # "4 900 km" ist mit Leerzeichen gruppiert, und roh.split()[0] waere "4".
+    m = ZAHL.match(roh)
+    if not m:
+        return None
+    ziffern = re.sub(r"[^\d]", "", m.group(1).split(",")[-1]
+                     if "," in m.group(1) else m.group(1))
+    if not ziffern.endswith("0"):
+        return None                      # nicht sichtbar gerundet geschrieben
+    if v == 0:
+        return None
+    for g in gezeigt:
+        if g != v and abs(g - v) / abs(v) < 0.01:
+            return g
+    return None
+
+
 def pruefe(seiten, fakten, sim_von):
-    treffer, abgel, streu, ohne_satz = [], [], [], []
+    # FUENF Rueckgabewerte seit dem 15.09.2026 (vorher vier). Angehaengt, nicht
+    # eingeschoben: Jeder Aufrufer, der [0] oder [1] liest, bleibt richtig -
+    # eine Arity-Aenderung bricht Werkzeuge sonst STILL, weil die gefaehrlichen
+    # nichts verlieren, sondern falsch zeigen.
+    treffer, abgel, streu, ohne_satz, gerundet = [], [], [], [], []
     for s in seiten:
         f = fakten.get(sim_von.get(s['id']))
         if not f:
@@ -329,6 +386,13 @@ def pruefe(seiten, fakten, sim_von):
                 return False
             if gedeckt(v):
                 continue
+            nah = _gerundet(v, roh, gezeigt)
+            if nah is not None:
+                # Kein Mangel, aber auch nicht stillschweigend gut: Die Seite
+                # rundet, und wer die Zahl nachschlaegt, soll sehen, woher sie
+                # kommt.
+                gerundet.append((s['id'], sim_von[s['id']], roh, nah))
+                continue
             weg = _ist_abgeleitet(v, e, nach_einheit, gezeigt)
             if weg:
                 # Nicht verschweigen, nur getrennt ausweisen: der Wert steht
@@ -338,7 +402,7 @@ def pruefe(seiten, fakten, sim_von):
                 streu.append((s['id'], sim_von[s['id']], roh))
             else:
                 treffer.append((s['id'], sim_von[s['id']], roh))
-    return treffer, abgel, streu, ohne_satz
+    return treffer, abgel, streu, ohne_satz, gerundet
 
 def selbsttest():
     """Ohne bestandenen Selbsttest darf das Werkzeug nicht urteilen.
@@ -355,7 +419,9 @@ def selbsttest():
                                      "text": "v = 4,00 m/s · p = 12,5 kg·m/s · omega = 9,4248 rad/s "
                                              "· F_R=14.7N · s=1.28m "
                                              "· m = 5,000 kg · t = 3,46 s "
-                                             "· Anziehung: 8,00 Einheiten"}],
+                                             "· Anziehung: 8,00 Einheiten"
+                                             "· E = 1000000 J fuer 10194 m"
+                                             "· Durchmesser 4879 km"}],
                          "bildtexte": ["s = 1,50 m"], "regler": [], "knoepfe": []}]}
     sim_von = {"t1": "probe"}
 
@@ -364,7 +430,9 @@ def selbsttest():
                       {k: v[0] for k, v in fakten.items()}, sim_von)[0]
 
     def lauf_streu(seite):
-        return pruefe([seite], {k: v[0] for k, v in fakten.items()}, sim_von)
+        # NUR die ersten vier - der fuenfte Eimer (gerundet) kam spaeter dazu,
+        # und die Proben unten packen vier Werte aus.
+        return pruefe([seite], {k: v[0] for k, v in fakten.items()}, sim_von)[:4]
 
     def lauf_abg(text):
         return pruefe([{"id": "t1", "forschen": [text], "tabRows": [], "beobachtung": ""}],
@@ -446,6 +514,61 @@ def selbsttest():
     if not tr or st:
         f.append(f"Ohne `werte_streuen` wurde der Wert nicht mehr gemeldet: {tr} / {st}")
 
+    # 1a10. TAUSENDERTRENNER MIT NORMALEM LEERZEICHEN, gute Probe. Die Seite
+    #       schreibt "1 000 000 J", der Bildschirm "1000000 J" - dieselbe Zahl.
+    #       Bis zum 15.09.2026 kannte das Muster nur die geschuetzten Leerzeichen
+    #       und las "000 J"; der Wert galt dann als nicht angezeigt. Aufgefallen
+    #       beim ersten Lauf ueber die Sekundarstufe I (en1, Klasse 9).
+    t = lauf("Oben steht das Butterbrot mit 1 000 000 J, das reicht fuer 10 194 m.")
+    if t:
+        f.append(f"Tausendertrenner mit Leerzeichen meldete faelschlich: {t}")
+
+    # 1a11. GEGENPROBE: Dieselbe Schreibweise mit einer FALSCHEN Zahl muss
+    #       auffallen - sonst waere die Ausnahme ein Schalter zum Stummstellen.
+    #       Die erfundene Zahl darf KEIN kleines ganzzahliges Vielfaches eines
+    #       Bildschirmwerts sein - "2 000 000" waere das Doppelte von 1000000 und
+    #       gilt nach der Halbwertszeit-Regel oben zu Recht als gedeckt. Die
+    #       Probe haette dann bestanden, ohne etwas zu pruefen.
+    t = lauf("Oben steht das Butterbrot mit 1 234 567 J.")
+    if not t:
+        f.append("Erfundene Zahl in Tausendertrenner-Schreibweise (1 234 567 J) blieb unbemerkt")
+
+    # 1a12. UND DIE ZWEITE RICHTUNG: Zwei getrennte Zahlen duerfen NICHT zu
+    #       einer zusammenwachsen. Mit der weiten Zeichenklasse [\d ]* waere aus
+    #       "in 3 Schritten 20 cm" die Zahl "320 cm" geworden - ein neuer
+    #       Fehlalarm anstelle des alten. Geprueft wird am Muster selbst, weil
+    #       "Schritten" keine Einheit ist und die Positivliste sonst zuerst
+    #       greift.
+    if [z for z, _e in ZAHL.findall("in 3 Schritten 20 cm")] != ["3", "20"]:
+        f.append("Zwei getrennte Zahlen wuchsen zu einer zusammen: "
+                 + str(ZAHL.findall("in 3 Schritten 20 cm")))
+
+    # 1a13. SICHTBAR GERUNDET, gute Probe. Am Bildschirm stehen 4879 km, die
+    #       Seite schreibt "rund 4 900 km" - kein Mangel, aber sichtbar im
+    #       fuenften Eimer. Anlass: g7 (Klasse 7) und wa6 (Gymnasium 7) lesen
+    #       die Planetendurchmesser gerundet ab; vier richtige Zahlen galten
+    #       als fehlend, weil der Code exakt verglich, obwohl sein eigener
+    #       Kommentar seit Monaten eine Rundung versprach.
+    r = pruefe([{"id": "t1", "forschen": ["Merkur misst rund 4 900 km."],
+                 "tabRows": [], "beobachtung": ""}],
+               {k: v[0] for k, v in fakten.items()}, sim_von)
+    if r[0] or not r[4]:
+        f.append(f"Gerundeter Wert falsch einsortiert: Maengel={r[0]} gerundet={r[4]}")
+
+    # 1a14. GEGENPROBE ZUR TOLERANZ: 4 800 km sind 2,4 % daneben und muessen
+    #       auffallen. Ohne diese Probe waere "ein Prozent" eine Behauptung.
+    t = lauf("Merkur misst rund 4 800 km.")
+    if not t:
+        f.append("4 800 km gegen 4879 km am Bildschirm (2,4 %) blieb unbemerkt")
+
+    # 1a15. GEGENPROBE ZUR RUNDUNGSERKENNUNG: Eine Zahl OHNE Null am Ende
+    #       behauptet ihre letzte Stelle und bekommt keine Toleranz. "4 877 km"
+    #       liegt 0,04 % neben dem Bildschirmwert - und muss trotzdem
+    #       auffallen, sonst waere die Regel ein Schalter zum Stummstellen.
+    t = lauf("Merkur misst 4 877 km.")
+    if not t:
+        f.append("4 877 km (nicht gerundet geschrieben) bekam die Rundungstoleranz")
+
     # 1b. Die Simulation schreibt Punkt, die Seite Komma - das ist KEIN Befund.
     t = lauf("Die Reibungskraft betraegt 14,7 N, der Weg 1,28 m.")
     if t:
@@ -522,7 +645,7 @@ def main():
     kap = getattr(plan, 'ALLE_KAPITEL', None) or getattr(plan, 'KAPITEL', [])
     sim_von = {th['id']: th.get('sim') for k in kap for th in k['themen']}
 
-    tr, abgel, streu, ohne_satz = pruefe(seiten, fakten, sim_von)
+    tr, abgel, streu, ohne_satz, gerundet = pruefe(seiten, fakten, sim_von)
     print(f'{len(seiten)} Seiten geprueft · {len(tr)} Werte ohne Entsprechung am Bildschirm')
     nach = collections.defaultdict(list)
     for tid, sim, roh in tr:
@@ -549,6 +672,14 @@ def main():
         print(f'\n{len(streu)} Werte stammen aus einer STREUENDEN Messung '
               f'(kein Mangel - die Seite sagt selbst, dass deine Zahlen andere sind):')
         for (tid, sim), werte in sorted(nachS.items()):
+            print(f'   {tid:6s} [{sim}]  {", ".join(werte)}')
+    if gerundet:
+        nachG = collections.defaultdict(list)
+        for tid, sim, roh, nah in gerundet:
+            nachG[(tid, sim)].append(f'{roh} (Bildschirm: {nah:g})')
+        print(f'\n{len(gerundet)} Werte sind SICHTBAR GERUNDET geschrieben '
+              f'(kein Mangel - der Bildschirmwert liegt unter 1 % daneben):')
+        for (tid, sim), werte in sorted(nachG.items()):
             print(f'   {tid:6s} [{sim}]  {", ".join(werte)}')
     if ohne_satz:
         # Der Riegel hat zugeschnappt: Feld gesetzt, Satz fehlt.

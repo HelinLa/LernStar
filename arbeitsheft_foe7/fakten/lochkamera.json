@@ -103,244 +103,432 @@
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Schau in der Simulation – der Pfeil zeigt nach unten."
    },
    {
+    "einstellung": "Richtig herum · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Schau in der Simulation – der Pfeil zeigt nach unten.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Richtig herum · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Schau in der Simulation – der Pfeil zeigt nach unten.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Richtig herum · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Schau in der Simulation – der Pfeil zeigt nach unten.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Richtig herum · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Schau in der Simulation – der Pfeil zeigt nach unten.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "Auf dem Kopf (umgekehrt)",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✓ Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen."
+   },
+   {
+    "einstellung": "Auf dem Kopf (umgekehrt) · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✓ Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Auf dem Kopf (umgekehrt) · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✓ Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Auf dem Kopf (umgekehrt) · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✓ Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Auf dem Kopf (umgekehrt) · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✓ Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
     "einstellung": "Seitlich gekippt",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt."
    },
    {
+    "einstellung": "Seitlich gekippt · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Seitlich gekippt · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Seitlich gekippt · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Seitlich gekippt · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "Wenn die Kamera (Bildweite b) länger ist",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✓ Richtig! Größere Bildweite b → größeres Bild (B/G = b/g)."
+   },
+   {
+    "einstellung": "Wenn die Kamera (Bildweite b) länger ist · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✓ Richtig! Größere Bildweite b → größeres Bild (B/G = b/g).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn die Kamera (Bildweite b) länger ist · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✓ Richtig! Größere Bildweite b → größeres Bild (B/G = b/g).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn die Kamera (Bildweite b) länger ist · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✓ Richtig! Größere Bildweite b → größeres Bild (B/G = b/g).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn die Kamera (Bildweite b) länger ist · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✓ Richtig! Größere Bildweite b → größeres Bild (B/G = b/g).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
     "einstellung": "Wenn das Loch größer ist",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Ein größeres Loch macht es nur unschärfer, nicht größer."
    },
    {
+    "einstellung": "Wenn das Loch größer ist · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Ein größeres Loch macht es nur unschärfer, nicht größer.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn das Loch größer ist · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Ein größeres Loch macht es nur unschärfer, nicht größer.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn das Loch größer ist · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Ein größeres Loch macht es nur unschärfer, nicht größer.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn das Loch größer ist · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Ein größeres Loch macht es nur unschärfer, nicht größer.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "Wenn es dunkler ist",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht."
+   },
+   {
+    "einstellung": "Wenn es dunkler ist · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn es dunkler ist · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn es dunkler ist · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Wenn es dunkler ist · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
     "einstellung": "Damit das Bild bunt wird",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Mit der Farbe hat es nichts zu tun."
    },
    {
+    "einstellung": "Damit das Bild bunt wird · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Mit der Farbe hat es nichts zu tun.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit das Bild bunt wird · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Mit der Farbe hat es nichts zu tun.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit das Bild bunt wird · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Mit der Farbe hat es nichts zu tun.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit das Bild bunt wird · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Mit der Farbe hat es nichts zu tun.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "Damit das Bild scharf wird",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✓ Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler)."
+   },
+   {
+    "einstellung": "Damit das Bild scharf wird · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✓ Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit das Bild scharf wird · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✓ Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit das Bild scharf wird · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✓ Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit das Bild scharf wird · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✓ Richtig! Ein kleines Loch gibt ein scharfes Bild (aber dunkler).",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
     "einstellung": "Damit es heller wird",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
    },
    {
+    "einstellung": "Damit es heller wird · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit es heller wird · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit es heller wird · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "Damit es heller wird · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "😟 unsicher",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
     "einstellung": "😐 geht so",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Übe noch ein bisschen."
    },
    {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Übe noch ein bisschen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Übe noch ein bisschen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Übe noch ein bisschen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.  ||  locSelfOut: Übe noch ein bisschen.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "😃 sicher",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
    },
    {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
+   },
+   {
     "einstellung": "Gegenstandsweite g: 40 cm = 20",
     "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 20 · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|210.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|210.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,189.00 | stroke| | beginPath| | moveTo|210.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,189.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,197.00 | lineTo|305.00,189.00 | lineTo|315.00,189.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|154.50"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 20 · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|210.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|210.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,189.00 | stroke| | beginPath| | moveTo|210.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,189.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,197.00 | lineTo|305.00,189.00 | lineTo|315.00,189.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|154.50"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 20 · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|210.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|210.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,189.00 | stroke| | beginPath| | moveTo|210.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,189.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,197.00 | lineTo|305.00,189.00 | lineTo|315.00,189.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|154.50"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 20 · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|210.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|210.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,189.00 | stroke| | beginPath| | moveTo|210.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,189.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,197.00 | lineTo|305.00,189.00 | lineTo|315.00,189.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|154.50"
    },
    {
     "einstellung": "Gegenstandsweite g: 40 cm = 26",
     "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
    },
    {
+    "einstellung": "Gegenstandsweite g: 40 cm = 26 · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|198.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|198.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,173.08 | stroke| | beginPath| | moveTo|198.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,173.08 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,181.08 | lineTo|305.00,173.08 | lineTo|315.00,173.08 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|146.54"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 26 · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|198.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|198.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,173.08 | stroke| | beginPath| | moveTo|198.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,173.08 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,181.08 | lineTo|305.00,173.08 | lineTo|315.00,173.08 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|146.54"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 26 · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|198.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|198.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,173.08 | stroke| | beginPath| | moveTo|198.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,173.08 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,181.08 | lineTo|305.00,173.08 | lineTo|315.00,173.08 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|146.54"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 26 · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|198.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|198.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,173.08 | stroke| | beginPath| | moveTo|198.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,173.08 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,181.08 | lineTo|305.00,173.08 | lineTo|315.00,173.08 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|146.54"
+   },
+   {
     "einstellung": "Gegenstandsweite g: 40 cm = 30",
     "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 30 · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|190.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,166.00 | stroke| | beginPath| | moveTo|190.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,166.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,174.00 | lineTo|305.00,166.00 | lineTo|315.00,166.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|143.00"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 30 · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|190.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,166.00 | stroke| | beginPath| | moveTo|190.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,166.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,174.00 | lineTo|305.00,166.00 | lineTo|315.00,166.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|143.00"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 30 · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|190.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,166.00 | stroke| | beginPath| | moveTo|190.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,166.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,174.00 | lineTo|305.00,166.00 | lineTo|315.00,166.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|143.00"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 30 · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|190.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|190.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,166.00 | stroke| | beginPath| | moveTo|190.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,166.00 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,174.00 | lineTo|305.00,166.00 | lineTo|315.00,166.00 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|143.00"
    },
    {
     "einstellung": "Gegenstandsweite g: 40 cm = 36",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
    },
    {
+    "einstellung": "Gegenstandsweite g: 40 cm = 36 · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|178.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|178.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,158.33 | stroke| | beginPath| | moveTo|178.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,158.33 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,166.33 | lineTo|305.00,158.33 | lineTo|315.00,158.33 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|139.17"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 36 · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|178.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|178.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,158.33 | stroke| | beginPath| | moveTo|178.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,158.33 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,166.33 | lineTo|305.00,158.33 | lineTo|315.00,158.33 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|139.17"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 36 · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|178.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|178.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,158.33 | stroke| | beginPath| | moveTo|178.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,158.33 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,166.33 | lineTo|305.00,158.33 | lineTo|315.00,158.33 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|139.17"
+   },
+   {
+    "einstellung": "Gegenstandsweite g: 40 cm = 36 · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|178.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|178.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,158.33 | stroke| | beginPath| | moveTo|178.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,158.33 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,166.33 | lineTo|305.00,158.33 | lineTo|315.00,158.33 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|139.17"
+   },
+   {
     "einstellung": "Gegenstandsweite g: 40 cm = 40",
     "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
    },
    {
-    "einstellung": "Gegenstandsweite g: 40 cm = 46",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+    "einstellung": "Gegenstandsweite g: 40 cm = 40 · nach 50 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
-    "einstellung": "Gegenstandsweite g: 40 cm = 50",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+    "einstellung": "Gegenstandsweite g: 40 cm = 40 · nach 75 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
-    "einstellung": "Gegenstandsweite g: 40 cm = 56",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+    "einstellung": "Gegenstandsweite g: 40 cm = 40 · nach 100 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    },
    {
-    "einstellung": "Gegenstandsweite g: 40 cm = 60",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 22",
-    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 24",
-    "text": "locStatus: 📷 Bild: umgekehrt, größer als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 28",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 32",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 34",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 38",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 42",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 44",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 48",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 52",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 54",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Gegenstandsweite g: 40 cm = 58",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 15",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 21",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 25",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 31",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 35",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 41",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 45",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 51",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 55",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 17",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 19",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 23",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 27",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 29",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 33",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 37",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 39",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 43",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 47",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 49",
-    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Bildweite b (Kameralänge): 30 cm = 53",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Lochgröße: klein = 1",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Lochgröße: klein = 2",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Lochgröße: klein = 3",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, etwas unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Lochgröße: klein = 4",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, etwas unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Lochgröße: klein = 5",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
-   },
-   {
-    "einstellung": "Lochgröße: klein = 6",
-    "text": "locStatus: 📷 Bild: umgekehrt, etwa so groß wie der Gegenstand, unscharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller."
+    "einstellung": "Gegenstandsweite g: 40 cm = 40 · nach 125 Frames",
+    "text": "locStatus: 📷 Bild: umgekehrt, kleiner als der Gegenstand, scharf.  ||  locFb0: ✗ Es ist auf dem Kopf, nicht gekippt.  ||  locFb1: ✗ Die Helligkeit ändert die Größe nicht.  ||  locFb2: ✗ Ein kleines Loch macht es dunkler, nicht heller.",
+    "bild": "fillText|Gegenstand|170.00|136.00 | set:fillStyle=#475569 | fillRect|247.00,20.00,6.00,95.00 | fillRect|247.00,125.00,6.00,95.00 | set:fillStyle=#64748b | set:font=9px sans-serif | fillText|Loch|250.00|16.00 | set:fillStyle=#e2e8f0 | fillRect|310.00,20.00,6.00,200.00 | set:fillStyle=#94a3b8 | fillText|Schirm|313.00|16.00 | set:strokeStyle=rgba(245,158,11,0.7) | set:lineWidth=1.4 | beginPath| | moveTo|170.00,74.00 | lineTo|250.00,120.00 | lineTo|310.00,154.50 | stroke| | beginPath| | moveTo|170.00,120.00 | lineTo|250.00,120.00 | lineTo|310.00,120.00 | stroke| | set:strokeStyle=rgba(220,38,38,0.78) | set:lineWidth=3 | beginPath| | moveTo|310.00,120.00 | lineTo|310.00,154.50 | stroke| | set:fillStyle=rgba(220,38,38,0.78) | beginPath| | moveTo|310.00,162.50 | lineTo|305.00,154.50 | lineTo|315.00,154.50 | closePath| | fill| | set:fillStyle=#334155 | set:font=10px sans-serif | set:textAlign=left | fillText|Bild (umgekehrt)|320.00|137.25"
    }
   ],
   "bildtexte": [

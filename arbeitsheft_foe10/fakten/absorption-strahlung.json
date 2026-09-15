@@ -135,7 +135,13 @@
    }
   ],
   "hinweise": [
-   "R(d) = R₀ · e−α·d | d½ = ln2 / α | ln(R/R₀) = −α·d | Teilchen: feste Reichweite"
+   "R(d) = R₀ · e−α·d | d½ = ln2 / α | ln(R/R₀) = −α·d | Teilchen: feste Reichweite",
+   "sehr durchdringend – wird nur exponentiell geschwächt, nie ganz gestoppt",
+   "Bei d = 6,0 mm sind das rund 1,0 Halbwertsdicken – die Rate ist auf etwa (½)1,0 = 50,2 % gefallen. Anders als bei Teilchenstrahlung kommt immer ein Rest durch: Die Exponentialfunktion wird nie exakt null. Deshalb spricht man bei γ-Strahlung von Schwächung, nicht von einer Reichweite. Der Strahler Cs-137 eignet sich, weil er mit seiner Linie bei 662 keV nahezu monochromatisch ist.",
+   "Besser teilt man R nicht durch R₀ (das man nur schätzen kann), sondern durch die Einheit und trägt ln(R/(10min)⁻¹) auf – dieselbe Steigung −α, nur ein anderer Achsenabschnitt (hier +7,81).",
+   "Die Schwelle der Paarbildung von 1,022 MeV ist kein Zufall: Sie entspricht genau der Ruheenergie eines Elektron-Positron-Paares, 2·me·c² = 2·511 keV. Darunter kann kein Paar entstehen. Welcher Effekt in welchem Material überwiegt, hängt außerdem von der Ordnungszahl ab – in schwerem Blei setzt die Paarbildung früher ein als in leichtem Wasser.",
+   "Die kleinen Schwankungen der Quotienten sind der statistischen Natur des Zerfalls geschuldet – über viele Werte mittelt sich das heraus.",
+   "Mindestens zwei Messwerte nötig."
   ],
   "status": [
    {
@@ -143,360 +149,444 @@
     "text": ""
    },
    {
+    "einstellung": "d → R · mit Messreihe",
+    "text": ""
+   },
+   {
+    "einstellung": "d → ln R · mit Messreihe",
+    "text": ""
+   },
+   {
     "einstellung": "1 · Drei Strahlungsarten",
     "text": ""
+   },
+   {
+    "einstellung": "1 · Drei Strahlungsarten · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|188.63,136.43 | lineTo|189.63,135.07 | lineTo|190.63,132.89 | lineTo|191.63,131.56 | lineTo|192.63,132.07 | lineTo|193.63,134.04 | lineTo|194.63,135.98 | lineTo|195.63,136.42 | lineTo|196.63,135.03 | lineTo|197.63,132.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:globalAlpha=1 | set:strokeStyle=#7c3aed | set:lineWidth=1.3 | beginPath| | lineTo|209.49,80.00 | lineTo|210.49,81.96 | lineTo|211.49,82.43 | lineTo|212.49,81.07 | lineTo|213.49,78.89 | lineTo|214.49,77.56 | lineTo|215.49,78.07 | lineTo|216.49,80.04 | lineTo|217.49,81.98 | lineTo|218.49,82.42 | lineTo|219.49,81.03 | lineTo|220.49,78.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:font=700 11px sans-serif | set:textAlign=left | fillText|γ energiereiche Photonen|12.00|16.00 | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=right | fillText|50,2 % kommen durch|428.00|16.00 | set:textAlign=left"
+   },
+   {
+    "einstellung": "1 · Drei Strahlungsarten · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|82.57,127.43 | lineTo|83.57,126.07 | lineTo|84.57,123.89 | lineTo|85.57,122.56 | lineTo|86.57,123.07 | lineTo|87.57,125.04 | lineTo|88.57,126.98 | lineTo|89.57,127.42 | lineTo|90.57,126.03 | lineTo|91.57,123.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:globalAlpha=0.85 | set:strokeStyle=#7c3aed | set:lineWidth=1.3 | beginPath| | lineTo|103.43,134.00 | lineTo|104.43,135.96 | lineTo|105.43,136.43 | lineTo|106.43,135.07 | lineTo|107.43,132.89 | lineTo|108.43,131.56 | lineTo|109.43,132.07 | lineTo|110.43,134.04 | lineTo|111.43,135.98 | lineTo|112.43,136.42 | lineTo|113.43,135.03 | lineTo|114.43,132.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:font=700 11px sans-serif | set:textAlign=left | fillText|γ energiereiche Photonen|12.00|16.00 | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=right | fillText|50,2 % kommen durch|428.00|16.00 | set:textAlign=left"
+   },
+   {
+    "einstellung": "1 · Drei Strahlungsarten · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|159.37,127.43 | lineTo|160.37,126.07 | lineTo|161.37,123.89 | lineTo|162.37,122.56 | lineTo|163.37,123.07 | lineTo|164.37,125.04 | lineTo|165.37,126.98 | lineTo|166.37,127.42 | lineTo|167.37,126.03 | lineTo|168.37,123.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:globalAlpha=0.85 | set:strokeStyle=#7c3aed | set:lineWidth=1.3 | beginPath| | lineTo|180.23,134.00 | lineTo|181.23,135.96 | lineTo|182.23,136.43 | lineTo|183.23,135.07 | lineTo|184.23,132.89 | lineTo|185.23,131.56 | lineTo|186.23,132.07 | lineTo|187.23,134.04 | lineTo|188.23,135.98 | lineTo|189.23,136.42 | lineTo|190.23,135.03 | lineTo|191.23,132.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:font=700 11px sans-serif | set:textAlign=left | fillText|γ energiereiche Photonen|12.00|16.00 | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=right | fillText|50,2 % kommen durch|428.00|16.00 | set:textAlign=left"
+   },
+   {
+    "einstellung": "1 · Drei Strahlungsarten · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|144.75,91.43 | lineTo|145.75,90.07 | lineTo|146.75,87.89 | lineTo|147.75,86.56 | lineTo|148.75,87.07 | lineTo|149.75,89.04 | lineTo|150.75,90.98 | lineTo|151.75,91.42 | lineTo|152.75,90.03 | lineTo|153.75,87.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:globalAlpha=0.85 | set:strokeStyle=#7c3aed | set:lineWidth=1.3 | beginPath| | lineTo|165.60,98.00 | lineTo|166.60,99.96 | lineTo|167.60,100.43 | lineTo|168.60,99.07 | lineTo|169.60,96.89 | lineTo|170.60,95.56 | lineTo|171.60,96.07 | lineTo|172.60,98.04 | lineTo|173.60,99.98 | lineTo|174.60,100.42 | lineTo|175.60,99.03 | lineTo|176.60,96.86 | stroke| | set:globalAlpha=1 | set:fillStyle=#7c3aed | set:font=700 11px sans-serif | set:textAlign=left | fillText|γ energiereiche Photonen|12.00|16.00 | set:fillStyle=#4ade80 | set:font=700 10px sans-serif | set:textAlign=right | fillText|50,2 % kommen durch|428.00|16.00 | set:textAlign=left"
    },
    {
     "einstellung": "2 · Das Absorptionsgesetz",
     "text": ""
    },
    {
+    "einstellung": "2 · Das Absorptionsgesetz · nach 50 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#0284c7 | beginPath| | arc|314.00,208.06,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,214.38,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,223.44,3.00,0.00,6.28 | fill| | set:strokeStyle=#f59e0b | set:lineWidth=1 | setLineDash|3,3 | beginPath| | moveTo|48.00,139.32 | lineTo|162.52,139.32 | lineTo|162.52,252.00 | stroke| | beginPath| | moveTo|48.00,195.66 | lineTo|277.04,195.66 | lineTo|277.04,252.00 | stroke| | beginPath| | moveTo|48.00,223.83 | lineTo|391.56,223.83 | lineTo|391.56,252.00 | stroke| | setLineDash| | set:fillStyle=#b45309 | set:font=8px sans-serif | set:textAlign=left | fillText|d½ = 6,0 mm|164.52|136.32 | set:fillStyle=#db2777 | beginPath| | arc|162.00,138.96,5.00,0.00,6.28 | fill| | set:textAlign=left"
+   },
+   {
+    "einstellung": "2 · Das Absorptionsgesetz · nach 75 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#0284c7 | beginPath| | arc|314.00,208.06,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,214.38,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,223.44,3.00,0.00,6.28 | fill| | set:strokeStyle=#f59e0b | set:lineWidth=1 | setLineDash|3,3 | beginPath| | moveTo|48.00,139.32 | lineTo|162.52,139.32 | lineTo|162.52,252.00 | stroke| | beginPath| | moveTo|48.00,195.66 | lineTo|277.04,195.66 | lineTo|277.04,252.00 | stroke| | beginPath| | moveTo|48.00,223.83 | lineTo|391.56,223.83 | lineTo|391.56,252.00 | stroke| | setLineDash| | set:fillStyle=#b45309 | set:font=8px sans-serif | set:textAlign=left | fillText|d½ = 6,0 mm|164.52|136.32 | set:fillStyle=#db2777 | beginPath| | arc|162.00,138.96,5.00,0.00,6.28 | fill| | set:textAlign=left"
+   },
+   {
+    "einstellung": "2 · Das Absorptionsgesetz · nach 100 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#0284c7 | beginPath| | arc|314.00,208.06,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,214.38,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,223.44,3.00,0.00,6.28 | fill| | set:strokeStyle=#f59e0b | set:lineWidth=1 | setLineDash|3,3 | beginPath| | moveTo|48.00,139.32 | lineTo|162.52,139.32 | lineTo|162.52,252.00 | stroke| | beginPath| | moveTo|48.00,195.66 | lineTo|277.04,195.66 | lineTo|277.04,252.00 | stroke| | beginPath| | moveTo|48.00,223.83 | lineTo|391.56,223.83 | lineTo|391.56,252.00 | stroke| | setLineDash| | set:fillStyle=#b45309 | set:font=8px sans-serif | set:textAlign=left | fillText|d½ = 6,0 mm|164.52|136.32 | set:fillStyle=#db2777 | beginPath| | arc|162.00,138.96,5.00,0.00,6.28 | fill| | set:textAlign=left"
+   },
+   {
+    "einstellung": "2 · Das Absorptionsgesetz · nach 125 Frames",
+    "text": "",
+    "bild": "set:fillStyle=#0284c7 | beginPath| | arc|314.00,208.06,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,214.38,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,223.44,3.00,0.00,6.28 | fill| | set:strokeStyle=#f59e0b | set:lineWidth=1 | setLineDash|3,3 | beginPath| | moveTo|48.00,139.32 | lineTo|162.52,139.32 | lineTo|162.52,252.00 | stroke| | beginPath| | moveTo|48.00,195.66 | lineTo|277.04,195.66 | lineTo|277.04,252.00 | stroke| | beginPath| | moveTo|48.00,223.83 | lineTo|391.56,223.83 | lineTo|391.56,252.00 | stroke| | setLineDash| | set:fillStyle=#b45309 | set:font=8px sans-serif | set:textAlign=left | fillText|d½ = 6,0 mm|164.52|136.32 | set:fillStyle=#db2777 | beginPath| | arc|162.00,138.96,5.00,0.00,6.28 | fill| | set:textAlign=left"
+   },
+   {
     "einstellung": "3 · Halbwertsdicke bestimmen",
     "text": ""
+   },
+   {
+    "einstellung": "3 · Halbwertsdicke bestimmen · nach 50 Frames",
+    "text": "",
+    "bild": "arc|162.00,88.99,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|200.00,107.58,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|238.00,128.07,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|276.00,146.16,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|314.00,168.02,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,181.04,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,204.14,3.00,0.00,6.28 | fill| | set:fillStyle=#5b21b6 | set:font=700 9px sans-serif | set:textAlign=right | fillText|Steigung −α = −0,115/mm|424.00|81.08 | save| | translate|11.00,18.00 | rotate|-1.57 | fillText|ln(R/R₀)|0.00|0.00 | restore| | set:fillStyle=#475569 | set:font=700 9px sans-serif | set:textAlign=right | fillText|d / mm|428.00|256.00 | set:textAlign=left"
+   },
+   {
+    "einstellung": "3 · Halbwertsdicke bestimmen · nach 75 Frames",
+    "text": "",
+    "bild": "arc|162.00,88.99,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|200.00,107.58,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|238.00,128.07,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|276.00,146.16,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|314.00,168.02,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,181.04,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,204.14,3.00,0.00,6.28 | fill| | set:fillStyle=#5b21b6 | set:font=700 9px sans-serif | set:textAlign=right | fillText|Steigung −α = −0,115/mm|424.00|81.08 | save| | translate|11.00,18.00 | rotate|-1.57 | fillText|ln(R/R₀)|0.00|0.00 | restore| | set:fillStyle=#475569 | set:font=700 9px sans-serif | set:textAlign=right | fillText|d / mm|428.00|256.00 | set:textAlign=left"
+   },
+   {
+    "einstellung": "3 · Halbwertsdicke bestimmen · nach 100 Frames",
+    "text": "",
+    "bild": "arc|162.00,88.99,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|200.00,107.58,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|238.00,128.07,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|276.00,146.16,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|314.00,168.02,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,181.04,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,204.14,3.00,0.00,6.28 | fill| | set:fillStyle=#5b21b6 | set:font=700 9px sans-serif | set:textAlign=right | fillText|Steigung −α = −0,115/mm|424.00|81.08 | save| | translate|11.00,18.00 | rotate|-1.57 | fillText|ln(R/R₀)|0.00|0.00 | restore| | set:fillStyle=#475569 | set:font=700 9px sans-serif | set:textAlign=right | fillText|d / mm|428.00|256.00 | set:textAlign=left"
+   },
+   {
+    "einstellung": "3 · Halbwertsdicke bestimmen · nach 125 Frames",
+    "text": "",
+    "bild": "arc|162.00,88.99,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|200.00,107.58,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|238.00,128.07,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|276.00,146.16,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|314.00,168.02,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|352.00,181.04,3.00,0.00,6.28 | fill| | set:fillStyle=#0284c7 | beginPath| | arc|390.00,204.14,3.00,0.00,6.28 | fill| | set:fillStyle=#5b21b6 | set:font=700 9px sans-serif | set:textAlign=right | fillText|Steigung −α = −0,115/mm|424.00|81.08 | save| | translate|11.00,18.00 | rotate|-1.57 | fillText|ln(R/R₀)|0.00|0.00 | restore| | set:fillStyle=#475569 | set:font=700 9px sans-serif | set:textAlign=right | fillText|d / mm|428.00|256.00 | set:textAlign=left"
    },
    {
     "einstellung": "4 · Wie γ-Strahlung wechselwirkt",
     "text": ""
    },
    {
+    "einstellung": "4 · Wie γ-Strahlung wechselwirkt · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=left | fillText|gestreutes Photon (größere λ)|140.00|85.00 | fillText|Rückstoßelektron|166.00|137.00 | set:fillStyle=#1e293b | fillRect|300.00,40.00,120.00,150.00 | set:fillStyle=#0284c7 | set:globalAlpha=0.22 | fillRect|300.00,141.25,120.00,75.00 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Photoeffekt|304.00|181.75 | set:fillStyle=#16a34a | set:globalAlpha=0.6 | fillRect|300.00,103.75,120.00,48.79 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Compton-Effekt|304.00|131.14 | set:fillStyle=#dc2626 | set:globalAlpha=0.22 | fillRect|300.00,40.04,120.00,63.36 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Paarbildung|304.00|74.72 | set:strokeStyle=#fff | set:lineWidth=1.5 | beginPath| | moveTo|294.00,115.04 | lineTo|420.00,115.04 | stroke| | set:fillStyle=#fff | set:font=700 8px sans-serif | set:textAlign=right | fillText|500 keV|292.00|118.04 | set:textAlign=left"
+   },
+   {
+    "einstellung": "4 · Wie γ-Strahlung wechselwirkt · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=left | fillText|gestreutes Photon (größere λ)|140.00|85.00 | fillText|Rückstoßelektron|166.00|137.00 | set:fillStyle=#1e293b | fillRect|300.00,40.00,120.00,150.00 | set:fillStyle=#0284c7 | set:globalAlpha=0.22 | fillRect|300.00,141.25,120.00,75.00 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Photoeffekt|304.00|181.75 | set:fillStyle=#16a34a | set:globalAlpha=0.6 | fillRect|300.00,103.75,120.00,48.79 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Compton-Effekt|304.00|131.14 | set:fillStyle=#dc2626 | set:globalAlpha=0.22 | fillRect|300.00,40.04,120.00,63.36 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Paarbildung|304.00|74.72 | set:strokeStyle=#fff | set:lineWidth=1.5 | beginPath| | moveTo|294.00,115.04 | lineTo|420.00,115.04 | stroke| | set:fillStyle=#fff | set:font=700 8px sans-serif | set:textAlign=right | fillText|500 keV|292.00|118.04 | set:textAlign=left"
+   },
+   {
+    "einstellung": "4 · Wie γ-Strahlung wechselwirkt · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=left | fillText|gestreutes Photon (größere λ)|140.00|85.00 | fillText|Rückstoßelektron|166.00|137.00 | set:fillStyle=#1e293b | fillRect|300.00,40.00,120.00,150.00 | set:fillStyle=#0284c7 | set:globalAlpha=0.22 | fillRect|300.00,141.25,120.00,75.00 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Photoeffekt|304.00|181.75 | set:fillStyle=#16a34a | set:globalAlpha=0.6 | fillRect|300.00,103.75,120.00,48.79 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Compton-Effekt|304.00|131.14 | set:fillStyle=#dc2626 | set:globalAlpha=0.22 | fillRect|300.00,40.04,120.00,63.36 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Paarbildung|304.00|74.72 | set:strokeStyle=#fff | set:lineWidth=1.5 | beginPath| | moveTo|294.00,115.04 | lineTo|420.00,115.04 | stroke| | set:fillStyle=#fff | set:font=700 8px sans-serif | set:textAlign=right | fillText|500 keV|292.00|118.04 | set:textAlign=left"
+   },
+   {
+    "einstellung": "4 · Wie γ-Strahlung wechselwirkt · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=left | fillText|gestreutes Photon (größere λ)|140.00|85.00 | fillText|Rückstoßelektron|166.00|137.00 | set:fillStyle=#1e293b | fillRect|300.00,40.00,120.00,150.00 | set:fillStyle=#0284c7 | set:globalAlpha=0.22 | fillRect|300.00,141.25,120.00,75.00 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Photoeffekt|304.00|181.75 | set:fillStyle=#16a34a | set:globalAlpha=0.6 | fillRect|300.00,103.75,120.00,48.79 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Compton-Effekt|304.00|131.14 | set:fillStyle=#dc2626 | set:globalAlpha=0.22 | fillRect|300.00,40.04,120.00,63.36 | set:globalAlpha=1 | set:fillStyle=#e2e8f0 | set:font=8px sans-serif | set:textAlign=left | fillText|Paarbildung|304.00|74.72 | set:strokeStyle=#fff | set:lineWidth=1.5 | beginPath| | moveTo|294.00,115.04 | lineTo|420.00,115.04 | stroke| | set:fillStyle=#fff | set:font=700 8px sans-serif | set:textAlign=right | fillText|500 keV|292.00|118.04 | set:textAlign=left"
+   },
+   {
     "einstellung": "5 · Biologische Wirkung & Medizin",
     "text": ""
+   },
+   {
+    "einstellung": "5 · Biologische Wirkung & Medizin · nach 50 Frames",
+    "text": "",
+    "bild": "lineTo|350.40,192.00 | lineTo|352.99,192.00 | lineTo|355.57,192.00 | lineTo|358.16,192.00 | lineTo|360.75,192.00 | lineTo|363.33,192.00 | lineTo|365.92,192.00 | lineTo|368.51,192.00 | lineTo|371.09,192.00 | lineTo|373.68,192.00 | lineTo|376.27,192.00 | lineTo|378.85,192.00 | lineTo|381.44,192.00 | lineTo|384.03,192.00 | lineTo|386.61,192.00 | lineTo|389.20,192.00 | lineTo|391.79,192.00 | lineTo|394.37,192.00 | lineTo|396.96,192.00 | lineTo|399.55,192.00 | lineTo|402.13,192.00 | lineTo|404.72,192.00 | lineTo|407.31,192.00 | lineTo|409.89,192.00 | lineTo|412.48,192.00 | lineTo|415.07,192.00 | lineTo|417.65,192.00 | lineTo|420.24,192.00 | lineTo|422.83,192.00 | lineTo|425.41,192.00 | lineTo|428.00,192.00 | stroke| | set:fillStyle=#7c3aed | set:font=700 9px sans-serif | set:textAlign=left | fillText|γ-Strahlung|91.73|63.84 | set:fillStyle=#dc2626 | set:textAlign=center | fillText|Protonen (Bragg-Peak)|298.67|5.10 | set:textAlign=left"
+   },
+   {
+    "einstellung": "5 · Biologische Wirkung & Medizin · nach 75 Frames",
+    "text": "",
+    "bild": "lineTo|350.40,192.00 | lineTo|352.99,192.00 | lineTo|355.57,192.00 | lineTo|358.16,192.00 | lineTo|360.75,192.00 | lineTo|363.33,192.00 | lineTo|365.92,192.00 | lineTo|368.51,192.00 | lineTo|371.09,192.00 | lineTo|373.68,192.00 | lineTo|376.27,192.00 | lineTo|378.85,192.00 | lineTo|381.44,192.00 | lineTo|384.03,192.00 | lineTo|386.61,192.00 | lineTo|389.20,192.00 | lineTo|391.79,192.00 | lineTo|394.37,192.00 | lineTo|396.96,192.00 | lineTo|399.55,192.00 | lineTo|402.13,192.00 | lineTo|404.72,192.00 | lineTo|407.31,192.00 | lineTo|409.89,192.00 | lineTo|412.48,192.00 | lineTo|415.07,192.00 | lineTo|417.65,192.00 | lineTo|420.24,192.00 | lineTo|422.83,192.00 | lineTo|425.41,192.00 | lineTo|428.00,192.00 | stroke| | set:fillStyle=#7c3aed | set:font=700 9px sans-serif | set:textAlign=left | fillText|γ-Strahlung|91.73|63.84 | set:fillStyle=#dc2626 | set:textAlign=center | fillText|Protonen (Bragg-Peak)|298.67|5.10 | set:textAlign=left"
+   },
+   {
+    "einstellung": "5 · Biologische Wirkung & Medizin · nach 100 Frames",
+    "text": "",
+    "bild": "lineTo|350.40,192.00 | lineTo|352.99,192.00 | lineTo|355.57,192.00 | lineTo|358.16,192.00 | lineTo|360.75,192.00 | lineTo|363.33,192.00 | lineTo|365.92,192.00 | lineTo|368.51,192.00 | lineTo|371.09,192.00 | lineTo|373.68,192.00 | lineTo|376.27,192.00 | lineTo|378.85,192.00 | lineTo|381.44,192.00 | lineTo|384.03,192.00 | lineTo|386.61,192.00 | lineTo|389.20,192.00 | lineTo|391.79,192.00 | lineTo|394.37,192.00 | lineTo|396.96,192.00 | lineTo|399.55,192.00 | lineTo|402.13,192.00 | lineTo|404.72,192.00 | lineTo|407.31,192.00 | lineTo|409.89,192.00 | lineTo|412.48,192.00 | lineTo|415.07,192.00 | lineTo|417.65,192.00 | lineTo|420.24,192.00 | lineTo|422.83,192.00 | lineTo|425.41,192.00 | lineTo|428.00,192.00 | stroke| | set:fillStyle=#7c3aed | set:font=700 9px sans-serif | set:textAlign=left | fillText|γ-Strahlung|91.73|63.84 | set:fillStyle=#dc2626 | set:textAlign=center | fillText|Protonen (Bragg-Peak)|298.67|5.10 | set:textAlign=left"
+   },
+   {
+    "einstellung": "5 · Biologische Wirkung & Medizin · nach 125 Frames",
+    "text": "",
+    "bild": "lineTo|350.40,192.00 | lineTo|352.99,192.00 | lineTo|355.57,192.00 | lineTo|358.16,192.00 | lineTo|360.75,192.00 | lineTo|363.33,192.00 | lineTo|365.92,192.00 | lineTo|368.51,192.00 | lineTo|371.09,192.00 | lineTo|373.68,192.00 | lineTo|376.27,192.00 | lineTo|378.85,192.00 | lineTo|381.44,192.00 | lineTo|384.03,192.00 | lineTo|386.61,192.00 | lineTo|389.20,192.00 | lineTo|391.79,192.00 | lineTo|394.37,192.00 | lineTo|396.96,192.00 | lineTo|399.55,192.00 | lineTo|402.13,192.00 | lineTo|404.72,192.00 | lineTo|407.31,192.00 | lineTo|409.89,192.00 | lineTo|412.48,192.00 | lineTo|415.07,192.00 | lineTo|417.65,192.00 | lineTo|420.24,192.00 | lineTo|422.83,192.00 | lineTo|425.41,192.00 | lineTo|428.00,192.00 | stroke| | set:fillStyle=#7c3aed | set:font=700 9px sans-serif | set:textAlign=left | fillText|γ-Strahlung|91.73|63.84 | set:fillStyle=#dc2626 | set:textAlign=center | fillText|Protonen (Bragg-Peak)|298.67|5.10 | set:textAlign=left"
    },
    {
     "einstellung": "6 · Messreihe aufnehmen",
     "text": ""
    },
    {
+    "einstellung": "6 · Messreihe aufnehmen · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "6 · Messreihe aufnehmen · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "6 · Messreihe aufnehmen · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "6 · Messreihe aufnehmen · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
     "einstellung": "α-Strahlung",
     "text": ""
+   },
+   {
+    "einstellung": "α-Strahlung · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "α-Strahlung · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "α-Strahlung · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "α-Strahlung · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
     "einstellung": "β-Strahlung",
     "text": ""
    },
    {
+    "einstellung": "β-Strahlung · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "β-Strahlung · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "β-Strahlung · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "β-Strahlung · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
     "einstellung": "γ-Strahlung",
     "text": ""
+   },
+   {
+    "einstellung": "γ-Strahlung · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "γ-Strahlung · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "γ-Strahlung · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "γ-Strahlung · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
     "einstellung": "Papier",
     "text": ""
    },
    {
+    "einstellung": "Papier · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Papier · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Papier · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Papier · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
     "einstellung": "Aluminium",
     "text": ""
+   },
+   {
+    "einstellung": "Aluminium · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Aluminium · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Aluminium · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Aluminium · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
     "einstellung": "Blei",
     "text": ""
    },
    {
+    "einstellung": "Blei · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Blei · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Blei · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Blei · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
     "einstellung": "Halbwertsdicke",
     "text": ""
+   },
+   {
+    "einstellung": "Halbwertsdicke · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Halbwertsdicke · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Halbwertsdicke · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Halbwertsdicke · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
     "einstellung": "Logarithmieren",
     "text": ""
    },
    {
+    "einstellung": "Logarithmieren · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Logarithmieren · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Logarithmieren · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Logarithmieren · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
     "einstellung": "Quotienten",
     "text": ""
+   },
+   {
+    "einstellung": "Quotienten · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Quotienten · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Quotienten · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "Quotienten · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
     "einstellung": "d → R",
     "text": ""
    },
    {
+    "einstellung": "d → R · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "d → R · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "d → R · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "d → R · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
     "einstellung": "d → ln R",
     "text": ""
+   },
+   {
+    "einstellung": "d → ln R · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "d → ln R · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "d → ln R · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
+   },
+   {
+    "einstellung": "d → ln R · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
     "einstellung": "✓ Messwert übernehmen",
     "text": ""
    },
    {
-    "einstellung": "📋 Handreichungs-Messreihe",
-    "text": ""
+    "einstellung": "✓ Messwert übernehmen · nach 50 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
-    "einstellung": "🗑 Tabelle leeren",
-    "text": ""
+    "einstellung": "✓ Messwert übernehmen · nach 75 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
-    "einstellung": "ƒ Theoriefunktion",
-    "text": ""
+    "einstellung": "✓ Messwert übernehmen · nach 100 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    },
    {
-    "einstellung": "Feld leeren",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 0",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 2.6",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 5",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 7.6",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 10",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 12.6",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 15",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 17.6",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 20",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 1",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 2",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 3",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 4",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 6",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 7",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 8",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 9",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 11",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 12",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 13",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 14",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 16",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 17",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 18",
-    "text": ""
-   },
-   {
-    "einstellung": "erAluminiumBlei Dicke d = 19",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 0",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 2.5",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 5",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 7.5",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 10",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 12.5",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 15",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 17.5",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 20",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 1",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 2",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 3",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 4",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 6",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 7",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 8",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 9",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 11",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 12",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 13",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 14",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 16",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 17",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 18",
-    "text": ""
-   },
-   {
-    "einstellung": "Zählrate über der Bleidicke – Cs-137 (662 keV) Bleidicke d = 19",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -2.3",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -1.8",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -1.3",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -0.8",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -0.3",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = 0.2",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = 0.7",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = 1.2",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = 1.7",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -2",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = -1",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = 0",
-    "text": ""
-   },
-   {
-    "einstellung": "Photonenenergie = 1",
-    "text": ""
-   },
-   {
-    "einstellung": "d → ln R Bleidicke d: 0 mm = 0",
-    "text": ""
-   },
-   {
-    "einstellung": "d → ln R Bleidicke d: 0 mm = 3",
-    "text": ""
-   },
-   {
-    "einstellung": "d → ln R Bleidicke d: 0 mm = 5",
-    "text": ""
-   },
-   {
-    "einstellung": "d → ln R Bleidicke d: 0 mm = 8",
-    "text": ""
+    "einstellung": "✓ Messwert übernehmen · nach 125 Frames",
+    "text": "",
+    "bild": "set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00 | set:fillStyle=#0f172a | fillRect|0.00,0.00,440.00,180.00 | set:fillStyle=#fbbf24 | beginPath| | arc|40.00,90.00,12.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 9px sans-serif | set:textAlign=center | fillText|Cs|40.00|93.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | fillText|Cs-137|40.00|118.00 | set:fillStyle=#475569 | set:fillStyle=#475569 | set:textAlign=center | fillText|Blei 0 mm|70.00|138.00 | set:strokeStyle=rgba(167,139,250,0.9) | set:lineWidth=6 | beginPath| | moveTo|52.00,90.00 | lineTo|370.00,90.00 | stroke| | set:fillStyle=#334155 | fillRect|374.00,70.00,40.00,40.00 | set:strokeStyle=#94a3b8 | set:lineWidth=1 | strokeRect|374.00,70.00,40.00,40.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|2427|394.00|92.00 | set:fillStyle=#94a3b8 | set:font=8px sans-serif | fillText|Imp/min|394.00|120.00"
    }
   ],
   "bildtexte": [
@@ -512,6 +602,37 @@
    "10",
    "15",
    "20",
+   "5,00",
+   "5,60",
+   "6,20",
+   "6,80",
+   "7,40",
+   "8,00",
+   "d in mm",
+   "ln R",
+   "Noch keine Messwerte",
+   "Cs",
+   "Cs-137",
+   "Blei 0 mm",
+   "2427",
+   "Imp/min",
+   "492",
+   "985",
+   "1477",
+   "1970",
+   "2462",
+   "R in 1/min",
+   "543",
+   "1085",
+   "1628",
+   "2171",
+   "2714",
+   "5,34",
+   "5,90",
+   "6,45",
+   "7,00",
+   "7,56",
+   "8,11",
    "500",
    "1000",
    "1500",
@@ -540,45 +661,12 @@
    "relative Dosis",
    "γ-Strahlung",
    "Protonen (Bragg-Peak)",
-   "5,00",
-   "5,60",
-   "6,20",
-   "6,80",
-   "7,40",
-   "8,00",
-   "d in mm",
-   "ln R",
-   "Noch keine Messwerte",
-   "Cs",
-   "Cs-137",
-   "Blei 0 mm",
-   "2412",
-   "Imp/min",
-   "492",
-   "985",
-   "1477",
-   "1970",
-   "2462",
-   "R in 1/min",
    "7,39",
    "7,53",
    "7,67",
    "7,81",
    "7,95",
-   "8,09",
-   "5,34",
-   "5,90",
-   "6,45",
-   "7,00",
-   "7,56",
-   "8,11",
-   "2451",
-   "Blei 3 mm",
-   "1711",
-   "Blei 5 mm",
-   "1419",
-   "Blei 8 mm",
-   "987"
+   "8,09"
   ]
  }
 ]

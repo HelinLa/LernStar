@@ -1929,6 +1929,16 @@ if __name__=="__main__":
     # vorigen Laufs stehen lassen, sonst misst simcheck/seitenzahlen.py Geisterseiten.
     for _alt in glob.glob(os.path.join(bd,"book_p*.png")): os.remove(_alt)
     for i,p in enumerate(pages): p.save(os.path.join(bd,f"book_p{i+1}.png"))
+    # WELCHE SEITE TRAEGT WELCHE EINHEIT? Der Satz weiss es genau - `pn` ist die
+    # Zahl, die beim Setzen verwendet wurde. Aufgeschrieben wird sie, weil
+    # simcheck/seitenzahlen.py nur Seiten mit QR-CODE messen kann: Die
+    # Datenblattseiten drucken keinen, und fuer sie trug die Bruecke bis zum
+    # 15.09.2026 eine GESCHAETZTE Zahl (gemessen 37 Kennungen ueber acht Baende,
+    # alle Datenblattseiten). export_bruecke.py fuellt damit die Luecken; die
+    # gemessenen Zahlen behalten den Vorrang, damit die unabhaengige Gegenprobe
+    # bleibt.
+    json.dump(HEFTSEITE, open(os.path.join(bd,"seiten_gebaut.json"),"w",encoding="utf-8"),
+              ensure_ascii=False, indent=1, sort_keys=True)
     # Die Druckfassung ist nur Zwischenschritt: build_ebook liest sie und haengt
     # Lesezeichen und Links an. Sie liegt deshalb in build/ und nicht auf dem
     # Schreibtisch - dort soll genau EINE aktuelle Datei liegen, das E-Book.
@@ -1957,7 +1967,15 @@ if __name__=="__main__":
     # "letzte Seite des Bandes" traefe sonst die falsche.
     def _satzspiegel(name,teil):
         if not teil: return
-        ueber=[p for p in teil if p[2]>fd.UNTEN+0.5]
+        # Die Schwelle ist 1,5 Einheiten, nicht 0,5. Gemessen wird mit
+        # `_unterkante()` die TIEFSTE TINTE im Seitenbild, nicht die gerechnete
+        # Bausteinhoehe - eine Unterlaenge oder eine Zierlinie liegt ein Pixel
+        # tiefer als der Block, der sie traegt. Bei 150 dpi ist eine Einheit
+        # genau ein Pixel (0,48 pt). Mit 0,5 meldete `arbeitsheft_foe9` seit
+        # dem Umbau dauerhaft EINE Seite ("Lehrerteil fe8 1/4 endet 1675, +1"),
+        # und eine Warnung, die man jedes Mal wegliest, ist keine mehr. Die
+        # Probe ist fuer die echten Faelle gebaut: 1833 bis 2817 statt 1674.
+        ueber=[p for p in teil if p[2]>fd.UNTEN+1.5]
         print(f"\nSatzspiegel-Probe {name}: {len(teil)} Seiten gemessen, "
               f"Grenze {fd.UNTEN:.0f} Einheiten ({fd.punkt(fd.UNTEN):.0f} pt)")
         if ueber:

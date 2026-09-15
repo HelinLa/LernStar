@@ -100,80 +100,432 @@
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω)."
    },
    {
+    "einstellung": "10 Ω · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|157.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|282.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|202.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|237.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|192.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|292.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|147.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|337.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|102.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "10 Ω · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|315.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|124.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|360.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|79.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|45.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|394.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|90.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|349.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|135.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|304.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "10 Ω · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|113.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|326.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|158.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|281.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|203.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|236.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|248.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|191.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|293.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|146.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "10 Ω · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|272.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|167.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|317.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|122.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|362.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|77.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|47.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|392.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|92.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|347.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
     "einstellung": "20 Ω",
     "text": "pwdStatus: I₁ = 0,23 A, I₂ = 0,23 A → Gesamtstrom I = 0,45 A. Gesamtwiderstand R_ges = U/I = 10,0 Ω (kleiner als 20 Ω)."
    },
    {
+    "einstellung": "20 Ω · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,23 A, I₂ = 0,23 A → Gesamtstrom I = 0,45 A. Gesamtwiderstand R_ges = U/I = 10,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|154.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|285.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|214.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|225.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|274.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|165.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|334.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|105.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|394.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|45.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,45 A|220.00|20.00"
+   },
+   {
+    "einstellung": "20 Ω · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,23 A, I₂ = 0,23 A → Gesamtstrom I = 0,45 A. Gesamtwiderstand R_ges = U/I = 10,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|312.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|127.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|372.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|67.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|72.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|367.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|132.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|307.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|192.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|247.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,45 A|220.00|20.00"
+   },
+   {
+    "einstellung": "20 Ω · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,23 A, I₂ = 0,23 A → Gesamtstrom I = 0,45 A. Gesamtwiderstand R_ges = U/I = 10,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|110.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|329.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|170.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|269.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|230.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|209.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|290.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|149.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|350.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|89.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,45 A|220.00|20.00"
+   },
+   {
+    "einstellung": "20 Ω · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,23 A, I₂ = 0,23 A → Gesamtstrom I = 0,45 A. Gesamtwiderstand R_ges = U/I = 10,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|269.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|170.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|329.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|110.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|389.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|50.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|89.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|350.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|149.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|290.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,45 A|220.00|20.00"
+   },
+   {
     "einstellung": "30 Ω",
     "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω)."
+   },
+   {
+    "einstellung": "30 Ω · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|226.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|213.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|286.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|153.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|346.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|93.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|46.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|393.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|106.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|333.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
+   },
+   {
+    "einstellung": "30 Ω · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|384.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|55.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|84.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|355.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|144.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|295.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|204.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|235.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|264.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|175.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
+   },
+   {
+    "einstellung": "30 Ω · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|182.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|257.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|242.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|197.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|302.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|137.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|362.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|77.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|62.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|377.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
+   },
+   {
+    "einstellung": "30 Ω · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|341.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|98.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|41.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|398.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|101.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|338.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|161.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|278.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|221.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|218.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
    },
    {
     "einstellung": "10 Ω",
     "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Gesamtwiderstand R_ges = U/I = 7,5 Ω (kleiner als 10 Ω)."
    },
    {
+    "einstellung": "10 Ω · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Gesamtwiderstand R_ges = U/I = 7,5 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|341.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|99.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|392.43,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|47.57,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|83.86,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|356.14,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|135.29,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|304.71,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|186.72,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|253.28,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,60 A|220.00|20.00"
+   },
+   {
+    "einstellung": "10 Ω · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Gesamtwiderstand R_ges = U/I = 7,5 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|139.40,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|300.60,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|190.83,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|249.17,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|242.26,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|197.74,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|293.69,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|146.31,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|345.12,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|94.88,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,60 A|220.00|20.00"
+   },
+   {
+    "einstellung": "10 Ω · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Gesamtwiderstand R_ges = U/I = 7,5 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|297.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|142.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|349.23,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|90.77,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|40.66,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|399.34,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|92.09,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|347.91,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|143.52,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|296.48,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,60 A|220.00|20.00"
+   },
+   {
+    "einstellung": "10 Ω · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,45 A → Gesamtstrom I = 0,60 A. Gesamtwiderstand R_ges = U/I = 7,5 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|96.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|343.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|147.63,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|292.37,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|199.06,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|240.94,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.49,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|189.51,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|301.92,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|138.08,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,60 A|220.00|20.00"
+   },
+   {
     "einstellung": "20 Ω",
     "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω)."
+   },
+   {
+    "einstellung": "20 Ω · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|370.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|69.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|70.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|369.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|130.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|309.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|190.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|249.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|189.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
+   },
+   {
+    "einstellung": "20 Ω · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|168.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|271.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|228.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|211.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|288.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|151.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|348.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|91.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|48.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|391.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
+   },
+   {
+    "einstellung": "20 Ω · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|326.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|113.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|386.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|53.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|86.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|353.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|146.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|293.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|206.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|233.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
+   },
+   {
+    "einstellung": "20 Ω · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,23 A → Gesamtstrom I = 0,38 A. Gesamtwiderstand R_ges = U/I = 12,0 Ω (kleiner als 20 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|125.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|314.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|185.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|254.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|245.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|194.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|305.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|134.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|365.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|74.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,38 A|220.00|20.00"
    },
    {
     "einstellung": "30 Ω",
     "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Gesamtwiderstand R_ges = U/I = 15,0 Ω (kleiner als 30 Ω)."
    },
    {
+    "einstellung": "30 Ω · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Gesamtwiderstand R_ges = U/I = 15,0 Ω (kleiner als 30 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|82.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|357.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|142.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|297.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|202.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|237.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|262.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|177.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|322.14,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|117.86,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,30 A|220.00|20.00"
+   },
+   {
+    "einstellung": "30 Ω · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Gesamtwiderstand R_ges = U/I = 15,0 Ω (kleiner als 30 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|240.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|199.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|300.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|139.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|360.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|79.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|60.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|379.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|120.54,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|319.46,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,30 A|220.00|20.00"
+   },
+   {
+    "einstellung": "30 Ω · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Gesamtwiderstand R_ges = U/I = 15,0 Ω (kleiner als 30 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|398.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|41.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|98.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|341.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|158.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|281.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|218.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|221.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|278.94,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|161.06,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,30 A|220.00|20.00"
+   },
+   {
+    "einstellung": "30 Ω · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,15 A, I₂ = 0,15 A → Gesamtstrom I = 0,30 A. Gesamtwiderstand R_ges = U/I = 15,0 Ω (kleiner als 30 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|197.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|242.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|257.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|182.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|317.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|122.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|377.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|62.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|77.34,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|362.66,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,30 A|220.00|20.00"
+   },
+   {
     "einstellung": "↺",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω)."
+   },
+   {
+    "einstellung": "↺ · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|131.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|308.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|176.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|263.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|221.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|218.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|266.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|173.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|311.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|128.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "↺ · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|290.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|149.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|335.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|104.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|380.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|59.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|65.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|374.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|110.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|329.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "↺ · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|88.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|351.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|306.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|178.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|261.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|223.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|216.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|268.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|171.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "↺ · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|193.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|292.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|148.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|337.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|103.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|382.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|58.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|67.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|373.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
     "einstellung": "An beiden gleich",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✓ Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an."
    },
    {
+    "einstellung": "An beiden gleich · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✓ Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|203.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|236.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|248.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|191.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|293.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|146.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|338.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|101.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|383.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|56.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "An beiden gleich · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✓ Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|362.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|77.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|47.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|392.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|92.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|347.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|137.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|302.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|182.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|257.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "An beiden gleich · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✓ Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|160.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|279.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|205.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|234.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|189.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|295.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|144.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|340.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|99.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "An beiden gleich · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✓ Richtig! In der Parallelschaltung liegt überall die gleiche Spannung an.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|319.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|121.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|364.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|76.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|49.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|391.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|94.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|346.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|139.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|301.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
     "einstellung": "Sie teilt sich auf",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Das gilt für die Reihenschaltung."
+   },
+   {
+    "einstellung": "Sie teilt sich auf · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Das gilt für die Reihenschaltung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|275.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|164.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|320.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|119.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|365.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|74.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|50.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|389.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|95.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|344.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Sie teilt sich auf · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Das gilt für die Reihenschaltung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|74.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|365.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|119.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|320.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|164.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|275.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|209.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|230.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|254.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|185.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Sie teilt sich auf · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Das gilt für die Reihenschaltung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|232.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|207.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|277.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|162.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|322.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|117.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|367.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|72.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|52.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|387.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Sie teilt sich auf · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Das gilt für die Reihenschaltung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|391.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|49.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|76.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|364.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|121.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|319.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|166.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|274.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|211.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|229.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
     "einstellung": "Am ersten größer",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung."
    },
    {
+    "einstellung": "Am ersten größer · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|347.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|92.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|392.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|47.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|77.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|362.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|122.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|317.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|167.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|272.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Am ersten größer · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|146.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|293.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|191.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|248.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|236.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|203.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|281.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|158.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|326.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|113.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Am ersten größer · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|304.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|135.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|349.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|90.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|394.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|45.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|79.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|360.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|124.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|315.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Am ersten größer · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|103.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|337.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|148.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|292.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|193.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|247.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|238.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|202.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|283.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|157.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
     "einstellung": "I = I₁ − I₂",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Subtrahiert wird nichts."
+   },
+   {
+    "einstellung": "I = I₁ − I₂ · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Subtrahiert wird nichts.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|59.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|380.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|104.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|335.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|149.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|290.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|194.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|245.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|239.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|200.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I = I₁ − I₂ · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Subtrahiert wird nichts.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|218.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|221.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|263.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|176.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|308.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|131.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|353.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|86.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|398.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|41.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I = I₁ − I₂ · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Subtrahiert wird nichts.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|376.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|63.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|61.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|378.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|106.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|333.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|151.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|288.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|196.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|243.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I = I₁ − I₂ · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Subtrahiert wird nichts.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|175.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|265.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|220.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|220.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|265.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|175.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|310.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|130.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|355.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|85.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
     "einstellung": "I = I₁ + I₂",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✓ Richtig! Die Zweigströme addieren sich."
    },
    {
+    "einstellung": "I = I₁ + I₂ · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✓ Richtig! Die Zweigströme addieren sich.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|131.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|308.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|176.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|263.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|221.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|218.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|266.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|173.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|311.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|128.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I = I₁ + I₂ · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✓ Richtig! Die Zweigströme addieren sich.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|290.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|149.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|335.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|104.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|380.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|59.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|65.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|374.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|110.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|329.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I = I₁ + I₂ · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✓ Richtig! Die Zweigströme addieren sich.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|88.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|351.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|306.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|178.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|261.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|223.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|216.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|268.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|171.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I = I₁ + I₂ · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✓ Richtig! Die Zweigströme addieren sich.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|193.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|292.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|148.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|337.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|103.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|382.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|58.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|67.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|373.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
     "einstellung": "I ist überall gleich",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme."
+   },
+   {
+    "einstellung": "I ist überall gleich · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|203.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|236.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|248.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|191.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|293.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|146.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|338.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|101.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|383.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|56.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I ist überall gleich · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|362.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|77.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|47.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|392.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|92.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|347.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|137.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|302.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|182.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|257.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I ist überall gleich · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|160.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|279.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|205.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|234.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|189.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|295.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|144.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|340.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|99.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "I ist überall gleich · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|319.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|121.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|364.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|76.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|49.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|391.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|94.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|346.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|139.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|301.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
     "einstellung": "Größer als beide",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Parallel wird der Gesamtwiderstand nicht größer."
    },
    {
+    "einstellung": "Größer als beide · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Parallel wird der Gesamtwiderstand nicht größer.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|275.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|164.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|320.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|119.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|365.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|74.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|50.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|389.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|95.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|344.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Größer als beide · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Parallel wird der Gesamtwiderstand nicht größer.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|74.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|365.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|119.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|320.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|164.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|275.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|209.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|230.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|254.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|185.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Größer als beide · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Parallel wird der Gesamtwiderstand nicht größer.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|232.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|207.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|277.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|162.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|322.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|117.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|367.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|72.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|52.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|387.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Größer als beide · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Parallel wird der Gesamtwiderstand nicht größer.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|391.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|49.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|76.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|364.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|121.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|319.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|166.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|274.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|211.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|229.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
     "einstellung": "Kleiner als der kleinste",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✓ Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand."
+   },
+   {
+    "einstellung": "Kleiner als der kleinste · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✓ Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|347.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|92.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|392.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|47.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|77.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|362.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|122.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|317.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|167.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|272.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Kleiner als der kleinste · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✓ Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|146.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|293.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|191.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|248.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|236.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|203.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|281.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|158.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|326.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|113.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Kleiner als der kleinste · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✓ Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|304.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|135.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|349.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|90.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|394.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|45.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|79.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|360.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|124.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|315.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Kleiner als der kleinste · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✓ Richtig! R_ges ist kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|103.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|337.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|148.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|292.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|193.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|247.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|238.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|202.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|283.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|157.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
     "einstellung": "Genau dazwischen",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand."
    },
    {
+    "einstellung": "Genau dazwischen · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|59.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|380.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|104.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|335.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|149.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|290.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|194.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|245.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|239.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|200.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Genau dazwischen · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|218.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|221.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|263.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|176.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|308.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|131.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|353.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|86.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|398.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|41.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Genau dazwischen · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|376.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|63.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|61.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|378.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|106.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|333.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|151.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|288.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|196.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|243.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "Genau dazwischen · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|175.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|265.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|220.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|220.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|265.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|175.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|310.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|130.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|355.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|85.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
     "einstellung": "😟 unsicher",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Frag deine Lehrkraft – das schaffst du!"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|131.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|308.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|176.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|263.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|221.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|218.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|266.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|173.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|311.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|128.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|290.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|149.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|335.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|104.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|380.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|59.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|65.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|374.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|110.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|329.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|88.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|351.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|133.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|306.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|178.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|261.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|223.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|216.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|268.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|171.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|247.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|193.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|292.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|148.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|337.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|103.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|382.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|58.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|67.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|373.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
     "einstellung": "😐 geht so",
     "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Übe noch ein bisschen."
    },
    {
-    "einstellung": "😃 sicher",
-    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand."
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Übe noch ein bisschen.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|203.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|236.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|248.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|191.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|293.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|146.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|338.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|101.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|383.80,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|56.20,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    },
    {
-    "einstellung": "🗑 Protokoll zurücksetzen",
-    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand."
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Übe noch ein bisschen.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|362.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|77.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|47.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|392.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|92.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|347.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|137.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|302.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|182.20,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|257.80,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Übe noch ein bisschen.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|160.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|279.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|205.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|234.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|250.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|189.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|295.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|144.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|340.60,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|99.40,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "pwdStatus: I₁ = 0,45 A, I₂ = 0,23 A → Gesamtstrom I = 0,68 A. Gesamtwiderstand R_ges = U/I = 6,7 Ω (kleiner als 10 Ω).  ||  pwdFb0: ✗ Beide bekommen die gleiche Spannung.  ||  pwdFb1: ✗ Der Gesamtstrom ist die Summe der Zweigströme.  ||  pwdFb2: ✗ Er ist sogar kleiner als der kleinste Einzelwiderstand.  ||  pwdSelfOut: Übe noch ein bisschen.",
+    "bild": "fill| | set:fillStyle=#60a5fa | beginPath| | arc|319.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|121.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|364.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|76.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|49.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|391.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|94.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|346.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#60a5fa | beginPath| | arc|139.00,40.00,3.00,0.00,6.28 | fill| | beginPath| | arc|301.00,196.00,3.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=center | fillText|I = I₁ + I₂ = 0,68 A|220.00|20.00"
    }
   ],
   "bildtexte": [

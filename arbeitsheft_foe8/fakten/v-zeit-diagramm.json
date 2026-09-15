@@ -92,72 +92,432 @@
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig)."
    },
    {
+    "einstellung": "konstant · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "konstant · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "konstant · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "konstant · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "beschleunigen",
     "text": "vtdStatus: Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer."
+   },
+   {
+    "einstellung": "beschleunigen · nach 50 Frames",
+    "text": "vtdStatus: Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer.",
+    "bild": "lineTo|214.00,53.92 | lineTo|217.33,51.84 | lineTo|220.67,49.76 | lineTo|224.00,47.68 | lineTo|227.33,45.60 | lineTo|230.67,43.52 | lineTo|234.00,41.44 | lineTo|237.33,39.36 | lineTo|240.67,37.28 | lineTo|244.00,35.20 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 0|280.00|40.00 | set:textAlign=right | fillText|beschleunigen|420.00|22.00"
+   },
+   {
+    "einstellung": "beschleunigen · nach 75 Frames",
+    "text": "vtdStatus: Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer.",
+    "bild": "lineTo|214.00,53.92 | lineTo|217.33,51.84 | lineTo|220.67,49.76 | lineTo|224.00,47.68 | lineTo|227.33,45.60 | lineTo|230.67,43.52 | lineTo|234.00,41.44 | lineTo|237.33,39.36 | lineTo|240.67,37.28 | lineTo|244.00,35.20 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 0|280.00|40.00 | set:textAlign=right | fillText|beschleunigen|420.00|22.00"
+   },
+   {
+    "einstellung": "beschleunigen · nach 100 Frames",
+    "text": "vtdStatus: Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer.",
+    "bild": "lineTo|214.00,53.92 | lineTo|217.33,51.84 | lineTo|220.67,49.76 | lineTo|224.00,47.68 | lineTo|227.33,45.60 | lineTo|230.67,43.52 | lineTo|234.00,41.44 | lineTo|237.33,39.36 | lineTo|240.67,37.28 | lineTo|244.00,35.20 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 0|280.00|40.00 | set:textAlign=right | fillText|beschleunigen|420.00|22.00"
+   },
+   {
+    "einstellung": "beschleunigen · nach 125 Frames",
+    "text": "vtdStatus: Beschleunigen: ansteigende Linie – die Geschwindigkeit wird immer größer.",
+    "bild": "lineTo|214.00,53.92 | lineTo|217.33,51.84 | lineTo|220.67,49.76 | lineTo|224.00,47.68 | lineTo|227.33,45.60 | lineTo|230.67,43.52 | lineTo|234.00,41.44 | lineTo|237.33,39.36 | lineTo|240.67,37.28 | lineTo|244.00,35.20 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,160.00 | lineTo|44.00,160.00 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,160.00,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#22c55e | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 0|280.00|40.00 | set:textAlign=right | fillText|beschleunigen|420.00|22.00"
    },
    {
     "einstellung": "bremsen",
     "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht)."
    },
    {
+    "einstellung": "bremsen · nach 50 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|214.00,141.28 | lineTo|217.33,143.36 | lineTo|220.67,145.44 | lineTo|224.00,147.52 | lineTo|227.33,149.60 | lineTo|230.67,151.68 | lineTo|234.00,153.76 | lineTo|237.33,155.84 | lineTo|240.67,157.92 | lineTo|244.00,160.00 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,35.20 | lineTo|44.00,35.20 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,35.20,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 96|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
+    "einstellung": "bremsen · nach 75 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|214.00,141.28 | lineTo|217.33,143.36 | lineTo|220.67,145.44 | lineTo|224.00,147.52 | lineTo|227.33,149.60 | lineTo|230.67,151.68 | lineTo|234.00,153.76 | lineTo|237.33,155.84 | lineTo|240.67,157.92 | lineTo|244.00,160.00 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,35.20 | lineTo|44.00,35.20 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,35.20,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 96|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
+    "einstellung": "bremsen · nach 100 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|214.00,141.28 | lineTo|217.33,143.36 | lineTo|220.67,145.44 | lineTo|224.00,147.52 | lineTo|227.33,149.60 | lineTo|230.67,151.68 | lineTo|234.00,153.76 | lineTo|237.33,155.84 | lineTo|240.67,157.92 | lineTo|244.00,160.00 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,35.20 | lineTo|44.00,35.20 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,35.20,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 96|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
+    "einstellung": "bremsen · nach 125 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|214.00,141.28 | lineTo|217.33,143.36 | lineTo|220.67,145.44 | lineTo|224.00,147.52 | lineTo|227.33,149.60 | lineTo|230.67,151.68 | lineTo|234.00,153.76 | lineTo|237.33,155.84 | lineTo|240.67,157.92 | lineTo|244.00,160.00 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,35.20 | lineTo|44.00,35.20 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,35.20,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 96|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
     "einstellung": "▶ Fahren",
     "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht)."
+   },
+   {
+    "einstellung": "▶ Fahren · nach 50 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|237.33,155.84 | lineTo|240.67,157.92 | lineTo|244.00,160.00 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,35.20 | lineTo|47.33,37.28 | lineTo|50.67,39.36 | lineTo|54.00,41.44 | lineTo|57.33,43.52 | lineTo|60.67,45.60 | lineTo|64.00,47.68 | lineTo|67.33,49.76 | lineTo|70.67,51.84 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|70.67,51.84,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|76.47,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|83.47,201.00,4.00,0.00,6.28 | arc|99.47,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 83|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
+    "einstellung": "▶ Fahren · nach 75 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,35.20 | lineTo|47.33,37.28 | lineTo|50.67,39.36 | lineTo|54.00,41.44 | lineTo|57.33,43.52 | lineTo|60.67,45.60 | lineTo|64.00,47.68 | lineTo|67.33,49.76 | lineTo|70.67,51.84 | lineTo|74.00,53.92 | lineTo|77.33,56.00 | lineTo|80.67,58.08 | lineTo|84.00,60.16 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|84.00,60.16,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|100.20,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|107.20,201.00,4.00,0.00,6.28 | arc|123.20,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 77|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
+    "einstellung": "▶ Fahren · nach 100 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|47.33,37.28 | lineTo|50.67,39.36 | lineTo|54.00,41.44 | lineTo|57.33,43.52 | lineTo|60.67,45.60 | lineTo|64.00,47.68 | lineTo|67.33,49.76 | lineTo|70.67,51.84 | lineTo|74.00,53.92 | lineTo|77.33,56.00 | lineTo|80.67,58.08 | lineTo|84.00,60.16 | lineTo|87.33,62.24 | lineTo|90.67,64.32 | lineTo|94.00,66.40 | lineTo|97.33,68.48 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|97.33,68.48,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|123.93,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|130.93,201.00,4.00,0.00,6.28 | arc|146.93,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 70|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
+   },
+   {
+    "einstellung": "▶ Fahren · nach 125 Frames",
+    "text": "vtdStatus: Bremsen: fallende Linie – die Geschwindigkeit wird immer kleiner (bis der Wagen steht).",
+    "bild": "lineTo|60.67,45.60 | lineTo|64.00,47.68 | lineTo|67.33,49.76 | lineTo|70.67,51.84 | lineTo|74.00,53.92 | lineTo|77.33,56.00 | lineTo|80.67,58.08 | lineTo|84.00,60.16 | lineTo|87.33,62.24 | lineTo|90.67,64.32 | lineTo|94.00,66.40 | lineTo|97.33,68.48 | lineTo|100.67,70.56 | lineTo|104.00,72.64 | lineTo|107.33,74.72 | lineTo|110.67,76.80 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|110.67,76.80,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#ef4444 | fillRect|147.67,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|154.67,201.00,4.00,0.00,6.28 | arc|170.67,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 64|280.00|40.00 | set:textAlign=right | fillText|bremsen|420.00|22.00"
    },
    {
     "einstellung": "↺ Zurücksetzen",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig)."
    },
    {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "Stillstand",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm."
+   },
+   {
+    "einstellung": "Stillstand · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Stillstand · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Achtung: Das gilt im s-t-Diagramm, nicht im v-t-Diagramm.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    },
    {
     "einstellung": "Konstante Geschwindigkeit",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig)."
    },
    {
+    "einstellung": "Konstante Geschwindigkeit · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Konstante Geschwindigkeit · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✓ Richtig! Die Geschwindigkeit bleibt gleich (gleichförmig).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "Beschleunigen",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie."
+   },
+   {
+    "einstellung": "Beschleunigen · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Beschleunigen · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Beschleunigen · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Beschleunigen · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    },
    {
     "einstellung": "Der Körper wird schneller (beschleunigt)",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✓ Richtig! Die Geschwindigkeit nimmt zu."
    },
    {
+    "einstellung": "Der Körper wird schneller (beschleunigt) · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✓ Richtig! Die Geschwindigkeit nimmt zu.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Der Körper wird schneller (beschleunigt) · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✓ Richtig! Die Geschwindigkeit nimmt zu.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Der Körper wird schneller (beschleunigt) · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✓ Richtig! Die Geschwindigkeit nimmt zu.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Der Körper wird schneller (beschleunigt) · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✓ Richtig! Die Geschwindigkeit nimmt zu.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "Er wird langsamer",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Langsamer wäre eine fallende Linie."
+   },
+   {
+    "einstellung": "Er wird langsamer · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Langsamer wäre eine fallende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Er wird langsamer · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Langsamer wäre eine fallende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Er wird langsamer · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Langsamer wäre eine fallende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Er wird langsamer · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Langsamer wäre eine fallende Linie.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    },
    {
     "einstellung": "Er steht still",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0)."
    },
    {
+    "einstellung": "Er steht still · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Er steht still · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Er steht still · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Er steht still · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "Beschleunigen",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Beschleunigen wäre ansteigend."
+   },
+   {
+    "einstellung": "Beschleunigen · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Beschleunigen wäre ansteigend.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Beschleunigen · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Beschleunigen wäre ansteigend.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Beschleunigen · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Beschleunigen wäre ansteigend.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Beschleunigen · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Beschleunigen wäre ansteigend.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    },
    {
     "einstellung": "Bremsen (langsamer werden)",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✓ Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst."
    },
    {
+    "einstellung": "Bremsen (langsamer werden) · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✓ Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Bremsen (langsamer werden) · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✓ Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Bremsen (langsamer werden) · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✓ Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Bremsen (langsamer werden) · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✓ Richtig! Die Geschwindigkeit nimmt ab – der Körper bremst.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "Gleich schnell",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht."
+   },
+   {
+    "einstellung": "Gleich schnell · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Gleich schnell · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Gleich schnell · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "Gleich schnell · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "😐 geht so",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.  ||  vtdSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    },
    {
     "einstellung": "😃 sicher",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht."
    },
    {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "vtdStatus: Konstante Geschwindigkeit: waagerechte Linie – der Wagen fährt gleich schnell (gleichförmig).  ||  vtdFb0: ✗ Beschleunigen wäre eine ansteigende Linie.  ||  vtdFb1: ✗ Stillstand wäre die Linie ganz unten (v = 0).  ||  vtdFb2: ✗ Gleich schnell wäre waagerecht.",
+    "bild": "lineTo|214.00,88.50 | lineTo|217.33,88.50 | lineTo|220.67,88.50 | lineTo|224.00,88.50 | lineTo|227.33,88.50 | lineTo|230.67,88.50 | lineTo|234.00,88.50 | lineTo|237.33,88.50 | lineTo|240.67,88.50 | lineTo|244.00,88.50 | stroke| | set:strokeStyle=#fbbf24 | set:lineWidth=2.5 | beginPath| | moveTo|44.00,88.50 | lineTo|44.00,88.50 | stroke| | set:fillStyle=#fde047 | beginPath| | arc|44.00,88.50,4.00,0.00,6.28 | fill| | set:strokeStyle=#334155 | set:lineWidth=3 | beginPath| | moveTo|44.00,202.00 | lineTo|420.00,202.00 | stroke| | set:fillStyle=#38bdf8 | fillRect|29.00,184.00,30.00,15.00 | set:fillStyle=#0f172a | beginPath| | arc|36.00,201.00,4.00,0.00,6.28 | arc|52.00,201.00,4.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=left | fillText|v jetzt: 55|280.00|40.00 | set:textAlign=right | fillText|konstant|420.00|22.00"
    }
   ],
   "bildtexte": [
@@ -169,7 +529,38 @@
    "beschleunigen",
    "v jetzt: 96",
    "bremsen",
-   "v jetzt: 95"
+   "v jetzt: 95",
+   "v jetzt: 94",
+   "v jetzt: 93",
+   "v jetzt: 92",
+   "v jetzt: 91",
+   "v jetzt: 90",
+   "v jetzt: 89",
+   "v jetzt: 88",
+   "v jetzt: 87",
+   "v jetzt: 86",
+   "v jetzt: 85",
+   "v jetzt: 84",
+   "v jetzt: 83",
+   "v jetzt: 82",
+   "v jetzt: 81",
+   "v jetzt: 80",
+   "v jetzt: 79",
+   "v jetzt: 78",
+   "v jetzt: 77",
+   "v jetzt: 76",
+   "v jetzt: 75",
+   "v jetzt: 74",
+   "v jetzt: 73",
+   "v jetzt: 72",
+   "v jetzt: 71",
+   "v jetzt: 70",
+   "v jetzt: 69",
+   "v jetzt: 68",
+   "v jetzt: 67",
+   "v jetzt: 66",
+   "v jetzt: 65",
+   "v jetzt: 64"
   ]
  }
 ]

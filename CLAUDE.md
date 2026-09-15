@@ -189,6 +189,30 @@ aus `build/book_p*.png` (Ausschnitt x = 1050…1176, y = 53…179) und schreibt
 > zurueck – ohne Warnung. Nach jedem `build_book.py` also `simcheck/seitenzahlen.py` laufen
 > lassen, BEVOR die Bruecke gebaut wird. Das Werkzeug ist geeicht: Es reproduziert alle 39
 > bekannten Seitenzahlen von Klasse 10 exakt.
+>
+> **Seit dem 15.09.2026 warnt der Rueckfall laut** – und fand beim ersten Lauf
+> **37 geschaetzte Seitenzahlen in acht Baenden**. Jede einzelne war eine
+> **Datenblattseite**: Die druckt keinen QR-Code, also kann `seitenzahlen.py` sie
+> nicht messen, und fuer sie stand in der App die gerechnete Zahl. Der Bau weiss
+> sie dagegen genau, und schreibt sie jetzt auf: jedes `build_book.py` legt
+> **`build/seiten_gebaut.json`** ab (Kennung → Seite, gefuellt an derselben Stelle
+> wie `qrpages`). `export_bruecke.py` fuellt damit die Luecken, **gemessene Zahlen
+> behalten den Vorrang**, und weichen die beiden Quellen bei einer gemessenen
+> Kennung voneinander ab, sagt es das. Bleibt danach eine Kennung ohne beide
+> Quellen, steht `GESCHAETZTE Seitenzahl` auf stderr.
+>
+> **`bruecke_alle.py` hat diese Warnung zuerst verschluckt** (`capture_output=True`
+> ohne Weitergabe) – der Sammelaufruf ist genau der, den man benutzt. stderr der
+> Exporteure wird jetzt durchgereicht.
+>
+> **Die geschaetzten Zahlen waren um bis zu 134 Seiten falsch.** Nach dem Bau
+> aller 19 Baende verschoben sich **genau diese 33 Kennungen** – s6 von 39 auf
+> 87, kw1 von 105 auf 239, ge11 von 55 auf 119. Der Schaetzer stammte aus der
+> Zeit vor der 12-pt-Umstellung und rechnete mit etwa der halben Seitenzahl. Die
+> uebrigen **536 gemessenen Zahlen blieben unveraendert** – kein gedruckter
+> QR-Code ist betroffen. Stand jetzt: 569 Kennungen, 536 gemessen, 33 aus dem
+> Bau, **0 geschaetzt**, und dort wo es beide Quellen gibt, sind sie sich
+> **nirgends uneins**.
 
 **Bruecke neu erzeugen** nach jeder Inhaltsaenderung: `python3 arbeitsheft/bruecke_alle.py`
 (schreibt `js/heft-bruecke.js` aus ALLEN Heften – fuenf Realschule, vier Gesamtschule,
@@ -417,6 +441,16 @@ alle 19 Baende und ist im Abschnitt "Lehrerband" beschrieben. NUR die Oberstufe
 hat zusaetzlich `predictWarum` (drei Saetze, warum die falschen Vermutungen
 nicht tragen) und `alltagLoesung`.
 
+**Dieser Band wird mit `zusammenfuehren.py` gebaut, NICHT mit `uebernehmen.py`.**
+Der Arbeitsstand liegt einheitenweise in `content/seiten/<id>.json`; beide
+Werkzeuge schreiben dieselbe Zieldatei aus verschiedenen Quellen. Am 15.09.2026
+lief `uebernehmen.py` einmal aus Versehen darueber: `name` fiel auf den Stand von
+`plan.py` zurueck, und jeder Divisions-Doppelpunkt wurde zur Beschriftung
+geglaettet (`"4,08 m/s : 2,04 s"` → `"4,08 m/s: 2,04 s"`, 27 Stellen). `_aufraeumen`
+laesst den Doppelpunkt mit Leerzeichen auf BEIDEN Seiten jetzt stehen – in allen
+zehn `uebernehmen.py` –, und das Werkzeug verweigert den Dienst, wo
+`content/seiten/` existiert.
+
 > **Drei Sek-I-Reste im gedruckten Oberstufenband** (berichtigt 14.09.2026):
 > Die Erklaerseite „Kompetenzbereiche des Kernlehrplans" nannte **UF1-UF4 aus
 > Heft 3411**, waehrend jedes Kaertchen im Band S/E/K/B aus Heft 4721 traegt –
@@ -490,10 +524,24 @@ formatierten Werten weiterrechnen. Siehe [[rechenweg-aus-angezeigten-zahlen]].
   Dezimalpunkt-Zahlen der Simulationen (`F_R=14.7N`) las die Regex als
   Tausendertrenner. Beides behoben, dazu ein **Selbsttest mit 2 guten und 4
   kaputten Proben**. Ergebnis: von 40 Meldungen auf 12, alle erklaerbar.
-- **`simfakten.js` sieht dynamisch erzeugte Regler nicht.** Bei `arbeit` schreibt
-  `_arbRegler()` sechs `<input type="range">` erst nach dem Einhaengen in ein
-  leeres `<div>` - der Dump meldet `regler: []`. Wer sich darauf verlaesst,
-  verbietet einer Heftseite Reglerstellungen, die es gibt. NOCH OFFEN.
+- **`simfakten.js` sah dynamisch erzeugte Regler nicht** (behoben 15.09.2026).
+  Bei `arbeit` schreibt `_arbRegler()` die `<input type="range">` erst nach dem
+  Einhaengen in ein leeres `<div>` - der Dump meldete `regler: []`, und wer sich
+  darauf verliess, verbot einer Heftseite Reglerstellungen, die es gibt. Die
+  Mini-DOM haelt jede Auszeichnung an dem Element, dessen `innerHTML` sie gesetzt
+  hat; gelesen wurde aber nur die Hausschale `__m.innerHTML`. Eingesammelt wird
+  jetzt **aus allen Elementen** (`H.elemente`), und **zweimal** - vor und nach
+  dem Knopfdurchgang, weil `arbeit` je Modus ("schieben"/"tragen"/"heben")
+  ANDERE Regler in dasselbe `<div>` legt. Der TREIBER war nie betroffen:
+  `parseIds` traegt auch nachgesetzte Felder samt `oninput` ein.
+  Gemessen, alte gegen neue Fassung ueber alle 226 Simulationen: **46 aendern
+  sich, +5 Regler, +88 Knoepfe, +187 Hinweiskaesten, kein einziger Verlust.**
+  Die 187 Kaesten sind die Auswertungssaetze des Messlabors
+  („Ursprungsgerade ⇒ s ~ t. Die Steigung dieser Geraden ist die gefahrene
+  Geschwindigkeit") - also genau die Saetze, die eine Heftseite zitiert.
+  **Alle 132 Faktendumps wurden danach neu gezogen**, mit den Schaltern, die der
+  jeweilige Band hatte (EF `--voll --frames=25 --verlauf=4`, Foerderreihe die
+  Voreinstellungen).
 
 ## Messlabor - Messreihe statt Einzelablesung (seit 08.09.2026)
 
@@ -761,16 +809,76 @@ bandweise.
 
 ## simcheck/ – Pruefwerkzeuge
 
-Sieben Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
+Acht Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/README.md`.
 
 | Werkzeug | Zweck |
 |---|---|
 | `rauchtest.js` | Simulation in einer Mini-DOM oeffnen, jedes Bedienelement betaetigen, Bild gegen Bild vergleichen |
 | `simfakten.js` | auslesen, WAS eine Simulation wirklich anzeigt – Grundlage jeder Heftseite |
+| `fakten_ziehen.py` | die Faktendumps EINES Bandes ziehen – mit den festgelegten Schaltern, einmal je Simulation |
 | `werte.js` | eine Simulation einstellen und eine bestimmte Anzeige ausgeben (Rechentest) |
 | `einbaupruefung.py` | neue Simulationsdatei vor dem Einbau pruefen (Namens- und DOM-Kollisionen) |
 | `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
-| `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen; trennt Befunde von NACHGERECHNETEN Werten (t², 1/m) |
+| `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen; trennt Befunde von NACHGERECHNETEN und von GERUNDET geschriebenen Werten |
+
+**Die Faktendumps holt `simcheck/fakten_ziehen.py <band>` oder `--alle`** (seit
+15.09.2026). Vorher wurden sie von Hand gezogen, Simulation fuer Simulation -
+und die **vierzehn Baende der Sekundarstufe I hatten deshalb GAR KEINE**:
+`heft_gegen_sim.py` war dort nie gelaufen, seit es die Baende gibt. Das Werkzeug
+zieht einmal je Simulation in `simcheck/fakten/` (191 Dumps fuer alle 19 Baende
+statt 498 Ziehungen) und haelt die Schalter fest: **`--voll --frames=25
+--verlauf=4`**. Mit anderen Schaltern gezogene Dumps sind nicht vergleichbar.
+`simcheck/fakten/` liegt NICHT in der Versionsverwaltung (28 MB, in Minuten
+wieder da, veraltet still); die Dumps IN den Baenden bleiben getrackt - sie sind
+der Stand, gegen den die Seiten geschrieben wurden.
+
+**Der erste Abgleich der Sekundarstufe I hat SECHS Pruefer-Fehler freigelegt**
+(15.09.2026). Von 64 Meldungen ueber 573 Seiten blieben **48 auf 27 Seiten**
+uebrig; die uebrigen 16 waren Fehler des Werkzeugs, nicht der Seiten. Jeder ist
+mit einer Probe UND einer Gegenprobe festgehalten (`selbsttest()`, jetzt 24
+Proben):
+
+| Fehler | was er anrichtete |
+|---|---|
+| Tausendertrenner nur geschuetzt (U+00A0/U+202F) | „1 000 000 J" wurde als „000 J" gelesen, „10 194 m" als „194 m" – beide als fehlend gemeldet (en1) |
+| Schrittknoepfe genau EINMAL gedrueckt | `potentiometer` und `ohm-kennlinie` stellen ihre Groesse mit „◀/▶" ein; der Dump kannte nur Startwert plus einen Schritt. wd2/wd6 lesen die ENDEN ab |
+| Wahlgruppen nicht als Gitter gefahren | `draht` hat Laenge × Dicke × Material = 12 Zustaende; gedrueckt wurde eine Kette, nie die Kombination, die wd3 vergleicht |
+| `<select>` ueberhaupt nicht bedient | `sonnensystem` waehlt seinen Planeten so aus – im Dump stand immer die Erde (12.756 km). g7 und wa6 lesen Merkur, Jupiter, Neptun |
+| Regler nur EINZELN verstellt | `leistung-rs` zeigt 13,34 PS erst an ALLEN DREI Anschlaegen (100 kg · 10 m / 1 s). Einzeln kam der Dump nie ueber 1 PS |
+| Rundung nur im Kommentar | Der Kommentar versprach seit Monaten „auf die Stellen gerundet, mit denen er auf der Seite steht" – der Code verglich exakt. „rund 4 900 km" gegen 4.879 km am Bildschirm |
+
+> **Die Regler-Ecken haben einen zweiten Anlauf gebraucht.** Der naheliegende
+> Weg – erst alle Werte setzen, dann alle Handler ausloesen – scheiterte:
+> `_lrsSync()` in `leistung-rs` schreibt nach JEDEM Handler alle drei Regler
+> aus dem eigenen Zustand zurueck und loeschte damit die noch nicht gefeuerten
+> Werte. Die Ecke „alle drei am Anschlag" kam nie zustande, und der Dump sah
+> genauso aus wie vorher. Gefahren wird deshalb je Regler **setzen UND sofort
+> feuern**.
+
+**`pruefe()` gibt jetzt FUENF Werte zurueck**, nicht vier: der fuenfte Eimer
+sind die **sichtbar gerundeten** Werte. Angehaengt, nicht eingeschoben – wer
+`[0]` oder `[1]` liest, bleibt richtig ([[arity-aenderung-bricht-werkzeuge-still]]).
+Zwei Riegel halten den Eimer eng: Der Heftwert muss auf einer **Null enden**
+(„4 900", nicht „4 879" – eine Seite, die 147 J schreibt, behauptet 147 J), und
+der Bildschirmwert muss **unter einem Prozent** daneben liegen. Ueber die
+Stellenzahl allein haette „1 000 000 J" jeden Wert zwischen 0,5 und 1,5
+Millionen gedeckt.
+
+> **Was nach den sechs Berichtigungen uebrig bleibt: 48 Werte auf 27 Seiten in
+> zehn Baenden** – keiner in `arbeitsheft` (5/6), gts7/8/9, EF oder der
+> Foerderreihe. Eingeordnet wird nach der Frage „KANN die Simulation den Wert
+> zeigen", nicht „steht er im Dump": 19 liegen AUSSERHALB des ganzen
+> angezeigten Wertebereichs (`en14` will 147 J, die Simulation zeigt
+> 250-1000 J), 14 betreffen eine Groesse, die die Simulation gar nicht anzeigt
+> (`transformator` zeigt keine Stromstaerke), 17 liegen innerhalb und sind
+> vermutlich richtig, nur nicht nachgewiesen. **Das ist eine Inhaltsfrage, keine
+> Werkzeugfrage** – und die Baende sind gedruckt.
+
+> **Klasse 5/6 hat kein `plan.py`.** Der Band war der erste, seine Zuordnung
+> Kennung → Simulation steht als dict `SIM` in `arbeitsheft/build_book.py`. Wer
+> nur `plan.py` liest, haelt diesen Band fuer leer **und prueft ihn nie** -
+> genau das war bis zum 15.09.2026 der Fall. `fakten_ziehen.sim_von()` kennt
+> beide Bauformen.
 
 > **Geprueft werden `forschen`, `tabRows`, `beobachtung` – und seit dem
 > 14.09.2026 jeder Satz, der BEHAUPTET, etwas stehe am Bildschirm**

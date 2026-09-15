@@ -92,72 +92,432 @@
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
    },
    {
+    "einstellung": "➕ positiv · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|248.90,72.00 | lineTo|222.90,72.00 | stroke| | beginPath| | moveTo|222.90,72.00 | lineTo|228.90,67.00 | lineTo|228.90,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|185.10,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|174.10,118.00 | lineTo|196.10,118.00 | moveTo|185.10,107.00 | lineTo|185.10,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|254.90,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|243.90,118.00 | lineTo|265.90,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|185.10|164.00 | fillText|Kugel B|254.90|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "➕ positiv · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.55,72.00 | lineTo|221.55,72.00 | stroke| | beginPath| | moveTo|221.55,72.00 | lineTo|227.55,67.00 | lineTo|227.55,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.45,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.45,118.00 | lineTo|197.45,118.00 | moveTo|186.45,107.00 | lineTo|186.45,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.55,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.55,118.00 | lineTo|264.55,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.45|164.00 | fillText|Kugel B|253.55|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "➕ positiv · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.16,72.00 | lineTo|221.16,72.00 | stroke| | beginPath| | moveTo|221.16,72.00 | lineTo|227.16,67.00 | lineTo|227.16,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.84,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.84,118.00 | lineTo|197.84,118.00 | moveTo|186.84,107.00 | lineTo|186.84,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.16,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.16,118.00 | lineTo|264.16,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.84|164.00 | fillText|Kugel B|253.16|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "➕ positiv · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.05,72.00 | lineTo|221.05,72.00 | stroke| | beginPath| | moveTo|221.05,72.00 | lineTo|227.05,67.00 | lineTo|227.05,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.95,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.95,118.00 | lineTo|197.95,118.00 | moveTo|186.95,107.00 | lineTo|186.95,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.05,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.05,118.00 | lineTo|264.05,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.95|164.00 | fillText|Kugel B|253.05|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "➖ negativ",
     "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab."
+   },
+   {
+    "einstellung": "➖ negativ · nach 50 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|305.64,72.00 | lineTo|331.64,72.00 | stroke| | beginPath| | moveTo|331.64,72.00 | lineTo|325.64,67.00 | lineTo|325.64,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|140.36,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|129.36,118.00 | lineTo|151.36,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|299.64,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|288.64,118.00 | lineTo|310.64,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|140.36|164.00 | fillText|Kugel B|299.64|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
+   },
+   {
+    "einstellung": "➖ negativ · nach 75 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|308.73,72.00 | lineTo|334.73,72.00 | stroke| | beginPath| | moveTo|334.73,72.00 | lineTo|328.73,67.00 | lineTo|328.73,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|137.27,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|126.27,118.00 | lineTo|148.27,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|302.73,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|291.73,118.00 | lineTo|313.73,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|137.27|164.00 | fillText|Kugel B|302.73|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
+   },
+   {
+    "einstellung": "➖ negativ · nach 100 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|309.63,72.00 | lineTo|335.63,72.00 | stroke| | beginPath| | moveTo|335.63,72.00 | lineTo|329.63,67.00 | lineTo|329.63,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|136.37,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|125.37,118.00 | lineTo|147.37,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|303.63,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|292.63,118.00 | lineTo|314.63,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|136.37|164.00 | fillText|Kugel B|303.63|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
+   },
+   {
+    "einstellung": "➖ negativ · nach 125 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|309.89,72.00 | lineTo|335.89,72.00 | stroke| | beginPath| | moveTo|335.89,72.00 | lineTo|329.89,67.00 | lineTo|329.89,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|136.11,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|125.11,118.00 | lineTo|147.11,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|303.89,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|292.89,118.00 | lineTo|314.89,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|136.11|164.00 | fillText|Kugel B|303.89|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
    },
    {
     "einstellung": "➕ positiv",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
    },
    {
+    "einstellung": "➕ positiv · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|251.35,72.00 | lineTo|225.35,72.00 | stroke| | beginPath| | moveTo|225.35,72.00 | lineTo|231.35,67.00 | lineTo|231.35,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|182.65,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|171.65,118.00 | lineTo|193.65,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|257.35,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|246.35,118.00 | lineTo|268.35,118.00 | moveTo|257.35,107.00 | lineTo|257.35,129.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|182.65|164.00 | fillText|Kugel B|257.35|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "➕ positiv · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|248.27,72.00 | lineTo|222.27,72.00 | stroke| | beginPath| | moveTo|222.27,72.00 | lineTo|228.27,67.00 | lineTo|228.27,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|185.73,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|174.73,118.00 | lineTo|196.73,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|254.27,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|243.27,118.00 | lineTo|265.27,118.00 | moveTo|254.27,107.00 | lineTo|254.27,129.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|185.73|164.00 | fillText|Kugel B|254.27|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "➕ positiv · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.37,72.00 | lineTo|221.37,72.00 | stroke| | beginPath| | moveTo|221.37,72.00 | lineTo|227.37,67.00 | lineTo|227.37,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.63,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.63,118.00 | lineTo|197.63,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.37,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.37,118.00 | lineTo|264.37,118.00 | moveTo|253.37,107.00 | lineTo|253.37,129.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.63|164.00 | fillText|Kugel B|253.37|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "➕ positiv · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.11,72.00 | lineTo|221.11,72.00 | stroke| | beginPath| | moveTo|221.11,72.00 | lineTo|227.11,67.00 | lineTo|227.11,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.89,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.89,118.00 | lineTo|197.89,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.11,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.11,118.00 | lineTo|264.11,118.00 | moveTo|253.11,107.00 | lineTo|253.11,129.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.89|164.00 | fillText|Kugel B|253.11|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "➖ negativ",
     "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab."
+   },
+   {
+    "einstellung": "➖ negativ · nach 50 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|305.65,72.00 | lineTo|331.65,72.00 | stroke| | beginPath| | moveTo|331.65,72.00 | lineTo|325.65,67.00 | lineTo|325.65,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|140.35,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|129.35,118.00 | lineTo|151.35,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|299.65,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|288.65,118.00 | lineTo|310.65,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|140.35|164.00 | fillText|Kugel B|299.65|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
+   },
+   {
+    "einstellung": "➖ negativ · nach 75 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|308.73,72.00 | lineTo|334.73,72.00 | stroke| | beginPath| | moveTo|334.73,72.00 | lineTo|328.73,67.00 | lineTo|328.73,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|137.27,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|126.27,118.00 | lineTo|148.27,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|302.73,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|291.73,118.00 | lineTo|313.73,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|137.27|164.00 | fillText|Kugel B|302.73|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
+   },
+   {
+    "einstellung": "➖ negativ · nach 100 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|309.63,72.00 | lineTo|335.63,72.00 | stroke| | beginPath| | moveTo|335.63,72.00 | lineTo|329.63,67.00 | lineTo|329.63,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|136.37,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|125.37,118.00 | lineTo|147.37,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|303.63,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|292.63,118.00 | lineTo|314.63,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|136.37|164.00 | fillText|Kugel B|303.63|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
+   },
+   {
+    "einstellung": "➖ negativ · nach 125 Frames",
+    "text": "ladStatus: Beide Kugeln sind negativ (−) – gleiche Ladung. Sie stoßen sich ab.",
+    "bild": "fill| | beginPath| | moveTo|309.89,72.00 | lineTo|335.89,72.00 | stroke| | beginPath| | moveTo|335.89,72.00 | lineTo|329.89,67.00 | lineTo|329.89,77.00 | closePath| | set:fillStyle=#f87171 | fill| | set:fillStyle=[object Object] | beginPath| | arc|136.11,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|125.11,118.00 | lineTo|147.11,118.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|303.89,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|292.89,118.00 | lineTo|314.89,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|136.11|164.00 | fillText|Kugel B|303.89|164.00 | set:fillStyle=#fca5a5 | set:font=700 13px sans-serif | fillText|gleiche Ladung → abstoßen|220.00|22.00"
    },
    {
     "einstellung": "↺ Zurücksetzen",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an."
    },
    {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|249.31,72.00 | lineTo|223.31,72.00 | stroke| | beginPath| | moveTo|223.31,72.00 | lineTo|229.31,67.00 | lineTo|229.31,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|184.69,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|173.69,118.00 | lineTo|195.69,118.00 | moveTo|184.69,107.00 | lineTo|184.69,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|255.31,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|244.31,118.00 | lineTo|266.31,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|184.69|164.00 | fillText|Kugel B|255.31|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.67,72.00 | lineTo|221.67,72.00 | stroke| | beginPath| | moveTo|221.67,72.00 | lineTo|227.67,67.00 | lineTo|227.67,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.33,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.33,118.00 | lineTo|197.33,118.00 | moveTo|186.33,107.00 | lineTo|186.33,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.67,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.67,118.00 | lineTo|264.67,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.33|164.00 | fillText|Kugel B|253.67|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.20,72.00 | lineTo|221.20,72.00 | stroke| | beginPath| | moveTo|221.20,72.00 | lineTo|227.20,67.00 | lineTo|227.20,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.80,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.80,118.00 | lineTo|197.80,118.00 | moveTo|186.80,107.00 | lineTo|186.80,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.20,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.20,118.00 | lineTo|264.20,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.80|164.00 | fillText|Kugel B|253.20|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.",
+    "bild": "moveTo|247.06,72.00 | lineTo|221.06,72.00 | stroke| | beginPath| | moveTo|221.06,72.00 | lineTo|227.06,67.00 | lineTo|227.06,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|186.94,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|175.94,118.00 | lineTo|197.94,118.00 | moveTo|186.94,107.00 | lineTo|186.94,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.06,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.06,118.00 | lineTo|264.06,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|186.94|164.00 | fillText|Kugel B|253.06|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "Nur eine",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind mehr als eine."
+   },
+   {
+    "einstellung": "Nur eine · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind mehr als eine.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur eine · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind mehr als eine.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur eine · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind mehr als eine.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Nur eine · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind mehr als eine.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    },
    {
     "einstellung": "Zwei (positiv und negativ)",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✓ Richtig! Es gibt positive (+) und negative (−) Ladung."
    },
    {
+    "einstellung": "Zwei (positiv und negativ) · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✓ Richtig! Es gibt positive (+) und negative (−) Ladung.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Zwei (positiv und negativ) · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✓ Richtig! Es gibt positive (+) und negative (−) Ladung.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Zwei (positiv und negativ) · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✓ Richtig! Es gibt positive (+) und negative (−) Ladung.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Zwei (positiv und negativ) · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✓ Richtig! Es gibt positive (+) und negative (−) Ladung.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "Drei",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei."
+   },
+   {
+    "einstellung": "Drei · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Drei · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Drei · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Drei · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    },
    {
     "einstellung": "Sie ziehen sich an",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Gleiche Ladungen ziehen sich nicht an."
    },
    {
+    "einstellung": "Sie ziehen sich an · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Gleiche Ladungen ziehen sich nicht an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie ziehen sich an · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Gleiche Ladungen ziehen sich nicht an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie ziehen sich an · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Gleiche Ladungen ziehen sich nicht an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie ziehen sich an · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Gleiche Ladungen ziehen sich nicht an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "Sie stoßen sich ab",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✓ Richtig! Gleiche Ladungen stoßen sich ab."
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✓ Richtig! Gleiche Ladungen stoßen sich ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✓ Richtig! Gleiche Ladungen stoßen sich ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✓ Richtig! Gleiche Ladungen stoßen sich ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✓ Richtig! Gleiche Ladungen stoßen sich ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    },
    {
     "einstellung": "Nichts",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft."
    },
    {
+    "einstellung": "Nichts · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Nichts · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Nichts · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Nichts · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "Sie stoßen sich ab",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Ungleiche Ladungen stoßen sich nicht ab."
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Ungleiche Ladungen stoßen sich nicht ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Ungleiche Ladungen stoßen sich nicht ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Ungleiche Ladungen stoßen sich nicht ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie stoßen sich ab · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Ungleiche Ladungen stoßen sich nicht ab.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    },
    {
     "einstellung": "Sie ziehen sich an",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✓ Richtig! Plus und minus ziehen sich an."
    },
    {
+    "einstellung": "Sie ziehen sich an · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✓ Richtig! Plus und minus ziehen sich an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie ziehen sich an · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✓ Richtig! Plus und minus ziehen sich an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie ziehen sich an · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✓ Richtig! Plus und minus ziehen sich an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie ziehen sich an · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✓ Richtig! Plus und minus ziehen sich an.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "Sie verschwinden",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen."
+   },
+   {
+    "einstellung": "Sie verschwinden · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie verschwinden · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie verschwinden · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "Sie verschwinden · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "😐 geht so",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.  ||  ladSelfOut: Übe noch ein bisschen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    },
    {
     "einstellung": "😃 sicher",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen."
    },
    {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "ladStatus: Eine Kugel ist positiv (+), die andere negativ (−) – ungleiche Ladung. Sie ziehen sich an.  ||  ladFb0: ✗ Es sind genau zwei.  ||  ladFb1: ✗ Es wirkt sehr wohl eine Kraft.  ||  ladFb2: ✗ Die Ladungen bleiben bestehen.",
+    "bild": "moveTo|247.00,72.00 | lineTo|221.00,72.00 | stroke| | beginPath| | moveTo|221.00,72.00 | lineTo|227.00,67.00 | lineTo|227.00,77.00 | closePath| | set:fillStyle=#4ade80 | fill| | set:fillStyle=[object Object] | beginPath| | arc|187.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|176.00,118.00 | lineTo|198.00,118.00 | moveTo|187.00,107.00 | lineTo|187.00,129.00 | stroke| | set:fillStyle=[object Object] | beginPath| | arc|253.00,118.00,28.00,0.00,6.28 | fill| | set:strokeStyle=#fff | set:lineWidth=4 | beginPath| | moveTo|242.00,118.00 | lineTo|264.00,118.00 | stroke| | set:fillStyle=#94a3b8 | set:font=11px sans-serif | set:textAlign=center | fillText|Kugel A|187.00|164.00 | fillText|Kugel B|253.00|164.00 | set:fillStyle=#86efac | set:font=700 13px sans-serif | fillText|ungleiche Ladung → anziehen|220.00|22.00"
    }
   ],
   "bildtexte": [

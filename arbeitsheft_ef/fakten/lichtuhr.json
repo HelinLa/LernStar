@@ -95,7 +95,11 @@
    }
   ],
   "hinweise": [
-   "(c·ΔtRuh)² = (v·ΔtRuh)² + (c·Δtbew)² | Δtbew = ΔtRuh·√(1−v²/c²) | c = const"
+   "(c·ΔtRuh)² = (v·ΔtRuh)² + (c·Δtbew)² | Δtbew = ΔtRuh·√(1−v²/c²) | c = const",
+   "Je näher v an c kommt, desto flacher wird der Zickzack und desto länger der Lichtweg in A – die Zeitdehnung wächst über alle Grenzen. Bei β = 0 fallen beide Wege zusammen, und es gibt keine Dehnung.",
+   "Es genügen der Satz des Pythagoras und die Konstanz von c – mehr Mathematik braucht die berühmteste Formel der Zeit nicht. Bei v = 0,60·c ist eine Zeitspanne in der bewegten Uhr nur 80,0 % so lang wie die in A gemessene.",
+   "Während in A eine Stunde vergeht, tickt die mit 0,600·c bewegte Uhr nur 48,0 Minuten weiter. Bei v = 0,866·c ist der Faktor genau ½ – die bewegte Uhr läuft halb so schnell. Der Effekt ist im Alltag unmerklich (bei 1000 km/h weicht der Faktor erst in der 13. Nachkommastelle von 1 ab), wächst aber nahe c dramatisch. Wechselseitigkeit: Auch B sieht die A-Uhren langsamer – kein Widerspruch, denn A misst mit zwei Uhren, die für B nicht synchron sind.",
+   "Miss den Zeitdehnungsfaktor bei mehreren Geschwindigkeiten. Über β² aufgetragen ergibt f² eine Gerade der Steigung −1."
   ],
   "status": [
    {

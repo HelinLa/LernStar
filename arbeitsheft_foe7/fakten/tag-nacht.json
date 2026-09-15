@@ -87,244 +87,432 @@
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag."
    },
    {
+    "einstellung": "⏯ Pause · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.",
+    "bild": "lineTo|299.10,39.51 | lineTo|296.56,39.27 | lineTo|294.02,39.10 | lineTo|291.48,39.01 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|321.19,45.25 | lineTo|318.83,44.30 | lineTo|316.43,43.43 | lineTo|314.02,42.64 | lineTo|311.57,41.93 | lineTo|309.11,41.29 | lineTo|306.63,40.73 | lineTo|304.13,40.24 | lineTo|301.62,39.84 | lineTo|299.10,39.51 | lineTo|296.56,39.27 | lineTo|294.02,39.10 | lineTo|291.48,39.01 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "⏯ Pause · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.",
+    "bild": "lineTo|278.63,39.80 | lineTo|276.12,40.20 | lineTo|273.62,40.67 | lineTo|271.13,41.23 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|301.46,39.81 | lineTo|298.93,39.49 | lineTo|296.40,39.25 | lineTo|293.86,39.09 | lineTo|291.32,39.01 | lineTo|288.77,39.01 | lineTo|286.23,39.09 | lineTo|283.69,39.25 | lineTo|281.16,39.48 | lineTo|278.63,39.80 | lineTo|276.12,40.20 | lineTo|273.62,40.67 | lineTo|271.13,41.23 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "⏯ Pause · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.",
+    "bild": "lineTo|258.89,45.21 | lineTo|256.56,46.22 | lineTo|254.26,47.31 | lineTo|251.99,48.47 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|280.99,39.50 | lineTo|278.47,39.82 | lineTo|275.96,40.23 | lineTo|273.46,40.71 | lineTo|270.98,41.27 | lineTo|268.51,41.90 | lineTo|266.07,42.62 | lineTo|263.65,43.41 | lineTo|261.26,44.27 | lineTo|258.89,45.21 | lineTo|256.56,46.22 | lineTo|254.26,47.31 | lineTo|251.99,48.47 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "⏯ Pause · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.",
+    "bild": "lineTo|241.14,55.39 | lineTo|239.14,56.96 | lineTo|237.18,58.59 | lineTo|235.28,60.28 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|261.11,44.33 | lineTo|258.74,45.27 | lineTo|256.41,46.29 | lineTo|254.11,47.38 | lineTo|251.85,48.55 | lineTo|249.62,49.78 | lineTo|247.44,51.08 | lineTo|245.29,52.45 | lineTo|243.20,53.89 | lineTo|241.14,55.39 | lineTo|239.14,56.96 | lineTo|237.18,58.59 | lineTo|235.28,60.28 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "Die Sonne bewegt sich um die Erde",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Nicht die Sonne bewegt sich – die Erde dreht sich."
+   },
+   {
+    "einstellung": "Die Sonne bewegt sich um die Erde · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Nicht die Sonne bewegt sich – die Erde dreht sich.",
+    "bild": "lineTo|318.06,44.02 | lineTo|315.66,43.17 | lineTo|313.24,42.40 | lineTo|310.79,41.71 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|338.15,54.86 | lineTo|336.08,53.38 | lineTo|333.96,51.97 | lineTo|331.80,50.62 | lineTo|329.60,49.34 | lineTo|327.37,48.13 | lineTo|325.09,47.00 | lineTo|322.78,45.93 | lineTo|320.44,44.94 | lineTo|318.06,44.02 | lineTo|315.66,43.17 | lineTo|313.24,42.40 | lineTo|310.79,41.71 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Sonne bewegt sich um die Erde · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Nicht die Sonne bewegt sich – die Erde dreht sich.",
+    "bild": "lineTo|298.12,39.41 | lineTo|295.59,39.19 | lineTo|293.05,39.06 | lineTo|290.50,39.00 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|320.29,44.87 | lineTo|317.91,43.96 | lineTo|315.51,43.12 | lineTo|313.08,42.36 | lineTo|310.63,41.67 | lineTo|308.16,41.06 | lineTo|305.67,40.53 | lineTo|303.17,40.08 | lineTo|300.65,39.70 | lineTo|298.12,39.41 | lineTo|295.59,39.19 | lineTo|293.05,39.06 | lineTo|290.50,39.00 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Sonne bewegt sich um die Erde · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Nicht die Sonne bewegt sich – die Erde dreht sich.",
+    "bild": "lineTo|277.67,39.94 | lineTo|275.16,40.37 | lineTo|272.66,40.88 | lineTo|270.19,41.46 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|300.49,39.68 | lineTo|297.96,39.39 | lineTo|295.43,39.18 | lineTo|292.88,39.05 | lineTo|290.34,39.00 | lineTo|287.80,39.03 | lineTo|285.25,39.14 | lineTo|282.72,39.33 | lineTo|280.19,39.60 | lineTo|277.67,39.94 | lineTo|275.16,40.37 | lineTo|272.66,40.88 | lineTo|270.19,41.46 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Sonne bewegt sich um die Erde · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Nicht die Sonne bewegt sich – die Erde dreht sich.",
+    "bild": "lineTo|257.99,45.59 | lineTo|255.67,46.63 | lineTo|253.39,47.75 | lineTo|251.13,48.93 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|280.02,39.62 | lineTo|277.50,39.97 | lineTo|275.00,40.40 | lineTo|272.50,40.91 | lineTo|270.03,41.50 | lineTo|267.57,42.17 | lineTo|265.14,42.91 | lineTo|262.73,43.73 | lineTo|260.35,44.62 | lineTo|257.99,45.59 | lineTo|255.67,46.63 | lineTo|253.39,47.75 | lineTo|251.13,48.93 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "Die Erde dreht sich um sich selbst",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✓ Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht."
    },
    {
+    "einstellung": "Die Erde dreht sich um sich selbst · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✓ Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht.",
+    "bild": "lineTo|335.41,52.92 | lineTo|333.28,51.53 | lineTo|331.10,50.20 | lineTo|328.89,48.95 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|352.32,68.25 | lineTo|350.66,66.32 | lineTo|348.94,64.44 | lineTo|347.17,62.62 | lineTo|345.34,60.85 | lineTo|343.46,59.14 | lineTo|341.52,57.49 | lineTo|339.53,55.91 | lineTo|337.49,54.38 | lineTo|335.41,52.92 | lineTo|333.28,51.53 | lineTo|331.10,50.20 | lineTo|328.89,48.95 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Erde dreht sich um sich selbst · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✓ Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht.",
+    "bild": "lineTo|317.14,43.68 | lineTo|314.73,42.87 | lineTo|312.30,42.13 | lineTo|309.84,41.47 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|337.36,54.29 | lineTo|335.27,52.83 | lineTo|333.14,51.44 | lineTo|330.96,50.12 | lineTo|328.75,48.87 | lineTo|326.50,47.69 | lineTo|324.21,46.58 | lineTo|321.88,45.54 | lineTo|319.53,44.57 | lineTo|317.14,43.68 | lineTo|314.73,42.87 | lineTo|312.30,42.13 | lineTo|309.84,41.47 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Erde dreht sich um sich selbst · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✓ Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht.",
+    "bild": "lineTo|297.15,39.32 | lineTo|294.61,39.13 | lineTo|292.07,39.03 | lineTo|289.53,39.00 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|319.38,44.51 | lineTo|316.99,43.63 | lineTo|314.58,42.82 | lineTo|312.14,42.09 | lineTo|309.68,41.43 | lineTo|307.21,40.85 | lineTo|304.71,40.35 | lineTo|302.20,39.92 | lineTo|299.68,39.58 | lineTo|297.15,39.32 | lineTo|294.61,39.13 | lineTo|292.07,39.03 | lineTo|289.53,39.00 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Erde dreht sich um sich selbst · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✓ Richtig! Die Erddrehung bringt jeden Ort in Tag und Nacht.",
+    "bild": "lineTo|276.70,40.10 | lineTo|274.20,40.56 | lineTo|271.71,41.09 | lineTo|269.24,41.71 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|299.52,39.56 | lineTo|296.99,39.30 | lineTo|294.45,39.12 | lineTo|291.91,39.02 | lineTo|289.36,39.00 | lineTo|286.82,39.06 | lineTo|284.28,39.20 | lineTo|281.74,39.42 | lineTo|279.22,39.72 | lineTo|276.70,40.10 | lineTo|274.20,40.56 | lineTo|271.71,41.09 | lineTo|269.24,41.71 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "Die Sonne wird nachts ausgeschaltet",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter."
+   },
+   {
+    "einstellung": "Die Sonne wird nachts ausgeschaltet · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.",
+    "bild": "lineTo|239.60,56.59 | lineTo|237.63,58.21 | lineTo|235.72,59.88 | lineTo|233.85,61.62 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|259.29,45.05 | lineTo|256.95,46.05 | lineTo|254.64,47.12 | lineTo|252.37,48.27 | lineTo|250.14,49.49 | lineTo|247.94,50.77 | lineTo|245.79,52.13 | lineTo|243.68,53.55 | lineTo|241.61,55.04 | lineTo|239.60,56.59 | lineTo|237.63,58.21 | lineTo|235.72,59.88 | lineTo|233.85,61.62 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Sonne wird nachts ausgeschaltet · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.",
+    "bild": "lineTo|334.59,52.38 | lineTo|332.45,51.01 | lineTo|330.26,49.71 | lineTo|328.03,48.48 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|351.69,67.51 | lineTo|350.01,65.59 | lineTo|348.27,63.74 | lineTo|346.47,61.93 | lineTo|344.62,60.19 | lineTo|342.72,58.50 | lineTo|340.76,56.88 | lineTo|338.75,55.31 | lineTo|336.70,53.81 | lineTo|334.59,52.38 | lineTo|332.45,51.01 | lineTo|330.26,49.71 | lineTo|328.03,48.48 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Sonne wird nachts ausgeschaltet · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.",
+    "bild": "lineTo|316.22,43.36 | lineTo|313.80,42.58 | lineTo|311.36,41.87 | lineTo|308.89,41.23 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|336.56,53.72 | lineTo|334.46,52.29 | lineTo|332.31,50.93 | lineTo|330.12,49.63 | lineTo|327.89,48.41 | lineTo|325.62,47.25 | lineTo|323.32,46.17 | lineTo|320.98,45.16 | lineTo|318.62,44.22 | lineTo|316.22,43.36 | lineTo|313.80,42.58 | lineTo|311.36,41.87 | lineTo|308.89,41.23 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die Sonne wird nachts ausgeschaltet · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.",
+    "bild": "lineTo|296.18,39.24 | lineTo|293.64,39.08 | lineTo|291.09,39.01 | lineTo|288.55,39.01 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|318.46,44.17 | lineTo|316.07,43.31 | lineTo|313.65,42.53 | lineTo|311.20,41.82 | lineTo|308.74,41.20 | lineTo|306.25,40.65 | lineTo|303.75,40.18 | lineTo|301.24,39.78 | lineTo|298.71,39.47 | lineTo|296.18,39.24 | lineTo|293.64,39.08 | lineTo|291.09,39.01 | lineTo|288.55,39.01 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "1 Stunde",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ Das wäre viel zu schnell."
    },
    {
+    "einstellung": "1 Stunde · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ Das wäre viel zu schnell.",
+    "bild": "lineTo|256.21,46.39 | lineTo|253.91,47.48 | lineTo|251.65,48.65 | lineTo|249.43,49.89 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|278.09,39.88 | lineTo|275.58,40.29 | lineTo|273.08,40.79 | lineTo|270.60,41.36 | lineTo|268.14,42.01 | lineTo|265.70,42.73 | lineTo|263.29,43.53 | lineTo|260.90,44.41 | lineTo|258.54,45.36 | lineTo|256.21,46.39 | lineTo|253.91,47.48 | lineTo|251.65,48.65 | lineTo|249.43,49.89 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "1 Stunde · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ Das wäre viel zu schnell.",
+    "bild": "lineTo|238.84,57.20 | lineTo|236.89,58.84 | lineTo|234.99,60.54 | lineTo|233.15,62.30 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|258.39,45.42 | lineTo|256.06,46.45 | lineTo|253.77,47.56 | lineTo|251.51,48.73 | lineTo|249.29,49.97 | lineTo|247.11,51.29 | lineTo|244.97,52.67 | lineTo|242.88,54.12 | lineTo|240.83,55.63 | lineTo|238.84,57.20 | lineTo|236.89,58.84 | lineTo|234.99,60.54 | lineTo|233.15,62.30 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "1 Stunde · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ Das wäre viel zu schnell.",
+    "bild": "lineTo|333.77,51.85 | lineTo|331.61,50.51 | lineTo|329.41,49.23 | lineTo|327.17,48.03 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|351.05,66.77 | lineTo|349.35,64.87 | lineTo|347.59,63.04 | lineTo|345.77,61.26 | lineTo|343.90,59.53 | lineTo|341.97,57.87 | lineTo|339.99,56.27 | lineTo|337.97,54.73 | lineTo|335.89,53.26 | lineTo|333.77,51.85 | lineTo|331.61,50.51 | lineTo|329.41,49.23 | lineTo|327.17,48.03 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "1 Stunde · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ Das wäre viel zu schnell.",
+    "bild": "lineTo|315.30,43.05 | lineTo|312.87,42.29 | lineTo|310.41,41.61 | lineTo|307.94,41.01 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|335.76,53.16 | lineTo|333.64,51.76 | lineTo|331.47,50.42 | lineTo|329.27,49.15 | lineTo|327.02,47.96 | lineTo|324.74,46.83 | lineTo|322.43,45.77 | lineTo|320.08,44.79 | lineTo|317.70,43.88 | lineTo|315.30,43.05 | lineTo|312.87,42.29 | lineTo|310.41,41.61 | lineTo|307.94,41.01 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "24 Stunden",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✓ Richtig! Die Erde dreht sich in etwa 24 Stunden einmal."
+   },
+   {
+    "einstellung": "24 Stunden · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✓ Richtig! Die Erde dreht sich in etwa 24 Stunden einmal.",
+    "bild": "lineTo|274.78,40.44 | lineTo|272.29,40.96 | lineTo|269.81,41.56 | lineTo|267.36,42.23 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|297.58,39.36 | lineTo|295.04,39.16 | lineTo|292.50,39.04 | lineTo|289.95,39.00 | lineTo|287.41,39.04 | lineTo|284.87,39.16 | lineTo|282.33,39.36 | lineTo|279.80,39.64 | lineTo|277.28,40.00 | lineTo|274.78,40.44 | lineTo|272.29,40.96 | lineTo|269.81,41.56 | lineTo|267.36,42.23 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "24 Stunden · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✓ Richtig! Die Erde dreht sich in etwa 24 Stunden einmal.",
+    "bild": "lineTo|255.32,46.80 | lineTo|253.04,47.92 | lineTo|250.79,49.12 | lineTo|248.59,50.39 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|277.12,40.03 | lineTo|274.62,40.47 | lineTo|272.13,41.00 | lineTo|269.65,41.60 | lineTo|267.20,42.27 | lineTo|264.77,43.03 | lineTo|262.37,43.86 | lineTo|259.99,44.77 | lineTo|257.64,45.75 | lineTo|255.32,46.80 | lineTo|253.04,47.92 | lineTo|250.79,49.12 | lineTo|248.59,50.39 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "24 Stunden · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✓ Richtig! Die Erde dreht sich in etwa 24 Stunden einmal.",
+    "bild": "lineTo|238.08,57.83 | lineTo|236.16,59.49 | lineTo|234.28,61.21 | lineTo|232.46,62.99 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|257.49,45.81 | lineTo|255.18,46.87 | lineTo|252.90,48.00 | lineTo|250.65,49.20 | lineTo|248.45,50.47 | lineTo|246.28,51.81 | lineTo|244.16,53.22 | lineTo|242.09,54.69 | lineTo|240.06,56.23 | lineTo|238.08,57.83 | lineTo|236.16,59.49 | lineTo|234.28,61.21 | lineTo|232.46,62.99 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "24 Stunden · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✓ Richtig! Die Erde dreht sich in etwa 24 Stunden einmal.",
+    "bild": "lineTo|332.95,51.32 | lineTo|330.77,50.01 | lineTo|328.55,48.76 | lineTo|326.30,47.59 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|350.40,66.03 | lineTo|348.68,64.16 | lineTo|346.90,62.35 | lineTo|345.06,60.59 | lineTo|343.16,58.89 | lineTo|341.22,57.25 | lineTo|339.22,55.67 | lineTo|337.18,54.16 | lineTo|335.09,52.71 | lineTo|332.95,51.32 | lineTo|330.77,50.01 | lineTo|328.55,48.76 | lineTo|326.30,47.59 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "1 Jahr",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne."
    },
    {
+    "einstellung": "1 Jahr · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.",
+    "bild": "lineTo|294.23,39.11 | lineTo|291.68,39.02 | lineTo|289.14,39.00 | lineTo|286.60,39.07 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|316.63,43.50 | lineTo|314.21,42.70 | lineTo|311.77,41.98 | lineTo|309.31,41.34 | lineTo|306.83,40.77 | lineTo|304.33,40.28 | lineTo|301.82,39.87 | lineTo|299.30,39.54 | lineTo|296.77,39.28 | lineTo|294.23,39.11 | lineTo|291.68,39.02 | lineTo|289.14,39.00 | lineTo|286.60,39.07 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "1 Jahr · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.",
+    "bild": "lineTo|273.82,40.63 | lineTo|271.33,41.18 | lineTo|268.87,41.81 | lineTo|266.42,42.51 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|296.60,39.27 | lineTo|294.06,39.10 | lineTo|291.52,39.01 | lineTo|288.98,39.01 | lineTo|286.43,39.08 | lineTo|283.89,39.23 | lineTo|281.36,39.46 | lineTo|278.83,39.77 | lineTo|276.32,40.16 | lineTo|273.82,40.63 | lineTo|271.33,41.18 | lineTo|268.87,41.81 | lineTo|266.42,42.51 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "1 Jahr · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.",
+    "bild": "lineTo|254.44,47.22 | lineTo|252.17,48.37 | lineTo|249.94,49.60 | lineTo|247.75,50.89 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|276.16,40.19 | lineTo|273.66,40.67 | lineTo|271.17,41.22 | lineTo|268.71,41.85 | lineTo|266.26,42.56 | lineTo|263.84,43.34 | lineTo|261.45,44.20 | lineTo|259.08,45.13 | lineTo|256.75,46.14 | lineTo|254.44,47.22 | lineTo|252.17,48.37 | lineTo|249.94,49.60 | lineTo|247.75,50.89 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "1 Jahr · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.",
+    "bild": "lineTo|237.34,58.46 | lineTo|235.43,60.14 | lineTo|233.58,61.89 | lineTo|231.78,63.69 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|256.60,46.21 | lineTo|254.30,47.29 | lineTo|252.03,48.45 | lineTo|249.80,49.68 | lineTo|247.61,50.98 | lineTo|245.46,52.34 | lineTo|243.36,53.77 | lineTo|241.30,55.27 | lineTo|239.30,56.83 | lineTo|237.34,58.46 | lineTo|235.43,60.14 | lineTo|233.58,61.89 | lineTo|231.78,63.69 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "Die der Sonne zugewandte Seite",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✓ Richtig! Die zur Sonne zeigende Seite hat Tag."
+   },
+   {
+    "einstellung": "Die der Sonne zugewandte Seite · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✓ Richtig! Die zur Sonne zeigende Seite hat Tag.",
+    "bild": "lineTo|313.43,42.46 | lineTo|310.99,41.77 | lineTo|308.52,41.15 | lineTo|306.03,40.60 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|334.13,52.08 | lineTo|331.98,50.73 | lineTo|329.78,49.44 | lineTo|327.55,48.23 | lineTo|325.27,47.08 | lineTo|322.97,46.01 | lineTo|320.62,45.01 | lineTo|318.25,44.09 | lineTo|315.86,43.24 | lineTo|313.43,42.46 | lineTo|310.99,41.77 | lineTo|308.52,41.15 | lineTo|306.03,40.60 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die der Sonne zugewandte Seite · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✓ Richtig! Die zur Sonne zeigende Seite hat Tag.",
+    "bild": "lineTo|293.25,39.07 | lineTo|290.71,39.00 | lineTo|288.16,39.02 | lineTo|285.62,39.12 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|315.70,43.19 | lineTo|313.28,42.42 | lineTo|310.83,41.72 | lineTo|308.36,41.11 | lineTo|305.87,40.57 | lineTo|303.37,40.11 | lineTo|300.85,39.73 | lineTo|298.33,39.43 | lineTo|295.79,39.21 | lineTo|293.25,39.07 | lineTo|290.71,39.00 | lineTo|288.16,39.02 | lineTo|285.62,39.12 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die der Sonne zugewandte Seite · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✓ Richtig! Die zur Sonne zeigende Seite hat Tag.",
+    "bild": "lineTo|272.86,40.83 | lineTo|270.38,41.41 | lineTo|267.92,42.07 | lineTo|265.49,42.80 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|295.63,39.20 | lineTo|293.09,39.06 | lineTo|290.54,39.00 | lineTo|288.00,39.02 | lineTo|285.46,39.13 | lineTo|282.92,39.31 | lineTo|280.39,39.57 | lineTo|277.87,39.91 | lineTo|275.36,40.33 | lineTo|272.86,40.83 | lineTo|270.38,41.41 | lineTo|267.92,42.07 | lineTo|265.49,42.80 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die der Sonne zugewandte Seite · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✓ Richtig! Die zur Sonne zeigende Seite hat Tag.",
+    "bild": "lineTo|253.57,47.66 | lineTo|251.31,48.84 | lineTo|249.10,50.09 | lineTo|246.92,51.41 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|275.20,40.36 | lineTo|272.70,40.87 | lineTo|270.23,41.45 | lineTo|267.77,42.11 | lineTo|265.33,42.85 | lineTo|262.92,43.66 | lineTo|260.54,44.55 | lineTo|258.18,45.51 | lineTo|255.86,46.55 | lineTo|253.57,47.66 | lineTo|251.31,48.84 | lineTo|249.10,50.09 | lineTo|246.92,51.41 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "Die von der Sonne abgewandte Seite",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Die abgewandte Seite hat Nacht."
    },
    {
+    "einstellung": "Die von der Sonne abgewandte Seite · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Die abgewandte Seite hat Nacht.",
+    "bild": "lineTo|331.28,50.31 | lineTo|329.07,49.05 | lineTo|326.82,47.85 | lineTo|324.54,46.73 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|349.08,64.59 | lineTo|347.31,62.76 | lineTo|345.49,60.99 | lineTo|343.61,59.28 | lineTo|341.67,57.62 | lineTo|339.69,56.03 | lineTo|337.66,54.50 | lineTo|335.57,53.04 | lineTo|333.45,51.64 | lineTo|331.28,50.31 | lineTo|329.07,49.05 | lineTo|326.82,47.85 | lineTo|324.54,46.73 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die von der Sonne abgewandte Seite · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Die abgewandte Seite hat Nacht.",
+    "bild": "lineTo|312.50,42.19 | lineTo|310.04,41.52 | lineTo|307.56,40.93 | lineTo|305.07,40.41 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|333.31,51.55 | lineTo|331.14,50.23 | lineTo|328.93,48.97 | lineTo|326.68,47.78 | lineTo|324.39,46.66 | lineTo|322.07,45.62 | lineTo|319.72,44.65 | lineTo|317.34,43.75 | lineTo|314.93,42.93 | lineTo|312.50,42.19 | lineTo|310.04,41.52 | lineTo|307.56,40.93 | lineTo|305.07,40.41 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die von der Sonne abgewandte Seite · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Die abgewandte Seite hat Nacht.",
+    "bild": "lineTo|292.27,39.03 | lineTo|289.73,39.00 | lineTo|287.19,39.05 | lineTo|284.64,39.18 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|314.77,42.88 | lineTo|312.34,42.14 | lineTo|309.88,41.48 | lineTo|307.41,40.89 | lineTo|304.91,40.38 | lineTo|302.40,39.96 | lineTo|299.88,39.61 | lineTo|297.35,39.33 | lineTo|294.82,39.14 | lineTo|292.27,39.03 | lineTo|289.73,39.00 | lineTo|287.19,39.05 | lineTo|284.64,39.18 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Die von der Sonne abgewandte Seite · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Die abgewandte Seite hat Nacht.",
+    "bild": "lineTo|271.91,41.05 | lineTo|269.44,41.65 | lineTo|266.99,42.34 | lineTo|264.56,43.10 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|294.65,39.13 | lineTo|292.11,39.03 | lineTo|289.57,39.00 | lineTo|287.02,39.05 | lineTo|284.48,39.19 | lineTo|281.95,39.40 | lineTo|279.42,39.69 | lineTo|276.90,40.07 | lineTo|274.40,40.52 | lineTo|271.91,41.05 | lineTo|269.44,41.65 | lineTo|266.99,42.34 | lineTo|264.56,43.10 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "Beide Seiten gleichzeitig",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Beide Seiten gleichzeitig · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|235.87,59.75 | lineTo|234.00,61.48 | lineTo|232.19,63.26 | lineTo|230.44,65.11 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|254.83,47.04 | lineTo|252.55,48.18 | lineTo|250.31,49.39 | lineTo|248.12,50.67 | lineTo|245.96,52.02 | lineTo|243.85,53.44 | lineTo|241.78,54.92 | lineTo|239.76,56.47 | lineTo|237.79,58.07 | lineTo|235.87,59.75 | lineTo|234.00,61.48 | lineTo|232.19,63.26 | lineTo|230.44,65.11 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Beide Seiten gleichzeitig · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|330.44,49.82 | lineTo|328.21,48.58 | lineTo|325.95,47.41 | lineTo|323.65,46.32 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|348.41,63.88 | lineTo|346.62,62.08 | lineTo|344.77,60.33 | lineTo|342.87,58.64 | lineTo|340.92,57.00 | lineTo|338.91,55.44 | lineTo|336.86,53.93 | lineTo|334.76,52.49 | lineTo|332.62,51.12 | lineTo|330.44,49.82 | lineTo|328.21,48.58 | lineTo|325.95,47.41 | lineTo|323.65,46.32 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Beide Seiten gleichzeitig · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|311.55,41.92 | lineTo|309.09,41.28 | lineTo|306.61,40.72 | lineTo|304.11,40.24 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|332.48,51.03 | lineTo|330.30,49.73 | lineTo|328.07,48.50 | lineTo|325.80,47.34 | lineTo|323.50,46.25 | lineTo|321.17,45.24 | lineTo|318.81,44.30 | lineTo|316.41,43.43 | lineTo|314.00,42.64 | lineTo|311.55,41.92 | lineTo|309.09,41.28 | lineTo|306.61,40.72 | lineTo|304.11,40.24 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Beide Seiten gleichzeitig · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|291.30,39.01 | lineTo|288.75,39.01 | lineTo|286.21,39.09 | lineTo|283.67,39.25 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|313.84,42.59 | lineTo|311.40,41.88 | lineTo|308.93,41.24 | lineTo|306.45,40.69 | lineTo|303.95,40.21 | lineTo|301.44,39.81 | lineTo|298.91,39.49 | lineTo|296.38,39.25 | lineTo|293.84,39.09 | lineTo|291.30,39.01 | lineTo|288.75,39.01 | lineTo|286.21,39.09 | lineTo|283.67,39.25 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "😟 unsicher",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Frag deine Lehrkraft – das schaffst du!"
    },
    {
+    "einstellung": "😟 unsicher · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|251.83,48.56 | lineTo|249.61,49.79 | lineTo|247.42,51.09 | lineTo|245.28,52.47 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|273.28,40.74 | lineTo|270.80,41.31 | lineTo|268.34,41.95 | lineTo|265.90,42.67 | lineTo|263.48,43.47 | lineTo|261.09,44.34 | lineTo|258.72,45.28 | lineTo|256.39,46.30 | lineTo|254.09,47.39 | lineTo|251.83,48.56 | lineTo|249.61,49.79 | lineTo|247.42,51.09 | lineTo|245.28,52.47 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|235.14,60.40 | lineTo|233.30,62.16 | lineTo|231.51,63.97 | lineTo|229.78,65.83 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|253.95,47.46 | lineTo|251.69,48.63 | lineTo|249.47,49.87 | lineTo|247.28,51.18 | lineTo|245.14,52.56 | lineTo|243.05,54.00 | lineTo|241.00,55.51 | lineTo|238.99,57.08 | lineTo|237.04,58.71 | lineTo|235.14,60.40 | lineTo|233.30,62.16 | lineTo|231.51,63.97 | lineTo|229.78,65.83 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|329.59,49.33 | lineTo|327.35,48.12 | lineTo|325.07,46.99 | lineTo|322.76,45.92 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|347.73,63.18 | lineTo|345.92,61.40 | lineTo|344.05,59.67 | lineTo|342.13,58.00 | lineTo|340.15,56.40 | lineTo|338.13,54.85 | lineTo|336.06,53.37 | lineTo|333.95,51.96 | lineTo|331.79,50.61 | lineTo|329.59,49.33 | lineTo|327.35,48.12 | lineTo|325.07,46.99 | lineTo|322.76,45.92 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😟 unsicher · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Frag deine Lehrkraft – das schaffst du!",
+    "bild": "lineTo|310.61,41.67 | lineTo|308.14,41.06 | lineTo|305.65,40.53 | lineTo|303.15,40.07 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|331.65,50.53 | lineTo|329.44,49.25 | lineTo|327.20,48.05 | lineTo|324.92,46.92 | lineTo|322.61,45.85 | lineTo|320.27,44.87 | lineTo|317.89,43.95 | lineTo|315.49,43.12 | lineTo|313.06,42.35 | lineTo|310.61,41.67 | lineTo|308.14,41.06 | lineTo|305.65,40.53 | lineTo|303.15,40.07 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "😐 geht so",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Übe noch ein bisschen."
+   },
+   {
+    "einstellung": "😐 geht so · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|270.01,41.51 | lineTo|267.55,42.17 | lineTo|265.12,42.92 | lineTo|262.71,43.74 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|292.70,39.05 | lineTo|290.16,39.00 | lineTo|287.61,39.04 | lineTo|285.07,39.15 | lineTo|282.53,39.34 | lineTo|280.00,39.62 | lineTo|277.48,39.97 | lineTo|274.98,40.41 | lineTo|272.48,40.92 | lineTo|270.01,41.51 | lineTo|267.55,42.17 | lineTo|265.12,42.92 | lineTo|262.71,43.74 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😐 geht so · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|250.97,49.02 | lineTo|248.76,50.28 | lineTo|246.59,51.61 | lineTo|244.47,53.01 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|272.32,40.95 | lineTo|269.85,41.55 | lineTo|267.40,42.22 | lineTo|264.96,42.97 | lineTo|262.56,43.79 | lineTo|260.18,44.69 | lineTo|257.83,45.66 | lineTo|255.51,46.71 | lineTo|253.22,47.83 | lineTo|250.97,49.02 | lineTo|248.76,50.28 | lineTo|246.59,51.61 | lineTo|244.47,53.01 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😐 geht so · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|234.43,61.07 | lineTo|232.61,62.84 | lineTo|230.84,64.67 | lineTo|229.13,66.56 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|253.08,47.91 | lineTo|250.83,49.10 | lineTo|248.62,50.37 | lineTo|246.46,51.70 | lineTo|244.33,53.10 | lineTo|242.25,54.57 | lineTo|240.22,56.10 | lineTo|238.24,57.70 | lineTo|236.31,59.35 | lineTo|234.43,61.07 | lineTo|232.61,62.84 | lineTo|230.84,64.67 | lineTo|229.13,66.56 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😐 geht so · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.  ||  tagSelfOut: Übe noch ein bisschen.",
+    "bild": "lineTo|328.73,48.86 | lineTo|326.48,47.68 | lineTo|324.19,46.57 | lineTo|321.86,45.53 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|347.04,62.49 | lineTo|345.21,60.73 | lineTo|343.32,59.02 | lineTo|341.38,57.38 | lineTo|339.38,55.79 | lineTo|337.34,54.28 | lineTo|335.25,52.82 | lineTo|333.12,51.43 | lineTo|330.95,50.11 | lineTo|328.73,48.86 | lineTo|326.48,47.68 | lineTo|324.19,46.57 | lineTo|321.86,45.53 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "😃 sicher",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
    },
    {
+    "einstellung": "😃 sicher · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|289.34,39.00 | lineTo|286.80,39.06 | lineTo|284.26,39.20 | lineTo|281.72,39.42 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|311.97,42.04 | lineTo|309.51,41.38 | lineTo|307.03,40.81 | lineTo|304.53,40.31 | lineTo|302.02,39.90 | lineTo|299.50,39.56 | lineTo|296.97,39.30 | lineTo|294.43,39.12 | lineTo|291.89,39.02 | lineTo|289.34,39.00 | lineTo|286.80,39.06 | lineTo|284.26,39.20 | lineTo|281.72,39.42 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😃 sicher · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|269.06,41.75 | lineTo|266.62,42.45 | lineTo|264.19,43.22 | lineTo|261.79,44.07 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|291.72,39.02 | lineTo|289.18,39.00 | lineTo|286.64,39.07 | lineTo|284.10,39.22 | lineTo|281.56,39.44 | lineTo|279.04,39.75 | lineTo|276.52,40.13 | lineTo|274.02,40.59 | lineTo|271.53,41.13 | lineTo|269.06,41.75 | lineTo|266.62,42.45 | lineTo|264.19,43.22 | lineTo|261.79,44.07 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😃 sicher · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|250.12,49.50 | lineTo|247.92,50.79 | lineTo|245.77,52.14 | lineTo|243.66,53.56 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|271.37,41.17 | lineTo|268.91,41.79 | lineTo|266.46,42.50 | lineTo|264.04,43.27 | lineTo|261.64,44.13 | lineTo|259.27,45.06 | lineTo|256.93,46.06 | lineTo|254.63,47.13 | lineTo|252.35,48.28 | lineTo|250.12,49.50 | lineTo|247.92,50.79 | lineTo|245.77,52.14 | lineTo|243.66,53.56 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "😃 sicher · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|233.72,61.74 | lineTo|231.92,63.54 | lineTo|230.18,65.39 | lineTo|228.49,67.30 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|252.21,48.36 | lineTo|249.98,49.58 | lineTo|247.79,50.87 | lineTo|245.64,52.23 | lineTo|243.53,53.66 | lineTo|241.47,55.15 | lineTo|239.45,56.71 | lineTo|237.49,58.32 | lineTo|235.58,60.00 | lineTo|233.72,61.74 | lineTo|231.92,63.54 | lineTo|230.18,65.39 | lineTo|228.49,67.30 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "🗑 Protokoll zurücksetzen",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|308.72,41.19 | lineTo|306.23,40.64 | lineTo|303.73,40.17 | lineTo|301.22,39.78 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|329.96,49.54 | lineTo|327.73,48.32 | lineTo|325.46,47.17 | lineTo|323.15,46.09 | lineTo|320.81,45.09 | lineTo|318.45,44.16 | lineTo|316.05,43.30 | lineTo|313.63,42.52 | lineTo|311.18,41.82 | lineTo|308.72,41.19 | lineTo|306.23,40.64 | lineTo|303.73,40.17 | lineTo|301.22,39.78 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|288.37,39.02 | lineTo|285.82,39.11 | lineTo|283.28,39.28 | lineTo|280.75,39.53 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|311.02,41.78 | lineTo|308.56,41.15 | lineTo|306.07,40.61 | lineTo|303.57,40.14 | lineTo|301.05,39.76 | lineTo|298.53,39.45 | lineTo|295.99,39.22 | lineTo|293.45,39.07 | lineTo|290.91,39.01 | lineTo|288.37,39.02 | lineTo|285.82,39.11 | lineTo|283.28,39.28 | lineTo|280.75,39.53 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|268.12,42.01 | lineTo|265.68,42.74 | lineTo|263.27,43.54 | lineTo|260.88,44.42 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|290.75,39.00 | lineTo|288.20,39.02 | lineTo|285.66,39.12 | lineTo|283.12,39.29 | lineTo|280.59,39.55 | lineTo|278.07,39.88 | lineTo|275.56,40.30 | lineTo|273.06,40.79 | lineTo|270.58,41.36 | lineTo|268.12,42.01 | lineTo|265.68,42.74 | lineTo|263.27,43.54 | lineTo|260.88,44.42 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "🗑 Protokoll zurücksetzen · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|249.27,49.98 | lineTo|247.09,51.30 | lineTo|244.96,52.68 | lineTo|242.86,54.13 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|270.42,41.40 | lineTo|267.96,42.06 | lineTo|265.53,42.79 | lineTo|263.11,43.59 | lineTo|260.73,44.47 | lineTo|258.37,45.43 | lineTo|256.04,46.46 | lineTo|253.75,47.56 | lineTo|251.49,48.74 | lineTo|249.27,49.98 | lineTo|247.09,51.30 | lineTo|244.96,52.68 | lineTo|242.86,54.13 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "Erde von Hand drehen Drehung: 30° = 0",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
    },
    {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 0 · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|327.00,47.95 | lineTo|324.72,46.82 | lineTo|322.41,45.77 | lineTo|320.06,44.78 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|345.64,61.13 | lineTo|343.76,59.41 | lineTo|341.83,57.75 | lineTo|339.85,56.16 | lineTo|337.82,54.62 | lineTo|335.74,53.15 | lineTo|333.62,51.75 | lineTo|331.46,50.41 | lineTo|329.25,49.14 | lineTo|327.00,47.95 | lineTo|324.72,46.82 | lineTo|322.41,45.77 | lineTo|320.06,44.78 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 0 · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|307.76,40.97 | lineTo|305.27,40.45 | lineTo|302.77,40.01 | lineTo|300.25,39.65 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|329.11,49.07 | lineTo|326.86,47.87 | lineTo|324.58,46.75 | lineTo|322.26,45.70 | lineTo|319.91,44.72 | lineTo|317.53,43.82 | lineTo|315.12,42.99 | lineTo|312.69,42.24 | lineTo|310.24,41.57 | lineTo|307.76,40.97 | lineTo|305.27,40.45 | lineTo|302.77,40.01 | lineTo|300.25,39.65 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 0 · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|287.39,39.04 | lineTo|284.85,39.16 | lineTo|282.31,39.37 | lineTo|279.78,39.65 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|310.08,41.53 | lineTo|307.60,40.94 | lineTo|305.11,40.42 | lineTo|302.61,39.99 | lineTo|300.09,39.63 | lineTo|297.56,39.35 | lineTo|295.02,39.16 | lineTo|292.48,39.04 | lineTo|289.93,39.00 | lineTo|287.39,39.04 | lineTo|284.85,39.16 | lineTo|282.31,39.37 | lineTo|279.78,39.65 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 0 · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|267.18,42.28 | lineTo|264.75,43.04 | lineTo|262.35,43.87 | lineTo|259.97,44.77 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|289.77,39.00 | lineTo|287.23,39.05 | lineTo|284.68,39.17 | lineTo|282.15,39.38 | lineTo|279.62,39.67 | lineTo|277.10,40.03 | lineTo|274.60,40.48 | lineTo|272.11,41.00 | lineTo|269.63,41.60 | lineTo|267.18,42.28 | lineTo|264.75,43.04 | lineTo|262.35,43.87 | lineTo|259.97,44.77 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "Erde von Hand drehen Drehung: 30° = 45",
     "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 45 · nach 50 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|232.33,63.12 | lineTo|230.57,64.96 | lineTo|228.88,66.85 | lineTo|227.24,68.80 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|250.49,49.29 | lineTo|248.29,50.56 | lineTo|246.13,51.91 | lineTo|244.01,53.32 | lineTo|241.94,54.80 | lineTo|239.92,56.34 | lineTo|237.94,57.94 | lineTo|236.02,59.61 | lineTo|234.15,61.34 | lineTo|232.33,63.12 | lineTo|230.57,64.96 | lineTo|228.88,66.85 | lineTo|227.24,68.80 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 45 · nach 75 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|326.13,47.51 | lineTo|323.84,46.41 | lineTo|321.51,45.38 | lineTo|319.15,44.43 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|344.92,60.46 | lineTo|343.03,58.77 | lineTo|341.08,57.13 | lineTo|339.08,55.56 | lineTo|337.03,54.05 | lineTo|334.93,52.61 | lineTo|332.79,51.23 | lineTo|330.61,49.92 | lineTo|328.39,48.68 | lineTo|326.13,47.51 | lineTo|323.84,46.41 | lineTo|321.51,45.38 | lineTo|319.15,44.43 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 45 · nach 100 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|306.81,40.76 | lineTo|304.31,40.27 | lineTo|301.80,39.86 | lineTo|299.28,39.53 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|328.25,48.60 | lineTo|325.99,47.43 | lineTo|323.69,46.34 | lineTo|321.36,45.32 | lineTo|319.00,44.37 | lineTo|316.61,43.49 | lineTo|314.19,42.70 | lineTo|311.75,41.98 | lineTo|309.29,41.33 | lineTo|306.81,40.76 | lineTo|304.31,40.27 | lineTo|301.80,39.86 | lineTo|299.28,39.53 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 45 · nach 125 Frames",
+    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|286.41,39.08 | lineTo|283.87,39.23 | lineTo|281.34,39.46 | lineTo|278.81,39.78 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|309.13,41.29 | lineTo|306.65,40.73 | lineTo|304.15,40.25 | lineTo|301.64,39.84 | lineTo|299.12,39.51 | lineTo|296.58,39.27 | lineTo|294.04,39.10 | lineTo|291.50,39.01 | lineTo|288.96,39.01 | lineTo|286.41,39.08 | lineTo|283.87,39.23 | lineTo|281.34,39.46 | lineTo|278.81,39.78 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
     "einstellung": "Erde von Hand drehen Drehung: 30° = 90",
     "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
    },
    {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 90 · nach 50 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|247.59,50.99 | lineTo|245.45,52.35 | lineTo|243.34,53.79 | lineTo|241.29,55.28 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|268.53,41.90 | lineTo|266.09,42.61 | lineTo|263.67,43.40 | lineTo|261.28,44.26 | lineTo|258.91,45.20 | lineTo|256.58,46.22 | lineTo|254.28,47.30 | lineTo|252.01,48.46 | lineTo|249.78,49.69 | lineTo|247.59,50.99 | lineTo|245.45,52.35 | lineTo|243.34,53.79 | lineTo|241.29,55.28 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 90 · nach 75 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|231.65,63.82 | lineTo|229.92,65.68 | lineTo|228.24,67.59 | lineTo|226.62,69.56 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|249.64,49.77 | lineTo|247.46,51.07 | lineTo|245.31,52.44 | lineTo|243.21,53.88 | lineTo|241.16,55.38 | lineTo|239.15,56.95 | lineTo|237.20,58.58 | lineTo|235.29,60.27 | lineTo|233.44,62.01 | lineTo|231.65,63.82 | lineTo|229.92,65.68 | lineTo|228.24,67.59 | lineTo|226.62,69.56 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 90 · nach 100 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|325.25,47.07 | lineTo|322.95,46.00 | lineTo|320.61,45.00 | lineTo|318.24,44.08 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|344.20,59.81 | lineTo|342.28,58.13 | lineTo|340.31,56.52 | lineTo|338.30,54.97 | lineTo|336.23,53.49 | lineTo|334.12,52.07 | lineTo|331.96,50.72 | lineTo|329.76,49.43 | lineTo|327.53,48.22 | lineTo|325.25,47.07 | lineTo|322.95,46.00 | lineTo|320.61,45.00 | lineTo|318.24,44.08 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 90 · nach 125 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|305.85,40.57 | lineTo|303.35,40.11 | lineTo|300.83,39.73 | lineTo|298.31,39.43 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|327.38,48.14 | lineTo|325.11,47.00 | lineTo|322.80,45.94 | lineTo|320.46,44.94 | lineTo|318.08,44.02 | lineTo|315.68,43.18 | lineTo|313.26,42.41 | lineTo|310.81,41.72 | lineTo|308.34,41.10 | lineTo|305.85,40.57 | lineTo|303.35,40.11 | lineTo|300.83,39.73 | lineTo|298.31,39.43 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
+   },
+   {
     "einstellung": "Erde von Hand drehen Drehung: 30° = 135",
     "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
    },
    {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 180",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 135 · nach 50 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|265.31,42.85 | lineTo|262.90,43.67 | lineTo|260.52,44.56 | lineTo|258.16,45.52 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|287.82,39.03 | lineTo|285.27,39.14 | lineTo|282.74,39.33 | lineTo|280.21,39.59 | lineTo|277.69,39.94 | lineTo|275.18,40.37 | lineTo|272.68,40.87 | lineTo|270.21,41.46 | lineTo|267.75,42.12 | lineTo|265.31,42.85 | lineTo|262.90,43.67 | lineTo|260.52,44.56 | lineTo|258.16,45.52 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 225",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 135 · nach 75 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|246.77,51.50 | lineTo|244.64,52.90 | lineTo|242.55,54.35 | lineTo|240.51,55.88 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|267.59,42.16 | lineTo|265.16,42.90 | lineTo|262.75,43.72 | lineTo|260.37,44.62 | lineTo|258.01,45.58 | lineTo|255.69,46.62 | lineTo|253.40,47.74 | lineTo|251.15,48.92 | lineTo|248.94,50.18 | lineTo|246.77,51.50 | lineTo|244.64,52.90 | lineTo|242.55,54.35 | lineTo|240.51,55.88 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 270",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 135 · nach 100 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|230.98,64.53 | lineTo|229.26,66.41 | lineTo|227.61,68.34 | lineTo|226.02,70.33 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|248.80,50.26 | lineTo|246.63,51.59 | lineTo|244.50,52.99 | lineTo|242.42,54.45 | lineTo|240.38,55.98 | lineTo|238.40,57.57 | lineTo|236.46,59.22 | lineTo|234.58,60.93 | lineTo|232.75,62.70 | lineTo|230.98,64.53 | lineTo|229.26,66.41 | lineTo|227.61,68.34 | lineTo|226.02,70.33 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    },
    {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 315",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 360",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 10",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 20",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 30",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 40",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 50",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 60",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 70",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 80",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 100",
-    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 110",
-    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 120",
-    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 130",
-    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 140",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 150",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 160",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 170",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 190",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 200",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 210",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 220",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 230",
-    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 240",
-    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 250",
-    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 260",
-    "text": "tagStatus: ☀️ Ben hat Tag (Nachmittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 280",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 290",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 300",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 310",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 320",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 330",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 340",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 350",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 25",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 75",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Nacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 125",
-    "text": "tagStatus: ☀️ Ben hat Tag (Morgen) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 175",
-    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 275",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Abend) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
-   },
-   {
-    "einstellung": "Erde von Hand drehen Drehung: 30° = 325",
-    "text": "tagStatus: 🌙 Ben hat Nacht (Mitternacht) · ☀️ Yumi hat gleichzeitig Tag.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag."
+    "einstellung": "Erde von Hand drehen Drehung: 30° = 135 · nach 125 Frames",
+    "text": "tagStatus: ☀️ Ben hat Tag (Mittag) · 🌙 Yumi hat gleichzeitig Nacht.  ||  tagFb0: ✗ Die Sonne leuchtet immer weiter.  ||  tagFb1: ✗ 1 Jahr braucht die Erde für den Weg um die Sonne.  ||  tagFb2: ✗ Es ist nie überall gleichzeitig Tag.",
+    "bild": "lineTo|324.37,46.65 | lineTo|322.05,45.61 | lineTo|319.70,44.64 | lineTo|317.32,43.75 | stroke| | set:strokeStyle=rgba(191,219,254,0.95) | set:lineWidth=1.6 | beginPath| | moveTo|343.47,59.16 | lineTo|341.53,57.51 | lineTo|339.54,55.92 | lineTo|337.51,54.39 | lineTo|335.42,52.93 | lineTo|333.29,51.54 | lineTo|331.12,50.21 | lineTo|328.91,48.96 | lineTo|326.66,47.77 | lineTo|324.37,46.65 | lineTo|322.05,45.61 | lineTo|319.70,44.64 | lineTo|317.32,43.75 | stroke| | restore| | set:fillStyle=rgba(191,219,254,0.92) | beginPath| | moveTo|220.36,78.05 | lineTo|222.59,67.32 | lineTo|229.87,72.61 | closePath| | fill| | save| | set:font=700 11px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Sonne|46.00|167.00 | set:fillStyle=#fde68a | fillText|Sonne|46.00|167.00 | restore|"
    }
   ],
   "bildtexte": [

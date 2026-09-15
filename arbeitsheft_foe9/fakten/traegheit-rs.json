@@ -41,20 +41,120 @@
     "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
    },
    {
+    "einstellung": "Tisch · nach 50 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "Tisch · nach 75 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "Tisch · nach 100 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "Tisch · nach 125 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
     "einstellung": "Eis",
     "text": "trsStatus: Eis (wenig Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   },
+   {
+    "einstellung": "Eis · nach 50 Frames",
+    "text": "trsStatus: Eis (wenig Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Eis · wenig Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "Eis · nach 75 Frames",
+    "text": "trsStatus: Eis (wenig Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Eis · wenig Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "Eis · nach 100 Frames",
+    "text": "trsStatus: Eis (wenig Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Eis · wenig Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "Eis · nach 125 Frames",
+    "text": "trsStatus: Eis (wenig Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Eis · wenig Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
    },
    {
     "einstellung": "Weltall",
     "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
    },
    {
+    "einstellung": "Weltall · nach 50 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "set:fillStyle=rgba(226,232,240,0.343) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.299) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.118) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.033) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.016) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
+    "einstellung": "Weltall · nach 75 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "set:fillStyle=rgba(226,232,240,0.343) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.299) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.118) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.033) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.016) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
+    "einstellung": "Weltall · nach 100 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "set:fillStyle=rgba(226,232,240,0.343) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.299) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.118) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.033) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.016) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
+    "einstellung": "Weltall · nach 125 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "set:fillStyle=rgba(226,232,240,0.343) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.299) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.118) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.033) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.016) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
     "einstellung": "▶ Anstoßen",
-    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 0,0 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen."
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 0,4 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen."
+   },
+   {
+    "einstellung": "▶ Anstoßen · nach 50 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 0,8 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen.",
+    "bild": "set:fillStyle=rgba(226,232,240,0.198) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.012) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.046) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.075) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.266) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|82.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|91.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|117.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 8,0 m/s|14.00|44.00 | fillText|t = 0,8 s|14.00|60.00 | fillText|Weg = 6,4 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#22c55e | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
+    "einstellung": "▶ Anstoßen · nach 75 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 1,2 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen.",
+    "bild": "set:fillStyle=rgba(226,232,240,0.044) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,-0.050) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.040) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.231) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.348) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|114.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|123.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|149.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 8,0 m/s|14.00|44.00 | fillText|t = 1,2 s|14.00|60.00 | fillText|Weg = 9,6 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#22c55e | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
+    "einstellung": "▶ Anstoßen · nach 100 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 1,6 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen.",
+    "bild": "set:fillStyle=rgba(226,232,240,-0.046) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.009) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.193) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.338) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.310) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|146.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|155.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|181.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 8,0 m/s|14.00|44.00 | fillText|t = 1,6 s|14.00|60.00 | fillText|Weg = 12,8 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#22c55e | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
+   },
+   {
+    "einstellung": "▶ Anstoßen · nach 125 Frames",
+    "text": "trsStatus: Weltall (keine Reibung), Anstoß mit 8 m/s. Nach 2,0 s ist v immer noch 8,0 m/s – der Wagen wird nicht langsamer und bleibt nie stehen.",
+    "bild": "set:fillStyle=rgba(226,232,240,-0.016) | fillRect|269.00,81.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.154) | fillRect|400.00,152.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.320) | fillRect|91.00,55.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.330) | fillRect|222.00,126.00,1.30,1.30 | set:fillStyle=rgba(226,232,240,0.175) | fillRect|353.00,29.00,1.30,1.30 | set:fillStyle=#e2e8f0 | fillRect|178.00,142.00,44.00,20.00 | set:fillStyle=#94a3b8 | beginPath| | arc|187.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|213.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#e2e8f0 | set:font=700 12px sans-serif | set:textAlign=left | fillText|Weltall · keine Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#94a3b8 | fillText|v = 8,0 m/s|14.00|44.00 | fillText|t = 2,0 s|14.00|60.00 | fillText|Weg = 16,0 m|14.00|76.00 | set:fillStyle=rgba(148,163,184,0.25) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#22c55e | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#94a3b8 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#e2e8f0 | set:font=700 11px sans-serif | set:textAlign=center | fillText|ohne Reibung: der Wagen wird nie langsamer|220.00|240.00"
    },
    {
     "einstellung": "↺ Zurücksetzen",
     "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“."
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 50 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 75 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 100 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
+   },
+   {
+    "einstellung": "↺ Zurücksetzen · nach 125 Frames",
+    "text": "trsStatus: Tisch (viel Reibung), Anstoß mit 8 m/s. Drücke „Anstoßen“.",
+    "bild": "fillRect|426.00,198.00,11.00,3.00 | fillRect|7.00,180.00,11.00,3.00 | set:strokeStyle=rgba(15,23,42,0.35) | setLineDash|3,4 | set:lineWidth=1 | beginPath| | moveTo|40.00,124.00 | lineTo|40.00,168.00 | stroke| | setLineDash| | set:fillStyle=#1e3a8a | fillRect|18.00,142.00,44.00,20.00 | set:fillStyle=#0f172a | beginPath| | arc|27.00,164.00,6.00,0.00,6.28 | fill| | beginPath| | arc|53.00,164.00,6.00,0.00,6.28 | fill| | set:fillStyle=#0f172a | set:font=700 12px sans-serif | set:textAlign=left | fillText|Tisch · viel Reibung|14.00|24.00 | set:font=11px sans-serif | set:fillStyle=#475569 | fillText|v = 0,0 m/s|14.00|44.00 | fillText|t = 0,0 s|14.00|60.00 | fillText|Weg = 0,0 m|14.00|76.00 | set:fillStyle=rgba(15,23,42,0.12) | fillRect|290.00,30.00,130.00,15.00 | set:fillStyle=#ef4444 | fillRect|290.00,30.00,2.00,15.00 | set:fillStyle=#475569 | set:font=9px sans-serif | set:textAlign=left | fillText|Tempo (Anstoß = 8 m/s)|290.00|25.00 | set:fillStyle=#0f172a | set:font=700 11px sans-serif | set:textAlign=center | fillText|die Reibung bremst – deshalb bleibt er stehen|220.00|240.00"
    }
   ],
   "bildtexte": [
@@ -69,7 +169,150 @@
    "ohne Reibung: der Wagen wird nie langsamer",
    "v = 8,0 m/s",
    "Weg = 0,1 m",
-   "Weg = 0,3 m"
+   "Weg = 0,3 m",
+   "Weg = 0,4 m",
+   "t = 0,1 s",
+   "Weg = 0,5 m",
+   "Weg = 0,6 m",
+   "Weg = 0,8 m",
+   "Weg = 0,9 m",
+   "Weg = 1,0 m",
+   "Weg = 1,2 m",
+   "t = 0,2 s",
+   "Weg = 1,3 m",
+   "Weg = 1,4 m",
+   "Weg = 1,5 m",
+   "Weg = 1,7 m",
+   "Weg = 1,8 m",
+   "Weg = 1,9 m",
+   "t = 0,3 s",
+   "Weg = 2,0 m",
+   "Weg = 2,2 m",
+   "Weg = 2,3 m",
+   "Weg = 2,4 m",
+   "Weg = 2,6 m",
+   "Weg = 2,7 m",
+   "t = 0,4 s",
+   "Weg = 2,8 m",
+   "Weg = 2,9 m",
+   "Weg = 3,1 m",
+   "Weg = 3,2 m",
+   "Weg = 3,3 m",
+   "Weg = 3,5 m",
+   "Weg = 3,6 m",
+   "t = 0,5 s",
+   "Weg = 3,7 m",
+   "Weg = 3,8 m",
+   "Weg = 4,0 m",
+   "Weg = 4,1 m",
+   "Weg = 4,2 m",
+   "Weg = 4,4 m",
+   "t = 0,6 s",
+   "Weg = 4,5 m",
+   "Weg = 4,6 m",
+   "Weg = 4,7 m",
+   "Weg = 4,9 m",
+   "Weg = 5,0 m",
+   "Weg = 5,1 m",
+   "t = 0,7 s",
+   "Weg = 5,2 m",
+   "Weg = 5,4 m",
+   "Weg = 5,5 m",
+   "Weg = 5,6 m",
+   "Weg = 5,8 m",
+   "Weg = 5,9 m",
+   "t = 0,8 s",
+   "Weg = 6,0 m",
+   "Weg = 6,1 m",
+   "Weg = 6,3 m",
+   "Weg = 6,4 m",
+   "Weg = 6,5 m",
+   "Weg = 6,7 m",
+   "Weg = 6,8 m",
+   "t = 0,9 s",
+   "Weg = 6,9 m",
+   "Weg = 7,0 m",
+   "Weg = 7,2 m",
+   "Weg = 7,3 m",
+   "Weg = 7,4 m",
+   "Weg = 7,6 m",
+   "t = 1,0 s",
+   "Weg = 7,7 m",
+   "Weg = 7,8 m",
+   "Weg = 7,9 m",
+   "Weg = 8,1 m",
+   "Weg = 8,2 m",
+   "Weg = 8,3 m",
+   "t = 1,1 s",
+   "Weg = 8,4 m",
+   "Weg = 8,6 m",
+   "Weg = 8,7 m",
+   "Weg = 8,8 m",
+   "Weg = 9,0 m",
+   "Weg = 9,1 m",
+   "t = 1,2 s",
+   "Weg = 9,2 m",
+   "Weg = 9,3 m",
+   "Weg = 9,5 m",
+   "Weg = 9,6 m",
+   "Weg = 9,7 m",
+   "Weg = 9,9 m",
+   "Weg = 10,0 m",
+   "t = 1,3 s",
+   "Weg = 10,1 m",
+   "Weg = 10,2 m",
+   "Weg = 10,4 m",
+   "Weg = 10,5 m",
+   "Weg = 10,6 m",
+   "Weg = 10,8 m",
+   "t = 1,4 s",
+   "Weg = 10,9 m",
+   "Weg = 11,0 m",
+   "Weg = 11,1 m",
+   "Weg = 11,3 m",
+   "Weg = 11,4 m",
+   "Weg = 11,5 m",
+   "t = 1,5 s",
+   "Weg = 11,6 m",
+   "Weg = 11,8 m",
+   "Weg = 11,9 m",
+   "Weg = 12,0 m",
+   "Weg = 12,2 m",
+   "Weg = 12,3 m",
+   "t = 1,6 s",
+   "Weg = 12,4 m",
+   "Weg = 12,5 m",
+   "Weg = 12,7 m",
+   "Weg = 12,8 m",
+   "Weg = 12,9 m",
+   "Weg = 13,1 m",
+   "Weg = 13,2 m",
+   "t = 1,7 s",
+   "Weg = 13,3 m",
+   "Weg = 13,4 m",
+   "Weg = 13,6 m",
+   "Weg = 13,7 m",
+   "Weg = 13,8 m",
+   "Weg = 14,0 m",
+   "t = 1,8 s",
+   "Weg = 14,1 m",
+   "Weg = 14,2 m",
+   "Weg = 14,3 m",
+   "Weg = 14,5 m",
+   "Weg = 14,6 m",
+   "Weg = 14,7 m",
+   "t = 1,9 s",
+   "Weg = 14,8 m",
+   "Weg = 15,0 m",
+   "Weg = 15,1 m",
+   "Weg = 15,2 m",
+   "Weg = 15,4 m",
+   "Weg = 15,5 m",
+   "t = 2,0 s",
+   "Weg = 15,6 m",
+   "Weg = 15,7 m",
+   "Weg = 15,9 m",
+   "Weg = 16,0 m"
   ]
  }
 ]

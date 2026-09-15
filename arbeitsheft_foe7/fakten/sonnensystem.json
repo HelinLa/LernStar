@@ -47,33 +47,178 @@
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
    },
    {
+    "einstellung": "Umlauf · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "arc|360.29,206.60,5.40,0.00,6.28 | stroke| | save| | translate|360.29,206.60 | scale|0.28,1.00 | set:strokeStyle=rgba(238,222,180,0.8) | set:lineWidth=1.6 | beginPath| | arc|0.00,0.00,10.80,-1.57,1.57 | stroke| | restore| | set:fillStyle=[object Object] | beginPath| | arc|261.78,313.37,5.40,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|261.78,313.37,5.40,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | set:fillStyle=#93a4c8 | fillText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|seit dem Start: 0,2 Erdjahre|470.00|16.00 | set:fillStyle=#dbeafe | fillText|seit dem Start: 0,2 Erdjahre|470.00|16.00 | restore|"
+   },
+   {
+    "einstellung": "Umlauf · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "arc|359.97,207.50,5.40,0.00,6.28 | stroke| | save| | translate|359.97,207.50 | scale|0.28,1.00 | set:strokeStyle=rgba(238,222,180,0.8) | set:lineWidth=1.6 | beginPath| | arc|0.00,0.00,10.80,-1.57,1.57 | stroke| | restore| | set:fillStyle=[object Object] | beginPath| | arc|261.21,313.46,5.40,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|261.21,313.46,5.40,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | set:fillStyle=#93a4c8 | fillText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|seit dem Start: 0,3 Erdjahre|470.00|16.00 | set:fillStyle=#dbeafe | fillText|seit dem Start: 0,3 Erdjahre|470.00|16.00 | restore|"
+   },
+   {
+    "einstellung": "Umlauf · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "arc|359.65,208.40,5.40,0.00,6.28 | stroke| | save| | translate|359.65,208.40 | scale|0.28,1.00 | set:strokeStyle=rgba(238,222,180,0.8) | set:lineWidth=1.6 | beginPath| | arc|0.00,0.00,10.80,-1.57,1.57 | stroke| | restore| | set:fillStyle=[object Object] | beginPath| | arc|260.65,313.54,5.40,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|260.65,313.54,5.40,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | set:fillStyle=#93a4c8 | fillText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|seit dem Start: 0,4 Erdjahre|470.00|16.00 | set:fillStyle=#dbeafe | fillText|seit dem Start: 0,4 Erdjahre|470.00|16.00 | restore|"
+   },
+   {
+    "einstellung": "Umlauf · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "arc|359.32,209.29,5.40,0.00,6.28 | stroke| | save| | translate|359.32,209.29 | scale|0.28,1.00 | set:strokeStyle=rgba(238,222,180,0.8) | set:lineWidth=1.6 | beginPath| | arc|0.00,0.00,10.80,-1.57,1.57 | stroke| | restore| | set:fillStyle=[object Object] | beginPath| | arc|260.08,313.61,5.40,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|260.08,313.61,5.40,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | set:fillStyle=#93a4c8 | fillText|Abstände gestaucht, Größen nicht maßstäblich|10.00|16.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|seit dem Start: 0,5 Erdjahre|470.00|16.00 | set:fillStyle=#dbeafe | fillText|seit dem Start: 0,5 Erdjahre|470.00|16.00 | restore|"
+   },
+   {
     "einstellung": "Steckbrief",
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "Steckbrief · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Stickstoff und Sauerstoff|466.00|213.00 | set:fillStyle=#dbeafe | fillText|Stickstoff und Sauerstoff|466.00|213.00 | restore| | set:fillStyle=[object Object] | fillRect|246.00,244.00,220.00,7.00 | set:fillStyle=rgba(255,255,255,0.85) | fillRect|295.57,241.00,43.14,13.00 | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|−270 °C|246.00|266.00 | set:fillStyle=#7f8ca8 | fillText|−270 °C|246.00|266.00 | restore| | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|+500 °C|466.00|266.00 | set:fillStyle=#7f8ca8 | fillText|+500 °C|466.00|266.00 | restore| | save| | set:font=10.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | set:fillStyle=#cfd8ee | fillText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | restore|"
+   },
+   {
+    "einstellung": "Steckbrief · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Stickstoff und Sauerstoff|466.00|213.00 | set:fillStyle=#dbeafe | fillText|Stickstoff und Sauerstoff|466.00|213.00 | restore| | set:fillStyle=[object Object] | fillRect|246.00,244.00,220.00,7.00 | set:fillStyle=rgba(255,255,255,0.85) | fillRect|295.57,241.00,43.14,13.00 | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|−270 °C|246.00|266.00 | set:fillStyle=#7f8ca8 | fillText|−270 °C|246.00|266.00 | restore| | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|+500 °C|466.00|266.00 | set:fillStyle=#7f8ca8 | fillText|+500 °C|466.00|266.00 | restore| | save| | set:font=10.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | set:fillStyle=#cfd8ee | fillText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | restore|"
+   },
+   {
+    "einstellung": "Steckbrief · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Stickstoff und Sauerstoff|466.00|213.00 | set:fillStyle=#dbeafe | fillText|Stickstoff und Sauerstoff|466.00|213.00 | restore| | set:fillStyle=[object Object] | fillRect|246.00,244.00,220.00,7.00 | set:fillStyle=rgba(255,255,255,0.85) | fillRect|295.57,241.00,43.14,13.00 | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|−270 °C|246.00|266.00 | set:fillStyle=#7f8ca8 | fillText|−270 °C|246.00|266.00 | restore| | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|+500 °C|466.00|266.00 | set:fillStyle=#7f8ca8 | fillText|+500 °C|466.00|266.00 | restore| | save| | set:font=10.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | set:fillStyle=#cfd8ee | fillText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | restore|"
+   },
+   {
+    "einstellung": "Steckbrief · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Stickstoff und Sauerstoff|466.00|213.00 | set:fillStyle=#dbeafe | fillText|Stickstoff und Sauerstoff|466.00|213.00 | restore| | set:fillStyle=[object Object] | fillRect|246.00,244.00,220.00,7.00 | set:fillStyle=rgba(255,255,255,0.85) | fillRect|295.57,241.00,43.14,13.00 | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=left | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|−270 °C|246.00|266.00 | set:fillStyle=#7f8ca8 | fillText|−270 °C|246.00|266.00 | restore| | save| | set:font=8.5px system-ui, sans-serif | set:textAlign=right | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|+500 °C|466.00|266.00 | set:fillStyle=#7f8ca8 | fillText|+500 °C|466.00|266.00 | restore| | save| | set:font=10.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | set:fillStyle=#cfd8ee | fillText|Der einzige Planet, auf dem Menschen ohne Hilfsmittel überleben können.|240.00|320.00 | restore|"
    },
    {
     "einstellung": "Größen",
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
    },
    {
+    "einstellung": "Größen · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "restore| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|413.61|210.58 | set:fillStyle=#dbeafe | fillText|Uranus|413.61|210.58 | restore| | set:fillStyle=[object Object] | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|454.70|194.30 | set:fillStyle=#dbeafe | fillText|Neptun|454.70|194.30 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "Größen · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "restore| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|413.61|210.58 | set:fillStyle=#dbeafe | fillText|Uranus|413.61|210.58 | restore| | set:fillStyle=[object Object] | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|454.70|194.30 | set:fillStyle=#dbeafe | fillText|Neptun|454.70|194.30 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "Größen · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "restore| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|413.61|210.58 | set:fillStyle=#dbeafe | fillText|Uranus|413.61|210.58 | restore| | set:fillStyle=[object Object] | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|454.70|194.30 | set:fillStyle=#dbeafe | fillText|Neptun|454.70|194.30 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "Größen · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "restore| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|413.61|210.58 | set:fillStyle=#dbeafe | fillText|Uranus|413.61|210.58 | restore| | set:fillStyle=[object Object] | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | fill| | set:strokeStyle=rgba(255,255,255,0.14) | set:lineWidth=1 | beginPath| | arc|454.70,165.00,15.30,0.00,6.28 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|454.70|194.30 | set:fillStyle=#dbeafe | fillText|Neptun|454.70|194.30 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Größen im gleichen Maßstab – die Abstände stimmen hier NICHT|240.00|318.00 | restore|"
+   },
+   {
     "einstellung": "Abstände",
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "Abstände · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "Abstände · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "Abstände · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "Abstände · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
    },
    {
     "einstellung": "langsam",
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
    },
    {
+    "einstellung": "langsam · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "langsam · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "langsam · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "langsam · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
     "einstellung": "schnell",
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
    },
    {
+    "einstellung": "schnell · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "schnell · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "schnell · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "schnell · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
     "einstellung": "sehr schnell",
     "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff"
+   },
+   {
+    "einstellung": "sehr schnell · nach 50 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "sehr schnell · nach 75 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "sehr schnell · nach 100 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
+   },
+   {
+    "einstellung": "sehr schnell · nach 125 Frames",
+    "text": "sosStatus: Erde – Gesteinsplanet, feste Oberfläche | Durchmesser 12.756 km (1,00-mal Erde) | Abstand 1 AE · Umlauf 1 Jahr | Eine Drehung 24,0 Stunden | Temperatur -93 °C bis 58 °C | Dichte 5,51 g/cm³ | 1 Mond · Stickstoff und Sauerstoff",
+    "bild": "set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Uranus|301.86|139.00 | set:fillStyle=#dbeafe | fillText|Uranus|301.86|139.00 | restore| | set:fillStyle=[object Object] | beginPath| | arc|456.00,165.00,2.60,0.00,6.28 | fill| | set:font=9.5px system-ui, sans-serif | set:strokeStyle=rgba(150,170,210,0.4) | set:lineWidth=0.8 | beginPath| | moveTo|456.00,158.00 | lineTo|456.00,147.00 | stroke| | save| | set:font=9.5px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Neptun|456.00|139.00 | set:fillStyle=#dbeafe | fillText|Neptun|456.00|139.00 | restore| | save| | set:font=10px system-ui, sans-serif | set:textAlign=center | set:lineWidth=3.2 | set:strokeStyle=rgba(3,5,14,0.85) | set:lineJoin=round | strokeText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | set:fillStyle=#93a4c8 | fillText|Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein|240.00|318.00 | restore|"
    }
   ],
   "bildtexte": [
    "Abstände gestaucht, Größen nicht maßstäblich",
    "seit dem Start: 0,0 Erdjahre",
+   "seit dem Start: 0,1 Erdjahre",
+   "seit dem Start: 0,2 Erdjahre",
+   "seit dem Start: 0,3 Erdjahre",
+   "seit dem Start: 0,4 Erdjahre",
+   "seit dem Start: 0,5 Erdjahre",
    "Kruste (Gestein)",
    "Mantel (Gestein)",
    "Kern (Eisen)",
@@ -107,9 +252,101 @@
    "Uranus",
    "Neptun",
    "Größen im gleichen Maßstab – die Abstände stimmen hier NICHT",
-   "Das Licht der Sonne ist unterwegs: 2 Minuten",
+   "Das Licht der Sonne ist unterwegs: 69 Minuten",
    "Abstände im gleichen Maßstab – die Planeten wären hier unsichtbar klein",
-   "Das Licht der Sonne ist unterwegs: 3 Minuten"
+   "Das Licht der Sonne ist unterwegs: 70 Minuten",
+   "Das Licht der Sonne ist unterwegs: 71 Minuten",
+   "Das Licht der Sonne ist unterwegs: 72 Minuten",
+   "Das Licht der Sonne ist unterwegs: 73 Minuten",
+   "Das Licht der Sonne ist unterwegs: 74 Minuten",
+   "Das Licht der Sonne ist unterwegs: 75 Minuten",
+   "Das Licht der Sonne ist unterwegs: 76 Minuten",
+   "Das Licht der Sonne ist unterwegs: 77 Minuten",
+   "Das Licht der Sonne ist unterwegs: 78 Minuten",
+   "Das Licht der Sonne ist unterwegs: 79 Minuten",
+   "Das Licht der Sonne ist unterwegs: 80 Minuten",
+   "Das Licht der Sonne ist unterwegs: 81 Minuten",
+   "Das Licht der Sonne ist unterwegs: 82 Minuten",
+   "Das Licht der Sonne ist unterwegs: 83 Minuten",
+   "Das Licht der Sonne ist unterwegs: 84 Minuten",
+   "Das Licht der Sonne ist unterwegs: 85 Minuten",
+   "Das Licht der Sonne ist unterwegs: 86 Minuten",
+   "Das Licht der Sonne ist unterwegs: 87 Minuten",
+   "Das Licht der Sonne ist unterwegs: 88 Minuten",
+   "Das Licht der Sonne ist unterwegs: 89 Minuten",
+   "Das Licht der Sonne ist unterwegs: 90 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 30 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 31 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 32 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 33 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 34 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 35 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 36 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 37 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 38 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 39 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 40 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 41 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 42 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 43 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 44 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 45 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 46 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 47 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 48 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 49 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 50 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 51 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 52 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 53 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 54 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 55 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 56 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 57 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 58 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 59 Minuten",
+   "Das Licht der Sonne ist unterwegs: 1 Stunden 60 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 0 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 1 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 2 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 3 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 4 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 5 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 6 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 7 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 8 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 9 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 10 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 11 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 12 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 13 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 14 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 15 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 16 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 17 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 18 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 19 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 20 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 21 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 22 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 23 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 24 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 25 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 26 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 27 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 28 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 29 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 30 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 31 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 32 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 33 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 34 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 35 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 36 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 37 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 38 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 39 Minuten",
+   "Das Licht der Sonne ist unterwegs: 2 Stunden 40 Minuten"
   ]
  }
 ]

@@ -72,116 +72,432 @@
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 11340 kg/m³ · 0,001 m³ | m = 11,340 kg | | 3 · Die Gewichtskraft | G = m · g = 11,340 kg · 9,81 N/kg | G = 111,25 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 11340 : 1000 = 11,34 | Die Dichte ist größer als die von Wasser – Blei sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 567-mal so schwer wie Styropor (11340 : 20)."
    },
    {
+    "einstellung": "Blei · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 11340 kg/m³ · 0,001 m³ | m = 11,340 kg | | 3 · Die Gewichtskraft | G = m · g = 11,340 kg · 9,81 N/kg | G = 111,25 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 11340 : 1000 = 11,34 | Die Dichte ist größer als die von Wasser – Blei sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 567-mal so schwer wie Styropor (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Blei · ρ = 11340 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Blei · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 11340 kg/m³ · 0,001 m³ | m = 11,340 kg | | 3 · Die Gewichtskraft | G = m · g = 11,340 kg · 9,81 N/kg | G = 111,25 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 11340 : 1000 = 11,34 | Die Dichte ist größer als die von Wasser – Blei sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 567-mal so schwer wie Styropor (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Blei · ρ = 11340 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Blei · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 11340 kg/m³ · 0,001 m³ | m = 11,340 kg | | 3 · Die Gewichtskraft | G = m · g = 11,340 kg · 9,81 N/kg | G = 111,25 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 11340 : 1000 = 11,34 | Die Dichte ist größer als die von Wasser – Blei sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 567-mal so schwer wie Styropor (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Blei · ρ = 11340 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Blei · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 11340 kg/m³ · 0,001 m³ | m = 11,340 kg | | 3 · Die Gewichtskraft | G = m · g = 11,340 kg · 9,81 N/kg | G = 111,25 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 11340 : 1000 = 11,34 | Die Dichte ist größer als die von Wasser – Blei sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 567-mal so schwer wie Styropor (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Blei · ρ = 11340 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Eisen",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20)."
+   },
+   {
+    "einstellung": "Eisen · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Eisen · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Eisen · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Eisen · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Aluminium",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 2700 kg/m³ · 0,001 m³ | m = 2,700 kg | | 3 · Die Gewichtskraft | G = m · g = 2,700 kg · 9,81 N/kg | G = 26,49 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 2700 : 1000 = 2,70 | Die Dichte ist größer als die von Wasser – Aluminium sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 135-mal so schwer wie Styropor (2700 : 20)."
    },
    {
+    "einstellung": "Aluminium · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 2700 kg/m³ · 0,001 m³ | m = 2,700 kg | | 3 · Die Gewichtskraft | G = m · g = 2,700 kg · 9,81 N/kg | G = 26,49 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 2700 : 1000 = 2,70 | Die Dichte ist größer als die von Wasser – Aluminium sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 135-mal so schwer wie Styropor (2700 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Aluminium · ρ = 2700 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Aluminium · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 2700 kg/m³ · 0,001 m³ | m = 2,700 kg | | 3 · Die Gewichtskraft | G = m · g = 2,700 kg · 9,81 N/kg | G = 26,49 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 2700 : 1000 = 2,70 | Die Dichte ist größer als die von Wasser – Aluminium sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 135-mal so schwer wie Styropor (2700 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Aluminium · ρ = 2700 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Aluminium · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 2700 kg/m³ · 0,001 m³ | m = 2,700 kg | | 3 · Die Gewichtskraft | G = m · g = 2,700 kg · 9,81 N/kg | G = 26,49 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 2700 : 1000 = 2,70 | Die Dichte ist größer als die von Wasser – Aluminium sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 135-mal so schwer wie Styropor (2700 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Aluminium · ρ = 2700 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Aluminium · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 2700 kg/m³ · 0,001 m³ | m = 2,700 kg | | 3 · Die Gewichtskraft | G = m · g = 2,700 kg · 9,81 N/kg | G = 26,49 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 2700 : 1000 = 2,70 | Die Dichte ist größer als die von Wasser – Aluminium sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 135-mal so schwer wie Styropor (2700 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Aluminium · ρ = 2700 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Wasser",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20)."
+   },
+   {
+    "einstellung": "Wasser · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Wasser · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Wasser · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Wasser · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Fichtenholz",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20)."
    },
    {
+    "einstellung": "Fichtenholz · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Fichtenholz · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Fichtenholz · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Fichtenholz · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Styropor",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+   },
+   {
+    "einstellung": "Styropor · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Styropor · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Styropor · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Styropor · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Eisen · 10 cm",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20)."
    },
    {
+    "einstellung": "Eisen · 10 cm · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Eisen · 10 cm · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Eisen · 10 cm · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Eisen · 10 cm · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 7870 kg/m³ · 0,001 m³ | m = 7,870 kg | | 3 · Die Gewichtskraft | G = m · g = 7,870 kg · 9,81 N/kg | G = 77,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 7870 : 1000 = 7,87 | Die Dichte ist größer als die von Wasser – Eisen sinkt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 393,5-mal so schwer wie Styropor (7870 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Eisen · ρ = 7870 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Wasser · genau 1 kg",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20)."
+   },
+   {
+    "einstellung": "Wasser · genau 1 kg · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Wasser · genau 1 kg · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Wasser · genau 1 kg · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Wasser · genau 1 kg · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 1000 kg/m³ · 0,001 m³ | m = 1,000 kg | | 3 · Die Gewichtskraft | G = m · g = 1,000 kg · 9,81 N/kg | G = 9,81 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | Wasser ist der Bezugsstoff: ρ = 1000 kg/m³. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 50-mal so schwer wie Styropor (1000 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Wasser · ρ = 1000 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Fichtenholz · 10 cm",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20)."
    },
    {
+    "einstellung": "Fichtenholz · 10 cm · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Fichtenholz · 10 cm · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Fichtenholz · 10 cm · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Fichtenholz · 10 cm · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 470 kg/m³ · 0,001 m³ | m = 0,470 kg | | 3 · Die Gewichtskraft | G = m · g = 0,470 kg · 9,81 N/kg | G = 4,61 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 470 : 1000 = 0,47 | Die Dichte ist kleiner als die von Wasser – Fichtenholz schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Gleich groß, aber 23,5-mal so schwer wie Styropor (470 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Fichtenholz · ρ = 470 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Styropor · 10 cm",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+   },
+   {
+    "einstellung": "Styropor · 10 cm · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Styropor · 10 cm · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Styropor · 10 cm · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Styropor · 10 cm · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 10 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Kantenlänge a: 10 cm = 2",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 2 cm · 2 cm · 2 cm | V = 8 cm³ = 0,000008 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000008 m³ | m = 0,00016 kg | | 3 · Die Gewichtskraft | G = m · g = 0,00016 kg · 9,81 N/kg | G = 0,0016 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,0080 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
    },
    {
+    "einstellung": "Kantenlänge a: 10 cm = 2 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 2 cm · 2 cm · 2 cm | V = 8 cm³ = 0,000008 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000008 m³ | m = 0,00016 kg | | 3 · Die Gewichtskraft | G = m · g = 0,00016 kg · 9,81 N/kg | G = 0,0016 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,0080 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 2 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 2 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 2 cm · 2 cm · 2 cm | V = 8 cm³ = 0,000008 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000008 m³ | m = 0,00016 kg | | 3 · Die Gewichtskraft | G = m · g = 0,00016 kg · 9,81 N/kg | G = 0,0016 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,0080 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 2 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 2 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 2 cm · 2 cm · 2 cm | V = 8 cm³ = 0,000008 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000008 m³ | m = 0,00016 kg | | 3 · Die Gewichtskraft | G = m · g = 0,00016 kg · 9,81 N/kg | G = 0,0016 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,0080 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 2 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 2 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 2 cm · 2 cm · 2 cm | V = 8 cm³ = 0,000008 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000008 m³ | m = 0,00016 kg | | 3 · Die Gewichtskraft | G = m · g = 0,00016 kg · 9,81 N/kg | G = 0,0016 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,0080 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 2 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Kantenlänge a: 10 cm = 4",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 4 cm · 4 cm · 4 cm | V = 64 cm³ = 0,000064 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000064 m³ | m = 0,0013 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0013 kg · 9,81 N/kg | G = 0,013 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,064 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 4 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 4 cm · 4 cm · 4 cm | V = 64 cm³ = 0,000064 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000064 m³ | m = 0,0013 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0013 kg · 9,81 N/kg | G = 0,013 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,064 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 4 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 4 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 4 cm · 4 cm · 4 cm | V = 64 cm³ = 0,000064 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000064 m³ | m = 0,0013 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0013 kg · 9,81 N/kg | G = 0,013 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,064 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 4 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 4 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 4 cm · 4 cm · 4 cm | V = 64 cm³ = 0,000064 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000064 m³ | m = 0,0013 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0013 kg · 9,81 N/kg | G = 0,013 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,064 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 4 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 4 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 4 cm · 4 cm · 4 cm | V = 64 cm³ = 0,000064 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000064 m³ | m = 0,0013 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0013 kg · 9,81 N/kg | G = 0,013 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,064 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 4 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Kantenlänge a: 10 cm = 7",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 7 cm · 7 cm · 7 cm | V = 343 cm³ = 0,000343 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000343 m³ | m = 0,0069 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0069 kg · 9,81 N/kg | G = 0,068 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,343 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
    },
    {
+    "einstellung": "Kantenlänge a: 10 cm = 7 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 7 cm · 7 cm · 7 cm | V = 343 cm³ = 0,000343 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000343 m³ | m = 0,0069 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0069 kg · 9,81 N/kg | G = 0,068 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,343 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 7 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 7 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 7 cm · 7 cm · 7 cm | V = 343 cm³ = 0,000343 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000343 m³ | m = 0,0069 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0069 kg · 9,81 N/kg | G = 0,068 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,343 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 7 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 7 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 7 cm · 7 cm · 7 cm | V = 343 cm³ = 0,000343 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000343 m³ | m = 0,0069 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0069 kg · 9,81 N/kg | G = 0,068 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,343 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 7 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 7 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 7 cm · 7 cm · 7 cm | V = 343 cm³ = 0,000343 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000343 m³ | m = 0,0069 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0069 kg · 9,81 N/kg | G = 0,068 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,343 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 7 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Kantenlänge a: 10 cm = 9",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 9 cm · 9 cm · 9 cm | V = 729 cm³ = 0,000729 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000729 m³ | m = 0,015 kg | | 3 · Die Gewichtskraft | G = m · g = 0,015 kg · 9,81 N/kg | G = 0,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,729 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 9 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 9 cm · 9 cm · 9 cm | V = 729 cm³ = 0,000729 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000729 m³ | m = 0,015 kg | | 3 · Die Gewichtskraft | G = m · g = 0,015 kg · 9,81 N/kg | G = 0,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,729 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 9 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 9 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 9 cm · 9 cm · 9 cm | V = 729 cm³ = 0,000729 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000729 m³ | m = 0,015 kg | | 3 · Die Gewichtskraft | G = m · g = 0,015 kg · 9,81 N/kg | G = 0,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,729 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 9 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 9 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 9 cm · 9 cm · 9 cm | V = 729 cm³ = 0,000729 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000729 m³ | m = 0,015 kg | | 3 · Die Gewichtskraft | G = m · g = 0,015 kg · 9,81 N/kg | G = 0,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,729 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 9 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 9 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 9 cm · 9 cm · 9 cm | V = 729 cm³ = 0,000729 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000729 m³ | m = 0,015 kg | | 3 · Die Gewichtskraft | G = m · g = 0,015 kg · 9,81 N/kg | G = 0,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,729 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 9 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Kantenlänge a: 10 cm = 11",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 11 cm · 11 cm · 11 cm | V = 1331 cm³ = 0,001331 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001331 m³ | m = 0,027 kg | | 3 · Die Gewichtskraft | G = m · g = 0,027 kg · 9,81 N/kg | G = 0,26 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,331 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
    },
    {
+    "einstellung": "Kantenlänge a: 10 cm = 11 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 11 cm · 11 cm · 11 cm | V = 1331 cm³ = 0,001331 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001331 m³ | m = 0,027 kg | | 3 · Die Gewichtskraft | G = m · g = 0,027 kg · 9,81 N/kg | G = 0,26 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,331 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 11 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 11 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 11 cm · 11 cm · 11 cm | V = 1331 cm³ = 0,001331 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001331 m³ | m = 0,027 kg | | 3 · Die Gewichtskraft | G = m · g = 0,027 kg · 9,81 N/kg | G = 0,26 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,331 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 11 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 11 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 11 cm · 11 cm · 11 cm | V = 1331 cm³ = 0,001331 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001331 m³ | m = 0,027 kg | | 3 · Die Gewichtskraft | G = m · g = 0,027 kg · 9,81 N/kg | G = 0,26 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,331 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 11 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 11 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 11 cm · 11 cm · 11 cm | V = 1331 cm³ = 0,001331 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001331 m³ | m = 0,027 kg | | 3 · Die Gewichtskraft | G = m · g = 0,027 kg · 9,81 N/kg | G = 0,26 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,331 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 11 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Kantenlänge a: 10 cm = 13",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 13 cm · 13 cm · 13 cm | V = 2197 cm³ = 0,002197 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,002197 m³ | m = 0,044 kg | | 3 · Die Gewichtskraft | G = m · g = 0,044 kg · 9,81 N/kg | G = 0,43 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 2,197 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 13 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 13 cm · 13 cm · 13 cm | V = 2197 cm³ = 0,002197 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,002197 m³ | m = 0,044 kg | | 3 · Die Gewichtskraft | G = m · g = 0,044 kg · 9,81 N/kg | G = 0,43 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 2,197 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 13 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 13 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 13 cm · 13 cm · 13 cm | V = 2197 cm³ = 0,002197 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,002197 m³ | m = 0,044 kg | | 3 · Die Gewichtskraft | G = m · g = 0,044 kg · 9,81 N/kg | G = 0,43 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 2,197 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 13 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 13 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 13 cm · 13 cm · 13 cm | V = 2197 cm³ = 0,002197 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,002197 m³ | m = 0,044 kg | | 3 · Die Gewichtskraft | G = m · g = 0,044 kg · 9,81 N/kg | G = 0,43 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 2,197 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 13 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 13 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 13 cm · 13 cm · 13 cm | V = 2197 cm³ = 0,002197 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,002197 m³ | m = 0,044 kg | | 3 · Die Gewichtskraft | G = m · g = 0,044 kg · 9,81 N/kg | G = 0,43 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 2,197 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 13 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
     "einstellung": "Kantenlänge a: 10 cm = 16",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 16 cm · 16 cm · 16 cm | V = 4096 cm³ = 0,004096 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,004096 m³ | m = 0,082 kg | | 3 · Die Gewichtskraft | G = m · g = 0,082 kg · 9,81 N/kg | G = 0,80 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 4,096 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
    },
    {
+    "einstellung": "Kantenlänge a: 10 cm = 16 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 16 cm · 16 cm · 16 cm | V = 4096 cm³ = 0,004096 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,004096 m³ | m = 0,082 kg | | 3 · Die Gewichtskraft | G = m · g = 0,082 kg · 9,81 N/kg | G = 0,80 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 4,096 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 16 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 16 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 16 cm · 16 cm · 16 cm | V = 4096 cm³ = 0,004096 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,004096 m³ | m = 0,082 kg | | 3 · Die Gewichtskraft | G = m · g = 0,082 kg · 9,81 N/kg | G = 0,80 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 4,096 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 16 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 16 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 16 cm · 16 cm · 16 cm | V = 4096 cm³ = 0,004096 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,004096 m³ | m = 0,082 kg | | 3 · Die Gewichtskraft | G = m · g = 0,082 kg · 9,81 N/kg | G = 0,80 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 4,096 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 16 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
+    "einstellung": "Kantenlänge a: 10 cm = 16 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 16 cm · 16 cm · 16 cm | V = 4096 cm³ = 0,004096 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,004096 m³ | m = 0,082 kg | | 3 · Die Gewichtskraft | G = m · g = 0,082 kg · 9,81 N/kg | G = 0,80 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 4,096 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 16 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
+   },
+   {
     "einstellung": "Kantenlänge a: 10 cm = 18",
     "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 18 cm · 18 cm · 18 cm | V = 5832 cm³ = 0,005832 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,005832 m³ | m = 0,117 kg | | 3 · Die Gewichtskraft | G = m · g = 0,117 kg · 9,81 N/kg | G = 1,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 5,832 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
    },
    {
-    "einstellung": "Kantenlänge a: 10 cm = 20",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 20 cm · 20 cm · 20 cm | V = 8000 cm³ = 0,008 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,008 m³ | m = 0,160 kg | | 3 · Die Gewichtskraft | G = m · g = 0,160 kg · 9,81 N/kg | G = 1,57 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 8,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+    "einstellung": "Kantenlänge a: 10 cm = 18 · nach 50 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 18 cm · 18 cm · 18 cm | V = 5832 cm³ = 0,005832 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,005832 m³ | m = 0,117 kg | | 3 · Die Gewichtskraft | G = m · g = 0,117 kg · 9,81 N/kg | G = 1,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 5,832 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 18 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|242.00,324.00 | quadraticCurveTo|244.00,324.00,244.00,326.00 | lineTo|244.00,326.00 | quadraticCurveTo|244.00,328.00,242.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|244.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
-    "einstellung": "Kantenlänge a: 10 cm = 3",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 3 cm · 3 cm · 3 cm | V = 27 cm³ = 0,000027 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000027 m³ | m = 0,00054 kg | | 3 · Die Gewichtskraft | G = m · g = 0,00054 kg · 9,81 N/kg | G = 0,0053 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,027 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+    "einstellung": "Kantenlänge a: 10 cm = 18 · nach 75 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 18 cm · 18 cm · 18 cm | V = 5832 cm³ = 0,005832 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,005832 m³ | m = 0,117 kg | | 3 · Die Gewichtskraft | G = m · g = 0,117 kg · 9,81 N/kg | G = 1,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 5,832 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 18 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|264.00,324.00 | quadraticCurveTo|266.00,324.00,266.00,326.00 | lineTo|266.00,326.00 | quadraticCurveTo|266.00,328.00,264.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|266.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
-    "einstellung": "Kantenlänge a: 10 cm = 5",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 5 cm · 5 cm · 5 cm | V = 125 cm³ = 0,000125 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000125 m³ | m = 0,0025 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0025 kg · 9,81 N/kg | G = 0,025 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,125 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+    "einstellung": "Kantenlänge a: 10 cm = 18 · nach 100 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 18 cm · 18 cm · 18 cm | V = 5832 cm³ = 0,005832 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,005832 m³ | m = 0,117 kg | | 3 · Die Gewichtskraft | G = m · g = 0,117 kg · 9,81 N/kg | G = 1,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 5,832 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 18 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|286.00,324.00 | quadraticCurveTo|288.00,324.00,288.00,326.00 | lineTo|288.00,326.00 | quadraticCurveTo|288.00,328.00,286.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|288.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    },
    {
-    "einstellung": "Kantenlänge a: 10 cm = 6",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 6 cm · 6 cm · 6 cm | V = 216 cm³ = 0,000216 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000216 m³ | m = 0,0043 kg | | 3 · Die Gewichtskraft | G = m · g = 0,0043 kg · 9,81 N/kg | G = 0,042 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,216 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 8",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 8 cm · 8 cm · 8 cm | V = 512 cm³ = 0,000512 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,000512 m³ | m = 0,010 kg | | 3 · Die Gewichtskraft | G = m · g = 0,010 kg · 9,81 N/kg | G = 0,098 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 0,512 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 10",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 10 cm · 10 cm · 10 cm | V = 1000 cm³ = 0,001 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001 m³ | m = 0,020 kg | | 3 · Die Gewichtskraft | G = m · g = 0,020 kg · 9,81 N/kg | G = 0,20 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,000 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | Bei 10 cm Kante ist V genau 1 dm³ = 1 Liter. Wasser hat dann genau 1 kg Masse – daher stammt die Einheit. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 12",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 12 cm · 12 cm · 12 cm | V = 1728 cm³ = 0,001728 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,001728 m³ | m = 0,035 kg | | 3 · Die Gewichtskraft | G = m · g = 0,035 kg · 9,81 N/kg | G = 0,34 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 1,728 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 14",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 14 cm · 14 cm · 14 cm | V = 2744 cm³ = 0,002744 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,002744 m³ | m = 0,055 kg | | 3 · Die Gewichtskraft | G = m · g = 0,055 kg · 9,81 N/kg | G = 0,54 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 2,744 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 15",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 15 cm · 15 cm · 15 cm | V = 3375 cm³ = 0,003375 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,003375 m³ | m = 0,068 kg | | 3 · Die Gewichtskraft | G = m · g = 0,068 kg · 9,81 N/kg | G = 0,67 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 3,375 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 17",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 17 cm · 17 cm · 17 cm | V = 4913 cm³ = 0,004913 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,004913 m³ | m = 0,098 kg | | 3 · Die Gewichtskraft | G = m · g = 0,098 kg · 9,81 N/kg | G = 0,96 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 4,913 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
-   },
-   {
-    "einstellung": "Kantenlänge a: 10 cm = 19",
-    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 19 cm · 19 cm · 19 cm | V = 6859 cm³ = 0,006859 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,006859 m³ | m = 0,137 kg | | 3 · Die Gewichtskraft | G = m · g = 0,137 kg · 9,81 N/kg | G = 1,34 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 6,859 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20)."
+    "einstellung": "Kantenlänge a: 10 cm = 18 · nach 125 Frames",
+    "text": "dchStatus: 1 · Das Volumen des Würfels | V = a · a · a | V = 18 cm · 18 cm · 18 cm | V = 5832 cm³ = 0,005832 m³ | | 2 · Die Masse | m = ρ · V | m = 20 kg/m³ · 0,005832 m³ | m = 0,117 kg | | 3 · Die Gewichtskraft | G = m · g = 0,117 kg · 9,81 N/kg | G = 1,15 N | | 4 · Der Vergleich mit Wasser | Ein gleich großer Würfel aus Wasser hat m = 5,832 kg. | ρ : ρWasser = 20 : 1000 = 0,02 | Die Dichte ist kleiner als die von Wasser – Styropor schwimmt. | | 5 · Der Aha-Moment | Der gleich große Bleiwürfel wiegt 567-mal so viel (11340 : 20).",
+    "bild": "fillText|a = 18 cm|0.00|0.00 | restore| | set:textAlign=center | set:font=bold 9.5px system-ui | set:fillStyle=#0f172a | fillText|Styropor · ρ = 20 kg/m³|310.00|319.00 | set:fillStyle=#e2e8f0 | beginPath| | moveTo|202.00,324.00 | lineTo|418.00,324.00 | quadraticCurveTo|420.00,324.00,420.00,326.00 | lineTo|420.00,326.00 | quadraticCurveTo|420.00,328.00,418.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#38bdf8 | beginPath| | moveTo|202.00,324.00 | lineTo|308.00,324.00 | quadraticCurveTo|310.00,324.00,310.00,326.00 | lineTo|310.00,326.00 | quadraticCurveTo|310.00,328.00,308.00,328.00 | lineTo|202.00,328.00 | quadraticCurveTo|200.00,328.00,200.00,326.00 | lineTo|200.00,326.00 | quadraticCurveTo|200.00,324.00,202.00,324.00 | closePath| | fill| | set:fillStyle=#0284c7 | beginPath| | arc|310.00,326.00,3.20,0.00,6.28 | fill| | set:textAlign=left | set:font=7.5px system-ui | set:fillStyle=#64748b | fillText|auflegen → einschwingen → ablesen → abheben|10.00|329.00"
    }
   ],
   "bildtexte": [
@@ -203,33 +519,17 @@
    "ρ = m : V",
    "1 dm³ Wasser: genau 1 kg Masse.",
    "Daher kommt die Einheit.",
-   "Blei : Wasser = 11,34",
+   "Styropor : Wasser = 0,02",
    "bei jeder Kantenlänge gleich",
    "a = 10 cm · V = a³ = 1000 cm³",
    "= 0,001 m³",
    "Anzeige",
-   "0,000",
    "kg",
    "0",
-   "20",
-   "a = 10 cm",
-   "Blei · ρ = 11340 kg/m³",
-   "auflegen → einschwingen → ablesen → abheben",
-   "Eisen : Wasser = 7,87",
-   "10",
-   "Eisen · ρ = 7870 kg/m³",
-   "Alu : Wasser = 2,70",
-   "3",
-   "Aluminium · ρ = 2700 kg/m³",
-   "Wasser ist der Bezugsstoff.",
-   "2",
-   "Wasser · ρ = 1000 kg/m³",
-   "Fichte : Wasser = 0,47",
-   "0,6",
-   "Fichtenholz · ρ = 470 kg/m³",
-   "Styropor : Wasser = 0,02",
    "0,03",
+   "a = 10 cm",
    "Styropor · ρ = 20 kg/m³",
+   "auflegen → einschwingen → ablesen → abheben",
    "0,091",
    "0,063",
    "0,022",
@@ -241,6 +541,21 @@
    "0,00000",
    "0,0003",
    "a = 2 cm",
+   "0,00001",
+   "0,00003",
+   "0,00005",
+   "0,00006",
+   "0,00009",
+   "0,00011",
+   "0,00013",
+   "0,00014",
+   "0,00018",
+   "0,00019",
+   "0,00020",
+   "0,00021",
+   "0,00022",
+   "0,00017",
+   "0,00015",
    "0,726",
    "0,504",
    "0,173",
@@ -252,6 +567,19 @@
    "0,0000",
    "0,002",
    "a = 4 cm",
+   "0,0001",
+   "0,0002",
+   "0,0004",
+   "0,0005",
+   "0,0007",
+   "0,0008",
+   "0,0010",
+   "0,0012",
+   "0,0014",
+   "0,0015",
+   "0,0016",
+   "0,0017",
+   "0,0011",
    "3,890",
    "2,699",
    "0,926",
@@ -262,6 +590,33 @@
    "= 0,000343 m³",
    "0,01",
    "a = 7 cm",
+   "0,0019",
+   "0,0028",
+   "0,0036",
+   "0,0045",
+   "0,0054",
+   "0,0062",
+   "0,0076",
+   "0,0081",
+   "0,0085",
+   "0,0089",
+   "0,0091",
+   "0,0092",
+   "0,0093",
+   "0,0087",
+   "0,0084",
+   "0,0082",
+   "0,0079",
+   "0,0073",
+   "0,0070",
+   "0,0068",
+   "0,0066",
+   "0,0064",
+   "0,0063",
+   "0,0061",
+   "0,0065",
+   "0,0067",
+   "0,0071",
    "8,267",
    "5,737",
    "1,968",
@@ -269,8 +624,21 @@
    "0,015",
    "a = 9 cm · V = a³ = 729 cm³",
    "= 0,000729 m³",
+   "0,000",
    "0,02",
    "a = 9 cm",
+   "0,001",
+   "0,004",
+   "0,006",
+   "0,008",
+   "0,010",
+   "0,011",
+   "0,013",
+   "0,016",
+   "0,017",
+   "0,018",
+   "0,019",
+   "0,014",
    "15,094",
    "10,475",
    "3,594",
@@ -280,6 +648,14 @@
    "a = 11 cm · V = a³ = 1331 cm³",
    "= 0,001331 m³",
    "a = 11 cm",
+   "0,005",
+   "0,007",
+   "0,021",
+   "0,024",
+   "0,029",
+   "0,028",
+   "0,026",
+   "0,025",
    "24,914",
    "17,290",
    "5,932",
@@ -290,6 +666,27 @@
    "= 0,002197 m³",
    "0,06",
    "a = 13 cm",
+   "0,003",
+   "0,012",
+   "0,023",
+   "0,034",
+   "0,040",
+   "0,048",
+   "0,052",
+   "0,055",
+   "0,057",
+   "0,058",
+   "0,059",
+   "0,056",
+   "0,054",
+   "0,050",
+   "0,049",
+   "0,047",
+   "0,045",
+   "0,042",
+   "0,041",
+   "0,039",
+   "0,043",
    "46,449",
    "32,236",
    "11,059",
@@ -300,6 +697,24 @@
    "= 0,004096 m³",
    "0,1",
    "a = 16 cm",
+   "0,033",
+   "0,074",
+   "0,083",
+   "0,090",
+   "0,097",
+   "0,100",
+   "0,094",
+   "0,087",
+   "0,084",
+   "0,081",
+   "0,079",
+   "0,077",
+   "0,075",
+   "0,073",
+   "0,076",
+   "0,078",
+   "0,080",
+   "0,085",
    "66,135",
    "45,898",
    "15,746",
@@ -310,99 +725,35 @@
    "= 0,005832 m³",
    "0,2",
    "a = 18 cm",
-   "90,720",
-   "62,960",
-   "21,600",
-   "8,000",
-   "3,760",
-   "0,160",
-   "a = 20 cm · V = a³ = 8000 cm³",
-   "= 0,008 m³",
-   "0,3",
-   "a = 20 cm",
-   "0,306",
-   "0,212",
-   "0,073",
-   "0,013",
-   "0,00054",
-   "a = 3 cm · V = a³ = 27 cm³",
-   "= 0,000027 m³",
-   "0,0006",
-   "a = 3 cm",
-   "1,417",
-   "0,984",
-   "0,338",
-   "0,125",
-   "0,059",
-   "0,0025",
-   "a = 5 cm · V = a³ = 125 cm³",
-   "= 0,000125 m³",
-   "0,003",
-   "a = 5 cm",
-   "2,449",
-   "1,700",
-   "0,583",
-   "0,216",
-   "0,102",
-   "0,0043",
-   "a = 6 cm · V = a³ = 216 cm³",
-   "= 0,000216 m³",
-   "0,006",
-   "a = 6 cm",
-   "5,806",
-   "4,029",
-   "1,382",
-   "0,512",
-   "0,241",
-   "0,010",
-   "a = 8 cm · V = a³ = 512 cm³",
-   "= 0,000512 m³",
-   "a = 8 cm",
-   "19,596",
-   "13,599",
-   "4,666",
-   "1,728",
-   "0,812",
-   "0,035",
-   "a = 12 cm · V = a³ = 1728 cm³",
-   "= 0,001728 m³",
-   "a = 12 cm",
-   "31,117",
-   "21,595",
-   "7,409",
-   "2,744",
-   "1,290",
-   "0,055",
-   "a = 14 cm · V = a³ = 2744 cm³",
-   "= 0,002744 m³",
-   "a = 14 cm",
-   "38,273",
-   "26,561",
-   "9,113",
-   "3,375",
-   "1,586",
-   "0,068",
-   "a = 15 cm · V = a³ = 3375 cm³",
-   "= 0,003375 m³",
-   "a = 15 cm",
-   "55,713",
-   "38,665",
-   "13,265",
-   "4,913",
-   "2,309",
-   "0,098",
-   "a = 17 cm · V = a³ = 4913 cm³",
-   "= 0,004913 m³",
-   "a = 17 cm",
-   "77,781",
-   "53,980",
-   "18,519",
-   "6,859",
-   "3,224",
-   "0,137",
-   "a = 19 cm · V = a³ = 6859 cm³",
-   "= 0,006859 m³",
-   "a = 19 cm"
+   "0,009",
+   "0,062",
+   "0,105",
+   "0,118",
+   "0,128",
+   "0,138",
+   "0,145",
+   "0,151",
+   "0,155",
+   "0,157",
+   "0,158",
+   "0,152",
+   "0,148",
+   "0,143",
+   "0,139",
+   "0,134",
+   "0,129",
+   "0,124",
+   "0,120",
+   "0,116",
+   "0,112",
+   "0,109",
+   "0,107",
+   "0,104",
+   "0,106",
+   "0,110",
+   "0,113",
+   "0,115",
+   "0,119"
   ]
  }
 ]
