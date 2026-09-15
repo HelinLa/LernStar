@@ -272,7 +272,7 @@ Seitenzahlen seit der Satzumstellung vom 09.09.2026 (12 pt):
 | foe7 | gts7 | `fo` `fw` | 25 (aus 29) | 111 | 54 |
 | foe8 | gts8 | `fs` `fb` | 20 (aus 23) | 91 | 70 |
 | foe9 | gts9 | `fk` `fe` | 25 (aus 27) | 111 | 102 |
-| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 124 | 232 |
+| foe10 | gts10 | `fv` `fn` | 28 (aus 32) | 127 | 232 |
 
 > **Der Lehrerteil lief unter der Blattkante weiter** (gefunden 05.09.2026).
 > `build_pilot.seite_l` setzte GENAU EINE Seite und schnitt alles unterhalb von
@@ -401,7 +401,7 @@ Vierte Reihe: **Gymnasiale Oberstufe NRW**, ein Band fuer Gymnasium UND
 Gesamtschule (der Kernlehrplan Heft 4721 gilt fuer beide). Einfuehrungsphase,
 27 Einheiten in 2 Kapiteln, Kennungen `ki` und `gw`.
 
-Stand 14.09.2026: **168 Schuelerseiten + 121 Seiten Lehrerband**, 27 Einheiten,
+Stand 15.09.2026: **144 Schuelerseiten + 145 Seiten Lehrerband**, 27 Einheiten,
 22 gedruckte QR-Codes (fuenf Datenblattseiten ohne Code), alle live geprueft.
 Bruecke bei 569 Heftseiten, Registry bei 226 Simulationen.
 
@@ -667,8 +667,8 @@ nur einstufigen Pruefung stand in **allen vier Kapiteltests** von Band 8
 **Raetsel raus, Lehrerband getrennt** (Entscheidung Abdullah, 09.09.2026):
 Wortgitter und Kreuzwortraetsel werden nicht mehr gesetzt (90 Seiten), der
 Loesungsteil wandert in ein eigenes `<DATEINAME>_Lehrerband.pdf` (488 Seiten),
-wie es die Foerderreihe schon machte. Der **Messwerte-Anhang bleibt beim
-Schueler**. Zusammen zahlen die beiden Kuerzungen den groesseren Schriftgrad fast:
+wie es die Foerderreihe schon machte. (Der Messwerte-Anhang blieb damals beim
+Schueler; seit dem 15.09.2026 steht auch er im Lehrerband - siehe unten.) Zusammen zahlen die beiden Kuerzungen den groesseren Schriftgrad fast:
 Schuelerbaende **2378 → 2947 Seiten (+24 %)** statt +65 %.
 
 > **Abschnitt ③ sagt nur noch einen Satz** (Abdullah, 14.09.2026: "mache es
@@ -690,6 +690,55 @@ Schuelerbaende **2378 → 2947 Seiten (+24 %)** statt +65 %.
 > Schreibtisch legt Dateien wie `book_p99 3.png` an. `ls build/book_p*.png | wc -l`
 > zaehlt sie mit – meine erste Bilanz lag dadurch um **142 Seiten** zu hoch, und
 > `simcheck/seitenzahlen.py` stuerzt an ihnen ab. Muster: `book_p\d+\.png$`.
+
+## Der Schuelerband traegt keine Anhaenge mehr (seit 15.09.2026)
+
+Abdullah: *"die hefte haben teilweise 300 seiten oder 200 seiten, das ist echt
+zuviel, wir muessen etwas kuerzen, alles was doppelt ist muessen wir
+rausnehmen."* **Die Messung hat die Annahme widerlegt und den Weg gewiesen.**
+
+| gemessen ueber die 15 Regelbaende | |
+|---|---|
+| Saetze auf Uebungsseiten | 10 455, davon **438 woertlich von der Forscherseite (4,2 %)** – und das sind die zitierten Aufgabenstellungen |
+| Saetze in der Testvorbereitung | 1 303, davon **einer** aus einem Merksatz |
+| Seiten unter einem Drittel gefuellt | **72 von 3 366 (2 %)** |
+
+Doppelt war also fast nichts. **Und Kuerzen haette auch nichts gebracht:**
+`schreibraum_auffuellen` verteilt uebrigen Platz auf der letzten Seite auf die
+SCHREIBLINIEN (hoechstens neun). Ein um drei Zeilen gekuerzter Text spart keine
+Seite, er erzeugt drei Schreiblinien. Seiten fallen erst weg, wenn ein **ganzer
+Baustein** verschwindet.
+
+Die eigentliche Rechnung: **3 366 Schuelerseiten / 573 Einheiten = 5,9 Seiten je
+Einheit.** Klasse 9 hat 54 Einheiten, deshalb 323 Seiten. Zum Vergleich: Die
+**Foerderreihe braucht 4,4** – dort sind Seite A und Seite B eine Doppelseite,
+und eine getrennte Uebungsseite gibt es nicht.
+
+**Entschieden und umgesetzt: die Anhaenge ziehen in den Lehrerband.**
+Testvorbereitung, Kapiteltest und Messwerte-Anhang stehen nicht mehr im
+Schuelerband (`lehrer_anhang()` in jedem `build_book.py`). Weggeworfen ist
+nichts – die Lehrkraft kopiert, was sie austeilen will, und ein Test gehoert
+ohnehin nicht in die Hand dessen, der ihn schreibt.
+
+| | vorher | jetzt |
+|---|---|---|
+| 15 Regelbaende zusammen | 2 926 | **2 629 Seiten (−297, −10,2 %)** |
+| Klasse 9 Realschule | 323 | **296** |
+| Klasse 10 Realschule | 278 | **254** |
+| Gymnasium 5/6 | 238 | **214** |
+| Einfuehrungsphase | 168 | **144** |
+
+> **Die Foerderreihe bleibt unveraendert.** Sie hat keinen Messwerte-Anhang und
+> keine getrennte Testvorbereitung, ihr `setze_einheit` in `build_pilot.py`
+> kennt kein `fuss=`, und ihre Baende sind mit 91–127 Seiten ohnehin nicht das
+> Problem. Zu holen waeren dort 16 Seiten (vier Foerdertests) – das steht in
+> keinem Verhaeltnis zum Eingriff in einen zweiten Renderer.
+
+> **Folge, die man wissen muss: 297 der 569 Kennungen haben eine neue
+> Seitenzahl** (l1 von 39 auf 35, und so weiter). Die Bruecke ist neu gebaut,
+> aber **die gedruckten Exemplare von Klasse 5/6 und Klasse 10 zeigen jetzt
+> andere Seiten als die App.** Wer sie weiter benutzt, braucht entweder einen
+> Nachdruck oder eine zweite Bruecke fuer den alten Satz.
 
 ## Einstieg und Bildschirm muessen dasselbe Ding zeigen (seit 15.09.2026)
 

@@ -809,7 +809,7 @@ def ch_uebung(ub,cfg,chtitel,fno,pn,ueber=None):
 # ═════════════════════════════════════════════════════════════════════════════
 #  TEST-VORBEREITUNG
 # ═════════════════════════════════════════════════════════════════════════════
-def ch_testprep(prep,words,chtitel,pn):
+def ch_testprep(prep,words,chtitel,pn,fuss=None):
     def bauer(nl):
         B=[b_titel("Bereite dich auf den Test vor",unterzeile=chtitel)]
         B.append(b_marke(1,"Prüfe, was du schon kannst. Hake ehrlich ab."))
@@ -856,13 +856,13 @@ def ch_testprep(prep,words,chtitel,pn):
     # Rest der letzten Seite hinein - solange die Seitenzahl gleich bleibt.
     B,_nl=einpassen(bauer,2,8)
     return setze_einheit(B,chtitel,"Bereite dich auf den Test vor",pn,
-                         "Testvorbereitung "+chtitel)
+                         "Testvorbereitung "+chtitel,fuss=fuss)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
 #  KAPITELTEST
 # ═════════════════════════════════════════════════════════════════════════════
-def ch_test(test,chtitel,pn):
+def ch_test(test,chtitel,pn,fuss=None):
     P=[4,6,2,3,2]; tot=sum(P)
     B=[b_titel("Test: "+chtitel)]
 
@@ -915,7 +915,8 @@ def ch_test(test,chtitel,pn):
                  fd.ABS_AUFGABE))
     B.append(b_para("Viel Erfolg – du schaffst das!",art="bold",grad=fd.ZWISCHEN,
                     farbe=fd.STIL["akzent"],breite=LESE,lh=LH_ZWISCH,name="Zuspruch"))
-    return setze_einheit(B,"Kapiteltest · "+chtitel,"Test: "+chtitel,pn,"Test "+chtitel)
+    return setze_einheit(B,"Kapiteltest · "+chtitel,"Test: "+chtitel,pn,"Test "+chtitel,
+                         fuss=fuss)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1306,7 +1307,7 @@ def basiskonzept_seiten(pn):
 # ═════════════════════════════════════════════════════════════════════════════
 #  MESSWERTE OHNE GERÄT  (bleibt im Schuelerband!)
 # ═════════════════════════════════════════════════════════════════════════════
-def messwerte_pages(start_pn):
+def messwerte_pages(start_pn,fuss=None):
     """Messwerte fuer den Offline-Betrieb: nur die erwartete Beobachtung, sonst nichts.
     Ohne Geraet kann eine Klasse damit die Tabelle auf der Forscherseite fuellen und
     danach selbst weiterarbeiten - Erklaerung, Sicherung und die Loesung der Aufgabe
@@ -1352,7 +1353,8 @@ def messwerte_pages(start_pn):
     for si,eintraege in enumerate(umbruch):
         for i,_y in eintraege:
             if i in kapitelkopf: starts[kapitelkopf[i]]=start_pn+si
-    seiten=setze_einheit(B,"Messwerte ohne Gerät","Messwerte ohne Gerät",start_pn,"Messwerte")
+    seiten=setze_einheit(B,"Messwerte ohne Gerät","Messwerte ohne Gerät",start_pn,"Messwerte",
+                         fuss=fuss)
     return seiten,start_pn+len(seiten),starts
 
 
@@ -1730,10 +1732,10 @@ def lb_cover():
         fd.raute(d,fd.X0+7,y+fd.LH*0.45,6,fd.STIL["akzent"])
         y=fd.para(h,fd.X0+28,y,t,fd.schrift("med",fd.FLIESS),fd.STIL["text"],LESE-28,fd.LH)+10
     y+=20
-    fd.para(h,fd.X0,y,"Der Schülerband enthält diese Lösungen nicht. Die erwarteten "
-            "Messwerte stehen dort weiterhin im Anhang „Messwerte ohne Gerät“ – ohne "
-            "Erklärung und ohne Sicherung, damit auch ohne Gerät weitergearbeitet "
-            "werden kann.",fd.schrift("reg",fd.FLIESS),fd.STIL["text"],LESE,fd.LH)
+    fd.para(h,fd.X0,y,"Der Schülerband enthält diese Lösungen nicht. Hinter den "
+            "Lösungen stehen hier außerdem die Testvorbereitung, der Kapiteltest und "
+            "die erwarteten Messwerte – zum Kopieren und Austeilen, wenn Sie sie "
+            "brauchen.",fd.schrift("reg",fd.FLIESS),fd.STIL["text"],LESE,fd.LH)
     fd.T(h,fd.X0,fd.UNTEN-LH_ZWISCH,"Nur für Lehrkräfte – nicht für die Schülerhand",
          fd.schrift("bold",fd.ZWISCHEN),fd.STIL["akzent"])
     PROBE.append(("Lehrerband Deckblatt",1,_unterkante(im)))
@@ -1753,6 +1755,27 @@ def loesungen_pages(start_pn):
     return pages,pn,starts,marken
 
 
+def lehrer_anhang(pn):
+    """Testvorbereitung, Kapiteltest und Messwerte - seit 15.09.2026 hier.
+
+    Sie standen im Schuelerband und haben ihn zu dick gemacht (gemessen 297
+    Seiten ueber alle 19 Baende, 9 % des Schuelersatzes). Weggeworfen ist
+    nichts: Die Lehrkraft kopiert, was sie austeilen will. Der Test gehoert
+    ohnehin nicht in die Hand dessen, der ihn schreibt."""
+    raus = []; marken = []
+    for ci, ch in enumerate(CHAPTERS):
+        a = ASMT[ch["id"]]
+        words = [x["wort"] for x in a["clues"]["hinweise"]]
+        marken.append(("Testvorbereitung · " + ch["title"], pn + len(raus)))
+        raus += ch_testprep(a["prep"], words, ch["title"], pn + len(raus), fuss=FUSS_LB)
+        marken.append(("Kapiteltest · " + ch["title"], pn + len(raus)))
+        raus += ch_test(a["test"], ch["title"], pn + len(raus), fuss=FUSS_LB)
+    marken.append(("Messwerte ohne Gerät", pn + len(raus)))
+    mess, _pn, _starts = messwerte_pages(pn + len(raus), fuss=FUSS_LB)
+    raus += mess
+    return raus, marken
+
+
 def lehrerband_setzen():
     """Nur SETZEN, nichts schreiben. Wird VOR den Proben aufgerufen.
 
@@ -1764,7 +1787,8 @@ def lehrerband_setzen():
     168 leere Kaestchen, und die Zeichenprobe meldete "0 fehlende Zeichen".
     Seitdem laeuft das Setzen vor den Proben und das Schreiben danach."""
     loes,_pn,starts,marken=loesungen_pages(2)
-    return [lb_cover()]+loes,starts,marken
+    anhang,amarken=lehrer_anhang(_pn)
+    return [lb_cover()]+loes+anhang,starts,marken+[(t,p,None) for t,p in amarken]
 
 
 def build_lehrerband(gesetzt=None):
@@ -1788,7 +1812,9 @@ def build_lehrerband(gesetzt=None):
             _kap.append(w.add_outline_item(f"Kapitel {i+1} · {ch['title']}",
                                            starts[i]-1,parent=lp))
         for _t,_p,_ci in marken:
-            w.add_outline_item(_t,_p-1,parent=_kap[_ci])
+            # _ci None: Testvorbereitung, Kapiteltest und Messwerte haengen
+            # nicht unter einem Kapitel der Loesungen, sondern oben.
+            w.add_outline_item(_t,_p-1,parent=_kap[_ci] if _ci is not None else None)
         w._root_object[NameObject("/PageMode")]=NameObject("/UseOutlines")
         # Aus BANDNAME, nicht aus KL/SFORM: die fuenf Realschulbaende haben die
         # beiden Namen nicht (siehe lb_cover).
@@ -1924,14 +1950,11 @@ if __name__=="__main__":
                 _up=ch_uebung(UEBD[tid],FSD[tid],ch["title"],ti+1,pn,
                               FSD[tid].get("ueberleitung"))
                 body+=_up; pn+=len(_up)
-        a=ASMT[ch["id"]]; hin=a["clues"]["hinweise"]
-        words=[x["wort"] for x in hin]
         # RAETSEL ENTFALLEN: ch_wortgitter und ch_kreuzwort werden nicht mehr
         # aufgerufen und stehen deshalb auch nicht mehr in den Lesezeichen.
-        chap["subs"].append(("Bereite dich auf den Test vor",pn))
-        _pp=ch_testprep(a["prep"],words,ch["title"],pn); body+=_pp; pn+=len(_pp)
-        chap["subs"].append(("Kapiteltest",pn))
-        _te=ch_test(a["test"],ch["title"],pn); body+=_te; pn+=len(_te)
+        # Testvorbereitung und Kapiteltest stehen seit dem 15.09.2026 im
+        # LEHRERBAND (siehe lehrer_anhang) - der Schuelerband wurde zu dick,
+        # und ein Test gehoert nicht in die Hand dessen, der ihn schreibt.
         chap["subs"].append(("Hilfen & Forscheraufträge",pn))
         _hi=ch_hilfen(ch,pn); body+=_hi; pn+=len(_hi)
         if TRANSFER.get(ch["id"]):
@@ -1939,10 +1962,13 @@ if __name__=="__main__":
             _wd=ch_transfer(ch,pn); body+=_wd; pn+=len(_wd)
         nav.append(chap)
     bk_start=pn; bk=basiskonzept_seiten(pn); pn+=len(bk)
-    mess_start=pn; mess,pn,mess_starts=messwerte_pages(mess_start)
-    zusatz=[("Basiskonzepte im Überblick (für Eltern und Lehrkräfte)",bk_start),
-            ("Messwerte ohne Gerät",mess_start)]
-    pages=[book_cover()]+about+[toc(starts,toc_pn,mess_start,zusatz)]+body+bk+mess
+    # Der Messwerte-Anhang steht seit dem 15.09.2026 im LEHRERBAND. Seit der
+    # Kuerzung von Abschnitt ③ (14.09.) verwies keine Forscherseite mehr auf
+    # ihn; er stand nur noch im Inhaltsverzeichnis und kostete 103 Seiten
+    # ueber alle Baende.
+    mess_start=mess_starts=None
+    zusatz=[("Basiskonzepte im Überblick (für Eltern und Lehrkräfte)",bk_start)]
+    pages=[book_cover()]+about+[toc(starts,toc_pn,None,zusatz)]+body+bk
     bd=os.path.join(HERE,"build"); os.makedirs(bd,exist_ok=True)
     # Alte Seiten wegraeumen: ein anders langer Satz darf keine book_p*.png des
     # vorigen Laufs stehen lassen, sonst misst simcheck/seitenzahlen.py Geisterseiten.
