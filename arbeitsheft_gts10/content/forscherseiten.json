@@ -1175,7 +1175,7 @@
     "post": "ab, nicht von Temperatur oder Druck."
    }
   ],
-  "beobachtung": "Radon-220 hat laut Statuszeile eine Halbwertszeit von 55,6 s. Am Anfang sind 200 von 200 Kernen übrig, also 100,0 %. Nach einem Schritt zeigt die Anzeige 97 von 200 Kernen, das sind 48,5 %; erwartet hätte man 100, zerfallen sind 103. Bei dir steht vielleicht eine etwas andere Zahl. Bei den anderen Nukliden ändert sich nur die Halbwertszeit: Gestartet wird immer mit 200 Kernen, erwartet werden also immer 100. Die Hälfte stimmt nur ungefähr.",
+  "beobachtung": "Radon-220 hat laut Statuszeile eine Halbwertszeit von 55,6 s. Am Anfang sind 200 von 200 Kernen übrig, also 100,0 %. Nach einem Schritt zeigt die Anzeige zum Beispiel 97 von 200 Kernen, das sind 48,5 %; erwartet hätte man 100, zerfallen sind 103. Bei dir steht vielleicht eine etwas andere Zahl. Bei den anderen Nukliden ändert sich nur die Halbwertszeit: Gestartet wird immer mit 200 Kernen, erwartet werden also immer 100. Die Hälfte stimmt nur ungefähr.",
   "aufgabe": {
    "frage": "Berechne, wie viele von 200 Kernen nach drei Halbwertszeiten im Mittel noch übrig sind.",
    "zeilen": 3,
@@ -1186,7 +1186,8 @@
   "alltagKomp": "B2",
   "ueberleitung": "Wenn du die Halbwertszeit kennst, kannst du aus der übrigen Menge zurückrechnen – genau so bestimmt ein Labor das Alter eines Fundes.",
   "name": "Wann ist die Hälfte zerfallen?",
-  "theme": "gts_kern"
+  "theme": "gts_kern",
+  "werte_streuen": true
  },
  {
   "id": "rk7",

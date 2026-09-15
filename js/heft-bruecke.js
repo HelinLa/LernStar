@@ -3996,7 +3996,7 @@ const HEFT_SEITEN = {
     name: "Wie verwandelt der Trafo die Spannung?",
     titel: "Zwei Spulen, ein Eisenkern",
     frage: "Wie verwandelt der Transformator eine Spannung in eine höhere oder niedrigere?",
-    schritte: ["Stelle die Primärspannung U₁ auf 230 V und das Windungsverhältnis N₁/N₂ auf 1,0.", "Ziehe das Windungsverhältnis N₁/N₂ auf 2,0 und lies im Diagramm die Sekundärspannung U₂ und den Sekundärstrom I₂ ab.", "Stelle das Windungsverhältnis N₁/N₂ auf 0,5 und vergleiche U₂ und I₂ mit den vorigen Werten."]
+    schritte: ["Stelle die Primärspannung U₁ auf 230 V und das Windungsverhältnis N₁/N₂ auf 1,0.", "Ziehe das Windungsverhältnis N₁/N₂ auf 2,0 und lies oben rechts im Bild die Sekundärspannung U₂ und den Sekundärstrom I₂ ab.", "Stelle das Windungsverhältnis N₁/N₂ auf 0,5 und vergleiche U₂ und I₂ mit den vorigen Werten."]
   },
   "eg8": {
     klasse: 10, schulform: "Gymnasium NRW",

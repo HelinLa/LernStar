@@ -1156,7 +1156,7 @@
     "post": "der Leistung als Nutzleistung an, der Rest wird Wärme."
    }
   ],
-  "beobachtung": "Kurz nach dem Start zeigt das Infofeld F = 100 N und erst P = 12,8 W; je schneller das Auto wird, desto größer wird P. Etwas später stehen dort P = 204,8 W und unter dem grünen Balken η = 80 % mit P_nutz = 164 W – vier Fünftel von P. Stellt man „Wirkungsgrad η“ auf 50 %, zeigt der Balken bei P = 211,2 W nur noch P_nutz = 106 W, also die Hälfte. Die Kraft blieb dabei die ganze Zeit bei 100 N.",
+  "beobachtung": "Kurz nach dem Start zeigt das Infofeld F = 100 N und erst P = 12,8 W; je schneller das Auto wird, desto größer wird P. Etwas später stehen dort P = 204,8 W und unter dem grünen Balken η = 80 % mit P_nutz = 164 W – vier Fünftel von P. Stellt man „Wirkungsgrad η“ auf 50 %, zeigt der Balken bei P = 211,2 W nur noch P_nutz = 106 W, also die Hälfte. Die Kraft blieb dabei die ganze Zeit bei 100 N. Deine Zahlen für P sind andere, denn P wächst mit der Geschwindigkeit weiter – es zählt, in welchem Augenblick du abliest.",
   "aufgabe": {
    "frage": "Berechne die Nutzleistung, die bei P = 204,8 W und η = 80 % ankommt, und vergleiche dein Ergebnis mit der Anzeige der Simulation.",
    "zeilen": 4,
@@ -1167,7 +1167,8 @@
   "alltagKomp": "K2",
   "ueberleitung": "Das Becken ist gefüllt, die Boote können starten – warum Styropor dabei oben schwimmt und Stahl untergeht, klärt das nächste Kapitel über Druck und Auftrieb.",
   "name": "Was sagt die Leistung über die Arbeit?",
-  "theme": "gym_mechanik"
+  "theme": "gym_mechanik",
+  "werte_streuen": true
  },
  {
   "id": "da1",

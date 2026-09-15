@@ -691,6 +691,53 @@ Schuelerbaende **2378 → 2947 Seiten (+24 %)** statt +65 %.
 > zaehlt sie mit – meine erste Bilanz lag dadurch um **142 Seiten** zu hoch, und
 > `simcheck/seitenzahlen.py` stuerzt an ihnen ab. Muster: `book_p\d+\.png$`.
 
+## Einstieg und Bildschirm muessen dasselbe Ding zeigen (seit 15.09.2026)
+
+Abdullah: *"wenn wir von laufen im einstieg reden, dann auch in die Simulation
+ein läufer reinpacken, dann passt das alles auch schön zusammen."* Der Anlass
+war `ki1`: Einstieg Lauftreff, am Bildschirm ein Wagen – **gemeldet hat es eine
+Klasse beim Test, kein Pruefer**. `simcheck/einstieg_motiv.py` sortiert jetzt
+jede Seite in drei Eimer.
+
+**Der Maszstab, und er folgt aus einer Messung, nicht aus Geschmack:**
+
+- **Nennen die Arbeitsschritte den Gegenstand** ("Lass den Wagen fahren"), dann
+  sind Seite und Simulation einig, und der Einstieg ist das schiefe Stueck – er
+  kostet drei Saetze, die Simulation eine Zeichnung.
+- **Nennt ihn keine Seite, ist die Figur frei** und richtet sich nach den
+  Einstiegen, die auf sie zeigen (`js/heft-bruecke.js` sagt, wer das ist).
+- **Eine Simulation, die ZWEI verschiedene Geschichten traegt, darf den
+  Gegenstand gar nicht benennen.** `beschleunigung-ef` bedient `ki3` (Prospekt
+  eines Kleinwagens) und `ki4` (Tobias' Skateboard) und sagte "der Wagen faehrt
+  bereits" – fuer ki4 das falsche Ding. Die Zeichnung (Kasten auf zwei Raedern)
+  passt zu beidem, der Wortlaut jetzt auch ("die Fahrt laeuft bereits").
+  **95 von 169 Seiten arbeiten schon so**, und das ist die gute Loesung, nicht
+  die faule.
+
+> **Ein Wortvergleich entscheidet das NICHT allein.** Der erste Anlauf verglich
+> Motive zwischen Einstieg und Bildschirmtext und meldete **129 von 365
+> Seiten**. Beim Nachsehen war fast alles Beiwerk – und die Fehlerquellen sind
+> lehrreich, weil sie alle gemessen sind:
+> **74-mal** stehen laeuf/lauf/renn/sprint in den Einstiegen, und nur **neun**
+> Stellen sind ein laufender Mensch. Der Rest: "der Strahl laeuft gerade
+> hindurch", "der Motor laeuft mit dem Akku", "eine Waschmaschine laeuft", "das
+> Wasser laeuft traege heraus", "im Leitstand laeuft eine Kurve" – und
+> **"renn" steckt in "verbrennt", "Brennstoff", "Brennstab"** (19 der 74
+> Stellen). Dazu "rad" in **Radon** und **radioaktiv**, "auto" in
+> **automatisch**, "zug" in **Zugkraft** und "unter Zug eingespannt", "bahn" in
+> **Kreisbahn** und "Die Bahn ist zu Ende" (in der Physik ist eine Bahn eine
+> Strecke, keine Eisenbahn). Eine Taetigkeit zaehlt deshalb nur, wenn eine
+> **namentlich genannte Person** in der Naehe steht; Personalpronomen genuegen
+> nicht ("laeuft **er** schnurgerade hindurch" – das ist der Lichtstrahl).
+> Neun Proben im Selbsttest halten beide Richtungen fest.
+
+**Der erste Eimer heisst ANSEHEN, nicht WIDERSPRUCH.** Ob das Ding des
+Einstiegs die Geschichte TRAEGT oder nur darin vorkommt, kann kein
+Wortvergleich entscheiden: "die Kisten hinten rutschen gegen die Rueckwand"
+steht in einer Geschichte ueber den **Bremsweg eines Transporters** – da ist
+nichts schief. Stand 15.09.2026: **12 von 573 Seiten zum Ansehen, eine davon
+war wirklich schief** (ki4).
+
 ## Vollbild fuer den Beamer (seit 10.09.2026)
 
 Jede Simulation hat oben rechts einen Knopf **„⤢ Vollbild"**. Er haengt an
@@ -820,6 +867,7 @@ Acht Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/REA
 | `einbaupruefung.py` | neue Simulationsdatei vor dem Einbau pruefen (Namens- und DOM-Kollisionen) |
 | `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
 | `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen; trennt Befunde von NACHGERECHNETEN und von GERUNDET geschriebenen Werten |
+| `einstieg_motiv.py` | prueft, ob der EINSTIEG zu dem passt, was die Simulation ZEIGT (Laeufer gegen Wagen) |
 
 **Die Faktendumps holt `simcheck/fakten_ziehen.py <band>` oder `--alle`** (seit
 15.09.2026). Vorher wurden sie von Hand gezogen, Simulation fuer Simulation -
@@ -864,15 +912,51 @@ der Bildschirmwert muss **unter einem Prozent** daneben liegen. Ueber die
 Stellenzahl allein haette „1 000 000 J" jeden Wert zwischen 0,5 und 1,5
 Millionen gedeckt.
 
-> **Was nach den sechs Berichtigungen uebrig bleibt: 48 Werte auf 27 Seiten in
-> zehn Baenden** – keiner in `arbeitsheft` (5/6), gts7/8/9, EF oder der
-> Foerderreihe. Eingeordnet wird nach der Frage „KANN die Simulation den Wert
-> zeigen", nicht „steht er im Dump": 19 liegen AUSSERHALB des ganzen
-> angezeigten Wertebereichs (`en14` will 147 J, die Simulation zeigt
-> 250-1000 J), 14 betreffen eine Groesse, die die Simulation gar nicht anzeigt
-> (`transformator` zeigt keine Stromstaerke), 17 liegen innerhalb und sind
-> vermutlich richtig, nur nicht nachgewiesen. **Das ist eine Inhaltsfrage, keine
-> Werkzeugfrage** – und die Baende sind gedruckt.
+**Und dann noch sechs.** Der erste Durchgang liess 48 Werte auf 27 Seiten
+stehen; beim Nachgehen stellte sich heraus, dass auch davon das meiste am
+Treiber lag, nicht am Inhalt. Immer dasselbe Muster, siebenmal in
+verschiedener Verkleidung: **einstellen genuegt nicht, man muss danach
+ausloesen und AUSLAUFEN LASSEN.**
+
+| Fehler | was er anrichtete |
+|---|---|
+| zweiter Klick nur mit 25 Frames Abstand | `elementarmagnete` blockt einen zweiten Strich, solange der erste animiert (`if (_emg.streich) return;`) – im Dump 9, 19, 19 statt 19, 33, 42 (sm13) |
+| nur EINE Wahlgruppe -> Durchgang lief nicht | `reibung-rs` hat nur `_rbgSet('eis'/'holz'/'teppich')`, danach muss „Anschieben" kommen; der Reihendurchgang messt nur den Teppich (kr12) |
+| Gruppe = Funktionsname nicht erkannt | `_eenSetG('led')` × `_eenSetZ('kurz')` – neun Kombinationen, und lt2 liest genau „LED in einer Stunde = 0,01 kWh" |
+| Gitter nur an den ECKEN | en3 liest MITTEN im Reglerraum (20 kg, 3,0 m); Gitter jetzt aus RUNDEN Werten, feinster Raster bis zehn Werte je Regler |
+| Gitter erbte den Zustand des Knopfdurchgangs | `oersted` stand mit AUSGESCHALTETEM Strom da – jede Nadelstellung 0°, mo3s 71,6° unfindbar. Das Gitter laeuft jetzt ZUERST, im Ausgangszustand |
+| Aktionsknopf nach 200 Frames abgebrochen | die Fahrt auf Eis braucht GEMESSEN 250 – im Dump standen 25 cm und 49 cm, aber nicht die 112 cm, die kr12 zuerst nennt |
+
+> **`simcheck/stellen.json` – wo ein Gitter nicht hinkommt.** Vier Regler
+> spannen einen Raum, den kein Dump ausschreiben kann: kp3 liest bei
+> Z_wahr = 9000 /s UND τ = 100 µs ab, ke4 bei 1,00 m UND 7 mm Blei. Die Seite
+> weiss aber, wo sie hinschaut - also steht es dort, und `simfakten.js
+> --stellen=` faehrt es nach. **Aufgeschrieben wird die STELLUNG, nicht der
+> Wert**; vorgelesen wird er von der Simulation. Das ist der Unterschied
+> zwischen einer gezielten Messung und einem Freibrief.
+
+**`pruefe()` kennt jetzt auch SUMMEN der Seitenwerte.** eg12 liest drei
+Ersparnisse ab (75,9 + 73,0 + 109,5 kWh, alle drei am Bildschirm) und nennt die
+Summe. Der Riegel: Die Summanden muessen **auf DER SEITE** stehen und selbst
+gedeckt sein – ueber alle Bildschirmzahlen zu summieren waere ein Scheunentor,
+mit zwanzig Zahlen trifft irgendeine Teilsumme fast jeden Wert. Drei weitere
+Proben halten es fest, darunter eine Seite, die NUR die Summe nennt und
+deshalb keine Deckung bekommt.
+
+> **Was wirklich falsch war: vier Seiten von 573.** `g5` schickte die Kinder zum
+> **Polarstern mit 430 Lichtjahren** – `entfernungen` kennt fuenf Ziele, und
+> keines davon ist der Polarstern (jetzt: naechster Stern, 4,2 Lichtjahre, wie
+> im Fachtext daneben). `wd2` liess **0,08 A** ablesen, wo bei 1,5 V und 20 Ω
+> **0,07 A** steht. `ak9` nannte die Zaehlrate in **„Impulsen je zehn Minuten"**
+> statt in Imp/min, mit einer Zahl, die kein zweiter Durchgang wiederholt (das
+> Zaehlrohr streut), und eine Halbwertsdicke von 6,03 mm, wo die Tabelle
+> „d½ ≈ 6 mm" sagt. `eg12` schaetzte „ueber 250 kWh" statt der Summe 258,4 kWh.
+> Dazu zwei Seiten, die nur den Vorbehalt brauchten (`werte_streuen`): `rk6`
+> (der Zerfall ist zufaellig: 50,0 % und 45,0 % in zwei Durchgaengen) und
+> `me22` (P waechst mit v, es zaehlt der Augenblick des Ablesens). Und EINE
+> Simulation war unvollstaendig: `transformator` zeigte den Sekundaerstrom nur
+> als Achsenbeschriftung („I₂ [A]", Teilstrich 0.4), obwohl eg7 ihn ablesen
+> laesst - er steht jetzt als Zahl da, wie U₂.
 
 > **Klasse 5/6 hat kein `plan.py`.** Der Band war der erste, seine Zuordnung
 > Kennung → Simulation steht als dict `SIM` in `arbeitsheft/build_book.py`. Wer

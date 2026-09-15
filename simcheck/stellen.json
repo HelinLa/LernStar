@@ -1,0 +1,27 @@
+{
+  "_kommentar": [
+    "Stellungen, die eine Heftseite abliest und die kein Gitter treffen kann.",
+    "Aufgeschrieben wird die STELLUNG, nicht der Wert - was dort steht, liest",
+    "die Simulation selbst vor. Gefuellt am 15.09.2026 beim ersten Abgleich",
+    "der Sekundarstufe I; `simfakten.js --stellen=simcheck/stellen.json` faehrt",
+    "sie nach, `fakten_ziehen.py` gibt den Schalter immer mit."
+  ],
+  "geiger-mueller": [
+    { "wozu": "kp3 (Totzeit, hohe Rate)",
+      "knoepfe": ["_gmzSetStation(3)"],
+      "regler": { "gmzZt": "9000", "gmzTau": "100" } },
+    { "wozu": "kp3 (Totzeit, Vorgabe 2000/s)",
+      "knoepfe": ["_gmzSetStation(3)"],
+      "regler": { "gmzZt": "2000", "gmzTau": "100" } }
+  ],
+  "strahlenschutz": [
+    { "wozu": "ke4 und kp13 (1,00 m, 7 mm Blei)",
+      "knoepfe": [],
+      "regler": { "stzR": "100", "stzD": "7" } }
+  ],
+  "atombau-isotope": [
+    { "wozu": "ak2 (Kohlenstoff-13)",
+      "knoepfe": [],
+      "regler": { "atbZ": "6", "atbN": "7" } }
+  ]
+}

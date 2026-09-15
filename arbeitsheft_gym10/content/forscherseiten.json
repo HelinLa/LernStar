@@ -1031,7 +1031,7 @@
   "predictOk": 1,
   "forschen": [
    "Stelle die Primärspannung U₁ auf 230 V und das Windungsverhältnis N₁/N₂ auf 1,0.",
-   "Ziehe das Windungsverhältnis N₁/N₂ auf 2,0 und lies im Diagramm die Sekundärspannung U₂ und den Sekundärstrom I₂ ab.",
+   "Ziehe das Windungsverhältnis N₁/N₂ auf 2,0 und lies oben rechts im Bild die Sekundärspannung U₂ und den Sekundärstrom I₂ ab.",
    "Stelle das Windungsverhältnis N₁/N₂ auf 0,5 und vergleiche U₂ und I₂ mit den vorigen Werten."
   ],
   "tabCols": [
@@ -1356,7 +1356,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Der Wechsel von der Glühlampe zur LED senkt den Verbrauch von 87,6 auf 11,7 kWh im Jahr – eine Ersparnis von 75,9 kWh oder 22,78 €. Wer das Standby-Gerät ganz ausschaltet, spart 73,0 kWh und 21,90 €. Der Tausch des alten Kühlschranks gegen einen neuen bringt sogar 109,5 kWh und 32,85 € pro Jahr. Keine dieser Maßnahmen speichert Strom, doch jede senkt den Bedarf dauerhaft. Zusammen sind das über 250 kWh weniger im Jahr.",
+  "beobachtung": "Der Wechsel von der Glühlampe zur LED senkt den Verbrauch von 87,6 auf 11,7 kWh im Jahr – eine Ersparnis von 75,9 kWh oder 22,78 €. Wer das Standby-Gerät ganz ausschaltet, spart 73,0 kWh und 21,90 €. Der Tausch des alten Kühlschranks gegen einen neuen bringt sogar 109,5 kWh und 32,85 € pro Jahr. Keine dieser Maßnahmen speichert Strom, doch jede senkt den Bedarf dauerhaft. Zusammen sind das 75,9 + 73,0 + 109,5 kWh, also 258,4 kWh weniger im Jahr.",
   "aufgabe": {
    "frage": "Bestimme, wie viele Euro die drei Maßnahmen zusammen im Jahr sparen, und begründe, welche am meisten bringt.",
    "zeilen": 4,

@@ -1719,7 +1719,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Bei 6,0 mm Blei zeigt die Simulation an, dass noch 50 % der Strahlung durchkommen; die Zählrate fällt von 2462 auf 1235 Impulse je zehn Minuten. Die Halbwertsdicke gibt sie mit 6,03 mm an. Nach zwei solchen Dicken wäre noch ein Viertel übrig, nach drei ein Achtel. Der Anteil wird also immer kleiner, erreicht aber nie null – ein Rest kommt stets hindurch.",
+  "beobachtung": "Bei 6,0 mm Blei zeigt die Simulation an, dass noch 50 % der Strahlung durchkommen; die Zählrate fällt von rund 2470 auf rund 1240 Imp/min. Deine Zahlen sind andere, denn das Zählrohr zählt bei jedem Durchgang etwas anders. Die Tabelle nennt die Halbwertsdicke mit d½ ≈ 6 mm. Nach zwei solchen Dicken wäre noch ein Viertel übrig, nach drei ein Achtel. Der Anteil wird also immer kleiner, erreicht aber nie null – ein Rest kommt stets hindurch.",
   "aufgabe": {
    "frage": "Berechne, wie viel Prozent der Gammastrahlung nach 18 mm Blei noch durchkommen, wenn die Halbwertsdicke 6 mm beträgt.",
    "zeilen": 3,
@@ -1728,7 +1728,8 @@
   "alltag": "Erkläre, warum die Wände eines Röntgenraums trotzdem nur wenige Millimeter Blei enthalten.",
   "ueberleitung": "Drei Strahlungsarten, drei Verhaltensweisen. Auf der nächsten Seite stellst du sie einander gegenüber.",
   "alltagKomp": "E6",
-  "alltagAfb": "II"
+  "alltagAfb": "II",
+  "werte_streuen": true
  },
  {
   "id": "ak10",

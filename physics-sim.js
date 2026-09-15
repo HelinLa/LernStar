@@ -6114,6 +6114,13 @@ const _physSimDefs = {
         ctx.fillText(`U₁ = ${U1} V`, 10, 20);
         ctx.fillStyle = '#ef4444';
         ctx.fillText(`U₂ = ${U2.toFixed(1)} V`, cv.width - 100, 20);
+        // Der Sekundaerstrom stand bisher NUR als Achsenbeschriftung im
+        // Diagramm ("I₂ [A]", Teilstrich 0.4). Die Heftseite eg7 (Gymnasium 10)
+        // laesst ihn aber ablesen - "I₂ = 0,435 A" -, und das ist an einem
+        // Teilstrich nicht zu machen. Seit dem 15.09.2026 steht er als Zahl da,
+        // wie U₂. Drei Stellen, weil der Wert bei hohem U₂ unter 0,3 A faellt.
+        ctx.fillStyle = '#059669';
+        ctx.fillText(`I₂ = ${(100 / U2).toFixed(3)} A`, cv.width - 100, 36);
         ctx.fillStyle = '#1f2937'; ctx.font = '11px sans-serif';
         ctx.fillText(`N₁/N₂ = ${ratio.toFixed(1)}  |  ηideal = 100%`, cv.width/2 - 70, cv.height - 8);
         // Lebende Welle
@@ -6122,7 +6129,8 @@ const _physSimDefs = {
           ctx.strokeStyle = c; ctx.lineWidth = 2;
           ctx.beginPath(); ctx.moveTo(x - 25, cy - u * 0.5); ctx.lineTo(x, cy + u * 0.5); ctx.stroke();
         });
-        _infoBox(ctx, cv, [`N₁/N₂=${ratio.toFixed(1)}`, `U₁=${U1}V`, `U₂=${U2.toFixed(1)}V`]);
+        _infoBox(ctx, cv, [`N₁/N₂=${ratio.toFixed(1)}`, `U₁=${U1}V`, `U₂=${U2.toFixed(1)}V`,
+                           `I₂=${(100 / U2).toFixed(3)}A`]);
       },
       [
         { series: 'U2', title: 'Sekundärspannung U₂ = U₁/(N₁/N₂)', label: 'U₂', unit: 'V', color: '#ef4444', yMin: 0 },
@@ -83839,7 +83847,7 @@ function _befStatus() {
   const kopf = l
     ? '⏱ zuletzt festgehalten: t = ' + _fpmNum(l.t, _BEF_NK) + ' s · s = ' + _fpmNum(l.s, _BEF_NK) +
       ' m · v = ' + _fpmNum(l.v, _BEF_NK) + ' m/s'
-    : '⏱ Noch nichts gestoppt – der Wagen fährt bereits.';
+    : '⏱ Noch nichts gestoppt – die Fahrt läuft bereits.';
   el.innerHTML = kopf + ' &nbsp;·&nbsp; ' + n + ' von mindestens 5 gestoppten Messwerten bei a = ' +
     _fpmNum(_bef.a, 1) + ' m/s²' + (n >= 5 ? ' – die Messreihe reicht für die Auswertung.' : '.');
   el.className = 'lmp-status' + (n >= 5 ? ' on' : '');
@@ -83878,7 +83886,17 @@ function _befClearFn() { _mlabClearFn(_bef); }
 function _befSetBool(k, v) { _bef[k] = v; _mlabDrawPlot('befPlot', _bef); }
 
 // ── Animation ──────────────────────────────────────────
-// _bef.s ist der Weg fuer das BILD (stufenlos, damit der Wagen ruhig laeuft).
+// _bef.s ist der Weg fuer das BILD (stufenlos, damit der Koerper ruhig laeuft).
+//
+// DIESE SIMULATION NENNT DEN GEGENSTAND NICHT - und das ist Absicht (seit
+// 15.09.2026). Sie traegt ZWEI Heftseiten mit zwei verschiedenen Geschichten:
+// ki3 ist der Prospekt eines Kleinwagens ("in 9,5 s von null auf 100"), ki4
+// Tobias' Skateboard, das die Einfahrt hinunterrollt. Vorher stand in der
+// Statuszeile "der Wagen faehrt bereits" - fuer ki4 also das falsche Ding.
+// Die Zeichnung (Kasten auf zwei Raedern) passt zu beidem, der Wortlaut muss
+// es auch: "die Fahrt laeuft bereits". Wer hier wieder einen Gegenstand
+// benennt, macht eine der beiden Seiten schief
+// (simcheck/einstieg_motiv.py meldet es).
 // Was abgelesen und in die Tabelle geschrieben wird, liefert _befLeseS() aus
 // der angezeigten Zeit. Der Weg wird ausserdem nicht aufsummiert, sondern jedes
 // Bild neu als ½·a·t² gebildet - Aufsummieren haette ihn um den Gleitkommarest
@@ -83889,7 +83907,7 @@ function _befUpdate(dt) {
   _bef.s = 0.5 * _bef.a * _bef.t * _bef.t;
   if (_bef.s >= _BEF_SMAX) {
     _bef.t = 0; _bef.s = 0; _bef.letzte = null; _bef.fahrt++;
-    _bef.meldung = 'Die Bahn ist zu Ende – der Wagen startet erneut. Die Tabelle bleibt stehen.';
+    _bef.meldung = 'Die Bahn ist zu Ende – die Fahrt beginnt erneut. Die Tabelle bleibt stehen.';
     _bef.flash = 1;
     _befStatus();
   }

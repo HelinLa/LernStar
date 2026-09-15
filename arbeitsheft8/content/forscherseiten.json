@@ -376,7 +376,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Bei 10 Ω liefert die Simulation 0 V → 0 A, 1,5 V → 0,15 A, 3 V → 0,30 A, 4,5 V → 0,45 A und 6 V → 0,60 A. Der Quotient U/I ist jedes Mal 10 Ω, und die Punkte liegen auf einer Geraden durch den Nullpunkt. Bei 20 Ω sind es 0,08 A, 0,15 A, 0,23 A und 0,30 A – bei jeder Spannung ungefähr die Hälfte, und die Gerade verläuft flacher.",
+  "beobachtung": "Bei 10 Ω liefert die Simulation 0 V → 0 A, 1,5 V → 0,15 A, 3 V → 0,30 A, 4,5 V → 0,45 A und 6 V → 0,60 A. Der Quotient U/I ist jedes Mal 10 Ω, und die Punkte liegen auf einer Geraden durch den Nullpunkt. Bei 20 Ω sind es 0,07 A, 0,15 A, 0,23 A und 0,30 A – bei jeder Spannung ungefähr die Hälfte, und die Gerade verläuft flacher.",
   "aufgabe": {
    "frage": "Begründe, warum die Kennlinie durch den Nullpunkt gehen muss.",
    "zeilen": 3,

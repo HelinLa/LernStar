@@ -287,8 +287,16 @@ def _flach(x):
 # DER RIEGEL: Das Feld allein genuegt nicht. Die Seite MUSS im Text sagen, dass
 # die Zahlen des Lesers andere sind - sonst waere `werte_streuen` bloss ein
 # Schalter zum Stummstellen. Fehlt der Satz, ist DAS der Befund.
-STREUSATZ = re.compile(r'(streut|streuen|Deine Zahlen sind andere|deine eigenen|'
-                       r'entscheidest du selbst|bei jedem Durchgang andere)')
+# Die Wendungen, mit denen eine Seite sagt "deine Zahlen werden andere sein".
+# Eine Positivliste, und die war zu eng: "Bei dir steht vielleicht eine etwas
+# andere Zahl" (rk6) und "Deine Zahlen fuer P sind andere" (me22) sagen genau
+# das und standen nicht drin - die beiden Seiten fielen deshalb weiter unter
+# die Maengel, obwohl sie `werte_streuen` tragen. Der Riegel bleibt ein Riegel:
+# Eine Seite ohne einen solchen Satz bekommt die Ausnahme nicht.
+STREUSATZ = re.compile(r'(streut|streuen|deine eigenen|entscheidest du selbst|'
+                       r'bei jedem Durchgang andere|'
+                       r'[Dd]eine Zahlen[^.]{0,30}andere|'
+                       r'[Bb]ei dir[^.]{0,40}andere)')
 
 
 def _streut(s):
@@ -296,6 +304,36 @@ def _streut(s):
         return False
     text = ' '.join(_flach(s.get('beobachtung')) + _flach(s.get('forschen')))
     return bool(STREUSATZ.search(text))
+
+
+def _summe_der_seite(v, e, seitenwerte, gezeigt):
+    """Ist v die Summe von Werten, die auf DERSELBEN Seite stehen und selbst am
+    Bildschirm gedeckt sind? Dann ist es eine Rechnung, kein erfundener Wert.
+
+    Anlass: eg12 (Gymnasium 10) liest drei Ersparnisse ab - 75,9 kWh, 73,0 kWh
+    und 109,5 kWh, alle drei am Bildschirm - und schreibt dann "zusammen sind
+    das 258,4 kWh". Diese Summe steht nirgends; sie ist genau die Rechnung, um
+    die es auf der Seite geht.
+
+    DER RIEGEL: Die Summanden muessen auf DER SEITE stehen und selbst gedeckt
+    sein. Ueber alle Bildschirmzahlen zu summieren waere ein Scheunentor - mit
+    zwanzig Zahlen trifft irgendeine Teilsumme fast jeden Wert. So bleibt es bei
+    den zwei bis vier Zahlen, die die Seite selbst nennt, und die Rechnung ist
+    im Bericht nachzulesen.
+    """
+    kandidaten = [u for u in seitenwerte
+                  if u != v and any(abs(g - u) < 1e-9 for g in gezeigt)]
+    if len(kandidaten) < 2:
+        return None
+    import itertools
+    for n in (2, 3, 4):
+        if n > len(kandidaten):
+            break
+        for teil in itertools.combinations(sorted(set(kandidaten)), n):
+            sm = sum(teil)
+            if abs(sm - v) <= 5e-3 * max(abs(v), 1e-9):
+                return "Summe von " + " + ".join(f"{u:g}" for u in teil) + f" {e}"
+    return None
 
 
 def _gerundet(v, roh, gezeigt):
@@ -385,6 +423,10 @@ def pruefe(seiten, fakten, sim_von):
                             return True
                 return False
             if gedeckt(v):
+                continue
+            sm = _summe_der_seite(v, e, [x[0] for x in zahlen(text) if x[1] == e], gezeigt)
+            if sm:
+                abgel.append((s['id'], sim_von[s['id']], roh, sm))
                 continue
             nah = _gerundet(v, roh, gezeigt)
             if nah is not None:
@@ -568,6 +610,63 @@ def selbsttest():
     t = lauf("Merkur misst 4 877 km.")
     if not t:
         f.append("4 877 km (nicht gerundet geschrieben) bekam die Rundungstoleranz")
+
+    # 1a16. SUMME DER SEITENWERTE, gute Probe. Die Seite nennt drei Werte, die
+    #       am Bildschirm stehen (4,00 + 4,00 + 4,00 m/s gibt es nicht - genommen
+    #       werden die drei verschiedenen Bildschirmwerte 12,5 / 5,000 / 3,46
+    #       gibt es in verschiedenen Einheiten), deshalb hier mit den beiden
+    #       Bildschirmwerten 1000000 J und 10194 m? Nein - Summen gehen nur
+    #       innerhalb EINER Einheit. Der Faktensatz traegt dafuer 250 J und
+    #       750 J; ihre Summe 1000 J steht ebenfalls am Bildschirm, ist also
+    #       kein Fall fuer die Regel. Genommen wird deshalb ein Paar, dessen
+    #       Summe NICHT angezeigt wird: 250 + 4879 gibt es nicht als Einheit.
+    #       Die Probe faehrt darum mit einem eigenen kleinen Faktensatz.
+    f2 = {"probe": {"sim": "probe",
+                    "status": [{"einstellung": "S", "text": "a = 75,9 kWh · b = 73,0 kWh "
+                                                            "· c = 109,5 kWh"}],
+                    "bildtexte": [], "regler": [], "knoepfe": []}}
+
+    def lauf2(text):
+        return pruefe([{"id": "t1", "forschen": [text], "tabRows": [], "beobachtung": ""}],
+                      f2, sim_von)
+
+    r = lauf2("Die drei Maßnahmen sparen 75,9 kWh, 73,0 kWh und 109,5 kWh - "
+              "zusammen 258,4 kWh im Jahr.")
+    if r[0] or not any("Summe" in w[3] for w in r[1]):
+        f.append(f"Summe der Seitenwerte falsch einsortiert: Maengel={r[0]} abgeleitet={r[1]}")
+
+    # 1a17. GEGENPROBE: Eine Zahl, die KEINE Summe der Seitenwerte ist, muss
+    #       auffallen. Ohne sie waere die Regel ein Schalter zum Stummstellen.
+    r = lauf2("Die drei Maßnahmen sparen 75,9 kWh, 73,0 kWh und 109,5 kWh - "
+              "zusammen 300,0 kWh im Jahr.")
+    if not r[0]:
+        f.append("300,0 kWh (keine Summe der Seitenwerte) blieb unbemerkt")
+
+    # 1a18. UND DER RIEGEL: Die Summanden muessen auf DER SEITE stehen. Eine
+    #       Seite, die nur die Summe nennt, bekommt keine Deckung - sonst
+    #       koennte jede Teilsumme aller Bildschirmzahlen alles decken.
+    r = lauf2("Zusammen sind das 258,4 kWh im Jahr.")
+    if not r[0]:
+        f.append("258,4 kWh OHNE die Summanden auf der Seite blieb unbemerkt")
+
+    # 1a19. DIE ZWEI WENDUNGEN, die die Positivliste zuerst nicht kannte.
+    #       Beide muessen als Streu-Vorbehalt gelten, sonst faellt eine richtig
+    #       gekennzeichnete Seite weiter unter die Maengel.
+    for satz in ("Bei dir steht vielleicht eine etwas andere Zahl.",
+                 "Deine Zahlen für P sind andere, denn P wächst weiter."):
+        tr, _ab, st, os_ = lauf_streu({"id": "t1", "werte_streuen": True,
+            "forschen": ["Lies 8,84 N ab."], "tabRows": [], "beobachtung": satz})
+        if tr or os_ or not st:
+            f.append(f"Streu-Wendung nicht erkannt ({satz[:28]}...): "
+                     f"Maengel={tr} ohne_satz={os_}")
+
+    # 1a20. UND DER RIEGEL BLEIBT: eine Seite, die nur "andere" sagt, ohne sich
+    #       auf die Zahlen zu beziehen, bekommt die Ausnahme NICHT.
+    tr, _ab, st, os_ = lauf_streu({"id": "t1", "werte_streuen": True,
+        "forschen": ["Lies 8,84 N ab."], "tabRows": [],
+        "beobachtung": "Andere Gruppen arbeiten an anderen Aufgaben."})
+    if not os_ or not tr:
+        f.append("Ein Satz ohne Bezug auf die Zahlen wurde als Streu-Vorbehalt gezaehlt")
 
     # 1b. Die Simulation schreibt Punkt, die Seite Komma - das ist KEIN Befund.
     t = lauf("Die Reibungskraft betraegt 14,7 N, der Weg 1,28 m.")

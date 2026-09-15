@@ -190,6 +190,48 @@ function fakten(datei, simId) {
 
   out.status.push({ einstellung: 'Ausgangszustand', text: lies() });
 
+  // AKTIONSKNOEPFE: argumentlose Aufrufe. Quizantworten (`F(0,1)`, zwei Zahlen)
+  // und Schrittknoepfe (`F(1)`) sind keine Aktionen und haben ihre eigenen
+  // Durchgaenge.
+  const _taten = out.knoepfe.filter(k => /^[A-Za-z_$][\w$]*\(\s*\)$/.test(k.ruft.trim()));
+
+  // ── Das Reglergitter EINMAL IM AUSGANGSZUSTAND ──────────────────────────
+  // Der Knopfdurchgang weiter unten hinterlaesst die Simulation in einem
+  // beliebigen Zustand, und das Gitter am Ende erbt ihn. `oersted` stand
+  // danach mit AUSGESCHALTETEM Strom da - jede Nadelstellung 0°, gleich wie
+  // die Regler standen. Die Heftseite mo3 liest "bei 3,0 A und 1,0 cm Abstand
+  // 60,0 µT und 71,6°" ab, und das ist richtig; im Dump war es nicht zu
+  // finden, weil der Strom aus war. Deshalb laeuft das Gitter zuerst hier,
+  // solange die Simulation noch so steht, wie sie aufgeht.
+  // ZWEI Durchgaenge, und das muss so sein. Ein Aktionsknopf VERAENDERT den
+  // Zustand, und die Aenderung bleibt: `oersted` hat „⏻ Strom ausschalten",
+  // und nach dem ersten Gitterpunkt war der Strom aus - jede weitere
+  // Nadelstellung 0°, alle Anzeigen gleich, alles wegdedupliziert. Gemessen:
+  // von 40 Gitterpunkten kam EINER in den Dump, und mo3s 71,6° verschwand
+  // wieder. Deshalb laeuft das Gitter erst OHNE Aktionen ganz durch (reine
+  // Einstellungen, in sich schluessig) und danach ein zweites Mal MIT.
+  // Die Gitterzeilen werden BEISEITEGELEGT und erst am Ende angehaengt. Ohne
+  // das zaehlen sie gegen MAX_ANZEIGEN des Knopf- und Reglerdurchgangs, und
+  // der lief dann GAR NICHT mehr: `atombau-isotope` hat seine Isotope auf
+  // Knoepfen ("Chlor-35", "Kohlenstoff-14"), und deren Werte - 75,76 %,
+  // 24,24 %, 5730 Jahre - verschwanden aus dem Dump, obwohl vier Heftseiten
+  // sie ablesen. Ein Ausflug darf das Budget der anderen nicht verbrauchen.
+  const _vorGitter = out.status.length;
+  gitterFahren('Ausgangszustand', false);
+  gitterFahren('mit Aktion', true);
+  const _gitterZeilen = out.status.splice(_vorGitter);
+  // Nach dem Aktionsdurchgang kann ein Schalter umgelegt sein. Einmal
+  // zuruecksetzen, damit der Knopfdurchgang wieder im Ausgangszustand beginnt.
+  {
+    const rk = out.knoepfe.find(k => /(Reset|Init|Neu|Zurueck|Zurück)\w*\(\s*\)/i.test(k.ruft));
+    if (rk) {
+      try {
+        vm.runInContext(`(function(){var f=function(){${rk.ruft}};f();})()`, H.ctx);
+        H.frames(FRAMES);
+      } catch (e) { /* kein Rueckweg, dann eben nicht */ }
+    }
+  }
+
   // ---- MESSLABOR: eine Auftragung ohne Messwerte wertet nichts aus --------
   // Die Presetknoepfe ("F ueber 1/r² auftragen") rechnen die Ausgleichsgerade
   // aus der Wertetabelle. Im normalen Knopfdurchgang steht vor ihnen aber
@@ -242,6 +284,43 @@ function fakten(datei, simId) {
                           text: lies(), bild: H.zeichnung.slice(-40).join(' | ') });
       }
     } catch (e) { out.status.push({ einstellung: k.aufschrift, text: 'FEHLER: ' + e.message }); }
+  }
+
+  // ── ZWEITER KLICK: ein Knopf muss nicht nur EINMAL gedrueckt werden ─────
+  // Achtundsechzig Simulationen blaettern mit ARGUMENTLOSEN Knoepfen durch
+  // einen Bestand: `entfernungen` hat „◀ naeher" / „weiter ▶" als
+  // `_entPrev()` / `_entNext()` und zeigt Mond, naechster Stern, Polarstern,
+  // Andromeda - im Dump stand immer nur der zweite Eintrag. Am Vorzeichen des
+  // Arguments (unten) sind solche Paare nicht zu erkennen, sie haben gar kein
+  // Argument, und die Aufschriften sind uneinheitlich.
+  // Also die einfache, allgemeine Regel: JEDEN Knopf weiterdruecken, solange
+  // sich die Anzeige noch AENDERT. Ein Knopf ohne Wirkung kostet damit zwei
+  // Klicks, ein Blaetterknopf laeuft durch seinen Bestand.
+  // DRUECKEN UND DANN AUSLAUFEN LASSEN. Ein Klick ist selten sofort fertig:
+  // `elementarmagnete` richtet die Pfeile eines Striches ueber eine Animation
+  // aus und blockt einen zweiten Strich, solange der erste laeuft
+  // (`if (_emg.streich) return;`). Mit nur 25 Frames zwischen den Klicks stand
+  // im Dump 9, 19, 19 - mit dem Auslaufen 19, 33, 42, also genau die drei
+  // Werte, die die Heftseite sm13 (Gymnasium 5/6) abliest (30 %, 52 %, 66 %).
+  // Gemessen braucht ein Strich rund 400 Frames.
+  for (const k of out.knoepfe) {
+    if (out.status.length >= MAX_ANZEIGEN + 80) break;
+    let vorher = lies();
+    for (let i = 2; i <= 8; i++) {
+      try {
+        vm.runInContext(`(function(){var f=function(){${k.ruft}};f();})()`, H.ctx);
+      } catch (e) { break; }
+      let jetzt = null, ruhig = 0;
+      for (let v = 0; v <= 24; v++) {
+        H.frames(FRAMES);
+        const gelesen = lies();
+        if (gelesen === jetzt) { if (++ruhig >= 14) break; continue; }
+        ruhig = 0; jetzt = gelesen;
+      }
+      if (jetzt === vorher) break;           // nichts Neues - hier ist Schluss
+      vorher = jetzt;
+      out.status.push({ einstellung: `${k.aufschrift} · ${i}. Klick`, text: jetzt });
+    }
   }
 
   // ── SCHRITTKNOEPFE: ein Klick ist kein Bereich ──────────────────────────
@@ -312,17 +391,44 @@ function fakten(datei, simId) {
   // gleiches erstes Argument sind eine Gruppe. Gemessen hat das der ganze
   // Bestand nur dreimal (draht 12, geschwindigkeit-rs 9, v-begriff 9
   // Kombinationen), das Gitter laesst sich also VOLLSTAENDIG abfahren.
-  const _gruppen = new Map();        // "F|gruppe" -> [Knoepfe]
+  // ZWEI Bauformen, beide im Bestand:
+  //   F('gruppe','wert')  -> Gruppe ist (F, erstes Argument)   `draht`
+  //   F('wert')           -> Gruppe ist F allein               `elektrische-energie`
+  // Die zweite fehlte zuerst, und damit fehlten neun Kombinationen aus
+  // `_eenSetG` × `_eenSetZ`: Die Heftseite lt2 (Klasse 8) liest „LED 10 W in
+  // einer Stunde = 0,01 kWh" ab - genau die Ecke, die der Reihendurchgang nie
+  // einstellt (er laesst die Zeit auf dem, was der letzte Klick hinterliess).
+  // Nur ZEICHENKETTEN-Argumente gelten: `_entAns(0,1)` ist eine Quizantwort,
+  // keine Einstellung, und `_potMove(-1)` ein Schritt (siehe oben).
+  const _gruppen = new Map();        // Gruppenschluessel -> [Knoepfe]
   for (const k of out.knoepfe) {
-    const m = /^([A-Za-z_$][\w$]*)\(\s*'([^']*)'\s*,\s*'([^']*)'\s*\)$/.exec(k.ruft.trim());
-    if (!m) continue;
-    const s = `${m[1]}|${m[2]}`;
+    const r = k.ruft.trim();
+    let s = null;
+    let m = /^([A-Za-z_$][\w$]*)\(\s*'([^']*)'\s*,\s*'([^']*)'\s*\)$/.exec(r);
+    if (m) s = `${m[1]}|${m[2]}`;
+    else {
+      m = /^([A-Za-z_$][\w$]*)\(\s*'([^']*)'\s*\)$/.exec(r);
+      if (m) s = m[1];
+    }
+    if (!s) continue;
     if (!_gruppen.has(s)) _gruppen.set(s, []);
     _gruppen.get(s).push(k);
   }
+  // SCHON EINE Gruppe genuegt. Die erste Fassung verlangte zwei - und liess
+  // damit `reibung-rs` aus, das nur eine hat (`_rbgSet('eis'|'holz'|'teppich')`).
+  // Dort sitzt der Fehler eine Stufe weiter: Einstellen allein zeigt nichts,
+  // man muss danach „▶ Anschieben" druecken. Der Reihendurchgang oben drueckt
+  // Eis, Holz, Teppich, DANN Anschieben - also wird nur der Teppich gemessen,
+  // und genau so sah der Dump aus (25 cm, sonst nichts). Die Heftseite kr12
+  // liest alle drei Untergruende ab.
+  // Deshalb: je Kombination auch jeden ARGUMENTLOSEN Knopf betaetigen, und den
+  // so lange, wie sich die Anzeige aendert - `_hwzSchritt()` braucht mehrere
+  // Klicks, `_eewWeiter()` laeuft durch seine Stufen. Quizantworten (`F(0,1)`,
+  // zwei Zahlen) und Schrittknoepfe (`F(1)`, eine Zahl) bleiben aussen vor:
+  // die einen sind keine Einstellung, die anderen haben ihren eigenen Durchgang.
   const _achsen = [..._gruppen.values()].filter(v => v.length >= 2);
   const _komb = _achsen.reduce((n, v) => n * v.length, 1);
-  if (_achsen.length >= 2 && _komb <= 48) {
+  if (_achsen.length >= 1 && _komb <= 48) {
     const gesehen = new Set();
     const fahren = (i, weg) => {
       if (i === _achsen.length) {
@@ -333,9 +439,63 @@ function fakten(datei, simId) {
           const txt = lies();
           // Nur NEUE Anzeigen aufschreiben: die Haelfte der Kombinationen
           // liefert dieselbe Zeile, und ein Dump ist kein Protokoll.
+          const wo = weg.map(k => k.aufschrift).join(' + ');
           if (!gesehen.has(txt)) {
             gesehen.add(txt);
-            out.status.push({ einstellung: weg.map(k => k.aufschrift).join(' + '), text: txt });
+            out.status.push({ einstellung: wo, text: txt });
+          }
+          // Und in DIESER Kombination das Reglergitter fahren: `arbeit` zeigt
+          // je Modus zwei andere Regler, und en3 liest Werte aus dem Modus
+          // "Hochheben" (Masse × 9,81 × Hoehe). Ohne den Aufruf hier sieht das
+          // Gitter nur den Modus, den der letzte Klick zufaellig hinterliess.
+          gitterFahren(wo);
+          // und in DIESER Kombination die Aktionsknoepfe betaetigen
+          for (const t of _taten) {
+            if (out.status.length >= 420) break;
+            let vorher = txt;
+            for (let i = 1; i <= 8; i++) {
+              try {
+                vm.runInContext(`(function(){var f=function(){${t.ruft}};f();})()`, H.ctx);
+              } catch (e2) { break; }
+              // AUSLAUFEN LASSEN. Ein Aktionsknopf startet oft eine Bewegung,
+              // und das Ergebnis steht erst da, wenn sie zu Ende ist:
+              // `reibung-rs` schiebt den Wagen an, und der Auslaufweg (112 cm
+              // auf Eis) erscheint erst beim Halt. Mit einer einzigen Ablesung
+              // nach 25 Frames stand im Dump nur der kuerzeste Weg - 25 cm,
+              // also ausgerechnet der Teppich, den der Reihendurchgang
+              // sowieso schon hatte.
+              // NICHT beim ersten unveraenderten Frame abbrechen: `reibung-rs`
+              // meldet waehrend der ganzen Fahrt denselben Satz („Der Wagen
+              // rollt und wird durch die Reibung langsamer …") und erst beim
+              // Halt den Auslaufweg. Ein Abbruch bei Gleichstand traf genau
+              // diese Phase und liess den Dump vor dem Ergebnis stehen.
+              // Abgebrochen wird erst nach VIERZEHN gleichen Ablesungen in
+              // Folge. Acht waren zu wenig, und zwar knapp: Die Fahrt auf Eis
+              // braucht GEMESSEN 250 Frames bis zum Halt, acht Ablesungen zu
+              // 25 Frames reichen nur 200 weit. Im Dump standen deshalb 25 cm
+              // (Teppich) und 49 cm (Holz), aber nicht die 112 cm auf Eis -
+              // also genau der Wert, der am weitesten von der Voreinstellung
+              // weg ist und den die Heftseite kr12 zuerst nennt.
+              let jetzt = null, still = 0;
+              for (let v = 0; v <= VERLAUF + 30; v++) {
+                H.frames(FRAMES);
+                const gelesen = lies();
+                if (gelesen === jetzt) { if (++still >= 14) break; continue; }
+                still = 0;
+                jetzt = gelesen;
+                if (!gesehen.has(jetzt)) {
+                  gesehen.add(jetzt);
+                  out.status.push({
+                    einstellung: `${wo} + ${t.aufschrift}`
+                                 + (i > 1 ? ` · ${i}. Klick` : '')
+                                 + (v ? ` · nach ${(v + 1) * FRAMES} Frames` : ''),
+                    text: jetzt });
+                }
+                if (out.status.length >= 420) break;
+              }
+              if (jetzt === vorher) break;             // der Klick bringt nichts mehr
+              vorher = jetzt;
+            }
           }
         } catch (err) { /* eine unmoegliche Kombination ist kein Fehler */ }
         return;
@@ -432,65 +592,220 @@ function fakten(datei, simId) {
     }
   }
 
-  // ── REGLER-ECKEN: einzeln verstellen ist nicht kombinieren ──────────────
+  // ── REGLER-GITTER: einzeln verstellen ist nicht kombinieren ─────────────
   // Die Schleife oben tastet JEDEN Regler ab, aber immer nur EINEN: die
   // uebrigen bleiben dabei stehen, wo der vorige Durchgang sie gelassen hat.
-  // Genau das reicht nicht. `leistung-rs` hat drei Regler (Masse 10-100 kg,
-  // Hoehe 1-10 m, Zeit 1-20 s), und die Heftseite en13 (Klasse 9) liest
-  // "9,81 kW oder 13,34 PS" ab - das ist der Wert an ALLEN DREI Anschlaegen
-  // gleichzeitig (100 kg · 9,81 N/kg · 10 m / 1 s). Einzeln verstellt kam der
-  // Dump nie ueber 1 PS hinaus, und der Pruefer meldete eine richtige Zahl als
-  // "steht nicht am Bildschirm".
+  // Genau das reicht zweimal nicht:
   //
-  // Gefahren werden die ECKEN des Reglerraums: bei drei Reglern acht
-  // Kombinationen, bei vier sechzehn. Ab fuenf Reglern wird nur noch
-  // alles-min / alles-max / alles-Mitte gesetzt - 32 Ecken waeren mehr
-  // Rechenzeit als Erkenntnis, und die interessanten Faelle sind die
-  // Anschlaege.
+  //   `leistung-rs` hat drei Regler (Masse 10-100 kg, Hoehe 1-10 m, Zeit
+  //   1-20 s), und die Heftseite en13 (Klasse 9) liest "9,81 kW oder 13,34 PS"
+  //   ab - den Wert an ALLEN DREI ANSCHLAEGEN (100 kg · 9,81 N/kg · 10 m / 1 s).
+  //   Einzeln verstellt kam der Dump nie ueber 1 PS.
+  //
+  //   `arbeit` hat zwei, und en3 liest MITTEN im Bereich: "20 kg und 1,0 m =
+  //   196 J", "bei 2,0 m 392 J", "bei 4,0 m genau 785 J", "bei 3,0 m mit 10 kg
+  //   294 J". Alles richtig gerechnet (20 · 9,81 · 4 = 784,8 -> 785 J), alles
+  //   vom Dump nie gesehen. Die Anschlaege allein haetten hier nichts geholfen.
+  //
+  // Gefahren wird deshalb ein GITTER aus RUNDEN Werten: Eine Heftseite waehlt
+  // 20 kg und 3,0 m, nicht 27,5 kg. Je Regler hoechstens sechs runde Werte,
+  // immer einschliesslich min und max; reicht kein Raster, bleiben min, Mitte
+  // und max. Ueber 64 Kombinationen hinaus nur die Anschlaege und die Mitte -
+  // mehr waere Rechenzeit statt Erkenntnis.
+  //
+  // WELCHE Regler? Die JETZT ausgezeichneten, nicht alle je gesehenen.
+  // `arbeit` hat vier Regler in `out.regler` (arbF, arbS, arbM, arbH), aber je
+  // Modus stehen nur ZWEI in der Oberflaeche - die anderen beiden sind Reste
+  // eines fruehen Zustands. Mit allen vieren kam das Gitter auf ueber 64
+  // Kombinationen und fiel auf die Anschlaege zurueck; genau die Werte, die
+  // en3 abliest, blieben dann wieder aus. Deshalb laeuft das Gitter je
+  // Wahlgruppen-Kombination NEU und fragt jedes Mal, was wirklich dasteht.
+  function gitterFahren(wo, mitTaten) {
+  const jetztHtml = [vm.runInContext(`__m.innerHTML`, H.ctx),
+                     ...[...H.elemente.values()].map(e => (e && e.innerHTML) || '')].join('\n');
   const _fahrbar = out.regler
     .map(r => ({ r, el: H.elemente.get(r.id) }))
     .filter(x => x.el && x.el._oninput
+                 && jetztHtml.includes(`id="${x.r.id}"`)
                  && isFinite(Number(x.r.bereich.min)) && isFinite(Number(x.r.bereich.max)));
-  if (_fahrbar.length >= 2) {
-    const raster = (x, anteil) => {
+  // SCHON EIN Regler genuegt. `reibungswaerme` hat genau einen (Anfangstempo
+  // v), und en6 liest "bei 2 m/s 0,8 J und 0,003 °C, bei 8 m/s 12,8 J und
+  // 0,043 °C" ab. Die Temperatur steht aber erst da, wenn die Bremsung ZU ENDE
+  // ist - eingestellt allein zeigt sie nichts. Deshalb werden an jedem
+  // Gitterpunkt auch die Aktionsknoepfe gedrueckt und auslaufen gelassen.
+  if (_fahrbar.length >= 1 && out.status.length < 420) {
+    const netz = (x) => {
       const mn = Number(x.r.bereich.min), mx = Number(x.r.bereich.max);
       const st = Number(x.r.bereich.step) || 1;
-      const g = mn + Math.round(((mx - mn) * anteil) / st) * st;
-      return String(Number(g.toFixed(6)));
+      const raste = (v) => String(Number((mn + Math.round((v - mn) / st) * st).toFixed(6)));
+      // VEREINIGUNG mehrerer Raster, nicht nur einer. Mit "der feinste Raster,
+      // der noch passt" nahm das Netz fuer 1-20 kg den Zweierraster
+      // (2, 4, 6, ... 20) und verlor damit die 5 - genau die Masse, die die
+      // Heftseiten en4 und me19 einstellen ("5 kg aus 3 m: der Pfahl wird
+      // 37 cm tief eingeschlagen"). Der Fuenferraster hat sie, ist aber
+      // groeber. Beide gelten also, und zwar hoechstens zwoelf Werte je Regler.
+      const w = new Set([raste(mn), raste(mx)]);
+      for (const r of [0.5, 1, 2, 5, 10, 25, 50, 100]) {
+        const dieses = [];
+        for (let v = Math.ceil(mn / r) * r; v <= mx + 1e-9; v += r) dieses.push(raste(v));
+        const eindeutig = [...new Set(dieses)];
+        if (eindeutig.length < 2 || eindeutig.length > 12) continue;
+        for (const q of eindeutig) { if (w.size < 12) w.add(q); }
+      }
+      if (w.size < 3) { w.add(raste((mn + mx) / 2)); }
+      return [...w].sort((a, b) => Number(a) - Number(b));
     };
-    const ecken = [];
-    if (_fahrbar.length <= 4) {
-      for (let maske = 0; maske < (1 << _fahrbar.length); maske++)
-        ecken.push(_fahrbar.map((x, i) => raster(x, (maske >> i) & 1 ? 1 : 0)));
-      ecken.push(_fahrbar.map(x => raster(x, 0.5)));
+    const netze = _fahrbar.map(netz);
+    const punkte = [];
+    if (netze.reduce((n, v) => n * v.length, 1) <= 200) {
+      const bauen = (i, weg) => {
+        if (i === netze.length) { punkte.push(weg); return; }
+        for (const w of netze[i]) bauen(i + 1, weg.concat([w]));
+      };
+      bauen(0, []);
     } else {
-      for (const anteil of [0, 0.5, 1]) ecken.push(_fahrbar.map(x => raster(x, anteil)));
+      for (let maske = 0; maske < (1 << Math.min(4, _fahrbar.length)); maske++)
+        punkte.push(netze.map((v, i) => v[(maske >> i) & 1 ? v.length - 1 : 0]));
+      punkte.push(netze.map(v => v[(v.length - 1) >> 1]));
     }
-    for (const ecke of ecken) {
+    // DIE STELLUNG ZURUECKGEBEN. Das Gitter ist ein Ausflug, kein Umzug: Wer
+    // die Regler danach am letzten Gitterpunkt stehen laesst, veraendert alles,
+    // was danach kommt - der Einzelregler-Durchgang tastet dann einen Regler ab,
+    // waehrend die anderen am Anschlag stehen, und das Messlabor nimmt seine
+    // Reihe in einem Zustand auf, den niemand eingestellt hat. Gemessen: mit
+    // dem Ausflug ohne Rueckweg meldete der Abgleich ploetzlich 13 Werte in der
+    // Oberstufe, die vorher gedeckt waren (ki4, ki5 - beide Messlabor).
+    const zurueck = _fahrbar.map(x => {
+      const el = H.elemente.get(x.r.id);
+      return el ? String(el.value !== undefined && el.value !== '' ? el.value
+                         : (x.r.bereich.start || '')) : '';
+    });
+    // Im Aktionsdurchgang vor jedem Gitterpunkt zuruecksetzen, wenn die
+    // Simulation einen Knopf dafuer hat - sonst schleppt der Durchgang jeden
+    // Schalterzustand mit. Erkannt am HANDLERNAMEN, nicht an der Aufschrift
+    // („↺", „zuruecksetzen", „Neu starten" - alles dasselbe dahinter).
+    const zurueckKnopf = mitTaten
+      ? out.knoepfe.find(k => /(Reset|Init|Neu|Zurueck|Zurück)\w*\(\s*\)/i.test(k.ruft))
+      : null;
+    const gesehenG = new Set();
+    for (const punkt of punkte) {
       try {
-        // JE REGLER setzen UND SOFORT feuern - nicht erst alle setzen und dann
-        // alle feuern. Der naheliegende Weg (alle Werte, dann alle Handler)
-        // scheitert an Simulationen, die ihre Regler aus dem eigenen Zustand
-        // ZURUECKSCHREIBEN: `_lrsSync()` in `leistung-rs` setzt nach jedem
-        // Handler alle drei `r.value = _lrs[k]`. Der erste Handler loeschte
-        // damit die beiden noch nicht gefeuerten Werte, und die Ecke
-        // "alle drei am Anschlag" kam nie zustande - genau die, die die
-        // Heftseite en13 abliest.
+        if (zurueckKnopf) {
+          try {
+            vm.runInContext(`(function(){var f=function(){${zurueckKnopf.ruft}};f();})()`, H.ctx);
+            H.frames(2);
+          } catch (e0) { /* kein Rueckweg, dann eben nicht */ }
+        }
+        // JE REGLER setzen UND SOFORT feuern - nicht erst alle Werte, dann
+        // alle Handler. Der naheliegende Weg scheitert an Simulationen, die
+        // ihre Regler aus dem eigenen Zustand ZURUECKSCHREIBEN: `_lrsSync()`
+        // in `leistung-rs` setzt nach JEDEM Handler alle drei
+        // `r.value = _lrs[k]` und loeschte damit die noch nicht gefeuerten
+        // Werte. Die Stellung "alle drei am Anschlag" kam nie zustande -
+        // genau die, die en13 abliest.
         const code = _fahrbar.map((x, i) =>
           `(function(){var this_=document.getElementById(${JSON.stringify(x.r.id)});
              if(!this_) return;
-             this_.value=${JSON.stringify(ecke[i])};
+             this_.value=${JSON.stringify(punkt[i])};
              var f=function(){${x.el._oninput.replace(/\bthis\b/g, 'this_')}};f();})();`).join('\n');
         vm.runInContext(`(function(){${code}})()`, H.ctx);
         H.frames(FRAMES);
+        const txt = lies();
+        // Nur NEUE Anzeigen aufschreiben - ein Dump ist kein Protokoll.
+        if (gesehenG.has(txt)) continue;
+        gesehenG.add(txt);
+        const marke = (wo ? wo + ' · ' : '') + 'Gitter: ' + _fahrbar.map((x, i) =>
+          `${(x.r.beschriftung || x.r.id).slice(-24)}=${punkt[i]}`).join(' · ');
+        out.status.push({ einstellung: marke, text: txt });
+        // EINSTELLEN UND DANN AUSLOESEN. Das ist das Muster, an dem der Dump
+        // fuenfmal gescheitert ist: Eine Groesse steht erst da, wenn die
+        // Bewegung gelaufen ist (`reibungswaerme` die Erwaermung, `achterbahn`
+        // die Energien auf dem zweiten Huegel, `reibung-rs` den Auslaufweg).
+        // Gedeckelt, damit es nicht ausartet: hoechstens zwoelf Gitterpunkte
+        // und drei Aktionsknoepfe.
+        if (mitTaten && _taten.length <= 5) {
+          for (const t of _taten) {
+            if (out.status.length >= 420) break;
+            try {
+              vm.runInContext(`(function(){var f=function(){${t.ruft}};f();})()`, H.ctx);
+            } catch (e3) { continue; }
+            let zuvor = null, ruhig = 0;
+            for (let v = 0; v <= VERLAUF + 30; v++) {
+              H.frames(FRAMES);
+              const gelesen = lies();
+              if (gelesen === zuvor) { if (++ruhig >= 14) break; continue; }
+              ruhig = 0; zuvor = gelesen;
+              if (gesehenG.has(gelesen)) continue;
+              gesehenG.add(gelesen);
+              out.status.push({ einstellung: `${marke} + ${t.aufschrift}`, text: gelesen });
+              if (out.status.length >= 420) break;
+            }
+          }
+        }
+      } catch (e) { /* ein unmoeglicher Gitterpunkt ist kein Fehler */ }
+    }
+    // zurueck auf die Stellung, in der das Gitter angetreten ist
+    try {
+      const heim = _fahrbar.map((x, i) =>
+        `(function(){var this_=document.getElementById(${JSON.stringify(x.r.id)});
+           if(!this_) return;
+           this_.value=${JSON.stringify(zurueck[i])};
+           var f=function(){${x.el._oninput.replace(/\bthis\b/g, 'this_')}};f();})();`).join('\n');
+      vm.runInContext(`(function(){${heim}})()`, H.ctx);
+      H.frames(FRAMES);
+    } catch (e) { /* nichts zu retten, dann eben nicht */ }
+  }
+  }
+  gitterFahren('');
+
+  // ── GENANNTE STELLUNGEN: die Heftseite sagt, wo man hinschauen muss ─────
+  // Ein Dump kann einen vierdimensionalen Reglerraum nicht ausschreiben.
+  // `geiger-mueller` hat vier Regler; die Heftseite kp3 liest bei
+  // Z_wahr = 9000 /s UND τ = 100 µs ab, und diese Kombination trifft kein
+  // Gitter, das unter 120 Punkten bleiben muss. Die Seite weiss aber genau,
+  // wo sie hinschaut - also wird es aufgeschrieben: `simcheck/stellen.json`
+  // nennt je Simulation die Stellungen, die eine Heftseite braucht, und der
+  // Dump faehrt sie nach. Das ist KEIN Freibrief: Aufgeschrieben wird die
+  // Stellung, nicht der Wert. Was dort steht, liest die Simulation selbst vor.
+  const _stellenArg = (process.argv.find(a => a.startsWith('--stellen=')) || '').slice(10);
+  if (_stellenArg) {
+    let tafel = {};
+    try { tafel = JSON.parse(require('fs').readFileSync(_stellenArg, 'utf8')); } catch (e) {}
+    for (const st of tafel[simId] || []) {
+      try {
+        for (const ruf of st.knoepfe || [])
+          vm.runInContext(`(function(){var f=function(){${ruf}};f();})()`, H.ctx);
+        H.frames(FRAMES);
+        for (const [id, w] of Object.entries(st.regler || {})) {
+          const el = H.elemente.get(id);
+          if (!el || !el._oninput) { out.status.push({
+            einstellung: `Stellung fuer ${st.wozu}`,
+            text: `FEHLER: Regler ${id} gibt es nicht` }); continue; }
+          vm.runInContext(
+            `(function(){var this_=document.getElementById(${JSON.stringify(id)});
+              this_.value=${JSON.stringify(String(w))};
+              var f=function(){${el._oninput.replace(/\bthis\b/g, 'this_')}};f();})()`, H.ctx);
+          H.frames(2);
+        }
+        let jetzt = null, ruhig = 0;
+        for (let v = 0; v <= VERLAUF + 30; v++) {
+          H.frames(FRAMES);
+          const gelesen = lies();
+          if (gelesen === jetzt) { if (++ruhig >= 14) break; continue; }
+          ruhig = 0; jetzt = gelesen;
+        }
         out.status.push({
-          einstellung: 'Ecke: ' + _fahrbar.map((x, i) =>
-            `${(x.r.beschriftung || x.r.id).slice(-24)}=${ecke[i]}`).join(' · '),
-          text: lies(),
-        });
-      } catch (e) { /* eine unmoegliche Ecke ist kein Fehler */ }
+          einstellung: `Stellung fuer ${st.wozu}: `
+            + [...(st.knoepfe || []), ...Object.entries(st.regler || {}).map(([k, w]) => `${k}=${w}`)].join(' · '),
+          text: jetzt });
+      } catch (e) {
+        out.status.push({ einstellung: `Stellung fuer ${st.wozu}`, text: 'FEHLER: ' + e.message });
+      }
     }
   }
+
+  // Die beiseitegelegten Gitterzeilen wieder anhaengen
+  out.status.push(..._gitterZeilen);
 
   // Alles, was ins Bild geschrieben wurde - dort stehen oft die Messwerte
   out.bildtexte = [...new Set(H.texte)].filter(t => t && t.length < 90);

@@ -17,8 +17,8 @@ Zwei Dinge macht das Werkzeug anders als die Handarbeit:
   Ziehungen. Voreinstellung ist `simcheck/fakten/` im Projekt, gemeinsam fuer
   alle Baende.
 - **Die Schalter stehen hier, nicht im Gedaechtnis.** `--voll` (die
-  2500er-Deckelung schnitt bei `lichtuhr` zwei Drittel ab) und
-  `--frames=25 --verlauf=4` (animierte Simulationen stehen nach zwei Frames noch
+  2500er-Deckelung schnitt bei `lichtuhr` zwei Drittel ab), `--frames=25
+  --verlauf=4` (animierte Simulationen stehen nach zwei Frames noch
   im Startzustand). Mit anderen Schaltern gezogene Dumps sind nicht vergleichbar.
 
 Ein Dump traegt kein Datum ([[fakten-dumps-veralten]]). Nach jeder Aenderung an
@@ -31,7 +31,11 @@ import importlib.util as ilu
 HIER = os.path.dirname(os.path.abspath(__file__))
 WURZEL = os.path.dirname(HIER)
 SIMDATEI = os.path.join(WURZEL, "physics-sim.js")
-SCHALTER = ["--voll", "--frames=25", "--verlauf=4"]
+# `--stellen` gibt die Stellungen mit, die eine Heftseite abliest und die kein
+# Gitter treffen kann (vierdimensionale Reglerraeume). Aufgeschrieben ist dort
+# die STELLUNG, nicht der Wert - vorgelesen wird er von der Simulation.
+STELLEN = os.path.join(HIER, "stellen.json")
+SCHALTER = ["--voll", "--frames=25", "--verlauf=4", "--stellen=" + STELLEN]
 
 BAENDER = ["arbeitsheft", "arbeitsheft7", "arbeitsheft8", "arbeitsheft9", "arbeitsheft10",
            "arbeitsheft_gts7", "arbeitsheft_gts8", "arbeitsheft_gts9", "arbeitsheft_gts10",
