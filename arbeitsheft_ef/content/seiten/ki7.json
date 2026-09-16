@@ -42,7 +42,7 @@
  "aufgabe": {
   "frage": "Berechne für α = 0° und für α = 20°, wie viel Zugkraft nach Abzug der Reibung zum Beschleunigen übrig bleibt. Der beladene Schlitten hat die Gewichtskraft 400,0 N; es gilt F_R = 0,30 · (400,0 N − F · sin(α)).",
   "zeilen": 5,
-  "loesung": "Beide Komponenten stehen im Datenblatt. Bei α = 0° sind es F · cos(0°) = 200,0 N und F · sin(0°) = 0,0 N. Die Normalkraft bleibt F_N = 400,0 N − 0,0 N = 400,0 N, die Reibung beträgt F_R = 0,30 · 400,0 N = 120,0 N. Zum Beschleunigen bleiben 200,0 N − 120,0 N = 80,0 N. Bei α = 20° stehen dort 187,9 N und 68,4 N. Die Normalkraft sinkt auf F_N = 400,0 N − 68,4 N = 331,6 N, die Reibung auf F_R = 0,30 · 331,6 N = 99,5 N. Übrig bleiben 187,9 N − 99,5 N = 88,4 N. Der Vortrieb ist bei 20° zwar um 12,1 N kleiner, die Reibung aber um 20,5 N – die Entlastung wiegt schwerer, und Mira zieht zu Recht schräg. Beliebig schräg darf sie aber nicht ziehen: Mit der Zeile α = 60° gerechnet, blieben nur noch 100,0 N − 0,30 · (400,0 N − 173,2 N) = 100,0 N − 68,0 N = 32,0 N übrig, viel weniger als die 80,0 N bei Tobias. Irgendwo dazwischen liegt der günstigste Winkel."
+  "loesung": "**0°: 80,0 N · 20°: 88,4 N.** Bei 0° ziehst du von 200,0 N die Reibung 120,0 N ab. Bei 20° sind es 187,9 N minus die kleinere Reibung 99,5 N. Das schräge Seil entlastet den Boden, und weniger Druck heißt weniger Reibung."
  },
  "alltag": "Erkläre mit F · cos(α) und F · sin(α), warum ein flach geführter Koffergriff mehr Vortrieb liefert als ein steiler.",
  "alltagAfb": "II",

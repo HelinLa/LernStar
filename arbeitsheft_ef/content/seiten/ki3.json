@@ -40,9 +40,51 @@
  ],
  "beobachtung": "Wann du stoppst, entscheidest du selbst; die Uhr springt in Schritten von 0,02 s, Wegmesser und Tacho werden aus der angezeigten Zeit gebildet. Ein Durchgang bei a = 2,0 m/s² lieferte fünf Zeilen: t = 0,34 s mit s = 0,12 m und v = 0,68 m/s; t = 0,88 s mit s = 0,77 m und v = 1,76 m/s; t = 1,46 s mit s = 2,13 m und v = 2,92 m/s; t = 1,92 s mit s = 3,69 m und v = 3,84 m/s; t = 2,38 s mit s = 5,66 m und v = 4,76 m/s. Die gerechnete letzte Spalte bleibt in der ersten Zeile leer und zeigt danach viermal denselben Wert 2,00 m/s². Zu „t → s“ meldet die Auswertung: „Keine Gerade, sondern eine Parabel: s ~ t².“ – eine Zahl für a ist daraus nicht zu holen. Zu „t → v“ steht dort „Stoppuhr · a = 2,0 m/s² · 5 Messwerte“, darunter y = 2,000·x, R² = 1,0000 · erwartet: 2,000 und schließlich „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s² · Literatur: 2,00“ mit der Abweichung 0,00 %. Zu „t → a“ ergibt sich aus vier Punkten y = 0,0000·x + 2,0000, also eine Waagerechte auf der Höhe 2,00 m/s².",
  "aufgabe": {
-  "frage": "Berechne Δv/Δt aus den Wertepaaren (0,34 s | 0,68 m/s) und (2,38 s | 4,76 m/s).",
-  "zeilen": 5,
-  "loesung": "Erstes Paar: Δv = 4,76 m/s − 0,68 m/s = 4,08 m/s und Δt = 2,38 s − 0,34 s = 2,04 s, also Δv/Δt = 4,08 m/s : 2,04 s = 2,00 m/s². Zweites Paar: Δv = 4,76 m/s − 3,84 m/s = 0,92 m/s und Δt = 2,38 s − 1,92 s = 0,46 s, also 0,92 m/s : 0,46 s = 2,00 m/s². Die beiden Paare liegen weit auseinander und liefern dennoch dieselbe Zahl; genau das steht auch in der a-Spalte, dort 2,00 in jeder Zeile ab der zweiten. Δv/Δt ist die Steigung der Verbindungsgeraden zweier Punkte. Ist sie für jedes Paar gleich, so liegen alle Punkte auf einer einzigen Geraden, und weil der Wagen aus der Ruhe startet, geht diese Gerade durch den Ursprung. Eine Ursprungsgerade mit der Steigung a heißt v/t = a für jeden Punkt; nach v umgestellt ergibt das v = a · t. Die Ausgleichsgerade bestätigt es mit y = 2,000·x bei R² = 1,0000."
+  "frage": "Mira läuft, bleibt stehen und läuft schneller weiter. Das t-s-Diagramm zeigt ihre drei Abschnitte. Lies für jeden Abschnitt die Steigung ab und zeichne daraus das t-v-Diagramm in das leere Achsenkreuz.",
+  "zeilen": 3,
+  "gitter": [
+   {
+    "titel": "Gegeben: t-s-Diagramm",
+    "xl": "t in s",
+    "yl": "s in m",
+    "xmax": 10,
+    "ymax": 40,
+    "xschritt": 2,
+    "yschritt": 10,
+    "hoehe": 200,
+    "kurve": [
+     [
+      0,
+      0
+     ],
+     [
+      4,
+      12
+     ],
+     [
+      6,
+      12
+     ],
+     [
+      10,
+      32
+     ]
+    ],
+    "name": "Achsenkreuz gegeben"
+   },
+   {
+    "titel": "Zeichne hier: t-v-Diagramm",
+    "xl": "t in s",
+    "yl": "v in m/s",
+    "xmax": 10,
+    "ymax": 6,
+    "xschritt": 2,
+    "yschritt": 1,
+    "hoehe": 200,
+    "name": "Achsenkreuz leer"
+   }
+  ],
+  "loesung": "**0 bis 4 s: v = 3 m/s · 4 bis 6 s: v = 0 · 6 bis 10 s: v = 5 m/s.** Die Steigung des t-s-Diagramms IST die Geschwindigkeit: 12 m in 4 s sind 3 m/s, dann bleibt s gleich, dann 20 m in 4 s, also 5 m/s. Im t-v-Diagramm entstehen daraus drei waagerechte Stufen – nicht drei schräge Linien. Wo das t-s-Diagramm einen Knick hat, springt die Stufe."
  },
  "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Begründe, welche der drei Auftragungen du dafür wählst.",
  "alltagAfb": "II",

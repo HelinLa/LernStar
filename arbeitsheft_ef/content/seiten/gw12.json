@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Berechne für v = 0,60·c den Faktor √(1−β²) und die Zeitspanne, die in der bewegten Uhr vergeht, während in A eine Stunde vergeht.",
   "zeilen": 5,
-  "loesung": "Es ist β = v/c = 0,60, also β² = 0,36 und 1 − β² = 0,64. Damit wird √(1−β²) = √0,64 = 0,800 – genau der Wert, den Station 4 als 0,8000 anzeigt. Für eine Stunde in A folgt Δtbew = 60,0 min · 0,800 = 48,0 min, und die Anzeige nennt ebenfalls 48,0 min. Die Messstation zählt 160 Ticks der bewegten Uhr gegen 200 Ticks der ruhenden, also f = 160/200 = 0,800. Gezählter Faktor und gerechneter Faktor stimmen überein: Die Rechnung aus dem Satz des Pythagoras sagt die Messung richtig vorher."
+  "loesung": "**√(1−β²) = 0,800** · **Δt = 48,0 min.** Es ist β = 0,60, also 1 − β² = 0,64 und √0,64 = 0,800. Multipliziere die Stunde in A mit diesem Faktor: 60,0 min · 0,800 = 48,0 min. Die bewegte Uhr zählt 160 Ticks gegen 200, das ist derselbe Faktor."
  },
  "alltag": "Erkläre, wieso ein reines Gedankenexperiment wie die Lichtuhr zu einer überprüfbaren Vorhersage führen kann.",
  "alltagAfb": "III",

@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Bestimme die Steigung der Geraden „a über 1/m“ von Hand aus den Tabellenzeilen m = 4 kg und m = 20 kg.",
   "zeilen": 5,
-  "loesung": "Aus der Tabelle: zu m = 4 kg gehören 1/m = 0,2500 1/kg und a = 10,00 m/s², zu m = 20 kg gehören 1/m = 0,0500 1/kg und a = 2,00 m/s². Die Steigung ist k = Δa : Δ(1/m) = (10,00 − 2,00) m/s² : (0,2500 − 0,0500) 1/kg = 8,00 : 0,2000 = 40,0. Ihre Einheit ist (m/s²) je (1/kg), also kg · m/s² = N: k = 40,0 N, genau die eingestellte Kraft. Das Programm meldet für alle Zeilen y = 40,000·x und „Kraft F aus der Steigung k 40,00 N“. Über m gerechnet gibt es dagegen keine einheitliche Steigung: zwischen 4 kg und 20 kg ergibt (2,00 − 10,00) : (20 − 4) = −0,50 m/s² je Kilogramm, zwischen 1 kg und 4 kg dagegen (10,00 − 40,00) : (4 − 1) = −10,00 m/s² je Kilogramm – zwanzigmal so steil. Eine Hyperbel hat in jedem Punkt eine andere Steigung, deshalb ist dort keine Ausgleichsgerade zu ziehen und keine Größe abzulesen. Genau dafür linearisiert man."
+  "loesung": "**k = 40,0 N.** Teile den Unterschied der a-Werte durch den Unterschied der 1/m-Werte: 8,00 durch 0,2000. Die Einheit (m/s²) je (1/kg) ist genau Newton, also ist die Steigung eine Kraft. Genau diese Kraft hast du vorher am Regler eingestellt."
  },
  "alltag": "Ein Einkaufswagen hat leer die Masse 10 kg und voll beladen 30 kg; du schiebst ihn beide Male mit 60 N an. Berechne beide Beschleunigungen.",
  "alltagAfb": "II",

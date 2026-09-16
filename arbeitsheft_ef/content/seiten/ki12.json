@@ -44,7 +44,7 @@
  "aufgabe": {
   "frage": "Berechne die Beschleunigung für die Reglerstellung μ = 0,95, die in keiner Zeile deiner Tabelle steht.",
   "zeilen": 5,
-  "loesung": "Bei μ = 0,95 zeigt der Infokasten F_R = 46,6 N; F = 80 N und m = 5 kg stehen unverändert. Daraus folgt F_res = 80 N − 46,6 N = 33,4 N und a = 33,4 N / 5 kg = 6,7 m/s². In der Ausgangsstellung μ = 0,30 steht F_R = 14,7 N, also F_res = 80 N − 14,7 N = 65,3 N und a = 65,3 N / 5 kg = 13,1 m/s². Die Reibungskraft ist auf das 3,2-Fache gestiegen (46,6 N / 14,7 N = 3,17), die Beschleunigung dagegen nur auf 6,7 / 13,1 = 0,51, also etwa auf die Hälfte. Der Grund liegt in der Überlagerung: Beschleunigt wird nicht mit F_R, sondern mit der Differenz F − F_R. Von den 80 N zieht die Reibung erst 14,7 N und dann 46,6 N ab; der Rest schrumpft von 65,3 N auf 33,4 N – das ist gut die Hälfte und gerade nicht ein Drittel. Die vier Tabellenzeilen ergeben zum Vergleich: μ = 0,00 → F_res = 80,0 N und a = 16,0 m/s², μ = 0,20 → 70,2 N und 14,0 m/s², μ = 0,40 → 60,4 N und 12,1 m/s², μ = 0,60 → 50,6 N und 10,1 m/s²."
+  "loesung": "**a = 6,7 m/s².** Bei μ = 0,95 bremst die Reibung mit 46,6 N. Zieh diese 46,6 N von den 80 N ab, das ergibt 33,4 N. Teile 33,4 N durch 5 kg, denn nur die übrige Kraft beschleunigt."
  },
  "alltag": "Erkläre, warum dieselbe Zugkraft eine Getränkekiste auf Fliesen und auf Teppich verschieden stark beschleunigt.",
  "alltagAfb": "II",

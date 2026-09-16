@@ -38,6 +38,7 @@ VIER BESONDERHEITEN DER OBERSTUFE, die beim Kopieren aus der Sek I durchrutschen
        Tabelle auf der Seite. Diese fuenf Seiten tragen KEINEN QR-Code.
 """
 import os, sys, json, glob
+import re
 _HIER=os.path.dirname(os.path.abspath(__file__))
 MOTOR=os.path.join(os.path.dirname(_HIER),"arbeitsheft")
 # HINTEN anhaengen, nicht vorn einfuegen: Sonst gewinnen die gleichnamigen Module
@@ -453,6 +454,58 @@ def b_zeilen(text,art="reg",grad=None,breite=None,punkt=False,
     xt=round(r*2+14,1) if punkt else 0.0
     br=(LESE if breite is None else breite)-xt
     f=fd.schrift(art,grad)
+
+    # ── FETT: **so** wird fett gesetzt ──────────────────────────────────
+    # Nur wenn wirklich eine Marke im Text steht. Sonst laeuft der alte Weg
+    # unveraendert weiter (eine Schrift, Zeile fuer Zeile) - der Bestand aus
+    # 573 Einheiten aendert damit kein Pixel, bis ihn jemand markiert.
+    if "**" in text:
+        fb=fd.schrift("bold",grad)
+        mh=messhilfe(); sp=mh.tw(" ",f)
+        # Text in (Wort, fett)-Paare zerlegen
+        laeufe=[]; pos=0
+        for m in re.finditer(r"\*\*(.+?)\*\*",text):
+            laeufe+=[(w,False) for w in text[pos:m.start()].split()]
+            laeufe+=[(w,True)  for w in m.group(1).split()]
+            pos=m.end()
+        laeufe+=[(w,False) for w in text[pos:].split()]
+        # SATZZEICHEN KLEBEN. Aus "**2**." werden sonst der fette Lauf "2" und
+        # das Wort "." - und dazwischen setzt der Umbruch ein Leerzeichen:
+        # "richtig ist Antwort 2 ." Gesehen auf der gesetzten Lehrerseite von
+        # ki5, nicht im Code. Ein Zeichen, das allein steht und nur aus
+        # Satzzeichen besteht, gehoert an das Wort davor.
+        geklebt=[]
+        for w,fett in laeufe:
+            if geklebt and all(c in ".,;:!?)»“" for c in w):
+                v,vf=geklebt[-1]; geklebt[-1]=(v+w,vf)
+            else:
+                geklebt.append((w,fett))
+        laeufe=geklebt
+        # WORTWEISE umbrechen - zwei Schriften sind verschieden breit, ein
+        # Umbruch nach der einen sprengt die Zeile der anderen.
+        zl=[]; cur=[]; bis=0.0
+        for w,fett in laeufe:
+            ww=mh.tw(w,fb if fett else f)
+            if cur and bis+sp+ww>br:
+                zl.append(cur); cur=[]; bis=0.0
+            if cur: bis+=sp
+            cur.append((w,fett,ww)); bis+=ww
+        if cur: zl.append(cur)
+        B=[]
+        for k,zeile in enumerate(zl or [[]]):
+            def zeichne(h,d,y,k=k,zeile=zeile):
+                if punkt and k==0:
+                    fd.raute(d,fd.X0+r,y+hh*0.45,r*0.45,fd.STIL["akzent"])
+                x=fd.X0+xt
+                for w,fett,ww in zeile:
+                    fd.T(h,x,y,w,fb if fett else f,fd.STIL["text"])
+                    x+=ww+sp
+                return y+hh
+            B.append(bst("%s %d"%(name,k+1),zeichne,abstand=0,
+                         haftet=1 if (k==0 and len(zl)>1) else 0))
+        B[-1].abstand=abstand
+        return B
+
     zeilen=messhilfe().wrap(text,f,br) or [""]
     B=[]
     for k,z in enumerate(zeilen):
@@ -477,6 +530,65 @@ def schreiblinie(h,y,x0=None,x1=None,nummer=None):
         x0+=fd.einheiten(fd.FLIESS)+6
     h.ln([(x0,y+fd.LINIE_GRUNDLINIE),(x1,y+fd.LINIE_GRUNDLINIE)],fd.STIL["linie"],fd.LINIE_STAERKE)
     return y+fd.LINIE_HOEHE
+
+
+def _achsenzahl(v):
+    """Achsenbeschriftung mit deutschem Komma und ohne Nullen am Ende."""
+    return ("%g"%v).replace(".",",")
+
+
+def b_achsenkreuz(xl,yl,xmax,ymax,xschritt=1,yschritt=1,kurve=None,
+                  hoehe=210,breite=None,titel=None,abstand=None,name="Achsenkreuz"):
+    """Ein Achsenkreuz mit hellem Gitter - leer zum Zeichnen oder mit Kurve.
+
+    Neu am 16.09.2026, weil der Satz kein Diagrammfeld hatte: Abdullah wollte
+    Aufgaben, in denen "schüler aus zusammengesetzten Bewegungen, also t-s
+    Diagramm ein t-V-Diagramm zeichnen". Zeichnen braucht ein Gitter, und
+    Ablesen braucht eine gezeichnete Kurve - beides macht diese Funktion, je
+    nachdem ob `kurve` gegeben ist.
+
+    `kurve` ist eine Liste von (x,y) in ACHSENEINHEITEN, nicht in Pixeln - die
+    Umrechnung gehoert hierher, nicht in den Inhalt.
+    """
+    abstand=fd.ABS_AUFGABE if abstand is None else abstand
+    br=(LESE if breite is None else breite)
+    # Der Zeichenbereich: links Platz fuer die y-Beschriftung, unten fuer x.
+    # Gemessen an der gesetzten Seite 12, nicht geschaetzt: Mit padT=24 lag die
+    # y-Beschriftung ("s in m") auf dem Titel UND auf dem obersten Teilstrich,
+    # und mit padB=34 stiess "t in s" mit der letzten Zahl zusammen. Der Titel
+    # braucht eine eigene Zeile, die Achsennamen brauchen eigene Kanten.
+    padL,padB,padT,padR=52.0,46.0,36.0,14.0
+    def zeichne(h,d,y0):
+        x0=fd.X0+padL; x1=fd.X0+br-padR
+        yb=y0+hoehe-padB; yt=y0+padT
+        f=fd.schrift("reg",fd.KLEIN)
+        if titel:
+            fd.T(h,fd.X0,y0,titel,fd.schrift("med",fd.KLEIN),fd.STIL["text"])
+        # Gitter zuerst, damit Achsen und Kurve darueberliegen
+        for i in range(0,int(xmax/xschritt)+1):
+            x=x0+(x1-x0)*(i*xschritt)/xmax
+            h.ln([(x,yt),(x,yb)],fd.STIL["zart"],1)
+            fd.T(h,x,yb+6,_achsenzahl(i*xschritt),f,fd.STIL["text"],anchor="ma")
+        for j in range(0,int(ymax/yschritt)+1):
+            yy=yb-(yb-yt)*(j*yschritt)/ymax
+            h.ln([(x0,yy),(x1,yy)],fd.STIL["zart"],1)
+            fd.T(h,x0-8,yy,_achsenzahl(j*yschritt),f,fd.STIL["text"],anchor="rm")
+        # Achsen
+        h.ln([(x0,yt),(x0,yb)],fd.STIL["linie"],1.6)
+        h.ln([(x0,yb),(x1,yb)],fd.STIL["linie"],1.6)
+        # Der x-Name UNTER die Zahlen, der y-Name ueber die Achse und links
+        # ausgerichtet - so beruehrt keiner eine Zahl oder den Titel.
+        # Der y-Name gehoert auf die TITELZEILE, rechts. Ueber der Achse klebte
+        # er am obersten Teilstrich ("40 s in m" las sich als ein Wort) - das
+        # ist an der gesetzten Seite 12 zu sehen gewesen, nicht im Code.
+        fm=fd.schrift("med",fd.KLEIN)
+        fd.T(h,x1,yb+22,xl,fm,fd.STIL["text"],anchor="ra")
+        fd.T(h,fd.X0+br,y0,yl,fm,fd.STIL["text"],anchor="ra")
+        if kurve:
+            pk=[(x0+(x1-x0)*px/xmax, yb-(yb-yt)*py/ymax) for px,py in kurve]
+            h.ln(pk,fd.STIL["akzent"],2.2)
+        return y0+hoehe
+    return bst(name,zeichne,abstand=abstand,haftet=0)
 
 
 def b_linien(n,x0=None,x1=None,nummeriert=False,praefix="Schreiblinie"):
@@ -766,6 +878,9 @@ def topic_pages(cfg,chtitel,fno,pn):
     if cfg.get("sprachhilfe"):
         B.append(b_para("Sprachhilfe: "+cfg["sprachhilfe"],
                         art="reg",grad=fd.KLEIN,haftet=2,name="Sprachhilfe"))
+    # Diagrammfelder, wenn die Aufgabe eines braucht (Feld `gitter`).
+    for g in (auf.get("gitter") or []):
+        B.append(b_achsenkreuz(**g))
     B+=b_linien(max(int(auf.get("zeilen",3)),3))
     B[-1].abstand=fd.ABS_ABSCHNITT
     at=cfg.get("alltag") or "Nenne zwei Beispiele, wo dir dieses Thema im Alltag begegnet."
@@ -1631,18 +1746,18 @@ def lehrer_bloecke(tid):
     L=[]
 
     # ── Auf einen Blick: nur Nummern und Woerter ─────────────────────────
-    kurz=["Vermutung (Abschnitt 2): richtig ist Nummer %d von %d."%(ok+1,len(o.get("predict") or [1]))]
+    kurz=["Vermutung (Abschnitt 2): richtig ist Nummer **%d** von %d."%(ok+1,len(o.get("predict") or [1]))]
     if ms:
         kurz.append("Merksatz (Abschnitt 6): "+"  ·  ".join(
-            "Lücke %d: %s"%(i+1,m["loesung"]) for i,m in enumerate(ms)))
+            "Lücke %d: **%s**"%(i+1,m["loesung"]) for i,m in enumerate(ms)))
     if ub.get("lueckensaetze"):
         kurz.append("Übung, Lückensätze: "+"  ·  ".join(
-            "%d %s"%(i+1,s["loesung"]) for i,s in enumerate(ub["lueckensaetze"])))
+            "%d **%s**"%(i+1,s["loesung"]) for i,s in enumerate(ub["lueckensaetze"])))
     if ub.get("richtigfalsch"):
         kurz.append("Übung, richtig oder falsch: "+"  ·  ".join(
-            "%d %s"%(i+1,_rf(s["stimmt"])) for i,s in enumerate(ub["richtigfalsch"])))
+            "%d **%s**"%(i+1,_rf(s["stimmt"])) for i,s in enumerate(ub["richtigfalsch"])))
     if ub.get("mc"):
-        kurz.append("Übung, Auswahlaufgabe: richtig ist Antwort %d."%(ub["mc"]["richtig"]+1))
+        kurz.append("Übung, Auswahlaufgabe: richtig ist Antwort **%d**."%(ub["mc"]["richtig"]+1))
     L.append(("Auf einen Blick",kurz))
 
     # ── ② Vermutung: alle drei, mit Verdikt und Grund ────────────────────

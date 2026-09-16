@@ -29,6 +29,7 @@ DREI ENTSCHEIDUNGEN DES AUFTRAGGEBERS SIND HIER UMGESETZT
        den Lehrerband wandern, sonst zeigt jede Forscherseite ins Leere.
 """
 import os, sys, json, glob
+import re
 _HIER=os.path.dirname(os.path.abspath(__file__))
 MOTOR=os.path.join(os.path.dirname(_HIER),"arbeitsheft")
 # HINTEN anhaengen, nicht vorn einfuegen: Sonst gewinnen die gleichnamigen Module
@@ -388,6 +389,58 @@ def b_zeilen(text,art="reg",grad=None,breite=None,punkt=False,
     xt=round(r*2+14,1) if punkt else 0.0
     br=(LESE if breite is None else breite)-xt
     f=fd.schrift(art,grad)
+
+    # ── FETT: **so** wird fett gesetzt ──────────────────────────────────
+    # Nur wenn wirklich eine Marke im Text steht. Sonst laeuft der alte Weg
+    # unveraendert weiter (eine Schrift, Zeile fuer Zeile) - der Bestand aus
+    # 573 Einheiten aendert damit kein Pixel, bis ihn jemand markiert.
+    if "**" in text:
+        fb=fd.schrift("bold",grad)
+        mh=messhilfe(); sp=mh.tw(" ",f)
+        # Text in (Wort, fett)-Paare zerlegen
+        laeufe=[]; pos=0
+        for m in re.finditer(r"\*\*(.+?)\*\*",text):
+            laeufe+=[(w,False) for w in text[pos:m.start()].split()]
+            laeufe+=[(w,True)  for w in m.group(1).split()]
+            pos=m.end()
+        laeufe+=[(w,False) for w in text[pos:].split()]
+        # SATZZEICHEN KLEBEN. Aus "**2**." werden sonst der fette Lauf "2" und
+        # das Wort "." - und dazwischen setzt der Umbruch ein Leerzeichen:
+        # "richtig ist Antwort 2 ." Gesehen auf der gesetzten Lehrerseite von
+        # ki5, nicht im Code. Ein Zeichen, das allein steht und nur aus
+        # Satzzeichen besteht, gehoert an das Wort davor.
+        geklebt=[]
+        for w,fett in laeufe:
+            if geklebt and all(c in ".,;:!?)»“" for c in w):
+                v,vf=geklebt[-1]; geklebt[-1]=(v+w,vf)
+            else:
+                geklebt.append((w,fett))
+        laeufe=geklebt
+        # WORTWEISE umbrechen - zwei Schriften sind verschieden breit, ein
+        # Umbruch nach der einen sprengt die Zeile der anderen.
+        zl=[]; cur=[]; bis=0.0
+        for w,fett in laeufe:
+            ww=mh.tw(w,fb if fett else f)
+            if cur and bis+sp+ww>br:
+                zl.append(cur); cur=[]; bis=0.0
+            if cur: bis+=sp
+            cur.append((w,fett,ww)); bis+=ww
+        if cur: zl.append(cur)
+        B=[]
+        for k,zeile in enumerate(zl or [[]]):
+            def zeichne(h,d,y,k=k,zeile=zeile):
+                if punkt and k==0:
+                    fd.raute(d,fd.X0+r,y+hh*0.45,r*0.45,fd.STIL["akzent"])
+                x=fd.X0+xt
+                for w,fett,ww in zeile:
+                    fd.T(h,x,y,w,fb if fett else f,fd.STIL["text"])
+                    x+=ww+sp
+                return y+hh
+            B.append(bst("%s %d"%(name,k+1),zeichne,abstand=0,
+                         haftet=1 if (k==0 and len(zl)>1) else 0))
+        B[-1].abstand=abstand
+        return B
+
     zeilen=messhilfe().wrap(text,f,br) or [""]
     B=[]
     for k,z in enumerate(zeilen):
@@ -1561,18 +1614,18 @@ def lehrer_bloecke(tid):
     L=[]
 
     # ── Auf einen Blick: nur Nummern und Woerter ─────────────────────────
-    kurz=["Vermutung (Abschnitt 2): richtig ist Nummer %d von %d."%(ok+1,len(o.get("predict") or [1]))]
+    kurz=["Vermutung (Abschnitt 2): richtig ist Nummer **%d** von %d."%(ok+1,len(o.get("predict") or [1]))]
     if ms:
         kurz.append("Merksatz (Abschnitt 6): "+"  ·  ".join(
-            "Lücke %d: %s"%(i+1,m["loesung"]) for i,m in enumerate(ms)))
+            "Lücke %d: **%s**"%(i+1,m["loesung"]) for i,m in enumerate(ms)))
     if ub.get("lueckensaetze"):
         kurz.append("Übung, Lückensätze: "+"  ·  ".join(
-            "%d %s"%(i+1,s["loesung"]) for i,s in enumerate(ub["lueckensaetze"])))
+            "%d **%s**"%(i+1,s["loesung"]) for i,s in enumerate(ub["lueckensaetze"])))
     if ub.get("richtigfalsch"):
         kurz.append("Übung, richtig oder falsch: "+"  ·  ".join(
-            "%d %s"%(i+1,_rf(s["stimmt"])) for i,s in enumerate(ub["richtigfalsch"])))
+            "%d **%s**"%(i+1,_rf(s["stimmt"])) for i,s in enumerate(ub["richtigfalsch"])))
     if ub.get("mc"):
-        kurz.append("Übung, Auswahlaufgabe: richtig ist Antwort %d."%(ub["mc"]["richtig"]+1))
+        kurz.append("Übung, Auswahlaufgabe: richtig ist Antwort **%d**."%(ub["mc"]["richtig"]+1))
     L.append(("Auf einen Blick",kurz))
 
     # ── ② Vermutung: alle drei, mit Verdikt und Grund ────────────────────

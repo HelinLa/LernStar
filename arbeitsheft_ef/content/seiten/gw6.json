@@ -75,7 +75,7 @@
  "aufgabe": {
   "frage": "Erkläre, warum eine Astronautin von 60 kg in der ISS schwebt, obwohl das Datenblatt dort 8,69 N/kg ausweist.",
   "zeilen": 5,
-  "loesung": "Die Feldstärke ist dort nicht null: 8,69 : 9,82 = 0,885, also rund 89 Prozent des Werts an der Erdoberfläche. Auf die Astronautin wirkt F = m · g = 60 kg · 8,69 N/kg = 521,4 N, mehr als ein halbes Kilonewton. Diese Kraft fehlt also nicht: Sie beschleunigt die Astronautin ständig zum Erdmittelpunkt hin. Station, Ausrüstung und Mensch liegen im selben Feld, werden gleich stark beschleunigt und fallen gemeinsam um die Erde herum. Zwischen Astronautin und Wand wird deshalb keine Kraft mehr übertragen, und genau dieses Ausbleiben nennt man Schwerelosigkeit. „Schwerelos“ heißt hier „frei fallend“, nicht „ohne Feld“."
+  "loesung": "**Das Feld wirkt weiter: F = 521,4 N** · **Schwerelos heisst frei fallend.** Die Kraft fehlt nicht: 60 kg mal 8,69 N/kg ergeben 521,4 N. Diese Kraft beschleunigt die Astronautin staendig zum Erdmittelpunkt hin. Station und Mensch fallen gleich schnell, deshalb drueckt sie nicht gegen die Wand."
  },
  "alltag": "Berechne mit g = G · M / r² die Feldstärke in der Reiseflughöhe eines Verkehrsflugzeugs (11 km über dem Boden, also r = 6382 km).",
  "alltagAfb": "II",

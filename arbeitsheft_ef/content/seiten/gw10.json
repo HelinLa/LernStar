@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Begründe, warum die rückläufige Schleife des Mars allein nicht zwischen den beiden Weltbildern entscheidet.",
   "zeilen": 5,
-  "loesung": "Beide Modelle sagen für den Himmel dasselbe voraus: Der geozentrischen Anordnung bescheinigt die Statuszeile, dass sich damit der Himmel gut vorhersagen ließ, der heliozentrischen, dass sie „genau denselben Himmel“ voraussagt. Die Schleife entsteht einmal durch den Epizykel, einmal dadurch, dass die Erde den Mars überholt. Eine Beobachtung, die zu beiden Modellen passt, kann keines von beiden ausschließen; sie unterscheiden sich nur im Aufwand – für den Mars zwei Kreise gegenüber einem, und das ist ein Argument, kein Beweis. Den Ausschlag gaben erst Beobachtungen, die der ptolemäische Aufbau nicht zulässt: 1610 die Jupitermonde und vor allem die Venusphasen (Galilei) – damit war dieser Aufbau widerlegt. Dass sich die Erde wirklich bewegt, war damit noch nicht gezeigt; den direkten Nachweis lieferte erst Bessel 1838 mit der Fixsternparallaxe."
+  "loesung": "**Beide Modelle sagen genau dieselbe Schleife voraus.** Steht die Erde in der Mitte, entsteht sie durch einen zusätzlichen Kreis. Steht die Sonne in der Mitte, überholt die Erde den Mars. Eine Beobachtung, die beide Modelle vorhersagen, kann keines von beiden ausschließen."
  },
  "alltag": "Ordne ein, was sich seit Kopernikus daran geändert hat, woran eine physikalische Aussage geprüft wird.",
  "alltagAfb": "II",

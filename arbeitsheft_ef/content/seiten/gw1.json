@@ -44,7 +44,7 @@
  "aufgabe": {
   "frage": "Berechne für ein Kettenkarussell mit ω = 1,2 rad/s die Bahngeschwindigkeit eines Sitzes bei r = 6,0 m und eines Sitzes bei r = 4,0 m.",
   "zeilen": 4,
-  "loesung": "Mit v = ω · r ergibt sich außen v = 1,2 rad/s · 6,0 m = 7,2 m/s und innen v = 1,2 rad/s · 4,0 m = 4,8 m/s; umgerechnet sind das 25,9 km/h gegenüber 17,3 km/h. Die Winkelgeschwindigkeit ist für beide gleich, weil die Karussellarme starr sind: Beide Sitze überstreichen in derselben Zeit denselben Winkel, und ω = Δφ/Δt enthält den Radius nicht. Nur der Bogen s = φ · r wird mit größerem Abstand von der Achse länger – deshalb ist Tobias außen tatsächlich schneller unterwegs, ohne mehr Runden zu drehen."
+  "loesung": "**Außen: v = 7,2 m/s** · **Innen: v = 4,8 m/s.** Multipliziere ω mit dem Radius: 1,2 rad/s · 6,0 m und 1,2 rad/s · 4,0 m. Beide Sitze brauchen für eine Runde gleich lang, also ist ω für beide gleich. Der äußere Sitz legt dabei einen längeren Weg zurück und ist deshalb schneller."
  },
  "alltag": "Erkläre, warum ein Punkt am Fahrradreifen eine größere Bahngeschwindigkeit hat als einer am Ritzel, obwohl sich beide gleich schnell drehen.",
  "alltagAfb": "II",

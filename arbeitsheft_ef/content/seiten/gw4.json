@@ -44,7 +44,7 @@
   "zeilen": 4,
   "komp": "S7",
   "afb": "II",
-  "loesung": "Auf der Ursprungsgeraden gilt F = k · 1/r². Für r = 10 ist 1/r² = 1/100 = 0,0100, also F = 200,000 Einheiten · 0,0100 = 2,00 Einheiten. Zur Probe reicht die letzte Tabellenzeile: Bei r = 5 stehen dort 8,00 Einheiten, der doppelte Abstand bringt ein Viertel davon, und 8,00 : 4 = 2,00 Einheiten. Aufnehmen lässt sich dieser Punkt nicht, weil der Regler „Abstand“ bei 5 endet; r = 10 ist gar nicht einstellbar. Der Zahlenwert allein verrät das nicht: 2,00 Einheiten stehen sehr wohl in der Tabelle, sobald man m₁ = 1 kg, m₂ = 1 kg und r = 2 einstellt – ein Messpunkt ist erst durch alle drei Größen festgelegt. Die 2,00 Einheiten bei r = 10 sind deshalb eine Vorhersage aus der Ausgleichsgeraden, keine Messung, und sie gilt nur, solange die Gerade auch außerhalb des gemessenen Bereichs weiterläuft. Genau darin liegt der Gewinn der Linearisierung: Eine Gerade lässt sich verlängern, eine Kurve nicht ohne Weiteres."
+  "loesung": "**F = 2,00 Einheiten.** Setze den Abstand in die Gerade ein: 1/r² ist 0,0100, mal 200,000 Einheiten. Zur Probe: Bei r = 5 stehen 8,00 Einheiten, doppelter Abstand bringt ein Viertel davon. Der Regler endet bei 5, deshalb ist der Wert eine Vorhersage und keine Messung."
  },
  "alltag": "Auf der ISS ist der Abstand zum Erdmittelpunkt rund 1,06-mal so groß wie am Boden. Berechne mit F ~ 1/r², auf welchen Anteil der Anziehung das führt.",
  "alltagAfb": "II",

@@ -44,7 +44,7 @@
  "aufgabe": {
   "frage": "Berechne, mit welcher Beschleunigung die Lampe nach einmal „– N“ zu sinken beginnt (g = 9,81 N/kg).",
   "zeilen": 4,
-  "loesung": "m = F_G / g = 5 N / 9,81 N/kg = 0,51 kg. Nach „– N“ zeigt das Statusfeld die Haltekraft 4 N, die Gewichtskraft weiter 5 N und die Gesamtkraft 1 N nach unten. Vorzeichenbehaftet ist F_res = F_H − F_G = 4 N − 5 N = −1 N; das Minuszeichen ist die Richtung nach unten, der Betrag ist |F_res| = 1 N. Aus F_res = m · a folgt a = |F_res| / m = 1 N / 0,51 kg = 1,96 N/kg = 1,96 m/s², denn 1 N = 1 kg · m/s²; die Beschleunigung ist nach unten gerichtet. Beschleunigt wird die Lampe also nicht von der Gewichtskraft 5 N – mit ihr allein käme man auf rund 9,8 m/s², das Fünffache –, sondern allein von der resultierenden Kraft 1 N. Im Ausgangszustand ist F_res = 0 N, also a = 0 m/s²: Die Lampe bleibt in Ruhe, obwohl an ihr gezogen wird."
+  "loesung": "**a = 1,96 m/s² nach unten.** Die Masse ist 5 N : 9,81 N/kg = 0,51 kg. Nach unten wirken 5 N, nach oben nur noch 4 N. Teile den Rest von 1 N durch 0,51 kg, denn nur er beschleunigt."
  },
  "alltag": "Erkläre, welche zwei Kräfte an einem Buch auf deiner ausgestreckten Hand angreifen und warum ihre Summe null ist.",
  "alltagAfb": "II",

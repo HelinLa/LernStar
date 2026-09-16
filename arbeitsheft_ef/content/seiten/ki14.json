@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Bestimme aus den Schiebewegen 0,07 m, 0,28 m, 0,63 m und 1,12 m bei 2, 4, 6 und 8 m/s über E = F · s und die Auftragung über v² die Masse der Kugel.",
   "zeilen": 5,
-  "loesung": "Aus E = F · s mit F = 200 N folgen 14 J, 56 J, 126 J und 224 J. Die zugehörigen Quadrate sind 4 m²/s², 16 m²/s², 36 m²/s² und 64 m²/s². Über v² aufgetragen liefert jedes Paar denselben Quotienten: 14 J : 4 m²/s² = 3,5 kg, 56 : 16 = 3,5, 126 : 36 = 3,5 und 224 : 64 = 3,5. Die vier Punkte liegen also auf einer Ursprungsgeraden mit der Steigung k = 3,5 kg, und aus m = 2 · k folgt m = 7,0 kg. Über v aufgetragen wären dieselben Werte eine Parabel gewesen, aus der sich nichts ablesen lässt. Die Probe am Bildschirm bestätigt das Ergebnis: Mit „Masse m“ auf 7 kg und „Tempo v“ auf 4 m/s meldet das Statusfeld E = ½ · 7 · 4² = 56 J und einen Schiebeweg von 0,28 m – genau der zweite Messwert der fremden Reihe."
+  "loesung": "**m = 7,0 kg.** Rechne jede Energie mit E = F · s, zum Beispiel 200 N · 0,28 m = 56 J. Trage die Energien über v² auf, dann liegen alle vier Punkte auf einer Geraden mit der Steigung 3,5 kg. Die Masse ist das Doppelte dieser Steigung."
  },
  "alltag": "Erkläre mit s = E / F, warum der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst.",
  "alltagAfb": "II",

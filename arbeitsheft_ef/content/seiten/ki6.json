@@ -42,7 +42,7 @@
  "aufgabe": {
   "frage": "Berechne aus der Steigung k = 0,2039 s²/m der Geraden t_F² über h den Ortsfaktor g.",
   "zeilen": 5,
-  "loesung": "Aus t_F² = (2/g) · h folgt g = 2/k = 2 : 0,2039 s²/m = 9,809 m/s²; die Simulation nennt daneben den Literaturwert 9,810 m/s² und eine Abweichung von 0,01 %. Der Achsenabschnitt der Waagerechten ist die Fallzeit selbst: b = t_F = √(2h/g). Quadriert ergibt das b² = 2h/g, also h = g · b²/2 = 9,81 m/s² · (2,0193 s)² : 2 = 20,00 m – genau die eingestellte Abwurfhöhe. Die Forscherfrage beantwortet aber erst die dritte Auftragung, denn nur dort steht die gefragte Größe auf der x-Achse: Acht Messpunkte von v₀ = 2 m/s bis 20 m/s liegen auf einer Geraden mit der Steigung 0,0000 – Steigung null heißt, dass sich t_F beim Verstellen von v₀ nicht ändert. Die ersten beiden Auftragungen zeigen dagegen nur, wie t_F von h abhängt; über v₀ sagen sie nichts, weil dort in allen neun Zeilen v₀ = 8 m/s steht."
+  "loesung": "**g = 9,809 m/s².** Die Formel t_F² = (2/g) · h zeigt: Die Steigung ist 2/g. Teile also 2 durch die Steigung 0,2039 s²/m. In der Steigung stecken alle Messpunkte, darum brauchst du keine einzelne Zeile."
  },
  "alltag": "Zwei Münzen fallen von der Tischkante, die eine fliegt weit hinaus, die andere kippt nur. Erkläre, warum nur ein Aufschlag zu hören ist.",
  "alltagAfb": "II",

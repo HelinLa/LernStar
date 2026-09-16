@@ -80,7 +80,7 @@
  "aufgabe": {
   "frage": "Berechne aus g = 9,81 N/kg, dem Erdradius R = 6,37 · 10⁶ m und G = 6,674 · 10⁻¹¹ N·m²/kg² die Masse der Erde.",
   "zeilen": 5,
-  "loesung": "Aus g = G · M / R² folgt M = g · R² / G. Mit R² = (6,37 · 10⁶ m)² = 4,058 · 10¹³ m² ist g · R² = 9,81 N/kg · 4,058 · 10¹³ m² = 3,981 · 10¹⁴ N·m²/kg. Division durch G ergibt M = 3,981 · 10¹⁴ N·m²/kg : (6,674 · 10⁻¹¹ N·m²/kg²) = 5,96 · 10²⁴ kg – die Einheiten kürzen sich zu Kilogramm. Tabellenwerke geben 5,972 · 10²⁴ kg an; die 0,1 Prozent Unterschied stammen aus den gerundeten Werten für g und R. Der Ortsfaktor g und der Erdradius R waren lange vor 1798 bekannt, doch ohne G liefert die Gleichung nur das Produkt G · M. Die Drehwaage trennt die beiden Faktoren: Sie misst die Anziehung zwischen zwei bekannten Massen und macht damit G zugänglich. Erst dieser Erkenntnisschritt macht aus einer alten Gleichung eine Zahl für die Erdmasse."
+  "loesung": "**M = 5,96 · 10²⁴ kg.** Stelle g = G · M / R² um zu M = g · R² / G. Setze 9,81 N/kg, den quadrierten Erdradius und G ein, die Einheiten kuerzen sich zu Kilogramm. Ohne G aus der Drehwaage bekommst du nur das Produkt G · M, nie die Masse allein."
  },
  "alltag": "Beurteile die Zeitungsüberschrift „Cavendish wog die Erde“ mit dem, was in dem Gartenhaus wirklich gemessen wurde.",
  "alltagAfb": "III",

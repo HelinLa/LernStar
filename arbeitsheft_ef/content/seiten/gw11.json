@@ -75,7 +75,7 @@
  "aufgabe": {
   "frage": "Berechne aus den Bahndaten der vierten Zeile mit a = 4 · π² · r / T² die Zentripetalbeschleunigung.",
   "zeilen": 5,
-  "loesung": "Mit r = 6771 km = 6,771 · 10⁶ m und T = 5545 s gilt 4 · π² · r = 39,48 · 6,771 · 10⁶ m = 2,673 · 10⁸ m sowie T² = (5545 s)² = 3,0747 · 10⁷ s². Damit ist a = 2,673 · 10⁸ m : 3,0747 · 10⁷ s² = 8,69 m/s². Dieser Wert stimmt mit dem Erdfeld in dieser Höhe überein: Die Feldstärke 8,69 N/kg entspricht einer Beschleunigung von 8,69 m/s². Die Station wird angezogen und fällt mit genau dieser Beschleunigung ständig an der Erde vorbei. Haltbar sind deshalb die Aussagen von Schulbuch und Fachartikel; das Netzvideo ist widerlegt, und der Zeitungsartikel nennt keine Zahl – prüfen lässt er sich nur der Richtung nach, und auch dort hält er nicht stand. Der Fachartikel steht trotz gleichem Wert über dem Schulbuch, weil er die Messdaten offenlegt und begutachtet wurde."
+  "loesung": "**a = 8,69 m/s².** Setze r = 6,771 · 10⁶ m und T = 5545 s in a = 4 · π² · r / T² ein. Teile dann 2,673 · 10⁸ m durch 3,0747 · 10⁷ s². So stark zieht das Erdfeld in dieser Höhe: 8,69 N/kg sind 8,69 m/s²."
  },
  "alltag": "Prüfe eine Aussage über Schwerelosigkeit aus einem Erklärvideo an den vier Kriterien des Datenblatts.",
  "alltagAfb": "III",

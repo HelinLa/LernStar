@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Bestimme aus der Steigung k = 12,500 N/m einer E-s²-Geraden die Federkonstante.",
   "zeilen": 5,
-  "loesung": "Aus der linearisierten Auftragung folgt die Federkonstante durch Verdoppeln: D = 2 · k = 2 · 12,500 N/m = 25,000 N/m, also D = 25 N/m. Diesen Wert kann der Regler „Federkonstante D“ einstellen, er läuft in Schritten von 5 N/m von 5 bis 60. Dann s = 24 cm = 0,24 m. Kraft: F = D · s = 25 N/m · 0,24 m = 6,00 N. Spannenergie: E = ½ · D · s² = 0,5 · 25 N/m · (0,24 m)² = 0,5 · 25 · 0,0576 = 0,720 J. Die Gegenprobe über die Fläche gibt dieselbe Zahl: ½ · Grundseite · Höhe = 0,5 · 0,24 m · 6,00 N = 0,720 J. Nachprüfen am Bildschirm: Regler auf D = 25 N/m und s = 24 cm stellen, dann meldet das Feld „Kraft, Fläche, Energie“ genau 6,00 N und 0,720 J. Wer die Rückrechnung selbst sehen will, drückt „Messreihe automatisch aufnehmen“ und „E über s² auftragen“: Dort steht y = 12,500·x bei R² = 1,0000 und darunter E = ½ · D · s², also D = 2 · k = 2 · 12,500 N/m = 25,000 N/m bei 0,00 % Abweichung. Wer stattdessen F · s rechnet, kommt auf 6,00 N · 0,24 m = 1,44 J, also genau das Doppelte – das ist die Rechteckfläche, nicht das Dreieck. Nach „Loslassen“ nennt die Statuszeile v = √(2 · 0,720 J / 0,50 kg) = 1,70 m/s."
+  "loesung": "**D = 25 N/m.** Verdopple die Steigung der Geraden: D = 2 · 12,500 N/m. Das musst du tun, weil in E = ½ · D · s² der Faktor ½ steckt. Die Steigung ist also nur die halbe Federkonstante."
  },
  "alltag": "Bestimme die Federkonstante der Feder aus einem Druckkugelschreiber, indem du sie auf einer Küchenwaage um 2, 4, 6 und 8 mm zusammendrückst.",
  "alltagAfb": "II",

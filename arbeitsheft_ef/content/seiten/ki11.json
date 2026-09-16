@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Berechne aus D = 250 N/m und der Vorspannung s0 = 8,0 cm die Höchstkraft F = D · s0 und daraus a1 und a2 für m1 = 1 kg und m2 = 5 kg.",
   "zeilen": 5,
-  "loesung": "Aus s0 = 8,0 cm = 0,080 m folgt F = D · s0 = 250 N/m · 0,080 m = 20,00 N – genau der Höchstwert, den das Statusfeld nennt (F1 = -20,00 N, F2 = +20,00 N; die Vorzeichen geben nur die Richtung an). Mit F = m · a wird daraus a1 = 20,00 N : 1 kg = 20,00 m/s² und a2 = 20,00 N : 5 kg = 4,00 m/s², also a1 : a2 = 20,00 : 4,00 = 5 : 1 = m2 : m1 – die Werte, die die Simulation für diese Einstellung anzeigt. Dieselbe Kraft erfahren beide Wagen, weil es nur eine Feder gibt und diese an ihren beiden Enden mit demselben Betrag drückt; in F = D · s0 steht keine Masse. Verschieden sind allein die Beschleunigungen, denn derselbe Kraftbetrag wirkt auf verschieden große Massen."
+  "loesung": "**F = 20,00 N** · **a1 = 20,00 m/s²** · **a2 = 4,00 m/s².** Die Feder drückt mit F = 250 N/m · 0,080 m = 20,00 N. Teile diese Kraft durch jede Masse: 20,00 N durch 1 kg, dann durch 5 kg. Dieselbe Kraft beschleunigt die kleine Masse stärker als die große."
  },
  "alltag": "Erkläre mit dem Wechselwirkungsprinzip, warum sich beim Aussteigen das Boot vom Steg wegschiebt.",
  "alltagAfb": "II",

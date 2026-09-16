@@ -42,7 +42,7 @@
  "aufgabe": {
   "frage": "Berechne aus deinem Tabellenwert bei r = 0,80 m über m = F_z / a_z mit a_z = 71,06 m/s² die Masse.",
   "zeilen": 4,
-  "loesung": "In unserem Durchgang stand dort 35,65 N: m = F_z / a_z = 35,65 N : 71,06 m/s² = 0,5017 kg. Eingestellt sind 0,500 kg, die Abweichung beträgt also (0,5017 kg − 0,500 kg) : 0,500 kg = 0,0034, das sind 0,34 %. Die Ausgleichsgerade über acht Messwerte kam auf 0,500 kg mit 0,07 % – in diesem Durchgang rund fünfmal näher am eingestellten Wert; im Mittel gewinnt die Ausgleichsgerade etwa den Faktor zwei bis drei. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose von etwa 1,5 %; über acht Punkte mittelt sie sich zum großen Teil heraus – am stärksten wirken dabei die Punkte mit großem Radius. Eine Einzelmessung kann den Wert zufällig auch besser treffen; verlassen kann man sich darauf nicht."
+  "loesung": "**m = 0,5017 kg.** Teile deinen Tabellenwert 35,65 N durch die Beschleunigung 71,06 m/s². Eingestellt sind 0,500 kg, dein Wert liegt also knapp daneben. Ein einzelner Messwert streut stark, die Gerade aus acht Punkten trifft genauer."
  },
  "alltag": "Berechne aus 1400 Umdrehungen je Minute die Umlauffrequenz f in Hz und daraus die Kraft auf ein Wäschestück von 0,20 kg bei r = 0,24 m.",
  "alltagAfb": "II",

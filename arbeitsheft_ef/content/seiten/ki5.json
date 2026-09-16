@@ -44,7 +44,7 @@
  "aufgabe": {
   "frage": "Bestimme aus den Tabellenzeilen (0,64 s | 2,06 m) und (2,56 s | 32,35 m) die Steigung von s über t² und daraus g.",
   "zeilen": 4,
-  "loesung": "Zu den beiden Zeiten gehören t² = (0,64 s)² = 0,4096 s² und t² = (2,56 s)² = 6,5536 s². Die Steigung durch diese zwei Punkte ist k = (32,35 m − 2,06 m) / (6,5536 s² − 0,4096 s²) = 30,29 m / 6,1440 s² = 4,93 m/s². Wegen s = ½ · g · t² ist k = g/2, also g = 2 · 4,93 m/s² = 9,86 m/s²; die Ausgleichsgerade über alle neun Punkte liefert mit 4,942 m/s² etwas mehr. Dieselben zwei Zeilen über v gerechnet: k = (25,11 m/s − 6,28 m/s) / (2,56 s − 0,64 s) = 18,83 m/s / 1,92 s = 9,81 m/s², und hier ist k schon g. Die Differenz von 0,05 m/s² fällt in jedem Lauf gleich aus und zeigt immer in dieselbe Richtung. Die Simulation summiert den Weg in Schritten von 0,016 s mit der Geschwindigkeit am Schrittende auf und erhält dadurch zu viel Weg, während v in jedem Schritt genau um g · Δt wächst. Nur die aus s gewonnene Gerade ist davon betroffen."
+  "loesung": "**k = 4,93 m/s² · g = 9,86 m/s².** Quadriere zuerst die Zeiten: 0,4096 s² und 6,5536 s². Teile dann den Unterschied der Wege durch den Unterschied der Quadrate: 30,29 m durch 6,1440 s². Die Steigung ist halb so groß wie g, darum verdoppelst du sie."
  },
  "alltag": "Computerspiele rechnen Bewegungen in Zeitschritten. Erkläre, warum ein zu großer Rechenschritt den berechneten Weg verfälscht.",
  "alltagAfb": "II",

@@ -85,7 +85,7 @@
  "aufgabe": {
   "frage": "Berechne die große Halbachse des Uranus aus seiner Umlaufzeit T = 84,0 Jahre mit T²/a³ = 1,00, T in Jahren und a in AE.",
   "zeilen": 5,
-  "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Mit T = 84,0 Jahren ist T² = 7056, und die dritte Wurzel daraus ergibt a = 19,18. Die große Halbachse des Uranus beträgt also rund 19,2 AE, gut das 19-Fache des Erdabstands und etwa das Doppelte der Saturnbahn (9,537 AE). Die Probe bestätigt es: 84,0²/19,18³ = 7056/7055,8 = 1,00. Bemerkenswert ist, wie dieser Wert zustande kommt – gegeben war allein die Zeit für einen Umlauf, der Bahnradius ist vorhergesagt. Ein Tabellenwerk gibt 19,19 AE an."
+  "loesung": "**a = 19,2 AE.** Aus T²/a³ = 1,00 wird a³ = T². Rechne 84,0² = 7056 und zieh daraus die dritte Wurzel. Die Probe stimmt: 7056 geteilt durch 19,18³ ergibt 1,00."
  },
  "alltag": "Ein Fernsehsatellit umläuft die Erde in 1,00 Tag, der Mond in 27,3 Tagen bei einer Halbachse von 384 000 km. Berechne mit T²/a³ = konstant den Bahnradius des Satelliten.",
  "alltagAfb": "II",

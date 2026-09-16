@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Berechne das √2-fache des angezeigten Kreiswerts 29,8 km/s und halte es gegen die 42,1 km/s der Statuszeile.",
   "zeilen": 4,
-  "loesung": "√2 · 29,8 km/s = 1,414 · 29,8 km/s = 42,14 km/s, gerundet 42,1 km/s. Das ist genau der Grenzwert, den die Statuszeile nennt. Der Zusammenhang ist kein Zufall: Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen ist v = √(2·G·M/r) nötig. Beide Ausdrücke unterscheiden sich nur um den Faktor √2, und zwar bei jedem Abstand r."
+  "loesung": "**√2 · 29,8 km/s = 42,1 km/s.** Genau diesen Wert nennt die Statuszeile. Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen gilt v = √(2·G·M/r). Die beiden Formeln unterscheiden sich nur um √2, und das bei jedem Abstand."
  },
  "alltag": "Erkläre mit dem ständigen Vorbeifallen, warum eine Raumstation eine bestimmte Bahngeschwindigkeit braucht und nicht langsamer kreisen darf.",
  "alltagAfb": "II",

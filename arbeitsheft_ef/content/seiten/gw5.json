@@ -42,7 +42,7 @@
  "aufgabe": {
   "frage": "Berechne mit den Ortsfaktoren der Simulation (Mond 1,6 N/kg, Erde 9,8 N/kg) die Gewichtskraft einer Person von 75 kg.",
   "zeilen": 4,
-  "loesung": "Es gilt F = m · g. Mond: F = 75 kg · 1,6 N/kg = 120 N. Erde: F = 75 kg · 9,8 N/kg = 735 N. Das Verhältnis 735 N / 120 N = 6,125 ist genau das Verhältnis 9,8 / 1,6 der Ortsfaktoren. Wer statt mit dem gerundeten Wert der Simulation mit dem gemessenen Ortsfaktor 9,81 N/kg rechnet, erhält 735,75 N und das Verhältnis 6,13 – dieselbe Aussage, nur eine Stelle genauer. Beide Male steht dieselbe Masse 75 kg; verändert wurde allein g – eine Größe des Ortes, nicht der Person."
+  "loesung": "**Mond: F = 120 N** · **Erde: F = 735 N.** Multipliziere die Masse mit dem Ortsfaktor: 75 kg mal 1,6 N/kg und 75 kg mal 9,8 N/kg. Nur der Ortsfaktor g wechselt, denn er gehoert zum Ort und nicht zur Person. Das Verhaeltnis 735 N zu 120 N ist 6,125, genau das Verhaeltnis der Ortsfaktoren."
  },
  "alltag": "Erkläre, was eine Küchenwaage auf dem Mond für ein Kilogramm Mehl anzeigen würde.",
  "alltagAfb": "II",

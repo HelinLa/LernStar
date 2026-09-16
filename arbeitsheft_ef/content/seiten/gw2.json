@@ -42,7 +42,7 @@
  "aufgabe": {
   "frage": "Berechne für m = 1,00 kg, r = 1,00 m und f = 2,00 Hz nacheinander T, ω, v, a_z und F_z.",
   "zeilen": 5,
-  "loesung": "T = 1/f = 1 / 2,00 Hz = 0,500 s. ω = 2·π·f = 2·π·2,00 Hz = 12,5664 rad/s. v = ω·r = 12,5664 rad/s · 1,00 m = 12,56640 m/s. a_z = v²/r = (12,56640 m/s)² / 1,00 m = 157,9 m/s²; die Probe über a_z = ω²·r = (12,5664 rad/s)² · 1,00 m ergibt denselben Wert. F_z = m · a_z = 1,00 kg · 157,9 m/s² = 157,9 N. Alle fünf Zahlen stehen so auch im Feld „Alle Größen der Kreisbewegung“; dass der Zahlenwert von a_z und F_z hier gleich ist – bei verschiedenen Einheiten, m/s² und N –, liegt allein an m = 1,00 kg."
+  "loesung": "**T = 0,500 s** · **ω = 12,5664 rad/s** · **v = 12,56640 m/s** · **a_z = 157,9 m/s²** · **F_z = 157,9 N.** Rechne der Reihe nach: T = 1/f, dann ω = 2 · π · f, dann v = ω · r. Danach bekommst du a_z = v²/r und daraus F_z = m · a_z. Dass a_z und F_z dieselbe Zahl haben, liegt nur an m = 1,00 kg."
  },
  "alltag": "Erkläre, in welche Richtung die Kraft auf dich wirkt, während das Auto abbiegt.",
  "alltagAfb": "II",

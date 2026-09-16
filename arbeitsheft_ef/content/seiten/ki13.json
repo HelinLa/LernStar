@@ -42,7 +42,7 @@
  "aufgabe": {
   "frage": "Berechne die Leistung für alle drei Vorgänge, wenn Tobias für jeden 2,5 s braucht.",
   "zeilen": 5,
-  "loesung": "Es gilt P = W / t. Schieben: W = 100 N · 4 m = 400 J, also P = 400 J / 2,5 s = 160 W. Waagerecht tragen: W = 0 J, also P = 0 J / 2,5 s = 0 W. Hochheben: mit dem angezeigten Wert W = 392 J folgt P = 392 J / 2,5 s = 156,8 W; rechnet man mit dem ungerundeten Wert 20 kg · 9,81 N/kg · 2,0 m = 392,4 J, sind es 156,96 W, also rund 157 W. Beim Tragen zeigt die Haltekraft von 196 N senkrecht nach oben, der Weg nach vorn – der Winkel beträgt 90°. Die Komponente längs des Weges ist 196 N · cos(90°) = 0 N, damit W = 0 N · 4 m = 0 J und P = 0 J / 2,5 s = 0 W. Die Anstrengung ist echt, sie steckt in der Muskelarbeit des Trägers; an der Kiste wird sie nicht als Arbeit wirksam, weil die Kiste ihre Höhe nicht ändert."
+  "loesung": "**Schieben: P = 160 W** · **Tragen: P = 0 W** · **Hochheben: P = 156,8 W.** Leistung heißt Arbeit durch Zeit: teile 400 J durch 2,5 s, dann 392 J durch 2,5 s. Beim Tragen bleibt die Kiste gleich hoch und geht nur nach vorn. Dabei wird an ihr keine Arbeit verrichtet, also ist die Leistung 0 W."
  },
  "alltag": "Berechne aus der Masse deines Schulrucksacks, der Höhe einer Treppe und der gestoppten Zeit deine Leistung in Watt.",
  "alltagAfb": "II",

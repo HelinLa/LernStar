@@ -43,7 +43,7 @@
  "aufgabe": {
   "frage": "Bestimme aus den Stopps (1,00 s | 2,50 m) und (1,40 s | 4,90 m) jeweils s/t² und daraus die Beschleunigung.",
   "zeilen": 5,
-  "loesung": "Erster Stopp: t² = (1,00 s)² = 1,00 s², also s/t² = 2,50 m : 1,00 s² = 2,50 m/s². Zweiter Stopp: t² = (1,40 s)² = 1,96 s², also s/t² = 4,90 m : 1,96 s² = 2,50 m/s². Beide Stopps liefern denselben Quotienten – genau das heißt, dass die Punkte im s-t²-Diagramm auf einer Ursprungsgeraden liegen. Aus s = ½ · a · t² folgt s/t² = a/2; die Steigung ist also die halbe Beschleunigung, und es ist a = 2 · 2,50 m/s² = 5,00 m/s² – der eingestellte Wert. Mit s/t dagegen: 2,50 m : 1,00 s = 2,50 m/s und 4,90 m : 1,40 s = 3,50 m/s. Dieser Quotient ist die mittlere Geschwindigkeit seit dem Start, und die wächst mit, weil der Wagen immer schneller wird; s/t ist deshalb keine feste Zahl der Fahrt, sondern hängt davon ab, wann gestoppt wurde. Erst das Quadrieren der Zeit macht den Quotienten konstant und liefert damit einen Wert, der die ganze Fahrt beschreibt."
+  "loesung": "**s/t² = 2,50 m/s² · a = 5,00 m/s².** Quadriere die Zeit und teile den Weg dadurch: 2,50 m durch 1,00 s². Der zweite Stopp gibt 4,90 m durch 1,96 s² und dieselbe Zahl. Dieser Wert ist die halbe Beschleunigung, darum verdoppelst du ihn."
  },
  "alltag": "Für ein Fadenpendel findest du Tabellen von Pendellänge l und Schwingungsdauer T. Trage T² über l auf.",
  "alltagAfb": "II",

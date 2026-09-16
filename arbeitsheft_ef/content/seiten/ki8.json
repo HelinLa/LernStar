@@ -41,9 +41,9 @@
  ],
  "beobachtung": "Bei F = 0 N und v₀ = 20 m/s meldet das weiße Kästchen v₀ = 20 m/s, F = 0 N und v = 20,0 m/s; nach einer Weile steht dort unverändert v = 20,0 m/s. Die Linie v(t) läuft waagerecht ganz oben am Rand des Diagramms. Über der Fahrbahn steht in Grün „F = 0 → v bleibt konstant! (Trägheit)“. Mit v₀ = 5 m/s, 12 m/s und 40 m/s ist es dasselbe: v bleibt bei 5,0 m/s, bei 12,0 m/s und bei 40,0 m/s, und die Linie v(t) liegt jedes Mal waagerecht am oberen Rand. Von selbst wird der Wagen also nicht langsamer. Dass alle vier Bilder gleich aussehen, liegt am Maßstab: Das Diagramm skaliert auf den größten Messwert, die konstante Linie landet deshalb immer oben. Wie schnell der Wagen ist, verrät nur das weiße Kästchen.",
  "aufgabe": {
-  "frage": "Berechne den Weg, den ein Wagen mit 20 m/s in 12 s zurücklegt, an dem eine Antriebskraft von 6 N nach vorn und eine Reibungskraft von 6 N nach hinten wirken.",
-  "zeilen": 4,
-  "loesung": "Beide Kräfte greifen an derselben Wirkungslinie an, aber in Gegenrichtung. Für die resultierende Kraft gilt deshalb F_res = 6 N − 6 N = 0 N. Nach dem ersten Newton'schen Gesetz ändert sich der Bewegungszustand dann nicht: v bleibt 20 m/s. Genau dieser Sonderfall ist am Bildschirm eingestellt, wenn der Regler „Externe Kraft F“ auf 0 N steht – das weiße Kästchen meldet dann dauerhaft v = 20,0 m/s. Weil v konstant ist, ist die Bewegung gleichförmig, und es gilt s = v · t = 20 m/s · 12 s = 240 m. Entscheidend ist also nicht, dass keine Kraft wirkt – es wirken zwei –, sondern dass ihre Summe null ist."
+  "frage": "Am Wagen heben sich Antrieb und Reibung auf, er fährt mit 20 m/s weiter. Stelle s = v · t nach t um. Rechne damit aus, wie lange er für 240 m braucht, und dann, wie weit er in 12 s kommt.",
+  "zeilen": 5,
+  "loesung": "**t = s / v.** Für 240 m: t = 240 m : 20 m/s = **12 s**. Umgekehrt s = v · t = 20 m/s · 12 s = **240 m**. Beim Umstellen wird v auf beiden Seiten geteilt – die Einheit geht mit: m : (m/s) = s. Das ist die Probe, ob richtig umgestellt wurde."
  },
  "alltag": "Erkläre, warum die Summe der Kräfte an deinem Rucksack beim Bremsen nahezu null bleibt und er deshalb nach vorn rutscht.",
  "alltagAfb": "II",

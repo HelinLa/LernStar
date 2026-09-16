@@ -43,7 +43,7 @@
   "aufgabe": {
    "frage": "Bestimme Δs/Δt aus zwei Zeilen deiner Stoppuhr-Reihe und danach aus zwei ganz anderen Zeilen.",
    "zeilen": 4,
-   "loesung": "Zwei Zeilen einer Reihe bei 4,0 m/s, zum Beispiel (0,92 s | 3,68 m) und (2,24 s | 8,96 m): Δs = 8,96 m − 3,68 m = 5,28 m, Δt = 2,24 s − 0,92 s = 1,32 s, also Δs/Δt = 5,28 m / 1,32 s = 4,00 m/s. Ein anderes Paar derselben Reihe, etwa (1,30 s | 5,20 m) und (1,76 s | 7,04 m), ergibt Δs = 1,84 m und Δt = 0,46 s und wieder 4,00 m/s. Der Grund: Für jeden Punkt der Ursprungsgeraden gilt s = v · t, für zwei Punkte also s₂ − s₁ = v · (t₂ − t₁). Kürzt man durch t₂ − t₁, bleibt v = Δs/Δt; die Zeitdifferenz fällt heraus. Deshalb hängt das Ergebnis weder von der Wahl der beiden Zeilen ab noch davon, wann gestoppt wurde. Genau diese Zahl gibt die Simulation als „Geschwindigkeit v = Steigung der Ausgleichsgeraden“ aus."
+   "loesung": "**Δs/Δt = 4,00 m/s.** Teile den Weg durch die Zeit: 5,28 m in 1,32 s. Zwei andere Zeilen geben 1,84 m in 0,46 s und wieder 4,00 m/s. So muss es sein: Der Wagen fährt die ganze Zeit gleich schnell."
   },
   "alltag": "In einer Lauf-App ist Läuferin A nach 100 s bei 200 m und nach 400 s bei 800 m. Bestimme ihre Geschwindigkeit in Metern je Sekunde.",
   "alltagAfb": "II",
@@ -100,9 +100,51 @@
   ],
   "beobachtung": "Wann du stoppst, entscheidest du selbst; die Uhr springt in Schritten von 0,02 s, Wegmesser und Tacho werden aus der angezeigten Zeit gebildet. Ein Durchgang bei a = 2,0 m/s² lieferte fünf Zeilen: t = 0,34 s mit s = 0,12 m und v = 0,68 m/s; t = 0,88 s mit s = 0,77 m und v = 1,76 m/s; t = 1,46 s mit s = 2,13 m und v = 2,92 m/s; t = 1,92 s mit s = 3,69 m und v = 3,84 m/s; t = 2,38 s mit s = 5,66 m und v = 4,76 m/s. Die gerechnete letzte Spalte bleibt in der ersten Zeile leer und zeigt danach viermal denselben Wert 2,00 m/s². Zu „t → s“ meldet die Auswertung: „Keine Gerade, sondern eine Parabel: s ~ t².“ – eine Zahl für a ist daraus nicht zu holen. Zu „t → v“ steht dort „Stoppuhr · a = 2,0 m/s² · 5 Messwerte“, darunter y = 2,000·x, R² = 1,0000 · erwartet: 2,000 und schließlich „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s² · Literatur: 2,00“ mit der Abweichung 0,00 %. Zu „t → a“ ergibt sich aus vier Punkten y = 0,0000·x + 2,0000, also eine Waagerechte auf der Höhe 2,00 m/s².",
   "aufgabe": {
-   "frage": "Berechne Δv/Δt aus den Wertepaaren (0,34 s | 0,68 m/s) und (2,38 s | 4,76 m/s).",
-   "zeilen": 5,
-   "loesung": "Erstes Paar: Δv = 4,76 m/s − 0,68 m/s = 4,08 m/s und Δt = 2,38 s − 0,34 s = 2,04 s, also Δv/Δt = 4,08 m/s : 2,04 s = 2,00 m/s². Zweites Paar: Δv = 4,76 m/s − 3,84 m/s = 0,92 m/s und Δt = 2,38 s − 1,92 s = 0,46 s, also 0,92 m/s : 0,46 s = 2,00 m/s². Die beiden Paare liegen weit auseinander und liefern dennoch dieselbe Zahl; genau das steht auch in der a-Spalte, dort 2,00 in jeder Zeile ab der zweiten. Δv/Δt ist die Steigung der Verbindungsgeraden zweier Punkte. Ist sie für jedes Paar gleich, so liegen alle Punkte auf einer einzigen Geraden, und weil der Wagen aus der Ruhe startet, geht diese Gerade durch den Ursprung. Eine Ursprungsgerade mit der Steigung a heißt v/t = a für jeden Punkt; nach v umgestellt ergibt das v = a · t. Die Ausgleichsgerade bestätigt es mit y = 2,000·x bei R² = 1,0000."
+   "frage": "Mira läuft, bleibt stehen und läuft schneller weiter. Das t-s-Diagramm zeigt ihre drei Abschnitte. Lies für jeden Abschnitt die Steigung ab und zeichne daraus das t-v-Diagramm in das leere Achsenkreuz.",
+   "zeilen": 3,
+   "gitter": [
+    {
+     "titel": "Gegeben: t-s-Diagramm",
+     "xl": "t in s",
+     "yl": "s in m",
+     "xmax": 10,
+     "ymax": 40,
+     "xschritt": 2,
+     "yschritt": 10,
+     "hoehe": 200,
+     "kurve": [
+      [
+       0,
+       0
+      ],
+      [
+       4,
+       12
+      ],
+      [
+       6,
+       12
+      ],
+      [
+       10,
+       32
+      ]
+     ],
+     "name": "Achsenkreuz gegeben"
+    },
+    {
+     "titel": "Zeichne hier: t-v-Diagramm",
+     "xl": "t in s",
+     "yl": "v in m/s",
+     "xmax": 10,
+     "ymax": 6,
+     "xschritt": 2,
+     "yschritt": 1,
+     "hoehe": 200,
+     "name": "Achsenkreuz leer"
+    }
+   ],
+   "loesung": "**0 bis 4 s: v = 3 m/s · 4 bis 6 s: v = 0 · 6 bis 10 s: v = 5 m/s.** Die Steigung des t-s-Diagramms IST die Geschwindigkeit: 12 m in 4 s sind 3 m/s, dann bleibt s gleich, dann 20 m in 4 s, also 5 m/s. Im t-v-Diagramm entstehen daraus drei waagerechte Stufen – nicht drei schräge Linien. Wo das t-s-Diagramm einen Knick hat, springt die Stufe."
   },
   "alltag": "Auf dem Poster für „Jugend forscht“ ist nur für ein einziges Diagramm Platz. Begründe, welche der drei Auftragungen du dafür wählst.",
   "alltagAfb": "II",
@@ -163,7 +205,7 @@
   "aufgabe": {
    "frage": "Bestimme aus den Stopps (1,00 s | 2,50 m) und (1,40 s | 4,90 m) jeweils s/t² und daraus die Beschleunigung.",
    "zeilen": 5,
-   "loesung": "Erster Stopp: t² = (1,00 s)² = 1,00 s², also s/t² = 2,50 m : 1,00 s² = 2,50 m/s². Zweiter Stopp: t² = (1,40 s)² = 1,96 s², also s/t² = 4,90 m : 1,96 s² = 2,50 m/s². Beide Stopps liefern denselben Quotienten – genau das heißt, dass die Punkte im s-t²-Diagramm auf einer Ursprungsgeraden liegen. Aus s = ½ · a · t² folgt s/t² = a/2; die Steigung ist also die halbe Beschleunigung, und es ist a = 2 · 2,50 m/s² = 5,00 m/s² – der eingestellte Wert. Mit s/t dagegen: 2,50 m : 1,00 s = 2,50 m/s und 4,90 m : 1,40 s = 3,50 m/s. Dieser Quotient ist die mittlere Geschwindigkeit seit dem Start, und die wächst mit, weil der Wagen immer schneller wird; s/t ist deshalb keine feste Zahl der Fahrt, sondern hängt davon ab, wann gestoppt wurde. Erst das Quadrieren der Zeit macht den Quotienten konstant und liefert damit einen Wert, der die ganze Fahrt beschreibt."
+   "loesung": "**s/t² = 2,50 m/s² · a = 5,00 m/s².** Quadriere die Zeit und teile den Weg dadurch: 2,50 m durch 1,00 s². Der zweite Stopp gibt 4,90 m durch 1,96 s² und dieselbe Zahl. Dieser Wert ist die halbe Beschleunigung, darum verdoppelst du ihn."
   },
   "alltag": "Für ein Fadenpendel findest du Tabellen von Pendellänge l und Schwingungsdauer T. Trage T² über l auf.",
   "alltagAfb": "II",
@@ -224,7 +266,7 @@
   "aufgabe": {
    "frage": "Bestimme aus den Tabellenzeilen (0,64 s | 2,06 m) und (2,56 s | 32,35 m) die Steigung von s über t² und daraus g.",
    "zeilen": 4,
-   "loesung": "Zu den beiden Zeiten gehören t² = (0,64 s)² = 0,4096 s² und t² = (2,56 s)² = 6,5536 s². Die Steigung durch diese zwei Punkte ist k = (32,35 m − 2,06 m) / (6,5536 s² − 0,4096 s²) = 30,29 m / 6,1440 s² = 4,93 m/s². Wegen s = ½ · g · t² ist k = g/2, also g = 2 · 4,93 m/s² = 9,86 m/s²; die Ausgleichsgerade über alle neun Punkte liefert mit 4,942 m/s² etwas mehr. Dieselben zwei Zeilen über v gerechnet: k = (25,11 m/s − 6,28 m/s) / (2,56 s − 0,64 s) = 18,83 m/s / 1,92 s = 9,81 m/s², und hier ist k schon g. Die Differenz von 0,05 m/s² fällt in jedem Lauf gleich aus und zeigt immer in dieselbe Richtung. Die Simulation summiert den Weg in Schritten von 0,016 s mit der Geschwindigkeit am Schrittende auf und erhält dadurch zu viel Weg, während v in jedem Schritt genau um g · Δt wächst. Nur die aus s gewonnene Gerade ist davon betroffen."
+   "loesung": "**k = 4,93 m/s² · g = 9,86 m/s².** Quadriere zuerst die Zeiten: 0,4096 s² und 6,5536 s². Teile dann den Unterschied der Wege durch den Unterschied der Quadrate: 30,29 m durch 6,1440 s². Die Steigung ist halb so groß wie g, darum verdoppelst du sie."
   },
   "alltag": "Computerspiele rechnen Bewegungen in Zeitschritten. Erkläre, warum ein zu großer Rechenschritt den berechneten Weg verfälscht.",
   "alltagAfb": "II",
@@ -283,7 +325,7 @@
   "aufgabe": {
    "frage": "Berechne aus der Steigung k = 0,2039 s²/m der Geraden t_F² über h den Ortsfaktor g.",
    "zeilen": 5,
-   "loesung": "Aus t_F² = (2/g) · h folgt g = 2/k = 2 : 0,2039 s²/m = 9,809 m/s²; die Simulation nennt daneben den Literaturwert 9,810 m/s² und eine Abweichung von 0,01 %. Der Achsenabschnitt der Waagerechten ist die Fallzeit selbst: b = t_F = √(2h/g). Quadriert ergibt das b² = 2h/g, also h = g · b²/2 = 9,81 m/s² · (2,0193 s)² : 2 = 20,00 m – genau die eingestellte Abwurfhöhe. Die Forscherfrage beantwortet aber erst die dritte Auftragung, denn nur dort steht die gefragte Größe auf der x-Achse: Acht Messpunkte von v₀ = 2 m/s bis 20 m/s liegen auf einer Geraden mit der Steigung 0,0000 – Steigung null heißt, dass sich t_F beim Verstellen von v₀ nicht ändert. Die ersten beiden Auftragungen zeigen dagegen nur, wie t_F von h abhängt; über v₀ sagen sie nichts, weil dort in allen neun Zeilen v₀ = 8 m/s steht."
+   "loesung": "**g = 9,809 m/s².** Die Formel t_F² = (2/g) · h zeigt: Die Steigung ist 2/g. Teile also 2 durch die Steigung 0,2039 s²/m. In der Steigung stecken alle Messpunkte, darum brauchst du keine einzelne Zeile."
   },
   "alltag": "Zwei Münzen fallen von der Tischkante, die eine fliegt weit hinaus, die andere kippt nur. Erkläre, warum nur ein Aufschlag zu hören ist.",
   "alltagAfb": "II",
@@ -342,7 +384,7 @@
   "aufgabe": {
    "frage": "Berechne für α = 0° und für α = 20°, wie viel Zugkraft nach Abzug der Reibung zum Beschleunigen übrig bleibt. Der beladene Schlitten hat die Gewichtskraft 400,0 N; es gilt F_R = 0,30 · (400,0 N − F · sin(α)).",
    "zeilen": 5,
-   "loesung": "Beide Komponenten stehen im Datenblatt. Bei α = 0° sind es F · cos(0°) = 200,0 N und F · sin(0°) = 0,0 N. Die Normalkraft bleibt F_N = 400,0 N − 0,0 N = 400,0 N, die Reibung beträgt F_R = 0,30 · 400,0 N = 120,0 N. Zum Beschleunigen bleiben 200,0 N − 120,0 N = 80,0 N. Bei α = 20° stehen dort 187,9 N und 68,4 N. Die Normalkraft sinkt auf F_N = 400,0 N − 68,4 N = 331,6 N, die Reibung auf F_R = 0,30 · 331,6 N = 99,5 N. Übrig bleiben 187,9 N − 99,5 N = 88,4 N. Der Vortrieb ist bei 20° zwar um 12,1 N kleiner, die Reibung aber um 20,5 N – die Entlastung wiegt schwerer, und Mira zieht zu Recht schräg. Beliebig schräg darf sie aber nicht ziehen: Mit der Zeile α = 60° gerechnet, blieben nur noch 100,0 N − 0,30 · (400,0 N − 173,2 N) = 100,0 N − 68,0 N = 32,0 N übrig, viel weniger als die 80,0 N bei Tobias. Irgendwo dazwischen liegt der günstigste Winkel."
+   "loesung": "**0°: 80,0 N · 20°: 88,4 N.** Bei 0° ziehst du von 200,0 N die Reibung 120,0 N ab. Bei 20° sind es 187,9 N minus die kleinere Reibung 99,5 N. Das schräge Seil entlastet den Boden, und weniger Druck heißt weniger Reibung."
   },
   "alltag": "Erkläre mit F · cos(α) und F · sin(α), warum ein flach geführter Koffergriff mehr Vortrieb liefert als ein steiler.",
   "alltagAfb": "II",
@@ -437,9 +479,9 @@
   ],
   "beobachtung": "Bei F = 0 N und v₀ = 20 m/s meldet das weiße Kästchen v₀ = 20 m/s, F = 0 N und v = 20,0 m/s; nach einer Weile steht dort unverändert v = 20,0 m/s. Die Linie v(t) läuft waagerecht ganz oben am Rand des Diagramms. Über der Fahrbahn steht in Grün „F = 0 → v bleibt konstant! (Trägheit)“. Mit v₀ = 5 m/s, 12 m/s und 40 m/s ist es dasselbe: v bleibt bei 5,0 m/s, bei 12,0 m/s und bei 40,0 m/s, und die Linie v(t) liegt jedes Mal waagerecht am oberen Rand. Von selbst wird der Wagen also nicht langsamer. Dass alle vier Bilder gleich aussehen, liegt am Maßstab: Das Diagramm skaliert auf den größten Messwert, die konstante Linie landet deshalb immer oben. Wie schnell der Wagen ist, verrät nur das weiße Kästchen.",
   "aufgabe": {
-   "frage": "Berechne den Weg, den ein Wagen mit 20 m/s in 12 s zurücklegt, an dem eine Antriebskraft von 6 N nach vorn und eine Reibungskraft von 6 N nach hinten wirken.",
-   "zeilen": 4,
-   "loesung": "Beide Kräfte greifen an derselben Wirkungslinie an, aber in Gegenrichtung. Für die resultierende Kraft gilt deshalb F_res = 6 N − 6 N = 0 N. Nach dem ersten Newton'schen Gesetz ändert sich der Bewegungszustand dann nicht: v bleibt 20 m/s. Genau dieser Sonderfall ist am Bildschirm eingestellt, wenn der Regler „Externe Kraft F“ auf 0 N steht – das weiße Kästchen meldet dann dauerhaft v = 20,0 m/s. Weil v konstant ist, ist die Bewegung gleichförmig, und es gilt s = v · t = 20 m/s · 12 s = 240 m. Entscheidend ist also nicht, dass keine Kraft wirkt – es wirken zwei –, sondern dass ihre Summe null ist."
+   "frage": "Am Wagen heben sich Antrieb und Reibung auf, er fährt mit 20 m/s weiter. Stelle s = v · t nach t um. Rechne damit aus, wie lange er für 240 m braucht, und dann, wie weit er in 12 s kommt.",
+   "zeilen": 5,
+   "loesung": "**t = s / v.** Für 240 m: t = 240 m : 20 m/s = **12 s**. Umgekehrt s = v · t = 20 m/s · 12 s = **240 m**. Beim Umstellen wird v auf beiden Seiten geteilt – die Einheit geht mit: m : (m/s) = s. Das ist die Probe, ob richtig umgestellt wurde."
   },
   "alltag": "Erkläre, warum die Summe der Kräfte an deinem Rucksack beim Bremsen nahezu null bleibt und er deshalb nach vorn rutscht.",
   "alltagAfb": "II",
@@ -499,7 +541,7 @@
   "aufgabe": {
    "frage": "Bestimme die Steigung der Geraden „a über 1/m“ von Hand aus den Tabellenzeilen m = 4 kg und m = 20 kg.",
    "zeilen": 5,
-   "loesung": "Aus der Tabelle: zu m = 4 kg gehören 1/m = 0,2500 1/kg und a = 10,00 m/s², zu m = 20 kg gehören 1/m = 0,0500 1/kg und a = 2,00 m/s². Die Steigung ist k = Δa : Δ(1/m) = (10,00 − 2,00) m/s² : (0,2500 − 0,0500) 1/kg = 8,00 : 0,2000 = 40,0. Ihre Einheit ist (m/s²) je (1/kg), also kg · m/s² = N: k = 40,0 N, genau die eingestellte Kraft. Das Programm meldet für alle Zeilen y = 40,000·x und „Kraft F aus der Steigung k 40,00 N“. Über m gerechnet gibt es dagegen keine einheitliche Steigung: zwischen 4 kg und 20 kg ergibt (2,00 − 10,00) : (20 − 4) = −0,50 m/s² je Kilogramm, zwischen 1 kg und 4 kg dagegen (10,00 − 40,00) : (4 − 1) = −10,00 m/s² je Kilogramm – zwanzigmal so steil. Eine Hyperbel hat in jedem Punkt eine andere Steigung, deshalb ist dort keine Ausgleichsgerade zu ziehen und keine Größe abzulesen. Genau dafür linearisiert man."
+   "loesung": "**k = 40,0 N.** Teile den Unterschied der a-Werte durch den Unterschied der 1/m-Werte: 8,00 durch 0,2000. Die Einheit (m/s²) je (1/kg) ist genau Newton, also ist die Steigung eine Kraft. Genau diese Kraft hast du vorher am Regler eingestellt."
   },
   "alltag": "Ein Einkaufswagen hat leer die Masse 10 kg und voll beladen 30 kg; du schiebst ihn beide Male mit 60 N an. Berechne beide Beschleunigungen.",
   "alltagAfb": "II",
@@ -560,7 +602,7 @@
   "aufgabe": {
    "frage": "Berechne, mit welcher Beschleunigung die Lampe nach einmal „– N“ zu sinken beginnt (g = 9,81 N/kg).",
    "zeilen": 4,
-   "loesung": "m = F_G / g = 5 N / 9,81 N/kg = 0,51 kg. Nach „– N“ zeigt das Statusfeld die Haltekraft 4 N, die Gewichtskraft weiter 5 N und die Gesamtkraft 1 N nach unten. Vorzeichenbehaftet ist F_res = F_H − F_G = 4 N − 5 N = −1 N; das Minuszeichen ist die Richtung nach unten, der Betrag ist |F_res| = 1 N. Aus F_res = m · a folgt a = |F_res| / m = 1 N / 0,51 kg = 1,96 N/kg = 1,96 m/s², denn 1 N = 1 kg · m/s²; die Beschleunigung ist nach unten gerichtet. Beschleunigt wird die Lampe also nicht von der Gewichtskraft 5 N – mit ihr allein käme man auf rund 9,8 m/s², das Fünffache –, sondern allein von der resultierenden Kraft 1 N. Im Ausgangszustand ist F_res = 0 N, also a = 0 m/s²: Die Lampe bleibt in Ruhe, obwohl an ihr gezogen wird."
+   "loesung": "**a = 1,96 m/s² nach unten.** Die Masse ist 5 N : 9,81 N/kg = 0,51 kg. Nach unten wirken 5 N, nach oben nur noch 4 N. Teile den Rest von 1 N durch 0,51 kg, denn nur er beschleunigt."
   },
   "alltag": "Erkläre, welche zwei Kräfte an einem Buch auf deiner ausgestreckten Hand angreifen und warum ihre Summe null ist.",
   "alltagAfb": "II",
@@ -620,7 +662,7 @@
   "aufgabe": {
    "frage": "Berechne aus D = 250 N/m und der Vorspannung s0 = 8,0 cm die Höchstkraft F = D · s0 und daraus a1 und a2 für m1 = 1 kg und m2 = 5 kg.",
    "zeilen": 5,
-   "loesung": "Aus s0 = 8,0 cm = 0,080 m folgt F = D · s0 = 250 N/m · 0,080 m = 20,00 N – genau der Höchstwert, den das Statusfeld nennt (F1 = -20,00 N, F2 = +20,00 N; die Vorzeichen geben nur die Richtung an). Mit F = m · a wird daraus a1 = 20,00 N : 1 kg = 20,00 m/s² und a2 = 20,00 N : 5 kg = 4,00 m/s², also a1 : a2 = 20,00 : 4,00 = 5 : 1 = m2 : m1 – die Werte, die die Simulation für diese Einstellung anzeigt. Dieselbe Kraft erfahren beide Wagen, weil es nur eine Feder gibt und diese an ihren beiden Enden mit demselben Betrag drückt; in F = D · s0 steht keine Masse. Verschieden sind allein die Beschleunigungen, denn derselbe Kraftbetrag wirkt auf verschieden große Massen."
+   "loesung": "**F = 20,00 N** · **a1 = 20,00 m/s²** · **a2 = 4,00 m/s².** Die Feder drückt mit F = 250 N/m · 0,080 m = 20,00 N. Teile diese Kraft durch jede Masse: 20,00 N durch 1 kg, dann durch 5 kg. Dieselbe Kraft beschleunigt die kleine Masse stärker als die große."
   },
   "alltag": "Erkläre mit dem Wechselwirkungsprinzip, warum sich beim Aussteigen das Boot vom Steg wegschiebt.",
   "alltagAfb": "II",
@@ -681,7 +723,7 @@
   "aufgabe": {
    "frage": "Berechne die Beschleunigung für die Reglerstellung μ = 0,95, die in keiner Zeile deiner Tabelle steht.",
    "zeilen": 5,
-   "loesung": "Bei μ = 0,95 zeigt der Infokasten F_R = 46,6 N; F = 80 N und m = 5 kg stehen unverändert. Daraus folgt F_res = 80 N − 46,6 N = 33,4 N und a = 33,4 N / 5 kg = 6,7 m/s². In der Ausgangsstellung μ = 0,30 steht F_R = 14,7 N, also F_res = 80 N − 14,7 N = 65,3 N und a = 65,3 N / 5 kg = 13,1 m/s². Die Reibungskraft ist auf das 3,2-Fache gestiegen (46,6 N / 14,7 N = 3,17), die Beschleunigung dagegen nur auf 6,7 / 13,1 = 0,51, also etwa auf die Hälfte. Der Grund liegt in der Überlagerung: Beschleunigt wird nicht mit F_R, sondern mit der Differenz F − F_R. Von den 80 N zieht die Reibung erst 14,7 N und dann 46,6 N ab; der Rest schrumpft von 65,3 N auf 33,4 N – das ist gut die Hälfte und gerade nicht ein Drittel. Die vier Tabellenzeilen ergeben zum Vergleich: μ = 0,00 → F_res = 80,0 N und a = 16,0 m/s², μ = 0,20 → 70,2 N und 14,0 m/s², μ = 0,40 → 60,4 N und 12,1 m/s², μ = 0,60 → 50,6 N und 10,1 m/s²."
+   "loesung": "**a = 6,7 m/s².** Bei μ = 0,95 bremst die Reibung mit 46,6 N. Zieh diese 46,6 N von den 80 N ab, das ergibt 33,4 N. Teile 33,4 N durch 5 kg, denn nur die übrige Kraft beschleunigt."
   },
   "alltag": "Erkläre, warum dieselbe Zugkraft eine Getränkekiste auf Fliesen und auf Teppich verschieden stark beschleunigt.",
   "alltagAfb": "II",
@@ -740,7 +782,7 @@
   "aufgabe": {
    "frage": "Berechne die Leistung für alle drei Vorgänge, wenn Tobias für jeden 2,5 s braucht.",
    "zeilen": 5,
-   "loesung": "Es gilt P = W / t. Schieben: W = 100 N · 4 m = 400 J, also P = 400 J / 2,5 s = 160 W. Waagerecht tragen: W = 0 J, also P = 0 J / 2,5 s = 0 W. Hochheben: mit dem angezeigten Wert W = 392 J folgt P = 392 J / 2,5 s = 156,8 W; rechnet man mit dem ungerundeten Wert 20 kg · 9,81 N/kg · 2,0 m = 392,4 J, sind es 156,96 W, also rund 157 W. Beim Tragen zeigt die Haltekraft von 196 N senkrecht nach oben, der Weg nach vorn – der Winkel beträgt 90°. Die Komponente längs des Weges ist 196 N · cos(90°) = 0 N, damit W = 0 N · 4 m = 0 J und P = 0 J / 2,5 s = 0 W. Die Anstrengung ist echt, sie steckt in der Muskelarbeit des Trägers; an der Kiste wird sie nicht als Arbeit wirksam, weil die Kiste ihre Höhe nicht ändert."
+   "loesung": "**Schieben: P = 160 W** · **Tragen: P = 0 W** · **Hochheben: P = 156,8 W.** Leistung heißt Arbeit durch Zeit: teile 400 J durch 2,5 s, dann 392 J durch 2,5 s. Beim Tragen bleibt die Kiste gleich hoch und geht nur nach vorn. Dabei wird an ihr keine Arbeit verrichtet, also ist die Leistung 0 W."
   },
   "alltag": "Berechne aus der Masse deines Schulrucksacks, der Höhe einer Treppe und der gestoppten Zeit deine Leistung in Watt.",
   "alltagAfb": "II",
@@ -800,7 +842,7 @@
   "aufgabe": {
    "frage": "Bestimme aus den Schiebewegen 0,07 m, 0,28 m, 0,63 m und 1,12 m bei 2, 4, 6 und 8 m/s über E = F · s und die Auftragung über v² die Masse der Kugel.",
    "zeilen": 5,
-   "loesung": "Aus E = F · s mit F = 200 N folgen 14 J, 56 J, 126 J und 224 J. Die zugehörigen Quadrate sind 4 m²/s², 16 m²/s², 36 m²/s² und 64 m²/s². Über v² aufgetragen liefert jedes Paar denselben Quotienten: 14 J : 4 m²/s² = 3,5 kg, 56 : 16 = 3,5, 126 : 36 = 3,5 und 224 : 64 = 3,5. Die vier Punkte liegen also auf einer Ursprungsgeraden mit der Steigung k = 3,5 kg, und aus m = 2 · k folgt m = 7,0 kg. Über v aufgetragen wären dieselben Werte eine Parabel gewesen, aus der sich nichts ablesen lässt. Die Probe am Bildschirm bestätigt das Ergebnis: Mit „Masse m“ auf 7 kg und „Tempo v“ auf 4 m/s meldet das Statusfeld E = ½ · 7 · 4² = 56 J und einen Schiebeweg von 0,28 m – genau der zweite Messwert der fremden Reihe."
+   "loesung": "**m = 7,0 kg.** Rechne jede Energie mit E = F · s, zum Beispiel 200 N · 0,28 m = 56 J. Trage die Energien über v² auf, dann liegen alle vier Punkte auf einer Geraden mit der Steigung 3,5 kg. Die Masse ist das Doppelte dieser Steigung."
   },
   "alltag": "Erkläre mit s = E / F, warum der Bremsweg bei doppelter Geschwindigkeit auf das Vierfache wächst.",
   "alltagAfb": "II",
@@ -860,7 +902,7 @@
   "aufgabe": {
    "frage": "Bestimme aus der Steigung k = 12,500 N/m einer E-s²-Geraden die Federkonstante.",
    "zeilen": 5,
-   "loesung": "Aus der linearisierten Auftragung folgt die Federkonstante durch Verdoppeln: D = 2 · k = 2 · 12,500 N/m = 25,000 N/m, also D = 25 N/m. Diesen Wert kann der Regler „Federkonstante D“ einstellen, er läuft in Schritten von 5 N/m von 5 bis 60. Dann s = 24 cm = 0,24 m. Kraft: F = D · s = 25 N/m · 0,24 m = 6,00 N. Spannenergie: E = ½ · D · s² = 0,5 · 25 N/m · (0,24 m)² = 0,5 · 25 · 0,0576 = 0,720 J. Die Gegenprobe über die Fläche gibt dieselbe Zahl: ½ · Grundseite · Höhe = 0,5 · 0,24 m · 6,00 N = 0,720 J. Nachprüfen am Bildschirm: Regler auf D = 25 N/m und s = 24 cm stellen, dann meldet das Feld „Kraft, Fläche, Energie“ genau 6,00 N und 0,720 J. Wer die Rückrechnung selbst sehen will, drückt „Messreihe automatisch aufnehmen“ und „E über s² auftragen“: Dort steht y = 12,500·x bei R² = 1,0000 und darunter E = ½ · D · s², also D = 2 · k = 2 · 12,500 N/m = 25,000 N/m bei 0,00 % Abweichung. Wer stattdessen F · s rechnet, kommt auf 6,00 N · 0,24 m = 1,44 J, also genau das Doppelte – das ist die Rechteckfläche, nicht das Dreieck. Nach „Loslassen“ nennt die Statuszeile v = √(2 · 0,720 J / 0,50 kg) = 1,70 m/s."
+   "loesung": "**D = 25 N/m.** Verdopple die Steigung der Geraden: D = 2 · 12,500 N/m. Das musst du tun, weil in E = ½ · D · s² der Faktor ½ steckt. Die Steigung ist also nur die halbe Federkonstante."
   },
   "alltag": "Bestimme die Federkonstante der Feder aus einem Druckkugelschreiber, indem du sie auf einer Küchenwaage um 2, 4, 6 und 8 mm zusammendrückst.",
   "alltagAfb": "II",
@@ -921,7 +963,7 @@
   "aufgabe": {
    "frage": "Berechne mit E = p² / (2 · m) die kinetische Energie beider Kugeln vor und nach dem Stoß für m₁ = 1 kg und m₂ = 5 kg.",
    "zeilen": 5,
-   "loesung": "Für m₁ = 1 kg und m₂ = 5 kg gilt vor dem Stoß p₁ = 60,0 kg·m/s und p₂ = 0,0 kg·m/s. Damit ist E₁ = p₁² / (2 · m₁) = (60,0)² / (2 · 1 kg) = 3600 / 2 = 1800 J und E₂ = 0 J, zusammen E_ges = 1800 J. Nach dem Stoß steht p₁ = −40,0 kg·m/s und p₂ = 100,0 kg·m/s. Daraus folgt E₁ = (−40,0)² / (2 · 1 kg) = 1600 / 2 = 800 J und E₂ = (100,0)² / (2 · 5 kg) = 10000 / 10 = 1000 J, zusammen wieder E_ges = 1800 J. Beide Summen bleiben also erhalten, denn die Simulation rechnet elastisch. Verschieden ist, wie sie es tun: Der Impuls ist gerichtet, deshalb wird p₁ negativ, und die Summe −40,0 + 100,0 = 60,0 fällt kleiner aus als die Summe der Beträge 40,0 + 100,0 = 140,0. In E = p² / (2 · m) steht p dagegen im Quadrat; das Vorzeichen verschwindet, und die Anteile addieren sich als positive Zahlen zu 800 J + 1000 J = 1800 J. Kugel 1 hat 100,0 kg·m/s an Impuls abgegeben und 1000 J an Energie – zwei getrennte Bilanzen, die sich ohne die Masse nicht ineinander umrechnen lassen. Das Vorzeichen wechselt, weil die stoßende Masse die kleinere ist: In v₁' = ((m₁ − m₂) · v₁ + 2 · m₂ · v₂) / (m₁ + m₂) wird der Zähler negativ, sobald m₁ < m₂ ist. Mit p₁ = 60,0 kg·m/s und m₁ = 1 kg ist v₁ = 60 m/s, und die Formel liefert v₁' = ((1 − 5) · 60) / 6 = −40 m/s, also p₁ = −40,0 kg·m/s – genau der abgelesene Wert."
+   "loesung": "**Vorher: E₁ = 1800 J · E₂ = 0 J** · **Nachher: E₁ = 800 J · E₂ = 1000 J** · **Summe beide Male 1800 J.** Setze den Impuls in E = p² / (2 · m) ein, zum Beispiel (60,0)² / (2 · 1 kg) = 1800 J. Das Quadrat löscht das Minus, deshalb zählt −40,0 kg·m/s genauso wie +40,0 kg·m/s. So bleibt die Energiesumme gleich, obwohl eine Kugel zurückläuft."
   },
   "alltag": "Erkläre, warum die Summe m · v gleich bleibt, wenn zwei Murmeln zusammenstoßen und aneinander kleben bleiben.",
   "alltagAfb": "II",
@@ -982,7 +1024,7 @@
   "aufgabe": {
    "frage": "Berechne für ein Kettenkarussell mit ω = 1,2 rad/s die Bahngeschwindigkeit eines Sitzes bei r = 6,0 m und eines Sitzes bei r = 4,0 m.",
    "zeilen": 4,
-   "loesung": "Mit v = ω · r ergibt sich außen v = 1,2 rad/s · 6,0 m = 7,2 m/s und innen v = 1,2 rad/s · 4,0 m = 4,8 m/s; umgerechnet sind das 25,9 km/h gegenüber 17,3 km/h. Die Winkelgeschwindigkeit ist für beide gleich, weil die Karussellarme starr sind: Beide Sitze überstreichen in derselben Zeit denselben Winkel, und ω = Δφ/Δt enthält den Radius nicht. Nur der Bogen s = φ · r wird mit größerem Abstand von der Achse länger – deshalb ist Tobias außen tatsächlich schneller unterwegs, ohne mehr Runden zu drehen."
+   "loesung": "**Außen: v = 7,2 m/s** · **Innen: v = 4,8 m/s.** Multipliziere ω mit dem Radius: 1,2 rad/s · 6,0 m und 1,2 rad/s · 4,0 m. Beide Sitze brauchen für eine Runde gleich lang, also ist ω für beide gleich. Der äußere Sitz legt dabei einen längeren Weg zurück und ist deshalb schneller."
   },
   "alltag": "Erkläre, warum ein Punkt am Fahrradreifen eine größere Bahngeschwindigkeit hat als einer am Ritzel, obwohl sich beide gleich schnell drehen.",
   "alltagAfb": "II",
@@ -1041,7 +1083,7 @@
   "aufgabe": {
    "frage": "Berechne für m = 1,00 kg, r = 1,00 m und f = 2,00 Hz nacheinander T, ω, v, a_z und F_z.",
    "zeilen": 5,
-   "loesung": "T = 1/f = 1 / 2,00 Hz = 0,500 s. ω = 2·π·f = 2·π·2,00 Hz = 12,5664 rad/s. v = ω·r = 12,5664 rad/s · 1,00 m = 12,56640 m/s. a_z = v²/r = (12,56640 m/s)² / 1,00 m = 157,9 m/s²; die Probe über a_z = ω²·r = (12,5664 rad/s)² · 1,00 m ergibt denselben Wert. F_z = m · a_z = 1,00 kg · 157,9 m/s² = 157,9 N. Alle fünf Zahlen stehen so auch im Feld „Alle Größen der Kreisbewegung“; dass der Zahlenwert von a_z und F_z hier gleich ist – bei verschiedenen Einheiten, m/s² und N –, liegt allein an m = 1,00 kg."
+   "loesung": "**T = 0,500 s** · **ω = 12,5664 rad/s** · **v = 12,56640 m/s** · **a_z = 157,9 m/s²** · **F_z = 157,9 N.** Rechne der Reihe nach: T = 1/f, dann ω = 2 · π · f, dann v = ω · r. Danach bekommst du a_z = v²/r und daraus F_z = m · a_z. Dass a_z und F_z dieselbe Zahl haben, liegt nur an m = 1,00 kg."
   },
   "alltag": "Erkläre, in welche Richtung die Kraft auf dich wirkt, während das Auto abbiegt.",
   "alltagAfb": "II",
@@ -1100,7 +1142,7 @@
   "aufgabe": {
    "frage": "Berechne aus deinem Tabellenwert bei r = 0,80 m über m = F_z / a_z mit a_z = 71,06 m/s² die Masse.",
    "zeilen": 4,
-   "loesung": "In unserem Durchgang stand dort 35,65 N: m = F_z / a_z = 35,65 N : 71,06 m/s² = 0,5017 kg. Eingestellt sind 0,500 kg, die Abweichung beträgt also (0,5017 kg − 0,500 kg) : 0,500 kg = 0,0034, das sind 0,34 %. Die Ausgleichsgerade über acht Messwerte kam auf 0,500 kg mit 0,07 % – in diesem Durchgang rund fünfmal näher am eingestellten Wert; im Mittel gewinnt die Ausgleichsgerade etwa den Faktor zwei bis drei. Ein einzelner Messwert trägt die volle Streuung der Kraftmessdose von etwa 1,5 %; über acht Punkte mittelt sie sich zum großen Teil heraus – am stärksten wirken dabei die Punkte mit großem Radius. Eine Einzelmessung kann den Wert zufällig auch besser treffen; verlassen kann man sich darauf nicht."
+   "loesung": "**m = 0,5017 kg.** Teile deinen Tabellenwert 35,65 N durch die Beschleunigung 71,06 m/s². Eingestellt sind 0,500 kg, dein Wert liegt also knapp daneben. Ein einzelner Messwert streut stark, die Gerade aus acht Punkten trifft genauer."
   },
   "alltag": "Berechne aus 1400 Umdrehungen je Minute die Umlauffrequenz f in Hz und daraus die Kraft auf ein Wäschestück von 0,20 kg bei r = 0,24 m.",
   "alltagAfb": "II",
@@ -1162,7 +1204,7 @@
    "zeilen": 4,
    "komp": "S7",
    "afb": "II",
-   "loesung": "Auf der Ursprungsgeraden gilt F = k · 1/r². Für r = 10 ist 1/r² = 1/100 = 0,0100, also F = 200,000 Einheiten · 0,0100 = 2,00 Einheiten. Zur Probe reicht die letzte Tabellenzeile: Bei r = 5 stehen dort 8,00 Einheiten, der doppelte Abstand bringt ein Viertel davon, und 8,00 : 4 = 2,00 Einheiten. Aufnehmen lässt sich dieser Punkt nicht, weil der Regler „Abstand“ bei 5 endet; r = 10 ist gar nicht einstellbar. Der Zahlenwert allein verrät das nicht: 2,00 Einheiten stehen sehr wohl in der Tabelle, sobald man m₁ = 1 kg, m₂ = 1 kg und r = 2 einstellt – ein Messpunkt ist erst durch alle drei Größen festgelegt. Die 2,00 Einheiten bei r = 10 sind deshalb eine Vorhersage aus der Ausgleichsgeraden, keine Messung, und sie gilt nur, solange die Gerade auch außerhalb des gemessenen Bereichs weiterläuft. Genau darin liegt der Gewinn der Linearisierung: Eine Gerade lässt sich verlängern, eine Kurve nicht ohne Weiteres."
+   "loesung": "**F = 2,00 Einheiten.** Setze den Abstand in die Gerade ein: 1/r² ist 0,0100, mal 200,000 Einheiten. Zur Probe: Bei r = 5 stehen 8,00 Einheiten, doppelter Abstand bringt ein Viertel davon. Der Regler endet bei 5, deshalb ist der Wert eine Vorhersage und keine Messung."
   },
   "alltag": "Auf der ISS ist der Abstand zum Erdmittelpunkt rund 1,06-mal so groß wie am Boden. Berechne mit F ~ 1/r², auf welchen Anteil der Anziehung das führt.",
   "alltagAfb": "II",
@@ -1221,7 +1263,7 @@
   "aufgabe": {
    "frage": "Berechne mit den Ortsfaktoren der Simulation (Mond 1,6 N/kg, Erde 9,8 N/kg) die Gewichtskraft einer Person von 75 kg.",
    "zeilen": 4,
-   "loesung": "Es gilt F = m · g. Mond: F = 75 kg · 1,6 N/kg = 120 N. Erde: F = 75 kg · 9,8 N/kg = 735 N. Das Verhältnis 735 N / 120 N = 6,125 ist genau das Verhältnis 9,8 / 1,6 der Ortsfaktoren. Wer statt mit dem gerundeten Wert der Simulation mit dem gemessenen Ortsfaktor 9,81 N/kg rechnet, erhält 735,75 N und das Verhältnis 6,13 – dieselbe Aussage, nur eine Stelle genauer. Beide Male steht dieselbe Masse 75 kg; verändert wurde allein g – eine Größe des Ortes, nicht der Person."
+   "loesung": "**Mond: F = 120 N** · **Erde: F = 735 N.** Multipliziere die Masse mit dem Ortsfaktor: 75 kg mal 1,6 N/kg und 75 kg mal 9,8 N/kg. Nur der Ortsfaktor g wechselt, denn er gehoert zum Ort und nicht zur Person. Das Verhaeltnis 735 N zu 120 N ist 6,125, genau das Verhaeltnis der Ortsfaktoren."
   },
   "alltag": "Erkläre, was eine Küchenwaage auf dem Mond für ein Kilogramm Mehl anzeigen würde.",
   "alltagAfb": "II",
@@ -1313,7 +1355,7 @@
   "aufgabe": {
    "frage": "Erkläre, warum eine Astronautin von 60 kg in der ISS schwebt, obwohl das Datenblatt dort 8,69 N/kg ausweist.",
    "zeilen": 5,
-   "loesung": "Die Feldstärke ist dort nicht null: 8,69 : 9,82 = 0,885, also rund 89 Prozent des Werts an der Erdoberfläche. Auf die Astronautin wirkt F = m · g = 60 kg · 8,69 N/kg = 521,4 N, mehr als ein halbes Kilonewton. Diese Kraft fehlt also nicht: Sie beschleunigt die Astronautin ständig zum Erdmittelpunkt hin. Station, Ausrüstung und Mensch liegen im selben Feld, werden gleich stark beschleunigt und fallen gemeinsam um die Erde herum. Zwischen Astronautin und Wand wird deshalb keine Kraft mehr übertragen, und genau dieses Ausbleiben nennt man Schwerelosigkeit. „Schwerelos“ heißt hier „frei fallend“, nicht „ohne Feld“."
+   "loesung": "**Das Feld wirkt weiter: F = 521,4 N** · **Schwerelos heisst frei fallend.** Die Kraft fehlt nicht: 60 kg mal 8,69 N/kg ergeben 521,4 N. Diese Kraft beschleunigt die Astronautin staendig zum Erdmittelpunkt hin. Station und Mensch fallen gleich schnell, deshalb drueckt sie nicht gegen die Wand."
   },
   "alltag": "Berechne mit g = G · M / r² die Feldstärke in der Reiseflughöhe eines Verkehrsflugzeugs (11 km über dem Boden, also r = 6382 km).",
   "alltagAfb": "II",
@@ -1410,7 +1452,7 @@
   "aufgabe": {
    "frage": "Berechne aus g = 9,81 N/kg, dem Erdradius R = 6,37 · 10⁶ m und G = 6,674 · 10⁻¹¹ N·m²/kg² die Masse der Erde.",
    "zeilen": 5,
-   "loesung": "Aus g = G · M / R² folgt M = g · R² / G. Mit R² = (6,37 · 10⁶ m)² = 4,058 · 10¹³ m² ist g · R² = 9,81 N/kg · 4,058 · 10¹³ m² = 3,981 · 10¹⁴ N·m²/kg. Division durch G ergibt M = 3,981 · 10¹⁴ N·m²/kg : (6,674 · 10⁻¹¹ N·m²/kg²) = 5,96 · 10²⁴ kg – die Einheiten kürzen sich zu Kilogramm. Tabellenwerke geben 5,972 · 10²⁴ kg an; die 0,1 Prozent Unterschied stammen aus den gerundeten Werten für g und R. Der Ortsfaktor g und der Erdradius R waren lange vor 1798 bekannt, doch ohne G liefert die Gleichung nur das Produkt G · M. Die Drehwaage trennt die beiden Faktoren: Sie misst die Anziehung zwischen zwei bekannten Massen und macht damit G zugänglich. Erst dieser Erkenntnisschritt macht aus einer alten Gleichung eine Zahl für die Erdmasse."
+   "loesung": "**M = 5,96 · 10²⁴ kg.** Stelle g = G · M / R² um zu M = g · R² / G. Setze 9,81 N/kg, den quadrierten Erdradius und G ein, die Einheiten kuerzen sich zu Kilogramm. Ohne G aus der Drehwaage bekommst du nur das Produkt G · M, nie die Masse allein."
   },
   "alltag": "Beurteile die Zeitungsüberschrift „Cavendish wog die Erde“ mit dem, was in dem Gartenhaus wirklich gemessen wurde.",
   "alltagAfb": "III",
@@ -1470,7 +1512,7 @@
   "aufgabe": {
    "frage": "Berechne das √2-fache des angezeigten Kreiswerts 29,8 km/s und halte es gegen die 42,1 km/s der Statuszeile.",
    "zeilen": 4,
-   "loesung": "√2 · 29,8 km/s = 1,414 · 29,8 km/s = 42,14 km/s, gerundet 42,1 km/s. Das ist genau der Grenzwert, den die Statuszeile nennt. Der Zusammenhang ist kein Zufall: Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen ist v = √(2·G·M/r) nötig. Beide Ausdrücke unterscheiden sich nur um den Faktor √2, und zwar bei jedem Abstand r."
+   "loesung": "**√2 · 29,8 km/s = 42,1 km/s.** Genau diesen Wert nennt die Statuszeile. Für die Kreisbahn gilt v = √(G·M/r), zum Entkommen gilt v = √(2·G·M/r). Die beiden Formeln unterscheiden sich nur um √2, und das bei jedem Abstand."
   },
   "alltag": "Erkläre mit dem ständigen Vorbeifallen, warum eine Raumstation eine bestimmte Bahngeschwindigkeit braucht und nicht langsamer kreisen darf.",
   "alltagAfb": "II",
@@ -1572,7 +1614,7 @@
   "aufgabe": {
    "frage": "Berechne die große Halbachse des Uranus aus seiner Umlaufzeit T = 84,0 Jahre mit T²/a³ = 1,00, T in Jahren und a in AE.",
    "zeilen": 5,
-   "loesung": "Aus T²/a³ = 1,00 folgt a³ = T², also a = (T²)^(1/3). Mit T = 84,0 Jahren ist T² = 7056, und die dritte Wurzel daraus ergibt a = 19,18. Die große Halbachse des Uranus beträgt also rund 19,2 AE, gut das 19-Fache des Erdabstands und etwa das Doppelte der Saturnbahn (9,537 AE). Die Probe bestätigt es: 84,0²/19,18³ = 7056/7055,8 = 1,00. Bemerkenswert ist, wie dieser Wert zustande kommt – gegeben war allein die Zeit für einen Umlauf, der Bahnradius ist vorhergesagt. Ein Tabellenwerk gibt 19,19 AE an."
+   "loesung": "**a = 19,2 AE.** Aus T²/a³ = 1,00 wird a³ = T². Rechne 84,0² = 7056 und zieh daraus die dritte Wurzel. Die Probe stimmt: 7056 geteilt durch 19,18³ ergibt 1,00."
   },
   "alltag": "Ein Fernsehsatellit umläuft die Erde in 1,00 Tag, der Mond in 27,3 Tagen bei einer Halbachse von 384 000 km. Berechne mit T²/a³ = konstant den Bahnradius des Satelliten.",
   "alltagAfb": "II",
@@ -1632,7 +1674,7 @@
   "aufgabe": {
    "frage": "Begründe, warum die rückläufige Schleife des Mars allein nicht zwischen den beiden Weltbildern entscheidet.",
    "zeilen": 5,
-   "loesung": "Beide Modelle sagen für den Himmel dasselbe voraus: Der geozentrischen Anordnung bescheinigt die Statuszeile, dass sich damit der Himmel gut vorhersagen ließ, der heliozentrischen, dass sie „genau denselben Himmel“ voraussagt. Die Schleife entsteht einmal durch den Epizykel, einmal dadurch, dass die Erde den Mars überholt. Eine Beobachtung, die zu beiden Modellen passt, kann keines von beiden ausschließen; sie unterscheiden sich nur im Aufwand – für den Mars zwei Kreise gegenüber einem, und das ist ein Argument, kein Beweis. Den Ausschlag gaben erst Beobachtungen, die der ptolemäische Aufbau nicht zulässt: 1610 die Jupitermonde und vor allem die Venusphasen (Galilei) – damit war dieser Aufbau widerlegt. Dass sich die Erde wirklich bewegt, war damit noch nicht gezeigt; den direkten Nachweis lieferte erst Bessel 1838 mit der Fixsternparallaxe."
+   "loesung": "**Beide Modelle sagen genau dieselbe Schleife voraus.** Steht die Erde in der Mitte, entsteht sie durch einen zusätzlichen Kreis. Steht die Sonne in der Mitte, überholt die Erde den Mars. Eine Beobachtung, die beide Modelle vorhersagen, kann keines von beiden ausschließen."
   },
   "alltag": "Ordne ein, was sich seit Kopernikus daran geändert hat, woran eine physikalische Aussage geprüft wird.",
   "alltagAfb": "II",
@@ -1724,7 +1766,7 @@
   "aufgabe": {
    "frage": "Berechne aus den Bahndaten der vierten Zeile mit a = 4 · π² · r / T² die Zentripetalbeschleunigung.",
    "zeilen": 5,
-   "loesung": "Mit r = 6771 km = 6,771 · 10⁶ m und T = 5545 s gilt 4 · π² · r = 39,48 · 6,771 · 10⁶ m = 2,673 · 10⁸ m sowie T² = (5545 s)² = 3,0747 · 10⁷ s². Damit ist a = 2,673 · 10⁸ m : 3,0747 · 10⁷ s² = 8,69 m/s². Dieser Wert stimmt mit dem Erdfeld in dieser Höhe überein: Die Feldstärke 8,69 N/kg entspricht einer Beschleunigung von 8,69 m/s². Die Station wird angezogen und fällt mit genau dieser Beschleunigung ständig an der Erde vorbei. Haltbar sind deshalb die Aussagen von Schulbuch und Fachartikel; das Netzvideo ist widerlegt, und der Zeitungsartikel nennt keine Zahl – prüfen lässt er sich nur der Richtung nach, und auch dort hält er nicht stand. Der Fachartikel steht trotz gleichem Wert über dem Schulbuch, weil er die Messdaten offenlegt und begutachtet wurde."
+   "loesung": "**a = 8,69 m/s².** Setze r = 6,771 · 10⁶ m und T = 5545 s in a = 4 · π² · r / T² ein. Teile dann 2,673 · 10⁸ m durch 3,0747 · 10⁷ s². So stark zieht das Erdfeld in dieser Höhe: 8,69 N/kg sind 8,69 m/s²."
   },
   "alltag": "Prüfe eine Aussage über Schwerelosigkeit aus einem Erklärvideo an den vier Kriterien des Datenblatts.",
   "alltagAfb": "III",
@@ -1784,7 +1826,7 @@
   "aufgabe": {
    "frage": "Berechne für v = 0,60·c den Faktor √(1−β²) und die Zeitspanne, die in der bewegten Uhr vergeht, während in A eine Stunde vergeht.",
    "zeilen": 5,
-   "loesung": "Es ist β = v/c = 0,60, also β² = 0,36 und 1 − β² = 0,64. Damit wird √(1−β²) = √0,64 = 0,800 – genau der Wert, den Station 4 als 0,8000 anzeigt. Für eine Stunde in A folgt Δtbew = 60,0 min · 0,800 = 48,0 min, und die Anzeige nennt ebenfalls 48,0 min. Die Messstation zählt 160 Ticks der bewegten Uhr gegen 200 Ticks der ruhenden, also f = 160/200 = 0,800. Gezählter Faktor und gerechneter Faktor stimmen überein: Die Rechnung aus dem Satz des Pythagoras sagt die Messung richtig vorher."
+   "loesung": "**√(1−β²) = 0,800** · **Δt = 48,0 min.** Es ist β = 0,60, also 1 − β² = 0,64 und √0,64 = 0,800. Multipliziere die Stunde in A mit diesem Faktor: 60,0 min · 0,800 = 48,0 min. Die bewegte Uhr zählt 160 Ticks gegen 200, das ist derselbe Faktor."
   },
   "alltag": "Erkläre, wieso ein reines Gedankenexperiment wie die Lichtuhr zu einer überprüfbaren Vorhersage führen kann.",
   "alltagAfb": "III",
