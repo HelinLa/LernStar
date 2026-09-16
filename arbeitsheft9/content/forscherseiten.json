@@ -1,8 +1,8 @@
 [
  {
   "id": "kr1",
-  "titel": "Die Delle im Karton",
-  "problem": "Der Keller ist voll. Bens Vater drückt eine Umzugskiste an die Wand, der Karton bekommt an der Ecke eine Delle. Mia schiebt den Rollwagen an, der eben noch stillstand. Ein Tennisball fällt aus einer offenen Kiste, prallt an der Kellertür ab und rollt zurück zu Ben. Ben sagt, das sei dreimal dasselbe gewesen. Mia sieht drei ganz verschiedene Sachen.",
+  "titel": "Knete, Wagen und ein Ball, der abbiegt",
+  "problem": "Ben drückt ein Stück weiche Knete zwischen den Fingern platt. Mia gibt dem stehenden Einkaufswagen einen Schubs, sodass er losrollt. Dann stößt Ben einen geradeaus rollenden Ball an, sodass er schräg weiterrollt. Ben sagt, jedes Mal sei dasselbe passiert. Mia sieht dagegen lauter verschiedene Sachen und widerspricht ihm.",
   "frage": "Woran erkennt man, dass eine Kraft gewirkt hat?",
   "predict": [
    "Eine Kraft erkennt man daran, dass sich am Körper etwas ändert: die Form, die Geschwindigkeit oder die Richtung.",
@@ -57,7 +57,7 @@
  {
   "id": "kr2",
   "titel": "Mias Liste auf der Treppe",
-  "problem": "Bens Vater drückt beim Tragen tief in das Sofakissen. Mia bremst den Rollwagen kurz vor der Kellertreppe mit der Hand ab. Der Tennisball springt von der Wand zurück in Bens Hand. In der Pause schreibt Mia die drei Sachen untereinander in ihr Heft. Ben findet, zwei davon gehören zusammen. Mia weiß noch nicht, welche.",
+  "problem": "Beim Abwaschen drückt Ben den Schwamm aus. Draußen schlägt Mia den Tennisball zurück, der von der Wand abprallt. Im Laden schiebt Ben den Einkaufswagen an, während Mia vor der Tür ihr Fahrrad abbremst. Ben findet, das sei im Grunde alles dasselbe. Mia widerspricht und will die Sachen erst in Gruppen sortieren.",
   "frage": "Was kann eine Kraft alles bewirken?",
   "predict": [
    "Bremsen ist keine echte Kraftwirkung: Dabei wird nichts angeschoben und nichts verformt, der Körper wird ja nur langsamer.",
@@ -113,7 +113,7 @@
  {
   "id": "kr3",
   "titel": "Der Strich, an dem der Zeiger stehen bleibt",
-  "problem": "Bens Vater hängt die Federwaage aus dem Physikraum an den Griff der Umzugskiste und hebt sie langsam an. Mia schätzt: „Bestimmt fünfzig.“ Ben sagt: „Eher zwanzig.“ Wovon, sagt keiner von beiden. Im Rohr der Waage zieht sich die Feder auseinander, der Zeiger wandert nach unten und bleibt an einem Strich stehen.",
+  "problem": "Im Physikraum hängt ein Federkraftmesser am Regal. Ben hängt ein Gewichtsstück an das untere Ende. Die Feder zieht sich in die Länge, bis der Zeiger an einem Strich der Skala stehen bleibt. Ben sagt, der Strich zeige einfach das Gewicht. Mia zeigt auf den Buchstaben hinter den Zahlen und widerspricht.",
   "frage": "Wie lässt sich eine Kraft messen?",
   "predict": [
    "Die Feder gibt am Anfang leicht nach und wird dann immer steifer. Das zweite Gewicht dehnt sie deshalb weniger als das erste.",
@@ -169,7 +169,7 @@
  {
   "id": "kr4",
   "titel": "Zwei Federn, die nicht gleich nachgeben",
-  "problem": "Aus dem aufgerissenen Sofa ragt eine dicke Stahlfeder. Daneben in Vaters Werkzeugkiste liegt eine dünne Feder von einem alten Rollo. Mia zieht an beiden gleich fest. Die dünne wird lang und länger, die dicke gibt kaum nach. Bei doppeltem Zug wird jede von beiden noch einmal genauso viel länger.",
+  "problem": "Im Physikraum liegen eine weiche und eine harte Feder nebeneinander. Ben hängt an jede das gleiche Gewicht. Die weiche Feder wird deutlich länger, während die harte kaum nachgibt. Ben sagt, mit einem weiteren Gewicht hole die harte Feder das wieder auf. Mia glaubt, der Abstand zwischen beiden bleibt.",
   "frage": "Dehnen sich eine weiche und eine harte Feder bei derselben Kraft gleich weit?",
   "predict": [
    "Die Dehnung wächst gleichmäßig mit der Kraft: doppelte Kraft, doppelte Dehnung. Die harte Feder dehnt sich dabei weniger als die weiche.",
@@ -188,7 +188,6 @@
   ],
   "tabRows": [
    "weiche Feder, m = 100 g",
-   "weiche Feder, m = 200 g",
    "weiche Feder, m = 400 g",
    "harte Feder, m = 400 g",
    "Steigung der Ausgleichsgeraden D in N/cm"
@@ -225,8 +224,8 @@
  },
  {
   "id": "kr5",
-  "titel": "Die Kiste und die zwei Waagen",
-  "problem": "Bens Vater schreibt auf jede Umzugskiste, wie schwer sie ist. Mia stellt eine Kiste auf die Küchenwaage: 5 kg. Dann hängt Ben dieselbe Kiste an die Federwaage aus dem Physikraum. Der Zeiger bleibt bei einer ganz anderen Zahl stehen. Beide Geräte stehen nebeneinander auf der Kellertreppe und zeigen nicht dasselbe.",
+  "titel": "Ein Gewicht, zwei Anzeigen",
+  "problem": "Ben legt ein Gewichtsstück auf die Waage und liest ab. Danach hängt Mia dasselbe Gewichtsstück an den Kraftmesser. Der Zeiger bleibt bei einer ganz anderen Zahl stehen, obwohl das Gewichtsstück dasselbe ist. Ben sagt, eines der beiden Geräte müsse kaputt sein. Mia zeigt auf die beiden Anzeigen und ist anderer Meinung.",
   "frage": "Ist „schwer“ dasselbe wie „viel Masse“?",
   "predict": [
    "Kilogramm und Newton sind nur zwei Namen für dasselbe. Eine Kiste mit 1 kg zeigt am Kraftmesser also auch 1 N.",
@@ -282,7 +281,7 @@
  {
   "id": "kr6",
   "titel": "Die schwerste Kiste und der Mond",
-  "problem": "Die letzte Umzugskiste ist die schwerste. Ben stemmt sie zwei Stufen hoch und stellt sie wieder ab. „Auf dem Mond“, sagt er, „würde ich die mit einer Hand nach oben tragen.“ Mia hält dagegen: Die Bücher in der Kiste seien auf dem Mond keine Seite weniger. Beide meinen etwas anderes mit demselben Wort.",
+  "problem": "Hier auf der Erde schleppt Ben eine Kiste Bücher die Treppe hoch und schnauft. Auf dem Mond, sagt er, könnte er sie mit einer Hand tragen. Auf dem Jupiter würde er damit keine Stufe weit kommen. Mia hält dagegen: In der Kiste liegen überall dieselben Bücher. Beide sagen „schwer“ und meinen etwas anderes.",
   "frage": "Wäre ich auf dem Mond wirklich leichter?",
   "predict": [
    "Auf dem Mond verliert ein Körper einen Teil seiner Masse. Deshalb zeigt dort auch die Waage weniger Kilogramm an.",
@@ -337,7 +336,7 @@
  {
   "id": "kr7",
   "titel": "Dieselbe Zahl, zwei Wirkungen",
-  "problem": "Ben zieht die Umzugskiste an einem Seil über die Fliesen. Er zieht schräg nach oben, die Kiste hebt vorn ab. Sein Vater zieht flach nach vorn, sie rutscht gerade weg. Auf der Federwaage steht beide Male derselbe Wert. Mia notiert nur diese eine Zahl.",
+  "problem": "Ben zieht die Umzugskiste am Seil schräg nach oben, bis sie vorn abhebt. Mia zieht dieselbe Kiste flach nach rechts über die Fliesen. Die Federwaage zeigt beide Male denselben Wert. Mia schreibt nur diese eine Zahl auf. Ben findet das zu wenig, weil bei ihm etwas ganz anderes passiert ist.",
   "frage": "Ist eine Kraft schon vollständig beschrieben, wenn man ihren Betrag kennt?",
   "predict": [
    "Zur Kraft gehört neben dem Betrag auch eine Richtung; erst beide zusammen sagen, was mit dem Körper passiert.",
@@ -393,7 +392,7 @@
  {
   "id": "kr8",
   "titel": "Zu zweit am Sofa",
-  "problem": "Das alte Sofa steht auf dem Teppichrest. Mia zieht vorn am Seil, Ben schiebt von hinten mit, und es geht gut voran. Beim zweiten Versuch stellt Ben sich versehentlich vor das Sofa und drückt zurück. Beide strengen sich genauso an, doch das Sofa kriecht nur langsam auf Mia zu.",
+  "problem": "Ben und Mia ziehen das schwere Sofa an zwei Seilen. Ziehen beide nach rechts, geht es gut voran. Beim zweiten Versuch stellt Ben sich auf die andere Seite und zieht nach links. Mia sagt, zu zweit sei die Kraft auf jeden Fall größer. Ben behauptet das Gegenteil.",
   "frage": "Was passiert, wenn zwei Kräfte gleichzeitig an einem Körper ziehen?",
   "predict": [
    "Zwei Kräfte werden immer addiert, egal wie sie zeigen; zu zweit ist die Wirkung deshalb immer größer als allein.",
@@ -449,7 +448,7 @@
  {
   "id": "kr9",
   "titel": "Die Lampe über der Kellertreppe",
-  "problem": "Über der Kellertreppe hängt seit Jahren eine alte Lampe an einem Kabel. Bens Vater packt sie an und zieht kurz daran; das Kabel gibt nicht nach. Die Lampe schwingt einmal und steht dann wieder still. Sie hängt völlig ruhig, während Mia unter ihr die letzte Umzugskiste zur Treppe trägt.",
+  "problem": "Über der Kellertreppe hängt eine alte Lampe an einem Seil. Sie bleibt völlig ruhig über den Stufen. Mia meint, an der Lampe wirke gerade überhaupt keine Kraft. Ben zeigt auf das straff gespannte Seil. Er ist sicher, dass die Lampe die ganze Zeit daran zieht.",
   "frage": "Warum bewegt sich ein ruhender Körper nicht, obwohl Kräfte an ihm ziehen?",
   "predict": [
    "Damit die Lampe hängen bleibt, muss das Kabel etwas stärker nach oben ziehen, als die Gewichtskraft nach unten zieht.",
@@ -503,8 +502,8 @@
  },
  {
   "id": "kr10",
-  "titel": "Das Rollbrett unter Bens Füßen",
-  "problem": "Ben stellt sich auf das Rollbrett, mit dem sie die Kisten zur Treppe fahren, und stemmt sich mit beiden Händen gegen das alte Sofa. Das Sofa rutscht ein Stück über die Fliesen. Ben aber rollt im selben Moment rückwärts, bis er gegen das Regal stößt.",
+  "titel": "Der Stoß auf dem Eis",
+  "problem": "Ben und Mia stehen sich auf dem Eis gegenüber. Mia stößt Ben mit beiden Händen von sich weg. Beide gleiten rückwärts auseinander, ungefähr gleich weit. Mia sagt, sie habe doch ganz allein geschoben. Ben ist sicher, dass sie im selben Moment auch etwas abbekommen hat.",
   "frage": "Warum drückt mich das zurück, was ich selbst wegdrücke?",
   "predict": [
    "Beide Körper erfahren gleich große Kräfte; der Körper mit der kleineren Masse wird trotzdem schneller.",
@@ -559,7 +558,7 @@
  {
   "id": "kr11",
   "titel": "Zwei Bretter über die Treppe",
-  "problem": "Die Waschmaschine soll aus dem Keller. Bens Vater legt zwei Bretter über die Kellertreppe und zieht die Maschine am Seil hinauf. Mia soll gleichzeitig heben und schafft es kaum. Ben zieht oben am Seil und wundert sich: Er zieht zwar viel länger, aber deutlich lockerer als Mia hebt.",
+  "problem": "Bens Vater hat zwei Bretter als Rampe über die Kellertreppe gelegt. Mia hebt ihre Kiste senkrecht nach oben. Ben zieht seine gleich schwere Kiste über die Rampe auf dieselbe Höhe. Ben sagt, er habe es dabei viel leichter gehabt. Mia glaubt ihm kein Wort.",
   "frage": "Warum geht ein Stein über eine Rampe leichter hoch als senkrecht?",
   "predict": [
    "Je flacher die Rampe, desto weniger Kraft braucht man – und der Weg bleibt dabei ungefähr gleich lang.",
@@ -615,7 +614,7 @@
  {
   "id": "kr12",
   "titel": "Der Wagen bleibt zu früh stehen",
-  "problem": "Die letzten Kisten fahren auf einem Rollwagen zur Haustür. Über die Fliesen im Flur genügt Mia ein Schubs, dann rollt der Wagen fast bis zur Tür. Auf dem alten Teppichrest gibt sie genau denselben Schubs – der Wagen kommt kaum einen halben Meter weit und steht.",
+  "problem": "Die letzten Kisten fahren auf einem Wagen zur Haustür. Auf dem Holzboden rollt er nach Mias Schubs weit den Flur hinunter. Auf dem alten Teppich schiebt sie ihn genauso kräftig an. Diesmal steht der Wagen schon nach kurzer Strecke. Mia gibt dem Teppich die Schuld, Ben dem nachlassenden Schwung.",
   "frage": "Warum bleibt ein angestoßener Wagen von allein stehen?",
   "predict": [
    "Der Untergrund ist egal: Der Wagen bekommt immer denselben Schubs und rollt deshalb auch immer ungefähr gleich weit.",
@@ -671,7 +670,7 @@
  {
   "id": "bw1",
   "titel": "Mias Liste auf dem Beifahrersitz",
-  "problem": "Der Transporter ist beladen, die Landstraße liegt frei vor ihnen. Bens Vater ruft an und will wissen, wie weit sie schon gekommen sind. „Wir fahren“, sagt Ben. Mia startet die Stoppuhr am Handy und notiert an jedem Kilometerstein die Zeit. Nach zehn Minuten stehen zwölf Zahlen auf ihrem Zettel.",
+  "problem": "Bens Vater ruft an und will wissen, wo sie gerade sind. Ben beschreibt ihm die Farbe des Transporters und die Felder am Straßenrand. Mia findet das nutzlos. Sie stoppt die Zeit und liest ab, wie viele Meter sie schon gefahren sind. Ben hält ihre Zahlen für überflüssig.",
   "frage": "Welche Angaben braucht man, um eine Bewegung genau zu beschreiben?",
   "predict": [
    "Man braucht immer zwei Angaben zusammen: die Zeit und den bis dahin zurückgelegten Weg.",
@@ -726,7 +725,7 @@
  {
   "id": "bw2",
   "titel": "Der Lieferwagen, der vorn liegt",
-  "problem": "Auf der Landstraße zieht ein Lieferwagen an ihnen vorbei und liegt bald weit vorn. „Der ist eindeutig schneller“, sagt Ben. Mia schüttelt den Kopf: Der Lieferwagen sei nur früher an der Baustellenampel losgefahren. Beide schauen auf dasselbe Fahrzeug und meinen etwas völlig anderes.",
+  "problem": "Ben und Mia lassen ihre Autos auf dem Gehweg gegeneinander rennen. Beide starten an derselben Linie. Bens Auto liegt nach kurzer Zeit weit vorn. Er sagt, seins sei eindeutig schneller. Mia hält dagegen: Das sehe man erst, wenn man Weg und Zeit zusammen vergleicht.",
   "frage": "Woran erkennt man sicher, welches von zwei Fahrzeugen das schnellere ist?",
   "predict": [
    "Wer weiter vorn liegt, ist der Schnellere.",
@@ -782,7 +781,7 @@
  {
   "id": "bw3",
   "titel": "Die Leitpfosten im Takt",
-  "problem": "Auf der Autobahn stellt Bens Vater den Tempomat ein. Ben zählt die Leitpfosten am Fahrbahnrand mit: eins, zwei, drei. Sie kommen in einem ruhigen, immer gleichen Takt. Mia vergleicht ihre Zeiten zwischen den Kilometersteinen und stellt fest, dass sie sich nur um Bruchteile einer Sekunde unterscheiden.",
+  "problem": "Im Bus zählt Ben die Marken am Fahrbahnrand mit. Der Fahrer hält das Tempo, ohne abzubremsen. Ben ist sicher, dass die Abstände zwischen den Marken immer größer werden. Mia widerspricht: Bei gleichem Tempo bleibe jeder Abstand gleich weit. Nachgemessen hat bisher keiner von beiden.",
   "frage": "Legt ein Körper bei gleichem Tempo in gleichen Zeiten gleich weite Stücke zurück?",
   "predict": [
    "Weil das Auto immer weiterfährt, werden die Abstände zwischen den Marken mit der Zeit größer.",
@@ -837,7 +836,7 @@
  {
   "id": "bw4",
   "titel": "Mias Zettel im Handschuhfach",
-  "problem": "Mia hat auf der Landstraße die Zeiten zwischen den Kilometersteinen notiert. Am Rastplatz überträgt sie die Zahlen auf kariertes Papier: die Zeit nach rechts, den Weg nach oben. Für die Landstraße steigt die Linie flach an, für die Autobahn viel steiler. Ein Stück in der Mitte, kurz vor der Ausfahrt, läuft ganz waagerecht.",
+  "problem": "Mia schreibt auf dem Schulweg ihre Zeiten und die Meter auf. Zu Hause überträgt sie alles auf kariertes Papier. Ein Teil der Linie steigt steil an, ein anderer bleibt flach. Ben meint, die steile Stelle zeige einfach einen weiteren Weg. Mia widerspricht und zeigt auf ein ganz waagerechtes Stück.",
   "frage": "Was verrät die Steilheit einer Linie im Weg-Zeit-Diagramm?",
   "predict": [
    "Je steiler die Linie ansteigt, desto schneller bewegt sich der Körper. Eine waagerechte Linie bedeutet, dass er steht.",
@@ -893,7 +892,7 @@
  {
   "id": "bw5",
   "titel": "Zwischen zwei Leitpfosten",
-  "problem": "Der Transporter biegt auf die Auffahrt zur Autobahn. Mia zählt die weißen Leitpfosten am Rand und sagt die Sekunden mit. Am Anfang liegt zwischen zwei Pfosten viel Zeit, dann immer weniger. Ben schaut auf den Tacho: Die Nadel wandert gleichmäßig nach rechts, während der Motor lauter brummt.",
+  "problem": "Der Busfahrer gibt Gas und fährt von der Haltestelle los. Ben zählt die Sekunden laut mit. Mia merkt sich, an welchem Baum der Bus bei jedem Zählen vorbeikommt. Ben ist sicher, dass zwischen den Bäumen immer gleich viel Weg liegt. Mia glaubt, die Stücke werden von Sekunde zu Sekunde länger.",
   "frage": "Woran erkennt man, dass ein Körper immer schneller wird?",
   "predict": [
    "Auch beim Gas geben bleiben die Abstände der Marken gleich groß, sie sind nur von Anfang an weiter als bei der gleichförmigen Fahrt.",
@@ -948,7 +947,7 @@
  {
   "id": "bw6",
   "titel": "Der Kleinwagen ist längst weg",
-  "problem": "An der Ampel vor der Auffahrt steht neben dem beladenen Transporter ein kleiner Wagen. Bei Grün fahren beide gleichzeitig los. Nach wenigen Sekunden ist der Kleine schon weit voraus, obwohl für beide dasselbe Tempolimit gilt. Ben sagt, der Kleine sei eben schneller. Mia zeigt auf den Tacho: Der Transporter steht erst bei 30 km/h.",
+  "problem": "Ben und Mia sitzen hinten im Auto und starren auf den Tacho. Bei Grün zieht der Wagen gleichmäßig an. Ben behauptet, nach ein paar Sekunden sei die Nadel schon ganz oben. Mia meint, man könne den Wert auf dem Tacho vorher ausrechnen. Ben hält das für unmöglich.",
   "frage": "Wie schnell ist ein Körper nach einer bestimmten Zeit?",
   "predict": [
    "Die Beschleunigung gibt an, wie schnell der Wagen fährt; bei a = 2 m/s² fährt er also dauerhaft mit 2 m/s.",
@@ -1003,7 +1002,7 @@
  {
   "id": "bw7",
   "titel": "Das Schild mit der 30",
-  "problem": "Hinter der Kurve steht ein gelbes Schild mit einer 30 darauf. Ben spürt, wie es ihn gegen den Gurt zieht, der Transporter wird langsamer. Zweihundert Meter weiter endet die Baustelle, der Vater gibt Gas, und Ben sinkt in den Sitz zurück. Mia sagt, beides sei dieselbe Rechnung.",
+  "problem": "Hinter der Kurve bremst der Vater, und Ben zieht es gegen den Gurt. Kurz darauf endet die Baustelle. Der Vater gibt Gas, und Ben sinkt in den Sitz zurück. Mia sagt, Bremsen sei etwas völlig anderes als Gas geben. Ben behauptet, es sei dasselbe, nur andersherum.",
   "frage": "Was unterscheidet Schnellerwerden von Langsamerwerden?",
   "predict": [
    "Beim Bremsen gilt dieselbe Rechnung wie beim Gasgeben, a bekommt nur ein Minuszeichen.",
@@ -1059,7 +1058,7 @@
  {
   "id": "bw8",
   "titel": "Das Reh am Straßenrand",
-  "problem": "Kurz hinter der Baustelle steht ein Reh am Straßenrand und macht einen Schritt auf die Fahrbahn. Der Vater tritt auf die Bremse, die Kisten hinten rutschen gegen die Rückwand, dann steht der Transporter. Ben schaut zurück: Die Stelle, an der er das Reh zuerst gesehen hat, liegt weit hinter ihnen.",
+  "problem": "Ben und Mia warten an der Straße. Ein kleines Kind rennt plötzlich vor ein Auto. Der Fahrer bremst, doch der Wagen steht erst weit hinter der Stelle. Mia sagt, der Mann habe zu spät gebremst. Ben meint, auch ein wacher Fahrer käme dort nicht schneller zum Stehen.",
   "frage": "Warum braucht ein Auto zum Bremsen viel mehr Platz, als man denkt?",
   "predict": [
    "Bei doppeltem Tempo werden beide Wege doppelt so lang, der Anhalteweg also ebenfalls.",
@@ -1114,7 +1113,7 @@
  {
   "id": "bw9",
   "titel": "Ein Klacken auf der Raststätte",
-  "problem": "Auf der Raststätte schiebt Ben seine Jacke zur Seite. Sein Handy rutscht über die Tischkante, und gleichzeitig fällt eine Ein-Euro-Münze aus der Tasche. Beide schlagen so kurz nacheinander auf, dass Mia nur ein einziges Klacken hört. Ben hebt beides auf und wiegt es in der Hand: Das Handy ist deutlich schwerer.",
+  "problem": "Im Hof lassen Ben und Mia zwei Kugeln von der Mauer fallen. Die eine ist schwer, die andere ganz leicht. Beide starten aus derselben Höhe, und unten hört man nur ein einziges Klacken. Mia sagt, die schwere müsse trotzdem zuerst ankommen. Ben hat gar keinen Unterschied gesehen.",
   "frage": "Fällt ein schwerer Stein schneller als ein leichter?",
   "predict": [
    "Die schwerere Kugel wird von der Erde stärker gezogen und kommt deshalb früher unten an.",
@@ -1171,7 +1170,7 @@
  {
   "id": "bw10",
   "titel": "Der Bon, der trudelt",
-  "problem": "Auf der Raststätte zahlt Ben, der Kassenbon rutscht ihm vom Tablett. Das Kleingeld fällt in einem Zug auf den Boden, der Bon kippt hin und her und landet erst deutlich später neben dem Tisch. Mia hält ihn hoch und lässt ihn noch einmal los. Wieder trudelt er langsam nach unten.",
+  "problem": "Auf dem Parkplatz hebt Ben eine Feder auf, Mia sucht sich einen Stein. Die beiden halten sie nebeneinander hoch und lassen gleichzeitig los. Der Stein ist sofort unten, die Feder trudelt langsam hinterher. Mia sagt, das liege am geringen Gewicht der Feder. Ben glaubt eher, die Luft sei schuld.",
   "frage": "Fällt eine Feder auch ohne Luft langsamer als ein Stein?",
   "predict": [
    "Die Feder fällt nur wegen der Luft langsamer. Ohne Luft ist sie genauso schnell unten wie der Stein.",
@@ -1228,7 +1227,7 @@
  {
   "id": "bw11",
   "titel": "Bis an die Wand",
-  "problem": "Im Laderaum schiebt Mia die letzte Umzugskiste an ihren Platz. Über das geriffelte Blech kommt die Kiste kaum einen halben Meter weit, dann steht sie. Auf der glatten Sperrholzplatte daneben gibt Ben ihr denselben Schubs, und sie rutscht bis an die Wand.",
+  "problem": "Ben stößt einen kleinen Wagen über den Tisch. Nach einer kurzen Strecke bleibt er von allein stehen. Mia erzählt, auf der Eisbahn sei ihr Handschuh fast bis zur Bande gerutscht. Trotzdem meint sie, irgendwann bleibt jedes Ding liegen. Ben glaubt, auf ganz glattem Grund hört das Rutschen nie auf.",
   "frage": "Warum wird ein angestoßener Körper von allein wieder langsamer?",
   "predict": [
    "Der Wagen wird von allein langsamer, weil der Schwung vom Anstoßen mit der Zeit aufgebraucht ist.",
@@ -1284,7 +1283,7 @@
  {
   "id": "bw12",
   "titel": "Mia hält sich nicht fest",
-  "problem": "Der Transporter ist voll, im Fahrerhaus ist nur ein Platz frei. Mia nimmt den Linienbus. Sie steht in der Mitte, den Rucksack in der Hand. An der Haltestelle fährt der Bus an, und Mia kippt nach hinten. Zwei Straßen weiter bremst er, und ihr Rucksack schwingt nach vorn.",
+  "problem": "Ben und Mia sitzen im Bus nach Hause. An der Haltestelle fährt der Bus an, und beide werden in den Sitz gedrückt. Kurz darauf bremst er, da kippen sie nach vorn. Mia sagt, das spüre man während der ganzen Fahrt. Ben spürt dazwischen nichts, wenn der Bus gleichmäßig fährt.",
   "frage": "Warum drückt es mich beim Anfahren in den Sitz und beim Bremsen nach vorn?",
   "predict": [
    "Man spürt den Druck immer dann, wenn der Bus schnell fährt: Je höher das Tempo, desto stärker drückt es.",
@@ -1339,8 +1338,8 @@
  },
  {
   "id": "bw13",
-  "titel": "Die Kiste, die kurz nichts wiegt",
-  "problem": "Der Aufzug im neuen Haus ist eng, und Ben steht mit der schwersten Kiste darin. Als er nach oben losfährt, drückt ihn der Boden kurz fest gegen die Schuhsohlen; oben, kurz vor dem Halt, wird die Kiste für einen Moment ganz leicht in seinen Armen.",
+  "titel": "Die Waage im Aufzug",
+  "problem": "Im Aufzug des neuen Hauses steht noch Mias Personenwaage. Ben stellt sich darauf und drückt den Knopf nach oben. Beim Losfahren zeigt die Waage plötzlich mehr an als vorher. „Ich bin gerade schwerer geworden“, ruft Ben. Mia widerspricht: Auf der Waage stehe die ganze Zeit derselbe Ben.",
   "frage": "Warum fühlt man sich im freien Fall schwerelos, obwohl die Erde weiter zieht?",
   "predict": [
    "Die Anzeige hängt von der Beschleunigung ab: nach oben mehr als 588 N, im freien Fall 0 N – die Masse bleibt 60 kg.",
@@ -1398,7 +1397,7 @@
  {
   "id": "bw14",
   "titel": "Vierhundert Kilometer über dem Wohnzimmer",
-  "problem": "Abends sitzen Ben und Mia zwischen ungeöffneten Kisten. Ben zeigt ein Video aus der Raumstation: Eine Astronautin lässt eine Wasserkugel los, und die Kugel bleibt einfach in der Luft stehen. Unter der Aufnahme steht, die Station sei nur rund vierhundert Kilometer hoch – dort zieht die Erde fast so stark wie im Wohnzimmer.",
+  "problem": "Vom Balkon der neuen Wohnung wirft Ben einen Ball waagerecht hinaus. Je kräftiger er wirft, desto weiter weg schlägt der Ball auf. Mia zeigt in den Abendhimmel auf die Raumstation und sagt, die falle auch ständig zur Erde. Ben hält dagegen: Dann läge sie längst unten im Garten. Mia bleibt dabei.",
   "frage": "Warum schweben Astronauten, obwohl sie ständig fallen?",
   "predict": [
    "Wer schnell genug quer abgeschossen wird, ist der Erdanziehung entkommen – deshalb fällt der Körper auf seiner Bahn nicht mehr.",
@@ -1456,7 +1455,7 @@
  {
   "id": "bw15",
   "titel": "Der Stuhl rollt nach hinten",
-  "problem": "Das Zimmer ist leer, nur der alte Bürostuhl steht schon da. Mia sitzt darauf, hält die letzte Kiste auf dem Schoß und schiebt sie mit beiden Armen von sich weg auf den Teppich. Die Kiste rutscht nach vorn, und der Stuhl mit Mia rollt langsam nach hinten.",
+  "problem": "Mia sitzt auf dem alten Bürostuhl und schiebt die letzte Kiste von sich weg. Die Kiste rutscht nach vorn, der Stuhl rollt mit Mia nach hinten. Ben sagt, im Weltall gehe das nicht. Dort ist nichts, wogegen eine Rakete drücken könnte. Mia klopft auf ihre Kiste und widerspricht.",
   "frage": "Wie stößt sich eine Rakete im Weltall ab, wo doch nichts da ist?",
   "predict": [
    "Das Gas muss sich an der Luft abdrücken; im Weltall ist nichts dahinter, deshalb bleibt die Rakete stehen.",
@@ -1515,7 +1514,7 @@
   "theme": "energie",
   "name": "Was ist Energie – und wie misst man sie?",
   "titel": "Sechs Sachen, ein einziges Maß",
-  "problem": "Der Möbelwagen ist leer, die neue Wohnung im dritten Stock voller Kisten. Ben packt aus: eine Taschenlampe zum Aufziehen, eine Thermoskanne mit heißem Tee, einen Fußball, der sofort den Flur hinunterrollt. Mia stellt eine schwere Kiste oben aufs Regal. „Das hat doch alles nichts miteinander zu tun“, sagt Ben. Mia ist sich da nicht so sicher.",
+  "problem": "In der neuen Wohnung liegt alles durcheinander: eine Tasse heißer Tee, ein Butterbrot, eine volle AA-Batterie und ein rollender Fußball. Ben stemmt die schwerste Kiste ganz nach oben auf das Regal. Mia drückt dabei die Sprungfeder aus ihrem alten Spielzeug zusammen. „Diese Sachen haben nichts miteinander zu tun“, sagt Ben. Mia sieht das anders.",
   "frage": "Was haben so verschiedene Energiespeicher miteinander gemeinsam?",
   "predict": [
    "Alle sechs speichern Energie. Man kann sie deshalb in derselben Einheit messen und miteinander vergleichen.",
@@ -1570,7 +1569,7 @@
   "theme": "energie",
   "name": "Wann wird Arbeit verrichtet? (W = F · s)",
   "titel": "Schieben, tragen, heben",
-  "problem": "Ben schleppt seit einer Stunde Kisten durch den Flur der neuen Wohnung und lässt sich aufs Sofa fallen. „Ich habe heute mehr Arbeit geleistet als der ganze Rest der Familie.“ Mia hält dagegen: Beim Tragen durch den Flur habe er in der Physik überhaupt keine Arbeit verrichtet. Ben findet das unverschämt – seine Arme sagen etwas anderes.",
+  "problem": "Ben schiebt die schwere Kiste über den Boden des Flurs. Dieselbe Kiste trägt er dann waagerecht bis in die Küche. Zum Schluss hebt er sie auf das oberste Regal. „Dreimal richtig gearbeitet“, stöhnt Ben und lässt sich aufs Sofa fallen. Mia widerspricht: Bei einem der drei Wege zähle das gar nicht.",
   "frage": "Wann wird physikalisch Arbeit verrichtet – und wann nicht?",
   "predict": [
    "Anstrengung und Arbeit sind dasselbe. Wer eine schwere Kiste durch den Flur trägt, verrichtet auch viel Arbeit.",
@@ -1625,7 +1624,7 @@
   "theme": "energie",
   "name": "Hubarbeit: W = m · g · h",
   "titel": "Drei Stockwerke, kein Aufzug",
-  "problem": "Die neue Wohnung liegt im dritten Stock, einen Aufzug gibt es nicht; pro Stockwerk sind es etwa drei Meter. Ben trägt eine Kiste durch den Flur unten und kommt kaum ins Schwitzen. Dieselbe Kiste die Treppe hinauf – und nach dem ersten Stock muss er absetzen. „Der Weg ist doch viel kürzer als der Flur“, wundert er sich.",
+  "problem": "Im Haus ohne Aufzug tragen Ben und Mia die letzten Kisten die Treppe hinauf. Ben hebt die schwerste Kiste, muss sie aber auf halber Treppe absetzen. Mia schleppt eine leichte Kiste ganz nach oben bis zur Wohnungstür. „Meine war viel schwerer“, sagt Ben. Mia zeigt die Treppe hinauf und behauptet, sie habe mehr geschafft.",
   "frage": "Wovon hängt die Arbeit ab, die das Heben eines Körpers kostet?",
   "predict": [
    "Entscheidend ist die Länge des Weges. Ein langer Flur kostet mehr Arbeit als eine kurze Treppe.",
@@ -1680,7 +1679,7 @@
   "theme": "energie",
   "name": "Lageenergie: E = m · g · h",
   "titel": "Oben auf dem Schrank",
-  "problem": "Mia hat die Werkzeugkiste ganz oben auf den Kleiderschrank gestellt, damit sie aus dem Weg ist. Ben schaut misstrauisch hinauf. „Die liegt doch nur da. Da passiert nichts.“ Am Abend rutscht die Kiste beim Türenschlagen herunter und schlägt ein deutliches Loch in die Dielen. Ben sieht das Loch an und überlegt, woher die Wucht auf einmal kam.",
+  "problem": "Mia wuchtet die schwere Werkzeugkiste ganz oben auf den Kleiderschrank. Ben legt die leichtere Kiste ins unterste Regalfach. Am Abend rutscht Mias Kiste herunter und schlägt ein Loch in die Dielen. „Weil sie so schwer ist“, sagt Ben. Mia zeigt nach oben: Für sie zählt vor allem die Höhe.",
   "frage": "Wovon hängt die Energie eines angehobenen Körpers ab?",
   "predict": [
    "Die Hubarbeit steckt als Lageenergie in dem Körper. Sie ist schon oben da und kommt beim Fallen wieder heraus.",
@@ -1735,7 +1734,7 @@
   "theme": "energie",
   "name": "Bewegungsenergie: E = ½ · m · v²",
   "titel": "Der Ball im Flur",
-  "problem": "Der Flur der neuen Wohnung ist lang und noch ganz leer. Ben rollt den Fußball hindurch, ganz sachte, und die Kisten am Ende wackeln nur. Beim zweiten Mal tritt er fester zu – der Stapel kippt um. „Doppelt so fest getreten, doppelt so viel umgeworfen“, sagt Ben. Mia ist sich sicher: Das war mehr als das Doppelte.",
+  "problem": "Im leeren Flur liegt noch ein schwerer Holzklotz vom Umzug. Ben rollt den Fußball sachte dagegen, und der Klotz rutscht ein Stück. Beim zweiten Mal tritt er doppelt so fest zu. „Doppelt so fest getreten, doppelt so weit geschoben“, sagt Ben. Mia misst die Strecke nach: Das war mehr als das Doppelte.",
   "frage": "Zählen Masse und Tempo gleich stark für die Bewegungsenergie?",
   "predict": [
    "Masse und Tempo zählen gleich stark. Wer doppelt so schnell rollt, hat doppelt so viel Bewegungsenergie.",
@@ -1845,7 +1844,7 @@
   "theme": "energie",
   "name": "Der Energieerhaltungssatz",
   "titel": "Der Ball springt nicht mehr so hoch",
-  "problem": "Beim Auspacken findet Ben einen Flummi und lässt ihn im leeren Wohnzimmer springen. Beim ersten Mal kommt er fast bis zur Fensterbank zurück, dann immer weniger, nach einer Weile bleibt er liegen. „Also geht Energie doch verloren“, ruft Ben triumphierend. Mia zeigt auf den Boden: „Fass mal die Stelle an, wo er aufgekommen ist.“",
+  "problem": "Beim Auspacken findet Ben einen Flummi und lässt ihn im leeren Wohnzimmer springen. Jeder Sprung fällt niedriger aus als der davor. „Wenn nichts verloren geht, müsste er immer gleich hoch kommen“, sagt Ben. Mia widerspricht: Oben steht der Ball kurz still, unten ist er am schnellsten. Für sie wandert die Energie nur hin und her.",
   "frage": "Verschwindet Energie beim Springen, oder wechselt sie nur die Form?",
   "predict": [
    "Die Energie bleibt in der Summe erhalten. Bei jedem Aufprall wird ein Teil in Wärme umgewandelt und fehlt dann für den Sprung.",
@@ -1956,7 +1955,7 @@
   "theme": "energie",
   "name": "Warum wird beim Bremsen alles warm?",
   "titel": "Heiße Felgen am Berg",
-  "problem": "Ben fährt mit dem Rad zum Supermarkt, der unten am Hang liegt. Bergab wird er richtig schnell und muss vor der Kreuzung kräftig bremsen. Unten greift er an die Felge und zieht sofort die Hand zurück. Beim Ball auf dem Teppich war von Wärme nichts zu merken. Hier ist sie nicht zu übersehen – dieselbe Physik.",
+  "problem": "Ben und Mia fahren mit dem Rad den Hang zum Supermarkt hinunter und bremsen vor der Kreuzung kräftig ab. Unten fasst Ben an die Felge und zieht die Hand sofort zurück. „Das ist dasselbe wie beim Ball auf dem Teppich“, sagt er. Mia hält dagegen: Auf dem Teppich war nichts zu spüren, hier verbrennt man sich fast.",
   "frage": "Warum wird beim Bremsen alles warm?",
   "predict": [
    "Beim Bremsen entsteht eine andere Art von Wärme als beim Ausrollen, deshalb ist sie so viel stärker.",
@@ -2176,7 +2175,7 @@
   "theme": "energie",
   "name": "Watt, Kilowatt und PS",
   "titel": "100 PS und 2000 Watt",
-  "problem": "Auf dem Möbelwagen stand groß „130 PS“. Auf dem neuen Staubsauger steht „2000 Watt“, auf der Verpackung der LED-Lampe „9 Watt“. Ben findet das unübersichtlich: Mal Watt, mal PS, mal riesige Zahlen, mal winzige. „Das kann man doch gar nicht vergleichen.“ Mia meint, man könne sehr wohl – man müsse nur wissen, dass alle drei dasselbe messen.",
+  "problem": "Auf dem neuen Staubsauger steht eine Zahl mit Watt, auf dem Wasserkocher ebenfalls. In der Werkstatt hört Ben dagegen immer nur von PS reden. Er sagt, Watt und PS könne man überhaupt nicht vergleichen. Mia widerspricht ihm sofort. Für sie messen beide dasselbe, nur anders aufgeschrieben.",
   "frage": "Welche Leistungen stecken hinter Watt, Kilowatt und PS?",
   "predict": [
    "PS und Watt sind zwei Einheiten für dieselbe Größe. 1 PS entspricht 735,5 W.",
@@ -2231,7 +2230,7 @@
   "theme": "energie",
   "name": "Energieentwertung: warum sparen?",
   "titel": "Die erste Stromrechnung",
-  "problem": "Die erste Stromabrechnung liegt auf dem Tisch, und Mias Mutter spricht davon, dass alle Energie sparen müssen. Ben hält das für Unsinn: „In Physik haben wir gelernt, dass Energie nie verloren geht. Dann ist sie doch nachher immer noch da.“ Mia kann ihm nicht widersprechen – der Satz stimmt ja. Trotzdem geht an Bens Schluss etwas nicht auf.",
+  "problem": "Auf dem Tisch liegt die erste Stromrechnung, und Mia knipst im Flur das Licht aus. „Das bringt nichts, Energie geht doch nie verloren“, sagt Ben. Mia legt die Hand an die Lampe und dann an die Wand daneben. Beide sind warm. Sie findet, damit lässt sich jedenfalls nichts mehr anfangen.",
   "frage": "Was bleibt am Ende einer Energiekette noch zu gebrauchen?",
   "predict": [
    "Da Energie erhalten bleibt, ist am Ende der Kette genauso viel Brauchbares da wie am Anfang. Sparen ist deshalb unnötig.",
@@ -2413,7 +2412,7 @@
    "Die Spannung hängt davon ab, wie stark der Magnet noch ist. Bei jedem Leuchten gibt er etwas davon ab und wird schwächer."
   ],
   "predictOk": 0,
-  "problem": "Im Fahrradkeller schraubt Ben den alten Dynamo wieder an sein Rad. Beim Anfahren leuchtet die Lampe, und je kräftiger er tritt, desto heller wird sie. „Der Strom kostet nichts, den macht der Dynamo einfach von selbst“, sagt Ben. Mia hält dagegen: Die Lampe leuchte nur, weil Ben Bewegung in den Dynamo hineinsteckt.",
+  "problem": "Im Fahrradkeller schraubt Ben den Dynamo an sein Rad. Je schneller er tritt, desto heller wird die Lampe. „Den Strom macht der Dynamo von selbst, ich muss nur schnell genug treten“, sagt Ben. Mia macht den alten Dynamo auf und zeigt auf die Spule mit ihren vielen Windungen. Für sie zählt die Spule genauso.",
   "tabCols": [
    "Drehzahl",
    "angezeigte Spannung in V"

@@ -862,7 +862,7 @@ const HEFT_SEITEN = {
     sim: "kraft-wirkung", seite: 7,
     kapitel: "Kräfte – wenn etwas schiebt, zieht oder verformt",
     name: "Woran erkennt man, dass eine Kraft wirkt?",
-    titel: "Die Delle im Karton",
+    titel: "Knete, Wagen und ein Ball, der abbiegt",
     frage: "Woran erkennt man, dass eine Kraft gewirkt hat?",
     schritte: ["Wähle in der Simulation „Verformen“ und drücke „Kraft wirken lassen“. Halte in der Tabelle fest, was sich an der weichen Knete ändert.", "Wähle nacheinander „Bewegen“ und „Richtung ändern“ und lasse jedes Mal die Kraft wirken. Nutze „Zurücksetzen“, bevor du die nächste Situation startest.", "Gegenprobe am Tisch: Drücke ein Stück Knete flach und schiebe danach dein Mäppchen über den Tisch. Notiere für beides, was vorher und nachher anders ist."]
   },
@@ -898,7 +898,7 @@ const HEFT_SEITEN = {
     sim: "masse-gewicht", seite: 27,
     kapitel: "Kräfte – wenn etwas schiebt, zieht oder verformt",
     name: "Ist „schwer“ dasselbe wie „viel Masse“?",
-    titel: "Die Kiste und die zwei Waagen",
+    titel: "Ein Gewicht, zwei Anzeigen",
     frage: "Ist „schwer“ dasselbe wie „viel Masse“?",
     schritte: ["Stelle in der Simulation nacheinander die Massen 100 g, 200 g und 500 g ein. Lies jedes Mal beide Anzeigen ab und trage Masse und Gewichtskraft in die Tabelle ein.", "Stelle danach 1 kg und 2 kg ein. Prüfe mit dem Taschenrechner, ob F = m · g mit g = 9,8 N/kg zu den angezeigten Werten passt.", "Gegenprobe am Tisch: Wiege dein Mäppchen auf der Küchenwaage und hänge es dann an die Federwaage. Vergleiche die beiden Anzeigen mit deiner Tabelle."]
   },
@@ -943,7 +943,7 @@ const HEFT_SEITEN = {
     sim: "wechselwirkung", seite: 52,
     kapitel: "Kräfte – wenn etwas schiebt, zieht oder verformt",
     name: "Kraft und Gegenkraft: Warum drücke ich zurück?",
-    titel: "Das Rollbrett unter Bens Füßen",
+    titel: "Der Stoß auf dem Eis",
     frage: "Warum drückt mich das zurück, was ich selbst wegdrücke?",
     schritte: ["Wähle „Eisläufer“ und löse mit „Abstoßen“ den Stoß aus. Lies für beide Läufer Masse und Geschwindigkeit ab und trage die Werte ein.", "Wähle nacheinander „Boot“ und „Rakete“ und starte jeweils mit „Abstoßen“. Nutze davor „Zurücksetzen“ und notiere wieder beide Massen und Geschwindigkeiten.", "Gegenprobe am Tisch: Blase einen Luftballon auf und lass ihn los. Beobachte, in welche Richtung die Luft ausströmt und in welche Richtung der Ballon fliegt."]
   },
@@ -1078,7 +1078,7 @@ const HEFT_SEITEN = {
     sim: "schwerelosigkeit", seite: 132,
     kapitel: "Bewegung – schneller, langsamer, immer schneller",
     name: "Warum fühlt man sich im freien Fall schwerelos, obwohl die Erde weiter zieht?",
-    titel: "Die Kiste, die kurz nichts wiegt",
+    titel: "Die Waage im Aufzug",
     frage: "Warum fühlt man sich im freien Fall schwerelos, obwohl die Erde weiter zieht?",
     schritte: ["Wähle „steht still“ und lies ab, was die Waage anzeigt und welche Masse darunter steht.", "Wähle nacheinander „beschleunigt nach oben“, „beschleunigt nach unten“ und „Seil reißt: freier Fall“ und trage jede Anzeige in die Tabelle ein.", "Gegenprobe am Tisch: Stelle dich auf eine Personenwaage, gehe langsam in die Hocke und drücke dich wieder hoch. Beobachte, wann der Zeiger über und wann er unter deinem Ruhewert steht."]
   },
