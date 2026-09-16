@@ -333,6 +333,15 @@ def _summe_der_seite(v, e, seitenwerte, gezeigt):
             sm = sum(teil)
             if abs(sm - v) <= 5e-3 * max(abs(v), 1e-9):
                 return "Summe von " + " + ".join(f"{u:g}" for u in teil) + f" {e}"
+    # DIE DIFFERENZ ZWEIER SEITENWERTE zaehlt genauso. bw10 (Klasse 9) liest
+    # ab, dass der Stein nach 1,4 s unten ist und die Feder erst nach 4,0 s -
+    # beide Zahlen stehen am Bildschirm -, und nennt dann "einen Unterschied
+    # von 2,6 s". Das ist eine Subtraktion, keine Erfindung. Der Riegel ist
+    # derselbe wie bei der Summe: Beide Zahlen muessen AUF DER SEITE stehen
+    # und selbst gedeckt sein.
+    for a, b in itertools.permutations(sorted(set(kandidaten)), 2):
+        if abs((a - b) - v) <= 5e-3 * max(abs(v), 1e-9):
+            return f"Unterschied von {a:g} und {b:g} {e}"
     return None
 
 
@@ -667,6 +676,27 @@ def selbsttest():
         "beobachtung": "Andere Gruppen arbeiten an anderen Aufgaben."})
     if not os_ or not tr:
         f.append("Ein Satz ohne Bezug auf die Zahlen wurde als Streu-Vorbehalt gezaehlt")
+
+    # 1a21. UNTERSCHIED ZWEIER SEITENWERTE, gute Probe - und die Gegenprobe.
+    #       Anlass: bw10 nennt "einen Unterschied von 2,6 s" zwischen 4,0 s und
+    #       1,4 s; beide stehen am Bildschirm.
+    f3 = {"probe": {"sim": "probe",
+                    "status": [{"einstellung": "S", "text": "t1 = 1,4 s · t2 = 4,0 s"}],
+                    "bildtexte": [], "regler": [], "knoepfe": []}}
+
+    def lauf3(text):
+        return pruefe([{"id": "t1", "forschen": [text], "tabRows": [], "beobachtung": ""}],
+                      f3, sim_von)
+
+    r = lauf3("Der Stein ist nach 1,4 s unten, die Feder erst nach 4,0 s – "
+              "ein Unterschied von 2,6 s.")
+    if r[0] or not any("Unterschied" in w[3] for w in r[1]):
+        f.append(f"Unterschied falsch einsortiert: Maengel={r[0]} abgeleitet={r[1]}")
+
+    r = lauf3("Der Stein ist nach 1,4 s unten, die Feder erst nach 4,0 s – "
+              "ein Unterschied von 3,3 s.")
+    if not r[0]:
+        f.append("3,3 s (kein Unterschied der Seitenwerte) blieb unbemerkt")
 
     # 1b. Die Simulation schreibt Punkt, die Seite Komma - das ist KEIN Befund.
     t = lauf("Die Reibungskraft betraegt 14,7 N, der Weg 1,28 m.")
