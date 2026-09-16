@@ -66,19 +66,19 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Beobachte die Feder ohne Last und lies den Wert in der Statuszeile ab.",
-   "Drücke einmal auf „Gewicht anhängen (1 N)“ und lies Kraft und Dehnung ab.",
-   "Vergleiche: Hänge zwei weitere Gewichte an und lies den Zeiger auf der Skala ab."
+   "Sieh die Feder ohne Last an und lies den Zeigerwert in der Statuszeile ab.",
+   "Hänge ein Gewichtsstück von 100 g an. Lies ab, wie viel Newton der Zeiger zeigt.",
+   "Hänge zwei weitere Stücke an und lies jedes Mal wieder am Zeiger ab."
   ],
   "tabCols": [
-   "Angehängte Gewichte",
-   "Angezeigte Kraft in N"
+   "Angehängte Masse m",
+   "Am Zeiger abgelesene Kraft F in N"
   ],
   "tabRows": [
-   "kein Gewicht",
-   "ein Gewicht",
-   "zwei Gewichte",
-   "drei Gewichte"
+   "keine Last",
+   "100 g",
+   "200 g",
+   "300 g"
   ],
   "fachtext": "Eine Kraft kann man nicht anfassen. Man misst sie deshalb über eine Wirkung: Eine Feder wird unter Zug länger. Je größer die Kraft, desto größer die Dehnung. Genau das nutzt der Federkraftmesser aus. Auf seiner Skala steht nicht die Länge, sondern die Kraft in Newton. Ein Gewicht von etwa 100 Gramm zieht mit rund einem Newton nach unten. Der Zeiger übersetzt also Dehnung in Kraft.",
   "merksatz": [
@@ -93,7 +93,7 @@
     "post": "der Feder."
    }
   ],
-  "beobachtung": "Ohne Last meldet die Statuszeile: Keine Last, F = 0 N, die Feder ist entspannt. Nach einem Gewicht steht dort F = 1 N, die Feder ist um 1 cm gedehnt, die Masse beträgt etwa 100 g. Mit drei Gewichten zeigt der Zeiger 3 N; die Skala reicht von 0 N bis 5 N. Mehr Kraft bedeutet also mehr Dehnung, und die Skala macht die Kraft ablesbar.",
+  "beobachtung": "Ohne Last meldet die Statuszeile 0 N, die Feder ist entspannt. Auf jedem Stück steht seine Masse: 100 g. Der Zeiger zeigt dafür F = 0,98 N, für 200 g 1,96 N und für 300 g 2,94 N. Die Skala reicht von 0 N bis 5 N. Die Masse steht auf dem Gewicht, die Kraft liest man am Zeiger ab – 100 g ziehen mit rund 1 N. Für die Winde braucht Herr Kessler also eine Zahl in Newton, und die liefert der Federkraftmesser.",
   "aufgabe": {
    "frage": "Erkläre, warum man an einer gedehnten Feder eine Kraft ablesen kann, obwohl die Kraft selbst unsichtbar bleibt.",
    "zeilen": 3,

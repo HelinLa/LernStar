@@ -81,6 +81,28 @@
     const d = _heftId && HEFT_SEITEN[_heftId];
     if (!d) return;
     const h3 = box.querySelector('.sim-h3');
+    // ── EINE FRAGE, NICHT ZWEI ────────────────────────────────────────
+    // Abdullah, 16.09.2026: "die einsteige und die Simulationen passen immer
+    // noch nicht zusammen ... die Stunden muessen rund sein." Auf dem
+    // Bildschirm standen zwei verschiedene Fragen uebereinander: oben die der
+    // Simulation ("Wie misst man eine Kraft, die man nicht anfassen kann?")
+    // und darunter im Banner die der Heftseite ("Wie kannst du eine Kraft
+    // messen, obwohl du sie nicht sehen kannst?"). Wer aus dem Heft kommt, hat
+    // SEINE Frage auf dem Tisch - die Simulation darf keine zweite stellen.
+    //
+    // Gemessen war das kein Einzelfall: In Klasse 9 tragen vier Simulationen
+    // je ZWEI Heftseiten (arbeit: en2/en3, reibungswaerme: en6/en9,
+    // wirkungsgrad: en10/en11, leistung-rs: en12/en13). Die Ueberschrift kann
+    // immer nur eine der beiden Fragen nennen - die andere Stunde begann also
+    // zwangslaeufig mit der falschen.
+    //
+    // Deshalb traegt die Ueberschrift jetzt den TITEL DER EINHEIT aus dem
+    // Heft, und die Frage steht genau einmal: im Banner. Ohne Heftseite
+    // (Aufruf aus der Themenliste) bleibt alles, wie es war.
+    if (h3 && d.titel) {
+      const emo = (h3.textContent.match(/^\s*([\p{Extended_Pictographic}\u2600-\u27BF]+)/u) || [, ''])[1];
+      h3.textContent = (emo ? emo + ' ' : '') + d.titel;
+    }
     const div = document.createElement('div');
     div.innerHTML = bannerHTML(d);
     const el = div.firstElementChild;

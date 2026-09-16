@@ -66298,19 +66298,31 @@ function _kwnSelf(n) {
 // ═══════════════════════════════════════════════════════
 let _krm = null;
 const _KRM_MAXN = 5, _KRM_PERN = 22, _KRM_TOP = 28, _KRM_NAT = 55, _KRM_X = 150, _KRM_SCALE = 300, _KRM_AMP = 15;
+// DIE STUECKE TRAGEN EINE MASSE, NICHT DIE KRAFT (seit 16.09.2026).
+// Abdullah: "hier hast du immer noch nicht Masse dran, also gewichtStuecke und
+// dann newton ablesen in der simulation". Vorher stand auf jeder Scheibe "1 N"
+// und die Statuszeile rechnete die Masse RUECKWAERTS aus der Kraft
+// ("F = 3 N ... Masse ≈ 300 g") - abzulesen war nichts, die Antwort klebte auf
+// dem Gewicht. Der Einstieg von kr3 fragt aber genau danach: Mia schaetzt
+// "fuenfzig", Ben "zwanzig", und keiner sagt, WOVON. Die Einheit ist die
+// Antwort der Stunde, also darf sie nicht vorgedruckt sein.
+const _KRM_STUECK = 100;          // Masse eines Gewichtsstuecks in Gramm
+const _KRM_G = 9.81;              // Ortsfaktor in N/kg
+function _krmKraft() { return _krm.n * _KRM_STUECK / 1000 * _KRM_G; }
+function _krmMasse() { return _krm.n * _KRM_STUECK; }
 function _krmInit() { _krm = { n: 0, ext: 0, t: 0, flash: 0 }; }
 
 function _krmHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim krm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🪝 Wie misst man eine Kraft, die man nicht anfassen kann?</h3>
-    <div class="fpm-note" style="margin-top:2px">Hänge Gewichte an die Feder. Je größer die Kraft, desto länger wird die Feder – am Zeiger liest du die Kraft in Newton (N) ab.</div>
+    <div class="fpm-note" style="margin-top:2px">Hänge Gewichtsstücke an die Feder. Auf jedem steht seine <b>Masse in Gramm</b>. Je schwerer die Last, desto länger wird die Feder – und am Zeiger liest du ab, <b>wie viel Newton</b> das sind.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="krmAnim" width="440" height="300" class="phys-anim-cv"></canvas>
         <div class="sim-btn-row" style="margin-top:6px">
-          <button class="sim-btn primary" onclick="_krmAdd(1)">➕ Gewicht anhängen (1 N)</button>
-          <button class="sim-btn" onclick="_krmAdd(-1)">➖ Gewicht abnehmen</button>
+          <button class="sim-btn primary" onclick="_krmAdd(1)">➕ Gewichtsstück anhängen (100 g)</button>
+          <button class="sim-btn" onclick="_krmAdd(-1)">➖ Gewichtsstück abnehmen</button>
         </div>
         <div class="sim-btn-row" style="margin-top:4px">
           <button class="sim-btn" onclick="_krmReset()">↺ Feder leeren</button>
@@ -66335,8 +66347,14 @@ function _krmReset() { if (!_krm) return; _krm.n = 0; _krmStatus(); }
 function _krmStatus() {
   const el = document.getElementById('krmStatus'); if (!el) return;
   const n = _krm.n;
-  if (n === 0) { el.innerHTML = 'Keine Last: <b>F = 0 N</b>. Die Feder ist entspannt. Hänge ein Gewicht an!'; el.className = 'lmp-status'; return; }
-  el.innerHTML = `Angehängte Kraft: <b>F = ${n} N</b>. Die Feder ist um <b>${n} cm</b> gedehnt (Masse ≈ ${n * 100} g). Am Zeiger liest du die Kraft direkt ab.`;
+  if (n === 0) { el.innerHTML = 'Keine Last. Der Zeiger steht auf <b>0 N</b>, die Feder ist entspannt. Hänge ein Gewichtsstück an!'; el.className = 'lmp-status'; return; }
+  // Erst die Masse, DANN die abgelesene Kraft - in dieser Richtung wird
+  // gemessen. Die Umrechnung steht daneben, damit man sie nachvollziehen kann.
+  el.innerHTML = `Angehängt: <b>${n} × 100 g = ${_fpmNum(_krmMasse(), 0)} g</b>. `
+    + `Der Zeiger steht bei <b>F = ${_fpmNum(_krmKraft(), 2)} N</b>, die Feder ist um `
+    + `<b>${_fpmNum(_krmKraft(), 2)} cm</b> gedehnt. `
+    + `Nachgerechnet: F = m · g = ${_fpmNum(_krmMasse() / 1000, 1)} kg · 9,81 N/kg. `
+    + `100 g ziehen also mit rund 1 N.`;
   el.className = 'lmp-status on';
 }
 
@@ -66344,7 +66362,11 @@ function _krmStatus() {
 function _krmUpdate(dt) {
   if (!_krm) return;
   _krm.t += dt; _krm.flash = Math.max(0, _krm.flash - dt * 2);
-  _krm.ext += (_krm.n - _krm.ext) * Math.min(1, dt * 7);
+  // Die Dehnung folgt der KRAFT, nicht der Stueckzahl. Vorher war das dasselbe
+  // (1 Scheibe = 1 N); jetzt sind drei Scheiben 2,94 N, und der Zeiger muss
+  // dort stehen, wo die Statuszeile es sagt - sonst zeigt das Bild 3 N und
+  // der Text 2,94 N.
+  _krm.ext += (_krmKraft() - _krm.ext) * Math.min(1, dt * 7);
 }
 function _krmDraw(ctx, cv) {
   if (!_krm) return;
@@ -66368,7 +66390,7 @@ function _krmDraw(ctx, cv) {
     const wy = bottomY + 12 + i * 15;
     ctx.fillStyle = '#3b82f6'; ctx.fillRect(x - 26, wy, 52, 13);
     ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 1.5; ctx.strokeRect(x - 26, wy, 52, 13);
-    ctx.fillStyle = '#fff'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('1 N', x, wy + 10);
+    ctx.fillStyle = '#fff'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('100 g', x, wy + 10);
   }
   // Skala rechts
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(_KRM_SCALE, zeroY); ctx.lineTo(_KRM_SCALE, zeroY + _KRM_MAXN * _KRM_PERN); ctx.stroke();
@@ -66382,7 +66404,10 @@ function _krmDraw(ctx, cv) {
   ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x + _KRM_AMP + 4, pY); ctx.lineTo(_KRM_SCALE - 6, pY); ctx.stroke();
   ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(_KRM_SCALE - 6, pY); ctx.lineTo(_KRM_SCALE - 15, pY - 5); ctx.lineTo(_KRM_SCALE - 15, pY + 5); ctx.closePath(); ctx.fill();
   // Ablesung
-  ctx.fillStyle = '#dc2626'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('F = ' + _krm.n + ' N', _KRM_SCALE + 12, zeroY - 12);
+  // Der Zeigerwert wird ABGELESEN, also mit zwei Stellen wie auf einer echten
+  // Skala - nicht als ganze Zahl, die aus der Zahl der Scheiben faellt.
+  ctx.fillStyle = '#dc2626'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('F = ' + _fpmNum(_krmKraft(), 2) + ' N', _KRM_SCALE + 12, zeroY - 12);
   // Beschriftung
   ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Federkraftmesser', x, H - 8);
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.fillText('Skala in Newton', _KRM_SCALE + 30, zeroY + _KRM_MAXN * _KRM_PERN + 18);
@@ -66403,7 +66428,7 @@ function _krmArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Hänge nacheinander 1, 2, 3 … Gewichte (je 1 N) an die Feder.</li>
+          <li>Hänge nacheinander 1, 2, 3 … Gewichtsstücke (je 100 g) an die Feder.</li>
           <li>Beobachte, wie weit sich die Feder dehnt.</li>
           <li>Lies die Kraft am Zeiger auf der Newton-Skala ab.</li>
         </ol></div>
@@ -66411,13 +66436,13 @@ function _krmArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
         <div class="ab-t">Trage die angezeigte Kraft und die Dehnung ein.</div>
         <table class="ab-table"><tbody>
-          <tr><td>1 Gewicht</td><td>Anzeige: ${inp('f1', 'N')}</td><td>Dehnung: ${inp('d1', 'cm')}</td></tr>
-          <tr><td>2 Gewichte</td><td>Anzeige: ${inp('f2', 'N')}</td><td>Dehnung: ${inp('d2', 'cm')}</td></tr>
-          <tr><td>3 Gewichte</td><td>Anzeige: ${inp('f3', 'N')}</td><td>Dehnung: ${inp('d3', 'cm')}</td></tr>
+          <tr><td>100 g</td><td>Zeiger: ${inp('f1', 'N')}</td><td>Dehnung: ${inp('d1', 'cm')}</td></tr>
+          <tr><td>200 g</td><td>Zeiger: ${inp('f2', 'N')}</td><td>Dehnung: ${inp('d2', 'cm')}</td></tr>
+          <tr><td>300 g</td><td>Zeiger: ${inp('f3', 'N')}</td><td>Dehnung: ${inp('d3', 'cm')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne die Feder ohne Last und mit 3 Gewichten. Welche ist länger?</div>
+        <div class="ab-t">Zeichne die Feder ohne Last und mit 300 g. Welche ist länger?</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -66451,7 +66476,7 @@ function _krmArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit jedem zusätzlichen 1-N-Gewicht dehnt sich die Feder gleichmäßig weiter (hier ≈ 1 cm pro 1 N). Der Zeiger wandert auf der Newton-Skala nach unten und zeigt genau die angehängte Kraft an.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Auf jedem Stück steht 100 g. Der Zeiger zeigt dafuer 0,98 N - also rund 1 N. Mit 200 g sind es 1,96 N, mit 300 g 2,94 N, und die Feder dehnt sich um genauso viele Zentimeter. Abgelesen wird die KRAFT am Zeiger; die Masse steht auf dem Gewicht.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Ein Federkraftmesser misst Kräfte über die Dehnung einer Feder. Die Dehnung ist ein Maß für die Kraft. Kraft wird in Newton (N) gemessen; eine Masse von rund 100 g hat auf der Erde eine Gewichtskraft von etwa 1 N. Die genaue Proportionalität (Hooke) wird in 9.1.4 untersucht.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Kraftmesser misst die Masse (in Gramm).“ – Nein, er misst die Kraft (in Newton). (2) „Man kann eine Kraft direkt sehen.“ (3) „Die Feder dehnt sich zufällig.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Masse (Waage, kg/g) und Kraft (Kraftmesser, N) klar trennen; Zeiger und Skala gemeinsam ablesen; 100 g ≈ 1 N als Faustregel.</div>

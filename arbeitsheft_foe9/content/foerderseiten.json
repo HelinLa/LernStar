@@ -147,29 +147,29 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke auf „Feder leeren“ und lies die Statuszeile.",
-   "Drücke einmal auf „Gewicht anhängen (1 N)“ und fülle Zeile 2 aus.",
-   "Drücke auf „Gewicht abnehmen“ und fülle Zeile 3 aus."
+   "Drücke auf „Feder leeren“. Lies die Statuszeile.",
+   "Drücke einmal auf „Gewichtsstück anhängen (100 g)“. Lies ab: Wie viel Newton zeigt der Zeiger?",
+   "Drücke noch einmal darauf. Lies wieder ab und füll die letzte Zeile."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die Werte auf einer Ergebniskarte.",
   "tabCols": [
-   "Was machst du am Bildschirm?",
-   "Welche Kraft steht in der Statuszeile?",
+   "Wie viel Gramm hängen dran?",
+   "Wie viel Newton zeigt der Zeiger?",
    "Wie ist die Feder?"
   ],
   "tabRows": [
    [
-    "Feder leeren",
+    "0 g",
     "",
     ""
    ],
    [
-    "ein Gewicht anhängen",
+    "100 g",
     "",
     ""
    ],
    [
-    "das Gewicht abnehmen",
+    "200 g",
     "",
     ""
    ]
@@ -193,8 +193,8 @@
    "1 N"
   ],
   "beispiel": {
-   "frage": "Was zeigt der Federkraftmesser ohne Gewicht an?",
-   "antwort": "In der Statuszeile steht: F = 0 N. Die Feder ist entspannt. An ihr zieht nichts."
+   "frage": "Was zeigt der Zeiger, wenn 100 g dranhängen?",
+   "antwort": "Der Zeiger steht bei F = 0,98 N. Das ist rund 1 Newton."
   },
   "aufgaben": [
    {

@@ -83,5 +83,17 @@
    ],
    "regler": {}
   }
+ ],
+ "kraftmesser": [
+  {
+   "wozu": "kr3, kf2, fk2 (drei Gewichtsstuecke)",
+   "knoepfe": [
+    "_krmReset()",
+    "_krmAdd(1)",
+    "_krmAdd(1)",
+    "_krmAdd(1)"
+   ],
+   "regler": {}
+  }
  ]
 }

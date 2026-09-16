@@ -882,7 +882,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Kraft?",
     titel: "Der Strich, an dem der Zeiger stehen bleibt",
     frage: "Wie lässt sich eine Kraft messen?",
-    schritte: ["Wähle „Feder leeren“ und lies ab, welche Kraft der Zeiger ohne Last anzeigt. Trage Kraft und Dehnung in die erste Zeile der Tabelle ein.", "Hänge mit „Gewicht anhängen (1 N)“ ein Gewicht nach dem anderen an. Lies nach jedem Schritt die Kraft am Zeiger und die Dehnung der Feder ab und trage beide Werte ein.", "Nimm die Gewichte mit „Gewicht abnehmen“ einzeln wieder ab und prüfe, ob die Feder bei jeder Stufe dieselbe Dehnung zeigt wie beim Anhängen."]
+    schritte: ["Drücke „Feder leeren“. Lies ab, was der Zeiger ohne Last anzeigt, und trage es in die erste Zeile ein.", "Hänge mit „Gewichtsstück anhängen (100 g)“ ein Stück nach dem anderen an. Lies nach jedem Stück am Zeiger ab, wie viel Newton das sind, und trage Masse und Kraft ein.", "Nimm die Stücke mit „Gewichtsstück abnehmen“ einzeln wieder ab und prüfe, ob der Zeiger bei jeder Stufe denselben Wert zeigt wie beim Anhängen."]
   },
   "kr4": {
     klasse: 9, schulform: "Realschule NRW",
@@ -2250,7 +2250,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Kraft?",
     titel: "Was der Zeiger verrät",
     frage: "Wie kannst du eine Kraft messen, obwohl du sie nicht sehen kannst?",
-    schritte: ["Beobachte die Feder ohne Last und lies den Wert in der Statuszeile ab.", "Drücke einmal auf „Gewicht anhängen (1 N)“ und lies Kraft und Dehnung ab.", "Vergleiche: Hänge zwei weitere Gewichte an und lies den Zeiger auf der Skala ab."]
+    schritte: ["Sieh die Feder ohne Last an und lies den Zeigerwert in der Statuszeile ab.", "Hänge ein Gewichtsstück von 100 g an. Lies ab, wie viel Newton der Zeiger zeigt.", "Hänge zwei weitere Stücke an und lies jedes Mal wieder am Zeiger ab."]
   },
   "kf3": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -4464,7 +4464,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Kraft?",
     titel: "Was der Zeiger verrät",
     frage: "Wie kannst du eine Kraft messen, die du nicht siehst?",
-    schritte: ["Drücke auf „Feder leeren“ und lies die Statuszeile.", "Drücke einmal auf „Gewicht anhängen (1 N)“ und fülle Zeile 2 aus.", "Drücke auf „Gewicht abnehmen“ und fülle Zeile 3 aus."]
+    schritte: ["Drücke auf „Feder leeren“. Lies die Statuszeile.", "Drücke einmal auf „Gewichtsstück anhängen (100 g)“. Lies ab: Wie viel Newton zeigt der Zeiger?", "Drücke noch einmal darauf. Lies wieder ab und füll die letzte Zeile."]
   },
   "fk3": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",

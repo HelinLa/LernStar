@@ -122,19 +122,19 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Wähle „Feder leeren“ und lies ab, welche Kraft der Zeiger ohne Last anzeigt. Trage Kraft und Dehnung in die erste Zeile der Tabelle ein.",
-   "Hänge mit „Gewicht anhängen (1 N)“ ein Gewicht nach dem anderen an. Lies nach jedem Schritt die Kraft am Zeiger und die Dehnung der Feder ab und trage beide Werte ein.",
-   "Nimm die Gewichte mit „Gewicht abnehmen“ einzeln wieder ab und prüfe, ob die Feder bei jeder Stufe dieselbe Dehnung zeigt wie beim Anhängen."
+   "Drücke „Feder leeren“. Lies ab, was der Zeiger ohne Last anzeigt, und trage es in die erste Zeile ein.",
+   "Hänge mit „Gewichtsstück anhängen (100 g)“ ein Stück nach dem anderen an. Lies nach jedem Stück am Zeiger ab, wie viel Newton das sind, und trage Masse und Kraft ein.",
+   "Nimm die Stücke mit „Gewichtsstück abnehmen“ einzeln wieder ab und prüfe, ob der Zeiger bei jeder Stufe denselben Wert zeigt wie beim Anhängen."
   ],
   "tabCols": [
-   "Angehängte Kraft F in N",
-   "Dehnung der Feder s in cm"
+   "Angehängte Masse m",
+   "Am Zeiger abgelesene Kraft F in N"
   ],
   "tabRows": [
    "ohne Gewicht (Feder leer)",
-   "1 Gewicht angehängt",
-   "2 Gewichte angehängt",
-   "3 Gewichte angehängt"
+   "100 g",
+   "200 g",
+   "300 g"
   ],
   "fachtext": "Eine Kraft selbst kann man nicht sehen, wohl aber ihre Wirkung. Genau das nutzt ein Kraftmesser: In seinem Rohr steckt eine Feder, die sich unter Zug dehnt. Je größer die Kraft F ist, desto weiter dehnt sich die Feder, und ein Zeiger auf der Skala zeigt an, wie weit. Die Einheit der Kraft ist das Newton mit dem Kurzzeichen N. Ein Gewichtsstück von etwa 100 g zieht mit rund 1 N nach unten. Weil gleiche Gewichte die Feder um gleiche Stücke dehnen, ist die Skala eines Kraftmessers gleichmäßig geteilt.",
   "merksatz": [
@@ -149,7 +149,7 @@
     "post": " mit dem Kurzzeichen N."
    }
   ],
-  "beobachtung": "Ohne Last zeigt der Kraftmesser F = 0 N, die Feder ist entspannt. Sobald ein Gewicht hängt, steht der Zeiger bei F = 1 N und die Feder ist um 1 cm gedehnt; dieses Gewichtsstück hat etwa 100 g. Mit dem zweiten Gewicht zeigt der Kraftmesser 2 N und 2 cm Dehnung, mit dem dritten 3 N und 3 cm. Jedes weitere Gewicht bringt also genau 1 N dazu und dehnt die Feder um ein weiteres Zentimeter. Beim Abnehmen läuft die Anzeige dieselben Werte rückwärts durch.",
+  "beobachtung": "Ohne Last steht der Zeiger auf 0 N, die Feder ist entspannt. Auf jedem Gewichtsstück steht 100 g – das ist eine Masse, keine Kraft. Hängt ein Stück daran, steht der Zeiger bei F = 0,98 N, also bei rund 1 N. Mit 200 g sind es 1,96 N, mit 300 g 2,94 N: dreifache Masse, dreifache Kraft. Die Simulation zeigt die Rechnung dazu, F = m · g mit 9,81 N/kg. Beim Abnehmen zeigt der Zeiger bei jeder Stufe wieder denselben Wert. Damit ist Mias und Bens Streit entschieden: Gemessen wird in Newton, und aus der Masse in Gramm wird die Kraft in Newton – 100 g ziehen mit rund 1 N.",
   "aufgabe": {
    "frage": "Erkläre, warum man an einem Kraftmesser eine Kraft in Newton ablesen kann, obwohl die Feder darin nur ihre Länge ändert.",
    "zeilen": 3,
