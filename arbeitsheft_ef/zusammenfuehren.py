@@ -98,7 +98,10 @@ for th in plan.THEMEN:
     for feld, soll in (("lueckensaetze", 4), ("richtigfalsch", 4), ("komp", 4), ("afb", 4)):
         if len(u.get(feld, [])) != soll:
             mangel.append(f"{th['id']} (Uebung): {feld} hat {len(u.get(feld, []))} statt {soll}")
-    if len(u.get("mc", {}).get("optionen", [])) != 3:
+    # Die Auswahlaufgabe DARF fehlen (Abdullah, 16.09.2026: "die machen wir
+    # erstmal nicht"). Ist sie da, braucht sie genau drei Optionen - eine
+    # Aufgabe mit zwei oder vier waere ein Fehler, keine Entscheidung.
+    if "mc" in u and len(u.get("mc", {}).get("optionen", [])) != 3:
         mangel.append(f"{th['id']} (Uebung): mc braucht genau 3 Optionen")
     falsch = kompetenzen.pruefe(u.get("komp", []))
     if falsch:

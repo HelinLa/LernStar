@@ -1,0 +1,18 @@
+{
+ "mc": {
+  "frage": "Tobias bildet aus seinen fünf gestoppten Geschwindigkeiten den Mittelwert und will ihn als Beschleunigung des Wagens angeben. Welcher Einwand trifft zu?",
+  "optionen": [
+   "Der Mittelwert wäre brauchbar, sobald R² genau 1,0000 beträgt; darunter darf man ihn nicht verwenden.",
+   "Ein Mittelwert der v-Werte hat die Einheit m/s und bleibt eine Geschwindigkeit; gesucht ist dagegen die Steigung Δv/Δt der t-v-Geraden in m/s².",
+   "Statt des Mittelwerts ist der größte gestoppte Wert 4,76 m/s einzusetzen, denn er gehört zum Ende der Fahrt."
+  ],
+  "richtig": 1,
+  "erklaerung": "Beide falschen Antworten bleiben bei Geschwindigkeiten stehen. Die Beschleunigung ist keine der fünf gestoppten Geschwindigkeiten, sondern der Quotient Δv/Δt – die Steigung der t-v-Geraden. Die Auswertung meldet dazu y = 2,000·x und darunter „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s² · Literatur: 2,00“. R² beschreibt nur, wie eng die Punkte an der Geraden liegen, und entscheidet deshalb nicht darüber, welche Größe gesucht ist."
+ },
+ "offen": {
+  "frage": "Beurteile Miras Satz: „Die Formel v = a · t haben wir nicht angewendet, wir haben sie gemessen.“ Begründe mit deiner Messreihe, welcher Befund am Bildschirm die Formel trägt, und erkläre, wozu die Auftragung t → a zusätzlich gebraucht wird.",
+  "prompt": "Beurteile Miras Satz: „Die Formel v = a · t haben wir nicht angewendet, wir haben sie gemessen.“ Begründe mit deiner Messreihe, welcher Befund am Bildschirm die Formel trägt, und erkläre, wozu die Auftragung t → a zusätzlich gebraucht wird.",
+  "zeilen": 5,
+  "loesung": "Mira hat recht. Gemessen werden zunächst nur Wertepaare aus Uhr und Tacho. Der Befund am Bildschirm ist die Form der Punktreihe: Im t-v-Diagramm liegen die fünf gestoppten Punkte auf einer Geraden durch den Ursprung, die Auswertung meldet y = 2,000·x bei R² = 1,0000. Eine Ursprungsgerade bedeutet, dass v/t für jeden Punkt denselben Wert a hat; nach v umgestellt ergibt das v = a · t. Die Formel ist damit das Ergebnis der Messung und nicht ihr Ausgangspunkt. Die Auftragung t → a prüft die stillschweigende Voraussetzung nach: Sie bildet Δv/Δt aus je zwei Tabellenzeilen und liefert eine Waagerechte auf der Höhe 2,00 m/s². Erst weil sich a während der Fahrt nicht ändert, darf man überhaupt von einer einzigen Beschleunigung sprechen und v = a · t für die ganze Fahrt schreiben."
+ }
+}

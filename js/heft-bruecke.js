@@ -4909,7 +4909,7 @@ const HEFT_SEITEN = {
   },
   "ki4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "beschleunigung-ef", seite: 16,
+    sim: "beschleunigung-ef", seite: 15,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum trägt man t² auf?",
     titel: "Aus der Kurve eine Gerade machen",
@@ -4918,7 +4918,7 @@ const HEFT_SEITEN = {
   },
   "ki5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "freierfall", seite: 20,
+    sim: "freierfall", seite: 19,
     kapitel: "Grundlagen der Mechanik",
     name: "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
     titel: "Zwei Wege, zwei Zahlen",
@@ -4927,7 +4927,7 @@ const HEFT_SEITEN = {
   },
   "ki6": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "wurf-waagerecht", seite: 25,
+    sim: "wurf-waagerecht", seite: 24,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum trifft die geworfene Kugel gleichzeitig auf?",
     titel: "Ein Schlag, nicht zwei",
@@ -4936,7 +4936,7 @@ const HEFT_SEITEN = {
   },
   "ki7": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 30,
+    sim: null, seite: 29,
     kapitel: "Grundlagen der Mechanik",
     name: "Eine Kraft, zwei Richtungen",
     titel: "Zwei Kisten, ein schräges Seil",
@@ -4945,7 +4945,7 @@ const HEFT_SEITEN = {
   },
   "ki8": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "traegheit", seite: 35,
+    sim: "traegheit", seite: 34,
     kapitel: "Grundlagen der Mechanik",
     name: "Was macht ein Körper, wenn keine Kraft mehr zieht?",
     titel: "Niemand schiebt, nichts ändert sich",
@@ -4954,7 +4954,7 @@ const HEFT_SEITEN = {
   },
   "ki9": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "newton2", seite: 40,
+    sim: "newton2", seite: 39,
     kapitel: "Grundlagen der Mechanik",
     name: "Wovon hängt die Beschleunigung ab?",
     titel: "Ein Regler nach dem anderen",
@@ -4963,7 +4963,7 @@ const HEFT_SEITEN = {
   },
   "ki10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "kraefte-gleichgewicht", seite: 45,
+    sim: "kraefte-gleichgewicht", seite: 44,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
     titel: "Still, aber nicht kräftefrei",
@@ -4972,7 +4972,7 @@ const HEFT_SEITEN = {
   },
   "ki11": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "wechselwirkung-ef", seite: 50,
+    sim: "wechselwirkung-ef", seite: 49,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum drückt die Wand zurück?",
     titel: "Gleiche Kraft, ungleiche Fahrt",
@@ -4981,7 +4981,7 @@ const HEFT_SEITEN = {
   },
   "ki12": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "reibung", seite: 54,
+    sim: "reibung", seite: 53,
     kapitel: "Grundlagen der Mechanik",
     name: "Wie viel Kraft bleibt zum Beschleunigen übrig?",
     titel: "Was von 80 Newton übrig bleibt",
@@ -4990,7 +4990,7 @@ const HEFT_SEITEN = {
   },
   "ki13": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "arbeit", seite: 60,
+    sim: "arbeit", seite: 59,
     kapitel: "Grundlagen der Mechanik",
     name: "Wann wird wirklich Arbeit verrichtet?",
     titel: "Vier Meter getragen, null Joule",
@@ -4999,7 +4999,7 @@ const HEFT_SEITEN = {
   },
   "ki14": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "bewegungsenergie", seite: 64,
+    sim: "bewegungsenergie", seite: 63,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum zählt das Tempo doppelt?",
     titel: "Zweimal verdoppelt, zweimal anders",
@@ -5008,7 +5008,7 @@ const HEFT_SEITEN = {
   },
   "ki15": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "spannenergie", seite: 69,
+    sim: "spannenergie", seite: 68,
     kapitel: "Grundlagen der Mechanik",
     name: "Die gespannte Feder – wo steckt die Energie?",
     titel: "Das Dreieck unter der Geraden",
@@ -5017,7 +5017,7 @@ const HEFT_SEITEN = {
   },
   "ki16": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "impuls", seite: 74,
+    sim: "impuls", seite: 73,
     kapitel: "Grundlagen der Mechanik",
     name: "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
     titel: "Die Summe mit Vorzeichen",
@@ -5026,7 +5026,7 @@ const HEFT_SEITEN = {
   },
   "gw1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "kreisbewegung", seite: 84,
+    sim: "kreisbewegung", seite: 83,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Wie schnell ist ein Punkt auf der Kreisbahn?",
     titel: "Gleicher Winkel, verschiedener Weg",
@@ -5035,7 +5035,7 @@ const HEFT_SEITEN = {
   },
   "gw2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "zentripetalkraft", seite: 89,
+    sim: "zentripetalkraft", seite: 88,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was hält den Körper auf der Kreisbahn?",
     titel: "Der Pfeil zeigt nach innen",
@@ -5044,7 +5044,7 @@ const HEFT_SEITEN = {
   },
   "gw3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "zentripetalkraft", seite: 93,
+    sim: "zentripetalkraft", seite: 92,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was sagt eine Messreihe über die Zentripetalkraft?",
     titel: "Acht Punkte, eine Steigung",
@@ -5053,7 +5053,7 @@ const HEFT_SEITEN = {
   },
   "gw4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "gravitation-abstand", seite: 97,
+    sim: "gravitation-abstand", seite: 96,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Mehr Masse oder weniger Abstand – was wirkt stärker?",
     titel: "Zwei Kugeln, zwei Auftragungen",
@@ -5062,7 +5062,7 @@ const HEFT_SEITEN = {
   },
   "gw5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "ortsfaktor", seite: 101,
+    sim: "ortsfaktor", seite: 100,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum wiegt derselbe Mensch auf dem Mond weniger?",
     titel: "Dieselbe Person, drei Zahlen",
@@ -5071,7 +5071,7 @@ const HEFT_SEITEN = {
   },
   "gw6": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 105,
+    sim: null, seite: 104,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was ist ein Feld?",
     titel: "Vier Orte, ein Feld",
@@ -5080,7 +5080,7 @@ const HEFT_SEITEN = {
   },
   "gw7": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 110,
+    sim: null, seite: 109,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Wie wiegt man die Erde?",
     titel: "Die Drehwaage im Gartenhaus",
@@ -5089,7 +5089,7 @@ const HEFT_SEITEN = {
   },
   "gw8": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "planetenbahn", seite: 115,
+    sim: "planetenbahn", seite: 114,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum fällt die Erde nicht in die Sonne?",
     titel: "Das ewige Vorbeifallen",
@@ -5098,7 +5098,7 @@ const HEFT_SEITEN = {
   },
   "gw9": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 120,
+    sim: null, seite: 119,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was verrät die Umlaufzeit über den Bahnradius?",
     titel: "Sechs Planeten, eine Konstante",
@@ -5107,7 +5107,7 @@ const HEFT_SEITEN = {
   },
   "gw10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "weltbild", seite: 126,
+    sim: "weltbild", seite: 125,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum läuft der Mars manchmal rückwärts?",
     titel: "Zwei Modelle, ein Himmel",
@@ -5116,7 +5116,7 @@ const HEFT_SEITEN = {
   },
   "gw11": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: null, seite: 131,
+    sim: null, seite: 130,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Wem glaubt man ein Weltbild?",
     titel: "Vier Quellen, eine Behauptung",
@@ -5125,7 +5125,7 @@ const HEFT_SEITEN = {
   },
   "gw12": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
-    sim: "lichtuhr", seite: 137,
+    sim: "lichtuhr", seite: 136,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum geht die bewegte Uhr langsamer?",
     titel: "Ein Photon, zwei Zeitspannen",

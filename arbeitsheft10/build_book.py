@@ -1565,6 +1565,23 @@ def _kompetenzen(o,ub):
     return codes
 
 
+def _merk_voll(m):
+    """Merksatz mit gefuellter Luecke - MIT dem fehlenden Leerzeichen.
+
+    Die Fortsetzung hinter der Luecke wurde ohne Trennung angehaengt: Aus
+    "heisst ___" + "Beschleunigung" + "und wird in m/s2 angegeben." wurde
+    "heisst Beschleunigungund wird in m/s2 angegeben." Gemessen am 16.09.2026:
+    **283 von 950 Luecken** in 15 Baenden trifft das - immer dort, wo die
+    Fortsetzung mit einem Buchstaben beginnt. Beginnt sie mit einem Satzzeichen
+    ("; die Formel ist gemessen"), darf KEIN Leerzeichen davor - deshalb die
+    Unterscheidung und nicht ein blindes Zusammenfuegen.
+    """
+    post = m.get("post") or ""
+    if post and post[0] not in ".,;:!?)»“":
+        post = " " + post
+    return m["pre"] + " " + m["loesung"] + post
+
+
 def lehrer_bloecke(tid):
     """Die Bloecke eines Lehrerteils, in der Reihenfolge des Unterrichts.
 
@@ -1613,7 +1630,7 @@ def lehrer_bloecke(tid):
     # ── ⑥ Merksatz vollstaendig ──────────────────────────────────────────
     if ms:
         L.append(("Abschnitt 6 · Merksatz – vollständig",
-                  [" ".join(m["pre"]+" "+m["loesung"]+m.get("post","") for m in ms)]))
+                  [" ".join(_merk_voll(m) for m in ms)]))
 
     # ── ⑦ Aufgabe: Wortlaut ueber der Loesung ────────────────────────────
     if auf.get("frage"):

@@ -963,22 +963,37 @@ def ch_uebung(ub,cfg,chtitel,fno,pn,ueber=None):
     B=[b_titel("Übungen")]
     B.append(b_para(cfg.get("titel") or cfg["name"],art="med",farbe=fd.STIL["akzent"],
                     breite=LESE,abstand=fd.ABS_ABSCHNITT,name="Themenzeile"))
-    B.append(b_marke(1,"Ergänze die Lückensätze.",kp[0],ka[0]))
-    for s in ub["lueckensaetze"]: B.append(b_lueckensatz(s))
-    B[-1].abstand=fd.ABS_ABSCHNITT
-    B.append(b_marke(2,"Entscheide, ob die Aussagen stimmen. Kreuze an.",kp[1],ka[1]))
-    B.append(b_richtigfalsch_kopf(len(ub["richtigfalsch"])))
-    for s in ub["richtigfalsch"]: B.append(b_richtigfalsch(s["aussage"]))
-    B[-1].abstand=fd.ABS_ABSCHNITT
-    mc=ub["mc"]
-    B.append(b_marke(3,"Bestimme die richtige Antwort. Kreuze an.",kp[2],ka[2]))
-    B+=b_mc(mc["frage"],mc["optionen"])
-    B[-1].abstand=fd.ABS_ABSCHNITT
-    of=ub["offen"]
-    B.append(b_marke(4,"Erkläre in ganzen Sätzen.",kp[3],ka[3]))
-    B.append(b_para(of["prompt"],breite=LESE,haftet=2,name="Schreibauftrag"))
-    B+=b_linien(max(int(of.get("zeilen",3)),3))
-    B[-1].abstand=fd.ABS_ABSCHNITT
+    # VIER BLOECKE, ABER JEDER DARF FEHLEN - und die Nummern zaehlen mit.
+    # Abdullah, 16.09.2026: "kannst du die sachen rausnehmen also die aufgaben
+    # aus EF buch, die machen wir erstmal nicht ... wir bleiben bei der
+    # gleichfoermigen Bewegung." Vorher griff die Funktion `ub["mc"]` und
+    # `ub["offen"]` ungeprueft ab - eine Einheit ohne diese beiden Aufgaben
+    # haette den Bau abgebrochen, nicht eine kuerzere Seite ergeben.
+    nr=0
+    if ub.get("lueckensaetze"):
+        nr+=1
+        B.append(b_marke(nr,"Ergänze die Lückensätze.",kp[0],ka[0]))
+        for s in ub["lueckensaetze"]: B.append(b_lueckensatz(s))
+        B[-1].abstand=fd.ABS_ABSCHNITT
+    if ub.get("richtigfalsch"):
+        nr+=1
+        B.append(b_marke(nr,"Entscheide, ob die Aussagen stimmen. Kreuze an.",kp[1],ka[1]))
+        B.append(b_richtigfalsch_kopf(len(ub["richtigfalsch"])))
+        for s in ub["richtigfalsch"]: B.append(b_richtigfalsch(s["aussage"]))
+        B[-1].abstand=fd.ABS_ABSCHNITT
+    if ub.get("mc"):
+        nr+=1
+        mc=ub["mc"]
+        B.append(b_marke(nr,"Bestimme die richtige Antwort. Kreuze an.",kp[2],ka[2]))
+        B+=b_mc(mc["frage"],mc["optionen"])
+        B[-1].abstand=fd.ABS_ABSCHNITT
+    if ub.get("offen"):
+        nr+=1
+        of=ub["offen"]
+        B.append(b_marke(nr,"Erkläre in ganzen Sätzen.",kp[3],ka[3]))
+        B.append(b_para(of["prompt"],breite=LESE,haftet=2,name="Schreibauftrag"))
+        B+=b_linien(max(int(of.get("zeilen",3)),3))
+        B[-1].abstand=fd.ABS_ABSCHNITT
     # Selbst-Check
     B.append(b_unterkopf("Mein Selbst-Check"))
     def b_sterne(h,d,y):
@@ -1733,6 +1748,23 @@ def _kompetenzen(o,ub):
     return codes
 
 
+def _merk_voll(m):
+    """Merksatz mit gefuellter Luecke - MIT dem fehlenden Leerzeichen.
+
+    Die Fortsetzung hinter der Luecke wurde ohne Trennung angehaengt: Aus
+    "heisst ___" + "Beschleunigung" + "und wird in m/s2 angegeben." wurde
+    "heisst Beschleunigungund wird in m/s2 angegeben." Gemessen am 16.09.2026:
+    **283 von 950 Luecken** in 15 Baenden trifft das - immer dort, wo die
+    Fortsetzung mit einem Buchstaben beginnt. Beginnt sie mit einem Satzzeichen
+    ("; die Formel ist gemessen"), darf KEIN Leerzeichen davor - deshalb die
+    Unterscheidung und nicht ein blindes Zusammenfuegen.
+    """
+    post = m.get("post") or ""
+    if post and post[0] not in ".,;:!?)»“":
+        post = " " + post
+    return m["pre"] + " " + m["loesung"] + post
+
+
 def lehrer_bloecke(tid):
     """Die Bloecke eines Lehrerteils, in der Reihenfolge des Unterrichts.
 
@@ -1781,7 +1813,7 @@ def lehrer_bloecke(tid):
     # ── ⑥ Merksatz vollstaendig ──────────────────────────────────────────
     if ms:
         L.append(("Abschnitt 6 · Merksatz – vollständig",
-                  [" ".join(m["pre"]+" "+m["loesung"]+m.get("post","") for m in ms)]))
+                  [" ".join(_merk_voll(m) for m in ms)]))
 
     # ── ⑦ Aufgabe: Wortlaut ueber der Loesung ────────────────────────────
     if auf.get("frage"):
