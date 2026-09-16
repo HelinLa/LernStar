@@ -867,7 +867,7 @@
   "titel": "Der staubige Globus neben dem Schrank",
   "problem": "Auf der Rückseite jeder Sternkarte steht eine Uhrzeit: gültig um 22 Uhr. Nour rechnet nach, wann der Fernrohrabend beginnen könnte. Jannis schreibt seiner Cousine in Neuseeland, ob sie mitschaut. Ihre Antwort kommt sofort: Bei ihr sei gerade tiefe Nacht, der Himmel voller Sterne. Nour dreht den staubigen Globus neben dem Schrank langsam einmal herum.",
   "frage": "Wovon hängt es ab, ob es an einem Ort gerade Tag oder Nacht ist?",
-  "auftrag": "Untersuche, wie sich Tag und Nacht bei Ben und Yumi ändern, wenn du den Globus Vierteldrehung für Vierteldrehung weiterdrehst.",
+  "auftrag": "Untersuche, wie sich Tag und Nacht an deinem Ort und auf der Gegenseite ändern, wenn du den Globus Vierteldrehung für Vierteldrehung weiterdrehst.",
   "predict": [
    "Die Sonne wandert um die Erde herum und beleuchtet dabei eine Seite nach der anderen.",
    "Die Erde dreht sich um sich selbst; Tag hat immer nur die Seite, die gerade zur Sonne zeigt.",
@@ -877,7 +877,7 @@
   "forschen": [
    "Drücke Pause, damit der Globus stehen bleibt und du in Ruhe ablesen kannst.",
    "Stelle den Regler „Erde von Hand drehen“ nacheinander auf 0°, 90°, 180° und 270° ein.",
-   "Lies bei jeder Stellung die Statuszeile ab und notiere, wer gerade Sonne hat: Ben oder Yumi."
+   "Lies bei jeder Stellung die Statuszeile ab und notiere, wer gerade Sonne hat: dein Ort oder die Gegenseite."
   ],
   "tabCols": [
    "Wer hat Sonne? (Ben / Yumi)",
@@ -902,7 +902,7 @@
     "post": "; das ist ein Tag."
    }
   ],
-  "beobachtung": "Bei 0° meldet die Statuszeile: Ben hat Nacht, bei ihm ist Mitternacht, und Yumi hat gleichzeitig Tag. Stellst du den Regler auf 90°, steht Ben genau an der Grenze zwischen heller und dunkler Seite. Bei 180° ist es vertauscht: Ben hat Sonne, Yumi Nacht. Bei 270° steht Ben wieder an dieser Grenze, diesmal auf dem Weg in die Nacht. Nach einer vollen Drehung, in Wirklichkeit 24 Stunden, steht alles wie am Anfang.",
+  "beobachtung": "Bei 0° meldet die Statuszeile: Dein Ort hat Nacht, bei dir ist Mitternacht, und die Gegenseite hat gleichzeitig Tag. Stellst du den Regler auf 90°, steht dein Ort genau an der Grenze zwischen heller und dunkler Seite. Bei 180° ist es vertauscht: Dein Ort hat Sonne, die Gegenseite Nacht. Bei 270° steht dein Ort wieder an dieser Grenze, diesmal auf dem Weg in die Nacht. Nach einer vollen Drehung, in Wirklichkeit 24 Stunden, steht alles wie am Anfang.",
   "aufgabe": {
    "frage": "Begründe, warum die Antwort „Die Sonne wird nachts ausgeschaltet“ nicht stimmen kann.",
    "zeilen": 4,

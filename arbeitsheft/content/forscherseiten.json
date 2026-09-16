@@ -286,7 +286,7 @@
   "theme": "licht",
   "id": "l1",
   "name": "Lichtquellen und Lichtausbreitung",
-  "problem": "Im ganzen Haus ist es dunkel. Emma zündet eine Kerze an. Am Fenster steht der Mond. Auf dem Schulranzen liegt der Reflektorstreifen. Emma richtet die Taschenlampe darauf und wieder weg. Sie fragt sich, was hier eigentlich selbst leuchtet.",
+  "problem": "Emma hält zwei Pappstreifen hintereinander, jeder mit einem kleinen Loch. Ben leuchtet mit der Taschenlampe von vorn darauf. An der Wand dahinter bleibt es trotzdem dunkel. Dabei brennt die Lampe hell. Emma verschiebt einen Streifen ein Stück zur Seite.",
   "frage": "Läuft Licht geradeaus oder um die Ecke?",
   "predict": [
    "Licht biegt um die Ecke. Auch bei versetzten Löchern kommt noch etwas an.",
@@ -327,7 +327,7 @@
    "komp": "UF1",
    "afb": "II"
   },
-  "titel": "Was leuchtet hier eigentlich?",
+  "titel": "Zwei Löcher, und trotzdem dunkel",
   "ueberleitung": "Kerze und Taschenlampe reichen für den Flur. Emmas Handy bleibt trotzdem verschwunden. Sie weiß genau, dass es neben dem Sofa liegt – sehen kann sie es nicht.",
   "fachtext": "Kerze und Taschenlampe senden selbst Licht aus. Solche Körper heißen Lichtquellen. Der Reflektorstreifen und das Buch leuchten nicht von selbst. Sie werfen nur das Licht zurück, das auf sie fällt, und heißen beleuchtete Körper. Von einer Lichtquelle breitet sich das Licht geradlinig nach allen Seiten aus.",
   "alltag": "Nenne zwei Lichtquellen und zwei beleuchtete Körper, die dir auf deinem Schulweg begegnen.",
@@ -1075,7 +1075,7 @@
   "theme": "waerme",
   "id": "w3",
   "name": "Was geschieht beim Erwärmen von Stoffen?",
-  "problem": "Noah will sein Marmeladenglas aufmachen. Der Blechdeckel sitzt bombenfest. Er zieht und dreht mit aller Kraft. Auch mit dem Wollhandschuh bewegt sich nichts. Auf der Bank steht die Thermoskanne mit heißem Tee. Ein Werkzeug hat heute niemand dabei.",
+  "problem": "Ben will sein Marmeladenglas aufmachen. Der Blechdeckel sitzt bombenfest. Er zieht und dreht mit aller Kraft. Auch mit dem Wollhandschuh bewegt sich nichts. Auf der Bank steht die Thermoskanne mit heißem Tee. Ein Werkzeug hat heute niemand dabei.",
   "frage": "Dehnen sich alle Stoffe beim Erwärmen gleich stark aus?",
   "predict": [
    "Nur der flüssige Stoff dehnt sich aus. Der feste bleibt genau gleich groß.",
@@ -1246,7 +1246,7 @@
   "theme": "schall",
   "id": "sc1",
   "name": "Wie entsteht ein Ton?",
-  "problem": "Jonas zupft eine Saite seiner Gitarre. Sofort brummt ein tiefer Ton durch den Keller. Er schaut genauer hin. Die Saite sieht auf einmal ganz verschwommen aus. Emma sagt: „Der Ton kommt aus dem hohlen Bauch.“ Jonas ist sich nicht sicher.",
+  "problem": "Jonas spannt ein dickes Gummiband über eine leere Keksdose. Er zupft daran, und ein tiefer Ton brummt durch den Keller. Das Band sieht dabei ganz verschwommen aus. Emma sagt, der Ton komme aus der hohlen Dose. Jonas legt einen Finger auf das Band und ist sich nicht mehr sicher.",
   "frage": "Wie entsteht ein Ton?",
   "predict": [
    "Der Ton bleibt noch kurz in der Luft, auch wenn das Band schon still steht.",
@@ -1287,7 +1287,7 @@
    "komp": "UF1",
    "afb": "II"
   },
-  "titel": "Das Brummen aus der Gitarre",
+  "titel": "Das Brummen aus der Keksdose",
   "ueberleitung": "Der Ton ist da. Nur klopft der Nachbar schon wieder an die Wand. Jonas soll leiser spielen – aufhören will er nicht.",
   "fachtext": "Ein Ton entsteht, wenn ein Gegenstand schnell hin und her schwingt. Diese Bewegung heißt Schwingung. Einen Gegenstand, der dabei Töne aussendet, nennst du Schallquelle. Die Saite gibt ihre Schwingung an die Luft und an den Gitarrenkörper weiter. Der Körper schwingt mit und macht den Ton lauter.",
   "alltag": "Nenne zwei Instrumente aus dem Musikraum und den Teil, der bei ihnen schwingt.",
@@ -1310,7 +1310,7 @@
    "Je weiter das Band ausschlägt, desto lauter klingt sein Ton."
   ],
   "forschen": [
-   "Stelle „So fest zupft Ben am Gummiband“ auf sanft. Beobachte, wie weit das Band ausschlägt, und lies die Lautstärke ab.",
+   "Stelle „So fest wird am Gummiband gezupft“ auf sanft. Beobachte, wie weit das Band ausschlägt, und lies die Lautstärke ab.",
    "Stelle danach mittel und dann fest ein. Lies jedes Mal ab, wie weit das Band ausschlägt und wie laut der Ton wird.",
    "Vergleiche zum Schluss sanft und fest. Achte darauf, ob der Ton dabei nur lauter wird oder auch höher klingt."
   ],
@@ -1367,7 +1367,7 @@
    "Je fester du zupfst, desto höher klingt der Ton."
   ],
   "forschen": [
-   "Stelle „So schnell schwingt Emmas Glas (Schwingungen pro Sekunde)“ auf 200 Hz ein. Höre den Ton an.",
+   "Stelle „Schwingungen pro Sekunde (Frequenz)“ auf 200 Hz ein. Höre den Ton an.",
    "Stelle danach 300 Hz und 800 Hz ein. Lies jedes Mal ab, ob der Ton höher oder tiefer klingt als vorher.",
    "Gegenprobe am Tisch: Fülle zwei Gläser verschieden hoch mit Wasser und schlage sie mit einem Löffel an."
   ],
@@ -1471,7 +1471,7 @@
   "theme": "schall",
   "id": "sc5",
   "name": "Wie funktioniert das Ohr?",
-  "problem": "Nach zwei Stunden Bandprobe pfeift bei Emma das linke Ohr. Sie hat direkt vor dem Verstärker gesessen. Noah spannt Frischhaltefolie straff über eine Schüssel. Er streut Salzkörner darauf und stellt sie vor den Lautsprecher. Niemand fasst die Schüssel an.",
+  "problem": "Nach zwei Stunden Bandprobe pfeift bei Emma das linke Ohr. Sie hat direkt vor dem Verstärker gesessen. Ben spannt Frischhaltefolie straff über eine Schüssel. Er streut Salzkörner darauf und stellt sie vor den Lautsprecher. Niemand fasst die Schüssel an.",
   "frage": "Was geschieht im Ohr, wenn es laut wird?",
   "predict": [
    "Bei lautem Anschlag schwingt das Trommelfell schneller, aber gleich weit.",
@@ -1479,7 +1479,7 @@
    "Je lauter der Topf angeschlagen wird, desto stärker schwingt das Trommelfell."
   ],
   "forschen": [
-   "Stelle „So laut schlägt Noah den Topf an“ auf leise. Beobachte, wie weit das Trommelfell ausschlägt.",
+   "Stelle „So laut wird der Topf angeschlagen“ auf leise. Beobachte, wie weit das Trommelfell ausschlägt.",
    "Stelle danach mittel und laut ein. Lies jedes Mal ab, ob das Trommelfell schwächer oder stärker schwingt.",
    "Gegenprobe am Tisch: Schlage einen Topf mit dem Löffel erst leise, dann kräftig an und fühle den Rand."
   ],

@@ -43330,7 +43330,7 @@ function _shaHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim sha-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔦 Wovon hängt die Größe des Schattens ab?</h3>
-    <div class="fpm-note" style="margin-top:2px">Emmas Taschenlampe steht fest auf der Holzkiste, davor haengt der handgrosse Pappwolf, dahinter ist die Bretterwand. <b>Veraendere nur einen Abstand</b> und miss, wie hoch der Schatten wird.</div>
+    <div class="fpm-note" style="margin-top:2px">Die Taschenlampe steht fest auf der Holzkiste, davor haengt der handgrosse Pappwolf, dahinter ist die Bretterwand. <b>Veraendere nur einen Abstand</b> und miss, wie hoch der Schatten wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="shaAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -43680,7 +43680,7 @@ function _msfHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim msf-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🧲 Wovon hängt es ab, ob der Magnet an einem Blech hält?</h3>
-    <div class="fpm-note" style="margin-top:2px">Emma will ein Blech in die Bude schrauben – daran sollen später Zettel halten. Halte jeden Gegenstand an den Magneten. Beobachte: Wird er <b>angezogen</b> oder nicht?${_msfDiag ? ' Vergleiche direkt mit deiner <b>Vermutung</b> in der Tabelle!' : ' Sortiere und finde die Regel selbst.'}</div>
+    <div class="fpm-note" style="margin-top:2px">In die Bude soll ein Blech geschraubt werden – daran sollen später Zettel halten. Halte jeden Gegenstand an den Magneten. Beobachte: Wird er <b>angezogen</b> oder nicht?${_msfDiag ? ' Vergleiche direkt mit deiner <b>Vermutung</b> in der Tabelle!' : ' Sortiere und finde die Regel selbst.'}</div>
     <div class="fpm-grid">
       <div>
         <canvas id="msfAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -44342,7 +44342,7 @@ function _mpoHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim mpo-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🚪 Wovon hängt es ab, ob die Tür zuhält?</h3>
-    <div class="fpm-note" style="margin-top:2px">Jonas hat einen Magneten an die Tür der Bude geschraubt und einen an den Rahmen. Drehe einen der beiden Magnete um und beobachte, ob die Tür zugezogen oder wieder aufgedrückt wird.</div>
+    <div class="fpm-note" style="margin-top:2px">An der Tür der Bude sitzt ein Magnet, ein zweiter am Rahmen. Drehe einen der beiden Magnete um und beobachte, ob die Tür zugezogen oder wieder aufgedrückt wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="mpoAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -44616,7 +44616,7 @@ function _mffHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim mff-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🧭 Wie stark wirkt der Magnet an welcher Stelle?</h3>
-    <div class="fpm-note" style="margin-top:2px">Noahs Magnet aus der Bude, ringsum kleine Kompassnadeln. Fahre mit dem <b>Prüfkompass</b> an die Enden und an die Mitte des Magneten und verändere den Abstand. Vergleiche, an welchen Stellen die Nadel am kräftigsten gedreht wird.</div>
+    <div class="fpm-note" style="margin-top:2px">Der Magnet aus der Bude, ringsum kleine Kompassnadeln. Fahre mit dem <b>Prüfkompass</b> an die Enden und an die Mitte des Magneten und verändere den Abstand. Vergleiche, an welchen Stellen die Nadel am kräftigsten gedreht wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="mffAnim" width="440" height="300" class="phys-anim-cv"></canvas>
@@ -44868,7 +44868,7 @@ function _komHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim kom-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🧭 Wovon hängt es ab, wohin die Kompassnadel zeigt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Mias Kompass. Stoße die Nadel an und beobachte, wo sie zur Ruhe kommt. Prüfe sie einmal draußen auf der Wiese und einmal in der Bude unter Noahs Magnetleiste.</div>
+    <div class="fpm-note" style="margin-top:2px">Ein Kompass. Stoße die Nadel an und beobachte, wo sie zur Ruhe kommt. Prüfe sie einmal draußen auf der Wiese und einmal in der Bude unter der Magnetleiste.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="komAnim" width="440" height="280" class="phys-anim-cv"></canvas>
@@ -44880,7 +44880,7 @@ function _komHTML() {
         <div class="fpm-label">Einstellungen</div>
         <div class="sim-btn-row" style="margin-top:6px">
           <button class="sim-btn primary" id="komEarth" onclick="_komToggle('earthOn')">🌍 Erdmagnetfeld</button>
-          <button class="sim-btn" id="komMag" onclick="_komToggle('magnetOn')">🧲 in der Bude: Noahs Magnetleiste</button>
+          <button class="sim-btn" id="komMag" onclick="_komToggle('magnetOn')">🧲 in der Bude: die Magnetleiste</button>
         </div>
         <div class="phys-ctrl" style="margin-top:10px">
           <span class="phys-ctrl-label">Magnet – Richtung: <b id="komPhiLbl">120°</b></span>
@@ -45088,7 +45088,7 @@ function _lmpHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim lmp-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">💡 Alles dran – und trotzdem dunkel: Wovon hängt es ab, ob das Lämpchen leuchtet?</h3>
-    <div class="fpm-note" style="margin-top:2px">Mia hat alles zusammengesteckt: Flachbatterie, zwei Kabel mit Krokodilklemmen, Lämpchen. Trotzdem bleibt es dunkel. Löse hier nacheinander eine Stelle im Kreis und beobachte das Lämpchen. (Nur ungefährliche Batterie-Kleinspannung.)</div>
+    <div class="fpm-note" style="margin-top:2px">Alles ist zusammengesteckt: Flachbatterie, zwei Kabel mit Krokodilklemmen, Lämpchen. Trotzdem bleibt es dunkel. Löse hier nacheinander eine Stelle im Kreis und beobachte das Lämpchen. (Nur ungefährliche Batterie-Kleinspannung.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="lmpAnim" width="440" height="260" class="phys-anim-cv"></canvas>
@@ -45389,7 +45389,7 @@ function _leiHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim lei-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔌 Das Kabel ist zu kurz: Wovon hängt es ab, womit du die Lücke schließen kannst?</h3>
-    <div class="fpm-note" style="margin-top:2px">Noahs Kabel reicht nicht bis zur Flachbatterie. Klemme der Reihe nach ein Ding von der Kiste in die Lücke zwischen den Krokodilklemmen und beobachte das Lämpchen. Sortiere selbst und finde die Regel. (Nur Batterie-Kleinspannung.)</div>
+    <div class="fpm-note" style="margin-top:2px">Das Kabel reicht nicht bis zur Flachbatterie. Klemme der Reihe nach ein Ding von der Kiste in die Lücke zwischen den Krokodilklemmen und beobachte das Lämpchen. Sortiere selbst und finde die Regel. (Nur Batterie-Kleinspannung.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="leiAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -45624,7 +45624,7 @@ function _splHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim spl-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">✏️ Der Zettel ohne Bilder: Wovon hängt es ab, ob ein anderer deine Zeichnung nachbaut?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ben hat den Stromkreis in der Bude abgemalt: die Flachbatterie als Klotz, das Lämpchen als Sonne. Mia baut danach etwas ganz anderes. Sieh dir denselben Kreis hier als Foto und als Zeichnung mit den Zeichen vom Zettel an und vergleiche, was ein anderer daraus nachbauen kann.</div>
+    <div class="fpm-note" style="margin-top:2px">Hier ist der Stromkreis aus der Bude abgemalt: die Flachbatterie als Klotz, das Lämpchen als Sonne. Wer danach baut, baut etwas ganz anderes. Sieh dir denselben Kreis hier als Foto und als Zeichnung mit den Zeichen vom Zettel an und vergleiche, was ein anderer daraus nachbauen kann.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="splAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -45855,7 +45855,7 @@ function _reiHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim rei-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">💡➡️💡 Mehr Licht – und dann gar keins: Wovon hängt es ab, ob alle Lämpchen zusammen ausgehen?</h3>
-    <div class="fpm-note" style="margin-top:2px">Emma hängt in der Bude ein zweites und ein drittes Lämpchen hinter das erste. Stelle die Anzahl ein, dreh ein Lämpchen heraus und beobachte die anderen. (Nur ungefährliche Batterie-Kleinspannung.)</div>
+    <div class="fpm-note" style="margin-top:2px">In der Bude hängt ein zweites und ein drittes Lämpchen hinter dem ersten. Stelle die Anzahl ein, dreh ein Lämpchen heraus und beobachte die anderen. (Nur ungefährliche Batterie-Kleinspannung.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="reiAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -46078,7 +46078,7 @@ function _parHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim par-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">💡⇊💡 Deins aus, meins an: Wovon hängt es ab, ob du ein Lämpchen allein ausschalten kannst?</h3>
-    <div class="fpm-note" style="margin-top:2px">Über den Pritschen hängen Bens und Jonas’ Lämpchen an derselben Flachbatterie, jedes mit eigenem Schalter. Probiere alle vier Schalterstellungen aus und beobachte, welches Lämpchen leuchtet. (Nur ungefährliche Batterie-Kleinspannung.)</div>
+    <div class="fpm-note" style="margin-top:2px">Über den Pritschen hängen zwei Lämpchen an derselben Flachbatterie, jedes mit eigenem Schalter. Probiere alle vier Schalterstellungen aus und beobachte, welches Lämpchen leuchtet. (Nur ungefährliche Batterie-Kleinspannung.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="parAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -46086,10 +46086,10 @@ function _parHTML() {
       <div>
         <div class="fpm-label">Probiere aus</div>
         <div class="sim-btn-row" style="margin-top:6px">
-          <button class="sim-btn primary" id="parS1" onclick="_parToggle('sw1')">🔘 Bens Schalter (Lampe 1): <span id="parS1T">an</span></button>
+          <button class="sim-btn primary" id="parS1" onclick="_parToggle('sw1')">🔘 Schalter 1 (Lampe 1): <span id="parS1T">an</span></button>
         </div>
         <div class="sim-btn-row" style="margin-top:6px">
-          <button class="sim-btn primary" id="parS2" onclick="_parToggle('sw2')">🔘 Jonas’ Schalter (Lampe 2): <span id="parS2T">an</span></button>
+          <button class="sim-btn primary" id="parS2" onclick="_parToggle('sw2')">🔘 Schalter 2 (Lampe 2): <span id="parS2T">an</span></button>
         </div>
         <div class="lmp-status" id="parStatus"></div>
         <div class="fpm-note" style="margin-top:10px">Prüfe alle vier Stellungen der beiden Schalter und notiere jedes Mal, welches Lämpchen leuchtet.</div>
@@ -46557,7 +46557,7 @@ function _sehHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim seh-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">👁️ Wie können wir einen Gegenstand sehen?</h3>
-    <div class="fpm-note" style="margin-top:2px">In der Bude ist es stockdunkel. Emmas Tuete liegt neben dem Schlafsack. Schalte das Licht an und aus und waehle verschiedene Gegenstaende. Wann siehst du etwas, wann nicht?</div>
+    <div class="fpm-note" style="margin-top:2px">In der Bude ist es stockdunkel. Die Tuete liegt neben dem Schlafsack. Schalte das Licht an und aus und waehle verschiedene Gegenstaende. Wann siehst du etwas, wann nicht?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="sehAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -46774,8 +46774,8 @@ function _lauDurch() { return Math.abs(_lau.h2 - _lauNeed2()) < 11; }
 function _lauHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim lau-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">📏 Noahs Taschenlampe: Laeuft das Licht geradeaus oder um die Ecke?</h3>
-    <div class="fpm-note" style="margin-top:2px">Noah leuchtet mit der Taschenlampe zum Katzenauge am Baum. Ben haelt zwei Pappstreifen mit je einem Loch dazwischen. Verschiebe die Loecher, bis das Licht am Baum ankommt. Achte darauf, wie die Loecher dann zueinander liegen.</div>
+    <h3 class="sim-h3">📏 Die Taschenlampe: Laeuft das Licht geradeaus oder um die Ecke?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Taschenlampe leuchtet zum Katzenauge am Baum. Dazwischen stehen zwei Pappstreifen mit je einem Loch. Verschiebe die Loecher, bis das Licht am Baum ankommt. Achte darauf, wie die Loecher dann zueinander liegen.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="lauAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -46979,7 +46979,7 @@ function _sctHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim sct-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌑 Wovon haengt es ab, wo der Schatten an der Wand liegt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Jonas' Taschenlampe, der Pappwolf an der Waescheklammer und die Bretterwand der Bude. Verschiebe die Lampe und nimm den Pappwolf einmal weg. Beobachte, wo der Wolf an der Wand auftaucht.</div>
+    <div class="fpm-note" style="margin-top:2px">Die Taschenlampe, der Pappwolf an der Waescheklammer und die Bretterwand der Bude. Verschiebe die Lampe und nimm den Pappwolf einmal weg. Beobachte, wo der Wolf an der Wand auftaucht.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="sctAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -47187,7 +47187,7 @@ function _khsHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim khs-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌗 Wovon haengt es ab, ob ein Schatten tiefschwarz oder blassgrau ist?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ben stellt Taschenlampen auf die Holzkiste. Eine einzelne Lampe leuchtet fast punktfoermig, zwei nebeneinander wirken wie eine breite Lichtquelle. Veraendere die <b>Breite der Lichtquelle</b> und vergleiche Mitte und Rand des Schattens an der Bretterwand.</div>
+    <div class="fpm-note" style="margin-top:2px">Auf der Holzkiste stehen Taschenlampen. Eine einzelne Lampe leuchtet fast punktfoermig, zwei nebeneinander wirken wie eine breite Lichtquelle. Veraendere die <b>Breite der Lichtquelle</b> und vergleiche Mitte und Rand des Schattens an der Bretterwand.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="khsAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -47395,7 +47395,7 @@ function _twHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim tw-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌡️ Wovon hängt es ab, ob ein kalter Gegenstand von allein warm wird?</h3>
-    <div class="fpm-note" style="margin-top:2px">Emma stellt ihren kalten Metalllöffel in den heißen Tee. Links die Tasse, rechts das zweite Gefäß. Stelle für beide Menge und Temperatur ein und bring sie dann in Kontakt. Beobachte, was mit beiden Temperaturen passiert.</div>
+    <div class="fpm-note" style="margin-top:2px">Ein kalter Metalllöffel steht im heißen Tee. Links die Tasse, rechts das zweite Gefäß. Stelle für beide Menge und Temperatur ein und bring sie dann in Kontakt. Beobachte, was mit beiden Temperaturen passiert.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="twAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -47611,7 +47611,7 @@ function _thmInit() { _thm = { T: 20, t: 0 }; }
 const _THM_PROBEN = [
   { n: 'kalte Bretterwand', T: 6, ic: '🪵' },
   { n: 'Eiswasser', T: 0, ic: '🧊' },
-  { n: 'Bens Faust', T: 37, ic: '✋' },
+  { n: 'Deine Faust', T: 37, ic: '✋' },
   { n: 'warmes Wasser', T: 45, ic: '💧' },
   { n: 'kochendes Wasser', T: 100, ic: '♨️' }
 ];
@@ -47620,7 +47620,7 @@ function _thmHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim thm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌡️ Wovon hängt es ab, wie weit der Faden im Thermometer steigt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ben nimmt das Thermometer von der Bretterwand der Bude. Stelle die Temperatur ein oder halte das Thermometer an einen der Orte – und beobachte den dünnen Faden. Lies jedes Mal den Wert an der Skala ab.</div>
+    <div class="fpm-note" style="margin-top:2px">Nimm das Thermometer von der Bretterwand der Bude. Stelle die Temperatur ein oder halte das Thermometer an einen der Orte – und beobachte den dünnen Faden. Lies jedes Mal den Wert an der Skala ab.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="thmAnim" width="440" height="260" class="phys-anim-cv"></canvas>
@@ -47820,7 +47820,7 @@ function _wauHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim wau-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌡️➡️ Wovon hängt es ab, ob sich der Deckel leicht aufdrehen lässt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Jonas bekommt den Blechdeckel nicht vom Nutella-Glas. Erwärme das Blech mit dem Regler und beobachte, wie groß es dabei wird. Kühle es danach wieder ab. Prüfe zum Schluss, ob es bei Flüssigkeit und Gas genauso ist.</div>
+    <div class="fpm-note" style="margin-top:2px">Ein Blechdeckel klemmt auf dem Glas. Erwärme den Stoff mit dem Regler und beobachte, wie groß er dabei wird. Kühle es danach wieder ab. Prüfe zum Schluss, ob es bei Flüssigkeit und Gas genauso ist.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="wauAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -48032,7 +48032,7 @@ function _aggHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim agg-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🧊💧💨 Wovon hängt es ab, ob das Eis fest bleibt oder zu Wasser wird?</h3>
-    <div class="fpm-note" style="margin-top:2px">Über Nacht ist Mias Wasserflasche in der Bude gefroren. Stelle die Temperatur ein – von der eiskalten Bude bis dicht neben die Kerze – und beobachte, was aus dem Eis wird.</div>
+    <div class="fpm-note" style="margin-top:2px">Über Nacht ist die Wasserflasche in der Bude gefroren. Stelle die Temperatur ein – von der eiskalten Bude bis dicht neben die Kerze – und beobachte, was aus dem Eis wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="aggAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -48247,7 +48247,7 @@ function _wueHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim wue-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔥 Auf welchen Wegen wandert Wärme von warm nach kalt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Auf der Kerze in der Bude steht Bens Topf mit Tee. Wähle einen Weg aus und beobachte genau, wie sich die Wärme dabei bewegt. Vergleiche danach mit Bens Löffel im Topf.</div>
+    <div class="fpm-note" style="margin-top:2px">Auf der Kerze in der Bude steht ein Topf mit Tee. Wähle einen Weg aus und beobachte genau, wie sich die Wärme dabei bewegt. Vergleiche danach mit dem Löffel im Topf.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="wueAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -48262,7 +48262,7 @@ function _wueHTML() {
         <div class="wir-um" id="wueDesc" style="margin-top:6px"></div>
         <div class="fpm-label" style="margin-top:12px">Beispiele</div>
         <div class="fpm-note" style="margin-top:4px">
-          🥄 <b>Leitung:</b> Bens Metalllöffel im Teetopf, Bügeleisen, Kochtopf.<br>
+          🥄 <b>Leitung:</b> der Metalllöffel im Teetopf, Bügeleisen, Kochtopf.<br>
           ♨️ <b>Strömung:</b> Heizkörper, kochendes Wasser, Wind.<br>
           ☀️ <b>Strahlung:</b> Sonne, Lagerfeuer, Grill, Heizstrahler.
         </div>
@@ -48928,7 +48928,7 @@ function _tonHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim ton-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🎵 Wovon hängt es ab, ob die Dose einen Ton macht?</h3>
-    <div class="fpm-note" style="margin-top:2px">Jonas hat ein dickes Gummiband über die leere Keksdose gespannt. Zupfe daran und schau das Band genau an. Lege dann den Finger darauf. Was hörst du jedes Mal?</div>
+    <div class="fpm-note" style="margin-top:2px">Über die leere Keksdose ist ein dickes Gummiband gespannt. Zupfe daran und schau das Band genau an. Lege dann den Finger darauf. Was hörst du jedes Mal?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="tonAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -49117,12 +49117,12 @@ function _lstHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim lst-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔊 Wovon hängt es ab, wie laut der Ton wird?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ben zupft das Gummiband der Keksdose – mal sanft, mal ganz fest. Unten am Waldweg wartet Mia. Stelle ein, wie fest Ben zupft, und beobachte, wie weit das Band ausschlägt und wie laut es wird.</div>
+    <div class="fpm-note" style="margin-top:2px">Am Gummiband der Keksdose wird gezupft – mal sanft, mal ganz fest. Unten am Waldweg hört jemand zu. Stelle ein, wie fest gezupft wird, und beobachte, wie weit das Band ausschlägt und wie laut es wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="lstAnim" width="440" height="240" class="phys-anim-cv"></canvas>
         <div class="phys-ctrl" style="margin-top:8px">
-          <span class="phys-ctrl-label">So fest zupft Ben am Gummiband: <b id="lstALbl">mittel</b></span>
+          <span class="phys-ctrl-label">So fest wird am Gummiband gezupft: <b id="lstALbl">mittel</b></span>
           <input type="range" id="lstA" min="0.1" max="1" step="0.05" value="0.5"
             oninput="_lstSetA(this.value)" style="width:100%;accent-color:#7c3aed">
         </div>
@@ -49307,12 +49307,12 @@ function _thzHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim thz-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🎼 Wovon hängt es ab, wie hoch der Ton klingt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Emma klopft ihre Gläser mit dem Löffel an – jedes Mal gleich fest. Stelle ein, wie schnell das Glas hin und her schwingt, und höre hin: Kommt ein helles Pling oder ein tiefes Plong?</div>
+    <div class="fpm-note" style="margin-top:2px">Etwas schwingt – jedes Mal gleich kräftig angeschlagen, aber mal langsamer, mal schneller. Stelle die Schwingungen pro Sekunde ein und höre hin: Kommt ein helles Pling oder ein tiefes Plong?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="thzAnim" width="440" height="240" class="phys-anim-cv"></canvas>
         <div class="phys-ctrl" style="margin-top:8px">
-          <span class="phys-ctrl-label">So schnell schwingt Emmas Glas (Schwingungen pro Sekunde): <b id="thzFLbl">300 Hz</b></span>
+          <span class="phys-ctrl-label">Schwingungen pro Sekunde (Frequenz): <b id="thzFLbl">300 Hz</b></span>
           <input type="range" id="thzF" min="100" max="800" step="20" value="300"
             oninput="_thzSetF(this.value)" style="width:100%;accent-color:#7c3aed">
         </div>
@@ -49499,7 +49499,7 @@ function _scaHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim sca-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">📢 Wovon hängt es ab, ob du das Klopfen am anderen Ende hörst?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ben klopft ganz leise am einen Ende, Mia hört am anderen. Wähle, was dazwischen liegt: der lange Balken der Bude, Wasser oder nur Luft. Beobachte die Teilchen und höre hin.</div>
+    <div class="fpm-note" style="margin-top:2px">Am einen Ende klopft es ganz leise, am anderen hörst du hin. Wähle, was dazwischen liegt: der lange Balken der Bude, Wasser oder nur Luft. Beobachte die Teilchen und höre hin.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="scaAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -49695,12 +49695,12 @@ function _ohrHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim ohr-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">👂 Wovon hängt es ab, wie stark das Häutchen schwingt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Noahs Folie hüpft, wenn er den Topf anschlägt. In deinem Ohr sitzt ein ganz ähnliches Häutchen. Stelle ein, wie laut Noah anschlägt, und beobachte das rote Häutchen im Ohr.</div>
+    <div class="fpm-note" style="margin-top:2px">Die Folie auf dem Topf hüpft, wenn du ihn anschlägst. In deinem Ohr sitzt ein ganz ähnliches Häutchen. Stelle ein, wie laut der Topf angeschlagen wird, und beobachte das rote Häutchen im Ohr.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="ohrAnim" width="440" height="240" class="phys-anim-cv"></canvas>
         <div class="phys-ctrl" style="margin-top:8px">
-          <span class="phys-ctrl-label">So laut schlägt Noah den Topf an: <b id="ohrALbl">mittel</b></span>
+          <span class="phys-ctrl-label">So laut wird der Topf angeschlagen: <b id="ohrALbl">mittel</b></span>
           <input type="range" id="ohrA" min="0.15" max="1" step="0.05" value="0.6"
             oninput="_ohrSetA(this.value)" style="width:100%;accent-color:#7c3aed">
         </div>
@@ -50101,9 +50101,9 @@ function _laeSelf(n) {
 
 let _tag = null;
 // Startwinkel 330 gehoert zur Reglerstellung 30 Grad (Regler = gedrehte Strecke,
-// Winkel laeuft gegenlaeufig dazu). Bild beim Oeffnen wie bisher: Ben in der Nacht.
+// Winkel laeuft gegenlaeufig dazu). Bild beim Oeffnen wie bisher: dein Ort in der Nacht.
 // Startwinkel 330 gehoert zur Reglerstellung 30 Grad (Regler = gedrehte Strecke,
-// Winkel laeuft gegenlaeufig dazu). Bild beim Oeffnen wie bisher: Ben in der Nacht.
+// Winkel laeuft gegenlaeufig dazu). Bild beim Oeffnen wie bisher: dein Ort in der Nacht.
 function _tagInit() { _tag = { angle: 330, t: 0, auto: true }; }
 function _tagIstTag() { return Math.cos(_tag.angle * Math.PI / 180) < 0; }   // Sonne links → linke Seite = Tag
 function _tagZeit() {
@@ -50121,7 +50121,7 @@ function _tagHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim tag-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌍 Tag hier, Nacht dort – wovon hängt es ab, ob es an einem Ort gerade Tag oder Nacht ist?</h3>
-    <div class="fpm-note" style="margin-top:2px">Links steht die Sonne – im Klassenversuch die Taschenlampe –, rechts der Globus. <b>Wir schauen von oben auf den Nordpol:</b> die Erdachse zeigt genau auf uns zu, deshalb liegt der Pol in der Mitte der Scheibe und alle Punkte darin liegen auf der Erdoberfläche. Der rote Punkt ist Bens Schnipsel auf der Lichtung mit der Bude. Yumis Schnipsel klebt genau gegenüber. Drehe den Globus Vierteldrehung für Vierteldrehung.</div>
+    <div class="fpm-note" style="margin-top:2px">Links steht die Sonne – im Klassenversuch die Taschenlampe –, rechts der Globus. <b>Wir schauen von oben auf den Nordpol:</b> die Erdachse zeigt genau auf uns zu, deshalb liegt der Pol in der Mitte der Scheibe und alle Punkte darin liegen auf der Erdoberfläche. Der rote Punkt ist dein Ort. Der zweite Punkt klebt genau gegenüber, auf der anderen Seite der Erde. Drehe den Globus Vierteldrehung für Vierteldrehung.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="tagAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -50137,7 +50137,7 @@ function _tagHTML() {
             oninput="_tagSetD(this.value)" style="width:100%;accent-color:#7c3aed">
         </div>
         <div class="lmp-status" id="tagStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Trage zu jeder Stellung in deine Tabelle ein: <b>So steht der Globus</b> – <b>Wer hat Sonne? (Ben / Yumi)</b>. Probiere auch die Stellung „Globus gar nicht drehen“.</div>
+        <div class="fpm-note" style="margin-top:10px">Trage zu jeder Stellung in deine Tabelle ein: <b>So steht der Globus</b> – <b>Wer hat Sonne? (dein Ort / die Gegenseite)</b>. Probiere auch die Stellung „Globus gar nicht drehen“.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -50163,13 +50163,14 @@ function _tagAuto() { _tag.auto = !_tag.auto; _tagSyncPlay(); }
 function _tagSyncPlay() { const t = document.getElementById('tagPlayT'); if (t) t.textContent = _tag.auto ? 'Pause' : 'Abspielen'; document.getElementById('tagPlay')?.classList.toggle('primary', _tag.auto); }
 function _tagStatus() {
   const el = document.getElementById('tagStatus'); if (!el) return;
-  // Im Bild stehen zwei Punkte, und die Tabelle fragt "Wer hat Sonne - Ben oder
-  // Yumi?". "Der Standort" liess offen, welcher Punkt gemeint ist. Jetzt nennt
+  // Im Bild stehen zwei Punkte, und die Tabelle fragt "Wer hat Sonne - dein Ort
+  // oder die Gegenseite?". "Der Standort" liess offen, welcher Punkt gemeint
+  // ist. Jetzt nennt
   // die Zeile beide und zeigt in einem Satz: immer hat genau einer Tag.
   const tag = _tagIstTag(), z = _tagZeit();
   el.textContent = tag
-    ? ('☀️ Ben hat Tag (' + z + ') · 🌙 Yumi hat gleichzeitig Nacht.')
-    : ('🌙 Ben hat Nacht (' + z + ') · ☀️ Yumi hat gleichzeitig Tag.');
+    ? ('☀️ Dein Ort hat Tag (' + z + ') · 🌙 Die Gegenseite hat gleichzeitig Nacht.')
+    : ('🌙 Dein Ort hat Nacht (' + z + ') · ☀️ Die Gegenseite hat gleichzeitig Tag.');
   el.className = 'lmp-status ' + (tag ? 'on' : 'off');
 }
 
@@ -50372,8 +50373,8 @@ function _tagDraw(ctx, cv) {
     _wrText(ctx, kl(x, 32, W - 32), y < ey ? y - 11 : y + 19, txt + (imLicht ? ' ☀️' : ' 🌙'),
       { farbe: imLicht ? '#fde68a' : '#c7d2fe', font: '700 11px system-ui, sans-serif' });
   };
-  marke(A, '248,113,113', '#ef4444', 'Ben', istTag);
-  marke(A + Math.PI, '103,232,249', '#22d3ee', 'Yumi', !istTag);
+  marke(A, '248,113,113', '#ef4444', 'dein Ort', istTag);
+  marke(A + Math.PI, '103,232,249', '#22d3ee', 'Gegenseite', !istTag);
   // Die Drehachse zeigt hier genau auf uns zu: der Nordpol in der Mitte.
   ctx.fillStyle = 'rgba(226,232,240,0.75)';
   ctx.beginPath(); ctx.arc(ex, ey, 1.8, 0, 6.283); ctx.fill();
@@ -51045,7 +51046,7 @@ function _mphHTML() {
             oninput="_mphSetD(this.value)" style="width:100%;accent-color:#7c3aed">
         </div>
         <div class="lmp-status" id="mphStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Der Mond läuft von selbst weiter. Tippst du eine Stellung an, bleibt er dort einen Moment stehen – Zeit, um einzutragen: <b>So steht der Mond</b> – <b>Wie viel Helles siehst du?</b> Vergleiche zum Schluss deine Reihe mit Noahs Mondbildern im Logbuch.</div>
+        <div class="fpm-note" style="margin-top:10px">Der Mond läuft von selbst weiter. Tippst du eine Stellung an, bleibt er dort einen Moment stehen – Zeit, um einzutragen: <b>So steht der Mond</b> – <b>Wie viel Helles siehst du?</b> Vergleiche zum Schluss deine Reihe mit den Mondbildern im Logbuch.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -52012,7 +52013,7 @@ function _mofHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim mof-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌕🌑 Der Mond wird rot – wovon hängt es ab, ob der Vollmond dunkel und rot wird?</h3>
-    <div class="fpm-note" style="margin-top:2px">Links die Taschenlampe als Sonne, in der Mitte der Globus, rechts der kleine Ball als Mond. Führe den Ball hinter dem Globus vorbei und beobachte ihn wie Emma und Noah vom Dach der Bude aus.<br><b>Im Bild:</b> links Sonne, Erde und der Schattenkegel von der Seite – rechts derselbe Erdschatten von vorne, und der Mond wandert hindurch.</div>
+    <div class="fpm-note" style="margin-top:2px">Links die Taschenlampe als Sonne, in der Mitte der Globus, rechts der kleine Ball als Mond. Führe den Ball hinter dem Globus vorbei und beobachte ihn wie vom Dach der Bude aus.<br><b>Im Bild:</b> links Sonne, Erde und der Schattenkegel von der Seite – rechts derselbe Erdschatten von vorne, und der Mond wandert hindurch.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="mofAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -71797,7 +71798,7 @@ function _gezHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌊 Warum steigt und fällt das Meer zweimal am Tag?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der rote Punkt ist Bens Hafen. Lass die Erde sich einmal drehen und zähle mit, wie oft er durch hohes Wasser läuft.</div>
+    <div class="fpm-note" style="margin-top:2px">Der rote Punkt ist der Hafen. Lass die Erde sich einmal drehen und zähle mit, wie oft er durch hohes Wasser läuft.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="gezAnim" width="440" height="250" class="phys-anim-cv"></canvas>

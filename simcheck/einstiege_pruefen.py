@@ -17,8 +17,12 @@ DIE SECHS RIEGEL
   1. Wortzahl in der Spanne der STUFE. 34-52 fuer Klasse 5/6, 42-59 fuer 7-10,
      26-45 fuer die Oberstufe - dieselben Zahlen wie `formregeln.pruefe_seite`,
      und aus demselben Grund (dort steht die Herleitung).
-  2. Satzzahl. Sek I drei bis fuenf, Oberstufe GENAU drei: Alltagsszene,
-     Streit, fertig.
+  2. Satzzahl in der Spanne des BANDES - und die wird gemessen, nicht
+     gesetzt (`saetze_spanne`). Eine Tabelle waere hier falsch gewesen:
+     `arbeitsheft` (Klasse 5/6 Realschule) schreibt 4 bis 8 Saetze zu je 7,6
+     Woertern, `arbeitsheft_gym56` bei derselben Stufe 3 bis 5 zu je 11,8.
+     Das ist Hausstil, kein Fehler - die juengsten Leser bekommen kurze
+     Saetze, und davon mehr. Die Oberstufe steht bei genau drei.
   3. Die Figuren bleiben. Gehalten wird, wer im ALTEN Einstieg dieser Einheit
      steht UND zum Figurenkanon des Bandes gehoert. Der Kanon wird GEMESSEN
      (`kanon_bestimmen`, vier Filter, dort steht die Herleitung), nicht
@@ -84,6 +88,18 @@ def _spanne(klasse):
     return (34, 52) if k <= 6 else (26, 45) if k >= 11 else (42, 59)
 
 
+def saetze_spanne(einstiege):
+    """Wie viele Saetze ein Einstieg dieses Bandes haben darf - GEMESSEN.
+
+    Zurueck kommt (kleinste, groesste) Satzzahl der vorhandenen Einstiege.
+    Gemessen ueber die 14 Baende: `arbeitsheft` 4-8, die uebrige Sek I 3-5
+    oder 3-6, die Oberstufe 3-3. Wer hier eine feste Spanne einsetzt, meldet
+    den Hausstil eines ganzen Bandes als Fehler.
+    """
+    n = [len(_saetze(t)) for t in einstiege if t]
+    return (min(n), max(n)) if n else (3, 5)
+
+
 def kanon_bestimmen(einstiege):
     """Der Figurenkanon eines Bandes, GEMESSEN aus seinen Einstiegen.
 
@@ -142,6 +158,10 @@ def figuren(text, kanon):
     return {n for n in GROSS.findall(text) if n in kanon}
 
 
+def _saetze(text):
+    return [s for s in re.split(r"(?<=[.!?…])\s+", text) if s.strip()]
+
+
 def _zahlen(text):
     """Zahlen normiert - 4.0, 4,0 und 4 sind dieselbe Zahl."""
     raus = set()
@@ -153,7 +173,7 @@ def _zahlen(text):
     return raus
 
 
-def pruefe(neu, alt, schirmtext, klasse, kanon):
+def pruefe(neu, alt, schirmtext, klasse, kanon, saetze=(3, 5)):
     """Gibt die Liste der Befunde zurueck - leer heisst: darf ins Heft."""
     f = []
 
@@ -162,13 +182,9 @@ def pruefe(neu, alt, schirmtext, klasse, kanon):
     if not unten <= w <= oben:
         f.append("%d Wörter (%d–%d)" % (w, unten, oben))
 
-    saetze = [s for s in re.split(r"(?<=[.!?…])\s+", neu) if s.strip()]
-    k = int(klasse) if str(klasse).isdigit() else 9
-    if k >= 11:
-        if len(saetze) != 3:
-            f.append("%d Sätze (Oberstufe: genau 3)" % len(saetze))
-    elif not 3 <= len(saetze) <= 5:
-        f.append("%d Sätze (3–5)" % len(saetze))
+    ns = len(_saetze(neu))
+    if not saetze[0] <= ns <= saetze[1]:
+        f.append("%d Sätze (%d–%d)" % (ns, saetze[0], saetze[1]))
 
     fehlt = figuren(alt, kanon) - figuren(neu, kanon)
     if fehlt:
@@ -221,6 +237,12 @@ def selbsttest():
     if kanon != {"Ben", "Mia"}:
         raise SystemExit("SELBSTTEST GEFALLEN: Kanon ist %s, erwartet "
                          "{Ben, Mia}" % sorted(kanon))
+    # Die Satzspanne faellt aus dem Band, nicht aus einer Tabelle. Die Probe
+    # stellt den Fall nach, an dem die feste Spanne gescheitert ist: ein Band
+    # mit kurzen Saetzen, davon bis zu acht.
+    if saetze_spanne(["Eins. Zwei. Drei.",
+                      "Eins. Zwei. Drei. Vier. Fünf. Sechs. Sieben. Acht."]) != (3, 8):
+        raise SystemExit("SELBSTTEST GEFALLEN: Satzspanne falsch gemessen")
     proben = [
         ("gut", GUT, ALT, SCHIRM, 9, True),
         ("zu kurz", "Ben und Mia streiten über die Rampe. Ben sagt so, Mia "
@@ -267,7 +289,7 @@ def selbsttest():
     ]
     schlecht = []
     for name, neu, alt, schirm, kl, soll_bestehen in proben:
-        f = pruefe(neu, alt, schirm, kl, kanon)
+        f = pruefe(neu, alt, schirm, kl, kanon, (3, 5))
         if bool(f) == soll_bestehen:  # bestanden heisst: keine Befunde
             schlecht.append("%s: %s" % (name, "; ".join(f) or "keine Befunde"))
     if schlecht:
@@ -290,6 +312,7 @@ def main():
     b = daten[band]
     alt = {x["id"]: x for x in b["einheiten"]}
     kanon = kanon_bestimmen([x["einstieg"] for x in b["einheiten"]])
+    spanne = saetze_spanne([x["einstieg"] for x in b["einheiten"]])
 
     gut, schlecht = [], []
     for e in neu:
@@ -298,7 +321,7 @@ def main():
         a = alt[e["id"]]
         schirm = " ".join([a["sim_ueberschrift"], a["sim_status"]]
                           + a["sim_knoepfe"] + a["sim_regler"] + a["sim_bildtexte"])
-        f = pruefe(e["neu"], a["einstieg"], schirm, b["klasse"], kanon)
+        f = pruefe(e["neu"], a["einstieg"], schirm, b["klasse"], kanon, spanne)
         (gut if not f else schlecht).append((e["id"], e["neu"], f))
 
     print("%s: %d neu · %d bestehen · %d mit Befund"

@@ -1187,7 +1187,7 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Schiebe den Regler»So schnell schwingt Emmas Glas«ganz nach links auf 100 Hz und betrachte, wie weit die Wellenberge auseinanderliegen.",
+   "Schiebe den Regler»Schwingungen pro Sekunde (Frequenz)«ganz nach links auf 100 Hz und betrachte, wie weit die Wellenberge auseinanderliegen.",
    "Lies im Feld»Tonhöhe«ab, ob der Ton tief, mittel oder hoch ist, und trage es mit dem Hz-Wert in die Tabelle ein.",
    "Stelle nacheinander 300 Hz, 560 Hz und 800 Hz ein und beobachte, wie der Punkt auf der Skala von»tief«nach»hoch«wandert."
   ],
@@ -1230,8 +1230,8 @@
  {
   "id": "sl3",
   "basiskonzept": "Energie",
-  "titel": "Zwei Schläge auf die Trommel",
-  "problem": "Jetzt ist die Trommel dran. Lina tippt mit dem Schlägel nur leicht auf das Fell – ein leises Pum. Aras schlägt kräftiger zu: viel lauter, aber der Ton klingt genauso tief wie vorher. Beide treffen dieselbe Stelle. Was macht das Fell beim lauten Schlag anders als beim leisen?",
+  "titel": "Zweimal am selben Band gezupft",
+  "problem": "Noch einmal die Keksdose mit dem Gummiband. Lina zupft nur ganz leicht daran – ein leises Brummen. Aras zupft kräftig zu: viel lauter, aber der Ton klingt genauso tief wie vorher. Beide zupfen dasselbe Band. Was macht das Band beim lauten Zupfen anders als beim leisen?",
   "frage": "Was macht einen Ton laut oder leise?",
   "auftrag": "Untersuche, wie sich die Schwingungskurve ändert, wenn das Gummiband sanft oder fest gezupft wird, und was die Lautstärke bestimmt.",
   "predict": [
@@ -1241,7 +1241,7 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Schiebe den Regler»So fest zupft Ben am Gummiband«ganz nach links und betrachte den Ausschlag der Kurve und die gestrichelte Linie»Amplitude«.",
+   "Schiebe den Regler»So fest wird am Gummiband gezupft«ganz nach links und betrachte den Ausschlag der Kurve und die gestrichelte Linie»Amplitude«.",
    "Lies im Feld»Lautstärke«ab, was dort steht, und trage es in die Tabelle ein.",
    "Stelle den Regler in die Mitte und danach ganz nach rechts und vergleiche Ausschlag, Balken und Anzeige."
   ],
@@ -1456,7 +1456,7 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Schiebe den Regler So laut schlägt Noah den Topf an ganz nach links auf leise und beobachte das rote Trommelfell im Bild.",
+   "Schiebe den Regler So laut wird der Topf angeschlagen ganz nach links auf leise und beobachte das rote Trommelfell im Bild.",
    "Stelle danach mittel und laut ein und vergleiche, wie stark das Trommelfell jedes Mal hin- und herschwingt.",
    "Öffne erst zum Schluss den Klapptext Erst nach dem Versuch öffnen: der Weg des Schalls und lies die sechs Stationen nach."
   ],
@@ -1508,7 +1508,7 @@
   ],
   "predictOk": 1,
   "forschen": [
-   "Schiebe den Regler So schnell schwingt Emmas Glas ganz nach links auf 100 Hz und lies die Anzeige in der Statuszeile ab.",
+   "Schiebe den Regler Schwingungen pro Sekunde (Frequenz) ganz nach links auf 100 Hz und lies die Anzeige in der Statuszeile ab.",
    "Stelle danach 300 Hz und 800 Hz ein und trage jedes Mal ein, ob dort tiefer, mittlerer oder hoher Ton steht.",
    "Beobachte die violette Welle im Bild: Zähle, ob bei 800 Hz mehr Wellenberge zu sehen sind als bei 100 Hz."
   ],
