@@ -25,7 +25,7 @@ Ein Dump traegt kein Datum ([[fakten-dumps-veralten]]). Nach jeder Aenderung an
 `physics-sim.js` ODER an `simcheck/simfakten.js` also mit `--neu` alle zusammen
 neu ziehen - nicht einzeln nachziehen.
 """
-import json, os, re, subprocess, sys
+import hashlib, json, os, re, subprocess, sys
 import importlib.util as ilu
 
 HIER = os.path.dirname(os.path.abspath(__file__))
@@ -36,6 +36,42 @@ SIMDATEI = os.path.join(WURZEL, "physics-sim.js")
 # die STELLUNG, nicht der Wert - vorgelesen wird er von der Simulation.
 STELLEN = os.path.join(HIER, "stellen.json")
 SCHALTER = ["--voll", "--frames=25", "--verlauf=4", "--stellen=" + STELLEN]
+# Woraus ein Dump entsteht. Aendert sich eine dieser Dateien oder ein Schalter,
+# sind ALLE Dumps veraltet - und zwar still, weil ein Dump kein Datum traegt
+# ([[fakten-dumps-veralten]]). Der Stand wird deshalb neben die Dumps gelegt
+# und bei jedem Lauf verglichen. Am 16.09.2026 hat genau das zugeschlagen:
+# 27 Simulationen hatten ihre Figurennamen verloren, und der naechste Lauf
+# meldete "0 gezogen, 191 lagen schon da".
+QUELLEN = ["physics-sim.js", "simcheck/simfakten.js", "simcheck/stellen.json"]
+STAND = "_stand.json"
+
+
+def _stand_jetzt():
+    h = {}
+    for rel in QUELLEN:
+        p = os.path.join(WURZEL, rel)
+        h[rel] = hashlib.sha256(open(p, "rb").read()).hexdigest()[:16] if os.path.exists(p) else "—"
+    h["schalter"] = " ".join(x for x in SCHALTER if not x.startswith("--stellen="))
+    return h
+
+
+def stand_pruefen(nach):
+    """Sagt, ob die vorhandenen Dumps noch zum heutigen Stand passen.
+
+    Zurueck kommt (passt, grund). Passt es nicht, MUESSEN alle Dumps neu -
+    einzeln nachziehen hilft nicht, dann stehen zwei Staende nebeneinander.
+    """
+    p = os.path.join(nach, STAND)
+    jetzt = _stand_jetzt()
+    if not os.path.exists(p):
+        return False, "kein Stand hinterlegt"
+    alt = json.load(open(p, encoding="utf-8"))
+    anders = [k for k in jetzt if alt.get(k) != jetzt[k]]
+    return (not anders), ("geändert: " + ", ".join(anders) if anders else "")
+
+
+def stand_schreiben(nach):
+    json.dump(_stand_jetzt(), open(os.path.join(nach, STAND), "w"), indent=1)
 
 BAENDER = ["arbeitsheft", "arbeitsheft7", "arbeitsheft8", "arbeitsheft9", "arbeitsheft10",
            "arbeitsheft_gts7", "arbeitsheft_gts8", "arbeitsheft_gts9", "arbeitsheft_gts10",
@@ -120,7 +156,15 @@ def main():
         print(f"\n{len(sims)} verschiedene Simulationen - "
               f"{sum(len(v) for v in je.values()) - len(sims)} Ziehungen gespart")
 
+    passt, grund = stand_pruefen(nach)
+    if not passt and not neu:
+        print(f"!! Die vorhandenen Dumps sind VERALTET ({grund}).")
+        print("   Es wird alles neu gezogen - ein Dump traegt kein Datum, und")
+        print("   einzeln nachziehen stellt zwei Staende nebeneinander.")
+        neu = True
     gut, alt, fehl, kaputt = ziehen(sims, nach, neu)
+    if not fehl:
+        stand_schreiben(nach)
     print(f"\n{gut} gezogen, {alt} lagen schon da, {fehl} kaputt  ->  {nach}")
     for z in kaputt:
         print("   x", z)

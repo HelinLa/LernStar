@@ -29,9 +29,11 @@ DIE SECHS RIEGEL
      eingetragen: eine Namensliste je Band haette in vier von vierzehn
      Baenden falsch gemeldet - `arbeitsheft` fuehrt Emma UND Mia, `gts9`
      dazu Herrn Kessler.
-  4. Der Einstieg endet nicht mit einer Frage. Die Forscherfrage steht
-     unmittelbar darunter; ein Fragezeichen am Ende des Einstiegs stellt sie
-     zweimal.
+  4. Das Fragezeichen am Ende - erlaubt oder nicht, je nach BAND, und auch
+     das gemessen (`frage_erlaubt`). Die Realschul-, Gesamtschul- und
+     Oberstufenreihe enden nie so (0-10 %), die Gymnasialreihe fast immer
+     (50-95 %). Eine feste Regel haette 115 der 140 Gymnasialseiten als
+     Fehler gemeldet, obwohl dort jede zweite bis zwanzigste so gebaut ist.
   5. Jede Zahl steht am Bildschirm. Ein Einstieg, der "nach 12 Sekunden" sagt,
      verspricht eine Anzeige, die es geben muss.
   6. Der Gegenstand kommt am Bildschirm vor - gemessen mit `einstieg_motiv`,
@@ -98,6 +100,20 @@ def saetze_spanne(einstiege):
     """
     n = [len(_saetze(t)) for t in einstiege if t]
     return (min(n), max(n)) if n else (3, 5)
+
+
+def frage_erlaubt(einstiege):
+    """Darf ein Einstieg dieses Bandes mit einem Fragezeichen enden?
+
+    GEMESSEN am Bestand: die Gymnasialreihe tut es in 50 bis 95 % ihrer
+    Einstiege, die Realschul- und Gesamtschulreihe und die Oberstufe in 0 bis
+    10 %. Zwischen 10 und 50 % liegt nichts - der Schnitt bei einem Drittel
+    trifft also keine Grenzfaelle.
+    """
+    n = [t for t in einstiege if t]
+    if not n:
+        return False
+    return sum(1 for t in n if t.rstrip().endswith("?")) / len(n) >= 0.33
 
 
 def kanon_bestimmen(einstiege):
@@ -173,7 +189,7 @@ def _zahlen(text):
     return raus
 
 
-def pruefe(neu, alt, schirmtext, klasse, kanon, saetze=(3, 5)):
+def pruefe(neu, alt, schirmtext, klasse, kanon, saetze=(3, 5), frage_ok=False):
     """Gibt die Liste der Befunde zurueck - leer heisst: darf ins Heft."""
     f = []
 
@@ -190,7 +206,7 @@ def pruefe(neu, alt, schirmtext, klasse, kanon, saetze=(3, 5)):
     if fehlt:
         f.append("Figur fehlt: " + ", ".join(sorted(fehlt)))
 
-    if neu.rstrip().endswith("?"):
+    if neu.rstrip().endswith("?") and not frage_ok:
         f.append("endet mit einer Frage")
 
     fremd = sorted(_zahlen(neu) - _zahlen(schirmtext))
@@ -243,6 +259,10 @@ def selbsttest():
     if saetze_spanne(["Eins. Zwei. Drei.",
                       "Eins. Zwei. Drei. Vier. Fünf. Sechs. Sieben. Acht."]) != (3, 8):
         raise SystemExit("SELBSTTEST GEFALLEN: Satzspanne falsch gemessen")
+    # Der Hausstil entscheidet ueber das Fragezeichen - gemessen, nicht gesetzt.
+    if frage_erlaubt(BAND) or not frage_erlaubt([t + "?" for t in BAND]):
+        raise SystemExit("SELBSTTEST GEFALLEN: Hausstil der Frage falsch gemessen")
+    frage_ok = False
     proben = [
         ("gut", GUT, ALT, SCHIRM, 9, True),
         ("zu kurz", "Ben und Mia streiten über die Rampe. Ben sagt so, Mia "
@@ -289,7 +309,7 @@ def selbsttest():
     ]
     schlecht = []
     for name, neu, alt, schirm, kl, soll_bestehen in proben:
-        f = pruefe(neu, alt, schirm, kl, kanon, (3, 5))
+        f = pruefe(neu, alt, schirm, kl, kanon, (3, 5), frage_ok)
         if bool(f) == soll_bestehen:  # bestanden heisst: keine Befunde
             schlecht.append("%s: %s" % (name, "; ".join(f) or "keine Befunde"))
     if schlecht:
@@ -313,6 +333,7 @@ def main():
     alt = {x["id"]: x for x in b["einheiten"]}
     kanon = kanon_bestimmen([x["einstieg"] for x in b["einheiten"]])
     spanne = saetze_spanne([x["einstieg"] for x in b["einheiten"]])
+    frage_ok = frage_erlaubt([x["einstieg"] for x in b["einheiten"]])
 
     gut, schlecht = [], []
     for e in neu:
@@ -321,7 +342,8 @@ def main():
         a = alt[e["id"]]
         schirm = " ".join([a["sim_ueberschrift"], a["sim_status"]]
                           + a["sim_knoepfe"] + a["sim_regler"] + a["sim_bildtexte"])
-        f = pruefe(e["neu"], a["einstieg"], schirm, b["klasse"], kanon, spanne)
+        f = pruefe(e["neu"], a["einstieg"], schirm, b["klasse"], kanon, spanne,
+                   frage_ok)
         (gut if not f else schlecht).append((e["id"], e["neu"], f))
 
     print("%s: %d neu · %d bestehen · %d mit Befund"

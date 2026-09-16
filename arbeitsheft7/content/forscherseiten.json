@@ -1218,8 +1218,8 @@
   "id": "g9",
   "name": "Wovon hängt die Anziehung zweier Körper ab?",
   "theme": "himmel7",
-  "titel": "Erst nichts, dann ein Ruck",
-  "problem": "Ben hält einen Magneten über eine Büroklammer auf dem Tisch. Aus zehn Zentimetern passiert nichts. Er geht auf fünf herunter – immer noch nichts. Bei zwei Zentimetern springt die Klammer plötzlich hoch. Für Ben sieht es aus, als sei die Anziehung nicht gleichmäßig gewachsen, sondern auf einmal da gewesen.",
+  "titel": "Der Kleine zieht, der Große nicht",
+  "problem": "Im Fernrohr steht der Mond groß im Okular, der viel größere Jupiter bleibt ein Pünktchen. Ben liest vor, dass der Mond bei uns Ebbe und Flut macht, Jupiter dagegen nichts. Mia hält das für einen Druckfehler, denn Jupiter ist doch der schwerere von beiden. Ben zeigt auf die Entfernungsspalte daneben.",
   "frage": "Wovon hängt die Anziehung zweier Körper ab – von den Massen, vom Abstand?",
   "predict": [
    "Bei doppeltem Abstand bleibt weniger als die Hälfte übrig; die Anziehung nimmt schneller ab.",
@@ -1257,7 +1257,7 @@
     "post": " der Anziehung übrig, bei vierfachem nur ein Sechzehntel."
    }
   ],
-  "beobachtung": "Bei festem Abstand wächst die Anziehung genauso wie die Masse: Bei doppelter Masse ist sie doppelt so groß, bei vierfacher Masse viermal so groß. Beim Abstand geschieht etwas anderes und viel schneller. Doppelter Abstand lässt nicht die Hälfte übrig, sondern nur ein Viertel des Ausgangswertes, vierfacher Abstand sogar nur ein Sechzehntel. Die Anziehung wird also schwächer, sobald der Abstand wächst, und zwar sehr steil. Auch beim Magneten wächst die Kraft erst dicht davor stark an – er folgt dabei allerdings einer eigenen Regel, nicht der Abstandsregel dieser Simulation.",
+  "beobachtung": "Bei festem Abstand wächst die Anziehung genauso wie die Masse: Bei doppelter Masse ist sie doppelt so groß, bei vierfacher Masse viermal so groß. Beim Abstand geschieht etwas anderes und viel schneller. Doppelter Abstand lässt nicht die Hälfte übrig, sondern nur ein Viertel des Ausgangswertes, vierfacher Abstand sogar nur ein Sechzehntel. Die Anziehung wird also schwächer, sobald der Abstand wächst, und zwar sehr steil.",
   "aufgabe": {
    "frage": "Erkläre, warum die Sonne die Erde festhält, obwohl sie 150 Millionen Kilometer entfernt ist.",
    "zeilen": 3,

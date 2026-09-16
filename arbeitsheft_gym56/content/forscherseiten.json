@@ -1337,9 +1337,9 @@
  {
   "id": "sl5",
   "basiskonzept": "Wechselwirkung",
-  "titel": "Die Halle klatscht zurück",
-  "problem": "Auf dem Weg zum Physikraum kürzen Lina und Aras durch die leere Turnhalle ab. Aras klatscht einmal laut – und von den Wänden klingt es nach, als klatsche jemand zurück. Im kleinen Physikraum klingt dasselbe Klatschen kurz und trocken. Warum antwortet die große Halle, der kleine Raum aber nicht?",
-  "frage": "Warum hallt es in der Turnhalle?",
+  "titel": "Flöte und Bass kommen zusammen an",
+  "problem": "Auf dem Schulhof spielt die Band zum Sommerfest. Lina hört von ganz hinten zu: Flöte und Bass treffen genau zusammen bei ihr ein. Aras findet das erstaunlich, denn der hohe Ton schwingt doch viel schneller als der tiefe. Müsste er dann nicht früher ankommen?",
+  "frage": "Sind hohe Töne schneller als tiefe?",
   "auftrag": "Miss, wie schnell der Schall durch die Luft läuft, und prüfe, ob hohe Töne schneller sind als tiefe.",
   "predict": [
    "Hohe Töne sind schneller unterwegs als tiefe – deshalb kommt ihr Schall zuerst an.",
@@ -1370,9 +1370,9 @@
     "post": "Meter zurück – bei hohen und tiefen Tönen gleich."
    },
    {
-    "pre": "Schall, den eine Wand zurückwirft und der etwas später ankommt, heißt",
-    "loesung": "Hall",
-    "post": "."
+    "pre": "Ein hoher Ton schwingt öfter je Sekunde, seine Verdichtungen liegen deshalb",
+    "loesung": "dichter",
+    "post": "beieinander – schneller ist er aber nicht."
    }
   ],
   "beobachtung": "Bei 100 Hz liegen die Verdichtungen 3,43 m auseinander, bei 400 Hz sind es 0,86 m. Bei 1000 Hz rücken sie auf 0,34 m zusammen, bei 2000 Hz auf 0,17 m. Im weißen Kästchen steht bei jeder Einstellung dieselbe Geschwindigkeit: c = 343 m/s. Hohe Töne sind also nicht schneller – nur ihre Verdichtungen folgen dichter aufeinander.",
