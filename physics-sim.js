@@ -66506,18 +66506,46 @@ function _krmSelf(n) {
 // D = F/s bleibt gleich. Zwei Federn (weich/hart) umschaltbar.
 // ═══════════════════════════════════════════════════════
 let _fed = null;
-const _FED_FVALS = [0, 1, 2, 3, 4, 5];            // Kraft in N
-const _FED_K = { weich: 2, hart: 1 };             // Dehnung in cm pro 1 N
+// GEWICHTE ANHAENGEN, NICHT KRAFT EINSTELLEN (seit 16.09.2026).
+// Abdullah: "an einer Feder immer die masse lesen dann wie viel Newton das
+// sind, dann wuerde ich es gut finden, wenn du feder und masse also gewichte
+// dranhaengen, selbst machen kannst, dann ueber die messpunkte ... in einem
+// koordinatensystem eintraegst, und dann wird die ausgleichsgerade
+// reinzeichnest und dann ueber die Steigung wird die federhaerte bestimmt."
+// Vorher liess sich die Kraft direkt in ganzen Newton einstellen, und die
+// Federhaerte stand als IDEALE Gerade samt Beschriftung schon im Bild - die
+// Antwort war gedruckt, nicht gemessen. Jetzt haengt man Gewichte an, die
+// Kraft folgt aus F = m · g, und die Haerte fällt aus der STEIGUNG der
+// Ausgleichsgeraden durch die eigenen Punkte.
+const _FED_G = 9.81;                              // N je kg
+const _FED_STUECK = [50, 100];                    // anhaengbare Gewichte in g
+const _FED_MMAX = 500;                            // mehr traegt der Haken nicht
+const _FED_K = { weich: 2, hart: 1 };             // Dehnung in cm je 1 N
 const _FED_SMAX = 10;
-function _fedInit() { _fed = { feder: 'weich', fIdx: 1, rows: [], t: 0 }; }
-function _fedF() { return _FED_FVALS[_fed.fIdx]; }
+function _fedInit() { _fed = { feder: 'weich', m: 0, rows: [], t: 0 }; }
+function _fedF() { return _fed.m / 1000 * _FED_G; }
 function _fedS() { return _fedF() * _FED_K[_fed.feder]; }
+// Ausgleichsgerade durch die eigenen Messpunkte: kleinste Quadrate, F ueber s.
+// Ihre Steigung IST die Federhaerte - deshalb wird sie gerechnet und nicht
+// aus _FED_K abgeschrieben.
+function _fedFit() {
+  const r = _fed.rows;
+  if (r.length < 2) return null;
+  const n = r.length;
+  const sx = r.reduce((a, p) => a + p.s, 0), sy = r.reduce((a, p) => a + p.F, 0);
+  const sxx = r.reduce((a, p) => a + p.s * p.s, 0), sxy = r.reduce((a, p) => a + p.s * p.F, 0);
+  const nen = n * sxx - sx * sx;
+  if (Math.abs(nen) < 1e-12) return null;
+  const D = (n * sxy - sx * sy) / nen;
+  const b = (sy - D * sx) / n;
+  return { D, b };
+}
 
 function _fedHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim fed-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">📈 Warum wird eine Feder gleichmäßig länger?</h3>
-    <div class="fpm-note" style="margin-top:2px">Hänge verschiedene Kräfte an dieselbe Feder und miss die Dehnung. Nimm Messpunkte auf. Welche Form hat die Kurve?</div>
+    <div class="fpm-note" style="margin-top:2px">Hänge Gewichte an die Feder. Die Kraft rechnet sich aus der Masse: F = m · g. Trage jeden Messpunkt ein. Ab zwei Punkten legt die Simulation die Ausgleichsgerade hindurch – ihre Steigung ist die Federhärte D.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="fedAnim" width="440" height="236" class="phys-anim-cv"></canvas>
@@ -66527,11 +66555,15 @@ function _fedHTML() {
           <button class="sim-btn${_fed.feder === 'hart' ? ' primary' : ''}" id="fedFhart" onclick="_fedSetFeder('hart')">harte Feder</button>
         </div>
         <div class="sim-btn-row" style="margin-top:4px">
-          <span class="fpm-label" style="align-self:center">Kraft:</span>
-          <button class="sim-btn" onclick="_fedF_(-1)">◀ weniger</button>
-          <button class="sim-btn" onclick="_fedF_(1)">mehr ▶</button>
-          <button class="sim-btn primary" onclick="_fedMessen()">📍 Messpunkt</button>
-          <button class="sim-btn" onclick="_fedClear()">🗑 löschen</button>
+          <span class="fpm-label" style="align-self:center">Gewichte:</span>
+          <button class="sim-btn" onclick="_fedHaenge(50)">+ 50 g</button>
+          <button class="sim-btn" onclick="_fedHaenge(100)">+ 100 g</button>
+          <button class="sim-btn" onclick="_fedHaenge(-50)">− 50 g</button>
+          <button class="sim-btn" onclick="_fedAb()">↺ alles abnehmen</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_fedMessen()">📍 Messpunkt eintragen</button>
+          <button class="sim-btn" onclick="_fedClear()">🗑 Tabelle leeren</button>
         </div>
       </div>
       <div>
@@ -66556,29 +66588,43 @@ function _fedSetFeder(f) {
   document.getElementById('fedFhart')?.classList.toggle('primary', f === 'hart');
   _fedStatus();
 }
-function _fedF_(d) { if (_fed) { _fed.fIdx = Math.max(0, Math.min(_FED_FVALS.length - 1, _fed.fIdx + d)); _fedStatus(); } }
+function _fedHaenge(g) {
+  if (!_fed) return;
+  _fed.m = Math.max(0, Math.min(_FED_MMAX, _fed.m + g));
+  _fedStatus();
+}
+function _fedAb() { if (_fed) { _fed.m = 0; _fedStatus(); } }
 function _fedMessen() {
   if (!_fed) return;
-  const F = _fedF(), s = _fedS();
-  if (!_fed.rows.some(r => r.F === F)) { _fed.rows.push({ F, s }); _fed.rows.sort((a, b) => a.F - b.F); }
+  if (_fed.m <= 0) return;          // ohne Gewicht gibt es nichts einzutragen
+  const F = _fedF(), sv = _fedS(), m = _fed.m;
+  if (!_fed.rows.some(r => r.m === m)) { _fed.rows.push({ m, F, s: sv }); _fed.rows.sort((a, b) => a.m - b.m); }
   _fedStatus();
 }
 function _fedClear() { if (_fed) { _fed.rows = []; _fedStatus(); } }
 function _fedStatus() {
   const el = document.getElementById('fedStatus');
   if (el) {
-    const F = _fedF(), s = _fedS();
-    const dtxt = F > 0 ? ' · D = F/s = ' + (F / s).toFixed(1).replace('.', ',') + ' N/cm' : '';
-    el.innerHTML = `Eingestellt: <b>F = ${F} N</b> → Dehnung <b>s = ${String(s).replace('.', ',')} cm</b>${dtxt}.`;
+    const F = _fedF(), sv = _fedS();
+    // Die Federhaerte steht NICHT mehr hier. Sie kommt aus der Steigung der
+    // Ausgleichsgeraden, und die gibt es erst ab zwei eigenen Messpunkten.
+    const fit = _fedFit();
+    const rest = fit
+      ? ` · Ausgleichsgerade durch ${_fed.rows.length} Punkte: <b>Steigung D = ${_fpmNum(fit.D, 2)} N/cm</b>`
+      : (_fed.rows.length === 1 ? ' · ein Punkt genügt nicht für eine Gerade'
+                                : ' · noch keine Messpunkte eingetragen');
+    el.innerHTML = `Angehängt: <b>m = ${_fpmNum(_fed.m, 0)} g</b> → `
+      + `<b>F = m · g = ${_fpmNum(F, 2)} N</b> → Dehnung <b>s = ${_fpmNum(sv, 2)} cm</b>${rest}.`;
     el.className = 'lmp-status on';
   }
   const tb = document.getElementById('fedTable');
   if (tb) tb.innerHTML = _fedTableHTML();
 }
 function _fedTableHTML() {
-  if (!_fed.rows.length) return '<div class="fpm-note" style="margin:0">Noch keine Messpunkte – stelle eine Kraft ein und tippe „Messpunkt".</div>';
-  const rows = _fed.rows.map(r => `<tr><td>${r.F} N</td><td>${String(r.s).replace('.', ',')} cm</td><td>${r.F > 0 ? (r.F / r.s).toFixed(1).replace('.', ',') + ' N/cm' : '—'}</td></tr>`).join('');
-  return `<table class="ab-table" style="margin:0"><tbody><tr><td>F</td><td>s</td><td>D = F/s</td></tr>${rows}</tbody></table>`;
+  if (!_fed.rows.length) return '<div class="fpm-note" style="margin:0">Noch keine Messpunkte – hänge ein Gewicht an und tippe „Messpunkt eintragen".</div>';
+  const rows = _fed.rows.map(r =>
+    `<tr><td>${_fpmNum(r.m, 0)} g</td><td>${_fpmNum(r.F, 2)} N</td><td>${_fpmNum(r.s, 2)} cm</td></tr>`).join('');
+  return `<table class="ab-table" style="margin:0"><tbody><tr><td>m</td><td>F = m · g</td><td>s</td></tr>${rows}</tbody></table>`;
 }
 
 // ── Animation (Plot der Kennlinie) ─────────────────────
@@ -66604,19 +66650,33 @@ function _fedDraw(ctx, cv) {
   for (let f = 0; f <= Fmax; f += 1) { const y = py(f); ctx.strokeStyle = 'rgba(100,116,139,0.25)'; ctx.beginPath(); ctx.moveTo(oxL, y); ctx.lineTo(oxR, y); ctx.stroke(); ctx.fillText(String(f), oxL - 4, y + 3); }
   ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('s in cm', (oxL + oxR) / 2, H - 4);
   ctx.save(); ctx.translate(12, (oyT + oyB) / 2); ctx.rotate(-Math.PI / 2); ctx.fillText('F in N', 0, 0); ctx.restore();
-  // Ideale Gerade durch den Ursprung. Ihre Steigung IST die Federkonstante D.
-  const K = _FED_K[_fed.feder], D = 1 / K;
-  const sEnd = Math.min(Smax, Fmax * K), fEnd = sEnd * D;
-  ctx.strokeStyle = 'rgba(74,222,128,0.55)'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
-  ctx.beginPath(); ctx.moveTo(px(0), py(0)); ctx.lineTo(px(sEnd), py(fEnd)); ctx.stroke(); ctx.setLineDash([]);
-  // Die Steigung benennen - sonst bleibt der Zusammenhang zur Zahl daneben unsichtbar.
-  ctx.fillStyle = '#4ade80'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText('Steigung = D = ' + _fpmNum(D, 1) + ' N/cm', px(sEnd * 0.52) + 10, py(fEnd * 0.52) + 4);
-  // aktueller Einstellpunkt (offen)
-  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(px(_fedS()), py(_fedF()), 5, 0, 2 * Math.PI); ctx.stroke();
+  // KEINE IDEALE GERADE MEHR. Vorher lag hier eine gestrichelte Linie aus
+  // _FED_K samt Beschriftung "Steigung = D = 0,5 N/cm" - die Antwort stand
+  // im Bild, bevor ein Kind einen Punkt gemessen hatte. Gezeichnet wird jetzt
+  // die AUSGLEICHSGERADE durch die eigenen Messpunkte, und erst ab zwei.
+  // aktueller Punkt der angehaengten Masse (offen, noch nicht eingetragen)
+  if (_fed.m > 0) {
+    ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px(_fedS()), py(_fedF()), 5, 0, 2 * Math.PI); ctx.stroke();
+  }
   // Messpunkte
   ctx.fillStyle = '#38bdf8';
   _fed.rows.forEach(r => { ctx.beginPath(); ctx.arc(px(r.s), py(r.F), 4.5, 0, 2 * Math.PI); ctx.fill(); });
+  const fit = _fedFit();
+  if (fit) {
+    // Die Gerade ueber die ganze Achse ziehen, damit die Steigung ablesbar ist
+    const y0 = fit.b, y1 = fit.D * Smax + fit.b;
+    ctx.strokeStyle = 'rgba(74,222,128,0.85)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(px(0), py(y0)); ctx.lineTo(px(Smax), py(y1)); ctx.stroke();
+    ctx.fillStyle = '#4ade80'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    const mx = Smax * 0.45, my = fit.D * mx + fit.b;
+    ctx.fillText('Ausgleichsgerade · Steigung D = ' + _fpmNum(fit.D, 2) + ' N/cm',
+                 px(mx) + 8, py(my) - 6);
+  } else if (_fed.rows.length === 1) {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Ein Punkt gibt noch keine Gerade – hänge mehr Gewicht an.',
+                 (oxL + oxR) / 2, oyT + 14);
+  }
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText(_fed.feder === 'weich' ? 'weiche Feder' : 'harte Feder', oxR - 96, oyT + 10);
 }
@@ -66636,28 +66696,29 @@ function _fedArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Stelle die Kraft F der Reihe nach auf 1, 2, 3, 4, 5 N.</li>
-          <li>Nimm bei jeder Kraft einen Messpunkt (F, s) auf.</li>
-          <li>Betrachte die Kurve und berechne D = F/s.</li>
+          <li>Hänge 100 g an, dann 200 g, 300 g, 400 g. Lies jedes Mal die Kraft F = m · g ab.</li>
+          <li>Trage jeden Messpunkt mit „Messpunkt eintragen" ins Diagramm ein.</li>
+          <li>Lies die Steigung der Ausgleichsgeraden ab. Sie ist die Federhärte D.</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
-        <div class="ab-t">Trage Kraft, Dehnung und das Verhältnis D = F/s ein (weiche Feder).</div>
+        <div class="ab-t">Trage Masse, Kraft und Dehnung ein (weiche Feder). Die Federhärte steht am Ende NUR einmal da – als Steigung der Ausgleichsgeraden.</div>
         <table class="ab-table"><tbody>
-          <tr><td>F = 1 N</td><td>s = ${inp('s1', 'cm')}</td><td>D = ${inp('dd1', 'N/cm')}</td></tr>
-          <tr><td>F = 2 N</td><td>s = ${inp('s2', 'cm')}</td><td>D = ${inp('dd2', 'N/cm')}</td></tr>
-          <tr><td>F = 3 N</td><td>s = ${inp('s3', 'cm')}</td><td>D = ${inp('dd3', 'N/cm')}</td></tr>
+          <tr><td>m = 100 g</td><td>F = ${inp('f1', 'N')}</td><td>s = ${inp('s1', 'cm')}</td></tr>
+          <tr><td>m = 200 g</td><td>F = ${inp('f2', 'N')}</td><td>s = ${inp('s2', 'cm')}</td></tr>
+          <tr><td>m = 300 g</td><td>F = ${inp('f3', 'N')}</td><td>s = ${inp('s3', 'cm')}</td></tr>
+          <tr><td colspan="2">Steigung der Ausgleichsgeraden</td><td>D = ${inp('dd1', 'N/cm')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze (Diagramm)</div>
-        <div class="ab-t">Zeichne die Messpunkte in ein Diagramm (s waagerecht, F senkrecht) und verbinde sie. Welche Form hat die Kurve, und was bedeutet ihre Steigung?</div>
+        <div class="ab-t">Sieh dir die Ausgleichsgerade an. Welche Form haben die Messpunkte, und was bedeutet die Steigung der Geraden?</div>
         <div class="ab-skizze">Platz für dein Diagramm</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
         <ol class="ab-ol">
           <li>Welche Form hat die Kurve? ${inp('a1', 'eine … durch den …')}</li>
           <li>Was passiert mit s, wenn F verdoppelt wird? ${inp('a2', '')}</li>
-          <li>Bleibt D = F/s bei jeder Messung gleich? ${inp('a3', 'ja/nein')}</li>
+          <li>Ändert sich die Steigung, wenn du einen fünften Punkt dazunimmst? ${inp('a3', 'ja/nein')}</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
@@ -66684,7 +66745,7 @@ function _fedArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Weiche Feder: 2 cm pro 1 N (F=1→s=2, F=2→s=4, F=3→s=6 …), D = F/s = 0,5 N/cm konstant. Harte Feder: 1 cm pro 1 N, D = 1 N/cm. Die Messpunkte liegen auf einer Geraden durch den Ursprung.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Weiche Feder: 100 g sind 0,98 N und dehnen 1,96 cm; 200 g sind 1,96 N und 3,92 cm. Die Ausgleichsgerade hat die Steigung <b>D = 0,50 N/cm</b>. Harte Feder: dieselben Massen, halbe Dehnung, <b>D = 1,00 N/cm</b>. Die Messpunkte liegen auf einer Geraden durch den Ursprung.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Im elastischen Bereich ist die Dehnung s proportional zur Kraft F: s ~ F. Das Verhältnis D = F/s (Federkonstante/Federhärte) ist für eine Feder konstant. Hooke'sches Gesetz: F = D · s. Eine harte Feder hat eine größere Federkonstante (steilere F/s), aber flachere s-über-F-Gerade.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Feder dehnt sich immer weiter proportional, egal wie stark.“ – nur im elastischen Bereich; danach bleibt sie überdehnt. (2) „D ändert sich mit der Kraft.“ (3) „Steile Gerade = harte Feder.“ (im s-über-F-Diagramm ist es umgekehrt).</div>
         <div class="ab-t"><b>Hilfestellungen.</b> D = F/s für jede Zeile gemeinsam ausrechnen und vergleichen; Proportionalität als „doppelt → doppelt“ verbalisieren; Ursprung (0,0) betonen.</div>

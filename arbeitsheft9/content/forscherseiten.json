@@ -178,19 +178,20 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Wähle „weiche Feder“ und stelle mit „weniger“ und „mehr“ nacheinander F = 0 N, F = 1 N und F = 2 N ein. Sichere jede Stufe mit „Messpunkt“ und lies s sowie D = F/s ab.",
-   "Wähle „harte Feder“ und stelle wieder F = 1 N ein. Vergleiche Dehnung, D-Wert und die Steilheit der Geraden mit denen der weichen Feder und trage beides in die Tabelle ein.",
-   "Gegenprobe am Tisch: Hänge an eine Schraubenfeder ein Gewichtsstück, dann zwei, dann drei und miss jedes Mal die Länge der Feder mit dem Lineal."
+   "Wähle „weiche Feder“. Hänge mit „+ 100 g“ nacheinander 100 g, 200 g, 300 g und 400 g an und drücke nach jedem Gewicht „Messpunkt eintragen“.",
+   "Lies in der Statuszeile die Steigung der Ausgleichsgeraden ab. Sie ist die Federhärte D.",
+   "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „harte Feder“ und wiederhole die vier Gewichte. Vergleiche die neue Steigung mit der alten."
   ],
   "tabCols": [
-   "Dehnung s in cm",
-   "Federkonstante D = F/s in N/cm"
+   "Kraft F = m · g in N",
+   "Dehnung s in cm"
   ],
   "tabRows": [
-   "weiche Feder, F = 0 N",
-   "weiche Feder, F = 1 N",
-   "weiche Feder, F = 2 N",
-   "harte Feder, F = 1 N"
+   "weiche Feder, m = 100 g",
+   "weiche Feder, m = 200 g",
+   "weiche Feder, m = 400 g",
+   "harte Feder, m = 400 g",
+   "Steigung der Ausgleichsgeraden D in N/cm"
   ],
   "fachtext": "Zieht man mit immer größeren Kräften an einer Feder, so wächst ihre Dehnung s im gleichen Verhältnis wie die Kraft F. Verdoppelt man die Kraft, verdoppelt sich auch die Dehnung; im Diagramm liegen die Messpunkte deshalb auf einer Geraden durch den Nullpunkt. Diesen Zusammenhang nennt man das Hookesche Gesetz. Der Quotient D = F/s ist für eine bestimmte Feder immer gleich groß und heißt Federkonstante; er beschreibt, wie hart die Feder ist. Eine harte Feder hat ein großes D, weil sie sich bei derselben Kraft nur wenig dehnt. Das Gesetz gilt nur so lange, wie die Feder nicht überdehnt wird.",
   "merksatz": [
@@ -205,7 +206,7 @@
     "post": " und ist für jede Feder eine feste Zahl."
    }
   ],
-  "beobachtung": "Bei der weichen Feder gehört zu F = 0 N die Dehnung s = 0 cm. Mit F = 1 N ist sie um s = 2 cm gedehnt, mit F = 2 N um s = 4 cm: doppelte Kraft, doppelte Dehnung. Der Quotient bleibt dabei gleich, D = F/s = 0,5 N/cm. Die harte Feder dehnt sich bei F = 1 N dagegen nur um s = 1 cm, ihr Wert ist D = 1,0 N/cm. Sie ist also doppelt so hart wie die weiche. Die gesetzten Messpunkte liegen bei beiden Federn auf einer Geraden, die im Nullpunkt beginnt. Im Diagramm ist die Steigung dieser Geraden genau die Federkonstante D – die harte Feder ergibt deshalb die steilere Gerade.",
+  "beobachtung": "Die Simulation rechnet aus jeder Masse die Kraft: 100 g sind F = 0,98 N, 200 g sind 1,96 N, 400 g sind 3,92 N. An der weichen Feder gehören dazu die Dehnungen 1,96 cm, 3,92 cm und 7,85 cm – doppelte Masse, doppelte Dehnung. Ein einzelner Messpunkt gibt noch keine Gerade; ab dem zweiten legt die Simulation die Ausgleichsgerade hindurch und nennt ihre Steigung. Für die weiche Feder ist das D = 0,50 N/cm, für die harte D = 1,00 N/cm. Die harte Feder dehnt sich bei 400 g nur 3,92 cm, ihre Gerade ist also die steilere. Die Federhärte liest man an der Steigung ab, nicht an einer einzelnen Zeile.",
   "aufgabe": {
    "frage": "Berechne die Federkonstante D einer Feder, die sich bei F = 2 N um s = 4 cm dehnt, und beurteile, ob sie härter oder weicher ist als eine Feder mit D = 1,0 N/cm.",
    "zeilen": 3,

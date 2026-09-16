@@ -21,31 +21,31 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Wähle „weiche Feder“ und drücke einmal „mehr ▶“.",
-   "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.",
-   "Drücke einmal „◀ weniger“ und wähle dann „harte Feder“.",
-   "Lies wieder ab. Fülle die letzte Zeile aus."
+   "Wähle „weiche Feder“. Drücke „+ 100 g“.",
+   "Lies ab: Wie viel Newton sind das? Wie weit dehnt sich die Feder? Trage es ein.",
+   "Drücke „+ 100 g“ noch einmal. Lies wieder ab und trage es ein.",
+   "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Lies ab und füll die letzte Zeile."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
   "tabCols": [
    "Welche Feder?",
-   "Wie groß ist die Kraft F in N?",
+   "Wie viel Gramm hängen dran?",
    "Wie weit dehnt sie sich?"
   ],
   "tabRows": [
    [
     "weiche Feder",
-    "1 N",
+    "100 g",
     ""
    ],
    [
     "weiche Feder",
-    "2 N",
+    "200 g",
     ""
    ],
    [
     "harte Feder",
-    "1 N",
+    "100 g",
     ""
    ]
   ],
@@ -68,8 +68,8 @@
    "weiche"
   ],
   "beispiel": {
-   "frage": "Wie weit dehnt sich die weiche Feder bei F = 1 N?",
-   "antwort": "Hinter dem Pfeil → steht 2 cm. So weit dehnt sich die weiche Feder."
+   "frage": "Wie weit dehnt sich die weiche Feder bei 100 g?",
+   "antwort": "Die Simulation zeigt F = 0,98 N und s = 1,96 cm. So weit dehnt sich die weiche Feder."
   },
   "aufgaben": [
    {

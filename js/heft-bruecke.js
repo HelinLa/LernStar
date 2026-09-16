@@ -891,7 +891,7 @@ const HEFT_SEITEN = {
     name: "Warum wird eine Feder gleichmäßig länger? (Hooke)",
     titel: "Zwei Federn, die nicht gleich nachgeben",
     frage: "Dehnen sich eine weiche und eine harte Feder bei derselben Kraft gleich weit?",
-    schritte: ["Wähle „weiche Feder“ und stelle mit „weniger“ und „mehr“ nacheinander F = 0 N, F = 1 N und F = 2 N ein. Sichere jede Stufe mit „Messpunkt“ und lies s sowie D = F/s ab.", "Wähle „harte Feder“ und stelle wieder F = 1 N ein. Vergleiche Dehnung, D-Wert und die Steilheit der Geraden mit denen der weichen Feder und trage beides in die Tabelle ein.", "Gegenprobe am Tisch: Hänge an eine Schraubenfeder ein Gewichtsstück, dann zwei, dann drei und miss jedes Mal die Länge der Feder mit dem Lineal."]
+    schritte: ["Wähle „weiche Feder“. Hänge mit „+ 100 g“ nacheinander 100 g, 200 g, 300 g und 400 g an und drücke nach jedem Gewicht „Messpunkt eintragen“.", "Lies in der Statuszeile die Steigung der Ausgleichsgeraden ab. Sie ist die Federhärte D.", "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „harte Feder“ und wiederhole die vier Gewichte. Vergleiche die neue Steigung mit der alten."]
   },
   "kr5": {
     klasse: 9, schulform: "Realschule NRW",
@@ -2259,7 +2259,7 @@ const HEFT_SEITEN = {
     name: "Warum geben zwei Federn nicht gleich nach?",
     titel: "Weicher Puffer, harter Puffer",
     frage: "Warum gibt die harte Feder bei gleicher Kraft weniger nach als die weiche?",
-    schritte: ["Wähle „harte Feder“ und lies in der Statuszeile die Dehnung bei F = 1 N ab.", "Drücke „Messpunkt“, stelle mit „mehr“ die Kraft F = 2 N ein und nimm einen zweiten Messpunkt auf.", "Vergleiche: Wähle „weiche Feder“ und lies bei denselben Kräften die Dehnung ab."]
+    schritte: ["Wähle „harte Feder“, hänge 100 g an und drücke „Messpunkt eintragen“.", "Hänge noch 100 g dazu, drücke wieder „Messpunkt eintragen“ und lies die Steigung der Ausgleichsgeraden ab.", "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „weiche Feder“ und miss mit denselben beiden Gewichten noch einmal."]
   },
   "kf4": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -4473,7 +4473,7 @@ const HEFT_SEITEN = {
     name: "Warum gibt eine Feder nach?",
     titel: "Weicher Puffer, harter Puffer",
     frage: "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
-    schritte: ["Wähle „weiche Feder“ und drücke einmal „mehr ▶“.", "Lies hinter dem Pfeil → die Zahl in cm ab. Trage sie ein.", "Drücke einmal „◀ weniger“ und wähle dann „harte Feder“.", "Lies wieder ab. Fülle die letzte Zeile aus."]
+    schritte: ["Wähle „weiche Feder“. Drücke „+ 100 g“.", "Lies ab: Wie viel Newton sind das? Wie weit dehnt sich die Feder? Trage es ein.", "Drücke „+ 100 g“ noch einmal. Lies wieder ab und trage es ein.", "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Lies ab und füll die letzte Zeile."]
   },
   "fk4": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",

@@ -120,19 +120,19 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Wähle „harte Feder“ und lies in der Statuszeile die Dehnung bei F = 1 N ab.",
-   "Drücke „Messpunkt“, stelle mit „mehr“ die Kraft F = 2 N ein und nimm einen zweiten Messpunkt auf.",
-   "Vergleiche: Wähle „weiche Feder“ und lies bei denselben Kräften die Dehnung ab."
+   "Wähle „harte Feder“, hänge 100 g an und drücke „Messpunkt eintragen“.",
+   "Hänge noch 100 g dazu, drücke wieder „Messpunkt eintragen“ und lies die Steigung der Ausgleichsgeraden ab.",
+   "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „weiche Feder“ und miss mit denselben beiden Gewichten noch einmal."
   ],
   "tabCols": [
-   "Feder und Kraft F",
+   "Feder und Masse m",
    "Dehnung s in cm"
   ],
   "tabRows": [
-   "harte Feder, 1 N",
-   "harte Feder, 2 N",
-   "weiche Feder, 1 N",
-   "weiche Feder, 2 N"
+   "harte Feder, 100 g",
+   "harte Feder, 200 g",
+   "weiche Feder, 100 g",
+   "weiche Feder, 200 g"
   ],
   "fachtext": "Zieht man an einer Feder, dehnt sie sich. Die Messpunkte liegen auf einer Geraden durch den Nullpunkt: Doppelte Kraft bedeutet doppelte Dehnung. Kraft und Dehnung sind also proportional. Das Verhältnis D = F / s bleibt dabei gleich; es heißt Federkonstante und beschreibt, wie hart eine Feder ist. Umgestellt ergibt sich F = D · s, das Hooke'sche Gesetz. Im Diagramm ist D die Steigung der Geraden.",
   "merksatz": [
@@ -147,7 +147,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Bei der harten Feder steht in der Statuszeile: F = 1 N ergibt s = 1 cm und D = F/s = 1,0 N/cm. Bei F = 2 N sind es 2 cm, D bleibt 1,0 N/cm. Die weiche Feder dehnt sich bei 1 N um 2 cm, ihr D beträgt 0,5 N/cm. Im Diagramm liegen alle Punkte auf Geraden durch den Nullpunkt; die harte Feder hat die steilere Gerade.",
+  "beobachtung": "Aus 100 g rechnet die Simulation F = 0,98 N, aus 200 g F = 1,96 N. Die harte Feder dehnt sich dabei um 0,98 cm und 1,96 cm, die weiche um 1,96 cm und 3,92 cm. Mit einem Punkt geht keine Gerade; ab zwei Punkten zeigt die Simulation die Ausgleichsgerade und ihre Steigung. Bei der harten Feder ist die Steigung D = 1,00 N/cm, bei der weichen D = 0,50 N/cm. Die steilere Gerade gehört zur härteren Feder.",
   "aufgabe": {
    "frage": "Berechne, wie weit sich die weiche Feder bei einer Kraft von 3 N dehnt, und begründe deinen Rechenweg.",
    "zeilen": 4,
