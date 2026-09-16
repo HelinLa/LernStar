@@ -787,6 +787,104 @@ steht in einer Geschichte ueber den **Bremsweg eines Transporters** – da ist
 nichts schief. Stand 15.09.2026: **12 von 573 Seiten zum Ansehen, eine davon
 war wirklich schief** (ki4).
 
+### Alle 400 Einstiege gegen ihren Bildschirm gelesen (16.09.2026)
+
+Abdullah: *"die einstiegsprobleme also die Texte passen immer noch nicht mit den
+Simulationen zusammen, sonst koennen wir die schlecht verkaufen."* Daraufhin
+wurde **jede Einheit mit Einstiegstext und Faktendump** Zeile fuer Zeile gegen
+das gelesen, was die Simulation wirklich zeigt – 400 Einheiten in 14 Baenden.
+(Die vier Foerderbaende haben **kein Feld `problem`**, sie beginnen mit der
+Forscherfrage; sie sind nicht Teil dieser Pruefung.)
+
+**Das Groesste war kein Einzelfall, sondern ein Muster: 27 benutzte
+Simulationen nannten einen FIGURENNAMEN** – "Noahs Taschenlampe", "Bens
+Schalter", "Jonas' Schalter", "Ben hat Tag / Yumi hat Nacht". Und **jede
+einzelne dieser 27 bedient mindestens zwei Baende mit verschiedenen Figuren**:
+Klasse 5/6 Realschule (Ben, Emma, Mia, Jonas) und Gymnasium 5/6 (Lina, Aras).
+Das ist genau der Fall `beschleunigung-ef`, nur haeufiger: Eine Simulation, die
+zwei Geschichten traegt, darf den Gegenstand nicht benennen – **einen Namen
+erst recht nicht**. 48 Stellen sind ohne Namen neu gefasst, die Szene bleibt
+("die Bude", "die Taschenlampe"). Acht Heftseiten zogen mit, **fuenf davon
+zitieren Reglerbeschriftungen woertlich**; `gts7/ew2` erzaehlte seinen
+Schuelern von "Ben und Yumi", die in dem Band nirgends vorkommen.
+
+> **Die zwei Globuspunkte in `tag-nacht` heissen jetzt „dein Ort" und „die
+> Gegenseite".** "Bude" waere genauso falsch gewesen: Das ist die Geschichte
+> von Klasse 5/6 Realschule, und auf dieselbe Simulation zeigen auch Klasse 7
+> Realschule und Gesamtschule 7.
+
+**Wo der Gegenstand nur im TEXT stand, ist der Text neutral geworden.**
+`tonhoehe` zeichnet eine Welle und sonst nichts, `waermeausdehnung` einen Stoff
+mit Teilchen – trotzdem sprachen beide von einem Glas. Gezeichnet wird die
+Wahrheit: Was die Leinwand malt, darf benannt werden, was nur im Satz steht,
+nicht.
+
+**Inhaltlich schief waren am Ende vier von 400 Seiten**, und zwei davon fielen
+erst beim Nebeneinanderlesen auf:
+
+| Seite | was nicht zusammenpasste |
+|---|---|
+| `gym56/sl5` | Titel, Einstieg und Frage sprachen vom **Hall in der Turnhalle**, waehrend Auftrag, Schritte, Beobachtung und Merksatz derselben Seite die **Schallgeschwindigkeit** messen (c = 343 m/s bei jeder Frequenz). "Hall" kommt in der Simulation nirgends vor. |
+| `arbeitsheft/l1` | Titel und Einstieg gehoerten zur Stunde „Was leuchtet selbst?", Frage und Simulation zur geradlinigen Ausbreitung (zwei Blenden mit Loechern). |
+| `arbeitsheft7/g9` | fuehrte mit einem **Magneten** in die Gravitation ein, waehrend der Bildschirm zwei Massen zeigt. Die Beobachtung hat sich dafuer sogar selbst entschuldigt ("er folgt dabei allerdings einer eigenen Regel") – genau das ist das Zeichen, dass der Einstieg das schiefe Stueck ist. |
+| `arbeitsheft/sc1` | erzaehlte von einer **Gitarre**, waehrend `ton-entsteht` ein **Gummiband ueber einer Keksdose** ZEICHNET. Das Schwesterband gym56 beschreibt genau das. |
+
+Dazu drei Seiten, die jetzt in einem Satz nennen, was am Bildschirm steht
+(`bg1`, `kf10`, `me13`) – so, wie es `gts8` seit jeher macht.
+
+**Der Rest der Reihe ist stimmig**, und das ist die eigentliche Nachricht: Die
+Gesamtschulreihe (106 Einheiten), Klasse 10 Realschule, gym7, gym9, gym10 und
+die Oberstufe haben **keinen einzigen Befund**. Mehrere Baende fuehren den
+Leser sogar ausdruecklich hinueber ("Am Bildschirm steht genau dieser Aufbau").
+
+### Hausstil ist messbar – und je Band verschieden
+
+`simcheck/einstiege_pruefen.py` ist der Torwaechter fuer NEU geschriebene
+Einstiege (`einstieg_motiv.py` sortiert bestehende Seiten, dieses Werkzeug
+laesst keine neue hinein). Sechs Riegel, und **drei davon werden aus dem Band
+GEMESSEN statt gesetzt** – jeder Versuch, sie als Tabelle zu schreiben, ist
+zuerst schiefgegangen:
+
+| Riegel | gemessen | was eine feste Regel angerichtet haette |
+|---|---|---|
+| Satzzahl | `arbeitsheft` 4–8 Saetze zu je 7,6 Woertern, `gym56` bei derselben Stufe 3–5 zu je 11,8, Oberstufe genau 3 | den Hausstil eines ganzen Bandes als Fehler gemeldet |
+| Fragezeichen am Ende | Gymnasialreihe 50–95 %, Realschule/Gesamtschule/Oberstufe 0–10 % | **115 der 140 Gymnasialseiten** faelschlich gemeldet |
+| Figurenkanon | `arbeitsheft` fuehrt Emma UND Mia, `gts9` dazu Herrn Kessler | in vier von vierzehn Baenden falsch gemeldet |
+
+> **Den Figurenkanon zu messen hat vier Anlaeufe gebraucht.** Grossschreibung
+> allein geht nicht – im Deutschen ist JEDES Nomen gross, der erste Anlauf
+> hielt "Hang" fuer eine Figur. Satzanfaenge auszunehmen geht auch nicht:
+> "Ben und Mia ..." faengt den Satz an. Es braucht **vier Filter**: das Wort
+> kommt im ganzen Band nie klein vor · es steht in mindestens jedem siebten
+> Einstieg · es steht so gut wie nie hinter einem ARTIKEL (Figuren 0–8 %,
+> Nomen 40–100 %, dazwischen nichts) · und irgendwo steht es mitten im Satz.
+> Wichtig bei Filter 3: nur Artikel, **keine nackten Praepositionen** – "mit
+> Mia", "bei Nour", "fuer Mira" sind normal und haetten vier Hauptfiguren
+> aussortiert.
+
+### Ein Titel aendern heisst ein Bild verlieren
+
+`bilder.einlesen()` ordnet die Einstiegsbilder ueber den **Dateinamen** zu, und
+der ist in allen Baenden der **Seitentitel** (in gym56 zusaetzlich mit der
+Kennung davor). Wer einen Titel aendert, findet beim naechsten Bau kein Bild
+mehr und bekommt wortlos einen Platzhalter.
+
+Schlimmer ist der umgekehrte Fall, und der ist am 16.09.2026 eingetreten: Bei
+`l1` passte der DATEINAME weiter, das **Bild** aber nicht mehr – es zeigte
+Kerze, Mond und Reflektorstreifen, waehrend die Seite jetzt nach der
+geradlinigen Ausbreitung fragt. Ein Bild, das die alte Szene zeigt, ist
+schlimmer als gar keins: Es widerspricht der Seite, ohne dass es jemand merkt.
+Dafuer gibt es **`bilder.ablehnen(tid, pfad)`** – es merkt sich die
+PRUEFSUMME, nicht den Dateinamen, also wird ein NEUES Bild unter demselben
+Namen ganz normal uebernommen.
+
+> **Gekostet hat es zwei fertige Illustrationen** in der gedruckten Klasse 5/6
+> Realschule (`sc1` 878 KB, `l1` 598 KB). Wer einen Einstieg umschreibt, muss
+> also **im selben Zug den Bildauftrag in `bilder/PROMPTS.md` nachziehen** –
+> dort steht die einzige Quelle – und `python3 bildauftraege.py` laufen
+> lassen. Die drei anderen betroffenen Seiten (`g9`, `sl3`, `sl5`) waren
+> ohnehin noch Platzhalter.
+
 ## Vollbild fuer den Beamer (seit 10.09.2026)
 
 Jede Simulation hat oben rechts einen Knopf **„⤢ Vollbild"**. Er haengt an
@@ -917,6 +1015,7 @@ Acht Werkzeuge, alle an bekannten Faellen geeicht. Ausfuehrlich in `simcheck/REA
 | `einbau.py` | Registry-Eintrag und Implementierung in `physics-sim.js` einsetzen |
 | `heft_gegen_sim.py` | prueft, ob eine Heftseite nur Werte verlangt, die am Bildschirm stehen; trennt Befunde von NACHGERECHNETEN und von GERUNDET geschriebenen Werten |
 | `einstieg_motiv.py` | prueft, ob der EINSTIEG zu dem passt, was die Simulation ZEIGT (Laeufer gegen Wagen) |
+| `einstiege_pruefen.py` | Torwaechter fuer NEU geschriebene Einstiege: sechs Riegel, drei davon aus dem Band gemessen |
 
 **Die Faktendumps holt `simcheck/fakten_ziehen.py <band>` oder `--alle`** (seit
 15.09.2026). Vorher wurden sie von Hand gezogen, Simulation fuer Simulation -
@@ -928,6 +1027,26 @@ statt 498 Ziehungen) und haelt die Schalter fest: **`--voll --frames=25
 `simcheck/fakten/` liegt NICHT in der Versionsverwaltung (28 MB, in Minuten
 wieder da, veraltet still); die Dumps IN den Baenden bleiben getrackt - sie sind
 der Stand, gegen den die Seiten geschrieben wurden.
+
+> **Seit dem 16.09.2026 merkt sich das Werkzeug den STAND** und zieht von
+> selbst alles neu, sobald er nicht mehr passt: `simcheck/fakten/_stand.json`
+> haelt die SHA von `physics-sim.js`, `simcheck/simfakten.js` und
+> `simcheck/stellen.json` samt Schaltern. Genau diese Falle war an dem Tag
+> zugeschnappt - nach 48 Aenderungen an `physics-sim.js` meldete der naechste
+> Lauf **"0 gezogen, 191 lagen schon da"**, weil ein Dump kein Datum traegt
+> ([[fakten-dumps-veralten]]). `--neu` bleibt als Handschalter.
+>
+> **`simcheck/stellen.json` fuellt die letzten Luecken.** Nach dem Neuziehen
+> standen noch drei Werte ohne Deckung: `eg7` liest den Transformator bei
+> N₁/N₂ = 0,5 UND 230 V ab, `kp13` den Strahlenschutz bei 200 cm und bei
+> 10 Minuten. Solche Ecken trifft kein Gitter - die Seite weiss aber, wo sie
+> hinschaut. Damit stehen **alle 19 Baende auf 0 Werten ohne Entsprechung am
+> Bildschirm** (Stand 16.09.2026).
+>
+> **Ein Wert kann am Bildschirm stehen und trotzdem fehlen**: `me1` nennt
+> t = 12,5 s am Ende der Fahrt. Der Standardlauf mit 25 Frames kommt nur bis
+> etwa 6 s; mit 120 Frames steht 12,5 s / 100 m sauber da. Bevor man eine
+> Seite aendert, also nachmessen, ob der Dump ueberhaupt so weit laeuft.
 
 **Der erste Abgleich der Sekundarstufe I hat SECHS Pruefer-Fehler freigelegt**
 (15.09.2026). Von 64 Meldungen ueber 573 Seiten blieben **48 auf 27 Seiten**
