@@ -115,22 +115,21 @@ ONE single scene, no panels, no insets, no arrows, no wave or ripple symbols, no
 
 ## Licht & Schatten
 
-### `l1.png` — Was leuchtet hier eigentlich?
+### `l1.png` — Zwei Löcher, und trotzdem dunkel
 
-*Lichtquellen und Lichtausbreitung*
+*Wie sich Licht ausbreitet*
 
-> Im ganzen Haus ist es dunkel. Emma zündet die Kerze an. An der Decke schimmern die Leuchtsterne schwach nach. Am Fenster steht der Mond. Auf dem Schulranzen blitzt der Reflektorstreifen auf, sobald die Taschenlampe ihn trifft. Ohne die Lampe ist der Streifen wieder weg.
+> Emma hält zwei Pappstreifen hintereinander, jeder mit einem kleinen Loch. Ben leuchtet mit der Taschenlampe von vorn darauf. An der Wand dahinter bleibt es trotzdem dunkel. Dabei brennt die Lampe hell. Emma verschiebt einen Streifen ein Stück zur Seite.
 
-**Untersuche: Wovon hängt es ab, ob man etwas im Dunkeln leuchten sieht?**
+**Untersuche: Wovon hängt es ab, ob das Licht an der Wand ankommt?**
 
-**Motiv:** Dunkles Wohnzimmer bei Stromausfall: brennende Kerze auf dem Tisch, blassgrüne Leuchtsterne an der Decke, Mond am Fenster, ein Schulranzen, dessen Reflektorstreifen im Taschenlampenstrahl aufblitzt.
+**Motiv:** Abgedunkeltes Zimmer. Ben hält eine Taschenlampe, Emma zwei aufrecht stehende Pappstreifen mit je einem Loch, versetzt hintereinander. Die Wand dahinter bleibt dunkel.
 
-**Darf nicht zu sehen sein:** Nichts erklären — die Lichtquellen stehen nur nebeneinander.
+**Darf nicht zu sehen sein:** Kein gezeichneter Strahlengang, keine Linie durch die Löcher, kein Lichtfleck an der Wand — sonst steht die Antwort schon im Bild.
 
 ```
-ONE single scene, no panels, no insets, no arrows, no wave or ripple symbols, no speaker or ear icons, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, clear readable silhouettes, smooth soft gradients, gentle light from the upper left, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark. a dark living room during a power cut; a single lit candle on the table, faint pale-green glow-in-the-dark stars on the ceiling, the moon visible through the window, and on the floor a school backpack whose wide reflective stripe flares brightly where a torch beam hits it; everything else sinks into darkness
+ONE single scene, no panels, no insets, no arrows, no wave or ripple symbols, no speaker or ear icons, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, clear readable silhouettes, smooth soft gradients, gentle light from the upper left, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark. a dimmed room, a boy holding a small torch pointed at two upright pieces of cardboard held by a girl, each card has one small round hole, the two holes clearly NOT lined up with each other, the wall behind them stays dark and empty, the beam is only visible as a soft glow right at the torch
 ```
-
 ### `l2.png` — Es liegt doch direkt da
 
 *Wie können wir einen Gegenstand sehen?*
@@ -413,22 +412,21 @@ ONE single scene, no panels, no insets, no arrows, no wave or ripple symbols, no
 
 ## Schall & Hören
 
-### `sc1.png` — Das Brummen aus der Gitarre
+### `sc1.png` — Das Brummen aus der Keksdose
 
-*Wie entsteht ein Ton?*
+*Wie ein Ton entsteht*
 
-> Jonas zupft eine Saite der Gitarre. Sofort brummt ein tiefer Ton durch den Keller. Dann schaut er genauer hin. Die Saite ist auf einmal ganz verschwommen. Es sieht aus, als wären da mehrere Saiten. Legt er den Finger darauf, ist der Ton sofort weg.
+> Jonas spannt ein dickes Gummiband über eine leere Keksdose. Er zupft daran, und ein tiefer Ton brummt durch den Keller. Das Band sieht dabei ganz verschwommen aus. Emma sagt, der Ton komme aus der hohlen Dose. Jonas legt einen Finger auf das Band und ist sich nicht mehr sicher.
 
-**Untersuche: Wovon hängt es ab, ob die Saite einen Ton macht?**
+**Untersuche: Wovon hängt es ab, ob die Dose einen Ton macht?**
 
-**Motiv:** Nahaufnahme einer Akustikgitarre; eine gezupfte Saite ist sichtbar verschwommen, als lägen mehrere übereinander.
+**Motiv:** Kellerraum. Jonas zupft ein dickes Gummiband, das über eine leere runde Keksdose gespannt ist; das Band ist in der Bewegung unscharf. Emma sitzt daneben und hört zu.
 
-**Darf nicht zu sehen sein:** Keine Schallwellen, keine Notenzeichen.
+**Darf nicht zu sehen sein:** Keine Schallwellen, keine Ringe, keine Notenzeichen — dass der Ton vom Schwingen kommt, soll der Versuch zeigen, nicht das Bild.
 
 ```
-ONE single scene, no panels, no insets, no arrows, no wave or ripple symbols, no speaker or ear icons, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, clear readable silhouettes, smooth soft gradients, gentle light from the upper left, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark. close-up of an acoustic guitar body in a cellar; one single string has just been plucked and is visibly blurred into several overlapping ghost images as it vibrates, while the neighbouring strings stay perfectly sharp
+ONE single scene, no panels, no insets, no arrows, no wave or ripple symbols, no speaker or ear icons, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, clear readable silhouettes, smooth soft gradients, gentle light from the upper left, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark. a basement room, a boy plucking a thick rubber band stretched across an empty round biscuit tin on a low table, the rubber band is motion-blurred where his finger just left it, a girl sitting beside him listening closely, plain concrete wall behind
 ```
-
 ### `sc2.png` — Nicht so laut!
 
 *Wovon hängt die Lautstärke ab?*

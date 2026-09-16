@@ -36,6 +36,24 @@
     "stzR": "100",
     "stzD": "7"
    }
+  },
+  {
+   "wozu": "kp13 (doppelter Abstand, 20 min)",
+   "knoepfe": [],
+   "regler": {
+    "stzR": "200",
+    "stzD": "0",
+    "stzT": "20"
+   }
+  },
+  {
+   "wozu": "kp13 (1,00 m, halbe Zeit)",
+   "knoepfe": [],
+   "regler": {
+    "stzR": "100",
+    "stzD": "0",
+    "stzT": "10"
+   }
   }
  ],
  "atombau-isotope": [
@@ -94,6 +112,24 @@
     "_krmAdd(1)"
    ],
    "regler": {}
+  }
+ ],
+ "transformator": [
+  {
+   "wozu": "eg7 (N1/N2 = 0,5 bei 230 V)",
+   "knoepfe": [],
+   "regler": {
+    "traU1": "230",
+    "traN": "5"
+   }
+  },
+  {
+   "wozu": "eg7 (N1/N2 = 2,0 bei 230 V)",
+   "knoepfe": [],
+   "regler": {
+    "traU1": "230",
+    "traN": "20"
+   }
   }
  ]
 }

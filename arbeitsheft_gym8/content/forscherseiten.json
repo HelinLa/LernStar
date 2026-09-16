@@ -40,7 +40,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Eine Momentaufnahme bei t = 2,5 s zeigt s = 20 m, eine bei t = 5,0 s zeigt s = 40 m und eine bei t = 10,0 s zeigt s = 80 m. In jeweils 2,5 s kommen also 20 m Weg dazu. Bei s = 100 m hält das Auto von selbst an, die Statuszeile zeigt dann t = 12,5 s. Zu jeder Momentaufnahme steht in der Tabelle eine Nummer mit Zeit und Weg.",
+  "beobachtung": "Startest du das Auto, wachsen Zeit und Weg gleichmäßig: In jeder Sekunde kommen 8 m dazu. Wann du auf „Momentaufnahme“ tippst, entscheidest du selbst – deine Zeilen zeigen deshalb andere Zeiten als die deines Nachbarn, und der Zusammenhang ist trotzdem derselbe. Bei s = 100 m hält das Auto von selbst an, die Statuszeile zeigt dann t = 12,5 s. Zu jeder Momentaufnahme steht in der Tabelle eine Nummer mit Zeit und Weg.",
   "aufgabe": {
    "frage": "Begründe, warum Ela und Tom ihren Streit mit den Momentaufnahmen endgültig klären können.",
    "zeilen": 4,
@@ -51,7 +51,8 @@
   "alltagKomp": "K2",
   "ueberleitung": "Weg und Zeit hast du jetzt im Griff – auf der nächsten Seite machst du daraus mit einer Messstrecke eine echte Geschwindigkeitsmessung.",
   "name": "Wie beschreibt man eine Bewegung genau?",
-  "theme": "gym_mechanik"
+  "theme": "gym_mechanik",
+  "werte_streuen": true
  },
  {
   "id": "me2",

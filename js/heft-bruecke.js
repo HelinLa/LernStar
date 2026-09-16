@@ -61,7 +61,7 @@ const HEFT_SEITEN = {
     sim: "lichtausbreitung", seite: 35,
     kapitel: "Licht & Schatten",
     name: "Lichtquellen und Lichtausbreitung",
-    titel: "Was leuchtet hier eigentlich?",
+    titel: "Zwei Löcher, und trotzdem dunkel",
     frage: "Läuft Licht geradeaus oder um die Ecke?",
     schritte: ["Stelle „Loch der 1. Blende“ auf 0 und „Loch der 2. Blende“ auf 0. Schau nach, ob hinten Licht an der Wand ankommt.", "Lass die 1. Blende auf 0 und schiebe „Loch der 2. Blende“ nach oben und nach unten. Lies ab, wann das Licht verschwindet.", "Stelle „Loch der 1. Blende“ auf +18. Probiere aus, bei welcher Zahl der 2. Blende wieder Licht ankommt."]
   },
@@ -223,7 +223,7 @@ const HEFT_SEITEN = {
     sim: "ton-entsteht", seite: 134,
     kapitel: "Schall & Hören",
     name: "Wie entsteht ein Ton?",
-    titel: "Das Brummen aus der Gitarre",
+    titel: "Das Brummen aus der Keksdose",
     frage: "Wie entsteht ein Ton?",
     schritte: ["Wähle Gummiband zupfen. Beobachte das Band ganz genau und höre hin, ob dabei ein Ton entsteht.", "Wähle nun Finger auf das Band legen. Lies ab, ob das Band noch zittert und ob der Ton weitergeht.", "Gegenprobe am Tisch: Spanne ein Gummiband zwischen deine Finger, zupfe es und stoppe es dann mit dem Daumen."]
   },
@@ -234,7 +234,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Lautstärke ab?",
     titel: "Nicht so laut!",
     frage: "Wovon hängt die Lautstärke ab?",
-    schritte: ["Stelle „So fest zupft Ben am Gummiband“ auf sanft. Beobachte, wie weit das Band ausschlägt, und lies die Lautstärke ab.", "Stelle danach mittel und dann fest ein. Lies jedes Mal ab, wie weit das Band ausschlägt und wie laut der Ton wird.", "Vergleiche zum Schluss sanft und fest. Achte darauf, ob der Ton dabei nur lauter wird oder auch höher klingt."]
+    schritte: ["Stelle „So fest wird am Gummiband gezupft“ auf sanft. Beobachte, wie weit das Band ausschlägt, und lies die Lautstärke ab.", "Stelle danach mittel und dann fest ein. Lies jedes Mal ab, wie weit das Band ausschlägt und wie laut der Ton wird.", "Vergleiche zum Schluss sanft und fest. Achte darauf, ob der Ton dabei nur lauter wird oder auch höher klingt."]
   },
   "sc3": {
     klasse: 5, schulform: "Realschule NRW",
@@ -243,7 +243,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Tonhöhe ab?",
     titel: "Zu hoch, zu tief",
     frage: "Wovon hängt die Tonhöhe ab?",
-    schritte: ["Stelle „So schnell schwingt Emmas Glas (Schwingungen pro Sekunde)“ auf 200 Hz ein. Höre den Ton an.", "Stelle danach 300 Hz und 800 Hz ein. Lies jedes Mal ab, ob der Ton höher oder tiefer klingt als vorher.", "Gegenprobe am Tisch: Fülle zwei Gläser verschieden hoch mit Wasser und schlage sie mit einem Löffel an."]
+    schritte: ["Stelle „Schwingungen pro Sekunde (Frequenz)“ auf 200 Hz ein. Höre den Ton an.", "Stelle danach 300 Hz und 800 Hz ein. Lies jedes Mal ab, ob der Ton höher oder tiefer klingt als vorher.", "Gegenprobe am Tisch: Fülle zwei Gläser verschieden hoch mit Wasser und schlage sie mit einem Löffel an."]
   },
   "sc4": {
     klasse: 5, schulform: "Realschule NRW",
@@ -261,7 +261,7 @@ const HEFT_SEITEN = {
     name: "Wie funktioniert das Ohr?",
     titel: "Das Pfeifen im Ohr",
     frage: "Was geschieht im Ohr, wenn es laut wird?",
-    schritte: ["Stelle „So laut schlägt Noah den Topf an“ auf leise. Beobachte, wie weit das Trommelfell ausschlägt.", "Stelle danach mittel und laut ein. Lies jedes Mal ab, ob das Trommelfell schwächer oder stärker schwingt.", "Gegenprobe am Tisch: Schlage einen Topf mit dem Löffel erst leise, dann kräftig an und fühle den Rand."]
+    schritte: ["Stelle „So laut wird der Topf angeschlagen“ auf leise. Beobachte, wie weit das Trommelfell ausschlägt.", "Stelle danach mittel und laut ein. Lies jedes Mal ab, ob das Trommelfell schwächer oder stärker schwingt.", "Gegenprobe am Tisch: Schlage einen Topf mit dem Löffel erst leise, dann kräftig an und fühle den Rand."]
   },
   "h1": {
     klasse: 5, schulform: "Realschule NRW",
@@ -502,7 +502,7 @@ const HEFT_SEITEN = {
     sim: "gravitation-abstand", seite: 119,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wovon hängt die Anziehung zweier Körper ab?",
-    titel: "Erst nichts, dann ein Ruck",
+    titel: "Der Kleine zieht, der Große nicht",
     frage: "Wovon hängt die Anziehung zweier Körper ab – von den Massen, vom Abstand?",
     schritte: ["Setze mit zurücksetzen alle Werte auf 1 und lies die Anziehung ab. Dieser Wert ist dein Ausgangswert, mit dem du alles Weitere vergleichst.", "Verdopple mit ×2 Masse links die Masse der linken Kugel und lies ab. Drücke denselben Knopf noch einmal, sodass die Masse viermal so groß ist wie am Anfang, und lies wieder ab.", "Setze zurück und verdopple stattdessen mit ×2 Abstand den Abstand, danach ein zweites Mal. Vergleiche beide Werte mit deinem Ausgangswert."]
   },
@@ -1917,7 +1917,7 @@ const HEFT_SEITEN = {
     name: "Warum ist es nicht überall gleichzeitig hell?",
     titel: "Der staubige Globus neben dem Schrank",
     frage: "Wovon hängt es ab, ob es an einem Ort gerade Tag oder Nacht ist?",
-    schritte: ["Drücke Pause, damit der Globus stehen bleibt und du in Ruhe ablesen kannst.", "Stelle den Regler „Erde von Hand drehen“ nacheinander auf 0°, 90°, 180° und 270° ein.", "Lies bei jeder Stellung die Statuszeile ab und notiere, wer gerade Sonne hat: Ben oder Yumi."]
+    schritte: ["Drücke Pause, damit der Globus stehen bleibt und du in Ruhe ablesen kannst.", "Stelle den Regler „Erde von Hand drehen“ nacheinander auf 0°, 90°, 180° und 270° ein.", "Lies bei jeder Stellung die Statuszeile ab und notiere, wer gerade Sonne hat: dein Ort oder die Gegenseite."]
   },
   "ew3": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -2970,16 +2970,16 @@ const HEFT_SEITEN = {
     name: "Was macht einen Ton hoch oder tief?",
     titel: "Helles Pling, tiefes Brummen",
     frage: "Was macht einen Ton hoch oder tief?",
-    schritte: ["Schiebe den Regler»So schnell schwingt Emmas Glas«ganz nach links auf 100 Hz und betrachte, wie weit die Wellenberge auseinanderliegen.", "Lies im Feld»Tonhöhe«ab, ob der Ton tief, mittel oder hoch ist, und trage es mit dem Hz-Wert in die Tabelle ein.", "Stelle nacheinander 300 Hz, 560 Hz und 800 Hz ein und beobachte, wie der Punkt auf der Skala von»tief«nach»hoch«wandert."]
+    schritte: ["Schiebe den Regler»Schwingungen pro Sekunde (Frequenz)«ganz nach links auf 100 Hz und betrachte, wie weit die Wellenberge auseinanderliegen.", "Lies im Feld»Tonhöhe«ab, ob der Ton tief, mittel oder hoch ist, und trage es mit dem Hz-Wert in die Tabelle ein.", "Stelle nacheinander 300 Hz, 560 Hz und 800 Hz ein und beobachte, wie der Punkt auf der Skala von»tief«nach»hoch«wandert."]
   },
   "sl3": {
     klasse: "5/6", schulform: "Gymnasium NRW",
     sim: "lautstaerke", seite: 130,
     kapitel: "Schall",
     name: "Was macht einen Ton laut oder leise?",
-    titel: "Zwei Schläge auf die Trommel",
+    titel: "Zweimal am selben Band gezupft",
     frage: "Was macht einen Ton laut oder leise?",
-    schritte: ["Schiebe den Regler»So fest zupft Ben am Gummiband«ganz nach links und betrachte den Ausschlag der Kurve und die gestrichelte Linie»Amplitude«.", "Lies im Feld»Lautstärke«ab, was dort steht, und trage es in die Tabelle ein.", "Stelle den Regler in die Mitte und danach ganz nach rechts und vergleiche Ausschlag, Balken und Anzeige."]
+    schritte: ["Schiebe den Regler»So fest wird am Gummiband gezupft«ganz nach links und betrachte den Ausschlag der Kurve und die gestrichelte Linie»Amplitude«.", "Lies im Feld»Lautstärke«ab, was dort steht, und trage es in die Tabelle ein.", "Stelle den Regler in die Mitte und danach ganz nach rechts und vergleiche Ausschlag, Balken und Anzeige."]
   },
   "sl4": {
     klasse: "5/6", schulform: "Gymnasium NRW",
@@ -2995,8 +2995,8 @@ const HEFT_SEITEN = {
     sim: "schall", seite: 140,
     kapitel: "Schall",
     name: "Warum hallt es in der Turnhalle?",
-    titel: "Die Halle klatscht zurück",
-    frage: "Warum hallt es in der Turnhalle?",
+    titel: "Flöte und Bass kommen zusammen an",
+    frage: "Sind hohe Töne schneller als tiefe?",
     schritte: ["Schiebe den Regler Frequenz f ganz nach links auf 100 Hz und sieh dir an, wie weit die Verdichtungen im Bild auseinanderliegen.", "Lies im weißen Kästchen oben rechts den Abstand λ und die Geschwindigkeit c ab und trage beide in die Tabelle ein.", "Stelle nacheinander 400 Hz, 1000 Hz und 2000 Hz ein und prüfe jedes Mal, ob sich die Geschwindigkeit c ändert."]
   },
   "sl6": {
@@ -3015,7 +3015,7 @@ const HEFT_SEITEN = {
     name: "Wie hört das Ohr?",
     titel: "Das Häutchen im Kopf",
     frage: "Wie hört das Ohr?",
-    schritte: ["Schiebe den Regler So laut schlägt Noah den Topf an ganz nach links auf leise und beobachte das rote Trommelfell im Bild.", "Stelle danach mittel und laut ein und vergleiche, wie stark das Trommelfell jedes Mal hin- und herschwingt.", "Öffne erst zum Schluss den Klapptext Erst nach dem Versuch öffnen: der Weg des Schalls und lies die sechs Stationen nach."]
+    schritte: ["Schiebe den Regler So laut wird der Topf angeschlagen ganz nach links auf leise und beobachte das rote Trommelfell im Bild.", "Stelle danach mittel und laut ein und vergleiche, wie stark das Trommelfell jedes Mal hin- und herschwingt.", "Öffne erst zum Schluss den Klapptext Erst nach dem Versuch öffnen: der Weg des Schalls und lies die sechs Stationen nach."]
   },
   "sl8": {
     klasse: "5/6", schulform: "Gymnasium NRW",
@@ -3024,7 +3024,7 @@ const HEFT_SEITEN = {
     name: "Was hören Tiere, was wir nicht hören?",
     titel: "Die stumme Pfeife",
     frage: "Was hören Tiere, was wir nicht hören?",
-    schritte: ["Schiebe den Regler So schnell schwingt Emmas Glas ganz nach links auf 100 Hz und lies die Anzeige in der Statuszeile ab.", "Stelle danach 300 Hz und 800 Hz ein und trage jedes Mal ein, ob dort tiefer, mittlerer oder hoher Ton steht.", "Beobachte die violette Welle im Bild: Zähle, ob bei 800 Hz mehr Wellenberge zu sehen sind als bei 100 Hz."]
+    schritte: ["Schiebe den Regler Schwingungen pro Sekunde (Frequenz) ganz nach links auf 100 Hz und lies die Anzeige in der Statuszeile ab.", "Stelle danach 300 Hz und 800 Hz ein und trage jedes Mal ein, ob dort tiefer, mittlerer oder hoher Ton steht.", "Beobachte die violette Welle im Bild: Zähle, ob bei 800 Hz mehr Wellenberge zu sehen sind als bei 100 Hz."]
   },
   "li1": {
     klasse: "5/6", schulform: "Gymnasium NRW",

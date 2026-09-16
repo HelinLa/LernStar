@@ -284,16 +284,16 @@ ONE single scene, no panels, no insets, no arrows, no captions, no labels, no te
 ONE single scene, no panels, no insets, no arrows, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, clear readable silhouettes, smooth soft gradients, deep night palette with warm lamplight accents, wide 5:3 landscape composition, twelve-year-old characters, no text, no letters, no numbers, no logos, no watermark. a boy sitting on a crate at the edge of a dark field, an open book and a sheet of scribbled illegible calculations on his knees, a pencil in his hand; he looks up at one single bright star; a telescope on a tripod stands beside him
 ```
 
-### `Erst nichts, dann ein Ruck.png` — g9
+### `Der Kleine zieht, der Große nicht.png` — g9
 
-> Aus zehn Zentimetern passiert nichts. Bei zwei Zentimetern springt die Klammer plötzlich hoch.
+> Der Mond steht groß im Okular, der viel größere Jupiter bleibt ein Pünktchen. Und trotzdem macht der Mond bei uns Ebbe und Flut.
 
-**Motiv:** NAHAUFNAHME, GEMALT wie die übrigen Bilder des Hefts, kein Foto. Eine Kinderhand hält einen kleinen Stabmagneten dicht über eine einzelne Büroklammer. Die Klammer **liegt flach auf der Holztischplatte und berührt sie**. Zwischen Magnet und Klammer ein schmaler Spalt.
+**Motiv:** Nachts auf dem Feld. Mia schaut durch das aufgebaute Fernrohr, Ben hält daneben ein aufgeschlagenes Tabellenbuch in den Schein seiner Taschenlampe und tippt auf eine Zahlenspalte. Über beiden steht der helle Mond tief am Himmel, weiter oben ein einzelner winziger heller Punkt.
 
-**Darf nicht zu sehen sein:** Die Klammer darf NICHT in der Luft schweben, hängen oder kippen – dass sie hochspringt, ist die Antwort. Keine Bewegungslinien, keine Funken, keine Feldlinien, kein Lineal, kein ganzer Junge, kein Foto-Look.
+**Darf nicht zu sehen sein:** Keine Kraftpfeile, keine Bahnlinien, keine Formel, kein Größenvergleich zweier Planeten nebeneinander, kein rundes Nebenbild mit Jupiter in Großaufnahme — dass Abstand mehr zählt als Masse, soll der Versuch zeigen.
 
 ```
-ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no comic panels, no before-and-after, no split screen, no repeated figures, no sequence, no insets, no round inset circle, no thought bubble, no arrows, no dashed lines, no captions, no labels, no clocks with readable times, no text of any kind. warm painterly children's educational illustration, storybook realism, hand-painted look, NOT a photograph, no photorealism, not flat vector cartoon, clear readable silhouettes, smooth soft gradients, muted warm palette, wide 5:3 landscape composition, twelve-year-old characters with brown hair, no text, no letters, no numbers, no logos, no watermark. a close-up filling the frame, painted illustration style: one child's hand holds a small bar magnet a short distance above one single paper clip; the paper clip lies completely flat ON the wooden table top and clearly touches the wood, it is not lifted and not floating; a narrow gap of air separates magnet and clip; warm side light; nothing else in the frame, no arm, no face, no room
+ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no comic panels, no before-and-after, no split screen, no repeated figures, no sequence, no insets, no round inset circle, no thought bubble, no arrows, no dashed lines, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, hand-painted look, NOT a photograph, no photorealism, not flat vector cartoon, clear readable silhouettes, smooth soft gradients, muted warm palette, wide 5:3 landscape composition, twelve-year-old characters with brown hair, no text, no letters, no numbers, no logos, no watermark. night on an open field under a clear sky: a twelve-year-old girl with brown hair looks through an amateur telescope on a tripod; beside her a twelve-year-old boy with brown hair holds an open reference book lit by a small torch and points at a column of figures; low in the sky one large bright moon, higher up one single tiny bright dot; dark grass, a dark treeline on the horizon, no other light sources, no planets shown side by side, no size comparison, no diagram
 ```
 
 ### `Zweimal am Tag.png` — g10

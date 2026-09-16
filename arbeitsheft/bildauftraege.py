@@ -27,6 +27,13 @@ BEFUND = {
            "Gitarre und Verstärker, die Seite handelt aber von der Waschmaschine hinter der Wand.",
     "w4":  "Für diese Seite gibt es noch kein Bild. Die Seite hieß früher „Aus der Flasche "
            "wird eine Pfütze“ und heißt jetzt „Aus Eis wird Wasser“.",
+    # 16.09.2026: Einstieg und Simulation zusammengefuehrt. Die beiden alten
+    # Bilder waren in sich gut, zeigen jetzt aber eine andere Szene als die Seite.
+    "sc1": "Das bisherige Bild zeigt einen Jungen mit einer Gitarre. Am Bildschirm ist "
+           "aber ein Gummiband über einer Keksdose gespannt, und darauf zeigt die Seite jetzt auch.",
+    "l1":  "Das bisherige Bild zeigt Kerze, Mond und Reflektorstreifen im dunklen Zimmer. "
+           "Die Seite fragt aber, ob Licht geradeaus läuft, und der Bildschirm zeigt zwei "
+           "Blenden mit Löchern.",
 }
 # Alle Themen, fuer die je ein Auftrag geschrieben wurde, in der Reihenfolge des Blattes.
 def _kandidaten():
