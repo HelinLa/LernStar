@@ -324,8 +324,67 @@ vergessene Zusammenlegung.
 genau 3 Tabellenspalten, 2–5 Zeilen mit vollstaendig gefuellter Beispielzeile,
 GENAU 2 Merksatz-Luecken, Aufgaben exakt erkennen–einsetzen–erklaeren, 3 Hilfestufen
 (H3 mit `___`), 3 Selbstcheck-Aussagen. `pruefe_profil.py` prueft das plus die
-Sprachregeln – und besteht vorher einen **Selbsttest** (1 gute + 11 absichtlich
-kaputte Proben; in Band 10 zusaetzlich 2 Datenblatt-Proben), sonst urteilt er nicht.
+Sprachregeln – und besteht vorher einen **Selbsttest** (1 gute + 21 absichtlich
+kaputte Proben; in Band 10 zusaetzlich 8 Datenblatt-Proben), sonst urteilt er nicht.
+
+### Die Rechentabelle – der Drill zum geloesten Beispiel (seit 17.09.2026)
+
+Abdullah nach dem Test von Band 9: *"mir ist aufgefallen, dass uns aufgaben
+fehlen, wie z.B. Tabellen, wo massen gegeben sind und die Schueler einfach es in
+Newton umrechnen ... aber in Foerderniveau und sehr leichte."* **Gemessen war
+die Luecke groesser als sie aussah: In 25 Einheiten gab es GENAU ZWEI geloeste
+Rechnungen.** Aufgabe 2 rechnet zwar, aber als einzelne Zahl im Satz ("Bei 2 kg
+sind es [19,6 N]") – nie als Reihe, an der sich ein Weg einschleift.
+
+Das optionale Feld **`rechnen`** setzt eine Tabelle direkt unter das geloeste
+Beispiel: Zeile 1 ist vorgerechnet und getoent, die uebrigen geben nur den
+Startwert vor. **Keine vierte Aufgabe** – die drei nummerierten bleiben, wie sie
+sind; die Tabelle steht ohne Nummer wie Merksatz und Wortbank. Der Lehrerteil
+bekommt den Block "Rechentabelle (erwartet)".
+
+> **Nur wo EIN Rechenschritt genuegt und die Zahlen glatt aufgehen.** In Band 9
+> sind es sechs von 25 Einheiten, drei je Kapitel: `fk4` (F = m · g), `fk5`
+> (dieselbe Formel, anderer Ortsfaktor), `fk7` (plus und minus), `fe1`
+> (W = F · s), `fe6` (P = W : t), `fe9` (F = G : n). NICHT genommen: drei
+> Faktoren (E = m · g · h), Einheitenwechsel (cm² → m²), zwei Schritte
+> (Hebelgesetz nach F₁ umstellen) – dort wird aus "sehr leicht" Scheinrechnen.
+> Und immer ANDERE Zahlen als die Beobachtungstabelle derselben Einheit, sonst
+> ist es Abschreiben statt Rechnen.
+
+**Sie kostet keine einzige Seite** – 111 Seiten vorher wie nachher, keine
+Seitenzahl verschoben. Das ist kein Zufall, sondern gemessen: Jede Seite B lief
+schon auf zwei Blaettern, und auf dem letzten waren 306 bis 751 Einheiten frei.
+
+> **Jede Zelle einzeilig halten.** `fk7` wollte zuerst auf ein drittes, zu 91 %
+> leeres Blatt, weil "4 N und 3 N, gleiche Richtung" in Spalte 1 auf DREI Zeilen
+> umbrach – der Block wuchs dadurch von 324 auf 469 Einheiten. Jetzt traegt das
+> Wort in der Zelle die Rechenart: "4 N und 3 N" gegen "6 N gegen 2 N". Kuerzer,
+> und fuer ein Kind klarer als "gleiche Richtung".
+
+**`pruefe_profil.py` RECHNET JEDE ZEILE NACH**, die des Hefts wie die des
+Lehrerteils: Eine Zahlentabelle ist der einzige Ort im Heft, an dem ein
+Tippfehler nicht auffaellt – "5 · 9,8 = 48 N" liest sich wie die richtige Zeile.
+Geprueft wird ausserdem, dass die Rechnung den Wert benutzt, den die Zeile
+vorgibt (aber nicht zwingend vorn: bei P = W : t steht die Zeit hinten). Sieben
+neue Gegenproben.
+
+**Wortbudget: Zulage +34, und nur dort.** Eine Einheit MIT Tabelle darf um deren
+gemessenes Gewicht schwerer sein (gemessen 28 bis 34 ueber die sechs Tabellen).
+Die Prosa bleibt fuer JEDE Einheit bei 392 – auch fuer die sechs (370 bis 386
+ohne Tabelle). Die Zulage auf den ganzen Band zu schlagen haette den 19
+Einheiten ohne Tabelle 34 Woerter mehr Prosa gegeben, ohne dass dort etwas
+dazugekommen waere.
+
+> **Die Mechanik steckt in allen VIER Baenden**, die Inhalte bisher nur in
+> Band 9. Nachgemessen nach der Portierung: foe7 111/54, foe8 91/70, foe10
+> 127/232 – unveraendert, weil ohne `rechnen` kein Block entsteht.
+
+> **Ein Lehrerteil veraltet still, wenn die Simulation umgebaut wird.** `fk2`
+> loeste noch die alte `kraftmesser`-Fassung ("Feder leeren | F = 0 N | um 1 cm
+> gedehnt"), waehrend die Schuelerseite laengst 0 g / 100 g / 200 g fragte – eine
+> Lehrkraft haette damit richtige Antworten angestrichen. Gefunden hat es die
+> Regel, die `tabelle_erwartet` gegen die offenen Zeilen haelt; ohne sie waere es
+> im Druck geblieben.
 
 **Seite A und Seite B tragen denselben QR-Code.** `simcheck/seitenzahlen.py` nimmt
 deshalb den **ersten** Treffer (= Seite A, wo das Thema anfaengt). Fuer die
