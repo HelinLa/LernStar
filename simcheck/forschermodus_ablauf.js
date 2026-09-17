@@ -73,6 +73,8 @@ function bauen() {
   };
   ctx.window = ctx; ctx.globalThis = ctx; ctx.window.addEventListener = (n, f) => { horcher['win:' + n] = f; };
   vm.createContext(ctx);
+  // Erst die ERZEUGTE Regeldatei, dann das Programm - genau wie in index.html.
+  vm.runInContext(fs.readFileSync(LS + '/js/forschermodus-regeln.js', 'utf8'), ctx);
   vm.runInContext(fs.readFileSync(LS + '/js/forschermodus.js', 'utf8'), ctx);
   return { ctx, horcher, gemacht, status, note };
 }

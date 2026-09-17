@@ -14,31 +14,22 @@ const LS = '/Users/lala/Desktop/Claude/LernStar';
 const { baueContext } = require(LS + '/simcheck/rauchtest.js');
 
 function regelnLaden() {
-  const quelle = fs.readFileSync(LS + '/js/forschermodus.js', 'utf8');
-  const ctx = {
-    document: {
-      addEventListener: () => {}, getElementById: () => null, querySelector: () => null,
-      createElement: () => ({ style: {}, classList: { add() {}, remove() {} }, appendChild() {} }),
-      head: { appendChild() {} },
-    },
-    location: { hash: '' }, console,
-    MutationObserver: function () { this.observe = () => {}; this.disconnect = () => {}; },
-  };
-  ctx.window = ctx; ctx.globalThis = ctx; ctx.window.addEventListener = () => {};
+  // Seiten, Regeln und Bedienung stehen in der ERZEUGTEN Datei
+  // js/forschermodus-regeln.js (simcheck/forschermodus_bauen.py schreibt sie).
+  const ctx = { console };
+  ctx.window = ctx; ctx.globalThis = ctx;
   vm.createContext(ctx);
-  vm.runInContext(quelle, ctx);
-  return ctx.FELO_FORSCHERMODUS;
+  vm.runInContext(fs.readFileSync(LS + '/js/forschermodus-regeln.js', 'utf8'), ctx);
+  return {
+    SEITEN: vm.runInContext('FELO_FORSCHEN_SEITEN', ctx),
+    REGELN: vm.runInContext('FELO_FORSCHEN_REGELN', ctx),
+    BEDIENUNG: vm.runInContext('FELO_FORSCHEN_BEDIENUNG', ctx),
+  };
 }
 
 // Jede Simulation wird bedient wie ein Kind es tut - erst danach stehen die
 // verraeterischen Zeilen ueberhaupt da.
-const BEDIENUNG = {
-  'federgesetz': `_fedSetFeder('weich'); _fedHaenge(100); _fedMessen(); _fedHaenge(100); _fedMessen();`,
-  'ohm-kennlinie': `_ohgSetR('klein'); _ohgU_(1); _ohgMessen(); _ohgU_(1); _ohgMessen();`,
-  // Messfahrt aufnehmen und die Auswertung t -> v oeffnen: erst dann stehen
-  // "erwartet", "Literatur" und die Abweichung im Kasten.
-  'beschleunigung-ef': `_befSetA(2); _befMessen(); _befSetPreset(0);`,
-};
+
 
 function lauf(simId, forschen) {
   const H = baueContext(LS + '/physics-sim.js');
@@ -49,7 +40,7 @@ function lauf(simId, forschen) {
     _physSimDefs[${JSON.stringify(simId)}](__modal);
   `, H.ctx);
   H.frames(4);
-  try { vm.runInContext(BEDIENUNG[simId] || '', H.ctx); } catch (e) { /* gemeldet ueber leere Texte */ }
+  try { vm.runInContext(R.BEDIENUNG[simId] || '', H.ctx); } catch (e) { /* gemeldet ueber leere Texte */ }
   H.frames(4);
   const voll = vm.runInContext('__modal.innerHTML', H.ctx) || '';
   const proId = new Map();

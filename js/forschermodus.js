@@ -28,57 +28,12 @@
   // ── Welche Heftseite arbeitet im Forschermodus, und mit welcher Simulation?
   //    Beide Angaben muessen stimmen: Wer denselben QR-Code aus einem anderen
   //    Heft scannt, landet in derselben Simulation und soll sie normal sehen.
-  const SEITEN = {
-    kf3: 'federgesetz',            // Gesamtschule 9 - Federhaerte D aus der Steigung
-    st8: 'ohm-kennlinie',          // Gesamtschule 8 - R aus der Steigung, Widerstand verdeckt
-    ki3: 'beschleunigung-ef',      // Oberstufe EF - a aus der Steigung der t-v-Geraden
-    ki4: 'beschleunigung-ef',      // Oberstufe EF - dieselbe Messreihe, t² -> s
-  };
-
-  // ── Was verraet die Antwort? Je Simulation eine Liste.
-  //    weg:   wird ausgeblendet (CSS, kommt beim Aufdecken sofort zurueck)
-  //    maske: Text wird ersetzt (Original wird gemerkt und beim Aufdecken
-  //           zurueckgeschrieben)
-  const REGELN = {
-    'federgesetz': {
-      weg: ['.fed-sim .fpm-grid .fpm-note', '.fed-sim > .sim-hint'],
-      maske: [
-        { sel: '.fed-sim > .fpm-note',
-          re: /\s*Ab zwei Punkten legt die Simulation[^<]*?Federhärte D\./,
-          mit: ' Ab zwei Punkten legt die Simulation die Ausgleichsgerade hindurch.' },
-        { sel: '#fedStatus',
-          re: /\s*·\s*Ausgleichsgerade durch (\d+) Punkte: <b>Steigung D = [^<]*<\/b>/,
-          mit: ' · Ausgleichsgerade durch $1 Punkte' },
-      ],
-      hinweis: 'Miss selbst: mindestens fünf Messpunkte aufnehmen, dann in deiner Tabelle F : s ausrechnen.',
-    },
-    'ohm-kennlinie': {
-      weg: ['.ohg-sim .fpm-grid .fpm-note', '.ohg-sim > .sim-hint'],
-      maske: [
-        { sel: '#ohgRklein', re: /^10 Ω$/, mit: 'Draht A' },
-        { sel: '#ohgRgross', re: /^20 Ω$/, mit: 'Draht B' },
-        { sel: '#ohgStatus', re: /\s*·\s*R = U\/I = [\d,.]+ Ω/, mit: '' },
-        { sel: '#ohgStatus', re: /\s*Widerstand fest: [\d,.]+ Ω\./, mit: ' Der Draht bleibt derselbe.' },
-        { sel: '#ohgTable', re: /<td>R = U\/I<\/td>/, mit: '<td>U : I</td>' },
-      ],
-      hinweis: 'Miss selbst: fünf Spannungen einstellen, Messpunkte eintragen, dann U : I ausrechnen.',
-    },
-    'beschleunigung-ef': {
-      // Die Beschleunigung steht heute dreifach da: am Regler, in der Statuszeile
-      // und in der Auswertung ("erwartet", "Literatur", Abweichung). Genau sie
-      // soll aus der Steigung fallen.
-      weg: ['.bef-sim > .sim-hint', '#befFit .fpm-note'],
-      maske: [
-        { sel: '#befALbl', re: /^[\d,]+ m\/s²$/, mit: 'verdeckt' },
-        { sel: '#befStatus', re: /\s*bei a = [\d,]+ m\/s²/, mit: '' },
-        { sel: '#befFit', re: / · erwartet: [\d,.]+/g, mit: '' },
-        { sel: '#befFit', re: /&nbsp;·&nbsp; Literatur: [\d,.]+/g, mit: '' },
-        { sel: '#befFit', re: /<span class="fpm-badge [^"]*">Abweichung[^<]*<\/span>/g, mit: '' },
-        { sel: '#befFit', re: /a = [\d,]+ m\/s²/g, mit: 'deine Fahrt' },
-      ],
-      hinweis: 'Miss selbst: mindestens fünf Zeiten stoppen, dann die Steigung der t-v-Geraden bestimmen.',
-    },
-  };
+  // Seiten und Regeln stehen seit dem 17.09.2026 in js/forschermodus-regeln.js
+  // (ERZEUGT aus den Heftdaten, nicht von Hand aendern). Fehlt die Datei, bleibt
+  // der Forschermodus einfach aus - jede Heftseite sieht dann ihre Simulation
+  // unveraendert, und das ist der sichere Zustand.
+  const SEITEN = (typeof FELO_FORSCHEN_SEITEN !== 'undefined') ? FELO_FORSCHEN_SEITEN : {};
+  const REGELN = (typeof FELO_FORSCHEN_REGELN !== 'undefined') ? FELO_FORSCHEN_REGELN : {};
 
   // ── Zustand ───────────────────────────────────────────────────────
   let aktiv = null;       // simId, solange der Modus laeuft
