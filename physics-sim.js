@@ -66891,7 +66891,12 @@ function _mgwDraw(ctx, cv) {
   const W = cv.width, H = cv.height, o = _MGW[_mgw.idx], F = _mgwF();
   ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
   // Formel oben
-  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('F = m · g   (g = 9,8 N/kg)', W / 2, 20);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  // Im Forschermodus (js/forschermodus.js) bleibt die Formel weg - sie ist genau
+  // das Ergebnis, das die Messreihe hergeben soll, und steht im Canvas, also per
+  // CSS nicht erreichbar.
+  ctx.fillText(window.FELO_FORSCHEN === 'masse-gewicht' ? 'Masse und Gewichtskraft'
+                                                        : 'F = m · g   (g = 9,8 N/kg)', W / 2, 20);
   // Objekt
   const size = 30 + ((o.m - 0.1) / 1.9) * 30, cx = W / 2, cy = 82;
   ctx.fillStyle = '#3b82f6'; _kwnRoundRect(ctx, cx - size / 2, cy - size / 2, size, size, 6); ctx.fill();

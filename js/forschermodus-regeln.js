@@ -12,6 +12,7 @@
 
 const FELO_FORSCHEN_SEITEN = {
   kf3: "federgesetz",
+  kf4: "masse-gewicht",
   ki3: "beschleunigung-ef",
   ki4: "beschleunigung-ef",
   st8: "ohm-kennlinie",
@@ -38,6 +39,13 @@ const FELO_FORSCHEN_REGELN = {
     ],
     hinweis: "Miss selbst: mindestens fünf Messpunkte aufnehmen, dann in deiner Tabelle F : s ausrechnen.",
   },
+  "masse-gewicht": {
+    weg: [".mgw-sim .fpm-grid .fpm-note", ".mgw-sim > .sim-hint", ".mgw-sim .ab-body"],
+    maske: [
+      { sel: "#mgwStatus", re: /<b>F = m · g = /, mit: "<b>F = " },
+    ],
+    hinweis: "Miss selbst: drei Körper wählen, Masse und Kraft ablesen, dann F : m ausrechnen.",
+  },
   "ohm-kennlinie": {
     weg: [".ohg-sim .fpm-grid .fpm-note", ".ohg-sim > .sim-hint"],
     maske: [
@@ -54,5 +62,6 @@ const FELO_FORSCHEN_REGELN = {
 const FELO_FORSCHEN_BEDIENUNG = {
  "federgesetz": "_fedSetFeder('weich'); _fedHaenge(100); _fedMessen(); _fedHaenge(100); _fedMessen();",
  "ohm-kennlinie": "_ohgSetR('klein'); _ohgU_(1); _ohgMessen(); _ohgU_(1); _ohgMessen();",
- "beschleunigung-ef": "_befSetA(2); _befMessen(); _befSetPreset(0);"
+ "beschleunigung-ef": "_befSetA(2); _befMessen(); _befSetPreset(0);",
+ "masse-gewicht": "_mgwSet(2); _mgwSet(3); _mgwSet(4);"
 };

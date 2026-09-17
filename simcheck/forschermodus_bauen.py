@@ -18,6 +18,7 @@ Geprueft wird VOR dem Schreiben:
 - keine Zeichen, die die Heftschrift nicht hat,
 - kein Feld laenger als bisher (sonst verschieben sich Seitenzahlen).
 """
+import html
 import importlib.util as ilu
 import io, json, os, re, sys
 
@@ -44,6 +45,40 @@ def laenge(x):
     return len(json.dumps(x, ensure_ascii=False))
 
 
+def tabellenhoehe(cols, rows):
+    """Wie hoch wird die Beobachtungstabelle GESETZT?
+
+    Zeichen zaehlen genuegt hier nicht: Vier Spalten haben mehr Zeichen, aber drei
+    Zeilen statt vier machen den Block KLEINER. Gemessen wird deshalb mit
+    demselben Setzer wie im Heft (felo_design.tabelle)."""
+    fd = _felo()
+    n_sp = max(2, min(4, len(cols)))
+    zeilen = [[r] + [""] * (n_sp - 1) for r in rows]
+    anteile = {2: [0.5, 0.5], 3: [0.34, 0.33, 0.33], 4: [0.28, 0.24, 0.24, 0.24]}[n_sp]
+    h = fd.messe_bausteine([_bst(lambda hh, d, y: fd.tabelle(hh, d, y, fd.STIL, cols, zeilen,
+                                                            anteile, fd.einheiten(fd.TAB_ZEILE_SCHREIB)))],
+                           fd.STIL)
+    return h[0]
+
+
+_FD = None
+
+
+def _felo():
+    global _FD
+    if _FD is None:
+        sp = ilu.spec_from_file_location("felo_design", os.path.join(LS, "arbeitsheft", "felo_design.py"))
+        m = ilu.module_from_spec(sp); sp.loader.exec_module(m)
+        _FD = m
+    return _FD
+
+
+class _bst:
+    """Minimaler Baustein, wie ihn felo_design.messe_bausteine erwartet."""
+    def __init__(self, f, name="Tabelle", abstand=0, haftet=0):
+        self.f, self.name, self.abstand, self.haftet = f, name, abstand, haftet
+
+
 def pruefe_eintrag(band, alt, neu):
     """Gibt eine Liste von Befunden zurueck - leer heisst: einbaubar."""
     f = []
@@ -66,15 +101,45 @@ def pruefe_eintrag(band, alt, neu):
         schlimm = sorted(set(VERBOTEN.findall(t)))
         if schlimm:
             f.append("%s: Zeichen ohne Glyphe im Heft: %s" % (k, " ".join(schlimm)))
+        if k in ("tabCols", "tabRows"):
+            continue     # wird unten als gesetzter Block gemessen
         if k != "predictOk" and laenge(neu[k]) > laenge(alt.get(k, "")):
             f.append("%s ist laenger als bisher (%d statt %d Zeichen) – das verschiebt Seitenzahlen"
                      % (k, laenge(neu[k]), laenge(alt.get(k, ""))))
+    if "tabCols" in neu or "tabRows" in neu:
+        h_alt = tabellenhoehe(alt["tabCols"], alt["tabRows"])
+        h_neu = tabellenhoehe(zusammen["tabCols"], zusammen["tabRows"])
+        # Nicht nur hoeher ist gefaehrlich, auch kleiner: Die erste umgebaute
+        # Seite (kf4) sparte eine Tabellenzeile - dadurch passte die Einheit auf
+        # eine Seite weniger, und 23 Seitenzahlen des Bandes rutschten. Die
+        # Tabelle muss also ungefaehr gleich hoch bleiben.
+        if abs(h_neu - h_alt) > 20:
+            f.append("Tabelle wird anders hoch gesetzt (%.0f statt %.0f Einheiten) – das verschiebt Seitenzahlen"
+                     % (h_neu, h_alt))
     return f
 
 
+def entschaerfe(x):
+    """&gt; und &lt; kommen aus der Werkzeugkette zurueck - zurueckwandeln.
+
+    Ohne das steht in einer Regel ".mgw-sim &gt; .sim-hint" statt
+    ".mgw-sim > .sim-hint", und sie greift nie."""
+    if isinstance(x, str):
+        return html.unescape(x)
+    if isinstance(x, list):
+        return [entschaerfe(v) for v in x]
+    if isinstance(x, dict):
+        return {k: entschaerfe(v) for k, v in x.items()}
+    return x
+
+
 def js_regex(re_text, flags):
-    """Regex als JavaScript-Literal, ohne den Begrenzer zu zerbrechen."""
-    return "/" + re_text.replace("/", r"\/") + "/" + (flags or "")
+    """Regex als JavaScript-Literal, ohne den Begrenzer zu zerbrechen.
+
+    Nur NOCH NICHT maskierte Schraegstriche bekommen einen Rueckstrich - sonst
+    wird aus dem schon maskierten "m\\/s²" ein doppelt maskiertes, und die Datei
+    laesst sich nicht mehr laden."""
+    return "/" + re.sub(r"(?<!\\)/", r"\\/", re_text) + "/" + (flags or "")
 
 
 def erzeuge_regeldatei(seiten, regeln, bedienung, pfad):
@@ -118,18 +183,17 @@ def main():
     quelle = json.load(io.open(sys.argv[1], encoding="utf-8"))
     eintraege = quelle if isinstance(quelle, list) else quelle["seiten"]
 
-    # Bestehende Regeln weiterfuehren
-    seiten, regeln, bedienung = {}, {}, {}
+    # Bestehende Seiten, Regeln und Bedienung stehen in der QUELLE - einer
+    # gewoehnlichen JSON-Datei. Die erzeugte .js-Datei wird daraus geschrieben.
+    # (Beim ersten Anlauf hat das Werkzeug die Regeln aus der .js-Datei geraten
+    # und dabei den Piloten ueberschrieben. Eine Quelle, die man liest, statt zu
+    # raten, kann das nicht.)
+    quelle_pfad = os.path.join(LS, "js", "forschermodus-regeln.quelle.json")
     alt_pfad = os.path.join(LS, "js", "forschermodus-regeln.js")
-    if os.path.exists(alt_pfad):
-        t = io.open(alt_pfad, encoding="utf-8").read()
-        m = re.search(r"const FELO_FORSCHEN_SEITEN = (\{.*?\});", t, re.S)
-        if m:
-            seiten = json.loads(re.sub(r"(\w+):", r'"\1":', m.group(1)).replace(",\n}", "\n}"))
-        m = re.search(r"const FELO_FORSCHEN_BEDIENUNG = (\{.*?\});", t, re.S)
-        if m:
-            bedienung = json.loads(m.group(1))
-        regeln = {}   # Regeln werden immer neu erzeugt, siehe unten
+    stand = {"seiten": {}, "regeln": {}, "bedienung": {}}
+    if os.path.exists(quelle_pfad):
+        stand = json.load(io.open(quelle_pfad, encoding="utf-8"))
+    seiten, regeln, bedienung = stand["seiten"], stand["regeln"], stand["bedienung"]
 
     gut, schlecht = [], []
     for e in eintraege:
@@ -164,7 +228,7 @@ def main():
             for k in FELDER:
                 if k in e["seite"]:
                     x[k] = e["seite"][k]
-            r = e["regeln"]
+            r = entschaerfe(e["regeln"])
             seiten[e["id"]] = r["sim"]
             eintrag = regeln.setdefault(r["sim"], {"weg": [], "maske": [], "hinweis": r.get("hinweis", "")})
             for w in r.get("weg", []):
@@ -184,6 +248,9 @@ def main():
                 fh.write("\n")
         print("geschrieben: %s (%d Seiten)" % (p, len(es)))
 
+    with io.open(quelle_pfad, "w", encoding="utf-8") as fh:
+        json.dump({"seiten": seiten, "regeln": regeln, "bedienung": bedienung}, fh,
+                  ensure_ascii=False, indent=1)
     erzeuge_regeldatei(seiten, regeln, bedienung, alt_pfad)
     print("erzeugt: js/forschermodus-regeln.js – %d Seiten, %d Simulationen" % (len(seiten), len(regeln)))
     return 0

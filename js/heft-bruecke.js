@@ -2268,7 +2268,7 @@ const HEFT_SEITEN = {
     name: "Was ist der Unterschied zwischen Masse und Gewichtskraft?",
     titel: "Kilogramm oder Newton",
     frage: "Worin unterscheidet sich die Masse eines Körpers von seiner Gewichtskraft?",
-    schritte: ["Wähle „100 g“ und lies in der Statuszeile die Masse und die Gewichtskraft ab.", "Vergleiche damit „200 g“ und „1 kg“: Wie ändern sich die beiden Werte?", "Stelle zuletzt „2 kg“ ein und prüfe, ob F = m · g mit g = 9,8 N/kg passt."]
+    schritte: ["Drücke „500 g“ und lies die Masse und die Gewichtskraft ab.", "Wiederhole das mit „1 kg“, „2 kg“ und „5 kg“; notiere die Masse in Kilogramm.", "Rechne in jeder Zeile F geteilt durch m aus. Vergleiche die Zahlen."]
   },
   "kf5": {
     klasse: 9, schulform: "Gesamtschule NRW",

@@ -168,27 +168,29 @@
   "titel": "Kilogramm oder Newton",
   "problem": "Auf dem Klavier klebt ein Zettel mit der Masse in Kilogramm. Jannis rechnet aus, dass zwei Podeste diese Last tragen müssen. „Wie viel Newton sind das denn?“, fragt Herr Kessler. Jannis stutzt. Auf der Waage im Musikraum stehen Kilogramm, auf dem Kraftmesser Newton. Beides soll dasselbe Klavier beschreiben, und trotzdem stehen dort zwei ganz verschiedene Zahlen.",
   "frage": "Worin unterscheidet sich die Masse eines Körpers von seiner Gewichtskraft?",
-  "auftrag": "Vergleiche für mehrere Körper die Anzeige der Waage mit der Anzeige des Kraftmessers.",
+  "auftrag": "Bestimme für drei Körper die Zahl, die in jeder Zeile gleich bleibt.",
   "predict": [
-   "Die Masse sagt, wie viel Stoff im Körper steckt. Die Gewichtskraft ist die Kraft, mit der die Erde ihn anzieht.",
-   "Masse und Gewichtskraft sind dasselbe; die Waage rechnet nur in eine andere Einheit um.",
-   "Die Masse sagt, wie groß ein Körper ist, die Gewichtskraft sagt, wie schwer er ist. Ein großer Körper hat deshalb immer die größere Masse."
+   "Beide Geräte zeigen dieselbe Zahl; nur die Einheit dahinter ist eine andere.",
+   "Bei doppelter Masse wächst die Kraft auf mehr als das Doppelte.",
+   "Die Kraft ist eine andere Zahl als die Masse. Teilt man Kraft durch Masse, kommt bei jedem Körper dasselbe heraus."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
-   "Wähle „100 g“ und lies in der Statuszeile die Masse und die Gewichtskraft ab.",
-   "Vergleiche damit „200 g“ und „1 kg“: Wie ändern sich die beiden Werte?",
-   "Stelle zuletzt „2 kg“ ein und prüfe, ob F = m · g mit g = 9,8 N/kg passt."
+   "Drücke „500 g“ und lies die Masse und die Gewichtskraft ab.",
+   "Wiederhole das mit „1 kg“, „2 kg“ und „5 kg“; notiere die Masse in Kilogramm.",
+   "Rechne in jeder Zeile F geteilt durch m aus. Vergleiche die Zahlen."
   ],
   "tabCols": [
-   "Masse m",
-   "Gewichtskraft F in N"
+   "Körper",
+   "m in kg",
+   "F in N",
+   "F : m in N/kg"
   ],
   "tabRows": [
-   "100 g",
-   "200 g",
+   "500 g",
    "1 kg",
-   "2 kg"
+   "2 kg",
+   "5 kg"
   ],
   "fachtext": "Die Masse sagt, wie viel Stoff in einem Körper steckt. Sie wird in Kilogramm gemessen und ändert sich nicht, egal wo der Körper liegt. Die Gewichtskraft ist etwas anderes: Sie ist die Kraft, mit der die Erde den Körper nach unten zieht, und wird in Newton gemessen. Beide hängen über F = m · g zusammen. Der Ortsfaktor g beträgt auf der Erde 9,8 N/kg. „Schwer“ meint im Alltag eine große Gewichtskraft.",
   "merksatz": [
@@ -203,7 +205,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Bei „100 g“ meldet die Statuszeile: Masse m = 100 g, Gewichtskraft F = m · g = 1,0 N. Bei 200 g sind es 2,0 N, bei 500 g 4,9 N, bei 1 kg 9,8 N und bei 2 kg 19,6 N. Die Waage zeigt immer die Masse, der Kraftmesser die Kraft. Verdoppelt sich die Masse, verdoppelt sich auch die Gewichtskraft. Dasselbe ist beides also nicht.",
+  "beobachtung": "Die Waage zeigt die Masse, der Kraftmesser die Kraft: bei „500 g“ 4,9 N, bei „1 kg“ 9,8 N, bei „2 kg“ 19,6 N, bei „5 kg“ 49,0 N. Teilt man F durch m, steht jedes Mal 9,8 N/kg da: 4,9 geteilt durch 0,5 · 9,8 geteilt durch 1 · 19,6 geteilt durch 2. Die Zahl bleibt gleich, obwohl die Kraft wächst. Ihren Namen nennt erst „Auswertung zeigen“.",
   "aufgabe": {
    "frage": "Berechne die Gewichtskraft eines Podestes mit der Masse 25 kg und erkläre, warum die Angabe in Kilogramm allein nicht ausreicht.",
    "zeilen": 4,
