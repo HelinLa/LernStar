@@ -746,11 +746,15 @@ def topic_pages(cfg,chtitel,fno,pn):
         # ④ Meine Beobachtung
         B.append(b_marke(4,"Meine Beobachtung","E2"))
 
+        # Dritte Spalte moeglich (17.09.2026): dort rechnet das Kind selbst -
+        # Quotient oder Produkt. Zwei Spalten bleiben die Voreinstellung.
         cols=list(cfg["tabCols"])
         if len(cols)<2: cols=cols+[""]
-        rows=[[r,""] for r in cfg["tabRows"]]
+        n_sp=max(2,min(4,len(cols)))
+        rows=[[r]+[""]*(n_sp-1) for r in cfg["tabRows"]]
+        anteile={2:[0.5,0.5],3:[0.34,0.33,0.33],4:[0.28,0.24,0.24,0.24]}[n_sp]
         B.append(bst("Tabelle",
-                     lambda h,d,y: fd.tabelle(h,d,y,fd.STIL,cols,rows,[0.5,0.5],
+                     lambda h,d,y: fd.tabelle(h,d,y,fd.STIL,cols,rows,anteile,
                                               fd.einheiten(fd.TAB_ZEILE_SCHREIB)),
                      fd.ABS_AUFGABE))
         # Satzanfaenge: die Beobachtung in Worte fassen, bevor sie gedeutet wird.

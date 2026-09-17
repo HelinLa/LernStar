@@ -112,27 +112,29 @@
   "titel": "Weicher Puffer, harter Puffer",
   "problem": "Unter jedem Podestfuß liegt ein Gummipuffer. Nour drückt auf den einen, er sinkt tief ein. Der andere gibt kaum nach, obwohl sie genauso stark drückt. Herr Kessler grinst: Der weiche gehört unter die Lautsprecher, der harte unter das Klavier. Nour will wissen, woran man das vorher erkennen kann.",
   "frage": "Warum gibt die harte Feder bei gleicher Kraft weniger nach als die weiche?",
-  "auftrag": "Vergleiche die Dehnung der weichen und der harten Feder bei gleicher Kraft.",
+  "auftrag": "Bestimme für beide Federn die Zahl, die bei jedem Gewicht gleich bleibt.",
   "predict": [
-   "Beide Federn dehnen sich bei kleinen Kräften gleich weit; erst bei großer Kraft bleibt die harte zurück.",
-   "Die harte Feder gibt erst nach, wenn du eine bestimmte Kraft überschreitest. Danach dehnt sie sich genauso weit wie die weiche.",
-   "Die harte Feder dehnt sich bei jeder Kraft nur halb so weit; ihr Verhältnis D = F/s ist doppelt so groß."
+   "Die Dehnung wächst zuerst schnell und dann immer langsamer; die Messpunkte biegen sich nach unten.",
+   "Zu jeder Feder gehört eine Zahl, die bei jedem Gewicht gleich bleibt: Kraft geteilt durch Dehnung.",
+   "Beide Federn dehnen sich bei kleinen Kräften gleich weit; erst bei großer Kraft bleibt die harte zurück."
   ],
-  "predictOk": 2,
+  "predictOk": 1,
   "forschen": [
-   "Wähle „harte Feder“, hänge 100 g an und drücke „Messpunkt eintragen“.",
-   "Hänge noch 100 g dazu, drücke wieder „Messpunkt eintragen“ und lies die Steigung der Ausgleichsgeraden ab.",
-   "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „weiche Feder“ und miss mit denselben beiden Gewichten noch einmal."
+   "Wähle „weiche Feder“, hänge „+ 100 g“ an und drücke „Messpunkt eintragen“.",
+   "Hänge Schritt für Schritt bis 500 g an und drücke nach jedem Gewicht wieder „Messpunkt eintragen“. Trage 100 g, 300 g und 500 g ins Heft ein.",
+   "Rechne in jeder Zeile F geteilt durch s aus. Wähle danach „harte Feder“, miss bei 300 g und rechne auch dort."
   ],
   "tabCols": [
-   "Feder und Masse m",
-   "Dehnung s in cm"
+   "Feder und Masse",
+   "Kraft F in N",
+   "Dehnung s in cm",
+   "F geteilt durch s in N/cm"
   ],
   "tabRows": [
-   "harte Feder, 100 g",
-   "harte Feder, 200 g",
-   "weiche Feder, 100 g",
-   "weiche Feder, 200 g"
+   "weich · 100 g",
+   "weich · 300 g",
+   "weich · 500 g",
+   "hart · 300 g"
   ],
   "fachtext": "Zieht man an einer Feder, dehnt sie sich. Die Messpunkte liegen auf einer Geraden durch den Nullpunkt: Doppelte Kraft bedeutet doppelte Dehnung. Kraft und Dehnung sind also proportional. Das Verhältnis D = F / s bleibt dabei gleich; es heißt Federkonstante und beschreibt, wie hart eine Feder ist. Umgestellt ergibt sich F = D · s, das Hooke'sche Gesetz. Im Diagramm ist D die Steigung der Geraden.",
   "merksatz": [
@@ -147,11 +149,11 @@
     "post": "."
    }
   ],
-  "beobachtung": "Aus 100 g rechnet die Simulation F = 0,98 N, aus 200 g F = 1,96 N. Die harte Feder dehnt sich dabei um 0,98 cm und 1,96 cm, die weiche um 1,96 cm und 3,92 cm. Mit einem Punkt geht keine Gerade; ab zwei Punkten zeigt die Simulation die Ausgleichsgerade und ihre Steigung. Bei der harten Feder ist die Steigung D = 1,00 N/cm, bei der weichen D = 0,50 N/cm. Die steilere Gerade gehört zur härteren Feder.",
+  "beobachtung": "Die Kraft rechnet die Simulation aus der Masse: 100 g ergeben F = 0,98 N, 500 g ergeben F = 4,91 N. Bei der weichen Feder gehören dazu die Dehnungen 1,96 cm, 5,89 cm und 9,81 cm. Teilt man in jeder Zeile F durch s, steht jedes Mal rund 0,50 N/cm da – die Zahl ändert sich nicht, obwohl Kraft und Dehnung wachsen. Bei der harten Feder ergibt dieselbe Rechnung 1,00 N/cm (300 g: 2,94 N und 2,94 cm). Jede Feder hat also ihre eigene feste Zahl, und die härtere hat die größere. Im Diagramm liegen die Messpunkte auf einer Geraden durch den Nullpunkt; genau diese Zahl ist ihre Steigung. Erst wenn du sie selbst gerechnet hast, zeigt „Auswertung zeigen“ die Ausgleichsgerade der Simulation.",
   "aufgabe": {
-   "frage": "Berechne, wie weit sich die weiche Feder bei einer Kraft von 3 N dehnt, und begründe deinen Rechenweg.",
+   "frage": "Berechne aus deiner eigenen Zahl für die weiche Feder, wie weit sie sich bei einer Kraft von 3 N dehnt, und begründe deinen Rechenweg.",
    "zeilen": 4,
-   "loesung": "Für die weiche Feder gilt D = 0,5 N/cm. Aus D = F / s folgt s = F / D = 3 N: 0,5 N/cm = 6 cm. So rechnen darf man, weil Kraft und Dehnung proportional sind: Die Messpunkte liegen auf einer Geraden durch den Nullpunkt, das Verhältnis D bleibt bei jeder Kraft gleich."
+   "loesung": "Für die weiche Feder ergibt F geteilt durch s in jeder Zeile rund 0,50 N/cm. Also gilt s = F geteilt durch 0,50 N/cm = 3 N geteilt durch 0,50 N/cm = 6 cm. So rechnen darf man, weil die Zahl in allen Zeilen gleich geblieben ist: Die Messpunkte liegen auf einer Geraden durch den Nullpunkt, das Verhältnis ändert sich also auch zwischen den Messpunkten nicht."
   },
   "alltag": "Vergleiche zu Hause, wie tief deine Matratze und ein Sofakissen unter demselben Gegenstand einsinken, und notiere, welches von beiden die härtere Federung hat.",
   "alltagAfb": "II",

@@ -72,18 +72,19 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Stelle „Beschleunigung a“ auf 2,0 m/s² und drücke während der Fahrt fünfmal „Zeit stoppen“.",
+   "Der Regler „Beschleunigung a“ ist verdeckt; drücke während der Fahrt fünfmal „Zeit stoppen“.",
    "Wähle nacheinander „t → s“, „t → v“ und „t → a“.",
    "Drücke bei „t → v“ „Steigung messen“ und markiere zwei Punkte."
   ],
   "tabCols": [
+   "Auftragung",
    "Form der Punktreihe",
-   "Steigung k · Wert für a in m/s²"
+   "Steigung mit Einheit"
   ],
   "tabRows": [
-   "t → s bei a = 2,0 m/s²",
-   "t → v bei a = 2,0 m/s²",
-   "t → a bei a = 2,0 m/s²"
+   "t → s",
+   "t → v",
+   "t → a"
   ],
   "fachtext": "Fünf gestoppte Wertepaare liegen im t-v-Diagramm auf einer Ursprungsgeraden. Dort liefert jedes Punktepaar dieselbe Steigung Δv/Δt. Diese eine Zahl heißt Beschleunigung a und wird in 1 m/s² angegeben. Stellt man Δv/Δt = a nach v um, steht v = a · t da. Die Formel ist damit das Ergebnis der Messung, nicht ihre Voraussetzung. Ob a während der Fahrt gleich bleibt, prüft die Auftragung t → a: Sie liefert eine Waagerechte. Im t-s-Diagramm liegen dieselben Messwerte dagegen auf einer Parabel. Eine Parabel hat in jedem Punkt eine andere Steigung, eine einzelne Zahl ist daraus nicht zu gewinnen.",
   "merksatz": [
@@ -98,7 +99,7 @@
     "post": "; die Formel ist gemessen, nicht behauptet."
    }
   ],
-  "beobachtung": "Wann du stoppst, entscheidest du selbst; die Uhr springt in Schritten von 0,02 s, Wegmesser und Tacho werden aus der angezeigten Zeit gebildet. Ein Durchgang bei a = 2,0 m/s² lieferte fünf Zeilen: t = 0,34 s mit s = 0,12 m und v = 0,68 m/s; t = 0,88 s mit s = 0,77 m und v = 1,76 m/s; t = 1,46 s mit s = 2,13 m und v = 2,92 m/s; t = 1,92 s mit s = 3,69 m und v = 3,84 m/s; t = 2,38 s mit s = 5,66 m und v = 4,76 m/s. Die gerechnete letzte Spalte bleibt in der ersten Zeile leer und zeigt danach viermal denselben Wert 2,00 m/s². Zu „t → s“ meldet die Auswertung: „Keine Gerade, sondern eine Parabel: s ~ t².“ – eine Zahl für a ist daraus nicht zu holen. Zu „t → v“ steht dort „Stoppuhr · a = 2,0 m/s² · 5 Messwerte“, darunter y = 2,000·x, R² = 1,0000 · erwartet: 2,000 und schließlich „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s² · Literatur: 2,00“ mit der Abweichung 0,00 %. Zu „t → a“ ergibt sich aus vier Punkten y = 0,0000·x + 2,0000, also eine Waagerechte auf der Höhe 2,00 m/s².",
+  "beobachtung": "Wann du stoppst, entscheidest du selbst; die Uhr springt in Schritten von 0,02 s, Wegmesser und Tacho werden aus der angezeigten Zeit gebildet. Der eingestellte Wert der Beschleunigung ist verdeckt, in der Statuszeile steht nur, wie viele Messwerte du schon hast. Ein Durchgang lieferte fünf Zeilen: t = 0,34 s mit s = 0,12 m und v = 0,68 m/s; t = 0,88 s mit s = 0,77 m und v = 1,76 m/s; t = 1,46 s mit s = 2,13 m und v = 2,92 m/s; t = 1,92 s mit s = 3,69 m und v = 3,84 m/s; t = 2,38 s mit s = 5,66 m und v = 4,76 m/s. Über t → v liegen die Punkte auf einer Ursprungsgeraden; je zwei Punkte liefern dieselbe Steigung, hier 2,00 m/s². Über t → s ergibt sich eine Parabel, über t → a eine Waagerechte. Erst „Auswertung zeigen“ blendet den eingestellten Wert wieder ein – dann lässt sich prüfen, ob die selbst gemessene Steigung ihn trifft.",
   "aufgabe": {
    "frage": "Mira läuft, bleibt stehen und läuft schneller weiter. Das t-s-Diagramm zeigt ihre drei Abschnitte. Lies für jeden Abschnitt die Steigung ab und zeichne daraus das t-v-Diagramm in das leere Achsenkreuz.",
    "zeilen": 3,
@@ -174,7 +175,7 @@
   ],
   "predictOk": 0,
   "forschen": [
-   "Stelle „Beschleunigung a“ auf 2,0 m/s² und stoppe fünfmal während der Fahrt.",
+   "Der Regler „Beschleunigung a“ ist verdeckt; stoppe fünfmal während der Fahrt.",
    "Wähle „t² → s“ und markiere mit „Steigung messen“ zwei Punkte.",
    "Rechne für jede Zeile t² und s/t² aus und vergleiche mit der Steigung."
   ],
@@ -201,7 +202,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Wann du stoppst, ist dir überlassen; die Uhr springt in Schritten von 0,02 s, deine Zeiten weichen also von den hier genannten ab. Ein Durchgang bei a = 2,0 m/s² mit fünf Stopps in einer Fahrt lieferte t = 1,20 s · s = 1,44 m · v = 2,40 m/s, dann 1,50 s · 2,25 m · 3,00 m/s, 1,80 s · 3,24 m · 3,60 m/s, 2,10 s · 4,41 m · 4,20 m/s und 2,40 s · 5,76 m · 4,80 m/s. Die letzte Tabellenspalte rechnet die Simulation selbst: Hier liegen die Stopps 0,30 s auseinander, also a = Δv/Δt = 0,60 m/s : 0,30 s = 2,00 m/s²; nur die erste Zeile jeder Fahrt bleibt leer, weil ihr der Vorgänger fehlt. Nach „t → s“ steht im Auswertungsfeld: „Keine Gerade, sondern eine Parabel: s ~ t². Verdoppelst du die Zeit, vervierfacht sich der Weg. Aus einer Kurve liest man schlecht ab – quadriere t und wechsle zur Auftragung t² → s.“ Den Wechsel schlägt die Simulation also selbst vor. Nach „t² → s“ heißen die Achsen t² in s² und s in m, und dort steht: „Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist a/2, also a = 2 · Steigung.“ Die Ausgleichsgerade lautet y = 1,000·x mit R² = 1,0000 · erwartet: 1,000, darunter „Beschleunigung a = 2 × Steigung 2,00 m/s² · Literatur: 2,00“; unter „Erwarteter Funktionstyp“ steht „Steigung = a/2 = 1,00 m/s²“. Deine Handrechnung muss dasselbe liefern: 1,20² = 1,44 s² und 1,44 m : 1,44 s² = 1,00 m/s², ebenso 2,40² = 5,76 s² und 5,76 m : 5,76 s² = 1,00 m/s². Der Quotient s/t² hängt nicht davon ab, wann du gestoppt hast – genau das kennzeichnet die Ursprungsgerade; an krummen Stoppstellen rundet der Wegmesser auf zwei Nachkommastellen, und in der vierten Stelle der Steigung steht dann 0,9998 statt 1,0000. Die beiden Gegenproben liefern dieselbe Zahl: „t → v“ meldet y = 2,000·x und „Beschleunigung a = Steigung der v-t-Geraden 2,00 m/s²“, „t → a“ eine Waagerechte y = 0,0000·x + 2,0000.",
+  "beobachtung": "Wann du stoppst, ist dir überlassen; die Uhr springt in Schritten von 0,02 s, deine Zeiten weichen also von den hier genannten ab. Der eingestellte Wert der Beschleunigung bleibt verdeckt, bis du „Auswertung zeigen“ drückst. Ein Durchgang mit fünf Stopps lieferte t = 1,20 s · s = 1,44 m · v = 2,40 m/s, dann 1,50 s · 2,25 m · 3,00 m/s, 1,80 s · 3,24 m · 3,60 m/s, 2,10 s · 4,41 m · 4,20 m/s und 2,40 s · 5,76 m · 4,80 m/s. Die letzte Tabellenspalte rechnet die Simulation selbst: Hier liegen die Stopps 0,30 s auseinander, also Δv geteilt durch Δt = 0,60 m/s geteilt durch 0,30 s = 2,00 m/s²; nur die erste Zeile jeder Fahrt bleibt leer, weil ihr der Vorgänger fehlt. Über t² → s liegen die Punkte auf einer Ursprungsgeraden der Steigung 1,00 m/s², und s geteilt durch t² ergibt in jeder Zeile dieselbe Zahl: 1,44 geteilt durch 1,44, 2,25 geteilt durch 2,25 und so fort. Die Beschleunigung ist das Doppelte davon.",
   "aufgabe": {
    "frage": "Bestimme aus den Stopps (1,00 s | 2,50 m) und (1,40 s | 4,90 m) jeweils s/t² und daraus die Beschleunigung.",
    "zeilen": 5,

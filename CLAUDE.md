@@ -639,6 +639,63 @@ formatierten Werten weiterrechnen. Siehe [[rechenweg-aus-angezeigten-zahlen]].
   jeweilige Band hatte (EF `--voll --frames=25 --verlauf=4`, Foerderreihe die
   Voreinstellungen).
 
+## Forschermodus - erst messen, dann die Formel sehen (seit 17.09.2026)
+
+Abdullah: *"mir fehlt der Charakter, Simulation und Gesetzmaessigkeiten herleiten
+aus den Simulationen, davon lebt auch die Physik ... in den Foerderheften nicht
+so stark, aber in den anderen Heften schon."*
+
+**Gemessen ueber ALLE 475 Forscherseiten der 15 Regelbaende** (22 Agenten, blinde
+Zweiteinstufung, 52 von 54 Stichproben einig; Ergebnis je Seite in
+`simcheck/herleitung_bestandsaufnahme_2026-09-17.json`):
+
+| Stufe | Bedeutung | Seiten |
+|---|---|---|
+| H0 | qualitativ, zu Recht ohne Gesetz | 143 |
+| H1 | nur ablesen | 91 |
+| H2 | nur bestaetigen (Antwort steht am Regler oder in der Statuszeile) | 215 |
+| H3 | Muster aus eigener Reihe gefunden | 26 |
+| H4 | Gesetz selbst hergeleitet | **0** |
+
+Von den 332 Seiten mit quantitativem Kern haengen **146** daran, dass die
+SIMULATION die Antwort vorher zeigt, **105** an einer fehlenden Wertetabelle,
+**44** an einer fehlenden Stoppuhr. Nur 10 kaemen ohne Aenderung an der
+Simulation aus.
+
+**`js/forschermodus.js` schaltet je HEFTSEITE, nicht je Simulation.** Der QR-Code
+traegt `#experiment=<sim>&heft=<id>`; nur die Seiten in der Liste `SEITEN`
+oeffnen ihre Simulation im Forschermodus. Alle anderen 565 gedruckten Codes
+sehen unveraendert dasselbe - Pflicht, weil viele Seiten die heutigen
+Statuszeilen woertlich zitieren. Verdeckt wird ueber CSS (`weg`) und ueber
+Textmasken (`maske`); ein Knopf **"Auswertung zeigen"** holt alles zurueck,
+sobald das Kind seine eigene Auswertung hat.
+
+> **Zwei Stellen stehen IM BILD** und lassen sich nicht per CSS verdecken:
+> `ohm-kennlinie` zeichnet "R = 10 Ω" ins Diagramm, `beschleunigung-ef` die
+> Merkformel "v = a · t" in die Meldezeile. Beide lesen jetzt
+> `window.FELO_FORSCHEN` (Voreinstellung: aus).
+
+**Die Beobachtungstabelle kann jetzt bis zu VIER Spalten** (`tabCols`): erste
+Spalte Beschriftung, dann Messwerte, letzte Spalte die Rechnung des Kindes
+(Quotient oder Produkt). Zwei Spalten bleiben Voreinstellung, alle bisherigen
+Seiten setzen unveraendert. Geaendert in allen 15 `build_book.py`.
+
+> **Die Zeilenzahl bleibt bei 3-4** (`formregeln.pruefe_seite`). Eine Messreihe
+> mit fuenf Punkten wird also am Bildschirm aufgenommen und mit drei bis vier
+> Zeilen ins Heft uebernommen.
+
+> **Laenge ist ein hartes Mass.** Beim ersten Anlauf schoben die neuen
+> Arbeitsschritte von `ki3` die Seite um eine Zeile - und damit **19 EF-Seiten
+> um eine Seitenzahl**. Nach dem Kuerzen: keine Verschiebung. Jede umgeschriebene
+> Seite deshalb bauen und `simcheck/seitenzahlen.py` gegen den alten Stand
+> halten, BEVOR etwas ausgeliefert wird.
+
+Pilot (17.09.2026): `kf3` (Federhaerte D aus F/s), `st8` (Widerstand aus U/I,
+Knoepfe heissen "Draht A/B"), `ki3` und `ki4` (Beschleunigung aus der Steigung,
+Regler verdeckt). Pruefwerkzeug: `modus_test.js` bedient die Simulationen in der
+Mini-DOM (`simcheck/rauchtest.js`) und prueft, ob jede Maske am echten Text
+greift - mit eigenem Selbsttest.
+
 ## Messlabor - Messreihe statt Einzelablesung (seit 08.09.2026)
 
 Sechs Simulationen nehmen jetzt **Messpunkte in eine Wertetabelle** auf und

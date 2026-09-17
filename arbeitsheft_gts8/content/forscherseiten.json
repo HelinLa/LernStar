@@ -380,26 +380,28 @@
   "titel": "Eine Gerade aus Messpunkten",
   "problem": "Für die Werkstattlampen soll ein Vorwiderstand her. Jannis fragt, wie viel Strom bei welcher Spannung fließt, und will jede Kombination einzeln ausprobieren. Nour meint, zwei Messpunkte reichen: Wenn man sie in ein Diagramm einträgt, könne man alles Weitere ablesen. Jannis glaubt ihr nicht und holt schon einmal das Messgerät.",
   "frage": "Wie ändert sich die Stromstärke, wenn die Spannung verdoppelt wird?",
-  "auftrag": "Miss bei festem Widerstand die Stromstärke zu zwei Spannungen und vergleiche beide Werte.",
+  "auftrag": "Bestimme bei zwei Drähten die Zahl, die in jeder Zeile gleich bleibt.",
   "predict": [
    "Die Stromstärke wächst zuerst schnell und dann immer langsamer, die Kurve wird flacher.",
-   "Die Stromstärke verdoppelt sich; die Messpunkte liegen auf einer Geraden durch den Nullpunkt.",
+   "Spannung geteilt durch Stromstärke ergibt bei jedem Messpunkt desselben Drahtes dieselbe Zahl.",
    "Bis zu einer bestimmten Spannung fließt gar kein Strom. Erst darüber beginnt die Gerade und steigt dann gleichmäßig an."
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke „20 Ω“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“.",
-   "Stelle mit „mehr“ 3 V ein, drücke erneut „Messpunkt“ und vergleiche beide Tabellenzeilen.",
-   "Drücke „10 Ω“ und lies ab, welche Stromstärke jetzt bei 3 V fließt."
+   "Drücke „Draht A“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“.",
+   "Stelle nacheinander 3 V, 4,5 V und 6 V ein und drücke jedes Mal „Messpunkt“. Trage 1,5 V, 3 V und 6 V ins Heft ein.",
+   "Rechne in jeder Zeile U geteilt durch I aus. Drücke danach „Draht B“, miss bei 6 V und rechne auch dort."
   ],
   "tabCols": [
-   "Spannung U",
-   "Stromstärke I"
+   "Draht und Spannung U",
+   "Stromstärke I in A",
+   "U geteilt durch I in Ω"
   ],
   "tabRows": [
-   "1,5 V bei R = 20 Ω",
-   "3 V bei R = 20 Ω",
-   "3 V bei R = 10 Ω"
+   "Draht A: 1,5 V",
+   "Draht A: 3 V",
+   "Draht A: 6 V",
+   "Draht B: 6 V"
   ],
   "fachtext": "Bei festem Widerstand hängen Spannung und Stromstärke einfach zusammen: Verdoppelt man den Antrieb, fließt doppelt so viel Ladung pro Sekunde. Die beiden Größen sind proportional, das Doppelte bei der einen bedeutet das Doppelte bei der anderen. Trägt man die Messpunkte in ein U-I-Diagramm ein, liegen sie auf einer Geraden durch den Nullpunkt. Das Verhältnis U geteilt durch I bleibt gleich, es ist der Widerstand R.",
   "merksatz": [
@@ -414,11 +416,11 @@
     "post": ", also R = U/I."
    }
   ],
-  "beobachtung": "Bei 20 Ω und U = 1,5 V meldet die Statuszeile I = 0,07 A. Stellst du 3 V ein, sind es 0,15 A, also ungefähr doppelt so viel. In beiden Fällen steht dort R = U/I = 20 Ω. Mit 10 Ω fließen bei 3 V dagegen 0,30 A. Die Stromstärke wächst im gleichen Verhältnis wie die Spannung, der Widerstand bleibt gleich.",
+  "beobachtung": "Bei Draht A zeigt das Messgerät der Reihe nach 0,15 A, 0,30 A, 0,45 A und 0,60 A. Teilt man in jeder Zeile U durch I, steht jedes Mal 10 Ω da: 1,5 geteilt durch 0,15, 3 geteilt durch 0,30 und 6 geteilt durch 0,60. Die Zahl bleibt gleich, obwohl Spannung und Stromstärke sich vervierfachen. Bei doppelter Spannung fließt doppelt so viel Strom, und die Messpunkte liegen im Diagramm auf einer Geraden durch den Nullpunkt. Bei Draht B fließen bei 6 V nur 0,30 A; dort ergibt dieselbe Rechnung 20 Ω. Jeder Draht hat also seine eigene feste Zahl – das ist sein Widerstand. Wie groß er ist, sagt die Simulation erst, wenn du „Auswertung zeigen“ drückst.",
   "aufgabe": {
-   "frage": "Berechne, welche Stromstärke bei 6 V durch einen Widerstand von 20 Ω fließt.",
+   "frage": "Berechne mit deiner eigenen Zahl für Draht A, welche Stromstärke bei 9 V fließen würde.",
    "zeilen": 3,
-   "loesung": "Aus U = R·I folgt I = U/R. Also I = 6 V: 20 Ω = 0,30 A. Das passt zur Geraden: Bei 3 V waren es 0,15 A, bei doppelter Spannung fließt also der doppelte Strom."
+   "loesung": "Für Draht A ergibt U geteilt durch I in jeder Zeile 10 Ω. Aus U = R · I folgt I = U geteilt durch R = 9 V geteilt durch 10 Ω = 0,90 A. Das passt zur Geraden: Bei 4,5 V waren es 0,45 A, bei doppelter Spannung fließt der doppelte Strom."
   },
   "alltag": "Erkläre zu Hause jemandem mit eigenen Worten, warum bei doppelter Spannung doppelt so viel Strom fließt.",
   "alltagAfb": "II",

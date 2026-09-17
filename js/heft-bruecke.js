@@ -2097,7 +2097,7 @@ const HEFT_SEITEN = {
     name: "Wie hängen Spannung, Stromstärke und Widerstand zusammen?",
     titel: "Eine Gerade aus Messpunkten",
     frage: "Wie ändert sich die Stromstärke, wenn die Spannung verdoppelt wird?",
-    schritte: ["Drücke „20 Ω“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“.", "Stelle mit „mehr“ 3 V ein, drücke erneut „Messpunkt“ und vergleiche beide Tabellenzeilen.", "Drücke „10 Ω“ und lies ab, welche Stromstärke jetzt bei 3 V fließt."]
+    schritte: ["Drücke „Draht A“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“.", "Stelle nacheinander 3 V, 4,5 V und 6 V ein und drücke jedes Mal „Messpunkt“. Trage 1,5 V, 3 V und 6 V ins Heft ein.", "Rechne in jeder Zeile U geteilt durch I aus. Drücke danach „Draht B“, miss bei 6 V und rechne auch dort."]
   },
   "st9": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2259,7 +2259,7 @@ const HEFT_SEITEN = {
     name: "Warum geben zwei Federn nicht gleich nach?",
     titel: "Weicher Puffer, harter Puffer",
     frage: "Warum gibt die harte Feder bei gleicher Kraft weniger nach als die weiche?",
-    schritte: ["Wähle „harte Feder“, hänge 100 g an und drücke „Messpunkt eintragen“.", "Hänge noch 100 g dazu, drücke wieder „Messpunkt eintragen“ und lies die Steigung der Ausgleichsgeraden ab.", "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „weiche Feder“ und miss mit denselben beiden Gewichten noch einmal."]
+    schritte: ["Wähle „weiche Feder“, hänge „+ 100 g“ an und drücke „Messpunkt eintragen“.", "Hänge Schritt für Schritt bis 500 g an und drücke nach jedem Gewicht wieder „Messpunkt eintragen“. Trage 100 g, 300 g und 500 g ins Heft ein.", "Rechne in jeder Zeile F geteilt durch s aus. Wähle danach „harte Feder“, miss bei 300 g und rechne auch dort."]
   },
   "kf4": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -4905,7 +4905,7 @@ const HEFT_SEITEN = {
     name: "Wie schnell wird der Wagen schneller?",
     titel: "Drei Diagramme, eine Zahl",
     frage: "Welche Zahl der t-v-Geraden sagt, wie schnell der Wagen schneller wird?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s² und drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle nacheinander „t → s“, „t → v“ und „t → a“.", "Drücke bei „t → v“ „Steigung messen“ und markiere zwei Punkte."]
+    schritte: ["Der Regler „Beschleunigung a“ ist verdeckt; drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle nacheinander „t → s“, „t → v“ und „t → a“.", "Drücke bei „t → v“ „Steigung messen“ und markiere zwei Punkte."]
   },
   "ki4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
@@ -4914,7 +4914,7 @@ const HEFT_SEITEN = {
     name: "Warum trägt man t² auf?",
     titel: "Aus der Kurve eine Gerade machen",
     frage: "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s² und stoppe fünfmal während der Fahrt.", "Wähle „t² → s“ und markiere mit „Steigung messen“ zwei Punkte.", "Rechne für jede Zeile t² und s/t² aus und vergleiche mit der Steigung."]
+    schritte: ["Der Regler „Beschleunigung a“ ist verdeckt; stoppe fünfmal während der Fahrt.", "Wähle „t² → s“ und markiere mit „Steigung messen“ zwei Punkte.", "Rechne für jede Zeile t² und s/t² aus und vergleiche mit der Steigung."]
   },
   "ki5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",

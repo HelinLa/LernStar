@@ -744,9 +744,17 @@ def topic_pages(cfg,chtitel,fno,pn):
     # ④ Meine Beobachtung
     B.append(b_marke(4,"Meine Beobachtung","K3"))
 
-    cols=cfg["tabCols"]; rows=[[r,""] for r in cfg["tabRows"]]
+    # Die Beobachtungstabelle hat seit dem 17.09.2026 wahlweise DREI Spalten:
+    # Beschriftung, Messwert, und eine Spalte, in der das Kind selbst rechnet
+    # (Quotient oder Produkt). Ohne diese Spalte bleibt jede Messreihe beim
+    # Ablesen stehen - gemessen ueber alle 475 Forscherseiten leitete KEINE ein
+    # Gesetz aus eigenen Werten her. Zwei Spalten bleiben die Voreinstellung,
+    # alle bisherigen Seiten setzen deshalb unveraendert.
+    cols=cfg["tabCols"]; n_sp=max(2,min(4,len(cols)))
+    rows=[[r]+[""]*(n_sp-1) for r in cfg["tabRows"]]
+    anteile={2:[0.5,0.5],3:[0.34,0.33,0.33],4:[0.28,0.24,0.24,0.24]}[n_sp]
     B.append(bst("Tabelle",
-                 lambda h,d,y: fd.tabelle(h,d,y,fd.STIL,cols,rows,[0.5,0.5],
+                 lambda h,d,y: fd.tabelle(h,d,y,fd.STIL,cols,rows,anteile,
                                           fd.einheiten(fd.TAB_ZEILE_SCHREIB)),
                  fd.ABS_AUFGABE))
     # Satzanfaenge: die Beobachtung in Worte fassen, bevor sie gedeutet wird.

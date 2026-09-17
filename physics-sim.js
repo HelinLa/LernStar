@@ -61918,7 +61918,10 @@ function _ohgDraw(ctx, cv) {
   _ohg.rows.forEach(r => { ctx.beginPath(); ctx.arc(px(r.U), py(r.I), 4.5, 0, 2 * Math.PI); ctx.fill(); });
 
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText('R = ' + _ohgR() + ' Ω', oxR - 78, oyT + 10);
+  // Im Forschermodus (js/forschermodus.js) bleibt der Widerstand verdeckt -
+  // er ist genau die Groesse, die das Kind aus der Steigung gewinnen soll.
+  ctx.fillText(window.FELO_FORSCHEN === 'ohm-kennlinie' ? 'Draht ' + (_ohg.rGr === 'klein' ? 'A' : 'B')
+                                                        : 'R = ' + _ohgR() + ' Ω', oxR - 78, oyT + 10);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -84041,7 +84044,9 @@ function _befDraw(ctx, cv) {
     ctx.fillText(_bef.meldung, W / 2, 71);
   } else {
     ctx.fillStyle = '#64748b'; ctx.font = '11px sans-serif';
-    ctx.fillText('v = a · t   und   s = ½ · a · t²   –   Uhr, Wegmesser und Tacho laufen mit', W / 2, 71);
+    ctx.fillText(window.FELO_FORSCHEN === 'beschleunigung-ef'
+      ? 'Uhr, Wegmesser und Tacho laufen mit – stoppe selbst und trage ein'
+      : 'v = a · t   und   s = ½ · a · t²   –   Uhr, Wegmesser und Tacho laufen mit', W / 2, 71);
   }
 
   // Zeitlupe: Die Uhr zeigt die wirkliche Messzeit, der Bildlauf ist gedehnt.
