@@ -4473,7 +4473,7 @@ const HEFT_SEITEN = {
     name: "Warum gibt eine Feder nach?",
     titel: "Weicher Puffer, harter Puffer",
     frage: "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
-    schritte: ["Wähle „weiche Feder“. Drücke „+ 100 g“.", "Lies ab: Wie viel Newton sind das? Wie weit dehnt sich die Feder? Trage es ein.", "Drücke „+ 100 g“ noch einmal. Lies wieder ab und trage es ein.", "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Lies ab und füll die letzte Zeile."]
+    schritte: ["Wähle „weiche Feder“. Drücke „+ 100 g“.", "Lies ab: Wie viel Newton? Wie weit dehnt sich die Feder? Trage es ein.", "Drücke „+ 100 g“ noch einmal. Trage wieder ein.", "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Füll die letzte Zeile."]
   },
   "fk4": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",

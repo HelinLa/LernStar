@@ -134,19 +134,19 @@
   ],
   "tabelle_erwartet": [
    [
-    "Feder leeren",
+    "0 g",
     "F = 0 N",
     "entspannt"
    ],
    [
-    "ein Gewicht anhängen",
-    "F = 1 N",
-    "um 1 cm gedehnt"
+    "100 g",
+    "F = 0,98 N",
+    "um 0,98 cm gedehnt"
    ],
    [
-    "das Gewicht abnehmen",
-    "F = 0 N",
-    "entspannt"
+    "200 g",
+    "F = 1,96 N",
+    "um 1,96 cm gedehnt"
    ]
   ],
   "a1": {

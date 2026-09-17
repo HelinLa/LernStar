@@ -121,7 +121,32 @@
    "Ich kann erklären, warum Tragen keine Arbeit ist."
   ],
   "zuhause": "Trage eine Tasche durch den Flur und die Treppe hinauf. Wo verrichtest du Arbeit?",
-  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht auf einen Schulhof. Linke Hälfte, große Überschrift „Schieben“: ein Jugendlicher schiebt eine Holzkiste über den Boden nach rechts; ein dicker roter Pfeil an der Kiste zeigt nach rechts und ist mit „Kraft F“ beschriftet, darunter ein gleich langer blauer Pfeil am Boden nach rechts mit „Weg s“. Unter der Hälfte groß: „400 J“. Rechte Hälfte, große Überschrift „Waagerecht tragen“: derselbe Jugendliche trägt dieselbe Kiste vor dem Bauch und geht nach rechts; der rote Pfeil „Kraft F“ zeigt hier deutlich nach OBEN, der blaue Pfeil „Weg s“ am Boden weiter nach rechts. Unter der Hälfte groß: „0 J“. Genau diese vier Pfeile, keine weiteren Pfeile, keine Zerlegung in Teilkräfte, keine Winkelbögen. Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht auf einen Schulhof. Linke Hälfte, große Überschrift „Schieben“: ein Jugendlicher schiebt eine Holzkiste über den Boden nach rechts; ein dicker roter Pfeil an der Kiste zeigt nach rechts und ist mit „Kraft F“ beschriftet, darunter ein gleich langer blauer Pfeil am Boden nach rechts mit „Weg s“. Unter der Hälfte groß: „400 J“. Rechte Hälfte, große Überschrift „Waagerecht tragen“: derselbe Jugendliche trägt dieselbe Kiste vor dem Bauch und geht nach rechts; der rote Pfeil „Kraft F“ zeigt hier deutlich nach OBEN, der blaue Pfeil „Weg s“ am Boden weiter nach rechts. Unter der Hälfte groß: „0 J“. Genau diese vier Pfeile, keine weiteren Pfeile, keine Zerlegung in Teilkräfte, keine Winkelbögen. Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]",
+  "rechnen": {
+   "hinweis": "Rechne W = F · s in Joule (J).",
+   "spalten": [
+    "Kraft und Weg",
+    "Rechnung",
+    "Arbeit W"
+   ],
+   "zeilen": [
+    [
+     "100 N, 4 m",
+     "100 · 4",
+     "400 J"
+    ],
+    [
+     "100 N, 6 m",
+     "",
+     ""
+    ],
+    [
+     "50 N, 4 m",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  "lehrer": {
   "id": "fe1",
@@ -195,6 +220,18 @@
    "Das gelöste Beispiel Zeile für Zeile abdecken und mitsprechen, bevor Aufgabe 2 begonnen wird."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Schreibe die drei Statuszeilen des Bildschirms wörtlich ab. Streiche darin an, welches Wort verrät, ob Arbeit verrichtet wird.",
-  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · mechanische Arbeit W = F · s, Einheit Joule. Die Codes stehen auch auf der Schülerseite. Ausführlich: Die Rechnung im Beispiel und in Aufgabe 2 trägt UF2, die Tabelle das Auswerten (E5), der Alltagsauftrag mit der Tasche UF4. Fachwortzählung: neu ist genau EIN Wort, „Arbeit W in Joule (J)“ (Zählregel 1: Größe, Formelzeichen und Einheit sind zusammen ein Fachwort). „Wegrichtung“ steht bewusst NIRGENDS mehr im Heft: Das Wort ist aus „Weg“ und „Richtung“ zusammengesetzt, beide stehen namentlich in Zählregel 5 – ohne Formelzeichen und Einheit zählt es also nicht als Fachwort, darf dann aber auch nicht in der Wortbank oder in einer Merksatz-Lücke stehen (Zählregel 3: was dort gebraucht wird, ist eingeführt). Sonst wäre es das zweite neue Fachwort. Merksatz, Tabellenspalte und Hilfe 3 tragen stattdessen die Bildtext-Formulierung „Kraft und Weg zeigen in dieselbe Richtung“, die Merksatz-Lücke die Formel „W = F · s“ (Formel-Lückenwörter sind im Band belegt, vgl. „s / t“ in fb2). „Weg“ bleibt Alltagswort ohne eigene Einführung (Zählregel 5); der Alltagsteil trägt dafür den Brückensatz „Am Bildschirm heißt die Strecke s jetzt Weg s.“ – „Strecke s in Meter (m)“ wurde in Förderheft 8 (fb2) eingeführt, zwei Namen für dieselbe Sache verstoßen sonst gegen die Sprachregel. Ebenfalls angekündigt in fk3: dort ist s die Dehnung in cm, hier der Weg in m. Bewusst NICHT auf der Schülerseite: das Wort „Hubarbeit“ und die Formel W = m · g · h (wären ein zweites und drittes Fachwort) – die 392 J kommen allein aus dem neutralen Bildtext „verrichtete Arbeit: 392 J“ und werden nur abgelesen und mit 0 J verglichen. Ebenfalls vermieden: „senkrecht“ (geometrische Hürde für DaZ, am Bildschirm nur im Bildtext); das Heft benutzt nur die beiden belegten Bildschirmformulierungen „Die Kraft zeigt nach oben, der Weg nach vorn“ (Statuszeile) und „Kraft und Weg zeigen in dieselbe Richtung“ (Bildtext). Datenlage: Auf der Schülerseite steht als Kraftzahl nur die 100 N vom Schieben. Die 196 N der Trage-Statuszeile bleiben im Lehrerteil, sonst liest die Klasse zwei verschiedene Kraftzahlen für dieselbe Kiste als Widerspruch; der Rechenschritt 20 kg · 9,81 N/kg = 196 N steht nirgends am Bildschirm. Der Ortsfaktor erscheint im Band mit zwei Zahlen (9,8 N/kg in fk4/fk5, 9,81 N/kg hier in der Hubarbeit-Zeile); die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Seite verlangt nur die drei belegten Wertesätze (100 N / 4 m · 20 kg / 4 m · 20 kg / 2,0 m); eigene Reglerwerte sind unbelegt, weil das Feld „regler“ im Faktendump leer ist. Der Knopf trägt am Bildschirm die Aufschrift „▶ Ausführen“; das Heft schreibt „Ausführen“, weil die Simulation ihn in ihrem eigenen Hinweistext selbst so nennt („Stelle die Werte ein, drücke „Ausführen“ …“) – die Wortmarke ist damit belegt. (Nicht der Grund: SourceSans3 kennt U+25B6 sehr wohl, geprüft am 05.09.2026 in Regular, Medium und Bold.) Alle drei Werte stehen schon vor dem Ausführen in der Statuszeile – die Seite verlangt darum kein Ergebnis, das erst nach dem Lauf erscheint. Die Zelle „ja“ in Zeile Hochheben wird aus dem Bild erschlossen (Kiste geht nach oben, Kraftpfeil nach oben) und durch die 392 J bestätigt; sie steht als Satz nicht am Bildschirm."
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · mechanische Arbeit W = F · s, Einheit Joule. Die Codes stehen auch auf der Schülerseite. Ausführlich: Die Rechnung im Beispiel und in Aufgabe 2 trägt UF2, die Tabelle das Auswerten (E5), der Alltagsauftrag mit der Tasche UF4. Fachwortzählung: neu ist genau EIN Wort, „Arbeit W in Joule (J)“ (Zählregel 1: Größe, Formelzeichen und Einheit sind zusammen ein Fachwort). „Wegrichtung“ steht bewusst NIRGENDS mehr im Heft: Das Wort ist aus „Weg“ und „Richtung“ zusammengesetzt, beide stehen namentlich in Zählregel 5 – ohne Formelzeichen und Einheit zählt es also nicht als Fachwort, darf dann aber auch nicht in der Wortbank oder in einer Merksatz-Lücke stehen (Zählregel 3: was dort gebraucht wird, ist eingeführt). Sonst wäre es das zweite neue Fachwort. Merksatz, Tabellenspalte und Hilfe 3 tragen stattdessen die Bildtext-Formulierung „Kraft und Weg zeigen in dieselbe Richtung“, die Merksatz-Lücke die Formel „W = F · s“ (Formel-Lückenwörter sind im Band belegt, vgl. „s / t“ in fb2). „Weg“ bleibt Alltagswort ohne eigene Einführung (Zählregel 5); der Alltagsteil trägt dafür den Brückensatz „Am Bildschirm heißt die Strecke s jetzt Weg s.“ – „Strecke s in Meter (m)“ wurde in Förderheft 8 (fb2) eingeführt, zwei Namen für dieselbe Sache verstoßen sonst gegen die Sprachregel. Ebenfalls angekündigt in fk3: dort ist s die Dehnung in cm, hier der Weg in m. Bewusst NICHT auf der Schülerseite: das Wort „Hubarbeit“ und die Formel W = m · g · h (wären ein zweites und drittes Fachwort) – die 392 J kommen allein aus dem neutralen Bildtext „verrichtete Arbeit: 392 J“ und werden nur abgelesen und mit 0 J verglichen. Ebenfalls vermieden: „senkrecht“ (geometrische Hürde für DaZ, am Bildschirm nur im Bildtext); das Heft benutzt nur die beiden belegten Bildschirmformulierungen „Die Kraft zeigt nach oben, der Weg nach vorn“ (Statuszeile) und „Kraft und Weg zeigen in dieselbe Richtung“ (Bildtext). Datenlage: Auf der Schülerseite steht als Kraftzahl nur die 100 N vom Schieben. Die 196 N der Trage-Statuszeile bleiben im Lehrerteil, sonst liest die Klasse zwei verschiedene Kraftzahlen für dieselbe Kiste als Widerspruch; der Rechenschritt 20 kg · 9,81 N/kg = 196 N steht nirgends am Bildschirm. Der Ortsfaktor erscheint im Band mit zwei Zahlen (9,8 N/kg in fk4/fk5, 9,81 N/kg hier in der Hubarbeit-Zeile); die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Seite verlangt nur die drei belegten Wertesätze (100 N / 4 m · 20 kg / 4 m · 20 kg / 2,0 m); eigene Reglerwerte sind unbelegt, weil das Feld „regler“ im Faktendump leer ist. Der Knopf trägt am Bildschirm die Aufschrift „▶ Ausführen“; das Heft schreibt „Ausführen“, weil die Simulation ihn in ihrem eigenen Hinweistext selbst so nennt („Stelle die Werte ein, drücke „Ausführen“ …“) – die Wortmarke ist damit belegt. (Nicht der Grund: SourceSans3 kennt U+25B6 sehr wohl, geprüft am 05.09.2026 in Regular, Medium und Bold.) Alle drei Werte stehen schon vor dem Ausführen in der Statuszeile – die Seite verlangt darum kein Ergebnis, das erst nach dem Lauf erscheint. Die Zelle „ja“ in Zeile Hochheben wird aus dem Bild erschlossen (Kiste geht nach oben, Kraftpfeil nach oben) und durch die 392 J bestätigt; sie steht als Satz nicht am Bildschirm.",
+  "rechnen_erwartet": [
+   [
+    "100 N, 6 m",
+    "100 · 6",
+    "600 J"
+   ],
+   [
+    "50 N, 4 m",
+    "50 · 4",
+    "200 J"
+   ]
+  ]
  }
 }

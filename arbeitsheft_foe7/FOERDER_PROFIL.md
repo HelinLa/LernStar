@@ -45,6 +45,40 @@ SEITE B — VERSTEHEN UND ÜBEN
 3. `beispiel`: ein vollständig gelöstes Beispiel. Bei Rechnungen mit den
    Schritten Gegeben – Gesucht – Formel – Einsetzen – Ergebnis – Antwortsatz;
    sonst eine Muster-Antwort in ganzen Sätzen.
+3b. `rechnen`: OPTIONAL — die Rechentabelle, der Drill zum Beispiel
+   (Abdullah nach dem Test von Band 9, 17.09.2026: *„uns fehlen Aufgaben,
+   wie z.B. Tabellen, wo Massen gegeben sind und die Schüler einfach es in
+   Newton umrechnen … aber in Förderniveau und sehr leichte"*).
+
+   Sie ist **keine vierte Aufgabe** — die drei nummerierten bleiben, wie sie
+   sind. Sie steht ohne Nummer direkt unter dem Beispiel, so wie Merksatz und
+   Wortbank: Das Beispiel rechnet EINEN Fall vor, die Tabelle lässt denselben
+   Weg zwei- bis viermal selbst gehen.
+
+   - GENAU 3 Spalten (Rendervertrag), 3–5 Zeilen.
+   - Zeile 1 ist **vollständig vorgerechnet** und wird getönt. Ohne sie fängt
+     ein Förderlernender bei einer leeren Tabelle gar nicht erst an. (Das ist
+     der eine Ort, an dem die Beispielzeile bleibt — die Beobachtungstabelle
+     auf Seite A ist seit dem 13.09.2026 leer.)
+   - Alle übrigen Zeilen geben NUR die erste Zelle vor; Rechnung und Ergebnis
+     bleiben leer.
+   - `hinweis` sagt, womit gerechnet wird („Rechne mit g = 9,8 N/kg.").
+   - Der Lehrerteil trägt `rechnen_erwartet`: dieselben offenen Zeilen,
+     vollständig ausgefüllt.
+   - **Ein Rechenschritt, glatte Zahlen.** Genommen wird nur, wo mal, plus,
+     minus oder geteilt genügt. Nicht genommen: drei Faktoren (E = m · g · h),
+     Einheitenwechsel (cm² → m²), zwei Schritte (Hebelgesetz nach F₁ umstellen)
+     — dort wird aus „sehr leicht" schnell Scheinrechnen.
+   - **Andere Zahlen als die Beobachtungstabelle** derselben Einheit, sonst
+     ist es Abschreiben statt Rechnen.
+   - Jede Zelle einzeilig halten. GEMESSEN: „4 N und 3 N, gleiche Richtung"
+     brach in Spalte 1 auf DREI Zeilen um und schob die Einheit auf ein
+     drittes, zu 91 % leeres Blatt. Kurz und klar ist hier auch didaktisch
+     besser — „4 N und 3 N" gegen „6 N gegen 2 N" trägt die Rechenart im Wort.
+   - `pruefe_profil.py` RECHNET JEDE ZEILE NACH, die des Hefts wie die des
+     Lehrerteils. Eine Zahlentabelle ist der einzige Ort im Heft, an dem ein
+     Tippfehler nicht auffällt: „5 · 9,8 = 48 N" liest sich wie die richtige
+     Zeile.
 4. `aufgaben`: genau drei — erkennen (ankreuzen/zuordnen), einsetzen
    (Lücke/Formel), erklären (mit Satzstarter).
 5. `hilfen`: drei Stufen, optisch abtrennbar, KEINE Leistungsstufen:
@@ -119,6 +153,13 @@ Verbindlich ist deshalb:
    keine Regel geschrieben. **[OFFEN für Abdullah]**
 
 ## Wortbudget je Doppelseite (seit 05.09.2026)
+
+**Zulage für die Rechentabelle: +34 Wörter, und nur dort.** Eine Einheit MIT
+Rechentabelle darf um deren gemessenes Gewicht schwerer sein — gemessen über
+die sechs Tabellen in Band 9: 28 bis 34 Wörter. Die Prosa bleibt damit für
+JEDE Einheit bei 392 (gemessen: 370 bis 386 ohne die Tabelle). Wer die Zulage
+stattdessen auf den ganzen Band schlüge, gäbe den Einheiten OHNE Tabelle
+34 Wörter mehr Prosa, ohne dass dort etwas dazugekommen wäre.
 
 Der Umfangskorridor hängt an ZWEI Zahlen: der Zahl der Doppelseiten **und**
 ihrem Gewicht. Gemessen: Heft 7 liegt bei Median **363** Wörtern je

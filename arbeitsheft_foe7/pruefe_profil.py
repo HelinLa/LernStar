@@ -53,6 +53,17 @@ CMAP = _schriftzeichen()
 # verfehlt. Das Gewicht wird deshalb gemessen und ausgewiesen, nicht geschaetzt.
 # BUDGET ist die Obergrenze, ab der eine Seite gemeldet wird; None = nur messen.
 BUDGET = None
+#
+# ZULAGE FUER DIE RECHENTABELLE (17.09.2026, nach demselben Verfahren): Eine
+# Einheit MIT Rechentabelle darf um deren gemessenes Gewicht schwerer sein -
+# und nur darum. GEMESSEN ueber die sechs Tabellen in Band 9: 28 bis 34
+# Woerter. Genommen wird das schwerste, nicht der Median: Die Zulage soll jede
+# vertretbare Tabelle tragen, aber keine zweite Textspalte durchlassen.
+# Die Prosa bleibt damit fuer JEDE Einheit bei 392 - auch fuer die sechs mit
+# Tabelle (gemessen: 370 bis 386 ohne sie). Wer die Zulage einfach auf den Band
+# schlagen wuerde, gaebe den 19 Einheiten OHNE Tabelle 34 Woerter mehr Prosa,
+# ohne dass dort etwas dazugekommen waere.
+BUDGET_RECHNEN = 34
 _OHNE = ("bildauftrag", "id", "sim", "quelle", "theme", "sicherheit")
 
 def wortgewicht(seite):
@@ -84,6 +95,121 @@ def _texte(obj):
         for v in obj.values(): yield from _texte(v)
     elif isinstance(obj, list):
         for v in obj: yield from _texte(v)
+
+
+# ── Rechentabelle: geht die Rechnung ueberhaupt auf? ─────────────────
+# Eine Zahlentabelle ist der einzige Ort im Heft, an dem ein Tippfehler NICHT
+# auffaellt: "5 · 9,8 = 48 N" liest sich genau wie die richtige Zeile. Deshalb
+# wird jede Zeile nachgerechnet, die vorgerechnete des Schuelerhefts wie die
+# erwarteten des Lehrerteils.
+_RECHNUNG = re.compile(r"\s*(-?\d+(?:,\d+)?)\s*([·×*:÷/+–−-])\s*(-?\d+(?:,\d+)?)\s*\Z")
+
+
+def _zahl(text):
+    """Erste Zahl in deutscher Schreibweise („19,6 N" → 19.6)."""
+    m = re.search(r"-?\d+(?:,\d+)?", (text or "").replace("\u00a0", " "))
+    return float(m.group(0).replace(",", ".")) if m else None
+
+
+def _stellen(text):
+    """Nachkommastellen, mit denen ein Wert GEDRUCKT ist („9,80 N" → 2)."""
+    m = re.search(r"-?\d+(?:,(\d+))?", (text or "").replace("\u00a0", " "))
+    return len(m.group(1)) if (m and m.group(1)) else 0
+
+
+def _rechnet(text):
+    """„2 · 9,8" → 19.6 · „1962 : 5" → 392.4 · „3 + 2" → 5. Sonst None."""
+    m = _RECHNUNG.match((text or "").replace("\u00a0", " "))
+    if not m:
+        return None
+    a = float(m.group(1).replace(",", ".")); b = float(m.group(3).replace(",", "."))
+    op = m.group(2)
+    if op in "·×*":  return a * b
+    if op in ":÷/":  return (a / b) if b else None
+    if op == "+":    return a + b
+    return a - b     # –, −, -
+
+
+def _operanden(text):
+    """Die beiden Zahlen einer Rechnung. Leer, wenn es keine ist."""
+    m = _RECHNUNG.match((text or "").replace("\u00a0", " "))
+    if not m:
+        return []
+    return [float(m.group(1).replace(",", ".")), float(m.group(3).replace(",", "."))]
+
+
+def pruefe_rechentabelle(s, l):
+    """Die OPTIONALE Rechentabelle auf Seite B (Abdullah, 17.09.2026).
+
+    Sie ist kein vierter Aufgabenblock, sondern der Drill zum geloesten
+    Beispiel: Zeile 1 ist vorgerechnet und getoent, die uebrigen Zeilen geben
+    nur den Startwert vor. Geprueft wird die FORM (Rendervertrag: genau drei
+    Spalten) und die RECHNUNG (jede Zeile muss aufgehen).
+    """
+    f = []
+    rt = s.get("rechnen")
+    if not rt:
+        if l.get("rechnen_erwartet"):
+            f.append("Lehrerteil hat rechnen_erwartet, die Schülerseite aber keine Rechentabelle")
+        return f
+
+    if not rt.get("hinweis"):
+        f.append("Rechentabelle braucht einen Hinweis (womit gerechnet wird)")
+    sp = rt.get("spalten", [])
+    if len(sp) != 3:
+        f.append(f"Rechentabelle hat {len(sp)} Spalten (der Renderer setzt GENAU 3)")
+    zl = [list(r) for r in rt.get("zeilen", [])]
+    if not (3 <= len(zl) <= 5):
+        f.append(f"Rechentabelle hat {len(zl)} Zeilen (erlaubt 3–5: 1 vorgerechnete + 2–4 offene)")
+    if not zl:
+        return f
+    if any(len(r) != 3 for r in zl):
+        f.append("Jede Zeile der Rechentabelle braucht genau 3 Zellen")
+        return f
+
+    # Zeile 1 ist die vorgerechnete - ohne sie faengt ein Foerderlernender bei
+    # einer leeren Tabelle gar nicht erst an.
+    if any(not z.strip() for z in zl[0]):
+        f.append("Zeile 1 der Rechentabelle muss VOLLSTÄNDIG vorgerechnet sein")
+    # Alle uebrigen geben nur den Startwert vor.
+    for i, r in enumerate(zl[1:], 2):
+        if not r[0].strip():
+            f.append(f"Rechentabelle Zeile {i}: die erste Zelle gibt den Wert vor und darf nicht leer sein")
+        if r[1].strip() or r[2].strip():
+            f.append(f"Rechentabelle Zeile {i}: Rechnung und Ergebnis bleiben leer, das Kind rechnet sie")
+
+    offen = [r[0] for r in zl[1:]]
+    erw = [list(r) for r in l.get("rechnen_erwartet", [])]
+    if [r[0] for r in erw] != offen:
+        f.append(f"Lehrerteil: rechnen_erwartet deckt {[r[0] for r in erw]} statt der offenen Zeilen {offen}")
+    if any(len(r) != 3 or any(not z.strip() for z in r) for r in erw):
+        f.append("Lehrerteil: jede Zeile in rechnen_erwartet ist vollständig ausgefüllt")
+        erw = []
+
+    # ── Die Rechnung muss aufgehen ──────────────────────────────────
+    for wo, r in [("Schülerseite, Zeile 1", zl[0])] + \
+                 [(f"Lehrerteil, Zeile {i}", r) for i, r in enumerate(erw, 2)]:
+        vorgabe, rechnung, ergebnis = _zahl(r[0]), r[1], _zahl(r[2])
+        wert = _rechnet(rechnung)
+        if wert is None:
+            f.append(f"Rechentabelle ({wo}): „{rechnung}“ ist keine nachrechenbare Rechnung "
+                     f"(erlaubt: Zahl · Zahl, Zahl : Zahl, Zahl + Zahl, Zahl – Zahl)")
+            continue
+        # Der Wert der ersten Spalte muss in der Rechnung VORKOMMEN - aber
+        # nicht zwingend vorn: Bei P = W / t steht die vorgegebene Zeit hinten
+        # („1962 : 5"), bei F = m · g die vorgegebene Masse vorn („2 · 9,8").
+        # Der Riegel faengt den Fall, auf den es ankommt: eine Zeile, die etwas
+        # anderes rechnet, als sie vorgibt.
+        opn = _operanden(rechnung)
+        if vorgabe is not None and opn and not any(abs(o - vorgabe) < 1e-9 for o in opn):
+            f.append(f"Rechentabelle ({wo}): die Zeile gibt {vorgabe:g} vor, "
+                     f"die Rechnung „{rechnung.strip()}“ benutzt den Wert aber nicht")
+        if ergebnis is None:
+            f.append(f"Rechentabelle ({wo}): im Ergebnis steht keine Zahl")
+        elif abs(round(wert, _stellen(r[2])) - ergebnis) > 1e-9:
+            f.append(f"Rechentabelle ({wo}): {rechnung} ergibt {round(wert, _stellen(r[2])):g}, "
+                     f"gedruckt steht {ergebnis:g}")
+    return f
 
 
 def pruefe(einheit):
@@ -220,6 +346,7 @@ def pruefe(einheit):
         f.append(f"Lehrerteil: tabelle_erwartet deckt {erwartete} statt der offenen Zeilen {offene}")
     if len(l.get("schwache", [])) < 3:
         f.append("Lehrerteil: mindestens 3 Hinweise für besonders schwache Lernende")
+    f += pruefe_rechentabelle(s, l)
     return eid, f
 
 
@@ -266,6 +393,65 @@ def selbsttest(gut):
         # Kaputt-Probe Schrift: ein Knopfname mit Zierziffer, wie ihn die
         # Simulationen wirklich tragen - muss als undruckbar auffallen.
         kaputt(("seite", "frage"), "Drücke „➊ ganz klein“ und lies ab.", "fehlt in der Schrift")
+    # ── Rechentabelle (seit 17.09.2026) ──────────────────────────────
+    # Sie ist OPTIONAL, die gute Probe hat also keine. Deshalb bekommt sie hier
+    # eine eingesetzt - erst eine richtige, die durchgehen MUSS, dann sechs
+    # kaputte. Ohne die richtige Probe wuesste niemand, ob der Riegel nicht
+    # einfach alles meldet.
+    GUTE_TABELLE = {
+        "hinweis": "Rechne mit g = 9,8 N/kg.",
+        "spalten": ["Masse m", "Rechnung", "Gewichtskraft F"],
+        "zeilen": [["1 kg", "1 · 9,8", "9,8 N"], ["2 kg", "", ""], ["10 kg", "", ""]],
+    }
+    GUTE_LOESUNG = [["2 kg", "2 · 9,8", "19,6 N"], ["10 kg", "10 · 9,8", "98 N"]]
+
+    def mit_tabelle(tab, loes):
+        k = copy.deepcopy(gut)
+        k["seite"]["rechnen"] = copy.deepcopy(tab)
+        k["lehrer"]["rechnen_erwartet"] = copy.deepcopy(loes)
+        return k
+
+    _, bef = pruefe(mit_tabelle(GUTE_TABELLE, GUTE_LOESUNG))
+    rt_bef = [b for b in bef if "Rechentabelle" in b or "rechnen_erwartet" in b]
+    if rt_bef:
+        fehler.append(f"GUTE Rechentabelle fiel durch: {rt_bef}")
+
+    def tab_kaputt(was, tab, loes, muss):
+        proben[0] += 1
+        _, bef = pruefe(mit_tabelle(tab, loes))
+        if not any(muss in b for b in bef):
+            fehler.append(f"Kaputt-Probe Rechentabelle ({was}) → erwartete Meldung "
+                          f"„{muss}“ kam nicht (Befunde: {bef})")
+
+    def mit(**aend):
+        t = copy.deepcopy(GUTE_TABELLE); t.update(aend); return t
+
+    # DER Fall, für den es den Riegel gibt: ein falsches Produkt sieht aus wie
+    # ein richtiges. 10 · 9,8 sind 98, nicht 89.
+    tab_kaputt("falsches Produkt im Lehrerteil", GUTE_TABELLE,
+               [["2 kg", "2 · 9,8", "19,6 N"], ["10 kg", "10 · 9,8", "89 N"]],
+               "ergibt 98")
+    tab_kaputt("falsches Produkt in der vorgerechneten Zeile",
+               mit(zeilen=[["1 kg", "1 · 9,8", "8,9 N"], ["2 kg", "", ""], ["10 kg", "", ""]]),
+               GUTE_LOESUNG, "ergibt 9,8" .replace(",", "."))
+    # Die Rechnung muss mit dem Wert anfangen, den die Zeile vorgibt.
+    tab_kaputt("Rechnung benutzt einen anderen Wert", GUTE_TABELLE,
+               [["2 kg", "3 · 9,8", "29,4 N"], ["10 kg", "10 · 9,8", "98 N"]],
+               "die Zeile gibt 2 vor")
+    # Eine vorausgefuellte Antwortzelle nimmt dem Kind genau die Aufgabe weg.
+    tab_kaputt("Antwortzelle schon gefüllt",
+               mit(zeilen=[["1 kg", "1 · 9,8", "9,8 N"], ["2 kg", "2 · 9,8", "19,6 N"], ["10 kg", "", ""]]),
+               GUTE_LOESUNG, "bleiben leer")
+    # Ohne vorgerechnete Zeile faengt ein Foerderlernender nicht an.
+    tab_kaputt("erste Zeile nicht vorgerechnet",
+               mit(zeilen=[["1 kg", "", ""], ["2 kg", "", ""], ["10 kg", "", ""]]),
+               [["1 kg", "1 · 9,8", "9,8 N"]] + GUTE_LOESUNG, "VOLLSTÄNDIG vorgerechnet")
+    # Der Renderer setzt genau drei Spalten.
+    tab_kaputt("vier Spalten", mit(spalten=["a", "b", "c", "d"]), GUTE_LOESUNG,
+               "GENAU 3")
+    # Ein Lehrerteil, der andere Zeilen loest als das Heft stellt.
+    tab_kaputt("Lehrerteil deckt die falschen Zeilen", GUTE_TABELLE,
+               [["2 kg", "2 · 9,8", "19,6 N"]], "statt der offenen Zeilen")
     return fehler, proben[0]
 
 
@@ -293,14 +479,18 @@ if __name__ == "__main__":
     gew = []
     for eid in ids:
         e = json.load(open(os.path.join(HERE, "einheiten", eid + ".json"), encoding="utf-8"))
-        gew.append((wortgewicht(e["seite"]), eid))
+        gew.append((wortgewicht(e["seite"]), eid, bool(e["seite"].get("rechnen"))))
     if gew:
         gew.sort()
         med = gew[len(gew)//2][0]
-        ueber = [f"{e} ({w})" for w, e in gew if BUDGET and w > BUDGET]
+        ueber = [f"{e} ({w})" for w, e, rt in gew
+                 if BUDGET and w > BUDGET + (BUDGET_RECHNEN if rt else 0)]
+        n_rt = sum(1 for _w, _e, rt in gew if rt)
         print(f"\nWortgewicht: Median {med} · leichteste {gew[0][1]} ({gew[0][0]}) · "
               f"schwerste {gew[-1][1]} ({gew[-1][0]})"
               + (f" · Budget {BUDGET}" if BUDGET else ""))
+        if n_rt:
+            print(f"  davon {n_rt} mit Rechentabelle (Budget dort {BUDGET + BUDGET_RECHNEN})")
         if ueber:
             print("  über dem Budget:", ", ".join(ueber))
             gesamt += len(ueber)

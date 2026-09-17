@@ -22,9 +22,9 @@
   "predictOk": 2,
   "forschen": [
    "Wähle „weiche Feder“. Drücke „+ 100 g“.",
-   "Lies ab: Wie viel Newton sind das? Wie weit dehnt sich die Feder? Trage es ein.",
-   "Drücke „+ 100 g“ noch einmal. Lies wieder ab und trage es ein.",
-   "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Lies ab und füll die letzte Zeile."
+   "Lies ab: Wie viel Newton? Wie weit dehnt sich die Feder? Trage es ein.",
+   "Drücke „+ 100 g“ noch einmal. Trage wieder ein.",
+   "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Füll die letzte Zeile."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
   "tabCols": [

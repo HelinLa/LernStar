@@ -121,7 +121,37 @@
    "Ich kann erklären, warum 2 kg nicht 2 N sind."
   ],
   "zuhause": "Sieh auf einer Packung Mehl nach. Dort steht die Masse in Kilogramm.",
-  "bildauftrag": "[BILD: einfacher Tisch von vorn, zwei Messungen nebeneinander, derselbe graue Metallklotz: links liegt der Klotz auf einer Waage, deren Anzeige groß „1 kg“ zeigt; rechts hängt derselbe Klotz an einem Federkraftmesser, dessen Skala groß „9,8 N“ zeigt; ein dicker Pfeil zwischen beiden mit der Beschriftung „derselbe Körper“; große Beschriftungen „Waage: Masse“ und „Kraftmesser: Gewichtskraft“; ruhiger heller Hintergrund, keine Personen, keine weiteren Gegenstände]"
+  "bildauftrag": "[BILD: einfacher Tisch von vorn, zwei Messungen nebeneinander, derselbe graue Metallklotz: links liegt der Klotz auf einer Waage, deren Anzeige groß „1 kg“ zeigt; rechts hängt derselbe Klotz an einem Federkraftmesser, dessen Skala groß „9,8 N“ zeigt; ein dicker Pfeil zwischen beiden mit der Beschriftung „derselbe Körper“; große Beschriftungen „Waage: Masse“ und „Kraftmesser: Gewichtskraft“; ruhiger heller Hintergrund, keine Personen, keine weiteren Gegenstände]",
+  "rechnen": {
+   "hinweis": "Rechne mit g = 9,8 N/kg. Zeile 1 ist vorgerechnet.",
+   "spalten": [
+    "Masse m",
+    "Rechnung",
+    "Gewichtskraft F"
+   ],
+   "zeilen": [
+    [
+     "1 kg",
+     "1 · 9,8",
+     "9,8 N"
+    ],
+    [
+     "3 kg",
+     "",
+     ""
+    ],
+    [
+     "5 kg",
+     "",
+     ""
+    ],
+    [
+     "10 kg",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  "lehrer": {
   "id": "fk4",
@@ -191,6 +221,23 @@
    "Aufgabe 2 zuerst nur mündlich lösen und den Wert 19,6 N am Bildschirm gegenprüfen, dann erst schreiben."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke „200 g“ und „500 g“ und schreibe die beiden Gewichtskräfte aus der Statuszeile auf (2,0 N und 4,9 N). Nur ablesen, nicht rechnen.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse und Gewichtskraft. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Drei Hinweise für die Lehrkraft: (1) Der Seitenplan führt die Größe als F_G; der Bildschirm schreibt durchgehend F, deshalb steht im Heft F. Neu ist hier nur die Größe selbst — die Einheit Newton (N) wurde bereits in fk2 eingeführt. (2) Das Formelzeichen g bekommt hier bewusst noch keinen Namen; der Ortsfaktor gehört zu fk5, in dieser Simulation ist g = 9,8 N/kg. (3) druck-flaeche, schweredruck, dichte und auftrieb rechnen dagegen mit 9,81 N/kg; deren Seiten fk11 bis fk14 nennen g gar nicht, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Werte 100 g, 200 g und 500 g werden nur abgelesen, nie nachgerechnet: Die Umrechnung 100 g = 0,1 kg steht nirgends am Bildschirm."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse und Gewichtskraft. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Drei Hinweise für die Lehrkraft: (1) Der Seitenplan führt die Größe als F_G; der Bildschirm schreibt durchgehend F, deshalb steht im Heft F. Neu ist hier nur die Größe selbst — die Einheit Newton (N) wurde bereits in fk2 eingeführt. (2) Das Formelzeichen g bekommt hier bewusst noch keinen Namen; der Ortsfaktor gehört zu fk5, in dieser Simulation ist g = 9,8 N/kg. (3) druck-flaeche, schweredruck, dichte und auftrieb rechnen dagegen mit 9,81 N/kg; deren Seiten fk11 bis fk14 nennen g gar nicht, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Werte 100 g, 200 g und 500 g werden nur abgelesen, nie nachgerechnet: Die Umrechnung 100 g = 0,1 kg steht nirgends am Bildschirm.",
+  "rechnen_erwartet": [
+   [
+    "3 kg",
+    "3 · 9,8",
+    "29,4 N"
+   ],
+   [
+    "5 kg",
+    "5 · 9,8",
+    "49 N"
+   ],
+   [
+    "10 kg",
+    "10 · 9,8",
+    "98 N"
+   ]
+  ]
  }
 }

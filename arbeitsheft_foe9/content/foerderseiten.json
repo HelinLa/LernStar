@@ -268,9 +268,9 @@
   "predictOk": 2,
   "forschen": [
    "Wähle „weiche Feder“. Drücke „+ 100 g“.",
-   "Lies ab: Wie viel Newton sind das? Wie weit dehnt sich die Feder? Trage es ein.",
-   "Drücke „+ 100 g“ noch einmal. Lies wieder ab und trage es ein.",
-   "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Lies ab und füll die letzte Zeile."
+   "Lies ab: Wie viel Newton? Wie weit dehnt sich die Feder? Trage es ein.",
+   "Drücke „+ 100 g“ noch einmal. Trage wieder ein.",
+   "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Füll die letzte Zeile."
   ],
   "ersatz": "Wenn die Simulation nicht geht, zeigt dir deine Lehrkraft die drei Ergebnisse.",
   "tabCols": [
@@ -488,7 +488,37 @@
    "Ich kann erklären, warum 2 kg nicht 2 N sind."
   ],
   "zuhause": "Sieh auf einer Packung Mehl nach. Dort steht die Masse in Kilogramm.",
-  "bildauftrag": "[BILD: einfacher Tisch von vorn, zwei Messungen nebeneinander, derselbe graue Metallklotz: links liegt der Klotz auf einer Waage, deren Anzeige groß „1 kg“ zeigt; rechts hängt derselbe Klotz an einem Federkraftmesser, dessen Skala groß „9,8 N“ zeigt; ein dicker Pfeil zwischen beiden mit der Beschriftung „derselbe Körper“; große Beschriftungen „Waage: Masse“ und „Kraftmesser: Gewichtskraft“; ruhiger heller Hintergrund, keine Personen, keine weiteren Gegenstände]"
+  "bildauftrag": "[BILD: einfacher Tisch von vorn, zwei Messungen nebeneinander, derselbe graue Metallklotz: links liegt der Klotz auf einer Waage, deren Anzeige groß „1 kg“ zeigt; rechts hängt derselbe Klotz an einem Federkraftmesser, dessen Skala groß „9,8 N“ zeigt; ein dicker Pfeil zwischen beiden mit der Beschriftung „derselbe Körper“; große Beschriftungen „Waage: Masse“ und „Kraftmesser: Gewichtskraft“; ruhiger heller Hintergrund, keine Personen, keine weiteren Gegenstände]",
+  "rechnen": {
+   "hinweis": "Rechne mit g = 9,8 N/kg. Zeile 1 ist vorgerechnet.",
+   "spalten": [
+    "Masse m",
+    "Rechnung",
+    "Gewichtskraft F"
+   ],
+   "zeilen": [
+    [
+     "1 kg",
+     "1 · 9,8",
+     "9,8 N"
+    ],
+    [
+     "3 kg",
+     "",
+     ""
+    ],
+    [
+     "5 kg",
+     "",
+     ""
+    ],
+    [
+     "10 kg",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fk5",
@@ -611,7 +641,32 @@
    "Ich kann sagen, warum die Gewichtskraft auf dem Mond kleiner ist."
   ],
   "zuhause": "Halte eine Packung Zucker mit 1 kg in der Hand. Auf dem Mond bleibt die Masse 1 kg.",
-  "bildauftrag": "[BILD: drei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund: links Mondboden, Mitte Erdboden, rechts Jupiter-Wolkenboden. In jedem Feld steht dieselbe Person aufrecht, gleiche Größe, gleiche Kleidung, mit der großen Beschriftung „m = 60 kg“ über dem Kopf. Unter jeder Person ein einzelner dicker Pfeil senkrecht nach unten, alle drei gleich dick, aber unterschiedlich lang: links kurz mit „F = 96 N“, Mitte mittel mit „F = 588 N“, rechts sehr lang mit „F = 1488 N“. Über jedem Feld groß der Ort und der Ortsfaktor: „Mond · g = 1,6 N/kg“, „Erde · g = 9,8 N/kg“, „Jupiter · g = 24,8 N/kg“. Nur diese drei Pfeile, keine weiteren Pfeile, keine Sterne, keine Rakete, keine Deko]"
+  "bildauftrag": "[BILD: drei gleich große Bildfelder nebeneinander, gleicher heller Hintergrund: links Mondboden, Mitte Erdboden, rechts Jupiter-Wolkenboden. In jedem Feld steht dieselbe Person aufrecht, gleiche Größe, gleiche Kleidung, mit der großen Beschriftung „m = 60 kg“ über dem Kopf. Unter jeder Person ein einzelner dicker Pfeil senkrecht nach unten, alle drei gleich dick, aber unterschiedlich lang: links kurz mit „F = 96 N“, Mitte mittel mit „F = 588 N“, rechts sehr lang mit „F = 1488 N“. Über jedem Feld groß der Ort und der Ortsfaktor: „Mond · g = 1,6 N/kg“, „Erde · g = 9,8 N/kg“, „Jupiter · g = 24,8 N/kg“. Nur diese drei Pfeile, keine weiteren Pfeile, keine Sterne, keine Rakete, keine Deko]",
+  "rechnen": {
+   "hinweis": "Eine Kiste hat m = 10 kg. Rechne F = m · g.",
+   "spalten": [
+    "Wo bist du?",
+    "Rechnung",
+    "Kraft F"
+   ],
+   "zeilen": [
+    [
+     "Erde  9,8 N/kg",
+     "10 · 9,8",
+     "98 N"
+    ],
+    [
+     "Mond  1,6 N/kg",
+     "",
+     ""
+    ],
+    [
+     "Jupiter  24,8 N/kg",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fk6",
@@ -860,7 +915,37 @@
    "Ich kann sagen, wohin die Gesamtkraft zeigt."
   ],
   "zuhause": "Zieht zu zweit einen Karton: erst beide nach rechts, dann gegeneinander. Schreibe auf, was leichter geht.",
-  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleich große Bildhälften nebeneinander, durch einen dünnen senkrechten Strich getrennt. Beide Hälften zeigen denselben grauen Kasten auf derselben waagerechten Linie – nur diese eine Linie, keine schrägen Pfeile. LINKS: ein roter Pfeil startet am Kasten und zeigt nach rechts, beschriftet „F1 = 3 N“; direkt darunter ein kürzerer roter Pfeil, ebenfalls nach rechts, beschriftet „F2 = 2 N“; darunter ein langer grüner Pfeil nach rechts mit der großen Beschriftung „Gesamtkraft 5 N nach rechts“. RECHTS: derselbe Kasten, ein roter Pfeil nach LINKS mit „F1 = 3 N“, darunter ein kürzerer roter Pfeil nach RECHTS mit „F2 = 2 N“, darunter ein sehr kurzer grüner Pfeil nach links mit der großen Beschriftung „Gesamtkraft 1 N nach links“. Über der linken Hälfte steht groß „gleiche Richtung: addieren“, über der rechten „gegeneinander: abziehen“. Alle roten Pfeile beginnen am Kasten, die grünen Pfeile stehen frei darunter. Keine weiteren Pfeile, keine Nebenbilder, keine Deko, ruhiger heller Hintergrund]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Tafelbild, zwei gleich große Bildhälften nebeneinander, durch einen dünnen senkrechten Strich getrennt. Beide Hälften zeigen denselben grauen Kasten auf derselben waagerechten Linie – nur diese eine Linie, keine schrägen Pfeile. LINKS: ein roter Pfeil startet am Kasten und zeigt nach rechts, beschriftet „F1 = 3 N“; direkt darunter ein kürzerer roter Pfeil, ebenfalls nach rechts, beschriftet „F2 = 2 N“; darunter ein langer grüner Pfeil nach rechts mit der großen Beschriftung „Gesamtkraft 5 N nach rechts“. RECHTS: derselbe Kasten, ein roter Pfeil nach LINKS mit „F1 = 3 N“, darunter ein kürzerer roter Pfeil nach RECHTS mit „F2 = 2 N“, darunter ein sehr kurzer grüner Pfeil nach links mit der großen Beschriftung „Gesamtkraft 1 N nach links“. Über der linken Hälfte steht groß „gleiche Richtung: addieren“, über der rechten „gegeneinander: abziehen“. Alle roten Pfeile beginnen am Kasten, die grünen Pfeile stehen frei darunter. Keine weiteren Pfeile, keine Nebenbilder, keine Deko, ruhiger heller Hintergrund]",
+  "rechnen": {
+   "hinweis": "„und“ heißt plus. „gegen“ heißt minus.",
+   "spalten": [
+    "Zwei Kräfte",
+    "Rechnung",
+    "Gesamtkraft"
+   ],
+   "anteile": [
+    0.3,
+    0.36,
+    0.34
+   ],
+   "zeilen": [
+    [
+     "4 N und 3 N",
+     "4 + 3",
+     "7 N"
+    ],
+    [
+     "6 N und 2 N",
+     "",
+     ""
+    ],
+    [
+     "6 N gegen 2 N",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fk8",
@@ -1865,7 +1950,32 @@
    "Ich kann erklären, warum Tragen keine Arbeit ist."
   ],
   "zuhause": "Trage eine Tasche durch den Flur und die Treppe hinauf. Wo verrichtest du Arbeit?",
-  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht auf einen Schulhof. Linke Hälfte, große Überschrift „Schieben“: ein Jugendlicher schiebt eine Holzkiste über den Boden nach rechts; ein dicker roter Pfeil an der Kiste zeigt nach rechts und ist mit „Kraft F“ beschriftet, darunter ein gleich langer blauer Pfeil am Boden nach rechts mit „Weg s“. Unter der Hälfte groß: „400 J“. Rechte Hälfte, große Überschrift „Waagerecht tragen“: derselbe Jugendliche trägt dieselbe Kiste vor dem Bauch und geht nach rechts; der rote Pfeil „Kraft F“ zeigt hier deutlich nach OBEN, der blaue Pfeil „Weg s“ am Boden weiter nach rechts. Unter der Hälfte groß: „0 J“. Genau diese vier Pfeile, keine weiteren Pfeile, keine Zerlegung in Teilkräfte, keine Winkelbögen. Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Hälften nebeneinander, gleicher Bildausschnitt, Seitenansicht auf einen Schulhof. Linke Hälfte, große Überschrift „Schieben“: ein Jugendlicher schiebt eine Holzkiste über den Boden nach rechts; ein dicker roter Pfeil an der Kiste zeigt nach rechts und ist mit „Kraft F“ beschriftet, darunter ein gleich langer blauer Pfeil am Boden nach rechts mit „Weg s“. Unter der Hälfte groß: „400 J“. Rechte Hälfte, große Überschrift „Waagerecht tragen“: derselbe Jugendliche trägt dieselbe Kiste vor dem Bauch und geht nach rechts; der rote Pfeil „Kraft F“ zeigt hier deutlich nach OBEN, der blaue Pfeil „Weg s“ am Boden weiter nach rechts. Unter der Hälfte groß: „0 J“. Genau diese vier Pfeile, keine weiteren Pfeile, keine Zerlegung in Teilkräfte, keine Winkelbögen. Ruhiger heller Hintergrund, keine weiteren Personen, keine Deko.]",
+  "rechnen": {
+   "hinweis": "Rechne W = F · s in Joule (J).",
+   "spalten": [
+    "Kraft und Weg",
+    "Rechnung",
+    "Arbeit W"
+   ],
+   "zeilen": [
+    [
+     "100 N, 4 m",
+     "100 · 4",
+     "400 J"
+    ],
+    [
+     "100 N, 6 m",
+     "",
+     ""
+    ],
+    [
+     "50 N, 4 m",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fe2",
@@ -2474,7 +2584,32 @@
    "Ich weiß, was bei halber Zeit passiert."
   ],
   "zuhause": "Laufe eine Treppe hinauf. Die Höhe sagt deine Lehrkraft. Stoppe deine Zeit.",
-  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In beiden Feldern hängt dieselbe Kiste an einem Seil über einer Bühnenkante und ist gleich hoch gezogen; eine dünne waagerechte Linie auf gleicher Höhe in beiden Feldern zeigt, dass die Höhe wirklich dieselbe ist, daneben groß „h = 4 m“ und an der Kiste „50 kg“. Feld 1 oben groß „in 10 s“, Feld 2 oben groß „in 5 s“. In BEIDEN Feldern steht unten dieselbe Zeile „Arbeit W = 1962 J“, in Feld 1 darunter „Leistung P = 196 W“, in Feld 2 darunter „Leistung P = 392 W“. In Feld 1 zieht Jannis am Seil, in Feld 2 Nour, beide vierzehn, in Arbeitskleidung. KEINE Kraftpfeile, keine Bewegungslinien, keine zweite Kiste je Feld, keine Uhr als Zusatzbild, keine PS- oder kW-Angaben. Unter den beiden Feldern eine gemeinsame große Zeile: „halbe Zeit – doppelte Leistung, gleiche Arbeit“ und darunter kleiner der Hinweis „das W hinter der Zahl heißt Watt“. Ruhiger heller Hintergrund ohne Deko.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht. In beiden Feldern hängt dieselbe Kiste an einem Seil über einer Bühnenkante und ist gleich hoch gezogen; eine dünne waagerechte Linie auf gleicher Höhe in beiden Feldern zeigt, dass die Höhe wirklich dieselbe ist, daneben groß „h = 4 m“ und an der Kiste „50 kg“. Feld 1 oben groß „in 10 s“, Feld 2 oben groß „in 5 s“. In BEIDEN Feldern steht unten dieselbe Zeile „Arbeit W = 1962 J“, in Feld 1 darunter „Leistung P = 196 W“, in Feld 2 darunter „Leistung P = 392 W“. In Feld 1 zieht Jannis am Seil, in Feld 2 Nour, beide vierzehn, in Arbeitskleidung. KEINE Kraftpfeile, keine Bewegungslinien, keine zweite Kiste je Feld, keine Uhr als Zusatzbild, keine PS- oder kW-Angaben. Unter den beiden Feldern eine gemeinsame große Zeile: „halbe Zeit – doppelte Leistung, gleiche Arbeit“ und darunter kleiner der Hinweis „das W hinter der Zahl heißt Watt“. Ruhiger heller Hintergrund ohne Deko.]",
+  "rechnen": {
+   "hinweis": "Die Arbeit ist immer W = 1962 J. Rechne P = W : t.",
+   "spalten": [
+    "Zeit t",
+    "Rechnung",
+    "Leistung P"
+   ],
+   "zeilen": [
+    [
+     "10 s",
+     "1962 : 10",
+     "196 W"
+    ],
+    [
+     "2 s",
+     "",
+     ""
+    ],
+    [
+     "20 s",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fe7",
@@ -2852,7 +2987,37 @@
    "Ich kann erklären, warum die Arbeit gleich bleibt."
   ],
   "zuhause": "Zähle die Seilstücke am Baukran. Ein Foto davon reicht auch. Schreibe die Zahl auf.",
-  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht, heller ruhiger Hintergrund ohne Deko. Links: eine einzelne Rolle hängt fest an einem waagerechten Traversenrohr, das Seil läuft über die Rolle, unten links hängt ein Klavier an EINEM Seilstück, rechts zieht eine Hand am freien Ende nach unten. Über dem Feld groß „1 Seilstück – feste Rolle“, darunter groß „F = 600,0 N“ und „s = 2,0 m“. Rechts: das Klavier hängt an einer Rolle, die im Seil hängt und mitwandert; ZWEI senkrechte Seilstücke gehen von dieser unteren Rolle nach oben, beide deutlich grün eingefärbt und mit „1“ und „2“ beschriftet; Seilstück „1“ endet oben am Rohr und ist dort festgeknotet, Seilstück „2“ läuft am Rohr vorbei nach oben zu einer Hand, die am freien Ende nach oben zieht. Über dem Feld groß „2 Seilstücke – lose Rolle“, darunter groß „F = 300,0 N“ und „s = 4,0 m“. In beiden Feldern dieselbe Höhenmarke am Klavier mit „2,0 m“ beschriftet, damit die gleiche Hubhöhe erkennbar bleibt. Unter beiden Feldern eine gemeinsame große Zeile: „beide Male dieselbe Arbeit: 1200,0 J“. KEINE Kraftpfeile, keine Bewegungslinien, keine dritte Rolle, keine Personen außer den beiden Händen, keine Zahlenmenge über die genannten Beschriftungen hinaus.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht, heller ruhiger Hintergrund ohne Deko. Links: eine einzelne Rolle hängt fest an einem waagerechten Traversenrohr, das Seil läuft über die Rolle, unten links hängt ein Klavier an EINEM Seilstück, rechts zieht eine Hand am freien Ende nach unten. Über dem Feld groß „1 Seilstück – feste Rolle“, darunter groß „F = 600,0 N“ und „s = 2,0 m“. Rechts: das Klavier hängt an einer Rolle, die im Seil hängt und mitwandert; ZWEI senkrechte Seilstücke gehen von dieser unteren Rolle nach oben, beide deutlich grün eingefärbt und mit „1“ und „2“ beschriftet; Seilstück „1“ endet oben am Rohr und ist dort festgeknotet, Seilstück „2“ läuft am Rohr vorbei nach oben zu einer Hand, die am freien Ende nach oben zieht. Über dem Feld groß „2 Seilstücke – lose Rolle“, darunter groß „F = 300,0 N“ und „s = 4,0 m“. In beiden Feldern dieselbe Höhenmarke am Klavier mit „2,0 m“ beschriftet, damit die gleiche Hubhöhe erkennbar bleibt. Unter beiden Feldern eine gemeinsame große Zeile: „beide Male dieselbe Arbeit: 1200,0 J“. KEINE Kraftpfeile, keine Bewegungslinien, keine dritte Rolle, keine Personen außer den beiden Händen, keine Zahlenmenge über die genannten Beschriftungen hinaus.]",
+  "rechnen": {
+   "hinweis": "Die Last ist G = 1200 N. Rechne F = G : n.",
+   "spalten": [
+    "Tragende Seile n",
+    "Rechnung",
+    "Zugkraft F"
+   ],
+   "zeilen": [
+    [
+     "1 Seil",
+     "1200 : 1",
+     "1200 N"
+    ],
+    [
+     "2 Seile",
+     "",
+     ""
+    ],
+    [
+     "4 Seile",
+     "",
+     ""
+    ],
+    [
+     "6 Seile",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fe10",

@@ -81,19 +81,19 @@
   ],
   "tabelle_erwartet": [
    [
-    "Feder leeren",
+    "0 g",
     "F = 0 N",
     "entspannt"
    ],
    [
-    "ein Gewicht anhängen",
-    "F = 1 N",
-    "um 1 cm gedehnt"
+    "100 g",
+    "F = 0,98 N",
+    "um 0,98 cm gedehnt"
    ],
    [
-    "das Gewicht abnehmen",
-    "F = 0 N",
-    "entspannt"
+    "200 g",
+    "F = 1,96 N",
+    "um 1,96 cm gedehnt"
    ]
   ],
   "a1": {
@@ -283,7 +283,24 @@
    "Aufgabe 2 zuerst nur mündlich lösen und den Wert 19,6 N am Bildschirm gegenprüfen, dann erst schreiben."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke „200 g“ und „500 g“ und schreibe die beiden Gewichtskräfte aus der Statuszeile auf (2,0 N und 4,9 N). Nur ablesen, nicht rechnen.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse und Gewichtskraft. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Drei Hinweise für die Lehrkraft: (1) Der Seitenplan führt die Größe als F_G; der Bildschirm schreibt durchgehend F, deshalb steht im Heft F. Neu ist hier nur die Größe selbst — die Einheit Newton (N) wurde bereits in fk2 eingeführt. (2) Das Formelzeichen g bekommt hier bewusst noch keinen Namen; der Ortsfaktor gehört zu fk5, in dieser Simulation ist g = 9,8 N/kg. (3) druck-flaeche, schweredruck, dichte und auftrieb rechnen dagegen mit 9,81 N/kg; deren Seiten fk11 bis fk14 nennen g gar nicht, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Werte 100 g, 200 g und 500 g werden nur abgelesen, nie nachgerechnet: Die Umrechnung 100 g = 0,1 kg steht nirgends am Bildschirm."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse und Gewichtskraft. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Drei Hinweise für die Lehrkraft: (1) Der Seitenplan führt die Größe als F_G; der Bildschirm schreibt durchgehend F, deshalb steht im Heft F. Neu ist hier nur die Größe selbst — die Einheit Newton (N) wurde bereits in fk2 eingeführt. (2) Das Formelzeichen g bekommt hier bewusst noch keinen Namen; der Ortsfaktor gehört zu fk5, in dieser Simulation ist g = 9,8 N/kg. (3) druck-flaeche, schweredruck, dichte und auftrieb rechnen dagegen mit 9,81 N/kg; deren Seiten fk11 bis fk14 nennen g gar nicht, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Werte 100 g, 200 g und 500 g werden nur abgelesen, nie nachgerechnet: Die Umrechnung 100 g = 0,1 kg steht nirgends am Bildschirm.",
+  "rechnen_erwartet": [
+   [
+    "3 kg",
+    "3 · 9,8",
+    "29,4 N"
+   ],
+   [
+    "5 kg",
+    "5 · 9,8",
+    "49 N"
+   ],
+   [
+    "10 kg",
+    "10 · 9,8",
+    "98 N"
+   ]
+  ]
  },
  {
   "id": "fk5",
@@ -351,7 +368,19 @@
    "Das Alltagswort „leichter“ vorher klären: Es meint hier die Gewichtskraft, nicht die Masse."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Ordne Mond, Erde und Jupiter nach der Größe von g und schreibe die drei Werte untereinander auf. Wer mag, drückt in der Minidiagnose der Simulation den Knopf „Die Masse“ und liest die Rückmeldung vor: „Richtig! Die Masse (Materiemenge) ist überall gleich.“",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse, Gewichtskraft und Ortsfaktor. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Hinweis zum Band: Diese Simulation und masse-gewicht (fk4) zeigen g = 9,8 N/kg. Nachgemessen rechnen dagegen mit 9,81 N/kg: druck-flaeche, schweredruck, dichte und auftrieb (fk11 bis fk14) sowie arbeit, lageenergie und leistung-rs (fe1, fe2, fe6). Auf den Seiten fk11 bis fk14 kommt g gar nicht vor; nur fe2 zeigt den Wert 9,81 N/kg, wird dort aber ebenfalls nur abgelesen. Diese Seite hier liest g ab und rechnet nicht damit — für die Lernenden entsteht der Widerspruch deshalb nicht. Der Balkenvergleich rechts im Bild trägt die Beschriftungen „Mond: F = 96 N“, „Erde: F = 588 N“ und „Jupiter: F = 1488 N“ und darunter „Gewichtskraft im Vergleich (Masse überall 60 kg)“. Die Ableseaufgaben stützen sich trotzdem auf die Statuszeile, weil nur dort auch g steht."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Masse, Gewichtskraft und Ortsfaktor. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Hinweis zum Band: Diese Simulation und masse-gewicht (fk4) zeigen g = 9,8 N/kg. Nachgemessen rechnen dagegen mit 9,81 N/kg: druck-flaeche, schweredruck, dichte und auftrieb (fk11 bis fk14) sowie arbeit, lageenergie und leistung-rs (fe1, fe2, fe6). Auf den Seiten fk11 bis fk14 kommt g gar nicht vor; nur fe2 zeigt den Wert 9,81 N/kg, wird dort aber ebenfalls nur abgelesen. Diese Seite hier liest g ab und rechnet nicht damit — für die Lernenden entsteht der Widerspruch deshalb nicht. Der Balkenvergleich rechts im Bild trägt die Beschriftungen „Mond: F = 96 N“, „Erde: F = 588 N“ und „Jupiter: F = 1488 N“ und darunter „Gewichtskraft im Vergleich (Masse überall 60 kg)“. Die Ableseaufgaben stützen sich trotzdem auf die Statuszeile, weil nur dort auch g steht.",
+  "rechnen_erwartet": [
+   [
+    "Mond  1,6 N/kg",
+    "10 · 1,6",
+    "16 N"
+   ],
+   [
+    "Jupiter  24,8 N/kg",
+    "10 · 24,8",
+    "248 N"
+   ]
+  ]
  },
  {
   "id": "fk6",
@@ -498,7 +527,19 @@
    "Bei Aufgabe 3 zuerst mündlich antworten lassen und den Satz dann gemeinsam aufschreiben."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke bei F2 auf „+ N“ und dann auf „Richtung“. Jetzt ziehen beide Kräfte nach links. Lies die Gesamtkraft ab und schreibe auf, was sich gegenüber der ersten Tabellenzeile geändert hat und was gleich geblieben ist.",
-  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Zusammensetzen von Kräften auf einer Wirkungslinie. Hinweise zur Wortwahl und zu den Grenzen der Simulation: (1) Die Simulation schreibt „Gesamtkraft (Resultierende)“ – auf der Schülerseite steht nach der Ein-Name-Regel durchgehend nur „Gesamtkraft“; „Resultierende“ wird nicht eingeführt und steht nicht in der Wortbank. Neue Fachwörter führt diese Einheit nach dem Seitenplan keine ein. (2) Statt „entgegengesetzt/subtrahieren“ heißt es im Heft „gegeneinander/abziehen“; beide Bildschirmwörter dürfen mündlich genannt werden. (3) Die Statuszeile schreibt die Einzelkräfte mit Klammer („F1 = 3 N (rechts)“) und die Gesamtkraft mit Präposition („5 N nach rechts“) – das Heft benutzt überall nur die zweite Form. (4) Die Betragsstriche |3 N − 2 N| der Statuszeile werden nicht abgeschrieben; im Heft heißt es „die kleinere Zahl von der größeren abziehen“. (5) Die Reihenfolge der Arbeitsschritte ist bewusst gewählt: Wer zuerst bei F1 auf „– N“ drückt und danach die Richtung umkehrt, landet bei zwei gleich großen Kräften gegeneinander. Dieser Fall (Gesamtkraft 0 N) ist im Simulationsdump nicht belegt und gehört zu fk8 (Kräftegleichgewicht); er kommt hier deshalb nicht vor. Zurückstellen geht immer mit „+ N“. (6) Die drei Quizfragen der Simulation stellen eigene Aufgaben: Frage 1 „Zwei Kräfte 3 N und 2 N ziehen in dieselbe Richtung“ (Lösung „5 N“, Auswahl 5 N · 1 N · 6 N) – das sind genau die Werte der Beispielzeile; Frage 2 „Zwei Kräfte 5 N und 3 N ziehen in entgegengesetzte Richtungen“ (Lösung „2 N“, Auswahl 2 N · 8 N · 0 N); Frage 3 „Zwei gleich große Kräfte ziehen in entgegengesetzte Richtungen“ (Lösung „0 N (Gleichgewicht)“) – dieser Fall gehört zu fk8. Nur Frage 1 passt zu den eingestellten Werten; die Zahlen der Fragen 2 und 3 stehen nirgends in der Statuszeile. Die Fragen werden im Heft nicht als Ablesequelle benutzt und sollten erst nach der Tabelle freigegeben werden. (7) Vorwissen aus fk6: Jede Kraft hat eine Zahl und eine Richtung (Kraftpfeil). Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
+  "kernlehrplan": "Inhaltsfeld Bewegungen und ihre Ursachen (8) · Zusammensetzen von Kräften auf einer Wirkungslinie. Hinweise zur Wortwahl und zu den Grenzen der Simulation: (1) Die Simulation schreibt „Gesamtkraft (Resultierende)“ – auf der Schülerseite steht nach der Ein-Name-Regel durchgehend nur „Gesamtkraft“; „Resultierende“ wird nicht eingeführt und steht nicht in der Wortbank. Neue Fachwörter führt diese Einheit nach dem Seitenplan keine ein. (2) Statt „entgegengesetzt/subtrahieren“ heißt es im Heft „gegeneinander/abziehen“; beide Bildschirmwörter dürfen mündlich genannt werden. (3) Die Statuszeile schreibt die Einzelkräfte mit Klammer („F1 = 3 N (rechts)“) und die Gesamtkraft mit Präposition („5 N nach rechts“) – das Heft benutzt überall nur die zweite Form. (4) Die Betragsstriche |3 N − 2 N| der Statuszeile werden nicht abgeschrieben; im Heft heißt es „die kleinere Zahl von der größeren abziehen“. (5) Die Reihenfolge der Arbeitsschritte ist bewusst gewählt: Wer zuerst bei F1 auf „– N“ drückt und danach die Richtung umkehrt, landet bei zwei gleich großen Kräften gegeneinander. Dieser Fall (Gesamtkraft 0 N) ist im Simulationsdump nicht belegt und gehört zu fk8 (Kräftegleichgewicht); er kommt hier deshalb nicht vor. Zurückstellen geht immer mit „+ N“. (6) Die drei Quizfragen der Simulation stellen eigene Aufgaben: Frage 1 „Zwei Kräfte 3 N und 2 N ziehen in dieselbe Richtung“ (Lösung „5 N“, Auswahl 5 N · 1 N · 6 N) – das sind genau die Werte der Beispielzeile; Frage 2 „Zwei Kräfte 5 N und 3 N ziehen in entgegengesetzte Richtungen“ (Lösung „2 N“, Auswahl 2 N · 8 N · 0 N); Frage 3 „Zwei gleich große Kräfte ziehen in entgegengesetzte Richtungen“ (Lösung „0 N (Gleichgewicht)“) – dieser Fall gehört zu fk8. Nur Frage 1 passt zu den eingestellten Werten; die Zahlen der Fragen 2 und 3 stehen nirgends in der Statuszeile. Die Fragen werden im Heft nicht als Ablesequelle benutzt und sollten erst nach der Tabelle freigegeben werden. (7) Vorwissen aus fk6: Jede Kraft hat eine Zahl und eine Richtung (Kraftpfeil). Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung.",
+  "rechnen_erwartet": [
+   [
+    "6 N und 2 N",
+    "6 + 2",
+    "8 N"
+   ],
+   [
+    "6 N gegen 2 N",
+    "6 – 2",
+    "4 N"
+   ]
+  ]
  },
  {
   "id": "fk8",
@@ -1094,7 +1135,19 @@
    "Das gelöste Beispiel Zeile für Zeile abdecken und mitsprechen, bevor Aufgabe 2 begonnen wird."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Schreibe die drei Statuszeilen des Bildschirms wörtlich ab. Streiche darin an, welches Wort verrät, ob Arbeit verrichtet wird.",
-  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · mechanische Arbeit W = F · s, Einheit Joule. Die Codes stehen auch auf der Schülerseite. Ausführlich: Die Rechnung im Beispiel und in Aufgabe 2 trägt UF2, die Tabelle das Auswerten (E5), der Alltagsauftrag mit der Tasche UF4. Fachwortzählung: neu ist genau EIN Wort, „Arbeit W in Joule (J)“ (Zählregel 1: Größe, Formelzeichen und Einheit sind zusammen ein Fachwort). „Wegrichtung“ steht bewusst NIRGENDS mehr im Heft: Das Wort ist aus „Weg“ und „Richtung“ zusammengesetzt, beide stehen namentlich in Zählregel 5 – ohne Formelzeichen und Einheit zählt es also nicht als Fachwort, darf dann aber auch nicht in der Wortbank oder in einer Merksatz-Lücke stehen (Zählregel 3: was dort gebraucht wird, ist eingeführt). Sonst wäre es das zweite neue Fachwort. Merksatz, Tabellenspalte und Hilfe 3 tragen stattdessen die Bildtext-Formulierung „Kraft und Weg zeigen in dieselbe Richtung“, die Merksatz-Lücke die Formel „W = F · s“ (Formel-Lückenwörter sind im Band belegt, vgl. „s / t“ in fb2). „Weg“ bleibt Alltagswort ohne eigene Einführung (Zählregel 5); der Alltagsteil trägt dafür den Brückensatz „Am Bildschirm heißt die Strecke s jetzt Weg s.“ – „Strecke s in Meter (m)“ wurde in Förderheft 8 (fb2) eingeführt, zwei Namen für dieselbe Sache verstoßen sonst gegen die Sprachregel. Ebenfalls angekündigt in fk3: dort ist s die Dehnung in cm, hier der Weg in m. Bewusst NICHT auf der Schülerseite: das Wort „Hubarbeit“ und die Formel W = m · g · h (wären ein zweites und drittes Fachwort) – die 392 J kommen allein aus dem neutralen Bildtext „verrichtete Arbeit: 392 J“ und werden nur abgelesen und mit 0 J verglichen. Ebenfalls vermieden: „senkrecht“ (geometrische Hürde für DaZ, am Bildschirm nur im Bildtext); das Heft benutzt nur die beiden belegten Bildschirmformulierungen „Die Kraft zeigt nach oben, der Weg nach vorn“ (Statuszeile) und „Kraft und Weg zeigen in dieselbe Richtung“ (Bildtext). Datenlage: Auf der Schülerseite steht als Kraftzahl nur die 100 N vom Schieben. Die 196 N der Trage-Statuszeile bleiben im Lehrerteil, sonst liest die Klasse zwei verschiedene Kraftzahlen für dieselbe Kiste als Widerspruch; der Rechenschritt 20 kg · 9,81 N/kg = 196 N steht nirgends am Bildschirm. Der Ortsfaktor erscheint im Band mit zwei Zahlen (9,8 N/kg in fk4/fk5, 9,81 N/kg hier in der Hubarbeit-Zeile); die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Seite verlangt nur die drei belegten Wertesätze (100 N / 4 m · 20 kg / 4 m · 20 kg / 2,0 m); eigene Reglerwerte sind unbelegt, weil das Feld „regler“ im Faktendump leer ist. Der Knopf trägt am Bildschirm die Aufschrift „▶ Ausführen“; das Heft schreibt „Ausführen“, weil die Simulation ihn in ihrem eigenen Hinweistext selbst so nennt („Stelle die Werte ein, drücke „Ausführen“ …“) – die Wortmarke ist damit belegt. (Nicht der Grund: SourceSans3 kennt U+25B6 sehr wohl, geprüft am 05.09.2026 in Regular, Medium und Bold.) Alle drei Werte stehen schon vor dem Ausführen in der Statuszeile – die Seite verlangt darum kein Ergebnis, das erst nach dem Lauf erscheint. Die Zelle „ja“ in Zeile Hochheben wird aus dem Bild erschlossen (Kiste geht nach oben, Kraftpfeil nach oben) und durch die 392 J bestätigt; sie steht als Satz nicht am Bildschirm."
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad · mechanische Arbeit W = F · s, Einheit Joule. Die Codes stehen auch auf der Schülerseite. Ausführlich: Die Rechnung im Beispiel und in Aufgabe 2 trägt UF2, die Tabelle das Auswerten (E5), der Alltagsauftrag mit der Tasche UF4. Fachwortzählung: neu ist genau EIN Wort, „Arbeit W in Joule (J)“ (Zählregel 1: Größe, Formelzeichen und Einheit sind zusammen ein Fachwort). „Wegrichtung“ steht bewusst NIRGENDS mehr im Heft: Das Wort ist aus „Weg“ und „Richtung“ zusammengesetzt, beide stehen namentlich in Zählregel 5 – ohne Formelzeichen und Einheit zählt es also nicht als Fachwort, darf dann aber auch nicht in der Wortbank oder in einer Merksatz-Lücke stehen (Zählregel 3: was dort gebraucht wird, ist eingeführt). Sonst wäre es das zweite neue Fachwort. Merksatz, Tabellenspalte und Hilfe 3 tragen stattdessen die Bildtext-Formulierung „Kraft und Weg zeigen in dieselbe Richtung“, die Merksatz-Lücke die Formel „W = F · s“ (Formel-Lückenwörter sind im Band belegt, vgl. „s / t“ in fb2). „Weg“ bleibt Alltagswort ohne eigene Einführung (Zählregel 5); der Alltagsteil trägt dafür den Brückensatz „Am Bildschirm heißt die Strecke s jetzt Weg s.“ – „Strecke s in Meter (m)“ wurde in Förderheft 8 (fb2) eingeführt, zwei Namen für dieselbe Sache verstoßen sonst gegen die Sprachregel. Ebenfalls angekündigt in fk3: dort ist s die Dehnung in cm, hier der Weg in m. Bewusst NICHT auf der Schülerseite: das Wort „Hubarbeit“ und die Formel W = m · g · h (wären ein zweites und drittes Fachwort) – die 392 J kommen allein aus dem neutralen Bildtext „verrichtete Arbeit: 392 J“ und werden nur abgelesen und mit 0 J verglichen. Ebenfalls vermieden: „senkrecht“ (geometrische Hürde für DaZ, am Bildschirm nur im Bildtext); das Heft benutzt nur die beiden belegten Bildschirmformulierungen „Die Kraft zeigt nach oben, der Weg nach vorn“ (Statuszeile) und „Kraft und Weg zeigen in dieselbe Richtung“ (Bildtext). Datenlage: Auf der Schülerseite steht als Kraftzahl nur die 100 N vom Schieben. Die 196 N der Trage-Statuszeile bleiben im Lehrerteil, sonst liest die Klasse zwei verschiedene Kraftzahlen für dieselbe Kiste als Widerspruch; der Rechenschritt 20 kg · 9,81 N/kg = 196 N steht nirgends am Bildschirm. Der Ortsfaktor erscheint im Band mit zwei Zahlen (9,8 N/kg in fk4/fk5, 9,81 N/kg hier in der Hubarbeit-Zeile); die Förderseiten lesen nur ab und rechnen nie mit g, für die Lernenden entsteht der Widerspruch deshalb nicht. Die Seite verlangt nur die drei belegten Wertesätze (100 N / 4 m · 20 kg / 4 m · 20 kg / 2,0 m); eigene Reglerwerte sind unbelegt, weil das Feld „regler“ im Faktendump leer ist. Der Knopf trägt am Bildschirm die Aufschrift „▶ Ausführen“; das Heft schreibt „Ausführen“, weil die Simulation ihn in ihrem eigenen Hinweistext selbst so nennt („Stelle die Werte ein, drücke „Ausführen“ …“) – die Wortmarke ist damit belegt. (Nicht der Grund: SourceSans3 kennt U+25B6 sehr wohl, geprüft am 05.09.2026 in Regular, Medium und Bold.) Alle drei Werte stehen schon vor dem Ausführen in der Statuszeile – die Seite verlangt darum kein Ergebnis, das erst nach dem Lauf erscheint. Die Zelle „ja“ in Zeile Hochheben wird aus dem Bild erschlossen (Kiste geht nach oben, Kraftpfeil nach oben) und durch die 392 J bestätigt; sie steht als Satz nicht am Bildschirm.",
+  "rechnen_erwartet": [
+   [
+    "100 N, 6 m",
+    "100 · 6",
+    "600 J"
+   ],
+   [
+    "50 N, 4 m",
+    "50 · 4",
+    "200 J"
+   ]
+  ]
  },
  {
   "id": "fe2",
@@ -1449,7 +1502,19 @@
    "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen. In „392 W“ und „79 W“ das W dick unterstreichen und laut „Watt“ dazusagen; in „W / t“ meint dasselbe W die Arbeit. Ein J steht in der Wortbank nicht – die Joule-Werte kommen aus der Tabelle."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Stelle 100 kg bei 4 m und 10 s ein. Der Bildschirm zeigt 3924 J und 392 W. Warum steht dort dieselbe Leistung wie bei 50 kg in 5 s – obwohl die Arbeit doppelt so groß ist?",
-  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Leistung P = W / t, Einheit Watt. Die Codes stehen auch auf der Schülerseite. Ausführlich: die Tabelle trägt E5, Aufgabe 2 trägt UF2, Aufgabe 3 trägt B2 (Nour gegen Herrn Kessler abwägen), der Treppen-Auftrag trägt E5 im Alltag. Fachwortzählung: neu ist genau EIN Wort, „Leistung P in Watt (W)“ (Zählregel 1). „Arbeit W in Joule (J)“ zählt bei fe1 und wird hier nur wiederholt (Zählregel 4). „Zeit t in Sekunden (s)“ wird bewusst NICHT als Größe eingeführt: t erscheint nur in der Formel P = W / t, genau so, wie die Hinweiszeile des Bildschirms sie schreibt; Sekunden werden abgelesen, nie umgerechnet. Der Seitenplan weist fe6 nur das eine Wort zu. Doppeldeutiges W: Auf EINER Statuszeile steht W als Formelzeichen der Arbeit („Arbeit W = 1962 J“) und als Einheitenzeichen Watt („Leistung P = 196 W“). Deshalb schreiben Spaltenkopf, Merksatz und Alltagsteil „Watt“ aus, das Zeichen W bleibt der Arbeit vorbehalten, und der Bildauftrag trägt den Hinweis „das W hinter der Zahl heißt Watt“ einmal ins Bild. Datenlage: Belegt sind die Zustände 50 kg · 4 m · 10 s = 1962 J / 196 W, derselbe Zustand nach „÷2 Zeit“ = 1962 J / 392 W und 20 kg · 4 m · 10 s = 785 J / 79 W. Der Zustand „50 kg, 4 m, 5 s“ steht im Dump nur hinter dem Knopf „÷2 Zeit“: simfakten drückt jedes Element nur einmal, und beim Zeitregler stand die Höhe schon auf 5 m – alle Zeitregler-Zeilen des Dumps tragen deshalb 2453 J und dürfen nicht gedruckt werden. Mit simcheck/werte.js nachgemessen: Bei h = 4 m liefert der Zeitregler auf 5 s dieselbe Zeile wie der Knopf (1962 J / 392 W); die drei Regler sind voneinander unabhängig, keiner verstellt einen anderen. Schritt 2 verlangt trotzdem den Knopf, weil er die 5 s in einem Griff trifft – am Regler liegen 4 s (491 W) und 6 s (327 W) daneben. Für die dritte Zeile stehen bewusst 20 kg (785 J / 79 W) und nicht die 10 kg des Regelhefts: 392 käme sonst in zwei Rollen auf derselben Seite vor (392 J bei 10 kg gegen 392 W bei 50 kg in 5 s). Die Zahl 392 ist am Bildschirm viermal belegt, dreimal davon als Watt: 50 kg in 5 s, 100 kg in 10 s und 50 kg bei h = 8 m. Die Anzeige rundet selbst (1962 : 10 = 196,2 → 196 W; 1962 : 5 = 392,4 → 392 W; 785 : 10 = 78,5 → 79 W); das Heft verlangt nie 196,2, Hilfe 2 zeigt das Runden an 78,5 → 79 W. „Hochziehen“ ändert die Statuszeile nicht – Ausgangszustand und Zustand nach dem Druck sind wortgleich; Forschen-Schritt 1 sagt das ausdrücklich. Die Uhr („0,0 s von 10 s“) wird nicht abgelesen, ihr Endwert ist nicht nachgemessen. Der Ortsfaktor 9,81 N/kg steht mitten in der Statuszeile, gehört aber zu fe1/fk5: Hilfe 1 sagt einmal, dass die Zahl schon dasteht, gerechnet wird damit nicht. Der Band trägt g mit zwei Zahlen (9,8 in masse-gewicht und ortsfaktor, 9,81 hier und in den Druck-Simulationen); die Förderseiten lesen nur ab, für die Lernenden entsteht der Widerspruch nicht. kW und PS bleiben ganz draußen – zusätzlicher Grund: Bildtext und Statuszeile widersprechen sich dort (0,05 PS gegen 0,053 PS bei 10 kg). Knopfnamen im Heft nur als Wortmarke ohne Zierzeichen: „Hochziehen“ und „zurücksetzen“ ohne ihre Symbole; „÷2 Zeit“ steht mit dem Divisionszeichen, das SourceSans3 kennt. Die Reglerbeschriftung „tton> (Rundpfeil) zurücksetzen Masse m: 50 kg“ im Dump ist ein Ausleseartefakt (der Rundpfeil des Knopfes fehlt in SourceSans3 und wird hier deshalb nur benannt, nicht gesetzt), am Bildschirm steht „Masse m: 50 kg“ – im Heft nur „Masse m“ beziehungsweise „20 kg“. Aus dem Regelheft gestrichen: kW und PS, der Vergleich „ungefähr wie: Radfahrer bergauf“, der Vierzeiler und die 100-kg-Rechnung (AFB III); Letztere steht als freiwillige Zusatzaufgabe oben."
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Leistung P = W / t, Einheit Watt. Die Codes stehen auch auf der Schülerseite. Ausführlich: die Tabelle trägt E5, Aufgabe 2 trägt UF2, Aufgabe 3 trägt B2 (Nour gegen Herrn Kessler abwägen), der Treppen-Auftrag trägt E5 im Alltag. Fachwortzählung: neu ist genau EIN Wort, „Leistung P in Watt (W)“ (Zählregel 1). „Arbeit W in Joule (J)“ zählt bei fe1 und wird hier nur wiederholt (Zählregel 4). „Zeit t in Sekunden (s)“ wird bewusst NICHT als Größe eingeführt: t erscheint nur in der Formel P = W / t, genau so, wie die Hinweiszeile des Bildschirms sie schreibt; Sekunden werden abgelesen, nie umgerechnet. Der Seitenplan weist fe6 nur das eine Wort zu. Doppeldeutiges W: Auf EINER Statuszeile steht W als Formelzeichen der Arbeit („Arbeit W = 1962 J“) und als Einheitenzeichen Watt („Leistung P = 196 W“). Deshalb schreiben Spaltenkopf, Merksatz und Alltagsteil „Watt“ aus, das Zeichen W bleibt der Arbeit vorbehalten, und der Bildauftrag trägt den Hinweis „das W hinter der Zahl heißt Watt“ einmal ins Bild. Datenlage: Belegt sind die Zustände 50 kg · 4 m · 10 s = 1962 J / 196 W, derselbe Zustand nach „÷2 Zeit“ = 1962 J / 392 W und 20 kg · 4 m · 10 s = 785 J / 79 W. Der Zustand „50 kg, 4 m, 5 s“ steht im Dump nur hinter dem Knopf „÷2 Zeit“: simfakten drückt jedes Element nur einmal, und beim Zeitregler stand die Höhe schon auf 5 m – alle Zeitregler-Zeilen des Dumps tragen deshalb 2453 J und dürfen nicht gedruckt werden. Mit simcheck/werte.js nachgemessen: Bei h = 4 m liefert der Zeitregler auf 5 s dieselbe Zeile wie der Knopf (1962 J / 392 W); die drei Regler sind voneinander unabhängig, keiner verstellt einen anderen. Schritt 2 verlangt trotzdem den Knopf, weil er die 5 s in einem Griff trifft – am Regler liegen 4 s (491 W) und 6 s (327 W) daneben. Für die dritte Zeile stehen bewusst 20 kg (785 J / 79 W) und nicht die 10 kg des Regelhefts: 392 käme sonst in zwei Rollen auf derselben Seite vor (392 J bei 10 kg gegen 392 W bei 50 kg in 5 s). Die Zahl 392 ist am Bildschirm viermal belegt, dreimal davon als Watt: 50 kg in 5 s, 100 kg in 10 s und 50 kg bei h = 8 m. Die Anzeige rundet selbst (1962 : 10 = 196,2 → 196 W; 1962 : 5 = 392,4 → 392 W; 785 : 10 = 78,5 → 79 W); das Heft verlangt nie 196,2, Hilfe 2 zeigt das Runden an 78,5 → 79 W. „Hochziehen“ ändert die Statuszeile nicht – Ausgangszustand und Zustand nach dem Druck sind wortgleich; Forschen-Schritt 1 sagt das ausdrücklich. Die Uhr („0,0 s von 10 s“) wird nicht abgelesen, ihr Endwert ist nicht nachgemessen. Der Ortsfaktor 9,81 N/kg steht mitten in der Statuszeile, gehört aber zu fe1/fk5: Hilfe 1 sagt einmal, dass die Zahl schon dasteht, gerechnet wird damit nicht. Der Band trägt g mit zwei Zahlen (9,8 in masse-gewicht und ortsfaktor, 9,81 hier und in den Druck-Simulationen); die Förderseiten lesen nur ab, für die Lernenden entsteht der Widerspruch nicht. kW und PS bleiben ganz draußen – zusätzlicher Grund: Bildtext und Statuszeile widersprechen sich dort (0,05 PS gegen 0,053 PS bei 10 kg). Knopfnamen im Heft nur als Wortmarke ohne Zierzeichen: „Hochziehen“ und „zurücksetzen“ ohne ihre Symbole; „÷2 Zeit“ steht mit dem Divisionszeichen, das SourceSans3 kennt. Die Reglerbeschriftung „tton> (Rundpfeil) zurücksetzen Masse m: 50 kg“ im Dump ist ein Ausleseartefakt (der Rundpfeil des Knopfes fehlt in SourceSans3 und wird hier deshalb nur benannt, nicht gesetzt), am Bildschirm steht „Masse m: 50 kg“ – im Heft nur „Masse m“ beziehungsweise „20 kg“. Aus dem Regelheft gestrichen: kW und PS, der Vergleich „ungefähr wie: Radfahrer bergauf“, der Vierzeiler und die 100-kg-Rechnung (AFB III); Letztere steht als freiwillige Zusatzaufgabe oben.",
+  "rechnen_erwartet": [
+   [
+    "2 s",
+    "1962 : 2",
+    "981 W"
+   ],
+   [
+    "20 s",
+    "1962 : 20",
+    "98 W"
+   ]
+  ]
  },
  {
   "id": "fe7",
@@ -1675,7 +1740,24 @@
    "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen; „300,0 N“ und „4,0 m“ zusammen mit der Einheit sprechen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Schiebe den Regler „Tragende Seilstücke“ auf 3 und lies Kraft und Weg ab (200,0 N und 6,0 m). Passt der Wert zwischen deine Zeilen für 2 und 4 Seilstücke?",
-  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Flaschenzug als Kraftwandler. Zusammengelegt aus el9 und el10, Träger el10. Neu sind genau zwei Fachwörter: feste Rolle und lose Rolle. „Flaschenzug“ zählt nach Regel 2 nicht (Gerätename mit Begriffssatz im Alltagsteil, weder in der Wortbank noch in einer Merksatz-Lücke); „Seilstück“, „Last“ und „Weg“ bleiben nach Regel 5 Alltagswörter, „Seilstück“ mit eigenem Begriffssatz. „Kraft F in N“ stammt aus fk2, „Arbeit W in Joule“ aus fe1; beide werden hier nur wiederholt. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite – der Bildschirm schreibt ihn zwar aus („Beide Male dieselbe Arbeit – das ist die goldene Regel“), im Heft steht nur die Sache: „Was du an Kraft sparst, zahlst du am Weg zurück.“ Bewusst nicht eingeführt: „tragende Seilstücke n“ als Größe mit Formelzeichen (das wäre nach Regel 5 ein drittes Fachwort), außerdem „Hubarbeit“, „Zugarbeit“ als Lernwörter und „Wirkungsgrad“. Die Tabellenspalte fragt deshalb „Wie viele Seilstücke tragen?“ und die Zeilen heißen „1 Seilstück“, „2 Seilstücke“, „4 Seilstücke“; das „n“ erscheint nur dort, wo es die Knopfaufschrift wörtlich trägt, und „Zugarbeit“ nur als zitierte Zeilenüberschrift im vierten Arbeitsschritt. Datenlage: Alle gedruckten Werte stammen aus fakten/flaschenzug.json bei Last 600 N und Hubhöhe 2,0 m – n = 1 → 600,0 N / 2,0 m, n = 2 → 300,0 N / 4,0 m, n = 4 → 150,0 N / 8,0 m, Hub- und Zugarbeit in jedem Zustand 1200,0 J. Alle drei Zustände sitzen auf einem eigenen Knopf, kein Regler nötig. NICHT gedruckt werden die beiden Wegbalken („Weg der Last“, „Weg der Hand“): der Dump zeigt dort nur Zwischenstände der laufenden Animation (0,01 m bis 1,46 m), der Endstand ist nicht nachgemessen – die Seite verlangt Weglängen ausschließlich aus der Statuszeile. Die Bildschirmwörter „untere Flasche“ (gemeint ist das untere Rollengehäuse) und „Hubhöhe h“ werden im Heft vermieden; dort steht „untere Rolle“ beziehungsweise „2,0 m hoch“. ABWEICHUNG ZUR AUFGABENSTELLUNG, bitte gegenlesen: Der Auftrag für diese Einheit nannte die Knöpfe „Ohne Rolle / Feste Rolle / Lose Rolle“, den Startzustand „Feste Rolle“, die Spalte „Wie ziehst du?“ und die Prozentwerte „gespart: 0 %“ / „gespart: 50 %“. Das sind die Anzeigen der Simulation feste-rolle (fakten/feste-rolle.json), NICHT der Simulation flaschenzug. Für fe9 ist in plan.py flaschenzug eingetragen; zusammenfuehren.py bricht bei jedem anderen Wert ab, und der gedruckte QR-Code öffnet flaschenzug. Eine Seite mit dem Schritt „Drücke Ohne Rolle“ liefe deshalb im Heft ins Leere. Die Seite ist daher gegen flaschenzug geschrieben – so, wie es auch der freigegebene Seitenplan festlegt („Die feste-Rolle-Sim wird Anwendungsabschnitt mit Bild, ohne eigene Aufgabe und ohne QR. Die 0-%/50-%-Aufgabe entfällt“). Die feste Rolle erscheint deshalb im Bildauftrag und als n = 1, die lose Rolle als n = 2. Wenn stattdessen wirklich die feste-rolle-Simulation gemeint war, muss zuerst plan.py geändert werden; die Seite ist dann neu zu setzen. Kompetenzen: die Tabelle und der vierte Arbeitsschritt tragen E5, Aufgabe 3 trägt B2, und der Zuhause-Auftrag „Zähle die Seilstücke am Baukran“ ist der einzige Träger von E8 im ganzen Band."
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Flaschenzug als Kraftwandler. Zusammengelegt aus el9 und el10, Träger el10. Neu sind genau zwei Fachwörter: feste Rolle und lose Rolle. „Flaschenzug“ zählt nach Regel 2 nicht (Gerätename mit Begriffssatz im Alltagsteil, weder in der Wortbank noch in einer Merksatz-Lücke); „Seilstück“, „Last“ und „Weg“ bleiben nach Regel 5 Alltagswörter, „Seilstück“ mit eigenem Begriffssatz. „Kraft F in N“ stammt aus fk2, „Arbeit W in Joule“ aus fe1; beide werden hier nur wiederholt. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite – der Bildschirm schreibt ihn zwar aus („Beide Male dieselbe Arbeit – das ist die goldene Regel“), im Heft steht nur die Sache: „Was du an Kraft sparst, zahlst du am Weg zurück.“ Bewusst nicht eingeführt: „tragende Seilstücke n“ als Größe mit Formelzeichen (das wäre nach Regel 5 ein drittes Fachwort), außerdem „Hubarbeit“, „Zugarbeit“ als Lernwörter und „Wirkungsgrad“. Die Tabellenspalte fragt deshalb „Wie viele Seilstücke tragen?“ und die Zeilen heißen „1 Seilstück“, „2 Seilstücke“, „4 Seilstücke“; das „n“ erscheint nur dort, wo es die Knopfaufschrift wörtlich trägt, und „Zugarbeit“ nur als zitierte Zeilenüberschrift im vierten Arbeitsschritt. Datenlage: Alle gedruckten Werte stammen aus fakten/flaschenzug.json bei Last 600 N und Hubhöhe 2,0 m – n = 1 → 600,0 N / 2,0 m, n = 2 → 300,0 N / 4,0 m, n = 4 → 150,0 N / 8,0 m, Hub- und Zugarbeit in jedem Zustand 1200,0 J. Alle drei Zustände sitzen auf einem eigenen Knopf, kein Regler nötig. NICHT gedruckt werden die beiden Wegbalken („Weg der Last“, „Weg der Hand“): der Dump zeigt dort nur Zwischenstände der laufenden Animation (0,01 m bis 1,46 m), der Endstand ist nicht nachgemessen – die Seite verlangt Weglängen ausschließlich aus der Statuszeile. Die Bildschirmwörter „untere Flasche“ (gemeint ist das untere Rollengehäuse) und „Hubhöhe h“ werden im Heft vermieden; dort steht „untere Rolle“ beziehungsweise „2,0 m hoch“. ABWEICHUNG ZUR AUFGABENSTELLUNG, bitte gegenlesen: Der Auftrag für diese Einheit nannte die Knöpfe „Ohne Rolle / Feste Rolle / Lose Rolle“, den Startzustand „Feste Rolle“, die Spalte „Wie ziehst du?“ und die Prozentwerte „gespart: 0 %“ / „gespart: 50 %“. Das sind die Anzeigen der Simulation feste-rolle (fakten/feste-rolle.json), NICHT der Simulation flaschenzug. Für fe9 ist in plan.py flaschenzug eingetragen; zusammenfuehren.py bricht bei jedem anderen Wert ab, und der gedruckte QR-Code öffnet flaschenzug. Eine Seite mit dem Schritt „Drücke Ohne Rolle“ liefe deshalb im Heft ins Leere. Die Seite ist daher gegen flaschenzug geschrieben – so, wie es auch der freigegebene Seitenplan festlegt („Die feste-Rolle-Sim wird Anwendungsabschnitt mit Bild, ohne eigene Aufgabe und ohne QR. Die 0-%/50-%-Aufgabe entfällt“). Die feste Rolle erscheint deshalb im Bildauftrag und als n = 1, die lose Rolle als n = 2. Wenn stattdessen wirklich die feste-rolle-Simulation gemeint war, muss zuerst plan.py geändert werden; die Seite ist dann neu zu setzen. Kompetenzen: die Tabelle und der vierte Arbeitsschritt tragen E5, Aufgabe 3 trägt B2, und der Zuhause-Auftrag „Zähle die Seilstücke am Baukran“ ist der einzige Träger von E8 im ganzen Band.",
+  "rechnen_erwartet": [
+   [
+    "2 Seile",
+    "1200 : 2",
+    "600 N"
+   ],
+   [
+    "4 Seile",
+    "1200 : 4",
+    "300 N"
+   ],
+   [
+    "6 Seile",
+    "1200 : 6",
+    "200 N"
+   ]
+  ]
  },
  {
   "id": "fe10",

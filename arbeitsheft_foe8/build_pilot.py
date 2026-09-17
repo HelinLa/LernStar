@@ -887,6 +887,36 @@ def bausteine_b(cfg,nl):
                                                bsp["frage"],bsp["antwort"]),
                  fd.ABS_ABSCHNITT))
 
+    # ③b Rechentabelle - OPTIONAL, direkt unter dem geloesten Beispiel
+    #
+    # Abdullah nach dem Test von Band 9 (17.09.2026): "uns fehlen Aufgaben, wie
+    # z.B. Tabellen, wo Massen gegeben sind und die Schueler einfach es in
+    # Newton umrechnen ... aber in Foerderniveau und sehr leichte."
+    #
+    # WARUM HIER UND NICHT ALS VIERTE AUFGABE: Das Profil laesst auf Seite B
+    # GENAU DREI nummerierte Aufgaben zu (erkennen - einsetzen - erklaeren), und
+    # daran wird nicht geruettelt. Die Rechentabelle ist auch keine vierte
+    # Aufgabe, sondern der DRILL ZUM BEISPIEL: Das Beispiel rechnet einen Fall
+    # vor (Gegeben - Gesucht - Formel - Einsetzen - Ergebnis), die Tabelle laesst
+    # denselben Weg zweimal bis viermal selbst gehen. Deshalb steht sie
+    # unmittelbar darunter, ohne Nummer - wie Merksatz und Wortbank.
+    #
+    # Die erste Zeile ist die VORGERECHNETE, sie wird getoent (beispiel=True).
+    # Genau dafuer gab es den Schalter; seit dem 13.09.2026 rief ihn niemand
+    # mehr auf, weil die Beobachtungstabelle auf Seite A leer bleiben soll.
+    # Hier ist es umgekehrt richtig: Ohne vorgerechnete Zeile faengt ein
+    # Foerderlernender bei einer leeren Tabelle gar nicht erst an.
+    rt=cfg.get("rechnen")
+    if rt:
+        B.append(b_unterkopf(rt.get("titel") or "Rechne aus"))
+        B.append(b_para(rt["hinweis"],art="med",haftet=1,name="Rechenhinweis"))
+        sp_,zl_=rt["spalten"],rt["zeilen"]
+        ant=rt.get("anteile") or [0.26,0.42,0.32]
+        B.append(bst("Rechentabelle",
+                     lambda h,d,y: tabelle(h,d,y,fd.STIL,sp_,zl_,ant,
+                                           beispiel=True,schreib=True),
+                     fd.ABS_ABSCHNITT))
+
     # ④ Drei Aufgaben: erkennen - einsetzen - erklaeren
     B.append(b_marke(1,a1["op"],*aufgaben_code(a1)))
     B.append(b_para(a1["frage"],art="med",haftet=len(a1["optionen"]),name="Aufgabenfrage"))
@@ -955,12 +985,19 @@ def seite_b(cfg,pn,nr=1):
 def lehrer_bloecke(cfg):
     """Die zehn Pflichtbloecke des Profils, in der Reihenfolge des Unterrichts."""
     lo=LOES[cfg["id"]]
+    # Die Rechentabelle steht nur dort, wo die Einheit eine hat - und sie steht
+    # VOR den drei Aufgaben, weil sie auf der Schuelerseite auch dort steht.
+    # Ohne diesen Block korrigiert niemand die Zeilen, die das Kind rechnet.
+    rechen=([("Rechentabelle (erwartet)",
+              [" | ".join(r) for r in lo["rechnen_erwartet"]])]
+            if cfg.get("rechnen") else [])
     return [
         ("Lernziel",[lo["lernziel"]]),
         ("Material und Zeit",[lo["material"],lo["zeit"]+"  ·  "+lo["sozialform"]]),
         ("Wenn die Simulation nicht geht",[lo["ersatz_ohne_simulation"]]),
         ("Merksatz",["Lücke 1: "+lo["merksatz"][0]+"  ·  Lücke 2: "+lo["merksatz"][1]]),
         ("Tabelle (erwartet)",[" | ".join(r) for r in lo["tabelle_erwartet"]]),
+    ]+rechen+[
         ("Aufgabe 1 – "+cfg["aufgaben"][0]["op"],
          [f"Richtig ist Antwort {lo['a1']['richtig']+1}.",lo["a1"]["weg"]]+
          ["Typischer Fehler: "+t for t in lo["a1"]["typische_fehler"]]),

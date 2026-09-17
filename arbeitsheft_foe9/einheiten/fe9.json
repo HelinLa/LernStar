@@ -122,7 +122,37 @@
    "Ich kann erklären, warum die Arbeit gleich bleibt."
   ],
   "zuhause": "Zähle die Seilstücke am Baukran. Ein Foto davon reicht auch. Schreibe die Zahl auf.",
-  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht, heller ruhiger Hintergrund ohne Deko. Links: eine einzelne Rolle hängt fest an einem waagerechten Traversenrohr, das Seil läuft über die Rolle, unten links hängt ein Klavier an EINEM Seilstück, rechts zieht eine Hand am freien Ende nach unten. Über dem Feld groß „1 Seilstück – feste Rolle“, darunter groß „F = 600,0 N“ und „s = 2,0 m“. Rechts: das Klavier hängt an einer Rolle, die im Seil hängt und mitwandert; ZWEI senkrechte Seilstücke gehen von dieser unteren Rolle nach oben, beide deutlich grün eingefärbt und mit „1“ und „2“ beschriftet; Seilstück „1“ endet oben am Rohr und ist dort festgeknotet, Seilstück „2“ läuft am Rohr vorbei nach oben zu einer Hand, die am freien Ende nach oben zieht. Über dem Feld groß „2 Seilstücke – lose Rolle“, darunter groß „F = 300,0 N“ und „s = 4,0 m“. In beiden Feldern dieselbe Höhenmarke am Klavier mit „2,0 m“ beschriftet, damit die gleiche Hubhöhe erkennbar bleibt. Unter beiden Feldern eine gemeinsame große Zeile: „beide Male dieselbe Arbeit: 1200,0 J“. KEINE Kraftpfeile, keine Bewegungslinien, keine dritte Rolle, keine Personen außer den beiden Händen, keine Zahlenmenge über die genannten Beschriftungen hinaus.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Bild aus zwei gleich großen Feldern nebeneinander, gleicher Bildausschnitt, Seitenansicht, heller ruhiger Hintergrund ohne Deko. Links: eine einzelne Rolle hängt fest an einem waagerechten Traversenrohr, das Seil läuft über die Rolle, unten links hängt ein Klavier an EINEM Seilstück, rechts zieht eine Hand am freien Ende nach unten. Über dem Feld groß „1 Seilstück – feste Rolle“, darunter groß „F = 600,0 N“ und „s = 2,0 m“. Rechts: das Klavier hängt an einer Rolle, die im Seil hängt und mitwandert; ZWEI senkrechte Seilstücke gehen von dieser unteren Rolle nach oben, beide deutlich grün eingefärbt und mit „1“ und „2“ beschriftet; Seilstück „1“ endet oben am Rohr und ist dort festgeknotet, Seilstück „2“ läuft am Rohr vorbei nach oben zu einer Hand, die am freien Ende nach oben zieht. Über dem Feld groß „2 Seilstücke – lose Rolle“, darunter groß „F = 300,0 N“ und „s = 4,0 m“. In beiden Feldern dieselbe Höhenmarke am Klavier mit „2,0 m“ beschriftet, damit die gleiche Hubhöhe erkennbar bleibt. Unter beiden Feldern eine gemeinsame große Zeile: „beide Male dieselbe Arbeit: 1200,0 J“. KEINE Kraftpfeile, keine Bewegungslinien, keine dritte Rolle, keine Personen außer den beiden Händen, keine Zahlenmenge über die genannten Beschriftungen hinaus.]",
+  "rechnen": {
+   "hinweis": "Die Last ist G = 1200 N. Rechne F = G : n.",
+   "spalten": [
+    "Tragende Seile n",
+    "Rechnung",
+    "Zugkraft F"
+   ],
+   "zeilen": [
+    [
+     "1 Seil",
+     "1200 : 1",
+     "1200 N"
+    ],
+    [
+     "2 Seile",
+     "",
+     ""
+    ],
+    [
+     "4 Seile",
+     "",
+     ""
+    ],
+    [
+     "6 Seile",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  "lehrer": {
   "id": "fe9",
@@ -194,6 +224,23 @@
    "Vor Aufgabe 2 die vier Wörter der Wortbank einmal abschreiben lassen; „300,0 N“ und „4,0 m“ zusammen mit der Einheit sprechen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Schiebe den Regler „Tragende Seilstücke“ auf 3 und lies Kraft und Weg ab (200,0 N und 6,0 m). Passt der Wert zwischen deine Zeilen für 2 und 4 Seilstücke?",
-  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Flaschenzug als Kraftwandler. Zusammengelegt aus el9 und el10, Träger el10. Neu sind genau zwei Fachwörter: feste Rolle und lose Rolle. „Flaschenzug“ zählt nach Regel 2 nicht (Gerätename mit Begriffssatz im Alltagsteil, weder in der Wortbank noch in einer Merksatz-Lücke); „Seilstück“, „Last“ und „Weg“ bleiben nach Regel 5 Alltagswörter, „Seilstück“ mit eigenem Begriffssatz. „Kraft F in N“ stammt aus fk2, „Arbeit W in Joule“ aus fe1; beide werden hier nur wiederholt. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite – der Bildschirm schreibt ihn zwar aus („Beide Male dieselbe Arbeit – das ist die goldene Regel“), im Heft steht nur die Sache: „Was du an Kraft sparst, zahlst du am Weg zurück.“ Bewusst nicht eingeführt: „tragende Seilstücke n“ als Größe mit Formelzeichen (das wäre nach Regel 5 ein drittes Fachwort), außerdem „Hubarbeit“, „Zugarbeit“ als Lernwörter und „Wirkungsgrad“. Die Tabellenspalte fragt deshalb „Wie viele Seilstücke tragen?“ und die Zeilen heißen „1 Seilstück“, „2 Seilstücke“, „4 Seilstücke“; das „n“ erscheint nur dort, wo es die Knopfaufschrift wörtlich trägt, und „Zugarbeit“ nur als zitierte Zeilenüberschrift im vierten Arbeitsschritt. Datenlage: Alle gedruckten Werte stammen aus fakten/flaschenzug.json bei Last 600 N und Hubhöhe 2,0 m – n = 1 → 600,0 N / 2,0 m, n = 2 → 300,0 N / 4,0 m, n = 4 → 150,0 N / 8,0 m, Hub- und Zugarbeit in jedem Zustand 1200,0 J. Alle drei Zustände sitzen auf einem eigenen Knopf, kein Regler nötig. NICHT gedruckt werden die beiden Wegbalken („Weg der Last“, „Weg der Hand“): der Dump zeigt dort nur Zwischenstände der laufenden Animation (0,01 m bis 1,46 m), der Endstand ist nicht nachgemessen – die Seite verlangt Weglängen ausschließlich aus der Statuszeile. Die Bildschirmwörter „untere Flasche“ (gemeint ist das untere Rollengehäuse) und „Hubhöhe h“ werden im Heft vermieden; dort steht „untere Rolle“ beziehungsweise „2,0 m hoch“. ABWEICHUNG ZUR AUFGABENSTELLUNG, bitte gegenlesen: Der Auftrag für diese Einheit nannte die Knöpfe „Ohne Rolle / Feste Rolle / Lose Rolle“, den Startzustand „Feste Rolle“, die Spalte „Wie ziehst du?“ und die Prozentwerte „gespart: 0 %“ / „gespart: 50 %“. Das sind die Anzeigen der Simulation feste-rolle (fakten/feste-rolle.json), NICHT der Simulation flaschenzug. Für fe9 ist in plan.py flaschenzug eingetragen; zusammenfuehren.py bricht bei jedem anderen Wert ab, und der gedruckte QR-Code öffnet flaschenzug. Eine Seite mit dem Schritt „Drücke Ohne Rolle“ liefe deshalb im Heft ins Leere. Die Seite ist daher gegen flaschenzug geschrieben – so, wie es auch der freigegebene Seitenplan festlegt („Die feste-Rolle-Sim wird Anwendungsabschnitt mit Bild, ohne eigene Aufgabe und ohne QR. Die 0-%/50-%-Aufgabe entfällt“). Die feste Rolle erscheint deshalb im Bildauftrag und als n = 1, die lose Rolle als n = 2. Wenn stattdessen wirklich die feste-rolle-Simulation gemeint war, muss zuerst plan.py geändert werden; die Seite ist dann neu zu setzen. Kompetenzen: die Tabelle und der vierte Arbeitsschritt tragen E5, Aufgabe 3 trägt B2, und der Zuhause-Auftrag „Zähle die Seilstücke am Baukran“ ist der einzige Träger von E8 im ganzen Band."
+  "kernlehrplan": "Inhaltsfeld Energie, Leistung, Wirkungsgrad (9) · Flaschenzug als Kraftwandler. Zusammengelegt aus el9 und el10, Träger el10. Neu sind genau zwei Fachwörter: feste Rolle und lose Rolle. „Flaschenzug“ zählt nach Regel 2 nicht (Gerätename mit Begriffssatz im Alltagsteil, weder in der Wortbank noch in einer Merksatz-Lücke); „Seilstück“, „Last“ und „Weg“ bleiben nach Regel 5 Alltagswörter, „Seilstück“ mit eigenem Begriffssatz. „Kraft F in N“ stammt aus fk2, „Arbeit W in Joule“ aus fe1; beide werden hier nur wiederholt. Der Name „goldene Regel der Mechanik“ steht laut Seitenplan im ganzen Band nicht auf der Schülerseite – der Bildschirm schreibt ihn zwar aus („Beide Male dieselbe Arbeit – das ist die goldene Regel“), im Heft steht nur die Sache: „Was du an Kraft sparst, zahlst du am Weg zurück.“ Bewusst nicht eingeführt: „tragende Seilstücke n“ als Größe mit Formelzeichen (das wäre nach Regel 5 ein drittes Fachwort), außerdem „Hubarbeit“, „Zugarbeit“ als Lernwörter und „Wirkungsgrad“. Die Tabellenspalte fragt deshalb „Wie viele Seilstücke tragen?“ und die Zeilen heißen „1 Seilstück“, „2 Seilstücke“, „4 Seilstücke“; das „n“ erscheint nur dort, wo es die Knopfaufschrift wörtlich trägt, und „Zugarbeit“ nur als zitierte Zeilenüberschrift im vierten Arbeitsschritt. Datenlage: Alle gedruckten Werte stammen aus fakten/flaschenzug.json bei Last 600 N und Hubhöhe 2,0 m – n = 1 → 600,0 N / 2,0 m, n = 2 → 300,0 N / 4,0 m, n = 4 → 150,0 N / 8,0 m, Hub- und Zugarbeit in jedem Zustand 1200,0 J. Alle drei Zustände sitzen auf einem eigenen Knopf, kein Regler nötig. NICHT gedruckt werden die beiden Wegbalken („Weg der Last“, „Weg der Hand“): der Dump zeigt dort nur Zwischenstände der laufenden Animation (0,01 m bis 1,46 m), der Endstand ist nicht nachgemessen – die Seite verlangt Weglängen ausschließlich aus der Statuszeile. Die Bildschirmwörter „untere Flasche“ (gemeint ist das untere Rollengehäuse) und „Hubhöhe h“ werden im Heft vermieden; dort steht „untere Rolle“ beziehungsweise „2,0 m hoch“. ABWEICHUNG ZUR AUFGABENSTELLUNG, bitte gegenlesen: Der Auftrag für diese Einheit nannte die Knöpfe „Ohne Rolle / Feste Rolle / Lose Rolle“, den Startzustand „Feste Rolle“, die Spalte „Wie ziehst du?“ und die Prozentwerte „gespart: 0 %“ / „gespart: 50 %“. Das sind die Anzeigen der Simulation feste-rolle (fakten/feste-rolle.json), NICHT der Simulation flaschenzug. Für fe9 ist in plan.py flaschenzug eingetragen; zusammenfuehren.py bricht bei jedem anderen Wert ab, und der gedruckte QR-Code öffnet flaschenzug. Eine Seite mit dem Schritt „Drücke Ohne Rolle“ liefe deshalb im Heft ins Leere. Die Seite ist daher gegen flaschenzug geschrieben – so, wie es auch der freigegebene Seitenplan festlegt („Die feste-Rolle-Sim wird Anwendungsabschnitt mit Bild, ohne eigene Aufgabe und ohne QR. Die 0-%/50-%-Aufgabe entfällt“). Die feste Rolle erscheint deshalb im Bildauftrag und als n = 1, die lose Rolle als n = 2. Wenn stattdessen wirklich die feste-rolle-Simulation gemeint war, muss zuerst plan.py geändert werden; die Seite ist dann neu zu setzen. Kompetenzen: die Tabelle und der vierte Arbeitsschritt tragen E5, Aufgabe 3 trägt B2, und der Zuhause-Auftrag „Zähle die Seilstücke am Baukran“ ist der einzige Träger von E8 im ganzen Band.",
+  "rechnen_erwartet": [
+   [
+    "2 Seile",
+    "1200 : 2",
+    "600 N"
+   ],
+   [
+    "4 Seile",
+    "1200 : 4",
+    "300 N"
+   ],
+   [
+    "6 Seile",
+    "1200 : 6",
+    "200 N"
+   ]
+  ]
  }
 }
