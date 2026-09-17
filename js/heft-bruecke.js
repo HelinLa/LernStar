@@ -4347,7 +4347,7 @@ const HEFT_SEITEN = {
     name: "Zwei Widerstände in einer Reihe",
     titel: "Was passiert hintereinander?",
     frage: "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
-    schritte: ["Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
+    schritte: ["Drücke in der oberen Reihe „10 Ω“ und in der unteren „20 Ω“. Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
   },
   "fs10": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",

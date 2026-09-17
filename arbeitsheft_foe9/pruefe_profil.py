@@ -510,7 +510,11 @@ if __name__ == "__main__":
               f"schwerste {gew[-1][1]} ({gew[-1][0]})"
               + (f" · Budget {BUDGET}" if BUDGET else ""))
         if n_rt:
-            print(f"  davon {n_rt} mit Rechentabelle (Budget dort {BUDGET + BUDGET_RECHNEN})")
+            # Band 7 und 8 haben kein Budget (BUDGET = None) - dort nur zaehlen.
+            # Vorher stuerzte der Bericht hier ab, sobald die erste Tabelle stand,
+            # und die Zeile BEFUNDE GESAMT wurde nie gedruckt (17.09.2026).
+            print(f"  davon {n_rt} mit Rechentabelle"
+                  + (f" (Budget dort {BUDGET + BUDGET_RECHNEN})" if BUDGET else ""))
         if ueber:
             print("  über dem Budget:", ", ".join(ueber))
             gesamt += len(ueber)

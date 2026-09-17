@@ -379,6 +379,43 @@ dazugekommen waere.
 > Band 9. Nachgemessen nach der Portierung: foe7 111/54, foe8 91/70, foe10
 > 127/232 – unveraendert, weil ohne `rechnen` kein Block entsteht.
 
+**Baende 7, 8 und 10 (17.09.2026, am Abend): sieben Tabellen, bewusst weniger
+als in Band 9.** Vorher lief eine Pruefung aller 73 Einheiten (Entwurf plus
+Gegenpruefung je Kapitel): Nur 16 trugen fachlich eine ehrliche, sehr leichte
+Rechnung – die Kapitel Optik, Weltall, Magnetismus und Radioaktivitaet sind
+ueberwiegend qualitativ. Eingebaut: `fo3` (Knick = Luft – Glas), `fw2`
+(Stunden · 15°), `fw6` (Minuten · 18 Mio. km), `fs3` (Zellen · 1,5 V), `fv12`
+(hinein – Akku = Waerme), `fv13` (kWh · 0,30 €), `fn9` (Spaltungen · 0,70).
+Seitenzahlen: keine verschoben (111 / 91 / 127); Lehrerband foe7 54 → 57.
+
+> **Nicht eingebaut – und warum:**
+> - `fs9`, `fs10`, `fs13`, `fb2`, `fb3` (Band 8): **Seite B ist dort voll.**
+>   Im Speicher eingesetzt rutschten vier auf ein drittes Blatt (Seitenzahlen
+>   verschieben sich), `fs9` passte nur, weil `einpassen()` Aufgabe 3 eine der
+>   vier Schreiblinien nahm – bei einer Musterantwort mit fuenf Saetzen. Auch
+>   ein kuerzeres Beispiel holte die Linie nicht zurueck.
+> - `fn6`: „200 – 86" ist Uebertrag ueber zwei Nullen, und die Werte stammen
+>   aus Zufallslaeufen, die das Kind am Bildschirm nie wiederfindet.
+> - `fn1`, `fn11`, `fn12`: Der Lehrerteil schliesst dort das Rechnen nicht
+>   einfach aus, sondern BEGRUENDET es bandweit (keine Massenzahl A auf einer
+>   Foerder-Schuelerseite, auch fn7 nicht; Datenblattseite ohne Rechenschritt;
+>   Zeitregler stillgelegt, weil seine Zustaende fehlerhaft anzeigen). Liegt
+>   bei Abdullah.
+
+> **Der portierte Pruefer stuerzte in Band 7 und 8 ab**, sobald die erste
+> Tabelle stand: `BUDGET + BUDGET_RECHNEN` mit `BUDGET = None`. Der Bericht
+> brach VOR der Zeile „BEFUNDE GESAMT" ab. In allen vier Baenden behoben.
+
+> **Zwei alte Fehler, beim Einbau gefunden:** `fs9` druckte „Drücke zuerst .
+> Jetzt steht R₁ …" – der Knopf traegt nur „↺", das Zeichen fehlt in
+> SourceSans3 und fiel ersatzlos weg; jetzt stellen die Knoepfe „10 Ω"/„20 Ω"
+> den Zustand her. `fw2` nannte noch Ben und Yumi, seit dem 16.09. zeigt die
+> Simulation „dein Ort" und „Gegenseite" (die Foerderhefte waren beim
+> Namens-Abgleich nicht dabei, weil sie keinen Einstiegstext haben). Und die
+> **Faktendumps in `arbeitsheft_foe*/fakten/` sind vom 15.09.** – `tag-nacht`
+> nennt dort 95-mal „Yumi". Fuer `heft_gegen_sim.py` die frischen Dumps aus
+> `simcheck/fakten/` nehmen.
+
 > **Ein Lehrerteil veraltet still, wenn die Simulation umgebaut wird.** `fk2`
 > loeste noch die alte `kraftmesser`-Fassung ("Feder leeren | F = 0 N | um 1 cm
 > gedehnt"), waehrend die Schuelerseite laengst 0 g / 100 g / 200 g fragte – eine

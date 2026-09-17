@@ -1545,7 +1545,37 @@
    "Ich kann begründen, ob warme Luft verlorene Energie ist."
   ],
   "zuhause": "Fasse dein Ladegerät an, während dein Handy lädt. Wird es warm?",
-  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei gleich breiten Feldern nebeneinander, gleicher Bildausschnitt, ruhiger heller Hintergrund. Unten in jedem Feld steht dasselbe Handy-Ladegerät (Netzteil mit Stecker), in allen drei Feldern exakt gleich groß gezeichnet — es ändert sich nur die Energiemenge, nicht das Gerät. Über jedem Ladegerät steht ein breites Rechteck als Energiemenge: eine FLÄCHE, kein dünner Streifen. Alle drei Rechtecke sind exakt gleich breit und nur unterschiedlich hoch. Das Maß gibt das GRÖSSTE Rechteck vor: Feld 3 ist höchstens doppelt so hoch wie breit. Daraus folgen Feld 2 (Höhe = Breite) und Feld 1 (Höhe = ein Drittel der Breite, also deutlich breiter als hoch). Links neben jedem Rechteck steht groß „hinein 200 J“, „hinein 600 J“, „hinein 1200 J“. Jedes Rechteck ist durch GENAU EINE waagerechte Trennlinie in zwei Flächen geteilt, und die Trennlinie sitzt in allen drei Rechtecken an derselben Stelle des Rechtecks: vier Fünftel unten, ein Fünftel oben. Der große untere Teil ist hell gefüllt und trägt in der Fläche die Aufschrift „geladener Akku 160 J“ beziehungsweise „geladener Akku 480 J“ und „geladener Akku 960 J“. Der kleine obere Teil ist dunkler gefüllt UND zusätzlich schraffiert (Farbe darf nicht das einzige Unterscheidungsmerkmal sein). Nur in Feld 3 ist diese Fläche hoch genug für Schrift: Dort steht „Wärme 240 J“ in der Fläche. In Feld 1 und Feld 2 stehen „Wärme 40 J“ und „Wärme 120 J“ ÜBER dem Rechteck, jeweils mit einer kurzen senkrechten Anschlusslinie hinab auf die schraffierte Fläche (nicht rechts daneben — dort steht der Maßstrich). Unter jedem Feld steht groß und in allen drei Feldern wortgleich „Wirkungsgrad η = 80 %“. Damit das gleiche Verhältnis sichtbar wird, steht am rechten Rand jedes Rechtecks derselbe kurze senkrechte Maßstrich mit der kleinen Beschriftung „4 von 5“, jeweils genau an der Trennlinie. Die Bildaussage ist: Die Flächen wachsen, die Aufteilung bleibt. KEINE Strahlen, Blitze, Funken oder Kabel, die aus dem Bild ins Leere laufen; das Ladegerät steckt in keiner Steckdose. KEINE Nebenbilder neben den drei Feldern — kein Handy, kein Schaltschrank, kein Lüfter, keine Personen, keine Sprechblasen. KEINE Energiepfeile als dünne Streifen: Die Menge wird allein durch die Höhe der breiten Flächen gezeigt. Keine weiteren Zahlen als die genannten. Große, gut lesbare Schrift, kein Rahmen, keine Deko.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus drei gleich breiten Feldern nebeneinander, gleicher Bildausschnitt, ruhiger heller Hintergrund. Unten in jedem Feld steht dasselbe Handy-Ladegerät (Netzteil mit Stecker), in allen drei Feldern exakt gleich groß gezeichnet — es ändert sich nur die Energiemenge, nicht das Gerät. Über jedem Ladegerät steht ein breites Rechteck als Energiemenge: eine FLÄCHE, kein dünner Streifen. Alle drei Rechtecke sind exakt gleich breit und nur unterschiedlich hoch. Das Maß gibt das GRÖSSTE Rechteck vor: Feld 3 ist höchstens doppelt so hoch wie breit. Daraus folgen Feld 2 (Höhe = Breite) und Feld 1 (Höhe = ein Drittel der Breite, also deutlich breiter als hoch). Links neben jedem Rechteck steht groß „hinein 200 J“, „hinein 600 J“, „hinein 1200 J“. Jedes Rechteck ist durch GENAU EINE waagerechte Trennlinie in zwei Flächen geteilt, und die Trennlinie sitzt in allen drei Rechtecken an derselben Stelle des Rechtecks: vier Fünftel unten, ein Fünftel oben. Der große untere Teil ist hell gefüllt und trägt in der Fläche die Aufschrift „geladener Akku 160 J“ beziehungsweise „geladener Akku 480 J“ und „geladener Akku 960 J“. Der kleine obere Teil ist dunkler gefüllt UND zusätzlich schraffiert (Farbe darf nicht das einzige Unterscheidungsmerkmal sein). Nur in Feld 3 ist diese Fläche hoch genug für Schrift: Dort steht „Wärme 240 J“ in der Fläche. In Feld 1 und Feld 2 stehen „Wärme 40 J“ und „Wärme 120 J“ ÜBER dem Rechteck, jeweils mit einer kurzen senkrechten Anschlusslinie hinab auf die schraffierte Fläche (nicht rechts daneben — dort steht der Maßstrich). Unter jedem Feld steht groß und in allen drei Feldern wortgleich „Wirkungsgrad η = 80 %“. Damit das gleiche Verhältnis sichtbar wird, steht am rechten Rand jedes Rechtecks derselbe kurze senkrechte Maßstrich mit der kleinen Beschriftung „4 von 5“, jeweils genau an der Trennlinie. Die Bildaussage ist: Die Flächen wachsen, die Aufteilung bleibt. KEINE Strahlen, Blitze, Funken oder Kabel, die aus dem Bild ins Leere laufen; das Ladegerät steckt in keiner Steckdose. KEINE Nebenbilder neben den drei Feldern — kein Handy, kein Schaltschrank, kein Lüfter, keine Personen, keine Sprechblasen. KEINE Energiepfeile als dünne Streifen: Die Menge wird allein durch die Höhe der breiten Flächen gezeigt. Keine weiteren Zahlen als die genannten. Große, gut lesbare Schrift, kein Rahmen, keine Deko.]",
+  "rechnen": {
+   "hinweis": "Rechne: hinein minus Akku. Der Rest wird Wärme.",
+   "spalten": [
+    "hinein, davon Akku",
+    "Rechnung",
+    "Wärme verloren"
+   ],
+   "zeilen": [
+    [
+     "1000 J, davon 800 J",
+     "1000 – 800",
+     "200 J"
+    ],
+    [
+     "400 J, davon 320 J",
+     "",
+     ""
+    ],
+    [
+     "3000 J, davon 2400 J",
+     "",
+     ""
+    ]
+   ],
+   "anteile": [
+    0.35,
+    0.35,
+    0.3
+   ]
+  }
  },
  {
   "id": "fv13",
@@ -1675,7 +1705,42 @@
    "Ich kann zwei Geräte nach den Kosten im Jahr vergleichen."
   ],
   "zuhause": "Lies zu Hause die W-Zahl am Wasserkocher ab. Schreibe sie auf.",
-  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU VIER Feldern, nebeneinander in EINEM Bildausschnitt, gleiche Größe, gleiche Höhe, gleiche Blickrichtung von vorn, alle auf einer durchgehenden waagerechten Grundlinie. Jedes Feld ist Strich für Strich gleich aufgebaut und enthält genau drei Dinge untereinander: oben das Gerät als einfache, satt ausgefüllte Silhouette, darunter EINE Beschriftungszeile, ganz unten eine rechteckige Tafel in voller Farbfläche mit der kleinen Aufschrift „Kosten pro Jahr“ und darunter dem Betrag in sehr großer dunkler Schrift. FELD 1: ein Fernseher als liegendes Rechteck auf kurzem Fuß; Zeile „Fernseher · 100 W · 3 h/Tag“; Tafel „32,85 € pro Jahr“. FELD 2: eine LED-Lampe als kleiner Birnenumriss; Zeile „LED-Lampe · 10 W · 3 h/Tag“; Tafel „3,28 € pro Jahr“. FELD 3: ein Wasserkocher als hohe Kanne mit Griff und Ausguss; Zeile „Wasserkocher · 2000 W · 3 h/Tag“; Tafel „657,00 € pro Jahr“. FELD 4: derselbe Wasserkocher, Strich für Strich gleich gezeichnet wie in Feld 3; Zeile „Wasserkocher · 2000 W · 1 h/Tag“; Tafel „219,00 € pro Jahr“. Über allen vier Feldern läuft eine einzige durchgehende Kopfzeile: „1 kWh kostet 0,30 €“. Unter Feld 1 und Feld 2 steht gemeinsam die große Beschriftung „gleiche Zeit, anderes Gerät“, unter Feld 3 und Feld 4 gemeinsam „gleiches Gerät, andere Zeit“ — daran hängt die ganze Aussage des Bildes. Die vier Tafeln sind alle GLEICH GROSS: Der Unterschied steckt allein in der Zahl, nie in der Fläche. Ein Balkendiagramm ist ausdrücklich ausgeschlossen — 3,28 € und 657,00 € unterscheiden sich um das Zweihundertfache, maßstäbliche Balken wären auf dieser Seite nicht zeichenbar und würden falsch abgelesen. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — die vier Geräte und die vier Tafeln werden als volle, satte Farbflächen gezeichnet, nie als Schraffur, Raster, Punktmuster oder dünne Streifen, und die Beträge stehen als große dunkle Ziffern mitten in der hellen Tafel; sonst verschwimmt beim Verkleinern alles zu Grau. (2) Nebenbilder — es gibt genau vier Felder: keine fünfte Miniatur, kein Kreisdiagramm, kein Münzstapel, kein Geldschein, kein Rechnungsblatt, kein Zählerkasten mit Zahlenrollen in der Ecke, kein Tresen, keine Kundin, keine Personen, kein Kraftwerk. (3) Strahlengänge ins Leere — es werden KEINE Kabel, Stecker, Blitze, Strompfeile oder Flusslinien gezeichnet und keine Linie, die am Bildrand einfach aufhört; zwischen Gerät und Tafel steht in jedem Feld genau EIN kurzer gerader Pfeil nach unten, und das sind die einzigen vier Pfeile im ganzen Bild. Keine weiteren Zahlen als die genannten, keine Formel, keine Prozentangabe, kein Vergleichspfeil zwischen den Feldern. Ruhiger heller Hintergrund, große Schrift, keine Deko.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU VIER Feldern, nebeneinander in EINEM Bildausschnitt, gleiche Größe, gleiche Höhe, gleiche Blickrichtung von vorn, alle auf einer durchgehenden waagerechten Grundlinie. Jedes Feld ist Strich für Strich gleich aufgebaut und enthält genau drei Dinge untereinander: oben das Gerät als einfache, satt ausgefüllte Silhouette, darunter EINE Beschriftungszeile, ganz unten eine rechteckige Tafel in voller Farbfläche mit der kleinen Aufschrift „Kosten pro Jahr“ und darunter dem Betrag in sehr großer dunkler Schrift. FELD 1: ein Fernseher als liegendes Rechteck auf kurzem Fuß; Zeile „Fernseher · 100 W · 3 h/Tag“; Tafel „32,85 € pro Jahr“. FELD 2: eine LED-Lampe als kleiner Birnenumriss; Zeile „LED-Lampe · 10 W · 3 h/Tag“; Tafel „3,28 € pro Jahr“. FELD 3: ein Wasserkocher als hohe Kanne mit Griff und Ausguss; Zeile „Wasserkocher · 2000 W · 3 h/Tag“; Tafel „657,00 € pro Jahr“. FELD 4: derselbe Wasserkocher, Strich für Strich gleich gezeichnet wie in Feld 3; Zeile „Wasserkocher · 2000 W · 1 h/Tag“; Tafel „219,00 € pro Jahr“. Über allen vier Feldern läuft eine einzige durchgehende Kopfzeile: „1 kWh kostet 0,30 €“. Unter Feld 1 und Feld 2 steht gemeinsam die große Beschriftung „gleiche Zeit, anderes Gerät“, unter Feld 3 und Feld 4 gemeinsam „gleiches Gerät, andere Zeit“ — daran hängt die ganze Aussage des Bildes. Die vier Tafeln sind alle GLEICH GROSS: Der Unterschied steckt allein in der Zahl, nie in der Fläche. Ein Balkendiagramm ist ausdrücklich ausgeschlossen — 3,28 € und 657,00 € unterscheiden sich um das Zweihundertfache, maßstäbliche Balken wären auf dieser Seite nicht zeichenbar und würden falsch abgelesen. Drei Fehler drohen hier und sind ausgeschlossen: (1) Streifen statt Flächen — die vier Geräte und die vier Tafeln werden als volle, satte Farbflächen gezeichnet, nie als Schraffur, Raster, Punktmuster oder dünne Streifen, und die Beträge stehen als große dunkle Ziffern mitten in der hellen Tafel; sonst verschwimmt beim Verkleinern alles zu Grau. (2) Nebenbilder — es gibt genau vier Felder: keine fünfte Miniatur, kein Kreisdiagramm, kein Münzstapel, kein Geldschein, kein Rechnungsblatt, kein Zählerkasten mit Zahlenrollen in der Ecke, kein Tresen, keine Kundin, keine Personen, kein Kraftwerk. (3) Strahlengänge ins Leere — es werden KEINE Kabel, Stecker, Blitze, Strompfeile oder Flusslinien gezeichnet und keine Linie, die am Bildrand einfach aufhört; zwischen Gerät und Tafel steht in jedem Feld genau EIN kurzer gerader Pfeil nach unten, und das sind die einzigen vier Pfeile im ganzen Bild. Keine weiteren Zahlen als die genannten, keine Formel, keine Prozentangabe, kein Vergleichspfeil zwischen den Feldern. Ruhiger heller Hintergrund, große Schrift, keine Deko.]",
+  "rechnen": {
+   "hinweis": "Rechne mit 0,30 € für 1 kWh.",
+   "spalten": [
+    "Energie in kWh",
+    "Rechnung",
+    "Kosten in €"
+   ],
+   "zeilen": [
+    [
+     "6 kWh",
+     "6 · 0,30",
+     "1,80 €"
+    ],
+    [
+     "4 kWh",
+     "",
+     ""
+    ],
+    [
+     "5 kWh",
+     "",
+     ""
+    ],
+    [
+     "10 kWh",
+     "",
+     ""
+    ]
+   ],
+   "anteile": [
+    0.3,
+    0.38,
+    0.32
+   ]
+  }
  },
  {
   "id": "fn1",
@@ -2813,7 +2878,42 @@
    "Ich weiß: Ein Kernkraftwerk läuft mit k = 1,00."
   ],
   "zuhause": "Stelle Dominosteine auf. Jeder wirft genau einen um. Wie groß ist k?",
-  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU DREI gleich großen Feldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Jedes Feld zeigt denselben Reaktor in derselben Ansicht, nur die Steuerstäbe stehen verschieden tief. Aufbau in jedem Feld von oben nach unten, in allen drei Feldern auf derselben Höhe: (1) eine große Überschrift „Steuerstäbe 0 % drin“ bzw. „Steuerstäbe 50 % drin“ bzw. „Steuerstäbe 100 % drin“. (2) Ein aufrecht stehendes Rechteck als Reaktor, mit deutlicher Umrandung; darin fünf gleich breite, hellgraue, VOLL AUSGEFÜLLTE senkrechte Balken als Brennstäbe, gleichmäßig verteilt und deutlich voneinander getrennt. (3) Drei dunkle, ebenfalls VOLL AUSGEFÜLLTE senkrechte Stäbe, die von oben zwischen die Brennstäbe fahren – das sind die Steuerstäbe. Ihre Eintauchtiefe ist der ganze Unterschied zwischen den Feldern und muss auf einen Blick zu sehen sein: links stehen sie vollständig über dem Reaktor und ragen gar nicht hinein, in der Mitte reichen sie bis zur halben Höhe des Rechtecks, rechts reichen sie bis zum Boden des Rechtecks. Neben dem linken Reaktor eine senkrechte Maßlinie mit der Beschriftung „Höhe des Reaktors“, damit die halbe Tiefe in der Mitte ablesbar ist. (4) Darunter, in allen drei Feldern an derselben Stelle und in derselben sehr großen Schrift: „k = 1,60“ · „k = 1,00“ · „k = 0,40“. (5) Ganz unten je drei aufrechte, voll ausgefüllte Säulen nebeneinander auf einer gemeinsamen Grundlinie, beschriftet „1. Runde“, „2. Runde“, „3. Runde“; alle neun Säulen haben dieselbe Breite und dieselbe Grundlinie, und die erste Säule ist in allen drei Feldern exakt gleich hoch. Links werden die Säulen von links nach rechts deutlich höher, in der Mitte bleiben alle drei genau gleich hoch, rechts werden sie deutlich niedriger. Diese neun Säulen tragen die Aussage des Bildes und müssen als klar getrennte Flächen erkennbar sein. Drei Fehler, die hier drohen und ausdrücklich vermieden werden: ERSTENS Streifen statt Flächen – Brennstäbe, Steuerstäbe und Säulen werden als breite, gefüllte Rechtecke gezeichnet, niemals als dünne Striche, Schraffuren oder Linienbündel; ein schraffierter Reaktor liest sich als Muster und nicht als Bauteil. ZWEITENS Nebenbilder – es gibt genau diese drei Felder, kein viertes, keine kleinen Zusatzbilder am Rand, keine eingesetzten Lupenausschnitte, keine Legendenkästen mit weiteren Szenen. Ganz besonders: kein Kühlturm, kein Wasser, kein Dampf, keine Turbine, kein Generator, keine Stromleitung – der Aufbau des Kraftwerks ist nicht Thema dieser Seite. DRITTENS Strahlengänge ins Leere – aus dem Reaktor führen keine Pfeile, keine Strahlen, keine Zickzacklinien, keine Blitze und keine gestrichelten Linien heraus; es fliegt nichts aus dem Bild hinaus. Der einzige Richtungshinweis im Bild sind die Steuerstäbe, die von oben nach unten in den Reaktor reichen. Ebenfalls nicht im Bild: einzelne Neutronen als Punkte, verzweigte Spaltungsbäume, gestreute Punktwolken und alles, was man zählen könnte – gezählt werden soll hier nichts. Keine anderen Zahlen als 0 %, 50 %, 100 %, 1,60, 1,00, 0,40 sowie die drei Rundennummern. Keine Personen, keine Warnzeichen, keine Deko. Große Schrift, viel Weißraum.]"
+  "bildauftrag": "[BILD: großes, kontrastreiches Vergleichsbild aus GENAU DREI gleich großen Feldern, nebeneinander im selben Bildausschnitt, gleiche Größe, gleiche Grundlinie, gleicher heller Hintergrund. Jedes Feld zeigt denselben Reaktor in derselben Ansicht, nur die Steuerstäbe stehen verschieden tief. Aufbau in jedem Feld von oben nach unten, in allen drei Feldern auf derselben Höhe: (1) eine große Überschrift „Steuerstäbe 0 % drin“ bzw. „Steuerstäbe 50 % drin“ bzw. „Steuerstäbe 100 % drin“. (2) Ein aufrecht stehendes Rechteck als Reaktor, mit deutlicher Umrandung; darin fünf gleich breite, hellgraue, VOLL AUSGEFÜLLTE senkrechte Balken als Brennstäbe, gleichmäßig verteilt und deutlich voneinander getrennt. (3) Drei dunkle, ebenfalls VOLL AUSGEFÜLLTE senkrechte Stäbe, die von oben zwischen die Brennstäbe fahren – das sind die Steuerstäbe. Ihre Eintauchtiefe ist der ganze Unterschied zwischen den Feldern und muss auf einen Blick zu sehen sein: links stehen sie vollständig über dem Reaktor und ragen gar nicht hinein, in der Mitte reichen sie bis zur halben Höhe des Rechtecks, rechts reichen sie bis zum Boden des Rechtecks. Neben dem linken Reaktor eine senkrechte Maßlinie mit der Beschriftung „Höhe des Reaktors“, damit die halbe Tiefe in der Mitte ablesbar ist. (4) Darunter, in allen drei Feldern an derselben Stelle und in derselben sehr großen Schrift: „k = 1,60“ · „k = 1,00“ · „k = 0,40“. (5) Ganz unten je drei aufrechte, voll ausgefüllte Säulen nebeneinander auf einer gemeinsamen Grundlinie, beschriftet „1. Runde“, „2. Runde“, „3. Runde“; alle neun Säulen haben dieselbe Breite und dieselbe Grundlinie, und die erste Säule ist in allen drei Feldern exakt gleich hoch. Links werden die Säulen von links nach rechts deutlich höher, in der Mitte bleiben alle drei genau gleich hoch, rechts werden sie deutlich niedriger. Diese neun Säulen tragen die Aussage des Bildes und müssen als klar getrennte Flächen erkennbar sein. Drei Fehler, die hier drohen und ausdrücklich vermieden werden: ERSTENS Streifen statt Flächen – Brennstäbe, Steuerstäbe und Säulen werden als breite, gefüllte Rechtecke gezeichnet, niemals als dünne Striche, Schraffuren oder Linienbündel; ein schraffierter Reaktor liest sich als Muster und nicht als Bauteil. ZWEITENS Nebenbilder – es gibt genau diese drei Felder, kein viertes, keine kleinen Zusatzbilder am Rand, keine eingesetzten Lupenausschnitte, keine Legendenkästen mit weiteren Szenen. Ganz besonders: kein Kühlturm, kein Wasser, kein Dampf, keine Turbine, kein Generator, keine Stromleitung – der Aufbau des Kraftwerks ist nicht Thema dieser Seite. DRITTENS Strahlengänge ins Leere – aus dem Reaktor führen keine Pfeile, keine Strahlen, keine Zickzacklinien, keine Blitze und keine gestrichelten Linien heraus; es fliegt nichts aus dem Bild hinaus. Der einzige Richtungshinweis im Bild sind die Steuerstäbe, die von oben nach unten in den Reaktor reichen. Ebenfalls nicht im Bild: einzelne Neutronen als Punkte, verzweigte Spaltungsbäume, gestreute Punktwolken und alles, was man zählen könnte – gezählt werden soll hier nichts. Keine anderen Zahlen als 0 %, 50 %, 100 %, 1,60, 1,00, 0,40 sowie die drei Rundennummern. Keine Personen, keine Warnzeichen, keine Deko. Große Schrift, viel Weißraum.]",
+  "rechnen": {
+   "hinweis": "Bei 75 % ist k = 0,70. Rechne: Spaltungen · k.",
+   "spalten": [
+    "Spaltungen",
+    "Rechnung",
+    "nächste Runde"
+   ],
+   "zeilen": [
+    [
+     "100",
+     "100 · 0,70",
+     "70"
+    ],
+    [
+     "300",
+     "",
+     ""
+    ],
+    [
+     "1000",
+     "",
+     ""
+    ],
+    [
+     "50",
+     "",
+     ""
+    ],
+    [
+     "20",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fn10",

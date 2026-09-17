@@ -8,7 +8,8 @@
   "titel": "Der halbrunde Glasklotz",
   "name": "Warum knickt Licht im Glas?",
   "fachwoerter_neu": [
-   "Brechung"
+   "Brechung",
+   "Knick"
   ],
   "alltag": [
    "In der Kiste liegt ein schwerer, halbrunder Glasklotz.",
@@ -73,7 +74,7 @@
   ],
   "beispiel": {
    "frage": "Der Winkel in der Luft ist 40°. Was passiert im Glas?",
-   "antwort": "Im Glas ist der Winkel nur 25°. Der Strahl knickt an der Grenze zum Lot hin. Danach läuft er geradeaus weiter."
+   "antwort": "Im Glas ist der Winkel nur 25°. Der Strahl knickt an der Grenze zum Lot hin: um 40° – 25° = 15°. Danach läuft er geradeaus weiter."
   },
   "aufgaben": [
    {
@@ -122,7 +123,32 @@
    "Ich kann den Sonderfall auf dem Lot erklären."
   ],
   "zuhause": "Stelle einen Löffel in ein Glas Wasser. Sieh von der Seite hinein: Der Löffel wirkt am Wasserrand geknickt.",
-  "bildauftrag": "[BILD: ein Lichtstrahl läuft schräg von links oben durch Luft auf die gerade Fläche eines halbrunden Glasklotzes; am Auftreffpunkt ein deutlicher Knick zum gestrichelten Lot hin, im Glas läuft der Strahl gerade weiter; große Beschriftungen „Luft“, „Glas“, „Lot“ und „hier knickt es“; nur diese eine Lichtspur, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]"
+  "bildauftrag": "[BILD: ein Lichtstrahl läuft schräg von links oben durch Luft auf die gerade Fläche eines halbrunden Glasklotzes; am Auftreffpunkt ein deutlicher Knick zum gestrichelten Lot hin, im Glas läuft der Strahl gerade weiter; große Beschriftungen „Luft“, „Glas“, „Lot“ und „hier knickt es“; nur diese eine Lichtspur, keine Nebenstrahlen; ruhiger heller Hintergrund ohne Deko]",
+  "rechnen": {
+   "hinweis": "Rechne: Winkel in der Luft minus Winkel im Glas.",
+   "spalten": [
+    "Luft → Glas",
+    "Rechnung",
+    "Knick"
+   ],
+   "zeilen": [
+    [
+     "40° → 25°",
+     "40 – 25",
+     "15°"
+    ],
+    [
+     "15° → 10°",
+     "",
+     ""
+    ],
+    [
+     "55° → 33°",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  "lehrer": {
   "id": "fo3",
@@ -187,6 +213,18 @@
    "Den Zuhause-Versuch mit dem Löffel schon im Unterricht zeigen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke „ungebrochene Richtung“ und vergleiche den gestrichelten Weg mit dem echten Strahl.",
-  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Brechung. Kompetenz UF4 wie auf der Quellseite oi4. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Brechung. Kompetenz UF4 wie auf der Quellseite oi4. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Rechentabelle (seit 17.09.2026): Knick = Winkel in der Luft minus Winkel im Glas, wie die Spalte „Unterschied zum Winkel in der Luft“ auf der Quellseite oi4. Beide Winkel zeigt die Statuszeile (15° → 10°, 55° → 33°); den Knick selbst zeigt die Simulation nicht. Die Zahlen sind ohne Zehnerübergang gewählt.",
+  "rechnen_erwartet": [
+   [
+    "15° → 10°",
+    "15 – 10",
+    "5°"
+   ],
+   [
+    "55° → 33°",
+    "55 – 33",
+    "22°"
+   ]
+  ]
  }
 }

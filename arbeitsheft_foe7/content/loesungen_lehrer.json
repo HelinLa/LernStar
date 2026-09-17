@@ -202,7 +202,19 @@
    "Den Zuhause-Versuch mit dem Löffel schon im Unterricht zeigen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Drücke „ungebrochene Richtung“ und vergleiche den gestrichelten Weg mit dem echten Strahl.",
-  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Brechung. Kompetenz UF4 wie auf der Quellseite oi4. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung."
+  "kernlehrplan": "Inhaltsfeld Optische Instrumente (5) · Brechung. Kompetenz UF4 wie auf der Quellseite oi4. Die Codes stehen auch auf der Schülerseite; hier die ausführliche Zuordnung. Rechentabelle (seit 17.09.2026): Knick = Winkel in der Luft minus Winkel im Glas, wie die Spalte „Unterschied zum Winkel in der Luft“ auf der Quellseite oi4. Beide Winkel zeigt die Statuszeile (15° → 10°, 55° → 33°); den Knick selbst zeigt die Simulation nicht. Die Zahlen sind ohne Zehnerübergang gewählt.",
+  "rechnen_erwartet": [
+   [
+    "15° → 10°",
+    "15 – 10",
+    "5°"
+   ],
+   [
+    "55° → 33°",
+    "55 – 33",
+    "22°"
+   ]
+  ]
  },
  {
   "id": "fo4",
@@ -885,7 +897,7 @@
   "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Stellungen aus diesem Lehrerteil als Karten. Klassenversuch: Globus und Taschenlampe im abgedunkelten Raum (wie im Zuhause-Auftrag).",
   "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
   "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Globus-Versuch als Demonstration",
-  "ersatz_ohne_simulation": "Die Stellungen als Karten zeigen: 0° → Ben hat Nacht (Mitternacht), Yumi hat gleichzeitig Tag · 180° → Ben hat Sonne, Yumi Nacht · nach einer vollen Drehung (in Wirklichkeit 24 Stunden) steht alles wie am Anfang. Alternativ der Globus-Versuch mit Taschenlampe.",
+  "ersatz_ohne_simulation": "Die Stellungen als Karten zeigen: 0° → dein Ort hat Nacht (Mitternacht), die Gegenseite hat gleichzeitig Tag · 180° → dein Ort hat Tag, die Gegenseite Nacht · nach einer vollen Drehung (in Wirklichkeit 24 Stunden) steht alles wie am Anfang. Alternativ der Globus-Versuch mit Taschenlampe.",
   "merksatz": [
    "Achse",
    "24 Stunden"
@@ -893,18 +905,18 @@
   "tabelle_erwartet": [
    [
     "0°",
-    "Yumi",
-    "Ben"
+    "Gegenseite",
+    "dein Ort"
    ],
    [
     "180°",
-    "Ben",
-    "Yumi"
+    "dein Ort",
+    "Gegenseite"
    ],
    [
     "volle Drehung",
-    "Yumi",
-    "Ben"
+    "Gegenseite",
+    "dein Ort"
    ]
   ],
   "a1": {
@@ -927,7 +939,7 @@
   "a3": {
    "erwartung": "Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte liegt im eigenen Schatten der Erde. Darum ist immer irgendwo Nacht.",
    "alternativen": [
-    "Mit Ben und Yumi begründet: Bei 0° hat Yumi Tag und Ben gleichzeitig Nacht.",
+    "Mit den beiden Punkten begründet: Bei 0° hat die Gegenseite Tag und dein Ort gleichzeitig Nacht.",
     "Mit dem Globus-Versuch begründet: Die Lampe trifft nur eine Seite."
    ],
    "typische_fehler": [
@@ -938,11 +950,28 @@
   "hilfe3_wort": "Nacht",
   "schwache": [
    "Nur die Stellungen 0° und 180° bearbeiten lassen.",
-   "Bens roten Punkt in der Simulation mit dem Finger verfolgen lassen.",
+   "Den roten Punkt „dein Ort“ in der Simulation mit dem Finger verfolgen lassen.",
    "Den Globus-Versuch vor der Simulation real zeigen."
   ],
-  "zusatz": "Freiwillig für schnelle Lernende: Stelle 90° ein. Ben steht genau an der Grenze zwischen heller und dunkler Seite.",
-  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Erddrehung. Kompetenz E8 wie auf der Quellseite ew2. Die Rechnung 360° zu 24 Stunden fällt bewusst weg."
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle 90° ein. „Dein Ort“ steht genau an der Grenze zwischen heller und dunkler Seite.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Erddrehung. Kompetenz E8 wie auf der Quellseite ew2. Rechentabelle (seit 17.09.2026): Eine volle Drehung sind 360° in 24 Stunden, also 15° je Stunde. Diesen Faktor zeigt die Simulation nicht – bitte vorher an der Tafel herleiten (360 : 24 = 15). Zur Probe am Regler: 150° meldet „Dein Ort hat Tag (Mittag)“, 300° „Dein Ort hat Nacht (Abend)“.",
+  "rechnen_erwartet": [
+   [
+    "2 Stunden",
+    "2 · 15",
+    "30°"
+   ],
+   [
+    "10 Stunden",
+    "10 · 15",
+    "150°"
+   ],
+   [
+    "20 Stunden",
+    "20 · 15",
+    "300°"
+   ]
+  ]
  },
  {
   "id": "fw3",
@@ -1145,7 +1174,7 @@
   "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die drei Statuszeilen aus diesem Lehrerteil als Karten. Für das Gespräch: das Blitz-Donner-Beispiel aus dem Zuhause-Auftrag.",
   "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
   "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Hilfen im Tandem besprechen",
-  "ersatz_ohne_simulation": "Die Statuszeilen als Karten zeigen: Erde → Mond: 384 000 km, das Licht ist 1,3 Sekunden unterwegs · Erde → Sonne: 150 Mio. km, 8,3 Minuten · Erde → nächster Stern: gut 4 Lichtjahre, das Licht ist gut 4 Jahre unterwegs. Dazu: Wir sehen jedes Ziel so, wie es beim Start des Lichts war.",
+  "ersatz_ohne_simulation": "Die Statuszeilen als Karten zeigen: Erde → Mond: 384 000 km, das Licht ist 1,3 Sekunden unterwegs · Erde → Sonne: 150 Mio. km, 8,3 Minuten · Erde → nächster Stern: 4,2 Lichtjahre, das Licht ist 4,2 Jahre unterwegs. Dazu: Wir sehen jedes Ziel so, wie es beim Start des Lichts war.",
   "merksatz": [
    "Strecke",
    "länger"
@@ -1163,8 +1192,8 @@
    ],
    [
     "Erde → nächster Stern",
-    "gut 4 Lichtjahre",
-    "gut 4 Jahre"
+    "4,2 Lichtjahre",
+    "4,2 Jahre"
    ]
   ],
   "a1": {
@@ -1202,7 +1231,19 @@
    "Das Blitz-Donner-Beispiel vor der Simulation besprechen."
   ],
   "zusatz": "Freiwillig für schnelle Lernende: Gehe mit „weiter ▶“ bis zur Andromeda-Galaxie – etwa 2,5 Millionen Lichtjahre.",
-  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Entfernungen im Weltall. Kompetenz UF4 wie auf der Quellseite ew7. Astronomische Werte als Näherungswerte kennzeichnen; die Rechnung 60 · 300 000 km entfällt bewusst."
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Entfernungen im Weltall. Kompetenz UF4 wie auf der Quellseite ew7. Astronomische Werte als Näherungswerte kennzeichnen. Rechentabelle (seit 17.09.2026): Licht schafft in einer Minute 18 Mio. km (60 · 300 000 km). Die Simulation zeigt das beim Ziel Sonne klein unter der Maßklammer: „1 Lichtminute = 18 Mio. km“. Das Wort Lichtminute bitte nicht einführen; die Tabelle kommt ohne es aus.",
+  "rechnen_erwartet": [
+   [
+    "2 Minuten",
+    "2 · 18",
+    "36 Mio. km"
+   ],
+   [
+    "10 Minuten",
+    "10 · 18",
+    "180 Mio. km"
+   ]
+  ]
  },
  {
   "id": "fw7",

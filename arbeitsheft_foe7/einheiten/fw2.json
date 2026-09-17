@@ -112,7 +112,7 @@
    }
   ],
   "hilfen": {
-   "h1": "Sieh in die Tabelle: Bei 0° hat Yumi Tag und Ben Nacht – gleichzeitig.",
+   "h1": "Sieh in die Tabelle: Bei 0° hat die Gegenseite Tag und dein Ort Nacht – gleichzeitig.",
    "h2": "Beginne so: Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte …",
    "h3": "Fast fertige Antwort: Die Sonne beleuchtet immer nur eine Hälfte der Erde. Die andere Hälfte liegt im Schatten und hat ___ ."
   },
@@ -122,7 +122,37 @@
    "Ich kann sagen, welche Seite Tag hat."
   ],
   "zuhause": "Drehe einen Globus oder einen Ball langsam vor einer Taschenlampe. Beobachte, wie ein Punkt darauf in Licht und Schatten wandert.",
-  "bildauftrag": "[BILD: links die Sonne, rechts die Erdkugel; die sonnenzugewandte Hälfte hell, die abgewandte Hälfte dunkel; ein gebogener Drehpfeil um die Erde; zwei markierte Punkte auf der Kugel: einer im Hellen mit Beschriftung „Tag“, einer im Dunkeln mit „Nacht“; große Beschriftung „die Erde dreht sich“; keine weiteren Pfeile; ruhiger dunkler Weltraum-Hintergrund]"
+  "bildauftrag": "[BILD: links die Sonne, rechts die Erdkugel; die sonnenzugewandte Hälfte hell, die abgewandte Hälfte dunkel; ein gebogener Drehpfeil um die Erde; zwei markierte Punkte auf der Kugel: einer im Hellen mit Beschriftung „Tag“, einer im Dunkeln mit „Nacht“; große Beschriftung „die Erde dreht sich“; keine weiteren Pfeile; ruhiger dunkler Weltraum-Hintergrund]",
+  "rechnen": {
+   "hinweis": "Rechne mit 15° für jede Stunde.",
+   "spalten": [
+    "Stunden nach Mitternacht",
+    "Rechnung",
+    "Stellung am Regler"
+   ],
+   "zeilen": [
+    [
+     "4 Stunden",
+     "4 · 15",
+     "60°"
+    ],
+    [
+     "2 Stunden",
+     "",
+     ""
+    ],
+    [
+     "10 Stunden",
+     "",
+     ""
+    ],
+    [
+     "20 Stunden",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  "lehrer": {
   "id": "fw2",
@@ -130,7 +160,7 @@
   "material": "Simulation über den QR-Code (LernStar). Ohne Gerät: die Stellungen aus diesem Lehrerteil als Karten. Klassenversuch: Globus und Taschenlampe im abgedunkelten Raum (wie im Zuhause-Auftrag).",
   "zeit": "insgesamt etwa 45 Minuten: Seite A rund 20 Minuten, Seite B rund 25 Minuten",
   "sozialform": "Simulation in Partnerarbeit, Aufgaben 1 bis 3 in Einzelarbeit, Globus-Versuch als Demonstration",
-  "ersatz_ohne_simulation": "Die Stellungen als Karten zeigen: 0° → Ben hat Nacht (Mitternacht), Yumi hat gleichzeitig Tag · 180° → Ben hat Sonne, Yumi Nacht · nach einer vollen Drehung (in Wirklichkeit 24 Stunden) steht alles wie am Anfang. Alternativ der Globus-Versuch mit Taschenlampe.",
+  "ersatz_ohne_simulation": "Die Stellungen als Karten zeigen: 0° → dein Ort hat Nacht (Mitternacht), die Gegenseite hat gleichzeitig Tag · 180° → dein Ort hat Tag, die Gegenseite Nacht · nach einer vollen Drehung (in Wirklichkeit 24 Stunden) steht alles wie am Anfang. Alternativ der Globus-Versuch mit Taschenlampe.",
   "merksatz": [
    "Achse",
    "24 Stunden"
@@ -138,18 +168,18 @@
   "tabelle_erwartet": [
    [
     "0°",
-    "Yumi",
-    "Ben"
+    "Gegenseite",
+    "dein Ort"
    ],
    [
     "180°",
-    "Ben",
-    "Yumi"
+    "dein Ort",
+    "Gegenseite"
    ],
    [
     "volle Drehung",
-    "Yumi",
-    "Ben"
+    "Gegenseite",
+    "dein Ort"
    ]
   ],
   "a1": {
@@ -172,7 +202,7 @@
   "a3": {
    "erwartung": "Die Sonne beleuchtet immer nur eine Hälfte der Erdkugel. Die andere Hälfte liegt im eigenen Schatten der Erde. Darum ist immer irgendwo Nacht.",
    "alternativen": [
-    "Mit Ben und Yumi begründet: Bei 0° hat Yumi Tag und Ben gleichzeitig Nacht.",
+    "Mit den beiden Punkten begründet: Bei 0° hat die Gegenseite Tag und dein Ort gleichzeitig Nacht.",
     "Mit dem Globus-Versuch begründet: Die Lampe trifft nur eine Seite."
    ],
    "typische_fehler": [
@@ -183,10 +213,27 @@
   "hilfe3_wort": "Nacht",
   "schwache": [
    "Nur die Stellungen 0° und 180° bearbeiten lassen.",
-   "Bens roten Punkt in der Simulation mit dem Finger verfolgen lassen.",
+   "Den roten Punkt „dein Ort“ in der Simulation mit dem Finger verfolgen lassen.",
    "Den Globus-Versuch vor der Simulation real zeigen."
   ],
-  "zusatz": "Freiwillig für schnelle Lernende: Stelle 90° ein. Ben steht genau an der Grenze zwischen heller und dunkler Seite.",
-  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Erddrehung. Kompetenz E8 wie auf der Quellseite ew2. Die Rechnung 360° zu 24 Stunden fällt bewusst weg."
+  "zusatz": "Freiwillig für schnelle Lernende: Stelle 90° ein. „Dein Ort“ steht genau an der Grenze zwischen heller und dunkler Seite.",
+  "kernlehrplan": "Inhaltsfeld Erde und Weltall (6) · Erddrehung. Kompetenz E8 wie auf der Quellseite ew2. Rechentabelle (seit 17.09.2026): Eine volle Drehung sind 360° in 24 Stunden, also 15° je Stunde. Diesen Faktor zeigt die Simulation nicht – bitte vorher an der Tafel herleiten (360 : 24 = 15). Zur Probe am Regler: 150° meldet „Dein Ort hat Tag (Mittag)“, 300° „Dein Ort hat Nacht (Abend)“.",
+  "rechnen_erwartet": [
+   [
+    "2 Stunden",
+    "2 · 15",
+    "30°"
+   ],
+   [
+    "10 Stunden",
+    "10 · 15",
+    "150°"
+   ],
+   [
+    "20 Stunden",
+    "20 · 15",
+    "300°"
+   ]
+  ]
  }
 }

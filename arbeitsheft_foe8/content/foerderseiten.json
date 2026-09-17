@@ -320,7 +320,7 @@
   ],
   "beispiel": {
    "frage": "Nour setzt zwei Zellen ein. Was zeigt das Voltmeter?",
-   "antwort": "Jede Zelle gibt 1,5 V. Zwei Zellen geben zusammen 3 V, denn 1,5 V + 1,5 V = 3 V. Am Voltmeter steht U = 3 V. Die Lampe leuchtet heller als mit einer Zelle."
+   "antwort": "Jede Zelle gibt 1,5 V. Zwei Zellen geben zusammen 3 V, denn 1,5 V + 1,5 V = 2 · 1,5 V = 3 V. Am Voltmeter steht U = 3 V. Die Lampe leuchtet heller als mit einer Zelle."
   },
   "aufgaben": [
    {
@@ -369,7 +369,32 @@
    "Ich kann erklären, warum mehr Zellen die Lampe heller machen."
   ],
   "zuhause": "Suche zu Hause drei Batterien. Schreibe auf, wie viel Volt auf jeder steht. Kreise die größte Zahl ein.",
-  "bildauftrag": "[BILD: drei einfache Stromkreise nebeneinander, gleich groß und gleich gezeichnet; links eine Batteriezelle, in der Mitte zwei, rechts drei; in jedem Kreis eine Lampe und ein rundes Messgerät mit großem V; die Anzeigen lesen von links nach rechts 1,5 V, 3 V und 4,5 V; die Lampe leuchtet von links nach rechts sichtbar stärker; große Beschriftungen „1 Zelle“, „2 Zellen“, „3 Zellen“ unter den Kreisen; heller ruhiger Hintergrund, keine weiteren Bauteile, keine Deko]"
+  "bildauftrag": "[BILD: drei einfache Stromkreise nebeneinander, gleich groß und gleich gezeichnet; links eine Batteriezelle, in der Mitte zwei, rechts drei; in jedem Kreis eine Lampe und ein rundes Messgerät mit großem V; die Anzeigen lesen von links nach rechts 1,5 V, 3 V und 4,5 V; die Lampe leuchtet von links nach rechts sichtbar stärker; große Beschriftungen „1 Zelle“, „2 Zellen“, „3 Zellen“ unter den Kreisen; heller ruhiger Hintergrund, keine weiteren Bauteile, keine Deko]",
+  "rechnen": {
+   "hinweis": "Rechne mit 1,5 V je Zelle. Zeile 1 ist vorgerechnet.",
+   "spalten": [
+    "Zellen",
+    "Rechnung",
+    "Spannung U"
+   ],
+   "zeilen": [
+    [
+     "2 Zellen",
+     "2 · 1,5",
+     "3 V"
+    ],
+    [
+     "4 Zellen",
+     "",
+     ""
+    ],
+    [
+     "6 Zellen",
+     "",
+     ""
+    ]
+   ]
+  }
  },
  {
   "id": "fs4",
@@ -1024,7 +1049,7 @@
   ],
   "predictOk": 2,
   "forschen": [
-   "Drücke zuerst . Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
+   "Drücke in der oberen Reihe „10 Ω“ und in der unteren „20 Ω“. Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω, wie in Zeile 1. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.",
    "Drücke bei R₁ auf 20 Ω. Lies R_ges und den Strom I ab und trage Zeile 2 ein.",
    "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.",
    "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"
