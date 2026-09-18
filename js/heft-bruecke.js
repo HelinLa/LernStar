@@ -2036,18 +2036,9 @@ const HEFT_SEITEN = {
     frage: "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
     schritte: ["Drücke bei Kugel A „positiv“ und bei Kugel B „negativ“ und lies die Statuszeile ab.", "Drücke nun bei Kugel A „negativ“, sodass beide Kugeln negativ sind, und beobachte das Bild.", "Drücke bei Kugel B „positiv“, danach „Zurücksetzen“, und vergleiche alle vier Statuszeilen."]
   },
-  "st2": {
-    klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "ladungen-kraft", seite: 12,
-    kapitel: "Stromkreise verstehen",
-    name: "Wie wirken Ladungen aufeinander?",
-    titel: "Zwei geladene Kugeln an dünnen Fäden",
-    frage: "Wie ändert sich die Kraft zwischen zwei Ladungen, wenn der Abstand wächst?",
-    schritte: ["Lies ab, wie groß die Kraft bei 10 nC und 6,0 cm Abstand ist.", "Drücke „Abstand verdoppeln“ und lies die Kraft bei 12,0 cm ab.", "Stelle ein: Ladung 4 nC, danach 18 nC, und lies jedes Mal die Kraft ab."]
-  },
   "st3": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "spannung", seite: 17,
+    sim: "spannung", seite: 12,
     kapitel: "Stromkreise verstehen",
     name: "Was sagt die Zahl mit dem V auf der Batterie?",
     titel: "Die Zahl mit dem V auf der Zelle",
@@ -2056,7 +2047,7 @@ const HEFT_SEITEN = {
   },
   "st4": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "stromstaerke", seite: 22,
+    sim: "stromstaerke", seite: 17,
     kapitel: "Stromkreise verstehen",
     name: "Wie viel fließt da eigentlich?",
     titel: "Ein Schalter unterbricht den Kreis",
@@ -2065,7 +2056,7 @@ const HEFT_SEITEN = {
   },
   "st5": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "messen", seite: 27,
+    sim: "messen", seite: 22,
     kapitel: "Stromkreise verstehen",
     name: "Wie schließt man ein Messgerät richtig an?",
     titel: "Zwei Messgeräte an der Werkbank",
@@ -2074,7 +2065,7 @@ const HEFT_SEITEN = {
   },
   "st6": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "widerstand", seite: 32,
+    sim: "widerstand", seite: 27,
     kapitel: "Stromkreise verstehen",
     name: "Was bremst den Strom?",
     titel: "Drei Bauteile an derselben Batterie",
@@ -2083,7 +2074,7 @@ const HEFT_SEITEN = {
   },
   "st7": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "draht", seite: 37,
+    sim: "draht", seite: 32,
     kapitel: "Stromkreise verstehen",
     name: "Wovon hängt der Widerstand eines Drahtes ab?",
     titel: "Drahtrollen aus der Restekiste",
@@ -2092,7 +2083,7 @@ const HEFT_SEITEN = {
   },
   "st8": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "ohm-kennlinie", seite: 42,
+    sim: "ohm-kennlinie", seite: 37,
     kapitel: "Stromkreise verstehen",
     name: "Wie hängen Spannung, Stromstärke und Widerstand zusammen?",
     titel: "Eine Gerade aus Messpunkten",
@@ -2101,7 +2092,7 @@ const HEFT_SEITEN = {
   },
   "st9": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "reihe-widerstand", seite: 47,
+    sim: "reihe-widerstand", seite: 42,
     kapitel: "Stromkreise verstehen",
     name: "Was passiert, wenn alles hintereinander hängt?",
     titel: "Die Lichterkette an der Werkbank",
@@ -2110,7 +2101,7 @@ const HEFT_SEITEN = {
   },
   "st10": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "parallel-widerstand", seite: 52,
+    sim: "parallel-widerstand", seite: 47,
     kapitel: "Stromkreise verstehen",
     name: "Warum bleibt das Licht an, wenn eine Lampe ausfällt?",
     titel: "Eine Lampe fällt aus",
@@ -2119,7 +2110,7 @@ const HEFT_SEITEN = {
   },
   "st11": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "elektronen-drift", seite: 57,
+    sim: "elektronen-drift", seite: 52,
     kapitel: "Stromkreise verstehen",
     name: "Was bewegt sich im Draht wirklich?",
     titel: "Sofort hell trotz drei Metern Kabel",
@@ -2128,7 +2119,7 @@ const HEFT_SEITEN = {
   },
   "st12": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "blitz", seite: 62,
+    sim: "blitz", seite: 57,
     kapitel: "Stromkreise verstehen",
     name: "Was passiert bei einem Blitz?",
     titel: "Gewitter über dem Schulhof",
@@ -2137,7 +2128,7 @@ const HEFT_SEITEN = {
   },
   "st13": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "elektrische-leistung", seite: 67,
+    sim: "elektrische-leistung", seite: 62,
     kapitel: "Stromkreise verstehen",
     name: "Wie viel Energie braucht ein Gerät?",
     titel: "Zwei Lampen an einem Netzteil",
@@ -2146,7 +2137,7 @@ const HEFT_SEITEN = {
   },
   "st14": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "stromgefahren", seite: 72,
+    sim: "stromgefahren", seite: 67,
     kapitel: "Stromkreise verstehen",
     name: "Wo wird Strom im Haushalt gefährlich?",
     titel: "Zu viel an einer Steckdose",
@@ -2155,7 +2146,7 @@ const HEFT_SEITEN = {
   },
   "be1": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-begriff", seite: 81,
+    sim: "v-begriff", seite: 76,
     kapitel: "Bewegungen beschreiben",
     name: "Wer ist schneller - und woran misst man das?",
     titel: "Das Wettrennen auf dem Schulhof",
@@ -2164,7 +2155,7 @@ const HEFT_SEITEN = {
   },
   "be2": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-messen", seite: 86,
+    sim: "v-messen", seite: 81,
     kapitel: "Bewegungen beschreiben",
     name: "Wie misst man eine Geschwindigkeit?",
     titel: "Zehn Meter und eine Stoppuhr",
@@ -2173,7 +2164,7 @@ const HEFT_SEITEN = {
   },
   "be3": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-formel", seite: 91,
+    sim: "v-formel", seite: 86,
     kapitel: "Bewegungen beschreiben",
     name: "Wie rechnet man aus Weg und Zeit die Geschwindigkeit?",
     titel: "Der Rechenzettel an der Werkbank",
@@ -2182,7 +2173,7 @@ const HEFT_SEITEN = {
   },
   "be4": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-umrechnung", seite: 96,
+    sim: "v-umrechnung", seite: 91,
     kapitel: "Bewegungen beschreiben",
     name: "Warum steht auf dem Schild km/h und im Heft m/s?",
     titel: "Tacho und Heft widersprechen sich",
@@ -2191,7 +2182,7 @@ const HEFT_SEITEN = {
   },
   "be5": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "gleichfoermig-rs", seite: 101,
+    sim: "gleichfoermig-rs", seite: 96,
     kapitel: "Bewegungen beschreiben",
     name: "Was heißt gleichförmige Bewegung?",
     titel: "Kreidestriche auf dem Schulhof",
@@ -2200,7 +2191,7 @@ const HEFT_SEITEN = {
   },
   "be6": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "weg-zeit-diagramm", seite: 106,
+    sim: "weg-zeit-diagramm", seite: 101,
     kapitel: "Bewegungen beschreiben",
     name: "Was verrät ein Zeit-Weg-Diagramm?",
     titel: "Linien an der Werkstattwand",
@@ -2209,7 +2200,7 @@ const HEFT_SEITEN = {
   },
   "be7": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "beschleunigung-rs", seite: 111,
+    sim: "beschleunigung-rs", seite: 106,
     kapitel: "Bewegungen beschreiben",
     name: "Was passiert beim Anfahren und Bremsen?",
     titel: "Anfahren und Bremsen am Hoftor",
@@ -2218,7 +2209,7 @@ const HEFT_SEITEN = {
   },
   "be8": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-zeit-diagramm", seite: 116,
+    sim: "v-zeit-diagramm", seite: 111,
     kapitel: "Bewegungen beschreiben",
     name: "Was verrät ein Zeit-Geschwindigkeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
@@ -2227,7 +2218,7 @@ const HEFT_SEITEN = {
   },
   "be9": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "bremsweg-jg9", seite: 121,
+    sim: "bremsweg-jg9", seite: 116,
     kapitel: "Bewegungen beschreiben",
     name: "Wie weit fährt ein Auto, bis es steht?",
     titel: "Ein Schild für die Einfahrt",
@@ -3654,7 +3645,7 @@ const HEFT_SEITEN = {
     name: "Wann ziehen sich Ladungen an, wann stoßen sie sich ab?",
     titel: "Wenn die Folie knistert",
     frage: "Wann ziehen sich Ladungen an, wann stoßen sie sich ab?",
-    schritte: ["Wähle die Marke „plus und minus“ und lies unter „Was wirkt hier?“ ab, ob sich die Kugeln anziehen und wie groß die Kraft in µN ist.", "Wähle bei gleichem Abstand die Marke „beide plus“ und vergleiche Richtung und Betrag der Kraft.", "Wähle die Marke „Abstand verdoppeln“ (von 6 cm auf 12 cm) und lies die Kraft erneut ab."]
+    schritte: ["Wähle die Marke „plus und minus“ und lies unter „Was wirkt hier?“ ab, ob sich die Kugeln anziehen und wie groß die Kraft in µN ist.", "Wähle bei gleichem Abstand die Marke „beide plus“ und vergleiche Richtung und Betrag der Kraft.", "Stelle die Ladung je Kugel auf 4 nC und danach auf 18 nC; lies jedes Mal ab, ohne den Abstand zu ändern."]
   },
   "la2": {
     klasse: 9, schulform: "Gymnasium NRW",
@@ -4277,18 +4268,9 @@ const HEFT_SEITEN = {
     frage: "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
     schritte: ["Öffne die Simulation und lies die Statuszeile.", "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.", "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.", "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"]
   },
-  "fs2": {
-    klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ladungen-kraft", seite: 11,
-    kapitel: "Strom in der Werkstatt",
-    name: "Was macht die Kraft größer?",
-    titel: "Zwei geladene Kugeln",
-    frage: "Was macht die Kraft F größer und was macht sie kleiner?",
-    schritte: ["Öffne die Simulation. Die kleine grüne Kugel brauchst du hier nicht.", "Drücke „Abstand verdoppeln“. Trage die Kraft F in Zeile 2 ein. Der Abstand bleibt jetzt 12,0 cm.", "Stelle „Ladung je Kugel“ auf 4 nC. Trage die Kraft F in Zeile 3 ein.", "Stelle „Ladung je Kugel“ auf 18 nC. Trage die Kraft F in Zeile 4 ein."]
-  },
   "fs3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "spannung", seite: 15,
+    sim: "spannung", seite: 11,
     kapitel: "Strom in der Werkstatt",
     name: "Was sagt die Zahl mit dem V?",
     titel: "Die Zahl mit dem V auf der Zelle",
@@ -4297,7 +4279,7 @@ const HEFT_SEITEN = {
   },
   "fs4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromstaerke", seite: 19,
+    sim: "stromstaerke", seite: 15,
     kapitel: "Strom in der Werkstatt",
     name: "Wie viel Strom fließt?",
     titel: "Wie viel fließt da?",
@@ -4306,7 +4288,7 @@ const HEFT_SEITEN = {
   },
   "fs5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "messen", seite: 23,
+    sim: "messen", seite: 19,
     kapitel: "Strom in der Werkstatt",
     name: "Wohin kommt das Messgerät?",
     titel: "Zwei Messgeräte auf der Werkbank",
@@ -4315,7 +4297,7 @@ const HEFT_SEITEN = {
   },
   "fs6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "widerstand", seite: 27,
+    sim: "widerstand", seite: 23,
     kapitel: "Strom in der Werkstatt",
     name: "Großer Widerstand, kleiner Strom",
     titel: "Was bremst den Strom?",
@@ -4324,7 +4306,7 @@ const HEFT_SEITEN = {
   },
   "fs7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "draht", seite: 31,
+    sim: "draht", seite: 27,
     kapitel: "Strom in der Werkstatt",
     name: "Wovon hängt der Widerstand ab?",
     titel: "Der lange dünne Draht",
@@ -4333,7 +4315,7 @@ const HEFT_SEITEN = {
   },
   "fs8": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ohm-kennlinie", seite: 35,
+    sim: "ohm-kennlinie", seite: 31,
     kapitel: "Strom in der Werkstatt",
     name: "Doppelte Spannung, doppelter Strom",
     titel: "Was macht doppelte Spannung?",
@@ -4342,7 +4324,7 @@ const HEFT_SEITEN = {
   },
   "fs9": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "reihe-widerstand", seite: 39,
+    sim: "reihe-widerstand", seite: 35,
     kapitel: "Strom in der Werkstatt",
     name: "Zwei Widerstände in einer Reihe",
     titel: "Was passiert hintereinander?",
@@ -4351,7 +4333,7 @@ const HEFT_SEITEN = {
   },
   "fs10": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "parallel-widerstand", seite: 43,
+    sim: "parallel-widerstand", seite: 39,
     kapitel: "Strom in der Werkstatt",
     name: "Zwei Wege für den Strom",
     titel: "Was passiert nebeneinander?",
@@ -4360,7 +4342,7 @@ const HEFT_SEITEN = {
   },
   "fs11": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "elektronen-drift", seite: 47,
+    sim: "elektronen-drift", seite: 43,
     kapitel: "Strom in der Werkstatt",
     name: "Langsames Wandern, schnelles Signal",
     titel: "Warum geht das Licht sofort an?",
@@ -4369,7 +4351,7 @@ const HEFT_SEITEN = {
   },
   "fs12": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "blitz", seite: 51,
+    sim: "blitz", seite: 47,
     kapitel: "Strom in der Werkstatt",
     name: "Warum kommt der Donner später?",
     titel: "Blitz und Donner",
@@ -4378,7 +4360,7 @@ const HEFT_SEITEN = {
   },
   "fs13": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromgefahren", seite: 55,
+    sim: "stromgefahren", seite: 51,
     kapitel: "Strom in der Werkstatt",
     name: "Wann schaltet die Sicherung ab?",
     titel: "Zu viel an einer Steckdose",
@@ -4387,7 +4369,7 @@ const HEFT_SEITEN = {
   },
   "fb1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-begriff", seite: 62,
+    sim: "v-begriff", seite: 58,
     kapitel: "Wie schnell ist schnell?",
     name: "Wer ist schneller?",
     titel: "Das Wettrennen am Bildschirm",
@@ -4396,7 +4378,7 @@ const HEFT_SEITEN = {
   },
   "fb2": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-messen", seite: 66,
+    sim: "v-messen", seite: 62,
     kapitel: "Wie schnell ist schnell?",
     name: "Wie misst und rechnet man das Tempo?",
     titel: "Messen und ausrechnen",
@@ -4405,7 +4387,7 @@ const HEFT_SEITEN = {
   },
   "fb3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-umrechnung", seite: 70,
+    sim: "v-umrechnung", seite: 66,
     kapitel: "Wie schnell ist schnell?",
     name: "Von m/s zu km/h – mal 3,6",
     titel: "km/h oder m/s?",
@@ -4414,7 +4396,7 @@ const HEFT_SEITEN = {
   },
   "fb4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "gleichfoermig-rs", seite: 74,
+    sim: "gleichfoermig-rs", seite: 70,
     kapitel: "Wie schnell ist schnell?",
     name: "Was sagen die Abstände?",
     titel: "Kreidestriche auf dem Schulhof",
@@ -4423,7 +4405,7 @@ const HEFT_SEITEN = {
   },
   "fb5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "weg-zeit-diagramm", seite: 78,
+    sim: "weg-zeit-diagramm", seite: 74,
     kapitel: "Wie schnell ist schnell?",
     name: "Was verrät die Linie im Weg-Zeit-Bild?",
     titel: "Linien an der Werkstattwand",
@@ -4432,7 +4414,7 @@ const HEFT_SEITEN = {
   },
   "fb6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-zeit-diagramm", seite: 82,
+    sim: "v-zeit-diagramm", seite: 78,
     kapitel: "Wie schnell ist schnell?",
     name: "Was verrät die Linie im Tempo-Bild?",
     titel: "Die Linie steigt und fällt",
@@ -4441,7 +4423,7 @@ const HEFT_SEITEN = {
   },
   "fb7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "bremsweg-jg9", seite: 86,
+    sim: "bremsweg-jg9", seite: 82,
     kapitel: "Wie schnell ist schnell?",
     name: "Wie weit fährt ein Auto bis zum Halt?",
     titel: "Bis das Auto steht",

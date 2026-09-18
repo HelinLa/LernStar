@@ -36,6 +36,14 @@ import importlib.util as _ilu
 _spec=_ilu.spec_from_file_location("lehrplan_gts", os.path.join(MOTOR,"lehrplan_gts.py"))
 lehrplan=_ilu.module_from_spec(_spec); _spec.loader.exec_module(lehrplan)
 import plan
+
+# Fertige Hefte gehoeren in Abdullahs Projektordner, NICHT auf den Schreibtisch
+# (er am 18.09.2026: "ich habe uns doch ein ordner eingerichtet, immer dort alles
+# reinpacken"). ABLAGE zeigt auf den Unterordner dieser Reihe; fehlt der Ordner,
+# faellt der Bau auf den Schreibtisch zurueck, statt abzubrechen.
+ABLAGE = os.path.expanduser("~/Desktop/Projekt KI Verkauf Physik /Förderhefte")
+if not os.path.isdir(ABLAGE):
+    ABLAGE = os.path.expanduser("~/Desktop")
 import build_pilot as bp          # Seite A / Seite B / Lehrerteil im Foerdersatz
 HERE=_HIER                        # nach dem Sternimport setzen (HERE-Falle)
 
@@ -616,7 +624,7 @@ def build_lehrerband():
             lt=lb_testloesungen(t,ch,pn); pages+=lt; pn+=len(lt)
     out=os.path.join(HERE,"build","lehrerband.pdf")
     pages[0].save(out,"PDF",resolution=150,save_all=True,append_images=pages[1:])
-    ziel=os.path.expanduser(f"~/Desktop/{DATEINAME}_Lehrerband.pdf")
+    ziel=os.path.join(ABLAGE, f"{DATEINAME}_Lehrerband.pdf")
     try:
         from pypdf import PdfReader, PdfWriter
         from pypdf.generic import NameObject
@@ -991,14 +999,14 @@ if __name__=="__main__":
     pages[0].save(out,"PDF",resolution=150,save_all=True,append_images=pages[1:])
     print("Seiten gesetzt:",len(pages),"->",os.path.relpath(out,HERE))
     if "--druck" in sys.argv:
-        import shutil; ziel=os.path.expanduser(f"~/Desktop/{DATEINAME}_Druck.pdf")
+        import shutil; ziel=os.path.join(ABLAGE, f"{DATEINAME}_Druck.pdf")
         shutil.copy2(out,ziel); print("Druckfassung zusätzlich:",ziel)
     try:
-        eb=os.path.expanduser(f"~/Desktop/{DATEINAME}.pdf")
+        eb=os.path.join(ABLAGE, f"{DATEINAME}.pdf")
         try:
             build_ebook(out,eb,nav,qrpages,seitentexte,toc_pn,toc_n)
         except PermissionError:
-            eb=os.path.expanduser(f"~/Desktop/{DATEINAME}_NEU.pdf")
+            eb=os.path.join(ABLAGE, f"{DATEINAME}_NEU.pdf")
             build_ebook(out,eb,nav,qrpages,seitentexte,toc_pn,toc_n)
             print("HINWEIS: alte E-Book-Datei war gesperrt - neue Fassung daneben gelegt.")
         print("SAVED (navigierbares E-Book)",eb)

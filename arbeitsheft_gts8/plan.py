@@ -41,8 +41,6 @@ KAPITEL = [
         "themen": [
             {"id": "st1",  "name": "Warum knistert der Pullover beim Ausziehen?",
              "sim": "ladung"},
-            {"id": "st2",  "name": "Wie wirken Ladungen aufeinander?",
-             "sim": "ladungen-kraft"},
             {"id": "st3",  "name": "Was sagt die Zahl mit dem V auf der Batterie?",
              "sim": "spannung"},
             {"id": "st4",  "name": "Wie viel fließt da eigentlich?",

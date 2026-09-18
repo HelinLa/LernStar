@@ -28,6 +28,7 @@ const FELO_FORSCHEN_SEITEN = {
   kf7: "kraefte-addieren",
   ki3: "beschleunigung-ef",
   ki4: "beschleunigung-ef",
+  la1: "ladungen-kraft",
   st8: "ohm-kennlinie",
 };
 
@@ -125,6 +126,14 @@ const FELO_FORSCHEN_REGELN = {
     ],
     hinweis: "Miss selbst: F2 festhalten, F1 in drei Stufen einstellen, einmal umdrehen und dann F1 + F2 rechnen.",
   },
+  "ladungen-kraft": {
+    weg: [".ldk-sim .fpm-grid .fpm-note", ".ldk-sim > .sim-hint"],
+    maske: [
+      { sel: "#ldkStatus", re: /F = k · q · q \/ r²[\s\S]*?<b>([^<]*)<\/b>/, mit: "Kraft F = <b>$1</b>" },
+      { sel: "#ldkStatus", re: /<b>Der Abstand zählt doppelt[\s\S]*$/, mit: "" },
+    ],
+    hinweis: "Vorzeichen und Ladungsmenge untersuchen – die Rechnung mit dem Abstand kommt erst in der Oberstufe.",
+  },
   "lageenergie": {
     weg: [".fpm-sim > .sim-hint", ".fpm-sim .fpm-grid .fpm-note"],
     maske: [
@@ -204,5 +213,6 @@ const FELO_FORSCHEN_BEDIENUNG = {
  "hebel": "_hebSet('f2', 200); _hebSet('l1', 0.40); _hebSet('l1', 0.80); _hebMarke(2);",
  "feste-rolle": "_rolMarke('fest'); _rolSet('g', 200); _rolSet('g', 500); _rolSet('g', 800); _rolMarke('lose');",
  "flaschenzug": "_flzSet('g', 900); _flzSet('n', 1); _flzSet('n', 4);",
- "zahnrad": "_znrSet('z1', 30); _znrSet('n1', 60); _znrSet('z2', 12); _znrSet('z2', 20); _znrSet('z2', 45);"
+ "zahnrad": "_znrSet('z1', 30); _znrSet('n1', 60); _znrSet('z2', 12); _znrSet('z2', 20); _znrSet('z2', 45);",
+ "ladungen-kraft": "_ldkMarke(1,-1,10,6);"
 };

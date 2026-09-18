@@ -54,60 +54,6 @@
   "theme": "gts_strom"
  },
  {
-  "id": "st2",
-  "basiskonzept": "Wechselwirkung",
-  "titel": "Zwei geladene Kugeln an dünnen Fäden",
-  "problem": "Auf der Werkbank hängen zwei kleine Kugeln an dünnen Fäden. Jannis lädt sie mit einem geriebenen Stab und schiebt sie langsam auseinander. Nour behauptet, doppelter Abstand halbiere die Kraft. Jannis ist sich nicht sicher. Am Bildschirm kannst du den Abstand genau einstellen und die Kraft in Zahlen ablesen.",
-  "frage": "Wie ändert sich die Kraft zwischen zwei Ladungen, wenn der Abstand wächst?",
-  "auftrag": "Untersuche, wie Abstand und Ladungsmenge die Kraft zwischen den beiden Kugeln verändern.",
-  "predict": [
-   "Doppelter Abstand bedeutet die halbe Kraft, weil die Kugeln doppelt so weit weg sind.",
-   "Doppelter Abstand bedeutet nur noch ein Viertel der Kraft, der Abstand zählt doppelt.",
-   "Bis zu einer bestimmten Entfernung bleibt die Kraft gleich stark. Weiter weg wirkt sie dann gar nicht mehr."
-  ],
-  "predictOk": 1,
-  "forschen": [
-   "Lies ab, wie groß die Kraft bei 10 nC und 6,0 cm Abstand ist.",
-   "Drücke „Abstand verdoppeln“ und lies die Kraft bei 12,0 cm ab.",
-   "Stelle ein: Ladung 4 nC, danach 18 nC, und lies jedes Mal die Kraft ab."
-  ],
-  "tabCols": [
-   "Einstellung",
-   "Kraft F"
-  ],
-  "tabRows": [
-   "10 nC, r = 6,0 cm",
-   "10 nC, r = 12,0 cm",
-   "4 nC, r = 12,0 cm",
-   "18 nC, r = 12,0 cm"
-  ],
-  "fachtext": "Zwischen zwei Ladungen wirkt eine Kraft, ohne dass sich die Körper berühren. Wie groß sie ist, hängt von zwei Dingen ab: von der Ladungsmenge und vom Abstand. Mehr Ladung bedeutet mehr Kraft. Beim Abstand ist es besonders auffällig, denn er geht doppelt in die Rechnung ein. Verdoppelst du ihn, bleibt nur ein Viertel der Kraft übrig. Die Richtung entscheiden die Vorzeichen: gleich stößt ab, verschieden zieht an.",
-  "merksatz": [
-   {
-    "pre": "Doppelter Abstand heißt nur noch",
-    "loesung": "ein Viertel",
-    "post": "der Kraft."
-   },
-   {
-    "pre": "Mehr Ladung auf den Kugeln bedeutet eine",
-    "loesung": "größere Kraft",
-    "post": "."
-   }
-  ],
-  "beobachtung": "Bei 10 nC und 6,0 cm zeigt die Anzeige F = 249,7 µN. Links plus, rechts minus, die Kugeln ziehen sich an. Nach „Abstand verdoppeln“ steht bei 12,0 cm nur noch F = 62,4 µN, also genau ein Viertel. Mit 4 nC sind es 10,0 µN, mit 18 nC dagegen 202,2 µN. Der Abstand zählt somit doppelt.",
-  "aufgabe": {
-   "frage": "Berechne, wie groß die Kraft bei 3,0 cm Abstand ist, wenn sie bei 6,0 cm 249,7 µN beträgt.",
-   "zeilen": 3,
-   "loesung": "Der Abstand wird halbiert. Weil der Abstand doppelt zählt, wird die Kraft viermal so groß. Also 249,7 µN mal 4 gleich 998,8 µN."
-  },
-  "alltag": "Reibe zu Hause zwei aufgeblasene Luftballons an einem Pullover, hänge sie an Fäden nebeneinander und beschreibe, wie sich ihr Abstand verändert.",
-  "alltagAfb": "II",
-  "alltagKomp": "E5",
-  "ueberleitung": "Danach geht es um die Batterie in der Werkstatt und um die Zahl mit dem V darauf.",
-  "name": "Wie wirken Ladungen aufeinander?",
-  "theme": "gts_strom"
- },
- {
   "id": "st3",
   "basiskonzept": "Energie",
   "titel": "Die Zahl mit dem V auf der Zelle",

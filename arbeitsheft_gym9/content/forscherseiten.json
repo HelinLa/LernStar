@@ -5,28 +5,29 @@
   "titel": "Wenn die Folie knistert",
   "problem": "Sina zieht die Schutzfolie vom neuen Scheinwerfer. Sie knistert, und ein Fussel springt an ihre Hand – dann stößt ein zweiter Fussel den ersten weg. David reibt einen Luftballon am Pulli: Er zieht Sinas Haare an, aber zwei geriebene Ballons drücken sich auseinander. Mal Anziehen, mal Abstoßen – vom selben Reiben.",
   "frage": "Wann ziehen sich Ladungen an, wann stoßen sie sich ab?",
-  "auftrag": "Untersuche, wie das Vorzeichen der beiden Kugeln und ihr Abstand über Richtung und Betrag der Kraft entscheiden.",
+  "auftrag": "Untersuche, wie das Vorzeichen der beiden Kugeln und die Ladungsmenge über Richtung und Betrag der Kraft entscheiden.",
   "predict": [
-   "Gleiche Vorzeichen stoßen sich ab, verschiedene ziehen sich an; und je größer der Abstand, desto kleiner die Kraft.",
+   "Gleiche Vorzeichen stoßen sich ab, verschiedene ziehen sich an; und je mehr Ladung, desto größer die Kraft.",
    "Geladene Körper ziehen sich immer an – geladen ist geladen, das Vorzeichen spielt keine Rolle.",
-   "Ob sich zwei Ladungen anziehen oder abstoßen, merkst du nur ganz dicht davor. Ab ein paar Zentimetern Abstand wirkt gar keine Kraft mehr."
+   "Ob sich zwei Ladungen anziehen oder abstoßen, hängt davon ab, welche der beiden Kugeln mehr Ladung trägt."
   ],
   "predictOk": 0,
   "forschen": [
    "Wähle die Marke „plus und minus“ und lies unter „Was wirkt hier?“ ab, ob sich die Kugeln anziehen und wie groß die Kraft in µN ist.",
    "Wähle bei gleichem Abstand die Marke „beide plus“ und vergleiche Richtung und Betrag der Kraft.",
-   "Wähle die Marke „Abstand verdoppeln“ (von 6 cm auf 12 cm) und lies die Kraft erneut ab."
+   "Stelle die Ladung je Kugel auf 4 nC und danach auf 18 nC; lies jedes Mal ab, ohne den Abstand zu ändern."
   ],
   "tabCols": [
    "anziehen oder abstoßen?",
    "Kraft F in µN"
   ],
   "tabRows": [
-   "plus und minus, 6 cm",
-   "beide plus, 6 cm",
-   "plus und minus, 12 cm"
+   "plus und minus, 10 nC",
+   "beide plus, 10 nC",
+   "plus und minus, 4 nC",
+   "plus und minus, 18 nC"
   ],
-  "fachtext": "Zwei Ladungen üben aufeinander eine Kraft aus: Gleiche Vorzeichen stoßen sich ab, verschiedene ziehen sich an. Wie stark diese Kraft ist, hängt von den Ladungen und ihrem Abstand ab und lässt sich mit F = k · q · q: r² berechnen. Der Abstand steht im Quadrat unter dem Bruch: Verdoppelst du ihn, sinkt die Kraft nicht auf die Hälfte, sondern auf ein Viertel. Die Ladung selbst entsteht beim Reiben nicht neu – es wechseln nur Elektronen von einem Körper zum anderen. Was der eine zu wenig hat, hat der andere zu viel.",
+  "fachtext": "Zwei Ladungen üben aufeinander eine Kraft aus: Gleiche Vorzeichen stoßen sich ab, verschiedene ziehen sich an. Das Vorzeichen entscheidet also über die Richtung. Wie stark die Kraft ist, hängt davon ab, wie viel Ladung auf den Kugeln sitzt: Mehr Ladung bedeutet mehr Kraft. Auch der Abstand wirkt mit – je weiter die Kugeln auseinander sind, desto schwächer die Kraft; wie genau, wird erst in der Oberstufe berechnet. Die Ladung selbst entsteht beim Reiben nicht neu – es wechseln nur Elektronen von einem Körper zum anderen. Was der eine zu wenig hat, hat der andere zu viel.",
   "merksatz": [
    {
     "pre": "Gleiche Ladungen stoßen sich ab, verschiedene",
@@ -34,16 +35,16 @@
     "post": "."
    },
    {
-    "pre": "Verdoppelt man den Abstand, sinkt die Kraft auf",
-    "loesung": "ein Viertel",
+    "pre": "Mehr Ladung auf den Kugeln bedeutet eine",
+    "loesung": "größere Kraft",
     "post": "."
    }
   ],
-  "beobachtung": "Bei plus und minus mit 6 cm Abstand ziehen sich die Kugeln an, die Kraft beträgt 249,7 µN. Stellst du beide auf plus, bleibt der Betrag bei 249,7 µN, nur die Pfeile drehen sich um – jetzt stoßen sie sich ab. Verdoppelst du den Abstand auf 12 cm, sinkt die Kraft auf 62,4 µN, also genau auf ein Viertel. Die Richtung entscheidet das Vorzeichen, die Stärke entscheidet der Abstand.",
+  "beobachtung": "Bei plus und minus mit 10 nC je Kugel ziehen sich die Kugeln an, die Kraft beträgt 249,7 µN. Stellst du beide auf plus, bleibt der Betrag bei 249,7 µN, nur die Pfeile drehen sich um – jetzt stoßen sie sich ab. Verringerst du die Ladung auf 4 nC, sinkt die Kraft auf 39,9 µN; mit 18 nC steigt sie auf 808,9 µN. Die Richtung entscheidet das Vorzeichen, die Stärke die Ladungsmenge.",
   "aufgabe": {
-   "frage": "Erkläre, warum die Kraft auf ein Viertel sinkt, wenn Sina den Abstand der beiden Kugeln von 6 cm auf 12 cm verdoppelt.",
+   "frage": "Erkläre, warum sich zwei geriebene Luftballons abstoßen, ein geriebener Ballon aber Sinas Haare anzieht.",
    "zeilen": 4,
-   "loesung": "Im Nenner der Formel F = k · q · q: r² steht der Abstand im Quadrat. Verdoppelt man r, wird r² viermal so groß. Weil r² unter dem Bruch steht, wird die Kraft dadurch viermal kleiner. Aus 249,7 µN werden so 62,4 µN, also ein Viertel."
+   "loesung": "Beim Reiben wechseln Elektronen von einem Körper zum anderen. Beide Ballons bekommen dabei dieselbe Art Ladung, also gleiche Vorzeichen – gleiche Ladungen stoßen sich ab. Die Haare geben Elektronen ab und bleiben mit der entgegengesetzten Ladung zurück; verschiedene Vorzeichen ziehen sich an. Je mehr Ladung dabei getrennt wird, desto größer ist die Kraft."
   },
   "alltag": "Zieh im Dunkeln einen Wollpullover über den Kopf und achte auf das Knistern und die winzigen Funken – hier trennen sich beim Reiben dieselben Ladungen wie an Sinas Folie.",
   "alltagAfb": "II",

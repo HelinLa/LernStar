@@ -56,7 +56,7 @@
   "prep": {
    "kannIch": [
     "Ich kann erklären, warum sich gleiche Ladungen abstoßen und ungleiche anziehen, und diese Kraft an Beispielen aus dem Alltag wiedererkennen.",
-    "Ich kann begründen, dass bei doppeltem Abstand nur noch ein Viertel der Kraft zwischen zwei Ladungen übrig bleibt, und dazu rechnen.",
+    "Ich kann beschreiben, wohin das Messgerät gehört: das Amperemeter in den Stromkreis, das Voltmeter parallel zum Bauteil.",
     "Ich kann die Spannung als Antrieb der Quelle beschreiben und ausrechnen, welche Spannung mehrere Zellen zu je 1,5 V hintereinander liefern.",
     "Ich kann erklären, was die Stromstärke angibt, und begründen, warum im offenen Stromkreis 0 A fließen und die Lampe dunkel bleibt.",
     "Ich kann ein Amperemeter in Reihe und ein Voltmeter parallel anschließen und erklären, was passiert, wenn ich beide vertausche.",
@@ -121,7 +121,7 @@
    ],
    "a2": [
     {
-     "aussage": "Verdoppelst du den Abstand zwischen zwei geladenen Kugeln, bleibt nur noch ein Viertel der Kraft übrig.",
+     "aussage": "Ein Amperemeter wird in den Stromkreis eingebaut, ein Voltmeter dagegen parallel zum Bauteil.",
      "stimmt": true
     },
     {

@@ -39,7 +39,6 @@ KAPITEL = [
         "inhaltsfeld": "Stromkreise (7)",
         "themen": [
             {"id": "fs1",  "quelle": ["st1"],          "name": "Wie wirken Ladungen aufeinander?",       "sim": "ladung"},
-            {"id": "fs2",  "quelle": ["st2"],          "name": "Was macht die Kraft größer?",            "sim": "ladungen-kraft"},
             {"id": "fs3",  "quelle": ["st3"],          "name": "Was sagt die Zahl mit dem V?",           "sim": "spannung"},
             {"id": "fs4",  "quelle": ["st4"],          "name": "Wie viel Strom fließt?",                 "sim": "stromstaerke"},
             {"id": "fs5",  "quelle": ["st5"],          "name": "Wohin kommt das Messgerät?",             "sim": "messen"},

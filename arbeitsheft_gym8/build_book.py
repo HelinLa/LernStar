@@ -53,6 +53,14 @@ _kspec=_ilu.spec_from_file_location("kompetenzen", os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "arbeitsheft",
     "kompetenzen.py"))
 kompetenzen=_ilu.module_from_spec(_kspec); _kspec.loader.exec_module(kompetenzen)
+
+# Fertige Hefte gehoeren in Abdullahs Projektordner, NICHT auf den Schreibtisch
+# (er am 18.09.2026: "ich habe uns doch ein ordner eingerichtet, immer dort alles
+# reinpacken"). ABLAGE zeigt auf den Unterordner dieser Reihe; fehlt der Ordner,
+# faellt der Bau auf den Schreibtisch zurueck, statt abzubrechen.
+ABLAGE = os.path.expanduser("~/Desktop/Projekt KI Verkauf Physik /Arbeitshefte Gymnasium ")
+if not os.path.isdir(ABLAGE):
+    ABLAGE = os.path.expanduser("~/Desktop")
 import plan
 # ACHTUNG: build_final definiert selbst ein HERE (Ordner von Klasse 5) und der
 # Stern-Import zieht es mit herein. HERE muss deshalb DANACH gesetzt werden,
@@ -1906,7 +1914,7 @@ def build_lehrerband(gesetzt=None):
     pages,starts,marken=gesetzt if gesetzt else lehrerband_setzen()
     out=os.path.join(HERE,"build","lehrerband.pdf")
     pages[0].save(out,"PDF",resolution=150,save_all=True,append_images=pages[1:])
-    ziel=os.path.expanduser(f"~/Desktop/{DATEINAME}_Lehrerband.pdf")
+    ziel=os.path.join(ABLAGE, f"{DATEINAME}_Lehrerband.pdf")
     try:
         from pypdf import PdfReader, PdfWriter
         from pypdf.generic import NameObject
@@ -2201,17 +2209,17 @@ if __name__=="__main__":
         print("Druckfreundliche Fassung fertig (weisser Grund, ohne Farbflaechen).")
         sys.exit(0)
     if "--druck" in sys.argv:
-        import shutil; ziel=os.path.expanduser(f"~/Desktop/{DATEINAME}_Druck.pdf")
+        import shutil; ziel=os.path.join(ABLAGE, f"{DATEINAME}_Druck.pdf")
         shutil.copy2(out,ziel); print("Druckfassung zusätzlich:",ziel)
     try:
-        eb=os.path.expanduser(f"~/Desktop/{DATEINAME}.pdf")
+        eb=os.path.join(ABLAGE, f"{DATEINAME}.pdf")
         try:
             build_ebook(out, eb, nav, qrpages, seitentexte, mess_start, mess_starts,
                         toc_pn, bk_start)
         except PermissionError:
             # Die alte Datei laesst sich nicht ueberschreiben (offen, gesperrt oder
             # ausserhalb der Schreibrechte). Dann daneben legen statt abbrechen.
-            eb=os.path.expanduser(f"~/Desktop/{DATEINAME}_NEU.pdf")
+            eb=os.path.join(ABLAGE, f"{DATEINAME}_NEU.pdf")
             build_ebook(out, eb, nav, qrpages, seitentexte, mess_start, mess_starts,
                         toc_pn, bk_start)
             print("HINWEIS: alte E-Book-Datei war gesperrt - neue Fassung daneben gelegt.")
