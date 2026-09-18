@@ -32,8 +32,8 @@
   // (ERZEUGT aus den Heftdaten, nicht von Hand aendern). Fehlt die Datei, bleibt
   // der Forschermodus einfach aus - jede Heftseite sieht dann ihre Simulation
   // unveraendert, und das ist der sichere Zustand.
-  const SEITEN = (typeof FELO_FORSCHEN_SEITEN !== 'undefined') ? FELO_FORSCHEN_SEITEN : {};
-  const REGELN = (typeof FELO_FORSCHEN_REGELN !== 'undefined') ? FELO_FORSCHEN_REGELN : {};
+  const SEITEN = (typeof FELABS_FORSCHEN_SEITEN !== 'undefined') ? FELABS_FORSCHEN_SEITEN : {};
+  const REGELN = (typeof FELABS_FORSCHEN_REGELN !== 'undefined') ? FELABS_FORSCHEN_REGELN : {};
 
   // ── Zustand ───────────────────────────────────────────────────────
   let aktiv = null;       // simId, solange der Modus laeuft
@@ -108,7 +108,7 @@
 
   function an(simId) {
     aktiv = simId;
-    window.FELO_FORSCHEN = simId;       // liest physics-sim.js fuer Texte IM BILD
+    window.FELABS_FORSCHEN = simId;       // liest physics-sim.js fuer Texte IM BILD
     stil(); leiste(); anwenden();
     const m = modal();
     if (m && !beobachter) {
@@ -119,7 +119,7 @@
 
   function aus() {
     aktiv = null;
-    window.FELO_FORSCHEN = null;
+    window.FELABS_FORSCHEN = null;
     if (beobachter) { beobachter.disconnect(); beobachter = null; }
   }
 
@@ -138,5 +138,5 @@
   window.addEventListener('hashchange', aus);
 
   // Fuer Werkzeuge und Tests
-  window.FELO_FORSCHERMODUS = { SEITEN, REGELN, an, aus, aufdecken, aktiv: () => aktiv };
+  window.FELABS_FORSCHERMODUS = { SEITEN, REGELN, an, aus, aufdecken, aktiv: () => aktiv };
 })();

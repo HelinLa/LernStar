@@ -1,4 +1,4 @@
-# FELO PHYSIK 5/6 · Forscherheft Realschule NRW
+# FeLabs PHYSIK 5/6 · Forscherheft Realschule NRW
 
 110 Seiten, sechs Kapitel, ein durchgehender Rahmen: **fünf Kinder bauen und benutzen
 ein Jahr lang eine Bude im Wald.** Jede Seite löst ein Problem, das aus der Seite davor
@@ -6,8 +6,8 @@ entsteht. Ergebnis ist ein PDF auf dem Schreibtisch, die Druckvorstufe bleibt in
 
 | Datei | wofür |
 |---|---|
-| `FELO_Physik_5_6_Realschule_NRW.pdf` | auf dem Schreibtisch: Lesezeichen, klickbares Inhaltsverzeichnis, QR-Kärtchen sind Links zur Simulation |
-| `build/FELO_Physik_5_6_Realschule_NRW_Druck.pdf` | Druckvorstufe, A4, 150 dpi (mit `--druck` auch auf den Schreibtisch) |
+| `FeLabs_Physik_5_6_Realschule_NRW.pdf` | auf dem Schreibtisch: Lesezeichen, klickbares Inhaltsverzeichnis, QR-Kärtchen sind Links zur Simulation |
+| `build/FeLabs_Physik_5_6_Realschule_NRW_Druck.pdf` | Druckvorstufe, A4, 150 dpi (mit `--druck` auch auf den Schreibtisch) |
 
 ## Zwei Befehle
 

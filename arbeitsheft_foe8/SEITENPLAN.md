@@ -1,7 +1,7 @@
 # Förderheft 8 · Gesamtschule NRW — Seitenplan (zur Freigabe)
 
 Stand 05.09.2026. Grundlage: Schritt-1-Analyse aller 23 Lerneinheiten von
-FELO 8 Gesamtschule (`analyse_schritt1.json`) plus fünf adversariale Prüfungen
+FeLabs 8 Gesamtschule (`analyse_schritt1.json`) plus fünf adversariale Prüfungen
 (Umfang, Kompetenzen, Fachwörter, Reziprozität, Heft-gegen-Sim).
 **Nichts wird ausformuliert, bevor dieser Plan freigegeben ist.**
 
@@ -10,7 +10,7 @@ Rahmen aus dem Ausgangsheft: Nour und Jannis, ein Jahr älter, richten die
 
 ## Umfang (gemessen, nicht geschätzt)
 
-| | Original FELO 8 | Förderheft 8 |
+| | Original FeLabs 8 | Förderheft 8 |
 |---|---|---|
 | Lerneinheiten | 23 | **20** (3 Zusammenlegungen) |
 | Schülerseiten | 91 (gezählt) | **49** |
@@ -141,5 +141,5 @@ Voltmeter, Stoppuhr) zählen nach Regel 2 nicht mit.
 
 ## Noch nicht geklärt
 
-Die Einstiegsbilder von FELO 8 sind wie bei Band 7 **alle 23 Platzhalter**
+Die Einstiegsbilder von FeLabs 8 sind wie bei Band 7 **alle 23 Platzhalter**
 („Bild st1 folgt“). Das Förderheft 8 erbt sie, bis eigene Bilder da sind.

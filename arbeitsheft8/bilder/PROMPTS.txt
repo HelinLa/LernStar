@@ -1,4 +1,4 @@
-# FELO PHYSIK 8 · Realschule NRW · 25 noch fehlende Bilder
+# FeLabs PHYSIK 8 · Realschule NRW · 25 noch fehlende Bilder
 # Ablage: ~/Desktop/Arbeitsheft-Bilder 8 Klasse/  (oder direkt in <heft>/bilder/)
 # Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.
 

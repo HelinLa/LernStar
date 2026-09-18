@@ -1,8 +1,8 @@
-# FELO Förderprofil — Hausstil der Förderreihe
+# FeLabs Förderprofil — Hausstil der Förderreihe
 
 Gilt für alle Förderhefte (Start: Förderheft 7, Gesamtschule NRW). Grundlage:
 das Fremdgutachten vom 04.09.2026 (geprüft am selben Tag) und die bestehenden
-FELO-Formregeln. Ein Förderheft ist KEINE gekürzte Kopie: gleiche fachliche
+FeLabs-Formregeln. Ein Förderheft ist KEINE gekürzte Kopie: gleiche fachliche
 Ziele, leichterer Lernweg. Schwierigkeit sinkt durch Sprache, kleinere Schritte
 und Hilfen — nie durch falsche Physik.
 
@@ -19,7 +19,7 @@ fachliche Lücken. Sprachniveau A2–B1. Möglichst selbstständiges Arbeiten.
 - Immer dieselbe Bezeichnung für dieselbe Sache.
 - Operatoren zuerst und eindeutig: Kreuze an, Ordne zu, Miss, Trage ein,
   Berechne, Vergleiche, Erkläre, Untersuche, Beobachte, Lies ab, Wähle.
-- Nie „klicke" (bestehende FELO-Regel). Dezimalkomma, nie Dezimalpunkt.
+- Nie „klicke" (bestehende FeLabs-Regel). Dezimalkomma, nie Dezimalpunkt.
 - Nie mehrere neue Anforderungen versteckt in einem Satz.
 
 ## Aufbau jeder Lerneinheit (eine Doppelseite pro Lernziel)
@@ -93,7 +93,7 @@ SEITE B — VERSTEHEN UND ÜBEN
   wirklich anzeigt (Heft-gegen-Sim-Regel). Nichts erfinden, nichts runden,
   was die Anzeige nicht selbst rundet.
 - Alle Simulationen, Personen (Nour und Jannis, 12, Klasse 7; Frau Demir)
-  und Kontexte kommen aus dem Ausgangsheft FELO 7 Gesamtschule.
+  und Kontexte kommen aus dem Ausgangsheft FeLabs 7 Gesamtschule.
 - Fehlt eine Information im Ausgangsheft: [PRÜFEN] markieren, nie raten.
 - QR-Adresse bleibt LernStar (helinla.github.io/LernStar).
 

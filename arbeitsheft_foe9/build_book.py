@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""FELO Physik · Förderheft - das ganze Heft.
+"""FeLabs Physik · Förderheft - das ganze Heft.
 
 Klasse, Schulform und Quellband kommen aus plan.py: Diese Datei ist fuer JEDES
 Foerderheft dieselbe und muss beim naechsten Band nicht angefasst werden.
@@ -49,8 +49,8 @@ HERE=_HIER                        # nach dem Sternimport setzen (HERE-Falle)
 
 KL       = str(plan.KLASSE)
 SFORM    = plan.SCHULFORM
-BANDNAME = f"FELO Physik {KL} · Förderheft"
-DATEINAME= f"FELO_Foerder_{KL}"
+BANDNAME = f"FeLabs Physik {KL} · Förderheft"
+DATEINAME= f"FeLabs_Foerder_{KL}"
 FACHGEBIETE=" · ".join(k["titel"] for k in plan.ALLE_KAPITEL)
 INHALTSFELDER=" · ".join(k["inhaltsfeld"] for k in plan.ALLE_KAPITEL)
 LEITWORT="Kleine Schritte · klare Sprache · viele Hilfen"
@@ -98,7 +98,7 @@ def book_cover():
     y=fd.OBEN
     fd.T(h,fd.X0,y,"Förderheft",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
     y+=LH_ZWISCH+18
-    fd.T(h,fd.X0,y,"FELO",fd.schrift("bold",bp.DISPLAY_GROSS),fd.STIL["h1"])
+    fd.T(h,fd.X0,y,"FeLabs",fd.schrift("bold",bp.DISPLAY_GROSS),fd.STIL["h1"])
     y+=round(fd.einheiten(bp.DISPLAY_GROSS)*fd.ZAB,2)+10
     h.ln([(fd.X0,y),(fd.X1,y)],fd.STIL["akzent"],1.6)
     y+=24
@@ -106,8 +106,17 @@ def book_cover():
     y+=LH_DISPLAY+6
     fd.T(h,fd.X0,y,SFORM,fd.schrift("med",fd.HAUPT),fd.STIL["akzent"])
     y+=LH_HAUPT+8
-    fd.T(h,fd.X0,y,"Forschen · verstehen · anwenden",fd.schrift("reg",fd.ZWISCHEN),
+    # Der Lernweg steht seit dem 18.09.2026 auf dem Deckblatt, zweizeilig, dazu
+    # eine Zeile, was das Heft ist. Gemessen: 389 und 401 Einheiten breit, die
+    # Unterzeile 845 - die Lesespalte hat 1096, es passt ohne Umbruch.
+    fd.T(h,fd.X0,y,"Forschen · Entdecken · Lernen",fd.schrift("reg",fd.ZWISCHEN),
          fd.STIL["text"])
+    y+=LH_ZWISCH+2
+    fd.T(h,fd.X0,y,"Anwenden · Begreifen · Sichern",fd.schrift("reg",fd.ZWISCHEN),
+         fd.STIL["text"])
+    y+=LH_ZWISCH+8
+    fd.T(h,fd.X0,y,"Arbeitsheft für einen verständlichen und aktiven Physikunterricht",
+         fd.schrift("reg",fd.KLEIN),fd.STIL["text"])
     y+=LH_ZWISCH+6
     fd.T(h,fd.X0,y,LEITWORT,fd.schrift("med",fd.FLIESS),fd.STIL["akzent"])
     # Die Kapitelliste steht im unteren Drittel, damit das Blatt nicht kopflastig
@@ -133,7 +142,9 @@ def book_cover():
         COVERBOXEN.append((fd.X0,y,fd.X1,y+kh))
         y+=kh+14
     y+=26
-    fd.T(h,fd.X0,y,"Forschen · Eigeninitiative · Lernen · Organisieren",
+    # Der Lernweg steht seit dem 18.09.2026 schon oben unter der Wortmarke -
+    # hier unten stuende er ein zweites Mal. Stattdessen die Reihe selbst.
+    fd.T(h,fd.X0,y,"FeLabs · Arbeitshefte für den Physikunterricht",
          fd.schrift("med",fd.FLIESS),fd.STIL["akzent"])
     y+=fd.LH+4
     # Als Absatz, nicht als eine Zeile: in KLEIN gesetzt traegt dieser Satz 89
@@ -159,11 +170,11 @@ SCHRITTE_B=[("Merksatz:","Setze die zwei Wörter aus der Wortbank ein."),
             ("Das kann ich:","Hake ab, was du schon kannst."),
             ("Zu Hause:","Ein kleiner Auftrag mit einfachen Dingen.")]
 FUER_LEHRKRAEFTE=[
-    f"Dieses Förderheft hat die gleichen fachlichen Ziele wie FELO Physik {KL} "
+    f"Dieses Förderheft hat die gleichen fachlichen Ziele wie FeLabs Physik {KL} "
     f"({SFORM.split()[0]}), aber einen leichteren Lernweg: Sprachniveau A2–B1, "
     "kleine Schritte, gestufte Hilfen.",
     "Jeder Abschnitt trägt seinen Kompetenzcode aus dem Kernlehrplan – dieselben "
-    "Codes wie in den übrigen FELO-Bänden.",
+    "Codes wie in den übrigen FeLabs-Bänden.",
     "Der getrennte Lehrerband enthält Lösungen, Erwartungshorizonte, typische Fehler, "
     "den Ersatzweg ohne Simulation und die ausführlichen Kernlehrplan-Bezüge."]
 IMPRESSUM=[("Autor & Konzept","Abdullah Lala"),("Texte & Illustrationen","Abdullah Lala"),
@@ -537,7 +548,7 @@ def lb_cover():
     y=fd.OBEN
     fd.T(h,fd.X0,y,"Lehrerband",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
     y+=LH_ZWISCH+18
-    fd.T(h,fd.X0,y,"FELO",fd.schrift("bold",bp.DISPLAY_GROSS),fd.STIL["h1"])
+    fd.T(h,fd.X0,y,"FeLabs",fd.schrift("bold",bp.DISPLAY_GROSS),fd.STIL["h1"])
     y+=round(fd.einheiten(bp.DISPLAY_GROSS)*fd.ZAB,2)+10
     h.ln([(fd.X0,y),(fd.X1,y)],fd.STIL["akzent"],1.6)
     y+=24
@@ -561,7 +572,7 @@ def lb_hinweise(pn):
     B=[b_titel("Hinweise zum Einsatz",unterzeile=BANDNAME+" · Lehrerband")]
     B+=b_zeilen("Das Förderheft richtet sich an Lernende mit Förderbedarf Lernen, "
         "geringer Lesekompetenz, Deutsch als Zweitsprache oder großen fachlichen Lücken "
-        f"(Sprachniveau A2–B1). Es verfolgt die gleichen fachlichen Ziele wie FELO Physik "
+        f"(Sprachniveau A2–B1). Es verfolgt die gleichen fachlichen Ziele wie FeLabs Physik "
         f"{KL} – die Schwierigkeit sinkt durch Sprache, kleinere Schritte und Hilfen, nie "
         "durch falsche Physik.",grad=fd.FLIESS,abstand=fd.ABS_ABSCHNITT,name="Vorspann")
     for titel,txt in LB_HINWEISE:
@@ -633,8 +644,8 @@ def build_lehrerband():
         w.add_outline_item("Deckblatt",0)
         for lbl,pg in marks: w.add_outline_item(lbl,pg-1)
         w._root_object[NameObject("/PageMode")]=NameObject("/UseOutlines")
-        w.add_metadata({"/Title":f"FELO Physik {KL} – Förderheft {SFORM} – Lehrerband",
-                        "/Author":"Abdullah Lala","/Creator":"FELO",
+        w.add_metadata({"/Title":f"FeLabs Physik {KL} – Förderheft {SFORM} – Lehrerband",
+                        "/Author":"Abdullah Lala","/Creator":"FeLabs",
                         "/Subject":"Lösungen, Erwartungshorizonte und typische Fehler"})
         with open(ziel,"wb") as f: w.write(f)
     except Exception as e:
@@ -707,13 +718,13 @@ def build_ebook(src,dst,nav,qrpages,seitentexte,toc_pn,toc_n):
     for i in range(toc_pn+toc_n-1,len(w.pages)):
         link(i,rc(fd.X1-70,fd.FUSS_Y-6,fd.X1,fd.FUSS_Y+26),toc_pn)
     w._root_object[NameObject("/PageMode")]=NameObject("/UseOutlines")
-    w.add_metadata({"/Title":f"FELO Physik {KL} – Förderheft {SFORM}",
+    w.add_metadata({"/Title":f"FeLabs Physik {KL} – Förderheft {SFORM}",
                     "/Author":"Abdullah Lala",
                     "/Subject":FACHGEBIETE,
-                    "/Keywords":f"FELO, Physik, Klasse {KL}, {SFORM}, Förderheft, "
+                    "/Keywords":f"FeLabs, Physik, Klasse {KL}, {SFORM}, Förderheft, "
                                 f"einfache Sprache, {INHALTSFELDER}, {FACHGEBIETE}, "
                                 "Fassung 1.1, Stand 2026-09-09",
-                    "/Creator":"FELO"})
+                    "/Creator":"FeLabs"})
     if seitentexte:
         try:
             from textschicht import anhaengen
@@ -972,7 +983,7 @@ if __name__=="__main__":
     # SATZ selbst in Versalien setzt, faellt damit sofort auf.
     import re as _re
     _VERSAL=_re.compile(r"(?<![A-Za-zÄÖÜäöüß])[A-ZÄÖÜ]{2,}(?![A-Za-zÄÖÜäöüß])")
-    _erlaubt={"FELO","NRW","QR"}
+    _erlaubt={"FeLabs","NRW","QR"}
     _aus_inhalt=set()
     for _o in list(SEITEN.values())+list(LOES.values())+list(TESTS.values()):
         def _flach(x):

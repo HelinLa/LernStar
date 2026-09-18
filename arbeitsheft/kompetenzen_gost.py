@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Kompetenzen und Anforderungsbereiche der FELO-Hefte fuer die OBERSTUFE.
+"""Kompetenzen und Anforderungsbereiche der FeLabs-Hefte fuer die OBERSTUFE.
 
 Quelle: Kernlehrplan fuer die Sekundarstufe II - Gymnasium/Gesamtschule in
 Nordrhein-Westfalen, Physik (Heft 4721, RdErl. v. 31.05.2022, in Kraft zum

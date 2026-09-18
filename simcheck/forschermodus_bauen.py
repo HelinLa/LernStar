@@ -163,11 +163,11 @@ def erzeuge_regeldatei(seiten, regeln, bedienung, pfad):
         "// ============================================================================",
         "'use strict';",
         "",
-        "const FELO_FORSCHEN_SEITEN = {",
+        "const FELABS_FORSCHEN_SEITEN = {",
     ]
     for sid in sorted(seiten):
         zeilen.append("  %s: %s," % (sid, json.dumps(seiten[sid], ensure_ascii=False)))
-    zeilen += ["};", "", "const FELO_FORSCHEN_REGELN = {"]
+    zeilen += ["};", "", "const FELABS_FORSCHEN_REGELN = {"]
     for sim in sorted(regeln):
         r = regeln[sim]
         zeilen.append("  %s: {" % json.dumps(sim, ensure_ascii=False))
@@ -181,7 +181,7 @@ def erzeuge_regeldatei(seiten, regeln, bedienung, pfad):
         zeilen.append("    ],")
         zeilen.append("    hinweis: %s," % json.dumps(r.get("hinweis", ""), ensure_ascii=False))
         zeilen.append("  },")
-    zeilen += ["};", "", "const FELO_FORSCHEN_BEDIENUNG = %s;" % json.dumps(bedienung, ensure_ascii=False, indent=1), ""]
+    zeilen += ["};", "", "const FELABS_FORSCHEN_BEDIENUNG = %s;" % json.dumps(bedienung, ensure_ascii=False, indent=1), ""]
     with io.open(pfad, "w", encoding="utf-8") as fh:
         fh.write("\n".join(zeilen))
 

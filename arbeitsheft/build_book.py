@@ -133,9 +133,9 @@ def _diag(chid,tid):
     fn=SCENES.get(chid)
     return (lambda d,x,y,br=None,fn=fn,tid=tid: szene(d,x,y,fn,tid,br)) if fn else None
 
-BANDNAME="FELO Physik 5/6 · Realschule NRW"
-DATEINAME="FELO_Physik_5_6_Realschule_NRW"
-FUSS="FELO Physik 5/6 · Forscherheft"
+BANDNAME="FeLabs Physik 5/6 · Realschule NRW"
+DATEINAME="FeLabs_Physik_5_6_Realschule_NRW"
+FUSS="FeLabs Physik 5/6 · Forscherheft"
 # Der Lehrerband ist ein eigenes Heft und traegt eine eigene Fusszeile.
 FUSS_LB  = FUSS.replace("Forscherheft", "Lehrerband")
 
@@ -146,7 +146,7 @@ FUSS_LB  = FUSS.replace("Forscherheft", "Lehrerband")
 #  ziffer sind Schaugroessen; sie werden aus HAUPT abgeleitet und nicht geraten,
 #  damit auch sie an genau einer Zahl haengen.
 # ═════════════════════════════════════════════════════════════════════════════
-DISPLAY_GROSS  = fd.HAUPT * 3      # 66 pt - Wortmarke FELO auf dem Deckblatt
+DISPLAY_GROSS  = fd.HAUPT * 3      # 66 pt - Wortmarke FeLabs auf dem Deckblatt
 DISPLAY_MITTEL = fd.HAUPT * 2      # 44 pt - Fach/Klasse, Kapitelziffer
 
 # Zeilenhoehen: aus Grad mal Zeilenabstand, beides aus dem Modul.
@@ -1322,7 +1322,7 @@ def book_cover():
     y=fd.OBEN
     fd.T(h,fd.X0,y,"Forscherheft",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
     y+=LH_ZWISCH+18
-    fd.T(h,fd.X0,y,"FELO",fd.schrift("bold",DISPLAY_GROSS),fd.STIL["h1"])
+    fd.T(h,fd.X0,y,"FeLabs",fd.schrift("bold",DISPLAY_GROSS),fd.STIL["h1"])
     y+=round(fd.einheiten(DISPLAY_GROSS)*fd.ZAB,2)+10
     h.ln([(fd.X0,y),(fd.X1,y)],fd.STIL["akzent"],1.6)
     y+=24
@@ -1330,8 +1330,17 @@ def book_cover():
     y+=LH_DISPLAY+6
     fd.T(h,fd.X0,y,"Realschule NRW",fd.schrift("med",fd.HAUPT),fd.STIL["akzent"])
     y+=LH_HAUPT+8
-    fd.T(h,fd.X0,y,"Forschen · verstehen · anwenden",fd.schrift("reg",fd.ZWISCHEN),
+    # Der Lernweg steht seit dem 18.09.2026 auf dem Deckblatt, zweizeilig, dazu
+    # eine Zeile, was das Heft ist. Gemessen: 389 und 401 Einheiten breit, die
+    # Unterzeile 845 - die Lesespalte hat 1096, es passt ohne Umbruch.
+    fd.T(h,fd.X0,y,"Forschen · Entdecken · Lernen",fd.schrift("reg",fd.ZWISCHEN),
          fd.STIL["text"])
+    y+=LH_ZWISCH+2
+    fd.T(h,fd.X0,y,"Anwenden · Begreifen · Sichern",fd.schrift("reg",fd.ZWISCHEN),
+         fd.STIL["text"])
+    y+=LH_ZWISCH+8
+    fd.T(h,fd.X0,y,"Arbeitsheft für einen verständlichen und aktiven Physikunterricht",
+         fd.schrift("reg",fd.KLEIN),fd.STIL["text"])
     # Die Kapitelliste steht im unteren Drittel, damit das Blatt nicht kopflastig
     # wird: der Titelblock oben, das Verzeichnis unten, die Wortmarke dazwischen.
     kh=fd.LH+24
@@ -1350,7 +1359,9 @@ def book_cover():
         COVERBOXEN.append((fd.X0,y,fd.X1,y+kh))
         y+=kh+14
     y+=26
-    fd.T(h,fd.X0,y,"Forschen · Eigeninitiative · Lernen · Organisieren",
+    # Der Lernweg steht seit dem 18.09.2026 schon oben unter der Wortmarke -
+    # hier unten stuende er ein zweites Mal. Stattdessen die Reihe selbst.
+    fd.T(h,fd.X0,y,"FeLabs · Arbeitshefte für den Physikunterricht",
          fd.schrift("med",fd.FLIESS),fd.STIL["akzent"])
     y+=fd.LH+4
     fd.T(h,fd.X0,y,"orientiert an den Themen des Physikunterrichts der Sekundarstufe I",
@@ -1411,18 +1422,21 @@ def about_pages(pn):
         "zu lesen, stellen sie zu jedem Thema zuerst eine eigene Vermutung auf, prüfen sie im Experiment oder in "
         "der Simulation und formulieren die Erkenntnis anschließend selbst. Denn wirklich verstanden ist, was man "
         "selbst herausgefunden hat.",breite=LESE,abstand=fd.ABS_ABSCHNITT,name="Vorwort"))
-    B.append(b_unterkopf("Was bedeutet FELO?"))
-    for bu,wo in (("F","Forschen"),("E","Eigeninitiative"),("L","Lernen"),("O","Organisieren")):
+    B.append(b_unterkopf("Was bedeutet FeLabs?"))
+    for bu,wo in (("F","Forschen"),("E","Entdecken"),("L","Lernen"),
+                  ("A","Anwenden"),("B","Begreifen"),("S","Sichern")):
         def b_buchstabe(h,d,y,bu=bu,wo=wo):
             h.circ(fd.X0+15,y+fd.LH*0.5,15,fill=fd.STIL["akzent"])
             fd.T(h,fd.X0+15,y+fd.LH*0.5+1,bu,fd.schrift("bold",fd.FLIESS),
                  fd.STIL["akzent_schrift"],anchor="mm")
             fd.T(h,fd.X0+44,y,wo,fd.schrift("bold",fd.FLIESS),fd.STIL["text"])
             return y+fd.LH
-        B.append(bst("FELO "+bu,b_buchstabe,abstand=8))
-    B.append(b_para("Die Schülerinnen und Schüler stellen Vermutungen auf, untersuchen physikalische "
-        "Zusammenhänge, dokumentieren ihre Ergebnisse und sichern ihre Erkenntnisse selbstständig.",
-        breite=LESE,abstand=fd.ABS_ABSCHNITT,name="FELO-Text"))
+        B.append(bst("FeLabs "+bu,b_buchstabe,abstand=8))
+    B.append(b_para("FeLabs steht für Forschen, Entdecken, Lernen, Anwenden, Begreifen und Sichern. Die "
+        "Schülerinnen und Schüler erschließen physikalische Zusammenhänge mithilfe von Alltagsproblemen, "
+        "Vermutungen, Simulationen, Experimenten und verständlich aufgebauten Aufgaben. Neue Erkenntnisse "
+        "werden anschließend angewendet, erklärt und nachhaltig gesichert.",
+        breite=LESE,abstand=fd.ABS_ABSCHNITT,name="FeLabs-Text"))
     B.append(b_unterkopf("Der didaktische Ansatz"))
     pillars=[
      ("Forschend lernen","Jede Seite folgt demselben Weg: Problem · Frage · Vermutung · Forschen · Sichern · Anwenden. So wächst Verstehen aus eigenem Tun."),
@@ -1960,15 +1974,15 @@ def lb_cover():
     y=fd.OBEN
     fd.T(h,fd.X0,y,"Lehrerband",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
     y+=LH_ZWISCH+18
-    fd.T(h,fd.X0,y,"FELO",fd.schrift("bold",DISPLAY_GROSS),fd.STIL["h1"])
+    fd.T(h,fd.X0,y,"FeLabs",fd.schrift("bold",DISPLAY_GROSS),fd.STIL["h1"])
     y+=round(fd.einheiten(DISPLAY_GROSS)*fd.ZAB,2)+10
     h.ln([(fd.X0,y),(fd.X1,y)],fd.STIL["akzent"],1.6)
     y+=24
     # Titel und Schulform kommen aus BANDNAME - das haben ALLE 19 Baende, KL und
     # SFORM nur vierzehn von ihnen (die fuenf Realschulbaende tragen den Namen
-    # als festen String). "FELO Physik 9 · Realschule NRW" wird zu
+    # als festen String). "FeLabs Physik 9 · Realschule NRW" wird zu
     # "Physik 9 · Forscherheft" und "Realschule NRW".
-    _t=BANDNAME.replace("FELO ","").split(" · ")
+    _t=BANDNAME.replace("FeLabs ","").split(" · ")
     fd.T(h,fd.X0,y,_t[0]+" · Forscherheft",fd.schrift("bold",fd.HAUPT),fd.STIL["h1"])
     y+=LH_HAUPT+8
     fd.T(h,fd.X0,y,_t[-1] if len(_t)>1 else "",fd.schrift("med",fd.ZWISCHEN),fd.STIL["akzent"])
@@ -2063,8 +2077,8 @@ def build_lehrerband(gesetzt=None):
         w._root_object[NameObject("/PageMode")]=NameObject("/UseOutlines")
         # Aus BANDNAME, nicht aus KL/SFORM: die fuenf Realschulbaende haben die
         # beiden Namen nicht (siehe lb_cover).
-        w.add_metadata({"/Title":BANDNAME.upper()+" – Lehrerband",
-                        "/Author":"Abdullah Lala","/Creator":"FELO",
+        w.add_metadata({"/Title":BANDNAME+" – Lehrerband",
+                        "/Author":"Abdullah Lala","/Creator":"FeLabs",
                         "/Subject":"Lösungen und Erwartungshorizonte zum Forscherheft "+BANDNAME})
         with open(ziel,"wb") as f: w.write(f)
     except Exception as e:
@@ -2143,11 +2157,11 @@ def build_ebook(src, dst, nav, qrpages=None, seitentexte=None,
 
     # Lesezeichenleiste beim Oeffnen ausklappen, damit man das Heft sofort navigieren kann
     w._root_object[NameObject("/PageMode")]=NameObject("/UseOutlines")
-    w.add_metadata({"/Title":"FELO PHYSIK 5/6 – Forscherheft Realschule NRW",
+    w.add_metadata({"/Title":"FeLabs PHYSIK 5/6 – Forscherheft Realschule NRW",
                     "/Author":"Abdullah Lala",
                     "/Subject":"Magnetismus · Licht & Schatten · Stromkreis · Wärme · Schall · Sonne, Erde & Mond",
-                    "/Keywords":"FELO, Physik, Klasse 5, Klasse 6, Realschule NRW, Forscherheft, Fassung 1.1, Stand 2026-08-28",
-                    "/Creator":"FELO"})
+                    "/Keywords":"FeLabs, Physik, Klasse 5, Klasse 6, Realschule NRW, Forscherheft, Fassung 1.1, Stand 2026-08-28",
+                    "/Creator":"FeLabs"})
     # Unsichtbare Textebene: macht das Bild-PDF durchsuchbar und zitierfaehig.
     if seitentexte:
         try:
@@ -2319,7 +2333,7 @@ if __name__=="__main__":
     import re as _re
     # "UV" steht nur in "UV-Strahlung" - einem Stichwort des Kernlehrplans auf der
     # Basiskonzept-Uebersicht. Es ist eine Abkuerzung, kein Raetselwort.
-    _erlaubt=set(ABKUERZUNGEN)|{"FELO","NRW","QR","UV"}
+    _erlaubt=set(ABKUERZUNGEN)|{"FeLabs","NRW","QR","UV"}
     _vers={}
     for _s,_a,_g in fd.GESETZT:
         # Nur ganze Versalwoerter. Ohne die beiden Ausschluesse meldet die Probe

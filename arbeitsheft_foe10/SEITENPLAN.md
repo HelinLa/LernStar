@@ -1,7 +1,7 @@
 # Förderheft 10 · Gesamtschule NRW — Seitenplan (zur Freigabe)
 
 Stand 05.09.2026. Grundlage: Schritt-1-Analyse aller 32 Lerneinheiten von
-FELO 10 Gesamtschule (`analyse_schritt1.json`) plus **sieben** adversariale
+FeLabs 10 Gesamtschule (`analyse_schritt1.json`) plus **sieben** adversariale
 Prüfungen (Umfang, Kompetenzen, Fachwörter, Reziprozität, Heft-gegen-Sim,
 E-Kurs, Datenblattseiten). Alle sieben meldeten Mängel.
 **Nichts wird ausformuliert, bevor dieser Plan freigegeben ist.**
@@ -11,7 +11,7 @@ Rahmen aus dem Ausgangsheft: Nour und Jannis sind fünfzehn und machen
 
 ## Umfang (gemessen und nachgerechnet)
 
-| | Original FELO 10 | Förderheft 10 |
+| | Original FeLabs 10 | Förderheft 10 |
 |---|---|---|
 | Lerneinheiten | 32 | **28** (4 Streichungen, 0 Zusammenlegungen) |
 | Schülerseiten | 126 (gezählt) | **65** |
@@ -157,4 +157,4 @@ Lösungstexte. Für den Band gilt ab jetzt nur die Messung von
 
 ## Noch nicht geklärt
 
-Die Einstiegsbilder von FELO 10 sind wie in allen Bänden Platzhalter.
+Die Einstiegsbilder von FeLabs 10 sind wie in allen Bänden Platzhalter.

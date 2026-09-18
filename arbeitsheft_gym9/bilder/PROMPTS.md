@@ -1,7 +1,7 @@
-# Einstiegsbilder · FELO Physik 9 · Gymnasium NRW
+# Einstiegsbilder · FeLabs Physik 9 · Gymnasium NRW
 
 19 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
-als `FELO-Bilder Gymnasium 9` verlinkt). Dateiname = **Kennung, Leerzeichen,
+als `FeLabs-Bilder Gymnasium 9` verlinkt). Dateiname = **Kennung, Leerzeichen,
 Titel der Heftseite**, dann `.png` – genau so, wie er über jedem Auftrag steht.
 Querformat 5:3, mindestens 1200 × 720 Punkte.
 

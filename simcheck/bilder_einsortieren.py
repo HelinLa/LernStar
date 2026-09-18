@@ -59,7 +59,7 @@ def main():
     if not dateien:
         sys.exit(f"Keine Bilder in {quelle}")
     print(f"{len(dateien)} Bilder in {quelle}")
-    print(f"{len(offen)} Themen ohne Bild in FELO {plan.KLASSE} {plan.SCHULFORM}\n")
+    print(f"{len(offen)} Themen ohne Bild in FeLabs {plan.KLASSE} {plan.SCHULFORM}\n")
 
     paare = list(zip(dateien, offen))
     for q, tid in paare:

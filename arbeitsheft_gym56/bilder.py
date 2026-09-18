@@ -42,9 +42,9 @@ _pspec = _ilu.spec_from_file_location(
     "plan_bilder", os.path.join(os.path.dirname(os.path.abspath(__file__)), "plan.py"))
 _plan = _ilu.module_from_spec(_pspec); _pspec.loader.exec_module(_plan)
 _KL = str(_plan.KLASSE).replace('/', '-')
-SCHREIBTISCH = [f"FELO-Bilder Gymnasium {_KL}",
-                f"Bilder für FELO Gymnasium {_KL}",
-                f"Bilder fuer FELO Gymnasium {_KL}"]
+SCHREIBTISCH = [f"FeLabs-Bilder Gymnasium {_KL}",
+                f"Bilder für FeLabs Gymnasium {_KL}",
+                f"Bilder fuer FeLabs Gymnasium {_KL}"]
 
 
 def _finder_namen(ordner):

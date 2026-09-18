@@ -1,4 +1,4 @@
-# Einstiegsbilder · FELO Physik 10 · Realschule NRW
+# Einstiegsbilder · FeLabs Physik 10 · Realschule NRW
 
 47 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
 als `Arbeitsheft-Bilder 10 Klasse` verlinkt). Dateiname = **Kennung, Leerzeichen,

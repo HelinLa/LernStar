@@ -1,4 +1,4 @@
-# FELO MATHEMATIK 8 — Profil der Mikrohilfen (GLEICHUNGEN)
+# FeLabs MATHEMATIK 8 — Profil der Mikrohilfen (GLEICHUNGEN)
 
 Verbindlicher Standard für alle elf Mikrohilfen. Grundlage: das Master-System
 des Auftraggebers (Abdullah) und der Sprachstandard der Förderreihe
@@ -417,7 +417,7 @@ in den Auftrag schreibt, zeichnet die falsche Vorstellung.
 | `auf die andere seite …schieb/bring/…` | Seitenwechsel ohne Rechnung |
 | `vorzeichenwechsel`, `vorzeichen wechsel` | Merkregel statt Herleitung |
 | `koeffizient`, `isolier…`, `substitu…`, `term` | Fachwörter, für diesen Schritt nicht gebraucht |
-| `klick…` | FELO-Hausregel (bestehend) |
+| `klick…` | FeLabs-Hausregel (bestehend) |
 
 **Die falsche Vorstellung ist das eigentliche Ziel dieser Liste.** „Die 5 kommt
 rüber und wird minus" erzeugt einen Schüler, der bei `3x = 15` ratlos ist, weil
@@ -478,7 +478,7 @@ Feldregeln, die der Prüfer durchsetzt:
 
 | Feld | Regel |
 |---|---|
-| `kennung` | `gl` + zwei Ziffern, gleich dem Dateinamen-Anfang. Präfix `gl` ist gegen alle vergebenen FELO-Kennungen geprüft und frei. |
+| `kennung` | `gl` + zwei Ziffern, gleich dem Dateinamen-Anfang. Präfix `gl` ist gegen alle vergebenen FeLabs-Kennungen geprüft und frei. |
 | `frage` | §7.2 |
 | `art` | `rechenschritt` \| `fehler` \| `handgriff` |
 | `aufgabe` | existiert in `aufgaben.json` |
@@ -612,8 +612,8 @@ verschluckt) und Dateinamen, die nicht mit ihrer Kennung beginnen.
 
 ## 10. Anschluss an die Reihe
 
-- Marke: **FELO** (Forschen · Eigeninitiative · Lernen · Organisieren).
-  Band: FELO MATHEMATIK 8.
+- Marke: **FeLabs** (Forschen · Entdecken · Lernen · Anwenden · Begreifen · Sichern).
+  Band: FeLabs MATHEMATIK 8.
 - Sollten je QR-Codes gedruckt werden: die Adresse bleibt **LernStar**
   (`helinla.github.io/LernStar`). An dieser Adresse hängen 108+ gedruckte Codes
   der Physikreihe.

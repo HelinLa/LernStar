@@ -15,7 +15,7 @@ WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def _ablage(plan):
     sf = getattr(plan, "SCHULFORM", "Realschule NRW")
     if "Gesamtschule" in sf:
-        return f"~/Desktop/FELO-Bilder Gesamtschule {plan.KLASSE}/"
+        return f"~/Desktop/FeLabs-Bilder Gesamtschule {plan.KLASSE}/"
     return f"~/Desktop/Arbeitsheft-Bilder {plan.KLASSE} Klasse/  (oder direkt in <heft>/bilder/)"
 
 
@@ -89,7 +89,7 @@ def main():
     finally:
         if ordner in sys.path:
             sys.path.remove(ordner)
-    zeilen = [f"# FELO PHYSIK {plan.KLASSE} · {getattr(plan,'SCHULFORM','Realschule NRW')} · "
+    zeilen = [f"# FeLabs PHYSIK {plan.KLASSE} · {getattr(plan,'SCHULFORM','Realschule NRW')} · "
               f"{len(reihe)} noch fehlende Bilder",
               f"# Ablage: {_ablage(plan)}",
               "# Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.", ""]

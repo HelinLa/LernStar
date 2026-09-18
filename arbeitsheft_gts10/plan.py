@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO PHYSIK 10 · Gesamtschule NRW.
+"""Bauplan FeLabs PHYSIK 10 · Gesamtschule NRW.
 
 Kernlehrplan Naturwissenschaften Gesamtschule, Heft 3108, Abschnitt D.
 Klasse 10 traegt die beiden letzten Inhaltsfelder:
@@ -23,7 +23,7 @@ Woertlich als E-Kurs im Kernlehrplan gekennzeichnet (S. 109 bis 112):
     - "Die Entdeckung der Radioaktivitaet und der Kernspaltung als Ursache fuer
        Veraenderungen in Physik, Technik und Gesellschaft ... beurteilen"      (IF 11)
 
-Themen ohne Simulation bekommen wie in FELO Physik 9 (Kapitel Kraftwerke) ein
+Themen ohne Simulation bekommen wie in FeLabs Physik 9 (Kapitel Kraftwerke) ein
 gedrucktes Datenblatt statt eines Bildschirms - das sind die Bewertungs- und
 Anwendungsfragen, bei denen eine Tabelle traegt und ein Regler nichts hergibt.
 
@@ -147,7 +147,7 @@ NUR_E = [th["id"] for k in ALLE_KAPITEL for th in k["themen"] if th.get("kurs") 
 KAPITEL_VON = {th["id"]: k["id"] for k in ALLE_KAPITEL for th in k["themen"]}
 
 if __name__ == "__main__":
-    print(f"FELO PHYSIK {KLASSE} · {SCHULFORM}"
+    print(f"FeLabs PHYSIK {KLASSE} · {SCHULFORM}"
           f"{' · G/E-Kurse' if KURSE else ' · klassenweise'}\n")
     for i, k in enumerate(ALLE_KAPITEL, 1):
         ohne = sum(1 for th in k["themen"] if not th.get("sim"))

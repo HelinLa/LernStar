@@ -1,4 +1,4 @@
-# Einstiegsbilder · FELO Physik 8 · Realschule NRW
+# Einstiegsbilder · FeLabs Physik 8 · Realschule NRW
 
 25 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
 als `Arbeitsheft-Bilder 8 Klasse` verlinkt). Dateiname = **Kennung, Leerzeichen,

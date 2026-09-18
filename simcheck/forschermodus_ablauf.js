@@ -84,7 +84,7 @@ const fehler = [];
   const { ctx, horcher, gemacht, status, note } = bauen();
   // 1. richtige Seite + richtige Simulation -> Modus an
   horcher['physsim:offen']({ detail: { simId: 'federgesetz' } });
-  if (ctx.FELO_FORSCHEN !== 'federgesetz') fehler.push('Modus schaltet bei kf3/federgesetz NICHT ein');
+  if (ctx.FELABS_FORSCHEN !== 'federgesetz') fehler.push('Modus schaltet bei kf3/federgesetz NICHT ein');
   if (!gemacht.leiste) fehler.push('Die Leiste mit „Auswertung zeigen“ fehlt');
   if (!gemacht.verdeckt.has('note2:fm-verdeckt')) fehler.push('Der Gesetzeskasten wurde nicht verdeckt');
   if (!gemacht.verdeckt.has('hint:fm-verdeckt')) fehler.push('Die Fußzeile mit F = D · s wurde nicht verdeckt');
@@ -93,7 +93,7 @@ const fehler = [];
 
   // 2. Aufdecken holt alles zurueck
   gemacht.leiste._klick();
-  if (ctx.FELO_FORSCHEN) fehler.push('Nach „Auswertung zeigen“ ist der Modus noch an');
+  if (ctx.FELABS_FORSCHEN) fehler.push('Nach „Auswertung zeigen“ ist der Modus noch an');
   if (gemacht.verdeckt.size) fehler.push('Nach dem Aufdecken bleiben Stellen verdeckt: ' + [...gemacht.verdeckt]);
   if (!/Steigung D = /.test(status.innerHTML)) fehler.push('Nach dem Aufdecken fehlt die Steigung in der Statuszeile');
   if (!/Federhärte D/.test(note.innerHTML)) fehler.push('Nach dem Aufdecken fehlt der Hinweis mit der Federhärte');
@@ -103,14 +103,14 @@ const fehler = [];
   const { ctx, horcher, gemacht } = bauen();
   ctx.location.hash = '#experiment=federgesetz&heft=kr4';   // Realschule 9, gedruckt
   horcher['physsim:offen']({ detail: { simId: 'federgesetz' } });
-  if (ctx.FELO_FORSCHEN) fehler.push('Modus schaltet auch bei einer FREMDEN Heftseite ein – gedruckte Seiten waeren betroffen');
+  if (ctx.FELABS_FORSCHEN) fehler.push('Modus schaltet auch bei einer FREMDEN Heftseite ein – gedruckte Seiten waeren betroffen');
   if (gemacht.leiste) fehler.push('Fremde Heftseite bekommt die Forscherleiste');
 }
 {
   // 4. Richtige Seite, aber andere Simulation (Notnagel im Banner): AUS
   const { ctx, horcher } = bauen();
   horcher['physsim:offen']({ detail: { simId: 'magnetfeld' } });
-  if (ctx.FELO_FORSCHEN) fehler.push('Modus schaltet bei der falschen Simulation ein');
+  if (ctx.FELABS_FORSCHEN) fehler.push('Modus schaltet bei der falschen Simulation ein');
 }
 
 console.log(fehler.length ? `✗ ${fehler.length} Befunde im Ablauf:` : '✓ Ablauf: einschalten, verdecken, maskieren, aufdecken – und AUS bei fremden Heftseiten');

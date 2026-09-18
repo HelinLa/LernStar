@@ -1,5 +1,5 @@
-# FELO PHYSIK 8 · Gesamtschule NRW · 23 noch fehlende Bilder
-# Ablage: ~/Desktop/FELO-Bilder Gesamtschule 8/
+# FeLabs PHYSIK 8 · Gesamtschule NRW · 23 noch fehlende Bilder
+# Ablage: ~/Desktop/FeLabs-Bilder Gesamtschule 8/
 # Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.
 
 ───────── 01/23  st1 Knistern in der kalten Werkstatt.png

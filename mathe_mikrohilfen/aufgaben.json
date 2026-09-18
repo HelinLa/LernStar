@@ -1,6 +1,6 @@
 {
  "stand": "2026-09-11",
- "band": "FELO MATHEMATIK 8 — Mikrohilfen GLEICHUNGEN",
+ "band": "FeLabs MATHEMATIK 8 — Mikrohilfen GLEICHUNGEN",
  "hinweis": "Grundwahrheit der Reihe. Jede Mikrohilfe zeigt auf genau EINE Kennung hier. Die Kontrollzeile (Teil E) nennt konkrete Zahlen - steht die Aufgabe auf dem Arbeitsblatt anders, luegt das Video. schritte[0] ist der Zustand, in dem der Schueler die Hilfe aufruft; der letzte Schritt ist die Loesung. falsch listet die typischen Falschergebnisse: nur was hier steht, darf eine Hilfe aussprechen - und nur mit Verneinung oder Fragezeichen. Das Feld gegeben (optional) nennt die Zahl eines ZWEITEN Buchstabens, der in den Schritten vorkommt - ohne es koennte der Pruefer eine Gleichung mit zwei Buchstaben nicht nachrechnen und wuerde die Bruecke zum Einsetzverfahren gar nicht erst zulassen. pruefe_mikrohilfe.py rechnet ALLE schritte, loesung und falsch selbst nach (siehe PROFIL.md 6.1). Das Feld geplant_fuer ist reine Dokumentation und wird NICHT geprueft.",
  "blaetter": {
   "GL-1": "Arbeitsblatt Gleichungen 1 — Zahl daneben, Zahl davor",

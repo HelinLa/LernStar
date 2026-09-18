@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO Förderheft 10 · Gesamtschule NRW.
+"""Bauplan FeLabs Förderheft 10 · Gesamtschule NRW.
 
 Vierter und letzter Band der Förderreihe (nach _foe7, _foe8, _foe9). Gleiche
 fachliche Ziele wie das Regelheft arbeitsheft_gts10, leichterer Lernweg

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO Förderheft 7 · Gesamtschule NRW.
+"""Bauplan FeLabs Förderheft 7 · Gesamtschule NRW.
 
 Zweites Produkt neben dem Regelheft (arbeitsheft_gts7): gleiche fachliche
 Ziele, gleiche Simulationen, leichterer Lernweg (A2-B1, Förderbedarf Lernen,

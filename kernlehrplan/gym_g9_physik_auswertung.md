@@ -1,4 +1,4 @@
-# Kernlehrplan Physik · Gymnasium Sek I (G9) · NRW — Auswertung für die FELO-Hefte
+# Kernlehrplan Physik · Gymnasium Sek I (G9) · NRW — Auswertung für die FeLabs-Hefte
 
 Quelle: Heft 3411, 1. Auflage 2019, RdErl. v. 23.06.2019, in Kraft ab 01.08.2019
 (aufsteigend ab Klasse 5). Original und Volltext liegen daneben in diesem Ordner.
@@ -134,7 +134,7 @@ UND/ODER-Schaltungen und die Celsiusskala ausdrücklich.
 
 1. **Bandschnitt**: Üblich im G9 ist Physik ab Klasse 6 (Stundentafel der
    Schule entscheidet; der KLP schreibt nichts vor). Vorschlag: ein Band
-   „FELO Physik 5/6 Gymnasium" (IF 1–4) + vier Bände 7/8/9/10 (IF 5–11 verteilt).
+   „FeLabs Physik 5/6 Gymnasium" (IF 1–4) + vier Bände 7/8/9/10 (IF 5–11 verteilt).
 2. **Verteilung 7–10**: Vorschlag analog zur Gesamtschule, angepasst:
    Kl. 7 = IF5+6 (Optik, Weltall) · Kl. 8 = IF7 (Bewegung/Kraft/Energie) + IF8
    (Druck/Auftrieb) · Kl. 9 = IF9 (Elektrizität) · Kl. 10 = IF10+11 (Kernphysik,

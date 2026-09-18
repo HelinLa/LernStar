@@ -1,4 +1,4 @@
-# FELO PHYSIK · Einführungsphase — Seitenplan (zur Freigabe)
+# FeLabs PHYSIK · Einführungsphase — Seitenplan (zur Freigabe)
 
 Stand 07.09.2026. Grundlage: Kernlehrplan Physik Sekundarstufe II NRW,
 **Heft 4721** (RdErl. 31.05.2022), vollständig gelesen; Auswertung in

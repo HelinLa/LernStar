@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""PROTOTYP LESBARKEIT - eine echte FELO-Heftseite in drei Fassungen.
+"""PROTOTYP LESBARKEIT - eine echte FeLabs-Heftseite in drei Fassungen.
 
     python3 lesbar.py                    # setzt ist, spec und felo
     python3 lesbar.py --variante=spec
@@ -79,11 +79,11 @@ WEISS = (255, 255, 255)
 
 STIL_SPEC = dict(STIL)
 
-STIL_FELO = dict(
-    name="felo", titel="FELO-Identitaet, gleiche Typografie",
+STIL_FeLabs = dict(
+    name="felo", titel="FeLabs-Identitaet, gleiche Typografie",
     grund=(250, 246, 236),       # CREME  #FAF6EC
     text=(38, 44, 66),           # INK    12,79:1
-    h1=(15, 24, 56),             # FELO-Navy  16,11:1
+    h1=(15, 24, 56),             # FeLabs-Navy  16,11:1
     akzent=(22, 58, 95),         # #163A5F  10,78:1 auf Creme - EINE Akzentfarbe
     akzent_schrift=(250, 246, 236),
     merk_grund=(242, 231, 204),  # Pergament: Gold als FLAECHE, nie als Schrift
@@ -412,7 +412,7 @@ def vergleichsbild(saetze, name):
 IST_OBEN = 196          # dort beginnt der Inhalt im heutigen Satz (topic_page)
 
 def main():
-    ap = argparse.ArgumentParser(description="Lesbarkeits-Prototyp einer FELO-Heftseite")
+    ap = argparse.ArgumentParser(description="Lesbarkeits-Prototyp einer FeLabs-Heftseite")
     ap.add_argument("--variante", choices=["ist", "spec", "felo", "alle"], default="alle")
     ap.add_argument("--einheit", default="sp4", choices=sorted(EINHEITEN))
     a = ap.parse_args()
@@ -444,7 +444,7 @@ def main():
                                inhalt=sum(u - IST_OBEN for u in unten))
         saetze.append(("ist", "heutiger Stand, unveraendert", bilder))
 
-    for schl, st in (("spec", STIL_SPEC), ("felo", STIL_FELO)):
+    for schl, st in (("spec", STIL_SPEC), ("felo", STIL_FeLabs)):
         if a.variante not in (schl, "alle"): continue
         del KAESTEN[:]
         bilder, inhalt, roh, hoehen, B, seiten = setze_variante(cfg, st, bb, kap, fno, pn)
@@ -519,7 +519,7 @@ def main():
 
     print("\n── KONTRASTE (WCAG 2.1) ───────────────────────────────────────────────")
     kombis = []
-    for st in (STIL_SPEC, STIL_FELO):
+    for st in (STIL_SPEC, STIL_FeLabs):
         n = st["name"]
         kombis += [
             (n, "Fliesstext 12 pt", st["text"], st["grund"], 4.5),

@@ -21,9 +21,9 @@ function regelnLaden() {
   vm.createContext(ctx);
   vm.runInContext(fs.readFileSync(LS + '/js/forschermodus-regeln.js', 'utf8'), ctx);
   return {
-    SEITEN: vm.runInContext('FELO_FORSCHEN_SEITEN', ctx),
-    REGELN: vm.runInContext('FELO_FORSCHEN_REGELN', ctx),
-    BEDIENUNG: vm.runInContext('FELO_FORSCHEN_BEDIENUNG', ctx),
+    SEITEN: vm.runInContext('FELABS_FORSCHEN_SEITEN', ctx),
+    REGELN: vm.runInContext('FELABS_FORSCHEN_REGELN', ctx),
+    BEDIENUNG: vm.runInContext('FELABS_FORSCHEN_BEDIENUNG', ctx),
   };
 }
 
@@ -33,7 +33,7 @@ function regelnLaden() {
 
 function lauf(simId, forschen) {
   const H = baueContext(LS + '/physics-sim.js');
-  if (forschen) vm.runInContext(`window.FELO_FORSCHEN = ${JSON.stringify(simId)};`, H.ctx);
+  if (forschen) vm.runInContext(`window.FELABS_FORSCHEN = ${JSON.stringify(simId)};`, H.ctx);
   vm.runInContext(`
     var __modal = document.createElement('div');
     document.body.appendChild(__modal);

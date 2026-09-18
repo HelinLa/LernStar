@@ -23,7 +23,7 @@ import plan
 
 # Klasse und Schulform aus plan.py - eine Datei fuer alle vier Baende
 _KL = str(plan.KLASSE).replace('/', '-')
-_ORDNER = f"FELO-Bilder Gymnasium {_KL}"
+_ORDNER = f"FeLabs-Bilder Gymnasium {_KL}"
 HERE = _HIER          # nach dem Stern-Import, sonst gewinnt das HERE von Klasse 5
 
 ZAHLWORT = {1: "ein", 2: "zwei", 3: "drei", 4: "vier", 5: "fünf", 6: "sechs", 7: "sieben",
@@ -86,7 +86,7 @@ def _kopf(h, augen, titel):
 def _fuss(h, pn, gesamt):
     h.circ(ML + 8, H - 40, 13, outline=GOLD, w=2)
     h.circ(ML + 8, H - 40, 4, fill=GOLD)
-    h.T(ML + 34, H - 48, f"FELO PHYSIK {_KL} · GESAMTSCHULE · BILDAUFTRÄGE", COP(9), GOLD_D)
+    h.T(ML + 34, H - 48, f"FeLabs PHYSIK {_KL} · GESAMTSCHULE · BILDAUFTRÄGE", COP(9), GOLD_D)
     if pn:
         h.R(W - ML - 62, H - 64, W - ML, H - 22, 8, fill=GOLD_D)
         h.T(W - ML - 31, H - 42, f"{pn}/{gesamt}", AVB(13), CREAM, anchor="mm")
@@ -202,7 +202,7 @@ if __name__ == "__main__":
         for t in drin:
             w.add_outline_item(a[t]["datei"], reihe.index(t) + 1, parent=par)
     nl, nz = anhaengen(w, [SEITENTEXTE.get(id(p), []) for p in seiten])
-    w.add_metadata({"/Title": f"Bildaufträge · FELO Physik {_KL} Gymnasium",
+    w.add_metadata({"/Title": f"Bildaufträge · FeLabs Physik {_KL} Gymnasium",
                     "/Author": "Abdullah Lala", "/Subject": "Fehlende Einstiegsbilder"})
     ziel = os.path.expanduser(f"~/Desktop/Bildauftraege_Gym{_KL}.pdf")
     with open(ziel, "wb") as f:

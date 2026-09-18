@@ -1,7 +1,7 @@
-# Einstiegsbilder · FELO Physik 5/6 · Gymnasium NRW
+# Einstiegsbilder · FeLabs Physik 5/6 · Gymnasium NRW
 
 38 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
-als `FELO-Bilder Gymnasium 5-6` verlinkt). Dateiname = **Kennung, Leerzeichen,
+als `FeLabs-Bilder Gymnasium 5-6` verlinkt). Dateiname = **Kennung, Leerzeichen,
 Titel der Heftseite**, dann `.png` – genau so, wie er über jedem Auftrag steht.
 Querformat 5:3, mindestens 1200 × 720 Punkte.
 
@@ -239,7 +239,7 @@ ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no 
 ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no comic panels, no before-and-after, no split screen, no repeated objects, no sequence, no insets, no round inset circle, no arrows, no arrowheads, no dashed lines, no ray diagram, no drawn light rays, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, hand-painted look, NOT a photograph, not flat vector cartoon, clear readable silhouettes, smooth soft gradients, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark.: close shot at child height, slightly from the front, of a tall wooden cabinet in an old school physics room, the cabinet filling the right half of the frame: its door stands only a hand's width open, frozen in the last instant before snapping shut, the narrow dark gap between door and frame sitting exactly at the right edge of the frame; a small plain dark metal block sits inconspicuously on the frame inside the gap as a latch; the open hand of Lina, an eleven-year-old girl with shoulder-length dark brown hair held by a small blue hair clip, wearing a mustard-yellow sweater and jeans, hangs in the air just behind the door handle, fingers spread as if the handle has just been torn out of her grip, her startled face with open mouth; on the left Aras, an eleven-year-old boy with short black curls, wearing a green sweatshirt and grey trousers, leans in with raised eyebrows; on the table beside them an open notebook and a wooden crate, calm afternoon light from the left; only one door in one single position, no ghost door, no faint second door, no motion lines, no speed streaks, no dashed arcs, no field lines, no curved line patterns around the latch, no iron filings, no compass, no paper clips or nails on the metal block, no ruler, no marks on the frame and no drawn rays anywhere in the picture.
 ```
 
-# Einstiegsbilder · FELO Physik 5/6 · Gymnasium NRW · Bündel sm_c (sm11–sm14)
+# Einstiegsbilder · FeLabs Physik 5/6 · Gymnasium NRW · Bündel sm_c (sm11–sm14)
 
 ### `sm11 Der Beutel aus der zweiten Kiste.png` — sm11
 
@@ -289,7 +289,7 @@ ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no 
 ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no comic panels, no before-and-after, no split screen, no repeated objects, no sequence, no insets, no round inset circle, no arrows, no arrowheads, no dashed lines, no ray diagram, no drawn light rays, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, hand-painted look, NOT a photograph, not flat vector cartoon, clear readable silhouettes, smooth soft gradients, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark.: close shot from slightly above, over the shoulder of Aras, an eleven-year-old boy with short black curls, wearing a green sweatshirt and grey trousers: both his hands hold a small old worn brass compass tin frozen mid-turn, wrists slightly twisted, the round dial inside completely blank and rubbed smooth with no markings at all; the single dark needle inside sits at an angle and points past his hands toward a tall bright window at the far right edge of the picture, where the frame cuts off; from the left Lina, an eleven-year-old girl with shoulder-length dark brown hair held by a small blue hair clip, wearing a mustard-yellow sweater and jeans, leans close into the frame, head tilted, eyes fixed on the needle; below on the wooden table an open wooden crate with wood shavings and old instruments, warm window light glinting on brass and hands; the compass dial carries no letters, no numbers, no tick marks, no compass rose, no globe, no map anywhere, no bar magnet or any other magnet near the compass, no field lines, no drawn arrows in the air, only the one compass and its one needle.
 ```
 
-# Einstiegsbilder · FELO Physik 5/6 · Gymnasium NRW — Bündel sl_a (sl1–sl4)
+# Einstiegsbilder · FeLabs Physik 5/6 · Gymnasium NRW — Bündel sl_a (sl1–sl4)
 
 Querformat 5:3. Dateiname = Kennung, Leerzeichen, Titel der Heftseite, dann `.png`.
 

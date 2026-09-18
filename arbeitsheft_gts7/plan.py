@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO PHYSIK 7 · Gesamtschule NRW.
+"""Bauplan FeLabs PHYSIK 7 · Gesamtschule NRW.
 
 Grundlage ist der Kernlehrplan Naturwissenschaften fuer die Gesamtschule,
 Sekundarstufe I (Heft 3108, 2. Auflage 2013), Abschnitt D "Fachunterricht
@@ -138,7 +138,7 @@ DUENN = [th["id"] for k in ALLE_KAPITEL for th in k["themen"] if th.get("duenn")
 KAPITEL_VON = {th["id"]: k["id"] for k in ALLE_KAPITEL for th in k["themen"]}
 
 if __name__ == "__main__":
-    print(f"FELO PHYSIK {KLASSE} · {SCHULFORM}"
+    print(f"FeLabs PHYSIK {KLASSE} · {SCHULFORM}"
           f"{' · G/E-Kurse' if KURSE else ' · klassenweise'}\n")
     for i, k in enumerate(ALLE_KAPITEL, 1):
         ohne = sum(1 for th in k["themen"] if not th.get("sim"))

@@ -13,7 +13,7 @@
   "sim_aenderung": "In magnetfeld fehlt jede Größe, die mit dem Abstand abnimmt (kein Erdfeld für den Prüfkompass, keine Kraft- oder Winkelanzeige, Regler „Abstand“ 55–140 ohne Einheit). Die Reihe geht heute schon in magnetpole: Regler „Abstand d“ 2–12 cm, Bildtext „Kraft F = 2,4“, „＋ Messwert übernehmen“ (_mpoMessen), Auftragung „Abstand d → Kraft F“ (_mpoSetPreset(0)). Dort müssten Fit-Hinweis „Keine Gerade, sondern eine fallende Kurve: F ~ 1/d² …“ und Theoriebox bis nach der eigenen Auswertung warten – als Schalter oder eigene Fassung, denn sm10 (Gym 5/6) liest Regler, Kraftmesser und „Magnet an der Tür umgedreht“; mo1, ev1, fv1, sm12 zitieren in magnetfeld die Regler „Stelle am Magneten“ und „Abstand“.",
   "geteilt_mit": "m4 (RS 5/6), sm12 (Gym 5/6), mo1 (RS 10), ev1 (GTS 10), fv1 (GTS 10 Förderheft)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -30,7 +30,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm11 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -47,7 +47,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm10 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -64,7 +64,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "m1 (RS 5/6), sm12 (Gym 5/6), mo1 (RS 10), ev1 (GTS 10), fv1 (GTS 10 Förderheft)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -81,7 +81,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm14 (Gym 5/6), mo2 (RS 10)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -98,7 +98,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "li1 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -115,7 +115,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "li2 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -132,7 +132,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "li5 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -149,7 +149,7 @@
   "sim_aenderung": "Messen kann die Sim schon: Regler „Schirmabstand b“ / „Gegenstandsabstand a“, „＋ Messwert übernehmen“ (_shaMessen), Tabelle mit beiden Abständen, Auftragungen „Schirm b → Schatten B“ / „Gegenstand a → Schatten B“, „📐 Steigung messen“. Fehlen würde nur das Zurückhalten der Lösung: Formelzeile „B = G · b / a …“, Fit-Hinweis und Ergebniszeile „Steigung G/a … Literatur: 0,200“ erst nach der eigenen Auswertung – als Schalter oder eigene Fassung, weil li6 (Gym 5/6) „aktuelle Schattengröße B“ und beide Verschiebe-Knöpfe zitiert. Im Heft müssten die Abstände als Zahlen in die Tabelle.",
   "geteilt_mit": "li6 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -166,7 +166,7 @@
   "sim_aenderung": "Regler gibt es (khsS 0–40, Schritt 2), und die Geometrie rechnet richtig proportional (Saum = 2·s·(r−1) in _khsDraw). Fehlen: Skala oder Anzeige „Halbschatten: … cm“ an der Wand, eine Einheit am Regler (heute nur „Quelle: punktförmig“ … „groß ausgedehnt“) und eine Wertetabelle. li7 (Gym 5/6) nutzt Regler, beide Knöpfe und Statuszeile – die bleiben.",
   "geteilt_mit": "li7 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -183,7 +183,7 @@
   "sim_aenderung": "Regler gibt es (rfgT 0–80° in 5er-Schritten, rfgD −25…25°). Fehlen würde ein Messmodus: Gradscheibe um den Auftreffpunkt zum Selbstablesen, keine Gradzahl am reflektierten Strahl, Statuszeile ohne „= Reflexionswinkel“ und ohne „→ Strahl um 2a geschwenkt“, dazu eine Wertetabelle. Nur als Schalter oder eigene Fassung: f9 (RS 7), oi3 (GTS 7), op1 (Gym 7) und fo2 (GTS 7 Förderheft) lesen den Reflexionswinkel wörtlich aus der Statuszeile.",
   "geteilt_mit": "f9 (RS 7), oi3 (GTS 7), op1 (Gym 7), fo2 (GTS 7 Förderheft)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -200,7 +200,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm2 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -217,7 +217,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm1 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -234,7 +234,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm3 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -251,7 +251,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm4 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -268,7 +268,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sm5 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -285,7 +285,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -302,7 +302,7 @@
   "sim_aenderung": "Regler (Menge 0,5–3 L, Temperatur 0–100 °C), „🔗 In Kontakt bringen“ (_twContact) und „Mischtemperatur ≈ … °C“ reichen für die Reihe. Fehlen: eine Wertetabelle und ein Modus ohne die Anzeige „Wärmemenge … Einheiten“ bzw. „Wärme: 80“ unter den Gefäßen – sie rechnet Menge × Temperatur ab 0 °C und widerspräche der eigenen Rechnung Menge × Temperaturänderung. wm2 (Gym 5/6) liest genau diese Wärmemengen aus der Statuszeile, der Standard muss bleiben.",
   "geteilt_mit": "wm2 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -319,7 +319,7 @@
   "sim_aenderung": "Fehlt heute: ein Modus mit abgedeckter Skala und ohne Temperaturzahl an Regler und Bild, eine Längenanzeige oder ein mm-Lineal am Röhrchen, Proben mit verborgener Temperatur und eine Wertetabelle. wm1 (Gym 5/6) schiebt den Regler Temperatur und liest nach denselben Knöpfen den „angezeigten Wert in °C“ – der Standard muss bleiben.",
   "geteilt_mit": "wm1 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -336,7 +336,7 @@
   "sim_aenderung": "Regler (wauT 0–100 °C) und Statuszeile reichen für Gas schon heute. Fehlen: eine Wertetabelle; eine Nachkommastelle bei fest und flüssig (heute 20 °C → 2 %, 40 °C → 5 %, 60 °C → 7 %, der Quotient springt zwischen 0,10 und 0,125); und ehrliche Faktoren oder der Hinweis „Modellzahlen“: _WAU_STATE rechnet Metall 0,12 %, Wasser 0,30 %, Luft 1,10 % pro °C, real sind es etwa 0,001 %, 0,02 % und 0,37 % – eine Konstante, die das Kind selbst ausrechnet, darf nicht um Faktor 3 bis 100 danebenliegen. wm5 (Gym 5/6) liest „Ausdehnung bei 100 °C“ in der Statuszeile, also nur als Zusatzmodus.",
   "geteilt_mit": "wm5 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -353,7 +353,7 @@
   "sim_aenderung": "Fehlt ganz: Zeitablauf mit gleichmäßiger Wärmezufuhr statt Regler, Stoppuhr mit „Zeit stoppen“ in eine Wertetabelle, t-θ-Auftragung und ein Thermometerbild ohne die Marken „Schmelzen 0 °C“/„Sieden 100 °C“. wm6 (Gym 5/6) schiebt den Regler Temperatur, drückt „erwärmen“ und liest die Statuszeile – das bleibt; das Labor käme darunter oder als eigene Fassung.",
   "geteilt_mit": "wm6 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -370,7 +370,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "wm3 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -387,7 +387,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sl1 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -404,7 +404,7 @@
   "sim_aenderung": "Fehlt: Kästchenraster mit Zeitmaßstab am Schirmbild, eine aus der Amplitude gerechnete dB-Anzeige, eine Wertetabelle und ein Modus ohne die Wortpaare „Amplitude klein/mittel/groß“ in der Statuszeile. sl3 (Gym 5/6) liest „Feld Lautstärke“, Kurve und gestrichelte Linie „Amplitude“ – das bleibt im Standard.",
   "geteilt_mit": "sl3 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -421,7 +421,7 @@
   "sim_aenderung": "Fehlt ganz: eine Ursache als Regler (Saitenlänge, ggf. Spannung), ein Zeitmaßstab am Wellenbild (heute sichtbare Wellen = f/60 ohne Zeitachse, _thzDraw), eine Wertetabelle und ein Modus ohne Hz-Zahl und ohne „hoher Ton“ in Statuszeile und Bild; sinnvoll wäre auch echter Ton. sl2 und sl8 (Gym 5/6) stellen die Frequenz am Regler und lesen Hz-Wert und „tief/mittel/hoch“ – das bleibt, die Saite käme als eigene Fassung.",
   "geteilt_mit": "sl2, sl8 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -438,7 +438,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "sl4 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -455,7 +455,7 @@
   "sim_aenderung": "Fehlt: dB-Anzeige, mm-Skala am Trommelfell, Wertetabelle; die Hinweiszeile „Lauter Ton → Trommelfell schwingt stärker.“ dürfte im Messmodus erst nach der Auswertung erscheinen. sl7 (Gym 5/6) nutzt Regler und Klapptext „Erst nach dem Versuch öffnen“ – bleibt.",
   "geteilt_mit": "sl7 (Gym 5/6)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -472,7 +472,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "g2 (RS 7), ew2 (GTS 7), fw2 (GTS 7 Förderheft)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -489,7 +489,7 @@
   "sim_aenderung": "Das Wichtigste ist da: Regler jhrD 0–360°, Anzeige „Licht: 62° · 3 Kästchen“ und „Tageslänge … h“. Fehlen: eine Wertetabelle, die Kästchenzahl mit einer Nachkommastelle (heute Math.round, intern zählen Randkästchen anteilig), ein sichtbarer Satz „das Bündel ist immer gleich breit“ und ein Modus, in dem „trifft steil auf“ und „Steiler Einfall = Sommer“ erst nach der Auswertung erscheinen. wa2 (Gym 7) liest Licht-Zeile und Tageslänge nach den Jahreszeiten-Knöpfen – bleibt.",
   "geteilt_mit": "wa2 (Gym 7)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -506,7 +506,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "wa3 (Gym 7)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -523,7 +523,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "wa4 (Gym 7)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -540,7 +540,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "wa5 (Gym 7)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -557,7 +557,7 @@
   "sim_aenderung": "Messen kann die Sim schon (_elmSetMode('windungen'), _elmMessen, _elmSetPreset(0), Steigungswerkzeug). Fehlen würde nur ein Modus, der die Lösung zurückhält: Fit-Hinweis „… doppelte Tragkraft“, Theoriebox „T = k · I · N“, Hinweiszeile „Mehr Windungen → stärker …“ und „Literatur: 0,060“ erst nach der eigenen Auswertung. Den Standard nicht ändern: mo4, mo5 (RS 10), ev3 (GTS 10) und fv3 (GTS 10 Förderheft) nutzen „Beispielmessreihe“, „Messwert übernehmen“ und die Kurve, fv3 liest „den Satz über den Eisenkern“.",
   "geteilt_mit": "mo4, mo5 (RS 10), ev3 (GTS 10), fv3 (GTS 10 Förderheft)",
   "reihe": "Realschule",
-  "bandlabel": "arbeitsheft (FELO Physik 5/6, Realschule NRW)",
+  "bandlabel": "arbeitsheft (FeLabs Physik 5/6, Realschule NRW)",
   "b": "arbeitsheft"
  },
  {
@@ -4671,7 +4671,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "m1, m4 (RS 5), mo1 (RS 10), sm12 (Gym 5/6), fv1 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4688,7 +4688,7 @@
   "sim_aenderung": "Die Regler oerI (0–5 A, Schritt 0,5) und oerR (1–5 cm) reichen. Es fehlt eine Feldanzeige ohne die Rechenzeile „B = 20 µT · I / r“, außerdem Messwert übernehmen und eine Wertetabelle. Beides als zuschaltbarer Messmodus: oerStatus mit Formel bleibt Standard für mo3, eg1 und fv2.",
   "geteilt_mit": "mo3 (RS 10), eg1 (Gym 10), fv2 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4705,7 +4705,7 @@
   "sim_aenderung": "Das Messlabor ist da (_elmMessen, _elmSetPreset(0/1), _mlabSteigungAn('elm')). Stören würden P.note in der Fitbox (auch bei leerer Tabelle), „erwartet: <Steigung>“ und die Theoriebox. Nötig ist ein Schalter je Simulation, der das bis nach der Auswertung verbirgt, nicht eine Änderung in _mlabRenderFit, denn die betrifft alle Messlabore. Knöpfe und Beispielmessreihe bleiben für s7, mo4, mo5 und fv3.",
   "geteilt_mit": "s7 (RS 5), mo4, mo5 (RS 10), fv3 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4722,7 +4722,7 @@
   "sim_aenderung": "Die Regler lkrI (0–10 A) und lkrB (0,05–0,5 T) genügen. Es fehlen ein Kraftmesser, der nur F zeigt (ohne die Zeile „F = 0,20 T · 5,0 A · 0,10 m = 0,100 N“), sowie Messwert übernehmen, Wertetabelle und Auftragung. Das sollte ein zuschaltbarer Messmodus sein: mo7, mo8, ev5, eg2 und fv4 lesen Formel und Richtung („nach oben“) aus der Statuszeile, und die Knöpfe _lkrStromUm/_lkrMagnetUm müssen bleiben.",
   "geteilt_mit": "mo7, mo8 (RS 10), ev5 (dieser Band), eg2 (Gym 10), fv4 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4739,7 +4739,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "mo7, mo8 (RS 10), ev4 (dieser Band), eg2 (Gym 10), fv4 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4756,7 +4756,7 @@
   "sim_aenderung": "Die Regler emoN (5–60), emoI (0–6 A) und emoB sind vorhanden. Es fehlen eine Drehmomentanzeige ohne die Rechenzeile „M = N · B · I · A = …“ und ohne den Verdopplungssatz, außerdem Messwert übernehmen und eine Tabelle. Beides als Messmodus: mo9, mo10, mo11, eg3 und fv5 behalten Status und den Knopf _emoKomm.",
   "geteilt_mit": "mo9, mo10, mo11 (RS 10), eg3 (Gym 10), fv5 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4773,7 +4773,7 @@
   "sim_aenderung": "Die Regler indV (5–100 cm/s) und indN (100–1200), die Knöpfe _indSetMag und die Anzeige „Messgerät: … V“ reichen. Es fehlen Messwert übernehmen, Wertetabelle und Auftragung, außerdem ein Modus ohne die Rechenzeilen „U = N · B · A · v / d …“ und ohne den Verdopplungssatz. ge1, ge2 und fv6 behalten den bisherigen Status.",
   "geteilt_mit": "ge1, ge2 (RS 10), fv6 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4790,7 +4790,7 @@
   "sim_aenderung": "Das Messlabor ist da (_genSetStation(2), _genTake, _genSetPreset(0), Regler genF2). Für Klasse 10 müsste zuschaltbar ausgeblendet werden: die Rechenzeile genMessRechnung („Û = n · B · A · ω“ samt Wert) und die Theoriebox „Û = (n·B·A·2π) · f“. Stationen 1 und 2 (φ-Knöpfe, Rechnung) bleiben für kw2, ge4, ge5, eg5 und fv7 unverändert.",
   "geteilt_mit": "kw2 (RS 9), ge4, ge5 (RS 10), eg5 (Gym 10), fv7 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4807,7 +4807,7 @@
   "sim_aenderung": "Das Messlabor ist vorhanden (_trfSetStation(1), _trfUTake, _trfSetUPreset(0), Checkbox „Sollwert anzeigen“ für den Plot). Zu ändern: die Rechnung trfURechnung („Windungsverhältnis“, „ideal erwartet“) hinter denselben Schalter legen. Für ge7, ge8 und fv8 bleibt die Rechnung standardmäßig an.",
   "geteilt_mit": "ge7, ge8 (RS 10), fv8 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4824,7 +4824,7 @@
   "sim_aenderung": "Die Reihe geht heute schon (Station 2: frlUtrans 10–400 V, _frlTake, _frlSetPreset). Für echtes Herleiten zuschaltbar ausblenden: die Fußzeile „PVerlust ∝ 1/U²“, die Formeln in den Anzeigebeschriftungen und die Fitbox-Deutung samt „wechsle zu 1/U²“. Dazu ein neutraler Zusatzreiter (z. B. 1/U → PVerlust), damit die richtige Linearisierung nicht die einzige Wahl ist. Geteilt mit ge9, ge10, ev11, eg8, fv9 und fv10.",
   "geteilt_mit": "ge9, ge10 (RS 10), ev11 (dieser Band), eg8 (Gym 10), fv9, fv10 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4841,7 +4841,7 @@
   "sim_aenderung": "Anzeigen (frlUlineA, frlIlineA, frlUlA, frlIlA, frlPlA, frlPvA) und der Regler frlUs sind vorhanden. Station 1 hat aber weder Messwertübernahme noch Tabelle, und frlRechnung schreibt die Formeln hin. Beides müsste zuschaltbar werden, ohne ge9, ge10, ev10, eg8, fv9 und fv10 zu ändern.",
   "geteilt_mit": "ge9, ge10 (RS 10), ev10 (dieser Band), eg8 (Gym 10), fv9, fv10 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4858,7 +4858,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4875,7 +4875,7 @@
   "sim_aenderung": "Regler wgrR (200–4000 J) und die Knöpfe _wgrSet(0..5) reichen. Im Messmodus müssten „η = … %“ in der Statuszeile und die Formel in der Fußzeile verschwinden. Messwert übernehmen, Tabelle und Auftragung fehlen. Geteilt mit en10, en11, el7, eg9, fe7 und fv12, dort bleibt der alte Status.",
   "geteilt_mit": "en10, en11 (RS 9), el7 (GTS 9), eg9 (Gym 10), fe7 (Förder 9), fv12 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4892,7 +4892,7 @@
   "sim_aenderung": "Die Knöpfe _kosSetG (vier Leistungen) und _kosSetH (1/3/8/24 h) genügen. Im Messmodus zeigt die Statuszeile nur Zählerstand und Jahreskosten, ohne „→ … kWh/Tag = … €/Tag“; Hinweis und Fußzeile ohne Formel. Eine Wertetabelle fehlt. Geteilt mit lt3, ep3 und fv13, das Quiz _kosAns bleibt.",
   "geteilt_mit": "lt3 (RS 8), ep3 (Gym 9), fv13 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4909,7 +4909,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4926,7 +4926,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "ak1, ak2 (RS 10), kp1 (Gym 10), fn1 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4943,7 +4943,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "ak6 (RS 10), rk5 (dieser Band), kp3 (Gym 10), fn2, fn5 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4960,7 +4960,7 @@
   "sim_aenderung": "Das Messlabor ist da (_absSetStation(5), _absMTake, _absMSetPreset(0), absMD 0–20 mm). Für Klasse 10 stören: Standardreiter „d → ln R“, die Tabellenspalte ln R, das Plotlabel „die Steigung ist −µ“, außerdem der Station-1-Text „rund 1,0 Halbwertsdicken … 50,2 %“ und die e-Funktion in der Fußzeile. Nötig ist eine wählbare Quotientenspalte statt ln R; Station 3 kennt die Methode schon (_absSetMethode('quot')). Geteilt mit ak7–ak10, kp5 und fn3.",
   "geteilt_mit": "ak7, ak8, ak9, ak10 (RS 10), kp5 (Gym 10), fn3 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4977,7 +4977,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "ak5 (RS 10), kp4 (Gym 10), fn4 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -4994,7 +4994,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "ak6 (RS 10), rk2 (dieser Band), kp3 (Gym 10), fn2, fn5 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5011,7 +5011,7 @@
   "sim_aenderung": "Heute gibt es nur _hwzSchritt, der genau um T½ springt (jeder Kern mit p = ½), dazu _hwzSetNuk und _hwzReset. Es fehlen: ein Knopf mit festem Zeitschritt in s bzw. Jahren (Zerfallswahrscheinlichkeit 1 − (½)^(Δt/T½)), eine Wertetabelle t | N, eine Zeitachse in echten Einheiten, eine zuschaltbare Theoriekurve und optional ein „unbekanntes Nuklid“ ohne T½-Anzeige. Der alte Knopf muss bleiben für ak13, ak14, ke9, rk7, kp6, fn6 und fn7.",
   "geteilt_mit": "ak13, ak14, ke9 (RS 10), rk7 (dieser Band), kp6 (Gym 10), fn6, fn7 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5028,7 +5028,7 @@
   "sim_aenderung": "Wie bei rk6: fester Zeitschritt statt „eine Halbwertszeit weiter“, Wertetabelle, Zeitachse in Jahren. Bei 200 Kernen streut der Restanteil stark, für die Altersbestimmung braucht es mehr Kerne oder das Mittel mehrerer Läufe. Der alte Knopf bleibt für die geteilten Seiten.",
   "geteilt_mit": "ak13, ak14, ke9 (RS 10), rk6 (dieser Band), kp6 (Gym 10), fn6, fn7 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5045,7 +5045,7 @@
   "sim_aenderung": "Die Knöpfe _zrrSchritt, _zrrZurueck und _zrrEnde genügen. Im Messmodus zeigt der Status nur Kern (Name, A, Z) und ausgesandte Strahlung, ohne die Rechnung „A: 238 − 4 = 234“ und ohne die Fußzeile. Eine Schritttabelle wäre hilfreich. Geteilt mit ak3, ak4, ak12 und kp7.",
   "geteilt_mit": "ak3, ak4, ak12 (RS 10), kp7 (Gym 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5062,7 +5062,7 @@
   "sim_aenderung": "Die Knöpfe _kspSetWeg liefern nur drei eng beieinanderliegende Punkte (0,186–0,198 u). Die Energie müsste als eigene Anzeige („Energie der Bruchstücke“) erscheinen, ohne die Umrechnungszeile und ohne die Fußzeile E = Δm · c². Weitere Spaltwege oder eine Fusions- bzw. α-Zeile würden die Spannweite vergrößern. Geteilt mit ke5, kp10 und fn8.",
   "geteilt_mit": "ke5 (RS 10), kp10 (Gym 10), fn8 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5079,7 +5079,7 @@
   "sim_aenderung": "Der Regler ketStab (0–100 %) und _ketSchritt reichen, die Statuszeile nennt schon „Generation 1: … (vorher 500)“. Im Messmodus müssten „Vermehrungsfaktor k = …“ und der Deutungstext verborgen sein. Wegen der Zufallsstreuung (Heft nennt 503, der Dump 473) wäre eine Generationentabelle nötig. Geteilt mit ke6, ke7, rk11, kp11, fn9 und fn10.",
   "geteilt_mit": "ke6, ke7 (RS 10), rk11 (dieser Band), kp11 (Gym 10), fn9, fn10 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5096,7 +5096,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "ke6, ke7 (RS 10), rk10 (dieser Band), kp11 (Gym 10), fn9, fn10 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5113,7 +5113,7 @@
   "sim_aenderung": "Keine Simulation zugeordnet. Mit zerfall-halbwertszeit ginge es nur mit weit mehr als 200 Kernen oder einer Prozentanzeige, denn nach zehn Schritten ist dort meist kein Kern mehr übrig.",
   "geteilt_mit": "",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5130,7 +5130,7 @@
   "sim_aenderung": "Die Regler stzR (20–300 cm), stzD (0–40 mm) und stzT reichen. Im Messmodus zeigt die Sim nur das Dosimeter, ohne die Rechenzeile „H' = 0,0927 · 1000 / r²“, ohne die Sätze „Doppelter Abstand heißt ein Viertel“ und „geht quadratisch ein“ und ohne die Fußzeile. Messwert übernehmen, Tabelle und Auftragung fehlen. Geteilt mit ke4, rk14, kp13 und fn12, dort bleibt die Statuszeile.",
   "geteilt_mit": "ke4 (RS 10), rk14 (dieser Band), kp13 (Gym 10), fn12 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5147,7 +5147,7 @@
   "sim_aenderung": "Der Regler stzT (1–60 min) ist vorhanden. Im Messmodus zeigt die Sim nur die Dosimeteranzeige, ohne „H = … µSv/h · 20/60 h“ und ohne „Die Zeit geht einfach ein“. Eine Tabelle fehlt. Geteilt mit ke4, rk13, kp13 und fn12.",
   "geteilt_mit": "ke4 (RS 10), rk13 (dieser Band), kp13 (Gym 10), fn12 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5164,7 +5164,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5181,7 +5181,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "ke10 (RS 10), kp12 (Gym 10), fn14 (Förder 10)",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5198,7 +5198,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "",
   "reihe": "Gesamtschule",
-  "bandlabel": "arbeitsheft_gts10 (FELO Physik 10, Gesamtschule NRW, G/E-Kurs)",
+  "bandlabel": "arbeitsheft_gts10 (FeLabs Physik 10, Gesamtschule NRW, G/E-Kurs)",
   "b": "arbeitsheft_gts10"
  },
  {
@@ -5215,7 +5215,7 @@
   "sim_aenderung": "Fehlt: eine Längenanzeige der Säule (mm-Lineal neben der Röhre oder „Säulenlänge: … mm“). Außerdem ein Modus „Skala ohne Zahlen“, der die große °C-Anzeige und die Reglerbeschriftung ausblendet, damit die Temperatur nur über die Probeknöpfe kommt. Wünschenswert ist „Messwert übernehmen“ in eine Wertetabelle. Die Physik stimmt schon: Die Säule ist im Code linear (frac = (T+10)/120 in _thmDraw). Regler thmT, die fünf Probeknöpfe (_thmProbe) und die °C-Anzeige müssen bleiben, denn w2 lässt „die Zahl ablesen“. Nebenbefund: Die Simulation beschriftet den Knopf „Deine Faust“, wm1 und w2 schreiben „Bens Faust“.",
   "geteilt_mit": "w2 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5232,7 +5232,7 @@
   "sim_aenderung": "Fehlt: ein Schalter, der die fertige Wärmemenge (Statuszeile und Balken „Wärme: …“) ausblendet. Die Voreinstellung bleibt sichtbar, weil die gedruckte wm2 sie abliest. Außerdem fehlt eine Wertetabelle mit „Messwert übernehmen“ (Menge 1, Menge 2, Mischtemperatur). Mit den Mengen 0,5/1/2/3 L ist die Rundung _fpmNum(_twMix(),0) unkritisch. Die Regler twM1/twT1/twM2/twT2 und die Knöpfe „In Kontakt bringen“ und „Zurücksetzen“ bleiben; w1 stellt 1 L/80 °C + 1 L/20 °C ein und danach 2 L.",
   "geteilt_mit": "w1 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5249,7 +5249,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "w5 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5266,7 +5266,7 @@
   "sim_aenderung": "Tabelle (t, T) und Auftragung t → T gibt es schon (_daeMessen, _daeSetPreset(0)). Fehlt: der Messakt beim Kind, also eine laufende Uhr mit „Temperatur jetzt ablesen“ neben dem Knopf, der alle sechs Zeilen füllt. Der Styropor-Satz sollte erst nach eigener Messung erscheinen: _mlabRenderFit gibt bei P.curve sofort P.note aus. „Steigung messen“ wirkt auf Kurven nicht, weil _mlabDrawPlot bei P.curve keinen Fit rechnet; ein Steigungsdreieck zwischen zwei gewählten Messpunkten fehlt. Die Streuung (±0,75 % in _daeMessRow) verdeckt bei Styropor das Abflachen. Nur wm4 nutzt die Simulation, aber ihre eigenen Zitate („Messreihe (0–10 min)“, „Alle Materialien“, Spalte T (°C)) müssen bleiben.",
   "geteilt_mit": "keine (nur wm4)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5283,7 +5283,7 @@
   "sim_aenderung": "Fehlt: eine Wertetabelle mit „Messwert übernehmen“ (T, Ausdehnung) und die Auftragung T → Ausdehnung. Die Festkörper-Prozente brauchen eine Nachkommastelle, sonst springen die Stufen 2/5/7/10/12 % (coef 0,12 in _wauFactor, auf ganze Prozent gerundet). Regler wauT und die Tasten fest/flüssig/Gas bleiben; w3 geht je Zustand von 20 auf 80 °C.",
   "geteilt_mit": "w3 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5300,7 +5300,7 @@
   "sim_aenderung": "Fehlt ganz: ein Heizmodus mit Wärmezufuhr über die Zeit, Stoppuhr oder „Temperatur ablesen“, Wertetabelle und Auftragung t → T. Die Temperatur muss dort Ausgabe sein, nicht Regler, und die Marken „Schmelzen/Sieden“ dürfen erst nach der Messung beschriftet werden. Regler aggT, die Tasten „abkühlen“/„erwärmen“ (_aggStep ±15) und die Statuszeile bleiben; w4 fährt mit „abkühlen“ auf −10 °C und mit „erwärmen“ auf 110 °C. Wegen des Umfangs besser als eigene Fassung daneben (Muster beschleunigung-ef).",
   "geteilt_mit": "w4 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5317,7 +5317,7 @@
   "sim_aenderung": "Fehlt: eine Wertetabelle mit „Messwert übernehmen“ (T, V) und die Auftragung T → V (Messlabor-Baustein). Ein Schalter, der Abschnitt 3 „Der Vergleich mit 4 °C“ und den Zusatz „· am dichtesten“ bis nach der Messreihe verbirgt. Das Mehrvolumen in mL wäre für 5/6 lesbarer als 1,00003 L. Nur wm7 nutzt die Simulation, doch wm7 selbst zitiert „4 °C · am dichtesten“, „Nachgerechnet“, „4 · Und Eis?“ und „Der See im Winter“ – das bleibt als Voreinstellung, solange die Seite gedruckt ist.",
   "geteilt_mit": "keine (nur wm7)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5334,7 +5334,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "s2 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5351,7 +5351,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "s1 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5368,7 +5368,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "s3 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5385,7 +5385,7 @@
   "sim_aenderung": "Die Zahl ist heute falsch benannt: „Helligkeit je Lampe“ zeigt 1/n. Für den Ausbau entweder die Anzeige in „Anteil der Batterie je Lampe“ umbenennen und das Leuchten im Bild nach 1/n² zeichnen, oder die Prozentzahl im Heft nicht auswerten. Eine Umbenennung trifft die gedruckte sm4, deren merksatz „50 %“ unter „Helligkeit je Lampe“ abfragt; also als zusätzliche Zeile, nicht als Ersatz. Regler reiN und die Tasten „Schalter“ und „Lampe 2: eingedreht/herausgedreht“ bleiben (s4: 1/2/3 Lampen, Lampe 2 herausgedreht).",
   "geteilt_mit": "s4 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5402,7 +5402,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "s5 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5419,7 +5419,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "keine (nur sm6)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5436,7 +5436,7 @@
   "sim_aenderung": "Fehlt: eine messbare Ausgabe. Heute dreht die Spule nur eine gezeichnete Nadel mit Winkel (I/5)·0,9 rad (_wirDraw), ohne Zahl. Nötig wären „hält n Büroklammern“ oder eine Gradanzeige, ein Regler Windungszahl und eine Tabelle mit „Messwert übernehmen“. Regler wirI, die vier Geräteknöpfe (_wirSetDev), die Hakenliste und die Zeile „Energieumwandlung“ bleiben; mo6 liest daraus Wirkungen und Energieform ab.",
   "geteilt_mit": "mo6 (Realschule NRW, Klasse 10)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5453,7 +5453,7 @@
   "sim_aenderung": "Fehlt: ein Schalter, der im Kasten „Nachgerechnet“ Formel und eingesetzte Zahlen ausblendet und nur „Wandern v = … mm/s“ zeigt, dazu eine Wertetabelle mit „Messwert übernehmen“ (I, A, v). Regler drfI/drfA, die drei Geräteknöpfe (_drfMarke) und der volle Rechenweg als Voreinstellung bleiben: st11 stellt 0,1 A ein, la6 liest bei „Nachgerechnet“ ab, fs11 liest „Zappeln“ und „Signal“ im Bild.",
   "geteilt_mit": "st11 (Gesamtschule NRW, Klasse 8); la6 (Gymnasium NRW, Klasse 9); fs11 (Gesamtschule NRW, Klasse 8, Förderheft)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5470,7 +5470,7 @@
   "sim_aenderung": "Die Grundreihe kann die Simulation heute (➕ Gerät anschließen = _gefAdd(1), Statuszeile „n Geräte → x A“, höchstens 5 Geräte). Für echtes Addieren fehlen Geräte mit unterschiedlicher Stromstärke (Auswahlknöpfe mit Angabe in A) und eine Tabelle mit „Messwert übernehmen“. Die Knöpfe „Gerät anschließen“, „Gerät entfernen“ und „Sicherung zurücksetzen“, 6 A je Standardgerät und die 16-A-Grenze bleiben; lt5, st14, ep4 und fs13 zitieren genau diese Knöpfe und Zahlen.",
   "geteilt_mit": "lt5 (Realschule NRW, Klasse 8); st14 (Gesamtschule NRW, Klasse 8); ep4 (Gymnasium NRW, Klasse 9); fs13 (Gesamtschule NRW, Klasse 8, Förderheft)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5487,7 +5487,7 @@
   "sim_aenderung": "Heute vorhanden: Regler „Abstand d“ (2–12 cm), „＋ Messwert übernehmen“ (_mpoMessen), Tabelle, Auftragung „Abstand d → Kraft F“ und Theoriefunktion. Fehlt oder stört: Der Satz „F ~ 1/d²“ erscheint sofort, weil _mlabRenderFit bei P.curve gleich P.note ausgibt; er sollte erst nach mindestens drei eigenen Messwerten oder auf Knopfdruck kommen. „📋 Beispielmessreihe“ nimmt dem Kind die Messung ab, und „Steigung messen“ wirkt auf die Kurve nicht (kein Fit). „Magnet an der Tür so herum/umgedreht“, Regler Abstand d und „Messwert übernehmen“ bleiben; m3 misst bei 5, 2 und 10 cm.",
   "geteilt_mit": "m3 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5504,7 +5504,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "m2 (Realschule NRW, Klasse 5)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5521,7 +5521,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "m1, m4 (Realschule NRW, Klasse 5); mo1 (Realschule NRW, Klasse 10); ev1 (Gesamtschule NRW, Klasse 10); fv1 (Gesamtschule NRW, Klasse 10, Förderheft)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5538,7 +5538,7 @@
   "sim_aenderung": "Fehlt: eine Reglerbeschriftung ohne Prozent (z. B. schwach/mittel/stark) oder eine Heft-Ansicht, in der „Nachgerechnet“ Abschnitt 2 nur „trägt n Büroklammern“ zeigt und die Regel verschweigt (_emgStatus). Dazu eine Tabelle mit „Messwert übernehmen“ (Strich, ausgerichtet, Klammern) und die Auftragung Strich → ausgerichtet. Nur sm13 nutzt die Simulation, aber sm13 selbst zitiert „Streichwirkung auf 30 %“, „Nachgerechnet“ und „64 Pfeile“, also bleibt die Voreinstellung so.",
   "geteilt_mit": "keine (nur sm13)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {
@@ -5555,7 +5555,7 @@
   "sim_aenderung": "keine",
   "geteilt_mit": "m5 (Realschule NRW, Klasse 5); mo2 (Realschule NRW, Klasse 10)",
   "reihe": "Gymnasium und Oberstufe",
-  "bandlabel": "arbeitsheft_gym56 (FELO Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
+  "bandlabel": "arbeitsheft_gym56 (FeLabs Physik 5/6, Gymnasium NRW): Kapitel Temperatur und Wärme (wm1–wm7) und Strom und Magnete (sm1–sm14). Die Datei enthält mit diesen Präfixen 21 Seiten, nicht 19.",
   "b": "arbeitsheft_gym56"
  },
  {

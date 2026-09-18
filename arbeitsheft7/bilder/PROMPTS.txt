@@ -1,4 +1,4 @@
-# FELO PHYSIK 7 · Realschule NRW · 6 noch fehlende Bilder
+# FeLabs PHYSIK 7 · Realschule NRW · 6 noch fehlende Bilder
 # Ablage: ~/Desktop/Arbeitsheft-Bilder 7 Klasse/  (oder direkt in <heft>/bilder/)
 # Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.
 

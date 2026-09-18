@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO PHYSIK · Einführungsphase · Gymnasiale Oberstufe NRW.
+"""Bauplan FeLabs PHYSIK · Einführungsphase · Gymnasiale Oberstufe NRW.
 
 Grundlage: Kernlehrplan Physik Sekundarstufe II, Gymnasium/Gesamtschule NRW,
 Heft 4721 (RdErl. v. 31.05.2022, in Kraft zum 1. August 2022). Vollstaendig

@@ -1,12 +1,12 @@
 # Förderheft 7 · Gesamtschule NRW — Seitenplan (zur Freigabe)
 
 Stand 04.09.2026. Grundlage: Schritt-1-Analyse aller 29 Lerneinheiten von
-FELO 7 Gesamtschule (analyse_schritt1.json) plus adversarialer Kritik.
+FeLabs 7 Gesamtschule (analyse_schritt1.json) plus adversarialer Kritik.
 NICHTS wird ausformuliert, bevor dieser Plan freigegeben ist.
 
 ## Umfang (gezählt, nicht geschätzt)
 
-| | Original FELO 7 | Förderheft 7 |
+| | Original FeLabs 7 | Förderheft 7 |
 |---|---|---|
 | Lerneinheiten | 29 | **25** (4 Zusammenlegungen) |
 | Schülerseiten | 111 | **59** |
@@ -29,7 +29,7 @@ Trenner 2 · 25 Doppelseiten 50 · 2 Fördertests 4 = **59**.
 | 7 | fo7 | oi10 | Das aufklappbare Augenmodell | auge | übernehmen (nur Sprachglättung) |
 | 8 | fo8 | oi11 | Zwei Brillen ohne Etikett | brille | vereinfachen: nur Zuordnung kurzsichtig→Zerstreuungslinse, weitsichtig→Sammellinse |
 | 9 | fo9 | oi12 | Die Pappkiste mit dem Nadelloch | lochkamera | vereinfachen |
-| 10 | fo10 | oi13 | Der Glaskeil in der Schublade | prisma | übernehmen — **= Pilot** (bereits gesetzt, Desktop/FELO_Foerder_7_Pilot.pdf) |
+| 10 | fo10 | oi13 | Der Glaskeil in der Schublade | prisma | übernehmen — **= Pilot** (bereits gesetzt, Desktop/FeLabs_Foerder_7_Pilot.pdf) |
 | 11 | fo11 | oi14 | Die Lupe auf dem Bildschirm | farbmischung-additiv | vereinfachen |
 | 12 | fo12 | oi15 | Das Thermometer mit der schwarzen Kugel | spektrum-unsichtbar | vereinfachen: nur „hinter Rot kommt unsichtbares Licht an, das wärmt“ |
 
@@ -74,11 +74,11 @@ Fördertest Kapitel 2 (10–15 Punkte, 2 Seiten).
 
 1. ✅ Seitenplan freigegeben. Alle 25 Einheiten sind ausformuliert.
 2. ✅ Pilotformat fo10 ist verbindliche Vorlage für alle Doppelseiten.
-3. ✅ Lehrerband als eigenes PDF „FELO_Foerder_7_Lehrerband“.
+3. ✅ Lehrerband als eigenes PDF „FeLabs_Foerder_7_Lehrerband“.
 
 ## Gebaut am 05.09.2026
 
-Auf Abdullahs Wunsch im vollen FELO-Reihenbild gesetzt (`build_book.py`):
+Auf Abdullahs Wunsch im vollen FeLabs-Reihenbild gesetzt (`build_book.py`):
 Deckblatt · So arbeitest du + Impressum · Inhalt mit vollständiger Themen-
 Gliederung · je Kapitel Navy-Trennseite mit Themenkästen · 50 Doppelseiten ·
 2 Fördertests = **59 Seiten**, dazu **29 Seiten Lehrerband**.

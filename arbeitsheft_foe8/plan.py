@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO Förderheft 8 · Gesamtschule NRW.
+"""Bauplan FeLabs Förderheft 8 · Gesamtschule NRW.
 
 Zweiter Band der Förderreihe (nach arbeitsheft_foe7). Gleiche fachliche Ziele
 wie das Regelheft arbeitsheft_gts8, leichterer Lernweg (A2-B1, Förderbedarf

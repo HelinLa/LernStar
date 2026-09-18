@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Kompetenzen und Anforderungsbereiche der FELO-Hefte.
+"""Kompetenzen und Anforderungsbereiche der FeLabs-Hefte.
 
 Quelle der Kompetenzcodes und ihres Wortlauts:
 Kernlehrplan für die Realschule in Nordrhein-Westfalen, Physik (Heft 3307,

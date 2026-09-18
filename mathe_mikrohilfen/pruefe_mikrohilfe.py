@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Prüfer der FELO-Mikrohilfen (PROFIL.md) — Mathematik 8, Gleichungen.
+"""Prüfer der FeLabs-Mikrohilfen (PROFIL.md) — Mathematik 8, Gleichungen.
 
 Hausregel dieses Projekts: Ein Prüfer, der schweigt, weil er nichts sieht, ist
 schlimmer als keiner. Der Lauf beginnt deshalb IMMER mit einem Selbsttest —
@@ -74,7 +74,7 @@ VERBOTEN = [
     (r"auf die andere seite", "Seitenwechsel ohne Rechnung"),
     (r"vorzeichenwechsel|vorzeichen wechsel", "Merkregel statt Herleitung"),
     (r"koeffizient|isolier|substitu|\bterm", "Fachwort, hier nicht gebraucht"),
-    (r"klick",              "FELO-Hausregel"),
+    (r"klick",              "FeLabs-Hausregel"),
 ]
 THEMA = r"so löst du|alles über|grundlagen|thema"   # nur in `frage` verboten
 

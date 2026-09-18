@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""FELO-Gestaltungssystem – die Fassung "spec", herausgeloest aus dem Prototyp.
+"""FeLabs-Gestaltungssystem – die Fassung "spec", herausgeloest aus dem Prototyp.
 
 Dieses Modul enthaelt NUR Gestaltung: Farbtafel, Groessentafel, Schrifthelfer mit
 Zeichenpruefung, die vier Kastenarten, Tabelle, Abschnittsmarke, Kompetenzchip,
@@ -659,7 +659,7 @@ def tabelle(h, d, y, st, kopf, zeilen, anteile=None, min_rh=None, x0=None, x1=No
 # 12  SEITENRAHMEN
 # ═════════════════════════════════════════════════════════════════════════════
 def seitenrahmen(h, d, st, kopf_links, kopf_rechts, titel, seite, gesamt, pn,
-                 fusstext="FELO Physik · Forscherheft"):
+                 fusstext="FeLabs Physik · Forscherheft"):
     st = st or STIL
     f = schrift("reg", KLEIN)
     T(h, X0, KOPF_Y, kopf_links, f, st["text"])
@@ -1237,7 +1237,7 @@ if not _FREI:
 
 if __name__ == "__main__":
     print("=" * 78)
-    print("FELO-Gestaltungssystem · Fassung \"spec\" · Selbsttest")
+    print("FeLabs-Gestaltungssystem · Fassung \"spec\" · Selbsttest")
     print("=" * 78)
     selbsttest(laut=True)
     print("")

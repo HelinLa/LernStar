@@ -61920,7 +61920,7 @@ function _ohgDraw(ctx, cv) {
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
   // Im Forschermodus (js/forschermodus.js) bleibt der Widerstand verdeckt -
   // er ist genau die Groesse, die das Kind aus der Steigung gewinnen soll.
-  ctx.fillText(window.FELO_FORSCHEN === 'ohm-kennlinie' ? 'Draht ' + (_ohg.rGr === 'klein' ? 'A' : 'B')
+  ctx.fillText(window.FELABS_FORSCHEN === 'ohm-kennlinie' ? 'Draht ' + (_ohg.rGr === 'klein' ? 'A' : 'B')
                                                         : 'R = ' + _ohgR() + ' Ω', oxR - 78, oyT + 10);
 }
 
@@ -66895,7 +66895,7 @@ function _mgwDraw(ctx, cv) {
   // Im Forschermodus (js/forschermodus.js) bleibt die Formel weg - sie ist genau
   // das Ergebnis, das die Messreihe hergeben soll, und steht im Canvas, also per
   // CSS nicht erreichbar.
-  ctx.fillText(window.FELO_FORSCHEN === 'masse-gewicht' ? 'Masse und Gewichtskraft'
+  ctx.fillText(window.FELABS_FORSCHEN === 'masse-gewicht' ? 'Masse und Gewichtskraft'
                                                         : 'F = m · g   (g = 9,8 N/kg)', W / 2, 20);
   // Objekt
   const size = 30 + ((o.m - 0.1) / 1.9) * 30, cx = W / 2, cy = 82;
@@ -72734,18 +72734,18 @@ function _lgeDraw(ctx, cv) {
   ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'lageenergie' ? 'Wie tief kommt der Pfahl?' : 'Lageenergie E = m · g · h', 14, 22);
+  ctx.fillText(window.FELABS_FORSCHEN === 'lageenergie' ? 'Wie tief kommt der Pfahl?' : 'Lageenergie E = m · g · h', 14, 22);
   const bx = 14, byy = 34, bw = W - 28, bh = 15, maxE = 20 * _LGE_G * 10;
   ctx.fillStyle = 'rgba(15,23,42,0.10)'; ctx.fillRect(bx, byy, bw, bh);
   ctx.fillStyle = '#7c3aed'; ctx.fillRect(bx, byy, Math.max(3, bw * (_lgeE() / maxE)), bh);
   ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif';
-  if (window.FELO_FORSCHEN !== 'lageenergie') ctx.fillText(_fpmNum(_lgeE(), 0) + ' J', bx + 6, byy + 11);
+  if (window.FELABS_FORSCHEN !== 'lageenergie') ctx.fillText(_fpmNum(_lgeE(), 0) + ' J', bx + 6, byy + 11);
   if (_lge.fertig) {
     ctx.textAlign = 'center'; ctx.fillStyle = '#fef3c7'; ctx.font = '700 12px sans-serif';
     ctx.fillText('Pfahl ' + _fpmNum(_lge.tief * 100, 0) + ' cm tief – die Energie war oben schon da', W / 2, H - 12);
   } else {
     ctx.textAlign = 'center'; ctx.fillStyle = '#fef3c7'; ctx.font = '11px sans-serif';
-    if (window.FELO_FORSCHEN !== 'lageenergie') ctx.fillText('Masse und Höhe zählen gleich stark', W / 2, H - 12);
+    if (window.FELABS_FORSCHEN !== 'lageenergie') ctx.fillText('Masse und Höhe zählen gleich stark', W / 2, H - 12);
   }
 }
 
@@ -72981,7 +72981,7 @@ function _bgeDraw(ctx, cv) {
   ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'bewegungsenergie' ? 'Bewegungsenergie' : 'Bewegungsenergie E = ½ · m · v²', 14, 22);
+  ctx.fillText(window.FELABS_FORSCHEN === 'bewegungsenergie' ? 'Bewegungsenergie' : 'Bewegungsenergie E = ½ · m · v²', 14, 22);
   const bx = 14, byy = 34, bw = W - 28, bh = 15, maxE = 0.5 * 16 * 12 * 12;
   ctx.fillStyle = 'rgba(15,23,42,0.10)'; ctx.fillRect(bx, byy, bw, bh);
   ctx.fillStyle = '#dc2626'; ctx.fillRect(bx, byy, Math.max(3, bw * (_bgeE() / maxE)), bh);
@@ -72989,7 +72989,7 @@ function _bgeDraw(ctx, cv) {
   ctx.font = '11px sans-serif'; ctx.fillStyle = '#475569';
   ctx.fillText('v = ' + _fpmNum(_bge.v, 0) + ' m/s', 14, 66);
   ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
-  if (window.FELO_FORSCHEN !== 'bewegungsenergie')
+  if (window.FELABS_FORSCHEN !== 'bewegungsenergie')
     ctx.fillText('das Tempo zählt doppelt: v steht im Quadrat', W / 2, H - 8);
 }
 
@@ -73545,10 +73545,10 @@ function _wgrDraw(ctx, cv) {
   ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'wirkungsgrad' ? m.name
+  ctx.fillText(window.FELABS_FORSCHEN === 'wirkungsgrad' ? m.name
                  : 'Wirkungsgrad η = ' + _fpmNum(m.eta * 100, 0) + ' %', 14, 22);
   ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#334155';
-  ctx.fillText((window.FELO_FORSCHEN === 'wirkungsgrad'
+  ctx.fillText((window.FELABS_FORSCHEN === 'wirkungsgrad'
                  ? 'oben der Nutzen, der Rest ist Verlust – zusammen immer '
                  : 'was oben herauskommt ist der Nutzen, der Rest wird Wärme – zusammen immer ')
                + _fpmNum(_wgr.rein, 0) + ' J', W / 2, H - 12);
@@ -73668,7 +73668,7 @@ function _lrsDraw(ctx, cv) {
   ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'leistung-rs' ? 'Kiste hochziehen'
+  ctx.fillText(window.FELABS_FORSCHEN === 'leistung-rs' ? 'Kiste hochziehen'
                  : 'Arbeit W = ' + _fpmNum(Wj, 0) + ' J  (ändert sich durch die Zeit NICHT)', 14, 22);
   const bx = 14, byy = 34, bw = W - 28, bh = 16, maxP = 3000;
   ctx.fillStyle = 'rgba(15,23,42,0.10)'; ctx.fillRect(bx, byy, bw, bh);
@@ -73688,7 +73688,7 @@ function _lrsDraw(ctx, cv) {
   ctx.font = '9px sans-serif'; ctx.fillStyle = '#475569';
   ctx.fillText('von ' + _fpmNum(_lrs.t, 0) + ' s', ux, uy + 57);
   ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
-  if (window.FELO_FORSCHEN !== 'leistung-rs')
+  if (window.FELABS_FORSCHEN !== 'leistung-rs')
     ctx.fillText('halbe Zeit → doppelte Leistung, gleiche Arbeit', W / 2, H - 8);
 }
 
@@ -73810,7 +73810,7 @@ function _eewDraw(ctx, cv) {
   ctx.fillStyle = _eew.stufe >= n ? '#b91c1c' : '#334155';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'energie-entwerten'
+  ctx.fillText(window.FELABS_FORSCHEN === 'energie-entwerten'
                  ? 'grün und rot zusammen: rechne selbst nach'
                  : (_eew.stufe >= n ? 'Menge gleich geblieben – Brauchbarkeit weg'
                                     : 'die Gesamtlänge ändert sich nie: 1000 J'), W / 2, H - 10);
@@ -75267,7 +75267,7 @@ function _druDraw(ctx, cv) {
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'druck-flaeche' ? 'Kraft und Auflagefläche' : 'p = F / A', W / 2, H - 8);
+  ctx.fillText(window.FELABS_FORSCHEN === 'druck-flaeche' ? 'Kraft und Auflagefläche' : 'p = F / A', W / 2, H - 8);
 }
 
 function _druHTML() {
@@ -75497,7 +75497,7 @@ function _swdDraw(ctx, cv) {
   ctx.fillStyle = '#334155'; ctx.font = '11px system-ui';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'schweredruck' ? 'Der Druck wirkt nach allen Seiten gleich'
+  ctx.fillText(window.FELABS_FORSCHEN === 'schweredruck' ? 'Der Druck wirkt nach allen Seiten gleich'
                                                      : 'p = ρ · g · h   –   der Druck wirkt nach allen Seiten gleich', W / 2, 40);
   ctx.fillStyle = '#fff';
   ctx.fillText('Tiefe: ' + _fpmNum(_swd.h, 0) + ' m', W / 2, H - 8);
@@ -75571,7 +75571,7 @@ function _swdArbeitsblattHTML() {
   return _abWrap('schweredruck', 'Schweredruck – warum es in der Tiefe drückt', body);
 }
 // ═══════════════════════════════════════════════════════
-// FELO 9 · kf13  DICHTE - WARUM GLEICH GROSSE KOERPER VERSCHIEDEN VIEL WIEGEN
+// FeLabs 9 · kf13  DICHTE - WARUM GLEICH GROSSE KOERPER VERSCHIEDEN VIEL WIEGEN
 // GTS 9.1.13 · Kennung kf13  DICHTE - GLEICH GROSS, VERSCHIEDEN SCHWER
 // Gesamtschule NRW - Klasse 9 - Physik
 // Inhaltsfeld-Bezug: Masse, Volumen und Dichte als Stoffeigenschaft
@@ -75817,7 +75817,7 @@ function _dchDraw(ctx, cv) {
   ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  if (window.FELO_FORSCHEN !== 'dichte')
+  if (window.FELABS_FORSCHEN !== 'dichte')
     ctx.fillText('Die Dichte ρ (sprich: rho) sagt, wie viel Masse in 1 m³ steckt.', W / 2, 31);
 
   // ── links: alle sechs Wuerfel im Massenvergleich ──
@@ -75853,20 +75853,20 @@ function _dchDraw(ctx, cv) {
   ctx.fillStyle = '#78350f'; ctx.font = 'bold 10px system-ui';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  if (window.FELO_FORSCHEN !== 'dichte') ctx.fillText('ρ = m : V', 16, 222);
+  if (window.FELABS_FORSCHEN !== 'dichte') ctx.fillText('ρ = m : V', 16, 222);
   ctx.font = '9px system-ui'; ctx.fillStyle = '#92400e';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  if (window.FELO_FORSCHEN !== 'dichte') ctx.fillText('1 dm³ Wasser: genau 1 kg Masse.', 16, 238);
-  if (window.FELO_FORSCHEN !== 'dichte') ctx.fillText('Daher kommt die Einheit.', 16, 252);
+  if (window.FELABS_FORSCHEN !== 'dichte') ctx.fillText('1 dm³ Wasser: genau 1 kg Masse.', 16, 238);
+  if (window.FELABS_FORSCHEN !== 'dichte') ctx.fillText('Daher kommt die Einheit.', 16, 252);
   ctx.font = 'bold 9.5px system-ui'; ctx.fillStyle = '#0f172a';
   if (s.id === 'wasser') {
     ctx.fillText('Wasser ist der Bezugsstoff.', 16, 272);
   } else {
-    if (window.FELO_FORSCHEN !== 'dichte') ctx.fillText(s.kurz + ' : Wasser = ' + _fpmNum(s.rho / _DCH_RHO_W, 2), 16, 272);
+    if (window.FELABS_FORSCHEN !== 'dichte') ctx.fillText(s.kurz + ' : Wasser = ' + _fpmNum(s.rho / _DCH_RHO_W, 2), 16, 272);
   }
   ctx.font = '9px system-ui'; ctx.fillStyle = '#475569';
-  if (window.FELO_FORSCHEN !== 'dichte') ctx.fillText('bei jeder Kantenlänge gleich', 16, 285);
+  if (window.FELABS_FORSCHEN !== 'dichte') ctx.fillText('bei jeder Kantenlänge gleich', 16, 285);
 
   ctx.font = 'bold 9.5px system-ui'; ctx.fillStyle = '#0f172a';
   ctx.fillText('a = ' + _fpmNum(_dch.a, 0) + ' cm · V = a³ = ' + _dchRho(vcm) + ' cm³', 10, 306);
@@ -76296,7 +76296,7 @@ function _hebDraw(ctx, cv) {
   ctx.fillText('Kraftarm  l₁ = ' + _fpmNum(l1, 2) + ' m', 16, 58);
   ctx.fillText('Lastarm   l₂ = ' + _fpmNum(l2, 2) + ' m', 16, 73);
   ctx.font = '10px system-ui'; ctx.fillStyle = '#fdba74';
-  if (window.FELO_FORSCHEN !== 'hebel') ctx.fillText('l₁ ist ' + _fpmNum(_hebUe(), 2) + '-mal so lang', 16, 90);
+  if (window.FELABS_FORSCHEN !== 'hebel') ctx.fillText('l₁ ist ' + _fpmNum(_hebUe(), 2) + '-mal so lang', 16, 90);
   ctx.fillStyle = '#7dd3fc';
   ctx.fillText(_hebRichtung(), 16, 104);
 
@@ -76305,9 +76305,9 @@ function _hebDraw(ctx, cv) {
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  ctx.fillText(window.FELO_FORSCHEN === 'hebel' ? 'Kraft und Hebelarm' : 'Hebelgesetz:   F₁ · l₁ = F₂ · l₂', W / 2, 20);
+  ctx.fillText(window.FELABS_FORSCHEN === 'hebel' ? 'Kraft und Hebelarm' : 'Hebelgesetz:   F₁ · l₁ = F₂ · l₂', W / 2, 20);
   ctx.fillStyle = '#475569'; ctx.font = '11px system-ui';
-  if (window.FELO_FORSCHEN !== 'hebel') ctx.fillText('Der lange Arm spart Kraft – und kostet Weg', W / 2, 36);
+  if (window.FELABS_FORSCHEN !== 'hebel') ctx.fillText('Der lange Arm spart Kraft – und kostet Weg', W / 2, 36);
 
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px system-ui';
   ctx.fillText('Kraftweg ' + _fpmNum(_hebS1cm(), 1) + ' cm  ·  Lastweg ' +
@@ -76689,7 +76689,7 @@ function _rolDraw(ctx, cv) {
   ctx.fillStyle = '#fde68a'; ctx.font = 'italic 10px system-ui';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  if (window.FELO_FORSCHEN !== 'feste-rolle') ctx.fillText(m.merk, 280, 134);
+  if (window.FELABS_FORSCHEN !== 'feste-rolle') ctx.fillText(m.merk, 280, 134);
 
   // Wegmarken: Weg der Last und Weg der Hand im selben Massstab
   const bx1 = 300, bx2 = 372, bw = 30, ytop = yb - 4 * px;
@@ -76796,7 +76796,7 @@ function _rolArbeitsblattHTML() {
 // ═══════════════════════════════════════════════════════
 // GTS 9.2.10 · Kennung el10  FLASCHENZUG - WIE VIELE SEILE TRAGEN DIE LAST?
 // Gesamtschule NRW - Klasse 9 - Inhaltsfeld "Bewegungen und ihre Ursachen" (8)
-// FELO Physik 9, Themen-Kennung el10
+// FeLabs Physik 9, Themen-Kennung el10
 // Der ganze Flaschenzug steckt in einer einzigen Zaehlaufgabe: Wie viele
 // Seilstuecke ziehen an der unteren Flasche? Diese Zahl heisst n. So viele Male
 // kleiner wird die Kraft - und so viele Male laenger wird der Weg.
@@ -77441,7 +77441,7 @@ function _znrDraw(ctx, cv) {
   ctx.font = 'bold 11px system-ui';
   // Im Forschermodus (js/forschermodus.js) verdeckt: steht im Canvas, per CSS
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
-  if (window.FELO_FORSCHEN !== 'zahnrad')
+  if (window.FELABS_FORSCHEN !== 'zahnrad')
     ctx.fillText(_fpmNum(flussS, 1) + ' Zähne je Sekunde – bei beiden Rädern', _ZNR_CX, 76);
 
   // Zaehler unten
@@ -84088,7 +84088,7 @@ function _befDraw(ctx, cv) {
     ctx.fillText(_bef.meldung, W / 2, 71);
   } else {
     ctx.fillStyle = '#64748b'; ctx.font = '11px sans-serif';
-    ctx.fillText(window.FELO_FORSCHEN === 'beschleunigung-ef'
+    ctx.fillText(window.FELABS_FORSCHEN === 'beschleunigung-ef'
       ? 'Uhr, Wegmesser und Tacho laufen mit – stoppe selbst und trage ein'
       : 'v = a · t   und   s = ½ · a · t²   –   Uhr, Wegmesser und Tacho laufen mit', W / 2, 71);
   }

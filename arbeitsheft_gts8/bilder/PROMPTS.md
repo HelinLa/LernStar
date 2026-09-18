@@ -1,7 +1,7 @@
-# Einstiegsbilder · FELO Physik 8 · Gesamtschule NRW
+# Einstiegsbilder · FeLabs Physik 8 · Gesamtschule NRW
 
 23 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
-als `FELO-Bilder Gesamtschule 8` verlinkt). Dateiname = **Kennung, Leerzeichen,
+als `FeLabs-Bilder Gesamtschule 8` verlinkt). Dateiname = **Kennung, Leerzeichen,
 Titel der Heftseite**, dann `.png` – genau so, wie er über jedem Auftrag steht.
 Querformat 5:3, mindestens 1200 × 720 Punkte.
 

@@ -6,7 +6,7 @@ Inhaltsverzeichnis. Neu ausführen, wenn der Verlauf aktualisiert werden soll:
 import json, io, os, re, datetime
 
 Q = "/Users/lala/.claude/projects/-Users-lala/d2ec281f-8bf0-4474-af80-7a8a92a29439.jsonl"
-ZIEL = os.path.expanduser("~/Desktop/FELO_Chatverlauf.md")
+ZIEL = os.path.expanduser("~/Desktop/FeLabs_Chatverlauf.md")
 
 def text_von(c):
     """Text eines Beitrags. Eingefuegte Bilder kann eine Textdatei nicht
@@ -75,9 +75,9 @@ if puffer:
     zeilen.append(_schritte(len(puffer)))
 
 toc = "\n".join("%d. [%s](#%s)" % (nr, txt.replace("|", "\\|"), a) for nr, txt, a in eintraege)
-kopf = """# FELO · Gesprächsverlauf
+kopf = """# FeLabs · Gesprächsverlauf
 
-Vollständiger Verlauf der Arbeit an den FELO-Physikheften (Realschule NRW),
+Vollständiger Verlauf der Arbeit an den FeLabs-Physikheften (Realschule NRW),
 Stand %s.
 
 Enthalten sind **alle %d Nachrichten von Abdullah** und **alle Antworten** in

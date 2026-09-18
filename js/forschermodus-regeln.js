@@ -10,7 +10,7 @@
 // ============================================================================
 'use strict';
 
-const FELO_FORSCHEN_SEITEN = {
+const FELABS_FORSCHEN_SEITEN = {
   el10: "flaschenzug",
   el11: "zahnrad",
   el2: "lageenergie",
@@ -32,7 +32,7 @@ const FELO_FORSCHEN_SEITEN = {
   st8: "ohm-kennlinie",
 };
 
-const FELO_FORSCHEN_REGELN = {
+const FELABS_FORSCHEN_REGELN = {
   "beschleunigung-ef": {
     weg: [".bef-sim > .sim-hint", "#befFit .fpm-note"],
     maske: [
@@ -196,7 +196,7 @@ const FELO_FORSCHEN_REGELN = {
   },
 };
 
-const FELO_FORSCHEN_BEDIENUNG = {
+const FELABS_FORSCHEN_BEDIENUNG = {
  "federgesetz": "_fedSetFeder('weich'); _fedHaenge(100); _fedMessen(); _fedHaenge(100); _fedMessen();",
  "ohm-kennlinie": "_ohgSetR('klein'); _ohgU_(1); _ohgMessen(); _ohgU_(1); _ohgMessen();",
  "beschleunigung-ef": "_befSetA(2); _befMessen(); _befSetPreset(0);",

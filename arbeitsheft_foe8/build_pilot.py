@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""FELO Foerderheft · Satz der Lerneinheiten (Seite A, Seite B, Lehrerteil).
+"""FeLabs Foerderheft · Satz der Lerneinheiten (Seite A, Seite B, Lehrerteil).
 
 Klasse, Schulform und Quellband kommen aus plan.py - diese Datei ist fuer die
 Foerderbaende 7, 8 und 9 dieselbe. (Band 10 hat eine eigene Fassung, weil er
@@ -56,7 +56,7 @@ KL       = str(plan.KLASSE)
 QUELLBAND= os.path.join(os.path.dirname(_HIER), plan.QUELLBAND)
 KAP      = {k["id"]: k["titel"] for k in plan.KAPITEL}
 ERSTES   = plan.KAPITEL[0]["id"]
-FUSS     = f"FELO Physik {KL} · Förderheft"
+FUSS     = f"FeLabs Physik {KL} · Förderheft"
 
 def _load(n): return json.load(open(os.path.join(HERE,"content",n),encoding="utf-8"))
 SEITEN={o["id"]:o for o in _load("foerderseiten.json")}
@@ -65,7 +65,7 @@ LOES={o["id"]:o for o in _load("loesungen_lehrer.json")}
 # ═════════════════════════════════════════════════════════════════════════════
 #  MASSE - alles haengt an der Groessentafel des Moduls, nichts ist geraten
 # ═════════════════════════════════════════════════════════════════════════════
-DISPLAY_GROSS  = fd.HAUPT*3      # 66 pt - Wortmarke FELO auf dem Deckblatt
+DISPLAY_GROSS  = fd.HAUPT*3      # 66 pt - Wortmarke FeLabs auf dem Deckblatt
 DISPLAY_MITTEL = fd.HAUPT*2      # 44 pt - Fach/Klasse, Kapitelziffer
 
 LH_HAUPT   = round(fd.einheiten(fd.HAUPT)*fd.ZAB,2)
@@ -1067,6 +1067,6 @@ if __name__=="__main__":
     seiten+=seite_l(cfg,1+len(seiten))
     outdir=os.path.join(HERE,"build"); os.makedirs(outdir,exist_ok=True)
     for i,s in enumerate(seiten): s.save(os.path.join(outdir,f"pilot_p{i+1}.png"))
-    pdf=os.path.join(os.path.expanduser("~/Desktop"),f"FELO_Foerder_{KL}_Pilot.pdf")
+    pdf=os.path.join(os.path.expanduser("~/Desktop"),f"FeLabs_Foerder_{KL}_Pilot.pdf")
     seiten[0].save(pdf,save_all=True,append_images=seiten[1:],resolution=150)
     print("SAVED",pdf)

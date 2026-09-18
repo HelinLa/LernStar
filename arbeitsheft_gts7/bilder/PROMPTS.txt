@@ -1,5 +1,5 @@
-# FELO PHYSIK 7 · Gesamtschule NRW · 29 noch fehlende Bilder
-# Ablage: ~/Desktop/FELO-Bilder Gesamtschule 7/
+# FeLabs PHYSIK 7 · Gesamtschule NRW · 29 noch fehlende Bilder
+# Ablage: ~/Desktop/FeLabs-Bilder Gesamtschule 7/
 # Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.
 
 ───────── 01/29  oi1 Zwei Kisten ohne Beschriftung.png

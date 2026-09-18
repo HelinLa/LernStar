@@ -28,7 +28,7 @@ UMBENANNT = {}
 
 # Zeichen, die die Heftschrift NICHT hat. Sie stammen aus den Knopfaufschriften der
 # Simulationen ("🪞 Spiegel") und drucken als leere Kaestchen - gesehen auf Seite 5
-# von FELO 7 Gesamtschule: "Waehle nacheinander die vier Oberflaechen ▯ Spiegel, ▯
+# von FeLabs 7 Gesamtschule: "Waehle nacheinander die vier Oberflaechen ▯ Spiegel, ▯
 # Fensterglas ...". Pfeile (→ ↓ ↑ ←) bleiben: die stehen in den gedruckten
 # Realschulheften und werden dort sauber gesetzt.
 _OHNE_GLYPHE = re.compile(

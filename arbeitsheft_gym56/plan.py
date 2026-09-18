@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO PHYSIK 5/6 · Gymnasium NRW (G9).
+"""Bauplan FeLabs PHYSIK 5/6 · Gymnasium NRW (G9).
 
 Grundlage: Kernlehrplan Physik, Sekundarstufe I Gymnasium (Heft 3411, 2019),
 Kapitel 2.2 - die vier fuer die ERPROBUNGSSTUFE obligatorischen Inhaltsfelder:
@@ -171,7 +171,7 @@ DUENN = [th["id"] for k in ALLE_KAPITEL for th in k["themen"] if th.get("duenn")
 KAPITEL_VON = {th["id"]: k["id"] for k in ALLE_KAPITEL for th in k["themen"]}
 
 if __name__ == "__main__":
-    print(f"FELO PHYSIK {KLASSE} · {SCHULFORM}\n")
+    print(f"FeLabs PHYSIK {KLASSE} · {SCHULFORM}\n")
     for i, k in enumerate(ALLE_KAPITEL, 1):
         ohne = sum(1 for th in k["themen"] if not th.get("sim"))
         print(f"Kapitel {i} · {k['titel']}  [{k['inhaltsfeld']}]  "

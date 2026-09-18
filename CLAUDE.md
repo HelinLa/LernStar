@@ -145,10 +145,36 @@ The chat widget uses the **Groq API** (primary), with fallback to any OpenAI-com
 6. Add `.sf-card-xx` color styles to `style.css`
 7. Bump all version numbers in `index.html`
 
-## Arbeitshefte – Reihe FELO (`arbeitsheft/` = Klasse 5/6, `arbeitsheft7/`, `arbeitsheft8/`, `arbeitsheft9/`, `arbeitsheft10/`)
+## Die Marke heisst FeLabs (seit 18.09.2026, vorher FELO)
 
-Die Reihe heisst **FELO** (Forschen · Eigeninitiative · Lernen · Organisieren); die Baende
-heissen FELO PHYSIK 5/6, 7, 8, 9 und 10, Schulform REALSCHULE NRW steht auf jedem Cover. Die QR-Adresse
+Geschrieben wird sie IMMER `FeLabs`: grosses F, kleines e, grosses L, dann `abs`
+klein. **Nicht** FELABS, Felabs, Fe Labs, FE-Labs. Kein ®-Zeichen, solange die
+Marke nicht eingetragen ist. Aufloesung: **Forschen – Entdecken – Lernen –
+Anwenden – Begreifen – Sichern** (sechs Buchstaben; die alte Vierer-Aufloesung
+"Forschen · Eigeninitiative · Lernen · Organisieren" steht nirgends mehr).
+
+- Baende: `FeLabs PHYSIK 5` … `FeLabs PHYSIK 10`, `FeLabs PHYSIK EF`.
+  Dateien: `FeLabs_Physik_9_Gesamtschule_NRW.pdf`, `FeLabs_Foerder_8.pdf`.
+- Umbenannt wird mit `simcheck/umbenennen_felabs.py` (zaehlt erst, schreibt nur
+  mit `--schreiben`, meldet am Ende, was es nicht zuordnen konnte).
+- **Programmnamen sind keine Marke:** die JS-Konstanten heissen `FELABS_FORSCHEN`
+  und `FELABS_FORSCHERMODUS`. Das interne Modul `arbeitsheft/felo_design.py`
+  behaelt seinen Dateinamen - es steht in keinem Heft und wird von 19 Skripten
+  importiert.
+- **Titel nie grossschreiben.** Der Lehrerband setzte sein PDF-Titelfeld mit
+  `BANDNAME.upper()`; daraus wurde "FELABS PHYSIK 9". Jetzt ohne `.upper()`.
+- **Die Aufloesung kostet Platz.** Sechs Buchstaben statt vier plus das neue
+  Vorwort liessen die Seite "Ueber dieses Forscherheft" ueberlaufen - 27
+  Seitenzahlen waeren gewandert. Der alte Einleitungsabsatz ist dafuer gekuerzt.
+  Nach JEDER Markenaenderung alle Baende bauen und `simcheck/seitenzahlen.py`
+  gegen den alten Stand halten.
+- Die QR-Adresse bleibt `https://helinla.github.io/LernStar/`, die Web-App heisst
+  weiter LernStar. Die Marke betrifft nur die Hefte.
+
+## Arbeitshefte – Reihe FeLabs (`arbeitsheft/` = Klasse 5/6, `arbeitsheft7/`, `arbeitsheft8/`, `arbeitsheft9/`, `arbeitsheft10/`)
+
+Die Reihe heisst **FeLabs** (Forschen · Entdecken · Lernen · Anwenden · Begreifen · Sichern); die Baende
+heissen FeLabs PHYSIK 5/6, 7, 8, 9 und 10, Schulform REALSCHULE NRW steht auf jedem Cover. Die QR-Adresse
 bleibt `https://helinla.github.io/LernStar/` – dorthin zeigen alle gedruckten Codes.
 Kennungen: Kl.5/6 `m l s w sc h` · Kl.7 `o f g t` · Kl.8 `sp wd lt bg` · Kl.9 `kr bw en kw` · Kl.10 `mo ge ak ke`.
 
@@ -232,7 +258,7 @@ laesst alle Hefte das `build_book` von Klasse 5/6 importieren und schreibt die Q
 aller Klassen in denselben Ordner. Gemeinsame Hilfsmodule deshalb ueber
 `importlib.util.spec_from_file_location` laden, nicht ueber `sys.path`.
 
-## Arbeitshefte – Reihe FELO Gesamtschule (`arbeitsheft_gts7/`, `_gts8/`, `_gts9/`, `_gts10/`)
+## Arbeitshefte – Reihe FeLabs Gesamtschule (`arbeitsheft_gts7/`, `_gts8/`, `_gts9/`, `_gts10/`)
 
 Zweite Reihe derselben Marke, Schulform **GESAMTSCHULE NRW** auf dem Cover. Grundlage ist der
 Kernlehrplan Naturwissenschaften fuer die Gesamtschule (Heft 3108, 2. Auflage 2013), Abschnitt D
@@ -258,7 +284,7 @@ Uebungsseite). In `plan.py` gilt die ASCII-Konvention deshalb nur fuer Kommentar
 NICHT fuer `RAHMEN`, `titel`, `vorhaben`, `inhaltsfeld` und `name` – dort stehen ä, ö, ü, ß.
 Beim Anlegen der vier Baende waren 75 Stellen betroffen ("Oberflaeche" statt "Oberfläche").
 
-## Arbeitshefte – Reihe FELO Foerderheft (`arbeitsheft_foe7/` … `_foe10/`)
+## Arbeitshefte – Reihe FeLabs Foerderheft (`arbeitsheft_foe7/` … `_foe10/`)
 
 Dritte Reihe derselben Marke: **FÖRDERHEFT**, Schulform GESAMTSCHULE NRW. Gleiche
 fachliche Ziele wie die Regelhefte `arbeitsheft_gts7/8/9/10`, leichterer Lernweg (A2–B1,
@@ -442,7 +468,7 @@ BEURTEILEN" statt "FORSCHEN AM BILDSCHIRM", und der QR-Code entfaellt.
 
 > **Fehlt `daten`, verweist die Seite ins Leere.** Die Arbeitsschritte sagen "Lies im
 > Datenblatt ..." – gedruckt wird dann aber keine Tabelle. Bei den fuenf Datenblatt-Themen
-> von FELO 10 Gesamtschule war das zunaechst so.
+> von FeLabs 10 Gesamtschule war das zunaechst so.
 
 **Zellen werden UMGEBROCHEN, nicht verkleinert** (Stand 01.09.2026). Vorher schrumpfte
 `_fitfont` nur bis 9 pt und liess den Text danach in die Nachbarspalte laufen. Bei drei
@@ -458,7 +484,7 @@ diese Zelle verkleinert (11,5 → 8,5 pt). Besser ist trotzdem, im Text zu trenn
 Ein hoeheres Datenblatt kann dazu fuehren, dass Abschnitt 4 und 5 auf eine **zweite
 Seite** rutschen (`sichern_aufgaben_seite`). Das ist so gewollt – lieber eine zweite
 Seite als weniger Schreiblinien. Dadurch wuchs Heft 9 von 255 auf 257, Heft 10 von 179
-auf 186 und FELO 10 Gesamtschule von 121 auf 126 Seiten.
+auf 186 und FeLabs 10 Gesamtschule von 121 auf 126 Seiten.
 
 **Im Foerderheft ist es ein anderer Renderer und ein anderes Mass**
 (`arbeitsheft_foe10/build_pilot.py::datenblatt`, seit 05.09.2026). Die Seite steht
@@ -673,7 +699,7 @@ sobald das Kind seine eigene Auswertung hat.
 > **Zwei Stellen stehen IM BILD** und lassen sich nicht per CSS verdecken:
 > `ohm-kennlinie` zeichnet "R = 10 Ω" ins Diagramm, `beschleunigung-ef` die
 > Merkformel "v = a · t" in die Meldezeile. Beide lesen jetzt
-> `window.FELO_FORSCHEN` (Voreinstellung: aus).
+> `window.FELABS_FORSCHEN` (Voreinstellung: aus).
 
 **Die Beobachtungstabelle kann jetzt bis zu VIER Spalten** (`tabCols`): erste
 Spalte Beschriftung, dann Messwerte, letzte Spalte die Rechnung des Kindes

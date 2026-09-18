@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Bauplan FELO Förderheft 9 · Gesamtschule NRW.
+"""Bauplan FeLabs Förderheft 9 · Gesamtschule NRW.
 
 Dritter Band der Förderreihe (nach arbeitsheft_foe7 und _foe8). Gleiche
 fachliche Ziele wie das Regelheft arbeitsheft_gts9, leichterer Lernweg

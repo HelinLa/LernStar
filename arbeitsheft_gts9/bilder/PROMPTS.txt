@@ -1,5 +1,5 @@
-# FELO PHYSIK 9 · Gesamtschule NRW · 27 noch fehlende Bilder
-# Ablage: ~/Desktop/FELO-Bilder Gesamtschule 9/
+# FeLabs PHYSIK 9 · Gesamtschule NRW · 27 noch fehlende Bilder
+# Ablage: ~/Desktop/FeLabs-Bilder Gesamtschule 9/
 # Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.
 
 ───────── 01/27  kf1 Der unsichtbare Schubs.png

@@ -1,7 +1,7 @@
-# Einstiegsbilder · FELO Physik 7 · Gymnasium NRW
+# Einstiegsbilder · FeLabs Physik 7 · Gymnasium NRW
 
 32 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
-als `FELO-Bilder Gymnasium 7` verlinkt). Dateiname = **Kennung, Leerzeichen,
+als `FeLabs-Bilder Gymnasium 7` verlinkt). Dateiname = **Kennung, Leerzeichen,
 Titel der Heftseite**, dann `.png` – genau so, wie er über jedem Auftrag steht.
 Querformat 5:3, mindestens 1200 × 720 Punkte.
 
@@ -275,7 +275,7 @@ ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no 
 ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no comic panels, no before-and-after, no split screen, no repeated objects, no sequence, no insets, no round inset circle, no arrows, no arrowheads, no dashed lines, no ray diagram, no drawn light rays, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, hand-painted look, NOT a photograph, not flat vector cartoon, clear readable silhouettes, smooth soft gradients, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark.: close-up in an old school physics collection room on a bright morning: Jonas, a thirteen-year-old boy with straight dark-blond hair, wearing a blue hooded sweatshirt and black jeans, stands before an open collection cabinet and holds a plain cardboard pair of glasses with almost black foil windows up against the tall window with both hands, squinting at it curiously without putting it on, only the faintest dull shimmer coming through the dark foil; Mira, a thirteen-year-old girl with a chestnut-brown braid, wearing a dark red cardigan over a white T-shirt and jeans, leans in from the side, one hand on his shoulder, eyes on the strange find; dusty shelves with brass instruments, jars and old wooden boxes around them, soft bright daylight from the tall window on the right, only pale bright sky outside with no distinct sun disc; no writing, no year and no print of any kind on the cardboard glasses, no darkened sun, no crescent sun, no black disc in front of the sun, no sun-earth-moon model, no pinned photos of an eclipse, no visible sunbeam in the air, and no drawn rays anywhere in the picture.
 ```
 
-# Bildaufträge FELO Physik 7 (Gymnasium NRW) — Bündel wa_b: wa5–wa8
+# Bildaufträge FeLabs Physik 7 (Gymnasium NRW) — Bündel wa_b: wa5–wa8
 
 ### `wa5 Der rote Mond im alten Kalender.png` — wa5
 
@@ -373,7 +373,7 @@ ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no 
 ONE single scene in ONE frame, ONE frozen instant. Absolutely no film strip, no comic panels, no before-and-after, no split screen, no repeated objects, no sequence, no insets, no round inset circle, no arrows, no arrowheads, no dashed lines, no ray diagram, no drawn light rays, no captions, no labels, no text of any kind. warm painterly children's educational illustration, storybook realism, hand-painted look, NOT a photograph, not flat vector cartoon, clear readable silhouettes, smooth soft gradients, muted warm palette, wide 5:3 landscape composition, no text, no letters, no numbers, no logos, no watermark.: close-up from the front and slightly to one side at child height, filling the whole wide frame: Jonas, a thirteen-year-old boy with straight dark-blond hair, wearing a blue hooded sweatshirt and black jeans, stands in an old physics collection room, one arm half outstretched, his thumb held upright in front of his nose, his left eye squeezed shut, the right eye fixed in concentration on the thumb; some distance behind the thumb a tall collection shelf with glass jars, brass instruments and an old globe, softly out of focus; beside him Mira, a thirteen-year-old girl with a chestnut-brown braid, wearing a dark red cardigan over a white T-shirt and jeans, laughs with half-raised hands, teasing and warm; afternoon light falls from a tall window on the right; exactly ONE thumb raised and it appears exactly once, no doubled thumb, no ghost image, no transparent second hand, no motion blur, no dashed sight lines from the eyes, no triangles hanging in the air, no sketch on any board in the background.
 ```
 
-# Bildaufträge FELO Physik 7 (Gymnasium NRW) — Bündel wa_d: wa13–wa16
+# Bildaufträge FeLabs Physik 7 (Gymnasium NRW) — Bündel wa_d: wa13–wa16
 
 ### `wa13 Die Streifen im Sternlicht.png` — wa13
 

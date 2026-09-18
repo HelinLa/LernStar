@@ -1,4 +1,4 @@
-# FELO Physik — Gutachten Lesbarkeit und Gestaltungskonsistenz
+# FeLabs Physik — Gutachten Lesbarkeit und Gestaltungskonsistenz
 
 **Gegenstand:** 19 Bände (Realschule 5/6–10, Gesamtschule 7–10, Gymnasium 5/6–10,
 Förderreihe 7–10, Oberstufe EF), zusammen 2378 gesetzte Seiten in `*/build/book_p*.png`.
@@ -124,7 +124,7 @@ Unsauberkeit liegt nicht *zwischen* den Bänden, sondern **innerhalb einer Seite
 ## 3 · Kontrast
 
 Alle Werte WCAG 2.1, Text auf Creme `#FAF6EC`, nachgerechnet (Anhang A).
-Schwelle: 4,5:1 für Text, 3,0:1 nur für ≥ 18 pt bzw. ≥ 14 pt fett — **im FELO-Satz gibt es
+Schwelle: 4,5:1 für Text, 3,0:1 nur für ≥ 18 pt bzw. ≥ 14 pt fett — **im FeLabs-Satz gibt es
 keinen einzigen Text, der groß genug für die 3,0-Ausnahme wäre.** Es gilt überall 4,5:1.
 
 | Fundstelle | was ist | was soll | warum |

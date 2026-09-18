@@ -1,5 +1,5 @@
-# FELO PHYSIK 10 · Gesamtschule NRW · 32 noch fehlende Bilder
-# Ablage: ~/Desktop/FELO-Bilder Gesamtschule 10/
+# FeLabs PHYSIK 10 · Gesamtschule NRW · 32 noch fehlende Bilder
+# Ablage: ~/Desktop/FeLabs-Bilder Gesamtschule 10/
 # Querformat 5:3, mindestens 1200 x 720. Reihenfolge wie im Heft.
 
 ───────── 01/32  ev1 Erster Tag im Umspannwerk.png

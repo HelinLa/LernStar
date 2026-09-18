@@ -1,7 +1,7 @@
 # Förderheft 9 · Gesamtschule NRW — Seitenplan (zur Freigabe)
 
 Stand 05.09.2026. Grundlage: Schritt-1-Analyse aller 27 Lerneinheiten von
-FELO 9 Gesamtschule (`analyse_schritt1.json`) plus **sechs** adversariale
+FeLabs 9 Gesamtschule (`analyse_schritt1.json`) plus **sechs** adversariale
 Prüfungen (Umfang, Kompetenzen, Fachwörter, Reziprozität, Heft-gegen-Sim,
 E-Kurs/Reihenfolge). Alle sechs meldeten Mängel; dieser Plan löst sie auf.
 **Nichts wird ausformuliert, bevor er freigegeben ist.**
@@ -12,7 +12,7 @@ muss hoch.
 
 ## Umfang (gemessen, nicht geschätzt)
 
-| | Original FELO 9 | Förderheft 9 |
+| | Original FeLabs 9 | Förderheft 9 |
 |---|---|---|
 | Lerneinheiten | 27 | **25** (2 Zusammenlegungen) |
 | Schülerseiten | 101 (gezählt) | **59** |
@@ -150,5 +150,5 @@ Tempo, Höhe, Last, Weg, Zähne, Seilstück, Drehpunkt) nach Regel 5 nicht.
 
 ## Noch nicht geklärt
 
-Die Einstiegsbilder von FELO 9 sind wie in Band 7 und 8 Platzhalter. Das
+Die Einstiegsbilder von FeLabs 9 sind wie in Band 7 und 8 Platzhalter. Das
 Förderheft 9 erbt sie, bis eigene Bilder da sind.

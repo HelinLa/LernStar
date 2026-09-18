@@ -1,7 +1,7 @@
-# Einstiegsbilder · FELO Physik 10 · Gymnasium NRW
+# Einstiegsbilder · FeLabs Physik 10 · Gymnasium NRW
 
 25 Bilder, eines je Forscherseite. Ablage in diesem Ordner (auf dem Schreibtisch
-als `FELO-Bilder Gymnasium 10` verlinkt). Dateiname = **Kennung, Leerzeichen,
+als `FeLabs-Bilder Gymnasium 10` verlinkt). Dateiname = **Kennung, Leerzeichen,
 Titel der Heftseite**, dann `.png` – genau so, wie er über jedem Auftrag steht.
 Querformat 5:3, mindestens 1200 × 720 Punkte.
 
