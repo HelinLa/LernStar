@@ -2295,7 +2295,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn zwei Menschen ziehen?",
     titel: "Zwei ziehen am selben Seil",
     frage: "Wie groß ist die Gesamtkraft, wenn zwei Kräfte an einem Körper ziehen?",
-    schritte: ["Lies im Ausgangszustand ab, welche Gesamtkraft aus F1 = 3 N und F2 = 2 N nach rechts entsteht.", "Drücke bei F1 einmal auf – N, lies die Gesamtkraft ab und stelle F1 mit + N wieder auf 3 N.", "Drücke bei F1 auf Richtung, danach bei F2 einmal auf – N, und lies jedes Mal die Gesamtkraft ab."]
+    schritte: ["F2 bleibt bei 2 N nach rechts. Drücke bei Kraft 1 zweimal „– N“ und lies die Gesamtkraft ab.", "Drücke einmal „+ N“ und lies ab, dann zweimal „+ N“ und lies erneut ab. F1 steht bei 4 N.", "Drücke bei Kraft 1 „Richtung“ und lies ab. Rechne dann in jeder Zeile F1 + F2 aus."]
   },
   "kf8": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2331,7 +2331,7 @@ const HEFT_SEITEN = {
     name: "Warum sinkt das Podest unter dem schmalen Fuß ein?",
     titel: "Vier Dellen im neuen Podest",
     frage: "Warum sinkt ein schmaler Fuß in das Podest ein und ein breiter nicht?",
-    schritte: ["Drücke „Turnschuhe“ und lies die Gewichtskraft und den Druck in der Statuszeile ab.", "Wähle nacheinander „Stöckelabsatz“ und „Skier“ und vergleiche die beiden Druckwerte.", "Stelle mit dem Regler die Auflagefläche von 300 cm² auf 1200 cm² und beobachte, wie der Druck sinkt."]
+    schritte: ["Stelle 60 kg ein, schiebe die Auflagefläche auf 150 cm² und lies A in m² und p ab.", "Wiederhole das bei 200 cm² und 400 cm²; drücke zuletzt „Skier“ (2800 cm²).", "Rechne in jeder Zeile p mal A aus und vergleiche die vier Zahlen mit der Kraft F."]
   },
   "kf12": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2340,7 +2340,7 @@ const HEFT_SEITEN = {
     name: "Warum drückt Wasser in der Tiefe stärker?",
     titel: "Der untere Hahn spritzt weiter",
     frage: "Warum drückt Wasser weiter unten stärker als knapp unter der Oberfläche?",
-    schritte: ["Stelle die Tiefe mit dem Regler auf 0 m und lies den Schweredruck ab.", "Drücke „10 m – doppelter Druck“ und vergleiche Schweredruck und Gesamtdruck.", "Wähle nacheinander Öl, Meerwasser und Quecksilber und lies den Druck bei 10 m ab."]
+    schritte: ["Wähle Öl und stelle die Tiefe mit dem Regler auf 20 m. Die Flüssigkeit bleibt in allen Zeilen dieselbe.", "Lies den Schweredruck p ab, dann ebenso bei 30 m, bei 40 m und bei 50 m.", "Rechne in jeder Zeile p geteilt durch h aus und vergleiche die vier Werte."]
   },
   "kf13": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2349,7 +2349,7 @@ const HEFT_SEITEN = {
     name: "Warum wiegen gleich große Körper ganz verschieden viel?",
     titel: "Zwei gleich große Klötze in der Werkstatt",
     frage: "Warum haben gleich große Würfel aus verschiedenen Stoffen verschiedene Massen?",
-    schritte: ["Stelle die Kantenlänge a auf 10 cm ein und wähle nacheinander Blei, Eisen, Aluminium, Wasser, Fichtenholz und Styropor.", "Lies bei jedem Stoff im Rechenweg die Masse m und die Gewichtskraft G ab.", "Vergleiche die Masse von Blei mit der Masse von Styropor bei gleicher Kantenlänge."]
+    schritte: ["Wähle Styropor und stelle die Kantenlänge a nacheinander auf 3 cm, 5 cm, 10 cm und 20 cm.", "Lies jedes Mal im Feld Nachgerechnet das Volumen V in m³ und die Masse m in kg ab.", "Rechne in jeder Zeile m geteilt durch V aus und vergleiche die vier Zahlen."]
   },
   "kf14": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2376,7 +2376,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie, wenn etwas oben liegt?",
     titel: "Der Klotz über dem Pfahl",
     frage: "Wovon hängt die Energie ab, die ein Körper oben gespeichert hat?",
-    schritte: ["Stelle die Masse auf 5 kg und die Höhe auf 3 m ein und lies die Lageenergie ab.", "Drücke „×2 Masse“ und notiere den neuen Wert der Lageenergie.", "Drücke „×2 Höhe“ und vergleiche alle drei Werte miteinander."]
+    schritte: ["Stelle 9 kg und 1 m ein, drücke „Fallen lassen“ und lies die Pfahltiefe ab.", "Wiederhole das bei 2 m und bei 3 m; drücke danach „×2 Masse“ und lass noch einmal fallen.", "Rechne in jeder Zeile die Tiefe geteilt durch die Höhe aus und vergleiche."]
   },
   "el3": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2385,7 +2385,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie, wenn etwas rollt?",
     titel: "Die Kabeltrommel auf der Rampe",
     frage: "Wovon hängt es ab, wie viel Energie in einer rollenden Kugel steckt?",
-    schritte: ["Stelle die Masse auf 4 kg und das Tempo auf 4 m/s ein und lies die Energie ab.", "Drücke „×2 Masse“ und danach „Rollen lassen“; beobachte die Schiebestrecke des Klotzes.", "Drücke „×2 Tempo“ und vergleiche den neuen Energiewert mit den beiden Werten davor."]
+    schritte: ["Stelle die Masse 6 kg und das Tempo 3 m/s ein und drücke „Messpunkt übernehmen“.", "Wiederhole das bei 6 m/s, bei 9 m/s und bei 12 m/s; die Masse bleibt dabei 6 kg.", "Trage E aus der Tabelle ein, rechne E geteilt durch v² aus und vergleiche die Werte."]
   },
   "el4": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2403,7 +2403,7 @@ const HEFT_SEITEN = {
     name: "Warum wird alles am Ende warm?",
     titel: "Der heiße Scheinwerfer am Abend",
     frage: "Warum wird Energie unbrauchbar, obwohl ihre Menge gleich bleibt?",
-    schritte: ["Wähle die Kette „Benzin → Fahrt“ und lies die Startmenge ab.", "Drücke dreimal „nächster Schritt“ und lies jedes Mal ab, wie viel noch nutzbar und wie viel Wärme geworden ist.", "Wähle danach „Kohle → Licht“ und vergleiche die vier Schritte mit ihren Prozentangaben."]
+    schritte: ["Wähle „Kohle → Licht“ und drücke einmal „nächster Schritt“.", "Trage nutzbar und Wärme ein, drücke weiter und fülle alle vier Zeilen.", "Rechne in der letzten Spalte nutzbar + Wärme aus und vergleiche die vier Werte."]
   },
   "el6": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2412,7 +2412,7 @@ const HEFT_SEITEN = {
     name: "Was unterscheidet Arbeit von Leistung?",
     titel: "Zwei Kisten, zwei Tempos",
     frage: "Was ändert sich, wenn dieselbe Last in der halben Zeit oben ankommt?",
-    schritte: ["Stelle die Masse auf 50 kg, die Höhe auf 4 m und die Zeit auf 10 s ein.", "Drücke „Hochziehen“ und lies Arbeit W und Leistung P ab; drücke dann „÷2 Zeit“ und vergleiche.", "Drücke „zurücksetzen“ und stelle die Masse nacheinander auf 10 kg und auf 100 kg ein."]
+    schritte: ["Stelle die Masse auf 50 kg und die Höhe auf 4 m ein. Beide bleiben so.", "Stelle die Zeit auf 3 s, drücke „Hochziehen“ und lies die Leistung P ab.", "Wiederhole das mit 6 s, 9 s und 18 s. Rechne in jeder Zeile P mal t aus."]
   },
   "el7": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2421,7 +2421,7 @@ const HEFT_SEITEN = {
     name: "Wie viel von der Energie kommt an?",
     titel: "Glühlampe oder LED",
     frage: "Wie viel von der hineingesteckten Energie gibt eine Maschine als Nutzen ab?",
-    schritte: ["Wähle die Glühlampe und lies ab, wie viel von 1000 J zu Licht wird und wie viel zu Wärme.", "Wähle nacheinander LED-Lampe, Benzinmotor und Elektromotor und lies jedes Mal den Wirkungsgrad η ab.", "Stelle beim Handy-Ladegerät die hineingesteckte Energie auf 200 J und vergleiche den Nutzen mit dem bei 1000 J."]
+    schritte: ["Wähle die LED-Lampe und stelle 800 J ein. Lies ab, wie viel davon Licht wird.", "Stelle nacheinander 1400 J, 2200 J und 3000 J ein und lies jedes Mal das Licht ab.", "Teile in jeder Zeile das Licht durch die hineingesteckte Energie und vergleiche."]
   },
   "el8": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2430,7 +2430,7 @@ const HEFT_SEITEN = {
     name: "Warum ist eine Stange länger als der Weg der Last?",
     titel: "Die Eisenstange unter dem Klavier",
     frage: "Spart eine lange Hebelstange nur Kraft – oder auch Arbeit?",
-    schritte: ["Stelle den Kraftarm l₁ auf 1,00 m und die Last F₂ auf 200 N ein.", "Lies die nötige Kraft F₁, den Kraftweg s₁ und die beiden Arbeiten W₁ und W₂ ab.", "Drücke nacheinander „gleich lang“, „doppelt so lang“ und „achtfach“ und vergleiche jedes Mal Kraft und Weg."]
+    schritte: ["Stelle die Last F₂ auf 200 N und den Kraftarm auf 0,40 m.", "Lies die Kraft F₁ am roten Pfeil im Bild ab und trage sie ein.", "Wiederhole das mit 0,80 m, 1,00 m und 2,00 m und rechne jede Zeile F₁ · l₁ aus."]
   },
   "el9": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2439,7 +2439,7 @@ const HEFT_SEITEN = {
     name: "Was bringt eine Rolle an der Decke?",
     titel: "Die Rolle unter dem Hallendach",
     frage: "Spart eine feste Rolle an der Decke wirklich Kraft?",
-    schritte: ["Drücke „Ohne Rolle“ und lies Kraft, Weg und Arbeit ab.", "Drücke „Feste Rolle“ und vergleiche die Kraft mit dem Wert ohne Rolle.", "Drücke „Lose Rolle“ und beobachte, wie weit deine Hand nun ziehen muss."]
+    schritte: ["Drücke „Feste Rolle“ und stelle die Last mit dem Regler auf 200 N.", "Lies die Zugkraft F und den Weg s ab; wiederhole das bei 500 N und bei 800 N.", "Drücke „Lose Rolle“ und miss bei 800 N. Rechne dann in jeder Zeile F geteilt durch G aus."]
   },
   "el10": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2448,7 +2448,7 @@ const HEFT_SEITEN = {
     name: "Wie viele Seile tragen die Last?",
     titel: "Vier Seile für das Klavier",
     frage: "Wie hängen Zugkraft und Seilweg von der Zahl der tragenden Seile ab?",
-    schritte: ["Stelle die Last auf 600 N und die tragenden Seilstücke auf 1 ein.", "Lies bei n = 2 die Zugkraft und den Weg deiner Hand ab.", "Vergleiche bei n = 4 die Zugarbeit mit der Hubarbeit."]
+    schritte: ["Stelle die Last auf 900 N ein und lass sie stehen.", "Stelle nacheinander n = 1, 2, 3 und 4 ein und lies F und s ab.", "Rechne in jeder Zeile F · s aus und vergleiche die Werte."]
   },
   "el11": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2457,7 +2457,7 @@ const HEFT_SEITEN = {
     name: "Warum dreht sich das kleine Rad schneller?",
     titel: "Im Getriebe der Seilwinde",
     frage: "Wovon hängt es ab, wie schnell sich das angetriebene Zahnrad dreht?",
-    schritte: ["Drücke „gleich groß (24: 24)“ und lies die Drehzahl von Rad 2 ab.", "Wähle „groß treibt klein – schneller“ und vergleiche die beiden Drehzahlen.", "Beobachte bei „klein treibt groß – langsamer, kräftiger“, wie sich Drehzahl und Drehmoment ändern."]
+    schritte: ["Stelle Rad 1 auf 30 Zähne und die Antriebsdrehzahl auf 60 U/min.", "Stelle Rad 2 nacheinander auf 12, 20 und 45 Zähne und lies n₂ ab.", "Rechne in jeder Zeile n₂ mal z₂ aus. Stelle dann Rad 1 auf 20 und Rad 2 auf 12 Zähne."]
   },
   "el12": {
     klasse: 9, schulform: "Gesamtschule NRW",

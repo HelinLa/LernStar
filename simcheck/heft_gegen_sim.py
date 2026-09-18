@@ -120,6 +120,12 @@ def faktentext(f):
     teile += [s['text'] for s in f.get('status', [])]
     teile += f.get('bildtexte', [])
     teile += f.get('hinweise', [])
+    # NACHGEMESSEN: simfakten drueckt jedes Bedienelement nur EINMAL - Zustaende,
+    # die erst nach mehreren Schritten entstehen (eine Messreihe!), fehlen im Dump.
+    # Wer sie von Hand am laufenden Modell misst, legt sie unter `nachgemessen`
+    # ab; jeder Eintrag traegt, wie er entstanden ist. Ohne das meldet der Pruefer
+    # richtige Werte als Maengel (Band 8, 05.09.2026 - und wieder gts9, 18.09.).
+    teile += [n.get('text', '') for n in f.get('nachgemessen', [])]
     return ' '.join(teile)
 
 def zwischenwerte(f):

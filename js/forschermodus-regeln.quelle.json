@@ -4,7 +4,20 @@
   "ki3": "beschleunigung-ef",
   "ki4": "beschleunigung-ef",
   "st8": "ohm-kennlinie",
-  "kf4": "masse-gewicht"
+  "kf4": "masse-gewicht",
+  "kf7": "kraefte-addieren",
+  "kf11": "druck-flaeche",
+  "kf12": "schweredruck",
+  "kf13": "dichte",
+  "el2": "lageenergie",
+  "el3": "bewegungsenergie",
+  "el5": "energie-entwerten",
+  "el6": "leistung-rs",
+  "el7": "wirkungsgrad",
+  "el8": "hebel",
+  "el9": "feste-rolle",
+  "el10": "flaschenzug",
+  "el11": "zahnrad"
  },
  "regeln": {
   "beschleunigung-ef": {
@@ -50,6 +63,9 @@
      "flags": "g",
      "mit": "deine Fahrt"
     }
+   ],
+   "bild": [
+    "v = a · t"
    ]
   },
   "federgesetz": {
@@ -110,6 +126,9 @@
      "flags": "",
      "mit": "<td>U : I</td>"
     }
+   ],
+   "bild": [
+    "R = \\d+ Ω"
    ]
   },
   "masse-gewicht": {
@@ -126,13 +145,420 @@
      "flags": ""
     }
    ],
-   "hinweis": "Miss selbst: drei Körper wählen, Masse und Kraft ablesen, dann F : m ausrechnen."
+   "hinweis": "Miss selbst: drei Körper wählen, Masse und Kraft ablesen, dann F : m ausrechnen.",
+   "bild": [
+    "F = m · g"
+   ]
+  },
+  "kraefte-addieren": {
+   "weg": [
+    ".kad-sim .fpm-grid .fpm-note",
+    ".kad-sim > .sim-hint",
+    ".kad-sim .ab-body"
+   ],
+   "maske": [
+    {
+     "sel": "#kadStatus",
+     "re": "\\s*(?:Beide zeigen [a-zä]+ →|Entgegengesetzt →|Gleich groß, entgegengesetzt →)[\\s\\S]*$",
+     "mit": "",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: F2 festhalten, F1 in drei Stufen einstellen, einmal umdrehen und dann F1 + F2 rechnen."
+  },
+  "druck-flaeche": {
+   "weg": [
+    ".dru-sim > .sim-hint",
+    ".dru-sim .ab-body"
+   ],
+   "maske": [
+    {
+     "sel": "#druStatus",
+     "re": "p = F / A = [^<]*<br>",
+     "mit": ""
+    },
+    {
+     "sel": "#druStatus",
+     "re": "<b>Zum Vergleich</b><br>[\\s\\S]*$",
+     "mit": ""
+    },
+    {
+     "sel": ".dru-sim .fpm-grid .fpm-note",
+     "re": "<b>Die Einheit:</b>[\\s\\S]*$",
+     "mit": "<b>Die Maßeinheit:</b> Der Druck wird hier in Kilopascal angegeben (1 kPa = 1000 Pa)."
+    }
+   ],
+   "hinweis": "Miss selbst: vier Flächen einstellen, den Druck ablesen, dann p mal A ausrechnen.",
+   "bild": [
+    "p = F / A"
+   ]
+  },
+  "schweredruck": {
+   "weg": [
+    ".swd-sim > .sim-hint",
+    ".swd-sim .fpm-grid .fpm-note",
+    ".swd-sim .ab-body"
+   ],
+   "maske": [
+    {
+     "sel": "#swdStatus",
+     "re": "p = ρ · g · h<br>p = [\\d.]+ kg/m³ · 9,81 N/kg · \\d+ m<br>",
+     "mit": "",
+     "flags": ""
+    },
+    {
+     "sel": "#swdStatus",
+     "re": "<b>Die Zehn-Meter-Regel</b><br>[\\s\\S]*?an der Oberfläche\\.<br><br>",
+     "mit": "",
+     "flags": ""
+    },
+    {
+     "sel": ".swd-sim .sim-btn-row .sim-btn",
+     "re": "10 m – doppelter Druck",
+     "mit": "10 m",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: drei Tiefen einstellen, den Schweredruck ablesen, dann p : h ausrechnen.",
+   "bild": [
+    "p = ρ · g · h"
+   ]
+  },
+  "dichte": {
+   "weg": [
+    ".dch-sim > .sim-hint",
+    ".dch-sim .fpm-grid .fpm-note",
+    ".dch-sim .ab-wrap"
+   ],
+   "maske": [
+    {
+     "sel": "#dchStatus",
+     "re": "m = ρ · V<br>m = \\d+ kg/m³ · [\\d,]+ m³<br>",
+     "mit": "",
+     "flags": ""
+    },
+    {
+     "sel": "#dchStatus",
+     "re": "<br><br><b>4 · [\\s\\S]*$",
+     "mit": "",
+     "flags": ""
+    },
+    {
+     "sel": ".dch-sim .sim-btn-row + .sim-btn-row button",
+     "re": "Wasser · genau 1 kg",
+     "mit": "Wasser · 10 cm",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: drei Kantenlängen einstellen, V und m ablesen, dann m : V ausrechnen.",
+   "bild": [
+    "ρ = m : V",
+    "Die Dichte ρ",
+    "1 dm³ Wasser",
+    "bei jeder Kantenlänge gleich"
+   ]
+  },
+  "lageenergie": {
+   "weg": [
+    ".fpm-sim > .sim-hint",
+    ".fpm-sim .fpm-grid .fpm-note"
+   ],
+   "maske": [
+    {
+     "sel": "#lgeStatus",
+     "re": "^Hubarbeit beim Hochheben: [^<]*<br>Lageenergie oben: <b>[\\d,]+ J</b><br>",
+     "mit": "",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: drei Höhen fallen lassen, die Pfahltiefe ablesen, dann Tiefe : Höhe ausrechnen.",
+   "bild": [
+    "Lageenergie E = m · g · h",
+    "Masse und Höhe zählen gleich stark"
+   ]
+  },
+  "bewegungsenergie": {
+   "weg": [
+    ".fpm-grid .fpm-note",
+    ".fpm-tabs",
+    ".fpm-grid2",
+    ".fpm-sim > .sim-hint"
+   ],
+   "maske": [
+    {
+     "sel": "#bgeStatus",
+     "re": "<br>E = ½ · [\\d.,]+ · [\\d.,]+² = <b>[\\d.,]+ J</b>",
+     "mit": "",
+     "flags": ""
+    },
+    {
+     "sel": ".fpm-label",
+     "re": "Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden\\?",
+     "mit": "Auswertung – erst nach deiner eigenen Rechnung",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: bei fester Masse drei Tempi aufnehmen, dann in deiner Tabelle E : v² ausrechnen.",
+   "bild": [
+    "E = ½ · m · v²",
+    "das Tempo zählt doppelt"
+   ]
+  },
+  "energie-entwerten": {
+   "weg": [
+    ".fpm-grid .fpm-note",
+    ".fpm-sim > .sim-hint"
+   ],
+   "maske": [
+    {
+     "sel": ".sim-h3",
+     "re": "Wenn Energie nie verloren geht – warum soll man dann sparen\\?",
+     "flags": "",
+     "mit": "Was ist am Ende einer Energiekette noch zu gebrauchen?"
+    },
+    {
+     "sel": ".fpm-sim > .fpm-note",
+     "re": "Zähle unten mit: die Gesamtmenge bleibt bei 1000 J[^<]*",
+     "flags": "",
+     "mit": "Lies nach jedem Schritt beide Zahlen ab."
+    },
+    {
+     "sel": "#eewStatus",
+     "re": "zusammen immer noch \\d+ J – keine ist verschwunden\\.",
+     "flags": "",
+     "mit": "Trage beide Zahlen in deine Tabelle ein."
+    },
+    {
+     "sel": "#eewStatus",
+     "re": "<br><span style=\"color:#b91c1c\">[\\s\\S]*?<\\/span>",
+     "flags": "",
+     "mit": ""
+    }
+   ],
+   "hinweis": "Miss selbst: alle vier Schritte durchgehen, nutzbar und Wärme ablesen, dann beides zusammenzählen.",
+   "bild": [
+    "die Gesamtlänge ändert sich nie",
+    "Menge gleich geblieben"
+   ]
+  },
+  "leistung-rs": {
+   "weg": [
+    ".fpm-sim > .sim-hint"
+   ],
+   "maske": [
+    {
+     "sel": "#lrsStatus",
+     "re": "^\\s*Arbeit W = [\\d,]+ kg · [\\d,]+ N\\/kg · [\\d,]+ m = <b>[\\d,]+ J<\\/b><br>\\s*",
+     "flags": "",
+     "mit": ""
+    },
+    {
+     "sel": "#lrsStatus",
+     "re": "Leistung P = [\\d,]+ J \\/ [\\d,]+ s = ",
+     "flags": "",
+     "mit": "Leistung P = "
+    },
+    {
+     "sel": ".fpm-sim > .fpm-note",
+     "re": "\\s*–\\s*die Arbeit bleibt also dieselbe\\.",
+     "flags": "",
+     "mit": "."
+    }
+   ],
+   "hinweis": "Miss selbst: vier Zeiten einstellen, die Leistung ablesen, dann P mal t ausrechnen.",
+   "bild": [
+    "Arbeit W = ",
+    "halbe Zeit → doppelte Leistung"
+   ]
+  },
+  "wirkungsgrad": {
+   "weg": [
+    ".fpm-sim > .sim-hint",
+    ".fpm-sim .fpm-grid .fpm-note"
+   ],
+   "maske": [
+    {
+     "sel": "#wgrStatus",
+     "re": "\\s*·\\s*η = <b>[\\d,]+ %</b>",
+     "mit": "",
+     "flags": ""
+    },
+    {
+     "sel": "#wgrStatus",
+     "re": "als Wärme verloren:",
+     "mit": "als Verlust:",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: an der LED-Lampe vier Energien einstellen, das Licht ablesen, dann Licht : hinein ausrechnen.",
+   "bild": [
+    "Wirkungsgrad η = "
+   ]
+  },
+  "hebel": {
+   "weg": [
+    "#hebStatus",
+    ".heb-sim .fpm-grid div.fpm-label",
+    ".heb-sim .fpm-grid .fpm-note",
+    ".heb-sim > .sim-hint",
+    ".heb-sim .ab-body"
+   ],
+   "maske": [
+    {
+     "sel": ".heb-sim .sim-btn-row .sim-btn",
+     "re": "gleich lang – nichts gespart",
+     "flags": "",
+     "mit": "Kraftarm 0,25 m"
+    },
+    {
+     "sel": ".heb-sim .sim-btn-row .sim-btn",
+     "re": "doppelt so lang – halbe Kraft",
+     "flags": "",
+     "mit": "Kraftarm 0,50 m"
+    },
+    {
+     "sel": ".heb-sim .sim-btn-row .sim-btn",
+     "re": "achtfach – ein Achtel der Kraft",
+     "flags": "",
+     "mit": "Kraftarm 2,00 m"
+    },
+    {
+     "sel": ".heb-sim .ab-summary",
+     "re": "Der Hebel – Kraft sparen, Weg bezahlen",
+     "flags": "",
+     "mit": "Der Hebel"
+    }
+   ],
+   "hinweis": "Miss selbst: vier Kraftarme einstellen, die Kraft im Bild ablesen, dann Kraft mal Kraftarm rechnen.",
+   "bild": [
+    "F₁ · l₁ = F₂ · l₂",
+    "Der lange Arm spart Kraft",
+    "-mal so lang"
+   ]
+  },
+  "feste-rolle": {
+   "weg": [
+    ".rol-sim .fpm-grid .fpm-note",
+    ".rol-sim > .sim-hint",
+    ".rol-sim .ab-body"
+   ],
+   "maske": [
+    {
+     "sel": "#rolStatus",
+     "re": "Die Rolle hängt[^<]*\\. Die Last hängt an <b>\\w+<\\/b> Seilstück\\w*,[^<]*\\.<br>",
+     "flags": "",
+     "mit": "Zähle selbst, an wie vielen Seilstücken die Last hängt.<br>"
+    },
+    {
+     "sel": "#rolStatus",
+     "re": "F = G(?: : 2 = [\\d,]+ N : 2)? = <b>",
+     "flags": "",
+     "mit": "F = <b>"
+    },
+    {
+     "sel": "#rolStatus",
+     "re": "\\s*(?: )?→ gespart: [\\d,]+ %",
+     "flags": "",
+     "mit": ""
+    },
+    {
+     "sel": "#rolStatus",
+     "re": "(?:Beide Seilstücke müssen um h kürzer werden\\.<br>)?s = (?:h|2 · h = 2 · [\\d,]+ m) = <b>",
+     "flags": "",
+     "mit": "s = <b>"
+    },
+    {
+     "sel": "#rolStatus",
+     "re": "<b>Der Vergleich bei [\\s\\S]*$",
+     "flags": "",
+     "mit": ""
+    }
+   ],
+   "hinweis": "Miss selbst: drei Lasten an der festen Rolle einstellen, dann F geteilt durch G ausrechnen.",
+   "bild": [
+    "Halbe Kraft, doppelter Weg",
+    "Nur die Richtung ändert sich"
+   ]
+  },
+  "flaschenzug": {
+   "weg": [
+    ".flz-sim .fpm-grid .fpm-note",
+    ".flz-sim > .sim-hint",
+    ".flz-sim .sim-btn-row",
+    ".flz-sim .ab-body"
+   ],
+   "maske": [
+    {
+     "sel": "#flzStatus",
+     "re": "F = G / n<br>F = [\\d.,]+ N / \\d+ = ",
+     "mit": "Zugkraft F = ",
+     "flags": ""
+    },
+    {
+     "sel": "#flzStatus",
+     "re": "s = n · h<br>s = \\d+ · [\\d,]+ m = ",
+     "mit": "Zugweg s = ",
+     "flags": ""
+    },
+    {
+     "sel": "#flzStatus",
+     "re": "<b>4 · Die Arbeit bleibt gleich</b><br>[\\s\\S]*$",
+     "mit": "",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: vier Seilzahlen einstellen, F und s ablesen, dann F · s ausrechnen."
+  },
+  "zahnrad": {
+   "weg": [
+    ".znr-sim > .sim-hint",
+    ".znr-sim .fpm-grid .fpm-note",
+    "#znrStatus",
+    ".znr-sim .ab-wrap"
+   ],
+   "maske": [
+    {
+     "sel": ".znr-sim .sim-btn-row .sim-btn",
+     "re": "klein treibt groß – langsamer, kräftiger",
+     "mit": "klein treibt groß",
+     "flags": ""
+    },
+    {
+     "sel": ".znr-sim .sim-btn-row .sim-btn",
+     "re": "groß treibt klein – schneller",
+     "mit": "groß treibt klein",
+     "flags": ""
+    },
+    {
+     "sel": ".znr-sim .sim-btn-row .sim-btn",
+     "re": "40 auf 10 – vierfach schnell",
+     "mit": "40 auf 10 Zähne",
+     "flags": ""
+    }
+   ],
+   "hinweis": "Miss selbst: Rad 2 dreimal anders einstellen, n₂ ablesen, dann n₂ mal z₂ ausrechnen.",
+   "bild": [
+    "Zähne je Sekunde – bei beiden Rädern"
+   ]
   }
  },
  "bedienung": {
   "federgesetz": "_fedSetFeder('weich'); _fedHaenge(100); _fedMessen(); _fedHaenge(100); _fedMessen();",
   "ohm-kennlinie": "_ohgSetR('klein'); _ohgU_(1); _ohgMessen(); _ohgU_(1); _ohgMessen();",
   "beschleunigung-ef": "_befSetA(2); _befMessen(); _befSetPreset(0);",
-  "masse-gewicht": "_mgwSet(2); _mgwSet(3); _mgwSet(4);"
+  "masse-gewicht": "_mgwSet(2); _mgwSet(3); _mgwSet(4);",
+  "kraefte-addieren": "_kadB(1,-1); _kadB(1,-1); _kadB(1,1); _kadB(1,1); _kadB(1,1); _kadDir(1);",
+  "druck-flaeche": "_druMarke(60, 150); _druSet('a', 400); _druMarke(60, 2800);",
+  "schweredruck": "_swdFluid('oel'); _swdSet(30); _swdFluid('wasser'); _swdTiefe(20);",
+  "dichte": "_dchStoff('styropor'); _dchSet('a', 5); _dchSet('a', 20); _dchSet('a', 10);",
+  "lageenergie": "_lgeSet('m',9); _lgeSet('h',1); _lgeGo(); _lgeUpdate(1);",
+  "bewegungsenergie": "_bgeSet('m',6); _bgeSet('v',3); _bgeMesspunkt();",
+  "energie-entwerten": "_eewSet('strom'); _eewWeiter(); _eewWeiter(); _eewWeiter(); _eewWeiter();",
+  "leistung-rs": "_lrsSet('m',50); _lrsSet('h',4); _lrsSet('t',3); _lrsGo();",
+  "wirkungsgrad": "_wgrSet(1); _wgrVal(800); _wgrVal(1400); _wgrVal(2200); _wgrVal(3000);",
+  "hebel": "_hebSet('f2', 200); _hebSet('l1', 0.40); _hebSet('l1', 0.80); _hebMarke(2);",
+  "feste-rolle": "_rolMarke('fest'); _rolSet('g', 200); _rolSet('g', 500); _rolSet('g', 800); _rolMarke('lose');",
+  "flaschenzug": "_flzSet('g', 900); _flzSet('n', 1); _flzSet('n', 4);",
+  "zahnrad": "_znrSet('z1', 30); _znrSet('n1', 60); _znrSet('z2', 12); _znrSet('z2', 20); _znrSet('z2', 45);"
  }
 }

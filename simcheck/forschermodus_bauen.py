@@ -37,7 +37,10 @@ KLASSE = {
 }
 
 # Zeichen, die SourceSans3 im Heft nicht hat (aus pruefe_profil.py/Erfahrung).
-VERBOTEN = re.compile("[\U0001F000-\U0001FAFF←-⇿①-⓿⬀-⯿＋]")
+# Pfeile (→ ⇒) HAT die Heftschrift - sie stehen gedruckt in kf3 ("Luft → Glas")
+# und fw6 ("Erde → Mond"). Verboten sind Emoji, Piktogramme, eingekreiste
+# Ziffern und das Vollbreiten-Plus.
+VERBOTEN = re.compile("[\U0001F000-\U0001FAFF\u2460-\u24FF\u2B00-\u2BFF\uFF0B]")
 FELDER = ["auftrag", "predict", "predictOk", "forschen", "tabCols", "tabRows", "beobachtung"]
 
 
@@ -79,9 +82,13 @@ class _bst:
         self.f, self.name, self.abstand, self.haftet = f, name, abstand, haftet
 
 
-def pruefe_eintrag(band, alt, neu):
+NUR_WARNEN = "--tabellenhoehe-warnen" in sys.argv
+
+
+def pruefe_eintrag(band, alt, neu, warnungen=None):
     """Gibt eine Liste von Befunden zurueck - leer heisst: einbaubar."""
     f = []
+    warnungen = [] if warnungen is None else warnungen
     zusammen = dict(alt)
     for k in FELDER:
         if k in neu:
@@ -114,7 +121,7 @@ def pruefe_eintrag(band, alt, neu):
         # eine Seite weniger, und 23 Seitenzahlen des Bandes rutschten. Die
         # Tabelle muss also ungefaehr gleich hoch bleiben.
         if abs(h_neu - h_alt) > 20:
-            f.append("Tabelle wird anders hoch gesetzt (%.0f statt %.0f Einheiten) – das verschiebt Seitenzahlen"
+            (warnungen if NUR_WARNEN else f).append("Tabelle wird anders hoch gesetzt (%.0f statt %.0f Einheiten) – das verschiebt Seitenzahlen"
                      % (h_neu, h_alt))
     return f
 
@@ -205,7 +212,10 @@ def main():
         daten = json.loads(io.open(p, encoding="utf-8").read())
         liste = daten if isinstance(daten, list) else daten["seiten"]
         alt = [x for x in liste if x["id"] == e["id"]][0]
-        f = pruefe_eintrag(band, alt, e["seite"])
+        warn = []
+        f = pruefe_eintrag(band, alt, e["seite"], warn)
+        for w in warn:
+            print("⚠ %-6s %s" % (e["id"], w))
         (gut if not f else schlecht).append((e["id"], f) if f else (e["id"], e))
 
     for sid, f in schlecht:

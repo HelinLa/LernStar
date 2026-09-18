@@ -74,15 +74,17 @@ for (const [sim, regel] of Object.entries(R.REGELN)) {
   }
 }
 
-const bildproben = [
-  ['ohm-kennlinie', /R = \d+ Ω/, 'Widerstand im Diagramm'],
-  ['beschleunigung-ef', /v = a · t/, 'Merkformel in der Meldezeile'],
-];
-for (const [sim, re, was] of bildproben) {
-  const aus = lauf(sim, false).bild, an = lauf(sim, true).bild;
-  if (!re.test(aus)) fehler.push(`${sim}: ${was} steht normal GAR NICHT im Bild – der Riegel prüft nichts`);
-  else if (re.test(an)) fehler.push(`${sim}: ${was} steht im Forschermodus immer noch im Bild`);
-  else gruen.push(`${sim} Bild: ${was} verdeckt`);
+// Stellen IM BILD (canvas): Sie muessen normal dastehen und im Forschermodus
+// verschwinden. Welche das sind, steht als "bild" in der Regelquelle.
+const quelle = JSON.parse(fs.readFileSync(LS + '/js/forschermodus-regeln.quelle.json', 'utf8'));
+for (const [sim, r] of Object.entries(quelle.regeln)) {
+  for (const muster of (r.bild || [])) {
+    const re = new RegExp(muster);
+    const aus = lauf(sim, false).bild, an = lauf(sim, true).bild;
+    if (!re.test(aus)) fehler.push(`${sim}: „${muster}" steht normal GAR NICHT im Bild – die Probe prüft nichts`);
+    else if (re.test(an)) fehler.push(`${sim}: „${muster}" steht im Forschermodus immer noch im Bild`);
+    else gruen.push(`${sim} Bild: ${muster}`);
+  }
 }
 
 { // Selbsttest

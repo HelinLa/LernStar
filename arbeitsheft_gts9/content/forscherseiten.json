@@ -331,27 +331,28 @@
   "titel": "Zwei ziehen am selben Seil",
   "problem": "Am Kran hängt jetzt ein schweres Rohr. Nour zieht das Seil nach links, Jannis zieht nach rechts, und das Rohr rührt sich keinen Zentimeter. Herr Kessler bleibt stehen und grinst. „Ihr habt zusammen mehr Kraft als vorhin jeder allein. Warum kommt dabei trotzdem so wenig heraus?“",
   "frage": "Wie groß ist die Gesamtkraft, wenn zwei Kräfte an einem Körper ziehen?",
-  "auftrag": "Untersuche, wie sich die Gesamtkraft ändert, wenn sich Betrag oder Richtung einer der beiden Kräfte ändert.",
+  "auftrag": "Bestimme, welche Rechnung aus F1 und F2 die abgelesene Gesamtkraft ergibt.",
   "predict": [
-   "Nur bei gleicher Richtung wird addiert, bei entgegengesetzter Richtung wird subtrahiert.",
-   "Zwei Kräfte an einem Körper werden immer addiert, egal wohin sie zeigen.",
-   "Bei entgegengesetzten Kräften setzt sich allein die größere durch. Die kleinere zählt nicht mit, die Gesamtkraft ist so groß wie die größere Kraft."
+   "Bei entgegengesetzter Richtung zählt allein die größere Kraft; die kleinere fällt weg.",
+   "Nur die Beträge zählen, die Richtung ändert an der Gesamtkraft nichts.",
+   "Die Richtung entscheidet mit: In gleicher Richtung verstärken sich die beiden Kräfte, in entgegengesetzter schwächen sie sich."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
-   "Lies im Ausgangszustand ab, welche Gesamtkraft aus F1 = 3 N und F2 = 2 N nach rechts entsteht.",
-   "Drücke bei F1 einmal auf – N, lies die Gesamtkraft ab und stelle F1 mit + N wieder auf 3 N.",
-   "Drücke bei F1 auf Richtung, danach bei F2 einmal auf – N, und lies jedes Mal die Gesamtkraft ab."
+   "F2 bleibt bei 2 N nach rechts. Drücke bei Kraft 1 zweimal „– N“ und lies die Gesamtkraft ab.",
+   "Drücke einmal „+ N“ und lies ab, dann zweimal „+ N“ und lies erneut ab. F1 steht bei 4 N.",
+   "Drücke bei Kraft 1 „Richtung“ und lies ab. Rechne dann in jeder Zeile F1 + F2 aus."
   ],
   "tabCols": [
-   "Eingestellte Kräfte",
-   "Gesamtkraft"
+   "F1",
+   "Gesamtkraft",
+   "F1 + F2 in N"
   ],
   "tabRows": [
-   "F1 = 3 N rechts, F2 = 2 N rechts",
-   "F1 = 2 N rechts, F2 = 2 N rechts",
-   "F1 = 3 N links, F2 = 2 N rechts",
-   "F1 = 3 N links, F2 = 1 N rechts"
+   "1 N nach rechts",
+   "2 N nach rechts",
+   "4 N nach rechts",
+   "4 N nach links"
   ],
   "fachtext": "Wirken zwei Kräfte auf denselben Körper und liegen sie auf einer Linie, kann man sie zu einer einzigen Kraft zusammenfassen. Diese heißt Gesamtkraft oder Resultierende. Zeigen beide in dieselbe Richtung, addierst du die Beträge. Zeigen sie in entgegengesetzte Richtungen, ziehst du den kleineren Betrag vom größeren ab; die Gesamtkraft zeigt dann in die Richtung der größeren Kraft. Sind beide gleich groß, bleibt null übrig.",
   "merksatz": [
@@ -366,7 +367,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Im Ausgangszustand zeigen F1 = 3 N und F2 = 2 N beide nach rechts, und die Anzeige meldet 5 N nach rechts. Nimmst du F1 auf 2 N herunter, sind es 4 N nach rechts. Stellst du F1 mit + N wieder auf 3 N und drehst es dann nach links um, bleibt nur noch 1 N nach links übrig; nimmst du danach F2 auf 1 N herunter, werden daraus 2 N nach links. Gleiche Richtung addiert, entgegengesetzte Richtung subtrahiert.",
+  "beobachtung": "F2 zeigt in jeder Zeile mit 2 N nach rechts. Zu F1 = 1 N, 2 N und 4 N nach rechts meldet die Anzeige 3 N, 4 N und 6 N nach rechts – genau das, was F1 + F2 ergibt. Dreht man F1 auf 4 N nach links, bleiben nur 2 N nach links; F1 + F2 wären 6 N, die Summe passt hier also nicht, wohl aber 4 N − 2 N. Gleiche Richtung addiert, Gegenrichtung subtrahiert. Welche Rechnung gilt, sagt erst „Auswertung zeigen“.",
   "aufgabe": {
    "frage": "Berechne die Gesamtkraft, wenn zwei Personen mit 250 N und 180 N in entgegengesetzte Richtungen an derselben Kiste ziehen.",
    "zeilen": 3,
@@ -544,27 +545,29 @@
   "titel": "Vier Dellen im neuen Podest",
   "problem": "Das Klavier steht auf vier schmalen Messingrollen. Jannis schiebt es einen halben Meter über das frisch aufgebaute Podest, und im Holz bleiben vier deutliche Dellen zurück. Herr Kessler legt sofort zwei breite Bretter unter. „Gleiches Klavier, gleiche Gewichtskraft“, sagt er, „und trotzdem passiert jetzt gar nichts mehr.“",
   "frage": "Warum sinkt ein schmaler Fuß in das Podest ein und ein breiter nicht?",
-  "auftrag": "Untersuche, wie der Druck von der Auflagefläche abhängt, und vergleiche Person und Elefant.",
+  "auftrag": "Bestimme die Zahl, die aus Druck und Auflagefläche in jeder Zeile gleich bleibt.",
   "predict": [
-   "Je schwerer ein Körper ist, desto tiefer sinkt er ein; die Fläche spielt keine Rolle.",
-   "Bei gleicher Gewichtskraft entscheidet die Fläche: kleine Fläche, großer Druck.",
-   "Auf der größeren Fläche liegt mehr Last auf dem Holz. Deshalb ist der Druck unter dem breiten Brett größer und es sinkt tiefer ein."
+   "Der Druck hängt nur von der Gewichtskraft ab; auf jeder Fläche bleibt er gleich.",
+   "Druck mal Fläche ergibt in jeder Zeile dieselbe Zahl.",
+   "Auf der größeren Fläche liegt mehr Last auf dem Holz. Deshalb ist der Druck unter dem breiten Brett größer."
   ],
   "predictOk": 1,
   "forschen": [
-   "Drücke „Turnschuhe“ und lies die Gewichtskraft und den Druck in der Statuszeile ab.",
-   "Wähle nacheinander „Stöckelabsatz“ und „Skier“ und vergleiche die beiden Druckwerte.",
-   "Stelle mit dem Regler die Auflagefläche von 300 cm² auf 1200 cm² und beobachte, wie der Druck sinkt."
+   "Stelle 60 kg ein, schiebe die Auflagefläche auf 150 cm² und lies A in m² und p ab.",
+   "Wiederhole das bei 200 cm² und 400 cm²; drücke zuletzt „Skier“ (2800 cm²).",
+   "Rechne in jeder Zeile p mal A aus und vergleiche die vier Zahlen mit der Kraft F."
   ],
   "tabCols": [
-   "Auflagefläche A",
-   "Druck p"
+   "Fläche",
+   "A in m²",
+   "p in kPa",
+   "p · A in kN"
   ],
   "tabRows": [
-   "Stöckelabsatz (1 cm²)",
-   "Turnschuhe (300 cm²)",
-   "Elefant (2400 cm²)",
-   "Skier (2800 cm²)"
+   "150 cm²",
+   "200 cm²",
+   "400 cm²",
+   "2800 cm² (Skier)"
   ],
   "fachtext": "Der Druck sagt, wie stark eine Kraft auf jedes Stück Fläche verteilt ist. Man berechnet ihn als Kraft geteilt durch Auflagefläche. Die Einheit ist das Pascal; ein Pascal ist ein Newton je Quadratmeter. Weil das sehr wenig ist, rechnet man meist in Kilopascal. Verdoppelst du bei gleicher Kraft die Fläche, so halbiert sich der Druck. Ein Boden gibt also nicht wegen der Kraft allein nach, sondern wegen des Drucks unter der Auflage.",
   "merksatz": [
@@ -579,7 +582,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Für die Person bleibt die Gewichtskraft bei 588,6 N, nur die Fläche wechselt. Auf Turnschuhen mit 300 cm² zeigt die Anzeige 19,6 kPa. Auf dem Stöckelabsatz mit 1 cm² sind es 5886,0 kPa, also 300-mal so viel. Auf Skiern mit 2800 cm² bleiben nur 2,1 kPa übrig. Der Elefant hat 5000 kg Masse und drückt mit 49050,0 N auf 2400 cm², das sind 204,4 kPa. Es zählt beides: die Kraft und die Fläche.",
+  "beobachtung": "Die Gewichtskraft bleibt bei 588,6 N, nur die Fläche wechselt. Die Anzeige zeigt zu 150 cm² 39,2 kPa, zu 200 cm² 29,4 kPa, zu 400 cm² 14,7 kPa und zu 2800 cm² 2,1 kPa. Daneben steht die Fläche in Quadratmetern: 0,0150 · 0,0200 · 0,0400 · 0,2800. Rechnet man p mal A, kommt jedes Mal dieselbe Zahl heraus: 39,2 · 0,0150 = 0,59 und ebenso 29,4 · 0,0200, 14,7 · 0,0400 und 2,1 · 0,2800. Das Ergebnis in Kilonewton ist die Gewichtskraft, die der Bildschirm mit 589 N angibt. Den Namen dieser Rechnung nennt erst „Auswertung zeigen“.",
   "aufgabe": {
    "frage": "Berechne den Druck, wenn dieselbe Gewichtskraft von 588,6 N statt auf 300 cm² auf 600 cm² verteilt wird.",
    "zeilen": 4,
@@ -598,27 +601,28 @@
   "titel": "Der untere Hahn spritzt weiter",
   "problem": "Neben der Bühne steht ein hoher Wassertank für die Getränkebar. Nour öffnet den oberen Hahn: Das Wasser läuft nur träge heraus. Am unteren Hahn spritzt es Jannis quer über die Schuhe. „Gleiches Wasser, gleicher Tank, gleicher Hahn“, sagt Herr Kessler und wischt sich das Grinsen aus dem Gesicht.",
   "frage": "Warum drückt Wasser weiter unten stärker als knapp unter der Oberfläche?",
-  "auftrag": "Miss den Druck in verschiedenen Tiefen und in verschiedenen Flüssigkeiten.",
+  "auftrag": "Untersuche in Öl, wie der Schweredruck mit der Tiefe zusammenhängt.",
   "predict": [
-   "Der Druck hängt davon ab, wie viel Flüssigkeit insgesamt im Behälter steht.",
-   "Wasser drückt nur nach unten. Der untere Hahn spritzt, weil dort das ganze Wasser von oben auf ihn fällt.",
-   "Der Schweredruck hängt nur von der Tiefe und von der Dichte der Flüssigkeit ab."
+   "Der Druck wächst mit der Tiefe immer schneller: Weiter unten kommt je Meter mehr dazu als oben.",
+   "Ab einer bestimmten Tiefe ändert sich der Druck kaum noch, weil die Flüssigkeit darüber ihn abfängt.",
+   "Zu jedem Meter Tiefe kommt derselbe Druck dazu, ganz gleich, wie tief man schon ist."
   ],
   "predictOk": 2,
   "forschen": [
-   "Stelle die Tiefe mit dem Regler auf 0 m und lies den Schweredruck ab.",
-   "Drücke „10 m – doppelter Druck“ und vergleiche Schweredruck und Gesamtdruck.",
-   "Wähle nacheinander Öl, Meerwasser und Quecksilber und lies den Druck bei 10 m ab."
+   "Wähle Öl und stelle die Tiefe mit dem Regler auf 20 m. Die Flüssigkeit bleibt in allen Zeilen dieselbe.",
+   "Lies den Schweredruck p ab, dann ebenso bei 30 m, bei 40 m und bei 50 m.",
+   "Rechne in jeder Zeile p geteilt durch h aus und vergleiche die vier Werte."
   ],
   "tabCols": [
-   "Flüssigkeit bei 10 m Tiefe",
-   "Schweredruck p"
+   "Tiefe h",
+   "Schweredruck in kPa",
+   "p : h in kPa/m"
   ],
   "tabRows": [
-   "Öl (900 kg/m³)",
-   "Wasser (1.000 kg/m³)",
-   "Meerwasser (1.025 kg/m³)",
-   "Quecksilber (13.600 kg/m³)"
+   "20 m",
+   "30 m",
+   "40 m",
+   "50 m"
   ],
   "fachtext": "In einer Flüssigkeit lastet auf jeder Stelle das Gewicht der Flüssigkeit darüber. Je tiefer du kommst, desto größer wird dieser Schweredruck. Er hängt von der Dichte der Flüssigkeit und von der Tiefe ab. Die Form des Gefäßes und die gesamte Wassermenge spielen dabei keine Rolle. Über allem liegt zusätzlich der Luftdruck von etwa 101,3 kPa. Der Druck wirkt an jeder Stelle nach allen Seiten gleich stark.",
   "merksatz": [
@@ -633,7 +637,7 @@
     "post": "dazu."
    }
   ],
-  "beobachtung": "An der Oberfläche zeigt die Anzeige einen Schweredruck von 0,0 kPa; es lastet nur die Luft mit 101,3 kPa. In 10 m Tiefe kommen in Wasser 98,1 kPa dazu, der Gesamtdruck steigt auf 199,4 kPa und damit auf fast das Doppelte. Bei gleicher Tiefe zeigt Öl nur 88,3 kPa, Meerwasser 100,6 kPa und Quecksilber 1334,2 kPa. Der Druck wächst mit der Tiefe und mit der Dichte.",
+  "beobachtung": "In Öl zeigt die Anzeige bei 20 m 176,6 kPa, bei 30 m 264,9 kPa und bei 40 m 353,2 kPa. Die Rechnung p : h ergibt in jeder Zeile 8,83 kPa/m. Mit jedem Meter kommt derselbe Druck dazu, bei doppelter Tiefe also doppelt so viel. Die dritte Vermutung trifft zu. Wer auf Wasser umschaltet, misst bei gleicher Tiefe mehr. Bei 50 m steht 441,4 kPa da; 441,4 geteilt durch 50 ergibt wieder rund 8,8 kPa je Meter.",
   "aufgabe": {
    "frage": "Berechne den Schweredruck in Wasser in 20 m Tiefe und vergleiche ihn mit dem Wert bei 10 m.",
    "zeilen": 4,
@@ -652,27 +656,29 @@
   "titel": "Zwei gleich große Klötze in der Werkstatt",
   "problem": "Auf der Werkbank liegen zwei Würfel, beide zehn Zentimeter lang. Nour hebt den weißen mit zwei Fingern, den grauen bekommt sie kaum vom Tisch. Jannis lacht: gleich groß, gleich schwer. Herr Kessler schüttelt den Kopf. Er braucht für das Gegengewicht am Klavierwagen genau die richtige Masse. Größe allein hilft ihm dabei nicht weiter.",
   "frage": "Warum haben gleich große Würfel aus verschiedenen Stoffen verschiedene Massen?",
-  "auftrag": "Vergleiche die Massen von sechs gleich großen Würfeln aus verschiedenen Stoffen.",
+  "auftrag": "Untersuche, wie sich m : V ändert, wenn der Styroporwürfel größer wird.",
   "predict": [
-   "Bei gleichem Volumen entscheidet der Stoff, weil jeder Stoff eine eigene Masse je Volumen hat.",
-   "Gleich große Würfel haben ungefähr gleich viel Masse, denn ihr Volumen ist gleich.",
-   "Der graue Würfel ist schwerer, weil sein Stoff härter ist. Aus weichen Stoffen werden immer die leichteren Körper."
+   "Wird die Kante größer, wächst m geteilt durch V mit, denn der Würfel wird schwerer.",
+   "Die Zahl m geteilt durch V bleibt bei jeder Kantenlänge gleich; sie gehört zum Stoff.",
+   "Wird die Kante größer, sinkt m geteilt durch V, denn das Volumen wächst schneller als die Masse."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
-   "Stelle die Kantenlänge a auf 10 cm ein und wähle nacheinander Blei, Eisen, Aluminium, Wasser, Fichtenholz und Styropor.",
-   "Lies bei jedem Stoff im Rechenweg die Masse m und die Gewichtskraft G ab.",
-   "Vergleiche die Masse von Blei mit der Masse von Styropor bei gleicher Kantenlänge."
+   "Wähle Styropor und stelle die Kantenlänge a nacheinander auf 3 cm, 5 cm, 10 cm und 20 cm.",
+   "Lies jedes Mal im Feld Nachgerechnet das Volumen V in m³ und die Masse m in kg ab.",
+   "Rechne in jeder Zeile m geteilt durch V aus und vergleiche die vier Zahlen."
   ],
   "tabCols": [
-   "Stoff (a = 10 cm)",
-   "Masse m in kg"
+   "a",
+   "V in m³",
+   "m in kg",
+   "m : V in kg/m³"
   ],
   "tabRows": [
-   "Blei",
-   "Eisen",
-   "Wasser",
-   "Styropor"
+   "3 cm",
+   "5 cm",
+   "10 cm",
+   "20 cm"
   ],
   "fachtext": "Jeder Stoff hat eine feste Masse je Volumen. Diese Zahl heißt Dichte, ihr Zeichen ist ρ. Es gilt ρ = m: V. Ein Würfel mit 10 cm Kante hat V = 1000 cm³ = 0,001 m³. Blei hat 11340 kg/m³, Styropor nur 20 kg/m³. Deshalb hat der Bleiwürfel die Masse 11,340 kg, der gleich große Styroporwürfel nur 0,020 kg. Die Dichte gehört zum Stoff, nicht zur Größe des Körpers. Daran kann man Stoffe erkennen.",
   "merksatz": [
@@ -687,7 +693,7 @@
     "post": ", also genau 1 Liter."
    }
   ],
-  "beobachtung": "Alle sechs Würfel haben V = 1000 cm³, doch die Anzeige nennt ganz verschiedene Werte: Blei 11,340 kg, Eisen 7,870 kg, Aluminium 2,700 kg, Wasser 1,000 kg, Fichtenholz 0,470 kg und Styropor nur 0,020 kg. Der Bleiwürfel hat 567-mal so viel Masse wie der gleich große Styroporwürfel. Nicht die Größe entscheidet also, sondern die Dichte des Stoffes.",
+  "beobachtung": "Viermal dieselbe Zahl: 0,00054 kg : 0,000027 m³ = 20, 0,0025 kg : 0,000125 m³ = 20, 0,020 kg : 0,001 m³ = 20 und 0,160 kg : 0,008 m³ = 20 (in kg/m³). Masse und Volumen wachsen also im gleichen Maß; der Quotient hängt nicht von der Größe ab, sondern nur vom Stoff. Wie er heißt, sagt erst „Auswertung zeigen“.",
   "aufgabe": {
    "frage": "Berechne die Masse eines Aluminiumwürfels mit 10 cm Kante und begründe, warum sie kleiner ist als beim gleich großen Eisenwürfel.",
    "zeilen": 4,
@@ -813,26 +819,28 @@
   "titel": "Der Klotz über dem Pfahl",
   "problem": "Ein Bündel Traversenrohre hängt am Seil und wird auf die halbfertige Bühne gehievt. Oben liegt es still, nichts bewegt sich mehr. Nour fragt, wozu die ganze Schlepperei gut war, wenn danach nur etwas herumliegt. Herr Kessler grinst und tippt gegen das Rohr: Lass es einmal herunterfallen, dann siehst du es.",
   "frage": "Wovon hängt die Energie ab, die ein Körper oben gespeichert hat?",
-  "auftrag": "Untersuche, wie sich die Lageenergie ändert, wenn du die Masse und wenn du die Höhe verdoppelst.",
+  "auftrag": "Bestimme die Zahl, die gleich bleibt, wenn du den Klotz aus größerer Höhe fallen lässt.",
   "predict": [
-   "Masse und Höhe zählen gleich stark: Verdoppelst du eine der beiden Größen, verdoppelt sich die Lageenergie.",
-   "Die Höhe zählt stärker als die Masse, denn aus größerer Höhe kommt der Klotz mit mehr Wucht unten an.",
-   "Oben liegt das Rohr still, deshalb steckt gar keine Energie darin. Energie bekommt es erst, wenn es herunterfällt."
+   "Tiefe geteilt durch Höhe bleibt in jeder Zeile gleich; doppelte Masse verdoppelt diese Zahl.",
+   "Doppelte Höhe heißt viermal so tief, weil der Klotz schneller unten ankommt.",
+   "Die Höhe ändert nichts an der Tiefe; allein die Masse treibt den Pfahl in den Boden."
   ],
   "predictOk": 0,
   "forschen": [
-   "Stelle die Masse auf 5 kg und die Höhe auf 3 m ein und lies die Lageenergie ab.",
-   "Drücke „×2 Masse“ und notiere den neuen Wert der Lageenergie.",
-   "Drücke „×2 Höhe“ und vergleiche alle drei Werte miteinander."
+   "Stelle 9 kg und 1 m ein, drücke „Fallen lassen“ und lies die Pfahltiefe ab.",
+   "Wiederhole das bei 2 m und bei 3 m; drücke danach „×2 Masse“ und lass noch einmal fallen.",
+   "Rechne in jeder Zeile die Tiefe geteilt durch die Höhe aus und vergleiche."
   ],
   "tabCols": [
    "Masse und Höhe",
-   "Lageenergie in J"
+   "Pfahltiefe in cm",
+   "Tiefe : Höhe in cm/m"
   ],
   "tabRows": [
-   "5 kg, 3 m",
-   "10 kg, 3 m",
-   "10 kg, 6 m"
+   "9 kg, 1 m",
+   "9 kg, 2 m",
+   "9 kg, 3 m",
+   "18 kg, 3 m"
   ],
   "fachtext": "Wer einen Körper anhebt, verrichtet Hubarbeit. Diese Arbeit ist nicht verloren: Sie steckt danach als Lageenergie in dem Körper und wartet dort oben. Es gilt E = m · g · h mit dem Ortsfaktor g = 9,81 N/kg. Masse und Höhe stehen beide einfach in der Formel. Verdoppelst du eine der beiden Größen, verdoppelt sich auch die Lageenergie. Fällt der Körper, gibt er diese Energie wieder ab und treibt den Pfahl in den Boden.",
   "merksatz": [
@@ -847,7 +855,7 @@
     "post": "– bei doppelter Höhe gilt dasselbe."
    }
   ],
-  "beobachtung": "Bei 5 kg und 3 m steht in der Statuszeile: Hubarbeit 5 kg · 9,81 N/kg · 3 m, Lageenergie oben 147 J. Nach „×2 Masse“ zeigt sie 10 kg und 294 J, also genau doppelt so viel. Nach „×2 Höhe“ sind es 10 kg, 6 m und 589 J – noch einmal ungefähr das Doppelte. Masse und Höhe zählen für die Lageenergie gleich stark.",
+  "beobachtung": "Bei 9 kg meldet die Statuszeile nach jedem Fall die Pfahltiefe: 1 m ergibt 22 cm, 2 m ergibt 44 cm, 3 m ergibt 66 cm. Tiefe geteilt durch Höhe ist jedes Mal 22 cm/m – die Zahl bleibt, obwohl die Tiefe wächst. Nach „×2 Masse“ sind es bei 18 kg und 3 m 132 cm, also 44 cm/m: genau das Doppelte.",
   "aufgabe": {
    "frage": "Berechne die Lageenergie eines 10 kg schweren Kabelsacks, der 6 m hoch auf der Traverse liegt, und vergleiche sie mit der Lageenergie desselben Sacks in 3 m Höhe.",
    "zeilen": 4,
@@ -866,26 +874,29 @@
   "titel": "Die Kabeltrommel auf der Rampe",
   "problem": "Eine Kabeltrommel rollt Nour über den Hof entgegen und wirft einen Eimer um. „Die hat doch nur jemand angestoßen“, sagt Jannis erstaunt. Herr Kessler deutet auf die beiden Bohlen: Was da herunterrollt, wird immer schneller. Und beim Tempo, sagt er, rechnet die Physik anders als beim Gewicht.",
   "frage": "Wovon hängt es ab, wie viel Energie in einer rollenden Kugel steckt?",
-  "auftrag": "Untersuche, wie sich die Bewegungsenergie ändert, wenn du die Masse und wenn du das Tempo verdoppelst.",
+  "auftrag": "Untersuche, wie die Bewegungsenergie wächst, wenn bei gleicher Masse nur das Tempo steigt.",
   "predict": [
-   "Masse und Tempo wirken gleich stark: Verdoppelst du eines von beiden, verdoppelt sich die Bewegungsenergie.",
-   "Doppelte Masse verdoppelt die Energie, doppeltes Tempo vervierfacht sie.",
-   "Nur das Tempo zählt. Zwei gleich schnelle Trommeln schieben den Eimer gleich weit, auch wenn eine doppelt so schwer ist."
+   "Die Energie wächst im gleichen Takt wie das Tempo: doppeltes Tempo, doppelte Energie.",
+   "Bei doppeltem Tempo wird die Energie mehr als doppelt so groß; sie wächst schneller.",
+   "Das Tempo ändert wenig; entscheidend ist allein, wie schwer die Kabeltrommel ist."
   ],
   "predictOk": 1,
   "forschen": [
-   "Stelle die Masse auf 4 kg und das Tempo auf 4 m/s ein und lies die Energie ab.",
-   "Drücke „×2 Masse“ und danach „Rollen lassen“; beobachte die Schiebestrecke des Klotzes.",
-   "Drücke „×2 Tempo“ und vergleiche den neuen Energiewert mit den beiden Werten davor."
+   "Stelle die Masse 6 kg und das Tempo 3 m/s ein und drücke „Messpunkt übernehmen“.",
+   "Wiederhole das bei 6 m/s, bei 9 m/s und bei 12 m/s; die Masse bleibt dabei 6 kg.",
+   "Trage E aus der Tabelle ein, rechne E geteilt durch v² aus und vergleiche die Werte."
   ],
   "tabCols": [
-   "Masse und Tempo",
-   "Bewegungsenergie in J"
+   "Tempo v",
+   "E in J",
+   "v² in m²/s²",
+   "E : v² in kg"
   ],
   "tabRows": [
-   "4 kg, 4 m/s",
-   "8 kg, 4 m/s",
-   "8 kg, 8 m/s"
+   "3 m/s",
+   "6 m/s",
+   "9 m/s",
+   "12 m/s"
   ],
   "fachtext": "Ein bewegter Körper trägt Bewegungsenergie mit sich: E = ½ · m · v². Trifft er auf ein Hindernis, gibt er diese Energie ab und schiebt es ein Stück weit. Masse und Tempo stehen aber nicht gleichberechtigt in der Formel. Die Masse steht einfach da, das Tempo steht im Quadrat. Doppelte Masse bedeutet deshalb doppelte Energie, doppeltes Tempo dagegen vierfache Energie. Darum steigt die Bewegungsenergie mit dem Tempo viel stärker als mit der Masse.",
   "merksatz": [
@@ -900,7 +911,7 @@
     "post": ", doppelte Masse nur doppelte."
    }
   ],
-  "beobachtung": "Bei 4 kg und 4 m/s steht in der Statuszeile E = ½ · 4 · 4² = 32 J. Nach „×2 Masse“ rollen 8 kg mit 4 m/s, und die Anzeige springt auf 64 J – doppelt so viel. Nach „×2 Tempo“ sind es 8 kg mit 8 m/s und 256 J, das Vierfache von 64 J; der Klotz wird jetzt am weitesten geschoben. Das Tempo zählt stärker als die Masse.",
+  "beobachtung": "Bei 6 kg und 3 m/s meldet die Statuszeile: gemessen E = F · s = 200 N · 0,135 m = 27 J. Mit 6 m/s stehen dort 108 J, mit 12 m/s 432 J. Die Quotienten sind 27 : 9 = 3, 108 : 36 = 3 und 432 : 144 = 3 kg, also die halbe Masse. Jede Verdopplung des Tempos vervierfacht die Energie. Bei 9 m/s zeigt die Simulation 243 J; 243 geteilt durch 81 ergibt wieder 3.",
   "aufgabe": {
    "frage": "Berechne die Bewegungsenergie einer 8 kg schweren Kabeltrommel bei 4 m/s und bei 8 m/s und begründe, warum sich der Wert dabei vervierfacht.",
    "zeilen": 4,
@@ -973,27 +984,29 @@
   "titel": "Der heiße Scheinwerfer am Abend",
   "problem": "Der Bauscheinwerfer über der halb fertigen Bühne brennt seit einer Stunde. Nour fasst an das Gehäuse und zuckt zurück, so heiß ist es. Jannis wundert sich: Der Strom sollte doch Licht machen und nicht den Hof heizen. Herr Kessler sagt, verloren gehe dabei nichts. Sparen sollen die beiden trotzdem.",
   "frage": "Warum wird Energie unbrauchbar, obwohl ihre Menge gleich bleibt?",
-  "auftrag": "Untersuche, wie viel von 1000 J am Ende einer Energiekette noch zu gebrauchen ist.",
+  "auftrag": "Untersuche, wie sich nutzbare Energie, Wärme und ihre Summe in der Kette ändern.",
   "predict": [
-   "Am Ende sind immer noch 1000 J da, aber fast alles steckt als Wärme in der Luft.",
-   "Bei jedem Schritt geht ein Teil der Energie verloren, am Ende sind weniger als 1000 J übrig.",
-   "Am Ende sind noch 1000 J da, und die Wärme im Hof kannst du wieder einsammeln und noch einmal als Licht nutzen."
+   "Die Summe aus nutzbarer Energie und Wärme wird bei jedem Schritt kleiner.",
+   "Die Wärme kommt dazu, darum wird die Summe bei jedem Schritt größer.",
+   "Die Summe bleibt in jeder Zeile gleich, nur der nutzbare Teil wird kleiner."
   ],
-  "predictOk": 0,
+  "predictOk": 2,
   "forschen": [
-   "Wähle die Kette „Benzin → Fahrt“ und lies die Startmenge ab.",
-   "Drücke dreimal „nächster Schritt“ und lies jedes Mal ab, wie viel noch nutzbar und wie viel Wärme geworden ist.",
-   "Wähle danach „Kohle → Licht“ und vergleiche die vier Schritte mit ihren Prozentangaben."
+   "Wähle „Kohle → Licht“ und drücke einmal „nächster Schritt“.",
+   "Trage nutzbar und Wärme ein, drücke weiter und fülle alle vier Zeilen.",
+   "Rechne in der letzten Spalte nutzbar + Wärme aus und vergleiche die vier Werte."
   ],
   "tabCols": [
-   "Schritt in der Benzin-Kette",
-   "davon noch nutzbar in J"
+   "Schritt",
+   "nutzbar in J",
+   "Wärme in J",
+   "nutzbar + Wärme in J"
   ],
   "tabRows": [
-   "Start",
-   "nach dem Motor",
-   "nach dem Antrieb",
-   "nach dem Bremsen"
+   "Kraftwerk",
+   "Leitung",
+   "Lampe",
+   "Wände"
   ],
   "fachtext": "Energie geht nie verloren, sie wird nur umgewandelt. Bei jeder Umwandlung bleibt ein Teil als Wärme in Motor, Draht oder Luft zurück. Diese Wärme ist zwar noch da, aber sie ist so fein verteilt, dass niemand sie mehr nutzen kann. Fachleute sagen: Die Energie ist entwertet. Deshalb spart man nicht die Menge an Energie, sondern ihre Brauchbarkeit. Am Ende jeder Kette steht Wärme.",
   "merksatz": [
@@ -1008,7 +1021,7 @@
     "post": "und ist nicht mehr nutzbar."
    }
   ],
-  "beobachtung": "Die Benzin-Kette startet mit 1000 J. Nach dem ersten Schritt zeigt die Anzeige: davon weiter nutzbar 250 J, als Wärme abgegeben 750 J durch Abgas und Kühlwasser, zusammen immer noch 1000 J. In der Kohle-Kette schrumpft der grüne Balken bei jedem Pfeil, beim letzten Schritt steht sogar η = 0 %. Die Menge bleibt gleich, die Brauchbarkeit nicht.",
+  "beobachtung": "Die Kohle-Kette startet mit 1000 J. Nach dem Kraftwerk zeigt die Anzeige 400 J nutzbar und 600 J Wärme, nach der Leitung 368 J und 632 J, nach der Lampe 147 J und 853 J, nach den Wänden 0 J und 1000 J. Die letzte Spalte ergibt in jeder Zeile 1000 J. Die Summe bleibt gleich, der nutzbare Teil schrumpft bis auf null.",
   "aufgabe": {
    "frage": "Erkläre, warum man Energie sparen soll, obwohl die Anzeige am Ende immer noch 1000 J zeigt.",
    "zeilen": 4,
@@ -1027,27 +1040,28 @@
   "titel": "Zwei Kisten, zwei Tempos",
   "problem": "Zwei gleich schwere Kisten mit Kabeln müssen auf die Bühne. Jannis zieht seine am Seil gemütlich nach oben, Nour reißt ihre in der halben Zeit hoch und ist danach völlig außer Puste. Beide Kisten liegen jetzt gleich hoch. Herr Kessler behauptet trotzdem, die beiden hätten genau dieselbe Arbeit verrichtet. Nour findet das unfair.",
   "frage": "Was ändert sich, wenn dieselbe Last in der halben Zeit oben ankommt?",
-  "auftrag": "Untersuche, wie sich Arbeit und Leistung ändern, wenn du die Zeit halbierst und wenn du die Masse veränderst.",
+  "auftrag": "Untersuche, wie sich die Leistung ändert, wenn dieselbe Kiste mehr Zeit bekommt.",
   "predict": [
-   "Wer schneller zieht, verrichtet mehr Arbeit: Der Wert für W wird dann größer.",
-   "Die Arbeit bleibt genau gleich groß, nur die Leistung wird doppelt so groß.",
-   "Arbeit und Leistung sind dasselbe. Weil beide Kisten gleich hoch liegen, ist auch Nours Leistung genauso groß wie die von Jannis."
+   "Je länger die Kiste unterwegs ist, desto größer wird die Leistung.",
+   "Die Leistung hängt nicht von der Zeit ab: Es steht immer dieselbe Zahl da.",
+   "Bei doppelter Zeit ist die Leistung nur halb so groß; Leistung mal Zeit bleibt gleich."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
-   "Stelle die Masse auf 50 kg, die Höhe auf 4 m und die Zeit auf 10 s ein.",
-   "Drücke „Hochziehen“ und lies Arbeit W und Leistung P ab; drücke dann „÷2 Zeit“ und vergleiche.",
-   "Drücke „zurücksetzen“ und stelle die Masse nacheinander auf 10 kg und auf 100 kg ein."
+   "Stelle die Masse auf 50 kg und die Höhe auf 4 m ein. Beide bleiben so.",
+   "Stelle die Zeit auf 3 s, drücke „Hochziehen“ und lies die Leistung P ab.",
+   "Wiederhole das mit 6 s, 9 s und 18 s. Rechne in jeder Zeile P mal t aus."
   ],
   "tabCols": [
-   "Einstellung",
-   "Leistung P in W"
+   "Zeit t",
+   "P in W",
+   "P · t in J"
   ],
   "tabRows": [
-   "50 kg in 10 s",
-   "50 kg in 5 s",
-   "10 kg in 10 s",
-   "100 kg in 10 s"
+   "3 s",
+   "6 s",
+   "9 s",
+   "18 s"
   ],
   "fachtext": "Die Arbeit hängt nur davon ab, welche Last wie hoch gehoben wird: W = m · g · h. Wie lange das dauert, spielt für die Arbeit keine Rolle. Die Leistung dagegen sagt, wie schnell die Arbeit geschafft wird. Man rechnet P = W / t. Ein Watt ist ein Joule je Sekunde. Wer in der halben Zeit dieselbe Kiste hebt, bringt die doppelte Leistung.",
   "merksatz": [
@@ -1062,7 +1076,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Mit 50 kg, 4 m und 10 s zeigt die Anzeige die Arbeit W = 1962 J und die Leistung P = 196 W, also 0,27 PS. Nach „÷2 Zeit“ stehen dort weiterhin 1962 J, aber in 5 s geschafft, und P = 392 W oder 0,53 PS. Bei 10 kg sinkt die Leistung auf 39 W. Die Zeit ändert nur die Leistung, nie die Arbeit.",
+  "beobachtung": "Masse (50 kg) und Höhe (4 m) bleiben stehen, nur die Zeit wandert. Angezeigt werden P = 654 W, 327 W, 218 W und 109 W: doppelte Zeit, halbe Leistung. P mal t ergibt in jeder Zeile 1962 J (654 · 3, 327 · 6, 218 · 9, 109 · 18). Genau diese Zahl zeigt die Auswertung als Arbeit W = 1962 J.",
   "aufgabe": {
    "frage": "Berechne die Leistung, wenn 100 kg in 10 s vier Meter hoch gezogen werden, und vergleiche sie mit 196 W.",
    "zeilen": 4,
@@ -1081,27 +1095,28 @@
   "titel": "Glühlampe oder LED",
   "problem": "In der Kiste vom Hausmeister liegen zwei Scheinwerfer: einer mit alter Glühlampe, einer mit LED. Herr Kessler hält die Glühlampe hoch und sagt, die heize den Schulhof mehr, als sie die Bühne beleuchte. Jannis hält das für übertrieben. Nour will wissen, wie viel Licht aus dem Strom überhaupt wird.",
   "frage": "Wie viel von der hineingesteckten Energie gibt eine Maschine als Nutzen ab?",
-  "auftrag": "Vergleiche den Wirkungsgrad von Glühlampe, LED-Lampe, Benzinmotor und Elektromotor.",
+  "auftrag": "Bestimme an der LED-Lampe, welcher Anteil der Energie zu Licht wird.",
   "predict": [
-   "Eine Glühlampe macht aus der hineingesteckten Energie ungefähr die Hälfte Licht.",
-   "Eine gut gebaute Lampe macht aus der hineingesteckten Energie 100 Prozent Licht. Warm wird nur ein Gerät, das kaputt ist.",
-   "Eine Glühlampe macht nur einen kleinen Teil zu Licht, fast alles wird Wärme."
+   "Die LED-Lampe gibt immer gleich viel Licht ab, egal wie viel hineingeht.",
+   "Die LED-Lampe gibt bei doppelter Energie auch doppelt so viel Licht ab.",
+   "Je mehr Energie hineingeht, desto größer wird der Anteil, der Licht wird."
   ],
-  "predictOk": 2,
+  "predictOk": 1,
   "forschen": [
-   "Wähle die Glühlampe und lies ab, wie viel von 1000 J zu Licht wird und wie viel zu Wärme.",
-   "Wähle nacheinander LED-Lampe, Benzinmotor und Elektromotor und lies jedes Mal den Wirkungsgrad η ab.",
-   "Stelle beim Handy-Ladegerät die hineingesteckte Energie auf 200 J und vergleiche den Nutzen mit dem bei 1000 J."
+   "Wähle die LED-Lampe und stelle 800 J ein. Lies ab, wie viel davon Licht wird.",
+   "Stelle nacheinander 1400 J, 2200 J und 3000 J ein und lies jedes Mal das Licht ab.",
+   "Teile in jeder Zeile das Licht durch die hineingesteckte Energie und vergleiche."
   ],
   "tabCols": [
-   "Maschine",
-   "Nutzen in J bei 1000 J"
+   "hinein",
+   "Licht in J",
+   "Licht : hinein"
   ],
   "tabRows": [
-   "Glühlampe",
-   "LED-Lampe",
-   "Benzinmotor",
-   "Elektromotor"
+   "800 J",
+   "1400 J",
+   "2200 J",
+   "3000 J"
   ],
   "fachtext": "In jede Maschine steckt man Energie hinein. Nur ein Teil davon kommt als das heraus, was man haben will: Licht, Bewegung oder warmes Wasser. Dieser Anteil heißt Wirkungsgrad und wird mit η abgekürzt. Man rechnet η = Enutz / Erein und gibt ihn meist in Prozent an. Der Rest verschwindet nicht, sondern wird Wärme. Deshalb ist η immer kleiner als 100 Prozent.",
   "merksatz": [
@@ -1116,7 +1131,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Bei der Glühlampe steht η = 5 %: Von 1000 J werden nur 50 J Licht, 950 J gehen als Wärme weg. Die LED-Lampe schafft mit η = 40 % ganze 400 J Licht. Der Elektromotor liegt bei η = 90 %, also 900 J Bewegung und nur 100 J Wärme. Nutzen und Verlust ergeben immer wieder die hineingesteckte Menge.",
+  "beobachtung": "Die LED-Lampe gibt bei 800 J 320 J Licht ab, bei 1400 J 560 J, bei 2200 J 880 J und bei 3000 J 1200 J. Licht : hinein ergibt jedes Mal 0,4. Der Anteil hängt nicht davon ab, wie viel Energie hineingeht, sondern nur von der Maschine.",
   "aufgabe": {
    "frage": "Beurteile, ob sich der Tausch der Glühlampe gegen eine LED-Lampe lohnt. Nutze die Werte für 1000 J.",
    "zeilen": 4,
@@ -1135,25 +1150,26 @@
   "titel": "Die Eisenstange unter dem Klavier",
   "problem": "Das Klavier steht auf dem Rollbrett, eine Ecke muss angehoben werden. Herr Kessler schiebt eine zwei Meter lange Eisenstange darunter und legt einen Holzklotz als Drehpunkt dazu. Jannis drückt am langen Ende und staunt, wie leicht es geht. Nour sieht etwas anderes: Seine Hand läuft weit, das Klavier hebt sich kaum.",
   "frage": "Spart eine lange Hebelstange nur Kraft – oder auch Arbeit?",
-  "auftrag": "Vergleiche Kraft und Weg an beiden Enden des Hebels und dazu die beiden Arbeiten.",
+  "auftrag": "Miss die nötige Kraft bei vier Kraftarmen und bilde jedes Mal Kraft mal Kraftarm.",
   "predict": [
-   "Die Kraft wird kleiner, der Weg genauso viel länger: Die Arbeit bleibt gleich.",
-   "Mit dem langen Hebel wird auch die Arbeit kleiner, weil man weniger Kraft braucht.",
-   "Die lange Stange nimmt dem Klavier einen Teil seiner Gewichtskraft ab. Am kurzen Ende drückt es deshalb nur noch mit einem Viertel nach unten."
+   "Die Länge des Kraftarms ändert die Kraft nicht, sondern nur den Weg der Hand.",
+   "Doppelter Kraftarm, halbe Kraft: Kraft mal Kraftarm gibt jedes Mal dasselbe.",
+   "Die Kraft nimmt bei jeder Verlängerung um denselben Betrag ab, Stufe für Stufe."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
-   "Stelle den Kraftarm l₁ auf 1,00 m und die Last F₂ auf 200 N ein.",
-   "Lies die nötige Kraft F₁, den Kraftweg s₁ und die beiden Arbeiten W₁ und W₂ ab.",
-   "Drücke nacheinander „gleich lang“, „doppelt so lang“ und „achtfach“ und vergleiche jedes Mal Kraft und Weg."
+   "Stelle die Last F₂ auf 200 N und den Kraftarm auf 0,40 m.",
+   "Lies die Kraft F₁ am roten Pfeil im Bild ab und trage sie ein.",
+   "Wiederhole das mit 0,80 m, 1,00 m und 2,00 m und rechne jede Zeile F₁ · l₁ aus."
   ],
   "tabCols": [
-   "Kraftarm l₁ in m",
-   "nötige Kraft F₁ in N"
+   "Kraftarm l₁",
+   "F₁ in N",
+   "F₁ · l₁ in N · m"
   ],
   "tabRows": [
-   "0,25 m",
-   "0,50 m",
+   "0,40 m",
+   "0,80 m",
    "1,00 m",
    "2,00 m"
   ],
@@ -1170,7 +1186,7 @@
     "post": "."
    }
   ],
-  "beobachtung": "Bei l₁ = 1,00 m und einer Last von 200 N zeigt die Anzeige F₁ = 50,00 N. Der Kraftarm ist 4,00-mal so lang wie der Lastarm von 0,25 m. Die Last steigt 10,0 cm, deine Hand läuft dafür 40,0 cm. Nach „achtfach“ reichen 25,00 N, doch die Hand läuft 80,0 cm. W₁ und W₂ betragen jedes Mal 20,00 J.",
+  "beobachtung": "Bei 200 N Last zeigt das Bild F₁ = 125,00 N bei 0,40 m, 62,50 N bei 0,80 m, 50,00 N bei 1,00 m und 25,00 N bei 2,00 m. F₁ · l₁ ergibt in jeder Zeile 50,00 N · m. Doppelter Kraftarm heißt halbe Kraft; das Produkt bleibt gleich.",
   "aufgabe": {
    "frage": "Berechne die nötige Kraft F₁ bei einem Kraftarm von 0,50 m und begründe, warum die Arbeit trotzdem 20,00 J bleibt.",
    "zeilen": 4,
@@ -1189,27 +1205,29 @@
   "titel": "Die Rolle unter dem Hallendach",
   "problem": "Herr Kessler schraubt eine Rolle unter das Hallendach und fädelt das Seil ein. Jannis zieht am freien Ende nach unten und grinst: So gehe das doch viel leichter. Nour hält den Kraftmesser dagegen und schaut auf die Zahl. Sie zeigt genauso viel wie vorher beim Heben von Hand.",
   "frage": "Spart eine feste Rolle an der Decke wirklich Kraft?",
-  "auftrag": "Vergleiche bei derselben Last, welche Kraft und welchen Weg die feste und die lose Rolle verlangen.",
+  "auftrag": "Bestimme bei drei Lasten, welchen Anteil der Last du selbst ziehen musst.",
   "predict": [
-   "Weil die Rolle das Seil umlenkt, brauchst du an der festen Rolle nur die halbe Kraft.",
-   "An der festen Rolle bleibt die Kraft gleich groß; erst die lose Rolle halbiert sie.",
-   "Die Rolle trägt einen Teil der Last selbst. Eine schwere Rolle nimmt dir deshalb mehr ab als eine leichte."
+   "Je schwerer die Last, desto mehr nimmt die feste Rolle dir ab; bei kleiner Last spürst du sie kaum.",
+   "Die feste Rolle nimmt dir bei jeder Last denselben Anteil ab, weil sie das Seil nur umlenkt.",
+   "Die feste Rolle nimmt dir gar nichts ab; erst die lose Rolle halbiert die nötige Kraft."
   ],
-  "predictOk": 1,
+  "predictOk": 2,
   "forschen": [
-   "Drücke „Ohne Rolle“ und lies Kraft, Weg und Arbeit ab.",
-   "Drücke „Feste Rolle“ und vergleiche die Kraft mit dem Wert ohne Rolle.",
-   "Drücke „Lose Rolle“ und beobachte, wie weit deine Hand nun ziehen muss."
+   "Drücke „Feste Rolle“ und stelle die Last mit dem Regler auf 200 N.",
+   "Lies die Zugkraft F und den Weg s ab; wiederhole das bei 500 N und bei 800 N.",
+   "Drücke „Lose Rolle“ und miss bei 800 N. Rechne dann in jeder Zeile F geteilt durch G aus."
   ],
   "tabCols": [
-   "Art des Zugs",
-   "Kraft F und Weg s"
+   "Zug und Last",
+   "F in N",
+   "s in m",
+   "F : G"
   ],
   "tabRows": [
-   "Ohne Rolle",
-   "Feste Rolle",
-   "Lose Rolle",
-   "Lose Rolle bei 1000 N"
+   "fest 200 N",
+   "fest 500 N",
+   "fest 800 N",
+   "lose 800 N"
   ],
   "fachtext": "Eine Rolle kann Kraft nur sparen, wenn mehrere Seilstücke die Last tragen. An der festen Rolle hängt die Last an einem einzigen Seilstück, deshalb bleibt die Zugkraft so groß wie die Gewichtskraft. Ihr Nutzen liegt in der Richtung: Du ziehst nach unten, und dein eigenes Gewicht hilft mit. An der losen Rolle tragen zwei Seilstücke, jedes trägt die Hälfte. Dafür läuft doppelt so viel Seil durch die Hand. Die Arbeit bleibt in jedem Fall gleich.",
   "merksatz": [
@@ -1224,7 +1242,7 @@
     "post": "und der Weg doppelt so lang."
    }
   ],
-  "beobachtung": "Ohne Rolle brauchst du 600 N und ziehst 2,0 m weit; die Anzeige nennt 1200 J. Bei der festen Rolle steht dieselbe Kraft von 600 N, der Weg bleibt 2,0 m, und daneben erscheint „gespart: 0 %“. Erst an der losen Rolle sinkt die Kraft auf 300 N, dafür wächst der Weg auf 4,0 m. Die Arbeit bleibt immer 1200 J. Die feste Rolle ändert nur die Richtung.",
+  "beobachtung": "Die feste Rolle bleibt, nur die Last wechselt: bei 200 N steht F = 200 N, bei 500 N F = 500 N, bei 800 N F = 800 N, der Weg immer s = 2,0 m. F geteilt durch G ergibt so jedes Mal 1 – die feste Rolle nimmt nichts ab. Bei „Lose Rolle“ mit 800 N stehen F = 400 N und s = 4,0 m, also 0,5 und doppelter Weg. Den Grund nennt „Auswertung zeigen“.",
   "aufgabe": {
    "frage": "Erkläre, warum die feste Rolle keine Kraft spart, obwohl das Ziehen leichter wirkt.",
    "zeilen": 4,
@@ -1243,21 +1261,23 @@
   "titel": "Vier Seile für das Klavier",
   "problem": "Der Flaschenzug hängt am Traversenrohr, das Klavier steht darunter. Herr Kessler legt das Seil ein zweites Mal um und tritt zurück. Nour zählt die Stücke, die von oben nach unten laufen. Jannis rechnet schon: Wenn zwei Seile die Hälfte tragen, müssten vier Seile die Arbeit doch endlich kleiner machen.",
   "frage": "Wie hängen Zugkraft und Seilweg von der Zahl der tragenden Seile ab?",
-  "auftrag": "Untersuche, wie sich Zugkraft, Seilweg und Arbeit ändern, wenn mehr Seilstücke die Last tragen.",
+  "auftrag": "Bestimme aus Zugkraft und Seilweg die Zahl, die bei jeder Seilzahl gleich bleibt.",
   "predict": [
-   "Je mehr Seilstücke ziehen, desto kleiner wird auch die Arbeit, die du verrichten musst.",
-   "Mit vier tragenden Seilstücken brauchst du nur ein Viertel der Kraft. Durch deine Hand läuft dabei trotzdem nur so viel Seil, wie das Klavier hochsteigt.",
-   "Mehr Seilstücke senken nur die Kraft; der Seilweg wächst im gleichen Verhältnis, die Arbeit bleibt gleich."
+   "Mehr Seilstücke senken die Zugkraft und den Seilweg zugleich; Kraft mal Weg wird kleiner.",
+   "Mehr Seilstücke senken die Zugkraft. Durch deine Hand läuft trotzdem nur so viel Seil, wie die Last hochsteigt.",
+   "Mehr Seilstücke senken die Kraft; der Seilweg wächst im gleichen Verhältnis, Kraft mal Weg bleibt gleich."
   ],
   "predictOk": 2,
   "forschen": [
-   "Stelle die Last auf 600 N und die tragenden Seilstücke auf 1 ein.",
-   "Lies bei n = 2 die Zugkraft und den Weg deiner Hand ab.",
-   "Vergleiche bei n = 4 die Zugarbeit mit der Hubarbeit."
+   "Stelle die Last auf 900 N ein und lass sie stehen.",
+   "Stelle nacheinander n = 1, 2, 3 und 4 ein und lies F und s ab.",
+   "Rechne in jeder Zeile F · s aus und vergleiche die Werte."
   ],
   "tabCols": [
-   "Tragende Seilstücke n",
-   "Zugkraft F und Weg s"
+   "Seilstücke n",
+   "F in N",
+   "s in m",
+   "F · s in J"
   ],
   "tabRows": [
    "n = 1",
@@ -1278,7 +1298,7 @@
     "post": "lang, die Arbeit bleibt unverändert."
    }
   ],
-  "beobachtung": "Bei 600 N Last und n = 1 zeigt die Anzeige eine Zugkraft von 600,0 N und einen Weg von 2,0 m. Mit n = 2 sinkt die Kraft auf 300,0 N, der Weg wächst auf 4,0 m. Bei n = 4 stehen dort 150,0 N und 8,0 m. Hubarbeit und Zugarbeit bleiben in allen Fällen 1200,0 J: Kraft sparst du, Arbeit nicht.",
+  "beobachtung": "Bei 900 N Last zeigt die Anzeige für n = 1 die Zugkraft 900,0 N und den Zugweg 2,0 m, für n = 2 450,0 N und 4,0 m, für n = 3 300,0 N und 6,0 m, bei n = 4 dann 225,0 N und 8,0 m. F · s ergibt in jeder Zeile 1800,0 J. Was „Auswertung zeigen“ danach einblendet, bestätigt nur die eigene Rechnung.",
   "aufgabe": {
    "frage": "Berechne für drei tragende Seilstücke und 600 N Last die Zugkraft und den Seilweg und zeige, dass die Arbeit gleich bleibt.",
    "zeilen": 4,
@@ -1297,27 +1317,28 @@
   "titel": "Im Getriebe der Seilwinde",
   "problem": "An der Seilwinde neben der Bühne sitzt ein kleines Getriebe. Jannis dreht die Kurbel dreimal ganz herum, und Nour beobachtet die Trommel dahinter: Die ist dabei erst einmal herum, dafür geht das Kurbeln erstaunlich leicht. Herr Kessler zählt die Zähne der beiden Räder und meint, damit sei alles erklärt. Jannis glaubt ihm noch nicht.",
   "frage": "Wovon hängt es ab, wie schnell sich das angetriebene Zahnrad dreht?",
-  "auftrag": "Untersuche, wie die Zähnezahlen der beiden Räder die Drehzahl des Abtriebs bestimmen.",
+  "auftrag": "Bestimme die Zahl, die bei jeder Zähnezahl von Rad 2 gleich bleibt.",
   "predict": [
-   "Am Berührpunkt laufen bei beiden Rädern gleich viele Zähne durch; das Rad mit weniger Zähnen ist deshalb öfter herum.",
-   "Das kleinere Rad dreht sich schneller, weil es leichter ist und weniger Schwung braucht.",
-   "Das größere Rad dreht sich schneller, weil sein Rand in derselben Zeit einen längeren Weg zurücklegt."
+   "Jedes Rad dreht sich gleich oft herum; nur am Rand laufen die Zähne verschieden schnell vorbei.",
+   "Drehzahl mal Zähnezahl ergibt bei beiden Rädern dieselbe Zahl, egal wie groß sie sind.",
+   "Zählt Rad 2 Zähne dazu, sinkt seine Drehzahl um ebenso viele Umdrehungen je Minute."
   ],
-  "predictOk": 0,
+  "predictOk": 1,
   "forschen": [
-   "Drücke „gleich groß (24: 24)“ und lies die Drehzahl von Rad 2 ab.",
-   "Wähle „groß treibt klein – schneller“ und vergleiche die beiden Drehzahlen.",
-   "Beobachte bei „klein treibt groß – langsamer, kräftiger“, wie sich Drehzahl und Drehmoment ändern."
+   "Stelle Rad 1 auf 30 Zähne und die Antriebsdrehzahl auf 60 U/min.",
+   "Stelle Rad 2 nacheinander auf 12, 20 und 45 Zähne und lies n₂ ab.",
+   "Rechne in jeder Zeile n₂ mal z₂ aus. Stelle dann Rad 1 auf 20 und Rad 2 auf 12 Zähne."
   ],
   "tabCols": [
    "Räder z₁: z₂",
-   "Drehzahl n₂ und Übersetzung i"
+   "n₂ in U/min",
+   "n₂ · z₂ in Zähne je Minute"
   ],
   "tabRows": [
-   "24: 24",
-   "30: 10",
-   "12: 36",
-   "40: 10"
+   "30: 12",
+   "30: 20",
+   "30: 45",
+   "20: 12"
   ],
   "fachtext": "Zwei kämmende Zahnräder berühren sich an einer Stelle. Dort muss jeder Zahn in eine Lücke greifen, deshalb laufen bei beiden Rädern in derselben Zeit gleich viele Zähne durch. Es gilt n₁ · z₁ = n₂ · z₂. Ein Rad mit wenigen Zähnen ist darum schneller herum. Geschenkt bekommst du das nicht: Das Drehmoment, also die Drehwirkung an der Achse, wird beim schnelleren Rad im selben Verhältnis kleiner.",
   "merksatz": [
@@ -1332,7 +1353,7 @@
     "post": "; was an Drehzahl gewonnen wird, fehlt am Drehmoment."
    }
   ],
-  "beobachtung": "Bei 24 zu 24 Zähnen dreht sich Rad 2 mit 60,0 U/min, genau wie Rad 1; die Übersetzung ist 1,00. Stellt man 30 zu 10 ein, schieben beide Räder 30,0 Zähne je Sekunde durch, und Rad 2 kommt auf 180,0 U/min, also i = 3,00. Bei 12 zu 36 sinkt Rad 2 auf 20,0 U/min, sein Drehmoment wird dreimal so groß. Die Übersetzung hängt allein vom Verhältnis der Zähnezahlen ab.",
+  "beobachtung": "Rad 1 bleibt bei 30 Zähnen und 60 U/min. Rad 2 dreht mit 150,0 U/min, 90,0 U/min und 40,0 U/min. Rechnet man n₂ mal z₂, steht in jeder Zeile 1800 da: 150,0 mal 12, 90,0 mal 20, 40,0 mal 45. Dieselbe Zahl liefert Rad 1: 60 mal 30. Stellt man Rad 1 auf 20 Zähne, dreht Rad 2 mit 100,0 U/min, und beide Produkte sind 1200. Den Namen nennt erst „Auswertung zeigen“.",
   "aufgabe": {
    "frage": "Bestimme für die Einstellung 40 auf 10 Zähne die Drehzahl von Rad 2 und begründe, warum sein Drehmoment dabei auf ein Viertel sinkt.",
    "zeilen": 4,
