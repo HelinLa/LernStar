@@ -60939,7 +60939,7 @@ function _staSelf(n) {
 // 8.1.3  WAS IST DIE ELEKTRISCHE SPANNUNG?
 // Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
 // Handlungsorientiert: Die Spannung U ist der "Antrieb" der Quelle.
-// Mehr Batteriezellen → mehr Volt → stärkerer Antrieb → hellere Lampe.
+// Mehr Energiequellen → mehr Volt → stärkerer Antrieb → hellere Lampe.
 // Gemessen mit dem Voltmeter (parallel). Nur Kleinspannung (max 4,5 V).
 // ═══════════════════════════════════════════════════════
 let _spn = null;
@@ -60950,7 +60950,7 @@ function _spnHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim spn-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔌 Was ist die elektrische Spannung?</h3>
-    <div class="fpm-note" style="margin-top:2px">Setze eine, zwei oder drei Batteriezellen ein (je 1,5&nbsp;V). Lies die Spannung am Voltmeter ab. Was passiert mit der Lampe? (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-note" style="margin-top:2px">Setze eine, zwei oder drei Energiequellen ein (je 1,5&nbsp;V). Lies die Spannung am Voltmeter ab. Was passiert mit der Lampe? (Nur ungefährliche Kleinspannung.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="spnAnim" width="440" height="236" class="phys-anim-cv"></canvas>
@@ -61000,7 +61000,7 @@ function _spnDraw(ctx, cv) {
   const L = 40, R = W - 40, T = 50, B = H - 44;
   ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
 
-  // Batteriezellen (unten) – Kleinspannung, je 1,5 V
+  // Energiequellen (unten) – Kleinspannung, je 1,5 V
   const cyB = B, startx = (L + R) / 2 - (_spn.zellen * 26) / 2;
   for (let i = 0; i < _spn.zellen; i++) {
     const x = startx + i * 26;
@@ -61451,7 +61451,7 @@ function _sabDraw(ctx, cv) {
   const L = 40, R = W - 40, T = 50, B = H - 44;
   ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
 
-  // Batteriezellen unten
+  // Energiequellen unten
   const cyB = B, sx = (L + R) / 2 - (_sab.zellen * 24) / 2;
   for (let i = 0; i < _sab.zellen; i++) { const x = sx + i * 24; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, cyB - 8); ctx.lineTo(x, cyB + 8); ctx.moveTo(x + 9, cyB - 13); ctx.lineTo(x + 9, cyB + 13); ctx.stroke(); }
   ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('U = ' + String(_sabU()).replace('.', ',') + ' V', (L + R) / 2, cyB + 26);
@@ -62970,7 +62970,7 @@ function _elpDraw(ctx, cv) {
   const L = 40, R = W - 40, T = 52, B = H - 44;
   ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.beginPath(); ctx.rect(L, T, R - L, B - T); ctx.stroke();
 
-  // Batteriezellen unten
+  // Energiequellen unten
   const cyB = B, sx = (L + R) / 2 - (_elp.zellen * 22) / 2;
   for (let i = 0; i < _elp.zellen; i++) { const x = sx + i * 22; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, cyB - 8); ctx.lineTo(x, cyB + 8); ctx.moveTo(x + 8, cyB - 13); ctx.lineTo(x + 8, cyB + 13); ctx.stroke(); }
   ctx.fillStyle = '#fde68a'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('U = ' + String(_elpU()).replace('.', ',') + ' V', (L + R) / 2, cyB + 24);
