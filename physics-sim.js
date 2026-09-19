@@ -52543,9 +52543,12 @@ function _locDraw(ctx, cv) {
   ctx.strokeStyle = 'rgba(245,158,11,0.7)'; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(xObj, cy - Gpx); ctx.lineTo(xHole, cy); ctx.lineTo(xScr, cy + Bpx); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(xObj, cy); ctx.lineTo(xHole, cy); ctx.lineTo(xScr, cy - 0); ctx.stroke();
-  // Bild (Pfeil nach unten = umgekehrt), Dicke/Alpha ~ Lochgröße
-  const blur = _loc.hole;
-  ctx.strokeStyle = `rgba(220,38,38,${Math.max(0.25, 1 - blur * 0.11)})`; ctx.lineWidth = 1 + blur;
+  // Bild (Pfeil nach unten = umgekehrt): Ein groesseres Loch laesst MEHR Licht
+  // durch - das Bild wird heller und zugleich unschaerfer. Bis zum 18.09.2026
+  // lief die Deckkraft andersherum (1 - hole*0.11), das Bild wurde also mit
+  // groesserem Loch blasser und widersprach dem Hinweis darunter.
+  const blur = _loc.hole;                       // 1 (klein) bis 6 (gross)
+  ctx.strokeStyle = `rgba(220,38,38,${Math.min(1, 0.45 + blur * 0.09)})`; ctx.lineWidth = 1 + blur;
   ctx.beginPath(); ctx.moveTo(xScr, cy); ctx.lineTo(xScr, cy + Bpx); ctx.stroke();
   ctx.fillStyle = ctx.strokeStyle; ctx.beginPath(); ctx.moveTo(xScr, cy + Bpx + 8); ctx.lineTo(xScr - 5, cy + Bpx); ctx.lineTo(xScr + 5, cy + Bpx); ctx.closePath(); ctx.fill();
   ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('Bild (umgekehrt)', xScr + 10, cy + Bpx / 2);
@@ -60952,9 +60955,9 @@ function _spnHTML() {
       <div>
         <canvas id="spnAnim" width="440" height="236" class="phys-anim-cv"></canvas>
         <div class="sim-btn-row" style="margin-top:6px">
-          <button class="sim-btn${_spn.zellen === 1 ? ' primary' : ''}" id="spnZ1" onclick="_spnSet(1)">1 Zelle (1,5 V)</button>
-          <button class="sim-btn${_spn.zellen === 2 ? ' primary' : ''}" id="spnZ2" onclick="_spnSet(2)">2 Zellen (3 V)</button>
-          <button class="sim-btn${_spn.zellen === 3 ? ' primary' : ''}" id="spnZ3" onclick="_spnSet(3)">3 Zellen (4,5 V)</button>
+          <button class="sim-btn${_spn.zellen === 1 ? ' primary' : ''}" id="spnZ1" onclick="_spnSet(1)">1 Energiequelle (1,5 V)</button>
+          <button class="sim-btn${_spn.zellen === 2 ? ' primary' : ''}" id="spnZ2" onclick="_spnSet(2)">2 Energiequellen (3 V)</button>
+          <button class="sim-btn${_spn.zellen === 3 ? ' primary' : ''}" id="spnZ3" onclick="_spnSet(3)">3 Energiequellen (4,5 V)</button>
         </div>
         <div class="sim-btn-row" style="margin-top:4px">
           <button class="sim-btn" onclick="_spnReset()">↺ Zurücksetzen</button>
@@ -60963,7 +60966,7 @@ function _spnHTML() {
       <div>
         <div class="fpm-label">Spannung am Voltmeter</div>
         <div class="lmp-status" id="spnStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Die <b>Spannung U</b> ist der „Antrieb" der Quelle: Sie treibt die Ladungen durch den Kreis. Mehr Zellen → mehr <b>Volt</b> → stärkerer Antrieb → mehr Strom → <b>hellere</b> Lampe. Einheit: <b>Volt (V)</b>. Gemessen wird mit dem <b>Voltmeter</b>, das <b>parallel</b> angeschlossen wird.</div>
+        <div class="fpm-note" style="margin-top:10px">Die <b>Spannung U</b> ist der „Antrieb" der Quelle: Sie treibt die Ladungen durch den Kreis. Mehr Energiequellen → mehr <b>Volt</b> → stärkerer Antrieb → mehr Strom → <b>hellere</b> Lampe. Einheit: <b>Volt (V)</b>. Gemessen wird mit dem <b>Voltmeter</b>, das <b>parallel</b> angeschlossen wird.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -60984,7 +60987,7 @@ function _spnStatus() {
   const el = document.getElementById('spnStatus'); if (!el) return;
   const U = _spnU();
   const hell = _spn.zellen === 1 ? 'schwach' : (_spn.zellen === 2 ? 'heller' : 'am hellsten');
-  el.textContent = `Spannung U = ${String(U).replace('.', ',')} V (${_spn.zellen} ${_spn.zellen === 1 ? 'Zelle' : 'Zellen'}). Stärkerer Antrieb → mehr Strom → Lampe ${hell}.`;
+  el.textContent = `Spannung U = ${String(U).replace('.', ',')} V (${_spn.zellen} ${_spn.zellen === 1 ? 'Energiequelle' : 'Energiequellen'}). Stärkerer Antrieb → mehr Strom → Lampe ${hell}.`;
   el.className = 'lmp-status on';
 }
 
@@ -61054,16 +61057,16 @@ function _spnArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Setze 1 Zelle ein und lies die Spannung ab.</li>
-          <li>Wiederhole es mit 2 und mit 3 Zellen.</li>
+          <li>Setze 1 Energiequelle ein und lies die Spannung ab.</li>
+          <li>Wiederhole es mit 2 und mit 3 Energiequellen.</li>
           <li>Beobachte jedes Mal die Helligkeit der Lampe.</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
         <table class="ab-table"><tbody>
-          <tr><td>1 Zelle</td><td>${inp('b1', 'U = … V')}</td><td>Lampe</td><td>${inp('c1', 'wie hell?')}</td></tr>
-          <tr><td>2 Zellen</td><td>${inp('b2', 'U = … V')}</td><td>Lampe</td><td>${inp('c2', 'wie hell?')}</td></tr>
-          <tr><td>3 Zellen</td><td>${inp('b3', 'U = … V')}</td><td>Lampe</td><td>${inp('c3', 'wie hell?')}</td></tr>
+          <tr><td>1 Energiequelle</td><td>${inp('b1', 'U = … V')}</td><td>Lampe</td><td>${inp('c1', 'wie hell?')}</td></tr>
+          <tr><td>2 Energiequellen</td><td>${inp('b2', 'U = … V')}</td><td>Lampe</td><td>${inp('c2', 'wie hell?')}</td></tr>
+          <tr><td>3 Energiequellen</td><td>${inp('b3', 'U = … V')}</td><td>Lampe</td><td>${inp('c3', 'wie hell?')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
@@ -61072,7 +61075,7 @@ function _spnArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
         <ol class="ab-ol">
-          <li>Was passiert mit der Spannung, wenn du mehr Zellen einsetzt? ${inp('a1', 'sie wird …')}</li>
+          <li>Was passiert mit der Spannung, wenn du mehr Energiequellen einsetzt? ${inp('a1', 'sie wird …')}</li>
           <li>Wie muss das Voltmeter angeschlossen werden? ${inp('a2', '')}</li>
           <li>Welche Einheit hat die Spannung? ${inp('a3', '')}</li>
         </ol></div>
@@ -61101,10 +61104,10 @@ function _spnArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mehr Zellen → höhere Spannung → hellere Lampe. Werte: 1 Zelle 1,5 V · 2 Zellen 3 V · 3 Zellen 4,5 V (Reihenschaltung der Zellen). Sicherheit: nur Kleinspannung.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Die (Quellen-)Spannung U ist die Antriebsgröße; sie „treibt" die Ladungen. Einheit Volt (V). In Reihe geschaltete Zellen addieren ihre Spannungen. Das Voltmeter misst die Spannung zwischen zwei Punkten und wird parallel angeschlossen (großer Innenwiderstand). Bei fester Lampe steigt mit U auch der Strom (I = U/R) – daher heller.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mehr Energiequellen → höhere Spannung → hellere Lampe. Werte: 1 Energiequelle 1,5 V · 2 Energiequellen 3 V · 3 Energiequellen 4,5 V (Reihenschaltung der Energiequellen). Sicherheit: nur Kleinspannung.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die (Quellen-)Spannung U ist die Antriebsgröße; sie „treibt" die Ladungen. Einheit Volt (V). In Reihe geschaltete Energiequellen addieren ihre Spannungen. Das Voltmeter misst die Spannung zwischen zwei Punkten und wird parallel angeschlossen (großer Innenwiderstand). Bei fester Lampe steigt mit U auch der Strom (I = U/R) – daher heller.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Spannung fließt." (2) „Voltmeter kommt in Reihe." (3) „Spannung und Stromstärke sind dasselbe."</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Wasserdruck-Analogie; Spannung „liegt an", fließt nicht; Voltmeter „danebengelegt" (parallel); Spannungen der Zellen addieren.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Wasserdruck-Analogie; Spannung „liegt an", fließt nicht; Voltmeter „danebengelegt" (parallel); Spannungen der Energiequellen addieren.</div>
         <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,5 V/schwach · 3 V/heller · 4,5 V/am hellsten. 6.1 „sie wird größer" · 6.2 parallel · 6.3 Volt (V). Merksatz: Antrieb · stärker · Volt (V) · parallel. Transfer: Höherer Wasserdruck treibt mehr Wasser durch das Rohr – höhere Spannung treibt mehr Ladung (Strom) durch den Kreis. Minidiagnose: 1→Der Antrieb der Quelle · 2→Parallel · 3→Sie wird größer (heller).</div>
       </details>
 
@@ -61125,9 +61128,9 @@ const _SPN_MINI = [
     fb: ['In Reihe kommt das Amperemeter.',
          'Richtig! Das Voltmeter wird parallel angeschlossen.',
          'Man schließt es sehr wohl an – parallel.'] },
-  { q: '3. Du setzt statt 1 Zelle 3 Zellen ein. Was passiert?',
+  { q: '3. Du setzt statt 1 Energiequelle 3 Energiequellen ein. Was passiert?',
     opts: ['Die Spannung wird kleiner', 'Die Spannung wird größer, die Lampe heller', 'Nichts ändert sich'], correct: 1,
-    fb: ['Mehr Zellen → mehr Spannung, nicht weniger.',
+    fb: ['Mehr Energiequellen → mehr Spannung, nicht weniger.',
          'Richtig! Mehr Volt → stärkerer Antrieb → hellere Lampe.',
          'Die Helligkeit ändert sich deutlich.'] }
 ];
@@ -61382,7 +61385,7 @@ function _msnSelf(n) {
 // ═══════════════════════════════════════════════════════
 // 8.1.5  WOVON HÄNGT DIE STROMSTÄRKE AB?
 // Realschule NRW – Klasse 8 · Inhaltsfeld "Elektrizität"
-// Handlungsorientiert: Verändere Spannung (Zellen) ODER Widerstand
+// Handlungsorientiert: Verändere Spannung (Energiequellen) ODER Widerstand
 // und beobachte die Stromstärke. Mehr Spannung → mehr Strom;
 // größerer Widerstand → weniger Strom. (Überleitung zum Ohm-Gesetz.)
 // Nur ungefährliche Kleinspannung.
@@ -61397,7 +61400,7 @@ function _sabHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim sab-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔎 Wovon hängt die Stromstärke ab?</h3>
-    <div class="fpm-note" style="margin-top:2px">Verändere immer nur eine Größe: einmal die Spannung (Zellen), einmal den Widerstand. Beobachte, wie sich die Stromstärke ändert. (Nur ungefährliche Kleinspannung.)</div>
+    <div class="fpm-note" style="margin-top:2px">Verändere immer nur eine Größe: einmal die Spannung (Energiequellen), einmal den Widerstand. Beobachte, wie sich die Stromstärke ändert. (Nur ungefährliche Kleinspannung.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="sabAnim" width="440" height="236" class="phys-anim-cv"></canvas>
@@ -61561,7 +61564,7 @@ function _sabArbeitsblattHTML() {
 }
 
 const _SAB_MINI = [
-  { q: '1. Du erhöhst die Spannung (mehr Zellen). Was passiert mit der Stromstärke?',
+  { q: '1. Du erhöhst die Spannung (mehr Energiequellen). Was passiert mit der Stromstärke?',
     opts: ['Sie wird größer', 'Sie wird kleiner', 'Sie bleibt gleich'], correct: 0,
     fb: ['Richtig! Mehr Spannung (Antrieb) → mehr Strom.',
          'Mehr Antrieb macht den Strom nicht kleiner.',

@@ -655,9 +655,9 @@ const HEFT_SEITEN = {
     sim: "spannung", seite: 16,
     kapitel: "Spannung, Strom und der erste Kreis",
     name: "Was ist die elektrische Spannung?",
-    titel: "Was die Zahl mit dem V bedeutet",
+    titel: "Was die Spannung bewirkt",
     frage: "Was bewirkt eine größere Spannung im Stromkreis?",
-    schritte: ["Wähle „1 Zelle“ und lies die Spannung ab. Achte darauf, wie hell die Lampe brennt.", "Wähle „2 Zellen“ und danach „3 Zellen“ und trage jedes Mal die Spannung ein.", "Ordne die drei Helligkeiten den drei Spannungen zu."]
+    schritte: ["Wähle „1 Energiequelle“ und lies die Spannung ab. Achte darauf, wie hell die Lampe brennt.", "Wähle „2 Energiequellen“ und danach „3 Energiequellen“ und trage jedes Mal die Spannung ein.", "Ordne die drei Helligkeiten den drei Spannungen zu."]
   },
   "sp4": {
     klasse: 8, schulform: "Realschule NRW",
@@ -2040,10 +2040,10 @@ const HEFT_SEITEN = {
     klasse: 8, schulform: "Gesamtschule NRW",
     sim: "spannung", seite: 12,
     kapitel: "Stromkreise verstehen",
-    name: "Was sagt die Zahl mit dem V auf der Batterie?",
-    titel: "Die Zahl mit dem V auf der Zelle",
+    name: "Was sagt die Spannung an der Batterie?",
+    titel: "Die Spannung an der Energiequelle",
     frage: "Wie wirkt sich die Spannung der Quelle auf die Helligkeit der Lampe aus?",
-    schritte: ["Drücke „1 Zelle (1,5 V)“ und lies die Spannung am Voltmeter ab.", "Drücke nacheinander „2 Zellen (3 V)“ und „3 Zellen (4,5 V)“ und beobachte die Lampe.", "Vergleiche die drei Spannungen mit der Helligkeit der Lampe."]
+    schritte: ["Drücke „1 Energiequelle (1,5 V)“ und lies die Spannung am Voltmeter ab.", "Drücke nacheinander „2 Energiequellen (3 V)“ und „3 Energiequellen (4,5 V)“ und beobachte die Lampe.", "Vergleiche die drei Spannungen mit der Helligkeit der Lampe."]
   },
   "st4": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -3681,7 +3681,7 @@ const HEFT_SEITEN = {
     name: "Was ist Spannung wirklich?",
     titel: "Was das Voltmeter anzeigt",
     frage: "Was ist Spannung wirklich?",
-    schritte: ["Setze mit der Taste „1 Zelle (1,5 V)“ eine einzelne Zelle ein und lies die Spannung am Voltmeter ab.", "Schalte über „2 Zellen (3 V)“ und „3 Zellen (4,5 V)“ weiter und vergleiche jedes Mal, wie hell die Lampe wird.", "Drücke „Zurücksetzen“ und beschreibe, wie der Antrieb der Quelle mit der Zahl der Zellen zusammenhängt."]
+    schritte: ["Setze mit der Taste „1 Energiequelle (1,5 V)“ eine einzelne Energiequelle ein und lies die Spannung am Voltmeter ab.", "Schalte über „2 Energiequellen (3 V)“ und „3 Energiequellen (4,5 V)“ weiter und vergleiche jedes Mal, wie hell die Lampe wird.", "Drücke „Zurücksetzen“ und beschreibe, wie der Antrieb der Quelle mit der Zahl der Energiequellen zusammenhängt."]
   },
   "la6": {
     klasse: 9, schulform: "Gymnasium NRW",
@@ -4041,7 +4041,7 @@ const HEFT_SEITEN = {
     name: "Was macht eine Oberfläche mit Licht?",
     titel: "Zwei Kisten ohne Beschriftung",
     frage: "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
-    schritte: ["Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab.", "Trage die Zahlen für Fensterglas, schwarzes Papier und weißes Papier ein.", "Berechne für jede Zeile die Summe der drei Zahlen."]
+    schritte: ["Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab.", "Wähle danach Fensterglas, schwarzes Papier und weißes Papier.", "Trage die Zahlen in die Tabelle ein.", "Berechne für jede Zeile die Summe."]
   },
   "fo2": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4050,7 +4050,7 @@ const HEFT_SEITEN = {
     name: "Wie wirft der Spiegel Licht zurück?",
     titel: "Der Spiegel",
     frage: "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
-    schritte: ["Stelle den Einfallswinkel zum Lot auf 0° und lies die Statuszeile.", "Trage beide Winkel in die Tabelle ein.", "Stelle nacheinander 20°, 40° und 80° ein und ergänze die Tabelle."]
+    schritte: ["Stelle den Regler „Spiegel drehen“ auf 0°. Lass ihn dort.", "Stelle den Einfallswinkel zum Lot auf 0°. Lies die Statuszeile.", "Trage beide Winkel in die Tabelle ein.", "Stelle nacheinander 20°, 40° und 80° ein und ergänze die Tabelle."]
   },
   "fo3": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4059,7 +4059,7 @@ const HEFT_SEITEN = {
     name: "Warum knickt Licht im Glas?",
     titel: "Der halbrunde Glasklotz",
     frage: "Wohin knickt der Lichtstrahl, wenn er ins Glas eintritt?",
-    schritte: ["Drücke „↓ genau auf das Lot“ und lies die Statuszeile.", "Stelle den Winkel in der Luft auf 40° und lies den Winkel im Glas ab.", "Stelle 75° ein und ergänze die letzte Zeile der Tabelle.", "Vergleiche: Ist der Winkel im Glas größer oder kleiner?"]
+    schritte: ["Drücke „↓ genau auf das Lot“ und trage die erste Zeile ein.", "Stelle 40° ein, lies den Winkel im Glas ab und trage ihn ein.", "Stelle 75° ein und ergänze die letzte Zeile der Tabelle.", "Vergleiche: Ist der Winkel im Glas größer oder kleiner als in der Luft?"]
   },
   "fo4": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4068,7 +4068,7 @@ const HEFT_SEITEN = {
     name: "Wann kommt Licht nicht mehr heraus?",
     titel: "Wenn Licht nicht mehr herauskommt",
     frage: "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
-    schritte: ["Stelle den Winkel im Glas auf 20° und lies den Winkel in der Luft ab.", "Stelle 25° ein und vergleiche beide Winkel.", "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung.", "Trage ein, bei welchen Winkeln Licht austritt."]
+    schritte: ["Stelle den Winkel im Glas auf 0°. Lies beide Winkel ab.", "Stelle danach 20° ein, dann 25°. Lies jedes Mal beide Winkel ab.", "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung.", "Trage ein, bei welchen Winkeln Licht austritt."]
   },
   "fo5": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4077,7 +4077,7 @@ const HEFT_SEITEN = {
     name: "Welches Glas bündelt das Licht?",
     titel: "Zwei geschliffene Gläser",
     frage: "Welches Glas bündelt paralleles Licht – und welches nicht?",
-    schritte: ["Wähle „in der Mitte dicker“ und lies die Statuszeile.", "Trage ein, wo sich die Strahlen treffen.", "Wähle „in der Mitte dünner“ und beobachte die Strahlen.", "Ergänze die zweite Zeile der Tabelle."]
+    schritte: ["Wähle „in der Mitte dicker“ und lies die Statuszeile.", "Trage die erste Zeile der Tabelle ein.", "Wähle „in der Mitte dünner“ und lies die Statuszeile.", "Ergänze die zweite Zeile der Tabelle."]
   },
   "fo6": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4086,7 +4086,7 @@ const HEFT_SEITEN = {
     name: "Wo entsteht das Bild der Linse?",
     titel: "Das Bild der Linse und die Lupe",
     frage: "Wovon hängt es ab, wie das Bild der Linse aussieht?",
-    schritte: ["Stelle die Gegenstandsweite g auf 190 und lies die Statuszeile.", "Stelle 100 ein und vergleiche Größe und Lage des Bildes.", "Stelle 25 ein – näher als die Brennweite f = 62.", "Trage jedes Mal ein, wie das Bild aussieht."]
+    schritte: ["Stelle den Abstand am Regler auf 190 und lies die Statuszeile.", "Stelle 100 ein und vergleiche Größe und Lage des Bildes.", "Stelle 25 ein – näher als die Brennweite f = 62.", "Trage jedes Mal ein, wie das Bild aussieht."]
   },
   "fo7": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4095,7 +4095,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht ein Bild im Auge?",
     titel: "Das aufklappbare Augenmodell",
     frage: "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
-    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.", "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.", "Schiebe den Regler „Pupille“ nach links und nach rechts. Lies beide Meldungen.", "Trage deine Beobachtungen in die Tabelle ein."]
+    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts und lies die Statuszeile.", "Schiebe ihn ganz nach links und vergleiche die Wölbung der Linse.", "Schiebe ihn wieder ganz nach rechts. Bewege dann den Regler „Pupille“ nach links und nach rechts.", "Trage deine Beobachtungen in die Tabelle ein."]
   },
   "fo8": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4103,8 +4103,8 @@ const HEFT_SEITEN = {
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie hilft eine Brille?",
     titel: "Zwei Brillen ohne Etikett",
-    frage: "Welche Linse gehört zu welchem Sehfehler?",
-    schritte: ["Wähle „kurzsichtig“ und lies ab, wo das Bild liegt.", "Drücke „Brille“ und lies die neue Meldung.", "Wähle „weitsichtig“ und wiederhole beide Schritte.", "Trage alle vier Ergebnisse in die Tabelle ein."]
+    frage: "Welche Linse hilft dem kurzsichtigen Auge, welche dem weitsichtigen?",
+    schritte: ["Wähle „kurzsichtig“ und lies die Meldung ab.", "Drücke „Brille“ und lies die neue Meldung ab.", "Drücke „Brille“ noch einmal, dann ist die Brille wieder ab.", "Wähle „weitsichtig“ und lies die Meldung ab. Drücke dann „Brille“ und lies wieder ab."]
   },
   "fo9": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4113,7 +4113,7 @@ const HEFT_SEITEN = {
     name: "Wie macht die Lochkamera ein Bild?",
     titel: "Die Pappkiste mit dem Nadelloch",
     frage: "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
-    schritte: ["Stelle die Bildweite b auf 29 cm und lies die Statuszeile.", "Stelle b auf 39 cm und dann auf 51 cm. Vergleiche die Bildgröße.", "Schiebe den Regler „Lochgröße“ ganz nach rechts und lies die Statuszeile.", "Trage alle vier Zeilen in die Tabelle ein."]
+    schritte: ["Stelle „Gegenstandsweite g“ auf 40 cm. Sie bleibt so.", "Stelle die Bildweite b (Kameralänge) auf 29 cm, 39 cm und 51 cm. Lies jedes Mal die Statuszeile.", "Schiebe „Lochgröße“ ganz nach rechts. Lies den Satz unter den Reglern.", "Trage alle vier Zeilen in die Tabelle ein."]
   },
   "fo10": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4122,7 +4122,7 @@ const HEFT_SEITEN = {
     name: "Woraus besteht weißes Licht?",
     titel: "Der Glaskeil in der Schublade",
     frage: "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
-    schritte: ["Wähle weißes Licht und lies die Meldung in der Statuszeile.", "Trage in die Tabelle ein, was hinter dem Prisma erscheint.", "Wähle nur Rot. Beobachte, ob sich das Licht noch auffächert.", "Vergleiche mit nur Blau und ergänze die letzte Zeile."]
+    schritte: ["Wähle weißes Licht und lies die Meldung in der Statuszeile.", "Trage in die Tabelle ein, was hinter dem Prisma erscheint.", "Wähle nur Rot. Beobachte, ob das Licht noch zerlegt wird.", "Vergleiche mit nur Blau und ergänze die letzte Zeile."]
   },
   "fo11": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4131,7 +4131,7 @@ const HEFT_SEITEN = {
     name: "Wie macht der Bildschirm Farben?",
     titel: "Die Lupe auf dem Bildschirm",
     frage: "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
-    schritte: ["Lies im Statusfeld die Ergebnisfarbe mit ihren drei Zahlen ab.", "Drücke „aus“ und notiere alle drei Werte.", "Drücke „Gelb“ und notiere die Werte.", "Schiebe den Regler „Blau“ auf 255 und vergleiche mit dem Knopf „Weiß“."]
+    schritte: ["Lies in der Statuszeile die Ergebnisfarbe und die drei Zahlen ab.", "Drücke unter dem Bild den Knopf „aus“. Notiere alle drei Werte.", "Drücke unter dem Bild den Knopf „Gelb“. Notiere die Werte.", "Schiebe den Regler „Blau“ auf 255. Fülle die Zeile „Weiß“ aus."]
   },
   "fo12": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4140,7 +4140,7 @@ const HEFT_SEITEN = {
     name: "Welches Licht sehen wir nicht?",
     titel: "Das Thermometer mit der schwarzen Kugel",
     frage: "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
-    schritte: ["Drücke „555 nm – Grün“ und lies die Erwärmung ab.", "Drücke „700 nm – letztes Rot“ und vergleiche die Erwärmung.", "Drücke „940 nm – Fernbedienung“ und lies beide Angaben.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „555 nm – Grün“. Lies ab: Sieht das Auge etwas? Wie groß ist die Erwärmung?", "Drücke „700 nm – letztes Rot“. Lies beide Angaben ab.", "Drücke „940 nm – Fernbedienung“. Lies beide Angaben ab.", "Trage alle drei Zeilen in die Tabelle ein."]
   },
   "fw1": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4272,10 +4272,10 @@ const HEFT_SEITEN = {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
     sim: "spannung", seite: 11,
     kapitel: "Strom in der Werkstatt",
-    name: "Was sagt die Zahl mit dem V?",
-    titel: "Die Zahl mit dem V auf der Zelle",
-    frage: "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Zellen einsetzt?",
-    schritte: ["Drücke „1 Zelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.", "Lies in der Statuszeile, wie hell die Lampe leuchtet.", "Drücke „2 Zellen (3 V)“ und trage die zweite Zeile ein.", "Drücke „3 Zellen (4,5 V)“ und trage die dritte Zeile ein."]
+    name: "Was sagt die Spannung der Energiequelle?",
+    titel: "Die Spannung an der Energiequelle",
+    frage: "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Energiequellen einsetzt?",
+    schritte: ["Drücke „1 Energiequelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.", "Lies in der Statuszeile, wie hell die Lampe leuchtet.", "Drücke „2 Energiequellen (3 V)“ und trage die zweite Zeile ein.", "Drücke „3 Energiequellen (4,5 V)“ und trage die dritte Zeile ein."]
   },
   "fs4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
