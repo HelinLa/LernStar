@@ -1048,7 +1048,7 @@ function _sosSteckbrief(ctx, W, H, p, t) {
     ['Temperatur', _sosTemp(p)],
     ['Dichte', String(p.rho).replace('.', ',') + ' g/cm³' + (p.rho < 1 ? '  ⟵ schwimmt' : '')],
     ['Monde', p.mond === 0 ? 'keiner' : String(p.mond)],
-    ['Lufthülle', p.atmo],
+    ['Atmosphäre', p.atmo],
   ];
   let y = 80;
   zeilen.forEach(([k, v], i) => {
@@ -1399,7 +1399,7 @@ function _pbnHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🪐 Warum fallen die Planeten nicht in die Sonne?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der Planet startet immer <b>neben</b> der Sonne, im gleichen Abstand wie die Erde (1 AE). Sein Anschub geht <b>quer</b> zur Sonne – der grüne Pfeil zeigt ihn. Vergrößere die Startgeschwindigkeit Schritt für Schritt und sieh zu, was aus der Bahn wird.</div>
+    <div class="fpm-note" style="margin-top:2px">Der Planet startet immer <b>neben</b> der Sonne, im gleichen Abstand wie die Erde (1 AE). Seine Startgeschwindigkeit zeigt <b>quer</b> zur Sonne – der grüne Pfeil zeigt sie. Vergrößere die Startgeschwindigkeit Schritt für Schritt und sieh zu, was aus der Bahn wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="pbnAnim" width="460" height="300" class="phys-anim-cv"></canvas>
@@ -1424,7 +1424,7 @@ function _pbnHTML() {
         <div class="fpm-label">Was wird aus der Bahn?</div>
         <div class="lmp-status" id="pbnStatus" style="margin-top:6px"></div>
         <div class="fpm-note" style="margin-top:10px">Die Sonne zieht den Planeten die <b>ganze Zeit</b> zu sich – sie hört keinen Moment damit auf. Weil er zugleich <b>seitwärts</b> unterwegs ist, fällt er immerzu <b>an ihr vorbei</b> statt auf sie. Dieses ewige Vorbeifallen ist die Umlaufbahn.</div>
-        <div class="fpm-note" style="margin-top:8px">Ist der Anschub zu klein, reicht das Vorbeifallen nicht – der Planet trifft die Sonne. Ist er sehr groß, zieht die Sonne zwar weiter an ihm, holt ihn aber nicht mehr zurück. Die Anziehung wird mit dem Abstand rasch schwächer: bei <b>doppeltem</b> Abstand nur noch <b>ein Viertel</b> so stark.</div>
+        <div class="fpm-note" style="margin-top:8px">Ist die Startgeschwindigkeit zu klein, reicht das Vorbeifallen nicht – der Planet trifft die Sonne. Ist er sehr groß, zieht die Sonne zwar weiter an ihm, holt ihn aber nicht mehr zurück. Die Anziehungskraft wird mit dem Abstand rasch schwächer: bei <b>doppeltem</b> Abstand nur noch <b>ein Viertel</b> so stark.</div>
         <div class="fpm-note" style="margin-top:8px">Sonne und Planet sind viel <b>größer gezeichnet</b>, als sie im Maßstab wären – sonst wären beide nur Pünktchen. Der Balken unten links zeigt, wie lang 1 AE gerade im Bild ist.</div>
       </div>
     </div>
@@ -1439,9 +1439,9 @@ function _pbnStatus() {
   const b = _pbn.ergebnis;
   const z = [];
   z.push('Bahnform: <b>' + b.form + '</b>');
-  z.push('Anschub quer zur Sonne: <b>' + _fpmNum(_pbn.v, 0) + ' km/s</b>');
+  z.push('Startgeschwindigkeit quer zur Sonne: <b>' + _fpmNum(_pbn.v, 0) + ' km/s</b>');
   if (b.sturz) {
-    z.push('Der Anschub ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie.');
+    z.push('Die Startgeschwindigkeit ist zu klein. Der Planet fällt an der Sonne nicht mehr vorbei – er trifft sie.');
     z.push('<b>Er kommt nicht wieder heraus.</b>');
   } else if (b.entkommt) {
     z.push('kleinster Abstand: <b>1,00 AE</b> (das ist der Start)');
@@ -1611,7 +1611,7 @@ function _pbnDraw(ctx, cv) {
 
   // ── Beschriftung: nie mehr als vier Texte gleichzeitig ───────────────
   _wrText(ctx, bx + s / 2, by - 7, '1 AE', { font: '9.5px system-ui, sans-serif', farbe: '#cbd5e1' });
-  _wrText(ctx, 10, 16, 'Anschub quer zur Sonne: ' + _fpmNum(_pbn.v, 0) + ' km/s',
+  _wrText(ctx, 10, 16, 'Startgeschwindigkeit quer zur Sonne: ' + _fpmNum(_pbn.v, 0) + ' km/s',
           { align: 'left', font: '10px system-ui, sans-serif', farbe: '#cbd5e1' });
   _wrText(ctx, W - 10, 16, 'Bahn: ' + b.form,
           { align: 'right', font: '600 11px system-ui, sans-serif',
@@ -1867,7 +1867,7 @@ function _stbHTML() {
         <div class="fpm-label" style="margin-top:10px">Deine Tabelle</div>
         <div id="stbTab" style="margin-top:4px"></div>
         <div class="fpm-note" style="margin-top:10px">Im Kern verschmelzen <b>Wasserstoffkerne zu Helium</b>. Das ist <b>Kernfusion</b> – kein Verbrennen: Es gibt dort keinen Sauerstoff, und aus einem Kilogramm Wasserstoff wird millionenfach mehr Energie frei als beim Verbrennen.</div>
-        <div class="fpm-note" style="margin-top:6px">Ein schwerer Stern hat <b>mehr</b> Brennstoff, verbraucht ihn aber <b>viel</b> schneller: doppelte Masse heißt rund <b>11-mal</b> so hohe Leuchtkraft und deshalb nur noch etwa <b>ein Sechstel</b> der Lebensdauer.</div>
+        <div class="fpm-note" style="margin-top:6px">Ein massereicher Stern hat <b>mehr</b> Brennstoff, verbraucht ihn aber <b>viel</b> schneller: doppelte Masse heißt rund <b>11-mal</b> so hohe Leuchtkraft und deshalb nur noch etwa <b>ein Sechstel</b> der Lebensdauer.</div>
       </div>
     </div>
   </div>`;
@@ -7158,7 +7158,7 @@ const _ATB_ELEMENTE = [
   { z: 4,  sym: 'Be', name: 'Beryllium',   stabil: { 5: 100 },
     instabil: { 3: '53 Tage', 6: '1,4 Millionen Jahre' } },
   { z: 5,  sym: 'B',  name: 'Bor',         stabil: { 5: 19.9, 6: 80.1 },
-    instabil: {}, notiz: 'Bor schluckt Neutronen – deshalb steckt es in den Steuerstäben eines Reaktors.' },
+    instabil: {}, notiz: 'Bor absorbiert Neutronen – deshalb steckt es in den Steuerstäben eines Reaktors.' },
   { z: 6,  sym: 'C',  name: 'Kohlenstoff', stabil: { 6: 98.93, 7: 1.07 },
     instabil: { 8: '5730 Jahre' }, notiz: 'C-14 entsteht laufend in der Luft – damit bestimmt man Alter.' },
   { z: 7,  sym: 'N',  name: 'Stickstoff',  stabil: { 7: 99.636, 8: 0.364 }, instabil: {} },
@@ -7511,14 +7511,14 @@ function _kspStatus() {
   const kohle = eKg / _KSP_SKE;
 
   const phaseTxt = ph === 0 ? 'Ein <b>langsames Neutron</b> fliegt auf den Urankern zu.'
-                 : ph === 1 ? 'Der Kern hat es geschluckt: Aus ²³⁵U ist kurz <b>²³⁶U</b> geworden. Er zittert und wird länglich.'
+                 : ph === 1 ? 'Der Kern hat es eingefangen: Aus ²³⁵U ist kurz <b>²³⁶U</b> geworden. Er zittert und wird länglich.'
                  : 'Der Kern ist <b>gespalten</b>. Die Bruchstücke stoßen sich ab und fliegen auseinander, dazu kommen freie Neutronen.';
 
   let t = `${phaseTxt}<br><br>`;
   t += `<b>${links} → ${rechts}</b><br><br>`;
   t += `Kernbausteine: links ${1} + ${235} = <b>${aL}</b>, rechts ${w.a1} + ${w.a2} + ${w.frei} = <b>${aR}</b>. Geht auf.<br>`;
   t += `Protonen: links ${0} + ${92} = <b>${zL}</b>, rechts ${w.z1} + ${w.z2} = <b>${zR}</b>. Geht auch auf.<br><br>`;
-  t += `Und trotzdem fehlt etwas: Die Bruchstücke wiegen zusammen <b>${_fpmNum(w.dm, 4)} u</b> weniger als vorher. Genau dieser <b>Massenunterschied</b> wird zu Energie:<br>`;
+  t += `Und trotzdem fehlt etwas: Die Bruchstücke haben zusammen <b>${_fpmNum(w.dm, 4)} u</b> weniger Masse als vorher. Genau dieser <b>Massenunterschied</b> wird zu Energie:<br>`;
   t += `E = ${_fpmNum(w.dm, 4)} u · 931,5 MeV/u = <b>${_fpmNum(mev, 1)} MeV</b> je Spaltung.<br><br>`;
   t += `Das sind ${_fpmNum(mev, 1)} MeV · 1,602 · 10⁻¹³ J/MeV = <b>${_fpmNum(joule * 1e11, 2)} · 10⁻¹¹ J</b> – winzig. Aber in <b>1 kg</b> Uran-235 stecken 2,56 · 10²⁴ Kerne. Alle zusammen ergeben <b>${_fpmNum(eKg / 1e12, 0)} Billionen Joule</b>.<br>`;
   t += `Dieselbe Energie liefern etwa <b>${_fpmNum(kohle / 1000, 0)} Tonnen Steinkohle</b> – ein ganzer Güterzug voll, gegen einen Uranwürfel von knapp 4 cm Kantenlänge.`;
@@ -7575,7 +7575,7 @@ function _kspDraw(ctx, cv) {
 
   ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 13px system-ui';
-  ctx.fillText(['1 · Ein Neutron fliegt an', '2 · Der Kern schluckt es und wird länglich',
+  ctx.fillText(['1 · Ein Neutron fliegt an', '2 · Der Kern fängt es ein und wird länglich',
                 '3 · Er reißt auseinander'][ph], 12, 24);
   ctx.font = '11px system-ui'; ctx.fillStyle = '#475569';
   ctx.fillText(_kspSchrift(1, 0, 'n') + ' + ' + _kspSchrift(235, 92, 'U') + '  →  ' +
@@ -7616,7 +7616,7 @@ function _kspArbeitsblattHTML() {
         ${ta('a6', 'Die Summen A und Z sind vorher und nachher … . Trotzdem wird Energie frei, weil … . Bei allen drei Wegen entstehen … freie Neutronen – das ist wichtig, weil …', 4)}</div>
 
       <div class="ab-sec"><div class="ab-h">6 · Merksatz</div>
-        <div class="ab-t">Bei der Kernspaltung wiegen die Bruchstücke zusammen ${inp('m1', 'mehr oder weniger?')} als der Ausgangskern. Der fehlende Teil wird zu ${inp('m2', 'was?')}.</div></div>`;
+        <div class="ab-t">Bei der Kernspaltung haben die Bruchstücke zusammen ${inp('m1', 'mehr oder weniger?')} Masse als der Ausgangskern. Der fehlende Teil wird zu ${inp('m2', 'was?')}.</div></div>`;
   return _abWrap('kernspaltung', 'Kernspaltung – woher die Energie kommt', body);
 }
 
@@ -7625,7 +7625,7 @@ function _kspHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim ksp-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">⚛️ Wie holt man riesige Energie aus einem winzigen Kern?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ein <b>langsames</b> Neutron genügt. Der Urankern schluckt es, wird länglich und reißt auseinander. Achte auf die beiden Summen – und darauf, was <b>trotzdem</b> fehlt.</div>
+    <div class="fpm-note" style="margin-top:2px">Ein <b>langsames</b> Neutron genügt. Der Urankern fängt es ein, wird länglich und reißt auseinander. Achte auf die beiden Summen – und darauf, was <b>trotzdem</b> fehlt.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="kspAnim" width="440" height="330" class="phys-anim-cv"></canvas>
@@ -7870,7 +7870,7 @@ function _ketHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim ket-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🎛️ Wie verhindert man, dass eine Kettenreaktion außer Kontrolle gerät?</h3>
-    <div class="fpm-note" style="margin-top:2px">Jede Spaltung setzt zwei bis drei Neutronen frei. Die meisten fliegen davon oder werden geschluckt – nur ein Teil trifft einen neuen Kern. Wie groß dieser Teil ist, bestimmen die <b>Steuerstäbe</b>. Die Zahl dazu heißt <b>k</b>: Sie sagt, wie viele neue Spaltungen aus <b>einer</b> Spaltung folgen.</div>
+    <div class="fpm-note" style="margin-top:2px">Jede Spaltung setzt zwei bis drei Neutronen frei. Die meisten fliegen davon oder werden absorbiert – nur ein Teil trifft einen neuen Kern. Wie groß dieser Teil ist, bestimmen die <b>Steuerstäbe</b>. Die Zahl dazu heißt <b>k</b>: Sie sagt, wie viele neue Spaltungen aus <b>einer</b> Spaltung folgen.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="ketAnim" width="440" height="330" class="phys-anim-cv"></canvas>
@@ -8691,8 +8691,8 @@ function _fusStatus() {
 
   t += `<b>4 ¹₁H → ⁴₂He</b><br><br>`;
   // sechs Nachkommastellen - damit geht 4 · 1,007825 = 4,031300 wirklich auf
-  t += `Vier Wasserstoffkerne wiegen 4 · ${_fpmNum(_FUS_H, 6)} u = <b>${_fpmNum(4 * _FUS_H, 6)} u</b>.<br>`;
-  t += `Ein Heliumkern wiegt nur <b>${_fpmNum(_FUS_HE, 6)} u</b>.<br>`;
+  t += `Vier Wasserstoffkerne haben die Masse 4 · ${_fpmNum(_FUS_H, 6)} u = <b>${_fpmNum(4 * _FUS_H, 6)} u</b>.<br>`;
+  t += `Ein Heliumkern hat nur die Masse <b>${_fpmNum(_FUS_HE, 6)} u</b>.<br>`;
   t += `Es fehlen ${_fpmNum(4 * _FUS_H, 6)} u − ${_fpmNum(_FUS_HE, 6)} u = <b>${_fpmNum(_FUS_DM, 6)} u</b>.<br>`;
   t += `Daraus wird Energie: ${_fpmNum(_FUS_DM, 6)} u · 931,5 MeV/u = <b>${_fpmNum(_FUS_MEV, 2)} MeV</b>.<br><br>`;
 
@@ -8794,7 +8794,7 @@ function _fusArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Auswertung</div>
-        ${ta('a6', 'Unterhalb von … Millionen Grad passiert nichts, weil die Kerne … . Vier Wasserstoffkerne wiegen zusammen … als ein Heliumkern; die fehlende Masse wird zu … . Je Kernbaustein liefert die Fusion das …-fache der Spaltung.', 5)}</div>
+        ${ta('a6', 'Unterhalb von … Millionen Grad passiert nichts, weil die Kerne … . Vier Wasserstoffkerne haben zusammen … Masse als ein Heliumkern; die fehlende Masse wird zu … . Je Kernbaustein liefert die Fusion das …-fache der Spaltung.', 5)}</div>
 
       <div class="ab-sec"><div class="ab-h">6 · Merksatz</div>
         <div class="ab-t">Bei der <b>Fusion</b> werden leichte Kerne ${inp('m1', 'was gemacht?')}. Damit das gelingt, braucht man ${inp('m2', 'was?')}, weil sich die Kerne gegenseitig abstoßen.</div></div>`;
@@ -8917,8 +8917,8 @@ function _indStatus() {
   t += `U = N · B · A · v / d<br>`;
   t += `U = ${_ind.n} · ${_fpmNum(m.b, 2)} T · 0,0004 m² · ${_fpmNum(vMs, 2)} m/s / 0,02 m<br>`;
   t += `U = <b>${_fpmNum(U, 3)} V</b><br><br>`;
-  t += `<b>${_ind.n}</b> Windungen &nbsp;·&nbsp; Magnet <b>${m.name}</b> (${_fpmNum(m.b, 2)} T) &nbsp;·&nbsp; Tempo <b>${_ind.v} cm/s</b><br><br>`;
-  t += `Alle drei gehen <b>einfach</b> ein: doppelt so viele Windungen – doppelte Spannung. Doppeltes Tempo – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung.`;
+  t += `<b>${_ind.n}</b> Windungen &nbsp;·&nbsp; Magnet <b>${m.name}</b> (${_fpmNum(m.b, 2)} T) &nbsp;·&nbsp; Geschwindigkeit <b>${_ind.v} cm/s</b><br><br>`;
+  t += `Alle drei gehen <b>einfach</b> ein: doppelt so viele Windungen – doppelte Spannung. Doppelte Geschwindigkeit – doppelte Spannung. Doppelt so starker Magnet – doppelte Spannung.`;
   el.innerHTML = t;
 }
 
@@ -9012,7 +9012,7 @@ function _indDraw(ctx, cv) {
   ctx.fillText(jetzt === 0 ? 'Spannung: 0,000 V – der Magnet bewegt sich nicht'
                            : 'Spannung: ' + _fpmNum(jetzt, 3) + ' V', 14, 300);
   ctx.font = '11px system-ui'; ctx.fillStyle = '#475569';
-  ctx.fillText('Tempo ' + _ind.v + ' cm/s   ·   ' + _ind.n + ' Windungen   ·   Magnet ' +
+  ctx.fillText('Geschwindigkeit ' + _ind.v + ' cm/s   ·   ' + _ind.n + ' Windungen   ·   Magnet ' +
                _indMag().name + ' (' + _fpmNum(_indMag().b, 2) + ' T)', 14, 316);
 }
 
@@ -9029,7 +9029,7 @@ function _indArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
           <li>Beobachte einen ganzen Durchgang. Achte besonders auf die beiden Ruhephasen.</li>
-          <li>Verdopple <b>nur</b> das Tempo von 25 auf 50 cm/s.</li>
+          <li>Verdopple <b>nur</b> die Geschwindigkeit von 25 auf 50 cm/s.</li>
           <li>Verdopple <b>nur</b> die Windungszahl von 300 auf 600.</li>
           <li>Wechsle <b>nur</b> von „mittel“ auf „stark“.</li>
         </ol></div>
@@ -9037,14 +9037,14 @@ function _indArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
         <table class="ab-table"><tbody>
           <tr><td>Magnet liegt still</td><td colspan="3">Spannung: ${inp('a0','')}</td></tr>
-          <tr><td>Änderung</td><td>Tempo verdoppelt</td><td>Windungen verdoppelt</td><td>Magnet stärker</td></tr>
+          <tr><td>Änderung</td><td>Geschwindigkeit verdoppelt</td><td>Windungen verdoppelt</td><td>Magnet stärker</td></tr>
           <tr><td>vorher in V</td><td>${inp('a1','')}</td><td>${inp('a2','')}</td><td>${inp('a3','')}</td></tr>
           <tr><td>nachher in V</td><td>${inp('b1','')}</td><td>${inp('b2','')}</td><td>${inp('b3','')}</td></tr>
           <tr><td>wie viel mal?</td><td>${inp('c1','')}</td><td>${inp('c2','')}</td><td>${inp('c3','')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Auswertung</div>
-        ${ta('a6', 'Solange der Magnet still liegt, zeigt das Gerät … – obwohl der Magnet da ist. Das heißt: Nicht der Magnet erzeugt die Spannung, sondern … . Verdoppelt man Tempo, Windungszahl oder Magnetstärke, so … .', 4)}</div>
+        ${ta('a6', 'Solange der Magnet still liegt, zeigt das Gerät … – obwohl der Magnet da ist. Das heißt: Nicht der Magnet erzeugt die Spannung, sondern … . Verdoppelt man Geschwindigkeit, Windungszahl oder Magnetstärke, so … .', 4)}</div>
 
       <div class="ab-sec"><div class="ab-h">6 · Merksatz</div>
         <div class="ab-t">Eine Spannung entsteht nur, wenn sich das Magnetfeld in der Spule ${inp('m1', 'was tut?')}. Beim Hineinschieben und Herausziehen ist das Vorzeichen ${inp('m2', 'wie?')}.</div></div>`;
@@ -9061,7 +9061,7 @@ function _indHTML() {
       <div>
         <canvas id="indAnim" width="440" height="330" class="phys-anim-cv"></canvas>
         <div style="margin-top:6px">
-          <label class="fpm-label" for="indV">Tempo des Magneten: <b id="indWertV">50</b> cm/s</label>
+          <label class="fpm-label" for="indV">Geschwindigkeit des Magneten: <b id="indWertV">50</b> cm/s</label>
           <input type="range" id="indV" min="5" max="100" value="50" step="5" oninput="_indSet('v', this.value)" style="width:100%">
           <label class="fpm-label" for="indN">Windungen der Spule: <b id="indWertN">600</b></label>
           <input type="range" id="indN" min="100" max="1200" value="600" step="100" oninput="_indSet('n', this.value)" style="width:100%">
@@ -9079,7 +9079,7 @@ function _indHTML() {
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      Nur die <b>Änderung</b> erzeugt Spannung · mehr Windungen, mehr Tempo, stärkerer Magnet – jedes für sich verdoppelt
+      Nur die <b>Änderung</b> erzeugt Spannung · mehr Windungen, höhere Geschwindigkeit, stärkerer Magnet – jedes für sich verdoppelt
     </p>
     ${_indArbeitsblattHTML()}
   </div>`;
@@ -9362,7 +9362,7 @@ function _lkrStatus() {
   t += `F = ${_fpmNum(_lkr.b, 2)} T · ${_fpmNum(_lkr.i, 1)} A · ${_fpmNum(_LKR_L, 2)} m = <b>${_fpmNum(F, 3)} N</b><br>`;
   if (F > 0) {
     const kl = F / _LKR_KLAMMER;
-    t += `Das sind ${_fpmNum(F, 3)} N / 0,01 N = <b>${_fpmNum(kl, kl < 10 ? 1 : 0)} Büroklammern</b> – so schwer wäre etwas, das der Stab gerade anheben könnte. (Eine Büroklammer wiegt rund 1 g, ihre Gewichtskraft ist etwa 0,01 N.)<br>`;
+    t += `Das sind ${_fpmNum(F, 3)} N / 0,01 N = <b>${_fpmNum(kl, kl < 10 ? 1 : 0)} Büroklammern</b> – so schwer wäre etwas, das der Stab gerade anheben könnte. (Eine Büroklammer hat eine Masse von rund 1 g, ihre Gewichtskraft ist etwa 0,01 N.)<br>`;
   }
   t += `<br><b>Wohin zeigt sie?</b><br>`;
   t += `Nordpol ${nord} &nbsp;·&nbsp; Strom fließt ${stromRi} &nbsp;→&nbsp; Kraft nach <b>${r > 0 ? 'oben' : 'unten'}</b>.<br><br>`;
@@ -15997,7 +15997,7 @@ function _fsrHTML() {
               Genau diese Schraubenbahn beschreiben geladene Teilchen des Sonnenwindes im Erdmagnetfeld.
               Sie werden im <b>van-Allen-Strahlungsgürtel</b> gefangen und laufen dabei längs der Feldlinien
               zu den Polen. Dort rücken die Feldlinien enger zusammen, das Feld wird stärker – die Teilchen
-              werden abgebremst und schließlich zurückgeworfen. Dieses Prinzip heißt
+              werden abgebremst und schließlich reflektiert. Dieses Prinzip heißt
               <b>magnetische Flasche</b>. Wo die Teilchen tief genug in die Atmosphäre eindringen, regen
               sie Luftmoleküle zum Leuchten an: Das ist das <b>Polarlicht</b> – dasselbe Leuchten durch
               Stoßanregung, das im Fadenstrahlrohr die Bahn sichtbar macht.
@@ -16016,7 +16016,7 @@ function _fsrHTML() {
 }
 
 function _fsrErklHTML() {
-  return `<div class="dsp-erkl-kopf">Warum man ein Elektron nicht wiegen kann</div>
+  return `<div class="dsp-erkl-kopf">Warum keine Waage die Elektronenmasse bestimmt</div>
     <div class="dsp-erkl-text">
       Der Millikanversuch hat die <b>Ladung</b> des Elektrons geliefert. Die zweite Eigenschaft, seine
       <b>Masse</b>, lässt sich auf keiner Waage bestimmen. Man kommt aber indirekt heran: Zwingt man
@@ -33846,7 +33846,7 @@ function _flmErklHTML() {
     <div class="dsp-erkl-kopf" style="margin-top:8px">Emission und Absorption sind dasselbe</div>
     <div class="dsp-erkl-text">
       Ein Atom sendet in der Flamme genau die Wellenlängen <b>aus</b>, die es im Sternspektrum
-      <b>verschluckt</b> (Schlüsselexperiment 17). Die gelbe Natriumlinie bei 589 nm ist im Labor
+      <b>absorbiert</b> (Schlüsselexperiment 17). Die gelbe Natriumlinie bei 589 nm ist im Labor
       eine helle Emissionslinie und im Sonnenspektrum eine dunkle Fraunhoferlinie – es ist
       derselbe Übergang, nur einmal von unten und einmal von oben betrachtet. Deshalb passen die
       im Labor gemessenen Muster exakt auf die Linien in Sternspektren, und man kann die
@@ -33921,7 +33921,7 @@ function _flmUpdate() {
       lage.className = 'flm-lage warn';
       lage.innerHTML = '<b>Kalium – aber das Natrium stört.</b> Schon Spuren von Natrium erzeugen '
         + 'ein kräftiges Gelb, das das schwache Violett des Kaliums überstrahlt. Setze das '
-        + '<b>Kobaltglas</b> ein: Es schluckt das Gelb und lässt das Kaliumlicht durch.';
+        + '<b>Kobaltglas</b> ein: Es absorbiert das Gelb und lässt das Kaliumlicht durch.';
     } else if (e.id === 'k' && kob) {
       lage.className = 'flm-lage ok';
       lage.innerHTML = '<b>Durch das Kobaltglas</b> ist das störende Natriumgelb verschwunden – '
@@ -38087,7 +38087,7 @@ function _mmErklHTML() {
     <div class="dsp-erkl-kopf" style="margin-top:8px">Der Aufbau</div>
     <div class="dsp-erkl-text">
       Ein <b>Strahlteiler</b> – eine halbdurchlässige Glasplatte – zerlegt einen Lichtstrahl in
-      zwei, die in <b>zwei zueinander senkrechte Arme</b> laufen, dort an Spiegeln zurückgeworfen
+      zwei, die in <b>zwei zueinander senkrechte Arme</b> laufen, dort an Spiegeln reflektiert
       werden und wieder zusammentreffen. Wo sie sich überlagern, entsteht ein
       <b>Interferenzmuster</b> aus hellen und dunklen Streifen. Ein Streifenabstand entspricht
       genau <b>einer Wellenlänge</b> Wegunterschied. Beim Experiment von 1887 schwamm der Aufbau
@@ -38176,7 +38176,7 @@ function _mmUpdate() {
         einen Strahl auf den Strahlteiler.</div>
       <div class="mm-erkl-z"><span>②</span>Der <b>Strahlteiler</b> lässt die Hälfte durch und
         reflektiert die Hälfte – zwei Strahlen laufen in <b>senkrechte Arme</b>.</div>
-      <div class="mm-erkl-z"><span>③</span>An den <b>Spiegeln</b> werden beide zurückgeworfen und
+      <div class="mm-erkl-z"><span>③</span>An den <b>Spiegeln</b> werden beide reflektiert und
         treffen am Strahlteiler wieder zusammen.</div>
       <div class="mm-erkl-z"><span>④</span>In der <b>Messoptik</b> überlagern sie sich zum
         <b>Interferenzmuster</b>. Ein Streifen = eine Wellenlänge Wegunterschied.</div>
@@ -42073,7 +42073,7 @@ function _glfSetV(v) {
   if (!_glf) return;
   _glf.v = +v;
   _glf.t = 0; _glf.s = 0; _glf.letzte = null; _glf.fahrt++;
-  _glf.meldung = 'Neues Tempo – Uhr und Weg stehen wieder auf null.';
+  _glf.meldung = 'Neue Geschwindigkeit – Uhr und Weg stehen wieder auf null.';
   _glf.flash = 0.9;
   const el = document.getElementById('glfVLbl'); if (el) el.textContent = _fpmNum(+v, 1) + ' m/s';
   _mlabRefreshTheorie(_glf);
@@ -44215,7 +44215,7 @@ function _elmArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Skizze</div>
-        <div class="ab-t">Zeichne die Spule mit Eisenkern und Batterie. Zeichne die hängenden Büroklammern.</div>
+        <div class="ab-t">Zeichne die Spule mit Eisenkern und Energiequelle. Zeichne die hängenden Büroklammern.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">7 · Auswertung</div>
@@ -45215,7 +45215,7 @@ function _lmpDraw(ctx, cv) {
   ctx.lineWidth = 6;
   ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();     // kurzer Strich −
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('Batterie', cx, B + 26);
+  ctx.fillText('Energiequelle', cx, B + 26);
   _elPole(ctx, cx, B, 8);
   // Schalter (rechts)
   ctx.fillStyle = '#f8fafc'; ctx.fillRect(R - 10, cy - 22, 20, 44);
@@ -45281,7 +45281,7 @@ function _lmpArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne den Stromkreis mit Batterie, Kabel, Schalter und Lampe.</div>
+        <div class="ab-t">Zeichne den Stromkreis mit Energiequelle, Kabel, Schalter und Lampe.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -45339,8 +45339,8 @@ const _LMP_MINI = [
          'Richtig! Offener Schalter → kein Strom → Lampe aus.',
          'Sie blinkt nicht – sie bleibt einfach aus.'] },
   { q: '3. Was gehört mindestens zu einem Stromkreis?',
-    opts: ['Nur eine Batterie', 'Batterie, Leiter und Verbraucher (geschlossen)', 'Nur ein Kabel'], correct: 1,
-    fb: ['Eine Batterie allein reicht nicht.',
+    opts: ['Nur eine Energiequelle', 'Energiequelle, Leiter und Verbraucher (geschlossen)', 'Nur ein Kabel'], correct: 1,
+    fb: ['Eine Energiequelle allein reicht nicht.',
          'Richtig! Energiequelle, Leiter und Verbraucher – geschlossen verbunden.',
          'Ein Kabel allein ist noch kein Stromkreis.'] }
 ];
@@ -45470,7 +45470,7 @@ function _leiDraw(ctx, cv) {
   // Batterie unten
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Energiequelle', cx, B + 26);
   _elPole(ctx, cx, B, 8);
   if (on) { _elektronen(ctx, _elRing(L, R, T, B, cx, 8), _lei.t); _elLegende(ctx, L, H - 8); }
   // Lücke mit Klemmen (oben)
@@ -45637,7 +45637,7 @@ function _splHTML() {
       <div>
         <div class="fpm-label">Der Zettel aus der Kiste – schlag hier erst nach, wenn du beim Zuordnen nicht weiterkommst</div>
         <table class="sim-table spl-leg"><tbody>
-          <tr><td>Batterie / Stromquelle</td><td class="spl-sym">⎓ ⊣⊢</td></tr>
+          <tr><td>Energiequelle</td><td class="spl-sym">⎓ ⊣⊢</td></tr>
           <tr><td>Lampe</td><td class="spl-sym">⊗</td></tr>
           <tr><td>Schalter</td><td class="spl-sym">╱</td></tr>
           <tr><td>Leitung (Kabel)</td><td class="spl-sym">─────</td></tr>
@@ -45664,13 +45664,13 @@ function _splToggleSw() { _spl.closed = !_spl.closed; document.getElementById('s
 // ── Zuordnungsspiel ────────────────────────────────────
 const _SPL_ZUO = [
   { q: 'Die LAMPE zeichnet man als …', opts: ['Kreis mit Kreuz ⊗', 'langer + kurzer Strich', 'Linie mit Knick'], correct: 0,
-    fb: ['Richtig! Die Lampe ist ein Kreis mit einem Kreuz.', 'Das ist die Batterie.', 'Das ist der Schalter.'] },
-  { q: 'Die BATTERIE zeichnet man als …', opts: ['Kreis mit Kreuz', 'langer + kurzer Strich ⊣⊢', 'gerade Linie'], correct: 1,
-    fb: ['Das ist die Lampe.', 'Richtig! Ein langer und ein kurzer Strich sind die Batterie.', 'Das ist eine Leitung.'] },
+    fb: ['Richtig! Die Lampe ist ein Kreis mit einem Kreuz.', 'Das ist die Energiequelle.', 'Das ist der Schalter.'] },
+  { q: 'Die ENERGIEQUELLE zeichnet man als …', opts: ['Kreis mit Kreuz', 'langer + kurzer Strich ⊣⊢', 'gerade Linie'], correct: 1,
+    fb: ['Das ist die Lampe.', 'Richtig! Ein langer und ein kurzer Strich sind die Energiequelle.', 'Das ist eine Leitung.'] },
   { q: 'Der SCHALTER zeichnet man als …', opts: ['gerade Linie', 'Kreis mit Kreuz', 'Linie, die aufklappt ╱'], correct: 2,
     fb: ['Das ist eine einfache Leitung.', 'Das ist die Lampe.', 'Richtig! Der Schalter ist eine Linie, die sich öffnen lässt.'] },
   { q: 'Ein KABEL (Leitung) zeichnet man als …', opts: ['gerade Linie ─', 'Kreis mit Kreuz', 'langer + kurzer Strich'], correct: 0,
-    fb: ['Richtig! Eine Leitung ist einfach eine gerade Linie.', 'Das ist die Lampe.', 'Das ist die Batterie.'] }
+    fb: ['Richtig! Eine Leitung ist einfach eine gerade Linie.', 'Das ist die Lampe.', 'Das ist die Energiequelle.'] }
 ];
 function _splZuoHTML() {
   return _SPL_ZUO.map((m, qi) =>
@@ -45706,7 +45706,7 @@ function _splDraw(ctx, cv) {
     ctx.fillStyle = '#facc15'; ctx.fillRect(cx + 24, B - 4, 4, 8);
     ctx.fillStyle = '#fff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('+  −', cx, B + 4);
   }
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 28);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Energiequelle', cx, B + 28);
   if (_spl.view === 'plan') _elPole(ctx, cx, B, 7);
   if (on) { _elektronen(ctx, _elRing(L, R, T, B, cx, 7), _spl.t); _elLegende(ctx, L, H - 6); }
 
@@ -45758,12 +45758,12 @@ function _splArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">4 · Schaltzeichen eintragen</div>
         <table class="ab-table"><tbody>
-          <tr><td>Batterie</td><td>${inp('z_bat', 'Zeichen?')}</td><td>Lampe</td><td>${inp('z_lam', 'Zeichen?')}</td></tr>
+          <tr><td>Energiequelle</td><td>${inp('z_bat', 'Zeichen?')}</td><td>Lampe</td><td>${inp('z_lam', 'Zeichen?')}</td></tr>
           <tr><td>Schalter</td><td>${inp('z_sch', 'Zeichen?')}</td><td>Leitung</td><td>${inp('z_lei', 'Zeichen?')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze – zeichne den Schaltplan</div>
-        <div class="ab-t">Zeichne den kompletten Stromkreis als Schaltplan: Batterie, Leitung, Schalter und Lampe – schön mit dem Lineal.</div>
+        <div class="ab-t">Zeichne den kompletten Stromkreis als Schaltplan: Energiequelle, Leitung, Schalter und Lampe – schön mit dem Lineal.</div>
         <div class="ab-skizze">Platz für deinen Schaltplan</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -45774,7 +45774,7 @@ function _splArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
         <div class="ab-t">Ein <b>Schaltplan</b> zeigt jedes Bauteil als einfaches ${inp('m1', 'was?')}.<br>
-        Die Lampe wird als ${inp('m2', 'Zeichen?')} gezeichnet, die Batterie als ${inp('m3', 'Zeichen?')}.</div></div>
+        Die Lampe wird als ${inp('m2', 'Zeichen?')} gezeichnet, die Energiequelle als ${inp('m3', 'Zeichen?')}.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
         <div class="ab-t">Warum ist es praktisch, dass Schaltpläne auf der ganzen Welt die gleichen Zeichen benutzen?</div>
@@ -45796,11 +45796,11 @@ function _splArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Ansichten zeigen denselben Kreis; beim Öffnen des Schalters geht in beiden die Lampe aus. Zuordnung: Lampe ⊗, Batterie ⊣⊢ (langer/kurzer Strich), Schalter aufklappende Linie, Leitung gerade Linie.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Genormte Schaltzeichen (Batterie/Stromquelle, Lampe, Schalter, Leitung) machen Schaltpläne eindeutig und international lesbar. Der Schaltplan ist ein Modell des realen Aufbaus.</div>
-        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Schaltplan muss wie ein Foto aussehen." (2) Batterie- und Lampenzeichen werden verwechselt. (3) „Leitungen darf man kreuz und quer zeichnen" – besser rechtwinklig/ordentlich.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Ansichten zeigen denselben Kreis; beim Öffnen des Schalters geht in beiden die Lampe aus. Zuordnung: Lampe ⊗, Energiequelle ⊣⊢ (langer/kurzer Strich), Schalter aufklappende Linie, Leitung gerade Linie.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Genormte Schaltzeichen (Energiequelle, Lampe, Schalter, Leitung) machen Schaltpläne eindeutig und international lesbar. Der Schaltplan ist ein Modell des realen Aufbaus.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Schaltplan muss wie ein Foto aussehen." (2) Die Zeichen für Energiequelle und Lampe werden verwechselt. (3) „Leitungen darf man kreuz und quer zeichnen" – besser rechtwinklig/ordentlich.</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Aufbau und Schaltplan direkt nebeneinander betrachten; Legende nutzen; mit Lineal zeichnen lassen; Bauteil für Bauteil zuordnen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Batterie ⊣⊢ · Lampe ⊗ · Schalter aufklappende Linie · Leitung gerade Linie. 6.1 „weil sie überall gleich und einfach sind" · 6.2 „ja". Merksatz: Schaltzeichen · ⊗ · ⊣⊢. Transfer: Jeder kann den Plan lesen und nachbauen, egal welche Sprache. Minidiagnose: 1→⊗ Lampe · 2→„beide gleich" · 3→„damit jeder ihn versteht/nachbauen kann".</div>
+        <div class="ab-t"><b>Musterlösung.</b> Energiequelle ⊣⊢ · Lampe ⊗ · Schalter aufklappende Linie · Leitung gerade Linie. 6.1 „weil sie überall gleich und einfach sind" · 6.2 „ja". Merksatz: Schaltzeichen · ⊗ · ⊣⊢. Transfer: Jeder kann den Plan lesen und nachbauen, egal welche Sprache. Minidiagnose: 1→⊗ Lampe · 2→„beide gleich" · 3→„damit jeder ihn versteht/nachbauen kann".</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -45811,8 +45811,8 @@ function _splArbeitsblattHTML() {
 
 const _SPL_MINI = [
   { q: '1. Ein Kreis mit einem Kreuz (⊗) – welches Bauteil ist das?',
-    opts: ['Die Lampe', 'Die Batterie', 'Der Schalter'], correct: 0,
-    fb: ['Richtig! ⊗ ist das Schaltzeichen der Lampe.', 'Die Batterie ist ein langer + kurzer Strich.', 'Der Schalter ist eine aufklappende Linie.'] },
+    opts: ['Die Lampe', 'Die Energiequelle', 'Der Schalter'], correct: 0,
+    fb: ['Richtig! ⊗ ist das Schaltzeichen der Lampe.', 'Die Energiequelle ist ein langer + kurzer Strich.', 'Der Schalter ist eine aufklappende Linie.'] },
   { q: '2. Du schaltest von „Aufbau" auf „Schaltplan" um. Was ist gleich?',
     opts: ['Es ist ein ganz anderer Stromkreis', 'Es ist derselbe Kreis, nur anders gezeichnet', 'Die Lampe fehlt im Schaltplan'], correct: 1,
     fb: ['Nein, es ist derselbe Stromkreis.', 'Richtig! Gleicher Kreis, zwei Darstellungen.', 'Die Lampe ist in beiden Ansichten da.'] },
@@ -45924,7 +45924,7 @@ function _reiDraw(ctx, cv) {
   // Batterie unten
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx - 8, B - 14); ctx.lineTo(cx - 8, B + 14); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', cx, B + 26);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Energiequelle', cx, B + 26);
   _elPole(ctx, cx, B, 8);
   // Lampen in Reihe – enge Gruppe mittig auf dem oberen Draht; der Clamp haelt
   // auch bei mehr Lampen mindestens 60 px Abstand zu beiden Ecken frei.
@@ -46173,7 +46173,7 @@ function _parDraw(ctx, cv) {
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(L - 9, cyB + 8); ctx.lineTo(L + 9, cyB + 8); ctx.stroke();
   ctx.fillStyle = '#334155'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText('+', L + 22, cyB - 3); ctx.fillText('\u2212', L + 22, cyB + 20);
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', L, yB + 18);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Energiequelle', L, yB + 18);
 
   [[x1, _par.sw1, 'Lampe 1'], [x2, _par.sw2, 'Lampe 2']].forEach(([x, on, lbl]) => {
     _parSwitch(ctx, x, ySw, on);
@@ -46218,7 +46218,7 @@ function _parArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne zwei Lampen parallel (auf zwei getrennten Wegen) mit der Batterie.</div>
+        <div class="ab-t">Zeichne zwei Lampen parallel (auf zwei getrennten Wegen) mit der Energiequelle.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -46383,7 +46383,7 @@ function _wirDraw(ctx, cv) {
   // Batterie links + Zuleitungen
   ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(40, cy - 12); ctx.lineTo(40, cy + 12); ctx.stroke();
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(52, cy - 7); ctx.lineTo(52, cy + 7); ctx.stroke();
-  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Batterie', 46, cy + 28);
+  ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Energiequelle', 46, cy + 28);
   ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 3; ctx.setLineDash([8, 8]); ctx.lineDashOffset = -(_wir.t * (40 + I * 20)) % 16;
   ctx.beginPath(); ctx.moveTo(52, cy); ctx.lineTo(cx - 40, cy); ctx.stroke();
   ctx.setLineDash([]); ctx.lineDashOffset = 0;
@@ -46573,7 +46573,7 @@ function _sehHTML() {
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      Wir sehen einen Gegenstand nur, wenn <b>Licht von ihm ins Auge</b> gelangt. &nbsp;|&nbsp; Der Mond leuchtet nicht selbst – er wirft Sonnenlicht zurück.
+      Wir sehen einen Gegenstand nur, wenn <b>Licht von ihm ins Auge</b> gelangt. &nbsp;|&nbsp; Der Mond leuchtet nicht selbst – er reflektiert Sonnenlicht.
     </p>
     ${_sehArbeitsblattHTML()}
   </div>`;
@@ -46707,7 +46707,7 @@ function _sehArbeitsblattHTML() {
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> Leuchtende Körper (Lampe, Kerze, Sonne) sieht man auch im Dunkeln. Beleuchtete Körper (Buch, Apfel, Mond) verschwinden, sobald das Licht aus ist.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Sehen = Sender–Gegenstand–Empfänger: Licht geht von einer Quelle zum Gegenstand, wird zurückgeworfen und gelangt ins Auge. Nur so entsteht ein Seheindruck. Der Mond ist ein beleuchteter Körper.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Sehen = Sender–Gegenstand–Empfänger: Licht geht von einer Quelle zum Gegenstand, wird reflektiert und gelangt ins Auge. Nur so entsteht ein Seheindruck. Der Mond ist ein beleuchteter Körper.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Auge sendet Sehstrahlen aus." (2) „Man sieht Gegenstände auch ohne Licht." (3) „Der Mond leuchtet selbst."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Pfeilrichtung Quelle→Gegenstand→Auge betonen; leuchtende vs. beleuchtete Körper sortieren lassen; völlige Dunkelheit als Gegenprobe.</div>
         <div class="ab-t"><b>Musterlösung.</b> Tabelle: leuchtend ja/ja; beleuchtet nein/nein. 6.1 „Licht" · 6.2 „nein, vom Sonnenlicht" · 6.3 „kein Licht gelangt ins Auge". Merksatz: Licht · Auge · fremdes. Transfer: Der Reflektor wirft das Autoscheinwerferlicht zurück ins Auge des Fahrers. Minidiagnose: 1→„Licht ins Auge" · 2→„nein, reflektiert" · 3→„es fehlt Licht".</div>
@@ -46726,7 +46726,7 @@ const _SEH_MINI = [
          'Richtig! Sehen heißt: Licht vom Gegenstand kommt ins Auge.',
          'Anfassen ist nicht nötig – Licht genügt.'] },
   { q: '2. Leuchtet der Mond selbst?',
-    opts: ['Ja', 'Nein, er wirft Sonnenlicht zurück', 'Nur bei Vollmond'], correct: 1,
+    opts: ['Ja', 'Nein, er reflektiert Sonnenlicht', 'Nur bei Vollmond'], correct: 1,
     fb: ['Der Mond ist keine eigene Lichtquelle.',
          'Richtig! Der Mond ist ein beleuchteter Körper – er reflektiert Sonnenlicht.',
          'Auch bei Vollmond reflektiert er nur.'] },
@@ -47968,7 +47968,7 @@ function _wauArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Alle drei Stoffe dehnen sich beim Erwärmen aus; die Teilchen bewegen sich schneller (größere Zappelbewegung) und rücken auseinander. Reihenfolge der Ausdehnung: Gas ≫ Flüssigkeit > Festkörper.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Alle drei Stoffe dehnen sich beim Erwärmen aus; die Teilchen bewegen sich schneller (stärkere thermische Bewegung) und rücken auseinander. Reihenfolge der Ausdehnung: Gas ≫ Flüssigkeit > Festkörper.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Wärme erhöht die Teilchenbewegung → mittlerer Abstand wächst → Volumen/Länge nimmt zu (Wärmeausdehnung). Gase dehnen sich am stärksten aus, weil ihre Teilchen ohnehin frei beweglich sind. Die Teilchenzahl bleibt konstant.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Teilchen selbst werden größer." (2) „Es kommen Teilchen dazu." (3) „Feste Stoffe dehnen sich gar nicht aus."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Betonen: nicht die Teilchen wachsen, sondern die Abstände; Gas/Flüssigkeit/Fest bei gleicher Temperatur vergleichen; Alltagsbeispiele (Bimetall, Dehnungsfuge).</div>
@@ -48739,7 +48739,7 @@ function _dflHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim dfl-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌞⬛ Warum erwärmen sich dunkle Flächen stärker?</h3>
-    <div class="fpm-note" style="margin-top:2px">Dieselbe Sonne scheint auf verschieden gefärbte Flächen. Wähle eine Farbe und beobachte, wie warm die Fläche wird und wie viel Licht sie zurückwirft.</div>
+    <div class="fpm-note" style="margin-top:2px">Dieselbe Sonne scheint auf verschieden gefärbte Flächen. Wähle eine Farbe und beobachte, wie warm die Fläche wird und wie viel Licht sie reflektiert.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="dflAnim" width="440" height="240" class="phys-anim-cv"></canvas>
@@ -48820,7 +48820,7 @@ function _dflArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
           <li>Bestrahle nacheinander die schwarze, dunkelrote, weiße und silberne Fläche.</li>
-          <li>Lies jeweils die Endtemperatur ab. Achte auf die zurückgeworfenen Strahlen.</li>
+          <li>Lies jeweils die Endtemperatur ab. Achte auf die reflektierten Strahlen.</li>
           <li>Ordne von „am heißesten" bis „am kühlsten".</li>
         </ol></div>
 
@@ -48831,7 +48831,7 @@ function _dflArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne eine schwarze und eine weiße Fläche in der Sonne. Zeichne die einfallenden und die zurückgeworfenen Strahlen.</div>
+        <div class="ab-t">Zeichne eine schwarze und eine weiße Fläche in der Sonne. Zeichne die einfallenden und die reflektierten Strahlen.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -51426,12 +51426,12 @@ function _mphArbeitsblattHTML() {
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
-        <div class="ab-t">Der Mond leuchtet ${inp('m1', 'selbst / nicht selbst')} – er wirft Sonnenlicht zurück.<br>
+        <div class="ab-t">Der Mond leuchtet ${inp('m1', 'selbst / nicht selbst')} – er reflektiert Sonnenlicht.<br>
         Die Phasen entstehen, weil wir von der Erde unterschiedlich viel der ${inp('m2', 'welchen Hälfte?')} Hälfte sehen.<br>
         Bei Neumond steht der Mond ${inp('m3', 'zwischen Sonne und Erde / der Sonne gegenüber')}.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
-        <div class="ab-t">Manchmal sieht man den Mond auch am Tag blass am Himmel. Wie passt das dazu, dass der Mond das Sonnenlicht nur zurückwirft?</div>
+        <div class="ab-t">Manchmal sieht man den Mond auch am Tag blass am Himmel. Wie passt das dazu, dass der Mond das Sonnenlicht nur reflektiert?</div>
         ${ta('tr1', 'Man sieht ihn auch tagsüber, weil …', 3)}</div>
 
       <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
@@ -51465,7 +51465,7 @@ function _mphArbeitsblattHTML() {
 
 const _MPH_MINI = [
   { q: '1. Leuchtet der Mond selbst?',
-    opts: ['Ja, er glüht', 'Nein, er wirft Sonnenlicht zurück', 'Nur bei Vollmond'], correct: 1,
+    opts: ['Ja, er glüht', 'Nein, er reflektiert Sonnenlicht', 'Nur bei Vollmond'], correct: 1,
     fb: ['Der Mond glüht nicht.',
          'Richtig! Der Mond ist ein beleuchteter Körper – er reflektiert Sonnenlicht.',
          'Auch bei Vollmond reflektiert er nur.'] },
@@ -52033,7 +52033,7 @@ function _mofHTML() {
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      Erde zwischen Sonne und Mond → <b>Erdschatten auf dem Mond</b>, und das nur bei <b>Vollmond</b>. &nbsp;|&nbsp; Der Mond glüht nicht selbst: Die Lufthülle der Erde lenkt <b>rotes Licht in den Schatten</b> hinein. &nbsp;|&nbsp; Anders als bei den Mondphasen ist hier wirklich ein Schatten im Spiel.
+      Erde zwischen Sonne und Mond → <b>Erdschatten auf dem Mond</b>, und das nur bei <b>Vollmond</b>. &nbsp;|&nbsp; Der Mond glüht nicht selbst: Die Atmosphäre der Erde lenkt <b>rotes Licht in den Schatten</b> hinein. &nbsp;|&nbsp; Anders als bei den Mondphasen ist hier wirklich ein Schatten im Spiel.
     </p>
     ${_mofArbeitsblattHTML()}
   </div>`;
@@ -52410,7 +52410,7 @@ function _mofArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Mondfinsternis: Reihenfolge Sonne – Erde – Mond (Vollmond). Der Erdschatten fällt auf den Mond. Die rötliche Färbung entsteht durch Sonnenlicht, das in der Erdatmosphäre gebrochen und gefiltert wird (Blutmond; in Kl. 6 nur benennen). Sichtbar für die gesamte Nachtseite der Erde.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Mond läuft in den Schatten der Sonne." (2) „Mondfinsternis = Neumond." (3) „Verwechslung mit den Mondphasen (kein Erdschatten)." (4) „Der Mond glüht bei der Finsternis selbst rot."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Drei Kugeln in einer Reihe; Erdschattenkegel zeigen; Abgrenzung Phasen (Blickwinkel) vs. Finsternis (Schatten); Sonnen- vs. Mondfinsternis gegenüberstellen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> 4.1 „Schatten der Erde" · 4.2 „rötlich" · 4.3 „Vollmond" · 4.4 „nein – der Mond wird angestrahlt; das Rot kommt aus der Erdatmosphäre". 6.1 „Sonne – Erde – Mond" · 6.2 „bei der Sonnenfinsternis steht der Mond dazwischen" · 6.3 „man sieht sie von der ganzen Nachtseite". Merksatz: Erde · Mond · Vollmond · Lufthülle/Atmosphäre. Transfer: Bei der Mondfinsternis schaut man auf den abgeschatteten Mond (harmlos), bei der Sonnenfinsternis in die grelle Sonne (gefährlich). Minidiagnose: 1→„Erde zwischen Sonne und Mond" · 2→Vollmond · 3→„der Erdschatten" · 4→„die Erdatmosphäre lenkt rotes Licht hinein".</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4.1 „Schatten der Erde" · 4.2 „rötlich" · 4.3 „Vollmond" · 4.4 „nein – der Mond wird angestrahlt; das Rot kommt aus der Erdatmosphäre". 6.1 „Sonne – Erde – Mond" · 6.2 „bei der Sonnenfinsternis steht der Mond dazwischen" · 6.3 „man sieht sie von der ganzen Nachtseite". Merksatz: Erde · Mond · Vollmond · Atmosphäre. Transfer: Bei der Mondfinsternis schaut man auf den abgeschatteten Mond (harmlos), bei der Sonnenfinsternis in die grelle Sonne (gefährlich). Minidiagnose: 1→„Erde zwischen Sonne und Mond" · 2→Vollmond · 3→„der Erdschatten" · 4→„die Erdatmosphäre lenkt rotes Licht hinein".</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -52440,7 +52440,7 @@ const _MOF_MINI = [
   // Neu: Die Ursache des Rots wurde bisher nirgends abgefragt, obwohl "der Mond
   // glueht selbst" die verbreitetste Fehlvorstellung zu diesem Thema ist.
   { q: '4. Warum wird der Mond im Kernschatten kupferrot?',
-    opts: ['Weil er dann selbst rot glüht', 'Weil die Lufthülle der Erde rotes Licht in den Schatten lenkt', 'Weil er dem Mars näher kommt'], correct: 1,
+    opts: ['Weil er dann selbst rot glüht', 'Weil die Atmosphäre der Erde rotes Licht in den Schatten lenkt', 'Weil er dem Mars näher kommt'], correct: 1,
     fb: ['Der Mond glüht nie selbst – er wird immer nur angestrahlt.',
          'Richtig! Die Erdatmosphäre bricht rotes Sonnenlicht in den Schatten hinein.',
          'Der Abstand zum Mars ändert daran gar nichts.'] }
@@ -52569,7 +52569,7 @@ function _locArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Beobachte das Bild. Steht es richtig herum oder auf dem Kopf?</li>
+          <li>Beobachte das Bild. Ist es aufrecht oder umgekehrt?</li>
           <li>Vergrößere die Kameralänge (Bildweite b). Was macht das Bild?</li>
           <li>Vergrößere das Loch. Wie ändert sich die Schärfe?</li>
         </ol></div>
@@ -52587,7 +52587,7 @@ function _locArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
         <ol class="ab-ol">
-          <li>Warum steht das Bild auf dem Kopf? ${inp('a1', 'weil die Strahlen …')}</li>
+          <li>Warum ist das Bild umgekehrt? ${inp('a1', 'weil die Strahlen …')}</li>
           <li>Wann wird das Bild größer? ${inp('a2', 'wenn b … oder g …')}</li>
           <li>Warum ist ein kleines Loch besser für ein scharfes Bild? ${inp('a3', '')}</li>
         </ol></div>
@@ -52616,7 +52616,7 @@ function _locArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Das Bild steht auf dem Kopf (umgekehrt). Größere Bildweite b → größeres Bild; größere Gegenstandsweite g → kleineres Bild (B/G = b/g). Kleineres Loch → schärfer, aber dunkler.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Das Bild ist umgekehrt. Größere Bildweite b → größeres Bild; größere Gegenstandsweite g → kleineres Bild (B/G = b/g). Kleineres Loch → schärfer, aber dunkler.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Wegen der geradlinigen Lichtausbreitung kreuzen sich die Strahlen im Loch → umgekehrtes, seitenverkehrtes reelles Bild. Bildgröße: B/G = b/g. Kleine Öffnung = punktscharfe Zuordnung (scharf), aber wenig Licht (dunkel).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Bild steht richtig herum." (2) „Ein größeres Loch macht ein schärferes Bild." (3) „Ohne Linse kann kein Bild entstehen."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Zwei Randstrahlen durchs Loch zeichnen; Bezug zur geradlinigen Ausbreitung (5.3.2); reale Lochkamera basteln.</div>
@@ -52634,7 +52634,7 @@ const _LOC_MINI = [
     opts: ['Richtig herum', 'Auf dem Kopf (umgekehrt)', 'Seitlich gekippt'], correct: 1,
     fb: ['Schau in der Simulation – der Pfeil zeigt nach unten.',
          'Richtig! Das Bild ist umgekehrt, weil sich die Strahlen im Loch kreuzen.',
-         'Es ist auf dem Kopf, nicht gekippt.'] },
+         'Es ist umgekehrt, nicht gekippt.'] },
   { q: '2. Wann wird das Bild größer?',
     opts: ['Wenn die Kamera (Bildweite b) länger ist', 'Wenn das Loch größer ist', 'Wenn es dunkler ist'], correct: 0,
     fb: ['Richtig! Größere Bildweite b → größeres Bild (B/G = b/g).',
@@ -52948,10 +52948,10 @@ const _SLI_MINI = [
          'Richtig! Die Brennweite ist der Abstand Linse–Brennpunkt.',
          'Die Helligkeit ist etwas anderes.'] },
   { q: '3. Was macht eine Sammellinse mit dem Licht?',
-    opts: ['Sie zerstreut es', 'Sie bündelt es', 'Sie verschluckt es'], correct: 1,
+    opts: ['Sie zerstreut es', 'Sie bündelt es', 'Sie absorbiert es'], correct: 1,
     fb: ['Das macht eine Zerstreuungslinse.',
          'Richtig! Eine Sammellinse bündelt das Licht.',
-         'Die Linse ist durchsichtig – sie verschluckt das Licht nicht.'] }
+         'Die Linse ist durchsichtig – sie absorbiert das Licht nicht.'] }
 ];
 function _sliMiniHTML() {
   return _SLI_MINI.map((m, qi) =>
@@ -53088,7 +53088,7 @@ function _bldArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('bildlinse')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Wann macht eine Sammellinse ein größeres, wann ein kleineres Bild – und wann steht es auf dem Kopf?</b></div></div>
+        <div class="ab-t"><b>Wann macht eine Sammellinse ein größeres, wann ein kleineres Bild – und wann ist es umgekehrt?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
         ${ta('v1', 'Ich vermute, das Bild wird größer, wenn der Gegenstand …', 2)}</div>
@@ -53115,7 +53115,7 @@ function _bldArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
         <ol class="ab-ol">
           <li>Bei welcher Stellung ist das Bild vergrößert und aufrecht? ${inp('a1', 'wenn g …')}</li>
-          <li>Wann steht das Bild auf dem Kopf? ${inp('a2', '')}</li>
+          <li>Wann ist das Bild umgekehrt? ${inp('a2', '')}</li>
           <li>Was bedeutet „reell" und „virtuell"? ${inp('a3', '')}</li>
         </ol></div>
 
@@ -54339,7 +54339,7 @@ function _breArbeitsblattHTML() {
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> Der Gegenstand erscheint höher (flacher) als er ist; die scheinbare Tiefe ist kleiner (grob ¾ der wahren). Das Auge verlängert den gebrochenen Strahl geradlinig.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Beim Übergang Wasser→Luft wird das Licht vom Lot weg gebrochen. Das Auge interpretiert den einfallenden Strahl geradlinig → virtuelles, gehobenes Bild (scheinbare Tiefe). Für Kl. 7 qualitativ.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Wasser vergrößert." (2) „Der Gegenstand bewegt sich." (3) „Licht geht immer geradeaus, auch durch Wasser."</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Strahl mit Knick an der Oberfläche zeichnen; Rückverlängerung als gestrichelte Linie; Strohhalm-Realversuch.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Gebrochenen Strahl an der Oberfläche zeichnen; Rückverlängerung als gestrichelte Linie; Strohhalm-Realversuch.</div>
         <div class="ab-t"><b>Musterlösung.</b> 4.1 „Wasseroberfläche" · 4.2 „höher" · 4.3 „kleiner". 6.1 „gebrochen" · 6.2 „den gebrochenen Strahl geradlinig verlängert". Merksatz: gebrochen · höher · kleiner. Transfer: Der Strohhalm wirkt geknickt, weil der Teil unter Wasser verschoben erscheint; deshalb greift man daneben. Minidiagnose: 1→Brechung · 2→„flacher/höher" · 3→„an der Grenzfläche".</div>
       </details>
 
@@ -54400,7 +54400,7 @@ function _bwkHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim bwk-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">📐 Wovon hängt die Stärke der Brechung ab?</h3>
-    <div class="fpm-note" style="margin-top:2px">Ein Lichtstrahl trifft schräg auf Wasser oder Glas. Verändere den Einfallswinkel und den Stoff. Wie stark knickt der Strahl?</div>
+    <div class="fpm-note" style="margin-top:2px">Ein Lichtstrahl trifft schräg auf Wasser oder Glas. Verändere den Einfallswinkel und den Stoff. Wie stark wird der Strahl gebrochen?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="bwkAnim" width="440" height="236" class="phys-anim-cv"></canvas>
@@ -54473,7 +54473,7 @@ function _bwkArbeitsblattHTML() {
         <div class="ab-t"><b>Wovon hängt es ab, wie stark ein Lichtstrahl beim Eintritt gebrochen wird?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
-        ${ta('v1', 'Ich vermute, der Strahl knickt stärker, wenn …', 2)}</div>
+        ${ta('v1', 'Ich vermute, der Strahl wird stärker gebrochen, wenn …', 2)}</div>
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
@@ -54497,7 +54497,7 @@ function _bwkArbeitsblattHTML() {
         <ol class="ab-ol">
           <li>Wie ändert sich φ, wenn θ größer wird? ${inp('a1', '')}</li>
           <li>Welcher Stoff bricht stärker – Wasser oder Glas? ${inp('a2', '')}</li>
-          <li>In welche Richtung knickt der Strahl beim Eintritt in Wasser/Glas? ${inp('a3', 'zum … / vom …')}</li>
+          <li>In welche Richtung wird der Strahl beim Eintritt in Wasser/Glas gebrochen? ${inp('a3', 'zum … / vom …')}</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
@@ -54549,11 +54549,11 @@ const _BWK_MINI = [
     fb: ['Wasser bricht schwächer als Glas.',
          'Richtig! Glas (dichter) bricht das Licht stärker.',
          'Die Stoffe brechen unterschiedlich.'] },
-  { q: '3. In welche Richtung knickt der Strahl beim Eintritt in Wasser?',
+  { q: '3. In welche Richtung wird der Strahl beim Eintritt in Wasser gebrochen?',
     opts: ['Zum Lot hin', 'Vom Lot weg', 'Gar nicht'], correct: 0,
     fb: ['Richtig! In den dichteren Stoff wird zum Lot hin gebrochen.',
          'Das gilt beim Austritt in den dünneren Stoff.',
-         'Beim schrägen Eintritt knickt der Strahl sehr wohl.'] }
+         'Beim schrägen Eintritt wird der Strahl sehr wohl gebrochen.'] }
 ];
 function _bwkMiniHTML() {
   return _BWK_MINI.map((m, qi) =>
@@ -54603,7 +54603,7 @@ function _totHTML() {
       <div>
         <div class="fpm-label">Was passiert</div>
         <div class="lmp-status" id="totStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Ab dem <b>Grenzwinkel</b> (hier ≈ 42°) wird das Licht an der Wand <b>vollständig</b> zurückgeworfen – <b>Totalreflexion</b>. Es kann den Stab nicht mehr verlassen und läuft im Zickzack hindurch.</div>
+        <div class="fpm-note" style="margin-top:10px">Ab dem <b>Grenzwinkel</b> (hier ≈ 42°) wird das Licht an der Wand <b>vollständig</b> reflektiert – <b>Totalreflexion</b>. Es kann den Stab nicht mehr verlassen und läuft im Zickzack hindurch.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -54693,13 +54693,13 @@ function _totArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
         <ol class="ab-ol">
-          <li>Ab wann wird das Licht vollständig zurückgeworfen? ${inp('a1', 'ab dem …')}</li>
+          <li>Ab wann wird das Licht vollständig reflektiert? ${inp('a1', 'ab dem …')}</li>
           <li>Wie heißt dieser Effekt? ${inp('a2', '')}</li>
           <li>Warum bleibt das Licht im Lichtleiter? ${inp('a3', '')}</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
-        <div class="ab-t">Ab dem ${inp('m1', 'was?')} wird Licht an der Grenzfläche ${inp('m2', 'teilweise/vollständig')} zurückgeworfen – das nennt man ${inp('m3', 'was?')}.<br>
+        <div class="ab-t">Ab dem ${inp('m1', 'was?')} wird Licht an der Grenzfläche ${inp('m2', 'teilweise/vollständig')} reflektiert – das nennt man ${inp('m3', 'was?')}.<br>
         So bleibt Licht im Lichtleiter (Glasfaser) gefangen.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
@@ -54722,11 +54722,11 @@ function _totArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Unter dem Grenzwinkel tritt das Licht aus (teils gebrochen). Ab dem Grenzwinkel (Glas ≈ 42°) wird es vollständig zurückgeworfen (Totalreflexion) und läuft im Zickzack durch den Leiter.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Unter dem Grenzwinkel tritt das Licht aus (teils gebrochen). Ab dem Grenzwinkel (Glas ≈ 42°) wird es vollständig reflektiert (Totalreflexion) und läuft im Zickzack durch den Leiter.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Totalreflexion tritt beim Übergang vom dichteren in den dünneren Stoff auf, wenn der Einfallswinkel den Grenzwinkel überschreitet (Glas ≈ 42°, Wasser ≈ 49°). Grundlage von Lichtleitern/Glasfasern.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bei jedem Winkel bleibt das Licht drin." (2) „Totalreflexion braucht einen Spiegel." (3) „Licht geht durch die Faser geradeaus (nicht im Zickzack)."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Grenzwinkel markieren; klein/groß ausprobieren; Zickzack-Weg zeichnen; reale Glasfaser/Wasserstrahl-Versuch.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: klein nein, groß ja. 6.1 „ab dem Grenzwinkel" · 6.2 „Totalreflexion" · 6.3 „es wird an den Wänden vollständig zurückgeworfen". Merksatz: Grenzwinkel · vollständig · Totalreflexion. Transfer: In Glasfaser und Endoskop wird Licht (bzw. das Bild) durch fortlaufende Totalreflexion verlustarm geleitet. Minidiagnose: 1→„ab dem Grenzwinkel" · 2→Totalreflexion · 3→Glasfaser.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: klein nein, groß ja. 6.1 „ab dem Grenzwinkel" · 6.2 „Totalreflexion" · 6.3 „es wird an den Wänden vollständig reflektiert". Merksatz: Grenzwinkel · vollständig · Totalreflexion. Transfer: In Glasfaser und Endoskop wird Licht (bzw. das Bild) durch fortlaufende Totalreflexion verlustarm geleitet. Minidiagnose: 1→„ab dem Grenzwinkel" · 2→Totalreflexion · 3→Glasfaser.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -54736,7 +54736,7 @@ function _totArbeitsblattHTML() {
 }
 
 const _TOT_MINI = [
-  { q: '1. Wann wird Licht an der Wand vollständig zurückgeworfen?',
+  { q: '1. Wann wird Licht an der Wand vollständig reflektiert?',
     opts: ['Bei jedem Winkel', 'Ab dem Grenzwinkel (sehr schräg)', 'Nur bei kleinem Winkel'], correct: 1,
     fb: ['Nicht bei jedem Winkel.',
          'Richtig! Ab dem Grenzwinkel tritt Totalreflexion auf.',
@@ -55825,7 +55825,7 @@ function _hksDraw(ctx, cv) {
       sonne:  'Die Sonne ist ein Stern – nur ganz nah bei uns',
       stern:  'Winziger Punkt: sein Licht zittert in unserer Luft',
       mond:   'Läuft um die Erde – und hat kein eigenes Licht',
-      planet: 'Kleines Scheibchen statt Punkt: funkelt kaum'
+      planet: 'Kleines Scheibchen statt Punkt: flimmert kaum'
     }[sel] || '';
   }
   if (info) _wrText(ctx, W / 2, H - 9, info, { font: '11px system-ui, sans-serif', farbe: '#a5b4fc' });
@@ -55893,7 +55893,7 @@ function _hksArbeitsblattHTML() {
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> Wird das Sonnenlicht abgedeckt, leuchten Sonne und Sterne weiter (Selbstleuchter); Mond und Planet sind im selben Augenblick dunkel – sie reflektieren nur Sonnenlicht und leuchten nicht nach.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Sonne und Sterne sind selbstleuchtende Gasbälle (Fusion). Der Mond und die Planeten leuchten nicht selbst; sie werfen einen Teil des auftreffenden Sonnenlichts zurück (Reflexion). Sterne sind sehr weit entfernte Sonnen. Sterne stehen so weit weg, dass sie nur als Lichtpunkt ankommen – die unruhige Luft lässt diesen Punkt funkeln. Planeten zeigen ein winziges Scheibchen und funkeln deshalb kaum.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Sonne und Sterne sind selbstleuchtende Gasbälle (Fusion). Der Mond und die Planeten leuchten nicht selbst; sie reflektieren einen Teil des auftreffenden Sonnenlichts. Sterne sind sehr weit entfernte Sonnen. Sterne stehen so weit weg, dass sie nur als Lichtpunkt ankommen – die unruhige Luft lässt diesen Punkt flimmern. Planeten zeigen ein winziges Scheibchen und flimmern deshalb kaum.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Mond leuchtet selbst." (2) „Sterne sind kleine Lichter/Lampen." (3) „Planeten sind kleine Sterne."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Sonnenlicht abdecken und wieder freigeben, dabei vergleichen; Pfeile vom Sonnenlicht zeichnen; Alltagsbeispiel Lampe (Selbstleuchter) vs. angestrahltes Buch.</div>
         <div class="ab-t"><b>Musterlösung.</b> 4.1 Sonne, Sterne · 4.2 Mond, Planet · 4.3 eine (ferne) Sonne. 6.1 Sonne, Sterne · 6.2 Mond, Planeten. Merksatz: Selbstleuchter · nicht selbst · beleuchtet. Transfer: Die Laterne leuchtet selbst (Selbstleuchter), der Mond wird nur von der Sonne beleuchtet. Minidiagnose: 1→Sonne und Sterne · 2→Die Sonne beleuchtet ihn · 3→Eine ferne Sonne.</div>
@@ -55914,7 +55914,7 @@ const _HKS_MINI = [
   { q: '2. Warum können wir den Mond sehen?',
     opts: ['Er leuchtet selbst', 'Die Sonne beleuchtet ihn', 'Er ist aus Feuer'], correct: 1,
     fb: ['Der Mond leuchtet nicht selbst.',
-         'Richtig! Wir sehen das von ihm zurückgeworfene Sonnenlicht.',
+         'Richtig! Wir sehen das von ihm reflektierte Sonnenlicht.',
          'Der Mond besteht aus Gestein, nicht aus Feuer.'] },
   { q: '3. Was ist ein Stern?',
     opts: ['Eine ferne Sonne', 'Ein beleuchteter Felsen', 'Ein Planet'], correct: 0,
@@ -55973,7 +55973,7 @@ function _grvHTML() {
         </div>
       </div>
       <div>
-        <div class="fpm-label">Anziehung &amp; Fallzeit</div>
+        <div class="fpm-label">Fallbeschleunigung &amp; Fallzeit</div>
         <div class="lmp-status" id="grvStatus" style="margin-top:6px"></div>
         <div class="fpm-note" style="margin-top:10px">Jede Masse zieht jede andere Masse an – das ist die <b>Gravitation</b>. Je größer die Masse eines Himmelskörpers, desto <b>stärker</b> zieht er und desto schneller fällt alles bei ihm.</div>
         <div class="fpm-note" style="margin-top:8px">Die gestrichelten Linien <b>1–4</b> im linken Rohr sind <b>gleich lange Zeitschritte</b>. Miss mit den Augen nach: Der zweite Abschnitt ist dreimal, der dritte fünfmal so lang wie der erste. In der <b>doppelten</b> Zeit fällt der Stein also <b>viermal</b> so weit.</div>
@@ -56007,7 +56007,7 @@ function _grvStatus() {
   const strk = _grv.koerper === 'mond' ? 'am schwächsten' : (_grv.koerper === 'jupiter' ? 'am stärksten' : 'mittelstark');
   const vgl = _grv.koerper === 'mond' ? 'nur etwa ein Sechstel der Erde'
             : (_grv.koerper === 'jupiter' ? 'rund zweieinhalbmal so stark wie die Erde' : 'so, wie du es kennst');
-  el.innerHTML = `<b>${k.name}</b>: Die Anziehung ist hier ${strk} – ${vgl}. `
+  el.innerHTML = `<b>${k.name}</b>: Die Anziehungskraft ist hier ${strk} – ${vgl}. `
     + `Fallbeschleunigung g = ${String(k.g).replace('.', ',')} m/s². `
     + `Ein Fall aus 1,50 m Höhe dauert <b>${zeit} s</b>. `
     + `Solange keine Luft im Rohr ist, gilt diese Zeit für den Stein <b>und</b> für die Feder.`;
@@ -56227,7 +56227,7 @@ function _grvDraw(ctx, cv) {
   ctx.fillStyle = 'rgba(5,9,22,0.62)';
   ctx.strokeStyle = 'rgba(148,163,184,0.22)'; ctx.lineWidth = 1;
   kasten(px0, py0, pw, 100, 9); ctx.fill(); ctx.stroke();
-  _wrText(ctx, px0 + 11, py0 + 16, 'Anziehung g', { align: 'left', font: '9px system-ui, sans-serif', farbe: '#94a3b8' });
+  _wrText(ctx, px0 + 11, py0 + 16, 'Fallbeschleunigung g', { align: 'left', font: '9px system-ui, sans-serif', farbe: '#94a3b8' });
   [['mond', 4.5], ['erde', 7], ['jupiter', 10.5]].forEach((z, i) => {
     const kk = _GRV_KOERPER[z[0]], pp = PAL[z[0]], ry = py0 + 34 + i * 25;
     const aktiv = z[0] === _grv.koerper;
@@ -56449,7 +56449,7 @@ function _grvArbeitsblattHTML() {
           <li>Was bremst die Feder im rechten Rohr? ${inp('a2', 'die …')}</li>
           <li>Warum bremst die Luft den Stein fast gar nicht? ${inp('a3', 'weil er … ist')}</li>
           <li>In der doppelten Zeit fällt der Stein … so weit. ${inp('a4', 'doppelt / viermal / gleich')}</li>
-          <li>Wo ist die Anziehung am stärksten? ${inp('a5', '')}</li>
+          <li>Wo ist die Anziehungskraft am stärksten? ${inp('a5', '')}</li>
           <li>Der Stein hat überall dieselbe Masse. Fällt er trotzdem überall gleich schnell? ${inp('a6', 'ja/nein, weil …')}</li>
         </ol></div>
 
@@ -56500,12 +56500,12 @@ const _GRV_MINI = [
          'Nein, sie ist genauso schnell wie der Stein – aber nicht schneller.'] },
   { q: '2. Was bremst die Feder im Rohr mit Luft?',
     opts: ['Die Luft an ihrer großen Fläche', 'Ihre kleine Masse', 'Die Gravitation'], correct: 0,
-    fb: ['Richtig! Die Luft muss zur Seite gedrückt werden – das kostet die Feder Tempo.',
+    fb: ['Richtig! Die Luft muss zur Seite gedrückt werden – das kostet die Feder Geschwindigkeit.',
          'Nein. Im leeren Rohr ist dieselbe Feder genauso schnell wie der Stein.',
          'Die Gravitation zieht sie nach unten – bremsen tut die Luft.'] },
   { q: '3. Wo fällt derselbe Stein am schnellsten?',
     opts: ['Auf dem Mond', 'Auf der Erde', 'Auf dem Jupiter'], correct: 2,
-    fb: ['Dort ist die Anziehung am schwächsten – er fällt am langsamsten.',
+    fb: ['Dort ist die Anziehungskraft am schwächsten – er fällt am langsamsten.',
          'Die Erde liegt in der Mitte.',
          'Richtig! Der Jupiter hat die größte Masse und zieht am stärksten (g = 24,8 m/s²).'] },
   { q: '4. In der doppelten Zeit fällt der Stein …',
@@ -56562,12 +56562,12 @@ function _tskHTML() {
       <div>
         <div class="fpm-label">Was verändert sich?</div>
         <div class="lmp-status" id="tskStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Das Kepler-Fernrohr hat <b>zwei Sammellinsen</b>. Das <b>Objektiv</b> (lange Brennweite) erzeugt im Rohr ein <b>umgekehrtes Zwischenbild</b>; das <b>Okular</b> (kurze Brennweite) ist die <b>Lupe</b>, mit der du dieses Zwischenbild anschaust. Deshalb steht das Bild <b>auf dem Kopf</b>. <b>Vergrößerung = Brennweite Objektiv : Brennweite Okular.</b> Scharf wird es nur, wenn der Abstand der Linsen genau die <b>Summe der beiden Brennweiten</b> ist – dafür zieht man das Okularrohr aus.</div>
+        <div class="fpm-note" style="margin-top:10px">Das Kepler-Fernrohr hat <b>zwei Sammellinsen</b>. Das <b>Objektiv</b> (lange Brennweite) erzeugt im Rohr ein <b>umgekehrtes Zwischenbild</b>; das <b>Okular</b> (kurze Brennweite) ist die <b>Lupe</b>, mit der du dieses Zwischenbild anschaust. Deshalb ist das Bild <b>umgekehrt</b>. <b>Vergrößerung = Brennweite Objektiv : Brennweite Okular.</b> Scharf wird es nur, wenn der Abstand der Linsen genau die <b>Summe der beiden Brennweiten</b> ist – dafür zieht man das Okularrohr aus.</div>
         <div class="fpm-note" style="margin-top:8px">Die zweite Aufgabe des Teleskops: <b>Licht sammeln</b>. Je größer die <b>Öffnung</b> des Objektivs, desto <b>heller</b> das Bild – erst dann werden lichtschwache Objekte überhaupt sichtbar.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      V = f(Objektiv) : f(Okular) &nbsp;|&nbsp; scharf bei Abstand = f(Objektiv) + f(Okular) &nbsp;|&nbsp; Bild auf dem Kopf &nbsp;|&nbsp; große Öffnung → helleres Bild.
+      V = f(Objektiv) : f(Okular) &nbsp;|&nbsp; scharf bei Abstand = f(Objektiv) + f(Okular) &nbsp;|&nbsp; Bild umgekehrt &nbsp;|&nbsp; große Öffnung → helleres Bild.
     </p>
     ${_tskArbeitsblattHTML()}
   </div>`;
@@ -56596,7 +56596,7 @@ function _tskStatus() {
     // Öffnung ausgeschrieben: vorher stand hier der rohe Schlüssel ("Öffnung gross").
     const oe = _tsk.oeffnung === 'gross' ? 'Große Öffnung' : 'Kleine Öffnung';
     const hell = _tsk.oeffnung === 'gross' ? 'hell und lichtstark' : 'nur mäßig hell';
-    el.textContent = '🔭 Zwei Sammellinsen: Das Objektiv (lange Brennweite) entwirft im Rohr ein umgekehrtes Zwischenbild, das Okular (kurze Brennweite) wirkt darauf wie eine Lupe – darum siehst du den Mond vergrößert und auf dem Kopf. Vergrößerung = Brennweite Objektiv : Brennweite Okular = 4-fach. Scharf ist das Bild nur, wenn der Linsenabstand genau die Summe beider Brennweiten ist; der Auszug fährt hier von selbst hin und her. ' + oe + ': Das Bild ist ' + hell + ' (eine große Öffnung sammelt mehr Licht).';
+    el.textContent = '🔭 Zwei Sammellinsen: Das Objektiv (lange Brennweite) entwirft im Rohr ein umgekehrtes Zwischenbild, das Okular (kurze Brennweite) wirkt darauf wie eine Lupe – darum siehst du den Mond vergrößert und umgekehrt. Vergrößerung = Brennweite Objektiv : Brennweite Okular = 4-fach. Scharf ist das Bild nur, wenn der Linsenabstand genau die Summe beider Brennweiten ist; der Auszug fährt hier von selbst hin und her. ' + oe + ': Das Bild ist ' + hell + ' (eine große Öffnung sammelt mehr Licht).';
     el.className = 'lmp-status on';
   }
 }
@@ -56974,7 +56974,7 @@ function _tskArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('teleskop')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Wie schafft es ein Fernrohr aus zwei Sammellinsen, ferne Objekte größer und heller erscheinen zu lassen – und warum steht das Bild dabei auf dem Kopf?</b></div></div>
+        <div class="ab-t"><b>Wie schafft es ein Fernrohr aus zwei Sammellinsen, ferne Objekte größer und heller erscheinen zu lassen – und warum ist das Bild dabei umgekehrt?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
         ${ta('v1', 'Ich vermute, dass ich mit dem Fernrohr … sehe, weil …', 2)}</div>
@@ -56992,7 +56992,7 @@ function _tskArbeitsblattHTML() {
         <table class="ab-table"><tbody>
           <tr><td>bloßes Auge – Größe</td><td>${inp('b1', 'klein/groß')}</td><td>Einzelheiten?</td><td>${inp('b2', 'ja/nein')}</td></tr>
           <tr><td>Teleskop – Größe</td><td>${inp('b3', 'klein/groß')}</td><td>Krater sichtbar?</td><td>${inp('b4', 'ja/nein')}</td></tr>
-          <tr><td>bloßes Auge – wie herum?</td><td>${inp('b7', 'richtig herum / auf dem Kopf')}</td><td>Teleskop – wie herum?</td><td>${inp('b8', 'richtig herum / auf dem Kopf')}</td></tr>
+          <tr><td>bloßes Auge – wie herum?</td><td>${inp('b7', 'aufrecht / umgekehrt')}</td><td>Teleskop – wie herum?</td><td>${inp('b8', 'aufrecht / umgekehrt')}</td></tr>
           <tr><td>große Öffnung</td><td>${inp('b5', 'heller/dunkler')}</td><td>kleine Öffnung</td><td>${inp('b6', 'heller/dunkler')}</td></tr>
         </tbody></table></div>
 
@@ -57004,7 +57004,7 @@ function _tskArbeitsblattHTML() {
         <ol class="ab-ol">
           <li>Welche Aufgabe hat das Objektiv, welche das Okular? ${inp('a1', 'Objektiv … / Okular …')}</li>
           <li>Wozu dient eine große Öffnung? ${inp('a2', 'um … zu sammeln')}</li>
-          <li>Wie herum steht das Bild im Fernrohr, und warum? ${inp('a3', 'auf dem Kopf, weil …')}</li>
+          <li>Wie herum steht das Bild im Fernrohr, und warum? ${inp('a3', 'umgekehrt, weil …')}</li>
           <li>Rechne: f(Objektiv) = 800 mm, f(Okular) = 20 mm. Vergrößerung? ${inp('a4', '… -fach')}</li>
         </ol></div>
 
@@ -57014,7 +57014,7 @@ function _tskArbeitsblattHTML() {
         Je größer die ${inp('m3', 'was?')}, desto heller wird das Bild – auch lichtschwache Objekte werden sichtbar.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
-        <div class="ab-t">Warum baut man Sternwarten mit riesigen Spiegeln (mehrere Meter Durchmesser) und stellt sie auf hohe Berge? Und warum stört es beim Blick auf den Mond kaum, dass das Bild auf dem Kopf steht – beim Blick auf einen Vogel aber sehr?</div>
+        <div class="ab-t">Warum baut man Sternwarten mit riesigen Spiegeln (mehrere Meter Durchmesser) und stellt sie auf hohe Berge? Und warum stört es beim Blick auf den Mond kaum, dass das Bild umgekehrt ist – beim Blick auf einen Vogel aber sehr?</div>
         ${ta('tr1', 'Große Spiegel sammeln … , auf hohen Bergen ist die Luft … , am Himmel gibt es kein Oben und Unten, weil …', 3)}</div>
 
       <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
@@ -57033,11 +57033,11 @@ function _tskArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit bloßem Auge ist der Mond klein, kaum Einzelheiten, Bild richtig herum. Mit Teleskop stark vergrößert, Krater sichtbar, Bild auf dem Kopf (gelbe Marke der Oberkante liegt unten). Scharf nur bei einem einzigen Linsenabstand. Große Öffnung → helleres Bild, kleine Öffnung → dunkler.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Kepler-Fernrohr = zwei Sammellinsen. Das Objektiv (lange Brennweite f₁) entwirft von einem sehr weit entfernten Objekt in seiner Brennebene ein reelles, umgekehrtes Zwischenbild. Das Okular (kurze Brennweite f₂) betrachtet dieses Zwischenbild wie eine Lupe. Scharf (Licht verlässt das Okular parallel) genau dann, wenn der Linsenabstand d = f₁ + f₂ ist. Vergrößerung V = f₁ / f₂ (in der Simulation 4-fach). Das Bild steht auf dem Kopf und seitenverkehrt. Zweite Aufgabe: Lichtsammlung – die gesammelte Lichtmenge wächst mit der Fläche des Objektivs (∝ Durchmesser²), daher werden lichtschwache Objekte sichtbar. Neben Linsenteleskopen (Refraktoren) gibt es Spiegelteleskope (Reflektoren).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Mit bloßem Auge ist der Mond klein, kaum Einzelheiten, Bild aufrecht. Mit Teleskop stark vergrößert, Krater sichtbar, Bild umgekehrt (gelbe Marke der Oberkante liegt unten). Scharf nur bei einem einzigen Linsenabstand. Große Öffnung → helleres Bild, kleine Öffnung → dunkler.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Kepler-Fernrohr = zwei Sammellinsen. Das Objektiv (lange Brennweite f₁) entwirft von einem sehr weit entfernten Objekt in seiner Brennebene ein reelles, umgekehrtes Zwischenbild. Das Okular (kurze Brennweite f₂) betrachtet dieses Zwischenbild wie eine Lupe. Scharf (Licht verlässt das Okular parallel) genau dann, wenn der Linsenabstand d = f₁ + f₂ ist. Vergrößerung V = f₁ / f₂ (in der Simulation 4-fach). Das Bild ist umgekehrt und seitenverkehrt. Zweite Aufgabe: Lichtsammlung – die gesammelte Lichtmenge wächst mit der Fläche des Objektivs (∝ Durchmesser²), daher werden lichtschwache Objekte sichtbar. Neben Linsenteleskopen (Refraktoren) gibt es Spiegelteleskope (Reflektoren).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Das Teleskop bringt die Objekte wirklich näher." (2) „Ein Teleskop macht nur größer, nicht heller." (3) „Die Öffnung ist egal." (4) „Das Fernrohrbild steht richtig herum." (5) „Eine größere Öffnung vergrößert stärker" – nein, die Öffnung bestimmt Helligkeit und Detailschärfe, die Vergrößerung kommt allein aus den beiden Brennweiten. (6) „Ein stärkeres Okular ist immer besser" – bei zu kurzer Okularbrennweite wird das Bild dunkel und flau.</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Die beiden Aufgaben getrennt benennen: vergrößern (zwei Brennweiten) und Licht sammeln (Öffnung). Marken der Ober- und Unterkante im Strahlengang mitverfolgen – sie tauschen hinter dem Objektiv die Seite. Öffnung klein/groß direkt vergleichen. Alltagsbezug: Fernglas (dort drehen Prismen das Bild wieder um).</div>
-        <div class="ab-t"><b>Musterlösung.</b> 4: klein / nein · groß / ja · richtig herum / auf dem Kopf · heller / dunkler. 6.1 „Objektiv erzeugt das umgekehrte Zwischenbild, Okular vergrößert es wie eine Lupe" · 6.2 „um mehr Licht zu sammeln" · 6.3 „auf dem Kopf, weil sich die Strahlen hinter dem Objektiv kreuzen" · 6.4 800 mm : 20 mm = 40-fach. Merksatz: Sammellinsen · Objektivs · Okulars · Summe · auf dem Kopf · Öffnung. Transfer: Große Spiegel sammeln sehr viel Licht (lichtschwache, ferne Objekte werden sichtbar); auf hohen Bergen ist die Luft klarer und ruhiger; am Sternhimmel gibt es kein natürliches Oben und Unten, für Erdbeobachtung braucht man dagegen ein aufrichtendes Prisma. Minidiagnose: 1→Es sammelt mehr Licht und vergrößert · 2→Es wird mehr Licht gesammelt (heller) · 3→Durch die Linsen/Spiegel.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4: klein / nein · groß / ja · aufrecht / umgekehrt · heller / dunkler. 6.1 „Objektiv erzeugt das umgekehrte Zwischenbild, Okular vergrößert es wie eine Lupe" · 6.2 „um mehr Licht zu sammeln" · 6.3 „umgekehrt, weil sich die Strahlen hinter dem Objektiv kreuzen" · 6.4 800 mm : 20 mm = 40-fach. Merksatz: Sammellinsen · Objektivs · Okulars · Summe · umgekehrt · Öffnung. Transfer: Große Spiegel sammeln sehr viel Licht (lichtschwache, ferne Objekte werden sichtbar); auf hohen Bergen ist die Luft klarer und ruhiger; am Sternhimmel gibt es kein natürliches Oben und Unten, für Erdbeobachtung braucht man dagegen ein aufrichtendes Prisma. Minidiagnose: 1→Es sammelt mehr Licht und vergrößert · 2→Es wird mehr Licht gesammelt (heller) · 3→Durch die Linsen/Spiegel.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -57155,7 +57155,7 @@ function _stlStatus() {
     el.textContent = `${a.name}: zeigt ${a.zeigt}.`;
     el.className = 'lmp-status on';
   } else {
-    el.textContent = `${a.name}: Diese Strahlung wird von der Luft geschluckt. Am Boden sieht man fast nichts – du brauchst ein Weltraumteleskop.`;
+    el.textContent = `${a.name}: Diese Strahlung wird von der Atmosphäre absorbiert. Am Boden sieht man fast nichts – du brauchst ein Weltraumteleskop.`;
     el.className = 'lmp-status';
   }
 }
@@ -57518,7 +57518,7 @@ function _stlDraw(ctx, cv) {
   ctx.save();
   ctx.globalAlpha = 0.35 + 0.65 * (m[_stl.art] || 0);
   _wrText(ctx, 14, 20, art.name, { align: 'left', font: '700 12px system-ui, sans-serif', farbe: art.farbe });
-  const satz = blk > 0.5 ? 'Luft schluckt sie → Weltraumteleskop'
+  const satz = blk > 0.5 ? 'Atmosphäre absorbiert sie → Weltraumteleskop'
     : _stl.art === 'optisch'  ? 'Staub verdeckt den Kern'
     : _stl.art === 'infrarot' ? 'Infrarot durchdringt den Staub'
     : _stl.art === 'radio'    ? 'kaltes Gas – viel weiter außen'
@@ -57597,11 +57597,11 @@ function _stlArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Optisch: Sterne. Infrarot: warme Staubwolken (Sternentstehung). Radio: kalte Gaswolken/Galaxien. Röntgen: heiße, energiereiche Orte. Am Boden funktionieren optisch und Radio gut; Infrarot und Röntgen werden von der Luft weitgehend geschluckt.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Optisch: Sterne. Infrarot: warme Staubwolken (Sternentstehung). Radio: kalte Gaswolken/Galaxien. Röntgen: heiße, energiereiche Orte. Am Boden funktionieren optisch und Radio gut; Infrarot und Röntgen werden von der Atmosphäre weitgehend absorbiert.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Das elektromagnetische Spektrum reicht von Radiowellen über Infrarot, sichtbares Licht, Ultraviolett bis Röntgen und Gamma. Die Erdatmosphäre besitzt nur „Fenster" für sichtbares Licht und Radiowellen; große Teile von IR, UV, Röntgen werden absorbiert. Deshalb Weltraumteleskope (z. B. Hubble, James-Webb für IR, Chandra für Röntgen).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Man sieht immer nur mit sichtbarem Licht." (2) „Ein Teleskop im Weltraum ist einfach nur näher dran." (3) „Radiowellen kann man nicht am Boden empfangen."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Spektrum als Streifen zeigen; Atmosphäre als Fenster/Barriere; Alltagsbezug Wärmebildkamera und Radioempfang.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Sterne / ja · warme Staubwolken / nein · Gaswolken, Galaxien / ja · heiße Orte / nein. 6.1 „weil Objekte verschiedene Strahlung aussenden" · 6.2 „weil die Luft manche Strahlung schluckt". Merksatz: unsichtbare · geschluckt/zurückgehalten · Weltraum. Transfer: Wärmebildkamera nutzt Infrarot (Wärmestrahlung), genau wie ein Infrarot-Teleskop. Minidiagnose: 1→Auch unsichtbare Strahlung · 2→Infrarot · 3→Weil die Luft die Strahlung schluckt.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Sterne / ja · warme Staubwolken / nein · Gaswolken, Galaxien / ja · heiße Orte / nein. 6.1 „weil Objekte verschiedene Strahlung aussenden" · 6.2 „weil die Atmosphäre manche Strahlung absorbiert". Merksatz: unsichtbare · absorbiert · Weltraum. Transfer: Wärmebildkamera nutzt Infrarot (Wärmestrahlung), genau wie ein Infrarot-Teleskop. Minidiagnose: 1→Auch unsichtbare Strahlung · 2→Infrarot · 3→Weil die Atmosphäre die Strahlung absorbiert.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -57622,7 +57622,7 @@ const _STL_MINI = [
          'Richtig! Infrarot ist Wärmestrahlung und zeigt warmen Staub.',
          'Optisch zeigt nur das sichtbare Licht der Sterne.'] },
   { q: '3. Warum stellt man manche Teleskope in den Weltraum?',
-    opts: ['Weil sie dort näher dran sind', 'Weil die Luft manche Strahlung schluckt', 'Weil es dort heller ist'], correct: 1,
+    opts: ['Weil sie dort näher dran sind', 'Weil die Atmosphäre manche Strahlung absorbiert', 'Weil es dort heller ist'], correct: 1,
     fb: ['Der kleine Höhenunterschied bringt kaum etwas.',
          'Richtig! Infrarot und Röntgen kommen am Boden kaum an.',
          'Heller ist es dort nicht – es geht um die Strahlung.'] }
@@ -59202,7 +59202,7 @@ function _sllArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('schwarzeloch')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Was passiert, wenn die Anziehung eines Himmelskörpers so groß wird, dass sogar Licht gefangen bleibt?</b></div></div>
+        <div class="ab-t"><b>Was passiert, wenn die Anziehungskraft eines Himmelskörpers so groß wird, dass sogar Licht gefangen bleibt?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
         ${ta('v1', 'Ich vermute, dass der Lichtstrahl in der Nähe eines schwarzen Lochs …', 2)}</div>
@@ -59259,7 +59259,7 @@ function _sllArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Ein schwarzes Loch ist ein Objekt, in dem sehr viel Masse auf winzigem Raum konzentriert ist; die Gravitation ist so stark, dass innerhalb des Ereignishorizonts die Fluchtgeschwindigkeit größer als die Lichtgeschwindigkeit ist – nichts entkommt. Licht in der Nähe wird gekrümmt (Gravitationslinse). Stellare schwarze Löcher entstehen beim Kollaps sehr massereicher Sterne.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Ein schwarzes Loch saugt alles im ganzen Weltall an." (2) „Man kann es direkt sehen." (3) „Licht wird nie abgelenkt."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Ereignishorizont als „Punkt ohne Wiederkehr"; Fluchtgeschwindigkeit anschaulich (Rakete, die nicht schnell genug ist); nur nahes Licht wird stark beeinflusst.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: abgelenkt/leicht · abgelenkt/stark · verschluckt/nein. 6.1 „die Grenze, ab der nichts mehr entkommt" · 6.2 „weil kein Licht herauskommt". Merksatz: Gravitation/Anziehung · Licht · Ereignishorizont. Transfer: an seiner starken Anziehung auf umkreisende Sterne/Gas, an aufleuchtendem, hineinstürzendem Gas. Minidiagnose: 1→Nicht einmal Licht entkommt · 2→Der Ereignishorizont · 3→Weil kein Licht herauskommt.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: abgelenkt/leicht · abgelenkt/stark · verschluckt/nein. 6.1 „die Grenze, ab der nichts mehr entkommt" · 6.2 „weil kein Licht herauskommt". Merksatz: Gravitation/Anziehungskraft · Licht · Ereignishorizont. Transfer: an seiner starken Anziehungskraft auf umkreisende Sterne/Gas, an aufleuchtendem, hineinstürzendem Gas. Minidiagnose: 1→Nicht einmal Licht entkommt · 2→Der Ereignishorizont · 3→Weil kein Licht herauskommt.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -59272,7 +59272,7 @@ const _SLL_MINI = [
   { q: '1. Was ist das Besondere an einem schwarzen Loch?',
     opts: ['Es leuchtet sehr hell', 'Nicht einmal Licht kann ihm entkommen', 'Es ist ein sehr kalter Planet'], correct: 1,
     fb: ['Es leuchtet gerade nicht – es ist schwarz.',
-         'Richtig! Die Anziehung ist so stark, dass sogar Licht gefangen bleibt.',
+         'Richtig! Die Anziehungskraft ist so stark, dass sogar Licht gefangen bleibt.',
          'Es ist kein Planet, sondern extrem zusammengedrückte Masse.'] },
   { q: '2. Wie heißt die Grenze, hinter der nichts mehr entkommt?',
     opts: ['Der Äquator', 'Der Ereignishorizont', 'Die Umlaufbahn'], correct: 1,
@@ -59840,7 +59840,7 @@ const _URK_PHASEN = [
   { bis: 0.52, name: 'Galaxien',
     text: 'Die Sterne sammeln sich zu Galaxien. Der Raum dazwischen dehnt sich weiter aus.' },
   { bis: 0.66, name: 'Sternenstaub',
-    text: 'Schwere Sterne enden als Supernova und schleudern Kohlenstoff, Sauerstoff und Eisen ins All.' },
+    text: 'Massereiche Sterne enden als Supernova und schleudern Kohlenstoff, Sauerstoff und Eisen ins All.' },
   { bis: 0.80, name: 'Sonne und Erde entstehen',
     text: 'Vor 4,6 Milliarden Jahren ballt sich eine Wolke aus genau diesem Staub zusammen: Sonne, Planeten, Erde.' },
   { bis: 1.01, name: 'heute',
@@ -60854,7 +60854,7 @@ function _staArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne den Stromkreis mit Batterie, Lampe, Schalter und Amperemeter. Markiere, dass das Amperemeter in Reihe liegt.</div>
+        <div class="ab-t">Zeichne den Stromkreis mit Energiequelle, Lampe, Schalter und Amperemeter. Markiere, dass das Amperemeter in Reihe liegt.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -61050,7 +61050,7 @@ function _spnArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('spannung')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Was treibt die Ladungen durch den Stromkreis – und warum leuchtet die Lampe mit mehr Batterien heller?</b></div></div>
+        <div class="ab-t"><b>Was treibt die Ladungen durch den Stromkreis – und warum leuchtet die Lampe mit mehr Energiequellen heller?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
         ${ta('v1', 'Ich vermute, dass die Lampe heller wird, wenn ich …', 2)}</div>
@@ -61070,7 +61070,7 @@ function _spnArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne den Kreis mit Batterie und Lampe. Zeichne das Voltmeter parallel zur Lampe ein.</div>
+        <div class="ab-t">Zeichne den Kreis mit Energiequelle und Lampe. Zeichne das Voltmeter parallel zur Lampe ein.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -61316,7 +61316,7 @@ function _msnArbeitsblattHTML() {
         Das Voltmeter wird ${inp('m2', 'wie?')} angeschlossen, denn es misst die Spannung über einem Bauteil.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
-        <div class="ab-t">Warum ist es gefährlich für das Amperemeter, wenn man es aus Versehen parallel (direkt an die Batterie) anschließt?</div>
+        <div class="ab-t">Warum ist es gefährlich für das Amperemeter, wenn man es aus Versehen parallel (direkt an die Energiequelle) anschließt?</div>
         ${ta('tr1', 'Weil dann ein Kurzschluss entsteht und …', 3)}</div>
 
       <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
@@ -61339,7 +61339,7 @@ function _msnArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Amperemeter: kleiner Innenwiderstand, in Reihe (der zu messende Strom fließt hindurch). Voltmeter: großer Innenwiderstand, parallel zum Bauteil (misst die Spannung, entnimmt kaum Strom). Falsch angeschlossen: Amperemeter parallel überbrückt das Bauteil → Kurzschluss; Voltmeter in Reihe → hoher Widerstand unterbricht den Strom praktisch.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Es ist egal, wie man das Messgerät anschließt." (2) „Amperemeter und Voltmeter schließt man gleich an." (3) „Das Voltmeter unterbricht den Strom nie."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Merkbild: A = „mittendrin" (Reihe), V = „daneben" (parallel); Innenwiderstände nennen; nur eine Einstellung ändern; Sicherheitshinweis Kurzschluss.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: richtig/an · falsch/Kurzschluss · richtig/an · falsch/aus. 6.1 „weil der Strom durch es hindurchfließen muss" · 6.2 „weil es die Spannung über dem Bauteil misst". Merksatz: in Reihe · parallel. Transfer: Parallel an die Batterie fließt fast der gesamte Strom durch das niederohmige Amperemeter (Kurzschluss), es kann überhitzen/kaputtgehen. Minidiagnose: 1→In Reihe · 2→Parallel · 3→Kurzschluss.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: richtig/an · falsch/Kurzschluss · richtig/an · falsch/aus. 6.1 „weil der Strom durch es hindurchfließen muss" · 6.2 „weil es die Spannung über dem Bauteil misst". Merksatz: in Reihe · parallel. Transfer: Parallel an die Energiequelle fließt fast der gesamte Strom durch das niederohmige Amperemeter (Kurzschluss), es kann überhitzen/kaputtgehen. Minidiagnose: 1→In Reihe · 2→Parallel · 3→Kurzschluss.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -61350,7 +61350,7 @@ function _msnArbeitsblattHTML() {
 
 const _MSN_MINI = [
   { q: '1. Wie wird ein Amperemeter angeschlossen?',
-    opts: ['Parallel zum Bauteil', 'In Reihe in den Stromkreis', 'Direkt an die Batteriepole'], correct: 1,
+    opts: ['Parallel zum Bauteil', 'In Reihe in den Stromkreis', 'Direkt an die Pole der Energiequelle'], correct: 1,
     fb: ['Parallel gehört das Voltmeter.',
          'Richtig! Das Amperemeter liegt in Reihe.',
          'Direkt an die Pole wäre ein Kurzschluss.'] },
@@ -61359,7 +61359,7 @@ const _MSN_MINI = [
     fb: ['In Reihe würde kaum Strom fließen.',
          'Richtig! Das Voltmeter wird parallel angeschlossen.',
          'Man schließt es parallel an.'] },
-  { q: '3. Was passiert, wenn man ein Amperemeter parallel an die Batterie hält?',
+  { q: '3. Was passiert, wenn man ein Amperemeter parallel an die Energiequelle hält?',
     opts: ['Es entsteht ein Kurzschluss', 'Es misst genauer', 'Nichts'], correct: 0,
     fb: ['Richtig! Ein sehr großer Strom fließt – Kurzschluss, Gerät in Gefahr.',
          'Genauer wird es dadurch nicht – im Gegenteil.',
@@ -61575,7 +61575,7 @@ const _SAB_MINI = [
          'Richtig! Größerer Widerstand → weniger Strom.',
          'Der Strom ändert sich sehr wohl.'] },
   { q: '3. Wovon hängt die Stromstärke ab?',
-    opts: ['Nur von der Batterie', 'Von Spannung und Widerstand', 'Nur von der Lampenfarbe'], correct: 1,
+    opts: ['Nur von der Energiequelle', 'Von Spannung und Widerstand', 'Nur von der Lampenfarbe'], correct: 1,
     fb: ['Nicht nur – auch der Widerstand zählt.',
          'Richtig! Von der Spannung (Antrieb) und vom Widerstand (Bremse).',
          'Die Farbe spielt keine Rolle.'] }
@@ -61725,7 +61725,7 @@ function _widArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne den Stromkreis mit Batterie, Bauteil (Widerstand) und Amperemeter. Beschrifte R und I.</div>
+        <div class="ab-t">Zeichne den Stromkreis mit Energiequelle, Bauteil (Widerstand) und Amperemeter. Beschrifte R und I.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -62385,7 +62385,7 @@ function _rwdArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne zwei Widerstände hintereinander mit Batterie und Amperemeter. Zeige, dass der Strom überall gleich ist.</div>
+        <div class="ab-t">Zeichne zwei Widerstände hintereinander mit Energiequelle und Amperemeter. Zeige, dass der Strom überall gleich ist.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -62600,7 +62600,7 @@ function _pwdArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
-        <div class="ab-t">Zeichne zwei Widerstände nebeneinander (parallel) mit Batterie. Markiere, dass an beiden die gleiche Spannung liegt.</div>
+        <div class="ab-t">Zeichne zwei Widerstände nebeneinander (parallel) mit Energiequelle. Markiere, dass an beiden die gleiche Spannung liegt.</div>
         <div class="ab-skizze">Platz für deine Skizze</div></div>
 
       <div class="ab-sec"><div class="ab-h">6 · Auswertung</div>
@@ -62874,9 +62874,9 @@ const _POT_MINI = [
          'Kleiner Widerstand macht die Lampe nicht dunkler.',
          'Sie geht nicht aus, sondern wird heller.'] },
   { q: '3. Wofür benutzt man ein Potentiometer im Alltag?',
-    opts: ['Als Dimmer oder Lautstärkeregler', 'Als Batterie', 'Als Sicherung'], correct: 0,
+    opts: ['Als Dimmer oder Lautstärkeregler', 'Als Energiequelle', 'Als Sicherung'], correct: 0,
     fb: ['Richtig! Zum stufenlosen Regeln, z. B. Dimmer oder Lautstärke.',
-         'Eine Batterie ist eine Stromquelle.',
+         'Eine Energiequelle treibt den Strom an, sie regelt ihn nicht.',
          'Eine Sicherung hat eine andere Aufgabe.'] }
 ];
 function _potMiniHTML() {
@@ -63211,10 +63211,10 @@ function _eenArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('energie-rs')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Wovon hängt es ab, wie viel elektrische Energie ein Gerät verbraucht?</b></div></div>
+        <div class="ab-t"><b>Wovon hängt es ab, wie viel elektrische Energie ein Gerät umwandelt?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
-        ${ta('v1', 'Ich vermute, dass ein Gerät mehr Energie verbraucht, wenn …', 2)}</div>
+        ${ta('v1', 'Ich vermute, dass ein Gerät mehr Energie umwandelt, wenn …', 2)}</div>
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
@@ -63246,7 +63246,7 @@ function _eenArbeitsblattHTML() {
         1 kWh = ${inp('m3', 'Zahl')} Wh. Mehr Leistung oder längere Zeit → mehr Energie.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
-        <div class="ab-t">Eine Heizung mit 1500 W läuft 4 Stunden. Wie viel Energie in Wh und in kWh verbraucht sie?</div>
+        <div class="ab-t">Eine Heizung mit 1500 W läuft 4 Stunden. Wie viel Energie in Wh und in kWh wandelt sie um?</div>
         ${ta('tr1', 'E = P · t = 1500 W · 4 h = … Wh = … kWh', 3)}</div>
 
       <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
@@ -63266,7 +63266,7 @@ function _eenArbeitsblattHTML() {
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> E wächst mit P und mit t. Beispiele: LED 10 W·3 h = 30 Wh = 0,03 kWh · TV 100 W·3 h = 300 Wh = 0,3 kWh · Wasserkocher 2000 W·1 h = 2000 Wh = 2 kWh.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Elektrische Energie E = P · t (Einheit Joule; im Alltag Wh bzw. kWh). 1 kWh = 1000 Wh = 3,6 MJ. Die Energie ist das Produkt aus Leistung und Zeit – wichtig für den Stromverbrauch.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Elektrische Energie E = P · t (Einheit Joule; im Alltag Wh bzw. kWh). 1 kWh = 1000 Wh = 3,6 MJ. Die Energie ist das Produkt aus Leistung und Zeit – wichtig für die Stromrechnung.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Leistung und Energie sind dasselbe." (2) „Nur die Leistung zählt, nicht die Zeit." (3) „1 kWh = 100 Wh."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Leistung (momentan) vs. Energie (über Zeit) trennen; E = P·t rechnen; Einheiten Wh↔kWh (÷/×1000).</div>
         <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 Wh/0,03 · 300 Wh/0,3 · 2000 Wh/2. 6.1 E = P·t · 6.2 1000 Wh · 6.3 „mehr Leistung oder längere Zeit". Merksatz: P·t · Wattstunde (Wh) · 1000. Transfer: E = 1500·4 = 6000 Wh = 6 kWh. Minidiagnose: 1→E = P·t · 2→1000 Wh · 3→Sie wird doppelt so groß.</div>
@@ -63354,7 +63354,7 @@ function _kosHTML() {
       <div>
         <div class="fpm-label">Energie &amp; Kosten</div>
         <div class="lmp-status" id="kosStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Der Stromzähler misst die verbrauchte Energie in <b>Kilowattstunden (kWh)</b>. Die Kosten berechnet man so: <b>Kosten = Energie (kWh) · Preis pro kWh</b>. Geräte mit hoher Leistung oder langer Laufzeit kosten am meisten.</div>
+        <div class="fpm-note" style="margin-top:10px">Der Stromzähler misst die elektrische Energie in <b>Kilowattstunden (kWh)</b>. Die Kosten berechnet man so: <b>Kosten = Energie (kWh) · Preis pro kWh</b>. Geräte mit hoher Leistung oder langer Laufzeit kosten am meisten.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -63451,7 +63451,7 @@ function _kosArbeitsblattHTML() {
         Die Kosten berechnet man mit: Kosten = ${inp('m2', 'was?')} · ${inp('m3', 'was?')}.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Aufgabe)</div>
-        <div class="ab-t">Eine Familie verbraucht im Jahr 3000 kWh. Wie viel zahlt sie bei 0,30 € pro kWh?</div>
+        <div class="ab-t">Eine Familie nutzt im Jahr 3000 kWh. Wie viel zahlt sie bei 0,30 € pro kWh?</div>
         ${ta('tr1', 'Kosten = 3000 kWh · 0,30 €/kWh = … €', 3)}</div>
 
       <div class="ab-sec"><div class="ab-h">🔎 Minidiagnose – teste dich selbst</div>
@@ -63496,7 +63496,7 @@ const _KOS_MINI = [
          'So herum stimmt die Formel nicht.'] },
   { q: '3. Welches Gerät verursacht am meisten Kosten?',
     opts: ['Eine 10-W-LED (3 h/Tag)', 'Ein 2000-W-Wasserkocher (1 h/Tag)', 'Beide gleich'], correct: 1,
-    fb: ['Die LED verbraucht sehr wenig.',
+    fb: ['Die LED wandelt sehr wenig Energie um.',
          'Richtig! Hohe Leistung → viel Energie → mehr Kosten.',
          'Die Geräte unterscheiden sich stark.'] }
 ];
@@ -63544,7 +63544,7 @@ function _sprHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim spr-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🌱 Energie sparen im Haushalt</h3>
-    <div class="fpm-note" style="margin-top:2px">Wähle eine Sparmaßnahme. Vergleiche den Verbrauch pro Jahr vorher und nachher. Wie viel Energie und Geld spart man? (Preis: 0,30&nbsp;€ pro kWh.)</div>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Sparmaßnahme. Vergleiche den Energiebedarf pro Jahr vorher und nachher. Wie viel Energie und Geld spart man? (Preis: 0,30&nbsp;€ pro kWh.)</div>
     <div class="fpm-grid">
       <div>
         <canvas id="sprAnim" width="440" height="236" class="phys-anim-cv"></canvas>
@@ -63668,7 +63668,7 @@ function _sprArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Jede Maßnahme senkt den Jahresverbrauch. Beispiele (0,30 €/kWh): Glühlampe 60 W→LED 8 W (4 h/Tag): ~87,6 → ~11,7 kWh, Ersparnis ≈ 75,9 kWh ≈ 22,77 €. Standby 10 W (20 h)→aus: ~73 kWh ≈ 21,90 €. Kühlschrank alt 0,55→neu 0,25 kWh/Tag: ~109,5 kWh ≈ 32,85 €.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Jede Maßnahme senkt den Energiebedarf pro Jahr. Beispiele (0,30 €/kWh): Glühlampe 60 W→LED 8 W (4 h/Tag): ~87,6 → ~11,7 kWh, Ersparnis ≈ 75,9 kWh ≈ 22,77 €. Standby 10 W (20 h)→aus: ~73 kWh ≈ 21,90 €. Kühlschrank alt 0,55→neu 0,25 kWh/Tag: ~109,5 kWh ≈ 32,85 €.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Energiesparen = weniger elektrische Energie (kWh) umsetzen: effizientere Geräte (Energielabel), Standby-Verluste vermeiden, Laufzeiten verkürzen, niedrigere Temperaturen (Waschen/Heizen). Weniger kWh → weniger Kosten (Kosten = kWh · Preis) und weniger CO₂.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Standby verbraucht nichts." (2) „Eine einzelne Lampe ist egal." (3) „Sparen bringt kaum Geld."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Ersparnis konkret in €/Jahr rechnen; Dauerläufer (Kühlschrank, Standby) betonen; Energielabel/LED als Anker.</div>
@@ -63684,18 +63684,18 @@ function _sprArbeitsblattHTML() {
 const _SPR_MINI = [
   { q: '1. Was bedeutet Energie sparen für die Stromrechnung?',
     opts: ['Mehr kWh, mehr Kosten', 'Weniger kWh, weniger Kosten', 'Es ändert nichts'], correct: 1,
-    fb: ['Sparen erhöht den Verbrauch nicht.',
+    fb: ['Sparen erhöht den Energiebedarf nicht.',
          'Richtig! Weniger Energie (kWh) → weniger Kosten.',
          'Es macht sehr wohl einen Unterschied.'] },
   { q: '2. Welche Lampe spart am meisten Energie?',
     opts: ['Glühlampe (60 W)', 'LED (8 W)', 'Beide gleich'], correct: 1,
-    fb: ['Die Glühlampe verbraucht viel mehr.',
+    fb: ['Die Glühlampe wandelt viel mehr Energie um.',
          'Richtig! Die LED braucht viel weniger Leistung.',
          'Die LED ist deutlich sparsamer.'] },
   { q: '3. Bringt es etwas, Geräte ganz auszuschalten statt im Standby zu lassen?',
     opts: ['Ja, das spart Energie', 'Nein, Standby verbraucht nichts', 'Nur bei Lampen'], correct: 0,
-    fb: ['Richtig! Standby verbraucht rund um die Uhr Energie.',
-         'Standby verbraucht durchaus Strom.',
+    fb: ['Richtig! Auch im Standby wird rund um die Uhr Energie umgewandelt.',
+         'Auch im Standby wird Energie umgewandelt.',
          'Es gilt für alle Geräte mit Standby.'] }
 ];
 function _sprMiniHTML() {
@@ -64174,7 +64174,7 @@ function _vmsHTML() {
       <div>
         <canvas id="vmsAnim" width="440" height="236" class="phys-anim-cv"></canvas>
         <div class="sim-btn-row" style="margin-top:6px">
-          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          <span class="fpm-label" style="align-self:center">Geschwindigkeit:</span>
           ${Object.keys(_VMS_SPEED).map(k => `<button class="sim-btn${_vms.speed === k ? ' primary' : ''}" id="vmsS_${k}" onclick="_vmsSet('${k}')">${_VMS_SPEED[k].name}</button>`).join('')}
         </div>
         <div class="sim-btn-row" style="margin-top:4px">
@@ -64247,7 +64247,7 @@ function _vmsDraw(ctx, cv) {
   if (_vms.fertig) {
     ctx.fillStyle = '#86efac'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('v = s / t = ' + _VMS_S + ' m / ' + _vmsTMess().toFixed(1).replace('.', ',') + ' s = ' + _vmsV().toFixed(1).replace('.', ',') + ' m/s', W / 2, 22);
-  } else { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Tempo: ' + _VMS_SPEED[_vms.speed].name, W / 2, 22); }
+  } else { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('Geschwindigkeit: ' + _VMS_SPEED[_vms.speed].name, W / 2, 22); }
 }
 
 // ═══════════════════════════════════════════════════════
@@ -64267,7 +64267,7 @@ function _vmsArbeitsblattHTML() {
         <ol class="ab-ol">
           <li>Miss die Strecke s (hier 10 m).</li>
           <li>Starte die Messung und stoppe die Zeit t.</li>
-          <li>Berechne v = s / t für verschiedene Tempos.</li>
+          <li>Berechne v = s / t für verschiedene Geschwindigkeiten.</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle (s = 10 m)</div>
@@ -64771,7 +64771,7 @@ function _glmHTML() {
       <div>
         <canvas id="glmAnim" width="440" height="236" class="phys-anim-cv"></canvas>
         <div class="sim-btn-row" style="margin-top:6px">
-          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          <span class="fpm-label" style="align-self:center">Geschwindigkeit:</span>
           ${Object.keys(_GLM_SPEED).map(k => `<button class="sim-btn${_glm.speed === k ? ' primary' : ''}" id="glmS_${k}" onclick="_glmSet('${k}')">${_GLM_SPEED[k].name}</button>`).join('')}
         </div>
         <div class="sim-btn-row" style="margin-top:4px">
@@ -64854,7 +64854,7 @@ function _glmArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Lass den Wagen mit konstantem Tempo fahren.</li>
+          <li>Lass den Wagen mit konstanter Geschwindigkeit fahren.</li>
           <li>Beobachte die Marken, die jede Sekunde gesetzt werden.</li>
           <li>Vergleiche die Abstände zwischen den Marken.</li>
         </ol></div>
@@ -65573,7 +65573,7 @@ function _radHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim rad-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">📸 Geschwindigkeitsmessung im Straßenverkehr</h3>
-    <div class="fpm-note" style="margin-top:2px">Ein Blitzer misst das Tempo eines Autos. Stelle die Geschwindigkeit und das erlaubte Tempo ein und lass das Auto fahren. Wird es geblitzt?</div>
+    <div class="fpm-note" style="margin-top:2px">Ein Blitzer misst die Geschwindigkeit eines Autos. Stelle die Geschwindigkeit und die erlaubte Höchstgeschwindigkeit ein und lass das Auto fahren. Wird es geblitzt?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="radAnim" width="440" height="236" class="phys-anim-cv"></canvas>
@@ -65663,7 +65663,7 @@ function _radDraw(ctx, cv) {
   // Ergebnis oben
   if (_rad.gemessen) {
     ctx.fillStyle = _radZuSchnell() ? '#fca5a5' : '#86efac'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
-    ctx.fillText(_radZuSchnell() ? ('📸 zu schnell: +' + (_rad.speed - _rad.limit) + ' km/h') : '✓ Tempo ok', W / 2 + 60, 26);
+    ctx.fillText(_radZuSchnell() ? ('📸 zu schnell: +' + (_rad.speed - _rad.limit) + ' km/h') : '✓ nicht zu schnell', W / 2 + 60, 26);
   } else { ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('gemessen wird beim Blitzer', W / 2 + 60, 22); }
 }
 
@@ -65682,7 +65682,7 @@ function _radArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Stelle das erlaubte Tempo (z. B. 50) ein.</li>
+          <li>Stelle die erlaubte Höchstgeschwindigkeit (z. B. 50) ein.</li>
           <li>Lass Autos mit verschiedenen Geschwindigkeiten vorbeifahren.</li>
           <li>Notiere, welche geblitzt werden und um wie viel sie zu schnell sind.</li>
         </ol></div>
@@ -65727,7 +65727,7 @@ function _radArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Autos mit Tempo > Limit werden geblitzt, Autos ≤ Limit nicht. Bei erlaubten 50: 30 ok, 50 ok, 70 geblitzt (20 km/h zu schnell).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Autos mit v > Limit werden geblitzt, Autos ≤ Limit nicht. Bei erlaubten 50: 30 ok, 50 ok, 70 geblitzt (20 km/h zu schnell).</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Radar/Laser messen die Momentangeschwindigkeit (Doppler bzw. Weg/Zeit über sehr kurze Strecke). Die Abschnittskontrolle (Section Control) misst die Zeit über eine feste Strecke und bildet die Durchschnittsgeschwindigkeit v = s/t. Vergleich mit dem Tempolimit → Verstoß, wenn v größer ist.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Blitzer bremst das Auto." (2) „Man wird immer geblitzt." (3) „Genau am Limit wird geblitzt."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Vergleich gemessen ↔ erlaubt; v = s/t bei der Abschnittskontrolle rechnen; Einheiten m/s ↔ km/h (×3,6).</div>
@@ -65805,7 +65805,7 @@ function _kwkHTML() {
       <div>
         <div class="fpm-label">Was bewirkt die Kraft?</div>
         <div class="lmp-status" id="kwkStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Eine Kraft kann einen Körper <b>verformen</b>, ihn <b>in Bewegung setzen oder abbremsen</b> oder seine <b>Richtung ändern</b>. Immer wenn sich Form, Tempo oder Richtung ändern, hat eine Kraft gewirkt.</div>
+        <div class="fpm-note" style="margin-top:10px">Eine Kraft kann einen Körper <b>verformen</b>, ihn <b>in Bewegung setzen oder abbremsen</b> oder seine <b>Richtung ändern</b>. Immer wenn sich Form, Geschwindigkeit oder Richtung ändern, hat eine Kraft gewirkt.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -66011,8 +66011,8 @@ function _kwkArbeitsblattHTML() {
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> Knete: wird eingedrückt → <i>verformt</i>. Wagen: rollt aus der Ruhe los und wird schneller → <i>Bewegungsänderung</i>. Ball: rollt geradeaus, wird durch den Stoß von oben abgelenkt → <i>Richtungsänderung</i>.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Eine Kraft ist unsichtbar; erkennbar ist nur ihre Wirkung. Drei Grundwirkungen: (1) Verformung, (2) Änderung des Bewegungszustands (beschleunigen/abbremsen), (3) Änderung der Bewegungsrichtung. Kraft wird in Newton (N) gemessen und als Pfeil dargestellt (Betrag + Richtung).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Man kann eine Kraft direkt sehen.“ (2) „Nur ein Schieben/Ziehen ist eine Kraft.“ (3) „Bremsen ist keine Kraftwirkung.“ (4) „Bei gleichbleibender Richtung wirkt keine Kraft.“</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Fragen lenken auf „Was hat sich verändert – Form, Tempo oder Richtung?“; Kraftpfeil beachten; Alltagsbeispiele sammeln lassen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> 6.1 verformen · Bewegung (Tempo) ändern · Richtung ändern. 6.2 nur ihre Wirkung. 6.3 Bewegungsänderung (Abbremsen). Merksatz: Wirkung · verformen · Bewegung/Tempo · Richtung. Minidiagnose: 1→an ihrer Wirkung · 2→Bewegungsänderung · 3→Verformung.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Fragen lenken auf „Was hat sich verändert – Form, Geschwindigkeit oder Richtung?“; Kraftpfeil beachten; Alltagsbeispiele sammeln lassen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 verformen · Bewegung (Geschwindigkeit) ändern · Richtung ändern. 6.2 nur ihre Wirkung. 6.3 Bewegungsänderung (Abbremsen). Merksatz: Wirkung · verformen · Bewegung/Geschwindigkeit · Richtung. Minidiagnose: 1→an ihrer Wirkung · 2→Bewegungsänderung · 3→Verformung.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -66023,7 +66023,7 @@ function _kwkArbeitsblattHTML() {
 
 const _KWK_MINI = [
   { q: '1. Woran erkennt man, dass eine Kraft gewirkt hat?',
-    opts: ['An ihrer Wirkung (Form, Tempo oder Richtung ändern sich)', 'Man sieht die Kraft selbst', 'An ihrer Farbe'], correct: 0,
+    opts: ['An ihrer Wirkung (Form, Geschwindigkeit oder Richtung ändern sich)', 'Man sieht die Kraft selbst', 'An ihrer Farbe'], correct: 0,
     fb: ['Richtig! Kräfte sind unsichtbar – man erkennt sie nur an ihrer Wirkung.',
          'Nein, eine Kraft selbst ist unsichtbar.',
          'Kräfte haben keine Farbe.'] },
@@ -66064,7 +66064,7 @@ function _kwkSelf(n) {
 let _kwn = null;
 const _KWN_SIT = [
   { k: 'schwamm', name: 'Schwamm ausdrücken', ic: '🧽', cat: 'verform', why: 'Der Schwamm wird zusammengedrückt – seine Form ändert sich (Verformung).' },
-  { k: 'wagen', name: 'Einkaufswagen anschieben', ic: '🛒', cat: 'bewegen', why: 'Der ruhende Wagen kommt in Fahrt – sein Tempo ändert sich (Bewegungsänderung).' },
+  { k: 'wagen', name: 'Einkaufswagen anschieben', ic: '🛒', cat: 'bewegen', why: 'Der ruhende Wagen kommt in Fahrt – seine Geschwindigkeit ändert sich (Bewegungsänderung).' },
   { k: 'tennis', name: 'Tennisball zurückschlagen', ic: '🎾', cat: 'richtung', why: 'Der ankommende Ball fliegt in eine andere Richtung zurück (Richtungsänderung).' },
   { k: 'dose', name: 'Getränkedose eindrücken', ic: '🥫', cat: 'verform', why: 'Die Dose wird verbeult – ihre Form ändert sich (Verformung).' },
   { k: 'bremsen', name: 'Fahrrad abbremsen', ic: '🚲', cat: 'bewegen', why: 'Das Rad wird langsamer – auch Abbremsen ist eine Bewegungsänderung.' },
@@ -66201,7 +66201,7 @@ function _kwnArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
           <li>Wähle nacheinander jede Situation aus.</li>
-          <li>Überlege: Ändert sich die Form, das Tempo oder die Richtung?</li>
+          <li>Überlege: Ändert sich die Form, die Geschwindigkeit oder die Richtung?</li>
           <li>Ordne sie der passenden Wirkung zu und prüfe die Rückmeldung.</li>
         </ol></div>
 
@@ -66252,8 +66252,8 @@ function _kwnArbeitsblattHTML() {
         <div class="ab-t"><b>Erwartete Zuordnung.</b> Verformen: Schwamm ausdrücken, Dose eindrücken. Bewegen/Abbremsen: Einkaufswagen anschieben, Fahrrad abbremsen. Richtung ändern: Tennisball zurückschlagen, Ball an der Wand abprallen.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Kräfte wirken nicht nur als Schieben/Ziehen. Drei Grundwirkungen: (1) Verformung, (2) Änderung des Bewegungszustands – dazu gehört auch das Abbremsen, (3) Änderung der Bewegungsrichtung. Häufig treten mehrere zugleich auf (Tennisball: verformt sich UND ändert die Richtung).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bremsen ist keine Kraftwirkung.“ (2) „Eine Kraft ist immer nur Schieben oder Ziehen.“ (3) „Eine Kraft hat immer genau eine Wirkung.“</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Leitfrage „Ändert sich Form, Tempo oder Richtung?“; Abbremsen als Tempo-Änderung deuten; beim Tennisball beide Wirkungen benennen lassen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> 6.1 verformen · Bewegung/Tempo ändern · Richtung ändern. 6.2 ja, weil sich das Tempo ändert (Bewegungsänderung). 6.3 z. B. Tennisball: verformen + Richtung ändern. Merksatz: verformen · Bewegung/Tempo · Richtung · Abbremsen · gleichzeitig. Transfer: Der Ball wird verformt und ändert seine Richtung. Minidiagnose: 1→verformen, Bewegung ändern, Richtung ändern · 2→ja (Bewegungsänderung) · 3→Richtung ändern.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Leitfrage „Ändert sich Form, Geschwindigkeit oder Richtung?“; Abbremsen als Geschwindigkeitsänderung deuten; beim Tennisball beide Wirkungen benennen lassen.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 verformen · Bewegung/Geschwindigkeit ändern · Richtung ändern. 6.2 ja, weil sich die Geschwindigkeit ändert (Bewegungsänderung). 6.3 z. B. Tennisball: verformen + Richtung ändern. Merksatz: verformen · Bewegung/Geschwindigkeit · Richtung · Abbremsen · gleichzeitig. Transfer: Der Ball wird verformt und ändert seine Richtung. Minidiagnose: 1→verformen, Bewegung ändern, Richtung ändern · 2→ja (Bewegungsänderung) · 3→Richtung ändern.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -68977,12 +68977,12 @@ function _glbHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim glb-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">📏 Warum ist „gleich schnell“ nicht dasselbe wie „gleich weit“?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der Wagen fährt mit gleichbleibendem Tempo. Jede Sekunde setzt er eine Marke. Wie groß sind die Abstände – und wie sieht das s-t-Diagramm aus?</div>
+    <div class="fpm-note" style="margin-top:2px">Der Wagen fährt mit gleichbleibender Geschwindigkeit. Jede Sekunde setzt er eine Marke. Wie groß sind die Abstände – und wie sieht das s-t-Diagramm aus?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="glbAnim" width="440" height="240" class="phys-anim-cv"></canvas>
         <div class="sim-btn-row" style="margin-top:6px">
-          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          <span class="fpm-label" style="align-self:center">Geschwindigkeit:</span>
           <button class="sim-btn" id="glblangsam" onclick="_glbSet('langsam')">langsam</button>
           <button class="sim-btn primary" id="glbmittel" onclick="_glbSet('mittel')">mittel</button>
           <button class="sim-btn" id="glbschnell" onclick="_glbSet('schnell')">schnell</button>
@@ -69028,7 +69028,7 @@ function _glbReset() {
 function _glbStatus() {
   const el = document.getElementById('glbStatus'); if (!el) return;
   const v = _glbV();
-  el.innerHTML = `Tempo <b>v = ${v} m/s</b> (konstant). In jeder Sekunde <b>${v} m</b> → alle Marken gleich weit. Aktuell: t = ${_glb.t.toFixed(1).replace('.', ',')} s, s = ${_glb.s.toFixed(0)} m.`;
+  el.innerHTML = `Geschwindigkeit <b>v = ${v} m/s</b> (konstant). In jeder Sekunde <b>${v} m</b> → alle Marken gleich weit. Aktuell: t = ${_glb.t.toFixed(1).replace('.', ',')} s, s = ${_glb.s.toFixed(0)} m.`;
   el.className = 'lmp-status on';
 }
 
@@ -69092,13 +69092,13 @@ function _glbArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Wähle ein Tempo und starte den Wagen.</li>
+          <li>Wähle eine Geschwindigkeit und starte den Wagen.</li>
           <li>Beobachte die Abstände der Sekundenmarken.</li>
           <li>Schau, welche Form das s-t-Diagramm annimmt.</li>
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
-        <div class="ab-t">Tempo mittel (10 m/s). Trage den Weg nach 1, 2 und 3 Sekunden ein.</div>
+        <div class="ab-t">Geschwindigkeit mittel (10 m/s). Trage den Weg nach 1, 2 und 3 Sekunden ein.</div>
         <table class="ab-table"><tbody>
           <tr><td>nach 1 s</td><td>s = ${inp('s1', 'm')}</td></tr>
           <tr><td>nach 2 s</td><td>s = ${inp('s2', 'm')}</td></tr>
@@ -69140,10 +69140,10 @@ function _glbArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei konstantem Tempo (z. B. 10 m/s) haben die Sekundenmarken gleiche Abstände (je 10 m). Weg nach 1/2/3 s = 10/20/30 m. Das s-t-Diagramm ist eine Gerade durch den Ursprung.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei konstanter Geschwindigkeit (z. B. 10 m/s) haben die Sekundenmarken gleiche Abstände (je 10 m). Weg nach 1/2/3 s = 10/20/30 m. Das s-t-Diagramm ist eine Gerade durch den Ursprung.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Gleichförmige Bewegung = konstante Geschwindigkeit. Es gilt s = v · t, also ist s proportional zu t (Ursprungsgerade im s-t-Diagramm; Steigung = Geschwindigkeit). „Gleich schnell“ meint konstantes v – der zurückgelegte Weg wächst dabei stetig weiter.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Gleich schnell heißt, der Wagen bleibt an einer Stelle.“ (2) „Die Marken werden immer größer.“ (das wäre beschleunigt). (3) „Das s-t-Diagramm ist eine Kurve.“</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Marken-Abstände direkt vergleichen; s = v · t für einzelne Sekunden ausrechnen; Steigung = Tempo.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Marken-Abstände direkt vergleichen; s = v · t für einzelne Sekunden ausrechnen; Steigung = Geschwindigkeit.</div>
         <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10/20/30 m. 6.1 alle gleich groß. 6.2 eine Gerade durch den Ursprung. 6.3 doppelten Weg. Merksatz: konstant · gleiche · Gerade · proportional. Minidiagnose: 1→konstante Geschwindigkeit, gleiche Wege · 2→Gerade durch den Ursprung · 3→doppelter Weg.</div>
       </details>
 
@@ -69156,7 +69156,7 @@ function _glbArbeitsblattHTML() {
 const _GLB_MINI = [
   { q: '1. Was bedeutet eine gleichförmige Bewegung?',
     opts: ['Konstante Geschwindigkeit – gleiche Wege in gleichen Zeiten', 'Immer schneller werden', 'Stillstand'], correct: 0,
-    fb: ['Richtig! Das Tempo bleibt gleich, die Wege pro Sekunde sind gleich.',
+    fb: ['Richtig! Die Geschwindigkeit bleibt gleich, die Wege pro Sekunde sind gleich.',
          'Das wäre eine beschleunigte Bewegung.',
          'Bei Stillstand ändert sich der Weg gar nicht.'] },
   { q: '2. Welche Form hat das s-t-Diagramm einer gleichförmigen Bewegung?',
@@ -69209,7 +69209,7 @@ function _stgHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim stg-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">📈 Was verrät die Steilheit einer Linie über die Bewegung?</h3>
-    <div class="fpm-note" style="margin-top:2px">Jede Linie im s-t-Diagramm erzählt eine Bewegung. Wähle eine Linie und beobachte, was der Körper oben tut. Wie hängen <b>Steilheit</b> und <b>Tempo</b> zusammen?</div>
+    <div class="fpm-note" style="margin-top:2px">Jede Linie im s-t-Diagramm erzählt eine Bewegung. Wähle eine Linie und beobachte, was der Körper oben tut. Wie hängen <b>Steilheit</b> und <b>Geschwindigkeit</b> zusammen?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="stgAnim" width="440" height="250" class="phys-anim-cv"></canvas>
@@ -69391,7 +69391,7 @@ function _stgArbeitsblattHTML() {
 
 const _STG_MINI = [
   { q: '1. Was gilt für die Steilheit einer Linie im s-t-Diagramm?',
-    opts: ['Je steiler, desto schneller', 'Je steiler, desto langsamer', 'Die Steilheit sagt nichts über das Tempo'], correct: 0,
+    opts: ['Je steiler, desto schneller', 'Je steiler, desto langsamer', 'Die Steilheit sagt nichts über die Geschwindigkeit'], correct: 0,
     fb: ['Richtig! Die Steigung ist die Geschwindigkeit – steil = schnell.',
          'Genau umgekehrt: steil bedeutet schnell.',
          'Doch – die Steigung ist gerade die Geschwindigkeit.'] },
@@ -70179,12 +70179,12 @@ function _brwHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim brw-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🚦 Warum braucht ein Auto zum Bremsen viel mehr Platz, als man denkt?</h3>
-    <div class="fpm-note" style="margin-top:2px">Zwischen „Gefahr sehen" und „Stehen" vergeht überraschend viel Weg. Wähle ein Tempo und starte: Wie lang ist der Reaktions­weg, der Brems­weg – und was passiert bei doppelter Geschwindigkeit?</div>
+    <div class="fpm-note" style="margin-top:2px">Zwischen „Gefahr sehen" und „Stehen" vergeht überraschend viel Weg. Wähle eine Geschwindigkeit und starte: Wie lang ist der Reaktions­weg, der Brems­weg – und was passiert bei doppelter Geschwindigkeit?</div>
     <div class="fpm-grid">
       <div>
         <canvas id="brwAnim" width="440" height="250" class="phys-anim-cv"></canvas>
         <div class="sim-btn-row" style="margin-top:6px">
-          <span class="fpm-label" style="align-self:center">Tempo:</span>
+          <span class="fpm-label" style="align-self:center">Geschwindigkeit:</span>
           <button class="sim-btn" id="brw30" onclick="_brwSet(30)">30 km/h</button>
           <button class="sim-btn primary" id="brw50" onclick="_brwSet(50)">50 km/h</button>
           <button class="sim-btn" id="brw100" onclick="_brwSet(100)">100 km/h</button>
@@ -70197,7 +70197,7 @@ function _brwHTML() {
       <div>
         <div class="fpm-label">Anhalteweg = Reaktionsweg + Bremsweg</div>
         <div class="lmp-status" id="brwStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Der <b>Anhalteweg</b> besteht aus zwei Teilen: dem <b>Reaktionsweg</b> (du fährst noch mit vollem Tempo weiter, bis du reagierst – wächst mit v) und dem <b>Bremsweg</b> (bis zum Stillstand). Der Bremsweg wächst mit dem <b>Quadrat</b> der Geschwindigkeit: <b>doppeltes Tempo → vierfacher Bremsweg</b>.</div>
+        <div class="fpm-note" style="margin-top:10px">Der <b>Anhalteweg</b> besteht aus zwei Teilen: dem <b>Reaktionsweg</b> (du fährst noch mit unveränderter Geschwindigkeit weiter, bis du reagierst – wächst mit v) und dem <b>Bremsweg</b> (bis zum Stillstand). Der Bremsweg wächst mit dem <b>Quadrat</b> der Geschwindigkeit: <b>doppelte Geschwindigkeit → vierfacher Bremsweg</b>.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -70230,9 +70230,9 @@ function _brwReset() {
 function _brwStatus() {
   const el = document.getElementById('brwStatus'); if (!el) return;
   const ph = _brwPhase(_brw.t);
-  const phTxt = ph === 'reaktion' ? '🟡 Reaktionsphase (noch volles Tempo)'
+  const phTxt = ph === 'reaktion' ? '🟡 Reaktionsphase (noch ungebremst)'
     : ph === 'bremsen' ? '🔴 Bremsphase (wird langsamer)' : '✅ steht';
-  el.innerHTML = `Tempo <b>v = ${_brw.v} km/h</b>. Aktuell: ${phTxt}.<br>`
+  el.innerHTML = `Geschwindigkeit <b>v = ${_brw.v} km/h</b>. Aktuell: ${phTxt}.<br>`
     + `Reaktionsweg = <b>${_brwSR().toFixed(0)} m</b> · Bremsweg = <b>${_brwSB().toFixed(0)} m</b> · `
     + `Anhalteweg = <b>${_brwSA().toFixed(0)} m</b>.`;
   el.className = 'lmp-status on';
@@ -70270,7 +70270,7 @@ function _brwDraw(ctx, cv) {
   // Kopfzeile
   ctx.fillStyle = ph === 'reaktion' ? '#ca8a04' : (ph === 'bremsen' ? '#dc2626' : '#16a34a');
   ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText(ph === 'reaktion' ? '🟡 Reaktion – noch volles Tempo' : (ph === 'bremsen' ? '🔴 Bremsen …' : '✅ steht'), xL, 24);
+  ctx.fillText(ph === 'reaktion' ? '🟡 Reaktion – noch ungebremst' : (ph === 'bremsen' ? '🔴 Bremsen …' : '✅ steht'), xL, 24);
   ctx.fillStyle = '#334155'; ctx.textAlign = 'right'; ctx.fillText('v = ' + _brw.v + ' km/h   Anhalteweg ' + sA.toFixed(0) + ' m', xR, 24);
   // ── Vergleichsbalken: Bremsweg bei 30/50/100 (∝ v²) ──
   const by0 = 150, bh = 20, bgap = 8, blabW = 66;
@@ -70295,10 +70295,10 @@ function _brwArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('bremsweg')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Woraus setzt sich der Weg zusammen, bis ein Auto steht – und warum wird er bei höherem Tempo so viel länger?</b></div></div>
+        <div class="ab-t"><b>Woraus setzt sich der Weg zusammen, bis ein Auto steht – und warum wird er bei höherer Geschwindigkeit so viel länger?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
-        ${ta('v1', 'Ich vermute, dass sich der Bremsweg bei doppeltem Tempo … ändert.', 2)}</div>
+        ${ta('v1', 'Ich vermute, dass sich der Bremsweg bei doppelter Geschwindigkeit … ändert.', 2)}</div>
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
@@ -70329,7 +70329,7 @@ function _brwArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">7 · Merksatz (ergänze die Lücken)</div>
         <div class="ab-t">Der Anhalteweg ist der ${inp('m1', '?')} plus der ${inp('m2', '?')}. Der Reaktionsweg wächst gleichmäßig mit der Geschwindigkeit.<br>
-        Der Bremsweg wächst mit dem ${inp('m3', '?')} der Geschwindigkeit: doppeltes Tempo bedeutet ${inp('m4', '?')} Bremsweg.</div></div>
+        Der Bremsweg wächst mit dem ${inp('m3', '?')} der Geschwindigkeit: doppelte Geschwindigkeit bedeutet ${inp('m4', '?')} Bremsweg.</div></div>
 
       <div class="ab-sec"><div class="ab-h">8 · Transfer (Alltag)</div>
         <div class="ab-t">Warum gilt vor Schulen und Kindergärten oft Tempo 30 statt 50?</div>
@@ -70354,7 +70354,7 @@ function _brwArbeitsblattHTML() {
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> 30 km/h: Reaktionsweg 9 m, Bremsweg 9 m, Anhalteweg 18 m. 50 km/h: 15 m + 25 m = 40 m. 100 km/h: 30 m + 100 m = 130 m. Der Bremsweg wächst viel stärker als der Reaktionsweg.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Anhalteweg = Reaktionsweg + Bremsweg. Reaktionsweg ∝ v (linear, gleichförmige Bewegung während der Reaktionszeit). Bremsweg ∝ v² (aus s = v²/(2a)) → doppelte Geschwindigkeit = vierfacher Bremsweg. Faustformeln mit vk = v/10: Reaktionsweg = vk·3, Bremsweg = vk².</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Doppeltes Tempo = doppelter Bremsweg.“ (tatsächlich vierfach). (2) „Sobald man bremst, steht das Auto sofort.“ (3) „Der Reaktionsweg ist unwichtig.“</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Bremsweg-Balken für 50 vs. 100 direkt vergleichen (25 → 100 m = 4×); Faustformeln je Tempo einsetzen; zwei Teile getrennt benennen.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Bremsweg-Balken für 50 vs. 100 direkt vergleichen (25 → 100 m = 4×); Faustformeln je Geschwindigkeit einsetzen; zwei Teile getrennt benennen.</div>
         <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 → 9/9/18 · 50 → 15/25/40 · 100 → 30/100/130. 6.1 Reaktionsweg + Bremsweg. 6.2 er vervierfacht sich (25 → 100 m). 6.3 vom Quadrat der Geschwindigkeit. Merksatz: Reaktionsweg · Bremsweg · Quadrat · vierfachen. Transfer: viel kürzer, sodass man rechtzeitig anhalten kann. Minidiagnose: 1→Reaktionsweg + Bremsweg · 2→vierfacher Bremsweg · 3→mit dem Quadrat von v.</div>
       </details>
 
@@ -70372,9 +70372,9 @@ const _BRW_MINI = [
          'Der Bremsweg gehört auch dazu.'] },
   { q: '2. Was passiert mit dem Bremsweg bei doppelter Geschwindigkeit?',
     opts: ['Er wird viermal so lang', 'Er wird doppelt so lang', 'Er bleibt gleich'], correct: 0,
-    fb: ['Richtig! Bremsweg ∝ v² – doppeltes Tempo = vierfacher Bremsweg.',
+    fb: ['Richtig! Bremsweg ∝ v² – doppelte Geschwindigkeit = vierfacher Bremsweg.',
          'Nur doppelt wäre er, wenn er linear von v abhinge – tut er aber nicht.',
-         'Nein, er hängt stark vom Tempo ab.'] },
+         'Nein, er hängt stark von der Geschwindigkeit ab.'] },
   { q: '3. Wovon hängt der Bremsweg besonders stark ab?',
     opts: ['Vom Quadrat der Geschwindigkeit', 'Von der Farbe des Autos', 'Von der Uhrzeit'], correct: 0,
     fb: ['Richtig! Der Bremsweg wächst mit v².',
@@ -70576,7 +70576,7 @@ function _fflArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Kugeln fallen synchron und kommen gleichzeitig an – egal ob die schwere Kugel 1, 5 oder 10 kg wiegt. Die Fallzeit bleibt gleich (bei 20 m ≈ 2,0 s). Die häufige Vermutung „schwerer = schneller“ bestätigt sich nicht.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Kugeln fallen synchron und kommen gleichzeitig an – egal ob die schwere Kugel eine Masse von 1, 5 oder 10 kg hat. Die Fallzeit bleibt gleich (bei 20 m ≈ 2,0 s). Die häufige Vermutung „schwerer = schneller“ bestätigt sich nicht.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Ohne Luftwiderstand fallen alle Körper mit derselben Fallbeschleunigung g ≈ 9,8 m/s² (freier Fall). Die Fallzeit t = √(2h/g) hängt nur von der Höhe ab, nicht von der Masse. Es gilt s = ½·g·t² und v = g·t. (Die Gewichtskraft ist zwar größer, aber die größere Masse ist auch „träger“ – beides hebt sich auf.)</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schwere Dinge fallen schneller.“ (gilt nur mit Luftwiderstand). (2) „Doppelte Masse = halbe Fallzeit.“ (3) „g hängt vom Gegenstand ab.“ (g ist für alle gleich).</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Fallzeit bei verschiedenen Massen direkt vergleichen; Höhe konstant halten; Vakuum-Idee betonen (Luft weglassen).</div>
@@ -70825,10 +70825,10 @@ function _lwdArbeitsblattHTML() {
 
 const _LWD_MINI = [
   { q: '1. Was bremst die Feder in der Luft?',
-    opts: ['Der Luftwiderstand', 'Ihr geringes Gewicht', 'Die Erdanziehung'], correct: 0,
+    opts: ['Der Luftwiderstand', 'Ihr geringes Gewicht', 'Die Gewichtskraft'], correct: 0,
     fb: ['Richtig! Die Luft bremst die großflächige Feder.',
          'Nein, nicht das Gewicht – im Vakuum fällt sie ja schnell.',
-         'Die Erdanziehung zieht alle Körper gleich stark nach unten.'] },
+         'Die Gewichtskraft beschleunigt alle Körper gleich stark nach unten.'] },
   { q: '2. Was passiert mit Feder und Stein im Vakuum?',
     opts: ['Beide fallen gleich schnell', 'Der Stein fällt schneller', 'Die Feder fällt gar nicht'], correct: 0,
     fb: ['Richtig! Ohne Luft gibt es keinen Luftwiderstand – freier Fall.',
@@ -70948,11 +70948,11 @@ function _lobHTML() {
         </div>
         <div class="lmp-status" id="lobStatus"></div>
         <div class="fpm-note" style="margin-top:10px">An jeder Oberfläche geschieht <b>alles drei gleichzeitig</b> – nur mit verschieden großen Anteilen. Zusammen ergeben sie immer das ganze auftreffende Licht.</div>
-        <div class="fpm-note" style="margin-top:8px">Der geschluckte Anteil macht den Körper <b>wärmer</b>. Deshalb heizt sich schwarzes Papier in der Sonne auf, ein Spiegel dagegen kaum.</div>
+        <div class="fpm-note" style="margin-top:8px">Der absorbierte Anteil macht den Körper <b>wärmer</b>. Deshalb heizt sich schwarzes Papier in der Sonne auf, ein Spiegel dagegen kaum.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      Spiegel wirft gerichtet zurück &nbsp;|&nbsp; weißes Papier streut nach allen Seiten &nbsp;|&nbsp; schwarzes Papier schluckt fast alles
+      Spiegel reflektiert gerichtet &nbsp;|&nbsp; weißes Papier streut nach allen Seiten &nbsp;|&nbsp; schwarzes Papier absorbiert fast alles
     </p>
   </div>`;
 }
@@ -70966,7 +70966,7 @@ function _lobSetF(f) {
 function _lobStatus() {
   const el = document.getElementById('lobStatus'); if (!el || !_lob) return;
   const f = _LOB_F[_lob.flaeche];
-  el.textContent = '🔦 ' + f.name + ': zurück ' + Math.round(f.R * 100) + ' %, hindurch ' + Math.round(f.T * 100) + ' %, geschluckt ' + Math.round(f.A * 100) + ' %.';
+  el.textContent = '🔦 ' + f.name + ': reflektiert ' + Math.round(f.R * 100) + ' %, durchgelassen ' + Math.round(f.T * 100) + ' %, absorbiert ' + Math.round(f.A * 100) + ' %.';
   el.className = 'lmp-status on';
 }
 
@@ -71041,7 +71041,7 @@ function _lobDraw(ctx, cv) {
   }
   // Anteilsbalken rechts
   const bx = W - 96, by = 20, bw = 84, bh = 15;
-  [['zurück', f.R, '#fde047'], ['hindurch', f.T, '#7dd3fc'], ['geschluckt', f.A, '#f87171']].forEach((z, i) => {
+  [['reflektiert', f.R, '#fde047'], ['durchgelassen', f.T, '#7dd3fc'], ['absorbiert', f.A, '#f87171']].forEach((z, i) => {
     const y = by + i * 30;
     ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(z[0], bx, y - 3);
     ctx.fillStyle = 'rgba(148,163,184,0.25)'; ctx.fillRect(bx, y, bw, bh);
@@ -71079,7 +71079,7 @@ function _rfgGeo() {
 function _rfgHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">📐 Nach welcher Regel wird Licht am Spiegel zurückgeworfen?</h3>
+    <h3 class="sim-h3">📐 Nach welcher Regel wird Licht am Spiegel reflektiert?</h3>
     <div class="fpm-note" style="margin-top:2px">Stelle den Einfallswinkel ein und drehe dann den Spiegel. Achte darauf, um wie viel der Lichtfleck an der Wand weiterspringt.</div>
     <div class="fpm-grid">
       <div>
@@ -71102,7 +71102,7 @@ function _rfgHTML() {
         </div>
         <div class="lmp-status" id="rfgStatus"></div>
         <div class="fpm-note" style="margin-top:10px">Gemessen wird immer zum <b>Lot</b>, der Senkrechten auf der Spiegelfläche – nicht zur Fläche selbst.</div>
-        <div class="fpm-note" style="margin-top:8px">Beim Drehen dreht sich das <b>Lot mit</b>. Deshalb schwenkt der zurückgeworfene Strahl um den <b>doppelten</b> Winkel.</div>
+        <div class="fpm-note" style="margin-top:8px">Beim Drehen dreht sich das <b>Lot mit</b>. Deshalb schwenkt der reflektierte Strahl um den <b>doppelten</b> Winkel.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Einfallswinkel = Reflexionswinkel &nbsp;|&nbsp; Spiegel um a gedreht → Strahl um 2a geschwenkt</p>
@@ -71189,7 +71189,7 @@ function _beiHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔷 Wo ändert das Licht beim Übergang von Luft in Glas seine Richtung?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der Strahl trifft auf die gerade Fläche des Halbrundkörpers. Verändere den Winkel und achte darauf, <b>an welcher einzigen Stelle</b> er knickt.</div>
+    <div class="fpm-note" style="margin-top:2px">Der Strahl trifft auf die gerade Fläche des Halbrundkörpers. Verändere den Winkel und achte darauf, <b>an welcher einzigen Stelle</b> er gebrochen wird.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="beiAnim" width="440" height="250" class="phys-anim-cv"></canvas>
@@ -71205,11 +71205,11 @@ function _beiHTML() {
             oninput="_beiSetT(this.value)" style="width:100%;accent-color:#0ea5e9">
         </div>
         <div class="lmp-status" id="beiStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Vor dem Glas, im Glas und dahinter läuft der Strahl <b>geradeaus</b>. Geknickt ist er nur an der Grenze – dort heißt es <b>Brechung</b>.</div>
-        <div class="fpm-note" style="margin-top:8px">Von Luft in Glas knickt er <b>zum Lot hin</b>: Der Winkel im Glas bleibt immer kleiner. Glas ist optisch dichter, das Licht läuft darin langsamer.</div>
+        <div class="fpm-note" style="margin-top:10px">Vor dem Glas, im Glas und dahinter läuft der Strahl <b>geradeaus</b>. Gebrochen wird er nur an der Grenzfläche – das heißt <b>Brechung</b>.</div>
+        <div class="fpm-note" style="margin-top:8px">Von Luft in Glas wird er <b>zum Lot hin</b> gebrochen: Der Winkel im Glas bleibt immer kleiner. Glas ist optisch dichter, das Licht läuft darin langsamer.</div>
       </div>
     </div>
-    <p class="sim-hint" style="text-align:center;margin:6px 0 0">An der runden Fläche kein zweiter Knick – dort trifft der Strahl senkrecht auf, er kommt ja aus dem Mittelpunkt.</p>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">An der runden Fläche keine zweite Brechung – dort trifft der Strahl senkrecht auf, er kommt ja aus dem Mittelpunkt.</p>
   </div>`;
 }
 function _beiSetT(v) {
@@ -71221,8 +71221,8 @@ function _beiStatus() {
   const el = document.getElementById('beiStatus'); if (!el || !_bei) return;
   const p = _beiPhi() * 180 / Math.PI;
   el.textContent = _bei.theta < 0.5
-    ? '🔷 Auf dem Lot: kein Knick. Winkel in der Luft 0°, im Glas 0°.'
-    : '🔷 Winkel in der Luft ' + _fpmNum(_bei.theta, 0) + '°, im Glas ' + _fpmNum(p, 0) + '° – der Strahl knickt zum Lot hin.';
+    ? '🔷 Auf dem Lot: keine Brechung. Winkel in der Luft 0°, im Glas 0°.'
+    : '🔷 Winkel in der Luft ' + _fpmNum(_bei.theta, 0) + '°, im Glas ' + _fpmNum(p, 0) + '° – der Strahl wird zum Lot hin gebrochen.';
   el.className = 'lmp-status on';
 }
 function _beiUpdate(dt) { if (_bei) _bei.t += dt; }
@@ -71266,7 +71266,7 @@ function _beiDraw(ctx, cv) {
   ctx.strokeStyle = 'rgba(248,113,113,' + (0.5 + 0.5 * puls).toFixed(3) + ')'; ctx.lineWidth = 2;
   ctx.beginPath(); ctx.arc(cx, cy, 9 + 4 * puls, 0, 2 * Math.PI); ctx.stroke();
   ctx.fillStyle = '#f87171'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
-  ctx.fillText('hier knickt es', cx - 16, cy + 34);
+  ctx.fillText('hier Brechung', cx - 16, cy + 34);
   // Winkelboegen
   ctx.lineWidth = 1.5;
   ctx.strokeStyle = '#fde047'; ctx.beginPath(); ctx.arc(cx, cy, 34, Math.PI - th, Math.PI); ctx.stroke();
@@ -71279,9 +71279,9 @@ function _beiDraw(ctx, cv) {
   ctx.strokeStyle = 'rgba(56,189,248,0.55)'; ctx.setLineDash([2, 3]); ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ex, ey); ctx.stroke(); ctx.setLineDash([]);
   ctx.fillStyle = '#7dd3fc'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText('kein zweiter Knick', ex + 6, ey - 6);
+  ctx.fillText('nicht gebrochen', ex + 6, ey - 6);
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('geradeaus – knicken – geradeaus', W / 2, H - 8);
+  ctx.fillText('geradeaus – Brechung – geradeaus', W / 2, H - 8);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -71314,8 +71314,8 @@ function _bauHTML() {
             oninput="_bauSetP(this.value)" style="width:100%;accent-color:#f59e0b">
         </div>
         <div class="lmp-status" id="bauStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Von Glas in Luft knickt der Strahl <b>vom Lot weg</b>: Der Winkel in der Luft ist größer als der im Glas.</div>
-        <div class="fpm-note" style="margin-top:8px">Bei etwa <b>42°</b> hat der austretende Strahl schon 90° erreicht und liegt flach in der Fläche. Darüber gibt es keine Austrittsrichtung mehr – alles wird zurückgeworfen: <b>Totalreflexion</b>.</div>
+        <div class="fpm-note" style="margin-top:10px">Von Glas in Luft wird der Strahl <b>vom Lot weg</b> gebrochen: Der Winkel in der Luft ist größer als der im Glas.</div>
+        <div class="fpm-note" style="margin-top:8px">Bei etwa <b>42°</b> hat der austretende Strahl schon 90° erreicht und liegt flach in der Fläche. Darüber gibt es keine Austrittsrichtung mehr – alles wird reflektiert: <b>Totalreflexion</b>.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Umgekehrt geht das nicht: Von Luft in Glas bleibt der Winkel immer kleiner – deshalb gibt es dort keinen Grenzwinkel.</p>
@@ -71329,8 +71329,8 @@ function _bauStatus() {
   const el = document.getElementById('bauStatus'); if (!el || !_bau) return;
   const ps = _bauPsi();
   el.textContent = ps === null
-    ? '🔶 ' + _fpmNum(_bau.phi, 0) + '° im Glas liegt über dem Grenzwinkel von ' + _fpmNum(_BAU_GRENZ, 1) + '° – kein Licht tritt aus, alles wird zurückgeworfen (Totalreflexion).'
-    : '🔶 Winkel im Glas ' + _fpmNum(_bau.phi, 0) + '°, in der Luft ' + _fpmNum(ps * 180 / Math.PI, 0) + '° – der Strahl knickt vom Lot weg.';
+    ? '🔶 ' + _fpmNum(_bau.phi, 0) + '° im Glas liegt über dem Grenzwinkel von ' + _fpmNum(_BAU_GRENZ, 1) + '° – kein Licht tritt aus, alles wird reflektiert (Totalreflexion).'
+    : '🔶 Winkel im Glas ' + _fpmNum(_bau.phi, 0) + '°, in der Luft ' + _fpmNum(ps * 180 / Math.PI, 0) + '° – der Strahl wird vom Lot weg gebrochen.';
   el.className = 'lmp-status on';
 }
 function _bauUpdate(dt) { if (_bau) _bau.t += dt; }
@@ -71405,7 +71405,7 @@ function _gabHTML() {
   if (!_gabLab) _gabLabInit();          // _mlabAuswertungHTML() liest den Laborzustand
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">🪐 Wovon hängt die Anziehung zweier Körper ab?</h3>
+    <h3 class="sim-h3">🪐 Wovon hängt die Anziehungskraft zweier Körper ab?</h3>
     <div class="fpm-note" style="margin-top:2px">Zwei Kugeln ziehen sich gegenseitig an. Verändere erst die Massen, dann den Abstand – und achte darauf, welcher der beiden mehr ausmacht.</div>
     <div class="fpm-grid">
       <div>
@@ -71443,7 +71443,7 @@ function _gabHTML() {
       <button class="sim-btn" onclick="_gabClear()">Tabelle leeren</button>
     </div>
     <div class="fpm-note" id="gabMeldung" style="margin-top:5px">Noch kein Messpunkt übernommen.</div>
-    <div class="fpm-note">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. Die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen (1 bis 5) und hält die beiden anderen fest; die Regler selbst bleiben dabei stehen, wo sie stehen. Die Tabelle zeigt die Anziehung mit <b>zwei</b> Nachkommastellen, die Statuszeile oben mit einer – es ist derselbe Wert, nur feiner abgelesen. „↺ zurücksetzen“ stellt nur die Regler zurück und lässt die Messwerte stehen.</div>
+    <div class="fpm-note">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. Die automatische Messreihe verändert genau die Größe, die gerade auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen (1 bis 5) und hält die beiden anderen fest; die Regler selbst bleiben dabei stehen, wo sie stehen. Die Tabelle zeigt die Anziehungskraft mit <b>zwei</b> Nachkommastellen, die Statuszeile oben mit einer – es ist derselbe Wert, nur feiner abgelesen. „↺ zurücksetzen“ stellt nur die Regler zurück und lässt die Messwerte stehen.</div>
     <div class="fpm-tablewrap">
       <table class="sim-table">
         <thead><tr><th>m₁ in kg</th><th>m₂ in kg</th><th>r (reine Zahl)</th><th>1/r² (reine Zahl)</th><th>F in Einheiten</th><th></th></tr></thead>
@@ -71454,7 +71454,7 @@ function _gabHTML() {
 
     <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
     ${_mlabAuswertungHTML(_gabLab, { preset: '_gabSetPreset', setfn: '_gabSetFn', theo: '_gabTheorieFn', clear: '_gabClearFn', bool: '_gabSetBool' })}
-    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Doppelte Masse → doppelte Anziehung &nbsp;|&nbsp; doppelter Abstand → nur noch ein <b>Viertel</b></p>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Doppelte Masse → doppelte Anziehungskraft &nbsp;|&nbsp; doppelter Abstand → nur noch ein <b>Viertel</b></p>
   </div>`;
 }
 function _gabSet(k, v) { _gab[k] = +v; _gabSync(); }
@@ -71475,7 +71475,7 @@ function _gabSync() {
 function _gabStatus() {
   const el = document.getElementById('gabStatus'); if (!el || !_gab) return;
   const f = _gabF(_gab.m1, _gab.m2, _gab.r), f0 = _gabF(1, 1, 1);
-  let s = '🪐 Anziehung: ' + _fpmNum(f, f < 1 ? 2 : 1) + ' Einheiten';
+  let s = '🪐 Anziehungskraft: ' + _fpmNum(f, f < 1 ? 2 : 1) + ' Einheiten';
   const v = f / f0;
   if (Math.abs(v - 1) > 0.01) s += ' – das ' + (v > 1 ? _fpmNum(v, 2) + '-Fache' : 'Bruchteil ' + _fpmNum(v, 3)) + ' des Ausgangswerts (8).';
   else s += ' (Ausgangswert).';
@@ -71518,7 +71518,7 @@ function _gabDraw(ctx, cv) {
   // Balken: Anziehung im Vergleich zum Ausgangswert
   const bx = 40, by = H - 52, bw = W - 80, bh = 17;
   ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText('Anziehung', bx, by - 5);
+  ctx.fillText('Anziehungskraft', bx, by - 5);
   ctx.fillStyle = 'rgba(148,163,184,0.22)'; ctx.fillRect(bx, by, bw, bh);
   ctx.strokeStyle = 'rgba(226,232,240,0.5)'; ctx.setLineDash([2, 3]); ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(bx + bw / 5, by - 3); ctx.lineTo(bx + bw / 5, by + bh + 3); ctx.stroke(); ctx.setLineDash([]);
@@ -71638,7 +71638,7 @@ const _GAB_PRESETS = [
     gl: k => 'm₁ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, m₂ = ' + _fpmNum(_gabKeyB(k), 0) + ' kg',
     curve: true,
     curveFn: (xv, k) => _gabF(_gabKeyA(k), _gabKeyB(k), xv),
-    note: 'Die Punkte liegen auf einer fallenden Kurve, nicht auf einer Geraden. Von r = 1 auf r = 2 stürzt die Anziehung auf ein Viertel ab, von r = 4 auf r = 5 nur noch wenig – der Abfall wird immer flacher. Aus einer Kurve lässt sich keine Steigung ablesen, deshalb wird hier bewusst keine Ausgleichsgerade gezeichnet. Der Ausweg heißt Linearisieren: nicht r auf die x-Achse, sondern 1/r².',
+    note: 'Die Punkte liegen auf einer fallenden Kurve, nicht auf einer Geraden. Von r = 1 auf r = 2 stürzt die Anziehungskraft auf ein Viertel ab, von r = 4 auf r = 5 nur noch wenig – der Abfall wird immer flacher. Aus einer Kurve lässt sich keine Steigung ablesen, deshalb wird hier bewusst keine Ausgleichsgerade gezeichnet. Der Ausweg heißt Linearisieren: nicht r auf die x-Achse, sondern 1/r².',
     typ: 'umgekehrt quadratische Funktion – eine Kurve, keine Gerade',
     form: 'F(r) = 8 · m₁ · m₂ / r²',
     param: () => 'Zähler = 8 · m₁ · m₂ = 8 · ' + _gabP().m1 + ' · ' + _gabP().m2 + ' = '
@@ -71658,7 +71658,7 @@ const _GAB_PRESETS = [
     param: () => 'Steigung = 8 · m₁ · m₂ = 8 · ' + _gabP().m1 + ' · ' + _gabP().m2 + ' = '
       + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' (aktuelle Reglerstellung)',
     term: () => (_GAB_E * _gabP().m1 * _gabP().m2).toFixed(4) + '*x',
-    deutung: 'Trägt man F gegen 1/r² auf, wird aus der Kurve eine Gerade durch den Ursprung. Genau das meint der Satz „die Anziehung ist zum Quadrat des Abstands antiproportional“.',
+    deutung: 'Trägt man F gegen 1/r² auf, wird aus der Kurve eine Gerade durch den Ursprung. Genau das meint der Satz „die Anziehungskraft ist zum Quadrat des Abstands antiproportional“.',
     ergebnis: g0 => {
       const m1 = _gabKeyA(g0.key), m2 = _gabKeyB(g0.key);
       const k = _gabRundK(g0.fit.k);
@@ -71674,13 +71674,13 @@ const _GAB_PRESETS = [
     gl: k => 'm₂ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, r = ' + _fpmNum(_gabKeyB(k), 0),
     slope: k => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)),
     curveFn: (xv, k) => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)) * xv,
-    note: 'Ursprungsgerade ⇒ F ~ m₁ bei festgehaltener zweiter Masse und festem Abstand. Doppelte Masse, doppelte Anziehung – hier ist keine Linearisierung nötig, die Masse zählt einfach. Die Steigung ist 8 · m₂ / r² und steht in Einheiten je Kilogramm. Aus ihr lässt sich die Masse der rechten Kugel zurückrechnen, obwohl an ihr nie ein Regler bewegt wurde. Für m₂ gilt dasselbe: Beide Kugeln ziehen gleich stark aneinander.',
+    note: 'Ursprungsgerade ⇒ F ~ m₁ bei festgehaltener zweiter Masse und festem Abstand. Doppelte Masse, doppelte Anziehungskraft – hier ist keine Linearisierung nötig, die Masse zählt einfach. Die Steigung ist 8 · m₂ / r² und steht in Einheiten je Kilogramm. Aus ihr lässt sich die Masse der rechten Kugel zurückrechnen, obwohl an ihr nie ein Regler bewegt wurde. Für m₂ gilt dasselbe: Beide Kugeln ziehen gleich stark aneinander.',
     typ: 'proportionale Funktion (Ursprungsgerade)',
     form: 'F(m₁) = (8 · m₂ / r²) · m₁',
     param: () => 'Steigung = 8 · m₂ / r² = 8 · ' + _gabP().m2 + ' / ' + _gabP().r + '² = '
       + _fpmNum(_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r), 3) + ' (aktuelle Reglerstellung)',
     term: () => (_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r)).toFixed(4) + '*x',
-    deutung: 'Jede der beiden Massen zählt einfach. Verdoppelt man m₁, verdoppelt sich die Anziehung – die Punkte bleiben dabei auf derselben Geraden, sie rücken nur weiter hinaus.',
+    deutung: 'Jede der beiden Massen zählt einfach. Verdoppelt man m₁, verdoppelt sich die Anziehungskraft – die Punkte bleiben dabei auf derselben Geraden, sie rücken nur weiter hinaus.',
     ergebnis: g0 => {
       const m2 = _gabKeyA(g0.key), r = _gabKeyB(g0.key);
       const k = _gabRundK(g0.fit.k);
@@ -71826,7 +71826,7 @@ function _gezHTML() {
             oninput="_gezSetW(this.value)" style="width:100%;accent-color:#38bdf8">
         </div>
         <div class="lmp-status" id="gezStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Der Mond zieht <b>vorn am stärksten</b>, am Erdmittelpunkt schwächer und <b>hinten am schwächsten</b> – weil die Anziehung mit dem Abstand abnimmt.</div>
+        <div class="fpm-note" style="margin-top:10px">Der Mond zieht <b>vorn am stärksten</b>, am Erdmittelpunkt schwächer und <b>hinten am schwächsten</b> – weil die Anziehungskraft mit dem Abstand abnimmt.</div>
         <div class="fpm-note" style="margin-top:8px">Vorn wird das Wasser vom Boden weggezogen, hinten die Erde unter dem Wasser weg. So entstehen <b>zwei</b> Berge.</div>
       </div>
     </div>
@@ -71954,9 +71954,9 @@ function _gezDraw(ctx, cv) {
 // ═══════════════════════════════════════════════════════
 const _TGA_F = {
   stand:  { name: 'steht',              a: 0,    txt: 'Bus und Körper stehen beide still. Nichts drückt dich.' },
-  an:     { name: 'Anfahren',           a: 2.0,  txt: 'Der Bus wird schneller, dein Körper behält sein Tempo – der Sitz drückt dich von hinten mit.' },
+  an:     { name: 'Anfahren',           a: 2.0,  txt: 'Der Bus wird schneller, dein Körper behält seine Geschwindigkeit – der Sitz drückt dich von hinten mit.' },
   gleich: { name: 'gleichmäßig fahren', a: 0,    txt: 'Bus und Körper sind gleich schnell. Du spürst nichts, als stünde der Bus.' },
-  brems:  { name: 'Bremsen',            a: -4.0, txt: 'Der Bus wird langsamer, dein Körper behält sein Tempo – du kippst nach vorn, bis der Gurt hält.' },
+  brems:  { name: 'Bremsen',            a: -4.0, txt: 'Der Bus wird langsamer, dein Körper behält seine Geschwindigkeit – du kippst nach vorn, bis der Gurt hält.' },
 };
 let _tga = null;
 function _tgaInit() { _tga = { modus: 'stand', t: 0, v: 0, x: 0 }; }
@@ -71967,7 +71967,7 @@ function _tgaHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🚌 Warum drückt dich der Sitz beim Anfahren?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der Bus ändert sein Tempo, dein Körper nicht. Achte darauf, wohin die Puppe kippt – und wann sie ruhig sitzt.</div>
+    <div class="fpm-note" style="margin-top:2px">Der Bus ändert seine Geschwindigkeit, dein Körper nicht. Achte darauf, wohin die Puppe kippt – und wann sie ruhig sitzt.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="tgaAnim" width="440" height="250" class="phys-anim-cv"></canvas>
@@ -71978,7 +71978,7 @@ function _tgaHTML() {
       <div>
         <div class="lmp-status" id="tgaStatus"></div>
         <div class="fpm-note" style="margin-top:10px">Ein Körper behält von sich aus seinen Bewegungszustand bei. Das nennt man <b>Trägheit</b>.</div>
-        <div class="fpm-note" style="margin-top:8px">Beim gleichmäßigen Fahren spürst du <b>nichts</b>: Nur eine <b>Änderung</b> des Tempos ist zu spüren, nicht das Tempo selbst.</div>
+        <div class="fpm-note" style="margin-top:8px">Beim gleichmäßigen Fahren spürst du <b>nichts</b>: Nur eine <b>Änderung</b> der Geschwindigkeit ist zu spüren, nicht die Geschwindigkeit selbst.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Nicht du wirst gestoßen – der Bus fährt unter dir weg oder bremst unter dir ab.</p>
@@ -72046,8 +72046,8 @@ function _tgaDraw(ctx, cv) {
   ctx.fillText('a = ' + (a > 0 ? '+' : '') + _fpmNum(a, 1) + ' m/s²', 14, 42);
   ctx.fillText('v = ' + _fpmNum(_tga.v, 1) + ' m/s', 14, 58);
   ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText(Math.abs(a) < 0.01 ? 'keine Änderung des Tempos → du spürst nichts'
-                                  : 'das Tempo ändert sich → dein Körper bleibt zurück', W / 2, H - 10);
+  ctx.fillText(Math.abs(a) < 0.01 ? 'keine Änderung der Geschwindigkeit → du spürst nichts'
+                                  : 'die Geschwindigkeit ändert sich → dein Körper bleibt zurück', W / 2, H - 10);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -72083,7 +72083,7 @@ function _swlHTML() {
         <div class="fpm-note" style="margin-top:8px">Im freien Fall fällt der Boden genauso schnell wie die Person. Er drückt gar nicht mehr – die Anzeige geht auf <b>0 N</b>. Die Erde zieht trotzdem unverändert weiter.</div>
       </div>
     </div>
-    <p class="sim-hint" style="text-align:center;margin:6px 0 0">F = m · (g + a) &nbsp;|&nbsp; schwerelos heißt nicht „keine Anziehung“, sondern „kein Druck vom Boden“</p>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">F = m · (g + a) &nbsp;|&nbsp; schwerelos heißt nicht „keine Anziehungskraft“, sondern „kein Druck vom Boden“</p>
   </div>`;
 }
 function _swlSet(k) {
@@ -72301,7 +72301,7 @@ function _rstHTML() {
             oninput="_rstSet('vg',this.value)" style="width:100%;accent-color:#f59e0b">
         </div>
         <div class="lmp-status" id="rstStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Die Rakete wiegt 1000 kg. Sie wird umso schneller, je <b>mehr</b> Gas sie ausstößt und je <b>schneller</b> sie es ausstößt.</div>
+        <div class="fpm-note" style="margin-top:10px">Die Rakete hat eine Masse von 1000 kg. Sie wird umso schneller, je <b>mehr</b> Gas sie ausstößt und je <b>schneller</b> sie es ausstößt.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">m<sub>Gas</sub> · v<sub>Gas</sub> = m<sub>Rakete</sub> · v<sub>Rakete</sub></p>
@@ -72495,7 +72495,7 @@ function _trsDraw(ctx, cv) {
   ctx.fillStyle = _trs.v > 0.05 ? '#22c55e' : '#ef4444';
   ctx.fillRect(bx, byy, Math.max(2, bw * (_trs.v / _TRS_V0)), bh);
   ctx.fillStyle = hell ? '#94a3b8' : '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText('Tempo (Anstoß = ' + _TRS_V0 + ' m/s)', bx, byy - 5);
+  ctx.fillText('Geschwindigkeit (Start ' + _TRS_V0 + ' m/s)', bx, byy - 5);
   ctx.fillStyle = hell ? '#e2e8f0' : '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText(_trs.ug === 'weltall' ? 'ohne Reibung: der Wagen wird nie langsamer'
                                      : 'die Reibung bremst – deshalb bleibt er stehen', W / 2, H - 10);
@@ -72672,7 +72672,7 @@ function _lgeHTML() {
             oninput="_lgeSet('h',this.value)" style="width:100%;accent-color:#38bdf8">
         </div>
         <div class="lmp-status" id="lgeStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Verdopple einmal die Masse und einmal die Höhe. Beide zählen <b>gleich stark</b> – anders als beim Tempo.</div>
+        <div class="fpm-note" style="margin-top:10px">Verdopple einmal die Masse und einmal die Höhe. Beide zählen <b>gleich stark</b> – anders als bei der Geschwindigkeit.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">E<sub>lage</sub> = m · g · h &nbsp;|&nbsp; g = 9,81 N/kg &nbsp;|&nbsp; Ergebnis in Joule</p>
@@ -72813,14 +72813,14 @@ const _BGE_PRESETS = [
     typ: 'quadratische Funktion (Parabel durch den Ursprung)', form: 'E(v) = (m/2) · v²',
     param: () => 'Streckfaktor = m/2 = ' + _fpmNum(_bge.m / 2, 1) + ' kg (eingestellte Masse ' + _fpmNum(_bge.m, 0) + ' kg)',
     term: () => (_bge.m / 2).toFixed(4) + '*x^2',
-    deutung: 'Die Bewegungsenergie wächst schneller als das Tempo. Dreifaches Tempo bedeutet nicht dreifache, sondern neunfache Energie – deshalb wird der Bremsweg bei hohem Tempo so unangenehm lang.' },
+    deutung: 'Die Bewegungsenergie wächst schneller als die Geschwindigkeit. Dreifache Geschwindigkeit bedeutet nicht dreifache, sondern neunfache Energie – deshalb wird der Bremsweg bei hoher Geschwindigkeit so unangenehm lang.' },
 
   { tab: 'E über v² auftragen', xl: 'v² in m²/s²', yl: 'E in J',
     x: r => r.v2, y: r => r.E, grp: r => r.m,
     gl: k => 'm = ' + _fpmNum(k, 0) + ' kg',
     slope: k => k / 2,
     curveFn: (xv, k) => k / 2 * xv,
-    note: 'Dieselben Messwerte, nur über v² aufgetragen: Jetzt liegen sie auf einer Ursprungsgeraden ⇒ E ~ v². Doppeltes Tempo, vierfache Energie. Die Steigung ist m/2 und hat die Einheit J/(m²/s²) = kg; aus ihr folgt die Masse zurück: m = 2·k. Punkte, die aus der Reihe fallen, stammen aus einer Einstellung, bei der die Masse mitverändert wurde – jede Masse bekommt eine eigene Farbe und eine eigene Gerade.',
+    note: 'Dieselben Messwerte, nur über v² aufgetragen: Jetzt liegen sie auf einer Ursprungsgeraden ⇒ E ~ v². Doppelte Geschwindigkeit, vierfache Energie. Die Steigung ist m/2 und hat die Einheit J/(m²/s²) = kg; aus ihr folgt die Masse zurück: m = 2·k. Punkte, die aus der Reihe fallen, stammen aus einer Einstellung, bei der die Masse mitverändert wurde – jede Masse bekommt eine eigene Farbe und eine eigene Gerade.',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 'E(v²) = (m/2) · v²',
     param: () => 'Steigung = m/2 = ' + _fpmNum(_bge.m / 2, 1) + ' kg (aktuelle Einstellung)',
     term: () => (_bge.m / 2).toFixed(4) + '*x',
@@ -72833,11 +72833,11 @@ const _BGE_PRESETS = [
     gl: k => 'v = ' + _fpmNum(k, 0) + ' m/s',
     slope: k => k * k / 2,
     curveFn: (xv, k) => k * k / 2 * xv,
-    note: 'Ursprungsgerade ⇒ E ~ m bei festgehaltenem Tempo. Doppelte Masse, doppelte Energie – hier ist nichts krumm, es muss also auch nichts quadriert werden. Die Steigung ist v²/2 in J/kg = m²/s²; aus ihr folgt das Tempo zurück: v = √(2·k). Der Vergleich mit dem vorigen Reiter ist der Kern der Stunde: Die Masse steht in der ersten Potenz, das Tempo im Quadrat.',
+    note: 'Ursprungsgerade ⇒ E ~ m bei festgehaltener Geschwindigkeit. Doppelte Masse, doppelte Energie – hier ist nichts krumm, es muss also auch nichts quadriert werden. Die Steigung ist v²/2 in J/kg = m²/s²; aus ihr folgt die Geschwindigkeit zurück: v = √(2·k). Der Vergleich mit dem vorigen Reiter ist der Kern der Stunde: Die Masse steht in der ersten Potenz, die Geschwindigkeit im Quadrat.',
     typ: 'proportionale Funktion (Ursprungsgerade)', form: 'E(m) = (v²/2) · m',
     param: () => 'Steigung = v²/2 = ' + _fpmNum(_bge.v * _bge.v / 2, 1) + ' m²/s² (aktuelle Einstellung)',
     term: () => (_bge.v * _bge.v / 2).toFixed(4) + '*x',
-    deutung: 'Bei gleichem Tempo trägt die doppelte Masse die doppelte Energie. Zwei Körper mit gleichem Produkt m · v haben deshalb nicht die gleiche Energie: 16 kg mit 4 m/s bringen 128 J, 8 kg mit 8 m/s dagegen 256 J.',
+    deutung: 'Bei gleicher Geschwindigkeit trägt die doppelte Masse die doppelte Energie. Zwei Körper mit gleichem Produkt m · v haben deshalb nicht die gleiche Energie: 16 kg mit 4 m/s bringen 128 J, 8 kg mit 8 m/s dagegen 256 J.',
     ergebnis: g0 => _bgeErgebnis('Geschwindigkeit v aus der Steigung k', Math.sqrt(2 * g0.fit.k), 'm/s', g0.key,
       'E = (v²/2) · m  ⇒  v = √(2 · k)') }
 ];
@@ -72871,7 +72871,7 @@ function _bgeHTML() {
         <div class="sim-btn-row" style="margin-top:6px">
           <button class="sim-btn primary" onclick="_bgeGo()">▶ Rollen lassen</button>
           <button class="sim-btn" onclick="_bgeVerdopple('m')">×2 Masse</button>
-          <button class="sim-btn" onclick="_bgeVerdopple('v')">×2 Tempo</button>
+          <button class="sim-btn" onclick="_bgeVerdopple('v')">×2 v</button>
           <button class="sim-btn" onclick="_bgeInit();_bgeSync()">↺ zurücksetzen</button>
         </div>
       </div>
@@ -72882,12 +72882,12 @@ function _bgeHTML() {
             oninput="_bgeSet('m',this.value)" style="width:100%;accent-color:#f59e0b">
         </div>
         <div class="phys-ctrl" style="margin-top:6px">
-          <span class="phys-ctrl-label">Tempo v: <b id="bgeVLbl">4</b> m/s</span>
+          <span class="phys-ctrl-label">Geschwindigkeit v: <b id="bgeVLbl">4</b> m/s</span>
           <input type="range" id="bgeV" min="1" max="12" step="1" value="4"
             oninput="_bgeSet('v',this.value)" style="width:100%;accent-color:#ef4444">
         </div>
         <div class="lmp-status" id="bgeStatus"></div>
-        <div class="fpm-note" style="margin-top:10px">Verdopple erst die Masse, dann das Tempo – und vergleiche die beiden Schiebestrecken. Sie sind <b>nicht</b> gleich.</div>
+        <div class="fpm-note" style="margin-top:10px">Verdopple erst die Masse, dann die Geschwindigkeit – und vergleiche die beiden Schiebestrecken. Sie sind <b>nicht</b> gleich.</div>
       </div>
     </div>
 
@@ -72908,7 +72908,7 @@ function _bgeHTML() {
 
     <div class="fpm-label" style="margin-top:12px">Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden?</div>
     ${_mlabAuswertungHTML(_bge, { preset: '_bgeSetPreset', setfn: '_bgeSetFn', theo: '_bgeTheorieFn', clear: '_bgeClearFn', bool: '_bgeSetBool' })}
-    <p class="sim-hint" style="text-align:center;margin:6px 0 0">E<sub>bew</sub> = ½ · m · v² &nbsp;|&nbsp; doppelte Masse → doppelte Energie &nbsp;|&nbsp; doppeltes Tempo → <b>vierfache</b> Energie</p>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">E<sub>bew</sub> = ½ · m · v² &nbsp;|&nbsp; doppelte Masse → doppelte Energie &nbsp;|&nbsp; doppelte Geschwindigkeit → <b>vierfache</b> Energie</p>
   </div>`;
 }
 function _bgeSet(k, v) { _bge[k] = parseFloat(v); _bge.x = 0; _bge.s = 0; _bge.rollt = false; _bge.fertig = false; _bge.klotz = 0; _bgeSync(); }
@@ -72993,7 +72993,7 @@ function _bgeDraw(ctx, cv) {
   ctx.fillText('v = ' + _fpmNum(_bge.v, 0) + ' m/s', 14, 66);
   ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
   if (window.FELABS_FORSCHEN !== 'bewegungsenergie')
-    ctx.fillText('das Tempo zählt doppelt: v steht im Quadrat', W / 2, H - 8);
+    ctx.fillText('die Geschwindigkeit zählt doppelt: v steht im Quadrat', W / 2, H - 8);
 }
 
 // ── Messwerterfassung ──────────────────────────────────
@@ -73120,10 +73120,10 @@ function _achStatus() {
   const el = document.getElementById('achStatus'); if (!el || !_ach) return;
   const h = _achHoehe(_ach.x), v = _achV(h);
   const Ep = _ACH_M * _ACH_G * h, Ek = 0.5 * _ACH_M * v * v;
-  let s = `Höhe <b>${_fpmNum(h, 1)} m</b> · Tempo <b>${_fpmNum(v, 1)} m/s</b><br>`;
+  let s = `Höhe <b>${_fpmNum(h, 1)} m</b> · Geschwindigkeit <b>${_fpmNum(v, 1)} m/s</b><br>`;
   s += `Lageenergie ${_fpmNum(Ep / 1000, 1)} kJ + Bewegungsenergie ${_fpmNum(Ek / 1000, 1)} kJ = <b>${_fpmNum((Ep + Ek) / 1000, 1)} kJ</b>`;
   if (_ach.geschafft === false) s += `<br><span style="color:#b91c1c">Der Wagen kommt nicht über den zweiten Hügel – er rollt zurück.</span>`;
-  else if (_ach.geschafft === true) s += `<br><span style="color:#166534">✓ durchgekommen, größtes Tempo unterwegs: ${_fpmNum(_ach.vmax, 1)} m/s</span>`;
+  else if (_ach.geschafft === true) s += `<br><span style="color:#166534">✓ durchgekommen, größte Geschwindigkeit unterwegs: ${_fpmNum(_ach.vmax, 1)} m/s</span>`;
   el.innerHTML = s; el.className = 'lmp-status on';
 }
 function _achUpdate(dt) {
@@ -73749,7 +73749,7 @@ function _eewHTML() {
       <div>
         <div class="lmp-status" id="eewStatus"></div>
         <div class="fpm-note" style="margin-top:10px">Am Ende sind immer noch <b>1000 J</b> da – aber als lauwarme Luft. Damit kann niemand mehr etwas anfangen.</div>
-        <div class="fpm-note" style="margin-top:8px">Gespart wird deshalb nicht die <b>Menge</b> an Energie, sondern ihre <b>Brauchbarkeit</b>.</div>
+        <div class="fpm-note" style="margin-top:8px">Gespart wird deshalb nicht die <b>Menge</b> an Energie, sondern ihre <b>Nutzbarkeit</b>.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Energie bleibt erhalten – aber sie wird <b>entwertet</b> &nbsp;|&nbsp; jeder Schritt macht einen Teil zu Wärme</p>
@@ -73815,7 +73815,7 @@ function _eewDraw(ctx, cv) {
   // nicht erreichbar, und nennt genau das gesuchte Ergebnis.
   ctx.fillText(window.FELABS_FORSCHEN === 'energie-entwerten'
                  ? 'grün und rot zusammen: rechne selbst nach'
-                 : (_eew.stufe >= n ? 'Menge gleich geblieben – Brauchbarkeit weg'
+                 : (_eew.stufe >= n ? 'Menge gleich geblieben – Nutzbarkeit weg'
                                     : 'die Gesamtlänge ändert sich nie: 1000 J'), W / 2, H - 10);
 }
 
@@ -74067,7 +74067,7 @@ function _uvlHTML() {
         <div class="fpm-label">Was ist an dieser Stelle?</div>
         <div class="lmp-status" id="uvlStatus" style="margin-top:6px"></div>
         <div class="fpm-note" style="margin-top:10px"><b>Warum wird es hinter Rot am wärmsten?</b> Ein Prisma spreizt blaues Licht weit auseinander, rotes und infrarotes kaum. Rechts drängt sich die Energie deshalb auf wenigen Millimetern zusammen – dort steht das Thermometer im Dichtesten.</div>
-        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Gerechnet wird mit der Sonne als 5778 K heißem Körper und einem Prisma aus Quarzglas. Die Luft schluckt einen Teil des UV, Fensterglas fast alles – deshalb bekommt man hinter einer Scheibe keinen Sonnenbrand. Jenseits von 1100 nm ginge die Erwärmung noch weiter hinauf; dort lässt aber auch Quarzglas nicht mehr alles durch.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Modellgrenze:</b> Gerechnet wird mit der Sonne als 5778 K heißem Körper und einem Prisma aus Quarzglas. Die Atmosphäre absorbiert einen Teil des UV, Fensterglas fast alles – deshalb bekommt man hinter einer Scheibe keinen Sonnenbrand. Jenseits von 1100 nm ginge die Erwärmung noch weiter hinauf; dort lässt aber auch Quarzglas nicht mehr alles durch.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -74446,9 +74446,9 @@ function _drfStatus() {
   t += `Weil nicht das einzelne Elektron ankommen muss. Der Anstoß läuft durch die ganze Leitung – mit rund 200 000 km/s.<br>`;
   t += `Auf ${_DRF_LEITUNG} m Kabel dauert das ${_fpmNum(signal * 1e9, 0)} Nanosekunden, also ${_fpmNum(signal * 1000, 8)} Millisekunden.<br><br>`;
 
-  t += `<b>Zappeln ist nicht Wandern.</b><br>`;
+  t += `<b>Ungeordnete Bewegung ist nicht Wandern.</b><br>`;
   t += `Jedes Elektron saust mit etwa <b>1570 km/s</b> kreuz und quer und stößt dauernd an Atomrümpfe. Übrig bleibt davon nur ein winziges Vorankommen in eine Richtung: `;
-  t += `Das Zappeln ist rund <b>${_fpmNum(_DRF_VF / v / 1e9, 1).replace(',0', '')} Milliarden mal</b> so schnell wie das Wandern.`;
+  t += `Die ungeordnete Bewegung ist rund <b>${_fpmNum(_DRF_VF / v / 1e9, 1).replace(',0', '')} Milliarden mal</b> so schnell wie das Wandern.`;
   el.innerHTML = t;
 }
 
@@ -74505,7 +74505,7 @@ function _drfDraw(ctx, cv) {
   const v = _drfV();
   ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'left';
   ctx.fillStyle = '#1d4ed8';
-  ctx.fillText('Zappeln:  ' + '1 570 000 m/s', 26, 236);
+  ctx.fillText('Ungeordnete Bewegung:  ' + '1 570 000 m/s', 26, 236);
   ctx.fillStyle = '#b45309';
   ctx.fillText('Wandern:  ' + _fpmNum(v * 1000, 4) + ' mm/s', 26, 254);
   ctx.fillStyle = '#15803d';
@@ -74517,7 +74517,7 @@ function _drfDraw(ctx, cv) {
   ctx.fillStyle = '#b45309';
   ctx.fillRect(26, 284, Math.max(1.5, 388 * (v / _DRF_VF)), 14);
   ctx.fillStyle = '#334155'; ctx.font = '10px system-ui'; ctx.textAlign = 'center';
-  ctx.fillText('der orange Strich ist das Wandern – gegen das Zappeln (blau)', W / 2, 310);
+  ctx.fillText('der orange Strich ist das Wandern – gegen die ungeordnete Bewegung (blau)', W / 2, 310);
 
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px system-ui';
   ctx.fillText('I = ' + _fpmNum(_drf.i, 1) + ' A   ·   A = ' + _fpmNum(_drf.a, 2) + ' mm²', W / 2, H - 6);
@@ -74528,7 +74528,7 @@ function _drfHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim drf-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">🔌 Was bewegt sich im Draht wirklich?</h3>
-    <div class="fpm-note" style="margin-top:2px">Die Lampe geht sofort an – also müssen die Elektronen rasend schnell sein? Sieh genau hin: Sie <b>zappeln</b> tatsächlich rasend schnell. Aber sie <b>wandern</b> kaum von der Stelle.</div>
+    <div class="fpm-note" style="margin-top:2px">Die Lampe geht sofort an – also müssen die Elektronen rasend schnell sein? Sieh genau hin: Sie bewegen sich tatsächlich rasend schnell – aber <b>ungeordnet</b>, kreuz und quer. Und sie <b>wandern</b> kaum von der Stelle.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="drfAnim" width="440" height="330" class="phys-anim-cv"></canvas>
@@ -74550,7 +74550,7 @@ function _drfHTML() {
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      zappeln: <b>1570 km/s</b> · wandern: <b>Bruchteile eines Millimeters je Sekunde</b> · Signal: <b>200 000 km/s</b>
+      ungeordnet: <b>1570 km/s</b> · wandern: <b>Bruchteile eines Millimeters je Sekunde</b> · Signal: <b>200 000 km/s</b>
     </p>
     ${_drfArbeitsblattHTML()}
   </div>`;
@@ -74584,7 +74584,7 @@ function _drfArbeitsblattHTML() {
         ${ta('a6', 'Doppelte Stromstärke bedeutet für v … . Doppelter Querschnitt bedeutet … . Die Lampe leuchtet trotzdem sofort, weil …', 4)}</div>
 
       <div class="ab-sec"><div class="ab-h">6 · Merksatz</div>
-        <div class="ab-t">Elektronen zappeln ${inp('m1', 'wie schnell?')}, wandern aber nur ${inp('m2', 'wie schnell?')}. Die Lampe leuchtet sofort, weil sich der ${inp('m3', 'was?')} mit fast Lichtgeschwindigkeit ausbreitet.</div></div>`;
+        <div class="ab-t">Elektronen bewegen sich ungeordnet mit ${inp('m1', 'wie schnell?')}, wandern aber nur ${inp('m2', 'wie schnell?')}. Die Lampe leuchtet sofort, weil sich der ${inp('m3', 'was?')} mit fast Lichtgeschwindigkeit ausbreitet.</div></div>`;
   return _abWrap('drift', 'Was sich im Draht wirklich bewegt', body);
 }
 
@@ -75191,7 +75191,7 @@ function _druStatus() {
     t += `Das ist nur <b>${_fpmNum(1 / v, 1)}-mal weniger</b> als dieselbe Person auf Turnschuhen (19,6 kPa).<br><br>`;
   }
   if (_dru.m >= 1000) {
-    t += `<i>Bemerkenswert: Der Elefant wiegt das 83-fache der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.</i>`;
+    t += `<i>Bemerkenswert: Der Elefant hat die 83-fache Gewichtskraft der Person – und drückt trotzdem weniger auf den Boden als sie auf einem einzigen Stöckelabsatz. Seine Füße sind eben groß.</i>`;
   } else if (_dru.a <= 5) {
     t += `<i>Deshalb hinterlassen Stöckelschuhe Löcher im Rasen und sind auf alten Holzböden verboten – nicht wegen des Gewichts, sondern wegen der winzigen Fläche.</i>`;
   } else if (_dru.a >= 2000) {
@@ -75785,7 +75785,7 @@ function _dchStatus() {
     t += `Gleich groß, aber <b>${_fpmNum(fk, df)}-mal</b> so schwer wie Styropor (${_dchRho(s.rho)} : 20).`;
   } else {
     t += '<br><b>5 · Der Aha-Moment</b><br>';
-    t += `Der gleich große Bleiwürfel wiegt <b>567-mal</b> so viel (11340 : 20).`;
+    t += `Der gleich große Bleiwürfel hat die <b>567-fache</b> Masse (11340 : 20).`;
   }
   el.innerHTML = t;
 }
@@ -76004,7 +76004,7 @@ function _dchHTML() {
   const mb = s => `<button class="sim-btn${_dch.stoff === s.id ? ' primary' : ''}" id="dchM${s.id}" onclick="_dchStoff('${s.id}')">${s.name}</button>`;
   return `<div class="sim-box sim-box-wide fpm-sim dch-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">⚖️ Warum wiegen gleich große Körper ganz verschieden viel?</h3>
+    <h3 class="sim-h3">⚖️ Warum haben gleich große Körper ganz verschiedene Massen?</h3>
     <div class="fpm-note" style="margin-top:2px">Alle sechs Würfel haben dieselbe Kantenlänge. Lege sie nacheinander auf die Waage und lies ab, was der Zeiger anzeigt.</div>
     <div class="fpm-grid">
       <div>
@@ -76042,7 +76042,7 @@ function _dchArbeitsblattHTML() {
   const inp = (k, ph) => `<input class="ab-field ab-inline" data-abk="${k}" placeholder="${ph}" oninput="_abSave('dichte')">`;
   const body = `
       <div class="ab-sec"><div class="ab-h">1 · Forscherfrage</div>
-        <div class="ab-t"><b>Warum wiegen gleich große Körper ganz verschieden viel?</b></div></div>
+        <div class="ab-t"><b>Warum haben gleich große Körper ganz verschiedene Massen?</b></div></div>
 
       <div class="ab-sec"><div class="ab-h">2 · Meine Vermutung</div>
         ${ta('v1', 'Ich vermute, dass der schwerste Würfel aus … ist, weil …', 2)}</div>
@@ -76064,7 +76064,7 @@ function _dchArbeitsblattHTML() {
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Auswertung</div>
-        ${ta('a6', 'Obwohl alle Würfel gleich groß sind, ist die Masse verschieden, weil … . Der Wasserwürfel hat bei 10 cm Kante genau … kg. Eisen sinkt in Wasser, Fichtenholz schwimmt, weil … . Der Styroporwürfel mit 20 cm Kante wiegt … als der Eisenwürfel mit 10 cm Kante, obwohl er viel größer ist. Das zeigt: …', 5)}</div>
+        ${ta('a6', 'Obwohl alle Würfel gleich groß sind, ist die Masse verschieden, weil … . Der Wasserwürfel hat bei 10 cm Kante genau … kg. Eisen sinkt in Wasser, Fichtenholz schwimmt, weil … . Der Styroporwürfel mit 20 cm Kante hat … Masse als der Eisenwürfel mit 10 cm Kante, obwohl er viel größer ist. Das zeigt: …', 5)}</div>
 
       <div class="ab-sec"><div class="ab-h">6 · Merksatz</div>
         <div class="ab-t">Die Dichte ist die ${inp('m1', 'was?')} je ${inp('m2', 'wovon?')}. Es gilt ρ = ${inp('m3', 'wie?')}, gemessen in ${inp('m4', 'welche Einheit?')}. Ein Würfel aus Wasser mit 1 dm³ hat die Masse ${inp('m5', 'wie viel?')}.</div></div>`;
@@ -77641,11 +77641,11 @@ function _aufStatus() {
     t += `F<sub>A</sub> = ${f.rho} kg/m³ · 9,81 N/kg · 0,001 m³ = <b>${_fpmNum(FA, 2)} N</b><br><br>`;
     t += `<b>4 · Er sinkt</b><br>`;
     t += `G = ${_fpmNum(G, 2)} N ist größer als F<sub>A</sub> = ${_fpmNum(FA, 2)} N.<br>`;
-    t += `Es bleiben ${_fpmNum(G - FA, 2)} N nach unten übrig. Im Wasser wiegt er also nur noch ${_fpmNum(G - FA, 2)} N statt ${_fpmNum(G, 2)} N.<br><br>`;
+    t += `Es bleiben ${_fpmNum(G - FA, 2)} N nach unten übrig. Im Wasser zieht ihn also nur noch eine Kraft von ${_fpmNum(G - FA, 2)} N nach unten statt ${_fpmNum(G, 2)} N.<br><br>`;
   }
   t += `<b>Die Grenze</b><br>`;
   t += `Schwimmen beginnt, sobald die mittlere Dichte unter ${f.rho} kg/m³ fällt – bei diesem Eisenwürfel ab <b>${_fpmNum(grenze, 1)} % Hohlraum</b>.<br><br>`;
-  t += `<i>Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl wiegt viel, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt.</i>`;
+  t += `<i>Genau das macht ein Schiff: Es ist zum allergrößten Teil Luft. Der Stahl hat eine große Masse, aber er umschließt so viel Hohlraum, dass die mittlere Dichte unter der von Wasser bleibt.</i>`;
   el.innerHTML = t;
 }
 
@@ -78406,7 +78406,7 @@ function _uosDraw(ctx, cv) {
   ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(cx + 8, B - 8); ctx.lineTo(cx + 8, B + 8); ctx.stroke();
   _elPole(ctx, cx, B, 8);
   ctx.fillStyle = '#64748b'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('Batterie', cx, B + 26);
+  ctx.fillText('Energiequelle', cx, B + 26);
 
   // Schalter: in Reihe nebeneinander im oberen Draht, sonst je einer pro Zweig
   if (und) {
@@ -79081,7 +79081,7 @@ function _fmsDraw(ctx, cv) {
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12.5px system-ui';
   ctx.fillText('Weißes Papier – jeder Filter nimmt eine Lichtfarbe weg', W / 2, 16);
   ctx.fillStyle = '#475569'; ctx.font = '10px system-ui';
-  ctx.fillText('Cyan schluckt Rot · Magenta schluckt Grün · Gelb schluckt Blau', W / 2, 31);
+  ctx.fillText('Cyan absorbiert Rot · Magenta absorbiert Grün · Gelb absorbiert Blau', W / 2, 31);
 
   // Alle Teilflächen aus der EINEN Rechnung
   const fC   = _fmsFarbe(true,  false, false);
@@ -79237,11 +79237,11 @@ function _fmsHTML() {
         </div>
       </div>
       <div>
-        <div class="phys-ctrl"><span class="phys-ctrl-label" style="color:#0e7490">Deckkraft Cyan (schluckt Rot): <b id="fmsCLbl">100</b> %</span>
+        <div class="phys-ctrl"><span class="phys-ctrl-label" style="color:#0e7490">Deckkraft Cyan (absorbiert Rot): <b id="fmsCLbl">100</b> %</span>
           <input type="range" id="fmsC" min="0" max="100" step="5" value="100" oninput="_fmsSet('c',this.value)" style="width:100%;accent-color:#06b6d4"></div>
-        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#a21caf">Deckkraft Magenta (schluckt Grün): <b id="fmsMLbl">100</b> %</span>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#a21caf">Deckkraft Magenta (absorbiert Grün): <b id="fmsMLbl">100</b> %</span>
           <input type="range" id="fmsM" min="0" max="100" step="5" value="100" oninput="_fmsSet('m',this.value)" style="width:100%;accent-color:#d946ef"></div>
-        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#a16207">Deckkraft Gelb (schluckt Blau): <b id="fmsYLbl">100</b> %</span>
+        <div class="phys-ctrl" style="margin-top:6px"><span class="phys-ctrl-label" style="color:#a16207">Deckkraft Gelb (absorbiert Blau): <b id="fmsYLbl">100</b> %</span>
           <input type="range" id="fmsY" min="0" max="100" step="5" value="100" oninput="_fmsSet('y',this.value)" style="width:100%;accent-color:#eab308"></div>
         <div class="lmp-status" id="fmsStatus" style="margin-top:8px"></div>
         <div class="fpm-label" style="margin-top:8px">Alle Teilflächen nachgerechnet</div>

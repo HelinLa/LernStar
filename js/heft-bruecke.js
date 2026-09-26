@@ -387,7 +387,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn Licht auf eine Oberfläche trifft?",
     titel: "Zwei Bilder in einer Scheibe",
     frage: "Was geschieht mit dem Licht, wenn es auf verschiedene Oberflächen trifft?",
-    schritte: ["Stelle den Winkel zum Lot auf 45° und wähle Spiegel. Lies ab, welche Anteile des Lichts reflektiert, durchgelassen und absorbiert werden (am Bildschirm: „zurück“, „hindurch“, „geschluckt“).", "Wähle bei genau diesem Winkel nacheinander Fensterglas, schwarzes Papier und weißes Papier. Lies jedes Mal alle drei Anteile ab.", "Gegenprobe am Tisch: Leuchte mit der Taschenlampe schräg auf einen Spiegel und auf schwarzes Papier und fange das reflektierte Licht auf einem weißen Blatt auf."]
+    schritte: ["Stelle den Winkel zum Lot auf 45° und wähle Spiegel. Lies ab, welche Anteile des Lichts reflektiert, durchgelassen und absorbiert werden.", "Wähle bei genau diesem Winkel nacheinander Fensterglas, schwarzes Papier und weißes Papier. Lies jedes Mal alle drei Anteile ab.", "Gegenprobe am Tisch: Leuchte mit der Taschenlampe schräg auf einen Spiegel und auf schwarzes Papier und fange das reflektierte Licht auf einem weißen Blatt auf."]
   },
   "f9": {
     klasse: 7, schulform: "Realschule NRW",
@@ -501,10 +501,10 @@ const HEFT_SEITEN = {
     klasse: 7, schulform: "Realschule NRW",
     sim: "gravitation-abstand", seite: 99,
     kapitel: "Sonne, Planeten und Schwerkraft",
-    name: "Wovon hängt die Anziehung zweier Körper ab?",
+    name: "Wovon hängt die Anziehungskraft zweier Körper ab?",
     titel: "Der Kleine zieht, der Große nicht",
     frage: "Wovon hängt die Anziehungskraft zweier Körper ab – von den Massen, vom Abstand?",
-    schritte: ["Setze mit zurücksetzen alle Werte auf 1 und lies die Anziehungskraft ab (am Bildschirm: „Anziehung“). Dieser Wert ist dein Ausgangswert, mit dem du alles Weitere vergleichst.", "Verdopple mit ×2 Masse links die Masse der linken Kugel und lies ab. Drücke denselben Knopf noch einmal, sodass die Masse viermal so groß ist wie am Anfang, und lies wieder ab.", "Setze zurück und verdopple stattdessen mit ×2 Abstand den Abstand, danach ein zweites Mal. Vergleiche beide Werte mit deinem Ausgangswert."]
+    schritte: ["Setze mit zurücksetzen alle Werte auf 1 und lies die Anziehungskraft ab. Dieser Wert ist dein Ausgangswert, mit dem du alles Weitere vergleichst.", "Verdopple mit ×2 Masse links die Masse der linken Kugel und lies ab. Drücke denselben Knopf noch einmal, sodass die Masse viermal so groß ist wie am Anfang, und lies wieder ab.", "Setze zurück und verdopple stattdessen mit ×2 Abstand den Abstand, danach ein zweites Mal. Vergleiche beide Werte mit deinem Ausgangswert."]
   },
   "g6": {
     klasse: 7, schulform: "Realschule NRW",
@@ -990,7 +990,7 @@ const HEFT_SEITEN = {
     name: "Was ist eine gleichförmige Bewegung?",
     titel: "Die Leitpfosten im Takt",
     frage: "Legt ein Körper bei konstanter Geschwindigkeit in gleichen Zeiten gleich lange Wege zurück?",
-    schritte: ["Wähle „langsam“ und starte mit „Start“. Halte mit „Stopp“ an, lies Geschwindigkeit v (am Bildschirm „Tempo v“), Zeit und Weg ab und prüfe, ob v · t den abgelesenen Weg ergibt.", "Setze mit „Zurücksetzen“ zurück und wiederhole das mit „mittel“ und mit „schnell“. Vergleiche die drei Geschwindigkeiten und die Abstände der Marken miteinander.", "Gegenprobe am Tisch: Zieht ein Spielzeugauto an einer Schnur mit konstanter Geschwindigkeit über den Tisch und setzt alle zwei Sekunden einen Kreidepunkt."]
+    schritte: ["Wähle „langsam“ und starte mit „Start“. Halte mit „Stopp“ an, lies Geschwindigkeit v, Zeit und Weg ab und prüfe, ob v · t den abgelesenen Weg ergibt.", "Setze mit „Zurücksetzen“ zurück und wiederhole das mit „mittel“ und mit „schnell“. Vergleiche die drei Geschwindigkeiten und die Abstände der Marken miteinander.", "Gegenprobe am Tisch: Zieht ein Spielzeugauto an einer Schnur mit konstanter Geschwindigkeit über den Tisch und setzt alle zwei Sekunden einen Kreidepunkt."]
   },
   "bw4": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1143,7 +1143,7 @@ const HEFT_SEITEN = {
     name: "Bewegungsenergie: E = ½ · m · v²",
     titel: "Der Ball im Flur",
     frage: "Zählen Masse und Geschwindigkeit gleich stark für die Bewegungsenergie?",
-    schritte: ["Stelle m = 4 kg und v = 4 m/s ein und drücke „Rollen lassen“. Notiere die Energie und die Strecke, um die der Klotz geschoben wird.", "Drücke „×2 Masse“ und lasse erneut rollen. Setze danach mit „zurücksetzen“ zurück, drücke „×2 Tempo“ und lasse noch einmal rollen.", "Vergleiche die beiden Schiebestrecken miteinander. Halte fest, um welchen Faktor die Energie jeweils gewachsen ist."]
+    schritte: ["Stelle m = 4 kg und v = 4 m/s ein und drücke „Rollen lassen“. Notiere die Energie und die Strecke, um die der Klotz geschoben wird.", "Drücke „×2 Masse“ und lasse erneut rollen. Setze danach mit „zurücksetzen“ zurück, drücke „×2 v“ und lasse noch einmal rollen.", "Vergleiche die beiden Schiebestrecken miteinander. Halte fest, um welchen Faktor die Energie jeweils gewachsen ist."]
   },
   "en6": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1170,7 +1170,7 @@ const HEFT_SEITEN = {
     name: "Umwandlung an der Achterbahn",
     titel: "Vom Balkon aus sieht man die Kirmes",
     frage: "Warum braucht eine Achterbahn nach dem ersten Berg keinen Motor mehr?",
-    schritte: ["Stelle h₀ = 30 m und h₂ = 20 m ein und drücke „Losfahren“. Halte am Starthügel, im Tal und auf dem zweiten Hügel jeweils Höhe, Geschwindigkeit (am Bildschirm: „Tempo“) und die beiden Energien fest.", "Achte dabei auf den Balken oben: Notiere, wie sich der violette und der rote Anteil verschieben und ob sich die Gesamtlänge dabei ändert.", "Stelle nun h₂ = 40 m ein, also höher als den Starthügel, und fahre erneut los. Beschreibe, was passiert und warum das gar nicht anders sein kann."]
+    schritte: ["Stelle h₀ = 30 m und h₂ = 20 m ein und drücke „Losfahren“. Halte am Starthügel, im Tal und auf dem zweiten Hügel jeweils Höhe, Geschwindigkeit und die beiden Energien fest.", "Achte dabei auf den Balken oben: Notiere, wie sich der violette und der rote Anteil verschieben und ob sich die Gesamtlänge dabei ändert.", "Stelle nun h₂ = 40 m ein, also höher als den Starthügel, und fahre erneut los. Beschreibe, was passiert und warum das gar nicht anders sein kann."]
   },
   "en9": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1458,7 +1458,7 @@ const HEFT_SEITEN = {
     name: "Wovon die induzierte Spannung abhängt",
     titel: "Drei Schrauben an derselben Spule",
     frage: "Wovon hängt die Höhe der induzierten Spannung ab?",
-    schritte: ["Stelle 600 Windungen, die Geschwindigkeit 50 cm/s (am Bildschirm: „Tempo des Magneten“) und den mittleren Magneten ein und lies die Spannung ab.", "Verdopple nur die Geschwindigkeit auf 100 cm/s. Stelle danach wieder 50 cm/s ein und verdopple nur die Windungszahl auf 1200.", "Stelle zuletzt wieder 600 Windungen und 50 cm/s ein und wähle nur den starken Magneten."]
+    schritte: ["Stelle 600 Windungen, die Geschwindigkeit 50 cm/s und den mittleren Magneten ein und lies die Spannung ab.", "Verdopple nur die Geschwindigkeit auf 100 cm/s. Stelle danach wieder 50 cm/s ein und verdopple nur die Windungszahl auf 1200.", "Stelle zuletzt wieder 600 Windungen und 50 cm/s ein und wähle nur den starken Magneten."]
   },
   "ge3": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1773,7 +1773,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn Licht auf eine Oberfläche trifft?",
     titel: "Zwei Kisten ohne Beschriftung",
     frage: "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
-    schritte: ["Wähle nacheinander die vier Oberflächen Spiegel, Fensterglas, schwarzes Papier und weißes Papier.", "Lies in der Statuszeile die drei Prozentzahlen für reflektiert, durchgelassen und absorbiert ab (am Bildschirm: „zurück“, „hindurch“, „geschluckt“).", "Stelle den Einfallswinkel von 0° bis 80° ein und beobachte, ob sich die Anteile ändern."]
+    schritte: ["Wähle nacheinander die vier Oberflächen Spiegel, Fensterglas, schwarzes Papier und weißes Papier.", "Lies in der Statuszeile die drei Prozentzahlen für reflektiert, durchgelassen und absorbiert ab.", "Stelle den Einfallswinkel von 0° bis 80° ein und beobachte, ob sich die Anteile ändern."]
   },
   "oi2": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1935,7 +1935,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Stärke der Anziehung ab?",
     titel: "Zwei Messingkugeln in der Schublade",
     frage: "Was wirkt stärker: die doppelte Masse oder der doppelte Abstand?",
-    schritte: ["Lies zuerst den Ausgangswert in der Statuszeile ab: beide Massen stehen auf 1, der Abstand auf 1.", "Drücke ×2 Masse links, danach ×2 Abstand, und lies nach jedem Druck die Anziehungskraft ab (am Bildschirm: „Anziehung“).", "Drücke zurücksetzen und stelle dann beide Massenregler nacheinander auf 5."]
+    schritte: ["Lies zuerst den Ausgangswert in der Statuszeile ab: beide Massen stehen auf 1, der Abstand auf 1.", "Drücke ×2 Masse links, danach ×2 Abstand, und lies nach jedem Druck die Anziehungskraft ab.", "Drücke zurücksetzen und stelle dann beide Massenregler nacheinander auf 5."]
   },
   "ew5": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -2337,7 +2337,7 @@ const HEFT_SEITEN = {
     klasse: 9, schulform: "Gesamtschule NRW",
     sim: "dichte", seite: 55,
     kapitel: "Kräfte, Druck und Auftrieb",
-    name: "Warum wiegen gleich große Körper ganz verschieden viel?",
+    name: "Warum haben gleich große Körper ganz verschiedene Massen?",
     titel: "Zwei gleich große Klötze in der Werkstatt",
     frage: "Warum haben gleich große Würfel aus verschiedenen Stoffen verschiedene Massen?",
     schritte: ["Wähle Styropor und stelle die Kantenlänge a nacheinander auf 3 cm, 5 cm, 10 cm und 20 cm.", "Lies jedes Mal im Feld Nachgerechnet das Volumen V in m³ und die Masse m in kg ab.", "Rechne in jeder Zeile m geteilt durch V aus und vergleiche die vier Zahlen."]
@@ -2376,7 +2376,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie, wenn etwas rollt?",
     titel: "Die Kabeltrommel auf der Rampe",
     frage: "Wovon hängt es ab, wie viel Energie in einer rollenden Kugel steckt?",
-    schritte: ["Stelle die Masse 6 kg und die Geschwindigkeit 3 m/s ein (am Bildschirm: „Tempo v“) und drücke „Messpunkt übernehmen“.", "Wiederhole das bei 6 m/s, bei 9 m/s und bei 12 m/s; die Masse bleibt dabei 6 kg.", "Trage E aus der Tabelle ein, rechne E geteilt durch v² aus und vergleiche die Werte."]
+    schritte: ["Stelle die Masse 6 kg und die Geschwindigkeit 3 m/s ein und drücke „Messpunkt übernehmen“.", "Wiederhole das bei 6 m/s, bei 9 m/s und bei 12 m/s; die Masse bleibt dabei 6 kg.", "Trage E aus der Tabelle ein, rechne E geteilt durch v² aus und vergleiche die Werte."]
   },
   "el4": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2529,7 +2529,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht Spannung ohne Batterie?",
     titel: "Ein Aufbau ohne Batterie",
     frage: "Wann zeigt der Spannungsmesser etwas an – und wovon hängt der Wert ab?",
-    schritte: ["Beobachte bei „mittel“ und v = 50 cm/s den Zeiger, während der Magnet hineinfährt, liegen bleibt und wieder herausfährt.", "Drücke „stark“ und lies die Spannung bei v = 50 cm/s ab.", "Stelle die Geschwindigkeit („Tempo des Magneten“) auf 100 cm/s und lies die Spannung erneut ab."]
+    schritte: ["Beobachte bei „mittel“ und v = 50 cm/s den Zeiger, während der Magnet hineinfährt, liegen bleibt und wieder herausfährt.", "Drücke „stark“ und lies die Spannung bei v = 50 cm/s ab.", "Stelle die Geschwindigkeit des Magneten auf 100 cm/s und lies die Spannung erneut ab."]
   },
   "ev8": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -3042,7 +3042,7 @@ const HEFT_SEITEN = {
     name: "Warum spiegelt das eine und das andere nicht?",
     titel: "Ein Spiegel aus Papier?",
     frage: "Warum spiegelt das eine und das andere nicht?",
-    schritte: ["Wähle nacheinander Spiegel, Fensterglas, schwarzes Papier und weißes Papier und lies in der Statuszeile die drei Prozentzahlen ab: reflektiert (am Bildschirm: „zurück“), durchgelassen („hindurch“) und absorbiert („geschluckt“).", "Beobachte im Bild genau, in wie viele Richtungen das Licht beim Spiegel und beim weißen Papier reflektiert wird.", "Stelle den „Winkel zum Lot“ erst auf 0° und dann auf 80° und prüfe, ob sich die Prozentzahlen ändern."]
+    schritte: ["Wähle nacheinander Spiegel, Fensterglas, schwarzes Papier und weißes Papier und lies in der Statuszeile die drei Prozentzahlen ab: reflektiert, durchgelassen und absorbiert.", "Beobachte im Bild genau, in wie viele Richtungen das Licht beim Spiegel und beim weißen Papier reflektiert wird.", "Stelle den „Winkel zum Lot“ erst auf 0° und dann auf 80° und prüfe, ob sich die Prozentzahlen ändern."]
   },
   "li4": {
     klasse: "5/6", schulform: "Gymnasium NRW",
@@ -3123,7 +3123,7 @@ const HEFT_SEITEN = {
     name: "Warum knickt der Lichtstrahl beim Eintritt ins Glas?",
     titel: "Zwei gerade Strecken, ein Knick",
     frage: "Warum wird der Lichtstrahl beim Eintritt ins Glas gebrochen?",
-    schritte: ["Stelle den Winkel in der Luft nacheinander auf 20°, 40° und 60° ein und lies jeweils in der Statuszeile den Winkel im Glas ab.", "Drücke „genau auf das Lot“ und lies ab, was die Statuszeile über die Brechung meldet (am Bildschirm: „Knick“).", "Vergleiche die gestrichelte ungebrochene Richtung mit dem wirklichen Strahl im Glas; mit „ungebrochene Richtung“ blendest du die Linie aus und wieder ein."]
+    schritte: ["Stelle den Winkel in der Luft nacheinander auf 20°, 40° und 60° ein und lies jeweils in der Statuszeile den Winkel im Glas ab.", "Drücke „genau auf das Lot“ und lies ab, was die Statuszeile über die Brechung meldet.", "Vergleiche die gestrichelte ungebrochene Richtung mit dem wirklichen Strahl im Glas; mit „ungebrochene Richtung“ blendest du die Linie aus und wieder ein."]
   },
   "op4": {
     klasse: 7, schulform: "Gymnasium NRW",
@@ -3312,7 +3312,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Stärke der Anziehung ab?",
     titel: "Tauziehen am Nachthimmel",
     frage: "Wovon hängt die Anziehungskraft ab?",
-    schritte: ["Drücke „zurücksetzen“ und lies im Statusfeld den Ausgangswert der Anziehungskraft ab (am Bildschirm: „Anziehung“).", "Verdopple mit der Taste „×2 Masse links“ die linke Masse und lies den neuen Wert ab.", "Setze noch einmal zurück, schiebe den Regler „Abstand“ von 1 auf 2 und vergleiche den neuen Wert mit dem Ausgangswert. Setze zum Schluss zurück und stelle mit „×2 Masse links“ und dem Regler „Masse der rechten Kugel“ beide Massen auf 2."]
+    schritte: ["Drücke „zurücksetzen“ und lies im Statusfeld den Ausgangswert der Anziehungskraft ab.", "Verdopple mit der Taste „×2 Masse links“ die linke Masse und lies den neuen Wert ab.", "Setze noch einmal zurück, schiebe den Regler „Abstand“ von 1 auf 2 und vergleiche den neuen Wert mit dem Ausgangswert. Setze zum Schluss zurück und stelle mit „×2 Masse links“ und dem Regler „Masse der rechten Kugel“ beide Massen auf 2."]
   },
   "wa9": {
     klasse: 7, schulform: "Gymnasium NRW",
@@ -3564,7 +3564,7 @@ const HEFT_SEITEN = {
     name: "Wohin geht die Energie beim Rollen und Federn?",
     titel: "Die entwischte Rollbox",
     frage: "Wohin geht die Energie beim Rollen?",
-    schritte: ["Drücke „Rollen lassen“ und lies in der Statuszeile ab, welche Energie E die Kugel mit 4 kg und 4 m/s hat und wie weit sie den Klotz schiebt.", "Drücke „×2 Masse“, lass die Kugel mit „Rollen lassen“ erneut los und trage Energie und Schiebestrecke in die Tabelle ein.", "Stelle mit „zurücksetzen“ den Anfang wieder her, drücke „×2 Tempo“ und dann „Rollen lassen“ – vergleiche die neue Schiebestrecke mit den beiden ersten."]
+    schritte: ["Drücke „Rollen lassen“ und lies in der Statuszeile ab, welche Energie E die Kugel mit 4 kg und 4 m/s hat und wie weit sie den Klotz schiebt.", "Drücke „×2 Masse“, lass die Kugel mit „Rollen lassen“ erneut los und trage Energie und Schiebestrecke in die Tabelle ein.", "Stelle mit „zurücksetzen“ den Anfang wieder her, drücke „×2 v“ und dann „Rollen lassen“ – vergleiche die neue Schiebestrecke mit den beiden ersten."]
   },
   "me21": {
     klasse: 8, schulform: "Gymnasium NRW",
@@ -4176,7 +4176,7 @@ const HEFT_SEITEN = {
     name: "Warum stürzen Planeten nicht ab?",
     titel: "Warum Planeten nicht abstürzen",
     frage: "Warum stürzt ein Planet nicht in die Sonne?",
-    schritte: ["Drücke „ganz klein“. Lies die Startgeschwindigkeit ab: So schnell startet der Planet. In der Statuszeile heißt sie „Anschub“. Lies auch die Bahnform ab.", "Drücke „mittlerer Wert“ und vergleiche.", "Drücke „Gegenprobe groß“ und lies die Meldung.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „ganz klein“. Lies die Startgeschwindigkeit ab: So schnell startet der Planet. Lies auch die Bahnform ab.", "Drücke „mittlerer Wert“ und vergleiche.", "Drücke „Gegenprobe groß“ und lies die Meldung.", "Trage alle drei Zeilen in die Tabelle ein."]
   },
   "fw5": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4347,7 +4347,7 @@ const HEFT_SEITEN = {
     name: "Langsames Wandern, schnelles Signal",
     titel: "Warum geht das Licht sofort an?",
     frage: "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
-    schritte: ["Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.", "Lies im Bild die Werte für Wandern, Zappeln und Signal ab.", "Trage die drei Wörter und ihre Werte in dieser Reihenfolge in die Tabelle ein.", "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."]
+    schritte: ["Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.", "Lies im Bild die Werte für Wandern, ungeordnete Bewegung und Signal ab.", "Trage die drei Wörter und ihre Werte in dieser Reihenfolge in die Tabelle ein.", "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."]
   },
   "fs12": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4428,7 +4428,7 @@ const HEFT_SEITEN = {
     name: "Wie weit fährt ein Auto bis zum Halt?",
     titel: "Bis das Auto steht",
     frage: "Woraus besteht der Weg, bis das Auto wirklich steht?",
-    schritte: ["Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.", "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Trage die Geschwindigkeit 50 km/h und beide Wege in Zeile 1 ein. Am Bildschirm steht „Tempo v = 50 km/h“.", "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.", "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."]
+    schritte: ["Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.", "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Trage die Geschwindigkeit 50 km/h und beide Wege in Zeile 1 ein. Am Bildschirm steht „Geschwindigkeit v = 50 km/h“.", "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.", "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."]
   },
   "fk1": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4581,7 +4581,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie beim Rollen?",
     titel: "Der Ball wirft den Eimer um",
     frage: "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppelte Geschwindigkeit v?",
-    schritte: ["Drücke „zurücksetzen“ für den Start. Am Bildschirm stehen 4 kg und 4 m/s. Fülle Zeile 1 aus.", "Drücke „×2 Masse“ und fülle Zeile 2 aus.", "Drücke danach „×2 Tempo“ (doppelte Geschwindigkeit v) und fülle Zeile 3 aus.", "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."]
+    schritte: ["Drücke „zurücksetzen“ für den Start. Am Bildschirm stehen 4 kg und 4 m/s. Fülle Zeile 1 aus.", "Drücke „×2 Masse“ und fülle Zeile 2 aus.", "Drücke danach „×2 v“ (doppelte Geschwindigkeit v) und fülle Zeile 3 aus.", "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."]
   },
   "fe4": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4707,7 +4707,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht Spannung ohne Batterie?",
     titel: "Der Aufbau ohne Batterie",
     frage: "Wann zeigt das Messgerät eine Spannung an?",
-    schritte: ["Beobachte das Messgerät („mittel“, 50 cm/s). Der Magnet fährt hinein, liegt still, fährt heraus.", "Wähle „stark“. Lies bei 50 cm/s ab und trage ein.", "Stelle „Tempo des Magneten“ auf 100 cm/s. Lies ab und trage ein.", "Lies ab, wenn der Magnet still liegt. Trage ein."]
+    schritte: ["Beobachte das Messgerät („mittel“, 50 cm/s). Der Magnet fährt hinein, liegt still, fährt heraus.", "Wähle „stark“. Lies bei 50 cm/s ab und trage ein.", "Stelle „Geschwindigkeit des Magneten“ auf 100 cm/s. Lies ab und trage ein.", "Lies ab, wenn der Magnet still liegt. Trage ein."]
   },
   "fv7": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
