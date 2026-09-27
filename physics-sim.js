@@ -84251,6 +84251,20 @@ function _befDraw(ctx, cv) {
 // Boden), Primaerblaetter nach gut einer Woche, rote Blueten, lange Huelsen.
 // Tagpfauenauge: Ei auf Brennnessel, Raupe schwarz mit weissen Punkten und
 // Dornen, Puppe haengt, Falter rotbraun mit Augenflecken.
+//
+// AHA-SCHICHT (nutzt die gemeinsame Bibliothek _bioFx*): Laeuft der
+// Zeitraffer ueber eine Verwandlung, passiert sie sichtbar im Bild:
+//  * Kroete, Tag 80: Zeitlupe, die Kaulquappe schimmert, wird zur Kroete und
+//    huepft aus dem Wasser an Land (Welle + Funken beim Landen).
+//  * Schmetterling, Tag 50: Zeitlupe, der Falter schluepft unter der Puppe,
+//    klappt langsam die Fluegel auf und fliegt los.
+//  * Bohne: Erdkruemel beim Durchbrechen, Funken an Blueten und Huelsen.
+//  * Stein: das Gras waechst, Blumen kommen - der Stein bleibt. Ein Foto
+//    von Tag 0 steht daneben; am Ziel faellt der Stempel
+//    "Der Stein bleibt, wie er ist" (nicht das Lückenwort Nachkommen aus Aufgabe 2).
+// Das Banner kommt erst, wenn das Bild am eingestellten Tag steht und die
+// Verwandlung fertig ist (erst sehen, dann bestaetigen). Kein Blinken, kein
+// Ton, keine Wertung. Statuszeile und Aufschriften sind unveraendert.
 // ═══════════════════════════════════════════════════════════════════
 let _blw = null;
 const _BLW_DINGE = [
@@ -84261,7 +84275,32 @@ const _BLW_DINGE = [
 ];
 const _BLW_MARKEN = [0, 10, 90];
 
-function _blwInit() { _blw = { ding: 'bohne', tag: 0, zeig: 0, t: 0 }; }
+function _blwInit() {
+  _blw = { ding: 'bohne', tag: 0, zeig: 0, t: 0,
+           fx: { teile: [] }, ev: null, aha: null, warte: 0, steinLauf: false };
+}
+
+// Verwandlungen, die der Zeitraffer ueberquert: Tag, Effekt, Banner (oder null).
+const _BLW_WENDE = {
+  bohne: [
+    { m: 1.5, art: 'wurzel', text: null },
+    { m: 5,   art: 'keim',   text: 'Die Bohne keimt und wächst aus der Erde!' },
+    { m: 45,  art: 'bluete', text: 'Die Bohne blüht!' },
+    { m: 62,  art: 'huelse', text: 'Neue Bohnen! Daraus wachsen neue Pflanzen.' },
+  ],
+  kroete: [
+    { m: 10, art: 'schlupfK', text: 'Aus dem Ei schlüpft eine Kaulquappe!' },
+    { m: 50, art: 'bein',     text: null },
+    { m: 65, art: 'bein',     text: null },
+    { m: 80, art: 'kroete',   text: 'Aus der Kaulquappe wird eine Kröte!' },
+  ],
+  falter: [
+    { m: 8,  art: 'schlupfR', text: 'Aus dem Ei schlüpft eine Raupe!' },
+    { m: 35, art: 'puppe',    text: 'Die Raupe wird zur Puppe.' },
+    { m: 50, art: 'falter',   text: 'Aus der Puppe schlüpft ein Schmetterling!' },
+  ],
+  stein: [],
+};
 function _blwK(x) { return x < 0 ? 0 : (x > 1 ? 1 : x); }
 function _blwName(k) { const e = _BLW_DINGE.find(x => x.k === k); return e ? e.name : k; }
 
@@ -84328,7 +84367,8 @@ function _blwSetzeTag(d) {
   d = Math.max(0, Math.min(90, Math.round(+d || 0)));
   // Vorwaerts laeuft der Zeitraffer, rueckwaerts springt das Bild sofort:
   // ein Tier, das zurueck ins Ei schrumpft, gibt es nicht.
-  if (d < _blw.zeig) _blw.zeig = d;
+  if (d < _blw.zeig) { _blw.zeig = d; _blw.ev = null; _blw.aha = null; _blw.fx.banner = null; }
+  if (d !== _blw.tag) { _blw.fx.stempel = null; _blw.warte = 0; }
   _blw.tag = d;
   const r = document.getElementById('_blw-zeit'); if (r) r.value = String(d);
   const l = document.getElementById('_blw-zeitLbl'); if (l) l.textContent = 'Tag ' + d;
@@ -84346,12 +84386,17 @@ function _blwDing(k) {
     if (b) b.className = 'sim-btn' + (e.k === k ? ' primary' : '');
   });
   // Ein neues Ding faengt bei Tag 0 an.
+  _blwFxLeeren();
   _blw.zeig = 0;
   _blwSetzeTag(0);
 }
 function _blwZeit(v) { _blwSetzeTag(v); }
 function _blwTag(v) { _blwSetzeTag(v); }
-function _blwNeu() { _blw.zeig = 0; _blwSetzeTag(0); }
+function _blwNeu() { _blwFxLeeren(); _blw.zeig = 0; _blwSetzeTag(0); }
+function _blwFxLeeren() {
+  _blw.fx = { teile: [] }; _blw.ev = null; _blw.aha = null; _blw.warte = 0;
+  _blw.steinLauf = false; _blw.zeitlupe = null;
+}
 
 function _blwStatus() {
   const el = document.getElementById('_blw-status'); if (!el || !_blw) return;
@@ -84363,13 +84408,114 @@ function _blwStatus() {
 // ── Animation ───────────────────────────────────────────────────────
 function _blwUpdate(dt) {
   if (!_blw) return;
+  dt = _bioFxDt(dt);
   _blw.t += dt;
+  // Zeitlupe bremst nur den Zeitraffer, nicht die Bewegung im Bild.
+  const zl = _bioFxZeitlupeFaktor(_blw, dt);
+  const vorher = _blw.zeig;
   if (_blw.zeig < _blw.tag) {
     // Zeitraffer: schnell los, zum Ziel hin langsamer (0 → 90 in gut 2 s)
-    _blw.zeig = Math.min(_blw.tag, _blw.zeig + Math.max(8, (_blw.tag - _blw.zeig) * 2.2) * dt);
+    _blw.zeig = Math.min(_blw.tag, _blw.zeig + Math.max(8, (_blw.tag - _blw.zeig) * 2.2) * dt * zl);
   } else if (_blw.zeig > _blw.tag) {
     _blw.zeig = _blw.tag;
   }
+  if (_blw.zeig > vorher) {
+    if (_blw.ding === 'stein') _blw.steinLauf = true;
+    (_BLW_WENDE[_blw.ding] || []).forEach(w => {
+      if (vorher < w.m && _blw.zeig >= w.m) {
+        _blwWende(w.art);
+        if (w.text) _blw.aha = w.text;   // die spaeteste Verwandlung gewinnt
+      }
+    });
+  }
+  if (_blw.ev) _blwEvSchritt(dt);
+  // Erst sehen, dann bestaetigen: Banner/Stempel erst, wenn das Bild am
+  // eingestellten Tag steht und keine Verwandlung mehr laeuft.
+  if (_blw.zeig === _blw.tag && !_blw.ev && (_blw.aha || _blw.steinLauf)) {
+    _blw.warte += dt;
+    if (_blw.warte >= 0.5) {
+      if (_blw.aha) _bioFxBanner(_blw.fx, _blw.aha, 2.8, '#86efac');
+      if (_blw.steinLauf && _blw.ding === 'stein' && _blw.tag > 0) {
+        _bioFxStempel(_blw.fx, 'Der Stein bleibt, wie er ist', 210, 124, '#475569');
+        _bioFxWelle(_blw.fx.teile, 210, 192, '#94a3b8', 70);
+      }
+      _blw.aha = null; _blw.steinLauf = false; _blw.warte = 0;
+    }
+  }
+  _bioFxAlleUpdate(_blw.fx, dt);
+}
+
+// ── Aha-Schicht: Orte im Bild und Verwandlungen ─────────────────────
+function _blwQuappePos(t) { return { x: 150 + 85 * Math.sin(t * 0.5), y: 160 + 28 * Math.sin(t * 0.9) }; }
+function _blwFlugPos(t) { return { x: 280 + 80 * Math.sin(t * 0.45), y: 95 + 30 * Math.sin(t * 0.9 + 1) }; }
+const _BLW_EI = { x: 193, y: 140 };        // Schmetterlings-Ei auf dem Blatt
+const _BLW_PUPPE = { x: 130, y: 118 };     // Mitte der haengenden Puppe
+const _BLW_FALTERFARBEN = ['#b3372b', '#facc15', '#60a5fa', '#fff3b0'];
+
+// Erdkruemel: kleine braune Punkte, die kurz hochspritzen und fallen.
+function _blwKruemel(liste, x, y, n) {
+  for (let i = 0; i < n; i++) {
+    const w = -Math.PI / 2 + (Math.random() - 0.5) * 2.2, v = 40 + Math.random() * 60;
+    _bioFxNeu(liste, { art: 'punkt', x: x + (Math.random() - 0.5) * 10, y, vx: Math.cos(w) * v, vy: Math.sin(w) * v,
+      g: 220, alter: 0, leben: 0.7 + Math.random() * 0.4, r: 1.5 + Math.random() * 1.8,
+      farbe: i % 2 ? '#6f4520' : '#a16207', dreh: 0, dw: 0 });
+  }
+}
+
+function _blwWende(art) {
+  const L = _blw.fx.teile, t = _blw.t;
+  if (art === 'wurzel') _bioFxWelle(L, 200, 194, '#fde68a', 26);
+  else if (art === 'keim') {
+    _blwKruemel(L, 200, 158, 14);
+    _bioFxWelle(L, 200, 150, '#86efac', 40);
+  } else if (art === 'bluete') {
+    _bioFxFunken(L, 208, 100, 12, ['#dc2626', '#fca5a5', '#ffd84d', '#ffffff']);
+  } else if (art === 'huelse') {
+    [[210, 110], [190, 92], [210, 74]].forEach(p => _bioFxFunken(L, p[0], p[1], 7, ['#84cc16', '#ffd84d', '#ffffff']));
+    _bioFxWelle(L, 200, 92, '#bef264', 70);
+  } else if (art === 'schlupfK') {
+    const q = _blwQuappePos(t);
+    _bioFxBlasen(L, 130, 172, 10);
+    _bioFxWelle(L, q.x, q.y, '#e0f2fe', 34);
+  } else if (art === 'bein') {
+    const q = _blwQuappePos(t);
+    _bioFxFunken(L, q.x, q.y, 6, ['#bef264', '#ffd84d', '#ffffff']);
+  } else if (art === 'kroete') {
+    const q = _blwQuappePos(t);
+    _blw.ev = { art: 'kroete', alter: 0, x0: q.x, y0: q.y, blasen: false, gelandet: false };
+    _bioFxZeitlupe(_blw, 0.2, 2.0);
+  } else if (art === 'schlupfR') {
+    _bioFxFunken(L, _BLW_EI.x, _BLW_EI.y, 10, ['#a3e635', '#ffd84d', '#ffffff']);
+    _bioFxWelle(L, _BLW_EI.x, _BLW_EI.y, '#fdba74', 26);
+  } else if (art === 'puppe') {
+    _bioFxWelle(L, _BLW_PUPPE.x, _BLW_PUPPE.y, '#d6d3d1', 32);
+    _bioFxFunken(L, _BLW_PUPPE.x, _BLW_PUPPE.y, 6, ['#d6d3d1', '#ffd84d']);
+  } else if (art === 'falter') {
+    _blw.ev = { art: 'falter', alter: 0, offen: false };
+    _bioFxZeitlupe(_blw, 0.2, 2.4);
+  }
+}
+
+// Dauer der beiden grossen Verwandlungen (s, echte Zeit)
+const _BLW_EV_DAUER = { kroete: 2.0, falter: 2.9 };
+function _blwEvSchritt(dt) {
+  const e = _blw.ev, L = _blw.fx.teile;
+  e.alter += dt;
+  if (e.art === 'kroete') {
+    if (!e.blasen && e.alter >= 0.7) { e.blasen = true; _bioFxBlasen(L, e.x0, e.y0, 8); }
+    if (!e.gelandet && e.alter >= 1.6) {
+      e.gelandet = true;
+      _bioFxWelle(L, 360, 86, '#ffe27a', 50);
+      _bioFxFunken(L, 360, 76, 14, ['#ffd84d', '#bef264', '#ffffff']);
+    }
+  } else if (e.art === 'falter') {
+    if (!e.offen && e.alter >= 1.3) {
+      e.offen = true;
+      _bioFxWelle(L, _BLW_PUPPE.x, _BLW_PUPPE.y + 26, '#fde68a', 45);
+      _bioFxFunken(L, _BLW_PUPPE.x, _BLW_PUPPE.y + 26, 16, _BLW_FALTERFARBEN);
+    }
+  }
+  if (e.alter >= _BLW_EV_DAUER[e.art]) _blw.ev = null;
 }
 
 function _blwDraw(ctx, cv) {
@@ -84383,6 +84529,11 @@ function _blwDraw(ctx, cv) {
   else _blwStein(ctx, W, H, d, t);
   _blwRahmen(ctx, W, H, d, t);
   ctx.restore();
+  // Effekte zuletzt: Partikel, Stempel, dann das Banner unter der Kopfzeile
+  const fx = _blw.fx;
+  if (fx.teile.length) { ctx.save(); _bioFxDraw(ctx, fx.teile); ctx.restore(); }
+  _bioFxStempelDraw(ctx, fx);
+  if (fx.banner) { ctx.save(); ctx.translate(0, 22); _bioFxBannerDraw(ctx, fx); ctx.restore(); }
 }
 
 // Kopfzeile (Tag und was man sieht) und Zeitleiste unten
@@ -84701,6 +84852,8 @@ function _blwKroete(ctx, W, H, d, t) {
       ctx.beginPath(); ctx.ellipse(0, 0, 2.2 + 1.6 * lang, 2.2, 0, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
     }
+  } else if (_blw.ev && _blw.ev.art === 'kroete') {
+    _blwKroeteEv(ctx, d, t, _blw.ev);
   } else if (d < 80) {
     const x = 150 + 85 * Math.sin(t * 0.5), y = 160 + 28 * Math.sin(t * 0.9);
     const vx = 85 * 0.5 * Math.cos(t * 0.5), vy = 28 * 0.9 * Math.cos(t * 0.9);
@@ -84715,6 +84868,27 @@ function _blwKroete(ctx, W, H, d, t) {
     }
   } else {
     _blwKroeteTier(ctx, 360, 92, t);
+  }
+}
+
+// Verwandlung im Bild: schimmern (0-0,7 s), aus dem Wasser an Land huepfen
+// (0,7-1,6 s), landen. Die Kroete verlaesst das Wasser, wenn der Schwanz weg ist.
+function _blwKroeteEv(ctx, d, t, e) {
+  const a = e.alter, E = _bioFxEase;
+  if (a < 0.7) {
+    const u = _bioFxKlemme(a / 0.7);
+    _bioFxLeuchten(ctx, e.x0, e.y0, 20, t, '255,226,122');
+    ctx.save(); ctx.globalAlpha = 1 - u; ctx.translate(e.x0, e.y0);
+    _blwKaulquappe(ctx, Math.min(d, 79), t); ctx.restore();
+    ctx.save(); ctx.globalAlpha = u; ctx.translate(e.x0, e.y0 + 10); ctx.scale(0.6, 0.6);
+    _blwKroeteTier(ctx, 0, 0, t); ctx.restore();
+  } else {
+    const u = E.sanft(_bioFxKlemme((a - 0.7) / 0.9));
+    const x = e.x0 + (360 - e.x0) * u;
+    const y = (e.y0 + 10) + (92 - e.y0 - 10) * u - 70 * Math.sin(Math.PI * u);
+    const k = 0.6 + 0.4 * u;
+    ctx.save(); ctx.translate(x, y); ctx.scale(k, k);
+    _blwKroeteTier(ctx, 0, 0, t); ctx.restore();
   }
 }
 
@@ -84821,17 +84995,42 @@ function _blwFalter(ctx, W, H, d, t) {
   ctx.fillText('Brennnessel', sx, GY + 12);
 
   // Schmetterling fliegt
-  if (d >= 50) {
-    const x = 280 + 80 * Math.sin(t * 0.45), y = 95 + 30 * Math.sin(t * 0.9 + 1);
+  if (_blw.ev && _blw.ev.art === 'falter') {
+    _blwFalterEv(ctx, t, _blw.ev);
+  } else if (d >= 50) {
+    const p = _blwFlugPos(t);
     const flap = 0.2 + 0.8 * Math.abs(Math.cos(t * 7));
-    ctx.save(); ctx.translate(x, y); ctx.rotate(0.15 * Math.cos(t * 0.45));
-    ctx.save(); ctx.scale(flap, 1);
-    _blwFluegel(ctx, 1); _blwFluegel(ctx, -1);
-    ctx.restore();
-    ctx.fillStyle = '#292524'; ctx.beginPath(); ctx.ellipse(0, 0, 2.2, 11, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.strokeStyle = '#292524'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(-1, -10); ctx.lineTo(-5, -20); ctx.moveTo(1, -10); ctx.lineTo(5, -20); ctx.stroke();
-    ctx.restore();
+    _blwSchmetterling(ctx, p.x, p.y, 0.15 * Math.cos(t * 0.45), 1, flap);
+  }
+}
+
+function _blwSchmetterling(ctx, x, y, rot, k, flap) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(k, k);
+  ctx.save(); ctx.scale(Math.max(0.05, flap), 1);
+  _blwFluegel(ctx, 1); _blwFluegel(ctx, -1);
+  ctx.restore();
+  ctx.fillStyle = '#292524'; ctx.beginPath(); ctx.ellipse(0, 0, 2.2, 11, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#292524'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(-1, -10); ctx.lineTo(-5, -20); ctx.moveTo(1, -10); ctx.lineTo(5, -20); ctx.stroke();
+  ctx.restore();
+}
+
+// Schluepfen: Schimmer an der Puppe, der Falter haengt darunter und klappt die
+// Fluegel langsam auf (0-1,8 s), dann fliegt er in seine Bahn (1,8-2,9 s).
+function _blwFalterEv(ctx, t, e) {
+  const a = e.alter, E = _bioFxEase, px = _BLW_PUPPE.x, py = _BLW_PUPPE.y + 26;
+  if (a < 0.9) _bioFxLeuchten(ctx, _BLW_PUPPE.x, _BLW_PUPPE.y, 16, t, '253,230,138');
+  if (a < 1.8) {
+    const u = _bioFxKlemme(a / 1.8);
+    const k = 0.45 + 0.55 * E.raus(u);                  // Fluegel entfalten sich
+    const auf = 0.08 + 0.92 * E.sanft(_bioFxKlemme((a - 0.3) / 1.2));  // einmal langsam auf
+    _blwSchmetterling(ctx, px, py, 0, k, auf);
+  } else {
+    const u = E.sanft(_bioFxKlemme((a - 1.8) / 1.1));
+    const p = _blwFlugPos(t);
+    const x = px + (p.x - px) * u, y = py + (p.y - py) * u - 25 * Math.sin(Math.PI * u);
+    const flap = 1 - u + u * (0.2 + 0.8 * Math.abs(Math.cos(t * 7)));
+    _blwSchmetterling(ctx, x, y, u * 0.15 * Math.cos(t * 0.45), 1, flap);
   }
 }
 
@@ -84846,20 +85045,51 @@ function _blwStein(ctx, W, H, d, t) {
   _blwWolke(ctx, ((t * 6 + 200) % (W + 80)) - 80, 85, 0.7);
   ctx.fillStyle = '#86efac'; ctx.fillRect(0, GY, W, H - GY);
   ctx.fillStyle = '#4ade80'; ctx.fillRect(0, GY, W, 3);
+  // Foto von Tag 0 zum Vergleichen, sobald die Zeit weiterlaeuft
+  if (d > 0 || _blw.tag > 0) {
+    ctx.save();
+    ctx.translate(14, 36); ctx.rotate(-0.05);
+    ctx.fillStyle = 'rgba(0,0,0,0.12)'; ctx.fillRect(3, 3, 92, 70);
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 92, 70);
+    ctx.fillStyle = '#dbeafe'; ctx.fillRect(5, 5, 82, 34);
+    ctx.fillStyle = '#86efac'; ctx.fillRect(5, 39, 82, 17);
+    _blwSteinForm(ctx, 46, 42, 0.42);
+    ctx.fillStyle = '#334155'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Tag 0', 46, 66);
+    ctx.restore();
+  }
   // Stein - immer gleich
   const x = 210, y = 192;
-  ctx.fillStyle = 'rgba(0,0,0,0.15)'; ctx.beginPath(); ctx.ellipse(x + 4, y + 13, 38, 6, 0, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#94a3b8'; ctx.beginPath(); ctx.ellipse(x, y, 38, 20, -0.08, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#cbd5e1'; ctx.beginPath(); ctx.ellipse(x - 10, y - 7, 16, 7, -0.2, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#64748b';
-  [[-18, 4], [8, 6], [20, -3], [-4, 10], [26, 5]].forEach(p => { ctx.beginPath(); ctx.arc(x + p[0], y + p[1], 1.4, 0, Math.PI * 2); ctx.fill(); });
-  // Gras davor, bewegt sich im Wind
+  _blwSteinForm(ctx, x, y, 1);
+  // Gras davor, bewegt sich im Wind - und WAECHST mit der Zeit (es lebt),
+  // spaeter bluehen Gaensebluemchen. Der Stein daneben bleibt gleich.
+  const wachs = _blwK(d / 60), nBl = Math.floor(_blwK((d - 15) / 55) * 9 + 1e-9);
   ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.6;
+  let bl = 0;
   for (let gx = 3; gx < W; gx += 8) {
-    const w = Math.sin(t * 1.7 + gx * 0.25) * 3, hh = 10 + (gx * 7) % 9;
+    const w = Math.sin(t * 1.7 + gx * 0.25) * 3, hh = 10 + (gx * 7) % 9 + 12 * wachs;
     const by = H - 26;
     ctx.beginPath(); ctx.moveTo(gx, by); ctx.quadraticCurveTo(gx, by - hh * 0.6, gx + w, by - hh); ctx.stroke();
+    if ((gx - 3) % 48 === 16 && bl < nBl && (gx < 160 || gx > 260)) {
+      bl++;
+      ctx.fillStyle = '#ffffff';
+      for (let i = 0; i < 6; i++) {
+        const a = i * Math.PI / 3;
+        ctx.beginPath(); ctx.arc(gx + w + Math.cos(a) * 3, by - hh + Math.sin(a) * 3, 2, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(gx + w, by - hh, 1.8, 0, Math.PI * 2); ctx.fill();
+    }
   }
+}
+
+function _blwSteinForm(ctx, x, y, k) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(k, k);
+  ctx.fillStyle = 'rgba(0,0,0,0.15)'; ctx.beginPath(); ctx.ellipse(4, 13, 38, 6, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.beginPath(); ctx.ellipse(0, 0, 38, 20, -0.08, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#cbd5e1'; ctx.beginPath(); ctx.ellipse(-10, -7, 16, 7, -0.2, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#64748b';
+  [[-18, 4], [8, 6], [20, -3], [-4, 10], [26, 5]].forEach(p => { ctx.beginPath(); ctx.arc(p[0], p[1], 1.4, 0, Math.PI * 2); ctx.fill(); });
+  ctx.restore();
 }
 
 // ═══════════════════════════════════════════════════════
@@ -84869,7 +85099,19 @@ function _blwStein(ctx, W, H, d, t) {
 // Wirbelsaeule - oder es steht „keine Knochen" da. Rechts steht der
 // Bestimmungsschluessel mit vier Ja-Nein-Fragen; „ja"/„nein" fuehren Frage fuer
 // Frage bis zum Namen. Eine falsche Antwort fuehrt NICHT weiter: der Kasten
-// wackelt rot, und die Statuszeile schickt zurueck zu Lupe oder Roentgenblick.
+// wackelt sanft (orange, ohne Wertung), und die Statuszeile schickt zurueck zu
+// Lupe oder Roentgenblick.
+// AHA-SCHICHT (Effekte aus _bioFx, alle NACH der Beobachtung, 0,5-2 s):
+//  * Lupe: jedes gezaehlte Bein bekommt einen kleinen Lichtring (Takt 0,34 s,
+//    unter 3 Hz); am Ende springt das Zahlschild auf, Glitzer drumherum.
+//  * Roentgenblick: ein leuchtender Scanstreifen faehrt ueber das Tier; bei der
+//    Erdkroete gluehen die Knochen dort, wo der Streifen gerade ist, am Ende
+//    laeuft ein Lichtring ueber die Wirbelsaeule. Ohne Knochen: ruhiger Ring.
+//  * Schluessel: der gelbe Punkt laeuft die Kante entlang, am Ziel ein Ring.
+//  * Ende: das Namensfeld im Schluessel leuchtet, Stempel „BESTIMMT!", Glitzer
+//    und kurzes Konfetti am Namensschild; das Tier bewegt sich kurz so, wie
+//    es das wirklich tut (Kroete huepft, Wurm streckt sich, die anderen
+//    drehen sich einmal um).
 // Fachlich: Kellerassel 14 Beine (7 Paare, Krebstier), Erdkroete 4 Beine und
 // Wirbelsaeule (Wirbeltier, 9 Rumpfwirbel + Kreuzbein + Steissbeinstab),
 // Spinne 8, Regenwurm keine, Kaefer 6. Wirbellose haben keine Knochen.
@@ -84920,6 +85162,9 @@ const _BBS_WARZEN = (() => {
 })();
 
 const _BBS_CX = 114, _BBS_CY = 142;     // Mitte des Tieres im Bild
+const _BBS_TAKT = 0.34;                 // s je gezaehltem Bein (2,9 Hz, unter 3 Hz)
+const _BBS_ROE = 1.5;                   // s fuer einen Roentgen-Scan
+const _BBS_LUPE_K = [1.22, 1.22, 1.0, 1.1, 1.22];   // Vergroesserung je Tier
 
 function _bbsInit() {
   _bbs = { tier: 1, t: 0 };
@@ -84934,6 +85179,7 @@ function _bbsZurueck() {
     gezaehlt: false, geroentgt: false, zaehlStand: -1,
     frage: 1, weg: [], ende: null, endeT0: 0,
     falsch: null, kante: null, vor: null, fertigHinweis: false,
+    fx: { teile: [] }, popT0: -9, roeFertigT0: -9, jubelT0: -9, jubelFrei: false,
   });
 }
 
@@ -85034,22 +85280,83 @@ function _bbsUpdate(dt) {
   if (!_bbs) return;
   _bbs.t += dt;
   const t = _bbs.t, d = _bbsTierDaten();
+  const fx = _bbs.fx;
+  _bioFxAlleUpdate(fx, dt);
   if (_bbs.lupe && !_bbs.gezaehlt) {
-    const k = Math.min(d.beine, Math.floor((t - _bbs.lupeT0 - 0.4) / 0.22) + 1);
+    const k = Math.min(d.beine, Math.floor((t - _bbs.lupeT0 - 0.4) / _BBS_TAKT) + 1);
     const stand = Math.max(0, k);
-    if (stand !== _bbs.zaehlStand) { _bbs.zaehlStand = stand; _bbsStatus(); }
-    if (t - _bbs.lupeT0 >= 0.4 + d.beine * 0.22 + 0.5) {
+    if (stand !== _bbs.zaehlStand) {
+      // kleiner Lichtring an der Nummer des gerade gezaehlten Beins
+      if (stand > 0 && stand > _bbs.zaehlStand) {
+        const p = _bbsBeinNummerPunkt(stand - 1);
+        if (p) _bioFxWelle(fx.teile, p[0], p[1], '#fb923c', 16);
+      }
+      _bbs.zaehlStand = stand; _bbsStatus();
+    }
+    if (t - _bbs.lupeT0 >= 0.4 + d.beine * _BBS_TAKT + 0.5) {
       _bbs.gezaehlt = true; _bbsStatus();
+      // Aha: das Zahlschild springt auf
+      _bbs.popT0 = t;
+      const ly = _BBS_CY - 102 + 14;
+      _bioFxWelle(fx.teile, _BBS_CX, ly, '#fb923c', 70);
+      // Glitzer links und rechts neben dem Schild, damit die Zahl frei lesbar bleibt
+      for (const sx of [-54, 54]) {
+        _bioFxFunken(fx.teile, _BBS_CX + sx, ly, 6, ['#fdba74', '#fff3b0', '#ffffff', '#f97316']);
+      }
     }
   }
-  if (_bbs.roe && !_bbs.geroentgt && t - _bbs.roeT0 >= 1.2) {
+  if (_bbs.roe && !_bbs.geroentgt && t - _bbs.roeT0 >= _BBS_ROE) {
     _bbs.geroentgt = true; _bbsStatus();
+    _bbs.roeFertigT0 = t;
+    if (d.wirbel) {
+      // Aha: die Wirbelsaeule leuchtet auf – Lichtring und Funken entlang der Wirbel
+      _bioFxWelle(fx.teile, _BBS_CX, _BBS_CY, '#67e8f9', 95);
+      for (let k = 0; k < 9; k += 2) {
+        _bioFxFunken(fx.teile, _BBS_CX + (20 - k * 5) * 1.15, _BBS_CY, 3, ['#a5f3fc', '#ecfeff', '#ffffff']);
+      }
+    } else {
+      _bioFxWelle(fx.teile, _BBS_CX, _BBS_CY, '#94a3b8', 70);
+    }
+  }
+  // Der gelbe Punkt kommt am Ziel der Kante an
+  if (_bbs.kante && !_bbs.kante.da && t - _bbs.kante.t0 >= 0.5) {
+    _bbs.kante.da = true;
+    const [, , x2, y2] = _bbsKante(_bbs.kante.q, _bbs.kante.a);
+    if (_bbs.ende) {
+      _bbsJubel();
+    } else {
+      _bioFxWelle(fx.teile, x2, y2, '#22c55e', 22);
+    }
   }
   if (_bbs.vor && t >= _bbs.vor.naechst) {
     _bbsAntwort(_bbsRichtig(_bbs.frage));
     if (_bbs.ende) { _bbs.vor = null; _bbsStatus(); }
     else _bbs.vor.naechst = t + 1.1;
   }
+}
+
+// Das Ende ist erreicht und der Punkt ist am Namen angekommen: jetzt erst die Bestaetigung.
+function _bbsJubel() {
+  const fx = _bbs.fx, t = _bbs.t;
+  const b = _BBS_BLAETTER.find(bl => bl[5] === _bbs.ende);
+  if (b) {
+    const bx = b[0] + b[2] / 2, by = b[1] + b[3] / 2;
+    _bioFxWelle(fx.teile, bx, by, '#22c55e', 46);
+    _bioFxFunken(fx.teile, bx, by, 14, ['#86efac', '#fff3b0', '#ffffff', '#ffd84d']);
+  }
+  _bioFxStempel(fx, 'BESTIMMT!', _BBS_CX, 62, '#15803d');
+  _bioFxKonfetti(fx.teile, _BBS_CX, 222, 18);
+  _bbs.jubelT0 = t;
+  _bbs.jubelFrei = true;
+}
+
+// Mitte der Nummer am Bein i in der Lupe (Leinwandkoordinaten).
+function _bbsBeinNummerPunkt(i) {
+  const nr = _bbs.tier - 1, l = _bbsBeine(nr, 0, 0)[i];
+  if (!l) return null;
+  const k = _BBS_LUPE_K[nr];
+  const dx = l.s[0] - l.k[0], dy = l.s[1] - l.k[1], m = Math.hypot(dx, dy) || 1;
+  return [_BBS_CX + (l.s[0] + dx / m * 8) * k, _BBS_CY + (l.s[1] + dy / m * 8) * k];
 }
 
 // ── Statuszeile ────────────────────────────────────────
@@ -85359,7 +85666,7 @@ function _bbsDraw(ctx, cv) {
 
   if (_bbs.lupe) {
     // ── Lupe: Tier gross, Beine nummeriert ──
-    const R = 102, k = nr === 3 ? 1.1 : nr === 2 ? 1.0 : 1.22;
+    const R = 102, k = _BBS_LUPE_K[nr];
     ctx.save();
     ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.clip();
     ctx.fillStyle = '#d8c6a6'; ctx.fillRect(CX - R, CY - R, 2 * R, 2 * R);
@@ -85367,14 +85674,17 @@ function _bbsDraw(ctx, cv) {
     ctx.translate(CX, CY); ctx.scale(k, k);
     const beine = _bbsTierBild(ctx, nr, t, 0, 0);
     const u = t - _bbs.lupeT0 - 0.4;
-    const n = _bbs.gezaehlt ? beine.length : Math.max(0, Math.min(beine.length, Math.floor(u / 0.22) + 1));
+    const n = _bbs.gezaehlt ? beine.length : Math.max(0, Math.min(beine.length, Math.floor(u / _BBS_TAKT) + 1));
     for (let i = 0; i < n; i++) {
       const l = beine[i];
       _bbsBeinStrich(ctx, l, '#f97316', 2.6);
       const dx = l.s[0] - l.k[0], dy = l.s[1] - l.k[1], m = Math.hypot(dx, dy) || 1;
       const lx = l.s[0] + dx / m * 8, ly = l.s[1] + dy / m * 8;
       ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#f97316'; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.arc(lx, ly, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      // die neue Nummer ploppt kurz auf (0,3 s)
+      const neu = _bbs.gezaehlt ? 1 : _bioFxKlemme((u - i * _BBS_TAKT) / 0.3);
+      const rr = 6 * (0.6 + 0.4 * _bioFxEase.federn(neu));
+      ctx.beginPath(); ctx.arc(lx, ly, rr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
       ctx.fillStyle = '#9a3412'; ctx.font = 'bold 8px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(String(i + 1), lx, ly + 0.5);
     }
@@ -85390,16 +85700,27 @@ function _bbsDraw(ctx, cv) {
     // Ergebnis der Zaehlung
     if (_bbs.gezaehlt || d.beine === 0 && u > 0.6) {
       const txt = d.beine === 0 ? 'keine Beine' : `${d.beine} Beine`;
-      ctx.fillStyle = 'rgba(255,255,255,0.92)';
-      ctx.beginPath(); ctx.rect(CX - 44, CY - R + 4, 88, 20); ctx.fill();
+      // Aha: das Schild springt einmal federnd auf
+      const pu = _bioFxKlemme((t - _bbs.popT0) / 0.5);
+      const ps = _bbs.popT0 > 0 ? 0.5 + 0.5 * _bioFxEase.federn(pu) : 1;
+      ctx.save();
+      ctx.translate(CX, CY - R + 14); ctx.scale(ps, ps);
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
+      ctx.strokeStyle = '#f97316'; ctx.lineWidth = 1.5;
+      _bioFxRundRect(ctx, -44, -10, 88, 20, 6); ctx.fill(); ctx.stroke();
       ctx.fillStyle = '#9a3412'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(txt, CX, CY - R + 14.5);
+      ctx.fillText(txt, 0, 0.5);
+      ctx.restore();
     }
   } else if (_bbs.roe) {
     // ── Roentgenblick: dunkel, Tier nur als Schatten, Knochen leuchten ──
     ctx.fillStyle = 'rgba(8,20,48,0.88)'; ctx.fillRect(0, 0, 228, H);
-    const scan = Math.min(1, (t - _bbs.roeT0) / 1.2);
-    const yScan = 36 + scan * 200;
+    const scan = _bbs.geroentgt ? 1 : Math.min(1, (t - _bbs.roeT0) / _BBS_ROE);
+    const yScan = 36 + _bioFxEase.sanft(scan) * 200;
+    // feines Raster wie auf einem Leuchtschirm
+    ctx.strokeStyle = 'rgba(103,232,249,0.07)'; ctx.lineWidth = 1;
+    for (let gx = 12; gx < 228; gx += 18) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+    for (let gy = 10; gy < H; gy += 18) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(228, gy); ctx.stroke(); }
     ctx.save();
     ctx.translate(CX, CY); ctx.scale(1.15, 1.15);
     ctx.globalAlpha = 0.22;
@@ -85414,17 +85735,59 @@ function _bbsDraw(ctx, cv) {
       ctx.restore();
     }
     if (scan < 1) {
-      ctx.fillStyle = 'rgba(103,232,249,0.25)'; ctx.fillRect(0, yScan - 6, 228, 12);
-      ctx.fillStyle = '#67e8f9'; ctx.fillRect(0, yScan - 1, 228, 2);
+      // Leuchtspur hinter dem Scanstreifen
+      const gsc = ctx.createLinearGradient(0, yScan - 46, 0, yScan);
+      gsc.addColorStop(0, 'rgba(103,232,249,0)'); gsc.addColorStop(1, 'rgba(103,232,249,0.28)');
+      ctx.fillStyle = gsc; ctx.fillRect(0, yScan - 46, 228, 46);
+      if (d.wirbel) {
+        // wo der Streifen gerade ist, gluehen die Knochen hell auf
+        ctx.save();
+        ctx.beginPath(); ctx.rect(0, yScan - 16, 228, 18); ctx.clip();
+        ctx.shadowColor = '#67e8f9'; ctx.shadowBlur = 12;
+        ctx.translate(CX, CY); ctx.scale(1.15, 1.15);
+        _bbsKnochen(ctx, t);
+        ctx.restore();
+      }
+      ctx.save();
+      ctx.shadowColor = '#67e8f9'; ctx.shadowBlur = 14;
+      ctx.fillStyle = '#a5f3fc'; ctx.fillRect(0, yScan - 1.5, 228, 3);
+      ctx.restore();
     } else {
+      const ea = _bioFxEase.raus(_bioFxKlemme((t - _bbs.roeFertigT0) / 0.5));
+      if (d.wirbel) {
+        const lu = t - _bbs.roeFertigT0;
+        if (lu < 2) {
+          ctx.save(); ctx.globalAlpha = 1 - _bioFxKlemme((lu - 1.4) / 0.6);
+          _bioFxLeuchten(ctx, CX + 1, CY, 34, t, '103,232,249');
+          ctx.restore();
+        }
+      }
+      ctx.save();
+      ctx.globalAlpha = ea;
       ctx.fillStyle = '#ecfeff'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(d.wirbel ? 'Knochen und Wirbelsäule' : 'keine Knochen', CX, 226);
+      ctx.restore();
     }
     ctx.fillStyle = '#67e8f9'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.fillText('Röntgenblick', 8, 58);
   } else {
+    // kurze, arttypische Bewegung nach dem Bestimmen (1,2 s)
+    const ju = (t - _bbs.jubelT0) / 1.2;
+    let sx = 1;
+    if (_bbs.jubelFrei && ju >= 0 && ju < 1) {
+      if (nr === 1) y -= Math.sin(Math.PI * ju) * 16;                       // Kroete huepft
+      else if (nr === 3) sx = 1 + 0.16 * Math.sin(Math.PI * ju);            // Wurm streckt sich
+      else rot += Math.PI * 2 * _bioFxEase.sanft(ju);                        // dreht sich einmal um
+    }
+    // nach einer Antwort, die nicht passt: sanfter Lichtkranz um das Tier (Hinsehen!)
+    if (_bbs.falsch && t - _bbs.falsch.t0 < 2) {
+      ctx.save(); ctx.globalAlpha = 1 - _bioFxKlemme((t - _bbs.falsch.t0 - 1.4) / 0.6);
+      _bioFxLeuchten(ctx, x, y, nr === 3 ? 80 : 58, t - _bbs.falsch.t0, '251,191,36');
+      ctx.restore();
+    }
     ctx.save();
     ctx.translate(x, y); ctx.rotate(rot);
+    if (sx !== 1) ctx.scale(sx, 1);
     ctx.fillStyle = 'rgba(0,0,0,0.22)';
     ctx.beginPath(); ctx.ellipse(-2, 5, nr === 3 ? 88 : 56, nr === 3 ? 12 : 30, 0, 0, Math.PI * 2); ctx.fill();
     _bbsTierBild(ctx, nr, t, ph, amp);
@@ -85436,8 +85799,8 @@ function _bbsDraw(ctx, cv) {
   ctx.beginPath(); ctx.rect(170, 6, 52, 20); ctx.fill();
   ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText(`Tier ${_bbs.tier}`, 196, 16.5);
-  if (_bbs.ende && !_bbs.lupe && !_bbs.roe) {
-    const s = Math.min(1, (t - _bbs.endeT0) / 0.35);
+  if (_bbs.ende && _bbs.jubelFrei && !_bbs.lupe && !_bbs.roe) {
+    const s = 0.2 + 0.8 * _bioFxEase.federn(_bioFxKlemme((t - _bbs.jubelT0) / 0.45));
     ctx.save();
     ctx.translate(CX, 226); ctx.scale(s, s);
     ctx.fillStyle = '#16a34a';
@@ -85446,16 +85809,36 @@ function _bbsDraw(ctx, cv) {
     ctx.fillText(d.name, 0, 0.5);
     ctx.restore();
   }
+  // Stempel nur auf dem freien Bild, nicht ueber Lupe oder Roentgenschirm
+  if (!_bbs.lupe && !_bbs.roe) _bioFxStempelDraw(ctx, _bbs.fx);
   ctx.restore();
 
   _bbsSchluesselBild(ctx, t);
+  _bioFxDraw(ctx, _bbs.fx.teile);
+  _bioFxBannerDraw(ctx, _bbs.fx);
 }
+
+// Kante des Schluessels (Frage q, Antwort a) als [x1, y1, x2, y2].
+const _BBS_QX = 236, _BBS_QW = 90, _BBS_QH = 28, _BBS_LX = 352, _BBS_LW = 64;
+function _bbsQy(q) { return 24 + (q - 1) * 50; }
+function _bbsKante(q, a) {
+  const y = _bbsQy(q), rechts = q === 2 ? 'nein' : 'ja';
+  if (a === rechts) return [_BBS_QX + _BBS_QW, y + _BBS_QH / 2, _BBS_LX, y + _BBS_QH / 2];
+  return [_BBS_QX + _BBS_QW / 2, y + _BBS_QH, _BBS_QX + _BBS_QW / 2, q < 4 ? _bbsQy(q + 1) : 222];
+}
+// Namensfelder am Ende der Wege: [x, y, w, h, Zeilen, Name].
+const _BBS_BLAETTER = [
+  [_BBS_LX, _bbsQy(1), _BBS_LW, _BBS_QH, ['Wirbeltier:', 'Erdkröte'], 'Wirbeltier: Erdkröte'],
+  [_BBS_LX, _bbsQy(2), _BBS_LW, _BBS_QH, ['Regenwurm'], 'Regenwurm'],
+  [_BBS_LX, _bbsQy(3), _BBS_LW, _BBS_QH, ['Käfer'], 'Käfer'],
+  [_BBS_LX, _bbsQy(4), _BBS_LW, _BBS_QH, ['Spinne'], 'Spinne'],
+  [_BBS_QX + 11, 222, 68, 22, ['Kellerassel'], 'Kellerassel'],
+];
 
 // Rechte Seite: der Bestimmungsschluessel als Pfeilweg.
 function _bbsSchluesselBild(ctx, t) {
-  const QX = 236, QW = 90, QH = 28, LX = 352, LW = 64;
-  const qy = q => 24 + (q - 1) * 50;
-  const rechtsA = q => (q === 2 ? 'nein' : 'ja');
+  const QX = _BBS_QX, QW = _BBS_QW, QH = _BBS_QH;
+  const qy = _bbsQy;
   ctx.fillStyle = '#ffffff';
   ctx.beginPath(); ctx.rect(231, 3, 186, 244); ctx.fill();
   ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
@@ -85464,11 +85847,7 @@ function _bbsSchluesselBild(ctx, t) {
 
   const gegangen = (q, a) => _bbs.weg.some(w => w.q === q && w.a === a);
   // Kanten
-  const kante = (q, a) => {
-    const y = qy(q);
-    if (a === rechtsA(q)) return [QX + QW, y + QH / 2, LX, y + QH / 2];
-    return [QX + QW / 2, y + QH, QX + QW / 2, q < 4 ? qy(q + 1) : 222];
-  };
+  const kante = _bbsKante;
   for (let q = 1; q <= 4; q++) {
     for (const a of ['ja', 'nein']) {
       const [x1, y1, x2, y2] = kante(q, a);
@@ -85490,8 +85869,12 @@ function _bbsSchluesselBild(ctx, t) {
     const u = (t - _bbs.kante.t0) / 0.5;
     if (u >= 0 && u <= 1) {
       const [x1, y1, x2, y2] = kante(_bbs.kante.q, _bbs.kante.a);
+      const e = _bioFxEase.sanft(u), px = x1 + (x2 - x1) * e, py = y1 + (y2 - y1) * e;
+      ctx.save();
+      ctx.shadowColor = '#facc15'; ctx.shadowBlur = 10;
       ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.arc(x1 + (x2 - x1) * u, y1 + (y2 - y1) * u, 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.restore();
     }
   }
   // Fragekaesten
@@ -85500,10 +85883,12 @@ function _bbsSchluesselBild(ctx, t) {
     const y = qy(q);
     const jetzt = !_bbs.ende && _bbs.frage === q;
     const erledigt = _bbs.weg.some(w => w.q === q);
-    const fl = _bbs.falsch && _bbs.falsch.q === q && (t - _bbs.falsch.t0) < 0.6;
-    if (fl) x += Math.sin((t - _bbs.falsch.t0) * 40) * 3;
-    ctx.fillStyle = fl ? '#fee2e2' : jetzt ? '#fef3c7' : erledigt ? '#dcfce7' : '#f8fafc';
-    ctx.strokeStyle = fl ? '#dc2626' : jetzt ? '#f59e0b' : erledigt ? '#16a34a' : '#94a3b8';
+    // Antwort passt nicht: der Kasten wackelt sanft (2 Hz, klingt in 0,9 s ab), ohne Rot
+    const fu = _bbs.falsch && _bbs.falsch.q === q ? (t - _bbs.falsch.t0) / 0.9 : 2;
+    const fl = fu >= 0 && fu < 1;
+    if (fl) x += Math.sin(fu * 0.9 * Math.PI * 2 * 2) * 4 * (1 - fu);
+    ctx.fillStyle = fl ? '#ffedd5' : jetzt ? '#fef3c7' : erledigt ? '#dcfce7' : '#f8fafc';
+    ctx.strokeStyle = fl ? '#fb923c' : jetzt ? '#f59e0b' : erledigt ? '#16a34a' : '#94a3b8';
     ctx.lineWidth = jetzt ? 2 + Math.sin(t * 5) * 0.8 : 1.4;
     ctx.beginPath(); ctx.rect(x, y, QW, QH); ctx.fill(); ctx.stroke();
     ctx.fillStyle = '#64748b'; ctx.font = '8px system-ui'; ctx.textAlign = 'left';
@@ -85512,18 +85897,18 @@ function _bbsSchluesselBild(ctx, t) {
     ctx.fillText(_BBS_KURZ[q], x + 5, y + 19.5);
   }
   // Namen am Ende der Wege
-  const blaetter = [
-    [LX, qy(1), LW, QH, ['Wirbeltier:', 'Erdkröte'], 'Wirbeltier: Erdkröte'],
-    [LX, qy(2), LW, QH, ['Regenwurm'], 'Regenwurm'],
-    [LX, qy(3), LW, QH, ['Käfer'], 'Käfer'],
-    [LX, qy(4), LW, QH, ['Spinne'], 'Spinne'],
-    [QX + 11, 222, 68, 22, ['Kellerassel'], 'Kellerassel'],
-  ];
-  for (const [x, y, w, h, zeilen, name] of blaetter) {
-    const da = _bbs.ende === name;
-    const s = da ? 1 + 0.08 * Math.max(0, 1 - (t - _bbs.endeT0) / 0.4) : 1;
+  for (const [x, y, w, h, zeilen, name] of _BBS_BLAETTER) {
+    // das Namensfeld leuchtet auf, sobald der Punkt angekommen ist
+    const da = _bbs.ende === name && _bbs.jubelFrei;
+    const ju = t - _bbs.jubelT0;
+    const s = da ? 1 + 0.14 * Math.sin(Math.PI * _bioFxKlemme(ju / 0.6)) : 1;
     ctx.save();
     ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s);
+    if (da && ju < 2) {
+      ctx.save(); ctx.globalAlpha = 1 - _bioFxKlemme((ju - 1.4) / 0.6);
+      _bioFxLeuchten(ctx, 0, 0, w * 0.55, ju, '34,197,94');
+      ctx.restore();
+    }
     ctx.fillStyle = da ? '#16a34a' : '#f1f5f9';
     ctx.strokeStyle = da ? '#15803d' : '#94a3b8'; ctx.lineWidth = 1.4;
     ctx.beginPath(); ctx.rect(-w / 2, -h / 2, w, h); ctx.fill(); ctx.stroke();
@@ -85585,6 +85970,15 @@ function _bbsHTML() {
 //   Staubblätter   20 Bienen · 8 von 10   (Blütenstaub kommt von anderen Bäumen)
 //   Stempel        20 Bienen · 0 von 10   (nichts, woraus eine Kirsche wachsen kann)
 // Die Zahlen werden aus den Listen unten GEZÄHLT, nicht hingeschrieben.
+// Effekte (Bibliothek _bioFx, ruhig, kein Blinken, keine Wertung):
+//   Landung einer Biene   -> etwas Blütenstaub glitzert an der Blüte
+//   Lupe                  -> EINE Biene groß: sie setzt Blütenstaub auf die Narbe
+//   Sommeranfang          -> Blütenblätter segeln vom Zweig
+//   Stempel schwillt      -> kurze Zeitlupe + Lichtring in der Lupe
+//   Kirsche wird rot      -> Kirsche für Kirsche ein kleiner Lichtring mit Glanz,
+//                            die Kirschen-Pille zählt mit
+//   am Ende               -> Aha-Streifen oben; ohne Stempel bleibt in der Lupe
+//                            ein leerer, gestrichelter Platz
 // ══════════════════════════════════════════════════════════════════════
 const _BBL_TEILE = ['nichts', 'Blütenblätter', 'Staubblätter', 'Stempel'];
 const _BBL_BIENEN = { 'nichts': 20, 'Blütenblätter': 2, 'Staubblätter': 20, 'Stempel': 20 };
@@ -85604,13 +85998,50 @@ let _bblState = null;
 
 function _bblInit() {
   _bblState = { teil: 'nichts', phase: 'bluete', tp: 0, tAnim: 0,
-                bienen: [], gezaehlt: 0, besucht: {}, statusKey: '' };
+                bienen: [], gezaehlt: 0, besucht: {}, statusKey: '',
+                W: 420, H: 250, tf: 0, fx: { teile: [] }, fxMerk: {}, reif: {}, zeitlupe: null };
 }
 
 // feste Zufallszahl je Biene - jeder Lauf sieht gleich aus
 function _bblZufall(k, s) {
   const x = Math.sin(k * 12.9898 + s * 78.233) * 43758.5453;
   return x - Math.floor(x);
+}
+
+// ── Effekte (nur Aufrufe der Bibliothek _bioFx, kleine eigene Helfer) ──
+function _bblFxLeeren() {
+  const s = _bblState;
+  s.fx = { teile: [] }; s.fxMerk = {}; s.reif = {}; s.tf = 0; s.zeitlupe = null;
+}
+// kleiner, langsamer Glitzerstaub (die Bibliotheks-Funken sind für die
+// winzigen Blüten am Zweig zu groß und zu schnell)
+function _bblGlitzer(liste, x, y, n, farben, streu, rMin, rMax) {
+  for (let i = 0; i < n; i++) {
+    _bioFxNeu(liste, { art: 'funke', x: x + (Math.random() - 0.5) * streu, y: y + (Math.random() - 0.5) * streu * 0.5,
+      vx: (Math.random() - 0.5) * 24, vy: -8 - Math.random() * 18, g: 30, alter: 0,
+      leben: 0.8 + Math.random() * 0.7, r: rMin + Math.random() * (rMax - rMin),
+      farbe: farben[i % farben.length], dreh: Math.random() * 6, dw: (Math.random() - 0.5) * 3 });
+  }
+}
+const _BBL_POLLEN = ['#facc15', '#fff3b0', '#fde047'];
+function _bblLupeGeo(W, H) {
+  const cx = W * 0.215, cy = H * 0.54, R = Math.min(W * 0.2, H * 0.36);
+  return { cx, cy, R, k: R / 82 };
+}
+// Kirsche am Zweig: Reifegrad je Kirsche leicht versetzt, damit sie
+// nacheinander rot werden (j = Platz in der Fruchtliste)
+function _bblRot(p, j) { return _bblSchritt(p, 0.50 + 0.035 * j, 0.72 + 0.035 * j); }
+function _bblFruchtPos(W, H, i, p) {
+  const b = _bblBlueten(W, H)[i];
+  const wachs = _bblSchritt(p, 0.35, 0.9);
+  const r = 2 + 5 * wachs;
+  return { x: b.ax + (b.x - b.ax) * 0.4, y: b.ay + 14 + 6 * wachs + r, r };
+}
+function _bblAhaText(teil) {
+  if (teil === 'Stempel') return 'Viele Bienen – aber keine Kirsche!';
+  if (teil === 'Blütenblätter') return 'Kaum Bienen – kaum Kirschen!';
+  if (teil === 'Staubblätter') return 'Die Bienen bringen den Blütenstaub mit!';
+  return 'Die Mitte der Blüte wird zur Kirsche!';
 }
 
 function _bblTeil(name) {
@@ -85623,6 +86054,7 @@ function _bblNeu() {
   if (!_bblState) return;
   const s = _bblState;
   s.phase = 'bluete'; s.tp = 0; s.bienen = []; s.gezaehlt = 0; s.besucht = {};
+  _bblFxLeeren();
   _bblStatus();
 }
 
@@ -85630,6 +86062,7 @@ function _bblSommer() {
   if (!_bblState) return;
   const s = _bblState;
   s.phase = 'stunde'; s.tp = 0; s.gezaehlt = 0; s.besucht = {};
+  _bblFxLeeren();
   // Die Bienen dieser Stunde planen: Ankunftszeit und Zielblüte.
   const n = _BBL_BIENEN[s.teil];
   const fr = _BBL_FRUCHT[s.teil];
@@ -85726,15 +86159,29 @@ function _bblHTML() {
 function _bblUpdate(dt) {
   const s = _bblState;
   if (!s) return;
-  const d = Math.min(dt, 0.05);
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(s, roh);
   s.tAnim += d;
+  _bioFxAlleUpdate(s.fx, roh);
+  const W = s.W, H = s.H, fx = s.fx.teile, M = s.fxMerk;
   if (s.phase === 'stunde') {
     s.tp += d;
     let n = 0;
-    for (const b of s.bienen) {
-      if (!b.da && s.tp >= b.start + 0.8) { b.da = true; s.besucht[b.ziel] = true; }
+    const bl = _bblBlueten(W, H);
+    s.bienen.forEach((b, k) => {
+      if (!b.da && s.tp >= b.start + 0.8) {
+        b.da = true; s.besucht[b.ziel] = true;
+        // Landung: etwas Blütenstaub glitzert an der Blüte
+        _bblGlitzer(fx, bl[b.ziel].x, bl[b.ziel].y - 3, 3, _BBL_POLLEN, 8, 0.9, 1.6);
+        if (k === 0 && b.ziel === _BBL_LUPE) {
+          // die große Biene in der Lupe setzt Blütenstaub auf die Narbe
+          const L = _bblLupeGeo(W, H);
+          const ny = s.teil === 'Stempel' ? -10 : -32;
+          _bblGlitzer(fx, L.cx, L.cy + ny * L.k, 9, _BBL_POLLEN, 22 * L.k, 1.4, 2.6);
+        }
+      }
       if (b.da) n++;
-    }
+    });
     if (n !== s.gezaehlt) { s.gezaehlt = n; _bblStatus(); }
     if (s.tp >= _BBL_T_STUNDE) {
       s.gezaehlt = s.bienen.length;
@@ -85742,9 +86189,70 @@ function _bblUpdate(dt) {
     }
   } else if (s.phase === 'sommer') {
     s.tp += d;
-    if (s.tp >= _BBL_T_SOMMER) { s.tp = _BBL_T_SOMMER; s.phase = 'fertig'; }
+    if (s.tp >= _BBL_T_SOMMER) { s.tp = _BBL_T_SOMMER; s.phase = 'fertig'; s.tf = 0; }
+    _bblSommerFx(W, H);
     _bblStatus();
+  } else if (s.phase === 'fertig') {
+    const vor = s.tf;
+    s.tf += roh;
+    _bblSommerFx(W, H);                                    // falls ein Bild fehlte
+    const L = _bblLupeGeo(W, H);
+    const lupeFrucht = s.teil !== 'Stempel' && _BBL_FRUCHT[s.teil].indexOf(_BBL_LUPE) >= 0;
+    if (vor === 0 && s.teil === 'Stempel') {
+      // der leere Platz in der Lupe wird markiert
+      _bioFxWelle(fx, L.cx, L.cy + 36 * L.k, 'rgba(100,116,139,0.9)', 26 * L.k);
+    }
+    // Aha-Streifen erst, wenn die Kirschen zu sehen sind
+    if (vor < 0.9 && s.tf >= 0.9 && !M.banner) {
+      M.banner = true;
+      _bioFxBanner(s.fx, _bblAhaText(s.teil), 3.6, s.teil === 'Stempel' ? '#f0a6bb' : '#ffd84d');
+      if (lupeFrucht) _bioFxFunken(fx, L.cx, L.cy + 26 * L.k, 10, ['#fecdd3', '#ffffff', '#ffd84d']);
+    }
   }
+}
+
+// Effekte im Sommer: jeweils einmal, wenn der Sommer eine Marke überschreitet
+function _bblSommerFx(W, H) {
+  const s = _bblState, M = s.fxMerk, fx = s.fx.teile, p = _bblSommerP();
+  const teil = s.teil, fr = _BBL_FRUCHT[teil];
+  const bl = _bblBlueten(W, H);
+  const L = _bblLupeGeo(W, H);
+  // Blütenblätter segeln vom Zweig
+  if (!M.blaetter && teil !== 'Blütenblätter') {
+    M.blaetter = true;
+    bl.forEach(b => _bioFxBlaetter(fx, b.x, b.y, 2, ['#fff5f7', '#fbcfe8', '#fde2ea']));
+  }
+  // Blüten ohne Kirsche vertrocknen und fallen ab
+  if (!M.welk && p >= 0.42) {
+    M.welk = true;
+    bl.forEach((b, i) => {
+      if (fr.indexOf(i) < 0) _bblGlitzer(fx, b.x, b.y + 4, 2, ['#b08968', '#a3a380'], 6, 1.0, 1.4);
+    });
+  }
+  // Der Stempel in der Lupe schwillt: kurz langsamer, Lichtring
+  const lupeFrucht = teil !== 'Stempel' && fr.indexOf(_BBL_LUPE) >= 0;
+  if (!M.schwillt && lupeFrucht && p >= 0.36) {
+    M.schwillt = true;
+    _bioFxZeitlupe(s, 0.35, 1.4);
+    _bioFxWelle(fx, L.cx, L.cy + 28 * L.k, 'rgba(132,204,22,0.95)', 34 * L.k);
+  }
+  // Kirsche für Kirsche wird rot
+  if (teil === 'Stempel') return;
+  fr.forEach((i, j) => {
+    if (s.reif[i] || _bblRot(p, j) < 1) return;
+    s.reif[i] = s.tAnim;
+    const q = _bblFruchtPos(W, H, i, p);
+    _bioFxWelle(fx, q.x, q.y, 'rgba(244,63,94,0.85)', 16);
+    _bblGlitzer(fx, q.x, q.y - q.r, 3, ['#ffffff', '#fecdd3'], 6, 1.1, 1.8);
+    if (i === _BBL_LUPE) {
+      _bioFxFunken(fx, L.cx, L.cy + 26 * L.k, 8, ['#fecdd3', '#ffffff', '#fda4af']);
+    }
+  });
+}
+function _bblReifZahl() {
+  const s = _bblState;
+  if (s.phase === 'fertig') return _bblKirschen();
+  return Object.keys(s.reif).length;
 }
 
 // Fortschritt 0..1 zwischen a und b (Anteil der Sommerzeit)
@@ -85764,6 +86272,7 @@ function _bblDraw(ctx, cv) {
   const s = _bblState;
   if (!s) return;
   const W = cv.width, H = cv.height, t = s.tAnim, p = _bblSommerP();
+  s.W = W; s.H = H;
   const teil = s.teil;
   const ohneBB = teil === 'Blütenblätter', ohneSB = teil === 'Staubblätter', ohneST = teil === 'Stempel';
 
@@ -85861,8 +86370,12 @@ function _bblDraw(ctx, cv) {
     if (!ohneST) {
       ctx.save();
       if (frucht && p > 0.35) {
-        const r = 2 + 5 * wachs;
-        ctx.fillStyle = _bblMisch([132, 204, 22], [190, 18, 60], _bblSchritt(p, 0.55, 0.95));
+        let r = 2 + 5 * wachs;
+        if (s.reif[i] !== undefined) {                     // kurz aufploppen, dann ruhig
+          const a = _bioFxKlemme((t - s.reif[i]) / 0.45);
+          r *= 1 + 0.35 * Math.sin(a * Math.PI) * (1 - a * 0.5);
+        }
+        ctx.fillStyle = _bblMisch([132, 204, 22], [190, 18, 60], _bblRot(p, fr.indexOf(i)));
         ctx.beginPath(); ctx.arc(kx, ky + r, r, 0, Math.PI * 2); ctx.fill();
         if (r > 4) {
           ctx.fillStyle = 'rgba(255,255,255,0.6)';
@@ -85909,7 +86422,8 @@ function _bblDraw(ctx, cv) {
     return x - w - 6;
   };
   let xr = W - 6;
-  if (s.phase === 'fertig') xr = pille('Kirschen: ' + _bblKirschen() + ' von 10', xr, '#be123c');
+  if (s.phase === 'fertig' || (s.phase === 'sommer' && _bblReifZahl() > 0))
+    xr = pille('Kirschen: ' + _bblReifZahl() + ' von 10', xr, '#be123c');
   if (s.phase !== 'bluete') xr = pille(s.gezaehlt + (s.gezaehlt === 1 ? ' Biene' : ' Bienen'), xr, '#ca8a04');
   // Uhr für "eine Stunde"
   if (s.phase === 'stunde') {
@@ -85922,18 +86436,23 @@ function _bblDraw(ctx, cv) {
     ctx.fillText('1 Stunde', cx - 12, cy);
   }
   ctx.restore();
+
+  // Effekte zuletzt: Staub, Lichtringe, Aha-Streifen
+  _bioFxAlleDraw(ctx, s.fx);
 }
 
 // Die eine Blüte groß, von der Seite, halb durchgeschnitten
 function _bblLupe(ctx, W, H, t, p) {
   const s = _bblState, teil = s.teil;
   const ohneBB = teil === 'Blütenblätter', ohneSB = teil === 'Staubblätter', ohneST = teil === 'Stempel';
-  const cx = W * 0.215, cy = H * 0.54, R = Math.min(W * 0.2, H * 0.36);
-  const k = R / 82;                          // Maßstab der Zeichnung
+  const L = _bblLupeGeo(W, H);
+  const cx = L.cx, cy = L.cy, R = L.R;
+  const k = L.k;                             // Maßstab der Zeichnung
   const X = v => cx + v * k, Y = v => cy + v * k;
   const frucht = _BBL_FRUCHT[teil].indexOf(_BBL_LUPE) >= 0;
   const fallBB = _bblSchritt(p, 0.0, 0.35), fallSB = _bblSchritt(p, 0.15, 0.45);
-  const wachs = _bblSchritt(p, 0.35, 0.9), rot = _bblSchritt(p, 0.55, 0.95);
+  const jL = _BBL_FRUCHT[teil].indexOf(_BBL_LUPE);
+  const wachs = _bblSchritt(p, 0.35, 0.9), rot = jL >= 0 ? _bblRot(p, jL) : 0;
   const wig = Math.sin(t * 1.5) * 0.03;
 
   ctx.save();
@@ -85979,6 +86498,13 @@ function _bblLupe(ctx, W, H, t, p) {
         });
       }
       ctx.globalAlpha = 1;
+      // reife Kirsche leuchtet am Ende kurz ruhig nach (0,8 Hz, klingt ab)
+      if (s.phase === 'fertig' && s.tf < 4) {
+        ctx.save();
+        ctx.globalAlpha = 1 - _bioFxEase.sanft(_bioFxKlemme((s.tf - 2.6) / 1.4));
+        _bioFxLeuchten(ctx, X(0), Y(fy), r * k * 1.15, s.tf, '244,63,94');
+        ctx.restore();
+      }
       // Fruchtknoten -> Kirsche
       ctx.fillStyle = _bblMisch([132, 204, 22], [190, 18, 60], rot);
       ctx.strokeStyle = _bblMisch([77, 124, 15], [127, 29, 29], rot); ctx.lineWidth = 1.2;
@@ -85997,6 +86523,14 @@ function _bblLupe(ctx, W, H, t, p) {
       ctx.beginPath(); ctx.ellipse(X(0), Y(30 + weg * 60), 7 * k, 7.4 * k, 0, 0, Math.PI * 2); ctx.fill();
       ctx.globalAlpha = 1;
     }
+  }
+  // ohne Stempel: der Platz, an dem sonst die Kirsche hängt, bleibt leer
+  if (ohneST && s.phase === 'fertig') {
+    ctx.save();
+    ctx.globalAlpha = 0.8 * _bioFxEase.raus(_bioFxKlemme(s.tf / 0.6));
+    ctx.setLineDash([4, 4]); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(X(0), Y(36), 18 * k, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
   }
 
   // Staubblätter: Staubfaden mit gelbem Staubbeutel
@@ -86033,6 +86567,20 @@ function _bblLupe(ctx, W, H, t, p) {
   if (!ohneBB && fallBB < 1) {
     blatt(-44 - fallBB * 20, 4 + fallDy, 30, 17, -0.45 - fallBB * 1.2 - wig, 1 - fallBB * 0.7);
     blatt(44 + fallBB * 20, 4 + fallDy, 30, 17, 0.45 + fallBB * 1.2 + wig, 1 - fallBB * 0.7);
+  }
+  // die erste Biene der Stunde besucht die Lupen-Blüte – groß zu sehen
+  const b0 = s.bienen[0];
+  if (s.phase === 'stunde' && b0 && b0.ziel === _BBL_LUPE) {
+    const u = s.tp - b0.start;
+    if (u > 0.1 && u < 2.1) {
+      const ny = ohneST ? -10 : -32;
+      const hx = 8, hy = ny - 14;                        // über der Narbe
+      let bx, by;
+      if (u < 0.8) { const e = _bioFxEase.sanft((u - 0.1) / 0.7); bx = 95 + (hx - 95) * e; by = -75 + (hy + 75) * e + Math.sin(u * 9) * 3; }
+      else if (u < 1.4) { bx = hx + Math.sin(u * 6) * 1.5; by = hy; }
+      else { const e = _bioFxEase.rein((u - 1.4) / 0.7); bx = hx + (-95 - hx) * e; by = hy + (-80 - hy) * e; }
+      _bblBiene(ctx, X(bx), Y(by), 3.2 * k, 0, t, 8);
+    }
   }
   ctx.restore();
 
@@ -86088,10 +86636,17 @@ function _bblBienen(ctx, W, H, bl) {
       const f = (u - 1.3) / 0.9;
       x = z.x + (ex - z.x) * f; y = z.y - 6 + (ey - z.y + 6) * f + Math.sin(u * 12 + k) * 3;
     }
+    _bblBiene(ctx, x, y, 1, k, s.tAnim, 40);
+  });
+}
+
+// Eine Biene um (x, y), Maßstab sc; w = Flügeltempo
+function _bblBiene(ctx, x, y, sc, k, t, w) {
     ctx.save();
     ctx.translate(x, y);
+    ctx.scale(sc, sc);
     // Flügel schlagen
-    const fl = Math.abs(Math.sin(s.tAnim * 40 + k));
+    const fl = Math.abs(Math.sin(t * w + k));
     ctx.fillStyle = 'rgba(224,242,254,0.85)'; ctx.strokeStyle = 'rgba(100,116,139,0.6)'; ctx.lineWidth = 0.6;
     ctx.beginPath(); ctx.ellipse(-1, -4, 3.5, 2 + 2 * fl, -0.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
     ctx.beginPath(); ctx.ellipse(2, -4, 3.5, 2 + 2 * fl, 0.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
@@ -86105,7 +86660,6 @@ function _bblBienen(ctx, W, H, bl) {
     ctx.fillStyle = '#facc15';
     ctx.beginPath(); ctx.arc(1, 3.6, 1.5, 0, Math.PI * 2); ctx.fill();
     ctx.restore();
-  });
 }
 
 // ═══════════════════════════════════════════════════════
@@ -86116,6 +86670,12 @@ function _bblBienen(ctx, W, H, bl) {
 // Modellwerte (Lehrerteil): feucht · 20 °C → 9 von 10 keimen (Samen 7
 // ist taub); trocken, unter Wasser oder 5 °C → nach 5 Tagen 0 von 10.
 // Unter Wasser und bei 5 °C quellen die Samen, keimen aber nicht.
+// Spannung (Aha): Zeitraffer, in dem jede Samenschale aufplatzt (kurzer
+// Lichtring, Zeitlupe beim ersten Samen: „Zuerst kommt die Wurzel heraus!“).
+// Bei „dunkel“ steht ein Karton über dem Becher; nach Tag 5 wird er hoch-
+// gehoben – darunter lange, gelbe Keimlinge: „Im Dunkeln keimt die Kresse AUCH!“
+// Effekte aus _bioFx (kurz, ruhig, kein Blinken, keine Wertung). Alle Aufschriften,
+// Statuszeilen und Werte wie vorher.
 // ═══════════════════════════════════════════════════════
 let _bkm = null;
 const _BKM_START = { wasser: 'feucht', temp: '20', licht: 'hell' };
@@ -86124,7 +86684,21 @@ const _BKM_KEIM = [1.1, 1.5, 0.9, 1.9, 1.3, 2.2, 99, 1.7, 1.0, 2.4];  // Keimzei
 const _BKM_WORT = { trocken: 'trocken', feucht: 'feucht', unter: 'unter Wasser',
                     '5': '5 °C', '20': '20 °C', hell: 'hell', dunkel: 'dunkel' };
 function _bkmInit() {
-  _bkm = { wasser: 'feucht', temp: '20', licht: 'hell', tag: 0, laeuft: false, t: 0, letzt: '' };
+  _bkm = { wasser: 'feucht', temp: '20', licht: 'hell', tag: 0, laeuft: false, t: 0, letzt: '',
+          fx: { teile: [] }, nach: -1, schritt: 0, geplatzt: 0, hebe: 0, wurzelGezeigt: false };
+}
+// Alle Effekte weg, Karton wieder drauf: neuer Becher.
+function _bkmFxLeer() {
+  _bkm.fx = { teile: [] }; _bkm.zeitlupe = null;
+  _bkm.nach = -1; _bkm.schritt = 0; _bkm.geplatzt = 0; _bkm.hebe = 0;
+}
+// Wo liegt Samen i? (gleiche Maße wie in _bkmDraw)
+function _bkmSamenX(i) { return 70 + 18 + i * 12.6; }
+const _BKM_SY = 183;
+// Spitze des Keimlings i nach 5 Tagen (für Funken)
+function _bkmSpitze(i) {
+  const s = Math.min(1, (5 - _BKM_KEIM[i] - 0.4) / 2.6);
+  return { x: _bkmSamenX(i), y: _BKM_SY - (_bkm.licht === 'hell' ? 50 : 74) * s - 6 };
 }
 function _bkmHTML() {
   const knopf = (fn, wert, text) =>
@@ -86186,6 +86760,7 @@ function _bkmAbweichungen() {
 function _bkmStelle(k, v) {
   if (!_bkm) return;
   _bkm[k] = String(v); _bkm.tag = 0; _bkm.laeuft = false;   // neue Einstellung = neuer Becher
+  _bkmFxLeer();
   _bkmStatus();
 }
 function _bkmWasser(v) { _bkmStelle('wasser', v); }
@@ -86193,12 +86768,13 @@ function _bkmTemp(v)   { _bkmStelle('temp', v); }
 function _bkmLicht(v)  { _bkmStelle('licht', v); }
 function _bkmWarten() {
   if (!_bkm || _bkm.laeuft) return;
+  _bkmFxLeer();
   _bkm.tag = 0; _bkm.laeuft = true; _bkmStatus();
 }
 function _bkmNeu() {
   if (!_bkm) return;
   _bkm.wasser = _BKM_START.wasser; _bkm.temp = _BKM_START.temp; _bkm.licht = _BKM_START.licht;
-  _bkm.tag = 0; _bkm.laeuft = false; _bkmStatus();
+  _bkm.tag = 0; _bkm.laeuft = false; _bkmFxLeer(); _bkmStatus();
 }
 function _bkmZeile() {
   const tag = Math.floor(_bkm.tag + 1e-9);
@@ -86237,11 +86813,82 @@ function _bkmStatus() {
 }
 function _bkmUpdate(dt) {
   if (!_bkm) return;
+  dt = _bioFxDt(dt);
   _bkm.t += dt;
   if (_bkm.laeuft) {
-    _bkm.tag = Math.min(5, _bkm.tag + dt);             // 1 Tag = 1 Sekunde
-    if (_bkm.tag >= 5) { _bkm.tag = 5; _bkm.laeuft = false; }
+    const zl = _bioFxZeitlupeFaktor(_bkm, dt);         // Zeitlupe beim ersten Samen
+    _bkm.tag = Math.min(5, _bkm.tag + dt * zl);        // 1 Tag = 1 Sekunde
+    _bkmPlatzen();
+    if (_bkm.tag >= 5) { _bkm.tag = 5; _bkm.laeuft = false; _bkm.nach = 0; _bkm.schritt = 0; }
     if (_bkmZeile() !== _bkm.letzt || !_bkm.laeuft) _bkmStatus();
+  } else if (_bkm.nach >= 0) {
+    _bkm.nach += dt;
+    _bkmNachher();
+  }
+  _bioFxAlleUpdate(_bkm.fx, dt);
+}
+// Zeitraffer: Jede Samenschale, die gerade aufplatzt, bekommt einen kleinen Lichtring.
+function _bkmPlatzen() {
+  if (!_bkmKeimt()) return;
+  const n = _bkmGekeimt(_bkm.tag);
+  while (_bkm.geplatzt < n) {
+    _bkm.geplatzt++;
+    // welcher Samen? der mit der kleinsten noch nicht gezählten Keimzeit
+    const reihe = [0, 1, 2, 3, 4, 5, 7, 8, 9].sort((a, b) => _BKM_KEIM[a] - _BKM_KEIM[b]);
+    const i = reihe[_bkm.geplatzt - 1];
+    const x = _bkmSamenX(i), y = _BKM_SY;
+    const dunkel = _bkm.licht !== 'hell';
+    _bioFxWelle(_bkm.fx.teile, x, y, dunkel ? '#fde68a' : '#fff3b0', 14);
+    _bioFxFunken(_bkm.fx.teile, x, y - 2, 3, ['#fff3b0', '#ffffff', '#f4efd8']);
+    if (_bkm.geplatzt === 1) {
+      _bioFxZeitlupe(_bkm, 0.3, 1.3);                 // der erste Samen in Zeitlupe
+      if (!_bkm.wurzelGezeigt) {
+        _bkm.wurzelGezeigt = true;
+        _bioFxBanner(_bkm.fx, 'Zuerst kommt die Wurzel heraus!', 2.6, '#f4efd8');
+      }
+    }
+  }
+}
+// Nach Tag 5: erst hinsehen, dann bestätigt der Effekt.
+function _bkmNachher() {
+  const fx = _bkm.fx, n = _bkmGekeimt(5), hell = _bkm.licht === 'hell', t = _bkm.nach;
+  const sx = 150, sy = 70;                            // Stempel über dem Becher
+  if (_bkm.schritt === 0) {                           // Zähler im Bild rollt hoch
+    _bkm.schritt = 1; fx.zaehler = null;
+    if (n > 0) _bioFxZaehler(fx, n, 1.2);
+  }
+  if (n > 0 && hell) {
+    if (_bkm.schritt === 1 && t >= 0.5) {
+      _bkm.schritt = 2;
+      for (const i of [1, 3, 5, 8]) { const p = _bkmSpitze(i);
+        _bioFxFunken(fx.teile, p.x, p.y, 4, ['#8bc34a', '#c5e1a5', '#fff3b0']); }
+      _bioFxStempel(fx, n + ' von 10 · grün', sx, sy, '#2e8b47');
+    }
+  } else if (n > 0) {
+    // dunkel: der Karton wird hochgehoben (0,5 s warten, 1 s heben)
+    _bkm.hebe = _bioFxEase.sanft(_bioFxKlemme((t - 0.5) / 1.0));
+    if (_bkm.schritt === 1 && t >= 1.5) {
+      _bkm.schritt = 2;
+      _bioFxWelle(fx.teile, 145, 140, '#fde047', 80);
+      for (const i of [1, 3, 5, 8]) { const p = _bkmSpitze(i);
+        _bioFxFunken(fx.teile, p.x, p.y, 5); }
+    }
+    if (_bkm.schritt === 2 && t >= 1.9) {
+      _bkm.schritt = 3;
+      _bioFxBanner(fx, 'Im Dunkeln keimt die Kresse AUCH!', 3.6, '#fde047');
+      _bioFxStempel(fx, n + ' von 10 · gelb', sx, sy, '#a16207');
+    }
+  } else {
+    // kein Samen gekeimt: ruhig, ohne Wertung – eine Frage statt eines Urteils
+    if (_bkm.schritt === 1 && t >= 0.6) {
+      _bkm.schritt = 2;
+      _bioFxWelle(fx.teile, 145, _BKM_SY, '#94a3b8', 70);
+      _bioFxStempel(fx, '0 von 10 · kein Keimling', sx, sy, '#475569');
+    }
+    if (_bkm.schritt === 2 && t >= 1.3) {
+      _bkm.schritt = 3;
+      _bioFxBanner(fx, 'Kein Samen keimt. Was fehlt hier?', 3.4, '#93c5fd');
+    }
   }
 }
 function _bkmMisch(a, b, u) {
@@ -86284,7 +86931,8 @@ function _bkmSamen(ctx, x, y, i, alter, quell) {
   const g = quell ? 1.25 : 1;
   ctx.fillStyle = alter > 0 ? '#8d5a2b' : '#a0612b';
   ctx.strokeStyle = '#5d3a17'; ctx.lineWidth = 0.8;
-  ctx.beginPath(); ctx.ellipse(x + (alter > 0 ? 2.5 : 0), y + 1, 3.2 * g, 2.3 * g, 0.3, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const hop = alter > 0 ? _bioFxEase.federn(_bioFxKlemme(alter * 4)) : 0;   // Schale springt auf
+  ctx.beginPath(); ctx.ellipse(x + 2.5 * hop, y + 1 - Math.sin(Math.PI * _bioFxKlemme(alter * 4)) * 2, 3.2 * g, 2.3 * g, 0.3 + 0.3 * hop, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
 }
 function _bkmDraw(ctx, cv) {
   if (!_bkm) return;
@@ -86300,15 +86948,17 @@ function _bkmDraw(ctx, cv) {
   // Fenster (Zimmer) oder Innenraum (Kühlschrank) mit Tag und Nacht
   const fx = 238, fy = 14, fw = 90, fh = 74;
   if (!kalt) {
-    const nacht = _bkm.laeuft || tag > 0 ? (tag % 1) : 0.25;   // 0..1 je Tag
+    const nacht = _bkm.laeuft ? (tag % 1) : 0.25;   // 0..1 je Tag
     const sonne = nacht < 0.62;
-    ctx.fillStyle = sonne ? '#bfe3ff' : '#1e2a4a';
+    // Himmel wechselt weich (kein hartes Umschalten im Sekundentakt)
+    const daemm = _bioFxKlemme(Math.min(Math.abs(nacht - 0.62), Math.abs(nacht), Math.abs(1 - nacht)) / 0.12);
+    ctx.fillStyle = sonne ? _bkmMisch('#6b7fa8', '#bfe3ff', daemm) : _bkmMisch('#6b7fa8', '#1e2a4a', daemm);
     ctx.fillRect(fx, fy, fw, fh);
     const u = sonne ? nacht / 0.62 : (nacht - 0.62) / 0.38;
     const sx = fx + 8 + u * (fw - 16), sy = fy + fh - 10 - Math.sin(u * Math.PI) * (fh - 26);
     ctx.fillStyle = sonne ? '#fcd34d' : '#f1f5f9';
     ctx.beginPath(); ctx.arc(sx, sy, sonne ? 8 : 6, 0, 2 * Math.PI); ctx.fill();
-    if (!sonne) { ctx.fillStyle = '#1e2a4a'; ctx.beginPath(); ctx.arc(sx + 3, sy - 2, 5, 0, 2 * Math.PI); ctx.fill(); }
+    if (!sonne) { ctx.fillStyle = _bkmMisch('#6b7fa8', '#1e2a4a', daemm); ctx.beginPath(); ctx.arc(sx + 3, sy - 2, 5, 0, 2 * Math.PI); ctx.fill(); }
     ctx.strokeStyle = '#8b6b43'; ctx.lineWidth = 4; ctx.strokeRect(fx, fy, fw, fh);
     ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(fx + fw / 2, fy); ctx.lineTo(fx + fw / 2, fy + fh); ctx.stroke();
     ctx.fillStyle = '#a07c52'; ctx.fillRect(fx - 6, fy + fh, fw + 12, 5);
@@ -86388,7 +87038,10 @@ function _bkmDraw(ctx, cv) {
 
   // Karton über dem Becher, wenn dunkel (vorne aufgeschnitten gezeichnet)
   if (!hell) {
-    ctx.fillStyle = 'rgba(92,58,24,0.42)';
+    ctx.save();
+    const hb = _bkm.hebe;
+    ctx.translate(-30 * hb, -178 * hb);
+    ctx.fillStyle = 'rgba(92,58,24,' + (_bkm.laeuft || tag > 0 ? 0.74 : 0.42) + ')';
     ctx.fillRect(52, 70, 186, 160);
     ctx.strokeStyle = '#8a5a2b'; ctx.lineWidth = 4; ctx.strokeRect(52, 70, 186, 160);
     ctx.fillStyle = '#b07a42';
@@ -86397,6 +87050,13 @@ function _bkmDraw(ctx, cv) {
     ctx.beginPath(); ctx.moveTo(238, 70); ctx.lineTo(266, 56); ctx.lineTo(266, 216); ctx.lineTo(238, 230); ctx.closePath(); ctx.fill();
     ctx.fillStyle = '#fef3c7'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
     ctx.fillText('Karton', 145, 84);
+    if (hb >= 0.98) ctx.fillText('Karton hochgehoben', 145, 222);
+    ctx.restore();
+    if (hb > 0.02 && hb < 0.98) {
+      // Licht fällt beim Anheben auf die Keimlinge
+      ctx.fillStyle = 'rgba(255,245,200,' + (0.18 * Math.sin(Math.PI * hb)).toFixed(3) + ')';
+      ctx.fillRect(60, 80, 170, 150);
+    }
   }
 
   // Rechte Spalte: Thermometer und Kalender
@@ -86431,10 +87091,17 @@ function _bkmDraw(ctx, cv) {
   // Ergebnis nach 5 Tagen groß im Bild
   if (tag >= 5 && !_bkm.laeuft) {
     const n = _bkmGekeimt(5);
+    const zeig = _bkm.fx.zaehler ? Math.round(_bioFxZaehlerWert(_bkm.fx)) : n;
     ctx.textAlign = 'right'; ctx.font = '700 12px sans-serif';
-    ctx.fillStyle = n ? (hell ? '#15803d' : '#a16207') : '#b91c1c';
-    ctx.fillText(n + ' von 10 gekeimt', W - 12, H - 8);
+    ctx.fillStyle = n ? (hell ? '#15803d' : '#a16207') : '#475569';
+    ctx.fillText(zeig + ' von 10 gekeimt', W - 12, H - 8);
   }
+  // Zeitraffer-Zeichen während des Wartens
+  if (_bkm.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText((_bkm.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer'), 12, 18);
+  }
+  _bioFxAlleDraw(ctx, _bkm.fx);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -86446,16 +87113,30 @@ function _bkmDraw(ctx, cv) {
 // Im Dunkeln schießt die Bohne in die Länge, bleibt aber gelb und dünn
 // (Vergeilung) und kippt an Tag 8 zur Seite. Maßstab: 8 px je cm –
 // Lineal und Diagramm benutzen denselben Maßstab.
+// Aha (Effekte aus _bioFx, erst NACH dem Ablesen): Wettrennen – eine grüne
+// Messlinie trägt die Fensterhöhe in den Schrank, ein gelber Balken zeigt
+// den Vorsprung. Tag 2: „Nanu?“-Streifen. Tag 8: die Schrankbohne kippt in
+// Zeitlupe, zwei Lupen zeigen den Stängel (kräftig/dünn), dann Konfetti.
 // ═══════════════════════════════════════════════════════
 const _BWA_F = [0, 3, 6, 9, 12];      // Höhe am Fenster in cm, Tag 0/2/4/6/8
 const _BWA_S = [0, 4, 9, 14, 18];     // Höhe im Schrank in cm
 const _BWA_PX = 8;                    // Bildpunkte je cm
 const _BWA_BODEN = 212;               // Erdoberfläche (y)
 const _BWA_DAUER = 1.6;               // Sekunden für zwei Tage
+const _BWA_DX0 = 294;                 // linker Rand des Diagramms
+const _BWA_GB = (414 - 294) / 4;      // Breite je Messtag im Diagramm
 let _bwa = null;
 function _bwaInit() {
   const t = _bwa ? _bwa.t : 0;
-  _bwa = { k: 0, von: 0, p: 1, t, b: [0, 0, 0, 0, 0], hinweis: 'Die Bohnen sind gerade gepflanzt. Beide sind gekeimt.' };
+  _bwa = { k: 0, von: 0, p: 1, t, b: [0, 0, 0, 0, 0], hinweis: 'Die Bohnen sind gerade gepflanzt. Beide sind gekeimt.',
+    fx: { teile: [] }, ank: 0, kp: 0, kpLauf: false, lupe: 0, leucht: 0, konf: -1, bFx: [0, 0, 0, 0, 0] };
+}
+// Effekte zurücksetzen (neu, Sprung zurück): nichts bleibt vom alten Stand stehen
+function _bwaFxLeer(stand) {
+  _bwa.fx = { teile: [] }; _bwa.zeitlupe = null;
+  _bwa.ank = stand; _bwa.kp = stand === 4 ? 1 : 0; _bwa.kpLauf = false;
+  _bwa.lupe = stand === 4 ? 1 : 0; _bwa.leucht = 0; _bwa.konf = -1;
+  for (let i = 0; i <= 4; i++) _bwa.bFx[i] = i <= stand ? 1 : 0;
 }
 function _bwaHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
@@ -86509,7 +87190,7 @@ function _bwaSprung(tag) {
   if (!_bwa) return;
   const ziel = Math.max(0, Math.min(4, Math.round(tag / 2)));
   if (ziel > _bwa.k) { _bwa.von = _bwa.p < 1 ? _bwa.von : _bwa.k; _bwa.p = 0; }
-  else { _bwa.von = ziel; _bwa.p = 1; for (let i = ziel + 1; i <= 4; i++) _bwa.b[i] = 0; }
+  else { _bwa.von = ziel; _bwa.p = 1; for (let i = ziel + 1; i <= 4; i++) _bwa.b[i] = 0; _bwaFxLeer(ziel); }
   _bwa.k = ziel;
   _bwa.hinweis = ziel === 4
     ? 'Tag 8: Vergleiche die Farbe der beiden Bohnen. Die Bohne im Schrank ist dünn und kippt zur Seite.'
@@ -86532,12 +87213,99 @@ function _bwaStatus() {
 }
 function _bwaUpdate(dt) {
   if (!_bwa) return;
+  dt = _bioFxDt(dt);
   _bwa.t += dt;
   if (_bwa.p < 1) _bwa.p = Math.min(1, _bwa.p + dt / _BWA_DAUER);
   for (let i = 1; i <= 4; i++) {
     const da = i < _bwa.k || (i === _bwa.k && _bwa.p >= 1);
     _bwa.b[i] = da ? Math.min(1, _bwa.b[i] + dt * 2.2) : 0;
+    // Säulenpaar steht: ein paar Funken auf der gelben Säule
+    if (_bwa.b[i] >= 1 && !_bwa.bFx[i]) {
+      _bwa.bFx[i] = 1;
+      _bioFxFunken(_bwa.fx.teile, _BWA_DX0 + (i - 1) * _BWA_GB + 21.5, _BWA_BODEN - _BWA_S[i] * _BWA_PX, 5);
+    }
   }
+  if (_bwa.p >= 1 && _bwa.k > _bwa.ank) { _bwa.ank = _bwa.k; _bwaAngekommen(_bwa.k); }
+  if (_bwa.p < 1 && _bwa.k < _bwa.ank) _bwa.ank = _bwa.k;
+  // Tag 8: die Schrankbohne kippt in Zeitlupe um
+  if (_bwa.kpLauf) {
+    _bwa.kp = Math.min(1, _bwa.kp + dt * _bioFxZeitlupeFaktor(_bwa, dt) / 0.7);
+    if (_bwa.kp >= 1) { _bwa.kpLauf = false; _bwaAha8(); }
+  }
+  if (_bwa.leucht > 0) _bwa.leucht = Math.max(0, _bwa.leucht - dt);
+  if (_bwa.lupe > 0 && _bwa.lupe < 1) _bwa.lupe = Math.min(1, _bwa.lupe + dt / 0.5);
+  if (_bwa.konf > 0) {
+    _bwa.konf -= dt;
+    if (_bwa.konf <= 0) { _bwa.konf = -1; _bioFxKonfetti(_bwa.fx.teile, 354, 150, 22); }
+  }
+  _bioFxAlleUpdate(_bwa.fx, dt);
+}
+// Spitze der Bohnen (für Lichtring und Funken)
+function _bwaSpitzeF(h) { return [80, _BWA_BODEN - h * _BWA_PX]; }
+function _bwaSpitzeS(h) {
+  const hp = h * _BWA_PX, kipp = _bwa.k === 4 ? _bwa.kp : 0;
+  return [205 + hp * 0.04 + 30 * kipp, _BWA_BODEN - hp];
+}
+// Ein Messtag ist erreicht: Beobachtung steht, jetzt kommt die Bestätigung
+function _bwaAngekommen(k) {
+  const fx = _bwa.fx.teile, f = _bwaSpitzeF(_BWA_F[k]), sp = _bwaSpitzeS(_BWA_S[k]);
+  _bioFxWelle(fx, f[0], f[1], '#4ade80', 26);
+  _bioFxWelle(fx, sp[0], sp[1], '#fde047', 30);
+  if (k === 1) {
+    _bioFxFunken(fx, sp[0], sp[1], 10, ['#fef9c3', '#fde68a', '#ffffff']);
+    _bioFxBanner(_bwa.fx, 'Nanu? Die Bohne im Schrank ist höher!', 3, '#fde047');
+  } else if (k === 4) {
+    _bwa.kpLauf = true; _bwa.kp = 0;
+    _bioFxZeitlupe(_bwa, 0.35, 1.1);
+  }
+}
+// Tag 8 nach dem Umkippen: Lupen auf beide Stängel, Streifen, später Konfetti
+function _bwaAha8() {
+  _bwa.lupe = 0.01; _bwa.leucht = 4;
+  _bioFxBanner(_bwa.fx, 'Im Schrank höher – aber gelb und dünn!', 3.5, '#fde047');
+  _bwa.konf = 3.6;
+}
+// Lupe auf den Stängel: zeigt, wie dick er ist
+function _bwaLupe(ctx, cx, cy, sx, sy, dicke, farbe, grund, wort, wortFarbe) {
+  const a = _bioFxEase.raus(_bwa.lupe), r = 12 * (0.6 + 0.4 * a);
+  if (a <= 0) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  if (_bwa.leucht > 0) {
+    ctx.save(); ctx.globalAlpha = a * Math.min(1, _bwa.leucht / 0.8);
+    _bioFxLeuchten(ctx, cx, cy, r + 2, _bwa.t, wortFarbe === '#14532d' ? '74,222,128' : '250,204,21');
+    ctx.restore();
+  }
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 1; ctx.setLineDash([2, 2]);
+  ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(cx - (cx - sx) / Math.hypot(cx - sx, cy - sy) * r, cy - (cy - sy) / Math.hypot(cx - sx, cy - sy) * r); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fillStyle = grund; ctx.fill();
+  ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.clip();
+  ctx.fillStyle = farbe; ctx.fillRect(cx - dicke / 2, cy - r, dicke, 2 * r);
+  ctx.fillStyle = 'rgba(255,255,255,0.3)'; ctx.fillRect(cx - dicke / 2 + 1, cy - r, Math.max(1, dicke * 0.2), 2 * r);
+  ctx.restore();
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = wortFarbe; ctx.fillText(wort, cx, cy - r - 5);
+  ctx.restore();
+}
+// Wettrennen: grüne Linie trägt die Fensterhöhe in den Schrank, gelber Balken = Vorsprung
+function _bwaRennen(ctx, hF, hS) {
+  if (hF <= 0) return;
+  const yF = _BWA_BODEN - hF * _BWA_PX + 0.5, yS = _BWA_BODEN - hS * _BWA_PX;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(74,222,128,0.75)'; ctx.lineWidth = 1.2; ctx.setLineDash([2, 4]);
+  ctx.beginPath(); ctx.moveTo(170, yF); ctx.lineTo(250, yF); ctx.stroke(); ctx.setLineDash([]);
+  ctx.font = '700 8px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#86efac';
+  ctx.fillText('Fenster', 183, yF + 9);
+  if (hS - hF > 0.3) {
+    const x = 178, a = 0.55 + 0.25 * Math.sin(_bwa.t * Math.PI * 2 * 0.5);
+    ctx.strokeStyle = 'rgba(253,224,71,' + a.toFixed(3) + ')'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x, yF - 1); ctx.lineTo(x, yS + 1); ctx.stroke();
+    ctx.lineWidth = 1.5; ctx.beginPath();
+    ctx.moveTo(x - 3, yS + 1); ctx.lineTo(x + 3, yS + 1); ctx.moveTo(x - 3, yF - 1); ctx.lineTo(x + 3, yF - 1); ctx.stroke();
+  }
+  ctx.restore();
 }
 // Helligkeit am Fenster: bei jedem Schritt ziehen zwei Nächte vorbei
 function _bwaHell() { return _bwa.p < 1 ? 0.5 + 0.5 * Math.cos(4 * Math.PI * _bwa.p) : 1; }
@@ -86605,7 +87373,7 @@ function _bwaFenster(ctx, x, h) {
 function _bwaSchrank(ctx, x, h) {
   const y0 = _BWA_BODEN, hp = h * _BWA_PX;
   if (hp < 1) { ctx.fillStyle = '#e5d38a'; ctx.beginPath(); ctx.ellipse(x, y0 - 1, 5, 2.5, 0, Math.PI, 2 * Math.PI); ctx.fill(); return; }
-  const kipp = Math.max(0, Math.min(1, (h - 14) / 4));
+  const kipp = _bwa.k === 4 ? _bioFxEase.federn(_bwa.kp) : 0;
   const lean = hp * 0.04 + 30 * kipp + Math.sin(_bwa.t * 1.1) * 0.8 * kipp;
   const tx = x + lean, ty = y0 - hp;
   ctx.strokeStyle = '#eadb8c'; ctx.lineWidth = 2; ctx.lineCap = 'round';
@@ -86687,6 +87455,12 @@ function _bwaDraw(ctx, cv) {
   _bwaTopf(ctx, 205);
   _bwaSchrank(ctx, 205, hS);
   if (hS > 0) _bwaMarke(ctx, 146, 205, hS, '#facc15');
+  _bwaRennen(ctx, hF, hS);
+  // Lupen an Tag 8: kräftiger grüner Stängel gegen dünnen gelben
+  if (_bwa.lupe > 0) {
+    _bwaLupe(ctx, 108, 190, 81, 192, 14, '#2f7d32', '#e0f2fe', 'kräftig', '#14532d');
+    _bwaLupe(ctx, 236, 192, 205, 192, 5, '#eadb8c', '#2a1f17', 'dünn', '#fde68a');
+  }
 
   // Beschriftungen oben
   ctx.fillStyle = '#334155'; ctx.fillRect(0, 0, 130, 22);
@@ -86696,7 +87470,7 @@ function _bwaDraw(ctx, cv) {
   ctx.fillStyle = '#fde68a'; ctx.fillText('im Schrank', 198, 15);
 
   // ── rechts: Säulendiagramm (gleicher Maßstab: 8 px je cm) ──
-  const x0 = 294, x1 = 414, yB = _BWA_BODEN, yT = yB - 20 * _BWA_PX;
+  const x0 = _BWA_DX0, x1 = 414, yB = _BWA_BODEN, yT = yB - 20 * _BWA_PX;
   ctx.fillStyle = '#ffffff'; ctx.fillRect(266, 0, 154, H);
   ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('Höhe in cm', 340, 15);
@@ -86712,7 +87486,7 @@ function _bwaDraw(ctx, cv) {
     ctx.fillStyle = '#334155'; ctx.fillText(String(c), x0 - 4, y + 3);
   }
   ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(x0 + 0.5, yT - 4); ctx.lineTo(x0 + 0.5, yB); ctx.stroke();
-  const gb = (x1 - x0) / 4;
+  const gb = _BWA_GB;
   for (let i = 1; i <= 4; i++) {
     const gx = x0 + (i - 1) * gb + 3, s = _bwa.b[i];
     ctx.fillStyle = i <= _bwa.k ? '#0f172a' : '#94a3b8'; ctx.font = (i === _bwa.k ? '700 ' : '') + '10px sans-serif'; ctx.textAlign = 'center';
@@ -86734,6 +87508,7 @@ function _bwaDraw(ctx, cv) {
   ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('jetzt: Tag ' + tagJetzt, 340, 244);
   ctx.textAlign = 'left';
+  _bioFxAlleDraw(ctx, _bwa.fx);
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -86745,6 +87520,12 @@ function _bwaDraw(ctx, cv) {
 // (0,64 s, die Uhr rundet auf 1 s) und wird vom Wind kaum mitgenommen.
 // Die Weite wird aus Sinkzeit mal Windgeschwindigkeit GERECHNET (3 · 2 = 6,
 // 3 · 8 = 24), nicht eingetragen.
+// Aha-Schicht (Effekte aus _bioFx, alle NACH der Beobachtung, 0,5–2,5 s):
+// Zeitlupen-Lupe zeigt die Drehung von Ahorn-Samen und Papier-Propeller von
+// oben; das Maßband rollt nach der Landung bis zur Landestelle aus; ein
+// goldener Stern markiert den weitesten Flug; frühere Flugbahnen bleiben
+// blass stehen. Die Uhr läuft immer in echter Zeit, Zeitlupe gibt es nur in
+// der Lupe. Statuszeilen und Tabellenwerte sind unverändert.
 // ═══════════════════════════════════════════════════════════════════════
 let _bsfState = null;
 
@@ -86786,6 +87567,12 @@ function _bsfInit() {
     staub: 0, uhrAlt: -1,
     tab: {},               // tab[k] = { zeit: '2 s', weite: '6 m' }
     fahnen: {},            // letzte Landestelle mit Wind je Samen (m)
+    bahnen: {},            // letzte Flugbahn mit Wind je Samen (blass)
+    rekord: null,          // { k, w } weitester Flug mit Wind
+    nach: 0, aha: false,   // Zeit seit der Landung, Aha schon ausgelöst?
+    band: 0,               // Dauer des Maßband-Ausrollens (s)
+    uhrGlanz: 0,           // Lichtkranz an der Uhr (s, klingt ab)
+    fx: _bsfFxNeu(),
   };
   _BSF_REIHE.forEach(k => { _bsfState.tab[k] = { zeit: '', weite: '' }; });
 }
@@ -86831,7 +87618,10 @@ function _bsfZurueck() {
   const s = _bsfState;
   s.phase = 'bereit'; s.t = 0; s.xm = 0; s.ym = _BSF_HOEHE; s.spur = []; s.spurT = 0;
   s.staub = 0; s.uhrAlt = -1;
+  s.nach = 0; s.aha = false; s.band = 0; s.uhrGlanz = 0;
+  s.fx = _bsfFxNeu();      // alte Effekte weg: freie Sicht für den neuen Wurf
 }
+function _bsfFxNeu() { return { teile: [] }; }
 function _bsfKnoepfe() {
   const s = _bsfState;
   _BSF_REIHE.forEach(k => {
@@ -86899,10 +87689,13 @@ function _bsfStatus() {
 function _bsfUpdate(dt) {
   const s = _bsfState;
   if (!s) return;
-  const d = Math.min(dt, 0.05);
+  const d = Math.min(dt > 0 ? dt : 0, 0.05);
   s.tAnim += d;
   if (s.staub > 0) s.staub = Math.max(0, s.staub - d);
+  if (s.uhrGlanz > 0) s.uhrGlanz = Math.max(0, s.uhrGlanz - d);
+  _bioFxAlleUpdate(s.fx, d);
   const sa = _BSF_SAMEN[s.samen];
+  if (s.phase === 'gelandet') { s.nach += d; _bsfAha(); return; }
   if (s.phase !== 'fliegt') return;
 
   const T = _bsfFallzeit(s.samen), W = _bsfWeite(s.samen, s.wind);
@@ -86927,10 +87720,65 @@ function _bsfUpdate(dt) {
   if (s.t >= T) {
     s.phase = 'gelandet'; s.ym = 0; s.xm = W; s.staub = 0.6;
     const e = s.tab[s.samen];
-    if (s.wind) { e.weite = Math.round(W) + ' m'; s.fahnen[s.samen] = W; }
-    else e.zeit = _bsfSek(T) + ' s';
+    if (s.wind) {
+      e.weite = Math.round(W) + ' m'; s.fahnen[s.samen] = W;
+      s.bahnen[s.samen] = s.spur.concat([[W, 0]]);
+      s.band = Math.min(1.3, 0.5 + W * 0.035);        // Maßband rollt aus
+      _bioFxZaehler(s.fx, W, s.band);                  // Endwert genau W
+    } else {
+      e.zeit = _bsfSek(T) + ' s';
+      s.band = 0;
+    }
+    s.nach = 0; s.aha = false;
     _bsfStatus();
   }
+}
+
+// ── Aha nach der Landung: erst Beobachtung, dann Bestätigung ─────────────
+function _bsfAha() {
+  const s = _bsfState;
+  if (s.aha || s.nach < s.band + 0.25) return;       // erst messen, dann feiern
+  s.aha = true;
+  const sa = _BSF_SAMEN[s.samen], k = s.samen, fx = s.fx;
+  const T = _bsfFallzeit(k), W = _bsfWeite(k, s.wind);
+  const x = _bsfPx(W), y = _BSF_BODEN - 4;
+  if (!s.wind) {
+    // ohne Wind zählt die Uhr: sie leuchtet kurz auf
+    s.uhrGlanz = 1.4;
+    _bioFxWelle(fx.teile, 380, 40, '#fbbf24', 44);
+    if (sa.sink) {
+      _bioFxFunken(fx.teile, 380, 40, 8);
+      const gleich = _bsfZwilling(k);
+      if (gleich && s.tab[gleich].zeit === s.tab[k].zeit) {
+        _bioFxBanner(fx, 'Wie der ' + _BSF_SAMEN[gleich].name + '!', 2.6, '#7dd3fc');
+      } else {
+        _bioFxBanner(fx, sa.art === 'schirm' ? 'Der Schirm bremst!' : 'Der Flügel bremst!', 2.4);
+      }
+    }
+    return;
+  }
+  // mit Wind: Lichtring und Glitzer an der Landestelle
+  _bioFxWelle(fx.teile, x, y, '#fbbf24', 34);
+  _bioFxFunken(fx.teile, x, y - 6, sa.sink ? 10 : 5, [sa.farbe, '#fff3b0', '#ffffff']);
+  const alt = s.rekord;
+  const neu = !alt || W > alt.w + 0.01;
+  if (neu) s.rekord = { k: k, w: W };
+  const gleich = _bsfZwilling(k);
+  if (gleich && s.fahnen[gleich] !== undefined &&
+      Math.round(s.fahnen[gleich]) === Math.round(W)) {
+    // Modell und echter Samen landen an derselben Stelle
+    _bioFxWelle(fx.teile, _bsfPx(s.fahnen[gleich]), _BSF_BODEN - 16, '#7dd3fc', 40);
+    _bioFxBanner(fx, 'Wie der ' + _BSF_SAMEN[gleich].name + '!', 2.6, '#7dd3fc');
+  } else if (sa.art === 'schirm') {
+    _bioFxBanner(fx, _bsfSek(T) + ' s in der Luft: ' + Math.round(W) + ' m!', 2.8);
+  } else if (neu && alt) {
+    _bioFxBanner(fx, 'Weitester Flug bisher!', 2.4);
+  }
+  if (neu && alt) _bioFxKonfetti(fx.teile, x, y - 10, 18);
+}
+// Ahorn-Samen und Papier-Propeller gehören als Echt und Modell zusammen.
+function _bsfZwilling(k) {
+  return k === 'propeller' ? 'ahorn' : (k === 'ahorn' ? 'propeller' : null);
 }
 
 // ── Zeichnen ─────────────────────────────────────────────────────────────
@@ -87094,6 +87942,35 @@ function _bsfDraw(ctx, cv) {
     ctx.globalAlpha = 1;
   });
 
+  // Weitester Flug: goldener Stern über der Landestelle (ruhig, kein Blinken)
+  const rk = s.rekord;
+  if (rk && !(rk.k === s.samen && s.phase === 'fliegt')) {
+    const x = _bsfPx(rk.w), y = _BSF_BODEN - 25;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let i = 0; i < 10; i++) {
+      const r = i % 2 ? 2.8 : 6.5, a = -Math.PI / 2 + i * Math.PI / 5;
+      ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+    }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  // Frühere Flugbahnen mit Wind bleiben blass stehen (Vergleich auf einen Blick)
+  _BSF_REIHE.forEach(k => {
+    const b = s.bahnen[k];
+    if (!b || b.length < 2 || (k === s.samen && s.phase !== 'bereit')) return;
+    ctx.save();
+    ctx.strokeStyle = _BSF_SAMEN[k].farbe; ctx.globalAlpha = 0.35;
+    ctx.lineWidth = 1.5; ctx.setLineDash([3, 4]);
+    ctx.beginPath();
+    b.forEach(([xm, ym], i) => { if (i) ctx.lineTo(_bsfPx(xm), _bsfPy(ym)); else ctx.moveTo(_bsfPx(xm), _bsfPy(ym)); });
+    ctx.stroke();
+    ctx.restore();
+  });
+
   // Flugspur
   ctx.fillStyle = 'rgba(30,41,59,0.28)';
   for (const [xm, ym] of s.spur) {
@@ -87116,6 +87993,20 @@ function _bsfDraw(ctx, cv) {
   const unten = { nuss: 9, ahorn: 5, schirm: 12, papier: 17 }[sa.art];
   const h = s.ym / _BSF_HOEHE;                            // 1 = oben, 0 = Boden
   sy = sy + (-5 - oben) * h + (-unten) * (1 - h);
+  if (s.phase === 'gelandet' && sa.art === 'nuss' && s.nach < 0.45) {
+    const u = s.nach / 0.45;                              // zwei kleine Hopser
+    sy -= 5 * Math.abs(Math.sin(u * Math.PI * 2)) * (1 - u);
+  }
+  // Wind schiebt: kleiner Pfeil hinter dem fliegenden Samen
+  if (s.phase === 'fliegt' && s.wind) {
+    const l = 12 + 3 * Math.sin(t * Math.PI * 1.6);       // 0,8 Hz, sanft
+    const ay = sy + 2;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(29,78,216,0.7)'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(sx - 16 - l, ay); ctx.lineTo(sx - 14, ay); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx - 19, ay - 4); ctx.lineTo(sx - 14, ay); ctx.lineTo(sx - 19, ay + 4); ctx.stroke();
+    ctx.restore();
+  }
   _bsfSamenZeichnen(ctx, sa.art, sx, sy, s.rot, wack, s.phase === 'fliegt');
 
   // Staubwolke beim Landen
@@ -87129,8 +88020,20 @@ function _bsfDraw(ctx, cv) {
 
   // Landemarke mit Weite
   if (s.phase === 'gelandet') {
-    const w = Math.round(_bsfWeite(s.samen, s.wind));
-    const x = _bsfPx(_bsfWeite(s.samen, s.wind));
+    const W = _bsfWeite(s.samen, s.wind);
+    const rollt = s.wind && s.fx.zaehler && s.nach < s.band;
+    const wm = rollt ? _bioFxZaehlerWert(s.fx) : W;     // am Ende genau W
+    const w = Math.round(wm);
+    const x = _bsfPx(wm);
+    if (s.wind && W > 0) {
+      // rotes Messband vom Ständer bis zur Landestelle
+      ctx.save();
+      ctx.fillStyle = 'rgba(220,38,38,0.55)';
+      ctx.fillRect(_BSF_X0, mb + 5, x - _BSF_X0, 6);
+      ctx.fillStyle = '#b91c1c';
+      ctx.fillRect(x - 1.5, mb + 2, 3, 12);
+      ctx.restore();
+    }
     ctx.fillStyle = '#dc2626';
     ctx.beginPath(); ctx.moveTo(x, mb - 1); ctx.lineTo(x - 5, mb - 8); ctx.lineTo(x + 5, mb - 8); ctx.closePath(); ctx.fill();
     ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
@@ -87139,8 +88042,17 @@ function _bsfDraw(ctx, cv) {
     ctx.fillStyle = '#b91c1c'; ctx.fillText(w + ' m', lx, _BSF_BODEN - 30);
   }
 
+  // Zeitlupen-Lupe: Ahorn-Samen und Papier-Propeller von oben, viermal langsamer
+  if (sa.dreh && s.phase === 'fliegt') _bsfLupe(ctx, s, sa, sx, sy);
+
   // Stoppuhr
   const ux = 380, uy = 40;
+  if (s.uhrGlanz > 0) {
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, s.uhrGlanz / 0.6);
+    _bioFxLeuchten(ctx, ux, uy, 30, 1.4 - s.uhrGlanz + 0.3, '251,191,36');
+    ctx.restore();
+  }
   ctx.fillStyle = '#475569'; ctx.fillRect(ux - 4, uy - 33, 8, 6);
   ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
   ctx.beginPath(); ctx.arc(ux, uy, 26, 0, 6.283); ctx.fill(); ctx.stroke();
@@ -87169,6 +88081,49 @@ function _bsfDraw(ctx, cv) {
   // Name des Samens
   ctx.font = 'bold 12px sans-serif'; ctx.fillStyle = sa.farbe;
   ctx.fillText(sa.name, 60, 36);
+  _bioFxDraw(ctx, s.fx.teile);
+  ctx.restore();
+  _bioFxBannerDraw(ctx, s.fx);                          // misst selbst ctx.canvas.width
+}
+
+function _bsfLupe(ctx, s, sa, sx, sy) {
+  const lx = 236, ly = 94, r = 30;
+  const ein = Math.min(1, s.t / 0.3);
+  ctx.save();
+  ctx.globalAlpha = ein;
+  // Verbindungslinie zum Samen
+  ctx.strokeStyle = 'rgba(71,85,105,0.5)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+  const dx = sx - lx, dy = sy - ly, dl = Math.hypot(dx, dy) || 1;
+  ctx.beginPath(); ctx.moveTo(lx + dx / dl * r, ly + dy / dl * r); ctx.lineTo(sx, sy); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = 'rgba(255,255,255,0.93)'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(lx, ly, r, 0, 6.283); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Zeitlupe', lx, ly + r + 11);
+  // Drehrichtung
+  ctx.strokeStyle = 'rgba(29,78,216,0.55)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(lx, ly, r - 5, -2.4, -0.8); ctx.stroke();
+  const pa = -0.8, px = lx + Math.cos(pa) * (r - 5), py = ly + Math.sin(pa) * (r - 5);
+  ctx.beginPath(); ctx.moveTo(px - 5, py - 2); ctx.lineTo(px, py); ctx.lineTo(px - 1, py - 6); ctx.stroke();
+  // Samen von oben, dreht sich viermal langsamer als in echt
+  ctx.translate(lx, ly);
+  ctx.rotate(s.rot * 0.25);
+  if (sa.art === 'ahorn') {
+    ctx.fillStyle = 'rgba(180,120,60,0.9)'; ctx.strokeStyle = '#8a5a2b'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(6, -7, 20, -8, 23, -3); ctx.bezierCurveTo(21, 2, 10, 4, 0, 3);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#7a4a1f';
+    ctx.beginPath(); ctx.ellipse(0, 1, 4.5, 4, 0, 0, 6.283); ctx.fill();
+  } else {
+    ctx.fillStyle = '#fde68a'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+    for (const sg of [1, -1]) {
+      ctx.beginPath(); ctx.moveTo(0, -3 * sg); ctx.lineTo(22 * sg, -5 * sg); ctx.lineTo(22 * sg, 2 * sg); ctx.lineTo(0, 3 * sg);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+    }
+    ctx.fillStyle = '#fefce8';
+    ctx.fillRect(-3, -3, 6, 6); ctx.strokeRect(-3, -3, 6, 6);
+  }
   ctx.restore();
 }
 
@@ -87184,6 +88139,13 @@ function _bsfDraw(ctx, cv) {
 //   Sperber    Raupen  50 · Meisen 20 · Sperber 0
 // Alle Zahlen sind Modellwerte. Gezeichnet wird je 10 Raupen eine Raupe,
 // jede Meise einzeln.
+// AHA (Dominoeffekt): Fehlt ein Glied, läuft die Folge wie eine Reihe
+// Dominosteine durch die Kette. Ein Lichtstoß wandert vom fehlenden Glied
+// zum nächsten, das Kästchen wackelt, ein Pfeil ▲/▼ zeigt „mehr“ oder
+// „weniger“. Ohne Meisen wachsen die Raupen sichtbar heran und fressen die
+// Blätter Stück für Stück (Krümel, kurze Zeitlupe bei den letzten Blättern).
+// Erst am Ende des Sommers kommt das Aha-Banner (unter der Kette), die
+// Zähler stehen dann schon. Effekte aus der Bibliothek _bioFx.
 // ═══════════════════════════════════════════════════════
 let _bnkState = null;
 const _BNK_WAHL = ['niemanden', 'Raupen', 'Meisen', 'Sperber'];
@@ -87196,6 +88158,20 @@ const _BNK_ENDE = [
 ];
 const _BNK_DAUER = 6;      // Sekunden für einen Sommer
 const _BNK_TAGE = 90;
+// Dominosteine je Wahl: Glied g ändert sich von p=a bis p=e, angestoßen von Glied v.
+// Glied: 0 Blatt, 1 Raupe, 2 Meise, 3 Sperber.
+const _BNK_DOMINO = [
+  [],
+  [{ g: 2, v: 1, a: 0.10, e: 0.70 }],
+  [{ g: 1, v: 2, a: 0.06, e: 0.50 }, { g: 3, v: 2, a: 0.22, e: 0.52 }, { g: 0, v: 1, a: 0.42, e: 0.92 }],
+  [{ g: 2, v: 3, a: 0.06, e: 0.48 }, { g: 1, v: 2, a: 0.42, e: 0.92 }]
+];
+const _BNK_AHA = [
+  'Alle Tiere da: Die Hecke bleibt grün.',
+  'Ohne Raupen fehlt den Meisen das Futter.',
+  'Ohne Meisen wird die Hecke kahl!',
+  'Mehr Meisen – weniger Raupen!'
+];
 
 function _bnkZufall(saat) {
   let x = saat >>> 0;
@@ -87235,7 +88211,8 @@ function _bnkInit() {
       ph: zf() * 6.28, weg: i % 2 ? 1 : -1, a: 0
     });
   }
-  _bnkState = { wahl: 0, phase: 'fruehling', p: 0, t: 0, ballen, blaetter, raupen, meisen, sperberA: 1 };
+  _bnkState = { wahl: 0, phase: 'fruehling', p: 0, t: 0, ballen, blaetter, raupen, meisen, sperberA: 1,
+    fx: { teile: [] }, stoesse: [], wackel: [-9, -9, -9, -9], dom: [], nBlatt: 170, lupe: false };
   _bnkSichtZiel(true);
 }
 
@@ -87246,14 +88223,35 @@ function _bnkZahlen() {
   const ende = _BNK_ENDE[w];
   if (S.phase === 'fruehling') return start;
   if (S.phase === 'ende') return { r: ende.r, m: ende.m, s: ende.s, b: ende.b };
-  const p = S.p, e = p * p * (3 - 2 * p);
-  const bl = w === 2 ? 1 - (function (q) { q = Math.max(0, Math.min(1, q)); return q * q * (3 - 2 * q); })((p - 0.25) / 0.75) : 1;
+  // Dominoeffekt: jedes Glied ändert sich erst, wenn der Stoß bei ihm ankommt.
+  const q = [0, 0, 0, 0];
+  _BNK_DOMINO[w].forEach(d => { q[d.g] = _bnkAnteil(S.p, d); });
   return {
-    r: Math.round(start.r + (ende.r - start.r) * e),
-    m: Math.round(start.m + (ende.m - start.m) * e),
-    s: p < 0.5 ? start.s : ende.s,
-    b: bl
+    r: Math.round(start.r + (ende.r - start.r) * q[1]),
+    m: Math.round(start.m + (ende.m - start.m) * q[2]),
+    s: Math.round(start.s + (ende.s - start.s) * q[3]),
+    b: start.b + (ende.b - start.b) * q[0]
   };
+}
+
+// Wie weit ist ein Dominostein schon gekippt? (0 … 1, weich)
+function _bnkAnteil(p, d) {
+  const x = Math.max(0, Math.min(1, (p - d.a) / (d.e - d.a)));
+  return x * x * (3 - 2 * x);
+}
+
+// Mitte eines Kettenkästchens (gleiche Maße wie _bnkKette)
+function _bnkBoxMitte(i, W) {
+  const bw = 80, gap = (W - 16 - 4 * bw) / 3;
+  return { x: 8 + i * (bw + gap) + bw / 2, y: 25 };
+}
+
+// Effekte zurücksetzen (neue Wahl, neuer Sommer, neu)
+function _bnkFxLeeren() {
+  const S = _bnkState;
+  S.fx = { teile: [] }; S.stoesse = []; S.wackel = [-9, -9, -9, -9]; S.dom = [];
+  S.lupe = false; S.zeitlupe = null;
+  S.nBlatt = Math.round(S.blaetter.length * _bnkZahlen().b);
 }
 
 // Welche Tiere sollen zu sehen sein? sofort=true setzt ohne Übergang.
@@ -87305,6 +88303,12 @@ function _bnkWahl(v) {
   const l = document.getElementById('_bnk-wlbl'); if (l) l.textContent = _BNK_WAHL[w];
   for (let i = 0; i < 4; i++) document.getElementById('_bnk-m' + i)?.classList.toggle('primary', i === w);
   // Das weggenommene Tier verschwindet sichtbar (fliegt weg / wird abgesammelt).
+  _bnkFxLeeren();
+  if (w > 0) {
+    const m = _bnkBoxMitte(w, 420);
+    _bioFxWelle(S.fx.teile, m.x, m.y, '#94a3b8', 46);
+    S.wackel[w] = S.t;
+  }
   _bnkSichtZiel(false);
   _bnkStatus();
 }
@@ -87313,6 +88317,7 @@ function _bnkSommer() {
   const S = _bnkState; if (!S) return;
   // Jeder Sommer beginnt im Frühling mit denselben Startwerten.
   S.phase = 'sommer'; S.p = 0;
+  _bnkFxLeeren();
   _bnkSichtZiel(false);
   _bnkStatus();
 }
@@ -87320,6 +88325,7 @@ function _bnkSommer() {
 function _bnkNeu() {
   const S = _bnkState; if (!S) return;
   S.phase = 'fruehling'; S.p = 0;
+  _bnkFxLeeren();
   _bnkSichtZiel(false);
   _bnkStatus();
 }
@@ -87351,26 +88357,79 @@ function _bnkStatus() {
 
 function _bnkUpdate(dt) {
   const S = _bnkState; if (!S) return;
+  dt = _bioFxDt(dt);
   S.t += dt;
   if (S.phase === 'sommer') {
-    S.p = Math.min(1, S.p + dt / _BNK_DAUER);
-    if (S.p >= 1) S.phase = 'ende';
-    _bnkSichtZiel(false);
-    _bnkStatus();
+    const lupe = _bioFxZeitlupeFaktor(S, dt);
+    S.p = Math.min(1, S.p + dt * lupe / _BNK_DAUER);
+    _bnkDominoTick();
+    if (S.p >= 1) { S.phase = 'ende'; _bnkSichtZiel(false); _bnkStatus(); _bnkAha(); }
+    else { _bnkSichtZiel(false); _bnkStatus(); }
   }
+  _bioFxAlleUpdate(S.fx, dt);
+  S.stoesse.forEach(o => { o.alter += dt; });
+  S.stoesse = S.stoesse.filter(o => o.alter < 0.7);
   const k = Math.min(1, dt * 1.6);
   S.raupen.forEach(o => { o.a += (o.ziel - o.a) * k; });
   S.meisen.forEach(o => { o.a += (o.ziel - o.a) * k; });
   S.sperberA += (S.sperberZiel - S.sperberA) * k;
 }
 
+// Während des Sommers: Dominosteine anstoßen, gefressene Blätter krümeln lassen
+function _bnkDominoTick() {
+  const S = _bnkState, W = 420;
+  _BNK_DOMINO[S.wahl].forEach((d, i) => {
+    if (S.dom[i] || S.p < d.a) return;
+    S.dom[i] = true;
+    S.stoesse.push({ von: d.v, nach: d.g, alter: 0 });
+  });
+  // der Stoß kommt an: Kästchen wackelt, Lichtring
+  S.stoesse.forEach(o => {
+    if (o.da || o.alter < 0.45) return;
+    o.da = true;
+    S.wackel[o.nach] = S.t;
+    const m = _bnkBoxMitte(o.nach, W);
+    _bioFxWelle(S.fx.teile, m.x, m.y, '#fbbf24', 44);
+  });
+  // Blätter werden gefressen: Krümel rieseln aus der Hecke
+  const n = Math.round(S.blaetter.length * _bnkZahlen().b);
+  for (let i = n; i < S.nBlatt; i++) {
+    const l = S.blaetter[i];
+    _bioFxNeu(S.fx.teile, { art: 'punkt', x: l.x, y: l.y, vx: (Math.random() - 0.5) * 20, vy: -10,
+      g: 90, alter: 0, leben: 0.6 + Math.random() * 0.3, r: 1.6,
+      farbe: i % 2 ? '#65a30d' : '#a3e635', dreh: 0, dw: 0 });
+  }
+  S.nBlatt = n;
+  // die letzten Blätter in Zeitlupe
+  if (S.wahl === 2 && !S.lupe && _bnkZahlen().b < 0.3) {
+    S.lupe = true;
+    _bioFxZeitlupe(S, 0.4, 1.0);
+  }
+}
+
+// Am Ende des Sommers: das Aha – erst stehen die Zähler, dann kommt die Bestätigung
+function _bnkAha() {
+  const S = _bnkState, w = S.wahl, W = 420;
+  _bioFxBanner(S.fx, _BNK_AHA[w], 3.2, w === 2 ? '#f59e0b' : '#86efac');
+  const dom = _BNK_DOMINO[w];
+  if (dom.length) {
+    const letzt = dom[dom.length - 1].g, m = _bnkBoxMitte(letzt, W);
+    _bioFxWelle(S.fx.teile, m.x, m.y, '#fde047', 60);
+    _bioFxFunken(S.fx.teile, m.x, m.y + 6, 10);
+  } else {
+    // niemanden: die Hecke glitzert kurz grün
+    [110, 210, 310].forEach(x => _bioFxFunken(S.fx.teile, x, 180, 6, ['#bbf7d0', '#fef08a', '#ffffff']));
+  }
+}
+
 // ── Zeichnen ──────────────────────────────────────────
 function _bnkRaupe(ctx, x, y, t, dir, a) {
   ctx.globalAlpha = a;
+  const k = 0.45 + 0.55 * a;               // neue Raupen wachsen sichtbar heran
   for (let j = 0; j < 5; j++) {
-    const bx = x - dir * j * 3.2, by = y - Math.abs(Math.sin(t * 5 + j * 0.9)) * 2.2;
+    const bx = x - dir * j * 3.2 * k, by = y - Math.abs(Math.sin(t * 5 + j * 0.9)) * 2.2 * k;
     ctx.fillStyle = j === 0 ? '#3f6212' : (j % 2 ? '#84cc16' : '#65a30d');
-    ctx.beginPath(); ctx.arc(bx, by, j === 0 ? 2.7 : 2.4, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(bx, by, (j === 0 ? 2.7 : 2.4) * k, 0, 2 * Math.PI); ctx.fill();
   }
   ctx.globalAlpha = 1;
 }
@@ -87450,13 +88509,35 @@ function _bnkKette(ctx, W, z) {
   }
   // Glieder
   const zahl = ['', String(z.r), String(z.m), String(z.s)];
+  // Dominostöße: Lichtkugel wandert vom anstoßenden zum nächsten Glied
+  S.stoesse.forEach(o => {
+    const u = _bioFxEase.sanft(Math.min(1, o.alter / 0.45));
+    const xa = bx(o.von) + bw / 2, xb = bx(o.nach) + bw / 2;
+    const px = xa + (xb - xa) * u, py = y0 + bh + 3 - Math.sin(Math.PI * u) * 4;
+    ctx.save();
+    ctx.globalAlpha = o.alter < 0.45 ? 1 : Math.max(0, 1 - (o.alter - 0.45) / 0.25);
+    ctx.shadowColor = '#f59e0b'; ctx.shadowBlur = 12; ctx.fillStyle = '#fbbf24';
+    ctx.beginPath(); ctx.arc(px, py, 4.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  });
+  const dom = _BNK_DOMINO[weg], pNow = S.phase === 'fruehling' ? 0 : (S.phase === 'ende' ? 1 : S.p);
   for (let i = 0; i < 4; i++) {
-    const x = bx(i), istWeg = weg > 0 && i === weg, an = !istWeg && schritt === i;
+    const x0 = bx(i), istWeg = weg > 0 && i === weg, an = !istWeg && schritt === i;
+    // Wackeln wie ein angestoßener Dominostein (klingt in 0,8 s ab)
+    const wa = S.t - S.wackel[i];
+    const kipp = wa >= 0 && wa < 0.9 ? 0.14 * Math.exp(-wa * 4.5) * Math.sin(wa * 13) : 0;
+    ctx.save();
+    ctx.translate(x0 + bw / 2, y0 + bh);
+    ctx.rotate(kipp);
+    ctx.translate(-(x0 + bw / 2), -(y0 + bh));
+    const x = x0;
     ctx.fillStyle = istWeg ? 'rgba(241,245,249,0.92)' : 'rgba(255,255,255,0.94)';
     _bnkRundRect(ctx, x, y0, bw, bh, 8); ctx.fill();
-    ctx.strokeStyle = istWeg ? '#94a3b8' : (an ? '#f59e0b' : '#15803d');
-    ctx.lineWidth = an ? 3 : 1.6;
-    if (an) { ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 12; }
+    // Solange das Aha-Banner steht, glüht das letzte Glied der Kettenreaktion ruhig nach.
+    const ahaGlied = !!(S.fx.banner && dom.length && dom[dom.length - 1].g === i);
+    ctx.strokeStyle = istWeg ? '#94a3b8' : (an || ahaGlied ? '#f59e0b' : '#15803d');
+    ctx.lineWidth = an || ahaGlied ? 3 : 1.6;
+    if (an || ahaGlied) { ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = ahaGlied ? 16 : 12; }
     _bnkRundRect(ctx, x, y0, bw, bh, 8); ctx.stroke();
     ctx.shadowBlur = 0;
     ctx.textAlign = 'center';
@@ -87477,6 +88558,21 @@ function _bnkKette(ctx, W, z) {
       ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.2;
       ctx.beginPath(); ctx.moveTo(x + 12, y0 + 12); ctx.lineTo(x + bw - 12, y0 + 12); ctx.stroke();
     }
+    // ▲ mehr / ▼ weniger, sobald der Dominostein kippt
+    const d = dom.find(o => o.g === i);
+    if (d && pNow > d.a) {
+      const vorher = [1, weg === 1 ? 0 : 100, weg === 2 ? 0 : 10, weg === 3 ? 0 : 1][i];
+      const nachher = [_BNK_ENDE[weg].b, _BNK_ENDE[weg].r, _BNK_ENDE[weg].m, _BNK_ENDE[weg].s][i];
+      const hoch = nachher > vorher, ax = x + bw - 11, ay = i === 0 ? y0 + 12 : y0 + 29;
+      ctx.globalAlpha = Math.min(1, (pNow - d.a) / 0.08);
+      ctx.fillStyle = hoch ? '#ea580c' : '#2563eb';
+      ctx.beginPath();
+      if (hoch) { ctx.moveTo(ax, ay - 6); ctx.lineTo(ax + 6, ay + 4); ctx.lineTo(ax - 6, ay + 4); }
+      else { ctx.moveTo(ax, ay + 5); ctx.lineTo(ax + 6, ay - 5); ctx.lineTo(ax - 6, ay - 5); }
+      ctx.closePath(); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
   }
 }
 
@@ -87511,11 +88607,13 @@ function _bnkDraw(ctx, cv) {
   });
   ctx.lineCap = 'butt';
   // Laub: so viel, wie noch da ist; es wiegt leicht im Wind
-  const n = Math.round(S.blaetter.length * z.b);
+  const nf = S.blaetter.length * z.b, n = Math.min(S.blaetter.length, Math.ceil(nf - 1e-9));
   for (let i = 0; i < n; i++) {
     const l = S.blaetter[i], sw = Math.sin(t * 1.5 + l.x * 0.05) * 1.2;
+    // das Blatt, an dem gerade gefressen wird, wird kleiner
+    const k = i === n - 1 && nf < S.blaetter.length ? Math.max(0.25, nf - Math.floor(nf) || 1) : 1;
     ctx.fillStyle = l.g < 0.33 ? '#15803d' : (l.g < 0.66 ? '#16a34a' : '#22c55e');
-    ctx.beginPath(); ctx.ellipse(l.x + sw, l.y, 7, 4, l.w, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(l.x + sw, l.y, 7 * k, 4 * k, l.w, 0, 2 * Math.PI); ctx.fill();
   }
   if (z.b < 0.2) {
     ctx.fillStyle = 'rgba(255,255,255,0.9)'; _bnkRundRect(ctx, 150, 128, 120, 22, 8); ctx.fill();
@@ -87553,8 +88651,12 @@ function _bnkDraw(ctx, cv) {
     const x = 290 + Math.cos(w) * 70 + 200 * aus, y = 88 + Math.sin(w) * 14 - 90 * aus;
     _bnkSperber(ctx, x, y, 0.5 + 0.5 * Math.sin(t * 4), -Math.sin(w) >= 0 ? 1 : -1, S.sperberA);
   }
+  const fx = S.fx;
   // Nahrungskette oben
   _bnkKette(ctx, W, z);
+  // Effekte zuletzt; das Banner sitzt unter der Kette, damit die Zähler frei bleiben
+  if (fx.teile) _bioFxDraw(ctx, fx.teile);
+  if (fx.banner) { ctx.save(); ctx.translate(0, 58); _bioFxBannerDraw(ctx, fx); ctx.restore(); }
 }
 
 // ════════════════════════════════════════════════════════════════════════
@@ -87569,6 +88671,15 @@ function _bnkDraw(ctx, cv) {
 // Sonne: nach oben = zur Sonne hin, nach unten = von der Sonne weg.
 // Vereinfacht (Lehrerteil): Grenze Rund/Schwaenzel real 50-100 m; nur zwei
 // Richtungen; Wege auf der Wiese nicht massstaeblich.
+// Aha (nach dem Tanz, Bibliothek _bioFx): Auf der Wabe und auf der Wiese
+// leuchtet gleichzeitig ein blauer Ring auf; auf der Wiese waechst ein blauer
+// Pfeil aus dem Stock in dieselbe Richtung wie der Schwaenzellauf (beim
+// Rundtanz ein Kreis ringsum). Die drei Bienen fliegen genau dorthin und
+// hinterlassen eine goldene Flugspur (beim Rundtanz suchen sie ringsum).
+// Jede Ankunft: kleine Funken und ein Lichtring am Futter, die Blueten
+// leuchten weich auf; kurze Zeitlupe bei der ersten Ankunft. Nach der
+// letzten: ein ruhiger Hinweisstreifen unten auf der Wabe. Alles klingt ab,
+// nichts blinkt (Puls 0,8 Hz), kein Ton, keine Wertung.
 // ════════════════════════════════════════════════════════════════════════
 let _bbt = null;
 const _BBT_ENT = ['20 m', '1000 m'];
@@ -87600,7 +88711,11 @@ function _bbtInit() {
     phase: 'bereit', pt: 0,
     spur: [],
     gras, honig,
-    key: '', W: 420, H: 250
+    key: '', W: 420, H: 250,
+    fx: { teile: [] },          // Effekte (Bibliothek _bioFx)
+    nach: 0,                    // s seit Tanzende
+    ank: [false, false, false], // welche Biene ist schon am Futter
+    bl: -1                      // s seit der ersten Ankunft (Blueten leuchten)
   };
 }
 
@@ -87615,12 +88730,18 @@ function _bbtRicht(i) {
   _bbt.rich = i;
   _bbtZurueck();
 }
+function _bbtFxLeer() {
+  _bbt.fx = { teile: [] }; _bbt.zeitlupe = null;
+  _bbt.nach = 0; _bbt.ank = [false, false, false]; _bbt.bl = -1;
+}
 function _bbtZurueck() {
+  _bbtFxLeer();
   _bbt.phase = 'bereit'; _bbt.pt = 0; _bbt.spur = [];
   _bbtStatus(); _bbtKnoepfe();
 }
 function _bbtStart() {
   if (!_bbt) return;
+  _bbtFxLeer();
   _bbt.phase = 'heim'; _bbt.pt = 0; _bbt.spur = [];
   _bbtStatus(); _bbtKnoepfe();
 }
@@ -87729,23 +88850,174 @@ function _bbtStatus() {
 
 function _bbtUpdate(dt) {
   if (!_bbt) return;
-  const d = Math.min(dt, 0.05);
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_bbt, roh);
   _bbt.t += d;
+  _bioFxAlleUpdate(_bbt.fx, roh);
+  if (_bbt.phase === 'aus' || _bbt.phase === 'fertig') _bbt.nach += d;
+  if (_bbt.bl >= 0) _bbt.bl += d;
   if (_bbt.phase === 'bereit' || _bbt.phase === 'fertig') {
     // nichts zu schalten; Bienen bewegen sich trotzdem (Zeichnen liest .t)
   } else {
     _bbt.pt += d;
     if (_bbt.phase === 'heim' && _bbt.pt >= _BBT_HEIM) { _bbt.phase = 'tanz'; _bbt.pt = 0; _bbt.spur = []; }
     else if (_bbt.phase === 'tanz') {
-      if (_bbt.pt >= _BBT_TANZ) { _bbt.phase = 'aus'; _bbt.pt = 0; }
+      if (_bbt.pt >= _BBT_TANZ) { _bbt.phase = 'aus'; _bbt.pt = 0; _bbtAhaTanzEnde(); }
       else if (_bbt.spur.length < 3000) {
         const g = _bbtGeo(_bbt.W, _bbt.H);
         _bbt.spur.push(_bbtPfad(_bbt.pt, g));
       }
     }
-    else if (_bbt.phase === 'aus' && _bbt.pt >= _BBT_AUS) { _bbt.phase = 'fertig'; _bbt.pt = 0; }
+    else if (_bbt.phase === 'aus') {
+      _bbtAhaAnkunft();
+      if (_bbt.pt >= _BBT_AUS) { _bbt.phase = 'fertig'; _bbt.pt = 0; }
+    }
   }
   if (_bbtSchluessel() !== _bbt.key) _bbtStatus();
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+const _BBT_BLAU = 'rgba(37,99,235,0.95)';
+/* Flugfortschritt der Biene i auf der Wiese (0 = Stock, 1 = Futter). */
+function _bbtFlugP(i) {
+  if (_bbt.phase === 'fertig') return 1;
+  if (_bbt.phase !== 'aus') return 0;
+  return Math.max(0, Math.min(1, (_bbt.pt - 0.55 * i) / 1.8));
+}
+/* Tanzende: Auf Wabe und Wiese leuchtet gleichzeitig ein blauer Ring auf -
+   dasselbe Zeichen an beiden Orten. */
+function _bbtAhaTanzEnde() {
+  const g = _bbtGeo(_bbt.W, _bbt.H), fx = _bbt.fx.teile;
+  if (_bbt.ent === 1) {
+    const s = _bbt.rich === 0 ? -1 : 1;
+    _bioFxWelle(fx, g.cx, g.cy + s * (g.L / 2 + 12), _BBT_BLAU, 26);
+  } else {
+    _bioFxWelle(fx, g.cx, g.cy, _BBT_BLAU, g.r + 14);
+  }
+  _bioFxWelle(fx, g.hx, g.hy, _BBT_BLAU, 30);
+}
+/* Ankunft am Futter: Funken, Lichtring; erste Ankunft mit kurzer Zeitlupe,
+   nach der letzten der Hinweisstreifen. */
+function _bbtAhaAnkunft() {
+  const g = _bbtGeo(_bbt.W, _bbt.H), F = _bbtFutter(g), fx = _bbt.fx.teile;
+  for (let i = 0; i < 3; i++) {
+    if (_bbt.ank[i] || _bbtFlugP(i) < 1) continue;
+    _bbt.ank[i] = true;
+    _bioFxFunken(fx, F.x, F.y, 7, ['#fde047', '#fff7c2', '#ffffff', '#facc15']);
+    _bioFxWelle(fx, F.x, F.y, 'rgba(250,204,21,0.95)', _bbt.ent === 1 ? 40 : 24);
+    if (_bbt.bl < 0) { _bbt.bl = 0; _bioFxZeitlupe(_bbt, 0.4, 0.9); }
+    if (i === 2) {
+      const txt = _bbt.ent === 0
+        ? ['Das Futter ist ganz nah!', 'Rundtanz: ringsum am Stock suchen']
+        : ['Der Tanz zeigt den Weg!',
+           _bbt.rich === 0 ? 'Laufspur nach oben: zur Sonne hin' : 'Laufspur nach unten: von der Sonne weg'];
+      _bioFxBanner(_bbt.fx, txt.join('\n'), 3.6, '#facc15');
+    }
+  }
+}
+/* Hinweisstreifen unten auf der Wabe (die Sonne oben links bleibt frei).
+   Zustand und Altern kommen aus der Bibliothek (fx.banner), nur die Lage
+   ist eigen. Zwei Zeilen, weiss auf dunkel, gleitet herein, blendet aus. */
+function _bbtBannerDraw(ctx, g) {
+  const b = _bbt.fx.banner;
+  if (!b) return;
+  const ein = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const zeilen = b.text.split('\n');
+  const bw = g.rw - 12, bh = 16 + 16 * zeilen.length;
+  const x = g.rx + 6, y = g.ry + g.rh - bh - 6 + (1 - ein) * 14;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.shadowColor = b.farbe; ctx.shadowBlur = 14;
+  ctx.fillStyle = 'rgba(20,30,50,0.9)';
+  _bioFxRundRect(ctx, x, y, bw, bh, 12); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = b.farbe; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x, y, bw, bh, 12); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  zeilen.forEach((z, i) => {
+    ctx.font = (i === 0 ? '700 14px' : '600 11px') + ' sans-serif';
+    ctx.fillText(z, x + bw / 2, y + 16 + i * 16, bw - 14);
+  });
+  ctx.restore();
+}
+/* Hilfsfunktion: Deckkraft, die nach dem Aha weich verschwindet. */
+function _bbtAbkling(t, halten, weg) {
+  return 1 - _bioFxEase.sanft(_bioFxKlemme((t - halten) / weg));
+}
+/* Ort und Blickrichtung der Biene i im Flug (p in 0..1).
+   1000 m: gerade in die getanzte Richtung. 20 m: keine Richtung - sie
+   suchen in einer Spirale ringsum nahe am Stock und finden das Futter. */
+function _bbtFlug(i, p, g, F) {
+  const pos = q => {
+    if (_bbt.ent === 1) {
+      return [g.hx + (F.x - g.hx) * q + 3 * Math.sin(q * 16 + i) * (1 - q), g.hy + (F.y - g.hy) * q];
+    }
+    const A = Math.atan2(F.y - g.hy, F.x - g.hx), D = Math.hypot(F.x - g.hx, F.y - g.hy);
+    const sg = i % 2 === 0 ? 1 : -1;
+    const w = A + sg * (1 - q) * (Math.PI * (1.5 + 0.35 * i));
+    const r = D * (1 - (1 - q) * (1 - q));
+    return [g.hx + r * Math.cos(w), g.hy + r * Math.sin(w)];
+  };
+  const a = pos(Math.max(0, p - 0.02)), b = pos(Math.min(1, p + 0.02)), z = pos(p);
+  return [z[0], z[1], Math.atan2(b[1] - a[1], b[0] - a[0]), pos];
+}
+/* Wiese nach dem Tanz: blauer Richtungspfeil (bzw. Kreis), goldene
+   Flugspuren, leuchtende Blueten. Klingt nach etwa 6 s ruhig ab. */
+function _bbtWieseAha(ctx, g, F, t) {
+  const n = _bbt.nach;
+  if (!(_bbt.phase === 'aus' || _bbt.phase === 'fertig')) return;
+  // 1) blauer Pfeil aus dem Stock: dieselbe Richtung wie auf der Wabe
+  const wachs = _bioFxEase.raus(_bioFxKlemme(n / 0.8));
+  const ap = 0.85 * _bbtAbkling(n, 5, 1.5);
+  if (ap > 0.01) {
+    ctx.save();
+    ctx.globalAlpha = ap;
+    ctx.strokeStyle = _BBT_BLAU; ctx.fillStyle = _BBT_BLAU; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    if (_bbt.ent === 1) {
+      const s = _bbt.rich === 0 ? -1 : 1, L = 44 * wachs;
+      const y1 = g.hy + s * (12 + L);
+      ctx.beginPath(); ctx.moveTo(g.hx - 22, g.hy + s * 12); ctx.lineTo(g.hx - 22, y1); ctx.stroke();
+      if (wachs > 0.2) {
+        ctx.beginPath(); ctx.moveTo(g.hx - 22, y1 + s * 9); ctx.lineTo(g.hx - 28, y1); ctx.lineTo(g.hx - 16, y1); ctx.closePath(); ctx.fill();
+      }
+    } else {
+      ctx.setLineDash([5, 5]); ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(g.hx, g.hy, 38 * wachs, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // 2) goldene Flugspuren der drei Bienen
+  const as = 0.8 * _bbtAbkling(n, 4.5, 1.5);
+  if (as > 0.01) {
+    ctx.save();
+    ctx.globalAlpha = as;
+    ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.6; ctx.setLineDash([3, 3]);
+    for (let i = 0; i < 3; i++) {
+      const p = _bbtFlugP(i);
+      if (p <= 0) continue;
+      const pos = _bbtFlug(i, p, g, F)[3];
+      ctx.beginPath();
+      for (let q = 0, k = 0; q <= p + 1e-9; q += 0.03, k++) {
+        const z = pos(Math.min(q, p));
+        k ? ctx.lineTo(z[0], z[1]) : ctx.moveTo(z[0], z[1]);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // 3) Blueten leuchten auf, wenn die erste Biene ankommt
+  if (_bbt.bl >= 0) {
+    const al = _bbtAbkling(_bbt.bl, 1.6, 1.4);
+    if (al > 0.01) {
+      ctx.save();
+      ctx.globalAlpha = al;
+      _bioFxLeuchten(ctx, F.x, F.y, _bbt.ent === 1 ? 26 : 13, t, '250,204,21');
+      ctx.restore();
+    }
+  }
 }
 
 /* ── Geometrie ─────────────────────────────────────────────────────────── */
@@ -87865,6 +89137,8 @@ function _bbtDraw(ctx, cv) {
   ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
   _bbtWiese(ctx, g, t);
   _bbtWabe(ctx, g, t);
+  _bioFxDraw(ctx, _bbt.fx.teile);      // Funken und Lichtringe
+  _bbtBannerDraw(ctx, g);              // Hinweisstreifen unten auf der Wabe
 }
 
 /* ── Fenster 1: Wiese von oben ─────────────────────────────────────────── */
@@ -87913,23 +89187,25 @@ function _bbtWiese(ctx, g, t) {
   _bbtText(ctx, _BBT_ENT[_bbt.ent], g.hx + 8, (g.hy + F.y) / 2 + (_bbt.ent === 0 ? 0 : 0), '#1f2937');
 
   // Futter: weit weg ein Rapsfeld, nah ein Bluetenfleck
+  _bbtWieseAha(ctx, g, F, t);
+  const hell = _bbt.bl >= 0 ? _bbtAbkling(_bbt.bl, 1.6, 1.4) : 0;
   if (_bbt.ent === 1) {
     const fw = 56, fh = 24;
     _bbtRund(ctx, F.x - fw / 2, F.y - fh / 2, fw, fh, 5);
     ctx.fillStyle = '#fde047'; ctx.fill();
     ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 1; ctx.stroke();
-    ctx.fillStyle = '#eab308';
+    ctx.fillStyle = hell > 0.3 ? '#fff7c2' : '#eab308';
     for (let i = 0; i < 18; i++) {
       const x = F.x - fw / 2 + 4 + (i % 9) * 6, y = F.y - 6 + Math.floor(i / 9) * 12;
-      ctx.beginPath(); ctx.arc(x, y + Math.sin(t * 2 + i) * 0.8, 1.4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y + Math.sin(t * 2 + i) * 0.8, 1.4 + 0.8 * hell, 0, Math.PI * 2); ctx.fill();
     }
     _bbtText(ctx, 'Futter', F.x - fw / 2 - 4, F.y, '#713f12', '700 11px sans-serif', 'right');
   } else {
     for (let i = 0; i < 5; i++) {
       const w = i * 1.2566 + t * 0.2;
       const x = F.x + 7 * Math.cos(w), y = F.y + 5 * Math.sin(w);
-      ctx.fillStyle = '#fde047';
-      ctx.beginPath(); ctx.arc(x, y, 3.2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = hell > 0.3 ? '#fff7c2' : '#fde047';
+      ctx.beginPath(); ctx.arc(x, y, 3.2 + 1.2 * hell, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = '#ea580c';
       ctx.beginPath(); ctx.arc(x, y, 1.1, 0, Math.PI * 2); ctx.fill();
     }
@@ -87960,11 +89236,11 @@ function _bbtWiese(ctx, g, t) {
     _bbtBiene(ctx, x, y, Math.atan2(g.hy - F.y, 0.0001), 0.8, t, 0);
   } else if (ph === 'aus' || ph === 'fertig') {
     for (let i = 0; i < 3; i++) {
-      const p = ph === 'fertig' ? 1 : Math.max(0, Math.min(1, (pt - 0.55 * i) / 1.8));
+      const p = _bbtFlugP(i);
       if (p <= 0) continue;
       if (p < 1) {
-        const x = g.hx + (F.x - g.hx) * p + 3 * Math.sin(p * 16 + i), y = g.hy + (F.y - g.hy) * p;
-        _bbtBiene(ctx, x, y, Math.atan2(F.y - g.hy, 0.0001), 0.8, t, 0);
+        const [x, y, w] = _bbtFlug(i, p, g, F);
+        _bbtBiene(ctx, x, y, w, 0.8, t, 0);
       } else schweben(i, 1);
     }
   }
@@ -88108,6 +89384,13 @@ function _bbtWabe(ctx, g, t) {
 // so lang wie sie (Modell: Merkmal wird ganz vererbt). Ohne Auswahl stammen
 // die Samen von großen UND kleinen Pflanzen (−2, −1, 0, 0, +1, +2 cm),
 // der Mittelwert bleibt. „Jahr“ steht für eine Pflanzengeneration.
+// AHA (seit 27.09.2026, Effekte aus _bioFx): Am Lineal bleibt das Blatt des
+// Vorjahres als gestrichelter Umriss stehen; das neue Blatt wächst darüber
+// hinaus (mit Auswahl) oder genau bis dorthin (ohne Auswahl). Ist es fertig
+// gewachsen, markiert ein Lichtring die Spitze, mit Auswahl glitzert sie.
+// In Jahr 4 blendet eine Karte Jahr 1 und Jahr 4 nebeneinander ein
+// (Vorher-Nachher, gleicher Maßstab), mit Auswahl mit kurzem Konfetti; nach
+// 6 s ist das Beet wieder frei. Alte Pflanzen lassen Blätter fallen.
 // ═══════════════════════════════════════════════════════
 const _BZU_START = 10;                 // cm, typisches Blatt in Jahr 1
 const _BZU_PLUS = 2;                   // cm mehr je Jahr mit Auswahl
@@ -88118,6 +89401,8 @@ const _BZU_BPX = 2.6;                  // Bildpunkte je cm im Beet
 const _BZU_LPX = 11;                   // Bildpunkte je cm am Lineal
 const _BZU_L0 = 236;                   // Nullstrich des Lineals (y)
 const _BZU_DAUER = 2.6;                // Sekunden für ein Jahr
+const _BZU_VGL = 6;                    // Sekunden, die die Vergleichskarte steht
+const _BZU_VGL_WARTEN = 0.9;           // erst Lichtring am Lineal, dann Karte
 const _BZU_WAHL = {
   gross: 'den Pflanzen mit den größten Blättern',
   irgend: 'irgendeiner Pflanze',
@@ -88143,6 +89428,7 @@ function _bzuInit() {
     t, wahl, lauf, jahr: 1, L: _BZU_START, off: _bzuMisch(1, lauf),
     altJahr: 1, altL: _BZU_START, altOff: _bzuMisch(1, lauf), eltern: [], p: 0.44, frisch: true,
     hinweis: '',
+    fx: { teile: [] }, vgl: null, jzAlt: 1, pop: -9,
   };
   _bzu.hinweis = _bzuTextWahl();
 }
@@ -88211,10 +89497,14 @@ function _bzuSchritt(jahr, L, mitSamen) {
   _bzu.eltern = mitSamen ? _bzuEltern(_bzu.altOff, _bzu.wahl) : [];
   _bzu.jahr = jahr; _bzu.L = L; _bzu.off = _bzuMisch(jahr, _bzu.lauf);
   _bzu.p = 0; _bzu.frisch = false;
+  _bzu.vgl = null;
 }
 function _bzuWeiter() {
   if (!_bzu) return;
-  if (_bzu.p < 1) _bzu.p = 1;
+  if (_bzu.p < 1) {
+    _bzu.p = 1;
+    if (_bzu.jahr >= _BZU_MAXJAHR) _bzuFertig();
+  }
   if (_bzu.jahr >= _BZU_MAXJAHR) {
     _bzu.hinweis = 'Der Versuch endet in Jahr 4. Mit „neu“ fängt er in Jahr 1 wieder an.';
     _bzuStatus(); return;
@@ -88270,7 +89560,42 @@ function _bzuStatus() {
 function _bzuUpdate(dt) {
   if (!_bzu) return;
   _bzu.t += dt;
+  const d = _bioFxDt(dt), pv = _bzu.p;
   if (_bzu.p < 1) _bzu.p = Math.min(1, _bzu.p + dt / _BZU_DAUER);
+  if (!_bzu.frisch) {
+    // die alten Pflanzen vergehen: ein paar Blätter segeln zu Boden
+    if (pv < 0.14 && _bzu.p >= 0.14) {
+      [3, 8, 12, 17].forEach(i => {
+        if (_bzu.eltern.includes(i)) return;
+        const o = _bzuOrt(i);
+        _bioFxBlaetter(_bzu.fx.teile, o.x, o.y - (_bzu.altL + _bzu.altOff[i]) * _BZU_BPX * 0.6, 2,
+          ['#8fae6b', '#b9a45c', '#6f9f86']);
+      });
+    }
+    if (pv < 1 && _bzu.p >= 1) _bzuFertig();
+  }
+  if (_bzu.vgl) {
+    const v = _bzu.vgl, vorher = v.alter;
+    v.alter += d;
+    if (vorher < 0.35 && v.alter >= 0.35 && v.mit) _bioFxKonfetti(_bzu.fx.teile, 148, 34, 26);
+    if (v.alter >= _BZU_VGL) _bzu.vgl = null;
+  }
+  _bioFxAlleUpdate(_bzu.fx, d);
+}
+// Das neue Blatt ist fertig gewachsen: erst jetzt (nach der Beobachtung)
+// kommen Lichtring und Glitzer; in Jahr 4 danach die Vergleichskarte.
+function _bzuFertig() {
+  if (!_bzu || _bzu.frisch) return;
+  const y = _BZU_L0 - _bzu.L * _BZU_LPX, x = 372;
+  if (_bzu.L > _bzu.altL) {
+    _bioFxWelle(_bzu.fx.teile, x, y, '#facc15', 34);
+    _bioFxFunken(_bzu.fx.teile, x + 12, y - 4, 12);
+  } else {
+    _bioFxWelle(_bzu.fx.teile, x, y, '#93c5fd', 26);
+  }
+  if (_bzu.jahr === _BZU_MAXJAHR) {
+    _bzu.vgl = { alter: -_BZU_VGL_WARTEN, L1: _BZU_START, L4: _bzu.L, mit: _bzu.wahl === 'gross' };
+  }
 }
 
 // ── Zeichnen ─────────────────────────────────────────
@@ -88397,7 +89722,7 @@ function _bzuDraw(ctx, cv) {
   });
 
   // Schmetterling
-  const bx = 150 + 110 * Math.sin(t * 0.35), by = 60 + 14 * Math.sin(t * 1.3), fl = 0.3 + 0.7 * Math.abs(Math.sin(t * 11));
+  const bx = 150 + 110 * Math.sin(t * 0.35), by = 60 + 14 * Math.sin(t * 1.3), fl = 0.3 + 0.7 * Math.abs(Math.sin(t * 8));
   ctx.fillStyle = '#f97316';
   ctx.beginPath(); ctx.ellipse(bx - 4 * fl, by, 4 * fl, 3.2, -0.4, 0, 2 * Math.PI); ctx.fill();
   ctx.beginPath(); ctx.ellipse(bx + 4 * fl, by, 4 * fl, 3.2, 0.4, 0, 2 * Math.PI); ctx.fill();
@@ -88408,7 +89733,11 @@ function _bzuDraw(ctx, cv) {
   ctx.fillStyle = 'rgba(15,23,42,0.78)'; ctx.fillRect(0, 0, 296, 20);
   ctx.fillStyle = '#ffffff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
   ctx.fillText('Beet mit 20 Kohlpflanzen', 8, 14);
-  ctx.textAlign = 'right'; ctx.fillStyle = '#fde68a'; ctx.fillText('Jahr ' + jz, 288, 14);
+  if (jz !== _bzu.jzAlt) { _bzu.jzAlt = jz; _bzu.pop = t; }
+  const kp = 1 + 0.35 * (1 - _bioFxEase.raus(_bioFxKlemme((t - _bzu.pop) / 0.5)));
+  ctx.save(); ctx.translate(288, 10); ctx.scale(kp, kp);
+  ctx.textAlign = 'right'; ctx.fillStyle = '#fde68a'; ctx.fillText('Jahr ' + jz, 0, 4);
+  ctx.restore();
 
   // ── Lineal mit einem typischen Blatt ─────────────────
   ctx.fillStyle = '#ffffff'; ctx.fillRect(298, 0, W - 298, H);
@@ -88449,9 +89778,91 @@ function _bzuDraw(ctx, cv) {
     }
     }
   }
+  // Umriss des Vorjahresblatts liegt über dem neuen Blatt
+  if (waechst && !_bzu.frisch && sB > 0) {
+    const lenA = _bzu.altL * _BZU_LPX, yA = _BZU_L0 - lenA + 0.5, ga = _bioFxKlemme(sB * 3);
+    ctx.save(); ctx.globalAlpha = ga;
+    ctx.translate(bxL, _BZU_L0);
+    _bzuUmriss(ctx, lenA);
+    ctx.restore();
+    ctx.save(); ctx.globalAlpha = ga;
+    ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    const tx = 'Jahr ' + _bzu.altJahr, tw = ctx.measureText(tx).width + 8;
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'; _bioFxRundRect(ctx, bxL - tw / 2, yA + 7, tw, 12, 5); ctx.fill();
+    ctx.fillStyle = '#475569'; ctx.fillText(tx, bxL, yA + 16);
+    ctx.restore();
+  }
   // Bodenlinie unter dem Blatt
   ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(lx + 22, _BZU_L0 + 0.5); ctx.lineTo(W - 4, _BZU_L0 + 0.5); ctx.stroke();
   ctx.textAlign = 'left';
+
+  if (_bzu.vgl && _bzu.vgl.alter > 0) _bzuVergleich(ctx, _bzu.vgl);
+  _bioFxAlleDraw(ctx, _bzu.fx);
+}
+// gestrichelter Umriss eines Blattes (Vorjahr), Spitze nach oben
+function _bzuUmriss(ctx, len) {
+  const b = len * 0.42, st = len * 0.18;
+  ctx.save();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4; ctx.setLineDash([4, 3]);
+  ctx.beginPath();
+  ctx.moveTo(0, -st);
+  ctx.bezierCurveTo(-b * 0.75, -st - len * 0.08, -b * 0.62, -len * 0.92, 0, -len);
+  ctx.bezierCurveTo(b * 0.62, -len * 0.92, b * 0.75, -st - len * 0.08, 0, -st);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+// Vorher-Nachher: Jahr 1 und Jahr 4 im gleichen Maßstab nebeneinander
+function _bzuVergleich(ctx, v) {
+  const ein = _bioFxEase.raus(_bioFxKlemme(v.alter / 0.4));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((v.alter - (_BZU_VGL - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const x0 = 14, y0 = 26, w = 268, h = 200, k = 0.92 + 0.08 * ein, S = 2.1;
+  const rand = v.mit ? '#16a34a' : '#64748b';
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(x0 + w / 2, y0 + h / 2); ctx.scale(k, k); ctx.translate(-w / 2, -h / 2);
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, 0, 0, w, h, 12); ctx.fill();
+  ctx.strokeStyle = rand; ctx.lineWidth = 3;
+  _bioFxRundRect(ctx, 0, 0, w, h, 12); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Jahr 1 und Jahr 4 im Vergleich', w / 2, 22);
+  ctx.fillStyle = rand; ctx.font = '700 11px sans-serif';
+  ctx.fillText(v.mit ? 'mit Auswahl' : 'ohne Auswahl', w / 2, 38);
+  // Erde
+  const boden = 156;
+  ctx.fillStyle = '#8a5a3b';
+  ctx.beginPath(); ctx.ellipse(70, boden + 2, 54, 6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(198, boden + 2, 54, 6, 0, 0, 2 * Math.PI); ctx.fill();
+  // die neue Pflanze wächst in der Karte noch einmal von Jahr 1 aus hoch
+  const g = _bioFxEase.sanft(_bioFxKlemme((v.alter - 0.4) / 1.2));
+  const cm4 = v.L1 + (v.L4 - v.L1) * g;
+  const wind = Math.sin(_bzu.t * 1.6) * 0.04;
+  [[70, v.L1], [198, cm4]].forEach(([px, cm]) => {
+    ctx.save(); ctx.translate(px, boden); ctx.scale(S, S);
+    _bzuPflanze(ctx, 0, 0, cm, 1, wind);
+    ctx.restore();
+  });
+  // Hilfslinie auf Höhe des Blattes aus Jahr 1
+  const y1 = boden - v.L1 * _BZU_BPX * S;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(14, y1 + 0.5); ctx.lineTo(w - 14, y1 + 0.5); ctx.stroke();
+  ctx.setLineDash([]);
+  // Pfeil von Jahr 1 nach Jahr 4
+  ctx.strokeStyle = rand; ctx.fillStyle = rand; ctx.lineWidth = 3;
+  const ay = boden + 18;
+  ctx.beginPath(); ctx.moveTo(116, ay); ctx.lineTo(144, ay); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(152, ay); ctx.lineTo(142, ay - 7); ctx.lineTo(142, ay + 7); ctx.closePath(); ctx.fill();
+  // Schilder
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Jahr 1', 70, boden + 22);
+  ctx.fillText('Jahr 4', 198, boden + 22);
+  ctx.fillStyle = '#14532d';
+  ctx.fillText(v.L1 + ' cm', 70, boden + 36);
+  if (g >= 1) ctx.fillText(v.L4 + ' cm', 198, boden + 36);
+  ctx.restore();
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -88470,6 +89881,17 @@ function _bzuDraw(ctx, cv) {
 // der Zähler "Laich" steigt, wenn eine Kröte im Teich ihre Laichschnur ablegt,
 // der Zähler "gestorben", wenn ein Auto sie auf der Straße erfasst.
 // Die Zeit steckt in dt (fest 16 ms je Bild) – keine Uhr, kein Zufall ohne Saat.
+// AHA-SCHICHT (Effekte aus _bioFx, nur zum Bestätigen, nie vor dem Ergebnis):
+//   * Zaun an: der Krötenzaun wird Pfosten für Pfosten aufgebaut, die Eimer
+//     erscheinen mit grünem Glitzer.
+//   * Helfer setzen einen Eimer jenseits der Straße ab: kurze Zeitlupe beim
+//     ersten Eimer, „+N“ steigt auf, goldene Funken.
+//   * Laich: Wellenring, zwei Luftblasen, das Laich-Schild leuchtet weich auf.
+//   * Ende der Wanderung (Zahlen stehen schon da): Mit Zaun Konfetti über dem
+//     Teich. Dann „Wochen später“: aus jeder Laichschnur schlüpfen Kaulquappen –
+//     volles oder fast leeres Wasser, je nachdem, wie viele Kröten ankamen.
+//     Ohne Teich zeigt ein Umriss, wo der Teich war: keine Kaulquappen.
+//   Kein Blinken, kein Ton, keine Wertung; die Zähler bleiben exakt.
 // ═══════════════════════════════════════════════════════════════════════
 let _bkrState = null;
 
@@ -88512,6 +89934,10 @@ function _bkrInit() {
     nLaich: 0, nTot: 0,
     autoTakt: 0.2,
     tab: [null, null, null, null],   // je Tabellenzeile: [Laich, Straße]
+    fx: { teile: [] },  // Effekte (_bioFx)
+    plan: [],           // zeitversetzte Aha-Schritte {t, f}
+    zaunBau: 1, eimerDa: 4,
+    kaul: [], geist: 0, glueh: 0, plus: [], ersterEimer: false,
   };
   _bkrAufstellen();
 }
@@ -88551,6 +89977,15 @@ function _bkrAufstellen() {
   s.laich = []; s.wellen = [];
   s.nLaich = 0; s.nTot = 0; s.tLauf = 0;
   s.phase = 'bereit';
+  // Aha-Schicht zurücksetzen (Partikel klingen von selbst aus)
+  s.plan = []; s.kaul = []; s.geist = 0; s.plus = []; s.ersterEimer = false;
+  s.geistAn = false; s.gluehBis = 0;
+  s.fx.banner = null; s.fx.stempel = null; s.zeitlupe = null;
+}
+/* Wird der Zaun gerade sichtbar, baut er sich neu auf. */
+function _bkrZaunNeu(vorher) {
+  const s = _bkrState;
+  if (!vorher && s.strasse && s.zaun) { s.zaunBau = 0; s.eimerDa = 0; }
 }
 
 function _bkrHTML() {
@@ -88614,11 +90049,13 @@ function _bkrUmgestellt() {
 }
 function _bkrStrasse(w) {
   if (!_bkrState) return;
-  _bkrState.strasse = (w === 'viele'); _bkrUmgestellt();
+  const v = _bkrState.strasse && _bkrState.zaun;
+  _bkrState.strasse = (w === 'viele'); _bkrZaunNeu(v); _bkrUmgestellt();
 }
 function _bkrZaun(w) {
   if (!_bkrState) return;
-  _bkrState.zaun = (w === 'an'); _bkrUmgestellt();
+  const v = _bkrState.strasse && _bkrState.zaun;
+  _bkrState.zaun = (w === 'an'); _bkrZaunNeu(v); _bkrUmgestellt();
 }
 function _bkrTeich(w) {
   if (!_bkrState) return;
@@ -88644,7 +90081,9 @@ function _bkrZeile(n) {
   if (!s) return;
   const e = [[false, false, true], [true, false, true], [true, true, true], [false, false, false]][n];
   if (!e) return;
+  const v = s.strasse && s.zaun;
   s.strasse = e[0]; s.zaun = e[1]; s.teich = e[2];
+  _bkrZaunNeu(v);
   _bkrKnoepfe();
   _bkrStart();
 }
@@ -88710,7 +90149,9 @@ function _bkrAuto(x, y, dir, ziel) {
 function _bkrUpdate(dt) {
   const s = _bkrState;
   if (!s) return;
-  const d = Math.min(dt, 0.05);
+  const echt = Math.min(dt > 0 ? dt : 0, 0.05);
+  _bkrAhaUpdate(echt);
+  const d = echt * _bioFxZeitlupeFaktor(s, echt);
   s.tAnim += d;
   const zaun = s.strasse && s.zaun;
 
@@ -88765,6 +90206,7 @@ function _bkrUpdate(dt) {
         if (k.x >= _BKR_TX - _BKR_TRX - 4 && _bkrImTeich(k.x, k.y)) {
           k.zustand = s.teich ? 'teich' : 'suchen';
           if (s.teich) s.wellen.push({ x: k.x, y: k.y, t: 0 });
+          if (s.teich) _bioFxBlasen(s.fx.teile, k.x, k.y, 1, 'rgba(191,219,254,1)');
           k.sx = k.tx; k.sy = k.ty;
         }
         break;
@@ -88796,6 +90238,8 @@ function _bkrUpdate(dt) {
           k.x = k.sx; k.y = k.sy; k.zustand = 'laich'; k.tz = 0;
           s.laich.push({ x: k.x + 5, y: k.y + 1, t: 0, w: k.ph });
           s.nLaich++; geaendert = true;
+          s.gluehBis = s.tAnim + 0.4;
+          _bioFxBlasen(s.fx.teile, k.x + 6, k.y, 2, 'rgba(191,219,254,1)');
         } else { k.x += dx / l * sch; k.y += dy / l * sch; }
         break;
       }
@@ -88818,7 +90262,109 @@ function _bkrUpdate(dt) {
     const i = _bkrZeileVon();
     if (i >= 0) s.tab[i] = [s.nLaich, s.nTot];
     _bkrStatus();
+    _bkrFinale();
   }
+}
+
+// ── Aha-Schicht ──────────────────────────────────────────────────────────
+function _bkrAhaUpdate(d) {
+  const s = _bkrState;
+  _bioFxAlleUpdate(s.fx, d);
+  // zeitversetzte Schritte
+  for (const p of s.plan) { p.t -= d; if (p.t <= 0 && !p.los) { p.los = true; p.f(); } }
+  s.plan = s.plan.filter(p => !p.los);
+  // Zaun wird aufgebaut (1,2 s), jeder Eimer erscheint mit grünem Glitzer
+  if (s.zaunBau < 1) {
+    s.zaunBau = Math.min(1, s.zaunBau + d / 1.2);
+    const bis = _BKR_ZAUN_Y0 + (_BKR_ZAUN_Y1 - _BKR_ZAUN_Y0) * _bioFxEase.raus(s.zaunBau);
+    while (s.eimerDa < _BKR_EIMER.length && _BKR_EIMER[s.eimerDa] <= bis) {
+      _bioFxFunken(s.fx.teile, _BKR_EIMER_X, _BKR_EIMER[s.eimerDa], 5, ['#86efac', '#dcfce7', '#ffffff']);
+      s.eimerDa++;
+    }
+  }
+  // Laich-Schild leuchtet weich (geglättet, kein Flackern)
+  const ziel = s.gluehBis > s.tAnim ? 1 : 0;
+  s.glueh += (ziel - s.glueh) * Math.min(1, d * 5);
+  // „+N“ steigt auf und verblasst
+  s.plus.forEach(p => { p.t += d; });
+  s.plus = s.plus.filter(p => p.t < 1.1);
+  // Ohne Teich: Umriss, wo der Teich war
+  if (s.geistAn) s.geist = Math.min(1, s.geist + d / 1.5);
+  // Kaulquappen schlüpfen und schwimmen
+  for (const q of s.kaul) {
+    q.t += d;
+    if (q.t < 0) continue;
+    const dx = q.sx - q.x, dy = q.sy - q.y, l = Math.hypot(dx, dy), sch = q.v * d;
+    if (l <= sch) {
+      q.ph = (q.ph * 1.618 + 0.37) % 1;
+      const a = q.ph * 6.283, r = 0.15 + ((q.ph * 7.3) % 1) * 0.7;
+      q.sx = _BKR_TX + Math.cos(a) * r * (_BKR_TRX - 6); q.sy = _BKR_TY + Math.sin(a) * r * (_BKR_TRY - 6);
+    } else { q.x += dx / l * sch; q.y += dy / l * sch; }
+  }
+  s.laich.forEach(l => { if (l.aus != null && l.aus < 1) l.aus = Math.min(1, l.aus + d / 1.5); });
+}
+function _bkrPlan(t, f) { _bkrState.plan.push({ t, f }); }
+/* Die Helfer haben einen Eimer jenseits der Straße abgesetzt. */
+function _bkrAbgesetzt(x, y, n) {
+  const s = _bkrState;
+  if (!n) return;
+  s.plus.push({ x, y, n, t: 0 });
+  _bioFxFunken(s.fx.teile, x, y, 6);
+  if (!s.ersterEimer) { s.ersterEimer = true; _bioFxZeitlupe(s, 0.35, 1.0); }
+}
+/* Die Wanderung ist zu Ende. Status und Tabelle stehen schon – jetzt erst
+   bestätigen die Effekte, was das Kind gerade gesehen hat. */
+function _bkrFinale() {
+  const s = _bkrState;
+  const zaun = s.strasse && s.zaun;
+  if (!s.teich) {
+    s.geistAn = true;
+    _bkrPlan(0.4, () => _bioFxBanner(s.fx, 'Kein Teich – keine Kaulquappen.', 3.2, '#93c5fd'));
+    return;
+  }
+  _bioFxWelle(s.fx.teile, _BKR_TX, 11, '#93c5fd', 34);
+  if (zaun) {
+    _bkrPlan(0.3, () => {
+      _bioFxKonfetti(s.fx.teile, _BKR_TX, _BKR_TY - 20, 28);
+      _bioFxFunken(s.fx.teile, _BKR_TX, _BKR_TY, 12);
+      _bioFxBanner(s.fx, 'Der Krötenzaun rettet viele Kröten!', 2.6, '#86efac');
+    });
+  } else if (!s.strasse) {
+    _bkrPlan(0.3, () => _bioFxFunken(s.fx.teile, _BKR_TX, _BKR_TY, 14));
+  }
+  _bkrPlan(zaun ? 3.1 : 1.3, () => _bkrSchluepfen());
+}
+/* „Wochen später“: aus jeder Laichschnur schlüpfen Kaulquappen. */
+function _bkrSchluepfen() {
+  const s = _bkrState;
+  if (!s.teich || !s.laich.length) return;
+  const viele = s.nLaich >= 50;
+  _bioFxBanner(s.fx, viele ? 'Wochen später: viele Kaulquappen!' : 'Wochen später: nur wenige Kaulquappen.', 3.2,
+               viele ? '#ffd84d' : '#93c5fd');
+  s.laich.forEach((l, i) => {
+    l.aus = 0;
+    for (let j = 0; j < 3; j++) {
+      const ph = ((i * 0.618 + j * 0.382) % 1);
+      s.kaul.push({ x: l.x + j * 4, y: l.y + (j - 1) * 2, sx: l.x + j * 4, sy: l.y, ph, v: 7 + ph * 6,
+                    t: -(i % 30) * 0.05 - j * 0.12, w: ph * 6.283 });
+    }
+    if (i % 6 === 0) _bkrPlan((i % 30) * 0.05, () => _bioFxBlasen(s.fx.teile, l.x, l.y, 2, 'rgba(191,219,254,1)'));
+  });
+}
+function _bkrKaulquappe(ctx, q, t) {
+  const a = _bioFxKlemme(q.t / 0.4);
+  if (a <= 0) return;
+  const ang = Math.atan2(q.sy - q.y, q.sx - q.x);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(q.x, q.y); ctx.rotate(ang);
+  const sw = Math.sin(t * 7 + q.w) * 1.1;
+  ctx.strokeStyle = '#0b0f19'; ctx.lineWidth = 0.9; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(-1, 0); ctx.quadraticCurveTo(-3, sw, -5, -sw * 0.6); ctx.stroke();
+  ctx.fillStyle = '#0b0f19';
+  ctx.beginPath(); ctx.ellipse(0.6, 0, 1.9, 1.4, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = 'rgba(191,219,254,0.55)'; ctx.lineWidth = 0.5; ctx.stroke();
+  ctx.restore();
 }
 
 /* Ein Auto wird so losgeschickt, dass es genau dann an der Kröte ist, wenn sie
@@ -88877,6 +90423,7 @@ function _bkrHelfer(d) {
       const fertig = geh(_BKR_S1 + 14, _BKR_EIMER[h.bi]);
       h.last.forEach((k, j) => { k.x = h.x + 7 + (j % 3) * 1.5 - 1.5; k.y = h.y + Math.floor(j / 3) * 1.2 - 1; });
       if (fertig) {
+        _bkrAbgesetzt(_BKR_S1 + 24, _BKR_EIMER[h.bi], h.last.length);
         h.last.forEach((k, j) => {
           k.x = _BKR_S1 + 20 + (j % 4) * 3; k.y = _BKR_EIMER[h.bi] - 6 + (j % 5) * 3;
           k.zustand = 'laufen'; _bkrRichtung(k);
@@ -89027,6 +90574,9 @@ function _bkrDraw(ctx, cv) {
   });
   // Laichschnüre: lange Schnüre mit schwarzen Eiern
   s.laich.forEach(l => {
+    if (l.aus >= 1) return;
+    ctx.save();
+    if (l.aus != null) ctx.globalAlpha = 1 - l.aus;
     const n = Math.min(7, 1 + Math.floor(l.t * 8));
     ctx.strokeStyle = 'rgba(226,232,240,0.35)'; ctx.lineWidth = 2.2;
     ctx.beginPath();
@@ -89039,7 +90589,16 @@ function _bkrDraw(ctx, cv) {
     for (let i = 0; i < n; i++) {
       ctx.beginPath(); ctx.arc(l.x + i * 1.8, l.y + Math.sin(l.w + i * 0.8) * 1.6, 0.7, 0, 6.3); ctx.fill();
     }
+    ctx.restore();
   });
+  if (s.teich) s.kaul.forEach(q => _bkrKaulquappe(ctx, q, t));
+  if (!s.teich && s.geist > 0) {              // hier war der Teich
+    ctx.save();
+    ctx.globalAlpha = 0.75 * _bioFxEase.sanft(s.geist);
+    ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.ellipse(_BKR_TX, _BKR_TY, _BKR_TRX - 2, _BKR_TRY - 2, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
 
   // ── Straße ──────────────────────────────────────────────────────────
   if (s.strasse) {
@@ -89058,7 +90617,9 @@ function _bkrDraw(ctx, cv) {
 
   // ── Krötenzaun mit Eimern ───────────────────────────────────────────
   if (zaun) {
-    s.eimer.forEach(e => {
+    const bis = _BKR_ZAUN_Y0 + (_BKR_ZAUN_Y1 - _BKR_ZAUN_Y0) * _bioFxEase.raus(s.zaunBau);
+    s.eimer.forEach((e, ei) => {
+      if (ei >= s.eimerDa) return;
       ctx.fillStyle = e.geholt && !e.kr.length ? '#1c1917' : '#475569';
       ctx.beginPath(); ctx.arc(_BKR_EIMER_X, e.y, 5.5, 0, 6.3); ctx.fill();
       ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
@@ -89068,9 +90629,10 @@ function _bkrDraw(ctx, cv) {
       });
     });
     ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.4;
-    ctx.beginPath(); ctx.moveTo(_BKR_ZAUN_X, _BKR_ZAUN_Y0); ctx.lineTo(_BKR_ZAUN_X, _BKR_ZAUN_Y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(_BKR_ZAUN_X, _BKR_ZAUN_Y0); ctx.lineTo(_BKR_ZAUN_X, bis); ctx.stroke();
     ctx.fillStyle = '#86efac';
-    for (let y = _BKR_ZAUN_Y0; y <= _BKR_ZAUN_Y1; y += 15) ctx.fillRect(_BKR_ZAUN_X - 1.5, y - 1.5, 3, 3);
+    for (let y = _BKR_ZAUN_Y0; y <= bis; y += 15) ctx.fillRect(_BKR_ZAUN_X - 1.5, y - 1.5, 3, 3);
+    if (s.zaunBau < 1) _bioFxLeuchten(ctx, _BKR_ZAUN_X, bis, 4, t, '134,239,172');
   }
 
   // ── Kröten ──────────────────────────────────────────────────────────
@@ -89091,7 +90653,7 @@ function _bkrDraw(ctx, cv) {
 
   // ── Autos und Helfer ────────────────────────────────────────────────
   if (s.strasse) s.autos.forEach(a => _bkrZeichneAuto(ctx, a));
-  if (zaun) s.helfer.forEach(h => _bkrZeichneHelfer(ctx, h, t));
+  if (zaun && s.zaunBau >= 1) s.helfer.forEach(h => _bkrZeichneHelfer(ctx, h, t));
   s.kroeten.forEach(k => { if (k.zustand === 'getragen') _bkrKroete(ctx, k.x, k.y, 0, k.ph, 1, false, 0.6); });
 
   if (!s.teich) {
@@ -89101,9 +90663,17 @@ function _bkrDraw(ctx, cv) {
   }
 
   // ── Zähler oben ─────────────────────────────────────────────────────
-  const schild = (x, txt, hg) => {
+  const schild = (x, txt, hg, glueh) => {
     ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
     const w = ctx.measureText(txt).width + 12;
+    if (glueh > 0.02) {
+      ctx.save();
+      ctx.globalAlpha = glueh;
+      ctx.shadowColor = '#93c5fd'; ctx.shadowBlur = 12;
+      ctx.fillStyle = 'rgba(147,197,253,0.9)';
+      ctx.fillRect(x - w / 2 - 2, 1, w + 4, 20);
+      ctx.restore();
+    }
     ctx.fillStyle = hg;
     ctx.fillRect(x - w / 2, 3, w, 16);
     ctx.fillStyle = '#ffffff';
@@ -89112,7 +90682,7 @@ function _bkrDraw(ctx, cv) {
   const unterwegs = s.phase === 'bereit' ? 0 : s.kroeten.filter(k => k.zustand !== 'warten').length;
   schild(60, 'losgelaufen: ' + unterwegs, 'rgba(15,23,42,0.8)');
   if (s.strasse) schild((_BKR_S0 + _BKR_S1) / 2, 'gestorben: ' + s.nTot, 'rgba(153,27,27,0.9)');
-  schild(_BKR_TX, 'Laich: ' + s.nLaich, 'rgba(30,64,175,0.9)');
+  schild(_BKR_TX, 'Laich: ' + s.nLaich, 'rgba(30,64,175,0.9)', s.glueh);
 
   // ── Beschriftungsband ──────────────────────────────────────────────
   ctx.fillStyle = '#0f172a';
@@ -89122,5 +90692,392 @@ function _bkrDraw(ctx, cv) {
   ctx.fillText(s.strasse ? 'Straße' : 'Wiese', (_BKR_S0 + _BKR_S1) / 2, 245);
   if (zaun) { ctx.fillStyle = '#86efac'; ctx.fillText('Krötenzaun', _BKR_ZAUN_X - 40, 245); ctx.fillStyle = '#f8fafc'; }
   ctx.fillText(s.teich ? 'Teich' : 'kein Teich', _BKR_TX, 245);
+
+  // ── Aha-Effekte obenauf ─────────────────────────────────────────────
+  s.plus.forEach(p => {
+    const a = 1 - _bioFxEase.rein(p.t / 1.1);
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
+    ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(15,23,42,0.85)';
+    const y = p.y - 8 - _bioFxEase.raus(p.t / 1.1) * 18;
+    ctx.strokeText('+' + p.n, p.x, y);
+    ctx.fillStyle = '#86efac'; ctx.fillText('+' + p.n, p.x, y);
+    ctx.restore();
+  });
+  _bioFxDraw(ctx, s.fx.teile);
+  ctx.restore();
+  // Banner unter den Zählern, damit die Zahlen sichtbar bleiben
+  if (s.fx.banner) { ctx.save(); ctx.translate(0, 16); _bioFxBannerDraw(ctx, s.fx); ctx.restore(); }
+}
+
+// ============================================================================
+// _bioFx – gemeinsame Effekt-Bibliothek fuer die Biologie-Simulationen
+// ----------------------------------------------------------------------------
+// Grundsaetze (Foerderkinder 5/6, auch Kinder mit Konzentrationsschwierigkeiten):
+//  * Effekte bestaetigen das Aha NACH der Beobachtung, sie sind kein Dauerfeuer:
+//    Lebensdauer 0,5–2 s, weich abklingend, danach wieder freie Sicht.
+//  * Nichts blinkt schneller als 1 Hz (Grenze Anfallsschutz: 3 Hz), keine
+//    Vollflaechen-Blitze, kein Ton, keine Wertung (kein "Falsch", keine Punkte).
+//  * Alles zustandslos oder auf uebergebenen Objekten: mehrere Sims gleichzeitig
+//    moeglich, kein globaler Timer, kein DOM-Zugriff.
+//  * Leinwand: Nennmass nur ueber ctx.canvas.width/.height; kein setTransform,
+//    jede Aenderung am Zeichenzustand steht in save()/restore().
+//  * dt immer in Sekunden; wird auf 0,1 s begrenzt (Tab im Hintergrund).
+// ============================================================================
+
+// ---- Easing: t in [0,1] -> [0,1] ------------------------------------------
+const _bioFxEase = {
+  linear: t => t,
+  // weich rein und raus
+  sanft: t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2,
+  // schnell los, langsam ankommen (Zaehler, Einblenden)
+  raus: t => 1 - Math.pow(1 - t, 3),
+  // langsam los
+  rein: t => t * t * t,
+  // leichtes Ueberschwingen und Zurueckfedern (Stempel)
+  federn: t => {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  },
+  // Aufprall mit kleinem Nachfedern
+  aufprall: t => {
+    const n = 7.5625, d = 2.75;
+    if (t < 1 / d) return n * t * t;
+    if (t < 2 / d) { t -= 1.5 / d; return n * t * t + 0.75; }
+    if (t < 2.5 / d) { t -= 2.25 / d; return n * t * t + 0.9375; }
+    t -= 2.625 / d; return n * t * t + 0.984375;
+  }
+};
+
+// Begrenzt t auf [0,1].
+function _bioFxKlemme(t) { return t < 0 ? 0 : t > 1 ? 1 : t; }
+
+// Begrenzt dt auf hoechstens 0,1 s (kein Sprung nach Tab-Wechsel).
+function _bioFxDt(dt) { return !(dt > 0) ? 0 : Math.min(dt, 0.1); }
+
+// ---- Zeitlupe ---------------------------------------------------------------
+// Zeitlupen-Zustand: z.zeitlupe = {faktor, ziel, rest}. _bioFxZeitlupe(z, 0.25, 1.2)
+// bremst die Sim fuer 1,2 s auf 25 % und gleitet dann weich auf 1 zurueck.
+// Die Sim multipliziert ihr dt mit _bioFxZeitlupeFaktor(z, dt).
+function _bioFxZeitlupe(z, faktor, dauer) {
+  z.zeitlupe = { faktor: (z.zeitlupe && z.zeitlupe.faktor) || 1,
+                 ziel: Math.max(0.05, Math.min(1, faktor)), rest: dauer || 1 };
+}
+function _bioFxZeitlupeFaktor(z, dt) {
+  const zl = z.zeitlupe;
+  if (!zl) return 1;
+  dt = _bioFxDt(dt);
+  zl.rest -= dt;
+  const ziel = zl.rest > 0 ? zl.ziel : 1;
+  zl.faktor += (ziel - zl.faktor) * Math.min(1, dt * 4);   // weicher Uebergang
+  if (zl.rest <= 0 && Math.abs(zl.faktor - 1) < 0.01) { z.zeitlupe = null; return 1; }
+  return zl.faktor;
+}
+
+// ---- Partikel ---------------------------------------------------------------
+// Ein Partikel: {x, y, vx, vy, g, alter, leben, r, farbe, art, dreh, dw, auf}
+// art: 'funke' (Glitzerstern), 'konfetti' (Rechteck), 'blase' (Kreisring),
+//      'blatt' (Blattform), 'punkt' (weicher Punkt).
+// Die Liste gehoert der Sim; Update entfernt abgelaufene Partikel.
+const _bioFxMAX = 400;   // Obergrenze je Liste, damit nichts ausufert
+
+function _bioFxNeu(liste, p) {
+  if (liste.length >= _bioFxMAX) liste.shift();
+  liste.push(p);
+  return p;
+}
+
+// Sanfte Funken/Glitzer: steigen kurz auf, fallen leicht, verblassen (0,8–1,6 s).
+// farben: Array von CSS-Farben (Standard: warmes Gold/Weiss).
+function _bioFxFunken(liste, x, y, n, farben) {
+  farben = farben && farben.length ? farben : ['#ffd84d', '#fff3b0', '#ffffff', '#ffb84d'];
+  n = n || 14;
+  for (let i = 0; i < n; i++) {
+    const w = Math.random() * Math.PI * 2, v = 40 + Math.random() * 90;
+    _bioFxNeu(liste, { art: 'funke', x, y, vx: Math.cos(w) * v, vy: Math.sin(w) * v - 50,
+      g: 110, alter: 0, leben: 0.8 + Math.random() * 0.8, r: 2.5 + Math.random() * 3,
+      farbe: farben[i % farben.length], dreh: Math.random() * 6, dw: (Math.random() - 0.5) * 4 });
+  }
+}
+
+// Konfetti: kurzer, bunter, sanfter Regen (1,2–2 s), Schnipsel drehen sich langsam.
+function _bioFxKonfetti(liste, x, y, n) {
+  const farben = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#c77dff', '#ff9f45'];
+  n = n || 24;
+  for (let i = 0; i < n; i++) {
+    const w = -Math.PI / 2 + (Math.random() - 0.5) * 1.8, v = 90 + Math.random() * 120;
+    _bioFxNeu(liste, { art: 'konfetti', x, y, vx: Math.cos(w) * v, vy: Math.sin(w) * v,
+      g: 160, alter: 0, leben: 1.2 + Math.random() * 0.8, r: 3 + Math.random() * 3,
+      farbe: farben[i % farben.length], dreh: Math.random() * 6, dw: (Math.random() - 0.5) * 5,
+      luft: 1.6 });
+  }
+}
+
+// Blasen: steigen langsam auf, pendeln seitlich, verblassen (1,2–2 s).
+// Passend fuer Wasser, Atmung, Sauerstoff aus Wasserpflanzen.
+function _bioFxBlasen(liste, x, y, n, farbe) {
+  n = n || 8;
+  for (let i = 0; i < n; i++) {
+    _bioFxNeu(liste, { art: 'blase', x: x + (Math.random() - 0.5) * 16, y,
+      vx: 0, vy: -(30 + Math.random() * 40), g: 0, alter: 0,
+      leben: 1.2 + Math.random() * 0.8, r: 2.5 + Math.random() * 4,
+      farbe: farbe || 'rgba(200,235,255,1)', dreh: Math.random() * 6, dw: 2 + Math.random() * 2,
+      x0: x });
+  }
+}
+
+// Blaetter: segeln sanft zu Boden (1,5–2 s) – fuer Pflanzen-Themen.
+function _bioFxBlaetter(liste, x, y, n, farben) {
+  farben = farben && farben.length ? farben : ['#6bbf59', '#9ad45b', '#4e9a3e'];
+  n = n || 8;
+  for (let i = 0; i < n; i++) {
+    _bioFxNeu(liste, { art: 'blatt', x: x + (Math.random() - 0.5) * 30, y,
+      vx: (Math.random() - 0.5) * 50, vy: -20 - Math.random() * 30, g: 60, alter: 0,
+      leben: 1.5 + Math.random() * 0.5, r: 5 + Math.random() * 3,
+      farbe: farben[i % farben.length], dreh: Math.random() * 6, dw: (Math.random() - 0.5) * 3,
+      luft: 2.2 });
+  }
+}
+
+// Weicher Lichtring, der sich von (x,y) ausbreitet und verblasst (0,9 s).
+// Gut, um die Stelle der Beobachtung zu markieren.
+function _bioFxWelle(liste, x, y, farbe, rMax) {
+  _bioFxNeu(liste, { art: 'welle', x, y, vx: 0, vy: 0, g: 0, alter: 0, leben: 0.9,
+    r: 4, rMax: rMax || 60, farbe: farbe || '#ffe27a', dreh: 0, dw: 0 });
+}
+
+// Bewegt alle Partikel um dt Sekunden weiter und entfernt abgelaufene.
+function _bioFxUpdate(liste, dt) {
+  dt = _bioFxDt(dt);
+  for (let i = liste.length - 1; i >= 0; i--) {
+    const p = liste[i];
+    p.alter += dt;
+    if (p.alter >= p.leben) { liste.splice(i, 1); continue; }
+    if (p.luft) { const k = Math.exp(-p.luft * dt); p.vx *= k; p.vy *= k; }
+    p.vy += p.g * dt;
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.dreh += p.dw * dt;
+    if (p.art === 'blase') p.x = p.x0 + Math.sin(p.dreh) * 5;
+    if (p.art === 'welle') p.r = 4 + (p.rMax - 4) * _bioFxEase.raus(p.alter / p.leben);
+  }
+}
+
+// Deckkraft eines Partikels: kurz einblenden, dann weich ausblenden.
+function _bioFxAlpha(p) {
+  const t = p.alter / p.leben;
+  const ein = _bioFxKlemme(p.alter / 0.12);
+  return ein * (1 - _bioFxEase.rein(t));
+}
+
+// Zeichnet alle Partikel der Liste.
+function _bioFxDraw(ctx, liste) {
+  for (const p of liste) {
+    const a = _bioFxAlpha(p);
+    if (a <= 0.01) continue;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.translate(p.x, p.y);
+    if (p.art === 'funke') {
+      ctx.rotate(p.dreh);
+      ctx.fillStyle = p.farbe;
+      ctx.shadowColor = p.farbe; ctx.shadowBlur = 8;
+      _bioFxStern(ctx, p.r);
+    } else if (p.art === 'konfetti') {
+      ctx.rotate(p.dreh);
+      ctx.scale(1, Math.abs(Math.cos(p.dreh * 1.3)) * 0.8 + 0.2);   // leichtes Wenden
+      ctx.fillStyle = p.farbe;
+      ctx.fillRect(-p.r, -p.r * 0.6, p.r * 2, p.r * 1.2);
+    } else if (p.art === 'blase') {
+      ctx.strokeStyle = p.farbe; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+      ctx.beginPath(); ctx.arc(-p.r * 0.35, -p.r * 0.35, p.r * 0.25, 0, Math.PI * 2); ctx.fill();
+    } else if (p.art === 'blatt') {
+      ctx.rotate(p.dreh);
+      ctx.fillStyle = p.farbe;
+      ctx.beginPath();
+      ctx.moveTo(-p.r, 0);
+      ctx.quadraticCurveTo(0, -p.r * 0.7, p.r, 0);
+      ctx.quadraticCurveTo(0, p.r * 0.7, -p.r, 0);
+      ctx.fill();
+    } else if (p.art === 'welle') {
+      ctx.strokeStyle = p.farbe; ctx.lineWidth = 3;
+      ctx.shadowColor = p.farbe; ctx.shadowBlur = 10;
+      ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI * 2); ctx.stroke();
+    } else {
+      ctx.fillStyle = p.farbe;
+      ctx.beginPath(); ctx.arc(0, 0, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+
+// Vierzackiger Glitzerstern mit Radius r um den Ursprung.
+function _bioFxStern(ctx, r) {
+  const k = r * 0.35;
+  ctx.beginPath();
+  ctx.moveTo(0, -r * 2); ctx.lineTo(k, -k); ctx.lineTo(r * 2, 0); ctx.lineTo(k, k);
+  ctx.lineTo(0, r * 2); ctx.lineTo(-k, k); ctx.lineTo(-r * 2, 0); ctx.lineTo(-k, -k);
+  ctx.closePath(); ctx.fill();
+}
+
+// ---- Aha-Banner ---------------------------------------------------------------
+// _bioFxBanner(z, text, dauer): legt z.banner an. Weiches Einblenden (0,35 s),
+// stehen, weiches Ausblenden (0,6 s). dauer = Gesamtzeit in s (Standard 2,5;
+// laenger als 2 s ist hier erlaubt, weil Lesen Zeit braucht).
+// farbe optional (Glueh-Rand).
+function _bioFxBanner(z, text, dauer, farbe) {
+  z.banner = { text: String(text), dauer: Math.max(1, dauer || 2.5), alter: 0,
+               farbe: farbe || '#ffd84d' };
+}
+function _bioFxBannerUpdate(z, dt) {
+  if (!z.banner) return;
+  z.banner.alter += _bioFxDt(dt);
+  if (z.banner.alter >= z.banner.dauer) z.banner = null;
+}
+function _bioFxBannerDraw(ctx, z) {
+  const b = z.banner;
+  if (!b) return;
+  const W = ctx.canvas.width;
+  const ein = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const h = Math.max(36, Math.min(56, W * 0.06));
+  const y = 10 - (1 - ein) * 16;                           // gleitet sanft herein
+  const fs = Math.round(h * 0.5);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.font = 'bold ' + fs + 'px sans-serif';
+  const bw = Math.min(W - 20, ctx.measureText(b.text).width + h * 1.2);
+  const x = (W - bw) / 2;
+  ctx.shadowColor = b.farbe; ctx.shadowBlur = 18;           // Glueh-Rand, ruhig
+  ctx.fillStyle = 'rgba(20,30,50,0.88)';
+  _bioFxRundRect(ctx, x, y, bw, h, h / 2); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = b.farbe; ctx.lineWidth = 3;
+  _bioFxRundRect(ctx, x, y, bw, h, h / 2); ctx.stroke();
+  ctx.fillStyle = '#ffffff';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(b.text, W / 2, y + h / 2 + 1, bw - h * 0.6);
   ctx.restore();
 }
+
+// Pfad eines Rechtecks mit runden Ecken (ohne ctx.roundRect, laeuft ueberall).
+function _bioFxRundRect(ctx, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h - r); ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+  ctx.lineTo(x + r, y + h); ctx.arcTo(x, y + h, x, y + h - r, r);
+  ctx.lineTo(x, y + r); ctx.arcTo(x, y, x + r, y, r);
+  ctx.closePath();
+}
+
+// ---- Hervorheben --------------------------------------------------------------
+// Pulsierender Lichtkranz um (x,y) mit Radius r. t = Zeit in s (von der Sim).
+// Puls 0,8 Hz (unter 1 Hz), Helligkeit schwankt nur zwischen 45 % und 85 %.
+function _bioFxLeuchten(ctx, x, y, r, t, farbe) {
+  const puls = 0.5 + 0.5 * Math.sin((t || 0) * Math.PI * 2 * 0.8);
+  const rr = r * (1 + 0.08 * puls);
+  ctx.save();
+  const g = ctx.createRadialGradient(x, y, rr * 0.6, x, y, rr * 1.5);
+  const f = farbe || '255,216,77';                          // als "r,g,b"
+  g.addColorStop(0, 'rgba(' + f + ',' + (0.45 + 0.4 * puls).toFixed(3) + ')');
+  g.addColorStop(1, 'rgba(' + f + ',0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(x, y, rr * 1.5, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = 'rgba(' + f + ',' + (0.6 + 0.3 * puls).toFixed(3) + ')';
+  ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(x, y, rr, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+
+// Stempel: z.stempel wird angelegt; er faellt gross ein (0,5 s), federt und
+// bleibt dann ruhig stehen, bis die Sim z.stempel = null setzt.
+// Optional x, y (Mitte; Standard: Bildmitte) und farbe.
+function _bioFxStempel(z, text, x, y, farbe) {
+  z.stempel = { text: String(text), alter: 0, x, y, farbe: farbe || '#2e9e5b',
+                winkel: -0.12 + (Math.random() - 0.5) * 0.06 };
+}
+function _bioFxStempelUpdate(z, dt) {
+  if (z.stempel) z.stempel.alter += _bioFxDt(dt);
+}
+function _bioFxStempelDraw(ctx, z) {
+  const s = z.stempel;
+  if (!s) return;
+  const W = ctx.canvas.width, H = ctx.canvas.height;
+  const t = _bioFxKlemme(s.alter / 0.5);
+  const k = 2.2 - 1.2 * _bioFxEase.federn(t);               // von 2,2-fach auf 1
+  const a = _bioFxKlemme(s.alter / 0.2) * 0.92;
+  const fs = Math.max(18, Math.min(40, W * 0.045));
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(s.x != null ? s.x : W / 2, s.y != null ? s.y : H / 2);
+  ctx.rotate(s.winkel);
+  ctx.scale(k, k);
+  ctx.font = 'bold ' + Math.round(fs) + 'px sans-serif';
+  const w = ctx.measureText(s.text).width + fs, h = fs * 1.6;
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  _bioFxRundRect(ctx, -w / 2, -h / 2, w, h, fs * 0.3); ctx.fill();
+  ctx.strokeStyle = s.farbe; ctx.lineWidth = 4;
+  _bioFxRundRect(ctx, -w / 2, -h / 2, w, h, fs * 0.3); ctx.stroke();
+  ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, -w / 2 + 5, -h / 2 + 5, w - 10, h - 10, fs * 0.2); ctx.stroke();
+  ctx.fillStyle = s.farbe;
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(s.text, 0, 1);
+  ctx.restore();
+}
+
+// Zaehler, der weich zu einem Zielwert hochrollt. z.zaehler = {start, ziel, alter, dauer}.
+// Ein neuer Aufruf startet vom aktuell angezeigten Wert. Wichtig: der ENDWERT ist
+// immer genau ziel – die Tabelle im Heft verlangt diesen Wert.
+function _bioFxZaehler(z, ziel, dauer) {
+  const jetzt = z.zaehler ? _bioFxZaehlerWert(z) : 0;
+  z.zaehler = { start: jetzt, ziel: ziel, alter: 0, dauer: dauer || 1.2 };
+}
+function _bioFxZaehlerUpdate(z, dt) {
+  if (z.zaehler) z.zaehler.alter += _bioFxDt(dt);
+}
+// Aktuell anzuzeigender Wert (Zahl). Die Sim rundet selbst passend.
+function _bioFxZaehlerWert(z) {
+  const c = z.zaehler;
+  if (!c) return 0;
+  const t = _bioFxKlemme(c.alter / c.dauer);
+  if (t >= 1) return c.ziel;
+  return c.start + (c.ziel - c.start) * _bioFxEase.raus(t);
+}
+// true, solange der Zaehler noch rollt.
+function _bioFxZaehlerLaeuft(z) {
+  return !!(z.zaehler && z.zaehler.alter < z.zaehler.dauer);
+}
+
+// ---- Bequemlichkeit: alles auf einmal ------------------------------------------
+// Eine Sim legt fx = {teile: []} an und ruft je Bild _bioFxAlleUpdate(fx, dt)
+// und am Ende von Draw _bioFxAlleDraw(ctx, fx) auf (Partikel, Stempel, Banner).
+function _bioFxAlleUpdate(fx, dt) {
+  if (!fx.teile) fx.teile = [];
+  _bioFxUpdate(fx.teile, dt);
+  _bioFxBannerUpdate(fx, dt);
+  _bioFxStempelUpdate(fx, dt);
+  _bioFxZaehlerUpdate(fx, dt);
+}
+function _bioFxAlleDraw(ctx, fx) {
+  if (fx.teile) _bioFxDraw(ctx, fx.teile);
+  _bioFxStempelDraw(ctx, fx);
+  _bioFxBannerDraw(ctx, fx);
+}
+// true, solange noch irgendein Effekt sichtbar abklingt.
+function _bioFxAktiv(fx) {
+  return !!((fx.teile && fx.teile.length) || fx.banner || _bioFxZaehlerLaeuft(fx) ||
+            (fx.stempel && fx.stempel.alter < 0.6));
+}
+
+// ---- Stubs fuer die Einbaupruefung (Bibliothek, keine eigene Simulation) --------
+function _bioFxInit() { return { teile: [] }; }
+function _bioFxStatus() { return ''; }
+function _bioFxHTML() { return ''; }
