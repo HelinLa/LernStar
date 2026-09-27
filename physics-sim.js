@@ -6977,6 +6977,68 @@ const _physSimDefs = {
 
   // ── BIO 5/6 · KRÖTENWANDERUNG: WALD – STRASSE – TEICH  (Förderheft Bio 5/6 · bl10) ──
   'bio-kroeten': modal => { _bkrInit(); modal.innerHTML = _bkrHTML(); _bkrStatus(); _pSim = new PhysicsSimEngine('_bkr-cv','_bkr-cv'); _pSim.start(dt => _bkrUpdate(dt), (ctx,cv) => _bkrDraw(ctx,cv), []); },
+  // ── BIO 5/6 · DIE ZWIEBELHAUT UNTER DEM MIKROSKOP  (Förderheft Bio 5/6 · bj1) ──
+  'bio-mikroskop': modal => {
+    _bjmInit();
+    modal.innerHTML = _bjmHTML();
+    _bjmStatus();
+    _pSim = new PhysicsSimEngine('_bjm-cv', '_bjm-cv');
+    _pSim.start(dt => _bjmUpdate(dt), (ctx, cv) => _bjmDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · STÄRKE IM GRÜN-WEISSEN BLATT  (Förderheft Bio 5/6 · bj2) ──
+  'bio-staerke': modal => {
+    _bjsInit();
+    modal.innerHTML = _bjsHTML();
+    _bjsStatus();
+    _pSim = new PhysicsSimEngine('_bjs-cv', '_bjs-cv');
+    _pSim.start(dt => _bjsUpdate(dt), (ctx, cv) => _bjsDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · WASSERPEST: BLÄSCHEN ZÄHLEN BEI VIER LAMPEN  (Förderheft Bio 5/6 · bj3) ──
+  'bio-wasserpest': modal => {
+    _bjwInit();
+    modal.innerHTML = _bjwHTML();
+    _bjwStatus();
+    _pSim = new PhysicsSimEngine('_bjw-cv', '_bjw-cv');
+    _pSim.start(dt => _bjwUpdate(dt), (ctx, cv) => _bjwDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · JAHRESLAUF: DIE ALTE BUCHE IM JAHRESLAUF  (Förderheft Bio 5/6 · bj4) ──
+  'bio-jahreslauf': modal => {
+    _bjjInit();
+    modal.innerHTML = _bjjHTML();
+    _bjjStatus();
+    _pSim = new PhysicsSimEngine('_bjj-cv', '_bjj-cv');
+    _pSim.start(dt => _bjjUpdate(dt), (ctx, cv) => _bjjDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · WINTER: IGEL, EICHHÖRNCHEN, FROSCH  (Förderheft Bio 5/6 · bj5) ──
+  'bio-winter': modal => {
+    _bjnInit();
+    modal.innerHTML = _bjnHTML();
+    _bjnStatus();
+    _pSim = new PhysicsSimEngine('_bjn-cv', '_bjn-cv');
+    _pSim.start(dt => _bjnUpdate(dt), (ctx, cv) => _bjnDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · ISOLATION: WARME DOSEN IM EIS  (Förderheft Bio 5/6 · bj6) ──
+  'bio-isolation': modal => {
+    _bjiInit();
+    modal.innerHTML = _bjiHTML();
+    _bjiStatus();
+    _pSim = new PhysicsSimEngine('_bji-cv', '_bji-cv');
+    _pSim.start(dt => _bjiUpdate(dt), (ctx, cv) => _bjiDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · WÜSTE: DREISSIG TAGE OHNE REGEN  (Förderheft Bio 5/6 · bj7) ──
+  'bio-wueste': modal => {
+    _bjkInit();
+    modal.innerHTML = _bjkHTML();
+    _bjkStatus();
+    _pSim = new PhysicsSimEngine('_bjk-cv', '_bjk-cv');
+    _pSim.start(dt => _bjkUpdate(dt), (ctx, cv) => _bjkDraw(ctx, cv), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -91081,3 +91143,4107 @@ function _bioFxAktiv(fx) {
 function _bioFxInit() { return { teile: [] }; }
 function _bioFxStatus() { return ''; }
 function _bioFxHTML() { return ''; }
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DIE ZWIEBELHAUT UNTER DEM MIKROSKOP   (Förderheft Bio 5/6 · bj1)
+// Links ein Schulmikroskop mit gefärbtem Zwiebelhaut-Präparat, rechts das
+// runde Bild, das man durch das Okular sieht. Das Kind stellt das Objektiv
+// um (4-fach, 10-fach, 40-fach); das Okular vergrößert immer 10-fach.
+// Die Gesamtvergrößerung steht bewusst NIRGENDS – die rechnet das Kind in
+// Teil B (Objektiv mal Okular).
+// Zellenzahl im Bild wird GERECHNET, nicht eingetragen: Kreisfläche des
+// Bildes geteilt durch die Fläche einer Zelle am Bildschirm. Die Zellen sind
+// Kästchen 24,5 × 12,25 (Fläche 300); die Skala bei 4-fach ist so gewählt,
+// dass 200 Zellen in den Kreis passen. 10-fach heißt 2,5-mal so lang, also
+// 6,25-mal so viel Fläche je Zelle: 32 Zellen („etwa 30“). 40-fach: 2 Zellen.
+// Modellwerte laut Lehrerteil: etwa 200 / etwa 30 / 2.
+// Aha (NACH der Beobachtung, Bibliothek _bioFx): Beim Umstellen dreht sich
+// der Revolver, das Bild zoomt weich hinein oder heraus und liegt dabei im
+// Nebel; das Triebrad dreht, und die Zellen tauchen aus dem Nebel auf.
+// Erst danach: Lichtring, einmal „Pflanzen bestehen aus Zellen!“. Bei
+// 40-fach leuchten Wand und Zellkern einer Zelle einmal weich auf, dann
+// erscheinen die Beschriftungen „Wand“ und „Zellkern“ mit Pfeil. Im Inneren
+// der großen Zellen strömen kleine Körnchen (Plasmaströmung) – das Bild lebt.
+// Kein Blinken, kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _bjm = null;
+const _BJM_OBJ = ['4', '10', '40'];
+const _BJM_CX = 280, _BJM_CY = 112, _BJM_R = 98;       // Okularbild
+const _BJM_L = 24.5, _BJM_HZ = 12.25;                  // eine Zelle (Welt)
+const _BJM_S4 = Math.sqrt(Math.PI * _BJM_R * _BJM_R / (200 * _BJM_L * _BJM_HZ));
+const _BJM_BILD = {
+  '4': 'Nur kleine Kästchen.',
+  '10': 'Kästchen mit Wand und dunklem Punkt.',
+  '40': 'Du siehst die Wand und den Zellkern deutlich.'
+};
+const _BJM_SEHEN = {
+  '4': 'nur kleine Kästchen',
+  '10': 'Kästchen mit Wand und dunklem Punkt',
+  '40': 'Wand und Zellkern deutlich'
+};
+const _BJM_FARBE = { '4': '#dc2626', '10': '#eab308', '40': '#38bdf8' };   // Farbringe
+const _BJM_LANG = { '4': 22, '10': 30, '40': 38 };                         // Objektivlänge
+
+// Pixel je Welt-Einheit bei diesem Objektiv
+function _bjmSkala(o) { return _BJM_S4 * Number(o) / 4; }
+// Wie viele Zellen passen ins runde Bild? (gerechnet)
+function _bjmZellen(o) {
+  const s = _bjmSkala(o);
+  return Math.PI * _BJM_R * _BJM_R / (s * s * _BJM_L * _BJM_HZ);
+}
+function _bjmZahlText(o) {
+  const n = _bjmZellen(o);
+  return n < 5 ? String(Math.round(n)) : 'etwa ' + Math.round(n / 10) * 10;
+}
+
+function _bjmInit() {
+  _bjm = { obj: '4', s: _bjmSkala('4'), sVon: 1, sZiel: 1, fokus: 0, fokusVon: 0,
+           phase: 'warten', pt: 0, t: 0, pos: 0, posVon: 0, posZiel: 0, rad: 0,
+           fertigT: -1, bannerGezeigt: false, fx: { teile: [] }, nebel: [] };
+  for (let i = 0; i < 7; i++)
+    _bjm.nebel.push({ w: i * 0.9, r: 0.45 + (i % 3) * 0.12, v: 0.12 + (i % 4) * 0.04 });
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bjmObjektiv(o) {
+  if (!_bjm) return;
+  o = String(o);
+  if (_BJM_OBJ.indexOf(o) < 0) return;
+  _bjm.fx = { teile: [] }; _bjm.fertigT = -1;
+  _bjm.fokusVon = _bjm.fokus;
+  if (o === _bjm.obj) {                                 // gleiches Objektiv: neu scharf stellen
+    _bjm.phase = 'unscharf'; _bjm.pt = 0;
+  } else {
+    _bjm.sVon = _bjm.s; _bjm.sZiel = _bjmSkala(o);
+    _bjm.posVon = _bjm.pos; _bjm.posZiel = _BJM_OBJ.indexOf(o);
+    _bjm.obj = o; _bjm.phase = 'dreh'; _bjm.pt = 0;
+  }
+  _bjmStatus();
+}
+function _bjmScharf() {
+  if (!_bjm) return;
+  _bjmObjektiv(_bjm.obj);
+}
+function _bjmNeu() {
+  if (!_bjm) return;
+  const gezeigt = _bjm.bannerGezeigt;
+  _bjmInit();
+  _bjm.bannerGezeigt = gezeigt;
+  _bjmStatus();
+}
+
+function _bjmHTML() {
+  const knopf = o =>
+    `<button class="sim-btn" data-bjm="${o}" onclick="_bjmObjektiv('${o}')">${o}-fach</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Die Zwiebelhaut unter dem Mikroskop</h3>
+    <div class="fpm-note" style="margin-top:2px">Links das Mikroskop mit einem Stück Zwiebelhaut. Es ist gefärbt. Rechts siehst du das Bild im Okular.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bjm-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bjmScharf()">Scharf stellen</button>
+          <button class="sim-btn" onclick="_bjmNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Objektiv</span>
+          <div class="sim-btn-row">
+            ${knopf('4')}
+            ${knopf('10')}
+            ${knopf('40')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bjm-status"></div>
+        <div class="fpm-note" style="margin-top:8px">Das Mikroskop vergrößert mit zwei Linsen: dem <b>Objektiv</b> unten und dem <b>Okular</b> oben. Das Okular vergrößert hier immer 10-fach.</div>
+        <div class="fpm-note" style="margin-top:8px">Nach dem Umstellen wird das Bild von selbst scharf gestellt. Warte kurz und sieh genau hin.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Objektiv 4-fach &nbsp;|&nbsp; Stelle das Objektiv um und vergleiche die Bilder.</p>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bjmZeile() {
+  return 'Objektiv ' + _bjm.obj + '-fach · Okular 10-fach · ' + _bjmZahlText(_bjm.obj) + ' Zellen im Bild';
+}
+function _bjmStatus() {
+  if (!_bjm) return;
+  const el = document.getElementById('_bjm-status');
+  if (el) {
+    el.innerHTML = '<b>' + _bjmZeile() + '</b><br>Zu sehen: ' + _BJM_SEHEN[_bjm.obj];
+    el.className = 'lmp-status on';
+  }
+  try {
+    document.querySelectorAll('[data-bjm]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-bjm') === _bjm.obj);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Ablauf: dreh → zoom → scharf → fertig ─────────────────────────────── */
+function _bjmUpdate(dt) {
+  if (!_bjm) return;
+  dt = _bioFxDt(dt);
+  const b = _bjm;
+  b.t += dt; b.pt += dt;
+  if (b.phase === 'warten') {
+    b.fokus = 0;
+    if (b.pt >= 0.6) { b.phase = 'scharf'; b.pt = 0; }
+  } else if (b.phase === 'dreh') {                      // Revolver dreht, Bild wird trüb
+    const u = _bioFxKlemme(b.pt / 0.5);
+    b.pos = b.posVon + (b.posZiel - b.posVon) * _bioFxEase.sanft(u);
+    b.fokus = b.fokusVon * (1 - _bioFxKlemme(b.pt / 0.3));
+    if (u >= 1) { b.pos = b.posZiel; b.phase = 'zoom'; b.pt = 0; }
+  } else if (b.phase === 'zoom') {                      // weich hinein- oder herauszoomen
+    const u = _bioFxKlemme(b.pt / 1.0);
+    const la = Math.log(b.sVon), lz = Math.log(b.sZiel);
+    b.s = Math.exp(la + (lz - la) * _bioFxEase.sanft(u));
+    b.fokus = 0.12 * Math.sin(Math.PI * u);
+    if (u >= 1) { b.s = b.sZiel; b.phase = 'scharf'; b.pt = 0; }
+  } else if (b.phase === 'unscharf') {                  // Triebrad zurück: Nebel kommt
+    const u = _bioFxKlemme(b.pt / 0.4);
+    b.fokus = b.fokusVon * (1 - u);
+    b.rad -= dt * 5;
+    if (u >= 1) { b.phase = 'scharf'; b.pt = 0; }
+  } else if (b.phase === 'scharf') {                    // Triebrad dreht: Zellen tauchen auf
+    const u = _bioFxKlemme(b.pt / 1.1);
+    b.fokus = _bioFxEase.raus(u);
+    b.rad += dt * 5 * (1 - u * 0.7);
+    if (u >= 1) { b.fokus = 1; b.phase = 'fertig'; b.pt = 0; b.fertigT = 0; _bjmAha(); }
+  } else if (b.phase === 'fertig') {
+    b.fertigT += dt;
+  }
+  _bioFxAlleUpdate(b.fx, dt);
+}
+
+// Mittelpunkt des Zellkerns der oberen Mittelzelle (Zelle A) am Bildschirm
+function _bjmKernA() {
+  const s = _bjm.s, k = _bjmKern(-1, 0);
+  return { x: _BJM_CX + k.x * s, y: _BJM_CY + k.y * s, r: 1.7 * s };
+}
+function _bjmAha() {
+  const fx = _bjm.fx, s = _bjm.s;
+  _bioFxWelle(fx.teile, _BJM_CX, _BJM_CY, 'rgba(255,226,140,0.95)', _BJM_R - 4);
+  if (!_bjm.bannerGezeigt) {
+    _bjm.bannerGezeigt = true;
+    _bioFxBanner(fx, 'So sieht die Zwiebelhaut ganz nah aus!', 3.0, '#ffd84d');
+  }
+  if (_bjm.obj === '40') {
+    const k = _bjmKernA();
+    _bioFxFunken(fx.teile, k.x, k.y, 6, ['#fff3b0', '#ffffff', '#ffd84d']);
+  } else if (_bjm.obj === '10') {
+    for (const [j, i] of [[-1, 0], [0, 0], [0, 1]]) {
+      const k = _bjmKern(j, i);
+      _bioFxWelle(fx.teile, _BJM_CX + k.x * s, _BJM_CY + k.y * s, 'rgba(255,214,90,0.9)', 14);
+    }
+  }
+}
+
+/* ── Präparat (Welt-Einheiten; Mitte des Bildes = 0,0) ─────────────────── */
+function _bjmHash(a, b) {
+  let h = (a * 374761393 + b * 668265263) | 0;
+  h = (h ^ (h >>> 13)) * 1274126177 | 0;
+  return ((h ^ (h >>> 16)) >>> 0) / 4294967296;
+}
+// Versatz der Kästchenreihe j (Mauerverband). Die beiden Reihen in der Mitte
+// liegen genau übereinander, damit bei 40-fach zwei ganze Zellen im Bild sind.
+function _bjmVersatz(j) {
+  if (j === -1 || j === 0) return -_BJM_L / 2;
+  return -_BJM_L * _bjmHash(j, 7);
+}
+// Zellkern der Zelle (Reihe j, Nummer i) – Welt-Koordinaten
+function _bjmKern(j, i) {
+  const x0 = _bjmVersatz(j) + i * _BJM_L, y0 = j * _BJM_HZ;
+  let u = 0.25 + 0.5 * _bjmHash(i + 101, j + 3), v = 0.35 + 0.3 * _bjmHash(j + 57, i + 11);
+  if (j === -1 && i === 0) { u = 0.38; v = 0.5; }
+  if (j === 0 && i === 0) { u = 0.66; v = 0.5; }
+  return { x: x0 + u * _BJM_L, y: y0 + v * _BJM_HZ };
+}
+
+function _bjmPraeparat(ctx) {
+  const b = _bjm, s = b.s, f = b.fokus, t = b.t;
+  const CX = _BJM_CX, CY = _BJM_CY, R = _BJM_R;
+  ctx.save();
+  ctx.beginPath(); ctx.arc(CX, CY, R, 0, 2 * Math.PI); ctx.clip();
+  // Lichtfeld
+  const lf = ctx.createRadialGradient(CX, CY, 10, CX, CY, R);
+  lf.addColorStop(0, '#fffaf0'); lf.addColorStop(1, '#f3e4bf');
+  ctx.fillStyle = lf; ctx.fillRect(CX - R, CY - R, 2 * R, 2 * R);
+
+  const halb = R / s;
+  const j0 = Math.floor(-halb / _BJM_HZ) - 1, j1 = Math.ceil(halb / _BJM_HZ);
+  const wand = Math.max(0.7, 0.5 * s) + (1 - f) * 5;
+  const wandA = 0.2 + 0.75 * f;
+  // Lichtwelle bei 4-fach: einmal von innen nach außen über alle Kästchen
+  const welle = (b.obj === '4' && b.fertigT >= 0 && b.fertigT < 1.4) ? b.fertigT / 1.2 * R : -99;
+  for (let j = j0; j <= j1; j++) {
+    const o = _bjmVersatz(j), y0 = j * _BJM_HZ;
+    const i0 = Math.floor((-halb - _BJM_L - o) / _BJM_L), i1 = Math.ceil((halb - o) / _BJM_L);
+    for (let i = i0; i <= i1; i++) {
+      const x0 = o + i * _BJM_L;
+      const px = CX + x0 * s, py = CY + y0 * s, pw = _BJM_L * s, ph = _BJM_HZ * s;
+      const h = _bjmHash(j, i);
+      let hell = 0;
+      if (welle > 0) {
+        const d = Math.hypot(px + pw / 2 - CX, py + ph / 2 - CY);
+        hell = Math.max(0, 1 - Math.abs(d - welle) / 16);
+      }
+      const r = Math.round(236 + 12 * h + 7 * hell), g = Math.round(206 + 14 * h + 25 * hell),
+            bl = Math.round(130 + 20 * h + 60 * hell);
+      ctx.fillStyle = 'rgb(' + Math.min(255, r) + ',' + Math.min(255, g) + ',' + Math.min(255, bl) + ')';
+      ctx.fillRect(px, py, pw, ph);
+      ctx.strokeStyle = 'rgba(122,78,28,' + wandA.toFixed(3) + ')';
+      ctx.lineWidth = wand;
+      ctx.strokeRect(px, py, pw, ph);
+      // Zellkern: erst ab 10-fach als dunkler Punkt zu erkennen
+      const kr = 1.7 * s;
+      if (kr >= 2) {
+        const k = _bjmKern(j, i);
+        const kx = CX + k.x * s, ky = CY + k.y * s;
+        ctx.fillStyle = 'rgba(92,54,18,' + (0.15 + 0.8 * f).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(kx, ky, kr + (1 - f) * 3, 0, 2 * Math.PI); ctx.fill();
+        if (kr > 6 && f > 0.5) {
+          // Kernkörperchen und heller Rand bei 40-fach
+          ctx.fillStyle = 'rgba(55,30,8,' + (f * 0.9).toFixed(3) + ')';
+          ctx.beginPath(); ctx.arc(kx + kr * 0.2, ky - kr * 0.15, kr * 0.3, 0, 2 * Math.PI); ctx.fill();
+          ctx.strokeStyle = 'rgba(170,120,60,' + (f * 0.7).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.arc(kx, ky, kr, 0, 2 * Math.PI); ctx.stroke();
+        }
+        // Plasmaströmung: Körnchen kreisen langsam an der Wand entlang
+        if (s > 3) {
+          const n = 9, mx = px + pw / 2, my = py + ph / 2;
+          ctx.fillStyle = 'rgba(150,105,45,' + (0.55 * f).toFixed(3) + ')';
+          for (let q = 0; q < n; q++) {
+            const w = t * 0.35 * (h > 0.5 ? 1 : -1) + q * 2 * Math.PI / n + h * 6;
+            const gx = mx + Math.cos(w) * (pw / 2 - 7), gy = my + Math.sin(w) * (ph / 2 - 6);
+            ctx.beginPath(); ctx.arc(gx, gy, Math.max(1, 0.2 * s), 0, 2 * Math.PI); ctx.fill();
+          }
+        }
+      }
+    }
+  }
+  // 40-fach: Wand und Zellkern der oberen Zelle leuchten einmal weich auf
+  if (b.obj === '40' && b.fertigT >= 0 && b.fertigT < 1.8) {
+    const env = Math.sin(Math.PI * _bioFxKlemme(b.fertigT / 1.8));
+    const x0 = _bjmVersatz(-1), y0 = -_BJM_HZ;
+    ctx.save();
+    ctx.globalAlpha = env;
+    ctx.shadowColor = '#ffd84d'; ctx.shadowBlur = 14;
+    ctx.strokeStyle = 'rgba(255,214,77,0.95)'; ctx.lineWidth = 5;
+    ctx.strokeRect(CX + x0 * s, CY + y0 * s, _BJM_L * s, _BJM_HZ * s);
+    ctx.restore();
+    ctx.save();
+    ctx.globalAlpha = env;
+    const k = _bjmKernA();
+    _bioFxLeuchten(ctx, k.x, k.y, k.r + 3, b.fertigT, '255,216,77');
+    ctx.restore();
+  }
+  // Nebel: weiche, langsam treibende Schwaden, solange das Bild unscharf ist
+  if (f < 0.999) {
+    const a = 1 - f;
+    ctx.fillStyle = 'rgba(250,244,226,' + (0.72 * a).toFixed(3) + ')';
+    ctx.fillRect(CX - R, CY - R, 2 * R, 2 * R);
+    for (const n of b.nebel) {
+      const w = n.w + t * n.v;
+      const nx = CX + Math.cos(w) * R * 0.45, ny = CY + Math.sin(w * 1.3) * R * 0.35, nr = R * n.r;
+      const g = ctx.createRadialGradient(nx, ny, 0, nx, ny, nr);
+      g.addColorStop(0, 'rgba(255,252,240,' + (0.55 * a).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(255,252,240,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(nx, ny, nr, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Rand etwas dunkler, wie im echten Okular
+  const vg = ctx.createRadialGradient(CX, CY, R * 0.78, CX, CY, R);
+  vg.addColorStop(0, 'rgba(40,25,5,0)'); vg.addColorStop(1, 'rgba(40,25,5,0.35)');
+  ctx.fillStyle = vg; ctx.fillRect(CX - R, CY - R, 2 * R, 2 * R);
+  ctx.restore();
+  // Okularrand
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.arc(CX, CY, R + 2, 0, 2 * Math.PI); ctx.stroke();
+}
+
+// Beschriftung mit Pfeil (Pill mit Text, Pfeil zur Stelle)
+function _bjmSchild(ctx, text, lx, ly, zx, zy, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.font = '700 12px sans-serif';
+  const w = ctx.measureText(text).width + 14, h = 20;
+  // Pfeil
+  const ang = Math.atan2(zy - ly, zx - lx);
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(zx, zy); ctx.stroke();
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath();
+  ctx.moveTo(zx, zy);
+  ctx.lineTo(zx - 8 * Math.cos(ang - 0.4), zy - 8 * Math.sin(ang - 0.4));
+  ctx.lineTo(zx - 8 * Math.cos(ang + 0.4), zy - 8 * Math.sin(ang + 0.4));
+  ctx.closePath(); ctx.fill();
+  // Schild
+  ctx.fillStyle = 'rgba(255,255,255,0.94)';
+  _bioFxRundRect(ctx, lx - w / 2, ly - h / 2, w, h, 9); ctx.fill();
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, lx - w / 2, ly - h / 2, w, h, 9); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, lx, ly + 1);
+  ctx.restore();
+}
+
+/* ── Mikroskop links ───────────────────────────────────────────────────── */
+function _bjmMikroskop(ctx) {
+  const b = _bjm, t = b.t, ax = 80;
+  // Lichtweg: kleine Lichtpakete steigen von der Lampe nach oben
+  ctx.save();
+  ctx.fillStyle = 'rgba(253,230,138,0.35)';
+  ctx.fillRect(ax - 4, 36, 8, 176);
+  for (let k = 0; k < 7; k++) {
+    const y = 212 - ((t * 70 + k * 26) % 180);
+    ctx.fillStyle = 'rgba(250,204,21,' + (0.55 + 0.3 * Math.sin(k)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(ax, y, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  // Stativ (Arm)
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 16; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(138, 222); ctx.quadraticCurveTo(160, 140, 110, 64); ctx.stroke();
+  ctx.lineCap = 'butt';
+  // Fuß mit Lampe
+  ctx.fillStyle = '#334155';
+  _bioFxRundRect(ctx, 28, 218, 134, 18, 6); ctx.fill();
+  const lg = ctx.createRadialGradient(ax, 214, 1, ax, 214, 16);
+  lg.addColorStop(0, 'rgba(255,247,200,0.95)'); lg.addColorStop(1, 'rgba(255,247,200,0)');
+  ctx.fillStyle = lg; ctx.beginPath(); ctx.arc(ax, 214, 16, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fde68a'; ctx.beginPath(); ctx.arc(ax, 216, 5, Math.PI, 2 * Math.PI); ctx.fill();
+  // Objekttisch mit Objektträger und Zwiebelhaut
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(34, 160, 112, 8);
+  ctx.fillStyle = 'rgba(191,219,254,0.85)'; ctx.fillRect(44, 155, 74, 5);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 0.8; ctx.strokeRect(44, 155, 74, 5);
+  ctx.fillStyle = '#e9c46a';
+  ctx.beginPath(); ctx.ellipse(ax, 155.5, 12, 2, 0, 0, 2 * Math.PI); ctx.fill();
+  // Triebrad (dreht beim Scharfstellen)
+  const tx = 146, ty = 150;
+  ctx.fillStyle = '#64748b'; ctx.beginPath(); ctx.arc(tx, ty, 11, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+  for (let k = 0; k < 4; k++) {
+    const w = b.rad + k * Math.PI / 2;
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(tx + Math.cos(w) * 9, ty + Math.sin(w) * 9); ctx.stroke();
+  }
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.arc(tx, ty, 3, 0, 2 * Math.PI); ctx.fill();
+  // Tubus und Okular
+  ctx.fillStyle = '#64748b'; ctx.fillRect(ax - 10, 30, 20, 76);
+  ctx.fillStyle = '#334155'; ctx.fillRect(ax - 14, 14, 28, 18);
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(ax - 14, 14, 28, 3);
+  // Revolver mit drei Objektiven
+  ctx.fillStyle = '#94a3b8';
+  ctx.beginPath(); ctx.ellipse(ax, 110, 20, 7, 0, 0, 2 * Math.PI); ctx.fill();
+  const reihe = [0, 1, 2].sort((p, q) => Math.abs(q - b.pos) - Math.abs(p - b.pos));   // vorne zuletzt
+  for (const i of reihe) {
+    const o = _BJM_OBJ[i], len = _BJM_LANG[o], w = (i - b.pos) * 0.62;
+    ctx.save();
+    ctx.translate(ax, 112);
+    ctx.rotate(w);
+    ctx.fillStyle = Math.abs(i - b.pos) < 0.5 ? '#475569' : '#64748b';
+    ctx.fillRect(-5, 0, 10, len);
+    ctx.fillStyle = '#1e293b'; ctx.fillRect(-3, len, 6, 3);
+    ctx.fillStyle = _BJM_FARBE[o]; ctx.fillRect(-5, len * 0.5, 10, 3);
+    ctx.restore();
+  }
+  // Beschriftungen
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Okular', 98, 26);
+  ctx.textAlign = 'right';
+  ctx.fillText('Objektiv', 50, 124);
+  ctx.fillStyle = _BJM_FARBE[b.obj] === '#eab308' ? '#a16207' : _BJM_FARBE[b.obj];
+  ctx.fillText(b.obj + '-fach', 50, 138);
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(52, 124); ctx.lineTo(ax - 7, 130); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left';
+  ctx.fillText('Zwiebelhaut', 30, 184);
+  ctx.beginPath(); ctx.moveTo(62, 176); ctx.lineTo(74, 158); ctx.stroke();
+  // Blickrichtung: vom Okular zum runden Bild
+  ctx.save();
+  ctx.strokeStyle = 'rgba(71,85,105,0.5)'; ctx.lineWidth = 1.5;
+  ctx.setLineDash([4, 4]); ctx.lineDashOffset = -t * 12;
+  ctx.beginPath(); ctx.moveTo(ax + 16, 18); ctx.quadraticCurveTo(150, 10, _BJM_CX - _BJM_R - 6, 70); ctx.stroke();
+  ctx.restore();
+}
+
+function _bjmDraw(ctx, cv) {
+  if (!_bjm) return;
+  const W = cv.width, H = cv.height, b = _bjm;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef4f7'); bg.addColorStop(1, '#dbe6ec');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _bjmMikroskop(ctx);
+  _bjmPraeparat(ctx);
+
+  // 40-fach: Beschriftung „Wand“ und „Zellkern“ mit Pfeil, erst wenn scharf
+  if (b.obj === '40' && b.phase === 'fertig') {
+    const a = _bioFxKlemme((b.fertigT - 0.5) / 0.5);
+    if (a > 0) {
+      const k = _bjmKernA();
+      _bjmSchild(ctx, 'Zellkern', _BJM_CX + 50, _BJM_CY - 72, k.x + k.r * 0.8, k.y - k.r * 0.7, a);
+      _bjmSchild(ctx, 'Wand', _BJM_CX - 60, _BJM_CY + 40, _BJM_CX - 42, _BJM_CY + 2, a);
+    }
+  }
+  // Bildtext unter dem Kreis
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  if (b.phase === 'fertig') {
+    ctx.globalAlpha = _bioFxKlemme(b.fertigT / 0.4);
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+    ctx.fillText(_BJM_BILD[b.obj], _BJM_CX, H - 10, 272);
+    ctx.globalAlpha = 1;
+  } else {
+    ctx.fillStyle = '#64748b'; ctx.font = 'italic 12px sans-serif';
+    ctx.fillText('Das Bild wird scharf gestellt …', _BJM_CX, H - 10, 272);
+  }
+  _bioFxAlleDraw(ctx, b.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DAS GRÜN-WEISSE BLATT   (Förderheft Bio 5/6 · bj2)
+// Eine Pflanze mit grün-weißen Blättern steht 2 Tage im Licht oder 2 Tage
+// unter einem Karton im Dunkeln. Danach kommt ein Blatt (schon entfärbt) auf
+// einen Teller und wird mit Iodlösung beträufelt.
+// Modellwerte (Lehrerteil, tabelle_erwartet):
+//   2 Tage Licht:  grüner Teil blau-schwarz, weißer Teil gelb-braun
+//   2 Tage dunkel: grüner Teil gelb-braun,   weißer Teil gelb-braun
+// Fachlich: Stärke nur in den grünen Teilen (Blattgrün) und nur bei Licht.
+// Iodlösung selbst ist gelb-braun; sie färbt Stärke blau-schwarz.
+// Aha (NACH der Beobachtung, Bibliothek _bioFx): Die Iodlösung läuft von der
+// Blattmitte über das Blatt. Hinter der gelb-braunen Front färbt sich – nur
+// nach Licht – der grüne Rand blau-schwarz; die weiße Mitte bleibt hell.
+// Die Grenze zwischen grünem und weißem Teil erscheint wie ein Schattenbild,
+// danach läuft ein Lichtsaum einmal an dieser Grenze entlang. Kurze Zeitlupe,
+// wenn die Front den grünen Rand erreicht. Kein Text mit Lösungswörtern im
+// Bild, kein Blinken, kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _bjs = null;
+const _BJS_WORT = { licht: '2 Tage Licht', dunkel: '2 Tage dunkel' };
+const _BJS_FARBE = { bs: 'blau-schwarz', gb: 'gelb-braun' };
+// Phasen der Probe und ihre Dauer in Sekunden (Sprungmarke: 4-mal so schnell)
+const _BJS_DAUER = { entfaerben: 0.9, tropfen: 0.8, laufen: 1.9, dunkeln: 0.8 };
+const _BJS_REIHE = ['entfaerben', 'tropfen', 'laufen', 'dunkeln', 'fertig'];
+// Blatt auf dem Teller
+const _BJS_BX = 214, _BJS_BY = 140, _BJS_BL = 178, _BJS_BB = 104;
+// Tropfstelle (in der weißen Mitte)
+const _BJS_TX = 300, _BJS_TY = 138;
+
+function _bjsInit() {
+  _bjs = { licht: 'licht', phase: 'bereit', pt: 0, t: 0, tempo: 1, letzt: '',
+           fx: { teile: [] }, nach: -1, schritt: 0, karton: 0, zeitlupe: null,
+           getestet: {}, randErreicht: false, geo: _bjsGeo() };
+}
+// Umriss (außen) und Grenze grün/weiß (innen) als Punktlisten – einmal berechnet.
+function _bjsGeo() {
+  const N = 64, oben = [], unten = [], io = [], iu = [];
+  const w = u => (_BJS_BB / 2) * Math.pow(Math.sin(Math.PI * Math.pow(u, 0.82)), 0.85);
+  for (let i = 0; i <= N; i++) {
+    const u = i / N, x = _BJS_BX + u * _BJS_BL, h = w(u);
+    const s = 1.5 * Math.sin(u * 30);              // leicht gewellter Blattrand
+    oben.push([x, _BJS_BY - h - s * (h > 4 ? 1 : 0)]);
+    unten.push([x, _BJS_BY + h + s * (h > 4 ? 1 : 0)]);
+  }
+  const u0 = 0.1, u1 = 0.86;
+  for (let i = 0; i <= N; i++) {
+    const u = u0 + (u1 - u0) * i / N, x = _BJS_BX + u * _BJS_BL;
+    const zu = Math.pow(Math.sin(Math.PI * (u - u0) / (u1 - u0)), 0.55);
+    const f = 0.56 + 0.08 * Math.sin(u * 21) + 0.04 * Math.sin(u * 47 + 1.3);
+    const g = 0.56 + 0.08 * Math.sin(u * 17 + 2) + 0.05 * Math.sin(u * 39);
+    io.push([x, _BJS_BY - w(u) * f * zu]);
+    iu.push([x, _BJS_BY + w(u) * g * zu]);
+  }
+  return { oben, unten, io, iu };
+}
+function _bjsPfad(ctx, a, b) {
+  ctx.beginPath(); ctx.moveTo(a[0][0], a[0][1]);
+  for (const p of a) ctx.lineTo(p[0], p[1]);
+  for (let i = b.length - 1; i >= 0; i--) ctx.lineTo(b[i][0], b[i][1]);
+  ctx.closePath();
+}
+function _bjsAussen(ctx) { _bjsPfad(ctx, _bjs.geo.oben, _bjs.geo.unten); }
+function _bjsInnen(ctx)  { _bjsPfad(ctx, _bjs.geo.io, _bjs.geo.iu); }
+
+function _bjsHTML() {
+  const knopf = (wert, text) =>
+    `<button class="sim-btn" data-bjs="${wert}" onclick="_bjsLicht('${wert}')">${text}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo bildet ein Blatt Stärke?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links steht die Pflanze mit grün-weißen Blättern. Rechts liegt ein Blatt von ihr auf dem Teller. Das Blatt ist schon entfärbt, wenn die Iodlösung kommt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bjs-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bjs-los" onclick="_bjsProbe()">Iodprobe machen</button>
+          <button class="sim-btn" onclick="_bjsNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Licht</span>
+          <div class="sim-btn-row">
+            ${knopf('licht', '2 Tage Licht')}
+            ${knopf('dunkel', '2 Tage dunkel')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bjs-status"></div>
+        <div class="fpm-note" id="_bjs-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bjsMarke('licht')">Probe nach 2 Tagen Licht</button>
+          <button class="sim-btn" onclick="_bjsMarke('dunkel')">Probe nach 2 Tagen dunkel</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Iodlösung färbt <b>Stärke</b> blau-schwarz. Das Grüne im Blatt heißt <b>Blattgrün</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Stelle „Licht“ ein. Dann drücke „Iodprobe machen“ und beobachte beide Teile des Blattes.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bjsFxLeer() {
+  _bjs.fx = { teile: [] }; _bjs.zeitlupe = null;
+  _bjs.nach = -1; _bjs.schritt = 0; _bjs.randErreicht = false;
+}
+function _bjsLicht(v) {
+  if (!_bjs) return;
+  _bjs.licht = v === 'dunkel' ? 'dunkel' : 'licht';
+  _bjs.phase = 'bereit'; _bjs.pt = 0; _bjs.tempo = 1;     // neue Pflanze, neues Blatt
+  _bjsFxLeer();
+  _bjsStatus();
+}
+function _bjsProbe() {
+  if (!_bjs) return;
+  if (_bjs.phase !== 'bereit' && _bjs.phase !== 'fertig') return;   // läuft schon
+  _bjsFxLeer();
+  _bjs.phase = 'entfaerben'; _bjs.pt = 0; _bjs.tempo = 1;
+  _bjsStatus();
+}
+// Sprungmarke: Licht einstellen und gleich die Probe zeigen (schneller Ablauf).
+function _bjsMarke(v) {
+  if (!_bjs) return;
+  _bjsLicht(v);
+  _bjsProbe();
+  _bjs.tempo = 4;
+  if (_bjs.licht === 'dunkel') _bjs.karton = 1;
+  else _bjs.karton = 0;
+}
+function _bjsNeu() {
+  if (!_bjs) return;
+  _bjs.getestet = {};
+  _bjsLicht('licht');
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bjsGruen() { return _bjs.licht === 'licht' ? _BJS_FARBE.bs : _BJS_FARBE.gb; }
+function _bjsZeile() {
+  const l = _BJS_WORT[_bjs.licht];
+  switch (_bjs.phase) {
+    case 'bereit':     return l + ' · Blatt vor der Probe · Drücke „Iodprobe machen“.';
+    case 'entfaerben': return l + ' · Das Blatt wird entfärbt …';
+    case 'tropfen':    return l + ' · Iodlösung tropft auf das Blatt …';
+    case 'laufen':
+    case 'dunkeln':    return l + ' · Iodlösung läuft über das Blatt …';
+    default:           return l + ' · grüner Teil: ' + _bjsGruen() + ' · weißer Teil: ' + _BJS_FARBE.gb;
+  }
+}
+function _bjsStatus() {
+  if (!_bjs) return;
+  const z = _bjsZeile();
+  _bjs.letzt = z;
+  const el = document.getElementById('_bjs-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_bjs-hinweis');
+  if (h) {
+    const g = _bjs.getestet, anders = _bjs.licht === 'licht' ? 'dunkel' : 'licht';
+    if (_bjs.phase !== 'fertig' && _bjs.phase !== 'bereit') h.textContent = 'Beobachte den grünen und den weißen Teil.';
+    else if (g.licht && g.dunkel) h.textContent = 'Du hast beide Blätter getestet. Trage alle Farben in die Tabelle ein.';
+    else if (_bjs.phase === 'fertig') h.textContent = 'Stelle jetzt „' + _BJS_WORT[anders] + '“ ein. Drücke wieder „Iodprobe machen“.';
+    else h.textContent = 'Die Pflanze stand ' + (_bjs.licht === 'licht' ? '2 Tage am hellen Fenster.' : '2 Tage unter einem Karton.');
+  }
+  try {
+    document.querySelectorAll('[data-bjs]').forEach(b => {
+      const w = b.dataset ? b.dataset.bjs : b.getAttribute('data-bjs');
+      if (b.classList) b.classList.toggle('primary', _bjs.licht === w);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_bjs-los');
+  if (los && los.classList) los.classList.toggle('primary', _bjs.phase === 'bereit' || _bjs.phase === 'fertig');
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _bjsUpdate(dt) {
+  if (!_bjs) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_bjs, roh);
+  _bjs.t += roh;
+  // Karton senkt sich / hebt sich weich (0,6 s)
+  const kz = _bjs.licht === 'dunkel' ? 1 : 0;
+  _bjs.karton += Math.sign(kz - _bjs.karton) * Math.min(Math.abs(kz - _bjs.karton), roh / 0.6);
+  if (_bjs.phase !== 'bereit' && _bjs.phase !== 'fertig') {
+    _bjs.pt += d * _bjs.tempo;
+    const dauer = _BJS_DAUER[_bjs.phase];
+    if (_bjs.phase === 'tropfen' && _bjs.pt > 0.45 && _bjs.schritt === 0) {
+      _bjs.schritt = 1;                                       // erster Tropfen trifft
+      _bioFxWelle(_bjs.fx.teile, _BJS_TX, _BJS_TY, 'rgba(201,139,46,0.9)', 22);
+    }
+    if (_bjs.phase === 'laufen' && !_bjs.randErreicht && _bjsFront() > 34) {
+      _bjs.randErreicht = true;                               // Front erreicht den grünen Rand
+      if (_bjs.tempo === 1) _bioFxZeitlupe(_bjs, 0.35, 0.9);
+    }
+    if (_bjs.pt >= dauer) {
+      _bjs.phase = _BJS_REIHE[_BJS_REIHE.indexOf(_bjs.phase) + 1];
+      _bjs.pt = 0;
+      if (_bjs.phase === 'fertig') {
+        _bjs.getestet[_bjs.licht] = true; _bjs.nach = 0; _bjs.schritt = 0;
+      }
+    }
+  }
+  if (_bjs.nach >= 0) { _bjs.nach += roh; _bjsAha(); }
+  _bioFxAlleUpdate(_bjs.fx, roh);
+  if (_bjsZeile() !== _bjs.letzt) _bjsStatus();
+}
+// Radius der Iodfront um die Tropfstelle
+function _bjsFront() {
+  if (_bjs.phase === 'laufen') return 118 * _bioFxEase.raus(_bioFxKlemme(_bjs.pt / _BJS_DAUER.laufen));
+  if (_bjs.phase === 'dunkeln' || _bjs.phase === 'fertig') return 118;
+  return 0;
+}
+// Wie weit das Blau-Schwarz hinter der Front herläuft (0 = nichts, 1 = überall)
+function _bjsDunkel() {
+  if (_bjs.phase === 'laufen') return Math.max(0, _bjsFront() - 22);
+  if (_bjs.phase === 'dunkeln') return 96 + 40 * _bioFxKlemme(_bjs.pt / _BJS_DAUER.dunkeln);
+  if (_bjs.phase === 'fertig') return 140;
+  return 0;
+}
+// Aha nach der Probe: Schattenbild der Grenze, Lichtsaum, wenige Funken.
+function _bjsAha() {
+  const fx = _bjs.fx, t = _bjs.nach, g = _bjs.geo;
+  if (_bjs.licht === 'licht') {
+    if (_bjs.schritt === 0 && t >= 0.2) {
+      _bjs.schritt = 1;
+      for (const i of [8, 22, 40, 56]) {
+        const p = i % 2 ? g.unten[i] : g.oben[i];
+        _bioFxFunken(fx.teile, p[0], p[1], 4, ['#c7d2fe', '#ffffff', '#fde68a']);
+      }
+    }
+    if (_bjs.schritt === 1 && t >= 1.5) {
+      _bjs.schritt = 2;
+      _bioFxWelle(fx.teile, _BJS_TX, _BJS_TY, 'rgba(253,230,138,0.9)', 46);
+      _bioFxBanner(fx, 'Vergleiche: grüner Teil und weißer Teil', 3.2, '#c7d2fe');
+    }
+  } else {
+    if (_bjs.schritt === 0 && t >= 0.3) {
+      _bjs.schritt = 1;
+      _bioFxWelle(fx.teile, _BJS_TX, _BJS_TY, 'rgba(201,139,46,0.85)', 90);
+    }
+    if (_bjs.schritt === 1 && t >= 1.1) {
+      _bjs.schritt = 2;
+      _bioFxBanner(fx, 'Vergleiche: grüner Teil und weißer Teil', 3.2, '#fde68a');
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bjsMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// gewellter Kreis um die Tropfstelle (so läuft Flüssigkeit)
+function _bjsKreis(ctx, r) {
+  ctx.beginPath();
+  for (let k = 0; k <= 48; k++) {
+    const a = k / 48 * Math.PI * 2;
+    const rr = r * (1 + 0.07 * Math.sin(3 * a + 1) + 0.04 * Math.sin(7 * a + _bjs.t * 0.8));
+    const x = _BJS_TX + rr * Math.cos(a) * 1.15, y = _BJS_TY + rr * Math.sin(a) * 0.85;
+    if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+}
+// Blatt mit Randfarbe und Mittenfarbe
+function _bjsBlattFlaechen(ctx, rand, mitte) {
+  ctx.fillStyle = rand; _bjsAussen(ctx); ctx.fill();
+  ctx.fillStyle = mitte; _bjsInnen(ctx); ctx.fill();
+}
+function _bjsAdern(ctx, farbe) {
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 1.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(_BJS_BX - 22, _BJS_BY + 4); ctx.lineTo(_BJS_BX + _BJS_BL - 6, _BJS_BY); ctx.stroke();
+  ctx.lineWidth = 0.8;
+  for (let k = 1; k <= 6; k++) {
+    const x = _BJS_BX + k * _BJS_BL / 7.5;
+    for (const s of [-1, 1]) {
+      ctx.beginPath(); ctx.moveTo(x, _BJS_BY);
+      ctx.quadraticCurveTo(x + 12, _BJS_BY + s * 18, x + 22, _BJS_BY + s * 32 * Math.sin(Math.PI * k / 7.2));
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _bjsTeller(ctx) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  ctx.beginPath(); ctx.ellipse(304, 150, 116, 80, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(302, 144, 114, 78, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(302, 144, 94, 62, 0, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+function _bjsBlatt(ctx) {
+  const ph = _bjs.phase, licht = _bjs.licht === 'licht';
+  const GRUEN = '#3f9b3a', WEISS = '#f4f6e6', BLASS_R = '#e6ecc9', BLASS_M = '#f7f5e8';
+  const GB = '#c98b2e', BS = '#20233f';
+  // Stiel
+  ctx.save();
+  ctx.strokeStyle = ph === 'bereit' ? '#5f8f3a' : '#cfd6a8'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(_BJS_BX - 24, _BJS_BY + 6); ctx.lineTo(_BJS_BX + 2, _BJS_BY + 1); ctx.stroke();
+  ctx.restore();
+  let e = 1;                                                 // 0 = frisch, 1 = entfärbt
+  if (ph === 'bereit') e = 0;
+  else if (ph === 'entfaerben') e = _bioFxEase.sanft(_bioFxKlemme(_bjs.pt / _BJS_DAUER.entfaerben));
+  _bjsBlattFlaechen(ctx, _bjsMisch(GRUEN, BLASS_R, e), _bjsMisch('#f4f6e6', BLASS_M, e));
+  // Iodlösung: gelb-braune Front, dahinter (nur nach Licht) blau-schwarz im grünen Teil
+  const r = _bjsFront();
+  if (r > 0) {
+    ctx.save(); _bjsKreis(ctx, r); ctx.clip();
+    _bjsBlattFlaechen(ctx, GB, GB);
+    ctx.restore();
+    const r2 = _bjsDunkel();
+    if (licht && r2 > 0) {
+      ctx.save(); _bjsKreis(ctx, r2); ctx.clip();
+      ctx.fillStyle = BS; _bjsAussen(ctx); ctx.fill();
+      ctx.fillStyle = GB; _bjsInnen(ctx); ctx.fill();
+      ctx.restore();
+    }
+    // nasser Saum an der Front
+    if (ph === 'laufen') {
+      ctx.save(); _bjsAussen(ctx); ctx.clip();
+      ctx.strokeStyle = 'rgba(255,236,190,0.75)'; ctx.lineWidth = 3;
+      _bjsKreis(ctx, r); ctx.stroke();
+      ctx.restore();
+    }
+  }
+  _bjsAdern(ctx, ph === 'bereit' ? 'rgba(30,70,30,0.35)' : 'rgba(90,70,30,0.22)');
+  // Glanz der nassen Oberfläche nach der Probe
+  if (r > 0) {
+    ctx.save(); _bjsAussen(ctx); ctx.clip();
+    ctx.fillStyle = 'rgba(255,255,255,0.13)';
+    ctx.beginPath(); ctx.ellipse(270 + 8 * Math.sin(_bjs.t * 0.7), 112, 46, 10, -0.15, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+  ctx.save();
+  ctx.strokeStyle = 'rgba(40,60,30,0.55)'; ctx.lineWidth = 1.4;
+  _bjsAussen(ctx); ctx.stroke();
+  ctx.restore();
+  // Aha nach Licht: ein Lichtsaum läuft einmal die Grenze grün/weiß entlang
+  if (licht && _bjs.nach >= 0) {
+    const t = _bjs.nach, p = _bioFxKlemme((t - 0.3) / 1.4);
+    const a = 0.9 * (1 - _bioFxEase.sanft(_bioFxKlemme((t - 2.3) / 0.8)));
+    if (p > 0 && a > 0.01) {
+      const ring = _bjs.geo.io.concat(_bjs.geo.iu.slice().reverse());
+      const n = Math.max(2, Math.floor(ring.length * p));
+      ctx.save();
+      ctx.globalAlpha = a; ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+      ctx.shadowColor = '#fde68a'; ctx.shadowBlur = 8;
+      ctx.beginPath(); ctx.moveTo(ring[0][0], ring[0][1]);
+      for (let i = 1; i < n; i++) ctx.lineTo(ring[i][0], ring[i][1]);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+}
+function _bjsPipette(ctx) {
+  const ph = _bjs.phase;
+  // Ruheplatz rechts oben; zum Tropfen fährt sie über die Blattmitte
+  let x = 392, y = 40, s = 0;
+  if (ph === 'tropfen' || ph === 'laufen') {
+    s = ph === 'tropfen' ? _bioFxEase.sanft(_bioFxKlemme(_bjs.pt / 0.35)) :
+        1 - _bioFxEase.sanft(_bioFxKlemme(_bjs.pt / 0.6));
+    x = 392 + (_BJS_TX - 392) * s; y = 40 + (72 - 40) * s;
+  }
+  y += Math.sin(_bjs.t * 1.8) * 1.2;
+  ctx.save();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.ellipse(x, y - 30, 6, 8, 0, 0, Math.PI * 2); ctx.fill();        // Gummikappe
+  ctx.fillStyle = 'rgba(226,232,240,0.9)'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x - 4, y - 24); ctx.lineTo(x + 4, y - 24); ctx.lineTo(x + 4, y + 2);
+  ctx.lineTo(x + 1, y + 12); ctx.lineTo(x - 1, y + 12); ctx.lineTo(x - 4, y + 2); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#c98b2e';                                                             // Iodlösung
+  ctx.fillRect(x - 3, y - 10, 6, 12);
+  ctx.beginPath(); ctx.moveTo(x - 3, y + 2); ctx.lineTo(x + 3, y + 2); ctx.lineTo(x + 1, y + 11); ctx.lineTo(x - 1, y + 11); ctx.closePath(); ctx.fill();
+  if (s < 0.3) {
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('Iodlösung', x - 10, y - 4);
+  }
+  ctx.restore();
+  // fallende Tropfen
+  if (ph === 'tropfen' && _bjs.pt > 0.3) {
+    ctx.save(); ctx.fillStyle = '#c98b2e';
+    for (let k = 0; k < 3; k++) {
+      const q = (_bjs.pt - 0.3 - k * 0.15) / 0.2;
+      if (q < 0 || q > 1) continue;
+      const ty = 84 + (_BJS_TY - 84) * q * q;
+      ctx.beginPath(); ctx.ellipse(_BJS_TX, ty, 2.6, 3.6, 0, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+// Kleines grün-weißes Blatt an der Pflanze
+function _bjsMiniBlatt(ctx, x, y, w, dunkel) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(w);
+  ctx.fillStyle = dunkel ? '#2f6f2b' : '#3f9b3a';
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(14, -10, 30, 0); ctx.quadraticCurveTo(14, 10, 0, 0); ctx.fill();
+  ctx.fillStyle = dunkel ? '#d9dccb' : '#f4f6e6';
+  ctx.beginPath(); ctx.moveTo(5, 0); ctx.quadraticCurveTo(14, -5.5, 25, 0); ctx.quadraticCurveTo(14, 5.5, 5, 0); ctx.fill();
+  ctx.restore();
+}
+function _bjsPflanze(ctx) {
+  const t = _bjs.t, dunkel = _bjs.licht === 'dunkel';
+  // Fenster mit Tag und Nacht (1 Tag = 4 s)
+  const fx = 14, fy = 12, fw = 120, fh = 70;
+  const u = (t / 4) % 1, tag = u < 0.62;
+  const d = _bioFxKlemme(Math.min(Math.abs(u - 0.62), u, 1 - u) / 0.1);
+  ctx.fillStyle = tag ? _bjsMisch('#6b7fa8', '#bfe3ff', d) : _bjsMisch('#6b7fa8', '#1e2a4a', d);
+  ctx.fillRect(fx, fy, fw, fh);
+  const v = tag ? u / 0.62 : (u - 0.62) / 0.38;
+  const sx = fx + 10 + v * (fw - 20), sy = fy + fh - 10 - Math.sin(v * Math.PI) * (fh - 24);
+  ctx.fillStyle = tag ? '#fcd34d' : '#f1f5f9';
+  ctx.beginPath(); ctx.arc(sx, sy, tag ? 8 : 6, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#8b6b43'; ctx.lineWidth = 4; ctx.strokeRect(fx, fy, fw, fh);
+  ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(fx + fw / 2, fy); ctx.lineTo(fx + fw / 2, fy + fh); ctx.stroke();
+  ctx.fillStyle = '#a07c52'; ctx.fillRect(fx - 6, fy + fh, fw + 12, 5);
+  if (!dunkel && tag) {                                     // Licht fällt auf die Pflanze
+    ctx.fillStyle = 'rgba(253,230,138,' + (0.2 + 0.05 * Math.sin(t * 2)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.moveTo(fx + 10, fy + fh); ctx.lineTo(fx + fw - 10, fy + fh);
+    ctx.lineTo(128, 200); ctx.lineTo(30, 200); ctx.closePath(); ctx.fill();
+  }
+  // Tisch
+  ctx.fillStyle = '#d6bf94'; ctx.fillRect(0, 214, 175, 36);
+  // Topf und Pflanze
+  const px = 78;
+  ctx.fillStyle = '#b45f3c';
+  ctx.beginPath(); ctx.moveTo(px - 24, 180); ctx.lineTo(px + 24, 180); ctx.lineTo(px + 18, 214); ctx.lineTo(px - 18, 214); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#9a4f31'; ctx.fillRect(px - 27, 176, 54, 8);
+  ctx.fillStyle = '#5b4030'; ctx.fillRect(px - 23, 178, 46, 3);
+  ctx.save();
+  ctx.strokeStyle = '#4d7c2f'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  const wieg = Math.sin(t * 1.3) * 0.05;
+  ctx.beginPath(); ctx.moveTo(px, 178); ctx.quadraticCurveTo(px - 4, 150, px + 2, 116); ctx.stroke();
+  const blaetter = [[px, 168, -2.7], [px, 160, -0.45], [px - 1, 146, -2.55], [px + 1, 138, -0.6],
+                    [px, 126, -2.3], [px + 2, 118, -0.85]];
+  blaetter.forEach((b, i) => _bjsMiniBlatt(ctx, b[0], b[1], b[2] + wieg * (i % 2 ? 1 : -1), dunkel));
+  ctx.restore();
+  // Karton (senkt sich über die Pflanze)
+  const k = _bioFxEase.sanft(_bioFxKlemme(_bjs.karton));
+  if (k > 0.01) {
+    ctx.save();
+    ctx.translate(0, -150 * (1 - k));
+        ctx.fillStyle = '#8a5a2b'; ctx.fillRect(28, 96, 96, 118);
+    ctx.fillStyle = '#b07a42';
+    ctx.beginPath(); ctx.moveTo(28, 96); ctx.lineTo(42, 86); ctx.lineTo(138, 86); ctx.lineTo(124, 96); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#9a6634';
+    ctx.beginPath(); ctx.moveTo(124, 96); ctx.lineTo(138, 86); ctx.lineTo(138, 204); ctx.lineTo(124, 214); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fef3c7'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Karton', 76, 160);
+    ctx.restore();
+  }
+  // Kalender: 2 Tage
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.fillRect(144, 100, 30, 30); ctx.strokeRect(144, 100, 30, 30);
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(144, 100, 30, 8);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('2', 159, 125);
+  ctx.font = '600 10px sans-serif'; ctx.fillText('Tage', 159, 142);
+  ctx.restore();
+}
+function _bjsDraw(ctx, cv) {
+  if (!_bjs) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#fbf6ea'); bg.addColorStop(1, '#efe3c8');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _bjsPflanze(ctx);
+  // Trennlinie zwischen Pflanze und Teller
+  ctx.strokeStyle = 'rgba(100,116,139,0.35)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(180, 10); ctx.lineTo(180, H - 10); ctx.stroke();
+  _bjsTeller(ctx);
+  _bjsBlatt(ctx);
+  _bjsPipette(ctx);
+  // Beschriftungen der beiden Teile (bleiben immer gleich)
+  const g = _bjs.geo, po = g.oben[20], pi = g.iu[40];
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.fillStyle = '#0f172a'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(238, 44); ctx.lineTo(po[0], po[1] + 5); ctx.stroke();
+  ctx.beginPath(); ctx.arc(po[0], po[1] + 5, 2.2, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(352, 236); ctx.lineTo(pi[0], pi[1] - 8); ctx.stroke();
+  ctx.beginPath(); ctx.arc(pi[0], pi[1] - 8, 2.2, 0, Math.PI * 2); ctx.fill();
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('grüner Teil', 196, 40);
+  ctx.fillText('weißer Teil', 332, 246);
+  ctx.restore();
+  // Einstellung unten links und Überschrift über dem Teller
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_BJS_WORT[_bjs.licht], 8, H - 10);
+  ctx.font = '600 11px sans-serif'; ctx.fillStyle = '#475569'; ctx.textAlign = 'left';
+  const kopf = _bjs.phase === 'bereit' ? 'Blatt vor der Probe' :
+               _bjs.phase === 'fertig' ? 'Blatt nach der Probe' : 'Blatt entfärbt';
+  ctx.fillText(kopf, 190, 20);
+  _bioFxAlleDraw(ctx, _bjs.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · BLÄSCHEN AN DER WASSERPEST   (Förderheft Bio 5/6 · bj3)
+// Ein Zweig Wasserpest steht in einem Glas Wasser, die Schnittstelle oben.
+// Links eine Lampe mit vier Stufen (aus, schwach, mittel, hell). An der
+// Schnittstelle steigen Bläschen mit Sauerstoff auf – je heller, desto mehr,
+// ohne Licht keine. „▶ 1 Minute zählen“ lässt eine Stoppuhr im Zeitraffer
+// eine Minute laufen, der Zähler zählt jedes Bläschen, das sich löst.
+// Modellwerte (Lehrerteil): aus 0 · schwach 5 · mittel 12 · hell 20 Bläschen
+// in 1 Minute. Die Bläschen einer Minute lösen sich GLEICHMÄSSIG, das k-te bei
+// (k + 0,5) · 60 s / N – so stehen nach 60 s genau N auf dem Zähler.
+// Fachlich (BIO_PROFIL): Fotosynthese braucht Licht; die Pflanze lebt auch im
+// Dunkeln weiter (sie atmet), nur die Bläschen hören auf. Kohlenstoffdioxid
+// steht nicht im Bild (die Schülerseite sagt „ein Gas aus der Luft“).
+// Leben: Die Lampe gleitet beim Heller-Stellen näher heran, der Lichtschein
+// wird kräftiger, der Zweig wiegt sich, die Bläschen steigen auch ohne Zählen.
+// Aha (NACH der Minute, Bibliothek _bioFx): Die Zahl federt, ein Lichtring um
+// den Zähler, ein kurzer Schwall Bläschen an der Schnittstelle, dann ein
+// Streifen mit dem gemessenen Wert. Bei „aus“ ruhig: grauer Ring, kein Urteil.
+// Sind alle vier Lampen gezählt: „Alle vier Lampen gezählt. Vergleiche!“ –
+// die Antwort (je heller, desto mehr) nennt die Simulation NICHT.
+// ═══════════════════════════════════════════════════════
+let _bjw = null;
+const _BJW_STUFEN = ['aus', 'schwach', 'mittel', 'hell'];
+const _BJW_N    = { aus: 0, schwach: 5, mittel: 12, hell: 20 };      // Bläschen in 1 Minute
+const _BJW_HELL = { aus: 0, schwach: 0.35, mittel: 0.66, hell: 1 };   // Lichtschein
+const _BJW_LX   = { aus: 30, schwach: 30, mittel: 66, hell: 102 };    // Lampe rückt heran
+const _BJW_MIN  = 8.4;                  // s echte Zeit für 1 Minute (Zeitraffer)
+const _BJW_GL   = { x0: 186, x1: 300, y0: 28, y1: 232, wsp: 50 };      // Glas, Wasserspiegel
+const _BJW_CUT  = { x: 240, y: 132 };   // Schnittstelle (oben am Zweig)
+const _BJW_ZX = 365, _BJW_ZY = 158;     // Mitte des Zählers im Bild
+
+function _bjwInit() {
+  _bjw = { lampe: 'mittel', phase: 'bereit', t: 0, lauf: 0, uhr: 0, n: 0, idle: 0.6,
+           bl: [], nr: 0, lx: _BJW_LX.mittel, hell: _BJW_HELL.mittel,
+           fx: { teile: [] }, nach: -1, schritt: 0, bump: 9, gemessen: {}, alleGezeigt: false,
+           letzt: '' };
+}
+function _bjwFxLeer() {
+  _bjw.fx = { teile: [] }; _bjw.nach = -1; _bjw.schritt = 0; _bjw.bump = 9;
+}
+
+function _bjwHTML() {
+  const knopf = w =>
+    `<button class="sim-btn" data-bjw="${w}" onclick="_bjwLampe('${w}')">${w}</button>`;
+  const marke = w =>
+    `<button class="sim-btn" onclick="_bjwMarke('${w}')">Lampe ${w} zählen</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel Licht braucht eine Pflanze?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Glas steht ein Zweig Wasserpest. An der Schnittstelle oben steigen Bläschen auf. Stelle die Lampe ein. Dann drücke „▶ 1 Minute zählen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bjw-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Lampe</span>
+          ${_BJW_STUFEN.map(knopf).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bjw-los" onclick="_bjwZaehlen()">▶ 1 Minute zählen</button>
+          <button class="sim-btn" onclick="_bjwNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Bläschenzähler</div>
+        <div class="lmp-status on" id="_bjw-zaehler" style="margin-top:4px;font-size:1.15em;font-weight:700"></div>
+        <div class="fpm-label" style="margin-top:10px">Was siehst du?</div>
+        <div class="lmp-status on" id="_bjw-status" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${_BJW_STUFEN.map(marke).join('\n          ')}
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Die Uhr läuft im Zeitraffer: 1 Minute dauert hier gut 8 Sekunden. Zähle mit dem Finger mit: Jedes Bläschen, das sich an der Schnittstelle löst, zählt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Zähle bei jeder Lampe genau 1 Minute lang.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bjwLampe(w) {
+  if (!_bjw || _BJW_N[w] === undefined) return;
+  const heller = _BJW_HELL[w] > _BJW_HELL[_bjw.lampe];
+  _bjw.lampe = w; _bjw.phase = 'bereit'; _bjw.lauf = 0; _bjw.uhr = 0; _bjw.n = 0;
+  _bjwFxLeer();
+  // Die Lampe rückt heran: ein weicher Lichtring an der Lampe
+  if (heller) _bioFxWelle(_bjw.fx.teile, _BJW_LX[w] + 34, 104, 'rgba(253,224,71,0.9)', 26);
+  _bjwStatus();
+}
+function _bjwZaehlen() {
+  if (!_bjw || _bjw.phase === 'zaehlt') return;
+  _bjwFxLeer();
+  _bjw.phase = 'zaehlt'; _bjw.lauf = 0; _bjw.uhr = 0; _bjw.n = 0;
+  _bjwStatus();
+}
+function _bjwNeu() {
+  if (!_bjw) return;
+  _bjw.gemessen = {}; _bjw.alleGezeigt = false;
+  _bjwLampe('mittel');
+}
+/* Sprungmarke: Lampe stellen und gleich 1 Minute zählen. */
+function _bjwMarke(w) {
+  if (!_bjw || _BJW_N[w] === undefined) return;
+  _bjwLampe(w);
+  _bjwZaehlen();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bjwZeile() {
+  const L = 'Lampe ' + _bjw.lampe;
+  if (_bjw.phase === 'bereit') return L + ' · Drücke „▶ 1 Minute zählen“.';
+  if (_bjw.phase === 'zaehlt')
+    return L + ' · Die Uhr läuft: ' + Math.floor(_bjw.uhr) + ' s · ' + _bjw.n + ' Bläschen gezählt';
+  return L + ' · ' + _BJW_N[_bjw.lampe] + ' Bläschen in 1 Minute';
+}
+function _bjwZaehlerText() {
+  if (_bjw.phase === 'bereit') return 'Bläschen in 1 Minute: noch nicht gezählt';
+  if (_bjw.phase === 'zaehlt') return 'Bläschen gezählt: ' + _bjw.n;
+  return 'Bläschen in 1 Minute: ' + _BJW_N[_bjw.lampe];
+}
+function _bjwStatus() {
+  if (!_bjw) return;
+  const z = _bjwZeile();
+  _bjw.letzt = z;
+  const el = document.getElementById('_bjw-status');
+  if (el) {
+    let h = z;
+    if (_bjw.phase === 'fertig' && _bjw.lampe === 'aus')
+      h += '<br>Keine Bläschen. Ohne Licht keine Fotosynthese.';
+    el.innerHTML = h;
+  }
+  const zl = document.getElementById('_bjw-zaehler');
+  if (zl) zl.textContent = _bjwZaehlerText();
+  try {
+    document.querySelectorAll('[data-bjw]').forEach(b => {
+      const w = b.getAttribute('data-bjw');
+      if (b.classList) b.classList.toggle('primary', w === _bjw.lampe);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_bjw-los');
+  if (los && los.classList) los.classList.toggle('primary', _bjw.phase !== 'zaehlt');
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+// Wo sitzt die Schnittstelle gerade? (der Zweig wiegt sich leicht)
+function _bjwCut() {
+  return { x: _BJW_CUT.x + Math.sin(_bjw.t * 0.9) * 1.6, y: _BJW_CUT.y };
+}
+// Ein Bläschen löst sich an der Schnittstelle.
+function _bjwBlase(gezaehlt) {
+  const i = _bjw.nr++, c = _bjwCut();
+  _bjw.bl.push({ x: c.x, y: c.y - 3, v: 40 + (i % 3) * 5, r: 2.6 + ((i * 7) % 5) * 0.35,
+                 ph: i * 1.7, z: gezaehlt, alter: 0 });
+  if (_bjw.bl.length > 80) _bjw.bl.shift();
+}
+function _bjwUpdate(dt) {
+  if (!_bjw) return;
+  dt = _bioFxDt(dt);
+  _bjw.t += dt;
+  const k = Math.min(1, dt * 3);
+  _bjw.lx += (_BJW_LX[_bjw.lampe] - _bjw.lx) * k;         // Lampe gleitet
+  _bjw.hell += (_BJW_HELL[_bjw.lampe] - _bjw.hell) * k;   // Schein blendet weich
+  _bjw.bump += dt;
+  const N = _BJW_N[_bjw.lampe];
+  if (_bjw.phase === 'zaehlt') {
+    _bjw.lauf += dt;
+    _bjw.uhr = Math.min(60, _bjw.lauf / _BJW_MIN * 60);
+    // Das k-te Bläschen löst sich bei (k + 0,5) · 60 s / N.
+    while (_bjw.n < N && (_bjw.n + 0.5) * 60 / N <= _bjw.uhr) {
+      _bjwBlase(true); _bjw.n++; _bjw.bump = 0;
+    }
+    if (_bjw.uhr >= 60) {
+      _bjw.uhr = 60; _bjw.phase = 'fertig'; _bjw.nach = 0; _bjw.schritt = 0;
+      _bjw.gemessen[_bjw.lampe] = true; _bjw.idle = 0.5;
+    }
+  } else if (N > 0) {
+    // auch ohne Zählen steigen Bläschen auf – im gleichen Takt
+    _bjw.idle += dt * N / _BJW_MIN;
+    while (_bjw.idle >= 1) { _bjw.idle -= 1; _bjwBlase(false); }
+  }
+  // Bläschen steigen, pendeln leicht, platzen am Wasserspiegel
+  for (let i = _bjw.bl.length - 1; i >= 0; i--) {
+    const b = _bjw.bl[i];
+    b.alter += dt;
+    b.y -= b.v * dt;
+    b.x += Math.sin(_bjw.t * 3 + b.ph) * 6 * dt;
+    if (b.y <= _BJW_GL.wsp + 2) {
+      _bioFxWelle(_bjw.fx.teile, b.x, _BJW_GL.wsp, 'rgba(255,255,255,0.75)', 8);
+      _bjw.bl.splice(i, 1);
+    }
+  }
+  if (_bjw.nach >= 0) { _bjw.nach += dt; _bjwNachher(); }
+  if (_bjwZeile() !== _bjw.letzt) _bjwStatus();
+  _bioFxAlleUpdate(_bjw.fx, dt);
+}
+
+/* ── Aha nach der Minute (nur Aufrufe der Bibliothek _bioFx) ───────────── */
+function _bjwNachher() {
+  const fx = _bjw.fx, N = _BJW_N[_bjw.lampe], t = _bjw.nach, c = _bjwCut();
+  if (_bjw.schritt === 0) {
+    _bjw.schritt = 1; _bjw.bump = 0;
+    _bioFxWelle(fx.teile, _BJW_ZX, _BJW_ZY, N > 0 ? 'rgba(250,204,21,0.95)' : '#94a3b8', 46);
+    if (N > 0) _bioFxBlasen(fx.teile, c.x, c.y - 6, Math.min(10, 3 + Math.round(N / 3)), 'rgba(200,245,215,1)');
+    else _bioFxWelle(fx.teile, c.x, c.y, '#94a3b8', 22);
+  }
+  if (_bjw.schritt === 1 && t >= 0.6) {
+    _bjw.schritt = 2;
+    if (N > 0) _bioFxFunken(fx.teile, _BJW_ZX, _BJW_ZY - 14, 6, ['#fde047', '#bbf7d0', '#ffffff']);
+    _bioFxBanner(fx, N + ' Bläschen in 1 Minute', 2.8, N > 0 ? '#86efac' : '#93c5fd');
+  }
+  if (_bjw.schritt === 2 && t >= 3.4) {
+    _bjw.schritt = 3;
+    const alle = _BJW_STUFEN.every(w => _bjw.gemessen[w]);
+    if (alle && !_bjw.alleGezeigt) {
+      _bjw.alleGezeigt = true;
+      _bioFxBanner(fx, 'Alle vier Lampen gezählt. Vergleiche!', 3.2, '#fde047');
+      for (const [x, y] of [[_BJW_ZX - 34, _BJW_ZY], [_BJW_ZX + 34, _BJW_ZY], [c.x, _BJW_GL.wsp]])
+        _bioFxFunken(fx.teile, x, y, 5, ['#fde047', '#fff7c2', '#bbf7d0']);
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bjwMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// Wasserpest: Stängel mit Quirlen aus je drei schmalen Blättchen.
+function _bjwPflanze(ctx, t, hell) {
+  const c = _bjwCut(), fuss = { x: 236, y: 226 };
+  const gruen = _bjwMisch('#3f6f45', '#2f9e44', hell), hellgruen = _bjwMisch('#5b8a5f', '#69c36b', hell);
+  // Stängel: vom Stein unten bis zur Schnittstelle oben
+  const pkt = u => {
+    const y = fuss.y + (c.y - fuss.y) * u;
+    const x = fuss.x + (c.x - fuss.x) * u + Math.sin(u * 3.1) * 5 + Math.sin(t * 0.9 + u * 2) * 1.8 * u;
+    return { x, y };
+  };
+  ctx.strokeStyle = gruen; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (let s = 0; s <= 20; s++) { const p = pkt(s / 20); s ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); }
+  ctx.stroke();
+  // Blattquirle: je drei schmale Blättchen, zur Spitze (unten) hin gerichtet
+  for (let q = 0; q < 11; q++) {
+    const u = 0.03 + q * 0.086, p = pkt(u);
+    const lang = 14 - q * 0.5, dreh = Math.sin(t * 1.1 + q) * 0.07;
+    const winkel = [-1.05, 1.05, q % 2 ? 0.4 : -0.4];
+    for (let j = 0; j < 3; j++) {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(winkel[j] + dreh);
+      ctx.fillStyle = j === 2 ? hellgruen : gruen;
+      ctx.beginPath(); ctx.ellipse(0, lang / 2, 2.6, lang / 2, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.restore();
+    }
+  }
+  // Schnittstelle: heller Querschnitt
+  ctx.fillStyle = '#e8f5d0'; ctx.strokeStyle = gruen; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(c.x, c.y, 3.2, 1.6, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Stein, an dem der Zweig mit einer Klammer hängt
+  ctx.fillStyle = '#8b8f97';
+  ctx.beginPath(); ctx.ellipse(fuss.x, fuss.y + 1, 14, 5, 0, 0, 2 * Math.PI); ctx.fill();
+}
+function _bjwLampeZeichnen(ctx, lx, hell, an) {
+  const fussY = 234, kopf = { x: lx + 34, y: 104 };
+  ctx.fillStyle = '#475569';
+  ctx.beginPath(); ctx.ellipse(lx, fussY, 20, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(lx, fussY - 2); ctx.lineTo(lx, 96); ctx.lineTo(kopf.x - 8, 90); ctx.stroke();
+  // Schirm (zeigt zum Glas)
+  ctx.save();
+  ctx.translate(kopf.x, kopf.y);
+  ctx.rotate(0.35);
+  if (an) {
+    ctx.fillStyle = _bjwMisch('#fef3c7', '#fde047', hell);
+    ctx.beginPath(); ctx.arc(12, 0, 6 + 2 * hell, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.moveTo(-10, -9); ctx.lineTo(4, -15); ctx.lineTo(14, -12); ctx.lineTo(14, 12);
+  ctx.lineTo(4, 15); ctx.lineTo(-10, 9); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  return kopf;
+}
+function _bjwDraw(ctx, cv) {
+  if (!_bjw) return;
+  const W = cv.width, H = cv.height, t = _bjw.t, hell = _bjw.hell;
+  const an = _bjw.lampe !== 'aus';
+  ctx.clearRect(0, 0, W, H);
+  // Raum: je dunkler die Lampe, desto dämmriger (weich überblendet)
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, _bjwMisch('#aab4c6', '#fbf5e6', 0.25 + 0.75 * hell));
+  bg.addColorStop(1, _bjwMisch('#98a3b6', '#f0e4c8', 0.25 + 0.75 * hell));
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tisch
+  ctx.fillStyle = _bjwMisch('#8a7a66', '#c9a77c', 0.3 + 0.7 * hell);
+  ctx.fillRect(0, 234, W, H - 234);
+
+  // Lichtschein der Lampe (weich, ohne Strahlenlinien)
+  const kx = _bjw.lx + 46, ky = 108;
+  if (hell > 0.02) {
+    const r = 120 + 60 * hell;
+    const g = ctx.createRadialGradient(kx, ky, 4, kx + 60, ky + 20, r);
+    g.addColorStop(0, 'rgba(253,230,138,' + (0.75 * hell).toFixed(3) + ')');
+    g.addColorStop(0.5, 'rgba(253,230,138,' + (0.30 * hell).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(253,230,138,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(kx + 60, ky + 20, r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Glas mit Wasser
+  const G = _BJW_GL;
+  const wasser = ctx.createLinearGradient(G.x0, 0, G.x1, 0);
+  wasser.addColorStop(0, _bjwMisch('#7fa3bf', '#cfe9f7', 0.3 + 0.7 * hell));
+  wasser.addColorStop(1, _bjwMisch('#6d8fab', '#b5dbf0', 0.3 + 0.7 * hell));
+  ctx.fillStyle = wasser;
+  ctx.beginPath(); ctx.moveTo(G.x0 + 3, G.y1 - 2);
+  for (let x = G.x0 + 3; x <= G.x1 - 3; x += 4) ctx.lineTo(x, G.wsp + Math.sin(x * 0.15 + t * 2.2) * 1.3);
+  ctx.lineTo(G.x1 - 3, G.y1 - 2); ctx.closePath(); ctx.fill();
+
+  _bjwPflanze(ctx, t, hell);
+
+  // Bläschen (gezählte mit hellem Rand, damit man mitzählen kann)
+  for (const b of _bjw.bl) {
+    const ein = Math.min(1, b.alter / 0.25);
+    ctx.save();
+    ctx.globalAlpha = 0.5 + 0.5 * ein;
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.strokeStyle = b.z ? '#ffffff' : 'rgba(240,250,255,0.85)';
+    ctx.lineWidth = b.z ? 1.8 : 1.2;
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r * (0.6 + 0.4 * ein), 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.arc(b.x - b.r * 0.35, b.y - b.r * 0.35, b.r * 0.28, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  // Glaswand
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(G.x0, G.y0); ctx.lineTo(G.x0, G.y1); ctx.lineTo(G.x1, G.y1); ctx.lineTo(G.x1, G.y0); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.65)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(G.x0 + 8, G.y0 + 30); ctx.lineTo(G.x0 + 8, G.y1 - 20); ctx.stroke();
+
+  // Lampe (nach dem Schein, damit sie scharf bleibt)
+  _bjwLampeZeichnen(ctx, _bjw.lx, hell, an);
+
+  // Beschriftungen wie im Bildauftrag
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Wasserpest', (G.x0 + G.x1) / 2, 247);
+  ctx.textAlign = 'left';
+  ctx.fillText('Lampe: ' + _bjw.lampe, 8, 247);
+  if (_BJW_N[_bjw.lampe] > 0 || _bjw.bl.length) {
+    ctx.textAlign = 'center';
+    ctx.fillText('Bläschen mit Sauerstoff', (G.x0 + G.x1) / 2, 18);
+    ctx.strokeStyle = 'rgba(15,23,42,0.55)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(_BJW_CUT.x, 22); ctx.lineTo(_BJW_CUT.x, G.wsp - 4); ctx.stroke();
+  }
+
+  // Rechte Spalte: Stoppuhr
+  const ux = _BJW_ZX, uy = 62, ur = 32;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
+  ctx.fillRect(ux - 5, uy - ur - 9, 10, 7);
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (_bjw.uhr > 0) {
+    ctx.fillStyle = 'rgba(134,239,172,0.55)';
+    ctx.beginPath(); ctx.moveTo(ux, uy);
+    ctx.arc(ux, uy, ur - 4, -Math.PI / 2, -Math.PI / 2 + _bjw.uhr / 60 * 2 * Math.PI); ctx.closePath(); ctx.fill();
+  }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  for (let s = 0; s < 12; s++) {
+    const w = s / 12 * 2 * Math.PI;
+    ctx.beginPath(); ctx.moveTo(ux + Math.sin(w) * (ur - 3), uy - Math.cos(w) * (ur - 3));
+    ctx.lineTo(ux + Math.sin(w) * (ur - (s % 3 ? 7 : 10)), uy - Math.cos(w) * (ur - (s % 3 ? 7 : 10))); ctx.stroke();
+  }
+  const wz = _bjw.uhr / 60 * 2 * Math.PI;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.sin(wz) * (ur - 8), uy - Math.cos(wz) * (ur - 8)); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(ux, uy, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(Math.floor(_bjw.uhr) + ' s', ux, uy + ur + 15);
+  if (_bjw.phase === 'zaehlt') {
+    ctx.font = '700 10px sans-serif'; ctx.fillStyle = 'rgba(15,23,42,0.7)';
+    ctx.fillText('▶▶ Zeitraffer', ux, 12);
+  }
+
+  // Zähler
+  if (_bjw.nach >= 0 && _bjw.nach < 1.8) _bioFxLeuchten(ctx, _BJW_ZX, _BJW_ZY, 30, t, '250,204,21');
+  const bx = _BJW_ZX - 46, by = _BJW_ZY - 30;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, bx, by, 92, 64, 10); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('Bläschen', _BJW_ZX, by + 14);
+  const zahl = _bjw.phase === 'bereit' ? '–' : String(_bjw.phase === 'zaehlt' ? _bjw.n : _BJW_N[_bjw.lampe]);
+  const hop = _bjw.bump < 0.4 ? _bioFxEase.federn(_bioFxKlemme(_bjw.bump / 0.4)) : 1;
+  ctx.save();
+  ctx.translate(_BJW_ZX, by + 40);
+  ctx.scale(1.35 - 0.35 * hop, 1.35 - 0.35 * hop);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 26px sans-serif'; ctx.textBaseline = 'middle';
+  ctx.fillText(zahl, 0, 0);
+  ctx.restore();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_bjw.phase === 'fertig' ? 'in 1 Minute' : _bjw.phase === 'zaehlt' ? 'gezählt' : 'noch nicht gezählt',
+               _BJW_ZX, by + 60);
+
+  _bioFxAlleDraw(ctx, _bjw.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DIE ALTE BUCHE IM JAHRESLAUF   (Förderheft Bio 5/6 · bj4)
+// Eine Pflanze im Schulgarten, darüber der Bogen der Sonne; die Sonne steht
+// auf dem Scheitel des Bogens (mittags). Rechts ein Thermometer und eine Uhr
+// mit den hellen Stunden, darunter für die Buche eine Lupe auf eine Knospe.
+// Der Boden ist aufgeschnitten: Wurzeln, Zwiebeln und Samen sind zu sehen.
+// Modellwerte (Lehrerteil, NRW 51° Nord, Monatsmitte):
+//   März      Sonne mittags mittel (39°) · 12 Stunden hell ·  6 °C
+//   Juni      Sonne mittags hoch   (62°) · 17 Stunden hell · 17 °C
+//   September Sonne mittags mittel (42°) · 13 Stunden hell · 15 °C
+//   Dezember  Sonne mittags tief   (15°) ·  8 Stunden hell ·  3 °C
+// Zwischen den vier Monaten wird glatt (periodisch, Catmull-Rom) gerechnet;
+// die vier Stützstellen trifft die Kurve exakt.
+// Buche: Laubaustrieb Ende April, Verfärben ab September, Laubfall Oktober/
+// November; die Knospen sitzen den ganzen Winter an den Zweigspitzen.
+// Schneeglöckchen: Austrieb Februar, Blüte Februar/März, im Mai eingezogen;
+// sonst nur die Zwiebel in der Erde. Sonnenblume: keimt Ende April, blüht
+// Juli bis September, Samen fallen im September, die Pflanze stirbt ab;
+// die Samen überdauern im Boden.
+// Aha (Bibliothek _bioFx): „▶ Ein Jahr im Zeitraffer“ – der Sonnenbogen wird
+// flacher, die Blätter färben sich und segeln einzeln ab, die Knospen bleiben
+// (Lupe leuchtet ruhig), im Frühling treiben sie mit einem Schimmer aus.
+// Monatswechsel gleiten immer VORWÄRTS durch das Jahr (0,6–1,7 s). Kein Text
+// im Bild nimmt Tabellenwerte oder Lückenwörter vorweg; kein Blinken, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _bjj = null;
+const _BJJ_MON = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
+  'August', 'September', 'Oktober', 'November', 'Dezember'];
+const _BJJ_PLAN = [2, 5, 8, 11];                     // März, Juni, September, Dezember
+const _BJJ_WINKEL = [39, 62, 42, 15];                // Sonnenhöhe mittags in Grad
+const _BJJ_HELL = [12, 17, 13, 8];                   // helle Stunden
+const _BJJ_GRAD = [6, 17, 15, 3];                    // °C
+const _BJJ_STAND = ['mittel', 'hoch', 'mittel', 'tief'];
+const _BJJ_NAME = { buche: 'Buche', schnee: 'Schneeglöckchen', sonne: 'Sonnenblume' };
+const _BJJ_BILD = {
+  buche:  ['kahl, Knospen werden dick', 'viele grüne Blätter', 'Blätter werden gelb und rot', 'kahl, nur Knospen'],
+  schnee: ['blüht', 'nichts über der Erde · Zwiebel in der Erde',
+           'nichts über der Erde · Zwiebel in der Erde', 'nichts über der Erde · Zwiebel in der Erde'],
+  sonne:  ['noch nichts zu sehen · Samen im Boden', 'wächst · grüne Blätter',
+           'blüht · Samen werden reif', 'Pflanze abgestorben · Samen im Boden']
+};
+const _BJJ_ZR_MON = 0.8;                             // s je Monat im Zeitraffer
+const _BJJ_HALT = 0.8;                               // s Halt an jedem der vier Monate
+const _BJJ_HOR = 198;                                // Horizont (Grasoberkante)
+const _BJJ_SX = 125;                                 // Sonne mittags: x
+const _BJJ_BX = 250;                                 // Pflanze: x
+
+function _bjjZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+// Der Baum wird einmal fest gewachsen (gleicher Baum bei jedem Öffnen).
+function _bjjBaum() {
+  const z = _bjjZufall(31);
+  const aeste = [], spitzen = [];
+  function ast(x, y, w, l, tiefe, dicke) {
+    const x2 = x + Math.cos(w) * l, y2 = y + Math.sin(w) * l;
+    aeste.push([x, y, x2, y2, dicke]);
+    if (tiefe === 0) { spitzen.push({ x: x2, y: y2, w }); return; }
+    const sp = 0.36 + z() * 0.14;
+    ast(x2, y2, w - sp, l * (0.7 + z() * 0.08), tiefe - 1, dicke * 0.62);
+    ast(x2, y2, w + sp, l * (0.7 + z() * 0.08), tiefe - 1, dicke * 0.62);
+  }
+  const bx = _BJJ_BX, top = 150;
+  aeste.push([bx, _BJJ_HOR + 4, bx, top, 11]);
+  ast(bx, top, -Math.PI / 2, 32, 3, 6);
+  ast(bx, top + 4, -Math.PI / 2 - 0.62, 30, 3, 5.5);
+  ast(bx, top + 4, -Math.PI / 2 + 0.62, 30, 3, 5.5);
+  const gruen = ['#4e9a3e', '#5aa845', '#3f8a35', '#66b04f'];
+  const herbst = ['#e8b923', '#e07b24', '#c0392b', '#d9a21b', '#b5651d'];
+  const blaetter = [];
+  for (const s of spitzen) {
+    for (let k = 0; k < 7; k++) {
+      const a = z() * Math.PI * 2, r = 2 + z() * 13;
+      blaetter.push({ x: s.x + Math.cos(a) * r, y: s.y + Math.sin(a) * r * 0.8,
+        w: z() * Math.PI, gruen: gruen[Math.floor(z() * gruen.length)],
+        herbst: herbst[Math.floor(z() * herbst.length)],
+        aus: z() * 0.25,                   // Verzögerung beim Austreiben
+        farb: 7.6 + z() * 1.3,             // ab hier färbt es sich
+        fall: 9.35 + z() * 1.2,            // hier fällt es ab
+        ph: z() * 6.28 });
+    }
+  }
+  return { aeste, spitzen, blaetter };
+}
+function _bjjInit() {
+  const z = _bjjZufall(7);
+  const gras = [];
+  for (let i = 0; i < 60; i++) gras.push([z() * 330, z() * 6.28, 4 + z() * 5]);
+  const steine = [];
+  for (let i = 0; i < 26; i++) steine.push([z() * 420, 210 + z() * 36, 1 + z() * 2]);
+  _bjj = { p: 5.5, monat: 5, pflanze: 'buche', t: 0, letzt: '',
+    gleit: null, zr: null, wechsel: 1, deko: 0, fruehling: false,
+    fx: { teile: [] }, baum: _bjjBaum(), gras, steine,
+    wolken: [[40, 40, 1], [190, 26, 0.8], [300, 60, 0.9]] };
+}
+function _bjjPM() { return ((_bjj.p % 12) + 12) % 12; }
+// Ist die Zeit genau in der Mitte eines der vier Monate? -> Index 0..3, sonst -1
+function _bjjAmPlan() {
+  const pm = _bjjPM();
+  for (let i = 0; i < 4; i++) if (Math.abs(pm - (_BJJ_PLAN[i] + 0.5)) < 1e-6) return i;
+  return -1;
+}
+// Periodische glatte Kurve durch die vier Monatswerte (Stützstellen exakt).
+function _bjjGlatt(w, pm) {
+  const s = (pm - 2.5) / 3, i = Math.floor(s), u = s - i;
+  const P = k => w[((k % 4) + 4) % 4];
+  const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+  return 0.5 * (2 * p1 + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u * u +
+                (-p0 + 3 * p1 - 3 * p2 + p3) * u * u * u);
+}
+// Überschreitet die Zeit zwischen a und b (a < b) die Jahresmarke th?
+function _bjjKreuzt(a, b, th) { return Math.floor((b - th) / 12) > Math.floor((a - th) / 12); }
+function _bjjMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+
+function _bjjHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bjj="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Die alte Buche im Jahreslauf</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Pflanze im Schulgarten. Darüber der Bogen der Sonne. Mittags steht die Sonne oben auf dem Bogen. Stelle den Monat ein und beobachte.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bjj-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bjj-zr" onclick="_bjjJahr()">▶ Ein Jahr im Zeitraffer</button>
+          <button class="sim-btn" onclick="_bjjNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Monat</span>
+          <div class="sim-btn-row">
+            ${k('m2', '_bjjMonat(2)', 'März')}
+            ${k('m5', '_bjjMonat(5)', 'Juni')}
+            ${k('m8', '_bjjMonat(8)', 'September')}
+            ${k('m11', '_bjjMonat(11)', 'Dezember')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Pflanze</span>
+          <div class="sim-btn-row">
+            ${k('pbuche', "_bjjPflanze('buche')", 'Buche')}
+            ${k('pschnee', "_bjjPflanze('schnee')", 'Schneeglöckchen')}
+            ${k('psonne', "_bjjPflanze('sonne')", 'Sonnenblume')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_bjj-status" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_bjj-bild" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bjjMarke(2,'buche')">März, Buche</button>
+          <button class="sim-btn" onclick="_bjjMarke(5,'buche')">Juni, Buche</button>
+          <button class="sim-btn" onclick="_bjjMarke(8,'buche')">September, Buche</button>
+          <button class="sim-btn" onclick="_bjjMarke(11,'buche')">Dezember, Buche</button>
+          <button class="sim-btn" onclick="_bjjMarke(11,'schnee')">Dezember, Schneeglöckchen</button>
+          <button class="sim-btn" onclick="_bjjMarke(2,'schnee')">März, Schneeglöckchen</button>
+          <button class="sim-btn" onclick="_bjjMarke(11,'sonne')">Dezember, Sonnenblume</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Links steht, wie hoch die Sonne mittags steht: <b>hoch</b>, <b>mittel</b> oder <b>tief</b>. Das Thermometer zeigt die Wärme. Die Uhr zeigt, wie viele Stunden es hell ist. Der Boden ist aufgeschnitten.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bjjHalt() { _bjj.zr = null; _bjj.zeitlupe = null; }
+function _bjjMonat(m) {
+  if (!_bjj) return;
+  m = Number(m);
+  if (_BJJ_PLAN.indexOf(m) < 0) return;
+  _bjjHalt();
+  const d = (((m + 0.5 - _bjjPM()) % 12) + 12) % 12;
+  if (d < 1e-6) { _bjj.gleit = null; _bjj.p = Math.round(_bjj.p * 2) / 2; }
+  else _bjj.gleit = { ziel: _bjj.p + d, v: d / (0.5 + 0.11 * d) };   // immer vorwärts durchs Jahr
+  _bjj.monat = m;
+  const s = _bjjSonne(m + 0.5);
+  _bioFxWelle(_bjj.fx.teile, s.x, s.y, '#ffe27a', 30);
+  _bjjStatus();
+}
+function _bjjPflanze(k) {
+  if (!_bjj || !_BJJ_NAME[k]) return;
+  _bjj.pflanze = String(k); _bjj.wechsel = 0;
+  _bioFxWelle(_bjj.fx.teile, _BJJ_BX, 170, '#c5e1a5', 60);
+  _bjjStatus();
+}
+function _bjjMarke(m, k) {
+  if (!_bjj) return;
+  _bjjHalt(); _bjj.gleit = null;
+  _bjj.fx = { teile: [] };
+  _bjj.p = Number(m) + 0.5; _bjj.monat = Number(m);
+  if (_BJJ_NAME[k]) _bjj.pflanze = String(k);
+  _bjj.wechsel = 0;
+  _bioFxWelle(_bjj.fx.teile, _BJJ_BX, 170, '#fff3b0', 60);
+  _bjjStatus();
+}
+function _bjjNeu() { _bjjMarke(5, 'buche'); }
+function _bjjJahr() {
+  if (!_bjj || _bjj.zr) return;
+  if (_bjj.gleit) { _bjj.p = _bjj.gleit.ziel; _bjj.gleit = null; }
+  _bjj.p = Math.floor(_bjj.p) + 0.5;
+  _bjj.zr = { start: _bjj.p, ende: _bjj.p + 12, halt: 0 };
+  _bjj.fruehling = false;
+  _bioFxBanner(_bjj.fx, 'Ein Jahr im Zeitraffer', 2.2, '#fde68a');
+  _bjjStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bjjZeile() {
+  const pi = _BJJ_PLAN.indexOf(_bjj.monat);
+  if ((_bjj.zr && _bjjAmPlan() < 0) || pi < 0) return 'Zeitraffer · ' + _BJJ_MON[_bjj.monat];
+  return _BJJ_MON[_bjj.monat] + ' · Sonne mittags: ' + _BJJ_STAND[pi] + ' · ' +
+         _BJJ_HELL[pi] + ' Stunden hell · ' + _BJJ_GRAD[pi] + ' °C';
+}
+function _bjjBildtext() {
+  const pi = _BJJ_PLAN.indexOf(_bjj.monat), n = _BJJ_NAME[_bjj.pflanze];
+  if ((_bjj.zr && _bjjAmPlan() < 0) || pi < 0) return n;
+  return n + ': ' + _BJJ_BILD[_bjj.pflanze][pi];
+}
+function _bjjStatus() {
+  if (!_bjj) return;
+  const z = _bjjZeile(), b = _bjjBildtext();
+  _bjj.letzt = z + '|' + b;
+  const el = document.getElementById('_bjj-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const eb = document.getElementById('_bjj-bild');
+  if (eb) { eb.textContent = b; eb.className = 'lmp-status on'; }
+  document.querySelectorAll('[data-bjj]').forEach(bt => {
+    const d = String(bt.getAttribute('data-bjj'));
+    const an = d === 'm' + _bjj.monat || d === 'p' + _bjj.pflanze;
+    bt.classList.toggle('primary', an);
+  });
+  const zr = document.getElementById('_bjj-zr');
+  if (zr) zr.classList.toggle('primary', !_bjj.zr);
+}
+
+/* ── Zeit ──────────────────────────────────────────────────────────────── */
+function _bjjUpdate(dt) {
+  if (!_bjj) return;
+  dt = _bioFxDt(dt);
+  _bjj.t += dt;
+  const vorher = _bjj.p;
+  if (_bjj.zr) {
+    const zr = _bjj.zr;
+    if (zr.halt > 0) {
+      zr.halt -= dt;
+    } else {
+      const f = _bioFxZeitlupeFaktor(_bjj, dt);
+      let neu = _bjj.p + dt * f / _BJJ_ZR_MON;
+      // nächster der vier Monate: dort kurz anhalten
+      const pm = _bjjPM();
+      let naechst = Infinity;
+      for (const m of _BJJ_PLAN) {
+        const d = (((m + 0.5 - pm) % 12) + 12) % 12;
+        if (d > 1e-6) naechst = Math.min(naechst, _bjj.p + d);
+      }
+      if (neu >= zr.ende) {
+        _bjj.p = zr.ende; _bjj.zr = null; _bjj.zeitlupe = null;
+        _bioFxWelle(_bjj.fx.teile, _BJJ_BX, 150, '#fff3b0', 70);
+      } else if (neu >= naechst) {
+        _bjj.p = naechst; zr.halt = _BJJ_HALT;
+      } else _bjj.p = neu;
+    }
+    _bjj.monat = Math.floor(_bjjPM() + 1e-9) % 12;
+  } else if (_bjj.gleit) {
+    _bjj.p += _bjj.gleit.v * dt;
+    if (_bjj.p >= _bjj.gleit.ziel) { _bjj.p = _bjj.gleit.ziel; _bjj.gleit = null; }
+  }
+  if (_bjj.p > vorher) _bjjEreignisse(vorher, _bjj.p);
+  _bjjDeko(dt);
+  _bjj.wechsel = Math.min(1, _bjj.wechsel + dt / 0.5);
+  for (const w of _bjj.wolken) { w[0] += 6 * w[2] * dt; if (w[0] > 360) w[0] = -70; }
+  _bioFxAlleUpdate(_bjj.fx, dt);
+  if (_bjjZeile() + '|' + _bjjBildtext() !== _bjj.letzt) _bjjStatus();
+}
+// Was beim Durchlaufen der Zeit geschieht (nur vorwärts, nie beim Springen).
+function _bjjEreignisse(a, b) {
+  const fx = _bjj.fx, zr = !!_bjj.zr, T = fx.teile;
+  const fruehling = () => {
+    if (zr && !_bjj.fruehling) {
+      _bjj.fruehling = true;
+      _bioFxZeitlupe(_bjj, 0.35, 1.4);
+      _bioFxBanner(fx, 'Der Frühling kommt!', 2.4, '#bbf7d0');
+    }
+  };
+  if (_bjj.pflanze === 'buche') {
+    for (const bl of _bjj.baum.blaetter)
+      if (_bjjKreuzt(a, b, bl.fall)) _bioFxBlaetter(T, bl.x, bl.y, 1, [bl.herbst]);
+    if (_bjjKreuzt(a, b, 3.85)) {                    // Knospen treiben aus
+      const sp = _bjj.baum.spitzen;
+      for (let i = 0; i < sp.length; i += 4)
+        _bioFxFunken(T, sp[i].x, sp[i].y, 3, ['#c5f28a', '#fff3b0', '#8bc34a']);
+      _bioFxWelle(T, _BJJ_BX, 105, '#c5f28a', 80);
+      _bioFxWelle(T, 392, 146, '#c5f28a', 28);
+      fruehling();
+    }
+  } else if (_bjj.pflanze === 'schnee') {
+    if (_bjjKreuzt(a, b, 1.6)) {                     // Blüten öffnen sich
+      for (const x of [224, 250, 274]) _bioFxFunken(T, x + 8, 160, 3, ['#ffffff', '#e0f2fe', '#fff3b0']);
+      _bioFxWelle(T, _BJJ_BX, 165, '#e0f2fe', 55);
+      fruehling();
+    }
+  } else {
+    if (_bjjKreuzt(a, b, 3.95)) {                    // Samen keimt
+      _bioFxFunken(T, _BJJ_BX, 204, 5, ['#c5f28a', '#fff3b0', '#8bc34a']);
+      _bioFxWelle(T, _BJJ_BX, 206, '#c5f28a', 30);
+      fruehling();
+    }
+    if (_bjjKreuzt(a, b, 6.95)) {                    // Blüte öffnet sich
+      const k = _bjjSbKopf(6.95);
+      _bioFxFunken(T, k.x, k.y, 8, ['#ffd84d', '#fff3b0', '#ffb84d']);
+      _bioFxWelle(T, k.x, k.y, '#ffd84d', 40);
+    }
+    for (let j = 0; j < 5; j++) {                    // Samen fallen in den Boden
+      const th = 9.05 + j * 0.15;
+      if (_bjjKreuzt(a, b, th)) {
+        const k = _bjjSbKopf(th);
+        _bioFxNeu(T, { art: 'punkt', x: k.x + (j - 2) * 3, y: k.y + 6, vx: (222 + j * 14 - k.x) * 1.4,
+          vy: 20, g: 260, alter: 0, leben: 0.6, r: 2.2, farbe: '#3b2a1a', dreh: 0, dw: 0 });
+      }
+    }
+  }
+}
+// Ruhige Bewegung ohne Zeitlauf: im Herbst segelt ab und zu ein Blatt.
+function _bjjDeko(dt) {
+  if (_bjj.pflanze !== 'buche' || _bjj.gleit || _bjj.zr) return;
+  const pm = _bjjPM();
+  if (pm < 8 || pm > 10.5) return;
+  _bjj.deko += dt;
+  if (_bjj.deko < 1.7) return;
+  _bjj.deko = 0;
+  const bl = _bjj.baum.blaetter, i = Math.floor((_bjj.t * 7.3) % bl.length);
+  const b = bl[i];
+  if (pm < b.fall) _bioFxBlaetter(_bjj.fx.teile, b.x, b.y, 1, [_bjjMisch(b.gruen, b.herbst, (pm - b.farb) / 0.9)]);
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+function _bjjSonne(pm) {
+  const w = _bjjGlatt(_BJJ_WINKEL, pm);
+  return { w, x: _BJJ_SX, y: _BJJ_HOR - w * 2.3 };
+}
+function _bjjKnospe(pm) {                             // Größe und Öffnen der Knospe
+  if (pm < 3.8) return { g: 1 + 0.8 * _bioFxKlemme((pm - 1.2) / 2.4), auf: 0 };
+  if (pm < 4.4) return { g: 1.8, auf: (pm - 3.8) / 0.6 };
+  return { g: 0.6 + 0.4 * _bioFxKlemme((pm - 6) / 2), auf: 0 };
+}
+// Sonnenblume: Zustand zur Zeit pm
+function _bjjSb(pm) {
+  const tot = pm < 2.2;                               // Reste vom Vorjahr
+  const q = tot ? 11.99 : pm;
+  const hgt = 150 * _bioFxEase.sanft(_bioFxKlemme((q - 3.9) / 3.2));
+  return { da: tot || pm >= 3.9, q, hgt,
+    alpha: tot ? 1 - pm / 2.2 : 1,
+    kopf: _bioFxKlemme((q - 6.3) / 0.5), auf: _bioFxKlemme((q - 6.8) / 0.3),
+    blatt: 1 - _bioFxKlemme((q - 8.7) / 0.5), neig: _bioFxKlemme((q - 9.0) / 0.8),
+    braun: _bioFxKlemme((q - 9.2) / 0.8), knick: _bioFxKlemme((q - 10.0) / 0.6) };
+}
+function _bjjSbKopf(pm) {
+  const s = _bjjSb(pm), sw = Math.sin(_bjj.t * 1.2) * 2 * s.hgt / 150;
+  return { x: _BJJ_BX + sw + 40 * s.knick, y: _BJJ_HOR + 6 - s.hgt + 62 * s.knick };
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bjjDraw(ctx, cv) {
+  if (!_bjj) return;
+  const W = cv.width, H = cv.height, t = _bjj.t, pm = _bjjPM();
+  const son = _bjjSonne(pm), grad = _bjjGlatt(_BJJ_GRAD, pm), hell = _bjjGlatt(_BJJ_HELL, pm);
+  const sommer = _bioFxKlemme((son.w - 15) / 47);
+  ctx.clearRect(0, 0, W, H);
+  // Himmel
+  const bg = ctx.createLinearGradient(0, 0, 0, _BJJ_HOR);
+  bg.addColorStop(0, _bjjMisch('#aebfd0', '#62ace8', sommer));
+  bg.addColorStop(1, _bjjMisch('#e6ebef', '#d6ecfb', sommer));
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, _BJJ_HOR + 2);
+  // Wolken
+  for (const w of _bjj.wolken) {
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.beginPath();
+    ctx.ellipse(w[0], w[1], 22, 9, 0, 0, 2 * Math.PI);
+    ctx.ellipse(w[0] + 16, w[1] - 5, 15, 9, 0, 0, 2 * Math.PI);
+    ctx.ellipse(w[0] + 30, w[1], 17, 8, 0, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+  _bjjSonneDraw(ctx, son, t);
+  _bjjBoden(ctx, W, H, grad, t);
+  // Pflanze (beim Wechsel weich eingeblendet)
+  ctx.save();
+  ctx.globalAlpha = 0.25 + 0.75 * _bioFxEase.sanft(_bjj.wechsel);
+  if (_bjj.pflanze === 'buche') _bjjBuche(ctx, pm, t);
+  else if (_bjj.pflanze === 'schnee') _bjjSchnee(ctx, pm, t);
+  else _bjjSonnenblume(ctx, pm, t);
+  ctx.restore();
+  _bjjTafel(ctx, pm, grad, hell, t);
+  // Monat groß oben links
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_BJJ_MON[Math.floor(pm + 1e-9) % 12], 46, 24);
+  if (_bjj.zr) {
+    ctx.font = '700 11px sans-serif'; ctx.fillStyle = 'rgba(15,23,42,0.7)';
+    ctx.fillText(_bjj.zeitlupe ? '▶ Zeitlupe' : (_bjj.zr.halt > 0 ? '▶▶ Zeitraffer · Halt' : '▶▶ Zeitraffer'), 46, 40);
+  }
+  // Bildtext zur Pflanze
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#fff8e7';
+  ctx.fillText(_bjj.gleit ? _BJJ_NAME[_bjj.pflanze] : _bjjBildtext(), 10, H - 7);
+  ctx.restore();
+  _bioFxAlleDraw(ctx, _bjj.fx);
+}
+function _bjjSonneDraw(ctx, son, t) {
+  const hoch = _BJJ_HOR - son.y;
+  ctx.save();
+  // Tagesbogen der Sonne
+  if (ctx.setLineDash) ctx.setLineDash([5, 5]);
+  ctx.strokeStyle = 'rgba(217,119,6,0.75)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(_BJJ_SX, _BJJ_HOR, 85, hoch, 0, Math.PI, 2 * Math.PI); ctx.stroke();
+  // Hilfslinie zur Skala
+  ctx.strokeStyle = 'rgba(15,23,42,0.35)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(40, son.y); ctx.lineTo(son.x - 14, son.y); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  // Skala links: hoch, mittel, tief
+  const marken = [['hoch', 62], ['mittel', 40.5], ['tief', 15]];
+  const akt = son.w >= 51 ? 0 : son.w >= 27 ? 1 : 2;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(38, 44); ctx.lineTo(38, _BJJ_HOR); ctx.stroke();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  marken.forEach(([txt, w], i) => {
+    const y = _BJJ_HOR - w * 2.3;
+    ctx.beginPath(); ctx.moveTo(33, y); ctx.lineTo(43, y); ctx.stroke();
+    if (i === akt) {
+      ctx.fillStyle = 'rgba(253,224,71,0.9)';
+      _bioFxRundRect(ctx, 1, y - 8, 33, 16, 7); ctx.fill();
+    }
+    ctx.fillStyle = i === akt ? '#0f172a' : 'rgba(15,23,42,0.6)';
+    ctx.fillText(txt, 3, y + 0.5, 30);
+  });
+  ctx.textBaseline = 'alphabetic';
+  // Sonne: ruhiger Schein (0,25 Hz) und Strahlen zur Pflanze
+  const puls = 0.5 + 0.5 * Math.sin(t * Math.PI * 0.5);
+  const g = ctx.createRadialGradient(son.x, son.y, 6, son.x, son.y, 30 + 4 * puls);
+  g.addColorStop(0, 'rgba(255,221,87,0.75)'); g.addColorStop(1, 'rgba(255,221,87,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(son.x, son.y, 34, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fcd34d'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(son.x, son.y, 11, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _bjjBoden(ctx, W, H, grad, t) {
+  ctx.save();
+  // Erde im Schnitt
+  const eg = ctx.createLinearGradient(0, _BJJ_HOR + 6, 0, H);
+  eg.addColorStop(0, '#7a5534'); eg.addColorStop(1, '#4b321e');
+  ctx.fillStyle = eg; ctx.fillRect(0, _BJJ_HOR + 5, W, H - _BJJ_HOR);
+  ctx.fillStyle = 'rgba(255,240,220,0.18)';
+  for (const s of _bjj.steine) { ctx.beginPath(); ctx.arc(s[0], s[1], s[2], 0, 2 * Math.PI); ctx.fill(); }
+  // Gras: im Sommer grün, im Winter fahl; bei Kälte Reif
+  const gf = _bjjMisch('#a39f6e', '#58a743', (grad - 3) / 14);
+  ctx.fillStyle = gf; ctx.fillRect(0, _BJJ_HOR, W, 7);
+  ctx.strokeStyle = gf; ctx.lineWidth = 1.4;
+  for (const g of _bjj.gras) {
+    const sw = Math.sin(t * 1.3 + g[1]) * 1.5;
+    ctx.beginPath(); ctx.moveTo(g[0], _BJJ_HOR + 2); ctx.lineTo(g[0] + sw, _BJJ_HOR - g[2]); ctx.stroke();
+  }
+  const reif = _bioFxKlemme((5.5 - grad) / 2.5);
+  if (reif > 0) {
+    for (let i = 0; i < 24; i++) {
+      const x = (i * 37) % 330 + 4, y = _BJJ_HOR + 1 + (i % 3) * 2;
+      ctx.fillStyle = 'rgba(255,255,255,' + (reif * (0.55 + 0.35 * Math.sin(t * 1.2 + i))).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(x, y, 1.5, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+function _bjjBuche(ctx, pm, t) {
+  const B = _bjj.baum, wind = Math.sin(t * 0.9) * 0.8;
+  // Wurzeln im Boden
+  ctx.strokeStyle = '#5d4a3a'; ctx.lineCap = 'round';
+  for (const [dx, dy, d] of [[-34, 26, 4], [30, 30, 4], [-8, 36, 3], [52, 18, 2.5], [-54, 16, 2.5]]) {
+    ctx.lineWidth = d;
+    ctx.beginPath(); ctx.moveTo(_BJJ_BX, _BJJ_HOR + 6);
+    ctx.quadraticCurveTo(_BJJ_BX + dx * 0.3, _BJJ_HOR + 6 + dy * 0.7, _BJJ_BX + dx, _BJJ_HOR + 6 + dy); ctx.stroke();
+  }
+  // Stamm und Äste (Buche: glatte graue Rinde)
+  for (const [x1, y1, x2, y2, d] of B.aeste) {
+    const k = (_BJJ_HOR - y2) / 150;
+    ctx.strokeStyle = '#7d7a72'; ctx.lineWidth = d;
+    ctx.beginPath(); ctx.moveTo(x1 + wind * (_BJJ_HOR - y1) / 150, y1); ctx.lineTo(x2 + wind * k, y2); ctx.stroke();
+  }
+  // Knospen an den Zweigspitzen
+  const kn = _bjjKnospe(pm);
+  for (const s of B.spitzen) {
+    const x = s.x + wind * (_BJJ_HOR - s.y) / 150, y = s.y;
+    _bjjKnospeDraw(ctx, x, y, s.w, kn.g, kn.auf, 1);
+  }
+  // Blätter
+  for (const b of B.blaetter) {
+    const g = _bioFxKlemme((pm - 3.85 - b.aus) / 0.7);
+    if (g <= 0 || pm >= b.fall) continue;
+    const u = (pm - b.farb) / 0.9;
+    const x = b.x + wind * (_BJJ_HOR - b.y) / 150 + Math.sin(t * 2.1 + b.ph) * 0.8;
+    ctx.save();
+    ctx.translate(x, b.y); ctx.rotate(b.w + Math.sin(t * 1.7 + b.ph) * 0.12);
+    ctx.fillStyle = u > 0 ? _bjjMisch(b.gruen, b.herbst, u) : b.gruen;
+    ctx.beginPath(); ctx.ellipse(0, 0, 5.8 * g, 3.3 * g, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+}
+// Knospe: spitz und lang (Buche). auf 0..1 = die Schuppen öffnen sich, ein Blatt schiebt sich heraus.
+function _bjjKnospeDraw(ctx, x, y, w, g, auf, k) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w); ctx.scale(k, k);
+  if (auf > 0) {
+    ctx.fillStyle = '#8bc34a';
+    ctx.beginPath(); ctx.ellipse(3.2 * g + 3 * auf, 0, 3.4 * g * auf + 0.5, 1.6 * g * auf + 0.3, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#8a5a2b'; ctx.globalAlpha *= 1 - 0.8 * auf;
+  for (const s of [-1, 1]) {
+    ctx.save(); ctx.rotate(s * auf * 0.7);
+    ctx.beginPath(); ctx.moveTo(0, -0.9 * g); ctx.quadraticCurveTo(2.2 * g, -1.1 * g, 3.6 * g, 0);
+    ctx.quadraticCurveTo(2.2 * g, 1.1 * g, 0, 0.9 * g); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  ctx.restore();
+}
+function _bjjSchnee(ctx, pm, t) {
+  [224, 250, 274].forEach((x, i) => {
+    // Zwiebel in der Erde mit Wurzeln
+    const zy = 218;
+    ctx.strokeStyle = '#efe6d2'; ctx.lineWidth = 1;
+    for (let r = -2; r <= 2; r++) {
+      ctx.beginPath(); ctx.moveTo(x + r * 2, zy + 6);
+      ctx.quadraticCurveTo(x + r * 4, zy + 11, x + r * 5 + Math.sin(t + r) * 0.5, zy + 14); ctx.stroke();
+    }
+    ctx.fillStyle = '#f1e6cf'; ctx.strokeStyle = '#a07a4d'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x, zy - 11);
+    ctx.quadraticCurveTo(x + 10, zy - 2, x + 7, zy + 6); ctx.lineTo(x - 7, zy + 6);
+    ctx.quadraticCurveTo(x - 10, zy - 2, x, zy - 11); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // oberirdisch nur von Februar bis Mai
+    const q = pm - i * 0.08;
+    if (q < 0.8 || q > 4.6) return;
+    const h = 46 * _bioFxEase.sanft(_bioFxKlemme((q - 0.8) / 0.6)) * (1 - 0.7 * _bioFxKlemme((q - 4.2) / 0.4));
+    const welk = _bioFxKlemme((q - 3.6) / 0.8);
+    const sw = Math.sin(t * 1.4 + i) * 1.5 * h / 46;
+    const blattF = _bjjMisch('#4f8a6a', '#b9a35a', welk);
+    ctx.strokeStyle = '#d8cfb4'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, zy - 10); ctx.lineTo(x, _BJJ_HOR + 3); ctx.stroke();
+    ctx.fillStyle = blattF;
+    for (const s of [-1, 1]) {
+      ctx.beginPath(); ctx.moveTo(x, _BJJ_HOR + 3);
+      ctx.quadraticCurveTo(x + s * 5, _BJJ_HOR - h * 0.5, x + s * (4 + welk * 8) + sw, _BJJ_HOR - h * 0.8 + welk * h * 0.4);
+      ctx.quadraticCurveTo(x + s * 2, _BJJ_HOR - h * 0.4, x + s * 1, _BJJ_HOR + 3); ctx.fill();
+    }
+    // Stängel mit nickender Blüte
+    const tx = x + sw, ty = _BJJ_HOR - h;
+    ctx.strokeStyle = _bjjMisch('#5e9c6e', '#b9a35a', welk); ctx.lineWidth = 1.8;
+    ctx.beginPath(); ctx.moveTo(x, _BJJ_HOR + 3); ctx.quadraticCurveTo(x, ty + 10, tx, ty); ctx.stroke();
+    if (q < 1.2) return;
+    const o = _bioFxKlemme((q - 1.45) / 0.25), weg = _bioFxKlemme((q - 3.4) / 0.4);
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.quadraticCurveTo(tx + 6, ty - 3, tx + 8, ty + 4); ctx.stroke();
+    ctx.save();
+    ctx.translate(tx + 8, ty + 5); ctx.rotate(Math.sin(t * 1.1 + i) * 0.12);
+    ctx.globalAlpha *= 1 - weg;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = 'rgba(100,116,139,0.6)'; ctx.lineWidth = 0.8;
+    for (const s of [-1, 0, 1]) {
+      ctx.save(); ctx.rotate(s * (0.1 + 0.45 * o));
+      ctx.beginPath(); ctx.ellipse(0, 7, 2.8 + o * 0.6, 7, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+    if (o > 0.3) { ctx.fillStyle = '#6fbf73'; ctx.beginPath(); ctx.arc(0, 10, 1.6, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.restore();
+  });
+}
+function _bjjSonnenblume(ctx, pm, t) {
+  const s = _bjjSb(pm);
+  // Samen im Boden: fallen im September hinein, überdauern bis zum Frühling
+  for (let j = 0; j < 5; j++) {
+    const x = 222 + j * 14, y = 214 + (j % 2) * 6;
+    let a = 0;
+    if (pm >= 9.05 + j * 0.15) a = 1;
+    else if (pm < 4.3) a = j === 2 ? (pm < 3.95 ? 1 : 0) : 1 - _bioFxKlemme((pm - 3.95) / 0.35);
+    if (a <= 0) continue;
+    ctx.save(); ctx.globalAlpha *= a;
+    ctx.translate(x, y); ctx.rotate(0.4 + j);
+    ctx.fillStyle = '#231f1a'; ctx.strokeStyle = '#e8dcc4'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(0, 0, 5.4, 3, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = '#d6d0c4'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.moveTo(-3, 0); ctx.lineTo(3, 0); ctx.stroke();
+    ctx.restore();
+  }
+  if (!s.da) return;
+  ctx.save();
+  ctx.globalAlpha *= s.alpha;
+  const q = s.q, x0 = _BJJ_BX, y0 = _BJJ_HOR + 6;
+  // Wurzel
+  const wl = Math.min(26, 8 + s.hgt * 0.2);
+  ctx.strokeStyle = '#efe6d2'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.quadraticCurveTo(x0 - 3, y0 + wl * 0.5, x0 + 2, y0 + wl); ctx.stroke();
+  if (s.hgt < 1) { ctx.restore(); return; }
+  const stF = _bjjMisch('#4f9a3a', '#8a6b3e', s.braun);
+  const kopf = _bjjSbKopf(pm < 2.2 ? 11.99 : pm);
+  const kx = kopf.x, ky = kopf.y;
+  // Stängel (im Winter abgeknickt)
+  ctx.strokeStyle = stF; ctx.lineWidth = 2 + s.hgt / 50;
+  ctx.beginPath(); ctx.moveTo(x0, y0);
+  ctx.quadraticCurveTo(x0, ky + 40 * s.knick - 10, kx, ky); ctx.stroke();
+  // Blätter am Stängel
+  for (let k = 0; 18 + k * 22 < s.hgt - 8; k++) {
+    const hy = y0 - 18 - k * 22, gr = _bioFxKlemme((s.hgt - 18 - k * 22) / 30);
+    const lage = (y0 - hy) / Math.max(1, y0 - ky);
+    const hx = x0 + (kx - x0) * lage * lage;
+    const side = k % 2 ? 1 : -1, haengen = 0.3 + s.braun * 0.9;
+    ctx.save(); ctx.translate(hx, hy); ctx.rotate(side * (1.1 + haengen * 0.5) + Math.sin(t * 1.5 + k) * 0.06);
+    ctx.fillStyle = _bjjMisch('#5aa845', '#7a5c33', s.braun);
+    ctx.beginPath(); ctx.ellipse(0, -9 * gr, 5.5 * gr * (1 - 0.4 * s.braun), 10 * gr, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  // Kopf: Knospe, Blüte, reifer Samenstand
+  if (s.kopf > 0) {
+    ctx.save(); ctx.translate(kx, ky); ctx.rotate(s.neig * 1.0 + s.knick * 1.4);
+    const r = 5 + 8 * s.kopf;
+    if (s.auf > 0 && s.blatt > 0) {
+      ctx.fillStyle = '#facc15';
+      const n = 14, weg = Math.round(n * (1 - s.blatt));
+      for (let i = weg; i < n; i++) {
+        ctx.save(); ctx.rotate(i / n * 2 * Math.PI + Math.sin(t * 0.8) * 0.03);
+        ctx.beginPath(); ctx.ellipse(0, -r - 5 * s.auf, 2.6, 6 * s.auf, 0, 0, 2 * Math.PI); ctx.fill();
+        ctx.restore();
+      }
+    } else if (s.auf <= 0) {
+      ctx.fillStyle = '#5a9a3a';
+      for (let i = 0; i < 8; i++) { ctx.save(); ctx.rotate(i / 8 * 2 * Math.PI);
+        ctx.beginPath(); ctx.ellipse(0, -r, 2, 4, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); }
+    }
+    ctx.fillStyle = _bjjMisch('#5b3a1a', '#3b2a1a', s.braun);
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgba(214,208,196,0.6)';
+    for (let i = 0; i < 7; i++) { const a = i * 2.4, rr = r * 0.55 * Math.sqrt((i + 1) / 7);
+      ctx.beginPath(); ctx.arc(Math.cos(a) * rr, Math.sin(a) * rr, 1, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.restore();
+  }
+  ctx.restore();
+}
+// Rechte Tafel: Uhr (helle Stunden), Thermometer, Lupe auf eine Knospe
+function _bjjTafel(ctx, pm, grad, hell, t) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.82)'; ctx.strokeStyle = 'rgba(100,116,139,0.5)'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 330, 8, 86, 188, 10); ctx.fill(); ctx.stroke();
+  // Uhr: heller Teil des Tages oben (Mittag oben), dunkler Teil unten
+  const ux = 392, uy = 44, ur = 17, stunden = Math.round(hell);
+  ctx.fillStyle = '#1e2a4a'; ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill();
+  const halb = hell / 24 * Math.PI;
+  ctx.fillStyle = '#fcd34d';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.arc(ux, uy, ur, -Math.PI / 2 - halb, -Math.PI / 2 + halb); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = 'rgba(15,23,42,0.35)'; ctx.lineWidth = 1;
+  for (let h = 0; h < 24; h++) { const a = h / 24 * 2 * Math.PI;
+    ctx.beginPath(); ctx.moveTo(ux + Math.sin(a) * (ur - 3), uy - Math.cos(a) * (ur - 3));
+    ctx.lineTo(ux + Math.sin(a) * ur, uy - Math.cos(a) * ur); ctx.stroke(); }
+  const zeiger = t * 0.6;                             // Zeiger läuft ruhig herum
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.sin(zeiger) * (ur - 4), uy - Math.cos(zeiger) * (ur - 4)); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(stunden + ' Stunden', ux, uy + ur + 12);
+  ctx.fillText('hell', ux, uy + ur + 23);
+  // Thermometer
+  const tx = 348, t0 = 24, t1 = 128;
+  const ty = T => t1 - (T + 5) / 30 * (t1 - t0);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, tx - 5, t0 - 4, 10, t1 - t0 + 8, 5); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath(); ctx.arc(tx, t1 + 10, 8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillRect(tx - 2.5, ty(grad), 5, t1 + 4 - ty(grad));
+  ctx.strokeStyle = 'rgba(15,23,42,0.4)'; ctx.lineWidth = 1;
+  for (let T = 0; T <= 20; T += 10) { ctx.beginPath(); ctx.moveTo(tx + 5, ty(T)); ctx.lineTo(tx + 9, ty(T)); ctx.stroke(); }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(Math.round(grad) + ' °C', tx, t1 + 34);
+  // Lupe auf eine Knospe (nur bei der Buche)
+  if (_bjj.pflanze === 'buche') {
+    const lx = 392, ly = 148, lr = 22;
+    const winter = pm >= 10.4 || pm < 3.85;
+    if (_bjj.zr && winter) _bioFxLeuchten(ctx, lx, ly, lr + 2, t, '255,216,77');
+    ctx.save();
+    ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.fillStyle = '#eef6fb'; ctx.fill();
+    ctx.clip();
+    ctx.strokeStyle = '#7d7a72'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(lx - 24, ly + 16); ctx.lineTo(lx - 2, ly + 2); ctx.stroke();
+    const kn = _bjjKnospe(pm);
+    // ein Blatt am Zweig (von Mai bis zum Laubfall)
+    const bg = _bioFxKlemme((pm - 3.9) / 0.6);
+    if (bg > 0 && pm < 10.0) {
+      ctx.save(); ctx.translate(lx - 12, ly + 9); ctx.rotate(-2.2);
+      ctx.fillStyle = _bjjMisch('#4e9a3e', '#e07b24', (pm - 8.2) / 1.0);
+      ctx.beginPath(); ctx.ellipse(10 * bg, 0, 11 * bg, 5.5 * bg, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.restore();
+    }
+    _bjjKnospeDraw(ctx, lx - 3, ly + 2, -0.57, kn.g, kn.auf, 3.2);
+    ctx.restore();
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.stroke();
+    ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(lx - 15, ly + 16); ctx.lineTo(lx - 22, ly + 24); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('Knospe', lx, ly + lr + 14);
+  }
+  ctx.restore();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · WIE ÜBERSTEHEN TIERE DEN WINTER?   (Förderheft Bio 5/6 · bj5)
+// Links das Tier in seinem Quartier (Igel im Laubhaufen unter der Hecke,
+// Eichhörnchen im Kobel, Frosch im Teichschlamm), rechts drei Anzeigen:
+// Thermometer (Körper), Herzschläge und Atemzüge in 1 Minute, je mit einer
+// mitlaufenden Kurve. Das Kind stellt „Tier“ ein und wechselt „Sommer“ und
+// „Winter“.
+// Fachlich (BIO_PROFIL): Winterschlaf (Igel: Körper sehr kalt, Herz und
+// Atmung ganz langsam), Winterruhe (Eichhörnchen: fast warm, wacht auf und
+// frisst Vorräte), Winterstarre (Frosch: wechselwarm, so kalt wie das Wasser,
+// atmet nur über die Haut). Alle Zahlen sind gerundete Modellwerte (Lehrerteil).
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Beim Wechsel der Jahreszeit
+// läuft der Übergang 2,5 s sichtbar ab – Schnee setzt ein, die Säule im
+// Thermometer sinkt, die Herzkurve zieht ihre Zacken auseinander, die
+// Atemwelle wird flach, der Igel rollt sich im Laub ein. Danach Frostfunken am
+// Thermometer, ein Lichtring an Herz und Atmung und eine Marke „Sommer“ an der
+// alten Stelle der Säule. Das Eichhörnchen wacht nach 4,5 s auf, klettert
+// herunter und gräbt eine Nuss aus (Goldfunken). Beim Frosch wächst eine
+// Eisdecke über den Teich. Kein Blinken (die Kurven laufen, sie blinken nicht),
+// kein Ton, keine Wertung, keine Lückenwörter im Bild.
+// ═══════════════════════════════════════════════════════
+let _bjn = null;
+const _BJN_TIER = ['Igel', 'Eichhörnchen', 'Frosch'];
+const _BJN_ZEIT = ['Sommer', 'Winter'];
+// Modellwerte je Tier und Jahreszeit (= sim_plan.werte, lehrer.tabelle_erwartet)
+const _BJN_W = [
+  [{ t: 36, h: 180, a: 50 }, { t: 5, h: 8, a: 2 }],
+  [{ t: 38, h: 300, a: 60 }, { t: 36, h: 250, a: 50 }],
+  [{ t: 20, h: 40, a: null, zu: '(wie die Luft)', atem: 'atmet mit Lunge und Haut', kurz: 'Lunge + Haut', welle: 30 },
+   { t: 4, h: 5, a: null, zu: '(wie das Wasser)', atem: 'atmet nur über die Haut', kurz: 'nur Haut', welle: 0 }]
+];
+const _BJN_STECK = [
+  'Der Igel frisst sich im Herbst dick. Im Frühling heizt ihn braunes Fett wieder auf.',
+  'Das Eichhörnchen versteckt im Herbst Nüsse. Im Winter wacht es auf und holt sie.',
+  'Der Frosch wird so kalt wie das Wasser. Er kann sich dann kaum bewegen. Das heißt Winterstarre.'
+];
+const _BJN_UEB = 2.5;          // s: Übergang Sommer <-> Winter
+const _BJN_PX = 40;            // px/s: Vorschub der Kurven
+const _BJN_KN = 74;            // Stützstellen einer Kurve (= Breite in px)
+// Kobel, Stamm, Versteck (Eichhörnchen)
+const _BJN_KOBEL = { x: 182, y: 55 };
+// Wege des Eichhörnchens: [Zeit, x, y, Haltung] – die Haltung gilt bis zum nächsten Punkt.
+const _BJN_WEG_S = [
+  [0, 60, 186, 'lauf'], [1.5, 200, 186, 'kl'], [3.0, 208, 76, 'lauf'], [3.4, 152, 63, 'sitz'],
+  [5.6, 152, 63, 'lauf'], [6.1, 208, 76, 'ab'], [7.4, 204, 186, 'lauf'], [9.0, 60, 186, 'lauf']
+];
+const _BJN_WEG_W = [
+  [0, 182, 55, 'schlaf'], [4.5, 182, 55, 'lauf'], [5.0, 208, 76, 'ab'], [6.4, 204, 186, 'lauf'],
+  [7.4, 95, 186, 'grab'], [8.2, 95, 186, 'frisst'], [9.6, 95, 186, 'lauf'], [10.5, 200, 186, 'kl'],
+  [11.5, 208, 76, 'lauf'], [12.0, 182, 55, 'schlaf']
+];
+
+function _bjnInit() {
+  const flocken = [];
+  let s = 17;
+  const z = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+  for (let i = 0; i < 46; i++) flocken.push([z() * 268, z() * 250, 0.6 + z() * 0.8, z() * 6.28]);
+  const blaetter = [];
+  for (let i = 0; i < 38; i++) blaetter.push([z(), z(), z() * 6.28, z()]);
+  _bjn = {
+    tier: 0, zeit: 0, t: 0, tc: 0, tcVor: 0, tu: 0,
+    w: 0,                                   // 0 = Sommer, 1 = Winter (Bild)
+    von: _BJN_W[0][0], uz: 1,               // Übergang: Startwerte, Fortschritt 0..1
+    vonPose: null,
+    steck: false, gesehen: {},              // Steckbrief offen? welche Stellungen schon gesehen
+    ph: 0, pa: 0, acc: 0, puls: 9,          // Herz-/Atemphase, Kurvenvorschub, Zeit seit Schlag
+    kh: new Array(_BJN_KN).fill(0), ka: new Array(_BJN_KN).fill(0),
+    flocken, blaetter, nussZeigen: false, nussAlt: 0,
+    fx: { teile: [] }, letzt: ''
+  };
+  _bjn.gesehen['0:0'] = true;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bjnFxLeer() { _bjn.fx = { teile: [] }; }
+function _bjnWerte(tier, zeit) { return _BJN_W[tier][zeit]; }
+// Aktuell angezeigte Werte (rollen während des Übergangs, enden exakt).
+function _bjnAnzeige() {
+  const n = _bjnWerte(_bjn.tier, _bjn.zeit), v = _bjn.von, e = _bioFxEase.sanft(_bjn.uz);
+  const l = (a, b) => a + (b - a) * e;
+  return {
+    t: l(v.t, n.t), h: l(v.h, n.h),
+    a: n.a == null ? null : l(v.a == null ? n.a : v.a, n.a),
+    welle: n.a == null ? l(v.welle == null ? 30 : v.welle, n.welle) : l(v.a == null ? n.a : v.a, n.a)
+  };
+}
+function _bjnSetze(tier, zeit) {
+  if (!_bjn) return;
+  tier = Math.max(0, Math.min(2, tier | 0)); zeit = zeit ? 1 : 0;
+  if (tier === _bjn.tier && zeit === _bjn.zeit) { _bjnStatus(); return; }
+  const gleichesTier = tier === _bjn.tier;
+  if (gleichesTier) {
+    // Jahreszeit wechselt: der Übergang läuft sichtbar ab
+    const jetzt = _bjnAnzeige();
+    const alt = _bjnWerte(_bjn.tier, _bjn.zeit);
+    _bjn.von = { t: jetzt.t, h: jetzt.h, a: alt.a == null ? null : jetzt.a,
+                 welle: alt.welle != null ? jetzt.welle : null, kurz: alt.kurz };
+    _bjn.tcVor = _bjn.uz < 1 ? 0 : _bjn.tc; _bjn.tu = 0;
+    _bjn.vonPose = _bjnPose(_bjn.tier, _bjn.zeit, _bjn.tc);
+    _bjn.uz = 0;
+    if (zeit === 1 && tier === 0) {
+      _bioFxBlaetter(_bjn.fx.teile, 100, 150, 10, ['#a0522d', '#c2703d', '#8b5a2b', '#d9a05b']);
+    }
+  } else {
+    // anderes Tier: neues Quartier, Werte stehen gleich
+    _bjn.von = _bjnWerte(tier, zeit); _bjn.uz = 1; _bjn.vonPose = null;
+    _bjn.w = zeit;
+    _bjnFxLeer();
+    _bioFxWelle(_bjn.fx.teile, 134, 150, 'rgba(255,255,255,0.9)', 50);
+  }
+  _bjn.tier = tier; _bjn.zeit = zeit; _bjn.tc = 0; _bjn.nussZeigen = false;
+  _bjnStatus();
+}
+function _bjnTier(i) { if (_bjn) _bjnSetze(i, _bjn.zeit); }
+function _bjnZeit(i) { if (_bjn) _bjnSetze(_bjn.tier, i); }
+// Sprungmarke: Tier und Jahreszeit auf einmal.
+function _bjnMarke(tier, zeit) { if (_bjn) _bjnSetze(tier, zeit); }
+function _bjnSteckbrief() {
+  if (!_bjn) return;
+  _bjn.steck = true;
+  const p = _bjnPoseJetzt();
+  _bioFxWelle(_bjn.fx.teile, p.x, p.y - 6, 'rgba(250,204,21,0.95)', 36);
+  _bioFxFunken(_bjn.fx.teile, p.x, p.y - 14, 6, ['#fde047', '#fff7c2', '#ffffff']);
+  _bjnStatus();
+  const el = document.getElementById('_bjn-steck');
+  if (el && el.classList) { el.classList.remove('_bjn-neu'); void el.offsetWidth; el.classList.add('_bjn-neu'); }
+}
+
+function _bjnHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bjn="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <style>#_bjn-steck._bjn-neu{animation:_bjnAuf .6s ease-out}@keyframes _bjnAuf{from{opacity:.2;transform:translateY(4px)}to{opacity:1;transform:none}}</style>
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie überstehen Tiere den Winter?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links siehst du das Tier in seinem Quartier. Rechts stehen drei Anzeigen: Körpertemperatur, Herzschläge und Atemzüge in 1 Minute.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bjn-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:8px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bjnMarke(0,0)">Igel, Sommer</button>
+          <button class="sim-btn" onclick="_bjnMarke(0,1)">Igel, Winter</button>
+          <button class="sim-btn" onclick="_bjnMarke(1,0)">Eichhörnchen, Sommer</button>
+          <button class="sim-btn" onclick="_bjnMarke(1,1)">Eichhörnchen, Winter</button>
+          <button class="sim-btn" onclick="_bjnMarke(2,0)">Frosch, Sommer</button>
+          <button class="sim-btn" onclick="_bjnMarke(2,1)">Frosch, Winter</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Tier</span>
+          <div class="sim-btn-row">
+            ${k('t0', '_bjnTier(0)', 'Igel')}
+            ${k('t1', '_bjnTier(1)', 'Eichhörnchen')}
+            ${k('t2', '_bjnTier(2)', 'Frosch')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Jahreszeit</span>
+          <div class="sim-btn-row">
+            ${k('z0', '_bjnZeit(0)', 'Sommer')}
+            ${k('z1', '_bjnZeit(1)', 'Winter')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_bjn-status" style="margin-top:8px"></div>
+        <div class="sim-btn-row" style="margin-top:8px">
+          <button class="sim-btn" onclick="_bjnSteckbrief()">Steckbrief lesen</button>
+        </div>
+        <div class="fpm-note" id="_bjn-steck" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Igel · Sommer &nbsp;|&nbsp; Wechsle zwischen „Sommer“ und „Winter“ und sieh auf die drei Anzeigen.</p>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bjnZeile() {
+  const w = _bjnWerte(_bjn.tier, _bjn.zeit);
+  let s = _BJN_TIER[_bjn.tier] + ' · ' + _BJN_ZEIT[_bjn.zeit] + ' · Körper ' + w.t + ' °C';
+  if (w.zu) s += ' ' + w.zu;
+  s += ' · ' + w.h + ' Herzschläge in 1 Minute · ';
+  s += w.a == null ? w.atem : w.a + ' Atemzüge in 1 Minute';
+  return s;
+}
+function _bjnStatus() {
+  if (!_bjn) return;
+  const z = _bjnZeile();
+  _bjn.letzt = z;
+  _bjn.gesehen[_bjn.tier + ':' + _bjn.zeit] = true;
+  const el = document.getElementById('_bjn-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const st = document.getElementById('_bjn-steck');
+  if (st) st.innerHTML = _bjn.steck
+    ? '<b>Steckbrief ' + _BJN_TIER[_bjn.tier] + ':</b> ' + _BJN_STECK[_bjn.tier]
+    : '';
+  try {
+    document.querySelectorAll('[data-bjn]').forEach(b => {
+      const d = b.getAttribute('data-bjn');
+      const an = d === 't' + _bjn.tier || d === 'z' + _bjn.zeit;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+function _bjnUpdate(dt) {
+  if (!_bjn) return;
+  dt = _bioFxDt(dt);
+  _bjn.t += dt;
+  _bjn.tc += dt;
+  // Übergang Sommer <-> Winter
+  if (_bjn.uz < 1) {
+    _bjn.uz = Math.min(1, _bjn.uz + dt / _BJN_UEB);
+    _bjn.tu += dt;
+    const e = _bioFxEase.sanft(_bjn.uz);
+    _bjn.w = _bjn.zeit ? e : 1 - e;
+    _bjn.tc = 0;                                   // der Zyklus beginnt nach dem Übergang
+    if (_bjn.uz >= 1) _bjnAhaEnde();
+  } else {
+    _bjn.w = _bjn.zeit;
+  }
+  // Herz- und Atemkurve: exakt an den Stützstellen abgetastet
+  const a = _bjnAnzeige();
+  const fh = a.h / 60, fa = (a.a == null ? a.welle : a.a) / 60;
+  // Frosch: die Lungenatmung klingt im Winter weich aus (Welle wird flach)
+  const amp = a.a == null ? _bioFxKlemme(a.welle / 30) : 1;
+  let rest = dt;
+  while (_bjn.acc + _BJN_PX * rest >= 1) {
+    const tau = (1 - _bjn.acc) / _BJN_PX;
+    _bjnPhase(fh, fa, tau);
+    rest -= tau; _bjn.acc = 0;
+    _bjn.kh.shift(); _bjn.kh.push(_bjnHerzForm(fh));
+    _bjn.ka.shift(); _bjn.ka.push(Math.sin(2 * Math.PI * _bjn.pa) * amp);
+  }
+  _bjnPhase(fh, fa, rest);
+  _bjn.acc += _BJN_PX * rest;
+  // Eichhörnchen im Winter: holt eine Nuss aus dem Versteck
+  if (_bjn.tier === 1 && _bjn.zeit === 1 && _bjn.uz >= 1) {
+    const c = _bjn.tc % 12, alt = _bjn.nussAlt;
+    if (alt < 8.2 && c >= 8.2) _bjnAhaNuss();
+    _bjn.nussAlt = c;
+  } else _bjn.nussAlt = 0;
+  _bioFxAlleUpdate(_bjn.fx, dt);
+}
+function _bjnPhase(fh, fa, d) {
+  const alt = _bjn.ph;
+  _bjn.ph += fh * d; _bjn.pa += fa * d;
+  _bjn.puls += d;
+  if (Math.floor(_bjn.ph) !== Math.floor(alt)) _bjn.puls = 0;
+}
+// Form eines Herzschlags: kurze Zacke nach oben, kleine nach unten.
+function _bjnHerzForm(fh) {
+  if (fh <= 0) return 0;
+  const s = (_bjn.ph % 1) / fh;                    // Sekunden seit dem letzten Schlag
+  if (s < 0.025) return 1;
+  if (s < 0.05) return -0.4;
+  return 0;
+}
+
+/* ── Aha (nur Aufrufe der Bibliothek _bioFx) ───────────────────────────── */
+function _bjnAhaEnde() {
+  const fx = _bjn.fx, winter = _bjn.zeit === 1;
+  const ty = _bjnThermoY(_bjnWerte(_bjn.tier, _bjn.zeit).t);
+  if (winter) {
+    _bioFxFunken(fx.teile, 306, ty, 10, ['#e0f2fe', '#bae6fd', '#ffffff', '#7dd3fc']);
+    _bioFxWelle(fx.teile, 306, 214, 'rgba(125,211,252,0.95)', 26);
+  } else {
+    _bioFxFunken(fx.teile, 306, ty, 8, ['#fdba74', '#fde68a', '#ffffff']);
+    _bioFxWelle(fx.teile, 306, 214, 'rgba(251,146,60,0.9)', 26);
+  }
+  _bioFxWelle(fx.teile, 352, 38, 'rgba(239,68,68,0.9)', 22);
+  _bioFxWelle(fx.teile, 352, 158, 'rgba(59,130,246,0.9)', 22);
+  const p = _bjnPoseJetzt();
+  if (winter && _bjn.tier === 0) {
+    _bioFxBanner(fx, 'So kalt wie im Kühlschrank!', 3.2, '#7dd3fc');
+  } else if (winter && _bjn.tier === 2) {
+    _bioFxFunken(fx.teile, 70, 122, 6, ['#e0f2fe', '#ffffff']);
+    _bioFxFunken(fx.teile, 200, 122, 6, ['#e0f2fe', '#ffffff']);
+    _bioFxWelle(fx.teile, p.x, p.y, 'rgba(186,230,253,0.95)', 30);
+    _bioFxBanner(fx, 'Eis oben – der Frosch liegt still.', 3.2, '#bae6fd');
+  } else if (!winter && _bjn.tier === 0) {
+    _bioFxBlaetter(fx.teile, 95, 190, 8, ['#a0522d', '#c2703d', '#8b5a2b']);
+  }
+}
+function _bjnAhaNuss() {
+  const fx = _bjn.fx;
+  _bioFxFunken(fx.teile, 95, 180, 9, ['#facc15', '#fde68a', '#ffffff', '#d97706']);
+  _bioFxWelle(fx.teile, 95, 184, 'rgba(250,204,21,0.95)', 28);
+  if (!_bjn.nussZeigen) {
+    _bjn.nussZeigen = true;
+    _bioFxBanner(fx, 'Das Eichhörnchen holt eine Nuss!', 3.2, '#facc15');
+  }
+}
+
+/* ── Haltungen ─────────────────────────────────────────────────────────── */
+function _bjnWeg(weg, t) {
+  const T = weg[weg.length - 1][0];
+  t = ((t % T) + T) % T;
+  for (let i = 0; i < weg.length - 1; i++) {
+    const a = weg[i], b = weg[i + 1];
+    if (t >= a[0] && t < b[0]) {
+      const u = (t - a[0]) / (b[0] - a[0]);
+      return { x: a[1] + (b[1] - a[1]) * u, y: a[2] + (b[2] - a[2]) * u, p: a[3],
+               dir: b[1] > a[1] + 0.5 ? 1 : b[1] < a[1] - 0.5 ? -1 : (a[3] === 'sitz' ? -1 : 1), u };
+    }
+  }
+  const e = weg[weg.length - 1];
+  return { x: e[1], y: e[2], p: e[3], dir: 1, u: 0 };
+}
+function _bjnPose(tier, zeit, tc) {
+  if (tier === 0) {
+    if (zeit === 1) return { x: 95, y: 194, roll: 1, dir: 1, p: 'ball' };
+    const x = 150 + 62 * Math.sin(tc * 0.4);
+    return { x, y: 186, roll: 0, dir: Math.cos(tc * 0.4) >= 0 ? 1 : -1, p: 'lauf' };
+  }
+  if (tier === 1) return _bjnWeg(zeit ? _BJN_WEG_W : _BJN_WEG_S, tc);
+  if (zeit === 1) return { x: 140, y: 214, p: 'liegt' };
+  return { x: 150, y: 114, p: 'sitzt' };
+}
+function _bjnPoseJetzt() {
+  const n = _bjnPose(_bjn.tier, _bjn.zeit, _bjn.tc);
+  if (_bjn.uz >= 1 || !_bjn.vonPose || _bjn.tier === 1) return n;
+  const v = _bjn.vonPose, e = _bioFxEase.sanft(_bjn.uz);
+  const r = Object.assign({}, n);
+  r.x = v.x + (n.x - v.x) * e; r.y = v.y + (n.y - v.y) * e;
+  if (_bjn.tier === 0) { r.roll = (v.roll || 0) + ((n.roll || 0) - (v.roll || 0)) * e; r.dir = n.x >= v.x ? 1 : -1; }
+  return r;
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bjnMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _bjnThermoY(t) { return 190 - Math.max(-2, Math.min(42, t)) * 4; }   // 0 °C -> 190, 40 °C -> 30
+
+function _bjnDraw(ctx, cv) {
+  if (!_bjn) return;
+  const W = cv.width, H = cv.height, w = _bjn.w, t = _bjn.t;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // ── Szene links ──
+  ctx.save();
+  ctx.beginPath(); ctx.rect(0, 0, 268, H); ctx.clip();
+  const sky = ctx.createLinearGradient(0, 0, 0, H);
+  sky.addColorStop(0, _bjnMisch('#9fd6ff', '#b8c4d4', w));
+  sky.addColorStop(1, _bjnMisch('#e6f6ff', '#e8edf3', w));
+  ctx.fillStyle = sky; ctx.fillRect(0, 0, 268, H);
+  // Sonne (im Winter blass und tief)
+  ctx.fillStyle = _bjnMisch('#fcd34d', '#f1f5f9', w);
+  ctx.beginPath(); ctx.arc(40, 30 + 14 * w, 14 - 3 * w, 0, 2 * Math.PI); ctx.fill();
+  if (_bjn.tier === 0) _bjnSzeneIgel(ctx, w, t);
+  else if (_bjn.tier === 1) _bjnSzeneHoernchen(ctx, w, t);
+  else _bjnSzeneFrosch(ctx, w, t);
+  // Schneeflocken
+  if (w > 0.02) {
+    const boden = [198, 192, 116][_bjn.tier];
+    ctx.fillStyle = '#ffffff';
+    for (const f of _bjn.flocken) {
+      const y = (f[1] + t * 18 * f[2]) % boden, x = (f[0] + Math.sin(t * 0.8 + f[3]) * 6 + 268) % 268;
+      ctx.globalAlpha = 0.85 * w;
+      ctx.beginPath(); ctx.arc(x, y, 1.2 + f[2], 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  // Jahreszeit groß unten links
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.fillRect(6, H - 24, 150, 18);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_BJN_TIER[_bjn.tier] + ' · ' + (_bjn.uz < 1 ? '…' : _BJN_ZEIT[_bjn.zeit]), 12, H - 11);
+  ctx.restore();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(268.5, 0); ctx.lineTo(268.5, H); ctx.stroke();
+  // ── Anzeigen rechts ──
+  const a = _bjnAnzeige();
+  _bjnThermo(ctx, a);
+  _bjnHerz(ctx, a);
+  _bjnAtem(ctx, a);
+  // Hinweisstreifen nur über der Szene, damit die Anzeigen frei bleiben
+  const b = _bjn.fx.banner;
+  _bjn.fx.banner = null;
+  _bioFxAlleDraw(ctx, _bjn.fx);
+  _bjn.fx.banner = b;
+  _bjnBanner(ctx, b);
+}
+/* Zustand und Altern kommen aus der Bibliothek (fx.banner), nur die Lage ist eigen. */
+function _bjnBanner(ctx, b) {
+  if (!b) return;
+  const ein = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6));
+  const al = ein * aus;
+  if (al <= 0.01) return;
+  const x = 6, bw = 256, h = 28, y = 8 - (1 - ein) * 12;
+  ctx.save();
+  ctx.globalAlpha = al;
+  ctx.shadowColor = b.farbe; ctx.shadowBlur = 14;
+  ctx.fillStyle = 'rgba(20,30,50,0.88)';
+  _bioFxRundRect(ctx, x, y, bw, h, h / 2); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = b.farbe; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x, y, bw, h, h / 2); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 14px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(b.text, x + bw / 2, y + h / 2 + 1, bw - 16);
+  ctx.restore();
+}
+
+/* Thermometer: Körper. Nach einem Wechsel bleibt an der alten Stelle eine Marke. */
+function _bjnThermo(ctx, a) {
+  const x = 306, oben = 30, unten = 190;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Körper', 300, 16);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x - 6, oben - 6, 12, unten - oben + 14, 6); ctx.fill(); ctx.stroke();
+  // Skala 0 bis 40 °C
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let g = 0; g <= 40; g += 10) {
+    const y = _bjnThermoY(g);
+    ctx.beginPath(); ctx.moveTo(x + 6, y); ctx.lineTo(x + 11, y); ctx.stroke();
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('40', x + 12, _bjnThermoY(40) + 3);
+  ctx.fillText('0', x + 12, _bjnThermoY(0) + 3);
+  // Säule: rot wenn warm, blau wenn kalt
+  const y = _bjnThermoY(a.t), farbe = _bjnMisch('#3b82f6', '#ef4444', (a.t - 5) / 25);
+  ctx.fillStyle = farbe;
+  ctx.fillRect(x - 3, y, 6, unten + 10 - y);
+  ctx.beginPath(); ctx.arc(x, 212, 10, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.stroke();
+  // Marke der anderen Jahreszeit (nur, wenn sie schon eingestellt war)
+  const anders = 1 - _bjn.zeit;
+  if (_bjn.gesehen[_bjn.tier + ':' + anders] && _bjn.uz > 0.3) {
+    const my = _bjnThermoY(_bjnWerte(_bjn.tier, anders).t);
+    ctx.save();
+    ctx.globalAlpha = _bioFxKlemme((_bjn.uz - 0.3) / 0.4);
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x - 9, my); ctx.lineTo(x + 9, my); ctx.stroke();
+    ctx.fillStyle = '#1e293b'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(_BJN_ZEIT[anders], x - 10, my + 3);
+    ctx.restore();
+  }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(Math.round(a.t) + ' °C', 300, 242);
+}
+
+function _bjnKurve(ctx, x0, y0, werte, amp, farbe) {
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + _BJN_KN, y0); ctx.stroke();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  for (let i = 0; i < werte.length; i++) {
+    const px = x0 + i, py = y0 - werte[i] * amp;
+    if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  // Schreibkopf rechts
+  ctx.fillStyle = farbe;
+  ctx.beginPath(); ctx.arc(x0 + werte.length - 1, y0 - werte[werte.length - 1] * amp, 2.5, 0, 2 * Math.PI); ctx.fill();
+}
+function _bjnKasten(ctx, y, h) {
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 336, y, 80, h, 8); ctx.fill(); ctx.stroke();
+}
+function _bjnHerzForm2(ctx, x, y, r) {
+  ctx.beginPath();
+  ctx.moveTo(x, y + r * 0.9);
+  ctx.bezierCurveTo(x - r * 1.4, y - r * 0.1, x - r * 0.6, y - r * 1.1, x, y - r * 0.35);
+  ctx.bezierCurveTo(x + r * 0.6, y - r * 1.1, x + r * 1.4, y - r * 0.1, x, y + r * 0.9);
+  ctx.closePath();
+}
+function _bjnHerz(ctx, a) {
+  _bjnKasten(ctx, 6, 112);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Herzschläge', 342, 20);
+  // Herz: pocht bei jedem Schlag (bei schnellem Herz nur ganz leicht)
+  const stark = a.h > 150 ? 0 : 0.18;       // über 2,5 Schlägen je Sekunde steht das Herz still im Bild (kein Flackern), die Kurve zeigt den Takt
+  const k = 1 + stark * Math.exp(-_bjn.puls * 9);
+  ctx.save();
+  ctx.translate(352, 40); ctx.scale(k, k);
+  ctx.fillStyle = '#ef4444';
+  _bjnHerzForm2(ctx, 0, 0, 10); ctx.fill();
+  ctx.restore();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 22px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(String(Math.round(a.h)), 410, 49);
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('in 1 Minute', 342, 66);
+  _bjnKurve(ctx, 339, 98, _bjn.kh, 22, '#dc2626');
+}
+function _bjnAtem(ctx, a) {
+  _bjnKasten(ctx, 124, 118);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Atemzüge', 342, 138);
+  // Lunge: hebt und senkt sich mit der Atemwelle
+  const lu = 1 + 0.08 * _bjn.ka[_bjn.ka.length - 1];
+  ctx.save();
+  ctx.translate(352, 160); ctx.scale(lu, lu);
+  ctx.fillStyle = '#93c5fd'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1;
+  for (const s of [-1, 1]) {
+    ctx.beginPath(); ctx.ellipse(s * 5, 2, 4.5, 8, s * 0.15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.beginPath(); ctx.moveTo(0, -9); ctx.lineTo(0, -3); ctx.stroke();
+  ctx.restore();
+  if (a.a == null) {
+    const n = _bjnWerte(_bjn.tier, _bjn.zeit), v = _bjn.von;
+    const txt = (_bjn.uz < 0.5 && v.kurz) ? v.kurz : n.kurz;
+    ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('atmet über', 342, 186);
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(txt, 342, 199);
+  } else {
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 22px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(String(Math.round(a.a)), 410, 168);
+    ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('in 1 Minute', 342, 184);
+  }
+  _bjnKurve(ctx, 339, a.a == null ? 222 : 214, _bjn.ka, a.a == null ? 9 : 14, '#2563eb');
+}
+
+/* ── Szenen ────────────────────────────────────────────────────────────── */
+function _bjnBoden(ctx, w, y) {
+  ctx.fillStyle = _bjnMisch('#7cb342', '#f8fafc', w);
+  ctx.fillRect(0, y, 268, 250 - y);
+  ctx.fillStyle = _bjnMisch('#558b2f', '#dbe4ee', w);
+  ctx.fillRect(0, y, 268, 3);
+}
+function _bjnSzeneIgel(ctx, w, t) {
+  _bjnBoden(ctx, w, 196);
+  // Hecke links: im Sommer grün, im Winter kahl
+  ctx.strokeStyle = '#6b4f35'; ctx.lineWidth = 3;
+  for (let i = 0; i < 6; i++) {
+    const bx = 8 + i * 12;
+    ctx.beginPath(); ctx.moveTo(bx, 198); ctx.quadraticCurveTo(bx + 10, 140, bx - 4 + (i % 3) * 8, 70 + (i % 2) * 14); ctx.stroke();
+  }
+  ctx.fillStyle = _bjnMisch('#4e9a3e', '#8d7b68', w);
+  ctx.globalAlpha = 1 - w;
+  for (const b of _bjn.blaetter) {
+    ctx.beginPath(); ctx.arc(8 + b[0] * 66, 70 + b[1] * 110, 9, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  // Laubhaufen (wächst im Herbst), im Querschnitt mit Höhle
+  const lh = 0.35 + 0.65 * w;
+  ctx.fillStyle = '#8b5a2b';
+  ctx.beginPath(); ctx.ellipse(95, 198, 58, 44 * lh, 0, Math.PI, 2 * Math.PI); ctx.fill();
+  const lf = ['#a0522d', '#c2703d', '#8b5a2b', '#d9a05b'];
+  for (let i = 0; i < 26; i++) {
+    const u = (i * 0.618) % 1, v = (i * 0.37) % 1;
+    const px = 95 + (u - 0.5) * 104, py = 196 - v * 38 * lh;
+    ctx.fillStyle = lf[i % 4];
+    ctx.save(); ctx.translate(px, py); ctx.rotate(i * 1.3);
+    ctx.beginPath(); ctx.ellipse(0, 0, 6, 3, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+  }
+  if (w > 0.3) {
+    ctx.fillStyle = 'rgba(58,36,18,' + (0.85 * _bioFxKlemme((w - 0.3) / 0.5)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.ellipse(95, 179, 27, 18, 0, 0, 2 * Math.PI); ctx.fill();
+    // Schnee auf dem Haufen
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.95 * _bioFxKlemme((w - 0.5) / 0.5)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.ellipse(95, 198 - 44 * lh + 5, 36, 7, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  const p = _bjnPoseJetzt();
+  _bjnIgel(ctx, p.x, p.y, p.roll || 0, p.dir || 1, t);
+}
+function _bjnIgel(ctx, x, y, roll, dir, t) {
+  const atem = 1 + 0.04 * _bjn.ka[_bjn.ka.length - 1];
+  const rx = (22 - 8 * roll) * atem, ry = (12 + 2 * roll) * atem;
+  ctx.save();
+  ctx.translate(x, y - ry);
+  ctx.scale(dir, 1);
+  // Beine (nur beim Laufen)
+  if (roll < 0.7) {
+    const sch = Math.sin(t * 9) * 3 * (1 - roll);
+    ctx.globalAlpha = 1 - roll;
+    ctx.strokeStyle = '#5b4030'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+    for (const [lx, s] of [[-10, 1], [-4, -1], [6, 1], [12, -1]]) {
+      ctx.beginPath(); ctx.moveTo(lx, ry * 0.6); ctx.lineTo(lx + s * sch, ry + 2); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+  // Stacheln
+  ctx.strokeStyle = '#4a3526'; ctx.lineWidth = 1.6;
+  const n = 30, bis = Math.PI * (1 + roll);
+  for (let i = 0; i <= n; i++) {
+    const a = Math.PI + (i / n) * bis - roll * Math.PI * 0.5;
+    const cx = Math.cos(a), cy = Math.sin(a);
+    ctx.beginPath(); ctx.moveTo(cx * rx * 0.8, cy * ry * 0.8);
+    ctx.lineTo(cx * (rx + 5), cy * (ry + 5) - 1); ctx.stroke();
+  }
+  ctx.fillStyle = '#7a5a40';
+  ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, 2 * Math.PI); ctx.fill();
+  // Kopf mit Schnauze (verschwindet beim Einrollen)
+  if (roll < 0.8) {
+    ctx.globalAlpha = 1 - roll / 0.8;
+    const sn = Math.sin(t * 5) * 1.2 * (1 - roll);
+    ctx.fillStyle = '#c9a27a';
+    ctx.beginPath(); ctx.moveTo(rx - 6, -6); ctx.quadraticCurveTo(rx + 14 + sn, 0, rx - 4, 7); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#1f1410';
+    ctx.beginPath(); ctx.arc(rx + 10 + sn, 1, 2, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(rx + 1, -2, 1.3, 0, 2 * Math.PI); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+}
+
+function _bjnSzeneHoernchen(ctx, w, t) {
+  _bjnBoden(ctx, w, 190);
+  // Baum: Stamm, Ast, Krone (im Winter kahl)
+  ctx.fillStyle = '#7a5230';
+  ctx.fillRect(203, 30, 18, 162);
+  ctx.strokeStyle = '#7a5230'; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(206, 76); ctx.lineTo(130, 66); ctx.stroke();
+  ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(220, 50); ctx.lineTo(262, 26); ctx.stroke();
+  ctx.fillStyle = _bjnMisch('#4e9a3e', '#b8c4d4', w);
+  ctx.globalAlpha = 1 - w;
+  for (const b of _bjn.blaetter.slice(0, 22)) {
+    ctx.beginPath(); ctx.arc(140 + b[0] * 128, 8 + b[1] * 48, 13, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  if (w > 0.1) {
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.9 * w).toFixed(3) + ')'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(204, 72); ctx.lineTo(132, 63); ctx.stroke();
+  }
+  // Versteck im Boden (Nüsse vom Herbst)
+  ctx.fillStyle = _bjnMisch('#6d4c2f', '#e2e8f0', w);
+  ctx.beginPath(); ctx.ellipse(95, 191, 14, 5, 0, Math.PI, 2 * Math.PI); ctx.fill();
+  // Kobel: Kugelnest aus Zweigen
+  const K = _BJN_KOBEL;
+  ctx.fillStyle = '#8a6a44';
+  ctx.beginPath(); ctx.arc(K.x, K.y, 21, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#5c4027'; ctx.lineWidth = 1.5;
+  for (let i = 0; i < 16; i++) {
+    const a = i * 0.9;
+    ctx.beginPath(); ctx.moveTo(K.x + Math.cos(a) * 20, K.y + Math.sin(a) * 20);
+    ctx.lineTo(K.x + Math.cos(a + 1.4) * 17, K.y + Math.sin(a + 1.4) * 17); ctx.stroke();
+  }
+  if (w > 0.1) {
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.95 * w).toFixed(3) + ')';
+    ctx.beginPath(); ctx.ellipse(K.x, K.y - 18, 14, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Eichhörnchen – beim Wechsel der Jahreszeit weich überblendet
+  // die alte Jahreszeit läuft beim Überblenden weiter, die neue beginnt am Anfang
+  const alt = _bjn.tcVor + _bjn.tu, ueb = _bjn.uz < 1;
+  const s = _bjnWeg(_BJN_WEG_S, _bjn.zeit ? (ueb ? alt : 0) : _bjn.tc);
+  const wi = _bjnWeg(_BJN_WEG_W, _bjn.zeit ? _bjn.tc : (ueb ? alt : 0));
+  const e = _bioFxEase.sanft(_bjn.uz), anteilW = _bjn.zeit ? e : 1 - e;
+  const zeige = (p, al) => {
+    if (al <= 0.02) return;
+    ctx.save(); ctx.globalAlpha = al;
+    if (p.p === 'schlaf') {
+      // Kobel im Querschnitt: Höhle innen, darin das eingerollte Tier
+      ctx.fillStyle = '#3f2a18';
+      ctx.beginPath(); ctx.arc(K.x, K.y + 1, 15, 0, 2 * Math.PI); ctx.fill();
+    }
+    _bjnHoernchen(ctx, p, t);
+    ctx.restore();
+  };
+  zeige(s, 1 - anteilW);
+  zeige(wi, anteilW);
+}
+function _bjnHoernchen(ctx, p, t) {
+  const rot = '#b5541c', hell = '#e9b27a';
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.scale(1.35, 1.35);
+  if (p.p === 'schlaf') {
+    const at = 1 + 0.05 * _bjn.ka[_bjn.ka.length - 1];
+    ctx.scale(at, at);
+    ctx.fillStyle = rot;
+    ctx.beginPath(); ctx.arc(0, 2, 8, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#c96a2c';
+    ctx.beginPath(); ctx.ellipse(-2, -1, 8, 5, 0.5, 0, 2 * Math.PI); ctx.fill();   // Schwanz als Decke
+    ctx.fillStyle = hell;
+    ctx.beginPath(); ctx.arc(5, 4, 3, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore(); return;
+  }
+  const lauf = p.p === 'lauf';
+  if (p.p === 'kl') ctx.rotate(-Math.PI / 2);
+  if (p.p === 'ab') ctx.rotate(Math.PI / 2);
+  ctx.scale(p.p === 'kl' || p.p === 'ab' ? 1 : p.dir, 1);
+  const hops = lauf || p.p === 'kl' || p.p === 'ab' ? Math.abs(Math.sin(t * 10)) * 3 : 0;
+  ctx.translate(0, -hops);
+  // Schwanz: großer Bogen nach oben, wippt
+  const wipp = Math.sin(t * (p.p === 'sitz' ? 3 : 6)) * 0.15;
+  ctx.fillStyle = '#c96a2c';
+  ctx.save(); ctx.translate(-6, -3); ctx.rotate(-0.35 + wipp);
+  ctx.beginPath(); ctx.ellipse(-3, -9, 5, 11, -0.25, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+  // Körper
+  ctx.fillStyle = rot;
+  if (p.p === 'sitz' || p.p === 'frisst' || p.p === 'grab') {
+    ctx.beginPath(); ctx.ellipse(0, -8, 6, 9, 0.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = hell; ctx.beginPath(); ctx.ellipse(2, -6, 3, 6, 0.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = rot;
+    ctx.beginPath(); ctx.arc(4, -18 + (p.p === 'grab' ? 6 + Math.sin(t * 14) * 1.5 : 0), 5, 0, 2 * Math.PI); ctx.fill();
+    const kx = 4, ky = -18 + (p.p === 'grab' ? 6 : 0);
+    ctx.beginPath(); ctx.moveTo(kx - 2, ky - 4); ctx.lineTo(kx, ky - 9); ctx.lineTo(kx + 2, ky - 4); ctx.fill();
+    ctx.fillStyle = '#1f1410'; ctx.beginPath(); ctx.arc(kx + 2.5, ky - 1, 1.1, 0, 2 * Math.PI); ctx.fill();
+    if (p.p === 'frisst') {
+      // Nuss in den Pfoten, dreht sich beim Knabbern
+      ctx.save(); ctx.translate(8, -12); ctx.rotate(t * 3);
+      ctx.fillStyle = '#8b5a2b'; ctx.beginPath(); ctx.ellipse(0, 0, 3.2, 2.6, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.restore();
+    }
+    if (p.p === 'grab' && Math.sin(t * 14) > 0.6) {
+      ctx.fillStyle = _bjn.zeit ? '#ffffff' : '#6d4c2f';
+      ctx.beginPath(); ctx.arc(10, -2 - Math.abs(Math.sin(t * 7)) * 6, 1.5, 0, 2 * Math.PI); ctx.fill();
+    }
+  } else {
+    ctx.beginPath(); ctx.ellipse(0, -5, 10, 5.5, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(10, -8, 4.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(8, -11); ctx.lineTo(10, -16); ctx.lineTo(12, -11); ctx.fill();
+    ctx.fillStyle = '#1f1410'; ctx.beginPath(); ctx.arc(12, -9, 1.1, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = rot; ctx.lineWidth = 2; ctx.lineCap = 'round';
+    const b = Math.sin(t * 10) * 3;
+    ctx.beginPath(); ctx.moveTo(6, -2); ctx.lineTo(7 + b, 1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-6, -2); ctx.lineTo(-7 - b, 1); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _bjnSzeneFrosch(ctx, w, t) {
+  // Ufer und Teich im Querschnitt
+  const see = 120;
+  ctx.fillStyle = _bjnMisch('#7cb342', '#f8fafc', w);
+  ctx.fillRect(0, see - 6, 268, 10);
+  const wasser = ctx.createLinearGradient(0, see, 0, 230);
+  wasser.addColorStop(0, _bjnMisch('#7dc3e8', '#8fb3cc', w));
+  wasser.addColorStop(1, _bjnMisch('#2f7fb0', '#35607a', w));
+  ctx.fillStyle = wasser;
+  ctx.beginPath(); ctx.moveTo(14, see);
+  for (let x = 14; x <= 254; x += 6) ctx.lineTo(x, see + Math.sin(x * 0.08 + t * 2) * 1.2 * (1 - w));
+  ctx.lineTo(254, see); ctx.lineTo(236, 222); ctx.lineTo(32, 222); ctx.closePath(); ctx.fill();
+  // Uferböschung
+  ctx.fillStyle = '#8d6e4f';
+  ctx.beginPath(); ctx.moveTo(0, see); ctx.lineTo(14, see); ctx.lineTo(32, 222); ctx.lineTo(0, 222); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(268, see); ctx.lineTo(254, see); ctx.lineTo(236, 222); ctx.lineTo(268, 222); ctx.closePath(); ctx.fill();
+  // Schlamm am Grund
+  ctx.fillStyle = '#5b4632'; ctx.fillRect(0, 218, 268, 32);
+  ctx.fillStyle = '#6e5840';
+  for (let i = 0; i < 12; i++) { ctx.beginPath(); ctx.ellipse(12 + i * 22, 222, 9, 3, 0, 0, 2 * Math.PI); ctx.fill(); }
+  // Schilf rechts
+  ctx.strokeStyle = _bjnMisch('#4e7d2a', '#a8a29e', w); ctx.lineWidth = 2;
+  for (let i = 0; i < 4; i++) {
+    const sx = 238 + i * 7, wi = Math.sin(t * 1.3 + i) * 3 * (1 - w);
+    ctx.beginPath(); ctx.moveTo(sx, see + 2); ctx.quadraticCurveTo(sx + wi, see - 30, sx + wi * 1.5, see - 58 + i * 5); ctx.stroke();
+  }
+  // Seerosenblatt (verschwindet im Winter)
+  const p = _bjnPoseJetzt();
+  if (w < 0.98) {
+    ctx.globalAlpha = 1 - w;
+    ctx.fillStyle = '#3f9b3a';
+    ctx.beginPath(); ctx.ellipse(150, see + 1 + Math.sin(t * 1.5) * 0.8, 24, 5, 0, 0.25, 2 * Math.PI - 0.1); ctx.lineTo(150, see + 1); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  // Libelle im Sommer
+  if (w < 0.9) {
+    ctx.globalAlpha = 1 - w;
+    const lx = 90 + Math.sin(t * 0.9) * 60, ly = 70 + Math.sin(t * 2.3) * 16;
+    ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(lx - 10, ly); ctx.lineTo(lx + 6, ly); ctx.stroke();
+    ctx.fillStyle = 'rgba(191,219,254,0.8)';
+    const fl = Math.sin(t * 40) * 0.5 + 0.5;
+    ctx.beginPath(); ctx.ellipse(lx, ly - 3 - fl, 7, 2, -0.3, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(lx, ly + 3 + fl, 7, 2, 0.3, 0, 2 * Math.PI); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  // Sauerstoff aus dem Wasser geht durch die Haut (Winter)
+  if (w > 0.5) {
+    ctx.fillStyle = 'rgba(224,242,254,' + (0.9 * (w - 0.5) * 2).toFixed(3) + ')';
+    for (let i = 0; i < 8; i++) {
+      const ph = ((t * 0.25 + i / 8) % 1), a = i * 0.8;
+      const r = 34 * (1 - ph);
+      ctx.beginPath(); ctx.arc(p.x + Math.cos(a) * r, p.y - 4 + Math.sin(a) * r * 0.45, 1.6, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  _bjnFrosch(ctx, p, t, w);
+  // Eisdecke wächst im Winter von den Ufern her zu
+  if (w > 0.02) {
+    const brei = 120 * w;
+    ctx.fillStyle = 'rgba(226,240,250,0.92)'; ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 1;
+    for (const [x0, s] of [[14, 1], [254, -1]]) {
+      ctx.beginPath(); ctx.moveTo(x0, see - 2);
+      ctx.lineTo(x0 + s * brei, see - 2); ctx.lineTo(x0 + s * brei, see + 6); ctx.lineTo(x0, see + 6); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(147,197,253,0.8)';
+    for (let i = 0; i < 6; i++) {
+      const cx = 30 + i * 38;
+      if (Math.abs(cx - 134) > 120 * w) continue;
+      ctx.beginPath(); ctx.moveTo(cx, see - 1); ctx.lineTo(cx + 6, see + 5); ctx.stroke();
+    }
+  }
+  // Wörter an Luft und Wasser
+  ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Luft', 110, 34);
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  ctx.fillText('Wasser', 40, 170);
+  ctx.fillText('Schlamm', 180, 240);
+}
+function _bjnFrosch(ctx, p, t, w) {
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  const liegt = _bioFxKlemme(w);
+  const gruen = _bjnMisch('#4caf50', '#5f7a52', w);
+  // Hinterbeine
+  ctx.fillStyle = _bjnMisch('#388e3c', '#4d6443', w);
+  ctx.beginPath(); ctx.ellipse(-10, -2 + 2 * liegt, 8, 4, -0.4 + 0.4 * liegt, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(10, -2 + 2 * liegt, 8, 4, 0.4 - 0.4 * liegt, 0, 2 * Math.PI); ctx.fill();
+  // Körper: sitzt aufrecht (Sommer) oder liegt flach (Winter)
+  ctx.fillStyle = gruen;
+  ctx.beginPath(); ctx.ellipse(0, -8 + 4 * liegt, 12, 9 - 3 * liegt, 0, 0, 2 * Math.PI); ctx.fill();
+  // Kehle: pumpt im Sommer (Lungenatmung), im Winter still
+  const kehle = (1 - liegt) * (0.5 + 0.5 * _bjn.ka[_bjn.ka.length - 1]);
+  ctx.fillStyle = '#e8e3b0';
+  ctx.beginPath(); ctx.ellipse(0, -3 + 3 * liegt, 5 + 2 * kehle, 2.5 + 1.5 * kehle, 0, 0, 2 * Math.PI); ctx.fill();
+  // Augen
+  ctx.fillStyle = gruen;
+  ctx.beginPath(); ctx.arc(-6, -15 + 5 * liegt, 3.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(6, -15 + 5 * liegt, 3.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(-6, -15.5 + 5 * liegt, 1.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(6, -15.5 + 5 * liegt, 1.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · WARME DOSEN IM EIS   (Förderheft Bio 5/6 · bj6)
+// Modell zum Eisbären: Eine Dose mit 40 °C warmem Wasser steht in einer
+// Wanne mit zerstoßenem Eis. Die Dose trägt eine wählbare Hülle, in ihr
+// steckt ein Thermometer. „▶ 20 Minuten warten“ lässt die Zeit laufen.
+// Modellwerte (Lehrerteil): nach 20 Minuten keine Hülle 18 °C, Fell 30 °C,
+// Fettschicht 28 °C, Fell und Fettschicht 35 °C (Umgebung Eis, trockenes Fell).
+// Verlauf: Abkühlen zum Eis hin, T(m) = 40 °C · e^(−k·m), k so gewählt, dass
+// T(20) genau den Modellwert trifft. Angezeigt wird auf ganze Grad gerundet.
+// Die Hülle macht keine Wärme: Keine Kurve steigt je über 40 °C.
+// Aha (NACH der Beobachtung, Bibliothek _bioFx): Wettrennen der Thermometer –
+// jede gemessene Dose hinterlässt ihre Kurve; beim nächsten Lauf fahren ihre
+// Punkte im Gleichschritt mit, und man sieht, welche Kurve langsamer fällt.
+// Ohne Hülle wachsen Frostkristalle über die blanke Dose; am Ende glitzern
+// sie kurz auf. Keine Lösungswörter im Bild, keine Wertung, kein Blinken.
+// ═══════════════════════════════════════════════════════
+let _bji = null;
+const _BJI_HUELLEN = ['keine Hülle', 'Fell', 'Fettschicht', 'Fell und Fettschicht'];
+const _BJI_ENDE = { 'keine Hülle': 18, 'Fell': 30, 'Fettschicht': 28, 'Fell und Fettschicht': 35 };
+const _BJI_FARBE = { 'keine Hülle': '#475569', 'Fell': '#9a6a2f', 'Fettschicht': '#d4a106',
+                     'Fell und Fettschicht': '#c2410c' };
+const _BJI_ANFANG = 40;
+const _BJI_DAUER = 20;          // Minuten
+const _BJI_TEMPO = 2.5;         // Minuten je Sekunde (20 Minuten in 8 s)
+
+function _bjiZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _bjiInit() {
+  const z = _bjiZufall(61);
+  const eis = [];
+  for (let i = 0; i < 46; i++) {
+    const vorne = i >= 20;
+    const x = 20 + z() * 180, y = vorne ? 186 + z() * 50 : 162 + z() * 20;
+    const r = 7 + z() * 8, ecken = [];
+    const n = 5 + Math.floor(z() * 3);
+    for (let k = 0; k < n; k++) {
+      const w = k / n * Math.PI * 2 + z() * 0.5;
+      ecken.push([Math.cos(w) * r * (0.7 + z() * 0.4), Math.sin(w) * r * (0.6 + z() * 0.35)]);
+    }
+    eis.push({ x, y, ecken, vorne, ph: z() * 6.28, hell: 0.82 + z() * 0.18 });
+  }
+  const frost = [];
+  for (let i = 0; i < 26; i++)
+    frost.push({ x: 85 + z() * 50, y: 116 + z() * 66, schwelle: z() * 0.75,
+                 r: 4 + z() * 5, w: z() * 1.0 });
+  const schnee = [];
+  for (let i = 0; i < 22; i++) schnee.push({ x: z() * 420, y: z() * 250, v: 6 + z() * 8, ph: z() * 6.28, r: 1 + z() * 1.4 });
+  _bji = { huelle: 'keine Hülle', minute: 0, laeuft: false, fertig: false, t: 0, letzt: '',
+           gemessen: {}, eis, frost, schnee, fx: { teile: [] }, nach: -1, schritt: 0 };
+}
+function _bjiFxLeer() {
+  _bji.fx = { teile: [] }; _bji.zeitlupe = null; _bji.nach = -1; _bji.schritt = 0; _bji.zlGezeigt = false;
+}
+// Temperatur in der Dose nach m Minuten (unrund) und wie sie das Thermometer zeigt.
+function _bjiK(h) { return Math.log(_BJI_ANFANG / _BJI_ENDE[h]) / _BJI_DAUER; }
+function _bjiT(h, m) {
+  if (m >= _BJI_DAUER) return _BJI_ENDE[h];
+  return _BJI_ANFANG * Math.exp(-_bjiK(h) * Math.max(0, m));
+}
+function _bjiAnzeige(h, m) { return Math.round(_bjiT(h, m)); }
+
+function _bjiHTML() {
+  const knopf = (w) =>
+    `<button class="sim-btn" data-bji="${w}" onclick="_bjiHuelle('${w}')">${w}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Warme Dosen im Eis</h3>
+    <div class="fpm-note" style="margin-top:2px">In der Dose ist 40 °C warmes Wasser. Die Dose steht in einer Wanne mit zerstoßenem Eis. Wähle eine Hülle. Dann drücke „▶ 20 Minuten warten“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bji-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bji-los" onclick="_bjiWarten()">▶ 20 Minuten warten</button>
+          <button class="sim-btn" onclick="_bjiNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Hülle</span>
+          <div class="sim-btn-row">
+            ${_BJI_HUELLEN.map(knopf).join('\n            ')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bji-status"></div>
+        <div class="fpm-note" id="_bji-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarke</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bjiSprung()">gleich zum Ende</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Jede gemessene Dose lässt ihre Kurve stehen. So kannst du die Hüllen vergleichen. „neu starten“ löscht alle Kurven.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Nur die Hülle ist verschieden. Wasser, Dose und Eis bleiben gleich.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────── */
+function _bjiHuelle(h) {
+  if (!_bji || !_BJI_ENDE[h]) return;
+  _bji.huelle = h; _bji.minute = 0; _bji.laeuft = false; _bji.fertig = false;   // neue Dose
+  _bjiFxLeer(); _bjiStatus();
+}
+function _bjiWarten() {
+  if (!_bji || _bji.laeuft) return;
+  _bjiFxLeer();
+  _bji.minute = 0; _bji.fertig = false; _bji.laeuft = true; _bjiStatus();
+}
+function _bjiNeu() {
+  if (!_bji) return;
+  _bji.huelle = 'keine Hülle'; _bji.minute = 0; _bji.laeuft = false; _bji.fertig = false;
+  _bji.gemessen = {}; _bjiFxLeer(); _bjiStatus();
+}
+// Sprungmarke: die eingestellte Dose sofort nach 20 Minuten zeigen.
+function _bjiSprung() {
+  if (!_bji) return;
+  _bjiFxLeer();
+  _bji.minute = _BJI_DAUER; _bji.laeuft = false; _bjiFertig();
+}
+function _bjiFertig() {
+  _bji.minute = _BJI_DAUER; _bji.laeuft = false; _bji.fertig = true;
+  _bji.vorher = Object.assign({}, _bji.gemessen);   // was stand schon da? (für das Aha)
+  _bji.gemessen[_bji.huelle] = _BJI_ENDE[_bji.huelle];
+  _bji.nach = 0; _bji.schritt = 0;
+  _bjiStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────── */
+function _bjiZeile() {
+  const h = _bji.huelle;
+  if (_bji.fertig) return h + ' · Anfang 40 °C · nach 20 Minuten ' + _BJI_ENDE[h] + ' °C';
+  if (_bji.laeuft) {
+    const m = Math.floor(_bji.minute + 1e-9);
+    return h + ' · Anfang 40 °C · Minute ' + m + ' · ' + _bjiAnzeige(h, _bji.minute) + ' °C';
+  }
+  return h + ' · Anfang 40 °C · Drücke „▶ 20 Minuten warten“.';
+}
+function _bjiStatus() {
+  if (!_bji) return;
+  const z = _bjiZeile();
+  const el = document.getElementById('_bji-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _bji.letzt = z;
+  const hw = document.getElementById('_bji-hinweis');
+  if (hw) {
+    const liste = _BJI_HUELLEN.filter(h => _bji.gemessen[h] != null);
+    hw.textContent = liste.length ? 'Schon gemessen: ' + liste.join(', ') + '.'
+                                  : 'Noch keine Dose gemessen.';
+  }
+  try {
+    document.querySelectorAll('[data-bji]').forEach(b => {
+      const w = b.dataset ? b.dataset.bji : b.getAttribute('data-bji');
+      if (b.classList) b.classList.toggle('primary', w === _bji.huelle);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_bji-los');
+  if (los && los.classList) los.classList.toggle('primary', !_bji.laeuft);
+}
+
+function _bjiUpdate(dt) {
+  if (!_bji) return;
+  dt = _bioFxDt(dt);
+  _bji.t += dt;
+  for (const s of _bji.schnee) {
+    s.y += s.v * dt; s.x += Math.sin(_bji.t * 0.7 + s.ph) * 4 * dt;
+    if (s.y > 252) { s.y = -3; s.x = (s.x * 7.3 + 91) % 420; }
+  }
+  if (_bji.laeuft) {
+    // kurze Zeitlupe kurz vor dem Ziel: die letzten Minuten des Rennens
+    if (!_bji.zlGezeigt && _bji.minute >= 16.5) { _bji.zlGezeigt = true; _bioFxZeitlupe(_bji, 0.35, 1.2); }
+    const zl = _bioFxZeitlupeFaktor(_bji, dt);
+    _bji.minute = Math.min(_BJI_DAUER, _bji.minute + dt * _BJI_TEMPO * zl);
+    if (_bji.minute >= _BJI_DAUER) _bjiFertig();
+    else if (_bjiZeile() !== _bji.letzt) _bjiStatus();
+  } else if (_bji.nach >= 0) {
+    _bji.nach += dt;
+    _bjiNachher();
+  }
+  _bioFxAlleUpdate(_bji.fx, dt);
+}
+
+// Nach den 20 Minuten: erst steht der Wert da, dann bestätigt der Effekt.
+function _bjiNachher() {
+  const fx = _bji.fx, h = _bji.huelle, t = _bji.nach, ende = _BJI_ENDE[h];
+  const p = _bjiPunkt(_BJI_DAUER, ende);
+  if (_bji.schritt === 0 && t >= 0.25) {
+    _bji.schritt = 1;
+    _bioFxWelle(fx.teile, p.x, p.y, _BJI_FARBE[h], 22);
+    _bioFxWelle(fx.teile, 147, 31, '#fca5a5', 30);           // am Thermometer
+  }
+  if (_bji.schritt === 1 && t >= 0.7) {
+    _bji.schritt = 2;
+    const frueher = _BJI_HUELLEN.filter(k => k !== h && _bji.vorher && _bji.vorher[k] != null);
+    const alleDrunter = frueher.length > 0 && frueher.every(k => _BJI_ENDE[k] < ende);
+    if (h === 'keine Hülle') {
+      // Frost auf der blanken Dose glitzert kurz auf
+      for (const f of _bji.frost) if (f.schwelle < 0.6)
+        _bioFxFunken(fx.teile, f.x, f.y, 1, ['#ffffff', '#e0f2fe', '#bae6fd']);
+      _bioFxBanner(fx, 'Frost überzieht die blanke Dose!', 2.8, '#bae6fd');
+    } else if (alleDrunter) {
+      _bioFxFunken(fx.teile, p.x, p.y, 12, [_BJI_FARBE[h], '#fff3b0', '#ffffff']);
+      _bioFxBanner(fx, 'Diese Kurve liegt über allen anderen!', 2.8, '#fde68a');
+    } else if (frueher.length) {
+      _bioFxFunken(fx.teile, p.x, p.y, 7, [_BJI_FARBE[h], '#fff3b0']);
+      _bioFxBanner(fx, 'Vergleiche die Kurven: Welche fällt langsamer?', 3.0, '#fde68a');
+    } else {
+      _bioFxFunken(fx.teile, p.x, p.y, 7, [_BJI_FARBE[h], '#fff3b0']);
+      _bioFxBanner(fx, 'Miss auch die anderen Hüllen.', 2.6, '#fde68a');
+    }
+    _bioFxStempel(fx, ende + ' °C', 58, 62, _BJI_FARBE[h]);
+  }
+  if (_bji.schritt === 2 && t >= 3.4) { _bji.schritt = 3; fx.stempel = null; _bji.nach = -1; }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────── */
+// Diagramm rechts: x = Minuten, y = °C
+const _BJI_GX0 = 250, _BJI_GX1 = 400, _BJI_GY0 = 162, _BJI_GY1 = 36;
+function _bjiPunkt(m, T) {
+  return { x: _BJI_GX0 + (_BJI_GX1 - _BJI_GX0) * m / _BJI_DAUER,
+           y: _BJI_GY0 - (_BJI_GY0 - _BJI_GY1) * T / 40 };
+}
+function _bjiKurve(ctx, h, bis, breite, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = _BJI_FARBE[h]; ctx.lineWidth = breite; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.beginPath();
+  const n = Math.max(1, Math.ceil(bis * 3));
+  for (let i = 0; i <= n; i++) {
+    const m = bis * i / n, p = _bjiPunkt(m, _bjiT(h, m));
+    if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+function _bjiDiagramm(ctx) {
+  const t = _bji.t, h = _bji.huelle;
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  _bioFxRundRect(ctx, 216, 4, 200, 242, 8); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; _bioFxRundRect(ctx, 216, 4, 200, 242, 8); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Temperatur in der Dose', 316, 18);
+  // Gitter und Achsen
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  for (let T = 0; T <= 40; T += 10) {
+    const p = _bjiPunkt(0, T);
+    ctx.strokeStyle = T === 0 ? '#64748b' : '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(_BJI_GX0, p.y); ctx.lineTo(_BJI_GX1, p.y); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.fillText(T + ' °C', _BJI_GX0 - 3, p.y + 3);
+  }
+  ctx.textAlign = 'center';
+  for (let m = 0; m <= 20; m += 5) {
+    const p = _bjiPunkt(m, 0);
+    ctx.strokeStyle = '#64748b';
+    ctx.beginPath(); ctx.moveTo(p.x, _BJI_GY0); ctx.lineTo(p.x, _BJI_GY0 + 3); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.fillText(String(m), p.x, _BJI_GY0 + 12);
+  }
+  ctx.fillText('Minuten', 325, _BJI_GY0 + 23);
+  ctx.strokeStyle = '#64748b'; ctx.beginPath(); ctx.moveTo(_BJI_GX0, _BJI_GY1 - 4); ctx.lineTo(_BJI_GX0, _BJI_GY0); ctx.stroke();
+
+  // Frühere Kurven (die gemessenen Dosen) – beim Lauf fahren ihre Punkte mit
+  const m = _bji.minute, aktiv = _bji.laeuft || _bji.fertig;
+  for (const k of _BJI_HUELLEN) {
+    if (_bji.gemessen[k] == null || (k === h && aktiv)) continue;
+    _bjiKurve(ctx, k, _BJI_DAUER, 2, _bji.laeuft ? 0.35 : 0.8);
+    const mm = _bji.laeuft ? m : _BJI_DAUER, p = _bjiPunkt(mm, _bjiT(k, mm));
+    ctx.fillStyle = _BJI_FARBE[k]; ctx.globalAlpha = _bji.laeuft ? 0.75 : 0.9;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 3.2, 0, 2 * Math.PI); ctx.fill(); ctx.globalAlpha = 1;
+  }
+  // Die laufende Dose: dicke Kurve, leuchtender Punkt an der Spitze
+  if (aktiv) {
+    _bjiKurve(ctx, h, m, 3, 1);
+    const p = _bjiPunkt(m, _bjiT(h, m));
+    if (_bji.laeuft) _bioFxLeuchten(ctx, p.x, p.y, 5, t, '255,200,80');
+    ctx.fillStyle = _BJI_FARBE[h]; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 4.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  } else {
+    const p = _bjiPunkt(0, 40);
+    ctx.fillStyle = _BJI_FARBE[h];
+    ctx.beginPath(); ctx.arc(p.x, p.y, 3.5 + 0.6 * Math.sin(t * 2.5), 0, 2 * Math.PI); ctx.fill();
+  }
+  // Legende: gemessene Dosen mit Anfang und Ende
+  ctx.textAlign = 'left'; ctx.font = '700 10px sans-serif';
+  _BJI_HUELLEN.forEach((k, i) => {
+    const y = 199 + i * 12.5;
+    const da = _bji.gemessen[k] != null;
+    ctx.fillStyle = da || k === h ? _BJI_FARBE[k] : '#cbd5e1';
+    ctx.fillRect(224, y - 7, 10, 7);
+    ctx.fillStyle = da ? '#0f172a' : (k === h ? '#334155' : '#94a3b8');
+    ctx.fillText(da ? k + ': 40 °C → ' + _BJI_ENDE[k] + ' °C' : k, 239, y, 174);
+  });
+}
+
+// Dose mit Hülle (Mitte cx, Oberkante oy, Unterkante uy)
+function _bjiDose(ctx, cx, oy, uy) {
+  const h = _bji.huelle, t = _bji.t, rw = 28;
+  const fett = h === 'Fettschicht' || h === 'Fell und Fettschicht';
+  const fell = h === 'Fell' || h === 'Fell und Fettschicht';
+  const dF = fett ? 8 : 0, dP = fell ? 8 : 0, aus = rw + dF + dP;
+  // Körper der Hülle von außen nach innen
+  if (fell) {
+    ctx.fillStyle = '#efe6d2';
+    ctx.fillRect(cx - aus, oy, 2 * aus, uy - oy);
+    // Fellhaare: kurze Striche, die sich leicht im Wind bewegen
+    ctx.strokeStyle = 'rgba(120,96,60,0.45)'; ctx.lineWidth = 1;
+    for (let y = oy + 4; y < uy; y += 6) for (let x = cx - aus + 3; x < cx + aus - 2; x += 7) {
+      const w = Math.sin(t * 1.8 + y * 0.3 + x * 0.1) * 1.5;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 2 + w, y + 4); ctx.stroke();
+    }
+    ctx.strokeStyle = '#d9ccb0'; ctx.lineWidth = 1.4;
+    for (const s of [-1, 1]) for (let y = oy + 2; y < uy; y += 5) {
+      const w = Math.sin(t * 2 + y * 0.4) * 1.8;
+      ctx.beginPath(); ctx.moveTo(cx + s * aus, y); ctx.lineTo(cx + s * (aus + 4) + w, y + 2); ctx.stroke();
+    }
+  } else if (fett) {
+    const g = ctx.createLinearGradient(cx - aus, 0, cx + aus, 0);
+    g.addColorStop(0, '#f6e27a'); g.addColorStop(0.35, '#fdf3b5'); g.addColorStop(1, '#e9c94a');
+    ctx.fillStyle = g; ctx.fillRect(cx - aus, oy, 2 * aus, uy - oy);
+    ctx.strokeStyle = '#caa53a'; ctx.lineWidth = 1.2; ctx.strokeRect(cx - aus, oy, 2 * aus, uy - oy);
+  } else {
+    // blanke Blechdose mit Rillen
+    const g = ctx.createLinearGradient(cx - rw, 0, cx + rw, 0);
+    g.addColorStop(0, '#94a3b8'); g.addColorStop(0.3, '#f1f5f9'); g.addColorStop(0.55, '#cbd5e1'); g.addColorStop(1, '#7c8a9e');
+    ctx.fillStyle = g; ctx.fillRect(cx - rw, oy, 2 * rw, uy - oy);
+    ctx.strokeStyle = 'rgba(71,85,105,0.35)'; ctx.lineWidth = 1;
+    for (let y = oy + 14; y < uy; y += 12) { ctx.beginPath(); ctx.moveTo(cx - rw, y); ctx.lineTo(cx + rw, y); ctx.stroke(); }
+    ctx.strokeStyle = '#64748b'; ctx.strokeRect(cx - rw, oy, 2 * rw, uy - oy);
+  }
+  // Oben: Ringe zeigen den Aufbau (Fell außen, Fett, Blech, Wasser)
+  const ring = (r, farbe) => { ctx.fillStyle = farbe; ctx.beginPath(); ctx.ellipse(cx, oy, r, r * 0.22, 0, 0, 2 * Math.PI); ctx.fill(); };
+  if (fell) ring(aus, '#e6dcc4');
+  if (fett) ring(rw + dF, '#f4dc6a');
+  ring(rw, '#94a3b8');
+  // Wasser: leicht bewegte Oberfläche, wird mit der Temperatur kühler in der Farbe
+  const T = _bjiT(h, _bji.minute), u = _bioFxKlemme((40 - T) / 25);
+  const r0 = Math.round(125 - 30 * u), g0 = Math.round(200 + 10 * u), b0 = Math.round(230 + 20 * u);
+  ctx.fillStyle = 'rgb(' + r0 + ',' + g0 + ',' + b0 + ')';
+  ctx.beginPath(); ctx.ellipse(cx, oy + 1, rw - 3, (rw - 3) * 0.2, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1;
+  const wel = 0.5 + 0.5 * Math.sin(t * 1.6);
+  ctx.beginPath(); ctx.ellipse(cx - 6, oy + 1, 6 + 8 * wel, (6 + 8 * wel) * 0.2, 0, 0, 2 * Math.PI); ctx.stroke();
+  // Frost auf der blanken Dose: wächst, während sie abkühlt
+  if (h === 'keine Hülle') {
+    const f = _bioFxKlemme((40 - T) / 20);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.92)'; ctx.lineCap = 'round';
+    for (const k of _bji.frost) {
+      const g = _bioFxKlemme((f - k.schwelle) / 0.25);
+      if (g <= 0) continue;
+      const r = k.r * g;
+      ctx.lineWidth = 1.1;
+      for (let a = 0; a < 6; a++) {
+        const w = k.w + a * Math.PI / 3, ex = k.x + Math.cos(w) * r, ey = k.y + Math.sin(w) * r;
+        ctx.beginPath(); ctx.moveTo(k.x, k.y); ctx.lineTo(ex, ey); ctx.stroke();
+        if (g > 0.6) {                                // Seitenäste: Eiskristall
+          const mx = k.x + Math.cos(w) * r * 0.55, my = k.y + Math.sin(w) * r * 0.55;
+          for (const s of [-0.7, 0.7]) {
+            ctx.beginPath(); ctx.moveTo(mx, my);
+            ctx.lineTo(mx + Math.cos(w + s) * r * 0.35, my + Math.sin(w + s) * r * 0.35); ctx.stroke();
+          }
+        }
+      }
+    }
+    // weißer Reif von unten her
+    const rh = 60 * f;
+    if (rh > 1) {
+      const gr = ctx.createLinearGradient(0, 182 - rh, 0, 182);
+      gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(1, 'rgba(240,249,255,0.75)');
+      ctx.fillStyle = gr; ctx.fillRect(cx - rw, 182 - rh, 2 * rw, rh);
+    }
+    ctx.restore();
+  }
+}
+
+// Thermometer, das in der Dose steckt (0 °C bei y = 98, 40 °C bei y = 26)
+function _bjiThermometer(ctx, cx) {
+  const h = _bji.huelle, T = _bjiT(h, _bji.minute), zeig = _bji.fertig ? _BJI_ENDE[h] : _bjiAnzeige(h, _bji.minute);
+  const yT = v => 98 - v * 1.8;
+  const x = cx + 6;
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x - 4, 18, 8, 96, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dc2626';
+  ctx.fillRect(x - 1.6, yT(T), 3.2, 114 - yT(T));
+  ctx.fillStyle = '#334155'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  for (let v = 0; v <= 40; v += 10) {
+    ctx.beginPath(); ctx.moveTo(x - 4, yT(v)); ctx.lineTo(x - 8, yT(v)); ctx.strokeStyle = '#334155'; ctx.stroke();
+    ctx.fillText(String(v), x - 10, yT(v) + 3);
+  }
+  // Anzeige neben dem Thermometer
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x + 10, 20, 54, 24, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(zeig + ' °C', x + 37, 37);
+}
+
+function _bjiEisstueck(ctx, e, t) {
+  ctx.fillStyle = 'rgba(' + Math.round(190 + 50 * e.hell) + ',' + Math.round(222 + 30 * e.hell) + ',255,0.96)';
+  ctx.strokeStyle = 'rgba(125,170,205,0.8)'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  e.ecken.forEach(([dx, dy], i) => i ? ctx.lineTo(e.x + dx, e.y + dy) : ctx.moveTo(e.x + dx, e.y + dy));
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  const a = 0.35 + 0.35 * Math.sin(t * 1.3 + e.ph);          // ruhiges Glitzern (0,2 Hz)
+  if (a > 0.45) {
+    ctx.fillStyle = 'rgba(255,255,255,' + a.toFixed(2) + ')';
+    ctx.beginPath(); ctx.arc(e.x + e.ecken[0][0] * 0.4, e.y + e.ecken[0][1] * 0.4, 1.6, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+
+function _bjiDraw(ctx, cv) {
+  if (!_bji) return;
+  const W = cv.width, H = cv.height, t = _bji.t, cx = 110;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel über dem Eis
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#dbeafe'); bg.addColorStop(0.6, '#eff6ff'); bg.addColorStop(1, '#e0f2fe');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // blasse Eisscholle am Horizont
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.beginPath(); ctx.moveTo(0, 140); ctx.lineTo(40, 132); ctx.lineTo(95, 136); ctx.lineTo(150, 128);
+  ctx.lineTo(212, 134); ctx.lineTo(212, 160); ctx.lineTo(0, 160); ctx.closePath(); ctx.fill();
+  // Schnee rieselt
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  for (const s of _bji.schnee) if (s.x < 214) { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI); ctx.fill(); }
+
+  // Wanne (hinten)
+  ctx.fillStyle = '#7fa6c2';
+  ctx.beginPath(); ctx.ellipse(110, 162, 98, 10, 0, 0, 2 * Math.PI); ctx.fill();
+  for (const e of _bji.eis) if (!e.vorne) _bjiEisstueck(ctx, e, t);
+  _bjiThermometer(ctx, cx);
+  _bjiDose(ctx, cx, 112, 232);
+  for (const e of _bji.eis) if (e.vorne) _bjiEisstueck(ctx, e, t);
+  // Wanne (vorne)
+  ctx.fillStyle = 'rgba(96,140,175,0.55)';
+  ctx.beginPath(); ctx.moveTo(12, 162); ctx.lineTo(24, 246); ctx.lineTo(196, 246); ctx.lineTo(208, 162);
+  ctx.lineTo(204, 162); ctx.lineTo(192, 240); ctx.lineTo(28, 240); ctx.lineTo(16, 162); ctx.closePath(); ctx.fill();
+  // Schild mit der Hülle
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  const sw = ctx.measureText(_bji.huelle).width + 16;
+  ctx.fillStyle = 'rgba(255,255,255,0.95)'; _bioFxRundRect(ctx, cx - sw / 2, 222, sw, 18, 5); ctx.fill();
+  ctx.strokeStyle = _BJI_FARBE[_bji.huelle]; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, cx - sw / 2, 222, sw, 18, 5); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.fillText(_bji.huelle, cx, 235);
+  // Uhr: welche Minute?
+  ctx.textAlign = 'left'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = 'rgba(15,23,42,0.75)';
+  if (_bji.laeuft) ctx.fillText(_bji.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 8, 16);
+  const m = Math.floor(_bji.minute + 1e-9);
+  ctx.fillText(_bji.fertig ? 'nach 20 Minuten' : 'Minute ' + m, 8, _bji.laeuft ? 30 : 16);
+
+  _bjiDiagramm(ctx);
+  _bioFxAlleDraw(ctx, _bji.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DREISSIG TAGE OHNE REGEN   (Förderheft Bio 5/6 · bj7)
+// Eine Pflanze steht im Sand der Wüste in der Sonne. Ein Kalender zählt die
+// Tage ohne Regen, ein Balken zeigt das Wasser in der Pflanze.
+// Das Kind stellt EINE Sache um (die Pflanze) und lässt 30 Tage laufen.
+// Modellwerte (Lehrerteil, qualitativ):
+//   Kaktus      Wasser 100 − 0,6 je Tag → Tag 30: 82 = „noch viel“, verliert sehr wenig
+//   Sonnenblume Wasser 100 − 12 je Tag  → Tag 5: 40 = welk, ab Tag 9 leer = vertrocknet
+//   Wüstenblume nur Samen im Sand, verliert kein Wasser, wartet auf Regen;
+//               nach „Regen“ keimen die Samen, nach 2 Wochen (14 Tage) blüht sie.
+// Stufen am Balken: ab 60 „viel“, 1–59 „wenig“, 0 „leer“.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Die Sonnenblume lässt an Tag 5
+// in Zeitlupe welke Blätter fallen; der Kaktus bleibt prall. Nach Tag 30 öffnet
+// sich der Kaktus im Längsschnitt – innen steht das Wasser im Stamm und wogt.
+// Bei „Regen“ steigt der Wasserstand im Schnitt mit Glitzern. Die Wüstenblume
+// keimt nach dem Regen im Zeitraffer und blüht (Funken in Blütenfarben).
+// Kein Blinken, kein Ton, keine Wertung, keine Vermenschlichung.
+// Wörter der Heftlücken („angepasst“, „Wasserspeicher“) stehen NICHT im Bild.
+// ═══════════════════════════════════════════════════════
+let _bjk = null;
+const _BJK_NAME = { kaktus: 'Kaktus', sonne: 'Sonnenblume', wueste: 'Wüstenblume' };
+const _BJK_VERLUST = { kaktus: 'sehr wenig', sonne: 'sehr viel', wueste: 'kein Wasser' };
+const _BJK_TAGE_JE_S = 4;          // 30 Tage in 7,5 s
+const _BJK_WACHS_JE_S = 3.5;       // 14 Tage nach dem Regen in 4 s
+const _BJK_REGEN_DAUER = 1.8;      // s Regen
+const _BJK_BODEN = 196;            // Oberkante Sand
+const _BJK_PX = 150;               // Pflanze steht hier
+const _BJK_SAMEN = [116, 133, 150, 167, 184];
+
+function _bjkInit() {
+  const k = [];
+  for (let i = 0; i < 26; i++) k.push({ x: (i * 97) % 420, y: _BJK_BODEN + 6 + (i * 37) % 48, v: 8 + (i % 5) * 4 });
+  _bjk = { pflanze: 'kaktus', phase: 'bereit', tag: 0, w: 100, wStart: 100, tot: false,
+           rt: 0, g: 0, nass: 0, wolke: 0, schnitt: 0, schnittZiel: 0,
+           t: 0, nach: 0, schritt: 0, key: '', koerner: k,
+           tropfen: [], dampf: [], dampfUhr: 0, glitzUhr: 0,
+           fx: { teile: [] }, zeitlupe: null };
+}
+function _bjkFxLeer() {
+  _bjk.fx = { teile: [] }; _bjk.zeitlupe = null;
+  _bjk.nach = 0; _bjk.schritt = 0; _bjk.dampf = []; _bjk.tropfen = [];
+}
+// Wasser aus dem Tag (Modellwerte oben)
+function _bjkWasser(pf, tag) {
+  if (pf === 'kaktus') return 100 - 0.6 * tag;
+  if (pf === 'sonne') return Math.max(0, 100 - 12 * tag);
+  return 0;
+}
+// Neue Pflanze, Tag 0: frisch, keine Effekte
+function _bjkZurueck() {
+  _bjkFxLeer();
+  _bjk.phase = 'bereit'; _bjk.tag = 0; _bjk.w = 100; _bjk.tot = false;
+  _bjk.rt = 0; _bjk.g = 0; _bjk.nass = 0; _bjk.wolke = 0;
+  _bjk.schnitt = 0; _bjk.schnittZiel = 0;
+  _bjkStatus();
+}
+function _bjkPflanze(p) {
+  if (!_bjk || !_BJK_NAME[p]) return;
+  _bjk.pflanze = p;
+  _bjkZurueck();
+}
+function _bjkLos() {
+  if (!_bjk) return;
+  _bjkZurueck();
+  _bjk.phase = 'lauf';
+  _bjkStatus();
+}
+function _bjkRegen() {
+  if (!_bjk || _bjk.phase === 'regen' || _bjk.phase === 'wachsen') return;
+  if (_bjk.pflanze === 'wueste' && _bjk.phase === 'bluete') return;
+  _bjkFxLeer();
+  _bjk.phase = 'regen'; _bjk.rt = 0; _bjk.wStart = _bjk.w;
+  if (_bjk.pflanze === 'kaktus') _bjk.schnittZiel = 1;   // Blick in den Stamm
+  _bjkStatus();
+}
+function _bjkNeu() {
+  if (!_bjk) return;
+  _bjk.pflanze = 'kaktus';
+  _bjkZurueck();
+}
+// Sprungmarke: Pflanze wählen und gleich an Tag 30 (Aha läuft ab dort)
+function _bjkMarke(p) {
+  if (!_bjk || !_BJK_NAME[p]) return;
+  _bjk.pflanze = p;
+  _bjkZurueck();
+  _bjk.tag = 30; _bjk.w = _bjkWasser(p, 30); _bjk.tot = p === 'sonne';
+  _bjk.phase = 'ende'; _bjk.nach = 0; _bjk.schritt = 0;
+  _bjkStatus();
+}
+// Sprungmarke: Wüstenblume nach dem Regen, gleich in Blüte
+function _bjkMarkeRegen() {
+  if (!_bjk) return;
+  _bjk.pflanze = 'wueste';
+  _bjkZurueck();
+  _bjk.tag = 30; _bjk.nass = 1; _bjk.g = 14; _bjk.w = 100;
+  _bjk.phase = 'bluete'; _bjk.nach = 0; _bjk.schritt = 0;
+  _bjkStatus();
+}
+
+function _bjkHTML() {
+  const k = (p, txt) => `<button class="sim-btn" data-bjk="${p}" onclick="_bjkPflanze('${p}')">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Dreißig Tage ohne Regen</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Pflanze steht im Sand der Wüste in der Sonne. Der Kalender zählt die Tage ohne Regen. Wähle eine Pflanze. Dann drücke „▶ 30 Tage ohne Regen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bjk-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bjk-los" onclick="_bjkLos()">▶ 30 Tage ohne Regen</button>
+          <button class="sim-btn" id="_bjk-regen" onclick="_bjkRegen()">Regen</button>
+          <button class="sim-btn" onclick="_bjkNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Pflanze</span>
+          <div class="sim-btn-row">
+            ${k('kaktus', 'Kaktus')}
+            ${k('sonne', 'Sonnenblume')}
+            ${k('wueste', 'Wüstenblume')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_bjk-status" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Der Balken im Bild zeigt: Wasser in der Pflanze: viel / wenig / leer.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bjkMarke('kaktus')">Kaktus, Tag 30</button>
+          <button class="sim-btn" onclick="_bjkMarke('sonne')">Sonnenblume, Tag 30</button>
+          <button class="sim-btn" onclick="_bjkMarke('wueste')">Wüstenblume, Tag 30</button>
+          <button class="sim-btn" onclick="_bjkMarkeRegen()">Wüstenblume, nach „Regen“</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Stelle nur die Pflanze um. Sonne und Sand bleiben gleich.</p>
+  </div>`;
+}
+
+/* ── Anzeige ─────────────────────────────────────────────── */
+function _bjkNachRegen() { return ['regen', 'nachRegen', 'wachsen', 'bluete'].indexOf(_bjk.phase) >= 0; }
+function _bjkWort() {
+  const pf = _bjk.pflanze, w = _bjk.w;
+  if (pf === 'wueste' && !(_bjk.phase === 'wachsen' || _bjk.phase === 'bluete')) return 'nur Samen, kein Wasserverlust';
+  if (w >= 60) return (_bjk.tag < 0.5 || _bjkNachRegen()) ? 'viel' : 'noch viel';
+  if (w > 0.001) return 'wenig';
+  return 'leer, keins mehr';
+}
+function _bjkAussehen() {
+  const pf = _bjk.pflanze, ph = _bjk.phase;
+  if (pf === 'kaktus') return 'dick und grün';
+  if (pf === 'sonne') {
+    if (_bjk.tot) return 'vertrocknet (ab Tag 5 welk)';
+    if (_bjk.w <= 40 + 1e-9) return 'welk';
+    return 'grün, große Blätter';
+  }
+  if (ph === 'regen') return 'Es regnet. Der Sand wird nass.';
+  if (ph === 'wachsen') return 'Die Samen keimen.';
+  if (ph === 'bluete') return 'Die Samen keimen. Nach 2 Wochen blüht sie.';
+  return 'nur Samen im Sand, wartet auf Regen';
+}
+function _bjkHinweis() {
+  const pf = _bjk.pflanze, ph = _bjk.phase;
+  if (ph === 'bereit') return 'Drücke „▶ 30 Tage ohne Regen“.';
+  if (ph === 'lauf') return 'Kein Regen. Die Sonne scheint jeden Tag.';
+  if (ph === 'ende') {
+    if (pf === 'kaktus') return 'Sieh in den Stamm. Dann drücke „Regen“.';
+    if (pf === 'sonne') return 'Vergleiche mit dem Kaktus.';
+    return 'Drücke „Regen“. Beobachte, was passiert.';
+  }
+  if (ph === 'regen') return 'Es regnet.';
+  if (ph === 'nachRegen') {
+    if (pf === 'kaktus') return 'Das Wasser steigt im Stamm.';
+    if (_bjk.tot) return 'Der Regen kommt zu spät. Die Sonnenblume bleibt vertrocknet.';
+    if (_bjk.wStart <= 40 + 1e-9) return 'Die Blätter richten sich wieder auf.';
+    return 'Die Sonnenblume hat wieder viel Wasser.';
+  }
+  if (ph === 'wachsen') return 'Sieh auf die Samen im Sand.';
+  return 'Vergleiche mit Tag 30: vorher lagen nur Samen im Sand.';
+}
+function _bjkZeile() {
+  const pf = _bjk.pflanze, name = _BJK_NAME[pf];
+  if (pf === 'wueste' && (_bjk.phase === 'wachsen' || _bjk.phase === 'bluete' || _bjk.phase === 'regen'))
+    return name + ' · nach Regen · Tag ' + Math.floor(_bjk.g + 1e-9) + ' nach dem Regen';
+  const wann = _bjkNachRegen() ? 'nach Regen' : 'Tag ' + Math.floor(_bjk.tag + 1e-9);
+  return name + ' · ' + wann + ' · Wasser in der Pflanze: ' + _bjkWort() +
+         ' · verliert am Tag: ' + _BJK_VERLUST[pf];
+}
+function _bjkSchluessel() { return _bjkZeile() + '|' + _bjkAussehen() + '|' + _bjkHinweis(); }
+function _bjkStatus() {
+  if (!_bjk) return;
+  _bjk.key = _bjkSchluessel();
+  const el = document.getElementById('_bjk-status');
+  if (el) {
+    const zweite = _bjk.pflanze === 'wueste' && _bjkNachRegen() ? _bjkAussehen() : 'Aussehen: ' + _bjkAussehen();
+    el.innerHTML = '<b>' + _bjkZeile() + '</b><br>' + zweite + '<br>' + _bjkHinweis();
+  }
+  try {
+    document.querySelectorAll('[data-bjk]').forEach(b => {
+      const d = b.dataset ? b.dataset.bjk : b.getAttribute('data-bjk');
+      if (b.classList) b.classList.toggle('primary', d === _bjk.pflanze);
+    });
+    const los = document.getElementById('_bjk-los');
+    if (los && los.classList) los.classList.toggle('primary', _bjk.phase === 'bereit');
+    const rg = document.getElementById('_bjk-regen');
+    if (rg && rg.classList) rg.classList.toggle('primary', _bjk.phase === 'ende');
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Ablauf ──────────────────────────────────────────────── */
+function _bjkUpdate(dt) {
+  if (!_bjk) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_bjk, roh);
+  _bjk.t += roh;
+  const pf = _bjk.pflanze;
+  if (_bjk.phase === 'lauf') {
+    const alt = _bjk.tag;
+    _bjk.tag = Math.min(30, _bjk.tag + d * _BJK_TAGE_JE_S);
+    _bjk.w = _bjkWasser(pf, _bjk.tag);
+    if (pf === 'sonne' && _bjk.w <= 0) _bjk.tot = true;
+    if (pf === 'sonne' && alt < 5 && _bjk.tag >= 5) _bjkAhaWelk();
+    if (_bjk.tag >= 30) { _bjk.tag = 30; _bjk.phase = 'ende'; _bjk.nach = 0; _bjk.schritt = 0; }
+  } else if (_bjk.phase === 'ende') {
+    _bjk.nach += roh; _bjkAhaEnde();
+  } else if (_bjk.phase === 'regen') {
+    _bjk.rt += d;
+    _bjk.nass = Math.max(_bjk.nass, _bioFxKlemme(_bjk.rt / 1.2));
+    const u = _bioFxEase.sanft(_bioFxKlemme((_bjk.rt - 0.4) / 1.3));
+    if (pf !== 'wueste' && !(pf === 'sonne' && _bjk.tot)) _bjk.w = _bjk.wStart + (100 - _bjk.wStart) * u;
+    if (pf === 'kaktus') _bjkGlitzern(roh);
+    if (_bjk.rt < _BJK_REGEN_DAUER - 0.3) _bjkTropfenNeu(roh);
+    if (_bjk.rt >= _BJK_REGEN_DAUER) {
+      _bjk.nach = 0; _bjk.schritt = 0;
+      if (pf === 'wueste') { _bjk.phase = 'wachsen'; _bjk.g = 0; }
+      else { _bjk.phase = 'nachRegen'; if (!(pf === 'sonne' && _bjk.tot)) _bjk.w = 100; }
+    }
+  } else if (_bjk.phase === 'wachsen') {
+    const alt = _bjk.g;
+    _bjk.g = Math.min(14, _bjk.g + d * _BJK_WACHS_JE_S);
+    _bjkAhaWachsen(alt, _bjk.g);
+    if (_bjk.g >= 14) { _bjk.g = 14; _bjk.phase = 'bluete'; _bjk.nach = 0; _bjk.schritt = 0; }
+  } else if (_bjk.phase === 'bluete' || _bjk.phase === 'nachRegen') {
+    _bjk.nach += roh; _bjkAhaNachher();
+  }
+  // Wolken kommen mit dem Regen und ziehen danach weiter
+  const wz = _bjk.phase === 'regen' ? 1 : 0;
+  _bjk.wolke += (wz - _bjk.wolke) * Math.min(1, roh * 2.2);
+  // Schnitt durch den Kaktus öffnet sich weich (1,2 s)
+  if (_bjk.schnitt < _bjk.schnittZiel) _bjk.schnitt = Math.min(_bjk.schnittZiel, _bjk.schnitt + roh / 1.2);
+  if (_bjk.schnitt > _bjk.schnittZiel) _bjk.schnitt = Math.max(_bjk.schnittZiel, _bjk.schnitt - roh / 0.6);
+  _bjkDampfUpdate(roh, d);
+  _bjkTropfenUpdate(roh);
+  for (const k of _bjk.koerner) { k.x += k.v * roh; if (k.x > 425) k.x -= 430; }
+  _bioFxAlleUpdate(_bjk.fx, roh);
+  if (_bjkSchluessel() !== _bjk.key) _bjkStatus();
+}
+
+/* Verdunstung: Wassertröpfchen steigen von der Pflanze auf – viele bei der
+   Sonnenblume, ganz wenige beim Kaktus, keine bei den Samen. */
+function _bjkDampfUpdate(roh, d) {
+  const pf = _bjk.pflanze;
+  if (_bjk.phase === 'lauf' && _bjk.w > 0) {
+    const rate = pf === 'sonne' ? 9 : pf === 'kaktus' ? 0.7 : 0;
+    _bjk.dampfUhr += d * rate;
+    while (_bjk.dampfUhr >= 1) {
+      _bjk.dampfUhr -= 1;
+      const q = pf === 'sonne' ? _bjkBlattSpitze(Math.floor(Math.random() * 8)) : { x: _BJK_PX + (Math.random() - 0.5) * 30, y: 80 + Math.random() * 90 };
+      _bjk.dampf.push({ x: q.x, y: q.y, a: 0, l: 1.1 + Math.random() * 0.5, s: Math.random() * 6 });
+    }
+  }
+  for (let i = _bjk.dampf.length - 1; i >= 0; i--) {
+    const p = _bjk.dampf[i];
+    p.a += roh; p.y -= 26 * roh; p.x += Math.sin(p.s + p.a * 3) * 8 * roh;
+    if (p.a >= p.l) _bjk.dampf.splice(i, 1);
+  }
+}
+function _bjkTropfenNeu(roh) {
+  const n = Math.round(90 * roh + Math.random() * 0.5);
+  for (let i = 0; i < n; i++) _bjk.tropfen.push({ x: Math.random() * 440 - 10, y: 30 + Math.random() * 20, v: 260 + Math.random() * 60 });
+}
+function _bjkTropfenUpdate(roh) {
+  for (let i = _bjk.tropfen.length - 1; i >= 0; i--) {
+    const p = _bjk.tropfen[i];
+    p.y += p.v * roh; p.x -= 30 * roh;
+    if (p.y > _BJK_BODEN + 4) { _bjk.tropfen.splice(i, 1); }
+  }
+}
+
+/* ── Aha-Effekte (Bibliothek _bioFx) ─────────────────────── */
+// Sonnenblume, Tag 5: Zeitlupe, welke Blätter segeln zu Boden
+function _bjkAhaWelk() {
+  _bioFxZeitlupe(_bjk, 0.3, 1.2);
+  const p = _bjkBlattSpitze(2);
+  _bioFxBlaetter(_bjk.fx.teile, p.x, p.y, 3, ['#b5a642', '#a3893a', '#c2b25a']);
+  const q = _bjkBlattSpitze(5);
+  _bioFxBlaetter(_bjk.fx.teile, q.x, q.y, 3, ['#b5a642', '#a3893a', '#c2b25a']);
+  _bioFxWelle(_bjk.fx.teile, _BJK_PX, 120, 'rgba(202,138,4,0.9)', 50);
+}
+function _bjkAhaEnde() {
+  const pf = _bjk.pflanze, fx = _bjk.fx, t = _bjk.nach;
+  if (pf === 'kaktus') {
+    if (_bjk.schritt === 0 && t >= 0.3) {
+      _bjk.schritt = 1; _bjk.schnittZiel = 1;
+      _bioFxWelle(fx.teile, _BJK_PX, 140, 'rgba(74,222,128,0.9)', 60);
+    }
+    if (_bjk.schritt === 1 && t >= 1.5) {
+      _bjk.schritt = 2;
+      const y = _bjkWasserY();
+      _bioFxFunken(fx.teile, _BJK_PX, y, 8, ['#bae6fd', '#ffffff', '#7dd3fc']);
+      _bioFxBanner(fx, 'Blick in den Stamm', 2.6, '#7dd3fc');
+    }
+  } else if (pf === 'sonne') {
+    if (_bjk.schritt === 0 && t >= 0.3) {
+      _bjk.schritt = 1;
+      _bioFxBlaetter(fx.teile, _BJK_PX, 110, 4, ['#8b6b3a', '#a0804a', '#6f5530']);
+    }
+    if (_bjk.schritt === 1 && t >= 0.9) {
+      _bjk.schritt = 2;
+      _bioFxBanner(fx, 'Vergleiche mit dem Kaktus!', 2.8, '#fbbf24');
+    }
+  } else {
+    if (_bjk.schritt === 0 && t >= 0.3) {
+      _bjk.schritt = 1;
+      _bioFxWelle(fx.teile, _BJK_PX, 218, 'rgba(250,204,21,0.9)', 50);
+    }
+    if (_bjk.schritt === 1 && t >= 0.9) {
+      _bjk.schritt = 2;
+      _bioFxBanner(fx, 'Drücke jetzt „Regen“.', 2.8, '#93c5fd');
+    }
+  }
+}
+// Kaktus im Regen: Glitzern auf dem steigenden Wasserstand
+function _bjkGlitzern(roh) {
+  _bjk.glitzUhr += roh;
+  if (_bjk.rt < 0.4 || _bjk.glitzUhr < 0.22) return;
+  _bjk.glitzUhr = 0;
+  const y = _bjkWasserY();
+  _bioFxFunken(_bjk.fx.teile, _BJK_PX + (Math.random() - 0.5) * 24, y, 3, ['#e0f2fe', '#ffffff', '#7dd3fc']);
+}
+function _bjkAhaWachsen(alt, neu) {
+  const fx = _bjk.fx;
+  if (alt < 1 && neu >= 1) {                  // Samen platzen auf
+    for (const x of _BJK_SAMEN) {
+      _bioFxWelle(fx.teile, x, 214, 'rgba(253,224,71,0.9)', 14);
+      _bioFxFunken(fx.teile, x, 212, 2, ['#fff3b0', '#ffffff']);
+    }
+  }
+  if (alt < 10.6 && neu >= 10.6) {            // erste Blüte öffnet sich
+    _bioFxZeitlupe(_bjk, 0.35, 1.1);
+  }
+  if (alt < 12 && neu >= 12) {
+    for (const x of _BJK_SAMEN) _bioFxFunken(fx.teile, x, _bjkBlueteY(x), 4, ['#f9a8d4', '#fde047', '#ffffff', '#f472b6']);
+  }
+}
+function _bjkAhaNachher() {
+  const pf = _bjk.pflanze, fx = _bjk.fx, t = _bjk.nach;
+  if (_bjk.phase === 'bluete') {
+    if (_bjk.schritt === 0 && t >= 0.2) {
+      _bjk.schritt = 1;
+      for (const x of _BJK_SAMEN) _bioFxWelle(fx.teile, x, _bjkBlueteY(x), 'rgba(244,114,182,0.9)', 18);
+      _bioFxFunken(fx.teile, _BJK_PX, 140, 12, ['#f9a8d4', '#fde047', '#ffffff', '#c084fc']);
+    }
+    if (_bjk.schritt === 1 && t >= 0.8) {
+      _bjk.schritt = 2;
+      _bioFxBanner(fx, 'Die Wüste blüht!', 2.8, '#f472b6');
+    }
+    return;
+  }
+  if (_bjk.schritt === 0) {
+    _bjk.schritt = 1;
+    if (pf === 'kaktus') {
+      _bioFxWelle(fx.teile, _BJK_PX, _bjkWasserY(), 'rgba(125,211,252,0.95)', 40);
+      _bioFxFunken(fx.teile, _BJK_PX, _bjkWasserY(), 10, ['#e0f2fe', '#ffffff', '#7dd3fc']);
+      _bioFxBanner(fx, 'Das Wasser steigt im Stamm.', 2.6, '#7dd3fc');
+    } else if (!_bjk.tot) {
+      _bioFxFunken(fx.teile, _BJK_PX, 110, 8, ['#86efac', '#ffffff', '#4ade80']);
+    } else {
+      _bioFxWelle(fx.teile, _BJK_PX, 150, 'rgba(148,163,184,0.9)', 50);
+    }
+  }
+}
+
+/* ── Geometrie ───────────────────────────────────────────── */
+// Kaktusstamm: innen (Schnitt) von y 78 bis 192
+const _BJK_KT = { x0: _BJK_PX - 23, x1: _BJK_PX + 23, y0: 72, y1: _BJK_BODEN };
+function _bjkWasserY() {
+  const i0 = _BJK_KT.y0 + 12, i1 = _BJK_KT.y1 - 4;
+  return i1 - (i1 - i0) * _bioFxKlemme(_bjk.w / 100);
+}
+function _bjkWelk() {
+  if (_bjk.pflanze !== 'sonne') return 0;
+  return _bioFxKlemme((44 - _bjk.w) / 44);
+}
+// Blattspitze i (0..7) der Sonnenblume
+function _bjkBlattSpitze(i) {
+  const wk = _bjkWelk(), paar = Math.floor(i / 2), s = i % 2 ? 1 : -1;
+  const y = 176 - paar * 26, L = 34 - paar * 3;
+  const win = -0.35 + wk * 1.35 + (_bjk.tot ? 0.25 : 0);
+  return { x: _BJK_PX + s * (4 + Math.cos(win) * L), y: y + Math.sin(win) * L };
+}
+function _bjkBlueteY(x) { return _BJK_BODEN - 40 - (x % 3) * 4; }
+
+/* ── Zeichnen ────────────────────────────────────────────── */
+function _bjkMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _bjkDraw(ctx, cv) {
+  if (!_bjk) return;
+  const W = cv.width, H = cv.height, t = _bjk.t, wo = _bjk.wolke;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel: heiß und hell, bei Regen grauer
+  const bg = ctx.createLinearGradient(0, 0, 0, _BJK_BODEN);
+  bg.addColorStop(0, _bjkMisch('#7cc4f2', '#8a9aac', wo));
+  bg.addColorStop(1, _bjkMisch('#fdf1cf', '#c9d2dc', wo));
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, _BJK_BODEN);
+  // Sonne mit langsam kreisenden Strahlen
+  ctx.save();
+  ctx.globalAlpha = 1 - 0.8 * wo;
+  ctx.translate(40, 40);
+  ctx.rotate(t * 0.25);
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  for (let k = 0; k < 10; k++) {
+    const a = k * Math.PI / 5, r1 = 19, r2 = 25 + 2 * Math.sin(t * 1.5 + k);
+    ctx.beginPath(); ctx.moveTo(Math.cos(a) * r1, Math.sin(a) * r1); ctx.lineTo(Math.cos(a) * r2, Math.sin(a) * r2); ctx.stroke();
+  }
+  ctx.fillStyle = '#fcd34d';
+  ctx.beginPath(); ctx.arc(0, 0, 15, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+  // Ferne Dünen
+  ctx.fillStyle = _bjkMisch('#f0cf8e', '#c7b28a', wo);
+  ctx.beginPath(); ctx.moveTo(0, _BJK_BODEN);
+  for (let x = 0; x <= W; x += 10) ctx.lineTo(x, _BJK_BODEN - 14 - 10 * Math.sin(x * 0.018 + 1) - 5 * Math.sin(x * 0.05));
+  ctx.lineTo(W, _BJK_BODEN); ctx.closePath(); ctx.fill();
+  // Sand (bei Regen dunkler)
+  const nass = _bjk.nass;
+  ctx.fillStyle = _bjkMisch('#f3d9a4', '#b8925a', nass * 0.8);
+  ctx.fillRect(0, _BJK_BODEN, W, H - _BJK_BODEN);
+  ctx.fillStyle = _bjkMisch('#e2c07f', '#9b7746', nass * 0.8);
+  for (const k of _bjk.koerner) { ctx.beginPath(); ctx.arc(k.x, k.y, 1.2, 0, 2 * Math.PI); ctx.fill(); }
+  // Hitzeflimmern über dem Sand (nicht im Regen)
+  if (wo < 0.6) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.35 * (1 - wo)).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    for (let r = 0; r < 3; r++) {
+      const y = _BJK_BODEN - 10 - r * 9;
+      ctx.beginPath();
+      for (let x = 10 + r * 30; x < 250; x += 4) {
+        const yy = y + Math.sin(x * 0.09 + t * 3 + r) * 1.6;
+        if (x === 10 + r * 30) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Wolken
+  if (wo > 0.02) {
+    ctx.save();
+    ctx.globalAlpha = wo;
+    ctx.fillStyle = '#9aa7b6';
+    for (const [cx, cy, r] of [[70, 34, 26], [110, 28, 30], [150, 36, 24], [230, 30, 28], [270, 24, 30], [310, 34, 24]]) {
+      ctx.beginPath(); ctx.arc(cx + (1 - wo) * 120, cy, r, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Pflanze
+  if (_bjk.pflanze === 'kaktus') _bjkKaktus(ctx);
+  else if (_bjk.pflanze === 'sonne') _bjkSonnenblume(ctx);
+  else _bjkWuestenblume(ctx);
+  // Verdunstung
+  ctx.fillStyle = '#60a5fa';
+  for (const p of _bjk.dampf) {
+    ctx.globalAlpha = _bioFxKlemme(p.a / 0.15) * (1 - p.a / p.l) * 0.85;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(p.x - 2, p.y); ctx.lineTo(p.x, p.y - 4); ctx.lineTo(p.x + 2, p.y); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  // Regentropfen
+  if (_bjk.tropfen.length) {
+    ctx.strokeStyle = 'rgba(59,130,246,0.75)'; ctx.lineWidth = 1.5;
+    for (const p of _bjk.tropfen) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - 2, p.y + 8); ctx.stroke(); }
+  }
+  _bjkBalken(ctx);
+  _bjkKalender(ctx);
+  _bioFxAlleDraw(ctx, _bjk.fx);
+  // Beschriftung unten (nach den Effekten: das Banner steht oben, hier ist frei)
+  ctx.textAlign = 'left'; ctx.fillStyle = '#3f2d12'; ctx.font = '700 13px sans-serif';
+  ctx.fillText(_BJK_NAME[_bjk.pflanze], 8, H - 8);
+  if (!(_bjk.pflanze === 'wueste' && (_bjk.phase === 'wachsen' || _bjk.phase === 'bluete'))) {
+    ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#1d4ed8';
+    ctx.fillText('verliert ' + _BJK_VERLUST[_bjk.pflanze], _BJK_PX + 20, H - 8);
+  }
+  if (_bjk.phase === 'lauf') {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(_bjk.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 72, 18);
+  }
+}
+
+// Säulenkaktus mit zwei Armen, Rippen und Dornen; nach Tag 30 im Längsschnitt.
+function _bjkKaktusForm(ctx) {
+  const K = _BJK_KT, r = 23;
+  ctx.beginPath();
+  ctx.moveTo(K.x0, K.y1);
+  ctx.lineTo(K.x0, K.y0 + r);
+  ctx.arc(_BJK_PX, K.y0 + r, r, Math.PI, 0);
+  ctx.lineTo(K.x1, K.y1);
+  ctx.closePath();
+}
+function _bjkArm(ctx, s, yAn, xAus, yTop) {
+  // s = -1 links, +1 rechts
+  const xa = _BJK_PX + s * 20, br = 11;
+  ctx.beginPath();
+  ctx.moveTo(xa, yAn - br); ctx.lineTo(xAus - s * br, yAn - br);
+  ctx.lineTo(xAus - s * br, yTop + br);
+  ctx.arc(xAus, yTop + br, br, s < 0 ? 0 : Math.PI, s < 0 ? Math.PI : 0, s < 0);
+  ctx.lineTo(xAus + s * br, yAn + br); ctx.lineTo(xa, yAn + br); ctx.closePath();
+}
+function _bjkKaktus(ctx) {
+  const K = _BJK_KT, t = _bjk.t, sn = _bjk.schnitt;
+  const gr = '#3f8f4a', rip = '#2f6f38';
+  ctx.save();
+  // Arme (wiegen sich nicht – ein Kaktus ist starr; nur Glanz wandert)
+  ctx.fillStyle = gr; ctx.strokeStyle = rip; ctx.lineWidth = 1.5;
+  _bjkArm(ctx, -1, 150, 104, 104); ctx.fill(); ctx.stroke();
+  _bjkArm(ctx, 1, 128, 198, 88); ctx.fill(); ctx.stroke();
+  _bjkKaktusForm(ctx); ctx.fill(); ctx.stroke();
+  // Rippen
+  ctx.strokeStyle = rip; ctx.lineWidth = 1.2;
+  for (const dx of [-12, 0, 12]) {
+    ctx.beginPath(); ctx.moveTo(_BJK_PX + dx, K.y1); ctx.lineTo(_BJK_PX + dx, K.y0 + 8 + Math.abs(dx) * 0.6); ctx.stroke();
+  }
+  // Längsschnitt: das Innere wird von unten nach oben sichtbar
+  if (sn > 0.01) {
+    ctx.save();
+    const i0 = K.y0 + 6, i1 = K.y1 - 2, x0 = K.x0 + 5, x1 = K.x1 - 5;
+    const zeig = i1 - (i1 - i0) * _bioFxEase.sanft(sn);
+    ctx.beginPath(); ctx.rect(x0, zeig, x1 - x0, i1 - zeig); ctx.clip();
+    ctx.beginPath();
+    ctx.moveTo(x0, i1); ctx.lineTo(x0, K.y0 + 23); ctx.arc(_BJK_PX, K.y0 + 23, 18, Math.PI, 0); ctx.lineTo(x1, i1); ctx.closePath();
+    ctx.fillStyle = '#d4efb0'; ctx.fill();
+    ctx.clip();
+    // Wasser im Gewebe mit wogender Oberfläche
+    const wy = _bjkWasserY();
+    ctx.fillStyle = 'rgba(56,150,230,0.55)';
+    ctx.beginPath(); ctx.moveTo(x0, i1);
+    for (let x = x0; x <= x1; x += 3) ctx.lineTo(x, wy + Math.sin(x * 0.25 + t * 2.4) * 1.5);
+    ctx.lineTo(x1, i1); ctx.closePath(); ctx.fill();
+    // Zellen (Waben) im Gewebe
+    ctx.strokeStyle = 'rgba(80,130,60,0.35)'; ctx.lineWidth = 0.8;
+    for (let y = i0 + 8; y < i1; y += 10)
+      for (let x = x0 + ((y / 10) % 2 ? 3 : 8); x < x1; x += 10) { ctx.beginPath(); ctx.arc(x, y, 4, 0, 2 * Math.PI); ctx.stroke(); }
+    // kleine Bläschen steigen im Wasser langsam
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    for (let k = 0; k < 5; k++) {
+      const by = i1 - ((t * 14 + k * 23) % Math.max(10, i1 - wy));
+      ctx.beginPath(); ctx.arc(x0 + 6 + k * 7, by, 1.3, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+    // Schnittkante
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.7 * sn).toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 3]);
+    ctx.strokeRect(K.x0 + 5, K.y0 + 6, K.x1 - K.x0 - 10, K.y1 - K.y0 - 8);
+    ctx.setLineDash([]);
+  }
+  // Dornen (Büschel) auf Stamm und Armen
+  ctx.strokeStyle = '#f7f1d2'; ctx.lineWidth = 1;
+  const dornen = [];
+  for (let y = K.y0 + 14; y < K.y1 - 6; y += 16) for (const dx of [-23, 23]) dornen.push([_BJK_PX + dx, y]);
+  for (let y = 112; y < 146; y += 14) { dornen.push([93, y]); dornen.push([115, y]); }
+  for (let y = 96; y < 124; y += 14) { dornen.push([187, y]); dornen.push([209, y]); }
+  for (const [x, y] of dornen) {
+    for (const a of [-0.6, 0, 0.6]) {
+      const s = x < _BJK_PX ? -1 : 1;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + s * Math.cos(a) * 6, y + Math.sin(a) * 6); ctx.stroke();
+    }
+  }
+  // Glanzstreifen wandert langsam
+  ctx.strokeStyle = 'rgba(255,255,255,' + (0.18 + 0.08 * Math.sin(t * 1.2)).toFixed(3) + ')'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(_BJK_PX - 16, K.y1 - 8); ctx.lineTo(_BJK_PX - 16, K.y0 + 26); ctx.stroke();
+  ctx.restore();
+  // Bildtexte
+  ctx.save();
+  ctx.fillStyle = '#14532d'; ctx.strokeStyle = '#14532d'; ctx.lineWidth = 1;
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Dornen statt Blätter', 8, 90);
+  ctx.beginPath(); ctx.moveTo(60, 94); ctx.lineTo(90, 113); ctx.stroke();
+  ctx.fillText('dicker Stamm speichert Wasser', 184, 224);
+  ctx.beginPath(); ctx.moveTo(196, 214); ctx.lineTo(164, 180); ctx.stroke();
+  ctx.restore();
+}
+
+function _bjkSonnenblume(ctx) {
+  const t = _bjk.t, wk = _bjkWelk(), tot = _bjk.tot;
+  const blatt = tot ? '#8b6b3a' : _bjkMisch('#4f9d3a', '#b5a642', wk);
+  const stiel = tot ? '#7a5c30' : _bjkMisch('#3f8a2f', '#9c8c3c', wk);
+  const wieg = Math.sin(t * 1.3) * (1 - wk) * 3;
+  const kopfX = _BJK_PX + wieg + wk * 26 + (tot ? 8 : 0), kopfY = 62 + wk * 30 + (tot ? 10 : 0);
+  ctx.save();
+  ctx.strokeStyle = stiel; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(_BJK_PX, _BJK_BODEN);
+  ctx.quadraticCurveTo(_BJK_PX + wk * 4, 110, kopfX, kopfY); ctx.stroke();
+  // Blätter: groß und dünn, hängen beim Welken
+  for (let i = 0; i < 8; i++) {
+    const paar = Math.floor(i / 2), s = i % 2 ? 1 : -1;
+    const y = 176 - paar * 26, L = 34 - paar * 3;
+    const win = -0.35 + wk * 1.35 + (tot ? 0.25 : 0) + Math.sin(t * 1.5 + i) * 0.05 * (1 - wk);
+    ctx.save();
+    ctx.translate(_BJK_PX + s * 3, y);
+    ctx.scale(s, 1);
+    ctx.rotate(win);
+    ctx.fillStyle = blatt; ctx.strokeStyle = 'rgba(40,60,20,0.45)'; ctx.lineWidth = 1;
+    const brt = (tot ? 5 : 11) * (1 - wk * 0.3);
+    ctx.beginPath(); ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(L * 0.5, -brt, L, 0); ctx.quadraticCurveTo(L * 0.5, brt, 0, 0);
+    ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(L * 0.9, 0); ctx.stroke();
+    ctx.restore();
+  }
+  // Blütenkopf: nickt beim Welken
+  ctx.translate(kopfX, kopfY);
+  ctx.rotate(wk * 1.1 + (tot ? 0.3 : 0));
+  const kb = tot ? '#9a7b3c' : _bjkMisch('#facc15', '#c9a227', wk);
+  ctx.fillStyle = kb;
+  const nb = tot ? 8 : 14;
+  for (let k = 0; k < nb; k++) {
+    ctx.save(); ctx.rotate(k * 2 * Math.PI / nb);
+    ctx.beginPath(); ctx.ellipse(0, -15 + wk * 2, 4, 8 * (1 - wk * 0.4), 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  ctx.fillStyle = tot ? '#4a3418' : '#6b3f15';
+  ctx.beginPath(); ctx.arc(0, 0, 9, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+
+function _bjkWuestenblume(ctx) {
+  const t = _bjk.t, g = _bjk.g;
+  // Blick in den Sand: Fenster mit den Samen
+  ctx.save();
+  ctx.fillStyle = _bjkMisch('#e6c78c', '#9c7746', _bjk.nass);
+  _bioFxRundRect(ctx, 100, 202, 100, 30, 8); ctx.fill();
+  ctx.strokeStyle = 'rgba(120,80,30,0.6)'; ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+  _bioFxRundRect(ctx, 100, 202, 100, 30, 8); ctx.stroke(); ctx.setLineDash([]);
+  const quell = _bioFxKlemme(g / 1.2);
+  for (let i = 0; i < _BJK_SAMEN.length; i++) {
+    const x = _BJK_SAMEN[i], y = 214 + (i % 2) * 3;
+    // Wurzel nach unten
+    if (g > 0.8) {
+      const r = Math.min(14, (g - 0.8) * 4);
+      ctx.strokeStyle = '#f4efd8'; ctx.lineWidth = 1.3;
+      ctx.beginPath(); ctx.moveTo(x, y + 2); ctx.quadraticCurveTo(x + (i % 2 ? 2 : -2), y + r * 0.6, x, y + r); ctx.stroke();
+    }
+    ctx.fillStyle = '#6b4423';
+    ctx.beginPath(); ctx.ellipse(x, y, 3 * (1 + 0.3 * quell), 2 * (1 + 0.3 * quell), 0.4, 0, 2 * Math.PI); ctx.fill();
+    if (_bjk.phase === 'ende' || _bjk.phase === 'bereit' || _bjk.phase === 'lauf') {
+      // die Samen ruhen: ein leiser Schimmer (0,8 Hz, kein Blinken)
+      if (_bjk.phase === 'ende' && _bjk.nach > 0.3) _bioFxLeuchten(ctx, x, y, 5, t + i * 0.2, '253,224,71');
+    }
+  }
+  ctx.restore();
+  if (!(_bjk.phase === 'bereit' || _bjk.phase === 'lauf' || _bjk.phase === 'ende' || _bjk.phase === 'regen')) {
+    // Keimlinge wachsen nach dem Regen, nach 2 Wochen blühen sie
+    for (let i = 0; i < _BJK_SAMEN.length; i++) {
+      const x = _BJK_SAMEN[i], s = _bioFxKlemme((g - 1) / 7);
+      if (s <= 0) continue;
+      const top = _bjkBlueteY(x), hoch = (_BJK_BODEN - top) * s;
+      const wieg = Math.sin(t * 1.6 + i) * 1.5 * s;
+      const tx = x + wieg, ty = _BJK_BODEN - hoch;
+      ctx.strokeStyle = '#4d9a3a'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(x, 214); ctx.lineTo(x, _BJK_BODEN); ctx.quadraticCurveTo(x - wieg, _BJK_BODEN - hoch * 0.5, tx, ty); ctx.stroke();
+      // kleine Blätter
+      ctx.fillStyle = '#5bb04a';
+      for (const sd of [-1, 1]) {
+        ctx.save(); ctx.translate(x, _BJK_BODEN - hoch * 0.35); ctx.rotate(sd * 1.0);
+        ctx.beginPath(); ctx.ellipse(0, -5 * s, 2.5 * s + 0.5, 6 * s + 0.5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+      }
+      // Knospe und Blüte
+      const auf = _bioFxKlemme((g - 10) / 3);
+      if (g > 7) {
+        const farbe = i % 2 ? '#f472b6' : '#e879f9';
+        ctx.fillStyle = farbe;
+        for (let k = 0; k < 6; k++) {
+          ctx.save(); ctx.translate(tx, ty); ctx.rotate(k * Math.PI / 3 + (i * 0.4));
+          ctx.beginPath(); ctx.ellipse(0, -2 - 4 * auf, 2 + 1.5 * auf, 2.5 + 3.5 * auf, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+        }
+        if (auf > 0.2) { ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(tx, ty, 2.5 * auf, 0, 2 * Math.PI); ctx.fill(); }
+        if (_bjk.phase === 'bluete') _bioFxLeuchten(ctx, tx, ty, 9, t + i * 0.3, '244,114,182');
+      }
+    }
+  }
+  ctx.fillStyle = '#5b3a17'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_bjk.phase === 'wachsen' || _bjk.phase === 'bluete' ? 'nach Regen' : 'Samen im Sand', 206, 222);
+}
+
+// Wasserbalken: „Wasser in der Pflanze“ mit den Stufen viel / wenig / leer
+function _bjkBalken(ctx) {
+  const x = 270, y0 = 44, y1 = 184, b = 20, t = _bjk.t;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  _bioFxRundRect(ctx, 232, 8, 110, 186, 8); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Wasser in der Pflanze', 287, 24);
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y0, b, y1 - y0, 5); ctx.fill(); ctx.stroke();
+  const samen = _bjk.pflanze === 'wueste' && !(_bjk.phase === 'wachsen' || _bjk.phase === 'bluete');
+  const w = samen ? 0 : _bjk.w;
+  const h = (y1 - y0 - 4) * _bioFxKlemme(w / 100);
+  if (h > 0.5) {
+    const yy = y1 - 2 - h;
+    ctx.fillStyle = w >= 60 ? '#3b82f6' : '#93c5fd';
+    ctx.fillRect(x + 2, yy, b - 4, h);
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.fillRect(x + 4, yy + 2 + ((t * 20) % Math.max(4, h - 4)), 3, 3);
+  }
+  // Stufen
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  const y60 = y1 - 2 - (y1 - y0 - 4) * 0.6;
+  ctx.beginPath(); ctx.moveTo(x - 3, y60); ctx.lineTo(x + b + 3, y60); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  const stufe = samen ? '' : w >= 60 ? 'viel' : w > 0.001 ? 'wenig' : 'leer';
+  const marke = (txt, yy) => {
+    ctx.fillStyle = stufe === txt ? '#1d4ed8' : '#64748b';
+    ctx.font = (stufe === txt ? '700 12px' : '400 11px') + ' sans-serif';
+    ctx.fillText(txt, x + b + 6, yy);
+  };
+  marke('viel', y0 + 12);
+  marke('wenig', (y60 + y1) / 2 + 4);
+  marke('leer', y1);
+  if (samen) {
+    ctx.fillStyle = '#6b4423';
+    for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.ellipse(x + 5 + k * 5, y1 - 6, 2, 1.4, 0.4, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('nur Samen', 287, y1 + 6);
+  }
+  ctx.restore();
+}
+
+// Kalender: Tag-Zahl und 30 Kästchen für die Tage ohne Regen
+function _bjkKalender(ctx) {
+  const kx = 352, ky = 12, kw = 60, kh = 54;
+  const wachs = _bjk.pflanze === 'wueste' && (_bjk.phase === 'wachsen' || _bjk.phase === 'bluete');
+  const tag = wachs ? _bjk.g : _bjk.tag, d = Math.floor(tag + 1e-9);
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.fillRect(kx, ky, kw, kh); ctx.strokeRect(kx, ky, kw, kh);
+  ctx.fillStyle = wachs ? '#2563eb' : '#dc2626'; ctx.fillRect(kx, ky, kw, 14);
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(wachs ? 'nach Regen' : 'Tag', kx + kw / 2, ky + 11);
+  const laeuft = _bjk.phase === 'lauf' || _bjk.phase === 'wachsen';
+  const klapp = laeuft ? Math.max(0, 1 - (tag % 1) * 4) : 0;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 26px sans-serif';
+  ctx.fillText(String(d), kx + kw / 2, ky + 46 - klapp * 3);   // Blatt rutscht nach, ohne Aufblitzen
+  // 30 Kästchen: Tage ohne Regen (bzw. 14 Tage nach dem Regen)
+  const n = wachs ? 14 : 30;
+  for (let k = 0; k < n; k++) {
+    const cx = kx + (k % 10) * 6, cy = ky + kh + 6 + Math.floor(k / 10) * 7;
+    ctx.fillStyle = k < d ? (wachs ? '#60a5fa' : '#f59e0b') : '#e2e8f0';
+    ctx.fillRect(cx, cy, 5, 5);
+  }
+  ctx.restore();
+}

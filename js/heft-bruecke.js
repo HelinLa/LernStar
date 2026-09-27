@@ -5204,6 +5204,69 @@ const HEFT_SEITEN = {
     frage: "Was passiert mit den Kröten an der Straße?",
     schritte: ["Stelle „keine Straße“ ein. Drücke „▶ Wanderung starten“ und trage beide Zahlen ein.", "Stelle „Straße mit vielen Autos“ ein. Wiederhole die Wanderung.", "Stelle „Krötenzaun“ auf „an“. Der Zaun leitet die Kröten in Eimer. Wiederhole.", "Stelle wieder „keine Straße“ und „Teich“ auf „zugeschüttet“. Wiederhole."]
   },
+  "bj1": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-mikroskop", seite: 50,
+    kapitel: "Leben mit der Sonne",
+    name: "Woraus bestehen Pflanzen?",
+    titel: "Die Zwiebelhaut unter dem Mikroskop",
+    frage: "Was siehst du, wenn du die Zwiebelhaut stark vergrößerst?",
+    schritte: ["Stelle „Objektiv“ auf „4-fach“. Lies ab, wie viele Zellen im Bild sind.", "Stelle „10-fach“ und dann „40-fach“ ein. Lies jedes Mal ab.", "Beobachte bei „40-fach“ eine Zelle genau. Was erkennst du darin?", "Trage alles in die Tabelle ein."]
+  },
+  "bj2": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-staerke", seite: 54,
+    kapitel: "Leben mit der Sonne",
+    name: "Wo bildet ein Blatt Stärke?",
+    titel: "Das grün-weiße Blatt",
+    frage: "In welchen Teilen bildet das grün-weiße Blatt Stärke?",
+    schritte: ["Stelle „Licht“ auf „2 Tage Licht“. Drücke „Iodprobe machen“.", "Beobachte die Farbe im grünen und im weißen Teil.", "Stelle „2 Tage dunkel“ ein. Drücke wieder „Iodprobe machen“.", "Trage alle Farben in die Tabelle ein."]
+  },
+  "bj3": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-wasserpest", seite: 58,
+    kapitel: "Leben mit der Sonne",
+    name: "Wie viel Licht braucht eine Pflanze?",
+    titel: "Bläschen an der Wasserpest",
+    frage: "Wie hängt die Zahl der Bläschen vom Licht ab?",
+    schritte: ["Stelle „Lampe“ auf „aus“. Drücke „▶ 1 Minute zählen“.", "Lies die Zahl der Bläschen ab und trage sie ein.", "Wiederhole das für „schwach“, „mittel“ und „hell“.", "Vergleiche: Wann steigen die meisten Bläschen auf?"]
+  },
+  "bj4": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-jahreslauf", seite: 62,
+    kapitel: "Leben mit der Sonne",
+    name: "Warum verlieren Bäume im Herbst ihre Blätter?",
+    titel: "Die alte Buche im Jahreslauf",
+    frage: "Was hat der Sonnenstand mit den Blättern der Buche zu tun?",
+    schritte: ["Stelle „Monat“ auf „März“. Lies ab, wie hoch die Sonne mittags steht.", "Beobachte die Buche. Trage beides in die Tabelle ein.", "Wiederhole das für „Juni“, „September“ und „Dezember“.", "Stelle „Pflanze“ auf „Schneeglöckchen“ und „Sonnenblume“. Beobachte den Dezember."]
+  },
+  "bj5": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-winter", seite: 66,
+    kapitel: "Leben mit der Sonne",
+    name: "Wie überstehen Tiere den Winter?",
+    titel: "Igel, Eichhörnchen und Frosch im Winter",
+    frage: "Wie verändert sich der Körper der Tiere im Winter?",
+    schritte: ["Stelle „Tier“ auf „Igel“. Vergleiche „Sommer“ und „Winter“.", "Trage beide Werte ein: erst Sommer, dann Winter.", "Wiederhole das für „Eichhörnchen“ und „Frosch“.", "Drücke bei jedem Tier „Steckbrief lesen“."]
+  },
+  "bj6": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-isolation", seite: 70,
+    kapitel: "Leben mit der Sonne",
+    name: "Warum friert der Eisbär nicht?",
+    titel: "Warme Dosen im Eis",
+    frage: "Welche Hülle hält die Wärme am besten in der Dose?",
+    schritte: ["Stelle „Hülle“ auf „keine Hülle“. Drücke „▶ 20 Minuten warten“.", "Lies die Temperatur am Anfang und am Ende ab.", "Wiederhole das für „Fell“, „Fettschicht“ und „Fell und Fettschicht“.", "Vergleiche: Welche Dose ist nach 20 Minuten am wärmsten?"]
+  },
+  "bj7": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-wueste", seite: 74,
+    kapitel: "Leben mit der Sonne",
+    name: "Wie überlebt ein Kaktus in der Wüste?",
+    titel: "Dreißig Tage ohne Regen",
+    frage: "Warum vertrocknet der Kaktus nicht, wenn es lange nicht regnet?",
+    schritte: ["Stelle „Pflanze“ auf „Kaktus“. Drücke „▶ 30 Tage ohne Regen“.", "Lies ab, wie viel Wasser noch in der Pflanze ist.", "Wiederhole das für „Sonnenblume“ und „Wüstenblume“.", "Drücke bei der Wüstenblume „Regen“. Beobachte, was passiert."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
