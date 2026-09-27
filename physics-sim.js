@@ -6916,6 +6916,67 @@ const _physSimDefs = {
     _mlabRenderTheorie(_bef, false);
     _mlabDrawPlot('befPlot', _bef);
   },
+
+  // ── BIO 5/6 · bl1  LEBT DAS – ODER NICHT?  (Förderheft Biologie 5/6) ──
+  'bio-lebewesen': modal => {
+    _blwInit();
+    modal.innerHTML = _blwHTML();
+    _blwStatus();
+    _pSim = new PhysicsSimEngine('_blw-anim', '_blw-anim');
+    _pSim.start(dt => _blwUpdate(dt), (ctx, cv) => _blwDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 FOERDER bl2 – Tiere unter dem Stein mit dem Bestimmungsschluessel ──
+  'bio-bestimmen': modal => { _bbsInit(); modal.innerHTML = _bbsHTML(); _bbsSync(); _bbsStatus(); _pSim = new PhysicsSimEngine('_bbs-cv','_bbs-cv'); _pSim.start(dt => _bbsUpdate(dt), (ctx,cv) => _bbsDraw(ctx,cv), []); },
+
+  'bio-bluete': modal => { _bblInit(); modal.innerHTML = _bblHTML(); _bblStatus(); _pSim = new PhysicsSimEngine('_bbl-cv','_bbl-cv'); _pSim.start(dt => _bblUpdate(dt), (ctx,cv) => _bblDraw(ctx,cv), []); },
+
+
+  // ── BIO 5/6 · KEIMUNG: ZEHN KRESSESAMEN IM BECHER  (Förderheft Bio 5/6 · bl4) ──
+  'bio-keimung': modal => {
+    _bkmInit();
+    modal.innerHTML = _bkmHTML();
+    _bkmStatus();
+    _pSim = new PhysicsSimEngine('_bkm-cv', '_bkm-cv');
+    _pSim.start(dt => _bkmUpdate(dt), (ctx, cv) => _bkmDraw(ctx, cv), []);
+  },
+
+
+  // ── BIO 5/6 · bl5  DIE BOHNE IM SCHRANK  (Förderheft Biologie 5/6) ─────
+  'bio-wachstum': modal => {
+    _bwaInit();
+    modal.innerHTML = _bwaHTML();
+    _bwaStatus();
+    _pSim = new PhysicsSimEngine('_bwa-cv', '_bwa-cv');
+    _pSim.start(dt => _bwaUpdate(dt), (ctx, cv) => _bwaDraw(ctx, cv), []);
+  },
+
+  'bio-samenflug': modal => { _bsfInit(); modal.innerHTML = _bsfHTML(); _bsfStatus(); _pSim = new PhysicsSimEngine('_bsf-cv','_bsf-cv'); _pSim.start(dt => _bsfUpdate(dt), (ctx,cv) => _bsfDraw(ctx,cv), []); },
+
+
+  // ── BIO 5/6 · WER FRISST WEN?  (Förderheft Biologie 5/6 · bl7) ──────
+  'bio-nahrungskette': modal => {
+    _bnkInit();
+    modal.innerHTML = _bnkHTML();
+    _bnkStatus();
+    _pSim = new PhysicsSimEngine('_bnk-cv', '_bnk-cv');
+    _pSim.start(dt => _bnkUpdate(dt), (ctx, cv) => _bnkDraw(ctx, cv), []);
+  },
+
+  // ── BIOLOGIE 5/6 FOERDER: Bienentanz (bl8) ──────────────
+  'bio-bienentanz': modal => { _bbtInit(); modal.innerHTML = _bbtHTML(); _bbtStatus(); _bbtKnoepfe(); _pSim = new PhysicsSimEngine('_bbt-cv','_bbt-cv'); _pSim.start(dt => _bbtUpdate(dt), (ctx,cv) => _bbtDraw(ctx,cv), []); },
+
+  // ── BIO 5/6 · bl9  VOM WILDKOHL ZUM KOHLRABI  (Förderheft Biologie 5/6) ─
+  'bio-zuechtung': modal => {
+    _bzuInit();
+    modal.innerHTML = _bzuHTML();
+    _bzuStatus();
+    _pSim = new PhysicsSimEngine('_bzu-cv', '_bzu-cv');
+    _pSim.start(dt => _bzuUpdate(dt), (ctx, cv) => _bzuDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · KRÖTENWANDERUNG: WALD – STRASSE – TEICH  (Förderheft Bio 5/6 · bl10) ──
+  'bio-kroeten': modal => { _bkrInit(); modal.innerHTML = _bkrHTML(); _bkrStatus(); _pSim = new PhysicsSimEngine('_bkr-cv','_bkr-cv'); _pSim.start(dt => _bkrUpdate(dt), (ctx,cv) => _bkrDraw(ctx,cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -84169,4 +84230,4897 @@ function _befDraw(ctx, cv) {
   ctx.fillText('a = ' + _fpmNum(_bef.a, 1) + ' m/s² – aus der Ruhe heraus', mL, road + 54);
   ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif';
   ctx.fillText('Stoppe mindestens fünf Mal – wann, ist gleichgültig: die Steigung bleibt dieselbe.', mL, road + 68);
+}
+
+
+// ═══════════════════════════════════════════════════════════════════
+// BIO 5/6 · bl1  LEBT DAS – ODER NICHT?   (Kennung 'bio-lebewesen')
+// Vier Dinge: Bohnensamen, Kröten-Ei, Schmetterlings-Ei, Kieselstein.
+// Das Kind waehlt EIN Ding und stellt die Zeit weiter (Tag 0 bis Tag 90).
+// Das Bild laeuft im Zeitraffer bis zum eingestellten Tag: der Keimling
+// waechst, die Kaulquappe schwimmt, die Raupe kriecht, der Falter fliegt.
+// Der Stein bleibt, wie er ist - nur Wolken und Gras bewegen sich.
+//
+// Die Statuszeile nennt IMMER den eingestellten Tag, nicht den Zwischenstand
+// des Zeitraffers: "Kröten-Ei · Tag 10: kleine Kaulquappe". Die Heftseite
+// zitiert genau diese Woerter (sim_plan.werte, lehrer.tabelle_erwartet).
+//
+// Die Tage sind MODELLWERTE (Lehrerband): Erdkröten-Kaulquappen schluepfen
+// nach etwa 10 bis 14 Tagen, die Umwandlung zur Kroete dauert etwa 2 bis 3
+// Monate. Feuerbohne: keimt unter der Erde (die Keimblaetter bleiben im
+// Boden), Primaerblaetter nach gut einer Woche, rote Blueten, lange Huelsen.
+// Tagpfauenauge: Ei auf Brennnessel, Raupe schwarz mit weissen Punkten und
+// Dornen, Puppe haengt, Falter rotbraun mit Augenflecken.
+// ═══════════════════════════════════════════════════════════════════
+let _blw = null;
+const _BLW_DINGE = [
+  { k: 'bohne',  name: 'Bohnensamen' },
+  { k: 'kroete', name: 'Kröten-Ei' },
+  { k: 'falter', name: 'Schmetterlings-Ei' },
+  { k: 'stein',  name: 'Kieselstein' },
+];
+const _BLW_MARKEN = [0, 10, 90];
+
+function _blwInit() { _blw = { ding: 'bohne', tag: 0, zeig: 0, t: 0 }; }
+function _blwK(x) { return x < 0 ? 0 : (x > 1 ? 1 : x); }
+function _blwName(k) { const e = _BLW_DINGE.find(x => x.k === k); return e ? e.name : k; }
+
+// ── Was ist an Tag d aus dem Ding geworden? ─────────────────────────
+function _blwStufe(ding, d) {
+  d = Math.floor(d);
+  if (ding === 'bohne') {
+    if (d < 1)  return { text: 'Bohnensamen in der Erde', ort: 'in der Erde' };
+    if (d < 5)  return { text: 'Samen quillt, eine Wurzel wächst', ort: 'in der Erde' };
+    if (d < 8)  return { text: 'Keimling kommt aus der Erde', ort: 'im Beet' };
+    if (d < 25) return { text: 'kleine Pflanze mit zwei Blättern', ort: 'im Beet' };
+    if (d < 45) return { text: 'Pflanze mit vielen Blättern', ort: 'im Beet' };
+    if (d < 62) return { text: 'Pflanze mit Blüten', ort: 'im Beet' };
+    return { text: 'große Pflanze mit Blüten und neuen Bohnen', ort: 'im Beet' };
+  }
+  if (ding === 'kroete') {
+    if (d < 10) return { text: 'Eier in einer Laichschnur', ort: 'im Wasser' };
+    if (d < 30) return { text: 'kleine Kaulquappe', ort: 'im Wasser' };
+    if (d < 50) return { text: 'große Kaulquappe', ort: 'im Wasser' };
+    if (d < 65) return { text: 'Kaulquappe mit zwei Beinen', ort: 'im Wasser' };
+    if (d < 80) return { text: 'Kaulquappe mit vier Beinen', ort: 'im Wasser' };
+    return { text: 'kleine Kröte', ort: 'an Land' };
+  }
+  if (ding === 'falter') {
+    if (d < 8)  return { text: 'Ei auf einem Brennnesselblatt', ort: 'auf der Brennnessel' };
+    if (d < 25) return { text: 'kleine Raupe', ort: 'auf der Brennnessel' };
+    if (d < 35) return { text: 'große Raupe', ort: 'auf der Brennnessel' };
+    if (d < 50) return { text: 'Puppe', ort: 'an der Brennnessel' };
+    return { text: 'Schmetterling', ort: 'fliegt zu Blüten' };
+  }
+  return { text: 'Stein, keine Änderung', ort: 'auf der Wiese' };
+}
+
+// ── Oberfläche ──────────────────────────────────────────────────────
+function _blwHTML() {
+  const dinge = _BLW_DINGE.map(e =>
+    `<button class="sim-btn${_blw.ding === e.k ? ' primary' : ''}" id="_blw-d-${e.k}" onclick="_blwDing('${e.k}')">${e.name}</button>`).join('');
+  const marken = _BLW_MARKEN.map(m =>
+    `<button class="sim-btn${_blw.tag === m ? ' primary' : ''}" id="_blw-m-${m}" onclick="_blwTag('${m}')">Tag ${m}</button>`).join('');
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Lebt das – oder nicht?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle ein Ding. Stelle dann die Zeit weiter. Das Bild zeigt, was aus dem Ding geworden ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_blw-anim" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="lmp-status on" id="_blw-status" style="margin-top:6px"></div>
+      </div>
+      <div>
+        <div class="fpm-label">Ding</div>
+        <div class="sim-btn-row" style="margin-top:4px">${dinge}</div>
+        <div class="phys-ctrl" style="margin-top:10px"><label class="phys-ctrl-label" for="_blw-zeit">Zeit: <b id="_blw-zeitLbl">Tag 0</b></label>
+          <input type="range" id="_blw-zeit" min="0" max="90" step="1" value="0" oninput="_blwZeit(this.value)" style="width:100%;accent-color:#16a34a"></div>
+        <div class="sim-btn-row" style="margin-top:4px">${marken}
+          <button class="sim-btn" onclick="_blwNeu()">↺ neu</button></div>
+        <div class="fpm-note" style="margin-top:10px">Die Tage sind Modellwerte. In der Natur geht es mal schneller, mal langsamer.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────
+function _blwSetzeTag(d) {
+  d = Math.max(0, Math.min(90, Math.round(+d || 0)));
+  // Vorwaerts laeuft der Zeitraffer, rueckwaerts springt das Bild sofort:
+  // ein Tier, das zurueck ins Ei schrumpft, gibt es nicht.
+  if (d < _blw.zeig) _blw.zeig = d;
+  _blw.tag = d;
+  const r = document.getElementById('_blw-zeit'); if (r) r.value = String(d);
+  const l = document.getElementById('_blw-zeitLbl'); if (l) l.textContent = 'Tag ' + d;
+  _BLW_MARKEN.forEach(m => {
+    const b = document.getElementById('_blw-m-' + m);
+    if (b) b.className = 'sim-btn' + (m === d ? ' primary' : '');
+  });
+  _blwStatus();
+}
+function _blwDing(k) {
+  if (!_BLW_DINGE.some(e => e.k === k)) return;
+  _blw.ding = k;
+  _BLW_DINGE.forEach(e => {
+    const b = document.getElementById('_blw-d-' + e.k);
+    if (b) b.className = 'sim-btn' + (e.k === k ? ' primary' : '');
+  });
+  // Ein neues Ding faengt bei Tag 0 an.
+  _blw.zeig = 0;
+  _blwSetzeTag(0);
+}
+function _blwZeit(v) { _blwSetzeTag(v); }
+function _blwTag(v) { _blwSetzeTag(v); }
+function _blwNeu() { _blw.zeig = 0; _blwSetzeTag(0); }
+
+function _blwStatus() {
+  const el = document.getElementById('_blw-status'); if (!el || !_blw) return;
+  const s = _blwStufe(_blw.ding, _blw.tag);
+  el.innerHTML = '<b>' + _blwName(_blw.ding) + ' · Tag ' + _blw.tag + ': ' + s.text + '</b><br>Ort: ' + s.ort;
+  el.className = 'lmp-status on';
+}
+
+// ── Animation ───────────────────────────────────────────────────────
+function _blwUpdate(dt) {
+  if (!_blw) return;
+  _blw.t += dt;
+  if (_blw.zeig < _blw.tag) {
+    // Zeitraffer: schnell los, zum Ziel hin langsamer (0 → 90 in gut 2 s)
+    _blw.zeig = Math.min(_blw.tag, _blw.zeig + Math.max(8, (_blw.tag - _blw.zeig) * 2.2) * dt);
+  } else if (_blw.zeig > _blw.tag) {
+    _blw.zeig = _blw.tag;
+  }
+}
+
+function _blwDraw(ctx, cv) {
+  if (!_blw) return;
+  const W = cv.width, H = cv.height, d = _blw.zeig, t = _blw.t;
+  ctx.save();
+  ctx.clearRect(0, 0, W, H);
+  if (_blw.ding === 'bohne') _blwBohne(ctx, W, H, d, t);
+  else if (_blw.ding === 'kroete') _blwKroete(ctx, W, H, d, t);
+  else if (_blw.ding === 'falter') _blwFalter(ctx, W, H, d, t);
+  else _blwStein(ctx, W, H, d, t);
+  _blwRahmen(ctx, W, H, d, t);
+  ctx.restore();
+}
+
+// Kopfzeile (Tag und was man sieht) und Zeitleiste unten
+function _blwRahmen(ctx, W, H, d, t) {
+  const tagZ = Math.floor(d), s = _blwStufe(_blw.ding, tagZ);
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillRect(0, 0, W, 26);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 26); ctx.lineTo(W, 26); ctx.stroke();
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#15803d'; ctx.font = 'bold 15px sans-serif';
+  ctx.fillText('Tag ' + tagZ, 10, 13);
+  ctx.fillStyle = '#1e293b'; ctx.font = 'bold 12px sans-serif';
+  ctx.fillText(s.text, 72, 13);
+  if (_blw.zeig < _blw.tag) {
+    ctx.textAlign = 'right'; ctx.fillStyle = '#2563eb'; ctx.font = 'bold 10px sans-serif';
+    ctx.fillText('Zeitraffer', W - 8, 13);
+  }
+  // Zeitleiste
+  const y0 = H - 24, x0 = 30, x1 = W - 30, xd = v => x0 + (x1 - x0) * v / 90;
+  ctx.fillStyle = 'rgba(255,255,255,0.94)'; ctx.fillRect(0, y0, W, 24);
+  ctx.strokeStyle = '#e2e8f0'; ctx.beginPath(); ctx.moveTo(0, y0); ctx.lineTo(W, y0); ctx.stroke();
+  const yb = y0 + 8;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(x0, yb); ctx.lineTo(x1, yb); ctx.stroke();
+  ctx.strokeStyle = '#86efac';
+  ctx.beginPath(); ctx.moveTo(x0, yb); ctx.lineTo(xd(d), yb); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.font = '9px sans-serif'; ctx.fillStyle = '#475569'; ctx.textBaseline = 'alphabetic';
+  _BLW_MARKEN.forEach(m => {
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(xd(m) - 0.5, yb - 5, 1, 10);
+    ctx.fillStyle = '#475569';
+    ctx.textAlign = m === 0 ? 'left' : (m === 90 ? 'right' : 'center');
+    ctx.fillText('Tag ' + m, m === 0 ? x0 - 4 : (m === 90 ? x1 + 4 : xd(m)), H - 2);
+  });
+  ctx.fillStyle = '#16a34a'; ctx.beginPath(); ctx.arc(xd(d), yb, 5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(xd(d), yb, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.textBaseline = 'alphabetic';
+}
+
+function _blwSonne(ctx, x, y, t) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(t * 0.25);
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+  for (let i = 0; i < 10; i++) {
+    const a = i * Math.PI / 5;
+    ctx.beginPath(); ctx.moveTo(Math.cos(a) * 17, Math.sin(a) * 17); ctx.lineTo(Math.cos(a) * 24, Math.sin(a) * 24); ctx.stroke();
+  }
+  ctx.restore();
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(x, y, 13, 0, Math.PI * 2); ctx.fill();
+}
+
+function _blwWolke(ctx, x, y, s) {
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  ctx.beginPath();
+  ctx.arc(x, y, 11 * s, 0, Math.PI * 2);
+  ctx.arc(x + 13 * s, y - 6 * s, 13 * s, 0, Math.PI * 2);
+  ctx.arc(x + 28 * s, y, 11 * s, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillRect(x, y, 28 * s, 11 * s);
+}
+
+// Blatt als Spitzoval, von (0,0) nach rechts, Laenge L, Breite b
+function _blwBlatt(ctx, L, b, farbe, zaehne) {
+  ctx.fillStyle = farbe;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  if (zaehne) {
+    // gesaegter Rand (Brennnessel)
+    const n = 7;
+    for (let i = 1; i <= n; i++) {
+      const u = i / n, w = Math.sin(Math.PI * Math.min(1, u * 1.1)) * b;
+      ctx.lineTo(L * (u - 0.5 / n), -w * 1.12); ctx.lineTo(L * u, -w * 0.82);
+    }
+    for (let i = n - 1; i >= 0; i--) {
+      const u = i / n, w = Math.sin(Math.PI * Math.min(1, u * 1.1)) * b;
+      ctx.lineTo(L * (u + 0.5 / n), w * 1.12); ctx.lineTo(L * u, w * 0.82);
+    }
+  } else {
+    ctx.quadraticCurveTo(L * 0.35, -b * 1.3, L, 0);
+    ctx.quadraticCurveTo(L * 0.35, b * 1.3, 0, 0);
+  }
+  ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(20,83,45,0.55)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(L * 0.92, 0); ctx.stroke();
+}
+
+// ── Bohne (Feuerbohne) ──────────────────────────────────────────────
+function _blwBohne(ctx, W, H, d, t) {
+  const GY = 158, sx = 200, sy = 192, K = _blwK;
+  let g = ctx.createLinearGradient(0, 26, 0, GY);
+  g.addColorStop(0, '#dbeafe'); g.addColorStop(1, '#f0f9ff');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, GY);
+  _blwSonne(ctx, W - 50, 60, t);
+  // Erde im Schnitt
+  ctx.fillStyle = '#8b5a2b'; ctx.fillRect(0, GY, W, H - GY);
+  ctx.fillStyle = '#6f4520'; ctx.fillRect(0, GY, W, 4);
+  ctx.fillStyle = 'rgba(60,35,15,0.35)';
+  for (let i = 0; i < 46; i++) {
+    const x = (i * 97) % W, y = GY + 8 + ((i * 53) % (H - GY - 34));
+    ctx.fillRect(x, y, 2, 2);
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.8)'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Erde', 10, H - 30);
+
+  // Wurzel
+  if (d > 1.5) {
+    const len = 50 * K((d - 1.5) / 12);
+    ctx.strokeStyle = '#f5f0e1'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(sx, sy + 5);
+    ctx.quadraticCurveTo(sx + 5, sy + 5 + len * 0.5, sx + 2, sy + 5 + len); ctx.stroke();
+    if (d > 8) {
+      const sl = 13 * K((d - 8) / 15);
+      ctx.lineWidth = 1.2;
+      [0.35, 0.6, 0.85].forEach((f, i) => {
+        const yy = sy + 5 + len * f;
+        ctx.beginPath(); ctx.moveTo(sx + 3, yy); ctx.lineTo(sx + 3 - sl * (1 - i * 0.2), yy + 6); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(sx + 3, yy); ctx.lineTo(sx + 3 + sl * (1 - i * 0.2), yy + 5); ctx.stroke();
+      });
+    }
+    ctx.lineCap = 'butt';
+  }
+
+  // Spross
+  const h = d < 5 ? 0 : (d < 10 ? 40 * K((d - 5) / 5) : 40 + 80 * K((d - 10) / 50));
+  if (d >= 18) {   // Stange zum Ranken
+    ctx.fillStyle = '#a16207'; ctx.fillRect(sx + 12, GY - 128, 4, 128 + 20);
+  }
+  if (h > 0) {
+    ctx.save();
+    ctx.translate(sx, GY);
+    ctx.rotate(0.03 * Math.sin(t * 1.3) * K(h / 40));
+    // Stiel von der Bohne im Boden bis nach oben
+    ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(0, sy - GY - 4);
+    if (d < 8) {
+      // gebogener Keimling (Haken)
+      ctx.lineTo(0, -h * 0.85); ctx.quadraticCurveTo(0, -h - 4, 6, -h + 2);
+    } else {
+      ctx.bezierCurveTo(4, -h * 0.3, -4, -h * 0.6, 0, -h);
+    }
+    ctx.stroke();
+    // Laubblaetter (dreizaehlig) weiter oben
+    const n3 = Math.floor(K((d - 20) / 30) * 4 + 1e-9);
+    for (let i = 0; i < n3; i++) {
+      const yy = -40 - (i + 0.6) * (h - 40) / (n3 + 0.4);
+      const seite = i % 2 ? -1 : 1;
+      ctx.save(); ctx.translate(0, yy); ctx.rotate(seite > 0 ? -0.35 : Math.PI + 0.35);
+      ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(14, 0); ctx.stroke();
+      ctx.translate(14, 0);
+      [-0.8, 0, 0.8].forEach(a => { ctx.save(); ctx.rotate(a); _blwBlatt(ctx, 17, 7, '#4ade80'); ctx.restore(); });
+      ctx.restore();
+      // Blueten und Huelsen an diesem Knoten
+      const bx = seite * 6, by = yy - 2;
+      if (d >= 45 && i < 1 + Math.floor((d - 45) / 5)) {
+        ctx.fillStyle = '#dc2626';
+        for (let j = 0; j < 3; j++) {
+          ctx.beginPath(); ctx.arc(bx + seite * (3 + j * 5), by - 4 - j * 3, 3.2, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+      if (d >= 62 && i < 3) {
+        const pl = 34 * K((d - 62) / 20);
+        const px = bx + seite * 4, py = by + 4;
+        ctx.save(); ctx.translate(px, py); ctx.rotate(seite * 0.15);
+        ctx.fillStyle = '#65a30d';
+        ctx.beginPath(); ctx.ellipse(0, pl / 2, 3.5, pl / 2 + 0.01, 0, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#84cc16';
+        const nb = Math.max(1, Math.floor(pl / 8));
+        for (let j = 0; j < nb; j++) { ctx.beginPath(); ctx.arc(0, 4 + j * (pl - 6) / Math.max(1, nb - 0.5), 2.4, 0, Math.PI * 2); ctx.fill(); }
+        ctx.restore();
+      }
+    }
+    // die zwei ersten Blaetter (Primaerblaetter)
+    const ls = d < 8 ? 6 * K((d - 5) / 3) : 18 + 6 * K((d - 10) / 20);
+    // Die ersten Blaetter bleiben am ersten Knoten; der Spross waechst darueber hinaus.
+    const top = d < 8 ? -h * 0.95 : -Math.min(h, 40);
+    [-1, 1].forEach(s => {
+      ctx.save(); ctx.translate(s * 1.5 + (d < 8 ? 6 : 0), top); ctx.rotate(s > 0 ? -0.45 : Math.PI + 0.45);
+      _blwBlatt(ctx, ls * 1.3, ls * 0.55, '#22c55e');
+      ctx.restore();
+    });
+    ctx.restore();
+    ctx.lineCap = 'butt';
+  }
+
+  // Samen (Feuerbohne: bleibt im Boden)
+  const q = 1 + 0.25 * K(d / 3);
+  ctx.save(); ctx.translate(sx, sy);
+  ctx.fillStyle = '#7e3a8a';
+  ctx.beginPath(); ctx.ellipse(0, 0, 10 * q, 6.5 * q, -0.15, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  [[-4, -1], [2, 2], [5, -2], [-1, 3]].forEach(p => { ctx.beginPath(); ctx.arc(p[0] * q, p[1] * q, 1.4, 0, Math.PI * 2); ctx.fill(); });
+  ctx.fillStyle = '#f5f5f4'; ctx.fillRect(-2 * q, -6.5 * q, 4 * q, 2);
+  ctx.restore();
+}
+
+// ── Kröte ───────────────────────────────────────────────────────────
+function _blwKaulquappe(ctx, d, t) {
+  const K = _blwK;
+  const s = 0.55 + 0.9 * K((d - 10) / 40);
+  const schwanz = 1 - 0.9 * K((d - 65) / 15);
+  ctx.save(); ctx.scale(s, s);
+  // Schwanz
+  ctx.fillStyle = 'rgba(71,64,48,0.85)';
+  ctx.beginPath(); ctx.moveTo(-6, -3);
+  const L = 30 * schwanz;
+  for (let i = 0; i <= 8; i++) {
+    const u = i / 8, x = -6 - u * L, y = Math.sin(t * 12 - u * 4) * 4 * u - 3 * (1 - u);
+    ctx.lineTo(x, y);
+  }
+  for (let i = 8; i >= 0; i--) {
+    const u = i / 8, x = -6 - u * L, y = Math.sin(t * 12 - u * 4) * 4 * u + 3 * (1 - u);
+    ctx.lineTo(x, y);
+  }
+  ctx.closePath(); ctx.fill();
+  // Beine
+  ctx.strokeStyle = '#3f3a2c'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  if (d >= 50) {
+    const lb = 9 * K((d - 50) / 10);
+    ctx.beginPath(); ctx.moveTo(-5, 4); ctx.lineTo(-5 - lb * 0.5, 4 + lb); ctx.lineTo(-5 - lb, 5 + lb); ctx.stroke();
+  }
+  if (d >= 65) {
+    const lv = 7 * K((d - 65) / 8);
+    ctx.beginPath(); ctx.moveTo(5, 4); ctx.lineTo(6 + lv * 0.4, 4 + lv); ctx.stroke();
+  }
+  ctx.lineCap = 'butt';
+  // Koerper
+  ctx.fillStyle = '#3b3a2e';
+  ctx.beginPath(); ctx.ellipse(0, 0, 10, 7, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fef3c7'; ctx.beginPath(); ctx.arc(6, -2.5, 1.8, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(6.4, -2.5, 0.9, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function _blwKroeteTier(ctx, x, y, t) {
+  const kehle = 1 + 0.25 * Math.max(0, Math.sin(t * 4));
+  const blinzeln = (t % 3.2) < 0.15;
+  ctx.save(); ctx.translate(x, y);
+  // Schatten
+  ctx.fillStyle = 'rgba(0,0,0,0.15)'; ctx.beginPath(); ctx.ellipse(0, 2, 22, 4, 0, 0, Math.PI * 2); ctx.fill();
+  // Hinterbein
+  ctx.fillStyle = '#7c5a36';
+  ctx.beginPath(); ctx.ellipse(-12, -4, 9, 5, 0.3, 0, Math.PI * 2); ctx.fill();
+  // Koerper
+  ctx.fillStyle = '#8a6a45';
+  ctx.beginPath(); ctx.ellipse(-2, -10, 17, 10, -0.15, 0, Math.PI * 2); ctx.fill();
+  // Kopf
+  ctx.beginPath(); ctx.ellipse(13, -15, 8, 6.5, -0.2, 0, Math.PI * 2); ctx.fill();
+  // Kehle (pulsiert)
+  ctx.fillStyle = '#d6c3a0';
+  ctx.beginPath(); ctx.ellipse(14, -9, 5 * kehle, 3 * kehle, 0, 0, Math.PI * 2); ctx.fill();
+  // Vorderbein
+  ctx.strokeStyle = '#7c5a36'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(9, -5); ctx.lineTo(12, 1); ctx.stroke();
+  ctx.lineCap = 'butt';
+  // Warzen
+  ctx.fillStyle = '#6b4f2e';
+  [[-10, -14], [-4, -17], [3, -14], [-8, -8], [0, -9], [-14, -10]].forEach(p => {
+    ctx.beginPath(); ctx.arc(p[0], p[1], 1.6, 0, Math.PI * 2); ctx.fill();
+  });
+  // Auge
+  ctx.fillStyle = '#d97706'; ctx.beginPath(); ctx.arc(15, -19, 3, 0, Math.PI * 2); ctx.fill();
+  if (blinzeln) { ctx.fillStyle = '#8a6a45'; ctx.beginPath(); ctx.arc(15, -19, 3.2, 0, Math.PI * 2); ctx.fill(); }
+  else { ctx.fillStyle = '#111'; ctx.fillRect(13, -19.6, 4, 1.3); }
+  ctx.restore();
+}
+
+function _blwKroete(ctx, W, H, d, t) {
+  const WY = 100, K = _blwK;
+  let g = ctx.createLinearGradient(0, 26, 0, WY);
+  g.addColorStop(0, '#e0f2fe'); g.addColorStop(1, '#f0f9ff');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, WY + 4);
+  _blwWolke(ctx, 40 + ((t * 8) % (W + 60)) - 60, 50, 0.8);
+  // Wasser
+  g = ctx.createLinearGradient(0, WY, 0, H);
+  g.addColorStop(0, '#7dd3fc'); g.addColorStop(1, '#0e7490');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.moveTo(0, WY);
+  for (let x = 0; x <= 320; x += 8) ctx.lineTo(x, WY + Math.sin(x * 0.06 + t * 2) * 1.8);
+  ctx.lineTo(320, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+  // Ufer und Land
+  ctx.fillStyle = '#a3794a';
+  ctx.beginPath(); ctx.moveTo(250, H); ctx.quadraticCurveTo(285, 150, 318, 92);
+  ctx.lineTo(W, 92); ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#65a30d'; ctx.fillRect(314, 88, W - 314, 6);
+  ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 1.5;
+  for (let x = 320; x < W; x += 9) {
+    const w = Math.sin(t * 1.6 + x * 0.3) * 2;
+    ctx.beginPath(); ctx.moveTo(x, 90); ctx.lineTo(x + w, 80 - (x % 3) * 2); ctx.stroke();
+  }
+  // Wasserpflanzen
+  ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2.5;
+  [60, 120, 205].forEach((x, i) => {
+    ctx.beginPath(); ctx.moveTo(x, H - 24);
+    for (let y = H - 24; y > WY + 6; y -= 10) ctx.lineTo(x + Math.sin(t * 1.2 + y * 0.05 + i) * 4, y);
+    ctx.stroke();
+  });
+  ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillText('Wasser', 12, H - 32);
+  ctx.fillStyle = '#fff'; ctx.fillText('Land', W - 46, H - 32);
+
+  if (d < 10) {
+    // Laichschnur um die Pflanzen gewickelt
+    const bahn = x => 170 + 16 * Math.sin(x * 0.045 + 0.5) + Math.sin(t * 1.2 + x * 0.03) * 2;
+    ctx.strokeStyle = 'rgba(226,240,245,0.75)'; ctx.lineWidth = 11; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(30, bahn(30));
+    for (let x = 30; x <= 230; x += 5) ctx.lineTo(x, bahn(x));
+    ctx.stroke(); ctx.lineCap = 'butt';
+    const lang = K((d - 3) / 6);
+    for (let x = 36; x <= 226; x += 8) {
+      const y = bahn(x) + ((x / 8) % 2 ? 2.2 : -2.2);
+      const wack = d > 6 ? Math.sin(t * 6 + x) * 0.5 : 0;
+      ctx.save(); ctx.translate(x, y); ctx.rotate(wack);
+      ctx.fillStyle = '#111';
+      ctx.beginPath(); ctx.ellipse(0, 0, 2.2 + 1.6 * lang, 2.2, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+  } else if (d < 80) {
+    const x = 150 + 85 * Math.sin(t * 0.5), y = 160 + 28 * Math.sin(t * 0.9);
+    const vx = 85 * 0.5 * Math.cos(t * 0.5), vy = 28 * 0.9 * Math.cos(t * 0.9);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(Math.atan2(vy, vx));
+    _blwKaulquappe(ctx, d, t);
+    ctx.restore();
+    // Luftblaeschen
+    ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1;
+    for (let i = 0; i < 3; i++) {
+      const p = (t * 0.6 + i / 3) % 1;
+      ctx.beginPath(); ctx.arc(x + 4 + i * 3, y - 8 - p * 45, 1.5 + p * 1.5, 0, Math.PI * 2); ctx.stroke();
+    }
+  } else {
+    _blwKroeteTier(ctx, 360, 92, t);
+  }
+}
+
+// ── Schmetterling (Tagpfauenauge) ───────────────────────────────────
+function _blwFluegel(ctx, seite) {
+  ctx.save(); ctx.scale(seite, 1);
+  // Vorderfluegel
+  ctx.fillStyle = '#b3372b';
+  ctx.beginPath(); ctx.moveTo(0, -1); ctx.quadraticCurveTo(10, -22, 24, -17); ctx.quadraticCurveTo(24, -6, 3, 1); ctx.closePath(); ctx.fill();
+  // Hinterfluegel
+  ctx.fillStyle = '#9f2f24';
+  ctx.beginPath(); ctx.moveTo(0, 1); ctx.quadraticCurveTo(22, 2, 18, 14); ctx.quadraticCurveTo(8, 18, 1, 5); ctx.closePath(); ctx.fill();
+  // Augenflecken
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(17, -14, 4.6, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(17, -14, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(17, -14, 1.4, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(12, 8, 4, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(12, 8, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function _blwFalter(ctx, W, H, d, t) {
+  const K = _blwK, GY = H - 36, sx = 170;
+  ctx.fillStyle = '#f0fdf4'; ctx.fillRect(0, 0, W, H);
+  _blwWolke(ctx, 30 + ((t * 7) % (W + 60)) - 60, 48, 0.7);
+  ctx.fillStyle = '#86efac'; ctx.fillRect(0, GY, W, H - GY);
+  ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1.5;
+  for (let x = 4; x < W; x += 11) {
+    const w = Math.sin(t * 1.5 + x * 0.2) * 2;
+    ctx.beginPath(); ctx.moveTo(x, GY + 2); ctx.lineTo(x + w, GY - 8 - (x % 4) * 2); ctx.stroke();
+  }
+  // Distel (Blüte für den Falter)
+  ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(340, GY); ctx.lineTo(340, 130); ctx.stroke();
+  ctx.fillStyle = '#65a30d'; ctx.beginPath(); ctx.ellipse(340, 132, 7, 6, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#a855f7'; ctx.beginPath(); ctx.ellipse(340, 124, 8, 6, 0, 0, Math.PI * 2); ctx.fill();
+
+  // Brennnessel
+  const wiegen = 0.02 * Math.sin(t * 1.1);
+  ctx.save(); ctx.translate(sx, GY); ctx.rotate(wiegen);
+  ctx.strokeStyle = '#3f6212'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -GY + 44); ctx.stroke();
+  const paare = [[-24, 56], [-62, 54], [-100, 46], [-136, 34]];
+  paare.forEach((p, i) => {
+    [-1, 1].forEach(s => {
+      ctx.save(); ctx.translate(0, p[0]); ctx.rotate(s > 0 ? -0.35 : Math.PI + 0.35);
+      _blwBlatt(ctx, p[1], p[1] * 0.26, i % 2 ? '#16a34a' : '#15803d', true);
+      ctx.restore();
+    });
+  });
+  // Frassstellen am rechten Blatt des zweiten Paares
+  const frass = Math.floor(K((d - 8) / 27) * 6 + 1e-9);
+  ctx.save(); ctx.translate(0, -62); ctx.rotate(-0.35);
+  ctx.fillStyle = '#f0fdf4';
+  for (let i = 0; i < frass; i++) {
+    const u = 0.35 + i * 0.1, w = Math.sin(Math.PI * Math.min(1, u * 1.1)) * 54 * 0.26;
+    ctx.beginPath(); ctx.arc(54 * u, (i % 2 ? 1 : -1) * w, 5, 0, Math.PI * 2); ctx.fill();
+  }
+  // Ei oder Raupe auf diesem Blatt
+  if (d < 8) {
+    const dunkel = K((d - 5) / 3);
+    ctx.fillStyle = '#a3e635';
+    ctx.beginPath(); ctx.ellipse(26, -3, 3.4, 4.4, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(63,98,18,0.8)'; ctx.lineWidth = 0.7;
+    for (let k = -2; k <= 2; k++) { ctx.beginPath(); ctx.moveTo(26 + k * 1.2, -7); ctx.lineTo(26 + k * 1.2, 1); ctx.stroke(); }
+    if (dunkel > 0) { ctx.fillStyle = `rgba(30,30,30,${0.6 * dunkel})`; ctx.beginPath(); ctx.arc(26, -5, 1.8, 0, Math.PI * 2); ctx.fill(); }
+    // Ring, damit das kleine Ei auffaellt
+    ctx.strokeStyle = `rgba(234,88,12,${0.5 + 0.3 * Math.sin(t * 3)})`; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(26, -3, 10, 0, Math.PI * 2); ctx.stroke();
+  } else if (d < 35) {
+    // Die Raupe bleibt auf dem Blatt (Blattlaenge 54): Kopf zwischen
+    // Koerperlaenge + 4 und 50.
+    const r = 1.6 + 2.2 * K((d - 8) / 26), n = 9, lang = (n - 1) * r * 1.2;
+    const kopf = lang + 4 + (46 - lang) * (0.5 + 0.5 * Math.sin(t * 0.5));
+    for (let i = n - 1; i >= 0; i--) {
+      const x = kopf - i * r * 1.2;
+      const y = -r - Math.abs(Math.sin(t * 3 - i * 0.7)) * r * 0.7;
+      ctx.fillStyle = '#1c1917'; ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+      if (i > 0) {
+        ctx.fillStyle = '#e7e5e4'; ctx.beginPath(); ctx.arc(x, y - r * 0.2, r * 0.25, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#1c1917'; ctx.lineWidth = 0.8;
+        ctx.beginPath(); ctx.moveTo(x, y - r); ctx.lineTo(x - r * 0.3, y - r * 1.7); ctx.stroke();
+      }
+    }
+  }
+  ctx.restore();
+  // Puppe haengt unter dem linken Blatt des dritten Paares
+  if (d >= 35) {
+    const leer = d >= 50;
+    ctx.save(); ctx.translate(-40, -108); ctx.rotate(0.08 * Math.sin(t * 1.2)); ctx.scale(0.75, 0.75);
+    ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, 4); ctx.stroke();
+    ctx.fillStyle = leer ? 'rgba(168,162,158,0.55)' : '#78716c';
+    ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(5, 9); ctx.lineTo(6, 20); ctx.lineTo(2, 30);
+    ctx.lineTo(-2, 30); ctx.lineTo(-6, 20); ctx.lineTo(-5, 9); ctx.closePath(); ctx.fill();
+    if (!leer) {
+      ctx.fillStyle = '#d6d3d1';
+      ctx.beginPath(); ctx.arc(-3, 12, 1, 0, Math.PI * 2); ctx.arc(3, 12, 1, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+  ctx.restore();
+  ctx.fillStyle = '#166534'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Brennnessel', sx, GY + 12);
+
+  // Schmetterling fliegt
+  if (d >= 50) {
+    const x = 280 + 80 * Math.sin(t * 0.45), y = 95 + 30 * Math.sin(t * 0.9 + 1);
+    const flap = 0.2 + 0.8 * Math.abs(Math.cos(t * 7));
+    ctx.save(); ctx.translate(x, y); ctx.rotate(0.15 * Math.cos(t * 0.45));
+    ctx.save(); ctx.scale(flap, 1);
+    _blwFluegel(ctx, 1); _blwFluegel(ctx, -1);
+    ctx.restore();
+    ctx.fillStyle = '#292524'; ctx.beginPath(); ctx.ellipse(0, 0, 2.2, 11, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#292524'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-1, -10); ctx.lineTo(-5, -20); ctx.moveTo(1, -10); ctx.lineTo(5, -20); ctx.stroke();
+    ctx.restore();
+  }
+}
+
+// ── Kieselstein ─────────────────────────────────────────────────────
+function _blwStein(ctx, W, H, d, t) {
+  const GY = 170;
+  const g = ctx.createLinearGradient(0, 26, 0, GY);
+  g.addColorStop(0, '#dbeafe'); g.addColorStop(1, '#f0f9ff');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, GY);
+  _blwSonne(ctx, W - 50, 60, t);
+  _blwWolke(ctx, ((t * 10) % (W + 80)) - 80, 55, 1);
+  _blwWolke(ctx, ((t * 6 + 200) % (W + 80)) - 80, 85, 0.7);
+  ctx.fillStyle = '#86efac'; ctx.fillRect(0, GY, W, H - GY);
+  ctx.fillStyle = '#4ade80'; ctx.fillRect(0, GY, W, 3);
+  // Stein - immer gleich
+  const x = 210, y = 192;
+  ctx.fillStyle = 'rgba(0,0,0,0.15)'; ctx.beginPath(); ctx.ellipse(x + 4, y + 13, 38, 6, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#94a3b8'; ctx.beginPath(); ctx.ellipse(x, y, 38, 20, -0.08, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#cbd5e1'; ctx.beginPath(); ctx.ellipse(x - 10, y - 7, 16, 7, -0.2, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#64748b';
+  [[-18, 4], [8, 6], [20, -3], [-4, 10], [26, 5]].forEach(p => { ctx.beginPath(); ctx.arc(x + p[0], y + p[1], 1.4, 0, Math.PI * 2); ctx.fill(); });
+  // Gras davor, bewegt sich im Wind
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 1.6;
+  for (let gx = 3; gx < W; gx += 8) {
+    const w = Math.sin(t * 1.7 + gx * 0.25) * 3, hh = 10 + (gx * 7) % 9;
+    const by = H - 26;
+    ctx.beginPath(); ctx.moveTo(gx, by); ctx.quadraticCurveTo(gx, by - hh * 0.6, gx + w, by - hh); ctx.stroke();
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO-BESTIMMEN – Wer krabbelt unter der Hecke? (Foerderheft Biologie 5/6, bl2)
+// Unter einem hochgeklappten Stein krabbelt ein Tier. Mit „Lupe" werden seine
+// Beine gross und nummeriert gezaehlt, mit „Röntgenblick" leuchten Knochen und
+// Wirbelsaeule - oder es steht „keine Knochen" da. Rechts steht der
+// Bestimmungsschluessel mit vier Ja-Nein-Fragen; „ja"/„nein" fuehren Frage fuer
+// Frage bis zum Namen. Eine falsche Antwort fuehrt NICHT weiter: der Kasten
+// wackelt rot, und die Statuszeile schickt zurueck zu Lupe oder Roentgenblick.
+// Fachlich: Kellerassel 14 Beine (7 Paare, Krebstier), Erdkroete 4 Beine und
+// Wirbelsaeule (Wirbeltier, 9 Rumpfwirbel + Kreuzbein + Steissbeinstab),
+// Spinne 8, Regenwurm keine, Kaefer 6. Wirbellose haben keine Knochen.
+// ═══════════════════════════════════════════════════════
+let _bbs = null;
+
+const _BBS_TIERE = [
+  { name: 'Kellerassel', beine: 14, wirbel: false, ergebnis: 'Kellerassel' },
+  { name: 'Erdkröte',    beine: 4,  wirbel: true,  ergebnis: 'Wirbeltier: Erdkröte' },
+  { name: 'Spinne',      beine: 8,  wirbel: false, ergebnis: 'Spinne' },
+  { name: 'Regenwurm',   beine: 0,  wirbel: false, ergebnis: 'Regenwurm' },
+  { name: 'Käfer',       beine: 6,  wirbel: false, ergebnis: 'Käfer' },
+];
+
+const _BBS_FRAGEN = [null,
+  'Hat das Tier eine Wirbelsäule?',
+  'Hat das Tier Beine?',
+  'Hat das Tier genau 6 Beine?',
+  'Hat das Tier genau 8 Beine?'];
+const _BBS_KURZ = [null, 'Wirbelsäule?', 'Beine?', 'genau 6 Beine?', 'genau 8 Beine?'];
+
+// Der Schluessel: je Frage wohin „ja" und „nein" fuehren (Zahl = naechste Frage,
+// Text = Name am Ende).
+const _BBS_SCHLUESSEL = {
+  1: { ja: 'Wirbeltier: Erdkröte', nein: 2 },
+  2: { ja: 3, nein: 'Regenwurm' },
+  3: { ja: 'Käfer', nein: 4 },
+  4: { ja: 'Spinne', nein: 'Kellerassel' },
+};
+
+// Kieselsteine und Erdkruemel - einmal fest ausgewuerfelt, damit das Bild ruhig steht.
+const _BBS_KIESEL = (() => {
+  let s = 11;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const a = [];
+  for (let i = 0; i < 46; i++) a.push([r() * 228, 44 + r() * 206, 1 + r() * 3.4, r()]);
+  return a;
+})();
+const _BBS_WARZEN = (() => {
+  let s = 5;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const a = [];
+  for (let i = 0; i < 26; i++) {
+    const w = r() * Math.PI * 2, q = Math.sqrt(r());
+    a.push([-2 + Math.cos(w) * 33 * q, Math.sin(w) * 22 * q, 1.2 + r() * 2]);
+  }
+  return a;
+})();
+
+const _BBS_CX = 114, _BBS_CY = 142;     // Mitte des Tieres im Bild
+
+function _bbsInit() {
+  _bbs = { tier: 1, t: 0 };
+  _bbsZurueck();
+}
+
+// Alles fuer das gewaehlte Tier auf Anfang - das Tier kriecht neu unter dem Stein hervor.
+function _bbsZurueck() {
+  const t = _bbs.t;
+  Object.assign(_bbs, {
+    ein: t, lupe: false, roe: false, lupeT0: 0, roeT0: 0,
+    gezaehlt: false, geroentgt: false, zaehlStand: -1,
+    frage: 1, weg: [], ende: null, endeT0: 0,
+    falsch: null, kante: null, vor: null, fertigHinweis: false,
+  });
+}
+
+function _bbsTierDaten() { return _BBS_TIERE[_bbs.tier - 1]; }
+function _bbsBeineText(n) { return n === 0 ? '0 (keine Beine)' : `${n} Beine`; }
+
+// Die richtige Antwort auf Frage q fuer das gewaehlte Tier.
+function _bbsRichtig(q) {
+  const d = _bbsTierDaten();
+  if (q === 1) return d.wirbel ? 'ja' : 'nein';
+  if (q === 2) return d.beine > 0 ? 'ja' : 'nein';
+  if (q === 3) return d.beine === 6 ? 'ja' : 'nein';
+  return d.beine === 8 ? 'ja' : 'nein';
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bbsSync() {
+  if (!_bbs) _bbsInit();
+  for (let i = 1; i <= 5; i++) {
+    const b = document.getElementById('_bbs-t' + i);
+    if (b) b.className = 'sim-btn' + (i === _bbs.tier ? ' primary' : '');
+  }
+  const l = document.getElementById('_bbs-lupe');
+  if (l) l.className = 'sim-btn' + (_bbs.lupe ? ' primary' : '');
+  const r = document.getElementById('_bbs-roe');
+  if (r) r.className = 'sim-btn' + (_bbs.roe ? ' primary' : '');
+}
+
+function _bbsTier(k) {
+  if (!_bbs) _bbsInit();
+  const n = Math.max(1, Math.min(5, Math.round(+k) || 1));
+  _bbs.tier = n;
+  _bbsZurueck();
+  _bbsSync();
+  _bbsStatus();
+}
+
+function _bbsNeu() {
+  if (!_bbs) _bbsInit();
+  _bbsZurueck();
+  _bbsSync();
+  _bbsStatus();
+}
+
+function _bbsLupe() {
+  if (!_bbs) _bbsInit();
+  _bbs.lupe = !_bbs.lupe;
+  if (_bbs.lupe) { _bbs.roe = false; _bbs.lupeT0 = _bbs.t; if (!_bbs.gezaehlt) _bbs.zaehlStand = 0; }
+  _bbsSync();
+  _bbsStatus();
+}
+
+function _bbsRoentgen() {
+  if (!_bbs) _bbsInit();
+  _bbs.roe = !_bbs.roe;
+  if (_bbs.roe) { _bbs.lupe = false; _bbs.roeT0 = _bbs.t; }
+  _bbsSync();
+  _bbsStatus();
+}
+
+function _bbsJa() { _bbsAntwort('ja'); }
+function _bbsNein() { _bbsAntwort('nein'); }
+
+function _bbsAntwort(a) {
+  if (!_bbs) _bbsInit();
+  if (_bbs.ende) { _bbs.fertigHinweis = true; _bbsStatus(); return; }
+  const q = _bbs.frage;
+  if (a !== _bbsRichtig(q)) {
+    _bbs.falsch = { q, t0: _bbs.t };
+    _bbsStatus();
+    return;
+  }
+  _bbs.falsch = null;
+  _bbs.weg.push({ q, a });
+  _bbs.kante = { q, a, t0: _bbs.t };
+  const ziel = _BBS_SCHLUESSEL[q][a];
+  if (typeof ziel === 'number') _bbs.frage = ziel;
+  else { _bbs.ende = ziel; _bbs.endeT0 = _bbs.t; }
+  _bbsStatus();
+}
+
+// Sprungmarke fuer Lehrkraft und Selbstkontrolle: der ganze Weg durch den
+// Schluessel laeuft Frage fuer Frage von selbst ab, mit gezaehlten Beinen und
+// Roentgenbefund.
+function _bbsVorfuehren() {
+  if (!_bbs) _bbsInit();
+  _bbsZurueck();
+  _bbs.ein = _bbs.t - 5;
+  _bbs.gezaehlt = true;
+  _bbs.geroentgt = true;
+  _bbs.vor = { naechst: _bbs.t + 0.7 };
+  _bbsSync();
+  _bbsStatus();
+}
+
+// ── Bewegung ───────────────────────────────────────────
+function _bbsUpdate(dt) {
+  if (!_bbs) return;
+  _bbs.t += dt;
+  const t = _bbs.t, d = _bbsTierDaten();
+  if (_bbs.lupe && !_bbs.gezaehlt) {
+    const k = Math.min(d.beine, Math.floor((t - _bbs.lupeT0 - 0.4) / 0.22) + 1);
+    const stand = Math.max(0, k);
+    if (stand !== _bbs.zaehlStand) { _bbs.zaehlStand = stand; _bbsStatus(); }
+    if (t - _bbs.lupeT0 >= 0.4 + d.beine * 0.22 + 0.5) {
+      _bbs.gezaehlt = true; _bbsStatus();
+    }
+  }
+  if (_bbs.roe && !_bbs.geroentgt && t - _bbs.roeT0 >= 1.2) {
+    _bbs.geroentgt = true; _bbsStatus();
+  }
+  if (_bbs.vor && t >= _bbs.vor.naechst) {
+    _bbsAntwort(_bbsRichtig(_bbs.frage));
+    if (_bbs.ende) { _bbs.vor = null; _bbsStatus(); }
+    else _bbs.vor.naechst = t + 1.1;
+  }
+}
+
+// ── Statuszeile ────────────────────────────────────────
+function _bbsStatus() {
+  const el = document.getElementById('_bbs-status');
+  if (!el || !_bbs) return;
+  const d = _bbsTierDaten();
+  const teile = [`<b>Tier ${_bbs.tier}</b>`];
+  if (_bbs.gezaehlt) teile.push(`Lupe: <b>${_bbsBeineText(d.beine)}</b>`);
+  else if (_bbs.lupe) teile.push(d.beine === 0 ? 'Lupe: Ich suche Beine …' : `Lupe: ${_bbs.zaehlStand > 0 ? _bbs.zaehlStand : 0} Beine gezählt …`);
+  if (_bbs.geroentgt) teile.push(d.wirbel ? 'Röntgenblick: <b>Knochen und Wirbelsäule leuchten</b>'
+                                          : 'Röntgenblick: <b>keine Knochen</b>');
+  else if (_bbs.roe) teile.push('Röntgenblick: Das Tier wird durchleuchtet …');
+
+  let t = teile.join(' · ') + '<br>';
+  if (_bbs.ende) t += `<b>Ergebnis: ${_bbs.ende}</b><br>`;
+  else t += `<b>Frage ${_bbs.frage}: ${_BBS_FRAGEN[_bbs.frage]}</b><br>`;
+
+  if (_bbs.weg.length) {
+    t += 'Dein Weg: ' + _bbs.weg.map(w => `Frage ${w.q}: ${w.a}`).join(' · ')
+       + (_bbs.ende ? ` → ${_bbs.ende}` : '') + '<br>';
+  } else {
+    t += 'Antworte mit „ja“ oder „nein“.<br>';
+  }
+
+  if (_bbs.falsch) {
+    t += _bbs.falsch.q === 1
+      ? '<i>Sieh noch einmal hin. Der Röntgenblick zeigt, ob das Tier eine Wirbelsäule hat.</i>'
+      : '<i>Sieh noch einmal hin. Die Lupe zeigt die Beine. Zähle genau.</i>';
+  } else if (_bbs.vor) {
+    t += '<i>Der Weg durch den Schlüssel wird vorgeführt …</i>';
+  } else if (_bbs.ende && _bbs.fertigHinweis) {
+    t += '<i>Der Schlüssel ist fertig. Wähle ein anderes Tier oder drücke „neu“.</i>';
+  } else if (_bbs.ende) {
+    t += d.wirbel ? '<i>Das Tier hat eine Wirbelsäule. Es ist ein Wirbeltier.</i>'
+                  : '<i>Das Tier hat keine Wirbelsäule. Es ist kein Wirbeltier.</i>';
+  }
+  el.innerHTML = t;
+}
+
+// ── Beine: Ansatz, Knie, Spitze je Bein (Tier schaut nach rechts) ──
+// Reihenfolge = Reihenfolge beim Zaehlen: obere Seite von vorn nach hinten,
+// dann untere Seite von vorn nach hinten.
+function _bbsBeine(nr, ph, amp) {
+  const L = [];
+  const bein = (b, k, s, sw) => ({
+    b, k: [k[0] + sw * 0.5, k[1]], s: [s[0] + sw, s[1]],
+  });
+  for (const si of [-1, 1]) {
+    if (nr === 0) {                      // Kellerassel: 7 Beinpaare
+      for (let i = 0; i < 7; i++) {
+        const x = 30 - i * 10;
+        const sw = Math.sin(ph + i * 0.9 + (si > 0 ? Math.PI : 0)) * 4 * amp;
+        L.push(bein([x, si * 17], [x - 1, si * 29], [x - 3, si * 37], sw));
+      }
+    } else if (nr === 1) {               // Erdkroete: 2 Vorder-, 2 Hinterbeine
+      const a = Math.sin(ph + (si > 0 ? Math.PI : 0)) * 5 * amp;
+      L.push(bein([22, si * 18], [30, si * 34], [42, si * 40], a));
+      L.push(bein([-26, si * 17], [-8, si * 42], [-40, si * 50], -a));
+    } else if (nr === 2) {               // Spinne: 4 Beinpaare am Vorderkoerper
+      const B = [[26, 8], [21, 11], [14, 12], [8, 10]];
+      const K = [[44, 34], [28, 43], [4, 43], [-12, 35]];
+      const S = [[70, 50], [40, 63], [-16, 61], [-46, 54]];
+      for (let i = 0; i < 4; i++) {
+        const sw = Math.sin(ph + i * Math.PI / 2 + (si > 0 ? Math.PI : 0)) * 5 * amp;
+        L.push(bein([B[i][0], si * B[i][1]], [K[i][0], si * K[i][1]], [S[i][0], si * S[i][1]], sw));
+      }
+    } else if (nr === 4) {               // Kaefer: 3 Beinpaare an der Brust
+      const B = [[24, 8], [11, 10], [2, 10]];
+      const K = [[34, 24], [10, 30], [-8, 28]];
+      const S = [[47, 35], [4, 45], [-31, 43]];
+      for (let i = 0; i < 3; i++) {
+        const sw = Math.sin(ph + (i % 2 ? Math.PI : 0) + (si > 0 ? Math.PI : 0)) * 5 * amp;
+        L.push(bein([B[i][0], si * B[i][1]], [K[i][0], si * K[i][1]], [S[i][0], si * S[i][1]], sw));
+      }
+    }
+  }
+  return L;
+}
+
+function _bbsBeinStrich(ctx, l, farbe, breite) {
+  ctx.strokeStyle = farbe; ctx.lineWidth = breite; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(l.b[0], l.b[1]); ctx.lineTo(l.k[0], l.k[1]); ctx.lineTo(l.s[0], l.s[1]); ctx.stroke();
+}
+
+// Ein Tier in lokalen Koordinaten zeichnen (Ursprung = Koerpermitte, Kopf rechts).
+function _bbsTierBild(ctx, nr, t, ph, amp) {
+  const beine = _bbsBeine(nr, ph, amp);
+  if (nr === 0) {                        // ── Kellerassel
+    for (const l of beine) _bbsBeinStrich(ctx, l, '#a8a29e', 2.2);
+    ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1.8;
+    for (const si of [-1, 1]) {
+      const w = Math.sin(t * 3 + si) * 3;
+      ctx.beginPath(); ctx.moveTo(54, si * 5); ctx.quadraticCurveTo(64, si * (14 + w), 78, si * (12 + w)); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(-50, si * 5); ctx.lineTo(-61, si * 9); ctx.stroke();
+    }
+    ctx.fillStyle = '#6b7280';
+    ctx.beginPath(); ctx.ellipse(0, 0, 52, 22, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#4b5563';
+    ctx.beginPath(); ctx.ellipse(50, 0, 8, 11, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#374151'; ctx.lineWidth = 1.2;
+    for (let i = 0; i < 9; i++) {
+      const x = 40 - i * 10;
+      const h = 22 * Math.sqrt(Math.max(0, 1 - (x / 52) * (x / 52)));
+      ctx.beginPath(); ctx.moveTo(x, -h); ctx.quadraticCurveTo(x - 4, 0, x, h); ctx.stroke();
+    }
+    ctx.fillStyle = 'rgba(255,255,255,0.14)';
+    ctx.beginPath(); ctx.ellipse(4, -7, 38, 7, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(229,231,235,0.55)';
+    for (let i = 0; i < 7; i++) {
+      ctx.beginPath(); ctx.arc(30 - i * 10, -12, 1.4, 0, Math.PI * 2); ctx.arc(30 - i * 10, 12, 1.4, 0, Math.PI * 2); ctx.fill();
+    }
+  } else if (nr === 1) {                 // ── Erdkroete
+    for (const l of beine) {
+      _bbsBeinStrich(ctx, l, '#b8925a', 7);
+      // Zehen
+      ctx.strokeStyle = '#b8925a'; ctx.lineWidth = 2.4;
+      const dx = l.s[0] - l.k[0], dy = l.s[1] - l.k[1], w0 = Math.atan2(dy, dx);
+      for (let z = -2; z <= 2; z++) {
+        const w = w0 + z * 0.32;
+        ctx.beginPath(); ctx.moveTo(l.s[0], l.s[1]); ctx.lineTo(l.s[0] + Math.cos(w) * 8, l.s[1] + Math.sin(w) * 8); ctx.stroke();
+      }
+    }
+    const atem = Math.sin(t * 2.6) * 1.3;
+    ctx.fillStyle = '#a8864e';
+    ctx.beginPath(); ctx.ellipse(-2, 0, 38, 27 + atem, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(30, 0, 16, 19, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(42, 0, 8, 13, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#4a3418'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(-2, 0, 38, 27 + atem, 0, 0.35, Math.PI * 2 - 0.35); ctx.stroke();
+    for (const [x, y, r] of _BBS_WARZEN) {
+      ctx.fillStyle = r > 2.4 ? '#6b4f2a' : '#a8844f';
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.fillStyle = '#a07c48';
+    for (const si of [-1, 1]) { ctx.beginPath(); ctx.ellipse(22, si * 13, 8, 4, 0, 0, Math.PI * 2); ctx.fill(); }
+    const zu = (t % 4.2) > 4.0;          // blinzeln
+    for (const si of [-1, 1]) {
+      ctx.fillStyle = '#d4a017';
+      ctx.beginPath(); ctx.arc(36, si * 11, 4.6, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = zu ? '#a8864e' : '#111827';
+      ctx.beginPath(); ctx.ellipse(36, si * 11, zu ? 4.6 : 3, zu ? 4.6 : 1.2, 0, 0, Math.PI * 2); ctx.fill();
+    }
+  } else if (nr === 2) {                 // ── Spinne
+    for (const l of beine) {
+      _bbsBeinStrich(ctx, l, '#1c130d', 2.6);
+      ctx.fillStyle = '#2b1f16';
+      ctx.beginPath(); ctx.arc(l.k[0], l.k[1], 2, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.strokeStyle = '#4a3728'; ctx.lineWidth = 2;
+    for (const si of [-1, 1]) { ctx.beginPath(); ctx.moveTo(31, si * 4); ctx.lineTo(39, si * 8); ctx.stroke(); }
+    ctx.fillStyle = '#4a2f1c';
+    ctx.beginPath(); ctx.ellipse(-22, 0, 23, 17 + Math.sin(t * 2) * 0.6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#f5f0e6';
+    for (const [x, y] of [[-12, 0], [-19, 0], [-26, 0], [-33, 0], [-22, -6], [-22, 6]]) {
+      ctx.beginPath(); ctx.arc(x, y, 1.9, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.fillStyle = '#3f2e22';
+    ctx.beginPath(); ctx.ellipse(2, 0, 4, 3, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#2e1f15';
+    ctx.beginPath(); ctx.ellipse(16, 0, 17, 13, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#111827';
+    for (const [x, y] of [[29, -2], [29, 2], [27, -5], [27, 5]]) { ctx.beginPath(); ctx.arc(x, y, 1.3, 0, Math.PI * 2); ctx.fill(); }
+  } else if (nr === 3) {                 // ── Regenwurm (keine Beine)
+    const pts = [];
+    for (let x = -86; x <= 86; x += 3) {
+      const y = Math.sin(x * 0.045 - t * 2.2) * 7;
+      const ende = Math.min(1, (86 - Math.abs(x)) / 18 + 0.35);
+      const r = (7 + 1.5 * Math.sin(x * 0.22 - t * 5)) * ende;
+      pts.push([x, y, r]);
+    }
+    for (const [x, y, r] of pts) {
+      ctx.fillStyle = (x > 40 && x < 56) ? '#c2605f' : '#d98580';
+      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.strokeStyle = 'rgba(122,40,40,0.45)'; ctx.lineWidth = 1;
+    for (let i = 0; i < pts.length; i += 2) {
+      const [x, y, r] = pts[i];
+      ctx.beginPath(); ctx.moveTo(x, y - r * 0.9); ctx.lineTo(x, y + r * 0.9); ctx.stroke();
+    }
+    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    for (const [x, y, r] of pts) { ctx.beginPath(); ctx.arc(x, y - r * 0.4, r * 0.25, 0, Math.PI * 2); ctx.fill(); }
+  } else {                               // ── Kaefer (Laufkaefer)
+    for (const l of beine) _bbsBeinStrich(ctx, l, '#111827', 2.4);
+    ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.6;
+    for (const si of [-1, 1]) {
+      const w = Math.sin(t * 4 + si) * 2;
+      ctx.beginPath(); ctx.moveTo(48, si * 4); ctx.quadraticCurveTo(62, si * (16 + w), 76, si * (13 + w)); ctx.stroke();
+    }
+    ctx.fillStyle = '#1e1b3a';
+    ctx.beginPath(); ctx.ellipse(-12, 0, 32, 18, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#6d28d9'; ctx.lineWidth = 1.4; ctx.stroke();
+    ctx.strokeStyle = 'rgba(167,139,250,0.55)'; ctx.lineWidth = 0.8;
+    for (const y of [-12, -6, 6, 12]) {
+      const w = 32 * Math.sqrt(1 - (y / 18) * (y / 18));
+      ctx.beginPath(); ctx.moveTo(-12 - w + 4, y); ctx.lineTo(-12 + w - 4, y); ctx.stroke();
+    }
+    ctx.strokeStyle = '#0b0a1a'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(19, 0); ctx.lineTo(-44, 0); ctx.stroke();
+    ctx.fillStyle = '#26224a';
+    ctx.beginPath(); ctx.ellipse(27, 0, 10, 13, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#6d28d9'; ctx.lineWidth = 1.2; ctx.stroke();
+    ctx.fillStyle = '#111827';
+    ctx.beginPath(); ctx.ellipse(42, 0, 8, 8, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#111827'; ctx.lineWidth = 2;
+    for (const si of [-1, 1]) { ctx.beginPath(); ctx.moveTo(48, si * 3); ctx.quadraticCurveTo(54, si * 4, 55, si * 1); ctx.stroke(); }
+    ctx.fillStyle = 'rgba(196,181,253,0.25)';
+    ctx.beginPath(); ctx.ellipse(-6, -8, 20, 4, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  return beine;
+}
+
+// Skelett der Erdkroete fuer den Roentgenblick (leuchtende Knochen).
+function _bbsKnochen(ctx, t) {
+  const beine = _bbsBeine(1, 0, 0);
+  const pul = 0.75 + 0.25 * Math.sin(t * 3);
+  const zwei = (breit, farbe, fn) => {
+    ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = breit; ctx.lineCap = 'round';
+    fn();
+  };
+  const alles = () => {
+    // Schaedel mit Augenhoehlen
+    ctx.beginPath(); ctx.ellipse(36, 0, 14, 16, 0, 0, Math.PI * 2); ctx.stroke();
+    for (const si of [-1, 1]) { ctx.beginPath(); ctx.arc(37, si * 8, 4.5, 0, Math.PI * 2); ctx.stroke(); }
+    // Wirbelsaeule: 9 Wirbel, Kreuzbein, Steissbeinstab
+    for (let k = 0; k < 9; k++) {
+      const x = 20 - k * 5;
+      ctx.beginPath(); ctx.moveTo(x - 1.6, 0); ctx.lineTo(x + 1.6, 0); ctx.stroke();
+      if (k > 0 && k < 8) { ctx.beginPath(); ctx.moveTo(x, -7); ctx.lineTo(x, 7); ctx.stroke(); }
+    }
+    ctx.beginPath(); ctx.moveTo(-23, -12); ctx.lineTo(-23, 12); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-24, 0); ctx.lineTo(-42, 0); ctx.stroke();
+    // Becken und Schultergurt
+    for (const si of [-1, 1]) {
+      ctx.beginPath(); ctx.moveTo(-23, si * 11); ctx.lineTo(-30, si * 17); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(18, si * 5); ctx.lineTo(22, si * 18); ctx.stroke();
+    }
+    // Beinknochen mit Zehen
+    for (const l of beine) {
+      ctx.beginPath(); ctx.moveTo(l.b[0], l.b[1]); ctx.lineTo(l.k[0], l.k[1]); ctx.lineTo(l.s[0], l.s[1]); ctx.stroke();
+      const w0 = Math.atan2(l.s[1] - l.k[1], l.s[0] - l.k[0]);
+      for (let z = -2; z <= 2; z++) {
+        const w = w0 + z * 0.32;
+        ctx.beginPath(); ctx.moveTo(l.s[0], l.s[1]); ctx.lineTo(l.s[0] + Math.cos(w) * 8, l.s[1] + Math.sin(w) * 8); ctx.stroke();
+      }
+    }
+  };
+  zwei(6, `rgba(34,211,238,${0.28 * pul})`, alles);
+  zwei(2.4, '#ecfeff', alles);
+  // die Wirbel als helle Kloetzchen obendrauf
+  ctx.fillStyle = '#ffffff';
+  for (let k = 0; k < 9; k++) {
+    const x = 20 - k * 5;
+    ctx.beginPath(); ctx.ellipse(x, 0, 2, 3.2, 0, 0, Math.PI * 2); ctx.fill();
+  }
+}
+
+// ── Das Bild ───────────────────────────────────────────
+function _bbsDraw(ctx, cv) {
+  if (!_bbs) return;
+  const W = cv.width, H = cv.height, t = _bbs.t;
+  const nr = _bbs.tier - 1, d = _bbsTierDaten();
+  const CX = _BBS_CX, CY = _BBS_CY;
+
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, W, H);
+
+  // ── linke Seite: Erde unter dem Stein ──
+  ctx.save();
+  ctx.beginPath(); ctx.rect(0, 0, 228, H); ctx.clip();
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, '#5a4332'); g.addColorStop(1, '#75593f');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 228, H);
+  for (const [x, y, r, f] of _BBS_KIESEL) {
+    ctx.fillStyle = f > 0.7 ? '#a8977f' : (f > 0.4 ? '#8a6d52' : '#4a3627');
+    ctx.beginPath(); ctx.ellipse(x, y, r * 1.3, r, f * 3, 0, Math.PI * 2); ctx.fill();
+  }
+  // Wuerzelchen
+  ctx.strokeStyle = 'rgba(214,190,150,0.35)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(228, 60); ctx.quadraticCurveTo(200, 80, 206, 110); ctx.quadraticCurveTo(210, 130, 196, 150); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, 220); ctx.quadraticCurveTo(30, 206, 44, 232); ctx.stroke();
+  // hochgeklappter Stein oben links, darunter feuchter Schatten
+  ctx.fillStyle = 'rgba(0,0,0,0.35)';
+  ctx.beginPath(); ctx.ellipse(46, 40, 70, 20, 0, 0, Math.PI * 2); ctx.fill();
+  const gs = ctx.createLinearGradient(0, 0, 0, 44);
+  gs.addColorStop(0, '#9ca3af'); gs.addColorStop(1, '#6b7280');
+  ctx.fillStyle = gs;
+  ctx.beginPath(); ctx.moveTo(-10, -10); ctx.lineTo(134, -10); ctx.lineTo(122, 18); ctx.lineTo(60, 34); ctx.lineTo(-10, 36); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#4b5563';
+  ctx.beginPath(); ctx.moveTo(-10, 36); ctx.lineTo(60, 34); ctx.lineTo(122, 18); ctx.lineTo(118, 26); ctx.lineTo(62, 42); ctx.lineTo(-10, 44); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = 'rgba(74,222,128,0.35)';
+  ctx.beginPath(); ctx.ellipse(30, 38, 16, 3, 0, 0, Math.PI * 2); ctx.fill();
+
+  // ── Lage des Tieres: kriecht unter dem Stein hervor, dann laeuft es ──
+  const ruhig = _bbs.lupe || _bbs.roe;
+  const e = Math.min(1, Math.max(0, (t - _bbs.ein) / 1.8));
+  const eg = 1 - (1 - e) * (1 - e);
+  let x = CX, y = CY, rot = 0;
+  if (!ruhig) {
+    const x0 = 20, y0 = 30;
+    const wx = CX + Math.sin(t * 0.5) * 10, wy = CY + Math.sin(t * 0.8) * 5;
+    x = x0 + (wx - x0) * eg; y = y0 + (wy - y0) * eg;
+    rot = e < 1 ? 0.75 * (1 - eg) : Math.cos(t * 0.5) * 0.14;
+  }
+  const tempo = nr === 1 ? 3 : 7;
+  const ph = ruhig ? 0 : t * tempo;
+  const amp = ruhig ? 0 : 1;
+
+  if (_bbs.lupe) {
+    // ── Lupe: Tier gross, Beine nummeriert ──
+    const R = 102, k = nr === 3 ? 1.1 : nr === 2 ? 1.0 : 1.22;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.clip();
+    ctx.fillStyle = '#d8c6a6'; ctx.fillRect(CX - R, CY - R, 2 * R, 2 * R);
+    ctx.save();
+    ctx.translate(CX, CY); ctx.scale(k, k);
+    const beine = _bbsTierBild(ctx, nr, t, 0, 0);
+    const u = t - _bbs.lupeT0 - 0.4;
+    const n = _bbs.gezaehlt ? beine.length : Math.max(0, Math.min(beine.length, Math.floor(u / 0.22) + 1));
+    for (let i = 0; i < n; i++) {
+      const l = beine[i];
+      _bbsBeinStrich(ctx, l, '#f97316', 2.6);
+      const dx = l.s[0] - l.k[0], dy = l.s[1] - l.k[1], m = Math.hypot(dx, dy) || 1;
+      const lx = l.s[0] + dx / m * 8, ly = l.s[1] + dy / m * 8;
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#f97316'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.arc(lx, ly, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#9a3412'; ctx.font = 'bold 8px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(String(i + 1), lx, ly + 0.5);
+    }
+    ctx.restore();
+    ctx.restore();
+    // Fassung und Griff
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 7;
+    ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(CX, CY, R - 8, -2.6, -1.9); ctx.stroke();
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 11; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(CX + R * 0.72, CY + R * 0.72); ctx.lineTo(CX + R * 0.95, CY + R * 0.95); ctx.stroke();
+    // Ergebnis der Zaehlung
+    if (_bbs.gezaehlt || d.beine === 0 && u > 0.6) {
+      const txt = d.beine === 0 ? 'keine Beine' : `${d.beine} Beine`;
+      ctx.fillStyle = 'rgba(255,255,255,0.92)';
+      ctx.beginPath(); ctx.rect(CX - 44, CY - R + 4, 88, 20); ctx.fill();
+      ctx.fillStyle = '#9a3412'; ctx.font = 'bold 13px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(txt, CX, CY - R + 14.5);
+    }
+  } else if (_bbs.roe) {
+    // ── Roentgenblick: dunkel, Tier nur als Schatten, Knochen leuchten ──
+    ctx.fillStyle = 'rgba(8,20,48,0.88)'; ctx.fillRect(0, 0, 228, H);
+    const scan = Math.min(1, (t - _bbs.roeT0) / 1.2);
+    const yScan = 36 + scan * 200;
+    ctx.save();
+    ctx.translate(CX, CY); ctx.scale(1.15, 1.15);
+    ctx.globalAlpha = 0.22;
+    _bbsTierBild(ctx, nr, t, 0, 0);
+    ctx.globalAlpha = 1;
+    ctx.restore();
+    if (d.wirbel) {
+      ctx.save();
+      ctx.beginPath(); ctx.rect(0, 0, 228, yScan); ctx.clip();
+      ctx.translate(CX, CY); ctx.scale(1.15, 1.15);
+      _bbsKnochen(ctx, t);
+      ctx.restore();
+    }
+    if (scan < 1) {
+      ctx.fillStyle = 'rgba(103,232,249,0.25)'; ctx.fillRect(0, yScan - 6, 228, 12);
+      ctx.fillStyle = '#67e8f9'; ctx.fillRect(0, yScan - 1, 228, 2);
+    } else {
+      ctx.fillStyle = '#ecfeff'; ctx.font = 'bold 14px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(d.wirbel ? 'Knochen und Wirbelsäule' : 'keine Knochen', CX, 226);
+    }
+    ctx.fillStyle = '#67e8f9'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText('Röntgenblick', 8, 58);
+  } else {
+    ctx.save();
+    ctx.translate(x, y); ctx.rotate(rot);
+    ctx.fillStyle = 'rgba(0,0,0,0.22)';
+    ctx.beginPath(); ctx.ellipse(-2, 5, nr === 3 ? 88 : 56, nr === 3 ? 12 : 30, 0, 0, Math.PI * 2); ctx.fill();
+    _bbsTierBild(ctx, nr, t, ph, amp);
+    ctx.restore();
+  }
+
+  // Schild mit der Tiernummer, am Ende auch mit dem Namen
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.beginPath(); ctx.rect(170, 6, 52, 20); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(`Tier ${_bbs.tier}`, 196, 16.5);
+  if (_bbs.ende && !_bbs.lupe && !_bbs.roe) {
+    const s = Math.min(1, (t - _bbs.endeT0) / 0.35);
+    ctx.save();
+    ctx.translate(CX, 226); ctx.scale(s, s);
+    ctx.fillStyle = '#16a34a';
+    ctx.beginPath(); ctx.rect(-62, -12, 124, 24); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.font = 'bold 13px system-ui';
+    ctx.fillText(d.name, 0, 0.5);
+    ctx.restore();
+  }
+  ctx.restore();
+
+  _bbsSchluesselBild(ctx, t);
+}
+
+// Rechte Seite: der Bestimmungsschluessel als Pfeilweg.
+function _bbsSchluesselBild(ctx, t) {
+  const QX = 236, QW = 90, QH = 28, LX = 352, LW = 64;
+  const qy = q => 24 + (q - 1) * 50;
+  const rechtsA = q => (q === 2 ? 'nein' : 'ja');
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.rect(231, 3, 186, 244); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Bestimmungsschlüssel', 324, 14);
+
+  const gegangen = (q, a) => _bbs.weg.some(w => w.q === q && w.a === a);
+  // Kanten
+  const kante = (q, a) => {
+    const y = qy(q);
+    if (a === rechtsA(q)) return [QX + QW, y + QH / 2, LX, y + QH / 2];
+    return [QX + QW / 2, y + QH, QX + QW / 2, q < 4 ? qy(q + 1) : 222];
+  };
+  for (let q = 1; q <= 4; q++) {
+    for (const a of ['ja', 'nein']) {
+      const [x1, y1, x2, y2] = kante(q, a);
+      const an = gegangen(q, a);
+      ctx.strokeStyle = an ? '#16a34a' : '#94a3b8'; ctx.lineWidth = an ? 3 : 1.4;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      const w = Math.atan2(y2 - y1, x2 - x1);
+      ctx.fillStyle = ctx.strokeStyle;
+      ctx.beginPath(); ctx.moveTo(x2, y2);
+      ctx.lineTo(x2 - 6 * Math.cos(w - 0.45), y2 - 6 * Math.sin(w - 0.45));
+      ctx.lineTo(x2 - 6 * Math.cos(w + 0.45), y2 - 6 * Math.sin(w + 0.45)); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = an ? '#15803d' : '#475569'; ctx.font = 'bold 9px system-ui';
+      if (y1 === y2) { ctx.textAlign = 'center'; ctx.fillText(a, (x1 + x2) / 2, y1 - 7); }
+      else { ctx.textAlign = 'left'; ctx.fillText(a, x1 + 5, (y1 + y2) / 2); }
+    }
+  }
+  // wandernder Punkt auf der zuletzt gegangenen Kante
+  if (_bbs.kante) {
+    const u = (t - _bbs.kante.t0) / 0.5;
+    if (u >= 0 && u <= 1) {
+      const [x1, y1, x2, y2] = kante(_bbs.kante.q, _bbs.kante.a);
+      ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.arc(x1 + (x2 - x1) * u, y1 + (y2 - y1) * u, 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+  }
+  // Fragekaesten
+  for (let q = 1; q <= 4; q++) {
+    let x = QX;
+    const y = qy(q);
+    const jetzt = !_bbs.ende && _bbs.frage === q;
+    const erledigt = _bbs.weg.some(w => w.q === q);
+    const fl = _bbs.falsch && _bbs.falsch.q === q && (t - _bbs.falsch.t0) < 0.6;
+    if (fl) x += Math.sin((t - _bbs.falsch.t0) * 40) * 3;
+    ctx.fillStyle = fl ? '#fee2e2' : jetzt ? '#fef3c7' : erledigt ? '#dcfce7' : '#f8fafc';
+    ctx.strokeStyle = fl ? '#dc2626' : jetzt ? '#f59e0b' : erledigt ? '#16a34a' : '#94a3b8';
+    ctx.lineWidth = jetzt ? 2 + Math.sin(t * 5) * 0.8 : 1.4;
+    ctx.beginPath(); ctx.rect(x, y, QW, QH); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#64748b'; ctx.font = '8px system-ui'; ctx.textAlign = 'left';
+    ctx.fillText(`Frage ${q}`, x + 5, y + 8);
+    ctx.fillStyle = '#0f172a'; ctx.font = 'bold 10px system-ui';
+    ctx.fillText(_BBS_KURZ[q], x + 5, y + 19.5);
+  }
+  // Namen am Ende der Wege
+  const blaetter = [
+    [LX, qy(1), LW, QH, ['Wirbeltier:', 'Erdkröte'], 'Wirbeltier: Erdkröte'],
+    [LX, qy(2), LW, QH, ['Regenwurm'], 'Regenwurm'],
+    [LX, qy(3), LW, QH, ['Käfer'], 'Käfer'],
+    [LX, qy(4), LW, QH, ['Spinne'], 'Spinne'],
+    [QX + 11, 222, 68, 22, ['Kellerassel'], 'Kellerassel'],
+  ];
+  for (const [x, y, w, h, zeilen, name] of blaetter) {
+    const da = _bbs.ende === name;
+    const s = da ? 1 + 0.08 * Math.max(0, 1 - (t - _bbs.endeT0) / 0.4) : 1;
+    ctx.save();
+    ctx.translate(x + w / 2, y + h / 2); ctx.scale(s, s);
+    ctx.fillStyle = da ? '#16a34a' : '#f1f5f9';
+    ctx.strokeStyle = da ? '#15803d' : '#94a3b8'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.rect(-w / 2, -h / 2, w, h); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = da ? '#ffffff' : '#0f172a'; ctx.font = 'bold 9px system-ui'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    if (zeilen.length === 2) { ctx.fillText(zeilen[0], 0, -5); ctx.fillText(zeilen[1], 0, 6); }
+    else ctx.fillText(zeilen[0], 0, 0.5);
+    ctx.restore();
+  }
+}
+
+function _bbsHTML() {
+  if (!_bbs) _bbsInit();
+  const tb = i => `<button class="sim-btn" id="_bbs-t${i}" onclick="_bbsTier('${i}')">Tier ${i}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wer krabbelt unter der Hecke?</h3>
+    <div class="fpm-note" style="margin-top:2px">Unter dem Stein krabbelt ein Tier. Sieh es mit der Lupe und mit dem Röntgenblick genau an. Beantworte dann die Fragen des Bestimmungsschlüssels mit „ja“ oder „nein“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bbs-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:6px">Tier</div>
+        <div class="sim-btn-row">${[1, 2, 3, 4, 5].map(tb).join('')}</div>
+        <div class="fpm-label" style="margin-top:4px">Genau hinsehen</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn" id="_bbs-lupe" onclick="_bbsLupe()">Lupe</button>
+          <button class="sim-btn" id="_bbs-roe" onclick="_bbsRoentgen()">Röntgenblick</button>
+        </div>
+        <div class="fpm-label" style="margin-top:4px">Antwort auf die Frage</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_bbsJa()">ja</button>
+          <button class="sim-btn" onclick="_bbsNein()">nein</button>
+          <button class="sim-btn" onclick="_bbsNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was der Schlüssel fragt</div>
+        <div class="lmp-status" id="_bbs-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px"><b>So geht der Schlüssel:</b> Jede Frage hat zwei Wege, „ja“ oder „nein“. Jede Antwort führt zur nächsten Frage. Am Ende steht der Name des Tieres.</div>
+        <div class="fpm-note" style="margin-top:8px"><b>Wirbeltier:</b> Ein Tier mit Knochen und einer Wirbelsäule im Rücken. Käfer, Spinne, Kellerassel und Regenwurm haben keine Knochen.</div>
+        <div class="fpm-label" style="margin-top:10px">Zum Nachsehen</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_bbsVorfuehren()">Weg vorführen</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Eine Frage nach der anderen – am Ende steht der Name.</p>
+  </div>`;
+}
+
+// ══════════════════════════════════════════════════════════════════════
+// BIO-BLUETE  (Förderheft Biologie 5/6, Einheit bl3) – Präfix _bbl
+// Was in der Kirschblüte steckt: EIN Teil der Blüte wegnehmen, dann den
+// Sommer abwarten. Erst fliegen eine Stunde lang Bienen an (Zähler), dann
+// fallen Blütenblätter und Staubblätter ab und der Stempel wird unten dick
+// und rot – oder eben nicht.
+// Modellwerte (lehrer.tabelle_erwartet):
+//   nichts         20 Bienen · 8 von 10
+//   Blütenblätter   2 Bienen · 1 von 10   (nichts lockt die Bienen an)
+//   Staubblätter   20 Bienen · 8 von 10   (Blütenstaub kommt von anderen Bäumen)
+//   Stempel        20 Bienen · 0 von 10   (nichts, woraus eine Kirsche wachsen kann)
+// Die Zahlen werden aus den Listen unten GEZÄHLT, nicht hingeschrieben.
+// ══════════════════════════════════════════════════════════════════════
+const _BBL_TEILE = ['nichts', 'Blütenblätter', 'Staubblätter', 'Stempel'];
+const _BBL_BIENEN = { 'nichts': 20, 'Blütenblätter': 2, 'Staubblätter': 20, 'Stempel': 20 };
+// Welche der 10 Blüten eine Kirsche ansetzen (Index 0..9). Blüte 4 ist die
+// unter der Lupe. Nicht jede besuchte Blüte wird zur Kirsche – 8 von 10.
+const _BBL_FRUCHT = {
+  'nichts':        [0, 2, 3, 4, 5, 6, 7, 9],
+  'Blütenblätter': [4],
+  'Staubblätter':  [0, 2, 3, 4, 5, 6, 7, 9],
+  'Stempel':       []
+};
+const _BBL_LUPE = 4;
+const _BBL_T_STUNDE = 6.0;    // Sekunden für "eine Stunde" Bienenflug
+const _BBL_T_SOMMER = 6.5;    // Sekunden für die Wochen bis zum Sommer
+
+let _bblState = null;
+
+function _bblInit() {
+  _bblState = { teil: 'nichts', phase: 'bluete', tp: 0, tAnim: 0,
+                bienen: [], gezaehlt: 0, besucht: {}, statusKey: '' };
+}
+
+// feste Zufallszahl je Biene - jeder Lauf sieht gleich aus
+function _bblZufall(k, s) {
+  const x = Math.sin(k * 12.9898 + s * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+function _bblTeil(name) {
+  if (!_bblState || _BBL_TEILE.indexOf(name) < 0) return;
+  _bblState.teil = name;
+  _bblNeu();
+}
+
+function _bblNeu() {
+  if (!_bblState) return;
+  const s = _bblState;
+  s.phase = 'bluete'; s.tp = 0; s.bienen = []; s.gezaehlt = 0; s.besucht = {};
+  _bblStatus();
+}
+
+function _bblSommer() {
+  if (!_bblState) return;
+  const s = _bblState;
+  s.phase = 'stunde'; s.tp = 0; s.gezaehlt = 0; s.besucht = {};
+  // Die Bienen dieser Stunde planen: Ankunftszeit und Zielblüte.
+  const n = _BBL_BIENEN[s.teil];
+  const fr = _BBL_FRUCHT[s.teil];
+  s.bienen = [];
+  for (let k = 0; k < n; k++) {
+    let ziel = (k * 3 + 1) % 10;
+    if (n <= 2) ziel = k === 0 ? _BBL_LUPE : 8;           // die eine Kirsche kommt von Blüte 4
+    else if (k === 0) ziel = _BBL_LUPE;
+    s.bienen.push({ start: 0.15 + k * (_BBL_T_STUNDE - 1.9) / Math.max(1, n - 1),
+                    ziel, von: _bblZufall(k, 1), weg: _bblZufall(k, 2), da: false });
+  }
+  if (fr.length > n) s.bienen.length = n;                 // (nur zur Sicherheit)
+  _bblStatus();
+}
+
+// ── Geometrie ────────────────────────────────────────────────────────
+// Der Zweig läuft von links unten nach rechts oben (rechte Bildhälfte).
+function _bblZweig(W, H, t) {
+  const x0 = W * 0.43, y0 = H * 0.97, cx = W * 0.62, cy = H * 0.58, x2 = W * 0.99, y2 = H * 0.26;
+  const u = 1 - t;
+  return { x: u * u * x0 + 2 * u * t * cx + t * t * x2,
+           y: u * u * y0 + 2 * u * t * cy + t * t * y2 };
+}
+function _bblBlueten(W, H) {
+  const ts = [0.10, 0.19, 0.27, 0.36, 0.45, 0.53, 0.62, 0.71, 0.80, 0.90];
+  return ts.map((t, i) => {
+    const a = _bblZweig(W, H, t);
+    const oben = i % 2 === 0;
+    const dx = (oben ? -1 : 1) * (6 + (i % 3) * 3);
+    const dy = oben ? -20 - (i % 3) * 3 : 14 + (i % 3) * 2;
+    return { ax: a.x, ay: a.y, x: a.x + dx, y: a.y + dy, oben };
+  });
+}
+
+// ── Anzeige ──────────────────────────────────────────────────────────
+function _bblKirschen() {
+  return _BBL_FRUCHT[_bblState.teil].length;
+}
+function _bblStatus() {
+  const s = _bblState;
+  if (!s) return;
+  let zeile;
+  if (s.phase === 'bluete') {
+    zeile = 'Bienen in einer Stunde: noch nicht gezählt<br>Die Kirschblüten sind offen. Drücke „▶ Sommer abwarten“.';
+  } else if (s.phase === 'stunde') {
+    zeile = 'Bienen in einer Stunde: ' + s.gezaehlt + ' · Kirschen: noch Blüten';
+  } else if (s.phase === 'sommer') {
+    zeile = 'Bienen in einer Stunde: ' + s.gezaehlt + ' · Kirschen: ' +
+            (s.tp < _BBL_T_SOMMER * 0.45 ? 'die Wochen vergehen …' : 'der Sommer kommt …');
+  } else {
+    zeile = 'Bienen in einer Stunde: ' + s.gezaehlt + ' · Kirschen: ' + _bblKirschen() + ' von 10';
+  }
+  let html = '<b>Teil wegnehmen: ' + s.teil + '</b><br>' + zeile;
+  if (s.teil === 'Staubblätter') {
+    html += '<br>Kein Blütenstaub an diesen Blüten. Die Bienen bringen ihn von anderen Kirschbäumen.';
+  }
+  if (html !== s.statusKey) {
+    s.statusKey = html;
+    const el = document.getElementById('_bbl-status');
+    if (el) el.innerHTML = html;
+  }
+  document.querySelectorAll('[data-bbl]').forEach(b =>
+    b.classList.toggle('primary', b.dataset.bbl === s.teil));
+}
+
+function _bblHTML() {
+  const knoepfe = _BBL_TEILE.map(n =>
+    `<button class="sim-btn${_bblState.teil === n ? ' primary' : ''}" data-bbl="${n}" onclick="_bblTeil('${n}')">${n}</button>`).join('');
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was in der Kirschblüte steckt</h3>
+    <div class="fpm-note" style="margin-top:2px">Nimm <b>ein</b> Teil aus allen Blüten weg. Dann warte den Sommer ab: Wie viele Bienen kommen? Wie viele Kirschen wachsen?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bbl-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="fpm-label" style="margin-top:6px">Teil wegnehmen:</div>
+        <div class="sim-btn-row" style="margin-top:2px">${knoepfe}</div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bblSommer()">▶ Sommer abwarten</button>
+          <button class="sim-btn" onclick="_bblNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Statuszeile</div>
+        <div class="lmp-status on" id="_bbl-status" style="margin-top:4px"></div>
+        <div class="fpm-note" style="margin-top:10px">Links siehst du <b>eine</b> Blüte groß wie unter der Lupe, rechts den ganzen Zweig mit <b>10</b> Blüten.</div>
+        <div class="fpm-note" style="margin-top:6px">Die Zahlen sind Modellwerte für einen Kirschzweig.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Ablauf ───────────────────────────────────────────────────────────
+function _bblUpdate(dt) {
+  const s = _bblState;
+  if (!s) return;
+  const d = Math.min(dt, 0.05);
+  s.tAnim += d;
+  if (s.phase === 'stunde') {
+    s.tp += d;
+    let n = 0;
+    for (const b of s.bienen) {
+      if (!b.da && s.tp >= b.start + 0.8) { b.da = true; s.besucht[b.ziel] = true; }
+      if (b.da) n++;
+    }
+    if (n !== s.gezaehlt) { s.gezaehlt = n; _bblStatus(); }
+    if (s.tp >= _BBL_T_STUNDE) {
+      s.gezaehlt = s.bienen.length;
+      s.phase = 'sommer'; s.tp = 0; _bblStatus();
+    }
+  } else if (s.phase === 'sommer') {
+    s.tp += d;
+    if (s.tp >= _BBL_T_SOMMER) { s.tp = _BBL_T_SOMMER; s.phase = 'fertig'; }
+    _bblStatus();
+  }
+}
+
+// Fortschritt 0..1 zwischen a und b (Anteil der Sommerzeit)
+function _bblSchritt(p, a, b) { return Math.max(0, Math.min(1, (p - a) / (b - a))); }
+function _bblSommerP() {
+  const s = _bblState;
+  if (s.phase === 'sommer') return s.tp / _BBL_T_SOMMER;
+  if (s.phase === 'fertig') return 1;
+  return 0;
+}
+function _bblMisch(a, b, f) {
+  return 'rgb(' + a.map((c, i) => Math.round(c + (b[i] - c) * f)).join(',') + ')';
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────
+function _bblDraw(ctx, cv) {
+  const s = _bblState;
+  if (!s) return;
+  const W = cv.width, H = cv.height, t = s.tAnim, p = _bblSommerP();
+  const teil = s.teil;
+  const ohneBB = teil === 'Blütenblätter', ohneSB = teil === 'Staubblätter', ohneST = teil === 'Stempel';
+
+  // Himmel: Frühling -> Sommer
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, _bblMisch([219, 234, 254], [191, 219, 254], p));
+  g.addColorStop(1, _bblMisch([240, 249, 255], [236, 252, 203], p));
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+  // Sonne, im Sommer höher und kräftiger
+  ctx.save();
+  ctx.fillStyle = _bblMisch([253, 230, 138], [250, 204, 21], p);
+  ctx.globalAlpha = 0.9;
+  ctx.beginPath(); ctx.arc(W * 0.47, H * (0.30 - 0.08 * p), 12 + 3 * p, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+
+  const wind = Math.sin(t * 1.3) * 1.6;
+  const bl = _bblBlueten(W, H);
+  const fr = _BBL_FRUCHT[teil];
+
+  // Zweig
+  ctx.save();
+  ctx.strokeStyle = '#6b4226'; ctx.lineCap = 'round';
+  ctx.lineWidth = 7;
+  ctx.beginPath();
+  for (let i = 0; i <= 30; i++) {
+    const q = _bblZweig(W, H, i / 30);
+    if (i === 0) ctx.moveTo(q.x, q.y); else ctx.lineTo(q.x, q.y + (i / 30) * wind);
+  }
+  ctx.stroke();
+  ctx.restore();
+
+  // Blätter wachsen über den Sommer
+  const lf = _bblSchritt(p, 0.05, 0.7);
+  if (lf > 0) {
+    ctx.save();
+    ctx.fillStyle = '#4d9a3a';
+    [0.15, 0.32, 0.49, 0.66, 0.84].forEach((tt, i) => {
+      const a = _bblZweig(W, H, tt);
+      ctx.save();
+      ctx.translate(a.x, a.y + tt * wind);
+      ctx.rotate((i % 2 ? 0.9 : -2.3) + Math.sin(t * 1.7 + i) * 0.05);
+      ctx.beginPath(); ctx.ellipse(12 * lf, 0, 13 * lf, 5 * lf, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    });
+    ctx.restore();
+  }
+
+  // Die 10 Blüten auf dem Zweig
+  bl.forEach((b, i) => {
+    const wy = ((b.ax - W * 0.43) / (W * 0.56)) * wind;
+    const x = b.x + Math.sin(t * 2 + i) * 0.8, y = b.y + wy;
+    const ax = b.ax, ay = b.ay + wy;
+    const frucht = fr.indexOf(i) >= 0;
+    const fallBB = _bblSchritt(p, 0.0, 0.35), fallSB = _bblSchritt(p, 0.15, 0.45);
+    const wachs = _bblSchritt(p, 0.35, 0.9);
+    // Stiel
+    ctx.save();
+    ctx.strokeStyle = '#3f7d2c'; ctx.lineWidth = 1.4;
+    let kx = x, ky = y;
+    if (frucht && p > 0.35) { kx = ax + (x - ax) * 0.4; ky = ay + 14 + 6 * wachs; }
+    const stielWeg = !frucht && p > 0.55;
+    if (!stielWeg) {
+      ctx.globalAlpha = !frucht ? 1 - _bblSchritt(p, 0.4, 0.55) : 1;
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(frucht && p > 0.35 ? kx : x, frucht && p > 0.35 ? ky : y); ctx.stroke();
+    }
+    ctx.restore();
+
+    // Blütenblätter (fallen ab)
+    if (!ohneBB && fallBB < 1) {
+      ctx.save();
+      ctx.globalAlpha = 1 - fallBB;
+      ctx.translate(x + fallBB * 6, y + fallBB * 40);
+      ctx.rotate(fallBB * 1.5);
+      for (let k = 0; k < 5; k++) {
+        const w = k * Math.PI * 2 / 5 + i * 0.4;
+        ctx.fillStyle = '#fff5f7'; ctx.strokeStyle = '#f5b8c8'; ctx.lineWidth = 0.8;
+        ctx.beginPath(); ctx.ellipse(Math.cos(w) * 6, Math.sin(w) * 6, 6, 4.2, w, 0, Math.PI * 2);
+        ctx.fill(); ctx.stroke();
+      }
+      ctx.restore();
+    }
+    // Staubblätter (gelbe Pünktchen im Kreis)
+    if (!ohneSB && fallSB < 1) {
+      ctx.save();
+      ctx.globalAlpha = 1 - fallSB;
+      ctx.fillStyle = '#eab308';
+      for (let k = 0; k < 8; k++) {
+        const w = k * Math.PI / 4 + i;
+        ctx.beginPath(); ctx.arc(x + Math.cos(w) * 3.6, y + Math.sin(w) * 3.6 + fallSB * 30, 1.2, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    }
+    // Stempel -> Kirsche
+    if (!ohneST) {
+      ctx.save();
+      if (frucht && p > 0.35) {
+        const r = 2 + 5 * wachs;
+        ctx.fillStyle = _bblMisch([132, 204, 22], [190, 18, 60], _bblSchritt(p, 0.55, 0.95));
+        ctx.beginPath(); ctx.arc(kx, ky + r, r, 0, Math.PI * 2); ctx.fill();
+        if (r > 4) {
+          ctx.fillStyle = 'rgba(255,255,255,0.6)';
+          ctx.beginPath(); ctx.arc(kx - r * 0.35, ky + r * 0.65, r * 0.25, 0, Math.PI * 2); ctx.fill();
+        }
+      } else {
+        const weg = frucht ? 0 : _bblSchritt(p, 0.35, 0.55);
+        if (weg < 1) {
+          ctx.globalAlpha = 1 - weg;
+          ctx.fillStyle = '#65a30d';
+          ctx.beginPath(); ctx.arc(x, y + weg * 30, 1.8, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+      ctx.restore();
+    }
+    // Die Lupen-Blüte markieren
+    if (i === _BBL_LUPE) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(71,85,105,0.55)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+      const mx = frucht && p > 0.35 && !ohneST ? kx : x;
+      const my = frucht && p > 0.35 && !ohneST ? ky + 2 + 5 * wachs : y;
+      ctx.beginPath(); ctx.arc(mx, my, 12, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(mx - 12, my); ctx.lineTo(W * 0.39, H * 0.44); ctx.stroke();
+      ctx.restore();
+    }
+  });
+
+  _bblLupe(ctx, W, H, t, p);
+  _bblBienen(ctx, W, H, bl);
+
+  // Kopfzeile: Jahreszeit und Zähler
+  ctx.save();
+  ctx.font = 'bold 12px sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  const monat = s.phase === 'bluete' || s.phase === 'stunde' ? 'Frühling · April'
+              : (p < 0.45 ? 'Frühling · Mai' : 'Sommer · Juni');
+  ctx.fillStyle = '#1e293b'; ctx.fillText(monat, 8, 12);
+  const pille = (txt, x, farbe) => {
+    const w = ctx.measureText(txt).width + 14;
+    ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = farbe; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(x - w, 3, w, 19, 9); else ctx.rect(x - w, 3, w, 19);
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#1e293b'; ctx.textAlign = 'right'; ctx.fillText(txt, x - 7, 12.5);
+    return x - w - 6;
+  };
+  let xr = W - 6;
+  if (s.phase === 'fertig') xr = pille('Kirschen: ' + _bblKirschen() + ' von 10', xr, '#be123c');
+  if (s.phase !== 'bluete') xr = pille(s.gezaehlt + (s.gezaehlt === 1 ? ' Biene' : ' Bienen'), xr, '#ca8a04');
+  // Uhr für "eine Stunde"
+  if (s.phase === 'stunde') {
+    const f = Math.min(1, s.tp / _BBL_T_STUNDE), cx = xr - 10, cy = 12.5;
+    ctx.fillStyle = '#fff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(cx, cy, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = 'rgba(202,138,4,0.5)';
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, 7, -Math.PI / 2, -Math.PI / 2 + f * Math.PI * 2); ctx.fill();
+    ctx.textAlign = 'right'; ctx.fillStyle = '#475569'; ctx.font = '11px sans-serif';
+    ctx.fillText('1 Stunde', cx - 12, cy);
+  }
+  ctx.restore();
+}
+
+// Die eine Blüte groß, von der Seite, halb durchgeschnitten
+function _bblLupe(ctx, W, H, t, p) {
+  const s = _bblState, teil = s.teil;
+  const ohneBB = teil === 'Blütenblätter', ohneSB = teil === 'Staubblätter', ohneST = teil === 'Stempel';
+  const cx = W * 0.215, cy = H * 0.54, R = Math.min(W * 0.2, H * 0.36);
+  const k = R / 82;                          // Maßstab der Zeichnung
+  const X = v => cx + v * k, Y = v => cy + v * k;
+  const frucht = _BBL_FRUCHT[teil].indexOf(_BBL_LUPE) >= 0;
+  const fallBB = _bblSchritt(p, 0.0, 0.35), fallSB = _bblSchritt(p, 0.15, 0.45);
+  const wachs = _bblSchritt(p, 0.35, 0.9), rot = _bblSchritt(p, 0.55, 0.95);
+  const wig = Math.sin(t * 1.5) * 0.03;
+
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.95)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+
+  // Stiel
+  ctx.strokeStyle = '#3f7d2c'; ctx.lineWidth = 3 * k; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(X(0), Y(90)); ctx.lineTo(X(0), Y(34)); ctx.stroke();
+
+  // hinteres Blütenblatt
+  const blatt = (bx, by, rx, ry, w, alpha) => {
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.translate(X(bx), Y(by)); ctx.rotate(w);
+    const gg = ctx.createRadialGradient(0, ry * k * 0.6, 1, 0, 0, Math.max(rx, ry) * k);
+    gg.addColorStop(0, '#fbcfe8'); gg.addColorStop(1, '#fffafb');
+    ctx.fillStyle = gg; ctx.strokeStyle = '#f0a6bb'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(0, 0, rx * k, ry * k, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  };
+  const fallDy = fallBB * 120;
+  if (!ohneBB && fallBB < 1) {
+    blatt(0, -18 + fallDy, 17, 30, fallBB * 0.8 + wig, 1 - fallBB * 0.7);
+  }
+
+  // Stempel: Fruchtknoten unten, Griffel, Narbe
+  if (!ohneST) {
+    if (frucht) {
+      const r = 7 + 17 * wachs;
+      const fy = 30 - 4 * wachs;
+      // Griffel welkt, sobald die Frucht wächst
+      ctx.globalAlpha = 1 - _bblSchritt(p, 0.4, 0.7);
+      ctx.strokeStyle = '#65a30d'; ctx.lineWidth = 2.4 * k;
+      ctx.beginPath(); ctx.moveTo(X(0), Y(fy - r + 1)); ctx.lineTo(X(Math.sin(p * 2) * 4 * p), Y(-30 + 20 * wachs)); ctx.stroke();
+      ctx.fillStyle = '#84cc16';
+      ctx.beginPath(); ctx.arc(X(Math.sin(p * 2) * 4 * p), Y(-32 + 20 * wachs), 4.2 * k, 0, Math.PI * 2); ctx.fill();
+      if (s.besucht[_BBL_LUPE] || s.phase === 'sommer' || s.phase === 'fertig') {
+        ctx.fillStyle = '#eab308';
+        [[-2, -1], [2, 0], [0, 2], [-3, 2]].forEach(([dx, dy]) => {
+          ctx.beginPath(); ctx.arc(X(dx) + dx, Y(-32 + 20 * wachs + dy), 1.3 * k, 0, Math.PI * 2); ctx.fill();
+        });
+      }
+      ctx.globalAlpha = 1;
+      // Fruchtknoten -> Kirsche
+      ctx.fillStyle = _bblMisch([132, 204, 22], [190, 18, 60], rot);
+      ctx.strokeStyle = _bblMisch([77, 124, 15], [127, 29, 29], rot); ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.ellipse(X(0), Y(fy), r * k, r * 1.05 * k, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      if (wachs > 0.3) {
+        ctx.fillStyle = 'rgba(255,255,255,0.5)';
+        ctx.beginPath(); ctx.ellipse(X(-r * 0.4), Y(fy - r * 0.4), r * 0.22 * k, r * 0.14 * k, -0.6, 0, Math.PI * 2); ctx.fill();
+      }
+    } else {
+      const weg = _bblSchritt(p, 0.35, 0.6);
+      ctx.globalAlpha = 1 - weg;
+      ctx.strokeStyle = '#65a30d'; ctx.lineWidth = 2.4 * k;
+      ctx.beginPath(); ctx.moveTo(X(0), Y(24 + weg * 60)); ctx.lineTo(X(0), Y(-30 + weg * 60)); ctx.stroke();
+      ctx.fillStyle = '#84cc16';
+      ctx.beginPath(); ctx.arc(X(0), Y(-32 + weg * 60), 4.2 * k, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(X(0), Y(30 + weg * 60), 7 * k, 7.4 * k, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // Staubblätter: Staubfaden mit gelbem Staubbeutel
+  if (!ohneSB && fallSB < 1) {
+    ctx.save();
+    ctx.globalAlpha = 1 - fallSB;
+    ctx.translate(0, fallSB * 110 * k);
+    const fx = [-20, -14, -8, 8, 14, 20];
+    fx.forEach((f, i) => {
+      const bx = f * 1.7 + Math.sin(t * 2 + i) * 0.8, by = -18 - (i % 2) * 8 + Math.abs(f) * 0.2;
+      ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 1.4 * k;
+      ctx.beginPath(); ctx.moveTo(X(f * 0.9), Y(24));
+      ctx.quadraticCurveTo(X(f * 1.1), Y(0), X(bx), Y(by)); ctx.stroke();
+      ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 0.6;
+      ctx.stroke();
+      ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.ellipse(X(bx), Y(by), 3.2 * k, 4.4 * k, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    });
+    ctx.restore();
+  }
+
+  // Blütenbecher und die beiden vorderen Blütenblätter
+  if (fallBB < 1) {
+    ctx.save();
+    ctx.globalAlpha = 1 - fallBB;
+    ctx.translate(0, fallBB * 110 * k);
+    ctx.fillStyle = 'rgba(132,204,22,0.35)'; ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(X(-24), Y(22)); ctx.quadraticCurveTo(X(-20), Y(46), X(0), Y(46));
+    ctx.quadraticCurveTo(X(20), Y(46), X(24), Y(22));
+    ctx.stroke();
+    ctx.restore();
+  }
+  if (!ohneBB && fallBB < 1) {
+    blatt(-44 - fallBB * 20, 4 + fallDy, 30, 17, -0.45 - fallBB * 1.2 - wig, 1 - fallBB * 0.7);
+    blatt(44 + fallBB * 20, 4 + fallDy, 30, 17, 0.45 + fallBB * 1.2 + wig, 1 - fallBB * 0.7);
+  }
+  ctx.restore();
+
+  // Rand und Beschriftung (außerhalb des Clips)
+  ctx.save();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+  ctx.font = 'bold 11px sans-serif'; ctx.fillStyle = '#1e293b'; ctx.lineWidth = 1;
+  ctx.strokeStyle = '#334155';
+  const schild = (txt, tx, ty, px, py, al) => {
+    ctx.textAlign = al; ctx.textBaseline = 'middle';
+    ctx.beginPath(); ctx.moveTo(tx + (al === 'left' ? -2 : 2), ty); ctx.lineTo(px, py); ctx.stroke();
+    const w = ctx.measureText(txt).width;
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.fillRect(al === 'left' ? tx - 1 : tx - w - 1, ty - 7, w + 2, 14);
+    ctx.fillStyle = '#1e293b'; ctx.fillText(txt, tx, ty);
+  };
+  if (p < 0.3) {
+    if (!ohneBB) schild('Blütenblatt', X(-78), Y(-50), X(-52), Y(-4), 'left');
+    if (!ohneSB) schild('Staubblatt', X(78), Y(-58), X(34), Y(-26), 'right');
+    if (!ohneST) schild('Stempel', X(76), Y(58), X(4), Y(-2), 'right');
+  } else if (s.phase === 'fertig') {
+    if (frucht && !ohneST) schild('Kirsche', X(76), Y(62), X(18), Y(34), 'right');
+    else {
+      ctx.font = 'bold 11px sans-serif'; ctx.fillStyle = '#475569'; ctx.textAlign = 'center';
+      ctx.fillText('keine Kirsche', cx, Y(10));
+    }
+  }
+  if (p < 0.3) {
+    ctx.font = '10px sans-serif'; ctx.fillStyle = '#475569'; ctx.textAlign = 'center';
+    ctx.fillText('Lupe: eine Blüte', cx, cy + R - 9);
+  }
+  ctx.restore();
+}
+
+// Bienen: kommen von rechts, landen auf ihrer Blüte, fliegen weiter
+function _bblBienen(ctx, W, H, bl) {
+  const s = _bblState;
+  if (s.phase !== 'stunde') return;
+  s.bienen.forEach((b, k) => {
+    const u = s.tp - b.start;
+    if (u < 0 || u > 2.2) return;
+    const z = bl[b.ziel];
+    const sx = W + 10, sy = H * (0.2 + 0.6 * b.von);
+    const ex = W * (0.6 + 0.4 * b.weg), ey = -12;
+    let x, y;
+    if (u < 0.8) {                       // anfliegen
+      const f = u / 0.8, e = f * f * (3 - 2 * f);
+      x = sx + (z.x - sx) * e; y = sy + (z.y - 6 - sy) * e + Math.sin(u * 14 + k) * 4;
+    } else if (u < 1.3) {               // auf der Blüte
+      x = z.x + Math.sin(u * 20) * 1.2; y = z.y - 6;
+    } else {                            // weiterfliegen
+      const f = (u - 1.3) / 0.9;
+      x = z.x + (ex - z.x) * f; y = z.y - 6 + (ey - z.y + 6) * f + Math.sin(u * 12 + k) * 3;
+    }
+    ctx.save();
+    ctx.translate(x, y);
+    // Flügel schlagen
+    const fl = Math.abs(Math.sin(s.tAnim * 40 + k));
+    ctx.fillStyle = 'rgba(224,242,254,0.85)'; ctx.strokeStyle = 'rgba(100,116,139,0.6)'; ctx.lineWidth = 0.6;
+    ctx.beginPath(); ctx.ellipse(-1, -4, 3.5, 2 + 2 * fl, -0.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(2, -4, 3.5, 2 + 2 * fl, 0.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    // Körper mit Streifen
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.ellipse(0, 0, 5.5, 3.5, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#1f2937';
+    ctx.fillRect(-1.8, -3.2, 1.3, 6.4); ctx.fillRect(1.2, -3.2, 1.3, 6.4);
+    ctx.beginPath(); ctx.arc(-5.5, 0, 2.2, 0, Math.PI * 2); ctx.fill();
+    // Blütenstaub an den Beinen - von anderen Kirschbäumen
+    ctx.fillStyle = '#facc15';
+    ctx.beginPath(); ctx.arc(1, 3.6, 1.5, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · ZEHN KRESSESAMEN IM BECHER   (Förderheft Bio 5/6 · bl4)
+// Keimung braucht Wasser, Wärme und Luft – Licht nicht. Licht braucht
+// erst der Keimling: Nur im Hellen wird er grün, im Dunkeln bleibt er
+// gelb und wird dabei länger (vergeilt).
+// Modellwerte (Lehrerteil): feucht · 20 °C → 9 von 10 keimen (Samen 7
+// ist taub); trocken, unter Wasser oder 5 °C → nach 5 Tagen 0 von 10.
+// Unter Wasser und bei 5 °C quellen die Samen, keimen aber nicht.
+// ═══════════════════════════════════════════════════════
+let _bkm = null;
+const _BKM_START = { wasser: 'feucht', temp: '20', licht: 'hell' };
+const _BKM_TAUB = 6;                                   // der eine Samen, der nie keimt
+const _BKM_KEIM = [1.1, 1.5, 0.9, 1.9, 1.3, 2.2, 99, 1.7, 1.0, 2.4];  // Keimzeit in Tagen
+const _BKM_WORT = { trocken: 'trocken', feucht: 'feucht', unter: 'unter Wasser',
+                    '5': '5 °C', '20': '20 °C', hell: 'hell', dunkel: 'dunkel' };
+function _bkmInit() {
+  _bkm = { wasser: 'feucht', temp: '20', licht: 'hell', tag: 0, laeuft: false, t: 0, letzt: '' };
+}
+function _bkmHTML() {
+  const knopf = (fn, wert, text) =>
+    `<button class="sim-btn" data-bkm="${fn}:${wert}" onclick="${fn}('${wert}')">${text}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was braucht ein Samen zum Keimen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Becher liegen 10 Kressesamen auf Watte. Stelle nur EINE Sache um. Dann warte 5 Tage.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkm-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bkm-los" onclick="_bkmWarten()">▶ 5 Tage warten</button>
+          <button class="sim-btn" onclick="_bkmNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Wasser</span>
+          <div class="sim-btn-row">
+            ${knopf('_bkmWasser', 'trocken', 'trocken')}
+            ${knopf('_bkmWasser', 'feucht', 'feucht')}
+            ${knopf('_bkmWasser', 'unter', 'unter Wasser')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Temperatur</span>
+          <div class="sim-btn-row">
+            ${knopf('_bkmTemp', '5', '5 °C')}
+            ${knopf('_bkmTemp', '20', '20 °C')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Licht</span>
+          <div class="sim-btn-row">
+            ${knopf('_bkmLicht', 'hell', 'hell')}
+            ${knopf('_bkmLicht', 'dunkel', 'dunkel')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bkm-status"></div>
+        <div class="fpm-note" id="_bkm-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Keimen: Der Samen platzt auf. Eine Wurzel und ein Trieb kommen heraus. Die junge Pflanze heißt <b>Keimling</b>.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: feucht · 20 °C · hell &nbsp;|&nbsp; Stelle nur EINE Sache um, dann weißt du, woran es liegt.</p>
+  </div>`;
+}
+// Keimt der Samen überhaupt? Wasser, Wärme und Luft – Licht spielt keine Rolle.
+function _bkmKeimt() { return _bkm.wasser === 'feucht' && _bkm.temp === '20'; }
+function _bkmGekeimt(tag) {
+  if (!_bkmKeimt()) return 0;
+  let n = 0;
+  for (let i = 0; i < 10; i++) if (i !== _BKM_TAUB && _BKM_KEIM[i] <= tag) n++;
+  return n;
+}
+function _bkmAbweichungen() {
+  return ['wasser', 'temp', 'licht'].filter(k => _bkm[k] !== _BKM_START[k]);
+}
+function _bkmStelle(k, v) {
+  if (!_bkm) return;
+  _bkm[k] = String(v); _bkm.tag = 0; _bkm.laeuft = false;   // neue Einstellung = neuer Becher
+  _bkmStatus();
+}
+function _bkmWasser(v) { _bkmStelle('wasser', v); }
+function _bkmTemp(v)   { _bkmStelle('temp', v); }
+function _bkmLicht(v)  { _bkmStelle('licht', v); }
+function _bkmWarten() {
+  if (!_bkm || _bkm.laeuft) return;
+  _bkm.tag = 0; _bkm.laeuft = true; _bkmStatus();
+}
+function _bkmNeu() {
+  if (!_bkm) return;
+  _bkm.wasser = _BKM_START.wasser; _bkm.temp = _BKM_START.temp; _bkm.licht = _BKM_START.licht;
+  _bkm.tag = 0; _bkm.laeuft = false; _bkmStatus();
+}
+function _bkmZeile() {
+  const tag = Math.floor(_bkm.tag + 1e-9);
+  if (tag === 0 && !_bkm.laeuft) return 'Tag 0 · 10 Samen liegen auf der Watte. Drücke „▶ 5 Tage warten“.';
+  const n = _bkmGekeimt(_bkm.tag);
+  let s = 'Tag ' + tag + ' · ' + n + ' von 10 Samen gekeimt';
+  if (n > 0 && tag >= 3) s += ' · Keimlinge ' + (_bkm.licht === 'hell' ? 'grün' : 'gelb');
+  if (n === 0 && tag >= 5) s += ' · kein Keimling';
+  return s;
+}
+function _bkmStatus() {
+  if (!_bkm) return;
+  const z = _bkmZeile();
+  const el = document.getElementById('_bkm-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _bkm.letzt = z;
+  const ab = _bkmAbweichungen();
+  const h = document.getElementById('_bkm-hinweis');
+  if (h) {
+    const name = { wasser: 'Wasser', temp: 'Temperatur', licht: 'Licht' };
+    const liste = ab.map(k => name[k]);
+    if (ab.length >= 2) h.textContent = 'Du hast ' + (ab.length === 2 ? 'zwei' : 'drei') +
+      ' Dinge umgestellt. ' + liste.slice(0, -1).join(', ') + ' und ' + liste[liste.length - 1] +
+      ' sind anders als beim Start. So findest du nicht heraus, woran es liegt.';
+    else if (ab.length === 1) h.textContent = 'Du hast eine Sache umgestellt: ' + liste[0] +
+      ' auf „' + _BKM_WORT[_bkm[ab[0]]] + '“.';
+    else h.textContent = 'Alles wie beim Start: feucht · 20 °C · hell.';
+  }
+  document.querySelectorAll('[data-bkm]').forEach(b => {
+    const [fn, wert] = String(b.getAttribute('data-bkm')).split(':');
+    const k = fn === '_bkmWasser' ? 'wasser' : fn === '_bkmTemp' ? 'temp' : 'licht';
+    b.classList.toggle('primary', _bkm[k] === wert);
+  });
+  const los = document.getElementById('_bkm-los');
+  if (los) los.classList.toggle('primary', !_bkm.laeuft);
+}
+function _bkmUpdate(dt) {
+  if (!_bkm) return;
+  _bkm.t += dt;
+  if (_bkm.laeuft) {
+    _bkm.tag = Math.min(5, _bkm.tag + dt);             // 1 Tag = 1 Sekunde
+    if (_bkm.tag >= 5) { _bkm.tag = 5; _bkm.laeuft = false; }
+    if (_bkmZeile() !== _bkm.letzt || !_bkm.laeuft) _bkmStatus();
+  }
+}
+function _bkmMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// Ein Samen mit (vielleicht) Keimling. alter = Tage seit dem Keimen.
+function _bkmSamen(ctx, x, y, i, alter, quell) {
+  const hell = _bkm.licht === 'hell';
+  if (alter > 0) {
+    // Keimwurzel nach unten in die Watte
+    const r = Math.min(20, 14 * alter);
+    ctx.strokeStyle = '#f4efd8'; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x, y + 1);
+    ctx.quadraticCurveTo(x + (i % 2 ? 3 : -3), y + r * 0.6, x + (i % 3 - 1) * 2, y + r); ctx.stroke();
+    // Trieb nach oben – im Dunkeln länger und gelb
+    if (alter > 0.4) {
+      const s = Math.min(1, (alter - 0.4) / 2.6);
+      const hoch = (hell ? 50 : 74) * s;
+      const wieg = Math.sin(_bkm.t * 1.6 + i) * 1.6 * s;
+      const tx = x + wieg + (i % 2 ? 2 : -2) * s, ty = y - hoch;
+      ctx.strokeStyle = hell ? _bkmMisch('#e8dc8a', '#8bc34a', (alter - 1) / 1.6) : '#eee3a0';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x - wieg, y - hoch * 0.5, tx, ty); ctx.stroke();
+      // Keimblätter: im Hellen öffnen sie sich und werden grün
+      const auf = hell ? Math.max(0, Math.min(1, (alter - 1.1) / 1.3)) : Math.min(0.3, Math.max(0, (alter - 1.5) / 3));
+      const farbe = hell ? _bkmMisch('#e6d45a', '#3f9b3a', (alter - 1.1) / 1.5) : '#e9d44c';
+      ctx.fillStyle = farbe; ctx.strokeStyle = 'rgba(60,60,20,0.35)'; ctx.lineWidth = 0.7;
+      for (const seite of [-1, 1]) {
+        ctx.save(); ctx.translate(tx, ty);
+        ctx.rotate(seite * (0.15 + auf * 1.15));
+        ctx.beginPath(); ctx.ellipse(0, -5 - auf * 1.5, 3 + auf * 1.2, 5.5 + auf * 1.5, 0, 0, 2 * Math.PI);
+        ctx.fill(); ctx.stroke(); ctx.restore();
+      }
+    }
+  }
+  // Samenschale (aufgeplatzt, wenn gekeimt)
+  const g = quell ? 1.25 : 1;
+  ctx.fillStyle = alter > 0 ? '#8d5a2b' : '#a0612b';
+  ctx.strokeStyle = '#5d3a17'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.ellipse(x + (alter > 0 ? 2.5 : 0), y + 1, 3.2 * g, 2.3 * g, 0.3, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+}
+function _bkmDraw(ctx, cv) {
+  if (!_bkm) return;
+  const W = cv.width, H = cv.height, t = _bkm.t, tag = _bkm.tag;
+  const kalt = _bkm.temp === '5', hell = _bkm.licht === 'hell';
+  ctx.clearRect(0, 0, W, H);
+  // Hintergrund: warmes Zimmer oder Kühlschrank
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  if (kalt) { bg.addColorStop(0, '#dff1fb'); bg.addColorStop(1, '#b9dcef'); }
+  else      { bg.addColorStop(0, '#fbf3e2'); bg.addColorStop(1, '#efe0c2'); }
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Fenster (Zimmer) oder Innenraum (Kühlschrank) mit Tag und Nacht
+  const fx = 238, fy = 14, fw = 90, fh = 74;
+  if (!kalt) {
+    const nacht = _bkm.laeuft || tag > 0 ? (tag % 1) : 0.25;   // 0..1 je Tag
+    const sonne = nacht < 0.62;
+    ctx.fillStyle = sonne ? '#bfe3ff' : '#1e2a4a';
+    ctx.fillRect(fx, fy, fw, fh);
+    const u = sonne ? nacht / 0.62 : (nacht - 0.62) / 0.38;
+    const sx = fx + 8 + u * (fw - 16), sy = fy + fh - 10 - Math.sin(u * Math.PI) * (fh - 26);
+    ctx.fillStyle = sonne ? '#fcd34d' : '#f1f5f9';
+    ctx.beginPath(); ctx.arc(sx, sy, sonne ? 8 : 6, 0, 2 * Math.PI); ctx.fill();
+    if (!sonne) { ctx.fillStyle = '#1e2a4a'; ctx.beginPath(); ctx.arc(sx + 3, sy - 2, 5, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.strokeStyle = '#8b6b43'; ctx.lineWidth = 4; ctx.strokeRect(fx, fy, fw, fh);
+    ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(fx + fw / 2, fy); ctx.lineTo(fx + fw / 2, fy + fh); ctx.stroke();
+    ctx.fillStyle = '#a07c52'; ctx.fillRect(fx - 6, fy + fh, fw + 12, 5);
+    if (hell && sonne) {
+      // Lichtbündel vom Fenster zum Becher
+      ctx.fillStyle = 'rgba(253,230,138,' + (0.22 + 0.06 * Math.sin(t * 2)) + ')';
+      ctx.beginPath(); ctx.moveTo(fx + 4, fy + 20); ctx.lineTo(fx + 4, fy + fh);
+      ctx.lineTo(205, 205); ctx.lineTo(95, 120); ctx.closePath(); ctx.fill();
+    }
+  } else {
+    // Kühlschrank: Glasboden, Reif in den Ecken, Lampe
+    ctx.strokeStyle = '#8fb8cf'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(0, 229); ctx.lineTo(330, 229); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, 60); ctx.lineTo(330, 60); ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    for (let k = 0; k < 14; k++) {
+      const a = k * 2.4, px = (k * 53) % 330, py = k % 2 ? 6 + (k % 5) * 3 : 236 + (k % 4) * 2;
+      ctx.globalAlpha = 0.55 + 0.25 * Math.sin(t * 1.5 + a);
+      ctx.beginPath(); ctx.arc(px, py, 2.2, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#35607a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Kühlschrank', 12, 50);
+    if (hell) {
+      ctx.fillStyle = '#fff7c2'; ctx.beginPath(); ctx.arc(280, 30, 8, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = 'rgba(255,247,194,' + (0.25 + 0.05 * Math.sin(t * 2)) + ')';
+      ctx.beginPath(); ctx.moveTo(272, 34); ctx.lineTo(288, 34); ctx.lineTo(215, 210); ctx.lineTo(95, 210); ctx.closePath(); ctx.fill();
+    }
+  }
+
+  // Becher (durchsichtig, leicht konisch)
+  const bx0 = 70, bx1 = 220, by0 = 92, by1 = 226, ein = 10;
+  const rand = y => ein * (y - by0) / (by1 - by0);        // Einzug je Höhe
+  const wy0 = 186, wy1 = 218;                              // Watte
+  // Wasser unter den Samen / über den Samen
+  if (_bkm.wasser === 'unter') {
+    const wsp = 128;
+    ctx.fillStyle = 'rgba(96,165,250,0.35)';
+    ctx.beginPath(); ctx.moveTo(bx0 + rand(wsp), wsp);
+    for (let x = bx0 + rand(wsp); x <= bx1 - rand(wsp); x += 5) ctx.lineTo(x, wsp + Math.sin(x * 0.12 + t * 2.5) * 1.6);
+    ctx.lineTo(bx1 - rand(by1), by1); ctx.lineTo(bx0 + rand(by1), by1); ctx.closePath(); ctx.fill();
+  }
+  // Watte
+  const nass = _bkm.wasser !== 'trocken';
+  ctx.fillStyle = nass ? '#dbeafe' : '#fbfbf7';
+  ctx.beginPath();
+  ctx.moveTo(bx0 + rand(wy0) + 1, wy0);
+  for (let x = bx0 + rand(wy0); x <= bx1 - rand(wy0); x += 8) ctx.lineTo(x, wy0 - 2 - Math.abs(Math.sin(x * 0.7)) * 3);
+  ctx.lineTo(bx1 - rand(wy1), wy1); ctx.lineTo(bx0 + rand(wy1), wy1); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = nass ? '#93c5fd' : '#d6d3c4'; ctx.lineWidth = 1; ctx.stroke();
+  if (_bkm.wasser === 'feucht') {
+    ctx.fillStyle = 'rgba(59,130,246,0.55)';
+    for (let k = 0; k < 7; k++) {
+      const dx = bx0 + 22 + k * 19, dy = wy0 + 12 + (k % 3) * 6 + Math.sin(t * 2 + k) * 0.8;
+      ctx.beginPath(); ctx.arc(dx, dy, 1.6, 0, 2 * Math.PI); ctx.fill();
+    }
+  } else if (_bkm.wasser === 'trocken') {
+    ctx.strokeStyle = '#cbc6b3'; ctx.lineWidth = 0.8;
+    for (let k = 0; k < 6; k++) {
+      const dx = bx0 + 24 + k * 21, dy = wy0 + 9 + (k % 2) * 9;
+      ctx.beginPath(); ctx.moveTo(dx, dy); ctx.lineTo(dx + 6, dy + 2); ctx.stroke();
+    }
+  }
+  // Samen und Keimlinge
+  const quell = _bkm.wasser !== 'trocken' && tag > 0.3;
+  for (let i = 0; i < 10; i++) {
+    const x = bx0 + 18 + i * 12.6, y = wy0 - 3;
+    const alter = (_bkmKeimt() && i !== _BKM_TAUB) ? tag - _BKM_KEIM[i] : 0;
+    _bkmSamen(ctx, x, y, i, alter, quell);
+  }
+  // Becherwand vorne
+  ctx.strokeStyle = 'rgba(100,116,139,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx0, by0); ctx.lineTo(bx0 + ein, by1); ctx.lineTo(bx1 - ein, by1); ctx.lineTo(bx1, by0); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse((bx0 + bx1) / 2, by0, (bx1 - bx0) / 2, 5, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx0 + 8, by0 + 12); ctx.lineTo(bx0 + 14, by1 - 16); ctx.stroke();
+
+  // Karton über dem Becher, wenn dunkel (vorne aufgeschnitten gezeichnet)
+  if (!hell) {
+    ctx.fillStyle = 'rgba(92,58,24,0.42)';
+    ctx.fillRect(52, 70, 186, 160);
+    ctx.strokeStyle = '#8a5a2b'; ctx.lineWidth = 4; ctx.strokeRect(52, 70, 186, 160);
+    ctx.fillStyle = '#b07a42';
+    ctx.beginPath(); ctx.moveTo(52, 70); ctx.lineTo(80, 56); ctx.lineTo(266, 56); ctx.lineTo(238, 70); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#9a6634';
+    ctx.beginPath(); ctx.moveTo(238, 70); ctx.lineTo(266, 56); ctx.lineTo(266, 216); ctx.lineTo(238, 230); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fef3c7'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Karton', 145, 84);
+  }
+
+  // Rechte Spalte: Thermometer und Kalender
+  const px = 345;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(px + 18, 16, 12, 92, 6) : ctx.rect(px + 18, 16, 12, 92); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(px + 24, 114, 10, 0, 2 * Math.PI); ctx.fillStyle = '#ef4444'; ctx.fill(); ctx.stroke();
+  const saeule = kalt ? 22 : 58;
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(px + 21, 108 - saeule, 6, saeule + 2);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(kalt ? '5 °C' : '20 °C', px + 24, 142);
+
+  // Kalender: Blatt mit Tagzahl, das beim Weiterzählen umklappt
+  const kx = px - 2, ky = 156, kw = 54, kh = 50, d = Math.floor(tag + 1e-9);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.fillRect(kx, ky, kw, kh); ctx.strokeRect(kx, ky, kw, kh);
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(kx, ky, kw, 13);
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif'; ctx.fillText('Tag', kx + kw / 2, ky + 10);
+  const klapp = _bkm.laeuft ? Math.max(0, 1 - (tag % 1) * 5) : 0;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 26px sans-serif';
+  ctx.globalAlpha = 1 - klapp * 0.7;
+  ctx.fillText(String(d), kx + kw / 2, ky + 42 - klapp * 6);
+  ctx.globalAlpha = 1;
+  for (let k = 1; k <= 5; k++) {
+    ctx.fillStyle = k <= d ? '#16a34a' : '#cbd5e1';
+    ctx.beginPath(); ctx.arc(kx + 3 + (k - 1) * 12, ky + kh + 10, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Einstellung unten links
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_BKM_WORT[_bkm.wasser] + ' · ' + _BKM_WORT[_bkm.temp] + ' · ' + _BKM_WORT[_bkm.licht], 12, H - 8);
+  // Ergebnis nach 5 Tagen groß im Bild
+  if (tag >= 5 && !_bkm.laeuft) {
+    const n = _bkmGekeimt(5);
+    ctx.textAlign = 'right'; ctx.font = '700 12px sans-serif';
+    ctx.fillStyle = n ? (hell ? '#15803d' : '#a16207') : '#b91c1c';
+    ctx.fillText(n + ' von 10 gekeimt', W - 12, H - 8);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · bl5  DIE BOHNE IM SCHRANK   (Förderheft Biologie 5/6)
+// Zwei gekeimte Bohnen: links am Fenster, rechts im dunklen Schrank.
+// „▶ 2 Tage weiter" lässt beide zwei Tage wachsen (Tag und Nacht ziehen
+// am Fenster vorbei); an jedem Messtag wächst eine Säule im Diagramm.
+// Modellwerte (Lehrerteil): Fenster 3/6/9/12 cm, Schrank 4/9/14/18 cm.
+// Im Dunkeln schießt die Bohne in die Länge, bleibt aber gelb und dünn
+// (Vergeilung) und kippt an Tag 8 zur Seite. Maßstab: 8 px je cm –
+// Lineal und Diagramm benutzen denselben Maßstab.
+// ═══════════════════════════════════════════════════════
+const _BWA_F = [0, 3, 6, 9, 12];      // Höhe am Fenster in cm, Tag 0/2/4/6/8
+const _BWA_S = [0, 4, 9, 14, 18];     // Höhe im Schrank in cm
+const _BWA_PX = 8;                    // Bildpunkte je cm
+const _BWA_BODEN = 212;               // Erdoberfläche (y)
+const _BWA_DAUER = 1.6;               // Sekunden für zwei Tage
+let _bwa = null;
+function _bwaInit() {
+  const t = _bwa ? _bwa.t : 0;
+  _bwa = { k: 0, von: 0, p: 1, t, b: [0, 0, 0, 0, 0], hinweis: 'Die Bohnen sind gerade gepflanzt. Beide sind gekeimt.' };
+}
+function _bwaHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie wächst die Bohne im dunklen Schrank?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links steht eine Bohne am Fenster, rechts eine im dunklen Schrank. Drücke „▶ 2 Tage weiter“ und lies an beiden Linealen die Höhe ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bwa-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bwa-weiter" onclick="_bwaWeiter()">▶ 2 Tage weiter</button>
+          <button class="sim-btn" onclick="_bwaNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="lmp-status" id="_bwa-status"></div>
+        <div class="fpm-note" id="_bwa-hinweis" style="margin-top:8px"></div>
+        <div class="phys-ctrl" style="margin-top:10px">
+          <span class="phys-ctrl-label">Springe zu einem Messtag:</span>
+          <div class="sim-btn-row" style="margin-top:4px">
+            <button class="sim-btn" onclick="_bwaSprung(2)">Tag 2</button>
+            <button class="sim-btn" onclick="_bwaSprung(4)">Tag 4</button>
+            <button class="sim-btn" onclick="_bwaSprung(6)">Tag 6</button>
+            <button class="sim-btn" onclick="_bwaSprung(8)">Tag 8</button>
+          </div>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Das <b>Diagramm</b> zeigt die Messwerte als <b>Säulen</b>: grün für die Bohne am Fenster, gelb für die Bohne im Schrank.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Die Zahlen sind Modellwerte. Gemessen wird jeden zweiten Tag, von der Erde bis zur höchsten Stelle der Bohne.</p>
+  </div>`;
+}
+function _bwaHoehe(reihe) {
+  const e = _bwa.p < 1 ? 0.5 - 0.5 * Math.cos(Math.PI * _bwa.p) : 1;
+  return reihe[_bwa.von] + (reihe[_bwa.k] - reihe[_bwa.von]) * e;
+}
+function _bwaWeiter() {
+  if (!_bwa) return;
+  if (_bwa.p < 1) _bwa.p = 1;
+  if (_bwa.k >= 4) {
+    _bwa.hinweis = 'Der Versuch endet an Tag 8. Mit „neu“ fängt er von vorn an.';
+    _bwaStatus(); return;
+  }
+  _bwa.von = _bwa.k; _bwa.k += 1; _bwa.p = 0;
+  _bwa.hinweis = _bwa.k === 4
+    ? 'Tag 8: Vergleiche die Farbe der beiden Bohnen. Die Bohne im Schrank ist dünn und kippt zur Seite.'
+    : 'Lies an beiden Linealen die Höhe ab und trage sie ein.';
+  _bwaStatus();
+}
+function _bwaSprung(tag) {
+  if (!_bwa) return;
+  const ziel = Math.max(0, Math.min(4, Math.round(tag / 2)));
+  if (ziel > _bwa.k) { _bwa.von = _bwa.p < 1 ? _bwa.von : _bwa.k; _bwa.p = 0; }
+  else { _bwa.von = ziel; _bwa.p = 1; for (let i = ziel + 1; i <= 4; i++) _bwa.b[i] = 0; }
+  _bwa.k = ziel;
+  _bwa.hinweis = ziel === 4
+    ? 'Tag 8: Vergleiche die Farbe der beiden Bohnen. Die Bohne im Schrank ist dünn und kippt zur Seite.'
+    : 'Lies an beiden Linealen die Höhe ab und trage sie ein.';
+  _bwaStatus();
+}
+function _bwaNeu() { _bwaInit(); _bwaStatus(); }
+function _bwaStatus() {
+  if (!_bwa) return;
+  const el = document.getElementById('_bwa-status');
+  const k = _bwa.k, tag = 2 * k;
+  if (el) {
+    el.textContent = k === 0
+      ? 'Tag 0 · Fenster: 0 cm · Schrank: 0 cm'
+      : 'Tag ' + tag + ' · Fenster: ' + _BWA_F[k] + ' cm, grün · Schrank: ' + _BWA_S[k] + ' cm, gelb';
+    el.className = 'lmp-status on';
+  }
+  const h = document.getElementById('_bwa-hinweis');
+  if (h) h.textContent = _bwa.hinweis;
+}
+function _bwaUpdate(dt) {
+  if (!_bwa) return;
+  _bwa.t += dt;
+  if (_bwa.p < 1) _bwa.p = Math.min(1, _bwa.p + dt / _BWA_DAUER);
+  for (let i = 1; i <= 4; i++) {
+    const da = i < _bwa.k || (i === _bwa.k && _bwa.p >= 1);
+    _bwa.b[i] = da ? Math.min(1, _bwa.b[i] + dt * 2.2) : 0;
+  }
+}
+// Helligkeit am Fenster: bei jedem Schritt ziehen zwei Nächte vorbei
+function _bwaHell() { return _bwa.p < 1 ? 0.5 + 0.5 * Math.cos(4 * Math.PI * _bwa.p) : 1; }
+function _bwaMisch(a, b, s) {
+  const r = i => Math.round(a[i] + (b[i] - a[i]) * s);
+  return 'rgb(' + r(0) + ',' + r(1) + ',' + r(2) + ')';
+}
+function _bwaLineal(ctx, x, dunkel) {
+  const y0 = _BWA_BODEN, top = y0 - 20 * _BWA_PX;
+  ctx.fillStyle = dunkel ? '#d6c49a' : '#f3dfae';
+  ctx.fillRect(x, top - 6, 18, y0 - top + 10);
+  ctx.strokeStyle = '#8a6d3b'; ctx.lineWidth = 1; ctx.strokeRect(x + 0.5, top - 5.5, 17, y0 - top + 9);
+  ctx.fillStyle = '#1f2937'; ctx.textAlign = 'right'; ctx.font = '700 9px sans-serif';
+  for (let c = 0; c <= 20; c++) {
+    const y = y0 - c * _BWA_PX + 0.5, lang = c % 2 === 0 ? 7 : 4;
+    ctx.strokeStyle = '#1f2937'; ctx.beginPath(); ctx.moveTo(x + 18, y); ctx.lineTo(x + 18 - lang, y); ctx.stroke();
+    if (c % 2 === 0) ctx.fillText(String(c), x + 10, y + 3);
+  }
+  ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = dunkel ? '#fde68a' : '#1f2937';
+  ctx.fillText('cm', x + 9, top - 8);
+}
+function _bwaTopf(ctx, x) {
+  const y0 = _BWA_BODEN;
+  ctx.fillStyle = '#c2410c';
+  ctx.beginPath(); ctx.moveTo(x - 25, y0 - 2); ctx.lineTo(x + 25, y0 - 2); ctx.lineTo(x + 19, y0 + 28); ctx.lineTo(x - 19, y0 + 28); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#9a3412'; ctx.fillRect(x - 27, y0 - 4, 54, 7);
+  ctx.fillStyle = '#4a2c1a'; ctx.beginPath(); ctx.ellipse(x, y0, 23, 3.5, 0, 0, 2 * Math.PI); ctx.fill();
+}
+function _bwaBlatt(ctx, x, y, w, winkel, farbe, ader) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(winkel);
+  ctx.fillStyle = farbe; ctx.beginPath();
+  ctx.moveTo(0, 0); ctx.quadraticCurveTo(w * 0.45, -w * 0.42, w, 0); ctx.quadraticCurveTo(w * 0.45, w * 0.42, 0, 0); ctx.fill();
+  if (ader) { ctx.strokeStyle = ader; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(1, 0); ctx.lineTo(w * 0.85, 0); ctx.stroke(); }
+  ctx.restore();
+}
+// Bohne am Fenster: kräftiger grüner Stängel, große grüne Blätter
+function _bwaFenster(ctx, x, h) {
+  const y0 = _BWA_BODEN, hp = h * _BWA_PX;
+  if (hp < 1) { ctx.fillStyle = '#65a30d'; ctx.beginPath(); ctx.ellipse(x, y0 - 1, 5, 2.5, 0, Math.PI, 2 * Math.PI); ctx.fill(); return; }
+  const wind = Math.sin(_bwa.t * 1.4) * 1.2 * (hp / 100);
+  const tx = x + wind, ty = y0 - hp;
+  // Stängel
+  ctx.strokeStyle = '#2f7d32'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.quadraticCurveTo(x, y0 - hp * 0.5, tx, ty + 4); ctx.stroke();
+  ctx.lineCap = 'butt';
+  // Keimblätter unten
+  const kb = Math.min(1, hp / 20);
+  ctx.fillStyle = '#86a33a';
+  ctx.beginPath(); ctx.ellipse(x - 7 * kb, y0 - 8 * kb, 6 * kb, 3.5 * kb, -0.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(x + 7 * kb, y0 - 8 * kb, 6 * kb, 3.5 * kb, 0.4, 0, 2 * Math.PI); ctx.fill();
+  // mittleres Blattpaar ab 6 cm
+  if (hp > 48) {
+    const s = Math.min(1, (hp - 48) / 30), ym = y0 - hp * 0.55, xm = x + wind * 0.5;
+    _bwaBlatt(ctx, xm, ym, 26 * s, Math.PI + 0.35 + wind * 0.05, '#2e8b3a', '#bbf7d0');
+    _bwaBlatt(ctx, xm, ym, 26 * s, -0.35 + wind * 0.05, '#2e8b3a', '#bbf7d0');
+  }
+  // oberes Blattpaar (höchste Stelle = Spitze des Stängels)
+  const so = Math.min(1, 0.45 + hp / 60);
+  _bwaBlatt(ctx, tx, ty + 7, 24 * so, Math.PI - 0.22 + wind * 0.04, '#38a045', '#dcfce7');
+  _bwaBlatt(ctx, tx, ty + 7, 24 * so, 0.22 + wind * 0.04, '#38a045', '#dcfce7');
+  ctx.fillStyle = '#2f7d32'; ctx.beginPath(); ctx.arc(tx, ty + 3, 3, 0, 2 * Math.PI); ctx.fill();
+}
+// Bohne im Schrank: lang, dünn, blassgelb, Spitze als Haken; an Tag 8 kippt sie
+function _bwaSchrank(ctx, x, h) {
+  const y0 = _BWA_BODEN, hp = h * _BWA_PX;
+  if (hp < 1) { ctx.fillStyle = '#e5d38a'; ctx.beginPath(); ctx.ellipse(x, y0 - 1, 5, 2.5, 0, Math.PI, 2 * Math.PI); ctx.fill(); return; }
+  const kipp = Math.max(0, Math.min(1, (h - 14) / 4));
+  const lean = hp * 0.04 + 30 * kipp + Math.sin(_bwa.t * 1.1) * 0.8 * kipp;
+  const tx = x + lean, ty = y0 - hp;
+  ctx.strokeStyle = '#eadb8c'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.quadraticCurveTo(x - 2, y0 - hp * 0.55, tx, ty); ctx.stroke();
+  // Haken an der Spitze, biegt nach unten (höchste Stelle bleibt ty)
+  ctx.beginPath(); ctx.moveTo(tx, ty); ctx.quadraticCurveTo(tx + 6, ty - 0.5, tx + 7, ty + 7); ctx.stroke();
+  ctx.lineCap = 'butt';
+  // winzige, nicht entfaltete gelbe Blätter am Haken
+  ctx.fillStyle = '#f3e7a3';
+  ctx.beginPath(); ctx.ellipse(tx + 7.5, ty + 10, 2.4, 4, 0.2, 0, 2 * Math.PI); ctx.fill();
+  // kleine Keimblätter unten, blass
+  const kb = Math.min(1, hp / 20);
+  ctx.fillStyle = '#d9c56e';
+  ctx.beginPath(); ctx.ellipse(x - 5 * kb, y0 - 5 * kb, 4.5 * kb, 2.6 * kb, -0.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(x + 5 * kb, y0 - 5 * kb, 4.5 * kb, 2.6 * kb, 0.4, 0, 2 * Math.PI); ctx.fill();
+}
+function _bwaMarke(ctx, xl, xs, h, farbe) {
+  const y = _BWA_BODEN - h * _BWA_PX + 0.5;
+  ctx.strokeStyle = farbe; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(xl + 18, y); ctx.lineTo(xs, y); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = farbe; ctx.beginPath(); ctx.moveTo(xl + 18, y); ctx.lineTo(xl + 25, y - 4); ctx.lineTo(xl + 25, y + 4); ctx.closePath(); ctx.fill();
+}
+function _bwaDraw(ctx, cv) {
+  if (!_bwa) return;
+  const W = cv.width, H = cv.height, t = _bwa.t, hell = _bwaHell();
+  const hF = _bwaHoehe(_BWA_F), hS = _bwaHoehe(_BWA_S);
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(0, 0, W, H);
+
+  // ── linke Hälfte: Fenster ────────────────────────────
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, 130, H);
+  const himmel = _bwaMisch([28, 38, 70], [186, 224, 255], hell);
+  ctx.fillStyle = himmel; ctx.fillRect(8, 26, 114, 186);
+  // Sonne bzw. Mond wandert über das Fenster
+  const bogen = _bwa.p < 1 ? (_bwa.p * 2) % 1 : 0.62;
+  const sx = 16 + bogen * 100, sy = 70 - Math.sin(bogen * Math.PI) * 30;
+  if (hell > 0.35) {
+    const puls = 0.8 + 0.2 * Math.sin(t * 2.5);
+    const g = ctx.createRadialGradient(sx, sy, 2, sx, sy, 24 * puls);
+    g.addColorStop(0, 'rgba(253,224,71,' + (0.9 * hell) + ')'); g.addColorStop(1, 'rgba(253,224,71,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, sy, 24 * puls, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgba(250,204,21,' + hell + ')'; ctx.beginPath(); ctx.arc(sx, sy, 9, 0, 2 * Math.PI); ctx.fill();
+    // Lichtstreifen fallen auf die Bohne
+    ctx.save(); ctx.beginPath(); ctx.rect(8, 26, 114, 186); ctx.clip();
+    for (let i = 0; i < 4; i++) {
+      const o = ((t * 12 + i * 30) % 120) - 20;
+      ctx.fillStyle = 'rgba(255,247,200,' + (0.18 * hell) + ')';
+      ctx.beginPath(); ctx.moveTo(o, 26); ctx.lineTo(o + 10, 26); ctx.lineTo(o + 60, 212); ctx.lineTo(o + 48, 212); ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+  } else {
+    ctx.fillStyle = '#e2e8f0'; ctx.beginPath(); ctx.arc(sx, sy, 7, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = himmel; ctx.beginPath(); ctx.arc(sx + 3, sy - 2, 6, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Fensterrahmen und Fensterbank
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.strokeRect(8, 26, 114, 186);
+  ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(65, 26); ctx.lineTo(65, 118); ctx.moveTo(8, 118); ctx.lineTo(122, 118); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(0, 238, 130, 12);
+  _bwaLineal(ctx, 16, hell < 0.5);
+  _bwaTopf(ctx, 80);
+  _bwaFenster(ctx, 80, hF);
+  if (hF > 0) _bwaMarke(ctx, 16, 80, hF, '#15803d');
+
+  // ── Mitte: dunkler Schrank ───────────────────────────
+  const sg = ctx.createLinearGradient(134, 0, 262, 0);
+  sg.addColorStop(0, '#1c1410'); sg.addColorStop(1, '#2e2219');
+  ctx.fillStyle = sg; ctx.fillRect(134, 0, 128, H);
+  ctx.fillStyle = '#5b4332'; ctx.fillRect(134, 0, 5, H); ctx.fillRect(134, 22, 128, 4);
+  // offene Tür, schräg
+  ctx.fillStyle = '#7c5a3f';
+  ctx.beginPath(); ctx.moveTo(262, 26); ctx.lineTo(252, 36); ctx.lineTo(252, 232); ctx.lineTo(262, 244); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#4a3527'; ctx.fillRect(134, 238, 128, 12);
+  // Staub im Dunkeln – schwebt langsam
+  for (let i = 0; i < 6; i++) {
+    const px = 150 + ((i * 37 + t * 4) % 95), py = 40 + ((i * 53 + t * (2 + i % 3)) % 170);
+    ctx.fillStyle = 'rgba(203,213,225,0.18)'; ctx.fillRect(px, py, 1.5, 1.5);
+  }
+  _bwaLineal(ctx, 146, true);
+  _bwaTopf(ctx, 205);
+  _bwaSchrank(ctx, 205, hS);
+  if (hS > 0) _bwaMarke(ctx, 146, 205, hS, '#facc15');
+
+  // Beschriftungen oben
+  ctx.fillStyle = '#334155'; ctx.fillRect(0, 0, 130, 22);
+  ctx.fillStyle = '#1c1410'; ctx.fillRect(134, 0, 128, 22);
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = '#ffffff'; ctx.fillText('am Fenster', 65, 15);
+  ctx.fillStyle = '#fde68a'; ctx.fillText('im Schrank', 198, 15);
+
+  // ── rechts: Säulendiagramm (gleicher Maßstab: 8 px je cm) ──
+  const x0 = 294, x1 = 414, yB = _BWA_BODEN, yT = yB - 20 * _BWA_PX;
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(266, 0, 154, H);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Höhe in cm', 340, 15);
+  ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#16a34a'; ctx.fillRect(300, 24, 9, 9); ctx.fillStyle = '#334155'; ctx.fillText('Fenster', 312, 32);
+  ctx.fillStyle = '#facc15'; ctx.fillRect(356, 24, 9, 9); ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1; ctx.strokeRect(356.5, 24.5, 8, 8);
+  ctx.fillStyle = '#334155'; ctx.fillText('Schrank', 368, 32);
+  ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+  for (let c = 0; c <= 20; c += 5) {
+    const y = yB - c * _BWA_PX + 0.5;
+    ctx.strokeStyle = c === 0 ? '#334155' : '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.fillText(String(c), x0 - 4, y + 3);
+  }
+  ctx.strokeStyle = '#334155'; ctx.beginPath(); ctx.moveTo(x0 + 0.5, yT - 4); ctx.lineTo(x0 + 0.5, yB); ctx.stroke();
+  const gb = (x1 - x0) / 4;
+  for (let i = 1; i <= 4; i++) {
+    const gx = x0 + (i - 1) * gb + 3, s = _bwa.b[i];
+    ctx.fillStyle = i <= _bwa.k ? '#0f172a' : '#94a3b8'; ctx.font = (i === _bwa.k ? '700 ' : '') + '10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Tag ' + (2 * i), gx + 12, yB + 13);
+    if (s <= 0) continue;
+    const e = 1 - Math.pow(1 - s, 3);
+    const hf = _BWA_F[i] * _BWA_PX * e, hs = _BWA_S[i] * _BWA_PX * e;
+    ctx.fillStyle = '#16a34a'; ctx.fillRect(gx, yB - hf, 11, hf);
+    ctx.fillStyle = '#facc15'; ctx.fillRect(gx + 13, yB - hs, 11, hs);
+    ctx.strokeStyle = '#a16207'; ctx.strokeRect(gx + 13.5, yB - hs + 0.5, 10, hs - 1);
+    if (s >= 1) {
+      ctx.font = '700 9px sans-serif'; ctx.fillStyle = '#14532d';
+      ctx.fillText(String(_BWA_F[i]), gx + 5.5, yB - hf - 3);
+      ctx.fillStyle = '#713f12'; ctx.fillText(String(_BWA_S[i]), gx + 18.5, yB - hs - 3);
+    }
+  }
+  // Tageszähler
+  const tagJetzt = _bwa.p < 1 ? 2 * _bwa.von + Math.floor(_bwa.p * 2 * (_bwa.k - _bwa.von)) : 2 * _bwa.k;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('jetzt: Tag ' + tagJetzt, 340, 244);
+  ctx.textAlign = 'left';
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// BIO-SAMENFLUG (Förderheft Biologie 5/6, Einheit bl6) – Präfix _bsf
+// Ein Samen wird aus 2 m Höhe losgelassen. Die Uhr misst die Fallzeit in
+// ganzen Sekunden, das Maßband am Boden die Weite in Metern.
+// Modellwerte (Lehrerteil bl6): Wind 3 m/s; Löwenzahn sinkt mit 0,25 m/s,
+// Ahorn-Samen und Papier-Propeller mit 1 m/s; die Haselnuss fällt frei
+// (0,64 s, die Uhr rundet auf 1 s) und wird vom Wind kaum mitgenommen.
+// Die Weite wird aus Sinkzeit mal Windgeschwindigkeit GERECHNET (3 · 2 = 6,
+// 3 · 8 = 24), nicht eingetragen.
+// ═══════════════════════════════════════════════════════════════════════
+let _bsfState = null;
+
+const _BSF_HOEHE = 2;          // m
+const _BSF_WIND = 3;           // m/s
+const _BSF_REIHE = ['haselnuss', 'ahorn', 'loewenzahn', 'propeller'];
+const _BSF_SAMEN = {
+  haselnuss:  { name: 'Haselnuss',        sink: null, art: 'nuss',   farbe: '#7c4a1e', mitnahme: 1 },
+  ahorn:      { name: 'Ahorn-Samen',      sink: 1.0,  art: 'ahorn',  farbe: '#c2410c', dreh: 9 },
+  loewenzahn: { name: 'Löwenzahn-Samen',  sink: 0.25, art: 'schirm', farbe: '#0e7490' },
+  propeller:  { name: 'Papier-Propeller', sink: 1.0,  art: 'papier', farbe: '#2563eb', dreh: 11 },
+};
+// Bildmaße im Nennmaß 420 x 250
+const _BSF_X0 = 52;            // Loslass-Stelle (0 m)
+const _BSF_BODEN = 206;        // Bodenlinie
+const _BSF_OBEN = 70;          // 2 m Höhe
+const _BSF_PXM = 13.2;         // Pixel je Meter waagerecht
+
+function _bsfFallzeit(k) {
+  const s = _BSF_SAMEN[k];
+  if (s.sink) return _BSF_HOEHE / s.sink;
+  return Math.sqrt(2 * _BSF_HOEHE / 9.81);          // freier Fall: 0,64 s
+}
+function _bsfWeite(k, wind) {
+  if (!wind) return 0;
+  const s = _BSF_SAMEN[k];
+  if (!s.sink) return s.mitnahme;                    // schwer: kaum mitgenommen
+  return _BSF_WIND * _bsfFallzeit(k);                // 3 m/s mal Sinkzeit
+}
+function _bsfSek(t) { return Math.max(1, Math.round(t)); }   // Uhr: ganze Sekunden
+
+function _bsfInit() {
+  _bsfState = {
+    samen: 'haselnuss', wind: false,
+    phase: 'bereit',       // bereit | fliegt | gelandet
+    t: 0, tAnim: 0, rot: 0,
+    xm: 0, ym: _BSF_HOEHE,
+    spur: [], spurT: 0,
+    staub: 0, uhrAlt: -1,
+    tab: {},               // tab[k] = { zeit: '2 s', weite: '6 m' }
+    fahnen: {},            // letzte Landestelle mit Wind je Samen (m)
+  };
+  _BSF_REIHE.forEach(k => { _bsfState.tab[k] = { zeit: '', weite: '' }; });
+}
+
+function _bsfHTML() {
+  const sKn = _BSF_REIHE.map(k =>
+    `<button class="sim-btn${_bsfState.samen === k ? ' primary' : ''}" id="_bsf-s-${k}" onclick="_bsfSamen('${k}')">${_BSF_SAMEN[k].name}</button>`).join('');
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie fliegen Samen zu neuen Orten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle einen Samen und den Wind. Drücke dann <b>„▶ loslassen“</b>. Der Samen fällt aus <b>2 m</b> Höhe. Die Uhr misst die <b>Fallzeit</b>, das Maßband am Boden die <b>Weite</b>.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsf-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Samen:</span>
+          ${sKn}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Wind:</span>
+          <button class="sim-btn${_bsfState.wind ? '' : ' primary'}" id="_bsf-w-aus" onclick="_bsfWind('aus')">kein Wind</button>
+          <button class="sim-btn${_bsfState.wind ? ' primary' : ''}" id="_bsf-w-an" onclick="_bsfWind('an')">Wind</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_bsfLos()">▶ loslassen</button>
+          <button class="sim-btn" onclick="_bsfNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messung</div>
+        <div class="lmp-status on" id="_bsf-status" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Deine Messungen</div>
+        <div id="_bsf-tab" style="margin-top:4px"></div>
+        <div class="fpm-note" style="margin-top:10px">Ein <b>Schirm</b> oder ein <b>Flügel</b> bremst den Samen. Je <b>länger</b> er fällt, desto <b>weiter</b> trägt ihn der Wind.</div>
+        <div class="fpm-note" style="margin-top:6px">Modell: Der Wind weht immer gleich stark. Die Uhr zeigt ganze Sekunden. Die Höhe ist größer gezeichnet als die Weite.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Bedienung ────────────────────────────────────────────────────────────
+function _bsfZurueck() {
+  const s = _bsfState;
+  s.phase = 'bereit'; s.t = 0; s.xm = 0; s.ym = _BSF_HOEHE; s.spur = []; s.spurT = 0;
+  s.staub = 0; s.uhrAlt = -1;
+}
+function _bsfKnoepfe() {
+  const s = _bsfState;
+  _BSF_REIHE.forEach(k => {
+    const b = document.getElementById('_bsf-s-' + k);
+    if (b) b.classList.toggle('primary', k === s.samen);
+  });
+  const a = document.getElementById('_bsf-w-aus'), n = document.getElementById('_bsf-w-an');
+  if (a) a.classList.toggle('primary', !s.wind);
+  if (n) n.classList.toggle('primary', s.wind);
+}
+function _bsfSamen(k) {
+  if (!_bsfState || !_BSF_SAMEN[k]) return;
+  _bsfState.samen = k; _bsfZurueck(); _bsfKnoepfe(); _bsfStatus();
+}
+function _bsfWind(w) {
+  if (!_bsfState) return;
+  _bsfState.wind = (w === 'an'); _bsfZurueck(); _bsfKnoepfe(); _bsfStatus();
+}
+function _bsfLos() {
+  if (!_bsfState) return;
+  _bsfZurueck(); _bsfState.phase = 'fliegt'; _bsfStatus();
+}
+function _bsfNeu() {
+  if (!_bsfState) return;
+  _bsfZurueck(); _bsfStatus();
+}
+
+// ── Anzeige ──────────────────────────────────────────────────────────────
+function _bsfTabelleHTML() {
+  const s = _bsfState;
+  const z = (v, fett) => '<td style="padding:3px 4px;border-bottom:1px solid #f1f5f9;color:' +
+    (v ? '#1e293b' : '#94a3b8') + (fett ? ';font-weight:800' : '') + '">' + (v || '—') + '</td>';
+  let h = '<table style="width:100%;border-collapse:collapse;font-size:.72rem;line-height:1.3">' +
+          '<tr style="color:#64748b;font-weight:800;text-align:left">' +
+          ['Samen', 'Fallzeit ohne Wind', 'Weite mit Wind'].map(x =>
+            '<th style="padding:2px 4px;border-bottom:1px solid #e2e8f0">' + x + '</th>').join('') + '</tr>';
+  _BSF_REIHE.forEach(k => {
+    const e = s.tab[k];
+    h += '<tr style="' + (s.samen === k ? 'background:#ecfeff' : '') + '">' +
+         '<td style="padding:3px 4px;border-bottom:1px solid #f1f5f9;font-weight:800;color:' + _BSF_SAMEN[k].farbe + '">' +
+         _BSF_SAMEN[k].name + '</td>' + z(e.zeit, true) + z(e.weite, true) + '</tr>';
+  });
+  return h + '</table>';
+}
+function _bsfStatus() {
+  const s = _bsfState;
+  if (!s) return;
+  const n = _BSF_SAMEN[s.samen].name, w = s.wind ? 'Wind' : 'kein Wind';
+  let txt;
+  if (s.phase === 'bereit') {
+    txt = n + ' · ' + w + ' · hängt in 2 m Höhe. Drücke „▶ loslassen“.';
+  } else if (s.phase === 'fliegt') {
+    txt = n + ' · ' + w + ' · fällt … Uhr ' + Math.floor(s.t) + ' s';
+  } else {
+    txt = n + ' · ' + w + ' · Fallzeit ' + _bsfSek(_bsfFallzeit(s.samen)) + ' s · landet ' +
+          Math.round(_bsfWeite(s.samen, s.wind)) + ' m weit weg';
+  }
+  const el = document.getElementById('_bsf-status');
+  if (el) el.textContent = txt;
+  const tb = document.getElementById('_bsf-tab');
+  if (tb) tb.innerHTML = _bsfTabelleHTML();
+}
+
+// ── Bewegung ─────────────────────────────────────────────────────────────
+function _bsfUpdate(dt) {
+  const s = _bsfState;
+  if (!s) return;
+  const d = Math.min(dt, 0.05);
+  s.tAnim += d;
+  if (s.staub > 0) s.staub = Math.max(0, s.staub - d);
+  const sa = _BSF_SAMEN[s.samen];
+  if (s.phase !== 'fliegt') return;
+
+  const T = _bsfFallzeit(s.samen), W = _bsfWeite(s.samen, s.wind);
+  s.t = Math.min(T, s.t + d);
+  const u = s.t / T;
+  if (sa.sink) {
+    // kurzes Anfahren, dann gleichmäßiges Sinken; der Wind trägt mit 3 m/s
+    s.ym = _BSF_HOEHE * (1 - u);
+    s.xm = W * u;
+  } else {
+    // freier Fall; die schwere Nuss nimmt den Wind nur langsam an
+    s.ym = _BSF_HOEHE * (1 - u * u);
+    s.xm = W * u * u;
+  }
+  if (sa.dreh) s.rot += d * sa.dreh;
+  s.spurT += d;
+  if (s.spurT >= 0.06) { s.spurT = 0; s.spur.push([s.xm, s.ym]); if (s.spur.length > 200) s.spur.shift(); }
+
+  const sek = Math.floor(s.t);
+  if (sek !== s.uhrAlt) { s.uhrAlt = sek; _bsfStatus(); }
+
+  if (s.t >= T) {
+    s.phase = 'gelandet'; s.ym = 0; s.xm = W; s.staub = 0.6;
+    const e = s.tab[s.samen];
+    if (s.wind) { e.weite = Math.round(W) + ' m'; s.fahnen[s.samen] = W; }
+    else e.zeit = _bsfSek(T) + ' s';
+    _bsfStatus();
+  }
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _bsfPx(xm) { return _BSF_X0 + xm * _BSF_PXM; }
+function _bsfPy(ym) { return _BSF_BODEN - ym / _BSF_HOEHE * (_BSF_BODEN - _BSF_OBEN); }
+
+function _bsfSamenZeichnen(ctx, art, x, y, rot, wack, fliegt) {
+  ctx.save();
+  ctx.translate(x, y);
+  if (art === 'nuss') {
+    ctx.rotate(wack * 0.3);
+    ctx.fillStyle = '#8b5a2b';
+    ctx.beginPath(); ctx.ellipse(0, 1, 7, 8, 0, 0, 6.283); ctx.fill();
+    ctx.fillStyle = '#b07b45';
+    ctx.beginPath(); ctx.ellipse(-2, -1, 2.5, 4, -0.4, 0, 6.283); ctx.fill();
+    ctx.fillStyle = '#d6b98c';                            // heller Ansatz unten
+    ctx.beginPath(); ctx.ellipse(0, 7, 5, 2.6, 0, 0, 6.283); ctx.fill();
+    ctx.strokeStyle = '#5b3a1a'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(0, 1, 7, 8, 0, 0, 6.283); ctx.stroke();
+  } else if (art === 'ahorn') {
+    // Ahorn-Samen von der Seite: der Flügel dreht sich um die Samenkugel.
+    ctx.rotate(wack * 0.2);
+    const c = fliegt ? Math.cos(rot) : 1;
+    ctx.save();
+    ctx.scale(c, 1);
+    ctx.fillStyle = 'rgba(180,120,60,0.85)';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(8, -8, 26, -12, 32, -6);
+    ctx.bezierCurveTo(30, 0, 16, 4, 0, 4);
+    ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#8a5a2b'; ctx.lineWidth = 0.8;
+    for (let i = 1; i <= 4; i++) {                        // Adern im Flügel
+      ctx.beginPath(); ctx.moveTo(2, 1); ctx.lineTo(8 + i * 5, -8 + i * 1.6); ctx.stroke();
+    }
+    ctx.restore();
+    ctx.fillStyle = '#7a4a1f';
+    ctx.beginPath(); ctx.ellipse(0, 1, 5, 4.5, 0, 0, 6.283); ctx.fill();
+  } else if (art === 'schirm') {
+    // Löwenzahn-Samen: Schirm aus feinen Haaren, Stiel, brauner Samen unten
+    ctx.rotate(wack * 0.25);
+    ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, 6); ctx.lineTo(0, -12); ctx.stroke();
+    ctx.strokeStyle = 'rgba(100,116,139,0.85)'; ctx.lineWidth = 0.8;
+    for (let i = 0; i < 13; i++) {
+      const a = -Math.PI + 0.25 + i * (Math.PI - 0.5) / 12;
+      const L = 13;
+      ctx.beginPath(); ctx.moveTo(0, -12);
+      ctx.lineTo(Math.cos(a) * L, -12 + Math.sin(a) * L * 0.75); ctx.stroke();
+      ctx.fillStyle = 'rgba(148,163,184,0.9)';
+      ctx.beginPath(); ctx.arc(Math.cos(a) * L, -12 + Math.sin(a) * L * 0.75, 1, 0, 6.283); ctx.fill();
+    }
+    ctx.fillStyle = '#92400e';
+    ctx.beginPath(); ctx.ellipse(0, 8, 1.8, 4, 0, 0, 6.283); ctx.fill();
+  } else {
+    // Papier-Propeller: Streifen, oben zwei Flügel, unten eine Büroklammer
+    ctx.rotate(wack * 0.2);
+    ctx.fillStyle = '#fefce8'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+    ctx.fillRect(-3, -4, 6, 18); ctx.strokeRect(-3, -4, 6, 18);
+    const c = fliegt ? Math.cos(rot) : 1;
+    for (const sg of [1, -1]) {
+      ctx.save();
+      ctx.scale(sg * c, 1);
+      ctx.fillStyle = sg > 0 ? '#fef9c3' : '#fde68a';
+      ctx.beginPath(); ctx.moveTo(0, -4); ctx.lineTo(18, -9); ctx.lineTo(18, -3); ctx.lineTo(0, -1); ctx.closePath();
+      ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;              // Büroklammer
+    ctx.beginPath(); ctx.moveTo(-2, 16); ctx.lineTo(-2, 9); ctx.lineTo(2, 9); ctx.lineTo(2, 17); ctx.lineTo(-1, 17); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _bsfDraw(ctx, cv) {
+  const s = _bsfState;
+  if (!s) return;
+  const W = cv.width, H = cv.height, t = s.tAnim;
+  ctx.save();
+  ctx.scale(W / 420, H / 250);
+
+  // Himmel
+  const g = ctx.createLinearGradient(0, 0, 0, _BSF_BODEN);
+  g.addColorStop(0, '#bfe3fb'); g.addColorStop(1, '#eef8ff');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 420, 250);
+
+  // Wolken ziehen langsam (mit Wind schneller)
+  const wv = s.wind ? 14 : 3;
+  for (let i = 0; i < 3; i++) {
+    const wx = ((i * 157 + t * wv) % 520) - 60, wy = 22 + i * 17;
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.beginPath();
+    ctx.arc(wx, wy, 11, 0, 6.283); ctx.arc(wx + 13, wy - 5, 13, 0, 6.283); ctx.arc(wx + 27, wy, 10, 0, 6.283);
+    ctx.fill();
+  }
+
+  // Windstriche
+  if (s.wind) {
+    ctx.strokeStyle = 'rgba(56,120,190,0.45)'; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    for (let i = 0; i < 16; i++) {
+      const y = 60 + (i * 37) % 140;
+      const x = ((i * 83 + t * 110) % 480) - 40;
+      ctx.beginPath(); ctx.moveTo(x, y);
+      ctx.quadraticCurveTo(x + 12, y - 3 * Math.sin(t * 3 + i), x + 26, y); ctx.stroke();
+    }
+  }
+
+  // Boden mit Gras
+  ctx.fillStyle = '#86c06c'; ctx.fillRect(0, _BSF_BODEN, 420, 250 - _BSF_BODEN);
+  ctx.fillStyle = '#6aa352'; ctx.fillRect(0, _BSF_BODEN, 420, 3);
+  ctx.strokeStyle = '#4d8a3a'; ctx.lineWidth = 1.2;
+  const neig = s.wind ? 3.5 : 1;
+  for (let x = 4; x < 420; x += 7) {
+    const h = 5 + (x * 7 % 5);
+    const b = neig + Math.sin(t * 2.2 + x * 0.3) * (s.wind ? 1.6 : 0.7);
+    ctx.beginPath(); ctx.moveTo(x, _BSF_BODEN + 1);
+    ctx.quadraticCurveTo(x + b * 0.4, _BSF_BODEN - h * 0.6, x + b, _BSF_BODEN - h); ctx.stroke();
+  }
+
+  // Maßband
+  const mb = _BSF_BODEN + 12;
+  ctx.fillStyle = '#fde047'; ctx.fillRect(_BSF_X0 - 4, mb, _bsfPx(26) - _BSF_X0 + 8, 16);
+  ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1; ctx.strokeRect(_BSF_X0 - 4, mb, _bsfPx(26) - _BSF_X0 + 8, 16);
+  ctx.fillStyle = '#1e293b'; ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+  for (let m = 0; m <= 26; m++) {
+    const x = _bsfPx(m);
+    ctx.strokeStyle = '#713f12'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, mb); ctx.lineTo(x, mb + (m % 2 ? 3 : 5)); ctx.stroke();
+    if (m % 4 === 0) ctx.fillText(String(m), x, mb + 14);
+  }
+  ctx.textAlign = 'left'; ctx.font = 'bold 11px sans-serif';
+  ctx.fillText('m', _bsfPx(26) + 6, mb + 13);
+
+  // Ständer mit Arm und Klemme, Höhenpfeil „2 m“
+  const px = _BSF_X0 - 26;
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(px - 2, _BSF_OBEN - 12, 4, _BSF_BODEN - _BSF_OBEN + 12);
+  ctx.fillStyle = '#64748b'; ctx.fillRect(px - 9, _BSF_BODEN - 3, 18, 5);
+  ctx.fillRect(px, _BSF_OBEN - 12, _BSF_X0 - px, 3);
+  ctx.fillStyle = '#475569';
+  const offen = s.phase !== 'bereit';
+  ctx.fillRect(_BSF_X0 - 4 - (offen ? 3 : 0), _BSF_OBEN - 11, 3, 6);
+  ctx.fillRect(_BSF_X0 + 1 + (offen ? 3 : 0), _BSF_OBEN - 11, 3, 6);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  const hx = px - 12;
+  ctx.beginPath(); ctx.moveTo(hx, _BSF_OBEN - 6); ctx.lineTo(hx, _BSF_BODEN); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(hx - 3, _BSF_OBEN - 1); ctx.lineTo(hx, _BSF_OBEN - 6); ctx.lineTo(hx + 3, _BSF_OBEN - 1); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(hx - 3, _BSF_BODEN - 5); ctx.lineTo(hx, _BSF_BODEN); ctx.lineTo(hx + 3, _BSF_BODEN - 5); ctx.stroke();
+  ctx.save(); ctx.translate(hx - 4, (_BSF_OBEN + _BSF_BODEN) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = '#1e293b'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('2 m', 0, 0); ctx.restore();
+
+  // Landestellen früherer Würfe mit Wind (kleine Fähnchen)
+  _BSF_REIHE.forEach(k => {
+    const f = s.fahnen[k];
+    if (f === undefined || (k === s.samen && s.phase !== 'bereit')) return;
+    const x = _bsfPx(f), c = _BSF_SAMEN[k].farbe;
+    ctx.strokeStyle = c; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x, _BSF_BODEN + 10); ctx.lineTo(x, _BSF_BODEN - 16); ctx.stroke();
+    ctx.fillStyle = c; ctx.globalAlpha = 0.6;
+    ctx.beginPath(); ctx.moveTo(x, _BSF_BODEN - 16); ctx.lineTo(x + 9, _BSF_BODEN - 13); ctx.lineTo(x, _BSF_BODEN - 10); ctx.fill();
+    ctx.globalAlpha = 1;
+  });
+
+  // Flugspur
+  ctx.fillStyle = 'rgba(30,41,59,0.28)';
+  for (const [xm, ym] of s.spur) {
+    ctx.beginPath(); ctx.arc(_bsfPx(xm), _bsfPy(ym), 1.3, 0, 6.283); ctx.fill();
+  }
+
+  // Der Samen
+  const sa = _BSF_SAMEN[s.samen];
+  let sx = _bsfPx(s.xm), sy = _bsfPy(s.ym);
+  let wack = Math.sin(t * 2.4) * (s.wind ? 0.5 : 0.25);
+  if (s.phase === 'fliegt') {
+    const u = s.t / _bsfFallzeit(s.samen), bogen = Math.sin(Math.PI * u);
+    if (sa.art === 'schirm') { sx += Math.sin(t * 1.7) * 5 * bogen; wack = Math.sin(t * 1.7) * 0.6; }
+    if (sa.dreh) sx += Math.sin(s.rot) * 3 * bogen;          // enge Schraube
+  } else if (s.phase === 'gelandet') {
+    wack = 0;
+  }
+  // Oben hängt der Samen mit seiner Spitze in der Klemme, unten liegt er auf dem Boden.
+  const oben = { nuss: -7, ahorn: -12, schirm: -22, papier: -9 }[sa.art];
+  const unten = { nuss: 9, ahorn: 5, schirm: 12, papier: 17 }[sa.art];
+  const h = s.ym / _BSF_HOEHE;                            // 1 = oben, 0 = Boden
+  sy = sy + (-5 - oben) * h + (-unten) * (1 - h);
+  _bsfSamenZeichnen(ctx, sa.art, sx, sy, s.rot, wack, s.phase === 'fliegt');
+
+  // Staubwolke beim Landen
+  if (s.staub > 0) {
+    const a = s.staub / 0.6;
+    ctx.fillStyle = 'rgba(120,90,50,' + (0.35 * a).toFixed(2) + ')';
+    for (let i = -2; i <= 2; i++) {
+      ctx.beginPath(); ctx.arc(sx + i * 6 * (1.6 - a), _BSF_BODEN - 2 - Math.abs(i) * (1 - a) * 3, 3 + (1 - a) * 3, 0, 6.283); ctx.fill();
+    }
+  }
+
+  // Landemarke mit Weite
+  if (s.phase === 'gelandet') {
+    const w = Math.round(_bsfWeite(s.samen, s.wind));
+    const x = _bsfPx(_bsfWeite(s.samen, s.wind));
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.moveTo(x, mb - 1); ctx.lineTo(x - 5, mb - 8); ctx.lineTo(x + 5, mb - 8); ctx.closePath(); ctx.fill();
+    ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
+    const lx = Math.min(390, Math.max(x, 70));
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillRect(lx - 24, _BSF_BODEN - 44, 48, 18);
+    ctx.fillStyle = '#b91c1c'; ctx.fillText(w + ' m', lx, _BSF_BODEN - 30);
+  }
+
+  // Stoppuhr
+  const ux = 380, uy = 40;
+  ctx.fillStyle = '#475569'; ctx.fillRect(ux - 4, uy - 33, 8, 6);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(ux, uy, 26, 0, 6.283); ctx.fill(); ctx.stroke();
+  let zeig = 0;
+  if (s.phase === 'fliegt') zeig = s.t;
+  const zeiger = (s.phase === 'gelandet' ? _bsfFallzeit(s.samen) : zeig) / 10 * 6.283 - Math.PI / 2;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(zeiger) * 19, uy + Math.sin(zeiger) * 19); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center';
+  const uText = s.phase === 'gelandet' ? _bsfSek(_bsfFallzeit(s.samen)) + ' s'
+              : (s.phase === 'fliegt' ? Math.floor(s.t) + ' s' : '0 s');
+  ctx.fillText(uText, ux, uy + 16);
+  ctx.font = '11px sans-serif'; ctx.fillStyle = '#334155';
+  ctx.fillText('Fallzeit', ux, uy + 40);
+
+  // Windanzeige oben links
+  ctx.textAlign = 'left'; ctx.font = 'bold 12px sans-serif';
+  ctx.fillStyle = s.wind ? '#1d4ed8' : '#64748b';
+  ctx.fillText(s.wind ? 'Wind' : 'kein Wind', 60, 20);
+  if (s.wind) {
+    ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(96, 16); ctx.lineTo(128, 16); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(122, 11); ctx.lineTo(129, 16); ctx.lineTo(122, 21); ctx.stroke();
+  }
+
+  // Name des Samens
+  ctx.font = 'bold 12px sans-serif'; ctx.fillStyle = sa.farbe;
+  ctx.fillText(sa.name, 60, 36);
+  ctx.restore();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · WER FRISST WEN?   (Förderheft Biologie 5/6 · bl7)
+// Nahrungskette an der Hecke: Blatt → Raupe → Meise → Sperber.
+// Ein Glied wird weggenommen, dann vergeht ein Sommer (90 Tage in
+// sechs Sekunden). Die Zähler laufen sichtbar von den Frühlingswerten
+// zu den Modellwerten am Ende des Sommers:
+//   niemanden  Raupen 100 · Meisen 10 · Sperber 1
+//   Raupen     Raupen   0 · Meisen  2 · Sperber 1
+//   Meisen     Raupen 400 · Meisen  0 · Sperber 0  (Hecke kahl)
+//   Sperber    Raupen  50 · Meisen 20 · Sperber 0
+// Alle Zahlen sind Modellwerte. Gezeichnet wird je 10 Raupen eine Raupe,
+// jede Meise einzeln.
+// ═══════════════════════════════════════════════════════
+let _bnkState = null;
+const _BNK_WAHL = ['niemanden', 'Raupen', 'Meisen', 'Sperber'];
+const _BNK_GLIED = ['Blatt', 'Raupe', 'Meise', 'Sperber'];
+const _BNK_ENDE = [
+  { r: 100, m: 10, s: 1, b: 1 },
+  { r: 0, m: 2, s: 1, b: 1 },
+  { r: 400, m: 0, s: 0, b: 0 },
+  { r: 50, m: 20, s: 0, b: 1 }
+];
+const _BNK_DAUER = 6;      // Sekunden für einen Sommer
+const _BNK_TAGE = 90;
+
+function _bnkZufall(saat) {
+  let x = saat >>> 0;
+  return () => { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; };
+}
+
+function _bnkInit() {
+  const zf = _bnkZufall(7);
+  // Hecke aus neun Laubballen
+  const ballen = [];
+  for (let i = 0; i < 9; i++) {
+    ballen.push({ x: 52 + i * 39.5 + (zf() - 0.5) * 8, y: 196 + (zf() - 0.5) * 10, r: 34 + zf() * 12 });
+  }
+  const imBallen = () => {
+    const b = ballen[Math.floor(zf() * ballen.length)];
+    const w = zf() * Math.PI * 2, d = Math.sqrt(zf()) * b.r * 0.85;
+    return { x: b.x + Math.cos(w) * d, y: Math.min(234, b.y + Math.sin(w) * d) };
+  };
+  const blaetter = [];
+  for (let i = 0; i < 170; i++) {
+    const p = imBallen();
+    blaetter.push({ x: p.x, y: p.y, w: zf() * Math.PI, g: zf() });
+  }
+  const raupen = [];
+  for (let i = 0; i < 40; i++) {
+    const p = imBallen();
+    raupen.push({ x: p.x, y: p.y, ph: zf() * 6.28, dir: zf() < 0.5 ? -1 : 1, a: 0 });
+  }
+  const meisen = [];
+  for (let i = 0; i < 20; i++) {
+    const sitzt = i % 2 === 0;
+    const b = ballen[(i * 5) % ballen.length];
+    meisen.push({
+      sitzt,
+      x: sitzt ? b.x + (zf() - 0.5) * b.r : 40 + zf() * 330,
+      y: sitzt ? b.y - b.r - 2 : 78 + zf() * 52,
+      ph: zf() * 6.28, weg: i % 2 ? 1 : -1, a: 0
+    });
+  }
+  _bnkState = { wahl: 0, phase: 'fruehling', p: 0, t: 0, ballen, blaetter, raupen, meisen, sperberA: 1 };
+  _bnkSichtZiel(true);
+}
+
+// Zahlen, die gerade gelten
+function _bnkZahlen() {
+  const S = _bnkState, w = S.wahl;
+  const start = { r: w === 1 ? 0 : 100, m: w === 2 ? 0 : 10, s: w === 3 ? 0 : 1, b: 1 };
+  const ende = _BNK_ENDE[w];
+  if (S.phase === 'fruehling') return start;
+  if (S.phase === 'ende') return { r: ende.r, m: ende.m, s: ende.s, b: ende.b };
+  const p = S.p, e = p * p * (3 - 2 * p);
+  const bl = w === 2 ? 1 - (function (q) { q = Math.max(0, Math.min(1, q)); return q * q * (3 - 2 * q); })((p - 0.25) / 0.75) : 1;
+  return {
+    r: Math.round(start.r + (ende.r - start.r) * e),
+    m: Math.round(start.m + (ende.m - start.m) * e),
+    s: p < 0.5 ? start.s : ende.s,
+    b: bl
+  };
+}
+
+// Welche Tiere sollen zu sehen sein? sofort=true setzt ohne Übergang.
+function _bnkSichtZiel(sofort) {
+  const S = _bnkState, z = _bnkZahlen();
+  const nr = Math.round(z.r / 10);
+  S.raupen.forEach((o, i) => { o.ziel = i < nr ? 1 : 0; if (sofort) o.a = o.ziel; });
+  S.meisen.forEach((o, i) => { o.ziel = i < z.m ? 1 : 0; if (sofort) o.a = o.ziel; });
+  S.sperberZiel = z.s;
+  if (sofort) S.sperberA = z.s;
+}
+
+function _bnkHTML() {
+  const marken = _BNK_WAHL.map((w, i) =>
+    `<button class="sim-btn${i === 0 ? ' primary' : ''}" id="_bnk-m${i}" onclick="_bnkWahl(${i})">${w}</button>`).join('');
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wer frisst wen an der Hecke?</h3>
+    <div class="fpm-note" style="margin-top:2px">Nimm ein Tier weg. Dann vergeht ein Sommer. Lies am Ende die Zähler ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bnk-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bnk-go" onclick="_bnkSommer()">▶ ein Sommer vergeht</button>
+          <button class="sim-btn" onclick="_bnkNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Wen nimmst du weg? <b id="_bnk-wlbl">niemanden</b></span>
+          <input type="range" id="_bnk-w" min="0" max="3" step="1" value="0"
+            oninput="_bnkWahl(this.value)" style="width:100%;accent-color:#16a34a">
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px;flex-wrap:wrap">${marken}</div>
+        <div class="lmp-status on" id="_bnk-zaehler" style="margin-top:8px;font-weight:700">Raupen 100 · Meisen 10 · Sperber 1</div>
+        <div class="lmp-status" id="_bnk-status"></div>
+        <div class="fpm-note" style="margin-top:10px">Oben im Bild steht die <b>Nahrungskette</b>. Beobachte, wohin die Pfeile zeigen.</div>
+        <div class="fpm-note" style="margin-top:6px">Alle Zahlen sind Modellwerte. Im Bild steht eine Raupe für 10 Raupen.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function _bnkWahl(v) {
+  const S = _bnkState; if (!S) return;
+  const w = Math.max(0, Math.min(3, Math.round(+v) || 0));
+  S.wahl = w; S.phase = 'fruehling'; S.p = 0;
+  const r = document.getElementById('_bnk-w'); if (r) r.value = String(w);
+  const l = document.getElementById('_bnk-wlbl'); if (l) l.textContent = _BNK_WAHL[w];
+  for (let i = 0; i < 4; i++) document.getElementById('_bnk-m' + i)?.classList.toggle('primary', i === w);
+  // Das weggenommene Tier verschwindet sichtbar (fliegt weg / wird abgesammelt).
+  _bnkSichtZiel(false);
+  _bnkStatus();
+}
+
+function _bnkSommer() {
+  const S = _bnkState; if (!S) return;
+  // Jeder Sommer beginnt im Frühling mit denselben Startwerten.
+  S.phase = 'sommer'; S.p = 0;
+  _bnkSichtZiel(false);
+  _bnkStatus();
+}
+
+function _bnkNeu() {
+  const S = _bnkState; if (!S) return;
+  S.phase = 'fruehling'; S.p = 0;
+  _bnkSichtZiel(false);
+  _bnkStatus();
+}
+
+function _bnkStatus() {
+  const S = _bnkState; if (!S) return;
+  const z = _bnkZahlen();
+  const zl = document.getElementById('_bnk-zaehler');
+  const zt = 'Raupen ' + z.r + ' · Meisen ' + z.m + ' · Sperber ' + z.s;
+  if (zl && zl.textContent !== zt) zl.textContent = zt;
+  const el = document.getElementById('_bnk-status'); if (!el) return;
+  let s;
+  if (S.phase === 'fruehling') {
+    s = 'Frühling: ' + ['Alle Tiere sind da.', 'Die Raupen sind weg.', 'Die Meisen sind weg.',
+      'Der Sperber ist weg.'][S.wahl] + ' Drücke „▶ ein Sommer vergeht“.';
+  } else if (S.phase === 'sommer') {
+    s = 'Sommer: Tag ' + Math.max(1, Math.round(S.p * _BNK_TAGE)) + ' von ' + _BNK_TAGE + ' …';
+  } else {
+    s = [
+      'Raupen: 100 · Meisen: 10 · Alle Tiere sind da. Die Hecke bleibt grün.',
+      'Meisen: 2 · Die Meisen finden kein Futter.',
+      'Raupen: 400 · Die Hecke ist kahl gefressen.',
+      'Meisen: 20 · Raupen: 50 · Die vielen Meisen fressen mehr Raupen.'
+    ][S.wahl];
+  }
+  if (el.textContent !== s) el.textContent = s;
+  el.className = 'lmp-status on';
+}
+
+function _bnkUpdate(dt) {
+  const S = _bnkState; if (!S) return;
+  S.t += dt;
+  if (S.phase === 'sommer') {
+    S.p = Math.min(1, S.p + dt / _BNK_DAUER);
+    if (S.p >= 1) S.phase = 'ende';
+    _bnkSichtZiel(false);
+    _bnkStatus();
+  }
+  const k = Math.min(1, dt * 1.6);
+  S.raupen.forEach(o => { o.a += (o.ziel - o.a) * k; });
+  S.meisen.forEach(o => { o.a += (o.ziel - o.a) * k; });
+  S.sperberA += (S.sperberZiel - S.sperberA) * k;
+}
+
+// ── Zeichnen ──────────────────────────────────────────
+function _bnkRaupe(ctx, x, y, t, dir, a) {
+  ctx.globalAlpha = a;
+  for (let j = 0; j < 5; j++) {
+    const bx = x - dir * j * 3.2, by = y - Math.abs(Math.sin(t * 5 + j * 0.9)) * 2.2;
+    ctx.fillStyle = j === 0 ? '#3f6212' : (j % 2 ? '#84cc16' : '#65a30d');
+    ctx.beginPath(); ctx.arc(bx, by, j === 0 ? 2.7 : 2.4, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
+function _bnkMeise(ctx, x, y, schlag, dir, a) {
+  ctx.globalAlpha = a;
+  ctx.save(); ctx.translate(x, y); ctx.scale(dir, 1);
+  // Flügel
+  ctx.fillStyle = '#4b7a8c';
+  ctx.beginPath(); ctx.moveTo(-2, -1); ctx.lineTo(-9, -3 - 6 * schlag); ctx.lineTo(3, -2); ctx.closePath(); ctx.fill();
+  // Körper mit gelbem Bauch
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.ellipse(0, 0, 6.5, 4.6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#6b8e23'; ctx.beginPath(); ctx.ellipse(-1, -2, 5.5, 2.6, 0, 0, 2 * Math.PI); ctx.fill();
+  // Schwanz
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.moveTo(-6, -1); ctx.lineTo(-11, -3); ctx.lineTo(-11, 1); ctx.closePath(); ctx.fill();
+  // schwarzer Kopf, weiße Wange, schwarzer Brustlatz
+  ctx.fillStyle = '#111827'; ctx.beginPath(); ctx.arc(6, -3, 3.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(6.6, -2.4, 1.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#111827'; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.moveTo(4, 0); ctx.lineTo(3, 4); ctx.stroke();
+  ctx.fillStyle = '#111827'; ctx.beginPath(); ctx.moveTo(9.2, -3); ctx.lineTo(11, -2.4); ctx.lineTo(9.2, -1.8); ctx.fill();
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function _bnkSperber(ctx, x, y, schlag, dir, a) {
+  ctx.globalAlpha = a;
+  ctx.save(); ctx.translate(x, y); ctx.scale(dir, 1);
+  ctx.fillStyle = '#57534e';
+  // breite Flügel
+  ctx.beginPath(); ctx.moveTo(-4, 0); ctx.quadraticCurveTo(-2, -14 - 6 * schlag, 6, -22 - 8 * schlag); ctx.lineTo(8, -2); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-4, 0); ctx.quadraticCurveTo(-2, 12 + 4 * schlag, 6, 18 + 6 * schlag); ctx.lineTo(8, 2); ctx.closePath(); ctx.fill();
+  // Körper, quergestreifte Brust
+  ctx.fillStyle = '#d6d3d1'; ctx.beginPath(); ctx.ellipse(2, 0, 11, 4.6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#78716c'; ctx.lineWidth = 0.8;
+  for (let i = -4; i <= 8; i += 3) { ctx.beginPath(); ctx.moveTo(i, -3); ctx.lineTo(i, 3); ctx.stroke(); }
+  // langer Schwanz, Kopf mit Hakenschnabel
+  ctx.fillStyle = '#57534e'; ctx.beginPath(); ctx.moveTo(-8, -2); ctx.lineTo(-20, -3.5); ctx.lineTo(-20, 3.5); ctx.lineTo(-8, 2); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(13, -1, 3.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(14, -1.8, 1, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.moveTo(16, -2); ctx.lineTo(19, -0.5); ctx.lineTo(16.4, 0.6); ctx.fill();
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function _bnkRundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y); ctx.closePath();
+}
+
+function _bnkKette(ctx, W, z) {
+  const S = _bnkState, bw = 80, bh = 40, gap = (W - 16 - 4 * bw) / 3, y0 = 5;
+  const weg = S.wahl;                       // 0 = niemand, sonst Index des Glieds
+  const takt = 0.75, schritt = Math.floor(S.t / takt) % 4, anteil = (S.t % takt) / takt;
+  const bx = i => 8 + i * (bw + gap);
+  // Pfeile: zeigen immer vom Gefressenen zum Fresser
+  for (let a = 0; a < 3; a++) {
+    const x1 = bx(a) + bw + 2, x2 = bx(a + 1) - 3, y = y0 + bh / 2;
+    const gebrochen = weg > 0 && (a === weg || a + 1 === weg);
+    const leuchtet = !gebrochen && schritt === a + 1;
+    ctx.strokeStyle = gebrochen ? '#cbd5e1' : (leuchtet ? '#f59e0b' : '#64748b');
+    ctx.fillStyle = ctx.strokeStyle;
+    ctx.lineWidth = leuchtet ? 4 : 2.4;
+    if (leuchtet) { ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 10; }
+    if (gebrochen) ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2 - 7, y); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x2, y); ctx.lineTo(x2 - 9, y - 6); ctx.lineTo(x2 - 9, y + 6); ctx.closePath(); ctx.fill();
+    ctx.shadowBlur = 0;
+    if (leuchtet) {
+      // Futterpunkt wandert den Pfeil entlang
+      const fx = x1 + (x2 - 9 - x1) * anteil;
+      ctx.fillStyle = '#16a34a'; ctx.beginPath(); ctx.arc(fx, y, 3, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Glieder
+  const zahl = ['', String(z.r), String(z.m), String(z.s)];
+  for (let i = 0; i < 4; i++) {
+    const x = bx(i), istWeg = weg > 0 && i === weg, an = !istWeg && schritt === i;
+    ctx.fillStyle = istWeg ? 'rgba(241,245,249,0.92)' : 'rgba(255,255,255,0.94)';
+    _bnkRundRect(ctx, x, y0, bw, bh, 8); ctx.fill();
+    ctx.strokeStyle = istWeg ? '#94a3b8' : (an ? '#f59e0b' : '#15803d');
+    ctx.lineWidth = an ? 3 : 1.6;
+    if (an) { ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 12; }
+    _bnkRundRect(ctx, x, y0, bw, bh, 8); ctx.stroke();
+    ctx.shadowBlur = 0;
+    ctx.textAlign = 'center';
+    ctx.fillStyle = istWeg ? '#94a3b8' : '#14532d';
+    ctx.font = '700 12px sans-serif';
+    ctx.fillText(_BNK_GLIED[i], x + bw / 2, y0 + 16);
+    if (i === 0) {
+      // Blatt: grüner Balken für das Laub der Hecke
+      ctx.fillStyle = '#e7e5e4'; ctx.fillRect(x + 12, y0 + 24, bw - 24, 7);
+      ctx.fillStyle = z.b > 0.5 ? '#16a34a' : '#a16207';
+      ctx.fillRect(x + 12, y0 + 24, (bw - 24) * Math.max(0.03, z.b), 7);
+    } else {
+      ctx.font = '700 12px sans-serif'; ctx.fillStyle = istWeg ? '#94a3b8' : '#0f172a';
+      ctx.fillText(zahl[i], x + bw / 2, y0 + 33);
+    }
+    if (istWeg) {
+      // durchgestrichen, aber lesbar: eine rote Linie durch den Namen
+      ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.2;
+      ctx.beginPath(); ctx.moveTo(x + 12, y0 + 12); ctx.lineTo(x + bw - 12, y0 + 12); ctx.stroke();
+    }
+  }
+}
+
+function _bnkDraw(ctx, cv) {
+  const S = _bnkState; if (!S) return;
+  const W = cv.width, H = cv.height, t = S.t, z = _bnkZahlen();
+  ctx.clearRect(0, 0, W, H);
+  // Himmel
+  const hg = ctx.createLinearGradient(0, 0, 0, H);
+  hg.addColorStop(0, '#bae6fd'); hg.addColorStop(0.7, '#e0f2fe'); hg.addColorStop(1, '#f0fdf4');
+  ctx.fillStyle = hg; ctx.fillRect(0, 0, W, H);
+  // Sonne wandert über den Sommer
+  const sp = S.phase === 'fruehling' ? 0 : (S.phase === 'ende' ? 1 : S.p);
+  const sx = 40 + 340 * sp, sy = 96 - 34 * Math.sin(Math.PI * sp);
+  const sg = ctx.createRadialGradient(sx, sy, 2, sx, sy, 22);
+  sg.addColorStop(0, '#fde047'); sg.addColorStop(0.6, 'rgba(253,224,71,0.8)'); sg.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(sx, sy, 22, 0, 2 * Math.PI); ctx.fill();
+  // Jahreszeit
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText(S.phase === 'fruehling' ? 'Frühling'
+    : (S.phase === 'sommer' ? 'Sommer · Tag ' + Math.max(1, Math.round(S.p * _BNK_TAGE)) : 'Ende des Sommers'), W - 8, 62);
+  // Boden
+  ctx.fillStyle = '#a3b18a'; ctx.fillRect(0, 236, W, H - 236);
+  ctx.fillStyle = '#7c6a4f'; ctx.fillRect(0, 243, W, H - 243);
+  // Äste der Hecke (bleiben, auch wenn sie kahl ist)
+  ctx.strokeStyle = '#78532f'; ctx.lineCap = 'round';
+  S.ballen.forEach((b, i) => {
+    ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(b.x, 240); ctx.lineTo(b.x + (i % 2 ? 6 : -6), b.y - b.r * 0.6); ctx.stroke();
+    ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(b.x, b.y + 8); ctx.lineTo(b.x - b.r * 0.7, b.y - b.r * 0.3); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(b.x + 2, b.y); ctx.lineTo(b.x + b.r * 0.7, b.y - b.r * 0.45); ctx.stroke();
+  });
+  ctx.lineCap = 'butt';
+  // Laub: so viel, wie noch da ist; es wiegt leicht im Wind
+  const n = Math.round(S.blaetter.length * z.b);
+  for (let i = 0; i < n; i++) {
+    const l = S.blaetter[i], sw = Math.sin(t * 1.5 + l.x * 0.05) * 1.2;
+    ctx.fillStyle = l.g < 0.33 ? '#15803d' : (l.g < 0.66 ? '#16a34a' : '#22c55e');
+    ctx.beginPath(); ctx.ellipse(l.x + sw, l.y, 7, 4, l.w, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (z.b < 0.2) {
+    ctx.fillStyle = 'rgba(255,255,255,0.9)'; _bnkRundRect(ctx, 150, 128, 120, 22, 8); ctx.fill();
+    ctx.fillStyle = '#7c2d12'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Die Hecke ist kahl.', 210, 143);
+  }
+  // Raupen kriechen auf der Hecke
+  S.raupen.forEach(o => {
+    if (o.a < 0.03) return;
+    const x = o.x + Math.sin(t * 0.6 + o.ph) * 9 * o.dir;
+    const dir = Math.cos(t * 0.6 + o.ph) * o.dir >= 0 ? 1 : -1;
+    _bnkRaupe(ctx, x, o.y, t + o.ph, dir, o.a);
+  });
+  // Meisen: sitzende hüpfen, fliegende ziehen Schleifen; wer geht, fliegt aus dem Bild
+  S.meisen.forEach(o => {
+    if (o.a < 0.03) return;
+    const aus = 1 - o.a;
+    let x, y, schlag, dir;
+    if (o.sitzt) {
+      x = o.x + Math.sin(t * 0.8 + o.ph) * 10;
+      y = o.y - Math.abs(Math.sin(t * 3 + o.ph)) * 5;
+      schlag = 0.2; dir = Math.cos(t * 0.8 + o.ph) >= 0 ? 1 : -1;
+    } else {
+      x = o.x + Math.sin(t * 0.9 + o.ph) * 28;
+      y = o.y + Math.sin(t * 1.7 + o.ph) * 9;
+      schlag = 0.5 + 0.5 * Math.sin(t * 16 + o.ph); dir = Math.cos(t * 0.9 + o.ph) >= 0 ? 1 : -1;
+    }
+    x += o.weg * 260 * aus; y -= 150 * aus;
+    if (aus > 0.1) schlag = 0.5 + 0.5 * Math.sin(t * 16 + o.ph);
+    _bnkMeise(ctx, x, y, schlag, dir, Math.min(1, o.a * 1.4));
+  });
+  // Sperber kreist über der Hecke
+  if (S.sperberA > 0.03) {
+    const aus = 1 - S.sperberA, w = t * 0.7;
+    const x = 290 + Math.cos(w) * 70 + 200 * aus, y = 88 + Math.sin(w) * 14 - 90 * aus;
+    _bnkSperber(ctx, x, y, 0.5 + 0.5 * Math.sin(t * 4), -Math.sin(w) >= 0 ? 1 : -1, S.sperberA);
+  }
+  // Nahrungskette oben
+  _bnkKette(ctx, W, z);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bl8 „Der Tanz auf der Wabe“ (Kennung bio-bienentanz)
+// Links die Wiese von oben (Stock, Sonne, Futter), rechts die senkrechte Wabe.
+// Das Kind stellt EINE Bedingung um (Entfernung oder Richtung), drueckt
+// „▶ Tanz zeigen“ und sieht: Sammlerin fliegt heim -> tanzt, drei Bienen
+// laufen dicht hinter ihr -> die drei fliegen ALLEIN zum Futter, die
+// Taenzerin bleibt im Stock. Die Laufspur wird mitgezeichnet.
+// Fachlich: 20 m = Rundtanz (nah, keine Richtung); 1000 m = Schwaenzeltanz,
+// der gerade Schwaenzellauf zeigt auf der senkrechten Wabe den Winkel zur
+// Sonne: nach oben = zur Sonne hin, nach unten = von der Sonne weg.
+// Vereinfacht (Lehrerteil): Grenze Rund/Schwaenzel real 50-100 m; nur zwei
+// Richtungen; Wege auf der Wiese nicht massstaeblich.
+// ════════════════════════════════════════════════════════════════════════
+let _bbt = null;
+const _BBT_ENT = ['20 m', '1000 m'];
+const _BBT_RICH = ['zur Sonne hin', 'von der Sonne weg'];
+const _BBT_HEIM = 1.2;          // s: Sammlerin fliegt vom Futter zum Stock
+const _BBT_TW = 1.3;            // s: ein Schwaenzellauf
+const _BBT_TR = 1.1;            // s: ein Rueckbogen
+const _BBT_NW = 3;              // Schwaenzellaeufe
+const _BBT_TK = 1.8;            // s: ein Kreis beim Rundtanz
+const _BBT_NK = 4;              // Kreise beim Rundtanz
+const _BBT_TANZ = 7.2;          // s: beide Taenze gleich lang
+const _BBT_AUS = 3.6;           // s: Ausflug der drei anderen Bienen
+const _BBT_LAG = [0.28, 0.50, 0.72];
+
+function _bbtZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _bbtInit() {
+  const z = _bbtZufall(58);
+  const gras = [];
+  for (let i = 0; i < 70; i++) gras.push([z(), z(), z() * 6.28, 0.6 + z() * 0.6]);
+  const honig = [];
+  for (let i = 0; i < 400; i++) honig.push(z());
+  _bbt = {
+    t: 0,
+    ent: 1, rich: 0,            // Start: 1000 m, zur Sonne hin
+    phase: 'bereit', pt: 0,
+    spur: [],
+    gras, honig,
+    key: '', W: 420, H: 250
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bbtEntf(i) {
+  if (!_bbt) return;
+  _bbt.ent = i;
+  _bbtZurueck();
+}
+function _bbtRicht(i) {
+  if (!_bbt) return;
+  _bbt.rich = i;
+  _bbtZurueck();
+}
+function _bbtZurueck() {
+  _bbt.phase = 'bereit'; _bbt.pt = 0; _bbt.spur = [];
+  _bbtStatus(); _bbtKnoepfe();
+}
+function _bbtStart() {
+  if (!_bbt) return;
+  _bbt.phase = 'heim'; _bbt.pt = 0; _bbt.spur = [];
+  _bbtStatus(); _bbtKnoepfe();
+}
+function _bbtNeu() {
+  if (!_bbt) return;
+  _bbtZurueck();
+}
+/* Sprungmarke: Entfernung und Richtung auf einmal, dann gleich tanzen. */
+function _bbtMarke(e, r) {
+  if (!_bbt) return;
+  _bbt.ent = e; _bbt.rich = r;
+  _bbtStart();
+}
+function _bbtKnoepfe() {
+  if (!_bbt || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bbt]').forEach(b => {
+      const d = b.dataset ? b.dataset.bbt : b.getAttribute('data-bbt');
+      const an = d === 'e' + _bbt.ent || d === 'r' + _bbt.rich;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bbtHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bbt="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Der Tanz auf der Wabe</h3>
+    <div class="fpm-note" style="margin-top:2px">Links die Wiese von oben: Bienenstock, Sonne und Futter. Rechts die Wabe im Stock. Stelle ein, wo das Futter liegt. Dann drücke „▶ Tanz zeigen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bbt-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Entfernung</span>
+          ${k('e0', '_bbtEntf(0)', '20 m')}
+          ${k('e1', '_bbtEntf(1)', '1000 m')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="margin-right:4px">Richtung</span>
+          ${k('r0', '_bbtRicht(0)', 'zur Sonne hin')}
+          ${k('r1', '_bbtRicht(1)', 'von der Sonne weg')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bbtStart()">▶ Tanz zeigen</button>
+          <button class="sim-btn" onclick="_bbtNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was zeigt der Tanz?</div>
+        <div class="lmp-status on" id="_bbt-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bbtMarke(0,0)">20 m, zur Sonne hin</button>
+          <button class="sim-btn" onclick="_bbtMarke(1,0)">1000 m, zur Sonne hin</button>
+          <button class="sim-btn" onclick="_bbtMarke(1,1)">1000 m, von der Sonne weg</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Im Stock ist es dunkel. Die Wabe hängt senkrecht. Die anderen Bienen laufen dicht hinter der Tänzerin und spüren den Tanz. Auf der Wabe steht <b>oben</b> für die Richtung <b>zur Sonne</b>.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bbtZeile() {
+  if (_bbt.ent === 0) return '20 m · Rundtanz · Laufspur im Kreis';
+  return '1000 m · ' + _BBT_RICH[_bbt.rich] + ' · Schwänzeltanz · Laufspur nach ' +
+         (_bbt.rich === 0 ? 'oben' : 'unten');
+}
+function _bbtErgebnis() {
+  if (_bbt.ent === 0) return 'Rundtanz · im Kreis, keine Richtung';
+  return 'Schwänzeltanz · nach ' + (_bbt.rich === 0 ? 'oben' : 'unten');
+}
+function _bbtRunde() {
+  const tt = Math.min(_bbt.pt, _BBT_TANZ - 1e-6);
+  return _bbt.ent === 0
+    ? [Math.floor(tt / _BBT_TK) + 1, _BBT_NK]
+    : [Math.floor(tt / (_BBT_TW + _BBT_TR)) + 1, _BBT_NW];
+}
+function _bbtSchluessel() {
+  if (_bbt.phase === 'tanz') return 'tanz' + _bbtRunde()[0] + _bbt.ent + _bbt.rich;
+  const ph = _bbt.phase === 'fertig' ? 'aus' : _bbt.phase;
+  return ph + _bbt.ent + _bbt.rich;
+}
+function _bbtStatus() {
+  if (!_bbt) return;
+  _bbt.key = _bbtSchluessel();
+  const el = document.getElementById('_bbt-status');
+  if (!el) return;
+  const wo = 'Entfernung ' + _BBT_ENT[_bbt.ent] + ' · Richtung ' + _BBT_RICH[_bbt.rich];
+  let h;
+  if (_bbt.phase === 'bereit') {
+    h = `<b>${wo}</b><br>Die Sammlerin ist noch am Futter.<br>Drücke „▶ Tanz zeigen“.`;
+  } else if (_bbt.phase === 'heim') {
+    h = `<b>${wo}</b><br>Die Sammlerin fliegt zurück in den Stock.`;
+  } else if (_bbt.phase === 'tanz') {
+    const [k, n] = _bbtRunde();
+    h = `<b>${_bbtZeile()}</b><br>Ergebnis: ${_bbtErgebnis()}<br>` +
+        `Tanzrunde ${k} von ${n}. Drei Bienen laufen dicht hinter der Tänzerin.`;
+  } else {
+    h = `<b>${_bbtZeile()}</b><br>Ergebnis: ${_bbtErgebnis()}<br>` +
+        `Die anderen Bienen fliegen allein zum Futter. Die Tänzerin bleibt im Stock.`;
+  }
+  el.innerHTML = h;
+}
+
+function _bbtUpdate(dt) {
+  if (!_bbt) return;
+  const d = Math.min(dt, 0.05);
+  _bbt.t += d;
+  if (_bbt.phase === 'bereit' || _bbt.phase === 'fertig') {
+    // nichts zu schalten; Bienen bewegen sich trotzdem (Zeichnen liest .t)
+  } else {
+    _bbt.pt += d;
+    if (_bbt.phase === 'heim' && _bbt.pt >= _BBT_HEIM) { _bbt.phase = 'tanz'; _bbt.pt = 0; _bbt.spur = []; }
+    else if (_bbt.phase === 'tanz') {
+      if (_bbt.pt >= _BBT_TANZ) { _bbt.phase = 'aus'; _bbt.pt = 0; }
+      else if (_bbt.spur.length < 3000) {
+        const g = _bbtGeo(_bbt.W, _bbt.H);
+        _bbt.spur.push(_bbtPfad(_bbt.pt, g));
+      }
+    }
+    else if (_bbt.phase === 'aus' && _bbt.pt >= _BBT_AUS) { _bbt.phase = 'fertig'; _bbt.pt = 0; }
+  }
+  if (_bbtSchluessel() !== _bbt.key) _bbtStatus();
+}
+
+/* ── Geometrie ─────────────────────────────────────────────────────────── */
+function _bbtGeo(W, H) {
+  const lx = 6, ly = 6, lw = Math.round(W * 0.40) - 6, lh = H - 12;
+  const rx = lx + lw + 8, ry = 6, rw = W - 6 - rx, rh = H - 12;
+  return {
+    lx, ly, lw, lh, rx, ry, rw, rh,
+    hx: lx + lw / 2, hy: ly + lh * 0.55,              // Bienenstock
+    sx: lx + lw / 2, sy: ly + 17,                      // Sonne
+    cx: rx + rw / 2, cy: ry + rh / 2 + 6,              // Tanzmitte auf der Wabe
+    L: 72, r: 26
+  };
+}
+/* Futterplatz auf der Wiese. Nicht massstaeblich: 20 m und 1000 m stehen
+   nur als "nah" und "weit" im Bild. */
+function _bbtFutter(g) {
+  const s = _bbt.rich === 0 ? -1 : 1;
+  const D = _bbt.ent === 0 ? 30 : 82;
+  return { x: g.hx, y: g.hy + s * D };
+}
+/* Position der Taenzerin auf der Wabe zur Tanzzeit tt (Wabenkoordinaten). */
+function _bbtPfad(tt, g) {
+  if (_bbt.ent === 0) {
+    // Rundtanz: im Kreis, nach jedem Kreis kehrt sie um. Keine Richtung.
+    const k = Math.min(_BBT_NK - 1, Math.floor(tt / _BBT_TK));
+    const p = Math.max(0, Math.min(1, (tt - k * _BBT_TK) / _BBT_TK));
+    const sg = k % 2 === 0 ? 1 : -1;
+    const w = sg * 2 * Math.PI * p;
+    return [g.cx + g.r * Math.sin(w), g.cy - g.r * Math.cos(w), false];
+  }
+  // Schwaenzeltanz: gerader Lauf mit Schwaenzeln, dann Bogen zurueck,
+  // abwechselnd rechts und links herum - eine Acht.
+  const dy = _bbt.rich === 0 ? -1 : 1;          // Laufrichtung: oben = zur Sonne
+  const Tk = _BBT_TW + _BBT_TR;
+  const k = Math.min(_BBT_NW - 1, Math.floor(tt / Tk));
+  const u = Math.min(Tk, tt - k * Tk);
+  const hL = g.L / 2;
+  if (u < _BBT_TW) {
+    const p = u / _BBT_TW;
+    const q = 4.5 * Math.sin(2 * Math.PI * 7 * p);
+    return [g.cx + q, g.cy + dy * (-hL + g.L * p), true];
+  }
+  const q = Math.min(1, (u - _BBT_TW) / _BBT_TR);
+  const sg = k % 2 === 0 ? 1 : -1;
+  return [g.cx + sg * hL * Math.sin(Math.PI * q), g.cy + dy * hL * Math.cos(Math.PI * q), false];
+}
+function _bbtRichtung(tt, g) {
+  const a = _bbtPfad(Math.max(0, tt - 0.02), g), b = _bbtPfad(tt + 0.02, g);
+  if (Math.abs(b[0] - a[0]) + Math.abs(b[1] - a[1]) < 1e-6) return -Math.PI / 2;
+  return Math.atan2(b[1] - a[1], b[0] - a[0]);
+}
+function _bbtStartPunkt(g) {
+  if (_bbt.ent === 0) return [g.cx, g.cy - g.r];
+  const dy = _bbt.rich === 0 ? -1 : 1;
+  return [g.cx, g.cy - dy * g.L / 2];
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bbtRund(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+/* Eine Biene von oben, ohne Gesicht. ang = Laufrichtung, k = Groesse,
+   wag = Auslenkung des Hinterleibs beim Schwaenzeln. */
+function _bbtBiene(ctx, x, y, ang, k, t, wag, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha === undefined ? 1 : alpha;
+  ctx.translate(x, y); ctx.rotate(ang); ctx.scale(k, k);
+  // Hinterleib (schwaenzelt)
+  ctx.save();
+  ctx.translate(-1.2, 0); ctx.rotate(wag || 0);
+  ctx.fillStyle = '#f2b632'; ctx.strokeStyle = '#3b2a14'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.ellipse(-4, 0, 5.2, 3.4, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#2a1d0e';
+  ctx.fillRect(-6.2, -2.7, 1.4, 5.4);
+  ctx.fillRect(-3.6, -3.3, 1.5, 6.6);
+  ctx.beginPath(); ctx.arc(-8.8, 0, 0.9, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+  // Brust und Kopf
+  ctx.fillStyle = '#7a5426';
+  ctx.beginPath(); ctx.arc(1.4, 0, 2.7, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#2a1d0e';
+  ctx.beginPath(); ctx.arc(4.6, 0, 1.9, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#2a1d0e'; ctx.lineWidth = 0.7;
+  ctx.beginPath();
+  ctx.moveTo(5.8, -0.8); ctx.lineTo(8.2, -2.8);
+  ctx.moveTo(5.8, 0.8); ctx.lineTo(8.2, 2.8);
+  ctx.stroke();
+  // Fluegel (flattern leicht)
+  const f = 0.15 * Math.sin(t * 40 + x);
+  ctx.fillStyle = 'rgba(255,255,255,0.72)'; ctx.strokeStyle = 'rgba(80,90,110,0.55)'; ctx.lineWidth = 0.6;
+  ctx.beginPath(); ctx.ellipse(-1.8, -3.2, 4.2, 1.9, -0.45 - f, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(-1.8, 3.2, 4.2, 1.9, 0.45 + f, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _bbtText(ctx, s, x, y, farbe, font, align) {
+  ctx.font = font || '700 11px sans-serif';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+  ctx.strokeText(s, x, y);
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.fillText(s, x, y);
+}
+
+function _bbtDraw(ctx, cv) {
+  if (!_bbt) return;
+  const W = cv.width, H = cv.height, t = _bbt.t;
+  _bbt.W = W; _bbt.H = H;
+  const g = _bbtGeo(W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  _bbtWiese(ctx, g, t);
+  _bbtWabe(ctx, g, t);
+}
+
+/* ── Fenster 1: Wiese von oben ─────────────────────────────────────────── */
+function _bbtWiese(ctx, g, t) {
+  ctx.save();
+  _bbtRund(ctx, g.lx, g.ly, g.lw, g.lh, 8);
+  ctx.fillStyle = '#a5d67a'; ctx.fill();
+  ctx.clip();
+  // Grashalme wiegen sich
+  ctx.strokeStyle = '#6aa84f'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  for (const [fx, fy, ph, gr] of _bbt.gras) {
+    const x = g.lx + 4 + fx * (g.lw - 8), y = g.ly + 30 + fy * (g.lh - 34);
+    const b = 2.2 * Math.sin(t * 1.6 + ph);
+    ctx.moveTo(x, y); ctx.lineTo(x + b - 2 * gr, y - 6 * gr);
+    ctx.moveTo(x, y); ctx.lineTo(x + b + 2 * gr, y - 5 * gr);
+  }
+  ctx.stroke();
+  // Sonne mit langsam drehenden Strahlen
+  ctx.save();
+  ctx.translate(g.sx, g.sy);
+  ctx.rotate(t * 0.3);
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let i = 0; i < 8; i++) {
+    const w = i * Math.PI / 4;
+    ctx.moveTo(12 * Math.cos(w), 12 * Math.sin(w));
+    ctx.lineTo(16 * Math.cos(w), 16 * Math.sin(w));
+  }
+  ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = '#fbbf24';
+  ctx.beginPath(); ctx.arc(g.sx, g.sy, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#d97706'; ctx.lineWidth = 1; ctx.stroke();
+  _bbtText(ctx, 'Sonne', g.sx + 20, g.sy, '#92400e');
+  _bbtText(ctx, 'Wiese', g.lx + 6, g.ly + 11, '#14532d', '700 10px sans-serif');
+  _bbtText(ctx, 'von oben', g.lx + 6, g.ly + 23, '#14532d', '700 10px sans-serif');
+
+  // Weg zum Futter (gestrichelt) mit Entfernung
+  const F = _bbtFutter(g);
+  ctx.save();
+  ctx.setLineDash([4, 4]);
+  ctx.strokeStyle = 'rgba(55,65,81,0.7)'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(g.hx, g.hy); ctx.lineTo(F.x, F.y); ctx.stroke();
+  ctx.restore();
+  _bbtText(ctx, _BBT_ENT[_bbt.ent], g.hx + 8, (g.hy + F.y) / 2 + (_bbt.ent === 0 ? 0 : 0), '#1f2937');
+
+  // Futter: weit weg ein Rapsfeld, nah ein Bluetenfleck
+  if (_bbt.ent === 1) {
+    const fw = 56, fh = 24;
+    _bbtRund(ctx, F.x - fw / 2, F.y - fh / 2, fw, fh, 5);
+    ctx.fillStyle = '#fde047'; ctx.fill();
+    ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#eab308';
+    for (let i = 0; i < 18; i++) {
+      const x = F.x - fw / 2 + 4 + (i % 9) * 6, y = F.y - 6 + Math.floor(i / 9) * 12;
+      ctx.beginPath(); ctx.arc(x, y + Math.sin(t * 2 + i) * 0.8, 1.4, 0, Math.PI * 2); ctx.fill();
+    }
+    _bbtText(ctx, 'Futter', F.x - fw / 2 - 4, F.y, '#713f12', '700 11px sans-serif', 'right');
+  } else {
+    for (let i = 0; i < 5; i++) {
+      const w = i * 1.2566 + t * 0.2;
+      const x = F.x + 7 * Math.cos(w), y = F.y + 5 * Math.sin(w);
+      ctx.fillStyle = '#fde047';
+      ctx.beginPath(); ctx.arc(x, y, 3.2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#ea580c';
+      ctx.beginPath(); ctx.arc(x, y, 1.1, 0, Math.PI * 2); ctx.fill();
+    }
+    _bbtText(ctx, 'Futter', F.x - 13, F.y, '#713f12', '700 11px sans-serif', 'right');
+  }
+
+  // Bienenstock
+  ctx.fillStyle = '#a16207';
+  ctx.fillRect(g.hx - 11, g.hy - 8, 22, 17);
+  ctx.fillStyle = '#78350f';
+  ctx.fillRect(g.hx - 13, g.hy - 11, 26, 4);
+  ctx.fillStyle = '#1c1917';
+  ctx.fillRect(g.hx - 4, g.hy + 5, 8, 3);
+  _bbtText(ctx, 'Stock', g.hx - 16, g.hy, '#422006', '700 11px sans-serif', 'right');
+
+  // Bienen auf der Wiese
+  const ph = _bbt.phase, pt = _bbt.pt;
+  const schweben = (i, a) => {
+    const w = t * 2.4 + i * 2.1;
+    const x = F.x + 12 * Math.cos(w), y = F.y + 7 * Math.sin(w * 1.3);
+    _bbtBiene(ctx, x, y, w + Math.PI / 2, 0.75, t, 0, a);
+  };
+  if (ph === 'bereit') {
+    schweben(0, 1);                                  // Sammlerin noch am Futter
+  } else if (ph === 'heim') {
+    const p = Math.min(1, pt / _BBT_HEIM);
+    const x = F.x + (g.hx - F.x) * p + 3 * Math.sin(p * 18), y = F.y + (g.hy - F.y) * p;
+    _bbtBiene(ctx, x, y, Math.atan2(g.hy - F.y, 0.0001), 0.8, t, 0);
+  } else if (ph === 'aus' || ph === 'fertig') {
+    for (let i = 0; i < 3; i++) {
+      const p = ph === 'fertig' ? 1 : Math.max(0, Math.min(1, (pt - 0.55 * i) / 1.8));
+      if (p <= 0) continue;
+      if (p < 1) {
+        const x = g.hx + (F.x - g.hx) * p + 3 * Math.sin(p * 16 + i), y = g.hy + (F.y - g.hy) * p;
+        _bbtBiene(ctx, x, y, Math.atan2(F.y - g.hy, 0.0001), 0.8, t, 0);
+      } else schweben(i, 1);
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 1.2;
+  _bbtRund(ctx, g.lx, g.ly, g.lw, g.lh, 8); ctx.stroke();
+}
+
+/* ── Fenster 2: senkrechte Wabe ────────────────────────────────────────── */
+function _bbtWabe(ctx, g, t) {
+  ctx.save();
+  _bbtRund(ctx, g.rx, g.ry, g.rw, g.rh, 8);
+  ctx.fillStyle = '#f3c969'; ctx.fill();
+  ctx.clip();
+  // Sechseckige Zellen aus Wachs
+  const R = 10, dx = Math.sqrt(3) * R, dy = 1.5 * R;
+  let n = 0;
+  ctx.strokeStyle = '#c98f1c'; ctx.lineWidth = 1;
+  for (let row = 0, y = g.ry - 4; y < g.ry + g.rh + R; row++, y += dy) {
+    for (let x = g.rx - 6 + (row % 2 ? dx / 2 : 0); x < g.rx + g.rw + R; x += dx) {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const w = Math.PI / 6 + i * Math.PI / 3;
+        const X = x + (R - 0.8) * Math.cos(w), Y = y + (R - 0.8) * Math.sin(w);
+        i ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y);
+      }
+      ctx.closePath();
+      const h = _bbt.honig[n++ % _bbt.honig.length];
+      ctx.fillStyle = h < 0.25 ? '#e0a526' : h < 0.35 ? '#f7dc9a' : '#f0c35a';
+      ctx.fill(); ctx.stroke();
+    }
+  }
+  // "oben" = Richtung zur Sonne
+  const ox = g.rx + g.rw - 16;
+  ctx.strokeStyle = '#7c2d12'; ctx.fillStyle = '#7c2d12'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(ox, g.ry + 58); ctx.lineTo(ox, g.ry + 26); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(ox, g.ry + 20); ctx.lineTo(ox - 5, g.ry + 28); ctx.lineTo(ox + 5, g.ry + 28); ctx.closePath(); ctx.fill();
+  _bbtText(ctx, 'oben', ox - 8, g.ry + 14, '#7c2d12', '700 11px sans-serif', 'right');
+  _bbtText(ctx, 'Wabe im Stock', g.rx + 6, g.ry + 12, '#422006', '700 10px sans-serif');
+
+  const ph = _bbt.phase, pt = _bbt.pt;
+
+  // andere Bienen auf der Wabe: krabbeln langsam an ihrem Platz
+  const plaetze = [[-88, -70], [88, -40], [-92, 8], [92, 30], [-78, 80], [70, 86]];
+  plaetze.forEach(([ax, ay], i) => {
+    const w = t * (0.5 + 0.13 * i) + i * 1.7;
+    const x = g.cx + ax + 9 * Math.cos(w), y = g.cy + ay + 6 * Math.sin(w);
+    _bbtBiene(ctx, x, y, Math.atan2(6 * Math.cos(w), -9 * Math.sin(w)), 1, t, 0);
+  });
+
+  // Laufspur
+  const spur = _bbt.spur;
+  if (spur.length > 1) {
+    ctx.strokeStyle = 'rgba(185,28,28,0.85)'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    spur.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
+    ctx.stroke();
+  }
+  const fertig = ph === 'aus' || ph === 'fertig';
+  if (fertig && _bbt.ent === 1) {
+    // Pfeil ueber dem Schwaenzellauf: dahin zeigt die Laufspur
+    const s = _bbt.rich === 0 ? -1 : 1;
+    const y0 = g.cy - s * g.L / 2, y1 = g.cy + s * (g.L / 2 + 6);
+    ctx.strokeStyle = 'rgba(29,78,216,0.55)'; ctx.fillStyle = 'rgba(29,78,216,0.75)'; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.moveTo(g.cx, y0); ctx.lineTo(g.cx, y1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(g.cx, y1 + s * 10); ctx.lineTo(g.cx - 7, y1); ctx.lineTo(g.cx + 7, y1); ctx.closePath(); ctx.fill();
+  }
+  if (spur.length > 1 || fertig) {
+    const lx = g.cx + (_bbt.ent === 0 ? g.r + 8 : g.L / 2 + 6);
+    _bbtText(ctx, 'Laufspur', lx, g.cy - 8, '#991b1b');
+    if (fertig) {
+      const was = _bbt.ent === 0 ? 'im Kreis' : _bbt.rich === 0 ? 'nach oben' : 'nach unten';
+      _bbtText(ctx, was, lx, g.cy + 8, '#991b1b');
+    }
+  }
+
+  // Taenzerin und die drei Bienen hinter ihr
+  const aus = [g.cx - 40, g.ry + g.rh + 12];                 // Ausgang unten
+  const folgePlatz = [[-52, -48], [54, -52], [-50, 52]];
+  const sp = _bbtStartPunkt(g);
+  if (ph === 'bereit' || ph === 'heim') {
+    folgePlatz.forEach(([ax, ay], i) => {
+      const w = t * 0.9 + i * 2.3;
+      _bbtBiene(ctx, g.cx + ax + 5 * Math.cos(w), g.cy + ay + 4 * Math.sin(w), w + Math.PI / 2, 1, t, 0);
+    });
+  }
+  if (ph === 'heim') {
+    const p = Math.min(1, pt / _BBT_HEIM);
+    const x = aus[0] + (sp[0] - aus[0]) * p, y = aus[1] + (sp[1] - aus[1]) * p;
+    _bbtBiene(ctx, x, y, Math.atan2(sp[1] - aus[1], sp[0] - aus[0]), 1.15, t, 0);
+  } else if (ph === 'tanz') {
+    folgePlatz.forEach(([ax, ay], i) => {
+      const tl = pt - _BBT_LAG[i];
+      const z = tl > 0 ? _bbtPfad(tl, g) : sp;
+      let b = Math.min(1, pt / (0.9 + 0.15 * i));
+      b = b * b * (3 - 2 * b);
+      const x = (g.cx + ax) * (1 - b) + z[0] * b, y = (g.cy + ay) * (1 - b) + z[1] * b;
+      const w = tl > 0 ? _bbtRichtung(tl, g) : Math.atan2(z[1] - (g.cy + ay), z[0] - (g.cx + ax));
+      _bbtBiene(ctx, x, y, w, 1, t, 0);
+    });
+    const p = _bbtPfad(pt, g);
+    const w = _bbtRichtung(pt, g);
+    const wag = p[2] ? 0.45 * Math.sin(t * 44) : 0;
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.beginPath(); ctx.arc(p[0], p[1], 13, 0, Math.PI * 2); ctx.fill();
+    _bbtBiene(ctx, p[0], p[1], w, 1.15, t, wag);
+    _bbtText(ctx, 'Tänzerin', p[0] - 16, p[1] - 14, '#1f2937', '700 10px sans-serif', 'right');
+  } else {
+    // aus / fertig: Die drei gehen zum Ausgang und fliegen los, die Taenzerin bleibt.
+    if (ph === 'aus') {
+      folgePlatz.forEach((_, i) => {
+        const z = _bbtPfad(Math.max(0, _BBT_TANZ - _BBT_LAG[i]), g);
+        const p = Math.max(0, Math.min(1, (pt - 0.55 * i) / 1.2));
+        if (p >= 1) return;
+        const x = z[0] + (aus[0] - z[0]) * p, y = z[1] + (aus[1] - z[1]) * p;
+        _bbtBiene(ctx, x, y, Math.atan2(aus[1] - z[1], aus[0] - z[0]), 1, t, 0, 1 - p * 0.6);
+      });
+    }
+    {
+      const w = -Math.PI / 2 + 0.25 * Math.sin(t * 1.5);
+      _bbtBiene(ctx, sp[0], sp[1], w, 1.15, t, 0);
+      _bbtText(ctx, 'Tänzerin', sp[0] - 16, sp[1] - 14, '#1f2937', '700 10px sans-serif', 'right');
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1.2;
+  _bbtRund(ctx, g.rx, g.ry, g.rw, g.rh, 8); ctx.stroke();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · bl9  VOM WILDKOHL ZUM KOHLRABI   (Förderheft Biologie 5/6)
+// Ein Beet mit 20 Kohlpflanzen. „Samen von“ legt fest, welche Pflanzen die
+// Samen für das nächste Jahr geben. „▶ ein Jahr weiter“: Die Samen fliegen
+// von den Elternpflanzen auf das Beet, die alten Pflanzen vergehen, die
+// neuen wachsen. Ein Lineal rechts misst ein typisches Blatt.
+// Modellwerte (Lehrerteil bl9): mit Auswahl 10/12/14/16 cm, ohne Auswahl
+// 10/10/10/10 cm. Im Beet streuen die Blätter um den typischen Wert:
+// je 2 Pflanzen −2 cm und +2 cm, je 4 Pflanzen −1 cm und +1 cm, 8 Pflanzen
+// genau typisch – „die meisten“ ist also der typische Wert. Bei Auswahl
+// geben nur die beiden größten (+2 cm) Samen; ihre Nachkommen sind im Mittel
+// so lang wie sie (Modell: Merkmal wird ganz vererbt). Ohne Auswahl stammen
+// die Samen von großen UND kleinen Pflanzen (−2, −1, 0, 0, +1, +2 cm),
+// der Mittelwert bleibt. „Jahr“ steht für eine Pflanzengeneration.
+// ═══════════════════════════════════════════════════════
+const _BZU_START = 10;                 // cm, typisches Blatt in Jahr 1
+const _BZU_PLUS = 2;                   // cm mehr je Jahr mit Auswahl
+const _BZU_MAXJAHR = 4;
+const _BZU_OFF = [-2, -2, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2];
+const _BZU_ZUFALL = [-2, -1, 0, 0, 1, 2];   // Eltern ohne Auswahl, Mittel 0
+const _BZU_BPX = 2.6;                  // Bildpunkte je cm im Beet
+const _BZU_LPX = 11;                   // Bildpunkte je cm am Lineal
+const _BZU_L0 = 236;                   // Nullstrich des Lineals (y)
+const _BZU_DAUER = 2.6;                // Sekunden für ein Jahr
+const _BZU_WAHL = {
+  gross: 'den Pflanzen mit den größten Blättern',
+  irgend: 'irgendeiner Pflanze',
+};
+let _bzu = null;
+
+function _bzuMisch(jahr, lauf) {
+  // feste, aber je Jahr andere Reihenfolge im Beet
+  const a = _BZU_OFF.slice();
+  let s = (jahr * 7919 + lauf * 104729 + 17) % 2147483647;
+  for (let i = a.length - 1; i > 0; i--) {
+    s = (s * 48271) % 2147483647;
+    const j = s % (i + 1);
+    const h = a[i]; a[i] = a[j]; a[j] = h;
+  }
+  return a;
+}
+function _bzuInit() {
+  const t = _bzu ? _bzu.t : 0;
+  const wahl = _bzu ? _bzu.wahl : 'gross';
+  const lauf = _bzu ? _bzu.lauf + 1 : 0;
+  _bzu = {
+    t, wahl, lauf, jahr: 1, L: _BZU_START, off: _bzuMisch(1, lauf),
+    altJahr: 1, altL: _BZU_START, altOff: _bzuMisch(1, lauf), eltern: [], p: 0.44, frisch: true,
+    hinweis: '',
+  };
+  _bzu.hinweis = _bzuTextWahl();
+}
+function _bzuTextWahl() {
+  return _bzu.wahl === 'gross'
+    ? 'Samen von: den Pflanzen mit den größten Blättern. Die leuchtenden Pflanzen geben die Samen für das nächste Jahr.'
+    : 'Samen von: irgendeiner Pflanze. Große und kleine Pflanzen geben Samen für das nächste Jahr.';
+}
+function _bzuHTML() {
+  const w = k => `<button class="sim-btn${_bzu.wahl === k ? ' primary' : ''}" id="_bzu-w-${k}" onclick="_bzuWahl('${k}')" style="text-align:left">${_BZU_WAHL[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie bekommt man Kohl mit großen Blättern?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Beet stehen 20 Kohlpflanzen. Stelle ein, von welchen Pflanzen die Samen stammen. Drücke dann „▶ ein Jahr weiter“ und lies am Lineal ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bzu-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bzu-weiter" onclick="_bzuWeiter()">▶ ein Jahr weiter</button>
+          <button class="sim-btn" onclick="_bzuNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Samen von</span>
+          <div class="sim-btn-row" style="margin-top:4px;flex-direction:column;align-items:stretch">
+            ${w('gross')}
+            ${w('irgend')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bzu-status" style="margin-top:10px"></div>
+        <div class="fpm-note" id="_bzu-hinweis" style="margin-top:8px"></div>
+        <div class="phys-ctrl" style="margin-top:10px">
+          <span class="phys-ctrl-label">Springe zu einem Jahr:</span>
+          <div class="sim-btn-row" style="margin-top:4px">
+            <button class="sim-btn" onclick="_bzuSprung(1)">Jahr 1</button>
+            <button class="sim-btn" onclick="_bzuSprung(2)">Jahr 2</button>
+            <button class="sim-btn" onclick="_bzuSprung(3)">Jahr 3</button>
+            <button class="sim-btn" onclick="_bzuSprung(4)">Jahr 4</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Die Zahlen sind Modellwerte. Ein Jahr steht hier für eine neue Generation von Kohlpflanzen.</p>
+  </div>`;
+}
+// Elternpflanzen des laufenden Jahres (Indizes im Beet)
+function _bzuEltern(off, wahl) {
+  if (wahl === 'gross') {
+    const e = [];
+    off.forEach((o, i) => { if (o === _BZU_PLUS) e.push(i); });
+    return e;
+  }
+  const frei = off.map((o, i) => i), e = [];
+  _BZU_ZUFALL.forEach(z => {
+    const k = frei.findIndex(i => off[i] === z && !e.includes(i));
+    if (k >= 0) e.push(frei[k]);
+  });
+  return e;
+}
+function _bzuSchritt(jahr, L, mitSamen) {
+  const fertig = _bzu.p >= 1;
+  _bzu.altJahr = fertig ? _bzu.jahr : _bzu.altJahr;
+  _bzu.altL = fertig ? _bzu.L : _bzu.altL;
+  _bzu.altOff = fertig ? _bzu.off : _bzu.altOff;
+  _bzu.eltern = mitSamen ? _bzuEltern(_bzu.altOff, _bzu.wahl) : [];
+  _bzu.jahr = jahr; _bzu.L = L; _bzu.off = _bzuMisch(jahr, _bzu.lauf);
+  _bzu.p = 0; _bzu.frisch = false;
+}
+function _bzuWeiter() {
+  if (!_bzu) return;
+  if (_bzu.p < 1) _bzu.p = 1;
+  if (_bzu.jahr >= _BZU_MAXJAHR) {
+    _bzu.hinweis = 'Der Versuch endet in Jahr 4. Mit „neu“ fängt er in Jahr 1 wieder an.';
+    _bzuStatus(); return;
+  }
+  const L = _bzu.wahl === 'gross' ? _bzu.L + _BZU_PLUS : _bzu.L;
+  _bzuSchritt(_bzu.jahr + 1, L, true);
+  _bzu.hinweis = _bzu.wahl === 'gross'
+    ? 'Nur die Pflanzen mit den größten Blättern haben Samen gegeben. Lies am Lineal ab, wie lang die Blätter jetzt sind.'
+    : 'Die Samen stammen von großen und von kleinen Pflanzen. Lies am Lineal ab, wie lang die Blätter jetzt sind.';
+  _bzuStatus();
+}
+function _bzuSprung(j) {
+  if (!_bzu) return;
+  const z = Math.max(1, Math.min(_BZU_MAXJAHR, j));
+  const L = _bzu.wahl === 'gross' ? _BZU_START + _BZU_PLUS * (z - 1) : _BZU_START;
+  if (_bzu.p < 1) _bzu.p = 1;
+  // Samen fliegen nur, wenn genau ein Jahr weitergesprungen wird
+  const einJahr = z === _bzu.jahr + 1 && L === (_bzu.wahl === 'gross' ? _bzu.L + _BZU_PLUS : _bzu.L);
+  _bzuSchritt(z, L, einJahr);
+  _bzu.hinweis = 'Jahr ' + z + ': So sieht das Beet aus, wenn die Samen seit Jahr 1 von '
+    + _BZU_WAHL[_bzu.wahl] + ' stammen.';
+  _bzuStatus();
+}
+function _bzuWahl(k) {
+  if (!_bzu || !_BZU_WAHL[k]) return;
+  // Umstellen beginnt ein neues Beet in Jahr 1 – sonst mischen sich die
+  // beiden Tabellenspalten.
+  const warSpaeter = _bzu.jahr > 1;
+  _bzu.wahl = k;
+  _bzuInit();
+  ['gross', 'irgend'].forEach(n => {
+    const b = document.getElementById('_bzu-w-' + n);
+    if (b) b.className = 'sim-btn' + (n === k ? ' primary' : '');
+  });
+  if (warSpaeter) _bzu.hinweis = 'Neues Beet mit Wildkohl, wieder Jahr 1. ' + _bzuTextWahl();
+  _bzuStatus();
+}
+function _bzuNeu() {
+  if (!_bzu) return;
+  _bzuInit();
+  _bzuStatus();
+}
+function _bzuStatus() {
+  if (!_bzu) return;
+  const el = document.getElementById('_bzu-status');
+  if (el) {
+    el.textContent = 'Jahr ' + _bzu.jahr + ' · die meisten Blätter sind ' + _bzu.L + ' cm lang';
+    el.className = 'lmp-status on';
+  }
+  const h = document.getElementById('_bzu-hinweis');
+  if (h) h.textContent = _bzu.hinweis;
+}
+function _bzuUpdate(dt) {
+  if (!_bzu) return;
+  _bzu.t += dt;
+  if (_bzu.p < 1) _bzu.p = Math.min(1, _bzu.p + dt / _BZU_DAUER);
+}
+
+// ── Zeichnen ─────────────────────────────────────────
+function _bzuOrt(i) {
+  const r = i < 10 ? 0 : 1, k = i % 10;
+  return { x: 20 + k * 28 + (r === 0 ? 12 : 0), y: r === 0 ? 150 : 236 };
+}
+function _bzuKlamm(v) { return Math.max(0, Math.min(1, v)); }
+function _bzuSanft(v) { v = _bzuKlamm(v); return 1 - Math.pow(1 - v, 3); }
+// ein Kohlblatt, Spitze zeigt nach oben (-y); len = ganze Länge mit Stiel
+function _bzuBlatt(ctx, len, farbe, ader) {
+  const b = len * 0.42, st = len * 0.18;
+  ctx.fillStyle = farbe;
+  ctx.beginPath();
+  ctx.moveTo(0, -st);
+  ctx.bezierCurveTo(-b * 0.75, -st - len * 0.08, -b * 0.62, -len * 0.92, 0, -len);
+  ctx.bezierCurveTo(b * 0.62, -len * 0.92, b * 0.75, -st - len * 0.08, 0, -st);
+  ctx.fill();
+  ctx.strokeStyle = ader; ctx.lineWidth = Math.max(0.8, len / 40);
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -len * 0.94); ctx.stroke();
+  if (len > 30) {
+    ctx.lineWidth = Math.max(0.6, len / 90);
+    for (let k = 1; k <= 3; k++) {
+      const y = -st - (len - st) * k * 0.22;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(-b * 0.38, y - len * 0.1); ctx.moveTo(0, y); ctx.lineTo(b * 0.38, y - len * 0.1); ctx.stroke();
+    }
+  }
+}
+const _BZU_FAECHER = [[-0.85, 0.72], [-0.42, 0.9], [0, 1], [0.42, 0.9], [0.85, 0.72]];
+function _bzuPflanze(ctx, x, y, cm, s, wind) {
+  if (s <= 0) return;
+  const len = cm * _BZU_BPX * s;
+  _BZU_FAECHER.forEach(([a, f], k) => {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(a * (0.8 + 0.2 * s) + wind * (1 - Math.abs(a) * 0.3));
+    _bzuBlatt(ctx, len * f, k === 2 ? '#5e9275' : '#6f9f86', '#c7e0d2');
+    ctx.restore();
+  });
+}
+function _bzuLeuchten(ctx, x, y, cm, st) {
+  const r = cm * _BZU_BPX + 8, puls = 0.75 + 0.25 * Math.sin(_bzu.t * 4);
+  const g = ctx.createRadialGradient(x, y - r * 0.45, 2, x, y - r * 0.45, r * puls + 4);
+  g.addColorStop(0, 'rgba(253,224,71,' + (0.75 * st) + ')'); g.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y - r * 0.45, r * puls + 4, 0, 2 * Math.PI); ctx.fill();
+}
+function _bzuSchild(ctx, x, y, text) {
+  ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+  const w = ctx.measureText(text).width + 8;
+  ctx.fillStyle = '#fde047'; ctx.fillRect(x - w / 2, y - 10, w, 12);
+  ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1; ctx.strokeRect(x - w / 2 + 0.5, y - 9.5, w - 1, 11);
+  ctx.fillStyle = '#422006'; ctx.fillText(text, x, y - 1);
+}
+function _bzuDraw(ctx, cv) {
+  if (!_bzu) return;
+  const W = cv.width, H = cv.height, t = _bzu.t, p = _bzu.p;
+  ctx.clearRect(0, 0, W, H);
+
+  // ── Himmel und Beet ─────────────────────────────────
+  const hg = ctx.createLinearGradient(0, 0, 0, 90);
+  hg.addColorStop(0, '#bfe3ff'); hg.addColorStop(1, '#e8f5ff');
+  ctx.fillStyle = hg; ctx.fillRect(0, 0, 296, 90);
+  const sg = ctx.createRadialGradient(262, 30, 3, 262, 30, 26);
+  sg.addColorStop(0, 'rgba(253,224,71,0.95)'); sg.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(262, 30, 26, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(262, 30, 10, 0, 2 * Math.PI); ctx.fill();
+  // Wolke zieht vorbei
+  const wx = ((t * 9) % 360) - 60;
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  [[0, 0, 13], [14, -5, 11], [27, 0, 12], [13, 4, 11]].forEach(([dx, dy, r]) => {
+    ctx.beginPath(); ctx.arc(wx + dx, 44 + dy, r, 0, 2 * Math.PI); ctx.fill();
+  });
+  // Erde
+  const eg = ctx.createLinearGradient(0, 86, 0, H);
+  eg.addColorStop(0, '#8a5a3b'); eg.addColorStop(1, '#6b4128');
+  ctx.fillStyle = eg; ctx.fillRect(0, 86, 296, H - 86);
+  ctx.fillStyle = '#5a3520';
+  ctx.beginPath(); ctx.ellipse(148, 152, 144, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(148, 238, 144, 6, 0, 0, 2 * Math.PI); ctx.fill();
+
+  // ── Pflanzen ───────────────────────────────────────
+  const alt = p < 0.46, wind = Math.sin(t * 1.6) * 0.05;
+  const gross = _bzu.wahl === 'gross';
+  const elt = _bzu.eltern;
+  const glueht = [];
+  // alte Pflanzen vergehen, Eltern zuletzt; neue wachsen aus den Samen
+  for (let i = 0; i < 20; i++) {
+    const o = _bzuOrt(i), w = wind + Math.sin(t * 1.6 + i * 0.7) * 0.03;
+    if (alt) {
+      const istE = elt.includes(i);
+      const s = 1 - _bzuKlamm(((p - (istE ? 0.3 : 0.1)) / (istE ? 0.15 : 0.22)));
+      const cm = _bzu.altL + _bzu.altOff[i];
+      if (_bzu.frisch) continue;
+      const leuchtet = istE && gross;
+      if (leuchtet && s > 0) { _bzuLeuchten(ctx, o.x, o.y, cm, s); glueht.push([o, cm]); }
+      _bzuPflanze(ctx, o.x, o.y, cm, s, w);
+    } else {
+      const g = _bzuSanft((p - 0.48) / 0.5);
+      const cm = _bzu.L + _bzu.off[i];
+      if (p >= 1 && gross && _bzu.off[i] === _BZU_PLUS) { _bzuLeuchten(ctx, o.x, o.y, cm, 1); glueht.push([o, cm]); }
+      if (g <= 0.02) {
+        ctx.fillStyle = '#3f2a14'; ctx.beginPath(); ctx.ellipse(o.x, o.y - 1, 2.5, 1.6, 0, 0, 2 * Math.PI); ctx.fill();
+      }
+      _bzuPflanze(ctx, o.x, o.y, cm, g, w);
+    }
+  }
+  // Samen fliegen von den Elternpflanzen auf alle 20 Plätze
+  if (elt.length && p > 0.12 && p < 0.5) {
+    for (let j = 0; j < 20; j++) {
+      const q = _bzuKlamm((p - 0.12 - j * 0.006) / 0.3);
+      if (q <= 0 || q >= 1) continue;
+      const a = _bzuOrt(elt[j % elt.length]), b = _bzuOrt(j);
+      const ya = a.y - (_bzu.altL + _bzu.altOff[elt[j % elt.length]]) * _BZU_BPX * 0.8;
+      const x = a.x + (b.x - a.x) * q, y = ya + (b.y - ya) * q - Math.sin(Math.PI * q) * 38;
+      ctx.fillStyle = '#4a2f12'; ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 0.8; ctx.stroke();
+    }
+  }
+  // Schilder über den leuchtenden Pflanzen
+  const gesetzt = [];
+  glueht.forEach(([o, cm]) => {
+    let y = o.y - cm * _BZU_BPX - 6;
+    while (gesetzt.some(([gx, gy]) => Math.abs(gx - o.x) < 40 && Math.abs(gy - y) < 13)) y -= 13;
+    gesetzt.push([o.x, y]);
+    _bzuSchild(ctx, o.x, y, cm + ' cm');
+  });
+
+  // Schmetterling
+  const bx = 150 + 110 * Math.sin(t * 0.35), by = 60 + 14 * Math.sin(t * 1.3), fl = 0.3 + 0.7 * Math.abs(Math.sin(t * 11));
+  ctx.fillStyle = '#f97316';
+  ctx.beginPath(); ctx.ellipse(bx - 4 * fl, by, 4 * fl, 3.2, -0.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(bx + 4 * fl, by, 4 * fl, 3.2, 0.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.fillRect(bx - 0.8, by - 3, 1.6, 6);
+
+  // Kopfzeile Beet
+  const jz = alt && !_bzu.frisch ? _bzu.altJahr : _bzu.jahr;
+  ctx.fillStyle = 'rgba(15,23,42,0.78)'; ctx.fillRect(0, 0, 296, 20);
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Beet mit 20 Kohlpflanzen', 8, 14);
+  ctx.textAlign = 'right'; ctx.fillStyle = '#fde68a'; ctx.fillText('Jahr ' + jz, 288, 14);
+
+  // ── Lineal mit einem typischen Blatt ─────────────────
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(298, 0, W - 298, H);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(296, 0, 2, H);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('ein typisches Blatt', 359, 14);
+  const lx = 304, top = _BZU_L0 - 18 * _BZU_LPX;
+  ctx.fillStyle = '#f3dfae'; ctx.fillRect(lx, top - 6, 22, _BZU_L0 - top + 10);
+  ctx.strokeStyle = '#8a6d3b'; ctx.lineWidth = 1; ctx.strokeRect(lx + 0.5, top - 5.5, 21, _BZU_L0 - top + 9);
+  ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  for (let c = 0; c <= 18; c++) {
+    const y = _BZU_L0 - c * _BZU_LPX + 0.5, lang = c % 2 === 0 ? 8 : 4;
+    ctx.strokeStyle = '#1f2937'; ctx.beginPath(); ctx.moveTo(lx + 22, y); ctx.lineTo(lx + 22 - lang, y); ctx.stroke();
+    if (c % 2 === 0) { ctx.fillStyle = '#1f2937'; ctx.fillText(String(c), lx + 13, y + 3); }
+  }
+  ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#1f2937';
+  ctx.fillText('cm', lx + 11, _BZU_L0 + 11);
+  // Blatt: alt vergeht, neu wächst am Lineal hoch
+  let cmB, sB;
+  if (_bzu.frisch || !alt) { cmB = _bzu.L; sB = _bzuSanft((p - 0.48) / 0.5); }
+  else { cmB = _bzu.altL; sB = 1 - _bzuKlamm((p - 0.1) / 0.3); }
+  const lenB = cmB * _BZU_LPX * sB, bxL = 372;
+  const waechst = _bzu.frisch || !alt;
+  if (lenB > 1) {
+    ctx.save(); ctx.translate(bxL, _BZU_L0); ctx.rotate(Math.sin(t * 1.2) * 0.012);
+    _bzuBlatt(ctx, lenB, '#5e9275', '#c7e0d2');
+    ctx.restore();
+    const yT = _BZU_L0 - lenB + 0.5;
+    if (waechst) {
+    ctx.strokeStyle = '#15803d'; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(lx + 22, yT); ctx.lineTo(bxL, yT); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#15803d'; ctx.beginPath(); ctx.moveTo(lx + 22, yT); ctx.lineTo(lx + 29, yT - 4); ctx.lineTo(lx + 29, yT + 4); ctx.closePath(); ctx.fill();
+    if (sB >= 1) {
+      ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+      const txt = cmB + ' cm', tw = ctx.measureText(txt).width + 8;
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(350 - tw / 2, yT - 17, tw, 14);
+      ctx.fillStyle = '#14532d'; ctx.fillText(txt, 350, yT - 6);
+    }
+    }
+  }
+  // Bodenlinie unter dem Blatt
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(lx + 22, _BZU_L0 + 0.5); ctx.lineTo(W - 4, _BZU_L0 + 0.5); ctx.stroke();
+  ctx.textAlign = 'left';
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// BIO-KROETEN (Förderheft Biologie 5/6, Einheit bl10) – Präfix _bkr
+// Von oben: links Wald, in der Mitte die Straße, rechts der Teich. 100
+// Erdkröten wandern nachts vom Wald zum Teich und legen dort Laich.
+// Modellwerte (Lehrerteil bl10), immer von 100 losgelaufenen Kröten:
+//   10 gehen in JEDEM Durchgang unterwegs an Fressfeinde verloren
+//      (die Statuszeile nennt sie nicht),
+//   keine Straße                      → 90 legen Laich ·  0 sterben
+//   Straße mit vielen Autos           → 20 legen Laich · 70 sterben
+//   viele Autos und Krötenzaun an     → 85 legen Laich ·  5 sterben
+//   Teich zugeschüttet (keine Straße) →  0 legen Laich ·  0 sterben
+// Das Schicksal jeder Kröte wird beim Start ausgelost (die Anzahl steht fest,
+// nur WELCHE Kröte es trifft, wechselt). Gezählt wird, was im Bild passiert:
+// der Zähler "Laich" steigt, wenn eine Kröte im Teich ihre Laichschnur ablegt,
+// der Zähler "gestorben", wenn ein Auto sie auf der Straße erfasst.
+// Die Zeit steckt in dt (fest 16 ms je Bild) – keine Uhr, kein Zufall ohne Saat.
+// ═══════════════════════════════════════════════════════════════════════
+let _bkrState = null;
+
+const _BKR_N = 100;              // losgelaufene Kröten
+const _BKR_FRASS = 10;           // Fressfeinde, in jedem Durchgang
+const _BKR_TOT_OHNE_ZAUN = 70;   // viele Autos, kein Zaun
+const _BKR_TOT_MIT_ZAUN = 5;     // viele Autos, Zaun an (laufen um das Zaunende)
+// Bildmaße im Nennmaß 420 x 250
+const _BKR_WALD = 120;           // Waldrand
+const _BKR_S0 = 170, _BKR_S1 = 232;   // Straße von x bis x
+const _BKR_SPUR_AB = 185, _BKR_SPUR_AUF = 217;   // Fahrspuren (runter / hoch)
+const _BKR_ZAUN_X = 164, _BKR_ZAUN_Y0 = 22, _BKR_ZAUN_Y1 = 205;
+const _BKR_EIMER = [45, 95, 145, 190];            // Eimer-Höhen, x = 155
+const _BKR_EIMER_X = 155;
+const _BKR_TX = 340, _BKR_TY = 118, _BKR_TRX = 62, _BKR_TRY = 94;   // Teich
+const _BKR_BAND = 232;           // Beschriftungsband unten
+const _BKR_AUTO_V = 180;         // px/s
+const _BKR_HELFER_V = 80;        // px/s
+
+function _bkrZufall(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function _bkrInit() {
+  _bkrState = {
+    strasse: false,     // false = keine Straße, true = Straße mit vielen Autos
+    zaun: false,
+    teich: true,        // true = da, false = zugeschüttet
+    phase: 'bereit',    // bereit | laufen | fertig
+    lauf: 0,            // Zähler der Durchgänge (Saat)
+    tAnim: 0, tLauf: 0,
+    kroeten: [], autos: [], helfer: [], eimer: [], wellen: [], laich: [],
+    nLaich: 0, nTot: 0,
+    autoTakt: 0.2,
+    tab: [null, null, null, null],   // je Tabellenzeile: [Laich, Straße]
+  };
+  _bkrAufstellen();
+}
+
+/* Die 100 Kröten sitzen im Wald. Jede bekommt schon hier Startplatz, Tempo,
+   Ziel im Teich und ihr Schicksal – das Schicksal hängt von der Einstellung ab. */
+function _bkrAufstellen() {
+  const s = _bkrState;
+  const r = _bkrZufall(9173 + s.lauf * 131);
+  const strasse = s.strasse, zaun = s.strasse && s.zaun;
+  const nTot = strasse ? (zaun ? _BKR_TOT_MIT_ZAUN : _BKR_TOT_OHNE_ZAUN) : 0;
+  const los = [];
+  for (let i = 0; i < _BKR_N; i++) los.push(i < _BKR_FRASS ? 'frass' : i < _BKR_FRASS + nTot ? 'strasse' : 'teich');
+  for (let i = los.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); const h = los[i]; los[i] = los[j]; los[j] = h; }
+  s.kroeten = [];
+  for (let i = 0; i < _BKR_N; i++) {
+    const x = 10 + r() * 96, y = 24 + r() * 198;
+    const tx = _BKR_TX - 40 + r() * 80;
+    const q = Math.sqrt(Math.max(0, 1 - Math.pow((tx - _BKR_TX) / _BKR_TRX, 2)));
+    const ty = _BKR_TY + (r() * 2 - 1) * _BKR_TRY * 0.72 * q;
+    s.kroeten.push({
+      x, y, x0: x, y0: y, tx, ty,
+      v: 32 + r() * 12, t0: r() * 4.6, ph: r() * 6.28,
+      los: los[i],
+      frassX: x + 20 + r() * (150 - x - 20),
+      spur: r() < 0.5 ? _BKR_SPUR_AB : _BKR_SPUR_AUF,
+      eimer: -1,
+      zustand: 'warten',   // warten | laufen | zaun | eimer | getragen | kreuzen | teich | laich | suchen | tot | weg
+      vx: 0, vy: 0, auto: false, tz: 0, ang: 0, sx: 0, sy: 0,
+    });
+  }
+  s.eimer = _BKR_EIMER.map(y => ({ y, kr: [], seit: -1, geholt: false }));
+  s.helfer = [
+    { x: 140, y: 70, z: 'warten', bi: -1, last: [], ruhe: 70 },
+    { x: 140, y: 168, z: 'warten', bi: -1, last: [], ruhe: 168 },
+  ];
+  s.laich = []; s.wellen = [];
+  s.nLaich = 0; s.nTot = 0; s.tLauf = 0;
+  s.phase = 'bereit';
+}
+
+function _bkrHTML() {
+  const s = _bkrState;
+  const kn = (id, fn, txt, an) => `<button class="sim-btn${an ? ' primary' : ''}" id="_bkr-${id}" onclick="${fn}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Warum brauchen Kröten Hilfe?</h3>
+    <div class="fpm-note" style="margin-top:2px">Von oben siehst du <b>Wald</b>, <b>Straße</b> und <b>Teich</b>. Im März wandern <b>100 Erdkröten</b> nachts zum Teich. Dort legen sie ihren <b>Laich</b>. Stelle eine Sache um. Drücke dann <b>„▶ Wanderung starten“</b>.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkr-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="align-self:center">Straße:</span>
+          ${kn('s-keine', "_bkrStrasse('keine')", 'keine Straße', !s.strasse)}
+          ${kn('s-viele', "_bkrStrasse('viele')", 'Straße mit vielen Autos', s.strasse)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Krötenzaun:</span>
+          ${kn('z-aus', "_bkrZaun('aus')", 'aus', !s.zaun)}
+          ${kn('z-an', "_bkrZaun('an')", 'an', s.zaun)}
+          <span class="fpm-label" style="align-self:center;margin-left:10px">Teich:</span>
+          ${kn('t-da', "_bkrTeich('da')", 'da', s.teich)}
+          ${kn('t-zu', "_bkrTeich('zugeschüttet')", 'zugeschüttet', !s.teich)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn primary" onclick="_bkrStart()">▶ Wanderung starten</button>
+          <button class="sim-btn" onclick="_bkrNeu()">neu</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="align-self:center">Tabellenzeile:</span>
+          <button class="sim-btn" onclick="_bkrZeile(0)">➊ keine Straße</button>
+          <button class="sim-btn" onclick="_bkrZeile(1)">➋ viele Autos</button>
+          <button class="sim-btn" onclick="_bkrZeile(2)">➌ viele Autos und Krötenzaun</button>
+          <button class="sim-btn" onclick="_bkrZeile(3)">➍ Teich zugeschüttet</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert?</div>
+        <div class="lmp-status on" id="_bkr-status" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Deine Wanderungen</div>
+        <div id="_bkr-tab" style="margin-top:4px"></div>
+        <div class="fpm-note" style="margin-top:10px">Kröten sind <b>Amphibien</b>. Ihr Laich und ihre Kaulquappen brauchen einen <b>Teich</b>. Die erwachsenen Kröten leben im Wald.</div>
+        <div class="fpm-note" style="margin-top:6px">Der <b>Krötenzaun</b> steht am Straßenrand. Die Kröten laufen daran entlang und fallen in Eimer. <b>Helfer</b> tragen die Eimer über die Straße.</div>
+        <div class="fpm-note" style="margin-top:6px">Modell: Auch ohne Straße kommen nicht alle Kröten an. Fressfeinde fressen unterwegs einige.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Bedienung ────────────────────────────────────────────────────────────
+function _bkrKnoepfe() {
+  const s = _bkrState;
+  const setz = (id, an) => { const b = document.getElementById('_bkr-' + id); if (b) b.classList.toggle('primary', an); };
+  setz('s-keine', !s.strasse); setz('s-viele', s.strasse);
+  setz('z-aus', !s.zaun); setz('z-an', s.zaun);
+  setz('t-da', s.teich); setz('t-zu', !s.teich);
+}
+function _bkrUmgestellt() {
+  _bkrAufstellen(); _bkrKnoepfe(); _bkrStatus();
+}
+function _bkrStrasse(w) {
+  if (!_bkrState) return;
+  _bkrState.strasse = (w === 'viele'); _bkrUmgestellt();
+}
+function _bkrZaun(w) {
+  if (!_bkrState) return;
+  _bkrState.zaun = (w === 'an'); _bkrUmgestellt();
+}
+function _bkrTeich(w) {
+  if (!_bkrState) return;
+  _bkrState.teich = (w === 'da'); _bkrUmgestellt();
+}
+function _bkrStart() {
+  const s = _bkrState;
+  if (!s) return;
+  s.lauf++;
+  _bkrAufstellen();
+  s.phase = 'laufen';
+  s.autos = s.autos.filter(a => !a.ziel);
+  _bkrStatus();
+}
+function _bkrNeu() {
+  if (!_bkrState) return;
+  _bkrAufstellen(); _bkrStatus();
+}
+/* Sprungmarken: genau die vier Zeilen der Heft-Tabelle. Sie stellen ein und
+   starten die Wanderung gleich mit. */
+function _bkrZeile(n) {
+  const s = _bkrState;
+  if (!s) return;
+  const e = [[false, false, true], [true, false, true], [true, true, true], [false, false, false]][n];
+  if (!e) return;
+  s.strasse = e[0]; s.zaun = e[1]; s.teich = e[2];
+  _bkrKnoepfe();
+  _bkrStart();
+}
+function _bkrZeileVon() {
+  const s = _bkrState;
+  if (!s.teich) return s.strasse ? -1 : 3;
+  if (!s.strasse) return 0;
+  return s.zaun ? 2 : 1;
+}
+
+// ── Anzeige ──────────────────────────────────────────────────────────────
+const _BKR_ZEILEN = ['keine Straße', 'viele Autos', 'viele Autos und Krötenzaun', 'Teich zugeschüttet'];
+function _bkrTabelleHTML() {
+  const s = _bkrState, jetzt = _bkrZeileVon();
+  const td = (v, f) => '<td style="padding:3px 4px;border-bottom:1px solid #f1f5f9;' + (f ? 'font-weight:800;' : '') +
+    'color:' + (v === '' ? '#94a3b8' : '#1e293b') + '">' + (v === '' ? '—' : v) + '</td>';
+  let h = '<table style="width:100%;border-collapse:collapse;font-size:.72rem;line-height:1.3">' +
+          '<tr style="color:#64748b;font-weight:800;text-align:left">' +
+          ['Was stellst du ein?', 'Laich im Teich', 'sterben auf der Straße'].map(x =>
+            '<th style="padding:2px 4px;border-bottom:1px solid #e2e8f0">' + x + '</th>').join('') + '</tr>';
+  _BKR_ZEILEN.forEach((z, i) => {
+    const e = s.tab[i];
+    h += '<tr style="' + (i === jetzt ? 'background:#ecfdf5' : '') + '">' + td(z, false) +
+         td(e ? String(e[0]) : '', true) + td(e ? String(e[1]) : '', true) + '</tr>';
+  });
+  return h + '</table>';
+}
+function _bkrStatus() {
+  const s = _bkrState;
+  if (!s) return;
+  const z = [];
+  if (s.phase === 'bereit') {
+    z.push('100 Kröten warten im Wald. Drücke „▶ Wanderung starten“.');
+  } else {
+    z.push('100 Kröten losgelaufen · <b>' + s.nLaich + '</b> ' + (s.nLaich === 1 ? 'legt' : 'legen') +
+           ' Laich im Teich · <b>' + s.nTot + '</b> ' + (s.nTot === 1 ? 'stirbt' : 'sterben') + ' auf der Straße');
+  }
+  if (!s.teich) z.push('<b>Kein Teich. Die Kröten finden keinen Platz für ihren Laich.</b>');
+  if (s.strasse && s.zaun) z.push('Der Krötenzaun leitet die Kröten in Eimer. Helfer tragen die Eimer über die Straße.');
+  if (!s.strasse && s.zaun) z.push('Ohne Straße steht kein Krötenzaun.');
+  if (s.phase === 'fertig') z.push('Die Wanderung ist zu Ende.');
+  const el = document.getElementById('_bkr-status');
+  if (el) el.innerHTML = z.join('<br>');
+  const tb = document.getElementById('_bkr-tab');
+  if (tb) tb.innerHTML = _bkrTabelleHTML();
+}
+
+// ── Bewegung ─────────────────────────────────────────────────────────────
+function _bkrImTeich(x, y) {
+  return Math.pow((x - _BKR_TX) / _BKR_TRX, 2) + Math.pow((y - _BKR_TY) / _BKR_TRY, 2) <= 1;
+}
+function _bkrRichtung(k) {
+  // gerade Linie von hier zum Ziel im Teich, waagerecht immer mit Tempo v
+  const dx = Math.max(8, k.tx - k.x);
+  k.vx = k.v; k.vy = (k.ty - k.y) / dx * k.v;
+}
+function _bkrAuto(x, y, dir, ziel) {
+  const farben = ['#dc2626', '#2563eb', '#f8fafc', '#facc15', '#0d9488', '#9333ea', '#64748b'];
+  const s = _bkrState;
+  s.autos.push({ x, y, dir, ziel: !!ziel, f: farben[Math.floor((s.tAnim * 7.3 + x + y) % farben.length)] });
+}
+
+function _bkrUpdate(dt) {
+  const s = _bkrState;
+  if (!s) return;
+  const d = Math.min(dt, 0.05);
+  s.tAnim += d;
+  const zaun = s.strasse && s.zaun;
+
+  // Autos fahren immer, wenn die Straße da ist
+  s.autos.forEach(a => { a.y += a.dir * _BKR_AUTO_V * d; });
+  s.autos = s.autos.filter(a => a.y > -60 && a.y < 320);
+  if (s.strasse) {
+    const helferAufStrasse = s.helfer.some(h => h.x > _BKR_S0 - 6 && h.x < _BKR_S1 + 6);
+    // Während einer Wanderung ohne Zaun reichen die Autos, die Kröten treffen.
+    const hintergrund = s.phase !== 'laufen' || (zaun && !helferAufStrasse);
+    s.autoTakt -= d;
+    if (hintergrund && s.autoTakt <= 0) {
+      const ab = ((s.tAnim * 13.7) % 2) < 1;
+      _bkrAuto(ab ? _BKR_SPUR_AB : _BKR_SPUR_AUF, ab ? -30 : 280, ab ? 1 : -1, false);
+      s.autoTakt = 0.45 + ((s.tAnim * 7.1) % 1) * 0.5;
+    }
+  } else s.autos = [];
+
+  s.wellen.forEach(w => { w.t += d; });
+  s.wellen = s.wellen.filter(w => w.t < 1.2);
+  if (s.phase !== 'laufen') {
+    s.kroeten.forEach(k => { if (k.zustand === 'suchen') _bkrSuchen(k, d); if (k.zustand === 'tot' || k.zustand === 'weg') k.tz += d; });
+    return;
+  }
+  s.tLauf += d;
+  let geaendert = false;
+
+  for (const k of s.kroeten) {
+    k.ph += d * 9;
+    switch (k.zustand) {
+      case 'warten':
+        if (s.tLauf >= k.t0) { k.zustand = 'laufen'; _bkrRichtung(k); }
+        break;
+      case 'laufen': {
+        k.x += k.vx * d; k.y += k.vy * d;
+        if (k.los === 'frass' && k.x >= k.frassX) { k.zustand = 'weg'; k.tz = 0; break; }
+        if (zaun && k.x < _BKR_S0 && k.x >= _BKR_ZAUN_X - 7) {
+          k.x = _BKR_ZAUN_X - 7; k.zustand = 'zaun';
+          if (k.los === 'strasse') k.eimer = -1;
+          else {
+            let b = 0;
+            _BKR_EIMER.forEach((y, i) => { if (Math.abs(y - k.y) < Math.abs(_BKR_EIMER[b] - k.y)) b = i; });
+            k.eimer = b;
+          }
+          break;
+        }
+        if (s.strasse && !zaun && k.los === 'strasse') {
+          if (!k.auto) _bkrZielauto(k);
+          if (k.x >= k.spur) { _bkrStirbt(k); geaendert = true; }
+          break;
+        }
+        if (k.x >= _BKR_TX - _BKR_TRX - 4 && _bkrImTeich(k.x, k.y)) {
+          k.zustand = s.teich ? 'teich' : 'suchen';
+          if (s.teich) s.wellen.push({ x: k.x, y: k.y, t: 0 });
+          k.sx = k.tx; k.sy = k.ty;
+        }
+        break;
+      }
+      case 'zaun': {
+        // am Zaun entlang zum Eimer – oder um das Zaunende herum
+        const zy = k.eimer >= 0 ? _BKR_EIMER[k.eimer] : _BKR_ZAUN_Y1 + 9;
+        const sch = k.v * 0.8 * d;
+        if (Math.abs(zy - k.y) <= sch) {
+          k.y = zy;
+          if (k.eimer >= 0) {
+            const e = s.eimer[k.eimer];
+            k.zustand = 'eimer'; k.x = _BKR_EIMER_X; e.kr.push(k);
+            if (e.seit < 0) e.seit = s.tLauf;
+          } else {
+            k.zustand = 'kreuzen'; k.spur = _BKR_SPUR_AUF; k.vx = k.v * 0.8; k.vy = 0;
+          }
+        } else k.y += Math.sign(zy - k.y) * sch;
+        break;
+      }
+      case 'kreuzen':
+        k.x += k.vx * d;
+        if (!k.auto) _bkrZielauto(k);
+        if (k.x >= k.spur) { _bkrStirbt(k); geaendert = true; }
+        break;
+      case 'teich': {
+        const dx = k.sx - k.x, dy = k.sy - k.y, l = Math.hypot(dx, dy), sch = k.v * 0.7 * d;
+        if (l <= sch) {
+          k.x = k.sx; k.y = k.sy; k.zustand = 'laich'; k.tz = 0;
+          s.laich.push({ x: k.x + 5, y: k.y + 1, t: 0, w: k.ph });
+          s.nLaich++; geaendert = true;
+        } else { k.x += dx / l * sch; k.y += dy / l * sch; }
+        break;
+      }
+      case 'suchen': _bkrSuchen(k, d); break;
+      case 'tot': case 'weg': case 'laich': k.tz += d; break;
+    }
+  }
+  s.laich.forEach(l => { l.t += d; });
+
+  // Helfer tragen die Eimer über die Straße
+  if (zaun) _bkrHelfer(d);
+
+  if (geaendert) _bkrStatus();
+
+  // Fertig, wenn keine Kröte mehr unterwegs ist
+  const unterwegs = s.kroeten.some(k => ['warten', 'laufen', 'zaun', 'eimer', 'getragen', 'kreuzen', 'teich'].includes(k.zustand)) ||
+                    (s.teich === false && s.kroeten.some(k => k.zustand === 'laufen'));
+  if (!unterwegs && s.tLauf > 1) {
+    s.phase = 'fertig';
+    const i = _bkrZeileVon();
+    if (i >= 0) s.tab[i] = [s.nLaich, s.nTot];
+    _bkrStatus();
+  }
+}
+
+/* Ein Auto wird so losgeschickt, dass es genau dann an der Kröte ist, wenn sie
+   seine Fahrspur erreicht. Es startet außerhalb des Bildes. */
+function _bkrZielauto(k) {
+  const rest = (k.spur - k.x) / k.vx;
+  if (rest < 0) return;
+  const ab = k.spur === _BKR_SPUR_AB;
+  const yl = k.y + k.vy * rest;
+  const noetig = ab ? (yl + 40) / _BKR_AUTO_V : (290 - yl) / _BKR_AUTO_V;
+  if (rest <= noetig) {
+    _bkrAuto(k.spur, yl - (ab ? 1 : -1) * _BKR_AUTO_V * rest, ab ? 1 : -1, true);
+    k.auto = true;
+  }
+}
+function _bkrStirbt(k) {
+  const s = _bkrState;
+  k.x = k.spur; k.zustand = 'tot'; k.tz = 0;
+  s.nTot++;
+}
+function _bkrSuchen(k, d) {
+  // Kein Teich: die Kröte läuft suchend über die zugeschüttete Fläche,
+  // von einer Stelle zur nächsten.
+  const dx = k.sx - k.x, dy = k.sy - k.y, l = Math.hypot(dx, dy), sch = 14 * d;
+  if (l <= sch) {
+    k.x = k.sx; k.y = k.sy;
+    const a = (k.ph * 7.13 + k.tx) % 6.283, r = 0.25 + ((k.ph * 3.7 + k.ty) % 1) * 0.6;
+    k.sx = _BKR_TX + Math.cos(a) * r * _BKR_TRX; k.sy = _BKR_TY + Math.sin(a) * r * _BKR_TRY;
+  } else { k.x += dx / l * sch; k.y += dy / l * sch; }
+  k.ph += d * 5;
+}
+function _bkrHelfer(d) {
+  const s = _bkrState;
+  for (const h of s.helfer) {
+    const geh = (zx, zy) => {
+      const dx = zx - h.x, dy = zy - h.y, l = Math.hypot(dx, dy), sch = _BKR_HELFER_V * d;
+      if (l <= sch) { h.x = zx; h.y = zy; return true; }
+      h.x += dx / l * sch; h.y += dy / l * sch; return false;
+    };
+    if (h.z === 'warten') {
+      // Eimer holen, in dem schon eine Weile Kröten sitzen
+      let best = -1;
+      s.eimer.forEach((e, i) => {
+        if (e.kr.length && !e.geholt && (s.tLauf - e.seit > 0.6) && (best < 0 || e.kr.length > s.eimer[best].kr.length)) best = i;
+      });
+      if (best >= 0) { h.bi = best; s.eimer[best].geholt = true; h.z = 'hol'; }
+      else geh(140, h.ruhe);
+    } else if (h.z === 'hol') {
+      if (geh(_BKR_EIMER_X - 8, _BKR_EIMER[h.bi])) {
+        const e = s.eimer[h.bi];
+        h.last = e.kr; e.kr = []; e.seit = -1;
+        h.last.forEach(k => { k.zustand = 'getragen'; });
+        h.z = 'hin';
+      }
+    } else if (h.z === 'hin') {
+      const fertig = geh(_BKR_S1 + 14, _BKR_EIMER[h.bi]);
+      h.last.forEach((k, j) => { k.x = h.x + 7 + (j % 3) * 1.5 - 1.5; k.y = h.y + Math.floor(j / 3) * 1.2 - 1; });
+      if (fertig) {
+        h.last.forEach((k, j) => {
+          k.x = _BKR_S1 + 20 + (j % 4) * 3; k.y = _BKR_EIMER[h.bi] - 6 + (j % 5) * 3;
+          k.zustand = 'laufen'; _bkrRichtung(k);
+        });
+        h.last = [];
+        h.z = 'zurueck';
+      }
+    } else if (h.z === 'zurueck') {
+      if (geh(_BKR_EIMER_X - 8, _BKR_EIMER[h.bi])) {
+        s.eimer[h.bi].geholt = false;
+        h.z = 'warten'; h.ruhe = _BKR_EIMER[h.bi]; h.bi = -1;
+      }
+    }
+  }
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _bkrKroete(ctx, x, y, ang, ph, alpha, grau, gross) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(x, y);
+  ctx.rotate(ang);
+  const g = gross || 1;
+  const b = Math.sin(ph) * 0.9;
+  ctx.strokeStyle = grau ? '#6b7280' : '#6b4423';
+  ctx.lineWidth = 1.1 * g;
+  ctx.lineCap = 'round';
+  ctx.beginPath();          // Beine (von oben), sie wechseln im Schritt
+  ctx.moveTo(-1.5 * g, -1.8 * g); ctx.lineTo((-4 - b) * g, -3.6 * g);
+  ctx.moveTo(-1.5 * g, 1.8 * g);  ctx.lineTo((-4 + b) * g, 3.6 * g);
+  ctx.moveTo(1.8 * g, -1.6 * g);  ctx.lineTo((3 + b) * g, -3.2 * g);
+  ctx.moveTo(1.8 * g, 1.6 * g);   ctx.lineTo((3 - b) * g, 3.2 * g);
+  ctx.stroke();
+  ctx.fillStyle = grau ? '#9ca3af' : '#b07a45';
+  ctx.beginPath(); ctx.ellipse(-0.4 * g, 0, 3.6 * g, 2.8 * g, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(3.1 * g, 0, 1.7 * g, 1.9 * g, 0, 0, Math.PI * 2); ctx.fill();
+  if (!grau) {
+    ctx.fillStyle = '#7a4f28';   // Warzen
+    ctx.beginPath(); ctx.arc(-1.4 * g, -1 * g, 0.55 * g, 0, 6.3); ctx.arc(0.6 * g, 1.1 * g, 0.55 * g, 0, 6.3); ctx.arc(-2.2 * g, 1 * g, 0.5 * g, 0, 6.3); ctx.fill();
+    ctx.fillStyle = '#fbbf24';   // goldene Augen
+    ctx.beginPath(); ctx.arc(3.6 * g, -1.1 * g, 0.6 * g, 0, 6.3); ctx.arc(3.6 * g, 1.1 * g, 0.6 * g, 0, 6.3); ctx.fill();
+  }
+  ctx.restore();
+}
+function _bkrZeichneAuto(ctx, a) {
+  const x = a.x, y = a.y, vorn = a.dir;
+  // Scheinwerferkegel
+  const g = ctx.createLinearGradient(x, y + vorn * 10, x, y + vorn * 48);
+  g.addColorStop(0, 'rgba(254,249,195,0.45)'); g.addColorStop(1, 'rgba(254,249,195,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.moveTo(x - 5, y + vorn * 10); ctx.lineTo(x + 5, y + vorn * 10);
+  ctx.lineTo(x + 11, y + vorn * 48); ctx.lineTo(x - 11, y + vorn * 48); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = a.f;
+  ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x - 6, y - 11, 12, 22, 3) : ctx.rect(x - 6, y - 11, 12, 22); ctx.fill();
+  ctx.fillStyle = 'rgba(15,23,42,0.75)';       // Scheiben
+  ctx.fillRect(x - 4.5, y + vorn * 3 - 2, 9, 4);
+  ctx.fillRect(x - 4.5, y - vorn * 6 - 1.5, 9, 3);
+  ctx.fillStyle = '#fef9c3';
+  ctx.fillRect(x - 5, y + vorn * 10 - 1, 3, 2); ctx.fillRect(x + 2, y + vorn * 10 - 1, 3, 2);
+  ctx.fillStyle = '#ef4444';
+  ctx.fillRect(x - 5, y - vorn * 10 - 1, 2.5, 2); ctx.fillRect(x + 2.5, y - vorn * 10 - 1, 2.5, 2);
+}
+function _bkrZeichneHelfer(ctx, h, t) {
+  const x = h.x, y = h.y;
+  // Taschenlampe
+  ctx.fillStyle = 'rgba(254,249,195,0.16)';
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.arc(x, y, 26, -0.45, 0.45); ctx.closePath(); ctx.fill();
+  const sw = Math.sin(t * 10) * (h.z === 'warten' ? 0 : 2);
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.arc(x - 1 + sw * 0.5, y - 4, 1.8, 0, 6.3); ctx.arc(x - 1 - sw * 0.5, y + 4, 1.8, 0, 6.3); ctx.fill();
+  ctx.fillStyle = '#f97316';                    // Warnweste
+  ctx.beginPath(); ctx.ellipse(x, y, 4.5, 6.5, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#fef08a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x - 1.5, y - 6); ctx.lineTo(x - 1.5, y + 6); ctx.stroke();
+  ctx.fillStyle = '#f1c9a5';
+  ctx.beginPath(); ctx.arc(x, y, 2.7, 0, 6.3); ctx.fill();
+  if (h.z === 'hin') {                          // getragener Eimer
+    ctx.fillStyle = '#94a3b8';
+    ctx.beginPath(); ctx.arc(x + 8, y, 5, 0, 6.3); ctx.fill();
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.stroke();
+  }
+}
+
+function _bkrDraw(ctx, cv) {
+  const s = _bkrState;
+  if (!s) return;
+  const W = cv.width, H = cv.height, t = s.tAnim;
+  ctx.save();
+  ctx.scale(W / 420, H / 250);
+  const zaun = s.strasse && s.zaun;
+
+  // ── Wiese (Nacht) ───────────────────────────────────────────────────
+  ctx.fillStyle = '#1f3d26';
+  ctx.fillRect(0, 0, 420, 250);
+  ctx.fillStyle = 'rgba(134,239,172,0.06)';
+  for (let i = 0; i < 70; i++) {
+    const x = (i * 97.3) % 420, y = (i * 53.1) % 230;
+    ctx.fillRect(x, y, 1.2, 3);
+  }
+
+  // ── Wald: Baumkronen von oben ──────────────────────────────────────
+  ctx.fillStyle = '#132a19';
+  ctx.fillRect(0, 0, _BKR_WALD, _BKR_BAND);
+  for (let i = 0; i < 26; i++) {
+    const x = 8 + ((i * 41.7) % 108), y = 8 + ((i * 67.3) % 218), r = 9 + (i % 4) * 2.5;
+    const wog = Math.sin(t * 0.9 + i) * 0.6;
+    ctx.fillStyle = i % 3 ? 'rgba(22,78,40,0.72)' : 'rgba(30,94,52,0.72)';
+    ctx.beginPath(); ctx.arc(x + wog, y, r, 0, 6.3); ctx.fill();
+    ctx.fillStyle = 'rgba(74,222,128,0.10)';
+    ctx.beginPath(); ctx.arc(x + wog - r * 0.3, y - r * 0.3, r * 0.5, 0, 6.3); ctx.fill();
+  }
+
+  // ── Teich oder zugeschüttete Fläche ─────────────────────────────────
+  if (s.teich) {
+    const g = ctx.createRadialGradient(_BKR_TX - 15, _BKR_TY - 20, 8, _BKR_TX, _BKR_TY, _BKR_TRY);
+    g.addColorStop(0, '#2f6aa3'); g.addColorStop(1, '#173a63');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.ellipse(_BKR_TX, _BKR_TY, _BKR_TRX, _BKR_TRY, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 3;           // Uferpflanzen
+    ctx.stroke();
+    // Mondspiegelung, schwankt
+    ctx.fillStyle = 'rgba(254,249,195,0.5)';
+    for (let i = 0; i < 4; i++) {
+      const w = 12 - i * 2 + Math.sin(t * 2 + i) * 2;
+      ctx.fillRect(_BKR_TX + 18 - w / 2 + Math.sin(t * 1.5 + i * 2) * 1.5, _BKR_TY - 50 + i * 4, w, 1.4);
+    }
+    // Schilf am Rand
+    ctx.strokeStyle = '#65a30d'; ctx.lineWidth = 1.2;
+    for (let i = 0; i < 14; i++) {
+      const a = i * 0.45 + 0.3, x = _BKR_TX + Math.cos(a) * (_BKR_TRX + 1), y = _BKR_TY + Math.sin(a) * (_BKR_TRY + 1);
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.sin(t * 1.3 + i) * 1.5 + 2, y - 7); ctx.stroke();
+    }
+  } else {
+    ctx.fillStyle = '#7c6446';
+    ctx.beginPath(); ctx.ellipse(_BKR_TX, _BKR_TY, _BKR_TRX, _BKR_TRY, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(214,196,160,0.35)';
+    for (let i = 0; i < 60; i++) {
+      const a = i * 2.39996, r = Math.sqrt((i + 0.5) / 60);
+      ctx.beginPath(); ctx.arc(_BKR_TX + Math.cos(a) * r * (_BKR_TRX - 4), _BKR_TY + Math.sin(a) * r * (_BKR_TRY - 4), 1.3, 0, 6.3); ctx.fill();
+    }
+  }
+
+  // Wellenringe, wo eine Kröte ins Wasser geht
+  s.wellen.forEach(w => {
+    ctx.strokeStyle = 'rgba(191,219,254,' + (0.7 * (1 - w.t / 1.2)).toFixed(3) + ')';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(w.x, w.y, 2 + w.t * 9, 0, 6.3); ctx.stroke();
+  });
+  // Laichschnüre: lange Schnüre mit schwarzen Eiern
+  s.laich.forEach(l => {
+    const n = Math.min(7, 1 + Math.floor(l.t * 8));
+    ctx.strokeStyle = 'rgba(226,232,240,0.35)'; ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    for (let i = 0; i < n; i++) {
+      const x = l.x + i * 1.8, y = l.y + Math.sin(l.w + i * 0.8) * 1.6;
+      i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#0b0f19';
+    for (let i = 0; i < n; i++) {
+      ctx.beginPath(); ctx.arc(l.x + i * 1.8, l.y + Math.sin(l.w + i * 0.8) * 1.6, 0.7, 0, 6.3); ctx.fill();
+    }
+  });
+
+  // ── Straße ──────────────────────────────────────────────────────────
+  if (s.strasse) {
+    ctx.fillStyle = '#3b4250';
+    ctx.fillRect(_BKR_S0, 0, _BKR_S1 - _BKR_S0, _BKR_BAND);
+    ctx.fillStyle = '#e5e7eb';
+    ctx.fillRect(_BKR_S0 + 2, 0, 1.2, _BKR_BAND); ctx.fillRect(_BKR_S1 - 3.2, 0, 1.2, _BKR_BAND);
+    const mitte = (_BKR_S0 + _BKR_S1) / 2;
+    for (let y = -4; y < _BKR_BAND; y += 18) ctx.fillRect(mitte - 0.8, y, 1.6, 9);
+  }
+
+  // Tote Kröten: grau, verblassen
+  s.kroeten.forEach(k => {
+    if (k.zustand === 'tot') _bkrKroete(ctx, k.x, k.y, 0, 0, Math.max(0.28, 1 - k.tz * 0.6), true);
+  });
+
+  // ── Krötenzaun mit Eimern ───────────────────────────────────────────
+  if (zaun) {
+    s.eimer.forEach(e => {
+      ctx.fillStyle = e.geholt && !e.kr.length ? '#1c1917' : '#475569';
+      ctx.beginPath(); ctx.arc(_BKR_EIMER_X, e.y, 5.5, 0, 6.3); ctx.fill();
+      ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.stroke();
+      e.kr.forEach((k, j) => {
+        ctx.fillStyle = '#b07a45';
+        ctx.beginPath(); ctx.arc(_BKR_EIMER_X - 2 + (j % 3) * 2, e.y - 2 + Math.floor(j / 3) % 3 * 2, 1.3, 0, 6.3); ctx.fill();
+      });
+    });
+    ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(_BKR_ZAUN_X, _BKR_ZAUN_Y0); ctx.lineTo(_BKR_ZAUN_X, _BKR_ZAUN_Y1); ctx.stroke();
+    ctx.fillStyle = '#86efac';
+    for (let y = _BKR_ZAUN_Y0; y <= _BKR_ZAUN_Y1; y += 15) ctx.fillRect(_BKR_ZAUN_X - 1.5, y - 1.5, 3, 3);
+  }
+
+  // ── Kröten ──────────────────────────────────────────────────────────
+  s.kroeten.forEach(k => {
+    const z = k.zustand;
+    if (z === 'tot' || z === 'eimer' || z === 'getragen') return;
+    if (z === 'weg') { if (k.tz < 0.8) _bkrKroete(ctx, k.x, k.y, 0, 0, 1 - k.tz / 0.8, false); return; }
+    let ang = 0, ph = k.ph;
+    if (z === 'warten') { ph = 0; ang = Math.sin(k.x) * 0.4; }
+    else if (z === 'zaun') ang = (k.eimer >= 0 ? Math.sign(_BKR_EIMER[k.eimer] - k.y) : 1) * Math.PI / 2;
+    else if (z === 'laich') { ph = 0; ang = 0; }
+    else if (z === 'suchen') ang = Math.atan2(k.sy - k.y, k.sx - k.x);
+    else if (z === 'teich') ang = Math.atan2(k.sy - k.y, k.sx - k.x);
+    else ang = Math.atan2(k.vy, k.vx);
+    const atm = z === 'warten' ? 1 + Math.sin(t * 3 + k.x) * 0.04 : 1;
+    _bkrKroete(ctx, k.x, k.y, ang, ph, z === 'laich' || z === 'teich' ? 0.85 : 1, false, atm);
+  });
+
+  // ── Autos und Helfer ────────────────────────────────────────────────
+  if (s.strasse) s.autos.forEach(a => _bkrZeichneAuto(ctx, a));
+  if (zaun) s.helfer.forEach(h => _bkrZeichneHelfer(ctx, h, t));
+  s.kroeten.forEach(k => { if (k.zustand === 'getragen') _bkrKroete(ctx, k.x, k.y, 0, k.ph, 1, false, 0.6); });
+
+  if (!s.teich) {
+    ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.fillRect(_BKR_TX - 42, _BKR_TY + 50, 84, 17);
+    ctx.fillStyle = '#fde68a'; ctx.fillText('zugeschüttet', _BKR_TX, _BKR_TY + 62);
+  }
+
+  // ── Zähler oben ─────────────────────────────────────────────────────
+  const schild = (x, txt, hg) => {
+    ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'center';
+    const w = ctx.measureText(txt).width + 12;
+    ctx.fillStyle = hg;
+    ctx.fillRect(x - w / 2, 3, w, 16);
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(txt, x, 15);
+  };
+  const unterwegs = s.phase === 'bereit' ? 0 : s.kroeten.filter(k => k.zustand !== 'warten').length;
+  schild(60, 'losgelaufen: ' + unterwegs, 'rgba(15,23,42,0.8)');
+  if (s.strasse) schild((_BKR_S0 + _BKR_S1) / 2, 'gestorben: ' + s.nTot, 'rgba(153,27,27,0.9)');
+  schild(_BKR_TX, 'Laich: ' + s.nLaich, 'rgba(30,64,175,0.9)');
+
+  // ── Beschriftungsband ──────────────────────────────────────────────
+  ctx.fillStyle = '#0f172a';
+  ctx.fillRect(0, _BKR_BAND, 420, 250 - _BKR_BAND);
+  ctx.fillStyle = '#f8fafc'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Wald', 60, 245);
+  ctx.fillText(s.strasse ? 'Straße' : 'Wiese', (_BKR_S0 + _BKR_S1) / 2, 245);
+  if (zaun) { ctx.fillStyle = '#86efac'; ctx.fillText('Krötenzaun', _BKR_ZAUN_X - 40, 245); ctx.fillStyle = '#f8fafc'; }
+  ctx.fillText(s.teich ? 'Teich' : 'kein Teich', _BKR_TX, 245);
+  ctx.restore();
 }

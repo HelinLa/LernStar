@@ -5114,6 +5114,96 @@ const HEFT_SEITEN = {
     frage: "Warum geht eine bewegte Uhr langsamer – und für wen gilt dann welche Zeit?",
     schritte: ["Drücke „2 · Die bewegte Lichtuhr“ und stelle „Relativgeschwindigkeit v/c“ auf 0,95.", "Drücke „4 · Der relativistische Faktor“ und lies den Faktor und γ ab.", "Drücke „6 · Zeitdehnung messen“ und miss bei 0,10, 0,60, 0,84 und 0,95."]
   },
+  "bl1": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-lebewesen", seite: 7,
+    kapitel: "Leben um uns",
+    name: "Woran erkennt man ein Lebewesen?",
+    titel: "Lebt das – oder nicht?",
+    frage: "Welches der vier Dinge ist ein Lebewesen?",
+    schritte: ["Wähle „Bohnensamen“ und stelle „Zeit“ auf „Tag 10“.", "Trage ein, was du siehst. Stelle dann „Tag 90“ ein.", "Wiederhole das mit „Kröten-Ei“, „Schmetterlings-Ei“ und „Kieselstein“.", "Vergleiche: Welches Ding bleibt immer gleich?"]
+  },
+  "bl2": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-bestimmen", seite: 11,
+    kapitel: "Leben um uns",
+    name: "Wie bestimmt man ein Tier?",
+    titel: "Wer krabbelt unter der Hecke?",
+    frage: "Wie findest du den Namen eines Tieres, das du nicht kennst?",
+    schritte: ["Wähle „Tier 1“. Drücke „Lupe“ und zähle die Beine.", "Drücke „Röntgenblick“. Beantworte jede Frage mit „ja“ oder „nein“.", "Trage die Beine und den Namen ein, den der Schlüssel zeigt.", "Wiederhole das mit „Tier 2“, „Tier 3“ und „Tier 4“."]
+  },
+  "bl3": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-bluete", seite: 15,
+    kapitel: "Leben um uns",
+    name: "Aus welchen Teilen besteht eine Blüte?",
+    titel: "Was in der Kirschblüte steckt",
+    frage: "Aus welchem Teil der Blüte wird die Kirsche?",
+    schritte: ["Stelle „Teil wegnehmen“ auf „nichts“. Drücke „▶ Sommer abwarten“.", "Lies die Statuszeile ab und trage beide Zahlen ein.", "Wiederhole das mit „Blütenblätter“, „Staubblätter“ und „Stempel“.", "Beobachte bei „nichts“: Welches Teil wird dick und rot?"]
+  },
+  "bl4": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-keimung", seite: 19,
+    kapitel: "Leben um uns",
+    name: "Was braucht ein Samen zum Keimen?",
+    titel: "Zehn Kressesamen im Becher",
+    frage: "Was braucht ein Kressesamen zum Keimen?",
+    schritte: ["Drücke „▶ 5 Tage warten“. Am Start ist alles feucht, 20 °C und hell.", "Trage ein, wie viele Samen keimen und welche Farbe die Keimlinge haben.", "Drücke „neu“. Stelle nur EINE Sache um: „trocken“, „unter Wasser“, „5 °C“ oder „dunkel“.", "Vergleiche jede Zeile mit dem Start."]
+  },
+  "bl5": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-wachstum", seite: 23,
+    kapitel: "Leben um uns",
+    name: "Wie schnell wächst eine Pflanze?",
+    titel: "Die Bohne im Schrank",
+    frage: "Wie wächst die Bohne im dunklen Schrank?",
+    schritte: ["Drücke „▶ 2 Tage weiter“. Lies an beiden Linealen die Höhe ab.", "Trage beide Höhen in cm ein.", "Wiederhole das bis Tag 8.", "Vergleiche die Farbe der beiden Bohnen an Tag 8."]
+  },
+  "bl6": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-samenflug", seite: 27,
+    kapitel: "Leben um uns",
+    name: "Wie fliegen Samen zu neuen Orten?",
+    titel: "Schirmchen und Propeller",
+    frage: "Welcher Samen fliegt mit dem Wind am weitesten?",
+    schritte: ["Stelle „Wind“ auf „kein Wind“. Wähle „Haselnuss“ und drücke „▶ loslassen“.", "Lies die Fallzeit ab. Stelle dann „Wind“ ein, drücke wieder „▶ loslassen“ und lies die Weite ab.", "Wiederhole das mit „Ahorn-Samen“, „Löwenzahn-Samen“ und „Papier-Propeller“.", "Vergleiche den Papier-Propeller mit dem echten Ahorn-Samen."]
+  },
+  "bl7": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-nahrungskette", seite: 31,
+    kapitel: "Leben um uns",
+    name: "Wer frisst wen?",
+    titel: "Raupe, Meise, Sperber",
+    frage: "Was passiert mit den Raupen, wenn die Meisen fehlen?",
+    schritte: ["Wähle „niemanden“ und drücke „▶ ein Sommer vergeht“.", "Lies die Zähler ab. Trage Raupen und Meisen ein.", "Wiederhole das. Nimm nacheinander „Raupen“, „Meisen“ und „Sperber“ weg.", "Beobachte die Pfeile. Schreibe die Nahrungskette unter die Tabelle."]
+  },
+  "bl8": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-bienentanz", seite: 35,
+    kapitel: "Leben um uns",
+    name: "Wie verständigen sich Bienen?",
+    titel: "Der Tanz auf der Wabe",
+    frage: "Wie zeigt die Biene den anderen Bienen, wo das Futter ist?",
+    schritte: ["Stelle „20 m“ und „zur Sonne hin“ ein. Drücke „▶ Tanz zeigen“.", "Trage den Tanz und die Richtung der Laufspur ein.", "Wiederhole das mit „1000 m“: einmal „zur Sonne hin“, einmal „von der Sonne weg“.", "Beobachte: Wie kommen die anderen Bienen zum Futter?"]
+  },
+  "bl9": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-zuechtung", seite: 39,
+    kapitel: "Leben um uns",
+    name: "Wie wird aus einer Wildpflanze eine Nutzpflanze?",
+    titel: "Vom Wildkohl zum Kohlrabi",
+    frage: "Wie bekommt man Kohl mit großen Blättern?",
+    schritte: ["Stelle „Samen von“ auf „den Pflanzen mit den größten Blättern“.", "Trage Jahr 1 ein. Drücke dreimal „▶ ein Jahr weiter“ und trage jedes Jahr ein.", "Drücke „neu“. Stelle „Samen von“ auf „irgendeiner Pflanze“ und wiederhole.", "Vergleiche die beiden Spalten in Jahr 4."]
+  },
+  "bl10": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-kroeten", seite: 43,
+    kapitel: "Leben um uns",
+    name: "Warum brauchen Kröten Hilfe?",
+    titel: "Die Straße vor dem Teich",
+    frage: "Was passiert mit den Kröten an der Straße?",
+    schritte: ["Stelle „keine Straße“ ein. Drücke „▶ Wanderung starten“ und trage beide Zahlen ein.", "Stelle „Straße mit vielen Autos“ ein. Wiederhole die Wanderung.", "Stelle „Krötenzaun“ auf „an“. Der Zaun leitet die Kröten in Eimer. Wiederhole.", "Stelle wieder „keine Straße“ und „Teich“ auf „zugeschüttet“. Wiederhole."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
