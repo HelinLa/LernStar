@@ -7039,6 +7039,79 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('_bjk-cv', '_bjk-cv');
     _pSim.start(dt => _bjkUpdate(dt), (ctx, cv) => _bjkDraw(ctx, cv), []);
   },
+  // ── BIO 5/6 · SKELETT: WELCHE KNOCHEN TRAGEN MICH?  (Förderheft Bio 5/6 · bk1) ──
+  'bio-skelett': modal => {
+    _bksInit();
+    modal.innerHTML = _bksHTML();
+    _bksStatus();
+    _bksMaus();
+    _pSim = new PhysicsSimEngine('_bks-cv', '_bks-cv');
+    _pSim.start(dt => _bksUpdate(dt), (ctx, cv) => _bksDraw(ctx, cv), []);
+  },
+
+
+  // ── BIO 5/6 · ZWEI MUSKELN FÜR EINEN ARM  (Förderheft Bio 5/6 · bk2) ──
+  'bio-arm': modal => {
+    _bkaInit();
+    modal.innerHTML = _bkaHTML();
+    _bkaStatus();
+    _pSim = new PhysicsSimEngine('_bka-cv', '_bka-cv');
+    _pSim.start(dt => _bkaUpdate(dt), (ctx, cv) => _bkaDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · bk3  WIE HEBE ICH RICHTIG?  (Förderheft Bio 5/6 · Kennung bio-heben) ──
+  'bio-heben': modal => { _bkhInit(); modal.innerHTML = _bkhHTML(); _bkhStatus(); _bkhKnoepfe(); _pSim = new PhysicsSimEngine('_bkh-cv', '_bkh-cv'); _pSim.start(dt => _bkhUpdate(dt), (ctx, cv) => _bkhDraw(ctx, cv), []); },
+
+  // ── BIO 5/6 · FLASCHENMODELL DER LUNGE  (Förderheft Bio 5/6 · bk4) ──
+  'bio-atmung': modal => {
+    _bklInit();
+    modal.innerHTML = _bklHTML();
+    _bklStatus();
+    _pSim = new PhysicsSimEngine('_bkl-cv', '_bkl-cv');
+    _pSim.start(dt => _bklUpdate(dt), (ctx, cv) => _bklDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · PULS: SAMIRS HERZ BEIM RENNEN  (Förderheft Bio 5/6 · bk5) ──
+  'bio-puls': modal => {
+    _bkpInit();
+    modal.innerHTML = _bkpHTML();
+    _bkpStatus();
+    _pSim = new PhysicsSimEngine('_bkp-cv', '_bkp-cv');
+    _pSim.start(dt => _bkpUpdate(dt), (ctx, cv) => _bkpDraw(ctx, cv), []);
+  },
+
+  // ── BIOLOGIE 5/6 FOERDER: Blutkreislauf (bk6) ──────────────
+  'bio-kreislauf': modal => { _bkbInit(); modal.innerHTML = _bkbHTML(); _bkbStatus(); _bkbKnoepfe(); _pSim = new PhysicsSimEngine('_bkb-cv','_bkb-cv'); _pSim.start(dt => _bkbUpdate(dt), (ctx,cv) => _bkbDraw(ctx,cv), []); },
+
+  // ── BIO 5/6 · NÄHRSTOFFNACHWEISE AM PICKNICKTISCH  (Förderheft Bio 5/6 · bk7) ──
+  'bio-naehrstoffe': modal => {
+    _bknInit();
+    modal.innerHTML = _bknHTML();
+    _bknStatus();
+    _pSim = new PhysicsSimEngine('_bkn-cv', '_bkn-cv');
+    _pSim.start(dt => _bknUpdate(dt), (ctx, cv) => _bknDraw(ctx, cv), []);
+  },
+
+  // ── BIOLOGIE 5/6 FOERDER: Weg der Nahrung und Darmwand (bk8) ──────────
+  'bio-verdauung': modal => { _bkvInit(); modal.innerHTML = _bkvHTML(); _bkvStatus(); _bkvKnoepfe(); _pSim = new PhysicsSimEngine('_bkv-cv','_bkv-cv'); _pSim.start(dt => _bkvUpdate(dt), (ctx,cv) => _bkvDraw(ctx,cv), []); },
+
+  // ── BIO 5/6 · DREI TELLER IM VERGLEICH  (Förderheft Bio 5/6 · bk9) ──
+  'bio-teller': modal => {
+    _bktInit();
+    modal.innerHTML = _bktHTML();
+    _bktStatus();
+    _pSim = new PhysicsSimEngine('_bkt-cv', '_bkt-cv');
+    _pSim.start(dt => _bktUpdate(dt), (ctx, cv) => _bktDraw(ctx, cv), []);
+  },
+
+  // ── BIO 5/6 · RAUCH IN DER LUNGE  (Förderheft Bio 5/6 · bk10) ──
+  'bio-rauchen': modal => {
+    _bkxInit();
+    modal.innerHTML = _bkxHTML();
+    _bkxStatus();
+    _pSim = new PhysicsSimEngine('_bkx-cv', '_bkx-cv');
+    _pSim.start(dt => _bkxUpdate(dt), (ctx, cv) => _bkxDraw(ctx, cv), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -95246,4 +95319,5991 @@ function _bjkKalender(ctx) {
     ctx.fillRect(cx, cy, 5, 5);
   }
   ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · WELCHE KNOCHEN TRAGEN MICH?   (Förderheft Bio 5/6 · bk1)
+// Eine Figur steht von der Seite gesehen (Blick nach rechts), Haut hell,
+// Knochen darauf sichtbar. Im MODELL lässt sich EINE Knochengruppe
+// herausnehmen („Knochen weg“): Sie fliegt in die Ablage oben rechts.
+//   Wirbelsäule weg -> der Oberkörper sackt nach vorne zusammen (2 s)
+//   Beinknochen weg -> die Beine knicken ein, die Figur fällt um (2 s)
+//   Rippen weg      -> die Figur steht, Herz und Lunge liegen frei
+//                      (rot umrandet, ruhig, kein Blinken)
+// Die Statuszeile beschreibt NUR, was man sieht, nie die Aufgabe des Knochens
+// (Spalte 3 der Tabelle schreibt das Kind selbst).
+// Leben: Atmen (Brustkorb hebt sich), Herzschlag, leichtes Wiegen, dazu die
+// Röntgenlupe: Sie folgt Finger oder Maus über der Leinwand, sonst wandert sie
+// langsam von selbst über den Körper. In der Lupe ist es dunkel, die Knochen
+// leuchten hell, die Knochengruppe unter der Lupenmitte leuchtet golden auf
+// und trägt ihren Namen.
+// Aha (nach der Beobachtung, _bioFx): Beim Einsetzen des fehlenden Knochens
+// fliegt er aus der Ablage zurück (Funken, Lichtring), die Figur richtet sich
+// auf und macht einen Schritt nach vorn; dann läuft ein goldenes Leuchten von
+// den Füßen bis zum Kopf durch alle Knochen, kurzer Konfettiregen und das
+// Banner „Alle Knochen sind wieder da.“ Danach tritt die Figur ruhig an ihren
+// Platz zurück. Kein Ton, keine Wertung, nichts blinkt (Puls 0,8 Hz).
+// ═══════════════════════════════════════════════════════
+let _bks = null;
+const _BKS_BODEN = 226;               // Fußboden (y)
+const _BKS_FUSS = 220;                // Knöchelhöhe (y)
+const _BKS_X0 = 150;                  // Hüfte im Stand (x)
+const _BKS_HY = 133;                  // Hüfte im Stand (y)
+const _BKS_OS = 44;                   // Oberschenkel = Unterschenkel
+const _BKS_RS = 34;                   // ein Rückenstück (zwei übereinander)
+const _BKS_LUPE = 38;                 // Radius der Röntgenlupe
+const _BKS_WAHL = ['keiner', 'wirbel', 'bein', 'rippen'];
+const _BKS_WORT = { keiner: 'keiner', wirbel: 'Wirbelsäule', bein: 'Beinknochen', rippen: 'Rippen' };
+const _BKS_NAME = { wirbel: 'Wirbelsäule', rippen: 'Rippen', bein: 'Beinknochen',
+                    schaedel: 'Schädel', becken: 'Becken', arm: 'Armknochen' };
+const _BKS_SATZ = {
+  keiner: 'Alle Knochen sind da. Die Figur steht.',
+  wirbel: 'Der Oberkörper sackt nach vorne zusammen.',
+  bein:   'Die Beine knicken ein, die Figur fällt um.',
+  rippen: 'Die Figur steht, Herz und Lunge liegen frei.'
+};
+const _BKS_ABLAGE = { x: 312, y: 56, w: 102, h: 84 };
+// Ablauf des Schritts (Aha): vor 1,1 s · stehen 1,0 s · zurück 1,1 s
+const _BKS_SV = 1.1, _BKS_SP = 1.0, _BKS_SZ = 1.1, _BKS_SW = 26;
+
+function _bksInit() {
+  _bks = { weg: 'keiner', t: 0, fx: { teile: [] },
+    da: { wirbel: 1, bein: 1, rippen: 1 },      // 1 = Knochen im Körper, 0 = in der Ablage
+    K: { wirbel: 0, bein: 0 },                   // 0 = aufrecht, 1 = zusammengesackt/umgefallen
+    hoch: { wirbel: false, bein: false },        // richtet sich gerade auf?
+    lupe: { x: 170, y: 120 }, zeiger: null, zeigerZeit: -99, marke: null, markeRest: 0,
+    zurueck: false, schritt: -1, glanz: -1, pose: null, knochen: null, letzt: '' };
+  _bksPoseNeu();
+}
+
+// ── Bedienung ─────────────────────────────────────────
+function _bksWeg(i) {
+  if (!_bks) return;
+  const w = _BKS_WAHL[i] || 'keiner';
+  _bks.weg = w;
+  _bksStatus();
+}
+function _bksNeu() {
+  if (!_bks) return;
+  _bks.weg = 'keiner'; _bks.marke = null; _bks.markeRest = 0;
+  _bksStatus();
+}
+// Sprungmarke: Röntgenlupe fährt zu einer Knochengruppe und bleibt dort 5 s.
+function _bksBlick(g) {
+  if (!_bks) return;
+  _bks.marke = g; _bks.markeRest = 5; _bks.zeigerZeit = -99;
+}
+function _bksMaus() {
+  const cv = document.getElementById('_bks-cv');
+  if (!cv || typeof cv.addEventListener !== 'function') return;
+  const pos = ev => {
+    const r = cv.getBoundingClientRect ? cv.getBoundingClientRect() : { left: 0, top: 0 };
+    const rw = r.width || cv.width, rh = r.height || cv.height;
+    return { x: (ev.clientX - r.left) * (cv.width / rw), y: (ev.clientY - r.top) * (cv.height / rh) };
+  };
+  const setze = ev => { if (!_bks) return; _bks.zeiger = pos(ev); _bks.zeigerZeit = _bks.t; _bks.markeRest = 0; };
+  cv.addEventListener('pointermove', setze);
+  cv.addEventListener('pointerdown', setze);
+  cv.addEventListener('pointerleave', () => { if (_bks) _bks.zeigerZeit = -99; });
+}
+
+function _bksHTML() {
+  const knopf = (i) =>
+    `<button class="sim-btn" data-bks="w${i}" onclick="_bksWeg(${i})">${_BKS_WORT[_BKS_WAHL[i]]}</button>`;
+  const blick = (g) =>
+    `<button class="sim-btn" onclick="_bksBlick('${g}')">Röntgenblick: ${_BKS_NAME[g]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welche Knochen tragen mich?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Figur steht. Ihre Knochen sind zu sehen. Nimm im Modell EINE Knochengruppe heraus und beobachte den Körper.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bks-cv" width="420" height="250" class="phys-anim-cv" style="touch-action:none"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bksNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Knochen weg</span>
+          <div class="sim-btn-row">
+            ${knopf(0)}${knopf(1)}${knopf(2)}${knopf(3)}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bks-status"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${blick('wirbel')}${blick('rippen')}${blick('bein')}
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Fahre mit dem Finger oder der Maus über die Figur. Die Röntgenlupe zeigt dir die Knochen.</div>
+        <div class="fpm-note" style="margin-top:8px">Das ist ein Modell. Im echten Körper fehlt kein Knochen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Knochen weg: keiner &nbsp;|&nbsp; Nimm immer nur EINE Knochengruppe heraus.</p>
+  </div>`;
+}
+
+function _bksZeile() {
+  return 'Knochen weg: ' + _BKS_WORT[_bks.weg] + ' · ' + _BKS_SATZ[_bks.weg];
+}
+function _bksStatus() {
+  if (!_bks) return;
+  const z = _bksZeile();
+  const el = document.getElementById('_bks-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _bks.letzt = z;
+  try {
+    document.querySelectorAll('[data-bks]').forEach(b => {
+      const d = String(b.getAttribute('data-bks'));
+      if (b.classList) b.classList.toggle('primary', d === 'w' + _BKS_WAHL.indexOf(_bks.weg));
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+// ── Geometrie ─────────────────────────────────────────
+function _bksDir(a) { return { x: Math.sin(a), y: -Math.cos(a) }; }       // 0 = nach oben, + = nach vorn
+function _bksPlus(p, d, l) { return { x: p.x + d.x * l, y: p.y + d.y * l }; }
+function _bksLerp(p, q, u) { return { x: p.x + (q.x - p.x) * u, y: p.y + (q.y - p.y) * u }; }
+// Knie aus Hüfte und Knöchel (zwei gleich lange Glieder, Knie zeigt nach vorn)
+function _bksKnie(h, a) {
+  const L = _BKS_OS;
+  let dx = a.x - h.x, dy = a.y - h.y, d = Math.hypot(dx, dy) || 1;
+  if (d > 2 * L - 0.01) return { k: { x: h.x + dx / 2, y: h.y + dy / 2 }, a: _bksPlus(h, { x: dx / d, y: dy / d }, 2 * L) };
+  const q = Math.sqrt(L * L - d * d / 4);
+  return { k: { x: (h.x + a.x) / 2 + (dy / d) * q, y: (h.y + a.y) / 2 - (dx / d) * q }, a };
+}
+// Schrittablauf st (s) -> Verschiebung und Fußlagen
+function _bksSchritt(st) {
+  const e = _bioFxEase.sanft, kl = _bioFxKlemme;
+  const r = { dx: 0, ff: 0, fn: 0, lf: 0, ln: 0, arm: 0 };
+  if (st < 0) return r;
+  if (st < _BKS_SV) {                                    // nach vorn: hinteres Bein zuerst
+    const u = st / _BKS_SV, uf = kl(u * 2), un = kl(u * 2 - 1);
+    r.dx = _BKS_SW * e(u); r.ff = _BKS_SW * e(uf); r.fn = _BKS_SW * e(un);
+    r.lf = 8 * Math.sin(Math.PI * uf); r.ln = 8 * Math.sin(Math.PI * un);
+    r.arm = 0.3 * Math.sin(Math.PI * u * 2);
+  } else if (st < _BKS_SV + _BKS_SP) {
+    r.dx = r.ff = r.fn = _BKS_SW;
+  } else {                                               // ruhig zurück an den Platz
+    const u = kl((st - _BKS_SV - _BKS_SP) / _BKS_SZ), un = kl(u * 2), uf = kl(u * 2 - 1);
+    r.dx = _BKS_SW * (1 - e(u)); r.fn = _BKS_SW * (1 - e(un)); r.ff = _BKS_SW * (1 - e(uf));
+    r.ln = 6 * Math.sin(Math.PI * un); r.lf = 6 * Math.sin(Math.PI * uf);
+    r.arm = -0.2 * Math.sin(Math.PI * u * 2);
+  }
+  return r;
+}
+// Körperhaltung. ref = ruhige Standhaltung (für die Ablage).
+function _bksPose(ref) {
+  const b = _bks, grad = Math.PI / 180, e = _bioFxEase, kl = _bioFxKlemme;
+  const kw = ref ? 0 : b.K.wirbel, kb = ref ? 0 : b.K.bein;
+  const wK = e.sanft(kw);
+  const knick = e.sanft(kl(kb * 2));
+  const fall = b.hoch.bein || ref ? e.sanft(kl(kb * 2 - 1)) : e.aufprall(kl(kb * 2 - 1));
+  const atm = ref ? 0 : Math.sin(b.t * 1.6);           // Atmen, etwa alle 4 s
+  const wieg = ref ? 0 : 0.02 * Math.sin(b.t * 0.8) * (1 - wK) * (1 - knick);
+  const s = _bksSchritt(ref ? -1 : b.schritt);
+  const H = { x: _BKS_X0 + s.dx, y: _BKS_HY + 42 * knick };
+  const a1 = wieg + (38 * wK + 12 * fall) * grad, a2 = 55 * wK * grad, ah = (30 * wK + 12 * knick) * grad;
+  const M = _bksPlus(H, _bksDir(a1), _BKS_RS);
+  const N = _bksPlus(M, _bksDir(a1 + a2), _BKS_RS);
+  const Kopf = _bksPlus(N, _bksDir(a1 + a2 + ah), 20);
+  const S = _bksPlus(M, _bksDir(a1 + a2), 27);
+  const sw = (ref ? 0 : 0.05 * Math.sin(b.t * 0.8 + 1)) + s.arm;
+  const E = _bksPlus(S, _bksDir(Math.PI + sw), 28);
+  const W = _bksPlus(E, _bksDir(Math.PI - 0.28 + sw * 1.3), 26);
+  const Sf = { x: S.x - 3, y: S.y + 1 };
+  const Ef = _bksPlus(Sf, _bksDir(Math.PI - sw), 28);
+  const Wf = _bksPlus(Ef, _bksDir(Math.PI - 0.28 - sw * 1.3), 26);
+  const lf = _bksKnie(H, { x: _BKS_X0 - 3 + s.ff, y: _BKS_FUSS - s.lf });
+  const ln = _bksKnie(H, { x: _BKS_X0 + 3 + s.fn, y: _BKS_FUSS - s.ln });
+  const P = { H, M, N, Kopf, S, E, W, Sf, Ef, Wf, Kf: lf.k, Af: lf.a, Kn: ln.k, An: ln.a };
+  // Umfallen: alles dreht sich um den vorderen Knöchel nach vorn
+  const phi = 84 * grad * fall;
+  if (phi > 0) {
+    const c = Math.cos(phi), sn = Math.sin(phi), p0 = ln.a;
+    for (const k of Object.keys(P)) {
+      if (k === 'An') continue;
+      const x = P[k].x - p0.x, y = P[k].y - p0.y;
+      P[k] = { x: p0.x + x * c - y * sn, y: p0.y + x * sn + y * c };
+    }
+  }
+  // nichts sinkt in den Boden
+  for (const k of Object.keys(P)) {
+    const r = k === 'Kopf' ? 16 : (k === 'Af' || k === 'An') ? 6 : 5;
+    if (P[k].y > _BKS_BODEN - r) P[k] = { x: P[k].x, y: _BKS_BODEN - r };
+  }
+  P.aO = a1 + a2 + phi; P.aU = a1 + phi; P.aK = a1 + a2 + ah + phi; P.atm = atm;
+  P.phi = phi;
+  return P;
+}
+// Knochenliste in Zeichenreihenfolge (hinten zuerst). Gleiche Reihenfolge für
+// jede Haltung -> Knochen i der Ablage passt zu Knochen i im Körper.
+function _bksKnochen(P) {
+  const L = [], u = _bksDir(P.aO), v = _bksDir(P.aO + Math.PI / 2);
+  const uu = _bksDir(P.aU), vu = _bksDir(P.aU + Math.PI / 2), f = 1 + 0.04 * P.atm;
+  const lang = (g, a, b, w, hinten) => L.push({ g, typ: 'lang', p: [a, b], w, hinten });
+  // hinterer Arm, hinteres Bein
+  lang('arm', P.Sf, P.Ef, 4.6, 1); lang('arm', P.Ef, P.Wf, 3.8, 1);
+  lang('bein', P.H, P.Kf, 6, 1); lang('bein', P.Kf, P.Af, 5, 1);
+  lang('bein', { x: P.Af.x - 3, y: P.Af.y + 3 }, { x: P.Af.x + 11, y: P.Af.y + 4 }, 3.6, 1);
+  // Becken
+  L.push({ g: 'becken', typ: 'flaeche', p: [
+    _bksPlus(_bksPlus(P.H, uu, 12), vu, -5), _bksPlus(_bksPlus(P.H, uu, 10), vu, 9),
+    _bksPlus(_bksPlus(P.H, uu, -2), vu, 15), _bksPlus(_bksPlus(P.H, uu, -8), vu, 6),
+    _bksPlus(_bksPlus(P.H, uu, -6), vu, -5)] });
+  // Wirbelsäule: 6 + 6 Wirbel, 2 Halswirbel
+  for (let i = 0; i < 6; i++)
+    L.push({ g: 'wirbel', typ: 'wirbel', p: [_bksLerp(P.H, P.M, i / 6 + 0.02), _bksLerp(P.H, P.M, (i + 1) / 6 - 0.02)], w: 7 });
+  for (let i = 0; i < 6; i++)
+    L.push({ g: 'wirbel', typ: 'wirbel', p: [_bksLerp(P.M, P.N, i / 6 + 0.02), _bksLerp(P.M, P.N, (i + 1) / 6 - 0.02)], w: 6 });
+  const hd = _bksDir(P.aK);
+  L.push({ g: 'wirbel', typ: 'wirbel', p: [_bksPlus(P.N, hd, 0.8), _bksPlus(P.N, hd, 3.6)], w: 5 });
+  L.push({ g: 'wirbel', typ: 'wirbel', p: [_bksPlus(P.N, hd, 4.6), _bksPlus(P.N, hd, 7.4)], w: 5 });
+  L.push({ typ: 'organe' });                             // Herz und Lunge hier dazwischen
+  // Rippen: vom Rücken nach vorn und etwas nach unten zum Brustbein
+  for (let k = 0; k < 6; k++) {
+    const ds = 30 - k * 4.4, lose = k > 3;             // die unteren Rippen sind kürzer
+    const p0 = _bksPlus(P.M, u, ds);
+    const p1 = _bksPlus(_bksPlus(P.M, u, ds + 3), v, 13 * f);
+    const p2 = _bksPlus(_bksPlus(P.M, u, ds - (lose ? 7 : 9)), v, (lose ? 18 : 25) * f);
+    L.push({ g: 'rippen', typ: 'rippe', p: [p0, p1, p2], w: 2.6 });
+  }
+  L.push({ g: 'rippen', typ: 'lang', p: [_bksPlus(_bksPlus(P.M, u, 8), v, 25.5 * f), _bksPlus(_bksPlus(P.M, u, 29), v, 25 * f)], w: 3.2 });
+  // Schädel
+  L.push({ g: 'schaedel', typ: 'kopf', p: [P.Kopf], a: P.aK });
+  // vorderes Bein, vorderer Arm
+  lang('bein', P.H, P.Kn, 6.4, 0); lang('bein', P.Kn, P.An, 5.4, 0);
+  lang('bein', { x: P.An.x - 3, y: P.An.y + 3 }, { x: P.An.x + 12, y: P.An.y + 4 }, 3.8, 0);
+  lang('arm', P.S, P.E, 5, 0); lang('arm', P.E, P.W, 4.2, 0);
+  return L;
+}
+function _bksMittelpunkt(liste, g) {
+  let x = 0, y = 0, n = 0;
+  for (const k of liste) if (k.g === g) for (const p of k.p) { x += p.x; y += p.y; n++; }
+  return n ? { x: x / n, y: y / n } : { x: _BKS_X0, y: 120 };
+}
+function _bksPoseNeu() {
+  _bks.pose = _bksPose(false);
+  _bks.knochen = _bksKnochen(_bks.pose);
+  if (!_bks.ref) {
+    _bks.ref = _bksKnochen(_bksPose(true));
+    _bks.refMitte = {};
+    for (const g of ['wirbel', 'bein', 'rippen']) _bks.refMitte[g] = _bksMittelpunkt(_bks.ref, g);
+  }
+}
+
+// ── Ablauf ───────────────────────────────────────────
+function _bksUpdate(dt) {
+  if (!_bks) return;
+  dt = _bioFxDt(dt);
+  const b = _bks;
+  b.t += dt;
+  const frei = b.schritt < 0;                           // während des Schritts wird nichts herausgenommen
+  // 1) Knochen heraus (0,6 s) oder zurück (0,8 s)
+  for (const g of ['wirbel', 'bein', 'rippen']) {
+    const vor = b.da[g];
+    if (b.weg !== g) b.da[g] = Math.min(1, vor + dt / 0.8);
+    else if (frei) b.da[g] = Math.max(0, vor - dt / 0.6);
+    if (vor < 1 && b.da[g] >= 1) _bksEingesetzt(g);
+    if (g === 'rippen' && vor > 0 && b.da[g] <= 0) _bksBeobachtet(g);
+  }
+  // 2) Körper sackt zusammen / knickt ein (2 s) – erst wenn der Knochen draußen ist.
+  //    Aufrichten (1,4 s) erst, wenn der Knochen wieder drin ist.
+  for (const g of ['wirbel', 'bein']) {
+    const vor = b.K[g];
+    if (b.weg === g && b.da[g] <= 0) {
+      b.hoch[g] = false;
+      b.K[g] = Math.min(1, vor + dt / 2);
+      if (vor < 1 && b.K[g] >= 1) _bksBeobachtet(g);
+    } else if (b.da[g] >= 1 && vor > 0) {
+      b.hoch[g] = true;
+      b.K[g] = Math.max(0, vor - dt / 1.4);
+    }
+  }
+  // 3) Aha: alles wieder drin und aufgerichtet -> ein Schritt nach vorn
+  const heil = b.weg === 'keiner' && !b.K.wirbel && !b.K.bein &&
+               b.da.wirbel >= 1 && b.da.bein >= 1 && b.da.rippen >= 1;
+  if (b.zurueck && heil && b.schritt < 0) { b.zurueck = false; b.schritt = 0; }
+  if (b.schritt >= 0) {
+    const vor = b.schritt;
+    b.schritt += dt;
+    if (vor < _BKS_SV && b.schritt >= _BKS_SV) _bksAhaSchritt();
+    if (b.schritt >= _BKS_SV + _BKS_SP + _BKS_SZ) b.schritt = -1;
+  }
+  if (b.glanz >= 0) { b.glanz += dt; if (b.glanz > 1.6) b.glanz = -1; }
+  _bksPoseNeu();
+  // 4) Röntgenlupe: Finger/Maus > Sprungmarke > wandert von selbst
+  let zx, zy;
+  if (b.zeiger && b.t - b.zeigerZeit < 3) { zx = b.zeiger.x; zy = b.zeiger.y; }
+  else if (b.marke && b.markeRest > 0) {
+    b.markeRest -= dt;
+    const g = b.marke, m = b.da[g] > 0.5 ? _bksMittelpunkt(b.knochen, g) : { x: _BKS_ABLAGE.x + _BKS_ABLAGE.w / 2, y: _BKS_ABLAGE.y + 48 };
+    zx = m.x; zy = m.y;
+  } else {
+    // von selbst: alle 2,6 s zur nächsten Knochengruppe, dazwischen leise kreisen
+    const reihe = ['schaedel', 'wirbel', 'rippen', 'arm', 'becken', 'bein']
+      .filter(g => b.da[g] === undefined || b.da[g] > 0.5);
+    const g = reihe[Math.floor(b.t / 2.6) % reihe.length], m = _bksMittelpunkt(b.knochen, g);
+    zx = m.x + 5 * Math.sin(b.t * 1.3); zy = m.y + 5 * Math.cos(b.t * 1.1);
+  }
+  const k = Math.min(1, dt * 5);
+  b.lupe.x += (zx - b.lupe.x) * k; b.lupe.y += (zy - b.lupe.y) * k;
+  _bioFxAlleUpdate(b.fx, dt);
+}
+// Beobachtung abgeschlossen: ein ruhiger Lichtring an der Stelle, auf die es ankommt.
+function _bksBeobachtet(g) {
+  const P = _bks.pose, T = _bks.fx.teile;
+  if (g === 'wirbel') _bioFxWelle(T, P.N.x, P.N.y, '#93c5fd', 34);
+  else if (g === 'bein') _bioFxWelle(T, P.Kn.x, P.Kn.y, '#93c5fd', 34);
+  else { const h = _bksHerz(P); _bioFxWelle(T, h.x, h.y, '#f87171', 30); }
+}
+// Ein Knochen ist wieder eingesetzt: Funken an seinem Platz.
+function _bksEingesetzt(g) {
+  const m = _bksMittelpunkt(_bks.knochen, g), T = _bks.fx.teile;
+  _bioFxFunken(T, m.x, m.y, 10, ['#ffd84d', '#fff3b0', '#ffffff']);
+  _bioFxWelle(T, m.x, m.y, '#ffe27a', 40);
+  _bks.zurueck = true;
+}
+// Der Schritt ist gesetzt: Leuchten von den Füßen bis zum Kopf, Konfetti, Banner.
+function _bksAhaSchritt() {
+  const P = _bks.pose, T = _bks.fx.teile;
+  _bks.glanz = 0;
+  _bioFxFunken(T, P.An.x + 6, P.An.y + 2, 8);
+  _bioFxKonfetti(T, P.M.x + 10, P.M.y, 18);
+  _bioFxBanner(_bks.fx, 'Alle Knochen\nsind wieder da.', 2.8, '#ffd84d');
+}
+function _bksHerz(P) {
+  const u = _bksDir(P.aO), v = _bksDir(P.aO + Math.PI / 2);
+  return _bksPlus(_bksPlus(P.M, u, 13), v, 18);
+}
+function _bksLungeMitte(P) {
+  const u = _bksDir(P.aO), v = _bksDir(P.aO + Math.PI / 2);
+  return _bksPlus(_bksPlus(P.M, u, 21), v, 11);
+}
+
+// ── Zeichnen ─────────────────────────────────────────
+// Welche Knochengruppe liegt unter der Lupenmitte?
+function _bksUnterLupe() {
+  const b = _bks, q = b.lupe;
+  const seg = (p, a, c) => {
+    const dx = c.x - a.x, dy = c.y - a.y, l2 = dx * dx + dy * dy || 1;
+    const t = _bioFxKlemme(((p.x - a.x) * dx + (p.y - a.y) * dy) / l2);
+    return Math.hypot(p.x - a.x - t * dx, p.y - a.y - t * dy);
+  };
+  let best = null, bd = 15;
+  for (const k of b.knochen) {
+    if (!k.g || (b.da[k.g] !== undefined && b.da[k.g] < 0.95)) continue;
+    let d;
+    if (k.typ === 'kopf') d = Math.max(0, Math.hypot(q.x - k.p[0].x, q.y - k.p[0].y) - 15);
+    else if (k.typ === 'flaeche') { const m = _bksMittelpunkt([k], k.g); d = Math.hypot(q.x - m.x, q.y - m.y) - 8; }
+    else if (k.typ === 'rippe') d = Math.min(seg(q, k.p[0], k.p[1]), seg(q, k.p[1], k.p[2]));
+    else d = seg(q, k.p[0], k.p[1]) - k.w / 2;
+    if (d < bd) { bd = d; best = k.g; }
+  }
+  return best;
+}
+// Ein Knochen. stil: 'normal' | 'roentgen'; glanz 0..1 = goldener Schein.
+function _bksKnochenZeichnen(ctx, k, stil, glanz, alpha) {
+  const roe = stil === 'roentgen';
+  const fuell = roe ? '#eaf6ff' : (k.hinten ? '#e4d8bd' : '#f7efdc');
+  const rand = roe ? '#9fd8ff' : (k.hinten ? '#a8946c' : '#b39c70');
+  const pfad = () => {
+    ctx.beginPath();
+    if (k.typ === 'lang' || k.typ === 'wirbel') { ctx.moveTo(k.p[0].x, k.p[0].y); ctx.lineTo(k.p[1].x, k.p[1].y); }
+    else if (k.typ === 'rippe') { ctx.moveTo(k.p[0].x, k.p[0].y); ctx.quadraticCurveTo(k.p[1].x, k.p[1].y, k.p[2].x, k.p[2].y); }
+  };
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.lineCap = k.typ === 'wirbel' ? 'butt' : 'round'; ctx.lineJoin = 'round';
+  if (k.typ === 'kopf') {
+    const c = k.p[0], v = _bksDir(k.a + Math.PI / 2), u = _bksDir(k.a);
+    if (glanz > 0) { ctx.save(); ctx.globalAlpha = alpha * glanz * 0.85; ctx.fillStyle = '#ffd84d'; ctx.shadowColor = '#ffd84d'; ctx.shadowBlur = 14;
+      ctx.beginPath(); ctx.arc(c.x, c.y, 18, 0, 2 * Math.PI); ctx.fill(); ctx.restore(); }
+    if (roe) { ctx.shadowColor = '#8fd3ff'; ctx.shadowBlur = 8; }
+    ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(c.x, c.y, 14, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    // Kiefer
+    const j = _bksPlus(_bksPlus(c, v, 7), u, -10);
+    ctx.beginPath(); ctx.ellipse(j.x, j.y, 7, 4, k.a + 0.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.shadowBlur = 0;
+    const au = _bksPlus(_bksPlus(c, v, 7), u, 2);
+    ctx.fillStyle = roe ? '#0f1b33' : '#6b5b3e';
+    ctx.beginPath(); ctx.ellipse(au.x, au.y, 3.4, 3, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore(); return;
+  }
+  if (k.typ === 'flaeche') {
+    const zug = () => { ctx.beginPath(); ctx.moveTo(k.p[0].x, k.p[0].y); for (const p of k.p.slice(1)) ctx.lineTo(p.x, p.y); ctx.closePath(); };
+    if (glanz > 0) { ctx.save(); ctx.globalAlpha = alpha * glanz * 0.85; ctx.strokeStyle = '#ffd84d'; ctx.lineWidth = 8; ctx.shadowColor = '#ffd84d'; ctx.shadowBlur = 12; zug(); ctx.stroke(); ctx.restore(); }
+    if (roe) { ctx.shadowColor = '#8fd3ff'; ctx.shadowBlur = 8; }
+    ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 1.6; zug(); ctx.fill(); ctx.stroke();
+    ctx.restore(); return;
+  }
+  if (glanz > 0) {
+    ctx.save(); ctx.globalAlpha = alpha * glanz * 0.85; ctx.strokeStyle = '#ffd84d'; ctx.lineWidth = k.w + 7;
+    ctx.shadowColor = '#ffd84d'; ctx.shadowBlur = 12; ctx.lineCap = 'round'; pfad(); ctx.stroke(); ctx.restore();
+  }
+  if (roe) { ctx.shadowColor = '#8fd3ff'; ctx.shadowBlur = 7; }
+  ctx.strokeStyle = rand; ctx.lineWidth = k.w + 2; pfad(); ctx.stroke();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = fuell; ctx.lineWidth = k.w; pfad(); ctx.stroke();
+  if (k.typ === 'lang' && k.w >= 4) {                    // Gelenkköpfe
+    ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 1;
+    for (const p of k.p) { ctx.beginPath(); ctx.arc(p.x, p.y, k.w * 0.72, 0, 2 * Math.PI); ctx.fill(); ctx.stroke(); }
+  }
+  ctx.restore();
+}
+function _bksHaut(ctx, P, roe) {
+  const u = _bksDir(P.aO), v = _bksDir(P.aO + Math.PI / 2), uu = _bksDir(P.aU), vu = _bksDir(P.aU + Math.PI / 2);
+  const f = 1 + 0.04 * P.atm;
+  const hell = roe ? 'rgba(125,170,235,0.30)' : '#f6d7bd', dunkel = roe ? 'rgba(125,170,235,0.22)' : '#e8c2a1';
+  const glied = (pts, w, farbe) => {
+    ctx.strokeStyle = farbe; ctx.lineWidth = w; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); for (const p of pts.slice(1)) ctx.lineTo(p.x, p.y); ctx.stroke();
+  };
+  ctx.save();
+  glied([P.Sf, P.Ef, P.Wf], 11, dunkel);
+  glied([P.H, P.Kf, P.Af], 15, dunkel);
+  ctx.fillStyle = dunkel;
+  ctx.beginPath(); ctx.ellipse(P.Af.x + 4, P.Af.y + 3, 10, 4, 0, 0, 2 * Math.PI); ctx.fill();
+  // Rumpf
+  ctx.fillStyle = hell; ctx.strokeStyle = hell; ctx.lineWidth = 6; ctx.lineJoin = 'round';
+  const pts = [
+    _bksPlus(_bksPlus(P.H, uu, -4), vu, -10), _bksPlus(P.M, vu, -9), _bksPlus(P.N, v, -6),
+    _bksPlus(P.N, v, 9), _bksPlus(_bksPlus(P.M, u, 26), v, 31 * f), _bksPlus(_bksPlus(P.M, u, 6), v, 30 * f),
+    _bksPlus(_bksPlus(P.H, uu, 16), vu, 23), _bksPlus(_bksPlus(P.H, uu, -6), vu, 16)];
+  ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y); for (const p of pts.slice(1)) ctx.lineTo(p.x, p.y); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  glied([P.N, P.Kopf], 12, hell);
+  ctx.beginPath(); ctx.arc(P.Kopf.x, P.Kopf.y, 18, 0, 2 * Math.PI); ctx.fill();
+  glied([P.H, P.Kn, P.An], 15, hell);
+  ctx.fillStyle = hell;
+  ctx.beginPath(); ctx.ellipse(P.An.x + 5, P.An.y + 3, 11, 4.5, 0, 0, 2 * Math.PI); ctx.fill();
+  glied([P.S, P.E, P.W], 11, hell);
+  ctx.restore();
+}
+function _bksOrgane(ctx, P, roe, frei) {
+  const b = _bks, v = _bksDir(P.aO + Math.PI / 2);
+  const f = 1 + 0.06 * P.atm;
+  const L = _bksLungeMitte(P), Hz = _bksHerz(P);
+  const schlag = Math.pow(Math.max(0, Math.sin(b.t * 2 * Math.PI * 1.1)), 4);   // ruhiger Herzschlag
+  ctx.save();
+  ctx.globalAlpha = roe ? 0.45 : 0.95;
+  ctx.fillStyle = '#f4a6ad';
+  ctx.beginPath(); ctx.ellipse(L.x, L.y, 8.5 * f, 13.5 * f, P.aO, 0, 2 * Math.PI); ctx.fill();
+  if (frei > 0) { ctx.globalAlpha = frei; ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5; ctx.stroke(); ctx.globalAlpha = roe ? 0.45 : 0.95; }
+  ctx.fillStyle = '#d33a4c';
+  const r = 6.5 * (1 + 0.1 * schlag);
+  ctx.beginPath(); ctx.ellipse(Hz.x, Hz.y, r, r * 1.2, P.aO - 0.5, 0, 2 * Math.PI); ctx.fill();
+  if (frei > 0) { ctx.globalAlpha = frei; ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5; ctx.stroke(); }
+  ctx.restore();
+  if (frei > 0.5 && !roe) {                              // Namen an Herz und Lunge
+    ctx.save();
+    ctx.globalAlpha = _bioFxKlemme((frei - 0.5) * 2);
+    ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 1; ctx.fillStyle = '#7f1d1d';
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    const lz = _bksPlus(Hz, v, 34), lz2 = _bksPlus(L, v, 26);
+    ctx.beginPath(); ctx.moveTo(Hz.x + 6, Hz.y); ctx.lineTo(lz.x - 2, Hz.y + 10); ctx.stroke();
+    ctx.fillText('Herz', lz.x, Hz.y + 14);
+    ctx.beginPath(); ctx.moveTo(L.x + 8, L.y - 6); ctx.lineTo(lz2.x - 2, L.y - 14); ctx.stroke();
+    ctx.fillText('Lunge', lz2.x, L.y - 12);
+    ctx.restore();
+  }
+}
+// Alle Knochen in einem Stil; herausgenommene Gruppen fliegen zur Ablage.
+function _bksAlleKnochen(ctx, P, stil, hover) {
+  const b = _bks, A = _BKS_ABLAGE, ac = { x: A.x + A.w / 2, y: A.y + 48 };
+  const frei = 1 - b.da.rippen;
+  for (let i = 0; i < b.knochen.length; i++) {
+    const k = b.knochen[i];
+    if (k.typ === 'organe') { _bksOrgane(ctx, P, stil === 'roentgen', frei); continue; }
+    let z = k, aus = 0;
+    if (b.da[k.g] !== undefined && b.da[k.g] < 1) {
+      aus = _bioFxEase.sanft(1 - b.da[k.g]);
+      const r = b.ref[i], m = b.refMitte[k.g], sk = k.g === 'bein' ? 0.52 : k.g === 'wirbel' ? 0.7 : 1;
+      z = Object.assign({}, k, { p: k.p.map((p, j) => {
+        const q = { x: ac.x + (r.p[j].x - m.x) * sk, y: ac.y + (r.p[j].y - m.y) * sk };
+        const w = _bksLerp(p, q, aus);
+        return { x: w.x, y: w.y - 24 * Math.sin(Math.PI * aus) };
+      }), w: k.w ? k.w * (1 - aus * 0.35) : k.w });
+      if (stil === 'roentgen' && aus > 0.2) continue;   // in der Lupe nur, was im Körper ist
+    }
+    let gl = 0;
+    if (stil === 'roentgen' && hover && k.g === hover) gl = 0.7 + 0.3 * Math.sin(b.t * 2 * Math.PI * 0.8);
+    if (b.glanz >= 0 && !aus) {                           // Leuchten läuft von den Füßen zum Kopf
+      const sy = _BKS_BODEN - (_BKS_BODEN - 20) * _bioFxEase.raus(_bioFxKlemme(b.glanz / 0.9));
+      const my = z.p.reduce((s, p) => s + p.y, 0) / z.p.length;
+      gl = Math.max(gl, _bioFxKlemme(1 - Math.abs(my - sy) / 40) * _bioFxKlemme((1.6 - b.glanz) / 0.6));
+    }
+    _bksKnochenZeichnen(ctx, z, stil, gl, 1);
+  }
+}
+function _bksDraw(ctx, cv) {
+  if (!_bks) return;
+  const b = _bks, W = cv.width, H = cv.height, P = b.pose, t = b.t;
+  ctx.clearRect(0, 0, W, H);
+  // Raum: Wand und Boden der Natur-AG
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef5f9'); bg.addColorStop(1, '#dbe7ee');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#d8c3a0'; ctx.fillRect(0, _BKS_BODEN, W, H - _BKS_BODEN);
+  ctx.strokeStyle = '#b89c72'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(0, _BKS_BODEN); ctx.lineTo(W, _BKS_BODEN); ctx.stroke();
+  // Schatten unter der Figur
+  const sx = (Math.min(P.Af.x, P.An.x, P.Kopf.x) + Math.max(P.Af.x, P.An.x, P.Kopf.x)) / 2;
+  const sb = Math.max(22, Math.abs(P.Kopf.x - P.An.x) / 2 + 16);
+  ctx.fillStyle = 'rgba(90,70,40,0.18)';
+  ctx.beginPath(); ctx.ellipse(sx, _BKS_BODEN + 3, sb, 4, 0, 0, 2 * Math.PI); ctx.fill();
+  // Ablage oben rechts
+  const A = _BKS_ABLAGE;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.setLineDash([5, 4]);
+  _bioFxRundRect(ctx, A.x, A.y, A.w, A.h, 8); ctx.fill(); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('herausgenommen', A.x + A.w / 2, A.y + 13, A.w - 8);
+  ctx.restore();
+
+  // Figur
+  _bksHaut(ctx, P, false);
+  const hover = _bksUnterLupe();
+  _bksAlleKnochen(ctx, P, 'normal', null);
+
+  // Röntgenlupe
+  const L = b.lupe, R = _BKS_LUPE;
+  ctx.save();
+  ctx.beginPath(); ctx.arc(L.x, L.y, R, 0, 2 * Math.PI); ctx.clip();
+  ctx.fillStyle = '#0f1b33'; ctx.fillRect(L.x - R, L.y - R, 2 * R, 2 * R);
+  _bksHaut(ctx, P, true);
+  _bksAlleKnochen(ctx, P, 'roentgen', hover);
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(L.x, L.y, R + 2, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = 'rgba(191,219,254,' + (0.55 + 0.25 * Math.sin(t * 2 * Math.PI * 0.8)).toFixed(3) + ')';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(L.x, L.y, R - 1, 0, 2 * Math.PI); ctx.stroke();
+  // Name der Knochengruppe unter der Lupe
+  const txt = hover ? _BKS_NAME[hover] : 'Röntgenblick';
+  ctx.font = '700 12px sans-serif';
+  const tw = ctx.measureText(txt).width + 14;
+  let tx = Math.max(4, Math.min(W - tw - 4, L.x - tw / 2)), ty = L.y + R + 6;
+  if (ty + 20 > _BKS_BODEN + 20) ty = L.y - R - 26;
+  ctx.fillStyle = hover ? 'rgba(20,30,50,0.88)' : 'rgba(71,85,105,0.8)';
+  _bioFxRundRect(ctx, tx, ty, tw, 20, 10); ctx.fill();
+  if (hover) { ctx.strokeStyle = '#ffd84d'; ctx.lineWidth = 1.5; ctx.stroke(); }
+  ctx.fillStyle = '#ffffff'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(txt, tx + 7, ty + 10.5);
+  ctx.restore();
+
+  // Einstellung unten links
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Knochen weg: ' + _BKS_WORT[b.weg], 10, H - 8);
+  ctx.restore();
+  _bioFxDraw(ctx, b.fx.teile);
+  _bioFxStempelDraw(ctx, b.fx);
+  _bksBanner(ctx, W);
+}
+// Banner-Zustand und Altern aus _bioFx (fx.banner), nur die Lage ist eigen:
+// zwei Zeilen rechts neben der Figur, damit Kopf und Schritt frei bleiben.
+function _bksBanner(ctx, W) {
+  const bn = _bks.fx.banner;
+  if (!bn) return;
+  const ein = _bioFxEase.raus(_bioFxKlemme(bn.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((bn.alter - (bn.dauer - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const zeilen = String(bn.text).split('\n');
+  const bw = 150, bh = 22 + 18 * zeilen.length, x = W - bw - 10, y = 150 - (1 - ein) * 12;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.shadowColor = bn.farbe; ctx.shadowBlur = 16;
+  ctx.fillStyle = 'rgba(20,30,50,0.88)';
+  _bioFxRundRect(ctx, x, y, bw, bh, 14); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = bn.farbe; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x, y, bw, bh, 14); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 15px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  zeilen.forEach((z, i) => ctx.fillText(z, x + bw / 2, y + 20 + i * 18, bw - 14));
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · ZWEI MUSKELN FÜR EINEN ARM   (Förderheft Bio 5/6 · bk2)
+// Ein Arm von der Seite: Oberarm senkrecht, Unterarm dreht sich im
+// Ellenbogengelenk (Drehpunkt als Punkt markiert). Vorne am Oberarm liegt
+// der vordere Muskel (Beuger), hinten der hintere Muskel (Strecker).
+// Fachlich (BIO_PROFIL): Ein Muskel kann nur ziehen (sich verkürzen).
+//   vorderer Muskel zieht -> Arm beugt sich, vorderer kurz und dick,
+//                            hinterer wird lang und dünn gezogen
+//   hinterer Muskel zieht -> Arm streckt sich, hinterer kurz und dick
+//   keiner                -> Arm bleibt, wie er ist; beide locker
+// Vereinfacht (Lehrerteil): Das Gewicht des Unterarms spielt keine Rolle –
+// ohne Zug bleibt der Arm stehen (so verlangt es der Bauplan).
+// Längen: aus der Lage von Ursprung (Schulter) und Ansatz (Unterarm bzw.
+// Ellenbogenspitze) gerechnet – der Beuger wird beim Beugen wirklich kürzer,
+// der Strecker wirklich länger (Rechentest: _bkaLaengen).
+// Aha (Bibliothek _bioFx, NACH der Beobachtung): Beim Ankommen ein Lichtring
+// am Drehpunkt, Funken am dicken Muskel, die Aufschrift „kurz und dick“
+// federt ein. Haben beide Muskeln einmal gezogen: kurzes Konfetti und
+// „Zwei Muskeln – zwei Richtungen!“. Zusatzversuch „vorderer Muskel soll
+// schieben“: Ein gestrichelter Schiebepfeil erscheint, der Muskel wird nur
+// schlaff und wellig wie eine Schnur – der Arm bewegt sich NICHT. Danach ein
+// grauer Ring am Gelenk, die Frage „Nichts bewegt sich. Was streckt den Arm?“
+// und der hintere Muskel leuchtet ruhig auf (0,8 Hz). Kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _bka = null;
+const _BKA_SX = 170, _BKA_SY = 30;        // Schultergelenk
+const _BKA_EX = 170, _BKA_EY = 122;       // Ellenbogengelenk (Drehpunkt)
+const _BKA_UA = 90;                       // Länge Unterarm bis Faust
+const _BKA_GESTRECKT = 6, _BKA_MITTE = 70, _BKA_GEBEUGT = 138;   // Winkel in Grad
+const _BKA_SEHNE = 9;                     // Sehne an jedem Muskelende
+const _BKA_WAHL = { keiner: 'keiner', vorne: 'vorderer Muskel', hinten: 'hinterer Muskel',
+                    schieben: 'vorderer Muskel soll schieben' };
+
+function _bkaInit() {
+  _bka = { t: 0, phi: _BKA_MITTE, von: _BKA_MITTE, ziel: _BKA_MITTE, bew: -1, dauer: 1,
+           wahl: 'keiner', schon: false, spV: 0, spH: 0, tagAlter: 9,
+           schiebT: -1, schiebSchritt: 0, leuchtH: -1, spaeter: null,
+           erlebt: { vorne: false, hinten: false }, beideGezeigt: false,
+           fx: { teile: [] } };
+}
+
+// ── Geometrie ──────────────────────────────────────────
+// Unterarmrichtung d und Seitenrichtung n (n zeigt beim Beugen zum Oberarm).
+function _bkaRicht(phi) {
+  const a = phi * Math.PI / 180;
+  return { dx: Math.sin(a), dy: Math.cos(a), nx: Math.cos(a), ny: -Math.sin(a) };
+}
+// Ursprung und Ansatz beider Muskeln bei Winkel phi.
+function _bkaPunkte(phi) {
+  const r = _bkaRicht(phi);
+  return {
+    vUrs: { x: _BKA_SX + 8, y: _BKA_SY + 8 },                                       // vorne an der Schulter
+    vAns: { x: _BKA_EX + r.dx * 18 + r.nx * 5, y: _BKA_EY + r.dy * 18 + r.ny * 5 },  // Unterarm kurz hinter dem Gelenk
+    hUrs: { x: _BKA_SX - 8, y: _BKA_SY + 8 },                                       // hinten an der Schulter
+    hAns: { x: _BKA_EX - r.nx * 6 - r.dx * 9, y: _BKA_EY - r.ny * 6 - r.dy * 9 }     // Ellenbogenspitze
+  };
+}
+function _bkaAbst(a, b) { return Math.hypot(b.x - a.x, b.y - a.y); }
+// Muskellängen (Ursprung bis Ansatz, Nennmaß in Bildpunkten).
+function _bkaLaengen(phi) {
+  const p = _bkaPunkte(phi);
+  return { vorne: _bkaAbst(p.vUrs, p.vAns), hinten: _bkaAbst(p.hUrs, p.hAns) };
+}
+// 0 = so lang wie möglich, 1 = so kurz wie möglich
+function _bkaKuerze(phi) {
+  const L = _bkaLaengen(phi), a = _bkaLaengen(_BKA_GESTRECKT), b = _bkaLaengen(_BKA_GEBEUGT);
+  return { vorne: _bioFxKlemme((a.vorne - L.vorne) / (a.vorne - b.vorne)),
+           hinten: _bioFxKlemme((b.hinten - L.hinten) / (b.hinten - a.hinten)) };
+}
+// Dicke des Muskelbauchs: zieht er, wird er dick (je kürzer, desto dicker);
+// wird er vom anderen lang gezogen, wird er dünn; locker: mittel.
+function _bkaDicke(kurz, zug, andererZug) {
+  const locker = 8 - 3.2 * (1 - kurz) * andererZug;
+  const gezogen = 10 + 11 * kurz;
+  return locker + (gezogen - locker) * zug;
+}
+
+// ── Oberfläche ─────────────────────────────────────────
+function _bkaHTML() {
+  const k = (w, txt) => `<button class="sim-btn" data-bka="${w}" onclick="_bkaWahl('${w}')">${txt}</button>`;
+  const m = (pose, w, txt) => `<button class="sim-btn" onclick="_bkaMarke('${pose}','${w}')">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie bewegt sich mein Arm?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Arm von der Seite. Vorne am Oberarm liegt ein Muskel, hinten liegt auch einer. Stelle ein, welcher Muskel zieht. Beobachte den Arm.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bka-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bkaNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Welcher Muskel zieht?</span>
+          <div class="sim-btn-row">
+            ${k('keiner', 'keiner')}
+            ${k('vorne', 'vorderer Muskel')}
+            ${k('hinten', 'hinterer Muskel')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_bka-status" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Zusatzversuch</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" data-bka="schieben" onclick="_bkaSchieben()">vorderer Muskel soll schieben</button>
+        </div>
+        <div class="fpm-note" style="margin-top:4px">Kann der vordere Muskel den gebeugten Arm wieder zurückschieben? Probiere es aus.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('gestreckt', 'vorne', 'gestreckt → vorderer Muskel')}
+          ${m('gebeugt', 'hinten', 'gebeugt → hinterer Muskel')}
+          ${m('gebeugt', 'keiner', 'gebeugt → keiner')}
+          ${m('gebeugt', 'schieben', 'gebeugt → vorderer Muskel soll schieben')}
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Der Punkt am Ellenbogen ist das Gelenk. Dort dreht sich der Unterarm.</p>
+  </div>`;
+}
+function _bkaZeilen() {
+  const w = _bka.wahl;
+  if (w === 'vorne') return ['Der vordere Muskel zieht.',
+    _bka.schon ? 'Der Arm ist schon ganz gebeugt. Drücke „neu starten“.' : 'Der Arm beugt sich.',
+    'Kurz und dick: der vordere Muskel'];
+  if (w === 'hinten') return ['Der hintere Muskel zieht.',
+    _bka.schon ? 'Der Arm ist schon ganz gestreckt. Drücke „neu starten“.' : 'Der Arm streckt sich.',
+    'Kurz und dick: der hintere Muskel'];
+  if (w === 'schieben') return ['Der vordere Muskel soll schieben.', 'Der Arm bleibt, wie er ist.',
+    'Kurz und dick: keiner'];
+  return ['Kein Muskel zieht.', 'Der Arm bleibt, wie er ist.', 'Kurz und dick: keiner'];
+}
+function _bkaStatus() {
+  if (!_bka) return;
+  const z = _bkaZeilen();
+  const el = document.getElementById('_bka-status');
+  if (el) { el.innerHTML = '<b>' + z[0] + '</b><br>' + z[1] + '<br>' + z[2]; el.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-bka]').forEach(b => {
+      const d = b.dataset && b.dataset.bka ? b.dataset.bka : b.getAttribute('data-bka');
+      if (b.classList) b.classList.toggle('primary', d === _bka.wahl);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bkaFxLeer() {
+  _bka.fx = { teile: [] }; _bka.schiebT = -1; _bka.schiebSchritt = 0;
+  _bka.leuchtH = -1; _bka.spaeter = null;
+}
+function _bkaWahl(w) {
+  if (!_bka) return;
+  w = String(w);
+  if (w === 'schieben') { _bkaSchieben(); return; }
+  if (!(w in _BKA_WAHL)) w = 'keiner';
+  _bka.wahl = w; _bka.schiebT = -1; _bka.leuchtH = -1; _bka.schon = false;
+  _bka.tagAlter = 0;
+  const E = { x: _BKA_EX, y: _BKA_EY };
+  if (w === 'keiner') {
+    _bka.bew = -1;                                   // der Arm bleibt genau da stehen
+    _bioFxWelle(_bka.fx.teile, E.x, E.y, '#94a3b8', 26);
+  } else {
+    const ziel = w === 'vorne' ? _BKA_GEBEUGT : _BKA_GESTRECKT;
+    if (Math.abs(_bka.phi - ziel) <= 1) {
+      _bka.schon = true; _bka.bew = -1; _bka.phi = ziel;
+    } else {
+      _bka.von = _bka.phi; _bka.ziel = ziel; _bka.bew = 0;
+      _bka.dauer = Math.max(0.6, Math.abs(ziel - _bka.phi) / 80);
+      const p = _bkaPunkte(_bka.phi), a = w === 'vorne' ? p.vAns : p.hAns;
+      _bioFxWelle(_bka.fx.teile, a.x, a.y, '#fca5a5', 18);   // hier greift der Muskel an
+    }
+  }
+  _bkaStatus();
+}
+function _bkaSchieben() {
+  if (!_bka) return;
+  _bka.wahl = 'schieben'; _bka.bew = -1; _bka.schon = false; _bka.tagAlter = 0;
+  _bka.schiebT = 0; _bka.schiebSchritt = 0; _bka.leuchtH = -1;
+  _bkaStatus();
+}
+function _bkaNeu() {
+  if (!_bka) return;
+  _bkaInit();
+  _bkaStatus();
+}
+// Sprungmarke: Arm in eine Lage bringen, dann gleich einstellen.
+function _bkaMarke(pose, w) {
+  if (!_bka) return;
+  _bkaFxLeer();
+  _bka.phi = pose === 'gebeugt' ? _BKA_GEBEUGT : pose === 'gestreckt' ? _BKA_GESTRECKT : _BKA_MITTE;
+  _bka.bew = -1; _bka.wahl = 'keiner'; _bka.spV = 0; _bka.spH = 0;
+  if (w === 'schieben') _bkaSchieben(); else _bkaWahl(w);
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _bkaUpdate(dt) {
+  if (!_bka) return;
+  dt = _bioFxDt(dt);
+  _bka.t += dt;
+  _bka.tagAlter += dt;
+  if (_bka.bew >= 0) {
+    _bka.bew += dt / _bka.dauer;
+    const u = _bioFxEase.sanft(_bioFxKlemme(_bka.bew));
+    _bka.phi = _bka.von + (_bka.ziel - _bka.von) * u;
+    if (_bka.bew >= 1) { _bka.bew = -1; _bka.phi = _bka.ziel; _bkaAnkunft(); }
+  }
+  // Spannung folgt der Wahl weich (0,25 s)
+  const k = Math.min(1, dt * 5);
+  _bka.spV += ((_bka.wahl === 'vorne' ? 1 : 0) - _bka.spV) * k;
+  _bka.spH += ((_bka.wahl === 'hinten' ? 1 : 0) - _bka.spH) * k;
+  if (_bka.schiebT >= 0) { _bka.schiebT += dt; _bkaSchiebAblauf(); }
+  if (_bka.leuchtH >= 0) { _bka.leuchtH += dt; if (_bka.leuchtH > 2.6) _bka.leuchtH = -1; }
+  if (_bka.spaeter) {
+    _bka.spaeter.t -= dt;
+    if (_bka.spaeter.t <= 0) { _bka.spaeter = null; _bkaBeide(); }
+  }
+  _bioFxAlleUpdate(_bka.fx, dt);
+}
+// Der Arm ist angekommen: erst jetzt bestätigen die Effekte.
+function _bkaAnkunft() {
+  const w = _bka.wahl;
+  if (w !== 'vorne' && w !== 'hinten') return;
+  _bka.tagAlter = 0;
+  _bioFxWelle(_bka.fx.teile, _BKA_EX, _BKA_EY, '#fcd34d', 30);
+  const b = _bkaBauch(w, _bka.phi);
+  _bioFxFunken(_bka.fx.teile, b.x, b.y, 8, ['#fecaca', '#fde68a', '#ffffff', '#f87171']);
+  _bka.erlebt[w] = true;
+  if (_bka.erlebt.vorne && _bka.erlebt.hinten && !_bka.beideGezeigt) {
+    _bka.beideGezeigt = true;
+    _bka.spaeter = { t: 0.8 };                       // erst hinsehen lassen
+  }
+}
+function _bkaBeide() {
+  _bioFxKonfetti(_bka.fx.teile, _BKA_EX, _BKA_EY, 18);
+  _bioFxBanner(_bka.fx, 'Zwei Muskeln – zwei Richtungen!', 2.8, '#fca5a5');
+}
+// Zusatzversuch: Schieben geht nicht. Der Arm bleibt stehen.
+function _bkaSchiebAblauf() {
+  const t = _bka.schiebT;
+  if (_bka.schiebSchritt === 0 && t >= 1.1) {
+    _bka.schiebSchritt = 1;
+    _bioFxWelle(_bka.fx.teile, _BKA_EX, _BKA_EY, '#94a3b8', 34);
+  }
+  if (_bka.schiebSchritt === 1 && t >= 1.6) {
+    _bka.schiebSchritt = 2;
+    _bioFxBanner(_bka.fx, 'Nichts bewegt sich. Was streckt den Arm?', 3.4, '#93c5fd');
+    _bka.leuchtH = 0;
+  }
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _bkaMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// Mitte des Muskelbauchs (für Funken, Hinweislinien, Leuchten).
+function _bkaBauch(w, phi) {
+  const p = _bkaPunkte(phi);
+  const o = w === 'vorne' ? p.vUrs : p.hUrs, a = w === 'vorne' ? p.vAns : p.hAns;
+  const s = w === 'vorne' ? 1 : -1;
+  const L = _bkaAbst(o, a), ux = (a.x - o.x) / L, uy = (a.y - o.y) / L;
+  return { x: (o.x + a.x) / 2 + s * uy * 4, y: (o.y + a.y) / 2 - s * ux * 4 };
+}
+// Ein Muskel mit Sehnen. seite +1 = vorne, -1 = hinten. welle > 0: schlaff wie eine Schnur.
+function _bkaMuskel(ctx, o, a, seite, zug, dicke, welle, zieht) {
+  const L = _bkaAbst(o, a), ux = (a.x - o.x) / L, uy = (a.y - o.y) / L;
+  const nx = seite * uy, ny = -seite * ux;                      // nach außen
+  const p0 = { x: o.x + ux * _BKA_SEHNE, y: o.y + uy * _BKA_SEHNE };
+  const p1 = { x: a.x - ux * _BKA_SEHNE, y: a.y - uy * _BKA_SEHNE };
+  ctx.save();
+  ctx.lineCap = 'round';
+  // Sehnen
+  ctx.strokeStyle = '#e7dfc8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(p0.x, p0.y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(a.x, a.y); ctx.stroke();
+  const farbe = _bkaMisch('#e9a3a3', '#c62828', zug);
+  const rand = _bkaMisch('#c77f7f', '#8e1b1b', zug);
+  const mx = (p0.x + p1.x) / 2, my = (p0.y + p1.y) / 2;
+  if (welle > 0.01) {
+    // schlaff: gewellte Schnur, ein wenig schwankend (0,6 Hz)
+    const pts = [];
+    for (let i = 0; i <= 24; i++) {
+      const s = i / 24, hub = welle * Math.sin(Math.PI * s) * Math.sin(Math.PI * 3 * s + Math.sin(_bka.t * 3.8) * 0.5);
+      pts.push({ x: p0.x + (p1.x - p0.x) * s + nx * hub, y: p0.y + (p1.y - p0.y) * s + ny * hub });
+    }
+    for (const [lw, c] of [[dicke * 0.8 + 2, rand], [dicke * 0.8, farbe]]) {
+      ctx.strokeStyle = c; ctx.lineWidth = lw;
+      ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+      for (const q of pts) ctx.lineTo(q.x, q.y);
+      ctx.stroke();
+    }
+  } else {
+    // Muskelbauch: Spindel, die sich nach außen wölbt
+    ctx.fillStyle = farbe; ctx.strokeStyle = rand; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(p0.x, p0.y);
+    ctx.quadraticCurveTo(mx + nx * dicke * 1.25, my + ny * dicke * 1.25, p1.x, p1.y);
+    ctx.quadraticCurveTo(mx - nx * dicke * 0.5, my - ny * dicke * 0.5, p0.x, p0.y);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Fasern
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.25 + 0.2 * zug).toFixed(2) + ')'; ctx.lineWidth = 0.9;
+    for (const f of [-0.15, 0.25, 0.65]) {
+      ctx.beginPath(); ctx.moveTo(p0.x, p0.y);
+      ctx.quadraticCurveTo(mx + nx * dicke * f, my + ny * dicke * f, p1.x, p1.y); ctx.stroke();
+    }
+    // Zug läuft sichtbar zur Schulter hin (Winkel wandern langsam)
+    if (zieht && zug > 0.4) {
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.8 * zug).toFixed(2) + ')'; ctx.lineWidth = 1.8;
+      for (let k = 0; k < 3; k++) {
+        const s = 1 - ((_bka.t * 0.55 + k / 3) % 1) * 0.8 - 0.1;
+        const cx = p0.x + (p1.x - p0.x) * s + nx * dicke * 0.35 * Math.sin(Math.PI * s);
+        const cy = p0.y + (p1.y - p0.y) * s + ny * dicke * 0.35 * Math.sin(Math.PI * s);
+        ctx.beginPath();
+        ctx.moveTo(cx + ux * 4 + nx * 4, cy + uy * 4 + ny * 4);
+        ctx.lineTo(cx, cy);
+        ctx.lineTo(cx + ux * 4 - nx * 4, cy + uy * 4 - ny * 4);
+        ctx.stroke();
+      }
+    }
+  }
+  // Zugpfeil außen am ziehenden Muskel: vom Ansatz zur Schulter hin
+  if (zieht && zug > 0.2) {
+    const ab = dicke * 0.75 + 9;
+    const bx = a.x - ux * 14 + nx * ab * 0.6, by = a.y - uy * 14 + ny * ab * 0.6;
+    const len = 34 * _bioFxEase.raus(_bioFxKlemme(zug));
+    const ex = bx - ux * len, ey = by - uy * len;
+    ctx.globalAlpha = _bioFxKlemme(zug);
+    ctx.strokeStyle = '#991b1b'; ctx.fillStyle = '#991b1b'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(ex + ux * 6, ey + uy * 6); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(ex, ey);
+    ctx.lineTo(ex + ux * 9 + nx * 5, ey + uy * 9 + ny * 5);
+    ctx.lineTo(ex + ux * 9 - nx * 5, ey + uy * 9 - ny * 5);
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+}
+function _bkaDraw(ctx, cv) {
+  if (!_bka) return;
+  const W = cv.width, H = cv.height, t = _bka.t, phi = _bka.phi;
+  const r = _bkaRicht(phi), p = _bkaPunkte(phi), kurz = _bkaKuerze(phi);
+  const E = { x: _BKA_EX, y: _BKA_EY }, S = { x: _BKA_SX, y: _BKA_SY };
+  const hand = { x: E.x + r.dx * _BKA_UA, y: E.y + r.dy * _BKA_UA };
+  ctx.save();
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#e8eef5');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Haut: Oberarm und Unterarm (durchscheinend, darunter Knochen und Muskeln)
+  ctx.lineCap = 'round';
+  for (const [lw, c] of [[54, '#e3b598'], [51, '#f8e1d1']]) {
+    ctx.strokeStyle = c; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.moveTo(S.x, S.y - 4); ctx.lineTo(E.x, E.y); ctx.stroke();
+  }
+  for (const [lw, c] of [[37, '#e3b598'], [34, '#f8e1d1']]) {
+    ctx.strokeStyle = c; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.moveTo(E.x, E.y); ctx.lineTo(E.x + r.dx * 76, E.y + r.dy * 76); ctx.stroke();
+  }
+  ctx.fillStyle = '#f3d2bd'; ctx.strokeStyle = '#d9a98b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(hand.x, hand.y, 13, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Finger der Faust
+  ctx.strokeStyle = '#d9a98b'; ctx.lineWidth = 1;
+  for (let i = -1; i <= 1; i++) {
+    const fx = hand.x + r.dx * 4 + r.nx * i * 5, fy = hand.y + r.dy * 4 + r.ny * i * 5;
+    ctx.beginPath(); ctx.arc(fx + r.nx * 5, fy + r.ny * 5, 3.5, 0, 2 * Math.PI); ctx.stroke();
+  }
+
+  // Knochen
+  ctx.strokeStyle = '#b8ab8a'; ctx.lineWidth = 11;
+  ctx.beginPath(); ctx.moveTo(S.x, S.y); ctx.lineTo(E.x, E.y); ctx.stroke();
+  ctx.strokeStyle = '#f5efdf'; ctx.lineWidth = 8.5;
+  ctx.beginPath(); ctx.moveTo(S.x, S.y); ctx.lineTo(E.x, E.y); ctx.stroke();
+  ctx.fillStyle = '#f5efdf'; ctx.strokeStyle = '#b8ab8a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(S.x, S.y, 11, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // zwei Unterarmknochen, der hintere reicht als Ellenbogenspitze hinter das Gelenk
+  for (const [off, lw, von] of [[3.5, 6, -12], [-3.5, 5, 2]]) {
+    const ax = E.x + r.nx * off + r.dx * von, ay = E.y + r.ny * off + r.dy * von;
+    const bx = E.x + r.nx * off + r.dx * 78, by = E.y + r.ny * off + r.dy * 78;
+    ctx.strokeStyle = '#b8ab8a'; ctx.lineWidth = lw + 2.5;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+    ctx.strokeStyle = '#f5efdf'; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+  }
+  ctx.fillStyle = '#f5efdf'; ctx.strokeStyle = '#b8ab8a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(p.hAns.x, p.hAns.y, 5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(E.x, E.y, 8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+
+  // Muskeln
+  const schlaff = _bka.wahl === 'schieben' && _bka.schiebT >= 0
+    ? 5.5 * _bioFxEase.sanft(_bioFxKlemme(_bka.schiebT / 0.8)) : 0;
+  const dH = _bkaDicke(kurz.hinten, _bka.spH, _bka.spV);
+  const dV = _bkaDicke(kurz.vorne, _bka.spV, _bka.spH);
+  if (_bka.leuchtH >= 0) {
+    const b = _bkaBauch('hinten', phi);
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, _bka.leuchtH / 0.3, (2.6 - _bka.leuchtH) / 0.5);
+    _bioFxLeuchten(ctx, b.x, b.y, 16, t, '147,197,253');
+    ctx.restore();
+  }
+  _bkaMuskel(ctx, p.hUrs, p.hAns, -1, _bka.spH, dH, 0, _bka.wahl === 'hinten');
+  _bkaMuskel(ctx, p.vUrs, p.vAns, 1, _bka.spV, dV, schlaff, _bka.wahl === 'vorne');
+
+  // Schiebepfeil beim Zusatzversuch (gestrichelt, dann blasst er aus)
+  if (_bka.wahl === 'schieben' && _bka.schiebT >= 0 && _bka.schiebT < 2.4) {
+    const o = p.vUrs, a = p.vAns, L = _bkaAbst(o, a), ux = (a.x - o.x) / L, uy = (a.y - o.y) / L;
+    const nx = uy, ny = -ux;
+    const al = Math.min(1, _bka.schiebT / 0.3) * _bioFxKlemme((2.4 - _bka.schiebT) / 0.6);
+    const bx = o.x + ux * 18 + nx * 24, by = o.y + uy * 18 + ny * 24;
+    const ex = bx + ux * 40, ey = by + uy * 40;
+    ctx.save();
+    ctx.globalAlpha = al;
+    ctx.strokeStyle = '#475569'; ctx.fillStyle = '#475569'; ctx.lineWidth = 2.5;
+    if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(ex - ux * 6, ey - uy * 6); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(ex, ey);
+    ctx.lineTo(ex - ux * 9 + nx * 5, ey - uy * 9 + ny * 5);
+    ctx.lineTo(ex - ux * 9 - nx * 5, ey - uy * 9 - ny * 5);
+    ctx.closePath(); ctx.fill();
+    ctx.font = '700 16px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('?', ex + nx * 12, ey + ny * 12 + 5);
+    ctx.restore();
+  }
+
+  // Drehbewegung am Gelenk: Bogenpfeil, solange der Arm sich dreht
+  if (_bka.bew >= 0) {
+    const auf = _bka.ziel > _bka.von;                 // beugen = nach oben
+    const a0 = Math.PI / 2 - phi * Math.PI / 180;     // Bildwinkel des Unterarms
+    const rr = 44, sp = 0.6, pts = [];
+    for (let i = 0; i <= 12; i++) {
+      const w = a0 + (auf ? sp : -sp) * (i / 12 - 1);
+      pts.push({ x: E.x + Math.cos(w) * rr, y: E.y + Math.sin(w) * rr });
+    }
+    ctx.save();
+    ctx.globalAlpha = 0.85 * Math.min(1, _bka.bew * 4, (1 - _bka.bew) * 4 + 0.3);
+    ctx.strokeStyle = '#2563eb'; ctx.fillStyle = '#2563eb'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+    for (const q of pts.slice(0, -1)) ctx.lineTo(q.x, q.y);
+    ctx.stroke();
+    const q = pts[12], v = pts[10], L = _bkaAbst(v, q), ux = (q.x - v.x) / L, uy = (q.y - v.y) / L;
+    ctx.beginPath(); ctx.moveTo(q.x + ux * 4, q.y + uy * 4);
+    ctx.lineTo(q.x - ux * 6 - uy * 6, q.y - uy * 6 + ux * 6);
+    ctx.lineTo(q.x - ux * 6 + uy * 6, q.y - uy * 6 - ux * 6);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
+  // Drehpunkt: Punkt mit ruhig atmendem Ring (0,5 Hz)
+  const puls = 0.5 + 0.5 * Math.sin(t * Math.PI);
+  ctx.strokeStyle = 'rgba(37,99,235,' + (0.25 + 0.3 * puls).toFixed(2) + ')'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(E.x, E.y, 8 + 3 * puls, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#1e3a8a';
+  ctx.beginPath(); ctx.arc(E.x, E.y, 3.8, 0, 2 * Math.PI); ctx.fill();
+
+  // Beschriftungen am Arm
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Oberarm', 135, 96);
+  ctx.fillText('Ellenbogengelenk', 138, 136);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(140, 132); ctx.lineTo(E.x - 6, E.y + 2); ctx.stroke();
+  ctx.textAlign = 'center';
+  const um = { x: E.x + r.dx * 46 - r.nx * 32, y: E.y + r.dy * 46 - r.ny * 32 + 4 };
+  ctx.fillText('Unterarm', um.x, um.y);
+  ctx.fillText('Schulter', S.x, 12);
+
+  // Namen und Aussehen der Muskeln (oben links / oben rechts)
+  const zeigTag = _bka.wahl === 'keiner' || _bka.wahl === 'schieben' || _bka.bew < 0;
+  const tagV = _bka.wahl === 'vorne' ? 'kurz und dick' : _bka.wahl === 'hinten' ? 'lang und dünn' : 'locker';
+  const tagH = _bka.wahl === 'hinten' ? 'kurz und dick' : _bka.wahl === 'vorne' ? 'lang und dünn' : 'locker';
+  // Hinweislinien zum oberen Muskelende (die gebeugte Faust bleibt frei)
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(112, 22); ctx.lineTo(p.hUrs.x - 5, p.hUrs.y + 12); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(308, 22); ctx.lineTo(p.vUrs.x + 5, p.vUrs.y + 12); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'left'; ctx.fillText('hinterer Muskel', 12, 26);
+  ctx.textAlign = 'right'; ctx.fillText('vorderer Muskel', 408, 26);
+  if (zeigTag) {
+    const s = 0.6 + 0.4 * _bioFxEase.federn(_bioFxKlemme(_bka.tagAlter / 0.45));
+    const farbe = x => x === 'kurz und dick' ? '#b91c1c' : '#475569';
+    for (const [x, txt, al] of [[12, tagH, 'left'], [408, tagV, 'right']]) {
+      ctx.save();
+      ctx.translate(x, 44); ctx.scale(s, s);
+      ctx.fillStyle = farbe(txt); ctx.font = '700 13px sans-serif'; ctx.textAlign = al;
+      ctx.fillText(txt, 0, 0);
+      ctx.restore();
+    }
+  }
+
+  // Richtung und Einstellung unten
+  ctx.fillStyle = '#64748b'; ctx.font = '700 11px sans-serif';
+  ctx.textAlign = 'left'; ctx.fillText('← hinten', 12, H - 26);
+  ctx.textAlign = 'right'; ctx.fillText('vorne →', W - 12, H - 26);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_bka.wahl === 'schieben' ? 'Zusatzversuch: vorderer Muskel soll schieben'
+    : 'Welcher Muskel zieht? ' + _BKA_WAHL[_bka.wahl], 12, H - 8);
+  ctx.restore();
+  _bioFxAlleDraw(ctx, _bka.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · bk3 „Die Kiste mit Blumenerde“ – WIE HEBE ICH RICHTIG?
+// (Förderheft Bio 5/6 · Kennung bio-heben)
+// Ela hebt eine Kiste Blumenerde vom Boden an. Im Rücken ist die Wirbelsäule
+// im Röntgenblick zu sehen, die Lupe zeigt vier Wirbel und drei Bandscheiben
+// groß. Rechts der Balken „Druck auf die Bandscheiben“ aus 4 Kästchen.
+// Ein gestrichelter Pfeil zeigt den Abstand der Kiste zur Wirbelsäule.
+// Modellwerte (Lehrerteil, Stufen statt Newton):
+//   Kästchen = 1 + 2 (wenn Kiste weit weg) + 2 (wenn runder Rücken), höchstens 4
+//   runder Rücken, weit weg 4 · in die Knie, weit weg 3 ·
+//   in die Knie, nah 1 · runder Rücken, nah 3.
+// Bandscheiben: 1 Kästchen rund, grün · 3 etwas flach, orange ·
+//   4 flach gedrückt, rot (Farbe UND Form).
+// Jede Einstellung löst ein neues Heben aus (Ela stellt ab, bückt sich,
+// hebt an und hält die Kiste auf Kniehöhe). Das Heft sagt nur „Stelle …“,
+// darum muss der Balken ohne weiteren Knopf kommen.
+// Aha (NACH der Beobachtung, _bioFx): Beim Anheben läuft der Balken Kästchen
+// für Kästchen hoch, kurz in Zeitlupe; die Bandscheiben in der Lupe werden
+// gedrückt. Danach Lichtring und ruhiges Leuchten um die Lupe; der alte
+// Balkenstand bleibt blass als „vorher“ stehen, und ein Banner vergleicht:
+// „Gleiche Kiste – viel weniger Druck!“. Kein Ton, kein Blinken, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _bkh = null;
+const _BKH_HALTUNG = ['runder Rücken', 'in die Knie'];
+const _BKH_KISTE = ['weit weg', 'nah am Körper'];
+const _BKH_SCHEIBE = { 1: 'rund, grün', 2: 'etwas flach, gelb', 3: 'etwas flach, orange', 4: 'flach gedrückt, rot' };
+const _BKH_FARBE = ['#22c55e', '#eab308', '#f97316', '#ef4444'];   // Kästchen 1..4
+const _BKH_Y0 = 228;            // Boden
+const _BKH_AX = 64;             // Knöchel
+const _BKH_L = { unter: 42, ober: 44, rumpf: 62, oa: 36, ua: 34 };
+const _BKH_TA = 0.5;            // s: abstellen und neu bücken
+const _BKH_TH = 1.2;            // s: anheben bis Kniehöhe
+const _BKH_LUPE = { x: 214, y: 100, r: 46 };
+const _BKH_BAR = { x: 334, w: 32, unten: 208, h: 36, gap: 4 };
+
+// Modell: wie viele Kästchen zeigt der Balken?
+function _bkhKaestchen(haltung, kiste) {
+  return Math.min(4, 1 + (kiste === 0 ? 2 : 0) + (haltung === 0 ? 2 : 0));
+}
+
+// Haltung (Gelenkwinkel in Grad) und Kistenlage. a1 Unterschenkel, a2 Oberschenkel,
+// a3 Rumpf (0 = senkrecht, 90 = waagerecht nach vorn), c Rundung des Rückens,
+// bx Kistenmitte, hb Hubhöhe der Kiste über dem Boden.
+function _bkhPoseSoll(haltung, kiste, oben) {
+  if (haltung === 0) {
+    return oben ? { a1: 2, a2: -3, a3: 70, c: 1, bx: kiste === 0 ? 146 : 92, hb: 44 }
+                : { a1: 4, a2: -6, a3: 95, c: 1, bx: kiste === 0 ? 150 : 96, hb: 0 };
+  }
+  return oben ? { a1: 30, a2: -45, a3: kiste === 0 ? 45 : 20, c: 0, bx: kiste === 0 ? 146 : 82, hb: 44 }
+              : { a1: 50, a2: -85, a3: kiste === 0 ? 55 : 38, c: 0, bx: kiste === 0 ? 150 : 84, hb: 0 };
+}
+function _bkhMischPose(a, b, u) {
+  const o = {};
+  for (const k of ['a1', 'a2', 'a3', 'c', 'bx', 'hb']) o[k] = a[k] + (b[k] - a[k]) * u;
+  return o;
+}
+
+function _bkhInit() {
+  const wolken = [];
+  for (let i = 0; i < 3; i++) wolken.push({ x: 30 + i * 110, y: 22 + (i % 2) * 16, s: 0.8 + 0.2 * i });
+  _bkh = {
+    t: 0, haltung: 0, kiste: 0,
+    phase: 'bereit', pt: 0,
+    pose: _bkhPoseSoll(0, 0, false), von: null,
+    p: 0, pD: 0, pV: 0, p0: 0,      // Druck (0..4), angezeigt mit leichter Federung
+    n: 4, ergebnis: false, voll: 0,
+    vorher: -1, letzt: -1,          // Balken beim letzten Heben (blass)
+    nach: -1, schritt: 0, lupeT: -1, zeitlupeDa: false,
+    fx: { teile: [] }, key: '', wolken
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bkhFxLeer() {
+  _bkh.fx = { teile: [] }; _bkh.zeitlupe = null;
+  _bkh.nach = -1; _bkh.schritt = 0; _bkh.lupeT = -1; _bkh.zeitlupeDa = false;
+}
+// Neues Heben: erst abstellen und bücken, dann anheben.
+function _bkhLos() {
+  if (_bkh.ergebnis) _bkh.vorher = _bkh.letzt;
+  _bkhFxLeer();
+  _bkh.von = Object.assign({}, _bkh.pose);
+  _bkh.p0 = _bkh.p;
+  _bkh.phase = 'ab'; _bkh.pt = 0; _bkh.ergebnis = false; _bkh.voll = 0;
+  _bkh.n = _bkhKaestchen(_bkh.haltung, _bkh.kiste);
+  _bkhStatus(); _bkhKnoepfe();
+}
+function _bkhHaltung(i) { if (!_bkh) return; _bkh.haltung = i; _bkhLos(); }
+function _bkhKiste(i)   { if (!_bkh) return; _bkh.kiste = i; _bkhLos(); }
+function _bkhHeben() {
+  if (!_bkh || _bkh.phase === 'ab' || _bkh.phase === 'heben') return;
+  _bkhLos();
+}
+// Sprungmarke: Haltung und Kiste auf einmal, dann gleich heben.
+function _bkhMarke(h, k) {
+  if (!_bkh) return;
+  _bkh.haltung = h; _bkh.kiste = k;
+  _bkhLos();
+}
+function _bkhNeu() {
+  if (!_bkh) return;
+  const w = _bkh.wolken, t = _bkh.t;
+  _bkhInit();
+  _bkh.wolken = w; _bkh.t = t;
+  _bkhStatus(); _bkhKnoepfe();
+}
+function _bkhKnoepfe() {
+  if (!_bkh || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bkh]').forEach(b => {
+      const d = b.dataset ? b.dataset.bkh : b.getAttribute('data-bkh');
+      const an = d === 'h' + _bkh.haltung || d === 'k' + _bkh.kiste;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bkhHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bkh="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie hebe ich richtig?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ela hebt eine Kiste Blumenerde. Im Rücken siehst du ihre Wirbelsäule im Röntgenblick. Stelle „Haltung“ und „Kiste“ ein. Dann hebt Ela die Kiste neu an.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkh-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Haltung</span>
+          ${k('h0', '_bkhHaltung(0)', 'runder Rücken')}
+          ${k('h1', '_bkhHaltung(1)', 'in die Knie')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="margin-right:4px">Kiste</span>
+          ${k('k0', '_bkhKiste(0)', 'weit weg')}
+          ${k('k1', '_bkhKiste(1)', 'nah am Körper')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bkhHeben()">▶ heben</button>
+          <button class="sim-btn" onclick="_bkhNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Druck auf die Bandscheiben</div>
+        <div class="lmp-status on" id="_bkh-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bkhMarke(0,0)">runder Rücken, Kiste weit weg</button>
+          <button class="sim-btn" onclick="_bkhMarke(1,0)">in die Knie, Kiste weit weg</button>
+          <button class="sim-btn" onclick="_bkhMarke(1,1)">in die Knie, Kiste nah am Körper</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Zwischen den Knochen der Wirbelsäule liegen weiche Polster: die <b>Bandscheiben</b>. Die Lupe zeigt drei davon groß. Die Kiste ist immer gleich schwer.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bkhEinstellung() {
+  return _BKH_HALTUNG[_bkh.haltung] + ', Kiste ' + _BKH_KISTE[_bkh.kiste];
+}
+function _bkhSchluessel() {
+  return _bkh.phase + (_bkh.ergebnis ? '!' : '') + _bkh.haltung + _bkh.kiste;
+}
+function _bkhStatus() {
+  if (!_bkh) return;
+  _bkh.key = _bkhSchluessel();
+  const el = document.getElementById('_bkh-status');
+  if (!el) return;
+  const wo = 'Haltung: ' + _BKH_HALTUNG[_bkh.haltung] + ' · Kiste: ' + _BKH_KISTE[_bkh.kiste];
+  let h;
+  if (_bkh.ergebnis) {
+    h = `<b>${_bkhEinstellung()}</b><br>Druck auf die Bandscheiben: ${_bkh.n} von 4 Kästchen<br>` +
+        `Bandscheiben: ${_BKH_SCHEIBE[_bkh.n]}`;
+  } else if (_bkh.phase === 'bereit') {
+    h = `<b>${wo}</b><br>Ela steht an der Kiste. Der Balken ist leer.<br>Drücke „▶ heben“.`;
+  } else if (_bkh.phase === 'ab') {
+    h = `<b>${wo}</b><br>Ela stellt die Kiste ab und bückt sich.`;
+  } else {
+    h = `<b>${wo}</b><br>Ela hebt die Kiste an …<br>Sieh auf den Balken und auf die Bandscheiben.`;
+  }
+  el.innerHTML = h;
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _bkhUpdate(dt) {
+  if (!_bkh) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_bkh, roh);
+  _bkh.t += d;
+  for (const w of _bkh.wolken) { w.x += roh * 6 * w.s; if (w.x > 300) w.x = -60; }
+  const soll = _bkhPoseSoll(_bkh.haltung, _bkh.kiste, false);
+  if (_bkh.phase === 'bereit') {
+    _bkh.pose = soll; _bkh.p = 0;
+  } else if (_bkh.phase === 'ab') {
+    _bkh.pt += d;
+    const v = _bioFxEase.sanft(_bioFxKlemme(_bkh.pt / _BKH_TA));
+    _bkh.pose = _bkhMischPose(_bkh.von, soll, v);
+    _bkh.p = _bkh.p0 * (1 - v);
+    if (_bkh.pt >= _BKH_TA) { _bkh.phase = 'heben'; _bkh.pt = 0; _bkh.p = 0; }
+  } else if (_bkh.phase === 'heben') {
+    _bkh.pt += d;
+    const u = _bioFxKlemme(_bkh.pt / _BKH_TH);
+    _bkh.pose = _bkhMischPose(soll, _bkhPoseSoll(_bkh.haltung, _bkh.kiste, true), _bioFxEase.sanft(u));
+    _bkh.p = _bkh.n * _bioFxEase.sanft(_bioFxKlemme((u - 0.1) / 0.45));
+    if (!_bkh.zeitlupeDa && _bkh.p >= _bkh.n - 0.7) {       // der Druck schießt hoch: Zeitlupe
+      _bkh.zeitlupeDa = true;
+      _bioFxZeitlupe(_bkh, 0.4, 0.6);
+    }
+    _bkhKaestchenFx();
+    if (u >= 0.55 && !_bkh.ergebnis) {
+      _bkh.p = _bkh.n; _bkh.ergebnis = true; _bkh.letzt = _bkh.n; _bkh.nach = 0; _bkh.schritt = 0;
+    }
+    if (u >= 1) { _bkh.phase = 'halten'; _bkh.pt = 0; }
+  } else {
+    _bkh.pose = _bkhPoseSoll(_bkh.haltung, _bkh.kiste, true);
+    _bkh.p = _bkh.n;
+  }
+  // Bandscheiben federn leicht nach (gedämpft, etwa 1,5 Hz, klingt schnell ab)
+  const k = 90, c = 11;
+  _bkh.pV += (k * (_bkh.p - _bkh.pD) - c * _bkh.pV) * d;
+  _bkh.pD += _bkh.pV * d;
+  if (_bkh.nach >= 0) { _bkh.nach += roh; _bkhAha(); }
+  if (_bkh.lupeT >= 0) _bkh.lupeT += roh;
+  _bioFxAlleUpdate(_bkh.fx, roh);
+  if (_bkhSchluessel() !== _bkh.key) _bkhStatus();
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+function _bkhKastenMitte(k) {
+  const B = _BKH_BAR;
+  return { x: B.x + B.w / 2, y: B.unten - k * (B.h + B.gap) + B.gap + B.h / 2 };
+}
+// Jedes volle Kästchen bekommt einen kleinen Lichtring und Funken in seiner Farbe.
+function _bkhKaestchenFx() {
+  while (_bkh.voll < Math.floor(_bkh.p + 1e-6) && _bkh.voll < 4) {
+    _bkh.voll++;
+    const m = _bkhKastenMitte(_bkh.voll), f = _BKH_FARBE[_bkh.voll - 1];
+    _bioFxWelle(_bkh.fx.teile, m.x, m.y, f, 24);
+    _bioFxFunken(_bkh.fx.teile, m.x, m.y, 4, [f, '#ffffff']);
+  }
+}
+function _bkhAha() {
+  const fx = _bkh.fx, L = _BKH_LUPE, n = _bkh.n, t = _bkh.nach;
+  const farbe = _BKH_FARBE[n - 1];
+  if (_bkh.schritt === 0) {
+    _bkh.schritt = 1;
+    _bioFxWelle(fx.teile, L.x, L.y + 10, farbe, L.r + 22);
+    if (n === 1) _bioFxFunken(fx.teile, L.x, L.y + 10, 8, ['#86efac', '#ffffff', '#22c55e']);
+    _bkh.lupeT = 0;
+  }
+  if (_bkh.schritt === 1 && t >= 0.6) {
+    _bkh.schritt = 2;
+    const v = _bkh.vorher;
+    let txt = '';
+    if (v < 0) txt = 'Sieh auf die Bandscheiben in der Lupe!';
+    else if (v - n >= 2) txt = 'Gleiche Kiste – viel weniger Druck!';
+    else if (v - n === 1) txt = 'Gleiche Kiste – weniger Druck!';
+    else if (n > v) txt = 'Gleiche Kiste – mehr Druck!';
+    if (txt) _bioFxBanner(fx, txt, 3.2, farbe);
+    if (v >= 0 && v - n >= 2) _bioFxKonfetti(fx.teile, L.x, L.y - 10, 18);
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bkhRad(g) { return g * Math.PI / 180; }
+// Gelenkpunkte der Figur aus der Haltung
+function _bkhGelenke(P) {
+  const L = _BKH_L, atm = Math.sin(_bkh.t * 2 * Math.PI * 0.3) * 1.2;   // ruhiges Atmen
+  const A = { x: _BKH_AX, y: _BKH_Y0 - 6 };
+  const K = { x: A.x + L.unter * Math.sin(_bkhRad(P.a1)), y: A.y - L.unter * Math.cos(_bkhRad(P.a1)) };
+  const H = { x: K.x + L.ober * Math.sin(_bkhRad(P.a2)), y: K.y - L.ober * Math.cos(_bkhRad(P.a2)) };
+  const a3 = _bkhRad(P.a3 + atm);
+  const d = { x: Math.sin(a3), y: -Math.cos(a3) };           // Rumpfrichtung
+  const nb = { x: -Math.cos(a3), y: -Math.sin(a3) };         // zum Rücken hin
+  const S = { x: H.x + L.rumpf * d.x, y: H.y + L.rumpf * d.y };
+  const C = { x: (H.x + S.x) / 2 + nb.x * 16 * P.c, y: (H.y + S.y) / 2 + nb.y * 16 * P.c };
+  return { A, K, H, S, C, d, nb };
+}
+function _bkhKurve(G, t) {
+  const u = 1 - t;
+  return { x: u * u * G.H.x + 2 * u * t * G.C.x + t * t * G.S.x,
+           y: u * u * G.H.y + 2 * u * t * G.C.y + t * t * G.S.y };
+}
+function _bkhTangente(G, t) {
+  const x = 2 * (1 - t) * (G.C.x - G.H.x) + 2 * t * (G.S.x - G.C.x);
+  const y = 2 * (1 - t) * (G.C.y - G.H.y) + 2 * t * (G.S.y - G.C.y);
+  const l = Math.hypot(x, y) || 1;
+  return { x: x / l, y: y / l };
+}
+// Punkt auf der Wirbelsäule (5 px zum Rücken hin versetzt)
+function _bkhWirbel(G, t) {
+  const p = _bkhKurve(G, t), tg = _bkhTangente(G, t);
+  let nx = -tg.y, ny = tg.x;                                 // Normale
+  if (nx * G.nb.x + ny * G.nb.y < 0) { nx = -nx; ny = -ny; }
+  return { x: p.x + nx * 5, y: p.y + ny * 5, w: Math.atan2(tg.y, tg.x) };
+}
+// Ellbogen über zwei Gelenklängen (Ellbogen zeigt nach hinten)
+function _bkhArm(S, Hd) {
+  const a = _BKH_L.oa, b = _BKH_L.ua;
+  let dx = Hd.x - S.x, dy = Hd.y - S.y, l = Math.hypot(dx, dy);
+  const lmax = a + b - 0.5;
+  let Z = Hd;
+  if (l > lmax) { Z = { x: S.x + dx / l * lmax, y: S.y + dy / l * lmax }; dx = Z.x - S.x; dy = Z.y - S.y; l = lmax; }
+  l = Math.max(l, 1);
+  const x = (a * a - b * b + l * l) / (2 * l), h = Math.sqrt(Math.max(0, a * a - x * x));
+  const ux = dx / l, uy = dy / l;
+  const e1 = { x: S.x + ux * x - uy * h, y: S.y + uy * x + ux * h };
+  const e2 = { x: S.x + ux * x + uy * h, y: S.y + uy * x - ux * h };
+  return { E: e1.x < e2.x ? e1 : e2, Z };
+}
+function _bkhMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// Farbe und Form der Bandscheiben aus dem angezeigten Druck
+function _bkhScheibe(p) {
+  p = Math.max(0, Math.min(4, p));
+  let farbe;
+  if (p <= 1) farbe = '#22c55e';
+  else if (p <= 3) farbe = _bkhMisch('#22c55e', '#f97316', (p - 1) / 2);
+  else farbe = _bkhMisch('#f97316', '#ef4444', p - 3);
+  const h = p <= 1 ? 10 : p <= 3 ? 10 - 1.5 * (p - 1) : 7 - 3.5 * (p - 3);
+  return { farbe, h: Math.max(3, h), w: 28 + (10 - Math.max(3, h)) * 2 };
+}
+
+function _bkhKisteMalen(ctx, P) {
+  const w = 44, h = 30, x = P.bx - w / 2, y = _BKH_Y0 - P.hb - h;
+  ctx.fillStyle = '#5b3a1e';                                 // Erde
+  ctx.beginPath(); ctx.moveTo(x + 2, y + 2);
+  ctx.quadraticCurveTo(x + w / 2, y - 7, x + w - 2, y + 2); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#c08a4e'; ctx.strokeStyle = '#8a5a2b'; ctx.lineWidth = 1.5;
+  ctx.fillRect(x, y, w, h); ctx.strokeRect(x, y, w, h);
+  ctx.fillStyle = '#7a4b22';                                 // Griffloch
+  _bioFxRundRect(ctx, P.bx - 8, y + 5, 16, 5, 2.5); ctx.fill();
+  ctx.fillStyle = '#3f2a14'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Blumenerde', P.bx, y + 22);
+  return { gx: P.bx, gy: y + 8, y, h };
+}
+
+function _bkhDraw(ctx, cv) {
+  if (!_bkh) return;
+  const W = cv.width, H = cv.height, t = _bkh.t, P = _bkh.pose;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel, Wolken, Hecke, Beet, Rasen
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#dbeefe'); bg.addColorStop(1, '#f3f9ec');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  for (const w of _bkh.wolken) {
+    ctx.beginPath(); ctx.arc(w.x, w.y, 10 * w.s, 0, 2 * Math.PI); ctx.arc(w.x + 12 * w.s, w.y - 5, 12 * w.s, 0, 2 * Math.PI);
+    ctx.arc(w.x + 26 * w.s, w.y, 9 * w.s, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#b9dca0';
+  ctx.beginPath(); ctx.moveTo(0, _BKH_Y0);
+  for (let x = 0; x <= 290; x += 14) ctx.lineTo(x, 178 + Math.sin(x * 0.21) * 5 + Math.sin(t * 1.1 + x * 0.05) * 1.2);
+  ctx.lineTo(290, _BKH_Y0); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#7cb45c'; ctx.fillRect(0, _BKH_Y0, W, H - _BKH_Y0);
+  ctx.fillStyle = '#6b4a2b'; ctx.fillRect(4, _BKH_Y0 - 6, 30, 6);           // Beet
+  for (let i = 0; i < 3; i++) {
+    const x = 10 + i * 10, sw = Math.sin(t * 1.4 + i) * 1.5;
+    ctx.strokeStyle = '#3f8f3a'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, _BKH_Y0 - 6); ctx.quadraticCurveTo(x + sw, _BKH_Y0 - 14, x + sw * 2, _BKH_Y0 - 20); ctx.stroke();
+    ctx.fillStyle = '#4caf50'; ctx.beginPath(); ctx.ellipse(x + sw * 2, _BKH_Y0 - 21, 3, 2, 0.4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Figur
+  const G = _bkhGelenke(P);
+  const haut = '#f1c7a5', hose = '#3b4a6b', shirt = '#14b8a6';
+  const kiste = { x: P.bx, y: _BKH_Y0 - P.hb - 30 };
+  const griff = { x: P.bx, y: kiste.y + 8 };
+  const glied = (a, b, farbe, w) => {
+    ctx.strokeStyle = farbe; ctx.lineWidth = w; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  };
+  const bein = (dx, farbe) => {
+    const A = { x: G.A.x + dx, y: G.A.y }, K = { x: G.K.x + dx, y: G.K.y }, Hh = { x: G.H.x + dx, y: G.H.y };
+    glied(Hh, K, farbe, 11); glied(K, A, farbe, 10);
+    ctx.fillStyle = '#334155'; _bioFxRundRect(ctx, A.x - 5, _BKH_Y0 - 7, 18, 7, 3); ctx.fill();
+  };
+  const arm = (dx, farbe) => {
+    const S = { x: G.S.x + dx, y: G.S.y + 2 };
+    const r = _bkhArm(S, { x: griff.x + dx, y: griff.y });
+    glied(S, r.E, farbe, 7); glied(r.E, r.Z, haut, 6);
+    ctx.fillStyle = haut; ctx.beginPath(); ctx.arc(r.Z.x, r.Z.y, 3.6, 0, 2 * Math.PI); ctx.fill();
+  };
+  bein(-3, '#2c3852');
+  arm(-3, '#0f8f82');
+  // Rumpf
+  ctx.strokeStyle = shirt; ctx.lineWidth = 22; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(G.H.x, G.H.y); ctx.quadraticCurveTo(G.C.x, G.C.y, G.S.x, G.S.y); ctx.stroke();
+  ctx.strokeStyle = hose; ctx.lineWidth = 20;                              // Hosenbund
+  const hb = _bkhKurve(G, 0.12);
+  ctx.beginPath(); ctx.moveTo(G.H.x, G.H.y); ctx.lineTo(hb.x, hb.y); ctx.stroke();
+  // Röntgenblick: dunkles Fenster am Rücken, darin die Wirbelsäule
+  ctx.save();
+  ctx.strokeStyle = 'rgba(30,41,59,0.72)'; ctx.lineWidth = 11; ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (let i = 0; i <= 12; i++) { const q = _bkhWirbel(G, 0.04 + i * 0.075); i ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y); }
+  ctx.stroke();
+  ctx.strokeStyle = '#e8e2d0'; ctx.lineWidth = 2;                           // obere Wirbelsäule
+  ctx.beginPath();
+  for (let i = 0; i <= 6; i++) { const q = _bkhWirbel(G, 0.62 + i * 0.058); i ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y); }
+  ctx.stroke();
+  const sch = _bkhScheibe(_bkh.pD);
+  for (const tv of [0.08, 0.26, 0.44, 0.62]) {                              // vier Wirbel
+    const q = _bkhWirbel(G, tv);
+    ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.w);
+    ctx.fillStyle = '#efe9d8'; _bioFxRundRect(ctx, -4.5, -3.5, 9, 7, 2); ctx.fill();
+    ctx.restore();
+  }
+  for (const tv of [0.17, 0.35, 0.53]) {                                    // drei Bandscheiben
+    const q = _bkhWirbel(G, tv);
+    ctx.save(); ctx.translate(q.x, q.y); ctx.rotate(q.w);
+    ctx.fillStyle = sch.farbe;
+    ctx.beginPath(); ctx.ellipse(0, 0, Math.max(1.2, sch.h / 4), 3 + (sch.w - 28) / 6, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  ctx.restore();
+  // Kopf mit Pferdeschwanz
+  const Kp = { x: G.S.x + G.d.x * 15, y: G.S.y + G.d.y * 15 };
+  glied(G.S, Kp, haut, 6);
+  ctx.fillStyle = '#5b3a1e';
+  const zopf = Math.sin(t * 2 * Math.PI * 0.5) * 3;
+  ctx.beginPath(); ctx.ellipse(Kp.x + G.nb.x * 12 + zopf * 0.3, Kp.y + G.nb.y * 12 + 4, 4, 8, 0.3 + zopf * 0.05, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = haut; ctx.beginPath(); ctx.arc(Kp.x, Kp.y, 10.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#5b3a1e';
+  ctx.beginPath(); ctx.arc(Kp.x, Kp.y, 10.8, Math.atan2(G.nb.y, G.nb.x) - 1.6, Math.atan2(G.nb.y, G.nb.x) + 1.4); ctx.fill();
+  const fw = { x: -G.nb.x, y: -G.nb.y };                                    // Blick nach vorn
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.arc(Kp.x + fw.x * 5 + G.d.x * 2, Kp.y + fw.y * 5 + G.d.y * 2, 1.4, 0, 2 * Math.PI); ctx.fill();
+  // Kiste, dann das nahe Bein und der nahe Arm davor
+  _bkhKisteMalen(ctx, P);
+  bein(0, hose);
+  arm(0, shirt);
+
+  // Gestrichelter Pfeil: Abstand der Kiste zur Wirbelsäule (unterste Bandscheibe)
+  const ws = _bkhWirbel(G, 0.17), ay = kiste.y + 15;
+  ctx.save();
+  ctx.strokeStyle = '#7c3aed'; ctx.fillStyle = '#7c3aed'; ctx.lineWidth = 2;
+  ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(ws.x, ws.y); ctx.lineTo(ws.x, ay); ctx.stroke();
+  ctx.setLineDash([6, 4]);
+  const x1 = ws.x + 3, x2 = P.bx - 3;
+  if (x2 - x1 > 8) {
+    ctx.lineDashOffset = -t * 8;                             // die Striche laufen langsam
+    ctx.beginPath(); ctx.moveTo(x1, ay); ctx.lineTo(x2, ay); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.beginPath(); ctx.moveTo(x1, ay); ctx.lineTo(x1 + 7, ay - 4); ctx.lineTo(x1 + 7, ay + 4); ctx.closePath(); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(x2, ay); ctx.lineTo(x2 - 7, ay - 4); ctx.lineTo(x2 - 7, ay + 4); ctx.closePath(); ctx.fill();
+    ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    const ly = x2 - x1 > 60 ? ay - 7 : kiste.y - 8;             // kurzer Pfeil: Wort über die Kiste
+    ctx.fillRect((x1 + x2) / 2 - 22, ly - 10, 44, 12);
+    ctx.fillStyle = '#6d28d9'; ctx.fillText('Abstand', (x1 + x2) / 2, ly);
+  }
+  ctx.restore();
+
+  _bkhBalken(ctx, t);
+  _bkhLupe(ctx, G, t);
+
+  // Einstellung unten links, Zeitlupe oben links
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_BKH_HALTUNG[_bkh.haltung] + ' · ' + _BKH_KISTE[_bkh.kiste], 8, H - 7);
+  if (_bkh.zeitlupe) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('▶ Zeitlupe', 8, 16);
+  }
+  _bioFxAlleDraw(ctx, _bkh.fx);
+}
+
+// Lupe im Röntgenblick: vier Wirbel, drei Bandscheiben, Druckpfeile von oben
+function _bkhLupe(ctx, G, t) {
+  const L = _BKH_LUPE, sch = _bkhScheibe(_bkh.pD), pD = Math.max(0, _bkh.pD);
+  const ws = _bkhWirbel(G, 0.35);
+  // Verbindung zur Stelle am Rücken
+  ctx.save();
+  ctx.strokeStyle = 'rgba(30,41,59,0.45)'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+  const w = Math.atan2(ws.y - L.y, ws.x - L.x);
+  ctx.beginPath(); ctx.moveTo(L.x + Math.cos(w) * L.r, L.y + Math.sin(w) * L.r); ctx.lineTo(ws.x, ws.y); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.beginPath(); ctx.arc(ws.x, ws.y, 13, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+  // ruhiges Leuchten nach dem Heben (0,8 Hz, etwa 2 s)
+  if (_bkh.lupeT >= 0 && _bkh.lupeT < 2.2) {
+    const f = { 1: '34,197,94', 2: '234,179,8', 3: '249,115,22', 4: '239,68,68' }[_bkh.n];
+    ctx.save();
+    ctx.globalAlpha = 1 - _bioFxEase.sanft(_bioFxKlemme((_bkh.lupeT - 1.4) / 0.8));
+    _bioFxLeuchten(ctx, L.x, L.y, L.r + 3, _bkh.lupeT, f);
+    ctx.restore();
+  }
+  ctx.save();
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI);
+  const g = ctx.createRadialGradient(L.x, L.y, 6, L.x, L.y, L.r);
+  g.addColorStop(0, '#334155'); g.addColorStop(1, '#0f172a');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.clip();
+  // Stapel von unten nach oben: Wirbel, Scheibe, Wirbel, …
+  const vw = 30, vh = 9;
+  let y = L.y + 33;
+  const scheiben = [];
+  for (let i = 0; i < 4; i++) {
+    ctx.fillStyle = '#efe9d8'; ctx.strokeStyle = '#b8ad8e'; ctx.lineWidth = 1;
+    _bioFxRundRect(ctx, L.x - vw / 2, y - vh, vw, vh, 3); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#d9cfb3'; ctx.fillRect(L.x + vw / 2 - 2, y - vh + 2, 10, 4);   // Dornfortsatz
+    y -= vh;
+    if (i < 3) {
+      const cy = y - sch.h / 2;
+      ctx.fillStyle = sch.farbe;
+      ctx.beginPath(); ctx.ellipse(L.x, cy, sch.w / 2, sch.h / 2, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.lineWidth = 1; ctx.stroke();
+      scheiben.push(cy);
+      y -= sch.h;
+    }
+  }
+  // Druckpfeile von oben: Länge und Deckkraft wachsen mit dem Druck
+  if (pD > 0.05) {
+    const lang = 6 + 5 * pD, puls = 0.8 + 0.2 * Math.sin(t * 2 * Math.PI * 0.8);
+    ctx.fillStyle = 'rgba(248,250,252,' + (Math.min(1, pD / 2) * puls).toFixed(3) + ')';
+    ctx.strokeStyle = ctx.fillStyle; ctx.lineWidth = 2.5;
+    for (const dx of [-10, 0, 10]) {
+      const x = L.x + dx, y1 = y - 3;
+      ctx.beginPath(); ctx.moveTo(x, y1 - lang); ctx.lineTo(x, y1 - 5); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x - 4, y1 - 6); ctx.lineTo(x + 4, y1 - 6); ctx.closePath(); ctx.fill();
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.stroke();
+  // Beschriftung
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Röntgenblick', L.x, L.y - L.r - 4);
+  ctx.textAlign = 'left'; ctx.font = '600 9px sans-serif'; ctx.fillStyle = '#334155';
+  if (scheiben.length) {
+    ctx.fillText('Bandscheibe', L.x + L.r + 3, scheiben[1] + 3);
+    ctx.fillText('Wirbel', L.x + L.r + 3, L.y + 32);
+    ctx.strokeStyle = 'rgba(51,65,85,0.6)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(L.x + L.r + 2, L.y + 29); ctx.lineTo(L.x + vw / 2 + 1, L.y + 29); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(L.x + L.r + 2, scheiben[1]); ctx.lineTo(L.x + sch.w / 2 + 1, scheiben[1]); ctx.stroke();
+  }
+}
+
+// Balken „Druck auf die Bandscheiben“: 4 Kästchen, füllt sich von unten
+function _bkhBalken(ctx, t) {
+  const B = _BKH_BAR, p = Math.max(0, _bkh.p), cx = B.x + B.w / 2;
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  _bioFxRundRect(ctx, 292, 6, 122, 238, 10); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; _bioFxRundRect(ctx, 292, 6, 122, 238, 10); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Druck auf die', 353, 24);
+  ctx.fillText('Bandscheiben', 353, 38);
+  const v = _bkh.vorher;                                                   // blass: letztes Heben
+  for (let k = 1; k <= 4; k++) {
+    const y = B.unten - k * (B.h + B.gap) + B.gap;
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(B.x, y, B.w, B.h);
+    if (v >= k) { ctx.fillStyle = _BKH_FARBE[k - 1]; ctx.globalAlpha = 0.2; ctx.fillRect(B.x, y, B.w, B.h); ctx.globalAlpha = 1; }
+    const f = _bioFxKlemme(p - (k - 1));
+    if (f > 0) {
+      ctx.fillStyle = _BKH_FARBE[k - 1];
+      ctx.fillRect(B.x, y + B.h * (1 - f), B.w, B.h * f);
+    }
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.strokeRect(B.x, y, B.w, B.h);
+  }
+  if (v > 0) {                                                             // Marke „vorher“
+    const y = B.unten - v * (B.h + B.gap) + B.gap;
+    ctx.save();
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(B.x - 4, y); ctx.lineTo(B.x + B.w + 4, y); ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = '#475569';
+    ctx.beginPath(); ctx.moveTo(B.x + B.w + 4, y); ctx.lineTo(B.x + B.w + 11, y - 4); ctx.lineTo(B.x + B.w + 11, y + 4); ctx.closePath(); ctx.fill();
+    ctx.font = '600 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('vorher', B.x + B.w + 13, y + 3);
+  }
+  ctx.textAlign = 'center';
+  if (_bkh.ergebnis) {
+    ctx.fillStyle = _BKH_FARBE[_bkh.n - 1] === '#eab308' ? '#a16207' : '#0f172a';
+    ctx.font = '700 14px sans-serif';
+    ctx.fillText(_bkh.n + ' von 4', cx, 230);
+  } else if (_bkh.phase === 'bereit') {
+    ctx.fillStyle = '#64748b'; ctx.font = '600 10px sans-serif';
+    ctx.fillText('noch leer', cx, 228);
+  }
+}
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DIE FLASCHE, DIE ATMET   (Förderheft Bio 5/6 · bk4, Kennung 'bio-atmung')
+// Links das Flaschenmodell: Flasche ohne Boden, Stopfen mit Y-Röhrchen, zwei
+// Ballons, unten eine Gummihaut, an der eine Hand zieht oder drückt. Rechts ein
+// Oberkörper im Schnitt: Lunge und Zwerchfell bewegen sich mit der Gummihaut mit.
+// Fachlich (BIO_PROFIL): Beim Einatmen zieht sich das Zwerchfell zusammen und
+// wird flacher, der Brustraum wird größer, Luft strömt in die Lunge. Die Lunge
+// hat keine eigenen Muskeln – im Modell bewegt die Hand die Gummihaut.
+// Werte (sim_plan.werte = lehrer.tabelle_erwartet):
+//   in der Mitte        · mittel · Die Luft steht still.
+//   nach unten gezogen  · groß   · hinein in die Ballons
+//   nach oben gedrückt  · klein  · hinaus aus den Ballons
+// Die Luft strömt, SOLANGE sich die Gummihaut bewegt (1,5 s). Danach steht sie
+// still; Statuszeile und Pfeil sagen dann, wohin sie geströmt IST.
+// Luftteilchen (blaue Punkte) wandern sichtbar von draußen durch den
+// Flaschenhals in die Ballons (und durch Mund und Luftröhre in die Lunge) –
+// die Zahl der Teilchen in einem Ballon wächst mit seiner Größe.
+// Aha (NACH der Beobachtung, Bibliothek _bioFx): Ist die Gummihaut unten
+// angekommen, leuchten um beide Ballons und beide Lungenflügel Lichtringe
+// auf, ein paar hellblaue Funken, Hinweisstreifen „Die Ballons haben sich mit
+// Luft gefüllt!“. Beim Hochdrücken pufft die Luft oben aus dem Röhrchen.
+// Kein Blinken (Puls 0,8 Hz), kein Ton, keine Wertung; keine Tabellen- oder
+// Lückenwörter („größer“, Merksatz) als Effekttext.
+// ═══════════════════════════════════════════════════════
+let _bkl = null;
+const _BKL_DAUER = 1.5;                  // s: so lange bewegt die Hand die Gummihaut
+const _BKL_REISE = 0.5;                  // s: ein Luftteilchen von draußen bis in den Ballon
+const _BKL_POS = { mitte: 0, unten: 1, oben: -1 };
+const _BKL_WORT = { mitte: 'in der Mitte', unten: 'nach unten gezogen', oben: 'nach oben gedrückt' };
+const _BKL_GROESSE = { mitte: 'mittel', unten: 'groß', oben: 'klein' };
+const _BKL_BX = [76, 134];               // Ballons: x-Mitte
+const _BKL_LX = [306, 354];              // Lungenflügel: x-Mitte
+const _BKL_RAND = 190;                   // Unterkante der Flasche (Gummihaut in Ruhe)
+
+// Ballonradius in Bildpunkten: klein 9 · mittel 17 · groß 27 (deutlich verschieden)
+function _bklRadius(p) { return p >= 0 ? 17 + 10 * p : 17 + 8 * p; }
+// Lungenflügel: Streckung 0,82 · 1 · 1,18
+function _bklLunge(p) { return 1 + 0.18 * p; }
+// Wie viele Luftteilchen passen hinein? (Ballon: 2 · 7 · 18, Lungenflügel: 3 · 5 · 7)
+function _bklZiel(raum, p) {
+  if (raum === 'L') { const r = _bklRadius(p); return Math.round(r * r / 40); }
+  const s = _bklLunge(p); return Math.round(5 * s * s);
+}
+// Tiefster Punkt der Gummihaut
+function _bklHaut(p) { return _BKL_RAND + (p >= 0 ? 32 : 26) * p; }
+// Scheitel des Zwerchfells (unten = flach, oben = stark gewölbt)
+function _bklZwerch(p) { return p >= 0 ? 166 + 10 * p : 166 + 14 * p; }
+
+function _bklZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _bklInit() {
+  const z = _bklZufall(41);
+  const draussen = [];
+  for (let i = 0; i < 12; i++) draussen.push({ x: 18 + z() * 70 + (i % 2) * 110, y: 6 + z() * 16, ph: z() * 6.28 });
+  for (let i = 0; i < 6; i++) draussen.push({ x: 372 + z() * 40, y: 10 + z() * 40, ph: z() * 6.28 });
+  _bkl = { t: 0, stell: 'mitte', p: 0, p0: 0, p1: 0, u: 1, richt: 0,
+           fx: { teile: [] }, key: '', z, draussen,
+           L: { innen: [[], []], reise: [] }, K: { innen: [[], []], reise: [] },
+           spawnL: 0, spawnK: 0 };
+  _bklFuellen();
+}
+// Luftteilchen passend zur jetzigen Stellung hinsetzen (ohne Reise).
+function _bklFuellen() {
+  for (const raum of ['L', 'K']) {
+    const R = _bkl[raum], n = _bklZiel(raum, _bkl.p);
+    R.reise = [];
+    for (let i = 0; i < 2; i++) { R.innen[i] = []; for (let k = 0; k < n; k++) R.innen[i].push(_bklTeilchen()); }
+  }
+}
+function _bklTeilchen() {
+  const z = _bkl.z;
+  return { a: z() * 6.28, q: 0.15 + z() * 0.6, ph: z() * 6.28 };
+}
+
+function _bklHTML() {
+  const k = (w) => `<button class="sim-btn" data-bkl="${w}" onclick="_bklStelle('${w}')">${_BKL_WORT[w]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Die Flasche, die atmet</h3>
+    <div class="fpm-note" style="margin-top:2px">Links das Modell: eine Flasche ohne Boden, zwei Ballons, unten eine Gummihaut. Rechts der Körper mit Lunge und Zwerchfell. Stelle die Gummihaut um. Sieh auf die Ballons und auf den Pfeil am Flaschenhals.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkl-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Gummihaut</span>
+          ${k('mitte')}
+          ${k('unten')}
+          ${k('oben')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bklNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was siehst du?</div>
+        <div class="lmp-status on" id="_bkl-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die blauen Punkte zeigen die Luft. Drückst du denselben Knopf noch einmal, beginnt die Gummihaut wieder in der Mitte – dann siehst du alles noch einmal.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────── */
+function _bklStelle(w) {
+  if (!_bkl || !(w in _BKL_POS)) return;
+  const ziel = _BKL_POS[w];
+  if (w === _bkl.stell && _bkl.u < 1) return;              // läuft schon dorthin
+  if (w === _bkl.stell && w !== 'mitte') {                  // noch einmal zeigen
+    _bkl.p = 0; _bklFuellen();
+  }
+  _bkl.fx = { teile: [] };
+  _bkl.stell = w; _bkl.p0 = _bkl.p; _bkl.p1 = ziel;
+  _bkl.richt = Math.sign(ziel - _bkl.p);
+  _bkl.u = _bkl.richt === 0 ? 1 : 0;
+  _bklStatus(); _bklKnoepfe();
+}
+function _bklNeu() {
+  if (!_bkl) return;
+  _bklInit(); _bklStatus(); _bklKnoepfe();
+}
+function _bklKnoepfe() {
+  if (!_bkl || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bkl]').forEach(b => {
+      const d = b.dataset ? b.dataset.bkl : b.getAttribute('data-bkl');
+      if (b.classList) b.classList.toggle('primary', d === _bkl.stell);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Anzeige ───────────────────────────────────────────── */
+function _bklLaeuft() { return _bkl.u < 1; }
+function _bklKoerper() {
+  if (_bklLaeuft()) return _bkl.richt > 0 ? 'einatmen' : 'ausatmen';
+  return { mitte: 'Atempause', unten: 'eingeatmet', oben: 'ausgeatmet' }[_bkl.stell];
+}
+function _bklZeilen() {
+  const w = _bkl.stell;
+  if (_bklLaeuft()) {
+    const rein = _bkl.richt > 0;
+    return [
+      'Gummihaut: ' + (w === 'mitte' ? 'geht zurück in die Mitte …' : 'wird ' + _BKL_WORT[w] + ' …'),
+      'Ballons: ' + (rein ? 'füllen sich mit Luft' : 'Luft geht heraus'),
+      rein ? 'Luft strömt hinein in die Ballons' : 'Luft strömt hinaus aus den Ballons',
+      'Körper: ' + _bklKoerper()
+    ];
+  }
+  return [
+    'Gummihaut: ' + _BKL_WORT[w],
+    'Ballons: ' + _BKL_GROESSE[w],
+    w === 'mitte' ? 'Die Luft steht still.'
+      : w === 'unten' ? 'Die Luft ist hinein in die Ballons geströmt.'
+      : 'Die Luft ist hinaus aus den Ballons geströmt.',
+    'Körper: ' + _bklKoerper()
+  ];
+}
+function _bklSchluessel() {
+  return _bklLaeuft() ? 'lauf' + _bkl.stell + _bkl.richt : 'steht' + _bkl.stell;
+}
+function _bklStatus() {
+  if (!_bkl) return;
+  _bkl.key = _bklSchluessel();
+  const el = document.getElementById('_bkl-status');
+  if (!el) return;
+  const z = _bklZeilen();
+  el.innerHTML = '<b>' + z[0] + '</b><br>' + z.slice(1).join('<br>');
+  el.className = 'lmp-status on';
+}
+
+/* ── Luftteilchen ──────────────────────────────────────── */
+// Weg eines Teilchens von draußen bis in Ballon/Lungenflügel i.
+function _bklWeg(raum, i, dx, dy) {
+  if (raum === 'L') {
+    const r = _bklRadius(_bkl.p), cy = 102 + r * 1.1;
+    return [[105 + dx, -8], [105, 22], [105, 80], [_BKL_BX[i], 100], [_BKL_BX[i] + dx * 0.3, cy + dy * r * 0.04]];
+  }
+  const s = _bklLunge(_bkl.p), cy = 92 + 34 * s;
+  return [[404, 8 + dy], [352, 26], [334, 30], [330, 40], [330, 88], [_BKL_LX[i], 102],
+          [_BKL_LX[i] + dx * 0.3, cy + dy * 0.6]];
+}
+function _bklAufWeg(pts, s) {
+  let lang = 0; const d = [];
+  for (let k = 1; k < pts.length; k++) { const l = Math.hypot(pts[k][0] - pts[k - 1][0], pts[k][1] - pts[k - 1][1]); d.push(l); lang += l; }
+  let rest = Math.max(0, Math.min(1, s)) * lang;
+  for (let k = 0; k < d.length; k++) {
+    if (rest <= d[k] || k === d.length - 1) {
+      const f = d[k] ? Math.min(1, rest / d[k]) : 0;
+      return [pts[k][0] + (pts[k + 1][0] - pts[k][0]) * f, pts[k][1] + (pts[k + 1][1] - pts[k][1]) * f];
+    }
+    rest -= d[k];
+  }
+  return pts[pts.length - 1];
+}
+// Teilchen nachführen: Zielzahl aus der Stellung, Überschuss reist hinaus, Fehlendes herein.
+function _bklRaumUpdate(raum, dt) {
+  const R = _bkl[raum];
+  // Die Zielzahl ist schon nach 70 % der Bewegung erreicht – so kommen die
+  // letzten Teilchen an, wenn die Gummihaut ankommt.
+  const uu = _bioFxEase.sanft(_bioFxKlemme(_bkl.u / 0.7));
+  const n = _bklZiel(raum, _bkl.p0 + (_bkl.p1 - _bkl.p0) * uu);
+  for (let i = 0; i < 2; i++) {
+    const unterwegs = R.reise.filter(q => q.i === i && q.rein).length;
+    if (R.innen[i].length + unterwegs < n) {
+      const z = _bkl.z;
+      R.reise.push({ i, rein: true, s: 0, dx: (z() - 0.5) * 18, dy: (z() - 0.5) * 14, t: _bklTeilchen() });
+    } else if (R.innen[i].length + unterwegs > n && R.innen[i].length > 0) {
+      const t = R.innen[i].pop(), z = _bkl.z;
+      R.reise.push({ i, rein: false, s: 0, dx: (z() - 0.5) * 18, dy: (z() - 0.5) * 14, t });
+    }
+  }
+  for (let k = R.reise.length - 1; k >= 0; k--) {
+    const q = R.reise[k];
+    q.s += dt / _BKL_REISE;
+    if (q.s >= 1) {
+      R.reise.splice(k, 1);
+      if (q.rein) R.innen[q.i].push(q.t);
+    }
+  }
+}
+
+/* ── Lauf ──────────────────────────────────────────────── */
+function _bklUpdate(dt) {
+  if (!_bkl) return;
+  dt = _bioFxDt(dt);
+  _bkl.t += dt;
+  if (_bkl.u < 1) {
+    _bkl.u = Math.min(1, _bkl.u + dt / _BKL_DAUER);
+    _bkl.p = _bkl.p0 + (_bkl.p1 - _bkl.p0) * _bioFxEase.sanft(_bkl.u);
+    if (_bkl.u >= 1) { _bkl.p = _bkl.p1; _bklAha(); }
+  }
+  _bklRaumUpdate('L', dt);
+  _bklRaumUpdate('K', dt);
+  _bioFxAlleUpdate(_bkl.fx, dt);
+  if (_bklSchluessel() !== _bkl.key) _bklStatus();
+}
+// Aha – erst wenn die Bewegung fertig ist (Beobachtung zuerst).
+function _bklAha() {
+  const fx = _bkl.fx, T = fx.teile;
+  if (_bkl.richt > 0 && _bkl.stell === 'unten') {
+    const r = _bklRadius(1), cy = 102 + r * 1.1, s = _bklLunge(1), ly = 92 + 34 * s;
+    for (const x of _BKL_BX) {
+      _bioFxWelle(T, x, cy, 'rgba(56,189,248,0.95)', r + 16);
+      _bioFxFunken(T, x, cy - r, 5, ['#bae6fd', '#ffffff', '#7dd3fc']);
+    }
+    for (const x of _BKL_LX) _bioFxWelle(T, x, ly, 'rgba(56,189,248,0.8)', 30);
+    _bioFxBanner(fx, 'Die Ballons haben sich mit Luft gefüllt!', 2.8, '#7dd3fc');
+  } else if (_bkl.richt < 0 && _bkl.stell === 'oben') {
+    _bioFxWelle(T, 105, 14, 'rgba(148,163,184,0.95)', 26);
+    _bioFxFunken(T, 105, 10, 7, ['#e2e8f0', '#ffffff', '#bae6fd']);
+    _bioFxWelle(T, 352, 26, 'rgba(148,163,184,0.9)', 20);
+    _bioFxBanner(fx, 'Die Luft ist wieder draußen.', 2.6, '#cbd5e1');
+  } else {
+    _bioFxWelle(T, 105, 46, 'rgba(148,163,184,0.8)', 18);
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────── */
+function _bklPunkt(ctx, x, y, a) {
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#2563eb';
+  ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.globalAlpha = 1;
+}
+function _bklTeilchenZeichnen(ctx, raum) {
+  const R = _bkl[raum], t = _bkl.t;
+  for (let i = 0; i < 2; i++) {
+    let cx, cy, rx, ry;
+    if (raum === 'L') { const r = _bklRadius(_bkl.p); cx = _BKL_BX[i]; cy = 102 + r * 1.1; rx = r; ry = r * 1.1; }
+    else { const s = _bklLunge(_bkl.p); cx = _BKL_LX[i]; cy = 92 + 34 * s; rx = 20 * s; ry = 34 * s; }
+    for (const q of R.innen[i]) {
+      const a = q.a + Math.sin(t * 0.8 + q.ph) * 0.5;
+      const qq = q.q + Math.sin(t * 1.3 + q.ph * 2) * 0.08;
+      _bklPunkt(ctx, cx + Math.cos(a) * qq * rx, cy + Math.sin(a) * qq * ry, 0.9);
+    }
+  }
+  for (const q of R.reise) {
+    const pts = _bklWeg(raum, q.i, q.dx, q.dy);
+    const s = q.rein ? q.s : 1 - q.s;
+    const [x, y] = _bklAufWeg(pts, s);
+    const a = q.rein ? Math.min(1, q.s / 0.12) : Math.min(1, (1 - q.s) / 0.2);
+    _bklPunkt(ctx, x, y, 0.95 * a);
+  }
+}
+function _bklPfeil(ctx, x, y0, y1, farbe) {
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1 - Math.sign(y1 - y0) * 6); ctx.stroke();
+  const s = Math.sign(y1 - y0);
+  ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x - 7, y1 - s * 10); ctx.lineTo(x + 7, y1 - s * 10); ctx.closePath(); ctx.fill();
+}
+function _bklDraw(ctx, cv) {
+  if (!_bkl) return;
+  const W = cv.width, H = cv.height, t = _bkl.t, p = _bkl.p;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f0f9ff'); bg.addColorStop(1, '#e0f2fe');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Luft draußen: ruhig schwebende Teilchen
+  for (const d of _bkl.draussen) {
+    _bklPunkt(ctx, d.x + Math.sin(t * 0.9 + d.ph) * 5, d.y + Math.sin(t * 1.3 + d.ph * 2) * 3, 0.45);
+  }
+
+  // ── Modell: Flasche ──
+  const hy = _bklHaut(p), hc = 2 * hy - _BKL_RAND;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.beginPath();
+  ctx.moveTo(93, 34); ctx.lineTo(93, 62); ctx.quadraticCurveTo(38, 66, 38, 92); ctx.lineTo(38, _BKL_RAND);
+  ctx.quadraticCurveTo(105, hc, 172, _BKL_RAND); ctx.lineTo(172, 92); ctx.quadraticCurveTo(172, 66, 117, 62);
+  ctx.lineTo(117, 34); ctx.closePath(); ctx.fill();
+  ctx.restore();
+
+  // Röhrchen (Y) und Ballons
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(105, 20); ctx.lineTo(105, 80); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(105, 80); ctx.lineTo(_BKL_BX[0], 98); ctx.lineTo(_BKL_BX[0], 102);
+  ctx.moveTo(105, 80); ctx.lineTo(_BKL_BX[1], 98); ctx.lineTo(_BKL_BX[1], 102); ctx.stroke();
+  const r = _bklRadius(p);
+  for (const x of _BKL_BX) {
+    const cy = 102 + r * 1.1;
+    const g = ctx.createRadialGradient(x - r * 0.3, cy - r * 0.4, 1, x, cy, r * 1.1);
+    g.addColorStop(0, '#fecaca'); g.addColorStop(1, '#ef4444');
+    ctx.fillStyle = g; ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(x, cy, r, r * 1.1, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#b91c1c';
+    ctx.beginPath(); ctx.moveTo(x - 3, 101); ctx.lineTo(x + 3, 101); ctx.lineTo(x + 2, 104); ctx.lineTo(x - 2, 104); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath(); ctx.ellipse(x - r * 0.4, cy - r * 0.45, r * 0.18, r * 0.28, -0.5, 0, 2 * Math.PI); ctx.fill();
+  }
+  _bklTeilchenZeichnen(ctx, 'L');
+
+  // Flaschenwand und Stopfen
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(93, 34); ctx.lineTo(93, 62); ctx.quadraticCurveTo(38, 66, 38, 92); ctx.lineTo(38, _BKL_RAND);
+  ctx.moveTo(117, 34); ctx.lineTo(117, 62); ctx.quadraticCurveTo(172, 66, 172, 92); ctx.lineTo(172, _BKL_RAND);
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(46, 100); ctx.lineTo(46, 176); ctx.stroke();
+  ctx.fillStyle = '#a16207'; ctx.fillRect(90, 30, 30, 14);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(105, 20); ctx.lineTo(105, 44); ctx.stroke();
+
+  // Gummihaut mit Knopf und Hand
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(34, _BKL_RAND); ctx.lineTo(38, _BKL_RAND);
+  ctx.quadraticCurveTo(105, hc, 172, _BKL_RAND); ctx.lineTo(176, _BKL_RAND); ctx.stroke();
+  ctx.fillStyle = '#5b21b6';
+  ctx.beginPath(); ctx.arc(105, hy + 3, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#f2c29b'; ctx.strokeStyle = '#b7815a'; ctx.lineWidth = 1.2;
+  ctx.fillRect(98, hy + 16, 14, H - hy - 14);
+  ctx.strokeRect(98, hy + 16, 14, H - hy - 14);
+  ctx.beginPath(); ctx.ellipse(105, hy + 12, 12, 8, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#b7815a'; ctx.lineWidth = 1;
+  for (const dx of [-5, 0, 5]) { ctx.beginPath(); ctx.moveTo(105 + dx, hy + 6); ctx.lineTo(105 + dx, hy + 11); ctx.stroke(); }
+
+  // Pfeil am Flaschenhals
+  const lauf = _bklLaeuft();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  if (lauf) {
+    _bioFxLeuchten(ctx, 128, 44, 16, t, '56,189,248');
+    const rein = _bkl.richt > 0;
+    _bklPfeil(ctx, 128, rein ? 26 : 62, rein ? 62 : 26, '#2563eb');
+    ctx.fillStyle = '#1d4ed8';
+    ctx.fillText(rein ? 'Luft strömt hinein' : 'Luft strömt hinaus', 138, 50);
+  } else if (_bkl.stell === 'mitte') {
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(121, 40); ctx.lineTo(135, 40); ctx.moveTo(121, 48); ctx.lineTo(135, 48); ctx.stroke();
+    ctx.fillStyle = '#334155';
+    ctx.fillText('Luft steht still', 140, 50);
+  } else {
+    const rein = _bkl.stell === 'unten';
+    _bklPfeil(ctx, 128, rein ? 26 : 62, rein ? 62 : 26, '#94a3b8');
+    ctx.fillStyle = '#334155';
+    ctx.fillText(rein ? 'Luft ist hineingeströmt' : 'Luft ist hinausgeströmt', 138, 50);
+  }
+
+  // Beschriftung Modell
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#475569'; ctx.fillText('Flasche', 178, 108);
+  ctx.fillStyle = '#b91c1c'; ctx.fillText('Ballons: ' + (lauf ? '…' : _BKL_GROESSE[_bkl.stell]), 178, 130);
+  ctx.fillStyle = '#6d28d9'; ctx.fillText('Gummihaut', 178, _BKL_RAND + 4);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.fillText('Modell', 8, H - 8);
+
+  // Trennlinie
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,0.35)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(262, 6); ctx.lineTo(262, H - 6); ctx.stroke();
+  ctx.restore();
+
+  // ── Körper im Schnitt ──
+  const s = _bklLunge(p), rip = -2 * p;
+  ctx.fillStyle = '#fde7d6'; ctx.strokeStyle = '#d4a58a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(270, H); ctx.lineTo(270, 76); ctx.quadraticCurveTo(272, 58, 300, 56);
+  ctx.lineTo(360, 56); ctx.quadraticCurveTo(388, 58, 390, 76); ctx.lineTo(390, H); ctx.fill(); ctx.stroke();
+  ctx.fillRect(323, 34, 14, 24);
+  ctx.beginPath(); ctx.arc(330, 22, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#9a5b3c'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(330, 27, 4, 0.2, Math.PI - 0.2); ctx.stroke();
+  ctx.fillStyle = '#6b4a36';
+  ctx.beginPath(); ctx.arc(324, 18, 1.6, 0, 2 * Math.PI); ctx.arc(336, 18, 1.6, 0, 2 * Math.PI); ctx.fill();
+  // Rippen heben sich beim Einatmen ein wenig
+  ctx.strokeStyle = '#e7c9ae'; ctx.lineWidth = 3;
+  for (let k = 0; k < 4; k++) {
+    const y = 84 + k * 22 + rip * (1 - k * 0.2);
+    ctx.beginPath(); ctx.moveTo(328, y - 4); ctx.quadraticCurveTo(290, y - 2, 276, y + 12); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(332, y - 4); ctx.quadraticCurveTo(370, y - 2, 384, y + 12); ctx.stroke();
+  }
+  // Luftröhre und Lunge
+  ctx.strokeStyle = '#e28a9b'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(330, 34); ctx.lineTo(330, 88);
+  ctx.moveTo(330, 88); ctx.lineTo(_BKL_LX[0], 102); ctx.moveTo(330, 88); ctx.lineTo(_BKL_LX[1], 102); ctx.stroke();
+  for (const x of _BKL_LX) {
+    const cy = 92 + 34 * s;
+    ctx.fillStyle = '#f9b4c2'; ctx.strokeStyle = '#be4a64'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(x, cy, 20 * s, 34 * s, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  _bklTeilchenZeichnen(ctx, 'K');
+  // Zwerchfell: zieht es sich zusammen (Einatmen), wird es dunkler und flach
+  const zy = _bklZwerch(p), zc = 2 * zy - 178;
+  const zieht = lauf && _bkl.richt > 0;
+  ctx.strokeStyle = zieht ? '#991b1b' : '#dc6b6b'; ctx.lineWidth = zieht ? 6 : 5;
+  ctx.beginPath(); ctx.moveTo(272, 178); ctx.quadraticCurveTo(330, zc, 388, 178); ctx.stroke();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#7f1d1d';
+  ctx.fillText('Lunge', _BKL_LX[1], 92 + 34 * s + 3);
+  ctx.fillText('Zwerchfell', 330, 200);
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Körper: ' + _bklKoerper(), 330, H - 10);
+
+  _bioFxAlleDraw(ctx, _bkl.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · SAMIRS HERZ BEIM RENNEN   (Förderheft Bio 5/6 · bk5)
+// Samir im Schulgarten (sitzt auf der Bank, geht oder rennt), daneben ein
+// Herz, das im Takt schlägt, eine Stoppuhr und darunter der Pulsstreifen:
+// eine Zacke je Herzschlag, jede 5. Zacke etwas länger (Zählhilfe).
+// KEINE Pulszahl am Bildschirm – das Kind zählt die Zacken selbst.
+// Modellwerte (Lehrerteil, Elfjährige): sitzen 80, gehen 100, rennen 160
+// Schläge pro Minute -> 20, 25, 40 Zacken in 15 Sekunden. Nach dem Rennen
+// und 1 Minute Pause: 100 pro Minute -> 25 Zacken (atmet etwas schneller).
+// Atmung als Text unter Samir: „atmet ruhig“ / „atmet etwas schneller“ /
+// „atmet schnell und tief“; die Atemwolken kommen im passenden Takt.
+// Messen läuft in ECHTZEIT (15 s): So schlägt das Herz höchstens 160-mal pro
+// Minute = 2,7 Hz, unter der Grenze von 3 Hz. Ausruhen im Zeitraffer (1 min in
+// 3 s); dabei wird nur die Uhr schneller, das Herz schlägt weiter im echten
+// Takt und wird dabei sichtbar langsamer.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Beim Rennen jagt der Stift
+// über den Streifen, jede 5. Zacke sprüht kleine Funken. Nach 15 s: Stempel
+// „Stopp“ an der Stoppuhr, Banner. Beim Ausruhen beruhigt sich das Herz
+// sichtbar; danach liegt der alte Streifen („vorher: rennen“) direkt unter dem
+// neuen – die Zacken stehen deutlich weiter auseinander. Keine Zahl, kein
+// Lückenwort im Bild, keine Wertung, kein Blinken, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _bkp = null;
+const _BKP_BEW = ['sitzen', 'gehen', 'rennen'];
+const _BKP_PULS = { sitzen: 80, gehen: 100, rennen: 160 };        // Schläge pro Minute
+const _BKP_ATEM = { sitzen: 'ruhig', gehen: 'etwas schneller', rennen: 'schnell und tief' };
+const _BKP_ATEMZUG = { 'ruhig': 16, 'etwas schneller': 22, 'schnell und tief': 34 }; // pro Minute
+const _BKP_MESS = 15;          // s Messzeit
+const _BKP_RUHE = 3;           // s Zeitraffer für 1 Minute Pause
+// Pulsstreifen: 15 s auf 340 px
+const _BKP_SX0 = 70, _BKP_SX1 = 410;
+function _bkpSX(s) { return _BKP_SX0 + (_BKP_SX1 - _BKP_SX0) * s / _BKP_MESS; }
+
+function _bkpInit() {
+  _bkp = { t: 0, bew: 'sitzen', pause: false, phase: 'bereit', mt: 0, rt: 0,
+           rate: 80, rateStart: 80, herzPh: 0.6, hb: 9, atemPh: 0.3, weg: 0,
+           zacken: [], plan: [], label: '', fertig: false, vorher: null,
+           wolken: [], fx: { teile: [] }, nach: -1, schritt: 0, ruheNach: -1,
+           atemVorher: '', key: '' };
+}
+// Welcher Puls gilt gerade? (nach der Pause: rennen -> 100, sonst 80)
+function _bkpZiel() {
+  if (_bkp.pause) return _bkp.bew === 'rennen' ? 100 : 80;
+  return _BKP_PULS[_bkp.bew];
+}
+function _bkpAtem() {
+  // während der Pause (Zeitraffer) beruhigt sich der Atem erst nach und nach
+  if (_bkp.phase === 'ruhe' && _bkp.rt < 0.6 * _BKP_RUHE && _bkp.atemVorher) return _bkp.atemVorher;
+  if (_bkp.pause) return _bkp.bew === 'rennen' ? 'etwas schneller' : 'ruhig';
+  return _BKP_ATEM[_bkp.bew];
+}
+function _bkpEinstellung() {
+  return _bkp.pause ? _bkp.bew + ', dann 1 Minute ausgeruht' : _bkp.bew;
+}
+function _bkpKurz() { return _bkp.pause ? 'nach Pause' : _bkp.bew; }
+function _bkpSitzt() { return _bkp.pause || _bkp.bew === 'sitzen'; }
+// Zeitpunkte der Herzschläge in 15 s: genau N = 15 s · Puls / 60 s, gleichmäßig.
+function _bkpPlan(puls) {
+  const n = Math.round(_BKP_MESS * puls / 60), p = [];
+  for (let k = 0; k < n; k++) p.push((k + 0.5) * _BKP_MESS / n);
+  return p;
+}
+
+function _bkpHTML() {
+  const b = w => `<button class="sim-btn" data-bkp="${w}" onclick="_bkpBewegung('${w}')">${w}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie schnell schlägt Samirs Herz?</h3>
+    <div class="fpm-note" style="margin-top:2px">Samir ist im Schulgarten. Stelle „Bewegung“ ein. Drücke dann „▶ 15 Sekunden messen“ und zähle die Zacken auf dem Pulsstreifen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkp-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bkp-los" onclick="_bkpMessen()">▶ 15 Sekunden messen</button>
+          <button class="sim-btn" id="_bkp-ruhe" onclick="_bkpAusruhen()">▶ 1 Minute ausruhen</button>
+          <button class="sim-btn" onclick="_bkpNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Bewegung</span>
+          <div class="sim-btn-row">${_BKP_BEW.map(b).join('')}</div>
+        </div>
+        <div class="lmp-status on" id="_bkp-status" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Jede Zacke auf dem Pulsstreifen ist ein Herzschlag. Jede 5. Zacke ist etwas länger. So zählst du leichter.</div>
+        <div class="fpm-label" style="margin-top:10px">Fertige Streifen zum Nachsehen</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bkpMarke('sitzen',0)">Streifen sitzen</button>
+          <button class="sim-btn" onclick="_bkpMarke('gehen',0)">Streifen gehen</button>
+          <button class="sim-btn" onclick="_bkpMarke('rennen',0)">Streifen rennen</button>
+          <button class="sim-btn" onclick="_bkpMarke('rennen',1)">Streifen nach der Pause</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: sitzen &nbsp;|&nbsp; Fahre beim Zählen mit dem Finger über die Zacken.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bkpFxLeer() {
+  _bkp.fx = { teile: [] }; _bkp.nach = -1; _bkp.schritt = 0; _bkp.ruheNach = -1;
+}
+// Ein fertiger Streifen wandert beim nächsten Messen nach unten („vorher“).
+function _bkpAlterStreifen() {
+  if (_bkp.fertig && _bkp.zacken.length) _bkp.vorher = { label: _bkp.label, zacken: _bkp.zacken.slice() };
+}
+function _bkpBewegung(w) {
+  if (!_bkp || _BKP_BEW.indexOf(w) < 0) return;
+  if (_bkp.phase === 'messen') { _bkp.zacken = []; _bkp.fertig = false; }
+  _bkp.bew = w; _bkp.pause = false; _bkp.phase = 'bereit'; _bkp.mt = 0;
+  _bkpFxLeer(); _bkpStatus();
+}
+function _bkpMessen() {
+  if (!_bkp || _bkp.phase === 'messen' || _bkp.phase === 'ruhe') return;
+  _bkpAlterStreifen();
+  _bkpFxLeer();
+  _bkp.rate = _bkpZiel();
+  _bkp.plan = _bkpPlan(_bkp.rate);
+  _bkp.zacken = []; _bkp.fertig = false; _bkp.label = _bkpKurz();
+  _bkp.phase = 'messen'; _bkp.mt = 0;
+  _bkpStatus();
+}
+function _bkpAusruhen() {
+  if (!_bkp || _bkp.phase === 'ruhe') return;
+  if (_bkp.phase === 'messen') { _bkp.zacken = []; _bkp.fertig = false; }
+  _bkp.atemVorher = _bkpAtem();
+  _bkpFxLeer();
+  _bkp.rateStart = Math.max(_bkp.rate, _bkpZiel());      // vom Puls der Bewegung aus
+  _bkp.pause = true; _bkp.phase = 'ruhe'; _bkp.rt = 0; _bkp.mt = 0;
+  _bkpStatus();
+}
+function _bkpNeu() {
+  if (!_bkp) return;
+  const t = _bkp.t;
+  _bkpInit(); _bkp.t = t;
+  _bkpStatus();
+}
+// Sprungmarke: fertig gemessener Streifen (für Lehrkraft und zum Nachsehen).
+function _bkpMarke(w, p) {
+  if (!_bkp || _BKP_BEW.indexOf(w) < 0) return;
+  _bkpAlterStreifen();
+  _bkp.bew = w; _bkp.pause = !!p;
+  if (_bkp.pause && !(_bkp.vorher && _bkp.vorher.label === w))
+    _bkp.vorher = { label: w, zacken: _bkpPlan(_BKP_PULS[w]) };   // Vergleich: vor der Pause
+  _bkpFxLeer();
+  _bkp.rate = _bkpZiel();
+  _bkp.plan = _bkpPlan(_bkp.rate);
+  _bkp.zacken = _bkp.plan.slice(); _bkp.label = _bkpKurz();
+  _bkp.mt = _BKP_MESS; _bkp.phase = 'fertig'; _bkp.fertig = true;
+  _bkp.nach = 0;
+  _bkpStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bkpSchluessel() {
+  return _bkp.phase + '|' + _bkpEinstellung() + '|' + _bkpAtem() + '|' + Math.floor(_bkp.mt + 1e-9);
+}
+function _bkpStatus() {
+  if (!_bkp) return;
+  _bkp.key = _bkpSchluessel();
+  let z2;
+  if (_bkp.phase === 'messen') z2 = 'Stoppuhr: ' + Math.floor(_bkp.mt + 1e-9) + ' s · der Pulsstreifen läuft.';
+  else if (_bkp.phase === 'fertig') z2 = 'Stoppuhr: 15 s · fertig. Zähle die Zacken auf dem Pulsstreifen.';
+  else if (_bkp.phase === 'ruhe') z2 = '▶▶ Zeitraffer: Samir ruht sich 1 Minute auf der Bank aus.';
+  else z2 = 'Drücke „▶ 15 Sekunden messen“.';
+  const el = document.getElementById('_bkp-status');
+  if (el) {
+    el.innerHTML = '<b>Bewegung: ' + _bkpEinstellung() + '</b><br>Samir atmet ' + _bkpAtem() + '.<br>' + z2;
+    el.className = 'lmp-status on';
+  }
+  try {
+    document.querySelectorAll('[data-bkp]').forEach(b => {
+      const w = b.getAttribute('data-bkp');
+      if (b.classList) b.classList.toggle('primary', w === _bkp.bew);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_bkp-los');
+  if (los && los.classList) los.classList.toggle('primary', _bkp.phase !== 'messen' && _bkp.phase !== 'ruhe');
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _bkpUpdate(dt) {
+  if (!_bkp) return;
+  dt = _bioFxDt(dt);
+  _bkp.t += dt;
+  _bkp.hb += dt;
+  const ziel = _bkpZiel();
+  if (_bkp.phase === 'messen') {
+    // Herzschläge nach Plan; jeder Schlag setzt eine Zacke
+    _bkp.rate = ziel;
+    _bkp.mt = Math.min(_BKP_MESS, _bkp.mt + dt);
+    while (_bkp.zacken.length < _bkp.plan.length && _bkp.plan[_bkp.zacken.length] <= _bkp.mt) {
+      _bkp.zacken.push(_bkp.plan[_bkp.zacken.length]);
+      _bkp.hb = 0;
+      _bkpAhaZacke(_bkp.zacken.length);
+    }
+    if (_bkp.mt >= _BKP_MESS) {
+      _bkp.phase = 'fertig'; _bkp.fertig = true; _bkp.nach = 0; _bkp.schritt = 0;
+      _bkp.herzPh = 0.2;
+    }
+  } else {
+    if (_bkp.phase === 'ruhe') {
+      // Zeitraffer: 1 Minute in 3 s; der Puls sinkt sichtbar
+      _bkp.rt = Math.min(_BKP_RUHE, _bkp.rt + dt);
+      const u = _bioFxEase.sanft(_bioFxKlemme(_bkp.rt / _BKP_RUHE));
+      _bkp.rate = _bkp.rateStart + (ziel - _bkp.rateStart) * u;
+      if (_bkp.rt >= _BKP_RUHE) { _bkp.rate = ziel; _bkp.phase = 'bereit'; _bkp.ruheNach = 0; }
+    } else {
+      _bkp.rate += (ziel - _bkp.rate) * Math.min(1, dt * 0.9);   // Herz folgt der Bewegung
+    }
+    _bkp.herzPh += dt * _bkp.rate / 60;
+    if (_bkp.herzPh >= 1) { _bkp.herzPh -= Math.floor(_bkp.herzPh); _bkp.hb = 0; }
+  }
+  // Atmung und Laufweg
+  const atem = _BKP_ATEMZUG[_bkpAtem()];
+  const vorAtem = _bkp.atemPh;
+  _bkp.atemPh += dt * atem / 60;
+  if (Math.floor(_bkp.atemPh) > Math.floor(vorAtem)) _bkpWolke();
+  const tempo = _bkpSitzt() ? 0 : (_bkp.bew === 'gehen' ? 34 : 95);
+  _bkp.weg += tempo * dt;
+  for (const w of _bkp.wolken) { w.a += dt; w.x += (14 + tempo * -0.25) * dt; w.y -= 6 * dt; }
+  _bkp.wolken = _bkp.wolken.filter(w => w.a < 1.6);
+  if (_bkp.nach >= 0) { _bkp.nach += dt; _bkpAhaEnde(); }
+  if (_bkp.ruheNach >= 0) { _bkp.ruheNach += dt; _bkpAhaRuhe(); }
+  if (_bkp.fx.stempel && _bkp.fx.stempel.alter > 2.2) _bkp.fx.stempel = null;
+  _bioFxAlleUpdate(_bkp.fx, dt);
+  if (_bkpSchluessel() !== _bkp.key) _bkpStatus();
+}
+// Wo ist Samirs Mund? (gleiche Maße wie _bkpSamir)
+function _bkpMund() {
+  const g = _bkpPose();
+  return { x: g.kx + 7, y: g.ky + 3 };
+}
+function _bkpWolke() {
+  const m = _bkpMund(), tief = _bkpAtem() === 'schnell und tief';
+  _bkp.wolken.push({ x: m.x + 3, y: m.y, a: 0, r: tief ? 7 : _bkpAtem() === 'ruhig' ? 4 : 5.5 });
+}
+
+/* ── Aha (nur Aufrufe der Bibliothek _bioFx) ─────────────────────────────── */
+// Während des Messens: jede 5. Zacke sprüht ein paar Funken (höchstens 0,6 Hz).
+function _bkpAhaZacke(n) {
+  if (n % 5) return;
+  const x = _bkpSX(_bkp.zacken[n - 1]);
+  const warm = _bkp.bew === 'rennen' && !_bkp.pause;
+  _bioFxFunken(_bkp.fx.teile, x, 176, warm ? 5 : 3, warm ? ['#fca5a5', '#fde68a', '#ffffff'] : ['#fecaca', '#ffffff']);
+  _bioFxWelle(_bkp.fx.teile, 262, 64, 'rgba(239,68,68,0.8)', 40);
+}
+// Nach 15 s: erst steht der Streifen, dann bestätigt der Effekt.
+function _bkpAhaEnde() {
+  const fx = _bkp.fx, t = _bkp.nach;
+  if (_bkp.schritt === 0) {
+    _bkp.schritt = 1;
+    _bioFxStempel(fx, 'Stopp', 372, 66, '#b91c1c');
+    _bioFxWelle(fx.teile, _bkpSX(_BKP_MESS) - 4, 196, 'rgba(239,68,68,0.7)', 26);
+  }
+  if (_bkp.schritt === 1 && t >= 0.6) {
+    _bkp.schritt = 2;
+    if (_bkp.label === 'rennen') {
+      // die Kurve jagte: Funken über die ganze Länge des Streifens
+      for (let k = 4; k < _bkp.zacken.length; k += 10)
+        _bioFxFunken(fx.teile, _bkpSX(_bkp.zacken[k]), 178, 4, ['#fca5a5', '#fde68a', '#ffffff']);
+      _bioFxBanner(fx, 'Beim Rennen: Zacken ganz dicht!', 3.2, '#fca5a5');
+    } else if (_bkp.label === 'nach Pause' && _bkp.vorher) {
+      // beruhigt: ruhiger grüner Ring über beiden Streifen
+      _bioFxWelle(fx.teile, 240, 200, 'rgba(34,197,94,0.7)', 90);
+      _bioFxBlaetter(fx.teile, 110, 60, 4, ['#86efac', '#4ade80']);
+      _bioFxBanner(fx, 'Vergleiche mit dem Streifen vorher!', 3.4, '#86efac');
+    } else {
+      _bioFxBanner(fx, 'Zähle jetzt die Zacken!', 2.8, '#fde68a');
+    }
+  }
+  if (t > 4) _bkp.nach = -1;
+}
+// Nach der Pause: Blätter segeln, das Herz schlägt ruhiger.
+function _bkpAhaRuhe() {
+  if (_bkp.ruheNach < 0.05) {
+    _bioFxBlaetter(_bkp.fx.teile, 120, 20, 5);
+    _bioFxWelle(_bkp.fx.teile, 262, 64, 'rgba(34,197,94,0.7)', 44);
+    _bioFxBanner(_bkp.fx, '1 Minute Pause ist vorbei.', 2.6, '#86efac');
+  }
+  if (_bkp.ruheNach > 3) _bkp.ruheNach = -1;
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+// Körperhaltung: Hüfte, Schultern, Kopf, Beinwinkel. Samir schaut nach rechts.
+function _bkpPose() {
+  const x = 118, boden = 128, t = _bkp.t;
+  if (_bkpSitzt()) {
+    const heb = Math.sin(_bkp.atemPh * 2 * Math.PI) * (_bkpAtem() === 'ruhig' ? 0.6 : 1.4);
+    const hx = x, hy = boden - 18, lean = 0.05;
+    const sx = hx + Math.sin(lean) * 24, sy = hy - 24 - heb;
+    return { sitzt: true, hx, hy, sx, sy, kx: sx + Math.sin(lean) * 12, ky: sy - 12, lean, boden };
+  }
+  const renn = _bkp.bew === 'rennen';
+  const f = renn ? 2.8 : 1.7;                        // Schritte pro Sekunde (Beinpaar)
+  const ph = t * f * Math.PI * 2 / 2;
+  const hop = renn ? Math.abs(Math.sin(ph)) * 3.5 : Math.abs(Math.sin(ph)) * 1.2;
+  const lean = renn ? 0.28 : 0.06;
+  const hx = x, hy = boden - 33 - hop;
+  const sx = hx + Math.sin(lean) * 24, sy = hy - Math.cos(lean) * 24;
+  return { sitzt: false, hx, hy, sx, sy, kx: sx + Math.sin(lean) * 12, ky: sy - Math.cos(lean) * 12, lean, ph, renn, boden };
+}
+function _bkpGlied(ctx, x, y, l1, a1, l2, a2) {
+  const kx = x + Math.sin(a1) * l1, ky = y + Math.cos(a1) * l1;
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(kx, ky);
+  ctx.lineTo(kx + Math.sin(a2) * l2, ky + Math.cos(a2) * l2); ctx.stroke();
+}
+function _bkpSamir(ctx) {
+  const g = _bkpPose();
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Beine (Hose blau), hinteres Bein dunkler
+  const beine = g.sitzt
+    ? [[Math.PI / 2 - 0.05, 0.02], [Math.PI / 2 + 0.05, -0.05]]
+    : [0, 1].map(i => {
+        const s = Math.sin(g.ph + i * Math.PI);
+        const amp = g.renn ? 0.85 : 0.42;
+        const a1 = amp * s;
+        const knick = g.renn ? 0.25 + 0.95 * (0.5 - 0.5 * s) : 0.08 + 0.35 * (0.5 - 0.5 * s);
+        return [a1, a1 - knick];
+      });
+  beine.forEach((b, i) => {
+    ctx.strokeStyle = i ? '#1e40af' : '#2b4fbf'; ctx.lineWidth = 6;
+    const l1 = g.sitzt ? 17 : 17, l2 = g.sitzt ? 16 : 17;
+    _bkpGlied(ctx, g.hx, g.hy, l1, b[0], l2, b[1]);
+    // Schuh
+    const kx = g.hx + Math.sin(b[0]) * l1, ky = g.hy + Math.cos(b[0]) * l1;
+    const fx = kx + Math.sin(b[1]) * l2, fy = ky + Math.cos(b[1]) * l2;
+    ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.ellipse(fx + 3, fy + 1, 5, 2.6, 0, 0, 2 * Math.PI); ctx.fill();
+  });
+  // Rumpf (T-Shirt) – atmet mit
+  const atmen = 1 + 0.08 * Math.max(0, Math.sin(_bkp.atemPh * 2 * Math.PI)) * (_bkpAtem() === 'schnell und tief' ? 2 : 1);
+  ctx.strokeStyle = '#0f9d8a'; ctx.lineWidth = 13 * atmen;
+  ctx.beginPath(); ctx.moveTo(g.hx, g.hy - 2); ctx.lineTo(g.sx, g.sy + 3); ctx.stroke();
+  // Arme
+  const arme = g.sitzt ? [[0.9, 1.9], [0.8, 1.8]]
+    : [0, 1].map(i => {
+        const s = Math.sin(g.ph + i * Math.PI + Math.PI);
+        const amp = g.renn ? 1.0 : 0.45;
+        return [amp * s + g.lean, amp * s + g.lean + (g.renn ? 1.5 : 0.35)];
+      });
+  arme.forEach((a, i) => {
+    ctx.strokeStyle = i ? '#c98b5e' : '#e0a877'; ctx.lineWidth = 4.5;
+    _bkpGlied(ctx, g.sx, g.sy + 2, 12, a[0], 12, a[1]);
+  });
+  // Kopf
+  ctx.fillStyle = '#e0a877'; ctx.strokeStyle = '#9a6a45'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(g.kx, g.ky, 9.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#2d1f14';
+  ctx.beginPath(); ctx.arc(g.kx - 1, g.ky - 3, 9.5, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(g.kx + 4, g.ky - 1, 1.2, 0, 2 * Math.PI); ctx.fill();
+  // Mund: offen, wenn er schnell atmet
+  const offen = _bkpAtem() === 'ruhig' ? 0.6 : 1.2 + 0.8 * Math.max(0, Math.sin(_bkp.atemPh * 2 * Math.PI));
+  ctx.fillStyle = '#7f1d1d'; ctx.beginPath(); ctx.ellipse(g.kx + 6, g.ky + 3.5, 1.6, offen, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _bkpHerz(ctx, x, y, s) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(s, s);
+  const gr = ctx.createRadialGradient(-6, -8, 2, 0, 0, 30);
+  gr.addColorStop(0, '#f87171'); gr.addColorStop(1, '#b91c1c');
+  ctx.fillStyle = gr; ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(0, 22);
+  ctx.bezierCurveTo(-30, 2, -24, -24, 0, -12);
+  ctx.bezierCurveTo(24, -24, 30, 2, 0, 22);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.beginPath(); ctx.ellipse(-10, -9, 5, 3, -0.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _bkpZacke(ctx, x, yb, h) {
+  ctx.lineTo(x - 3, yb); ctx.lineTo(x - 1.5, yb + 3); ctx.lineTo(x, yb - h);
+  ctx.lineTo(x + 1.5, yb + 5); ctx.lineTo(x + 3, yb);
+}
+// Ein Streifen: Zacken bis zur Zeit bis (s). hoch = Höhe der normalen Zacke.
+function _bkpStreifen(ctx, zacken, bis, yb, hoch, farbe, breite) {
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = breite; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(_BKP_SX0, yb);
+  for (let k = 0; k < zacken.length; k++) {
+    if (zacken[k] > bis) break;
+    _bkpZacke(ctx, _bkpSX(zacken[k]), yb, (k % 5 === 4) ? hoch * 1.55 : hoch);
+  }
+  ctx.lineTo(_bkpSX(bis), yb);
+  ctx.stroke();
+  ctx.restore();
+}
+function _bkpDraw(ctx, cv) {
+  if (!_bkp) return;
+  const W = cv.width, H = cv.height, t = _bkp.t;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel und Rasen
+  const himmel = ctx.createLinearGradient(0, 0, 0, 110);
+  himmel.addColorStop(0, '#cfe8fb'); himmel.addColorStop(1, '#eef7fd');
+  ctx.fillStyle = himmel; ctx.fillRect(0, 0, W, 112);
+  ctx.fillStyle = '#9fd18b'; ctx.fillRect(0, 108, W, 46);
+  ctx.fillStyle = '#b9dfa6'; ctx.fillRect(0, 108, W, 4);
+  // Wolken am Himmel ziehen langsam
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  for (let i = 0; i < 3; i++) {
+    const wx = ((i * 150 + t * 6) % 480) - 40, wy = 18 + i * 9;
+    ctx.beginPath(); ctx.ellipse(wx, wy, 18, 6, 0, 0, 2 * Math.PI); ctx.ellipse(wx + 12, wy - 3, 12, 6, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Schulgarten: Hecke, Zaun und Beete ziehen vorbei, wenn Samir geht oder rennt
+  const weg = _bkp.weg;
+  ctx.fillStyle = '#4d8b3a';
+  for (let i = 0; i < 8; i++) {
+    const hx = ((i * 64 - weg * 0.4) % 512 + 512) % 512 - 40;
+    ctx.beginPath(); ctx.arc(hx, 96, 20, Math.PI, 0); ctx.arc(hx + 22, 98, 16, Math.PI, 0); ctx.fill();
+  }
+  ctx.fillStyle = '#5e9e48'; ctx.fillRect(0, 96, W, 14);
+  ctx.strokeStyle = '#a07c52'; ctx.lineWidth = 3;
+  for (let i = 0; i < 12; i++) {
+    const px = ((i * 40 - weg) % 480 + 480) % 480 - 30;
+    ctx.beginPath(); ctx.moveTo(px, 112); ctx.lineTo(px, 88); ctx.stroke();
+  }
+  ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(0, 95); ctx.lineTo(240, 95); ctx.moveTo(0, 104); ctx.lineTo(240, 104); ctx.stroke();
+  for (let i = 0; i < 9; i++) {
+    const bx = ((i * 57 - weg * 1.2) % 513 + 513) % 513 - 30;
+    ctx.fillStyle = ['#f472b6', '#facc15', '#f97316'][i % 3];
+    ctx.beginPath(); ctx.arc(bx, 138 + (i % 2) * 6, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Bank, wenn Samir sitzt
+  if (_bkpSitzt()) {
+    ctx.fillStyle = '#8b5a2b';
+    ctx.fillRect(94, 108, 56, 5); ctx.fillRect(96, 90, 5, 20);
+    ctx.fillStyle = '#6b4220'; ctx.fillRect(98, 113, 4, 15); ctx.fillRect(142, 113, 4, 15);
+    ctx.fillStyle = '#9c6a36'; ctx.fillRect(94, 88, 9, 4);
+  }
+  // Tempo-Striche beim Rennen
+  if (!_bkpSitzt() && _bkp.bew === 'rennen') {
+    ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 2;
+    for (let i = 0; i < 3; i++) {
+      const lx = 62 + ((t * 60 + i * 13) % 20);
+      ctx.beginPath(); ctx.moveTo(lx, 70 + i * 12); ctx.lineTo(lx + 16, 70 + i * 12); ctx.stroke();
+    }
+  }
+  // Atemwolken
+  for (const w of _bkp.wolken) {
+    const a = Math.max(0, 1 - w.a / 1.6) * 0.9;
+    ctx.fillStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')';
+    ctx.strokeStyle = 'rgba(148,163,184,' + (a * 0.6).toFixed(3) + ')'; ctx.lineWidth = 1;
+    const r = w.r * (0.6 + 0.6 * Math.min(1, w.a * 2));
+    ctx.beginPath(); ctx.arc(w.x, w.y, r, 0, 2 * Math.PI); ctx.arc(w.x + r * 0.8, w.y - r * 0.4, r * 0.7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  _bkpSamir(ctx);
+  // Atmung als Text unter Samir
+  ctx.fillStyle = '#14532d'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('atmet ' + _bkpAtem(), 118, 148);
+
+  // Karte rechts: Herz und Stoppuhr
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 226, 8, 188, 142, 12); ctx.fill(); ctx.stroke();
+  const schlag = Math.exp(-_bkp.hb * 9);                       // Herz zieht sich zusammen
+  if (_bkp.nach >= 0 && _bkp.label === 'rennen' && _bkp.nach < 3) _bioFxLeuchten(ctx, 262, 64, 34, t, '248,113,113');
+  _bkpHerz(ctx, 262, 64, 1.05 + 0.2 * schlag);
+  ctx.fillStyle = '#7f1d1d'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Herz', 262, 120);
+  // Stoppuhr
+  const ux = 360, uy = 66, ur = 32;
+  ctx.fillStyle = '#475569'; ctx.fillRect(ux - 5, uy - ur - 9, 10, 7);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.lineWidth = 1.5;
+  for (let k = 0; k < 15; k++) {
+    const a = k / 15 * 2 * Math.PI, l = k % 5 ? 4 : 8;
+    ctx.beginPath(); ctx.moveTo(ux + Math.sin(a) * (ur - 3), uy - Math.cos(a) * (ur - 3));
+    ctx.lineTo(ux + Math.sin(a) * (ur - 3 - l), uy - Math.cos(a) * (ur - 3 - l)); ctx.stroke();
+  }
+  let zeiger, uhrText;
+  if (_bkp.phase === 'ruhe') { zeiger = (_bkp.rt / _BKP_RUHE) * 4; uhrText = 'Pause'; }
+  else { zeiger = _bkp.mt / _BKP_MESS; uhrText = Math.floor(_bkp.mt + 1e-9) + ' s'; }
+  if (_bkp.mt > 0 && _bkp.phase !== 'ruhe') {
+    ctx.fillStyle = 'rgba(248,113,113,0.25)';
+    ctx.beginPath(); ctx.moveTo(ux, uy); ctx.arc(ux, uy, ur - 3, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * zeiger); ctx.closePath(); ctx.fill();
+  }
+  const za = zeiger * 2 * Math.PI;
+  ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.sin(za) * (ur - 8), uy - Math.cos(za) * (ur - 8)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(ux, uy, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 14px sans-serif';
+  ctx.fillText(uhrText, ux, uy + ur + 18);
+  ctx.font = '11px sans-serif'; ctx.fillStyle = '#475569';
+  ctx.fillText('Stoppuhr', ux, uy + ur + 32);
+  if (_bkp.phase === 'ruhe') {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶▶ Zeitraffer: 1 Minute Pause', 10, 16);
+  }
+
+  // Pulsstreifen (Papier mit Raster)
+  const y0 = 156, y1 = 222, yb = 210;
+  ctx.fillStyle = '#fff7f7'; ctx.fillRect(_BKP_SX0, y0, _BKP_SX1 - _BKP_SX0, y1 - y0);
+  ctx.strokeStyle = 'rgba(248,113,113,0.18)'; ctx.lineWidth = 1;
+  for (let s = 0; s <= _BKP_MESS; s++) {
+    const x = _bkpSX(s);
+    ctx.strokeStyle = s % 5 ? 'rgba(248,113,113,0.16)' : 'rgba(248,113,113,0.45)';
+    ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1); ctx.stroke();
+  }
+  ctx.fillStyle = '#9f1239'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  for (const s of [5, 10, 15]) ctx.fillText(s + ' s', _bkpSX(s) - (s === 15 ? 9 : 0), y1 - 2);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.strokeRect(_BKP_SX0, y0, _BKP_SX1 - _BKP_SX0, y1 - y0);
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Puls-', 8, y0 + 14); ctx.fillText('streifen', 8, y0 + 26);
+  if (_bkp.phase === 'messen' || _bkp.fertig) {
+    ctx.fillStyle = '#b91c1c'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(_bkp.label, 8, y0 + 44);
+    const bis = _bkp.phase === 'messen' ? _bkp.mt : _BKP_MESS;
+    _bkpStreifen(ctx, _bkp.zacken, bis, yb, 24, '#dc2626', 2);
+    if (_bkp.phase === 'messen') {
+      // Schreibstift mit Leuchtspur
+      const px = _bkpSX(_bkp.mt);
+      const g = ctx.createLinearGradient(px - 40, 0, px, 0);
+      g.addColorStop(0, 'rgba(252,165,165,0)'); g.addColorStop(1, 'rgba(252,165,165,0.45)');
+      ctx.fillStyle = g; ctx.fillRect(Math.max(_BKP_SX0, px - 40), y0 + 2, Math.min(40, px - _BKP_SX0), y1 - y0 - 4);
+      ctx.fillStyle = '#7f1d1d'; ctx.beginPath(); ctx.arc(px, yb, 3.5, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(px, yb - 3); ctx.lineTo(px + 8, y0 + 4); ctx.stroke();
+    }
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Der Streifen startet mit der Stoppuhr.', (_BKP_SX0 + _BKP_SX1) / 2, y0 + 30);
+  }
+  // Streifen von vorher (zum Vergleichen), klein darunter
+  if (_bkp.vorher) {
+    const v0 = 226, vb = 244;
+    ctx.fillStyle = '#f8fafc'; ctx.fillRect(_BKP_SX0, v0, _BKP_SX1 - _BKP_SX0, 22);
+    ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('vorher:', 8, v0 + 9); ctx.fillText(_bkp.vorher.label, 8, v0 + 20);
+    _bkpStreifen(ctx, _bkp.vorher.zacken, _BKP_MESS, vb, 9, '#94a3b8', 1.3);
+  }
+  _bioFxAlleDraw(ctx, _bkp.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bk6 „Das Blut auf großer Reise“ (Kennung bio-kreislauf)
+// Links der ganze Koerper klein: Herz in der Mitte, oben die Lunge, unten
+// links der Darm, unten rechts ein Beinmuskel; das Blut fliesst dauernd in
+// drei Schleifen (Lunge, Darm, Muskel), das Herz pumpt. Rechts die gewaehlte
+// Station GROSS: oben das Gewebe, unten die Ader mit dem Blut.
+// Das Kind stellt EINE Sache um (Station) und drueckt „▶ Blut fließen lassen“:
+// 5 Sekunden lang zieht das Blut durch die Station. Zeichen, die ins Blut
+// gehen, laufen am Pfeil „hinein“ nach unten; Zeichen, die das Blut
+// verlassen, am Pfeil „hinaus“ nach oben.
+// Zeichen (Form UND Farbe verschieden): roter Punkt = Sauerstoff,
+// gelbes Dreieck = Naehrstoff, graues Viereck = Kohlenstoffdioxid.
+// Modell (Lehrerteil): Lunge hinein Sauerstoff, hinaus Kohlenstoffdioxid;
+// Darm hinein Naehrstoffe, hinaus nichts (im Modell – real verbraucht auch
+// der Darm Sauerstoff); Muskel hinein Kohlenstoffdioxid, hinaus Sauerstoff
+// und Naehrstoffe. Das Blut wird in der Lunge hellrot, im Muskel dunkler.
+// Aha (Bibliothek _bioFx, erst NACHDEM alle drei Stationen angesehen sind):
+// „Die große Reise“ – ein rotes Blutkoerperchen reist einmal durch den ganzen
+// Koerper: Herz -> Lunge (wird hellrot, graues Viereck geht, roter Punkt
+// kommt) -> Herz -> Darm (gelbes Dreieck steigt zu) -> Herz -> Muskel (gibt
+// Punkt und Dreieck ab, der Muskel zieht sich zusammen, graues Viereck steigt
+// zu, wird dunkler) -> Herz -> Lunge. An jeder Station Lichtring und kleine
+// Funken, in der Lunge kurz Zeitlupe; am Ende leuchten die drei Schleifen
+// golden nach, wenig Konfetti am Herzen, Streifen „Einmal rund durch den
+// Körper!“. Kein Lueckenwort im Bild, keine Wertung, kein Ton, nichts blinkt.
+// ════════════════════════════════════════════════════════════════════════
+let _bkb = null;
+const _BKB_ST = ['Lunge', 'Darm', 'Muskel'];
+const _BKB_DURCH = ['durch die Lunge', 'durch den Darm', 'durch den Muskel'];
+const _BKB_REIN_TXT = ['Sauerstoff', 'Nährstoffe', 'Kohlenstoffdioxid'];
+const _BKB_RAUS_TXT = ['Kohlenstoffdioxid', 'nichts (im Modell)', 'Sauerstoff und Nährstoffe'];
+// Zeichen: o = Sauerstoff, n = Naehrstoff, c = Kohlenstoffdioxid
+const _BKB_MIT  = [['c'], ['o'], ['o', 'n']];     // was das Blut in die Station mitbringt
+const _BKB_REIN = [['o'], ['n'], ['c']];          // was ins Blut hineingeht
+const _BKB_RAUS = [['c'], [], ['o', 'n']];        // was das Blut verlaesst
+const _BKB_DAUER = 5;       // s: ein Blutstrom durch die Station
+const _BKB_V = 46;          // px/s: Fliessgeschwindigkeit in der Grossansicht
+const _BKB_ABST = 28;       // px: Abstand der Blutkoerperchen
+const _BKB_FLUG = 0.7;      // s: ein Zeichen fliegt ins Blut
+const _BKB_DUNKEL = [128, 24, 40];
+const _BKB_HELLROT = [236, 44, 58];
+const _BKB_FARBE = { o: '#dc2626', n: '#facc15', c: '#9ca3af' };
+const _BKB_WEG = 1.1;       // s: ein Wegstueck der grossen Reise
+const _BKB_HALT = 1.2;      // s: Halt an einer Station
+// Die grosse Reise: Wegstuecke auf den drei Schleifen und Halte an den Stationen.
+const _BKB_REISE = [
+  { w: 0, u0: 0, u1: 0.5, txt: 'vom Herzen zur Lunge' },
+  { halt: 0, txt: 'in der Lunge' },
+  { w: 0, u0: 0.5, u1: 1, txt: 'von der Lunge zum Herzen' },
+  { w: 1, u0: 0, u1: 0.5, txt: 'vom Herzen zum Darm' },
+  { halt: 1, txt: 'im Darm' },
+  { w: 1, u0: 0.5, u1: 1, txt: 'vom Darm zum Herzen' },
+  { w: 2, u0: 0, u1: 0.5, txt: 'vom Herzen zum Muskel' },
+  { halt: 2, txt: 'im Muskel' },
+  { w: 2, u0: 0.5, u1: 1, txt: 'vom Muskel zum Herzen' },
+  { w: 0, u0: 0, u1: 0.5, txt: 'vom Herzen zur Lunge' },
+  { halt: 0, txt: 'in der Lunge' }
+];
+const _BKB_ENDE = 3.6;      // s: Nachleuchten nach der Reise
+
+function _bkbZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _bkbInit() {
+  _bkb = {
+    t: 0, st: 0, phase: 'bereit', pt: 0,
+    zellen: [], flieger: [], vorrat: [],
+    gesehen: [false, false, false], reiseGezeigt: false, warte: 0,
+    reise: null, hinweis: '',
+    fx: { teile: [] }, zeitlupe: null, key: '', W: 420, H: 250
+  };
+  _bkbFrisch();
+}
+
+/* ── Geometrie ─────────────────────────────────────────────────────────── */
+function _bkbGeo(W, H) {
+  const zx = 152, zy = 6, zw = W - zx - 6, zh = H - 12;
+  const xm = zx + zw / 2;
+  return {
+    ox: 6, oy: 6, ow: 140, oh: H - 12,
+    zx, zy, zw, zh, xm, xL: xm - 32, xR: xm + 32,
+    yV0: 146, yV1: 198, yZ: 182, yF: 160, yG: 96,
+    // Stationen in der Uebersicht
+    H: [76, 128], O: [[76, 40], [36, 206], [116, 206]], bu: [22, 16, 16]
+  };
+}
+function _bkbGeoReise(W, H) {
+  return { H: [210, 122], O: [[210, 38], [84, 194], [336, 194]], bu: [34, 26, 26] };
+}
+/* Punkt auf einer Schleife Herz -> Organ -> Herz (u in 0..1).
+   Hinweg auf der einen Seite, Rueckweg auf der anderen. */
+function _bkbSchleife(A, B, b, u) {
+  const dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy) || 1;
+  const nx = -dy / L, ny = dx / L, mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2;
+  u = ((u % 1) + 1) % 1;
+  let P0, P1, C, q;
+  if (u < 0.5) { P0 = A; P1 = B; C = [mx + nx * b, my + ny * b]; q = u * 2; }
+  else { P0 = B; P1 = A; C = [mx - nx * b, my - ny * b]; q = (u - 0.5) * 2; }
+  const a = (1 - q) * (1 - q), m = 2 * (1 - q) * q, e = q * q;
+  return [a * P0[0] + m * C[0] + e * P1[0], a * P0[1] + m * C[1] + e * P1[1]];
+}
+/* Ist das Blut auf diesem Stueck hellrot? Lunge: Rueckweg hell.
+   Darm: hin und zurueck hell (im Modell gibt der Darm nichts ab).
+   Muskel: Hinweg hell, Rueckweg dunkel. */
+function _bkbHellAuf(w, u) {
+  u = ((u % 1) + 1) % 1;
+  if (w === 0) return u >= 0.5 ? 1 : 0;
+  if (w === 1) return 1;
+  return u < 0.5 ? 1 : 0;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bkbFrisch() {
+  const g = _bkbGeo(_bkb.W, _bkb.H);
+  _bkb.zellen = [];
+  for (let k = 0; k < 9; k++) _bkb.zellen.push({ x: g.xL - 40 - k * _BKB_ABST });
+  _bkb.flieger = [];
+  const z = _bkbZufall(31 + _bkb.st * 7);
+  _bkb.vorrat = [];
+  for (let i = 0; i < 9; i++) {
+    _bkb.vorrat.push({ bx: g.zx + 16 + (i + 0.3 * z()) * (g.zw - 32) / 9, by: 44 + z() * 80,
+                       ph: z() * 6.28, weg: 0 });
+  }
+}
+function _bkbFxLeer() { _bkb.fx = { teile: [] }; _bkb.zeitlupe = null; }
+function _bkbStation(i) {
+  if (!_bkb) return;
+  _bkb.st = i; _bkb.reise = null; _bkb.warte = 0; _bkb.hinweis = '';
+  _bkb.phase = 'bereit'; _bkb.pt = 0;
+  _bkbFxLeer(); _bkbFrisch();
+  _bkbStatus(); _bkbKnoepfe();
+}
+function _bkbLos() {
+  if (!_bkb) return;
+  _bkb.reise = null; _bkb.warte = 0; _bkb.hinweis = '';
+  _bkbFxLeer(); _bkbFrisch();
+  _bkb.phase = 'fliesst'; _bkb.pt = 0;
+  _bkbStatus(); _bkbKnoepfe();
+}
+function _bkbNeu() {
+  if (!_bkb) return;
+  _bkb.gesehen = [false, false, false]; _bkb.reiseGezeigt = false;
+  _bkbStation(0);
+}
+/* Sprungmarke: Station waehlen und gleich fliessen lassen. */
+function _bkbMarke(i) {
+  if (!_bkb) return;
+  _bkb.st = i;
+  _bkbLos();
+}
+function _bkbReise() {
+  if (!_bkb) return;
+  if (!_bkb.gesehen.every(Boolean)) {
+    _bkb.hinweis = 'Sieh dir zuerst alle drei Stationen an: Lunge, Darm und Muskel.';
+    _bkbStatus();
+    return;
+  }
+  _bkbReiseStart();
+}
+function _bkbKnoepfe() {
+  if (!_bkb || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bkb]').forEach(b => {
+      const d = b.dataset ? b.dataset.bkb : b.getAttribute('data-bkb');
+      if (b.classList) b.classList.toggle('primary', d === 's' + _bkb.st);
+    });
+    const los = document.getElementById('_bkb-los');
+    if (los && los.classList) los.classList.toggle('primary', _bkb.phase !== 'fliesst');
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bkbHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bkb="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Das Blut auf großer Reise</h3>
+    <div class="fpm-note" style="margin-top:2px">Links der ganze Körper: Herz, Lunge, Darm und ein Beinmuskel. Rechts siehst du eine Station groß. Wähle die Station. Dann drücke „▶ Blut fließen lassen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkb-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Station</span>
+          <div class="sim-btn-row">
+            ${k('s0', '_bkbStation(0)', 'Lunge')}
+            ${k('s1', '_bkbStation(1)', 'Darm')}
+            ${k('s2', '_bkbStation(2)', 'Muskel')}
+          </div>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bkb-los" onclick="_bkbLos()">▶ Blut fließen lassen</button>
+          <button class="sim-btn" onclick="_bkbNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was geht ins Blut hinein? Was geht hinaus?</div>
+        <div class="lmp-status on" id="_bkb-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bkbMarke(0)">▶ Lunge</button>
+          <button class="sim-btn" onclick="_bkbMarke(1)">▶ Darm</button>
+          <button class="sim-btn" onclick="_bkbMarke(2)">▶ Muskel</button>
+          <button class="sim-btn" onclick="_bkbReise()">▶ große Reise</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Im Blut reisen drei Zeichen: ein <b>roter Punkt</b>, ein <b>gelbes Dreieck</b> und ein <b>graues Viereck</b>. Der Pfeil „hinein“ zeigt ins Blut. Der Pfeil „hinaus“ zeigt aus dem Blut heraus.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bkbZeile(i) {
+  return _BKB_ST[i] + ': hinein ' + _BKB_REIN_TXT[i] + ' · hinaus ' + _BKB_RAUS_TXT[i];
+}
+function _bkbSekunde() { return Math.min(_BKB_DAUER, Math.floor(_bkb.pt) + 1); }
+function _bkbSchluessel() {
+  if (_bkb.reise) {
+    const r = _bkb.reise;
+    return 'r' + (r.ende >= 0 ? 'e' : r.i);
+  }
+  const s = _bkb.phase === 'fliesst' ? _bkbSekunde() : '';
+  return _bkb.phase + _bkb.st + s + (_bkb.warte > 0 ? 'w' : '') + '|' + _bkb.hinweis;
+}
+function _bkbStatus() {
+  if (!_bkb) return;
+  _bkb.key = _bkbSchluessel();
+  const el = document.getElementById('_bkb-status');
+  if (!el) return;
+  let h;
+  if (_bkb.reise) {
+    const r = _bkb.reise;
+    h = '<b>Die große Reise</b><br>' + (r.ende >= 0
+      ? 'Das rote Blutkörperchen ist einmal ganz herum gereist.'
+      : 'Ein rotes Blutkörperchen reist gerade ' + _BKB_REISE[r.i].txt + '.');
+  } else if (_bkb.phase === 'bereit') {
+    h = `<b>Station ${_BKB_ST[_bkb.st]}</b><br>Das Blut steht still.<br>Drücke „▶ Blut fließen lassen“.`;
+  } else if (_bkb.phase === 'fliesst') {
+    h = `<b>${_bkbZeile(_bkb.st)}</b><br>Das Blut fließt: Sekunde ${_bkbSekunde()} von ${_BKB_DAUER}.`;
+  } else {
+    h = `<b>${_bkbZeile(_bkb.st)}</b><br>Das Blut ist ${_BKB_DURCH[_bkb.st]} geflossen.`;
+    if (_bkb.warte > 0) h += '<br>Alle drei Stationen angesehen. Gleich reist ein rotes Blutkörperchen einmal ganz herum.';
+  }
+  if (_bkb.hinweis) h += '<br>' + _bkb.hinweis;
+  el.innerHTML = h;
+}
+
+/* ── Bewegung ──────────────────────────────────────────────────────────── */
+function _bkbUpdate(dt) {
+  if (!_bkb) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_bkb, roh);
+  _bkb.t += d;
+  _bioFxAlleUpdate(_bkb.fx, roh);
+  if (_bkb.reise) {
+    _bkbReiseUpdate(d);
+  } else {
+    if (_bkb.phase === 'fliesst') {
+      _bkbFluss(d);
+      _bkb.pt += d;
+      if (_bkb.pt >= _BKB_DAUER) { _bkb.pt = _BKB_DAUER; _bkb.phase = 'fertig'; _bkbAhaStation(); _bkbKnoepfe(); }
+    }
+    if (_bkb.warte > 0) {
+      _bkb.warte -= d;
+      if (_bkb.warte <= 0) { _bkb.warte = 0; _bkbReiseStart(); }
+    }
+    _bkbFliegerUpdate(d);
+  }
+  for (const v of _bkb.vorrat) if (v.weg > 0) v.weg = Math.max(0, v.weg - d);
+  if (_bkbSchluessel() !== _bkb.key) _bkbStatus();
+}
+/* Grossansicht: Blutkoerperchen ziehen nach rechts. Wer sich dem Pfeil
+   „hinein“ naehert, bekommt ein Zeichen aus dem Gewebe zugeflogen; wer den
+   Pfeil „hinaus“ passiert, gibt seine Zeichen nach oben ab. */
+function _bkbFluss(d) {
+  const g = _bkbGeo(_bkb.W, _bkb.H), s = _bkb.st;
+  const vor = g.xL - _BKB_V * _BKB_FLUG;
+  for (const c of _bkb.zellen) {
+    const x0 = c.x;
+    c.x += _BKB_V * d;
+    if (x0 < vor && c.x >= vor) {
+      _BKB_REIN[s].forEach((art, k) => {
+        const q = _bkbVorratNimm(g.xL);
+        _bkb.flieger.push({ art, dir: 'rein', x0: q[0], y0: q[1],
+          x1: g.xL + _bkbSlot(_BKB_MIT[s].length + k, _BKB_REIN[s].length + _BKB_MIT[s].length), y1: g.yF,
+          alter: 0, dauer: _BKB_FLUG, ruh: 0 });
+      });
+    }
+    if (x0 < g.xR && c.x >= g.xR) {
+      const n = _BKB_RAUS[s].length, vorher = _BKB_MIT[s].concat(_BKB_REIN[s]);
+      _BKB_RAUS[s].forEach((art, k) => {
+        _bkb.flieger.push({ art, dir: 'raus', x0: g.xR + _bkbSlot(vorher.indexOf(art), vorher.length), y0: g.yF,
+          x1: g.xR + 10 + (k - (n - 1) / 2) * 16 + 8 * Math.sin(_bkb.t * 3.1), y1: g.yG - 18 + 10 * Math.sin(_bkb.t * 2.3),
+          alter: 0, dauer: 0.9, ruh: s === 0 ? 1.6 : 2.6 });
+      });
+    }
+  }
+  _bkb.zellen = _bkb.zellen.filter(c => c.x < g.zx + g.zw + 24);
+  let min = Infinity;
+  for (const c of _bkb.zellen) min = Math.min(min, c.x);
+  if (!_bkb.zellen.length) min = g.zx + 10;
+  while (min > g.zx - 16) { min -= _BKB_ABST; _bkb.zellen.push({ x: min }); }
+}
+function _bkbSlot(k, n) { return (k - (n - 1) / 2) * 10; }
+/* Nimmt ein Zeichen aus dem Vorrat im Gewebe (nahe x); es waechst spaeter nach. */
+function _bkbVorratNimm(x) {
+  let best = null, bd = Infinity;
+  for (const v of _bkb.vorrat) {
+    if (v.weg > 0) continue;
+    const dd = Math.abs(v.bx - x) + 0.3 * Math.abs(v.by - 100);
+    if (dd < bd) { bd = dd; best = v; }
+  }
+  if (!best) return [x, 70];
+  best.weg = 1.8;
+  return [best.bx, best.by + 3 * Math.sin(_bkb.t * 1.4 + best.ph)];
+}
+function _bkbFliegerUpdate(d) {
+  for (const f of _bkb.flieger) {
+    const war = f.alter;
+    f.alter += d;
+    if (f.dir === 'rein' && war < f.dauer && f.alter >= f.dauer) {
+      _bioFxWelle(_bkb.fx.teile, f.x1, f.y1, _BKB_FARBE[f.art], 11);
+    }
+  }
+  _bkb.flieger = _bkb.flieger.filter(f => f.alter < f.dauer + f.ruh);
+  if (_bkb.flieger.length > 60) _bkb.flieger.splice(0, _bkb.flieger.length - 60);
+}
+/* Kleines Aha am Ende eines Blutstroms: Lichtring am Austausch, ein paar
+   Funken in den Farben der Zeichen, Lichtring an der Station links. */
+function _bkbAhaStation() {
+  const g = _bkbGeo(_bkb.W, _bkb.H), s = _bkb.st, fx = _bkb.fx.teile;
+  const farben = _BKB_REIN[s].concat(_BKB_RAUS[s]).map(a => _BKB_FARBE[a]).concat(['#ffffff']);
+  _bioFxWelle(fx, g.xm, g.yZ - 10, 'rgba(37,99,235,0.9)', 44);
+  _bioFxFunken(fx, g.xL, g.yF, 6, farben);
+  const O = g.O[s];
+  _bioFxWelle(fx, O[0], O[1], 'rgba(37,99,235,0.9)', 24);
+  _bkb.gesehen[s] = true;
+  if (_bkb.gesehen.every(Boolean) && !_bkb.reiseGezeigt) _bkb.warte = 1.4;
+}
+
+/* ── Die grosse Reise (Aha) ────────────────────────────────────────────── */
+function _bkbReiseStart() {
+  _bkbFxLeer();
+  _bkb.hinweis = ''; _bkb.warte = 0; _bkb.reiseGezeigt = true;
+  _bkb.reise = { i: 0, pt: 0, fracht: ['c'], hell: 0, ziel: 0, flieger: [],
+                 zug: -1, ende: -1, lupe: false };
+  _bkbStatus();
+}
+function _bkbReiseUpdate(d) {
+  const r = _bkb.reise, g = _bkbGeoReise(_bkb.W, _bkb.H), fx = _bkb.fx;
+  r.hell += (r.ziel - r.hell) * Math.min(1, d * 3);
+  if (r.zug >= 0) { r.zug += d; if (r.zug > 1.6) r.zug = -1; }
+  for (const f of r.flieger) {
+    const war = f.alter;
+    f.alter += d;
+    if (f.dir === 'rein' && war < f.dauer && f.alter >= f.dauer && r.fracht.indexOf(f.art) < 0) r.fracht.push(f.art);
+  }
+  r.flieger = r.flieger.filter(f => f.alter < f.dauer + f.ruh);
+  if (r.ende >= 0) {
+    r.ende += d;
+    if (r.ende >= _BKB_ENDE) { _bkb.reise = null; _bkbFxLeer(); _bkbStatus(); }
+    return;
+  }
+  const sch = _BKB_REISE[r.i];
+  const dauer = sch.halt !== undefined ? _BKB_HALT : _BKB_WEG;
+  if (r.pt === 0 && sch.halt !== undefined) _bkbReiseHalt(sch.halt, g);
+  r.pt += d;
+  if (r.pt >= dauer) {
+    r.pt = 0; r.i++;
+    if (r.i >= _BKB_REISE.length) {
+      r.i = _BKB_REISE.length - 1; r.ende = 0;
+      _bioFxKonfetti(fx.teile, g.H[0], g.H[1] - 6, 18);
+      _bioFxBanner(fx, 'Einmal rund durch den Körper!', 3.0, '#facc15');
+    }
+  }
+}
+/* Halt an einer Station: Zeichen verlassen das Blutkoerperchen und fliegen
+   ins Organ, neue Zeichen fliegen herein; die Farbe aendert sich. */
+function _bkbReiseHalt(s, g) {
+  const r = _bkb.reise, O = g.O[s], fx = _bkb.fx.teile;
+  const P = O;
+  _BKB_RAUS[s].forEach((art, k) => {
+    r.fracht = r.fracht.filter(a => a !== art);
+    r.flieger.push({ art, dir: 'raus', x0: P[0], y0: P[1] - 16, x1: O[0] + (k ? 22 : -22), y1: O[1] + 20,
+                     alter: 0, dauer: 0.7, ruh: 0.5 });
+  });
+  _BKB_REIN[s].forEach(art => {
+    r.flieger.push({ art, dir: 'rein', x0: O[0] + (s === 0 ? 30 : -26), y0: O[1] + (s === 0 ? -8 : 22),
+                     x1: P[0], y1: P[1] - 16, alter: 0, dauer: 0.8, ruh: 0 });
+  });
+  if (s === 0) r.ziel = 1;
+  if (s === 2) { r.ziel = 0; r.zug = 0; }
+  const farben = _BKB_REIN[s].concat(_BKB_RAUS[s]).map(a => _BKB_FARBE[a]).concat(['#ffffff']);
+  _bioFxWelle(fx, O[0], O[1], 'rgba(250,204,21,0.95)', 34);
+  _bioFxFunken(fx, O[0], O[1] - 10, 7, farben);
+  if (s === 0 && !r.lupe) { r.lupe = true; _bioFxZeitlupe(_bkb, 0.45, 0.9); }
+}
+/* Wo ist das reisende Blutkoerperchen? */
+function _bkbHeldPos(g) {
+  const r = _bkb.reise, sch = _BKB_REISE[r.i];
+  if (sch.halt !== undefined || r.ende >= 0) {
+    const s = sch.halt !== undefined ? sch.halt : 0;
+    return _bkbSchleife(g.H, g.O[s], g.bu[s], 0.5);
+  }
+  const q = _bioFxEase.sanft(_bioFxKlemme(r.pt / _BKB_WEG));
+  return _bkbSchleife(g.H, g.O[sch.w], g.bu[sch.w], sch.u0 + (sch.u1 - sch.u0) * q);
+}
+
+/* ── Zeichnen: Bausteine ───────────────────────────────────────────────── */
+function _bkbText(ctx, s, x, y, farbe, font, align) {
+  ctx.save();
+  ctx.font = font || '700 11px sans-serif';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+  ctx.strokeText(s, x, y);
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.fillText(s, x, y);
+  ctx.restore();
+}
+function _bkbRund(ctx, x, y, w, h, r) { _bioFxRundRect(ctx, x, y, w, h, r); }
+/* Die drei Zeichen: roter Punkt, gelbes Dreieck, graues Viereck. */
+function _bkbZeichen(ctx, art, x, y, k, a) {
+  ctx.save();
+  ctx.globalAlpha = a === undefined ? 1 : a;
+  ctx.translate(x, y);
+  ctx.beginPath();
+  if (art === 'o') {
+    ctx.arc(0, 0, 3.8 * k, 0, Math.PI * 2);
+  } else if (art === 'n') {
+    ctx.moveTo(0, -4.8 * k); ctx.lineTo(4.6 * k, 3.4 * k); ctx.lineTo(-4.6 * k, 3.4 * k); ctx.closePath();
+  } else {
+    ctx.rect(-3.6 * k, -3.6 * k, 7.2 * k, 7.2 * k);
+  }
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.95)'; ctx.stroke();
+  ctx.fillStyle = _BKB_FARBE[art]; ctx.fill();
+  ctx.lineWidth = 1; ctx.strokeStyle = art === 'o' ? '#7f1d1d' : art === 'n' ? '#854d0e' : '#374151';
+  ctx.stroke();
+  ctx.restore();
+}
+function _bkbFracht(ctx, liste, x, y, k) {
+  liste.forEach((a, i) => _bkbZeichen(ctx, a, x + (i - (liste.length - 1) / 2) * 10 * k, y, k));
+}
+function _bkbFarbe(hell, a) {
+  const c = _BKB_DUNKEL.map((v, i) => Math.round(v + (_BKB_HELLROT[i] - v) * hell));
+  return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + (a === undefined ? 1 : a) + ')';
+}
+/* Ein rotes Blutkoerperchen: Scheibe mit Delle in der Mitte. */
+function _bkbZelle(ctx, x, y, r, hell) {
+  ctx.save();
+  ctx.fillStyle = _bkbFarbe(hell);
+  ctx.beginPath(); ctx.ellipse(x, y, r, r * 0.82, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(80,10,20,0.6)'; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,' + (0.12 + 0.12 * hell).toFixed(3) + ')';
+  ctx.beginPath(); ctx.ellipse(x, y, r * 0.45, r * 0.34, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function _bkbHerz(ctx, x, y, k, t) {
+  const p = 1 + 0.09 * Math.pow(Math.max(0, Math.sin(t * 2 * Math.PI * 1.1)), 4);
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(k * p, k * p);
+  ctx.beginPath();
+  ctx.moveTo(0, 11);
+  ctx.bezierCurveTo(-15, 1, -14, -12, -6.5, -12);
+  ctx.bezierCurveTo(-2.5, -12, 0, -9, 0, -7);
+  ctx.bezierCurveTo(0, -9, 2.5, -12, 6.5, -12);
+  ctx.bezierCurveTo(14, -12, 15, 1, 0, 11);
+  ctx.closePath();
+  ctx.fillStyle = '#dc2626'; ctx.fill();
+  ctx.lineWidth = 1.2; ctx.strokeStyle = '#7f1d1d'; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.beginPath(); ctx.ellipse(-6, -6, 3, 2, -0.5, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function _bkbLunge(ctx, x, y, k, t) {
+  const b = 1 + 0.06 * Math.sin(t * 1.6);
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(k, k);
+  ctx.strokeStyle = '#9d174d'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(0, -15); ctx.lineTo(0, -4); ctx.lineTo(-5, 1); ctx.moveTo(0, -4); ctx.lineTo(5, 1); ctx.stroke();
+  ctx.fillStyle = '#f9a8c0'; ctx.lineWidth = 1;
+  for (const s of [-1, 1]) {
+    ctx.beginPath(); ctx.ellipse(s * 8, 3, 6.5 * b, 11 * b, s * 0.12, 0, Math.PI * 2);
+    ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _bkbDarm(ctx, x, y, k, t) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(k, k);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const pfad = () => {
+    ctx.beginPath();
+    for (let i = 0; i <= 60; i++) {
+      const q = i / 60, row = Math.min(2, Math.floor(q * 3)), f = q * 3 - row;
+      const dir = row % 2 === 0 ? 1 : -1;
+      const xx = dir * (-11 + 22 * f), yy = -8 + row * 8 + 1.2 * Math.sin(q * 20 - t * 3);
+      i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy);
+    }
+  };
+  pfad(); ctx.strokeStyle = '#b45309'; ctx.lineWidth = 6; ctx.stroke();
+  pfad(); ctx.strokeStyle = '#fbbf77'; ctx.lineWidth = 4; ctx.stroke();
+  ctx.restore();
+}
+function _bkbMuskel(ctx, x, y, k, t, zug) {
+  const z = zug === undefined ? 0.15 * (0.5 + 0.5 * Math.sin(t * 1.3)) : zug;
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(k, k);
+  const rx = 15 * (1 - 0.14 * z), ry = 6.5 * (1 + 0.3 * z);
+  ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(-rx - 5, 0); ctx.lineTo(-rx + 1, 0); ctx.moveTo(rx - 1, 0); ctx.lineTo(rx + 5, 0); ctx.stroke();
+  ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(-rx - 5, 0); ctx.lineTo(-rx + 1, 0); ctx.moveTo(rx - 1, 0); ctx.lineTo(rx + 5, 0); ctx.stroke();
+  ctx.fillStyle = '#e8686e'; ctx.strokeStyle = '#991b1b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(153,27,27,0.45)'; ctx.lineWidth = 0.7;
+  ctx.beginPath();
+  for (let i = -2; i <= 2; i++) { ctx.moveTo(-rx * 0.8, i * ry * 0.3); ctx.lineTo(rx * 0.8, i * ry * 0.3); }
+  ctx.stroke();
+  ctx.restore();
+}
+function _bkbOrgan(ctx, s, x, y, k, t, zug) {
+  if (s === 0) _bkbLunge(ctx, x, y, k, t);
+  else if (s === 1) _bkbDarm(ctx, x, y, k, t);
+  else _bkbMuskel(ctx, x, y, k, t, zug);
+}
+/* Die drei Schleifen als Adern, dazu fliessendes Blut. */
+function _bkbAdern(ctx, g, t, dick, nPunkte, rPunkt, a) {
+  for (let w = 0; w < 3; w++) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(248,180,180,0.9)'; ctx.lineWidth = dick; ctx.lineCap = 'round';
+    ctx.beginPath();
+    for (let i = 0; i <= 80; i++) {
+      const p = _bkbSchleife(g.H, g.O[w], g.bu[w], i / 80);
+      i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]);
+    }
+    ctx.stroke();
+    ctx.restore();
+    for (let i = 0; i < nPunkte; i++) {
+      const u = (t * 0.16 + i / nPunkte + w * 0.13) % 1;
+      const p = _bkbSchleife(g.H, g.O[w], g.bu[w], u);
+      ctx.save();
+      ctx.fillStyle = _bkbFarbe(_bkbHellAuf(w, u), a);
+      ctx.beginPath(); ctx.arc(p[0], p[1], rPunkt, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+    // Fliessrichtung: kleine Pfeilspitze auf dem Hinweg
+    const p1 = _bkbSchleife(g.H, g.O[w], g.bu[w], 0.26), p2 = _bkbSchleife(g.H, g.O[w], g.bu[w], 0.29);
+    const ang = Math.atan2(p2[1] - p1[1], p2[0] - p1[0]);
+    ctx.save();
+    ctx.translate(p2[0], p2[1]); ctx.rotate(ang);
+    ctx.fillStyle = 'rgba(127,29,29,0.75)';
+    ctx.beginPath(); ctx.moveTo(4 + dick / 2, 0); ctx.lineTo(-3, -3 - dick / 3); ctx.lineTo(-3, 3 + dick / 3); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bkbDraw(ctx, cv) {
+  if (!_bkb) return;
+  const W = cv.width, H = cv.height, t = _bkb.t;
+  _bkb.W = W; _bkb.H = H;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  if (_bkb.reise) {
+    _bkbReiseDraw(ctx, W, H, t);
+    _bioFxDraw(ctx, _bkb.fx.teile);
+    _bkbBannerDraw(ctx, W, H);
+    return;
+  }
+  const g = _bkbGeo(W, H);
+  _bkbUebersicht(ctx, g, t);
+  _bkbGross(ctx, g, t);
+  _bioFxDraw(ctx, _bkb.fx.teile);
+}
+
+/* Links: der ganze Koerper klein. */
+function _bkbUebersicht(ctx, g, t) {
+  ctx.save();
+  _bkbRund(ctx, g.ox, g.oy, g.ow, g.oh, 8);
+  ctx.fillStyle = '#fff7f7'; ctx.fill();
+  ctx.strokeStyle = '#e5b4b4'; ctx.lineWidth = 1.2; ctx.stroke();
+  ctx.restore();
+  _bkbAdern(ctx, g, t, 3, 7, 2.6, 1);
+  const s = _bkb.st, O = g.O[s];
+  ctx.save();
+  ctx.setLineDash([4, 3]); ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(O[0], O[1], 19, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+  _bkbHerz(ctx, g.H[0], g.H[1], 1, t);
+  for (let i = 0; i < 3; i++) _bkbOrgan(ctx, i, g.O[i][0], g.O[i][1], 0.95, t);
+  _bkbText(ctx, 'Herz', g.H[0] + 14, g.H[1] - 10, '#7f1d1d', '700 11px sans-serif');
+  _bkbText(ctx, 'Lunge', g.O[0][0] + 20, g.O[0][1] - 8, '#9d174d', '700 11px sans-serif');
+  _bkbText(ctx, 'Darm', g.O[1][0], g.O[1][1] + 25, '#92400e', '700 11px sans-serif', 'center');
+  _bkbText(ctx, 'Muskel', g.O[2][0], g.O[2][1] + 25, '#991b1b', '700 11px sans-serif', 'center');
+}
+
+/* Rechts: die gewaehlte Station gross. Oben das Gewebe, unten die Ader. */
+function _bkbGross(ctx, g, t) {
+  const s = _bkb.st;
+  ctx.save();
+  _bkbRund(ctx, g.zx, g.zy, g.zw, g.zh, 8);
+  ctx.fillStyle = ['#e0f2fe', '#fff1d6', '#fde4e4'][s]; ctx.fill();
+  ctx.clip();
+  _bkbGewebe(ctx, g, t, s);
+  // Ader
+  ctx.fillStyle = '#fde2e2';
+  ctx.fillRect(g.zx, g.yV0, g.zw, g.yV1 - g.yV0);
+  ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(g.zx, g.yV0); ctx.lineTo(g.zx + g.zw, g.yV0);
+  ctx.moveTo(g.zx, g.yV1); ctx.lineTo(g.zx + g.zw, g.yV1); ctx.stroke();
+  // Vorrat im Gewebe (die Zeichen, die gleich ins Blut gehen)
+  if (_BKB_REIN[s].length) {
+    const art = _BKB_REIN[s][0];
+    for (const v of _bkb.vorrat) {
+      const a = v.weg > 0 ? _bioFxKlemme(1 - v.weg / 0.6) : 1;
+      if (a <= 0.02) continue;
+      _bkbZeichen(ctx, art, v.bx + 2 * Math.sin(t * 0.9 + v.ph), v.by + 3 * Math.sin(t * 1.4 + v.ph), 1.1, a);
+    }
+  }
+  // Pfeile „hinein“ und „hinaus“
+  _bkbPfeil(ctx, g.xL - 20, 60, g.yV0 - 4, '#1d4ed8', 'hinein');
+  if (_BKB_RAUS[s].length) _bkbPfeil(ctx, g.xR + 22, g.yV0 - 4, 60, '#7e22ce', 'hinaus');
+  // Blutkoerperchen mit ihren Zeichen
+  for (const c of _bkb.zellen) {
+    if (c.x < g.zx - 20) continue;
+    _bkbZelle(ctx, c.x, g.yZ, 10, _bkbHellBei(c.x, g));
+    _bkbFracht(ctx, _bkbFrachtBei(c.x, g), c.x, g.yF, 1);
+  }
+  // fliegende Zeichen
+  for (const f of _bkb.flieger) {
+    const q = _bioFxEase.sanft(_bioFxKlemme(f.alter / f.dauer));
+    let x = f.x0 + (f.x1 - f.x0) * q, y = f.y0 + (f.y1 - f.y0) * q, a = 1;
+    if (f.alter > f.dauer) {
+      const r = f.alter - f.dauer;
+      if (s === 0) { y -= 18 * r; x += 4 * Math.sin(r * 3); }   // Lunge: mit der Luft hinaus
+      else { x += 2 * Math.sin(r * 2); y += 2 * Math.sin(r * 1.7); }
+      a = 1 - _bioFxEase.rein(_bioFxKlemme(r / f.ruh));
+    }
+    if (f.dir === 'rein' && f.alter >= f.dauer) continue;   // sitzt jetzt am Blutkoerperchen
+    _bkbZeichen(ctx, f.art, x, y, 1.1, a);
+  }
+  // Beschriftung
+  _bkbText(ctx, 'Station: ' + _BKB_ST[s], g.zx + 8, g.zy + 13, '#0f172a', '700 13px sans-serif');
+  _bkbText(ctx, ['Luft', 'Essen im Darm', 'Muskel'][s], g.zx + g.zw - 8, g.zy + 13, '#475569', '600 11px sans-serif', 'right');
+  _bkbText(ctx, 'Blut in der Ader', g.zx + 8, g.yV1 + 16, '#7f1d1d', '700 11px sans-serif');
+  // Fliessrichtung
+  const ax = g.zx + g.zw - 70, ay = g.yV1 + 16;
+  ctx.save();
+  ctx.strokeStyle = '#7f1d1d'; ctx.fillStyle = '#7f1d1d'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ax + 50, ay); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(ax + 58, ay); ctx.lineTo(ax + 49, ay - 5); ctx.lineTo(ax + 49, ay + 5); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  if (_bkb.phase === 'bereit') {
+    _bkbText(ctx, 'Das Blut steht still.', g.zx + g.zw / 2, g.yV1 + 34, '#475569', '600 11px sans-serif', 'center');
+  }
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1.6;
+  _bkbRund(ctx, g.zx, g.zy, g.zw, g.zh, 8); ctx.stroke();
+  ctx.restore();
+}
+function _bkbHellBei(x, g) {
+  const s = _bkb.st;
+  if (s === 0) return _bioFxKlemme((x - g.xL) / 16);
+  if (s === 1) return 1;
+  return 1 - _bioFxKlemme((x - g.xR) / 16);
+}
+function _bkbFrachtBei(x, g) {
+  const s = _bkb.st;
+  let f = _BKB_MIT[s].slice();
+  if (x >= g.xL) f = f.concat(_BKB_REIN[s]);
+  if (x >= g.xR) f = f.filter(a => _BKB_RAUS[s].indexOf(a) < 0);
+  return f;
+}
+function _bkbPfeil(ctx, x, y0, y1, farbe, txt) {
+  const dir = y1 > y0 ? 1 : -1;
+  ctx.save();
+  ctx.globalAlpha = 0.85;
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1 - dir * 8); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x - 6, y1 - dir * 10); ctx.lineTo(x + 6, y1 - dir * 10); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  _bkbText(ctx, txt, x, Math.min(y0, y1) - 10, farbe, '700 12px sans-serif', 'center');
+}
+/* Gewebe der Station, lebt leise mit: Lunge atmet, Darmzotten wiegen sich,
+   Muskelfasern ziehen sich langsam zusammen. */
+function _bkbGewebe(ctx, g, t, s) {
+  ctx.save();
+  if (s === 0) {
+    const b = 1 + 0.06 * Math.sin(t * 1.6);
+    ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 1.5; ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    for (let i = 0; i < 9; i++) {
+      const x = g.zx + 14 + i * 30, y = 118 + (i % 2) * 8;
+      ctx.beginPath(); ctx.arc(x, y, 14 * b, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(244,114,182,0.5)';
+    for (let i = 0; i < 8; i++) {
+      const x = g.zx + 29 + i * 30, y = 62 + (i % 3) * 10;
+      ctx.beginPath(); ctx.arc(x, y, 11 * b, 0, Math.PI * 2); ctx.stroke();
+    }
+  } else if (s === 1) {
+    ctx.fillStyle = '#f6b98a'; ctx.strokeStyle = '#c2703a'; ctx.lineWidth = 1;
+    for (let i = 0; i < 17; i++) {
+      const x = g.zx + 6 + i * 16, sw = 3 * Math.sin(t * 1.2 + i * 0.7);
+      ctx.beginPath();
+      ctx.moveTo(x - 5, g.yV0);
+      ctx.quadraticCurveTo(x - 6 + sw, 118, x + sw, 104);
+      ctx.quadraticCurveTo(x + 6 + sw, 118, x + 5, g.yV0);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+    }
+  } else {
+    const z = 0.5 + 0.5 * Math.sin(t * 1.3);
+    for (let i = 0; i < 5; i++) {
+      const y = 34 + i * 21, inset = 10 + 8 * z;
+      const x0 = g.zx + inset, w = g.zw - 2 * inset, h = 16 + 2 * z;
+      ctx.fillStyle = '#f19a9a'; ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 1;
+      _bkbRund(ctx, x0, y - h / 2, w, h, 7); ctx.fill(); ctx.stroke();
+      ctx.strokeStyle = 'rgba(153,27,27,0.35)';
+      ctx.beginPath();
+      for (let x = x0 + 6; x < x0 + w - 4; x += 5 * (1 - 0.1 * z)) { ctx.moveTo(x, y - h / 2 + 2); ctx.lineTo(x, y + h / 2 - 2); }
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+/* Die grosse Reise: der ganze Koerper ueber die volle Leinwand. */
+function _bkbReiseDraw(ctx, W, H, t) {
+  const r = _bkb.reise, g = _bkbGeoReise(W, H);
+  ctx.save();
+  _bkbRund(ctx, 6, 6, W - 12, H - 12, 10);
+  ctx.fillStyle = '#fff7f7'; ctx.fill();
+  ctx.strokeStyle = '#e5b4b4'; ctx.lineWidth = 1.2; ctx.stroke();
+  ctx.restore();
+  _bkbAdern(ctx, g, t, 5, 12, 3.2, 0.55);
+  // Nachleuchten der drei Schleifen am Ende
+  if (r.ende >= 0) {
+    const a = 0.9 * (1 - _bioFxEase.sanft(_bioFxKlemme((r.ende - 1.4) / 1.6)));
+    for (let w = 0; w < 3; w++) {
+      const an = _bioFxKlemme((r.ende - w * 0.25) / 0.4) * a;
+      if (an <= 0.01) continue;
+      ctx.save();
+      ctx.globalAlpha = an;
+      ctx.strokeStyle = '#facc15'; ctx.lineWidth = 4; ctx.shadowColor = '#facc15'; ctx.shadowBlur = 12;
+      ctx.beginPath();
+      for (let i = 0; i <= 80; i++) {
+        const p = _bkbSchleife(g.H, g.O[w], g.bu[w], i / 80);
+        i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]);
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+  _bkbHerz(ctx, g.H[0], g.H[1], 1.6, t);
+  const zug = r.zug >= 0 ? Math.sin(Math.PI * _bioFxKlemme(r.zug / 1.4)) : undefined;
+  for (let i = 0; i < 3; i++) _bkbOrgan(ctx, i, g.O[i][0], g.O[i][1], 1.7, t, i === 2 ? zug : undefined);
+  _bkbText(ctx, 'Herz', g.H[0] + 31, g.H[1] - 14, '#7f1d1d', '700 13px sans-serif');
+  _bkbText(ctx, 'Lunge', g.O[0][0] + 36, g.O[0][1] - 10, '#9d174d', '700 13px sans-serif');
+  _bkbText(ctx, 'Darm', g.O[1][0], g.O[1][1] + 32, '#92400e', '700 13px sans-serif', 'center');
+  _bkbText(ctx, 'Muskel', g.O[2][0], g.O[2][1] + 32, '#991b1b', '700 13px sans-serif', 'center');
+  _bkbText(ctx, 'Die große Reise', 16, 20, '#0f172a', '700 13px sans-serif');
+  // fliegende Zeichen
+  for (const f of r.flieger) {
+    if (f.dir === 'rein' && f.alter >= f.dauer) continue;
+    const q = _bioFxEase.sanft(_bioFxKlemme(f.alter / f.dauer));
+    const a = f.alter > f.dauer ? 1 - _bioFxKlemme((f.alter - f.dauer) / f.ruh) : 1;
+    _bkbZeichen(ctx, f.art, f.x0 + (f.x1 - f.x0) * q, f.y0 + (f.y1 - f.y0) * q, 1.4, a);
+  }
+  // das reisende Blutkoerperchen mit Lichthof und seinen Zeichen
+  const P = _bkbHeldPos(g);
+  ctx.save();
+  const hof = ctx.createRadialGradient(P[0], P[1], 6, P[0], P[1], 26);
+  hof.addColorStop(0, 'rgba(255,255,255,0.9)'); hof.addColorStop(1, 'rgba(255,255,255,0)');
+  ctx.fillStyle = hof;
+  ctx.beginPath(); ctx.arc(P[0], P[1], 26, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+  _bkbZelle(ctx, P[0], P[1], 12, r.hell);
+  _bkbFracht(ctx, r.fracht, P[0], P[1] - 16, 1.4);
+}
+/* Streifen unten in der Mitte (zwischen Darm und Muskel), weiss auf dunkel. */
+function _bkbBannerDraw(ctx, W, H) {
+  const b = _bkb.fx.banner;
+  if (!b) return;
+  const ein = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const bw = 196, bh = 30, x = (W - bw) / 2, y = H - bh - 14 + (1 - ein) * 12;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.shadowColor = b.farbe; ctx.shadowBlur = 14;
+  ctx.fillStyle = 'rgba(20,30,50,0.9)';
+  _bioFxRundRect(ctx, x, y, bw, bh, 14); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = b.farbe; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x, y, bw, bh, 14); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.font = '700 12px sans-serif';
+  ctx.fillText(b.text, W / 2, y + bh / 2 + 1, bw - 14);
+  ctx.restore();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DETEKTIVE AM PICKNICKTISCH   (Förderheft Bio 5/6 · bk7)
+// Labortisch mit Schale (Lebensmittel), Tropfflasche Iodlösung, Filterpapier
+// und Fenster. Das Kind wählt ein Lebensmittel (Kartoffel, Butter, Apfel) und
+// einen Nachweis (Iodlösung, Fettfleckprobe) und drückt „▶ Nachweis machen“.
+// Modellwerte (sim_plan.werte / lehrer.tabelle_erwartet):
+//   Kartoffel: Iodlösung blau-schwarz · Fettfleckprobe kein Fleck
+//   Butter:    Iodlösung bleibt braun  · Fettfleckprobe durchscheinender Fleck
+//   Apfel:     Iodlösung bleibt braun  · Fettfleckprobe kein Fleck
+//              (erst feucht, trocknet weg)
+// Iodlösung: Die Tropfflasche kippt über die Probe, ein brauner Tropfen fällt
+// und breitet sich aus; bei der Kartoffel wächst von der Mitte aus Blau-Schwarz.
+// Fettfleckprobe: Ein Stück wird auf dem Papier verrieben (feuchter Fleck),
+// Zeitraffer „Papier trocknet“ (Uhr läuft, Sonne wandert, Dunst steigt), dann
+// kommt das Papier vor das Fenster: Licht scheint durch den Fleck – oder es
+// ist kein Fleck mehr da.
+// Die Statuszeile nennt nur die Beobachtung, NIE den Nährstoff; das Bild
+// enthält keine Lückenwörter (Stärke, Fett, Wasser).
+// Aha (NACH der Beobachtung, Bibliothek _bioFx): jede Probe zeigt ihr Ergebnis
+// mit einem kurzen Lichtring; blau-schwarzer Tropfen: kühle Funken; Butterfleck
+// vor dem Fenster: Lichtstrahlen fallen durch den Fleck, goldene Funken.
+// Kurze Zeitlupe, wenn das Blau-Schwarz beginnt und wenn das Papier am Fenster
+// ankommt. Nach allen sechs Proben ein ruhiger Hinweisstreifen. Kein Blinken,
+// kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _bkn = null;
+const _BKN_ESSEN = { kartoffel: 'Kartoffel', butter: 'Butter', apfel: 'Apfel' };
+const _BKN_AUF = { kartoffel: 'die Kartoffel', butter: 'die Butter', apfel: 'den Apfel' };
+const _BKN_PROBE = { iod: 'Iodlösung', fett: 'Fettfleckprobe' };
+const _BKN_REIHE = { iod: ['tropfen', 'faerben', 'fertig'],
+                     fett: ['reiben', 'feucht', 'trocknen', 'fenster', 'fertig'] };
+// Dauer der Phasen in Sekunden (Sprungmarke: 5-mal so schnell)
+const _BKN_DAUER = { tropfen: 1.1, faerben: 1.9, reiben: 1.5, feucht: 1.0, trocknen: 2.4, fenster: 1.3 };
+// Schale und Tropfstelle je Lebensmittel
+const _BKN_SX = 100, _BKN_SY = 194;
+const _BKN_TROPF = { kartoffel: [100, 177], butter: [104, 171], apfel: [108, 178] };
+// Papier: auf dem Tisch (flach) und vor dem Fenster (aufrecht) – Ecken OL, OR, UR, UL
+const _BKN_PT = [[240, 198], [320, 198], [332, 228], [228, 228]];
+const _BKN_PF = [[320, 30], [396, 30], [396, 90], [320, 90]];
+// Tropfflasche in Ruhe (Mitte des Körpers), Spitze 36 px über der Mitte
+const _BKN_FX = 196, _BKN_FY = 172, _BKN_SPITZE = 36, _BKN_KIPP = Math.PI * 0.8;
+
+function _bknInit() {
+  _bkn = { essen: 'kartoffel', probe: 'iod', phase: 'bereit', pt: 0, t: 0, tempo: 1,
+           letzt: '', fx: { teile: [] }, zeitlupe: null, nach: -1, schritt: 0,
+           gelandet: 0, zl: false, getan: {}, alle: false, wolke: 40 };
+}
+
+function _bknHTML() {
+  const k = (grp, wert, fn, text) =>
+    `<button class="sim-btn" data-bkn="${grp}:${wert}" onclick="${fn}('${wert}')">${text}</button>`;
+  const m = (e, p) =>
+    `<button class="sim-btn" onclick="_bknMarke('${e}','${p}')">${_BKN_ESSEN[e]} + ${_BKN_PROBE[p]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Detektive am Picknicktisch</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf dem Labortisch stehen eine Schale mit dem Lebensmittel, eine Tropfflasche mit Iodlösung und ein Blatt Papier. Wähle ein Lebensmittel und einen Nachweis.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkn-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bkn-los" onclick="_bknLos()">▶ Nachweis machen</button>
+          <button class="sim-btn" onclick="_bknNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Lebensmittel</span>
+          <div class="sim-btn-row">
+            ${k('e', 'kartoffel', '_bknEssen', 'Kartoffel')}
+            ${k('e', 'butter', '_bknEssen', 'Butter')}
+            ${k('e', 'apfel', '_bknEssen', 'Apfel')}
+          </div>
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Nachweis</span>
+          <div class="sim-btn-row">
+            ${k('p', 'iod', '_bknProbe', 'Iodlösung')}
+            ${k('p', 'fett', '_bknProbe', 'Fettfleckprobe')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bkn-status"></div>
+        <div class="fpm-note" id="_bkn-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('kartoffel', 'iod')}${m('butter', 'iod')}${m('apfel', 'iod')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('kartoffel', 'fett')}${m('butter', 'fett')}${m('apfel', 'fett')}
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Wähle „Kartoffel“ und „Iodlösung“. Dann drücke „▶ Nachweis machen“ und beobachte genau.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bknFxLeer() {
+  _bkn.fx = { teile: [] }; _bkn.zeitlupe = null;
+  _bkn.nach = -1; _bkn.schritt = 0; _bkn.gelandet = 0; _bkn.zl = false;
+}
+function _bknZurueck() {                     // frische Probe, frisches Papier
+  _bkn.phase = 'bereit'; _bkn.pt = 0; _bkn.tempo = 1;
+  _bknFxLeer();
+  _bknStatus();
+}
+function _bknEssen(e) {
+  if (!_bkn || !_BKN_ESSEN[e]) return;
+  _bkn.essen = e;
+  _bknZurueck();
+}
+function _bknProbe(p) {
+  if (!_bkn || !_BKN_PROBE[p]) return;
+  _bkn.probe = p;
+  _bknZurueck();
+}
+function _bknLos() {
+  if (!_bkn) return;
+  if (_bkn.phase !== 'bereit' && _bkn.phase !== 'fertig') return;   // läuft schon
+  _bknFxLeer();
+  _bkn.phase = _BKN_REIHE[_bkn.probe][0]; _bkn.pt = 0; _bkn.tempo = 1;
+  _bknStatus();
+}
+// Sprungmarke: Lebensmittel und Nachweis wählen und die Probe schnell zeigen.
+function _bknMarke(e, p) {
+  if (!_bkn) return;
+  if (_BKN_ESSEN[e]) _bkn.essen = e;
+  if (_BKN_PROBE[p]) _bkn.probe = p;
+  _bknZurueck();
+  _bknLos();
+  _bkn.tempo = 5;
+}
+function _bknNeu() {
+  if (!_bkn) return;
+  _bkn.getan = {}; _bkn.alle = false;
+  _bkn.essen = 'kartoffel'; _bkn.probe = 'iod';
+  _bknZurueck();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bknBlau() { return _bkn.essen === 'kartoffel'; }
+function _bknFleck() { return _bkn.essen === 'butter'; }
+function _bknZeile() {
+  const e = _BKN_ESSEN[_bkn.essen], kopf = e + ' · ' + _BKN_PROBE[_bkn.probe] + ' · ';
+  switch (_bkn.phase) {
+    case 'bereit':   return kopf + 'Drücke „▶ Nachweis machen“.';
+    case 'tropfen':  return kopf + 'Ein brauner Tropfen fällt auf ' + _BKN_AUF[_bkn.essen] + ' …';
+    case 'faerben':  return kopf + 'Der Tropfen breitet sich aus …';
+    case 'reiben':   return kopf + 'Das Lebensmittel wird auf dem Papier verrieben …';
+    case 'feucht':   return kopf + 'Auf dem Papier ist ein feuchter Fleck.';
+    case 'trocknen': return kopf + 'Zeitraffer: Papier trocknet …';
+    case 'fenster':  return kopf + 'Das trockene Papier kommt vor das Fenster …';
+    default:
+      if (_bkn.probe === 'iod') return kopf + (_bknBlau() ? 'Der Tropfen ist blau-schwarz.' : 'Der Tropfen bleibt braun.');
+      return kopf + (_bknFleck() ? 'Papier vor dem Fenster: durchscheinender Fleck.'
+                                 : 'Papier vor dem Fenster: kein Fleck. Der feuchte Fleck ist weggetrocknet.');
+  }
+}
+function _bknZahl() { return Object.keys(_bkn.getan).length; }
+function _bknHinweis() {
+  const ph = _bkn.phase, n = _bknZahl();
+  if (ph !== 'bereit' && ph !== 'fertig') {
+    if (ph === 'trocknen' || ph === 'fenster') return 'Achte auf das getrocknete Papier.';
+    return _bkn.probe === 'iod' ? 'Beobachte die Farbe des Tropfens.' : 'Beobachte das Papier.';
+  }
+  if (n >= 6) return 'Du hast alle sechs Proben gemacht. Trage deine Beobachtungen in die Tabelle ein.';
+  if (ph === 'bereit') return n === 0 ? 'Wähle ein Lebensmittel und einen Nachweis. Proben fertig: 0 von 6.'
+                                      : 'Proben fertig: ' + n + ' von 6.';
+  // fertig: nächsten Schritt nennen
+  const andere = _bkn.probe === 'iod' ? 'fett' : 'iod';
+  let rat;
+  if (!_bkn.getan[_bkn.essen + ':' + andere]) {
+    rat = 'Wähle jetzt „' + _BKN_PROBE[andere] + '“. Drücke wieder „▶ Nachweis machen“.';
+  } else {
+    let ziel = null;
+    for (const e of ['kartoffel', 'butter', 'apfel']) {
+      for (const p of ['iod', 'fett']) if (!ziel && !_bkn.getan[e + ':' + p]) ziel = [e, p];
+    }
+    rat = 'Wähle jetzt „' + _BKN_ESSEN[ziel[0]] + '“ und „' + _BKN_PROBE[ziel[1]] + '“.';
+  }
+  return 'Trage deine Beobachtung in die Tabelle ein. ' + rat + ' Proben fertig: ' + n + ' von 6.';
+}
+function _bknStatus() {
+  if (!_bkn) return;
+  const z = _bknZeile();
+  _bkn.letzt = z;
+  const el = document.getElementById('_bkn-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_bkn-hinweis');
+  if (h) h.textContent = _bknHinweis();
+  try {
+    document.querySelectorAll('[data-bkn]').forEach(b => {
+      const w = b.dataset ? b.dataset.bkn : b.getAttribute('data-bkn');
+      const an = w === 'e:' + _bkn.essen || w === 'p:' + _bkn.probe;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_bkn-los');
+  if (los && los.classList) los.classList.toggle('primary', _bkn.phase === 'bereit' || _bkn.phase === 'fertig');
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _bknUpdate(dt) {
+  if (!_bkn) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_bkn, roh);
+  _bkn.t += roh;
+  _bkn.wolke += roh * (_bkn.phase === 'trocknen' ? 60 : 7);
+  const ph = _bkn.phase;
+  if (ph !== 'bereit' && ph !== 'fertig') {
+    _bkn.pt += d * _bkn.tempo;
+    // Tropfen landen (zwei Tropfen, je ein kleiner Ring)
+    if (ph === 'tropfen') {
+      const n = [0.72, 0.92].filter(s => _bkn.pt >= s).length;
+      if (n > _bkn.gelandet) {
+        _bkn.gelandet = n;
+        const p = _BKN_TROPF[_bkn.essen];
+        _bioFxWelle(_bkn.fx.teile, p[0], p[1], 'rgba(180,110,40,0.8)', 14);
+      }
+    }
+    // Zeitlupe: Blau-Schwarz beginnt / Papier kommt am Fenster an
+    if (_bkn.tempo === 1 && !_bkn.zl) {
+      if ((ph === 'faerben' && _bknBlau() && _bkn.pt > 0.5) || (ph === 'fenster' && _bkn.pt > 0.75)) {
+        _bkn.zl = true; _bioFxZeitlupe(_bkn, 0.4, 0.8);
+      }
+    }
+    if (_bkn.pt >= _BKN_DAUER[ph]) {
+      const r = _BKN_REIHE[_bkn.probe];
+      _bkn.phase = r[r.indexOf(ph) + 1];
+      _bkn.pt = 0; _bkn.zl = false;
+      if (_bkn.phase === 'fertig') {
+        _bkn.getan[_bkn.essen + ':' + _bkn.probe] = true;
+        _bkn.nach = 0; _bkn.schritt = 0;
+      }
+    }
+  }
+  if (_bkn.nach >= 0) { _bkn.nach += roh; _bknAha(); }
+  _bioFxAlleUpdate(_bkn.fx, roh);
+  if (_bknZeile() !== _bkn.letzt) _bknStatus();
+}
+// Ergebnis zeigen: kurzer Lichtring an der Probe, danach Ruhe.
+function _bknAha() {
+  const fx = _bkn.fx, t = _bkn.nach;
+  if (_bkn.schritt === 0 && t >= 0.05) {
+    _bkn.schritt = 1;
+    if (_bkn.probe === 'iod') {
+      const p = _BKN_TROPF[_bkn.essen];
+      if (_bknBlau()) {
+        _bioFxWelle(fx.teile, p[0], p[1], 'rgba(165,180,252,0.95)', 44);
+        _bioFxFunken(fx.teile, p[0], p[1] - 4, 9, ['#c7d2fe', '#ffffff', '#a5b4fc']);
+      } else {
+        _bioFxWelle(fx.teile, p[0], p[1], 'rgba(245,192,122,0.9)', 32);
+      }
+    } else {
+      const m = _bknPunkt(_BKN_PF, 0.5, 0.5);
+      if (_bknFleck()) {
+        _bioFxWelle(fx.teile, m[0], m[1], 'rgba(253,224,120,0.95)', 42);
+        _bioFxFunken(fx.teile, m[0], m[1], 9, ['#fde68a', '#ffffff', '#fcd34d']);
+      } else {
+        _bioFxWelle(fx.teile, m[0], m[1], 'rgba(203,213,225,0.95)', 42);
+      }
+    }
+  }
+  if (_bkn.schritt === 1 && t >= 1.6) {
+    _bkn.schritt = 2;
+    if (_bknZahl() >= 6 && !_bkn.alle) {
+      _bkn.alle = true;
+      _bioFxBanner(fx, 'Alle sechs Proben fertig', 3, '#c7d2fe');
+    }
+  }
+}
+
+/* ── Geometrie ─────────────────────────────────────────────────────────── */
+function _bknMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  return [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u];
+}
+// Punkt (s, t) in einem Viereck [OL, OR, UR, UL] (bilinear)
+function _bknPunkt(q, s, t) {
+  return _bknMisch(_bknMisch(q[0], q[1], s), _bknMisch(q[3], q[2], s), t);
+}
+// Wie weit das Papier auf dem Weg zum Fenster ist (0 = Tisch, 1 = Fenster)
+function _bknWeg() {
+  if (_bkn.probe !== 'fett') return 0;
+  if (_bkn.phase === 'fenster') return _bioFxEase.sanft(_bioFxKlemme(_bkn.pt / _BKN_DAUER.fenster));
+  return _bkn.phase === 'fertig' ? 1 : 0;
+}
+function _bknPapierQuad() {
+  const u = _bknWeg(), hub = -44 * Math.sin(Math.PI * u);
+  return _BKN_PT.map((p, i) => { const m = _bknMisch(p, _BKN_PF[i], u); return [m[0], m[1] + hub]; });
+}
+// Fleck: Größe (0..1) und wie nass er aussieht (0..1)
+function _bknFleckZustand() {
+  if (_bkn.probe !== 'fett') return { g: 0, nass: 0, sicht: 0 };
+  const ph = _bkn.phase, pt = _bkn.pt;
+  if (ph === 'bereit') return { g: 0, nass: 0, sicht: 0 };
+  if (ph === 'reiben') { const a = _bioFxKlemme((pt - 0.35) / 0.8); return { g: Math.sqrt(a), nass: a, sicht: 1 }; }
+  if (ph === 'feucht') return { g: 1, nass: 1, sicht: 1 };
+  if (ph === 'trocknen') {
+    const u = _bioFxEase.sanft(_bioFxKlemme(pt / _BKN_DAUER.trocknen));
+    return _bknFleck() ? { g: 1, nass: 1 - 0.6 * u, sicht: 1 } : { g: 1 - 0.45 * u, nass: 1 - u, sicht: 1 - u };
+  }
+  return _bknFleck() ? { g: 1, nass: 0.4, sicht: 1 } : { g: 0, nass: 0, sicht: 0 };
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bknFenster(ctx) {
+  const x = 306, y = 14, w = 104, h = 92, t = _bkn.t;
+  ctx.save();
+  const g = ctx.createLinearGradient(0, y, 0, y + h);
+  g.addColorStop(0, '#9fd3fa'); g.addColorStop(1, '#e0f2fe');
+  ctx.fillStyle = g; ctx.fillRect(x, y, w, h);
+  ctx.beginPath(); ctx.rect(x, y, w, h); ctx.clip();
+  // Sonne: steht still, im Zeitraffer wandert sie einmal über den Himmel
+  let sx = 388, sy = 34;
+  if (_bkn.phase === 'trocknen') {
+    const u = _bioFxKlemme(_bkn.pt / _BKN_DAUER.trocknen);
+    sx = 318 + 80 * u; sy = 80 - 52 * Math.sin(Math.PI * u);
+  }
+  ctx.fillStyle = 'rgba(253,224,71,0.35)';
+  ctx.beginPath(); ctx.arc(sx, sy, 15, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fcd34d';
+  ctx.beginPath(); ctx.arc(sx, sy, 9, 0, Math.PI * 2); ctx.fill();
+  // Wolke zieht langsam vorbei (im Zeitraffer schneller)
+  const wx = x - 30 + (_bkn.wolke % (w + 60));
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  for (const [dx, dy, r] of [[0, 0, 10], [12, -5, 12], [25, 0, 9], [12, 4, 10]]) {
+    ctx.beginPath(); ctx.arc(wx + dx, 62 + dy, r, 0, Math.PI * 2); ctx.fill();
+  }
+  // Hügel
+  ctx.fillStyle = '#86c06a';
+  ctx.beginPath(); ctx.moveTo(x, y + h); ctx.quadraticCurveTo(x + 40, y + h - 26, x + w, y + h - 12);
+  ctx.lineTo(x + w, y + h); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 5; ctx.strokeRect(x, y, w, h);
+  ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(x + w / 2, y); ctx.lineTo(x + w / 2, y + h); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(x - 6, y + h + 2, w + 12, 5);
+  ctx.restore();
+}
+function _bknTisch(ctx, W, H) {
+  ctx.save();
+  ctx.fillStyle = '#c9a877'; ctx.fillRect(0, 150, W, H - 150);
+  ctx.fillStyle = '#b8966a'; ctx.fillRect(0, 150, W, 4);
+  ctx.strokeStyle = 'rgba(120,85,45,0.18)'; ctx.lineWidth = 1;
+  for (let i = 0; i < 6; i++) {
+    ctx.beginPath(); ctx.moveTo(0, 166 + i * 15); ctx.bezierCurveTo(140, 160 + i * 15, 280, 172 + i * 15, W, 164 + i * 15); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _bknBrille(ctx) {
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.fillStyle = 'rgba(186,230,253,0.55)';
+  for (const x of [22, 44]) {
+    ctx.beginPath(); ctx.ellipse(x, 232, 10, 6, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  }
+  ctx.beginPath(); ctx.moveTo(32, 231); ctx.lineTo(34, 231); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(12, 230); ctx.lineTo(4, 222); ctx.moveTo(54, 230); ctx.lineTo(62, 222); ctx.stroke();
+  ctx.restore();
+}
+function _bknSchale(ctx) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(60,40,20,0.16)';
+  ctx.beginPath(); ctx.ellipse(_BKN_SX + 4, _BKN_SY + 6, 68, 18, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(_BKN_SX, _BKN_SY, 66, 18, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(_BKN_SX, _BKN_SY, 50, 12, 0, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+function _bknEssenZeichnen(ctx) {
+  const e = _bkn.essen, x = _BKN_SX, y = _BKN_SY - 16;
+  ctx.save();
+  if (e === 'kartoffel') {
+    ctx.fillStyle = '#9c6b3c';
+    ctx.beginPath(); ctx.ellipse(x, y + 5, 44, 19, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#f2e2a4';
+    ctx.beginPath(); ctx.ellipse(x, y, 41, 15, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(214,190,120,0.55)';
+    for (const [dx, dy] of [[-22, -3], [18, 4], [-6, 7], [26, -5], [-30, 5]]) {
+      ctx.beginPath(); ctx.ellipse(x + dx, y + dy, 2.2, 1.2, 0, 0, Math.PI * 2); ctx.fill();
+    }
+  } else if (e === 'butter') {
+    ctx.fillStyle = '#e8e2d0';                                   // Einwickelpapier
+    ctx.beginPath(); ctx.ellipse(x, y + 12, 50, 9, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#f1cf5c';
+    ctx.fillRect(x - 34, y - 2, 64, 18);
+    ctx.fillStyle = '#e4bd45';
+    ctx.beginPath(); ctx.moveTo(x + 30, y - 2); ctx.lineTo(x + 38, y - 11); ctx.lineTo(x + 38, y + 7); ctx.lineTo(x + 30, y + 16); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fbe69a';
+    ctx.beginPath(); ctx.moveTo(x - 34, y - 2); ctx.lineTo(x + 30, y - 2); ctx.lineTo(x + 38, y - 11); ctx.lineTo(x - 26, y - 11); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    ctx.fillRect(x - 28, y + 2, 40, 2);
+  } else {
+    ctx.fillStyle = '#c0392b';
+    ctx.beginPath(); ctx.ellipse(x, y + 4, 42, 17, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fbf4d9';
+    ctx.beginPath(); ctx.ellipse(x, y, 39, 14, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(190,170,110,0.5)'; ctx.lineWidth = 1;
+    for (let k = 0; k < 5; k++) {
+      const a = k / 5 * Math.PI * 2;
+      ctx.beginPath(); ctx.moveTo(x - 10, y); ctx.lineTo(x - 10 + Math.cos(a) * 9, y + Math.sin(a) * 4); ctx.stroke();
+    }
+    ctx.fillStyle = '#4a2c17';
+    ctx.beginPath(); ctx.ellipse(x - 14, y - 1, 2.5, 1.5, 0.3, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(x - 6, y + 1, 2.5, 1.5, -0.3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+  _bknTropfenAufEssen(ctx);
+}
+// Iodtropfen auf dem Lebensmittel: braun, bei der Kartoffel von innen blau-schwarz
+function _bknTropfenAufEssen(ctx) {
+  if (_bkn.probe !== 'iod') return;
+  const ph = _bkn.phase, pt = _bkn.pt;
+  let r = 0, rb = 0;
+  if (ph === 'tropfen') r = _bkn.gelandet === 0 ? 0 : _bkn.gelandet === 1 ? 6 : 9;
+  else if (ph === 'faerben') {
+    r = 9 + 5 * _bioFxEase.raus(_bioFxKlemme(pt / 0.6));
+    if (_bknBlau()) rb = (r + 2) * _bioFxEase.sanft(_bioFxKlemme((pt - 0.5) / 1.2));
+  } else if (ph === 'fertig') { r = 14; if (_bknBlau()) rb = 16; }
+  if (r <= 0) return;
+  const p = _BKN_TROPF[_bkn.essen], t = _bkn.t;
+  const form = (rr) => {
+    ctx.beginPath();
+    for (let k = 0; k <= 36; k++) {
+      const a = k / 36 * Math.PI * 2;
+      const w = rr * (1 + 0.08 * Math.sin(3 * a + 1.2) + 0.03 * Math.sin(5 * a + t * 0.9));
+      const xx = p[0] + w * Math.cos(a) * 1.35, yy = p[1] + w * Math.sin(a) * 0.55;
+      if (k === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+    }
+    ctx.closePath();
+  };
+  ctx.save();
+  ctx.fillStyle = 'rgba(150,82,20,0.88)';
+  form(r); ctx.fill();
+  if (rb > 0) {
+    form(r); ctx.clip();
+    ctx.fillStyle = 'rgba(30,27,75,0.55)'; form(Math.min(r + 2, rb + 2.5)); ctx.fill();
+    ctx.fillStyle = '#1b1838'; form(rb); ctx.fill();
+  }
+  ctx.restore();
+  // Glanz auf dem nassen Tropfen
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.beginPath(); ctx.ellipse(p[0] - r * 0.4 + Math.sin(t * 0.8) * 1.5, p[1] - r * 0.22, r * 0.35, r * 0.1, -0.1, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function _bknFlasche(ctx) {
+  const ph = _bkn.phase;
+  let s = 0;
+  if (_bkn.probe === 'iod') {
+    if (ph === 'tropfen') s = _bioFxEase.sanft(_bioFxKlemme(_bkn.pt / 0.45));
+    else if (ph === 'faerben') s = 1 - _bioFxEase.sanft(_bioFxKlemme(_bkn.pt / 0.55));
+  }
+  const p = _BKN_TROPF[_bkn.essen], th = _BKN_KIPP * s;
+  const zx = p[0] - _BKN_SPITZE * Math.sin(_BKN_KIPP), zy = 118 + _BKN_SPITZE * Math.cos(_BKN_KIPP);
+  const cx = _BKN_FX + (zx - _BKN_FX) * s, cy = _BKN_FY + (zy - _BKN_FY) * s - 30 * Math.sin(Math.PI * s);
+  ctx.save();
+  ctx.translate(cx, cy); ctx.rotate(th);
+  ctx.fillStyle = 'rgba(60,40,20,0.15)';
+  if (s < 0.05) { ctx.beginPath(); ctx.ellipse(3, 21, 14, 4, 0, 0, Math.PI * 2); ctx.fill(); }
+  ctx.fillStyle = '#7c3f12'; ctx.strokeStyle = '#4a2408'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, -11, -14, 22, 34, 5); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#6b3510'; ctx.fillRect(-6, -20, 12, 7);
+  ctx.fillStyle = '#1f2937'; _bioFxRundRect(ctx, -7, -30, 14, 11, 3); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(-3, -30); ctx.lineTo(3, -30); ctx.lineTo(0.8, -36); ctx.lineTo(-0.8, -36); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#fff7ed'; ctx.fillRect(-9, -2, 18, 11);
+  ctx.fillStyle = '#b45309'; ctx.fillRect(-9, -2, 18, 2.5);
+  ctx.fillStyle = 'rgba(255,255,255,' + (0.22 + 0.08 * Math.sin(_bkn.t * 1.3)).toFixed(3) + ')';
+  ctx.fillRect(-8, -11, 3, 26);
+  ctx.restore();
+  if (s < 0.3) {
+    ctx.save();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Iodlösung', _BKN_FX, _BKN_FY + 34);
+    ctx.restore();
+  }
+  // fallende Tropfen
+  if (ph === 'tropfen') {
+    ctx.save(); ctx.fillStyle = '#9a5418';
+    for (const start of [0.5, 0.7]) {
+      const q = (_bkn.pt - start) / 0.22;
+      if (q < 0 || q > 1) continue;
+      const ty = 118 + (p[1] - 118) * q * q;
+      ctx.beginPath(); ctx.ellipse(p[0], ty, 2.6, 3.8, 0, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+function _bknPapier(ctx) {
+  const q = _bknPapierQuad(), u = _bknWeg(), t = _bkn.t;
+  // Licht hinter dem Papier, sobald es vor dem Fenster ist
+  if (u > 0.5) {
+    const m = _bknPunkt(q, 0.5, 0.5);
+    ctx.save();
+    const g = ctx.createRadialGradient(m[0], m[1], 10, m[0], m[1], 70);
+    g.addColorStop(0, 'rgba(255,244,200,' + (0.5 * (u - 0.5) * 2).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(255,244,200,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(m[0], m[1], 70, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+  const pfad = () => {
+    ctx.beginPath(); ctx.moveTo(q[0][0], q[0][1]);
+    for (let i = 1; i < 4; i++) ctx.lineTo(q[i][0], q[i][1]);
+    ctx.closePath();
+  };
+  ctx.save();
+  if (u < 0.05) { ctx.fillStyle = 'rgba(60,40,20,0.14)'; ctx.translate(3, 3); pfad(); ctx.fill(); ctx.translate(-3, -3); }
+  // vor dem Fenster wirkt das Papier grau (Gegenlicht)
+  const hell = [250, 250, 247], gegen = [214, 219, 226];
+  const c = hell.map((v, i) => Math.round(v + (gegen[i] - v) * u));
+  ctx.fillStyle = 'rgb(' + c.join(',') + ')'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  pfad(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  // Fleck
+  const f = _bknFleckZustand();
+  if (f.g > 0.01 && f.sicht > 0.01) {
+    const form = (k) => {
+      ctx.beginPath();
+      for (let i = 0; i <= 30; i++) {
+        const a = i / 30 * Math.PI * 2;
+        const w = 1 + 0.12 * Math.sin(3 * a + 0.7) + 0.06 * Math.sin(7 * a);
+        const pp = _bknPunkt(q, 0.5 + 0.19 * f.g * k * w * Math.cos(a), 0.5 + 0.3 * f.g * k * w * Math.sin(a));
+        if (i === 0) ctx.moveTo(pp[0], pp[1]); else ctx.lineTo(pp[0], pp[1]);
+      }
+      ctx.closePath();
+    };
+    ctx.save();
+    // auf dem Tisch: grau-feucht; vor dem Fenster: Licht scheint durch
+    const tisch = 'rgba(110,122,140,' + (0.2 + 0.28 * f.nass).toFixed(3) + ')';
+    ctx.globalAlpha = (1 - u) * f.sicht;
+    ctx.fillStyle = tisch; form(1); ctx.fill();
+    if (f.nass > 0.5) {
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.35 * (f.nass - 0.5) * 2).toFixed(3) + ')';
+      const g0 = _bknPunkt(q, 0.44, 0.38);
+      ctx.beginPath(); ctx.ellipse(g0[0], g0[1], 7 * f.g, 2, -0.1, 0, Math.PI * 2); ctx.fill();
+    }
+    if (u > 0) {
+      ctx.globalAlpha = u;
+      ctx.shadowColor = '#fde68a'; ctx.shadowBlur = 12;
+      ctx.fillStyle = '#fffbe6'; form(1); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Dunst steigt beim Trocknen auf
+  if (_bkn.phase === 'trocknen') {
+    const m = _bknPunkt(q, 0.5, 0.5), a0 = _bioFxKlemme(_bkn.pt / 0.3) * (1 - _bioFxKlemme((_bkn.pt - 1.8) / 0.6));
+    ctx.save();
+    ctx.strokeStyle = 'rgba(148,163,184,' + (0.55 * a0 * (_bknFleck() ? 0.5 : 1)).toFixed(3) + ')';
+    ctx.lineWidth = 2; ctx.lineCap = 'round';
+    for (let k = 0; k < 3; k++) {
+      const ph = ((_bkn.pt * 1.4 + k / 3) % 1);
+      const x0 = m[0] - 16 + k * 16;
+      ctx.globalAlpha = 1 - ph;
+      ctx.beginPath();
+      for (let j = 0; j <= 8; j++) {
+        const yy = m[1] - 6 - ph * 30 - j * 3;
+        const xx = x0 + 4 * Math.sin(j * 0.9 + t * 3 + k);
+        if (j === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+      }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Aha: Lichtstrahlen fallen durch den Butterfleck
+  if (_bkn.phase === 'fertig' && _bknFleck() && _bkn.nach >= 0) {
+    const tt = _bkn.nach;
+    const a = _bioFxKlemme(tt / 0.4) * (1 - _bioFxEase.sanft(_bioFxKlemme((tt - 1.2) / 0.7)));
+    if (a > 0.01) {
+      const m = _bknPunkt(q, 0.5, 0.5);
+      ctx.save();
+      ctx.globalAlpha = a; ctx.strokeStyle = '#fcd34d'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+      ctx.shadowColor = '#fde68a'; ctx.shadowBlur = 6;
+      for (let k = 0; k < 7; k++) {
+        const w = Math.PI * 0.55 + k / 6 * Math.PI * 0.9;
+        const l = 18 + 14 * _bioFxEase.raus(_bioFxKlemme(tt / 0.6));
+        ctx.beginPath();
+        ctx.moveTo(m[0] + Math.cos(w) * 16, m[1] + Math.sin(w) * 12);
+        ctx.lineTo(m[0] + Math.cos(w) * (16 + l), m[1] + Math.sin(w) * (12 + l * 0.8));
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+  }
+  if (u < 0.3) {
+    ctx.save();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Papier', 280, 243);
+    ctx.restore();
+  }
+}
+// Ein Stück des Lebensmittels wird auf dem Papier verrieben
+function _bknReibStueck(ctx) {
+  if (_bkn.probe !== 'fett' || _bkn.phase !== 'reiben') return;
+  const pt = _bkn.pt, von = [_BKN_SX, _BKN_SY - 26], zu = [280, 206];
+  let x, y;
+  if (pt < 0.35) { const u = _bioFxEase.sanft(pt / 0.35); x = von[0] + (zu[0] - von[0]) * u; y = von[1] + (zu[1] - von[1]) * u - 26 * Math.sin(Math.PI * u); }
+  else if (pt < 1.15) { const u = (pt - 0.35) / 0.8; x = zu[0] + 14 * Math.sin(u * Math.PI * 6); y = zu[1] + 2 * Math.cos(u * Math.PI * 6); }
+  else { const u = _bioFxEase.sanft(_bioFxKlemme((pt - 1.15) / 0.35)); x = zu[0] + (von[0] - zu[0]) * u; y = zu[1] + (von[1] - zu[1]) * u - 26 * Math.sin(Math.PI * u); }
+  const F = { kartoffel: ['#f2e2a4', '#9c6b3c'], butter: ['#fbe69a', '#e4bd45'], apfel: ['#fbf4d9', '#c0392b'] }[_bkn.essen];
+  ctx.save();
+  ctx.fillStyle = F[1]; _bioFxRundRect(ctx, x - 12, y - 5, 24, 12, 4); ctx.fill();
+  ctx.fillStyle = F[0]; _bioFxRundRect(ctx, x - 11, y - 7, 22, 10, 4); ctx.fill();
+  ctx.restore();
+}
+// Uhr im Zeitraffer
+function _bknUhr(ctx) {
+  if (_bkn.probe !== 'fett' || _bkn.phase !== 'trocknen') return;
+  const a = _bioFxKlemme(_bkn.pt / 0.25) * (1 - _bioFxKlemme((_bkn.pt - 2.15) / 0.25));
+  const x = 176, y = 54, u = _bkn.pt / _BKN_DAUER.trocknen;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.lineCap = 'round';
+  const gross = -Math.PI / 2 + u * Math.PI * 2 * 3, klein = -Math.PI / 2 + u * Math.PI * 2 * 0.25;
+  ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(gross) * 12, y + Math.sin(gross) * 12); ctx.stroke();
+  ctx.lineWidth = 2.6; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(klein) * 8, y + Math.sin(klein) * 8); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Zeitraffer:', 198, 50);
+  ctx.fillText('Papier trocknet', 198, 64);
+  ctx.restore();
+}
+function _bknDraw(ctx, cv) {
+  if (!_bkn) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, 150);
+  bg.addColorStop(0, '#f1f5f9'); bg.addColorStop(1, '#e2e8f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, 150);
+  _bknFenster(ctx);
+  _bknTisch(ctx, W, H);
+  _bknBrille(ctx);
+  _bknSchale(ctx);
+  _bknEssenZeichnen(ctx);
+  _bknPapier(ctx);
+  _bknFlasche(ctx);
+  _bknReibStueck(ctx);
+  _bknUhr(ctx);
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_BKN_ESSEN[_bkn.essen], _BKN_SX, 232);
+  ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(_BKN_ESSEN[_bkn.essen] + ' · ' + _BKN_PROBE[_bkn.probe], 10, 20);
+  ctx.restore();
+  _bioFxAlleDraw(ctx, _bkn.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bk8 „Der lange Weg des Butterbrots“ (bio-verdauung)
+// Links ein Koerperumriss mit Mund, Speiseroehre, Magen, Duenndarm und
+// Dickdarm. „▶ Nahrung losschicken“: ein Brotstueck wandert den Weg entlang,
+// das Organ, in dem es gerade ist, leuchtet auf und sein Name erscheint.
+// Rechts ein Stueck Duenndarmwand (glatt / mit Falten / mit Falten und
+// Zotten), dahinter eine Ader. „▶ 10 Sekunden messen“: gelbe Dreiecke
+// (Naehrstoffe) wandern durch die Wand in die Ader, ein Zaehler zaehlt mit.
+// Modellwerte (Lehrerteil): nach 10 s 2 / 6 / 12 Naehrstoffe im Blut,
+// Flaeche klein / groesser / sehr gross. Das Angebot im Darm ist bei allen
+// drei Waenden GLEICH (16 Dreiecke); nur die Wand faengt mehr oder weniger.
+// Die gezeichnete Wandlinie ist im Verhaeltnis 1 : 3 : 6 lang (nachgerechnet
+// in rechentest.js) - genau wie 2 : 6 : 12. Die Aufnahmestellen liegen in
+// gleichen Abstaenden auf der Wandlinie: laengere Wand = mehr Stellen.
+// Aha 1 (auf dem Weg): Im Duenndarm faehrt eine Lupe aus dem Bauch heraus und
+// zeigt die Wand von innen - Brotbrei zerfaellt in Naehrstoffe, die in die
+// Zotten und von dort in die Ader gehen. Kein Text in der Lupe ausser „Ader“.
+// Aha 2 (nach der Messung): Die Wandlinie loest sich golden ab und wird zu
+// einer geraden Linie glatt gezogen - sie landet genau auf dem Balken
+// „Fläche der Wand“. Ruhig, kein Blinken (Leuchten 0,8 Hz), kein Ton,
+// keine Wertung, keine Merksatz- oder Aufgabenloesung als Text im Bild.
+// ════════════════════════════════════════════════════════════════════════
+let _bkv = null;
+const _BKV_WAND = ['glatt', 'mit Falten', 'mit Falten und Zotten'];
+const _BKV_FLAECHE = ['klein', 'größer', 'sehr groß'];
+const _BKV_ZAHL = [2, 6, 12];                 // Modellwerte nach 10 s (Lehrerteil)
+const _BKV_MESS = 10;                          // s Messzeit
+const _BKV_POOL = 16;                          // Naehrstoffe im Darm, fuer jede Wand gleich
+// Wandausschnitt rechts
+const _BKV_X0 = 182, _BKV_X1 = 408, _BKV_Y0 = 150;   // Wandlinie (Grundlinie)
+const _BKV_FH = 49, _BKV_FR = 8, _BKV_FN = 5;        // Falten: Hoehe, Rundung, Anzahl
+const _BKV_ZH = 11, _BKV_ZB = 5, _BKV_ZD = 14;       // Zotten: Hoehe, Breite, Abstand
+const _BKV_ADER = 186;                                // Mitte der Ader
+const _BKV_BX = 264, _BKV_BY = 234, _BKV_BMAX = 78;   // Balken „Fläche der Wand“
+// Weg der Nahrung: Zeitplan in s (Organ i von _BKV_T[i] bis _BKV_T[i+1])
+const _BKV_ORGAN = ['Mund', 'Speiseröhre', 'Magen', 'Dünndarm', 'Dickdarm'];
+const _BKV_IM = ['im Mund', 'in der Speiseröhre', 'im Magen', 'im Dünndarm', 'im Dickdarm'];
+const _BKV_T = [0, 1.6, 2.8, 4.8, 9.4, 11.0];
+const _BKV_LUPE = [5.1, 5.8, 8.7, 9.4];      // Lupe: auf ab .. offen .. zu ab .. zu
+
+/* ── Geometrie: Wandlinie ──────────────────────────────────────────────── */
+// Grundlinie: glatt oder mit Falten (Punkte alle 1 px, mit Bogenlaenge s und
+// Normale n, die in den Darm hinein zeigt).
+function _bkvGrund(mitFalten) {
+  const p = [];
+  const X0 = _BKV_X0, X1 = _BKV_X1, Y0 = _BKV_Y0, R = _BKV_FR, H = _BKV_FH;
+  if (!mitFalten) { p.push([X0, Y0], [X1, Y0]); }
+  else {
+    const pitch = (X1 - X0) / _BKV_FN;
+    p.push([X0, Y0]);
+    for (let i = 0; i < _BKV_FN; i++) {
+      const cx = X0 + pitch * (i + 0.5);
+      p.push([cx - R, Y0]);
+      p.push([cx - R, Y0 - H + R]);
+      for (let a = 1; a < 16; a++) {
+        const w = Math.PI + Math.PI * a / 16;
+        p.push([cx + R * Math.cos(w), Y0 - H + R + R * Math.sin(w)]);
+      }
+      p.push([cx + R, Y0 - H + R]);
+      p.push([cx + R, Y0]);
+    }
+    p.push([X1, Y0]);
+  }
+  // dicht abtasten
+  const o = [];
+  for (let i = 0; i < p.length - 1; i++) {
+    const [a, b] = p[i], [c, d] = p[i + 1];
+    const n = Math.max(1, Math.ceil(Math.hypot(c - a, d - b)));
+    for (let k = 0; k < n; k++) o.push([a + (c - a) * k / n, b + (d - b) * k / n]);
+  }
+  o.push(p[p.length - 1]);
+  const r = [];
+  let s = 0;
+  for (let i = 0; i < o.length; i++) {
+    if (i) s += Math.hypot(o[i][0] - o[i - 1][0], o[i][1] - o[i - 1][1]);
+    const j = Math.min(o.length - 1, i + 1), h = Math.max(0, i - 1);
+    const dx = o[j][0] - o[h][0], dy = o[j][1] - o[h][1], l = Math.hypot(dx, dy) || 1;
+    r.push({ x: o[i][0], y: o[i][1], nx: dy / l, ny: -dx / l, bx: o[i][0], by: o[i][1],
+             bnx: dy / l, bny: -dx / l });
+  }
+  return r;
+}
+// Zotten: fingerfoermige Ausstuelpungen auf der Grundlinie (auch auf den Falten).
+function _bkvZotten(b) {
+  const L = _bkvLaenge(b), FW = _BKV_ZB, FH = _BKV_ZH, fr = FW / 2;
+  const s = [0];
+  for (let i = 1; i < b.length; i++) s.push(s[i - 1] + Math.hypot(b[i].x - b[i - 1].x, b[i].y - b[i - 1].y));
+  const out = [];
+  let naechst = _BKV_ZD / 2, i = 0;
+  while (i < b.length) {
+    const q = b[i];
+    if (s[i] >= naechst && s[i] + FW < L - 2) {
+      let j = i;
+      while (j < b.length - 1 && s[j] < s[i] + FW) j++;
+      const e = b[j], m = b[Math.round((i + j) / 2)];
+      if (Math.abs(q.nx - e.nx) + Math.abs(q.ny - e.ny) < 0.9) {
+        const nx = m.nx, ny = m.ny, tx = (e.x - q.x) / FW, ty = (e.y - q.y) / FW;
+        const basis = { bx: m.x, by: m.y, bnx: nx, bny: ny };
+        out.push(Object.assign({ x: q.x, y: q.y, nx, ny }, basis));
+        for (let h = 1; h <= FH - fr; h++) out.push(Object.assign({ x: q.x + nx * h, y: q.y + ny * h, nx: -tx, ny: -ty }, basis));
+        const cx = m.x + nx * (FH - fr), cy = m.y + ny * (FH - fr);
+        for (let a = 1; a < 12; a++) {
+          const w = Math.PI * a / 12;
+          const ux = -tx * Math.cos(w) + nx * Math.sin(w), uy = -ty * Math.cos(w) + ny * Math.sin(w);
+          out.push(Object.assign({ x: cx + ux * fr, y: cy + uy * fr, nx: ux, ny: uy }, basis));
+        }
+        for (let h = FH - fr; h >= 1; h--) out.push(Object.assign({ x: e.x + nx * h, y: e.y + ny * h, nx: tx, ny: ty }, basis));
+        i = j; naechst = s[i] + _BKV_ZD;
+        continue;
+      }
+      naechst = s[i] + 1;
+    }
+    out.push(q); i++;
+  }
+  return out;
+}
+function _bkvLaenge(p) {
+  let s = 0;
+  for (let i = 1; i < p.length; i++) s += Math.hypot(p[i].x - p[i - 1].x, p[i].y - p[i - 1].y);
+  return s;
+}
+// Punkt bei Bogenlaenge u (0..1) auf der Wandlinie.
+function _bkvAufLinie(p, u) {
+  const L = _bkvLaenge(p), ziel = u * L;
+  let s = 0;
+  for (let i = 1; i < p.length; i++) {
+    const d = Math.hypot(p[i].x - p[i - 1].x, p[i].y - p[i - 1].y);
+    if (s + d >= ziel) return p[i];
+    s += d;
+  }
+  return p[p.length - 1];
+}
+// Die drei Waende einmal berechnen.
+function _bkvWaende() {
+  const g = _bkvGrund(false), f = _bkvGrund(true), z = _bkvZotten(f);
+  const w = [g, f, z].map(p => {
+    const L = _bkvLaenge(p);
+    // Bogenlaenge je Punkt (fuer das Glattziehen)
+    const s = [0];
+    for (let i = 1; i < p.length; i++) s.push(s[i - 1] + Math.hypot(p[i].x - p[i - 1].x, p[i].y - p[i - 1].y));
+    return { p, L, s };
+  });
+  return w;
+}
+
+/* ── Naehrstoffe im Darm (fuer alle Waende gleich) ─────────────────────── */
+function _bkvPoolPos(j, t) {
+  const x = 190 + j * 13.9, y = 40 + ((j * 37) % 44);
+  return [x + 3 * Math.sin(t * 0.9 + j), y + 2.5 * Math.sin(t * 1.3 + j * 2)];
+}
+// Weg eines Dreiecks, das aufgenommen wird: vom Darm an die Wand, durch die
+// Wand in die Ader. Liefert die Knickpunkte.
+function _bkvRoute(j, P) {
+  const pb = _bkvPoolPos(j, 0);
+  const ax = P.x + P.nx * 12, ay = P.y + P.ny * 12;
+  const ix = P.bx - P.bnx * 5, iy = P.by - P.bny * 5;
+  return {
+    hin: [[pb[0], pb[1]], [ax, 84], [ax, ay], [P.x, P.y]],
+    rein: [[P.x, P.y], [P.bx, P.by], [ix, iy], [ix, _BKV_ADER]]
+  };
+}
+function _bkvEntlang(pts, u) {
+  u = _bioFxKlemme(u);
+  const d = [];
+  let L = 0;
+  for (let i = 1; i < pts.length; i++) { const l = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); d.push(l); L += l; }
+  let ziel = u * L;
+  for (let i = 1; i < pts.length; i++) {
+    if (ziel <= d[i - 1] || i === pts.length - 1) {
+      const k = d[i - 1] ? Math.min(1, ziel / d[i - 1]) : 1;
+      return [pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * k, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * k];
+    }
+    ziel -= d[i - 1];
+  }
+  return pts[pts.length - 1];
+}
+// Plan der Messung fuer Wand w: n Aufnahmestellen in gleichen Abstaenden auf
+// der Wandlinie, je Stelle ein Dreieck aus dem Vorrat und eine Ankunftszeit.
+function _bkvPlan(w) {
+  const n = _BKV_ZAHL[w], W = _bkv.waende[w];
+  const plan = [];
+  for (let k = 0; k < n; k++) {
+    const P = _bkvAufLinie(W.p, (k + 0.5) / n);
+    const j = Math.floor((k + 0.5) * _BKV_POOL / n);        // Dreieck ueber der Stelle
+    const rang = (k * 5 + 2) % n;                            // nicht der Reihe nach
+    const an = 1.5 + 8.2 * (rang + 0.5) / n;                 // s: Ankunft in der Ader
+    plan.push({ k, j, P, an, route: _bkvRoute(j, P) });
+  }
+  return plan;
+}
+// Wie viele Naehrstoffe sind nach t Sekunden im Blut?
+function _bkvImBlut(w, t) {
+  return _bkv.plaene[w].filter(e => e.an <= t + 1e-9).length;
+}
+
+/* ── Weg der Nahrung (links) ───────────────────────────────────────────── */
+function _bkvWege() {
+  const zick = [[78, 140], [70, 152], [64, 166]];
+  for (let r = 0; r < 6; r++) {
+    const y = 166 + 9 * r, rechts = r % 2 === 0;
+    const xa = rechts ? 64 : 108, xe = rechts ? 108 : 64;
+    zick.push([xa, y], [xe, y]);
+    if (r < 5) {                                   // Wendebogen
+      const cx = xe, cy = y + 4.5, sg = rechts ? 1 : -1;
+      for (let a = 1; a < 8; a++) { const w = -Math.PI / 2 + Math.PI * a / 8; zick.push([cx + sg * 4.5 * Math.cos(w), cy + 4.5 * Math.sin(w)]); }
+    }
+  }
+  zick.push([56, 214], [50, 214]);
+  const magen = [[90, 110]];
+  for (let a = 0; a <= 40; a++) {
+    const w = -Math.PI * 0.75 + a / 40 * Math.PI * 2.5;
+    magen.push([104 + 9 * Math.cos(w), 124 + 7 * Math.sin(w)]);
+  }
+  magen.push([86, 137], [78, 140]);
+  return [
+    [[84, 46], [84, 46]],                                   // Mund (kauen)
+    [[84, 50], [84, 64], [88, 90], [90, 110]],              // Speiseroehre
+    magen,                                                  // Magen (durchmischen)
+    zick,                                                   // Duenndarm
+    [[50, 214], [48, 154], [120, 154], [120, 214], [104, 226], [90, 238]]   // Dickdarm
+  ];
+}
+function _bkvOrgan(wt) {
+  for (let i = 0; i < 5; i++) if (wt < _BKV_T[i + 1]) return i;
+  return 4;
+}
+function _bkvBrotPos(wt) {
+  const i = _bkvOrgan(wt);
+  const u = (wt - _BKV_T[i]) / (_BKV_T[i + 1] - _BKV_T[i]);
+  const e = i === 3 ? u : _bioFxEase.sanft(_bioFxKlemme(u));
+  return _bkvEntlang(_bkv.wege[i], e);
+}
+// Lupe: 0 = zu, 1 = ganz offen
+function _bkvLupeAuf(wt) {
+  const L = _BKV_LUPE;
+  if (wt < L[0] || wt > L[3]) return 0;
+  if (wt < L[1]) return _bioFxEase.sanft((wt - L[0]) / (L[1] - L[0]));
+  if (wt < L[2]) return 1;
+  return 1 - _bioFxEase.sanft((wt - L[2]) / (L[3] - L[2]));
+}
+
+/* ── Zustand und Bedienung ─────────────────────────────────────────────── */
+function _bkvInit() {
+  _bkv = {
+    t: 0, wand: 2, modus: 'bereit',   // bereit | weg | wegEnde | messen | fertig
+    wt: 0, mt: 0, nach: 0, gezaehlt: 0, orgAlt: -1, orgZeit: 0,
+    spur: [], spurT: 0, key: '',
+    fx: { teile: [] },
+    waende: _bkvWaende(),
+    wege: _bkvWege()
+  };
+  _bkv.plaene = [0, 1, 2].map(_bkvPlan);           // Messplan je Wand (fest)
+}
+function _bkvFxLeer() { _bkv.fx = { teile: [] }; _bkv.zeitlupe = null; }
+function _bkvWand(i) {
+  if (!_bkv) return;
+  _bkv.wand = Math.max(0, Math.min(2, Number(i) || 0));
+  if (_bkv.modus === 'messen' || _bkv.modus === 'fertig') { _bkv.modus = 'bereit'; _bkv.mt = 0; }
+  _bkv.gezaehlt = 0; _bkv.nach = 0;
+  if (_bkv.modus !== 'weg') _bkvFxLeer();
+  _bioFxWelle(_bkv.fx.teile, 295, 120, 'rgba(244,114,182,0.8)', 70);
+  _bkvStatus(); _bkvKnoepfe();
+}
+function _bkvLos() {
+  if (!_bkv) return;
+  _bkvFxLeer();
+  _bkv.modus = 'weg'; _bkv.wt = 0; _bkv.mt = 0; _bkv.gezaehlt = 0;
+  _bkv.spur = []; _bkv.spurT = 0; _bkv.orgAlt = -1;
+  _bkvStatus(); _bkvKnoepfe();
+}
+function _bkvMessen() {
+  if (!_bkv) return;
+  _bkvFxLeer();
+  _bkv.modus = 'messen'; _bkv.mt = 0; _bkv.gezaehlt = 0; _bkv.nach = 0;
+  _bkv.spur = []; _bkv.orgAlt = -1;
+  _bkvStatus(); _bkvKnoepfe();
+}
+function _bkvNeu() {
+  if (!_bkv) return;
+  _bkvInit();
+  _bkvStatus(); _bkvKnoepfe();
+}
+/* Sprungmarke: Wand einstellen und gleich das Ergebnis nach 10 s zeigen. */
+function _bkvMarke(i) {
+  if (!_bkv) return;
+  _bkvFxLeer();
+  _bkv.wand = Math.max(0, Math.min(2, Number(i) || 0));
+  _bkv.modus = 'fertig'; _bkv.mt = _BKV_MESS; _bkv.nach = 0;
+  _bkv.gezaehlt = _bkvImBlut(_bkv.wand, _BKV_MESS);
+  _bkv.spur = []; _bkv.orgAlt = -1;
+  _bkvStatus(); _bkvKnoepfe();
+}
+function _bkvKnoepfe() {
+  if (!_bkv || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bkv]').forEach(b => {
+      const d = b.dataset ? b.dataset.bkv : b.getAttribute('data-bkv');
+      if (b.classList) b.classList.toggle('primary', d === 'w' + _bkv.wand);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bkvHTML() {
+  const k = (i) => `<button class="sim-btn" data-bkv="w${i}" onclick="_bkvWand(${i})">${_BKV_WAND[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welchen Weg nimmt die Nahrung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links der Körper mit dem Weg der Nahrung. Rechts ein Stück Darmwand, dahinter eine Ader. Die gelben Dreiecke ▲ sind Nährstoffe.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkv-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bkvLos()">▶ Nahrung losschicken</button>
+          <button class="sim-btn primary" onclick="_bkvMessen()">▶ 10 Sekunden messen</button>
+          <button class="sim-btn" onclick="_bkvNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Darmwand</span>
+          <div class="sim-btn-row">${k(0)}${k(1)}${k(2)}</div>
+        </div>
+        <div class="lmp-status on" id="_bkv-status" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bkvMarke(0)">glatt: nach 10 s</button>
+          <button class="sim-btn" onclick="_bkvMarke(1)">mit Falten: nach 10 s</button>
+          <button class="sim-btn" onclick="_bkvMarke(2)">mit Falten und Zotten: nach 10 s</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Im Darm schwimmen bei jeder Wand gleich viele Nährstoffe. Nur die Wand ist anders.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bkvSchluessel() {
+  const m = _bkv.modus;
+  if (m === 'weg') return 'weg' + _bkvOrgan(_bkv.wt) + (_bkvLupeAuf(_bkv.wt) > 0.5 ? 'L' : '');
+  if (m === 'messen') return 'mess' + _bkv.wand + '|' + Math.floor(_bkv.mt) + '|' + _bkvImBlut(_bkv.wand, _bkv.mt);
+  return m + _bkv.wand;
+}
+function _bkvStatus() {
+  if (!_bkv) return;
+  _bkv.key = _bkvSchluessel();
+  const el = document.getElementById('_bkv-status');
+  if (!el) return;
+  const w = _BKV_WAND[_bkv.wand], fl = _BKV_FLAECHE[_bkv.wand];
+  let h;
+  if (_bkv.modus === 'bereit') {
+    h = `<b>Darmwand: ${w}</b><br>Fläche der Wand: ${fl}<br>Nährstoffe im Blut: 0<br>` +
+        `Drücke „▶ Nahrung losschicken“ oder „▶ 10 Sekunden messen“.`;
+  } else if (_bkv.modus === 'weg') {
+    const o = _bkvOrgan(_bkv.wt);
+    h = `<b>Weg der Nahrung</b><br>Das Brot ist ${_BKV_IM[o]}.`;
+    if (o === 3 && _bkvLupeAuf(_bkv.wt) > 0.5) h += '<br>Die Lupe zeigt die Wand des Dünndarms von innen.';
+  } else if (_bkv.modus === 'wegEnde') {
+    h = `<b>Weg der Nahrung</b><br>Das Brot ist im Dickdarm. Was übrig bleibt, verlässt später den Körper.`;
+  } else if (_bkv.modus === 'messen') {
+    h = `<b>Darmwand: ${w}</b><br>Zeit: ${Math.floor(_bkv.mt)} s von 10 s<br>` +
+        `Nährstoffe im Blut: ${_bkvImBlut(_bkv.wand, _bkv.mt)}`;
+  } else {
+    h = `<b>Darmwand: ${w} · nach 10 Sekunden</b><br>Nährstoffe im Blut: ${_bkvImBlut(_bkv.wand, _BKV_MESS)}<br>` +
+        `Fläche der Wand: ${fl}`;
+  }
+  el.innerHTML = h;
+}
+
+function _bkvUpdate(dt) {
+  if (!_bkv) return;
+  const d = _bioFxDt(dt);
+  _bkv.t += d;
+  _bioFxAlleUpdate(_bkv.fx, d);
+  if (_bkv.modus === 'weg') {
+    _bkv.wt += d;
+    const o = _bkvOrgan(_bkv.wt);
+    if (o !== _bkv.orgAlt) {                        // neues Organ: weicher Lichtring
+      _bkv.orgAlt = o; _bkv.orgZeit = 0;
+      const p = _bkvBrotPos(_bkv.wt);
+      _bioFxWelle(_bkv.fx.teile, p[0], p[1], 'rgba(250,204,21,0.9)', o === 3 ? 34 : 22);
+      if (o === 0) _bkv.kaut = 0;
+    } else _bkv.orgZeit += d;
+    if (o === 0 && _bkv.wt > 0.7 && !_bkv.kaut) {  // Brot zerfaellt beim Kauen
+      _bkv.kaut = 1;
+      _bioFxFunken(_bkv.fx.teile, 84, 46, 5, ['#e8c07a', '#f5deb3', '#c8903f']);
+    }
+    _bkv.spurT += d;
+    if (_bkv.spurT >= 0.05 && _bkv.spur.length < 600) { _bkv.spurT = 0; _bkv.spur.push(_bkvBrotPos(_bkv.wt)); }
+    if (_bkv.wt >= _BKV_T[5]) { _bkv.wt = _BKV_T[5]; _bkv.modus = 'wegEnde'; }
+  } else if (_bkv.modus === 'messen') {
+    _bkv.mt = Math.min(_BKV_MESS, _bkv.mt + d);
+    const n = _bkvImBlut(_bkv.wand, _bkv.mt);
+    if (n > _bkv.gezaehlt) {                        // ein Naehrstoff kommt in der Ader an
+      const plan = _bkv.plaene[_bkv.wand].filter(e => e.an <= _bkv.mt + 1e-9);
+      for (const e of plan.slice(_bkv.gezaehlt)) {
+        const z = e.route.rein[e.route.rein.length - 1];
+        _bioFxWelle(_bkv.fx.teile, z[0], z[1], 'rgba(250,204,21,0.95)', 14);
+      }
+      _bioFxFunken(_bkv.fx.teile, 300, 212, 3, ['#facc15', '#fff3b0']);
+      _bkv.gezaehlt = n;
+    }
+    if (_bkv.mt >= _BKV_MESS) { _bkv.modus = 'fertig'; _bkv.nach = 0; }
+  } else if (_bkv.modus === 'fertig') {
+    const vor = _bkv.nach;
+    _bkv.nach += d;
+    const ende = 0.5 + 1.6;                          // Glattziehen fertig
+    if (vor < ende && _bkv.nach >= ende) {
+      const x = _BKV_BX + _bkv.waende[_bkv.wand].L * _bkvBalkenK();
+      _bioFxWelle(_bkv.fx.teile, x, _BKV_BY, 'rgba(234,179,8,0.95)', 22);
+      _bioFxFunken(_bkv.fx.teile, x, _BKV_BY, 6, ['#facc15', '#fde68a', '#ffffff']);
+    }
+  }
+  if (_bkvSchluessel() !== _bkv.key) _bkvStatus();
+}
+// Massstab des Balkens: die laengste Wand fuellt ihn ganz.
+function _bkvBalkenK() { return _BKV_BMAX / _bkv.waende[2].L; }
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bkvDreieck(ctx, x, y, r, a) {
+  ctx.save();
+  ctx.globalAlpha = a == null ? 1 : a;
+  ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x, y - r); ctx.lineTo(x + r * 0.9, y + r * 0.6); ctx.lineTo(x - r * 0.9, y + r * 0.6);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _bkvRohr(ctx, pts, breit, farbe, innen, glueht, t) {
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  if (glueht) {
+    ctx.shadowColor = 'rgba(250,204,21,1)';
+    ctx.shadowBlur = 8 + 5 * (0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8));
+  }
+  ctx.strokeStyle = glueht ? '#f59e0b' : farbe; ctx.lineWidth = breit + (glueht ? 1.5 : 0);
+  ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = innen; ctx.lineWidth = Math.max(1, breit - 3.5);
+  ctx.beginPath(); pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
+  ctx.restore();
+}
+function _bkvMagenPfad(ctx, k, cx, cy) {
+  ctx.save();
+  ctx.translate(cx, cy); ctx.scale(k, k); ctx.translate(-cx, -cy);
+  ctx.beginPath();
+  ctx.moveTo(90, 110);
+  ctx.quadraticCurveTo(96, 103, 108, 105);
+  ctx.bezierCurveTo(124, 108, 126, 132, 112, 139);
+  ctx.quadraticCurveTo(100, 145, 86, 141);
+  ctx.lineTo(79, 143); ctx.lineTo(77, 137);
+  ctx.quadraticCurveTo(90, 135, 97, 128);
+  ctx.quadraticCurveTo(101, 119, 88, 114);
+  ctx.closePath();
+  ctx.restore();
+}
+function _bkvKoerper(ctx) {
+  const t = _bkv.t, weg = _bkv.modus === 'weg';
+  const o = weg ? _bkvOrgan(_bkv.wt) : -1;
+  // Hintergrund links
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, 172, 250);
+  // Umriss: Kopf, Hals, Rumpf, Arme
+  ctx.fillStyle = '#fde7d4'; ctx.strokeStyle = '#c4a68a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(84, 32, 22, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(76, 52); ctx.lineTo(76, 64); ctx.quadraticCurveTo(40, 66, 32, 82);
+  ctx.lineTo(18, 170); ctx.lineTo(28, 172); ctx.lineTo(38, 108);
+  ctx.lineTo(36, 246); ctx.lineTo(132, 246); ctx.lineTo(130, 108);
+  ctx.lineTo(140, 172); ctx.lineTo(150, 170); ctx.lineTo(136, 82);
+  ctx.quadraticCurveTo(128, 66, 92, 64); ctx.lineTo(92, 52); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  // Augen (nur Punkte) und Mund
+  ctx.fillStyle = '#7c5a44';
+  ctx.beginPath(); ctx.arc(76, 28, 1.8, 0, Math.PI * 2); ctx.arc(92, 28, 1.8, 0, Math.PI * 2); ctx.fill();
+  const kauen = o === 0 ? 2 + 2 * Math.abs(Math.sin(t * Math.PI * 1.5)) : 1.2;
+  ctx.save();
+  if (o === 0) { ctx.shadowColor = 'rgba(250,204,21,1)'; ctx.shadowBlur = 10; }
+  ctx.fillStyle = o === 0 ? '#f59e0b' : '#c2410c';
+  ctx.beginPath(); ctx.ellipse(84, 46, 7, kauen, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+  // Speiseroehre (Welle laeuft mit, wenn das Brot darin ist)
+  _bkvRohr(ctx, _bkv.wege[1], 5, '#e89a8a', '#f8c9bd', o === 1, t);
+  // Magen (wiegt sich beim Durchmischen)
+  const mk = o === 2 ? 1 + 0.05 * Math.sin(t * Math.PI * 2 * 0.7) : 1;
+  ctx.save();
+  if (o === 2) { ctx.shadowColor = 'rgba(250,204,21,1)'; ctx.shadowBlur = 8 + 5 * (0.5 + 0.5 * Math.sin(t * Math.PI * 1.6)); }
+  _bkvMagenPfad(ctx, mk, 104, 124);
+  ctx.fillStyle = o === 2 ? '#fbb6a0' : '#f4a99a'; ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = o === 2 ? '#f59e0b' : '#c0706a'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.restore();
+  // Dickdarm (hinter dem Duenndarm) und Duenndarm
+  _bkvRohr(ctx, _bkv.wege[4], 9, '#c98b6e', '#e8b89c', o === 4, t);
+  _bkvRohr(ctx, _bkv.wege[3], 5.5, '#e07a8a', '#f7b4bf', o === 3, t);
+  // Laufspur des Brotes
+  if (_bkv.spur.length > 1) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(146,64,14,0.65)'; ctx.lineWidth = 1.4; ctx.setLineDash([2, 3]);
+    ctx.beginPath(); _bkv.spur.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
+    ctx.restore();
+  }
+  // Das Brot
+  if (weg) {
+    const p = _bkvBrotPos(_bkv.wt), wt = _bkv.wt;
+    ctx.save();
+    if (o === 0 && wt < 0.7) {                        // ein Stueck Brot mit Kruste
+      ctx.translate(p[0], p[1] - 1); ctx.rotate(Math.sin(t * 6) * 0.15);
+      ctx.fillStyle = '#f5deb3'; ctx.strokeStyle = '#a0692b'; ctx.lineWidth = 2;
+      _bioFxRundRect(ctx, -5, -4, 10, 8, 2); ctx.fill(); ctx.stroke();
+    } else if (o <= 1) {                              // gekaute Kruemel
+      for (let k = 0; k < 3; k++) {
+        ctx.fillStyle = k === 1 ? '#c8903f' : '#e8c07a';
+        ctx.beginPath(); ctx.arc(p[0] + (k - 1) * 2.8 + Math.sin(t * 7 + k) * 0.8, p[1] + (k % 2) * 2, 2.4, 0, Math.PI * 2); ctx.fill();
+      }
+    } else {                                          // Brei, der im Duenndarm kleiner wird
+      let r = 4.2, farbe = '#e6c48f';
+      if (o === 3) { const u = (wt - _BKV_T[3]) / (_BKV_T[4] - _BKV_T[3]); r = 4.2 - 1.8 * u; farbe = '#d9b07a'; }
+      if (o === 4) { r = 2.4; farbe = '#8b5a2b'; }
+      ctx.fillStyle = farbe; ctx.strokeStyle = 'rgba(90,50,20,0.6)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(p[0], p[1], r + 0.4 * Math.sin(t * 5), 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+    _bkvName(ctx, o);
+  }
+}
+// Name des Organs, in dem das Brot gerade ist (Schild mit Zeigelinie).
+function _bkvName(ctx, o) {
+  const orte = [[130, 40, 90, 46], [128, 84, 90, 84], [142, 96, 118, 110],
+                [140, 240, 106, 208], [28, 240, 48, 214]];
+  const [x, y, zx, zy] = orte[o];
+  const a = _bioFxEase.raus(_bioFxKlemme(_bkv.orgZeit / 0.3));
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.font = '700 11px sans-serif';
+  const w = ctx.measureText(_BKV_ORGAN[o]).width + 12;
+  const bx = Math.max(2, Math.min(170 - w, x - w / 2));
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(Math.max(bx, Math.min(bx + w, zx)), y); ctx.lineTo(zx, zy); ctx.stroke();
+  ctx.fillStyle = '#fffbeb';
+  _bioFxRundRect(ctx, bx, y - 8, w, 16, 8); ctx.fill();
+  ctx.strokeStyle = '#d97706'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, bx, y - 8, w, 16, 8); ctx.stroke();
+  ctx.fillStyle = '#78350f'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(_BKV_ORGAN[o], bx + w / 2, y + 1);
+  ctx.restore();
+}
+// Rechts: Stueck Darmwand im Modell
+function _bkvWandBild(ctx) {
+  const t = _bkv.t, w = _bkv.wand, W = _bkv.waende[w];
+  const messt = _bkv.modus === 'messen' || _bkv.modus === 'fertig';
+  const mt = messt ? _bkv.mt : 0;
+  // Darm-Inneres
+  ctx.fillStyle = '#fdf3e1'; ctx.fillRect(176, 22, 238, 180);
+  // Wand (Gewebe) bis unter die Ader
+  ctx.save();
+  ctx.beginPath(); ctx.moveTo(_BKV_X0, 204);
+  W.p.forEach(q => ctx.lineTo(q.x, q.y));
+  ctx.lineTo(_BKV_X1, 204); ctx.closePath();
+  ctx.fillStyle = '#f6b8b8'; ctx.fill();
+  ctx.restore();
+  // Ader mit fliessendem Blut
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(_BKV_X0, _BKV_ADER - 9, _BKV_X1 - _BKV_X0, 18);
+  ctx.fillStyle = '#f87171';
+  for (let k = 0; k < 12; k++) {
+    const x = _BKV_X0 + ((k * 21 + t * 30) % (_BKV_X1 - _BKV_X0));
+    ctx.beginPath(); ctx.ellipse(x, _BKV_ADER + (k % 2 ? 3 : -3), 4, 2.4, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText('Ader', _BKV_X0 + 3, _BKV_ADER + 1);
+  // Wandlinie
+  ctx.save();
+  ctx.strokeStyle = '#be4b5c'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath(); W.p.forEach((q, i) => i ? ctx.lineTo(q.x, q.y) : ctx.moveTo(q.x, q.y)); ctx.stroke();
+  ctx.restore();
+  // Naehrstoffe: der Vorrat (fuer jede Wand gleich) und die, die aufgenommen werden
+  const plan = messt ? _bkv.plaene[w] : [];
+  const unterwegs = new Set(plan.map(e => e.j));
+  for (let j = 0; j < _BKV_POOL; j++) {
+    if (unterwegs.has(j)) continue;
+    const p = _bkvPoolPos(j, t);
+    _bkvDreieck(ctx, p[0], p[1], 4.5);
+  }
+  for (const e of plan) {
+    const s0 = e.an - 2.4, s1 = e.an - 1.1;
+    let x, y, a = 1;
+    if (mt < s1) {                                   // zur Wand hin
+      const u = _bioFxKlemme((mt - s0) / (s1 - s0)), wob = _bkvPoolPos(e.j, t), ruh = _bkvPoolPos(e.j, 0);
+      const r = _bkvEntlang(e.route.hin, _bioFxEase.sanft(u));
+      x = r[0] + (wob[0] - ruh[0]) * (1 - u); y = r[1] + (wob[1] - ruh[1]) * (1 - u);
+    } else if (mt < e.an) {                          // durch die Wand
+      const r = _bkvEntlang(e.route.rein, (mt - s1) / (e.an - s1));
+      x = r[0]; y = r[1]; a = 0.85;
+    } else {                                         // in der Ader mit dem Blut fort
+      const z = e.route.rein[e.route.rein.length - 1];
+      x = z[0] + (mt - e.an) * 38 + (_bkv.modus === 'fertig' ? _bkv.nach * 38 : 0); y = z[1];
+      if (x > _BKV_X1 - 4) continue;
+      a = 1 - _bioFxKlemme((x - (_BKV_X1 - 30)) / 26);
+    }
+    _bkvDreieck(ctx, x, y, 4.5, a);
+  }
+  // Kopfzeile
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(176, 4, 238, 18);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText('Darmwand: ' + _BKV_WAND[w], 180, 13);
+  if (messt) {
+    ctx.textAlign = 'right'; ctx.font = '700 10px sans-serif';
+    ctx.fillText('Zeit: ' + Math.floor(mt) + ' s', 410, 13);
+  }
+  // Unten: Zaehler und Balken
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(176, 204, 238, 42);
+  const n = messt ? _bkvImBlut(w, mt) : 0;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText('Nährstoffe im Blut: ' + n, 180, 214);
+  _bkvDreieck(ctx, 344, 215, 4.5);
+  ctx.font = '600 10px sans-serif'; ctx.fillStyle = '#334155';
+  ctx.fillText('= Nährstoff', 351, 214);
+  ctx.font = '700 10px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Fläche der Wand', 180, _BKV_BY);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.strokeRect(_BKV_BX, _BKV_BY - 5, _BKV_BMAX, 10);
+  const bw = W.L * _bkvBalkenK();
+  ctx.fillStyle = '#e07a8a'; ctx.fillRect(_BKV_BX, _BKV_BY - 5, bw, 10);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif';
+  ctx.fillText(_BKV_FLAECHE[w], _BKV_BX + _BKV_BMAX + 5, _BKV_BY);
+  if (_bkv.modus === 'fertig') _bkvGlattZiehen(ctx, W);
+}
+// Aha nach der Messung: die Wandlinie wird golden glatt gezogen und landet
+// auf dem Balken. Laenge bleibt Laenge - so lang ist die Wand wirklich.
+function _bkvGlattZiehen(ctx, W) {
+  const n = _bkv.nach;
+  const u = _bioFxEase.sanft(_bioFxKlemme((n - 0.5) / 1.6));
+  const a = _bioFxKlemme(n / 0.3) * (1 - _bioFxEase.sanft(_bioFxKlemme((n - 4.2) / 0.8)));
+  if (a <= 0.01) return;
+  const k = _bkvBalkenK();
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = '#eab308'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+  ctx.shadowColor = 'rgba(250,204,21,0.9)'; ctx.shadowBlur = 6;
+  ctx.beginPath();
+  for (let i = 0; i < W.p.length; i += 2) {
+    const q = W.p[i], zx = _BKV_BX + W.s[i] * k, zy = _BKV_BY;
+    const x = q.x + (zx - q.x) * u, y = q.y + (zy - q.y) * u - Math.sin(Math.PI * u) * 18;
+    i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+// Aha auf dem Weg: Lupe in den Duenndarm (echte Wand mit Zotten, von innen).
+function _bkvLupe(ctx) {
+  const auf = _bkvLupeAuf(_bkv.wt);
+  if (auf <= 0) return;
+  const lt = _bkv.wt - _BKV_LUPE[0], t = _bkv.t;
+  const ox = 86, oy = 188, zx = 295, zy = 120;
+  const cx = ox + (zx - ox) * auf, cy = oy + (zy - oy) * auf, R = 12 + (100 - 12) * auf;
+  // Lichtkegel vom Bauch zur Lupe
+  ctx.save();
+  ctx.globalAlpha = 0.35 * auf;
+  ctx.fillStyle = '#fde68a';
+  ctx.beginPath(); ctx.moveTo(ox, oy - 12); ctx.lineTo(cx, cy - R); ctx.lineTo(cx, cy + R); ctx.lineTo(ox, oy + 12); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(ox, oy, 13, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+  // Inhalt der Lupe in eigenen Koordinaten (-110..110)
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.clip();
+  ctx.translate(cx, cy);
+  const k = R / 110;
+  ctx.scale(k, k);
+  ctx.fillStyle = '#fdf0d5'; ctx.fillRect(-112, -112, 224, 224);
+  // Gewebe mit Zotten (Finger), darin feine Adern
+  const zot = [];
+  for (let i = 0; i < 9; i++) zot.push(-96 + i * 24);
+  ctx.fillStyle = '#f6b8b8'; ctx.strokeStyle = '#be4b5c'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(-112, 30);
+  for (const x of zot) {
+    const wg = Math.sin(t * 1.4 + x * 0.05) * 2;           // Zotten wiegen sich leicht
+    ctx.lineTo(x - 8, 30); ctx.lineTo(x - 8 + wg * 0.5, -22);
+    ctx.arc(x + wg, -22, 8, Math.PI, 0); ctx.lineTo(x + 8, 30);
+  }
+  ctx.lineTo(112, 30); ctx.lineTo(112, 112); ctx.lineTo(-112, 112); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2;
+  for (const x of zot) {
+    const wg = Math.sin(t * 1.4 + x * 0.05) * 2;
+    ctx.beginPath(); ctx.moveTo(x - 3.5, 64); ctx.lineTo(x - 3.5 + wg * 0.5, -20);
+    ctx.arc(x + wg, -20, 3.5, Math.PI, 0); ctx.lineTo(x + 3.5, 64); ctx.stroke();
+  }
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(-112, 62, 224, 22);
+  ctx.fillStyle = '#f87171';
+  for (let j = 0; j < 9; j++) {
+    const x = -112 + ((j * 27 + t * 40) % 224);
+    ctx.beginPath(); ctx.ellipse(x, 73 + (j % 2 ? 4 : -4), 6, 3.5, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Ader', -12, 96);
+  // Brotbrei zerfaellt in Naehrstoffe
+  const brei = [[-70, -70], [-20, -82], [30, -66], [74, -78]];
+  brei.forEach((b, i) => {
+    const r = 11 * (1 - _bioFxKlemme((lt - 0.2 - i * 0.15) / 2.0));
+    if (r <= 0.3) return;
+    ctx.fillStyle = '#e6c48f'; ctx.strokeStyle = 'rgba(90,50,20,0.5)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(b[0] + Math.sin(t + i) * 3, b[1], r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  });
+  for (let j = 0; j < 14; j++) {
+    const r0 = 0.2 + j * 0.12;
+    if (lt < r0) continue;
+    const b = brei[j % 4], zx2 = zot[(j * 4 + 1) % 9];
+    const u1 = _bioFxKlemme((lt - r0) / 0.9), u2 = _bioFxKlemme((lt - r0 - 0.9) / 0.8);
+    let x, y;
+    if (u2 <= 0) {
+      const e = _bioFxEase.sanft(u1);
+      x = b[0] + (zx2 - b[0]) * e + Math.sin(t * 2 + j) * 2 * (1 - e); y = b[1] + (-36 - b[1]) * e;
+    } else if (u2 < 1) {
+      x = zx2; y = -36 + (73 + 36) * _bioFxEase.sanft(u2);
+    } else {
+      x = zx2 + (lt - r0 - 1.7) * 55; y = 73;
+      if (x > 110) continue;
+    }
+    ctx.save();
+    ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x, y - 8); ctx.lineTo(x + 7, y + 5); ctx.lineTo(x - 7, y + 5); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.restore();
+  // Rand der Lupe
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, R - 4, Math.PI * 1.1, Math.PI * 1.4); ctx.stroke();
+  ctx.restore();
+}
+function _bkvDraw(ctx, cv) {
+  if (!_bkv) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+  _bkvKoerper(ctx);
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.strokeRect(176.5, 4.5, 237, 241);
+  _bkvWandBild(ctx);
+  if (_bkv.modus === 'weg') _bkvLupe(ctx);
+  _bioFxAlleDraw(ctx, _bkv.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DREI TELLER IM VERGLEICH   (Förderheft Bio 5/6 · bk9)
+// Links ein runder Teller von oben, mit dünnen Linien in vier Viertel geteilt
+// (Kreisdiagramm). Rechts vier Balken „Stärke und Zucker“, „Fett“, „Eiweiß“,
+// „Vitamine“ mit einer gestrichelten Linie „empfohlen“ und einem grünen Bereich
+// darunter. Ein Balken über der Linie bekommt ein Ausrufezeichen.
+// KEINE Zahl der Viertel am Bildschirm – das Kind zählt selbst.
+// Modellwerte (Lehrerteil: vereinfacht, keine Messwerte), je Viertel:
+//   Gemüse und Obst (auch Salat)         S 0,8  F 0    E 0,5  V 1,2
+//   Kartoffeln, Nudeln, Brot             S 2,5  F 0,5  E 0,5  V 0,5
+//   Fisch, Ei, Käse                      S 0    F 2,5  E 2,5  V 0,5
+//   Pommes und Süßes                     S 3,5  F 3    E 0,3  V 0,2
+//   Pommes (Samir)                       S 2    F 2    E 0,5  V 0,5
+//   Würstchen (Samir)                    S 0    F 2,5  E 1,5  V 0
+// Linie „empfohlen“ bei 5, grüner Bereich 2,5 bis 5.
+//   Samirs Teller  S 4   F 9   E 4   V 1    -> über der Linie: Fett
+//   Elas Teller    S 5,8 F 3,5 E 4   V 2,7  -> über der Linie: Stärke und Zucker
+//   guter Teller   S 4,1 F 3   E 4   V 3,4  -> keiner, alle im grünen Bereich
+// Bei „mein Teller“ ist nur die Mischung 2 × Gemüse und Obst, 1 × Kartoffeln,
+// Nudeln, Brot, 1 × Fisch, Ei, Käse ganz grün (Rechentest: alle 256 Teller).
+// Leben: Das Essen fällt Viertel für Viertel auf den Teller und federt; die
+// Balken wachsen mit jedem Viertel mit. Über warmem Essen steigt Dampf.
+// Aha (Bibliothek _bioFx, NACH dem Füllen): Liegen alle Balken im grünen
+// Bereich, bekommt ein Balken nach dem anderen einen grünen Rand und einen
+// Haken mit Funken, kurzes Konfetti über dem Teller, der Stempel „bunt
+// gemischt“ lobt die Mahlzeit (3 s, dann wieder freie Sicht) und das Band
+// „Alle Balken im grünen Bereich!“.
+// Ragt ein Balken über die Linie, erscheint nur ruhig das Ausrufezeichen mit
+// einem Lichtring. Kein Ton, kein Blinken, keine Wertung des Kindes.
+// ═══════════════════════════════════════════════════════
+let _bkt = null;
+const _BKT_NAEHR = ['Stärke und Zucker', 'Fett', 'Eiweiß', 'Vitamine'];
+const _BKT_ZEILEN = [['Stärke und', 'Zucker'], ['Fett'], ['Eiweiß'], ['Vitamine']];
+const _BKT_FARBE = ['#e0952f', '#f2cf3b', '#cf5f5f', '#2e9e8f'];
+const _BKT_LINIE = 5, _BKT_GRUEN = 2.5, _BKT_MAX = 12;
+// Essen: name (Statuszeile), zeilen (Schild im Viertel), werte [S, F, E, V], warm
+const _BKT_ESSEN = {
+  g:      { name: 'Gemüse und Obst', zeilen: ['Gemüse', 'und Obst'], werte: [0.8, 0, 0.5, 1.2], warm: false },
+  k:      { name: 'Kartoffeln, Nudeln, Brot', zeilen: ['Kartoffeln,', 'Nudeln, Brot'], werte: [2.5, 0.5, 0.5, 0.5], warm: true },
+  f:      { name: 'Fisch, Ei, Käse', zeilen: ['Fisch,', 'Ei, Käse'], werte: [0, 2.5, 2.5, 0.5], warm: true },
+  p:      { name: 'Pommes und Süßes', zeilen: ['Pommes', 'und Süßes'], werte: [3.5, 3, 0.3, 0.2], warm: true },
+  pommes: { name: 'Pommes', zeilen: ['Pommes'], werte: [2, 2, 0.5, 0.5], warm: true },
+  wurst:  { name: 'Würstchen', zeilen: ['Würstchen'], werte: [0, 2.5, 1.5, 0], warm: true },
+  nudeln: { name: 'Nudeln', zeilen: ['Nudeln'], werte: [2.5, 0.5, 0.5, 0.5], warm: true },
+  salat:  { name: 'Salat', zeilen: ['Salat'], werte: [0.8, 0, 0.5, 1.2], warm: false },
+  kaese:  { name: 'Käse', zeilen: ['Käse'], werte: [0, 2.5, 2.5, 0.5], warm: false },
+  gemobst:{ name: 'Gemüse und Obst', zeilen: ['Gemüse', 'und Obst'], werte: [0.8, 0, 0.5, 1.2], warm: false },
+  kartoffeln: { name: 'Kartoffeln', zeilen: ['Kartoffeln'], werte: [2.5, 0.5, 0.5, 0.5], warm: true },
+  fisch:  { name: 'Fisch', zeilen: ['Fisch'], werte: [0, 2.5, 2.5, 0.5], warm: true }
+};
+// Viertel 1 oben links, 2 oben rechts, 3 unten rechts, 4 unten links
+const _BKT_TELLER = {
+  samir: { name: 'Samirs Teller', v: ['pommes', 'pommes', 'wurst', 'wurst'] },
+  ela:   { name: 'Elas Teller',   v: ['nudeln', 'nudeln', 'salat', 'kaese'] },
+  gut:   { name: 'guter Teller',  v: ['gemobst', 'gemobst', 'kartoffeln', 'fisch'] },
+  mein:  { name: 'mein Teller',   v: null }
+};
+const _BKT_WAHL = ['g', 'k', 'f', 'p'];
+const _BKT_PX = 112, _BKT_PY = 136, _BKT_RR = 96, _BKT_R = 80;      // Teller
+const _BKT_MITTE = [1.25, 1.75, 0.25, 0.75].map(a => a * Math.PI); // Mitte jedes Viertels
+const _BKT_ECKE = [{ x: 40, y: 50 }, { x: 186, y: 50 }, { x: 186, y: 224 }, { x: 40, y: 224 }];   // Schilder
+const _BKT_FALL = 0.45, _BKT_TAKT = 0.32;                           // s: Fallen, Abstand
+const _BKT_BX0 = 226, _BKT_BY0 = 196, _BKT_BTOP = 64;              // Balkendiagramm
+
+function _bktInit() {
+  _bkt = { t: 0, teller: null, q: [null, null, null, null], mein: [null, null, null, null],
+           wahlV: 0, fall: [9, 9, 9, 9], gel: [true, true, true, true],
+           anz: [0, 0, 0, 0], ueber: [false, false, false, false], pop: [9, 9, 9, 9],
+           nach: -1, schritt: 0, gruen: [-1, -1, -1, -1], fx: { teile: [] } };
+}
+function _bktFxLeer() {
+  _bkt.fx = { teile: [] }; _bkt.nach = -1; _bkt.schritt = 0; _bkt.gruen = [-1, -1, -1, -1];
+}
+
+// ── Rechnen ────────────────────────────────────────────
+// Summe der Nährstoffe aus den Vierteln (nur belegte zählen).
+function _bktSumme(liste) {
+  const s = [0, 0, 0, 0];
+  for (const a of liste) if (a) _BKT_ESSEN[a].werte.forEach((w, i) => { s[i] += w; });
+  return s.map(x => Math.round(x * 100) / 100);
+}
+function _bktUeber(s) { return _BKT_NAEHR.filter((n, i) => s[i] > _BKT_LINIE + 1e-9); }
+function _bktAllesGruen(liste) {
+  if (liste.some(a => !a)) return false;
+  const s = _bktSumme(liste);
+  return s.every(x => x >= _BKT_GRUEN - 1e-9 && x <= _BKT_LINIE + 1e-9);
+}
+// Ziel der Balken: nur Viertel, die schon gelandet sind
+function _bktZiel() {
+  return _bktSumme(_bkt.q.map((a, k) => (a && _bkt.fall[k] >= _BKT_FALL) ? a : null));
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _bktTeller(id) {
+  if (!_bkt || !_BKT_TELLER[id]) return;
+  _bkt.teller = id;
+  const v = id === 'mein' ? _bkt.mein.slice() : _BKT_TELLER[id].v.slice();
+  _bkt.q = v;
+  let n = 0;
+  for (let k = 0; k < 4; k++) {
+    if (v[k]) { _bkt.fall[k] = -0.12 - n * _BKT_TAKT; _bkt.gel[k] = false; n++; }
+    else { _bkt.fall[k] = 9; _bkt.gel[k] = true; }
+  }
+  if (id === 'mein') { const leer = _bkt.mein.indexOf(null); _bkt.wahlV = leer >= 0 ? leer : 0; }
+  _bktFxLeer();
+  _bktStatus();
+}
+function _bktViertel(k) {
+  if (!_bkt) return;
+  if (_bkt.teller !== 'mein') _bktTeller('mein');
+  _bkt.wahlV = Math.max(0, Math.min(3, k | 0));
+  _bktStatus();
+}
+function _bktEssenWahl(a) {
+  if (!_bkt || _BKT_WAHL.indexOf(a) < 0) return;
+  if (_bkt.teller !== 'mein') _bktTeller('mein');
+  const k = _bkt.wahlV;
+  _bkt.mein[k] = a; _bkt.q[k] = a;
+  _bkt.fall[k] = -0.05; _bkt.gel[k] = false;
+  _bktFxLeer();
+  // weiter zum nächsten leeren Viertel
+  for (let i = 1; i <= 4; i++) { const j = (k + i) % 4; if (!_bkt.mein[j]) { _bkt.wahlV = j; break; } }
+  _bktStatus();
+}
+function _bktNeu() {
+  if (!_bkt) return;
+  _bktInit(); _bktStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _bktZeile() {
+  if (!_bkt.teller) return 'Noch kein Teller. Wähle „Samirs Teller“.';
+  const s = _bktSumme(_bkt.q), ue = _bktUeber(s);
+  const rest = ' · Balken über der Linie: ' + (ue.length ? ue.join(', ') : 'keiner') +
+               (_bktAllesGruen(_bkt.q) ? ' · alle Balken im grünen Bereich' : '');
+  if (_bkt.teller === 'mein') {
+    return 'mein Teller · ' + _bkt.q.map((a, k) => 'Viertel ' + (k + 1) + ': ' +
+           (a ? _BKT_ESSEN[a].name : 'leer')).join(' · ') + rest;
+  }
+  return _BKT_TELLER[_bkt.teller].name + ' · ' + _bkt.q.map(a => _BKT_ESSEN[a].name).join(' – ') + rest;
+}
+function _bktStatus() {
+  if (!_bkt) return;
+  const el = document.getElementById('_bkt-status');
+  if (el) { el.textContent = _bktZeile(); el.className = 'lmp-status on'; }
+  const h = document.getElementById('_bkt-hinweis');
+  if (h) {
+    if (_bkt.teller === 'mein') h.textContent = 'Du stellst Viertel ' + (_bkt.wahlV + 1) +
+      ' ein. Wähle, was darauf liegt. Teller und Balken ändern sich sofort.';
+    else if (_bkt.teller) h.textContent = 'Zähle die Viertel auf dem Teller selbst. Sieh dann auf die Balken.';
+    else h.textContent = 'Wähle oben einen Teller. Das Essen kommt Viertel für Viertel auf den Teller.';
+  }
+  try {
+    document.querySelectorAll('[data-bkt]').forEach(b => {
+      const [art, w] = String(b.getAttribute('data-bkt')).split(':');
+      let an = false;
+      if (art === 't') an = _bkt.teller === w;
+      else if (art === 'v') an = _bkt.teller === 'mein' && _bkt.wahlV === Number(w);
+      else if (art === 'e') an = _bkt.teller === 'mein' && _bkt.mein[_bkt.wahlV] === w;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bktHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bkt="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was gehört auf einen guten Teller?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links liegt ein Teller von oben. Dünne Linien teilen ihn in vier Viertel. Rechts zeigen Balken, wie viel von jedem Nährstoff auf dem Teller ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkt-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bktNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Teller</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('t:samir', "_bktTeller('samir')", 'Samirs Teller')}
+          ${k('t:ela', "_bktTeller('ela')", 'Elas Teller')}
+          ${k('t:gut', "_bktTeller('gut')", 'guter Teller')}
+          ${k('t:mein', "_bktTeller('mein')", 'mein Teller')}
+        </div>
+        <div class="fpm-label" style="margin-top:10px">mein Teller: Viertel 1 bis 4 (je eine Auswahl)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('v:0', '_bktViertel(0)', 'Viertel 1')}
+          ${k('v:1', '_bktViertel(1)', 'Viertel 2')}
+          ${k('v:2', '_bktViertel(2)', 'Viertel 3')}
+          ${k('v:3', '_bktViertel(3)', 'Viertel 4')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('e:g', "_bktEssenWahl('g')", 'Gemüse und Obst')}
+          ${k('e:k', "_bktEssenWahl('k')", 'Kartoffeln, Nudeln, Brot')}
+          ${k('e:f', "_bktEssenWahl('f')", 'Fisch, Ei, Käse')}
+          ${k('e:p', "_bktEssenWahl('p')", 'Pommes und Süßes')}
+        </div>
+        <div class="lmp-status" id="_bkt-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_bkt-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Die gestrichelte Linie zeigt, wie viel <b>empfohlen</b> ist. Ragt ein Balken darüber, steht ein Ausrufezeichen daran.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _bktUpdate(dt) {
+  if (!_bkt) return;
+  dt = _bioFxDt(dt);
+  _bkt.t += dt;
+  for (let k = 0; k < 4; k++) {
+    if (!_bkt.q[k] || _bkt.fall[k] > 5) continue;
+    const vor = _bkt.fall[k];
+    _bkt.fall[k] = Math.min(6, vor + dt);
+    if (!_bkt.gel[k] && _bkt.fall[k] >= _BKT_FALL) {          // gelandet
+      _bkt.gel[k] = true;
+      const m = _bktViertelMitte(k, 40);
+      _bioFxWelle(_bkt.fx.teile, m.x, m.y, '#ffffff', 34);
+      _bioFxFunken(_bkt.fx.teile, m.x, m.y, 3, ['#fff3b0', '#ffffff']);
+    }
+  }
+  // Balken wachsen weich zum Ziel
+  const ziel = _bktZiel();
+  for (let i = 0; i < 4; i++) {
+    _bkt.anz[i] += (ziel[i] - _bkt.anz[i]) * Math.min(1, dt * 6);
+    if (Math.abs(ziel[i] - _bkt.anz[i]) < 0.03) _bkt.anz[i] = ziel[i];
+    const ue = _bkt.anz[i] > _BKT_LINIE + 1e-6;
+    if (ue && !_bkt.ueber[i]) {                                 // ragt gerade über die Linie
+      _bkt.pop[i] = 0;
+      const b = _bktBalken(i);
+      _bioFxWelle(_bkt.fx.teile, b.x, _bktY(_BKT_LINIE), '#fb923c', 26);
+    }
+    _bkt.ueber[i] = ue;
+    _bkt.pop[i] = Math.min(9, _bkt.pop[i] + dt);
+    if (_bkt.gruen[i] >= 0) _bkt.gruen[i] = Math.min(9, _bkt.gruen[i] + dt);
+  }
+  // alles gelandet und Balken ruhig? Dann (vielleicht) das Aha
+  const fertig = _bkt.teller && _bkt.gel.every(Boolean) && ziel.every((z, i) => z === _bkt.anz[i]);
+  if (fertig && _bkt.nach < 0) { _bkt.nach = 0; _bkt.schritt = 0; }
+  if (_bkt.nach >= 0) { _bkt.nach += dt; _bktAha(); }
+  _bioFxAlleUpdate(_bkt.fx, dt);
+}
+function _bktAha() {
+  if (!_bktAllesGruen(_bkt.q)) return;
+  const fx = _bkt.fx, t = _bkt.nach;
+  // ein Balken nach dem anderen bekommt seinen grünen Rand
+  for (let i = 0; i < 4; i++) {
+    if (_bkt.gruen[i] < 0 && t >= 0.25 + 0.18 * i) {
+      _bkt.gruen[i] = 0;
+      const b = _bktBalken(i), y = _bktY(_bkt.anz[i]);
+      _bioFxWelle(fx.teile, b.x, y, '#4ade80', 24);
+      _bioFxFunken(fx.teile, b.x, y - 4, 5, ['#86efac', '#fff3b0', '#ffffff']);
+    }
+  }
+  if (_bkt.schritt === 0 && t >= 1.05) {
+    _bkt.schritt = 1;
+    _bioFxKonfetti(fx.teile, _BKT_PX, _BKT_PY - 30, 22);
+    _bioFxStempel(fx, 'bunt gemischt', _BKT_PX, _BKT_PY + 4, '#2e8b47');
+  }
+  if (_bkt.schritt === 1 && t >= 1.3) {
+    _bkt.schritt = 2;
+    _bioFxBanner(fx, 'Alle Balken im grünen Bereich!', 3.2, '#4ade80');
+  }
+  if (_bkt.schritt === 2 && t >= 4.2) {              // Stempel weg: freie Sicht zum Zählen
+    _bkt.schritt = 3; fx.stempel = null;
+  }
+}
+
+// ── Geometrie ──────────────────────────────────────────
+function _bktViertelMitte(k, r) {
+  const a = _BKT_MITTE[k];
+  return { x: _BKT_PX + Math.cos(a) * r, y: _BKT_PY + Math.sin(a) * r };
+}
+function _bktBalken(i) {
+  const slot = (414 - _BKT_BX0 - 12) / 4;
+  return { x: _BKT_BX0 + 12 + slot * (i + 0.5), b: 28 };
+}
+function _bktY(w) { return _BKT_BY0 - (_BKT_BY0 - _BKT_BTOP) * Math.min(w, _BKT_MAX) / _BKT_MAX; }
+function _bktZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+// ── Zeichnen: Essen ────────────────────────────────────
+function _bktOval(ctx, x, y, rx, ry, w, fill, stroke) {
+  ctx.beginPath(); ctx.ellipse(x, y, rx, ry, w, 0, 2 * Math.PI);
+  ctx.fillStyle = fill; ctx.fill();
+  if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 1; ctx.stroke(); }
+}
+function _bktPommes(ctx, z, n, cx, cy, sp) {
+  for (let i = 0; i < n; i++) {
+    const x = cx + (z() - 0.5) * sp, y = cy + (z() - 0.5) * sp * 0.8;
+    ctx.save(); ctx.translate(x, y); ctx.rotate(z() * Math.PI);
+    ctx.fillStyle = '#f5c542'; ctx.strokeStyle = '#d4951c'; ctx.lineWidth = 1;
+    ctx.fillRect(-2.5, -11, 5, 22); ctx.strokeRect(-2.5, -11, 5, 22);
+    ctx.restore();
+  }
+}
+function _bktWurst(ctx, x, y, w) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(w);
+  ctx.fillStyle = '#b4532a'; ctx.strokeStyle = '#7c3417'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, -19, -6, 38, 12, 6); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,220,190,0.6)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(-12, -3); ctx.lineTo(10, -3); ctx.stroke();
+  ctx.strokeStyle = '#7c3417'; ctx.lineWidth = 1;
+  for (const d of [-8, 0, 8]) { ctx.beginPath(); ctx.moveTo(d - 2, 3); ctx.lineTo(d + 2, -1); ctx.stroke(); }
+  ctx.restore();
+}
+function _bktKartoffel(ctx, x, y, w) {
+  _bktOval(ctx, x, y, 10, 7, w, '#e9c979', '#b88f3e');
+  ctx.fillStyle = '#b88f3e';
+  ctx.beginPath(); ctx.arc(x - 3, y - 1, 0.9, 0, 2 * Math.PI); ctx.arc(x + 3, y + 2, 0.9, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#4f9a3a';
+  ctx.beginPath(); ctx.arc(x + 4, y - 3, 1.3, 0, 2 * Math.PI); ctx.fill();
+}
+function _bktFischStueck(ctx, x, y, s) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.fillStyle = '#f4a48c'; ctx.strokeStyle = '#d7775d'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(-20, -6); ctx.quadraticCurveTo(0, -14, 20, -5);
+  ctx.quadraticCurveTo(24, 4, 16, 9); ctx.quadraticCurveTo(-4, 13, -20, 7);
+  ctx.quadraticCurveTo(-24, 0, -20, -6); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1.3;
+  for (const d of [-10, -2, 6, 13]) { ctx.beginPath(); ctx.moveTo(d, -8); ctx.quadraticCurveTo(d + 4, 0, d, 9); ctx.stroke(); }
+  ctx.restore();
+}
+function _bktZitrone(ctx, x, y) {
+  ctx.fillStyle = '#fde047'; ctx.strokeStyle = '#ca9a04'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#fff7c2'; ctx.lineWidth = 1;
+  for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a) * 6, y + Math.sin(a) * 6); ctx.stroke(); }
+}
+function _bktKaeseStueck(ctx, x, y, w) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(w);
+  ctx.fillStyle = '#f7d54a'; ctx.strokeStyle = '#c9a21d'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(-12, 8); ctx.lineTo(12, 8); ctx.lineTo(0, -12); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dcb42a';
+  ctx.beginPath(); ctx.arc(-3, 3, 2.2, 0, 2 * Math.PI); ctx.arc(4, 5, 1.4, 0, 2 * Math.PI); ctx.arc(1, -4, 1.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _bktGemuese(ctx, z, cx, cy, obst) {
+  // Brokkoli
+  for (let i = 0; i < 2; i++) {
+    const x = cx - 16 + i * 26 + (z() - 0.5) * 4, y = cy - 10 + (z() - 0.5) * 6;
+    ctx.fillStyle = '#6aa84f'; ctx.fillRect(x - 2, y, 4, 9);
+    ctx.fillStyle = '#3f8f3a';
+    for (const [dx, dy] of [[-5, -1], [0, -5], [5, -1], [0, 1]]) { ctx.beginPath(); ctx.arc(x + dx, y + dy, 4.4, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  // Möhrenscheiben
+  for (let i = 0; i < 3; i++) {
+    const x = cx - 14 + i * 11, y = cy + 10 + (i % 2) * 5;
+    ctx.fillStyle = '#f28c28'; ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#fbbf6b'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x, y, 2.5, 0, 2 * Math.PI); ctx.stroke();
+  }
+  // Tomate
+  ctx.fillStyle = '#e23b3b'; ctx.beginPath(); ctx.arc(cx + 20, cy + 6, 6.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#3f8f3a'; ctx.beginPath(); ctx.arc(cx + 20, cy + 0.5, 1.8, 0, 2 * Math.PI); ctx.fill();
+  if (obst) {
+    // Weintrauben und Apfelschnitz
+    ctx.fillStyle = '#7e57c2';
+    for (const [dx, dy] of [[0, 0], [5, 1], [2.5, 5], [-2.5, 5], [0, 9]]) { ctx.beginPath(); ctx.arc(cx + 2 + dx, cy - 26 + dy, 3, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.fillStyle = '#fff4d6'; ctx.strokeStyle = '#d33'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(cx - 22, cy + 22, 8, Math.PI * 0.15, Math.PI * 1.15); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+}
+function _bktSalat(ctx, z, cx, cy) {
+  const gruen = ['#7cc15b', '#5aa845', '#9ad26f'];
+  for (let i = 0; i < 7; i++) {
+    _bktOval(ctx, cx + (z() - 0.5) * 44, cy + (z() - 0.5) * 34, 10, 6, z() * 3, gruen[i % 3], '#3f8f3a');
+  }
+  for (const [dx, dy] of [[-8, 4], [12, -6]]) {
+    ctx.fillStyle = '#e23b3b'; ctx.beginPath(); ctx.arc(cx + dx, cy + dy, 6, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#ffd1c4'; ctx.beginPath(); ctx.arc(cx + dx, cy + dy, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _bktNudeln(ctx, z, cx, cy) {
+  ctx.lineCap = 'round';
+  for (let i = 0; i < 11; i++) {
+    const x0 = cx + (z() - 0.5) * 46, y0 = cy + (z() - 0.5) * 36;
+    const x1 = cx + (z() - 0.5) * 46, y1 = cy + (z() - 0.5) * 36;
+    ctx.strokeStyle = '#d9b44a'; ctx.lineWidth = 3.4;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.bezierCurveTo(x0 + 20, y0 - 18, x1 - 20, y1 + 18, x1, y1); ctx.stroke();
+    ctx.strokeStyle = '#f5d77a'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.bezierCurveTo(x0 + 20, y0 - 18, x1 - 20, y1 + 18, x1, y1); ctx.stroke();
+  }
+}
+function _bktBrot(ctx, x, y) {
+  ctx.fillStyle = '#c98a44'; _bioFxRundRect(ctx, x - 11, y - 10, 22, 20, 6); ctx.fill();
+  ctx.fillStyle = '#f1d6a0'; _bioFxRundRect(ctx, x - 8, y - 7, 16, 14, 4); ctx.fill();
+}
+function _bktEi(ctx, x, y) {
+  _bktOval(ctx, x, y, 9, 7, 0, '#ffffff', '#d6d3c4');
+  ctx.fillStyle = '#f5b82e'; ctx.beginPath(); ctx.arc(x, y, 3.8, 0, 2 * Math.PI); ctx.fill();
+}
+function _bktSuess(ctx, x, y) {
+  // Schokoladentafel
+  ctx.fillStyle = '#6b3e26'; ctx.fillRect(x - 12, y - 8, 24, 16);
+  ctx.strokeStyle = '#8a5a3c'; ctx.lineWidth = 1;
+  for (const d of [-4, 4]) { ctx.beginPath(); ctx.moveTo(x + d, y - 8); ctx.lineTo(x + d, y + 8); ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(x - 12, y); ctx.lineTo(x + 12, y); ctx.stroke();
+  // Bonbon
+  ctx.fillStyle = '#f472b6';
+  ctx.beginPath(); ctx.arc(x + 4, y + 18, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x - 1, y + 18); ctx.lineTo(x - 7, y + 14); ctx.lineTo(x - 7, y + 22); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x + 9, y + 18); ctx.lineTo(x + 15, y + 14); ctx.lineTo(x + 15, y + 22); ctx.closePath(); ctx.fill();
+}
+function _bktEssenMalen(ctx, art, cx, cy, k) {
+  const z = _bktZufall(17 + k * 31 + art.length * 7);
+  if (art === 'pommes') _bktPommes(ctx, z, 11, cx, cy, 40);
+  else if (art === 'wurst') { _bktWurst(ctx, cx - 2, cy - 9, -0.25 + k * 0.1); _bktWurst(ctx, cx + 3, cy + 9, 0.3 - k * 0.1); }
+  else if (art === 'nudeln') _bktNudeln(ctx, z, cx, cy);
+  else if (art === 'salat') _bktSalat(ctx, z, cx, cy);
+  else if (art === 'kaese') { _bktKaeseStueck(ctx, cx - 12, cy - 6, 0.3); _bktKaeseStueck(ctx, cx + 12, cy + 2, -0.4); _bktKaeseStueck(ctx, cx - 2, cy + 14, 1.2); }
+  else if (art === 'gemobst' || art === 'g') _bktGemuese(ctx, z, cx, cy, true);
+  else if (art === 'kartoffeln') { for (const [dx, dy, w] of [[-12, -8, 0.3], [10, -10, -0.2], [-6, 10, 0.8], [15, 8, 0.1]]) _bktKartoffel(ctx, cx + dx, cy + dy, w); }
+  else if (art === 'fisch') { _bktFischStueck(ctx, cx - 2, cy, 1); _bktZitrone(ctx, cx + 18, cy + 16); }
+  else if (art === 'k') { _bktKartoffel(ctx, cx - 14, cy - 10, 0.3); _bktKartoffel(ctx, cx - 16, cy + 8, -0.4); _bktBrot(ctx, cx + 12, cy - 4);
+    ctx.save(); ctx.translate(cx + 10, cy + 16); ctx.scale(0.45, 0.45); _bktNudeln(ctx, z, 0, 0); ctx.restore(); }
+  else if (art === 'f') { _bktFischStueck(ctx, cx - 6, cy - 10, 0.7); _bktEi(ctx, cx + 14, cy + 6); _bktKaeseStueck(ctx, cx - 10, cy + 13, 0.4); }
+  else if (art === 'p') { _bktPommes(ctx, z, 6, cx - 10, cy - 4, 26); _bktSuess(ctx, cx + 14, cy - 6); }
+}
+function _bktSchild(ctx, zeilen, x, y) {
+  ctx.save();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const w = Math.max(...zeilen.map(s => ctx.measureText(s).width)) + 8, h = zeilen.length * 11 + 4;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e293b';
+  zeilen.forEach((s, i) => ctx.fillText(s, x, y - (zeilen.length - 1) * 5.5 + i * 11));
+  ctx.restore();
+}
+
+// ── Zeichnen: alles ────────────────────────────────────
+function _bktDraw(ctx, cv) {
+  if (!_bkt) return;
+  const W = cv.width, H = cv.height, t = _bkt.t;
+  ctx.clearRect(0, 0, W, H);
+  // Tischdecke
+  ctx.fillStyle = '#fbf3e4'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = 'rgba(214,120,90,0.10)';
+  for (let x = 0; x < 222; x += 24) ctx.fillRect(x, 0, 12, H);
+  for (let y = 0; y < H; y += 24) ctx.fillRect(0, y, 222, 12);
+
+  // Name des Tellers
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_bkt.teller ? _BKT_TELLER[_bkt.teller].name : 'Noch kein Teller', _BKT_PX, 22);
+
+  // Teller: Schatten, Rand, Spiegel
+  const px = _BKT_PX, py = _BKT_PY;
+  ctx.fillStyle = 'rgba(80,60,40,0.16)';
+  ctx.beginPath(); ctx.ellipse(px + 4, py + 6, _BKT_RR, _BKT_RR * 0.97, 0, 0, 2 * Math.PI); ctx.fill();
+  const g = ctx.createRadialGradient(px - 30, py - 30, 10, px, py, _BKT_RR);
+  g.addColorStop(0, '#ffffff'); g.addColorStop(1, '#e7e5e0');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, _BKT_RR, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#c9c4b8'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#fbfaf7'; ctx.beginPath(); ctx.arc(px, py, _BKT_R, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#dcd7cc'; ctx.lineWidth = 1; ctx.stroke();
+  // Glanz wandert langsam über den Rand
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  const gl = t * 0.5;
+  ctx.beginPath(); ctx.arc(px, py, (_BKT_RR + _BKT_R) / 2, gl, gl + 0.5); ctx.stroke();
+  ctx.restore();
+
+  // Essen in den Vierteln
+  for (let k = 0; k < 4; k++) {
+    const a = _bkt.q[k];
+    if (!a || _bkt.fall[k] < 0) continue;
+    const u = _bioFxKlemme(_bkt.fall[k] / _BKT_FALL);
+    const dy = -70 * (1 - _bioFxEase.aufprall(u));
+    const m = _bktViertelMitte(k, 40);
+    ctx.save();
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.arc(px, py, _BKT_R - 1, _BKT_MITTE[k] - Math.PI / 4, _BKT_MITTE[k] + Math.PI / 4); ctx.closePath();
+    ctx.clip();
+    ctx.globalAlpha = _bioFxKlemme(_bkt.fall[k] / 0.12);
+    _bktEssenMalen(ctx, a, m.x, m.y + dy, k);
+    ctx.restore();
+  }
+  // dünne Linien: vier Viertel
+  ctx.strokeStyle = '#8a8272'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(px - _BKT_R, py); ctx.lineTo(px + _BKT_R, py);
+  ctx.moveTo(px, py - _BKT_R); ctx.lineTo(px, py + _BKT_R); ctx.stroke();
+  // Dampf über warmem Essen
+  for (let k = 0; k < 4; k++) {
+    const a = _bkt.q[k];
+    if (!a || !_bkt.gel[k] || !_BKT_ESSEN[a].warm) continue;
+    const m = _bktViertelMitte(k, 40);
+    ctx.save(); ctx.lineWidth = 2; ctx.lineCap = 'round';
+    for (let j = 0; j < 2; j++) {
+      const ph = (t * 0.45 + j * 0.5 + k * 0.23) % 1;          // 0..1, steigt auf
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.75 * Math.sin(Math.PI * ph)).toFixed(3) + ')';
+      const x0 = m.x - 8 + j * 16, y0 = m.y - 6 - ph * 26;
+      ctx.beginPath(); ctx.moveTo(x0, y0);
+      ctx.bezierCurveTo(x0 + 5, y0 - 5, x0 - 5, y0 - 10, x0 + 1, y0 - 16); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Schilder mit dem Namen des Essens: in den Ecken neben dem Teller, dünner Strich ins Viertel
+  for (let k = 0; k < 4; k++) {
+    const a = _bkt.q[k];
+    if (!a || !_bkt.gel[k]) continue;
+    const e = _BKT_ECKE[k], m = _bktViertelMitte(k, 52);
+    const u = _bioFxKlemme((_bkt.fall[k] - _BKT_FALL) / 0.3);
+    ctx.save(); ctx.globalAlpha = u;
+    ctx.strokeStyle = 'rgba(71,85,105,0.7)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(e.x, e.y + (k < 2 ? 8 : -8)); ctx.lineTo(m.x, m.y); ctx.stroke();
+    ctx.fillStyle = 'rgba(71,85,105,0.8)'; ctx.beginPath(); ctx.arc(m.x, m.y, 2, 0, 2 * Math.PI); ctx.fill();
+    _bktSchild(ctx, _BKT_ESSEN[a].zeilen, e.x, e.y);
+    ctx.restore();
+  }
+  // mein Teller: gewähltes Viertel ruhig markieren, Viertel-Nummern am Rand
+  if (_bkt.teller === 'mein') {
+    const k = _bkt.wahlV, puls = 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8);
+    ctx.save();
+    ctx.setLineDash([6, 4]); ctx.lineWidth = 3;
+    ctx.strokeStyle = 'rgba(37,99,235,' + (0.55 + 0.35 * puls).toFixed(3) + ')';
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.arc(px, py, _BKT_R - 2, _BKT_MITTE[k] - Math.PI / 4, _BKT_MITTE[k] + Math.PI / 4); ctx.closePath(); ctx.stroke();
+    ctx.restore();
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (let j = 0; j < 4; j++) {
+      const m = _bktViertelMitte(j, (_BKT_RR + _BKT_R) / 2);
+      ctx.fillStyle = j === k ? '#2563eb' : '#94a3b8';
+      ctx.beginPath(); ctx.arc(m.x, m.y, 7, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#ffffff'; ctx.fillText(String(j + 1), m.x, m.y + 0.5);
+    }
+    ctx.textBaseline = 'alphabetic';
+  }
+
+  _bktDiagramm(ctx, t);
+  _bioFxAlleDraw(ctx, _bkt.fx);
+}
+
+function _bktDiagramm(ctx, t) {
+  const x0 = _BKT_BX0, x1 = 414, y0 = 8, y1 = 242;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 10); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Nährstoffe auf dem Teller', (x0 + x1) / 2, 26);
+  // Legende
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.setLineDash([5, 3]);
+  ctx.beginPath(); ctx.moveTo(x0 + 10, 42); ctx.lineTo(x0 + 28, 42); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#334155'; ctx.fillText('empfohlen', x0 + 32, 45.5);
+  ctx.fillStyle = 'rgba(74,222,128,0.35)'; ctx.fillRect(x0 + 96, 36, 12, 11);
+  ctx.fillStyle = '#334155'; ctx.fillText('grüner Bereich', x0 + 112, 45.5);
+  // grüner Bereich und Linie
+  const yL = _bktY(_BKT_LINIE), yG = _bktY(_BKT_GRUEN), bx0 = x0 + 8, bx1 = x1 - 8;
+  const alleGruen = _bkt.gruen.every(g => g >= 0);
+  ctx.fillStyle = alleGruen ? 'rgba(74,222,128,' + (0.30 + 0.08 * Math.sin(t * Math.PI * 2 * 0.5)).toFixed(3) + ')' : 'rgba(74,222,128,0.22)';
+  ctx.fillRect(bx0, yL, bx1 - bx0, yG - yL);
+  // Grundlinie
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(bx0, _BKT_BY0); ctx.lineTo(bx1, _BKT_BY0); ctx.stroke();
+  // Balken
+  for (let i = 0; i < 4; i++) {
+    const b = _bktBalken(i), w = _bkt.anz[i], yt = _bktY(w);
+    if (w > 0.001) {
+      ctx.fillStyle = _BKT_FARBE[i];
+      _bioFxRundRect(ctx, b.x - b.b / 2, yt, b.b, _BKT_BY0 - yt, Math.min(5, (_BKT_BY0 - yt) / 2)); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.fillRect(b.x - b.b / 2 + 4, yt + 3, 4, Math.max(0, _BKT_BY0 - yt - 6));
+    }
+    // grüner Rand und Haken beim Aha
+    if (_bkt.gruen[i] >= 0) {
+      const a = _bioFxKlemme(_bkt.gruen[i] / 0.3);
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 3;
+      _bioFxRundRect(ctx, b.x - b.b / 2 - 2, yt - 2, b.b + 4, _BKT_BY0 - yt + 2, 6); ctx.stroke();
+      const s = 0.6 + 0.4 * _bioFxEase.federn(a), hy = yt - 12;
+      ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.moveTo(b.x - 6 * s, hy); ctx.lineTo(b.x - 1.5 * s, hy + 5 * s); ctx.lineTo(b.x + 7 * s, hy - 6 * s); ctx.stroke();
+      ctx.restore();
+    }
+    // Ausrufezeichen über der Linie
+    if (_bkt.ueber[i]) {
+      const u = _bioFxEase.federn(_bioFxKlemme(_bkt.pop[i] / 0.5));
+      const my = Math.max(62, yt - 13) + Math.sin(t * Math.PI) * 1.5;
+      ctx.save(); ctx.translate(b.x, my); ctx.scale(u, u);
+      ctx.fillStyle = '#ea580c'; ctx.beginPath(); ctx.arc(0, 0, 9, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#ffffff'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('!', 0, 1);
+      ctx.restore();
+    }
+    // Name unter dem Balken
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    _BKT_ZEILEN[i].forEach((s, j) => ctx.fillText(s, b.x, _BKT_BY0 + 14 + j * 12));
+  }
+  // gestrichelte Linie „empfohlen“ über den Balken
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+  ctx.beginPath(); ctx.moveTo(bx0, yL); ctx.lineTo(bx1, yL); ctx.stroke();
+  ctx.setLineDash([]);
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · RAUCH IN DER LUNGE   (Förderheft Bio 5/6 · bk10, Kennung 'bio-rauchen')
+// Links die Lunge (atmet ruhig), in der Mitte ein Lupen-Ausschnitt: sieben
+// Trauben aus Lungenbläschen, umsponnen von roten Adern. Rote Punkte = Blut,
+// blaue Punkte = Sauerstoff, der aus den Bläschen ins Blut geht (je größer die
+// Fläche, desto mehr blaue Punkte). Rechts eine Treppe mit einer kleinen Figur,
+// unten der Balken „Fläche für Sauerstoff“ aus 10 Kästchen und eine Rauch-
+// maschine: Rauch zieht durch Watte, daneben steht frische Watte zum Vergleich.
+// Werte (sim_plan.werte = lehrer.tabelle_erwartet, Modellwerte):
+//   0 Jahre  · rosa, viele kleine Bläschen · 10 von 10
+//   10 Jahre · grau belegt                 · 7 von 10
+//   30 Jahre · grau, wenige große Blasen   · 4 von 10
+// Treppe: kommt locker in den 3. Stock · ist im 3. Stock außer Atem ·
+//         muss zweimal anhalten.
+// Ablauf: Ein Jahresknopf startet einen Zeitraffer (5 Jahre je Sekunde) von
+// der jetzigen Zahl bis zum Ziel. Kaputte Lungenbläschen wachsen NICHT nach:
+// Wer eine kleinere Zahl wählt, sieht eine ANDERE Person, deren Lunge am
+// Anfang gesund war (Zeitraffer ab 0). Zwischen 10 und 30 Jahren verschmilzt
+// eine Traube nach der anderen zu einer großen Blase (kleiner Lichtring).
+// Aha (NACH dem Zeitraffer, Bibliothek _bioFx): Die Rauch-Watte ist gelb-braun,
+// die frische Watte daneben weiß; beide Gläser leuchten kurz, braune Funken,
+// Hinweisstreifen „So viel Rauch blieb in der Watte hängen!“. Kurz vor dem Ziel
+// läuft der Zeitraffer in Zeitlupe. Kein Blinken (Puls 0,8 Hz), kein Ton,
+// keine Wertung; kein Tabellen- oder Lückenwort als Effekttext.
+// ═══════════════════════════════════════════════════════
+let _bkx = null;
+const _BKX_RATE = 5;                                   // Jahre je Sekunde im Zeitraffer
+const _BKX_LX = 190, _BKX_LY = 92, _BKX_LR = 64;       // Lupe
+const _BKX_TRAUBEN = (() => {                          // Mitten der sieben Trauben
+  const a = [[_BKX_LX, _BKX_LY]];
+  for (let k = 0; k < 6; k++) {
+    const w = (k * 60 - 90) * Math.PI / 180;
+    a.push([_BKX_LX + 40 * Math.cos(w), _BKX_LY + 40 * Math.sin(w)]);
+  }
+  return a;
+})();
+// Reihenfolge, in der die Trauben verschmelzen (einmal ringsum, die Mitte zuletzt)
+const _BKX_REIHE = [1, 3, 5, 2, 4, 6, 0];
+const _BKX_BILD = { 0: 'rosa, viele kleine Bläschen', 10: 'grau belegt', 30: 'grau, wenige große Blasen' };
+const _BKX_TREPPE = ['kommt locker in den 3. Stock', 'ist im 3. Stock außer Atem', 'muss zweimal anhalten'];
+
+function _bkxZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _bkxInit() {
+  const z = _bkxZufall(1010);
+  const flecken = [];                                  // Teerflecken auf der Lunge
+  for (let i = 0; i < 60; i++) {
+    const links = i % 2 === 0, w = z() * Math.PI * 2, r = Math.sqrt(z());
+    flecken.push([(links ? 38 : 88) + Math.cos(w) * r * 20, 108 + Math.sin(w) * r * 36, 0.8 + z() * 1.2]);
+  }
+  const belag = [];                                    // Belag in den Bläschen
+  for (let i = 0; i < 70; i++) belag.push([Math.floor(z() * 7), z() * Math.PI * 2, z(), 0.7 + z() * 0.8]);
+  _bkx = { t: 0, jahre: 0, ziel: 0, laeuft: false, andere: false, nach: -1, schritt: 0,
+           fx: { teile: [] }, zeitlupe: null, zlGesetzt: false, letzt: '',
+           o2: [], o2Takt: 0, rauchTakt: 0, figT: 0, figArt: 0,
+           geplatzt: [false, false, false, false, false, false, false], leer: 0,
+           flecken, belag };
+}
+
+/* ── Modell ──────────────────────────────────────────────────────────── */
+// Fläche für Sauerstoff in Kästchen (Modellwerte: 0 → 10, 10 → 7, 30 → 4)
+function _bkxFlaeche(j) {
+  j = Math.max(0, Math.min(30, j));
+  return j <= 10 ? 10 - 0.3 * j : 7 - 0.15 * (j - 10);
+}
+// Grauer Belag 0..1 (bei 10 Jahren schon deutlich grau)
+function _bkxGrau(j) { j = Math.max(0, j); return j <= 10 ? 0.65 * j / 10 : Math.min(1, 0.65 + 0.35 * (j - 10) / 20); }
+// Wie weit ist Traube k verschmolzen? (0 = viele kleine Bläschen, 1 = eine große Blase)
+function _bkxVerschmolzen(k, j) {
+  const platz = _BKX_REIHE.indexOf(k);
+  const start = 10 + platz * 2.6;
+  return _bioFxKlemme((j - start) / 3);
+}
+// Treppe: 0 locker · 1 außer Atem · 2 zweimal anhalten
+function _bkxTreppeArt(j) { return j < 5 ? 0 : j < 20 ? 1 : 2; }
+function _bkxKaestchen(j) { return Math.round(_bkxFlaeche(j) * 1000) / 1000; }
+
+/* ── Bedienung ───────────────────────────────────────────────────────── */
+function _bkxFxLeer() {
+  _bkx.fx = { teile: [] }; _bkx.zeitlupe = null; _bkx.zlGesetzt = false;
+  _bkx.nach = -1; _bkx.schritt = 0;
+}
+function _bkxFrisch() {                                 // gesunde Lunge, 0 Jahre
+  _bkx.jahre = 0; _bkx.o2 = [];
+  _bkx.geplatzt = [false, false, false, false, false, false, false]; _bkx.leer = 0;
+}
+function _bkxJahre(n) {
+  if (!_bkx) return;
+  n = Number(n);
+  if (_bkx.laeuft && _bkx.ziel === n) return;          // läuft schon dorthin
+  _bkxFxLeer();
+  _bkx.andere = false;
+  if (n < _bkx.jahre || (n === _bkx.jahre && n > 0)) {
+    // Kaputte Lungenbläschen wachsen nicht nach: eine andere Person, von vorn.
+    _bkxFrisch();
+    _bkx.andere = true;
+  }
+  _bkx.ziel = n;
+  if (n === 0) {
+    _bkx.laeuft = false;
+    _bioFxWelle(_bkx.fx.teile, _BKX_LX, _BKX_LY, '#fda4af', 70);
+  } else {
+    _bkx.laeuft = true;
+    for (let i = 0; i < 4; i++) _bkxPuste();
+  }
+  _bkxStatus();
+}
+function _bkxNeu() {
+  if (!_bkx) return;
+  _bkxFxLeer(); _bkxFrisch();
+  _bkx.ziel = 0; _bkx.laeuft = false; _bkx.andere = false; _bkx.figT = 0;
+  _bkxStatus();
+}
+// Sprungmarke: den Zeitraffer bis zum Ziel überspringen.
+function _bkxSprung() {
+  if (!_bkx || !_bkx.laeuft) return;
+  _bkxSchritt(_bkx.ziel - _bkx.jahre);
+}
+
+/* ── Anzeige ─────────────────────────────────────────────────────────── */
+function _bkxZeile() {
+  if (_bkx.laeuft) return 'lauf' + Math.floor(_bkx.jahre) + ':' + _bkx.ziel + ':' + _bkx.andere;
+  return 'fertig' + _bkx.jahre + ':' + _bkx.andere;
+}
+function _bkxStatus() {
+  if (!_bkx) return;
+  _bkx.letzt = _bkxZeile();
+  const el = document.getElementById('_bkx-status');
+  let h;
+  const person = _bkx.andere ? 'Eine andere Person. Ihre Lunge war am Anfang gesund.<br>' : '';
+  if (_bkx.laeuft) {
+    h = `<b>Zeitraffer: ${Math.floor(_bkx.jahre)} Jahre geraucht</b><br>${person}` +
+        `Ziel: ${_bkx.ziel} Jahre. Sieh auf die Lungenbläschen, den Balken und die Watte.`;
+  } else {
+    const j = _bkx.jahre;
+    h = `<b>Jahre geraucht: ${j} Jahre</b><br>${person}` +
+        `Lungenbläschen: ${_BKX_BILD[j]}<br>` +
+        `Balken „Fläche für Sauerstoff“: ${_bkxKaestchen(j)} von 10 Kästchen<br>` +
+        `Treppe: Die Figur ${_BKX_TREPPE[_bkxTreppeArt(j)]}.`;
+  }
+  if (el) { el.innerHTML = h; el.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-bkx]').forEach(b => {
+      const d = b.dataset ? b.dataset.bkx : b.getAttribute('data-bkx');
+      if (b.classList) b.classList.toggle('primary', Number(d) === _bkx.ziel);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _bkxHTML() {
+  const k = n => `<button class="sim-btn" data-bkx="${n}" onclick="_bkxJahre(${n})">${n} Jahre</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was macht Rauchen mit der Lunge?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links die Lunge. Die Lupe zeigt Lungenbläschen mit feinen Adern. Stelle ein, wie viele Jahre jemand geraucht hat. Dann beobachte.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bkx-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Jahre geraucht</span>
+          ${k(0)}
+          ${k(10)}
+          ${k(30)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bkxNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was siehst du?</div>
+        <div class="lmp-status on" id="_bkx-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarke</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bkxSprung()">Zeitraffer überspringen</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px"><b>Rot</b> sind Blut und Adern. <b>Blaue Punkte</b> sind Sauerstoff: Er geht aus den Bläschen ins Blut.</div>
+        <div class="fpm-note" style="margin-top:6px">Unten rechts zieht Rauch durch Watte. Im Rauch steckt Teer. Er bleibt in der Watte hängen – und in der Lunge. Daneben liegt frische Watte zum Vergleich.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Modell: Die Kästchen sind Modellwerte, keine Messwerte.</p>
+  </div>`;
+}
+
+/* ── Ablauf ──────────────────────────────────────────────────────────── */
+// Ein Rauchwölkchen in die Luftröhre und eines in das Watteglas.
+function _bkxPuste() {
+  const L = _bkx.fx.teile, z = Math.random;
+  _bioFxNeu(L, { art: 'punkt', x: 63 + (z() - 0.5) * 6, y: 4, vx: (z() - 0.5) * 8, vy: 40 + z() * 15,
+    g: 0, alter: 0, leben: 0.9 + z() * 0.3, r: 2.5 + z() * 2, farbe: 'rgba(140,140,150,0.75)', dreh: 0, dw: 0 });
+  _bioFxNeu(L, { art: 'punkt', x: 375 + (z() - 0.5) * 3, y: 182, vx: (z() - 0.5) * 10, vy: 22 + z() * 10,
+    g: 0, alter: 0, leben: 0.8 + z() * 0.3, r: 2 + z() * 1.6, farbe: 'rgba(140,140,150,0.8)', dreh: 0, dw: 0 });
+}
+// Zeitraffer um d Jahre weiter; Ereignisse (Kästchen leer, Traube verschmilzt).
+function _bkxSchritt(d) {
+  const vor = _bkx.jahre;
+  _bkx.jahre = Math.min(_bkx.ziel, vor + d);
+  const j = _bkx.jahre, L = _bkx.fx.teile;
+  // Kästchen, das gerade ganz leer geworden ist
+  const leer = 10 - Math.ceil(_bkxFlaeche(j) - 1e-9);
+  while (_bkx.leer < leer) {
+    _bkx.leer++;
+    const i = 10 - _bkx.leer;
+    _bioFxWelle(L, 10 + i * 19 + 8.5, 200, '#94a3b8', 16);
+  }
+  // Traube, die gerade zu einer großen Blase verschmilzt
+  for (let k = 0; k < 7; k++) {
+    if (_bkx.geplatzt[k] || _bkxVerschmolzen(k, j) < 0.05) continue;
+    _bkx.geplatzt[k] = true;
+    _bioFxWelle(L, _BKX_TRAUBEN[k][0], _BKX_TRAUBEN[k][1], '#cbd5e1', 22);
+  }
+  if (_bkx.jahre >= _bkx.ziel - 1e-9) _bkxEnde();
+}
+function _bkxEnde() {
+  _bkx.jahre = _bkx.ziel; _bkx.laeuft = false;
+  _bkx.zeitlupe = null;
+  _bkx.nach = 0; _bkx.schritt = 0;
+  _bkxStatus();
+}
+function _bkxUpdate(dt) {
+  if (!_bkx) return;
+  dt = _bioFxDt(dt);
+  _bkx.t += dt;
+  if (_bkx.laeuft) {
+    // kurz vor dem Ziel: Zeitlupe, damit man das Ende sieht
+    if (!_bkx.zlGesetzt && _bkx.ziel >= 10 && _bkx.ziel - _bkx.jahre <= 1.6) {
+      _bkx.zlGesetzt = true; _bioFxZeitlupe(_bkx, 0.4, 1.0);
+    }
+    const zl = _bioFxZeitlupeFaktor(_bkx, dt);
+    _bkx.rauchTakt += dt * zl;
+    while (_bkx.rauchTakt > 0.14) { _bkx.rauchTakt -= 0.14; _bkxPuste(); }
+    _bkxSchritt(_BKX_RATE * dt * zl);
+    if (_bkx.laeuft && _bkxZeile() !== _bkx.letzt) _bkxStatus();
+  } else if (_bkx.nach >= 0) {
+    _bkx.nach += dt;
+    _bkxNachher();
+  }
+  // Figur auf der Treppe: neue Gangart = neuer Anlauf von unten
+  const art = _bkxTreppeArt(_bkx.jahre);
+  if (art !== _bkx.figArt) { _bkx.figArt = art; _bkx.figT = 0; }
+  _bkx.figT += dt;
+  // Sauerstoff: je größer die Fläche, desto mehr blaue Punkte gehen ins Blut
+  const f = _bkxFlaeche(_bkx.jahre);
+  _bkx.o2Takt += dt * f * 1.6;
+  while (_bkx.o2Takt > 1) {
+    _bkx.o2Takt -= 1;
+    if (_bkx.o2.length < 60) _bkx.o2.push({ k: Math.floor(Math.random() * 7), w: Math.random() * Math.PI * 2, s: 0 });
+  }
+  for (let i = _bkx.o2.length - 1; i >= 0; i--) {
+    _bkx.o2[i].s += dt / 1.4;
+    if (_bkx.o2[i].s >= 1) _bkx.o2.splice(i, 1);
+  }
+  _bioFxAlleUpdate(_bkx.fx, dt);
+}
+// Nach dem Zeitraffer: erst hinsehen, dann leuchten die beiden Gläser.
+function _bkxNachher() {
+  const fx = _bkx.fx, t = _bkx.nach;
+  if (_bkx.ziel <= 0) { _bkx.nach = -1; return; }
+  if (_bkx.schritt === 0 && t >= 0.3) {
+    _bkx.schritt = 1;
+    _bioFxWelle(fx.teile, _BKX_LX, _BKX_LY, '#cbd5e1', 72);
+  }
+  if (_bkx.schritt === 1 && t >= 0.8) {
+    _bkx.schritt = 2;
+    _bioFxWelle(fx.teile, 375, 214, '#d4a24c', 34);
+    _bioFxFunken(fx.teile, 375, 206, 8, ['#d4a24c', '#f4e3b5', '#a0712f', '#ffffff']);
+  }
+  if (_bkx.schritt === 2 && t >= 1.2) {
+    _bkx.schritt = 3;
+    _bioFxBanner(fx, 'So viel Rauch blieb in der Watte hängen!', 3.4, '#e8c66a');
+  }
+  if (t > 4) _bkx.nach = -1;
+}
+
+/* ── Zeichnen ────────────────────────────────────────────────────────── */
+function _bkxMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _bkxLunge(ctx) {
+  const g = _bkxGrau(_bkx.jahre), atem = Math.sin(_bkx.t * Math.PI * 2 * 0.25);
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lunge', 63, 16);
+  // Luftröhre mit Knorpelringen
+  ctx.fillStyle = '#e2c7cc'; ctx.fillRect(58, 22, 10, 42);
+  ctx.strokeStyle = '#b08990'; ctx.lineWidth = 1;
+  for (let y = 26; y < 62; y += 5) { ctx.beginPath(); ctx.moveTo(58, y); ctx.lineTo(68, y); ctx.stroke(); }
+  ctx.save();
+  ctx.translate(63, 100);
+  ctx.scale(1 + 0.035 * atem, 1 + 0.05 * atem);
+  ctx.translate(-63, -100);
+  // zwei Lungenflügel
+  ctx.fillStyle = _bkxMisch('#f4a3b4', '#8f8a8c', g);
+  ctx.strokeStyle = _bkxMisch('#c9707f', '#5f5a5c', g); ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(38, 108, 25, 44, 0.08, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(88, 108, 25, 44, -0.08, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Bronchien
+  ctx.strokeStyle = _bkxMisch('#b85d6e', '#4b4648', g); ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(63, 62); ctx.lineTo(44, 80); ctx.lineTo(36, 104); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(63, 62); ctx.lineTo(82, 80); ctx.lineTo(90, 104); ctx.stroke();
+  ctx.lineWidth = 1.5;
+  for (const [x0, y0, s] of [[44, 80, -1], [82, 80, 1], [36, 104, -1], [90, 104, 1]]) {
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + s * 10, y0 + 14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 - s * 4, y0 + 18); ctx.stroke();
+  }
+  // Teerflecken
+  const n = Math.round(_bkx.flecken.length * Math.min(1, _bkx.jahre / 30));
+  ctx.fillStyle = 'rgba(60,48,40,0.55)';
+  for (let i = 0; i < n; i++) {
+    const [x, y, r] = _bkx.flecken[i];
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+  // Stelle, die die Lupe zeigt
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(94, 124, 9, 0, Math.PI * 2); ctx.stroke();
+  ctx.strokeStyle = 'rgba(51,65,85,0.45)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(100, 117); ctx.lineTo(_BKX_LX - 52, _BKX_LY - 37); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(101, 130); ctx.lineTo(_BKX_LX - 44, _BKX_LY + 46); ctx.stroke();
+}
+function _bkxLupe(ctx) {
+  const j = _bkx.jahre, g = _bkxGrau(j), t = _bkx.t;
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lupe: Lungenbläschen und Adern', _BKX_LX, 16);
+  ctx.save();
+  ctx.beginPath(); ctx.arc(_BKX_LX, _BKX_LY, _BKX_LR, 0, Math.PI * 2); ctx.clip();
+  ctx.fillStyle = '#f6dada'; ctx.fillRect(_BKX_LX - _BKX_LR, _BKX_LY - _BKX_LR, 2 * _BKX_LR, 2 * _BKX_LR);
+  // Adern: Verbindungen und ein Ring um jede Traube
+  ctx.strokeStyle = '#d64545'; ctx.lineWidth = 2;
+  for (let k = 1; k < 7; k++) {
+    const [x, y] = _BKX_TRAUBEN[k];
+    ctx.beginPath(); ctx.moveTo(_BKX_LX, _BKX_LY); ctx.lineTo(x, y); ctx.stroke();
+    const w = Math.atan2(y - _BKX_LY, x - _BKX_LX);
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(w) * 40, y + Math.sin(w) * 40); ctx.stroke();
+  }
+  for (const [x, y] of _BKX_TRAUBEN) { ctx.beginPath(); ctx.arc(x, y, 18.5, 0, Math.PI * 2); ctx.stroke(); }
+  // Lungenbläschen je Traube (Wände zuerst, dann das Innere: verschmolzene
+  // Bläschen verlieren so ihre Zwischenwände)
+  const wand = _bkxMisch('#e07a8c', '#6b6466', g), innen = _bkxMisch('#fde4ea', '#c9c4c6', g);
+  for (let k = 0; k < 7; k++) {
+    const [cx, cy] = _BKX_TRAUBEN[k], m = _bkxVerschmolzen(k, j);
+    const ab = 11 - 8 * m, r = 5 + 8 * m;
+    const pos = [[cx, cy]];
+    for (let i = 0; i < 6; i++) pos.push([cx + ab * Math.cos(i * Math.PI / 3 + k), cy + ab * Math.sin(i * Math.PI / 3 + k)]);
+    ctx.fillStyle = wand;
+    for (const [x, y] of pos) { ctx.beginPath(); ctx.arc(x, y, r + 1.4, 0, Math.PI * 2); ctx.fill(); }
+    ctx.fillStyle = innen;
+    for (const [x, y] of pos) { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); }
+    // Glanzpunkt: Luft in den Bläschen
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.7 - 0.4 * g).toFixed(2) + ')';
+    for (const [x, y] of (m > 0.05 ? [[cx, cy]] : pos)) {
+      ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, Math.max(1, r * 0.22), 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // grauer Belag
+  const nb = Math.round(_bkx.belag.length * g);
+  ctx.fillStyle = 'rgba(80,68,60,0.5)';
+  for (let i = 0; i < nb; i++) {
+    const [k, w, s, r] = _bkx.belag[i], [cx, cy] = _BKX_TRAUBEN[k];
+    const d = 4 + s * 10;
+    ctx.beginPath(); ctx.arc(cx + Math.cos(w) * d, cy + Math.sin(w) * d, r, 0, Math.PI * 2); ctx.fill();
+  }
+  // Blut fließt in den Adern um die Trauben
+  ctx.fillStyle = '#9b1c1c';
+  for (let k = 0; k < 7; k++) {
+    for (let i = 0; i < 3; i++) {
+      const w = t * 0.9 * (k % 2 ? 1 : -1) + i * Math.PI * 2 / 3 + k;
+      ctx.beginPath(); ctx.arc(_BKX_TRAUBEN[k][0] + Math.cos(w) * 18.5, _BKX_TRAUBEN[k][1] + Math.sin(w) * 18.5, 1.9, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // Sauerstoff: von den Bläschen hinaus in die Ader
+  ctx.fillStyle = '#2563eb';
+  for (const o of _bkx.o2) {
+    const [cx, cy] = _BKX_TRAUBEN[o.k], d = 6 + 12.5 * o.s;
+    ctx.globalAlpha = 1 - _bioFxEase.rein(o.s);
+    ctx.beginPath(); ctx.arc(cx + Math.cos(o.w) * d, cy + Math.sin(o.w) * d, 1.7, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  ctx.restore();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(_BKX_LX, _BKX_LY, _BKX_LR, 0, Math.PI * 2); ctx.stroke();
+}
+// Weg auf der Treppe: s = 0 (unten) … 3 (3. Stock) → Fußpunkt
+const _BKX_STOCK = f => [282 + f * 40, 150 - f * 35];
+function _bkxWeg(s) {
+  s = Math.max(0, Math.min(3, s));
+  const f = Math.min(2, Math.floor(s)), u = s - f;
+  const [x0, y0] = _BKX_STOCK(f), [x1, y1] = _BKX_STOCK(f + 1);
+  if (u < 0.25) return [x0 + 40 * u, y0];               // Treppenabsatz
+  const v = (u - 0.25) / 0.75;
+  return [x0 + 10 + (x1 - x0 - 10) * v, y0 + (y1 - y0) * v];
+}
+// Ablauf der Figur je Gangart: Gehen (von, bis, Dauer) oder Anhalten (Dauer)
+function _bkxFigurPlan(art) {
+  if (art === 0) return [['geh', 0, 3, 3.0], ['oben', 1.6]];
+  if (art === 1) return [['geh', 0, 3, 4.6], ['puste', 2.4]];
+  return [['geh', 0, 1, 1.9], ['puste', 1.5], ['geh', 1, 2, 2.1], ['puste', 1.5], ['geh', 2, 3, 2.3], ['puste', 2.0]];
+}
+function _bkxFigur(ctx) {
+  const plan = _bkxFigurPlan(_bkx.figArt);
+  const summe = plan.reduce((a, p) => a + p[p.length - 1], 0) + 0.6;
+  let tt = _bkx.figT % summe, s = 3, zustand = 'weg', lauf = 0;
+  for (const p of plan) {
+    const d = p[p.length - 1];
+    if (tt < d) {
+      if (p[0] === 'geh') {
+        const u = tt / d;
+        const ease = _bkx.figArt === 1 ? 1 - Math.pow(1 - u, 1.6) : u;     // wird oben langsamer
+        s = p[1] + (p[2] - p[1]) * ease; zustand = 'geh'; lauf = tt;
+      } else { zustand = p[0]; lauf = tt; }            // s = Ende des letzten Gehstücks
+      break;
+    }
+    tt -= d;
+    if (p[0] === 'geh') s = p[2];
+  }
+  const [x, y] = _bkxWeg(s);
+  const a = zustand === 'weg' ? Math.max(0, 1 - tt / 0.3) : 1;
+  if (a <= 0) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = '#1e3a8a'; ctx.fillStyle = '#1e3a8a'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  const gebeugt = zustand === 'puste';
+  const bein = zustand === 'geh' ? Math.sin(lauf * 8) * 4 : 0;
+  const hx = x + (gebeugt ? 6 : 0), hy = y - (gebeugt ? 16 : 19);
+  // Beine
+  ctx.beginPath(); ctx.moveTo(x, y - 8); ctx.lineTo(x - 2 + bein, y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y - 8); ctx.lineTo(x + 2 - bein, y); ctx.stroke();
+  // Rumpf
+  ctx.beginPath(); ctx.moveTo(x, y - 8); ctx.lineTo(hx - (gebeugt ? 2 : 0), hy + 4); ctx.stroke();
+  // Arme: gebeugt auf die Knie gestützt, oben ein Arm hoch
+  ctx.beginPath();
+  if (gebeugt) { ctx.moveTo(hx - 2, hy + 6); ctx.lineTo(x + 3, y - 6); }
+  else if (zustand === 'oben') { ctx.moveTo(x, y - 13); ctx.lineTo(x + 5, y - 22); ctx.moveTo(x, y - 13); ctx.lineTo(x - 4, y - 8); }
+  else { ctx.moveTo(x, y - 13); ctx.lineTo(x - 4 - bein * 0.5, y - 7); ctx.moveTo(x, y - 13); ctx.lineTo(x + 4 + bein * 0.5, y - 7); }
+  ctx.stroke();
+  ctx.beginPath(); ctx.arc(hx, hy, 3.6, 0, Math.PI * 2); ctx.fill();
+  // Atemwölkchen beim Verschnaufen (ruhig, etwa 1 je Sekunde)
+  if (gebeugt) {
+    for (let i = 0; i < 2; i++) {
+      const u = ((lauf * 1.1) + i * 0.5) % 1;
+      ctx.globalAlpha = a * (1 - u) * 0.8;
+      ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.arc(hx + 6 + u * 10, hy - 2 - u * 6, 1.5 + u * 2.5, 0, Math.PI * 2); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _bkxTreppe(ctx) {
+  // Stufen und Absätze
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.lineCap = 'butt';
+  ctx.beginPath(); ctx.moveTo(266, 150); ctx.lineTo(292, 150); ctx.stroke();
+  for (let f = 0; f < 3; f++) {
+    const [x0, y0] = _BKX_STOCK(f), [x1, y1] = _BKX_STOCK(f + 1);
+    ctx.beginPath(); ctx.moveTo(x0 + 10, y0);
+    for (let i = 1; i <= 5; i++) {
+      const x = x0 + 10 + (x1 - x0 - 10) * i / 5, yv = y0 + (y1 - y0) * i / 5;
+      ctx.lineTo(x0 + 10 + (x1 - x0 - 10) * (i - 1) / 5, yv); ctx.lineTo(x, yv);
+    }
+    ctx.lineTo(x1 + 10, y1); ctx.stroke();
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('3. Stock', 414, 36);
+  ctx.textAlign = 'left'; ctx.font = '10px sans-serif';
+  ctx.fillText('1.', 326, 128); ctx.fillText('2.', 366, 93);
+  _bkxFigur(ctx);
+  ctx.fillStyle = '#1e3a8a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_BKX_TREPPE[_bkx.figArt], 340, 168, 150);
+}
+function _bkxBalken(ctx) {
+  const f = _bkxFlaeche(_bkx.jahre);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Fläche für Sauerstoff', 10, 185);
+  for (let i = 0; i < 10; i++) {
+    const x = 10 + i * 19, y = 190, voll = _bioFxKlemme(f - i);
+    ctx.fillStyle = '#eef2f6'; ctx.fillRect(x, y, 17, 20);
+    if (voll > 0) { ctx.fillStyle = '#3b82f6'; ctx.fillRect(x, y, 17 * voll, 20); }
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2; ctx.strokeRect(x, y, 17, 20);
+  }
+  if (!_bkx.laeuft) {
+    ctx.fillStyle = '#1d4ed8'; ctx.font = '700 12px sans-serif';
+    ctx.fillText(_bkxKaestchen(_bkx.jahre) + ' von 10', 204, 205);
+  }
+  // Zähler: Jahre geraucht
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif';
+  ctx.fillText('Jahre geraucht: ' + Math.floor(_bkx.jahre + 1e-9), 10, 236);
+  if (_bkx.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.65)'; ctx.font = '700 11px sans-serif';
+    ctx.fillText(_bkx.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 160, 236);
+  }
+}
+function _bkxWatteFarbe(j) {
+  return j <= 10 ? _bkxMisch('#fbfaf5', '#e3c064', j / 10) : _bkxMisch('#e3c064', '#7a4e22', (j - 10) / 20);
+}
+function _bkxGlas(ctx, x, farbe, text) {
+  const y = 198, w = 46, h = 34;
+  ctx.fillStyle = 'rgba(226,232,240,0.45)'; ctx.fillRect(x, y, w, h);
+  // Watte: ein Bausch aus fünf Kreisen
+  ctx.fillStyle = farbe; ctx.strokeStyle = 'rgba(100,90,70,0.35)'; ctx.lineWidth = 1;
+  for (const [dx, dy, r] of [[12, 22, 8], [23, 18, 10], [34, 22, 8], [17, 27, 7], [29, 27, 7]]) {
+    ctx.beginPath(); ctx.arc(x + dx, y + dy, r, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + h); ctx.lineTo(x + w, y + h); ctx.lineTo(x + w, y); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(text, x + w / 2, y + h + 12);
+}
+function _bkxWatte(ctx) {
+  const nach = _bkx.nach;
+  if (nach >= 0.8 && nach <= 3.6 && _bkx.ziel > 0) {
+    _bioFxLeuchten(ctx, 298, 215, 26, _bkx.t, '203,213,225');
+    _bioFxLeuchten(ctx, 375, 215, 26, _bkx.t, '212,162,76');
+  }
+  _bkxGlas(ctx, 275, '#fbfaf5', 'ohne Rauch');
+  // Rohr, durch das der Rauch in das rechte Glas zieht
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(375, 178); ctx.lineTo(375, 200); ctx.stroke();
+  _bkxGlas(ctx, 352, _bkxWatteFarbe(_bkx.jahre), 'mit Rauch');
+}
+function _bkxDraw(ctx, cv) {
+  if (!_bkx) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(6, 174); ctx.lineTo(W - 6, 174); ctx.stroke();
+  _bkxLunge(ctx);
+  _bkxLupe(ctx);
+  _bkxTreppe(ctx);
+  _bkxBalken(ctx);
+  _bkxWatte(ctx);
+  _bioFxAlleDraw(ctx, _bkx.fx);
 }

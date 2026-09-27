@@ -5267,6 +5267,96 @@ const HEFT_SEITEN = {
     frage: "Warum vertrocknet der Kaktus nicht, wenn es lange nicht regnet?",
     schritte: ["Stelle „Pflanze“ auf „Kaktus“. Drücke „▶ 30 Tage ohne Regen“.", "Lies ab, wie viel Wasser noch in der Pflanze ist.", "Wiederhole das für „Sonnenblume“ und „Wüstenblume“.", "Drücke bei der Wüstenblume „Regen“. Beobachte, was passiert."]
   },
+  "bk1": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-skelett", seite: 86,
+    kapitel: "Mein Körper",
+    name: "Welche Knochen tragen mich?",
+    titel: "Das Gerüst in meinem Körper",
+    frage: "Was passiert mit dem Körper, wenn die Wirbelsäule fehlt?",
+    schritte: ["Stelle „Knochen weg“ auf „Wirbelsäule“. Beobachte den Oberkörper.", "Stelle „Knochen weg“ auf „Beinknochen“. Beobachte die Beine.", "Stelle „Knochen weg“ auf „Rippen“. Sieh auf Herz und Lunge.", "Prüfe bei jedem Knochen: Stützt er oder schützt er?"]
+  },
+  "bk2": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-arm", seite: 90,
+    kapitel: "Mein Körper",
+    name: "Wie bewegt sich mein Arm?",
+    titel: "Zwei Muskeln für einen Arm",
+    frage: "Kann ein Muskel den Arm beugen und auch wieder strecken?",
+    schritte: ["Stelle „Welcher Muskel zieht?“ auf „vorderer Muskel“. Beobachte den Arm.", "Stelle auf „hinterer Muskel“. Beobachte den Arm wieder.", "Stelle auf „keiner“. Beobachte, ob sich der Arm bewegt.", "Sieh jedes Mal nach: Welcher Muskel ist kurz und dick?"]
+  },
+  "bk3": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-heben", seite: 94,
+    kapitel: "Mein Körper",
+    name: "Wie hebe ich richtig?",
+    titel: "Die Kiste mit Blumenerde",
+    frage: "Bei welcher Haltung ist der Druck auf die Bandscheiben am kleinsten?",
+    schritte: ["Stelle „Haltung“ auf „runder Rücken“ und „Kiste“ auf „weit weg“.", "Stelle „Haltung“ auf „in die Knie“.", "Stelle „Kiste“ auf „nah am Körper“.", "Lies jedes Mal den Balken ab. Sieh auf die Bandscheiben."]
+  },
+  "bk4": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-atmung", seite: 98,
+    kapitel: "Mein Körper",
+    name: "Wie kommt die Luft in die Lunge?",
+    titel: "Die Flasche, die atmet",
+    frage: "Was passiert mit den Ballons, wenn man die Gummihaut nach unten zieht?",
+    schritte: ["Stelle „Gummihaut“ auf „in der Mitte“. Beobachte die Ballons.", "Stelle „Gummihaut“ auf „nach unten gezogen“. Beobachte wieder.", "Stelle „Gummihaut“ auf „nach oben gedrückt“. Beobachte ein drittes Mal.", "Sieh jedes Mal auf den Pfeil am Flaschenhals: Wohin strömt die Luft?"]
+  },
+  "bk5": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-puls", seite: 102,
+    kapitel: "Mein Körper",
+    name: "Wie schnell schlägt mein Herz?",
+    titel: "Mein Herz beim Rennen",
+    frage: "Wie verändert sich Samirs Puls, wenn er sich mehr bewegt?",
+    schritte: ["Stelle „Bewegung“ auf „sitzen“. Drücke „▶ 15 Sekunden messen“.", "Sieh auf den Pulsstreifen und zähle die Zacken.", "Beobachte auch, wie Samir atmet.", "Wiederhole das mit „gehen“ und mit „rennen“."]
+  },
+  "bk6": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-kreislauf", seite: 106,
+    kapitel: "Mein Körper",
+    name: "Was bringt das Blut in den Körper?",
+    titel: "Das Blut auf großer Reise",
+    frage: "Wo holt das Blut den Sauerstoff ab?",
+    schritte: ["Stelle „Station“ auf „Lunge“. Drücke „▶ Blut fließen lassen“.", "Beobachte die Zeichen: Was geht ins Blut hinein? Was geht hinaus?", "Wiederhole das mit „Darm“ und mit „Muskel“.", "Lies die Statuszeile, wenn du ein Zeichen nicht erkennst."]
+  },
+  "bk7": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-naehrstoffe", seite: 110,
+    kapitel: "Mein Körper",
+    name: "Welche Nährstoffe stecken im Essen?",
+    titel: "Detektive am Picknicktisch",
+    frage: "Welches Lebensmittel färbt sich mit Iodlösung blau-schwarz?",
+    schritte: ["Wähle „Kartoffel“ und „Iodlösung“. Drücke „▶ Nachweis machen“.", "Wähle „Fettfleckprobe“. Drücke wieder „▶ Nachweis machen“.", "Wiederhole beide Nachweise mit „Butter“ und mit „Apfel“.", "Achte bei der Fettfleckprobe auf das getrocknete Papier."]
+  },
+  "bk8": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-verdauung", seite: 114,
+    kapitel: "Mein Körper",
+    name: "Welchen Weg nimmt die Nahrung?",
+    titel: "Der lange Weg des Butterbrots",
+    frage: "Bei welcher Darmwand gehen die meisten Nährstoffe ins Blut?",
+    schritte: ["Drücke „▶ Nahrung losschicken“. Beobachte, wohin das Brot wandert.", "Stelle „Darmwand“ auf „glatt“. Drücke „▶ 10 Sekunden messen“.", "Lies ab, wie viele Nährstoffe im Blut sind.", "Wiederhole das mit „mit Falten“ und mit „mit Falten und Zotten“."]
+  },
+  "bk9": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-teller", seite: 118,
+    kapitel: "Mein Körper",
+    name: "Was gehört auf einen guten Teller?",
+    titel: "Drei Teller im Vergleich",
+    frage: "Wie viel Gemüse und Obst gehört auf einen ausgewogenen Teller?",
+    schritte: ["Wähle „Samirs Teller“. Sieh, wie viele Viertel Gemüse und Obst sind.", "Sieh auf die Balken: Welcher ragt über die gestrichelte Linie?", "Wiederhole das mit „Elas Teller“ und mit „guter Teller“.", "Vergleiche deine Tabelle mit der Tabelle deines Partners."]
+  },
+  "bk10": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-rauchen", seite: 122,
+    kapitel: "Mein Körper",
+    name: "Was macht Rauchen mit der Lunge?",
+    titel: "Rauch in der Lunge",
+    frage: "Was passiert mit den Lungenbläschen, wenn jemand viele Jahre raucht?",
+    schritte: ["Stelle „Jahre geraucht“ auf „0 Jahre“. Beobachte die Lungenbläschen.", "Lies am Balken ab, wie viele Kästchen gefüllt sind.", "Wiederhole das mit „10 Jahre“ und mit „30 Jahre“.", "Vergleiche: Wie ändert sich die Fläche für Sauerstoff?"]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
