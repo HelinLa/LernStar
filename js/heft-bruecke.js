@@ -5357,6 +5357,78 @@ const HEFT_SEITEN = {
     frage: "Was passiert mit den Lungenbläschen, wenn jemand viele Jahre raucht?",
     schritte: ["Stelle „Jahre geraucht“ auf „0 Jahre“. Beobachte die Lungenbläschen.", "Lies am Balken ab, wie viele Kästchen gefüllt sind.", "Wiederhole das mit „10 Jahre“ und mit „30 Jahre“.", "Vergleiche: Wie ändert sich die Fläche für Sauerstoff?"]
   },
+  "bs1": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-auge", seite: 129,
+    kapitel: "Meine Sinne",
+    name: "Wie sieht das Auge?",
+    titel: "Ein Bild hinten im Auge",
+    frage: "Sieht das Auge, weil Licht hineinfällt oder weil es selbst Strahlen schickt?",
+    schritte: ["Stelle „Lampe im Zimmer“ auf „aus“. Drücke „▶ Licht verfolgen“ und trage ein.", "Stelle die Lampe auf „an“. Sieh auf die Netzhaut: Wie steht das Bild?", "Stelle „Augenlid“ auf „zu“ und ergänze die letzte Zeile.", "Vergleiche die Zeilen: Wann sieht Ela die Blume?"]
+  },
+  "bs2": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-blinder-fleck", seite: 133,
+    kapitel: "Meine Sinne",
+    name: "Wo sieht das Auge nichts?",
+    titel: "Der Punkt verschwindet",
+    frage: "Warum verschwindet der Punkt auf Elas Karte plötzlich?",
+    schritte: ["Stelle „Abstand der Karte“ auf „50 cm“. Sieh auf die Karte oben und trage ein.", "Stelle „30 cm“ ein. Sieh unten ins Auge: Wo liegt das Bild des Punkts?", "Stelle „15 cm“ ein und ergänze die letzte Zeile.", "Vergleiche die Zeilen: Wann ist der Punkt weg?"]
+  },
+  "bs3": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-ohr", seite: 137,
+    kapitel: "Meine Sinne",
+    name: "Wie hört das Ohr?",
+    titel: "Der Weg des Schalls ins Ohr",
+    frage: "Braucht Schall einen Stoff, um zum Ohr zu kommen?",
+    schritte: ["Stelle „Zwischen Wecker und Ohr“ auf „Luft“. Drücke „▶ Wecker klingeln lassen“.", "Beobachte das Trommelfell und trage die erste Zeile ein.", "Wiederhole das mit „Holz“ und mit „keine Luft“.", "Vergleiche die Zeilen: Wann schwingt das Trommelfell nicht?"]
+  },
+  "bs4": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-richtungshoeren", seite: 141,
+    kapitel: "Meine Sinne",
+    name: "Aus welcher Richtung kommt der Ton?",
+    titel: "Wo klatscht Samir?",
+    frage: "Warum braucht Ela zwei Ohren, um die Richtung zu hören?",
+    schritte: ["Stelle „Wo klatscht Samir?“ auf „links“. Drücke „▶ Klatschen“ und trage ein.", "Wiederhole das mit „vorn“ und mit „rechts“.", "Stelle „Rechtes Ohr“ auf „zugehalten“. Drücke bei „rechts“ wieder „▶ Klatschen“.", "Vergleiche die Zeilen: Wann zeigt Ela falsch?"]
+  },
+  "bs5": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-reaktion", seite: 145,
+    kapitel: "Meine Sinne",
+    name: "Wie schnell reagiere ich?",
+    titel: "Das fallende Lineal",
+    frage: "Warum fällt das Lineal ein Stück, bevor Ela es fängt?",
+    schritte: ["Stelle „Startzeichen“ auf „sehen“. Drücke „▶ Lineal fallen lassen“.", "Lies ab, bei wie viel cm Ela fängt. Trage es ein.", "Wiederhole das mit „hören“ und mit „sehen und abgelenkt“.", "Beobachte den Körper: Welche Teile leuchten nacheinander auf?"]
+  },
+  "bs6": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-haut", seite: 149,
+    kapitel: "Meine Sinne",
+    name: "Was fühlt die Haut?",
+    titel: "Fingerspitze oder Rücken?",
+    frage: "Fühlt die Haut an allen Stellen gleich fein?",
+    schritte: ["Stelle „Körperstelle“ auf „Fingerspitze“. Drücke „▶ antippen“.", "Lies Samirs Antwort ab. Sieh in die Lupe und zähle die Sinneszellen.", "Wiederhole das mit „Handrücken“ und mit „Rücken“.", "Vergleiche die Zeilen: Wo fühlt die Haut am feinsten?"]
+  },
+  "bs7": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-reflektor", seite: 153,
+    kapitel: "Meine Sinne",
+    name: "Warum sieht der Autofahrer dich im Dunkeln?",
+    titel: "Gesehen werden im Dunkeln",
+    frage: "Mit welcher Kleidung sieht der Autofahrer Samir am frühesten?",
+    schritte: ["Stelle „Kleidung“ auf „dunkel“. Drücke „▶ Auto fahren lassen“.", "Lies ab, ab wie viel Metern der Fahrer Samir sieht. Trage es ein.", "Wiederhole das mit „hell“ und mit „mit Reflektor“.", "Beobachte: Wie viel Licht kommt zum Fahrer zurück?"]
+  },
+  "bs8": {
+    klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-fledermaus", seite: 157,
+    kapitel: "Meine Sinne",
+    name: "Wie findet die Fledermaus ihr Futter?",
+    titel: "Rufen und horchen in der Nacht",
+    frage: "Wie merkt die Fledermaus im Dunkeln, wo die Motte ist?",
+    schritte: ["Stelle „Abstand zur Motte“ auf „weit (10 m)“. Drücke „▶ fliegen lassen“.", "Lies den Zähler ab und beobachte das Echo. Trage beides ein.", "Wiederhole das mit „mittel (3 m)“ und mit „nah (50 cm)“.", "Vergleiche: Was ändert sich, wenn die Motte näher ist?"]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

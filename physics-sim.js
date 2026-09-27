@@ -7112,6 +7112,43 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('_bkx-cv', '_bkx-cv');
     _pSim.start(dt => _bkxUpdate(dt), (ctx, cv) => _bkxDraw(ctx, cv), []);
   },
+
+  // ── BIOLOGIE 5/6 FOERDER: Wie sieht das Auge? (bs1) ──────────────
+  'bio-auge': modal => { _bsaInit(); modal.innerHTML = _bsaHTML(); _bsaStatus(); _pSim = new PhysicsSimEngine('_bsa-cv', '_bsa-cv'); _pSim.start(dt => _bsaUpdate(dt), (ctx, cv) => _bsaDraw(ctx, cv), []); },
+
+  // ── BIOLOGIE 5/6 FOERDER: Blinder Fleck (bs2) ──────────────
+  'bio-blinder-fleck': modal => { _bsbInit(); modal.innerHTML = _bsbHTML(); _bsbStatus(); _bsbKnoepfe(); _pSim = new PhysicsSimEngine('_bsb-cv','_bsb-cv'); _pSim.start(dt => _bsbUpdate(dt), (ctx,cv) => _bsbDraw(ctx,cv), []); },
+
+
+  // ── BIO 5/6 · OHR: DER WEG DES SCHALLS INS OHR  (Förderheft Bio 5/6 · bs3) ──
+  'bio-ohr': modal => {
+    _bsoInit();
+    modal.innerHTML = _bsoHTML();
+    _bsoStatus();
+    _pSim = new PhysicsSimEngine('_bso-cv', '_bso-cv');
+    _pSim.start(dt => _bsoUpdate(dt), (ctx, cv) => _bsoDraw(ctx, cv), []);
+  },
+
+  // ── BIOLOGIE 5/6 FOERDER: Richtungshören (bs4) ──────────────
+  'bio-richtungshoeren': modal => { _bsrInit(); modal.innerHTML = _bsrHTML(); _bsrStatus(); _bsrKnoepfe(); _pSim = new PhysicsSimEngine('_bsr-cv','_bsr-cv'); _pSim.start(dt => _bsrUpdate(dt), (ctx,cv) => _bsrDraw(ctx,cv), []); },
+
+  // ── BIOLOGIE 5/6 FOERDER: Das fallende Lineal (bs5) ──────────────
+  'bio-reaktion': modal => { _bszInit(); modal.innerHTML = _bszHTML(); _bszStatus(); _bszListe(); _bszKnoepfe(); _pSim = new PhysicsSimEngine('_bsz-cv','_bsz-cv'); _pSim.start(dt => _bszUpdate(dt), (ctx,cv) => _bszDraw(ctx,cv), []); },
+
+  // ── BIOLOGIE 5/6 FOERDER: Was fühlt die Haut? (bs6) ──────────────
+  'bio-haut': modal => { _bshInit(); modal.innerHTML = _bshHTML(); _bshStatus(); _bshKnoepfe(); _pSim = new PhysicsSimEngine('_bsh-cv','_bsh-cv'); _pSim.start(dt => _bshUpdate(dt), (ctx,cv) => _bshDraw(ctx,cv), []); },
+
+  // ── BIO 5/6 · GESEHEN WERDEN IM DUNKELN: REFLEKTOR  (Förderheft Bio 5/6 · bs7) ──
+  'bio-reflektor': modal => {
+    _bsxInit();
+    modal.innerHTML = _bsxHTML();
+    _bsxStatus();
+    _pSim = new PhysicsSimEngine('_bsx-cv', '_bsx-cv');
+    _pSim.start(dt => _bsxUpdate(dt), (ctx, cv) => _bsxDraw(ctx, cv), []);
+  },
+
+  // ── BIOLOGIE 5/6 FOERDER: Fledermaus jagt mit Echos (bs8) ──────────────
+  'bio-fledermaus': modal => { _bsmInit(); modal.innerHTML = _bsmHTML(); _bsmStatus(); _bsmKnoepfe(); _pSim = new PhysicsSimEngine('_bsm-cv','_bsm-cv'); _pSim.start(dt => _bsmUpdate(dt), (ctx,cv) => _bsmDraw(ctx,cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -101306,4 +101343,4757 @@ function _bkxDraw(ctx, cv) {
   _bkxBalken(ctx);
   _bkxWatte(ctx);
   _bioFxAlleDraw(ctx, _bkx.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bs1 „Ein Bild hinten im Auge“ (Kennung bio-auge)
+// Links ein Zimmer mit Deckenlampe und einer Blume im Topf, rechts Elas
+// Auge im Schnitt von der Seite, daneben die Netzhaut vergroessert und das
+// Gehirn. Lichtpakete (wandernde Punkte) laufen von der Lampe zur Blume und
+// von der Blume durch Pupille und Linse auf die Netzhaut. Vom Auge geht NIE
+// ein Punkt weg (Gegenprobe zur Sehstrahl-Vorstellung).
+// Fachlich (BIO_PROFIL): Die Linse bildet ein umgekehrtes, verkleinertes
+// Bild auf der Netzhaut; der Sehnerv tritt an einer Stelle ohne Netzhaut
+// aus (Luecke in der Netzhaut, blinder Fleck – hier nicht benannt).
+// Geometrie: Jeder Bildpunkt liegt auf der Geraden Gegenstand -> Linsenmitte,
+// geschnitten mit dem Netzhautkreis; alle Pakete eines Punktes treffen dort.
+// Drei Zustaende, wie im Heft (sim_plan.werte):
+//   Lampe aus            -> kein Licht auf der Netzhaut · kein Bild · Ela sieht nichts
+//   Lampe an, Lid offen  -> Licht auf der Netzhaut · kleines Bild, auf dem Kopf · …
+//   Lampe an, Lid zu     -> Pakete bleiben am Lid haengen, Netzhaut dunkel
+// Aha („▶ Licht verfolgen“, auch nach jedem Umstellen): Vier grosse Pakete
+// laufen in Zeitlupe mit Spur, kreuzen sich in der Linse und landen – oben
+// wird unten. Erst NACH der Landung laufen Signale ueber den Sehnerv; im
+// Gehirn erscheint das Bild erst so wie auf der Netzhaut und dreht sich dann
+// weich richtig herum (Funken, Lichtring). Keine Luecken- oder Tabellenwoerter
+// als Effekttext, kein Blinken, kein Ton, keine Wertung.
+// ════════════════════════════════════════════════════════════════════════
+let _bsa = null;
+const _BSA_AX = 125;                 // optische Achse (y)
+const _BSA_EX = 240;                 // Augenmitte (x)
+const _BSA_ER = 52;                  // Augapfel aussen
+const _BSA_RR = 49;                  // Netzhautkreis
+const _BSA_LX = 204;                 // Linsenmitte (x)
+const _BSA_FX = 55, _BSA_FB = 182;   // Blume: Mitte, Topfboden
+const _BSA_FH = 110;                 // Blume: Hoehe vom Topfboden bis Bluetenspitze
+const _BSA_LAMPE = [80, 24];
+const _BSA_LIDX = 183;               // hier bleibt Licht am geschlossenen Lid haengen
+const _BSA_NERV = 0.32;              // Winkel, an dem der Sehnerv austritt (rad)
+// Punkte der Blume, von denen Licht ins Auge geht (lokal: Topfboden = 0, oben negativ)
+const _BSA_PUNKTE = [
+  { lx: 0,  ly: -108, f: '#ff5d73' },   // Bluetenspitze
+  { lx: 0,  ly: -96,  f: '#ffd54a' },   // Bluetenmitte
+  { lx: 9,  ly: -64,  f: '#5fbf5a' },   // Blatt
+  { lx: 0,  ly: -14,  f: '#e07b3f' }    // Topf
+];
+// Lupe (Netzhaut vergroessert)
+const _BSA_LUPE = { x: 330, y: 130, w: 84, h: 92, s: 0.66 };
+// Ablauf von „▶ Licht verfolgen“ (Sekunden)
+const _BSA_T = { blume: 1.0, linse: 2.4, netz: 3.4, nerv: 4.3, gehirn: 5.5, dreh0: 5.9, dreh1: 7.1, ende: 7.8 };
+
+function _bsaInit() {
+  _bsa = {
+    lampe: 'an', lid: 'offen',
+    t: 0, hell: 1, pup: 7, lidF: 0,
+    pakete: [], spawn: 0,
+    bild: 0, fuellen: false,
+    funkeln: [],                     // ankommende Pakete in der Lupe
+    pulse: [], pulsT: 0,
+    phase: 'bereit', tt: 0, schritt: 0, spur: [],
+    gehirn: 0, dreh: Math.PI, gehirnZiel: 0,
+    lupeLeuchten: 0,
+    fx: { teile: [] }, letzt: ''
+  };
+}
+
+/* ── Geometrie ─────────────────────────────────────────────────────────── */
+function _bsaWelt(p) { return [_BSA_FX + p.lx, _BSA_FB + p.ly]; }
+// Bildpunkt: Gerade Gegenstand -> Linsenmitte, geschnitten mit dem Netzhautkreis.
+function _bsaBildpunkt(x, y) {
+  let dx = _BSA_LX - x, dy = _BSA_AX - y;
+  const l = Math.hypot(dx, dy); dx /= l; dy /= l;
+  const wx = _BSA_LX - _BSA_EX, wy = 0;
+  const b = wx * dx + wy * dy, c = wx * wx + wy * wy - _BSA_RR * _BSA_RR;
+  const s = -b + Math.sqrt(b * b - c);
+  return [_BSA_LX + s * dx, _BSA_AX + s * dy];
+}
+// Punkt, an dem ein Strahl P -> Linse das geschlossene Lid trifft
+function _bsaLidpunkt(P, L) {
+  const u = (_BSA_LIDX - P[0]) / (L[0] - P[0]);
+  return [_BSA_LIDX, P[1] + u * (L[1] - P[1])];
+}
+function _bsaSieht() { return _bsa.lampe === 'an' && _bsa.lid === 'offen'; }
+function _bsaNervPunkt(u) {
+  const a = [_BSA_EX + _BSA_RR * Math.cos(_BSA_NERV), _BSA_AX + _BSA_RR * Math.sin(_BSA_NERV)];
+  const b = [316, 158], c = [322, 104], d = [350, 74];
+  const v = 1 - u;
+  return [v * v * v * a[0] + 3 * v * v * u * b[0] + 3 * v * u * u * c[0] + u * u * u * d[0],
+          v * v * v * a[1] + 3 * v * v * u * b[1] + 3 * v * u * u * c[1] + u * u * u * d[1]];
+}
+function _bsaMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+
+/* ── Lichtpakete ───────────────────────────────────────────────────────── */
+// Ein Paket: Wegpunkte w, Dauer je Abschnitt, Farbe je Abschnitt, Ende: 'netz' oder 'lid'.
+function _bsaPaketNeu(i, a) {
+  const pk = _BSA_PUNKTE[i];
+  const P = _bsaWelt(pk), L = [_BSA_LX, _BSA_AX + a];
+  const w = [_BSA_LAMPE.slice(), P];
+  let ende;
+  if (_bsa.lid === 'zu') { w.push(_bsaLidpunkt(P, L)); ende = 'lid'; }
+  else { w.push(L, _bsaBildpunkt(P[0], P[1])); ende = 'netz'; }
+  const dauer = [];
+  for (let k = 1; k < w.length; k++) dauer.push(Math.hypot(w[k][0] - w[k - 1][0], w[k][1] - w[k - 1][1]) / 140);
+  _bsa.pakete.push({ w, dauer, seg: 0, u: 0, i, ende, aus: -1 });
+}
+function _bsaPaketOrt(p) {
+  const a = p.w[p.seg], b = p.w[Math.min(p.seg + 1, p.w.length - 1)];
+  return [a[0] + (b[0] - a[0]) * p.u, a[1] + (b[1] - a[1]) * p.u];
+}
+function _bsaPaketeUpdate(dt) {
+  const L = _bsa.pakete;
+  for (let k = L.length - 1; k >= 0; k--) {
+    const p = L[k];
+    if (p.aus >= 0) { p.aus += dt; if (p.aus > 0.45) L.splice(k, 1); continue; }
+    p.u += dt / p.dauer[p.seg];
+    while (p.u >= 1 && p.aus < 0) {
+      p.u -= 1; p.seg++;
+      if (p.seg >= p.dauer.length) {
+        p.seg = p.dauer.length - 1; p.u = 1; p.aus = 0;
+        if (p.ende === 'netz') {
+          _bsa.bild = Math.min(1, _bsa.bild + 0.14);
+          const pk = _BSA_PUNKTE[p.i];
+          if (_bsa.funkeln.length < 40) _bsa.funkeln.push({ lx: pk.lx + (Math.random() - 0.5) * 6, ly: pk.ly + (Math.random() - 0.5) * 6, f: pk.f, alter: 0 });
+        }
+      }
+    }
+  }
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bsaAufraeumen() {
+  _bsa.fx = { teile: [] };
+  _bsa.phase = 'bereit'; _bsa.tt = 0; _bsa.schritt = 0; _bsa.spur = [];
+  _bsa.gehirnZiel = 0; _bsa.dreh = Math.PI; _bsa.lupeLeuchten = 0; _bsa.fuellen = false;
+  _bsa.pakete = []; _bsa.pulse = [];
+}
+function _bsaStelle(k, v) {
+  if (!_bsa) return;
+  _bsa[k] = v;
+  _bsaAufraeumen();
+  _bsaVerfolgen();                    // jede Umstellung zeigt gleich den Weg des Lichts
+}
+function _bsaLampe(v) { _bsaStelle('lampe', v === 'an' ? 'an' : 'aus'); }
+function _bsaLid(v) { _bsaStelle('lid', v === 'zu' ? 'zu' : 'offen'); }
+function _bsaMarke(lampe, lid) {
+  if (!_bsa) return;
+  _bsa.lampe = lampe; _bsa.lid = lid;
+  _bsaAufraeumen();
+  _bsaVerfolgen();
+}
+// „▶ Licht verfolgen“: vier grosse Pakete in Zeitlupe, mit Spur.
+function _bsaVerfolgen() {
+  if (!_bsa) return;
+  _bsaAufraeumen();
+  _bsa.phase = 'verfolgen';
+  const spur = [];
+  if (_bsa.lampe === 'an') {
+    for (const i of [0, 3]) for (const a of [-5, 5]) {
+      const P = _bsaWelt(_BSA_PUNKTE[i]), L = [_BSA_LX, _BSA_AX + a];
+      if (_bsa.lid === 'zu') {
+        const Z = _bsaLidpunkt(P, L);
+        const frac = (Z[0] - P[0]) / (L[0] - P[0]);
+        spur.push({ w: [_BSA_LAMPE.slice(), P, Z], zeit: [0, _BSA_T.blume, _BSA_T.blume + (_BSA_T.linse - _BSA_T.blume) * frac], f: _BSA_PUNKTE[i].f });
+      } else {
+        spur.push({ w: [_BSA_LAMPE.slice(), P, L, _bsaBildpunkt(P[0], P[1])],
+                    zeit: [0, _BSA_T.blume, _BSA_T.linse, _BSA_T.netz], f: _BSA_PUNKTE[i].f });
+      }
+    }
+  }
+  _bsa.spur = spur;
+  _bsaStatus();
+}
+function _bsaNeu() {
+  if (!_bsa) return;
+  _bsa.lampe = 'an'; _bsa.lid = 'offen';
+  _bsaAufraeumen();
+  _bsa.bild = 0; _bsa.funkeln = [];
+  _bsaStatus();
+}
+function _bsaKnoepfe() {
+  if (!_bsa || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bsa]').forEach(b => {
+      const d = String(b.getAttribute('data-bsa'));
+      const an = d === 'lampe:' + _bsa.lampe || d === 'lid:' + _bsa.lid;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bsaHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bsa="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie sieht das Auge?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ela sieht eine Blume an. Rechts ist ihr Auge, von der Seite aufgeschnitten. Die hellen Punkte sind Licht. Stelle „Lampe im Zimmer“ und „Augenlid“ um. Dann sieh auf die Netzhaut.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsa-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Lampe im Zimmer</span>
+          ${k('lampe:aus', "_bsaLampe('aus')", 'aus')}
+          ${k('lampe:an', "_bsaLampe('an')", 'an')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="margin-right:4px">Augenlid</span>
+          ${k('lid:offen', "_bsaLid('offen')", 'offen')}
+          ${k('lid:zu', "_bsaLid('zu')", 'zu')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bsaVerfolgen()">▶ Licht verfolgen</button>
+          <button class="sim-btn" onclick="_bsaNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was sieht Ela?</div>
+        <div class="lmp-status on" id="_bsa-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bsaMarke('aus','offen')">Lampe aus, Augenlid offen</button>
+          <button class="sim-btn" onclick="_bsaMarke('an','offen')">Lampe an, Augenlid offen</button>
+          <button class="sim-btn" onclick="_bsaMarke('an','zu')">Lampe an, Augenlid zu</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Das Licht kommt von der Lampe. Es fällt auf die Blume und von dort ins Auge. Rechts unten siehst du die <b>Netzhaut</b> vergrößert.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bsaErgebnis() {
+  return _bsaSieht()
+    ? 'Licht auf der Netzhaut · kleines Bild, auf dem Kopf · Ela sieht die Blume'
+    : 'kein Licht auf der Netzhaut · kein Bild · Ela sieht nichts';
+}
+// Kurzzeile unter dem Bild
+function _bsaKurz() {
+  if (_bsaSieht()) return 'Lampe an · Licht auf der Netzhaut · Ela sieht die Blume';
+  if (_bsa.lampe === 'aus') return 'Lampe aus · kein Licht auf der Netzhaut · Ela sieht nichts';
+  return 'Augenlid zu · kein Licht auf der Netzhaut · Ela sieht nichts';
+}
+function _bsaStatus() {
+  if (!_bsa) return;
+  const kopf = 'Lampe ' + _bsa.lampe + ' · Augenlid ' + _bsa.lid;
+  const z = kopf + '|' + _bsaErgebnis();
+  _bsa.letzt = z;
+  const el = document.getElementById('_bsa-status');
+  if (el) el.innerHTML = '<b>' + kopf + '</b><br>' + _bsaErgebnis();
+  _bsaKnoepfe();
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _bsaUpdate(dt) {
+  if (!_bsa) return;
+  dt = _bioFxDt(dt);
+  const s = _bsa;
+  s.t += dt;
+  const nah = (ist, soll, rate) => ist + (soll - ist) * Math.min(1, dt * rate);
+  s.hell = nah(s.hell, s.lampe === 'an' ? 1 : 0, 4);
+  s.pup = nah(s.pup, s.lampe === 'an' ? 7 : 13, 1.2);          // Pupille weitet sich im Dunkeln
+  s.lidF = nah(s.lidF, s.lid === 'zu' ? 1 : 0, 5);
+  // gleichmaessiger Lichtstrom (in der Zeitlupe ruht er, damit die Spur klar bleibt)
+  if (s.lampe === 'an' && s.phase !== 'verfolgen') {
+    s.spawn += dt * 5;
+    while (s.spawn >= 1) {
+      s.spawn -= 1;
+      const i = Math.floor(Math.random() * _BSA_PUNKTE.length) % _BSA_PUNKTE.length;
+      _bsaPaketNeu(i, (Math.random() * 2 - 1) * 0.7 * Math.min(s.pup, 7));
+    }
+  }
+  _bsaPaketeUpdate(dt);
+  // Bild auf der Netzhaut: waechst mit ankommendem Licht, verblasst ohne
+  if (s.fuellen) s.bild = Math.min(1, s.bild + dt * 1.8);
+  if (!_bsaSieht()) s.bild = Math.max(0, s.bild - dt * 1.5);
+  else s.bild = Math.max(0, s.bild - dt * 0.12 * s.bild);
+  for (let k = s.funkeln.length - 1; k >= 0; k--) { s.funkeln[k].alter += dt; if (s.funkeln[k].alter > 0.9) s.funkeln.splice(k, 1); }
+  // Signale im Sehnerv, solange ein Bild da ist
+  if (_bsaSieht() && s.bild > 0.6 && s.phase !== 'verfolgen') {
+    s.pulsT += dt;
+    if (s.pulsT > 0.8) { s.pulsT = 0; s.pulse.push({ u: 0 }); }
+  }
+  for (let k = s.pulse.length - 1; k >= 0; k--) { s.pulse[k].u += dt / 1.1; if (s.pulse[k].u >= 1) s.pulse.splice(k, 1); }
+  if (s.phase === 'verfolgen') _bsaAblauf(dt);
+  s.gehirn = nah(s.gehirn, s.gehirnZiel * (_bsaSieht() ? 1 : 0), 3);
+  if (s.lupeLeuchten > 0) s.lupeLeuchten = Math.max(0, s.lupeLeuchten - dt);
+  _bioFxAlleUpdate(s.fx, dt);
+}
+// Zeitplan von „▶ Licht verfolgen“
+function _bsaAblauf(dt) {
+  const s = _bsa, T = _BSA_T, fx = s.fx;
+  s.tt += dt;
+  const tt = s.tt;
+  const ab = (zeit) => { if (s.schritt < zeit[0] && tt >= zeit[1]) { s.schritt = zeit[0]; return true; } return false; };
+  if (s.lampe === 'aus') {
+    if (ab([1, 0.3])) _bioFxWelle(fx.teile, _BSA_LAMPE[0], _BSA_LAMPE[1], '#94a3b8', 30);
+    if (ab([2, 1.0])) _bioFxWelle(fx.teile, _BSA_LUPE.x + _BSA_LUPE.w / 2, _BSA_LUPE.y + _BSA_LUPE.h / 2, '#94a3b8', 40);
+    if (ab([3, 1.5])) _bioFxBanner(fx, 'Die Blume steht noch da.', 3.0, '#93c5fd');
+    if (tt >= 2.6) s.phase = 'fertig';
+    return;
+  }
+  if (ab([1, T.blume])) {
+    for (const sp of s.spur) _bioFxWelle(fx.teile, sp.w[1][0], sp.w[1][1], '#fff3b0', 14);
+  }
+  if (s.lid === 'zu') {
+    const an = Math.max(...s.spur.map(sp => sp.zeit[2]));
+    if (ab([2, an])) for (const sp of s.spur) _bioFxWelle(fx.teile, sp.w[2][0], sp.w[2][1], '#fde68a', 16);
+    if (ab([3, an + 0.6])) _bioFxWelle(fx.teile, _BSA_LUPE.x + _BSA_LUPE.w / 2, _BSA_LUPE.y + _BSA_LUPE.h / 2, '#94a3b8', 40);
+    if (tt >= an + 1.4) s.phase = 'fertig';
+    return;
+  }
+  // Lampe an, Lid offen: Landung, dann Sehnerv, dann Gehirn
+  if (ab([2, T.netz])) {
+    for (const sp of s.spur) { const e = sp.w[3]; _bioFxWelle(fx.teile, e[0], e[1], sp.f, 14); }
+    s.fuellen = true; s.lupeLeuchten = 1.8;
+    const L = _BSA_LUPE;
+    _bioFxFunken(fx.teile, L.x + L.w / 2, L.y + 22, 5, ['#fff3b0', '#ffffff', '#ffd54a']);
+    _bioFxFunken(fx.teile, L.x + L.w / 2, L.y + L.h - 16, 5, ['#fff3b0', '#ffffff', '#ff9aa8']);
+  }
+  if (ab([3, T.nerv])) {
+    s.pulse.push({ u: 0 }, { u: -0.25 }, { u: -0.5 });
+    _bioFxBanner(fx, 'Über den Sehnerv zum Gehirn', 3.0, '#ffd84d');
+  }
+  if (ab([4, T.gehirn])) { s.gehirnZiel = 1; s.dreh = Math.PI; }
+  if (tt >= T.dreh0) s.dreh = Math.PI * (1 - _bioFxEase.sanft(_bioFxKlemme((tt - T.dreh0) / (T.dreh1 - T.dreh0))));
+  if (ab([5, T.dreh1])) {
+    _bioFxWelle(fx.teile, 372, 48, '#ffd84d', 46);
+    _bioFxFunken(fx.teile, 372, 40, 10);
+  }
+  if (tt >= T.ende) { s.phase = 'fertig'; s.fuellen = false; }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+// Blume im Topf, lokal: Topfboden-Mitte = (0,0), nach oben negativ.
+function _bsaBlume(ctx, schwank) {
+  ctx.fillStyle = '#c8683a';
+  ctx.beginPath(); ctx.moveTo(-11, 0); ctx.lineTo(11, 0); ctx.lineTo(15, -26); ctx.lineTo(-15, -26); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#a9532b'; ctx.fillRect(-17, -32, 34, 6);
+  ctx.save();
+  ctx.translate(0, -32); ctx.rotate(schwank);
+  ctx.strokeStyle = '#3f9b3a'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(-3, -30, 0, -60); ctx.stroke();
+  ctx.fillStyle = '#5fbf5a';
+  ctx.beginPath(); ctx.ellipse(-9, -22, 10, 4.5, 0.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(9, -32, 10, 4.5, -0.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#ff5d73';
+  for (let k = 0; k < 6; k++) {
+    const w = k * Math.PI / 3 - Math.PI / 2;
+    ctx.beginPath(); ctx.ellipse(Math.cos(w) * 8, -64 + Math.sin(w) * 8, 6.5, 5, w, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#ffd54a';
+  ctx.beginPath(); ctx.arc(0, -64, 5.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _bsaZimmer(ctx, W, H, t) {
+  const s = _bsa, h = s.hell;
+  ctx.fillStyle = _bsaMisch('#1c2233', '#fdf3dc', h);
+  ctx.fillRect(0, 0, W, H);
+  // Decke
+  ctx.fillStyle = _bsaMisch('#151a27', '#efe2c4', h); ctx.fillRect(0, 0, W, 6);
+  // Tisch
+  ctx.fillStyle = _bsaMisch('#3a3024', '#b88a5a', h);
+  ctx.fillRect(16, _BSA_FB, 82, 6);
+  ctx.fillRect(22, _BSA_FB + 6, 5, 40); ctx.fillRect(87, _BSA_FB + 6, 5, 40);
+  // Lichtkegel der Lampe
+  if (h > 0.02) {
+    ctx.save();
+    ctx.globalAlpha = 0.2 * h;
+    ctx.fillStyle = '#fff1a8';
+    ctx.beginPath(); ctx.moveTo(_BSA_LAMPE[0] - 9, _BSA_LAMPE[1]); ctx.lineTo(_BSA_LAMPE[0] + 9, _BSA_LAMPE[1]);
+    ctx.lineTo(128, _BSA_FB); ctx.lineTo(14, _BSA_FB); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  // Lampe: Kabel, Schirm, Birne
+  const lx = _BSA_LAMPE[0], ly = _BSA_LAMPE[1];
+  ctx.strokeStyle = _bsaMisch('#475569', '#6b7280', h); ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(lx, 6); ctx.lineTo(lx, ly - 9); ctx.stroke();
+  ctx.fillStyle = _bsaMisch('#334155', '#4b5563', h);
+  ctx.beginPath(); ctx.moveTo(lx - 5, ly - 10); ctx.lineTo(lx + 5, ly - 10); ctx.lineTo(lx + 13, ly - 1); ctx.lineTo(lx - 13, ly - 1); ctx.closePath(); ctx.fill();
+  if (h > 0.05) _bioFxLeuchten(ctx, lx, ly + 2, 7 + 2 * h, t, '255,236,150');
+  ctx.fillStyle = _bsaMisch('#64748b', '#fff6b8', h);
+  ctx.beginPath(); ctx.arc(lx, ly + 2, 5, 0, 2 * Math.PI); ctx.fill();
+  // Blume (im Dunkeln nur schwach zu ahnen)
+  ctx.save();
+  ctx.globalAlpha = 0.28 + 0.72 * h;
+  ctx.translate(_BSA_FX, _BSA_FB);
+  _bsaBlume(ctx, Math.sin(t * 1.1) * 0.035);
+  ctx.restore();
+}
+function _bsaAuge(ctx, t) {
+  const s = _bsa, X = _BSA_EX, Y = _BSA_AX;
+  // Augapfel
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(X, Y, _BSA_ER, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#eef7fc';
+  ctx.beginPath(); ctx.arc(X, Y, _BSA_ER - 4, 0, 2 * Math.PI); ctx.fill();
+  // Netzhaut hinten, mit Luecke dort, wo der Sehnerv austritt
+  const leuchtet = s.bild;
+  ctx.strokeStyle = _bsaMisch('#b85c66', '#ffb3a7', leuchtet); ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(X, Y, _BSA_RR, -1.15, _BSA_NERV - 0.08); ctx.stroke();
+  ctx.beginPath(); ctx.arc(X, Y, _BSA_RR, _BSA_NERV + 0.08, 1.15); ctx.stroke();
+  // Hornhaut vorn
+  ctx.fillStyle = 'rgba(224,242,254,0.85)'; ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(X - 30, Y, 26, 2.35, 3.93); ctx.stroke();
+  // Regenbogenhaut mit Pupille (Luecke)
+  const p = s.pup, ih = Math.sqrt(_BSA_ER * _BSA_ER - 44 * 44);
+  ctx.strokeStyle = '#8b5a2b'; ctx.lineWidth = 4; ctx.lineCap = 'butt';
+  ctx.beginPath(); ctx.moveTo(196, Y - ih); ctx.lineTo(196, Y - p); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(196, Y + p); ctx.lineTo(196, Y + ih); ctx.stroke();
+  // Linse
+  ctx.fillStyle = 'rgba(186,230,253,0.95)'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(_BSA_LX, Y, 6, 18, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+}
+function _bsaLidMalen(ctx) {
+  const f = _bsa.lidF;
+  if (f < 0.01) return;
+  const X = _BSA_EX, Y = _BSA_AX, a1 = 4.10, a0 = a1 - 1.92 * f;
+  ctx.fillStyle = '#e9b48e'; ctx.strokeStyle = '#b77b52'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(X, Y, 61, a0, a1); ctx.arc(X, Y, 40, a1, a0, true); ctx.closePath(); ctx.fill(); ctx.stroke();
+  // Wimpern an der Lidkante
+  const kx = Math.cos(a0), ky = Math.sin(a0);
+  ctx.strokeStyle = '#5b3a24'; ctx.lineWidth = 1.2;
+  for (let k = 0; k < 3; k++) {
+    const r = 48 + k * 5;
+    ctx.beginPath(); ctx.moveTo(X + kx * r, Y + ky * r); ctx.lineTo(X + kx * r - 5 - k, Y + ky * r + 5); ctx.stroke();
+  }
+}
+// Bild der Blume, auf dem Kopf, direkt an der Netzhaut
+function _bsaNetzBild(ctx) {
+  const b = _bsa.bild;
+  if (b < 0.02) return;
+  const unten = _bsaBildpunkt(_BSA_FX, _BSA_FB), oben = _bsaBildpunkt(_BSA_FX, _BSA_FB - _BSA_FH);
+  const k = (oben[1] - unten[1]) / _BSA_FH;
+  ctx.save();
+  ctx.globalAlpha = b;
+  ctx.translate(unten[0] - 7, unten[1]);
+  ctx.scale(k, -k);
+  _bsaBlume(ctx, 0);
+  ctx.restore();
+}
+function _bsaNerv(ctx) {
+  ctx.strokeStyle = '#d4a017'; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath();
+  let q = _bsaNervPunkt(0); ctx.moveTo(q[0], q[1]);
+  for (let k = 1; k <= 24; k++) { q = _bsaNervPunkt(k / 24); ctx.lineTo(q[0], q[1]); }
+  ctx.stroke();
+  ctx.strokeStyle = '#f7d774'; ctx.lineWidth = 4; ctx.stroke();
+  for (const p of _bsa.pulse) {
+    if (p.u < 0) continue;
+    const o = _bsaNervPunkt(p.u);
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.beginPath(); ctx.arc(o[0], o[1], 3.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgba(255,200,40,0.45)';
+    ctx.beginPath(); ctx.arc(o[0], o[1], 6, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _bsaGehirn(ctx, t, tf) {
+  const s = _bsa, gx = 372, gy = 48;
+  ctx.fillStyle = '#f9c6cf'; ctx.strokeStyle = '#d97a8e'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(gx, gy, 40, 29, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(217,122,142,0.7)'; ctx.lineWidth = 1.4;
+  for (let r = 0; r < 3; r++) {
+    ctx.beginPath();
+    for (let x = -32; x <= 32; x += 4) {
+      const y = -14 + r * 14 + Math.sin(x * 0.35 + r) * 3;
+      if (x === -32) ctx.moveTo(gx + x, gy + y); else ctx.lineTo(gx + x, gy + y);
+    }
+    ctx.stroke();
+  }
+  ctx.fillStyle = tf; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Gehirn', gx, 14);
+  // Was im Gehirn ankommt: erst wie auf der Netzhaut, dann dreht es sich weich
+  if (s.gehirn > 0.02) {
+    ctx.save();
+    ctx.globalAlpha = s.gehirn;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#ffd84d'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(gx, gy, 24, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.translate(gx, gy); ctx.rotate(s.dreh);
+    const k = 0.34;
+    ctx.translate(0, _BSA_FH * k / 2);
+    ctx.scale(k, k);
+    _bsaBlume(ctx, Math.sin(t * 1.1) * 0.035);
+    ctx.restore();
+  }
+}
+function _bsaLupe(ctx, t, tf) {
+  const s = _bsa, L = _BSA_LUPE, b = s.bild;
+  // Hilfslinien vom Bild auf der Netzhaut zur Lupe
+  const unten = _bsaBildpunkt(_BSA_FX, _BSA_FB), oben = _bsaBildpunkt(_BSA_FX, _BSA_FB - _BSA_FH);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(148,163,184,0.8)'; ctx.lineWidth = 1;
+  if (ctx.setLineDash) ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(unten[0] + 2, unten[1]); ctx.lineTo(L.x, L.y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(oben[0] + 2, oben[1]); ctx.lineTo(L.x, L.y + L.h); ctx.stroke();
+  ctx.restore();
+  if (s.lupeLeuchten > 0) _bioFxLeuchten(ctx, L.x + L.w / 2, L.y + L.h / 2, 44, t, '255,216,77');
+  // Netzhaut: dunkel, oder hell mit Bild
+  ctx.save();
+  _bioFxRundRect(ctx, L.x, L.y, L.w, L.h, 8);
+  ctx.fillStyle = _bsaMisch('#3a1a20', '#f8d3c8', b); ctx.fill();
+  ctx.strokeStyle = '#b85c66'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.clip();
+  // Aederchen
+  ctx.strokeStyle = 'rgba(190,70,80,' + (0.25 + 0.35 * b).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(L.x, L.y + 70); ctx.quadraticCurveTo(L.x + 40, L.y + 55, L.x + L.w, L.y + 80); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(L.x + 20, L.y); ctx.quadraticCurveTo(L.x + 30, L.y + 40, L.x + 10, L.y + L.h); ctx.stroke();
+  const ox = L.x + L.w / 2, oy = L.y + L.h / 2 - _BSA_FH * L.s / 2;
+  if (b > 0.02) {
+    ctx.save();
+    ctx.globalAlpha = b;
+    ctx.translate(ox, oy); ctx.scale(L.s, -L.s);
+    _bsaBlume(ctx, 0);
+    ctx.restore();
+  }
+  // gerade ankommendes Licht funkelt kurz
+  for (const f of s.funkeln) {
+    const a = 1 - f.alter / 0.9;
+    ctx.fillStyle = f.f; ctx.globalAlpha = 0.8 * a;
+    ctx.beginPath(); ctx.arc(ox + f.lx * L.s, oy - f.ly * L.s, 2 + 2 * a, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  ctx.fillStyle = tf; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Netzhaut', L.x + L.w / 2, L.y - 15);
+  ctx.font = '700 9px sans-serif';
+  ctx.fillText('(vergrößert)', L.x + L.w / 2, L.y - 4);
+}
+function _bsaPaketMalen(ctx, x, y, farbe, r) {
+  ctx.fillStyle = farbe; ctx.globalAlpha = 0.3;
+  ctx.beginPath(); ctx.arc(x, y, r * 2, 0, 2 * Math.PI); ctx.fill();
+  ctx.globalAlpha = 1;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+}
+function _bsaPakete(ctx) {
+  ctx.save();
+  for (const p of _bsa.pakete) {
+    const o = _bsaPaketOrt(p);
+    const farbe = p.seg === 0 ? '#fff1a8' : _BSA_PUNKTE[p.i].f;
+    const a = p.aus >= 0 ? Math.max(0, 1 - p.aus / 0.45) : 1;
+    ctx.save(); ctx.globalAlpha = a;
+    _bsaPaketMalen(ctx, o[0], o[1], farbe, 2.4);
+    ctx.restore();
+  }
+  ctx.restore();
+}
+// Grosse Pakete mit Spur (Zeitlupe)
+function _bsaSpur(ctx) {
+  const s = _bsa;
+  if (!s.spur.length) return;
+  const tt = s.phase === 'verfolgen' ? s.tt : 1e9;
+  const blass = s.phase === 'verfolgen' ? 0.85 : 0.45;
+  ctx.save();
+  for (const sp of s.spur) {
+    const w = sp.w, z = sp.zeit;
+    const pts = [w[0]];
+    let kopf = null, abschnitt = 0;
+    for (let k = 1; k < w.length; k++) {
+      if (tt >= z[k]) { pts.push(w[k]); abschnitt = k; continue; }
+      if (tt > z[k - 1]) {
+        const u = _bioFxEase.sanft((tt - z[k - 1]) / (z[k] - z[k - 1]));
+        kopf = [w[k - 1][0] + (w[k][0] - w[k - 1][0]) * u, w[k - 1][1] + (w[k][1] - w[k - 1][1]) * u];
+        pts.push(kopf); abschnitt = k - 1;
+      }
+      break;
+    }
+    // Spur: von der Lampe gelblich, ab der Blume in der Farbe des Blumenpunkts
+    for (let k = 1; k < pts.length; k++) {
+      ctx.strokeStyle = k === 1 ? '#f5d65b' : sp.f; ctx.globalAlpha = blass; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(pts[k - 1][0], pts[k - 1][1]); ctx.lineTo(pts[k][0], pts[k][1]); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    if (kopf) {
+      ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+      _bsaPaketMalen(ctx, kopf[0], kopf[1], abschnitt === 0 ? '#fff1a8' : sp.f, 4.5);
+      ctx.beginPath(); ctx.arc(kopf[0], kopf[1], 4.5, 0, 2 * Math.PI); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _bsaDraw(ctx, cv) {
+  if (!_bsa) return;
+  const W = cv.width, H = cv.height, s = _bsa, t = s.t;
+  const tf = _bsaMisch('#e2e8f0', '#1e293b', s.hell);
+  ctx.save();
+  _bsaZimmer(ctx, W, H, t);
+  _bsaNerv(ctx);
+  _bsaAuge(ctx, t);
+  _bsaNetzBild(ctx);
+  _bsaPakete(ctx);
+  _bsaSpur(ctx);
+  _bsaLidMalen(ctx);
+  _bsaGehirn(ctx, t, tf);
+  _bsaLupe(ctx, t, tf);
+  // Beschriftungen
+  ctx.fillStyle = tf; ctx.strokeStyle = tf; ctx.lineWidth = 1;
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Elas Auge', _BSA_EX, _BSA_AX - _BSA_ER - 8);
+  ctx.textAlign = 'left';
+  ctx.fillText('Linse', 176, 205);
+  ctx.beginPath(); ctx.moveTo(190, 196); ctx.lineTo(203, 145); ctx.stroke();
+  ctx.fillText('Netzhaut', 252, 205);
+  ctx.beginPath(); ctx.moveTo(268, 196); ctx.lineTo(276, 166); ctx.stroke();
+  ctx.fillText('Sehnerv', 294, 99);
+  if (s.lidF > 0.5) { ctx.textAlign = 'right'; ctx.fillText('Augenlid', 178, 72); }
+  // Kurzzeile unten
+  ctx.fillStyle = s.hell > 0.5 ? 'rgba(255,255,255,0.8)' : 'rgba(15,23,42,0.75)';
+  ctx.fillRect(0, H - 19, W, 19);
+  ctx.fillStyle = tf; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_bsaKurz(), 8, H - 6);
+  if (s.phase === 'verfolgen' && s.lampe === 'an') {
+    ctx.fillStyle = tf; ctx.globalAlpha = 0.75; ctx.font = '700 10px sans-serif';
+    ctx.fillText('▶ Zeitlupe', 104, 20);
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+  _bioFxAlleDraw(ctx, s.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bs2 „Der Punkt verschwindet“ (Kennung bio-blinder-fleck)
+// Oben Elas Karte (Kreuz links, Punkt rechts, 8 cm auseinander), so wie Ela
+// sie mit dem rechten Auge sieht (linkes Auge zu, Blick auf das Kreuz).
+// Unten ihr rechtes Auge im Schnitt von oben: Linse, Netzhaut, Sehnerv. Licht
+// von Kreuz und Punkt laeuft als kleine Lichtpakete durch die Linse auf die
+// Netzhaut; das Bild des Punkts ist ein roter Fleck.
+// Fachlich: Der Punkt liegt atan(8 cm / Abstand) neben der Blickrichtung,
+// sein Bild entsprechend weit zur Nase hin neben der Sehgrube (Bild seiten-
+// verkehrt: Punkt rechts -> Bild links). Die Austrittsstelle des Sehnervs
+// liegt rund 15,5° zur Nase hin und ist rund 5,5° breit (12,75°–18,25°).
+// Dort gibt es keine Sinneszellen.  50 cm -> 9,1° (neben dem Sehnerv),
+// 30 cm -> 14,9° (genau auf dem Sehnerv), 15 cm -> 28,1° (andere Seite).
+// Beim Heranruecken ist der Punkt zwischen etwa 35 cm und 25 cm weg.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Der Punkt verschwindet –
+// ein weicher Ring markiert die leere Stelle auf der Karte. Dann blendet eine
+// Lupe auf die Netzhaut ein: Links und rechts leuchten die Sinneszellen auf,
+// wenn Licht ankommt; das Licht vom Punkt faellt genau in die graue Luecke,
+// in der die Nervenfasern das Auge verlassen – dort leuchtet nichts.
+// Kein Text im Bild nennt das Lueckenwort. Nichts blinkt schneller als 1 Hz.
+// ════════════════════════════════════════════════════════════════════════
+let _bsb = null;
+const _BSB_ABST = 8;                        // cm zwischen Kreuz und Punkt
+const _BSB_BF = { mitte: 15.5, lo: 12.75, hi: 18.25 };   // Grad zur Nase hin
+const _BSB_WERTE = [50, 30, 15];
+const _BSB_GLEIT = 0.9;                     // s: Karte gleitet zum neuen Abstand
+const _BSB_LANGSAM = 4.5;                   // cm/s beim langsamen Heranholen
+// Augenschnitt (unten)
+const _BSB_C = { x: 185, y: 163 }, _BSB_R = 54, _BSB_NY = 128;   // Mitte, Radius, Knotenpunkt
+// Lupe (rechts unten)
+const _BSB_L = { x: 350, y: 166, r: 52, px: 3.6 };                // px je Grad
+
+function _bsbInit() {
+  _bsb = {
+    t: 0, d: 50, d0: 50, d1: 50, g: 1, modus: 'ruhe',
+    punktA: 1, sichtbar: true,
+    lupeAn: false, lupe: 0, lupeT: -1, frage: false,
+    nach: -1,                                    // s seit Ankunft (Ruhe)
+    fx: { teile: [] }, ruf: null,
+    pakete: [], lpakete: [], spawn: 0, lspawn: 0.3,
+    glowK: 0, glowP: 0, stab: [], letzt: ''
+  };
+}
+
+/* ── Rechnen ────────────────────────────────────────────────────────── */
+// Winkel des Punkts neben der Blickrichtung in Grad
+function _bsbWinkel(d) { return Math.atan(_BSB_ABST / d) * 180 / Math.PI; }
+// 'neben' | 'auf' | 'andere'
+function _bsbLage(d) {
+  const w = _bsbWinkel(d);
+  if (w < _BSB_BF.lo) return 'neben';
+  if (w > _BSB_BF.hi) return 'andere';
+  return 'auf';
+}
+// Wo trifft ein Strahl unter dem Winkel w (Grad, zur Nase hin) die Netzhaut?
+function _bsbTreffer(w) {
+  const r = w * Math.PI / 180, dx = -Math.sin(r), dy = Math.cos(r);
+  const ny = _BSB_NY - _BSB_C.y;                 // Knotenpunkt relativ zur Mitte
+  const b = dy * ny, c = ny * ny - _BSB_R * _BSB_R;
+  const s = -b + Math.sqrt(b * b - c);
+  const x = _BSB_C.x + dx * s, y = _BSB_NY + dy * s;
+  return { x, y, a: Math.atan2(y - _BSB_C.y, x - _BSB_C.x) };
+}
+function _bsbMassstab(d) { return 5 + 110 / d; }  // px je cm auf der Karte oben
+function _bsbKarte(d) {
+  const k = _bsbMassstab(d), kx = 160, ky = 55;
+  return { k, kx, ky, px: kx + _BSB_ABST * k, x0: kx - 2.5 * k, w: 13 * k, h: 5 * k };
+}
+
+/* ── Bedienung ──────────────────────────────────────────────────────── */
+function _bsbAbstand(v) {
+  if (!_bsb) return;
+  v = Number(v);
+  _bsb.zeitlupe = null;
+  if (_bsb.modus === 'ruhe' && Math.abs(_bsb.d - v) < 1e-6) {
+    const K = _bsbKarte(_bsb.d);                  // schon da: Punkt kurz zeigen
+    _bioFxWelle(_bsb.fx.teile, K.px, K.ky, '#93c5fd', 20);
+    _bsb.nach = 0; _bsbStatus(); _bsbKnoepfe();
+    return;
+  }
+  _bsb.d0 = _bsb.d; _bsb.d1 = v; _bsb.g = 0; _bsb.modus = 'gleit'; _bsb.nach = -1;
+  _bsbStatus(); _bsbKnoepfe();
+}
+function _bsbHeranholen() {
+  if (!_bsb) return;
+  _bsb.d = 50; _bsb.d0 = 50; _bsb.d1 = 15; _bsb.modus = 'langsam'; _bsb.nach = -1;
+  _bsb.sichtbar = true; _bsb.punktA = 1; _bsb.zeitlupe = null;
+  _bsbStatus(); _bsbKnoepfe();
+}
+function _bsbNeu() {
+  if (!_bsb) return;
+  _bsbInit();
+  _bsbStatus(); _bsbKnoepfe();
+}
+function _bsbKnoepfe() {
+  if (!_bsb || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bsb]').forEach(b => {
+      const d = b.dataset ? b.dataset.bsb : b.getAttribute('data-bsb');
+      const an = _bsb.modus === 'ruhe' && Number(d) === _bsb.d;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bsbHTML() {
+  const k = v => `<button class="sim-btn" data-bsb="${v}" onclick="_bsbAbstand(${v})">${v} cm</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo sieht das Auge nichts?</h3>
+    <div class="fpm-note" style="margin-top:2px">Oben: Elas Karte. Ela schließt das linke Auge und sieht mit dem rechten Auge auf das Kreuz. Unten: ihr rechtes Auge von oben. Das Bild des Punkts ist ein roter Fleck.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsb-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Abstand der Karte</span>
+          ${k(50)}${k(30)}${k(15)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_bsbHeranholen()">▶ Karte langsam heranholen</button>
+          <button class="sim-btn" onclick="_bsbNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was sieht Ela?</div>
+        <div class="lmp-status on" id="_bsb-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Hinten im Auge liegt die <b>Netzhaut</b>. Das Licht von Kreuz und Punkt fällt durch die Linse auf die Netzhaut. Der <b>Sehnerv</b> führt vom Auge zum Gehirn.</div>
+        <div class="fpm-note" style="margin-top:8px">Sieh zuerst auf die Karte oben. Dann sieh unten ins Auge: Wo liegt der rote Fleck?</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ────────────────────────────────────────────────────────── */
+const _BSB_ORT = {
+  neben: 'Das Bild des Punkts liegt neben dem Sehnerv',
+  auf: 'Das Bild des Punkts liegt genau auf dem Sehnerv',
+  andere: 'Das Bild des Punkts liegt auf der anderen Seite des Sehnervs'
+};
+function _bsbZeilen() {
+  if (_bsb.modus !== 'ruhe') {
+    const naeher = _bsb.d1 < _bsb.d0;
+    return ['Die Karte ' + (naeher ? 'kommt näher' : 'geht weiter weg') + ' …',
+            'Sieh auf die Karte oben: Ist der Punkt noch da?'];
+  }
+  const lage = _bsbLage(_bsb.d), weg = lage === 'auf';
+  return [Math.round(_bsb.d) + ' cm · ' + _BSB_ORT[lage] + ' · ' +
+          (weg ? 'Ela sieht den Punkt nicht' : 'Ela sieht den Punkt'),
+          weg ? 'Karte oben: nur das Kreuz · Der Punkt verschwindet.'
+              : 'Karte oben: Kreuz und Punkt'];
+}
+function _bsbStatus() {
+  if (!_bsb) return;
+  const z = _bsbZeilen();
+  _bsb.letzt = z.join('|');
+  const el = document.getElementById('_bsb-status');
+  if (el) el.innerHTML = '<b>' + z[0] + '</b><br>' + z[1];
+}
+
+/* ── Ablauf ─────────────────────────────────────────────────────────── */
+function _bsbUpdate(dt) {
+  if (!_bsb) return;
+  const roh = _bioFxDt(dt);
+  const zl = _bioFxZeitlupeFaktor(_bsb, roh);
+  const d = roh * zl;
+  _bsb.t += roh;
+  _bioFxAlleUpdate(_bsb.fx, roh);
+  if (_bsb.ruf) { _bsb.ruf.alter += roh; if (_bsb.ruf.alter >= _bsb.ruf.dauer) _bsb.ruf = null; }
+
+  // Karte bewegen
+  if (_bsb.modus === 'gleit') {
+    _bsb.g = Math.min(1, _bsb.g + d / _BSB_GLEIT);
+    _bsb.d = _bsb.d0 + (_bsb.d1 - _bsb.d0) * _bioFxEase.sanft(_bsb.g);
+    if (_bsb.g >= 1) _bsbAnkunft();
+  } else if (_bsb.modus === 'langsam') {
+    _bsb.d = Math.max(15, _bsb.d - _BSB_LANGSAM * d);
+    if (_bsb.d <= 15) _bsbAnkunft();
+  }
+  // Punkt da oder weg? (Ereignis beim Uebergang)
+  const sicht = _bsbLage(_bsb.d) !== 'auf';
+  if (sicht !== _bsb.sichtbar) { _bsb.sichtbar = sicht; sicht ? _bsbWieder() : _bsbWeg(); }
+  _bsb.punktA += ((sicht ? 1 : 0) - _bsb.punktA) * Math.min(1, roh * 14);   // ca. 0,2 s
+
+  // Lupe blendet nach der Beobachtung ein
+  if (_bsb.lupeT >= 0) {
+    _bsb.lupeT += roh;
+    if (!_bsb.lupeAn && _bsb.lupeT >= 1.0) {
+      _bsb.lupeAn = true;
+      const P = _bsbTreffer(_BSB_BF.mitte);
+      _bioFxWelle(_bsb.fx.teile, P.x, P.y, '#cbd5e1', 22);
+    }
+    if (_bsb.lupeAn && !_bsb.frage && _bsb.lupeT >= 2.0) {
+      _bsb.frage = true;
+      _bioFxWelle(_bsb.fx.teile, _BSB_L.x, _BSB_L.y + 6, '#fca5a5', 30);
+      _bioFxBanner(_bsb.fx, 'Wo landet das Licht vom Punkt?', 2.8, '#fca5a5');
+    }
+  }
+  if (_bsb.lupeAn) _bsb.lupe = Math.min(1, _bsb.lupe + roh / 0.8);
+  if (_bsb.nach >= 0) _bsb.nach += roh;
+
+  _bsbLicht(d);
+  const z = _bsbZeilen().join('|');
+  if (z !== _bsb.letzt) _bsbStatus();
+}
+function _bsbAnkunft() {
+  _bsb.d = _bsb.d1; _bsb.modus = 'ruhe'; _bsb.nach = 0; _bsb.g = 1;
+  _bsbStatus(); _bsbKnoepfe();
+}
+function _bsbRuf(text) { _bsb.ruf = { text, alter: 0, dauer: 2.4 }; }
+// Der Punkt ist gerade verschwunden: leere Stelle markieren, dann Lupe.
+function _bsbWeg() {
+  const K = _bsbKarte(_bsb.d);
+  _bioFxWelle(_bsb.fx.teile, K.px, K.ky, '#93c5fd', 24);
+  _bsbRuf('Der Punkt ist weg!');
+  if (_bsb.modus === 'langsam') _bioFxZeitlupe(_bsb, 0.3, 1.6);
+  if (!_bsb.lupeAn && _bsb.lupeT < 0) _bsb.lupeT = 0;
+}
+function _bsbWieder() {
+  const K = _bsbKarte(_bsb.d);
+  _bioFxFunken(_bsb.fx.teile, K.px, K.ky, 6, ['#ef4444', '#fecaca', '#ffffff']);
+  _bsbRuf('Der Punkt ist wieder da!');
+}
+// Lichtpakete: Kreuz und Punkt ins Auge, Punkt zusaetzlich in der Lupe.
+function _bsbLicht(d) {
+  _bsb.spawn -= d;
+  if (_bsb.spawn <= 0) {
+    _bsb.spawn += 0.8;
+    _bsb.pakete.push({ art: 'k', u: 0 }, { art: 'p', u: -0.12 });
+  }
+  for (let i = _bsb.pakete.length - 1; i >= 0; i--) {
+    const p = _bsb.pakete[i];
+    p.u += d * 0.85;
+    if (p.u >= 1) {
+      _bsb.pakete.splice(i, 1);
+      if (p.art === 'k') _bsb.glowK = Math.min(1, _bsb.glowK + 0.6);
+      else if (_bsbLage(_bsb.d) !== 'auf') _bsb.glowP = Math.min(1, _bsb.glowP + 0.6);
+    }
+  }
+  _bsb.glowK = Math.max(0, _bsb.glowK - d * 0.7);
+  _bsb.glowP = Math.max(0, _bsb.glowP - d * 0.7);
+  if (_bsb.lupe > 0.5) {
+    _bsb.lspawn -= d;
+    if (_bsb.lspawn <= 0) { _bsb.lspawn += 0.8; _bsb.lpakete.push({ u: 0 }); }
+  }
+  const x = _bsbLupeX(_bsbWinkel(_bsb.d)), gap = _bsbLupeLuecke();
+  for (let i = _bsb.lpakete.length - 1; i >= 0; i--) {
+    const p = _bsb.lpakete[i];
+    p.u += d * 1.1;
+    if (p.u >= 1) {
+      _bsb.lpakete.splice(i, 1);
+      if (x < gap.x0 || x > gap.x1) {
+        for (let j = 0; j < _BSB_STAEBE; j++) {
+          const sx = _bsbStabX(j);
+          if (Math.abs(sx - x) <= 6) _bsb.stab[j] = 1;
+        }
+      }
+    }
+  }
+  for (let j = 0; j < _BSB_STAEBE; j++) _bsb.stab[j] = Math.max(0, (_bsb.stab[j] || 0) - d * 0.8);
+}
+
+/* ── Lupe: Geometrie ────────────────────────────────────────────────── */
+const _BSB_STAEBE = 28;
+function _bsbLupeX(w) { return _BSB_L.x + (_BSB_BF.mitte - w) * _BSB_L.px; }
+function _bsbLupeLuecke() {
+  return { x0: _bsbLupeX(_BSB_BF.hi), x1: _bsbLupeX(_BSB_BF.lo) };
+}
+function _bsbStabX(j) { return _BSB_L.x - _BSB_L.r + 2 + j * (2 * _BSB_L.r - 4) / (_BSB_STAEBE - 1); }
+
+/* ── Zeichnen ───────────────────────────────────────────────────────── */
+function _bsbDraw(ctx, cv) {
+  if (!_bsb) return;
+  const W = cv.width, H = cv.height, t = _bsb.t;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f5f1e8'; ctx.fillRect(0, 0, W, 100);          // Blick nach vorn
+  ctx.fillStyle = '#eef3f8'; ctx.fillRect(0, 100, W, H - 100);    // Schnitt
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(0, 100); ctx.lineTo(W, 100); ctx.stroke();
+  _bsbKarteDraw(ctx, t);
+  _bsbAugeDraw(ctx, t);
+  if (_bsb.lupe > 0) _bsbLupeDraw(ctx, t);
+  _bioFxAlleDraw(ctx, _bsb.fx);
+}
+
+function _bsbKarteDraw(ctx, t) {
+  const K = _bsbKarte(_bsb.d), ruhe = _bsb.modus === 'ruhe';
+  // Beschriftung links
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left';
+  ctx.font = '700 12px sans-serif'; ctx.fillText('Das sieht Ela', 10, 18);
+  ctx.font = '10px sans-serif'; ctx.fillStyle = '#475569';
+  ctx.fillText('mit dem rechten Auge', 10, 33);
+  ctx.fillText('(linkes Auge zu)', 10, 46);
+  // kleines Augenpaar: links zu, rechts offen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(14, 64); ctx.quadraticCurveTo(22, 69, 30, 64); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(48, 64, 9, 5, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(48 + Math.sin(t * 0.7) * 0.8, 64, 2.4, 0, 2 * Math.PI); ctx.fill();
+  // Abstand rechts
+  ctx.textAlign = 'right'; ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif';
+  ctx.fillText('Abstand der Karte', 410, 18);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif';
+  ctx.fillText(Math.round(_bsb.d) + ' cm', 410, 38);
+  if (ruhe) {
+    ctx.font = '700 11px sans-serif';
+    ctx.fillStyle = _bsb.sichtbar ? '#b91c1c' : '#475569';
+    ctx.fillText('Punkt zu sehen: ' + (_bsb.sichtbar ? 'ja' : 'nein'), 410, 60);
+  }
+  ctx.restore();
+
+  // Karte
+  ctx.save();
+  ctx.shadowColor = 'rgba(15,23,42,0.18)'; ctx.shadowBlur = 8; ctx.shadowOffsetY = 2;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.x0, K.ky - K.h / 2, K.w, K.h, 4); ctx.fill();
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = '#d6d3d1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, K.x0, K.ky - K.h / 2, K.w, K.h, 4); ctx.stroke();
+  // Kreuz mit ruhigem Blickring (0,5 Hz)
+  const a = 0.5 * K.k;
+  ctx.strokeStyle = '#111827'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.kx - a, K.ky); ctx.lineTo(K.kx + a, K.ky);
+  ctx.moveTo(K.kx, K.ky - a); ctx.lineTo(K.kx, K.ky + a); ctx.stroke();
+  ctx.strokeStyle = 'rgba(37,99,235,' + (0.25 + 0.15 * Math.sin(t * Math.PI)).toFixed(3) + ')';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(K.kx, K.ky, a + 5, 0, 2 * Math.PI); ctx.stroke();
+  // Punkt (verschwindet am blinden Ort; die Karte bleibt dort einfach weiss)
+  if (_bsb.punktA > 0.01) {
+    ctx.globalAlpha = _bsb.punktA;
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.arc(K.px, K.ky, Math.max(3, 0.5 * K.k), 0, 2 * Math.PI); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+  // Ruf unter der Karte
+  const r = _bsb.ruf;
+  if (r) {
+    const al = _bioFxKlemme(r.alter / 0.2) * (1 - _bioFxKlemme((r.alter - (r.dauer - 0.5)) / 0.5));
+    ctx.save();
+    ctx.globalAlpha = al;
+    ctx.fillStyle = '#1e3a8a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(r.text, K.px, 95);
+    ctx.restore();
+  }
+}
+
+function _bsbAugeDraw(ctx, t) {
+  const C = _BSB_C, R = _BSB_R, N = { x: C.x, y: _BSB_NY };
+  const w = _bsbWinkel(_bsb.d), P = _bsbTreffer(w), F = _bsbTreffer(0);
+  const lo = _bsbTreffer(_BSB_BF.lo).a, hi = _bsbTreffer(_BSB_BF.hi).a, M = _bsbTreffer(_BSB_BF.mitte);
+  ctx.save();
+  // Beschriftung
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Elas rechtes Auge, von oben', 10, 116);
+  ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif';
+  ctx.fillText('← zur Nase', 10, 158);
+
+  // Sehnerv: von der Austrittsstelle nach hinten, zur Nase hin, zum Gehirn
+  const ax = C.x + Math.cos(M.a) * R, ay = C.y + Math.sin(M.a) * R;
+  ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 11; ctx.lineCap = 'butt';
+  ctx.beginPath(); ctx.moveTo(ax + Math.cos(M.a) * -4, ay + Math.sin(M.a) * -4);
+  ctx.quadraticCurveTo(ax + Math.cos(M.a) * 22, ay + Math.sin(M.a) * 22, 110, 238);
+  ctx.lineTo(0, 240); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.45)'; ctx.lineWidth = 1;
+  for (const o of [-3, 0, 3]) {
+    ctx.beginPath(); ctx.moveTo(ax + o, ay);
+    ctx.quadraticCurveTo(ax + Math.cos(M.a) * 22 + o, ay + Math.sin(M.a) * 22, 110, 238 + o);
+    ctx.lineTo(0, 240 + o); ctx.stroke();
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('← Sehnerv, zum Gehirn', 10, 228);
+
+  // Augapfel
+  ctx.fillStyle = '#fbfaf7'; ctx.strokeStyle = '#a8a29e'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(C.x, C.y, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#f1f7fc';
+  ctx.beginPath(); ctx.arc(C.x, C.y, R - 3, 0, 2 * Math.PI); ctx.fill();
+  // Hornhaut vorn
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(C.x, C.y - R + 10, 22, Math.PI * 1.15, Math.PI * 1.85); ctx.stroke();
+  // Regenbogenhaut
+  ctx.strokeStyle = '#7c5a3a'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(C.x - 21, C.y - R + 14); ctx.lineTo(C.x - 8, C.y - R + 14);
+  ctx.moveTo(C.x + 8, C.y - R + 14); ctx.lineTo(C.x + 21, C.y - R + 14); ctx.stroke();
+  // Linse
+  ctx.fillStyle = 'rgba(191,219,254,0.9)'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(C.x, N.y - 4, 14, 7, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+
+  // Netzhaut: farbige Schicht hinten, an der Austrittsstelle unterbrochen
+  const r0 = R - 3, r1 = R - 9, a0 = 0.35, a1 = Math.PI - 0.35;
+  const band = (b0, b1) => {
+    ctx.beginPath(); ctx.arc(C.x, C.y, r0, b0, b1); ctx.arc(C.x, C.y, r1, b1, b0, true); ctx.closePath(); ctx.fill();
+  };
+  ctx.fillStyle = '#f5a65b';
+  band(a0, lo); band(hi, a1);
+  ctx.fillStyle = '#9ca3af';                      // grau, nicht beschriftet
+  band(lo, hi);
+  // Sinneszellen als feine Striche
+  ctx.strokeStyle = 'rgba(146,64,14,0.45)'; ctx.lineWidth = 1;
+  for (let b = a0 + 0.04; b < a1; b += 0.07) {
+    if (b > lo - 0.02 && b < hi + 0.02) continue;
+    ctx.beginPath();
+    ctx.moveTo(C.x + Math.cos(b) * r1, C.y + Math.sin(b) * r1);
+    ctx.lineTo(C.x + Math.cos(b) * r0, C.y + Math.sin(b) * r0); ctx.stroke();
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Netzhaut', C.x + 36, C.y + R + 12);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(C.x + 40, C.y + R + 2); ctx.lineTo(C.x + Math.cos(0.8) * (R - 6), C.y + Math.sin(0.8) * (R - 6)); ctx.stroke();
+  ctx.fillText('Linse', C.x + 24, N.y - 14);
+
+  // Lichtwege (Strahlen) durch den Knotenpunkt
+  const oben = y => ({ k: { x: N.x, y }, p: { x: N.x + (N.y - y) * Math.tan(w * Math.PI / 180), y } });
+  const O = oben(101);
+  ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
+  ctx.strokeStyle = 'rgba(51,65,85,0.45)';
+  ctx.beginPath(); ctx.moveTo(O.k.x, O.k.y); ctx.lineTo(N.x, N.y); ctx.lineTo(F.x, F.y); ctx.stroke();
+  ctx.strokeStyle = 'rgba(220,38,38,0.55)';
+  ctx.beginPath(); ctx.moveTo(O.p.x, O.p.y); ctx.lineTo(N.x, N.y); ctx.lineTo(P.x, P.y); ctx.stroke();
+  ctx.setLineDash([]);
+  // Lichtpakete
+  const lauf = (A, B, u) => {
+    const l1 = Math.hypot(N.x - A.x, N.y - A.y), l2 = Math.hypot(B.x - N.x, B.y - N.y), s = u * (l1 + l2);
+    if (s <= l1) return { x: A.x + (N.x - A.x) * s / l1, y: A.y + (N.y - A.y) * s / l1 };
+    const q = (s - l1) / l2;
+    return { x: N.x + (B.x - N.x) * q, y: N.y + (B.y - N.y) * q };
+  };
+  for (const p of _bsb.pakete) {
+    if (p.u < 0) continue;
+    const q = p.art === 'k' ? lauf(O.k, F, p.u) : lauf(O.p, P, p.u);
+    const g = ctx.createRadialGradient(q.x, q.y, 0, q.x, q.y, 6);
+    const f = p.art === 'k' ? '100,116,139' : '239,68,68';
+    g.addColorStop(0, 'rgba(255,255,255,0.95)'); g.addColorStop(0.35, 'rgba(' + f + ',0.9)'); g.addColorStop(1, 'rgba(' + f + ',0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(q.x, q.y, 6, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Sinneszellen leuchten, wo Licht ankommt
+  const leucht = (x, y, s) => {
+    if (s <= 0.02) return;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, 9);
+    g.addColorStop(0, 'rgba(253,224,71,' + (0.8 * s).toFixed(3) + ')'); g.addColorStop(1, 'rgba(253,224,71,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 9, 0, 2 * Math.PI); ctx.fill();
+  };
+  leucht(F.x, F.y - 5, _bsb.glowK);
+  leucht(P.x + (C.x - P.x) * 0.1, P.y + (C.y - P.y) * 0.1, _bsb.glowP);
+  // Bild des Kreuzes (Sehgrube) und Bild des Punkts (roter Fleck)
+  const ix = F.x, iy = F.y - 5;
+  ctx.strokeStyle = '#111827'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(ix - 3, iy - 3); ctx.lineTo(ix + 3, iy + 3); ctx.moveTo(ix + 3, iy - 3); ctx.lineTo(ix - 3, iy + 3); ctx.stroke();
+  const px = P.x + (C.x - P.x) * 0.1, py = P.y + (C.y - P.y) * 0.1;
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(px, py, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Aha: nach der Ankunft bei 30 cm leuchtet der Fleck weich (0,8 Hz, 4 s)
+  if (_bsb.modus === 'ruhe' && !_bsb.sichtbar && _bsb.nach >= 0 && _bsb.nach < 4 && _bsb.lupe > 0.5)
+    _bioFxLeuchten(ctx, px, py, 9, t, '252,165,165');
+  // Lupen-Markierung
+  if (_bsb.lupe > 0) {
+    ctx.globalAlpha = _bsb.lupe * 0.8;
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+    const mx = C.x + Math.cos(M.a) * (R - 6), my = C.y + Math.sin(M.a) * (R - 6);
+    ctx.beginPath(); ctx.arc(mx, my, 12, 0, 2 * Math.PI); ctx.stroke();
+    const rr = _BSB_L.r * _bioFxEase.raus(_bsb.lupe);
+    ctx.beginPath(); ctx.moveTo(mx + 9, my - 8); ctx.lineTo(_BSB_L.x - rr * 0.8, _BSB_L.y - rr * 0.6);
+    ctx.moveTo(mx + 11, my + 5); ctx.lineTo(_BSB_L.x - rr * 0.7, _BSB_L.y + rr * 0.7); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+}
+
+function _bsbLupeDraw(ctx, t) {
+  const L = _BSB_L, e = _bioFxEase.raus(_bsb.lupe), r = L.r * e;
+  if (r < 2) return;
+  const yr = L.y + 4;                          // Oberkante der Netzhaut in der Lupe
+  const gap = _bsbLupeLuecke();
+  ctx.save();
+  ctx.globalAlpha = _bioFxKlemme(_bsb.lupe * 1.5);
+  ctx.beginPath(); ctx.arc(L.x, L.y, r, 0, 2 * Math.PI); ctx.clip();
+  ctx.fillStyle = '#f1f7fc'; ctx.fillRect(L.x - r, L.y - r, 2 * r, 2 * r);
+  // Lederhaut aussen, Aderhaut, Sinneszellen
+  ctx.fillStyle = '#f3e8da'; ctx.fillRect(L.x - r, yr + 24, 2 * r, 60);
+  ctx.fillStyle = '#7c4a2d';
+  ctx.fillRect(L.x - r, yr + 19, gap.x0 - (L.x - r), 5); ctx.fillRect(gap.x1, yr + 19, L.x + r - gap.x1, 5);
+  for (let j = 0; j < _BSB_STAEBE; j++) {
+    const sx = _bsbStabX(j);
+    if (sx > gap.x0 - 2 && sx < gap.x1 + 2) continue;
+    const s = _bsb.stab[j] || 0;
+    ctx.fillStyle = s > 0.02 ? 'rgb(' + [245 + 8 * s, 166 + 58 * s, 91 - 20 * s].map(Math.round).join(',') + ')' : '#f5a65b';
+    ctx.fillRect(sx - 1.3, yr + 6, 2.6, 13);
+    if (s > 0.05) {
+      const g = ctx.createRadialGradient(sx, yr + 10, 0, sx, yr + 10, 8);
+      g.addColorStop(0, 'rgba(253,224,71,' + (0.7 * s).toFixed(3) + ')'); g.addColorStop(1, 'rgba(253,224,71,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, yr + 10, 8, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Sehnerv: grau, Fasern laufen innen an der Netzhaut zur Luecke und hinaus
+  ctx.fillStyle = '#9ca3af';
+  ctx.beginPath(); ctx.moveTo(gap.x0, yr); ctx.lineTo(gap.x1, yr);
+  ctx.lineTo(gap.x1 + 4, L.y + r); ctx.lineTo(gap.x0 - 4, L.y + r); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(100,116,139,0.8)'; ctx.lineWidth = 1;
+  for (let k = 0; k < 4; k++) {
+    const yy = yr + 1 + k * 1.3, ml = gap.x0 + 3 + k * 1.5, mr = gap.x1 - 3 - k * 1.5;
+    ctx.beginPath(); ctx.moveTo(L.x - r, yy); ctx.lineTo(gap.x0 - 4, yy);
+    ctx.quadraticCurveTo(ml, yy, ml, yy + 12); ctx.lineTo(ml - 1, L.y + r); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(L.x + r, yy); ctx.lineTo(gap.x1 + 4, yy);
+    ctx.quadraticCurveTo(mr, yy, mr, yy + 12); ctx.lineTo(mr + 1, L.y + r); ctx.stroke();
+  }
+  // Licht vom Punkt faellt in der Lupe auf die Netzhaut
+  const x = _bsbLupeX(_bsbWinkel(_bsb.d)), auf = x >= gap.x0 && x <= gap.x1;
+  const ziel = yr + (auf ? 14 : 8);
+  for (const p of _bsb.lpakete) {
+    const y = L.y - r + (ziel - (L.y - r)) * p.u;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
+    g.addColorStop(0, 'rgba(255,255,255,0.95)'); g.addColorStop(0.35, 'rgba(239,68,68,0.9)'); g.addColorStop(1, 'rgba(239,68,68,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.strokeStyle = 'rgba(220,38,38,0.45)'; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x, L.y - r); ctx.lineTo(x, ziel); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(x, ziel, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Aha bei 30 cm: die graue Luecke leuchtet weich (kein Blinken)
+  if (auf && _bsb.modus === 'ruhe' && _bsb.nach >= 0 && _bsb.nach < 4)
+    _bioFxLeuchten(ctx, (gap.x0 + gap.x1) / 2, yr + 10, 13, t, '203,213,225');
+  ctx.restore();
+  // Rand der Lupe und Beschriftung
+  ctx.save();
+  ctx.globalAlpha = _bioFxKlemme(_bsb.lupe * 1.5);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(L.x, L.y, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Netzhaut, vergrößert', L.x, L.y - r - 4);
+  ctx.restore();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · DER WEG DES SCHALLS INS OHR   (Förderheft Bio 5/6 · bs3, Kennung 'bio-ohr')
+// Links ein klingelnder Wecker, rechts Elas Ohr im Schnitt (Gehörgang,
+// Trommelfell, Gehörknöchelchen, Hörschnecke mit Sinneshärchen, Nerv zum
+// Gehirn). Dazwischen wahlweise Luft, eine Tischplatte aus Holz (Ela legt
+// das Ohr darauf) oder eine Glasglocke, aus der eine Pumpe die Luft saugt.
+// Fachlich: Schall braucht einen Stoff. Durch Holz kommt er stärker an
+// (und schneller), ohne Luft gar nicht. Qualitativ, keine Messwerte.
+// Modellwerte: Schwingungsweite am Trommelfell Luft 1 · Holz 1,8 · ohne Luft 0.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Die erste Welle erreicht
+// das Trommelfell in Zeitlupe; nacheinander leuchten Trommelfell,
+// Gehörknöchelchen und Hörschnecke auf, die Sinneshärchen wiegen sich, ein
+// Lichtpunkt läuft über den Nerv zum Gehirn. In der Glocke werden die Bögen
+// beim Abpumpen schwächer, bis das Trommelfell stillsteht – der Wecker
+// klingelt sichtbar weiter. Effekte kurz, kein Blinken, kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _bso = null;
+const _BSO_NAME = { luft: 'Luft', holz: 'Holz', vakuum: 'keine Luft' };
+const _BSO_ERG = {
+  luft: 'Luft · Das Trommelfell schwingt · Ela hört den Wecker',
+  holz: 'Holz · Das Trommelfell schwingt stärker · Ela hört den Wecker lauter',
+  vakuum: 'keine Luft · Das Trommelfell schwingt nicht · Ela hört nichts'
+};
+const _BSO_TX = 322, _BSO_CY = 125;            // Trommelfell, Mitte des Gehörgangs
+const _BSO_SX = 380, _BSO_SY = 118;            // Mitte der Hörschnecke
+const _BSO_TAKT = 0.45;                        // s zwischen zwei Schallbögen
+const _BSO_ENDE_VAK = 4.6;                     // s: Glocke leer, letzte Welle vorbei
+
+function _bsoZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _bsoInit() {
+  const z = _bsoZufall(31);
+  const luft = [];                               // Luftteilchen zwischen Wecker und Ohr
+  for (let i = 0; i < 64; i++) luft.push([88 + z() * 150, 24 + z() * 205, z() * 6.28]);
+  const glocke = [];                             // Luftteilchen in der Glasglocke
+  while (glocke.length < 24) {
+    const x = 20 + z() * 80, y = 56 + z() * 104;
+    if ((y > 95 && Math.abs(x - 60) < 42) || (x - 60) * (x - 60) + (y - 95) * (y - 95) < 40 * 40)
+      if (Math.hypot(x - 60, y - 132) > 26) glocke.push([x, y, z() * 6.28]);
+  }
+  _bso = { t: 0, medium: 'luft', phase: 'bereit', letzt: '', luft, glocke, fx: { teile: [] } };
+  _bsoLauf();
+}
+// Alles, was zu einem Durchgang gehört, auf Anfang.
+function _bsoLauf() {
+  const s = _bso;
+  s.pt = 0; s.wellen = []; s.naechste = 0; s.A = 0; s.phi = 0;
+  s.ang = false; s.fertig = false; s.luftA = 1; s.pulse = []; s.pulsNext = 0;
+  s.ahaT = -1; s.schritt = 0;
+  s.fx = { teile: [] }; s.zeitlupe = null;
+}
+function _bsoV() { return _bso.medium === 'holz' ? 300 : 170; }           // px/s
+function _bsoQuelle() {
+  return _bso.medium === 'holz' ? [55, 125] : _bso.medium === 'vakuum' ? [60, 132] : [55, 120];
+}
+function _bsoD() { return _BSO_TX - _bsoQuelle()[0]; }
+
+function _bsoHTML() {
+  const m = (wert, text) =>
+    `<button class="sim-btn" data-bso="${wert}" onclick="_bsoMedium('${wert}')">${text}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie hört das Ohr?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links klingelt ein Wecker. Rechts siehst du Elas Ohr im Schnitt. Stelle ein, was zwischen Wecker und Ohr ist. Dann drücke „▶ Wecker klingeln lassen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bso-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bso-los" onclick="_bsoStart()">▶ Wecker klingeln lassen</button>
+          <button class="sim-btn" onclick="_bsoNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Zwischen Wecker und Ohr</span>
+          <div class="sim-btn-row">
+            ${m('luft', 'Luft')}
+            ${m('holz', 'Holz')}
+            ${m('vakuum', 'keine Luft')}
+          </div>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Was passiert am Ohr?</div>
+        <div class="lmp-status on" id="_bso-status" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bsoMarke('luft')">Luft: Schall kommt an</button>
+          <button class="sim-btn" onclick="_bsoMarke('holz')">Holz: Schall kommt an</button>
+          <button class="sim-btn" onclick="_bsoMarke('vakuum')">keine Luft: Glocke leer</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Bei „keine Luft“ steht der Wecker unter einer Glasglocke. Eine Pumpe saugt die Luft heraus. In echt kann man Schall nicht sehen. Die Bögen im Bild zeigen, wie er sich ausbreitet.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: „Zwischen Wecker und Ohr“ steht auf „Luft“. &nbsp;|&nbsp; Probiere nacheinander Luft, Holz und keine Luft.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bsoMedium(m) {
+  if (!_bso || !_BSO_NAME[m]) return;
+  _bso.medium = m; _bso.phase = 'bereit'; _bsoLauf(); _bsoStatus();
+}
+function _bsoStart() {
+  if (!_bso) return;
+  _bsoLauf(); _bso.phase = 'klingelt'; _bsoStatus();
+}
+function _bsoNeu() { _bsoMedium('luft'); }
+// Sprungmarke: kurz vor den Augenblick, auf den es ankommt – den Rest sieht man.
+function _bsoMarke(m) {
+  if (!_bso || !_BSO_NAME[m]) return;
+  _bso.medium = m; _bsoLauf(); _bso.phase = 'klingelt';
+  const bis = m === 'vakuum' ? _BSO_ENDE_VAK - 0.1 : _bsoD() / _bsoV() - 0.08;
+  while (_bso.pt < bis) _bsoSchritt(0.02, false);
+  _bsoStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bsoZeile() {
+  const s = _bso, L = _BSO_NAME[s.medium];
+  if (s.phase === 'bereit') return L + ' · Drücke „▶ Wecker klingeln lassen“.';
+  if (s.fertig) return _BSO_ERG[s.medium];
+  if (s.medium === 'vakuum') {
+    if (s.pt < 0.4) return 'keine Luft · Der Wecker klingelt · Die Pumpe startet';
+    if (s.luftA > 0) return 'keine Luft · Der Wecker klingelt · Die Pumpe saugt die Luft aus der Glocke';
+    return 'keine Luft · Der Wecker klingelt · Die Glocke ist leer gepumpt';
+  }
+  return L + ' · Der Wecker klingelt · Der Schall ist unterwegs';
+}
+function _bsoStatus() {
+  if (!_bso) return;
+  const z = _bsoZeile();
+  _bso.letzt = z;
+  const el = document.getElementById('_bso-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  document.querySelectorAll('[data-bso]').forEach(b =>
+    b.classList.toggle('primary', b.getAttribute('data-bso') === _bso.medium));
+  const los = document.getElementById('_bso-los');
+  if (los) los.classList.toggle('primary', _bso.phase === 'bereit');
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+// Ein Zeitschritt des Versuchs (h in s). mitFx=false: Sprungmarke spult vor.
+function _bsoSchritt(h, mitFx) {
+  const s = _bso;
+  s.pt += h;
+  s.phi += h * 2 * Math.PI * 3.5;                        // Schwingen: 3,5 Hin-und-her je s
+  if (s.medium === 'vakuum') s.luftA = 1 - _bioFxKlemme((s.pt - 0.4) / 2.0);
+  while (s.naechste <= s.pt) {
+    const amp = s.medium === 'holz' ? 1.8 : s.medium === 'luft' ? 1 : 0.6 * s.luftA;
+    s.wellen.push({ t0: s.naechste, amp, r: 0 });
+    s.naechste += _BSO_TAKT;
+  }
+  const v = _bsoV(), d = _bsoD();
+  let ziel = 0;
+  for (const w of s.wellen) {
+    w.r = v * (s.pt - w.t0);
+    if (w.r >= d && w.r < d + v * 0.5) ziel = Math.max(ziel, w.amp);
+  }
+  s.wellen = s.wellen.filter(w => w.r < Math.max(340, d + v * 0.6));
+  s.A += (ziel - s.A) * Math.min(1, h * 6);
+  if (s.fertig && s.medium === 'vakuum') s.A *= Math.exp(-h * 8);
+  if (s.medium !== 'vakuum' && !s.ang && s.wellen.some(w => w.r >= d)) {
+    s.ang = true; s.fertig = true;
+    if (mitFx) { _bioFxZeitlupe(s, 0.3, 1.4); s.ahaT = 0; s.schritt = 0; }
+  }
+  if (s.medium === 'vakuum' && !s.fertig && s.pt >= _BSO_ENDE_VAK) {
+    s.fertig = true;
+    if (mitFx) { s.ahaT = 0; s.schritt = 0; }
+  }
+  // Lichtpunkte über den Nerv zum Gehirn, solange Schwingungen ankommen
+  if (s.A > 0.25 && s.pt >= s.pulsNext) { s.pulse.push(0); s.pulsNext = s.pt + 0.55; }
+  s.pulse = s.pulse.map(p => p + h / 0.9).filter(p => p < 1);
+}
+function _bsoUpdate(dt) {
+  if (!_bso) return;
+  dt = _bioFxDt(dt);
+  _bso.t += dt;
+  if (_bso.phase === 'klingelt') _bsoSchritt(dt * _bioFxZeitlupeFaktor(_bso, dt), true);
+  if (_bso.ahaT >= 0) { _bso.ahaT += dt; _bsoAha(); }
+  _bioFxAlleUpdate(_bso.fx, dt);
+  if (_bsoZeile() !== _bso.letzt) _bsoStatus();
+}
+// Aha nach der Beobachtung: der Weg ins Ohr leuchtet Stück für Stück auf.
+function _bsoAha() {
+  const s = _bso, fx = s.fx, a = s.ahaT;
+  if (s.medium === 'vakuum') {
+    if (s.schritt === 0) { s.schritt = 1; _bioFxWelle(fx.teile, _BSO_TX, _BSO_CY, '#94a3b8', 40); }
+    if (s.schritt === 1 && a >= 0.6) {
+      s.schritt = 2; s.ahaT = -1;
+      _bioFxBanner(fx, 'Der Wecker klingelt weiter. Und am Ohr?', 3.2, '#93c5fd');
+    }
+    return;
+  }
+  if (s.schritt === 0) { s.schritt = 1; _bioFxWelle(fx.teile, _BSO_TX, _BSO_CY, '#fde68a', 36); }
+  if (s.schritt === 1 && a >= 0.35) { s.schritt = 2; _bioFxWelle(fx.teile, 342, 110, '#fde68a', 24); }
+  if (s.schritt === 2 && a >= 0.7) {
+    s.schritt = 3;
+    _bioFxWelle(fx.teile, _BSO_SX, _BSO_SY, '#fde047', 42);
+    _bioFxFunken(fx.teile, _BSO_SX, _BSO_SY, 10, ['#fde047', '#fff3b0', '#ffffff']);
+  }
+  if (s.schritt === 3 && a >= 1.1) {
+    s.schritt = 4; s.ahaT = -1;
+    _bioFxBanner(fx, 'Angekommen: bis ganz innen im Ohr!', 2.8, '#fde047');
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bsoWecker(ctx, x, y, an, t) {
+  const wack = an ? Math.sin(t * 2 * Math.PI * 4) : 0;
+  ctx.save();
+  ctx.translate(wack * 0.8, 0);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x - 10, y + 15); ctx.lineTo(x - 14, y + 24);
+  ctx.moveTo(x + 10, y + 15); ctx.lineTo(x + 14, y + 24); ctx.stroke();
+  ctx.fillStyle = '#f59e0b'; ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1.2;
+  for (const sx of [-1, 1]) {
+    ctx.beginPath(); ctx.arc(x + sx * 12, y - 17, 7, Math.PI, 2 * Math.PI); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  // Klöppel schlägt zwischen den Glocken hin und her
+  const kx = x + (an ? wack * 8 : 0);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x, y - 18); ctx.lineTo(kx, y - 26); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(kx, y - 26, 2.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x, y, 19, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(x, y, 14, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y - 9); ctx.moveTo(x, y); ctx.lineTo(x + 7, y + 2); ctx.stroke();
+  ctx.restore();
+  if (an) {                                              // kleine Klangstriche am Wecker
+    ctx.save();
+    ctx.strokeStyle = 'rgba(220,38,38,0.55)'; ctx.lineWidth = 1.5;
+    const p = (t * 1.2) % 1;
+    for (const sx of [-1, 1]) {
+      ctx.beginPath(); ctx.arc(x + sx * 12, y - 17, 10 + p * 6, sx < 0 ? 3.6 : 5.0, sx < 0 ? 4.4 : 5.8);
+      ctx.globalAlpha = 1 - p; ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+function _bsoWellenLage(x, y) {
+  // Wie weit wird ein Luftteilchen an (x,y) gerade vom Schall angestoßen?
+  const [qx, qy] = _bsoQuelle();
+  const dx = x - qx, dy = y - qy, d = Math.hypot(dx, dy) || 1;
+  let s = 0;
+  for (const w of _bso.wellen) {
+    const e = Math.abs(d - w.r);
+    if (e < 10 && Math.abs(Math.atan2(dy, dx)) < 0.8) s = Math.max(s, w.amp * (1 - e / 10));
+  }
+  return [dx / d * s * 3, dy / d * s * 3];
+}
+function _bsoTeilchen(ctx, x, y, ph, alpha) {
+  const t = _bso.t;
+  const [ax, ay] = _bsoWellenLage(x, y);
+  ctx.fillStyle = 'rgba(71,85,105,' + alpha + ')';
+  ctx.beginPath();
+  ctx.arc(x + ax + Math.sin(t * 2.2 + ph) * 0.9, y + ay + Math.cos(t * 1.8 + ph) * 0.9, 1.7, 0, 2 * Math.PI);
+  ctx.fill();
+}
+function _bsoSchnecke(ctx, akt) {
+  const s = _bso, cx = _BSO_SX, cy = _BSO_SY, R = 24, WIN = 2.5 * 2 * Math.PI;
+  const P = th => { const r = R * (1 - 0.78 * th / WIN), a = Math.PI + th; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; };
+  ctx.save();
+  ctx.fillStyle = '#efe2c8'; ctx.beginPath(); ctx.arc(cx, cy, 31, 0, 2 * Math.PI); ctx.fill();
+  if (akt > 0.12) {
+    ctx.globalAlpha = Math.min(1, akt);
+    _bioFxLeuchten(ctx, cx, cy, 27, s.t, '253,224,71');
+    ctx.globalAlpha = 1;
+  }
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  for (const [lw, farbe] of [[12, '#a8875a'], [9, akt > 0.12 ? '#fff4c9' : '#f7e7c4']]) {
+    ctx.strokeStyle = farbe; ctx.lineWidth = lw; ctx.beginPath();
+    for (let th = 0; th <= WIN; th += 0.12) { const [x, y] = P(th); th ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.stroke();
+  }
+  // Sinneshärchen: wiegen sich, wenn Schwingungen ankommen
+  const hin = Math.min(1.4, s.A) * 2.4;
+  ctx.lineWidth = 1.4;
+  ctx.strokeStyle = akt > 0.12 ? '#d97706' : '#92400e';
+  for (let th = 0.4; th < WIN - 0.4; th += 0.5) {
+    const [px, py] = P(th), [qx, qy] = P(th + 0.05);
+    let nx = cx - px, ny = cy - py; const nl = Math.hypot(nx, ny) || 1; nx /= nl; ny /= nl;
+    let tx = qx - px, ty = qy - py; const tl = Math.hypot(tx, ty) || 1; tx /= tl; ty /= tl;
+    const w = hin * Math.sin(s.phi - th * 0.8);
+    ctx.beginPath(); ctx.moveTo(px - nx * 2.5, py - ny * 2.5);
+    ctx.lineTo(px + nx * 2.5 + tx * w, py + ny * 2.5 + ty * w); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _bsoKopf(ctx, W, H) {
+  ctx.save();
+  // Kopf im Schnitt
+  ctx.fillStyle = '#f1c6a3';
+  ctx.beginPath(); ctx.moveTo(266, 0); ctx.quadraticCurveTo(254, 125, 266, H); ctx.lineTo(W, H); ctx.lineTo(W, 0); ctx.closePath(); ctx.fill();
+  // Ohrmuschel
+  ctx.fillStyle = '#e8b48c'; ctx.strokeStyle = '#b77b52'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(252, _BSO_CY, 15, 58, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Knochen um Mittel- und Innenohr
+  ctx.fillStyle = '#ead9bd';
+  _bioFxRundRect(ctx, 318, 78, 100, 92, 16); ctx.fill();
+  // Gehörgang
+  ctx.fillStyle = '#fff7ef';
+  ctx.fillRect(236, _BSO_CY - 12, _BSO_TX - 236, 24);
+  ctx.strokeStyle = '#b77b52'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(262, _BSO_CY - 12); ctx.lineTo(_BSO_TX, _BSO_CY - 12);
+  ctx.moveTo(262, _BSO_CY + 12); ctx.lineTo(_BSO_TX, _BSO_CY + 12); ctx.stroke();
+  // Mittelohr (Paukenhöhle)
+  ctx.fillStyle = '#fbe3e3';
+  _bioFxRundRect(ctx, _BSO_TX, 92, 34, 60, 8); ctx.fill();
+  ctx.restore();
+}
+function _bsoOhr(ctx, W, H) {
+  const s = _bso, off = s.A > 0.01 ? s.A * 3.2 * Math.sin(s.phi) : 0, akt = s.A;
+  ctx.save();
+  // Nerv zum Gehirn
+  ctx.strokeStyle = '#eab308'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(392, 132); ctx.quadraticCurveTo(404, 160, W, 176); ctx.stroke();
+  for (const p of s.pulse) {
+    const u = 1 - p, x = u * u * 392 + 2 * u * p * 404 + p * p * W, y = u * u * 132 + 2 * u * p * 160 + p * p * 176;
+    ctx.fillStyle = '#fffbe6'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1; ctx.stroke();
+  }
+  _bsoSchnecke(ctx, akt);
+  // Trommelfell: dünne Haut, schwingt hin und her
+  ctx.strokeStyle = akt > 0.12 ? '#e11d48' : '#be185d'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(_BSO_TX, _BSO_CY - 16);
+  ctx.quadraticCurveTo(_BSO_TX + 6 + off * 2, _BSO_CY, _BSO_TX, _BSO_CY + 16); ctx.stroke();
+  // Gehörknöchelchen: Hammer, Amboss, Steigbügel wippen mit
+  const hx = _BSO_TX + 3 + off, ax = 334 + off * 0.7, bx = 346 + off * 0.45, fx = 354 + off * 0.35;
+  ctx.strokeStyle = '#8a6d45'; ctx.fillStyle = '#c9ab7c'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(hx, _BSO_CY); ctx.lineTo(ax, 104); ctx.stroke();
+  ctx.beginPath(); ctx.arc(ax, 104, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(ax + 3, 105); ctx.lineTo(bx, 111); ctx.lineTo(bx + 1, 119); ctx.stroke();
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx + 1, 119); ctx.lineTo(fx, 118); ctx.moveTo(fx, 112); ctx.lineTo(fx, 124); ctx.stroke();
+  // Beschriftung
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center'; ctx.font = '700 12px sans-serif';
+  ctx.fillText('Trommelfell', 300, 66);
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(306, 70); ctx.lineTo(_BSO_TX, _BSO_CY - 17); ctx.stroke();
+  ctx.fillText('Hörschnecke', 372, 190);
+  ctx.beginPath(); ctx.moveTo(372, 180); ctx.lineTo(_BSO_SX - 4, _BSO_SY + 30); ctx.stroke();
+  ctx.font = '600 10px sans-serif';
+  ctx.fillText('Gehörgang', 292, 150);
+  ctx.textAlign = 'right'; ctx.fillText('zum Gehirn', W - 4, 206);
+  ctx.font = '600 11px sans-serif'; ctx.fillStyle = '#7c4a2a';
+  ctx.fillText('Elas Ohr im Schnitt', W - 6, H - 8);
+  ctx.restore();
+}
+function _bsoDraw(ctx, cv) {
+  if (!_bso) return;
+  const s = _bso, W = cv.width, H = cv.height, t = s.t, an = s.phase === 'klingelt';
+  const [qx, qy] = _bsoQuelle();
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef6ff'); bg.addColorStop(1, '#dbeafe');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Luftteilchen (in der Glocke gesondert)
+  const inGlocke = (x, y) => s.medium === 'vakuum' && x < 112 && y < 170;
+  for (const [x, y, ph] of s.luft) {
+    if (s.medium === 'holz' && y > 108 && y < 142) continue;
+    if (inGlocke(x, y)) continue;
+    _bsoTeilchen(ctx, x, y, ph, 0.4);
+  }
+  if (s.medium !== 'vakuum') for (const [x, y, ph] of s.glocke) _bsoTeilchen(ctx, x - 6, y, ph, 0.4);
+
+  // Tischplatte aus Holz
+  if (s.medium === 'holz') {
+    ctx.fillStyle = '#c08a52'; ctx.fillRect(8, 112, 252, 26);
+    ctx.strokeStyle = '#8a5a2b'; ctx.lineWidth = 1.5; ctx.strokeRect(8, 112, 252, 26);
+    ctx.strokeStyle = 'rgba(120,70,30,0.45)'; ctx.lineWidth = 1;
+    for (let k = 0; k < 4; k++) {
+      ctx.beginPath(); ctx.moveTo(12, 117 + k * 6);
+      for (let x = 12; x < 258; x += 12) ctx.lineTo(x, 117 + k * 6 + Math.sin(x * 0.05 + k) * 1.5);
+      ctx.stroke();
+    }
+  } else if (s.medium === 'luft') {
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(28, 144, 56, 6);          // kleines Brett
+    ctx.fillRect(52, 150, 8, 70);
+  }
+
+  _bsoKopf(ctx, W, H);
+  // Schallbögen (nur im Stoff und im Gehörgang)
+  ctx.save();
+  ctx.beginPath();
+  if (s.medium === 'holz') ctx.rect(8, 112, 252, 26); else ctx.rect(0, 0, 250, H);
+  ctx.rect(236, _BSO_CY - 12, _BSO_TX - 236, 24);
+  ctx.clip();
+  const holz = s.medium === 'holz', bogen = holz ? 1.45 : 0.75;
+  for (const w of s.wellen) {
+    if (w.amp < 0.03 || w.r < 4) continue;
+    const a = Math.min(0.9, 0.3 + 0.45 * w.amp) * (1 - 0.45 * w.r / 340);
+    ctx.strokeStyle = holz ? 'rgba(92,40,10,' + a.toFixed(3) + ')' : 'rgba(37,99,235,' + a.toFixed(3) + ')';
+    ctx.lineWidth = 1.4 + 1.5 * w.amp;
+    ctx.beginPath(); ctx.arc(qx, qy, w.r, -bogen, bogen); ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.globalAlpha = 0.45;
+    if (w.r > 10) { ctx.beginPath(); ctx.arc(qx, qy, w.r - 7, -bogen, bogen); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+
+  _bsoOhr(ctx, W, H);
+
+  // Glasglocke mit Pumpe
+  if (s.medium === 'vakuum') {
+    for (let i = 0; i < s.glocke.length; i++) {
+      const [x, y, ph] = s.glocke[i];
+      const weg = 0.4 + 2.0 * (1 - (i + 0.5) / s.glocke.length);   // wann dieses Teilchen abgesaugt wird
+      const u = (s.pt - weg) / 0.35;
+      if (u >= 1) continue;
+      if (u <= 0) { _bsoTeilchen(ctx, x, y, ph, 0.55); continue; }
+      const e = _bioFxEase.rein(u);
+      ctx.fillStyle = 'rgba(71,85,105,' + (0.55 * (1 - e)).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(x + (98 - x) * e, y + (163 - y) * e, 1.7, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(4, 165, 112, 8);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(98, 173); ctx.quadraticCurveTo(104, 212, 150, 214); ctx.stroke();
+    const pumpt = an && s.luftA > 0 && s.pt >= 0.4;
+    const kolben = pumpt ? Math.sin(s.pt * 2 * Math.PI * 1.2) * 5 : 0;
+    ctx.fillStyle = '#475569'; ctx.fillRect(150, 200, 54, 28);
+    ctx.fillStyle = '#334155'; ctx.fillRect(174, 184 + kolben, 6, 18);
+    ctx.fillRect(166, 182 + kolben, 22, 4);
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Pumpe', 177, 218);
+  }
+  const wy = s.medium === 'holz' ? 88 : s.medium === 'vakuum' ? 132 : 120;
+  const wx = s.medium === 'vakuum' ? 60 : 55;
+  _bsoWecker(ctx, wx, wy, an, t);
+  if (s.medium === 'vakuum') {
+    ctx.save();
+    ctx.fillStyle = 'rgba(186,230,253,0.22)'; ctx.strokeStyle = 'rgba(30,100,150,0.85)'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(14, 165); ctx.lineTo(14, 95); ctx.arc(60, 95, 46, Math.PI, 2 * Math.PI); ctx.lineTo(106, 165);
+    ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(60, 95, 38, Math.PI * 1.1, Math.PI * 1.4); ctx.stroke();
+    ctx.restore();
+  }
+
+  // Was ist zwischen Wecker und Ohr?
+  let txt = 'Luft';
+  if (s.medium === 'holz') txt = 'Tischplatte aus Holz';
+  if (s.medium === 'vakuum') txt = s.luftA >= 1 ? 'Glasglocke · noch mit Luft' : s.luftA > 0 ? 'Glasglocke · Luft wird abgepumpt' : 'Glasglocke ohne Luft';
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(txt, 8, H - 8);
+  ctx.font = '600 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Wecker', wx, s.medium === 'holz' ? 52 : s.medium === 'vakuum' ? 44 : 78);
+  _bioFxAlleDraw(ctx, s.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bs4 „Wo klatscht Samir?“ (Kennung bio-richtungshoeren)
+// Elas Kopf genau von oben (vorn = oben im Bild), die Augen sind zu. Samir
+// klatscht links, vorn oder rechts. Nach „▶ Klatschen“ laufen Schallboegen
+// von seinen Haenden los und erreichen die Ohren. Jedes Ohr leuchtet auf,
+// wenn der Schall ankommt, daneben erscheint 1 bzw. 2 (bei „vorn“ beide 1).
+// Ein Lichtpunkt laeuft ueber den Hoernerv zum Gehirn; danach waechst im
+// Kopf ein Pfeil in die Richtung, in die Ela zeigt.
+// Fachlich: Der Schall kommt am naeheren Ohr zuerst an, das Gehirn
+// vergleicht beide Ohren. Ist das rechte Ohr zugehalten, kommt nur am
+// linken Ohr Schall an – Ela zeigt dann zur offenen Seite (nach links).
+// Modellwerte (Lehrerteil): Das Bild zeigt nur die Reihenfolge. Der echte
+// Zeitunterschied betraegt hoechstens etwa 0,6 Tausendstelsekunden; hier
+// ist die Schallgeschwindigkeit stark verlangsamt (200 Bildpunkte je s).
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Zeitlupe, wenn der Schall
+// das erste Ohr erreicht; Lichtring am Ohr; Zeitmarken unten im Streifen
+// „Wann kommt der Schall an?“; Lichtpunkte auf dem Hoernerv; der Pfeil im
+// Kopf waechst, an seiner Spitze kurze Funken und ein Lichtring. Danach
+// zeigen gestrichelte Linien die beiden Schallwege (ohne Text).
+// Nichts blinkt (Puls 0,8 Hz), kein Ton, keine Wertung.
+// ════════════════════════════════════════════════════════════════════════
+let _bsr = null;
+const _BSR_WO = ['links', 'vorn', 'rechts'];
+const _BSR_OHR = ['offen', 'zugehalten'];
+const _BSR_V = 200;          // Bildpunkte je s: Schall im Modell (stark verlangsamt)
+const _BSR_T0 = 0.18;        // s: Haende treffen sich, der Schall startet
+const _BSR_NERV = 0.25;      // s: Lichtpunkt vom Ohr zum Gehirn
+const _BSR_VERGL = 0.12;     // s: Gehirn vergleicht
+const _BSR_PFEIL = 0.45;     // s: Pfeil waechst
+
+function _bsrZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _bsrInit() {
+  const z = _bsrZufall(41);
+  const gras = [];
+  for (let i = 0; i < 60; i++) gras.push([z(), z(), z() * 6.28, 0.6 + z() * 0.6]);
+  const blumen = [];
+  for (let i = 0; i < 9; i++) blumen.push([z(), z(), z() * 6.28, z() < 0.5 ? '#fde047' : '#f9a8d4']);
+  _bsr = {
+    t: 0,
+    wo: 0, zu: 0,               // Start: links, rechtes Ohr offen
+    phase: 'bereit', pt: 0,
+    an: [-1, -1],               // Ankunftszeit am linken/rechten Ohr (Laufzeit), -1 = noch nicht
+    gedaempft: -1,              // Laufzeit, als der Schall die Hand am rechten Ohr traf
+    gras, blumen,
+    key: '', W: 420, H: 250,
+    fx: { teile: [] },
+    pfeilFx: false, klatsch: false, gehirnFx: false
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bsrWo(i) {
+  if (!_bsr) return;
+  _bsr.wo = i;
+  _bsrZurueck();
+}
+function _bsrOhr(i) {
+  if (!_bsr) return;
+  _bsr.zu = i;
+  _bsrZurueck();
+}
+function _bsrFxLeer() {
+  _bsr.fx = { teile: [] }; _bsr.zeitlupe = null;
+  _bsr.an = [-1, -1]; _bsr.gedaempft = -1; _bsr.pfeilFx = false;
+  _bsr.klatsch = false; _bsr.gehirnFx = false;
+}
+function _bsrZurueck() {
+  _bsrFxLeer();
+  _bsr.phase = 'bereit'; _bsr.pt = 0;
+  _bsrStatus(); _bsrKnoepfe();
+}
+function _bsrStart() {
+  if (!_bsr) return;
+  _bsrFxLeer();
+  _bsr.phase = 'laufen'; _bsr.pt = 0;
+  _bsrStatus(); _bsrKnoepfe();
+}
+function _bsrNeu() {
+  if (!_bsr) return;
+  _bsrZurueck();
+}
+/* Sprungmarke: Ort und Ohr auf einmal, dann gleich klatschen. */
+function _bsrMarke(w, z) {
+  if (!_bsr) return;
+  _bsr.wo = w; _bsr.zu = z;
+  _bsrStart();
+}
+function _bsrKnoepfe() {
+  if (!_bsr || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bsr]').forEach(b => {
+      const d = b.dataset ? b.dataset.bsr : b.getAttribute('data-bsr');
+      const an = d === 'w' + _bsr.wo || d === 'o' + _bsr.zu;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bsrHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bsr="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo klatscht Samir?</h3>
+    <div class="fpm-note" style="margin-top:2px">Du siehst Elas Kopf von oben. Ihre Augen sind zu. Stelle ein, wo Samir klatscht. Dann drücke „▶ Klatschen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsr-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Wo klatscht Samir?</span>
+          ${k('w0', '_bsrWo(0)', 'links')}
+          ${k('w1', '_bsrWo(1)', 'vorn')}
+          ${k('w2', '_bsrWo(2)', 'rechts')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="margin-right:4px">Rechtes Ohr</span>
+          ${k('o0', '_bsrOhr(0)', 'offen')}
+          ${k('o1', '_bsrOhr(1)', 'zugehalten')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bsrStart()">▶ Klatschen</button>
+          <button class="sim-btn" onclick="_bsrNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was hört Ela?</div>
+        <div class="lmp-status on" id="_bsr-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bsrMarke(0,0)">links, beide Ohren offen</button>
+          <button class="sim-btn" onclick="_bsrMarke(1,0)">vorn, beide Ohren offen</button>
+          <button class="sim-btn" onclick="_bsrMarke(2,0)">rechts, beide Ohren offen</button>
+          <button class="sim-btn" onclick="_bsrMarke(2,1)">rechts, rechtes Ohr zugehalten</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Der Schall läuft von Samirs Händen zu beiden Ohren. Die Ohren leuchten in der Reihenfolge auf, in der der Schall ankommt. Ein zugehaltenes Ohr bleibt dunkel.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Rechnung: Wege und Ankunftszeiten ─────────────────────────────────── */
+function _bsrGeo(W, H) {
+  const cx = W / 2, cy = H * 0.51;
+  return {
+    cx, cy, rk: 32,                                 // Kopfmitte, Kopfradius
+    ohr: [[cx - 34, cy + 2], [cx + 34, cy + 2]],    // linkes, rechtes Ohr
+    // Samir: Koerper und Haende je Ort (links, vorn, rechts)
+    samir: [
+      { x: 48, y: cy, hx: 80, hy: cy, w: 0 },
+      { x: cx, y: 20, hx: cx, hy: 52, w: Math.PI / 2 },
+      { x: W - 48, y: cy, hx: W - 80, hy: cy, w: Math.PI }
+    ],
+    // Zeitstreifen unten
+    sx0: cx - 18, sx1: cx + 128, sy: [H - 34, H - 15]
+  };
+}
+/* Weg von Samirs Haenden zum Ohr i (Bildpunkte). */
+function _bsrWeg(g, wo, i) {
+  const s = g.samir[wo], o = g.ohr[i];
+  return Math.hypot(o[0] - s.hx, o[1] - s.hy);
+}
+/* Laufzeit bis zur Ankunft am Ohr i (s, ab „▶ Klatschen“). */
+function _bsrAnkunft(g, wo, i) {
+  return _BSR_T0 + _bsrWeg(g, wo, i) / _BSR_V;
+}
+/* Welche Ohren hoeren den Schall? Zugehalten = rechtes Ohr hoert nichts. */
+function _bsrHoert(i) { return !(i === 1 && _bsr.zu === 1); }
+/* Ergebnis aus den Ankunftszeiten: 'links', 'vorn' oder 'rechts'. */
+function _bsrRichtung(g) {
+  const tl = _bsrHoert(0) ? _bsrAnkunft(g, _bsr.wo, 0) : Infinity;
+  const tr = _bsrHoert(1) ? _bsrAnkunft(g, _bsr.wo, 1) : Infinity;
+  if (Math.abs(tl - tr) < 1e-6) return 'vorn';
+  return tl < tr ? 'links' : 'rechts';
+}
+/* Zeitpunkt, an dem der letzte Lichtpunkt im Gehirn ankommt. */
+function _bsrGehirnZeit(g) {
+  let m = 0;
+  for (let i = 0; i < 2; i++) if (_bsrHoert(i)) m = Math.max(m, _bsrAnkunft(g, _bsr.wo, i));
+  return m + _BSR_NERV;
+}
+function _bsrPfeilStart(g) { return _bsrGehirnZeit(g) + _BSR_VERGL; }
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bsrErgebnis(g) {
+  const r = _bsrRichtung(g);
+  let wo;
+  if (_bsr.zu === 1) wo = 'nur am linken Ohr';
+  else if (r === 'vorn') wo = 'an beiden Ohren gleichzeitig';
+  else wo = 'zuerst am ' + (r === 'links' ? 'linken' : 'rechten') + ' Ohr';
+  return { wo, zeigt: 'Ela zeigt nach ' + r, r };
+}
+function _bsrSchluessel() {
+  return _bsr.phase + _bsr.wo + _bsr.zu;
+}
+function _bsrStatus() {
+  if (!_bsr) return;
+  _bsr.key = _bsrSchluessel();
+  const el = document.getElementById('_bsr-status');
+  if (!el) return;
+  const g = _bsrGeo(_bsr.W, _bsr.H);
+  const ein = 'Samir klatscht ' + _BSR_WO[_bsr.wo] + ' · Rechtes Ohr ' + _BSR_OHR[_bsr.zu];
+  let h;
+  if (_bsr.phase === 'bereit') {
+    h = `<b>${ein}</b><br>Elas Augen sind zu.<br>Drücke „▶ Klatschen“.`;
+  } else if (_bsr.phase === 'laufen') {
+    h = `<b>${ein}</b><br>Der Schall läuft zu Elas Ohren.`;
+  } else {
+    const e = _bsrErgebnis(g);
+    const zeile = _BSR_WO[_bsr.wo] + (_bsr.zu === 1 ? ', Ohr zu' : '') +
+      ' · Der Schall kommt ' + e.wo + ' an · ' + e.zeigt;
+    h = `<b>${zeile}</b><br>Ergebnis: ${e.wo} · ${e.zeigt}<br>` +
+        `Samir steht ${_BSR_WO[_bsr.wo]}. Ela zeigt nach ${e.r}.`;
+  }
+  el.innerHTML = h;
+}
+
+function _bsrUpdate(dt) {
+  if (!_bsr) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_bsr, roh);
+  _bsr.t += d;
+  _bioFxAlleUpdate(_bsr.fx, roh);
+  if (_bsr.phase !== 'bereit') {
+    _bsr.pt += d;
+    _bsrEreignisse();
+  }
+  if (_bsrSchluessel() !== _bsr.key) _bsrStatus();
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+function _bsrEreignisse() {
+  const g = _bsrGeo(_bsr.W, _bsr.H), fx = _bsr.fx.teile, pt = _bsr.pt;
+  const s = g.samir[_bsr.wo];
+  // Haende treffen sich: ein kleiner Funke
+  if (_bsr.phase === 'laufen' && pt >= _BSR_T0 && !_bsr.klatsch) {
+    _bsr.klatsch = true;
+    _bioFxFunken(fx, s.hx, s.hy, 5, ['#ffffff', '#bfdbfe', '#93c5fd']);
+  }
+  if (pt < _BSR_T0) _bsr.klatsch = false;
+  // Ankunft an den Ohren
+  for (let i = 0; i < 2; i++) {
+    const ta = _bsrAnkunft(g, _bsr.wo, i);
+    if (pt < ta) continue;
+    const o = g.ohr[i];
+    if (!_bsrHoert(i)) {
+      if (_bsr.gedaempft < 0) {
+        _bsr.gedaempft = ta;
+        _bioFxWelle(fx, o[0] + 4, o[1], 'rgba(120,120,120,0.7)', 14);
+      }
+      continue;
+    }
+    if (_bsr.an[i] >= 0) continue;
+    const erstes = _bsr.an[0] < 0 && _bsr.an[1] < 0;
+    _bsr.an[i] = ta;
+    _bioFxWelle(fx, o[0], o[1], 'rgba(250,204,21,0.95)', 26);
+    _bioFxFunken(fx, o[0], o[1], 4, ['#fde047', '#fff7c2', '#ffffff']);
+    if (erstes) _bioFxZeitlupe(_bsr, 0.35, 0.55);
+  }
+  // Gehirn: Lichtring, wenn der letzte Lichtpunkt ankommt
+  const gz = _bsrGehirnZeit(g);
+  if (pt >= gz && !_bsr.gehirnFx) {
+    _bsr.gehirnFx = true;
+    _bioFxWelle(fx, g.cx, g.cy - 2, 'rgba(236,72,153,0.8)', 22);
+  }
+  if (pt < gz) _bsr.gehirnFx = false;
+  // Pfeil
+  const ps = _bsrPfeilStart(g);
+  if (_bsr.phase === 'laufen' && pt >= ps) { _bsr.phase = 'zeigen'; }
+  if (_bsr.phase === 'zeigen' && pt >= ps + _BSR_PFEIL) {
+    _bsr.phase = 'fertig';
+    if (!_bsr.pfeilFx) {
+      _bsr.pfeilFx = true;
+      const sp = _bsrPfeilSpitze(g, 1);
+      _bioFxFunken(fx, sp[0], sp[1], 8, ['#93c5fd', '#ffffff', '#fde047', '#60a5fa']);
+      _bioFxWelle(fx, sp[0], sp[1], 'rgba(37,99,235,0.9)', 24);
+    }
+  }
+}
+function _bsrPfeilWinkel() {
+  const r = _bsrRichtung(_bsrGeo(_bsr.W, _bsr.H));
+  return r === 'links' ? Math.PI : r === 'rechts' ? 0 : -Math.PI / 2;
+}
+/* Spitze des Pfeils bei Wachstum p (0..1). */
+function _bsrPfeilSpitze(g, p) {
+  const w = _bsrPfeilWinkel(), L = 10 + 42 * p;
+  return [g.cx + L * Math.cos(w), g.cy - 2 + L * Math.sin(w)];
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bsrText(ctx, s, x, y, farbe, font, align) {
+  ctx.font = font || '700 11px sans-serif';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.85)';
+  ctx.strokeText(s, x, y);
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.fillText(s, x, y);
+}
+
+function _bsrDraw(ctx, cv) {
+  if (!_bsr) return;
+  const W = cv.width, H = cv.height, t = _bsr.t;
+  _bsr.W = W; _bsr.H = H;
+  const g = _bsrGeo(W, H);
+  _bsrWiese(ctx, g, W, H, t);
+  _bsrWege(ctx, g);
+  _bsrWellen(ctx, g);
+  _bsrSamir(ctx, g, t);
+  _bsrEla(ctx, g, t);
+  _bsrStreifen(ctx, g);
+  _bioFxAlleDraw(ctx, _bsr.fx);
+}
+
+/* Schulgarten von oben: Gras wiegt sich, Blueten drehen sich langsam. */
+function _bsrWiese(ctx, g, W, H, t) {
+  ctx.fillStyle = '#d9f0c4'; ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  ctx.strokeStyle = '#8cc56b'; ctx.lineWidth = 1.1;
+  ctx.beginPath();
+  for (const [fx, fy, ph, gr] of _bsr.gras) {
+    const x = 4 + fx * (W - 8), y = 8 + fy * (H - 12);
+    const b = 2 * Math.sin(t * 1.5 + ph);
+    ctx.moveTo(x, y); ctx.lineTo(x + b - 2 * gr, y - 6 * gr);
+    ctx.moveTo(x, y); ctx.lineTo(x + b + 2 * gr, y - 5 * gr);
+  }
+  ctx.stroke();
+  for (const [fx, fy, ph, f] of _bsr.blumen) {
+    const x = 10 + fx * (W - 20), y = 10 + fy * (H - 20);
+    if (Math.abs(x - g.cx) < 90 && y > 60) continue;           // Mitte frei lassen
+    ctx.save();
+    ctx.translate(x, y); ctx.rotate(t * 0.25 + ph);
+    ctx.fillStyle = f;
+    for (let i = 0; i < 5; i++) {
+      const w = i * 1.2566;
+      ctx.beginPath(); ctx.arc(3.2 * Math.cos(w), 3.2 * Math.sin(w), 2.3, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.fillStyle = '#ea580c';
+    ctx.beginPath(); ctx.arc(0, 0, 1.3, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+  // Bank hinter Ela
+  ctx.fillStyle = '#b08455';
+  ctx.fillRect(g.cx - 70, g.cy + 38, 140, 16);
+  ctx.strokeStyle = '#7c5a36'; ctx.lineWidth = 1;
+  for (let i = 1; i < 3; i++) {
+    ctx.beginPath(); ctx.moveTo(g.cx - 70, g.cy + 38 + i * 5.3); ctx.lineTo(g.cx + 70, g.cy + 38 + i * 5.3); ctx.stroke();
+  }
+  ctx.restore();
+  _bsrText(ctx, 'von oben', 8, 12, '#14532d', '700 10px sans-serif');
+}
+
+/* Schallboegen: drei Ringe laufen von Samirs Haenden los. */
+function _bsrWellen(ctx, g) {
+  if (_bsr.phase === 'bereit') return;
+  const s = g.samir[_bsr.wo];
+  const r0 = (_bsr.pt - _BSR_T0) * _BSR_V;
+  if (r0 <= 0) return;
+  ctx.save();
+  ctx.lineWidth = 2.4;
+  for (let k = 0; k < 3; k++) {
+    const r = r0 - k * 10;
+    if (r <= 2 || r > 330) continue;
+    const a = 0.75 * (1 - r / 330) * (1 - k * 0.25);
+    ctx.strokeStyle = 'rgba(37,99,235,' + a.toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(s.hx, s.hy, r, 0, Math.PI * 2); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/* Nach dem Zeigen: gestrichelte Schallwege zu beiden Ohren (ohne Text). */
+function _bsrWege(ctx, g) {
+  if (_bsr.phase !== 'fertig' && _bsr.phase !== 'zeigen') return;
+  const s = g.samir[_bsr.wo];
+  ctx.save();
+  ctx.setLineDash([5, 4]); ctx.lineWidth = 2;
+  for (let i = 0; i < 2; i++) {
+    const o = g.ohr[i];
+    const erst = _bsr.an[i] >= 0 && _bsr.an[i] <= Math.min(...[0, 1].filter(j => _bsr.an[j] >= 0).map(j => _bsr.an[j])) + 1e-9;
+    ctx.strokeStyle = !_bsrHoert(i) ? 'rgba(107,114,128,0.55)' : erst ? 'rgba(202,138,4,0.85)' : 'rgba(37,99,235,0.55)';
+    ctx.beginPath(); ctx.moveTo(s.hx, s.hy); ctx.lineTo(o[0], o[1]); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+/* Samir von oben: Kopf, Schultern, Arme nach vorn, Haende klatschen. */
+function _bsrSamir(ctx, g, t) {
+  const s = g.samir[_bsr.wo];
+  ctx.save();
+  ctx.translate(s.x, s.y); ctx.rotate(s.w);
+  ctx.translate(Math.sin(t * 1.3) * 0.8, 0);
+  // Abstand der Haende: in Ruhe leicht offen, beim Klatschen zu
+  let auf = 7 + 1.5 * Math.sin(t * 2.2);
+  if (_bsr.phase !== 'bereit') {
+    const p = _bsr.pt;
+    auf = p < _BSR_T0 ? 12 * (1 - p / _BSR_T0) : Math.min(7, (p - _BSR_T0) * 30);
+  }
+  // Arme
+  ctx.strokeStyle = '#f2c29b'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(4, -13); ctx.lineTo(30, -auf);
+  ctx.moveTo(4, 13); ctx.lineTo(30, auf);
+  ctx.stroke();
+  // Schultern (Pullover)
+  ctx.fillStyle = '#16a34a';
+  ctx.beginPath(); ctx.ellipse(-2, 0, 11, 19, 0, 0, Math.PI * 2); ctx.fill();
+  // Kopf
+  ctx.fillStyle = '#3f2a1d';
+  ctx.beginPath(); ctx.arc(2, 0, 9.5, 0, Math.PI * 2); ctx.fill();
+  // Haende
+  ctx.fillStyle = '#f2c29b'; ctx.strokeStyle = '#c98b63'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.ellipse(32, -auf, 3.4, 5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(32, auf, 3.4, 5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  // Hinweisring in Ruhe (0,5 Hz, sehr sanft)
+  if (_bsr.phase === 'bereit') {
+    const a = 0.25 + 0.2 * Math.sin(t * Math.PI);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(37,99,235,' + a.toFixed(3) + ')'; ctx.lineWidth = 2; ctx.setLineDash([3, 4]);
+    ctx.beginPath(); ctx.arc(s.hx, s.hy, 13, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
+  const lx = _bsr.wo === 1 ? s.x + 26 : s.x, ly = _bsr.wo === 1 ? s.y - 6 : s.y + 30;
+  _bsrText(ctx, 'Samir', lx, ly, '#14532d', '700 11px sans-serif', _bsr.wo === 1 ? 'left' : 'center');
+}
+
+/* Ela von oben: Schultern, Kopf mit Haaren, Stirn mit geschlossenen Augen,
+   Ohren, Gehirn und Hoernerven als Blick in den Kopf, Richtungspfeil. */
+function _bsrEla(ctx, g, t) {
+  const cx = g.cx, cy = g.cy, rk = g.rk;
+  const atem = 1 + 0.015 * Math.sin(t * 1.7);
+  ctx.save();
+  // Schultern und Oberkoerper
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath(); ctx.ellipse(cx, cy + 30, 42 * atem, 18 * atem, 0, 0, Math.PI * 2); ctx.fill();
+  // linker Arm liegt im Schoss (nicht sichtbar), rechter Arm haelt ggf. das Ohr zu
+  if (_bsr.zu === 1) {
+    ctx.strokeStyle = '#6d28d9'; ctx.lineWidth = 9; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(cx + 36, cy + 26); ctx.lineTo(cx + 48, cy + 14); ctx.stroke();
+    ctx.strokeStyle = '#f5cba7'; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.moveTo(cx + 48, cy + 14); ctx.lineTo(cx + 43, cy + 6); ctx.stroke();
+  }
+  // Ohren (unter dem Kopfrand) – leuchten nach der Ankunft
+  for (let i = 0; i < 2; i++) {
+    const [ox, oy] = g.ohr[i];
+    const an = _bsr.an[i] >= 0 && _bsr.phase !== 'bereit';
+    if (an) {
+      const seit = _bsr.pt - _bsr.an[i];
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, seit / 0.15);
+      _bioFxLeuchten(ctx, ox, oy, 9, t, '250,204,21');
+      ctx.restore();
+    }
+    ctx.fillStyle = an ? '#fde68a' : (_bsrHoert(i) ? '#f2c29b' : '#b9a18e');
+    ctx.strokeStyle = '#b07a55'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(ox, oy, 5, 9, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  }
+  // Kopf mit Haaren
+  ctx.fillStyle = '#5b3a1e';
+  ctx.beginPath(); ctx.ellipse(cx, cy, rk, rk + 3, 0, 0, Math.PI * 2); ctx.fill();
+  // Stirn vorn (oben im Bild) mit Nase und geschlossenen Augen
+  ctx.fillStyle = '#f5cba7';
+  ctx.beginPath(); ctx.ellipse(cx, cy - rk + 5, 17, 8, 0, Math.PI, 0); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(cx - 4, cy - rk - 1); ctx.lineTo(cx, cy - rk - 7); ctx.lineTo(cx + 4, cy - rk - 1); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#3f2a1d'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(cx - 8, cy - rk + 1, 3, 0.15 * Math.PI, 0.85 * Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx + 8, cy - rk + 1, 3, 0.15 * Math.PI, 0.85 * Math.PI); ctx.stroke();
+  // Scheitel
+  ctx.strokeStyle = 'rgba(0,0,0,0.25)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(cx, cy - rk + 8); ctx.lineTo(cx, cy + rk - 4); ctx.stroke();
+  // Blick in den Kopf: Gehirn und Hoernerven
+  const gz = _bsrGehirnZeit(g);
+  const aktiv = _bsr.phase !== 'bereit' && _bsr.pt >= gz;
+  ctx.fillStyle = aktiv ? 'rgba(249,168,212,0.85)' : 'rgba(249,168,212,0.5)';
+  ctx.beginPath(); ctx.ellipse(cx, cy - 2, 16, 14, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = 'rgba(190,24,93,0.55)'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(cx - 9, cy - 9); ctx.quadraticCurveTo(cx - 3, cy - 4, cx - 10, cy + 3);
+  ctx.moveTo(cx + 9, cy - 9); ctx.quadraticCurveTo(cx + 3, cy - 4, cx + 10, cy + 3);
+  ctx.moveTo(cx, cy - 15); ctx.lineTo(cx, cy + 11);
+  ctx.stroke();
+  for (let i = 0; i < 2; i++) {
+    const [ox, oy] = g.ohr[i];
+    const ex = cx + (i === 0 ? -15 : 15);
+    ctx.strokeStyle = _bsrHoert(i) ? 'rgba(254,240,138,0.7)' : 'rgba(200,200,200,0.35)';
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(ox + (i === 0 ? 4 : -4), oy); ctx.lineTo(ex, cy); ctx.stroke();
+    // Lichtpunkt auf dem Hoernerv
+    if (_bsr.an[i] >= 0 && _bsr.phase !== 'bereit') {
+      const p = (_bsr.pt - _bsr.an[i]) / _BSR_NERV;
+      if (p >= 0 && p <= 1) {
+        const x = ox + (i === 0 ? 4 : -4) + (ex - ox - (i === 0 ? 4 : -4)) * p, y = oy + (cy - oy) * p;
+        ctx.fillStyle = '#fef08a';
+        ctx.beginPath(); ctx.arc(x, y, 3.2, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = 'rgba(254,240,138,0.4)';
+        ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+  }
+  // Hand ueber dem rechten Ohr
+  if (_bsr.zu === 1) {
+    const [ox, oy] = g.ohr[1];
+    ctx.fillStyle = '#f5cba7'; ctx.strokeStyle = '#c98b63'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(ox + 4, oy - 1, 7, 11, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(201,139,99,0.8)';
+    for (let k = -1; k <= 1; k++) {
+      ctx.beginPath(); ctx.moveTo(ox + 1, oy - 1 + k * 4); ctx.lineTo(ox + 9, oy - 1 + k * 4); ctx.stroke();
+    }
+  }
+  // Richtungspfeil im Kopf
+  if (_bsr.phase === 'zeigen' || _bsr.phase === 'fertig') {
+    const p = _bsr.phase === 'fertig' ? 1 : _bioFxEase.raus(_bioFxKlemme((_bsr.pt - _bsrPfeilStart(g)) / _BSR_PFEIL));
+    const w = _bsrPfeilWinkel();
+    const [sx, sy] = _bsrPfeilSpitze(g, p);
+    const bx = cx - 8 * Math.cos(w), by = cy - 2 - 8 * Math.sin(w);
+    ctx.save();
+    ctx.strokeStyle = '#1d4ed8'; ctx.fillStyle = '#1d4ed8'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    ctx.shadowColor = 'rgba(255,255,255,0.9)'; ctx.shadowBlur = 4;
+    ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(sx - 6 * Math.cos(w), sy - 6 * Math.sin(w)); ctx.stroke();
+    ctx.translate(sx, sy); ctx.rotate(w);
+    ctx.beginPath(); ctx.moveTo(4, 0); ctx.lineTo(-9, -8); ctx.lineTo(-9, 8); ctx.closePath(); ctx.fill();
+    ctx.restore();
+    if (_bsr.phase === 'fertig') {
+      const lx = sx + (w === 0 ? 8 : w === Math.PI ? -8 : 10), ly = sy + (w < 0 ? 0 : -12);
+      _bsrText(ctx, 'Ela zeigt', lx, ly, '#1d4ed8', '700 11px sans-serif', w === Math.PI ? 'right' : 'left');
+    }
+  }
+  ctx.restore();
+  // Nummern 1 und 2 neben den Ohren
+  for (let i = 0; i < 2; i++) {
+    if (_bsr.an[i] < 0 || _bsr.phase === 'bereit') continue;
+    const vor = [0, 1].filter(j => _bsr.an[j] >= 0 && _bsr.an[j] < _bsr.an[i] - 1e-6).length;
+    const n = String(vor + 1);
+    const [ox, oy] = g.ohr[i];
+    const bx = ox + (i === 0 ? -17 : 17), by = oy - 22;
+    const k = _bioFxEase.federn(_bioFxKlemme((_bsr.pt - _bsr.an[i]) / 0.3));
+    ctx.save();
+    ctx.translate(bx, by); ctx.scale(Math.max(0.01, k), Math.max(0.01, k));
+    ctx.fillStyle = '#ca8a04';
+    ctx.beginPath(); ctx.arc(0, 0, 9, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 12px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(n, 0, 1);
+    ctx.restore();
+  }
+  // Beschriftung
+  _bsrText(ctx, 'linkes Ohr', g.ohr[0][0] - 14, cy + 18, '#1f2937', '700 11px sans-serif', 'right');
+  _bsrText(ctx, 'rechtes Ohr', g.ohr[1][0] + (_bsr.zu === 1 ? 18 : 14), cy + 18, '#1f2937', '700 11px sans-serif', 'left');
+  if (_bsr.zu === 1) _bsrText(ctx, 'zugehalten', g.ohr[1][0] + 18, cy + 31, '#6b7280', '600 10px sans-serif', 'left');
+  _bsrText(ctx, 'Ela', cx, cy + 63, '#4c1d95', '700 11px sans-serif', 'center');
+}
+
+/* Zeitstreifen unten: „Wann kommt der Schall an?“ – ein Laeufer wandert
+   nach rechts, an der Ankunftszeit jedes Ohrs bleibt eine Marke stehen. */
+function _bsrStreifen(ctx, g) {
+  const x0 = g.sx0, x1 = g.sx1, [y0, y1] = g.sy;
+  const bx = x0 - 94;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.82)';
+  _bioFxRundRect(ctx, bx, y0 - 13, x1 - bx + 10, y1 - y0 + 26, 7); ctx.fill();
+  ctx.strokeStyle = 'rgba(100,116,139,0.6)'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, bx, y0 - 13, x1 - bx + 10, y1 - y0 + 26, 7); ctx.stroke();
+  ctx.restore();
+  _bsrText(ctx, 'linkes Ohr', x0 - 6, y0, '#1f2937', '700 10px sans-serif', 'right');
+  _bsrText(ctx, 'rechtes Ohr', x0 - 6, y1, '#1f2937', '700 10px sans-serif', 'right');
+  const tx = tau => x0 + (x1 - x0) * _bioFxKlemme((tau - _BSR_T0) / 1.05);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,0.55)'; ctx.lineWidth = 1.5;
+  for (const y of [y0, y1]) { ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke(); }
+  // Zeitpfeil
+  ctx.fillStyle = 'rgba(100,116,139,0.8)';
+  ctx.beginPath(); ctx.moveTo(x1 + 6, (y0 + y1) / 2); ctx.lineTo(x1, (y0 + y1) / 2 - 4); ctx.lineTo(x1, (y0 + y1) / 2 + 4); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  _bsrText(ctx, 'Zeit', x1 - 12, (y0 + y1) / 2, '#475569', '600 9px sans-serif', 'center');
+  if (_bsr.zu === 1) _bsrText(ctx, 'zugehalten', (x0 + x1) / 2, y1 - 1, '#6b7280', '600 10px sans-serif', 'center');
+  if (_bsr.phase === 'bereit') return;
+  // Laeufer
+  const lx = tx(_bsr.pt);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(37,99,235,0.8)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(lx, y0 - 8); ctx.lineTo(lx, y1 + 8); ctx.stroke();
+  ctx.restore();
+  // Marken
+  for (let i = 0; i < 2; i++) {
+    if (_bsr.an[i] < 0) continue;
+    const y = i === 0 ? y0 : y1, x = tx(_bsr.an[i]);
+    const vor = [0, 1].filter(j => _bsr.an[j] >= 0 && _bsr.an[j] < _bsr.an[i] - 1e-6).length;
+    ctx.save();
+    ctx.fillStyle = '#ca8a04';
+    ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(String(vor + 1), x, y + 0.5);
+    ctx.restore();
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bs5 „Das fallende Lineal“ (Kennung bio-reaktion)
+// Links haelt Samir ein 30-cm-Lineal, Elas Daumen und Zeigefinger stehen
+// offen bei 0 cm. Rechts Elas Koerper im Umriss (Kopf mit Auge, Ohr und
+// Gehirn, Nerv am Hals und im Arm, Armmuskel am Unterarm auf dem Tisch).
+// Das Kind stellt EINE Bedingung um (Startzeichen), drueckt
+// „▶ Lineal fallen lassen“ und sieht in Zeitlupe: Das Lineal faellt, und
+// gleichzeitig laeuft ein Lichtpunkt Auge (oder Ohr) - Nerv - Gehirn - Nerv
+// - Armmuskel. Erst wenn er am Armmuskel ankommt, schliessen sich die
+// Finger; das Lineal bleibt stehen, die cm-Zahl steht gross am Daumen.
+// Fachlich: Fallweg s = 1/2 g t^2. Modellwerte (Lehrerteil): 18 cm, 13 cm,
+// 28 cm = Reaktionszeit 0,19 s, 0,16 s, 0,24 s. Die Zeit steckt fast ganz im
+// Gehirn: abgelenkt wartet das Signal dort etwa doppelt so lange (im Gehirn
+// kreisen dann zwei kleine Punkte fuer das Gespraech). Hoeren: kuerzerer Weg
+// Ohr - Gehirn. Die Zeiten stehen NICHT im Bild, das Heft verlangt nur cm.
+// Aha (nach dem Zugreifen, Bibliothek _bioFx): Lichtring und Funken an den
+// Fingern, die cm-Zahl federt gross herein, der Pfeil „Fallstrecke“ neben dem
+// Lineal leuchtet auf, der ganze Weg im Koerper glueht einmal zusammen nach.
+// Fruehere Messungen bleiben als farbige Striche am Lineal stehen - so sieht
+// man beim dritten Versuch, wie weit das Lineal abgelenkt faellt.
+// Kein Merksatz, keine Wertung, kein Ton, nichts blinkt (Puls 0,8 Hz).
+// ════════════════════════════════════════════════════════════════════════
+let _bsz = null;
+const _BSZ_NAME = ['sehen', 'hören', 'sehen und abgelenkt'];
+const _BSZ_KURZ = ['sehen', 'hören', 'abgelenkt'];
+const _BSZ_CM = [18, 13, 28];                 // Modellwerte (Heft, Lehrerteil)
+const _BSZ_G = 9.81;                          // m/s^2
+const _BSZ_ZL = 10;                           // Zeitlupe: 10-mal langsamer
+const _BSZ_WART = 0.7;                        // s: Samir haelt noch still
+const _BSZ_PX = 6;                            // px je cm am Lineal
+const _BSZ_RX = 110, _BSZ_RW = 22, _BSZ_Y0 = 200;   // Lineal: Mitte, Breite, 0-cm-Strich
+const _BSZ_FARBE = ['#2563eb', '#9333ea', '#dc2626'];
+const _BSZ_LICHT = '#f59e0b';
+
+/* Reaktionszeit in s aus dem Fallweg: s = 1/2 g t^2  ->  t = sqrt(2 s / g) */
+function _bszTR(i) { return Math.sqrt(2 * (_BSZ_CM[i] / 100) / _BSZ_G); }
+/* Fallweg in cm nach tau Sekunden (echte Zeit, nicht Zeitlupe) */
+function _bszFallweg(tau) { return 0.5 * _BSZ_G * tau * tau * 100; }
+/* Abschnitte des Signals in echter Zeit: Sinnesorgan, Nerv, Gehirn, Nerv,
+   Armmuskel. Das Gehirn nimmt den Rest der Reaktionszeit. */
+function _bszAbschnitte(i) {
+  const o = i === 1 ? 0.02 : 0.04, n1 = i === 1 ? 0.02 : 0.03, n2 = 0.04, m = 0.03;
+  const g = _bszTR(i) - (o + n1 + n2 + m);
+  return [o, n1, g, n2, m];
+}
+
+function _bszInit() {
+  _bsz = {
+    t: 0, z: 0,
+    phase: 'bereit', pt: 0, tau: 0, f: 0,
+    marken: {},                 // Startzeichen -> gefangen bei cm
+    fx: { teile: [] },
+    nach: -1,                   // s seit dem Zugreifen
+    key: ''
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bszFxLeer() {
+  _bsz.fx = { teile: [] }; _bsz.zeitlupe = null; _bsz.nach = -1;
+}
+function _bszZurueck() {
+  _bszFxLeer();
+  _bsz.phase = 'bereit'; _bsz.pt = 0; _bsz.tau = 0; _bsz.f = 0;
+  _bszStatus(); _bszKnoepfe();
+}
+function _bszZeichen(i) {
+  if (!_bsz) return;
+  _bsz.z = i;
+  _bszZurueck();
+}
+function _bszLos() {
+  if (!_bsz) return;
+  _bszFxLeer();
+  _bsz.phase = 'warten'; _bsz.pt = 0; _bsz.tau = 0; _bsz.f = 0;
+  _bszStatus(); _bszKnoepfe();
+}
+function _bszNeu() {
+  if (!_bsz) return;
+  _bsz.marken = {};
+  _bszZurueck();
+  _bszListe();
+}
+/* Sprungmarke: Startzeichen setzen und gleich fallen lassen. */
+function _bszMarke(i) {
+  if (!_bsz) return;
+  _bsz.z = i;
+  _bszLos();
+}
+function _bszKnoepfe() {
+  if (!_bsz || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bsz]').forEach(b => {
+      const d = b.dataset ? b.dataset.bsz : b.getAttribute('data-bsz');
+      if (b.classList) b.classList.toggle('primary', d === 'z' + _bsz.z);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bszHTML() {
+  const k = (i) => `<button class="sim-btn" data-bsz="z${i}" onclick="_bszZeichen(${i})">${_BSZ_NAME[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Das fallende Lineal</h3>
+    <div class="fpm-note" style="margin-top:2px">Samir hält das Lineal. Elas Finger sind offen bei 0 cm. Rechts siehst du Elas Körper. Stelle das Startzeichen ein. Dann drücke „▶ Lineal fallen lassen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsz-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Startzeichen</span>
+          ${k(0)}
+          ${k(1)}
+          ${k(2)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_bszLos()">▶ Lineal fallen lassen</button>
+          <button class="sim-btn" onclick="_bszNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert?</div>
+        <div class="lmp-status on" id="_bsz-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Deine Messungen</div>
+        <div class="lmp-status" id="_bsz-liste" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bszMarke(0)">▶ sehen</button>
+          <button class="sim-btn" onclick="_bszMarke(1)">▶ hören</button>
+          <button class="sim-btn" onclick="_bszMarke(2)">▶ sehen und abgelenkt</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Das Lineal fällt in <b>Zeitlupe</b>. Beobachte den Lichtpunkt in Elas Körper. Die Zahl an Elas Daumen zeigt, wie weit das Lineal gefallen ist.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bszWeg(i) {
+  return (i === 1 ? 'Ohr' : 'Auge') + ' – Nerv – Gehirn – Nerv – Armmuskel';
+}
+function _bszStatus() {
+  if (!_bsz) return;
+  _bsz.key = _bsz.phase + _bsz.z;
+  const el = document.getElementById('_bsz-status');
+  if (!el) return;
+  const n = _BSZ_NAME[_bsz.z];
+  const wie = _bsz.z === 1 ? 'Ela hat die Augen zu. Samir ruft „jetzt!“, wenn er loslässt.'
+            : _bsz.z === 2 ? 'Ela spricht mit Samir und schaut dabei zu ihm.'
+            : 'Ela schaut auf das Lineal.';
+  let h;
+  if (_bsz.phase === 'bereit') {
+    h = `<b>Startzeichen: ${n}</b><br>${wie}<br>Drücke „▶ Lineal fallen lassen“.`;
+  } else if (_bsz.phase === 'warten') {
+    h = `<b>Startzeichen: ${n}</b><br>${wie}<br>Samir hält das Lineal noch fest …`;
+  } else if (_bsz.phase === 'fall') {
+    h = `<b>${n} · Das Lineal fällt …</b><br>Zeitlupe. Beobachte Elas Körper.`;
+  } else {
+    h = `<b>${n} · Ela fängt das Lineal bei ${_BSZ_CM[_bsz.z]} cm</b><br>` +
+        `Das Lineal bleibt zwischen Elas Fingern stehen.`;
+  }
+  el.innerHTML = h;
+}
+/* Messliste: je Startzeichen die letzte Messung, in fester Reihenfolge. */
+function _bszListe() {
+  if (!_bsz) return;
+  const el = document.getElementById('_bsz-liste');
+  if (!el) return;
+  const z = [];
+  for (let i = 0; i < 3; i++) {
+    if (_bsz.marken[i] == null) continue;
+    z.push(`<b>${_BSZ_NAME[i]}</b>: Ela fängt bei ${_bsz.marken[i]} cm · Weg: ${_bszWeg(i)}`);
+  }
+  el.innerHTML = z.length ? z.join('<br>') : 'Noch keine Messung.';
+}
+
+function _bszUpdate(dt) {
+  if (!_bsz) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_bsz, roh);
+  _bsz.t += d;
+  _bioFxAlleUpdate(_bsz.fx, roh);
+  if (_bsz.phase === 'warten') {
+    _bsz.pt += d;
+    if (_bsz.pt >= _BSZ_WART) {
+      _bsz.phase = 'fall'; _bsz.pt = 0; _bsz.tau = 0; _bsz.f = 0;
+      _bszAhaLos();
+    }
+  } else if (_bsz.phase === 'fall') {
+    _bsz.pt += d;
+    _bsz.tau += d / _BSZ_ZL;
+    const tr = _bszTR(_bsz.z);
+    if (_bsz.tau >= tr) {
+      _bsz.tau = tr;
+      _bsz.f = _BSZ_CM[_bsz.z];               // genau der Modellwert
+      _bsz.phase = 'gefangen'; _bsz.pt = 0; _bsz.nach = 0;
+      _bsz.marken[_bsz.z] = _BSZ_CM[_bsz.z];
+      _bszListe();
+      _bszAhaFang();
+    } else {
+      _bsz.f = _bszFallweg(_bsz.tau);
+    }
+  } else if (_bsz.phase === 'gefangen') {
+    _bsz.pt += d;
+    _bsz.nach += d;
+  }
+  if (_bsz.phase + _bsz.z !== _bsz.key) _bszStatus();
+}
+
+/* Station des Signals (0..5 erreicht) und Fortschritt im laufenden Abschnitt. */
+function _bszStation() {
+  if (_bsz.phase === 'gefangen') return [5, 1];
+  if (_bsz.phase !== 'fall') return [0, 0];
+  const a = _bszAbschnitte(_bsz.z);
+  let s = 0;
+  for (let i = 0; i < 5; i++) {
+    if (_bsz.tau < s + a[i]) return [i + 1, (_bsz.tau - s) / a[i]];
+    s += a[i];
+  }
+  return [5, 1];
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+function _bszAhaLos() {
+  const fx = _bsz.fx.teile;
+  if (_bsz.z === 1) _bioFxWelle(fx, 158, 62, 'rgba(147,51,234,0.8)', 22);   // „jetzt!“
+}
+function _bszAhaFang() {
+  const fx = _bsz.fx.teile;
+  _bioFxWelle(fx, _BSZ_RX, _BSZ_Y0, 'rgba(245,158,11,0.95)', 34);
+  _bioFxFunken(fx, _BSZ_RX, _BSZ_Y0, 9, ['#fde047', '#fff7c2', '#ffffff', '#f59e0b']);
+  _bioFxWelle(fx, 238, 211, 'rgba(245,158,11,0.8)', 26);                    // Armmuskel
+}
+function _bszAbkling(t, halten, weg) {
+  return 1 - _bioFxEase.sanft(_bioFxKlemme((t - halten) / weg));
+}
+
+/* ── Geometrie des Koerpers ────────────────────────────────────────────── */
+const _BSZ_AUGE = [326, 76], _BSZ_OHR = [362, 86], _BSZ_HIRN = [358, 66];
+const _BSZ_N1 = [[[326, 76], [336, 71], [346, 67], [358, 66]],   // Auge -> Gehirn
+                 [[362, 86], [363, 77], [358, 66]]];             // Ohr  -> Gehirn
+const _BSZ_N2 = [[358, 72], [358, 104], [356, 126], [340, 138], [318, 174],
+                 [294, 208], [270, 212], [252, 211]];            // Gehirn -> Armmuskel
+const _BSZ_MU = [[252, 211], [224, 210]];                        // durch den Muskel
+
+function _bszLaenge(p) {
+  let L = 0;
+  for (let i = 1; i < p.length; i++) L += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]);
+  return L;
+}
+/* Punkt bei Anteil q (0..1) auf einem Streckenzug */
+function _bszAuf(p, q) {
+  const L = _bszLaenge(p) * _bioFxKlemme(q);
+  let s = 0;
+  for (let i = 1; i < p.length; i++) {
+    const l = Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]);
+    if (s + l >= L) {
+      const u = l ? (L - s) / l : 0;
+      return [p[i - 1][0] + (p[i][0] - p[i - 1][0]) * u, p[i - 1][1] + (p[i][1] - p[i - 1][1]) * u];
+    }
+    s += l;
+  }
+  return p[p.length - 1].slice();
+}
+/* Streckenzug bis Anteil q zeichnen */
+function _bszZug(ctx, p, q) {
+  if (q <= 0) return;
+  const e = _bszAuf(p, q), L = _bszLaenge(p) * _bioFxKlemme(q);
+  ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+  let s = 0;
+  for (let i = 1; i < p.length; i++) {
+    const l = Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]);
+    if (s + l >= L) break;
+    ctx.lineTo(p[i][0], p[i][1]); s += l;
+  }
+  ctx.lineTo(e[0], e[1]); ctx.stroke();
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bszText(ctx, s, x, y, farbe, font, align) {
+  ctx.save();
+  ctx.font = font || '700 10px sans-serif';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+  ctx.strokeText(s, x, y);
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.fillText(s, x, y);
+  ctx.restore();
+}
+function _bszBlase(ctx, x, y, w, h, zx, zy, text, farbe, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = farbe; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y, w, h, 8); ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  const mx = Math.max(x + 8, Math.min(x + w - 8, zx));
+  const my = zy < y ? y : zy > y + h ? y + h : y + h / 2;
+  const sx = mx === x + 8 && zx < x ? x : mx === x + w - 8 && zx > x + w ? x + w : mx;
+  const lz = Math.hypot(zx - sx, zy - my) || 1, k = Math.min(1, 12 / lz);
+  const ex = sx + (zx - sx) * k, ey = my + (zy - my) * k;
+  const seit = sx !== mx;
+  if (seit) { ctx.moveTo(sx, my - 4); ctx.lineTo(ex, ey); ctx.lineTo(sx, my + 4); }
+  else { ctx.moveTo(mx - 5, my); ctx.lineTo(ex, ey); ctx.lineTo(mx + 5, my); }
+  ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff';
+  if (seit) ctx.fillRect(sx - 1.5, my - 3, 3, 6); else ctx.fillRect(mx - 4, my - 1.5, 8, 3);
+  ctx.fillStyle = farbe; ctx.font = '700 11px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, x + w / 2, y + h / 2 + 0.5, w - 8);
+  ctx.restore();
+}
+
+function _bszDraw(ctx, cv) {
+  if (!_bsz) return;
+  const W = cv.width, H = cv.height, t = _bsz.t;
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, W, H);
+  // Tisch
+  ctx.fillStyle = '#d6a76c'; ctx.fillRect(140, 216, W - 140, H - 216);
+  ctx.fillStyle = '#b07d44'; ctx.fillRect(140, 216, W - 140, 4);
+  _bszSamir(ctx, t);
+  _bszLineal(ctx, t);
+  _bszEla(ctx, t);
+  _bszReiz(ctx, t);
+  _bszSignal(ctx, t);
+  _bszHand(ctx, t);
+  _bszKette(ctx, t);
+  _bszZahl(ctx, t);
+  _bioFxDraw(ctx, _bsz.fx.teile);
+}
+
+/* Samir oben links: Kopf, Schulter, Arm; die Hand haelt das Lineal oben. */
+function _bszSamir(ctx, t) {
+  const los = _bsz.phase === 'fall' || _bsz.phase === 'gefangen';
+  const w = los ? 0 : 0.8 * Math.sin(t * 1.3);
+  ctx.save();
+  // Koerper (laeuft nach unten weich aus)
+  const gr = ctx.createLinearGradient(0, 70, 0, 150);
+  gr.addColorStop(0, 'rgba(34,197,94,0.85)'); gr.addColorStop(1, 'rgba(34,197,94,0)');
+  ctx.fillStyle = gr;
+  _bioFxRundRect(ctx, 8, 68, 54, 90, 14); ctx.fill();
+  // Kopf im Profil nach rechts
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(34, 42, 18, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#3f2a1d';
+  ctx.beginPath(); ctx.arc(32, 36, 18, Math.PI * 1.05, Math.PI * 1.9); ctx.fill();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(44, 41, 1.8, 0, Math.PI * 2); ctx.fill();
+  // Mund: bei „hoeren“ ruft er beim Loslassen, bei „abgelenkt“ hoert er zu
+  const ruft = _bsz.z === 1 && _bsz.phase === 'fall' && _bsz.pt < 0.9;
+  ctx.strokeStyle = '#7c2d12'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  if (ruft) { ctx.fillStyle = '#7c2d12'; ctx.ellipse(47, 51, 2.6, 3.2, 0, 0, Math.PI * 2); ctx.fill(); }
+  else { ctx.moveTo(44, 52); ctx.lineTo(49, 51); ctx.stroke(); }
+  _bszText(ctx, 'Samir', 34, 14, '#166534', '700 10px sans-serif', 'center');
+  // Arm zur Hand oben am Lineal
+  ctx.strokeStyle = '#f2c9a0'; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(50, 78); ctx.lineTo(74, 60 + w); ctx.lineTo(97, 30 + w); ctx.stroke();
+  ctx.strokeStyle = '#22c55e'; ctx.lineWidth = 9;
+  ctx.beginPath(); ctx.moveTo(46, 80); ctx.lineTo(62, 69 + w); ctx.stroke();
+  ctx.restore();
+}
+
+/* Samirs Hand: geschlossen um das Lineal, nach dem Loslassen offen. */
+function _bszSamirHand(ctx, t) {
+  const los = _bsz.phase === 'fall' || _bsz.phase === 'gefangen';
+  const w = los ? 0 : 0.8 * Math.sin(t * 1.3);
+  const oeff = los ? _bioFxEase.raus(_bioFxKlemme((_bsz.phase === 'fall' ? _bsz.pt : 1) / 0.25)) : 0;
+  ctx.save();
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1;
+  // Handruecken links vom Lineal
+  ctx.beginPath(); ctx.ellipse(96, 26 + w, 7, 8, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Finger vorn ueber dem Lineal: klappen beim Loslassen auf
+  for (let i = 0; i < 3; i++) {
+    const y = 20 + i * 6 + w;
+    ctx.save();
+    ctx.translate(98, y); ctx.rotate(-oeff * 0.9);
+    _bioFxRundRect(ctx, 0, -2.6, 22 - oeff * 4, 5.2, 2.6); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.restore();
+}
+
+/* Das Lineal: 30 cm, 0 cm unten an Elas Fingern, Zahlen alle 5 cm. */
+function _bszLineal(ctx, t) {
+  const f = _bsz.f;
+  const sway = _bsz.phase === 'bereit' || _bsz.phase === 'warten' ? 0.6 * Math.sin(t * 1.3) : 0;
+  const x0 = _BSZ_RX - _BSZ_RW / 2 + sway;
+  const yCm = cm => _BSZ_Y0 - _BSZ_PX * (cm - f);
+  // Startlage als blasser Umriss, sobald es faellt
+  const ya = _BSZ_Y0 - _BSZ_PX * 30 - 3, x = _BSZ_RX + _BSZ_RW / 2 + 9;
+  const hatMarken = Object.keys(_bsz.marken).length > 0;
+  if (f > 0.05) {
+    ctx.save();
+    ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(100,116,139,0.55)'; ctx.lineWidth = 1;
+    ctx.strokeRect(_BSZ_RX - _BSZ_RW / 2, ya, _BSZ_RW, _BSZ_PX * 30 + 6);
+    ctx.restore();
+  }
+  // Spalte „Fallstrecke“ rechts neben dem Lineal: gemessen von der alten
+  // Oberkante. Fruehere Messungen stehen dort als farbige Striche.
+  if (f > 0.05 || hatMarken) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(100,116,139,0.45)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x - 4, ya); ctx.lineTo(x + 4, ya); ctx.moveTo(x, ya); ctx.lineTo(x, ya + _BSZ_PX * 30); ctx.stroke();
+    ctx.restore();
+    _bszText(ctx, 'Fallstrecke', x + 6, ya + 10, '#334155', '700 9px sans-serif', 'left');
+    for (let i = 0; i < 3; i++) {
+      const cm = _bsz.marken[i];
+      if (cm == null) continue;
+      if (i === _bsz.z && _bsz.phase === 'gefangen') continue;   // steht gross links
+      const y = ya + _BSZ_PX * cm;
+      ctx.save();
+      ctx.strokeStyle = _BSZ_FARBE[i]; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(x - 6, y); ctx.lineTo(x + 6, y); ctx.stroke();
+      ctx.restore();
+      _bszText(ctx, _BSZ_KURZ[i] + ' ' + cm + ' cm', x + 9, y, _BSZ_FARBE[i], '700 9px sans-serif', 'left');
+    }
+  }
+  if (f > 0.05) {
+    const yb = ya + _BSZ_PX * f;
+    const gl = _bsz.nach >= 0 ? _bszAbkling(_bsz.nach, 1.2, 1.0) : 0;
+    ctx.save();
+    if (gl > 0.01) { ctx.shadowColor = _BSZ_LICHT; ctx.shadowBlur = 10 * gl; }
+    ctx.strokeStyle = _BSZ_FARBE[_bsz.z]; ctx.fillStyle = _BSZ_FARBE[_bsz.z];
+    ctx.lineWidth = 2.5 + 1.5 * gl;
+    ctx.beginPath(); ctx.moveTo(x - 4, ya); ctx.lineTo(x + 4, ya); ctx.moveTo(x, ya); ctx.lineTo(x, yb - 5); ctx.stroke();
+    if (yb - ya > 8) {
+      ctx.beginPath(); ctx.moveTo(x, yb); ctx.lineTo(x - 4.5, yb - 8); ctx.lineTo(x + 4.5, yb - 8); ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Leiste
+  ctx.save();
+  ctx.fillStyle = '#fde68a'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1.2;
+  ctx.fillRect(x0, yCm(30) - 3, _BSZ_RW, _BSZ_PX * 30 + 6);
+  ctx.strokeRect(x0, yCm(30) - 3, _BSZ_RW, _BSZ_PX * 30 + 6);
+  ctx.strokeStyle = '#78350f'; ctx.fillStyle = '#78350f';
+  for (let cm = 0; cm <= 30; cm++) {
+    const y = yCm(cm), l = cm % 5 === 0 ? 8 : 4;
+    ctx.lineWidth = cm % 5 === 0 ? 1.2 : 0.8;
+    ctx.beginPath(); ctx.moveTo(x0 + _BSZ_RW - l, y); ctx.lineTo(x0 + _BSZ_RW, y); ctx.stroke();
+    if (cm % 5 === 0) {
+      ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText(String(cm), x0 + 2, y);
+    }
+  }
+  ctx.restore();
+  _bszSamirHand(ctx, t);
+}
+
+/* Elas Koerper im Umriss mit Kopf, Nerven und Arm auf dem Tisch. */
+function _bszEla(ctx, t) {
+  const at = 1 + 0.012 * Math.sin(t * 1.6);          // ruhiges Atmen
+  ctx.save();
+  // Rumpf
+  ctx.save();
+  ctx.translate(360, 250); ctx.scale(1, at); ctx.translate(-360, -250);
+  ctx.fillStyle = '#fbcfe8'; ctx.strokeStyle = '#be185d'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.moveTo(346, 116); ctx.quadraticCurveTo(316, 120, 318, 150);
+  ctx.lineTo(322, 252); ctx.lineTo(404, 252); ctx.lineTo(406, 150);
+  ctx.quadraticCurveTo(404, 120, 368, 116); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+  // Hals
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1.2;
+  ctx.fillRect(348, 100, 18, 20); ctx.strokeRect(348, 100, 18, 20);
+  // Oberarm und Unterarm (auf dem Tisch)
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#be185d'; ctx.lineWidth = 17;
+  ctx.beginPath(); ctx.moveTo(338, 136); ctx.lineTo(294, 208); ctx.stroke();
+  ctx.strokeStyle = '#fbcfe8'; ctx.lineWidth = 14;
+  ctx.beginPath(); ctx.moveTo(338, 136); ctx.lineTo(294, 208); ctx.stroke();
+  ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 15;
+  ctx.beginPath(); ctx.moveTo(294, 210); ctx.lineTo(172, 208); ctx.stroke();
+  ctx.strokeStyle = '#f2c9a0'; ctx.lineWidth = 12.5;
+  ctx.beginPath(); ctx.moveTo(294, 210); ctx.lineTo(172, 208); ctx.stroke();
+  // Armmuskel am Unterarm: zieht sich beim Zugreifen zusammen (wird dicker)
+  const [st, q] = _bszStation();
+  const zieh = st === 5 ? (_bsz.phase === 'gefangen' ? 1 : _bioFxEase.sanft(q)) : 0;
+  const lit = st >= 5;
+  ctx.fillStyle = lit ? 'rgba(248,113,113,0.95)' : 'rgba(248,113,113,0.55)';
+  ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(238 + 3 * zieh, 210, 24 - 5 * zieh, 5 + 2.5 * zieh, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  _bszText(ctx, 'Armmuskel', 238, 234, '#7f1d1d', '700 10px sans-serif', 'center');
+
+  // Kopf im Profil nach links
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(352, 78, 30, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(324, 70); ctx.lineTo(318, 80); ctx.lineTo(324, 82); ctx.fill(); ctx.stroke();  // Nase
+  // Haare hinten
+  ctx.fillStyle = '#7c3f14';
+  ctx.beginPath(); ctx.arc(352, 78, 31, Math.PI * 1.12, Math.PI * 0.3); ctx.quadraticCurveTo(376, 96, 378, 70); ctx.quadraticCurveTo(360, 46, 326, 64); ctx.closePath(); ctx.fill();
+  // Gehirn (durchscheinend im Kopf)
+  const hirnLit = st >= 3;
+  ctx.fillStyle = hirnLit ? '#fcd34d' : '#f9a8d4';
+  ctx.strokeStyle = '#9d174d'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(_BSZ_HIRN[0], _BSZ_HIRN[1], 19, 12, -0.1, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(344, 64); ctx.quadraticCurveTo(350, 58, 356, 64); ctx.quadraticCurveTo(362, 70, 370, 62);
+  ctx.stroke();
+  // abgelenkt: zwei kleine Punkte kreisen im Gehirn (das Gespraech)
+  if (_bsz.z === 2 && _bsz.phase !== 'gefangen') {
+    for (let i = 0; i < 2; i++) {
+      const w = t * 2.2 + i * Math.PI;
+      ctx.fillStyle = '#9333ea';
+      ctx.beginPath(); ctx.arc(_BSZ_HIRN[0] + 11 * Math.cos(w), _BSZ_HIRN[1] + 6 * Math.sin(w), 2.2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // Ohr
+  ctx.fillStyle = st >= 1 && _bsz.z === 1 ? '#fbbf24' : '#e8b48a'; ctx.strokeStyle = '#8a5a3b';
+  ctx.beginPath(); ctx.ellipse(_BSZ_OHR[0], _BSZ_OHR[1], 4.5, 7, 0.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Auge: offen, blinzelt selten; bei „hoeren“ geschlossen; abgelenkt schaut zu Samir
+  const zu = _bsz.z === 1 || (t % 3.7) < 0.14;
+  const augeLit = st >= 1 && _bsz.z !== 1;
+  if (zu) {
+    ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(_BSZ_AUGE[0], _BSZ_AUGE[1] - 1, 4, 0.2, Math.PI - 0.2); ctx.stroke();
+  } else {
+    ctx.fillStyle = augeLit ? '#fef3c7' : '#ffffff'; ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(_BSZ_AUGE[0], _BSZ_AUGE[1], 4.5, 3.4, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    const px = _bsz.z === 2 && _bsz.phase !== 'gefangen' ? -2 : -1.5;
+    const py = _bsz.z === 2 && _bsz.phase !== 'gefangen' ? -1.2 : 1.2;
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(_BSZ_AUGE[0] + px, _BSZ_AUGE[1] + py, 1.8, 0, Math.PI * 2); ctx.fill();
+  }
+  // Mund: spricht bei „abgelenkt“
+  const spricht = _bsz.z === 2 && _bsz.phase !== 'gefangen';
+  ctx.strokeStyle = '#9d174d'; ctx.fillStyle = '#9d174d'; ctx.lineWidth = 1.4;
+  if (spricht) {
+    const o = 1 + 1.8 * Math.abs(Math.sin(t * 5));
+    ctx.beginPath(); ctx.ellipse(329, 95, 3, o, 0, 0, Math.PI * 2); ctx.fill();
+  } else {
+    ctx.beginPath(); ctx.moveTo(326, 95); ctx.lineTo(333, 96); ctx.stroke();
+  }
+  // Nerven als feine Linien (Grundzustand)
+  ctx.strokeStyle = 'rgba(234,179,8,0.55)'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  _bszZug(ctx, _BSZ_N1[_bsz.z === 1 ? 1 : 0], 1);
+  _bszZug(ctx, _BSZ_N2, 1);
+  // Namen
+  _bszText(ctx, 'Ela', 392, 156, '#9d174d', '700 10px sans-serif', 'center');
+  _bszText(ctx, 'Gehirn', 358, 40, '#831843', '700 10px sans-serif', 'center');
+  _bszText(ctx, 'Auge', 312, 64, '#1f2937', '700 10px sans-serif', 'right');
+  _bszText(ctx, 'Ohr', 376, 100, '#1f2937', '700 10px sans-serif', 'left');
+  _bszText(ctx, 'Nerv', 372, 116, '#854d0e', '700 10px sans-serif', 'left');
+  _bszText(ctx, 'Nerv', 312, 162, '#854d0e', '700 10px sans-serif', 'right');
+  ctx.restore();
+}
+
+/* Der Reiz kommt an: Licht vom Lineal zum Auge oder Schall zum Ohr. */
+function _bszReiz(ctx, t) {
+  const z = _bsz.z, ph = _bsz.phase;
+  // Sprechblasen
+  if (z === 2 && ph !== 'gefangen') {
+    _bszBlase(ctx, 196, 86, 122, 20, 324, 96, '… und dann kam der Hund!', '#9333ea', 0.95);
+  }
+  if (z === 1 && ph === 'fall') {
+    const a = _bszAbkling(_bsz.pt, 1.2, 0.5);
+    if (a > 0.01) _bszBlase(ctx, 136, 50, 44, 22, 52, 50, 'jetzt!', '#9333ea', a);
+  }
+  if (ph !== 'fall') return;
+  const [st, q] = _bszStation();
+  if (st !== 1) return;
+  if (z === 1) {
+    // Schallboegen laufen von Samir zum Ohr
+    ctx.save();
+    ctx.strokeStyle = 'rgba(147,51,234,0.75)'; ctx.lineWidth = 2;
+    const ax = 180, ay = 62, bx = _BSZ_OHR[0], by = _BSZ_OHR[1];
+    const w = Math.atan2(by - ay, bx - ax);
+    for (let k = 0; k < 3; k++) {
+      const u = _bioFxKlemme(q * 1.2 - k * 0.12);
+      if (u <= 0 || u >= 1) continue;
+      const x = ax + (bx - ax) * u, y = ay + (by - ay) * u;
+      ctx.beginPath(); ctx.arc(x, y, 8, w - 0.8, w + 0.8); ctx.stroke();
+    }
+    ctx.restore();
+  } else {
+    // Lichtstrahl vom Lineal zum Auge
+    ctx.save();
+    const a = Math.sin(Math.PI * _bioFxKlemme(q));
+    ctx.globalAlpha = 0.25 + 0.6 * a;
+    ctx.strokeStyle = _BSZ_LICHT; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(_BSZ_RX + 12, 150); ctx.lineTo(_BSZ_AUGE[0] - 5, _BSZ_AUGE[1]); ctx.stroke();
+    ctx.restore();
+  }
+}
+
+/* Das Signal: leuchtender Punkt mit Spur, Stationen leuchten nacheinander. */
+function _bszSignal(ctx, t) {
+  const ph = _bsz.phase;
+  if (ph !== 'fall' && ph !== 'gefangen') return;
+  const [st, q] = _bszStation();
+  const n1 = _BSZ_N1[_bsz.z === 1 ? 1 : 0];
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = _BSZ_LICHT; ctx.lineWidth = 3.5;
+  ctx.shadowColor = '#fde047'; ctx.shadowBlur = 8;
+  // bereits durchlaufene Nerven leuchten
+  if (st >= 2) _bszZug(ctx, n1, st === 2 ? q : 1);
+  if (st >= 4) _bszZug(ctx, _BSZ_N2, st === 4 ? q : 1);
+  if (st >= 5) _bszZug(ctx, _BSZ_MU, st === 5 ? q : 1);
+  ctx.restore();
+  // Stationen: Sinnesorgan, Gehirn leuchten auf, solange das Signal da ist
+  if (ph === 'fall') {
+    const org = _bsz.z === 1 ? _BSZ_OHR : _BSZ_AUGE;
+    if (st === 1) _bioFxLeuchten(ctx, org[0], org[1], 7, t, '251,191,36');
+    if (st === 3) _bioFxLeuchten(ctx, _BSZ_HIRN[0], _BSZ_HIRN[1], 16, t, '251,191,36');
+    // Lichtpaket
+    let p;
+    if (st === 1) p = org;
+    else if (st === 2) p = _bszAuf(n1, q);
+    else if (st === 3) p = [_BSZ_HIRN[0] + 6 * Math.cos(t * 4), _BSZ_HIRN[1] + 3 * Math.sin(t * 4)];
+    else if (st === 4) p = _bszAuf(_BSZ_N2, q);
+    else p = _bszAuf(_BSZ_MU, q);
+    ctx.save();
+    const g = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], 10);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(253,224,71,0.95)'); g.addColorStop(1, 'rgba(245,158,11,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(p[0], p[1], 10, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  } else if (_bsz.nach >= 0) {
+    // Nach dem Zugreifen glueht der ganze Weg einmal zusammen nach.
+    const a = _bszAbkling(_bsz.nach, 0.6, 1.0);
+    if (a > 0.01) {
+      ctx.save();
+      ctx.globalAlpha = a;
+      ctx.strokeStyle = 'rgba(253,224,71,0.9)'; ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.shadowColor = '#fde047'; ctx.shadowBlur = 14;
+      _bszZug(ctx, n1, 1); _bszZug(ctx, _BSZ_N2, 1); _bszZug(ctx, _BSZ_MU, 1);
+      ctx.restore();
+    }
+  }
+}
+
+/* Elas Hand: Daumen und Zeigefinger offen bei 0 cm; sie schliessen sich,
+   waehrend das Signal durch den Armmuskel laeuft. */
+function _bszHand(ctx, t) {
+  const [st, q] = _bszStation();
+  const zu = _bsz.phase === 'gefangen' ? 1 : st === 5 ? _bioFxEase.sanft(q) : 0;
+  const ruhe = _bsz.phase === 'bereit' || _bsz.phase === 'warten' ? 0.8 * Math.sin(t * 2) : 0;
+  const offen = 14 * (1 - zu) + ruhe;
+  const xl = _BSZ_RX - _BSZ_RW / 2 - 3 - offen, xr = _BSZ_RX + _BSZ_RW / 2 + 3 + offen, y = _BSZ_Y0;
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Handflaeche
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(158, 207, 16, 9, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Zeigefinger (hinter dem Lineal herum zur linken Kante)
+  ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 7.5;
+  ctx.beginPath(); ctx.moveTo(146, 211); ctx.quadraticCurveTo(_BSZ_RX, 222, xl, y + 1); ctx.stroke();
+  ctx.strokeStyle = '#f2c9a0'; ctx.lineWidth = 5.5;
+  ctx.beginPath(); ctx.moveTo(146, 211); ctx.quadraticCurveTo(_BSZ_RX, 222, xl, y + 1); ctx.stroke();
+  // Daumen (vorn, zur rechten Kante)
+  ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.moveTo(148, 202); ctx.quadraticCurveTo(xr + 8, y - 6, xr, y); ctx.stroke();
+  ctx.strokeStyle = '#f2c9a0'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(148, 202); ctx.quadraticCurveTo(xr + 8, y - 6, xr, y); ctx.stroke();
+  // Fingerkuppen
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(xl, y, 3.5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(xr, y, 3.8, 4.8, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+/* Kette oben: die Stationen erscheinen erst, wenn das Signal dort ist. */
+function _bszKette(ctx, t) {
+  const [st] = _bszStation();
+  const namen = [_bsz.z === 1 ? 'Ohr' : 'Auge', 'Nerv', 'Gehirn', 'Nerv', 'Armmuskel'];
+  ctx.save();
+  ctx.font = '700 10px sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'center';
+  let x = 162;
+  const y = 12;
+  _bszText(ctx, 'Weg:', 158, y, '#475569', '700 10px sans-serif', 'right');
+  const glueh = _bsz.nach >= 0 ? _bszAbkling(_bsz.nach, 0.6, 1.0) : 0;
+  for (let i = 0; i < 5; i++) {
+    const w = ctx.measureText(namen[i]).width + 12;
+    if (i < st) {
+      ctx.save();
+      if (i === st - 1 && _bsz.phase === 'fall') { ctx.shadowColor = '#fde047'; ctx.shadowBlur = 8; }
+      if (glueh > 0.01) { ctx.shadowColor = '#fde047'; ctx.shadowBlur = 12 * glueh; }
+      ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = _BSZ_LICHT; ctx.lineWidth = 1.5;
+      _bioFxRundRect(ctx, x, y - 8, w, 16, 8); ctx.fill(); ctx.stroke();
+      ctx.restore();
+      ctx.fillStyle = '#78350f';
+      ctx.fillText(namen[i], x + w / 2, y + 0.5);
+      if (i < 4 && i + 1 < st) {
+        ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(x + w + 1, y); ctx.lineTo(x + w + 6, y); ctx.stroke();
+      }
+    } else {
+      ctx.strokeStyle = 'rgba(148,163,184,0.7)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+      _bioFxRundRect(ctx, x, y - 8, w, 16, 8); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    x += w + 7;
+  }
+  ctx.restore();
+}
+
+/* Grosse cm-Zahl an Elas Daumen (nach dem Zugreifen) und „Zeitlupe“. */
+function _bszZahl(ctx, t) {
+  if (_bsz.phase === 'fall') {
+    ctx.save();
+    ctx.fillStyle = 'rgba(30,41,59,0.8)';
+    _bioFxRundRect(ctx, 6, 228, 62, 16, 8); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('Zeitlupe', 37, 236.5);
+    ctx.restore();
+  }
+  if (_bsz.phase !== 'gefangen') return;
+  const k = 1.6 - 0.6 * _bioFxEase.federn(_bioFxKlemme(_bsz.nach / 0.5));
+  const a = _bioFxKlemme(_bsz.nach / 0.15);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(54, _BSZ_Y0); ctx.scale(k, k);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = _BSZ_FARBE[_bsz.z]; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, -34, -14, 60, 28, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = _BSZ_FARBE[_bsz.z]; ctx.font = '800 18px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(_BSZ_CM[_bsz.z] + ' cm', -4, 1);
+  ctx.restore();
+  // kleiner Zeiger von der Zahl zum Daumen
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = _BSZ_FARBE[_bsz.z]; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(81, _BSZ_Y0); ctx.lineTo(_BSZ_RX - _BSZ_RW / 2 - 7, _BSZ_Y0); ctx.stroke();
+  ctx.restore();
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bs6 „Fingerspitze oder Rücken?“ (Kennung bio-haut)
+// Links: Samir mit geschlossenen Augen und die gewählte Körperstelle in
+// Nahansicht (Hand von der Innenseite, Handrücken oder Rücken). Ela tippt
+// mit zwei Bleistiftspitzen im Abstand 1 cm. Rechts: eine Lupe auf die Haut
+// darunter, ein Quadrat 1 cm mal 1 cm, jeder blaue Punkt eine Sinneszelle
+// für Druck; der gestrichelte Kreis um den Punkt zeigt, wie weit sie fühlt.
+// Regel des Modells (wird gerechnet, nicht eingetragen): Reizen beide
+// Spitzen dieselbe Sinneszelle, kommt EINE Meldung im Gehirn an – Samir
+// spürt eine Spitze. Reizen sie verschiedene Sinneszellen, spürt er zwei.
+// Modellwerte (Lehrerteil): Fingerspitze 12, Handrücken 4, Rücken 1
+// Sinneszelle(n) im Quadrat -> 2 / 1 / 1 Spitzen.
+// Aha (Bibliothek _bioFx, nach der Beobachtung): Beim Aufsetzen leuchten
+// die gereizten Sinneszellen auf, Meldungen laufen als Lichtpunkte den Nerv
+// entlang zum Kopf, dann spricht Samir. Danach werden die Sinneszellen im
+// Quadrat nacheinander angetippt und gezählt; am Ende leuchten alle im
+// Quadrat zugleich auf – an der Fingerspitze ein ganzes Feld, am Rücken
+// ein einziger Punkt. Nach allen drei Stellen: kurzes Konfetti.
+// Zum Weiterforschen (nicht im Heft verlangt): „Sonne ansehen“ – Samir
+// arbeitet im Beet, violette Striche zeigen UV (in echt unsichtbar).
+// Schatten (Sonnenschirm), T-Shirt und Mütze, Sonnencreme halten Striche
+// auf; eine UV-Anzeige sinkt. Samir schaut ins Beet, nie in die Sonne.
+// Effekte kurz, ruhig, Puls 0,8 Hz, kein Ton, keine Wertung.
+// ════════════════════════════════════════════════════════════════════════
+let _bsh = null;
+const _BSH_STELLEN = ['Fingerspitze', 'Handrücken', 'Rücken'];
+// Sinneszellen im Quadrat, in cm (0..1) mit Fühlweite R in cm
+const _BSH_ZELLEN = [
+  [[0.10, 0.18], [0.37, 0.13], [0.63, 0.20], [0.88, 0.12],
+   [0.14, 0.48], [0.40, 0.53], [0.64, 0.46], [0.87, 0.52],
+   [0.12, 0.86], [0.36, 0.82], [0.62, 0.88], [0.90, 0.82]].map(p => [p[0], p[1], 0.16]),
+  [[0.52, 0.47, 0.62], [0.14, 0.82, 0.30], [0.84, 0.20, 0.30], [0.50, 0.90, 0.30]],
+  [[0.45, 0.56, 1.05]]
+];
+// Die zwei Bleistiftspitzen in der Lupe (cm): Abstand 1,00 cm
+const _BSH_SPITZE = [[0.15, 0.15], [0.86, 0.86]];
+// Lupe: Mitte, Radius, Massstab 1 cm = 100 px, Quadrat links oben
+const _BSH_LX = 318, _BSH_LY = 116, _BSH_LR = 88, _BSH_S = 100;
+const _BSH_QX = _BSH_LX - 50, _BSH_QY = _BSH_LY - 50;
+// Antippen auf der Nahansicht (Punkt zwischen den beiden Spitzen)
+const _BSH_TIPP = [[136, 97], [104, 190], [118, 158]];
+// Zeitplan eines Antippens (s)
+const _BSH_T_AB = 0.45, _BSH_T_IMP = 0.6, _BSH_T_AN = 1.3, _BSH_T_Z = 1.6, _BSH_T_JE = 0.16;
+// Sonne: Schutzwirkung im Modell (Anteil UV, der durchkommt)
+const _BSH_SCHUTZ = { schatten: 0.4, kleidung: 0.5, creme: 0.2 };
+const _BSH_SCHUTZNAME = { schatten: 'Schatten', kleidung: 'T-Shirt und Mütze', creme: 'Sonnencreme' };
+
+function _bshZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+// Blasse Sinneszellen rings um das Quadrat (nur Kulisse, werden nicht gezählt)
+function _bshDeko(i) {
+  const out = [];
+  for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+    if (!dx && !dy) continue;
+    for (const c of _BSH_ZELLEN[i]) {
+      const x = c[0] + dx, y = c[1] + dy;
+      if (Math.hypot(x - 0.5, y - 0.5) > 0.84) continue;
+      if (_BSH_SPITZE.some(s => Math.hypot(x - s[0], y - s[1]) < 0.3)) continue;
+      out.push([x, y]);
+    }
+  }
+  return out;
+}
+
+function _bshInit() {
+  const z = _bshZufall(66);
+  const poren = [];
+  for (let i = 0; i < 46; i++) poren.push([z() * 2 - 0.5, z() * 2 - 0.5, 0.6 + z()]);
+  _bsh = {
+    t: 0, stelle: 0, ansicht: 'tasten',
+    phase: 'bereit', pt: 0, nach: -1, ev: { ber: false, an: false, z: 0 },
+    getestet: [false, false, false], alleGezeigt: false,
+    schutz: { schatten: false, kleidung: false, creme: false },
+    anzeige: 10, schirm: 0, uv: [], spawn: 0, zuf: _bshZufall(19),
+    uvMerk: -1, sehrWenigGezeigt: false,
+    deko: [_bshDeko(0), _bshDeko(1), _bshDeko(2)], poren,
+    key: '', fx: { teile: [] }
+  };
+}
+
+/* ── Modell ────────────────────────────────────────────────────────────── */
+// Welche Sinneszellen reizt Spitze k an Stelle i? (Abstand kleiner als Fühlweite)
+function _bshGereizt(i, k) {
+  const s = _BSH_SPITZE[k], out = [];
+  _BSH_ZELLEN[i].forEach((c, j) => { if (Math.hypot(c[0] - s[0], c[1] - s[1]) < c[2]) out.push(j); });
+  return out;
+}
+// Reizen beide Spitzen dieselbe Sinneszelle -> eine Meldung, sonst zwei.
+function _bshSpuert(i) {
+  const a = _bshGereizt(i, 0), b = _bshGereizt(i, 1);
+  if (!a.length && !b.length) return 0;
+  if (!a.length || !b.length) return 1;
+  return a.some(j => b.includes(j)) ? 1 : 2;
+}
+// Sinneszellen, deren Punkt im Quadrat 0..1 x 0..1 liegt
+function _bshImQuadrat(i) {
+  return _BSH_ZELLEN[i].filter(c => c[0] >= 0 && c[0] <= 1 && c[1] >= 0 && c[1] <= 1).length;
+}
+function _bshTEnde(i) { return _BSH_T_Z + _bshImQuadrat(i) * _BSH_T_JE + 0.25; }
+// Reihenfolge beim Zählen: Zeile für Zeile, von links nach rechts
+function _bshZaehlReihe(i) {
+  return _BSH_ZELLEN[i].map((c, j) => j)
+    .sort((a, b) => {
+      const A = _BSH_ZELLEN[i][a], B = _BSH_ZELLEN[i][b];
+      const ra = Math.round(A[1] * 3), rb = Math.round(B[1] * 3);
+      return ra !== rb ? ra - rb : A[0] - B[0];
+    });
+}
+function _bshUvZiel() {
+  let v = 10;
+  for (const k in _BSH_SCHUTZ) if (_bsh.schutz[k]) v *= _BSH_SCHUTZ[k];
+  return v;
+}
+function _bshUvWort(v) {
+  if (v >= 7) return 'sehr viel';
+  if (v >= 3) return 'mittel';
+  if (v >= 1.5) return 'wenig';
+  return 'sehr wenig';
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bshFxLeer() {
+  _bsh.fx = { teile: [] };
+  _bsh.ev = { ber: false, an: false, z: 0 };
+  _bsh.nach = -1;
+}
+function _bshStelle(i) {
+  if (!_bsh) return;
+  _bsh.stelle = i; _bsh.ansicht = 'tasten';
+  _bshFxLeer(); _bsh.phase = 'bereit'; _bsh.pt = 0;
+  _bshStatus(); _bshKnoepfe();
+}
+function _bshTippen() {
+  if (!_bsh) return;
+  if (_bsh.ansicht !== 'tasten') _bsh.ansicht = 'tasten';
+  if (_bsh.phase === 'tippen') return;
+  _bshFxLeer(); _bsh.phase = 'tippen'; _bsh.pt = 0;
+  _bshStatus(); _bshKnoepfe();
+}
+// Sprungmarke: Stelle wählen und gleich das Ergebnis zeigen.
+function _bshMarke(i) {
+  if (!_bsh) return;
+  _bsh.stelle = i; _bsh.ansicht = 'tasten';
+  _bshFxLeer();
+  _bsh.phase = 'fertig'; _bsh.pt = _bshTEnde(i);
+  _bsh.ev = { ber: true, an: true, z: _bshImQuadrat(i) };
+  _bshAhaFertig();
+  _bshStatus(); _bshKnoepfe();
+}
+function _bshNeu() {
+  if (!_bsh) return;
+  const alt = _bsh;
+  _bshInit();
+  _bsh.t = alt.t;
+  _bshStatus(); _bshKnoepfe();
+}
+function _bshSonne() {
+  if (!_bsh) return;
+  _bsh.ansicht = 'sonne';
+  _bsh.fx = { teile: [] };
+  _bshStatus(); _bshKnoepfe();
+}
+function _bshSchutz(k) {
+  if (!_bsh || !(k in _bsh.schutz)) return;
+  const warSonne = _bsh.ansicht === 'sonne';
+  _bsh.ansicht = 'sonne';
+  if (!warSonne) _bsh.fx = { teile: [] };
+  _bsh.schutz[k] = !_bsh.schutz[k];
+  if (_bsh.schutz[k]) {
+    const ort = k === 'schatten' ? [200, 50] : k === 'kleidung' ? [228, 104] : [240, 164];
+    _bioFxFunken(_bsh.fx.teile, ort[0], ort[1], 6, ['#ffffff', '#e0f2fe', '#bbf7d0']);
+  }
+  _bsh.uvMerk = 0;          // wenn die Anzeige steht: kurz am Zeiger zeigen
+  _bshStatus(); _bshKnoepfe();
+}
+function _bshKnoepfe() {
+  if (!_bsh || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bsh]').forEach(b => {
+      const d = b.dataset ? b.dataset.bsh : b.getAttribute('data-bsh');
+      let an = false;
+      if (d === 's' + _bsh.stelle) an = _bsh.ansicht === 'tasten';
+      else if (d === 'los') an = _bsh.ansicht === 'tasten' && _bsh.phase !== 'tippen';
+      else if (d === 'sonne') an = _bsh.ansicht === 'sonne';
+      else if (d && d.indexOf('u-') === 0) an = !!_bsh.schutz[d.slice(2)];
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bshHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bsh="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was fühlt die Haut?</h3>
+    <div class="fpm-note" style="margin-top:2px">Samir hat die Augen zu. Ela tippt ihn mit zwei Bleistiftspitzen an. Die Spitzen sind 1 cm voneinander entfernt. Die Lupe rechts zeigt die Haut darunter.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsh-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Körperstelle</span>
+          ${k('s0', '_bshStelle(0)', 'Fingerspitze')}
+          ${k('s1', '_bshStelle(1)', 'Handrücken')}
+          ${k('s2', '_bshStelle(2)', 'Rücken')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" data-bsh="los" onclick="_bshTippen()">▶ antippen</button>
+          <button class="sim-btn" onclick="_bshNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was spürt Samir?</div>
+        <div class="lmp-status on" id="_bsh-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bshMarke(0)">▶▶ Fingerspitze</button>
+          <button class="sim-btn" onclick="_bshMarke(1)">▶▶ Handrücken</button>
+          <button class="sim-btn" onclick="_bshMarke(2)">▶▶ Rücken</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">In der Lupe ist jeder blaue Punkt eine Sinneszelle für Druck. Das Quadrat ist 1 cm mal 1 cm groß. Der gestrichelte Kreis um einen Punkt zeigt, wie weit diese Sinneszelle fühlt.</div>
+        <div class="fpm-label" style="margin-top:10px">Zum Weiterforschen: Sonne im Schulgarten</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('sonne', '_bshSonne()', 'Sonne ansehen')}
+          ${k('u-schatten', "_bshSchutz('schatten')", 'Schatten')}
+          ${k('u-kleidung', "_bshSchutz('kleidung')", 'T-Shirt und Mütze')}
+          ${k('u-creme', "_bshSchutz('creme')", 'Sonnencreme')}
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Fingerspitze · Abstand 1 cm &nbsp;|&nbsp; Stelle „Körperstelle“ ein, dann drücke „▶ antippen“.</p>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bshTeil() {
+  if (_bsh.ansicht !== 'tasten') return 'sonne';
+  if (_bsh.phase === 'bereit') return 'bereit';
+  if (_bsh.phase === 'fertig') return 'fertig';
+  return _bsh.pt < _BSH_T_AN ? 'tippen' : 'gespuert';
+}
+function _bshSatz(i) {
+  return _bshSpuert(i) === 2 ? 'Ich spüre zwei Spitzen.' : 'Ich spüre eine Spitze.';
+}
+function _bshSchutzListe() {
+  const l = Object.keys(_BSH_SCHUTZ).filter(k => _bsh.schutz[k]).map(k => _BSH_SCHUTZNAME[k]);
+  return l.length ? l.join(', ') : 'keiner';
+}
+function _bshZeile() {
+  const teil = _bshTeil(), i = _bsh.stelle;
+  if (teil === 'sonne')
+    return 'Sonne mittags · Schutz: ' + _bshSchutzListe() + ' · UV-Anzeige: ' + _bshUvWort(_bshUvZiel());
+  const wo = _BSH_STELLEN[i] + ' · Abstand 1 cm';
+  if (teil === 'bereit') return wo + ' · Drücke „▶ antippen“.';
+  if (teil === 'tippen') return wo + ' · Ela tippt Samir an …';
+  const n = _bshSpuert(i);
+  let s = wo + ' · Samir spürt ' + n + (n === 1 ? ' Spitze' : ' Spitzen');
+  if (teil === 'fertig') {
+    const z = _bshImQuadrat(i);
+    s += ' · ' + z + (z === 1 ? ' Sinneszelle' : ' Sinneszellen') + ' im Quadrat';
+  }
+  return s;
+}
+function _bshSchluessel() { return _bshTeil() + _bsh.stelle + _bshZeile(); }
+function _bshStatus() {
+  if (!_bsh) return;
+  _bsh.key = _bshSchluessel();
+  const el = document.getElementById('_bsh-status');
+  if (!el) return;
+  const teil = _bshTeil();
+  let zwei;
+  if (teil === 'sonne') zwei = 'Die violetten Striche zeigen UV. In echt sieht man UV nicht. Samir schaut ins Beet, nie in die Sonne.';
+  else if (teil === 'bereit') zwei = 'Samir hat die Augen zu.';
+  else if (teil === 'tippen') zwei = 'Die Spitzen berühren die Haut.';
+  else if (teil === 'gespuert') zwei = 'Samir sagt: „' + _bshSatz(_bsh.stelle) + '“<br>In der Lupe werden die Sinneszellen im Quadrat gezählt.';
+  else zwei = 'Samir sagt: „' + _bshSatz(_bsh.stelle) + '“';
+  el.innerHTML = '<b>' + _bshZeile() + '</b><br>' + zwei;
+}
+
+/* ── Lauf ──────────────────────────────────────────────────────────────── */
+function _bshUpdate(dt) {
+  if (!_bsh) return;
+  const d = _bioFxDt(dt);
+  _bsh.t += d;
+  _bioFxAlleUpdate(_bsh.fx, d);
+  // Sonnenschirm öffnet und schliesst weich
+  const zs = _bsh.schutz.schatten ? 1 : 0;
+  _bsh.schirm += Math.max(-d * 1.6, Math.min(d * 1.6, zs - _bsh.schirm));
+  if (_bsh.ansicht === 'tasten') {
+    if (_bsh.phase === 'tippen') {
+      _bsh.pt += d;
+      _bshEreignisse();
+      if (_bsh.pt >= _bshTEnde(_bsh.stelle)) {
+        _bsh.pt = _bshTEnde(_bsh.stelle); _bsh.phase = 'fertig';
+        _bshAhaFertig(); _bshKnoepfe();
+      }
+    }
+    if (_bsh.nach >= 0) _bsh.nach += d;
+  } else {
+    _bshSonneUpdate(d);
+  }
+  if (_bshSchluessel() !== _bsh.key) _bshStatus();
+}
+// Punkt in der Lupe (px) zu einem Punkt im Quadrat (cm)
+function _bshLupe(x, y) { return [_BSH_QX + x * _BSH_S, _BSH_QY + y * _BSH_S]; }
+function _bshKopf() { return [40, 42 + Math.sin(_bsh.t * 1.4) * 1.2]; }
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+function _bshEreignisse() {
+  const i = _bsh.stelle, ev = _bsh.ev, fx = _bsh.fx.teile, pt = _bsh.pt;
+  if (!ev.ber && pt >= _BSH_T_AB) {                 // Spitzen berühren die Haut
+    ev.ber = true;
+    const [tx, ty] = _BSH_TIPP[i];
+    _bioFxWelle(fx, tx - 5, ty - 5, '#f59e0b', 12);
+    _bioFxWelle(fx, tx + 5, ty + 5, '#f59e0b', 12);
+    for (let k = 0; k < 2; k++) for (const j of _bshGereizt(i, k)) {
+      const c = _BSH_ZELLEN[i][j], p = _bshLupe(c[0], c[1]);
+      _bioFxWelle(fx, p[0], p[1], '#fbbf24', Math.min(80, c[2] * _BSH_S));
+    }
+  }
+  if (!ev.an && pt >= _BSH_T_AN) {                  // Meldung im Kopf angekommen
+    ev.an = true;
+    const [kx, ky] = _bshKopf();
+    _bioFxWelle(fx, kx, ky, '#fde047', 30);
+    _bioFxFunken(fx, kx, ky - 10, 4, ['#fde047', '#fff7c2', '#ffffff']);
+  }
+  const reihe = _bshZaehlReihe(i).filter(j => {
+    const c = _BSH_ZELLEN[i][j]; return c[0] >= 0 && c[0] <= 1 && c[1] >= 0 && c[1] <= 1;
+  });
+  while (ev.z < reihe.length && pt >= _BSH_T_Z + ev.z * _BSH_T_JE) {   // nacheinander zählen
+    const c = _BSH_ZELLEN[i][reihe[ev.z]], p = _bshLupe(c[0], c[1]);
+    _bioFxWelle(fx, p[0], p[1], '#60a5fa', 13);
+    ev.z++;
+  }
+}
+// Ergebnis steht: alle Sinneszellen im Quadrat leuchten zugleich auf.
+function _bshAhaFertig() {
+  const i = _bsh.stelle, fx = _bsh.fx.teile;
+  _bsh.nach = 0;
+  const n = _bshImQuadrat(i);
+  _BSH_ZELLEN[i].forEach(c => {
+    const p = _bshLupe(c[0], c[1]);
+    _bioFxFunken(fx, p[0], p[1], 2, ['#ffffff', '#bfdbfe', '#fde047']);
+  });
+  _bioFxWelle(fx, _BSH_LX, _BSH_LY, n > 6 ? '#fde047' : '#93c5fd', 70);
+  _bsh.getestet[i] = true;
+  if (!_bsh.alleGezeigt && _bsh.getestet.every(Boolean)) {
+    _bsh.alleGezeigt = true;
+    _bioFxKonfetti(fx, 210, 20, 26);
+    _bioFxBanner(_bsh.fx, 'Alle drei Stellen getestet. Vergleiche!', 3.2, '#fde047');
+  }
+}
+
+/* ── Sonne und UV (Weiterforschen) ─────────────────────────────────────── */
+const _BSH_SONNE = [150, 22];
+// Hautstellen im Beet-Bild; bedeckt = liegt unter T-Shirt oder Mütze
+const _BSH_ZIELE = [
+  { x: 227, y: 106, bedeckt: true },   // Kopf
+  { x: 213, y: 134, bedeckt: true },   // Schulter
+  { x: 225, y: 145, bedeckt: true },   // Oberarm
+  { x: 241, y: 167, bedeckt: false },  // Unterarm
+  { x: 220, y: 124, bedeckt: false },  // Nacken
+  { x: 214, y: 193, bedeckt: false }   // Bein
+];
+function _bshSonneUpdate(d) {
+  const ziel = _bshUvZiel();
+  const alt = _bsh.anzeige;
+  _bsh.anzeige += (ziel - _bsh.anzeige) * Math.min(1, d * 2.2);
+  if (_bsh.uvMerk >= 0 && Math.abs(_bsh.anzeige - ziel) < 0.06 && Math.abs(alt - ziel) >= 0.0001) {
+    _bsh.uvMerk = -1;
+    const x = 150 + _bsh.anzeige / 10 * 250;
+    _bioFxWelle(_bsh.fx.teile, x, 232, ziel < 3 ? '#22c55e' : '#f59e0b', 18);
+    if (ziel < 1.5 && !_bsh.sehrWenigGezeigt) {
+      _bsh.sehrWenigGezeigt = true;
+      _bioFxFunken(_bsh.fx.teile, x, 226, 8, ['#bbf7d0', '#ffffff', '#86efac']);
+      _bioFxBanner(_bsh.fx, 'Kaum noch UV auf der Haut!', 2.8, '#86efac');
+    }
+  }
+  // neue UV-Striche von der Sonne (9 je Sekunde)
+  _bsh.spawn += d * 9;
+  while (_bsh.spawn >= 1) { _bsh.spawn -= 1; _bshUvNeu(); }
+  for (const p of _bsh.uv) {
+    if (p.halt >= 0) { p.halt += d; continue; }
+    p.s += d * 190;
+    if (p.s >= p.stopp) {
+      p.s = p.stopp; p.halt = 0;
+      const q = _bshUvOrt(p);
+      if (p.art === 'creme') _bioFxFunken(_bsh.fx.teile, q[0], q[1], 1, ['#ffffff']);
+    }
+  }
+  _bsh.uv = _bsh.uv.filter(p => p.halt < 0.9);
+}
+function _bshUvNeu() {
+  const z = _bsh.zuf, S = _BSH_SONNE;
+  const x0 = S[0] + (z() - 0.5) * 20, y0 = S[1] + (z() - 0.5) * 10;
+  let x1, y1, haut = null;
+  if (z() < 0.55) { haut = _BSH_ZIELE[Math.floor(z() * _BSH_ZIELE.length)]; x1 = haut.x + (z() - 0.5) * 6; y1 = haut.y + (z() - 0.5) * 6; }
+  else { x1 = 90 + z() * 260; y1 = 196 + z() * 18; }
+  const L = Math.hypot(x1 - x0, y1 - y0);
+  const p = { x0, y0, x1, y1, L, s: 0, stopp: L, halt: -1, art: haut ? 'haut' : 'boden' };
+  // Schirm: Weg kreuzt die Höhe y = 60 zwischen x = 130 und 270
+  const u = (60 - y0) / (y1 - y0), xs = x0 + (x1 - x0) * u;
+  if (_bsh.schirm > 0.9 && xs > 130 && xs < 270 && z() < 1 - _BSH_SCHUTZ.schatten) {
+    p.art = 'schirm'; p.stopp = L * u; return _bsh.uv.push(p);
+  }
+  if (haut) {
+    if (haut.bedeckt && _bsh.schutz.kleidung) { p.art = 'stoff'; p.stopp = L - 3; }
+    else if (_bsh.schutz.creme && z() < 1 - _BSH_SCHUTZ.creme) { p.art = 'creme'; p.stopp = L - 2; }
+  }
+  _bsh.uv.push(p);
+}
+function _bshUvOrt(p) {
+  const u = p.s / p.L;
+  return [p.x0 + (p.x1 - p.x0) * u, p.y0 + (p.y1 - p.y0) * u];
+}
+
+/* ── Zeichnen: Tasten ──────────────────────────────────────────────────── */
+const _BSH_HAUT = '#f2c7a5', _BSH_HAUTD = '#c98e6a';
+function _bshHand(ctx, innen) {
+  // rechte Hand, Finger nach oben; innen = Handinnenseite (gespiegelt)
+  ctx.save();
+  if (innen) { ctx.translate(208, 0); ctx.scale(-1, 1); }
+  ctx.fillStyle = _BSH_HAUT; ctx.strokeStyle = _BSH_HAUTD; ctx.lineWidth = 1.5;
+  ctx.fillRect(72, 214, 66, 40); ctx.strokeRect(72, 214, 66, 40);          // Unterarm
+  const finger = [[72, 88], [95, 80], [117, 88], [138, 104]];
+  for (const [x, top] of finger) {
+    _bioFxRundRect(ctx, x - 10, top, 20, 170 - top, 10); ctx.fill(); ctx.stroke();
+  }
+  ctx.save(); ctx.translate(58, 196); ctx.rotate(-0.6);                   // Daumen
+  _bioFxRundRect(ctx, -10, -58, 20, 64, 10); ctx.fill(); ctx.stroke(); ctx.restore();
+  _bioFxRundRect(ctx, 58, 146, 92, 76, 16); ctx.fill(); ctx.stroke();      // Hand
+  ctx.strokeStyle = 'rgba(150,90,60,0.45)'; ctx.lineWidth = 1;
+  if (innen) {
+    for (const [x, top] of finger) {                                       // Fingerkuppen
+      ctx.beginPath(); ctx.arc(x, top + 13, 6, 0.2 * Math.PI, 0.8 * Math.PI); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x - 7, top + 32); ctx.lineTo(x + 7, top + 32); ctx.stroke();
+    }
+    ctx.beginPath(); ctx.moveTo(66, 176); ctx.quadraticCurveTo(100, 168, 146, 178); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(70, 200); ctx.quadraticCurveTo(92, 186, 120, 196); ctx.stroke();
+  } else {
+    ctx.fillStyle = '#f8ddd0';
+    for (const [x, top] of finger) { _bioFxRundRect(ctx, x - 6, top + 4, 12, 14, 5); ctx.fill(); ctx.stroke(); }
+    for (const [x] of finger) { ctx.beginPath(); ctx.arc(x, 150, 4, Math.PI * 1.1, Math.PI * 1.9); ctx.stroke(); }
+    ctx.beginPath(); ctx.moveTo(84, 172); ctx.lineTo(80, 206); ctx.moveTo(106, 170); ctx.lineTo(106, 206);
+    ctx.moveTo(126, 172); ctx.lineTo(130, 206); ctx.stroke();                // Sehnen
+  }
+  ctx.restore();
+}
+function _bshRuecken(ctx) {
+  ctx.save();
+  ctx.fillStyle = _BSH_HAUT; ctx.strokeStyle = _BSH_HAUTD; ctx.lineWidth = 1.5;
+  ctx.fillRect(92, 74, 26, 30); ctx.strokeRect(92, 74, 26, 30);            // Hals
+  ctx.beginPath();
+  ctx.moveTo(18, 136); ctx.quadraticCurveTo(24, 102, 70, 98); ctx.lineTo(140, 98);
+  ctx.quadraticCurveTo(186, 102, 192, 136); ctx.lineTo(182, 254); ctx.lineTo(28, 254); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(150,90,60,0.5)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(105, 104); ctx.lineTo(105, 250); ctx.stroke();          // Wirbelsäule
+  ctx.beginPath(); ctx.moveTo(52, 118); ctx.quadraticCurveTo(80, 128, 78, 170); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(158, 118); ctx.quadraticCurveTo(130, 128, 132, 170); ctx.stroke();
+  ctx.fillStyle = '#5b3a1e';                                               // Haaransatz
+  ctx.beginPath(); ctx.ellipse(105, 72, 20, 8, 0, Math.PI, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Bleistift mit Spitze bei (x,y), zeigt nach rechts oben
+function _bshStift(ctx, x, y) {
+  const a = 25 * Math.PI / 180;
+  ctx.save(); ctx.translate(x, y); ctx.rotate(-a);
+  ctx.fillStyle = '#f3d9a4'; ctx.strokeStyle = '#7c5a2a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(10, -3.2); ctx.lineTo(10, 3.2); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#374151';
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(3.5, -1.2); ctx.lineTo(3.5, 1.2); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#facc15'; ctx.fillRect(10, -3.2, 40, 6.4); ctx.strokeRect(10, -3.2, 40, 6.4);
+  ctx.fillStyle = '#9ca3af'; ctx.fillRect(50, -3.2, 4, 6.4);
+  ctx.fillStyle = '#f9a8d4'; ctx.fillRect(54, -3.2, 5, 6.4); ctx.strokeRect(50, -3.2, 9, 6.4);
+  ctx.restore();
+}
+function _bshHub() {
+  const pt = _bsh.pt, wipp = 3 * Math.sin(_bsh.t * 2.2);
+  if (_bsh.phase === 'bereit') return 22 + wipp;
+  if (_bsh.phase === 'tippen') {
+    if (pt < _BSH_T_AB) return 22 * (1 - _bioFxEase.sanft(pt / _BSH_T_AB));
+    if (pt < 1.4) return 0;
+    return 22 * _bioFxEase.sanft(_bioFxKlemme((pt - 1.4) / 0.4)) + (pt > 1.8 ? wipp : 0);
+  }
+  return 22 + wipp;
+}
+function _bshSamir(ctx) {
+  const [kx, ky] = _bshKopf();
+  ctx.save();
+  ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.ellipse(kx, ky + 34, 26, 12, 0, Math.PI, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = _BSH_HAUT; ctx.strokeStyle = _BSH_HAUTD; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(kx, ky, 20, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#3b2412';
+  ctx.beginPath(); ctx.arc(kx, ky - 4, 20.5, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+  ctx.strokeStyle = '#3b2412'; ctx.lineWidth = 1.8;                         // Augen zu
+  for (const s of [-1, 1]) { ctx.beginPath(); ctx.arc(kx + s * 7, ky + 1, 4, 0.15 * Math.PI, 0.85 * Math.PI); ctx.stroke(); }
+  ctx.strokeStyle = '#9a4a2a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(kx, ky + 8, 5, 0.2 * Math.PI, 0.8 * Math.PI); ctx.stroke();
+  ctx.restore();
+  if (_bsh.ev.an && _bsh.nach < 0) _bioFxLeuchten(ctx, kx, ky, 22, _bsh.t, '253,224,71');
+  ctx.save();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Samir', kx, ky + 32);
+  ctx.restore();
+}
+function _bshBlase(ctx) {
+  const teil = _bshTeil();
+  let txt = null, k = 1;
+  if (teil === 'bereit') txt = 'Ich habe die Augen zu.';
+  else if (teil === 'gespuert' || teil === 'fertig') {
+    txt = _bshSatz(_bsh.stelle);
+    k = _bioFxEase.federn(_bioFxKlemme((_bsh.pt - _BSH_T_AN) / 0.35));
+  }
+  if (!txt) return;
+  ctx.save();
+  ctx.translate(68, 28); ctx.scale(Math.max(0.05, k), Math.max(0.05, k));
+  ctx.font = '700 12px sans-serif';
+  const w = ctx.measureText(txt).width + 18;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 0, -18, w, 30, 10); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(2, 2); ctx.lineTo(-8, 8); ctx.lineTo(8, -2); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(2, 3); ctx.lineTo(-8, 8); ctx.lineTo(6, 8); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(txt, 9, -3);
+  ctx.restore();
+}
+// Nerv von der Stelle zum Kopf und die Meldungen darauf
+function _bshNerv(ctx) {
+  if (_bsh.phase === 'bereit') return;
+  const i = _bsh.stelle, [tx, ty] = _BSH_TIPP[i], [kx, ky] = _bshKopf();
+  const n = _bshSpuert(i), pt = _bsh.pt;
+  const bahnen = n === 2 ? [-4, 4] : [0];
+  ctx.save();
+  ctx.setLineDash([4, 4]); ctx.strokeStyle = 'rgba(234,179,8,0.75)'; ctx.lineWidth = 2;
+  const nx = -(ky + 20 - ty), ny = kx - tx, nl = Math.hypot(nx, ny) || 1;
+  for (const b of bahnen) {
+    ctx.beginPath(); ctx.moveTo(tx + nx / nl * b, ty + ny / nl * b);
+    ctx.lineTo(kx + nx / nl * b, ky + 20 + ny / nl * b); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  const mx = kx + (tx - kx) * 0.55, my = ky + 20 + (ty - ky - 20) * 0.55;
+  ctx.fillStyle = '#a16207'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Nerv', mx - 6, my - 8);
+  if (pt >= _BSH_T_IMP && pt < _BSH_T_AN + 0.05 && _bsh.phase === 'tippen') {
+    bahnen.forEach((b, j) => {
+      const u = _bioFxKlemme((pt - _BSH_T_IMP - j * 0.07) / (_BSH_T_AN - _BSH_T_IMP - 0.07));
+      if (u <= 0 || u >= 1) return;
+      const x = tx + (kx - tx) * u + nx / nl * b, y = ty + (ky + 20 - ty) * u + ny / nl * b;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, n === 2 ? 8 : 10);
+      g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.4, 'rgba(253,224,71,0.95)'); g.addColorStop(1, 'rgba(253,224,71,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, n === 2 ? 8 : 10, 0, 2 * Math.PI); ctx.fill();
+    });
+  }
+  ctx.restore();
+}
+function _bshLupeZeichnen(ctx) {
+  const i = _bsh.stelle, t = _bsh.t, ev = _bsh.ev;
+  const [tx, ty] = _BSH_TIPP[i];
+  // Verbindung von der Stelle zur Lupe
+  ctx.save();
+  ctx.strokeStyle = 'rgba(71,85,105,0.35)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(tx, ty - 10); ctx.lineTo(_BSH_LX - 20, _BSH_LY - _BSH_LR + 2);
+  ctx.moveTo(tx, ty + 10); ctx.lineTo(_BSH_LX - 20, _BSH_LY + _BSH_LR - 2); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.8)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(tx, ty, 10, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+  // Griff
+  ctx.save();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 10; ctx.lineCap = 'round';
+  const gw = Math.PI / 4;
+  ctx.beginPath();
+  ctx.moveTo(_BSH_LX + Math.cos(gw) * (_BSH_LR + 4), _BSH_LY + Math.sin(gw) * (_BSH_LR + 4));
+  ctx.lineTo(_BSH_LX + Math.cos(gw) * (_BSH_LR + 34), _BSH_LY + Math.sin(gw) * (_BSH_LR + 34)); ctx.stroke();
+  ctx.restore();
+  // Innen: Haut
+  ctx.save();
+  ctx.beginPath(); ctx.arc(_BSH_LX, _BSH_LY, _BSH_LR, 0, 2 * Math.PI); ctx.clip();
+  const bg = ctx.createRadialGradient(_BSH_LX - 20, _BSH_LY - 30, 10, _BSH_LX, _BSH_LY, _BSH_LR);
+  bg.addColorStop(0, '#fde3d0'); bg.addColorStop(1, '#f1c4a6');
+  ctx.fillStyle = bg; ctx.fillRect(_BSH_LX - _BSH_LR, _BSH_LY - _BSH_LR, 2 * _BSH_LR, 2 * _BSH_LR);
+  // Hautlinien (an der Fingerspitze Rillen, sonst feine Felder)
+  ctx.strokeStyle = 'rgba(190,120,90,0.22)'; ctx.lineWidth = 1;
+  if (i === 0) {
+    for (let r = 14; r < 150; r += 11) { ctx.beginPath(); ctx.ellipse(_BSH_LX + 6, _BSH_LY + 70, r * 1.3, r, 0, Math.PI * 1.05, Math.PI * 1.95); ctx.stroke(); }
+  } else {
+    for (const p of _bsh.poren) { const q = _bshLupe(p[0], p[1]); ctx.beginPath(); ctx.arc(q[0], q[1], p[2] * 1.4, 0, 2 * Math.PI); ctx.stroke(); }
+  }
+  // Kulisse: blasse Sinneszellen rings um das Quadrat
+  ctx.fillStyle = 'rgba(59,76,202,0.28)';
+  for (const c of _bsh.deko[i]) { const p = _bshLupe(c[0], c[1]); ctx.beginPath(); ctx.arc(p[0], p[1], 3.6, 0, 2 * Math.PI); ctx.fill(); }
+  // Quadrat 1 cm x 1 cm
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.8;
+  ctx.strokeRect(_BSH_QX, _BSH_QY, _BSH_S, _BSH_S);
+  // Fühlweite (gestrichelt) und Leuchten der gereizten Sinneszellen
+  const gereizt = new Set(ev.ber ? [..._bshGereizt(i, 0), ..._bshGereizt(i, 1)] : []);
+  ctx.setLineDash([3, 4]); ctx.strokeStyle = 'rgba(59,76,202,0.35)'; ctx.lineWidth = 1;
+  for (const c of _BSH_ZELLEN[i]) { const p = _bshLupe(c[0], c[1]); ctx.beginPath(); ctx.arc(p[0], p[1], c[2] * _BSH_S, 0, 2 * Math.PI); ctx.stroke(); }
+  ctx.setLineDash([]);
+  _BSH_ZELLEN[i].forEach((c, j) => {
+    if (!gereizt.has(j)) return;
+    const p = _bshLupe(c[0], c[1]);
+    _bioFxLeuchten(ctx, p[0], p[1], Math.min(c[2] * _BSH_S, 90), t, '251,191,36');
+  });
+  // Am Ende leuchten alle Sinneszellen im Quadrat zugleich (1,6 s)
+  if (_bsh.nach >= 0 && _bsh.nach < 1.6) {
+    const a = Math.sin(Math.PI * _bioFxKlemme(_bsh.nach / 1.6));
+    for (const c of _BSH_ZELLEN[i]) {
+      const p = _bshLupe(c[0], c[1]);
+      const g = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], 15);
+      g.addColorStop(0, 'rgba(253,224,71,' + (0.9 * a).toFixed(3) + ')'); g.addColorStop(1, 'rgba(253,224,71,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p[0], p[1], 15, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Bleistiftspitzen von oben: erst Schatten, dann Kreise auf der Haut
+  const hub = _bshHub();
+  _BSH_SPITZE.forEach(s => {
+    const p = _bshLupe(s[0], s[1]);
+    if (hub > 1) {
+      ctx.fillStyle = 'rgba(30,41,59,' + (0.25 * (1 - hub / 30)).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(p[0], p[1], 6 + hub * 0.4, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      ctx.fillStyle = 'rgba(55,65,81,0.35)'; ctx.strokeStyle = '#111827'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(p[0], p[1], 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+  });
+  // Abstand 1 cm zwischen den Spitzen (nur Linie: eine Aufschrift im Quadrat verdeckte einen Punkt)
+  const a0 = _bshLupe(_BSH_SPITZE[0][0], _BSH_SPITZE[0][1]), a1 = _bshLupe(_BSH_SPITZE[1][0], _BSH_SPITZE[1][1]);
+  ctx.setLineDash([2, 3]); ctx.strokeStyle = 'rgba(17,24,39,0.6)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(a0[0] + 6, a0[1] + 6); ctx.lineTo(a1[0] - 6, a1[1] - 6); ctx.stroke();
+  ctx.setLineDash([]);
+  // Sinneszellen: gezählte bekommen einen Ring
+  const reihe = _bshZaehlReihe(i).filter(j => { const c = _BSH_ZELLEN[i][j]; return c[0] >= 0 && c[0] <= 1 && c[1] >= 0 && c[1] <= 1; });
+  const gezaehlt = new Set(reihe.slice(0, ev.z));
+  _BSH_ZELLEN[i].forEach((c, j) => {
+    const p = _bshLupe(c[0], c[1]);
+    const r = 4.8 + 0.4 * Math.sin(t * 1.3 + j);
+    ctx.fillStyle = '#3b4cca'; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.beginPath(); ctx.arc(p[0] - 1.5, p[1] - 1.5, 1.5, 0, 2 * Math.PI); ctx.fill();
+    if (gezaehlt.has(j)) { ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(p[0], p[1], 8.5, 0, 2 * Math.PI); ctx.stroke(); }
+  });
+  ctx.restore();
+  // Rand der Lupe und Beschriftung
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.arc(_BSH_LX, _BSH_LY, _BSH_LR, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(_BSH_LX, _BSH_LY, _BSH_LR - 8, Math.PI * 1.1, Math.PI * 1.4); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.textAlign = 'right'; ctx.fillText('Lupe', 414, 20); ctx.textAlign = 'center';
+  ctx.fillText('1 cm', _BSH_LX, _BSH_QY + _BSH_S + 13);
+  if (ev.z > 0) {
+    ctx.fillStyle = '#1d4ed8'; ctx.font = '700 12px sans-serif';
+    ctx.fillText('Sinneszellen im Quadrat: ' + ev.z, _BSH_LX - 14, 232);
+  }
+  ctx.restore();
+}
+function _bshTastenDraw(ctx, W, H) {
+  const i = _bsh.stelle;
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f5f8fc'); bg.addColorStop(1, '#e6ecf4');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  if (i === 2) _bshRuecken(ctx); else _bshHand(ctx, i === 0);
+  _bshNerv(ctx);
+  // Druckstelle auf der Haut, solange die Spitzen aufliegen
+  const [tx, ty] = _BSH_TIPP[i], hub = _bshHub();
+  if (hub < 1) {
+    ctx.save(); ctx.fillStyle = 'rgba(160,80,60,0.25)';
+    for (const s of [-5, 5]) { ctx.beginPath(); ctx.arc(tx + s, ty + s, 3.5, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.restore();
+  }
+  // Elas Stifte (Hub entlang der Stiftrichtung)
+  const hx = Math.cos(25 * Math.PI / 180) * hub, hy = -Math.sin(25 * Math.PI / 180) * hub;
+  _bshStift(ctx, tx - 5 + hx, ty - 5 + hy);
+  _bshStift(ctx, tx + 5 + hx, ty + 5 + hy);
+  ctx.save();
+  ctx.fillStyle = '#d9a172'; ctx.strokeStyle = '#a16e45'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(tx + 48 + hx, ty - 22 + hy, 13, 9, -0.44, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Ela', tx + 50 + hx, ty - 36 + hy);
+  ctx.restore();
+  _bshLupeZeichnen(ctx);
+  _bshSamir(ctx);
+  _bshBlase(ctx);
+  // Einstellung unten links
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  _bioFxRundRect(ctx, 6, H - 22, 172, 18, 6); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_BSH_STELLEN[i] + ' · Abstand 1 cm', 12, H - 9);
+  ctx.restore();
+}
+
+/* ── Zeichnen: Sonne ───────────────────────────────────────────────────── */
+function _bshSonneDraw(ctx, W, H) {
+  const t = _bsh.t, s = _bsh.schutz;
+  const bg = ctx.createLinearGradient(0, 0, 0, 190);
+  bg.addColorStop(0, '#7cc7f5'); bg.addColorStop(1, '#dff2fd');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, 190);
+  ctx.fillStyle = '#86c35a'; ctx.fillRect(0, 186, W, H - 186);
+  ctx.fillStyle = '#8b5a33'; ctx.fillRect(90, 198, 250, 18);
+  // Pflanzen im Beet wiegen sich
+  ctx.strokeStyle = '#2f7d32'; ctx.lineWidth = 2;
+  for (let k = 0; k < 11; k++) {
+    const x = 100 + k * 23, w = Math.sin(t * 1.3 + k) * 2.5;
+    ctx.beginPath(); ctx.moveTo(x, 200); ctx.quadraticCurveTo(x + w, 190, x + w * 1.6, 182); ctx.stroke();
+    ctx.fillStyle = '#4caf50'; ctx.beginPath(); ctx.ellipse(x + w * 1.6, 182, 5, 3, 0.4, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Sonne mit langsam drehenden Strahlen
+  const [sx, sy] = _BSH_SONNE;
+  ctx.save(); ctx.translate(sx, sy); ctx.rotate(t * 0.2);
+  ctx.strokeStyle = 'rgba(250,204,21,0.8)'; ctx.lineWidth = 3;
+  for (let k = 0; k < 10; k++) { const a = k * Math.PI / 5; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 21, Math.sin(a) * 21); ctx.lineTo(Math.cos(a) * 29, Math.sin(a) * 29); ctx.stroke(); }
+  ctx.restore();
+  ctx.fillStyle = '#fde047'; ctx.beginPath(); ctx.arc(sx, sy, 16, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Sonne · Mittag', sx + 34, sy + 4);
+  // Schatten des Schirms am Boden
+  const sc = _bsh.schirm;
+  if (sc > 0.02) {
+    ctx.fillStyle = 'rgba(30,41,59,' + (0.22 * sc).toFixed(3) + ')';
+    ctx.beginPath(); ctx.ellipse(222, 196, 70 * sc, 9, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  _bshSamirBeet(ctx);
+  // Sonnenschirm
+  if (sc > 0.02) {
+    ctx.save();
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(200, 200); ctx.lineTo(200, 44); ctx.stroke();
+    ctx.fillStyle = '#ef4444'; ctx.strokeStyle = '#991b1b'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(200 - 72 * sc, 62); ctx.quadraticCurveTo(200, 20, 200 + 72 * sc, 62);
+    for (let k = 4; k >= 0; k--) { const x = 200 + (k / 2 - 1) * 72 * sc; ctx.lineTo(x, 62); }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.moveTo(200 - 36 * sc, 62); ctx.quadraticCurveTo(200 - 18 * sc, 36, 200, 30); ctx.lineTo(200, 62); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  // UV-Striche
+  ctx.save();
+  ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  for (const p of _bsh.uv) {
+    const [x, y] = _bshUvOrt(p);
+    const a = p.halt >= 0 ? 1 - p.halt / 0.9 : 1;
+    if (p.halt >= 0 && p.art === 'haut') {
+      ctx.fillStyle = 'rgba(167,80,220,' + (0.55 * a).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(x, y, 3.5, 0, 2 * Math.PI); ctx.fill();
+      continue;
+    }
+    if (p.halt >= 0 && p.art !== 'boden') {
+      ctx.fillStyle = 'rgba(203,213,225,' + (0.8 * a).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, 2 * Math.PI); ctx.fill();
+      continue;
+    }
+    ctx.globalAlpha = p.halt >= 0 ? a * 0.5 : 0.9;
+    const dx = (p.x1 - p.x0) / p.L, dy = (p.y1 - p.y0) / p.L, nx = -dy, ny = dx;
+    ctx.beginPath();
+    for (let k = 0; k <= 6; k++) {
+      const q = -k * 2.2, w = Math.sin(k * 1.6 + t * 12) * 2;
+      const px = x + dx * q + nx * w, py = y + dy * q + ny * w;
+      if (k) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+  // Legende
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.85)'; _bioFxRundRect(ctx, 272, 8, 142, 34, 8); ctx.fill();
+  ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 2;
+  ctx.beginPath(); for (let k = 0; k <= 6; k++) { const px = 280 + k * 3, py = 20 + Math.sin(k * 1.6) * 2; if (k) ctx.lineTo(px, py); else ctx.moveTo(px, py); } ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('UV', 304, 24);
+  ctx.font = '11px sans-serif'; ctx.fillText('in echt unsichtbar', 280, 37);
+  ctx.restore();
+  // UV-Anzeige unten
+  ctx.save();
+  const farben = ['#22c55e', '#a3e635', '#facc15', '#fb923c', '#ef4444'];
+  farben.forEach((f, k) => { ctx.fillStyle = f; ctx.fillRect(150 + k * 50, 226, 50, 12); });
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.strokeRect(150, 226, 250, 12);
+  ctx.fillStyle = 'rgba(255,255,255,0.88)'; _bioFxRundRect(ctx, 6, 222, 138, 20, 6); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('UV-Anzeige', 12, 236);
+  ctx.font = '11px sans-serif'; ctx.fillStyle = '#1e293b';
+  ctx.fillText('wenig', 152, 250 - 1); ctx.textAlign = 'right'; ctx.fillText('viel', 398, 249);
+  const x = 150 + _bioFxKlemme(_bsh.anzeige / 10) * 250;
+  ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.moveTo(x, 225); ctx.lineTo(x - 6, 215); ctx.lineTo(x + 6, 215); ctx.closePath(); ctx.fill();
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  const wort = _bshUvWort(_bsh.anzeige);
+  const bw = ctx.measureText(wort).width + 10, bx = Math.max(150 + bw / 2, Math.min(400 - bw / 2, x));
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; _bioFxRundRect(ctx, bx - bw / 2, 199, bw, 15, 5); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.fillText(wort, bx, 211);
+  ctx.restore();
+}
+function _bshSamirBeet(ctx) {
+  const t = _bsh.t, s = _bsh.schutz;
+  const nick = Math.sin(t * 1.1) * 1.5;           // arbeitet im Beet
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Beine kniend
+  ctx.strokeStyle = _BSH_HAUT; ctx.lineWidth = 9;
+  ctx.beginPath(); ctx.moveTo(230, 190); ctx.lineTo(196, 194); ctx.stroke();
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 13;
+  ctx.beginPath(); ctx.moveTo(206, 172); ctx.lineTo(230, 188); ctx.stroke();
+  // Rumpf
+  ctx.strokeStyle = s.kleidung ? '#10b981' : '#f59e0b'; ctx.lineWidth = s.kleidung ? 20 : 16;
+  ctx.beginPath(); ctx.moveTo(206, 170); ctx.lineTo(216, 132); ctx.stroke();
+  // Arm zum Beet
+  const hx = 250 + nick, hy = 180;
+  ctx.strokeStyle = _BSH_HAUT; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.moveTo(218, 134); ctx.lineTo(232, 156); ctx.lineTo(hx, hy); ctx.stroke();
+  if (s.kleidung) {                                // Ärmel über dem Oberarm
+    ctx.strokeStyle = '#10b981'; ctx.lineWidth = 10;
+    ctx.beginPath(); ctx.moveTo(218, 134); ctx.lineTo(227, 148); ctx.stroke();
+  }
+  // Hals und Kopf, Blick nach unten ins Beet
+  ctx.strokeStyle = _BSH_HAUT; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.moveTo(217, 130); ctx.lineTo(222, 121); ctx.stroke();
+  const kx = 228, ky = 112 + nick * 0.5;
+  ctx.fillStyle = _BSH_HAUT; ctx.strokeStyle = _BSH_HAUTD; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(kx, ky, 12, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#3b2412';
+  ctx.beginPath(); ctx.arc(kx - 2, ky - 3, 12, Math.PI * 0.95, Math.PI * 1.75); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(kx + 6, ky + 4, 1.4, 0, 2 * Math.PI); ctx.fill();   // Auge schaut nach unten
+  if (s.kleidung) {                                // Mütze mit Schirm
+    ctx.fillStyle = '#0ea5e9';
+    ctx.beginPath(); ctx.arc(kx, ky - 2, 12.5, Math.PI, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(kx + 12, ky - 2, 9, 2.5, 0.25, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (s.creme) {                                   // Creme: heller Glanz auf der Haut
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.55 + 0.1 * Math.sin(t * 2)).toFixed(3) + ')'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(233, 158); ctx.lineTo(hx - 2, hy - 2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(kx, ky, 13.5, Math.PI * 0.1, Math.PI * 0.7); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(228, 191); ctx.lineTo(200, 195); ctx.stroke();
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Samir', 176, 170);
+  ctx.restore();
+}
+
+function _bshDraw(ctx, cv) {
+  if (!_bsh) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  if (_bsh.ansicht === 'tasten') _bshTastenDraw(ctx, W, H);
+  else _bshSonneDraw(ctx, W, H);
+  _bioFxAlleDraw(ctx, _bsh.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 5/6 · GESEHEN WERDEN IM DUNKELN   (Förderheft Bio 5/6 · bs7)
+// Nachts auf der Landstraße. Oben links die Straße von oben, oben rechts
+// klein die Sicht des Fahrers. Das Auto fährt mit Abblendlicht auf Samir
+// am Straßenrand zu. Gelbe Lichtpakete laufen vom Scheinwerfer zu Samir;
+// was von Samir zurück zum Auto kommt, hängt von der Kleidung ab:
+//   dunkel        → fast alles wird verschluckt, fast keins kommt zurück
+//   hell          → viel wird in alle Richtungen gestreut, etwas kommt zurück
+//   mit Reflektor → fast alles läuft gerade zurück zum Scheinwerfer (Auto)
+// Sobald genug Licht in die Augen des Fahrers fällt, taucht Samir in der
+// Fahrersicht auf: Die Szene hält an, das Meterband zeigt den Abstand.
+// Modellwerte (Lehrerteil, nach Verkehrswacht/ADAC, Abblendlicht):
+//   dunkel 25 m · hell 40 m · mit Reflektor 140 m.
+// Sichtbarkeit im Modell: Helligkeit bei Samir ∝ Rückstrahlung / Abstand²,
+// normiert so, dass sie genau beim Sichtabstand den Wert 1 erreicht.
+// Aha (nach der Beobachtung, _bioFx): kurze Zeitlupe kurz vor dem Auftauchen,
+// Lichtring um Samir in beiden Bildern (beim Reflektor Glitzer an den
+// Streifen), der Abstand rollt auf dem Meterband hoch, eine Fahne bleibt
+// stehen. Die Fahnen aller Kleidungen bleiben nebeneinander stehen –
+// nach der dritten: „Vergleiche die drei Markierungen!“.
+// Kein Blinken > 1 Hz, kein Ton, keine Wertung, keine Lückenwörter im Bild.
+// ═══════════════════════════════════════════════════════
+let _bsx = null;
+const _BSX_K = {
+  dunkel:    { name: 'dunkel',        d: 25,  satz: 'fast kein Licht kommt zurück', wort: 'fast keins',
+               farbe: '#64748b', stempel: '#334155' },
+  hell:      { name: 'hell',          d: 40,  satz: 'etwas Licht kommt zurück',     wort: 'etwas',
+               farbe: '#e2e8f0', stempel: '#2563eb' },
+  reflektor: { name: 'mit Reflektor', d: 140, satz: 'viel Licht kommt zurück',      wort: 'viel',
+               farbe: '#facc15', stempel: '#a16207' }
+};
+const _BSX_REIHE = ['dunkel', 'hell', 'reflektor'];
+const _BSX_START = 200;          // m: hier steht das Auto am Anfang
+const _BSX_V = 35;               // m/s im Zeitraffer
+const _BSX_XS = 398;             // x von Samir (Draufsicht und Meterband)
+const _BSX_PX = 1.8;             // Bildpunkte je Meter (Draufsicht = Meterband)
+const _BSX_SY = 185;             // y von Samir in der Draufsicht
+// Was wird aus Lichtpaket Nr. n, das Samir trifft? (Muster über 20 Pakete)
+// z = zurück zum Auto, s = gestreut (andere Richtung), v = verschluckt
+const _BSX_MUSTER = {
+  dunkel:    'vvvsvvvzvvvvvvvsvvvv',             //  1 von 20 zurück
+  hell:      'zzsvszsvzssvzssvsszs',             //  6 von 20 zurück
+  reflektor: 'zzzzszzzzzzzzzszzzzz'              // 18 von 20 zurück
+};
+function _bsxInit() {
+  _bsx = { t: 0, k: 'dunkel', d: _BSX_START, phase: 'bereit', nach: 0, schritt: 0,
+           lp: [], n: 0, takt: 0, licht: 0, fenster: [], anzeige: 0, blend: 0,
+           gefahren: 0, zlGesetzt: false, zeitlupe: null, letzt: '',
+           marken: { dunkel: null, hell: null, reflektor: null }, vergleich: false,
+           fx: { teile: [] } };
+}
+function _bsxFxLeer() {
+  _bsx.fx = { teile: [] }; _bsx.zeitlupe = null; _bsx.zlGesetzt = false;
+  _bsx.nach = 0; _bsx.schritt = 0;
+}
+function _bsxHTML() {
+  const knopf = (k) =>
+    `<button class="sim-btn" data-bsx="${k}" onclick="_bsxKleidung('${k}')">${_BSX_K[k].name}</button>`;
+  const marke = (k) =>
+    `<button class="sim-btn" onclick="_bsxMarke('${k}')">⏭ ${_BSX_K[k].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Gesehen werden im Dunkeln</h3>
+    <div class="fpm-note" style="margin-top:2px">Nachts auf der Landstraße. Samir steht am Straßenrand. Ein Auto kommt mit Scheinwerfern. Stelle die Kleidung ein. Dann drücke „▶ Auto fahren lassen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsx-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_bsx-los" onclick="_bsxLos()">▶ Auto fahren lassen</button>
+          <button class="sim-btn" onclick="_bsxNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Kleidung</span>
+          <div class="sim-btn-row">
+            ${knopf('dunkel')}
+            ${knopf('hell')}
+            ${knopf('reflektor')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_bsx-status"></div>
+        <div class="fpm-note" id="_bsx-licht" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: gleich zu dem Moment, in dem der Fahrer Samir sieht</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${marke('dunkel')}
+          ${marke('hell')}
+          ${marke('reflektor')}
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Die gelben Punkte zeigen das Licht der Scheinwerfer. Orange Punkte laufen von Samir zurück zum Auto. Oben rechts siehst du, was der Fahrer sieht. Das Meterband unten zeigt den Abstand zwischen Auto und Samir.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Stelle nur die Kleidung um. Die Fahnen auf dem Meterband bleiben stehen, bis du „neu starten“ drückst.</p>
+  </div>`;
+}
+/* ── Bedienung ─────────────────────────────────────────── */
+function _bsxKleidung(k) {
+  if (!_bsx || !_BSX_K[k]) return;
+  _bsx.k = k; _bsx.d = _BSX_START; _bsx.phase = 'bereit';
+  _bsxFxLeer(); _bsxStatus();
+}
+function _bsxLos() {
+  if (!_bsx || _bsx.phase === 'fahrt') return;
+  _bsxFxLeer();
+  _bsx.d = _BSX_START; _bsx.phase = 'fahrt'; _bsxStatus();
+}
+function _bsxNeu() {
+  if (!_bsx) return;
+  _bsx.k = 'dunkel'; _bsx.d = _BSX_START; _bsx.phase = 'bereit';
+  _bsx.marken = { dunkel: null, hell: null, reflektor: null }; _bsx.vergleich = false;
+  _bsxFxLeer(); _bsxStatus();
+}
+/* Sprungmarke: Kleidung wählen und gleich zum Moment des Auftauchens. */
+function _bsxMarke(k) {
+  if (!_bsx || !_BSX_K[k]) return;
+  _bsx.k = k; _bsxFxLeer();
+  _bsx.phase = 'fahrt';
+  _bsxHalt();
+}
+/* ── Modell ───────────────────────────────────────────── */
+// Helligkeit bei Samir im Auge des Fahrers, 1 = gerade sichtbar.
+function _bsxSicht(d, k) {
+  const ds = _BSX_K[k || _bsx.k].d;
+  return (ds / Math.max(1, d)) * (ds / Math.max(1, d));
+}
+function _bsxXAuto(d) { return _BSX_XS - d * _BSX_PX; }   // Vorderkante des Autos
+/* ── Anzeige ──────────────────────────────────────────── */
+function _bsxZeile() {
+  const K = _BSX_K[_bsx.k];
+  if (_bsx.phase === 'bereit')
+    return K.name + ' · Das Auto steht ' + _BSX_START + ' m vor Samir. Drücke „▶ Auto fahren lassen“.';
+  if (_bsx.phase === 'fahrt')
+    return K.name + ' · Abstand ' + Math.ceil(_bsx.d - 1e-9) + ' m · Der Fahrer sieht Samir noch nicht.';
+  return K.name + ' · Der Fahrer sieht Samir ab ' + K.d + ' m · ' + K.satz;
+}
+function _bsxStatus() {
+  if (!_bsx) return;
+  const z = _bsxZeile();
+  _bsx.letzt = z;
+  const el = document.getElementById('_bsx-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const li = document.getElementById('_bsx-licht');
+  if (li) li.textContent = _bsx.phase === 'halt'
+    ? 'Licht zurück zum Fahrer: ' + _BSX_K[_bsx.k].wort
+    : 'Licht zurück zum Fahrer: Achte auf die orangen Punkte.';
+  try {
+    document.querySelectorAll('[data-bsx]').forEach(b => {
+      const k = b.getAttribute ? b.getAttribute('data-bsx') : '';
+      if (b.classList) b.classList.toggle('primary', k === _bsx.k);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_bsx-los');
+  if (los && los.classList) los.classList.toggle('primary', _bsx.phase !== 'fahrt');
+}
+/* ── Ablauf ───────────────────────────────────────────── */
+function _bsxUpdate(dt) {
+  if (!_bsx) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_bsx, roh);
+  _bsx.t += d;
+  _bioFxAlleUpdate(_bsx.fx, roh);
+  if (_bsx.phase === 'fahrt') {
+    const ds = _BSX_K[_bsx.k].d;
+    if (!_bsx.zlGesetzt && _bsx.d - ds < 10) {      // kurz davor: Zeitlupe
+      _bsx.zlGesetzt = true; _bioFxZeitlupe(_bsx, 0.3, 1.4);
+    }
+    const weg = _BSX_V * d;
+    _bsx.d -= weg; _bsx.gefahren += weg;
+    if (_bsx.d <= ds) _bsxHalt();
+    else if (_bsxZeile() !== _bsx.letzt) _bsxStatus();
+  } else if (_bsx.phase === 'halt') {
+    _bsx.nach += roh;
+    _bsxNachher();
+  }
+  for (const k of _BSX_REIHE) if (_bsx.marken[k]) _bsx.marken[k].alter += roh;
+  _bsxLichtLauf(d);
+  _bsx.blend = Math.max(0, _bsx.blend - roh * 2.5);
+  _bsx.anzeige += (_bsx.licht - _bsx.anzeige) * Math.min(1, roh * 3);
+}
+/* Der Fahrer sieht Samir: Szene hält an, genau beim Sichtabstand. */
+function _bsxHalt() {
+  const K = _BSX_K[_bsx.k], fx = _bsx.fx;
+  _bsx.d = K.d; _bsx.phase = 'halt'; _bsx.nach = 0; _bsx.schritt = 0;
+  _bsx.zeitlupe = null;
+  _bsxStatus();
+  const f = _bsxFigur(K.d);
+  _bioFxWelle(fx.teile, _BSX_XS, _BSX_SY, 'rgba(254,240,138,0.95)', 34);
+  _bioFxWelle(fx.teile, f.x, f.y - f.h / 2, 'rgba(254,240,138,0.95)', 18 + f.h * 0.4);
+  if (_bsx.k === 'reflektor') {
+    const glanz = ['#ffffff', '#fef9c3', '#e2e8f0'];
+    _bioFxFunken(fx.teile, f.x, f.y - f.h * 0.55, 8, glanz);
+    _bioFxFunken(fx.teile, _BSX_XS, _BSX_SY, 6, glanz);
+  }
+}
+function _bsxNachher() {
+  const K = _BSX_K[_bsx.k], fx = _bsx.fx, t = _bsx.nach;
+  if (_bsx.schritt === 0 && t >= 0.4) {            // Abstand rollt auf dem Meterband hoch
+    _bsx.schritt = 1; fx.zaehler = null; _bioFxZaehler(fx, K.d, 0.9);
+  }
+  if (_bsx.schritt === 1 && t >= 1.35) {           // Fahne bleibt stehen
+    _bsx.schritt = 2;
+    _bsx.marken[_bsx.k] = { d: K.d, alter: 0 };
+    _bioFxWelle(fx.teile, _bsxXAuto(K.d), 212, K.farbe, 22);
+    _bioFxStempel(fx, 'ab ' + K.d + ' m', 132, 80, K.stempel);
+  }
+  if (_bsx.schritt === 2 && t >= 1.6) {
+    _bsx.schritt = 3;
+    const txt = { dunkel: 'Erst jetzt taucht Samir auf!', hell: 'Jetzt taucht Samir auf!',
+                  reflektor: 'Samir ist schon von weit her zu sehen!' };
+    _bioFxBanner(fx, txt[_bsx.k], 3.2, K.farbe);
+  }
+  if (_bsx.schritt === 3 && t >= 5.0) {
+    _bsx.schritt = 4;
+    const alle = _BSX_REIHE.every(k => _bsx.marken[k]);
+    if (alle && !_bsx.vergleich) {
+      _bsx.vergleich = true;
+      for (const k of _BSX_REIHE) _bioFxWelle(fx.teile, _bsxXAuto(_BSX_K[k].d), 212, _BSX_K[k].farbe, 26);
+      _bioFxBanner(fx, 'Vergleiche die drei Markierungen!', 3.4, '#fde047');
+    }
+  }
+}
+/* Lichtpakete: Scheinwerfer → Samir → zurück, gestreut oder verschluckt. */
+function _bsxLichtLauf(dt) {
+  const lp = _bsx.lp, xa = _bsxXAuto(_bsx.d), V = 300;
+  _bsx.takt += dt;
+  while (_bsx.takt >= 0.07) {
+    _bsx.takt -= 0.07;
+    const oben = (_bsx.n + lp.length) % 2 === 0;
+    if (lp.length < 160) lp.push({ art: 'hin', x: xa, y: oben ? 152 : 162, alter: 0,
+      ty: _BSX_SY - 3 + (lp.length % 3) * 3 });
+  }
+  for (let i = lp.length - 1; i >= 0; i--) {
+    const p = lp[i];
+    p.alter += dt;
+    if (p.art === 'hin') {
+      const dx = _BSX_XS - p.x, dy = p.ty - p.y, r = Math.hypot(dx, dy);
+      if (r < 5) {
+        const m = _BSX_MUSTER[_bsx.k].charAt(_bsx.n % 20);
+        _bsx.n++;
+        _bsx.fenster.push(m === 'z' ? 1 : 0);
+        if (_bsx.fenster.length > 20) _bsx.fenster.shift();
+        _bsx.licht = _bsx.fenster.reduce((a, b) => a + b, 0) / 20;
+        if (m === 'z') { p.art = 'zurueck'; p.alter = 0; }
+        else if (m === 's') {
+          let w = (_bsx.n * 2.399) % (2 * Math.PI);
+          if (Math.cos(w) < -0.6) w += Math.PI * 0.6;   // gestreut, aber nicht zum Auto
+          p.art = 'streu'; p.alter = 0; p.vx = Math.cos(w) * V * 0.6; p.vy = Math.sin(w) * V * 0.6;
+        } else { p.art = 'weg'; p.alter = 0; }
+      } else { p.x += dx / r * V * dt; p.y += dy / r * V * dt; }
+    } else if (p.art === 'zurueck') {
+      const zx = xa - 9, zy = 157;                    // Windschutzscheibe
+      const dx = zx - p.x, dy = zy - p.y, r = Math.hypot(dx, dy);
+      if (r < 6 || p.alter > 3) { lp.splice(i, 1); _bsx.blend = 1; continue; }
+      p.x += dx / r * V * dt; p.y += dy / r * V * dt;
+    } else if (p.art === 'streu') {
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      if (p.alter > 0.55) lp.splice(i, 1);
+    } else if (p.alter > 0.3) lp.splice(i, 1);
+  }
+}
+/* Samir in der Fahrersicht: Fußpunkt, Höhe (Perspektive, Kamera 1,2 m hoch). */
+const _BSX_I = { x: 270, y: 6, w: 144, h: 92, cx: 342, yh: 32, f: 517 };
+function _bsxFigur(d) {
+  const I = _BSX_I;
+  return { x: I.cx + 2.6 * I.f / d, y: I.yh + 1.2 * I.f / d, h: 1.5 * I.f / d };
+}
+/* ── Zeichnen ─────────────────────────────────────────── */
+function _bsxDraw(ctx, cv) {
+  if (!_bsx) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#132016'; ctx.fillRect(0, 0, W, H);
+  _bsxOben(ctx);
+  _bsxBand(ctx);
+  _bsxFahrersicht(ctx);
+  _bsxLeiste(ctx);
+  _bioFxAlleDraw(ctx, _bsx.fx);
+}
+function _bsxOben(ctx) {
+  const t = _bsx.t, xa = _bsxXAuto(_bsx.d), K = _BSX_K[_bsx.k];
+  // Bäume von oben (wiegen sich leicht)
+  const baum = [[40, 84, 13], [78, 72, 10], [118, 90, 12], [168, 76, 11], [214, 88, 13], [252, 70, 9]];
+  for (const [bx, by, r] of baum) {
+    const w = Math.sin(t * 0.9 + bx) * 1.2;
+    ctx.fillStyle = '#0c1a10'; ctx.beginPath(); ctx.arc(bx + 2, by + 3, r, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#1e3a24'; ctx.beginPath(); ctx.arc(bx + w, by, r, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Straße
+  ctx.fillStyle = '#2a2e35'; ctx.fillRect(0, 112, 420, 60);
+  ctx.fillStyle = 'rgba(226,232,240,0.45)'; ctx.fillRect(0, 113, 420, 2); ctx.fillRect(0, 169, 420, 2);
+  ctx.fillStyle = 'rgba(226,232,240,0.55)';
+  for (let x = 4; x < 420; x += 26) ctx.fillRect(x, 141, 14, 2);
+  // Seitenstreifen mit Gras
+  ctx.fillStyle = '#1a2c1e'; ctx.fillRect(0, 172, 420, 26);
+  // Scheinwerferkegel
+  ctx.save();
+  const g = ctx.createLinearGradient(xa, 0, xa + 260, 0);
+  g.addColorStop(0, 'rgba(254,240,138,0.34)'); g.addColorStop(0.45, 'rgba(254,240,138,0.12)');
+  g.addColorStop(1, 'rgba(254,240,138,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.moveTo(xa, 150); ctx.lineTo(xa + 260, 132); ctx.lineTo(xa + 260, 196); ctx.lineTo(xa, 164);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+  // Samir von oben
+  _bsxSamirOben(ctx);
+  // Auto von oben
+  ctx.fillStyle = '#0b0f14'; ctx.fillRect(xa - 29, 151, 30, 15);
+  ctx.fillStyle = '#b42318'; ctx.fillRect(xa - 30, 150, 29, 14);
+  ctx.fillStyle = '#1e293b'; ctx.fillRect(xa - 12, 151.5, 5, 11);           // Windschutzscheibe
+  ctx.fillStyle = '#7f1d1d'; ctx.fillRect(xa - 25, 152, 8, 10);
+  if (_bsx.blend > 0.02) {
+    ctx.save(); ctx.globalAlpha = 0.8 * _bsx.blend;
+    ctx.fillStyle = '#fde047'; ctx.fillRect(xa - 12, 151.5, 5, 11); ctx.restore();
+  }
+  ctx.fillStyle = '#fef9c3';
+  ctx.beginPath(); ctx.arc(xa, 152, 2, 0, 2 * Math.PI); ctx.arc(xa, 162, 2, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Auto', xa - 15, 127);
+  // Lichtpakete
+  for (const p of _bsx.lp) {
+    let a = 0.95, r = 2.3;
+    if (p.art === 'streu') a = 0.9 * (1 - p.alter / 0.55);
+    if (p.art === 'weg') { a = 0.8 * (1 - p.alter / 0.3); r = 2.3 * (1 - p.alter / 0.3) + 0.3; }
+    if (a <= 0.02) continue;
+    if (p.art === 'zurueck') {                       // zurück: orange mit hellem Kern
+      ctx.fillStyle = 'rgba(251,146,60,' + a.toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 3.2, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = 'rgba(255,247,237,' + a.toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 1.3, 0, 2 * Math.PI); ctx.fill();
+      continue;
+    }
+    ctx.fillStyle = 'rgba(254,240,138,' + a.toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Zeitlupe
+  if (_bsx.zeitlupe && _bsx.phase === 'fahrt') {
+    ctx.fillStyle = 'rgba(226,232,240,0.85)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶ Zeitlupe', 12, 106);
+  }
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Samir', _BSX_XS - 10, 194);
+  if (_bsx.phase === 'halt' && _bsx.nach < 4) _bioFxLeuchten(ctx, _BSX_XS, _BSX_SY, 11, _bsx.t, '254,240,138');
+}
+function _bsxSamirOben(ctx) {
+  const x = _BSX_XS, y = _BSX_SY, k = _bsx.k, t = _bsx.t;
+  const schw = Math.sin(t * 1.3) * 0.6;
+  ctx.save(); ctx.translate(x, y + schw);
+  ctx.fillStyle = k === 'hell' ? '#e5e7eb' : '#1f2937';
+  ctx.beginPath(); ctx.ellipse(0, 0, 5, 8, 0, 0, 2 * Math.PI); ctx.fill();       // Schultern
+  if (k === 'reflektor') {
+    ctx.fillStyle = '#fef9c3'; ctx.fillRect(-5, -4, 10, 2); ctx.fillRect(-5, 2, 10, 2);
+  }
+  ctx.fillStyle = '#6b4f3a'; ctx.beginPath(); ctx.arc(0, 0, 3.4, 0, 2 * Math.PI); ctx.fill();  // Kopf (Haare)
+  ctx.restore();
+}
+function _bsxBand(ctx) {
+  const y0 = 200, ya = 230, xs = _BSX_XS, px = _BSX_PX;
+  ctx.fillStyle = '#0f172a'; ctx.fillRect(0, y0, 420, 50);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Abstand zu Samir', 40, 212);
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(xs - _BSX_START * px, ya); ctx.lineTo(xs, ya); ctx.stroke();
+  ctx.lineWidth = 1; ctx.fillStyle = '#cbd5e1'; ctx.textAlign = 'center'; ctx.font = '700 10px sans-serif';
+  for (let m = 0; m <= _BSX_START; m += 10) {
+    const x = xs - m * px, gross = m % 50 === 0;
+    ctx.beginPath(); ctx.moveTo(x, ya); ctx.lineTo(x, ya + (gross ? 7 : 3)); ctx.stroke();
+    if (gross) ctx.fillText(m + ' m', x, 246);
+  }
+  // Fahnen der bisherigen Beobachtungen
+  for (const k of _BSX_REIHE) {
+    const mk = _bsx.marken[k];
+    if (!mk) continue;
+    const K = _BSX_K[k], x = xs - mk.d * px;
+    const fall = 1 - _bioFxEase.aufprall(_bioFxKlemme(mk.alter / 0.6));
+    const oy = -fall * 18;
+    ctx.save(); ctx.globalAlpha = _bioFxKlemme(mk.alter / 0.2);
+    ctx.strokeStyle = K.farbe; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x, ya + oy); ctx.lineTo(x, 204 + oy); ctx.stroke();
+    const links = k === 'hell', fw = 36;
+    const fx0 = links ? x - fw : x;
+    ctx.fillStyle = K.farbe; ctx.fillRect(fx0, 204 + oy, fw, 14);
+    ctx.fillStyle = k === 'dunkel' ? '#ffffff' : '#0f172a';
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(mk.d + ' m', fx0 + fw / 2, 215 + oy);
+    ctx.restore();
+  }
+  // Wachsender Abstandsbalken nach dem Anhalten
+  if (_bsx.phase === 'halt' && _bsx.schritt >= 1) {
+    const K = _BSX_K[_bsx.k];
+    const w = _bioFxZaehlerWert(_bsx.fx);
+    ctx.save(); ctx.globalAlpha = 0.85; ctx.fillStyle = K.farbe;
+    ctx.fillRect(xs - w * px, ya - 6, w * px, 5); ctx.restore();
+    if (_bsx.schritt < 2) {
+      ctx.fillStyle = '#fde047'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(Math.round(w) + ' m', xs - w * px, ya - 10);
+    }
+  }
+  // Zeiger: wo das Auto gerade ist
+  const xa = _bsxXAuto(_bsx.d);
+  ctx.fillStyle = '#f8fafc';
+  ctx.beginPath(); ctx.moveTo(xa - 5, ya - 9); ctx.lineTo(xa + 5, ya - 9); ctx.lineTo(xa, ya - 2); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = 'rgba(248,250,252,0.35)';
+  for (let y = 168; y < ya - 10; y += 6) ctx.fillRect(xa - 0.5, y, 1, 3);
+}
+function _bsxFahrersicht(ctx) {
+  const I = _BSX_I, t = _bsx.t, k = _bsx.k, d = _bsx.d;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(I.x, I.y, I.w, I.h); ctx.clip();
+  const him = ctx.createLinearGradient(0, I.y, 0, I.yh + 4);
+  him.addColorStop(0, '#050914'); him.addColorStop(1, '#141c30');
+  ctx.fillStyle = him; ctx.fillRect(I.x, I.y, I.w, I.h);
+  // Sterne (ruhig, 0,3 Hz)
+  ctx.fillStyle = '#e2e8f0';
+  for (let i = 0; i < 9; i++) {
+    ctx.globalAlpha = 0.45 + 0.3 * Math.sin(t * 1.9 + i * 1.7);
+    ctx.fillRect(I.x + 8 + (i * 37) % (I.w - 14), I.y + 4 + (i * 11) % 20, 1.5, 1.5);
+  }
+  ctx.globalAlpha = 1;
+  // Boden und Straße in Perspektive
+  ctx.fillStyle = '#0d160f'; ctx.fillRect(I.x, I.yh, I.w, I.h);
+  const P = (lat, dd) => [I.cx + lat * I.f / dd, I.yh + 1.2 * I.f / dd];
+  const a = P(-5.2, 400), b = P(1.8, 400), c = P(1.8, 8), e = P(-5.2, 8);
+  ctx.fillStyle = '#1c2027';
+  ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(e[0], e[1]); ctx.closePath(); ctx.fill();
+  // Scheinwerferlicht auf der Straße
+  const glow = ctx.createRadialGradient(I.cx - 4, I.y + I.h + 6, 4, I.cx - 4, I.y + I.h + 6, 70);
+  glow.addColorStop(0, 'rgba(254,240,138,0.42)'); glow.addColorStop(1, 'rgba(254,240,138,0)');
+  ctx.fillStyle = glow; ctx.fillRect(I.x, I.yh, I.w, I.h);
+  // Mittellinie läuft beim Fahren auf den Fahrer zu
+  ctx.strokeStyle = 'rgba(226,232,240,0.6)'; ctx.lineWidth = 1.2;
+  const ph = _bsx.gefahren % 12;
+  for (let i = 1; i < 30; i++) {
+    const d1 = i * 12 - ph, d2 = d1 + 6;
+    if (d2 < 9) continue;
+    const p1 = P(-1.75, Math.max(9, d1)), p2 = P(-1.75, d2);
+    ctx.beginPath(); ctx.moveTo(p1[0], p1[1]); ctx.lineTo(p2[0], p2[1]); ctx.stroke();
+  }
+  // Samir
+  const f = _bsxFigur(d), v = _bsxSicht(d, k);
+  const sicht = _bsx.phase === 'halt' ? 1 : Math.min(1, v * v);
+  const hw = f.h * 0.16;
+  ctx.globalAlpha = sicht * (k === 'reflektor' ? 0.55 : 1);
+  ctx.fillStyle = '#2d3340'; ctx.fillRect(f.x - hw * 0.8, f.y - f.h * 0.48, hw * 1.6, f.h * 0.48);        // Beine
+  ctx.fillStyle = k === 'hell' ? '#e2e8f0' : k === 'dunkel' ? '#3b4049' : '#1f2937';
+  ctx.fillRect(f.x - hw, f.y - f.h * 0.84, hw * 2, f.h * 0.4);                                             // Jacke
+  ctx.fillStyle = k === 'hell' ? '#c9a38a' : '#6b5345';
+  ctx.beginPath(); ctx.arc(f.x, f.y - f.h * 0.92, Math.max(0.8, f.h * 0.09), 0, 2 * Math.PI); ctx.fill(); // Kopf
+  if (k === 'reflektor') {
+    ctx.globalAlpha = sicht;
+    const sh = Math.max(1, f.h * 0.06);
+    const g2 = ctx.createRadialGradient(f.x, f.y - f.h * 0.62, 0, f.x, f.y - f.h * 0.62, 5 + f.h * 0.5);
+    g2.addColorStop(0, 'rgba(254,249,195,0.55)'); g2.addColorStop(1, 'rgba(254,249,195,0)');
+    ctx.fillStyle = g2; ctx.beginPath(); ctx.arc(f.x, f.y - f.h * 0.62, 5 + f.h * 0.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fffbe6';
+    ctx.fillRect(f.x - hw, f.y - f.h * 0.76, hw * 2, sh); ctx.fillRect(f.x - hw, f.y - f.h * 0.58, hw * 2, sh);
+  }
+  ctx.globalAlpha = 1;
+  if (_bsx.phase === 'halt' && _bsx.nach < 4)
+    _bioFxLeuchten(ctx, f.x, f.y - f.h * 0.5, Math.max(6, f.h * 0.6), _bsx.t, '254,240,138');
+  // Motorhaube
+  ctx.fillStyle = '#0a0c10';
+  ctx.beginPath(); ctx.moveTo(I.x, I.y + I.h); ctx.lineTo(I.x + 18, I.y + I.h - 10);
+  ctx.lineTo(I.x + I.w - 18, I.y + I.h - 10); ctx.lineTo(I.x + I.w, I.y + I.h); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.strokeRect(I.x, I.y, I.w, I.h);
+  ctx.fillStyle = 'rgba(15,23,42,0.85)'; ctx.fillRect(I.x + 2, I.y + I.h - 15, 92, 13);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Sicht des Fahrers', I.x + 6, I.y + I.h - 5);
+}
+/* Oben links: Licht, das zum Fahrer zurückkommt, und die Kleidung. */
+function _bsxLeiste(ctx) {
+  const K = _BSX_K[_bsx.k];
+  ctx.fillStyle = 'rgba(15,23,42,0.82)'; ctx.fillRect(8, 8, 214, 44);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Licht zurück zum Fahrer', 16, 22);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(16, 29, 120, 9);
+  ctx.fillStyle = '#fde047'; ctx.fillRect(16.5, 29.5, 119 * _bioFxKlemme(_bsx.anzeige), 8);
+  if (_bsx.phase === 'halt') {
+    ctx.fillStyle = '#fde047'; ctx.font = '700 12px sans-serif';
+    ctx.fillText(K.wort, 144, 38);
+  }
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('Kleidung: ' + K.name, 16, 48);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 5/6 FOERDER – bs8 „Rufen und horchen in der Nacht“
+// (Kennung bio-fledermaus)
+// Nacht ueber dem Teich im Schulgarten. Links fliegt eine Fledermaus, rechts
+// eine Motte im Dunkeln. Nach „▶ fliegen lassen“ ruft die Fledermaus: Die
+// Rufboegen (durchgezogen, hellblau) laufen nach vorn, prallen an der Motte
+// ab und kommen als Echoboegen (gestrichelt, gelb) zurueck. Unten zeigt ein
+// Fledermaus-Detektor jeden Ruf als Strich (echter Detektor: Knacken; die
+// Simulation hat keinen Ton) und zaehlt „Rufe in 1 Sekunde“.
+// Fachlich (Modellwerte, Lehrerteil): 10 / 50 / 200 Rufe je Sekunde =
+// Suchflug / Annaeherung / Fangphase. Schall 343 m/s. Das Bild ist
+// MASSSTAEBLICH fuer Abstand und Schall (30 Bildpunkte je Meter) und laeuft
+// 20-mal langsamer (Zeitlupe). Dann gilt wie in echt: Das Echo ist zurueck,
+// bevor der naechste Ruf startet (58 ms < 100 ms, 17,5 ms < 20 ms,
+// 2,9 ms < 5 ms). Nur die Tiere sind vergroessert gezeichnet.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Die Motte ist im Dunkeln
+// kaum zu sehen – jeder Ruf, der sie trifft, laesst ihren Umriss kurz
+// aufleuchten (so „sieht“ die Fledermaus mit dem Gehoer). Kommt ein Echo
+// an, leuchtet der Kopf der Fledermaus gelb, das erste Echo in Zeitlupe
+// mit Lichtring. Bei „nah (50 cm)“ werden die Rufe zum dichten Summen, die
+// Fledermaus schnappt zu (Zeitlupe, Funken, Lichtring, Stempel „gefangen“),
+// danach eine Frage im Banner – keine Loesung, keine Wertung, kein Ton,
+// nichts blinkt schneller als 3 Hz.
+// ════════════════════════════════════════════════════════════════════════
+let _bsm = null;
+const _BSM_AB = [
+  { name: 'weit (10 m)',  m: 10,  rufe: 10,  echo: 'Das Echo kommt spät zurück' },
+  { name: 'mittel (3 m)', m: 3,   rufe: 50,  echo: 'Das Echo kommt schneller zurück' },
+  { name: 'nah (50 cm)',  m: 0.5, rufe: 200, echo: 'Das Echo kommt sofort zurück' }
+];
+const _BSM_ZL = 20;              // Zeitlupe: 1 s im Modell = 20 s am Bildschirm
+const _BSM_PXM = 30;             // Bildpunkte je Meter
+const _BSM_SCHALL = 343;         // m/s
+const _BSM_V = _BSM_SCHALL * _BSM_PXM / _BSM_ZL;   // 514,5 Bildpunkte je s
+const _BSM_MX = 74, _BSM_MY = 104;                  // Maul der Fledermaus
+const _BSM_FANG = 0.9;           // s Bildschirmzeit: dann schnappt sie zu (nur nah)
+const _BSM_SCHNAPP = 0.25;       // s: Dauer des Zuschnappens
+const _BSM_STRIP = 80;           // Bildpunkte je s: Detektorstreifen
+const _BSM_RUF = '#67e8f9', _BSM_ECHO = '#fbbf24';
+
+function _bsmZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _bsmInit() {
+  const z = _bsmZufall(88);
+  const sterne = [];
+  for (let i = 0; i < 44; i++) sterne.push([z(), z(), z() * 6.28, 0.6 + z() * 0.9]);
+  _bsm = {
+    t: 0, ab: 0,
+    phase: 'bereit', pt: 0, naechst: 0,
+    rufe: [], echos: [], ticks: [],
+    erstEcho: -1, kopfGlow: 0, motteGlow: 0,
+    scroll: 0, fang: 0, gefangen: false, nach: -1, schritt: 0,
+    sterne, key: '', W: 420, H: 250,
+    fx: { teile: [] }, zeitlupe: null
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _bsmFxLeer() {
+  _bsm.fx = { teile: [] }; _bsm.zeitlupe = null;
+  _bsm.rufe = []; _bsm.echos = []; _bsm.ticks = [];
+  _bsm.erstEcho = -1; _bsm.kopfGlow = 0; _bsm.motteGlow = 0;
+  _bsm.fang = 0; _bsm.gefangen = false; _bsm.nach = -1; _bsm.schritt = 0;
+}
+function _bsmZurueck() {
+  _bsmFxLeer();
+  _bsm.phase = 'bereit'; _bsm.pt = 0; _bsm.naechst = 0;
+  _bsmStatus(); _bsmKnoepfe();
+}
+function _bsmAbstand(i) {
+  if (!_bsm) return;
+  _bsm.ab = Math.max(0, Math.min(2, Number(i) || 0));
+  _bsmZurueck();                                   // neue Einstellung = neuer Flug
+}
+function _bsmStart() {
+  if (!_bsm) return;
+  _bsmFxLeer();
+  _bsm.phase = 'fliegen'; _bsm.pt = 0; _bsm.naechst = 0;
+  _bioFxZaehler(_bsm.fx, _BSM_AB[_bsm.ab].rufe, 1.0);
+  _bsmStatus(); _bsmKnoepfe();
+}
+function _bsmNeu() {
+  if (!_bsm) return;
+  _bsm.ab = 0;
+  _bsmZurueck();
+}
+/* Sprungmarke: Abstand einstellen und gleich losfliegen. */
+function _bsmMarke(i) {
+  if (!_bsm) return;
+  _bsm.ab = Math.max(0, Math.min(2, Number(i) || 0));
+  _bsmStart();
+}
+function _bsmKnoepfe() {
+  if (!_bsm || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-bsm]').forEach(b => {
+      const d = b.dataset ? b.dataset.bsm : b.getAttribute('data-bsm');
+      if (b.classList) b.classList.toggle('primary', d === 'a' + _bsm.ab || (d === 'los' && _bsm.phase === 'bereit'));
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _bsmHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-bsm="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie findet die Fledermaus ihr Futter?</h3>
+    <div class="fpm-note" style="margin-top:2px">Nacht über dem Teich im Schulgarten. Links fliegt eine Fledermaus, rechts eine Motte. Stelle den „Abstand zur Motte“ ein. Dann drücke „▶ fliegen lassen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_bsm-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Abstand zur Motte</span>
+          ${k('a0', '_bsmAbstand(0)', 'weit (10 m)')}
+          ${k('a1', '_bsmAbstand(1)', 'mittel (3 m)')}
+          ${k('a2', '_bsmAbstand(2)', 'nah (50 cm)')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" data-bsm="los" onclick="_bsmStart()">▶ fliegen lassen</button>
+          <button class="sim-btn" onclick="_bsmNeu()">neu starten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was zeigt der Detektor?</div>
+        <div class="lmp-status on" id="_bsm-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_bsm-zaehler" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_bsmMarke(0)">▶ weit (10 m)</button>
+          <button class="sim-btn" onclick="_bsmMarke(1)">▶ mittel (3 m)</button>
+          <button class="sim-btn" onclick="_bsmMarke(2)">▶ nah (50 cm)</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Durchgezogene Bögen: Ruf. Gestrichelte Bögen: Echo. Menschen hören die Rufe nicht. Der Fledermaus-Detektor macht sie hörbar: Jeder Ruf knackt. Hier zeigt er jeden Ruf als Strich. Das Bild läuft in Zeitlupe.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _bsmZaehlerFertig() {
+  return !!(_bsm.fx.zaehler && !_bioFxZaehlerLaeuft(_bsm.fx));
+}
+function _bsmZeile() {
+  const a = _BSM_AB[_bsm.ab];
+  if (_bsm.phase === 'bereit') return a.name + ' · Die Motte fliegt im Dunkeln. Drücke „▶ fliegen lassen“.';
+  if (_bsm.erstEcho < 0 || !_bsmZaehlerFertig()) return a.name + ' · Die Fledermaus ruft. Achte auf die Bögen.';
+  let s = a.name + ' · ' + a.rufe + ' Rufe in 1 Sekunde · ' + a.echo;
+  if (_bsm.gefangen) s += ' · Die Fledermaus fängt die Motte';
+  return s;
+}
+function _bsmZaehlerText() {
+  return 'Rufe in 1 Sekunde: ' + (_bsmZaehlerFertig() ? _BSM_AB[_bsm.ab].rufe : '–');
+}
+function _bsmStatus() {
+  if (!_bsm) return;
+  const z = _bsmZeile(), c = _bsmZaehlerText();
+  _bsm.key = z + '|' + c;
+  const el = document.getElementById('_bsm-status');
+  if (el) el.textContent = z;
+  const zl = document.getElementById('_bsm-zaehler');
+  if (zl) zl.textContent = c;
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+function _bsmMotte() {
+  if (_bsm.gefangen) return null;
+  const a = _BSM_AB[_bsm.ab], t = _bsm.t;
+  let x = _BSM_MX + a.m * _BSM_PXM;
+  let y = _BSM_MY + 4 * Math.sin(t * 2.1) + 1.5 * Math.sin(t * 5.3);
+  if (_bsm.phase === 'fang') {
+    const u = _bioFxEase.rein(_bioFxKlemme(_bsm.fang / _BSM_SCHNAPP));
+    x += (_BSM_MX + 1 - x) * u; y += (_BSM_MY + 1 - y) * u;
+  }
+  return { x, y };
+}
+function _bsmUpdate(dt) {
+  if (!_bsm) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_bsm, roh);
+  _bsm.t += d;
+  _bioFxAlleUpdate(_bsm.fx, roh);
+  // Bei „nah“ (10 Rufe je s am Bildschirm) klingt das Leuchten langsam ab:
+  // es bleibt fast gleich hell und flackert nicht (Grenze 3 Hz).
+  const ab = _bsm.ab === 2 ? 1.2 : 0.4;
+  _bsm.kopfGlow = Math.max(0, _bsm.kopfGlow - d / ab);
+  _bsm.motteGlow = Math.max(0, _bsm.motteGlow - d / ab);
+  if (_bsm.phase !== 'bereit') {
+    _bsm.scroll += 45 * d;
+    _bsm.pt += d;
+    _bsmWellen(d);
+    _bsmRufen();                                   // neue Rufe laufen erst ab dem naechsten Bild
+    _bsmFangen(d);
+  }
+  const alt = _bsm.t - 4;
+  while (_bsm.ticks.length && _bsm.ticks[0].t < alt) _bsm.ticks.shift();
+  if (_bsmZeile() + '|' + _bsmZaehlerText() !== _bsm.key) _bsmStatus();
+}
+/* Neue Rufe im richtigen Takt: 1/Rufrate im Modell, mal Zeitlupe. */
+function _bsmRufen() {
+  if (_bsm.phase !== 'fliegen' && _bsm.phase !== 'fang') return;
+  const iv = _BSM_ZL / _BSM_AB[_bsm.ab].rufe;
+  while (_bsm.pt >= _bsm.naechst) {
+    const zu = _bsm.pt - _bsm.naechst;            // so lange ist der Ruf schon unterwegs
+    _bsm.rufe.push({ x: _BSM_MX, y: _BSM_MY, r: zu * _BSM_V, traf: false });
+    _bsm.ticks.push({ t: _bsm.t - zu, art: 0 });
+    _bsm.naechst += iv;
+  }
+}
+/* Rufboegen laufen hinaus, Echoboegen laufen zurueck. */
+function _bsmWellen(d) {
+  const m = _bsmMotte(), dm = _BSM_AB[_bsm.ab].m * _BSM_PXM;
+  // Erst die Echos: ein Echo, das in diesem Bild entsteht, laeuft erst ab dem naechsten weiter.
+  for (let i = _bsm.echos.length - 1; i >= 0; i--) {
+    const e = _bsm.echos[i];
+    e.r += _BSM_V * d;
+    const ab = Math.hypot(e.x - _BSM_MX, e.y - _BSM_MY);
+    if (!e.an && e.r >= ab) { e.an = true; _bsmEchoDa((e.r - ab) / _BSM_V); }
+    if (e.r > ab + 45) _bsm.echos.splice(i, 1);
+  }
+  for (let i = _bsm.rufe.length - 1; i >= 0; i--) {
+    const w = _bsm.rufe[i];
+    w.r += _BSM_V * d;
+    if (!w.traf && m) {
+      const ab = Math.hypot(m.x - w.x, m.y - w.y);
+      if (w.r >= ab) {
+        w.traf = true;
+        _bsm.echos.push({ x: m.x, y: m.y, r: w.r - ab, an: false });
+        _bsm.motteGlow = 1;
+      }
+    }
+    if (w.r > Math.min(430, dm + 90)) _bsm.rufe.splice(i, 1);
+  }
+}
+/* Ein Echo ist am Kopf der Fledermaus angekommen. */
+function _bsmEchoDa(schon) {
+  _bsm.ticks.push({ t: _bsm.t - schon, art: 1 });
+  _bsm.kopfGlow = 1;
+  const fx = _bsm.fx.teile, hx = _BSM_MX - 8, hy = _BSM_MY - 8;
+  if (_bsm.erstEcho < 0) {
+    _bsm.erstEcho = _bsm.pt;
+    _bioFxWelle(fx, hx, hy, 'rgba(251,191,36,0.95)', 26);
+    _bioFxFunken(fx, hx, hy - 6, 5, ['#fde68a', '#fbbf24', '#ffffff']);
+    if (_bsm.ab < 2) _bioFxZeitlupe(_bsm, 0.35, 0.9);
+  } else if (_bsm.ab < 2) {
+    _bioFxWelle(fx, hx, hy, 'rgba(251,191,36,0.7)', 16);
+  }
+}
+/* Nur bei „nah“: nach dem Summen schnappt die Fledermaus zu. */
+function _bsmFangen(d) {
+  const fx = _bsm.fx;
+  if (_bsm.ab === 2 && _bsm.phase === 'fliegen' && _bsm.pt >= _BSM_FANG) {
+    _bsm.phase = 'fang'; _bsm.fang = 0;
+    _bioFxZeitlupe(_bsm, 0.4, 0.8);
+  }
+  if (_bsm.phase === 'fang') {
+    _bsm.fang += d;
+    if (_bsm.fang >= _BSM_SCHNAPP) {
+      _bsm.gefangen = true; _bsm.phase = 'fertig'; _bsm.nach = 0; _bsm.schritt = 0;
+      _bsm.echos = [];
+      _bioFxWelle(fx.teile, _BSM_MX + 2, _BSM_MY, 'rgba(103,232,249,0.9)', 42);
+      _bioFxFunken(fx.teile, _BSM_MX + 4, _BSM_MY, 14, ['#67e8f9', '#fde68a', '#ffffff', '#fbbf24']);
+      _bioFxStempel(fx, 'gefangen', _BSM_MX + 96, 58, '#0e7490');
+    }
+  } else if (_bsm.phase === 'fertig' && _bsm.nach >= 0) {
+    _bsm.nach += d;
+    if (_bsm.schritt === 0 && _bsm.nach >= 0.9) {
+      _bsm.schritt = 1;
+      _bioFxBanner(fx, 'Gefangen! Woher weiß sie, wo die Motte ist?', 3.6, '#67e8f9');
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _bsmText(ctx, s, x, y, farbe, font, align) {
+  ctx.font = font || '700 11px sans-serif';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = farbe || '#e2e8f0';
+  ctx.fillText(s, x, y);
+}
+function _bsmDraw(ctx, cv) {
+  if (!_bsm) return;
+  const W = cv.width, H = cv.height;
+  _bsm.W = W; _bsm.H = H;
+  ctx.clearRect(0, 0, W, H);
+  _bsmNacht(ctx, W, H);
+  _bsmBoegen(ctx, W);
+  _bsmMotteZeichnen(ctx);
+  _bsmTier(ctx);
+  _bsmLegende(ctx, W);
+  _bsmDetektor(ctx, W, H);
+  _bioFxAlleDraw(ctx, _bsm.fx);
+}
+/* Nachthimmel, Mond, Hecke, Teich, Schilf – alles zieht beim Fliegen vorbei. */
+function _bsmNacht(ctx, W, H) {
+  const t = _bsm.t, sc = _bsm.scroll;
+  const g = ctx.createLinearGradient(0, 0, 0, 170);
+  g.addColorStop(0, '#0b1230'); g.addColorStop(1, '#22375f');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, 204);
+  ctx.save();
+  for (const [sx, sy, ph, gr] of _bsm.sterne) {
+    const x = ((sx * (W + 40) - sc * 0.08) % (W + 40) + (W + 40)) % (W + 40) - 20;
+    ctx.globalAlpha = 0.45 + 0.3 * Math.sin(t * 0.8 + ph);
+    ctx.fillStyle = '#e0e7ff';
+    ctx.beginPath(); ctx.arc(x, 8 + sy * 130, gr, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  // Mond (Sichel)
+  ctx.fillStyle = '#f1f5f9';
+  ctx.beginPath(); ctx.arc(236, 30, 11, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f1838';
+  ctx.beginPath(); ctx.arc(241, 27, 10, 0, 2 * Math.PI); ctx.fill();
+  // Hecke in der Ferne
+  ctx.fillStyle = '#0c1a2c';
+  ctx.beginPath(); ctx.moveTo(0, 172);
+  for (let x = 0; x <= W; x += 6) {
+    const u = x + sc * 0.3;
+    ctx.lineTo(x, 158 - 9 * Math.abs(Math.sin(u * 0.028)) - 5 * Math.abs(Math.sin(u * 0.071)));
+  }
+  ctx.lineTo(W, 172); ctx.closePath(); ctx.fill();
+  // Teich
+  ctx.fillStyle = '#10263d'; ctx.fillRect(0, 170, W, 34);
+  ctx.save();
+  ctx.globalAlpha = 0.35 + 0.1 * Math.sin(t * 1.3);
+  ctx.fillStyle = '#e2e8f0';
+  for (let k = 0; k < 4; k++) ctx.fillRect(228 + Math.sin(t * 1.7 + k) * 3, 176 + k * 6, 16 - k * 3, 2);
+  ctx.globalAlpha = 0.35; ctx.strokeStyle = '#5b87b5'; ctx.lineWidth = 1;
+  for (let k = 0; k < 9; k++) {
+    const x = ((k * 61 - sc * 0.8) % (W + 40) + (W + 40)) % (W + 40) - 20, y = 178 + (k % 4) * 6;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 16, y); ctx.stroke();
+  }
+  ctx.restore();
+  // Schilf vorn
+  ctx.save();
+  ctx.strokeStyle = '#07101b'; ctx.fillStyle = '#1a1208'; ctx.lineWidth = 2;
+  for (let k = 0; k < 8; k++) {
+    const x = ((k * 67 - sc) % (W + 60) + (W + 60)) % (W + 60) - 30;
+    const top = 146 + (k % 3) * 9, sw = Math.sin(t * 1.2 + k) * 3;
+    ctx.beginPath(); ctx.moveTo(x, 204); ctx.quadraticCurveTo(x + sw * 0.3, 175, x + sw, top); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x + 5, 204); ctx.quadraticCurveTo(x + 6 + sw * 0.2, 185, x + 12 + sw, top + 16); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(x + sw, top + 7, 2.6, 7, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+/* Rufboegen durchgezogen, Echoboegen gestrichelt in zweiter Farbe. */
+function _bsmBoegen(ctx, W) {
+  const dm = _BSM_AB[_bsm.ab].m * _BSM_PXM;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(0, 0, W, 202); ctx.clip();
+  ctx.lineCap = 'round';
+  for (const w of _bsm.rufe) {
+    if (w.r < 2) continue;
+    const a = 1 - _bioFxKlemme((w.r - dm - 10) / 70);
+    if (a <= 0.02) continue;
+    ctx.globalAlpha = a; ctx.strokeStyle = _BSM_RUF; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.arc(w.x, w.y, w.r, -0.55, 0.55); ctx.stroke();
+  }
+  ctx.setLineDash([6, 4]);
+  for (const e of _bsm.echos) {
+    if (e.r < 2) continue;
+    const ab = Math.hypot(e.x - _BSM_MX, e.y - _BSM_MY);
+    const a = 1 - _bioFxKlemme((e.r - ab) / 40);
+    if (a <= 0.02) continue;
+    ctx.globalAlpha = a; ctx.strokeStyle = _BSM_ECHO; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.arc(e.x, e.y, e.r, Math.PI - 0.6, Math.PI + 0.6); ctx.stroke();
+  }
+  ctx.restore();
+}
+/* Motte: im Dunkeln kaum zu sehen; ein Ruf, der sie trifft, zeichnet ihren Umriss. */
+function _bsmMotteZeichnen(ctx) {
+  const m = _bsmMotte();
+  if (!m) return;
+  const t = _bsm.t, f = 0.35 + 0.65 * Math.abs(Math.sin(t * Math.PI * 5));
+  ctx.save();
+  ctx.translate(m.x, m.y);
+  ctx.globalAlpha = 0.45 + 0.4 * _bsm.motteGlow;
+  ctx.fillStyle = '#b8a98a';
+  for (const s of [-1, 1]) {
+    ctx.beginPath(); ctx.ellipse(-1, s * 4.5 * f, 4.5, 4.5 * f, s * 0.4, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(3, s * 3 * f, 3, 3 * f, -s * 0.3, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#8b7d62';
+  ctx.beginPath(); ctx.ellipse(0, 0, 5, 1.8, 0, 0, 2 * Math.PI); ctx.fill();
+  if (_bsm.motteGlow > 0.02) {
+    ctx.globalAlpha = _bsm.motteGlow;
+    ctx.strokeStyle = _BSM_RUF; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(0, 0, 10, 0, 2 * Math.PI); ctx.stroke();
+  }
+  ctx.restore();
+  ctx.save();
+  ctx.globalAlpha = 0.75;
+  _bsmText(ctx, 'Motte', m.x, m.y + 18, '#e2e8f0', '700 10px sans-serif', 'center');
+  ctx.restore();
+}
+/* Die Fledermaus von der Seite, Blick nach rechts; Fluegel schlagen. */
+function _bsmTier(ctx) {
+  const t = _bsm.t, flieg = _bsm.phase !== 'bereit';
+  const s = 0.25 + 0.75 * Math.sin(t * Math.PI * 2 * (flieg ? 3 : 1.4));
+  const bob = Math.sin(t * 2.2) * 1.5;
+  const X = _BSM_MX, Y = _BSM_MY + bob;
+  const fl = [[0, 0], [4, -22], [-2, -36], [-10, -24], [-18, -32], [-22, -18], [-32, -22], [-34, -4]];
+  const fluegel = (dx, k, farbe) => {
+    const sx = X - 18 + dx, sy = Y - 3;
+    ctx.fillStyle = farbe;
+    ctx.beginPath(); ctx.moveTo(sx, sy);
+    for (const [px, py] of fl) ctx.lineTo(sx + px, sy + py * s * k);
+    ctx.lineTo(X - 34, Y + 2); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = 'rgba(165,180,252,0.5)'; ctx.lineWidth = 0.9; ctx.stroke();
+  };
+  ctx.save();
+  fluegel(4, 0.8, '#2a2238');                        // hinterer Fluegel
+  // Koerper
+  ctx.fillStyle = '#4a3b5c';
+  ctx.beginPath(); ctx.ellipse(X - 22, Y + 1, 14, 7, 0.08, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(165,180,252,0.55)'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.strokeStyle = '#4a3b5c'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(X - 34, Y + 3); ctx.lineTo(X - 42, Y + 6); ctx.stroke();
+  // Kopf mit grossen Ohren
+  if (_bsm.kopfGlow > 0.02) {
+    const g = ctx.createRadialGradient(X - 8, Y - 8, 2, X - 8, Y - 8, 22);
+    g.addColorStop(0, 'rgba(251,191,36,' + (0.75 * _bsm.kopfGlow).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(251,191,36,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(X - 8, Y - 8, 22, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#56466a';
+  ctx.beginPath(); ctx.moveTo(X - 12, Y - 5); ctx.lineTo(X - 16, Y - 20); ctx.lineTo(X - 7, Y - 7); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(X - 7, Y - 6); ctx.lineTo(X - 5, Y - 19); ctx.lineTo(X - 1, Y - 5); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(X - 7, Y - 1, 7.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(X - 3, Y - 4); ctx.lineTo(X + 1, Y); ctx.lineTo(X - 3, Y + 4); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(165,180,252,0.55)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(X - 7, Y - 1, 7.5, -2.2, 0.6); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0';
+  ctx.beginPath(); ctx.arc(X - 5, Y - 3, 1.1, 0, 2 * Math.PI); ctx.fill();
+  fluegel(0, 1, '#3b3150');                          // vorderer Fluegel
+  ctx.restore();
+}
+function _bsmLegende(ctx, W) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.7)';
+  _bioFxRundRect(ctx, 6, 6, 74, 36, 6); ctx.fill();
+  ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+  ctx.strokeStyle = _BSM_RUF;
+  ctx.beginPath(); ctx.moveTo(13, 16); ctx.lineTo(35, 16); ctx.stroke();
+  ctx.setLineDash([6, 4]); ctx.strokeStyle = _BSM_ECHO;
+  ctx.beginPath(); ctx.moveTo(13, 32); ctx.lineTo(35, 32); ctx.stroke();
+  ctx.setLineDash([]);
+  _bsmText(ctx, 'Ruf', 41, 16, _BSM_RUF);
+  _bsmText(ctx, 'Echo', 41, 32, _BSM_ECHO);
+  if (_bsm.phase !== 'bereit') {
+    ctx.globalAlpha = 0.8;
+    _bsmText(ctx, _bsm.zeitlupe ? 'Zeitlupe, noch langsamer' : 'Zeitlupe', W - 10, 14, '#cbd5e1', '700 10px sans-serif', 'right');
+  }
+  ctx.restore();
+}
+/* Detektor: je Ruf ein langer Strich, je Echo ein kurzer gestrichelter; Zaehler rechts. */
+function _bsmDetektor(ctx, W, H) {
+  const y0 = 204, bx = 304;
+  ctx.save();
+  ctx.fillStyle = '#111827'; ctx.fillRect(0, y0, W, H - y0);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, y0 + 0.5); ctx.lineTo(W, y0 + 0.5); ctx.stroke();
+  _bsmText(ctx, 'Detektor', 8, y0 + 10, '#94a3b8', '700 10px sans-serif');
+  const bl = H - 12, xr = bx - 10;
+  ctx.strokeStyle = '#475569';
+  ctx.beginPath(); ctx.moveTo(8, bl + 0.5); ctx.lineTo(xr, bl + 0.5); ctx.stroke();
+  ctx.lineWidth = 2;
+  for (const k of _bsm.ticks) {
+    const x = xr - (_bsm.t - k.t) * _BSM_STRIP;
+    if (x < 8) continue;
+    if (k.art === 0) {
+      ctx.setLineDash([]); ctx.strokeStyle = _BSM_RUF;
+      ctx.beginPath(); ctx.moveTo(x, bl); ctx.lineTo(x, bl - 20); ctx.stroke();
+    } else {
+      ctx.setLineDash([3, 2]); ctx.strokeStyle = _BSM_ECHO;
+      ctx.beginPath(); ctx.moveTo(x, bl); ctx.lineTo(x, bl - 11); ctx.stroke();
+    }
+  }
+  ctx.setLineDash([]);
+  // Zaehler
+  ctx.fillStyle = '#0b1220'; ctx.strokeStyle = '#475569';
+  _bioFxRundRect(ctx, bx, y0 + 5, W - bx - 6, H - y0 - 9, 5); ctx.fill(); ctx.stroke();
+  const cx = (bx + W - 6) / 2;
+  _bsmText(ctx, 'Rufe in 1 Sekunde:', cx, y0 + 15, '#cbd5e1', '700 10px sans-serif', 'center');
+  const wert = _bsm.fx.zaehler ? String(Math.round(_bioFxZaehlerWert(_bsm.fx))) : '–';
+  _bsmText(ctx, wert, cx, y0 + 33, _BSM_RUF, '700 18px sans-serif', 'center');
+  ctx.restore();
 }
