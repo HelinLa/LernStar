@@ -7149,6 +7149,69 @@ const _physSimDefs = {
 
   // ── BIOLOGIE 5/6 FOERDER: Fledermaus jagt mit Echos (bs8) ──────────────
   'bio-fledermaus': modal => { _bsmInit(); modal.innerHTML = _bsmHTML(); _bsmStatus(); _bsmKnoepfe(); _pSim = new PhysicsSimEngine('_bsm-cv','_bsm-cv'); _pSim.start(dt => _bsmUpdate(dt), (ctx,cv) => _bsmDraw(ctx,cv), []); },
+  // ── BIO 8 FOERDER · ÖKOSYSTEM WALD: WAS FEHLT?  (Förderheft Bio 8 · bo1) ──
+  'bio-oekosystem': modal => {
+    _b8aInit();
+    modal.innerHTML = _b8aHTML();
+    _b8aStatus();
+    _pSim = new PhysicsSimEngine('_b8a-cv', '_b8a-cv');
+    _pSim.start(dt => _b8aUpdate(dt), (ctx, cv) => _b8aDraw(ctx, cv), []);
+  },
+  // ── BIO 8 · LICHT UNTER DEN BUCHEN  (Förderheft Bio 8 · bo2) ──
+  'bio-waldlicht': modal => {
+    _b8bInit();
+    modal.innerHTML = _b8bHTML();
+    _b8bStatus();
+    _pSim = new PhysicsSimEngine('_b8b-cv', '_b8b-cv');
+    _pSim.start(dt => _b8bUpdate(dt), (ctx, cv) => _b8bDraw(ctx, cv), []);
+  },
+  // ── BIO 8 FOERDER: Drei Meisen, zwei Bäume – ökologische Nische (bo3) ──
+  'bio-nische': modal => { _b8cInit(); modal.innerHTML = _b8cHTML(); _b8cStatus(); _b8cKnoepfe(); _pSim = new PhysicsSimEngine('_b8c-cv','_b8c-cv'); _pSim.start(dt => _b8cUpdate(dt), (ctx,cv) => _b8cDraw(ctx,cv), []); },
+
+  // ── BIO 8 · VAN HELMONT: DIE WEIDE IM KÜBEL  (Förderheft Bio 8 · bo4) ──
+  'bio-helmont': modal => {
+    _b8dInit();
+    modal.innerHTML = _b8dHTML();
+    _b8dStatus();
+    _pSim = new PhysicsSimEngine('_b8d-cv', '_b8d-cv');
+    _pSim.start(dt => _b8dUpdate(dt), (ctx, cv) => _b8dDraw(ctx, cv), []);
+  },
+  // ── BIO 8 FOERDER · FOTOSYNTHESE: BUCHE UNTER DER GLASGLOCKE  (Förderheft Bio 8 · bo5) ──
+  'bio-fotosynthese': modal => {
+    _b8eInit();
+    modal.innerHTML = _b8eHTML();
+    _b8eStatus();
+    _pSim = new PhysicsSimEngine('_b8e-cv', '_b8e-cv');
+    _pSim.start(dt => _b8eUpdate(dt), (ctx, cv) => _b8eDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 · DAS NETZ IM WALD: WER FRISST WEN?  (Förderheft Bio 8 · bo6) ──
+  'bio-nahrungsnetz': modal => {
+    _b8fInit();
+    modal.innerHTML = _b8fHTML();
+    _b8fStatus();
+    _pSim = new PhysicsSimEngine('_b8f-cv', '_b8f-cv');
+    _pSim.start(dt => _b8fUpdate(dt), (ctx, cv) => _b8fDraw(ctx, cv), []);
+  },
+  // ── BIO 8 FOERDER · NAHRUNGSPYRAMIDE: ENERGIE AUF DEM WEG ZUM FUCHS  (Förderheft Bio 8 · bo7) ──
+  'bio-pyramide': modal => {
+    _b8gInit();
+    modal.innerHTML = _b8gHTML();
+    _b8gStatus();
+    _pSim = new PhysicsSimEngine('_b8g-cv', '_b8g-cv');
+    _pSim.start(dt => _b8gUpdate(dt), (ctx, cv) => _b8gDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 · DESTRUENTEN: WER RÄUMT DAS LAUB WEG?  (Förderheft Bio 8 · bo8) ──
+  'bio-destruenten': modal => {
+    _b8hInit();
+    modal.innerHTML = _b8hHTML();
+    _b8hStatus();
+    _pSim = new PhysicsSimEngine('_b8h-cv', '_b8h-cv');
+    _pSim.start(dt => _b8hUpdate(dt), (ctx, cv) => _b8hDraw(ctx, cv), []);
+  },
+  // ── BIOLOGIE 8 FOERDER: Luchs und Reh im Diagramm (bo9) ──────────────
+  'bio-raeuber-beute': modal => { _b8iInit(); modal.innerHTML = _b8iHTML(); _b8iStatus(); _pSim = new PhysicsSimEngine('_b8i-cv', '_b8i-cv'); _pSim.start(dt => _b8iUpdate(dt), (ctx, cv) => _b8iDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -106096,4 +106159,4971 @@ function _bsmDetektor(ctx, W, H) {
   const wert = _bsm.fx.zaehler ? String(Math.round(_bioFxZaehlerWert(_bsm.fx))) : '–';
   _bsmText(ctx, wert, cx, y0 + 33, _BSM_RUF, '700 18px sans-serif', 'center');
   ctx.restore();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 8 FOERDER · UNSER STÜCK WALD – WAS FEHLT?   (Förderheft Bio 8 · bo1)
+// Ein Stück Laubwald im Schnitt: drei Buchen, Kräuter, Rehe, am Boden Laub,
+// im aufgeschnittenen Boden Regenwürmer, darüber eine Wolke, seitlich Sonne.
+// Das Kind stellt „Was fehlt?“ um (nichts / Regen / Regenwürmer) und wartet
+// 3 Jahre. Ohne Regen trocknet der Boden (hell, rissig), die Pflanzen welken,
+// Rehe ziehen ab. Ohne Regenwürmer bleibt das Laub liegen (dicke Schicht),
+// die Pflanzen wachsen schlechter, weniger Rehe bleiben.
+// Modellwerte (Lehrerteil): nach 3 Jahren 10 / 4 / 7 Rehe. Die Zahl der Rehe
+// steht NIRGENDS am Bildschirm – das Kind zählt die Figuren selbst.
+// Aha (nach dem Warten, _bioFx): Ein Lichtpaket läuft von dem Teil, der
+// fehlt, über Boden, Kräuter und Buchen bis zu den Rehen; an jeder Station ein
+// Lichtring, am Ende ein Ring um jedes Reh, das noch da ist (Zählhilfe, keine
+// Zahl). So sieht man: Die Folge wandert durch den ganzen Wald.
+// Kein Blinken, kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _b8a = null;
+const _B8A_JAHR_S = 2.2;                               // 1 Jahr = 2,2 s Zeitraffer
+const _B8A_WERTE = ['nichts', 'Regen', 'Regenwürmer'];
+// Zehn Rehe: hintere Reihe (klein), vordere Reihe (groß) – gut auseinander.
+const _B8A_REHE = [
+  { x: 46,  y: 157, s: 0.72 }, { x: 126, y: 157, s: 0.72 }, { x: 206, y: 157, s: 0.72 },
+  { x: 286, y: 157, s: 0.72 }, { x: 366, y: 157, s: 0.72 },
+  { x: 86,  y: 187, s: 1.0 },  { x: 166, y: 187, s: 1.0 },  { x: 246, y: 187, s: 1.0 },
+  { x: 326, y: 187, s: 1.0 },  { x: 394, y: 187, s: 1.0 }
+];
+// Wann (in Jahren) welches Reh losgeht; nach 0,5 Jahren ist es aus dem Bild.
+const _B8A_GEHT = {
+  'nichts': [],
+  'Regen': [[0, 0.35], [9, 0.55], [4, 1.35], [5, 1.55], [2, 2.2], [7, 2.4]],     // 10 → 4
+  'Regenwürmer': [[0, 0.5], [9, 1.4], [7, 2.3]]                                   // 10 → 7
+};
+const _B8A_BAEUME = [{ x: 58, s: 1.0 }, { x: 252, s: 1.05 }, { x: 352, s: 0.72 }];
+const _B8A_KRAUT = [
+  [20, 150, 0.7], [90, 150, 0.7], [164, 150, 0.7], [240, 150, 0.7], [318, 150, 0.7], [402, 150, 0.7],
+  [24, 191, 1], [58, 191, 1], [126, 191, 1], [204, 191, 1], [286, 191, 1], [360, 191, 1], [412, 191, 1]
+];
+const _B8A_WURM = [[70, 228], [170, 238], [290, 227], [380, 237]];
+const _B8A_SOIL = 193;                                 // Oberkante des Bodenschnitts
+
+function _b8aInit() {
+  _b8a = { fehlt: 'nichts', jahr: 0, laeuft: false, t: 0, letzt: '',
+           fx: { teile: [] }, nach: -1, schritt: 0, ringe: 0, ringUhr: 0,
+           blattUhr: 0, erstGeht: false, gezeichnet: 0 };
+}
+function _b8aFxLeer() {
+  _b8a.fx = { teile: [] }; _b8a.zeitlupe = null;
+  _b8a.nach = -1; _b8a.schritt = 0; _b8a.ringe = 0; _b8a.ringUhr = 0;
+  _b8a.blattUhr = 0; _b8a.erstGeht = false;
+}
+function _b8aHTML() {
+  const k = (w) => `<button class="sim-btn" data-b8a="${w}" onclick="_b8aFehlt('${w}')">${w}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Unser Stück Wald</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Stück Laubwald im Schnitt: Buchen, Kräuter, Rehe, Laub und Regenwürmer im Boden, darüber eine Wolke. Stelle ein, was fehlt. Dann warte 3 Jahre.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8a-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8a-los" onclick="_b8aWarten()">▶ 3 Jahre warten</button>
+          <button class="sim-btn" onclick="_b8aNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Was fehlt?</span>
+          <div class="sim-btn-row">${_B8A_WERTE.map(k).join('')}</div>
+        </div>
+        <div class="lmp-status" id="_b8a-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_b8a-boden" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Die Rehe zählst du selbst im Bild. Tippe jedes Reh mit dem Finger an.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: der Wald nach 3 Jahren</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b8aMarke('nichts')">Jahr 3 · nichts fehlt</button>
+          <button class="sim-btn" onclick="_b8aMarke('Regen')">Jahr 3 · ohne Regen</button>
+          <button class="sim-btn" onclick="_b8aMarke('Regenwürmer')">Jahr 3 · ohne Regenwürmer</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Was fehlt? nichts &nbsp;|&nbsp; Stelle nur EINE Sache um und vergleiche mit „nichts“.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────── */
+function _b8aFehlt(v) {
+  if (!_b8a || _B8A_WERTE.indexOf(v) < 0) return;
+  _b8a.fehlt = v; _b8a.jahr = 0; _b8a.laeuft = false;   // neue Einstellung = neuer Wald
+  _b8aFxLeer(); _b8aStatus();
+}
+function _b8aWarten() {
+  if (!_b8a || _b8a.laeuft) return;
+  _b8aFxLeer();
+  _b8a.jahr = 0; _b8a.laeuft = true; _b8aStatus();
+}
+function _b8aNeu() {
+  if (!_b8a) return;
+  _b8a.fehlt = 'nichts'; _b8a.jahr = 0; _b8a.laeuft = false;
+  _b8aFxLeer(); _b8aStatus();
+}
+// Sprungmarke: gleich der Wald nach 3 Jahren, danach die Welle.
+function _b8aMarke(v) {
+  if (!_b8a || _B8A_WERTE.indexOf(v) < 0) return;
+  _b8a.fehlt = v; _b8aFxLeer();
+  _b8a.jahr = 3; _b8a.laeuft = false; _b8a.nach = 0;
+  _b8aStatus();
+}
+
+/* ── Modell ────────────────────────────────────────────── */
+function _b8aK(u) { return u < 0 ? 0 : u > 1 ? 1 : u; }
+function _b8aTrocken() { return _b8a.fehlt === 'Regen' ? _b8aK(_b8a.jahr / 1.6) : 0; }
+function _b8aWelk()    { return _b8a.fehlt === 'Regen' ? _b8aK((_b8a.jahr - 0.5) / 1.5) : 0; }
+function _b8aLaub()    { return _b8a.fehlt === 'Regenwürmer' ? _b8aK(_b8a.jahr / 2.4) : 0; }
+function _b8aSchlecht(){ return _b8a.fehlt === 'Regenwürmer' ? _b8aK((_b8a.jahr - 0.6) / 1.6) : 0; }
+// Wann geht Reh i? (-1 = bleibt)
+function _b8aGehtAb(i) {
+  for (const [j, L] of _B8A_GEHT[_b8a.fehlt]) if (j === i) return L;
+  return -1;
+}
+// Fortschritt beim Weggehen: 0 = steht noch da, 1 = aus dem Bild
+function _b8aWeg(i) {
+  const L = _b8aGehtAb(i);
+  return L < 0 ? 0 : _b8aK((_b8a.jahr - L) / 0.5);
+}
+// Welche Rehe sind (noch) im Bild? – Für den Rechentest; am Bildschirm steht KEINE Zahl.
+function _b8aDa() { const d = []; for (let i = 0; i < 10; i++) if (_b8aWeg(i) < 1) d.push(i); return d; }
+function _b8aRehe() { return _b8aDa().length; }
+function _b8aRehX(i) {
+  const r = _B8A_REHE[i], w = _b8aWeg(i);
+  const bummel = Math.sin(_b8a.t * 0.35 + i * 1.7) * 8;
+  if (w <= 0) return r.x + bummel;
+  const links = r.x < 210;
+  const ziel = links ? -40 : 460;
+  return r.x + bummel + (ziel - r.x) * _bioFxEase.rein(w);
+}
+
+/* ── Anzeige ───────────────────────────────────────────── */
+function _b8aSatz(y) {
+  const f = _b8a.fehlt;
+  if (f === 'Regen') return y >= 2 ? 'Pflanzen welken' : y === 1 ? 'Boden trocknet' : 'Es regnet nicht';
+  if (f === 'Regenwürmer') return y >= 2 ? 'Pflanzen wachsen schlechter' : 'Laub bleibt liegen';
+  return 'Pflanzen wachsen gut';
+}
+function _b8aZeile() {
+  if (_b8a.jahr <= 0 && !_b8a.laeuft) return 'Jahr 0 · Der Wald heute · Drücke „▶ 3 Jahre warten“.';
+  const y = Math.min(3, Math.floor(_b8a.jahr + 1e-9));
+  return 'Jahr ' + y + ' · ' + _b8aSatz(y);
+}
+function _b8aBoden() {
+  const f = _b8a.fehlt, y = Math.floor(_b8a.jahr + 1e-9), los = _b8a.laeuft || _b8a.jahr > 0;
+  if (f === 'Regen') return 'Am Boden: ' + (los && y >= 1 ? 'Boden hell und rissig' : 'kein Regen, der Boden wird trocken');
+  if (f === 'Regenwürmer') return 'Am Boden: ' + (los && y >= 2 ? 'dicke Laubschicht' : 'keine Regenwürmer, das Laub bleibt liegen');
+  return 'Am Boden: Regenwürmer ziehen Laub in die Erde';
+}
+function _b8aStatus() {
+  if (!_b8a) return;
+  const z = _b8aZeile();
+  const el = document.getElementById('_b8a-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _b8a.letzt = z;
+  const b = document.getElementById('_b8a-boden');
+  if (b) b.textContent = _b8aBoden();
+  try {
+    document.querySelectorAll('[data-b8a]').forEach(k =>
+      k.classList.toggle('primary', k.getAttribute('data-b8a') === _b8a.fehlt));
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8a-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b8a.laeuft);
+}
+
+/* ── Ablauf ────────────────────────────────────────────── */
+function _b8aUpdate(dt) {
+  if (!_b8a) return;
+  dt = _bioFxDt(dt);
+  _b8a.t += dt;
+  if (_b8a.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(_b8a, dt);
+    const vor = _b8a.jahr;
+    _b8a.jahr = Math.min(3, _b8a.jahr + dt * zl / _B8A_JAHR_S);
+    // Das erste Reh, das den Wald verlässt: kurz Zeitlupe und ein Lichtring
+    const erst = _B8A_GEHT[_b8a.fehlt][0];
+    if (erst && !_b8a.erstGeht && vor < erst[1] && _b8a.jahr >= erst[1]) {
+      _b8a.erstGeht = true;
+      const r = _B8A_REHE[erst[0]];
+      _bioFxWelle(_b8a.fx.teile, r.x, r.y - 18 * r.s, '#fbbf24', 30);
+      _bioFxZeitlupe(_b8a, 0.35, 1.0);
+    }
+    // Welke Buchen verlieren Blätter, ohne Regenwürmer rieselt Laub nach
+    const welk = _b8aWelk(), laub = _b8aLaub();
+    _b8a.blattUhr += dt;
+    if ((welk > 0.15 || laub > 0.15) && _b8a.blattUhr > 0.45) {
+      _b8a.blattUhr = 0;
+      const b = _B8A_BAEUME[Math.floor(_b8a.t * 7) % 3];
+      _bioFxBlaetter(_b8a.fx.teile, b.x + (Math.random() - 0.5) * 40, 150 - 70 * b.s, 2,
+        welk > 0 ? ['#b45309', '#a16207', '#ca8a04'] : ['#c2410c', '#b45309', '#d97706']);
+    }
+    if (_b8a.jahr >= 3) { _b8a.jahr = 3; _b8a.laeuft = false; _b8a.nach = 0; _b8a.schritt = 0; }
+    if (_b8aZeile() !== _b8a.letzt || !_b8a.laeuft) _b8aStatus();
+  } else if (_b8a.nach >= 0) {
+    _b8a.nach += dt;
+    _b8aWelleLauf(dt);
+  }
+  _bioFxAlleUpdate(_b8a.fx, dt);
+}
+// Stationen der Welle: von dem Teil, der fehlt, über Boden und Pflanzen bis zu
+// einem Reh, das noch da ist (Reh 8 bleibt in jedem Fall stehen).
+function _b8aStationen() {
+  const w = _b8a.fehlt === 'Regenwürmer';
+  const start = w ? { x: 170, y: 226 } : { x: 150, y: 40 };
+  const boden = w ? { x: 232, y: _B8A_SOIL + 6 } : { x: 150, y: 222 };
+  const r = _B8A_REHE[8];
+  return [start, boden, { x: 252, y: 108 }, { x: _b8aRehX(8), y: r.y - 18 * r.s }];
+}
+const _B8A_LEG = 0.5;                                  // s je Wegstück der Welle
+function _b8aWelleFarbe() { return _b8a.fehlt === 'nichts' ? '#22c55e' : '#f59e0b'; }
+function _b8aWelleLauf(dt) {
+  const st = _b8aStationen(), n = st.length, fx = _b8a.fx, col = _b8aWelleFarbe();
+  const q = (_b8a.nach - 0.5) / _B8A_LEG;             // 0,5 s hinsehen, dann läuft die Welle
+  while (_b8a.schritt < n && q >= _b8a.schritt) {
+    const s = st[_b8a.schritt];
+    if (_b8a.schritt < n - 1) _bioFxWelle(fx.teile, s.x, s.y, col, _b8a.schritt === 0 ? 34 : 26);
+    if (_b8a.schritt === 2) {                          // Pflanzen: alle Kronen und Kräuter
+      for (const b of _B8A_BAEUME) if (b.x !== 252) _bioFxWelle(fx.teile, b.x, 152 - 75 * b.s, col, 24);
+      for (const [kx, ky] of _B8A_KRAUT) if (ky > 170 && kx % 2 === 0) _bioFxWelle(fx.teile, kx, ky - 8, col, 12);
+    }
+    _b8a.schritt++;
+  }
+  // an den Rehen: ein Ring um jedes Reh, das noch da ist – nacheinander
+  if (_b8a.schritt >= n) {
+    const da = _b8aDa();
+    _b8a.ringUhr += dt;
+    while (_b8a.ringe < da.length && _b8a.ringUhr >= _b8a.ringe * 0.2) {
+      const r = _B8A_REHE[da[_b8a.ringe]];
+      _bioFxWelle(fx.teile, _b8aRehX(da[_b8a.ringe]), r.y - 16 * r.s, col, 22 * r.s + 6);
+      _b8a.ringe++;
+      if (_b8a.ringe === da.length) {
+        if (_b8a.fehlt === 'nichts') {
+          for (const b of _B8A_BAEUME) _bioFxFunken(fx.teile, b.x, 150 - 80 * b.s, 4, ['#bbf7d0', '#86efac', '#fff3b0']);
+          _bioFxBanner(fx, 'Alle Teile sind da.', 3.0, col);
+        } else {
+          _bioFxBanner(fx, _b8a.fehlt === 'Regen' ? 'Die Welle läuft vom Regen bis zum Reh.'
+                                                  : 'Die Welle läuft vom Boden bis zum Reh.', 3.6, col);
+        }
+      }
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────── */
+function _b8aMisch(a, b, u) {
+  u = _b8aK(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _b8aBaum(ctx, b, i, t, welk, schlecht) {
+  const x = b.x, s = b.s, fuss = 152;
+  const wieg = Math.sin(t * 0.7 + i * 1.3) * 0.018;
+  ctx.save();
+  ctx.translate(x, fuss);
+  ctx.rotate(wieg);
+  // Stamm: Buche mit glatter, grauer Rinde
+  ctx.fillStyle = '#8b9196';
+  ctx.beginPath(); ctx.moveTo(-7 * s, 0); ctx.lineTo(-4 * s, -92 * s); ctx.lineTo(4 * s, -92 * s); ctx.lineTo(7 * s, 0); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#7b8186'; ctx.lineWidth = 3 * s; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(0, -55 * s); ctx.lineTo(-18 * s, -78 * s); ctx.moveTo(0, -62 * s); ctx.lineTo(17 * s, -84 * s); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.18)'; ctx.fillRect(-4 * s, -88 * s, 2 * s, 86 * s);
+  // Krone
+  const kr = 1 - 0.14 * welk;
+  let dunkel = '#2f7a32', hell = '#56a84a';
+  if (welk > 0) { dunkel = _b8aMisch('#2f7a32', '#8a6d2a', welk * 0.9); hell = _b8aMisch('#56a84a', '#c49a3c', welk * 0.9); }
+  if (schlecht > 0) { dunkel = _b8aMisch('#2f7a32', '#5f8a3a', schlecht * 0.8); hell = _b8aMisch('#56a84a', '#9cc05a', schlecht * 0.8); }
+  const kreise = [[0, -80, 34], [-27, -64, 26], [27, -64, 26], [-15, -100, 24], [16, -102, 24], [0, -56, 22]];
+  kreise.forEach(([cx, cy, r], k) => {
+    const dx = Math.sin(t * 0.9 + k + i) * 1.5;
+    ctx.fillStyle = k % 2 ? hell : dunkel;
+    ctx.beginPath(); ctx.arc((cx + dx) * s, cy * s, r * s * kr, 0, 2 * Math.PI); ctx.fill();
+  });
+  ctx.restore();
+}
+function _b8aKraut(ctx, x, y, g, i, t, welk, schlecht) {
+  const gr = g * (1 - 0.42 * schlecht) * (1 - 0.15 * welk);
+  let farbe = '#4f9d3a';
+  if (welk > 0) farbe = _b8aMisch('#4f9d3a', '#9a6b2f', welk);
+  if (schlecht > 0) farbe = _b8aMisch('#4f9d3a', '#a8b04a', schlecht * 0.8);
+  const haengt = welk * 0.9;                           // welke Blätter hängen herab
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+  for (let k = -2; k <= 2; k++) {
+    const w = k * 0.38 + Math.sin(t * 1.3 + i + k) * 0.06;
+    const len = (12 + (2 - Math.abs(k)) * 4) * gr;
+    const ex = x + Math.sin(w) * len, ey = y - Math.cos(w) * len * (1 - haengt * 0.55);
+    const hx = ex + Math.sin(w) * haengt * 5, hy = ey + haengt * 6;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo((x + ex) / 2, (y + ey) / 2 - 2, hx, hy); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(hx, hy, 3.2 * gr, 1.6 * gr, w - Math.PI / 2 + haengt, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _b8aReh(ctx, x, y, s, rechts, gehen, grasen, t, i) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(rechts ? s : -s, s);
+  ctx.strokeStyle = '#6b4226'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  for (const [lx, ph] of [[-10, 0], [-6, Math.PI], [7, Math.PI], [11, 0]]) {
+    const sx = gehen ? Math.sin(t * 12 + i + ph) * 4 : 0;
+    ctx.beginPath(); ctx.moveTo(lx, -15); ctx.lineTo(lx + sx, 0); ctx.stroke();
+  }
+  ctx.fillStyle = '#a3683a';
+  ctx.beginPath(); ctx.ellipse(1, -19, 14, 6.5, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#f3e7d3';                             // heller Spiegel am Hinterteil
+  ctx.beginPath(); ctx.arc(-12.5, -19, 3.2, 0, 2 * Math.PI); ctx.fill();
+  // Hals und Kopf: beim Grasen unten
+  const kx = grasen ? 19 : 17, ky = grasen ? -7 : -34;
+  ctx.strokeStyle = '#a3683a'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(10, -21); ctx.lineTo(kx - 3, ky + 2); ctx.stroke();
+  ctx.fillStyle = '#9a6034';
+  ctx.beginPath(); ctx.ellipse(kx, ky, 5.2, 3.3, grasen ? 1.1 : 0.35, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#2b1a0e';
+  ctx.beginPath(); ctx.arc(kx + (grasen ? 2 : 4.5), ky + (grasen ? 4 : 1.2), 1.1, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#8a5530';                             // Ohren
+  ctx.beginPath(); ctx.ellipse(kx - 3, ky - (grasen ? 1 : 5), 1.6, 3.4, -0.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _b8aWurm(ctx, cx, cy, k, t, trocken) {
+  const w = trocken ? 0.35 : 0.9, ph = k * 2.1;
+  const kopf = u => ({ x: cx + 30 * Math.sin(w * u + ph), y: cy + 6 * Math.sin(2 * w * u + ph * 1.3) + trocken * 5 });
+  ctx.strokeStyle = trocken ? '#b87474' : '#d98989'; ctx.lineWidth = 3.6; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  for (let j = 0; j <= 10; j++) {
+    const p = kopf(t - j * 0.12 / w * 0.9);
+    const y = Math.max(_B8A_SOIL + 8, Math.min(246, p.y));
+    if (j === 0) ctx.moveTo(p.x, y); else ctx.lineTo(p.x, y);
+  }
+  ctx.stroke();
+  const h = kopf(t);
+  ctx.fillStyle = '#e8a0a0';
+  ctx.beginPath(); ctx.arc(h.x, Math.max(_B8A_SOIL + 8, Math.min(246, h.y)), 2.1, 0, 2 * Math.PI); ctx.fill();
+}
+function _b8aDraw(ctx, cv) {
+  if (!_b8a) return;
+  const W = cv.width, H = cv.height, t = _b8a.t, f = _b8a.fehlt;
+  const trocken = _b8aTrocken(), welk = _b8aWelk(), laub = _b8aLaub(), schlecht = _b8aSchlecht();
+  ctx.clearRect(0, 0, W, H);
+  // Himmel
+  const bg = ctx.createLinearGradient(0, 0, 0, 150);
+  bg.addColorStop(0, _b8aMisch('#b9dcf3', '#efdcae', trocken * 0.7));
+  bg.addColorStop(1, _b8aMisch('#e8f4ea', '#f6ecd0', trocken * 0.7));
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, 150);
+  // Sonne seitlich, mit langsam drehenden Strahlen
+  ctx.save(); ctx.translate(402, 20); ctx.rotate(t * 0.15);
+  ctx.strokeStyle = 'rgba(250,204,21,0.75)'; ctx.lineWidth = 2;
+  for (let k = 0; k < 10; k++) { const a = k * Math.PI / 5; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 15, Math.sin(a) * 15); ctx.lineTo(Math.cos(a) * 22, Math.sin(a) * 22); ctx.stroke(); }
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(0, 0, 11, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+  // Wolke: grau mit Regen, ohne Regen hell und klein
+  const wx = 150 + Math.sin(t * 0.25) * 8, regen = f !== 'Regen';
+  ctx.fillStyle = regen ? '#94a3b8' : 'rgba(255,255,255,0.9)';
+  const wk = regen ? 1 : 0.75;
+  for (const [dx, dy, r] of [[-30, 6, 14], [-12, -2, 18], [10, -4, 19], [30, 5, 14], [0, 8, 16]]) {
+    ctx.beginPath(); ctx.arc(wx + dx * wk, 30 + dy * wk, r * wk, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Waldboden (Fläche zwischen den Bäumen)
+  const fb = ctx.createLinearGradient(0, 136, 0, _B8A_SOIL);
+  fb.addColorStop(0, _b8aMisch('#93b25c', '#d8c890', trocken));
+  fb.addColorStop(1, _b8aMisch('#6f9144', '#c9b27a', trocken));
+  ctx.fillStyle = fb; ctx.fillRect(0, 136, W, _B8A_SOIL - 136);
+  // Laub auf dem Waldboden: sonst ein wenig, ohne Regenwürmer immer mehr
+  const nLaub = 10 + Math.floor(laub * 90);
+  for (let k = 0; k < nLaub; k++) {
+    const lx = (k * 97.3) % W, ly = 140 + ((k * 53.7) % (_B8A_SOIL - 142));
+    ctx.fillStyle = ['#b45309', '#a16207', '#c2410c', '#92400e'][k % 4];
+    ctx.beginPath(); ctx.ellipse(lx, ly, 3.4, 1.8, k, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Risse im trockenen Waldboden
+  if (trocken > 0.2) {
+    ctx.strokeStyle = 'rgba(120,90,50,' + (0.6 * trocken).toFixed(2) + ')'; ctx.lineWidth = 1;
+    for (let k = 0; k < 8; k++) {
+      const x0 = 18 + k * 52, y0 = 146 + (k % 3) * 14;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + 7, y0 + 3); ctx.lineTo(x0 + 12, y0 - 1); ctx.lineTo(x0 + 19, y0 + 2); ctx.stroke();
+    }
+  }
+  // Buchen
+  _B8A_BAEUME.forEach((b, i) => _b8aBaum(ctx, b, i, t, welk, schlecht));
+  // Regen
+  if (regen) {
+    ctx.strokeStyle = 'rgba(59,130,246,0.6)'; ctx.lineWidth = 1.3;
+    for (let k = 0; k < 34; k++) {
+      const x = wx - 42 + ((k * 37) % 88), y = 44 + ((t * 170 + k * 53) % 142);
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 1.5, y + 7); ctx.stroke();
+    }
+  }
+  // Kräuter hinten, Rehe hinten, Kräuter vorne, Rehe vorne
+  let gez = 0;
+  const reh = (i) => {
+    const w = _b8aWeg(i);
+    if (w >= 1) return;
+    const r = _B8A_REHE[i], x = _b8aRehX(i);
+    const geht = w > 0;
+    const rechts = geht ? r.x >= 210 : Math.cos(t * 0.35 + i * 1.7) > 0;
+    const grasen = !geht && Math.sin(t * 0.55 + i * 2.3) > 0.35;
+    _b8aReh(ctx, x, r.y, r.s, rechts, geht || Math.abs(Math.cos(t * 0.35 + i * 1.7)) > 0.3, grasen, t, i);
+    gez++;
+  };
+  _B8A_KRAUT.forEach(([x, y, g], i) => { if (y < 170) _b8aKraut(ctx, x, y, g * 0.8 * (1 + 0.12 * (f === 'nichts' ? _b8a.jahr / 3 : 0)), i, t, welk, schlecht); });
+  for (let i = 0; i < 5; i++) reh(i);
+  _B8A_KRAUT.forEach(([x, y, g], i) => { if (y >= 170) _b8aKraut(ctx, x, y, g * (1 + 0.12 * (f === 'nichts' ? _b8a.jahr / 3 : 0)), i, t, welk, schlecht); });
+  for (let i = 5; i < 10; i++) reh(i);
+  _b8a.gezeichnet = gez;
+
+  // Bodenschnitt: Laubschicht, Humus, Erde
+  const dicke = 3 + 13 * laub;
+  const sb = ctx.createLinearGradient(0, _B8A_SOIL, 0, H);
+  sb.addColorStop(0, _b8aMisch('#4a2f1a', '#c8a672', trocken));
+  sb.addColorStop(1, _b8aMisch('#7a5535', '#dcc596', trocken));
+  ctx.fillStyle = sb; ctx.fillRect(0, _B8A_SOIL, W, H - _B8A_SOIL);
+  ctx.fillStyle = '#a0612b'; ctx.fillRect(0, _B8A_SOIL, W, dicke);
+  for (let k = 0; k < 20 + laub * 60; k++) {
+    const lx = (k * 23.9) % W, ly = _B8A_SOIL + 1 + ((k * 7.3) % Math.max(1, dicke - 1));
+    ctx.fillStyle = ['#c2410c', '#b45309', '#d97706', '#92400e'][k % 4];
+    ctx.beginPath(); ctx.ellipse(lx, ly, 4, 1.6, (k % 5) * 0.3, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Risse im Bodenschnitt
+  if (trocken > 0) {
+    ctx.strokeStyle = 'rgba(92,64,36,' + (0.85 * trocken).toFixed(2) + ')'; ctx.lineWidth = 1.4;
+    const n = Math.ceil(trocken * 9);
+    for (let k = 0; k < n; k++) {
+      const x0 = 22 + k * 46, tief = (14 + (k % 3) * 9) * trocken;
+      ctx.beginPath(); ctx.moveTo(x0, _B8A_SOIL + dicke);
+      ctx.lineTo(x0 + 4, _B8A_SOIL + dicke + tief * 0.35); ctx.lineTo(x0 - 2, _B8A_SOIL + dicke + tief * 0.7); ctx.lineTo(x0 + 3, _B8A_SOIL + dicke + tief);
+      ctx.stroke();
+    }
+  }
+  // Feuchte Punkte im Boden, wenn es regnet
+  if (regen) {
+    ctx.fillStyle = 'rgba(147,197,253,0.55)';
+    for (let k = 0; k < 12; k++) { ctx.beginPath(); ctx.arc(15 + k * 35, _B8A_SOIL + 14 + (k % 3) * 11 + Math.sin(t + k) * 0.8, 1.4, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  // Regenwürmer
+  if (f !== 'Regenwürmer') _B8A_WURM.forEach(([x, y], k) => _b8aWurm(ctx, x, y, k, t, trocken));
+  ctx.strokeStyle = 'rgba(40,25,10,0.5)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, _B8A_SOIL); ctx.lineTo(W, _B8A_SOIL); ctx.stroke();
+
+  // Was fehlt? – kleine Aufschrift am fehlenden Teil
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  if (f === 'Regen') { ctx.fillStyle = '#334155'; ctx.fillText('kein Regen', wx, 58); }
+  if (f === 'Regenwürmer') { ctx.fillStyle = '#fef3c7'; ctx.fillText('keine Regenwürmer', 170, 245); }
+
+  // Jahreszähler oben links
+  const jz = Math.min(3, Math.floor(_b8a.jahr + 1e-9));
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 6, 6, 64, 46, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Jahr', 12, 20);
+  const klapp = _b8a.laeuft ? Math.max(0, 1 - (_b8a.jahr % 1) * 6) : 0;
+  ctx.globalAlpha = 1 - klapp * 0.7;
+  ctx.font = '700 24px sans-serif'; ctx.fillText(String(jz), 44, 44 - klapp * 5);
+  ctx.globalAlpha = 1;
+  for (let k = 1; k <= 3; k++) {
+    ctx.fillStyle = k <= jz ? '#16a34a' : '#cbd5e1';
+    ctx.beginPath(); ctx.arc(14 + (k - 1) * 9, 42, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (_b8a.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(_b8a.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 8, 64);
+  }
+
+  // Die Welle: Lichtpaket von Station zu Station, Spur bleibt kurz stehen
+  if (_b8a.nach >= 0 && _b8a.schritt > 0) {
+    const st = _b8aStationen(), n = st.length, col = _b8aWelleFarbe();
+    const q = Math.min(n - 1, (_b8a.nach - 0.5) / _B8A_LEG);
+    const ende = 0.5 + (n - 1) * _B8A_LEG;
+    const a = _b8aK(1 - (_b8a.nach - ende - 2.2) / 0.8);
+    if (a > 0) {
+      ctx.save();
+      ctx.globalAlpha = 0.75 * a; ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.setLineDash([6, 5]); ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(st[0].x, st[0].y);
+      const k = Math.floor(q);
+      for (let j = 1; j <= k; j++) ctx.lineTo(st[j].x, st[j].y);
+      let px = st[k].x, py = st[k].y;
+      if (k < n - 1) { const u = q - k; px = st[k].x + (st[k + 1].x - st[k].x) * u; py = st[k].y + (st[k + 1].y - st[k].y) * u; ctx.lineTo(px, py); }
+      ctx.stroke(); ctx.setLineDash([]);
+      if (k < n - 1) {                                   // das Lichtpaket selbst
+        ctx.globalAlpha = a; ctx.fillStyle = '#fff7d6'; ctx.shadowColor = col; ctx.shadowBlur = 14;
+        ctx.beginPath(); ctx.arc(px, py, 6, 0, 2 * Math.PI); ctx.fill();
+      }
+      ctx.restore();
+      // der fehlende Teil: ruhiger Lichtkranz (0,8 Hz)
+      if (f !== 'nichts') _bioFxLeuchten(ctx, st[0].x, st[0].y, 20, t, '245,158,11');
+    }
+  }
+  _bioFxAlleDraw(ctx, _b8a.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIO 8 FOERDER – bo2 „Licht unter den Buchen“ (Kennung bio-waldlicht)
+// Ein Buchenwald im Schnitt: Himmel mit Sonne, drei Buchen, Waldboden mit
+// Buschwindroeschen, darunter die Erde mit der Wurzel. Zwei Lichtmesser:
+// „oben“ auf einem Mast ueber den Kronen, „Boden“ am Waldboden.
+// Das Kind stellt den Monat um (Maerz, Mai, Juli) und liest ab.
+// Modellwerte (Lehrerteil, Skala 0 bis 100; 100 = volle Sonne ueber den
+// Baeumen im Juli): Maerz oben 60 / Boden 50 · blueht; Mai oben 90 /
+// Boden 20 · Blaetter werden gelb; Juli oben 100 / Boden 5 · nur die Wurzel
+// im Boden, oben nichts zu sehen. Die Werte stehen sofort nach dem Umstellen.
+// Leben: Licht faellt als sichtbare Strahlen mit wandernden Lichtpunkten
+// von der Sonne her. Im Laub bleibt ein Teil der Lichtpunkte haengen – genau
+// der Anteil 1 − Boden/oben (Fehlerverteilung, kein Zufall): im Maerz 1 von 6,
+// im Juli 19 von 20. Die Kronen belauben sich weich, die Blaetter wiegen sich.
+// Aha (nach der Beobachtung, _bioFx): Im Juli leuchtet erst der Lichtmesser
+// „oben“ auf (goldener Ring, Funken), dann der Lichtmesser „Boden“ (grauer
+// Ring); eine ruhige Bildzeile im Wald sagt „Oben volle Sonne – unten kaum
+// Licht!“. Im Maerz oeffnet sich das Buschwindroeschen im Licht (Funken),
+// beim Wechsel Maerz → Mai fallen seine weissen Bluetenblaetter ab.
+// Keine Tabellenzahl und kein Lueckenwort im Aha-Text, nichts blinkt, kein Ton.
+// ════════════════════════════════════════════════════════════════════════
+let _b8b = null;
+const _B8B_MONATE = ['März', 'Mai', 'Juli'];
+const _B8B_M = {
+  'März': { oben: 60, boden: 50, laub: 0, sx: 34, sy: 58, winkel: 0.42,
+            bl: 'blüht', ziel: { bluete: 1, kraut: 1, gelb: 0 } },
+  'Mai':  { oben: 90, boden: 20, laub: 0.55, sx: 60, sy: 34, winkel: 0.28,
+            bl: 'Blätter werden gelb', ziel: { bluete: 0, kraut: 1, gelb: 1 } },
+  'Juli': { oben: 100, boden: 5, laub: 1, sx: 86, sy: 20, winkel: 0.16,
+            bl: 'nur die Wurzel im Boden, oben nichts zu sehen', ziel: { bluete: 0, kraut: 0, gelb: 1 } }
+};
+const _B8B_BODEN_Y = 204;          // Oberkante Waldboden
+const _B8B_BAEUME = [[56, 96], [150, 88], [246, 98]];   // Stamm-x, Kronenmitte-y
+const _B8B_MAST = 352;             // x des Mastes fuer den Lichtmesser „oben“
+const _B8B_SO = { x: 352, y: 56 }; // Messkopf „oben“
+const _B8B_SB = { x: 214, y: 200 };// Messkopf „Boden“
+const _B8B_ROE = [[112, 1], [86, 0.7], [134, 0.75], [178, 0.65], [196, 0.8]]; // Buschwindroeschen
+
+function _b8bZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+// Aeste (Linien) und Blattplaetze je Baum – einmal ausgewuerfelt, dann fest.
+function _b8bKulisse() {
+  const z = _b8bZufall(8117);
+  const aeste = [], blaetter = [], streu = [];
+  function ast(x, y, w, len, dicke, tiefe, b) {
+    const x2 = x + Math.cos(w) * len, y2 = y + Math.sin(w) * len;
+    aeste.push([x, y, x2, y2, dicke]);
+    if (tiefe <= 0) {
+      for (let k = 0; k < 7; k++) {
+        blaetter.push({ x: x2 + (z() - 0.5) * 22, y: y2 + (z() - 0.5) * 16, dreh: z() * 6.28,
+                        rang: z(), b, ph: z() * 6.28 });
+      }
+      return;
+    }
+    const n = tiefe > 2 ? 2 : 3;
+    for (let k = 0; k < n; k++) {
+      const nw = w + (k - (n - 1) / 2) * 0.55 + (z() - 0.5) * 0.3;
+      ast(x2, y2, nw, len * (0.68 + z() * 0.12), dicke * 0.62, tiefe - 1, b);
+    }
+  }
+  _B8B_BAEUME.forEach(([x, cy], b) => {
+    const top = cy + 30;
+    aeste.push([x, _B8B_BODEN_Y + 2, x, top, 9]);            // Stamm
+    ast(x, top, -Math.PI / 2 - 0.5, 22, 5, 3, b);
+    ast(x, top, -Math.PI / 2 + 0.5, 22, 5, 3, b);
+    ast(x, top, -Math.PI / 2, 26, 5, 3, b);
+  });
+  for (let i = 0; i < 90; i++) streu.push([z() * 420, _B8B_BODEN_Y - 1 + z() * 6, z() * 6.28, z()]);
+  return { aeste, blaetter, streu };
+}
+
+function _b8bInit() {
+  _b8b = {
+    t: 0, monat: 'März', letzt: '',
+    von: { laub: 0, sx: 34, sy: 58, winkel: 0.42, boden: 50, oben: 60 },
+    u: 1,                                   // Uebergang 0..1 zum neuen Monat
+    bluete: 0, kraut: 0.2, gelb: 0,         // Buschwindroeschen (wachsen auf den Start zu)
+    pakete: [], flecken: [], acc: 0, takt: 0, zahl: { los: 0, unten: 0, haengen: 0 },
+    fx: { teile: [] }, kap: null, aha: 0, schritt: 0, offen: false,
+    kul: _b8bKulisse()
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b8bJetzt() {
+  // der gerade gezeichnete (weich uebergehende) Zustand
+  const a = _b8b.von, b = _B8B_M[_b8b.monat], u = _bioFxEase.sanft(_bioFxKlemme(_b8b.u));
+  const m = k => a[k] + (b[k] - a[k]) * u;
+  return { laub: m('laub'), sx: m('sx'), sy: m('sy'), winkel: m('winkel'), boden: m('boden'), oben: m('oben') };
+}
+function _b8bMonat(m) {
+  if (!_b8b || !_B8B_M[m]) return;
+  if (m !== _b8b.monat) {
+    const alt = _b8b.monat;
+    _b8b.von = _b8bJetzt();
+    _b8b.monat = m; _b8b.u = 0;
+    _b8b.zahl = { los: 0, unten: 0, haengen: 0 }; _b8b.acc = 0;
+    if (alt === 'März' && _b8b.bluete > 0.3) {          // Bluetenblaetter fallen ab
+      _B8B_ROE.forEach(([x, s]) => _bioFxBlaetter(_b8b.fx.teile, x, _B8B_BODEN_Y - 30 * s, 3,
+        ['#ffffff', '#f8f4ff', '#fdf6e3']));
+    }
+  }
+  _b8b.kap = null; _b8b.aha = 0; _b8b.schritt = 0; _b8b.offen = false;
+  _b8bStatus();
+}
+function _b8bNeu() {
+  if (!_b8b) return;
+  _b8bInit();
+  _b8bStatus();
+}
+function _b8bKnoepfe() {
+  if (!_b8b || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-b8b]').forEach(b => {
+      const d = b.getAttribute('data-b8b');
+      if (b.classList) b.classList.toggle('primary', d === _b8b.monat);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _b8bHTML() {
+  const k = m => `<button class="sim-btn" data-b8b="${m}" onclick="_b8bMonat('${m}')">${m}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel Licht kommt am Waldboden an?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Buchenwald im Schnitt. Ein Lichtmesser steht oben über den Baumkronen, einer unten am Waldboden. Stelle den Monat ein und lies ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8b-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Monat</span>
+          ${_B8B_MONATE.map(k).join('\n          ')}
+          <button class="sim-btn" onclick="_b8bNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Lichtmesser und Buschwindröschen</div>
+        <div class="lmp-status on" id="_b8b-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Skala 0 bis 100. 100 heißt: volle Sonne über den Bäumen im Juli.</div>
+        <div class="fpm-note" style="margin-top:8px">Das Buschwindröschen wächst am Waldboden unter den Buchen.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b8bZeile() {
+  const M = _B8B_M[_b8b.monat];
+  return 'Monat: ' + _b8b.monat + ' · Licht oben: ' + M.oben + ' · Licht am Boden: ' + M.boden +
+         ' · Buschwindröschen: ' + M.bl;
+}
+function _b8bStatus() {
+  if (!_b8b) return;
+  const M = _B8B_M[_b8b.monat];
+  _b8b.letzt = _b8bZeile();
+  const el = document.getElementById('_b8b-status');
+  if (el) {
+    el.innerHTML = '<b>Monat: ' + _b8b.monat + '</b><br>' +
+      'Licht oben: ' + M.oben + '<br>' +
+      'Licht am Boden: ' + M.boden + '<br>' +
+      'Buschwindröschen: ' + M.bl;
+  }
+  _b8bKnoepfe();
+}
+
+/* ── Lichtpunkte ───────────────────────────────────────────────────────── */
+// Ein Lichtpunkt faellt schraeg von der Sonne her. In der Krone entscheidet
+// die Fehlerverteilung: Von „oben“ Punkten kommen genau „Boden“ unten an.
+function _b8bPaket(j) {
+  const w = j.winkel, z = Math.random();
+  const x0 = -60 + z * 330;
+  const tiefe = 72 + Math.random() * 52;                   // wo er die Krone trifft
+  _b8b.acc += j.boden / j.oben;
+  let durch = false;
+  if (_b8b.acc >= 1 - 1e-9) { durch = true; _b8b.acc -= 1; }
+  _b8b.zahl.los++;
+  _b8b.pakete.push({ x: x0, y: -4, vx: Math.sin(w) * 150, vy: Math.cos(w) * 150,
+                     halt: durch ? _B8B_BODEN_Y : tiefe, durch, alter: 0, aus: -1 });
+}
+function _b8bPaketeUpdate(dt, j) {
+  _b8b.takt += dt * j.oben * 0.14;                         // mehr Licht oben = mehr Punkte
+  while (_b8b.takt >= 1) { _b8b.takt -= 1; _b8bPaket(j); }
+  for (let i = _b8b.pakete.length - 1; i >= 0; i--) {
+    const p = _b8b.pakete[i];
+    p.alter += dt;
+    if (p.aus >= 0) {
+      p.aus += dt;
+      if (p.aus > 0.35) _b8b.pakete.splice(i, 1);
+      continue;
+    }
+    p.x += p.vx * dt; p.y += p.vy * dt;
+    if (p.y >= p.halt) {
+      p.y = p.halt; p.aus = 0;
+      if (p.durch) {
+        _b8b.zahl.unten++;
+        if (_b8b.flecken.length < 60) _b8b.flecken.push({ x: p.x, alter: 0 });
+      } else _b8b.zahl.haengen++;
+    }
+  }
+  for (let i = _b8b.flecken.length - 1; i >= 0; i--) {
+    _b8b.flecken[i].alter += dt;
+    if (_b8b.flecken[i].alter > 1.2) _b8b.flecken.splice(i, 1);
+  }
+}
+
+function _b8bUpdate(dt) {
+  if (!_b8b) return;
+  dt = _bioFxDt(dt);
+  _b8b.t += dt;
+  if (_b8b.u < 1) {
+    _b8b.u = Math.min(1, _b8b.u + dt / 1.2);
+    if (_b8b.u >= 1) _b8b.von = _b8bJetzt();
+  }
+  const j = _b8bJetzt();
+  // Buschwindroeschen waechst weich auf seinen Zustand zu
+  const ziel = _B8B_M[_b8b.monat].ziel, r = dt / 1.3;
+  for (const k of ['bluete', 'kraut', 'gelb']) {
+    const d = ziel[k] - _b8b[k];
+    _b8b[k] += Math.sign(d) * Math.min(Math.abs(d), r);
+  }
+  _b8bPaketeUpdate(dt, j);
+  _b8bAha(dt);
+  if (_b8b.kap) { _b8b.kap.alter += dt; if (_b8b.kap.alter >= _b8b.kap.dauer) _b8b.kap = null; }
+  _bioFxAlleUpdate(_b8b.fx, dt);
+  if (_b8bZeile() !== _b8b.letzt) _b8bStatus();
+}
+
+/* ── Aha-Effekte (nur nach der Beobachtung) ─────────────────────────────── */
+function _b8bAha(dt) {
+  if (_b8b.u < 1) return;
+  _b8b.aha += dt;
+  const fx = _b8b.fx.teile, a = _b8b.aha;
+  if (_b8b.monat === 'Juli') {
+    if (_b8b.schritt === 0 && a >= 0.4) {
+      _b8b.schritt = 1;
+      _bioFxWelle(fx, _B8B_SO.x, _B8B_SO.y, 'rgba(250,204,21,0.95)', 34);
+      _bioFxFunken(fx, _B8B_SO.x, _B8B_SO.y, 8, ['#fde047', '#fff7c2', '#ffffff']);
+    }
+    if (_b8b.schritt === 1 && a >= 1.1) {
+      _b8b.schritt = 2;
+      _bioFxWelle(fx, _B8B_SB.x, _B8B_SB.y, 'rgba(148,163,184,0.95)', 30);
+    }
+    if (_b8b.schritt === 2 && a >= 1.7) {
+      _b8b.schritt = 3;
+      _b8b.kap = { text: 'Oben volle Sonne – unten kaum Licht!', alter: 0, dauer: 3.4 };
+    }
+  } else if (_b8b.monat === 'März') {
+    if (_b8b.schritt === 0 && _b8b.bluete >= 0.99) {
+      _b8b.schritt = 1; _b8b.offen = true;
+      const [x, s] = _B8B_ROE[0];
+      _bioFxFunken(fx, x, _B8B_BODEN_Y - 34 * s, 7, ['#ffffff', '#fff3b0', '#fde047']);
+      _bioFxWelle(fx, x, _B8B_BODEN_Y - 34 * s, 'rgba(255,243,176,0.95)', 24);
+    }
+  } else if (_b8b.schritt === 0 && a >= 0.4) {
+    _b8b.schritt = 1;
+    _bioFxWelle(fx, _B8B_SB.x, _B8B_SB.y, 'rgba(148,163,184,0.9)', 24);
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b8bMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// Ein Buschwindroeschen bei (x, Boden), Groesse s.
+function _b8bRoeschen(ctx, x, s, t, i) {
+  const y = _B8B_BODEN_Y, kr = _b8b.kraut, bl = _b8b.bluete, ge = _b8b.gelb;
+  if (kr < 0.02) return;
+  const h = 34 * s * kr, wieg = Math.sin(t * 1.3 + i) * 1.5 * kr;
+  const gruen = _b8bMisch('#3f8f3a', '#c9b44a', ge);
+  ctx.save();
+  ctx.strokeStyle = gruen; ctx.lineWidth = 1.6 * s; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + wieg * 0.5, y - h * 0.6, x + wieg, y - h); ctx.stroke();
+  // drei geteilte Blaetter im Quirl
+  ctx.fillStyle = gruen;
+  for (let k = 0; k < 3; k++) {
+    ctx.save(); ctx.translate(x + wieg * 0.6, y - h * 0.62);
+    ctx.rotate(-Math.PI / 2 + (k - 1) * 1.15 + ge * 0.5 * (k - 1));
+    ctx.beginPath(); ctx.ellipse(0, -7 * s * kr, 2.6 * s * kr, 7 * s * kr, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  // Bluete: sechs weisse Bluetenblaetter, oeffnen sich mit bl
+  if (bl > 0.02) {
+    const bx = x + wieg, by = y - h - 2 * s;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = 'rgba(190,160,200,0.8)'; ctx.lineWidth = 0.6;
+    for (let k = 0; k < 6; k++) {
+      ctx.save(); ctx.translate(bx, by);
+      ctx.rotate(k * Math.PI / 3 + 0.2);
+      const r = (2 + 4.5 * bl) * s;
+      ctx.beginPath(); ctx.ellipse(0, -r * 0.8, 2.3 * s * (0.5 + 0.5 * bl), r * 0.75, 0, 0, 2 * Math.PI);
+      ctx.fill(); ctx.stroke(); ctx.restore();
+    }
+    ctx.fillStyle = '#facc15';
+    ctx.beginPath(); ctx.arc(bx, by, 2 * s * bl, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _b8bMesser(ctx, x, y, name, zeile, wert, t) {
+  const w = 128, h = 38;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.94)'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(name, x + 6, y + 11);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(zeile, x + 6, y + 25);
+  // Balken 0..100
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(x + 6, y + 29, w - 12, 5);
+  ctx.fillStyle = '#f59e0b'; ctx.fillRect(x + 6, y + 29, (w - 12) * wert / 100, 5);
+  ctx.restore();
+}
+function _b8bDraw(ctx, cv) {
+  if (!_b8b) return;
+  const W = cv.width, H = cv.height, t = _b8b.t, j = _b8bJetzt(), M = _B8B_M[_b8b.monat];
+  const BY = _B8B_BODEN_Y;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel
+  const hi = ctx.createLinearGradient(0, 0, 0, BY);
+  hi.addColorStop(0, _b8bMisch('#9cc9ec', '#5aa9e6', j.oben / 100 - 0.4));
+  hi.addColorStop(1, '#e8f4fb');
+  ctx.fillStyle = hi; ctx.fillRect(0, 0, W, BY);
+  // Sonne
+  ctx.save();
+  const sg = ctx.createRadialGradient(j.sx, j.sy, 4, j.sx, j.sy, 30);
+  sg.addColorStop(0, 'rgba(255,236,150,0.9)'); sg.addColorStop(1, 'rgba(255,236,150,0)');
+  ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(j.sx, j.sy, 30, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fcd34d'; ctx.beginPath(); ctx.arc(j.sx, j.sy, 8 + 3 * j.oben / 100, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+
+  // Lichtstrahlen: breite, weiche Baender; unter den Kronen so hell, wie Licht ankommt
+  const dx = Math.tan(j.winkel), kante = 118;
+  ctx.save();
+  for (let k = 0; k < 7; k++) {
+    const x0 = -40 + k * 48 + Math.sin(t * 0.4 + k) * 3;
+    const flim = 0.85 + 0.15 * Math.sin(t * 0.9 + k * 1.7);
+    ctx.fillStyle = 'rgba(255,240,170,' + (0.10 + 0.14 * j.oben / 100) * flim + ')';
+    ctx.beginPath(); ctx.moveTo(x0, 0); ctx.lineTo(x0 + 16, 0);
+    ctx.lineTo(x0 + 16 + dx * kante, kante); ctx.lineTo(x0 + dx * kante, kante); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = 'rgba(255,240,170,' + (0.36 * j.boden / 50) * flim + ')';
+    ctx.beginPath(); ctx.moveTo(x0 + dx * kante, kante); ctx.lineTo(x0 + 16 + dx * kante, kante);
+    ctx.lineTo(x0 + 16 + dx * BY, BY); ctx.lineTo(x0 + dx * BY, BY); ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+
+  // Schatten unter dem Laub: je weniger Licht am Boden, desto dunkler
+  ctx.fillStyle = 'rgba(20,40,25,' + (0.62 * (1 - j.boden / 50)).toFixed(3) + ')';
+  ctx.fillRect(0, 118, 300, BY - 118);
+
+  // Mast mit Lichtmesser „oben“
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(_B8B_MAST, BY); ctx.lineTo(_B8B_MAST, _B8B_SO.y); ctx.stroke();
+
+  // Buchen: Kronenschatten, Aeste, Blaetter
+  const kul = _b8b.kul;
+  if (j.laub > 0.01) {
+    ctx.fillStyle = 'rgba(40,90,40,' + (0.75 * j.laub * j.laub).toFixed(3) + ')';
+    for (const [x, cy] of _B8B_BAEUME) { ctx.beginPath(); ctx.ellipse(x, cy, 66, 40, 0, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  ctx.strokeStyle = '#6b5a4a'; ctx.lineCap = 'round';
+  for (const [x1, y1, x2, y2, d] of kul.aeste) {
+    ctx.lineWidth = d; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  }
+  const bf = _b8bMisch('#a6dc6a', '#2e6b2e', (j.laub - 0.45) / 0.55);
+  for (const b of kul.blaetter) {
+    if (b.rang > j.laub * 1.02) {
+      if (j.laub < 0.05 && b.rang < 0.25) {                // Knospen im Maerz
+        ctx.fillStyle = '#8a5a35'; ctx.beginPath(); ctx.arc(b.x, b.y, 1.3, 0, 2 * Math.PI); ctx.fill();
+      }
+      continue;
+    }
+    const g = 3 + 3 * j.laub, w = Math.sin(t * 1.4 + b.ph) * 0.25;
+    ctx.save(); ctx.translate(b.x + Math.sin(t * 1.1 + b.ph) * 0.8, b.y); ctx.rotate(b.dreh + w);
+    ctx.fillStyle = bf;
+    ctx.beginPath(); ctx.ellipse(0, 0, g, g * 0.55, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+
+  // Lichtpunkte
+  ctx.save();
+  for (const p of _b8b.pakete) {
+    let a = 1, farbe = '#fff6c4';
+    if (p.aus >= 0) { a = 1 - p.aus / 0.35; if (!p.durch) farbe = j.laub > 0.2 ? '#bef264' : '#fde68a'; }
+    ctx.globalAlpha = Math.max(0, a);
+    ctx.fillStyle = farbe; ctx.shadowColor = '#fde047'; ctx.shadowBlur = 6;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.aus >= 0 && !p.durch ? 2.6 : 2.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+
+  // Waldboden mit altem Laub, darunter die Erde im Schnitt
+  ctx.fillStyle = '#7a5a3a'; ctx.fillRect(0, BY, W, 8);
+  const eg = ctx.createLinearGradient(0, BY + 6, 0, H);
+  eg.addColorStop(0, '#5b4330'); eg.addColorStop(1, '#3b2b1f');
+  ctx.fillStyle = eg; ctx.fillRect(0, BY + 6, W, H - BY - 6);
+  for (const [x, y, d, f] of kul.streu) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(d);
+    ctx.fillStyle = f < 0.5 ? '#a0703f' : '#8c5e33';
+    ctx.beginPath(); ctx.ellipse(0, 0, 3.2, 1.6, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+  }
+  // Lichtflecken am Boden
+  for (const f of _b8b.flecken) {
+    const a = 0.55 * (1 - f.alter / 1.2);
+    ctx.fillStyle = 'rgba(255,240,170,' + a.toFixed(3) + ')';
+    ctx.beginPath(); ctx.ellipse(f.x, BY + 2, 7, 2.5, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Wurzel (Erdspross) des Buschwindroeschens – das ganze Jahr im Boden
+  ctx.save();
+  ctx.strokeStyle = '#c08a55'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(74, BY + 16); ctx.quadraticCurveTo(110, BY + 12, 204, BY + 17); ctx.stroke();
+  ctx.strokeStyle = '#d8b58a'; ctx.lineWidth = 0.8;
+  for (let k = 0; k < 14; k++) {
+    const x = 80 + k * 9, y = BY + 16;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + (k % 2 ? 3 : -3), y + 8 + (k % 3) * 2); ctx.stroke();
+  }
+  for (const [x] of _B8B_ROE) {                               // Verbindung zum Kraut
+    ctx.strokeStyle = '#c08a55'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x, BY + 15); ctx.lineTo(x, BY + 4); ctx.stroke();
+  }
+  ctx.fillStyle = '#f5e6d3'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Wurzel', 30, BY + 22);
+  ctx.restore();
+  // Buschwindroeschen
+  _B8B_ROE.forEach(([x, s], i) => _b8bRoeschen(ctx, x, s, t, i));
+  if (_b8b.offen && _b8b.monat === 'März') {
+    const puls = 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.5);
+    ctx.save(); ctx.globalAlpha = 0.25 + 0.15 * puls;
+    ctx.fillStyle = '#fff7c2';
+    ctx.beginPath(); ctx.arc(_B8B_ROE[0][0], BY - 36, 14, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+  }
+
+  // Messkoepfe und Anzeigen
+  ctx.save();
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(_B8B_SO.x, _B8B_SO.y, 6, Math.PI, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.fillRect(_B8B_SB.x - 7, _B8B_SB.y, 14, 5);
+  ctx.fillStyle = '#f8fafc';
+  ctx.beginPath(); ctx.arc(_B8B_SB.x, _B8B_SB.y, 5, Math.PI, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+  // Kabel vom Boden-Messkopf zur Anzeige
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(_B8B_SB.x + 7, _B8B_SB.y + 4); ctx.quadraticCurveTo(250, BY + 10, 288, BY + 22); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(_B8B_SO.x, _B8B_SO.y - 6); ctx.lineTo(_B8B_SO.x, 46); ctx.stroke();
+  ctx.restore();
+  _b8bMesser(ctx, 288, 6, 'Lichtmesser „oben“', 'Licht oben: ' + M.oben, M.oben, t);
+  _b8bMesser(ctx, 288, 208, 'Lichtmesser „Boden“', 'Licht am Boden: ' + M.boden, M.boden, t);
+
+  // Monat unten links
+  ctx.fillStyle = '#f8fafc'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Monat: ' + _b8b.monat, 12, H - 8);
+
+  // ruhige Bildzeile im Wald (Aha), weich ein- und ausgeblendet
+  if (_b8b.kap) {
+    const k = _b8b.kap;
+    const a = _bioFxKlemme(k.alter / 0.35) * (1 - _bioFxEase.sanft(_bioFxKlemme((k.alter - (k.dauer - 0.6)) / 0.6)));
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.font = '700 12px sans-serif';
+    const tw = ctx.measureText(k.text).width + 24, x = 146 - tw / 2, y = 140;
+    ctx.shadowColor = '#facc15'; ctx.shadowBlur = 12;
+    ctx.fillStyle = 'rgba(20,30,50,0.88)'; _bioFxRundRect(ctx, x, y, tw, 24, 12); ctx.fill();
+    ctx.shadowBlur = 0; ctx.strokeStyle = '#facc15'; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, x, y, tw, 24, 12); ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(k.text, 146, y + 12);
+    ctx.restore();
+  }
+  _bioFxAlleDraw(ctx, _b8b.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 8 FOERDER – bo3 „Drei Meisen, zwei Bäume“ (Kennung bio-nische)
+// Links eine Buche mit Boden, dicken Ästen und dünnen Zweigspitzen, in der
+// Mitte eine Fichte, rechts die Waage. Das Kind wählt EINE Meisenart und
+// drückt „▶ 1 Stunde beobachten“: Die Meise fliegt von der Waage in den
+// Wald und hinterlässt bei jeder Futtersuche einen Futterpunkt (Kohlmeise
+// Kreis, Blaumeise Dreieck, Tannenmeise Quadrat). Nach der Stunde fliegt sie
+// zurück auf die Waage, der Zeiger schwingt auf ihr Gewicht.
+// Fachlich (Modellwerte, Lehrerteil): je Art 20 Futterpunkte, 18 davon im
+// typischen Bereich – Kohlmeise Boden (11) und dicke Äste (7), Blaumeise
+// dünne Zweigspitzen der Buche (18), Tannenmeise Nadeln der Fichte (18).
+// Gewichte 18 g / 11 g / 9 g. Unter der schweren Kohlmeise biegt sich ein
+// dünner Zweig tief, sie muss flattern; die leichte Blaumeise hängt
+// kopfüber an der Zweigspitze, der Zweig gibt kaum nach (Angepasstheit).
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Bei „alle drei“ fliegen die
+// drei Meisen gleichzeitig, jede bleibt in ihrem Bereich, und alle drei
+// Futterbalken füllen sich gleich weit. Danach leuchten nacheinander die
+// drei Bereiche in den Artfarben auf – drei getrennte Flächen, die sich
+// nicht überdecken –, kleine Funken an den vollen Balken, ruhiger Streifen
+// „Alle drei Arten werden satt.“ Nichts blinkt, kein Ton, keine Wertung.
+// ════════════════════════════════════════════════════════════════════════
+let _b8c = null;
+const _B8C_ARTEN = ['kohl', 'blau', 'tanne'];
+const _B8C_NAME = { kohl: 'Kohlmeise', blau: 'Blaumeise', tanne: 'Tannenmeise', alle: 'alle drei' };
+const _B8C_GRAMM = { kohl: 18, blau: 11, tanne: 9 };
+const _B8C_FARBE = { kohl: '#d97706', blau: '#1d4ed8', tanne: '#7c3aed' };
+const _B8C_GROESSE = { kohl: 1.0, blau: 0.84, tanne: 0.78 };
+const _B8C_BER = { boden: 'Boden', dick: 'dicke Äste', spitze: 'dünne Zweigspitzen', nadel: 'Nadeln der Fichte' };
+// Modellverteilung: je Art 20 Futterpunkte, 18 im typischen Bereich
+const _B8C_VERT = {
+  kohl:  { boden: 11, dick: 7, spitze: 2 },
+  blau:  { spitze: 18, dick: 2 },
+  tanne: { nadel: 18, boden: 2 }
+};
+const _B8C_TYP = { kohl: ['boden', 'dick'], blau: ['spitze'], tanne: ['nadel'] };
+const _B8C_SATZ = { kohl: 'am Boden und an dicken Ästen', blau: 'an dünnen Zweigspitzen der Buche',
+                    tanne: 'zwischen den Nadeln der Fichte' };
+const _B8C_KURZ = { kohl: 'Boden und dicke Äste', blau: 'dünne Zweigspitzen der Buche',
+                    tanne: 'zwischen den Nadeln der Fichte' };
+const _B8C_DAUER = 10;          // s Bildschirmzeit = 60 Minuten
+const _B8C_FLUG = 0.18;         // s Flug zur nächsten Stelle (höchstens)
+// Verweildauer je Futterstelle (relativ): An einer Zweigspitze bleibt die
+// Kohlmeise länger (der Zweig biegt sich, sie flattert), die Blaumeise hängt
+// eine Weile kopfüber – so ist beides gut zu sehen.
+function _b8cGewicht(art, p) {
+  if (p.tip >= 0 && art === 'kohl') return 3;
+  if (p.tip >= 0 && art === 'blau') return 1.5;
+  return 1;
+}
+const _B8C_HEIM = 0.6;          // s Rückflug zur Waage
+const _B8C_OFF = { kohl: 0.1, blau: 0.1, tanne: 0.1 };
+const _B8C_OFF3 = { kohl: 0.02, blau: 0.15, tanne: 0.28 };
+// Buche: dicke Äste (x0,y0 am Stamm → x1,y1) und dünne Zweige (Ansatz → Spitze)
+const _B8C_AST = [[100, 150, 40, 125], [100, 140, 160, 118], [100, 110, 50, 82], [100, 100, 152, 76]];
+const _B8C_SPITZE = [[40, 125, 18, 116], [40, 125, 26, 100], [160, 118, 184, 110], [160, 118, 178, 93],
+                     [50, 82, 28, 68], [50, 82, 42, 52], [152, 76, 176, 62], [152, 76, 162, 46],
+                     [100, 62, 84, 34], [100, 62, 116, 32]];
+const _B8C_BIEG = { kohl: 11, blau: 3.5, tanne: 3 };   // px, so tief biegt sich ein dünner Zweig
+const _B8C_FX = 252;            // Stamm der Fichte
+
+function _b8cZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+// Die 20 Futterstellen einer Art (fest, damit jede Stunde gleich ausgeht).
+function _b8cErzeuge(art) {
+  const z = _b8cZufall({ kohl: 11, blau: 23, tanne: 37 }[art]);
+  const liste = [];
+  for (const [b, n] of Object.entries(_B8C_VERT[art])) for (let i = 0; i < n; i++) liste.push(b);
+  for (let i = liste.length - 1; i > 0; i--) { const j = Math.floor(z() * (i + 1)); [liste[i], liste[j]] = [liste[j], liste[i]]; }
+  if (!_B8C_TYP[art].includes(liste[0])) {
+    const k = liste.findIndex(b => _B8C_TYP[art].includes(b)); [liste[0], liste[k]] = [liste[k], liste[0]];
+  }
+  const tipps = [0, 5, 2, 8, 4, 7, 1, 9, 3, 6];
+  let nt = { kohl: 0, blau: 3, tanne: 6 }[art];
+  return liste.map(b => {
+    const p = { ber: b, x: 0, y: 0, tip: -1 };
+    if (b === 'boden') {
+      const [a, e] = art === 'tanne' ? [214, 292] : [22, 188];
+      p.x = a + z() * (e - a); p.y = 218 + z() * 16;
+    } else if (b === 'dick') {
+      const a = _B8C_AST[Math.floor(z() * 4)], s = 0.35 + z() * 0.55;
+      p.x = a[0] + (a[2] - a[0]) * s; p.y = a[1] + (a[3] - a[1]) * s - 3;
+    } else if (b === 'spitze') {
+      p.tip = tipps[nt++ % 10];
+      p.x = (z() - 0.5) * 3; p.y = (z() - 0.5) * 3;        // Versatz zur Zweigspitze
+    } else {
+      const k = Math.floor(z() * 6), u = 0.4 + z() * 0.5, top = 30 + k * 28;
+      const hw = (14 + k * 7) * u * 0.8;
+      let dx = (z() * 2 - 1) * hw; if (Math.abs(dx) < 5) dx = dx < 0 ? -5 - z() * 3 : 5 + z() * 3;
+      p.x = _B8C_FX + dx; p.y = top + u * 40;
+    }
+    return p;
+  });
+}
+
+function _b8cInit() {
+  const z = _b8cZufall(5);
+  const laub = [];
+  for (let i = 0; i < 46; i++) laub.push([8 + z() * 300, 216 + z() * 30, z() * 6.28, z()]);
+  _b8c = {
+    t: 0, art: 'kohl', phase: 'bereit', lt: 0, nach: 0, schritt: 0,
+    punkte: { kohl: _b8cErzeuge('kohl'), blau: _b8cErzeuge('blau'), tanne: _b8cErzeuge('tanne') },
+    bieg: _B8C_SPITZE.map(() => 0), zeiger: 18, glow: { kohl: -1, blau: -1, tanne: -1 },
+    laub, key: '', fx: { teile: [] }, plan: {}
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b8cFxLeer() {
+  _b8c.fx = { teile: [] }; _b8c.schritt = 0; _b8c.nach = 0;
+  _b8c.glow = { kohl: -1, blau: -1, tanne: -1 };
+}
+function _b8cArt(a) {
+  if (!_b8c || !_B8C_NAME[a]) return;
+  _b8c.art = a; _b8c.phase = 'bereit'; _b8c.lt = 0; _b8cFxLeer();
+  _b8c.zeiger = a === 'alle' ? 0 : _B8C_GRAMM[a];
+  _b8cStatus(); _b8cKnoepfe();
+}
+function _b8cStart() {
+  if (!_b8c || _b8c.phase === 'lauf') return;
+  _b8cFxLeer(); _b8c.phase = 'lauf'; _b8c.lt = 0;
+  _b8cStatus(); _b8cKnoepfe();
+}
+function _b8cNeu() {
+  if (!_b8c) return;
+  _b8cArt('kohl');
+}
+/* Sprungmarke: Art wählen und gleich das Ende der Stunde zeigen. */
+function _b8cMarke(a) {
+  if (!_b8c || !_B8C_NAME[a]) return;
+  _b8c.art = a; _b8cFxLeer();
+  _b8c.phase = 'fertig'; _b8c.lt = _B8C_DAUER; _b8c.nach = _B8C_HEIM - 0.05; _b8c.zeiger = 0;
+  _b8cStatus(); _b8cKnoepfe();
+}
+function _b8cKnoepfe() {
+  if (!_b8c || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-b8c]').forEach(b => {
+      const d = b.dataset ? b.dataset.b8c : b.getAttribute('data-b8c');
+      if (b.classList) b.classList.toggle('primary', d === _b8c.art);
+    });
+    const los = document.getElementById('_b8c-los');
+    if (los && los.classList) los.classList.toggle('primary', _b8c.phase !== 'lauf');
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _b8cHTML() {
+  const k = a => `<button class="sim-btn" data-b8c="${a}" onclick="_b8cArt('${a}')">${_B8C_NAME[a]}</button>`;
+  const m = a => `<button class="sim-btn" onclick="_b8cMarke('${a}')">${_B8C_NAME[a]} · nach 1 Stunde</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Drei Meisen, zwei Bäume</h3>
+    <div class="fpm-note" style="margin-top:2px">Links eine Buche, in der Mitte eine Fichte, rechts die Waage. Wähle eine Meisenart. Dann drücke „▶ 1 Stunde beobachten“. Jeder Futterpunkt zeigt: Hier hat die Meise Futter gesucht.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8c-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Meisenart</span>
+          ${k('kohl')}${k('blau')}${k('tanne')}${k('alle')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8c-los" onclick="_b8cStart()">▶ 1 Stunde beobachten</button>
+          <button class="sim-btn" onclick="_b8cNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was zeigt die Beobachtung?</div>
+        <div class="lmp-status on" id="_b8c-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_b8c-waage" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('kohl')}${m('blau')}${m('tanne')}${m('alle')}
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Futterpunkte: Kohlmeise <b>●</b> Kreis, Blaumeise <b>▲</b> Dreieck, Tannenmeise <b>■</b> Quadrat. Die vier Bereiche heißen <b>Boden</b>, <b>dicke Äste</b>, <b>dünne Zweigspitzen</b> und <b>Nadeln der Fichte</b>.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Zeitplan und Lage der Vögel ───────────────────────────────────────── */
+function _b8cArtenJetzt() { return _b8c.art === 'alle' ? _B8C_ARTEN : [_b8c.art]; }
+function _b8cOff(art) { return (_b8c.art === 'alle' ? _B8C_OFF3 : _B8C_OFF)[art]; }
+// Wie viele Futterpunkte hat die Art bis jetzt?
+function _b8cAnzahl(art) {
+  if (_b8c.phase === 'bereit') return 0;
+  if (_b8c.phase === 'fertig') return 20;
+  const plan = _b8cPlan(art);
+  let n = 0;
+  while (n < 20 && plan[n].an <= _b8c.lt) n++;
+  return n;
+}
+// Zeitplan einer Art: Abflug und Ankunft an jeder der 20 Stellen.
+function _b8cPlan(art) {
+  const key = art + (_b8c.art === 'alle' ? '3' : '1');
+  if (_b8c.plan[key]) return _b8c.plan[key];
+  const pts = _b8c.punkte[art], off = _b8cOff(art);
+  const g = pts.map(p => _b8cGewicht(art, p)), summe = g.reduce((a, b) => a + b, 0);
+  const einheit = (_B8C_DAUER - 0.3 - off) / summe;
+  let t0 = off;
+  const plan = g.map(w => {
+    const d = w * einheit, fl = Math.min(_B8C_FLUG, 0.45 * einheit);
+    const e = { ab: t0, an: t0 + fl, ende: t0 + d };
+    t0 += d; return e;
+  });
+  _b8c.plan[key] = plan;
+  return plan;
+}
+function _b8cAnkunft(art, i) { return _b8cPlan(art)[i].an; }
+function _b8cHeim(art) {
+  if (_b8c.art === 'alle') return { x: 322, y: { kohl: 62, blau: 106, tanne: 150 }[art] };
+  return { x: 361, y: 57 };
+}
+// Wo liegt ein Futterpunkt gerade (dünne Zweige biegen sich mit)?
+function _b8cOrt(p) {
+  if (p.tip < 0) return { x: p.x, y: p.y };
+  const s = _B8C_SPITZE[p.tip];
+  return { x: s[2] + p.x + _b8cWiege(p.tip), y: s[3] + p.y + _b8c.bieg[p.tip] };
+}
+function _b8cWiege(j) { return Math.sin(_b8c.t * 1.3 + j * 1.7) * 0.8; }
+function _b8cAufWaage() {
+  return _b8c.art !== 'alle' && (_b8c.phase === 'bereit' || (_b8c.phase === 'fertig' && _b8c.nach >= _B8C_HEIM));
+}
+function _b8cLage(art) {
+  const heim = _b8cHeim(art), pts = _b8c.punkte[art];
+  const ruhe = { x: heim.x, y: heim.y, flug: false, dir: Math.sin(_b8c.t * 0.7 + art.length) > -0.3 ? -1 : 1,
+                 kopfueber: false, flattern: false, tip: -1, heim: true };
+  if (_b8c.phase === 'bereit') return ruhe;
+  if (_b8c.phase === 'fertig') {
+    const u = _bioFxKlemme(_b8c.nach / _B8C_HEIM);
+    if (u >= 1) return ruhe;
+    const a = _b8cOrt(pts[19]);
+    return _b8cBogen(a, heim, _bioFxEase.sanft(u));
+  }
+  const plan = _b8cPlan(art);
+  if (_b8c.lt < plan[0].ab) return ruhe;
+  let i = 0;
+  while (i < 19 && plan[i + 1].ab <= _b8c.lt) i++;
+  const von = i === 0 ? heim : _b8cOrt(pts[i - 1]), p = pts[i], nach = _b8cOrt(p);
+  if (_b8c.lt < plan[i].an) return _b8cBogen(von, nach, _bioFxEase.sanft((_b8c.lt - plan[i].ab) / (plan[i].an - plan[i].ab)));
+  const dir = nach.x >= von.x ? 1 : -1;
+  return { x: nach.x, y: nach.y, flug: false, dir, tip: p.tip,
+           kopfueber: p.tip >= 0 && art === 'blau', flattern: p.tip >= 0 && art === 'kohl', heim: false };
+}
+function _b8cBogen(a, b, u) {
+  const d = Math.hypot(b.x - a.x, b.y - a.y);
+  const cx = (a.x + b.x) / 2, cy = Math.min(a.y, b.y) - 10 - d * 0.15;
+  const x = (1 - u) * (1 - u) * a.x + 2 * (1 - u) * u * cx + u * u * b.x;
+  const y = (1 - u) * (1 - u) * a.y + 2 * (1 - u) * u * cy + u * u * b.y;
+  return { x, y, flug: true, dir: b.x >= a.x ? 1 : -1, kopfueber: false, flattern: false, tip: -1, heim: false };
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b8cZaehle(art) {
+  const z = { boden: 0, dick: 0, spitze: 0, nadel: 0 };
+  _b8c.punkte[art].slice(0, _b8cAnzahl(art)).forEach(p => z[p.ber]++);
+  return z;
+}
+function _b8cMinute() { return Math.min(60, Math.floor(_b8c.lt / _B8C_DAUER * 60 + 1e-9)); }
+function _b8cSchluessel() {
+  return [_b8c.phase, _b8c.art, _b8c.phase === 'lauf' ? _b8cMinute() : '', _b8cAufWaage()].join('|');
+}
+function _b8cStatus() {
+  if (!_b8c) return;
+  _b8c.key = _b8cSchluessel();
+  const a = _b8c.art, name = _B8C_NAME[a];
+  let h;
+  if (_b8c.phase === 'bereit') {
+    h = a === 'alle'
+      ? `<b>Meisenart: alle drei</b><br>Kohlmeise, Blaumeise und Tannenmeise suchen gleichzeitig Futter.<br>Drücke „▶ 1 Stunde beobachten“.`
+      : `<b>Meisenart: ${name}</b><br>Die ${name} sitzt auf der Waage.<br>Drücke „▶ 1 Stunde beobachten“.`;
+  } else if (_b8c.phase === 'lauf') {
+    const m = _b8cMinute();
+    if (a === 'alle') {
+      const n = _B8C_ARTEN.map(x => _b8cAnzahl(x));
+      h = `<b>alle drei · Minute ${m} von 60</b><br>Bis jetzt ${n[0] + n[1] + n[2]} Futterpunkte: ` +
+          `Kohlmeise ${n[0]}, Blaumeise ${n[1]}, Tannenmeise ${n[2]}.`;
+    } else {
+      const n = _b8cAnzahl(a);
+      h = `<b>${name} · Minute ${m} von 60</b><br>Bis jetzt ${n} ${n === 1 ? 'Futterpunkt' : 'Futterpunkte'}. Die ${name} sucht Futter.`;
+    }
+  } else if (a === 'alle') {
+    h = `<b>alle drei · 1 Stunde beobachtet · 60 Futterpunkte</b><br>Die Punktgruppen liegen in drei getrennten Bereichen.` +
+        `<br>Ergebnis: drei getrennte Bereiche · Alle drei Arten werden satt.`;
+  } else {
+    h = `<b>${name} · 1 Stunde beobachtet · 20 Futterpunkte</b><br>Die meisten liegen ${_B8C_SATZ[a]}.` +
+        `<br>Ergebnis: ${_B8C_KURZ[a]} · ${_B8C_GRAMM[a]} g`;
+  }
+  const el = document.getElementById('_b8c-status');
+  if (el) el.innerHTML = h;
+  let w;
+  if (a === 'alle') w = 'Waage: Kohlmeise: 18 g · Blaumeise: 11 g · Tannenmeise: 9 g';
+  else if (_b8cAufWaage()) w = 'Waage: ' + name + ': ' + _B8C_GRAMM[a] + ' g';
+  else w = 'Waage: leer · Die ' + name + ' ist im Wald.';
+  const ew = document.getElementById('_b8c-waage');
+  if (ew) ew.textContent = w;
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b8cUpdate(dt) {
+  if (!_b8c) return;
+  dt = _bioFxDt(dt);
+  _b8c.t += dt;
+  if (_b8c.phase === 'lauf') {
+    _b8c.lt += dt;
+    if (_b8c.lt >= _B8C_DAUER) { _b8c.lt = _B8C_DAUER; _b8c.phase = 'fertig'; _b8c.nach = 0; _b8c.schritt = 0; _b8cKnoepfe(); }
+  } else if (_b8c.phase === 'fertig') {
+    _b8c.nach += dt;
+    _b8cAha();
+  }
+  // dünne Zweige: biegen sich unter der Meise, die gerade daran sitzt
+  const ziel = _B8C_SPITZE.map(() => 0);
+  if (_b8c.phase === 'lauf') for (const art of _b8cArtenJetzt()) {
+    const l = _b8cLage(art);
+    if (!l.flug && l.tip >= 0) ziel[l.tip] = Math.max(ziel[l.tip], _B8C_BIEG[art]);
+  }
+  for (let j = 0; j < ziel.length; j++) _b8c.bieg[j] += (ziel[j] - _b8c.bieg[j]) * Math.min(1, dt * 9);
+  // Waage: Zeiger schwingt weich auf das Gewicht
+  const soll = _b8cAufWaage() ? _B8C_GRAMM[_b8c.art] : 0;
+  _b8c.zeiger += (soll - _b8c.zeiger) * Math.min(1, dt * 5);
+  _bioFxAlleUpdate(_b8c.fx, dt);
+  if (_b8cSchluessel() !== _b8c.key) _b8cStatus();
+}
+// Nach der Stunde: erst sehen, dann bestätigt der Effekt.
+function _b8cAha() {
+  const fx = _b8c.fx, t = _b8c.nach, a = _b8c.art;
+  if (a !== 'alle') {
+    if (_b8c.schritt === 0 && t >= _B8C_HEIM + 0.35) {
+      _b8c.schritt = 1;
+      _bioFxFunken(fx.teile, 361, 118, 6, ['#fff3b0', '#ffffff', _B8C_FARBE[a]]);
+      _bioFxWelle(fx.teile, 361, 60, '#fde68a', 30);
+    }
+    if (_b8c.schritt === 1 && t >= _B8C_HEIM + 0.7) {
+      _b8c.schritt = 2; _b8c.glow[a] = t;
+      _b8cBereichWellen(a);
+    }
+    return;
+  }
+  const reihe = ['kohl', 'blau', 'tanne'];
+  if (_b8c.schritt < 3 && t >= _B8C_HEIM + 0.1 + _b8c.schritt * 0.45) {
+    const art = reihe[_b8c.schritt];
+    _b8c.glow[art] = t; _b8cBereichWellen(art);
+    _b8c.schritt++;
+  }
+  if (_b8c.schritt === 3 && t >= _B8C_HEIM + 1.6) {
+    _b8c.schritt = 4;
+    for (const art of reihe) {
+      const y = _b8cHeim(art).y - 4;
+      _bioFxFunken(fx.teile, 406, y, 5, ['#fff3b0', '#ffffff', _B8C_FARBE[art]]);
+    }
+    _bioFxBanner(fx, 'Alle drei Arten werden satt.', 2.8, '#bbf7d0');
+  }
+}
+function _b8cBereichWellen(art) {
+  const l = _b8c.fx.teile, f = _B8C_FARBE[art];
+  if (art === 'kohl') { _bioFxWelle(l, 105, 226, f, 60); _bioFxWelle(l, 100, 112, f, 45); }
+  else if (art === 'blau') { for (const s of _B8C_SPITZE) _bioFxWelle(l, s[2], s[3], f, 12); }
+  else _bioFxWelle(l, _B8C_FX, 120, f, 60);
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b8cMarker(ctx, art, x, y, k) {
+  const r = 3.3 * (k || 1);
+  ctx.fillStyle = _B8C_FARBE[art]; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  if (art === 'kohl') ctx.arc(x, y, r, 0, 2 * Math.PI);
+  else if (art === 'blau') { ctx.moveTo(x, y - r * 1.25); ctx.lineTo(x + r * 1.15, y + r * 0.85); ctx.lineTo(x - r * 1.15, y + r * 0.85); ctx.closePath(); }
+  else ctx.rect(x - r * 0.95, y - r * 0.95, r * 1.9, r * 1.9);
+  ctx.fill(); ctx.stroke();
+}
+// Eine Meise; (x,y) = Füße. dir = Blickrichtung, kopfueber = hängt unter dem Zweig.
+function _b8cVogel(ctx, art, x, y, o) {
+  const s = _B8C_GROESSE[art], t = _b8c.t;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale((o.dir || 1) * s, o.kopfueber ? -s : s);
+  const pick = !o.flug && !o.heim ? Math.max(0, Math.sin(t * 12 + art.length)) * 1.4 : 0;
+  // Beine
+  if (!o.flug) {
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-1.5, -4); ctx.lineTo(-2, 0); ctx.moveTo(1.5, -4); ctx.lineTo(2, 0); ctx.stroke();
+  }
+  const ruecken = { kohl: '#6b8e23', blau: '#86a85a', tanne: '#6b7280' }[art];
+  const bauch = { kohl: '#facc15', blau: '#fde047', tanne: '#e8dcc0' }[art];
+  const fluegel = { kohl: '#64748b', blau: '#3b82f6', tanne: '#4b5563' }[art];
+  // Schwanz
+  ctx.fillStyle = art === 'blau' ? '#2563eb' : '#475569';
+  ctx.beginPath(); ctx.moveTo(-6, -9); ctx.lineTo(-16, -7); ctx.lineTo(-15, -10.5); ctx.closePath(); ctx.fill();
+  // Körper und Bauch
+  ctx.fillStyle = ruecken;
+  ctx.beginPath(); ctx.ellipse(0, -9, 8, 5.5, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = bauch;
+  ctx.beginPath(); ctx.ellipse(1.5, -7.2, 6, 3.8, 0, 0, 2 * Math.PI); ctx.fill();
+  if (art === 'kohl') { ctx.fillStyle = '#111827'; ctx.fillRect(2.2, -11, 1.6, 7); }
+  // Flügel: im Flug und beim Flattern schlagen sie
+  const schlag = o.flug ? Math.sin(t * 16) : (o.flattern ? Math.sin(t * 13) : 0);
+  ctx.save(); ctx.translate(-1, -10); ctx.rotate(-0.15 - schlag * 0.9);
+  ctx.fillStyle = fluegel;
+  ctx.beginPath(); ctx.ellipse(-3, 0, 6, 3, 0, 0, 2 * Math.PI); ctx.fill();
+  if (art === 'tanne') { ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.moveTo(-6, -0.5); ctx.lineTo(-1, -0.5); ctx.moveTo(-6, 1.3); ctx.lineTo(-1, 1.3); ctx.stroke(); }
+  ctx.restore();
+  // Kopf
+  ctx.save(); ctx.translate(7, -14 + pick);
+  if (art === 'blau') {
+    ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(0, 0, 4.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(0, 0, 4.2, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+    ctx.strokeStyle = '#111827'; ctx.lineWidth = 0.9;
+    ctx.beginPath(); ctx.moveTo(-3.5, -0.3); ctx.lineTo(4, -0.8); ctx.stroke();
+  } else {
+    ctx.fillStyle = '#111827'; ctx.beginPath(); ctx.arc(0, 0, 4.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.ellipse(0.5, 1.2, 2.4, 1.8, 0, 0, 2 * Math.PI); ctx.fill();
+    if (art === 'tanne') { ctx.beginPath(); ctx.arc(-3.6, -1.6, 1.2, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(1.6, -1, 0.8, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#374151';
+  ctx.beginPath(); ctx.moveTo(3.8, -0.8); ctx.lineTo(6.6, 0); ctx.lineTo(3.8, 0.8); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  ctx.restore();
+}
+function _b8cSchild(ctx, text, x, y, align, farbe) {
+  ctx.save();
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = align || 'left';
+  const w = ctx.measureText ? ctx.measureText(text).width : text.length * 5.5;
+  const x0 = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+  ctx.fillStyle = 'rgba(255,255,255,0.82)';
+  _bioFxRundRect(ctx, x0 - 3, y - 10, w + 6, 13, 4); ctx.fill();
+  ctx.fillStyle = farbe || '#1f2937'; ctx.fillText(text, x, y);
+  ctx.restore();
+}
+// Leuchtender Bereich einer Art (nach der Beobachtung)
+function _b8cBereich(ctx, art, al) {
+  if (al <= 0) return;
+  const f = _B8C_FARBE[art];
+  ctx.save();
+  ctx.globalAlpha = al; ctx.strokeStyle = f; ctx.fillStyle = f; ctx.lineCap = 'round';
+  if (art === 'kohl') {
+    ctx.lineWidth = 2.5; ctx.globalAlpha = al * 0.9;
+    _bioFxRundRect(ctx, 16, 212, 180, 30, 8); ctx.stroke();
+    ctx.globalAlpha = al * 0.14; ctx.fill();
+    ctx.globalAlpha = al * 0.32; ctx.lineWidth = 13;
+    for (const a of _B8C_AST) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(a[2], a[3]); ctx.stroke(); }
+  } else if (art === 'blau') {
+    ctx.lineWidth = 2.2;
+    _B8C_SPITZE.forEach((s, j) => {
+      ctx.globalAlpha = al * 0.9; ctx.beginPath(); ctx.arc(s[2] + _b8cWiege(j), s[3] + _b8c.bieg[j], 9, 0, 2 * Math.PI); ctx.stroke();
+      ctx.globalAlpha = al * 0.14; ctx.fill();
+    });
+  } else {
+    ctx.lineWidth = 2.5; ctx.globalAlpha = al * 0.9;
+    ctx.beginPath(); ctx.moveTo(_B8C_FX, 22); ctx.lineTo(_B8C_FX + 53, 212); ctx.lineTo(_B8C_FX - 53, 212); ctx.closePath(); ctx.stroke();
+    ctx.globalAlpha = al * 0.14; ctx.fill();
+  }
+  ctx.restore();
+}
+function _b8cDraw(ctx, cv) {
+  if (!_b8c) return;
+  const W = cv.width, H = cv.height, t = _b8c.t;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel, Wolke, ferner Wald
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#d9f0fb'); bg.addColorStop(1, '#eef7e6');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const wx = ((t * 7) % 420) - 60;
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  for (const [dx, dy, r] of [[0, 0, 11], [12, -4, 13], [26, 0, 10]]) { ctx.beginPath(); ctx.arc(wx + dx, 40 + dy, r, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = '#cfe3c4';
+  ctx.beginPath(); ctx.moveTo(0, 212);
+  for (let x = 0; x <= 305; x += 15) ctx.lineTo(x, 170 + Math.sin(x * 0.09) * 8 + (x % 30 ? 6 : 0));
+  ctx.lineTo(305, 212); ctx.closePath(); ctx.fill();
+  // Boden mit Laub
+  ctx.fillStyle = '#b08954'; ctx.fillRect(0, 211, 305, H - 211);
+  ctx.fillStyle = '#9a7443'; ctx.fillRect(0, 211, 305, 3);
+  for (const [x, y, w, f] of _b8c.laub) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(w);
+    ctx.fillStyle = f < 0.5 ? '#c2873f' : '#8f6230';
+    ctx.beginPath(); ctx.ellipse(0, 0, 3.4, 1.6, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+  }
+  // Buche: Laubkrone hinten, dann Stamm, dicke Äste, dünne Zweige
+  ctx.fillStyle = 'rgba(120,180,90,0.40)';
+  for (const [x, y, r] of [[60, 100, 34], [140, 92, 34], [100, 60, 32], [70, 60, 24], [132, 56, 24], [100, 110, 30]]) {
+    ctx.beginPath(); ctx.arc(x + Math.sin(t * 0.9 + x) * 0.8, y, r, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#8f949b';
+  ctx.beginPath(); ctx.moveTo(92, 212); ctx.lineTo(96, 62); ctx.lineTo(104, 62); ctx.lineTo(109, 212); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#8f949b'; ctx.lineCap = 'round';
+  for (const a of _B8C_AST) { ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(a[2], a[3]); ctx.stroke(); }
+  _B8C_SPITZE.forEach((s, j) => {
+    const tx = s[2] + _b8cWiege(j), ty = s[3] + _b8c.bieg[j];
+    const mx = (s[0] + s[2]) / 2, my = (s[1] + s[3]) / 2 + _b8c.bieg[j] * 0.25;
+    ctx.strokeStyle = '#7b6a55'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(s[0], s[1]); ctx.quadraticCurveTo(mx, my, tx, ty); ctx.stroke();
+    ctx.fillStyle = '#5a9e3c';
+    for (const [dx, dy, w] of [[-4, -3, 0.6], [4, -2, -0.5], [0, 3, 0.2]]) {
+      ctx.save(); ctx.translate(tx + dx, ty + dy); ctx.rotate(w + Math.sin(t * 1.4 + j + dx) * 0.12);
+      ctx.beginPath(); ctx.ellipse(0, 0, 3.6, 2, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+    }
+  });
+  // Fichte
+  ctx.fillStyle = '#7c5a3a'; ctx.fillRect(_B8C_FX - 4, 40, 8, 172);
+  for (let k = 0; k < 6; k++) {
+    const top = 30 + k * 28, hw = 14 + k * 7, sw = Math.sin(t * 0.8 + k) * 0.8;
+    ctx.fillStyle = k % 2 ? '#2f6b3f' : '#2a5f37';
+    ctx.beginPath(); ctx.moveTo(_B8C_FX + sw * 0.5, top - (k ? 0 : 6)); ctx.lineTo(_B8C_FX + hw + sw, top + 40); ctx.lineTo(_B8C_FX - hw + sw, top + 40); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = 'rgba(20,60,30,0.6)'; ctx.lineWidth = 0.7;
+    for (let q = -hw + 6; q < hw - 4; q += 7) { ctx.beginPath(); ctx.moveTo(_B8C_FX + q * 0.6 + sw, top + 30); ctx.lineTo(_B8C_FX + q + sw, top + 39); ctx.stroke(); }
+  }
+  // Bereiche leuchten nach der Beobachtung
+  for (const art of _B8C_ARTEN) if (_b8c.glow[art] >= 0) _b8cBereich(ctx, art, 0.62 * _bioFxEase.raus(_bioFxKlemme((_b8c.nach - _b8c.glow[art]) / 0.6)));
+  // Beschriftung der vier Bereiche
+  const fertig1 = _b8c.phase === 'fertig' && _b8c.art !== 'alle';
+  const zahl = fertig1 ? _b8cZaehle(_b8c.art) : null;
+  const schild = (b, x, y, al) => _b8cSchild(ctx, _B8C_BER[b] + (zahl ? '  ' + zahl[b] : ''), x, y, al);
+  ctx.strokeStyle = 'rgba(31,41,55,0.5)'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(40, 17); ctx.lineTo(42, 46); ctx.stroke();
+  schild('spitze', 4, 14, 'left');
+  schild('dick', 118, 172, 'left');
+  schild('nadel', _B8C_FX, 12, 'center');
+  schild('boden', 4, 247, 'left');
+  // Uhr: ein Zeiger läuft in der Stunde einmal herum
+  const ux = 182, uy = 18, ur = 9;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const wink = -Math.PI / 2 + 2 * Math.PI * (_b8c.lt / _B8C_DAUER);
+  if (_b8c.lt > 0) { ctx.fillStyle = 'rgba(56,189,248,0.35)'; ctx.beginPath(); ctx.moveTo(ux, uy); ctx.arc(ux, uy, ur - 1, -Math.PI / 2, wink); ctx.closePath(); ctx.fill(); }
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(wink) * (ur - 2), uy + Math.sin(wink) * (ur - 2)); ctx.stroke();
+  // Futterpunkte
+  for (const art of _b8cArtenJetzt()) {
+    const n = _b8cAnzahl(art);
+    for (let i = 0; i < n; i++) {
+      const o = _b8cOrt(_b8c.punkte[art][i]);
+      const alt = _b8c.phase === 'lauf' ? _b8c.lt - _b8cAnkunft(art, i) : 9;
+      _b8cMarker(ctx, art, o.x, o.y, 1 + 0.7 * (1 - _bioFxKlemme(alt / 0.25)));
+    }
+  }
+  // Seitenfeld rechts
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 308, 4, 108, 242, 8); ctx.fill(); ctx.stroke();
+  ctx.textAlign = 'center'; ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif';
+  if (_b8c.art !== 'alle') {
+    const a = _b8c.art;
+    ctx.fillText('Waage', 361, 18);
+    // Schale, Gehäuse, Zeigerskala 0–20 g
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(334, 58); ctx.lineTo(388, 58); ctx.stroke();
+    ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(361, 58); ctx.lineTo(361, 64); ctx.stroke();
+    ctx.fillStyle = '#e5e7eb'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+    _bioFxRundRect(ctx, 331, 64, 60, 42, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(361, 101, 24, Math.PI, 2 * Math.PI); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+    for (let g = 0; g <= 20; g += 2) {
+      const w = Math.PI + g / 20 * Math.PI, r1 = g % 10 ? 20 : 18;
+      ctx.beginPath(); ctx.moveTo(361 + Math.cos(w) * r1, 101 + Math.sin(w) * r1); ctx.lineTo(361 + Math.cos(w) * 23, 101 + Math.sin(w) * 23); ctx.stroke();
+    }
+    ctx.fillStyle = '#334155'; ctx.font = '8px sans-serif';
+    ctx.fillText('0', 346, 99); ctx.fillText('10', 361, 92); ctx.fillText('20', 376, 99);
+    const zw = Math.PI + Math.max(0, Math.min(20, _b8c.zeiger)) / 20 * Math.PI;
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.8;
+    ctx.beginPath(); ctx.moveTo(361, 101); ctx.lineTo(361 + Math.cos(zw) * 21, 101 + Math.sin(zw) * 21); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif';
+    const ruhig = _b8cAufWaage() && Math.abs(_b8c.zeiger - _B8C_GRAMM[a]) < 0.4;
+    if (ruhig) ctx.fillText(_B8C_NAME[a] + ': ' + _B8C_GRAMM[a] + ' g', 361, 122);
+    else if (!_b8cAufWaage()) { ctx.fillStyle = '#64748b'; ctx.fillText('Waage leer', 361, 122); }
+    // Futterbalken
+    const f = _b8cAnzahl(a) / 20;
+    ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif'; ctx.fillText('Futter in 1 Stunde', 361, 142);
+    ctx.fillStyle = '#e2e8f0'; _bioFxRundRect(ctx, 316, 147, 90, 10, 4); ctx.fill();
+    if (f > 0) { ctx.fillStyle = _B8C_FARBE[a]; _bioFxRundRect(ctx, 316, 147, 90 * f, 10, 4); ctx.fill(); }
+    ctx.strokeStyle = '#15803d'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(406, 144); ctx.lineTo(406, 160); ctx.stroke();
+    ctx.fillStyle = '#15803d'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('satt', 406, 170);
+  } else {
+    ctx.fillText('Futter in 1 Stunde', 361, 18);
+    ctx.strokeStyle = '#15803d'; ctx.lineWidth = 1.2; ctx.setLineDash && ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(406, 34); ctx.lineTo(406, 156); ctx.stroke();
+    ctx.setLineDash && ctx.setLineDash([]);
+    ctx.fillStyle = '#15803d'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right'; ctx.fillText('satt', 406, 31);
+    for (const art of _B8C_ARTEN) {
+      const y = _b8cHeim(art).y, f = _b8cAnzahl(art) / 20;
+      ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+      ctx.fillText(_B8C_NAME[art], 338, y - 13);
+      ctx.fillStyle = '#e2e8f0'; _bioFxRundRect(ctx, 338, y - 9, 68, 9, 4); ctx.fill();
+      if (f > 0) { ctx.fillStyle = _B8C_FARBE[art]; _bioFxRundRect(ctx, 338, y - 9, 68 * f, 9, 4); ctx.fill(); }
+    }
+  }
+  // Zeichenerklärung
+  ctx.textAlign = 'left'; ctx.font = '10px sans-serif';
+  _B8C_ARTEN.forEach((art, k) => {
+    const y = 192 + k * 17, an = _b8c.art === 'alle' || _b8c.art === art;
+    ctx.globalAlpha = an ? 1 : 0.4;
+    _b8cMarker(ctx, art, 322, y - 3, 1);
+    ctx.fillStyle = '#0f172a'; ctx.font = (an ? '700 ' : '') + '10px sans-serif';
+    ctx.fillText(_B8C_NAME[art], 332, y + 1);
+    ctx.globalAlpha = 1;
+  });
+  // Meisen
+  for (const art of _b8cArtenJetzt()) {
+    const l = _b8cLage(art);
+    if (!l.heim) {                       // heller Schein: die Meise bleibt vor Laub und Nadeln sichtbar
+      ctx.save(); ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.beginPath(); ctx.ellipse(l.x, l.y + (l.kopfueber ? 9 : -9), 13, 10, 0, 0, 2 * Math.PI); ctx.fill(); ctx.restore();
+    }
+    _b8cVogel(ctx, art, l.x, l.y, l);
+  }
+  _bioFxAlleDraw(ctx, _b8c.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · VAN HELMONT: DIE WEIDE IM KÜBEL   (Förderheft Bio 8 · bo4)
+// Eine junge Weide steht 5 Jahre in einem Kübel unter einem Glaskasten.
+// Links wiegt eine Waage den Baum, rechts eine Waage die (getrocknete) Erde.
+// Werte (Lehrerteil): Wasser + normale Luft → Baum 2 kg → 76 kg, Erde 91 kg,
+// nur 57 g leichter (van Helmonts überlieferte Zahlen: 5 Pfund Weide,
+// 200 Pfund Erde). Modellwerte: ohne Kohlenstoffdioxid bleibt der Baum bei
+// 2 kg (wächst nicht), ohne Wasser 1 kg (vertrocknet); Erde je 0 g leichter.
+// Kohlenstoffdioxid ist unsichtbar – hier als kleine graue Punkte sichtbar
+// gemacht. Beim Wachsen strömen sie aus der Luft in die Blätter.
+// Aha (nach Jahr 5, Wasser + normale Luft): Die Baum-Waage leuchtet auf;
+// ein gestrichelter „Geister-Rand“ zeigt, wie leer der Kübel wäre, wenn das
+// Holz aus der Erde käme – dann leuchtet die Erd-Waage, die fast stehen
+// geblieben ist, und die Punkte strömen sichtbar in die Krone:
+// „Woher kommt das viele Holz?“ (Frage, keine Antwort).
+// Effekte aus _bioFx (kurz, ruhig, kein Blinken, keine Wertung).
+// ═══════════════════════════════════════════════════════
+let _b8d = null;
+const _B8D_START = { giessen: 'ja', luft: 'normal' };
+const _B8D_WORT = { ja: 'ja', nein: 'nein', normal: 'normale Luft', ohne: 'ohne Kohlenstoffdioxid' };
+const _B8D_JAHR_S = 2;                 // 1 Jahr = 2 Sekunden Zeitraffer
+const _B8D_GEW = [1, 2, 3, 4, 5];      // Zuwachs je Jahr (größerer Baum wächst mehr)
+const _B8D_GLAS = { x0: 110, x1: 310, y0: 24, y1: 204 };
+const _B8D_BODEN = 156;                // Oberkante der Erde im Kübel
+const _B8D_STAMM = 210;                // Stammfuß x
+const _B8D_KUEBEL = { x0: 162, x1: 258, y0: 150, y1: 202 };
+
+function _b8dInit() {
+  _b8d = { giessen: 'ja', luft: 'normal', jahr: 0, laeuft: false, t: 0, letzt: '',
+    fx: { teile: [] }, nach: -1, schritt: 0, geist: 0, geistA: 0, leuchte: [],
+    innen: [], aussen: [], tropfen: [], blattUhr: 0, sog: false };
+  _b8dLuftNeu();
+}
+function _b8dZufall(a, b) { return a + Math.random() * (b - a); }
+// Luftteilchen neu verteilen: innen nur bei normaler Luft.
+function _b8dLuftNeu() {
+  _b8d.innen = []; _b8d.aussen = [];
+  if (_b8d.luft === 'normal') {
+    for (let i = 0; i < 26; i++) _b8d.innen.push(_b8dTeilchenInnen());
+  }
+  for (let i = 0; i < 16; i++) {
+    _b8d.aussen.push({ x: _b8dZufall(6, 414), y: _b8dZufall(4, 19),
+      vx: _b8dZufall(-12, 12), vy: _b8dZufall(-4, 4) });
+  }
+}
+function _b8dTeilchenInnen() {
+  const G = _B8D_GLAS;
+  let x, y;
+  do { x = _b8dZufall(G.x0 + 6, G.x1 - 6); y = _b8dZufall(G.y0 + 6, G.y1 - 6); }
+  while (_b8dImKuebel(x, y));
+  return { x, y, vx: _b8dZufall(-10, 10), vy: _b8dZufall(-10, 10), ziel: null };
+}
+function _b8dImKuebel(x, y) {
+  const K = _B8D_KUEBEL;
+  return x > K.x0 - 3 && x < K.x1 + 3 && y > K.y0 - 3;
+}
+function _b8dFxLeer() {
+  _b8d.fx = { teile: [] }; _b8d.zeitlupe = null;
+  _b8d.nach = -1; _b8d.schritt = 0; _b8d.geist = 0; _b8d.geistA = 0;
+  _b8d.leuchte = []; _b8d.tropfen = []; _b8d.sog = false;
+}
+
+// ── Modell ────────────────────────────────────────────────
+function _b8dFall() {
+  if (_b8d.giessen === 'nein') return 'trocken';
+  return _b8d.luft === 'normal' ? 'gut' : 'ohne';
+}
+function _b8dKl(u) { return u < 0 ? 0 : u > 1 ? 1 : u; }
+// Anteil am Gesamtzuwachs (0..1) nach j Jahren; gewachsen wird im Sommer.
+function _b8dWachs(j) {
+  if (j >= 5) return 1;
+  const k = Math.floor(j), f = j - k;
+  let s = 0;
+  for (let i = 0; i < k; i++) s += _B8D_GEW[i];
+  s += _B8D_GEW[k] * _b8dKl(f / 0.55);
+  return s / 15;
+}
+function _b8dG() { return _b8dFall() === 'gut' ? _b8dWachs(_b8d.jahr) : 0; }
+function _b8dMasse() {
+  const f = _b8dFall(), j = _b8d.jahr;
+  if (f === 'gut') return 2 + 74 * _b8dWachs(j);
+  if (f === 'ohne') return 2;
+  return 2 - _b8dKl(j / 1.5);
+}
+function _b8dErdeWeniger() { return 57 * _b8dG(); }     // in Gramm
+function _b8dAngefangen() { return _b8d.laeuft || _b8d.jahr > 0; }
+function _b8dBaumText() { return 'Baum: ' + Math.round(_b8dMasse()) + ' kg'; }
+function _b8dErdeText() {
+  if (!_b8dAngefangen()) return 'Erde: 91 kg';
+  return 'Erde: 91 kg · ' + Math.round(_b8dErdeWeniger()) + ' g leichter als am Anfang';
+}
+function _b8dJahrZahl() { return Math.floor(_b8d.jahr + 1e-9); }
+function _b8dZeile() {
+  if (!_b8dAngefangen()) return 'Jahr 0 · Die junge Weide steht im Kübel. Drücke „▶ 5 Jahre warten“.';
+  const k = _b8dJahrZahl(), f = _b8dFall();
+  if (f === 'gut') return 'Jahr ' + k + ' · Baum wächst gut';
+  if (f === 'ohne') return 'Jahr ' + k + ' · Baum wächst nicht';
+  return 'Jahr ' + k + ' · ' + (_b8d.jahr < 1 ? 'Die Erde trocknet aus' : 'Baum vertrocknet');
+}
+// Jahreszeit aus dem Bruchteil des Jahres (Jahr beginnt im Frühling).
+function _b8dBruch() {
+  if (!_b8dAngefangen() || _b8d.jahr >= 5) return 0.2;
+  return _b8d.jahr - Math.floor(_b8d.jahr);
+}
+function _b8dZeit() {
+  const b = _b8dBruch();
+  if (b < 0.1 || b >= 0.88) return 'Frühling';
+  if (b < 0.55) return 'Sommer';
+  if (b < 0.75) return 'Herbst';
+  return 'Winter';
+}
+// Laub: menge 0..1, gelb 0..1 (Herbst), braun 0..1 (vertrocknet)
+function _b8dLaub() {
+  if (_b8dFall() === 'trocken') {
+    const j = _b8dAngefangen() ? _b8d.jahr : 0;
+    return { menge: 1 - _b8dKl((j - 0.4) / 1.1), gelb: 0, braun: _b8dKl(j / 0.9) };
+  }
+  const b = _b8dBruch();
+  if (b < 0.55) return { menge: 1, gelb: 0, braun: 0 };
+  if (b < 0.75) { const u = (b - 0.55) / 0.2; return { menge: 1 - _b8dKl((u - 0.3) / 0.7), gelb: _b8dKl(u * 2), braun: 0 }; }
+  if (b < 0.88) return { menge: 0, gelb: 0, braun: 0 };
+  return { menge: (b - 0.88) / 0.12, gelb: 0, braun: 0 };
+}
+// Nimmt die Weide gerade Kohlenstoffdioxid auf?
+function _b8dNimmtAuf() {
+  if (_b8dFall() !== 'gut') return false;
+  if (_b8d.sog) return true;                       // Aha nach Jahr 5
+  return _b8d.laeuft && _b8dBruch() < 0.55;
+}
+function _b8dAbweichungen() {
+  return ['giessen', 'luft'].filter(k => _b8d[k] !== _B8D_START[k]);
+}
+
+// ── Form des Baumes ───────────────────────────────────────
+function _b8dForm() {
+  const g = _b8dG(), fv = Math.pow(g, 0.7);
+  const h = 38 + 80 * fv;
+  const cx = _B8D_STAMM + 4 * fv, cy = _B8D_BODEN - h * 0.72;
+  return { fv, h, cx, cy, rx: 18 + 58 * fv, ry: 12 + 24 * fv, top: cy - (12 + 24 * fv) * 0.9 };
+}
+// Zielpunkt in der Krone für Teilchen i
+function _b8dKronenPunkt(i) {
+  const F = _b8dForm(), a = i * 2.39996;
+  const r = 0.35 + 0.6 * ((i * 0.618) % 1);
+  return { x: F.cx + Math.cos(a) * F.rx * r, y: F.cy + Math.sin(a) * F.ry * r * 0.9 + F.ry * 0.3 };
+}
+
+// ── Bedienung ─────────────────────────────────────────────
+function _b8dHTML() {
+  const knopf = (k, wert, text) =>
+    `<button class="sim-btn" data-b8d="${k}:${wert}" onclick="_b8dStelle('${k}','${wert}')">${text}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Die Weide im Kübel</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine junge Weide steht 5 Jahre in einem Kübel unter einem Glaskasten. Links wiegt eine Waage den Baum. Rechts wiegt eine Waage die Erde.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8d-los" onclick="_b8dWarten()">▶ 5 Jahre warten</button>
+          <button class="sim-btn" onclick="_b8dNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Gießen</span>
+          <div class="sim-btn-row">
+            ${knopf('giessen', 'ja', 'ja')}
+            ${knopf('giessen', 'nein', 'nein')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Luft</span>
+          <div class="sim-btn-row">
+            ${knopf('luft', 'normal', 'normale Luft')}
+            ${knopf('luft', 'ohne', 'ohne Kohlenstoffdioxid')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_b8d-status"></div>
+        <div class="fpm-label" style="margin-top:8px">Die Waagen zeigen</div>
+        <div class="lmp-status on" id="_b8d-waagen"></div>
+        <div class="fpm-note" id="_b8d-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b8dMarke('ja','normal')">Jahr 5: Wasser, normale Luft</button>
+          <button class="sim-btn" onclick="_b8dMarke('ja','ohne')">Jahr 5: Wasser, ohne Kohlenstoffdioxid</button>
+          <button class="sim-btn" onclick="_b8dMarke('nein','normal')">Jahr 5: kein Wasser, normale Luft</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Die kleinen grauen Punkte zeigen <b>Kohlenstoffdioxid</b>. In Wirklichkeit ist es unsichtbar. Die Erde wird vor dem Wiegen getrocknet, wie bei van Helmont.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Gießen ja · normale Luft &nbsp;|&nbsp; Stelle nur EINE Sache um, dann weißt du, woran es liegt.</p>
+  </div>`;
+}
+function _b8dStelle(k, v) {
+  if (!_b8d) return;
+  _b8d[k] = String(v); _b8d.jahr = 0; _b8d.laeuft = false;   // neue Einstellung = neuer Kübel
+  _b8dFxLeer(); _b8dLuftNeu();
+  _b8dStatus();
+}
+function _b8dWarten() {
+  if (!_b8d || _b8d.laeuft) return;
+  _b8dFxLeer();
+  if (_b8d.jahr >= 5) _b8dLuftNeu();
+  _b8d.jahr = 0; _b8d.laeuft = true; _b8dStatus();
+}
+function _b8dNeu() {
+  if (!_b8d) return;
+  _b8d.giessen = _B8D_START.giessen; _b8d.luft = _B8D_START.luft;
+  _b8d.jahr = 0; _b8d.laeuft = false; _b8dFxLeer(); _b8dLuftNeu(); _b8dStatus();
+}
+// Sprungmarke: Einstellung setzen und gleich das Ergebnis nach 5 Jahren zeigen.
+function _b8dMarke(g, l) {
+  if (!_b8d) return;
+  _b8d.giessen = String(g); _b8d.luft = String(l);
+  _b8dFxLeer(); _b8dLuftNeu();
+  _b8d.jahr = 5; _b8d.laeuft = false; _b8d.nach = 0; _b8d.schritt = 0;
+  _b8dStatus();
+}
+function _b8dStatus() {
+  if (!_b8d) return;
+  const z = _b8dZeile(), bt = _b8dBaumText(), et = _b8dErdeText();
+  const set = (id, txt) => { const el = document.getElementById(id); if (el) { el.textContent = txt; el.className = 'lmp-status on'; } };
+  set('_b8d-status', z);
+  const wg = document.getElementById('_b8d-waagen');
+  if (wg) { wg.innerHTML = bt + '<br>' + et; wg.className = 'lmp-status on'; }
+  _b8d.letzt = z + '|' + bt + '|' + et;
+  const ab = _b8dAbweichungen();
+  const h = document.getElementById('_b8d-hinweis');
+  if (h) {
+    const name = { giessen: 'Gießen', luft: 'Luft' };
+    if (ab.length >= 2) h.textContent = 'Du hast zwei Dinge umgestellt. Gießen und Luft sind anders als beim Start. So findest du nicht heraus, woran es liegt.';
+    else if (ab.length === 1) h.textContent = 'Du hast eine Sache umgestellt: ' + name[ab[0]] +
+      ' auf „' + _B8D_WORT[_b8d[ab[0]]] + '“.';
+    else h.textContent = 'Alles wie beim Start: Gießen ja · normale Luft.';
+  }
+  try {
+    document.querySelectorAll('[data-b8d]').forEach(b => {
+      const [k, wert] = String(b.getAttribute('data-b8d')).split(':');
+      if (b.classList) b.classList.toggle('primary', _b8d[k] === wert);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8d-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b8d.laeuft);
+}
+
+// ── Zeitlauf ──────────────────────────────────────────────
+function _b8dUpdate(dt) {
+  if (!_b8d) return;
+  dt = _bioFxDt(dt);
+  _b8d.t += dt;
+  if (_b8d.laeuft) {
+    _b8d.jahr = Math.min(5, _b8d.jahr + dt / _B8D_JAHR_S);
+    if (_b8d.jahr >= 5) { _b8d.jahr = 5; _b8d.laeuft = false; _b8d.nach = 0; _b8d.schritt = 0; }
+    _b8dJahreszeit(dt);
+    const k = _b8dZeile() + '|' + _b8dBaumText() + '|' + _b8dErdeText();
+    if (k !== _b8d.letzt || !_b8d.laeuft) _b8dStatus();
+  } else if (_b8d.nach >= 0) {
+    _b8d.nach += dt;
+    _b8dNachher();
+  }
+  _b8dLuft(dt);
+  _b8dTropfen(dt);
+  _bioFxAlleUpdate(_b8d.fx, dt);
+}
+// Herbstlaub und vertrocknende Blätter fallen (ruhig, einzeln).
+function _b8dJahreszeit(dt) {
+  const F = _b8dForm(), L = _b8dLaub(), f = _b8dFall();
+  const faellt = (f === 'trocken') ? (L.menge > 0.05 && L.menge < 0.98)
+                                   : (_b8dBruch() > 0.6 && _b8dBruch() < 0.75);
+  if (!faellt) return;
+  _b8d.blattUhr += dt;
+  if (_b8d.blattUhr < 0.12) return;
+  _b8d.blattUhr = 0;
+  const farben = f === 'trocken' ? ['#8d6e3f', '#a1887f', '#6d5a3a'] : ['#e0b53c', '#d98e2b', '#c9a227'];
+  _bioFxBlaetter(_b8d.fx.teile, F.cx + _b8dZufall(-F.rx, F.rx) * 0.8, F.cy + _b8dZufall(0, F.ry), 1, farben);
+}
+// Luftteilchen: zittern umher; beim Wachsen strömen sie in die Blätter.
+function _b8dLuft(dt) {
+  const G = _B8D_GLAS, auf = _b8dNimmtAuf();
+  const tempo = auf ? 1.8 : 1;
+  for (let i = 0; i < _b8d.innen.length; i++) {
+    const p = _b8d.innen[i];
+    p.vx += _b8dZufall(-40, 40) * dt; p.vy += _b8dZufall(-40, 40) * dt;
+    if (auf) {
+      const z = _b8dKronenPunkt(i);
+      const dx = z.x - p.x, dy = z.y - p.y, d = Math.hypot(dx, dy) || 1;
+      p.vx += dx / d * 55 * dt; p.vy += dy / d * 55 * dt;
+      if (d < 6) {                                   // aufgenommen: neues Teilchen strömt durch die Öffnung nach
+        p.x = _b8dZufall(134, 146); p.y = G.y0 + 2; p.vx = _b8dZufall(-6, 6); p.vy = 14;
+        continue;
+      }
+    }
+    const v = Math.hypot(p.vx, p.vy), vmax = 16 * tempo + (auf ? 14 : 0);
+    if (v > vmax) { p.vx *= vmax / v; p.vy *= vmax / v; }
+    p.x += p.vx * dt; p.y += p.vy * dt;
+    if (p.x < G.x0 + 4) { p.x = G.x0 + 4; p.vx = Math.abs(p.vx); }
+    if (p.x > G.x1 - 4) { p.x = G.x1 - 4; p.vx = -Math.abs(p.vx); }
+    if (p.y < G.y0 + 4) { p.y = G.y0 + 4; p.vy = Math.abs(p.vy); }
+    if (p.y > G.y1 - 4) { p.y = G.y1 - 4; p.vy = -Math.abs(p.vy); }
+    if (_b8dImKuebel(p.x, p.y)) { p.y = _B8D_KUEBEL.y0 - 4; p.vy = -Math.abs(p.vy) - 4; }
+  }
+  // Außenluft über dem Kasten: bei normaler Luft zieht die Öffnung Teilchen nach innen,
+  // mit Filter prallen sie davor ab.
+  for (const p of _b8d.aussen) {
+    p.vx += _b8dZufall(-30, 30) * dt; p.vy += _b8dZufall(-30, 30) * dt;
+    const v = Math.hypot(p.vx, p.vy); if (v > 14) { p.vx *= 14 / v; p.vy *= 14 / v; }
+    p.x += p.vx * dt; p.y += p.vy * dt;
+    if (p.x < 4) { p.x = 4; p.vx = Math.abs(p.vx); }
+    if (p.x > 416) { p.x = 416; p.vx = -Math.abs(p.vx); }
+    if (p.y < 3) { p.y = 3; p.vy = Math.abs(p.vy); }
+    if (p.y > 20) { p.y = 20; p.vy = -Math.abs(p.vy); }
+    if (_b8d.luft === 'ohne' && p.x > 124 && p.x < 156 && p.y > 8) { p.y = 8; p.vy = -Math.abs(p.vy) - 6; }
+  }
+  if (_b8d.luft === 'normal' && _b8d.innen.length < 26 && Math.random() < dt * 3) {
+    _b8d.innen.push({ x: _b8dZufall(134, 146), y: G.y0 + 2, vx: 0, vy: 12, ziel: null });
+  }
+}
+// Gießwasser: Tropfen fallen aus dem Trichter im Deckel auf die Erde.
+function _b8dGiesstGerade() {
+  if (_b8d.giessen !== 'ja' || !_b8d.laeuft) return false;
+  const b = _b8dBruch();
+  return (b > 0.05 && b < 0.22) || (b > 0.32 && b < 0.45);
+}
+function _b8dTropfen(dt) {
+  if (_b8dGiesstGerade() && Math.random() < dt * 16) {
+    _b8d.tropfen.push({ x: 250 + _b8dZufall(-2, 2), y: _B8D_GLAS.y0 + 2, vy: 40 });
+  }
+  for (const d of _b8d.tropfen) { d.vy += 260 * dt; d.y += d.vy * dt; }
+  _b8d.tropfen = _b8d.tropfen.filter(d => d.y < _B8D_BODEN);
+}
+
+// ── Aha nach Jahr 5: erst hinsehen, dann bestätigt der Effekt ─
+function _b8dLeuchte(wo, von, bis) { _b8d.leuchte.push({ wo, von, bis }); }
+function _b8dNachher() {
+  const fx = _b8d.fx, t = _b8d.nach, f = _b8dFall(), F = _b8dForm();
+  if (f === 'gut') {
+    if (_b8d.schritt === 0 && t >= 0.2) {
+      _b8d.schritt = 1;
+      _bioFxWelle(fx.teile, 52, 88, '#fcd34d', 40);
+      _bioFxFunken(fx.teile, F.cx, F.top + 6, 6, ['#fff3b0', '#c5e1a5', '#ffffff']);
+      _b8dLeuchte('baum', 0.2, 1.8);
+    }
+    if (_b8d.schritt === 1 && t >= 1.2) {
+      _b8d.schritt = 2;
+      _bioFxBanner(fx, 'Holz aus Erde? Dann wäre der Kübel so leer.', 3.0, '#fdba74');
+    }
+    if (_b8d.schritt >= 2 && t < 4.2) {               // Geister-Rand sinkt in 1 s ab
+      _b8d.geist = _bioFxEase.sanft(_b8dKl((t - 1.2) / 1.0));
+      _b8d.geistA = 1;
+    } else if (t >= 4.2) {
+      _b8d.geistA = 1 - _b8dKl((t - 4.2) / 0.6);
+    }
+    if (_b8d.schritt === 2 && t >= 4.3) {
+      _b8d.schritt = 3; _b8d.sog = true;
+      _bioFxWelle(fx.teile, 367, 88, '#93c5fd', 40);
+      _bioFxWelle(fx.teile, 210, _B8D_BODEN + 4, '#93c5fd', 50);
+      _b8dLeuchte('erde', 4.3, 6.0);
+      _bioFxBanner(fx, 'Die Erde bleibt fast gleich.', 2.2, '#bfdbfe');
+    }
+    if (_b8d.schritt === 3 && t >= 6.5) {
+      _b8d.schritt = 4;
+      _b8dLeuchte('krone', 6.5, 8.5);
+      _bioFxBanner(fx, 'Woher kommt das viele Holz?', 3.0, '#bbf7d0');
+    }
+    if (_b8d.schritt === 4 && t >= 9.5) { _b8d.schritt = 5; _b8d.sog = false; }
+  } else if (f === 'ohne') {
+    if (_b8d.schritt === 0 && t >= 0.3) {
+      _b8d.schritt = 1;
+      _bioFxWelle(fx.teile, 140, 18, '#94a3b8', 30);
+      _b8dLeuchte('filter', 0.3, 1.9);
+    }
+    if (_b8d.schritt === 1 && t >= 0.9) {
+      _b8d.schritt = 2;
+      _bioFxWelle(fx.teile, F.cx, F.cy, '#94a3b8', 45);
+      _bioFxBanner(fx, 'Genug Wasser – aber der Baum bleibt klein.', 3.2, '#cbd5e1');
+    }
+  } else {
+    if (_b8d.schritt === 0 && t >= 0.3) {
+      _b8d.schritt = 1;
+      _bioFxWelle(fx.teile, 210, _B8D_BODEN + 4, '#d6b98c', 50);
+      _bioFxBlaetter(fx.teile, F.cx, F.cy, 3, ['#8d6e3f', '#a1887f']);
+    }
+    if (_b8d.schritt === 1 && t >= 0.8) {
+      _b8d.schritt = 2;
+      _bioFxBanner(fx, 'Ohne Wasser vertrocknet die Weide.', 3.0, '#e7c9a0');
+    }
+  }
+}
+
+// ── Zeichnen ──────────────────────────────────────────────
+function _b8dMisch(a, b, u) {
+  u = _b8dKl(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _b8dWaage(ctx, cx, cy, titel, wert, max, marken) {
+  const r = 34;
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(titel, cx, cy - r - 12);
+  // Gehäuse und Fuß
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx - 22, cy + r + 10); ctx.lineTo(cx + 22, cy + r + 10);
+  ctx.lineTo(cx + 14, cy + r - 4); ctx.lineTo(cx - 14, cy + r - 4); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Skala
+  const w = v => Math.PI * 0.75 + (v / max) * Math.PI * 1.5;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  for (let k = 0; k <= 8; k++) {
+    const a = w(max * k / 8), l = k % 2 ? 4 : 7;
+    ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * (r - 2), cy + Math.sin(a) * (r - 2));
+    ctx.lineTo(cx + Math.cos(a) * (r - 2 - l), cy + Math.sin(a) * (r - 2 - l)); ctx.stroke();
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '9px sans-serif';
+  for (const m of marken) {
+    const a = w(m);
+    ctx.fillText(String(m), cx + Math.cos(a) * (r - 15), cy + Math.sin(a) * (r - 15) + 3);
+  }
+  // Zeiger
+  const a = w(Math.max(0, Math.min(max, wert)));
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(a) * (r - 6), cy + Math.sin(a) * (r - 6)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(cx, cy, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _b8dKuebel(ctx) {
+  const K = _B8D_KUEBEL, trocken = _b8dFall() === 'trocken' && _b8dAngefangen();
+  const j = _b8dAngefangen() ? _b8d.jahr : 0;
+  // Erde
+  ctx.fillStyle = trocken ? _b8dMisch('#5b3b22', '#a8845a', j / 1.2) : (_b8d.giessen === 'ja' ? '#5b3b22' : '#7a5836');
+  ctx.beginPath(); ctx.ellipse((K.x0 + K.x1) / 2, _B8D_BODEN, (K.x1 - K.x0) / 2 - 3, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  if (trocken && j > 0.6) {
+    ctx.strokeStyle = 'rgba(80,50,20,0.7)'; ctx.lineWidth = 1;
+    for (let k = 0; k < 5; k++) {
+      const x = 176 + k * 17;
+      ctx.beginPath(); ctx.moveTo(x, _B8D_BODEN - 2); ctx.lineTo(x + 4, _B8D_BODEN + 1); ctx.lineTo(x + 2, _B8D_BODEN + 3); ctx.stroke();
+    }
+  }
+  // Holzkübel mit Dauben und Reifen
+  ctx.fillStyle = '#b07a42'; ctx.strokeStyle = '#6b4423'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(K.x0, K.y0 + 8); ctx.lineTo(K.x0 + 8, K.y1); ctx.lineTo(K.x1 - 8, K.y1); ctx.lineTo(K.x1, K.y0 + 8); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(107,68,35,0.6)'; ctx.lineWidth = 1;
+  for (let k = 1; k < 7; k++) {
+    const u = k / 7;
+    ctx.beginPath(); ctx.moveTo(K.x0 + (K.x1 - K.x0) * u, K.y0 + 8); ctx.lineTo(K.x0 + 8 + (K.x1 - K.x0 - 16) * u, K.y1); ctx.stroke();
+  }
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5;
+  for (const yy of [K.y0 + 16, K.y1 - 10]) {
+    const e = 8 * (yy - K.y0 - 8) / (K.y1 - K.y0 - 8);
+    ctx.beginPath(); ctx.moveTo(K.x0 + e, yy); ctx.lineTo(K.x1 - e, yy); ctx.stroke();
+  }
+  ctx.strokeStyle = '#6b4423'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse((K.x0 + K.x1) / 2, K.y0 + 8, (K.x1 - K.x0) / 2, 4, 0, Math.PI, 2 * Math.PI); ctx.stroke();
+}
+function _b8dBaum(ctx) {
+  const F = _b8dForm(), L = _b8dLaub(), t = _b8d.t, f = _b8dFall();
+  const tot = L.braun;
+  const holz = _b8dMisch('#6b4423', '#8a7a6a', tot);
+  const wind = Math.sin(t * 1.3) * 1.5;
+  // Stamm
+  const sb = 3 + 7 * F.fv;
+  ctx.fillStyle = holz;
+  ctx.beginPath();
+  ctx.moveTo(_B8D_STAMM - sb, _B8D_BODEN);
+  ctx.quadraticCurveTo(_B8D_STAMM - sb * 0.6, (_B8D_BODEN + F.cy) / 2, F.cx - sb * 0.35 + wind * 0.3, F.cy);
+  ctx.lineTo(F.cx + sb * 0.35 + wind * 0.3, F.cy);
+  ctx.quadraticCurveTo(_B8D_STAMM + sb * 0.6, (_B8D_BODEN + F.cy) / 2, _B8D_STAMM + sb, _B8D_BODEN);
+  ctx.closePath(); ctx.fill();
+  // Äste zur Krone
+  ctx.strokeStyle = holz; ctx.lineCap = 'round';
+  const n = 6 + Math.round(8 * F.fv);
+  const blattFarbe = f === 'trocken' ? _b8dMisch('#5fae4e', '#9c7b4a', tot)
+    : f === 'ohne' ? _b8dMisch('#8fbf7a', '#d8c060', L.gelb)
+    : _b8dMisch('#4c9f3f', '#e0b53c', L.gelb);
+  for (let i = 0; i < n; i++) {
+    const a = Math.PI * (1.08 + 0.84 * i / (n - 1));           // oberer Kronenbogen
+    const sx = F.cx + Math.cos(a) * F.rx * 0.75, sy = F.cy + Math.sin(a) * F.ry * 0.9;
+    const seite = Math.cos(a) >= 0 ? 1 : -1;
+    const lang = (18 + 50 * F.fv) * (1 - tot * 0.35);
+    const sw = Math.sin(t * 1.6 + i * 0.9) * (2 + 3 * F.fv) * (1 - tot);
+    const ex = sx + seite * (6 + 14 * F.fv) + sw, ey = sy + lang;
+    ctx.lineWidth = 1 + 2 * F.fv;
+    ctx.beginPath(); ctx.moveTo(F.cx + wind * 0.3, F.cy); ctx.lineTo(sx, sy); ctx.stroke();
+    ctx.lineWidth = 0.9 + 0.6 * F.fv;
+    ctx.beginPath(); ctx.moveTo(sx, sy);
+    ctx.quadraticCurveTo(sx + seite * (8 + 10 * F.fv), sy - 4, ex, ey); ctx.stroke();
+    // Weidenblätter entlang der hängenden Zweige
+    if (L.menge > 0.02) {
+      ctx.fillStyle = blattFarbe;
+      const stueck = Math.round((4 + 7 * F.fv) * L.menge);
+      for (let k = 1; k <= stueck; k++) {
+        const u = k / (4 + 7 * F.fv + 1);
+        const mx = (1 - u) * (1 - u) * sx + 2 * u * (1 - u) * (sx + seite * (8 + 10 * F.fv)) + u * u * ex;
+        const my = (1 - u) * (1 - u) * sy + 2 * u * (1 - u) * (sy - 4) + u * u * ey;
+        ctx.save(); ctx.translate(mx, my); ctx.rotate(k % 2 ? 0.5 : -0.5);
+        ctx.beginPath(); ctx.ellipse(0, 2.5, 1.4, 3.6, 0, 0, 2 * Math.PI); ctx.fill();
+        ctx.restore();
+      }
+    }
+  }
+}
+function _b8dDraw(ctx, cv) {
+  if (!_b8d) return;
+  const W = cv.width, H = cv.height, t = _b8d.t, G = _B8D_GLAS;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef6fb'); bg.addColorStop(1, '#e6efe0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Außenluft über dem Kasten
+  for (const p of _b8d.aussen) _b8dPunkt(ctx, p.x, p.y);
+
+  // Glaskasten (Rückwand)
+  ctx.fillStyle = 'rgba(200,228,245,0.35)';
+  ctx.fillRect(G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0);
+  // Luftöffnung links im Deckel, bei „ohne Kohlenstoffdioxid“ mit Filter
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(132, 12, 16, 12);
+  if (_b8d.luft === 'ohne') {
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    ctx.fillRect(122, 9, 36, 15); ctx.strokeRect(122, 9, 36, 15);
+    ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Filter', 140, 20);
+  }
+  // Gießkanne rechts auf dem Deckel, Trichter im Deckel
+  const giesst = _b8dGiesstGerade();
+  ctx.save();
+  ctx.globalAlpha = _b8d.giessen === 'ja' ? 1 : 0.35;
+  ctx.translate(272, 14); ctx.rotate(giesst ? -0.55 : 0);
+  ctx.fillStyle = '#9ca3af'; ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1;
+  ctx.fillRect(-2, -8, 16, 12); ctx.strokeRect(-2, -8, 16, 12);
+  ctx.beginPath(); ctx.moveTo(-2, -2); ctx.lineTo(-16, -9); ctx.lineTo(-17, -6); ctx.lineTo(-2, 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(6, -10, 5, Math.PI, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = '#94a3b8';
+  ctx.beginPath(); ctx.moveTo(243, 18); ctx.lineTo(257, 18); ctx.lineTo(252, 26); ctx.lineTo(248, 26); ctx.closePath(); ctx.fill();
+  if (giesst) {
+    ctx.strokeStyle = 'rgba(59,130,246,0.8)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(257, 7); ctx.quadraticCurveTo(252, 10, 250, 18); ctx.stroke();
+  }
+
+  _b8dKuebel(ctx);
+  _b8dBaum(ctx);
+  // Gießwasser
+  ctx.fillStyle = 'rgba(59,130,246,0.85)';
+  for (const d of _b8d.tropfen) { ctx.beginPath(); ctx.ellipse(d.x, d.y, 1.4, 2.6, 0, 0, 2 * Math.PI); ctx.fill(); }
+  // Geister-Rand: so tief stünde die Erde, wenn das Holz aus der Erde käme
+  if (_b8d.geistA > 0.01) {
+    const K = _B8D_KUEBEL;
+    const tief = _B8D_BODEN + (K.y1 - 4 - _B8D_BODEN) * (74 / 91) * _b8d.geist;
+    ctx.save();
+    ctx.globalAlpha = _b8d.geistA;
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.fillRect(K.x0 + 5, _B8D_BODEN - 3, K.x1 - K.x0 - 10, tief - _B8D_BODEN + 3);
+    ctx.setLineDash([5, 4]); ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(K.x0 + 5, tief); ctx.lineTo(K.x1 - 5, tief); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+  // Kohlenstoffdioxid im Kasten
+  for (const p of _b8d.innen) _b8dPunkt(ctx, p.x, p.y);
+  // Glas vorne: Rahmen und Lichtkanten
+  ctx.strokeStyle = 'rgba(71,85,105,0.85)'; ctx.lineWidth = 2;
+  ctx.strokeRect(G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0);
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(G.x0 + 10, G.y0 + 14); ctx.lineTo(G.x0 + 10, G.y0 + 70); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(G.x1 - 12, G.y0 + 20); ctx.lineTo(G.x1 - 12, G.y0 + 44); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(G.x0 - 6, G.y1, G.x1 - G.x0 + 12, 4);
+
+  // Waagen
+  const m = _b8dMasse();
+  const zitter = _b8d.laeuft ? Math.sin(t * 7) * 0.25 : 0;
+  _b8dWaage(ctx, 55, 88, 'Waage Baum', m + zitter, 80, [0, 40, 80]);
+  _b8dWaage(ctx, 365, 88, 'Waage Erde', 91 - _b8dErdeWeniger() / 1000 + zitter * 0.2, 100, [0, 50, 100]);
+  // Hervorheben (Aha)
+  for (const l of _b8d.leuchte) {
+    if (_b8d.nach < l.von || _b8d.nach > l.bis) continue;
+    if (l.wo === 'baum') _bioFxLeuchten(ctx, 55, 88, 38, t);
+    else if (l.wo === 'erde') _bioFxLeuchten(ctx, 365, 88, 38, t, '147,197,253');
+    else if (l.wo === 'filter') _bioFxLeuchten(ctx, 140, 16, 20, t, '148,163,184');
+    else if (l.wo === 'krone') { const F = _b8dForm(); _bioFxLeuchten(ctx, F.cx, F.cy + F.ry * 0.3, F.rx * 0.9, t, '190,242,180'); }
+  }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_b8dBaumText(), 55, 150);
+  ctx.fillText('Erde: 91 kg', 365, 150);
+  if (_b8dAngefangen()) {
+    ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#1e3a8a';
+    ctx.fillText(Math.round(_b8dErdeWeniger()) + ' g leichter', 365, 166);
+    ctx.font = '11px sans-serif';
+    ctx.fillText('als am Anfang', 365, 180);
+  }
+  // Legende
+  _b8dPunkt(ctx, 322, 200);
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Kohlenstoffdioxid', 329, 203);
+  if (_b8d.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('▶▶ Zeitraffer', 55, 180);
+    ctx.font = '11px sans-serif';
+    ctx.fillText(_b8dZeit(), 55, 195);
+  }
+  // Jahreszähler
+  const k = _b8dJahrZahl();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Jahr ' + k, 210, 224);
+  for (let i = 1; i <= 5; i++) {
+    const voll = i <= k, teil = !voll && i === k + 1 && _b8d.laeuft ? _b8d.jahr - k : 0;
+    ctx.fillStyle = '#cbd5e1'; ctx.beginPath(); ctx.arc(186 + (i - 1) * 12, 238, 4.5, 0, 2 * Math.PI); ctx.fill();
+    if (voll || teil > 0) {
+      ctx.fillStyle = '#16a34a';
+      ctx.beginPath(); ctx.moveTo(186 + (i - 1) * 12, 238);
+      ctx.arc(186 + (i - 1) * 12, 238, 4.5, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * (voll ? 1 : teil)); ctx.closePath(); ctx.fill();
+    }
+  }
+  // Einstellung
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Gießen: ' + _B8D_WORT[_b8d.giessen], 8, 244);
+  ctx.textAlign = 'right';
+  ctx.fillText('Luft: ' + _B8D_WORT[_b8d.luft], W - 8, 244);
+  _bioFxAlleDraw(ctx, _b8d.fx);
+}
+function _b8dPunkt(ctx, x, y) {
+  ctx.fillStyle = 'rgba(71,85,105,0.75)';
+  ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 2 * Math.PI); ctx.fill();
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 8 FOERDER · EINE BUCHE UNTER DER GLASGLOCKE   (Förderheft Bio 8 · bo5)
+// Links die Glasglocke auf dem Tisch mit einer jungen Buche im Topf (oder
+// leer), daneben eine Lampe. Rechts ein Messgerät (Sauerstoff, Kohlenstoff-
+// dioxid, Start 100 in Modelleinheiten) und eine Uhr, die 1 Stunde läuft.
+// Sauerstoff-Teilchen sind blaue Kreise, Kohlenstoffdioxid-Teilchen orange
+// Dreiecke; sie schwirren in der Glocke. JEDES Teilchen, das in ein Blatt
+// hinein- oder aus einem Blatt herauswandert, zählt am Messgerät genau 1.
+// Modell (Lehrerteil: Modellwerte):
+//   Zellatmung  läuft immer (Buche):  5 Sauerstoff hinein,  5 Kohlenstoffdioxid heraus
+//   Fotosynthese nur im Licht:       25 Sauerstoff heraus, 25 Kohlenstoffdioxid hinein
+//   hell  · Buche  → Sauerstoff 100 → 120 · Kohlenstoffdioxid 100 → 80
+//   dunkel · Buche → Sauerstoff 100 → 95  · Kohlenstoffdioxid 100 → 105
+//   leere Glocke   → alles bleibt 100 (Kontrolle)
+// Aha (Bibliothek _bioFx): Im Hellen sprudeln Blasen aus den Blättern. Im
+// Dunkeln kehrt sich der Strom um: Die ersten Sauerstoff-Kreise wandern IN
+// die Blätter (Zeitlupe, Lichtring am Blatt); nach der Stunde leuchtet die
+// Sauerstoffzeile am Messgerät auf und ein ruhiges Banner beschreibt, was zu
+// sehen war. Kein Blinken, kein Ton, keine Wertung, kein Lösungswort im Bild.
+// ═══════════════════════════════════════════════════════
+let _b8e = null;
+const _B8E_T = 8;                     // s Echtzeit für 1 Stunde
+const _B8E_FS = 25;                   // Fotosynthese im Licht (Teilchen je Stunde)
+const _B8E_ZA = 5;                    // Zellatmung, Tag und Nacht (Teilchen je Stunde)
+const _B8E_FLUG = 0.7;                // s Flugzeit eines Teilchens
+const _B8E_START = { licht: 'hell', inhalt: 'Buche' };
+const _B8E_GL = { x0: 58, x1: 242, cx: 150, boden: 220, schulter: 112, rx: 92, ry: 72 };
+// Blätter der Buche: [x, y, Winkel]
+const _B8E_BLATT = [
+  [150, 88, 0], [127, 101, -0.8], [173, 101, 0.8], [112, 124, -1.3], [188, 122, 1.3],
+  [132, 140, -1.2], [168, 146, 1.2], [140, 116, -0.4], [161, 118, 0.4]
+];
+function _b8eZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _b8eInit() {
+  _b8e = { licht: 'hell', inhalt: 'Buche', uhr: 0, laeuft: false, fertig: false, t: 0,
+           o2: 100, co2: 100, plan: [], naechst: 0, flug: [], pool: [], letzt: '',
+           hellA: 1, fx: { teile: [] }, ersteEin: false, nach: -1, schritt: 0, zeile: -1,
+           rest: 0, z: _b8eZufall(815) };
+  _b8ePoolNeu();
+}
+// ── Geometrie ───────────────────────────────────────────
+function _b8eInnen(x, y, m) {
+  const g = _B8E_GL;
+  if (x < g.x0 + m || x > g.x1 - m || y > g.boden - m) return false;
+  if (y >= g.schulter) return true;
+  const dx = (x - g.cx) / (g.rx - m), dy = (y - g.schulter) / (g.ry - m);
+  return dx * dx + dy * dy <= 1;
+}
+function _b8eOrt(z) {
+  for (let k = 0; k < 60; k++) {
+    const x = _B8E_GL.x0 + 8 + z() * (_B8E_GL.x1 - _B8E_GL.x0 - 16);
+    const y = 46 + z() * 166;
+    if (_b8eInnen(x, y, 8)) return { x, y };
+  }
+  return { x: 150, y: 80 };
+}
+// ── Teilchen in der Luft (Pool) ─────────────────────────
+function _b8eZiel(art) {
+  const v = art === 'o2' ? _b8e.o2 : _b8e.co2;
+  let offen = 0;                                        // Teilchen, die gerade ins Blatt fliegen
+  for (const f of _b8e.flug) if (f.art === art && f.dir === 'ein' && !f.da) offen++;
+  return Math.round((v - offen) / 5);
+}
+function _b8eNeuesTeilchen(art, a) {
+  const p = _b8eOrt(_b8e.z), w = _b8e.z() * 6.283;
+  return { art, x: p.x, y: p.y, vx: Math.cos(w) * 16, vy: Math.sin(w) * 16, a: a, weg: false,
+           dreh: _b8e.z() * 6.283 };
+}
+function _b8ePoolNeu() {
+  _b8e.pool = [];
+  for (const art of ['o2', 'co2']) {
+    const n = Math.round((art === 'o2' ? _b8e.o2 : _b8e.co2) / 5);
+    for (let i = 0; i < n; i++) _b8e.pool.push(_b8eNeuesTeilchen(art, 1));
+  }
+}
+function _b8eZaehle(art) { return _b8e.pool.filter(p => p.art === art && !p.weg).length; }
+function _b8eAbgleich() {
+  for (const art of ['o2', 'co2']) {
+    let n = _b8eZaehle(art); const ziel = _b8eZiel(art);
+    while (n > ziel) {
+      const liste = _b8e.pool.filter(p => p.art === art && !p.weg);
+      liste[Math.floor(_b8e.z() * liste.length)].weg = true; n--;
+    }
+    if (!_b8e.laeuft) while (n < ziel) { _b8e.pool.push(_b8eNeuesTeilchen(art, 0)); n++; }
+  }
+}
+// ── Ablaufplan einer Stunde ─────────────────────────────
+// Liefert alle Wanderungen an den Blättern: {t, art, dir, blatt}
+function _b8ePlan(licht, inhalt) {
+  if (inhalt !== 'Buche') return [];
+  const fs = licht === 'hell' ? _B8E_FS : 0, za = _B8E_ZA;
+  const z = _b8eZufall(licht === 'hell' ? 31 : 47), plan = [];
+  const reihe = (n, art, dir, v) => {
+    for (let i = 0; i < n; i++) {
+      const t = 0.15 + (i + 0.5) / n * (_B8E_T - 1.1) + (z() - 0.5) * 0.2 + v;
+      plan.push({ t: Math.max(0.1, t), art, dir, blatt: Math.floor(z() * _B8E_BLATT.length) });
+    }
+  };
+  reihe(fs, 'o2', 'aus', 0); reihe(fs, 'co2', 'ein', 0.04);   // Fotosynthese
+  reihe(za, 'o2', 'ein', 0.07); reihe(za, 'co2', 'aus', 0.11); // Zellatmung
+  plan.sort((a, b) => a.t - b.t);
+  return plan;
+}
+function _b8eEndwerte(licht, inhalt) {
+  let o2 = 100, co2 = 100;
+  for (const e of _b8ePlan(licht, inhalt)) {
+    const s = e.dir === 'aus' ? 1 : -1;
+    if (e.art === 'o2') o2 += s; else co2 += s;
+  }
+  return { o2, co2 };
+}
+// ── Bedienung ───────────────────────────────────────────
+function _b8eFxLeer() {
+  _b8e.fx = { teile: [] }; _b8e.zeitlupe = null;
+  _b8e.ersteEin = false; _b8e.nach = -1; _b8e.schritt = 0; _b8e.zeile = -1; _b8e.band = null;
+}
+function _b8eZurueck() {                                  // neue Glocke, Uhr auf 0
+  _b8e.uhr = 0; _b8e.laeuft = false; _b8e.fertig = false;
+  _b8e.o2 = 100; _b8e.co2 = 100; _b8e.flug = []; _b8e.naechst = 0; _b8e.rest = 0;
+  _b8e.plan = _b8ePlan(_b8e.licht, _b8e.inhalt);
+  _b8eFxLeer(); _b8ePoolNeu(); _b8eStatus();
+}
+function _b8eLicht(v) { if (!_b8e) return; _b8e.licht = String(v); _b8eZurueck(); }
+function _b8eInhalt(v) { if (!_b8e) return; _b8e.inhalt = String(v); _b8eZurueck(); }
+function _b8eNeu() {
+  if (!_b8e) return;
+  _b8e.licht = _B8E_START.licht; _b8e.inhalt = _B8E_START.inhalt; _b8eZurueck();
+}
+function _b8eWarten() {
+  if (!_b8e || _b8e.laeuft) return;
+  _b8eZurueck();
+  _b8e.laeuft = true; _b8eStatus();
+}
+// Sprungmarke: Einstellung wählen und gleich den Stand nach 1 Stunde zeigen.
+function _b8eMarke(licht, inhalt) {
+  if (!_b8e) return;
+  _b8e.licht = String(licht); _b8e.inhalt = String(inhalt); _b8eZurueck();
+  const e = _b8eEndwerte(_b8e.licht, _b8e.inhalt);
+  _b8e.o2 = e.o2; _b8e.co2 = e.co2; _b8e.naechst = _b8e.plan.length;
+  _b8e.uhr = _B8E_T; _b8ePoolNeu(); _b8eEnde();
+}
+function _b8eEnde() {
+  // Teilchen, die noch unterwegs sind, kommen an (im Normalfall keines).
+  for (const f of _b8e.flug) if (f.dir === 'ein' && !f.da) { _b8eAnkunft(f); _b8e.rest++; }
+  _b8e.flug = _b8e.flug.filter(f => f.dir === 'aus');
+  _b8e.uhr = _B8E_T; _b8e.laeuft = false; _b8e.fertig = true;
+  _b8e.nach = 0; _b8e.schritt = 0;
+  _b8eStatus();
+}
+// ── Anzeige ─────────────────────────────────────────────
+function _b8eEinstellung() {
+  return (_b8e.inhalt === 'Buche' ? 'Buche' : 'leere Glocke') + ', ' + _b8e.licht;
+}
+function _b8eMinuten() { return Math.min(60, Math.floor(_b8e.uhr / _B8E_T * 60 + 1e-6)); }
+function _b8eUhrText() {
+  if (_b8e.fertig) return '1 Stunde';
+  return _b8eMinuten() + ' min';
+}
+function _b8eWort(v) { return v > 100 ? 'mehr' : v < 100 ? 'weniger' : 'gleich'; }
+function _b8eZeilen() {
+  const z = [
+    _b8eEinstellung() + ' · Uhr: ' + _b8eUhrText(),
+    'Sauerstoff: Start 100 · jetzt ' + _b8e.o2,
+    'Kohlenstoffdioxid: Start 100 · jetzt ' + _b8e.co2
+  ];
+  if (_b8e.fertig) {
+    z.push('Ergebnis: Sauerstoff 100 → ' + _b8e.o2 + ' (' + _b8eWort(_b8e.o2) + ') · ' +
+           'Kohlenstoffdioxid 100 → ' + _b8e.co2 + ' (' + _b8eWort(_b8e.co2) + ')');
+  } else if (!_b8e.laeuft) {
+    z.push('Drücke „▶ 1 Stunde warten“.');
+  }
+  return z;
+}
+function _b8eStatus() {
+  if (!_b8e) return;
+  const z = _b8eZeilen();
+  _b8e.letzt = z.join('|');
+  const el = document.getElementById('_b8e-status');
+  if (el) { el.innerHTML = '<b>' + z[0] + '</b><br>' + z.slice(1).join('<br>'); el.className = 'lmp-status on'; }
+  const h = document.getElementById('_b8e-hinweis');
+  if (h) {
+    const ab = [];
+    if (_b8e.licht !== _B8E_START.licht) ab.push('Licht');
+    if (_b8e.inhalt !== _B8E_START.inhalt) ab.push('In der Glocke');
+    if (ab.length === 2) h.textContent = 'Du hast zwei Dinge umgestellt. „Licht“ und „In der Glocke“ sind anders als beim Start. So findest du nicht heraus, woran es liegt.';
+    else if (ab.length === 1) h.textContent = 'Du hast eine Sache umgestellt: „' + ab[0] + '“ auf „' +
+      (ab[0] === 'Licht' ? _b8e.licht : _b8e.inhalt) + '“.';
+    else h.textContent = 'Alles wie beim Start: hell · Buche.';
+  }
+  try {
+    document.querySelectorAll('[data-b8e]').forEach(b => {
+      const [k, v] = String(b.getAttribute('data-b8e')).split(':');
+      if (b.classList) b.classList.toggle('primary', _b8e[k] === v);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8e-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b8e.laeuft);
+}
+function _b8eHTML() {
+  const k = (fn, key, wert, text) =>
+    `<button class="sim-btn" data-b8e="${key}:${wert}" onclick="${fn}('${wert}')">${text}</button>`;
+  const m = (l, i, text) => `<button class="sim-btn" onclick="_b8eMarke('${l}','${i}')">${text}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Eine Buche unter der Glasglocke</h3>
+    <div class="fpm-note" style="margin-top:2px">Kreis = Sauerstoff. Dreieck = Kohlenstoffdioxid. Das Messgerät zählt die Teilchen in der Glocke. Stelle ein, dann warte 1 Stunde.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8e-los" onclick="_b8eWarten()">▶ 1 Stunde warten</button>
+          <button class="sim-btn" onclick="_b8eNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Licht</span>
+          <div class="sim-btn-row">
+            ${k('_b8eLicht', 'licht', 'hell', 'hell')}
+            ${k('_b8eLicht', 'licht', 'dunkel', 'dunkel')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">In der Glocke</span>
+          <div class="sim-btn-row">
+            ${k('_b8eInhalt', 'inhalt', 'Buche', 'Buche')}
+            ${k('_b8eInhalt', 'inhalt', 'leere Glocke', 'leere Glocke')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_b8e-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_b8e-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (Stand nach 1 Stunde)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('hell', 'Buche', 'Buche, hell')}
+          ${m('dunkel', 'Buche', 'Buche, dunkel')}
+          ${m('hell', 'leere Glocke', 'leere Glocke, hell')}
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: hell · Buche &nbsp;|&nbsp; Stelle nur EINE Sache um, dann weißt du, woran es liegt.</p>
+  </div>`;
+}
+// ── Ablauf ──────────────────────────────────────────────
+function _b8eBlattPunkt(i) { const b = _B8E_BLATT[i]; return { x: b[0], y: b[1] }; }
+function _b8eStarte(e) {
+  const b = _b8eBlattPunkt(e.blatt);
+  if (e.dir === 'aus') {
+    // aus dem Blatt heraus in die Luft der Glocke
+    const w = Math.atan2(b.y - 150, b.x - 150) + (_b8e.z() - 0.5) * 0.9;
+    let ziel = { x: b.x + Math.cos(w) * 48, y: b.y + Math.sin(w) * 40 - 14 };
+    if (!_b8eInnen(ziel.x, ziel.y, 8)) ziel = _b8eOrt(_b8e.z);
+    _b8e.flug.push({ art: e.art, dir: 'aus', x0: b.x, y0: b.y, x1: ziel.x, y1: ziel.y, alter: 0,
+                     da: false, blatt: e.blatt, dreh: _b8e.z() * 6.28 });
+    if (e.art === 'o2') _b8e.o2++; else _b8e.co2++;
+    if (e.art === 'o2' && _b8e.licht === 'hell')          // Sauerstoff sprudelt aus dem Blatt
+      _bioFxBlasen(_b8e.fx.teile, b.x, b.y - 3, 2, 'rgba(96,165,250,1)');
+  } else {
+    // ein Teilchen aus der Luft wandert ins Blatt: es verlässt den Pool
+    const liste = _b8e.pool.filter(p => p.art === e.art && !p.weg);
+    let q;
+    if (liste.length) {
+      let best = liste[0], bd = 1e9;
+      for (const p of liste) { const d = Math.hypot(p.x - b.x, p.y - b.y) + _b8e.z() * 40; if (d < bd) { bd = d; best = p; } }
+      q = { x: best.x, y: best.y, dreh: best.dreh };
+      _b8e.pool.splice(_b8e.pool.indexOf(best), 1);
+    } else q = _b8eOrt(_b8e.z);
+    _b8e.flug.push({ art: e.art, dir: 'ein', x0: q.x, y0: q.y, x1: b.x, y1: b.y, alter: 0,
+                     da: false, blatt: e.blatt, dreh: q.dreh || 0 });
+  }
+}
+function _b8eAnkunft(f) {
+  f.da = true;
+  if (f.art === 'o2') _b8e.o2--; else _b8e.co2--;
+  if (f.art === 'o2' && _b8e.licht === 'dunkel' && !_b8e.ersteEin) {
+    // Aha 1: der erste Sauerstoff-Kreis wandert IN ein Blatt – kurz in Zeitlupe
+    _b8e.ersteEin = true;
+    _bioFxZeitlupe(_b8e, 0.35, 1.2);
+    _bioFxWelle(_b8e.fx.teile, f.x1, f.y1, 'rgba(59,130,246,0.95)', 26);
+  } else if (f.art === 'o2') {
+    _bioFxWelle(_b8e.fx.teile, f.x1, f.y1, 'rgba(59,130,246,0.7)', 12);
+  }
+}
+function _b8eUpdate(dt) {
+  if (!_b8e) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_b8e, roh);
+  _b8e.t += roh;
+  // Licht blendet weich über (kein hartes Umschalten)
+  const zielA = _b8e.licht === 'hell' ? 1 : 0;
+  _b8e.hellA += (zielA - _b8e.hellA) * Math.min(1, roh * 5);
+  if (_b8e.laeuft) {
+    _b8e.uhr = Math.min(_B8E_T, _b8e.uhr + d);
+    while (_b8e.naechst < _b8e.plan.length && _b8e.plan[_b8e.naechst].t <= _b8e.uhr) {
+      _b8eStarte(_b8e.plan[_b8e.naechst]); _b8e.naechst++;
+    }
+  }
+  // Teilchen unterwegs
+  for (const f of _b8e.flug) {
+    f.alter += d;
+    const u = _bioFxKlemme(f.alter / _B8E_FLUG);
+    if (f.dir === 'ein' && !f.da && u >= 1) _b8eAnkunft(f);
+    if (f.dir === 'aus' && !f.da && u >= 1) {
+      f.da = true;
+      const ziel = Math.round(_b8e.o2 / 5);
+      if ((f.art === 'o2' ? _b8eZaehle('o2') < ziel : _b8eZaehle('co2') < Math.round(_b8e.co2 / 5)))
+        _b8e.pool.push({ art: f.art, x: f.x1, y: f.y1, vx: (f.x1 - f.x0) * 0.3, vy: (f.y1 - f.y0) * 0.3,
+                         a: 1, weg: false, dreh: f.dreh }), f.weg = true;   // gehört jetzt zur Luft
+      else f.aus = 0;                                   // blendet aus
+    }
+    if (f.aus != null) f.aus += d;
+  }
+  _b8e.flug = _b8e.flug.filter(f => !(f.dir === 'ein' && f.da) && !f.weg && !(f.aus != null && f.aus > 0.4));
+  if (_b8e.laeuft && _b8e.uhr >= _B8E_T) _b8eEnde();
+  // Luftteilchen schwirren
+  for (const p of _b8e.pool) {
+    p.vx += (_b8e.z() - 0.5) * 60 * roh; p.vy += (_b8e.z() - 0.5) * 60 * roh;
+    const v = Math.hypot(p.vx, p.vy) || 1, soll = Math.max(10, Math.min(22, v));
+    p.vx *= soll / v; p.vy *= soll / v;
+    const nx = p.x + p.vx * roh, ny = p.y + p.vy * roh;
+    if (_b8eInnen(nx, ny, 7)) { p.x = nx; p.y = ny; }
+    else { const w = Math.atan2(95 - p.y, 150 - p.x) + (_b8e.z() - 0.5); p.vx = Math.cos(w) * 16; p.vy = Math.sin(w) * 16; }
+    p.dreh += roh * 0.8;
+    p.a = p.weg ? p.a - roh * 2.5 : Math.min(1, p.a + roh * 2);
+  }
+  _b8e.pool = _b8e.pool.filter(p => !(p.weg && p.a <= 0));
+  _b8eAbgleich();
+  if (_b8e.nach >= 0) { _b8e.nach += roh; _b8eNachher(); }
+  _bioFxAlleUpdate(_b8e.fx, roh);
+  if (_b8e.band) { _b8e.band.alter += roh; if (_b8e.band.alter >= _b8e.band.dauer) _b8e.band = null; }
+  if (_b8eZeilen().join('|') !== _b8e.letzt) _b8eStatus();
+}
+// Nach der Stunde: erst die Zahlen stehen lassen, dann bestätigt der Effekt.
+const _B8E_MX = 270, _B8E_MY = 12, _B8E_MW = 144;         // Messgerät
+function _b8eNachher() {
+  const t = _b8e.nach, fx = _b8e.fx;
+  const yO = _B8E_MY + 40, yC = _B8E_MY + 88;
+  if (_b8e.inhalt !== 'Buche') {
+    if (_b8e.schritt === 0 && t >= 0.4) {                // Kontrolle: ruhiger grauer Ring
+      _b8e.schritt = 1;
+      _bioFxWelle(fx.teile, 150, 140, 'rgba(100,116,139,0.8)', 80);
+    }
+    return;
+  }
+  if (_b8e.schritt === 0 && t >= 0.4) {
+    _b8e.schritt = 1; _b8e.zeile = 0;                    // Sauerstoffzeile leuchtet
+    _bioFxWelle(fx.teile, _B8E_MX + 18, yO, _b8e.licht === 'hell' ? 'rgba(59,130,246,0.9)' : 'rgba(59,130,246,0.9)', 30);
+    if (_b8e.licht === 'hell') {
+      for (const i of [0, 3, 4, 6]) { const b = _b8eBlattPunkt(i); _bioFxBlasen(fx.teile, b.x, b.y - 3, 3, 'rgba(96,165,250,1)'); }
+    }
+  }
+  if (_b8e.schritt === 1 && t >= 1.3) {
+    _b8e.schritt = 2; _b8e.zeile = 1;                    // dann die Kohlenstoffdioxidzeile
+    _bioFxWelle(fx.teile, _B8E_MX + 18, yC, 'rgba(234,88,12,0.9)', 30);
+    if (_b8e.licht === 'dunkel')
+      _b8e.band = { text: 'Im Dunkeln wandert Sauerstoff IN die Blätter!', alter: 0, dauer: 4 };
+    else
+      _bioFxFunken(fx.teile, _B8E_MX + _B8E_MW - 30, yO, 8, ['#bfdbfe', '#ffffff', '#93c5fd']);
+  }
+  if (_b8e.schritt === 2 && t >= 2.4) { _b8e.schritt = 3; _b8e.zeile = -1; }
+}
+// ── Zeichnen ────────────────────────────────────────────
+function _b8eMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _b8eTeilchen(ctx, art, x, y, a, dreh) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.translate(x, y);
+  if (art === 'o2') {
+    ctx.fillStyle = '#60a5fa'; ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.arc(0, 0, 4.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  } else {
+    ctx.rotate(Math.sin(dreh || 0) * 0.5);
+    ctx.fillStyle = '#fb923c'; ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.moveTo(0, -5.4); ctx.lineTo(4.8, 3.4); ctx.lineTo(-4.8, 3.4); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _b8eFlugOrt(f) {
+  const u = _bioFxEase.sanft(_bioFxKlemme(f.alter / _B8E_FLUG));
+  const bog = Math.sin(u * Math.PI) * 10;
+  const dx = f.x1 - f.x0, dy = f.y1 - f.y0, l = Math.hypot(dx, dy) || 1;
+  return { x: f.x0 + dx * u - dy / l * bog, y: f.y0 + dy * u + dx / l * bog, u };
+}
+function _b8eBuche(ctx, t, hellA, aktiv) {
+  // Topf
+  ctx.fillStyle = '#b45f35'; ctx.strokeStyle = '#7c3a1b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(128, 192); ctx.lineTo(172, 192); ctx.lineTo(166, 220); ctx.lineTo(134, 220); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#c96d40'; ctx.fillRect(125, 188, 50, 7); ctx.strokeRect(125, 188, 50, 7);
+  ctx.fillStyle = '#4a3222'; ctx.beginPath(); ctx.ellipse(150, 189, 22, 3, 0, 0, 2 * Math.PI); ctx.fill();
+  // Stamm und Äste
+  const wieg = Math.sin(t * 0.9) * 1.2;
+  ctx.strokeStyle = '#6b4f3a'; ctx.lineCap = 'round';
+  ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(150, 189); ctx.quadraticCurveTo(148, 150, 150 + wieg * 0.5, 98); ctx.stroke();
+  ctx.lineWidth = 1.8;
+  for (const [x, y] of _B8E_BLATT) {
+    const sy = Math.min(186, Math.max(100, y + 14));
+    ctx.beginPath(); ctx.moveTo(149 + wieg * 0.3, sy); ctx.quadraticCurveTo((x + 150) / 2, sy - 4, x + wieg, y + 3); ctx.stroke();
+  }
+  // Blätter (Buchenblatt: eiförmig, mit Spitze und Seitenadern)
+  const gruen = _b8eMisch('#35582f', '#4f9a3c', hellA);
+  const rand = _b8eMisch('#223b1f', '#2f6b25', hellA);
+  _B8E_BLATT.forEach(([x, y, w], i) => {
+    ctx.save();
+    ctx.translate(x + wieg * (1 + i * 0.1), y);
+    ctx.rotate(w + Math.sin(t * 1.3 + i) * 0.05);
+    if (aktiv && hellA > 0.5) {                          // Blätter im Licht leicht leuchtend
+      ctx.fillStyle = 'rgba(253,224,71,' + (0.18 + 0.06 * Math.sin(t * 2 + i)).toFixed(3) + ')';
+      ctx.beginPath(); ctx.ellipse(0, -2, 11, 15, 0, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = gruen; ctx.strokeStyle = rand; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0, 4);
+    ctx.bezierCurveTo(9, 0, 8, -10, 0, -15); ctx.bezierCurveTo(-8, -10, -9, 0, 0, 4);
+    ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(20,50,20,0.45)'; ctx.lineWidth = 0.7;
+    ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(0, -13);
+    for (let k = 0; k < 4; k++) { const yy = 1 - k * 3.4; ctx.moveTo(0, yy); ctx.lineTo(5, yy - 3); ctx.moveTo(0, yy); ctx.lineTo(-5, yy - 3); }
+    ctx.stroke();
+    ctx.restore();
+  });
+}
+function _b8eDraw(ctx, cv) {
+  if (!_b8e) return;
+  const W = cv.width, H = cv.height, t = _b8e.t, hA = _b8e.hellA, g = _B8E_GL;
+  ctx.clearRect(0, 0, W, H);
+  // Raum: hell oder abgedunkelt (weiche Überblendung)
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, _b8eMisch('#1f2a44', '#f3f7ee', hA)); bg.addColorStop(1, _b8eMisch('#2b3552', '#e3ecd9', hA));
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tisch
+  ctx.fillStyle = _b8eMisch('#4a3b2c', '#c8a47a', hA); ctx.fillRect(0, 220, 262, 30);
+  ctx.fillStyle = _b8eMisch('#3a2e22', '#a8845a', hA); ctx.fillRect(0, 220, 262, 3);
+  // Lampe links
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(22, 218); ctx.lineTo(22, 40); ctx.lineTo(48, 30); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.fillRect(8, 214, 28, 6);
+  ctx.save(); ctx.translate(52, 34); ctx.rotate(0.55);
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.moveTo(-10, -4); ctx.lineTo(10, -4); ctx.lineTo(16, 12); ctx.lineTo(-16, 12); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = _b8eMisch('#64748b', '#fde047', hA); ctx.beginPath(); ctx.arc(0, 12, 6, 0, Math.PI); ctx.fill();
+  ctx.restore();
+  if (hA > 0.02) {                                       // Lichtkegel auf die Glocke
+    ctx.fillStyle = 'rgba(253,230,138,' + (hA * (0.26 + 0.04 * Math.sin(t * 1.6))).toFixed(3) + ')';
+    ctx.beginPath(); ctx.moveTo(46, 44); ctx.lineTo(64, 34); ctx.lineTo(236, 130); ctx.lineTo(150, 214); ctx.closePath(); ctx.fill();
+  }
+  // Glocke: Innenraum leicht getönt
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(g.x0, g.boden); ctx.lineTo(g.x0, g.schulter);
+  ctx.ellipse(g.cx, g.schulter, g.rx, g.ry, 0, Math.PI, 2 * Math.PI);
+  ctx.lineTo(g.x1, g.boden); ctx.closePath();
+  ctx.fillStyle = 'rgba(186,230,253,' + (0.10 + 0.08 * hA).toFixed(3) + ')'; ctx.fill();
+  ctx.restore();
+  // Buche (oder leer)
+  if (_b8e.inhalt === 'Buche') _b8eBuche(ctx, t, hA, _b8e.laeuft);
+  // Luftteilchen
+  for (const p of _b8e.pool) _b8eTeilchen(ctx, p.art, p.x, p.y, p.a, p.dreh);
+  // Teilchen unterwegs, mit kurzer Spur (Wanderrichtung sichtbar)
+  for (const f of _b8e.flug) {
+    const o = _b8eFlugOrt(f);
+    const a = f.aus != null ? 1 - f.aus / 0.4 : (f.dir === 'ein' ? 1 - 0.6 * Math.max(0, o.u - 0.7) / 0.3 : 1);
+    ctx.save();
+    ctx.strokeStyle = f.art === 'o2' ? 'rgba(37,99,235,0.45)' : 'rgba(234,88,12,0.45)';
+    ctx.lineWidth = 2; if (ctx.setLineDash) ctx.setLineDash([3, 3]);
+    const sp = { alter: Math.max(0, f.alter - 0.22), x0: f.x0, y0: f.y0, x1: f.x1, y1: f.y1 };
+    const o0 = _b8eFlugOrt(sp);
+    ctx.globalAlpha = Math.max(0, a);
+    ctx.beginPath(); ctx.moveTo(o0.x, o0.y); ctx.lineTo(o.x, o.y); ctx.stroke();
+    ctx.restore();
+    const s = f.dir === 'ein' ? 1 - 0.5 * Math.max(0, o.u - 0.7) / 0.3 : 1;
+    ctx.save(); ctx.translate(o.x, o.y); ctx.scale(s, s);
+    _b8eTeilchen(ctx, f.art, 0, 0, a, f.dreh);
+    ctx.restore();
+  }
+  // Glaswand und Knauf
+  ctx.strokeStyle = _b8eMisch('#94a3b8', '#64748b', hA); ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(g.x0, g.boden); ctx.lineTo(g.x0, g.schulter);
+  ctx.ellipse(g.cx, g.schulter, g.rx, g.ry, 0, Math.PI, 2 * Math.PI);
+  ctx.lineTo(g.x1, g.boden); ctx.stroke();
+  ctx.fillStyle = _b8eMisch('#94a3b8', '#64748b', hA);
+  ctx.beginPath(); ctx.ellipse(g.cx, g.schulter - g.ry - 3, 9, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,' + (0.35 + 0.35 * hA).toFixed(2) + ')'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.ellipse(g.cx, g.schulter, g.rx - 12, g.ry - 12, 0, Math.PI * 1.15, Math.PI * 1.4); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(g.x0 + 10, 120); ctx.lineTo(g.x0 + 10, 196); ctx.stroke();
+  // Kabel zum Messgerät
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(g.x1 - 2, 170); ctx.quadraticCurveTo(262, 170, _B8E_MX + 10, _B8E_MY + 122); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.fillRect(g.x1 - 6, 165, 8, 10);
+
+  // Messgerät
+  const mx = _B8E_MX, my = _B8E_MY, mw = _B8E_MW, mh = 122;
+  ctx.fillStyle = '#1e293b'; _bioFxRundRect(ctx, mx, my, mw, mh, 8); ctx.fill();
+  ctx.fillStyle = '#f8fafc'; _bioFxRundRect(ctx, mx + 5, my + 16, mw - 10, mh - 22, 5); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Messgerät', mx + mw / 2, my + 11);
+  const zeilen = [['o2', 'Sauerstoff:', _b8e.o2, my + 40], ['co2', 'Kohlenstoffdioxid:', _b8e.co2, my + 88]];
+  zeilen.forEach(([art, name, v, y], i) => {
+    if (_b8e.zeile === i) _bioFxLeuchten(ctx, mx + 18, y - 4, 10, t, art === 'o2' ? '59,130,246' : '234,88,12');
+    _b8eTeilchen(ctx, art, mx + 18, y - 6, 1, 0);
+    ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif';
+    ctx.fillText(name, mx + 28, y - 2);
+    ctx.font = '12px sans-serif';
+    ctx.fillText('Start 100 · jetzt', mx + 12, y + 15);
+    ctx.font = '700 15px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillStyle = art === 'o2' ? '#1d4ed8' : '#9a3412';
+    ctx.fillText(String(v), mx + mw - 10, y + 16);
+  });
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(mx + 10, my + 62); ctx.lineTo(mx + mw - 10, my + 62); ctx.stroke();
+
+  // Uhr: ein Umlauf = 1 Stunde
+  const ux = 342, uy = 168, ur = 28, min = _b8e.uhr / _B8E_T * 60;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (min > 0) {                                        // abgelaufene Zeit als Tortenstück
+    ctx.fillStyle = 'rgba(34,197,94,0.25)';
+    ctx.beginPath(); ctx.moveTo(ux, uy); ctx.arc(ux, uy, ur - 3, -Math.PI / 2, -Math.PI / 2 + min / 60 * 2 * Math.PI); ctx.closePath(); ctx.fill();
+  }
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  for (let k = 0; k < 12; k++) {
+    const w = k / 12 * 2 * Math.PI;
+    ctx.beginPath(); ctx.moveTo(ux + Math.sin(w) * (ur - 6), uy - Math.cos(w) * (ur - 6));
+    ctx.lineTo(ux + Math.sin(w) * (ur - 2), uy - Math.cos(w) * (ur - 2)); ctx.stroke();
+  }
+  const wz = min / 60 * 2 * Math.PI;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.sin(wz) * (ur - 8), uy - Math.cos(wz) * (ur - 8)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(ux, uy, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = hA > 0.5 ? '#0f172a' : '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Uhr: ' + _b8eUhrText(), ux, uy + ur + 16);
+
+  // Einstellung unten links, Zeitraffer oben links
+  ctx.fillStyle = hA > 0.5 ? '#0f172a' : '#f1f5f9'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_b8eEinstellung(), 8, H - 10);
+  if (_b8e.laeuft) {
+    ctx.fillStyle = hA > 0.5 ? 'rgba(15,23,42,0.7)' : 'rgba(241,245,249,0.85)'; ctx.font = '700 11px sans-serif';
+    ctx.fillText(_b8e.zeitlupe ? 'Zeitlupe' : 'Zeitraffer', 72, 16);
+  }
+  _bioFxAlleDraw(ctx, _b8e.fx);
+  _b8eBandDraw(ctx, W, H);
+}
+// Ruhiger Hinweisstreifen unten über dem Tisch (verdeckt das Messgerät nicht).
+function _b8eBandDraw(ctx, W, H) {
+  const b = _b8e.band;
+  if (!b) return;
+  const a = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.4)) *
+            (1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6)));
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  const x = 6, y = H - 30 + (1 - _bioFxKlemme(b.alter / 0.4)) * 8, w = W - 12, h = 26;
+  ctx.fillStyle = 'rgba(15,23,42,0.88)'; _bioFxRundRect(ctx, x, y, w, h, 7); ctx.fill();
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 2; _bioFxRundRect(ctx, x, y, w, h, 7); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(b.text, W / 2, y + 18);
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · DAS NETZ IM WALD   (Förderheft Biologie 8 · bo6, Kennung bio-nahrungsnetz)
+// Ein Nahrungsnetz aus Bildkarten: Buchecker, Buchenblatt, Brombeere (Produzenten),
+// Maus, Eichhörnchen, Raupe, Meise, Fuchs, Waldkauz (Konsumenten).
+// Jeder Pfeil zeigt vom Gefressenen zum Fresser („wird gefressen von“), gelbe
+// Energiepunkte wandern nur in Pfeilrichtung, nie zurück.
+// Das Kind stellt „Wer fehlt?“ um (niemand / Mäuse / Meisen): Das Bild der Art
+// wird grau, alle ihre Pfeile werden gestrichelt, die Punkte darauf versiegen.
+// „▶ 1 Jahr warten“ lässt ein Jahr im Zeitraffer vergehen (8 s); die Zähler
+// laufen von 4 Füchsen und 6 Waldkäuzen zu den Modellwerten:
+//   niemand  Füchse: 4 · Waldkäuze: 6
+//   Mäuse    Füchse: 3 · Waldkäuze: 2
+//   Meisen   Füchse: 4 · Waldkäuze: 5
+// Energiepunkte je Sekunde (Modell): Pfeile in den Fuchs 1 + 1,5 + 1,5 = 4,
+// in den Waldkauz 4 + 2 = 6 – der Zufluss je Räuber ist so groß wie seine Zahl.
+// Ohne Meisen fließt mehr über den Mäuse-Pfeil (5), ohne Mäuse bleiben dem
+// Fuchs 3, dem Waldkauz 2 (Rechentest: _b8fZufluss).
+// AHA (nach dem Jahr, _bioFx): Die Fehlvorstellung „Fuchs und Waldkauz sterben
+// aus“ wird widerlegt – an Fuchs und Waldkauz breitet sich ein Lichtring aus,
+// die Pfeile, die noch Energie tragen, leuchten golden auf, über den noch
+// lebenden Tieren glitzert es, dann das Banner „Füchse und Waldkäuze leben noch
+// im Wald.“ Keine Merksatz- oder Aufgabenlösung im Bild, keine Wertung, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _b8f = null;
+const _B8F_WAHL = ['niemand', 'Mäuse', 'Meisen'];
+const _B8F_FEHLT = [null, 'maus', 'meise'];
+const _B8F_JAHR = 8;                         // Sekunden für ein Jahr
+const _B8F_START = { fuchs: 4, kauz: 6 };
+const _B8F_ENDE = [{ fuchs: 4, kauz: 6 }, { fuchs: 3, kauz: 2 }, { fuchs: 4, kauz: 5 }];
+// Bildkarten (Mitte), Kartengröße 64 × 42
+const _B8F_KW = 64, _B8F_KH = 42;
+const _B8F_N = {
+  fuchs: { name: 'Fuchs',        x: 72,  y: 30 },
+  kauz:  { name: 'Waldkauz',     x: 348, y: 30 },
+  eich:  { name: 'Eichhörnchen', x: 122, y: 124 },
+  maus:  { name: 'Maus',         x: 228, y: 128 },
+  meise: { name: 'Meise',        x: 366, y: 104 },
+  raupe: { name: 'Raupe',        x: 382, y: 180 },
+  brom:  { name: 'Brombeere',    x: 36,  y: 168 },
+  buch:  { name: 'Buchecker',    x: 170, y: 210 },
+  blatt: { name: 'Buchenblatt',  x: 296, y: 210 }
+};
+// Pfeile: von → nach („wird gefressen von“), Energiepunkte je Sekunde
+// [niemand, Mäuse fehlen, Meisen fehlen] – 0 = Pfeil gestrichelt.
+const _B8F_K = [
+  { von: 'buch',  nach: 'maus',  r: [1.0, 0, 1.0] },
+  { von: 'buch',  nach: 'eich',  r: [1.0, 1.0, 1.0] },
+  { von: 'blatt', nach: 'raupe', r: [1.0, 1.0, 1.0] },
+  { von: 'raupe', nach: 'meise', r: [1.0, 1.0, 0] },
+  { von: 'maus',  nach: 'fuchs', r: [1.0, 0, 1.0] },
+  { von: 'eich',  nach: 'fuchs', r: [1.5, 1.5, 1.5] },
+  { von: 'brom',  nach: 'fuchs', r: [1.5, 1.5, 1.5] },
+  { von: 'maus',  nach: 'kauz',  r: [4.0, 0, 5.0] },
+  { von: 'meise', nach: 'kauz',  r: [2.0, 2.0, 0] }
+];
+const _B8F_TEMPO = 0.45;     // Anzeige: Energiepunkte je Sekunde = Rate × Tempo
+
+function _b8fInit() {
+  _b8f = { wahl: 0, phase: 'bereit', p: 0, t: 0, nach: -1, schritt: 0,
+           punkte: [], akku: _B8F_K.map((k, i) => 0.13 * i), grau: {}, glut: {},
+           leucht: -1, lupeDa: false, letzt: '', fx: { teile: [] } };
+  for (const id in _B8F_N) { _b8f.grau[id] = 0; _b8f.glut[id] = 0; }
+  // Das Netz lebt schon beim Öffnen: Punkte liegen verteilt auf den Pfeilen.
+  _B8F_K.forEach((k, i) => { for (let s = 0.15; s < 1; s += 0.42) _b8f.punkte.push({ k: i, s: (s + i * 0.07) % 1, a: 1 }); });
+}
+
+// ── Modell ─────────────────────────────────────────────
+function _b8fFehlt(id) { return _B8F_FEHLT[_b8f.wahl] === id; }
+function _b8fKanteAn(i, wahl) {
+  const w = wahl == null ? _b8f.wahl : wahl;
+  return _B8F_K[i].r[w] > 0;
+}
+// Energie-Zufluss in eine Art (Summe der Raten aller Pfeile, die zu ihr führen)
+function _b8fZufluss(id, wahl) {
+  return _B8F_K.reduce((s, k) => s + (k.nach === id ? k.r[wahl] : 0), 0);
+}
+// Zahl der Tiere beim Anteil p des Jahres (ganzzahlig, am Ende genau der Modellwert)
+function _b8fZahl(art, p) {
+  const a = _B8F_START[art], e = _B8F_ENDE[_b8f.wahl][art];
+  const weg = a - e;
+  if (weg <= 0) return a;
+  return a - Math.min(weg, Math.floor(weg * Math.min(1, p / 0.9) + 1e-9));
+}
+function _b8fJetzt() {
+  const p = _b8f.phase === 'bereit' ? 0 : _b8f.phase === 'ende' ? 1 : _b8f.p;
+  return { fuchs: _b8fZahl('fuchs', p), kauz: _b8fZahl('kauz', p) };
+}
+function _b8fMonat() { return Math.min(12, Math.max(1, Math.ceil(_b8f.p * 12 - 1e-9))); }
+
+// ── Oberfläche ─────────────────────────────────────────
+function _b8fHTML() {
+  const wahl = _B8F_WAHL.map((w, i) =>
+    `<button class="sim-btn${i === 0 ? ' primary' : ''}" data-b8f="w${i}" onclick="_b8fWahl(${i})">${w}</button>`).join('');
+  const marken = _B8F_WAHL.map((w, i) =>
+    `<button class="sim-btn" onclick="_b8fMarke(${i})">${w} · nach 1 Jahr</button>`).join('');
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wer frisst wen im Wald?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jeder Pfeil zeigt vom Gefressenen zum Fresser: „wird gefressen von“. Die gelben Punkte sind Energie. Sie wandern in Pfeilrichtung.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8f-los" onclick="_b8fWarten()">▶ 1 Jahr warten</button>
+          <button class="sim-btn" onclick="_b8fNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Wer fehlt?</span>
+          <div class="sim-btn-row">${wahl}</div>
+        </div>
+        <div class="lmp-status on" id="_b8f-zaehler" style="margin-top:8px;font-weight:700"></div>
+        <div class="lmp-status on" id="_b8f-status"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px;flex-wrap:wrap">${marken}</div>
+        <div class="fpm-note" style="margin-top:8px">Fehlt eine Art, wird ihr Bild grau. Alle ihre Pfeile werden gestrichelt.</div>
+        <div class="fpm-note" style="margin-top:6px">Alle Zahlen sind Modellwerte für ein kleines Waldstück.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Wer fehlt? niemand &nbsp;|&nbsp; Stelle um, dann drücke „▶ 1 Jahr warten“.</p>
+  </div>`;
+}
+
+function _b8fFxLeer() {
+  _b8f.fx = { teile: [] }; _b8f.zeitlupe = null;
+  _b8f.nach = -1; _b8f.schritt = 0; _b8f.leucht = -1; _b8f.lupeDa = false;
+}
+function _b8fWahl(v) {
+  if (!_b8f) return;
+  const w = Math.max(0, Math.min(2, Math.round(+v) || 0));
+  _b8f.wahl = w; _b8f.phase = 'bereit'; _b8f.p = 0;   // neue Einstellung = neues Jahr
+  _b8fFxLeer();
+  const id = _B8F_FEHLT[w];
+  if (id) { const n = _B8F_N[id]; _bioFxWelle(_b8f.fx.teile, n.x, n.y, '#94a3b8', 40); }
+  _b8fStatus();
+}
+function _b8fWarten() {
+  if (!_b8f || _b8f.phase === 'jahr') return;
+  _b8fFxLeer();
+  _b8f.phase = 'jahr'; _b8f.p = 0;
+  _b8fStatus();
+}
+function _b8fNeu() {
+  if (!_b8f) return;
+  _b8f.wahl = 0; _b8f.phase = 'bereit'; _b8f.p = 0;
+  _b8fFxLeer(); _b8fStatus();
+}
+// Sprungmarke: Einstellung wählen und gleich das Ende des Jahres zeigen.
+function _b8fMarke(v) {
+  if (!_b8f) return;
+  _b8fWahl(v);
+  for (const id in _B8F_N) _b8f.grau[id] = _b8fFehlt(id) ? 1 : 0;
+  _b8f.phase = 'ende'; _b8f.p = 1; _b8f.nach = 0; _b8f.schritt = 0;
+  _b8fStatus();
+}
+
+function _b8fZeilen() {
+  const z = _b8fJetzt();
+  const zahl = 'Füchse: ' + z.fuchs + ' · Waldkäuze: ' + z.kauz;
+  const w = _B8F_WAHL[_b8f.wahl];
+  if (_b8f.phase === 'bereit') {
+    const s = _b8f.wahl === 0
+      ? 'Wer fehlt? niemand · Alle Pfeile tragen Energie. Drücke „▶ 1 Jahr warten“.'
+      : 'Wer fehlt? ' + w + ' · Das Bild der ' + _B8F_N[_B8F_FEHLT[_b8f.wahl]].name + ' ist grau. Alle Pfeile der ' +
+        _B8F_N[_B8F_FEHLT[_b8f.wahl]].name + ' sind gestrichelt. Drücke „▶ 1 Jahr warten“.';
+    return ['Zu Beginn: ' + zahl, s];
+  }
+  if (_b8f.phase === 'jahr')
+    return ['Monat ' + _b8fMonat() + ' von 12 · ' + zahl, 'Wer fehlt? ' + w + ' · Ein Jahr vergeht im Zeitraffer …'];
+  return ['Nach 1 Jahr: ' + zahl, 'Wer fehlt? ' + w + ' · Das Jahr ist vorbei. Lies ab, wie viele Füchse und Waldkäuze im Wald leben.'];
+}
+function _b8fStatus() {
+  if (!_b8f) return;
+  const [a, b] = _b8fZeilen();
+  const za = document.getElementById('_b8f-zaehler');
+  if (za && za.textContent !== a) za.textContent = a;
+  const st = document.getElementById('_b8f-status');
+  if (st && st.textContent !== b) { st.textContent = b; st.className = 'lmp-status on'; }
+  _b8f.letzt = a + b;
+  try {
+    document.querySelectorAll('[data-b8f]').forEach(k => {
+      const d = k.getAttribute('data-b8f');
+      if (k.classList) k.classList.toggle('primary', d === 'w' + _b8f.wahl);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8f-los');
+  if (los && los.classList) los.classList.toggle('primary', _b8f.phase !== 'jahr');
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _b8fUpdate(dt) {
+  if (!_b8f) return;
+  dt = _bioFxDt(dt);
+  const S = _b8f;
+  let d = dt;
+  if (S.phase === 'jahr') {
+    d = dt * _bioFxZeitlupeFaktor(S, dt);
+    const vorher = _b8fJetzt();
+    S.p = Math.min(1, S.p + d / _B8F_JAHR);
+    const jetzt = _b8fJetzt();
+    // Ein Tier weniger: kleiner grauer Ring, beim ersten Mal kurze Zeitlupe
+    for (const art of ['fuchs', 'kauz']) {
+      if (jetzt[art] < vorher[art]) {
+        const q = _b8fMiniPos(art, jetzt[art]);
+        _bioFxWelle(S.fx.teile, q.x, q.y, '#94a3b8', 14);
+        if (!S.lupeDa) { S.lupeDa = true; _bioFxZeitlupe(S, 0.35, 1.0); }
+      }
+    }
+    // Herbst: ein paar Buchenblätter segeln
+    if (S.p > 0.7 && S.p < 0.8 && Math.random() < dt * 3)
+      _bioFxBlaetter(S.fx.teile, _B8F_N.blatt.x, _B8F_N.blatt.y - 16, 1, ['#d97706', '#b45309', '#eab308']);
+    if (S.p >= 1) { S.phase = 'ende'; S.nach = 0; S.schritt = 0; }
+    if (_b8fZeilen().join('') !== S.letzt) _b8fStatus();
+  } else if (S.nach >= 0) {
+    S.nach += dt;
+    _b8fAha();
+  }
+  S.t += d;
+  // Grau ein- und ausblenden
+  const k = Math.min(1, dt * 3);
+  for (const id in _B8F_N) S.grau[id] += ((_b8fFehlt(id) ? 1 : 0) - S.grau[id]) * k;
+  for (const id in _B8F_N) S.glut[id] = Math.max(0, S.glut[id] - dt * 1.8);
+  // Energiepunkte: im Zeitraffer schneller, nur in Pfeilrichtung
+  const lauf = S.phase === 'jahr' ? 1.25 : 0.5;          // Pfeillängen je Sekunde
+  const tempo = S.phase === 'jahr' ? 2.2 : 1;
+  _B8F_K.forEach((kk, i) => {
+    const r = kk.r[S.wahl] * _B8F_TEMPO * tempo;
+    if (r <= 0) return;
+    S.akku[i] += d * r;
+    while (S.akku[i] >= 1) { S.akku[i] -= 1; S.punkte.push({ k: i, s: 0, a: 1 }); }
+  });
+  for (let j = S.punkte.length - 1; j >= 0; j--) {
+    const pt = S.punkte[j];
+    pt.s += d * lauf;
+    if (!_b8fKanteAn(pt.k)) pt.a -= dt * 1.4;           // Pfeil versiegt: Punkt verblasst
+    if (pt.s >= 1 || pt.a <= 0) {
+      if (pt.s >= 1 && pt.a > 0) S.glut[_B8F_K[pt.k].nach] = Math.min(1, S.glut[_B8F_K[pt.k].nach] + 0.35);
+      S.punkte.splice(j, 1);
+    }
+  }
+  if (S.punkte.length > 160) S.punkte.splice(0, S.punkte.length - 160);
+  _bioFxAlleUpdate(S.fx, dt);
+}
+
+// Nach dem Jahr: erst stehen die Zähler, dann bestätigt der Effekt.
+function _b8fAha() {
+  const S = _b8f, fx = S.fx, t = S.nach, f = _B8F_N.fuchs, w = _B8F_N.kauz;
+  if (S.schritt === 0 && t >= 0.3) {
+    S.schritt = 1;
+    _bioFxWelle(fx.teile, f.x, f.y, '#fde047', 48);
+    _bioFxWelle(fx.teile, w.x, w.y, '#fde047', 48);
+  }
+  if (S.schritt === 1 && t >= 0.7) {
+    S.schritt = 2;
+    S.leucht = S.t;                                     // Pfeile mit Energie leuchten auf
+    const z = _b8fJetzt();
+    for (let i = 0; i < z.fuchs; i++) { const q = _b8fMiniPos('fuchs', i); _bioFxFunken(fx.teile, q.x, q.y, 3); }
+    for (let i = 0; i < z.kauz; i++) { const q = _b8fMiniPos('kauz', i); _bioFxFunken(fx.teile, q.x, q.y, 3); }
+  }
+  if (S.schritt === 2 && t >= 1.3) {
+    S.schritt = 3;
+    if (S.wahl === 0) _bioFxBanner(fx, 'Alle Pfeile tragen Energie.', 3.0, '#86efac');
+    else _bioFxBanner(fx, 'Füchse und Waldkäuze leben noch im Wald.', 3.6, '#fde047');
+  }
+  if (t > 4.5) S.nach = -1;
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+// Wo steht das kleine Tierbild Nummer i (Zähler im Bild)?
+function _b8fMiniPos(art, i) {
+  if (art === 'fuchs') return { x: 116 + i * 15, y: 26 };
+  return { x: 306 - (i % 3) * 16, y: i < 3 ? 18 : 40 };
+}
+// Randpunkt der Karte in Richtung (dx,dy)
+function _b8fRand(n, dx, dy, zu) {
+  const hw = _B8F_KW / 2 + 3, hh = _B8F_KH / 2 + 3;
+  const s = Math.min(hw / Math.max(1e-6, Math.abs(dx)), hh / Math.max(1e-6, Math.abs(dy)));
+  return { x: n.x + dx * s * zu, y: n.y + dy * s * zu };
+}
+function _b8fStrecke(i) {
+  const k = _B8F_K[i], a = _B8F_N[k.von], b = _B8F_N[k.nach];
+  const dx = b.x - a.x, dy = b.y - a.y;
+  const p = _b8fRand(a, dx, dy, 1), q = _b8fRand(b, -dx, -dy, 1);
+  return { x0: p.x, y0: p.y, x1: q.x, y1: q.y };
+}
+function _b8fPfeil(ctx, i) {
+  const S = _b8f, st = _b8fStrecke(i), an = _b8fKanteAn(i);
+  const ang = Math.atan2(st.y1 - st.y0, st.x1 - st.x0);
+  ctx.save();
+  // Aha: Pfeile, die noch Energie tragen und zu Fuchs oder Waldkauz führen, leuchten
+  const k = _B8F_K[i];
+  if (an && S.leucht >= 0 && (k.nach === 'fuchs' || k.nach === 'kauz')) {
+    const alter = S.t - S.leucht;
+    const a = alter < 2.4 ? (0.55 + 0.3 * Math.sin(alter * Math.PI * 2 * 0.8)) * (1 - _bioFxEase.rein(alter / 2.4)) : 0;
+    if (a > 0.01) {
+      ctx.globalAlpha = a; ctx.strokeStyle = '#fcd34d'; ctx.lineWidth = 8; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(st.x0, st.y0); ctx.lineTo(st.x1, st.y1); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+  }
+  ctx.strokeStyle = an ? '#3f4a3a' : '#a8b0a4';
+  ctx.fillStyle = ctx.strokeStyle;
+  ctx.lineWidth = an ? 2 : 1.6;
+  if (!an && ctx.setLineDash) ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(st.x0, st.y0); ctx.lineTo(st.x1 - Math.cos(ang) * 6, st.y1 - Math.sin(ang) * 6); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  ctx.beginPath();
+  ctx.moveTo(st.x1, st.y1);
+  ctx.lineTo(st.x1 - Math.cos(ang - 0.42) * 10, st.y1 - Math.sin(ang - 0.42) * 10);
+  ctx.lineTo(st.x1 - Math.cos(ang + 0.42) * 10, st.y1 - Math.sin(ang + 0.42) * 10);
+  ctx.closePath();
+  if (an) ctx.fill(); else { ctx.lineWidth = 1.2; ctx.stroke(); }
+  ctx.restore();
+}
+function _b8fPunkte(ctx) {
+  for (const pt of _b8f.punkte) {
+    const st = _b8fStrecke(pt.k);
+    const x = st.x0 + (st.x1 - st.x0) * pt.s, y = st.y0 + (st.y1 - st.y0) * pt.s;
+    const a = Math.max(0, Math.min(1, pt.a)) * Math.min(1, pt.s * 8, (1 - pt.s) * 8 + 0.3);
+    if (a <= 0.02) continue;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.fillStyle = 'rgba(251,191,36,0.45)';
+    ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.arc(x, y, 2.8, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fffbeb';
+    ctx.beginPath(); ctx.arc(x - 0.8, y - 0.8, 1, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+}
+
+// Kleine Bilder der Lebewesen, Mitte (0,0), etwa 40 × 26 groß
+function _b8fBild(ctx, id, t) {
+  const wipp = Math.sin(t * 2 + id.length) * 0.8;
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  if (id === 'buch') {                                   // zwei Bucheckern vor der offenen Fruchthülle
+    ctx.fillStyle = '#9a6a35';
+    for (const r of [-0.9, -0.3, 0.3, 0.9]) {
+      ctx.save(); ctx.translate(0, 9); ctx.rotate(r);
+      ctx.beginPath(); ctx.ellipse(0, -9, 3.2, 9, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.restore();
+    }
+    ctx.fillStyle = '#6b4220';
+    for (const [x, r] of [[-5, -0.25], [5, 0.25]]) {
+      ctx.save(); ctx.translate(x, 2); ctx.rotate(r);
+      ctx.beginPath(); ctx.moveTo(0, -9); ctx.quadraticCurveTo(5, 0, 4.5, 7); ctx.lineTo(-4.5, 7); ctx.quadraticCurveTo(-5, 0, 0, -9); ctx.fill();
+      ctx.strokeStyle = '#3f2610'; ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.moveTo(0, -8); ctx.lineTo(0, 6); ctx.stroke();
+      ctx.restore();
+    }
+  } else if (id === 'blatt') {                           // Buchenblatt mit Adern
+    ctx.save(); ctx.rotate(-0.35 + Math.sin(t * 1.3) * 0.06);
+    ctx.fillStyle = '#4d9a3a';
+    ctx.beginPath(); ctx.moveTo(-17, 0); ctx.quadraticCurveTo(0, -12, 17, 0); ctx.quadraticCurveTo(0, 12, -17, 0); ctx.fill();
+    ctx.strokeStyle = '#2f6b24'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-19, 0); ctx.lineTo(15, 0); ctx.stroke();
+    for (let k = -2; k <= 2; k++) { ctx.beginPath(); ctx.moveTo(k * 5, 0); ctx.lineTo(k * 5 + 4, -6); ctx.moveTo(k * 5, 0); ctx.lineTo(k * 5 + 4, 6); ctx.stroke(); }
+    ctx.restore();
+  } else if (id === 'brom') {                            // Brombeeren an einem Zweig
+    ctx.fillStyle = '#3f8a34';
+    ctx.beginPath(); ctx.ellipse(-11, -4, 8, 5, -0.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#6b4a1f'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(-16, -9); ctx.quadraticCurveTo(0, -12, 14, -6); ctx.stroke();
+    for (const [bx, by] of [[-2, 3], [9, 2]]) {
+      for (let k = 0; k < 7; k++) {
+        const a = k * 0.9, r = k === 0 ? 0 : 3.3;
+        ctx.fillStyle = k % 2 ? '#2b1640' : '#3d1f5c';
+        ctx.beginPath(); ctx.arc(bx + Math.cos(a) * r, by + Math.sin(a) * r, 2.4, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+  } else if (id === 'maus') {                            // Maus von der Seite
+    ctx.strokeStyle = '#9c8b7a'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(-10, 5); ctx.quadraticCurveTo(-20, 8 + wipp, -18, -2); ctx.stroke();
+    ctx.fillStyle = '#8d7b69';
+    ctx.beginPath(); ctx.ellipse(-1, 3, 11, 7, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(10, 0 + wipp * 0.3, 6, 5, 0.3, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#c9a894'; ctx.beginPath(); ctx.arc(7, -5, 3.6, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(12, -1, 1.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#e8a0a0'; ctx.beginPath(); ctx.arc(16, 1.5, 1.3, 0, 2 * Math.PI); ctx.fill();
+  } else if (id === 'eich') {                            // Eichhörnchen mit buschigem Schwanz
+    ctx.fillStyle = '#b8572a';
+    ctx.save(); ctx.rotate(Math.sin(t * 1.5) * 0.05);
+    ctx.beginPath(); ctx.moveTo(-4, 8); ctx.quadraticCurveTo(-22, 8, -18, -6); ctx.quadraticCurveTo(-14, -14, -6, -10);
+    ctx.quadraticCurveTo(-12, -4, -6, 4); ctx.closePath(); ctx.fill();
+    ctx.restore();
+    ctx.fillStyle = '#c4632f';
+    ctx.beginPath(); ctx.ellipse(2, 3, 7, 8, 0.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(7, -7 + wipp * 0.3, 5, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(5, -11); ctx.lineTo(6, -16); ctx.lineTo(9, -11); ctx.fill();
+    ctx.fillStyle = '#f3dcc0'; ctx.beginPath(); ctx.ellipse(4, 5, 3, 5, 0.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(9, -8, 1.1, 0, 2 * Math.PI); ctx.fill();
+  } else if (id === 'raupe') {                           // Raupe, die sich schlängelt
+    for (let k = 5; k >= 0; k--) {
+      const x = -13 + k * 5.2, y = 3 + Math.sin(t * 3 - k * 0.9) * 2.2;
+      ctx.fillStyle = k === 5 ? '#4d7c0f' : (k % 2 ? '#65a30d' : '#84cc16');
+      ctx.beginPath(); ctx.arc(x, y, k === 5 ? 4.6 : 4, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = '#111'; ctx.beginPath(); ctx.arc(14.5, 2 + Math.sin(t * 3 - 4.5) * 2.2, 0.9, 0, 2 * Math.PI); ctx.fill();
+  } else if (id === 'meise') {                           // Kohlmeise
+    ctx.fillStyle = '#3b6ea5';
+    ctx.beginPath(); ctx.ellipse(-4, 1, 10, 6, -0.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(-12, 2); ctx.lineTo(-20, 6); ctx.lineTo(-19, 1); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#f2c230';
+    ctx.beginPath(); ctx.ellipse(1, 5, 7, 5, 0.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#111';
+    ctx.beginPath(); ctx.arc(7, -5 + wipp * 0.4, 5.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillRect(3, 0, 2.5, 9);
+    ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.ellipse(8, -3.5 + wipp * 0.4, 2.8, 2, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#333'; ctx.beginPath(); ctx.moveTo(12, -5); ctx.lineTo(15.5, -4); ctx.lineTo(12, -3); ctx.fill();
+  } else if (id === 'fuchs') {                           // Fuchskopf
+    ctx.fillStyle = '#d9692a';
+    ctx.beginPath(); ctx.moveTo(-13, -12); ctx.lineTo(-6, -6); ctx.lineTo(6, -6); ctx.lineTo(13, -12);
+    ctx.lineTo(12, 0); ctx.lineTo(0, 12); ctx.lineTo(-12, 0); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#fff5eb';
+    ctx.beginPath(); ctx.moveTo(-10, 0); ctx.lineTo(0, 12); ctx.lineTo(10, 0); ctx.lineTo(0, 4); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#3a2416';
+    ctx.beginPath(); ctx.moveTo(-12, -11); ctx.lineTo(-8, -7); ctx.lineTo(-11, -5); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(12, -11); ctx.lineTo(8, -7); ctx.lineTo(11, -5); ctx.fill();
+    ctx.fillStyle = '#111';
+    const zu = (t % 4.3) < 0.15 ? 0.3 : 1;             // blinzelt selten
+    ctx.beginPath(); ctx.ellipse(-4.5, -2, 1.5, 1.5 * zu, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(4.5, -2, 1.5, 1.5 * zu, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(0, 11, 1.8, 0, 2 * Math.PI); ctx.fill();
+  } else if (id === 'kauz') {                            // Waldkauz, rund, ohne Federohren
+    ctx.fillStyle = '#8a6a4a';
+    ctx.beginPath(); ctx.ellipse(0, 2, 12, 13, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#c9a57c';
+    ctx.beginPath(); ctx.arc(-5, -3, 5.5, 0, 2 * Math.PI); ctx.arc(5, -3, 5.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#1f1408';
+    const zu = (t % 5.1) < 0.18 ? 0.25 : 1;
+    ctx.beginPath(); ctx.ellipse(-5, -3, 2.4, 2.4 * zu, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(5, -3, 2.4, 2.4 * zu, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#e0a93a';
+    ctx.beginPath(); ctx.moveTo(-1.5, 1); ctx.lineTo(1.5, 1); ctx.lineTo(0, 4.5); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#6b4f33'; ctx.lineWidth = 1;
+    for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.moveTo(-5 + k * 5, 8); ctx.lineTo(-4 + k * 5, 11); ctx.stroke(); }
+  }
+}
+// Kleines Symbol für die Zähler im Bild
+function _b8fMini(ctx, art, x, y, lebt) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(0.42, 0.42);
+  ctx.globalAlpha = lebt ? 1 : 0.2;
+  _b8fBild(ctx, art, lebt ? _b8f.t : 0);
+  ctx.restore();
+}
+function _b8fKarte(ctx, id) {
+  const S = _b8f, n = _B8F_N[id], g = S.grau[id];
+  const x = n.x - _B8F_KW / 2, y = n.y - _B8F_KH / 2;
+  const prod = id === 'buch' || id === 'blatt' || id === 'brom';
+  ctx.save();
+  if (S.glut[id] > 0.02 && g < 0.5) {                     // Energie kommt an: weicher Schein
+    ctx.globalAlpha = S.glut[id] * 0.55;
+    ctx.fillStyle = '#fde68a';
+    _bioFxRundRect(ctx, x - 4, y - 4, _B8F_KW + 8, _B8F_KH + 8, 10); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = prod ? '#f1f8e9' : '#fffaf0';
+  ctx.strokeStyle = prod ? '#7cb342' : '#b08850';
+  ctx.lineWidth = 1.6;
+  _bioFxRundRect(ctx, x, y, _B8F_KW, _B8F_KH, 7); ctx.fill(); ctx.stroke();
+  ctx.save();
+  ctx.translate(n.x, n.y - 5);
+  ctx.globalAlpha = 1 - 0.8 * g;
+  _b8fBild(ctx, id, S.t * (1 - g));
+  ctx.restore();
+  if (g > 0.02) {                                        // fehlende Art: grau überdeckt
+    ctx.globalAlpha = g * 0.7;
+    ctx.fillStyle = '#cbd5e1';
+    _bioFxRundRect(ctx, x, y, _B8F_KW, _B8F_KH, 7); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = g > 0.5 ? '#64748b' : '#1f2937';
+  ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(n.name, n.x, y + _B8F_KH - 4);
+  if (g > 0.5) {
+    ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif';
+    ctx.fillText('fehlt', n.x, n.y - 2);
+  }
+  ctx.restore();
+}
+function _b8fJahresuhr(ctx, cx, cy) {
+  const S = _b8f, p = S.phase === 'bereit' ? 0 : S.phase === 'ende' ? 1 : S.p, r = 15;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (p > 0) {
+    // Jahreszeiten: Frühling, Sommer, Herbst, Winter
+    const farbe = ['#86efac', '#fde047', '#fb923c', '#bfdbfe'];
+    for (let q = 0; q < 4; q++) {
+      const a0 = -Math.PI / 2 + q * Math.PI / 2, a1 = Math.min(a0 + Math.PI / 2, -Math.PI / 2 + p * 2 * Math.PI);
+      if (a1 <= a0) break;
+      ctx.fillStyle = farbe[q];
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r - 2, a0, a1); ctx.closePath(); ctx.fill();
+    }
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let m = 0; m < 12; m++) {
+    const a = -Math.PI / 2 + m * Math.PI / 6;
+    ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * (r - 3), cy + Math.sin(a) * (r - 3)); ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r); ctx.stroke();
+  }
+  const a = -Math.PI / 2 + p * 2 * Math.PI;
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(a) * (r - 3), cy + Math.sin(a) * (r - 3)); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  const txt = S.phase === 'bereit' ? 'Beginn' : S.phase === 'ende' ? 'nach 1 Jahr' : 'Monat ' + _b8fMonat();
+  ctx.fillText(txt, cx, cy + r + 12);
+  if (S.phase === 'jahr') {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 9px sans-serif';
+    ctx.fillText(S.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', cx, cy + r + 23);
+  }
+  ctx.restore();
+}
+function _b8fDraw(ctx, cv) {
+  if (!_b8f) return;
+  const S = _b8f, W = cv.width, H = cv.height;
+  const p = S.phase === 'bereit' ? 0 : S.phase === 'ende' ? 1 : S.p;
+  ctx.clearRect(0, 0, W, H);
+  // Waldhintergrund, im Jahreslauf leicht getönt
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  const herbst = S.phase === 'jahr' ? Math.max(0, Math.sin(Math.PI * Math.min(1, Math.max(0, (p - 0.5) / 0.4)))) : 0;
+  bg.addColorStop(0, herbst > 0.3 ? '#f7efdc' : '#eef6ea');
+  bg.addColorStop(1, herbst > 0.3 ? '#e9d9b4' : '#d8e8cc');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Baumstämme im Hintergrund, ruhig wiegende Kronen
+  ctx.save();
+  for (const [x, b] of [[196, 10], [262, 8], [404, 7]]) {
+    ctx.fillStyle = 'rgba(120,98,70,0.18)'; ctx.fillRect(x - b / 2, 60, b, H - 60);
+    ctx.fillStyle = 'rgba(90,140,70,0.12)';
+    ctx.beginPath(); ctx.ellipse(x + Math.sin(S.t * 0.7 + x) * 2, 64, 26, 16, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = 'rgba(110,90,60,0.18)'; ctx.fillRect(0, 238, W, 12);
+  ctx.restore();
+
+  for (let i = 0; i < _B8F_K.length; i++) _b8fPfeil(ctx, i);
+  _b8fPunkte(ctx);
+  for (const id in _B8F_N) _b8fKarte(ctx, id);
+
+  // Zähler im Bild: kleine Füchse und Waldkäuze
+  const z = _b8fJetzt();
+  for (let i = 0; i < _B8F_START.fuchs; i++) { const q = _b8fMiniPos('fuchs', i); _b8fMini(ctx, 'fuchs', q.x, q.y, i < z.fuchs); }
+  for (let i = 0; i < _B8F_START.kauz; i++) { const q = _b8fMiniPos('kauz', i); _b8fMini(ctx, 'kauz', q.x, q.y, i < z.kauz); }
+  _b8fJahresuhr(ctx, 212, 22);
+
+  // Unterer Rand: Einstellung links, Zähler rechts
+  ctx.save();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 11px sans-serif'; ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'left';
+  ctx.fillText('Wer fehlt? ' + _B8F_WAHL[S.wahl], 8, H - 3);
+  ctx.textAlign = 'right';
+  ctx.fillStyle = S.phase === 'ende' ? '#7c2d12' : '#1f2937';
+  ctx.fillText('Füchse: ' + z.fuchs + ' · Waldkäuze: ' + z.kauz, W - 8, H - 3);
+  ctx.restore();
+  // Effekte; das Banner steht zwischen den Reihen, damit Fuchs, Waldkauz und
+  // ihre kleinen Zähler oben frei bleiben.
+  _bioFxDraw(ctx, S.fx.teile);
+  _bioFxStempelDraw(ctx, S.fx);
+  ctx.save(); ctx.translate(0, 56); _bioFxBannerDraw(ctx, S.fx); ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 FOERDER · NAHRUNGSPYRAMIDE: ENERGIE AUF DEM WEG ZUM FUCHS  (Förderheft Bio 8 · bo7)
+// Drei Stufen übereinander: Pflanzen unten, Mäuse in der Mitte, Fuchs oben
+// (nicht maßstäblich, aber nach oben sichtbar schmaler). Das Kind wählt EINE
+// Stufe und drückt „▶ Energie verfolgen“: Zehn gelbe Energie-Punkte kommen
+// in der Stufe an (bei den Pflanzen als Licht von der Sonne, sonst als ein
+// Päckchen aus der Stufe darunter, das in zehn kleinere zerfällt). Dann
+// steigen neun davon als rote Wärme-Kringel seitlich weg, und nur EIN Punkt
+// wandert eine Stufe höher. Beim Fuchs bleibt er im Fuchs – niemand frisst ihn.
+// Modellwerte (Lehrerteil, Zehnprozentregel, glatt):
+//   Pflanzen 10 000 kJ · Wärme 9 000 kJ · weiter 1 000 kJ
+//   Mäuse     1 000 kJ · Wärme   900 kJ · weiter   100 kJ
+//   Fuchs       100 kJ · Wärme    90 kJ · weiter keine
+// Ein Punkt ist also immer ein Zehntel der Stufe; die Legende im Bild nennt
+// seinen Wert (1 000 / 100 / 10 kJ). Die Energiezeile endet auf „kJ Energie“
+// (simfakten liest erst Felder ab 19 Zeichen; „Im Fuchs: 100 kJ“ hat 16). Der Wärmezähler läuft Punkt für Punkt
+// hoch und bleibt stehen.
+// Aha (Fehlvorstellung „fast alles kommt oben an“): Die Kringel ziehen sichtbar
+// weg, der eine Punkt steigt in Zeitlupe auf, an der Stufe darüber ein
+// Lichtring. Ist jede Stufe verfolgt, leuchten die drei Stufen von unten nach
+// oben nacheinander auf – die Pyramide steht, oben leuchtet der kleine Rest.
+// Effekte aus _bioFx (kurz, ruhig, kein Blinken, kein Ton, keine Wertung).
+// Das Bild nennt keine Merksatz- oder Aufgabenlösung als Satz.
+// ═══════════════════════════════════════════════════════
+let _b8g = null;
+const _B8G_KEY  = ['pflanzen', 'maeuse', 'fuchs'];
+const _B8G_NAME = ['Pflanzen', 'Mäuse', 'Fuchs'];
+const _B8G_IN   = ['In den Pflanzen', 'In den Mäusen', 'Im Fuchs'];
+const _B8G_E    = [10000, 1000, 100];                       // kJ in der Stufe
+const _B8G_BAR  = [{ x: 30, y: 176, w: 260, h: 50 },         // Pflanzen
+                   { x: 85, y: 120, w: 150, h: 50 },         // Mäuse
+                   { x: 130, y: 64, w: 60, h: 50 }];         // Fuchs
+const _B8G_FARBE = [['#bbf7d0', '#4ade80', '#15803d'],
+                    ['#e7e5e4', '#a8a29e', '#57534e'],
+                    ['#fed7aa', '#fb923c', '#c2410c']];
+const _B8G_SONNE = { x: 384, y: 34 };
+const _B8G_BLEIB = 2;                                        // dieser Punkt geht weiter
+const _B8G_WEG   = [5, 9, 0, 4, 6, 8, 1, 3, 7];              // Reihenfolge der Wärme
+const _B8G_T = { ab: 2.1, abDt: 0.3, hoch: 5.0, hochDauer: 1.3, ende: 6.6 };
+
+function _b8gInit() {
+  _b8g = { t: 0, stufe: 0, phase: 'bereit', pt: 0, verfolgt: [false, false, false],
+           bau: [0, 0, 0], kringel: [], fx: { teile: [] }, finale: -1, zeitlupe: null, letzt: '' };
+}
+// 10000 -> "10 000", 9000 -> "9 000", 900 -> "900" (wie im Heft)
+function _b8gZahl(n) {
+  const s = String(Math.round(n));
+  return s.length >= 4 ? s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : s;
+}
+function _b8gIdx(k) { const i = _B8G_KEY.indexOf(String(k)); return i < 0 ? 0 : i; }
+
+// ── Bedienung ────────────────────────────────────────────
+function _b8gStufe(k) {
+  if (!_b8g) return;
+  _b8g.stufe = _b8gIdx(k);
+  _b8gLeeren();
+  _b8g.phase = 'bereit'; _b8g.pt = 0;
+  _b8gStatus();
+}
+function _b8gLos() {
+  if (!_b8g || _b8g.phase === 'lauf') return;
+  _b8gLeeren();
+  _b8g.phase = 'lauf'; _b8g.pt = 0;
+  _b8gStatus();
+}
+function _b8gNeu() {
+  if (!_b8g) return;
+  const t = _b8g.t;
+  _b8gInit(); _b8g.t = t;
+  _b8gStatus();
+}
+// Sprungmarke: Stufe wählen und gleich den Endstand zeigen.
+function _b8gMarke(k) {
+  if (!_b8g) return;
+  _b8g.stufe = _b8gIdx(k);
+  _b8gLeeren();
+  _b8g.phase = 'fertig'; _b8g.pt = _B8G_T.ende;
+  _b8gFertig(true);
+  _b8gStatus();
+}
+function _b8gLeeren() {
+  _b8g.kringel = []; _b8g.zeitlupe = null;
+  const fin = _b8g.finale;
+  _b8g.fx = { teile: [] };
+  if (fin >= 0 && fin < 3) _b8g.finale = -1;                // laufendes Finale abbrechen
+}
+
+// ── Zeitplan eines Laufs ─────────────────────────────────
+function _b8gAbflug(s, i) { return s === 0 ? 0.12 * i : 0.85 + 0.07 * i; }
+function _b8gAnkunft(s, i) { return s === 0 ? 0.12 * i + 0.75 : 0.85 + 0.07 * i + 0.35; }
+function _b8gWegZeit(i) {
+  const j = _B8G_WEG.indexOf(i);
+  return j < 0 ? Infinity : _B8G_T.ab + _B8G_T.abDt * j;
+}
+function _b8gAngekommen(pt) {
+  let n = 0;
+  for (let i = 0; i < 10; i++) if (_b8gAnkunft(_b8g.stufe, i) <= pt) n++;
+  return n;
+}
+function _b8gWeg(pt) {
+  let n = 0;
+  for (let j = 0; j < 9; j++) if (_B8G_T.ab + _B8G_T.abDt * j <= pt) n++;
+  return n;
+}
+// Platz i (0..9) in Stufe s: zwei Reihen zu fünf
+function _b8gPlatz(s, i) {
+  const b = _B8G_BAR[s], dx = Math.min(24, (b.w - 12) / 5);
+  const cx = b.x + b.w / 2, sp = i % 5, re = Math.floor(i / 5);
+  return { x: cx + (sp - 2) * dx, y: b.y + b.h * (re ? 0.7 : 0.36), r: Math.min(5, dx * 0.38) };
+}
+function _b8gMitte(s) { const b = _B8G_BAR[s]; return { x: b.x + b.w / 2, y: b.y + b.h / 2 }; }
+
+// ── Anzeigen ─────────────────────────────────────────────
+function _b8gZeilen() {
+  const s = _b8g.stufe, E = _B8G_E[s], p = E / 10;
+  const bereit = _b8g.phase === 'bereit' && !_b8g.verfolgt[s];
+  const fertig = _b8g.phase === 'fertig' || (_b8g.phase === 'bereit' && _b8g.verfolgt[s]);
+  let e, w, n;
+  if (bereit) {
+    e = _B8G_IN[s] + ': ? kJ Energie · Drücke „▶ Energie verfolgen“.';
+    w = 'als Wärme abgegeben: ? kJ';
+    n = 'an die nächste Stufe: ?';
+  } else if (fertig) {
+    e = _B8G_IN[s] + ': ' + _b8gZahl(E) + ' kJ Energie';
+    w = 'als Wärme abgegeben: ' + _b8gZahl(E - p) + ' kJ';
+    n = s === 2 ? 'an die nächste Stufe: keine (niemand frisst den Fuchs)'
+                : 'an die nächste Stufe: ' + _b8gZahl(p) + ' kJ';
+  } else {
+    const pt = _b8g.pt;
+    e = _B8G_IN[s] + ': ' + _b8gZahl(p * _b8gAngekommen(pt)) + ' kJ Energie';
+    w = 'als Wärme abgegeben: ' + _b8gZahl(p * _b8gWeg(pt)) + ' kJ';
+    if (s === 2) n = pt >= _B8G_T.hoch ? 'an die nächste Stufe: keine (niemand frisst den Fuchs)'
+                                       : 'an die nächste Stufe: ?';
+    else n = pt >= _B8G_T.hoch + _B8G_T.hochDauer ? 'an die nächste Stufe: ' + _b8gZahl(p) + ' kJ'
+                                                  : 'an die nächste Stufe: ?';
+  }
+  return [e, w, n];
+}
+function _b8gStatus() {
+  if (!_b8g) return;
+  const z = _b8gZeilen();
+  ['e', 'w', 'n'].forEach((k, i) => {
+    const el = document.getElementById('_b8g-st-' + k);
+    if (el) { el.textContent = z[i]; el.className = 'lmp-status on'; }
+  });
+  _b8g.letzt = z.join('|');
+  try {
+    document.querySelectorAll('[data-b8g]').forEach(b => {
+      const d = b.getAttribute('data-b8g');
+      if (b.classList) b.classList.toggle('primary', d === _B8G_KEY[_b8g.stufe]);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8g-los');
+  if (los && los.classList) los.classList.toggle('primary', _b8g.phase !== 'lauf');
+}
+
+function _b8gHTML() {
+  const k = (i) => `<button class="sim-btn" data-b8g="${_B8G_KEY[i]}" onclick="_b8gStufe('${_B8G_KEY[i]}')">${_B8G_NAME[i]}</button>`;
+  const m = (i) => `<button class="sim-btn" onclick="_b8gMarke('${_B8G_KEY[i]}')">Ergebnis ${_B8G_NAME[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel Energie kommt beim Fuchs an?</h3>
+    <div class="fpm-note" style="margin-top:2px">Unten die Pflanzen, darüber die Mäuse, oben der Fuchs. Die gelben Punkte sind Energie. Wähle eine Stufe. Dann drücke „▶ Energie verfolgen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8g-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8g-los" onclick="_b8gLos()">▶ Energie verfolgen</button>
+          <button class="sim-btn" onclick="_b8gNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Stufe</span>
+          <div class="sim-btn-row">${k(0)}${k(1)}${k(2)}</div>
+        </div>
+        <div class="lmp-status" id="_b8g-st-e" style="margin-top:8px"></div>
+        <div class="lmp-status" id="_b8g-st-w" style="margin-top:4px"></div>
+        <div class="lmp-status" id="_b8g-st-n" style="margin-top:4px"></div>
+        <div class="fpm-note" style="margin-top:8px">Energie misst man in Kilojoule, kurz <b>kJ</b>. Rote Kringel: Energie, die als Wärme abgegeben wird.</div>
+        <div class="fpm-label" style="margin-top:8px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">${m(0)}${m(1)}${m(2)}</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Pflanzen &nbsp;|&nbsp; Die Stufen sind nicht maßstäblich gezeichnet.</p>
+  </div>`;
+}
+
+// ── Ablauf ───────────────────────────────────────────────
+function _b8gUpdate(dt) {
+  if (!_b8g) return;
+  dt = _bioFxDt(dt);
+  _b8g.t += dt;
+  if (_b8g.phase === 'lauf') {
+    const zl = _bioFxZeitlupeFaktor(_b8g, dt);
+    const vor = _b8g.pt;
+    _b8g.pt = Math.min(_B8G_T.ende, vor + dt * zl);
+    _b8gEreignisse(vor, _b8g.pt);
+    if (_b8g.pt >= _B8G_T.ende) { _b8g.phase = 'fertig'; _b8gFertig(false); }
+    if (_b8gZeilen().join('|') !== _b8g.letzt) _b8gStatus();
+  }
+  for (let i = 0; i < 3; i++) if (_b8g.verfolgt[i]) _b8g.bau[i] += dt;
+  for (let i = _b8g.kringel.length - 1; i >= 0; i--) {
+    const k = _b8g.kringel[i];
+    k.alter += dt; k.x += k.vx * dt; k.y += k.vy * dt; k.vy -= 6 * dt;
+    if (k.alter >= k.leben) _b8g.kringel.splice(i, 1);
+  }
+  if (_b8g.finale >= 0) _b8gFinale(dt);
+  _bioFxAlleUpdate(_b8g.fx, dt);
+}
+function _b8gEreignisse(vor, jetzt) {
+  const s = _b8g.stufe, fx = _b8g.fx;
+  const quer = a => vor < a && jetzt >= a;
+  if (s > 0 && quer(0.85)) {                                // Päckchen zerfällt in zehn
+    const m = _b8gMitte(s);
+    _bioFxWelle(fx.teile, m.x, m.y, '#fde047', 26);
+  }
+  for (let j = 0; j < 9; j++) {                             // Wärme-Kringel steigen weg
+    const a = _B8G_T.ab + _B8G_T.abDt * j;
+    if (!quer(a)) continue;
+    const i = _B8G_WEG[j], p = _b8gPlatz(s, i), m = _b8gMitte(s);
+    const seite = p.x < m.x ? -1 : p.x > m.x ? 1 : (j % 2 ? 1 : -1);
+    _b8g.kringel.push({ x: p.x, y: p.y, vx: seite * (38 + (j % 3) * 8), vy: -14 - (j % 2) * 6,
+                        alter: 0, leben: 1.7, ph: j * 1.3 });
+  }
+  if (quer(_B8G_T.hoch)) {
+    if (s < 2) _bioFxZeitlupe(_b8g, 0.4, 1.3);              // der eine Punkt steigt langsam
+    else {
+      const p = _b8gPlatz(2, _B8G_BLEIB);
+      _bioFxWelle(fx.teile, p.x, p.y, '#fde047', 22);
+    }
+  }
+  if (s < 2 && quer(_B8G_T.hoch + _B8G_T.hochDauer)) {      // Ankunft eine Stufe höher
+    const m = _b8gMitte(s + 1);
+    _bioFxWelle(fx.teile, m.x, m.y, '#fde047', 40);
+    _bioFxFunken(fx.teile, m.x, m.y, 6, ['#fde047', '#fff3b0', '#ffffff']);
+  }
+}
+function _b8gFertig(sprung) {
+  const s = _b8g.stufe, neu = !_b8g.verfolgt[s];
+  _b8g.verfolgt[s] = true;
+  if (neu) _b8g.bau[s] = sprung ? 0.3 : 0;
+  if (neu && _b8g.verfolgt.every(v => v)) { _b8g.finale = 0; _b8g.finStufe = 0; }
+}
+// Alle drei Stufen verfolgt: die Pyramide leuchtet von unten nach oben auf.
+function _b8gFinale(dt) {
+  const fx = _b8g.fx, vor = _b8g.finale;
+  _b8g.finale += dt;
+  const f = _b8g.finale;
+  for (let s = 0; s < 3; s++) {
+    const a = 0.3 + 0.45 * s;
+    if (vor < a && f >= a) {
+      const m = _b8gMitte(s);
+      _bioFxWelle(fx.teile, m.x, m.y, _B8G_FARBE[s][1], 30 + _B8G_BAR[s].w * 0.3);
+    }
+  }
+  if (vor < 1.9 && f >= 1.9) {
+    const p = _b8gPlatz(2, _B8G_BLEIB);
+    _bioFxFunken(fx.teile, p.x, p.y - 4, 8, ['#fde047', '#fff3b0', '#ffffff']);
+    _bioFxBanner(fx, 'Unten so viel – oben so wenig.', 3.2, '#fde047');
+  }
+  if (f > 6) _b8g.finale = 99;                              // vorbei, Pyramide bleibt
+}
+
+// ── Zeichnen ─────────────────────────────────────────────
+function _b8gPunkt(ctx, x, y, r, a, glanz) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  const g = ctx.createRadialGradient(x, y, 0, x, y, r * 2.2);
+  g.addColorStop(0, 'rgba(253,224,71,0.9)'); g.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 2.2 * (glanz || 1), 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.beginPath(); ctx.arc(x - r * 0.3, y - r * 0.3, r * 0.3, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _b8gKringel(ctx, k) {
+  const u = k.alter / k.leben, a = (1 - u) * Math.min(1, k.alter / 0.15);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (let q = 0; q <= 14; q++) {
+    const s = q / 14;
+    const px = k.x + Math.sin(s * 4 * Math.PI + _b8g.t * 5 + k.ph) * 4;
+    const py = k.y + 6 - s * 16;
+    if (q === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+  if (k.alter < 0.3) {                                      // der Punkt, der zu Wärme wird
+    ctx.globalAlpha = 1 - k.alter / 0.3;
+    ctx.fillStyle = '#f87171';
+    ctx.beginPath(); ctx.arc(k.x, k.y + 6, 4, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _b8gStufeZeichnen(ctx, s) {
+  const b = _B8G_BAR[s], f = _B8G_FARBE[s], t = _b8g.t;
+  const voll = _b8g.verfolgt[s];
+  const wuchs = voll ? _bioFxEase.federn(_bioFxKlemme(_b8g.bau[s] / 0.6)) : 0;
+  // Umriss (gestrichelt), solange die Stufe nicht verfolgt ist
+  ctx.save();
+  ctx.fillStyle = f[0]; ctx.globalAlpha = 0.45;
+  ctx.fillRect(b.x, b.y, b.w, b.h);
+  ctx.globalAlpha = 1;
+  ctx.setLineDash([5, 4]); ctx.strokeStyle = f[2]; ctx.lineWidth = 1.5;
+  ctx.strokeRect(b.x + 0.5, b.y + 0.5, b.w - 1, b.h - 1);
+  ctx.setLineDash([]);
+  if (wuchs > 0) {                                          // Stufe baut sich auf
+    const w = b.w * wuchs, x = b.x + (b.w - w) / 2;
+    const g = ctx.createLinearGradient(0, b.y, 0, b.y + b.h);
+    g.addColorStop(0, f[1]); g.addColorStop(1, f[2]);
+    ctx.fillStyle = g; ctx.fillRect(x, b.y, w, b.h);
+    ctx.strokeStyle = f[2]; ctx.lineWidth = 2; ctx.strokeRect(x, b.y, w, b.h);
+  }
+  ctx.restore();
+  // kleine Bilder in der Stufe
+  ctx.save();
+  if (s === 0) {                                            // Gräser wiegen sich
+    ctx.strokeStyle = '#15803d'; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    for (let k = 0; k < 22; k++) {
+      const gx = b.x + 6 + k * (b.w - 12) / 21, h = 7 + (k * 7) % 6;
+      const w = Math.sin(t * 1.4 + k * 0.7) * 2;
+      ctx.beginPath(); ctx.moveTo(gx, b.y); ctx.quadraticCurveTo(gx + w * 0.4, b.y - h * 0.5, gx + w, b.y - h); ctx.stroke();
+    }
+    ctx.fillStyle = '#f472b6';
+    for (const k of [4, 11, 17]) {
+      const gx = b.x + 6 + k * (b.w - 12) / 21 + Math.sin(t * 1.4 + k * 0.7) * 2;
+      ctx.beginPath(); ctx.arc(gx, b.y - 10, 2.2, 0, 2 * Math.PI); ctx.fill();
+    }
+  } else if (s === 1) {                                     // drei Mäuse am Rand
+    for (let k = 0; k < 3; k++) {
+      const mx = b.x + 14 + k * 16, my = b.y + b.h - 7 + Math.sin(t * 2 + k) * 0.6;
+      const fell = voll ? '#f5f5f4' : '#6b7280';            // auf dunkler Stufe hell
+      ctx.fillStyle = fell;
+      ctx.beginPath(); ctx.ellipse(mx, my, 5, 3, 0, 0, 2 * Math.PI); ctx.fill();
+      ctx.beginPath(); ctx.arc(mx + 4, my - 2, 1.8, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = fell; ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.moveTo(mx - 5, my); ctx.quadraticCurveTo(mx - 9, my - 3 + Math.sin(t * 3 + k), mx - 11, my); ctx.stroke();
+    }
+  } else {                                                  // Fuchskopf über der Stufe
+    const fx = b.x + b.w / 2, fy = b.y - 9 + Math.sin(t * 1.2) * 0.8;
+    ctx.fillStyle = '#ea580c';
+    ctx.beginPath(); ctx.moveTo(fx - 9, fy - 5); ctx.lineTo(fx - 6, fy - 12); ctx.lineTo(fx - 2, fy - 5);
+    ctx.moveTo(fx + 9, fy - 5); ctx.lineTo(fx + 6, fy - 12); ctx.lineTo(fx + 2, fy - 5); ctx.fill();
+    ctx.beginPath(); ctx.moveTo(fx - 10, fy - 6); ctx.lineTo(fx + 10, fy - 6); ctx.lineTo(fx, fy + 6); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.moveTo(fx - 5, fy - 1); ctx.lineTo(fx + 5, fy - 1); ctx.lineTo(fx, fy + 6); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(fx, fy + 5, 1.3, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(fx - 4, fy - 3.5, 1, 0, 2 * Math.PI); ctx.arc(fx + 4, fy - 3.5, 1, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  // Name und (nach dem Verfolgen) Energie rechts neben der Stufe
+  const nx = b.x + b.w + 8, gewaehlt = s === _b8g.stufe;
+  ctx.save();
+  ctx.textAlign = 'left';
+  ctx.fillStyle = gewaehlt ? '#0f172a' : '#475569';
+  ctx.font = (gewaehlt ? '700 ' : '600 ') + '12px sans-serif';
+  ctx.fillText(_B8G_NAME[s], nx, b.y + 19);
+  if (voll && wuchs > 0.5) {
+    ctx.globalAlpha = _bioFxKlemme((_b8g.bau[s] - 0.3) / 0.4);
+    ctx.fillStyle = '#a16207'; ctx.font = '700 12px sans-serif';
+    ctx.fillText(_b8gZahl(_B8G_E[s]) + ' kJ', nx, b.y + 36);
+  }
+  ctx.restore();
+  if (gewaehlt) {                                           // gewählte Stufe: ruhiger Rahmen
+    ctx.save();
+    ctx.strokeStyle = 'rgba(234,179,8,' + (0.55 + 0.25 * Math.sin(t * Math.PI * 2 * 0.6)).toFixed(3) + ')';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(b.x - 3, b.y - 3, b.w + 6, b.h + 6);
+    ctx.restore();
+  }
+}
+function _b8gPunkteZeichnen(ctx) {
+  const s = _b8g.stufe, pt = _b8g.pt, t = _b8g.t;
+  if (_b8g.phase === 'bereit') {
+    // eine verfolgte Stufe behält ihren letzten Punkt (Fuchs) – sonst leer
+    if (_b8g.verfolgt[2]) { const p = _b8gPlatz(2, _B8G_BLEIB); _b8gPunkt(ctx, p.x, p.y, p.r, 1, 1 + 0.12 * Math.sin(t * 3)); }
+    return;
+  }
+  // Päckchen aus der Stufe darunter
+  if (s > 0 && pt < 0.85) {
+    const a = _b8gMitte(s - 1), z = _b8gMitte(s), u = _bioFxEase.sanft(_bioFxKlemme(pt / 0.8));
+    _b8gPunkt(ctx, a.x + (z.x - a.x) * u, a.y + (z.y - a.y) * u, 7, 1, 1.2);
+  }
+  for (let i = 0; i < 10; i++) {
+    const ab = _b8gAbflug(s, i), an = _b8gAnkunft(s, i), weg = _b8gWegZeit(i);
+    if (pt < ab || pt >= weg) continue;
+    const p = _b8gPlatz(s, i);
+    let x = p.x, y = p.y + Math.sin(t * 3 + i) * 1.2, glanz = 1;
+    if (pt < an) {                                          // unterwegs in die Stufe
+      const q = s === 0 ? _B8G_SONNE : _b8gMitte(s);
+      const u = _bioFxEase.raus(_bioFxKlemme((pt - ab) / (an - ab)));
+      x = q.x + (p.x - q.x) * u; y = q.y + (p.y - q.y) * u;
+    }
+    if (i === _B8G_BLEIB && pt >= _B8G_T.hoch) {
+      if (s < 2) {                                          // steigt eine Stufe höher
+        const z = _b8gMitte(s + 1);
+        const u = _bioFxEase.sanft(_bioFxKlemme((pt - _B8G_T.hoch) / _B8G_T.hochDauer));
+        x = p.x + (z.x - p.x) * u; y = p.y + (z.y - p.y) * u - Math.sin(Math.PI * u) * 10;
+        glanz = 1.3;
+        ctx.save();                                         // leuchtende Spur
+        ctx.strokeStyle = 'rgba(250,204,21,0.45)'; ctx.lineWidth = 2; ctx.setLineDash([3, 4]);
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(x, y); ctx.stroke();
+        ctx.restore();
+      } else glanz = 1 + 0.15 * Math.sin(t * 3);            // bleibt im Fuchs
+    }
+    _b8gPunkt(ctx, x, y, p.r, 1, glanz);
+  }
+  // im Fuchs liegt der Rest weiter, auch wenn gerade eine andere Stufe läuft
+  if (s !== 2 && _b8g.verfolgt[2]) { const p = _b8gPlatz(2, _B8G_BLEIB); _b8gPunkt(ctx, p.x, p.y, p.r, 1, 1); }
+}
+function _b8gDraw(ctx, cv) {
+  if (!_b8g) return;
+  const W = cv.width, H = cv.height, t = _b8g.t, s = _b8g.stufe;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#e0f2fe'); bg.addColorStop(0.72, '#f0fdf4'); bg.addColorStop(1, '#dcfce7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Sonne oben rechts, Strahlen drehen sich langsam
+  const so = _B8G_SONNE;
+  ctx.save();
+  ctx.translate(so.x, so.y); ctx.rotate(t * 0.25);
+  ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2;
+  for (let k = 0; k < 10; k++) {
+    const a = k * Math.PI / 5, l = 20 + 3 * Math.sin(t * 1.5 + k);
+    ctx.beginPath(); ctx.moveTo(Math.cos(a) * 15, Math.sin(a) * 15); ctx.lineTo(Math.cos(a) * l, Math.sin(a) * l); ctx.stroke();
+  }
+  ctx.fillStyle = '#fde047';
+  ctx.beginPath(); ctx.arc(0, 0, 12, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+  if (s === 0 && _b8g.phase === 'lauf' && _b8g.pt < 1.9) {  // Lichtbündel zu den Pflanzen
+    const b = _B8G_BAR[0];
+    ctx.save();
+    ctx.fillStyle = 'rgba(253,224,71,' + (0.16 * (1 - _bioFxKlemme((_b8g.pt - 1.4) / 0.5))).toFixed(3) + ')';
+    ctx.beginPath(); ctx.moveTo(so.x - 8, so.y + 8); ctx.lineTo(so.x + 6, so.y + 12);
+    ctx.lineTo(b.x + b.w, b.y + 8); ctx.lineTo(b.x + 20, b.y + 8); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
+  for (let k = 0; k < 3; k++) _b8gStufeZeichnen(ctx, k);
+  if (_b8g.finale >= 0 && _b8g.finale < 6) {                // Finale: Stufen leuchten nacheinander
+    for (let k = 0; k < 3; k++) {
+      const a = 0.3 + 0.45 * k, u = _b8g.finale - a;
+      if (u < 0 || u > 1.2) continue;
+      const b = _B8G_BAR[k];
+      ctx.save();
+      ctx.globalAlpha = 0.45 * Math.sin(Math.PI * u / 1.2);
+      ctx.fillStyle = '#fef9c3'; ctx.fillRect(b.x, b.y, b.w, b.h);
+      ctx.restore();
+    }
+  }
+  for (const k of _b8g.kringel) _b8gKringel(ctx, k);
+  _b8gPunkteZeichnen(ctx);
+
+  // Legende und Zähler oben links
+  const z = _b8gZeilen(), p = _B8G_E[s] / 10;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.82)'; _bioFxRundRect(ctx, 6, 6, 118, 70, 8); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; _bioFxRundRect(ctx, 6, 6, 118, 70, 8); ctx.stroke();
+  _b8gPunkt(ctx, 17, 19, 4, 1, 0.8);
+  ctx.textAlign = 'left'; ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('= ' + _b8gZahl(p) + ' kJ', 26, 23);
+  const kurz = (zeile) => zeile.split(': ')[1].replace(' · Drücke „▶ Energie verfolgen“.', '').replace(' Energie', '')
+                                               .replace(' (niemand frisst den Fuchs)', '');
+  ctx.font = '600 11px sans-serif';
+  ctx.fillStyle = '#a16207'; ctx.fillText('Energie: ' + kurz(z[0]), 12, 40);
+  ctx.fillStyle = '#b91c1c'; ctx.fillText('Wärme: ' + kurz(z[1]), 12, 55);
+  ctx.fillStyle = '#334155'; ctx.fillText('weiter: ' + kurz(z[2]), 12, 70);
+  ctx.restore();
+
+  ctx.save();
+  ctx.fillStyle = '#64748b'; ctx.font = 'italic 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('nicht maßstäblich', 30, H - 8);
+  if (_b8g.phase === 'lauf' && _b8g.zeitlupe) {
+    ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('▶ Zeitlupe', W - 10, H - 8);
+  }
+  ctx.restore();
+  _bioFxAlleDraw(ctx, _b8g.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · WER RÄUMT DAS LAUB WEG?   (Förderheft Bio 8 · bo8)
+// Ein Kasten Waldboden, obenauf 100 g Buchenlaub auf einer Waage. Im Boden
+// Regenwürmer und Asseln (zerkleinern) sowie Pilzfäden und Bakterien (Lupe,
+// zersetzen). Daneben ein Buchenkeimling, der mit den Mineralstoffen wächst.
+// Regler „Wer fehlt?“: niemand · Regenwürmer und Asseln · Pilze und Bakterien · alle.
+// Modellwerte (Lehrerteil, 1 Jahr):
+//   niemand                 → Laub übrig 10 g  · Mineralstoffe viele      · Keimling groß und grün
+//   Regenwürmer und Asseln  → Laub übrig 60 g  · Mineralstoffe wenige     · Keimling klein
+//   Pilze und Bakterien     → Laub übrig 80 g (klein zerbissen) · fast keine · sehr klein
+//   alle                    → Laub übrig 100 g · Mineralstoffe keine      · sehr klein und gelb
+// Aha: Zeitraffer über ein Jahr mit Regen, Wind und Schnee. Mineralstoff-
+// körnchen wandern aus dem Laub in den Boden und die Wurzel hinauf; bei
+// „niemand“ schließt sich am Ende sichtbar ein Kreis (Laub → Boden → Wurzel →
+// Keimling → neues Blatt fällt auf den Haufen). Bei „alle“ hat es ein ganzes
+// Jahr geregnet und gestürmt – und das Laub liegt noch da (Fehlvorstellung
+// „Regen und Wind machen es zu Erde“). Bei „Pilze und Bakterien“: viele kleine
+// Stücke, aber kaum weniger Laub. Effekte aus _bioFx, kurz, ohne Wertung.
+// ═══════════════════════════════════════════════════════
+let _b8h = null;
+const _B8H_ARTEN = ['niemand', 'tiere', 'destr', 'alle'];
+const _B8H_WORT = { niemand: 'niemand', tiere: 'Regenwürmer und Asseln',
+                    destr: 'Pilze und Bakterien', alle: 'alle' };
+// Endwerte nach 1 Jahr (Modellwerte, genau wie lehrer.tabelle_erwartet)
+const _B8H_ENDE = {
+  niemand: { laub: 10,  min: 0.90, minWort: 'viele',      keim: 1.00, keimWort: 'groß und grün' },
+  tiere:   { laub: 60,  min: 0.40, minWort: 'wenige',     keim: 0.60, keimWort: 'klein' },
+  destr:   { laub: 80,  min: 0.08, minWort: 'fast keine', keim: 0.34, keimWort: 'sehr klein' },
+  alle:    { laub: 100, min: 0.00, minWort: 'keine',      keim: 0.28, keimWort: 'sehr klein und gelb' }
+};
+const _B8H_MONATE = ['Oktober', 'November', 'Dezember', 'Januar', 'Februar', 'März', 'April',
+                     'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober'];
+const _B8H_JAHR = 12;             // Sekunden für ein Jahr (1 Monat = 1 s)
+const _B8H_BODEN = 118;           // Oberkante des Bodens
+const _B8H_CX = 120;              // Mitte des Laubhaufens
+const _B8H_KX = 268;              // Keimling
+const _B8H_LUPE = { x: 58, y: 192, r: 28 };
+
+// Kleiner Zufallsgenerator mit festem Startwert: jedes Mal dasselbe Bild.
+function _b8hZufall(s) {
+  let z = s >>> 0;
+  return () => { z = (z * 1664525 + 1013904223) >>> 0; return z / 4294967296; };
+}
+function _b8hBauen() {
+  const r = _b8hZufall(8081);
+  const farben = ['#d97706', '#b45309', '#ca8a04', '#c2410c', '#a16207', '#92400e', '#e0a31a'];
+  const blaetter = [];
+  for (let i = 0; i < 46; i++) {
+    const stuecke = [];
+    for (let k = 0; k < 4; k++) stuecke.push({ dx: (r() - 0.5) * 2, dy: (r() - 0.5) * 2, w: r() * 6.3, s: 0.7 + r() * 0.5 });
+    const loecher = [];
+    for (let k = 0; k < 4; k++) loecher.push({ dx: (r() - 0.5) * 0.9, dy: (r() - 0.5) * 0.5, r: 0.14 + r() * 0.12 });
+    blaetter.push({ u: (r() - 0.5) * 2, v: r(), w: (r() - 0.5) * 2.4, f: farben[i % farben.length],
+                    g: 8 + r() * 3, stuecke, loecher, ph: r() * 6.3 });
+  }
+  // Pilzfäden: kleine Äste, die nacheinander wachsen (Reihenfolge = Wachstum)
+  const faeden = [];
+  for (let i = 0; i < 26; i++) {
+    const x = 28 + r() * 190, y = _B8H_BODEN - 6 + r() * 34;
+    const w = r() * 6.3, l = 10 + r() * 14;
+    faeden.push({ x, y, x2: x + Math.cos(w) * l, y2: y + Math.sin(w) * l * 0.6, rang: i / 26 });
+  }
+  // feste Plätze für Mineralstoffkörnchen im Boden
+  const koernerPlatz = [];
+  for (let i = 0; i < 40; i++) koernerPlatz.push({ x: 104 + r() * 184, y: 136 + r() * 90, ph: r() * 6.3 });
+  // Bodenkrümel
+  const kruemel = [];
+  for (let i = 0; i < 70; i++) kruemel.push({ x: 10 + r() * 284, y: _B8H_BODEN + 6 + r() * 110, r: 0.8 + r() * 1.8, h: r() });
+  // Bakterien in der Lupe
+  const bakterien = [];
+  for (let i = 0; i < 11; i++) bakterien.push({ x: (r() - 0.5) * 36, y: (r() - 0.5) * 36, w: r() * 6.3, ph: r() * 6.3, f: i % 3 });
+  return { blaetter, faeden, koernerPlatz, kruemel, bakterien };
+}
+function _b8hInit() {
+  _b8h = { fehlt: 'niemand', monat: 0, laeuft: false, t: 0, letzt: '', fx: { teile: [] },
+           nach: -1, schritt: 0, kreis: 0, kreisAlter: -1, koerner: [], minVorher: 0, minAcc: 0,
+           fallBlatt: null, bild: _b8hBauen() };
+}
+// Alle Effekte weg: ein neuer Kasten mit frischem Laub.
+function _b8hFxLeer() {
+  _b8h.fx = { teile: [] }; _b8h.nach = -1; _b8h.schritt = 0;
+  _b8h.kreis = 0; _b8h.kreisAlter = -1; _b8h.koerner = []; _b8h.minVorher = 0; _b8h.minAcc = 0;
+  _b8h.fallBlatt = null;
+}
+function _b8hTiere() { return _b8h.fehlt === 'niemand' || _b8h.fehlt === 'destr'; }
+function _b8hDestr() { return _b8h.fehlt === 'niemand' || _b8h.fehlt === 'tiere'; }
+function _b8hFertig() { return _b8h.monat >= _B8H_JAHR - 1e-9 && !_b8h.laeuft; }
+
+function _b8hHTML() {
+  const knopf = (k) =>
+    `<button class="sim-btn" data-b8h="${k}" onclick="_b8hFehlt('${k}')">${_B8H_WORT[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wer räumt das Laub weg?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Kasten liegt Waldboden. Obenauf liegen 100 g Buchenlaub auf einer Waage. Stelle ein, wer im Boden fehlt. Dann warte 1 Jahr.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8h-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8h-los" onclick="_b8hWarten()">▶ 1 Jahr warten</button>
+          <button class="sim-btn" onclick="_b8hNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Wer fehlt?</span>
+          <div class="sim-btn-row">
+            ${knopf('niemand')}
+            ${knopf('tiere')}
+            ${knopf('destr')}
+            ${knopf('alle')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_b8h-status"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (nach 1 Jahr)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b8hMarke('niemand')">niemand fehlt</button>
+          <button class="sim-btn" onclick="_b8hMarke('tiere')">ohne Regenwürmer und Asseln</button>
+          <button class="sim-btn" onclick="_b8hMarke('destr')">ohne Pilze und Bakterien</button>
+          <button class="sim-btn" onclick="_b8hMarke('alle')">alle fehlen</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Im Boden leben Regenwürmer, Asseln, Pilze und Bakterien. Die Pilze wachsen als feine weiße Fäden. Die Bakterien siehst du nur in der Lupe.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: niemand fehlt &nbsp;|&nbsp; Stelle „Wer fehlt?“ um, dann drücke „▶ 1 Jahr warten“.</p>
+  </div>`;
+}
+
+// ── Modell ─────────────────────────────────────────────────────────────────
+function _b8hP() { return _bioFxKlemme(_b8h.monat / _B8H_JAHR); }
+function _b8hLaub() {                       // Gramm, ganzzahlig
+  const e = _B8H_ENDE[_b8h.fehlt];
+  return Math.round(100 - (100 - e.laub) * _bioFxEase.sanft(_b8hP()));
+}
+function _b8hMin() {                        // 0..1, Balken
+  const e = _B8H_ENDE[_b8h.fehlt];
+  return e.min * _bioFxEase.sanft(_bioFxKlemme((_b8hP() - 0.08) / 0.92));
+}
+function _b8hMinWort() {
+  if (_b8hFertig() && _b8h.monat >= _B8H_JAHR) return _B8H_ENDE[_b8h.fehlt].minWort;
+  const m = _b8hMin();
+  return m >= 0.65 ? 'viele' : m >= 0.2 ? 'wenige' : m > 0.001 ? 'fast keine' : 'keine';
+}
+function _b8hKeimGroesse() {
+  const e = _B8H_ENDE[_b8h.fehlt];
+  return 0.28 + (e.keim - 0.28) * _bioFxEase.sanft(_b8hP());
+}
+function _b8hGelb() { return _b8h.fehlt === 'alle' ? _bioFxEase.sanft(_b8hP()) : 0; }
+function _b8hZerbissen() { return _b8hTiere() ? _bioFxKlemme(_b8h.monat / 7) : 0; }
+function _b8hDuenn() { return _b8hDestr() ? _bioFxKlemme(_b8h.monat / _B8H_JAHR) : 0; }
+
+// ── Bedienung ──────────────────────────────────────────────────────────────
+function _b8hFehlt(k) {
+  if (!_b8h || _B8H_ARTEN.indexOf(k) < 0) return;
+  _b8h.fehlt = k; _b8h.monat = 0; _b8h.laeuft = false;   // neue Einstellung = neuer Kasten
+  _b8hFxLeer(); _b8hStatus();
+}
+function _b8hWarten() {
+  if (!_b8h || _b8h.laeuft) return;
+  _b8hFxLeer();
+  _b8h.monat = 0; _b8h.laeuft = true; _b8hStatus();
+}
+function _b8hNeu() {
+  if (!_b8h) return;
+  _b8h.fehlt = 'niemand'; _b8h.monat = 0; _b8h.laeuft = false;
+  _b8hFxLeer(); _b8hStatus();
+}
+// Sprungmarke: gleich das Ergebnis nach 1 Jahr, danach der Aha-Effekt.
+function _b8hMarke(k) {
+  if (!_b8h || _B8H_ARTEN.indexOf(k) < 0) return;
+  _b8h.fehlt = k; _b8hFxLeer();
+  _b8h.monat = _B8H_JAHR; _b8h.laeuft = false; _b8h.nach = 0; _b8h.schritt = 0;
+  _b8h.minVorher = _b8hMin();
+  _b8hStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────────────────────────
+function _b8hWaage() {
+  if (_b8hFertig() && _b8h.monat >= _B8H_JAHR) return 'Laub übrig: ' + _b8hLaub() + ' g';
+  return 'Laub: ' + _b8hLaub() + ' g';
+}
+function _b8hZeile() {
+  const e = _B8H_ENDE[_b8h.fehlt];
+  const mz = 'Mineralstoffe im Boden: ' + _b8hMinWort();
+  if (_b8hFertig() && _b8h.monat >= _B8H_JAHR) {
+    const laub = 'Laub übrig: ' + e.laub + ' g' + (_b8h.fehlt === 'destr' ? ', klein zerbissen' : '');
+    return 'Nach 1 Jahr · ' + laub + ' · ' + mz + ' · Keimling: ' + e.keimWort;
+  }
+  const m = Math.floor(_b8h.monat + 1e-9);
+  if (m === 0 && !_b8h.laeuft)
+    return 'Monat 0 · ' + _b8hWaage() + ' · ' + mz + ' · Drücke „▶ 1 Jahr warten“.';
+  return 'Monat ' + m + ' · ' + _b8hWaage() + ' · ' + mz;
+}
+function _b8hStatus() {
+  if (!_b8h) return;
+  const z = _b8hZeile();
+  const el = document.getElementById('_b8h-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _b8h.letzt = z;
+  try {
+    document.querySelectorAll('[data-b8h]').forEach(b => {
+      const k = b.getAttribute('data-b8h');
+      if (b.classList) b.classList.toggle('primary', _b8h.fehlt === k);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8h-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b8h.laeuft);
+}
+
+// ── Ablauf ─────────────────────────────────────────────────────────────────
+function _b8hUpdate(dt) {
+  if (!_b8h) return;
+  dt = _bioFxDt(dt);
+  _b8h.t += dt;
+  if (_b8h.laeuft) {
+    _b8h.monat = Math.min(_B8H_JAHR, _b8h.monat + dt);
+    _b8hKoernerNeu();
+    if (_b8h.monat >= _B8H_JAHR) { _b8h.laeuft = false; _b8h.nach = 0; _b8h.schritt = 0; }
+    if (_b8hZeile() !== _b8h.letzt || !_b8h.laeuft) _b8hStatus();
+  } else if (_b8h.nach >= 0) {
+    _b8h.nach += dt;
+    _b8hNachher();
+  }
+  _b8hKoernerBewegen(dt);
+  if (_b8h.kreisAlter >= 0) _b8h.kreisAlter += dt;
+  if (_b8h.fallBlatt) {
+    const f = _b8h.fallBlatt; f.a += dt;
+    if (f.a > 2.2) _b8h.fallBlatt = null;
+  }
+  _bioFxAlleUpdate(_b8h.fx, dt);
+}
+// Mineralstoffkörnchen: so viele neue, wie der Balken gerade wächst.
+function _b8hKoernerNeu() {
+  const m = _b8hMin();
+  _b8h.minAcc += (m - _b8h.minVorher) * 70;
+  _b8h.minVorher = m;
+  const laub = _b8hLaub(), halb = _b8hHalb(laub);
+  while (_b8h.minAcc >= 1) {
+    _b8h.minAcc -= 1;
+    const x = _B8H_CX + (Math.random() - 0.5) * halb * 1.4;
+    _b8h.koerner.push({ x0: x, y0: _B8H_BODEN - 2, x, y: _B8H_BODEN - 2, a: 0,
+                        ty: 150 + Math.random() * 45, wy: 140 + Math.random() * 50 });
+  }
+}
+// Weg eines Körnchens: aus dem Laub in den Boden (1 s), zur Wurzel (1,4 s),
+// die Wurzel hinauf in den Keimling (0,8 s).
+function _b8hKoernerBewegen(dt) {
+  const liste = _b8h.koerner;
+  for (let i = liste.length - 1; i >= 0; i--) {
+    const k = liste[i]; k.a += dt;
+    if (k.a < 1) {
+      const u = _bioFxEase.sanft(k.a);
+      k.x = k.x0; k.y = k.y0 + (k.ty - k.y0) * u;
+    } else if (k.a < 2.4) {
+      const u = _bioFxEase.sanft((k.a - 1) / 1.4);
+      k.x = k.x0 + (_B8H_KX - k.x0) * u; k.y = k.ty + (k.wy - k.ty) * u;
+    } else if (k.a < 3.2) {
+      const u = (k.a - 2.4) / 0.8;
+      k.x = _B8H_KX; k.y = k.wy + (_B8H_BODEN - 4 - k.wy) * u;
+    } else liste.splice(i, 1);
+  }
+}
+// Nach dem Jahr: erst hinsehen, dann bestätigt der Effekt – ohne Wertung.
+function _b8hNachher() {
+  const fx = _b8h.fx, t = _b8h.nach, k = _b8h.fehlt, laub = _B8H_ENDE[k].laub;
+  const oben = _B8H_BODEN - _b8hHoehe(laub);
+  if (_b8h.schritt === 0 && t >= 0.3) {
+    _b8h.schritt = 1;
+    if (k === 'niemand') {
+      _bioFxWelle(fx.teile, _B8H_KX, _b8hKeimSpitze(), '#bbf7d0', 34);
+      _bioFxFunken(fx.teile, _B8H_KX, _b8hKeimSpitze(), 8, ['#86efac', '#fef08a', '#ffffff']);
+      _b8h.kreisAlter = 0;                                   // der Kreis wird gezogen
+    } else if (k === 'alle') {
+      _bioFxWelle(fx.teile, _B8H_CX, oben + 10, '#cbd5e1', 90);
+    } else if (k === 'destr') {
+      _bioFxWelle(fx.teile, _B8H_CX, oben + 8, '#fde68a', 80);
+      _bioFxWelle(fx.teile, _B8H_LUPE.x, _B8H_LUPE.y, '#e2e8f0', 36);
+    } else {
+      _bioFxWelle(fx.teile, _B8H_CX, oben + 8, '#fde68a', 70);
+      _bioFxFunken(fx.teile, _B8H_CX, oben + 6, 6, ['#fde68a', '#ffffff']);
+    }
+  }
+  if (_b8h.schritt === 1 && t >= 1.0) {
+    _b8h.schritt = 2;
+    const farbe = { niemand: '#2e8b47', tiere: '#a16207', destr: '#b45309', alle: '#475569' }[k];
+    _bioFxStempel(fx, 'Laub übrig: ' + laub + ' g', _B8H_CX, 70, farbe);
+  }
+  if (_b8h.schritt === 2 && t >= 1.8) {
+    _b8h.schritt = 3;
+    const text = { niemand: 'Fast alles Laub ist weg!',
+                   tiere: 'Die Blätter sind dünn und löchrig.',
+                   destr: 'Klein zerbissen – aber kaum weniger!',
+                   alle: 'Regen und Wind – das Laub bleibt da.' }[k];
+    const farbe = { niemand: '#86efac', tiere: '#fde68a', destr: '#fdba74', alle: '#93c5fd' }[k];
+    _bioFxBanner(fx, text, 3.6, farbe);
+    if (k === 'niemand') {
+      // ein neues Blatt fällt vom Keimling auf den Haufen – der Kreis schließt sich
+      _b8h.fallBlatt = { a: 0 };
+    }
+  }
+}
+
+// ── Zeichnen ───────────────────────────────────────────────────────────────
+function _b8hMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _b8hHoehe(laub) { return 5 + 44 * laub / 100; }
+function _b8hHalb(laub) { return 42 + 54 * laub / 100; }
+function _b8hOben(x, laub) {                 // Oberkante des Haufens an Stelle x
+  const h = _b8hHoehe(laub), hw = _b8hHalb(laub), q = (x - _B8H_CX) / hw;
+  if (Math.abs(q) >= 1) return _B8H_BODEN;
+  return _B8H_BODEN - h * Math.pow(1 - q * q, 0.8);
+}
+function _b8hKeimSpitze() { return _B8H_BODEN - 16 - 70 * _b8hKeimGroesse(); }
+function _b8hJahreszeit(m) {
+  if (m < 2 || m >= 11) return 'Herbst';
+  if (m < 5) return 'Winter';
+  if (m < 8) return 'Frühling';
+  return 'Sommer';
+}
+function _b8hRegen(m) { return _b8h.laeuft && Math.sin(m * 2.1 + 0.6) > 0.35 && _b8hJahreszeit(m) !== 'Winter'; }
+function _b8hSchnee(m) { return _b8h.laeuft && _b8hJahreszeit(m) === 'Winter'; }
+function _b8hWind(m) { return _b8h.laeuft ? Math.max(0, Math.sin(m * 1.7 + 2)) : 0; }
+
+// Ein Buchenblatt (oval, spitz) mit Mittelrippe
+function _b8hBlattForm(ctx, g) {
+  ctx.beginPath();
+  ctx.moveTo(-g, 0);
+  ctx.quadraticCurveTo(-g * 0.2, -g * 0.62, g, 0);
+  ctx.quadraticCurveTo(-g * 0.2, g * 0.62, -g, 0);
+  ctx.closePath();
+}
+function _b8hBlatt(ctx, b, x, y, zer, duenn, wind, braun) {
+  const g = b.g, farbe = _b8hMisch(b.f, '#5b3a1e', braun);
+  if (zer > 0.25) {
+    // klein zerbissen: mehrere kleine Stücke statt eines Blattes
+    const s = 1 - 0.55 * zer, streu = 3 + 7 * zer;
+    ctx.fillStyle = farbe;
+    for (const st of b.stuecke) {
+      ctx.save();
+      ctx.translate(x + st.dx * streu, y + st.dy * streu * 0.45);
+      ctx.rotate(st.w + wind * 0.3);
+      ctx.globalAlpha = 1 - 0.3 * duenn;
+      const q = g * 0.42 * s * st.s;
+      ctx.beginPath(); ctx.moveTo(-q, -q * 0.3); ctx.lineTo(q * 0.6, -q * 0.6);
+      ctx.lineTo(q, q * 0.2); ctx.lineTo(-q * 0.3, q * 0.6); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    return;
+  }
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(b.w + wind * 0.25);
+  ctx.globalAlpha = 1 - 0.35 * duenn;
+  ctx.fillStyle = farbe; _b8hBlattForm(ctx, g); ctx.fill();
+  ctx.strokeStyle = 'rgba(70,40,10,0.55)'; ctx.lineWidth = 0.7;
+  ctx.beginPath(); ctx.moveTo(-g * 0.9, 0); ctx.lineTo(g * 0.9, 0); ctx.stroke();
+  // Fraßstellen (Tiere) und Löcher (Pilze und Bakterien)
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = '#6b4526';
+  const n = Math.round(4 * Math.max(duenn, zer * 3));
+  for (let i = 0; i < Math.min(n, b.loecher.length); i++) {
+    const l = b.loecher[i];
+    ctx.beginPath(); ctx.arc(l.dx * g, l.dy * g, l.r * g * (0.6 + duenn), 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _b8hRegenwurm(ctx, i, t) {
+  const tempo = 0.35 + 0.1 * i, ph = i * 2.3;
+  const pos = s => ({ x: 150 + 118 * Math.sin(tempo * s + ph), y: 166 + 44 * Math.sin(2 * tempo * s + ph * 0.7) });
+  ctx.save();
+  for (let k = 13; k >= 0; k--) {
+    const p = pos(t - k * 0.11);
+    ctx.fillStyle = k === 4 ? '#b85c6b' : '#d98a95';
+    ctx.beginPath(); ctx.arc(p.x, p.y, k === 0 ? 3 : 3.4 - k * 0.1, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _b8hAssel(ctx, i, t, laub) {
+  const hw = _b8hHalb(laub) * 0.8, ph = i * 2.1, v = 0.45 + 0.12 * i;
+  const x = _B8H_CX + hw * Math.sin(v * t + ph);
+  const rechts = Math.cos(v * t + ph) > 0;
+  const y = _b8hOben(x, laub) + 2 + i * 1.5;
+  ctx.save();
+  ctx.translate(x, y); if (!rechts) ctx.scale(-1, 1);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 0.8;
+  for (let k = -2; k <= 2; k++) {           // Beinchen, die sich bewegen
+    const w = Math.sin(t * 12 + k) * 1.2;
+    ctx.beginPath(); ctx.moveTo(k * 2, 2); ctx.lineTo(k * 2 + w, 4.5); ctx.stroke();
+  }
+  ctx.fillStyle = '#64748b';
+  ctx.beginPath(); ctx.ellipse(0, 0, 7, 3.6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#475569';
+  for (let k = -2; k <= 2; k++) { ctx.beginPath(); ctx.moveTo(k * 2.4, -3.3); ctx.lineTo(k * 2.4, 3.3); ctx.stroke(); }
+  ctx.beginPath(); ctx.moveTo(7, -1); ctx.lineTo(10, -4); ctx.moveTo(7, 0); ctx.lineTo(10.5, -1.5); ctx.stroke();
+  ctx.restore();
+}
+function _b8hKeimling(ctx, t, wind) {
+  const gr = _b8hKeimGroesse(), gelb = _b8hGelb();
+  const x = _B8H_KX, y0 = _B8H_BODEN, spitze = _b8hKeimSpitze();
+  const wieg = Math.sin(t * 1.3) * 1.2 + wind * 4;
+  // Wurzeln
+  ctx.strokeStyle = '#e7d7b5'; ctx.lineWidth = 1.3; ctx.lineCap = 'round';
+  const tief = 22 + 70 * gr;
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x + 1, y0 + tief); ctx.stroke();
+  for (let k = 1; k <= 4; k++) {
+    const yy = y0 + tief * k / 5, l = (6 + 12 * gr) * (1 - k / 6);
+    ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x - l, yy + 6); ctx.moveTo(x, yy + 3); ctx.lineTo(x + l, yy + 9); ctx.stroke();
+  }
+  // Stängel
+  const gruen = _b8hMisch('#3f8f3a', '#cdbb4a', gelb);
+  ctx.strokeStyle = '#7c5a3a'; ctx.lineWidth = 1.8 + 1.4 * gr;
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.quadraticCurveTo(x - wieg * 0.3, (y0 + spitze) / 2, x + wieg, spitze); ctx.stroke();
+  // Blätter: Keimblätter unten, Laubblätter je nach Größe
+  const n = 2 + Math.round(4 * (gr - 0.28) / 0.72);
+  for (let k = 0; k < n; k++) {
+    const u = n === 1 ? 1 : 0.35 + 0.65 * k / Math.max(1, n - 1);
+    const yy = y0 + (spitze - y0) * u, xx = x + wieg * u;
+    const seite = k % 2 ? 1 : -1, g = 6 + 5 * gr;
+    ctx.save(); ctx.translate(xx, yy); ctx.rotate(seite * 0.5 - (seite > 0 ? 0 : Math.PI) + Math.sin(t * 1.1 + k) * 0.06);
+    ctx.translate(g, 0);
+    ctx.fillStyle = gruen; _b8hBlattForm(ctx, g); ctx.fill();
+    ctx.strokeStyle = 'rgba(20,60,20,0.4)'; ctx.lineWidth = 0.6;
+    ctx.beginPath(); ctx.moveTo(-g * 0.8, 0); ctx.lineTo(g * 0.8, 0); ctx.stroke();
+    ctx.restore();
+  }
+}
+function _b8hLupe(ctx, t) {
+  const L = _B8H_LUPE;
+  ctx.save();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(L.x + L.r * 0.72, L.y - L.r * 0.72); ctx.lineTo(L.x + L.r + 10, L.y - L.r - 10); ctx.stroke();
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI);
+  ctx.fillStyle = '#8a6a48'; ctx.fill();
+  ctx.save(); ctx.clip();
+  // vergrößerte Bodenkrümel
+  ctx.fillStyle = '#6b4f33';
+  for (let k = 0; k < 7; k++) {
+    ctx.beginPath(); ctx.arc(L.x - 20 + (k * 17) % 42, L.y - 16 + (k * 23) % 36, 5 + (k % 3) * 2, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (_b8hDestr()) {
+    // dicke Pilzfäden
+    ctx.strokeStyle = 'rgba(250,250,245,0.9)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(L.x - 30, L.y + 8); ctx.quadraticCurveTo(L.x - 4, L.y - 4 + Math.sin(t) * 1.5, L.x + 30, L.y - 14);
+    ctx.moveTo(L.x - 6, L.y + 2); ctx.quadraticCurveTo(L.x + 2, L.y + 14, L.x + 6, L.y + 30); ctx.stroke();
+    // Bakterien: kleine Stäbchen, die zittern und sich drehen
+    const fb = ['#7c3aed', '#16a34a', '#db2777'];
+    for (const b of _b8h.bild.bakterien) {
+      ctx.save();
+      ctx.translate(L.x + b.x + Math.sin(t * 2.2 + b.ph) * 1.6, L.y + b.y + Math.cos(t * 1.8 + b.ph) * 1.6);
+      ctx.rotate(b.w + t * 0.6 * (b.f - 1));
+      ctx.fillStyle = fb[b.f];
+      _bioFxRundRect(ctx, -4, -1.6, 8, 3.2, 1.6); ctx.fill();
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#f8fafc'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lupe', L.x, L.y + L.r + 12 > 246 ? L.y - L.r - 4 : L.y + L.r + 12);
+  ctx.restore();
+}
+// Der geschlossene Kreis (nur „niemand“): Laub → Boden → Wurzel → Keimling → Laub
+function _b8hKreis(ctx) {
+  const a = _b8h.kreisAlter;
+  if (a < 0) return;
+  const u = _bioFxEase.sanft(_bioFxKlemme(a / 1.6));
+  const aus = 1 - _bioFxKlemme((a - 5) / 1);
+  if (aus <= 0) return;
+  const P = [[150, 104], [170, 176], [226, 186], [_B8H_KX - 8, 160], [_B8H_KX - 14, 50], [200, 48], [150, 88]];
+  const pkt = [];
+  for (let i = 0; i < P.length - 1; i++)
+    for (let s = 0; s < 1; s += 0.1) pkt.push([P[i][0] + (P[i + 1][0] - P[i][0]) * s, P[i][1] + (P[i + 1][1] - P[i][1]) * s]);
+  pkt.push(P[P.length - 1]);
+  const n = Math.max(2, Math.round(pkt.length * u));
+  ctx.save();
+  ctx.globalAlpha = aus;
+  ctx.strokeStyle = '#fde047'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.shadowColor = '#fde047'; ctx.shadowBlur = 8;
+  ctx.setLineDash([7, 5]);
+  ctx.beginPath(); ctx.moveTo(pkt[0][0], pkt[0][1]);
+  for (let i = 1; i < n; i++) ctx.lineTo(pkt[i][0], pkt[i][1]);
+  ctx.stroke(); ctx.setLineDash([]);
+  // Pfeilspitze am Ende
+  const e = pkt[n - 1], v = pkt[n - 2], w = Math.atan2(e[1] - v[1], e[0] - v[0]);
+  ctx.fillStyle = '#fde047';
+  ctx.translate(e[0], e[1]); ctx.rotate(w);
+  ctx.beginPath(); ctx.moveTo(7, 0); ctx.lineTo(-5, -6); ctx.lineTo(-5, 6); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+
+function _b8hDraw(ctx, cv) {
+  if (!_b8h) return;
+  const W = cv.width, H = cv.height, t = _b8h.t, m = _b8h.monat;
+  const zeit = _b8hJahreszeit(m), wind = _b8hWind(m) * Math.sin(t * 3);
+  const laub = _b8hLaub();
+  ctx.clearRect(0, 0, W, H);
+  // Himmel je Jahreszeit
+  const himmel = { Herbst: ['#c7d7e6', '#efe4cf'], Winter: ['#b8c4d2', '#e6ebf0'],
+                   'Frühling': ['#a9d8f5', '#e8f6e4'], Sommer: ['#7cc4f2', '#e3f3fb'] }[zeit];
+  const bg = ctx.createLinearGradient(0, 0, 0, _B8H_BODEN);
+  bg.addColorStop(0, himmel[0]); bg.addColorStop(1, himmel[1]);
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, _B8H_BODEN);
+  // blasse Stämme im Hintergrund
+  ctx.fillStyle = 'rgba(120,110,100,0.25)';
+  ctx.fillRect(18, 0, 14, _B8H_BODEN); ctx.fillRect(210, 0, 10, _B8H_BODEN);
+  // Boden
+  const bb = ctx.createLinearGradient(0, _B8H_BODEN, 0, H);
+  bb.addColorStop(0, '#6b4a2e'); bb.addColorStop(1, '#4a321f');
+  ctx.fillStyle = bb; ctx.fillRect(4, _B8H_BODEN, 296, H - _B8H_BODEN - 4);
+  // Humusschicht: wird dunkler und dicker, je mehr zersetzt ist
+  const humus = _b8hMin();
+  if (humus > 0.01) {
+    ctx.fillStyle = 'rgba(35,24,14,' + (0.25 + 0.5 * humus).toFixed(3) + ')';
+    ctx.fillRect(4, _B8H_BODEN, 296, 4 + 14 * humus);
+  }
+  for (const k of _b8h.bild.kruemel) {
+    ctx.fillStyle = k.h < 0.5 ? 'rgba(40,26,14,0.55)' : 'rgba(150,120,80,0.45)';
+    ctx.beginPath(); ctx.arc(k.x, k.y, k.r, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Mineralstoffe, die im Boden liegen (Anzahl passt zum Balken)
+  const nk = Math.round(40 * humus);
+  for (let i = 0; i < nk; i++) {
+    const p = _b8h.bild.koernerPlatz[i];
+    ctx.fillStyle = '#38bdf8'; ctx.strokeStyle = '#e0f2fe'; ctx.lineWidth = 0.6;
+    ctx.beginPath(); ctx.arc(p.x + Math.sin(t * 0.8 + p.ph) * 0.8, p.y, 2.1, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  // Regenwürmer
+  if (_b8hTiere()) {
+    const tempo = zeit === 'Winter' && _b8h.laeuft ? 0.4 : 1;
+    _b8hRegenwurm(ctx, 0, t * tempo); _b8hRegenwurm(ctx, 1, t * tempo + 4);
+  }
+  // Kasten (oben offen, damit der Keimling hinauswachsen kann)
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(4, 60); ctx.lineTo(4, H - 4); ctx.lineTo(300, H - 4); ctx.lineTo(300, 60); ctx.stroke();
+  // Keimling
+  _b8hKeimling(ctx, t, wind);
+  // Waage unter dem Laub
+  ctx.fillStyle = '#9ca3af'; ctx.fillRect(18, _B8H_BODEN - 3, 204, 5);
+  ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1; ctx.strokeRect(18, _B8H_BODEN - 3, 204, 5);
+  // Laubhaufen
+  const hw = _b8hHalb(laub);
+  const zer = _b8hZerbissen(), duenn = _b8hDuenn();
+  const braun = (_b8h.fehlt === 'alle') ? 0 : _bioFxKlemme(m / _B8H_JAHR) * 0.7;
+  ctx.fillStyle = _b8hMisch('#8a5a2b', '#3d2a18', braun);
+  ctx.beginPath(); ctx.moveTo(_B8H_CX - hw, _B8H_BODEN - 2);
+  for (let x = _B8H_CX - hw; x <= _B8H_CX + hw; x += 4) ctx.lineTo(x, _b8hOben(x, laub) + 3);
+  ctx.lineTo(_B8H_CX + hw, _B8H_BODEN - 2); ctx.closePath(); ctx.fill();
+  const bl = _b8h.bild.blaetter, sicht = Math.round(bl.length * laub / 100);
+  for (let i = 0; i < sicht; i++) {
+    const b = bl[i];
+    const x = _B8H_CX + b.u * hw * 0.88;
+    const top = _b8hOben(x, laub);
+    const y = _B8H_BODEN - 3 - (_B8H_BODEN - 3 - top) * b.v;
+    const flatter = wind * Math.sin(t * 5 + b.ph) * b.v;
+    _b8hBlatt(ctx, b, x + flatter * 2, y, zer, duenn, flatter, braun);
+  }
+  // Pilzfäden im Laub und in der oberen Bodenschicht
+  if (_b8hDestr()) {
+    const wuchs = 0.35 + 0.65 * _bioFxKlemme(m / 8);
+    ctx.strokeStyle = 'rgba(250,250,240,0.8)'; ctx.lineWidth = 0.9;
+    for (const f of _b8h.bild.faeden) {
+      if (f.rang > wuchs) continue;
+      if (Math.abs(f.x - _B8H_CX) > hw + 10) continue;
+      ctx.beginPath(); ctx.moveTo(f.x, f.y);
+      ctx.quadraticCurveTo((f.x + f.x2) / 2, (f.y + f.y2) / 2 + Math.sin(t * 0.7 + f.x) * 1.5, f.x2, f.y2); ctx.stroke();
+    }
+  }
+  // Asseln auf dem Laub
+  if (_b8hTiere()) for (let i = 0; i < 3; i++) _b8hAssel(ctx, i, t, laub);
+  // Anzeige der Waage
+  const wt = _b8hWaage();
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  const ww = ctx.measureText(wt).width + 14;
+  ctx.fillStyle = '#111827'; _bioFxRundRect(ctx, 26, _B8H_BODEN + 4, ww, 18, 4); ctx.fill();
+  ctx.fillStyle = '#86efac'; ctx.fillText(wt, 26 + ww / 2, _B8H_BODEN + 17);
+  if (_b8h.fehlt === 'destr' && m >= 7) {
+    ctx.fillStyle = '#fef3c7'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('klein zerbissen', 26 + ww + 52, _B8H_BODEN + 17);
+  }
+  // Lupe
+  _b8hLupe(ctx, t);
+  // Körnchen unterwegs
+  for (const k of _b8h.koerner) {
+    ctx.fillStyle = '#7dd3fc'; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 0.7;
+    ctx.beginPath(); ctx.arc(k.x, k.y, 2.4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  // Regen, Schnee, Wind
+  if (_b8hRegen(m)) {
+    ctx.strokeStyle = 'rgba(59,130,246,0.55)'; ctx.lineWidth = 1;
+    for (let i = 0; i < 26; i++) {
+      const x = (i * 37 + t * 60) % 296 + 4, y = (i * 53 + t * 260) % (_B8H_BODEN - 44) + 42;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 2, y + 7); ctx.stroke();
+    }
+  }
+  if (_b8hSchnee(m)) {
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    for (let i = 0; i < 20; i++) {
+      const x = (i * 41 + Math.sin(t + i) * 8) % 292 + 6, y = (i * 29 + t * 30) % (_B8H_BODEN - 44) + 42;
+      ctx.beginPath(); ctx.arc(x, y, 1.6, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  if (_b8h.laeuft && _b8hWind(m) > 0.4) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1.5;
+    for (let i = 0; i < 3; i++) {
+      const x = (t * 120 + i * 110) % 330 - 20, y = 58 + i * 16;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + 15, y - 5, x + 30, y); ctx.stroke();
+    }
+  }
+  // ein neues Blatt fällt vom Keimling auf den Haufen
+  if (_b8h.fallBlatt) {
+    const u = _bioFxKlemme(_b8h.fallBlatt.a / 2);
+    const x = _B8H_KX - 10 + (_B8H_CX + 30 - (_B8H_KX - 10)) * u + Math.sin(u * 9) * 8;
+    const y = _b8hKeimSpitze() + 10 + (_b8hOben(_B8H_CX + 30, laub) - _b8hKeimSpitze() - 12) * _bioFxEase.sanft(u);
+    ctx.save(); ctx.translate(x, y); ctx.rotate(Math.sin(u * 7) * 0.8);
+    ctx.fillStyle = '#4d9a3c'; _b8hBlattForm(ctx, 8); ctx.fill(); ctx.restore();
+  }
+  _b8hKreis(ctx);
+
+  // ── rechte Spalte: Jahresuhr, Mineralstoffe, Keimling ──
+  const px = 310, pw = W - px - 6;
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'; _bioFxRundRect(ctx, px, 4, pw, H - 8, 8); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; _bioFxRundRect(ctx, px, 4, pw, H - 8, 8); ctx.stroke();
+  const ux = px + pw / 2, uy = 38, ur = 24;
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = '#16a34a';
+  ctx.beginPath(); ctx.arc(ux, uy, ur, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * m / _B8H_JAHR); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center';
+  ctx.font = '700 10px sans-serif'; ctx.fillText('Monat', ux, uy - 4);
+  ctx.font = '700 16px sans-serif'; ctx.fillText(String(Math.floor(m + 1e-9)), ux, uy + 13);
+  ctx.font = '700 11px sans-serif';
+  ctx.fillText(_B8H_MONATE[Math.min(12, Math.floor(m + 1e-9))] + ' · ' + zeit, ux, 78);
+  // Balken Mineralstoffe im Boden
+  ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Mineralstoffe', ux, 100); ctx.fillText('im Boden', ux, 113);
+  const bx = px + 8, bw = pw - 16, by = 120;
+  ctx.fillStyle = '#e2e8f0'; _bioFxRundRect(ctx, bx, by, bw, 14, 5); ctx.fill();
+  if (humus > 0.002) { ctx.fillStyle = '#38bdf8'; _bioFxRundRect(ctx, bx, by, Math.max(6, bw * humus), 14, 5); ctx.fill(); }
+  ctx.strokeStyle = '#64748b'; _bioFxRundRect(ctx, bx, by, bw, 14, 5); ctx.stroke();
+  ctx.font = '700 14px sans-serif'; ctx.fillStyle = '#0369a1';
+  ctx.fillText(_b8hMinWort(), ux, 152);
+  // Keimling
+  ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Keimling', ux, 180);
+  const kw = (_b8hFertig() && m >= _B8H_JAHR) ? _B8H_ENDE[_b8h.fehlt].keimWort : (_b8h.laeuft ? '…' : 'jung');
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = _b8hGelb() > 0.5 ? '#a16207' : '#15803d';
+  if (kw === 'sehr klein und gelb') { ctx.fillText('sehr klein', ux, 197); ctx.fillText('und gelb', ux, 212); }
+  else ctx.fillText(kw, ux, 197);
+  // Einstellung unten
+  ctx.font = '700 10px sans-serif'; ctx.fillStyle = '#334155';
+  ctx.fillText('Wer fehlt?', ux, 230);
+  ctx.font = '700 10px sans-serif'; ctx.fillStyle = '#b45309';
+  ctx.fillText(_b8h.fehlt === 'tiere' ? 'Würmer, Asseln' : _b8h.fehlt === 'destr' ? 'Pilze, Bakterien' : _B8H_WORT[_b8h.fehlt], ux, 242);
+  // Zeitraffer-Zeichen
+  if (_b8h.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶▶ Zeitraffer', 10, 16);
+  }
+  _bioFxAlleDraw(ctx, _b8h.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIOLOGIE 8 FOERDER – bo9 „Luchs und Reh im Diagramm“ (Kennung bio-raeuber-beute)
+// Oben ein Waldstreifen mit Rehen und Luchsen (jedes Tier steht für viele),
+// darunter zwei Liniendiagramme mit derselben Zeitachse (Jahr 0 bis 12):
+// oben Rehe (0–100, Gitter alle 10), unten Luchse (0–12, Gitter alle 1).
+// „▶ 12 Jahre“ zeichnet beide Kurven langsam nach (Rehe durchgezogen,
+// Luchse gestrichelt). Der Regler „Jahr“ setzt eine senkrechte Linie; an
+// jeder Kurve steht dort ein Fähnchen mit der Zahl. KEINE Statuszeile mit
+// beiden Zahlen (sim_plan).
+// Modellwerte (Lehrerteil): Modell 0/3/6/9/12 → 50·4, 80·6, 50·10, 30·6, 50·4.
+// Wirklichkeit (Beispiel): Jahr 6 → 70·5, Jahr 7 → 30·5, Fähnchen
+// „sehr kalter Winter“. Alle Zahlen sind ausgedachte Modellwerte.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Im Modell leuchten die
+// Gipfel beider Kurven nacheinander auf (erst Rehe, dann Luchse) – ohne Text.
+// In der Wirklichkeit schneit es beim Jahr 7 im Waldstreifen, die Rehkurve
+// stürzt ab, Rehe verschwinden aus dem Wald, die Luchskurve bleibt flach
+// (Lichtkranz), danach ein ruhiges Banner. Kein Blinken, kein Ton, keine Wertung,
+// keine Jagdszene.
+// ═══════════════════════════════════════════════════════
+let _b8i = null;
+const _B8I_MODELL_R = [50, 62, 74, 80, 74, 63, 50, 38, 31, 30, 34, 41, 50];
+const _B8I_MODELL_L = [4, 4, 5, 6, 8, 9, 10, 9, 8, 6, 5, 4, 4];
+const _B8I_WIRK_R   = [50, 58, 55, 66, 61, 72, 70, 30, 38, 47, 44, 56, 60];
+const _B8I_WIRK_L   = [4, 4, 5, 4, 5, 5, 5, 5, 4, 4, 3, 3, 4];
+const _B8I_TEMPO = 1 / 0.9;          // Jahre je Sekunde beim Nachzeichnen
+const _B8I_ZEIGE = 10;               // Jahre je Sekunde, wenn der Regler vorauseilt
+const _B8I_REH = '#c2410c', _B8I_LUCHS = '#1d4ed8';
+// Diagramm-Maße (Nennmaß 420 x 250)
+const _B8I_X0 = 44, _B8I_X1 = 408;
+const _B8I_RO = 60, _B8I_RU = 132;   // Rehe: oben/unten
+const _B8I_LO = 144, _B8I_LU = 216;  // Luchse: oben/unten
+
+function _b8iZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _b8iInit() {
+  const z = _b8iZufall(89);
+  const rehe = [], luchse = [], flocken = [], baeume = [];
+  for (let i = 0; i < 10; i++) rehe.push({ x: 20 + z() * 380, v: (z() < 0.5 ? -1 : 1) * (6 + z() * 7), y: 30 + z() * 8, a: 0, p: z() * 6 });
+  for (let i = 0; i < 6; i++) luchse.push({ x: 20 + z() * 380, v: (z() < 0.5 ? -1 : 1) * (4 + z() * 5), y: 31 + z() * 7, a: 0, p: z() * 6 });
+  for (let i = 0; i < 46; i++) flocken.push([z() * 420, z() * 44, 0.7 + z() * 1.2, z() * 6.28]);
+  for (let i = 0; i < 17; i++) baeume.push([8 + i * 24.5 + z() * 10, 0.75 + z() * 0.45]);
+  _b8i = { t: 0, ansicht: 'modell', jahr: 0, stift: 0, laeuft: false, letzt: '',
+           fx: { teile: [] }, zeitlupe: null, marken: {}, winterT: -1, gipfelT: -1,
+           rehe, luchse, flocken, baeume };
+}
+function _b8iFxLeer() {
+  _b8i.fx = { teile: [] }; _b8i.zeitlupe = null;
+  _b8i.marken = {}; _b8i.winterT = -1; _b8i.gipfelT = -1;
+}
+function _b8iHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-b8i="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie hängen Luchs und Reh zusammen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Oben der Wald: Jedes Tier im Bild steht für viele Tiere. Darunter zwei Diagramme: oben die Zahl der Rehe, unten die Zahl der Luchse. Die Zahlen stehen an den Fähnchen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b8i-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b8i-los" onclick="_b8iLos()">▶ 12 Jahre</button>
+          <button class="sim-btn" onclick="_b8iNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Ansicht</span>
+          <div class="sim-btn-row">
+            ${k('modell', "_b8iAnsicht('modell')", 'Modell')}
+            ${k('wirk', "_b8iAnsicht('wirk')", 'Wirklichkeit')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:10px"><label class="phys-ctrl-label" for="_b8i-jahr">Jahr: <b id="_b8i-jahrLbl">0</b></label>
+          <input type="range" id="_b8i-jahr" min="0" max="12" step="1" value="0" oninput="_b8iJahr(this.value)" style="width:100%;accent-color:#1d4ed8"></div>
+        <div class="lmp-status on" id="_b8i-status" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b8iMarke('modell',12)">Modell · Jahr 12</button>
+          <button class="sim-btn" onclick="_b8iMarke('wirk',6)">Wirklichkeit · Jahr 6</button>
+          <button class="sim-btn" onclick="_b8iMarke('wirk',7)">Wirklichkeit · Jahr 7</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Ein <b>Modell</b> ist ein vereinfachtes Bild der Wirklichkeit. Die Kurve „Wirklichkeit“ ist ein Beispiel.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Modell · Jahr 0 &nbsp;|&nbsp; Rehe: durchgezogene Linie · Luchse: gestrichelte Linie</p>
+  </div>`;
+}
+
+/* ── Werte ──────────────────────────────────────────────────────────────── */
+function _b8iReihen() {
+  return _b8i.ansicht === 'modell' ? [_B8I_MODELL_R, _B8I_MODELL_L] : [_B8I_WIRK_R, _B8I_WIRK_L];
+}
+// Wert der Kurve an einer beliebigen Stelle x (0..12).
+// Modell: weiche Kurve (Catmull-Rom, Zyklus 12 Jahre, geht genau durch die Jahreswerte).
+// Wirklichkeit: gerade Stücke zwischen den Jahreswerten (unregelmäßige Zählung).
+function _b8iWert(a, x) {
+  x = Math.max(0, Math.min(12, x));
+  const i = Math.min(11, Math.floor(x)), u = x - i;
+  if (_b8i.ansicht !== 'modell') return a[i] + (a[i + 1] - a[i]) * u;
+  const p = j => a[((j % 12) + 12) % 12];
+  const p0 = p(i - 1), p1 = a[i], p2 = a[i + 1], p3 = p(i + 2);
+  return 0.5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u * u +
+                (-p0 + 3 * p1 - 3 * p2 + p3) * u * u * u);
+}
+function _b8iX(j) { return _B8I_X0 + j * (_B8I_X1 - _B8I_X0) / 12; }
+function _b8iYR(v) { return _B8I_RU - v * (_B8I_RU - _B8I_RO) / 100; }
+function _b8iYL(v) { return _B8I_LU - v * (_B8I_LU - _B8I_LO) / 12; }
+function _b8iName() { return _b8i.ansicht === 'modell' ? 'Modell' : 'Wirklichkeit'; }
+// Bis wohin ist die Jahreslinie mit Fähnchen sichtbar? (erst, wenn der Stift dort war)
+function _b8iFahnen() { return _b8i.stift >= _b8i.jahr - 1e-6; }
+// Zeitpunkt, den der Wald oben zeigt
+function _b8iJetzt() { return _b8i.laeuft ? _b8i.stift : Math.min(_b8i.stift, _b8i.jahr); }
+
+/* ── Bedienung ──────────────────────────────────────────────────────────── */
+function _b8iRegler() {
+  const r = document.getElementById('_b8i-jahr');
+  if (r) r.value = String(_b8i.jahr);
+  const l = document.getElementById('_b8i-jahrLbl');
+  if (l) l.textContent = String(_b8i.jahr);
+}
+function _b8iAnsicht(a) {
+  if (!_b8i) return;
+  _b8i.ansicht = a === 'wirk' ? 'wirk' : 'modell';
+  _b8i.laeuft = false; _b8i.stift = 0; _b8i.jahr = 0;
+  _b8iFxLeer(); _b8iRegler(); _b8iStatus();
+}
+function _b8iLos() {
+  if (!_b8i) return;
+  _b8iFxLeer();
+  _b8i.stift = 0; _b8i.jahr = 0; _b8i.laeuft = true;
+  _b8iRegler(); _b8iStatus();
+}
+function _b8iNeu() {
+  if (!_b8i) return;
+  _b8i.ansicht = 'modell'; _b8i.laeuft = false; _b8i.stift = 0; _b8i.jahr = 0;
+  _b8iFxLeer(); _b8iRegler(); _b8iStatus();
+}
+// Regler „Jahr“: setzt die Jahreslinie. Ist die Kurve dort noch nicht gezeichnet,
+// wächst sie schnell bis zur Linie nach.
+function _b8iJahr(v) {
+  if (!_b8i) return;
+  const j = Math.max(0, Math.min(12, Math.round(Number(v) || 0)));
+  _b8i.laeuft = false; _b8i.zeitlupe = null;
+  _b8i.jahr = j;
+  _b8iRegler(); _b8iStatus();
+}
+// Sprungmarke: Ansicht setzen, Kurven ganz zeigen, Jahreslinie setzen.
+function _b8iMarke(a, j) {
+  if (!_b8i) return;
+  _b8i.ansicht = a === 'wirk' ? 'wirk' : 'modell';
+  _b8iFxLeer();
+  _b8i.laeuft = false; _b8i.stift = 12; _b8i.jahr = j;
+  _b8i.marken = { r3: true, l6: true, w7: true, ende: true };
+  if (_b8i.ansicht === 'wirk' && j === 7) _b8iWinter();
+  _b8iRegler(); _b8iStatus();
+}
+
+/* ── Anzeige ────────────────────────────────────────────────────────────── */
+function _b8iZeile() {
+  const s = _b8iName() + ' · Jahr ' + _b8i.jahr;
+  if (_b8i.laeuft) return s + ' · Die Kurven wachsen Jahr für Jahr.';
+  if (_b8i.stift <= 0 && _b8i.jahr === 0) return s + ' · Drücke „▶ 12 Jahre“.';
+  if (!_b8iFahnen()) return s + ' · Die Kurven wachsen bis zur Jahreslinie.';
+  return s + ' · Lies die Zahlen an den Fähnchen ab.';
+}
+function _b8iStatus() {
+  if (!_b8i) return;
+  const z = _b8iZeile();
+  const el = document.getElementById('_b8i-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _b8i.letzt = z;
+  try {
+    document.querySelectorAll('[data-b8i]').forEach(b => {
+      const d = b.getAttribute('data-b8i');
+      if (b.classList) b.classList.toggle('primary', d === _b8i.ansicht);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b8i-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b8i.laeuft);
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ────────────────────── */
+function _b8iWinter() {
+  const x = _b8iX(7), y = _b8iYR(_B8I_WIRK_R[7]);
+  _bioFxWelle(_b8i.fx.teile, x, y, '#7dd3fc', 30);
+  _bioFxFunken(_b8i.fx.teile, x, y, 6, ['#ffffff', '#e0f2fe', '#bae6fd']);
+  _bioFxWelle(_b8i.fx.teile, x, _b8iYL(_B8I_WIRK_L[7]), '#818cf8', 22);
+  _b8i.winterT = 0;
+}
+// Ereignisse, wenn der Stift eine Jahresmarke überquert
+function _b8iMarken(alt, neu) {
+  const m = _b8i.marken, fx = _b8i.fx.teile;
+  const quer = j => alt < j && neu >= j;
+  if (_b8i.ansicht === 'modell') {
+    if (!m.r3 && quer(3)) {
+      m.r3 = true;
+      _bioFxWelle(fx, _b8iX(3), _b8iYR(80), '#fb923c', 22);
+      _bioFxFunken(fx, _b8iX(3), _b8iYR(80), 5, ['#fed7aa', '#fdba74', '#ffffff']);
+    }
+    if (!m.l6 && quer(6)) {
+      m.l6 = true;
+      _bioFxWelle(fx, _b8iX(6), _b8iYL(10), '#60a5fa', 22);
+      _bioFxFunken(fx, _b8iX(6), _b8iYL(10), 5, ['#bfdbfe', '#93c5fd', '#ffffff']);
+    }
+    if (!m.ende && neu >= 12) { m.ende = true; _b8i.gipfelT = 0; }
+  } else if (!m.w7 && quer(7)) {
+    m.w7 = true;
+    if (_b8i.laeuft) _bioFxZeitlupe(_b8i, 0.3, 1.4);
+    _b8iWinter();
+  }
+}
+function _b8iUpdate(dt) {
+  if (!_b8i) return;
+  dt = _bioFxDt(dt);
+  _b8i.t += dt;
+  const alt = _b8i.stift;
+  if (_b8i.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(_b8i, dt);
+    _b8i.stift = Math.min(12, _b8i.stift + dt * _B8I_TEMPO * zl);
+    const j = Math.floor(_b8i.stift + 1e-9);
+    if (j !== _b8i.jahr) { _b8i.jahr = j; _b8iRegler(); }
+    if (_b8i.stift >= 12) { _b8i.stift = 12; _b8i.jahr = 12; _b8i.laeuft = false; _b8iRegler(); }
+  } else if (_b8i.stift < _b8i.jahr) {
+    _b8i.stift = Math.min(_b8i.jahr, _b8i.stift + dt * _B8I_ZEIGE);
+  }
+  if (_b8i.stift !== alt) _b8iMarken(alt, _b8i.stift);
+  if (_b8i.winterT >= 0) {
+    const vor = _b8i.winterT;
+    _b8i.winterT += dt;
+    if (vor < 1.3 && _b8i.winterT >= 1.3) _bioFxBanner(_b8i.fx, 'Weniger Rehe – gleich viele Luchse', 3.2, '#7dd3fc');
+  }
+  if (_b8i.gipfelT >= 0) _b8i.gipfelT += dt;
+  if (_b8iZeile() !== _b8i.letzt) _b8iStatus();
+  // Tiere im Wald: Zahl folgt den Kurven (jedes Tier steht für viele)
+  const [R, L] = _b8iReihen(), jetzt = _b8iJetzt();
+  const nR = Math.round(_b8iWert(R, jetzt) / 10), nL = Math.round(_b8iWert(L, jetzt) / 2);
+  const geh = (liste, n) => liste.forEach((t, i) => {
+    const soll = i < n ? 1 : 0;
+    t.a += (soll - t.a) * Math.min(1, dt * 2.5);
+    t.x += t.v * dt;
+    if (t.x < 12) { t.x = 12; t.v = Math.abs(t.v); }
+    if (t.x > 408) { t.x = 408; t.v = -Math.abs(t.v); }
+  });
+  geh(_b8i.rehe, nR); geh(_b8i.luchse, nL);
+  _bioFxAlleUpdate(_b8i.fx, dt);
+}
+
+/* ── Zeichnen ───────────────────────────────────────────────────────────── */
+function _b8iMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _b8iReh(ctx, t) {
+  const r = t.v < 0 ? -1 : 1, x = t.x, y = t.y, b = Math.sin(_b8i.t * 7 + t.p) * 1.2;
+  ctx.save(); ctx.globalAlpha = t.a;
+  ctx.strokeStyle = '#6b3f1d'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(x - 4, y); ctx.lineTo(x - 4 - b * 0.6, y + 6);
+  ctx.moveTo(x + 4, y); ctx.lineTo(x + 4 + b * 0.6, y + 6); ctx.stroke();
+  ctx.fillStyle = '#a0612b';
+  ctx.beginPath(); ctx.ellipse(x, y - 1, 7, 3.4, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x + 5 * r, y - 2); ctx.lineTo(x + 8 * r, y - 8); ctx.lineTo(x + 10 * r, y - 7); ctx.lineTo(x + 7 * r, y - 1); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(x + 10 * r, y - 8, 2.8, 1.8, 0.3 * r, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#f5f0e6';
+  ctx.beginPath(); ctx.arc(x - 6.5 * r, y - 1.5, 1.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _b8iLuchs(ctx, t) {
+  const r = t.v < 0 ? -1 : 1, x = t.x, y = t.y, b = Math.sin(_b8i.t * 5 + t.p) * 1;
+  ctx.save(); ctx.globalAlpha = t.a;
+  ctx.strokeStyle = '#6b6152'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  ctx.moveTo(x - 4, y); ctx.lineTo(x - 4 - b, y + 5);
+  ctx.moveTo(x + 4, y); ctx.lineTo(x + 4 + b, y + 5); ctx.stroke();
+  ctx.fillStyle = '#b8a27c';
+  ctx.beginPath(); ctx.ellipse(x, y - 1, 6.5, 3.2, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(x + 7 * r, y - 3.5, 2.9, 0, 2 * Math.PI); ctx.fill();
+  // Pinselohren
+  ctx.strokeStyle = '#3f3a33'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x + 6 * r, y - 6); ctx.lineTo(x + 5.5 * r, y - 9.5);
+  ctx.moveTo(x + 8.5 * r, y - 6); ctx.lineTo(x + 9 * r, y - 9.5); ctx.stroke();
+  // kurzer Schwanz mit dunkler Spitze
+  ctx.fillStyle = '#3f3a33';
+  ctx.beginPath(); ctx.arc(x - 7 * r, y - 2.5, 1.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#6b6152';
+  for (const d of [-2, 1, 3]) { ctx.beginPath(); ctx.arc(x + d, y - 1.5, 0.7, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.restore();
+}
+function _b8iWald(ctx, W) {
+  const jetzt = _b8iJetzt();
+  // Winter im Jahr 7 nur in der Wirklichkeit
+  const w = _b8i.ansicht === 'wirk' ? _bioFxKlemme(1.25 - Math.abs(jetzt - 7) / 0.8) : 0;
+  const g = ctx.createLinearGradient(0, 0, 0, 44);
+  g.addColorStop(0, _b8iMisch('#cfeaf7', '#dfe6ee', w));
+  g.addColorStop(1, _b8iMisch('#e9f5dc', '#f1f5f9', w));
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, 44);
+  // Bäume
+  for (const [bx, s] of _b8i.baeume) {
+    const hoch = 26 * s, sw = Math.sin(_b8i.t * 0.8 + bx) * 0.8;
+    ctx.fillStyle = '#7c5a3a'; ctx.fillRect(bx - 1.2, 38 - hoch * 0.35, 2.4, hoch * 0.35);
+    ctx.fillStyle = _b8iMisch('#2f7d4a', '#4b6b58', w);
+    ctx.beginPath(); ctx.moveTo(bx + sw, 38 - hoch); ctx.lineTo(bx + 8 * s, 38 - hoch * 0.3); ctx.lineTo(bx - 8 * s, 38 - hoch * 0.3); ctx.closePath(); ctx.fill();
+    if (w > 0.02) {
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.85 * w).toFixed(3) + ')';
+      ctx.beginPath(); ctx.moveTo(bx + sw, 38 - hoch); ctx.lineTo(bx + 4 * s, 38 - hoch * 0.62); ctx.lineTo(bx - 4 * s, 38 - hoch * 0.62); ctx.closePath(); ctx.fill();
+    }
+  }
+  // Boden
+  ctx.fillStyle = _b8iMisch('#8fbf6a', '#f8fafc', w);
+  ctx.fillRect(0, 36, W, 8);
+  // Tiere (erst Luchse, dann Rehe)
+  for (const t of _b8i.luchse) if (t.a > 0.02) _b8iLuchs(ctx, t);
+  for (const t of _b8i.rehe) if (t.a > 0.02) _b8iReh(ctx, t);
+  // Schneefall
+  if (w > 0.02) {
+    ctx.save(); ctx.fillStyle = '#ffffff';
+    for (const f of _b8i.flocken) {
+      const y = (f[1] + _b8i.t * 9 * f[2]) % 44, x = f[0] + Math.sin(_b8i.t * 1.3 + f[3]) * 3;
+      ctx.globalAlpha = w * 0.9;
+      ctx.beginPath(); ctx.arc(x, y, f[2], 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 44.5); ctx.lineTo(W, 44.5); ctx.stroke();
+}
+function _b8iFahne(ctx, x, y, text, farbe, oben, unten) {
+  ctx.save();
+  ctx.font = 'bold 11px sans-serif';
+  const w = ctx.measureText(text).width + 8, h = 14;
+  const links = x + 6 + w > _B8I_X1 + 8;
+  const bx = links ? x - 6 - w : x + 6;
+  const by = Math.max(oben, Math.min(unten - h, y - h - 3));
+  ctx.fillStyle = 'rgba(255,255,255,0.95)';
+  _bioFxRundRect(ctx, bx, by, w, h, 3); ctx.fill();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, bx, by, w, h, 3); ctx.stroke();
+  ctx.fillStyle = farbe; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, bx + w / 2, by + h / 2 + 0.5);
+  ctx.restore();
+}
+function _b8iKurve(ctx, a, Y, farbe, strich) {
+  const bis = _b8i.stift;
+  if (bis <= 0) return;
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 2.4; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  if (strich) ctx.setLineDash([6, 4]);
+  ctx.beginPath(); ctx.moveTo(_b8iX(0), Y(a[0]));
+  const schritt = _b8i.ansicht === 'modell' ? 0.05 : 1;
+  for (let x = schritt; x < bis; x += schritt) ctx.lineTo(_b8iX(x), Y(_b8iWert(a, x)));
+  ctx.lineTo(_b8iX(bis), Y(_b8iWert(a, bis)));
+  ctx.stroke();
+  ctx.setLineDash([]);
+  // Punkte an den ganzen Jahren
+  ctx.fillStyle = farbe;
+  for (let j = 0; j <= Math.floor(bis + 1e-9); j++) {
+    ctx.beginPath(); ctx.arc(_b8iX(j), Y(a[j]), 2, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Stift an der Spitze, solange gezeichnet wird
+  if (bis < 12 && (_b8i.laeuft || bis < _b8i.jahr)) {
+    const px = _b8iX(bis), py = Y(_b8iWert(a, bis));
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px, py, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _b8iGitter(ctx, oben, unten, n, jeBeschr, Y, titel, farbe) {
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(_B8I_X0, oben, _B8I_X1 - _B8I_X0, unten - oben);
+  ctx.lineWidth = 1;
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  for (let v = 0; v <= n.max; v += n.schritt) {
+    const y = Math.round(Y(v)) + 0.5;
+    ctx.strokeStyle = v % jeBeschr === 0 ? '#cbd5e1' : '#e8edf3';
+    ctx.beginPath(); ctx.moveTo(_B8I_X0, y); ctx.lineTo(_B8I_X1, y); ctx.stroke();
+    if (v % jeBeschr === 0) { ctx.fillStyle = '#475569'; ctx.fillText(String(v), _B8I_X0 - 3, y); }
+  }
+  for (let j = 0; j <= 12; j++) {
+    const x = Math.round(_b8iX(j)) + 0.5;
+    ctx.strokeStyle = '#eef2f6';
+    ctx.beginPath(); ctx.moveTo(x, oben); ctx.lineTo(x, unten); ctx.stroke();
+  }
+  ctx.strokeStyle = '#64748b';
+  ctx.strokeRect(_B8I_X0 + 0.5, oben + 0.5, _B8I_X1 - _B8I_X0, unten - oben);
+  // Achsentitel senkrecht
+  ctx.translate(10, (oben + unten) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = farbe; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(titel, 0, 0);
+  ctx.restore();
+}
+function _b8iDraw(ctx, cv) {
+  if (!_b8i) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  _b8iWald(ctx, W);
+
+  // Beschriftung über den Diagrammen und Legende
+  ctx.save();
+  ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px sans-serif';
+  ctx.fillText(_b8i.ansicht === 'modell' ? 'Modell' : 'Wirklichkeit (Beispiel)', _B8I_X0, 56);
+  ctx.font = '10px sans-serif';
+  ctx.strokeStyle = _B8I_REH; ctx.lineWidth = 2.4;
+  ctx.beginPath(); ctx.moveTo(262, 52); ctx.lineTo(282, 52); ctx.stroke();
+  ctx.fillStyle = _B8I_REH; ctx.fillText('Rehe', 286, 56);
+  ctx.strokeStyle = _B8I_LUCHS; ctx.setLineDash([6, 4]);
+  ctx.beginPath(); ctx.moveTo(328, 52); ctx.lineTo(354, 52); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = _B8I_LUCHS; ctx.fillText('Luchse', 358, 56);
+  ctx.restore();
+
+  _b8iGitter(ctx, _B8I_RO, _B8I_RU, { max: 100, schritt: 10 }, 20, _b8iYR, 'Rehe', _B8I_REH);
+  _b8iGitter(ctx, _B8I_LO, _B8I_LU, { max: 12, schritt: 1 }, 2, _b8iYL, 'Luchse', _B8I_LUCHS);
+
+  // Jahresachse
+  ctx.save();
+  ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  for (let j = 0; j <= 12; j++) {
+    const an = j === _b8i.jahr;
+    ctx.fillStyle = an ? '#0f172a' : '#64748b';
+    ctx.font = (an ? 'bold 11px' : '10px') + ' sans-serif';
+    ctx.fillText(String(j), _b8iX(j), 228);
+  }
+  ctx.fillStyle = '#334155'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Jahr', 8, 228);
+  ctx.restore();
+
+  const [R, L] = _b8iReihen();
+  // Gipfel leuchten nach dem Modell-Lauf kurz nach (ohne Text)
+  if (_b8i.ansicht === 'modell' && _b8i.gipfelT >= 0 && _b8i.gipfelT < 2.4) {
+    const a = 1 - _bioFxKlemme((_b8i.gipfelT - 1.6) / 0.8);
+    ctx.save(); ctx.globalAlpha = a;
+    _bioFxLeuchten(ctx, _b8iX(3), _b8iYR(80), 9, _b8i.t, '251,146,60');
+    if (_b8i.gipfelT > 0.5) _bioFxLeuchten(ctx, _b8iX(6), _b8iYL(10), 9, _b8i.t, '96,165,250');
+    ctx.restore();
+  }
+  _b8iKurve(ctx, R, _b8iYR, _B8I_REH, false);
+  _b8iKurve(ctx, L, _b8iYL, _B8I_LUCHS, true);
+
+  // Wirklichkeit: Fähnchen am Jahr 7
+  if (_b8i.ansicht === 'wirk' && _b8i.stift >= 7) {
+    const x = _b8iX(7), y = _b8iYR(R[7]);
+    if (_b8i.winterT >= 0 && _b8i.winterT < 2.6) {
+      ctx.save(); ctx.globalAlpha = 1 - _bioFxKlemme((_b8i.winterT - 1.8) / 0.8);
+      _bioFxLeuchten(ctx, x, _b8iYL(L[7]), 8, _b8i.t, '129,140,248');
+      ctx.restore();
+    }
+    ctx.save();
+    ctx.font = 'bold 10px sans-serif';
+    const txt = 'sehr kalter Winter', w = ctx.measureText(txt).width + 20, h = 14;
+    const bx = x + 6, by = y + 5;
+    ctx.fillStyle = 'rgba(224,242,254,0.97)';
+    _bioFxRundRect(ctx, bx, by, w, h, 3); ctx.fill();
+    ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.2;
+    _bioFxRundRect(ctx, bx, by, w, h, 3); ctx.stroke();
+    // Schneeflocke als Zeichnung
+    const sx = bx + 8, sy = by + h / 2;
+    ctx.beginPath();
+    for (let k = 0; k < 3; k++) {
+      const a = k * Math.PI / 3;
+      ctx.moveTo(sx - 4 * Math.cos(a), sy - 4 * Math.sin(a)); ctx.lineTo(sx + 4 * Math.cos(a), sy + 4 * Math.sin(a));
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#0369a1'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(txt, bx + 15, sy + 0.5);
+    ctx.restore();
+  }
+
+  // Senkrechte Jahreslinie mit Fähnchen
+  const jx = Math.round(_b8iX(_b8i.jahr)) + 0.5;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(15,23,42,0.75)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(jx, _B8I_RO - 2); ctx.lineTo(jx, _B8I_LU + 2); ctx.stroke();
+  ctx.restore();
+  if (_b8iFahnen() && (_b8i.stift > 0 || _b8i.laeuft)) {
+    const j = _b8i.jahr;
+    ctx.save(); ctx.fillStyle = _B8I_REH;
+    ctx.beginPath(); ctx.arc(jx, _b8iYR(R[j]), 3.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = _B8I_LUCHS;
+    ctx.beginPath(); ctx.arc(jx, _b8iYL(L[j]), 3.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+    _b8iFahne(ctx, jx, _b8iYR(R[j]), String(R[j]), _B8I_REH, _B8I_RO + 1, _B8I_RU - 1);
+    _b8iFahne(ctx, jx, _b8iYL(L[j]), String(L[j]), _B8I_LUCHS, _B8I_LO + 1, _B8I_LU - 1);
+  }
+
+  // Zeitraffer-Zeichen
+  if (_b8i.laeuft) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(_b8i.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', W - 8, 243);
+    ctx.restore();
+  }
+  _bioFxAlleDraw(ctx, _b8i.fx);
 }

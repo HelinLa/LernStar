@@ -5429,6 +5429,87 @@ const HEFT_SEITEN = {
     frage: "Wie merkt die Fledermaus im Dunkeln, wo die Motte ist?",
     schritte: ["Stelle „Abstand zur Motte“ auf „weit (10 m)“. Drücke „▶ fliegen lassen“.", "Lies den Zähler ab und beobachte das Echo. Trage beides ein.", "Wiederhole das mit „mittel (3 m)“ und mit „nah (50 cm)“.", "Vergleiche: Was ändert sich, wenn die Motte näher ist?"]
   },
+  "bo1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-oekosystem", seite: 7,
+    kapitel: "Ökosystem Wald",
+    name: "Was gehört zum Ökosystem Wald?",
+    titel: "Unser Stück Wald",
+    frage: "Was passiert im Wald, wenn ein Teil fehlt?",
+    schritte: ["Stelle „Was fehlt?“ auf „nichts“. Drücke „▶ 3 Jahre warten“.", "Beobachte die Pflanzen und die Rehe. Trage beides ein.", "Drücke „neu“. Stelle „Was fehlt?“ auf „Regen“, danach auf „Regenwürmer“.", "Vergleiche jede Zeile mit der Zeile „nichts“."]
+  },
+  "bo2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-waldlicht", seite: 11,
+    kapitel: "Ökosystem Wald",
+    name: "Wie viel Licht kommt am Waldboden an?",
+    titel: "Licht unter den Buchen",
+    frage: "Wann kommt am meisten Licht am Waldboden an?",
+    schritte: ["Stelle „Monat“ auf „März“. Lies am Lichtmesser „Boden“ ab, wie viel Licht ankommt.", "Beobachte das Buschwindröschen. Trage beides ein.", "Wiederhole das für „Mai“ und für „Juli“.", "Vergleiche im Juli die beiden Lichtmesser „oben“ und „Boden“."]
+  },
+  "bo3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-nische", seite: 15,
+    kapitel: "Ökosystem Wald",
+    name: "Wer nutzt welchen Platz im Wald?",
+    titel: "Drei Meisen, zwei Bäume",
+    frage: "Wo sucht jede Meisenart ihr Futter?",
+    schritte: ["Stelle „Meisenart“ auf „Kohlmeise“. Drücke „▶ 1 Stunde beobachten“.", "Sieh nach, wo die meisten Futterpunkte liegen. Lies an der Waage ab, wie schwer die Meise ist. Trage beides ein.", "Wiederhole das für „Blaumeise“ und „Tannenmeise“.", "Stelle „alle drei“ ein. Beobachte, ob die Meisen an denselben Stellen suchen."]
+  },
+  "bo4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-helmont", seite: 19,
+    kapitel: "Ökosystem Wald",
+    name: "Woher kommt das Holz eines Baumes?",
+    titel: "Die Weide im Kübel",
+    frage: "Woraus baut die Weide ihr Holz auf?",
+    schritte: ["Stelle „Gießen“ auf „ja“ und „Luft“ auf „normale Luft“. Drücke „▶ 5 Jahre warten“.", "Lies beide Waagen ab. Trage ein.", "Drücke „neu“. Stelle nur EINE Sache um: „ohne Kohlenstoffdioxid“ oder „Gießen“ auf „nein“.", "Vergleiche jede Zeile mit der ersten."]
+  },
+  "bo5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-fotosynthese", seite: 23,
+    kapitel: "Ökosystem Wald",
+    name: "Was machen Blätter mit dem Licht?",
+    titel: "Eine Buche unter der Glasglocke",
+    frage: "Was macht die Buche im Dunkeln mit dem Sauerstoff?",
+    schritte: ["Stelle „Licht“ auf „hell“ und „In der Glocke“ auf „Buche“. Drücke „▶ 1 Stunde warten“.", "Lies ab: Wird Sauerstoff mehr oder weniger? Und Kohlenstoffdioxid? Trage ein.", "Drücke „neu“. Stelle „dunkel“ ein. Danach „leere Glocke“ mit „hell“.", "Vergleiche die Zeilen „hell“ und „dunkel“."]
+  },
+  "bo6": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-nahrungsnetz", seite: 27,
+    kapitel: "Ökosystem Wald",
+    name: "Wer frisst wen im Wald?",
+    titel: "Das Netz im Wald",
+    frage: "Was passiert mit Fuchs und Waldkauz, wenn die Mäuse fehlen?",
+    schritte: ["Stelle „Wer fehlt?“ auf „niemand“. Drücke „▶ 1 Jahr warten“.", "Lies ab, wie viele Füchse und Waldkäuze im Wald leben. Trage ein.", "Drücke „neu“. Stelle „Wer fehlt?“ auf „Mäuse“, danach auf „Meisen“.", "Vergleiche jede Zeile mit der Zeile „niemand“."]
+  },
+  "bo7": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-pyramide", seite: 31,
+    kapitel: "Ökosystem Wald",
+    name: "Wie viel Energie kommt beim Fuchs an?",
+    titel: "Energie auf dem Weg zum Fuchs",
+    frage: "Wie viel von der Energie der Pflanzen kommt beim Fuchs an?",
+    schritte: ["Stelle „Stufe“ auf „Pflanzen“. Drücke „▶ Energie verfolgen“.", "Lies ab: Wie viel Energie steckt darin, wie viel wird als Wärme abgegeben? Trage ein.", "Wiederhole das für „Mäuse“ und für „Fuchs“.", "Vergleiche die Energie in den Pflanzen mit der Energie im Fuchs."]
+  },
+  "bo8": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-destruenten", seite: 35,
+    kapitel: "Ökosystem Wald",
+    name: "Wer räumt das Laub weg?",
+    titel: "Wohin verschwindet das Laub?",
+    frage: "Was passiert mit dem Laub, wenn keine Lebewesen im Boden sind?",
+    schritte: ["Stelle „Wer fehlt?“ auf „niemand“. Drücke „▶ 1 Jahr warten“.", "Lies ab, wie viel Laub übrig ist und wie viele Mineralstoffe im Boden sind. Trage ein.", "Drücke „neu“. Wiederhole das für die anderen drei Einstellungen.", "Vergleiche die Zeilen „niemand“ und „alle“."]
+  },
+  "bo9": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-raeuber-beute", seite: 39,
+    kapitel: "Ökosystem Wald",
+    name: "Wie hängen Luchs und Reh zusammen?",
+    titel: "Luchs und Reh im Diagramm",
+    frage: "Was passiert mit den Rehen, wenn es viele Luchse gibt?",
+    schritte: ["Stelle „Ansicht“ auf „Modell“. Drücke „▶ 12 Jahre“.", "Schiebe „Jahr“ auf 0, 3, 6 und 9. Lies jedes Mal Rehe und Luchse ab. Trage ein.", "Stelle „Ansicht“ auf „Wirklichkeit“. Beobachte die Rehe im Jahr 7.", "Vergleiche: Welche Kurven sind gleichmäßiger?"]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
