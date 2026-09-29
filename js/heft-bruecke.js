@@ -5510,6 +5510,69 @@ const HEFT_SEITEN = {
     frage: "Was passiert mit den Rehen, wenn es viele Luchse gibt?",
     schritte: ["Stelle „Ansicht“ auf „Modell“. Drücke „▶ 12 Jahre“.", "Schiebe „Jahr“ auf 0, 3, 6 und 9. Lies jedes Mal Rehe und Luchse ab. Trage ein.", "Stelle „Ansicht“ auf „Wirklichkeit“. Beobachte die Rehe im Jahr 7.", "Vergleiche: Welche Kurven sind gleichmäßiger?"]
   },
+  "bu1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-einzeller", seite: 46,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Was lebt in einem Wassertropfen?",
+    titel: "Ein Tropfen aus dem Teich",
+    frage: "Hat ein größeres Lebewesen im Tropfen auch mehr Zellen?",
+    schritte: ["Stelle „Vergrößerung“ auf „ohne Mikroskop“. Beobachte den Tropfen.", "Stelle „mit Mikroskop“ ein. Wähle bei „Lebewesen“ das Augentierchen.", "Drücke „Zellen zeigen“: Jede Zelle bekommt einen blauen Punkt. Lies die Länge ab und zähle die Punkte.", "Wiederhole Schritt c für Amöbe, Rädertierchen und Wasserfloh."]
+  },
+  "bu2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-sauerstoff", seite: 50,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Wann wird der Sauerstoff im Teich knapp?",
+    titel: "Sauerstoff im Schulteich",
+    frage: "Wann wird der Sauerstoff im Teich knapp?",
+    schritte: ["Stelle „Frühling (10 °C)“ und „Mittag“ ein. Drücke „▶ messen“.", "Lies den Sauerstoffgehalt ab. Beobachte die Fische.", "Stelle nur „Tageszeit“ auf „Mitternacht“ um. Miss noch einmal.", "Wiederhole beides mit „Sommer (25 °C)“."]
+  },
+  "bu3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-duenger", seite: 54,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Was macht Dünger mit einem See?",
+    titel: "Der See am Maisfeld",
+    frage: "Was macht der Dünger mit dem See?",
+    schritte: ["Stelle „Dünger vom Feld“ auf „kein“. Drücke „▶ 1 Sommer abspielen“.", "Beobachte die Farbe des Wassers und die Algen.", "Lies am Ende den Sauerstoff am Grund und die Zahl der Fische ab.", "Wiederhole das mit „wenig“ und mit „viel“."]
+  },
+  "bu4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-zeiger", seite: 58,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Wie sauber ist der Bach?",
+    titel: "Tiere im Kescher",
+    frage: "An welcher Stelle ist der Bach am saubersten?",
+    schritte: ["Stelle „Ort am Bach“ auf „Waldrand“. Drücke „▶ Kescher ziehen“.", "Lies die Namen der Tiere in der Schale ab.", "Sieh auf der Zeigerkarte nach: Wie sauber ist das Wasser?", "Wiederhole das an der „Wiese“ und „hinter dem Rohr“."]
+  },
+  "bu5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-neophyten", seite: 62,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Warum breitet sich das Springkraut aus?",
+    titel: "Rosa Blüten am Bach",
+    frage: "Warum breitet sich das Springkraut am Bach so schnell aus?",
+    schritte: ["Stelle „Fressfeinde“ auf „keine (wie heute)“. Lies beide Zahlen ab.", "Drücke dreimal „▶ 1 Jahr weiter“. Trage Jahr 1 und Jahr 3 ein.", "Drücke „neu“. Stelle „Fressfeinde“ auf „ja (Gedankenversuch)“.", "Wiederhole Schritt b. Vergleiche Jahr 3."]
+  },
+  "bu6": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-treibhaus", seite: 66,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Wie hält die Luft die Wärme fest?",
+    titel: "Eine Decke aus Gas",
+    frage: "Wie warm wäre die Erde mit weniger oder mehr Treibhausgasen?",
+    schritte: ["Stelle „Treibhausgase“ auf „keine“. Drücke „▶ 50 Jahre warten“.", "Lies die Temperatur ab. Zähle die roten Wärmepfeile, die umkehren.", "Wiederhole das mit „wie 1850“, „wie heute“ und „doppelt so viel wie 1850“.", "Vergleiche die vier Zeilen."]
+  },
+  "bu7": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-forst", seite: 70,
+    kapitel: "Ökosysteme im Wandel",
+    name: "Wie viel Holz darf man fällen?",
+    titel: "Holz aus dem Klassenwald",
+    frage: "Wie viele Bäume kann man jedes Jahr fällen, ohne dass der Wald kleiner wird?",
+    schritte: ["Stelle „Bäume fällen pro Jahr“ auf „2“. Drücke „▶ 10 Jahre weiter“.", "Lies ab, wie viele Bäume nach 10 Jahren im Wald stehen.", "Drücke „neu“. Wiederhole das mit „5“ und mit „10“.", "Vergleiche jede Zeile mit dem Start."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
