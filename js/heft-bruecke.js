@@ -4884,10 +4884,10 @@ const HEFT_SEITEN = {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
     sim: "beschleunigung-ef", seite: 11,
     kapitel: "Grundlagen der Mechanik",
-    name: "Wie schnell wird der Wagen schneller?",
+    name: "Wie schnell wird der Läufer schneller?",
     titel: "Drei Diagramme, eine Zahl",
-    frage: "Welche Zahl der t-v-Geraden gibt an, wie schnell sich die Geschwindigkeit des Wagens ändert?",
-    schritte: ["Der Regler „Beschleunigung a“ ist verdeckt; drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle nacheinander „t → s“, „t → v“ und „t → a“.", "Drücke bei „t → v“ „Steigung messen“ und markiere zwei Punkte."]
+    frage: "Welche Zahl der t-v-Geraden gibt an, wie schnell sich die Geschwindigkeit des Läufers ändert?",
+    schritte: ["Der Regler „Beschleunigung a“ ist verdeckt; drücke während des Laufs fünfmal „Zeit stoppen“.", "Wähle nacheinander „t → s“, „t → v“ und „t → a“.", "Drücke bei „t → v“ „Steigung messen“ und markiere zwei Punkte."]
   },
   "ki4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
@@ -4896,7 +4896,7 @@ const HEFT_SEITEN = {
     name: "Warum trägt man t² auf?",
     titel: "Aus der Kurve eine Gerade machen",
     frage: "Wie wird aus der s-t-Parabel eine Gerade, aus der man a ablesen kann?",
-    schritte: ["Der Regler „Beschleunigung a“ ist verdeckt; stoppe fünfmal während der Fahrt.", "Wähle „t² → s“ und markiere mit „Steigung messen“ zwei Punkte.", "Trage den 1. bis 4. Stopp in die Tabelle ein, rechne für jede Zeile t² und s/t² aus und vergleiche mit der Steigung."]
+    schritte: ["Der Regler „Beschleunigung a“ ist verdeckt; stoppe fünfmal während des Laufs.", "Wähle „t² → s“ und markiere mit „Steigung messen“ zwei Punkte.", "Trage den 1. bis 4. Stopp in die Tabelle ein, rechne für jede Zeile t² und s/t² aus und vergleiche mit der Steigung."]
   },
   "ki5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
@@ -5703,10 +5703,10 @@ const HEFT_SEITEN = {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "beschleunigung-ef", seite: 11,
     kapitel: "Grundlagen der Mechanik",
-    name: "Wie schnell wird der Wagen schneller?",
+    name: "Wie schnell wird der Läufer schneller?",
     titel: "Drei Diagramme, eine Beschleunigung",
     frage: "Welches Diagramm zeigt die Beschleunigung als Steigung?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle „t → v“. Trage die Form des Graphen und a ein.", "Wähle danach „t → s“ und „t → a“. Trage beide Zeilen ein."]
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während des Laufs fünfmal „Zeit stoppen“.", "Wähle „t → v“. Trage die Form des Graphen und a ein.", "Wähle danach „t → s“ und „t → a“. Trage beide Zeilen ein."]
   },
   "fm3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",

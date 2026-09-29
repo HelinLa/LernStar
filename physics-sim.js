@@ -84205,11 +84205,11 @@ const _BEF_PRESETS = [
     gl: k => _befGl(k), slope: () => 0,
     col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
     curveFn: (xv, k) => _befKeyA(k),
-    note: 'Die Beschleunigung wird nicht abgelesen, sondern <b>gerechnet</b>: a = Δv/Δt aus je zwei aufeinanderfolgenden Zeilen derselben Messreihe, aufgetragen bei der mittleren Zeit. Alle Punkte einer gestoppten Reihe liegen auf <b>derselben Waagerechten</b> – zu jedem Zeitpunkt derselbe Wert. Die Steigung ist null, der <b>Achsenabschnitt</b> ist die Beschleunigung. Diese Gerade geht <b>nicht</b> durch den Ursprung; das Häkchen „Ausgleichsgerade durch den Ursprung“ ist für diese Auftragung ausgeschaltet, sonst würde die Waagerechte zum Nullpunkt gezwungen und die Aussage verschwände. Genau diese Konstanz ist die Voraussetzung, unter der v = a·t und s = ½·a·t² überhaupt gelten. Die Lichtschranken-Reihen streuen hier stärker: Ihr Tacho zeigt nur eine Nachkommastelle, und zwei eng benachbarte Schranken teilen diesen Ablesefehler durch ein kleines Δt.',
+    note: 'Die Beschleunigung wird nicht abgelesen, sondern <b>gerechnet</b>: a = Δv/Δt aus je zwei aufeinanderfolgenden Zeilen derselben Messreihe, aufgetragen bei der mittleren Zeit. Alle Punkte einer gestoppten Reihe liegen auf <b>derselben Waagerechten</b> – zu jedem Zeitpunkt derselbe Wert. Die Steigung ist null, der <b>Achsenabschnitt</b> ist die Beschleunigung. Diese Gerade geht <b>nicht</b> durch den Ursprung; das Häkchen „Ausgleichsgerade durch den Ursprung“ ist für diese Auftragung ausgeschaltet, sonst würde die Waagerechte zum Nullpunkt gezwungen und die Aussage verschwände. Genau diese Konstanz ist die Voraussetzung, unter der v = a·t und s = ½·a·t² überhaupt gelten. Die Lichtschranken-Reihen streuen hier stärker: Ihre Geschwindigkeitsanzeige zeigt nur eine Nachkommastelle, und zwei eng benachbarte Schranken teilen diesen Ablesefehler durch ein kleines Δt.',
     typ: 'konstante Funktion (waagerechte Gerade)', form: 'a(t) = Δv/Δt = a = konstant',
     param: () => 'Steigung = 0, Achsenabschnitt = a = ' + _fpmNum(_bef.a, _BEF_NK) + ' m/s² (am Regler eingestellt)',
     term: () => '0*x+' + _bef.a.toFixed(_BEF_NK),
-    deutung: 'Die Beschleunigung ändert sich während der Fahrt nicht. Genau das heißt „gleichmäßig beschleunigt“ – und nur deshalb ist die v-t-Auftragung eine Gerade und die s-t-Auftragung eine Parabel.',
+    deutung: 'Die Beschleunigung ändert sich während des Laufs nicht. Genau das heißt „gleichmäßig beschleunigt“ – und nur deshalb ist die v-t-Auftragung eine Gerade und die s-t-Auftragung eine Parabel.',
     ergebnis: (g0, st) => st.origin ? _befOrigWarnung() :
       _mlabErgebnis('Beschleunigung a = Höhe der waagerechten Ausgleichsgeraden',
         _fpmNum(g0.fit.b, 2), 'm/s²', _fpmNum(_befKeyA(g0.key), 2),
@@ -84239,10 +84239,10 @@ function _befHTML() {
         </div>
         <div class="sim-btn-row" style="padding:6px 0 2px">
           <button class="sim-btn primary" onclick="_befStopp()">⏱ Zeit stoppen</button>
-          <button class="sim-btn" onclick="_befNeueFahrt()">↺ neue Fahrt</button>
+          <button class="sim-btn" onclick="_befNeueFahrt()">↺ neuer Lauf</button>
         </div>
         <div class="lmp-status" id="befStatus"></div>
-        <div class="fpm-note" style="margin-top:6px">Der Wagen startet aus der Ruhe; Uhr, Wegmesser und Tacho laufen mit. <b>„⏱ Zeit stoppen“</b> hält den Augenblickswert fest und schreibt t, s und v als Zeile in die Tabelle – der Wagen fährt dabei weiter. Stoppe <b>mindestens fünf Mal</b> während einer Fahrt. Es ist gleichgültig, <b>wann</b> du stoppst: Die Steigung der v-t-Geraden kommt immer gleich heraus. <b>„↺ neue Fahrt“</b> stellt Uhr und Weg auf null, die Tabelle bleibt stehen. Eine neue Reglerstellung beginnt ebenfalls eine neue Fahrt, weil Weg und Tacho als ½·a·t² und a·t mitlaufen.</div>
+        <div class="fpm-note" style="margin-top:6px">Der Läufer startet aus der Ruhe; Uhr, Wegmesser und Geschwindigkeitsanzeige laufen mit. <b>„⏱ Zeit stoppen“</b> hält den Augenblickswert fest und schreibt t, s und v als Zeile in die Tabelle – der Läufer läuft dabei weiter. Stoppe <b>mindestens fünf Mal</b> während eines Laufs. Es ist gleichgültig, <b>wann</b> du stoppst: Die Steigung der v-t-Geraden kommt immer gleich heraus. <b>„↺ neuer Lauf“</b> stellt Uhr und Weg auf null, die Tabelle bleibt stehen. Eine neue Reglerstellung beginnt ebenfalls einen neuen Lauf, weil Weg und Geschwindigkeit als ½·a·t² und a·t mitlaufen.</div>
       </div>
       <div>
         <div class="fpm-label">Wertetabelle</div>
@@ -84256,9 +84256,9 @@ function _befHTML() {
             <thead><tr><th>Nr.</th><th>t in s</th><th>s in m</th><th>v in m/s</th><th>a in m/s²</th><th></th></tr></thead>
             <tbody id="befTbody"></tbody>
           </table>
-          <div class="fpm-empty" id="befEmpty">Noch keine Messwerte.<br>Wagen fahren lassen → „⏱ Zeit stoppen“ drücken.</div>
+          <div class="fpm-empty" id="befEmpty">Noch keine Messwerte.<br>Läufer starten lassen → „⏱ Zeit stoppen“ drücken.</div>
         </div>
-        <div class="fpm-note" style="margin-top:6px">t, s und v werden <b>abgelesen</b>: t von der Uhr, s vom Wegmesser, v vom Tacho. Die letzte Spalte wird dagegen <b>gerechnet</b>: a = Δv/Δt aus dieser und der vorigen Zeile derselben Fahrt – gleiche Farbe der Kugel. In der ersten Zeile jeder Fahrt bleibt sie deshalb leer. Die drei Knöpfe darüber nehmen ein <b>zweites</b> Messverfahren auf: Sechs Lichtschranken bei 0,5 m bis 6,0 m messen Zeit und Momentangeschwindigkeit. Seine Zeilen bilden eigene Messreihen und geraten nicht mit den gestoppten in eine Ausgleichsgerade.</div>
+        <div class="fpm-note" style="margin-top:6px">t, s und v werden <b>abgelesen</b>: t von der Uhr, s vom Wegmesser, v von der Geschwindigkeitsanzeige. Die letzte Spalte wird dagegen <b>gerechnet</b>: a = Δv/Δt aus dieser und der vorigen Zeile derselben Fahrt – gleiche Farbe der Kugel. In der ersten Zeile jeder Fahrt bleibt sie deshalb leer. Die drei Knöpfe darüber nehmen ein <b>zweites</b> Messverfahren auf: Sechs Lichtschranken bei 0,5 m bis 6,0 m messen Zeit und Momentangeschwindigkeit. Seine Zeilen bilden eigene Messreihen und geraten nicht mit den gestoppten in eine Ausgleichsgerade.</div>
       </div>
     </div>
     <div class="fpm-label" style="margin-top:12px">Auswertung – t-v-Diagramm, t-s-Diagramm, linearisiert über t², t-a-Diagramm</div>
@@ -84301,7 +84301,7 @@ function _befStopp() {
 function _befNeueFahrt() {
   if (!_bef) return;
   _bef.t = 0; _bef.s = 0; _bef.letzte = null; _bef.fahrt++;
-  _bef.meldung = 'Neue Fahrt – Uhr und Weg auf null, die Tabelle bleibt stehen.';
+  _bef.meldung = 'Neuer Lauf – Uhr und Weg auf null, die Tabelle bleibt stehen.';
   _bef.flash = 0.9;
   _befStatus();
 }
@@ -84340,7 +84340,7 @@ function _befDemo() {
       _bef.rows.push({ id: _bef.nextId++, q: 1, v: r.v, s: r.s, t: r.t, g: _befKey(1, a), f, a: NaN, tm: NaN });
     });
   });
-  _bef.meldung = 'Beispielmessreihe: drei Lichtschranken-Fahrten mit 1,00, 2,00 und 4,00 m/s²';
+  _bef.meldung = 'Beispielmessreihe: drei Lichtschranken-Läufe mit 1,00, 2,00 und 4,00 m/s²';
   _bef.flash = 1;
   _befNachTabelle();
 }
@@ -84369,7 +84369,7 @@ function _befClear() {
 // nicht: Die Uhr faengt bei jeder neuen Fahrt wieder bei null an, und nur wenn
 // die zweite Fahrt FRUEHER gestoppt wird als die erste endete, faellt sie ueber
 // dt <= 0 heraus. Wird sie spaeter gestoppt, wurde die erste Zeile der zweiten
-// Fahrt mit der letzten der ersten verrechnet (gemessen: "↺ neue Fahrt", dann
+// Fahrt mit der letzten der ersten verrechnet (gemessen: "↺ neuer Lauf", dann
 // bei t = 1,50 s gestoppt - die Zeile bekam a = 2,00 bei tm = 1,30 s, einer
 // Zeit, in der gar nicht gemessen wurde). Dass Delta v/Delta t hier zufaellig
 // trotzdem a ergibt - v = a·t gilt in JEDER Fahrt derselben Reglerstellung -
@@ -84407,7 +84407,7 @@ function _befStatus() {
   const kopf = l
     ? '⏱ zuletzt festgehalten: t = ' + _fpmNum(l.t, _BEF_NK) + ' s · s = ' + _fpmNum(l.s, _BEF_NK) +
       ' m · v = ' + _fpmNum(l.v, _BEF_NK) + ' m/s'
-    : '⏱ Noch nichts gestoppt – die Fahrt läuft bereits.';
+    : '⏱ Noch nichts gestoppt – der Lauf läuft bereits.';
   el.innerHTML = kopf + ' &nbsp;·&nbsp; ' + n + ' von mindestens 5 gestoppten Messwerten bei a = ' +
     _fpmNum(_bef.a, 1) + ' m/s²' + (n >= 5 ? ' – die Messreihe reicht für die Auswertung.' : '.');
   el.className = 'lmp-status' + (n >= 5 ? ' on' : '');
@@ -84467,11 +84467,59 @@ function _befUpdate(dt) {
   _bef.s = 0.5 * _bef.a * _bef.t * _bef.t;
   if (_bef.s >= _BEF_SMAX) {
     _bef.t = 0; _bef.s = 0; _bef.letzte = null; _bef.fahrt++;
-    _bef.meldung = 'Die Bahn ist zu Ende – die Fahrt beginnt erneut. Die Tabelle bleibt stehen.';
+    _bef.meldung = 'Die Bahn ist zu Ende – der Lauf beginnt erneut. Die Tabelle bleibt stehen.';
     _bef.flash = 1;
     _befStatus();
   }
   _bef.flash = Math.max(0, _bef.flash - dt * 0.8);
+}
+
+// Der Sprinter. Beine und Arme schwingen gegenlaeufig; die Phase haengt am
+// Weg s, die Rumpfneigung an v: beim Start tief nach vorn, schnell fast aufrecht.
+function _befLaeufer(ctx, cx, road, s, v, hell) {
+  const HAUT = '#4a2c1d', HAUT2 = '#3b2417', TRIKOT = hell ? '#f97316' : '#fcd116',
+        RAND = '#009b3a', HOSE = '#111827', SCHUH = '#16a34a';
+  const ruhe = s < 0.005;
+  const ph = s / 0.85 * Math.PI;
+  const neig = ruhe ? 0.95 : Math.max(0.12, 0.7 - v * 0.09);
+  const beine = ruhe ? [[1.35, 0.15], [-0.9, -0.15]]
+    : [[Math.sin(ph) * 0.9, Math.sin(ph) * 0.9 - 0.6 - Math.max(0, Math.cos(ph)) * 0.9],
+       [-Math.sin(ph) * 0.9, -Math.sin(ph) * 0.9 - 0.6 - Math.max(0, -Math.cos(ph)) * 0.9]];
+  // Bodenkontakt: Die Huefte sitzt so hoch, dass der tiefere Fuss auf der Bahn steht.
+  const fussY = b => Math.cos(b[0]) * 12 + Math.cos(b[1]) * 12;
+  const hueft = { x: cx, y: road - 1.5 - Math.max(fussY(beine[0]), fussY(beine[1])) };
+  const schul = { x: hueft.x + Math.sin(neig) * 17, y: hueft.y - Math.cos(neig) * 17 };
+  const glied = (ax, ay, w1, l1, w2, l2, col, br) => {
+    const kx = ax + Math.sin(w1) * l1, ky = ay + Math.cos(w1) * l1;
+    const fx = kx + Math.sin(w2) * l2, fy = ky + Math.cos(w2) * l2;
+    ctx.strokeStyle = col; ctx.lineWidth = br; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(kx, ky); ctx.lineTo(fx, fy); ctx.stroke();
+    return { x: fx, y: fy };
+  };
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.18)';
+  ctx.beginPath(); ctx.ellipse(cx + 3, road + 1, 14, 2.5, 0, 0, 2 * Math.PI); ctx.fill();
+  const arme = ruhe ? [[0.15, 0.05], [0.35, 0.1]]
+    : [[-Math.sin(ph) * 1.1 + neig, -Math.sin(ph) * 1.1 + neig + 1.4],
+       [Math.sin(ph) * 1.1 + neig, Math.sin(ph) * 1.1 + neig + 1.4]];
+  const f1 = glied(hueft.x, hueft.y, beine[1][0], 12, beine[1][1], 12, HAUT2, 4.5);
+  ctx.fillStyle = SCHUH; ctx.fillRect(f1.x - 1, f1.y - 2, 6, 3);
+  glied(schul.x, schul.y, arme[1][0], 9, arme[1][1], 8, HAUT2, 3.5);
+  ctx.strokeStyle = HOSE; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(hueft.x, hueft.y);
+  ctx.lineTo(hueft.x + Math.sin(beine[0][0]) * 6, hueft.y + Math.cos(beine[0][0]) * 6); ctx.stroke();
+  ctx.strokeStyle = TRIKOT; ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.moveTo(hueft.x, hueft.y - 2); ctx.lineTo(schul.x, schul.y); ctx.stroke();
+  ctx.strokeStyle = RAND; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(hueft.x - 3, hueft.y - 1); ctx.lineTo(hueft.x + 3, hueft.y - 3); ctx.stroke();
+  const f0 = glied(hueft.x, hueft.y, beine[0][0], 12, beine[0][1], 12, HAUT, 4.5);
+  ctx.fillStyle = SCHUH; ctx.fillRect(f0.x - 1, f0.y - 2, 6, 3);
+  glied(schul.x, schul.y, arme[0][0], 9, arme[0][1], 8, HAUT, 3.5);
+  const kx = schul.x + Math.sin(neig) * 6, ky = schul.y - Math.cos(neig) * 6 - 2;
+  ctx.fillStyle = HAUT; ctx.beginPath(); ctx.arc(kx, ky, 5.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#111827';
+  ctx.beginPath(); ctx.arc(kx - 0.6, ky - 0.8, 5.0, Math.PI * 1.0, Math.PI * 1.9); ctx.fill();
+  ctx.restore();
 }
 
 function _befDraw(ctx, cv) {
@@ -84491,7 +84539,7 @@ function _befDraw(ctx, cv) {
   const felder = [
     ['Uhr  t', _fpmNum(_befLeseT(), _BEF_NK) + ' s', '#0f172a'],
     ['Wegmesser  s', _fpmNum(_befLeseS(), _BEF_NK) + ' m', '#7c3aed'],
-    ['Tacho  v', _fpmNum(vNow, _BEF_NK) + ' m/s', '#0284c7']
+    ['Geschwindigkeit  v', _fpmNum(vNow, _BEF_NK) + ' m/s', '#0284c7']
   ];
   const bw = (W - 4 * 8) / 3;
   felder.forEach(([lab, val, col], i) => {
@@ -84515,14 +84563,14 @@ function _befDraw(ctx, cv) {
   } else {
     ctx.fillStyle = '#64748b'; ctx.font = '11px sans-serif';
     ctx.fillText(window.FELABS_FORSCHEN === 'beschleunigung-ef'
-      ? 'Uhr, Wegmesser und Tacho laufen mit – stoppe selbst und trage ein'
-      : 'v = a · t   und   s = ½ · a · t²   –   Uhr, Wegmesser und Tacho laufen mit', W / 2, 71);
+      ? 'Uhr, Wegmesser und Geschwindigkeit laufen mit – stoppe selbst und trage ein'
+      : 'v = a · t   und   s = ½ · a · t²   –   Uhr, Wegmesser und Geschwindigkeit laufen mit', W / 2, 71);
   }
 
   // Zeitlupe: Die Uhr zeigt die wirkliche Messzeit, der Bildlauf ist gedehnt.
   ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif';
   ctx.fillText('Videoanalyse mit 50 Bildern je Sekunde – die Uhr springt um 0,02 s · Bildlauf in Zeitlupe 1 : ' +
-    _fpmNum(1 / _befZeitlupe(), 1) + ' · eine Fahrt über die 6,5 m dauert wirklich ' +
+    _fpmNum(1 / _befZeitlupe(), 1) + ' · ein Lauf über die 6,5 m dauert wirklich ' +
     _fpmNum(Math.sqrt(2 * _BEF_SMAX / _bef.a), 2) + ' s', W / 2, 88);
 
   // ── Bahn ────────────────────────────────────────────
@@ -84551,33 +84599,22 @@ function _befDraw(ctx, cv) {
   ctx.fillStyle = '#64748b'; ctx.font = '700 10px sans-serif';
   ctx.fillText('Lichtschranken bei s (m):', mL, road + 40);
 
-  // ── Wagen ───────────────────────────────────────────
+  // ── Läufer ──────────────────────────────────────────
+  // Seit 29.09.2026 ein Sprinter statt des Wagens (Abdullah: „ersetz den Wagen
+  // durch einen Läufer, farbige Läufer … mach Usain Bolt“): gelbes Trikot mit
+  // grünem Rand, schwarze Hose, dunkle Haut. Die Physik bleibt das Modell:
+  // gleichmäßig beschleunigt aus dem Tiefstart. Die Schrittfolge haengt am Weg,
+  // der Läufer wird also mit v sichtbar schneller.
   const cx = X(_bef.s);
-  ctx.strokeStyle = 'rgba(124,58,237,0.30)'; ctx.lineWidth = 2;
+  ctx.strokeStyle = 'rgba(0,155,58,0.30)'; ctx.lineWidth = 2;
   for (let i = 0; i < 3; i++) {
-    const ln = 4 + vNow * 2.0, yy = road - 8 - i * 6;
-    const xx = cx - 24 - ((_bef.s * 4 + i * 0.6) % 1) * 16;
+    const ln = 4 + vNow * 2.0, yy = road - 14 - i * 8;
+    const xx = cx - 18 - ((_bef.s * 4 + i * 0.6) % 1) * 16;
     if (xx - ln < mL) continue;
     ctx.beginPath(); ctx.moveTo(xx - ln, yy); ctx.lineTo(xx, yy); ctx.stroke();
   }
-  const bwg = 42, bhg = 20;
-  ctx.fillStyle = hell ? '#f97316' : '#7c3aed';
-  ctx.beginPath();
-  ctx.roundRect ? ctx.roundRect(cx - bwg / 2, road - bhg, bwg, bhg, 5)
-                : ctx.rect(cx - bwg / 2, road - bhg, bwg, bhg);
-  ctx.fill();
-  ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.fillRect(cx - 3, road - bhg + 4, 15, 8);
-  const rr = 5.5, ang = _bef.s / 0.35;
-  [-12, 12].forEach(dx => {
-    ctx.fillStyle = '#1e293b';
-    ctx.beginPath(); ctx.arc(cx + dx, road + 1, rr, 0, 2 * Math.PI); ctx.fill();
-    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.4;
-    ctx.beginPath();
-    ctx.moveTo(cx + dx - Math.cos(ang) * rr, road + 1 - Math.sin(ang) * rr);
-    ctx.lineTo(cx + dx + Math.cos(ang) * rr, road + 1 + Math.sin(ang) * rr);
-    ctx.stroke();
-  });
+  const bhg = 46;
+  _befLaeufer(ctx, cx, road, _bef.s, vNow, hell);
 
   // Geschwindigkeitspfeil: waechst gleichmaessig - hier sieht man, dass eine
   // groessere Beschleunigung denselben Weg mit hoeherem Tempo beendet.
