@@ -5690,6 +5690,204 @@ const HEFT_SEITEN = {
     frage: "Was passiert mit zwei getrennten Gruppen in langer Zeit?",
     schritte: ["Stelle „Fluss“ auf „Fluss“ und „Zeit“ auf „10 000 Jahre“. Drücke „▶ Zeit laufen lassen“.", "Lies auf der Merkmalskarte ab: Wie viele sind verschieden?", "Drücke „▶ zusammensetzen“. Schlüpfen Junge? Trage ein.", "Drücke „neu“. Wiederhole mit „1 Million Jahre“, dann „kein Fluss“."]
   },
+  "fm1": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "gleichfoermig", seite: 7,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie schnell läuft sie wirklich?",
+    titel: "Fünf Stopps, eine Steigung",
+    frage: "Wie findet man die Geschwindigkeit aus Zeit und Weg?",
+    schritte: ["Stelle „Geschwindigkeit v“ auf 4,0 m/s. Drücke fünfmal „Zeit stoppen“, wann du willst.", "Wähle „t → s“. Trage die Form der Linie und den Wert darunter ein.", "Wähle danach „t → v“ und „t → a“. Trage beide Zeilen ein."]
+  },
+  "fm2": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "beschleunigung-ef", seite: 11,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie schnell wird der Wagen schneller?",
+    titel: "Drei Diagramme, eine Zahl",
+    frage: "Welches Diagramm zeigt die Beschleunigung als Steigung?",
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle „t → v“. Trage die Form der Linie und a ein.", "Wähle danach „t → s“ und „t → a“. Trage beide Zeilen ein."]
+  },
+  "fm3": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "beschleunigung-ef", seite: 15,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum trägt man t² auf?",
+    titel: "Aus der Kurve eine Gerade machen",
+    frage: "Wie wird aus der Parabel eine Gerade, aus der man a ablesen kann?",
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke fünfmal „Zeit stoppen“, erst ab 1 m Weg.", "Wähle „t → s“. Trage die Form der Linie und die Steigung ein.", "Wähle „t² → s“ und danach „t → v“. Lies die Zahl nach „y =“ ab."]
+  },
+  "fm4": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "freierfall", seite: 19,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
+    titel: "Zwei Wege, zwei Zahlen",
+    frage: "Warum liefern zwei Wege zu g nicht dieselbe Zahl?",
+    schritte: ["Stelle die „Fallhöhe“ auf 50 m. Drücke „Tabelle leeren“ und dann „Messreihe automatisch aufnehmen“.", "Lies in der Tabelle die Zeilen mit t = 0,32 s, 1,28 s und 2,56 s ab.", "Trage für jede Zeile die beiden letzten Spalten ein. Vergleiche sie."]
+  },
+  "fm5": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "wurf-waagerecht", seite: 23,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum trifft die geworfene Kugel gleichzeitig auf?",
+    titel: "Ein Schlag, nicht zwei",
+    frage: "Kommt eine schneller geworfene Kugel später unten an?",
+    schritte: ["Stelle „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 4 m/s. Drücke „Aufprall“.", "Lies die Wurfweite und den Satz „Beide sind unten …“ ab.", "Wiederhole das mit v₀ = 8 m/s und v₀ = 16 m/s.", "Stelle h auf 45 m und v₀ auf 8 m/s. Drücke „Aufprall“."]
+  },
+  "fm7": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "traegheit", seite: 31,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Was macht ein Körper, wenn keine Kraft mehr zieht?",
+    titel: "Niemand schiebt, nichts ändert sich",
+    frage: "Was macht die Geschwindigkeit, wenn die Gesamtkraft null ist?",
+    schritte: ["Stelle „Externe Kraft F“ auf 0 N und „Anfangsgeschwindigkeit v₀“ auf 5 m/s.", "Lies v im Kästchen sofort ab. Lies nach einer Weile noch einmal ab.", "Wiederhole das mit v₀ = 20 m/s und v₀ = 40 m/s.", "Stelle v₀ auf 20 m/s, dann F auf 10 N. Beobachte v."]
+  },
+  "fm8": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "newton2", seite: 35,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wovon hängt die Beschleunigung ab?",
+    titel: "Ein Regler nach dem anderen",
+    frage: "Wie hängt a von der Kraft F und der Masse m ab?",
+    schritte: ["Stelle „Kraft F“ auf 50 N, „Masse m“ auf 5 kg. Lies a und „Probe m · a“ ab.", "Stelle nur die Kraft auf 100 N. Die Masse bleibt 5 kg.", "Stelle die Kraft zurück auf 50 N und nur die Masse auf 10 kg."]
+  },
+  "fm9": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "kraefte-gleichgewicht", seite: 39,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
+    titel: "Die Lampe über dem Schreibtisch",
+    frage: "Wirkt auf die still hängende Lampe wirklich keine Kraft?",
+    schritte: ["Lies im Ausgangszustand die Statuszeile. Trage Zeile 1 ein.", "Drücke einmal „– N“. Trage Zeile 2 ein.", "Drücke „zurück in die Mitte“ und danach einmal „+ N“. Trage Zeile 3 ein.", "Vergleiche: Wann bleibt die Lampe in Ruhe?"]
+  },
+  "fm10": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "wechselwirkung-ef", seite: 43,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum drückt die Wand zurück?",
+    titel: "Zwei Wagen, eine Feder",
+    frage: "Wird der leichte Wagen stärker gedrückt als der schwere?",
+    schritte: ["Stelle den Regler „Masse m1 (linker Wagen)“ auf 1 kg.", "Drücke „Feder lösen“. Beobachte: Welcher Wagen fährt schneller weg?", "Lies in der Zeile „Beim Lösen“ F1, F2, a1 und a2 ab. Trage Zeile 1 ein.", "Stelle m1 auf 5 kg und danach auf 10 kg. Trage beide Zeilen ein."]
+  },
+  "fm11": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "reibung", seite: 47,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wie viel Kraft bleibt zum Beschleunigen übrig?",
+    titel: "Was von 80 Newton übrig bleibt",
+    frage: "Wie viel von 80 N bleibt zum Beschleunigen übrig?",
+    schritte: ["Stelle den Regler „Reibungskoeffizient μ“ so, dass im Bild μ = 0,20 steht.", "Lies im Bild die Reibungskraft F_R ab. Trage Zeile 1 ein.", "Wiederhole das für μ = 0,40 und μ = 0,60.", "Berechne in Spalte 3: 80 N minus F_R."]
+  },
+  "fm12": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "arbeit", seite: 51,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Wann wird wirklich Arbeit verrichtet?",
+    titel: "Vier Meter getragen, null Joule",
+    frage: "Wann verrichtet Tobias wirklich Arbeit?",
+    schritte: ["Drücke „Schieben“. Lies in der Statuszeile die Arbeit W ab. Trage Zeile 1 ein.", "Drücke „Waagerecht tragen“. Trage Zeile 2 ein.", "Drücke „Hochheben“ und danach „Ausführen“. Trage Zeile 3 ein.", "Lies die Richtung von Kraft und Weg jeweils unten im Bild ab."]
+  },
+  "fm13": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "bewegungsenergie", seite: 55,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Warum zählt das Tempo doppelt?",
+    titel: "Zweimal verdoppelt, zweimal anders",
+    frage: "Was zählt mehr: doppelte Masse oder doppelte Geschwindigkeit?",
+    schritte: ["Drücke „Rollen lassen“. Lies ab, wie weit der Klotz rutscht. Trage Zeile 1 ein.", "Drücke „×2 Masse“ und „Rollen lassen“. Trage Zeile 2 ein.", "Stelle „Masse m“ auf 4 kg. Drücke „×2 v“ und „Rollen lassen“. Trage Zeile 3 ein.", "Vergleiche: Wo ist E doppelt, wo vierfach?"]
+  },
+  "fm14": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "spannenergie", seite: 59,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Die gespannte Feder – wo steckt die Energie?",
+    titel: "Das Dreieck unter der Linie",
+    frage: "Was passiert mit der Spannenergie, wenn du s verdoppelst?",
+    schritte: ["Lies bei 10 cm in der Statuszeile die Kraft F und die Spannenergie E ab. Trage Zeile 1 ein.", "Stelle den Regler „Auslenkung s“ auf 20 cm. Trage Zeile 2 ein.", "Stelle ihn auf 30 cm. Trage Zeile 3 ein.", "Drücke „Loslassen“ und beobachte den Wagen."]
+  },
+  "fm15": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "impuls", seite: 63,
+    kapitel: "Grundlagen der Mechanik",
+    name: "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
+    titel: "Die Summe mit Vorzeichen",
+    frage: "Bleibt der Gesamtimpuls beim Zusammenstoß gleich?",
+    schritte: ["Drücke „Stoß auslösen“. Lies oben rechts p_ges ab, bevor die Kugeln sich treffen.", "Lies nach dem Stoß p₁, p₂ und p_ges ab. Trage Zeile 1 ein.", "Stelle „Masse 1 (kg)“ auf 1 kg. Wiederhole a und b für Zeile 2.", "Wiederhole das mit 5 kg für Zeile 3."]
+  },
+  "fg1": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "kreisbewegung", seite: 71,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Wie schnell ist ein Punkt auf der Kreisbahn?",
+    titel: "Außen sitzen, schneller fahren",
+    frage: "Ist der Sitz außen schneller als der Sitz innen?",
+    schritte: ["Stelle „ω (Winkelgeschwindigkeit)“ auf 3 rad/s. Der Regler bleibt dort.", "Stelle „Radius r“ auf 40 px. Lies im weißen Feld die Zeile v≈ ab.", "Wiederhole das mit 70 px und 100 px.", "Trage die Zahlen mit Komma ein."]
+  },
+  "fg2": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "zentripetalkraft", seite: 75,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Was hält den Körper auf der Kreisbahn?",
+    titel: "Wer hält den Sitz auf der Bahn?",
+    frage: "Wohin zeigt die Kraft, die den Körper auf der Kreisbahn hält?",
+    schritte: ["Sieh dir im Bild den Pfeil „F_z zum Mittelpunkt“ an. Wohin zeigt er?", "Lies bei 0,5 kg im Feld „Alle Größen der Kreisbewegung“ a_z und F_z ab.", "Stelle nur den Regler „Masse m“ auf 1,0 kg, dann auf 2,0 kg.", "Lies jedes Mal ab und trage ein."]
+  },
+  "fg3": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "zentripetalkraft", seite: 79,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Was sagt eine Messreihe über die Zentripetalkraft?",
+    titel: "Sieben Punkte, eine Gerade",
+    frage: "Trifft die Ausgleichsgerade die eingestellte Masse?",
+    schritte: ["Drücke „F über r auftragen“ und dann „Messreihe automatisch aufnehmen“.", "Lies ab: „Masse m aus der Steigung k“ und die Abweichung.", "Drücke „Tabelle leeren“. Stelle „Masse m“ auf 1,0 kg. Wiederhole Schritt a und b.", "Wiederhole alles mit 1,5 kg."]
+  },
+  "fg4": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "gravitation-abstand", seite: 83,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Mehr Masse oder weniger Abstand – was wirkt stärker?",
+    titel: "Masse gegen Abstand",
+    frage: "Was ändert die Gravitationskraft stärker: doppelte Masse oder doppelter Abstand?",
+    schritte: ["Drücke „zurücksetzen“. Lies die Anziehungskraft in der Statuszeile ab.", "Drücke einmal „×2 Masse links“. Lies wieder ab.", "Drücke „zurücksetzen“, dann einmal „×2 Abstand“. Lies ab.", "Drücke jetzt noch „×2 Masse links“. Nun ist beides verdoppelt. Lies ab."]
+  },
+  "fg5": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "ortsfaktor", seite: 87,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum wiegt derselbe Mensch auf dem Mond weniger?",
+    titel: "Gleiche Person, anderer Ort",
+    frage: "Was ändert sich auf dem Mond: die Masse oder die Gewichtskraft?",
+    schritte: ["Drücke „Mond“. Lies in der Statuszeile m, g und F ab.", "Drücke „Erde“ und danach „Jupiter“. Lies jedes Mal ab.", "Trage alles in die Tabelle ein."]
+  },
+  "fg8": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "planetenbahn", seite: 99,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum fällt die Erde nicht in die Sonne?",
+    titel: "Das ewige Vorbeifallen",
+    frage: "Warum stürzt ein Planet nicht in die Sonne, obwohl sie ihn anzieht?",
+    schritte: ["Drücke „ganz klein“. Lies in der Statuszeile die Bahnform ab.", "Drücke danach „mittlerer Wert“ und „etwas darüber“.", "Drücke zuletzt „Gegenprobe groß“.", "Trage für jeden Knopf die Startgeschwindigkeit und die Bahnform ein."]
+  },
+  "fg10": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "weltbild", seite: 107,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum läuft der Mars manchmal rückwärts?",
+    titel: "Zwei Modelle, ein Himmel",
+    frage: "Welches Modell erklärt, dass der Mars rückwärts läuft?",
+    schritte: ["Drücke „Erde in der Mitte (alt)“. Lies die Statuszeile.", "Beobachte den Streifen unten: Läuft der Mars zeitweise rückwärts?", "Drücke „Sonne in der Mitte (heute)“. Vergleiche Statuszeile und Streifen.", "Trage ein. Zeile 2 heißt „Zusatzkreise?“, Zeile 3 „Mars rückwärts?“."]
+  },
+  "fg12": {
+    klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
+    sim: "lichtuhr", seite: 115,
+    kapitel: "Kreisbewegung, Gravitation und Weltbilder",
+    name: "Warum geht die bewegte Uhr langsamer?",
+    titel: "Die Uhr, die langsamer tickt",
+    frage: "Wie oft tickt eine bewegte Uhr, während die ruhende 200-mal tickt?",
+    schritte: ["Drücke „6 · Zeitdehnung messen“.", "Stelle „Geschwindigkeit v/c“ auf 0,10. Das heißt: 10 % von c.", "Lies ab: „bewegte Ticks je 200 ruhende“. Trage Zeile 1 ein.", "Stelle nacheinander 0,60, 0,80 und 0,95 ein. Trage die Zeilen ein."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
