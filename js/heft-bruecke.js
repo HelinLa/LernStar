@@ -5573,6 +5573,123 @@ const HEFT_SEITEN = {
     frage: "Wie viele Bäume kann man jedes Jahr fällen, ohne dass der Wald kleiner wird?",
     schritte: ["Stelle „Bäume fällen pro Jahr“ auf „2“. Drücke „▶ 10 Jahre weiter“.", "Lies ab, wie viele Bäume nach 10 Jahren im Wald stehen.", "Drücke „neu“. Wiederhole das mit „5“ und mit „10“.", "Vergleiche jede Zeile mit dem Start."]
   },
+  "bf1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-fossil", seite: 81,
+    kapitel: "Spuren des Lebens",
+    name: "Wie wird ein Tier zu Stein?",
+    titel: "Ein Fisch im Stein",
+    frage: "Wo muss ein toter Fisch liegen, damit ein Fossil entsteht?",
+    schritte: ["Stelle „Fisch liegt“ auf „am Ufer“. Drücke „▶ 10 Millionen Jahre warten“.", "Beobachte das Gestein: Wie viele der 10 Fische sind Fossilien?", "Trage die Zahl ein und was vom Fisch übrig ist.", "Wiederhole das mit „auf dem Seegrund“ und „unter Schlamm“."]
+  },
+  "bf2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-leitfossil", seite: 85,
+    kapitel: "Spuren des Lebens",
+    name: "Wie alt ist diese Gesteinsschicht?",
+    titel: "Zwei Steinbrüche, drei Zeitalter",
+    frage: "Ist die oberste Schicht in beiden Steinbrüchen gleich alt?",
+    schritte: ["Stelle „Steinbruch“ auf „A“ und „Schicht“ auf „oben“. Drücke „Lupe“.", "Lies ab, welches Fossil in der Schicht liegt.", "Sieh im Schaubild nach, wo das Fossil steht. Trage das Erdzeitalter ein.", "Wiederhole das mit „A Mitte“, „A unten“ und „B oben“."]
+  },
+  "bf3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-miller", seite: 89,
+    kapitel: "Spuren des Lebens",
+    name: "Wie entstanden die ersten Bausteine des Lebens?",
+    titel: "Blitze im Glaskolben",
+    frage: "Was entsteht in Millers Glaskolben nach einer Woche?",
+    schritte: ["Stelle „Gase“ auf „Uratmosphäre“ und „Funken“ auf „aus“.", "Drücke „▶ 1 Woche laufen lassen“. Beobachte das Wasser und den Test.", "Trage ein. Stelle dann „Funken“ auf „an“ und wiederhole.", "Stelle „Gase“ auf „heutige Luft“. Wiederhole mit „Funken“ an."]
+  },
+  "bf4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-skelettvergleich", seite: 93,
+    kapitel: "Spuren des Lebens",
+    name: "Was haben Arm, Flügel und Flosse gemeinsam?",
+    titel: "Knochen unter der Haut",
+    frage: "Ist die Flosse des Delfins innen wie eine Fischflosse gebaut?",
+    schritte: ["Stelle „Tier“ auf „Mensch“. Drücke „Röntgenblick“ und dann „Farben an“.", "Beobachte: Welche Farben siehst du? Zähle die Finger.", "Trage ein, ob es Oberarm und Unterarm gibt.", "Wiederhole das mit „Fledermaus“, „Delfin“ und „Fisch“."]
+  },
+  "bf5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-urvogel", seite: 97,
+    kapitel: "Spuren des Lebens",
+    name: "Ist der Urvogel ein Vogel oder ein Reptil?",
+    titel: "Federn und Zähne",
+    frage: "Hat der Urvogel nur Merkmale von Vögeln?",
+    schritte: ["Stelle „Tier“ auf „Urvogel“ und „Merkmal“ auf „Federn“. Drücke „Lupe“.", "Trage ein, ob der Urvogel das Merkmal hat.", "Stelle „Tier“ auf „Taube“, dann auf „Eidechse“. Trage ein, wer es auch hat.", "Wiederhole das mit „Zähne“, „Krallen am Vorderbein“ und „Knochenschwanz“."]
+  },
+  "bf6": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-stammbaum", seite: 101,
+    kapitel: "Spuren des Lebens",
+    name: "Wie liest man einen Stammbaum?",
+    titel: "Wo sich die Linien treffen",
+    frage: "Ist die Taube näher mit dem Menschen oder mit der Eidechse verwandt?",
+    schritte: ["Stelle „Tier 1“ auf „Taube“ und „Tier 2“ auf „Eidechse“. Drücke „▶ Linien zurückverfolgen“.", "Lies am Treffpunkt ab, vor wie vielen Millionen Jahren sich die Linien trennten.", "Lies das Schild am Treffpunkt: Lebt der Vorfahre heute noch? Trage beides ein.", "Wiederhole das mit den drei anderen Paaren aus der Tabelle."]
+  },
+  "bf7": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-aufrecht", seite: 105,
+    kapitel: "Spuren des Lebens",
+    name: "Warum geht der Mensch aufrecht?",
+    titel: "Aufstehen in der Savanne",
+    frage: "Wo hilft der aufrechte Gang: im Wald oder in der Savanne?",
+    schritte: ["Stelle „Landschaft“ auf „dichter Wald“ und „Haltung“ auf „auf vier Beinen“. Drücke „▶ einen Tag beobachten“.", "Lies am Maßband und am Sonnenbalken ab: Wie weit sieht er? Wie viel Sonne trifft ihn?", "Trage beides ein. Stelle „Haltung“ auf „aufrecht“ und wiederhole.", "Wiederhole beides mit „Landschaft“ auf „Savanne“."]
+  },
+  "bv1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-variabilitaet", seite: 113,
+    kapitel: "Wie Arten entstehen",
+    name: "Sind alle Schnecken einer Art gleich?",
+    titel: "Gelbe, rosa und braune Schnecken",
+    frage: "Gehören gelbe, rosa und braune Schnecken zu einer Art?",
+    schritte: ["Drücke „▶ nach Farbe sortieren“. Trage die Zahlen ein.", "Stelle „Partner“ auf „gelb“. Drücke „▶ paaren lassen“.", "Beobachte: Schlüpfen Junge? Welche Farben haben sie? Trage ein.", "Wiederhole das mit „rosa“ und mit „braun“."]
+  },
+  "bv2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-giraffe", seite: 117,
+    kapitel: "Wie Arten entstehen",
+    name: "Wie bekam die Giraffe ihren langen Hals?",
+    titel: "Der lange Hals der Giraffe",
+    frage: "Was passiert, wenn es nur oben Laub gibt?",
+    schritte: ["Stelle „Laub“ auf „nur oben“. Trage die Zahlen beim Start ein.", "Drücke „▶ 1 Generation“. Trage die Zahlen ein.", "Wiederhole bis Generation 3.", "Beobachte die Giraffe mit dem Stern. Wird ihr Hals länger?"]
+  },
+  "bv3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-birkenspanner", seite: 121,
+    kapitel: "Wie Arten entstehen",
+    name: "Warum wurden die Birkenspanner dunkel?",
+    titel: "Helle und dunkle Falter",
+    frage: "Was passiert mit den Faltern, wenn die Rinde dunkel wird?",
+    schritte: ["Trage die Zahlen beim Start ein.", "Drücke „▶ 1 Jahr“. Beobachte die Vögel. Trage ein.", "Drücke „neu“. Stelle „Rinde“ auf „dunkel“. Drücke „▶ 1 Jahr“ und trage ein.", "Drücke noch zweimal „▶ 1 Jahr“. Trage Jahr 3 ein."]
+  },
+  "bv4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-resistenz", seite: 125,
+    kapitel: "Wie Arten entstehen",
+    name: "Warum wirkt das Gift nicht mehr?",
+    titel: "Käfer, die das Gift überleben",
+    frage: "Was passiert, wenn der Bauer jedes Jahr dasselbe Gift spritzt?",
+    schritte: ["Lies ab, wie viele Käfer resistent sind (roter Punkt). Trage ein.", "Drücke „▶ spritzen“. Lies ab, wie viele Käfer sterben.", "Drücke „▶ Junge schlüpfen“. Wiederhole Schritt a und b bis Jahr 3.", "Drücke „neu“ und zweimal „▶ Junge schlüpfen“, ohne zu spritzen. Trage ein."]
+  },
+  "bv5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-finken", seite: 129,
+    kapitel: "Wie Arten entstehen",
+    name: "Warum haben die Finken verschiedene Schnäbel?",
+    titel: "Schnäbel auf drei Inseln",
+    frage: "Welcher Schnabel wird auf einer Insel häufig?",
+    schritte: ["Stelle „Futter auf der Insel“ auf „Insekten in Ritzen“.", "Drücke „▶ 50 Generationen“. Trage ein.", "Drücke „neu“. Wiederhole das mit den beiden anderen Futtersorten.", "Vergleiche die drei Inseln."]
+  },
+  "bv6": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-artbildung", seite: 133,
+    kapitel: "Wie Arten entstehen",
+    name: "Wie wird aus einer Art zwei?",
+    titel: "Ein Fluss trennt die Schnecken",
+    frage: "Was passiert mit zwei getrennten Gruppen in langer Zeit?",
+    schritte: ["Stelle „Fluss“ auf „Fluss“ und „Zeit“ auf „10 000 Jahre“. Drücke „▶ Zeit laufen lassen“.", "Lies auf der Merkmalskarte ab: Wie viele sind verschieden?", "Drücke „▶ zusammensetzen“. Schlüpfen Junge? Trage ein.", "Drücke „neu“. Wiederhole mit „1 Million Jahre“, dann „kein Fluss“."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
