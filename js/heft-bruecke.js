@@ -5697,33 +5697,33 @@ const HEFT_SEITEN = {
     name: "Wie schnell läuft sie wirklich?",
     titel: "Fünf Stopps, eine Steigung",
     frage: "Wie findet man die Geschwindigkeit aus Zeit und Weg?",
-    schritte: ["Stelle „Geschwindigkeit v“ auf 4,0 m/s. Drücke fünfmal „Zeit stoppen“, wann du willst.", "Wähle „t → s“. Trage die Form der Linie und den Wert darunter ein.", "Wähle danach „t → v“ und „t → a“. Trage beide Zeilen ein."]
+    schritte: ["Stelle „Geschwindigkeit v“ auf 4,0 m/s. Drücke fünfmal „Zeit stoppen“, wann du willst.", "Wähle „t → s“. Trage die Form des Graphen und den Wert darunter ein.", "Wähle danach „t → v“ und „t → a“. Trage beide Zeilen ein."]
   },
   "fm2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "beschleunigung-ef", seite: 11,
     kapitel: "Grundlagen der Mechanik",
     name: "Wie schnell wird der Wagen schneller?",
-    titel: "Drei Diagramme, eine Zahl",
+    titel: "Drei Diagramme, eine Beschleunigung",
     frage: "Welches Diagramm zeigt die Beschleunigung als Steigung?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle „t → v“. Trage die Form der Linie und a ein.", "Wähle danach „t → s“ und „t → a“. Trage beide Zeilen ein."]
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während der Fahrt fünfmal „Zeit stoppen“.", "Wähle „t → v“. Trage die Form des Graphen und a ein.", "Wähle danach „t → s“ und „t → a“. Trage beide Zeilen ein."]
   },
   "fm3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "beschleunigung-ef", seite: 15,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum trägt man t² auf?",
-    titel: "Aus der Kurve eine Gerade machen",
+    titel: "Aus der Parabel eine Gerade machen",
     frage: "Wie wird aus der Parabel eine Gerade, aus der man a ablesen kann?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke fünfmal „Zeit stoppen“, erst ab 1 m Weg.", "Wähle „t → s“. Trage die Form der Linie und die Steigung ein.", "Wähle „t² → s“ und danach „t → v“. Lies die Zahl nach „y =“ ab."]
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke fünfmal „Zeit stoppen“, erst ab 1 m Weg.", "Wähle „t → s“. Trage die Form des Graphen und die Steigung ein.", "Wähle „t² → s“ und danach „t → v“. Lies die Steigung nach „y =“ ab."]
   },
   "fm4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "freierfall", seite: 19,
     kapitel: "Grundlagen der Mechanik",
-    name: "Zwei Wege zum Ortsfaktor – warum kommt nicht dasselbe heraus?",
-    titel: "Zwei Wege, zwei Zahlen",
-    frage: "Warum liefern zwei Wege zu g nicht dieselbe Zahl?",
+    name: "Zwei Rechenwege zur Fallbeschleunigung – warum kommt nicht dasselbe heraus?",
+    titel: "Zwei Rechenwege, zwei Werte",
+    frage: "Warum liefern zwei Rechenwege zu g nicht denselben Wert?",
     schritte: ["Stelle die „Fallhöhe“ auf 50 m. Drücke „Tabelle leeren“ und dann „Messreihe automatisch aufnehmen“.", "Lies in der Tabelle die Zeilen mit t = 0,32 s, 1,28 s und 2,56 s ab.", "Trage für jede Zeile die beiden letzten Spalten ein. Vergleiche sie."]
   },
   "fm5": {
@@ -5768,7 +5768,7 @@ const HEFT_SEITEN = {
     kapitel: "Grundlagen der Mechanik",
     name: "Warum drückt die Wand zurück?",
     titel: "Zwei Wagen, eine Feder",
-    frage: "Wird der leichte Wagen stärker gedrückt als der schwere?",
+    frage: "Wirkt auf den Wagen mit kleinerer Masse eine größere Kraft?",
     schritte: ["Stelle den Regler „Masse m1 (linker Wagen)“ auf 1 kg.", "Drücke „Feder lösen“. Beobachte: Welcher Wagen fährt schneller weg?", "Lies in der Zeile „Beim Lösen“ F1, F2, a1 und a2 ab. Trage Zeile 1 ein.", "Stelle m1 auf 5 kg und danach auf 10 kg. Trage beide Zeilen ein."]
   },
   "fm11": {
@@ -5793,7 +5793,7 @@ const HEFT_SEITEN = {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "bewegungsenergie", seite: 55,
     kapitel: "Grundlagen der Mechanik",
-    name: "Warum zählt das Tempo doppelt?",
+    name: "Warum zählt die Geschwindigkeit doppelt?",
     titel: "Zweimal verdoppelt, zweimal anders",
     frage: "Was zählt mehr: doppelte Masse oder doppelte Geschwindigkeit?",
     schritte: ["Drücke „Rollen lassen“. Lies ab, wie weit der Klotz rutscht. Trage Zeile 1 ein.", "Drücke „×2 Masse“ und „Rollen lassen“. Trage Zeile 2 ein.", "Stelle „Masse m“ auf 4 kg. Drücke „×2 v“ und „Rollen lassen“. Trage Zeile 3 ein.", "Vergleiche: Wo ist E doppelt, wo vierfach?"]
@@ -5803,7 +5803,7 @@ const HEFT_SEITEN = {
     sim: "spannenergie", seite: 59,
     kapitel: "Grundlagen der Mechanik",
     name: "Die gespannte Feder – wo steckt die Energie?",
-    titel: "Das Dreieck unter der Linie",
+    titel: "Das Dreieck unter dem Graphen",
     frage: "Was passiert mit der Spannenergie, wenn du s verdoppelst?",
     schritte: ["Lies bei 10 cm in der Statuszeile die Kraft F und die Spannenergie E ab. Trage Zeile 1 ein.", "Stelle den Regler „Auslenkung s“ auf 20 cm. Trage Zeile 2 ein.", "Stelle ihn auf 30 cm. Trage Zeile 3 ein.", "Drücke „Loslassen“ und beobachte den Wagen."]
   },
@@ -5823,7 +5823,7 @@ const HEFT_SEITEN = {
     name: "Wie schnell ist ein Punkt auf der Kreisbahn?",
     titel: "Außen sitzen, schneller fahren",
     frage: "Ist der Sitz außen schneller als der Sitz innen?",
-    schritte: ["Stelle „ω (Winkelgeschwindigkeit)“ auf 3 rad/s. Der Regler bleibt dort.", "Stelle „Radius r“ auf 40 px. Lies im weißen Feld die Zeile v≈ ab.", "Wiederhole das mit 70 px und 100 px.", "Trage die Zahlen mit Komma ein."]
+    schritte: ["Stelle „ω (Winkelgeschwindigkeit)“ auf 3 rad/s. Der Regler bleibt dort.", "Stelle „Radius r“ auf 40 px. Lies im weißen Feld die Zeile v≈ ab.", "Wiederhole das mit 70 px und 100 px.", "Trage die Messwerte mit Komma ein."]
   },
   "fg2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -5839,7 +5839,7 @@ const HEFT_SEITEN = {
     sim: "zentripetalkraft", seite: 79,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was sagt eine Messreihe über die Zentripetalkraft?",
-    titel: "Sieben Punkte, eine Gerade",
+    titel: "Sieben Messpunkte, eine Gerade",
     frage: "Trifft die Ausgleichsgerade die eingestellte Masse?",
     schritte: ["Drücke „F über r auftragen“ und dann „Messreihe automatisch aufnehmen“.", "Lies ab: „Masse m aus der Steigung k“ und die Abweichung.", "Drücke „Tabelle leeren“. Stelle „Masse m“ auf 1,0 kg. Wiederhole Schritt a und b.", "Wiederhole alles mit 1,5 kg."]
   },
