@@ -62,8 +62,11 @@
     // bewusst nicht mehr zeigt. Bei der Oberstufe war er zusaetzlich falsch
     // geworden: Er nannte Auftragungen, die kein Schritt mehr verlangt.
     // Die drei SCHRITTE bleiben - die stehen auch im Heft unter ③.
+    // Förderhefte zählen die Schritte unter ③ seit 29.09.2026 mit a, b, c, d
+    // (sonst las sich die Seite 1 2 3 · 1 2 3 4 · 4 5) - der Bildschirm auch.
+    const foerder = /Förderheft/.test(d.schulform || '');
     const schritte = (d.schritte || []).map((s, i) =>
-      `<li><span>${i + 1}</span>${s}</li>`).join('');
+      `<li><span>${foerder ? 'abcdefgh'[i] : i + 1}</span>${s}</li>`).join('');
     return `<div class="heft-kopf">
       <div class="heft-kopf-zeile">
         <span class="heft-kopf-seite">Heft · Seite ${d.seite}</span>
