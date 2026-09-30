@@ -5430,7 +5430,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Abstand zur Motte“ auf „weit (10 m)“. Drücke „▶ fliegen lassen“.", "Lies den Zähler ab und beobachte das Echo. Trage beides ein.", "Wiederhole das mit „mittel (3 m)“ und mit „nah (50 cm)“.", "Vergleiche: Was ändert sich, wenn die Motte näher ist?"]
   },
   "bo1": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-oekosystem", seite: 7,
     kapitel: "Ökosystem Wald",
     name: "Was gehört zum Ökosystem Wald?",
@@ -5439,7 +5439,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Was fehlt?“ auf „nichts“. Drücke „▶ 3 Jahre warten“.", "Beobachte die Pflanzen und die Rehe. Trage beides ein.", "Drücke „neu“. Stelle „Was fehlt?“ auf „Regen“, danach auf „Regenwürmer“.", "Vergleiche jede Zeile mit der Zeile „nichts“."]
   },
   "bo2": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-waldlicht", seite: 11,
     kapitel: "Ökosystem Wald",
     name: "Wie viel Licht kommt am Waldboden an?",
@@ -5448,7 +5448,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Monat“ auf „März“. Lies am Lichtmesser „Boden“ ab, wie viel Licht ankommt.", "Beobachte das Buschwindröschen. Trage beides ein.", "Wiederhole das für „Mai“ und für „Juli“.", "Vergleiche im Juli die beiden Lichtmesser „oben“ und „Boden“."]
   },
   "bo3": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-nische", seite: 15,
     kapitel: "Ökosystem Wald",
     name: "Wer nutzt welchen Platz im Wald?",
@@ -5457,7 +5457,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Meisenart“ auf „Kohlmeise“. Drücke „▶ 1 Stunde beobachten“.", "Sieh nach, wo die meisten Futterpunkte liegen. Lies an der Waage ab, wie schwer die Meise ist. Trage beides ein.", "Wiederhole das für „Blaumeise“ und „Tannenmeise“.", "Stelle „alle drei“ ein. Beobachte, ob die Meisen an denselben Stellen suchen."]
   },
   "bo4": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-helmont", seite: 19,
     kapitel: "Ökosystem Wald",
     name: "Woher kommt das Holz eines Baumes?",
@@ -5466,7 +5466,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Gießen“ auf „ja“ und „Luft“ auf „normale Luft“. Drücke „▶ 5 Jahre warten“.", "Lies beide Waagen ab. Trage ein.", "Drücke „neu“. Stelle nur EINE Sache um: „ohne Kohlenstoffdioxid“ oder „Gießen“ auf „nein“.", "Vergleiche jede Zeile mit der ersten."]
   },
   "bo5": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-fotosynthese", seite: 23,
     kapitel: "Ökosystem Wald",
     name: "Was machen Blätter mit dem Licht?",
@@ -5475,7 +5475,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Licht“ auf „hell“ und „In der Glocke“ auf „Buche“. Drücke „▶ 1 Stunde warten“.", "Lies ab: Wird Sauerstoff mehr oder weniger? Und Kohlenstoffdioxid? Trage ein.", "Drücke „neu“. Stelle „dunkel“ ein. Danach „leere Glocke“ mit „hell“.", "Vergleiche die Zeilen „hell“ und „dunkel“."]
   },
   "bo6": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-nahrungsnetz", seite: 27,
     kapitel: "Ökosystem Wald",
     name: "Wer frisst wen im Wald?",
@@ -5484,7 +5484,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Wer fehlt?“ auf „niemand“. Drücke „▶ 1 Jahr warten“.", "Lies ab, wie viele Füchse und Waldkäuze im Wald leben. Trage ein.", "Drücke „neu“. Stelle „Wer fehlt?“ auf „Mäuse“, danach auf „Meisen“.", "Vergleiche jede Zeile mit der Zeile „niemand“."]
   },
   "bo7": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-pyramide", seite: 31,
     kapitel: "Ökosystem Wald",
     name: "Wie viel Energie kommt beim Fuchs an?",
@@ -5493,7 +5493,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Stufe“ auf „Pflanzen“. Drücke „▶ Energie verfolgen“.", "Lies ab: Wie viel Energie steckt darin, wie viel wird als Wärme abgegeben? Trage ein.", "Wiederhole das für „Mäuse“ und für „Fuchs“.", "Vergleiche die Energie in den Pflanzen mit der Energie im Fuchs."]
   },
   "bo8": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-destruenten", seite: 35,
     kapitel: "Ökosystem Wald",
     name: "Wer räumt das Laub weg?",
@@ -5502,7 +5502,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Wer fehlt?“ auf „niemand“. Drücke „▶ 1 Jahr warten“.", "Lies ab, wie viel Laub übrig ist und wie viele Mineralstoffe im Boden sind. Trage ein.", "Drücke „neu“. Wiederhole das für die anderen drei Einstellungen.", "Vergleiche die Zeilen „niemand“ und „alle“."]
   },
   "bo9": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-raeuber-beute", seite: 39,
     kapitel: "Ökosystem Wald",
     name: "Wie hängen Luchs und Reh zusammen?",
@@ -5511,7 +5511,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Ansicht“ auf „Modell“. Drücke „▶ 12 Jahre“.", "Schiebe „Jahr“ auf 0, 3, 6 und 9. Lies jedes Mal Rehe und Luchse ab. Trage ein.", "Stelle „Ansicht“ auf „Wirklichkeit“. Beobachte die Rehe im Jahr 7.", "Vergleiche: Welche Kurven sind gleichmäßiger?"]
   },
   "bu1": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-einzeller", seite: 46,
     kapitel: "Ökosysteme im Wandel",
     name: "Was lebt in einem Wassertropfen?",
@@ -5520,7 +5520,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Vergrößerung“ auf „ohne Mikroskop“. Beobachte den Tropfen.", "Stelle „mit Mikroskop“ ein. Wähle bei „Lebewesen“ das Augentierchen.", "Drücke „Zellen zeigen“: Jede Zelle bekommt einen blauen Punkt. Lies die Länge ab und zähle die Punkte.", "Wiederhole Schritt c für Amöbe, Rädertierchen und Wasserfloh."]
   },
   "bu2": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-sauerstoff", seite: 50,
     kapitel: "Ökosysteme im Wandel",
     name: "Wann wird der Sauerstoff im Teich knapp?",
@@ -5529,7 +5529,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Frühling (10 °C)“ und „Mittag“ ein. Drücke „▶ messen“.", "Lies den Sauerstoffgehalt ab. Beobachte die Fische.", "Stelle nur „Tageszeit“ auf „Mitternacht“ um. Miss noch einmal.", "Wiederhole beides mit „Sommer (25 °C)“."]
   },
   "bu3": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-duenger", seite: 54,
     kapitel: "Ökosysteme im Wandel",
     name: "Was macht Dünger mit einem See?",
@@ -5538,7 +5538,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Dünger vom Feld“ auf „kein“. Drücke „▶ 1 Sommer abspielen“.", "Beobachte die Farbe des Wassers und die Algen.", "Lies am Ende den Sauerstoff am Grund und die Zahl der Fische ab.", "Wiederhole das mit „wenig“ und mit „viel“."]
   },
   "bu4": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-zeiger", seite: 58,
     kapitel: "Ökosysteme im Wandel",
     name: "Wie sauber ist der Bach?",
@@ -5547,7 +5547,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Ort am Bach“ auf „Waldrand“. Drücke „▶ Kescher ziehen“.", "Lies die Namen der Tiere in der Schale ab.", "Sieh auf der Zeigerkarte nach: Wie sauber ist das Wasser?", "Wiederhole das an der „Wiese“ und „hinter dem Rohr“."]
   },
   "bu5": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-neophyten", seite: 62,
     kapitel: "Ökosysteme im Wandel",
     name: "Warum breitet sich das Springkraut aus?",
@@ -5556,7 +5556,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Fressfeinde“ auf „keine (wie heute)“. Lies beide Zahlen ab.", "Drücke dreimal „▶ 1 Jahr weiter“. Trage Jahr 1 und Jahr 3 ein.", "Drücke „neu“. Stelle „Fressfeinde“ auf „ja (Gedankenversuch)“.", "Wiederhole Schritt b. Vergleiche Jahr 3."]
   },
   "bu6": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-treibhaus", seite: 66,
     kapitel: "Ökosysteme im Wandel",
     name: "Wie hält die Luft die Wärme fest?",
@@ -5565,7 +5565,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Treibhausgase“ auf „keine“. Drücke „▶ 50 Jahre warten“.", "Lies die Temperatur ab. Zähle die roten Wärmepfeile, die umkehren.", "Wiederhole das mit „wie 1850“, „wie heute“ und „doppelt so viel wie 1850“.", "Vergleiche die vier Zeilen."]
   },
   "bu7": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-forst", seite: 70,
     kapitel: "Ökosysteme im Wandel",
     name: "Wie viel Holz darf man fällen?",
@@ -5574,7 +5574,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Bäume fällen pro Jahr“ auf „2“. Drücke „▶ 10 Jahre weiter“.", "Lies ab, wie viele Bäume nach 10 Jahren im Wald stehen.", "Drücke „neu“. Wiederhole das mit „5“ und mit „10“.", "Vergleiche jede Zeile mit dem Start."]
   },
   "bf1": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-fossil", seite: 81,
     kapitel: "Spuren des Lebens",
     name: "Wie wird ein Tier zu Stein?",
@@ -5583,7 +5583,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Fisch liegt“ auf „am Ufer“. Drücke „▶ 10 Millionen Jahre warten“.", "Beobachte das Gestein: Wie viele der 10 Fische sind Fossilien?", "Trage die Zahl ein und was vom Fisch übrig ist.", "Wiederhole das mit „auf dem Seegrund“ und „unter Schlamm“."]
   },
   "bf2": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-leitfossil", seite: 85,
     kapitel: "Spuren des Lebens",
     name: "Wie alt ist diese Gesteinsschicht?",
@@ -5592,7 +5592,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Steinbruch“ auf „A“ und „Schicht“ auf „oben“. Drücke „Lupe“.", "Lies ab, welches Fossil in der Schicht liegt.", "Sieh im Schaubild nach, wo das Fossil steht. Trage das Erdzeitalter ein.", "Wiederhole das mit „A Mitte“, „A unten“ und „B oben“."]
   },
   "bf3": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-miller", seite: 89,
     kapitel: "Spuren des Lebens",
     name: "Wie entstanden die ersten Bausteine des Lebens?",
@@ -5601,7 +5601,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Gase“ auf „Uratmosphäre“ und „Funken“ auf „aus“.", "Drücke „▶ 1 Woche laufen lassen“. Beobachte das Wasser und den Test.", "Trage ein. Stelle dann „Funken“ auf „an“ und wiederhole.", "Stelle „Gase“ auf „heutige Luft“. Wiederhole mit „Funken“ an."]
   },
   "bf4": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-skelettvergleich", seite: 93,
     kapitel: "Spuren des Lebens",
     name: "Was haben Arm, Flügel und Flosse gemeinsam?",
@@ -5610,7 +5610,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Tier“ auf „Mensch“. Drücke „Röntgenblick“ und dann „Farben an“.", "Beobachte: Welche Farben siehst du? Zähle die Finger.", "Trage ein, ob es Oberarm und Unterarm gibt.", "Wiederhole das mit „Fledermaus“, „Delfin“ und „Fisch“."]
   },
   "bf5": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-urvogel", seite: 97,
     kapitel: "Spuren des Lebens",
     name: "Ist der Urvogel ein Vogel oder ein Reptil?",
@@ -5619,7 +5619,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Tier“ auf „Urvogel“ und „Merkmal“ auf „Federn“. Drücke „Lupe“.", "Trage ein, ob der Urvogel das Merkmal hat.", "Stelle „Tier“ auf „Taube“, dann auf „Eidechse“. Trage ein, wer es auch hat.", "Wiederhole das mit „Zähne“, „Krallen am Vorderbein“ und „Knochenschwanz“."]
   },
   "bf6": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-stammbaum", seite: 101,
     kapitel: "Spuren des Lebens",
     name: "Wie liest man einen Stammbaum?",
@@ -5628,7 +5628,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Tier 1“ auf „Taube“ und „Tier 2“ auf „Eidechse“. Drücke „▶ Linien zurückverfolgen“.", "Lies am Treffpunkt ab, vor wie vielen Millionen Jahren sich die Linien trennten.", "Lies das Schild am Treffpunkt: Lebt der Vorfahre heute noch? Trage beides ein.", "Wiederhole das mit den drei anderen Paaren aus der Tabelle."]
   },
   "bf7": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-aufrecht", seite: 105,
     kapitel: "Spuren des Lebens",
     name: "Warum geht der Mensch aufrecht?",
@@ -5637,7 +5637,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Landschaft“ auf „dichter Wald“ und „Haltung“ auf „auf vier Beinen“. Drücke „▶ einen Tag beobachten“.", "Lies am Maßband und am Sonnenbalken ab: Wie weit sieht er? Wie viel Sonne trifft ihn?", "Trage beides ein. Stelle „Haltung“ auf „aufrecht“ und wiederhole.", "Wiederhole beides mit „Landschaft“ auf „Savanne“."]
   },
   "bv1": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-variabilitaet", seite: 113,
     kapitel: "Wie Arten entstehen",
     name: "Sind alle Schnecken einer Art gleich?",
@@ -5646,7 +5646,7 @@ const HEFT_SEITEN = {
     schritte: ["Drücke „▶ nach Farbe sortieren“. Trage die Zahlen ein.", "Stelle „Partner“ auf „gelb“. Drücke „▶ paaren lassen“.", "Beobachte: Schlüpfen Junge? Welche Farben haben sie? Trage ein.", "Wiederhole das mit „rosa“ und mit „braun“."]
   },
   "bv2": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-giraffe", seite: 117,
     kapitel: "Wie Arten entstehen",
     name: "Wie bekam die Giraffe ihren langen Hals?",
@@ -5655,7 +5655,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Laub“ auf „nur oben“. Trage die Zahlen beim Start ein.", "Drücke „▶ 1 Generation“. Trage die Zahlen ein.", "Wiederhole bis Generation 3.", "Beobachte die Giraffe mit dem Stern. Wird ihr Hals länger?"]
   },
   "bv3": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-birkenspanner", seite: 121,
     kapitel: "Wie Arten entstehen",
     name: "Warum wurden die Birkenspanner dunkel?",
@@ -5664,7 +5664,7 @@ const HEFT_SEITEN = {
     schritte: ["Trage die Zahlen beim Start ein.", "Drücke „▶ 1 Jahr“. Beobachte die Vögel. Trage ein.", "Drücke „neu“. Stelle „Rinde“ auf „dunkel“. Drücke „▶ 1 Jahr“ und trage ein.", "Drücke noch zweimal „▶ 1 Jahr“. Trage Jahr 3 ein."]
   },
   "bv4": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-resistenz", seite: 125,
     kapitel: "Wie Arten entstehen",
     name: "Warum wirkt das Gift nicht mehr?",
@@ -5673,7 +5673,7 @@ const HEFT_SEITEN = {
     schritte: ["Lies ab, wie viele Käfer resistent sind (roter Punkt). Trage ein.", "Drücke „▶ spritzen“. Lies ab, wie viele Käfer sterben.", "Drücke „▶ Junge schlüpfen“. Wiederhole Schritt a und b bis Jahr 3.", "Drücke „neu“ und zweimal „▶ Junge schlüpfen“, ohne zu spritzen. Trage ein."]
   },
   "bv5": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-finken", seite: 129,
     kapitel: "Wie Arten entstehen",
     name: "Warum haben die Finken verschiedene Schnäbel?",
@@ -5682,7 +5682,7 @@ const HEFT_SEITEN = {
     schritte: ["Stelle „Futter auf der Insel“ auf „Insekten in Ritzen“.", "Drücke „▶ 50 Generationen“. Trage ein.", "Drücke „neu“. Wiederhole das mit den beiden anderen Futtersorten.", "Vergleiche die drei Inseln."]
   },
   "bv6": {
-    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    klasse: "7", schulform: "Gesamtschule NRW · Förderheft Biologie",
     sim: "bio-artbildung", seite: 133,
     kapitel: "Wie Arten entstehen",
     name: "Wie wird aus einer Art zwei?",

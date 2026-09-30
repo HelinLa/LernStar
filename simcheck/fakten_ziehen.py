@@ -78,7 +78,7 @@ BAENDER = ["arbeitsheft", "arbeitsheft7", "arbeitsheft8", "arbeitsheft9", "arbei
            "arbeitsheft_gym56", "arbeitsheft_gym7", "arbeitsheft_gym8", "arbeitsheft_gym9",
            "arbeitsheft_gym10", "arbeitsheft_ef",
            "arbeitsheft_foe7", "arbeitsheft_foe8", "arbeitsheft_foe9", "arbeitsheft_foe10",
-           "arbeitsheft_bio_foe56", "arbeitsheft_bio_foe8", "arbeitsheft_foe_ef"]
+           "arbeitsheft_bio_foe56", "arbeitsheft_bio_foe7", "arbeitsheft_foe_ef"]
 
 
 def sim_von(band):
