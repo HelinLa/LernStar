@@ -7339,6 +7339,110 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('_b9c-cv', '_b9c-cv');
     _pSim.start(dt => _b9cUpdate(dt), (ctx, cv) => _b9cDraw(ctx, cv), []);
   },
+
+  // ── BIO 8 · BAKTERIEN: AUS EINEM WERDEN VIELE  (Förderheft Bio 8 · bi1) ──
+  'bio-bakterien': modal => {
+    _b9dInit();
+    modal.innerHTML = _b9dHTML();
+    _b9dStatus();
+    _pSim = new PhysicsSimEngine('_b9d-cv', '_b9d-cv');
+    _pSim.start(dt => _b9dUpdate(dt), (ctx, cv) => _b9dDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 FOERDER · VIRUS BRAUCHT EINE ZELLE  (Förderheft Bio 8 · bi2) ──
+  'bio-virus': modal => {
+    _b9eInit();
+    modal.innerHTML = _b9eHTML();
+    _b9eStatus();
+    _pSim = new PhysicsSimEngine('_b9e-cv', '_b9e-cv');
+    _pSim.start(dt => _b9eUpdate(dt), (ctx, cv) => _b9eDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 · NICHT ZU FRÜH AUFHÖREN: ANTIBIOTIKUM  (Förderheft Bio 8 · bi3) ──
+  'bio-antibiotikum': modal => {
+    _b9fInit();
+    modal.innerHTML = _b9fHTML();
+    _b9fStatus();
+    _pSim = new PhysicsSimEngine('_b9f-cv', '_b9f-cv');
+    _pSim.start(dt => _b9fUpdate(dt), (ctx, cv) => _b9fDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 FOERDER · GRIPPE IN DER KLASSE: HUSTEN IN DIE ARMBEUGE  (Förderheft Bio 8 · bm1) ──
+  'bio-infektion': modal => {
+    _b9gInit();
+    modal.innerHTML = _b9gHTML();
+    _b9gStatus();
+    _pSim = new PhysicsSimEngine('_b9g-cv', '_b9g-cv');
+    _pSim.start(dt => _b9gUpdate(dt), (ctx, cv) => _b9gDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 · DIE SCHUTZMAUERN DES KÖRPERS  (Förderheft Bio 8 · bm2) ──
+  'bio-abwehr': modal => {
+    _b9hInit();
+    modal.innerHTML = _b9hHTML();
+    _b9hStatus();
+    _pSim = new PhysicsSimEngine('_b9h-cv', '_b9h-cv');
+    _pSim.start(dt => _b9hUpdate(dt), (ctx, cv) => _b9hDraw(ctx, cv), []);
+  },
+
+
+  // ── BIO 8 FOERDER: Antikoerper – Schluessel und Schloss (bm3) ──────────────
+  'bio-antikoerper': modal => { _b9iInit(); modal.innerHTML = _b9iHTML(); _b9iStatus(); _b9iKnoepfe(); _pSim = new PhysicsSimEngine('_b9i-cv','_b9i-cv'); _pSim.start(dt => _b9iUpdate(dt), (ctx,cv) => _b9iDraw(ctx,cv), []); },
+
+  // ── BIO 8 · DER KÖRPER KENNT DEN ERREGER SCHON  (Förderheft Bio 8 · bm4) ──
+  'bio-gedaechtnis': modal => {
+    _b9jInit();
+    modal.innerHTML = _b9jHTML();
+    _b9jStatus();
+    _pSim = new PhysicsSimEngine('_b9j-cv', '_b9j-cv');
+    _pSim.start(dt => _b9jUpdate(dt), (ctx, cv) => _b9jDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 FOERDER · SCHUTZIMPFUNG ODER HEILIMPFUNG? (bm5) ──────────────
+  'bio-impfung': modal => { _b9kInit(); modal.innerHTML = _b9kHTML(); _b9kStatus(); _pSim = new PhysicsSimEngine('_b9k-cv','_b9k-cv'); _pSim.start(dt => _b9kUpdate(dt), (ctx,cv) => _b9kDraw(ctx,cv), []); },
+
+
+  // ── BIO 8 · MALARIA: VON DER MÜCKE ZUM MENSCHEN UND ZURÜCK  (Förderheft Bio 8 · bm7) ──
+  'bio-malaria': modal => {
+    _b9lInit();
+    modal.innerHTML = _b9lHTML();
+    _b9lStatus();
+    _pSim = new PhysicsSimEngine('_b9l-cv', '_b9l-cv');
+    _pSim.start(dt => _b9lUpdate(dt), (ctx, cv) => _b9lDraw(ctx, cv), []);
+  },
+
+  // ── BIOLOGIE 8 FOERDER: Hormone in der Pubertät (bh1) ──────────────
+  'bio-hormone': modal => { _b9mInit(); modal.innerHTML = _b9mHTML(); _b9mStatus(); _b9mKnoepfe(); _pSim = new PhysicsSimEngine('_b9m-cv', '_b9m-cv'); _pSim.start(dt => _b9mUpdate(dt), (ctx, cv) => _b9mDraw(ctx, cv), []); },
+
+  // ── BIO 8 · EIN KREIS AUS TAGEN: DER ZYKLUS  (Förderheft Bio 8 · bh2) ──
+  'bio-zyklus': modal => {
+    _b9nInit();
+    modal.innerHTML = _b9nHTML();
+    _b9nStatus();
+    _pSim = new PhysicsSimEngine('_b9n-cv', '_b9n-cv');
+    _pSim.start(dt => _b9nUpdate(dt), (ctx, cv) => _b9nDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 · ANSTECKEND ODER NICHT? HIV-ÜBERTRAGUNG  (Förderheft Bio 8 · bh4) ──
+  'bio-uebertragung': modal => {
+    _b9oInit();
+    modal.innerHTML = _b9oHTML();
+    _b9oStatus();
+    _pSim = new PhysicsSimEngine('_b9o-cv', '_b9o-cv');
+    _pSim.start(dt => _b9oUpdate(dt), (ctx, cv) => _b9oDraw(ctx, cv), []);
+  },
+
+  // ── BIO 8 FOERDER · 40 WOCHEN IM MUTTERLEIB  (Förderheft Bio 8 · bn1) ──
+  'bio-schwangerschaft': modal => { _b9pInit(); modal.innerHTML = _b9pHTML(); _b9pStatus(); _pSim = new PhysicsSimEngine('_b9p-cv','_b9p-cv'); _pSim.start(dt => _b9pUpdate(dt), (ctx,cv) => _b9pDraw(ctx,cv), []); },
+
+  // ── BIO 8 · WAS KOMMT BEIM KIND AN?  (Förderheft Bio 8 · bn2) ──
+  'bio-plazenta': modal => {
+    _b9qInit();
+    modal.innerHTML = _b9qHTML();
+    _b9qStatus();
+    _pSim = new PhysicsSimEngine('_b9q-cv', '_b9q-cv');
+    _pSim.start(dt => _b9qUpdate(dt), (ctx, cv) => _b9qDraw(ctx, cv), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -123010,4 +123114,7513 @@ function _b9cDraw(ctx, cv) {
   }
   ctx.restore();
   _bioFxAlleDraw(ctx, b.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · AUS EINEM WERDEN VIELE   (Förderheft Bio 8 · bi1)
+// Ein Stück Wurst, stark vergrößert wie unter dem Mikroskop. Darauf liegt zu
+// Beginn EIN stäbchenförmiges Bakterium. Jeder Druck auf „▶ 20 Minuten
+// warten“ lässt die Uhr um 20 Minuten weiterlaufen (höchstens bis 60).
+//   warme Tasche: Jedes Stäbchen wird länger, schnürt sich in der Mitte ein
+//                 und wird zu zwei (etwa 2 s). 1 → 2 → 4 → 8.
+//   Kühlschrank:  Das Stäbchen zittert nur ein wenig. Es bleibt bei 1.
+//                 Statuszeile „Die Bakterien bewegen sich kaum.“
+// Modellwerte (Lehrerteil): warm 20 / 40 / 60 Minuten → 2 / 4 / 8;
+// Kühlschrank → 1 / 1 / 1.
+// Der Zähler springt erst NACH dem Einschnüren auf den neuen Wert (kein
+// Hochrollen: 5, 6, 7 würden das „+1“ nahelegen, das hier widerlegt wird).
+// Aha (nach der Beobachtung, _bioFx): Rechts wächst eine Zeitleiste mit
+// Verzweigungen – jede Zeile hat doppelt so viele Stäbchen wie die davor,
+// keine Kette mit „eins mehr“. Beim Einschnüren kleine Funken an jeder
+// Schnürstelle; nach 60 Minuten Funken über allen Stäbchen und das Banner
+// „Aus 1 wurden 8!“. Kühlschrank: ruhiger blauer Ring, Banner
+// „Nach 60 Minuten: immer noch 1.“
+// Nicht am Bildschirm (Lückenwörter des Heftes): die Fachwörter für den
+// Vorgang, für das Ergebnis und für krank machende Bakterien.
+// Keine Gesichter, keine Vermenschlichung.
+// ═══════════════════════════════════════════════════════
+let _b9d = null;
+const _B9D_FX = 160, _B9D_FY = 147, _B9D_FR = 93;     // Sehfeld
+const _B9D_L0 = 28, _B9D_R = 6.5;                     // Stäbchen: Länge, Radius
+const _B9D_LMAX = 50;                                 // Länge kurz vor dem Einschnüren
+const _B9D_DAUER = 1.9;                               // ein Schritt (20 Minuten) in s
+const _B9D_ORT = { warm: 'warme Tasche', kalt: 'Kühlschrank' };
+const _B9D_REIHE_Y = [78, 128, 178, 228];             // Zeitleiste rechts
+
+function _b9dBak(x, y, w, len, seed) {
+  return { x, y, w, len, l0: len, taille: 0, vx: 0, vy: 0, seed };
+}
+function _b9dInit() {
+  _b9d = { ort: 'warm', t: 0 };
+  _b9dAnfang();
+}
+// Neue Wurst: eine Uhr auf 0, ein Bakterium in der Mitte.
+function _b9dAnfang() {
+  _b9d.min = 0; _b9d.zahl = 1; _b9d.laeuft = false; _b9d.s = 0; _b9d.geteilt = false;
+  _b9d.bak = [_b9dBak(_B9D_FX, _B9D_FY, -0.45, _B9D_L0, 0.37)];
+  _b9d.reihen = [1]; _b9d.reiheAlter = [9];
+  _b9d.nach = -1; _b9d.schritt = 0; _b9d.letzt = '';
+  _b9d.fx = { teile: [] };
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _b9dOrt(o) {
+  if (!_b9d || !_B9D_ORT[o]) return;
+  _b9d.ort = o;
+  _b9dAnfang();                                       // anderer Ort = neue Wurst
+  _b9dStatus();
+}
+function _b9dNeu() {
+  if (!_b9d) return;
+  _b9d.ort = 'warm';
+  _b9dAnfang();
+  _b9dStatus();
+}
+function _b9dWarten() {
+  if (!_b9d || _b9d.laeuft || _b9d.min >= 60) return;
+  _b9d.laeuft = true; _b9d.s = 0; _b9d.geteilt = false;
+  _b9d.nach = -1; _b9d.schritt = 0;
+  _b9d.fx.banner = null; _b9d.fx.stempel = null;
+  for (const b of _b9d.bak) { b.l0 = b.len; b.taille = 0; }
+  _b9dStatus();
+}
+// Sprungmarke: gleich bei 40 Minuten einsteigen und den letzten Schritt ansehen.
+function _b9dMarke(o) {
+  if (!_b9d || !_B9D_ORT[o]) return;
+  _b9d.ort = o;
+  _b9dAnfang();
+  if (o === 'warm') {
+    _b9d.bak = [0, 1, 2, 3].map(i => {
+      const a = i * Math.PI / 2 + 0.5;
+      return _b9dBak(_B9D_FX + Math.cos(a) * 32, _B9D_FY + Math.sin(a) * 32, a + 1.2 + i * 0.3, _B9D_L0, 0.2 + i * 0.61);
+    });
+    _b9d.reihen = [1, 2, 4];
+  } else {
+    _b9d.reihen = [1, 1, 1];
+  }
+  _b9d.reiheAlter = _b9d.reihen.map(() => 9);
+  _b9d.min = 40; _b9d.zahl = _b9d.bak.length;
+  _b9dWarten();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _b9dZeile() {
+  if (_b9d.laeuft) return 'Die Uhr läuft … Sieh genau auf die Bakterien.';
+  let s = 'Zeit: ' + _b9d.min + ' Minuten · Bakterien: ' + _b9d.zahl;
+  if (_b9d.ort === 'kalt') s += ' · Die Bakterien bewegen sich kaum.';
+  return s;
+}
+function _b9dStatus() {
+  if (!_b9d) return;
+  const z = _b9dZeile();
+  const el = document.getElementById('_b9d-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _b9d.letzt = z;
+  const h = document.getElementById('_b9d-hinweis');
+  if (h) {
+    if (_b9d.laeuft) h.textContent = 'Beobachte ein Stäbchen genau. Was passiert mit ihm?';
+    else if (_b9d.min === 0) h.textContent = 'Ort: ' + _B9D_ORT[_b9d.ort] + '. Drücke „▶ 20 Minuten warten“.';
+    else if (_b9d.min < 60) h.textContent = 'Lies den Zähler ab. Drücke dann wieder „▶ 20 Minuten warten“, bis die Uhr 60 Minuten zeigt.';
+    else h.textContent = 'Die Uhr zeigt 60 Minuten. Mit „neu“ beginnt alles von vorn.';
+  }
+  try {
+    document.querySelectorAll('[data-b9d]').forEach(b => {
+      const d = b.getAttribute('data-b9d');
+      if (b.classList) b.classList.toggle('primary', d === _b9d.ort);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b9d-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b9d.laeuft && _b9d.min < 60);
+}
+// Die Ort-Knöpfe stehen im Quelltext in der Reihenfolge Kühlschrank, warme Tasche
+// und werden per row-reverse als „Ort · warme Tasche · Kühlschrank“ gezeigt. So
+// drückt simfakten zuletzt „warme Tasche“ und fährt danach „▶ 20 Minuten warten“
+// dreimal in der Wärme: 2, 4 und 8 stehen dann alle im Dump.
+function _b9dHTML() {
+  const k = (o) => `<button class="sim-btn" data-b9d="${o}" onclick="_b9dOrt('${o}')">${_B9D_ORT[o]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie schnell werden Bakterien mehr?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Stück Wurst, stark vergrößert wie unter dem Mikroskop. Darauf liegt ein einzelnes Bakterium. Wähle den Ort. Dann lass jeweils 20 Minuten vergehen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px;flex-direction:row-reverse;justify-content:flex-end">
+          ${k('kalt')}
+          ${k('warm')}
+          <span class="fpm-label" style="margin-right:4px">Ort</span>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9d-los" onclick="_b9dWarten()">▶ 20 Minuten warten</button>
+          <button class="sim-btn" onclick="_b9dNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Uhr und Zähler</div>
+        <div class="lmp-status on" id="_b9d-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_b9d-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9dMarke('warm')">warme Tasche, 40 bis 60 Minuten</button>
+          <button class="sim-btn" onclick="_b9dMarke('kalt')">Kühlschrank, 40 bis 60 Minuten</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Bakterien sind winzige Lebewesen aus nur einer Zelle. Rechts im Bild siehst du, aus welchem Bakterium welche kommen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: warme Tasche · Zeit: 0 Minuten · Bakterien: 1</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _b9dUpdate(dt) {
+  if (!_b9d) return;
+  dt = _bioFxDt(dt);
+  _b9d.t += dt;
+  const warm = _b9d.ort === 'warm';
+  if (_b9d.laeuft) {
+    _b9d.s += dt;
+    const s = _b9d.s;
+    if (warm) {
+      // länger werden (0,2–0,7 s), einschnüren (0,7–1,4 s), zwei werden (1,4 s)
+      const g = _bioFxEase.sanft(_bioFxKlemme((s - 0.2) / 0.5));
+      const e = _bioFxEase.sanft(_bioFxKlemme((s - 0.7) / 0.7));
+      if (!_b9d.geteilt) for (const b of _b9d.bak) { b.len = b.l0 + (_B9D_LMAX - b.l0) * g; b.taille = e; }
+      if (s >= 1.4 && !_b9d.geteilt) _b9dZweiAusEinem();
+    }
+    if (s >= _B9D_DAUER) _b9dSchrittFertig();
+    else if (_b9dZeile() !== _b9d.letzt) _b9dStatus();
+  } else if (_b9d.nach >= 0) {
+    _b9d.nach += dt;
+    _b9dNachher();
+  }
+  _b9dBewegen(dt, warm);
+  for (let i = 0; i < _b9d.reiheAlter.length; i++) _b9d.reiheAlter[i] += dt;
+  _bioFxAlleUpdate(_b9d.fx, dt);
+}
+// Jedes Stäbchen wird an der Schnürstelle zu zwei kurzen Stäbchen.
+function _b9dZweiAusEinem() {
+  _b9d.geteilt = true;
+  const neu = [];
+  for (const b of _b9d.bak) {
+    const ax = Math.cos(b.w), ay = Math.sin(b.w), h = b.len / 4;
+    for (const v of [-1, 1]) {
+      const k = _b9dBak(b.x + v * ax * h, b.y + v * ay * h, b.w + v * 0.12, b.len / 2,
+                        (b.seed * 7.3 + (v > 0 ? 0.41 : 0.83)) % 1);
+      k.vx = v * ax * 30; k.vy = v * ay * 30;
+      neu.push(k);
+    }
+    _bioFxFunken(_b9d.fx.teile, b.x, b.y, 3, ['#fff3b0', '#ffffff', '#bbf7d0']);
+  }
+  _b9d.bak = neu;
+}
+function _b9dSchrittFertig() {
+  _b9d.laeuft = false; _b9d.s = 0;
+  _b9d.min = Math.min(60, _b9d.min + 20);
+  _b9d.zahl = _b9d.bak.length;                        // gezählt wird, was daliegt
+  _b9d.reihen.push(_b9d.zahl); _b9d.reiheAlter.push(0);
+  _b9d.nach = 0; _b9d.schritt = 0;
+  _b9dStatus();
+}
+// Nach dem Schritt: erst hinsehen, dann bestätigt der Effekt.
+function _b9dNachher() {
+  const fx = _b9d.fx, t = _b9d.nach, warm = _b9d.ort === 'warm';
+  if (_b9d.schritt === 0) {
+    _b9d.schritt = 1;
+    _bioFxWelle(fx.teile, 353, 23, warm ? '#fde68a' : '#bfdbfe', 44);
+    if (!warm) for (const b of _b9d.bak) _bioFxWelle(fx.teile, b.x, b.y, '#bfdbfe', 40);
+  }
+  if (_b9d.schritt === 1 && _b9d.min >= 60 && t >= 1.1) {
+    _b9d.schritt = 2;
+    if (warm) {
+      for (const b of _b9d.bak) _bioFxFunken(fx.teile, b.x, b.y, 4, ['#ffd84d', '#bbf7d0', '#ffffff']);
+      _bioFxBanner(fx, 'Aus 1 wurden 8!', 3.0, '#86efac');
+    } else {
+      _bioFxBanner(fx, 'Nach 60 Minuten: immer noch 1.', 3.0, '#93c5fd');
+    }
+  }
+}
+// Lebendig: Wärme – langsames Treiben und Drehen; Kälte – fast starr.
+function _b9dBewegen(dt, warm) {
+  const bak = _b9d.bak, t = _b9d.t, k = warm ? 1 : 0.05;
+  const daempf = Math.exp(-1.6 * dt);
+  for (const b of bak) {
+    b.vx += Math.sin(t * 0.7 + b.seed * 19) * 16 * dt * k;
+    b.vy += Math.cos(t * 0.6 + b.seed * 23) * 16 * dt * k;
+    b.vx *= daempf; b.vy *= daempf;
+    b.x += b.vx * dt; b.y += b.vy * dt;
+    b.w += Math.sin(t * 0.45 + b.seed * 11) * 0.22 * dt * k;
+    if (!_b9d.laeuft && b.len < _B9D_L0) b.len = Math.min(_B9D_L0, b.len + dt * 3);
+    // im Sehfeld bleiben
+    const dx = b.x - _B9D_FX, dy = b.y - _B9D_FY, d = Math.hypot(dx, dy), rand = _B9D_FR - 22;
+    if (d > rand) { b.x -= dx / d * (d - rand) * Math.min(1, dt * 5); b.y -= dy / d * (d - rand) * Math.min(1, dt * 5); }
+  }
+  // sanft auseinanderrücken
+  for (let i = 0; i < bak.length; i++) for (let j = i + 1; j < bak.length; j++) {
+    const a = bak[i], b = bak[j];
+    let dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy);
+    const soll = 34;
+    if (d < soll) {
+      if (d < 0.01) { dx = 1; dy = 0; d = 1; }
+      const p = (soll - d) * 0.5 * Math.min(1, dt * 4);
+      a.x -= dx / d * p; a.y -= dy / d * p; b.x += dx / d * p; b.y += dy / d * p;
+    }
+  }
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+// Ein Stäbchen; taille 0 = gerade, 1 = in der Mitte fast durchgeschnürt.
+function _b9dStab(ctx, x, y, w, len, r, taille, kalt, seed) {
+  const a = Math.max(0.5, len / 2 - r), eng = r * (1 - 0.88 * taille);
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w);
+  ctx.beginPath();
+  ctx.moveTo(-a, -r);
+  ctx.bezierCurveTo(-a * 0.35, -r, -a * 0.25, -eng, 0, -eng);
+  ctx.bezierCurveTo(a * 0.25, -eng, a * 0.35, -r, a, -r);
+  ctx.arc(a, 0, r, -Math.PI / 2, Math.PI / 2);
+  ctx.bezierCurveTo(a * 0.35, r, a * 0.25, eng, 0, eng);
+  ctx.bezierCurveTo(-a * 0.25, eng, -a * 0.35, r, -a, r);
+  ctx.arc(-a, 0, r, Math.PI / 2, Math.PI * 1.5);
+  ctx.closePath();
+  const g = ctx.createLinearGradient(0, -r, 0, r);
+  g.addColorStop(0, kalt ? '#c7e6d4' : '#b6ecb0');
+  g.addColorStop(1, kalt ? '#6f9e8c' : '#4f9e57');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = kalt ? '#3d6b63' : '#236b31'; ctx.lineWidth = 1.4; ctx.stroke();
+  // Körnchen im Inneren
+  ctx.fillStyle = kalt ? 'rgba(40,80,80,0.45)' : 'rgba(25,90,40,0.5)';
+  for (let i = 0; i < 4; i++) {
+    const px = (-0.7 + i * 0.46 + ((seed * 13 + i * 0.37) % 0.2)) * a;
+    const py = ((seed * 7 + i * 0.53) % 1 - 0.5) * r * 0.8 * (1 - 0.6 * taille);
+    ctx.beginPath(); ctx.arc(px, py, 1.3, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Schnürstelle deutlich machen
+  if (taille > 0.05) {
+    ctx.strokeStyle = 'rgba(20,70,30,' + (0.8 * taille).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(0, -eng); ctx.lineTo(0, eng); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _b9dDraw(ctx, cv) {
+  if (!_b9d) return;
+  const W = cv.width, H = cv.height, t = _b9d.t, kalt = _b9d.ort === 'kalt';
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  if (kalt) { bg.addColorStop(0, '#e3f1fb'); bg.addColorStop(1, '#bcd9ec'); }
+  else      { bg.addColorStop(0, '#fbf1e0'); bg.addColorStop(1, '#f1ddbd'); }
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // ── Uhr oben links: Kreis mit drei Dritteln, gefüllt bis zur Zeit ──
+  const ux = 26, uy = 28, ur = 17;
+  const lauf = _b9d.laeuft ? _bioFxEase.sanft(_bioFxKlemme(_b9d.s / _B9D_DAUER)) : 0;
+  const zeig = (_b9d.min + 20 * lauf) / 60;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (zeig > 0) {
+    ctx.fillStyle = kalt ? 'rgba(96,165,250,0.45)' : 'rgba(251,191,36,0.55)';
+    ctx.beginPath(); ctx.moveTo(ux, uy);
+    ctx.arc(ux, uy, ur - 2, -Math.PI / 2, -Math.PI / 2 + zeig * 2 * Math.PI); ctx.closePath(); ctx.fill();
+  }
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  for (let i = 0; i < 3; i++) {
+    const a = -Math.PI / 2 + i * 2 * Math.PI / 3;
+    ctx.beginPath(); ctx.moveTo(ux + Math.cos(a) * (ur - 5), uy + Math.sin(a) * (ur - 5));
+    ctx.lineTo(ux + Math.cos(a) * ur, uy + Math.sin(a) * ur); ctx.stroke();
+  }
+  const za = -Math.PI / 2 + zeig * 2 * Math.PI;
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(za) * (ur - 4), uy + Math.sin(za) * (ur - 4)); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Zeit: ' + _b9d.min + ' Minuten', 50, 33);
+  if (_b9d.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.6)'; ctx.font = '700 10px sans-serif';
+    ctx.fillText('▶▶ Zeitraffer', 50, 46);
+  }
+
+  // ── Zähler oben rechts ──
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = kalt ? '#3b82f6' : '#16a34a'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 294, 8, 118, 30, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Bakterien: ' + _b9d.zahl, 353, 28);
+
+  // ── Thermometer links ──
+  const tx = 24;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, tx - 5, 78, 10, 110, 5); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(tx, 196, 9, 0, 2 * Math.PI);
+  ctx.fillStyle = kalt ? '#3b82f6' : '#ef4444'; ctx.fill(); ctx.stroke();
+  const saeule = kalt ? 22 : 78;
+  ctx.fillRect(tx - 2.5, 188 - saeule, 5, saeule + 2);
+  if (kalt) {
+    // Eiskristalle schweben langsam
+    ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 1.2;
+    for (let i = 0; i < 6; i++) {
+      const sx = 8 + ((i * 47 + t * 4) % 50), sy = 60 + ((i * 61 + t * 7) % 170), sr = 3 + (i % 2);
+      for (let k = 0; k < 3; k++) {
+        const a = k * Math.PI / 3 + t * 0.3;
+        ctx.beginPath(); ctx.moveTo(sx - Math.cos(a) * sr, sy - Math.sin(a) * sr);
+        ctx.lineTo(sx + Math.cos(a) * sr, sy + Math.sin(a) * sr); ctx.stroke();
+      }
+    }
+  } else {
+    // warme Luft steigt als feine Wellen auf
+    ctx.strokeStyle = 'rgba(239,68,68,0.35)'; ctx.lineWidth = 1.4;
+    for (let i = 0; i < 3; i++) {
+      const bx = 44 + i * 6, off = (t * 18 + i * 25) % 70;
+      ctx.beginPath();
+      for (let y = 0; y <= 30; y += 3) {
+        const yy = 200 - off - y, xx = bx + Math.sin((y + t * 30) * 0.2) * 2.5;
+        if (y === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+      }
+      ctx.stroke();
+    }
+  }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_B9D_ORT[_b9d.ort], 6, H - 6);
+
+  // ── Sehfeld: Wurst unter dem Mikroskop ──
+  const fx = _B9D_FX, fy = _B9D_FY, fr = _B9D_FR;
+  ctx.save();
+  ctx.beginPath(); ctx.arc(fx, fy, fr, 0, 2 * Math.PI); ctx.clip();
+  const wg = ctx.createRadialGradient(fx - 20, fy - 25, 10, fx, fy, fr);
+  wg.addColorStop(0, '#f6c3bd'); wg.addColorStop(1, '#df9189');
+  ctx.fillStyle = wg; ctx.fillRect(fx - fr, fy - fr, 2 * fr, 2 * fr);
+  // Fettstückchen der Wurst
+  ctx.fillStyle = 'rgba(255,245,235,0.75)';
+  for (let i = 0; i < 9; i++) {
+    const a = i * 2.39, d = 18 + (i * 29) % 70;
+    ctx.beginPath();
+    ctx.ellipse(fx + Math.cos(a) * d, fy + Math.sin(a) * d, 9 + (i % 3) * 4, 6 + (i % 2) * 3, a, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+  // feine Schwebteilchen – das Bild lebt
+  ctx.fillStyle = 'rgba(120,60,50,0.25)';
+  for (let i = 0; i < 12; i++) {
+    const px = fx - fr + ((i * 37 + t * (kalt ? 1.5 : 6)) % (2 * fr)), py = fy - fr + ((i * 71 + Math.sin(t * 0.5 + i) * 8) % (2 * fr));
+    ctx.beginPath(); ctx.arc(px, py, 1.4, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (kalt) { ctx.fillStyle = 'rgba(191,219,254,0.35)'; ctx.fillRect(fx - fr, fy - fr, 2 * fr, 2 * fr); }
+  // Blickführung am Anfang: ruhiger Lichtkranz um das eine Bakterium
+  if (_b9d.min === 0 && !_b9d.laeuft) {
+    const b = _b9d.bak[0];
+    _bioFxLeuchten(ctx, b.x, b.y, 24, t, kalt ? '147,197,253' : '255,216,77');
+  }
+  for (const b of _b9d.bak) {
+    const zit = kalt ? Math.sin(t * 3 + b.seed * 9) * 0.4 : 0;
+    _b9dStab(ctx, b.x + zit, b.y, b.w, b.len, _B9D_R, b.taille, kalt, b.seed);
+  }
+  // Mikroskop-Rand: dunkler Schatten nach außen
+  const rg = ctx.createRadialGradient(fx, fy, fr * 0.72, fx, fy, fr);
+  rg.addColorStop(0, 'rgba(0,0,0,0)'); rg.addColorStop(1, 'rgba(30,20,20,0.45)');
+  ctx.fillStyle = rg; ctx.fillRect(fx - fr, fy - fr, 2 * fr, 2 * fr);
+  if (kalt) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1;
+    for (let i = 0; i < 14; i++) {
+      const a = i * 0.45 + 0.2, r1 = fr - 3, r2 = fr - 10 - (i % 3) * 4;
+      ctx.beginPath(); ctx.moveTo(fx + Math.cos(a) * r1, fy + Math.sin(a) * r1);
+      ctx.lineTo(fx + Math.cos(a + 0.05) * r2, fy + Math.sin(a + 0.05) * r2); ctx.stroke();
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(fx, fy, fr, 0, 2 * Math.PI); ctx.stroke();
+
+  // ── Zeitleiste rechts: wer kommt von wem? ──
+  _b9dLeiste(ctx, kalt, t);
+
+  _bioFxAlleDraw(ctx, _b9d.fx);
+}
+function _b9dLeisteX(n, i) {
+  const cx = 372;
+  if (n <= 1) return cx;
+  const sp = Math.min(24, 76 / (n - 1));
+  return cx + (i - (n - 1) / 2) * sp;
+}
+function _b9dLeiste(ctx, kalt, t) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.strokeStyle = 'rgba(100,116,139,0.5)'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 290, 50, 126, 194, 8); ctx.fill(); ctx.stroke();
+  const R = _b9d.reihen, A = _b9d.reiheAlter;
+  for (let k = 0; k < 4; k++) {
+    const y = _B9D_REIHE_Y[k], da = k < R.length;
+    ctx.fillStyle = da ? '#0f172a' : '#94a3b8'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText((k * 20) + ' min', 294, y + 4);
+    if (!da) {
+      ctx.strokeStyle = 'rgba(148,163,184,0.7)'; ctx.setLineDash([3, 4]);
+      ctx.beginPath(); ctx.moveTo(320, y); ctx.lineTo(410, y); ctx.stroke(); ctx.setLineDash([]);
+    }
+  }
+  for (let k = 0; k < R.length; k++) {
+    const y = _B9D_REIHE_Y[k], n = R[k];
+    const auf = _bioFxEase.raus(_bioFxKlemme(A[k] / 0.6));
+    ctx.globalAlpha = auf;
+    if (k > 0) {
+      const np = R[k - 1], yp = _B9D_REIHE_Y[k - 1];
+      ctx.strokeStyle = kalt ? '#60a5fa' : '#16a34a'; ctx.lineWidth = 1.4;
+      for (let i = 0; i < n; i++) {
+        const p = n === 2 * np ? Math.floor(i / 2) : Math.min(i, np - 1);
+        ctx.beginPath(); ctx.moveTo(_b9dLeisteX(np, p), yp + 7);
+        ctx.lineTo(_b9dLeisteX(n, i), y - 7); ctx.stroke();
+      }
+    }
+    for (let i = 0; i < n; i++) {
+      const x = _b9dLeisteX(n, i), wack = kalt ? 0 : Math.sin(t * 1.2 + i + k) * 0.08;
+      _b9dStab(ctx, x, y, Math.PI / 2 + wack, 13, 3, 0, kalt, (i * 0.31 + k * 0.17) % 1);
+    }
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 FOERDER · DAS VIRUS BRAUCHT EINE ZELLE   (Förderheft Bio 8 · bi2)
+// Ein einzelnes Grippe-Virus, stark vergrößert, liegt 10 Stunden lang
+// (Zeitraffer, 1,5 s je Stunde = 15 s) an einem von drei Orten:
+//   Tisch  / Hand          → nichts geschieht, „Viren: 1“ die ganze Zeit.
+//   Zelle in der Nase      → 0–2 h dringt es ein, 2–9 h entstehen in der
+//                            Zelle neue Viren (sichtbar, noch nicht gezählt),
+//                            bei 9 h platzt die Zelle: Zähler 1 → 100.
+// Modellwerte (Lehrerteil): 10 Stunden und 100 Viren sind glatte Werte.
+// Der Zähler zählt die FREIEN Viren – deshalb bleibt er 1, solange die neuen
+// Viren noch in der Zelle stecken, und springt erst beim Platzen.
+// Aha (nach der Beobachtung, _bioFx): Tisch/Hand – ruhiger Ring um das eine
+// Virus und ein Hinweisstreifen ohne Wertung; Zelle – Zeitlupe beim Platzen,
+// Lichtwelle, Funken, der Zähler rollt hoch, die Viren schwärmen aus.
+// Nicht am Bildschirm: die Lückenwörter des Hefts. Keine Gesichter, kein
+// „will“ – Erreger werden nicht vermenschlicht.
+// ═══════════════════════════════════════════════════════
+let _b9e = null;
+const _B9E_ORTE = { tisch: 'Tisch', hand: 'Hand', zelle: 'Zelle in der Nase' };
+const _B9E_SPH = 1.5;                         // Sekunden je Stunde im Zeitraffer
+const _B9E_EIN = 2;                           // bis hier: Eindringen
+const _B9E_PLATZ = 9;                         // hier platzt die Zelle
+const _B9E_NEU = 100;                         // freie Viren nach dem Platzen
+const _B9E_CX = 210, _B9E_CY = 158, _B9E_RX = 116, _B9E_RY = 66;   // Zelle
+const _B9E_KX = 238, _B9E_KY = 170, _B9E_KR = 24;                  // Zellkern
+const _B9E_VX = 210, _B9E_VY = 128;           // Lage des Virus auf Tisch/Hand
+
+function _b9eZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _b9eInit() {
+  const z = _b9eZufall(912);
+  // Plätze der neuen Viren im Zellinneren (nicht im Kern)
+  const innen = [];
+  while (innen.length < _B9E_NEU) {
+    const a = z() * 2 * Math.PI, r = Math.sqrt(z());
+    const x = _B9E_CX + Math.cos(a) * r * (_B9E_RX - 14);
+    const y = _B9E_CY + Math.sin(a) * r * (_B9E_RY - 12);
+    if (Math.hypot(x - _B9E_KX, y - _B9E_KY) < _B9E_KR + 9) continue;
+    const i = innen.length;
+    innen.push({ x, y, ab: 2.5 + 6.2 * Math.pow(i / _B9E_NEU, 0.85), ph: z() * 6.28,
+                 dreh: z() * 6.28 });
+  }
+  const staub = [];
+  for (let i = 0; i < 16; i++) staub.push([z() * 420, 30 + z() * 210, 0.3 + z() * 0.7, z() * 6.28]);
+  const maser = [];
+  for (let i = 0; i < 14; i++) maser.push([z() * 250, z() * 6.28, 0.5 + z()]);
+  _b9e = { ort: 'tisch', stunde: 0, laeuft: false, t: 0, letzt: '', anzeige: '',
+           innen, staub, maser, frei: [], stuecke: [], nachPlatz: -1,
+           leucht: -1, fx: { teile: [] }, zeitlupe: null, fertig: false };
+}
+function _b9eFxLeer() {
+  _b9e.fx = { teile: [] }; _b9e.zeitlupe = null;
+  _b9e.frei = []; _b9e.stuecke = []; _b9e.nachPlatz = -1; _b9e.leucht = -1; _b9e.fertig = false;
+}
+function _b9eHTML() {
+  const knopf = (k) =>
+    `<button class="sim-btn" data-b9e="${k}" onclick="_b9eOrt('${k}')">${_B9E_ORTE[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo wird ein Grippe-Virus mehr?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Grippe-Virus, stark vergrößert. Stelle den Ort ein. Dann drücke „▶ 10 Stunden abspielen“. Die 10 Stunden laufen im Zeitraffer in etwa 15 Sekunden ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Ort</span>
+          ${knopf('tisch')}
+          ${knopf('hand')}
+          ${knopf('zelle')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9e-los" onclick="_b9eAbspielen()">▶ 10 Stunden abspielen</button>
+          <button class="sim-btn" onclick="_b9eNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert mit dem Virus?</div>
+        <div class="lmp-status on" id="_b9e-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_b9e-anzeige" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Der Zähler zählt die Viren, die frei liegen.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9eMarkeTisch()">Tisch · 10 Stunden</button>
+          <button class="sim-btn" onclick="_b9eMarkeHand()">Hand · 10 Stunden</button>
+          <button class="sim-btn" onclick="_b9eMarkeZelle1()">Zelle in der Nase · 1 Stunde</button>
+          <button class="sim-btn" onclick="_b9eMarkeZelle5()">Zelle in der Nase · 5 Stunden</button>
+          <button class="sim-btn" onclick="_b9eMarkeZelle10()">Zelle in der Nase · 10 Stunden</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Tisch &nbsp;|&nbsp; Stelle nur den Ort um. Beobachte dann den Zähler.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9eOrt(k) {
+  if (!_b9e || !_B9E_ORTE[k]) return;
+  _b9e.ort = k; _b9e.stunde = 0; _b9e.laeuft = false;   // neuer Ort = neuer Versuch
+  _b9eFxLeer(); _b9eStatus();
+}
+function _b9eAbspielen() {
+  if (!_b9e) return;
+  _b9eFxLeer();
+  _b9e.stunde = 0; _b9e.laeuft = true; _b9eStatus();
+}
+function _b9eNeu() {
+  if (!_b9e) return;
+  _b9e.ort = 'tisch'; _b9e.stunde = 0; _b9e.laeuft = false;
+  _b9eFxLeer(); _b9eStatus();
+}
+// Sprungmarke: Ort einstellen und direkt zur Stunde h springen.
+// Unter 10 Stunden läuft der Zeitraffer von dort weiter.
+function _b9eSprung(k, h) {
+  if (!_b9e) return;
+  _b9e.ort = k; _b9eFxLeer();
+  _b9e.stunde = h;
+  if (k === 'zelle' && h >= _B9E_PLATZ) {
+    _b9ePlatzen(false);
+    for (let i = 0; i < 40; i++) { _b9eFreiBewegen(0.05); _b9eStueckeBewegen(0.05); }   // schon ausgeschwärmt
+    _b9e.nachPlatz = 2;
+    _b9e.fx.zaehler = { start: 1, ziel: _B9E_NEU, alter: 1, dauer: 1 };
+  }
+  if (h >= 10) { _b9e.stunde = 10; _b9e.laeuft = false; _b9eEnde(); }
+  else _b9e.laeuft = true;
+  _b9eStatus();
+}
+function _b9eMarkeTisch()   { _b9eSprung('tisch', 10); }
+function _b9eMarkeHand()    { _b9eSprung('hand', 10); }
+function _b9eMarkeZelle1()  { _b9eSprung('zelle', 1); }
+function _b9eMarkeZelle5()  { _b9eSprung('zelle', 5); }
+function _b9eMarkeZelle10() { _b9eSprung('zelle', 10); }
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9eZeile() {
+  if (_b9e.ort !== 'zelle') return 'Das Virus liegt still.';
+  if (_b9e.stunde <= 0 && !_b9e.laeuft) return 'Das Virus liegt vor einer Zelle der Nase.';
+  if (_b9e.stunde < _B9E_EIN) return 'Das Virus dringt in die Zelle ein.';
+  if (_b9e.stunde < _B9E_PLATZ) return 'In der Zelle entstehen neue Viren.';
+  return 'Die Zelle platzt. Die Viren kommen frei.';
+}
+function _b9eStundenText() {
+  const h = Math.floor(_b9e.stunde + 1e-9);
+  return 'Zeit: ' + h + (h === 1 ? ' Stunde' : ' Stunden');
+}
+function _b9eViren() {
+  if (_b9e.nachPlatz < 0) return 1;
+  if (_b9e.fx.zaehler) return Math.max(1, Math.round(_bioFxZaehlerWert(_b9e.fx)));
+  return _B9E_NEU;
+}
+function _b9eAnzeigeText() { return _b9eStundenText() + ' · Viren: ' + _b9eViren(); }
+function _b9eStatus() {
+  if (!_b9e) return;
+  const z = _b9eZeile();
+  const el = document.getElementById('_b9e-status');
+  if (el) el.textContent = z;
+  _b9e.letzt = z;
+  const a = _b9eAnzeigeText();
+  const ea = document.getElementById('_b9e-anzeige');
+  if (ea) ea.textContent = a;
+  _b9e.anzeige = a;
+  try {
+    document.querySelectorAll('[data-b9e]').forEach(b => {
+      const k = b.getAttribute('data-b9e');
+      if (b.classList) b.classList.toggle('primary', k === _b9e.ort);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b9e-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b9e.laeuft);
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9eUpdate(dt) {
+  if (!_b9e) return;
+  const roh = _bioFxDt(dt);
+  _b9e.t += roh;
+  if (_b9e.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(_b9e, roh);
+    const vor = _b9e.stunde;
+    _b9e.stunde = Math.min(10, _b9e.stunde + roh * zl / _B9E_SPH);
+    if (_b9e.ort === 'zelle' && vor < _B9E_PLATZ && _b9e.stunde >= _B9E_PLATZ) _b9ePlatzen(true);
+    if (_b9e.stunde >= 10) { _b9e.stunde = 10; _b9e.laeuft = false; _b9eEnde(); }
+  }
+  if (_b9e.nachPlatz >= 0) _b9e.nachPlatz += roh;
+  if (_b9e.leucht >= 0) { _b9e.leucht += roh; if (_b9e.leucht > 2.2) _b9e.leucht = -1; }
+  _b9eFreiBewegen(roh);
+  _b9eStueckeBewegen(roh);
+  _bioFxAlleUpdate(_b9e.fx, roh);
+  if (_b9eZeile() !== _b9e.letzt || _b9eAnzeigeText() !== _b9e.anzeige) _b9eStatus();
+}
+// Die Zelle platzt: jedes neue Virus fliegt von seinem Platz nach außen.
+function _b9ePlatzen(mitZeitlupe) {
+  const z = _b9eZufall(77);
+  _b9e.nachPlatz = 0;
+  _b9e.frei = _b9e.innen.map(p => {
+    const a = Math.atan2(p.y - _B9E_CY, (p.x - _B9E_CX) * 0.6) + (z() - 0.5) * 0.5;
+    const v = 60 + z() * 90;
+    return { x: p.x, y: p.y, vx: Math.cos(a) * v, vy: Math.sin(a) * v * 0.8,
+             ph: p.ph, dreh: p.dreh };
+  });
+  _b9e.stuecke = [];
+  for (let i = 0; i < 12; i++) {
+    const a0 = i / 12 * 2 * Math.PI, a = a0 + Math.PI / 12;
+    _b9e.stuecke.push({ x: 0, y: 0, a0, a1: a0 + 2 * Math.PI / 12 - 0.12,
+                        vx: Math.cos(a) * 55, vy: Math.sin(a) * 40, w: 0, dw: (i % 2 ? 0.6 : -0.6) });
+  }
+  const fx = _b9e.fx;
+  _bioFxWelle(fx.teile, _B9E_CX, _B9E_CY, '#fde68a', 150);
+  _bioFxFunken(fx.teile, _B9E_CX, _B9E_CY - 20, 14, ['#fde68a', '#ffffff', '#c4b5fd']);
+  fx.zaehler = { start: 1, ziel: _B9E_NEU, alter: 0, dauer: 1.3 };
+  if (mitZeitlupe) _bioFxZeitlupe(_b9e, 0.3, 1.4);
+}
+function _b9eStueckeBewegen(dt) {
+  for (const s of _b9e.stuecke) {
+    s.x += s.vx * dt; s.y += s.vy * dt; s.w += s.dw * dt;
+    const d = Math.pow(0.3, dt);
+    s.vx *= d; s.vy *= d; s.dw *= d;
+  }
+}
+function _b9eFreiBewegen(dt) {
+  for (const v of _b9e.frei) {
+    v.x += v.vx * dt; v.y += v.vy * dt;
+    const d = Math.pow(0.25, dt);
+    v.vx *= d; v.vy *= d;
+    // ruhiges Treiben im Nasenschleim
+    v.x += Math.sin(_b9e.t * 0.9 + v.ph) * 6 * dt;
+    v.y += Math.cos(_b9e.t * 0.7 + v.ph * 1.3) * 5 * dt;
+    if (v.x < 8) { v.x = 8; v.vx = Math.abs(v.vx); }
+    if (v.x > 412) { v.x = 412; v.vx = -Math.abs(v.vx); }
+    if (v.y < 34) { v.y = 34; v.vy = Math.abs(v.vy); }
+    if (v.y > 238) { v.y = 238; v.vy = -Math.abs(v.vy); }
+  }
+}
+// Nach 10 Stunden: erst die Beobachtung, dann ein ruhiger Hinweis ohne Wertung.
+function _b9eEnde() {
+  if (_b9e.fertig) return;
+  _b9e.fertig = true;
+  const fx = _b9e.fx;
+  if (_b9e.ort === 'zelle') {
+    _bioFxBanner(fx, 'Aus einem Virus wurden viele!', 3.2, '#c4b5fd');
+    _bioFxFunken(fx.teile, 300, 60, 6, ['#fde68a', '#ffffff']);
+    _bioFxFunken(fx.teile, 110, 200, 6, ['#fde68a', '#ffffff']);
+  } else {
+    _b9e.leucht = 0;
+    _bioFxWelle(fx.teile, _B9E_VX, _B9E_VY, '#93c5fd', 60);
+    _bioFxBanner(fx, _b9e.ort === 'hand'
+      ? 'Warm – und trotzdem nur ein Virus.'
+      : 'Nach 10 Stunden: immer noch ein Virus.', 3.2, '#93c5fd');
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+// Ein Grippe-Virus: runde Hülle mit kurzen Stacheln (ohne Gesicht).
+function _b9eVirus(ctx, x, y, r, dreh, alpha) {
+  if (alpha <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(x, y); ctx.rotate(dreh);
+  const n = r > 8 ? 16 : 9;
+  ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = r > 8 ? 2 : 1;
+  ctx.fillStyle = '#f59e0b';
+  for (let i = 0; i < n; i++) {
+    const a = i / n * 2 * Math.PI;
+    const c = Math.cos(a), s = Math.sin(a);
+    ctx.beginPath(); ctx.moveTo(c * r, s * r); ctx.lineTo(c * r * 1.38, s * r * 1.38); ctx.stroke();
+    if (r > 8) {
+      ctx.beginPath(); ctx.arc(c * r * 1.45, s * r * 1.45, r * 0.12, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  const g = ctx.createRadialGradient(-r * 0.35, -r * 0.35, r * 0.1, 0, 0, r);
+  g.addColorStop(0, '#ddd6fe'); g.addColorStop(1, '#8b5cf6');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(0, 0, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#5b21b6'; ctx.lineWidth = r > 8 ? 1.5 : 0.8; ctx.stroke();
+  if (r > 8) {                                            // Erbgut innen, schematisch
+    ctx.strokeStyle = 'rgba(190,24,93,0.7)'; ctx.lineWidth = 1.4;
+    for (let k = 0; k < 3; k++) {
+      ctx.beginPath();
+      for (let u = 0; u <= 8; u++) {
+        const px = -r * 0.5 + u * r / 8, py = (k - 1) * r * 0.3 + Math.sin(u * 1.4 + k) * r * 0.08;
+        if (u) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+      }
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _b9eTisch(ctx, W, H) {
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#d9a867'); bg.addColorStop(1, '#b98244');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Holzmaserung
+  ctx.strokeStyle = 'rgba(120,72,28,0.35)'; ctx.lineWidth = 1.2;
+  for (const [y0, ph, a] of _b9e.maser) {
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 10) {
+      const y = y0 + Math.sin(x * 0.02 + ph) * 6 * a;
+      if (x) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  }
+  // Lichtfleck vom Fenster wandert mit der Zeit langsam
+  const lx = 90 + _b9e.stunde * 22;
+  const lg = ctx.createRadialGradient(lx, 150, 10, lx, 150, 120);
+  lg.addColorStop(0, 'rgba(255,248,220,0.35)'); lg.addColorStop(1, 'rgba(255,248,220,0)');
+  ctx.fillStyle = lg; ctx.fillRect(0, 0, W, H);
+  // Staubkörnchen im Licht (bewegen sich, das Virus nicht)
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  for (const [x0, y0, s, ph] of _b9e.staub) {
+    const x = (x0 + _b9e.t * 7 * s) % W, y = y0 + Math.sin(_b9e.t * 0.6 + ph) * 8;
+    ctx.beginPath(); ctx.arc(x, y, 1.2 + s, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _b9eHand(ctx, W, H) {
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f6c9a8'); bg.addColorStop(1, '#e8a987');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Hautfurchen (Rillen der Hautoberfläche)
+  ctx.strokeStyle = 'rgba(170,95,70,0.35)'; ctx.lineWidth = 1.4;
+  for (let k = 0; k < 9; k++) {
+    ctx.beginPath();
+    for (let x = -10; x <= W + 10; x += 10) {
+      const y = 40 + k * 26 + Math.sin(x * 0.018 + k * 0.9) * 10 + Math.sin(x * 0.05 + k) * 3;
+      if (x > -10) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  }
+  // Poren
+  ctx.fillStyle = 'rgba(150,80,60,0.35)';
+  for (const [x, y] of [[70, 200], [330, 86], [360, 206], [120, 70]]) {
+    ctx.beginPath(); ctx.ellipse(x, y, 5, 3, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Wärme steigt auf: sanfte Wellenlinien
+  ctx.strokeStyle = 'rgba(239,68,68,0.28)'; ctx.lineWidth = 2;
+  for (let k = 0; k < 6; k++) {
+    const x0 = 40 + k * 68, lauf = (_b9e.t * 18 + k * 37) % 190;
+    const y0 = 235 - lauf;
+    ctx.globalAlpha = Math.sin(Math.PI * lauf / 190);
+    ctx.beginPath();
+    for (let u = 0; u <= 30; u += 3) {
+      const px = x0 + Math.sin(u * 0.35 + _b9e.t * 2 + k) * 4, py = y0 - u;
+      if (u) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.stroke();
+  }
+  ctx.globalAlpha = 1;
+}
+// Wimpern (Flimmerhärchen) oben auf einer Zelle, wiegen sich wellenartig.
+function _b9eWimpern(ctx, cx, cy, rx, ry, von, bis) {
+  ctx.strokeStyle = 'rgba(190,120,150,0.8)'; ctx.lineWidth = 1.3; ctx.lineCap = 'round';
+  for (let i = 0; i <= 18; i++) {
+    const th = von + (bis - von) * i / 18;
+    const px = cx + rx * Math.cos(th), py = cy - ry * Math.sin(th);
+    const nx = Math.cos(th) / rx, ny = -Math.sin(th) / ry, nl = Math.hypot(nx, ny);
+    const b = Math.sin(_b9e.t * 3 - i * 0.6) * 0.45;
+    const ux = nx / nl, uy = ny / nl;
+    const ex = px + (ux * Math.cos(b) - uy * Math.sin(b)) * 12;
+    const ey = py + (ux * Math.sin(b) + uy * Math.cos(b)) * 12;
+    ctx.beginPath(); ctx.moveTo(px, py);
+    ctx.quadraticCurveTo(px + ux * 7, py + uy * 7, ex, ey); ctx.stroke();
+  }
+}
+function _b9eZelle(ctx, W, H) {
+  const t = _b9e.t, h = _b9e.stunde;
+  // Nasenschleim als Hintergrund
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef6f3'); bg.addColorStop(1, '#dcebe6');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Nachbarzellen links und rechts (angeschnitten)
+  for (const cx of [-24, 444]) {
+    ctx.fillStyle = '#fbe3ea'; ctx.strokeStyle = '#d98ba5'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.ellipse(cx, _B9E_CY, 118, _B9E_RY, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    _b9eWimpern(ctx, cx, _B9E_CY, 118, _B9E_RY, cx < 0 ? 0.15 * Math.PI : 0.6 * Math.PI,
+                cx < 0 ? 0.4 * Math.PI : 0.85 * Math.PI);
+  }
+  const offen = _b9e.nachPlatz < 0;
+  if (offen) {
+    // Die Zelle wird voller und dehnt sich kurz vor dem Platzen
+    const voll = _bioFxKlemme((h - 2.5) / 6.5);
+    const zitt = h > 8.3 ? Math.sin(t * 5) * 1.5 * _bioFxKlemme((h - 8.3) / 0.7) : 0;
+    const rx = _B9E_RX * (1 + 0.07 * voll) + zitt, ry = _B9E_RY * (1 + 0.07 * voll) - zitt;
+    const g = ctx.createRadialGradient(_B9E_CX - 30, _B9E_CY - 20, 10, _B9E_CX, _B9E_CY, rx);
+    g.addColorStop(0, '#fff1f5'); g.addColorStop(1, '#f9cfdc');
+    ctx.fillStyle = g; ctx.strokeStyle = '#c2527a'; ctx.lineWidth = 3 - voll * 1.2;
+    ctx.beginPath(); ctx.ellipse(_B9E_CX, _B9E_CY, rx, ry, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    _b9eWimpern(ctx, _B9E_CX, _B9E_CY, rx, ry, 0.18 * Math.PI, 0.82 * Math.PI);
+    // Zellkern
+    ctx.fillStyle = '#e9a8c0'; ctx.strokeStyle = '#a3456b'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(_B9E_KX, _B9E_KY, _B9E_KR, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#b8577e';
+    ctx.beginPath(); ctx.arc(_B9E_KX + 5, _B9E_KY - 3, 7, 0, 2 * Math.PI); ctx.fill();
+    // Neue Viren im Inneren: erscheinen nach und nach
+    for (const p of _b9e.innen) {
+      const alt = h - p.ab;
+      if (alt <= 0) continue;
+      const k = _bioFxEase.federn(_bioFxKlemme(alt / 0.35));
+      const wx = Math.sin(t * 1.3 + p.ph) * 1.2, wy = Math.cos(t * 1.1 + p.ph) * 1.2;
+      _b9eVirus(ctx, p.x + wx, p.y + wy, 3.3 * k, p.dreh + t * 0.2, 1);
+    }
+  } else {
+    // Reste der geplatzten Zelle treiben auseinander und verblassen
+    const a = 0.25 + 0.75 * (1 - _bioFxKlemme(_b9e.nachPlatz / 1.6));
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.strokeStyle = '#c2527a'; ctx.lineWidth = 2.5;
+    for (const s of _b9e.stuecke) {
+      ctx.save(); ctx.translate(_B9E_CX + s.x, _B9E_CY + s.y); ctx.rotate(s.w * 0.2);
+      ctx.beginPath(); ctx.ellipse(0, 0, _B9E_RX * 1.07, _B9E_RY * 1.07, 0, s.a0, s.a1); ctx.stroke();
+      ctx.restore();
+    }
+    ctx.fillStyle = 'rgba(233,168,192,0.6)';
+    ctx.beginPath(); ctx.arc(_B9E_KX, _B9E_KY + _b9e.nachPlatz * 3, _B9E_KR * 0.9, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  // Das erste Virus: kommt heran, dockt an, dringt ein, gibt sein Erbgut ab
+  if (offen) _b9eEindringen(ctx);
+  // Freie Viren nach dem Platzen
+  for (const v of _b9e.frei) _b9eVirus(ctx, v.x, v.y, 3.6, v.dreh + t * 0.3, 1);
+}
+function _b9eEindringen(ctx) {
+  const h = _b9e.stunde, t = _b9e.t;
+  const oben = _B9E_CY - _B9E_RY;                         // Oberkante der Zelle
+  if (h < 1.9) {
+    let x = _B9E_CX - 20, y;
+    if (h < 0.8) {                                        // treibt heran
+      const u = _bioFxEase.sanft(h / 0.8);
+      y = 42 + (oben - 16 - 42) * u; x += Math.sin(t * 1.4) * 4 * (1 - u);
+    } else if (h < 1.2) {                                 // haftet an
+      y = oben - 16 + (h - 0.8) / 0.4 * 6;
+    } else {                                              // wird eingestülpt
+      y = oben - 10 + _bioFxEase.sanft((h - 1.2) / 0.7) * 44;
+    }
+    if (h >= 0.8 && h < 1.3) _bioFxLeuchten(ctx, x, y, 22, t, '253,230,138');
+    if (h >= 1.2) {                                       // Bläschen aus Zellhaut
+      ctx.strokeStyle = 'rgba(194,82,122,0.8)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(x, y, 23, 0, 2 * Math.PI); ctx.stroke();
+    }
+    _b9eVirus(ctx, x, y, 13, 0, 1);
+  } else if (h < 2.7) {
+    // Hülle löst sich, Erbgut wandert zum Zellkern
+    const u = _bioFxKlemme((h - 1.9) / 0.8);
+    const x0 = _B9E_CX - 20, y0 = _B9E_CY - _B9E_RY + 34;
+    _b9eVirus(ctx, x0, y0, 13 * (1 - 0.4 * u), 0, 1 - _bioFxKlemme(u * 2));
+    ctx.strokeStyle = 'rgba(190,24,93,' + (0.9 * (1 - _bioFxKlemme((u - 0.8) / 0.2))).toFixed(3) + ')';
+    ctx.lineWidth = 2;
+    for (let k = 0; k < 3; k++) {
+      const sx = x0 + (_B9E_KX - x0) * u + (k - 1) * 7, sy = y0 + (_B9E_KY - 6 - y0) * u + (k - 1) * 4;
+      ctx.beginPath();
+      for (let s = 0; s <= 6; s++) {
+        const px = sx - 8 + s * 2.6, py = sy + Math.sin(s * 1.3 + t * 3 + k) * 2;
+        if (s) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+      }
+      ctx.stroke();
+    }
+  }
+}
+function _b9eUhr(ctx, x, y) {
+  // kleine Uhr, deren Zeiger mit dem Zeitraffer umläuft
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x, y, 8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const a = _b9e.stunde * 2 * Math.PI - Math.PI / 2;
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a) * 6, y + Math.sin(a) * 6); ctx.stroke();
+  const b = _b9e.stunde / 12 * 2 * Math.PI - Math.PI / 2;
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(b) * 4, y + Math.sin(b) * 4); ctx.stroke();
+}
+function _b9eDraw(ctx, cv) {
+  if (!_b9e) return;
+  const W = cv.width, H = cv.height, t = _b9e.t;
+  ctx.clearRect(0, 0, W, H);
+  if (_b9e.ort === 'tisch') _b9eTisch(ctx, W, H);
+  else if (_b9e.ort === 'hand') _b9eHand(ctx, W, H);
+  else _b9eZelle(ctx, W, H);
+
+  if (_b9e.ort !== 'zelle') {
+    // Schatten und das eine Virus – es liegt still
+    ctx.fillStyle = 'rgba(60,30,10,0.22)';
+    ctx.beginPath(); ctx.ellipse(_B9E_VX + 4, _B9E_VY + 24, 20, 5, 0, 0, 2 * Math.PI); ctx.fill();
+    if (_b9e.leucht >= 0) {
+      ctx.save();
+      ctx.globalAlpha = 1 - _bioFxKlemme((_b9e.leucht - 1.6) / 0.6);
+      _bioFxLeuchten(ctx, _B9E_VX, _B9E_VY, 30, t, '147,197,253');
+      ctx.restore();
+    }
+    _b9eVirus(ctx, _B9E_VX, _B9E_VY, 18, 0.2, 1);
+  }
+
+  // Obere Leiste: Uhr links, Zähler rechts
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  _bioFxRundRect(ctx, 6, 5, 150, 24, 6); ctx.fill();
+  _bioFxRundRect(ctx, W - 116, 5, 110, 24, 6); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 6, 5, 150, 24, 6); ctx.stroke();
+  _bioFxRundRect(ctx, W - 116, 5, 110, 24, 6); ctx.stroke();
+  _b9eUhr(ctx, 20, 17);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(_b9eStundenText(), 33, 18);
+  const n = _b9eViren();
+  ctx.fillStyle = n > 1 ? '#6d28d9' : '#0f172a';
+  ctx.textAlign = 'center';
+  ctx.fillText('Viren: ' + n, W - 61, 18);
+  if (_b9e.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(_b9e.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 164, 18);
+  }
+  // Ort unten links
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  const ort = { tisch: 'Tischplatte', hand: 'Haut der Hand', zelle: 'Zelle in der Nase' }[_b9e.ort];
+  const txt = ort + ' (stark vergrößert)';
+  const bw = ctx.measureText(txt).width + 12;
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  _bioFxRundRect(ctx, 6, H - 24, bw, 19, 5); ctx.fill();
+  ctx.fillStyle = '#0f172a';
+  ctx.fillText(txt, 12, H - 14);
+  ctx.restore();
+
+  // Effekte; der Hinweisstreifen steht UNTEN, damit Uhr und Zähler oben frei bleiben
+  const fx = _b9e.fx;
+  if (fx.teile) _bioFxDraw(ctx, fx.teile);
+  _bioFxStempelDraw(ctx, fx);
+  ctx.save(); ctx.translate(0, H - 56); _bioFxBannerDraw(ctx, fx); ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · NICHT ZU FRÜH AUFHÖREN: ANTIBIOTIKUM   (Förderheft Bio 8 · bi3)
+// Ein Stück entzündete Mandel, stark vergrößert. Darauf 100 Bakterien:
+// 98 hell (das Antibiotikum wirkt schnell), 2 dunkel (es wirkt nur langsam).
+// Unten ein Kalender mit 10 Tagen; an Tagen mit Antibiotikum liegt eine Tablette.
+// „Einnahme“: gar nicht · 2 Tage · 7 Tage. „▶ 10 Tage abspielen“ (Zeitraffer,
+// 2 s je Tag). Solange Tabletten liegen, verschwinden zuerst die hellen, ab
+// Tag 4 auch die dunklen. Ohne Tabletten teilen sich die übrigen wieder.
+// Modellwerte (Lehrerteil) an Tag 10: gar nicht 100 / 2 · 2 Tage 60 / 60 ·
+// 7 Tage 0 / 0. Die Zahlen am Ende jedes Tages stehen in _B9F_TAB; die
+// Animation zählt jede Bakterie einzeln und trifft sie an jedem Tagesende genau.
+// Aha (nach der Beobachtung, _bioFx): Bei „2 Tage“ sind an Tag 2 nur noch
+// zwei dunkle da, Deniz geht es besser – Zeitlupe und Lichtring um die zwei.
+// Dann liegen keine Tabletten mehr: Jede Teilung zeigt einen kleinen Ring,
+// die Kurve rechts steigt wieder. Bei „7 Tage“ verschwindet an Tag 6 die
+// letzte dunkle Bakterie: Funken, die Mandel wird blass-rosa.
+// Die vier Lückenwörter des Merksatzes und der Aufgabe 2 stehen nirgends im Bild.
+// Keine Vermenschlichung der Bakterien, keine Wertung, kein Blinken, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _b9f = null;
+const _B9F_EIN = ['gar nicht', '2 Tage', '7 Tage'];
+const _B9F_TABL = { 'gar nicht': 0, '2 Tage': 2, '7 Tage': 7 };   // Tage mit Tablette
+// Bestand am ENDE von Tag d (Index 0 = Anfang von Tag 1)
+const _B9F_TAB = {
+  'gar nicht': { hell: [98, 98, 98, 98, 98, 98, 98, 98, 98, 98, 98],
+                 dunkel: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2] },
+  '2 Tage':    { hell: [98, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 dunkel: [2, 2, 2, 3, 5, 8, 12, 18, 27, 40, 60] },
+  '7 Tage':    { hell: [98, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 dunkel: [2, 2, 2, 2, 1, 1, 0, 0, 0, 0, 0] }
+};
+const _B9F_ENDE = { 'gar nicht': 'Deniz ist noch krank.', '2 Tage': 'Deniz wird wieder krank.',
+                    '7 Tage': 'Deniz ist gesund.' };
+const _B9F_TAGDAUER = 2;                      // s je Tag im Zeitraffer (10 Tage ≈ 20 s)
+const _B9F_FELD = { x0: 14, x1: 290, y0: 14, y1: 188 };
+const _B9F_FARBE = { 'gar nicht': '#64748b', '2 Tage': '#dc2626', '7 Tage': '#2563eb' };
+
+function _b9fZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+// 108 feste Plätze auf der Mandel (Raster mit leichtem Versatz)
+function _b9fPlaetze() {
+  const r = _b9fZufall(31), p = [];
+  for (let j = 0; j < 9; j++) for (let i = 0; i < 12; i++) {
+    p.push({ x: 30 + i * 22 + (j % 2) * 8 + (r() - 0.5) * 7,
+             y: 30 + j * 16 + (r() - 0.5) * 4, frei: true });
+  }
+  return p;
+}
+
+function _b9fInit() {
+  _b9f = { ein: 'gar nicht', tag: 0, laeuft: false, t: 0, letzt: '', fertig: {},
+           fx: { teile: [] }, meldung: '', schritt: {}, mittel: [] };
+  _b9fBestand(0);
+}
+
+// Legt die Bakterien für den Zeitpunkt „Ende von Tag d“ neu an (ohne Animation).
+function _b9fBestand(d) {
+  const z = _b9f, tab = _B9F_TAB[z.ein];
+  z.rnd = _b9fZufall(700 + d * 13 + _B9F_EIN.indexOf(z.ein) * 101);
+  z.platz = _b9fPlaetze();
+  z.bak = [];
+  const dunkel = tab.dunkel[d], hell = tab.hell[d];
+  // die zwei ersten dunklen liegen gut sichtbar in der Mitte
+  const mitte = [52, 43];
+  const reihe = z.platz.map((_, i) => i).filter(i => mitte.indexOf(i) < 0);
+  for (let i = reihe.length - 1; i > 0; i--) {
+    const j = Math.floor(z.rnd() * (i + 1)); const h = reihe[i]; reihe[i] = reihe[j]; reihe[j] = h;
+  }
+  const folge = mitte.concat(reihe);
+  let o = 0;
+  for (let n = 0; n < dunkel; n++) z.bak.push(_b9fNeuBak(folge[o++], true));
+  for (let n = 0; n < hell; n++) z.bak.push(_b9fNeuBak(folge[o++], false));
+}
+
+function _b9fNeuBak(pi, dunkel) {
+  const z = _b9f, p = z.platz[pi];
+  p.frei = false;
+  return { pi, x: p.x, y: p.y, dunkel, st: 'lebt', a: 1, w: z.rnd() * 6.28,
+           ph: z.rnd() * 6.28, teil: 0, schwach: 0 };
+}
+
+function _b9fHTML() {
+  const knopf = w => `<button class="sim-btn" data-b9f="${w}" onclick="_b9fEinnahme('${w}')">${w}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was passiert, wenn Deniz das Antibiotikum zu früh weglässt?</h3>
+    <div class="fpm-note" style="margin-top:2px">Deniz hat eine Mandelentzündung. Du siehst ein Stück seiner Mandel, stark vergrößert. Darauf leben 100 Bakterien. Unten liegt an jedem Tag mit Antibiotikum eine Tablette.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9f-los" onclick="_b9fAbspielen()">▶ 10 Tage abspielen</button>
+          <button class="sim-btn" onclick="_b9fNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Einnahme</span>
+          <div class="sim-btn-row">${_B9F_EIN.map(knopf).join('')}</div>
+        </div>
+        <div class="fpm-label" style="margin-top:8px" id="_b9f-zaehler">Tag 1 · Bakterien: 100 · davon dunkel: 2</div>
+        <div class="lmp-status on" id="_b9f-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_b9f-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px"><span style="display:inline-block;width:14px;height:7px;border-radius:4px;background:#a3e635;border:1px solid #4d7c0f"></span> hell: Das Antibiotikum wirkt schnell.<br><span style="display:inline-block;width:14px;height:7px;border-radius:4px;background:#9f1239;border:1px solid #4c0519"></span> dunkel: Das Antibiotikum wirkt nur langsam.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9fMarke('gar nicht')">gar nicht · Tag 10</button>
+          <button class="sim-btn" onclick="_b9fMarke('2 Tage')">2 Tage · Tag 10</button>
+          <button class="sim-btn" onclick="_b9fMarke('7 Tage')">7 Tage · Tag 10</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Einnahme „gar nicht“ &nbsp;|&nbsp; Stelle „Einnahme“ ein, dann drücke „▶ 10 Tage abspielen“. Lies an Tag 10 beide Zähler ab.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9fEinnahme(w) {
+  const z = _b9f;
+  if (!z || _B9F_EIN.indexOf(w) < 0) return;
+  z.ein = w; z.tag = 0; z.laeuft = false; z.meldung = '';
+  z.fx = { teile: [] }; z.zeitlupe = null; z.schritt = {}; z.mittel = []; z.blick = null;
+  _b9fBestand(0);
+  _b9fStatus();
+}
+function _b9fAbspielen() {
+  const z = _b9f;
+  if (!z || z.laeuft) return;
+  z.tag = 0; z.laeuft = true; z.meldung = '';
+  z.fx = { teile: [] }; z.zeitlupe = null; z.schritt = {}; z.mittel = []; z.blick = null;
+  _b9fBestand(0);
+  _b9fTageswechsel(0);
+  _b9fStatus();
+}
+function _b9fNeu() {
+  if (!_b9f) return;
+  _b9f.fertig = {};
+  _b9fEinnahme('gar nicht');
+}
+// Sprungmarke: sofort das Ende von Tag 10 für eine Einnahme
+function _b9fMarke(w) {
+  const z = _b9f;
+  if (!z) return;
+  _b9fEinnahme(w);
+  z.tag = 10; z.fertig[w] = true;
+  _b9fBestand(10);
+  _b9fEndeAha();
+  _b9fStatus();
+}
+
+/* ── Zählen ────────────────────────────────────────────────────────────── */
+function _b9fLebt(k) { return k.st === 'lebt' || k.st === 'teilt' || k.st === 'neu'; }
+function _b9fZahl() {
+  let hell = 0, dunkel = 0;
+  for (const k of _b9f.bak) if (_b9fLebt(k)) { if (k.dunkel) dunkel++; else hell++; }
+  return { hell, dunkel, alle: hell + dunkel };
+}
+// Sollbestand zum Zeitpunkt t (Tage): an jedem Tagesende genau die Tabelle
+function _b9fSoll(t, ein) {
+  const tab = _B9F_TAB[ein || _b9f.ein];
+  if (t >= 10) return { hell: tab.hell[10], dunkel: tab.dunkel[10] };
+  const d = Math.floor(t), f = _bioFxKlemme((t - d) / 0.8);
+  const w = (a, b) => Math.round(a + (b - a) * f);
+  return { hell: w(tab.hell[d], tab.hell[d + 1]), dunkel: w(tab.dunkel[d], tab.dunkel[d + 1]) };
+}
+function _b9fTagNr() { return Math.min(10, Math.floor(_b9f.tag + 1e-9) + 1); }
+function _b9fTablette(tagNr) { return tagNr <= _B9F_TABL[_b9f.ein]; }
+
+function _b9fBefinden(alle) {
+  const z = _b9f;
+  if (z.tag >= 10) return _B9F_ENDE[z.ein];
+  if (alle === 0) return 'Deniz ist gesund.';
+  if (alle < 30) return 'Deniz geht es besser.';
+  if (z.ein === '2 Tage' && z.tag > 2) return 'Deniz wird wieder krank.';
+  if (z.ein === 'gar nicht' && z.tag >= 1) return 'Deniz ist noch krank.';
+  return 'Deniz ist krank.';
+}
+function _b9fZeile() {
+  const n = _b9fZahl();
+  // Während des Zeitraffers „läuft“: erst wenn Tag 10 vorbei ist, gilt der Doppelpunkt-Stand.
+  return 'Tag ' + _b9fTagNr() + (_b9f.laeuft ? ' läuft: ' : ': ') + 'Bakterien ' + n.alle + ' · davon dunkel ' + n.dunkel +
+         ' · ' + _b9fBefinden(n.alle);
+}
+function _b9fHinweisText() {
+  const z = _b9f;
+  if (z.meldung) return z.meldung;
+  if (z.laeuft) {
+    return _b9fTablette(_b9fTagNr())
+      ? 'Heute nimmt Deniz eine Tablette. Sieh auf die hellen und die dunklen Bakterien.'
+      : 'Heute nimmt Deniz keine Tablette. Sieh, was die übrigen Bakterien machen.';
+  }
+  if (z.tag >= 10) {
+    const rest = _B9F_EIN.filter(w => !z.fertig[w]);
+    return 'Tag 10. Lies beide Zähler ab und trage sie ein.' +
+      (rest.length ? ' Dann stelle „Einnahme“ auf „' + rest[0] + '“.' : ' Vergleiche rechts im Bild die Kurven.');
+  }
+  return 'Einnahme: „' + z.ein + '“. Drücke „▶ 10 Tage abspielen“.';
+}
+function _b9fStatus() {
+  const z = _b9f;
+  if (!z) return;
+  const zeile = _b9fZeile(), n = _b9fZahl();
+  z.letzt = zeile;
+  const el = document.getElementById('_b9f-status');
+  if (el) { el.textContent = zeile; el.className = 'lmp-status on'; }
+  const zl = document.getElementById('_b9f-zaehler');
+  if (zl) zl.textContent = 'Tag ' + _b9fTagNr() + ' · Bakterien: ' + n.alle + ' · davon dunkel: ' + n.dunkel;
+  const h = document.getElementById('_b9f-hinweis');
+  if (h) h.textContent = _b9fHinweisText();
+  document.querySelectorAll('[data-b9f]').forEach(b => {
+    if (b.classList) b.classList.toggle('primary', b.getAttribute('data-b9f') === z.ein);
+  });
+  const los = document.getElementById('_b9f-los');
+  if (los && los.classList) los.classList.toggle('primary', !z.laeuft);
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9fUpdate(dt) {
+  const z = _b9f;
+  if (!z) return;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  const d = dt * _bioFxZeitlupeFaktor(z, dt);
+  if (z.laeuft) {
+    const vorher = z.tag;
+    z.tag = Math.min(10, z.tag + d / _B9F_TAGDAUER);
+    if (Math.floor(z.tag) !== Math.floor(vorher) || z.tag >= 10) _b9fTageswechsel(Math.floor(z.tag));
+    _b9fAngleichen(_b9fSoll(z.tag));
+    _b9fMittelSchritt(d);
+    _b9fAha();
+    if (z.tag >= 10) {
+      z.tag = 10; z.laeuft = false; z.fertig[z.ein] = true;
+      _b9fAngleichen(_b9fSoll(10), true);
+      _b9fEndeAha();
+    }
+  }
+  for (const k of z.bak) _b9fBewege(k, d);
+  z.bak = z.bak.filter(k => !(k.st === 'weg'));
+  if (z.blick) { z.blick.t += dt; if (z.blick.t > 2.4) z.blick = null; }
+  _bioFxAlleUpdate(z.fx, dt);
+  if (z.laeuft || _b9fZeile() !== z.letzt) _b9fStatus();
+}
+
+// Neuer Tag: Tablette wird genommen (Wirkstoff verteilt sich auf der Mandel)
+function _b9fTageswechsel(d) {
+  const z = _b9f;
+  if (d < 10 && d + 1 <= _B9F_TABL[z.ein]) {
+    const kx = _b9fKalX(d + 1);
+    _bioFxWelle(z.fx.teile, kx, 222, '#93c5fd', 18);
+    for (let i = 0; i < 26; i++) z.mittel.push({ x: _B9F_FELD.x0 + z.rnd() * 276, y: 190 + z.rnd() * 6,
+      vy: -(40 + z.rnd() * 50), vx: (z.rnd() - 0.5) * 20, a: 0, leben: 1.2 + z.rnd() * 0.6 });
+  }
+}
+function _b9fMittelSchritt(d) {
+  const z = _b9f;
+  for (const m of z.mittel) { m.x += m.vx * d; m.y += m.vy * d; m.a += d; }
+  z.mittel = z.mittel.filter(m => m.a < m.leben);
+}
+
+// Gleicht die lebenden Bakterien an den Sollbestand an (einzeln, sichtbar).
+function _b9fAngleichen(soll, sofort) {
+  const z = _b9f;
+  for (const art of ['hell', 'dunkel']) {
+    const dk = art === 'dunkel';
+    let leben = z.bak.filter(k => _b9fLebt(k) && k.dunkel === dk);
+    // zu viele: die nächste löst sich auf
+    while (leben.length > soll[art]) {
+      const i = Math.floor(z.rnd() * leben.length), k = leben[i];
+      k.st = 'stirbt'; k.a = 1; z.platz[k.pi].frei = true;
+      leben.splice(i, 1);
+      if (sofort) k.st = 'weg';
+    }
+    // zu wenige: eine lebende teilt sich
+    while (leben.length < soll[art] && leben.length > 0) {
+      const frei = z.platz.map((p, i) => i).filter(i => z.platz[i].frei);
+      if (!frei.length) break;
+      const mutter = leben[Math.floor(z.rnd() * leben.length)];
+      // nächster freier Platz
+      let best = frei[0], bd = 1e9;
+      for (const i of frei) { const p = z.platz[i]; const dd = Math.hypot(p.x - mutter.x, p.y - mutter.y) + z.rnd() * 30;
+        if (dd < bd) { bd = dd; best = i; } }
+      const kind = _b9fNeuBak(best, dk);
+      kind.x = mutter.x; kind.y = mutter.y; kind.w = mutter.w;
+      kind.st = sofort ? 'lebt' : 'neu'; kind.teil = 0;
+      if (sofort) { kind.x = z.platz[best].x; kind.y = z.platz[best].y; }
+      else { mutter.teil = 0.001; if (dk && z.laeuft) _bioFxWelle(z.fx.teile, mutter.x, mutter.y, '#fda4af', 14); }
+      z.bak.push(kind); leben.push(kind);
+    }
+  }
+}
+
+function _b9fBewege(k, d) {
+  const z = _b9f;
+  if (k.st === 'stirbt') {
+    k.a -= d / (k.dunkel ? 1.6 : 0.7);            // dunkle vergehen langsam
+    if (k.a <= 0) k.st = 'weg';
+    return;
+  }
+  if (k.teil > 0) { k.teil += d / 0.6; if (k.teil >= 1) k.teil = 0; }
+  if (k.st === 'neu') {
+    const p = z.platz[k.pi];
+    k.teil += d / 0.7;
+    const u = _bioFxEase.sanft(_bioFxKlemme(k.teil));
+    k.x += (p.x - k.x) * u * 0.25; k.y += (p.y - k.y) * u * 0.25;
+    if (k.teil >= 1) { k.st = 'lebt'; k.teil = 0; }
+  } else if (k.st === 'lebt') {
+    const p = z.platz[k.pi];
+    k.x += (p.x - k.x) * Math.min(1, d * 3); k.y += (p.y - k.y) * Math.min(1, d * 3);
+  }
+  // dunkle werden unter Tabletten ab Tag 3 matter
+  const tagNr = _b9fTagNr();
+  const ziel = (k.dunkel && z.laeuft && _b9fTablette(tagNr) && tagNr >= 3) ? 1 : 0;
+  k.schwach += (ziel - k.schwach) * Math.min(1, d * 2);
+}
+
+// Aha während des Ablaufs
+function _b9fAha() {
+  const z = _b9f, s = z.schritt, fx = z.fx;
+  const dunkle = () => z.bak.filter(k => _b9fLebt(k) && k.dunkel);
+  if (z.ein !== 'gar nicht' && !s.zwei && z.tag >= 2) {
+    s.zwei = true;
+    _bioFxZeitlupe(z, 0.3, 1.4);
+    for (const k of dunkle()) _bioFxWelle(fx.teile, k.x, k.y, '#fecdd3', 26);
+    z.blick = { t: 0 };
+    _bioFxBanner(fx, 'Zwei dunkle sind noch da.', 3.2, '#fda4af');
+  }
+  if (z.ein === '2 Tage' && !s.teilen && dunkle().length >= 3) {       // nach der ersten Teilung
+    s.teilen = true;
+    _bioFxBanner(fx, 'Die dunklen teilen sich wieder.', 3.0, '#fda4af');
+  }
+  if (z.ein === '7 Tage' && !s.leer && !z.bak.some(k => k.dunkel) && z.tag > 3) {   // auch die letzte ist verblasst
+    s.leer = true;
+    _bioFxZeitlupe(z, 0.4, 1.0);
+    _bioFxFunken(fx.teile, 152, 100, 14, ['#bbf7d0', '#fff3b0', '#ffffff']);
+    _bioFxWelle(fx.teile, 152, 100, '#bbf7d0', 110);
+    _bioFxBanner(fx, 'Jetzt sind auch die dunklen weg.', 3.0, '#86efac');
+  }
+}
+// Ende von Tag 10: kurzer, ruhiger Abschluss (ohne Zahlen, ohne Wertung)
+function _b9fEndeAha() {
+  const z = _b9f, fx = z.fx;
+  if (z.ein === '2 Tage') {
+    for (const k of z.bak) if (_b9fLebt(k) && k.dunkel && z.rnd() < 0.3) _bioFxWelle(fx.teile, k.x, k.y, '#fecdd3', 12);
+    _bioFxWelle(fx.teile, 152, 100, '#fda4af', 120);
+    _bioFxBanner(fx, 'Aus zwei dunklen wurden viele.', 3.4, '#fda4af');
+  } else if (z.ein === '7 Tage') {
+    _bioFxFunken(fx.teile, 152, 100, 12, ['#bbf7d0', '#fff3b0', '#ffffff']);
+    _bioFxWelle(fx.teile, 152, 100, '#86efac', 120);
+  } else {
+    _bioFxWelle(fx.teile, 152, 100, '#cbd5e1', 120);
+    _bioFxBanner(fx, 'Ohne Tabletten bleiben die Bakterien.', 3.0, '#cbd5e1');
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b9fMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _b9fKalX(tagNr) { return 12 + (tagNr - 1) * 28.4 + 13; }
+
+function _b9fBak(ctx, k, t) {
+  let a = 1, s = 1;
+  if (k.st === 'stirbt') { a = _bioFxKlemme(k.a); s = 0.5 + 0.5 * a; }
+  const wack = Math.sin(t * 2.2 + k.ph) * 0.18 * (1 - k.schwach * 0.7);
+  const dx = Math.sin(t * 1.3 + k.ph) * 1.2, dy = Math.cos(t * 1.1 + k.ph * 1.7) * 1.0;
+  const lang = 12 * (1 + (k.teil > 0 && k.st !== 'neu' ? 0.35 * Math.sin(Math.PI * k.teil) : 0));
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(k.x + dx, k.y + dy);
+  ctx.rotate(k.w + wack);
+  ctx.scale(s, s);
+  if (k.dunkel) {
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    _bioFxRundRect(ctx, -lang / 2 - 1.5, -4.5, lang + 3, 9, 4.5); ctx.fill();
+    ctx.fillStyle = _b9fMisch('#9f1239', '#c9a0aa', k.schwach * 0.6);
+    ctx.strokeStyle = '#4c0519';
+  } else {
+    ctx.fillStyle = '#a3e635'; ctx.strokeStyle = '#4d7c0f';
+  }
+  ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, -lang / 2, -3, lang, 6, 3); ctx.fill(); ctx.stroke();
+  if (k.teil > 0.3 && k.st !== 'neu') {              // Einschnürung bei der Teilung
+    ctx.strokeStyle = k.dunkel ? '#fecdd3' : '#ecfccb'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(0, -3); ctx.lineTo(0, 3); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _b9fDraw(ctx, cv) {
+  const z = _b9f;
+  if (!z) return;
+  const W = cv.width, H = cv.height, t = z.t, F = _B9F_FELD;
+  const n = _b9fZahl();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Mandel: je mehr Bakterien, desto röter (entzündet)
+  const rot = _bioFxKlemme(n.alle / 70);
+  ctx.save();
+  ctx.fillStyle = _b9fMisch('#fde4e4', '#fbb4a5', rot);
+  _bioFxRundRect(ctx, F.x0, F.y0, F.x1 - F.x0, F.y1 - F.y0, 22); ctx.fill();
+  ctx.strokeStyle = _b9fMisch('#f5c2c7', '#e0786a', rot); ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, F.x0, F.y0, F.x1 - F.x0, F.y1 - F.y0, 22); ctx.stroke();
+  // Falten der Oberfläche, leicht atmend
+  ctx.strokeStyle = _b9fMisch('#f7cdd0', '#ee9483', rot); ctx.lineWidth = 1.4;
+  for (let i = 0; i < 6; i++) {
+    const y = 36 + i * 28 + Math.sin(t * 0.7 + i) * 1.5;
+    ctx.beginPath(); ctx.moveTo(F.x0 + 14, y);
+    ctx.bezierCurveTo(90, y - 10, 180, y + 12, F.x1 - 14, y - 4); ctx.stroke();
+  }
+  ctx.restore();
+  // Wirkstoff aus der Tablette: feine blaue Punkte steigen über die Mandel
+  ctx.save();
+  for (const m of z.mittel) {
+    ctx.globalAlpha = 0.55 * (1 - m.a / m.leben) * _bioFxKlemme(m.a / 0.15);
+    ctx.fillStyle = '#60a5fa';
+    ctx.beginPath(); ctx.arc(m.x, m.y, 2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  // Bakterien: erst die hellen, darüber die dunklen
+  for (const k of z.bak) if (!k.dunkel) _b9fBak(ctx, k, t);
+  for (const k of z.bak) if (k.dunkel) _b9fBak(ctx, k, t);
+  if (z.blick) for (const k of z.bak) if (_b9fLebt(k) && k.dunkel) _bioFxLeuchten(ctx, k.x, k.y, 13, t, '253,164,175');
+  ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Mandel, stark vergrößert', F.x0 + 10, F.y1 - 6);
+  if (z.laeuft) { ctx.textAlign = 'right'; ctx.fillText(z.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', F.x1 - 10, F.y1 - 6); }
+
+  // Rechte Spalte: Tag, zwei Zähler, Kurve
+  const rx = 298;
+  ctx.textAlign = 'left'; ctx.fillStyle = '#0f172a';
+  ctx.font = '700 17px sans-serif';
+  ctx.fillText('Tag ' + _b9fTagNr(), rx, 30);
+  if (z.tag >= 10 && !z.laeuft) { ctx.font = '700 10px sans-serif'; ctx.fillStyle = '#475569'; ctx.fillText('vorbei', rx + 62, 30); }
+  ctx.font = '700 12px sans-serif';
+  ctx.fillStyle = '#365314'; ctx.fillText('Bakterien: ' + n.alle, rx, 52);
+  ctx.fillStyle = '#881337'; ctx.fillText('davon dunkel: ' + n.dunkel, rx, 70);
+  // Kurve „Bakterien je Tag“
+  const gx = rx + 6, gy = 86, gw = 108, gh = 96;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(gx, gy); ctx.lineTo(gx, gy + gh); ctx.lineTo(gx + gw, gy + gh); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif';
+  ctx.fillText('Bakterien je Tag', gx + 2, gy - 3);
+  ctx.textAlign = 'right'; ctx.fillText('100', gx - 1, gy + 6); ctx.fillText('0', gx - 1, gy + gh);
+  ctx.textAlign = 'center'; ctx.fillText('1', gx + gw * 0.1, gy + gh + 9); ctx.fillText('10', gx + gw, gy + gh + 9);
+  const kurve = (ein, bis, breit, alpha) => {
+    ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = _B9F_FARBE[ein]; ctx.lineWidth = breit;
+    ctx.beginPath();
+    for (let s = 0; s <= bis * 10 + 1e-6; s++) {
+      const tt = s / 10, so = _b9fSoll(tt, ein);
+      const px = gx + gw * tt / 10, py = gy + gh - gh * (so.hell + so.dunkel) / 100;
+      if (s === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    }
+    ctx.stroke(); ctx.restore();
+  };
+  for (const e of _B9F_EIN) if (z.fertig[e] && e !== z.ein) kurve(e, 10, 1.5, 0.45);
+  if (z.tag > 0) kurve(z.ein, z.tag, 2.5, 1);
+  ctx.save(); ctx.fillStyle = _B9F_FARBE[z.ein];
+  const so = _b9fSoll(z.tag);
+  ctx.beginPath(); ctx.arc(gx + gw * z.tag / 10, gy + gh - gh * (so.hell + so.dunkel) / 100, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+
+  // Kalender mit 10 Tagen
+  const ky = 198, kh = 46, tagNr = _b9fTagNr();
+  for (let d = 1; d <= 10; d++) {
+    const x = _b9fKalX(d) - 13, vorbei = z.tag >= d, heute = !vorbei && d === tagNr && (z.laeuft || z.tag > 0);
+    ctx.fillStyle = heute ? '#fef9c3' : '#ffffff';
+    ctx.strokeStyle = heute ? '#ca8a04' : '#94a3b8'; ctx.lineWidth = heute ? 2 : 1;
+    ctx.fillRect(x, ky, 26, kh); ctx.strokeRect(x, ky, 26, kh);
+    ctx.fillStyle = '#e2e8f0'; ctx.fillRect(x + 1, ky + 1, 24, 11);
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(d), x + 13, ky + 10);
+    if (d <= _B9F_TABL[z.ein]) {
+      // Tablette: liegt da, bis der Tag vorbei ist; dann bleibt ein Haken
+      const weg = vorbei ? 1 : heute ? _bioFxKlemme((z.tag - (d - 1)) * 2) : 0;
+      ctx.save(); ctx.globalAlpha = 1 - weg * 0.85;
+      ctx.translate(x + 13, ky + 28 - weg * 6);
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1.2;
+      _bioFxRundRect(ctx, -9, -4.5, 18, 9, 4.5); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#60a5fa'; _bioFxRundRect(ctx, 0, -4.5, 9, 9, 4.5); ctx.fill();
+      ctx.restore();
+      if (vorbei) {
+        ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(x + 7, ky + 34); ctx.lineTo(x + 11, ky + 39); ctx.lineTo(x + 19, ky + 27); ctx.stroke();
+      }
+    }
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Einnahme:', rx + 8, ky + 18);
+  ctx.fillStyle = _B9F_FARBE[z.ein]; ctx.font = '700 12px sans-serif';
+  ctx.fillText(z.ein, rx + 8, ky + 34);
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════════
+// BIO 8 FOERDER · WIE VERBREITET SICH EINE GRIPPE IN DER KLASSE?  (bm1)
+// Kennung bio-infektion · Praefix _b9g
+// Ein Klassenraum von oben: 28 Kinder als Punkte an 14 Zweiertischen, die
+// Tafel links. Am Anfang ist EIN Kind krank (rot), alle anderen grau.
+// Jeden Tag hustet jedes kranke Kind. Ohne Armbeuge fliegt eine grosse Wolke
+// bis zu den Nachbartischen; erreicht sie einen grauen Punkt, bekommt er einen
+// zarten Rand und ist am naechsten Tag rot. Wer in die Armbeuge hustet (kleiner
+// Bogen am Punkt), hat nur eine kleine Wolke, die am Arm bleibt. Bei „alle“
+// rutscht ab und zu doch eine Wolke am Arm vorbei (Schutz, aber nicht ganz).
+// Modellwerte (Lehrerteil, glatt, kein gemessener Ausbruch):
+//   krank an Tag 1..7   niemand    1  3  6  9 13 17 20
+//                       die Haelfte 1  2  3  5  7  9 11
+//                       alle        1  1  2  3  3  4  5
+// Wer angesteckt wird, legt der Plan fest: immer der naechste graue Punkt in
+// Reichweite einer Wolke (Rechentest prueft, dass keine Wolke einen grauen
+// Punkt beruehrt, der am naechsten Tag NICHT rot wird).
+// Aha (Bibliothek _bioFx, ruhig, ohne Wertung): Der erste Huster in Zeitlupe –
+// man sieht die Wolke bis zum Nachbartisch fliegen bzw. am Arm haengen bleiben.
+// Nach Tag 7 bei „die Haelfte“ und „alle“: Jeder Punkt, der bei „niemand“ an
+// Tag 7 rot war und jetzt grau geblieben ist, bekommt nacheinander einen
+// gruenen Ring (Lichtring + Funken). Die Zahl selbst liest das Kind ab.
+// Am Bildschirm stehen NICHT: Tröpfchen, Infektion, angesteckt, waschen.
+// ═══════════════════════════════════════════════════════════════════════════
+let _b9g = null;
+const _B9G_WER = ['niemand', 'die Hälfte', 'alle'];
+const _B9G_KURVE = [                       // krank an Tag 1..7 (Index 0 = Tag 1)
+  [1, 3, 6, 9, 13, 17, 20],
+  [1, 2, 3, 5, 7, 9, 11],
+  [1, 1, 2, 3, 3, 4, 5]
+];
+const _B9G_N = 28;
+const _B9G_START = 13;                     // Spalte 3, Reihe 1: das erste kranke Kind
+const _B9G_TAG_S = 2.6;                    // s je Tag im Zeitraffer
+const _B9G_HALT = 1.8;                     // s Pause an Tag 3
+const _B9G_ENDE = 6.2;                     // Tag 7 steht (t in Tagen ab Tag 1)
+const _B9G_WEIT = 70;                      // Reichweite der grossen Wolke (px)
+const _B9G_FLUCHT = 50;                    // Reichweite, wenn eine Wolke am Arm vorbeirutscht
+const _B9G_RAND = 10;                      // Wolke "erreicht" einen Punkt ab diesem Abstand
+
+// Sitzplatz i = Spalte*4 + Reihe; die Kinder schauen nach links zur Tafel.
+function _b9gPlatz(i) {
+  const c = Math.floor(i / 4), r = i % 4;
+  return { x: 70 + c * 42, y: [58, 86, 148, 176][r], c, r };
+}
+function _b9gArm(s, i) {
+  if (s === 0) return false;
+  if (s === 2) return true;
+  const p = _b9gPlatz(i);
+  return (p.c + p.r) % 2 === 1;            // jedes zweite Kind, im Schachbrett
+}
+function _b9gAbst(a, b) { const p = _b9gPlatz(a), q = _b9gPlatz(b); return Math.hypot(p.x - q.x, p.y - q.y); }
+// Abstand Punkt -> Strecke
+function _b9gStrecke(px, py, ax, ay, bx, by) {
+  const dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy || 1;
+  const u = Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / l2));
+  return Math.hypot(px - ax - u * dx, py - ay - u * dy);
+}
+
+// Der Plan einer Woche: wer wird an welchem Tag rot, und welche Wolken fliegen.
+// huster: {tag, von, art:'gross'|'arm'|'flucht', wx, wy (Wolkenende), ziel, f0}
+function _b9gPlan(s) {
+  const rotAb = new Array(_B9G_N).fill(99);     // ab welchem Tag rot
+  rotAb[_B9G_START] = 1;
+  const huster = [];
+  for (let d = 1; d <= 6; d++) {
+    const rot = [], grau = [];
+    for (let i = 0; i < _B9G_N; i++) (rotAb[i] <= d ? rot : grau).push(i);
+    const neu = _B9G_KURVE[s][d] - _B9G_KURVE[s][d - 1];
+    const quelle = rot.filter(i => s !== 1 || !_b9gArm(s, i));
+    const weit = s === 2 ? _B9G_FLUCHT : _B9G_WEIT;
+    const kand = [];
+    for (const g of grau) {
+      let best = null;
+      for (const q of quelle) { const a = _b9gAbst(q, g); if (a <= weit && (!best || a < best.a)) best = { q, a }; }
+      if (best) kand.push({ g, q: best.q, a: best.a });
+    }
+    kand.sort((x, y) => x.a - y.a || x.g - y.g);
+    const last = {}, ziele = [];
+    for (const k of kand) {
+      if (ziele.length >= neu) break;
+      if ((last[k.q] || 0) >= 2) continue;
+      last[k.q] = (last[k.q] || 0) + 1;
+      ziele.push(k);
+    }
+    const zielSet = new Set(ziele.map(k => k.g));
+    ziele.forEach(k => { rotAb[k.g] = d + 1; });
+    // Wolken des Tages: zuerst die mit Ziel, dann jedes andere kranke Kind einmal
+    const tagH = [];
+    for (const k of ziele.slice().sort((x, y) => y.a - x.a)) {      // weiteste Wolke zuerst
+      const p = _b9gPlatz(k.q), z = _b9gPlatz(k.g);
+      tagH.push({ tag: d, von: k.q, art: s === 2 ? 'flucht' : 'gross', wx: z.x, wy: z.y, ziel: k.g });
+    }
+    const hatZiel = new Set(ziele.map(k => k.q));
+    for (const q of rot) {
+      if (hatZiel.has(q)) continue;
+      const p = _b9gPlatz(q);
+      if (_b9gArm(s, q)) { tagH.push({ tag: d, von: q, art: 'arm', wx: p.x - 11, wy: p.y, ziel: -1 }); continue; }
+      // freie Richtung suchen: kein grauer Punkt (ausser den heutigen Zielen) in der Wolke
+      let wahl = null;
+      for (const lang of [46, 30, 18]) {
+        for (let k = 0; k < 24 && !wahl; k++) {
+          const w = Math.PI + (k % 2 ? 1 : -1) * Math.ceil(k / 2) * Math.PI / 12;
+          const ex = p.x + Math.cos(w) * lang, ey = p.y + Math.sin(w) * lang;
+          if (ex < 38 || ex > 350 || ey < 34 || ey > 202) continue;
+          const stoert = grau.some(g => !zielSet.has(g) &&
+            _b9gStrecke(_b9gPlatz(g).x, _b9gPlatz(g).y, p.x, p.y, ex, ey) < _B9G_RAND + 4);
+          if (!stoert) wahl = { wx: ex, wy: ey };
+        }
+        if (wahl) break;
+      }
+      if (!wahl) wahl = { wx: p.x - 8, wy: p.y };
+      tagH.push({ tag: d, von: q, art: 'gross', wx: wahl.wx, wy: wahl.wy, ziel: -1 });
+    }
+    tagH.forEach((h, k) => { h.f0 = 0.2 + 0.42 * (tagH.length > 1 ? k / (tagH.length - 1) : 0); huster.push(h); });
+  }
+  // Zeitlupe: bei „niemand“ die erste Wolke, sonst die erste, die am Arm bleibt
+  let lupe = huster.findIndex(h => s === 0 ? true : h.art === 'arm');
+  if (lupe < 0) lupe = 0;
+  return { rotAb, huster, lupe };
+}
+function _b9gKrank(s, tag) { return _B9G_KURVE[s][Math.max(1, Math.min(7, tag)) - 1]; }
+
+function _b9gInit() {
+  _b9g = { s: 0, t: 0, laeuft: false, halt: 0, gehalten: false, fertig: false,
+           uhr: 0, nach: -1, fx: { teile: [] }, erster: false, ringe: [], letzt: '',
+           plan: [_b9gPlan(0), _b9gPlan(1), _b9gPlan(2)] };
+}
+function _b9gFxLeer() {
+  _b9g.fx = { teile: [] }; _b9g.zeitlupe = null;
+  _b9g.nach = -1; _b9g.erster = false; _b9g.ringe = [];
+}
+// Zurueck auf Tag 1 in der aktuellen Einstellung
+function _b9gAnfang() {
+  _b9gFxLeer();
+  _b9g.t = 0; _b9g.laeuft = false; _b9g.halt = 0; _b9g.gehalten = false; _b9g.fertig = false;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9gWer(w) {
+  if (!_b9g) return;
+  const i = _B9G_WER.indexOf(String(w));
+  if (i < 0) return;
+  _b9g.s = i; _b9gAnfang(); _b9gStatus();
+}
+function _b9gAbspielen() {
+  if (!_b9g) return;
+  _b9gAnfang(); _b9g.laeuft = true; _b9gStatus();
+}
+function _b9gNeu() {
+  if (!_b9g) return;
+  _b9gAnfang(); _b9gStatus();
+}
+// Sprungmarken: gleich an Tag 3 bzw. Tag 7 anhalten (Einstellung bleibt)
+function _b9gTag3() {
+  if (!_b9g) return;
+  _b9gAnfang(); _b9g.t = 2.16; _b9g.gehalten = true; _b9gStatus();
+}
+function _b9gTag7() {
+  if (!_b9g) return;
+  _b9gAnfang(); _b9g.t = _B9G_ENDE; _b9g.gehalten = true; _b9g.fertig = true;
+  _b9g.nach = 0; _b9gStatus();
+}
+
+function _b9gHTML() {
+  const w = v => `<button class="sim-btn" data-b9g="${v}" onclick="_b9gWer('${v}')">${v}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie verbreitet sich eine Grippe in der Klasse?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Klassenraum von oben. Jeder Punkt ist ein Kind. <b>Rot</b> heißt krank, <b>grau</b> heißt gesund. Am Anfang ist ein Kind krank.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9g-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9g-los" onclick="_b9gAbspielen()">▶ 1 Woche abspielen</button>
+          <button class="sim-btn" onclick="_b9gNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Wer hustet in die Armbeuge?</span>
+          <div class="sim-btn-row">${w('niemand')}${w('die Hälfte')}${w('alle')}</div>
+        </div>
+        <div class="lmp-status on" id="_b9g-status" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9gTag3()">zu Tag 3</button>
+          <button class="sim-btn" onclick="_b9gTag7()">zu Tag 7</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Ein kleiner Bogen am Punkt heißt: Dieses Kind hustet in die Armbeuge. Seine Wolke bleibt am Arm. Ohne Armbeuge fliegt die Wolke bis zu den Nachbartischen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: niemand &nbsp;|&nbsp; Eine Woche dauert etwa 20 Sekunden. An Tag 3 und an Tag 7 hält der Film an.</p>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9gTag() { return Math.min(7, Math.floor(_b9g.t + 1e-9) + 1); }
+function _b9gZeile() {
+  const tag = _b9gTag(), n = _b9gKrank(_b9g.s, tag);
+  return 'Tag ' + tag + ' · krank: ' + n + ' von 28';
+}
+function _b9gSchluessel() {
+  return _b9gZeile() + '|' + _b9g.s + (_b9g.laeuft ? 'l' : '') + (_b9g.halt > 0 ? 'h' : '') + (_b9g.fertig ? 'f' : '');
+}
+function _b9gStatus() {
+  if (!_b9g) return;
+  _b9g.letzt = _b9gSchluessel();
+  const el = document.getElementById('_b9g-status');
+  if (el) {
+    let zweit;
+    if (_b9g.fertig) zweit = 'Die Woche ist vorbei. Lies den Zähler ab.';
+    else if (_b9g.halt > 0) zweit = 'Der Film hält kurz an. Lies den Zähler ab.';
+    else if (_b9g.laeuft) zweit = 'Der Film läuft. Die Kinder husten.';
+    else if (_b9g.gehalten) zweit = 'Der Film steht. Lies den Zähler ab.';
+    else zweit = 'Drücke „▶ 1 Woche abspielen“.';
+    el.innerHTML = `<b>${_b9gZeile()}</b><br>Wer hustet in die Armbeuge? ${_B9G_WER[_b9g.s]}<br>${zweit}`;
+  }
+  try {
+    document.querySelectorAll('[data-b9g]').forEach(b => {
+      const v = b.getAttribute ? b.getAttribute('data-b9g') : '';
+      if (b.classList) b.classList.toggle('primary', v === _B9G_WER[_b9g.s]);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b9g-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b9g.laeuft);
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9gUpdate(dt) {
+  if (!_b9g) return;
+  const roh = _bioFxDt(dt);
+  _b9g.uhr += roh;
+  _bioFxAlleUpdate(_b9g.fx, roh);
+  if (_b9g.laeuft) {
+    if (_b9g.halt > 0) {
+      _b9g.halt -= roh;
+      if (_b9g.halt <= 0) _b9g.halt = 0;
+    } else {
+      const zl = _bioFxZeitlupeFaktor(_b9g, roh);
+      const vor = _b9g.t;
+      _b9g.t = Math.min(_B9G_ENDE, _b9g.t + roh * zl / _B9G_TAG_S);
+      _b9gErsterHuster(vor, _b9g.t);
+      if (vor < 2.16 && _b9g.t >= 2.16 && !_b9g.gehalten) {          // Tag 3: kurz anhalten
+        _b9g.t = 2.16; _b9g.halt = _B9G_HALT; _b9g.gehalten = true;
+        _bioFxWelle(_b9g.fx.teile, 384, 150, 'rgba(220,38,38,0.8)', 30);
+      }
+      if (_b9g.t >= _B9G_ENDE) {
+        _b9g.t = _B9G_ENDE; _b9g.laeuft = false; _b9g.fertig = true; _b9g.nach = 0;
+      }
+    }
+  }
+  if (_b9g.nach >= 0) { _b9g.nach += roh; _b9gNachher(); }
+  if (_b9gSchluessel() !== _b9g.letzt) _b9gStatus();
+}
+// Der allererste Huster einer Woche: Zeitlupe, damit man die Wolke fliegen sieht.
+function _b9gErsterHuster(vor, jetzt) {
+  if (_b9g.erster) return;
+  const pl = _b9g.plan[_b9g.s], h = pl.huster[pl.lupe];
+  const t0 = h.tag - 1 + h.f0;
+  if (vor < t0 && jetzt >= t0) {
+    _b9g.erster = true;
+    _bioFxZeitlupe(_b9g, 0.3, 1.6);
+    _bioFxBanner(_b9g.fx, h.art === 'arm' ? 'Die Wolke bleibt am Arm hängen.'
+                                         : 'Die Wolke fliegt bis zu den Nachbarn!', 2.8, '#fca5a5');
+  }
+}
+// Nach Tag 7: Vergleich mit „niemand“ – grüne Ringe um jeden Punkt, der dort
+// rot war und hier grau geblieben ist. Nacheinander, ruhig.
+function _b9gNachher() {
+  const fx = _b9g.fx, t = _b9g.nach;
+  if (_b9g.s === 0) {
+    if (!_b9g.ringe.length && t >= 0.4) {
+      _b9g.ringe.push(-1);
+      const p = _b9gPlatz(_B9G_START);
+      _bioFxWelle(fx.teile, p.x, p.y, 'rgba(220,38,38,0.7)', 150);
+    }
+    return;
+  }
+  const rot0 = _b9g.plan[0].rotAb, rotS = _b9g.plan[_b9g.s].rotAb;
+  const liste = [];
+  for (let i = 0; i < _B9G_N; i++) if (rot0[i] <= 7 && rotS[i] > 7) liste.push(i);
+  liste.sort((a, b) => _b9gAbst(a, _B9G_START) - _b9gAbst(b, _B9G_START));
+  const soll = Math.min(liste.length, Math.floor(Math.max(0, t - 0.5) / 0.16));
+  while (_b9g.ringe.length < soll) {
+    const i = liste[_b9g.ringe.length], p = _b9gPlatz(i);
+    _b9g.ringe.push(i);
+    _bioFxWelle(fx.teile, p.x, p.y, 'rgba(34,197,94,0.9)', 18);
+    _bioFxFunken(fx.teile, p.x, p.y, 3, ['#86efac', '#dcfce7', '#ffffff']);
+    if (_b9g.ringe.length === 1) _bioFxBanner(fx, 'Grüner Ring: bei „niemand“ krank', 3.8, '#86efac');
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b9gWolke(ctx, h, u, arm) {
+  // u: 0..1 Fortschritt dieser Wolke (wachsen 0..0,45, stehen, verblassen ab 0,7)
+  const p = _b9gPlatz(h.von);
+  const wachs = _bioFxEase.raus(_bioFxKlemme(u / 0.45));
+  const a = (1 - _bioFxKlemme((u - 0.7) / 0.3)) * _bioFxKlemme(u / 0.08);
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  if (h.art === 'arm') {
+    // kleine Wolke vor dem Arm, sie bleibt dort
+    ctx.fillStyle = 'rgba(147,197,253,0.5)';
+    ctx.beginPath(); ctx.ellipse(h.wx - 3 * wachs, h.wy, 3 + 3 * wachs, 3 + 5 * wachs, 0, 0, 2 * Math.PI); ctx.fill();
+    for (let k = 0; k < 9; k++) {
+      const w = k * 0.7 + _b9g.uhr * 0.8;
+      const x = h.wx - 3 * wachs + Math.cos(w) * 4 * wachs, y = h.wy + Math.sin(w) * 6 * wachs;
+      ctx.fillStyle = 'rgba(37,99,235,0.8)';
+      ctx.beginPath(); ctx.arc(x, y, 1.3, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore(); return;
+  }
+  const ax = arm ? p.x - 10 : p.x - 6 * Math.sign(p.x - h.wx || 1), ay = p.y;
+  const ex = ax + (h.wx - ax) * wachs, ey = ay + (h.wy - ay) * wachs;
+  const len = Math.hypot(ex - ax, ey - ay), w = Math.atan2(ey - ay, ex - ax);
+  // weicher Schleier
+  ctx.translate(ax, ay); ctx.rotate(w);
+  const g = ctx.createLinearGradient(0, 0, len + 8, 0);
+  g.addColorStop(0, 'rgba(147,197,253,0.55)'); g.addColorStop(1, 'rgba(147,197,253,0.18)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.moveTo(0, -3); ctx.quadraticCurveTo(len * 0.6, -9, len + 6, -8);
+  ctx.quadraticCurveTo(len + 12, 0, len + 6, 8); ctx.quadraticCurveTo(len * 0.6, 9, 0, 3);
+  ctx.closePath(); ctx.fill();
+  // viele feine Punkte, die mitfliegen
+  for (let k = 0; k < 16; k++) {
+    const s = ((k * 0.37) % 1) * len + 2, q = ((k * 0.61) % 1 - 0.5) * (2 + s * 0.22);
+    ctx.fillStyle = h.art === 'flucht' ? 'rgba(59,130,246,0.7)' : 'rgba(37,99,235,0.8)';
+    ctx.beginPath(); ctx.arc(s, q + Math.sin(_b9g.uhr * 3 + k) * 0.8, 1.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _b9gDraw(ctx, cv) {
+  if (!_b9g) return;
+  const W = cv.width, H = cv.height, t = _b9g.t, s = _b9g.s, plan = _b9g.plan[s], uhr = _b9g.uhr;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f5efe3'; ctx.fillRect(0, 0, W, H);
+  // Boden-Fliesen, ganz zart
+  ctx.strokeStyle = 'rgba(160,140,110,0.12)'; ctx.lineWidth = 1;
+  for (let x = 0; x < 350; x += 24) { ctx.beginPath(); ctx.moveTo(x, 20); ctx.lineTo(x, 214); ctx.stroke(); }
+  // Tafel links
+  ctx.fillStyle = '#2f5d46'; ctx.fillRect(10, 42, 12, 150);
+  ctx.strokeStyle = '#8b6b43'; ctx.lineWidth = 2; ctx.strokeRect(10, 42, 12, 150);
+  ctx.save(); ctx.translate(34, 117); ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Tafel', 0, 0); ctx.restore();
+  // Tische (je zwei Kinder)
+  for (let c = 0; c < 7; c++) for (const r of [0, 2]) {
+    const a = _b9gPlatz(c * 4 + r), b = _b9gPlatz(c * 4 + r + 1);
+    ctx.fillStyle = '#e2c79a'; ctx.strokeStyle = '#b8955e'; ctx.lineWidth = 1.2;
+    _bioFxRundRect(ctx, a.x - 17, a.y - 12, 14, b.y - a.y + 24, 3); ctx.fill(); ctx.stroke();
+  }
+  // Wolken dieses Tages
+  const tagJetzt = Math.floor(t + 1e-9) + 1, f = t - (tagJetzt - 1);
+  if (tagJetzt <= 6 && (_b9g.laeuft || _b9g.halt > 0)) {
+    for (const h of plan.huster) {
+      if (h.tag !== tagJetzt) continue;
+      const u = (f - h.f0) / 0.34;
+      if (u > 0 && u < 1) _b9gWolke(ctx, h, u, _b9gArm(s, h.von));
+    }
+  }
+  // Kinder
+  for (let i = 0; i < _B9G_N; i++) {
+    const p = _b9gPlatz(i), ab = plan.rotAb[i];
+    const rotSeit = t - (ab - 1);                           // Tage seit Rotwerden
+    const rot = rotSeit >= 0 ? _bioFxKlemme(rotSeit / 0.15) : 0;
+    // getroffen, aber noch nicht rot: zarter Rand
+    let getroffen = false;
+    if (!rot) for (const h of plan.huster) if (h.ziel === i && t >= h.tag - 1 + h.f0 + 0.15) getroffen = true;
+    // Husten: kurzer Ruck
+    let ruck = 0;
+    if (_b9g.laeuft) for (const h of plan.huster) {
+      if (h.von !== i || h.tag !== tagJetzt) continue;
+      const u = f - h.f0; if (u > 0 && u < 0.08) ruck = Math.sin(u / 0.08 * Math.PI) * 2;
+    }
+    const atem = Math.sin(uhr * 1.3 + i * 0.7) * 0.5;
+    const x = p.x + ruck, y = p.y + atem, r0 = 7;
+    const grau = [156, 163, 175], rt = [220, 38, 38];
+    const col = grau.map((v, k) => Math.round(v + (rt[k] - v) * rot));
+    ctx.fillStyle = 'rgb(' + col.join(',') + ')';
+    ctx.beginPath(); ctx.arc(x, y, r0, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = rot > 0.5 ? '#991b1b' : '#6b7280'; ctx.lineWidth = 1.2; ctx.stroke();
+    if (getroffen) {
+      ctx.strokeStyle = 'rgba(220,38,38,0.55)'; ctx.lineWidth = 1.5;
+      ctx.setLineDash([2, 2]); ctx.beginPath(); ctx.arc(x, y, r0 + 3, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+    }
+    if (_b9gArm(s, i)) {                                    // Arm als kleiner Bogen vor dem Mund
+      ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.arc(x - 3, y, 9, Math.PI * 0.72, Math.PI * 1.28); ctx.stroke();
+    }
+  }
+  // gruene Ringe nach Tag 7 (Vergleich mit „niemand“)
+  for (const i of _b9g.ringe) {
+    if (i < 0) continue;
+    const p = _b9gPlatz(i);
+    ctx.strokeStyle = 'rgba(22,163,74,0.9)'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 11, 0, 2 * Math.PI); ctx.stroke();
+  }
+  // Rechte Spalte: Kalender und Zaehler
+  const kx = 358, tag = _b9gTag(), n = _b9gKrank(s, tag);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.fillRect(kx, 30, 54, 58); ctx.strokeRect(kx, 30, 54, 58);
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(kx, 30, 54, 14);
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Tag', kx + 27, 41);
+  const klapp = _b9g.laeuft && _b9g.halt <= 0 ? Math.max(0, 1 - (t % 1) * 6) : 0;
+  ctx.globalAlpha = 1 - klapp * 0.7;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 28px sans-serif';
+  ctx.fillText(String(tag), kx + 27, 78 - klapp * 6);
+  ctx.globalAlpha = 1;
+  for (let k = 1; k <= 7; k++) {
+    ctx.fillStyle = k <= tag ? '#dc2626' : '#cbd5e1';
+    ctx.beginPath(); ctx.arc(kx + 3 + (k - 1) * 8, 98, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b';
+  ctx.fillRect(kx, 120, 54, 52); ctx.strokeRect(kx, 120, 54, 52);
+  ctx.fillStyle = '#991b1b'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('krank:', kx + 27, 134);
+  ctx.font = '700 22px sans-serif'; ctx.fillText(String(n), kx + 27, 157);
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif';
+  ctx.fillText('von 28', kx + 27, 168);
+  // Zeitraffer / Halt
+  ctx.textAlign = 'left'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = 'rgba(15,23,42,0.7)';
+  if (_b9g.halt > 0) ctx.fillText('❚❚ Halt an Tag 3', 44, 20);
+  else if (_b9g.laeuft) ctx.fillText(_b9g.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 44, 20);
+  // Einstellung unten
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.fillText('Armbeuge: ' + _B9G_WER[s], 44, H - 12);
+  ctx.textAlign = 'right'; ctx.font = '11px sans-serif'; ctx.fillStyle = '#475569';
+  ctx.fillText('rot = krank · grau = gesund', W - 10, H - 12);
+  _bioFxAlleDraw(ctx, _b9g.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 8 · DIE SCHUTZMAUERN DES KÖRPERS   (Förderheft Bio 8 · bm2)
+// Links ein schematischer Körperumriss von vorn (ohne Gesicht, ohne Details)
+// mit vier Eingängen: Haut am Unterarm, Nase, Magen, Schnitt im Finger.
+// Gewählt wird EIN Weg, dann fliegen 10 Erreger (kleine Punkte) dorthin.
+// Rechts die Nahaufnahme der Stelle:
+//   Haut   – die Punkte prallen an der Hornschicht ab und bleiben außen liegen.
+//   Nase   – sie bleiben im Schleim kleben, der Schleim trägt sie hinaus.
+//   Magen  – sie fallen in den Magensaft und lösen sich auf.
+//   Schnitt– das Bild vergrößert sich: Die Punkte kommen durch den Spalt in
+//            der Haut ins Blut; runde weiße Zellen umschließen 9 von ihnen,
+//            einer bleibt übrig und pulsiert langsam.
+// Modellwerte (Lehrerteil): aufgehalten 10 / 10 / 10 / 9 von 10,
+// kommen weiter 0 / 0 / 0 / 1.
+// Aha (nach der Beobachtung, _bioFx): Zeitlupe beim ersten Aufprall bzw. beim
+// ersten Umschließen, Lichtring an der Stelle, Schild am Körperumriss für jeden
+// geprüften Eingang. Nicht am Bildschirm: die Lückenwörter der Seite.
+// Keine Vermenschlichung, keine Wertung, kein Blinken über 1 Hz, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _b9h = null;
+const _B9H_WEGE = ['haut', 'nase', 'magen', 'schnitt'];
+const _B9H_NAME = { haut: 'auf die Haut', nase: 'in die Nase', magen: 'in den Magen', schnitt: 'in einen Schnitt' };
+const _B9H_KURZ = { haut: 'Haut am Arm', nase: 'Nase', magen: 'Magen', schnitt: 'Schnitt im Finger' };
+const _B9H_ENDE = {
+  haut: 'Die Haut lässt sie nicht hinein.',
+  nase: 'Der Schleim hält sie fest. Sie werden hinausbefördert.',
+  magen: 'Die Magensäure tötet sie.',
+  schnitt: 'Sie kommen ins Blut. Weiße Zellen fressen 9 von 10.'
+};
+// Eingänge am Körperumriss (Leinwandmaße)
+const _B9H_ORT = { haut: [60, 124], nase: [110, 40], magen: [115, 103], schnitt: [177, 164] };
+const _B9H_MUND = [110, 50];
+// Nahaufnahme rechts
+const _B9H_P = { x: 206, y: 24, w: 208, h: 190 };
+// Schnitt-Szene: eigenes Maß 408 x 238, wird beim Vergrößern auf die Leinwand gezogen
+const _B9H_SW = 408, _B9H_SH = 238;
+const _B9H_FLUG = 1.6;       // s: Flug zum Eingang
+const _B9H_ZOOM = 1.1;       // s: Vergrößern beim Schnitt
+const _B9H_REST = 9;         // der eine Erreger, der beim Schnitt übrig bleibt
+// Zielpunkte der Erreger im Blutgefäß (Schnitt)
+const _B9H_BLUT = [[150, 176], [236, 160], [176, 194], [262, 186], [122, 160],
+                   [210, 190], [288, 164], [160, 150], [250, 196], [382, 180]];
+
+function _b9hInit() {
+  _b9h = { weg: 'haut', phase: 'ruhe', pt: 0, t: 0, er: [], zellen: [], auf: 0, weiter: null,
+           fx: { teile: [] }, still: false, erledigt: {}, zoom: 0, zeitlupe: null,
+           letzt: '', letztZ: '', fertigT: -1, erster: false, bannerErster: false };
+  _b9hNeueErreger();
+}
+function _b9hNeueErreger() {
+  _b9h.er = [];
+  for (let i = 0; i < 10; i++) _b9h.er.push({ i, st: 'weg', x: 0, y: 0, vx: 0, vy: 0, p: 0, q: 0 });
+  _b9hZellenNeu();
+}
+// drei weiße Zellen im Blutgefäß; jede nimmt sich drei Erreger vor
+function _b9hZellenNeu() {
+  const reihe = [0, 1, 2, 3, 4, 5, 6, 7, 8].sort((a, b) => _B9H_BLUT[a][0] - _B9H_BLUT[b][0]);
+  _b9h.zellen = [
+    { x: 58, y: 172, r: 15, liste: reihe.slice(0, 3), cur: -1, satt: 0, arm: 0, ax: 1, ay: 0 },
+    { x: 104, y: 190, r: 15, liste: reihe.slice(3, 6), cur: -1, satt: 0, arm: 0, ax: 1, ay: 0 },
+    { x: 150, y: 160, r: 15, liste: reihe.slice(6, 9), cur: -1, satt: 0, arm: 0, ax: 1, ay: 0 }
+  ];
+}
+
+// ── Bedienung ─────────────────────────────────────────────
+function _b9hLeer() {
+  _b9h.phase = 'ruhe'; _b9h.pt = 0; _b9h.auf = 0; _b9h.weiter = null; _b9h.zoom = 0;
+  _b9h.fx = { teile: [] }; _b9h.zeitlupe = null; _b9h.fertigT = -1; _b9h.erster = false;
+  _b9hNeueErreger();
+}
+function _b9hWeg(w) {
+  if (!_b9h || _B9H_WEGE.indexOf(w) < 0) return;
+  _b9h.weg = w; _b9hLeer(); _b9hStatus();
+}
+function _b9hLos() {
+  if (!_b9h) return;
+  if (_b9h.phase === 'flug' || _b9h.phase === 'zoom' || _b9h.phase === 'nah') return;
+  _b9hLeer();
+  _b9h.phase = 'flug'; _b9h.pt = 0;
+  const [zx, zy] = _B9H_ORT[_b9h.weg];
+  _b9h.er.forEach((e, i) => {
+    e.st = 'flug'; e.sx = 150 + (i % 5) * 10; e.sy = 8 + Math.floor(i / 5) * 9;
+    e.x = e.sx; e.y = e.sy; e.zx = zx + ((i % 3) - 1) * 3; e.zy = zy + ((i % 2) ? 2 : -2);
+  });
+  _b9hStatus();
+}
+function _b9hNeu() {
+  if (!_b9h) return;
+  _b9h.weg = 'haut'; _b9h.erledigt = {}; _b9hLeer(); _b9hStatus();
+}
+// Sprungmarke: Weg einstellen und gleich den Endstand zeigen (ohne Effekte).
+function _b9hMarke(w) {
+  if (!_b9h || _B9H_WEGE.indexOf(w) < 0) return;
+  _b9h.weg = w; _b9hLeer(); _b9hLos();
+  _b9h.still = true;
+  for (let k = 0; k < 3000 && _b9h.phase !== 'ende'; k++) _b9hSchritt(0.02);
+  _b9h.still = false;
+  _b9h.fx = { teile: [] }; _b9h.zeitlupe = null;
+  _b9hStatus();
+}
+
+// ── Anzeige ───────────────────────────────────────────────
+function _b9hZeile() {
+  const z = _b9h, n = _B9H_NAME[z.weg];
+  if (z.phase === 'ruhe') return 'Weg der Erreger: ' + n + '. Drücke „▶ 10 Erreger losschicken“.';
+  if (z.phase === 'flug') return '10 Erreger fliegen los: ' + n + ' …';
+  if (z.phase === 'zoom' || z.phase === 'nah') return 'Sieh genau hin: Was passiert mit den Erregern?';
+  return _B9H_ENDE[z.weg];
+}
+function _b9hZaehlerText() {
+  const z = _b9h;
+  if (z.phase === 'ruhe') return ['aufgehalten: – von 10', 'kommen weiter: –'];
+  return ['aufgehalten: ' + z.auf + ' von 10', 'kommen weiter: ' + (z.weiter === null ? '…' : z.weiter)];
+}
+function _b9hStatus() {
+  if (!_b9h) return;
+  const s = _b9hZeile();
+  const el = document.getElementById('_b9h-status');
+  if (el) { el.textContent = s; el.className = 'lmp-status on'; }
+  _b9h.letzt = s;
+  const zt = _b9hZaehlerText();
+  const zz = document.getElementById('_b9h-zaehler');
+  if (zz) zz.innerHTML = '<span class="_b9h-zbox">' + zt[0] + '</span> <span class="_b9h-zbox">' + zt[1] + '</span>';
+  _b9h.letztZ = zt.join('|');
+  try {
+    document.querySelectorAll('[data-b9h]').forEach(b => {
+      const w = b.dataset ? b.dataset.b9h : b.getAttribute('data-b9h');
+      if (b.classList) b.classList.toggle('primary', w === _b9h.weg);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b9h-los');
+  if (los && los.classList) los.classList.toggle('primary', _b9h.phase === 'ruhe' || _b9h.phase === 'ende');
+}
+
+function _b9hHTML() {
+  const k = (w, txt) => `<button class="sim-btn" data-b9h="${w}" onclick="_b9hWeg('${w}')">${txt}</button>`;
+  const m = (w, txt) => `<button class="sim-btn" onclick="_b9hMarke('${w}')">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <style>._b9h-zbox{display:inline-block;padding:3px 9px;margin:0 6px 4px 0;border:2px solid #64748b;border-radius:8px;background:#fff;color:#0f172a;font-weight:700}</style>
+    <h3 class="sim-h3">Die Schutzmauern des Körpers</h3>
+    <div class="fpm-note" style="margin-top:2px">Links ein Körper von vorn mit vier Eingängen. Rechts siehst du die Stelle ganz nah. Die Erreger sind kleine Punkte. Stelle den Weg ein. Dann drücke „▶ 10 Erreger losschicken“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9h-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9h-los" onclick="_b9hLos()">▶ 10 Erreger losschicken</button>
+          <button class="sim-btn" onclick="_b9hNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Weg der Erreger</span>
+          <div class="sim-btn-row">
+            ${k('haut', 'auf die Haut')}
+            ${k('nase', 'in die Nase')}
+            ${k('magen', 'in den Magen')}
+            ${k('schnitt', 'in einen Schnitt')}
+          </div>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Zähler</div>
+        <div id="_b9h-zaehler" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:8px">Statuszeile</div>
+        <div class="lmp-status on" id="_b9h-status" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: gleich zum Ergebnis</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('haut', 'Ergebnis Haut')}
+          ${m('nase', 'Ergebnis Nase')}
+          ${m('magen', 'Ergebnis Magen')}
+          ${m('schnitt', 'Ergebnis Schnitt')}
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Modell: Es sind immer 10 Erreger. Echte Erreger sind viel kleiner, und es sind viel mehr.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Ablauf ────────────────────────────────────────────────
+function _b9hUpdate(dt) {
+  if (!_b9h) return;
+  dt = _bioFxDt(dt);
+  _b9h.t += dt;
+  const d = dt * _bioFxZeitlupeFaktor(_b9h, dt);
+  _b9hSchritt(d);
+  _bioFxAlleUpdate(_b9h.fx, dt);
+  const zt = _b9hZaehlerText().join('|');
+  if (_b9hZeile() !== _b9h.letzt || zt !== _b9h.letztZ) _b9hStatus();
+}
+function _b9hSchritt(d) {
+  const z = _b9h;
+  if (z.phase === 'flug') {
+    z.pt += d;
+    z.er.forEach((e, i) => {
+      const u = _bioFxKlemme((z.pt - i * 0.06) / 1.0);
+      if (z.weg === 'magen') {
+        // erst zum Mund, dann hinunter zum Magen
+        if (u < 0.65) { const v = _bioFxEase.sanft(u / 0.65); _b9hBez(e, e.sx, e.sy, _B9H_MUND[0], _B9H_MUND[1], v); }
+        else { const v = (u - 0.65) / 0.35; e.x = _B9H_MUND[0] + (e.zx - _B9H_MUND[0]) * v; e.y = _B9H_MUND[1] + (e.zy - _B9H_MUND[1]) * v; }
+      } else _b9hBez(e, e.sx, e.sy, e.zx, e.zy, _bioFxEase.sanft(u));
+    });
+    if (z.pt >= _B9H_FLUG) {
+      z.pt = 0;
+      if (z.weg === 'schnitt') z.phase = 'zoom'; else { z.phase = 'nah'; _b9hSzene(); }
+    }
+  } else if (z.phase === 'zoom') {
+    z.pt += d;
+    z.zoom = _bioFxEase.sanft(_bioFxKlemme(z.pt / _B9H_ZOOM));
+    if (z.pt >= _B9H_ZOOM) { z.zoom = 1; z.pt = 0; z.phase = 'nah'; _b9hSzene(); }
+  } else if (z.phase === 'nah') {
+    z.pt += d;
+    const fertig = z.weg === 'haut' ? _b9hHaut(d) : z.weg === 'nase' ? _b9hNase(d)
+                 : z.weg === 'magen' ? _b9hMagen(d) : _b9hSchnitt(d);
+    if (fertig) {
+      if (z.fertigT < 0) z.fertigT = 0;
+      z.fertigT += d;
+      if (z.fertigT >= 0.5) _b9hFertig();
+    }
+  } else if (z.phase === 'ende' && z.weg === 'schnitt') {
+    _b9hSchnitt(d);                      // Zellen und Rest-Erreger bewegen sich weiter
+  }
+}
+function _b9hBez(e, x0, y0, x1, y1, u) {
+  const cx = (x0 + x1) / 2 + 30, cy = Math.min(y0, y1) - 10;
+  const a = 1 - u;
+  e.x = a * a * x0 + 2 * a * u * cx + u * u * x1;
+  e.y = a * a * y0 + 2 * a * u * cy + u * u * y1;
+}
+// Szene beginnt: Erreger warten gestaffelt auf ihren Einsatz.
+function _b9hSzene() {
+  const z = _b9h;
+  z.er.forEach((e, i) => { e.st = 'warte'; e.a = i * (z.weg === 'schnitt' ? 0.22 : 0.28); e.p = 0; e.q = 0; });
+  if (z.weg === 'schnitt') _b9hZellenNeu();
+}
+// Leinwandpunkt zu einem Szenenpunkt (für Effekte)
+function _b9hLw(x, y) {
+  if (_b9h.weg === 'schnitt') { const R = _b9hSchnittRect(); const k = R.w / _B9H_SW; return [R.x + x * k, R.y + y * k]; }
+  return [_B9H_P.x + x, _B9H_P.y + y];
+}
+function _b9hGestoppt(x, y, farbe) {
+  const z = _b9h;
+  z.auf = Math.min(10, z.auf + 1);
+  if (z.still) return;
+  const [cx, cy] = _b9hLw(x, y);
+  _bioFxWelle(z.fx.teile, cx, cy, farbe, 16);
+  if (!z.erster) { z.erster = true; _bioFxZeitlupe(z, 0.35, 1.1); _bioFxWelle(z.fx.teile, cx, cy, farbe, 34); }
+}
+function _b9hFertig() {
+  const z = _b9h;
+  z.phase = 'ende'; z.pt = 0;
+  z.weiter = z.weg === 'schnitt' ? 1 : 0;
+  z.auf = 10 - z.weiter;
+  const neu = !z.erledigt[z.weg];
+  z.erledigt[z.weg] = true;
+  if (z.still) return;
+  const [ox, oy] = _B9H_ORT[z.weg];
+  if (z.weg !== 'schnitt') {
+    _bioFxWelle(z.fx.teile, ox, oy, '#22c55e', 26);
+    _bioFxFunken(z.fx.teile, ox, oy, 8, ['#86efac', '#ffffff', '#fde68a']);
+  } else {
+    const r = z.er[_B9H_REST]; const [cx, cy] = _b9hLw(r.x, r.y);
+    _bioFxWelle(z.fx.teile, cx, cy, '#a78bfa', 30);
+  }
+  const vier = _B9H_WEGE.every(w => z.erledigt[w]);
+  if (vier && neu) _bioFxBanner(z.fx, 'An jedem Eingang wartet ein Schutz!', 3.4, '#86efac');
+  else if (z.weg === 'haut') _bioFxBanner(z.fx, 'Abgeprallt!', 2.2, '#86efac');
+  else if (z.weg === 'nase') _bioFxBanner(z.fx, 'Auch die Nase hält sie auf!', 2.8, '#86efac');
+  else if (z.weg === 'magen') _bioFxBanner(z.fx, 'Auch der Magen hält sie auf!', 2.8, '#86efac');
+}
+
+// Haut: Hornschicht bei y = 112 der Nahaufnahme.
+const _B9H_HY = 112;
+function _b9hHaut(d) {
+  const z = _b9h;
+  for (const e of z.er) {
+    if (e.st === 'warte' && z.pt >= e.a) { e.st = 'fall'; e.x = 18 + e.i * 19; e.y = -6; e.vx = ((e.i % 3) - 1) * 6; e.vy = 95; }
+    else if (e.st === 'fall') {
+      e.x += e.vx * d; e.y += e.vy * d;
+      if (e.y >= _B9H_HY - 5) {
+        e.y = _B9H_HY - 5; e.st = 'hoch'; e.vy = -80; e.vx = (e.i % 2) ? 26 : -26;
+        _b9hGestoppt(e.x, e.y, '#fef3c7');
+        if (!z.still) _bioFxFunken(z.fx.teile, _B9H_P.x + e.x, _B9H_P.y + e.y, 3, ['#e2e8f0', '#ffffff']);
+      }
+    } else if (e.st === 'hoch') {
+      e.vy += 160 * d; e.x += e.vx * d; e.y += e.vy * d;
+      e.x = Math.max(8, Math.min(_B9H_P.w - 8, e.x));
+      if (e.vy > 0 && e.y >= _B9H_HY - 5) { e.y = _B9H_HY - 5; e.st = 'liegt'; }
+    }
+  }
+  return z.er.every(e => e.st === 'liegt');
+}
+// Nase: Gang von links (außen) nach rechts; Schleim oben (44–58) und unten (132–146).
+function _b9hNase(d) {
+  const z = _b9h;
+  let draussen = 0;
+  for (const e of z.er) {
+    if (e.st === 'warte' && z.pt >= e.a) {
+      e.st = 'rein'; e.x = -6; e.y0 = 95 + ((e.i % 3) - 1) * 8; e.y = e.y0;
+      e.yw = (e.i % 2) ? 136 : 54; e.xs = 70 + e.i * 12;
+    } else if (e.st === 'rein') {
+      e.x += 100 * d;
+      const u = _bioFxKlemme((e.x - 30) / (e.xs - 30));
+      e.y = e.y0 + (e.yw - e.y0) * _bioFxEase.sanft(u);
+      if (e.x >= e.xs) { e.x = e.xs; e.y = e.yw; e.st = 'fest'; e.q = 0; _b9hGestoppt(e.x, e.y, '#fde68a'); }
+    } else if (e.st === 'fest') {
+      e.q += d; if (e.q >= 0.5) e.st = 'zurueck';
+    } else if (e.st === 'zurueck') {
+      e.x -= 90 * d;
+      if (e.x <= 40) { e.st = 'raus'; e.q = 0; e.rx = e.x; e.ry = e.y; }
+    } else if (e.st === 'raus') {
+      e.q = Math.min(1, e.q + d / 0.6);
+      const k = z.er.filter(f => f.st === 'raus' || f.st === 'draussen').indexOf(e);
+      const tx = 12 + (e.i % 4) * 5, ty = 166 + Math.floor(e.i / 4) * 5;
+      e.x = e.rx + (tx - e.rx) * _bioFxEase.sanft(e.q);
+      e.y = e.ry + (ty - e.ry) * _bioFxEase.sanft(e.q);
+      if (e.q >= 1 && k >= 0) e.st = 'draussen';
+    }
+    if (e.st === 'draussen') draussen++;
+  }
+  return draussen === 10;
+}
+// Magen: Speiseröhre oben links (x 52–76), Magensaft ab y = 120.
+const _B9H_MY = 120;
+function _b9hMagen(d) {
+  const z = _b9h;
+  for (const e of z.er) {
+    if (e.st === 'warte' && z.pt >= e.a) { e.st = 'rohr'; e.x = 64 + ((e.i % 3) - 1) * 4; e.y = -6; e.vy = 90; }
+    else if (e.st === 'rohr') {
+      e.y += e.vy * d;
+      if (e.y >= 70) { e.st = 'fall'; e.vx = 22 + (e.i % 5) * 11; e.vy = 30; }
+    } else if (e.st === 'fall') {
+      e.vy += 200 * d; e.x += e.vx * d; e.y += e.vy * d;
+      if (e.y >= _B9H_MY + 4 + (e.i % 4) * 5) { e.st = 'saeure'; e.q = 0; e.vx *= 0.15; e.vy = 8;
+        if (!z.still) _bioFxBlasen(z.fx.teile, _B9H_P.x + e.x, _B9H_P.y + e.y, 3, 'rgba(236,252,203,1)'); }
+    } else if (e.st === 'saeure') {
+      e.q += d / 1.1; e.x += e.vx * d; e.y += e.vy * d;
+      if (e.q >= 1) { e.st = 'weg'; _b9hGestoppt(e.x, e.y, '#d9f99d');
+        if (!z.still) _bioFxBlasen(z.fx.teile, _B9H_P.x + e.x, _B9H_P.y + e.y, 4, 'rgba(236,252,203,1)'); }
+    }
+  }
+  return z.er.every(e => e.st === 'weg');
+}
+// Schnitt: Haut 50–90 mit Spalt bei x 186–222, Blutgefäß 140–206.
+function _b9hSchnitt(d) {
+  const z = _b9h;
+  for (const e of z.er) {
+    if (e.st === 'warte' && z.pt >= e.a) { e.st = 'fall'; e.x = 204 + ((e.i % 3) - 1) * 2; e.y = -6; }
+    else if (e.st === 'fall') {
+      e.y += 90 * d;
+      if (e.y >= 96) { e.st = 'hin'; }
+    } else if (e.st === 'hin') {
+      const [tx, ty] = _B9H_BLUT[e.i];
+      const dx = tx - e.x, dy = ty - e.y, l = Math.hypot(dx, dy), v = (e.i === _B9H_REST ? 110 : 100) * d;
+      if (l <= v) { e.x = tx; e.y = ty; e.st = 'blut'; } else { e.x += dx / l * v; e.y += dy / l * v; }
+    } else if (e.st === 'drin') {
+      e.q = Math.min(1, e.q + d / 1.4);
+      const c = z.zellen[e.zelle]; e.x = c.x + e.ox; e.y = c.y + e.oy;
+    }
+  }
+  z.zellen.forEach((c, j) => {
+    c.arm = Math.max(0, c.arm - d * 2);
+    if (c.cur < 0) {
+      let best = -1, bl = 1e9;
+      for (const k of c.liste) { const e = z.er[k]; if (e.st === 'blut') { const l = Math.hypot(e.x - c.x, e.y - c.y); if (l < bl) { bl = l; best = k; } } }
+      c.cur = best;
+      if (best < 0) {                                   // ruhig treiben
+        c.x += Math.sin(z.t * 0.7 + j * 2) * 3 * d; c.y += Math.cos(z.t * 0.6 + j) * 3 * d;
+      }
+    }
+    if (c.cur >= 0) {
+      const e = z.er[c.cur];
+      if (e.st === 'blut') {
+        const dx = e.x - c.x, dy = e.y - c.y, l = Math.hypot(dx, dy), v = 75 * d;
+        c.ax = dx / (l || 1); c.ay = dy / (l || 1);
+        if (l < c.r + 4) {
+          e.st = 'umschl'; e.p = 0; e.ux = e.x; e.uy = e.y; e.zelle = j;
+          if (!z.erster && !z.still) { _bioFxZeitlupe(z, 0.3, 1.4); }
+        } else { c.x += dx / l * v; c.y += dy / l * v; }
+      } else if (e.st === 'umschl') {
+        e.p = Math.min(1, e.p + d / 0.65);
+        c.arm = Math.sin(Math.PI * e.p);
+        const u = _bioFxEase.sanft(e.p);
+        e.x = e.ux + (c.x - e.ux) * u; e.y = e.uy + (c.y - e.uy) * u;
+        if (e.p >= 1) {
+          e.st = 'drin'; e.q = 0; e.ox = ((c.satt % 3) - 1) * 5; e.oy = (c.satt % 2) ? 4 : -3;
+          c.satt++; c.cur = -1;
+          const war = z.erster;
+          _b9hGestoppt(c.x, c.y, '#ddd6fe');
+          if (!war && !z.still && !z.bannerErster) {
+            z.bannerErster = true;
+            _bioFxBanner(z.fx, 'Hinter der Haut wartet noch ein Schutz!', 3.2, '#c4b5fd');
+          }
+        }
+      } else c.cur = -1;
+    }
+    c.y = Math.max(146 + c.r * 0.4, Math.min(200 - c.r * 0.4, c.y));
+  });
+  const gefressen = z.er.filter(e => e.st === 'drin' && e.q >= 1).length;
+  return gefressen === 9 && z.er[_B9H_REST].st === 'blut';
+}
+
+// ── Zeichnen ──────────────────────────────────────────────
+function _b9hPunkt(ctx, x, y, r, a) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#6d28d9';
+  if (r > 2.6) for (let k = 0; k < 6; k++) {
+    const w = k * Math.PI / 3 + _b9h.t * 0.4;
+    ctx.beginPath(); ctx.arc(x + Math.cos(w) * r * 1.15, y + Math.sin(w) * r * 1.15, r * 0.32, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.beginPath(); ctx.arc(x - r * 0.3, y - r * 0.3, r * 0.35, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _b9hSchild(ctx, x, y, farbe) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.fillStyle = farbe; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(0, -7); ctx.lineTo(6, -5); ctx.lineTo(5.5, 1);
+  ctx.quadraticCurveTo(4, 5, 0, 8); ctx.quadraticCurveTo(-4, 5, -5.5, 1); ctx.lineTo(-6, -5); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _b9hKoerper(ctx) {
+  const z = _b9h, t = z.t;
+  const glied = [[[84, 70], [52, 150]], [[136, 70], [170, 152]], [[96, 146], [90, 236]], [[124, 146], [130, 236]], [[110, 56], [110, 66]]];
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#64748b';
+  ctx.lineWidth = 17; glied.forEach(([a, b]) => { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); });
+  _bioFxRundRect(ctx, 80, 62, 60, 90, 14); ctx.lineWidth = 3; ctx.stroke();
+  ctx.beginPath(); ctx.arc(110, 36, 20, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = '#e2e8f0';
+  ctx.lineWidth = 13; glied.forEach(([a, b]) => { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); });
+  ctx.fillStyle = '#e2e8f0';
+  _bioFxRundRect(ctx, 80, 62, 60, 90, 14); ctx.fill();
+  ctx.beginPath(); ctx.arc(110, 36, 20, 0, 2 * Math.PI); ctx.fill();
+  // Finger der rechten Hand mit kleinem Schnitt
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(172, 156); ctx.lineTo(177, 166); ctx.stroke();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3.5;
+  ctx.beginPath(); ctx.moveTo(172, 156); ctx.lineTo(177, 166); ctx.stroke();
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(173.5, 164); ctx.lineTo(178.5, 161.5); ctx.stroke();
+  // Magen und Speiseröhre (schematisch)
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(110, 52); ctx.lineTo(110, 94); ctx.stroke();
+  ctx.fillStyle = '#f1f5f9';
+  ctx.beginPath(); ctx.ellipse(116, 103, 15, 9, -0.35, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Hautstelle am Unterarm und Nase
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(54, 118, 12, 12);
+  ctx.fillStyle = '#94a3b8';
+  ctx.beginPath(); ctx.moveTo(110, 36); ctx.lineTo(114, 45); ctx.lineTo(106, 45); ctx.closePath(); ctx.fill();
+  // Beschriftungen
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Haut', 14, 128);
+  ctx.fillText('Nase', 136, 44);
+  ctx.textAlign = 'center'; ctx.fillText('Magen', 110, 133);
+  ctx.textAlign = 'left'; ctx.fillText('Schnitt', 152, 184);
+  // gewählter Eingang: ruhiger Ring
+  const [ox, oy] = _B9H_ORT[z.weg];
+  ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(ox, oy, 9 + 1.5 * Math.sin(t * Math.PI), 0, 2 * Math.PI); ctx.stroke();
+  // Schilde an geprüften Eingängen
+  const ab = { haut: [-2, -12], nase: [-18, -8], magen: [16, -10], schnitt: [14, -6] };
+  _B9H_WEGE.forEach(w => { if (z.erledigt[w]) { const [x, y] = _B9H_ORT[w];
+    _b9hSchild(ctx, x + ab[w][0], y + ab[w][1], w === 'schnitt' ? '#8b5cf6' : '#16a34a'); } });
+  ctx.restore();
+}
+function _b9hLupeRahmen(ctx) {
+  const P = _B9H_P, [ox, oy] = _B9H_ORT[_b9h.weg];
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,0.55)'; ctx.lineWidth = 1.2; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(ox + 8, oy - 5); ctx.lineTo(P.x, P.y); ctx.moveTo(ox + 8, oy + 5); ctx.lineTo(P.x, P.y + P.h); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Nahaufnahme: ' + _B9H_KURZ[_b9h.weg], P.x + P.w / 2, 16);
+  ctx.restore();
+}
+function _b9hSchnittRect() {
+  const P = _B9H_P, k0 = P.w / _B9H_SW, h0 = _B9H_SH * k0;
+  const a = { x: P.x, y: P.y + (P.h - h0) / 2, w: P.w };
+  const b = { x: 6, y: 6, w: _B9H_SW };
+  const u = _b9h.zoom;
+  return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, w: a.w + (b.w - a.w) * u };
+}
+// Szenen in eigenen Koordinaten
+function _b9hSzeneHaut(ctx) {
+  const z = _b9h, t = z.t, W = _B9H_P.w, H = _B9H_P.h;
+  ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, W, _B9H_HY);
+  ctx.fillStyle = 'rgba(148,163,184,0.5)';
+  for (let k = 0; k < 8; k++) { const x = (k * 29 + t * 6) % (W + 10) - 5, y = 20 + (k * 37) % 70 + Math.sin(t + k) * 3;
+    ctx.beginPath(); ctx.arc(x, y, 1.2, 0, 2 * Math.PI); ctx.fill(); }
+  ctx.fillStyle = '#f5d0b0'; ctx.fillRect(0, _B9H_HY, W, H - _B9H_HY);
+  ctx.fillStyle = '#e7b98f'; ctx.fillRect(0, _B9H_HY, W, 10);
+  ctx.strokeStyle = '#c98f5e'; ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 16) { ctx.beginPath(); ctx.moveTo(x, _B9H_HY + 3); ctx.lineTo(x + 12, _B9H_HY + 3); ctx.stroke(); }
+  ctx.strokeStyle = 'rgba(180,120,80,0.45)';
+  for (let r = 0; r < 4; r++) for (let x = (r % 2) * 11; x < W; x += 22) {
+    ctx.beginPath(); ctx.ellipse(x + 8, _B9H_HY + 22 + r * 16, 9, 6, 0, 0, 2 * Math.PI); ctx.stroke(); }
+  ctx.fillStyle = '#7c2d12'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Haut', 8, H - 8);
+  ctx.fillStyle = '#0c4a6e'; ctx.fillText('Luft', 8, 14);
+  for (const e of z.er) if (e.st === 'fall' || e.st === 'hoch' || e.st === 'liegt') {
+    const bob = e.st === 'liegt' ? Math.sin(t * 1.5 + e.i) * 0.8 : 0;
+    _b9hPunkt(ctx, e.x, e.y + bob, 4, 1);
+  }
+}
+function _b9hSzeneNase(ctx) {
+  const z = _b9h, t = z.t, W = _B9H_P.w, H = _B9H_P.h;
+  ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, 40, H);
+  ctx.fillStyle = '#fff7ed'; ctx.fillRect(40, 58, W - 40, 74);
+  ctx.fillStyle = '#f9a8b4'; ctx.fillRect(40, 0, W - 40, 44); ctx.fillRect(40, 146, W - 40, H - 146);
+  ctx.fillStyle = 'rgba(234,220,120,0.85)'; ctx.fillRect(40, 44, W - 40, 14); ctx.fillRect(40, 132, W - 40, 14);
+  // Schleim fließt langsam nach außen
+  ctx.strokeStyle = 'rgba(180,160,60,0.6)'; ctx.lineWidth = 1.5;
+  for (let k = 0; k < 9; k++) { const x = 40 + ((k * 24 - t * 30) % (W - 40) + (W - 40)) % (W - 40);
+    ctx.beginPath(); ctx.moveTo(x, 51); ctx.lineTo(x + 9, 51); ctx.moveTo(x + 6, 139); ctx.lineTo(x + 15, 139); ctx.stroke(); }
+  // feine Härchen, die schlagen
+  ctx.strokeStyle = '#be6b7a'; ctx.lineWidth = 1;
+  for (let x = 44; x < W; x += 7) {
+    const w = Math.sin(t * 4 + x * 0.3) * 3;
+    ctx.beginPath(); ctx.moveTo(x, 44); ctx.lineTo(x + w, 52); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, 146); ctx.lineTo(x + w, 138); ctx.stroke();
+  }
+  ctx.strokeStyle = '#be123c'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(40, 0); ctx.lineTo(40, 44); ctx.moveTo(40, 146); ctx.lineTo(40, H); ctx.stroke();
+  ctx.fillStyle = '#0c4a6e'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('außen', 4, 14);
+  ctx.fillStyle = '#881337'; ctx.textAlign = 'right'; ctx.fillText('Nase innen', W - 6, 20);
+  // Tropfen draußen, sobald Erreger hinausgetragen sind
+  const n = z.er.filter(e => e.st === 'raus' || e.st === 'draussen').length;
+  if (n > 0) {
+    ctx.fillStyle = 'rgba(234,220,120,0.85)'; ctx.strokeStyle = 'rgba(180,160,60,0.8)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(21, 170, 8 + n * 0.8, 6 + n * 0.5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  for (const e of z.er) if (['rein', 'fest', 'zurueck', 'raus', 'draussen'].indexOf(e.st) >= 0) _b9hPunkt(ctx, e.x, e.y, 4, 1);
+}
+function _b9hSzeneMagen(ctx) {
+  const z = _b9h, t = z.t, W = _B9H_P.w, H = _B9H_P.h;
+  ctx.fillStyle = '#fdf2f8'; ctx.fillRect(0, 0, W, H);
+  // Speiseröhre
+  ctx.fillStyle = '#fbcfe8'; ctx.fillRect(52, 0, 24, 74);
+  ctx.strokeStyle = '#be185d'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(52, 0); ctx.lineTo(52, 70); ctx.moveTo(76, 0); ctx.lineTo(76, 64); ctx.stroke();
+  // Magensack
+  ctx.save();
+  ctx.beginPath(); ctx.ellipse(118, 118, 84, 56, 0.25, 0, 2 * Math.PI);
+  ctx.fillStyle = '#fce7f3'; ctx.fill();
+  ctx.clip();
+  ctx.fillStyle = 'rgba(190,242,100,0.55)';
+  ctx.beginPath(); ctx.moveTo(0, H);
+  for (let x = 0; x <= W; x += 6) ctx.lineTo(x, _B9H_MY + Math.sin(x * 0.08 + t * 2) * 2);
+  ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(101,163,13,0.55)'; ctx.lineWidth = 1.2;
+  for (let k = 0; k < 10; k++) { const x = 45 + (k * 17) % 150, y = H - ((t * 14 + k * 13) % (H - _B9H_MY - 6)) - 12;
+    ctx.beginPath(); ctx.arc(x + Math.sin(t * 2 + k) * 2, y, 1.8 + (k % 3) * 0.6, 0, 2 * Math.PI); ctx.stroke(); }
+  ctx.restore();
+  ctx.strokeStyle = '#be185d'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.ellipse(118, 118, 84, 56, 0.25, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#fbcfe8'; ctx.fillRect(53.5, 58, 21, 20);
+  for (const e of z.er) {
+    if (e.st === 'rohr' || e.st === 'fall') _b9hPunkt(ctx, e.x, e.y, 4, 1);
+    else if (e.st === 'saeure') _b9hPunkt(ctx, e.x, e.y, 4 * (1 - 0.7 * e.q), 1 - e.q);
+  }
+}
+function _b9hZelle(ctx, c, t, j) {
+  ctx.save();
+  ctx.translate(c.x, c.y);
+  const r = c.r + c.satt * 1.2;
+  ctx.fillStyle = 'rgba(248,250,252,0.96)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let k = 0; k <= 40; k++) {
+    const w = k / 40 * 2 * Math.PI;
+    let rr = r * (1 + 0.06 * Math.sin(5 * w + t * 2 + j));
+    if (c.arm > 0) { const cw = Math.cos(w - Math.atan2(c.ay, c.ax)); if (cw > 0.2) rr += c.arm * 9 * Math.pow(cw, 3); }
+    const x = Math.cos(w) * rr, y = Math.sin(w) * rr;
+    if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(167,139,250,0.75)';
+  [[-5, -3], [1, -6], [5, 1]].forEach(([x, y]) => { ctx.beginPath(); ctx.arc(x * 0.8 - 2, y * 0.8 + 3, 3.6, 0, 2 * Math.PI); ctx.fill(); });
+  ctx.restore();
+}
+function _b9hSzeneSchnitt(ctx) {
+  const z = _b9h, t = z.t, W = _B9H_SW, H = _B9H_SH;
+  ctx.fillStyle = '#e0f2fe'; ctx.fillRect(0, 0, W, 50);
+  ctx.fillStyle = '#fde2e2'; ctx.fillRect(0, 50, W, H - 50);
+  ctx.fillStyle = '#f5d0b0'; ctx.fillRect(0, 50, W, 40);
+  ctx.fillStyle = '#e7b98f'; ctx.fillRect(0, 50, W, 8);
+  // der Schnitt: ein Spalt in der Haut
+  ctx.fillStyle = '#fecaca';
+  ctx.beginPath(); ctx.moveTo(186, 50); ctx.lineTo(204, 92); ctx.lineTo(222, 50); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(186, 50); ctx.lineTo(204, 92); ctx.lineTo(222, 50); ctx.stroke();
+  // Blutgefäß mit strömenden roten Blutzellen
+  ctx.fillStyle = '#fca5a5'; ctx.fillRect(0, 140, W, 66);
+  ctx.fillStyle = '#dc2626';
+  for (let k = 0; k < 16; k++) {
+    const x = ((k * 37 + t * 30) % (W + 30)) - 15, y = 150 + (k * 23) % 50;
+    ctx.beginPath(); ctx.ellipse(x, y, 8, 4.5, 0.2 * Math.sin(k), 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.strokeStyle = '#991b1b'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(0, 140); ctx.lineTo(W, 140); ctx.moveTo(0, 206); ctx.lineTo(W, 206); ctx.stroke();
+  ctx.fillStyle = '#7c2d12'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Haut', 10, 76);
+  ctx.fillStyle = '#7f1d1d'; ctx.fillText('Blutgefäß', 10, 134);
+  // weiße Zellen, dann die Erreger
+  z.zellen.forEach((c, j) => _b9hZelle(ctx, c, t, j));
+  for (const e of z.er) {
+    if (e.st === 'fall' || e.st === 'hin' || e.st === 'umschl') _b9hPunkt(ctx, e.x, e.y, 4, 1);
+    else if (e.st === 'blut') {
+      const wx = Math.sin(t * 1.3 + e.i) * 1.5, wy = Math.cos(t * 1.1 + e.i) * 1.2;
+      let a = 1;
+      if (z.phase === 'ende' && e.i === _B9H_REST) {
+        _bioFxLeuchten(ctx, e.x + wx, e.y + wy, 9, t, '167,139,250');
+        a = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8));   // 0,8 Hz
+      }
+      _b9hPunkt(ctx, e.x + wx, e.y + wy, 4, a);
+    } else if (e.st === 'drin') _b9hPunkt(ctx, e.x, e.y, 3.2 * (1 - 0.5 * e.q), 1 - e.q);
+  }
+}
+function _b9hZaehlerMalen(ctx, x, y) {
+  const zt = _b9hZaehlerText();
+  ctx.save();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  const breit = zt.map(s => ctx.measureText(s).width + 14);
+  let xx = x - breit[0] - breit[1] - 6;
+  zt.forEach(s => {
+    const w = ctx.measureText(s).width + 14;
+    ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, xx, y, w, 20, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.fillText(s, xx + 7, y + 10.5);
+    xx += w + 6;
+  });
+  ctx.restore();
+}
+function _b9hDraw(ctx, cv) {
+  if (!_b9h) return;
+  const z = _b9h, W = cv.width, H = cv.height, P = _B9H_P;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  const gross = z.weg === 'schnitt' && z.zoom > 0;
+  if (!(gross && z.zoom >= 1)) {
+    _b9hKoerper(ctx);
+    // Erreger im Flug zum Eingang
+    if (z.phase === 'flug') for (const e of z.er) _b9hPunkt(ctx, e.x, e.y, 2.4, 1);
+    _b9hLupeRahmen(ctx);
+  }
+  if (z.weg === 'schnitt') {
+    const R = _b9hSchnittRect(), k = R.w / _B9H_SW;
+    ctx.save();
+    ctx.translate(R.x, R.y); ctx.scale(k, k);
+    ctx.beginPath(); ctx.rect(0, 0, _B9H_SW, _B9H_SH); ctx.clip();
+    _b9hSzeneSchnitt(ctx);
+    ctx.restore();
+    ctx.save(); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+    ctx.strokeRect(R.x, R.y, R.w, _B9H_SH * k); ctx.restore();
+    if (z.zoom >= 1) {
+      ctx.save(); ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+      ctx.fillText('Nahaufnahme: Schnitt im Finger', W - 12, 20); ctx.restore();
+    }
+  } else {
+    ctx.save();
+    ctx.translate(P.x, P.y);
+    ctx.beginPath(); ctx.rect(0, 0, P.w, P.h); ctx.clip();
+    if (z.weg === 'haut') _b9hSzeneHaut(ctx);
+    else if (z.weg === 'nase') _b9hSzeneNase(ctx);
+    else _b9hSzeneMagen(ctx);
+    ctx.restore();
+    ctx.save(); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.strokeRect(P.x, P.y, P.w, P.h); ctx.restore();
+  }
+  _b9hZaehlerMalen(ctx, W - 6, H - 28);
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 8 FOERDER – bm3 „Der passende Schlüssel“ (Kennung bio-antikoerper)
+// Funktionsmodell der Antigen-Antikoerper-Reaktion: 20 runde Grippe-Viren mit
+// je fuenf dreieckigen Kerben treiben im Blut. Von rechts kommen 20 Y-foermige
+// Antikoerper, das Kind waehlt EINEN von drei:
+//   A  klein,       Spitzen dreieckig  -> passt in die Kerbe, rastet ein
+//   B  mittel,      Spitzen rund       -> prallt ab
+//   C  sehr gross,  Spitzen sternfoermig -> prallt ab
+// Die Formen werden nur GEZEICHNET, nie benannt. Nicht am Bildschirm (Heft-
+// Lueckenwoerter): Antigen, Schlüssel, Form, Fresszellen, Dreieck, Kreis, Stern.
+// Bei A verklumpen die Viren (die Y-Arme ueberbruecken je zwei Viren), danach
+// kommen weisse Zellen und fressen die Klumpen.
+// Aha (Bibliothek _bioFx): Die Fehlvorstellung „der groesste haelt am besten“
+// wird widerlegt – C prallt in Zeitlupe ab, das Virus wackelt nur. Bei A rastet
+// die erste Spitze in Zeitlupe ein (Lichtring, Funken), der Zaehler springt,
+// die Klumpen leuchten kurz auf. Kein Text mit Loesung im Bild, keine Wertung,
+// kein Blinken (Puls 0,8 Hz), kein Ton, keine Vermenschlichung (keine Gesichter).
+// ════════════════════════════════════════════════════════════════════════
+let _b9i = null;
+const _B9I_N = 20;
+const _B9I_R = 13;                 // Virusradius
+const _B9I_NK = 5;                 // Kerben je Virus
+const _B9I_KT = 4.5;                // Kerbentiefe
+const _B9I_KB = 3.5;                // halbe Kerbenbreite
+const _B9I_NAME = ['A', 'B', 'C'];
+// Bauplan der drei Antikoerper: Armlaenge, Stiellaenge, Strichstaerke, Tempo
+const _B9I_TYP = [
+  { arm: 9,  stiel: 9,  lw: 3,   v: 150 },
+  { arm: 14, stiel: 14, lw: 4,   v: 135 },
+  { arm: 23, stiel: 25, lw: 5.5, v: 115 }
+];
+const _B9I_SPREIZ = 0.5;           // halber Winkel zwischen den Armen
+const _B9I_KLUMPEN = [[168, 96], [282, 96], [168, 186], [282, 186]];
+
+function _b9iZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _b9iInit() {
+  _b9i = { sel: 0, t: 0, W: 420, H: 250, key: '' };
+  const z = _b9iZufall(83);
+  _b9i.teilchen = [];
+  for (let i = 0; i < 26; i++) _b9i.teilchen.push([z() * 420, z() * 250, 0.4 + z() * 0.8, z() * 6.28, 1 + z() * 2]);
+  _b9iZurueck();
+}
+
+/* Viren und Antikoerper in den Ausgangszustand. */
+function _b9iAufbau() {
+  const z = _b9iZufall(17);
+  _b9i.viren = [];
+  for (let i = 0; i < _B9I_N; i++) {
+    const c = i % 5, r = Math.floor(i / 5);
+    const hx = 138 + c * 46 + (z() - 0.5) * 10, hy = 60 + r * 50 + (z() - 0.5) * 8;
+    let k;                                   // Klumpen: links/rechts, oben/unten
+    if (c < 2) k = r < 2 ? 0 : 2; else if (c > 2) k = r < 2 ? 1 : 3;
+    else k = [0, 1, 2, 3][r];
+    _b9i.viren.push({ hx, hy, x: hx, y: hy, rot: z() * 6.28, dr: (z() < 0.5 ? -1 : 1) * (0.25 + z() * 0.3),
+      ph: z() * 6.28, ph2: z() * 6.28, stoss: 0, sx: 0, sy: 0, k, x0: hx, y0: hy, a: 1, s: 1 });
+  }
+  const pro = [[], [], [], []];
+  _b9i.viren.forEach((v, i) => pro[v.k].push(i));
+  _b9i.viren.forEach((v, i) => { v.platz = pro[v.k].indexOf(i); v.nachbar = pro[v.k][(v.platz + 1) % pro[v.k].length]; });
+  // Reihenfolge: rechte Viren zuerst, damit sich die Wege wenig kreuzen
+  const reihe = _b9i.viren.map((v, i) => i).sort((a, b) => _b9i.viren[b].hx - _b9i.viren[a].hx);
+  _b9i.ak = [];
+  for (let i = 0; i < _B9I_N; i++) {
+    const vi = reihe[i], v = _b9i.viren[vi];
+    _b9i.ak.push({ st: 'warte', verz: i * [0.16, 0.2, 0.28][_b9i.sel], v: vi, s: (v.hy > 135 ? 1 : -1) * (i % 3 === 0 ? -1 : 1),
+      px: 450 + (i % 4) * 14, py: 30 + ((i * 53) % 190), ang: Math.PI + _B9I_SPREIZ,
+      kerbe: -1, vx: 0, vy: 0, dw: 0, a: 1, ab: 0, br: 0 });
+  }
+  _b9i.zellen = _B9I_KLUMPEN.map((c, i) => ({
+    x: [-40, 460, -40, 460][i], y: [c[1] - 10, c[1] - 10, c[1] + 10, c[1] + 10][i],
+    x0: 0, y0: 0, ph: i * 1.7 }));
+}
+
+function _b9iFxLeer() {
+  _b9i.fx = { teile: [] }; _b9i.zeitlupe = null;
+  _b9i.fest = 0; _b9i.prall = 0; _b9i.pop = 9; _b9i.pt = 0; _b9i.lt = -1; _b9i.fressen = -1;
+}
+function _b9iZurueck() {
+  _b9iFxLeer();
+  _b9i.phase = 'bereit';
+  _b9iAufbau();
+  _b9iStatus(); _b9iKnoepfe();
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9iWahl(i) {
+  if (!_b9i) return;
+  _b9i.sel = i;
+  _b9iZurueck();
+}
+function _b9iStart() {
+  if (!_b9i) return;
+  _b9iZurueck();
+  _b9i.phase = 'flug'; _b9i.pt = 0;
+  _b9iStatus(); _b9iKnoepfe();
+}
+function _b9iNeu() {
+  if (!_b9i) return;
+  _b9iZurueck();
+}
+/* Sprungmarke: Antikoerper waehlen, losschicken und gleich bis zum Ende. */
+function _b9iMarke(i) {
+  if (!_b9i) return;
+  _b9i.sel = i;
+  _b9iStart();
+  for (let n = 0; n < 4000 && _b9i.phase !== 'fertig'; n++) _b9iSchritt(0.05);
+  _b9i.fx = { teile: [] }; _b9i.zeitlupe = null; _b9i.pop = 9;
+  _b9iStatus(); _b9iKnoepfe();
+}
+function _b9iKnoepfe() {
+  if (!_b9i || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-b9i]').forEach(b => {
+      const d = b.dataset ? b.dataset.b9i : b.getAttribute('data-b9i');
+      if (b.classList) b.classList.toggle('primary', d === 'w' + _b9i.sel);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _b9iHTML() {
+  const k = (i) => `<button class="sim-btn" data-b9i="w${i}" onclick="_b9iWahl(${i})">${_B9I_NAME[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Antikörper gegen Grippe-Viren</h3>
+    <div class="fpm-note" style="margin-top:2px">20 Grippe-Viren treiben im Blut. Links oben siehst du den gewählten Antikörper groß. Stelle „Antikörper“ ein. Dann drücke „▶ 20 Antikörper losschicken“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9i-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Antikörper</span>
+          ${k(0)}${k(1)}${k(2)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_b9iStart()">▶ 20 Antikörper losschicken</button>
+          <button class="sim-btn" onclick="_b9iNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert?</div>
+        <div class="lmp-status on" id="_b9i-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9iMarke(0)">A: Ende zeigen</button>
+          <button class="sim-btn" onclick="_b9iMarke(1)">B: Ende zeigen</button>
+          <button class="sim-btn" onclick="_b9iMarke(2)">C: Ende zeigen</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Sieh dir die Spitzen der Antikörper genau an. Jedes Virus hat Kerben an seiner Oberfläche. Das ist ein Modell: Echte Viren und Antikörper sind viel kleiner.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9iSchluessel() {
+  return _b9i.sel + _b9i.phase + _b9i.fest + '/' + (_b9i.prall > 0 ? 1 : 0);
+}
+function _b9iStatus() {
+  if (!_b9i) return;
+  _b9i.key = _b9iSchluessel();
+  const el = document.getElementById('_b9i-status');
+  if (!el) return;
+  const kopf = `<b>Antikörper ${_B9I_NAME[_b9i.sel]}</b>`;
+  const zahl = `festgehalten: ${_b9i.fest} von ${_B9I_N}`;
+  const ph = _b9i.phase;
+  let satz;
+  if (ph === 'bereit') satz = 'Die Antikörper warten.<br>Drücke „▶ 20 Antikörper losschicken“.';
+  else if (_b9i.prall > 0) satz = 'Die Antikörper prallen ab.';
+  else if (ph === 'flug') satz = 'Die Antikörper schwimmen zu den Viren.';
+  else if (ph === 'haften') satz = 'Die Antikörper haften.';
+  else if (ph === 'klumpen') satz = 'Die Antikörper haften. Die Viren verklumpen.';
+  else satz = 'Die Antikörper haften. Die Viren verklumpen.<br>Die Klumpen werden gefressen.';
+  el.innerHTML = `${kopf}<br>${satz}<br><b>${zahl}</b>`;
+}
+
+/* ── Geometrie ─────────────────────────────────────────────────────────── */
+/* Aeusserer Punkt der Kerbe k von Virus v (Mitte der Kerbenoeffnung). */
+function _b9iKerbe(v, k) {
+  const w = v.rot + k * 2 * Math.PI / _B9I_NK;
+  return [v.x + _B9I_R * Math.cos(w), v.y + _B9I_R * Math.sin(w), w];
+}
+/* Die Kerbe, deren Oeffnung am besten in Richtung (dx,dy) zeigt. */
+function _b9iBesteKerbe(v, dx, dy) {
+  const w = Math.atan2(dy, dx);
+  let best = 0, bd = 9;
+  for (let k = 0; k < _B9I_NK; k++) {
+    let d = Math.abs(((v.rot + k * 2 * Math.PI / _B9I_NK - w) % (2 * Math.PI) + 3 * Math.PI) % (2 * Math.PI) - Math.PI);
+    if (d < bd) { bd = d; best = k; }
+  }
+  return best;
+}
+/* Gabelpunkt aus Spitze 1 (Arm 1 zeigt unter ang - SPREIZ). */
+function _b9iGabel(a, typ) {
+  const w = a.ang - _B9I_SPREIZ;
+  return [a.px - typ.arm * Math.cos(w), a.py - typ.arm * Math.sin(w)];
+}
+function _b9iWinkel(a, b) {
+  return a + ((b - a + 3 * Math.PI) % (2 * Math.PI) - Math.PI);
+}
+/* Wie weit die Spitze vor dem Armende liegt (Beruehrung am Rand). */
+function _b9iTipTiefe(sel) { return [0, 3.5, 7][sel]; }
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9iUpdate(dt) {
+  if (!_b9i) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  _b9iSchritt(roh);
+  if (_b9iSchluessel() !== _b9i.key) _b9iStatus();
+}
+function _b9iSchritt(roh) {
+  const d = roh * _bioFxZeitlupeFaktor(_b9i, roh);
+  _b9i.t += d;
+  _bioFxAlleUpdate(_b9i.fx, roh);
+  if (_b9i.pop < 9) _b9i.pop += roh;
+  if (_b9i.lt >= 0) _b9i.lt += d;
+  const ph = _b9i.phase;
+  if (ph !== 'bereit') _b9i.pt += d;
+  _b9iViren(d);
+  if (ph === 'flug') _b9iFlug(d);
+  else if (ph === 'haften' && _b9i.pt > 0.9) { _b9i.phase = 'klumpen'; _b9i.pt = 0; _b9iKlumpenStart(); }
+  else if (ph === 'klumpen' && _b9i.pt > 2.4) { _b9i.phase = 'fressen'; _b9i.pt = 0; _b9iFressenStart(); }
+  else if (ph === 'fressen' || (ph === 'fertig' && _b9i.sel === 0)) _b9iFressen(d);
+  // abgeprallte Antikoerper treiben weiter und blenden aus
+  for (const a of _b9i.ak) {
+    if (a.st !== 'ab') continue;
+    a.ab += d;
+    a.px += a.vx * d; a.py += a.vy * d; a.ang += a.dw * d;
+    a.vx *= Math.exp(-0.6 * d); a.vy *= Math.exp(-0.6 * d); a.dw *= Math.exp(-0.8 * d);
+    a.a = Math.max(0, 1 - Math.max(0, a.ab - 1.2) / 1.2);
+    if (a.a <= 0) a.st = 'weg';
+  }
+  if (ph === 'flug' && _b9i.sel > 0 && _b9i.ak.every(a => a.st === 'weg')) { _b9i.phase = 'fertig'; _b9i.pt = 0; }
+}
+
+/* Viren treiben, drehen sich und wackeln nach einem Stoss. */
+function _b9iViren(d) {
+  const t = _b9i.t, ph = _b9i.phase;
+  for (const v of _b9i.viren) {
+    v.stoss = Math.max(0, v.stoss - d * 1.4);
+    const w = v.stoss * v.stoss * 5 * Math.sin(t * 14);
+    if (ph === 'bereit' || ph === 'flug' || ph === 'haften') {
+      v.rot += v.dr * d * (ph === 'haften' ? 0.3 : 1);
+      v.x = v.hx + 4 * Math.sin(t * 0.7 + v.ph) + w * v.sx;
+      v.y = v.hy + 4 * Math.cos(t * 0.6 + v.ph2) + w * v.sy;
+    } else {
+      const [kx, ky] = _b9iKlumpenOrt(v);
+      const p = ph === 'klumpen' ? _bioFxEase.sanft(_bioFxKlemme(_b9i.pt / 2.0)) : 1;
+      let x = v.x0 + (kx - v.x0) * p, y = v.y0 + (ky - v.y0) * p;
+      const zz = _b9i.zellen[v.k];
+      if (ph !== 'klumpen' && v.s < 1) {                 // im Bauch der Zelle
+        const c = _B9I_KLUMPEN[v.k];
+        x = zz.x + (x - c[0]) * v.s; y = zz.y + (y - c[1]) * v.s;
+      } else if (ph !== 'klumpen' && _b9i.fressen >= 0) {
+        const c = _B9I_KLUMPEN[v.k];
+        const dx = zz.x - c[0], dy = zz.y - c[1];
+        if (Math.hypot(dx, dy) < 30) { x += dx; y += dy; }
+      }
+      v.x = x; v.y = y;
+    }
+  }
+}
+function _b9iKlumpenOrt(v) {
+  const c = _B9I_KLUMPEN[v.k], t = _b9i.t;
+  const w = v.platz * 2 * Math.PI / 5 + 0.3 * v.k + 0.15 * Math.sin(t * 0.5 + v.k);
+  return [c[0] + 29 * Math.cos(w) + 1.5 * Math.sin(t * 0.8 + v.k), c[1] + 29 * Math.sin(w) + 1.5 * Math.cos(t * 0.7 + v.k)];
+}
+
+/* Flug der Antikoerper: erst zu einem Wartepunkt zwischen den Reihen, dann
+   mit Spitze 1 voran in die Kerbe. A rastet ein, B und C prallen ab. */
+function _b9iFlug(d) {
+  const typ = _B9I_TYP[_b9i.sel], fx = _b9i.fx.teile;
+  for (const a of _b9i.ak) {
+    if (a.st === 'warte') { if (_b9i.pt >= a.verz) a.st = 'hin'; else continue; }
+    const v = _b9i.viren[a.v];
+    if (a.st === 'fest') {
+      const [nx, ny, w] = _b9iKerbe(v, a.kerbe);
+      a.px = nx; a.py = ny; a.ang = w + Math.PI + _B9I_SPREIZ;
+      continue;
+    }
+    if (a.st !== 'hin' && a.st !== 'nah') continue;
+    // Wartepunkt schraeg vor dem Virus, zwischen zwei Reihen
+    const wx = v.x + 24, wy = v.y + a.s * 24;
+    if (a.st === 'hin' && Math.hypot(a.px - wx, a.py - wy) < 8) a.st = 'nah';
+    if (a.kerbe < 0 || a.st === 'hin') a.kerbe = _b9iBesteKerbe(v, 24, a.s * 24);
+    const [nx, ny, w] = _b9iKerbe(v, a.kerbe);
+    const tief = _b9iTipTiefe(_b9i.sel);
+    const zx = a.st === 'hin' ? wx : nx + tief * Math.cos(w), zy = a.st === 'hin' ? wy : ny + tief * Math.sin(w);
+    const dx = zx - a.px, dy = zy - a.py, dist = Math.hypot(dx, dy);
+    const sch = Math.min(dist, typ.v * d * (a.st === 'nah' ? 0.55 : 1));
+    if (dist > 1e-6) { a.px += dx / dist * sch; a.py += dy / dist * sch; }
+    // Ausrichtung: im Flug Arme voran, kurz vor dem Ziel Spitze 1 zur Virusmitte
+    const soll = a.st === 'nah' ? w + Math.PI + _B9I_SPREIZ : Math.atan2(dy, dx) + _B9I_SPREIZ;
+    const soll2 = _b9iWinkel(a.ang, soll);
+    a.ang += (soll2 - a.ang) * Math.min(1, d * 6);
+    if (a.st === 'nah' && Math.hypot(a.px - zx, a.py - zy) < 1.2) {
+      if (_b9i.sel === 0) _b9iEinrasten(a, v, nx, ny);
+      else _b9iAbprallen(a, v, nx, ny, w);
+    }
+  }
+  if (_b9i.sel === 0 && _b9i.fest >= _B9I_N) {
+    _b9i.phase = 'haften'; _b9i.pt = 0;
+    _bioFxWelle(_b9i.fx.teile, _b9i.W - 84, 20, 'rgba(250,204,21,0.95)', 40);
+  }
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+function _b9iEinrasten(a, v, nx, ny) {
+  a.st = 'fest';
+  _b9i.fest++;
+  _b9i.pop = 0;
+  const fx = _b9i.fx.teile;
+  _bioFxWelle(fx, nx, ny, 'rgba(250,204,21,0.95)', _b9i.fest === 1 ? 30 : 16);
+  _bioFxFunken(fx, nx, ny, _b9i.fest === 1 ? 10 : 4, ['#fde047', '#fff7c2', '#ffffff']);
+  v.stoss = 0.35; v.sx = Math.cos(v.rot); v.sy = Math.sin(v.rot);
+  if (_b9i.fest === 1) { _bioFxZeitlupe(_b9i, 0.3, 1.3); _b9i.lt = 0; _b9i.lx = nx; _b9i.ly = ny; }
+}
+function _b9iAbprallen(a, v, nx, ny, w) {
+  a.st = 'ab'; a.ab = 0;
+  _b9i.prall++;
+  const fx = _b9i.fx.teile;
+  const gross = _b9i.sel === 2;
+  const sp = gross ? 70 : 95;
+  a.vx = Math.cos(w) * sp + 40; a.vy = Math.sin(w) * sp + (Math.random() - 0.5) * 30;
+  a.dw = (Math.random() < 0.5 ? -1 : 1) * (gross ? 1.6 : 3);
+  _bioFxWelle(fx, nx, ny, 'rgba(100,116,139,0.8)', gross ? 34 : 18);
+  v.stoss = gross ? 1 : 0.7; v.sx = -Math.cos(w); v.sy = -Math.sin(w);
+  if (_b9i.prall === 1) { _bioFxZeitlupe(_b9i, 0.3, 1.3); _b9i.lt = 0; _b9i.lx = nx; _b9i.ly = ny; }
+}
+/* Klumpen: Viren ruecken zusammen, die Y-Arme ueberbruecken je zwei Viren. */
+function _b9iKlumpenStart() {
+  for (const v of _b9i.viren) { v.x0 = v.x; v.y0 = v.y; }
+  for (const a of _b9i.ak) { a.br = 0; a.bx = a.px; a.by = a.py; a.bang = a.ang; }
+  _bioFxBanner(_b9i.fx, 'Die Viren\nverklumpen.', 2.8, '#facc15');
+}
+function _b9iFressenStart() {
+  _b9i.fressen = 0;
+  _b9i.zellen.forEach(z => { z.x0 = z.x; z.y0 = z.y; });
+  const fx = _b9i.fx.teile;
+  for (const c of _B9I_KLUMPEN) _bioFxWelle(fx, c[0], c[1], 'rgba(250,204,21,0.9)', 44);
+}
+function _b9iFressen(d) {
+  _b9i.fressen += d;
+  const f = _b9i.fressen;
+  const p = _bioFxEase.sanft(_bioFxKlemme(f / 2.6));
+  _b9i.zellen.forEach((z, i) => {
+    const c = _B9I_KLUMPEN[i];
+    z.x = z.x0 + (c[0] - z.x0) * p; z.y = z.y0 + (c[1] - z.y0) * p;
+    if (f > 2.6) { z.x = c[0] + 3 * Math.sin(_b9i.t * 0.6 + z.ph); z.y = c[1] + 3 * Math.cos(_b9i.t * 0.5 + z.ph); }
+  });
+  const s = 1 - 0.55 * _bioFxEase.sanft(_bioFxKlemme((f - 2.6) / 1.6));
+  for (const v of _b9i.viren) v.s = s;
+  if (f > 2.6 && !_b9i.geschluckt) {
+    _b9i.geschluckt = true;
+    for (const c of _B9I_KLUMPEN) _bioFxWelle(_b9i.fx.teile, c[0], c[1], 'rgba(148,163,184,0.9)', 40);
+  }
+  if (f > 4.4 && _b9i.phase === 'fressen') { _b9i.phase = 'fertig'; _b9i.pt = 0; _b9i.geschluckt = false; }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b9iDraw(ctx, cv) {
+  if (!_b9i) return;
+  const W = cv.width, H = cv.height, t = _b9i.t;
+  _b9i.W = W; _b9i.H = H;
+  ctx.save();
+  ctx.scale(W / 420, H / 250);          // alles im Nennmass 420 x 250
+  _b9iBild(ctx, t);
+  ctx.restore();
+}
+function _b9iBild(ctx, t) {
+  // Blutplasma mit langsam treibenden Teilchen
+  ctx.fillStyle = '#fff4ef'; ctx.fillRect(0, 0, 420, 250);
+  ctx.fillStyle = 'rgba(244,114,94,0.13)';
+  for (const [x0, y0, v, ph, r] of _b9i.teilchen) {
+    const x = ((x0 - t * 9 * v) % 440 + 440) % 440 - 10, y = y0 + 5 * Math.sin(t * 0.5 + ph);
+    ctx.beginPath(); ctx.arc(x, y, r * 2.2, 0, Math.PI * 2); ctx.fill();
+  }
+  const ph = _b9i.phase;
+  // Leuchten um die Klumpen, sobald sie beieinander sind
+  if (ph === 'klumpen' && _b9i.pt > 1.6) {
+    const al = 1 - _bioFxEase.sanft(_bioFxKlemme((_b9i.pt - 1.6 - 1.2) / 0.6));
+    ctx.save(); ctx.globalAlpha = _bioFxKlemme((_b9i.pt - 1.6) / 0.3) * al;
+    for (const c of _B9I_KLUMPEN) _bioFxLeuchten(ctx, c[0], c[1], 34, t, '250,204,21');
+    ctx.restore();
+  }
+  // Viren
+  const inZelle = (ph === 'fressen' && _b9i.fressen > 2.6) || ph === 'fertig' && _b9i.sel === 0;
+  for (const v of _b9i.viren) _b9iVirus(ctx, v, t);
+  // Antikoerper
+  for (const a of _b9i.ak) {
+    if (a.st === 'warte' || a.st === 'weg') continue;
+    let pose = a;
+    if (a.st === 'fest' && (ph === 'klumpen' || ph === 'fressen' || ph === 'fertig')) pose = _b9iBruecke(a);
+    const vs = _b9i.viren[a.v].s;
+    ctx.save(); ctx.globalAlpha = a.a * (vs < 1 ? 0.3 + 0.7 * (vs - 0.45) / 0.55 : 1);
+    _b9iY(ctx, pose.px, pose.py, pose.ang, _b9i.sel, 1, pose.tip2);
+    ctx.restore();
+  }
+  // weisse Zellen fressen die Klumpen
+  if (ph === 'fressen' || (ph === 'fertig' && _b9i.sel === 0)) {
+    for (const z of _b9i.zellen) _b9iZelle(ctx, z, t, inZelle);
+  }
+  _bioFxDraw(ctx, _b9i.fx.teile);
+  // Lupe auf die erste Beruehrung (waehrend der Zeitlupe)
+  if (_b9i.lt >= 0 && _b9i.lt < 2.2) _b9iLupe(ctx, t);
+  _b9iVorschau(ctx, t);
+  _b9iZaehler(ctx);
+  _b9iBanner(ctx);
+}
+
+/* Pose eines Antikoerpers als Bruecke zwischen seinem Virus und dem Nachbarn. */
+function _b9iBruecke(a) {
+  const v = _b9i.viren[a.v], n = _b9i.viren[v.nachbar];
+  const typ = _B9I_TYP[0];
+  const jx = (v.x + n.x) / 2, jy = (v.y + n.y) / 2;
+  const kx = (_b9i.viren.filter(q => q.k === v.k).reduce((s, q) => s + q.x, 0)) / 5;
+  const ky = (_b9i.viren.filter(q => q.k === v.k).reduce((s, q) => s + q.y, 0)) / 5;
+  let ox = jx - kx, oy = jy - ky; const ol = Math.hypot(ox, oy) || 1; ox /= ol; oy /= ol;
+  // Spitze 1 am Rand des eigenen Virus, Spitze 2 am Rand des Nachbarn
+  const r = _B9I_R * v.s;
+  const q1 = [jx + ox * 4 * v.s - v.x, jy + oy * 4 * v.s - v.y], l1 = Math.hypot(q1[0], q1[1]) || 1;
+  const q2 = [jx + ox * 4 * v.s - n.x, jy + oy * 4 * v.s - n.y], l2 = Math.hypot(q2[0], q2[1]) || 1;
+  const p1 = [v.x + q1[0] / l1 * r, v.y + q1[1] / l1 * r];
+  const p2 = [n.x + q2[0] / l2 * r, n.y + q2[1] / l2 * r];
+  const bp = { px: p1[0], py: p1[1], ang: Math.atan2(-oy, -ox), tip2: p2 };
+  // weicher Uebergang aus der Kerbe in die Brueckenstellung
+  const k = _b9i.phase === 'klumpen' ? _bioFxEase.sanft(_bioFxKlemme(_b9i.pt / 2.0)) : 1;
+  if (k >= 1) return bp;
+  const [nx, ny, w] = _b9iKerbe(v, a.kerbe);
+  const ang0 = w + Math.PI + _B9I_SPREIZ;
+  const t2x = nx - typ.arm * Math.cos(ang0 - _B9I_SPREIZ) + typ.arm * Math.cos(ang0 + _B9I_SPREIZ);
+  const t2y = ny - typ.arm * Math.sin(ang0 - _B9I_SPREIZ) + typ.arm * Math.sin(ang0 + _B9I_SPREIZ);
+  const angB = _b9iWinkel(ang0, bp.ang);
+  return { px: nx + (bp.px - nx) * k, py: ny + (bp.py - ny) * k, ang: ang0 + (angB - ang0) * k,
+           tip2: [t2x + (p2[0] - t2x) * k, t2y + (p2[1] - t2y) * k] };
+}
+
+/* Ein Y-Antikoerper. (px,py) = Ende von Arm 1 (dort sitzt Spitze 1), ang =
+   Achse des Y (Arme zeigen nach ang +- SPREIZ). tip2 optional: Ende von Arm 2
+   (fuer die Bruecke). Massstab k. */
+function _b9iY(ctx, px, py, ang, sel, k, tip2) {
+  const typ = _B9I_TYP[sel];
+  const arm = typ.arm * k, w1 = ang - _B9I_SPREIZ, w2 = ang + _B9I_SPREIZ;
+  let gx, gy, t2x, t2y;
+  if (tip2) {
+    // Gabel so, dass beide Armenden stimmen: aussen vor der Mitte der Enden
+    const mx = (px + tip2[0]) / 2, my = (py + tip2[1]) / 2;
+    const h = Math.sqrt(Math.max(4, arm * arm - Math.pow(Math.hypot(tip2[0] - px, tip2[1] - py) / 2, 2)));
+    gx = mx - h * Math.cos(ang); gy = my - h * Math.sin(ang);
+    t2x = tip2[0]; t2y = tip2[1];
+  } else {
+    gx = px - arm * Math.cos(w1); gy = py - arm * Math.sin(w1);
+    t2x = gx + arm * Math.cos(w2); t2y = gy + arm * Math.sin(w2);
+  }
+  const sx = gx - typ.stiel * k * Math.cos(ang), sy = gy - typ.stiel * k * Math.sin(ang);
+  ctx.save();
+  ctx.strokeStyle = '#1d4ed8'; ctx.fillStyle = '#1d4ed8';
+  ctx.lineWidth = typ.lw * k; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(sx, sy); ctx.lineTo(gx, gy); ctx.lineTo(px, py);
+  ctx.moveTo(gx, gy); ctx.lineTo(t2x, t2y);
+  ctx.stroke();
+  _b9iSpitze(ctx, px, py, Math.atan2(py - gy, px - gx), sel, k);
+  _b9iSpitze(ctx, t2x, t2y, Math.atan2(t2y - gy, t2x - gx), sel, k);
+  ctx.restore();
+}
+/* Spitze am Armende (x,y), Arm zeigt in Richtung w. */
+function _b9iSpitze(ctx, x, y, w, sel, k) {
+  const c = Math.cos(w), s = Math.sin(w);
+  ctx.beginPath();
+  if (sel === 0) {                     // passt genau in die Kerbe
+    const b = _B9I_KB * k, h = _B9I_KT * k;
+    ctx.moveTo(x - s * b, y + c * b); ctx.lineTo(x + c * h, y + s * h); ctx.lineTo(x + s * b, y - c * b);
+    ctx.closePath();
+  } else if (sel === 1) {
+    ctx.arc(x + c * 3.5 * k, y + s * 3.5 * k, 4.5 * k, 0, Math.PI * 2);
+  } else {
+    const mx = x + c * 7 * k, my = y + s * 7 * k;
+    for (let i = 0; i < 10; i++) {
+      const r = (i % 2 ? 3.4 : 8.5) * k, a = w + i * Math.PI / 5;
+      i ? ctx.lineTo(mx + r * Math.cos(a), my + r * Math.sin(a)) : ctx.moveTo(mx + r * Math.cos(a), my + r * Math.sin(a));
+    }
+    ctx.closePath();
+  }
+  ctx.fill();
+}
+
+/* Grippe-Virus: rund, fuenf dreieckige Kerben, ein paar Punkte innen. */
+function _b9iVirus(ctx, v, t) {
+  const r = _B9I_R * v.s, b = Math.asin(_B9I_KB / _B9I_R), tief = _B9I_KT * v.s;
+  ctx.save();
+  ctx.globalAlpha = v.s < 1 ? 0.35 + 0.65 * (v.s - 0.45) / 0.55 : 1;
+  ctx.beginPath();
+  for (let k = 0; k < _B9I_NK; k++) {
+    const w = v.rot + k * 2 * Math.PI / _B9I_NK;
+    const wa = w + b, we = w + 2 * Math.PI / _B9I_NK - b;
+    if (k === 0) ctx.moveTo(v.x + r * Math.cos(w - b), v.y + r * Math.sin(w - b));
+    ctx.lineTo(v.x + (r - tief) * Math.cos(w), v.y + (r - tief) * Math.sin(w));
+    ctx.lineTo(v.x + r * Math.cos(wa), v.y + r * Math.sin(wa));
+    ctx.arc(v.x, v.y, r, wa, we);
+  }
+  ctx.closePath();
+  ctx.fillStyle = '#fda4af'; ctx.fill();
+  ctx.strokeStyle = '#be123c'; ctx.lineWidth = 1.6; ctx.stroke();
+  ctx.fillStyle = 'rgba(190,18,60,0.45)';
+  for (let i = 0; i < 3; i++) {
+    const w = v.rot * 0.5 + i * 2.1;
+    ctx.beginPath(); ctx.arc(v.x + 3.2 * v.s * Math.cos(w), v.y + 3.2 * v.s * Math.sin(w), 1.3 * v.s, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+
+/* Weisse Blutzelle: weich wabernder Umriss, gelappter Kern. Kein Gesicht. */
+function _b9iZelle(ctx, z, t, satt) {
+  const R = 30;
+  ctx.save();
+  ctx.beginPath();
+  for (let i = 0; i <= 48; i++) {
+    const a = i / 48 * Math.PI * 2;
+    const r = R * (1 + 0.08 * Math.sin(3 * a + t * 1.8 + z.ph) + 0.05 * Math.sin(5 * a - t * 1.2));
+    i ? ctx.lineTo(z.x + r * Math.cos(a), z.y + r * Math.sin(a)) : ctx.moveTo(z.x + r * Math.cos(a), z.y + r * Math.sin(a));
+  }
+  ctx.closePath();
+  ctx.fillStyle = satt ? 'rgba(248,250,252,0.72)' : 'rgba(248,250,252,0.9)';
+  ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = 'rgba(167,139,250,0.55)';
+  const kx = z.x + (satt ? 14 : 0), ky = z.y + (satt ? -12 : 0);
+  for (let i = 0; i < 3; i++) {
+    ctx.beginPath(); ctx.arc(kx - 6 + i * 6, ky + (i === 1 ? -3 : 2), 5, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+
+/* Vorschau links oben: der gewaehlte Antikoerper gross, sanft schwebend. */
+function _b9iVorschau(ctx, t) {
+  const x = 6, y = 6, w = 104, h = 112, sel = _b9i.sel, typ = _B9I_TYP[sel];
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.93)';
+  _bioFxRundRect(ctx, x, y, w, h, 10); ctx.fill();
+  ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x, y, w, h, 10); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Antikörper ' + _B9I_NAME[sel], x + w / 2, y + 12);
+  // Y mit Armen nach oben; gleicher Massstab fuer alle drei -> Groesse vergleichbar
+  const k = 1.2, ang = -Math.PI / 2 + 0.06 * Math.sin(t * 1.3);
+  const spitze = [5, 8, 15.5][sel];                // wie weit die Spitze uebersteht
+  const oben = (typ.arm * Math.cos(_B9I_SPREIZ) + spitze) * k, hoehe = oben + typ.stiel * k;
+  const gy = y + 24 + (h - 26 - hoehe) / 2 + oben + 2 * Math.sin(t * 1.1);
+  const gx = x + w / 2;
+  const px = gx + typ.arm * k * Math.cos(ang - _B9I_SPREIZ), py = gy + typ.arm * k * Math.sin(ang - _B9I_SPREIZ);
+  _b9iY(ctx, px, py, ang, sel, k);
+  ctx.restore();
+}
+
+/* Zaehler rechts oben; springt kurz an, wenn ein Virus festgehalten wird. */
+function _b9iZaehler(ctx) {
+  const txt = 'festgehalten: ' + _b9i.fest + ' von ' + _B9I_N;
+  const w = 172, h = 28, x = 420 - w - 6, y = 6;
+  const pop = 1 + 0.12 * Math.max(0, 1 - _b9i.pop / 0.3);
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.93)';
+  _bioFxRundRect(ctx, x, y, w, h, 8); ctx.fill();
+  ctx.strokeStyle = _b9i.fest > 0 ? '#ca8a04' : '#64748b'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x, y, w, h, 8); ctx.stroke();
+  ctx.translate(x + w / 2, y + h / 2 + 1); ctx.scale(pop, pop);
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(txt, 0, 0);
+  ctx.restore();
+}
+
+/* Lupe: zeigt die erste Beruehrung vergroessert (unten links), klingt ab. */
+function _b9iLupe(ctx, t) {
+  const a = _bioFxKlemme(_b9i.lt / 0.3) * (1 - _bioFxEase.sanft(_bioFxKlemme((_b9i.lt - 1.6) / 0.6)));
+  if (a <= 0.01) return;
+  const cx = 60, cy = 190, R = 50, k = 2.4;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff4ef'; ctx.fill();
+  ctx.clip();
+  ctx.translate(cx, cy); ctx.scale(k, k); ctx.translate(-_b9i.lx, -_b9i.ly);
+  for (const v of _b9i.viren) if (Math.hypot(v.x - _b9i.lx, v.y - _b9i.ly) < 40) _b9iVirus(ctx, v, t);
+  for (const q of _b9i.ak) {
+    if ((q.st === 'fest' || q.st === 'ab' || q.st === 'nah') && Math.hypot(q.px - _b9i.lx, q.py - _b9i.ly) < 60) {
+      ctx.save(); ctx.globalAlpha = a * q.a; _b9iY(ctx, q.px, q.py, q.ang, _b9i.sel, 1); ctx.restore();
+    }
+  }
+  ctx.restore();
+  ctx.save(); ctx.globalAlpha = a;
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.5)'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(cx + R * 0.7, cy - R * 0.7); ctx.lineTo(_b9i.lx, _b9i.ly); ctx.stroke();
+  ctx.restore();
+}
+
+/* Hinweisstreifen unten (Zustand aus _bioFx: fx.banner), Lage eigen. */
+function _b9iBanner(ctx) {
+  const b = _b9i.fx.banner;
+  if (!b) return;
+  const ein = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const bw = 108, bh = 46, x = 6, y = 250 - bh - 10 + (1 - ein) * 14;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.shadowColor = b.farbe; ctx.shadowBlur = 14;
+  ctx.fillStyle = 'rgba(20,30,50,0.9)';
+  _bioFxRundRect(ctx, x, y, bw, bh, 14); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = b.farbe; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x, y, bw, bh, 14); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const zeilen = b.text.split('\n');
+  zeilen.forEach((z, i) => ctx.fillText(z, x + bw / 2, y + bh / 2 + 1 + (i - (zeilen.length - 1) / 2) * 17, bw - 12));
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · DER KÖRPER KENNT DEN ERREGER SCHON   (Förderheft Bio 8 · bm4)
+// Diagramm über 21 Tage: rot die Menge der Erreger, blau die Menge der
+// Antikörper. Rechts ein schematischer Körperumriss (ohne Körperdetails), der
+// sich rot färbt, solange das Kind krank ist, und darunter das Kästchen
+// „Gedächtniszellen gegen Windpocken: keine / viele“ (bei Masern zusätzlich
+// „gegen Masern“).
+// Modellwerte (Lehrerteil, glatte Tage):
+//   Windpocken, 1. Mal → viele Antikörper ab Tag 10 · krank: ja, Tag 5 bis Tag 12
+//   Windpocken, 2. Mal → viele Antikörper ab Tag 3  · krank: nein
+//   Masern, 1. Mal     → viele Antikörper ab Tag 10 · krank: ja, Tag 5 bis Tag 12
+// Die Kurven sind so gebaut, dass die blaue Linie die Marke „viele Antikörper“
+// genau am angegebenen Tag schneidet und die rote Linie die Krankheitsschwelle
+// genau an Tag 5 und Tag 12 (Rechentest in pruef_rechnen.js).
+// Aha (nach der Beobachtung, _bioFx): Beim 2. Mal schießt die blaue Linie
+// schon am Anfang hoch – Zeitlupe, Fähnchen, Lichtring; die roten Punkte im
+// Körperumriss verschwinden, der Umriss bleibt hell. Die Linien vom Lauf davor
+// bleiben gestrichelt stehen: Der Abstand der beiden Fähnchen ist zu sehen.
+// Nicht am Bildschirm: „schneller“, „spezifisch“, „merken“, „Jahre“.
+// Keine Vermenschlichung der Erreger, keine Wertung, kein Blinken, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _b9j = null;
+const _B9J_V = 0.6;          // Marke „viele Antikörper“ (Anteil der Diagrammhöhe)
+const _B9J_K = 0.3;          // ab dieser Erregermenge ist das Kind krank
+const _B9J_TEMPO = 1.0;      // Tage je Sekunde: Tag 1 bis Tag 21 in etwa 20 s
+const _B9J_P = { x0: 40, x1: 288, y0: 30, y1: 196 };
+
+// Erreger: Glockenkurve mit zwei Breiten; Antikörper: S-Kurve (logistisch).
+function _b9jBaue(o) {
+  const E = { p: o.ep, m: o.em };
+  if (o.krank) {
+    const q = Math.sqrt(Math.log(o.ep / _B9J_K));
+    E.wl = (o.em - o.krank[0]) / q; E.wr = (o.krank[1] - o.em) / q;
+  } else { E.wl = o.wl; E.wr = o.wr; }
+  const A = { max: o.amax, s: o.as };
+  A.dm = o.ab + o.as * Math.log(o.amax / _B9J_V - 1);
+  return { name: o.name, erreger: o.erreger, ab: o.ab, krank: o.krank, zweit: o.zweit, E, A };
+}
+const _B9J_INF = [
+  _b9jBaue({ name: 'Windpocken, 1. Mal', erreger: 'Windpocken', ab: 10, krank: [5, 12],
+             ep: 0.85, em: 9, amax: 0.9, as: 1.2, zweit: false }),
+  _b9jBaue({ name: 'Windpocken, 2. Mal', erreger: 'Windpocken', ab: 3, krank: null,
+             ep: 0.14, em: 3.3, wl: 1.6, wr: 1.2, amax: 1.0, as: 0.7, zweit: true }),
+  _b9jBaue({ name: 'Masern, 1. Mal', erreger: 'Masern', ab: 10, krank: [5, 12],
+             ep: 0.85, em: 9, amax: 0.9, as: 1.2, zweit: false })
+];
+
+function _b9jE(inf, d) {
+  const w = d < inf.E.m ? inf.E.wl : inf.E.wr;
+  return inf.E.p * Math.exp(-Math.pow((d - inf.E.m) / w, 2));
+}
+function _b9jA(inf, d) { return inf.A.max / (1 + Math.exp(-(d - inf.A.dm) / inf.A.s)); }
+function _b9jKrank(inf, d) { return _b9jE(inf, d) >= _B9J_K - 1e-9; }
+
+function _b9jZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _b9jInit() {
+  const r = _b9jZufall(41);
+  const orte = [];
+  // Plätze für die Punkte im Körperumriss (Rumpf und Kopf)
+  for (let i = 0; i < 30; i++) {
+    if (i % 6 === 5) orte.push({ x: 360 + (r() - 0.5) * 12, y: 37 + (r() - 0.5) * 10, ph: r() * 6.28 });
+    else orte.push({ x: 342 + r() * 36, y: 56 + r() * 46, ph: r() * 6.28 });
+  }
+  const flecken = [];
+  for (let i = 0; i < 14; i++) flecken.push(i < 4 ? { x: 354 + r() * 12, y: 33 + r() * 9 } : { x: 343 + r() * 34, y: 58 + r() * 42 });
+  _b9j = { t: 0, orte, flecken, geist: -1 };
+  _b9jWahl(0, true);
+}
+
+// Neue Einstellung: Tag 1, noch nicht abgespielt. Der fertige Lauf davor bleibt
+// als gestrichelte Linie stehen (Vergleich).
+function _b9jWahl(i, ohneGeist) {
+  const z = _b9j;
+  if (!ohneGeist && z.fertig && z.inf !== i) z.geist = z.inf;
+  z.inf = i; z.d = 1; z.laeuft = false; z.fertig = false; z.fahne = null;
+  z.nach = -1; z.schritt = 0; z.fx = { teile: [] }; z.zeitlupe = null; z.boxGlanz = 0; z.vergleich = 0;
+}
+
+function _b9jHTML() {
+  const knopf = (i) =>
+    `<button class="sim-btn" data-b9j="${i}" onclick="_b9jInfektion(${i})">${_B9J_INF[i].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Warum bekommt man Windpocken nur einmal?</h3>
+    <div class="fpm-note" style="margin-top:2px">Erreger kommen in den Körper eines Kindes. Das Diagramm zeigt 3 Wochen: <b style="color:#dc2626">rot die Erreger</b>, <b style="color:#2563eb">blau die Antikörper</b>.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9j-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9j-los" onclick="_b9jAbspielen()">▶ 3 Wochen abspielen</button>
+          <button class="sim-btn" onclick="_b9jNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Infektion</span>
+          <div class="sim-btn-row">
+            ${knopf(0)}
+            ${knopf(1)}
+            ${knopf(2)}
+          </div>
+        </div>
+        <div class="fpm-label" style="margin-top:8px">Was siehst du?</div>
+        <div class="lmp-status on" id="_b9j-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_b9j-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: gleich Tag 21</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9jSprung(0)">⏭ Windpocken 1</button>
+          <button class="sim-btn" onclick="_b9jSprung(1)">⏭ Windpocken 2</button>
+          <button class="sim-btn" onclick="_b9jSprung(2)">⏭ Masern</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Der Körperumriss wird rot, solange das Kind krank ist. Die Tage sind Modellwerte.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Windpocken, 1. Mal &nbsp;|&nbsp; Zeige mit dem Finger auf das Fähnchen an der blauen Linie.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9jInfektion(i) {
+  if (!_b9j) return;
+  i = Math.max(0, Math.min(2, Number(i) || 0));
+  _b9jWahl(i, false);
+  _b9jStatus();
+}
+function _b9jAbspielen() {
+  const z = _b9j;
+  if (!z || z.laeuft) return;
+  const i = z.inf;
+  if (z.fertig) { const g = z.geist; _b9jWahl(i, true); z.geist = g; }   // noch einmal von vorn
+  z.laeuft = true;
+  _b9jStatus();
+}
+function _b9jNeu() {
+  if (!_b9j) return;
+  _b9j.geist = -1;
+  _b9jWahl(0, true);
+  _b9jStatus();
+}
+// Sprungmarke: diese Infektion, sofort ans Ende der 3 Wochen (Fähnchen und Ende wie beim Abspielen)
+function _b9jSprung(i) {
+  const z = _b9j;
+  if (!z) return;
+  i = Math.max(0, Math.min(2, Number(i) || 0));
+  if (z.inf !== i || z.laeuft) _b9jWahl(i, false);
+  if (z.fertig) { _b9jStatus(); return; }
+  z.laeuft = false; z.d = 21; z.zeitlupe = null;
+  if (!z.fahne) _b9jFahneSetzen(true);
+  _b9jEnde();
+  _b9jStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9jKrankText(inf) {
+  return inf.krank ? 'krank: ja, Tag ' + inf.krank[0] + ' bis Tag ' + inf.krank[1] : 'krank: nein';
+}
+function _b9jZeile() {
+  const z = _b9j, inf = _B9J_INF[z.inf];
+  const tag = Math.floor(z.d);
+  if (z.fertig) return 'Tag 21 · ' + _b9jKrankText(inf);
+  if (z.laeuft) return 'Tag ' + tag + ' · ' + (z.zeitlupe ? 'Zeitlupe' : 'Zeitraffer läuft');
+  return inf.name + ' · Tag 1 · Drücke „▶ 3 Wochen abspielen“.';
+}
+function _b9jHinweisText() {
+  const i = _b9j.inf;
+  if (i === 0) return 'Das Kind hat zum ersten Mal Windpocken-Erreger im Körper.';
+  if (i === 1) return 'Das Kind hatte vor einiger Zeit schon einmal Windpocken. Jetzt kommen wieder Windpocken-Erreger in den Körper.';
+  return 'Das Kind hatte vor einiger Zeit schon einmal Windpocken. Jetzt kommen zum ersten Mal Masern-Erreger in den Körper.';
+}
+function _b9jStatus() {
+  const z = _b9j;
+  if (!z) return;
+  const zeile = _b9jZeile();
+  z.letzt = zeile;
+  const el = document.getElementById('_b9j-status');
+  if (el) { el.textContent = zeile; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_b9j-hinweis');
+  if (h) h.textContent = _b9jHinweisText();
+  document.querySelectorAll('[data-b9j]').forEach(b => {
+    if (b.classList) b.classList.toggle('primary', Number(b.getAttribute('data-b9j')) === z.inf);
+  });
+  const los = document.getElementById('_b9j-los');
+  if (los && los.classList) los.classList.toggle('primary', !z.laeuft && !z.fertig);
+}
+// Gedächtniszellen im Kästchen: vor dem 1. Mal „keine“, danach „viele“.
+function _b9jGedaechtnis() {
+  const z = _b9j, i = z.inf;
+  const wp = i === 0 ? (z.fertig ? 'viele' : 'keine') : 'viele';
+  const ma = i === 2 ? (z.fertig ? 'viele' : 'keine') : null;
+  return { wp, ma };
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9jUpdate(dt) {
+  const z = _b9j;
+  if (!z) return;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  if (z.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(z, dt);
+    z.d = Math.min(21, z.d + dt * zl * _B9J_TEMPO);
+    const inf = _B9J_INF[z.inf];
+    if (!z.fahne && z.d >= inf.ab) _b9jFahneSetzen(false);
+    if (z.d >= 21) { z.d = 21; z.laeuft = false; _b9jEnde(); }
+  } else if (z.nach >= 0) {
+    z.nach += dt;
+    _b9jNachher();
+  }
+  if (z.fahne) z.fahne.alter += dt;
+  if (z.boxGlanz > 0) z.boxGlanz = Math.max(0, z.boxGlanz - dt);
+  if (z.vergleich > 0) z.vergleich = Math.max(0, z.vergleich - dt);
+  _bioFxAlleUpdate(z.fx, dt);
+  if (_b9jZeile() !== z.letzt) _b9jStatus();
+}
+function _b9jX(d) { const P = _B9J_P; return P.x0 + (d - 1) / 20 * (P.x1 - P.x0); }
+function _b9jY(v) { return _B9J_P.y1 - v * 150; }
+
+// Die blaue Linie erreicht die Marke: Fähnchen, Lichtring; beim 2. Mal Zeitlupe.
+function _b9jFahneSetzen(still) {
+  const z = _b9j, inf = _B9J_INF[z.inf];
+  z.fahne = { tag: inf.ab, alter: still ? 1 : 0 };
+  const x = _b9jX(inf.ab), y = _b9jY(_B9J_V);
+  _bioFxWelle(z.fx.teile, x, y, '#93c5fd', inf.zweit ? 26 : 16);
+  _bioFxFunken(z.fx.teile, x + 8, _B9J_P.y0 + 6, inf.zweit ? 12 : 5, ['#bfdbfe', '#ffffff', '#93c5fd', '#fff3b0']);
+  if (inf.zweit && !still) {
+    _bioFxZeitlupe(z, 0.3, 1.4);
+    _bioFxWelle(z.fx.teile, 360, 78, '#93c5fd', 40);   // Antikörper im ganzen Körper
+  }
+}
+function _b9jEnde() {
+  const z = _b9j;
+  z.fertig = true; z.nach = 0; z.schritt = 0;
+}
+// Nach Tag 21: erst hinsehen, dann bestätigt der Effekt.
+function _b9jNachher() {
+  const z = _b9j, fx = z.fx, inf = _B9J_INF[z.inf], t = z.nach;
+  if (inf.zweit) {
+    if (z.schritt === 0 && t >= 0.3) {
+      z.schritt = 1;
+      _bioFxWelle(fx.teile, 360, 80, '#bbf7d0', 46);
+      _bioFxKonfetti(fx.teile, 360, 60, 18);
+      if (z.geist >= 0 && !_B9J_INF[z.geist].zweit) z.vergleich = 2.4;
+    }
+    if (z.schritt === 1 && t >= 0.9) {
+      z.schritt = 2;
+      _bioFxBanner(fx, 'Das Kind bleibt diesmal gesund!', 3.2, '#93c5fd');
+    }
+  } else {
+    if (z.schritt === 0 && t >= 0.4) {
+      z.schritt = 1;
+      z.boxGlanz = 2.0;                                  // „keine“ wird zu „viele“
+      const y = z.inf === 2 ? 230 : 200;
+      _bioFxWelle(fx.teile, 358, y - 4, '#c4b5fd', 34);
+      _bioFxFunken(fx.teile, 358, y - 6, 8, ['#ddd6fe', '#ffffff', '#c4b5fd']);
+    }
+    if (z.schritt === 1 && t >= 1.0) {
+      z.schritt = 2;
+      _bioFxBanner(fx, 'Neu: Gedächtniszellen gegen ' + inf.erreger, 3.0, '#c4b5fd');
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b9jLinie(ctx, inf, bis, f, farbe, breite, strich) {
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = breite; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  if (strich && ctx.setLineDash) ctx.setLineDash(strich);
+  ctx.beginPath();
+  for (let d = 1; d <= bis + 1e-9; d += 0.1) {
+    const x = _b9jX(d), y = _b9jY(f(inf, d));
+    if (d === 1) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  const xe = _b9jX(bis), ye = _b9jY(f(inf, bis));
+  ctx.lineTo(xe, ye);
+  ctx.stroke();
+  ctx.restore();
+  return { x: xe, y: ye };
+}
+
+function _b9jDiagramm(ctx) {
+  const z = _b9j, P = _B9J_P, inf = _B9J_INF[z.inf], t = z.t;
+  // Fläche und Gitter
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(P.x0, P.y0, P.x1 - P.x0, P.y1 - P.y0);
+  // Krankheitszeit (nur sichtbar, solange sie schon vergangen ist)
+  if (inf.krank && z.d > inf.krank[0]) {
+    const xa = _b9jX(inf.krank[0]), xb = _b9jX(Math.min(z.d, inf.krank[1]));
+    ctx.fillStyle = 'rgba(254,226,226,0.55)'; ctx.fillRect(xa, P.y0, xb - xa, P.y1 - P.y0);
+  }
+  ctx.strokeStyle = '#eef2f7'; ctx.lineWidth = 1;
+  for (let d = 1; d <= 21; d++) {
+    const x = Math.round(_b9jX(d)) + 0.5;
+    ctx.beginPath(); ctx.moveTo(x, P.y0); ctx.lineTo(x, P.y1); ctx.stroke();
+  }
+  // Achsen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(P.x0, P.y0 - 2); ctx.lineTo(P.x0, P.y1); ctx.lineTo(P.x1 + 4, P.y1); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  for (const d of [1, 5, 10, 15, 21]) {
+    const x = _b9jX(d);
+    ctx.beginPath(); ctx.moveTo(x, P.y1); ctx.lineTo(x, P.y1 + 5); ctx.stroke();
+    ctx.fillText(String(d), x, P.y1 + 16);
+  }
+  for (let d = 1; d <= 21; d++) {
+    const x = _b9jX(d);
+    ctx.beginPath(); ctx.moveTo(x, P.y1); ctx.lineTo(x, P.y1 + 2.5); ctx.stroke();
+  }
+  ctx.textAlign = 'right'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('Tag', P.x1 + 4, P.y1 + 30);
+  ctx.save();
+  ctx.translate(16, (P.y0 + P.y1) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = 'center'; ctx.fillText('Menge', 0, 0);
+  ctx.restore();
+  // Marke „viele Antikörper“
+  const yv = _b9jY(_B9J_V);
+  ctx.save();
+  ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 1.2;
+  if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(P.x0, yv); ctx.lineTo(P.x1, yv); ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = '#1d4ed8'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('viele Antikörper', P.x1 - 2, yv - 4);
+
+  // Lauf davor, gestrichelt und blass
+  if (z.geist >= 0 && z.geist !== z.inf) {
+    const g = _B9J_INF[z.geist];
+    _b9jLinie(ctx, g, 21, _b9jE, 'rgba(220,38,38,0.35)', 1.6, [3, 4]);
+    _b9jLinie(ctx, g, 21, _b9jA, 'rgba(37,99,235,0.4)', 1.8, [3, 4]);
+    const gx = _b9jX(g.ab);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(37,99,235,0.35)'; ctx.lineWidth = 1;
+    if (ctx.setLineDash) ctx.setLineDash([2, 3]);
+    ctx.beginPath(); ctx.moveTo(gx, P.y1); ctx.lineTo(gx, P.y0 + 2); ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = 'rgba(37,99,235,0.3)';
+    ctx.beginPath(); ctx.moveTo(gx, P.y0 + 2); ctx.lineTo(gx + 12, P.y0 + 6); ctx.lineTo(gx, P.y0 + 10); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#64748b'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('gestrichelt: ' + g.name, P.x0, 246);
+  }
+
+  // Die beiden Linien wachsen mit dem Tag
+  const kE = _b9jLinie(ctx, inf, z.d, _b9jE, '#dc2626', 2.6, null);
+  const kA = _b9jLinie(ctx, inf, z.d, _b9jA, '#2563eb', 2.8, null);
+  // Köpfe der Linien (ruhiges Pulsieren, 0,8 Hz)
+  const puls = 1 + 0.18 * Math.sin(t * Math.PI * 2 * 0.8);
+  ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(kE.x, kE.y, 3.4 * puls, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(kA.x, kA.y, 3.6 * puls, 0, 2 * Math.PI); ctx.fill();
+  // Laufende Tageslinie
+  if (z.laeuft) {
+    const xd = _b9jX(z.d);
+    ctx.strokeStyle = 'rgba(15,23,42,0.25)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(xd, P.y0); ctx.lineTo(xd, P.y1); ctx.stroke();
+  }
+
+  // Fähnchen an der blauen Linie
+  if (z.fahne) {
+    const x = _b9jX(z.fahne.tag), y = _b9jY(_B9J_V);
+    const u = _bioFxEase.federn(_bioFxKlemme(z.fahne.alter / 0.5));
+    ctx.save();
+    ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 1.2;
+    if (ctx.setLineDash) ctx.setLineDash([2, 3]);
+    ctx.beginPath(); ctx.moveTo(x, P.y1); ctx.lineTo(x, y); ctx.stroke();
+    ctx.restore();
+    ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 1.6;
+    const top = y - (y - P.y0 + 2) * u;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, top); ctx.stroke();
+    if (u > 0.6) {
+      const txt = 'viele Antikörper ab Tag ' + z.fahne.tag;
+      ctx.font = '700 10px sans-serif';
+      const w = 142, wehen = Math.sin(t * 2.2) * 1.2;
+      ctx.save();
+      ctx.globalAlpha = _bioFxKlemme((u - 0.6) / 0.4);
+      ctx.fillStyle = '#dbeafe'; ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(x, top); ctx.lineTo(x + w, top + wehen); ctx.lineTo(x + w - 5, top + 8 + wehen * 0.5);
+      ctx.lineTo(x + w, top + 16); ctx.lineTo(x, top + 16); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#1e3a8a'; ctx.textAlign = 'left';
+      ctx.fillText(txt, x + 4, top + 12);
+      ctx.restore();
+    }
+    if (z.fahne.alter < 2) _bioFxLeuchten(ctx, x, y, 7, t, '96,165,250');
+  }
+  // Vergleich mit dem Lauf davor: beide Fähnchenstangen leuchten, Doppelpfeil dazwischen
+  if (z.vergleich > 0 && z.geist >= 0 && z.fahne) {
+    const xa = _b9jX(z.fahne.tag), xb = _b9jX(_B9J_INF[z.geist].ab), y = P.y1 - 12;
+    const a = _bioFxKlemme(z.vergleich / 0.6) * _bioFxKlemme((2.4 - z.vergleich) / 0.3);
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.strokeStyle = '#7c3aed'; ctx.fillStyle = '#7c3aed'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(xa + 3, y); ctx.lineTo(xb - 3, y); ctx.stroke();
+    for (const [px, s] of [[xa + 2, 1], [xb - 2, -1]]) {
+      ctx.beginPath(); ctx.moveTo(px, y); ctx.lineTo(px + 6 * s, y - 4); ctx.lineTo(px + 6 * s, y + 4); ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+    _bioFxLeuchten(ctx, xb, y, 6, t, '167,139,250');
+    _bioFxLeuchten(ctx, xa, y, 6, t, '167,139,250');
+  }
+}
+
+// Erreger im Modell: roter Kreis mit kurzen Zacken (kein Gesicht)
+function _b9jErreger(ctx, x, y, r, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 1;
+  for (let k = 0; k < 6; k++) {
+    const w = k * Math.PI / 3;
+    ctx.beginPath(); ctx.moveTo(x + Math.cos(w) * r, y + Math.sin(w) * r);
+    ctx.lineTo(x + Math.cos(w) * (r + 2), y + Math.sin(w) * (r + 2)); ctx.stroke();
+  }
+  ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Antikörper im Modell: blaues Y
+function _b9jAntikoerper(ctx, x, y, w, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(x, y); ctx.rotate(w);
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(0, 4); ctx.lineTo(0, 0); ctx.lineTo(-3, -3.5); ctx.moveTo(0, 0); ctx.lineTo(3, -3.5); ctx.stroke();
+  ctx.restore();
+}
+
+function _b9jKoerper(ctx, W) {
+  const z = _b9j, inf = _B9J_INF[z.inf], t = z.t;
+  const x0 = 298;
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(x0, 0, W - x0, 250);
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0 + 0.5, 0); ctx.lineTo(x0 + 0.5, 250); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(inf.name, 359, 13);
+
+  const E = _b9jE(inf, z.d), A = _b9jA(inf, z.d);
+  const rot = _bioFxKlemme((E - _B9J_K * 0.7) / (_B9J_K * 0.6));
+  const atem = Math.sin(t * 1.4) * 0.8;
+  // Schematischer Umriss: Kopf, Rumpf, Arme, Beine – ohne Körperdetails
+  const fuell = 'rgba(248,113,113,' + (0.08 + 0.5 * rot).toFixed(3) + ')';
+  ctx.save();
+  ctx.fillStyle = fuell; ctx.strokeStyle = rot > 0.5 ? '#b91c1c' : '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(360, 36, 11, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  _bioFxRundRect(ctx, 339 - atem * 0.5, 50, 42 + atem, 56, 12); ctx.fill(); ctx.stroke();
+  ctx.lineWidth = 7; ctx.lineCap = 'round'; ctx.strokeStyle = rot > 0.5 ? '#fca5a5' : '#cbd5e1';
+  ctx.beginPath(); ctx.moveTo(337, 58); ctx.lineTo(324, 92);
+  ctx.moveTo(383, 58); ctx.lineTo(396, 92);
+  ctx.moveTo(351, 108); ctx.lineTo(349, 134);
+  ctx.moveTo(369, 108); ctx.lineTo(371, 134); ctx.stroke();
+  ctx.restore();
+  // Pünktchen, solange das Kind krank ist
+  if (rot > 0.05) {
+    ctx.save(); ctx.globalAlpha = rot;
+    ctx.fillStyle = '#dc2626';
+    for (const f of z.flecken) { ctx.beginPath(); ctx.arc(f.x, f.y, 1.6, 0, 2 * Math.PI); ctx.fill(); }
+    ctx.restore();
+  }
+  // Erreger und Antikörper im Körper (Menge folgt den Linien)
+  const nE = E * 32, nA = A * 18;
+  for (let i = 0; i < z.orte.length; i++) {
+    const o = z.orte[i];
+    const x = o.x + Math.sin(t * 0.9 + o.ph) * 2.5, y = o.y + Math.cos(t * 0.7 + o.ph) * 2;
+    if (i < nE) _b9jErreger(ctx, x, y, 2.2, _bioFxKlemme(nE - i));
+    if (i < nA) _b9jAntikoerper(ctx, o.x + 5 + Math.cos(t * 0.8 + o.ph * 2) * 3, o.y - 3 + Math.sin(t * 0.6 + o.ph) * 3,
+                                Math.sin(t + o.ph) * 0.6, _bioFxKlemme(nA - i));
+  }
+  const krank = z.d > 1 && _b9jKrank(inf, z.d);
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillStyle = krank ? '#b91c1c' : '#15803d';
+  ctx.fillText(krank ? 'krank' : 'gesund', 360, 150);
+
+  // Kästchen Gedächtniszellen
+  const g = _b9jGedaechtnis();
+  const bh = g.ma ? 88 : 58;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 304, 158, 110, bh, 6); ctx.fill(); ctx.stroke();
+  if (z.boxGlanz > 0) _bioFxLeuchten(ctx, 358, (g.ma ? 226 : 196), 16, t, '196,181,253');
+  ctx.fillStyle = '#4c1d95'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Gedächtniszellen', 310, 172);
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif';
+  ctx.fillText('gegen Windpocken:', 310, 187);
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = g.wp === 'viele' ? '#6d28d9' : '#64748b';
+  ctx.fillText(g.wp, 310, 202);
+  if (g.wp === 'viele') _b9jZellen(ctx, 350, 198, t);
+  if (g.ma) {
+    ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif';
+    ctx.fillText('gegen Masern:', 310, 218);
+    ctx.font = '700 12px sans-serif'; ctx.fillStyle = g.ma === 'viele' ? '#6d28d9' : '#64748b';
+    ctx.fillText(g.ma, 310, 233);
+    if (g.ma === 'viele') _b9jZellen(ctx, 350, 229, t);
+  }
+}
+// kleine Zellen neben „viele“ (schematisch)
+function _b9jZellen(ctx, x, y, t) {
+  ctx.save();
+  for (let k = 0; k < 5; k++) {
+    const px = x + k * 11, py = y + Math.sin(t * 1.2 + k) * 1.2;
+    ctx.fillStyle = '#ddd6fe'; ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(px, py - 3, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(px, py - 3, 1.5, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function _b9jDraw(ctx, cv) {
+  const z = _b9j;
+  if (!z) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 0, W, H);
+  _b9jDiagramm(ctx);
+  // Legende und Tageszähler
+  ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.6;
+  ctx.beginPath(); ctx.moveTo(42, 13); ctx.lineTo(58, 13); ctx.stroke();
+  ctx.fillStyle = '#b91c1c'; ctx.fillText('Erreger', 62, 17);
+  ctx.strokeStyle = '#2563eb';
+  ctx.beginPath(); ctx.moveTo(112, 13); ctx.lineTo(128, 13); ctx.stroke();
+  ctx.fillStyle = '#1d4ed8'; ctx.fillText('Antikörper', 132, 17);
+  const tag = Math.floor(z.d);
+  const klapp = z.laeuft ? Math.max(0, 1 - (z.d % 1) * 5) : 0;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 226, 2, 62, 22, 6); ctx.fill(); ctx.stroke();
+  ctx.globalAlpha = 1 - klapp * 0.6;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Tag ' + tag, 257, 18 - klapp * 3);
+  ctx.restore();
+  if (z.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(z.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 290, 246);
+  }
+  _b9jKoerper(ctx, W);
+  _bioFxAlleDraw(ctx, z.fx);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 8 FOERDER · SCHUTZIMPFUNG ODER HEILIMPFUNG?  (Förderheft Bio 8 · bm5)
+// Diagramm über ein Jahr: blau die Menge der Antikörper im Blut, eine
+// waagerechte Linie „Schutz“. Die Zeitachse ist in Tage (0–14), Wochen
+// (2–8) und Monate (2–12) gegliedert, jeder Abschnitt gleich breit.
+// Darunter die Spritze (leert sich beim Start), ein Blutgefäß mit den
+// Antikörpern (Y-Form) und ein Schild, der sich füllt, solange Schutz besteht.
+// Modellwerte (Lehrerteil): Schutzimpfung → Linie erreicht „Schutz“ an Tag 14,
+// bleibt über das Jahr darüber. Heilimpfung → sofort (Tag 0) hoch, fällt nach
+// etwa 4 Wochen (Tag 28) unter „Schutz“. keine → nie.
+// Aha (nur _bioFx, nach der Beobachtung, ohne Tabellenwerte im Bild):
+// Beim Überschreiten bzw. Unterschreiten der Linie „Schutz“ knappe Zeitlupe,
+// Lichtring am Kreuzungspunkt, Schild füllt sich oder leert sich. Nach dem
+// Jahr bleibt die Kurve als blasse Spur stehen. Liegen Heil- und Schutzimpfung
+// beide als Linie vor, leuchtet ihr Kreuzungspunkt auf: am Anfang liegt die
+// eine oben, am Ende die andere – die Vorhersage „beide gleich“ bzw.
+// „Heilimpfung hält länger“ fällt sichtbar.
+// Nicht am Bildschirm (Lückenwörter): siehe sim_plan.
+// ═══════════════════════════════════════════════════════════════════════
+let _b9k = null;
+const _B9K_NAME = { keine: 'keine', schutz: 'Schutzimpfung', heil: 'Heilimpfung' };
+const _B9K_SCHUTZ = 0.4;                             // Höhe der Linie „Schutz“
+const _B9K_HEIL0 = 0.95;                             // Antikörper direkt nach der Heilimpfung
+const _B9K_TAU = 28 / Math.log(_B9K_HEIL0 / _B9K_SCHUTZ);   // Heilimpfung: unter „Schutz“ an Tag 28
+const _B9K_JAHR = 365;
+const _B9K_DAUER = 20;                               // s für ein Jahr (Zeitraffer)
+// Geometrie des Diagramms
+const _B9K_X0 = 46, _B9K_X1 = 406, _B9K_Y0 = 146, _B9K_Y1 = 32;
+
+// Antikörper-Menge (0 … 1) am Tag d
+function _b9kPegel(imp, d) {
+  if (imp === 'schutz') {
+    if (d <= 28) { const x = Math.max(0, d) / 28; return 0.8 * x * x * (3 - 2 * x); }
+    return 0.6 + 0.2 * Math.exp(-(d - 28) / 40);
+  }
+  if (imp === 'heil') return d < 0 ? 0 : _B9K_HEIL0 * Math.exp(-d / _B9K_TAU);
+  return 0;
+}
+function _b9kGeschuetzt(imp, d) { return _b9kPegel(imp, d) >= _B9K_SCHUTZ - 1e-9; }
+// Erster ganzer Tag mit Schutz (oder null = nie)
+function _b9kBeginn(imp) {
+  for (let d = 0; d <= _B9K_JAHR; d++) if (_b9kGeschuetzt(imp, d)) return d;
+  return null;
+}
+// Zeitachse: drei gleich breite Abschnitte
+function _b9kTagAus(u) {
+  u = Math.max(0, Math.min(1, u));
+  if (u <= 1 / 3) return 14 * u * 3;
+  if (u <= 2 / 3) return 14 + 42 * (u - 1 / 3) * 3;
+  return 56 + (_B9K_JAHR - 56) * (u - 2 / 3) * 3;
+}
+function _b9kUAus(d) {
+  if (d <= 14) return d / 14 / 3;
+  if (d <= 56) return 1 / 3 + (d - 14) / 42 / 3;
+  return 2 / 3 + (d - 56) / (_B9K_JAHR - 56) / 3;
+}
+function _b9kX(d) { return _B9K_X0 + (_B9K_X1 - _B9K_X0) * _b9kUAus(d); }
+function _b9kY(p) { return _B9K_Y0 - (_B9K_Y0 - _B9K_Y1) * p; }
+// Zeitzähler „Tag 0“ … „Monat 12“
+function _b9kZeitText(d) {
+  if (d <= 14 + 1e-9) return 'Tag ' + Math.floor(d + 1e-9);
+  if (d <= 56 + 1e-9) return 'Woche ' + Math.floor(d / 7 + 1e-9);
+  if (d >= _B9K_JAHR - 1e-6) return 'Monat 12';
+  return 'Monat ' + Math.max(2, Math.floor(d / (_B9K_JAHR / 12) + 1e-9));
+}
+// Tag, an dem sich Heil- und Schutzimpfung kreuzen (Halbierung)
+function _b9kKreuzTag() {
+  let a = 0, b = 28;
+  for (let k = 0; k < 50; k++) {
+    const m = (a + b) / 2;
+    if (_b9kPegel('heil', m) > _b9kPegel('schutz', m)) a = m; else b = m;
+  }
+  return (a + b) / 2;
+}
+
+function _b9kInit() {
+  _b9k = { imp: 'keine', u: 0, laeuft: false, gestartet: false, fertig: false, t: 0,
+           spritze: 0, war: false, schild: 0, nach: -1, schritt: 0,
+           geister: {}, kreuzGezeigt: false, fx: { teile: [] }, letzt: '' };
+}
+function _b9kFxLeer() {
+  _b9k.fx = { teile: [] }; _b9k.zeitlupe = null; _b9k.nach = -1; _b9k.schritt = 0;
+}
+function _b9kZurueck() {
+  _b9kFxLeer();
+  _b9k.u = 0; _b9k.laeuft = false; _b9k.gestartet = false; _b9k.fertig = false;
+  _b9k.spritze = 0; _b9k.war = false;
+  _b9kStatus();
+}
+// Knopfreihe „Impfung“
+function _b9kImpfung(v) {
+  if (!_b9k || !_B9K_NAME[v]) return;
+  _b9k.imp = v;
+  _b9kZurueck();
+}
+function _b9kAbspielen() {
+  if (!_b9k || _b9k.laeuft) return;
+  _b9kFxLeer();
+  _b9k.u = 0; _b9k.laeuft = true; _b9k.gestartet = true; _b9k.fertig = false;
+  _b9k.spritze = 0; _b9k.war = false;
+  _b9kStatus();
+}
+function _b9kNeu() {
+  if (!_b9k) return;
+  _b9k.imp = 'keine'; _b9k.geister = {}; _b9k.kreuzGezeigt = false; _b9k.schild = 0;
+  _b9kZurueck();
+}
+// Sprungmarke: Impfung wählen und gleich das Ende des Jahres zeigen
+function _b9kMarke(v) {
+  if (!_b9k || !_B9K_NAME[v]) return;
+  _b9k.imp = v;
+  _b9kFxLeer();
+  _b9k.gestartet = true; _b9k.laeuft = false; _b9k.u = 1; _b9k.spritze = 1;
+  _b9k.war = _b9kGeschuetzt(v, _B9K_JAHR);
+  _b9k.geister[v] = true;
+  _b9kEnde();
+}
+function _b9kEnde() {
+  _b9k.u = 1; _b9k.laeuft = false; _b9k.fertig = true;
+  _b9k.nach = 0; _b9k.schritt = 0;
+  _b9kStatus();
+}
+
+function _b9kHTML() {
+  const k = (v) => `<button class="sim-btn" data-b9k="${v}" onclick="_b9kImpfung('${v}')">${_B9K_NAME[v]}</button>`;
+  const m = (v) => `<button class="sim-btn" onclick="_b9kMarke('${v}')">${_B9K_NAME[v]}: Monat 12</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Schutzimpfung oder Heilimpfung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Blau: die Menge der Antikörper im Blut. Liegt die blaue Linie über der Linie „Schutz“, ist der Körper geschützt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9k-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9k-los" onclick="_b9kAbspielen()">▶ 1 Jahr abspielen</button>
+          <button class="sim-btn" onclick="_b9kNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Impfung</span>
+          <div class="sim-btn-row">${k('keine')}${k('schutz')}${k('heil')}</div>
+        </div>
+        <div class="lmp-status on" id="_b9k-zeit" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_b9k-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_b9k-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">${m('keine')}${m('schutz')}${m('heil')}</div>
+        <div class="fpm-note" style="margin-top:8px">Schutzimpfung: abgeschwächte oder tote Erreger. Heilimpfung: fertige Antikörper.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Impfung „keine“ &nbsp;|&nbsp; Ein Jahr dauert im Zeitraffer etwa 20 Sekunden.</p>
+  </div>`;
+}
+
+function _b9kTag() { return _b9kTagAus(_b9k.u); }
+function _b9kZeile() {
+  const d = _b9kTag(), imp = _b9k.imp;
+  const b = _b9kBeginn(imp);
+  let beginn = '–', jahr = '–';
+  if (_b9k.gestartet) {
+    if (b !== null && d >= b - 1e-9) beginn = 'Tag ' + b;
+    else if (_b9k.fertig) beginn = 'nie';
+    if (_b9k.fertig) jahr = _b9kGeschuetzt(imp, _B9K_JAHR) ? 'ja' : 'nein';
+  }
+  return 'Schutz beginnt: ' + beginn + ' · Schutz nach 1 Jahr: ' + jahr;
+}
+function _b9kStatus() {
+  if (!_b9k) return;
+  const z = _b9kZeile();
+  _b9k.letzt = z + '|' + _b9kZeitText(_b9kTag());
+  const el = document.getElementById('_b9k-status');
+  if (el) el.textContent = z;
+  const ze = document.getElementById('_b9k-zeit');
+  if (ze) ze.textContent = 'Impfung: ' + _B9K_NAME[_b9k.imp] + ' · ' + _b9kZeitText(_b9kTag());
+  const h = document.getElementById('_b9k-hinweis');
+  if (h) h.textContent = _b9k.laeuft ? 'Das Jahr läuft im Zeitraffer. Sieh auf die blaue Linie.'
+    : _b9k.fertig ? 'Ein Jahr ist vorbei. Die Linie bleibt blass stehen. Stelle eine andere Impfung ein.'
+    : 'Drücke „▶ 1 Jahr abspielen“.';
+  try {
+    document.querySelectorAll('[data-b9k]').forEach(b => {
+      const v = b.getAttribute('data-b9k');
+      if (b.classList) b.classList.toggle('primary', v === _b9k.imp);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b9k-los');
+  if (los && los.classList) los.classList.toggle('primary', !_b9k.laeuft);
+}
+
+function _b9kUpdate(dt) {
+  if (!_b9k) return;
+  dt = _bioFxDt(dt);
+  _b9k.t += dt;
+  if (_b9k.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(_b9k, dt);
+    _b9k.spritze = Math.min(1, _b9k.spritze + dt / 1.0);
+    _b9k.u = Math.min(1, _b9k.u + dt * zl / _B9K_DAUER);
+    _b9kKante();
+    if (_b9k.u >= 1) {
+      _b9k.geister[_b9k.imp] = true;
+      _b9kEnde();
+    }
+  } else if (_b9k.nach >= 0) {
+    _b9k.nach += dt;
+    _b9kNachher();
+  }
+  // Schild füllt oder leert sich weich
+  const ziel = _b9k.gestartet && _b9kGeschuetzt(_b9k.imp, _b9kTag()) ? 1 : 0;
+  _b9k.schild += (ziel - _b9k.schild) * Math.min(1, dt * 3);
+  const z = _b9kZeile() + '|' + _b9kZeitText(_b9kTag());
+  if (z !== _b9k.letzt) _b9kStatus();
+  _bioFxAlleUpdate(_b9k.fx, dt);
+}
+// Die blaue Linie geht über oder unter die Linie „Schutz“
+function _b9kKante() {
+  const d = _b9kTag(), jetzt = _b9kGeschuetzt(_b9k.imp, d);
+  if (jetzt === _b9k.war) return;
+  _b9k.war = jetzt;
+  const x = _b9kX(d), y = _b9kY(_B9K_SCHUTZ), fx = _b9k.fx;
+  if (jetzt) {
+    _bioFxWelle(fx.teile, x, y, '#fde047', 34);
+    _bioFxFunken(fx.teile, x, y, 8, ['#60a5fa', '#fde047', '#ffffff']);
+    _bioFxWelle(fx.teile, 392, 216, '#60a5fa', 26);
+    if (_b9k.imp === 'schutz') {
+      _bioFxZeitlupe(_b9k, 0.3, 1.4);
+      _bioFxBanner(fx, 'Die blaue Linie erreicht „Schutz“.', 2.6, '#60a5fa');
+    }
+  } else {
+    _bioFxWelle(fx.teile, x, y, '#94a3b8', 34);
+    _bioFxWelle(fx.teile, 392, 216, '#94a3b8', 26);
+    _bioFxZeitlupe(_b9k, 0.3, 1.4);
+    _bioFxBanner(fx, 'Die blaue Linie sinkt unter „Schutz“.', 2.6, '#94a3b8');
+  }
+}
+// Nach dem Jahr: erst hinsehen, dann bestätigt der Effekt
+function _b9kNachher() {
+  const fx = _b9k.fx, t = _b9k.nach, imp = _b9k.imp;
+  const ex = _b9kX(_B9K_JAHR), ey = _b9kY(_b9kPegel(imp, _B9K_JAHR));
+  if (_b9k.schritt === 0 && t >= 0.3) {
+    _b9k.schritt = 1;
+    if (_b9kGeschuetzt(imp, _B9K_JAHR)) {
+      _bioFxWelle(fx.teile, ex, ey, '#fde047', 30);
+      _bioFxFunken(fx.teile, ex, ey, 10, ['#60a5fa', '#fde047', '#ffffff']);
+    } else {
+      _bioFxWelle(fx.teile, ex, ey, '#94a3b8', 26);
+    }
+  }
+  if (_b9k.schritt === 1 && t >= 1.1) {
+    _b9k.schritt = 2;
+    const g = _b9k.geister;
+    if (g.heil && g.schutz && !_b9k.kreuzGezeigt) {
+      _b9k.kreuzGezeigt = true;
+      const d = _b9kKreuzTag(), x = _b9kX(d), y = _b9kY(_b9kPegel('heil', d));
+      _bioFxWelle(fx.teile, x, y, '#fde047', 40);
+      _bioFxFunken(fx.teile, x, y, 12, ['#fde047', '#93c5fd', '#ffffff']);
+      _bioFxBanner(fx, 'Die beiden Linien kreuzen sich!', 3.2, '#fde047');
+    }
+  }
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _b9kKurve(ctx, imp, bisU) {
+  const n = Math.max(1, Math.ceil(bisU * 300));
+  ctx.beginPath();
+  if (imp === 'heil') { ctx.moveTo(_b9kX(0), _b9kY(0)); ctx.lineTo(_b9kX(0), _b9kY(_b9kPegel('heil', 0))); }
+  else ctx.moveTo(_b9kX(0), _b9kY(_b9kPegel(imp, 0)));
+  for (let i = 1; i <= n; i++) {
+    const u = bisU * i / n, d = _b9kTagAus(u);
+    ctx.lineTo(_B9K_X0 + (_B9K_X1 - _B9K_X0) * u, _b9kY(_b9kPegel(imp, d)));
+  }
+}
+function _b9kSchild(ctx, x, y, f, t) {
+  ctx.save();
+  ctx.translate(x, y);
+  const pfad = () => {
+    ctx.beginPath(); ctx.moveTo(0, -18); ctx.lineTo(15, -12); ctx.lineTo(13, 4);
+    ctx.quadraticCurveTo(8, 14, 0, 19); ctx.quadraticCurveTo(-8, 14, -13, 4);
+    ctx.lineTo(-15, -12); ctx.closePath();
+  };
+  pfad();
+  ctx.fillStyle = 'rgba(241,245,249,0.9)'; ctx.fill();
+  if (f > 0.01) {
+    ctx.save(); pfad(); ctx.clip();
+    ctx.fillStyle = 'rgba(37,99,235,' + (0.85 * f).toFixed(3) + ')';
+    ctx.fillRect(-16, 19 - 38 * f, 32, 38 * f);
+    ctx.restore();
+  }
+  pfad(); ctx.strokeStyle = f > 0.5 ? '#1d4ed8' : '#64748b'; ctx.lineWidth = 2; ctx.stroke();
+  ctx.restore();
+  if (f > 0.9) _bioFxLeuchten(ctx, x, y, 22, t, 'rgba(96,165,250,0.6)');
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Schutz', x, 248);
+}
+// Antikörper als kleines Y
+function _b9kY_Form(ctx, x, y, w, s) {
+  ctx.save(); ctx.translate(x, y); ctx.rotate(w);
+  ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(0, 4 * s); ctx.lineTo(0, 0);
+  ctx.lineTo(-3.5 * s, -4 * s); ctx.moveTo(0, 0); ctx.lineTo(3.5 * s, -4 * s); ctx.stroke();
+  ctx.restore();
+}
+function _b9kDraw(ctx, cv) {
+  if (!_b9k) return;
+  const W = cv.width, H = cv.height, t = _b9k.t, imp = _b9k.imp;
+  const d = _b9kTag(), gest = _b9k.gestartet;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Kopfzeile: Legende links, Zeitzähler rechts
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(12, 15); ctx.lineTo(30, 15); ctx.stroke();
+  ctx.fillStyle = '#1e3a8a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Antikörper im Blut', 34, 19);
+  ctx.textAlign = 'right'; ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif';
+  ctx.fillText(_b9kZeitText(d), W - 12, 20);
+  if (_b9k.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.65)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_b9k.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 250, 19);
+  }
+
+  // Abschnitte Tage / Wochen / Monate (leicht getönt)
+  const xa = _b9kX(14), xb = _b9kX(56);
+  ctx.fillStyle = 'rgba(254,243,199,0.55)'; ctx.fillRect(_B9K_X0, _B9K_Y1 - 4, xa - _B9K_X0, _B9K_Y0 - _B9K_Y1 + 4);
+  ctx.fillStyle = 'rgba(220,252,231,0.55)'; ctx.fillRect(xa, _B9K_Y1 - 4, xb - xa, _B9K_Y0 - _B9K_Y1 + 4);
+  ctx.fillStyle = 'rgba(224,231,255,0.55)'; ctx.fillRect(xb, _B9K_Y1 - 4, _B9K_X1 - xb, _B9K_Y0 - _B9K_Y1 + 4);
+  // Achsen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(_B9K_X0, _B9K_Y1 - 6); ctx.lineTo(_B9K_X0, _B9K_Y0); ctx.lineTo(_B9K_X1 + 4, _B9K_Y0); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '600 11px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('viel', _B9K_X0 - 4, _B9K_Y1 + 4);
+  ctx.fillText('0', _B9K_X0 - 4, _B9K_Y0 + 4);
+  // Striche und Zahlen
+  ctx.textAlign = 'center'; ctx.font = '600 11px sans-serif';
+  const striche = [[0, '0'], [7, '7'], [14, '14'], [28, '4'], [42, '6'], [56, '8']];
+  for (let m = 4; m <= 12; m += 2) striche.push([m * _B9K_JAHR / 12, String(m)]);
+  for (const [tg, txt] of striche) {
+    const x = _b9kX(tg);
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, _B9K_Y0); ctx.lineTo(x, _B9K_Y0 + 4); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.fillText(txt, x, _B9K_Y0 + 15);
+  }
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Tage', (_B9K_X0 + xa) / 2 + 12, _B9K_Y0 + 30);
+  ctx.fillText('Wochen', (xa + xb) / 2 + 12, _B9K_Y0 + 30);
+  ctx.fillText('Monate', (xb + _B9K_X1) / 2, _B9K_Y0 + 30);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (const x of [xa, xb]) { ctx.beginPath(); ctx.moveTo(x, _B9K_Y0 + 20); ctx.lineTo(x, _B9K_Y0 + 34); ctx.stroke(); }
+
+  // Linie „Schutz“
+  const ys = _b9kY(_B9K_SCHUTZ);
+  ctx.save();
+  ctx.setLineDash([7, 5]); ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(_B9K_X0, ys); ctx.lineTo(_B9K_X1, ys); ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = '#15803d'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schutz', _B9K_X0 + 4, ys - 5);
+
+  // Blasse Spuren früherer Jahre
+  const lage = {
+    heil:   () => [_b9kX(40) + 4, _b9kY(_b9kPegel('heil', 40)) + 14, 'left'],
+    schutz: () => [_B9K_X1, _b9kY(_b9kPegel('schutz', _B9K_JAHR)) - 7, 'right'],
+    keine:  () => [_B9K_X1, _B9K_Y0 - 5, 'right']
+  };
+  for (const g of ['keine', 'schutz', 'heil']) {
+    if (!_b9k.geister[g] || (g === imp && gest)) continue;
+    ctx.save();
+    ctx.setLineDash([5, 4]); ctx.strokeStyle = 'rgba(96,165,250,0.6)'; ctx.lineWidth = 2.5;
+    _b9kKurve(ctx, g, 1); ctx.stroke();
+    ctx.restore();
+    const [lx, ly, al] = lage[g]();
+    ctx.fillStyle = '#475569'; ctx.font = '600 11px sans-serif'; ctx.textAlign = al;
+    ctx.fillText(_B9K_NAME[g], lx, ly);
+  }
+  // Kreuzungspunkt leuchtet ruhig, wenn beide Linien da sind
+  if (_b9k.kreuzGezeigt) {
+    const dk = _b9kKreuzTag();
+    _bioFxLeuchten(ctx, _b9kX(dk), _b9kY(_b9kPegel('heil', dk)), 9, t, 'rgba(250,204,21,0.8)');
+  }
+  // Aktuelle Kurve
+  if (gest) {
+    ctx.save();
+    ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 3.5; ctx.lineJoin = 'round';
+    _b9kKurve(ctx, imp, _b9k.u); ctx.stroke();
+    ctx.restore();
+    const px = _B9K_X0 + (_B9K_X1 - _B9K_X0) * _b9k.u, py = _b9kY(_b9kPegel(imp, d));
+    if (!_b9k.fertig) {
+      ctx.strokeStyle = 'rgba(15,23,42,0.25)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(px, _B9K_Y1 - 4); ctx.lineTo(px, _B9K_Y0); ctx.stroke();
+    }
+    const puls = 1 + 0.15 * Math.sin(t * 2 * Math.PI * 0.8);
+    ctx.fillStyle = '#1d4ed8'; ctx.beginPath(); ctx.arc(px, py, 4.5 * puls, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5; ctx.stroke();
+    if (_b9k.fertig) {
+      const [lx, ly, al] = lage[imp]();
+      ctx.fillStyle = '#1e3a8a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = al;
+      ctx.fillText(_B9K_NAME[imp], lx, ly);
+    }
+  }
+
+  // ── Unten: Spritze, Blutgefäß, Schild ──
+  const sy = 206, sx0 = 28, sx1 = 118;
+  const voll = imp === 'keine' ? 0 : (gest ? 1 - _b9k.spritze : 1);
+  // Kolben
+  const kol = sx0 + (sx1 - sx0 - 6) * (1 - voll);
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(sx0 - 18 + (kol - sx0), sy - 3, 20, 6);
+  ctx.fillRect(sx0 - 22 + (kol - sx0), sy - 9, 4, 18);
+  // Inhalt
+  if (voll > 0.01) {
+    ctx.fillStyle = imp === 'heil' ? 'rgba(191,219,254,0.95)' : 'rgba(254,240,138,0.95)';
+    ctx.fillRect(kol + 4, sy - 8, sx1 - kol - 4, 16);
+    const n = Math.round(6 * voll);
+    for (let i = 0; i < n; i++) {
+      const x = sx1 - 8 - i * ((sx1 - sx0 - 16) / 6), y = sy + Math.sin(t * 2 + i) * 2.5;
+      if (x < kol + 8) continue;
+      if (imp === 'heil') _b9kY_Form(ctx, x, y, Math.sin(t + i) * 0.5, 0.9);
+      else {
+        ctx.fillStyle = '#78716c'; ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+  }
+  ctx.fillStyle = '#475569'; ctx.fillRect(kol, sy - 8, 4, 16);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; ctx.strokeRect(sx0, sy - 9, sx1 - sx0, 18);
+  ctx.beginPath(); ctx.moveTo(sx1, sy - 3); ctx.lineTo(sx1 + 8, sy - 2); ctx.lineTo(sx1 + 8, sy + 2); ctx.lineTo(sx1, sy + 3); ctx.stroke();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(sx1 + 8, sy); ctx.lineTo(sx1 + 30, sy); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(imp === 'keine' ? 'keine Impfung' : _B9K_NAME[imp], (sx0 + sx1) / 2, sy + 24);
+  ctx.fillStyle = '#475569'; ctx.font = '600 10px sans-serif';
+  if (imp !== 'keine') ctx.fillText(imp === 'heil' ? 'fertige Antikörper' : 'abgeschwächte Erreger', (sx0 + sx1) / 2, sy + 37);
+
+  // Blutgefäß mit Blutkörperchen und Antikörpern
+  const gx0 = 160, gx1 = 360, gy = 216, gh = 17, lang = gx1 - gx0;
+  ctx.fillStyle = '#fee2e2'; ctx.fillRect(gx0, gy - gh, lang, 2 * gh);
+  ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(gx0, gy - gh); ctx.lineTo(gx1, gy - gh); ctx.moveTo(gx0, gy + gh); ctx.lineTo(gx1, gy + gh); ctx.stroke();
+  ctx.save();
+  ctx.beginPath(); ctx.rect(gx0, gy - gh, lang, 2 * gh); ctx.clip();
+  for (let i = 0; i < 9; i++) {                       // rote Blutkörperchen strömen
+    const x = gx0 + ((i * 29 + t * 22) % lang), y = gy + Math.sin(i * 2.1) * 9;
+    ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.ellipse(x, y, 5, 3.4, 0.3 * Math.sin(t + i), 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#fca5a5'; ctx.beginPath(); ctx.ellipse(x, y, 2, 1.3, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  const pegel = gest ? _b9kPegel(imp, d) : 0;
+  const na = Math.round(pegel * 16);
+  for (let i = 0; i < na; i++) {                      // Antikörper
+    const x = gx0 + ((i * 41.3 + 7 + t * 16) % lang), y = gy + Math.sin(i * 1.7 + t * 0.9) * 10;
+    _b9kY_Form(ctx, x, y, Math.sin(t * 1.3 + i) * 0.6, 1);
+  }
+  if (gest && imp === 'schutz' && d < 12) {           // abgeschwächte Erreger im Blut
+    const ne = Math.round(6 * (1 - d / 12) * Math.min(1, _b9k.spritze * 2));
+    for (let i = 0; i < ne; i++) {
+      const x = gx0 + ((i * 37 + 15 + t * 14) % lang), y = gy + Math.cos(i * 2.3) * 9;
+      ctx.fillStyle = '#78716c'; ctx.beginPath(); ctx.arc(x, y, 3, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#78716c'; ctx.lineWidth = 1;
+      for (let k = 0; k < 6; k++) {
+        const w = k * Math.PI / 3;
+        ctx.beginPath(); ctx.moveTo(x + Math.cos(w) * 3, y + Math.sin(w) * 3); ctx.lineTo(x + Math.cos(w) * 5, y + Math.sin(w) * 5); ctx.stroke();
+      }
+    }
+  }
+  ctx.restore();
+  ctx.fillStyle = '#7f1d1d'; ctx.font = '600 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Blut', (gx0 + gx1) / 2, gy + gh + 12);
+
+  _b9kSchild(ctx, 392, 214, _b9k.schild, t);
+  _bioFxAlleDraw(ctx, _b9k.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 8 · WIE KOMMT DIE MALARIA ZUM MENSCHEN?   (Förderheft Bio 8 · bm7)
+// Oben: der Weg des Erregers über vier Stationen. Eine Mücke saugt Blut
+// (Station 1), der Erreger wandert in die Leber und vermehrt sich dort stark
+// (Station 2), befällt im Blut rote Blutkörperchen – Fieber (Station 3), eine
+// NEUE Mücke nimmt ihn auf, in ihr vermehrt er sich auf andere Art (Station 4,
+// Lupe „in der Mücke“: zwei Formen verschmelzen, dann entstehen viele).
+// Danach fliegt die neue Mücke zum NÄCHSTEN Menschen (Stolperstelle im
+// Lehrerteil: Station 4 ist nicht „zurück zum ersten Menschen“).
+// Unten: ein Dorf mit 50 Menschen (Punkte in 10 Hütten, 2 sitzen draußen).
+// Modellwerte (Lehrerteil): 17 Mückenanflüge im Monat, 12 davon tragen den
+// Erreger. Ohne Netz → „neu krank: 12 von 50“. Mit Netz prallen alle Anflüge
+// an die Schlafenden am Netz ab; nur die 2 Menschen draußen werden krank →
+// „neu krank: 2 von 50“. Mücken OHNE Erreger machen niemanden krank.
+// Aha: (1) In der Leber wird aus EINEM leuchtenden Erreger ein Schwarm
+// (Zeitlupe, Funken) – gegen „vermehrt sich im Menschen nicht“.
+// (2) Die drei Kranken im Dorf husten, die Hustenwolke erreicht den Nachbarn
+// – und der bleibt gesund; krank wird nur, wen eine Mücke mit Erreger
+// erreicht – gegen „durch Husten“. (3) Mit Netz prallen die Mücken sichtbar ab.
+// Nicht am Bildschirm: die vier Lückenwörter aus sim_plan.anzeigen (Merksatz, Aufgabe 2).
+// Effekte aus _bioFx (kurz, ruhig, kein Blinken, kein Ton, keine Wertung).
+// ═══════════════════════════════════════════════════════════════════════
+let _b9l = null;
+// Stationen: Beginn jeder Station in Sekunden der Weg-Zeit, dann Ende.
+const _B9L_SEG = [0, 5.5, 11, 16.5, 22.5];
+const _B9L_ENDE = 25.5;
+const _B9L_STATION = [
+  'Station 1: Die Mücke saugt Blut. Erreger gelangen in den Menschen.',
+  'Station 2: Leber. Die Erreger vermehren sich stark.',
+  'Station 3: Blut. Die Erreger befallen rote Blutkörperchen. Fieber.',
+  'Station 4: Eine neue Mücke saugt Blut. In der Mücke vermehren sich die Erreger auf andere Art.'
+];
+const _B9L_NETZ = ['kein Moskitonetz', 'Moskitonetz'];
+// Dorf: 10 Hütten à 5 Menschen = 50. Person p = Hütte*5 + Platz.
+const _B9L_MONAT = 8.0;                 // s für 30 Nächte
+const _B9L_DRAUSSEN = [12, 36];         // sitzen nachts draußen vor der Hütte
+const _B9L_KRANK0 = [5, 28, 42];        // waren schon vorher krank (zählen nicht als „neu“)
+// Anflüge im Monat: [Zeit, Person, trägt Erreger]
+const _B9L_ANFLUG = [
+  [0.2, 1, 1], [0.55, 14, 0], [0.9, 12, 1], [1.2, 22, 1], [1.6, 3, 0], [1.9, 9, 1],
+  [2.3, 31, 1], [2.7, 26, 0], [3.0, 16, 1], [3.4, 36, 1], [3.8, 39, 1], [4.2, 45, 0],
+  [4.6, 19, 1], [5.0, 47, 1], [5.5, 24, 1], [5.9, 49, 0], [6.3, 34, 1]
+];
+// Husten: [Zeit, wer hustet, wer daneben liegt]
+const _B9L_HUSTEN = [
+  [0.5, 5, 6], [1.5, 28, 27], [2.5, 42, 41], [3.6, 5, 6], [4.7, 42, 43], [5.8, 28, 27], [6.9, 42, 41]
+];
+
+function _b9lZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _b9lInit() {
+  const z = _b9lZufall(71);
+  const leber = [];                     // Plätze der Erreger in der Leber
+  for (let i = 0; i < 32; i++) {
+    const a = z() * 6.283, r = Math.sqrt(z());
+    leber.push([Math.cos(a) * r * 13, Math.sin(a) * r * 7, z() * 6.283]);
+  }
+  const sterne = [];
+  for (let i = 0; i < 18; i++) sterne.push([z() * 420, 170 + z() * 14, z() * 6.28]);
+  _b9l = {
+    t: 0, netz: 0, modus: 'start', letzt: '', leber, sterne,
+    weg: { zt: 0, laeuft: false, bis: _B9L_ENDE, begonnen: false },
+    dorf: { zt: 0, laeuft: false, fertig: false, nach: -1, schritt: 0 },
+    erg: [null, null],
+    fx: { teile: [] }
+  };
+}
+
+/* ── Geometrie oben: Mensch, Mücken, Blutgefäß ─────────────────────────── */
+const _B9L_MA = [142, 62], _B9L_SPA = [153, 72];     // Mücke 1, Rüsselspitze
+const _B9L_MB = [278, 60], _B9L_SPB = [267, 70];     // neue Mücke, Rüsselspitze
+const _B9L_LEBER = [210, 92];
+const _B9L_NM = [402, 100];                          // nächster Mensch (Kopf)
+const _B9L_ADER = [[134, 90], [182, 57], [187, 64], [187, 136], [233, 136], [233, 64], [238, 57], [286, 90]];
+const _B9L_MARKE = [[104, 30], [166, 118], [252, 124], [318, 30]];
+const _B9L_LUPE = [356, 108, 27];
+
+function _b9lLaenge(pts) {
+  let L = 0;
+  for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+  return L;
+}
+// Punkt auf einem Streckenzug bei Anteil u (0..1)
+function _b9lAuf(pts, u) {
+  u = _bioFxKlemme(u);
+  let rest = u * _b9lLaenge(pts);
+  for (let i = 1; i < pts.length; i++) {
+    const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    if (rest <= d || i === pts.length - 1) {
+      const k = d > 0 ? Math.min(1, rest / d) : 0;
+      return [pts[i - 1][0] + (pts[i][0] - pts[i - 1][0]) * k, pts[i - 1][1] + (pts[i][1] - pts[i - 1][1]) * k];
+    }
+    rest -= d;
+  }
+  return pts[pts.length - 1].slice();
+}
+function _b9lMix(a, b, u) { u = _bioFxKlemme(u); return [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u]; }
+function _b9lAb(t0, t1, zt) { return _bioFxKlemme((zt - t0) / (t1 - t0)); }
+
+// Station zur Weg-Zeit (0 = noch nicht begonnen)
+function _b9lStationNr() {
+  const w = _b9l.weg;
+  if (!w.begonnen) return 0;
+  let n = 1;
+  for (let k = 1; k < 4; k++) if (w.zt >= _B9L_SEG[k] - 1e-9) n = k + 1;
+  return n;
+}
+
+/* ── Dorf ──────────────────────────────────────────────────────────────── */
+function _b9lHuette(h) { return 8 + h * 40.4; }
+const _B9L_PLATZ = [[7, 212], [16, 212], [25, 212], [11, 225], [21, 225]];
+function _b9lPerson(p) {
+  const h = Math.floor(p / 5), x0 = _b9lHuette(h);
+  if (_B9L_DRAUSSEN.includes(p)) return [x0 + 16, 243];
+  const q = _B9L_PLATZ[p % 5];
+  return [x0 + q[0], q[1]];
+}
+// Wird Anflug a krank machen? Mit Netz erreichen die Mücken nur die Menschen draußen.
+function _b9lTrifft(a) {
+  const p = a[1];
+  if (!a[2] || _B9L_KRANK0.includes(p)) return false;
+  return !_b9l.netz || _B9L_DRAUSSEN.includes(p);
+}
+function _b9lPrallt(a) { return _b9l.netz && !_B9L_DRAUSSEN.includes(a[1]); }
+function _b9lNeuKrank(zt) {
+  let n = 0;
+  for (const a of _B9L_ANFLUG) if (_b9lTrifft(a) && zt >= a[0] + 0.7) n++;
+  return n;
+}
+function _b9lIstNeuKrank(p, zt) {
+  for (const a of _B9L_ANFLUG) if (a[1] === p && _b9lTrifft(a) && zt >= a[0] + 0.7) return true;
+  return false;
+}
+function _b9lNacht() {
+  const d = _b9l.dorf;
+  if (d.fertig) return 30;
+  return Math.min(30, Math.floor(d.zt / _B9L_MONAT * 30) + 1);
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9lWeg() {
+  if (!_b9l) return;
+  const w = _b9l.weg;
+  w.zt = 0; w.bis = _B9L_ENDE; w.laeuft = true; w.begonnen = true;
+  _b9l.zeitlupe = null; _b9l.fx.banner = null;
+  _b9l.modus = 'weg'; _b9lStatus();
+}
+// Sprungmarke: nur diese Station zeigen
+function _b9lStation(n) {
+  if (!_b9l) return;
+  n = Math.max(1, Math.min(4, Math.round(Number(n) || 1)));
+  const w = _b9l.weg;
+  w.zt = _B9L_SEG[n - 1]; w.bis = n === 4 ? _B9L_ENDE : _B9L_SEG[n];
+  w.laeuft = true; w.begonnen = true; _b9l.zeitlupe = null; _b9l.fx.banner = null;
+  _b9l.modus = 'weg'; _b9lStatus();
+}
+function _b9lMonat() {
+  if (!_b9l) return;
+  const d = _b9l.dorf;
+  d.zt = 0; d.laeuft = true; d.fertig = false; d.nach = -1; d.schritt = 0;
+  _b9l.fx.banner = null; _b9l.fx.stempel = null;
+  _b9l.modus = 'dorf'; _b9lStatus();
+}
+function _b9lSchutz(i) {
+  if (!_b9l) return;
+  _b9l.netz = Number(i) ? 1 : 0;
+  const d = _b9l.dorf;                  // neue Einstellung = neuer Monat
+  d.zt = 0; d.laeuft = false; d.fertig = false; d.nach = -1; d.schritt = 0;
+  _b9l.fx.banner = null; _b9l.fx.stempel = null;
+  _b9l.modus = 'dorf'; _b9lStatus();
+}
+// Sprungmarke: Schutz einstellen und gleich einen Monat laufen lassen
+function _b9lMarke(i) {
+  if (!_b9l) return;
+  _b9lSchutz(i); _b9lMonat();
+}
+function _b9lNeu() {
+  if (!_b9l) return;
+  _b9lInit(); _b9lStatus();
+}
+
+/* ── Oberfläche ────────────────────────────────────────────────────────── */
+function _b9lHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie kommt die Malaria zum Menschen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Oben: der Weg des Erregers durch vier Stationen. Unten: ein Dorf mit 50 Menschen. Nachts fliegen dort Mücken.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9l-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_b9lWeg()">▶ Weg verfolgen</button>
+          <button class="sim-btn primary" onclick="_b9lMonat()">▶ 1 Monat im Dorf</button>
+          <button class="sim-btn" onclick="_b9lNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Schutz in der Nacht</span>
+          <div class="sim-btn-row">
+            <button class="sim-btn" data-b9l="0" onclick="_b9lSchutz(0)">kein Moskitonetz</button>
+            <button class="sim-btn" data-b9l="1" onclick="_b9lSchutz(1)">Moskitonetz</button>
+          </div>
+        </div>
+        <div class="lmp-status on" id="_b9l-status" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Zähler nach 1 Monat</div>
+        <div class="fpm-note" id="_b9l-zaehler" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9lStation(1)">Station 1</button>
+          <button class="sim-btn" onclick="_b9lStation(2)">Station 2</button>
+          <button class="sim-btn" onclick="_b9lStation(3)">Station 3</button>
+          <button class="sim-btn" onclick="_b9lStation(4)">Station 4</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9lMarke(0)">kein Moskitonetz, 1 Monat</button>
+          <button class="sim-btn" onclick="_b9lMarke(1)">Moskitonetz, 1 Monat</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Lila = Erreger. Im Dorf: weißer Punkt = gesund, oranger Punkt = krank. Eine Mücke mit lila Punkt trägt Erreger.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: kein Moskitonetz &nbsp;|&nbsp; Stelle nur den Schutz in der Nacht um und vergleiche die Zähler.</p>
+  </div>`;
+}
+
+function _b9lZeile() {
+  if (_b9l.modus === 'weg') {
+    const n = _b9lStationNr();
+    return n ? _B9L_STATION[n - 1] : 'Drücke „▶ Weg verfolgen“.';
+  }
+  if (_b9l.modus === 'dorf') {
+    const d = _b9l.dorf, k = _b9lNeuKrank(d.zt);
+    if (d.laeuft) return 'Nacht ' + _b9lNacht() + ' von 30 · neu krank: ' + k + ' von 50';
+    if (d.fertig) return 'Nach 1 Monat · ' + _B9L_NETZ[_b9l.netz] + ' · neu krank: ' + k + ' von 50';
+    return 'Schutz in der Nacht: ' + _B9L_NETZ[_b9l.netz] + '. Drücke „▶ 1 Monat im Dorf“.';
+  }
+  return 'Drücke „▶ Weg verfolgen“. Lies bei jeder Station diese Zeile.';
+}
+function _b9lStatus() {
+  if (!_b9l) return;
+  const z = _b9lZeile();
+  const el = document.getElementById('_b9l-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _b9l.letzt = z;
+  const zl = document.getElementById('_b9l-zaehler');
+  if (zl) {
+    zl.innerHTML = [0, 1].map(i => _B9L_NETZ[i] + ' → ' +
+      (_b9l.erg[i] === null ? 'noch nicht beobachtet' : 'neu krank: ' + _b9l.erg[i] + ' von 50')).join('<br>');
+  }
+  try {
+    document.querySelectorAll('[data-b9l]').forEach(b => {
+      const v = b.getAttribute('data-b9l');
+      if (b.classList) b.classList.toggle('primary', Number(v) === _b9l.netz);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9lUpdate(dt) {
+  if (!_b9l) return;
+  dt = _bioFxDt(dt);
+  _b9l.t += dt;
+  const w = _b9l.weg;
+  if (w.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(_b9l, dt);
+    const vor = w.zt;
+    w.zt = Math.min(w.bis, w.zt + dt * zl);
+    _b9lWegEffekte(vor, w.zt);
+    if (w.zt >= w.bis - 1e-9) { w.zt = w.bis; w.laeuft = false; }
+  }
+  const d = _b9l.dorf;
+  if (d.laeuft) {
+    const vor = d.zt;
+    d.zt = Math.min(_B9L_MONAT, d.zt + dt);
+    _b9lDorfEffekte(vor, d.zt);
+    if (d.zt >= _B9L_MONAT) {
+      d.laeuft = false; d.fertig = true; d.nach = 0; d.schritt = 0;
+      _b9l.erg[_b9l.netz] = _b9lNeuKrank(d.zt);
+    }
+  } else if (d.nach >= 0) {
+    d.nach += dt;
+    _b9lNachher();
+  }
+  if (_b9lZeile() !== _b9l.letzt) _b9lStatus();
+  _bioFxAlleUpdate(_b9l.fx, dt);
+}
+function _b9lWegEffekte(a, b) {
+  const fx = _b9l.fx, S = _B9L_SEG;
+  const ueber = x => a < x && b >= x;
+  if (ueber(1.6)) _bioFxWelle(fx.teile, _B9L_SPA[0], _B9L_SPA[1], '#c4b5fd', 16);
+  if (ueber(S[1] + 0.2)) _bioFxWelle(fx.teile, _B9L_LEBER[0], _B9L_LEBER[1], '#fde68a', 26);
+  // Vermehrung in der Leber: 1 → 2 → 4 → 8 → 16 → 32
+  for (let k = 0; k < 5; k++) {
+    if (ueber(S[1] + 0.8 + k * 0.5)) {
+      _bioFxFunken(fx.teile, _B9L_LEBER[0], _B9L_LEBER[1] - 4, 3 + k, ['#c4b5fd', '#ffffff', '#fde68a']);
+      if (k === 0) _bioFxZeitlupe(_b9l, 0.35, 1.0);
+      if (k === 4) _bioFxWelle(fx.teile, _B9L_LEBER[0], _B9L_LEBER[1], '#a78bfa', 34);
+    }
+  }
+  // Blutkörperchen platzen
+  for (let k = 0; k < 4; k++) {
+    if (ueber(S[2] + 2.4 + k * 0.3)) {
+      const p = _b9lZellePos(k * 4);
+      _bioFxFunken(fx.teile, p[0], p[1], 4, ['#a78bfa', '#c4b5fd', '#fecaca']);
+    }
+  }
+  if (ueber(S[2] + 3.5)) _bioFxWelle(fx.teile, 210, 30, '#fb923c', 26);
+  if (ueber(S[3] + 1.4)) _bioFxWelle(fx.teile, _B9L_SPB[0], _B9L_SPB[1], '#c4b5fd', 16);
+  if (ueber(S[3] + 2.5 + 1.7)) _bioFxFunken(fx.teile, _B9L_LUPE[0], _B9L_LUPE[1], 7, ['#a78bfa', '#5eead4', '#ffffff']);
+  // Ende: die neue Mücke erreicht den nächsten Menschen
+  if (ueber(S[4] + 1.7)) {
+    _bioFxWelle(fx.teile, _B9L_NM[0], _B9L_NM[1] + 8, '#c4b5fd', 24);
+    _bioFxFunken(fx.teile, _B9L_NM[0], _B9L_NM[1], 5, ['#c4b5fd', '#fde68a', '#ffffff']);
+    _bioFxBanner(fx, 'Weiter zum nächsten Menschen!', 3.0, '#c4b5fd');
+  }
+}
+function _b9lDorfEffekte(a, b) {
+  const fx = _b9l.fx;
+  const ueber = x => a < x && b >= x;
+  for (const f of _B9L_ANFLUG) {
+    const p = _b9lPerson(f[1]);
+    if (_b9lPrallt(f) && ueber(f[0] + 0.55)) _bioFxWelle(fx.teile, p[0], 206, '#ffffff', 12);
+    if (!_b9lPrallt(f) && ueber(f[0] + 0.7)) {
+      if (_b9lTrifft(f)) {
+        _bioFxWelle(fx.teile, p[0], p[1], '#fb923c', 14);
+        _bioFxFunken(fx.teile, p[0], p[1] - 3, 3, ['#fdba74', '#fde68a']);
+      } else {
+        _bioFxWelle(fx.teile, p[0], p[1], '#94a3b8', 8);
+      }
+    }
+  }
+}
+// Nach dem Monat: erst hinsehen, dann bestätigt der Effekt.
+function _b9lNachher() {
+  const d = _b9l.dorf, fx = _b9l.fx, t = d.nach;
+  const neu = _B9L_ANFLUG.filter(f => _b9lTrifft(f));
+  // die neu Kranken leuchten nacheinander kurz auf
+  while (d.schritt < neu.length && t >= 0.3 + d.schritt * 0.12) {
+    const p = _b9lPerson(neu[d.schritt][1]);
+    _bioFxWelle(fx.teile, p[0], p[1], '#fb923c', 12);
+    d.schritt++;
+  }
+  if (d.schritt === neu.length && t >= 1.0 + neu.length * 0.12) {
+    d.schritt = 100;
+    // die Nachbarn der Hustenden: gesund geblieben
+    for (const q of [6, 27, 41, 43]) {
+      const p = _b9lPerson(q);
+      _bioFxWelle(fx.teile, p[0], p[1], '#86efac', 12);
+    }
+    if (_b9l.netz) {
+      for (let h = 0; h < 10; h++) _bioFxFunken(fx.teile, _b9lHuette(h) + 16, 206, 2, ['#ffffff', '#bbf7d0']);
+    }
+  }
+  if (d.schritt === 100 && t >= 1.7 + neu.length * 0.12) {
+    d.schritt = 101;
+    if (_b9l.netz) {
+      _bioFxBanner(fx, 'Die Mücken prallen am Netz ab.', 3.0, '#bbf7d0');
+      if (_b9l.erg[0] !== null) _bioFxKonfetti(fx.teile, 210, 170, 22);
+    } else {
+      _bioFxBanner(fx, 'Husten: Der Nachbar bleibt gesund.', 3.2, '#86efac');
+    }
+  }
+  if (t > 6) d.nach = -1;
+}
+
+/* ── Zeichnen: Bausteine ───────────────────────────────────────────────── */
+// Erreger: kleine lila Sichel mit ruhigem Schein
+function _b9lErreger(ctx, x, y, r, w, a) {
+  ctx.save();
+  ctx.globalAlpha = a === undefined ? 1 : a;
+  ctx.translate(x, y); ctx.rotate(w);
+  ctx.shadowColor = '#c4b5fd'; ctx.shadowBlur = 6;
+  ctx.fillStyle = '#7c3aed';
+  ctx.beginPath();
+  ctx.arc(0, 0, r, Math.PI * 0.15, Math.PI * 0.85);
+  ctx.arc(0, -r * 0.35, r * 0.8, Math.PI * 0.8, Math.PI * 0.2, true);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Mücke: s = Größe, r = Blickrichtung (+1 rechts, -1 links), traegt = Erreger im Hinterleib
+function _b9lMuecke(ctx, x, y, s, r, traegt, sitzt) {
+  const t = _b9l.t;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(s * r, s);
+  // Flügel (ruhiges Schwirren, unter 3 Hz)
+  const fl = sitzt ? 0.15 : 0.5 + 0.35 * Math.sin(t * 14);
+  ctx.fillStyle = 'rgba(219,234,254,0.75)'; ctx.strokeStyle = 'rgba(100,116,139,0.8)'; ctx.lineWidth = 0.8 / s;
+  for (const k of [-1, 1]) {
+    ctx.save(); ctx.translate(-1, -3); ctx.rotate(-0.4 - fl * 0.6 * (k > 0 ? 1 : 0.6));
+    ctx.beginPath(); ctx.ellipse(-8, 0, 9, 3, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke(); ctx.restore();
+  }
+  // Beine
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 0.9 / s;
+  for (const k of [-4, 0, 4]) {
+    ctx.beginPath(); ctx.moveTo(k * 0.6, 2); ctx.lineTo(k * 1.6 - 1, 9); ctx.lineTo(k * 2 - 2, 13); ctx.stroke();
+  }
+  // Hinterleib, Brust, Kopf
+  ctx.fillStyle = '#475569';
+  ctx.beginPath(); ctx.ellipse(-10, 1, 9, 3.2, -0.15, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(226,232,240,0.6)'; ctx.lineWidth = 0.7 / s;
+  for (const k of [-15, -11, -7]) { ctx.beginPath(); ctx.moveTo(k, -2); ctx.lineTo(k + 0.6, 3.6); ctx.stroke(); }
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.ellipse(0, 0, 4.2, 3.6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(5, 1, 2.4, 0, 2 * Math.PI); ctx.fill();
+  // Rüssel schräg nach unten vorn
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.1 / s;
+  ctx.beginPath(); ctx.moveTo(6.5, 2.5); ctx.lineTo(11, 10); ctx.stroke();
+  if (traegt) {
+    ctx.shadowColor = '#c4b5fd'; ctx.shadowBlur = 5;
+    ctx.fillStyle = '#a78bfa';
+    ctx.beginPath(); ctx.arc(-10, 1, 2.3, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Mensch, schematisch: Kopf, T-Shirt, Arme (ohne Körperdetails)
+function _b9lMensch(ctx) {
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  // Arme (schematisch, nur als Fläche)
+  ctx.strokeStyle = '#d9a77c'; ctx.lineWidth = 12;
+  ctx.beginPath(); ctx.moveTo(184, 56); ctx.lineTo(132, 92); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(236, 56); ctx.lineTo(288, 92); ctx.stroke();
+  // T-Shirt mit kurzen Ärmeln
+  ctx.fillStyle = '#93c5fd'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(186, 46); ctx.lineTo(234, 46); ctx.lineTo(252, 64); ctx.lineTo(242, 72); ctx.lineTo(238, 68);
+  ctx.lineTo(238, 150); ctx.lineTo(182, 150); ctx.lineTo(182, 68); ctx.lineTo(178, 72); ctx.lineTo(168, 64);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  // Hals und Kopf
+  ctx.fillStyle = '#d9a77c';
+  ctx.fillRect(204, 38, 12, 9);
+  ctx.beginPath(); ctx.arc(210, 28, 13, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.fillStyle = '#3f2a1d';
+  ctx.beginPath(); ctx.arc(210, 24, 13, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+  // Fenster in den Körper (heller Einblick)
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  _bioFxRundRect(ctx, 188, 72, 44, 72, 8); ctx.fill();
+  ctx.restore();
+}
+// Rote Blutkörperchen fließen durch die Ader
+function _b9lZellePos(i) {
+  const L = _b9lLaenge(_B9L_ADER);
+  const s = ((i / 16) * L + _b9l.t * 26) % L;
+  return _b9lAuf(_B9L_ADER, s / L);
+}
+function _b9lPfeil(ctx, a, b, hell, knick) {
+  const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2 + (knick || 0);
+  ctx.save();
+  ctx.strokeStyle = hell ? '#f59e0b' : 'rgba(100,116,139,0.45)';
+  ctx.lineWidth = hell ? 2.6 : 1.3;
+  if (!hell && ctx.setLineDash) ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.quadraticCurveTo(mx, my, b[0], b[1]); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  const w = Math.atan2(b[1] - my, b[0] - mx);
+  ctx.fillStyle = ctx.strokeStyle;
+  ctx.beginPath();
+  ctx.moveTo(b[0], b[1]);
+  ctx.lineTo(b[0] - 8 * Math.cos(w - 0.4), b[1] - 8 * Math.sin(w - 0.4));
+  ctx.lineTo(b[0] - 8 * Math.cos(w + 0.4), b[1] - 8 * Math.sin(w + 0.4));
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+
+/* ── Zeichnen: oben der Weg ────────────────────────────────────────────── */
+function _b9lDrawWeg(ctx) {
+  const w = _b9l.weg, zt = w.zt, S = _B9L_SEG, t = _b9l.t, st = _b9lStationNr();
+  const bg = ctx.createLinearGradient(0, 0, 0, 152);
+  bg.addColorStop(0, '#fdf8ee'); bg.addColorStop(1, '#f3ead6');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, 420, 152);
+
+  // Pfeile zwischen den Stationen (hell, sobald der Erreger dort war)
+  const M = _B9L_MARKE;
+  const ende = w.begonnen && zt >= S[4];
+  const hell = k => w.begonnen && (ende ? zt >= S[4] + 0.1 + k * 0.35 : st > k + 1);
+  _b9lPfeil(ctx, [M[0][0] + 8, M[0][1] + 8], [M[1][0] - 6, M[1][1] - 10], hell(0), 10);
+  _b9lPfeil(ctx, [M[1][0] + 11, M[1][1] + 4], [M[2][0] - 11, M[2][1] + 2], hell(1), 14);
+  _b9lPfeil(ctx, [M[2][0] + 9, M[2][1] - 8], [M[3][0] - 2, M[3][1] + 11], hell(2), -10);
+  _b9lPfeil(ctx, [M[3][0] + 10, M[3][1] + 4], [_B9L_NM[0] - 8, _B9L_NM[1] - 10], ende && zt >= S[4] + 1.15, -6);
+
+  // nächster Mensch rechts (klein, schematisch)
+  ctx.fillStyle = '#d9a77c';
+  ctx.beginPath(); ctx.arc(_B9L_NM[0], _B9L_NM[1], 7, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fca5a5'; _bioFxRundRect(ctx, _B9L_NM[0] - 9, _B9L_NM[1] + 8, 18, 30, 5); ctx.fill();
+  ctx.fillStyle = '#475569'; ctx.font = '600 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('nächster', 417, 148 - 10); ctx.fillText('Mensch', 417, 148);
+
+  _b9lMensch(ctx);
+  // Leber im Körperfenster
+  const L = _B9L_LEBER;
+  if (st === 2) _bioFxLeuchten(ctx, L[0], L[1], 18, t, '253,224,71');
+  ctx.fillStyle = '#9a3b2e'; ctx.strokeStyle = '#6b2118'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(L[0], L[1], 18, 11, -0.15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (w.begonnen && zt >= S[1]) {
+    ctx.fillStyle = '#6b2118'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Leber', L[0], L[1] - 14);
+  }
+  // Blutgefäß
+  ctx.save();
+  ctx.strokeStyle = 'rgba(220,38,38,0.35)'; ctx.lineWidth = 7; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(_B9L_ADER[0][0], _B9L_ADER[0][1]);
+  for (const p of _B9L_ADER.slice(1)) ctx.lineTo(p[0], p[1]);
+  ctx.stroke(); ctx.restore();
+  // rote Blutkörperchen
+  for (let i = 0; i < 16; i++) {
+    const p = _b9lZellePos(i);
+    const befallen = w.begonnen && zt >= S[2] + 1.0 + i * 0.06 && i % 2 === 0;
+    const geplatzt = w.begonnen && i % 4 === 0 && zt >= S[2] + 2.4 + (i / 4) * 0.3;
+    if (geplatzt) {
+      ctx.strokeStyle = 'rgba(220,38,38,0.45)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(p[0], p[1], 3.4, 0.3, 2.2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(p[0], p[1], 3.4, 3.2, 5.4); ctx.stroke();
+      continue;
+    }
+    const gr = befallen ? 3.4 + 0.8 * _b9lAb(S[2] + 1.0, S[2] + 2.4, zt) : 3.2;
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath(); ctx.arc(p[0], p[1], gr, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#f87171';
+    ctx.beginPath(); ctx.arc(p[0], p[1], gr * 0.45, 0, 2 * Math.PI); ctx.fill();
+    if (befallen) { ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(p[0] + 0.8, p[1] - 0.6, 1.5, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  // Thermometer neben dem Kopf
+  const grad = !w.begonnen ? 37 : 37 + 2 * _b9lAb(S[2] + 1.5, S[2] + 3.5, zt);
+  const tx = 252;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, tx - 3, 8, 6, 30, 3); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(tx, 41, 5, 0, 2 * Math.PI); ctx.fillStyle = '#ef4444'; ctx.fill(); ctx.stroke();
+  const hoch = 8 + (grad - 36) * 7;
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(tx - 1.5, 40 - hoch, 3, hoch);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(Math.round(grad) + ' °C', tx + 8, 30);
+  if (w.begonnen && zt >= S[2] + 3.5 && zt < S[3] + 1) _bioFxLeuchten(ctx, 210, 28, 18, t, '251,146,60');
+
+  // ── Erreger unterwegs ──
+  if (w.begonnen) {
+    const E = (x, y, a) => _b9lErreger(ctx, x, y, 3.2, Math.sin(t * 2 + x) * 0.5, a);
+    if (zt < S[1]) {
+      // Station 1: aus der Mücke durch den Rüssel in den Arm, dann zur Leber
+      let p;
+      if (zt < 2.0) p = [_B9L_MA[0] - 6, _B9L_MA[1] + 1];
+      else if (zt < 2.6) p = _b9lMix([_B9L_MA[0] - 6, _B9L_MA[1] + 1], _B9L_SPA, (zt - 2.0) / 0.6);
+      else p = _b9lAuf([_B9L_SPA, [158, 76], [184, 58], [198, 72], [L[0], L[1]]], _b9lAb(3.0, 5.0, zt));
+      if (zt >= 2.0) E(p[0], p[1]);     // vorher leuchtet er im Hinterleib der Mücke
+    } else {
+      // Station 2: Vermehrung in der Leber
+      const k = zt < S[1] + 0.8 ? 0 : Math.min(5, Math.floor((zt - S[1] - 0.8) / 0.5) + 1);
+      const n = Math.pow(2, k);
+      const weg = zt >= S[2] ? 10 : 0;               // 10 gehen ins Blut
+      for (let i = weg; i < n; i++) {
+        const q = _b9l.leber[i];
+        const jx = Math.sin(t * 1.3 + q[2]) * 1.2, jy = Math.cos(t * 1.1 + q[2]) * 0.8;
+        _b9lErreger(ctx, L[0] + q[0] + jx, L[1] + q[1] + jy, n > 8 ? 2.0 : 3.2, q[2], 1);
+      }
+      // Station 3: aus der Leber ins Blut
+      if (zt >= S[2] && zt < S[2] + 1.2) {
+        const u = _b9lAb(S[2], S[2] + 1.0, zt);
+        for (let i = 0; i < 10; i++) {
+          const q = _b9l.leber[i];
+          const ziel = _b9lAuf(_B9L_ADER, 0.34 + i * 0.03);
+          const p = _b9lMix([L[0] + q[0], L[1] + q[1]], ziel, _bioFxEase.sanft(u));
+          _b9lErreger(ctx, p[0], p[1], 2.4, q[2], 1 - _b9lAb(S[2] + 1.0, S[2] + 1.2, zt));
+        }
+      }
+      // freie Erreger nach dem Platzen
+      if (zt >= S[2] + 2.4) {
+        const LA = _b9lLaenge(_B9L_ADER);
+        for (let i = 0; i < 8; i++) {
+          if (zt < S[2] + 2.4 + Math.floor(i / 2) * 0.3) continue;
+          if (zt >= S[3] + 1.5 && i < 3) continue;   // diese drei nimmt die neue Mücke
+          const s = ((i / 8) * LA + t * 22 + 7) % LA;
+          const p = _b9lAuf(_B9L_ADER, s / LA);
+          _b9lErreger(ctx, p[0], p[1] - 4, 2.2, i, 0.95);
+        }
+      }
+      // Station 4: drei Erreger in die neue Mücke
+      if (zt >= S[3] + 1.5 && zt < S[3] + 2.7) {
+        for (let i = 0; i < 3; i++) {
+          const u = _b9lAb(S[3] + 1.5 + i * 0.15, S[3] + 2.4 + i * 0.1, zt);
+          if (u >= 1) continue;
+          const p = _b9lAuf([[236, 58], [256, 70], _B9L_SPB, [_B9L_MB[0] + 8, _B9L_MB[1] + 1]], u);
+          _b9lErreger(ctx, p[0], p[1], 2.6, i, 1);
+        }
+      }
+    }
+  }
+
+  // ── Mücke 1 ──
+  if (w.begonnen && zt < S[1]) {
+    let p, sitzt = false;
+    if (zt < 1.4) {
+      const u = _bioFxEase.sanft(zt / 1.4);
+      p = _b9lMix([40, 28], _B9L_MA, u); p[1] += Math.sin(t * 5) * 2 * (1 - u);
+    } else if (zt < 3.4) { p = _B9L_MA.slice(); sitzt = true; }
+    else p = _b9lMix(_B9L_MA, [-30, 8], _bioFxEase.rein((zt - 3.4) / 1.4));
+    _b9lMuecke(ctx, p[0], p[1], 1.1, 1, zt < 2.0, sitzt);
+  } else if (!w.begonnen) {
+    _b9lMuecke(ctx, 40 + Math.sin(t * 0.9) * 8, 28 + Math.sin(t * 1.7) * 4, 1.1, 1, true, false);
+  }
+  // ── neue Mücke ──
+  if (w.begonnen && zt >= S[3]) {
+    let p, sitzt = false;
+    const b = zt - S[3];
+    if (b < 1.4) {
+      const u = _bioFxEase.sanft(b / 1.4);
+      p = _b9lMix([440, 22], _B9L_MB, u); p[1] += Math.sin(t * 5) * 2 * (1 - u);
+    } else if (zt < S[4]) { p = _B9L_MB.slice(); sitzt = true; }
+    else {
+      const u = _bioFxEase.sanft(_b9lAb(S[4], S[4] + 1.7, zt));
+      p = _b9lMix(_B9L_MB, [_B9L_NM[0] - 12, _B9L_NM[1] + 2], u);
+      p[1] -= Math.sin(Math.PI * u) * 26; sitzt = u >= 1;
+    }
+    _b9lMuecke(ctx, p[0], p[1], 1.1, -1, zt >= S[3] + 2.4, sitzt);
+  }
+  // ── Lupe „in der Mücke“: Vermehrung auf andere Art ──
+  if (w.begonnen && zt >= S[3] + 2.4 && zt < S[3] + 5.9) {
+    const a = _b9lAb(S[3] + 2.4, S[3] + 2.7, zt) * (1 - _b9lAb(S[3] + 5.6, S[3] + 5.9, zt));
+    const [lx, ly, lr] = _B9L_LUPE, b = zt - (S[3] + 2.5);
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(_B9L_MB[0] - 6, _B9L_MB[1] + 3); ctx.lineTo(lx - lr * 0.7, ly - lr * 0.7); ctx.stroke();
+    ctx.fillStyle = '#f1f5f9'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '600 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('in der Mücke', lx, ly - lr - 4);
+    ctx.beginPath(); ctx.arc(lx, ly, lr - 1, 0, 2 * Math.PI); ctx.clip();
+    if (b < 0.9) {
+      const u = _bioFxEase.sanft(_bioFxKlemme(b / 0.9));
+      ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(lx - 14 + 11 * u, ly, 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#14b8a6'; ctx.beginPath(); ctx.arc(lx + 14 - 11 * u, ly, 4, 0, 2 * Math.PI); ctx.fill();
+    } else if (b < 1.7) {
+      const r = 5 + 6 * _bioFxKlemme((b - 0.9) / 0.8) + Math.sin(t * 3) * 0.4;
+      const g = ctx.createRadialGradient(lx - 2, ly - 2, 1, lx, ly, r);
+      g.addColorStop(0, '#99f6e4'); g.addColorStop(1, '#7c3aed');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(lx, ly, r, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      const u = _bioFxEase.raus(_bioFxKlemme((b - 1.7) / 0.7));
+      for (let i = 0; i < 12; i++) {
+        const wi = i / 12 * 6.283 + t * 0.4;
+        const rr = 3 + 15 * u;
+        _b9lErreger(ctx, lx + Math.cos(wi) * rr, ly + Math.sin(wi) * rr, 2.4, wi + 1.57, 1);
+      }
+    }
+    ctx.restore();
+  }
+
+  // ── Stationsmarken ──
+  for (let k = 0; k < 4; k++) {
+    const [mx, my] = M[k], an = st === k + 1 && !ende, war = st > k + 1 || ende;
+    if (an) _bioFxLeuchten(ctx, mx, my, 14, t, '253,224,71');
+    ctx.fillStyle = an ? '#facc15' : war ? '#fde68a' : '#e2e8f0';
+    ctx.strokeStyle = an ? '#a16207' : '#64748b'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(mx, my, 9, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(k + 1), mx, my + 4);
+    if (an) {
+      ctx.font = '700 11px sans-serif';
+      const links = k === 1;                         // Station 2 steht links vom Körper
+      const lx = links ? mx - 13 : mx + 13;
+      ctx.textAlign = links ? 'right' : 'left';
+      ctx.fillStyle = 'rgba(255,255,255,0.85)';
+      const bw = ctx.measureText('Station ' + (k + 1)).width + 6;
+      ctx.fillRect(links ? lx - bw + 3 : lx - 3, my - 9, bw, 14);
+      ctx.fillStyle = '#92400e';
+      ctx.fillText('Station ' + (k + 1), lx, my + 2);
+    }
+  }
+  // Trennlinie zum Dorf
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(0, 151, 420, 2);
+}
+
+/* ── Zeichnen: unten das Dorf ──────────────────────────────────────────── */
+function _b9lDrawDorf(ctx) {
+  const d = _b9l.dorf, zt = d.zt, t = _b9l.t, netz = _b9l.netz;
+  const sky = ctx.createLinearGradient(0, 153, 0, 250);
+  sky.addColorStop(0, '#1e2a4a'); sky.addColorStop(1, '#324a6e');
+  ctx.fillStyle = sky; ctx.fillRect(0, 153, 420, 97);
+  for (const s of _b9l.sterne) {
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.45 + 0.3 * Math.sin(t * 0.8 + s[2])).toFixed(3) + ')';
+    ctx.fillRect(s[0], s[1], 1.6, 1.6);
+  }
+  ctx.fillStyle = '#f1f5f9'; ctx.beginPath(); ctx.arc(250, 178, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#26365a'; ctx.beginPath(); ctx.arc(252.5, 176.5, 4.2, 0, 2 * Math.PI); ctx.fill();
+  // Boden
+  ctx.fillStyle = '#3f6b3a'; ctx.fillRect(0, 234, 420, 16);
+  // Kopfzeile
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#e2e8f0';
+  ctx.fillText(d.laeuft ? 'Nacht ' + _b9lNacht() + ' von 30' : 'Dorf · 50 Menschen', 8, 166);
+  ctx.font = '600 10px sans-serif';
+  ctx.fillStyle = '#ffffff'; ctx.beginPath(); ctx.arc(140, 162.5, 3.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.fillText('gesund', 146, 166);
+  ctx.fillStyle = '#fb923c'; ctx.beginPath(); ctx.arc(193, 162.5, 3.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.fillText('krank', 199, 166);
+  const k = _b9lNeuKrank(zt);
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'right'; ctx.fillStyle = '#fde68a';
+  ctx.fillText('neu krank: ' + k + ' von 50', 414, 166);
+
+  // Hütten mit Schlafenden
+  for (let h = 0; h < 10; h++) {
+    const x0 = _b9lHuette(h);
+    ctx.fillStyle = '#6b4f33'; ctx.fillRect(x0, 198, 32, 36);
+    ctx.fillStyle = '#8a6a45'; ctx.fillRect(x0 + 2, 228, 28, 6);
+    ctx.fillStyle = '#b08a4e'; ctx.strokeStyle = '#7c5a2c'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0 - 3, 199); ctx.lineTo(x0 + 16, 185); ctx.lineTo(x0 + 35, 199); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  for (let p = 0; p < 50; p++) {
+    const [px, py] = _b9lPerson(p);
+    const alt = _B9L_KRANK0.includes(p), neu = _b9lIstNeuKrank(p, zt);
+    ctx.fillStyle = alt || neu ? '#fb923c' : '#ffffff';
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 0.8;
+    ctx.beginPath(); ctx.arc(px, py, 3.4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    if (neu) { ctx.strokeStyle = '#fdba74'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(px, py, 5.6, 0, 2 * Math.PI); ctx.stroke(); }
+  }
+  // kleines Feuer bei den Menschen draußen
+  for (const p of _B9L_DRAUSSEN) {
+    const [px, py] = _b9lPerson(p);
+    ctx.fillStyle = 'rgba(251,146,60,' + (0.55 + 0.15 * Math.sin(t * 2.2 + px)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.moveTo(px + 10, py + 4); ctx.lineTo(px + 13, py - 5); ctx.lineTo(px + 16, py + 4); ctx.closePath(); ctx.fill();
+  }
+  // Moskitonetz über den Schlafplätzen
+  if (netz) {
+    for (let h = 0; h < 10; h++) {
+      const x0 = _b9lHuette(h) + 2, y0 = 204, wN = 28, hN = 28;
+      ctx.save();
+      ctx.fillStyle = 'rgba(255,255,255,0.14)'; ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 1;
+      _bioFxRundRect(ctx, x0, y0, wN, hN, 8); ctx.fill(); ctx.stroke();
+      ctx.clip();
+      ctx.strokeStyle = 'rgba(255,255,255,0.3)'; ctx.lineWidth = 0.6;
+      for (let q = -hN; q < wN; q += 4) {
+        ctx.beginPath(); ctx.moveTo(x0 + q, y0); ctx.lineTo(x0 + q + hN, y0 + hN); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x0 + q + hN, y0); ctx.lineTo(x0 + q, y0 + hN); ctx.stroke();
+      }
+      ctx.restore();
+    }
+  }
+  // Husten: Wolke zum Nachbarn – der Nachbar bleibt gesund
+  if (d.laeuft) {
+    for (const [ht, wer, nb] of _B9L_HUSTEN) {
+      const u = (zt - ht) / 1.0;
+      if (u < 0 || u > 1) continue;
+      const a = _b9lPerson(wer), b = _b9lPerson(nb);
+      for (let i = 0; i < 4; i++) {
+        const v = _bioFxKlemme(u * 1.2 - i * 0.08);
+        const p = _b9lMix(a, b, v);
+        ctx.fillStyle = 'rgba(203,213,225,' + (0.7 * (1 - u)).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(p[0] + i, p[1] - 3 - i * 1.5 - v * 3, 1.6 + i * 0.5, 0, 2 * Math.PI); ctx.fill();
+      }
+      const x0 = _b9lHuette(Math.floor(wer / 5)) + 16;
+      ctx.fillStyle = 'rgba(241,245,249,' + (0.95 * Math.sin(Math.PI * u)).toFixed(3) + ')';
+      ctx.font = '600 10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('hustet', x0, 181);
+    }
+  }
+  // Mücken
+  if (d.laeuft || d.fertig) {
+    for (let i = 0; i < _B9L_ANFLUG.length; i++) {
+      const f = _B9L_ANFLUG[i], b = zt - f[0];
+      if (b < 0 || b > 1.4) continue;
+      const [px, py] = _b9lPerson(f[1]);
+      const seite = i % 2 ? 1 : -1;
+      const S0 = [px + seite * 46, 172], E0 = [px - seite * 46, 170];
+      let p;
+      if (_b9lPrallt(f)) {
+        const N = [px, 200];
+        if (b < 0.55) p = _b9lMix(S0, N, _bioFxEase.sanft(b / 0.55));
+        else if (b < 0.75) p = _b9lMix(N, [px + seite * 10, 186], (b - 0.55) / 0.2);
+        else p = _b9lMix([px + seite * 10, 186], [px + seite * 50, 170], (b - 0.75) / 0.65);
+      } else {
+        const T = [px - 5 * seite, py - 8];
+        if (b < 0.7) p = _b9lMix(S0, T, _bioFxEase.sanft(b / 0.7));
+        else if (b < 0.95) p = T;
+        else p = _b9lMix(T, E0, (b - 0.95) / 0.45);
+      }
+      _b9lMuecke(ctx, p[0], p[1], 0.42, -seite, !!f[2], false);
+    }
+  }
+  if (!d.laeuft) {
+    // ruhige Mücken über dem Dorf
+    for (let i = 0; i < 3; i++) {
+      const x = 60 + i * 150 + Math.sin(t * 0.7 + i * 2) * 22, y = 178 + Math.sin(t * 1.3 + i) * 4;
+      _b9lMuecke(ctx, x, y, 0.42, Math.cos(t * 0.7 + i * 2) > 0 ? 1 : -1, i !== 1, false);
+    }
+  }
+}
+
+function _b9lDraw(ctx, cv) {
+  if (!_b9l) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.save();
+  ctx.lineWidth = 1;
+  _b9lDrawWeg(ctx);
+  _b9lDrawDorf(ctx);
+  ctx.restore();
+  _bioFxAlleDraw(ctx, _b9l.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIOLOGIE 8 FOERDER – bh1 „Das Signal im Kopf“ (Kennung bio-hormone)
+// Grauer Koerperumriss ohne Einzelheiten (wie ein Scherenschnitt, fuer
+// Maedchen und Junge derselbe), rote Adern, im Kopf die Hirnanhangdruese,
+// im Bauch zwei Punkte: Eierstoecke bzw. Hoden (keine Organdarstellung).
+// „▶ 1 Jahr abspielen“: 12 Monate in 15 s, Monatsband von 12 bis 13 Jahre.
+//  * sendet: blaue Punkte („Hormon aus dem Kopf“) wandern die Adern hinab zu
+//    den zwei Punkten im Bauch; die leuchten auf und schicken gruene Punkte
+//    („Hormon aus den Eierstoecken/Hoden“) in den ganzen Koerper. Die Liste
+//    „Neu am Koerper“ fuellt sich mit Haekchen -> „Neu am Koerper: 5 von 5“;
+//    der Umriss wird etwas groesser.
+//  * ruht: Adern leer, Punkte im Bauch bleiben grau, Liste leer ->
+//    „Neu am Koerper: 0 von 5“, obwohl das Monatsband bis 13 Jahre laeuft.
+// Aha (nach der Beobachtung, _bioFx): Beim ersten blauen Punkt, der im Bauch
+// eintrifft, Zeitlupe, Lichtring und ruhiges Leuchten; jedes Haekchen mit
+// kleinen Funken. Bei „ruht“ nach dem Jahr ein grauer Lichtring um die grauen
+// Punkte und ein ruhiger Hinweisstreifen. Keine Erklaerung als Text im Bild,
+// kein Blinken, kein Ton, keine Wertung.
+// Leitplanken Sexualerziehung: nur Umriss, keine Koerpermerkmale.
+// ════════════════════════════════════════════════════════════════════════
+let _b9m = null;
+const _B9M_MONAT = 1.25;                 // s je Monat -> 15 s fuer 12 Monate
+const _B9M_NEU = {
+  m: ['wächst schneller', 'Haare unter den Achseln', 'Brust wächst',
+      'Hüften werden breiter', 'Haut wird fettiger'],
+  j: ['wächst schneller', 'Haare unter den Achseln', 'Stimme wird tiefer',
+      'Bart wächst', 'Schultern werden breiter']
+};
+const _B9M_AB = [3, 5, 7, 9, 11];        // ab Monat … erscheint Listenpunkt k
+const _B9M_KOERPER = { m: 'Mädchen', j: 'Junge' };
+const _B9M_BLAU = '#2563eb', _B9M_GRUEN = '#16a34a';
+const _B9M_FUSS = { x: 120, y: 212 };    // Umriss waechst von den Fuessen aus
+const _B9M_HD = { x: 120, y: 38 };       // Hirnanhangdruese
+const _B9M_GON = [{ x: 111, y: 138 }, { x: 129, y: 138 }];
+
+// Wege in Koerperkoordinaten (Polylinien)
+function _b9mWege() {
+  const H = _B9M_HD, G = _B9M_GON;
+  const blau = G.map(g => [[H.x, H.y], [120, 58], [120, 130], [g.x, g.y]]);
+  const gruen = [];
+  for (const g of G) {
+    const s = g.x < 120 ? -1 : 1;
+    gruen.push([[g.x, g.y], [120, 128], [120, 60], [120, 22]]);                          // Kopf
+    gruen.push([[g.x, g.y], [120, 128], [120, 66], [120 - 24, 66], [120 - 33, 102], [120 - 36, 140]]); // Arm li
+    gruen.push([[g.x, g.y], [120, 128], [120, 66], [120 + 24, 66], [120 + 33, 102], [120 + 36, 140]]); // Arm re
+    gruen.push([[g.x, g.y], [120 + s * 10, 150], [120 + s * 11, 206]]);                  // Bein
+    gruen.push([[g.x, g.y], [120, 124], [120, 84], [120 + s * 16, 92], [120 + s * 16, 118]]); // Rumpf
+  }
+  return { blau, gruen };
+}
+function _b9mLaenge(w) {
+  let L = 0;
+  for (let i = 1; i < w.length; i++) L += Math.hypot(w[i][0] - w[i - 1][0], w[i][1] - w[i - 1][1]);
+  return L;
+}
+function _b9mPunkt(w, s) {               // Ort nach Strecke s auf dem Weg
+  for (let i = 1; i < w.length; i++) {
+    const a = w[i - 1], b = w[i], l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (s <= l) { const u = l ? s / l : 0; return { x: a[0] + (b[0] - a[0]) * u, y: a[1] + (b[1] - a[1]) * u }; }
+    s -= l;
+  }
+  const e = w[w.length - 1]; return { x: e[0], y: e[1] };
+}
+
+function _b9mInit() {
+  _b9m = {
+    k: 'm', hd: 'sendet',
+    phase: 'bereit', monat: 0, t: 0,
+    punkte: [], tb: 0, tg: 0, an: false, glut: 0,
+    haken: 0, hakenAlter: [0, 0, 0, 0, 0],
+    fx: { teile: [] }, nach: -1, schritt: 0, key: '',
+    wege: _b9mWege(), zz: 7
+  };
+}
+function _b9mZufall() { _b9m.zz = (_b9m.zz * 1664525 + 1013904223) >>> 0; return _b9m.zz / 4294967296; }
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9mFxLeer() {
+  _b9m.fx = { teile: [] }; _b9m.zeitlupe = null; _b9m.nach = -1; _b9m.schritt = 0;
+}
+function _b9mZurueck() {
+  _b9mFxLeer();
+  _b9m.phase = 'bereit'; _b9m.monat = 0; _b9m.punkte = []; _b9m.an = false; _b9m.glut = 0;
+  _b9m.haken = 0; _b9m.hakenAlter = [0, 0, 0, 0, 0]; _b9m.tb = 0; _b9m.tg = 0;
+  _b9mStatus(); _b9mKnoepfe();
+}
+function _b9mKoerper(k) { if (!_b9m) return; _b9m.k = k === 'j' ? 'j' : 'm'; _b9mZurueck(); }
+function _b9mDruese(h) { if (!_b9m) return; _b9m.hd = h === 'ruht' ? 'ruht' : 'sendet'; _b9mZurueck(); }
+function _b9mStart() {
+  if (!_b9m) return;
+  _b9mZurueck();
+  _b9m.phase = 'laeuft';
+  _b9mStatus(); _b9mKnoepfe();
+}
+function _b9mNeu() {
+  if (!_b9m) return;
+  _b9m.k = 'm'; _b9m.hd = 'sendet';
+  _b9mZurueck();
+}
+// Sprungmarke: Einstellung setzen und gleich das Ergebnis nach 1 Jahr zeigen.
+function _b9mMarke(k, h) {
+  if (!_b9m) return;
+  _b9m.k = k; _b9m.hd = h;
+  _b9mZurueck();
+  _b9m.phase = 'fertig'; _b9m.monat = 12; _b9m.nach = 99; _b9m.schritt = 9;
+  if (h === 'sendet') {
+    _b9m.an = true; _b9m.glut = 1; _b9m.haken = 5; _b9m.hakenAlter = [9, 9, 9, 9, 9];
+    // Punkte schon unterwegs, damit das Bild gleich lebt
+    const W = _b9m.wege;
+    for (let i = 0; i < 16; i++) {
+      const w = W.gruen[i % W.gruen.length];
+      _b9m.punkte.push({ w, s: _b9mLaenge(w) * ((i * 0.37) % 1), v: 46, f: 'g' });
+    }
+    for (let i = 0; i < 4; i++) {
+      const w = W.blau[i % 2];
+      _b9m.punkte.push({ w, s: _b9mLaenge(w) * (i * 0.25), v: 70, f: 'b' });
+    }
+    for (const q of _B9M_GON) { const o = _b9mAussen(q); _bioFxWelle(_b9m.fx.teile, o.x, o.y, 'rgba(250,204,21,0.9)', 22); }
+  }
+  _b9mStatus(); _b9mKnoepfe();
+}
+function _b9mKnoepfe() {
+  if (!_b9m || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-b9m]').forEach(b => {
+      const d = b.getAttribute('data-b9m');
+      const an = d === 'k' + _b9m.k || d === 'h' + _b9m.hd;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+    const los = document.getElementById('_b9m-los');
+    if (los && los.classList) los.classList.toggle('primary', _b9m.phase !== 'laeuft');
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _b9mHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-b9m="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Hormone in der Pubertät</h3>
+    <div class="fpm-note" style="margin-top:2px">Links ein Körper als Umriss. Im Kopf sitzt die Hirnanhangdrüse. Stelle „Körper“ und „Hirnanhangdrüse“ ein. Dann drücke „▶ 1 Jahr abspielen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9m-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Körper</span>
+          ${k('km', "_b9mKoerper('m')", 'Mädchen')}
+          ${k('kj', "_b9mKoerper('j')", 'Junge')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="margin-right:4px">Hirnanhangdrüse</span>
+          ${k('hsendet', "_b9mDruese('sendet')", 'sendet')}
+          ${k('hruht', "_b9mDruese('ruht')", 'ruht')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9m-los" onclick="_b9mStart()">▶ 1 Jahr abspielen</button>
+          <button class="sim-btn" onclick="_b9mNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was ist neu am Körper?</div>
+        <div class="lmp-status on" id="_b9m-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (nach 1 Jahr)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9mMarke('m','sendet')">Mädchen, sendet</button>
+          <button class="sim-btn" onclick="_b9mMarke('j','sendet')">Junge, sendet</button>
+          <button class="sim-btn" onclick="_b9mMarke('m','ruht')">Mädchen, ruht</button>
+          <button class="sim-btn" onclick="_b9mMarke('j','ruht')">Junge, ruht</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Hormone sind Botenstoffe. Die roten Linien sind Adern. Beobachte die farbigen Punkte: Wohin wandern sie?</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Modell: 1 Jahr in 15 Sekunden. Start: Mädchen · sendet</p>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9mGonName() { return _b9m.k === 'm' ? 'Eierstöcke' : 'Hoden'; }
+function _b9mMonatZahl() { return Math.min(12, Math.floor(_b9m.monat + 1e-9)); }
+function _b9mZaehlerText() { return 'Neu am Körper: ' + _b9m.haken + ' von 5'; }
+function _b9mStatus() {
+  if (!_b9m) return;
+  const m = _b9mMonatZahl();
+  const kopf = _B9M_KOERPER[_b9m.k] + ' · Hirnanhangdrüse ' + _b9m.hd;
+  let z2;
+  if (_b9m.phase === 'bereit') z2 = 'Monat 0 von 12 · 12 Jahre alt. Drücke „▶ 1 Jahr abspielen“.';
+  else if (_b9m.phase === 'laeuft') z2 = 'Monat ' + m + ' von 12';
+  else z2 = 'Monat 12 von 12 · 13 Jahre alt';
+  const liste = _B9M_NEU[_b9m.k].slice(0, _b9m.haken);
+  const z3 = _b9mZaehlerText() + (liste.length ? ' (' + liste.join(', ') + ')' : '');
+  // Legende der Punkte, nur wenn sie unterwegs sind
+  let z4 = '';
+  if (_b9m.hd === 'sendet' && _b9m.phase !== 'bereit') {
+    z4 = 'blau: Hormon aus dem Kopf';
+    if (_b9m.an) z4 += ' · grün: ' + (_b9m.k === 'm' ? 'Hormon aus den Eierstöcken' : 'Hormon aus den Hoden');
+  }
+  const key = kopf + '|' + z2 + '|' + z3 + '|' + z4;
+  if (key === _b9m.key) return;
+  _b9m.key = key;
+  const el = document.getElementById('_b9m-status');
+  if (el) el.innerHTML = '<b>' + kopf + '</b><br>' + z2 + '<br>' + z3 + (z4 ? '<br>' + z4 : '');
+}
+
+function _b9mUpdate(dt) {
+  if (!_b9m) return;
+  const roh = _bioFxDt(dt);
+  const d = roh * _bioFxZeitlupeFaktor(_b9m, roh);
+  _b9m.t += d;
+  _bioFxAlleUpdate(_b9m.fx, roh);
+  const sendet = _b9m.hd === 'sendet';
+  if (_b9m.phase === 'laeuft') {
+    _b9m.monat = Math.min(12, _b9m.monat + d / _B9M_MONAT);
+    // Listenpunkte nacheinander, erst wenn die Punkte im Bauch leuchten
+    if (sendet && _b9m.an) {
+      while (_b9m.haken < 5 && _b9m.monat >= _B9M_AB[_b9m.haken]) {
+        const i = _b9m.haken; _b9m.haken++;
+        _bioFxFunken(_b9m.fx.teile, 262, 42 + i * 20, 5, ['#86efac', '#fde68a', '#ffffff']);
+      }
+    }
+    if (_b9m.monat >= 12) {
+      _b9m.monat = 12; _b9m.phase = 'fertig'; _b9m.nach = 0; _b9m.schritt = 0;
+      _b9mKnoepfe(); _b9mStatus();
+    }
+  }
+  if (_b9m.phase === 'fertig' && _b9m.nach >= 0 && _b9m.schritt < 9) { _b9m.nach += roh; _b9mNachher(); }
+  // Hormon-Punkte: nur bei „sendet“ und erst nach dem Abspielen
+  if (sendet && _b9m.phase !== 'bereit') {
+    const W = _b9m.wege;
+    _b9m.tb += d;
+    if (_b9m.tb >= 0.32) {
+      _b9m.tb = 0;
+      _b9m.punkte.push({ w: W.blau[_b9mZufall() < 0.5 ? 0 : 1], s: 0, v: 66 + _b9mZufall() * 10, f: 'b' });
+    }
+    if (_b9m.an) {
+      _b9m.tg += d;
+      if (_b9m.tg >= 0.16) {
+        _b9m.tg = 0;
+        _b9m.punkte.push({ w: W.gruen[Math.floor(_b9mZufall() * W.gruen.length)], s: 0, v: 42 + _b9mZufall() * 12, f: 'g' });
+      }
+      _b9m.glut = Math.min(1, _b9m.glut + d / 0.6);
+    }
+  }
+  for (const p of _b9m.punkte) p.s += p.v * d;
+  const bleib = [];
+  for (const p of _b9m.punkte) {
+    if (p.s < _b9mLaenge(p.w)) { bleib.push(p); continue; }
+    if (p.f === 'b' && !_b9m.an) _b9mErstesSignal();
+  }
+  _b9m.punkte = bleib.slice(-120);
+  for (let i = 0; i < 5; i++) if (i < _b9m.haken) _b9m.hakenAlter[i] += roh;
+  if (_b9m.phase === 'laeuft') _b9mStatus();
+}
+// Der erste blaue Punkt erreicht den Bauch: Zeitlupe, Lichtring, Leuchten.
+function _b9mErstesSignal() {
+  _b9m.an = true;
+  _bioFxZeitlupe(_b9m, 0.3, 1.3);
+  for (const q of _B9M_GON) {
+    const o = _b9mAussen(q);
+    _bioFxWelle(_b9m.fx.teile, o.x, o.y, 'rgba(250,204,21,0.95)', 30);
+    _bioFxFunken(_b9m.fx.teile, o.x, o.y, 5, ['#fde68a', '#ffffff', '#86efac']);
+  }
+  _bioFxBanner(_b9m.fx, 'Unten im Bauch leuchtet es auf!', 2.8, '#facc15');
+}
+// Nach dem Jahr: erst hinsehen, dann bestaetigt ein ruhiger Effekt.
+function _b9mNachher() {
+  const t = _b9m.nach, fx = _b9m.fx;
+  if (_b9m.hd === 'sendet') {
+    if (_b9m.schritt === 0 && t >= 0.4) {
+      _b9m.schritt = 1;
+      _bioFxWelle(fx.teile, 322, 150, 'rgba(22,163,74,0.9)', 60);
+      _bioFxFunken(fx.teile, 322, 146, 8, ['#86efac', '#fde68a', '#ffffff']);
+    }
+    if (_b9m.schritt === 1 && t >= 1.0) {
+      _b9m.schritt = 9;
+      _bioFxBanner(fx, '13 Jahre alt – die Liste ist voll.', 3.2, '#86efac');
+    }
+  } else {
+    if (_b9m.schritt === 0 && t >= 0.5) {
+      _b9m.schritt = 1;
+      for (const q of _B9M_GON) _bioFxWelle(fx.teile, q.x, q.y, 'rgba(100,116,139,0.9)', 26);
+      _bioFxWelle(fx.teile, 322, 90, 'rgba(148,163,184,0.9)', 70);
+    }
+    if (_b9m.schritt === 1 && t >= 1.2) {
+      _b9m.schritt = 9;
+      _bioFxBanner(fx, '13 Jahre alt – die Liste bleibt leer.', 3.4, '#93c5fd');
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b9mWuchs() {                    // Umriss waechst bei „sendet“ etwas
+  if (_b9m.hd !== 'sendet' || !_b9m.an) return 1;
+  return 1 + 0.06 * _bioFxKlemme((_b9m.monat - 2) / 10);
+}
+function _b9mUmriss(ctx) {
+  ctx.fillStyle = '#b6bcc6';
+  ctx.strokeStyle = '#b6bcc6'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.arc(120, 32, 16, 0, 2 * Math.PI); ctx.fill();          // Kopf
+  ctx.fillRect(113, 44, 14, 16);                                              // Hals
+  _bioFxRundRect(ctx, 94, 56, 52, 92, 14); ctx.fill();                        // Rumpf
+  ctx.lineWidth = 13;                                                         // Arme
+  ctx.beginPath(); ctx.moveTo(98, 64); ctx.lineTo(86, 104); ctx.lineTo(83, 142); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(142, 64); ctx.lineTo(154, 104); ctx.lineTo(157, 142); ctx.stroke();
+  ctx.lineWidth = 17;                                                         // Beine
+  ctx.beginPath(); ctx.moveTo(109, 140); ctx.lineTo(108, 206); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(131, 140); ctx.lineTo(132, 206); ctx.stroke();
+}
+function _b9mAdern(ctx) {
+  const W = _b9m.wege, t = _b9m.t;
+  const zuege = [W.blau[0], W.blau[1]].concat(W.gruen);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = 'rgba(220,38,38,0.75)'; ctx.lineWidth = 2.2;
+  for (const w of zuege) {
+    ctx.beginPath(); ctx.moveTo(w[0][0], w[0][1]);
+    for (let i = 1; i < w.length; i++) ctx.lineTo(w[i][0], w[i][1]);
+    ctx.stroke();
+  }
+  // ruhiges Stroemen in den Adern (helle Striche wandern)
+  ctx.save();
+  ctx.strokeStyle = 'rgba(254,202,202,0.9)'; ctx.lineWidth = 1.1;
+  if (typeof ctx.setLineDash === 'function') { ctx.setLineDash([3, 9]); ctx.lineDashOffset = -t * 14; }
+  else { ctx.globalAlpha = 0.4 + 0.2 * Math.sin(t * 2); }
+  for (const w of zuege) {
+    ctx.beginPath(); ctx.moveTo(w[0][0], w[0][1]);
+    for (let i = 1; i < w.length; i++) ctx.lineTo(w[i][0], w[i][1]);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+function _b9mDraw(ctx, cv) {
+  if (!_b9m) return;
+  const W = cv.width, H = cv.height, t = _b9m.t;
+  const sendet = _b9m.hd === 'sendet';
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#e8eef5');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Koerper mit Adern und Punkten (waechst von den Fuessen aus)
+  const g = _b9mWuchs(), F = _B9M_FUSS;
+  const P = (x, y) => ({ x: F.x + (x - F.x) * g, y: F.y + (y - F.y) * g });
+  ctx.save();
+  ctx.translate(F.x, F.y); ctx.scale(g, g); ctx.translate(-F.x, -F.y);
+  _b9mUmriss(ctx);
+  _b9mAdern(ctx);
+  // Hirnanhangdruese
+  const HD = _B9M_HD;
+  if (sendet) _bioFxLeuchten(ctx, HD.x, HD.y, 9, t, '96,165,250');
+  ctx.fillStyle = sendet ? '#1d4ed8' : '#6b7280';
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(HD.x, HD.y, 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Eierstoecke bzw. Hoden: zwei Punkte
+  for (const q of _B9M_GON) {
+    if (_b9m.glut > 0) _bioFxLeuchten(ctx, q.x, q.y, 6 + 6 * _b9m.glut, t, '250,204,21');
+    ctx.fillStyle = _b9m.glut > 0 ? _b9mMisch('#6b7280', '#f59e0b', _b9m.glut) : '#6b7280';
+    ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(q.x, q.y, 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  // Hormon-Punkte
+  for (const p of _b9m.punkte) {
+    const o = _b9mPunkt(p.w, p.s);
+    ctx.fillStyle = p.f === 'b' ? _B9M_BLAU : _B9M_GRUEN;
+    ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(o.x, o.y, 3.1, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+  _bioFxDraw(ctx, _b9m.fx.teile);           // Effekte ohne Skalierung
+
+  // Beschriftungen (ausserhalb der Skalierung, gleiche Schrift)
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  const hd = P(HD.x, HD.y);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(hd.x + 5, hd.y - 2); ctx.lineTo(137, 20); ctx.lineTo(141, 20); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.fillText('Hirnanhangdrüse', 143, 24, 98);
+  const go = P(_B9M_GON[1].x, _B9M_GON[1].y);
+  ctx.beginPath(); ctx.moveTo(go.x + 5, go.y + 2); ctx.lineTo(172, 166); ctx.lineTo(176, 166); ctx.stroke();
+  ctx.fillText(_b9mGonName(), 178, 170);
+
+  // Rechte Spalte: Liste „Neu am Körper“
+  const lx = 250;
+  ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, lx - 6, 6, W - lx, 152, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif';
+  ctx.fillText('Neu am Körper', lx + 2, 24);
+  const liste = _B9M_NEU[_b9m.k];
+  for (let i = 0; i < 5; i++) {
+    const y = 44 + i * 20;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+    ctx.strokeRect(lx + 2, y - 9, 11, 11);
+    if (i < _b9m.haken) {
+      const a = _bioFxEase.raus(_bioFxKlemme(_b9m.hakenAlter[i] / 0.45));
+      ctx.save();
+      ctx.globalAlpha = a;
+      ctx.strokeStyle = _B9M_GRUEN; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(lx + 4, y - 4); ctx.lineTo(lx + 7, y); ctx.lineTo(lx + 13, y - 10); ctx.stroke();
+      ctx.fillStyle = '#0f172a'; ctx.font = '600 11px sans-serif';
+      ctx.fillText(liste[i], lx + 19 + (1 - a) * 10, y, W - lx - 26);
+      ctx.restore();
+    }
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.beginPath(); ctx.moveTo(lx, 136); ctx.lineTo(W - 12, 136); ctx.stroke();
+  ctx.fillStyle = _b9m.haken ? '#15803d' : '#334155'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(_b9mZaehlerText(), lx + 2, 152, W - lx - 12);
+
+  // Legende der Punkte (nur wenn Punkte unterwegs sind)
+  ctx.font = '600 11px sans-serif';
+  if (sendet && _b9m.phase !== 'bereit') {
+    ctx.fillStyle = _B9M_BLAU; ctx.beginPath(); ctx.arc(lx + 6, 176, 4, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#0f172a'; ctx.fillText('Hormon aus dem Kopf', lx + 16, 180, W - lx - 20);
+    if (_b9m.an) {
+      ctx.fillStyle = _B9M_GRUEN; ctx.beginPath(); ctx.arc(lx + 6, 194, 4, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText(_b9m.k === 'm' ? 'Hormon aus den Eierstöcken' : 'Hormon aus den Hoden', lx + 16, 198, W - lx - 20);
+    }
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('Monat ' + _b9mMonatZahl() + ' von 12', lx + 2, 216);
+
+  // Monatsband: 12 bis 13 Jahre
+  const bx = 62, bw = 300, by = 228, bh = 12, zw = bw / 12;
+  ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.textAlign = 'right'; ctx.fillText('12 Jahre', bx - 5, by + 10);
+  ctx.textAlign = 'left'; ctx.fillText('13 Jahre', bx + bw + 5, by + 10);
+  for (let i = 0; i < 12; i++) {
+    const voll = _bioFxKlemme(_b9m.monat - i);
+    ctx.fillStyle = '#e2e8f0'; ctx.fillRect(bx + i * zw + 1, by, zw - 2, bh);
+    if (voll > 0) { ctx.fillStyle = '#64748b'; ctx.fillRect(bx + i * zw + 1, by, (zw - 2) * voll, bh); }
+  }
+  if (_b9m.phase === 'laeuft') {
+    const mx = bx + _b9m.monat * zw;
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath(); ctx.moveTo(mx, by - 1); ctx.lineTo(mx - 4, by - 7); ctx.lineTo(mx + 4, by - 7); ctx.closePath(); ctx.fill();
+    ctx.textAlign = 'left'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = 'rgba(15,23,42,0.7)';
+    ctx.fillText(_b9m.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 8, 16);
+  }
+  ctx.textAlign = 'left';
+  // Stempel und Banner (Partikel wurden oben im Koerper gezeichnet)
+  _bioFxStempelDraw(ctx, _b9m.fx);
+  _bioFxBannerDraw(ctx, _b9m.fx);
+}
+// Ort eines Koerperpunkts auf der Leinwand (mit Wuchs)
+function _b9mAussen(q) {
+  const g = _b9mWuchs(), F = _B9M_FUSS;
+  return { x: F.x + (q.x - F.x) * g, y: F.y + (q.y - F.y) * g };
+}
+function _b9mMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+
+// ═══════════════════════════════════════════════════════
+// BIO 8 · EIN KREIS AUS TAGEN   (Förderheft Bio 8 · bh2, Kennung bio-zyklus)
+// Links ein Zyklus als Kreis aus Tagen mit umlaufendem Zeiger, rechts oben
+// Eierstock und Gebärmutter schematisch im Schnitt (Leitplanken
+// Sexualerziehung: nur Umrisse, keine Körper), darunter die Linie
+// „Hormone aus dem Eierstock“, ganz unten ein Vergleich der gespielten Zyklen.
+// Modellwerte (Lehrerteil): rote Tage 1 bis 5; der Stern (Ei verlässt den
+// Eierstock) liegt 14 Tage vor dem nächsten Tag 1 → 24/28/32 Tage: Tag 10/14/18.
+// Am Bildschirm steht KEIN „Mitte“, „Menstruation“, „Eisprung“ (Lückenwörter);
+// die Blutung wird nicht beschriftet, die Tage werden nur gezählt.
+// Aha (nach der Beobachtung, _bioFx): Jeder fertige Zyklus legt unten einen
+// Streifen ab. Ab zwei verschiedenen Längen stehen die Streifen erst ab Tag 1
+// untereinander – die Sterne stehen versetzt. Dann gleiten sie so, dass ihr
+// Ende (der nächste rote Tag) übereinanderliegt: Die Sterne rücken genau
+// übereinander, ein ruhiger Lichtstrich verbindet sie. Keine Zahl dazu.
+// Zeiger 1 s je Tag, 2 s Halt am Stern (Zähler pulst 1,25 Hz, unter 3 Hz).
+// ═══════════════════════════════════════════════════════
+let _b9n = null;
+const _B9N_LAENGEN = [24, 28, 32];
+const _B9N_START = 28;
+const _B9N_ROT = 5;          // Tag 1 bis 5 rot
+const _B9N_DANACH = 14;      // Stern 14 Tage vor dem nächsten Tag 1
+const _B9N_SEK = 1.0;        // Sekunden je Tag
+const _B9N_HALT = 2.0;       // Sekunden Halt am Stern
+const _B9N_ENDE = 1.6;       // Sekunden Schlussbild
+// Geometrie
+const _B9N_CX = 108, _B9N_CY = 124, _B9N_RA = 101, _B9N_RI = 71;
+const _B9N_OV = { x: 384, y: 52 };                  // Eierstock (Mitte)
+const _B9N_GX0 = 222, _B9N_GX1 = 412, _B9N_GY0 = 158, _B9N_GY1 = 198;  // Hormonlinie
+const _B9N_SX0 = 262, _B9N_SX1 = 406;               // Vergleichsstreifen
+
+function _b9nInit() {
+  _b9n = { N: _B9N_START, d: 0, phase: 'bereit', t: 0, ht: 0, et: 0,
+           stern: false, sternT: 0, key: '', fx: { teile: [] },
+           streifen: {}, stT: -1, neuN: 0, ausgerichtet: false, eiT: -1 };
+}
+function _b9nSprung() { return _b9n.N - _B9N_DANACH; }   // Tag mit Stern
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9nZurueck() {
+  _b9n.d = 0; _b9n.phase = 'bereit'; _b9n.ht = 0; _b9n.et = 0;
+  _b9n.stern = false; _b9n.sternT = 0; _b9n.eiT = -1;
+  _b9n.fx.teile = []; _b9n.fx.banner = null; _b9n.fx.stempel = null;
+  _b9nStatus(); _b9nKnoepfe();
+}
+function _b9nLaenge(n) {
+  if (!_b9n) return;
+  n = Number(n);
+  if (_B9N_LAENGEN.indexOf(n) < 0) return;
+  _b9n.N = n;
+  _b9nZurueck();
+}
+function _b9nAbspielen() {
+  if (!_b9n) return;
+  if (_b9n.phase === 'lauf' || _b9n.phase === 'halt') return;
+  _b9nZurueck();
+  _b9n.phase = 'lauf';
+  _b9nStatus(); _b9nKnoepfe();
+}
+function _b9nNeu() {
+  if (!_b9n) return;
+  _b9n.N = _B9N_START; _b9n.streifen = {}; _b9n.stT = -1; _b9n.ausgerichtet = false;
+  _b9n.fx = { teile: [] };
+  _b9nZurueck();
+}
+/* Sprungmarke: ganzer Zyklus einer Länge, gleich das Schlussbild. */
+function _b9nMarke(n) {
+  if (!_b9n) return;
+  n = Number(n);
+  if (_B9N_LAENGEN.indexOf(n) < 0) return;
+  _b9n.N = n; _b9nZurueck();
+  _b9n.stern = true; _b9n.sternT = 9; _b9n.eiT = 99;
+  _b9n.d = n; _b9n.phase = 'ende'; _b9n.et = 0;
+  _b9nStreifenDazu();
+  _b9nStatus(); _b9nKnoepfe();
+}
+function _b9nKnoepfe() {
+  if (!_b9n || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-b9n]').forEach(b => {
+      const v = b.getAttribute('data-b9n');
+      if (b.classList) b.classList.toggle('primary', v === 'l' + _b9n.N);
+    });
+    const los = document.getElementById('_b9n-los');
+    if (los && los.classList) los.classList.toggle('primary', _b9n.phase !== 'lauf' && _b9n.phase !== 'halt');
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _b9nHTML() {
+  const k = n => `<button class="sim-btn" data-b9n="l${n}" onclick="_b9nLaenge(${n})">${n} Tage</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Ein Kreis aus Tagen</h3>
+    <div class="fpm-note" style="margin-top:2px">Links ein Zyklus als Kreis: ein Feld für jeden Tag. Rechts Eierstock und Gebärmutter im Schnitt, darunter die Hormone aus dem Eierstock. Stelle die Länge ein. Dann drücke „▶ Zyklus abspielen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9n-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Länge des Zyklus</span>
+          ${k(24)}
+          ${k(28)}
+          ${k(32)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9n-los" onclick="_b9nAbspielen()">▶ Zyklus abspielen</button>
+          <button class="sim-btn" onclick="_b9nNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Tageszähler</div>
+        <div class="lmp-status on" id="_b9n-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_b9n-ergebnis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: ganzer Zyklus</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9nMarke(24)">ganz: 24 Tage</button>
+          <button class="sim-btn" onclick="_b9nMarke(28)">ganz: 28 Tage</button>
+          <button class="sim-btn" onclick="_b9nMarke(32)">ganz: 32 Tage</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Das ist ein Modell. In Wirklichkeit ist der Zyklus nicht jedes Mal gleich lang.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9nTag() {                      // Tageszähler
+  const z = _b9n;
+  if (z.phase === 'ende' || z.phase === 'fertig') return 1;   // der nächste Kreis beginnt
+  return Math.min(z.N, Math.floor(z.d + 1e-9) + 1);
+}
+function _b9nSchluessel() {
+  const z = _b9n;
+  return z.phase + ':' + z.N + ':' + (z.phase === 'lauf' || z.phase === 'halt' ? _b9nTag() : '');
+}
+function _b9nStatus() {
+  if (!_b9n) return;
+  const z = _b9n;
+  z.key = _b9nSchluessel();
+  let s, erg = '';
+  if (z.phase === 'bereit') {
+    s = 'Länge des Zyklus: ' + z.N + ' Tage · Drücke „▶ Zyklus abspielen“.';
+  } else if (z.phase === 'lauf' || z.phase === 'halt') {
+    s = 'Tag ' + _b9nTag() + ' von ' + z.N;
+    if (z.stern) erg = 'rot: Tag 1 bis ' + _B9N_ROT + ' · Stern bei Tag ' + _b9nSprung();
+    else if (z.d >= _B9N_ROT) erg = 'rot: Tag 1 bis ' + _B9N_ROT;
+  } else {
+    s = 'Ende des Zyklus – der nächste beginnt mit Tag 1.';
+    erg = 'rot: Tag 1 bis ' + _B9N_ROT + ' · Stern bei Tag ' + _b9nSprung();
+  }
+  const el = document.getElementById('_b9n-status');
+  if (el) { el.textContent = s; el.className = 'lmp-status on'; }
+  const e2 = document.getElementById('_b9n-ergebnis');
+  if (e2) e2.textContent = erg ? z.N + ' Tage · ' + erg : '';
+}
+
+/* ── Vergleichsstreifen ────────────────────────────────────────────────── */
+function _b9nStreifenDazu() {
+  const z = _b9n;
+  const neu = !z.streifen[z.N];
+  z.streifen[z.N] = true;
+  if (neu) {
+    z.vorher = _b9nStreifenZahl() > 2 && z.stT >= 0 ? _b9nAusrichtung() : 0;
+    z.stT = 0; z.neuN = z.N; z.ausgerichtet = false; z.bannerGezeigt = false;
+  }
+}
+function _b9nStreifenZahl() { return Object.keys(_b9n.streifen).length; }
+// 0 = alle ab Tag 1 untereinander, 1 = alle am Ende (nächster Tag 1) untereinander
+function _b9nAusrichtung() {
+  const z = _b9n;
+  if (_b9nStreifenZahl() < 2 || z.stT < 0) return 0;
+  if (z.stT < 1.6) return (z.vorher || 0) * (1 - _bioFxEase.sanft(_bioFxKlemme(z.stT / 0.6)));
+  return _bioFxEase.sanft(_bioFxKlemme((z.stT - 1.6) / 1.4));
+}
+function _b9nStreifenY(n) { return 211 + _B9N_LAENGEN.indexOf(n) * 13; }
+function _b9nU() { return (_B9N_SX1 - _B9N_SX0) / 33; }        // Breite eines Tages
+function _b9nStreifenX0(n) { return _B9N_SX0 + (32 - n) * _b9nU() * _b9nAusrichtung(); }
+function _b9nSternX(n) { return _b9nStreifenX0(n) + (n - _B9N_DANACH - 0.5) * _b9nU(); }
+
+/* ── Modellkurven ──────────────────────────────────────────────────────── */
+function _b9nGlatt(a, b, x) { const u = _bioFxKlemme((x - a) / (b - a)); return u * u * (3 - 2 * u); }
+// Hormone aus dem Eierstock (0..1) am fortlaufenden Tag d (0..N)
+function _b9nHormon(d, N) {
+  const ov = N - _B9N_DANACH - 0.5;
+  if (d < _B9N_ROT) return 0.12;
+  if (d < ov) return 0.12 + 0.63 * _b9nGlatt(_B9N_ROT, ov, d);
+  if (d < ov + 2) return 0.75 - 0.2 * _b9nGlatt(ov, ov + 2, d);
+  if (d < N - 3) return 0.55 + 0.27 * _b9nGlatt(ov + 2, ov + 7, d);
+  return 0.82 - 0.7 * _b9nGlatt(N - 3, N, d);
+}
+// Dicke der Schleimhaut (0..1)
+function _b9nDicke(d, N) {
+  const ov = N - _B9N_DANACH;
+  if (d < _B9N_ROT) return 1 - 0.8 * _b9nGlatt(0, _B9N_ROT, d);
+  if (d < ov) return 0.2 + 0.6 * _b9nGlatt(_B9N_ROT, ov, d);
+  return 0.8 + 0.2 * _b9nGlatt(ov, ov + 4, d);
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9nWinkel(d) { return -Math.PI / 2 + 2 * Math.PI * d / _b9n.N; }
+function _b9nPunkt(d, r) {
+  const a = _b9nWinkel(d);
+  return { x: _B9N_CX + Math.cos(a) * r, y: _B9N_CY + Math.sin(a) * r };
+}
+function _b9nUpdate(dt) {
+  if (!_b9n) return;
+  const z = _b9n;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  if (z.phase === 'lauf') {
+    z.d += dt / _B9N_SEK;
+    const ziel = _b9nSprung() - 0.5;               // Mitte des Stern-Feldes
+    if (!z.stern && z.d >= ziel) {
+      z.d = ziel; z.stern = true; z.sternT = 0; z.eiT = 0;
+      z.phase = 'halt'; z.ht = 0;
+      const p = _b9nPunkt(ziel, _B9N_RA + 9);
+      _bioFxWelle(z.fx.teile, p.x, p.y, '#f59e0b', 26);
+      _bioFxWelle(z.fx.teile, _B9N_OV.x - 6, _B9N_OV.y, '#fbbf24', 22);
+      _bioFxFunken(z.fx.teile, _B9N_OV.x - 6, _B9N_OV.y, 6, ['#fde68a', '#ffffff', '#fbbf24']);
+    }
+    if (z.d >= z.N) {
+      z.d = z.N; z.phase = 'ende'; z.et = 0;
+      _b9nStreifenDazu();
+    }
+  } else if (z.phase === 'halt') {
+    z.ht += dt;
+    if (z.ht >= _B9N_HALT) z.phase = 'lauf';
+  } else if (z.phase === 'ende') {
+    z.et += dt;
+    if (z.et >= _B9N_ENDE) z.phase = 'fertig';
+  } else if (z.phase === 'fertig') {
+    z.et += dt;
+  }
+  if (z.stern) z.sternT += dt;
+  if (z.eiT >= 0 && z.phase !== 'halt') z.eiT += dt;
+  else if (z.eiT >= 0) z.eiT += dt * 0.5;
+  // Vergleichsstreifen: Aha, sobald zwei verschiedene Längen daliegen
+  if (z.stT >= 0) {
+    z.stT += dt;
+    const n = _b9nStreifenZahl();
+    if (n >= 2 && z.stT >= 0.5 && !z.bannerGezeigt) {
+      z.bannerGezeigt = true;
+      _bioFxBanner(z.fx, 'Der Stern steht an einem anderen Tag!', 3.0, '#fbbf24');
+    }
+    if (n >= 2 && !z.ausgerichtet && z.stT >= 3.0) {
+      z.ausgerichtet = true;
+      for (const L of _B9N_LAENGEN) if (z.streifen[L]) {
+        const x = _b9nSternX(L), y = _b9nStreifenY(L) + 4;
+        _bioFxWelle(z.fx.teile, x, y, '#f59e0b', 14);
+        _bioFxFunken(z.fx.teile, x, y, 4, ['#fde68a', '#fbbf24', '#ffffff']);
+      }
+    }
+  }
+  if (_b9nSchluessel() !== z.key) { _b9nStatus(); _b9nKnoepfe(); }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _b9nSternPfad(ctx, x, y, r) {
+  ctx.beginPath();
+  for (let i = 0; i < 10; i++) {
+    const a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * 0.45 : r;
+    const px = x + Math.cos(a) * rr, py = y + Math.sin(a) * rr;
+    if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+  }
+  ctx.closePath();
+}
+function _b9nStern(ctx, x, y, r) {
+  ctx.save();
+  _b9nSternPfad(ctx, x, y, r);
+  ctx.fillStyle = '#f59e0b'; ctx.fill();
+  ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1; ctx.stroke();
+  ctx.restore();
+}
+function _b9nKreis(ctx) {
+  const z = _b9n, N = z.N, cx = _B9N_CX, cy = _B9N_CY, RA = _B9N_RA, RI = _B9N_RI;
+  const fertig = z.phase === 'ende' || z.phase === 'fertig';
+  const aktuell = fertig ? -1 : Math.min(N, Math.floor(z.d + 1e-9) + 1);
+  // Felder
+  for (let k = 1; k <= N; k++) {
+    const a0 = _b9nWinkel(k - 1), a1 = _b9nWinkel(k);
+    const erreicht = z.phase !== 'bereit' && (fertig || z.d >= k - 1);
+    const rot = erreicht && k <= _B9N_ROT;
+    ctx.beginPath();
+    ctx.arc(cx, cy, RA, a0, a1); ctx.arc(cx, cy, RI, a1, a0, true); ctx.closePath();
+    ctx.fillStyle = rot ? '#dc2626' : erreicht ? '#ede9fe' : '#f8fafc';
+    ctx.fill();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.stroke();
+    // Tageszahl im Feld
+    const am = (a0 + a1) / 2, rz = (RA + RI) / 2 + 3;
+    ctx.fillStyle = rot ? '#ffffff' : '#334155';
+    ctx.font = '700 ' + (N > 28 ? 9 : 10) + 'px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(String(k), cx + Math.cos(am) * rz, cy + Math.sin(am) * rz);
+  }
+  // aktuelles Feld hervorheben
+  if (aktuell > 0 && z.phase !== 'bereit') {
+    const a0 = _b9nWinkel(aktuell - 1), a1 = _b9nWinkel(aktuell);
+    ctx.beginPath(); ctx.arc(cx, cy, RA, a0, a1); ctx.arc(cx, cy, RI, a1, a0, true); ctx.closePath();
+    ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2.5; ctx.stroke();
+  }
+  // Schlussbild: der Bogen vom Stern bis zum nächsten Tag 1 leuchtet auf
+  if (fertig && z.stern) {
+    const u = _bioFxEase.raus(_bioFxKlemme(z.et / 1.2));
+    const d0 = _b9nSprung() - 0.5, d1 = d0 + (N - d0) * u;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(245,158,11,0.85)'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.arc(cx, cy, RI - 4, _b9nWinkel(d0), _b9nWinkel(d1)); ctx.stroke();
+    ctx.restore();
+    // nächster Tag 1: weich rot umrandet
+    const a0 = _b9nWinkel(0), a1 = _b9nWinkel(1);
+    ctx.save();
+    ctx.globalAlpha = 0.5 + 0.35 * Math.sin(z.t * Math.PI * 2 * 0.6);
+    ctx.beginPath(); ctx.arc(cx, cy, RA + 1.5, a0, a1); ctx.arc(cx, cy, RI - 1.5, a1, a0, true); ctx.closePath();
+    ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 3; ctx.stroke();
+    ctx.restore();
+  }
+  // Stern am Kreis (wächst federnd herein)
+  if (z.stern) {
+    const s = _bioFxEase.federn(_bioFxKlemme(z.sternT / 0.5));
+    const p = _b9nPunkt(_b9nSprung() - 0.5, _B9N_RA + 9);
+    if (z.sternT < 2.2) _bioFxLeuchten(ctx, p.x, p.y, 8, z.t, '245,158,11');
+    _b9nStern(ctx, p.x, p.y, 7.5 * s);
+  }
+  // Zeiger
+  const dz = fertig ? z.N : z.d;
+  const a = _b9nWinkel(dz);
+  ctx.save();
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(cx + Math.cos(a) * 36, cy + Math.sin(a) * 36);
+  ctx.lineTo(cx + Math.cos(a) * (RI - 6), cy + Math.sin(a) * (RI - 6));
+  ctx.stroke();
+  const tx = cx + Math.cos(a) * (RI - 1), ty = cy + Math.sin(a) * (RI - 1);
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath();
+  ctx.moveTo(tx, ty);
+  ctx.lineTo(tx - Math.cos(a) * 9 + Math.cos(a + Math.PI / 2) * 5, ty - Math.sin(a) * 9 + Math.sin(a + Math.PI / 2) * 5);
+  ctx.lineTo(tx - Math.cos(a) * 9 - Math.cos(a + Math.PI / 2) * 5, ty - Math.sin(a) * 9 - Math.sin(a + Math.PI / 2) * 5);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+  // Tageszähler in der Kreismitte (pulst beim Halt am Stern: 1,25 Hz)
+  let farbe = '#0f172a', gross = 1;
+  if (z.phase === 'halt') {
+    const p = 0.5 + 0.5 * Math.sin(z.ht * Math.PI * 2 * 1.25);
+    farbe = p > 0.5 ? '#b45309' : '#0f172a'; gross = 1 + 0.12 * p;
+    _bioFxLeuchten(ctx, cx, cy, 30, z.t, '251,191,36');
+  }
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.arc(cx, cy, 33, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.save();
+  ctx.translate(cx, cy - 3); ctx.scale(gross, gross);
+  ctx.fillStyle = farbe; ctx.font = '700 19px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Tag ' + _b9nTag(), 0, 0);
+  ctx.restore();
+  ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(N + ' Tage', cx, cy + 17);
+}
+function _b9nSchema(ctx) {
+  const z = _b9n, t = z.t, N = z.N;
+  const fertig = z.phase === 'ende' || z.phase === 'fertig';
+  const bereit = z.phase === 'bereit';
+  // Schleimhaut-Dicke: im Schlussbild wird sie wieder dünn
+  let dk = bereit ? 1 : _b9nDicke(z.d, N);
+  if (fertig) dk = 1 - 0.45 * _bioFxEase.sanft(_bioFxKlemme(z.et / 1.4));
+  const blutet = !bereit && ((z.d < _B9N_ROT && !fertig) || fertig);
+  // Eileiter (rechts zum Eierstock, links nur angedeutet)
+  ctx.save();
+  ctx.strokeStyle = '#e8a0a8'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(326, 34); ctx.quadraticCurveTo(345, 14, 364, 34); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(244, 34); ctx.quadraticCurveTo(232, 18, 226, 30); ctx.stroke();
+  ctx.fillStyle = '#e8a0a8';                           // Trichter
+  ctx.beginPath(); ctx.moveTo(362, 30); ctx.lineTo(372, 28); ctx.lineTo(370, 42); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  // Gebärmutter: Wand
+  ctx.save();
+  ctx.fillStyle = '#f1b3b9'; ctx.strokeStyle = '#b4535e'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(240, 28); ctx.quadraticCurveTo(285, 18, 330, 28);
+  ctx.quadraticCurveTo(334, 72, 296, 104); ctx.lineTo(296, 118); ctx.lineTo(274, 118); ctx.lineTo(274, 104);
+  ctx.quadraticCurveTo(236, 72, 240, 28); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  // Hohlraum mit Schleimhaut: äußeres Dreieck = Schleimhaut, inneres = Raum
+  const sx = 285, sy = 58;
+  const tri = (k) => {
+    const P = [[252, 38], [318, 38], [285, 100]];
+    ctx.beginPath();
+    P.forEach(([x, y], i) => {
+      const px = sx + (x - sx) * k, py = sy + (y - sy) * k;
+      if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    });
+    ctx.closePath();
+  };
+  tri(1);
+  ctx.fillStyle = blutet ? '#d9475a' : '#e0707e'; ctx.fill();
+  // leichtes Pulsieren der Schleimhaut, damit sie „lebt“
+  const k = Math.max(0.25, 0.9 - 0.62 * dk + 0.01 * Math.sin(t * 2));
+  tri(k); ctx.fillStyle = '#fff7f5'; ctx.fill();
+  // Tröpfchen im Hohlraum, solange die Tage rot sind (ohne Beschriftung)
+  if (blutet) {
+    ctx.fillStyle = 'rgba(220,38,38,0.8)';
+    for (let i = 0; i < 4; i++) {
+      const u = (t * 0.45 + i / 4) % 1;
+      ctx.beginPath(); ctx.arc(282 + (i % 2) * 6, 70 + u * 44, 1.8, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  ctx.restore();
+  // Eierstock im Schnitt mit reifendem Ei
+  const ox = _B9N_OV.x, oy = _B9N_OV.y;
+  ctx.save();
+  ctx.fillStyle = '#f6d3c4'; ctx.strokeStyle = '#b4735e'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(ox, oy, 26, 17, -0.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // kleine ruhende Bläschen
+  ctx.fillStyle = '#fdf0e8'; ctx.strokeStyle = '#d4a08c'; ctx.lineWidth = 0.8;
+  for (const [dx, dy] of [[12, 6], [16, -5], [4, 10], [-2, -9]]) {
+    ctx.beginPath(); ctx.arc(ox + dx, oy + dy, 2.6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  // Das Bläschen mit dem Ei wächst bis zum Stern
+  const spr = _b9nSprung() - 0.5;
+  let reif = bereit ? 0.1 : _b9nGlatt(1, spr, z.d);
+  if (z.stern) reif = 1;
+  const bx = ox - 8, by = oy - 2;
+  const puls = 1 + 0.04 * Math.sin(t * 2.4);
+  if (!z.stern) {
+    const rb = (3 + 8 * reif) * puls;
+    ctx.fillStyle = '#fff8e1'; ctx.strokeStyle = '#d4a08c'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(bx, by, rb, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.arc(bx - rb * 0.3, by, 1.6 + 1.4 * reif, 0, 2 * Math.PI); ctx.fill();
+  } else {
+    // leeres, aufgeplatztes Bläschen
+    ctx.strokeStyle = '#d4a08c'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(bx, by, 9, 0.9, 2 * Math.PI - 0.4); ctx.stroke();
+  }
+  ctx.restore();
+  // Das Ei nach dem Verlassen: zum Trichter, dann durch den Eileiter, verblasst
+  if (z.stern && z.eiT >= 0) {
+    const e = z.eiT;
+    let x, y, a = 1;
+    if (e < 1.2) {                                   // hinaus zum Trichter
+      const u = _bioFxEase.sanft(_bioFxKlemme(e / 1.2));
+      x = bx - 3 + (364 - (bx - 3)) * u; y = by + (34 - by) * u - Math.sin(u * Math.PI) * 6;
+    } else {                                         // Eileiter entlang (Kurve)
+      const u = _bioFxKlemme((e - 1.2) / 5);
+      const q = (p0, p1, p2) => (1 - u) * (1 - u) * p0 + 2 * (1 - u) * u * p1 + u * u * p2;
+      x = q(364, 345, 326); y = q(34, 14, 34);
+      a = 1 - _bioFxKlemme((e - 5.2) / 2);
+    }
+    if (a > 0.02) {
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.fillStyle = '#fbbf24'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+  }
+  // Beschriftungen (nur Organe und Schicht)
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textBaseline = 'alphabetic';
+  ctx.textAlign = 'center';
+  ctx.fillText('Eierstock', ox, 84);
+  ctx.fillText('Gebärmutter', 285, 131);
+  ctx.textAlign = 'left';
+  ctx.fillText('Schleimhaut', 328, 110);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(326, 106); ctx.lineTo(304, 70); ctx.stroke();
+}
+function _b9nHormonlinie(ctx) {
+  const z = _b9n, N = z.N;
+  const x0 = _B9N_GX0, x1 = _B9N_GX1, y0 = _B9N_GY0, y1 = _B9N_GY1;
+  const X = d => x0 + (x1 - x0) * d / N, Y = h => y1 - (y1 - y0) * h;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.fillRect(x0, y0 - 4, x1 - x0, y1 - y0 + 4); ctx.strokeRect(x0, y0 - 4, x1 - x0, y1 - y0 + 4);
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Hormone aus dem Eierstock', x0, y0 - 8);
+  // rote Tage als Band am Boden, Stern auf der Grundlinie
+  const fertig = z.phase === 'ende' || z.phase === 'fertig';
+  const dz = z.phase === 'bereit' ? 0 : fertig ? N : z.d;
+  if (dz > 0) {
+    ctx.fillStyle = 'rgba(220,38,38,0.75)';
+    ctx.fillRect(X(0), y1 - 3, X(Math.min(dz, _B9N_ROT)) - X(0), 3);
+  }
+  // Kurve bis zum aktuellen Tag
+  if (dz > 0) {
+    ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    for (let d = 0; d <= dz + 1e-6; d += 0.25) {
+      const px = X(d), py = Y(_b9nHormon(d, N));
+      if (d) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.stroke();
+    const py = Y(_b9nHormon(dz, N));
+    ctx.fillStyle = '#7c3aed';
+    ctx.beginPath(); ctx.arc(X(dz), py, 3.5 + 0.6 * Math.sin(z.t * 3), 0, 2 * Math.PI); ctx.fill();
+  }
+  if (z.stern) _b9nStern(ctx, X(_b9nSprung() - 0.5), y1 - 7, 5);
+  ctx.restore();
+}
+function _b9nVergleich(ctx) {
+  const z = _b9n, u = _b9nU();
+  const zahl = _b9nStreifenZahl();
+  ctx.save();
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  if (!zahl) {
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText('Fertige Zyklen erscheinen hier als Streifen.', _B9N_GX0, 225);
+    ctx.restore(); return;
+  }
+  const al = _b9nAusrichtung();
+  // Lichtstrich durch die Sterne, sobald sie übereinander stehen
+  if (zahl >= 2 && al > 0.98) {
+    const x = _b9nSternX(_B9N_LAENGEN.find(L => z.streifen[L]));
+    const a = 0.35 + 0.2 * Math.sin(z.t * Math.PI * 2 * 0.5);
+    ctx.strokeStyle = 'rgba(245,158,11,' + a.toFixed(3) + ')'; ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.moveTo(x, 206); ctx.lineTo(x, 249); ctx.stroke();
+  }
+  for (const L of _B9N_LAENGEN) {
+    if (!z.streifen[L]) continue;
+    const y = _b9nStreifenY(L), x0 = _b9nStreifenX0(L);
+    const neu = L === z.neuN && z.stT >= 0 ? _bioFxEase.raus(_bioFxKlemme(z.stT / 0.5)) : 1;
+    ctx.globalAlpha = neu;
+    ctx.fillStyle = '#334155'; ctx.textAlign = 'left';
+    ctx.fillText(L + ' Tage', _B9N_GX0, y + 4);
+    for (let k = 1; k <= L; k++) {
+      ctx.fillStyle = k <= _B9N_ROT ? '#dc2626' : '#ede9fe';
+      ctx.fillRect(x0 + (k - 1) * u, y, u - 0.6, 8);
+    }
+    // nächster Tag 1 (blass rot) gleich hinter dem Streifen
+    ctx.fillStyle = 'rgba(220,38,38,0.35)';
+    ctx.fillRect(x0 + L * u, y, u - 0.6, 8);
+    _b9nStern(ctx, _b9nSternX(L), y + 4, 5);
+  }
+  ctx.restore();
+}
+function _b9nDraw(ctx, cv) {
+  if (!_b9n) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#fdf8f3'); bg.addColorStop(1, '#f5eee6');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _b9nKreis(ctx);
+  _b9nSchema(ctx);
+  _b9nHormonlinie(ctx);
+  _b9nVergleich(ctx);
+  _bioFxAlleDraw(ctx, _b9n.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · ANSTECKEND ODER NICHT?   (Förderheft Bio 8 · bh4, Kennung bio-uebertragung)
+// Zwei neutrale Umrissfiguren ohne Körperdetails: links „Person A (hat HIV)“ mit
+// roten Viruspunkten im Blut (Blutbahn als schematischer Ring), rechts „Person B“.
+// Die Situation wird über eine Knopfreihe gewählt und spielt als kurze Animation:
+//   Hand geben      – zwei Hände berühren sich            → Viren bei Person B: 0
+//   Mückenstich     – Mücke sticht A, Punkte in die Mücke,
+//                     fliegt zu B und sticht B; Punkte bleiben im Bauch → 0
+//   Spritze teilen  – Spritze zieht Blut bei A, wandert zu B, drückt es hinein → 30
+//   GV ohne Kondom  – rein symbolisch: heller Tropfen „Sperma oder
+//                     Scheidenflüssigkeit“ wandert von A zu B                → 30
+//   GV mit Kondom   – derselbe Tropfen prallt an der Schicht „Kondom“ ab     → 0
+// Modellwert (Lehrerteil): 30 steht für „Viren gelangen ins Blut“.
+// Leitplanken: keine Körper- oder Geschlechtsdarstellung, keine Vermenschlichung
+// der Viren (nur Punkte), am Bildschirm nie die Lückenwörter „nicht“, „keine“,
+// „Verantwortung“ und kein „nicht ansteckend“.
+// Aha (nach der Beobachtung, _bioFx): Beim Mückenstich Zeitlupe genau im Stich bei B –
+// die roten Punkte bleiben sichtbar im Mückenbauch (ruhiger Lichtkranz), der Zähler
+// bei B bleibt 0. Mit Kondom Zeitlupe beim Aufprall, grüner Lichtring an der Schicht,
+// der Tropfen federt zurück. Kurze Effekte, kein Blinken, kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _b9o = null;
+const _B9O_SIT = ['Hand geben', 'Mückenstich', 'Spritze teilen',
+                  'Geschlechtsverkehr ohne Kondom', 'Geschlechtsverkehr mit Kondom'];
+const _B9O_SATZ = ['Die Hände berühren sich.',
+                   'Die Mücke sticht erst A, dann B.',
+                   'Die Spritze mit Blut von A kommt zu B.',
+                   'Tropfen „Sperma oder Scheidenflüssigkeit“ kommt zu B',
+                   'Tropfen bleibt am Kondom zurück'];
+const _B9O_VIR = [0, 0, 30, 30, 0];                      // Modellwert je Situation
+const _B9O_WEG = ['nur Hautkontakt, kein Blut',
+                  'die Mücke sticht, das Blut von A bleibt in der Mücke',
+                  'Blut von A',
+                  'Sperma oder Scheidenflüssigkeit',
+                  'Der Tropfen „Sperma oder Scheidenflüssigkeit“ bleibt am Kondom.'];
+const _B9O_DAUER = [2.8, 5.0, 4.4, 3.4, 3.0];            // s je Animation
+const _B9O_KERN = [1.0, 3.4, 3.0, 2.4, 1.8];             // Zeitpunkt des Schlüsselmoments
+const _B9O_AX = 85, _B9O_BX = 335;                       // Mitte der Figuren
+const _B9O_BY = 140;                                     // Mitte der Blutbahn
+const _B9O_LX = 258;                                     // Schicht „Kondom“
+const _B9O_N = 30;                                       // Punkte im Blut von A
+
+function _b9oInit() {
+  _b9o = { t: 0, sit: 0, phase: 'bereit', pt: 0, nach: 0, schritt: 0,
+           ev: {}, vir: 0, fx: { teile: [] }, letzt: '' };
+}
+function _b9oFxLeer() {
+  _b9o.fx = { teile: [] }; _b9o.zeitlupe = null;
+  _b9o.nach = 0; _b9o.schritt = 0; _b9o.ev = {}; _b9o.vir = 0;
+}
+
+function _b9oHTML() {
+  const k = (i) => `<button class="sim-btn" data-b9o="${i}" onclick="_b9oSituation(${i})">${_B9O_SIT[i]}</button>`;
+  const m = (i) => `<button class="sim-btn" onclick="_b9oMarke(${i})">⏭ ${_B9O_SIT[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie kommt HIV von A zu B?</h3>
+    <div class="fpm-note" style="margin-top:2px">Person A hat HIV. Die roten Punkte sind Viren im Blut. Wähle eine Situation. Dann drücke „▶ abspielen“ und lies den Zähler bei Person B ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9o-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Situation</span>
+          <div class="sim-btn-row">${k(0)}${k(1)}${k(2)}</div>
+          <div class="sim-btn-row" style="margin-top:4px">${k(3)}${k(4)}</div>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_b9o-los" onclick="_b9oAbspielen()">▶ abspielen</button>
+          <button class="sim-btn" onclick="_b9oNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was siehst du?</div>
+        <div class="lmp-status on" id="_b9o-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Was geht von A zu B?</div>
+        <div class="fpm-note" id="_b9o-weg" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">${m(0)}${m(1)}${m(2)}${m(3)}${m(4)}</div>
+        <div class="fpm-note" style="margin-top:8px">Das Bild ist ein Modell. Die Figuren sind nur Umrisse. Die Zahl 30 steht für: Viren kommen ins Blut.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Hand geben &nbsp;|&nbsp; Schau auf den Zähler „Viren bei Person B“ unten rechts im Bild.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _b9oSituation(i) {
+  if (!_b9o) return;
+  _b9o.sit = Math.max(0, Math.min(4, Number(i) || 0));
+  _b9oAbspielen();                    // die gewählte Situation spielt gleich ab
+}
+function _b9oAbspielen() {
+  if (!_b9o) return;
+  _b9oFxLeer();
+  _b9o.phase = 'lauf'; _b9o.pt = 0;
+  _b9oStatus();
+}
+function _b9oNeu() {
+  if (!_b9o) return;
+  _b9oFxLeer();
+  _b9o.sit = 0; _b9o.phase = 'bereit'; _b9o.pt = 0;
+  _b9oStatus();
+}
+// Sprungmarke: Situation einstellen und gleich ans Ende der Animation springen.
+function _b9oMarke(i) {
+  if (!_b9o) return;
+  _b9o.sit = Math.max(0, Math.min(4, Number(i) || 0));
+  _b9oFxLeer();
+  _b9o.phase = 'lauf'; _b9o.pt = _B9O_DAUER[_b9o.sit] - 0.001;
+  _b9oEreignisse(true);
+  _b9o.pt = _B9O_DAUER[_b9o.sit];
+  _b9o.phase = 'fertig'; _b9o.nach = 0; _b9o.schritt = 0;
+  _b9o.vir = _B9O_VIR[_b9o.sit];
+  _b9oStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _b9oZeile() {
+  const s = _b9o.sit;
+  if (_b9o.phase === 'bereit') return 'Situation: ' + _B9O_SIT[s] + '<br>Drücke „▶ abspielen“.';
+  if (_b9o.phase === 'lauf') {
+    const satz = _b9o.pt >= _B9O_KERN[s] ? _B9O_SATZ[s] : 'Schau genau hin: Was geht von A zu B?';
+    return 'Situation: ' + _B9O_SIT[s] + '<br>' + satz;
+  }
+  return 'Situation: ' + _B9O_SIT[s] + '<br><b>' + _B9O_SATZ[s] +
+         ' · Viren bei Person B: ' + _B9O_VIR[s] + '</b>';
+}
+function _b9oStatus() {
+  if (!_b9o) return;
+  const z = _b9oZeile();
+  _b9o.letzt = z;
+  const el = document.getElementById('_b9o-status');
+  if (el) { el.innerHTML = z; el.className = 'lmp-status on'; }
+  const w = document.getElementById('_b9o-weg');
+  if (w) w.innerHTML = _b9o.phase === 'fertig' ? _B9O_WEG[_b9o.sit] : '…';
+  try {
+    document.querySelectorAll('[data-b9o]').forEach(b => {
+      const d = b.getAttribute ? b.getAttribute('data-b9o') : (b.dataset && b.dataset.b9o);
+      if (b.classList) b.classList.toggle('primary', String(d) === String(_b9o.sit));
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_b9o-los');
+  if (los && los.classList) los.classList.toggle('primary', _b9o.phase !== 'lauf');
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _b9oUpdate(dt) {
+  if (!_b9o) return;
+  dt = _bioFxDt(dt);
+  _b9o.t += dt;
+  if (_b9o.phase === 'lauf') {
+    _b9o.pt += dt * _bioFxZeitlupeFaktor(_b9o, dt);
+    _b9oEreignisse(false);
+    if (_b9o.pt >= _B9O_DAUER[_b9o.sit]) {
+      _b9o.pt = _B9O_DAUER[_b9o.sit];
+      _b9o.phase = 'fertig'; _b9o.nach = 0; _b9o.schritt = 0;
+    }
+    if (_b9oZeile() !== _b9o.letzt) _b9oStatus();
+  } else if (_b9o.phase === 'fertig') {
+    _b9o.nach += dt;
+    _b9oNachher();
+  }
+  _bioFxAlleUpdate(_b9o.fx, dt);
+}
+// Einmalige Ereignisse während der Animation (Welle, Zeitlupe, Zähler).
+function _b9oEreignisse(sprung) {
+  const s = _b9o.sit, fx = _b9o.fx, ev = _b9o.ev, pt = _b9o.pt;
+  const einmal = (k, zeit, fn) => { if (!ev[k] && pt >= zeit) { ev[k] = true; fn(); } };
+  if (s === 0) {
+    einmal('touch', 1.0, () => _bioFxWelle(fx.teile, 210, 118, '#fde68a', 26));
+  } else if (s === 1) {
+    einmal('stichA', 1.0, () => _bioFxWelle(fx.teile, _B9O_AX + 20, 88, '#fca5a5', 18));
+    einmal('stichB', 3.4, () => {
+      if (!sprung) _bioFxZeitlupe(_b9o, 0.3, 1.4);    // genau hinsehen: was geht in B?
+      _bioFxWelle(fx.teile, _B9O_BX - 20, 88, '#cbd5e1', 22);
+    });
+  } else if (s === 2) {
+    einmal('spritze', 3.0, () => {
+      _bioFxZaehler(fx, 30, 1.0); _b9o.vir = 30;
+      _bioFxWelle(fx.teile, _B9O_BX, _B9O_BY, '#fca5a5', 40);
+    });
+  } else if (s === 3) {
+    einmal('tropfen', 2.4, () => {
+      _bioFxZaehler(fx, 30, 1.0); _b9o.vir = 30;
+      _bioFxWelle(fx.teile, _B9O_BX, _B9O_BY, '#fca5a5', 40);
+    });
+  } else {
+    einmal('prall', 1.8, () => {
+      if (!sprung) _bioFxZeitlupe(_b9o, 0.3, 1.2);
+      _bioFxWelle(fx.teile, _B9O_LX, 150, '#6ee7b7', 34);
+      _bioFxFunken(fx.teile, _B9O_LX - 6, 150, 8, ['#a7f3d0', '#ffffff', '#6ee7b7']);
+    });
+  }
+}
+// Nach dem Ende: erst hinsehen, dann bestätigt ein ruhiger Effekt.
+function _b9oNachher() {
+  const s = _b9o.sit, fx = _b9o.fx, t = _b9o.nach;
+  if (_b9o.schritt === 0 && t >= 0.4) {
+    _b9o.schritt = 1;
+    if (_B9O_VIR[s] === 0) {
+      _bioFxWelle(fx.teile, _B9O_BX, _B9O_BY, '#86efac', 52);
+      _bioFxFunken(fx.teile, _B9O_BX, 238, 6, ['#bbf7d0', '#ffffff', '#86efac']);
+      _bioFxStempel(fx, 'Viren bei B: 0', 210, s === 4 ? 70 : 175, '#15803d');
+    } else {
+      _bioFxStempel(fx, 'Viren bei B: 30', 210, 175, '#b91c1c');
+    }
+  }
+  if (_b9o.schritt === 1 && t >= 1.0) {
+    _b9o.schritt = 2;
+    const text = ['Die Viren bleiben bei Person A.',
+                  'Das Blut von A bleibt in der Mücke.',
+                  'Mit dem Blut kommen Viren zu B.',
+                  'Mit dem Tropfen kommen Viren zu B.',
+                  'Das Kondom hält den Tropfen zurück.'][s];
+    _bioFxBanner(fx, text, 3.4, _B9O_VIR[s] === 0 ? '#86efac' : '#fca5a5');
+  }
+  if (_b9o.schritt === 2 && t >= 4.0) { _b9o.schritt = 3; fx.stempel = null; }
+}
+
+/* ── Zeichnen: Hilfen ──────────────────────────────────────────────────── */
+function _b9oEase(a, b, u) { return a + (b - a) * _bioFxEase.sanft(_bioFxKlemme(u)); }
+function _b9oPhase(pt, von, bis) { return _bioFxKlemme((pt - von) / (bis - von)); }
+
+// Neutrale Umrissfigur: Kopf und abgerundeter Rumpf, keine Einzelheiten.
+function _b9oFigur(ctx, cx, t, farbe) {
+  const wipp = Math.sin(t * 1.4 + cx) * 0.8;          // ruhiges Atmen
+  ctx.save();
+  ctx.fillStyle = farbe; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, cx - 32, 80 + wipp * 0.3, 64, 118, 26); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx, 58 + wipp, 17, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Schematische Blutbahn (Ring) mit n Viruspunkten.
+function _b9oBlut(ctx, cx, t, n) {
+  ctx.save();
+  ctx.strokeStyle = 'rgba(220,38,38,0.20)'; ctx.lineWidth = 10;
+  ctx.beginPath(); ctx.ellipse(cx, _B9O_BY, 18, 40, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#9f1239'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Blut', cx, _B9O_BY + 4);
+  for (let i = 0; i < n; i++) {
+    const w = t * 0.6 + i * 2 * Math.PI / _B9O_N;
+    _b9oVirus(ctx, cx + 18 * Math.cos(w), _B9O_BY + 40 * Math.sin(w), 1);
+  }
+  ctx.restore();
+}
+function _b9oVirus(ctx, x, y, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+// Mücke: Mitte (x,y), Blickrichtung r (+1 rechts, -1 links), sticht?, Punkte im Bauch.
+function _b9oMuecke(ctx, x, y, r, sticht, punkte, t) {
+  ctx.save();
+  ctx.translate(x, y);
+  const bx = -r * 15, by = 3;                         // Bauch
+  // Beine
+  ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1;
+  for (const d of [-6, 0, 6]) {
+    ctx.beginPath(); ctx.moveTo(d, 3); ctx.lineTo(d - 4, 13); ctx.lineTo(d - 6, 19); ctx.stroke();
+  }
+  // Flügel: im Flug schlagen sie leicht, beim Stich liegen sie an
+  const schlag = sticht ? 0.1 : 0.35 * Math.sin(t * 2 * Math.PI * 5);
+  ctx.fillStyle = 'rgba(224,242,254,0.55)'; ctx.strokeStyle = 'rgba(100,116,139,0.8)';
+  for (const d of [0, 1]) {
+    ctx.save(); ctx.translate(-r * 3, -3);
+    ctx.rotate(-r * (0.6 + d * 0.35) - schlag * (d ? 1 : -1));
+    ctx.beginPath(); ctx.ellipse(-r * 10, -2, 12, 4.5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // Bauch (durchscheinend, damit die Punkte sichtbar sind)
+  ctx.fillStyle = 'rgba(214,211,209,0.75)'; ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.ellipse(bx, by, 13, 6.5, r * 0.15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  for (let i = 0; i < punkte; i++) {
+    const w = t * 1.1 + i * 1.05;
+    _b9oVirus(ctx, bx + Math.cos(w) * 7, by + Math.sin(w * 1.3) * 2.5, 1);
+  }
+  // Brust und Kopf
+  ctx.fillStyle = '#78716c';
+  ctx.beginPath(); ctx.arc(0, 0, 5.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(r * 8, -1, 3.8, 0, 2 * Math.PI); ctx.fill();
+  // Rüssel
+  ctx.strokeStyle = '#44403c'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(r * 11, 0);
+  if (sticht) ctx.lineTo(r * 16, 12); else ctx.lineTo(r * 20, 4);
+  ctx.stroke();
+  ctx.restore();
+  return { x: x + bx, y: y + by };
+}
+
+// Spritze: Nadelspitze bei (x,y), Winkel w (0 = Nadel zeigt nach links),
+// Füllung 0..1, Kolben 0..1 (herausgezogen).
+function _b9oSpritze(ctx, x, y, w, fuell, kolben, t) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(18, 0); ctx.stroke();         // Nadel
+  ctx.fillStyle = 'rgba(241,245,249,0.9)';
+  ctx.fillRect(18, -7, 50, 14);
+  if (fuell > 0.01) {
+    ctx.fillStyle = 'rgba(220,38,38,0.55)';
+    ctx.fillRect(19, -6, 48 * fuell, 12);
+    const n = Math.round(6 * fuell);
+    for (let i = 0; i < n; i++)
+      _b9oVirus(ctx, 23 + (i * 7.3) % Math.max(4, 44 * fuell), Math.sin(t * 2 + i * 1.7) * 3, 1);
+  }
+  ctx.strokeRect(18, -7, 50, 14);
+  const kx = 19 + 48 * fuell;                                                   // Kolbenscheibe
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(kx, -6, 3, 12);
+  const ende = Math.max(kx + 13, 72) + 4 + 0 * kolben;                         // Kolbenstange ragt heraus
+  ctx.beginPath(); ctx.moveTo(kx + 3, 0); ctx.lineTo(ende, 0); ctx.stroke();
+  ctx.fillRect(ende, -8, 3, 16);
+  ctx.restore();
+}
+
+// Tropfen „Sperma oder Scheidenflüssigkeit“ (heller Tropfen mit Viruspunkten).
+function _b9oTropfen(ctx, x, y, gross, quetsch, t, alpha, rechts) {
+  if (gross <= 0.01 || alpha <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(x, y);
+  ctx.save();
+  ctx.scale(gross * (1 - 0.25 * quetsch), gross * (1 + 0.2 * quetsch));
+  ctx.fillStyle = '#f0f9ff'; ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, -17);
+  ctx.bezierCurveTo(9, -6, 14, 0, 14, 5);
+  ctx.arc(0, 5, 14, 0, Math.PI, false);
+  ctx.bezierCurveTo(-14, 0, -9, -6, 0, -17);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  for (let i = 0; i < 5; i++) {
+    const w = t * 1.3 + i * 1.26;
+    _b9oVirus(ctx, Math.cos(w) * 6, 5 + Math.sin(w) * 5, 1);
+  }
+  ctx.restore();
+  // Beschriftung mit hellem Grund; am Kondom endet sie links vor der Schicht
+  ctx.font = '700 10px sans-serif';
+  const lt = 'Sperma oder Scheidenflüssigkeit', lw = ctx.measureText(lt).width;
+  const lx = rechts ? 12 - lw : -lw / 2;
+  ctx.fillStyle = 'rgba(255,255,255,0.82)';
+  _bioFxRundRect(ctx, lx - 4, -38, lw + 8, 15, 5); ctx.fill();
+  ctx.fillStyle = '#0369a1'; ctx.textAlign = 'left';
+  ctx.fillText(lt, lx, -27);
+  ctx.restore();
+}
+
+/* ── Zeichnen: Bild ────────────────────────────────────────────────────── */
+function _b9oDraw(ctx, cv) {
+  if (!_b9o) return;
+  const W = cv.width, H = cv.height, t = _b9o.t, s = _b9o.sit;
+  const pt = _b9o.phase === 'bereit' ? 0 : _b9o.pt;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#e2e8f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(0, 204, W, 2);
+
+  // Situation oben in der Mitte
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Situation: ' + _B9O_SIT[s], W / 2, 18);
+
+  // Arme (nur bei „Hand geben“) hinter den Figuren
+  if (s === 0) {
+    const e = _bioFxEase.sanft(_b9oPhase(pt, 0, 1.0));
+    const schuettel = pt > 1.0 && pt < 2.4 ? Math.sin((pt - 1.0) * Math.PI * 2 / 0.7) * 5 : 0;
+    const ruhig = _b9o.phase === 'fertig' ? Math.sin(t * 1.4) * 1.2 : 0;
+    for (const [cx, r] of (e > 0.02 ? [[_B9O_AX, 1], [_B9O_BX, -1]] : [])) {
+      const x0 = cx + r * 26, y0 = 112;
+      const hx = x0 + (210 - r * 9 - x0) * e, hy = 120 + schuettel + ruhig;
+      ctx.save();
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#64748b'; ctx.lineWidth = 12;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(hx, hy); ctx.stroke();
+      ctx.strokeStyle = r > 0 ? '#e8edf3' : '#eef2f7'; ctx.lineWidth = 8;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(hx, hy); ctx.stroke();
+      ctx.fillStyle = r > 0 ? '#e8edf3' : '#eef2f7'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.ellipse(hx, hy, 9, 7.5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // Figuren
+  _b9oFigur(ctx, _B9O_AX, t, '#e8edf3');
+  _b9oFigur(ctx, _B9O_BX, t, '#eef2f7');
+  _b9oBlut(ctx, _B9O_AX, t, _B9O_N);
+  const nB = _b9o.fx.zaehler ? Math.round(_bioFxZaehlerWert(_b9o.fx)) : _b9o.vir;
+  _b9oBlut(ctx, _B9O_BX, t, Math.max(0, Math.min(_B9O_N, nB)));
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Person A (hat HIV)', _B9O_AX, 220);
+  ctx.fillText('Person B', _B9O_BX, 220);
+
+  // Handberührung markieren
+  if (s === 0 && pt >= 1.0) {
+    ctx.save();
+    ctx.globalAlpha = 0.6 + 0.2 * Math.sin(t * 2);
+    ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Hände berühren sich', 210, 100);
+    ctx.restore();
+  }
+
+  // Mückenstich
+  if (s === 1 && _b9o.phase !== 'bereit') {
+    const aX = _B9O_AX + 36, aY = 76, bX = _B9O_BX - 36, bY = 76;
+    let x, y, r = 1, sticht = false;
+    if (pt < 1.0) { const u = _bioFxEase.raus(pt / 1.0); x = _b9oEase(30, aX, u); y = 40 + (aY - 40) * u + Math.sin(pt * 9) * 3; r = -1; }
+    else if (pt < 2.0) { x = aX; y = aY; r = -1; sticht = true; }
+    else if (pt < 3.4) { const u = _b9oPhase(pt, 2.0, 3.4); x = _b9oEase(aX - 30, bX, u); y = aY - Math.sin(Math.PI * u) * 28 + Math.sin(pt * 8) * 2; r = 1; }
+    else if (pt < 4.4) { x = bX; y = bY; r = 1; sticht = true; }
+    else { const u = _b9oPhase(pt, 4.4, 5.0); x = _b9oEase(bX, 222, u); y = _b9oEase(bY, 112, u); r = -1; }
+    if (_b9o.phase === 'fertig') { y += Math.sin(t * 1.6) * 3; x += Math.cos(t * 1.1) * 2; }
+    // Punkte wandern beim Stich bei A in den Bauch
+    const inBauch = pt < 1.0 ? 0 : Math.min(6, Math.floor(_b9oPhase(pt, 1.0, 1.9) * 6 + 1e-9));
+    const bauch = _b9oMuecke(ctx, x, y, r, sticht, inBauch, t);
+    if (pt >= 1.0 && pt < 2.0) {
+      const u = (_b9oPhase(pt, 1.0, 1.9) * 6) % 1;
+      if (inBauch < 6) _b9oVirus(ctx, _b9oEase(_B9O_AX + 6, bauch.x, u), _b9oEase(100, bauch.y, u), 1);
+    }
+    if (_b9o.phase === 'fertig' && _b9o.nach > 0.3 && _b9o.nach < 4.0)
+      _bioFxLeuchten(ctx, bauch.x, bauch.y, 15, t, '248,113,113');
+    ctx.fillStyle = '#44403c'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Mücke', x, y - 16);
+  }
+
+  // Spritze teilen
+  if (s === 2 && _b9o.phase !== 'bereit') {
+    const aX = _B9O_AX + 30, bX = _B9O_BX - 30, y0 = 150;
+    let x = aX, y = y0, w = 0, fuell = 0, alpha = _b9oPhase(pt, 0, 0.4);
+    if (pt >= 0.6) fuell = _b9oPhase(pt, 0.6, 1.8);
+    if (pt >= 1.8) { const u = _b9oPhase(pt, 1.8, 3.0); x = _b9oEase(aX, bX, u); y = y0 - Math.sin(Math.PI * u) * 60; w = Math.PI * _bioFxEase.sanft(u); }
+    if (pt >= 3.0) fuell = 1 - _b9oPhase(pt, 3.0, 4.0);
+    ctx.save(); ctx.globalAlpha = alpha;
+    _b9oSpritze(ctx, x, y, w, fuell, fuell, t);
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Spritze', x + Math.cos(w) * 42, y - 14);
+    ctx.restore();
+  }
+
+  // Tropfen ohne / mit Kondom (rein symbolisch)
+  if (s === 4) {
+    ctx.save();
+    ctx.globalAlpha = 0.85 + 0.1 * Math.sin(t * 1.2);
+    ctx.fillStyle = 'rgba(125,211,252,0.35)'; ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, _B9O_LX - 5, 98, 10, 100, 5); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#0369a1'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Kondom', _B9O_LX, 92);
+    ctx.restore();
+    if (_b9o.phase === 'fertig' && _b9o.nach < 3.0) _bioFxLeuchten(ctx, _B9O_LX, 150, 22, t, '52,211,153');
+  }
+  if ((s === 3 || s === 4) && _b9o.phase !== 'bereit') {
+    const x0 = _B9O_AX + 50, y0 = 158;
+    const gross = _bioFxEase.federn(_b9oPhase(pt, 0, 0.6));
+    let x = x0, y = y0, quetsch = 0, alpha = 1;
+    if (s === 3) {
+      const u = _b9oPhase(pt, 0.6, 2.4);
+      x = _b9oEase(x0, _B9O_BX - 20, u); y = y0 - Math.sin(Math.PI * u) * 22;
+      if (pt >= 2.4) alpha = 1 - _b9oPhase(pt, 2.4, 3.2);           // geht in B über
+    } else {
+      const ziel = _B9O_LX - 20;
+      const u = _b9oPhase(pt, 0.6, 1.8);
+      x = x0 + (ziel - x0) * _bioFxEase.rein(u) * 0.35 + (ziel - x0) * u * 0.65;
+      y = y0 - Math.sin(Math.PI * u) * 18;
+      if (pt >= 1.8) {
+        const v = _b9oPhase(pt, 1.8, 2.8);
+        x = ziel - 48 * Math.sin(Math.PI * v) * (1 - v);            // prallt ab, federt zurück
+        quetsch = Math.max(0, 1 - v * 5);
+      }
+      if (_b9o.phase === 'fertig') x += Math.sin(t * 1.5) * 1.2;
+    }
+    _b9oTropfen(ctx, x, y, gross, quetsch, t, alpha, s === 4);
+  }
+
+  // Zähler bei Person B
+  const rot = nB > 0;
+  ctx.save();
+  ctx.font = '700 12px sans-serif';
+  const txt = 'Viren bei Person B: ' + nB;
+  const bw = ctx.measureText(txt).width + 16;
+  const zx = Math.min(W - 4 - bw, _B9O_BX - bw / 2);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = rot ? '#dc2626' : '#475569'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, zx, 227, bw, 20, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = rot ? '#b91c1c' : '#0f172a'; ctx.textAlign = 'left';
+  ctx.fillText(txt, zx + 8, 241);
+  ctx.restore();
+
+  _bioFxAlleDraw(ctx, _b9o.fx);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 8 FOERDER · 40 WOCHEN IM MUTTERLEIB   (Förderheft Bio 8 · bn1)
+// Schematischer Schnitt durch die Fruchtblase (KEIN Körper der Mutter, nur
+// Wand, Fruchtwasser, Plazenta, Nabelschnur) mit dem wachsenden Kind.
+// Daneben ein Lineal (Länge Kopf bis Ferse, 0–50 cm im echten Maßstab des
+// Bildes: 3,6 Bildpunkte je cm) und eine Waage, auf der das Gewicht als
+// Turm aus 100-g-Klötzen steht. Unten ein Gegenstand gleicher Größe.
+// Modellwerte (Lehrerteil): 6 → 0,5 cm · unter 1 g · Reiskorn;
+// 12 → 6 cm · 15 g · Pflaume; 24 → 30 cm · 600 g · Lineal;
+// 40 → 50 cm · 3500 g · Baby-Strampler. Herz schlägt ab Woche 6.
+// Das Kind heißt am Bildschirm nur „Kind“ (Fachwörter stehen im Heft).
+// Leben: Das Herz pocht sichtbar (1,6 Hz, Größe, kein An/Aus), das Kind
+// schwebt im Fruchtwasser, in Woche 12 zappeln Arme und Beine, in Woche 24
+// kommen Schallbögen von außen an, in Woche 40 dreht es sich mit dem Kopf
+// nach unten. Beim Umstellen wächst alles weich in 0,9 s; die Zahlen
+// stehen sofort da.
+// Aha (nach der Beobachtung, _bioFx): Die Klötze fallen einzeln auf die
+// Waage. Von 6 nach 12 kommt nur ein dünner Streifen dazu, von 12 nach 24
+// sechs Klötze – von 24 nach 40 prasseln 29 Klötze herab, der Turm schießt
+// hoch. Danach Lichtring, Funken, eine Klammer über dem Zuwachs und das
+// Banner „So viel kommt dazu!“. Die Wochenmarken neben dem Turm zeigen,
+// dass es NICHT gleichmäßig geht. Kein Lückenwort als Text im Bild.
+// ═══════════════════════════════════════════════════════════════════════
+let _b9p = null;
+const _B9P_WOCHEN = ['6', '12', '24', '40'];
+const _B9P_D = {
+  '6':  { cm: 0.5, g: 0.5,  laenge: '0,5 cm', gewicht: 'unter 1 g', ding: 'Reiskorn',
+          status: 'Das Herz schlägt.', rx: 30, ry: 26, dreh: 0, zappel: 0 },
+  '12': { cm: 6,   g: 15,   laenge: '6 cm',   gewicht: '15 g',      ding: 'Pflaume',
+          status: 'Das Herz schlägt. Arme und Beine bewegen sich.', rx: 46, ry: 40, dreh: 0, zappel: 0.5 },
+  '24': { cm: 30,  g: 600,  laenge: '30 cm',  gewicht: '600 g',     ding: 'Lineal',
+          status: 'Das Herz schlägt. Das Kind hört Geräusche.', rx: 80, ry: 70, dreh: 0, zappel: 0.2 },
+  '40': { cm: 50,  g: 3500, laenge: '50 cm',  gewicht: '3500 g',    ding: 'Baby-Strampler',
+          status: 'Das Herz schlägt. Das Kind ist bereit für die Geburt.', rx: 100, ry: 88, dreh: Math.PI, zappel: 0.07 }
+};
+const _B9P_PXCM = 3.6;            // Bildpunkte je cm (Lineal und Kind)
+const _B9P_CX = 112, _B9P_CY = 112;   // Mitte der Fruchtblase
+const _B9P_BASIS = 186;           // Oberkante der Waagschale
+const _B9P_BH = 4.2;              // Höhe eines 100-g-Klotzes
+const _B9P_TX = 345;              // Mitte des Klotzturms
+const _B9P_LUPE = { x: 186, y: 150, r: 34 };
+const _B9P_KS = 0.72;             // eingerollt: Zeichnung 0,72 der gestreckten Länge
+
+function _b9pInit() {
+  const z = []; let s = 91;
+  const r = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+  for (let i = 0; i < 22; i++) z.push({ u: r() * 2 - 1, v: r() * 2 - 1, ph: r() * 6.28, gr: 0.6 + r() * 1.2 });
+  _b9p = { t: 0, woche: '6', von: '6', p: 1, besucht: { '6': true },
+           kl: [], spawn: 0, takt: 0.09, aha: null, klammer: null, schall: [], schallT: 0,
+           herzWelle: 0.6, dingT: 1, fx: { teile: [] }, flocken: z };
+}
+function _b9pFxLeer() {
+  _b9p.fx = { teile: [] }; _b9p.aha = null; _b9p.klammer = null;
+}
+function _b9pHTML() {
+  const k = w => `<button class="sim-btn" data-b9p="${w}" onclick="_b9pWoche('${w}')">${w}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie wächst ein Kind im Mutterleib?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Schnitt durch die Fruchtblase. Darin schwimmt das Kind im Fruchtwasser. Stelle die Woche um. Lies am Lineal die Länge ab und an der Waage das Gewicht.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9p-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Woche</span>
+          ${_B9P_WOCHEN.map(k).join('\n          ')}
+          <button class="sim-btn" onclick="_b9pNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Lineal und Waage</div>
+        <div class="fpm-note" id="_b9p-mess" style="margin-top:4px;font-weight:700"></div>
+        <div class="fpm-label" style="margin-top:10px">Was kann das Kind schon?</div>
+        <div class="lmp-status on" id="_b9p-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die Länge wird vom Kopf bis zur Ferse gemessen. An der Waage ist 1 Klotz = 100 g.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Woche 6 &nbsp;|&nbsp; Alle Zahlen sind Modellwerte. Jedes Kind wächst etwas anders.</p>
+  </div>`;
+}
+function _b9pStatus() {
+  if (!_b9p) return;
+  const d = _B9P_D[_b9p.woche];
+  const el = document.getElementById('_b9p-status');
+  if (el) { el.textContent = d.status; el.className = 'lmp-status on'; }
+  const m = document.getElementById('_b9p-mess');
+  if (m) m.textContent = 'Länge: ' + d.laenge + ' · Gewicht: ' + d.gewicht;
+  try {
+    document.querySelectorAll('[data-b9p]').forEach(b => {
+      const w = b.dataset ? b.dataset.b9p : b.getAttribute('data-b9p');
+      if (b.classList) b.classList.toggle('primary', w === _b9p.woche);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _b9pWoche(w) {
+  if (!_b9p || !_B9P_D[String(w)]) return;
+  w = String(w);
+  if (w === _b9p.woche && _b9p.p >= 1) return;
+  const alt = _b9p.woche;
+  _b9p.von = alt; _b9p.woche = w; _b9p.p = 0; _b9p.besucht[w] = true;
+  _b9p.dingT = 0; _b9p.schall = [];
+  _b9pFxLeer();
+  // gleichmäßiger Takt: jeder Wechsel ist nach etwa 1,3 s gefallen
+  const n0 = _b9p.kl.filter(k => k.z !== 'weg').length, n1 = Math.floor(_B9P_D[w].g / 100);
+  _b9p.takt = Math.min(0.09, 1.3 / Math.max(1, Math.abs(n1 - n0)));
+  // Großer Zuwachs? Dann nach dem Landen aller Klötze das Aha.
+  const dg = _B9P_D[w].g - _B9P_D[alt].g;
+  if (dg >= 2000) _b9p.aha = { vonY: _b9pTurmY(_B9P_D[alt].g), warte: true };
+  if (w === '6') _b9p.herzWelle = 0.9;
+  _b9pStatus();
+}
+function _b9pNeu() {
+  if (!_b9p) return;
+  _b9p.besucht = {};
+  _b9pWoche('6');
+  _b9p.besucht = { '6': true };
+  _b9pStatus();
+}
+function _b9pTurmY(g) { return _B9P_BASIS - Math.floor(g / 100) * _B9P_BH; }
+function _b9pMisch(a, b, u) { return a + (b - a) * u; }
+// aktuell gezeigte (weich übergehende) Größen
+function _b9pJetzt() {
+  const a = _B9P_D[_b9p.von], b = _B9P_D[_b9p.woche];
+  const u = _bioFxEase.sanft(_bioFxKlemme(_b9p.p));
+  return { L: _b9pMisch(a.cm, b.cm, u) * _B9P_PXCM, rx: _b9pMisch(a.rx, b.rx, u),
+           ry: _b9pMisch(a.ry, b.ry, u), dreh: _b9pMisch(a.dreh, b.dreh, u),
+           zappel: _b9pMisch(a.zappel, b.zappel, u),
+           lupe: (b === _B9P_D['6'] ? u : 0) + (a === _B9P_D['6'] && b !== a ? 1 - u : 0) };
+}
+function _b9pUpdate(dt) {
+  if (!_b9p) return;
+  dt = _bioFxDt(dt);
+  _b9p.t += dt;
+  if (_b9p.p < 1) _b9p.p = Math.min(1, _b9p.p + dt / 0.9);
+  _b9p.dingT = Math.min(1, _b9p.dingT + dt / 0.5);
+
+  // ── Klötze auf der Waage ──
+  const ziel = Math.floor(_B9P_D[_b9p.woche].g / 100);
+  const aktiv = _b9p.kl.filter(k => k.z !== 'weg');
+  _b9p.spawn -= dt;
+  if (_b9p.spawn <= 0 && aktiv.length !== ziel) {
+    _b9p.spawn = _b9p.takt;
+    if (aktiv.length < ziel) {
+      const slot = aktiv.length;
+      const sy = _B9P_BASIS - (slot + 1) * _B9P_BH;
+      _b9p.kl.push({ slot, y: sy - 58, vy: 0, z: 'fall', a: 0 });
+    } else {
+      let top = null;
+      for (const k of aktiv) if (!top || k.slot > top.slot) top = k;
+      if (top) { top.z = 'weg'; top.a = 1; }
+    }
+  }
+  for (const k of _b9p.kl) {
+    const sy = _B9P_BASIS - (k.slot + 1) * _B9P_BH;
+    if (k.z === 'fall') {
+      k.a = Math.min(1, k.a + dt * 6);
+      k.vy += 1400 * dt; k.y += k.vy * dt;
+      if (k.y >= sy) {
+        k.y = sy; k.z = 'sitzt';
+        if (k.slot % 3 === 0) _bioFxFunken(_b9p.fx.teile, _B9P_TX + (k.slot % 2 ? 14 : -14), sy + 2, 2, ['#fde68a', '#ffffff']);
+      }
+    } else if (k.z === 'weg') {
+      k.y -= 70 * dt; k.a -= dt * 3;
+    }
+  }
+  _b9p.kl = _b9p.kl.filter(k => !(k.z === 'weg' && k.a <= 0));
+
+  // ── Aha: erst wenn alle Klötze gelandet sind ──
+  const A = _b9p.aha;
+  if (A && A.warte) {
+    const jetzt = _b9p.kl.filter(k => k.z !== 'weg');
+    if (jetzt.length === ziel && jetzt.every(k => k.z === 'sitzt')) {
+      A.warte = false;
+      const oben = _b9pTurmY(_B9P_D[_b9p.woche].g);
+      _bioFxWelle(_b9p.fx.teile, _B9P_TX, oben, '#fde047', 46);
+      _bioFxFunken(_b9p.fx.teile, _B9P_TX, oben - 4, 14, ['#fde047', '#ffffff', '#86efac']);
+      _bioFxFunken(_b9p.fx.teile, _B9P_TX - 18, (oben + A.vonY) / 2, 6);
+      _bioFxFunken(_b9p.fx.teile, _B9P_TX + 18, (oben + A.vonY) / 2, 6);
+      _bioFxBanner(_b9p.fx, 'So viel kommt dazu!', 2.8, '#fde047');
+      _b9p.klammer = { von: A.vonY, bis: oben, alter: 0 };
+    }
+  }
+  if (_b9p.klammer) _b9p.klammer.alter += dt;
+
+  // ── Herz: ein weicher Lichtring, wenn Woche 6 angekommen ist ──
+  if (_b9p.herzWelle > 0) {
+    _b9p.herzWelle -= dt;
+    if (_b9p.herzWelle <= 0 && _b9p.woche === '6') {
+      const h = _b9pLupeHerz();
+      _bioFxWelle(_b9p.fx.teile, h.x, h.y, '#fca5a5', 22);
+    }
+  }
+
+  // ── Woche 24: Geräusche von außen ──
+  if (_b9p.woche === '24' && _b9p.p >= 1) {
+    _b9p.schallT -= dt;
+    if (_b9p.schallT <= 0) { _b9p.schallT = 1.1; _b9p.schall.push({ r: 4, a: 1 }); }
+  }
+  for (const s of _b9p.schall) { s.r += 34 * dt; s.a -= dt * 0.55; }
+  _b9p.schall = _b9p.schall.filter(s => s.a > 0);
+
+  _bioFxAlleUpdate(_b9p.fx, dt);
+}
+// Herzschlag: kurzer weicher Schlag, 1,6 Hz (nur Größe, kein An/Aus)
+function _b9pSchlag(t) { const s = Math.max(0, Math.sin(t * Math.PI * 2 * 1.6)); return s * s * s; }
+function _b9pPunkt(x, y, s, w, lx, ly) {
+  const c = Math.cos(w), n = Math.sin(w);
+  return { x: x + s * (lx * c - ly * n), y: y + s * (lx * n + ly * c) };
+}
+function _b9pLupeHerz() {
+  const L = _B9P_LUPE;
+  return _b9pPunkt(L.x, L.y + 2, 0.5, 0, -4, 4);
+}
+// Das Kind (ab Woche 12): Kopf oben links, eingerollt. 100 Einheiten = Länge L.
+function _b9pKind(ctx, x, y, L, w, zappel, t, hoert) {
+  const s = L * _B9P_KS / 100, haut = '#f3c0a8', rand = '#b9765f';
+  const wb = Math.sin(t * 2 * Math.PI * 1.3) * zappel;       // Beine
+  const wa = Math.sin(t * 2 * Math.PI * 1.1 + 1.2) * zappel;  // Arme
+  const kopf = hoert ? Math.sin(t * 2.2) * 0.12 : 0;
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w); ctx.scale(s, s);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const glied = (px, py, ax, ay, bx, by, dreh, farbe, breite) => {
+    ctx.save(); ctx.translate(px, py); ctx.rotate(dreh);
+    ctx.strokeStyle = rand; ctx.lineWidth = breite + 2.4;
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+    ctx.strokeStyle = farbe; ctx.lineWidth = breite;
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+    ctx.restore();
+  };
+  // hinteres Bein und hinterer Arm (etwas dunkler)
+  glied(8, 24, -20, -8, -12, 14, -wb * 0.7, '#e3ab93', 9);
+  glied(-2, -8, -12, 12, -16, -2, wa * 0.6, '#e3ab93', 6.5);
+  // Rumpf
+  ctx.fillStyle = haut; ctx.strokeStyle = rand; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.ellipse(4, 8, 18, 27, -0.25, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Kopf (dreht sich leicht zu den Geräuschen)
+  ctx.save(); ctx.translate(-4, -12); ctx.rotate(kopf); ctx.translate(4, 12);
+  ctx.beginPath(); ctx.arc(-6, -28, 20, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = rand; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.arc(-16, -30, 3.2, 0.2, Math.PI - 0.2); ctx.stroke();       // Auge, geschlossen
+  ctx.beginPath(); ctx.arc(1, -27, 4, -1.2, 1.4); ctx.stroke();                      // Ohr
+  ctx.restore();
+  // vorderes Bein und vorderer Arm
+  glied(6, 26, -22, -8, -12, 14, wb, haut, 10);
+  glied(-4, -6, -14, 12, -18, -4, wa, haut, 7);
+  ctx.restore();
+}
+// Das Kind in Woche 6 (in der Lupe): gekrümmt, großer Kopf, kleine Knospen.
+function _b9pKlein(ctx, x, y, s, t) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#b9765f'; ctx.lineWidth = 22;
+  ctx.beginPath(); ctx.arc(4, 2, 19, -2.5, 1.9); ctx.stroke();
+  ctx.strokeStyle = '#f3c0a8'; ctx.lineWidth = 19;
+  ctx.beginPath(); ctx.arc(4, 2, 19, -2.5, 1.9); ctx.stroke();
+  ctx.fillStyle = '#f3c0a8'; ctx.strokeStyle = '#b9765f'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(-12, -16, 17, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(21, -2, 5, 3, 0.4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(18, 16, 5, 3, -0.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#6b4a3a';
+  ctx.beginPath(); ctx.arc(-18, -18, 2.4, 0, 2 * Math.PI); ctx.fill();
+  // Nabelschnur-Ansatz
+  ctx.strokeStyle = '#d98f8f'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(8, 20); ctx.quadraticCurveTo(14, 34, 30, 40); ctx.stroke();
+  ctx.restore();
+}
+function _b9pHerz(ctx, x, y, r0, t) {
+  const b = _b9pSchlag(t), r = r0 * (1 + 0.5 * b);
+  ctx.save();
+  ctx.fillStyle = 'rgba(239,68,68,' + (0.18 + 0.25 * b).toFixed(3) + ')';
+  ctx.beginPath(); ctx.arc(x, y, r * 2.1, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Vergleichsgegenstände (klein, schematisch)
+function _b9pDing(ctx, name, x, y, k) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(k, k);
+  ctx.lineWidth = 1.5; ctx.strokeStyle = '#475569';
+  if (name === 'Reiskorn') {
+    ctx.fillStyle = '#fbfaf3';
+    ctx.beginPath(); ctx.ellipse(0, 0, 7, 3.2, -0.3, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  } else if (name === 'Pflaume') {
+    ctx.fillStyle = '#6d28d9';
+    ctx.beginPath(); ctx.ellipse(0, 2, 11, 12, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,0.5)'; ctx.beginPath(); ctx.arc(-4, -1, 5, 3.4, 4.6); ctx.stroke();
+    ctx.fillStyle = '#16a34a'; ctx.strokeStyle = '#166534';
+    ctx.beginPath(); ctx.ellipse(5, -11, 6, 2.6, -0.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  } else if (name === 'Lineal') {
+    ctx.fillStyle = '#fde68a';
+    ctx.fillRect(-19, -5, 38, 10); ctx.strokeRect(-19, -5, 38, 10);
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 12; i++) { const px = -17 + i * 34 / 12;
+      ctx.beginPath(); ctx.moveTo(px, -5); ctx.lineTo(px, i % 4 ? -2 : 0); ctx.stroke(); }
+  } else {
+    ctx.fillStyle = '#bfdbfe';
+    ctx.beginPath();
+    ctx.moveTo(-6, -13); ctx.lineTo(6, -13); ctx.lineTo(16, -7); ctx.lineTo(13, -2); ctx.lineTo(8, -5);
+    ctx.lineTo(8, 6); ctx.lineTo(11, 14); ctx.lineTo(3, 14); ctx.lineTo(0, 8); ctx.lineTo(-3, 14);
+    ctx.lineTo(-11, 14); ctx.lineTo(-8, 6); ctx.lineTo(-8, -5); ctx.lineTo(-13, -2); ctx.lineTo(-16, -7);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    for (const py of [-6, -1, 4]) { ctx.beginPath(); ctx.arc(0, py, 1.3, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  ctx.restore();
+}
+function _b9pDraw(ctx, cv) {
+  if (!_b9p) return;
+  const W = cv.width, H = cv.height, t = _b9p.t;
+  const d = _B9P_D[_b9p.woche], j = _b9pJetzt();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fbf6ef'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#f3ece1'; ctx.fillRect(262, 0, W - 262, H);
+
+  // ── Fruchtblase im Schnitt ──
+  const cx = _B9P_CX, cy = _B9P_CY, rx = j.rx, ry = j.ry;
+  ctx.fillStyle = '#eab0ab'; ctx.strokeStyle = '#c98580'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(cx, cy, rx + 10, ry + 10, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Plazenta an der Wand (oben rechts)
+  const pw = -0.85, px = cx + (rx + 2) * Math.cos(pw), py = cy + (ry + 2) * Math.sin(pw);
+  ctx.fillStyle = '#b4474f';
+  ctx.beginPath(); ctx.ellipse(px, py, Math.max(6, rx * 0.34), Math.max(3, rx * 0.11), pw + Math.PI / 2, 0, 2 * Math.PI); ctx.fill();
+  // Fruchtwasser
+  const fw = ctx.createRadialGradient(cx - rx * 0.3, cy - ry * 0.3, 2, cx, cy, Math.max(rx, ry));
+  fw.addColorStop(0, '#eef8fd'); fw.addColorStop(1, '#cfe7f5');
+  ctx.fillStyle = fw; ctx.strokeStyle = '#7fb0d0'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // schwebende Flöckchen im Fruchtwasser
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  for (const f of _b9p.flocken) {
+    const u = f.u * 0.8 + 0.08 * Math.sin(t * 0.4 + f.ph), v = f.v * 0.8 + 0.08 * Math.cos(t * 0.33 + f.ph);
+    if (u * u + v * v > 0.8) continue;
+    ctx.beginPath(); ctx.arc(cx + u * rx, cy + v * ry, f.gr, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Woche 24: Geräusche kommen von außen an
+  if (_b9p.schall.length) {
+    const sx = cx - rx - 32, sy = cy - 6;
+    ctx.save(); ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+    for (const s of _b9p.schall) {
+      ctx.strokeStyle = 'rgba(37,99,235,' + (0.75 * s.a).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(sx, sy, s.r, -0.55, 0.55); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // ── Das Kind ──
+  const bob = Math.sin(t * 0.9) * 2, kw = j.dreh + Math.sin(t * 0.7) * 0.05 + Math.sin(t * 2.3) * j.zappel * 0.35;
+  const kx = cx + 4, ky = cy + 2 + bob;
+  const zeigKind = j.L >= 8;
+  // Nabelschnur von der Plazenta zum Bauch
+  if (zeigKind) {
+    const bauch = _b9pPunkt(kx, ky, j.L * _B9P_KS / 100, kw, 12, 12);
+    const ix = cx + (rx - 2) * Math.cos(pw), iy = cy + (ry - 2) * Math.sin(pw);
+    ctx.strokeStyle = '#d98f8f'; ctx.lineWidth = Math.max(1.5, j.L * 0.026); ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(ix, iy);
+    ctx.bezierCurveTo(ix + 10 * Math.sin(t * 0.8), iy + ry * 0.5, bauch.x + 18, bauch.y + 10 + 4 * Math.sin(t), bauch.x, bauch.y);
+    ctx.stroke();
+    _b9pKind(ctx, kx, ky, j.L, kw, j.zappel, t, _b9p.woche === '24' && _b9p.p >= 1);
+    const h = _b9pPunkt(kx, ky, j.L * _B9P_KS / 100, kw, -4, -2);
+    _b9pHerz(ctx, h.x, h.y, Math.max(1.6, j.L * 0.022), t);
+    // Beschriftung „Kind“
+    ctx.fillStyle = '#7c2d12'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Kind', Math.min(cx + rx - 26, kx + j.L * 0.24 + 6), Math.min(cy + ry - 8, ky + j.L * 0.3 + 6));
+  } else {
+    // winzig: nur ein Pünktchen in der Blase (echter Maßstab)
+    ctx.fillStyle = '#c2410c';
+    ctx.beginPath(); ctx.arc(kx, ky, 1.4, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Beschriftung „Fruchtblase“
+  const lw = -2.4, lx = cx + rx * Math.cos(lw), ly = cy + ry * Math.sin(lw);
+  ctx.fillStyle = '#1e3a5f'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Fruchtblase', 8, 40);
+  ctx.strokeStyle = 'rgba(30,58,95,0.6)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(26, 44); ctx.lineTo(lx, ly); ctx.stroke();
+
+  // ── Lupe für Woche 6 ──
+  if (j.lupe > 0.02) {
+    const L = _B9P_LUPE;
+    ctx.save(); ctx.globalAlpha = j.lupe;
+    ctx.strokeStyle = 'rgba(71,85,105,0.7)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(kx + 2, ky - 2); ctx.lineTo(L.x - L.r * 0.75, L.y - L.r * 0.66); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#e6f4fb'; ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(L.x, L.y, L.r - 1, 0, 2 * Math.PI); ctx.clip();
+    _b9pKlein(ctx, L.x, L.y + 2 + Math.sin(t * 0.9) * 1.5, 0.5, t);
+    const h = _b9pLupeHerz();
+    _b9pHerz(ctx, h.x, h.y + Math.sin(t * 0.9) * 1.5, 2.4, t);
+    ctx.restore();
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.stroke();
+    ctx.lineWidth = 6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(L.x + L.r * 0.72, L.y + L.r * 0.72); ctx.lineTo(L.x + L.r * 1.15, L.y + L.r * 1.15); ctx.stroke();
+    ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Lupe: Kind vergrößert', L.x - 20, L.y + L.r + 16);
+    ctx.restore();
+  }
+
+  // ── Lineal (0 bis 50 cm, echter Maßstab des Bildes) ──
+  const lx0 = 236, lb = 205, lt = lb - 50 * _B9P_PXCM;
+  ctx.fillStyle = '#fde68a'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1.2;
+  ctx.fillRect(lx0, lt - 4, 20, lb - lt + 8); ctx.strokeRect(lx0, lt - 4, 20, lb - lt + 8);
+  ctx.strokeStyle = '#78350f'; ctx.fillStyle = '#78350f'; ctx.font = '8px sans-serif'; ctx.textAlign = 'right';
+  for (let c = 0; c <= 50; c++) {
+    const yy = lb - c * _B9P_PXCM, lang = c % 10 === 0 ? 8 : c % 5 === 0 ? 6 : 3;
+    ctx.lineWidth = c % 5 === 0 ? 1 : 0.6;
+    ctx.beginPath(); ctx.moveTo(lx0, yy); ctx.lineTo(lx0 + lang, yy); ctx.stroke();
+    if (c % 10 === 0) ctx.fillText(String(c), lx0 + 19, yy + 3);
+  }
+  // gemessene Länge: blaues Band mit Marke
+  const my = lb - j.L;
+  ctx.fillStyle = 'rgba(37,99,235,0.28)'; ctx.fillRect(lx0 - 6, my, 5, lb - my);
+  ctx.fillStyle = '#1d4ed8';
+  ctx.beginPath(); ctx.moveTo(lx0 - 1, my); ctx.lineTo(lx0 - 8, my - 4); ctx.lineTo(lx0 - 8, my + 4); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Länge: ' + d.laenge, 244, 14);
+
+  // ── Waage mit Klotzturm ──
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(318, _B9P_BASIS, 56, 6);
+  ctx.fillStyle = '#475569'; ctx.fillRect(341, _B9P_BASIS + 6, 8, 6);
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 284, _B9P_BASIS + 12, 128, 34, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dcfce7'; _bioFxRundRect(ctx, 290, _B9P_BASIS + 17, 116, 24, 4); ctx.fill();
+  ctx.fillStyle = '#14532d'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Gewicht: ' + d.gewicht, 348, _B9P_BASIS + 33);
+  // Klötze
+  for (const k of _b9p.kl) {
+    ctx.globalAlpha = Math.max(0, Math.min(1, k.a));
+    ctx.fillStyle = k.slot % 2 ? '#fb923c' : '#f97316'; ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 0.8;
+    ctx.fillRect(_B9P_TX - 16, k.y, 32, _B9P_BH - 0.4); ctx.strokeRect(_B9P_TX - 16, k.y, 32, _B9P_BH - 0.4);
+  }
+  ctx.globalAlpha = 1;
+  // Unter 100 g: nur ein dünner Streifen (15 g) oder ein Pünktchen (unter 1 g)
+  if (_b9p.kl.length === 0 && _b9p.p > 0.5) {
+    ctx.fillStyle = '#f97316';
+    if (_b9p.woche === '12') ctx.fillRect(_B9P_TX - 16, _B9P_BASIS - 1.6, 32, 1.6);
+    else { ctx.beginPath(); ctx.arc(_B9P_TX, _B9P_BASIS - 1.2, 1.2, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('1 Klotz = 100 g', 348, H - 3);
+  // Wochenmarken neben dem Turm (nur besuchte Wochen)
+  const unten = ['6', '12'].filter(w => _b9p.besucht[w]);
+  const marken = [];
+  if (unten.length) marken.push(['Woche ' + unten.join(', '), _B9P_BASIS]);
+  for (const w of ['24', '40']) if (_b9p.besucht[w]) marken.push(['Woche ' + w, _b9pTurmY(_B9P_D[w].g)]);
+  ctx.font = '9px sans-serif'; ctx.textAlign = 'right';
+  for (const [txt, yy] of marken) {
+    ctx.strokeStyle = 'rgba(71,85,105,0.55)'; ctx.lineWidth = 1; ctx.setLineDash([2, 2]);
+    ctx.beginPath(); ctx.moveTo(316, yy); ctx.lineTo(_B9P_TX - 17, yy); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#334155'; ctx.fillText(txt, 313, yy + 3);
+  }
+  // Klammer über dem großen Zuwachs (nach dem Aha, klingt ab)
+  const K = _b9p.klammer;
+  if (K) {
+    const a = K.alter < 0.4 ? K.alter / 0.4 : Math.max(0.35, 1 - (K.alter - 2.4) / 1.2);
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 2.5;
+    const bx = _B9P_TX + 22;
+    ctx.beginPath(); ctx.moveTo(bx, K.von); ctx.quadraticCurveTo(bx + 8, K.von, bx + 8, K.von - 8);
+    ctx.lineTo(bx + 8, (K.von + K.bis) / 2 + 6); ctx.lineTo(bx + 14, (K.von + K.bis) / 2);
+    ctx.lineTo(bx + 8, (K.von + K.bis) / 2 - 6); ctx.lineTo(bx + 8, K.bis + 8);
+    ctx.quadraticCurveTo(bx + 8, K.bis, bx, K.bis); ctx.stroke();
+    ctx.restore();
+  }
+
+  // ── Vergleichsgegenstand unten links ──
+  const k = _bioFxEase.federn(_bioFxKlemme(_b9p.dingT));
+  ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 4, 217, 150, 30, 6); ctx.fill(); ctx.stroke();
+  _b9pDing(ctx, d.ding, 24, 232, 0.4 + 0.6 * k);
+  ctx.fillStyle = '#475569'; ctx.font = '10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('so groß wie:', 46, 229);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(d.ding, 46, 243);
+
+  // Woche groß oben links
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Woche ' + _b9p.woche, 8, 22);
+
+  _bioFxAlleDraw(ctx, _b9p.fx);
+}
+// ═══════════════════════════════════════════════════════
+// BIO 8 · WAS KOMMT BEIM KIND AN?   (Förderheft Bio 8 · bn2, Kennung 'bio-plazenta')
+// Ein Organ im Schnitt (NICHT beschriftet – „Plazenta“ und „Nabelschnur“ sind
+// Lückenwörter im Heft): links fließt das Blut der Mutter mit roten
+// Blutkörperchen nach unten, in der Mitte das dunkelrote Polster mit fünf Zotten,
+// in jeder Zotte eine feine Ader des Kindes; rechts führt ein gedrehter Strang
+// zu einem nur angedeuteten Kind in der Fruchtblase (schematischer Umriss).
+// Farbige Punkte wandern aus dem Blut der Mutter durch das Polster ins Blut des
+// Kindes. Die roten Blutkörperchen der Mutter bleiben links: Die Blutströme
+// mischen sich nicht, nur die kleinen Stoffe gehen hindurch.
+// „Die Mutter …“ (Knopfreihe): trinkt Wasser · raucht · trinkt Alkohol.
+// „▶ 1 Stunde abspielen“: 60 Minuten in 10 s (6 min je s).
+// Modellwerte (Lehrerteil), die Zahlen ENTSTEHEN aus gezählten Punkten:
+//   Sauerstoff: 20 blaue Punkte gehen in einer Stunde hinüber = 100 %.
+//     raucht: Die Adern im Polster werden enger, 6 der 20 blauen Punkte
+//     prallen ab, 14 kommen an → 14/20 = 70 %.
+//   Alkohol: Die Mutter hat 10 orange Punkte im Blut (sie trinkt nach, der
+//     Wert bleibt 10). 10 gehen hinüber und bleiben beim Kind (es baut Alkohol
+//     langsamer ab): Mutter 10, Kind 10.
+//   Nikotin: 8 graue Punkte gehen hinüber (ohne Zähler).
+// Blaue und grüne Punkte werden im Kind verbraucht (blenden aus), graue und
+// orange kreisen im Kind weiter.
+// Aha (_bioFx): Zeitlupe, wenn der erste graue bzw. orange Punkt durch das
+// Polster geht, Lichtring beim Austritt. Nach der Stunde: bei „raucht“ leuchten
+// die sechs leeren Kästchen der Sauerstoff-Leiste, bei „trinkt Alkohol“
+// leuchten beide Alkohol-Zähler zugleich (orange Funken bei Mutter und Kind).
+// Kein Text im Effekt, keine Wertung (kein „schadet“), kein Blinken, kein Ton.
+// ═══════════════════════════════════════════════════════
+let _b9q = null;
+const _B9Q_RATE = 6;                                    // Minuten je Sekunde
+const _B9Q_MODI = { wasser: 'trinkt Wasser', rauch: 'raucht', alkohol: 'trinkt Alkohol' };
+const _B9Q_FARBE = { o2: '#2563eb', nae: '#16a34a', nik: '#6b7280', alk: '#f97316' };
+const _B9Q_NAME = { o2: 'blau', nae: 'grün', nik: 'grau', alk: 'orange' };
+const _B9Q_POOL = { x0: 14, x1: 94, y0: 56, y1: 180 };  // Bereich, in dem Punkte der Mutter wandern
+const _B9Q_ZOTTE = [68, 94, 120, 146, 172];             // Höhe der fünf Zotten
+const _B9Q_TIPX = 108;                                  // Spitze der Zotten
+const _B9Q_AUS = [244, 118];                            // Austritt ins Blut des Kindes
+const _B9Q_NABEL = [352, 146];                          // Ende des Strangs am Kind
+const _B9Q_O2_VOLL = 20;                                // blaue Punkte in 1 Stunde bei „trinkt Wasser“
+const _B9Q_HIN = 0.8, _B9Q_KAP = 0.8, _B9Q_STR = 0.9;   // Wegzeiten in s
+
+function _b9qZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _b9qInit() {
+  const r = _b9qZufall(208);
+  const zellen = [];
+  for (let i = 0; i < 16; i++) zellen.push({ x: 18 + r() * 84, y: 50 + r() * 134, ph: r() * 6.28 });
+  _b9q = { t: 0, tc: 0, r, modus: 'wasser', phase: 'bereit', min: 0, plan: [], pi: 0,
+           zellen, fluss: [], pool: [], wege: [], kind: [], weg: [],
+           o2an: 0, alkKind: 0, nikKind: 0, an: {}, erst: false, eng: 0,
+           fx: { teile: [] }, zeitlupe: null, nach: -1, schritt: 0, letzt: '' };
+  _b9qFluss();
+}
+// Blaue und grüne Punkte, die mit dem Blut der Mutter nach unten fließen
+function _b9qFluss() {
+  const z = _b9q, r = z.r;
+  z.fluss = [];
+  for (let i = 0; i < 10; i++)
+    z.fluss.push({ typ: i < 6 ? 'o2' : 'nae', x: 18 + r() * 76, y: 52 + r() * 130, ph: r() * 6.28 });
+}
+
+/* ── Modell: Ablaufplan einer Stunde ─────────────────────────────────── */
+// Jedes Ereignis: {min, art: 'rein' (in das Blut der Mutter) | 'durch', typ, ab (prallt ab)}
+function _b9qPlan(modus) {
+  const p = [];
+  for (let k = 0; k < _B9Q_O2_VOLL; k++)
+    p.push({ min: 1 + k * 2.4, art: 'durch', typ: 'o2', ab: modus === 'rauch' && k % 3 === 2 });
+  for (let k = 0; k < 10; k++) p.push({ min: 2.2 + k * 4.6, art: 'durch', typ: 'nae', ab: false });
+  if (modus === 'rauch') {
+    for (let k = 0; k < 8; k++) p.push({ min: 0.3 + k * 0.5, art: 'rein', typ: 'nik' });
+    for (let k = 0; k < 8; k++) p.push({ min: 6 + k * 5.4, art: 'durch', typ: 'nik', ab: false });
+  }
+  if (modus === 'alkohol') {
+    for (let k = 0; k < 10; k++) p.push({ min: 0.4 + k * 0.55, art: 'rein', typ: 'alk' });
+    for (let k = 0; k < 10; k++) p.push({ min: 7 + k * 4.3, art: 'durch', typ: 'alk', ab: false });
+  }
+  return p.sort((a, b) => a.min - b.min);
+}
+function _b9qO2Prozent() { return Math.round(_b9q.o2an / _B9Q_O2_VOLL * 100); }
+function _b9qAlkMutter() { return _b9q.pool.filter(d => d.typ === 'alk').length; }
+
+/* ── Bedienung ───────────────────────────────────────────────────────── */
+function _b9qLeeren() {
+  const z = _b9q;
+  z.phase = 'bereit'; z.min = 0; z.plan = []; z.pi = 0;
+  z.pool = []; z.wege = []; z.kind = []; z.weg = [];
+  z.o2an = 0; z.alkKind = 0; z.nikKind = 0; z.an = {}; z.erst = false;
+  z.fx = { teile: [] }; z.zeitlupe = null; z.nach = -1; z.schritt = 0;
+}
+function _b9qModus(m) {
+  if (!_b9q || !_B9Q_MODI[m]) return;
+  _b9qLeeren();
+  _b9q.modus = m;
+  _bioFxWelle(_b9q.fx.teile, 54, 118, '#fca5a5', 50);
+  _b9qStatus();
+}
+function _b9qAbspielen() {
+  const z = _b9q;
+  if (!z || z.phase === 'laeuft') return;
+  const m = z.modus;
+  _b9qLeeren();
+  z.modus = m; z.phase = 'laeuft'; z.plan = _b9qPlan(m);
+  _b9qStatus();
+}
+function _b9qNeu() {
+  if (!_b9q) return;
+  _b9qLeeren();
+  _b9q.modus = 'wasser'; _b9q.eng = 0;
+  _b9qStatus();
+}
+// Sprungmarke: die fertige Stunde für eine Einstellung
+function _b9qMarke(m) {
+  if (!_b9q || !_B9Q_MODI[m]) return;
+  _b9qLeeren();
+  const z = _b9q;
+  z.modus = m; z.plan = _b9qPlan(m);
+  for (const e of z.plan) {
+    if (e.art === 'rein') z.pool.push(_b9qPoolPunkt(e.typ, false));
+    else if (!e.ab) {
+      z.an[e.typ] = true;
+      if (e.typ === 'o2') z.o2an++;
+      if (e.typ === 'alk' || e.typ === 'nik') {
+        z.kind.push(_b9qKreisPunkt(e.typ));
+        if (e.typ === 'alk') z.alkKind++; else z.nikKind++;
+      }
+    }
+  }
+  z.pi = z.plan.length; z.min = 60; z.erst = true;
+  if (m === 'rauch') z.eng = 1;
+  _b9qEnde();
+}
+
+/* ── Punkte ──────────────────────────────────────────────────────────── */
+function _b9qPoolPunkt(typ, vonOben) {
+  const r = _b9q.r, P = _B9Q_POOL;
+  return { typ, x: P.x0 + r() * (P.x1 - P.x0), y: vonOben ? P.y0 : P.y0 + r() * (P.y1 - P.y0),
+           vx: (r() - 0.5) * 12, vy: vonOben ? 14 : (r() - 0.5) * 12, ph: r() * 6.28 };
+}
+function _b9qKreisPunkt(typ) {
+  const r = _b9q.r;
+  return { typ, w: r() * 6.28, rx: 7 + r() * 8, ry: 12 + r() * 11, dw: 0.9 + r() * 0.6 };
+}
+function _b9qDurch(e) {
+  const z = _b9q, r = z.r;
+  let x0, y0;
+  if (e.typ === 'alk' || e.typ === 'nik') {
+    // einen Punkt aus dem Blut der Mutter nehmen (den rechtesten) – die Mutter
+    // trinkt bzw. raucht weiter: oben fließt sofort ein neuer nach.
+    let best = -1;
+    z.pool.forEach((d, i) => { if (d.typ === e.typ && (best < 0 || d.x > z.pool[best].x)) best = i; });
+    if (best >= 0) { x0 = z.pool[best].x; y0 = z.pool[best].y; z.pool.splice(best, 1); }
+    else { x0 = 60; y0 = 60; }
+    z.pool.push(_b9qPoolPunkt(e.typ, true));
+  } else {
+    x0 = 24 + r() * 60; y0 = 50;
+  }
+  const zi = Math.floor(r() * 5);
+  z.wege.push({ typ: e.typ, ab: e.ab, zi, x0, y0, st: 'hin', s: 0, x: x0, y: y0 });
+}
+function _b9qBez(p0, p1, p2, u) {
+  const v = 1 - u;
+  return [v * v * p0[0] + 2 * v * u * p1[0] + u * u * p2[0], v * v * p0[1] + 2 * v * u * p1[1] + u * u * p2[1]];
+}
+function _b9qKap(zi, u) { const y = _B9Q_ZOTTE[zi]; return _b9qBez([_B9Q_TIPX + 4, y], [190, y], _B9Q_AUS, u); }
+function _b9qStrang(u) {
+  const v = 1 - u, p0 = _B9Q_AUS, p1 = [282, 96], p2 = [300, 170], p3 = _B9Q_NABEL;
+  const a = v * v * v, b = 3 * v * v * u, c = 3 * v * u * u, d = u * u * u;
+  return [a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0], a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1]];
+}
+function _b9qWege(ds) {
+  const z = _b9q, L = z.fx.teile;
+  for (let i = z.wege.length - 1; i >= 0; i--) {
+    const w = z.wege[i];
+    if (w.st === 'hin') {
+      w.s += ds / _B9Q_HIN;
+      const u = _bioFxEase.sanft(_bioFxKlemme(w.s));
+      w.x = w.x0 + (_B9Q_TIPX - w.x0) * u; w.y = w.y0 + (_B9Q_ZOTTE[w.zi] - w.y0) * u;
+      if (w.s >= 1) { w.s = 0; w.st = w.ab ? 'zurueck' : 'kap'; w.x1 = w.x; w.y1 = w.y;
+        if (!w.ab && !z.erst && (w.typ === 'nik' || w.typ === 'alk')) { z.erst = true; w.erster = true; _bioFxZeitlupe(z, 0.3, 1.6); } }
+    } else if (w.st === 'zurueck') {                    // prallt an der engen Ader ab
+      w.s += ds / 0.9;
+      const u = _bioFxEase.raus(_bioFxKlemme(w.s));
+      w.x = w.x1 - 26 * u; w.y = w.y1 + (w.y1 > 130 ? -30 : 30) * u;
+      if (w.s >= 1) z.wege.splice(i, 1);
+    } else if (w.st === 'kap') {
+      w.s += ds / _B9Q_KAP;
+      [w.x, w.y] = _b9qKap(w.zi, _bioFxKlemme(w.s));
+      if (w.s >= 1) {
+        w.s = 0; w.st = 'strang';
+        z.an[w.typ] = true;                              // jetzt im Blut des Kindes
+        if (w.typ === 'o2') z.o2an++;
+        if (w.typ === 'alk') z.alkKind++;
+        if (w.typ === 'nik') z.nikKind++;
+        if (w.erster) _bioFxWelle(L, _B9Q_AUS[0], _B9Q_AUS[1], _B9Q_FARBE[w.typ], 34);
+      }
+    } else {
+      w.s += ds / _B9Q_STR;
+      [w.x, w.y] = _b9qStrang(_bioFxKlemme(w.s));
+      if (w.s >= 1) {
+        z.wege.splice(i, 1);
+        if (w.typ === 'alk' || w.typ === 'nik') z.kind.push(_b9qKreisPunkt(w.typ));
+        else z.weg.push({ typ: w.typ, x: 358 + (z.r() - 0.5) * 16, y: 142 + (z.r() - 0.5) * 30, a: 0 });
+      }
+    }
+  }
+}
+
+/* ── Anzeige ─────────────────────────────────────────────────────────── */
+function _b9qAngekommen() {
+  const f = ['o2', 'nae', 'nik', 'alk'].filter(k => _b9q.an[k]).map(k => _B9Q_NAME[k]);
+  if (f.length <= 1) return f.join('');
+  return f.slice(0, -1).join(', ') + ' und ' + f[f.length - 1];
+}
+function _b9qZeile() {
+  const z = _b9q;
+  return z.phase + ':' + z.modus + ':' + (z.phase === 'laeuft' ? Math.floor(z.min / 5) : '');
+}
+function _b9qStatus() {
+  if (!_b9q) return;
+  const z = _b9q;
+  z.letzt = _b9qZeile();
+  const el = document.getElementById('_b9q-status');
+  const wer = 'Die Mutter ' + _B9Q_MODI[z.modus];
+  let h;
+  if (z.phase === 'bereit') {
+    h = `<b>${wer}.</b><br>Noch keine Stunde abgespielt.<br>Drücke „▶ 1 Stunde abspielen“.`;
+  } else if (z.phase === 'laeuft') {
+    h = `<b>${wer} · Minute ${Math.floor(z.min / 5) * 5} von 60</b><br>` +
+        `Beobachte, welche Punkte beim Kind ankommen.`;
+  } else {
+    let w = `${_b9qAngekommen()} kommen an · Sauerstoff beim Kind ${_b9qO2Prozent()} %`;
+    if (z.modus === 'alkohol') w += ` · Alkohol-Punkte Mutter ${_b9qAlkMutter()}, Kind ${z.alkKind}`;
+    h = `<b>${wer} · 1 Stunde ist vorbei.</b><br>${w}`;
+  }
+  if (el) { el.innerHTML = h; el.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-b9q]').forEach(b => {
+      const d = b.dataset ? b.dataset.b9q : b.getAttribute('data-b9q');
+      if (b.classList) b.classList.toggle('primary', d === z.modus);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _b9qHTML() {
+  const k = m => `<button class="sim-btn" data-b9q="${m}" onclick="_b9qModus('${m}')">${_B9Q_MODI[m]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was kommt beim Kind an?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links fließt das Blut der Mutter, rechts das Blut des Kindes. Dazwischen liegt ein Organ. Stelle bei „Die Mutter …“ ein, was sie tut. Dann spiele 1 Stunde ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_b9q-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Die Mutter …</span>
+          ${k('wasser')}
+          ${k('rauch')}
+          ${k('alkohol')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_b9qAbspielen()">▶ 1 Stunde abspielen</button>
+          <button class="sim-btn" onclick="_b9qNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was siehst du?</div>
+        <div class="lmp-status on" id="_b9q-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: Stunde vorbei</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_b9qMarke('wasser')">Ende: trinkt Wasser</button>
+          <button class="sim-btn" onclick="_b9qMarke('rauch')">Ende: raucht</button>
+          <button class="sim-btn" onclick="_b9qMarke('alkohol')">Ende: trinkt Alkohol</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Oben im Bild steht, welche Farbe zu welchem Stoff gehört.</div>
+        <div class="fpm-note" style="margin-top:6px">Die roten Blutkörperchen der Mutter bleiben links. Das Blut der Mutter und das Blut des Kindes mischen sich nicht.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Modell: Ein Punkt steht für viele Teilchen. 100 % = so viel Sauerstoff wie bei „trinkt Wasser“.</p>
+  </div>`;
+}
+
+/* ── Ablauf ──────────────────────────────────────────────────────────── */
+function _b9qEnde() {
+  const z = _b9q;
+  z.min = 60; z.phase = 'fertig'; z.zeitlupe = null;
+  z.nach = 0; z.schritt = 0;
+  _b9qStatus();
+}
+function _b9qNachher() {
+  const z = _b9q, L = z.fx.teile, t = z.nach;
+  if (z.schritt === 0 && t >= 0.3) {
+    z.schritt = 1;
+    _bioFxWelle(L, 312, 205, '#93c5fd', 40);
+    if (z.modus === 'wasser') _bioFxFunken(L, 314, 216, 8, ['#93c5fd', '#2563eb', '#ffffff']);
+    if (z.modus === 'alkohol') {
+      _bioFxFunken(L, 180, 236, 8, ['#fdba74', '#f97316', '#ffffff']);
+      _bioFxFunken(L, 365, 236, 8, ['#fdba74', '#f97316', '#ffffff']);
+      _bioFxWelle(L, 368, 140, '#fdba74', 46);
+    }
+  }
+  if (t > 3.2) z.nach = -1;
+}
+function _b9qUpdate(dt) {
+  if (!_b9q) return;
+  const z = _b9q, P = _B9Q_POOL;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  const ds = dt * _bioFxZeitlupeFaktor(z, dt);
+  z.tc += ds;
+  if (z.phase === 'laeuft') {
+    z.min = Math.min(60, z.min + ds * _B9Q_RATE);
+    while (z.pi < z.plan.length && z.plan[z.pi].min <= z.min) {
+      const e = z.plan[z.pi++];
+      if (e.art === 'rein') z.pool.push(_b9qPoolPunkt(e.typ, true));
+      else _b9qDurch(e);
+    }
+    if (z.min >= 60) _b9qEnde();
+    else if (_b9qZeile() !== z.letzt) _b9qStatus();
+  } else if (z.nach >= 0) {
+    z.nach += dt;
+    _b9qNachher();
+  }
+  // Nikotin macht die Adern im Polster enger (weicher Übergang)
+  const soll = z.modus === 'rauch' && z.phase !== 'bereit' ? 1 : 0;
+  z.eng += (soll - z.eng) * Math.min(1, dt * 2);
+  // rote Blutkörperchen der Mutter fließen nach unten
+  for (const c of z.zellen) { c.y += 20 * ds; c.ph += ds; if (c.y > 188) c.y -= 140; }
+  for (const f of z.fluss) { f.y += 16 * ds; f.ph += ds; if (f.y > 186) f.y -= 136; }
+  // Punkte der Mutter (Nikotin, Alkohol) wandern im Blut umher
+  for (const d of z.pool) {
+    d.ph += ds;
+    d.vx += Math.sin(d.ph * 1.7) * 10 * ds; d.vy += Math.cos(d.ph * 1.3) * 10 * ds;
+    d.vx *= Math.exp(-0.6 * ds); d.vy *= Math.exp(-0.6 * ds);
+    d.x += d.vx * ds; d.y += d.vy * ds;
+    if (d.x < P.x0) { d.x = P.x0; d.vx = Math.abs(d.vx); }
+    if (d.x > P.x1) { d.x = P.x1; d.vx = -Math.abs(d.vx); }
+    if (d.y < P.y0) { d.y = P.y0; d.vy = Math.abs(d.vy); }
+    if (d.y > P.y1) { d.y = P.y1; d.vy = -Math.abs(d.vy); }
+  }
+  _b9qWege(ds);
+  for (const k of z.kind) k.w += k.dw * ds;
+  for (let i = z.weg.length - 1; i >= 0; i--) { z.weg[i].a += ds / 0.8; if (z.weg[i].a >= 1) z.weg.splice(i, 1); }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+/* ── Zeichnen ────────────────────────────────────────────────────────── */
+function _b9qPunkt(ctx, x, y, typ, r, a) {
+  ctx.save();
+  ctx.globalAlpha = a == null ? 1 : a;
+  ctx.fillStyle = _B9Q_FARBE[typ]; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(x, y, r || 3.6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _b9qLegende(ctx) {
+  const e = [['o2', 'Sauerstoff'], ['nae', 'Nährstoffe'], ['nik', 'Nikotin'], ['alk', 'Alkohol']];
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  e.forEach(([k, n], i) => {
+    const x = 16 + i * 104;
+    _b9qPunkt(ctx, x, 12, k, 4.5);
+    ctx.fillStyle = '#1e293b'; ctx.fillText(n, x + 9, 16);
+  });
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(6, 25); ctx.lineTo(414, 25); ctx.stroke();
+}
+function _b9qMutter(ctx) {
+  const z = _b9q;
+  ctx.save();
+  const g = ctx.createLinearGradient(0, 44, 0, 190);
+  g.addColorStop(0, '#fbd5d5'); g.addColorStop(1, '#f5b8b8');
+  ctx.fillStyle = g;
+  _bioFxRundRect(ctx, 8, 44, 130, 146, 12); ctx.fill();
+  // Fließrichtung: ruhige Strömungsstriche
+  ctx.strokeStyle = 'rgba(190,60,70,0.25)'; ctx.lineWidth = 1.5;
+  ctx.setLineDash([6, 10]); ctx.lineDashOffset = -z.tc * 20;
+  for (const x of [26, 56, 86]) { ctx.beginPath(); ctx.moveTo(x, 48); ctx.lineTo(x, 186); ctx.stroke(); }
+  ctx.setLineDash([]);
+  // rote Blutkörperchen der Mutter (bleiben hier)
+  for (const c of z.zellen) {
+    ctx.fillStyle = '#c0262f';
+    ctx.beginPath(); ctx.ellipse(c.x + Math.sin(c.ph) * 3, c.y, 5, 3.4, Math.sin(c.ph * 0.7) * 0.6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#e0535b';
+    ctx.beginPath(); ctx.ellipse(c.x + Math.sin(c.ph) * 3, c.y, 2.2, 1.4, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+  for (const f of z.fluss) _b9qPunkt(ctx, f.x + Math.sin(f.ph) * 4, f.y, f.typ, 3.2, 0.85);
+  for (const d of z.pool) _b9qPunkt(ctx, d.x, d.y, d.typ, 3.8);
+  ctx.fillStyle = '#7f1d1d'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Blut der Mutter', 62, 39);
+}
+function _b9qPolster(ctx) {
+  const z = _b9q;
+  ctx.save();
+  // Polster mit fünf Zotten, die in das Blut der Mutter ragen
+  ctx.beginPath();
+  ctx.moveTo(236, 48); ctx.lineTo(136, 48);
+  for (const y of _B9Q_ZOTTE) {
+    ctx.lineTo(136, y - 10); ctx.lineTo(_B9Q_TIPX + 8, y - 8);
+    ctx.arc(_B9Q_TIPX + 8, y, 8, -Math.PI / 2, Math.PI / 2, true);
+    ctx.lineTo(136, y + 10);
+  }
+  ctx.lineTo(136, 188); ctx.lineTo(236, 188);
+  ctx.quadraticCurveTo(254, 118, 236, 48);
+  ctx.closePath();
+  const g = ctx.createLinearGradient(110, 0, 250, 0);
+  g.addColorStop(0, '#a3354b'); g.addColorStop(1, '#7c2236');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = '#5b1526'; ctx.lineWidth = 2; ctx.stroke();
+  // feine Adern des Kindes in jeder Zotte (werden bei Nikotin enger)
+  const b = 5 - 2.6 * z.eng;
+  for (let i = 0; i < 5; i++) {
+    ctx.strokeStyle = '#e2798a'; ctx.lineWidth = b + 2; ctx.lineCap = 'round';
+    ctx.beginPath();
+    for (let u = 0; u <= 1.001; u += 0.05) { const [x, y] = _b9qKap(i, u); u ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.stroke();
+    ctx.strokeStyle = '#f4b3bd'; ctx.lineWidth = Math.max(1, b - 1);
+    ctx.setLineDash([3, 7]); ctx.lineDashOffset = -z.tc * 18;
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+  ctx.restore();
+}
+function _b9qKindSeite(ctx) {
+  const z = _b9q;
+  const bob = Math.sin(z.t * 0.9) * 1.2;
+  ctx.save();
+  // Fruchtblase
+  ctx.fillStyle = 'rgba(191,219,254,0.35)'; ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(370, 124, 44, 62, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Strang zum Kind: zwei umeinander gedrehte Adern
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#d98c96'; ctx.lineWidth = 10;
+  ctx.beginPath();
+  for (let u = 0; u <= 1.001; u += 0.04) { const [x, y] = _b9qStrang(u); u ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+  ctx.stroke();
+  ctx.strokeStyle = '#b4485a'; ctx.lineWidth = 2;
+  for (let s = 0; s < 2; s++) {
+    ctx.beginPath();
+    for (let u = 0; u <= 1.001; u += 0.02) {
+      const [x, y] = _b9qStrang(u), o = Math.sin(u * 28 + s * Math.PI) * 3;
+      u ? ctx.lineTo(x, y + o) : ctx.moveTo(x, y + o);
+    }
+    ctx.stroke();
+  }
+  // Blut des Kindes fließt im Strang
+  ctx.fillStyle = '#9f1239';
+  for (let i = 0; i < 7; i++) {
+    const [x, y] = _b9qStrang(((z.tc * 0.35) + i / 7) % 1);
+    ctx.beginPath(); ctx.arc(x, y, 1.8, 0, Math.PI * 2); ctx.fill();
+  }
+  // Kind: nur ein angedeuteter Umriss
+  ctx.translate(0, bob);
+  ctx.fillStyle = '#fbe3d3'; ctx.strokeStyle = '#c48b73'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.ellipse(370, 142, 21, 29, 0.35, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(358, 164, 12, 7, -0.6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(380, 97, 17, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Punkte, die im Kind bleiben (Nikotin, Alkohol), kreisen im Blut des Kindes
+  for (const k of z.kind) _b9qPunkt(ctx, 369 + Math.cos(k.w) * k.rx, 140 + Math.sin(k.w) * k.ry, k.typ, 3.2);
+  // Sauerstoff und Nährstoffe werden verbraucht (blenden aus)
+  for (const w of z.weg) _b9qPunkt(ctx, w.x, w.y, w.typ, 3.4 * (1 - 0.6 * w.a), 1 - w.a);
+  ctx.restore();
+  ctx.fillStyle = '#7f1d1d'; ctx.font = '700 10.5px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Blut des Kindes', 246, 88);
+}
+function _b9qUnten(ctx) {
+  const z = _b9q, W = ctx.canvas.width;
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(6, 194); ctx.lineTo(W - 6, 194); ctx.stroke();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  // Uhr
+  ctx.fillStyle = '#0f172a';
+  ctx.fillText('Minute ' + Math.floor(z.min + 1e-9) + ' von 60', 10, 209);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(10, 215, 180, 6);
+  ctx.fillStyle = '#64748b'; ctx.fillRect(10, 215, 180 * z.min / 60, 6);
+  if (z.phase === 'laeuft') {
+    ctx.fillStyle = 'rgba(15,23,42,0.6)'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(z.zeitlupe ? '▶ Zeitlupe' : '▶ läuft', 130, 209);
+    ctx.font = '700 11px sans-serif';
+  }
+  // Sauerstoff beim Kind: Zähler und Leiste aus 20 Kästchen (ein Kästchen = ein blauer Punkt)
+  ctx.fillStyle = '#1d4ed8';
+  ctx.fillText('Sauerstoff beim Kind: ' + (z.phase === 'bereit' ? '–' : _b9qO2Prozent() + ' %'), 214, 209);
+  for (let i = 0; i < _B9Q_O2_VOLL; i++) {
+    const x = 214 + i * 9.8;
+    ctx.fillStyle = i < z.o2an ? '#3b82f6' : '#f1f5f9';
+    ctx.fillRect(x, 214, 8.4, 9);
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 0.8; ctx.strokeRect(x, 214, 8.4, 9);
+  }
+  // Aha bei „raucht“: die leeren Kästchen leuchten kurz ruhig auf
+  if (z.modus === 'rauch' && z.phase === 'fertig' && z.nach >= 0.3 && z.nach <= 3) {
+    const a = 0.35 + 0.25 * Math.sin((z.nach - 0.3) * Math.PI * 2 * 0.6);
+    ctx.save(); ctx.strokeStyle = 'rgba(250,204,21,' + a.toFixed(3) + ')'; ctx.lineWidth = 3;
+    ctx.shadowColor = '#facc15'; ctx.shadowBlur = 8;
+    _bioFxRundRect(ctx, 214 + z.o2an * 9.8 - 2, 212, (_B9Q_O2_VOLL - z.o2an) * 9.8 + 2, 13, 3); ctx.stroke();
+    ctx.restore();
+  }
+  // Alkohol-Zähler (nur bei „trinkt Alkohol“)
+  if (z.modus === 'alkohol') {
+    const tm = 'Alkohol-Punkte bei der Mutter: ' + _b9qAlkMutter(), tk = 'Alkohol-Punkte beim Kind: ' + z.alkKind;
+    if (z.phase === 'fertig' && z.nach >= 0.3 && z.nach <= 3) {
+      // beide Zahlen leuchten zugleich (Mitte der Zahl über measureText)
+      const mitte = (x, t, n) => x + ctx.measureText(t).width - ctx.measureText(String(n)).width / 2;
+      _bioFxLeuchten(ctx, mitte(10, tm, _b9qAlkMutter()), 238, 10, z.t, '249,115,22');
+      _bioFxLeuchten(ctx, mitte(214, tk, z.alkKind), 238, 10, z.t, '249,115,22');
+    }
+    ctx.fillStyle = '#c2410c';
+    ctx.fillText(tm, 10, 242);
+    ctx.fillText(tk, 214, 242);
+  }
+}
+function _b9qDraw(ctx, cv) {
+  if (!_b9q) return;
+  const z = _b9q, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fbfcfe'; ctx.fillRect(0, 0, W, H);
+  _b9qLegende(ctx);
+  _b9qMutter(ctx);
+  _b9qPolster(ctx);
+  _b9qKindSeite(ctx);
+  for (const w of z.wege) {
+    const a = w.st === 'zurueck' ? 1 - _bioFxKlemme(w.s) : 1;
+    if (w.erster && w.st === 'kap') _bioFxLeuchten(ctx, w.x, w.y, 7, z.t, w.typ === 'alk' ? '249,115,22' : '156,163,175');
+    _b9qPunkt(ctx, w.x, w.y, w.typ, 3.8, a);
+  }
+  _b9qUnten(ctx);
+  _bioFxAlleDraw(ctx, z.fx);
 }

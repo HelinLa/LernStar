@@ -5690,6 +5690,132 @@ const HEFT_SEITEN = {
     frage: "Was passiert mit zwei getrennten Gruppen in langer Zeit?",
     schritte: ["Stelle „Fluss“ auf „Fluss“ und „Zeit“ auf „10 000 Jahre“. Drücke „▶ Zeit laufen lassen“.", "Lies auf der Merkmalskarte ab: Wie viele sind verschieden?", "Drücke „▶ zusammensetzen“. Schlüpfen Junge? Trage ein.", "Drücke „neu“. Wiederhole mit „1 Million Jahre“, dann „kein Fluss“."]
   },
+  "bi1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-bakterien", seite: 7,
+    kapitel: "Der Kampf gegen Krankheiten: Erreger",
+    name: "Wie schnell vermehren sich Bakterien?",
+    titel: "Aus einem werden viele",
+    frage: "Wie viele Bakterien sind nach einer Stunde auf dem Brot?",
+    schritte: ["Stelle „Ort“ auf „warme Tasche“. Drücke einmal „▶ 20 Minuten warten“.", "Lies am Zähler ab, wie viele Bakterien es sind. Trage ein.", "Wiederhole das, bis die Uhr 60 Minuten zeigt.", "Drücke „neu“. Stelle „Ort“ auf „Kühlschrank“. Wiederhole a bis c."]
+  },
+  "bi2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-virus", seite: 11,
+    kapitel: "Der Kampf gegen Krankheiten: Erreger",
+    name: "Wie vermehrt sich ein Virus?",
+    titel: "Das Virus braucht eine Zelle",
+    frage: "Wo kann ein Grippe-Virus mehr werden?",
+    schritte: ["Stelle „Ort“ auf „Tisch“. Drücke „▶ 10 Stunden abspielen“.", "Beobachte, was mit dem Virus passiert. Lies am Ende den Zähler ab.", "Wiederhole das für „Hand“ und für „Zelle in der Nase“.", "Vergleiche: An welchem Ort steigt der Zähler?"]
+  },
+  "bi3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-antibiotikum", seite: 15,
+    kapitel: "Der Kampf gegen Krankheiten: Erreger",
+    name: "Wogegen hilft ein Antibiotikum?",
+    titel: "Nicht zu früh aufhören",
+    frage: "Was passiert, wenn Deniz das Antibiotikum nach zwei Tagen weglässt?",
+    schritte: ["Stelle „Einnahme“ auf „gar nicht“. Drücke „▶ 10 Tage abspielen“.", "Lies an Tag 10 beide Zähler ab. Trage ein.", "Wiederhole das für „2 Tage“ und für „7 Tage“.", "Vergleiche die dunklen Bakterien bei „2 Tage“ und „7 Tage“."]
+  },
+  "bm1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-infektion", seite: 26,
+    kapitel: "Der Kampf gegen Krankheiten: Abwehr",
+    name: "Wie verbreitet sich eine Grippe in der Klasse?",
+    titel: "Husten in die Armbeuge",
+    frage: "Hilft es, wenn die Kinder in die Armbeuge husten?",
+    schritte: ["Stelle „Wer hustet in die Armbeuge?“ auf „niemand“. Drücke „▶ 1 Woche abspielen“.", "Lies an Tag 3 und an Tag 7 den Zähler „krank“ ab. Trage ein.", "Wiederhole das für „die Hälfte“ und für „alle“.", "Vergleiche die Zeilen „niemand“ und „die Hälfte“."]
+  },
+  "bm2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-abwehr", seite: 30,
+    kapitel: "Der Kampf gegen Krankheiten: Abwehr",
+    name: "Wie hält der Körper Erreger fern?",
+    titel: "Die Schutzmauern des Körpers",
+    frage: "Wo hält der Körper Erreger auf?",
+    schritte: ["Stelle „Weg der Erreger“ auf „auf die Haut“. Drücke „▶ 10 Erreger losschicken“.", "Lies in der Statuszeile ab, was die Erreger aufhält. Trage ein.", "Lies am Zähler ab, wie viele weiterkommen. Trage ein.", "Wiederhole das für die drei anderen Wege."]
+  },
+  "bm3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-antikoerper", seite: 34,
+    kapitel: "Der Kampf gegen Krankheiten: Abwehr",
+    name: "Wie findet ein Antikörper seinen Erreger?",
+    titel: "Der passende Schlüssel",
+    frage: "Welcher Antikörper hält das Grippe-Virus fest?",
+    schritte: ["Stelle „Antikörper“ auf „A“. Drücke „▶ 20 Antikörper losschicken“.", "Beobachte die Form an der Spitze des Antikörpers. Trage sie ein.", "Lies am Zähler ab, wie viele Viren festgehalten werden. Trage ein.", "Wiederhole das für „B“ und für „C“."]
+  },
+  "bm4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-gedaechtnis", seite: 38,
+    kapitel: "Der Kampf gegen Krankheiten: Abwehr",
+    name: "Warum bekommt man Windpocken nur einmal?",
+    titel: "Der Körper merkt sich den Erreger",
+    frage: "Warum wird Lina bei den Windpocken nicht noch einmal krank?",
+    schritte: ["Stelle „Infektion“ auf „Windpocken, 1. Mal“. Drücke „▶ 3 Wochen abspielen“.", "Lies ab, ab welchem Tag es viele Antikörper gibt. Trage ein.", "Lies in der Statuszeile ab, ob das Kind krank wird. Trage ein.", "Wiederhole das für „Windpocken, 2. Mal“ und für „Masern, 1. Mal“."]
+  },
+  "bm5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-impfung", seite: 42,
+    kapitel: "Der Kampf gegen Krankheiten: Abwehr",
+    name: "Schutzimpfung oder Heilimpfung?",
+    titel: "Sofort oder lange?",
+    frage: "Welche Impfung schützt sofort, und welche schützt lange?",
+    schritte: ["Stelle „Impfung“ auf „keine“. Drücke „▶ 1 Jahr abspielen“.", "Lies ab, wann der Schutz beginnt. Trage ein.", "Lies ab, ob es nach einem Jahr noch Schutz gibt. Trage ein.", "Wiederhole das für „Schutzimpfung“ und für „Heilimpfung“."]
+  },
+  "bm7": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-malaria", seite: 50,
+    kapitel: "Der Kampf gegen Krankheiten: Abwehr",
+    name: "Wie kommt die Malaria zum Menschen?",
+    titel: "Von der Mücke zum Menschen und zurück",
+    frage: "Wie kommt der Malaria-Erreger von einem Menschen zum nächsten?",
+    schritte: ["Drücke „▶ Weg verfolgen“. Lies bei jeder Station die Statuszeile.", "Trage für jede Station ein, wo der Erreger ist und was er macht.", "Stelle „Schutz in der Nacht“ auf „kein Moskitonetz“. Drücke „▶ 1 Monat im Dorf“.", "Stelle auf „Moskitonetz“ und wiederhole c. Vergleiche die Zähler."]
+  },
+  "bh1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-hormone", seite: 58,
+    kapitel: "Familie und Gesellschaft",
+    name: "Was steuern Hormone in der Pubertät?",
+    titel: "Das Startsignal im Kopf",
+    frage: "Wer gibt das Startsignal für die Pubertät?",
+    schritte: ["Stelle „Körper“ auf „Mädchen“ und „Hirnanhangdrüse“ auf „sendet“. Drücke „▶ 1 Jahr abspielen“.", "Beobachte, wohin die Hormone fließen. Lies ab, was neu am Körper ist.", "Stelle „Körper“ auf „Junge“. Drücke wieder „▶ 1 Jahr abspielen“.", "Stelle „Körper“ auf „Mädchen“ und „Hirnanhangdrüse“ auf „ruht“. Beobachte wieder."]
+  },
+  "bh2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-zyklus", seite: 62,
+    kapitel: "Familie und Gesellschaft",
+    name: "Wie läuft der Zyklus der Frau ab?",
+    titel: "Ein Kreis aus Tagen",
+    frage: "Wann im Zyklus springt das Ei?",
+    schritte: ["Stelle „Länge des Zyklus“ auf „28 Tage“. Drücke „▶ Zyklus abspielen“.", "Lies ab: Welche Tage sind rot? Bei welchem Tag erscheint der Stern?", "Wiederhole das mit „24 Tage“ und „32 Tage“.", "Beobachte am Ende die Hormonlinie und die Schleimhaut."]
+  },
+  "bh4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-uebertragung", seite: 70,
+    kapitel: "Familie und Gesellschaft",
+    name: "Wie überträgt man sexuell übertragbare Krankheiten – und wie nicht?",
+    titel: "Ansteckend oder nicht?",
+    frage: "Wie kommt HIV von einem Menschen zum anderen?",
+    schritte: ["Stelle „Situation“ auf „Hand geben“. Drücke „▶ abspielen“.", "Lies ab, wie viele Viren bei Person B ankommen.", "Wiederhole das mit „Mückenstich“, „Spritze teilen“ und „Geschlechtsverkehr ohne Kondom“.", "Stelle „Geschlechtsverkehr mit Kondom“ ein. Beobachte den Zähler."]
+  },
+  "bn1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-schwangerschaft", seite: 82,
+    kapitel: "Ein Kind entsteht",
+    name: "Wie wächst ein Kind im Mutterleib?",
+    titel: "40 Wochen im Mutterleib",
+    frage: "Wann nimmt das Kind im Mutterleib am meisten an Gewicht zu?",
+    schritte: ["Stelle „Woche“ auf „6“. Lies Länge und Gewicht ab. Trage beides ein.", "Wiederhole das für die Wochen 12, 24 und 40.", "Lies die Statuszeile: Ab welcher Woche schlägt das Herz?", "Vergleiche die Gewichte: Wann nimmt das Kind am meisten zu?"]
+  },
+  "bn2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-plazenta", seite: 86,
+    kapitel: "Ein Kind entsteht",
+    name: "Was schadet dem Ungeborenen?",
+    titel: "Was durch die Plazenta geht",
+    frage: "Kommen Nikotin und Alkohol durch die Plazenta zum Kind?",
+    schritte: ["Stelle „Die Mutter …“ auf „trinkt Wasser“. Drücke „▶ 1 Stunde abspielen“.", "Beobachte, welche Punkte beim Kind ankommen. Lies den Sauerstoff beim Kind ab.", "Wiederhole das mit „raucht“ und mit „trinkt Alkohol“.", "Vergleiche bei „trinkt Alkohol“ die Zähler bei Mutter und Kind."]
+  },
   "fm1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "gleichfoermig", seite: 7,
