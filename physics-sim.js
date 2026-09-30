@@ -7443,6 +7443,127 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('_b9q-cv', '_b9q-cv');
     _pSim.start(dt => _b9qUpdate(dt), (ctx, cv) => _b9qDraw(ctx, cv), []);
   },
+  // ── CHEMIE 8 FOERDER · DREI WEISSE PULVER  (Förderheft Chemie 8 · cs1) ──
+  'chem-stoffe': modal => {
+    _c8aInit();
+    modal.innerHTML = _c8aHTML();
+    _c8aStatus();
+    _pSim = new PhysicsSimEngine('_c8a-cv', '_c8a-cv');
+    _pSim.start(dt => _c8aUpdate(dt), (ctx, cv) => _c8aDraw(ctx, cv), []);
+  },
+
+  // ── CHEMIE 8 FOERDER: Klar ist nicht gleich rein (cs2) ──────────────
+  'chem-gemische': modal => { _c8bInit(); modal.innerHTML = _c8bHTML(); _c8bStatus(); _pSim = new PhysicsSimEngine('_c8b-cv', '_c8b-cv'); _pSim.start(dt => _c8bUpdate(dt), (ctx, cv) => _c8bDraw(ctx, cv), []); },
+
+
+  // ── CHEMIE 8 FÖRDER · TRENNEN: SAND, SALZ UND WASSER  (Förderheft Chemie 8 · cs3) ──
+  'chem-trennen': modal => {
+    _c8cInit();
+    modal.innerHTML = _c8cHTML();
+    _c8cStatus();
+    _pSim = new PhysicsSimEngine('_c8c-cv', '_c8c-cv');
+    _pSim.start(dt => _c8cUpdate(dt), (ctx, cv) => _c8cDraw(ctx, cv), []);
+  },
+
+
+  // ── CHEMIE 8 FOERDER · WANN SIEDET WASSER?  (Förderheft Chemie 8 · cs5) ──
+  'chem-siedekurve': modal => {
+    _c8dInit();
+    modal.innerHTML = _c8dHTML();
+    _c8dStatus();
+    _pSim = new PhysicsSimEngine('_c8d-cv', '_c8d-cv');
+    _pSim.start(dt => _c8dUpdate(dt), (ctx, cv) => _c8dDraw(ctx, cv), []);
+  },
+
+
+  // ── CHEMIE 8 FÖRDER · WACHS ODER KARAMELL: ERHITZEN UND ABKÜHLEN  (Förderheft Chemie 8 · cs6) ──
+  'chem-reaktion': modal => {
+    _c8eInit();
+    modal.innerHTML = _c8eHTML();
+    _c8eStatus();
+    _pSim = new PhysicsSimEngine('_c8e-cv', '_c8e-cv');
+    _pSim.start(dt => _c8eUpdate(dt), (ctx, cv) => _c8eDraw(ctx, cv), []);
+  },
+
+  // ── CHEMIE 8 FOERDER: Ein Glas über der Kerze (cb1) ──────────────
+  'chem-feuer': modal => { _c8fInit(); modal.innerHTML = _c8fHTML(); _c8fStatus(); _pSim = new PhysicsSimEngine('_c8f-cv', '_c8f-cv'); _pSim.start(dt => _c8fUpdate(dt), (ctx, cv) => _c8fDraw(ctx, cv), []); },
+
+  // ── CHEMIE 8 FOERDER · cb2: STREICHHOLZ UND AKTIVIERUNG  (Förderheft Chemie 8 · cb2) ──
+  'chem-aktivierung': modal => {
+    _c8gInit();
+    modal.innerHTML = _c8gHTML();
+    _c8gStatus(); _c8gKnoepfe();
+    _pSim = new PhysicsSimEngine('_c8g-cv', '_c8g-cv');
+    _pSim.start(dt => _c8gUpdate(dt), (ctx, cv) => _c8gDraw(ctx, cv), []);
+  },
+
+
+  // ── CHEMIE 8 FOERDER: Stahlwolle auf der Waage (cb3) ──────────────
+  'chem-stahlwolle': modal => { _c8hInit(); modal.innerHTML = _c8hHTML(); _c8hStatus(); _pSim = new PhysicsSimEngine('_c8h-cv','_c8h-cv'); _pSim.start(dt => _c8hUpdate(dt), (ctx,cv) => _c8hDraw(ctx,cv), []); },
+
+  // ── CHEMIE 8 FÖRDER: Kugeln im geschlossenen Glas (cb4) ──
+  'chem-atome': modal => {
+    _c8iInit();
+    modal.innerHTML = _c8iHTML();
+    _c8iStatus();
+    _pSim = new PhysicsSimEngine('_c8i-cv', '_c8i-cv');
+    _pSim.start(dt => _c8iUpdate(dt), (ctx, cv) => _c8iDraw(ctx, cv), []);
+  },
+
+  // ── CHEMIE 8 FOERDER: Welches Gas ist im Glas? (cb5) ──────────────
+  'chem-nachweis': modal => { _c8jInit(); modal.innerHTML = _c8jHTML(); _c8jStatus(); _pSim = new PhysicsSimEngine('_c8j-cv','_c8j-cv'); _pSim.start(dt => _c8jUpdate(dt), (ctx,cv) => _c8jDraw(ctx,cv), []); },
+
+  // ── CHEMIE 8 FOERDER: Deckel statt Wasser (cb6) ──────────
+  'chem-loeschen': modal => { _c8kInit(); modal.innerHTML = _c8kHTML(); _c8kStatus(); _pSim = new PhysicsSimEngine('_c8k-cv','_c8k-cv'); _pSim.start(dt => _c8kUpdate(dt), (ctx,cv) => _c8kDraw(ctx,cv), []); },
+
+  // ── CHEMIE 8 FOERDER: Luft im Kolbenprober (ca1) ──────────────
+  'chem-luft': modal => { _c8lInit(); modal.innerHTML = _c8lHTML(); _c8lStatus(); _pSim = new PhysicsSimEngine('_c8l-cv', '_c8l-cv'); _pSim.start(dt => _c8lUpdate(dt), (ctx, cv) => _c8lDraw(ctx, cv), []); },
+
+  // ── CHEMIE 8 FOERDER: Stickstoffdioxid an der Straße (ca2) ──────────────
+  'chem-schadstoffe': modal => {
+    _c8mInit();
+    modal.innerHTML = _c8mHTML();
+    _c8mStatus();
+    _pSim = new PhysicsSimEngine('_c8m-cv', '_c8m-cv');
+    _pSim.start(dt => _c8mUpdate(dt), (ctx, cv) => _c8mDraw(ctx, cv), []);
+  },
+
+  // ── CHEMIE 8 FOERDER · cw1 WASSER AUF REISEN (Kennung chem-wasserkreislauf) ──
+  'chem-wasserkreislauf': modal => {
+    _c8nInit();
+    modal.innerHTML = _c8nHTML();
+    _c8nStatus();
+    _pSim = new PhysicsSimEngine('_c8n-cv', '_c8n-cv');
+    _pSim.start(dt => _c8nUpdate(dt), (ctx, cv) => _c8nDraw(ctx, cv), []);
+  },
+
+  // ── CHEMIE 8 · WASSERZERSETZUNG IM MODELL  (Förderheft Chemie 8 · cw2) ──
+  'chem-elektrolyse': modal => {
+    _c8oInit();
+    modal.innerHTML = _c8oHTML();
+    _c8oStatus();
+    _pSim = new PhysicsSimEngine('_c8o-cv', '_c8o-cv');
+    _pSim.start(dt => _c8oUpdate(dt), (ctx, cv) => _c8oDraw(ctx, cv), []);
+  },
+
+
+  // ── CHEMIE 8 FOERDER · WASSER WIRD ZU EIS: 1000 g IM MESSZYLINDER  (cw3) ──
+  'chem-eis': modal => {
+    _c8pInit();
+    modal.innerHTML = _c8pHTML();
+    _c8pStatus();
+    _pSim = new PhysicsSimEngine('_c8p-cv', '_c8p-cv');
+    _pSim.start(dt => _c8pUpdate(dt), (ctx, cv) => _c8pDraw(ctx, cv), []);
+  },
+
+  // ── CHEMIE 8 FÖRDER · SALZ IN 1 L WASSER  (Förderheft Chemie 8 · cw4) ──
+  'chem-loesen': modal => {
+    _c8qInit();
+    modal.innerHTML = _c8qHTML();
+    _c8qStatus();
+    _pSim = new PhysicsSimEngine('_c8q-cv', '_c8q-cv');
+    _pSim.start(dt => _c8qUpdate(dt), (ctx, cv) => _c8qDraw(ctx, cv), []);
+  },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -130623,4 +130744,9102 @@ function _b9qDraw(ctx, cv) {
   }
   _b9qUnten(ctx);
   _bioFxAlleDraw(ctx, z.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER · DREI WEISSE PULVER   (Förderheft Chemie 8 · cs1)
+// Drei gleiche Schälchen mit weißem Pulver (A, B, C). Zwei Proben:
+//  Lupe   – ein großer Kreis zeigt die Körner stark vergrößert
+//  Wasser – ein Löffel Pulver rieselt ins Becherglas, der Rührstab rührt
+//           etwa 3 Sekunden; danach klar (gelöst) oder trüb (weißliche Wolke)
+// Modell (Lehrerteil): A Zucker (unregelmäßige Stücke, löst sich),
+// B Kochsalz (kleine Würfel, löst sich), C Mehl (feiner Staub, löst sich
+// nicht, Wasser trüb). Am Bildschirm wird NIE gesagt, welches Pulver welcher
+// Stoff ist; die Steckbriefe stehen daneben, zuordnen muss das Kind.
+// Aha (nach der Beobachtung, _bioFx, ruhig, keine Wertung):
+//  * Nach Wasser für A UND B: das Becherglas teilt sich in zwei Gläser A | B,
+//    beide gleich klar, derselbe Lichtring an beiden – „im Wasser gleich“.
+//  * Nach Lupe für A UND B: der Lupenkreis teilt sich in zwei Hälften A | B,
+//    links Stücke, rechts Würfel nebeneinander – „unter der Lupe verschieden“.
+//  * Sind beide gesehen, stehen zwischen den Merk-Plaketten von A und B
+//    ein „=“ (Wasser) und ein „≠“ (Lupe).
+// Jede fertige Probe fliegt als kleine Plakette (Lupe/Becherglas, ohne Text)
+// über das Schälchen – so sieht man, was schon untersucht ist.
+// ═══════════════════════════════════════════════════════════════════════
+let _c8a = null;
+const _C8A_ERG = {
+  'A-lupe':   'Pulver A: unregelmäßige Stücke.',
+  'B-lupe':   'Pulver B: kleine Würfel.',
+  'C-lupe':   'Pulver C: feiner Staub.',
+  'A-wasser': 'Pulver A löst sich. Das Wasser bleibt klar.',
+  'B-wasser': 'Pulver B löst sich. Das Wasser bleibt klar.',
+  'C-wasser': 'Pulver C löst sich nicht. Das Wasser wird trüb.'
+};
+const _C8A_ART   = { A: 'stuecke', B: 'wuerfel', C: 'staub' };
+const _C8A_LOEST = { A: true, B: true, C: false };
+const _C8A_PNAME = { lupe: 'Lupe', wasser: 'Wasser' };
+const _C8A_DX = { A: 48, B: 106, C: 164 };          // Schälchen-Mitten
+const _C8A_DY = 204;
+const _C8A_LX = 302, _C8A_LY = 110, _C8A_LR = 84;   // großer Lupenkreis
+const _C8A_BX = 302, _C8A_BT = 98, _C8A_BB = 224, _C8A_BW = 44, _C8A_WY = 134;  // Becherglas
+const _C8A_T_LUPE = 1.7;                             // s: Lupe heranführen, scharf stellen
+const _C8A_T_WASSER = 4.8;                           // s: Löffel 0,8 · rieseln 0,8 · rühren 3,2
+const _C8A_AHA = 3.6;                                // s: geteilte Ansicht
+
+function _c8aZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+// Körner im Lupenbild (fest, damit jedes Öffnen gleich aussieht)
+function _c8aKoerner() {
+  const z = _c8aZufall(81), k = { A: [], B: [], C: [], haufen: [] };
+  const platz = (rmax, liste, abst) => {
+    let x = 0, y = 0;
+    for (let v = 0; v < 60; v++) {
+      x = (z() * 2 - 1) * rmax; y = (z() * 2 - 1) * rmax;
+      if (x * x + y * y > rmax * rmax) continue;
+      if (liste.every(p => Math.hypot(p.x - x, p.y - y) > abst)) break;
+    }
+    return [x, y];
+  };
+  for (let i = 0; i < 14; i++) {
+    const [x, y] = platz(66, k.A, 19);
+    const n = 5 + Math.floor(z() * 3), ecken = [];
+    for (let j = 0; j < n; j++) ecken.push(0.55 + z() * 0.45);
+    k.A.push({ x, y, s: 8 + z() * 6, w: z() * 6.28, ecken });
+  }
+  for (let i = 0; i < 15; i++) {
+    const [x, y] = platz(64, k.B, 19);
+    k.B.push({ x, y, s: 8 + z() * 4, w: (z() - 0.5) * 0.9 });
+  }
+  for (let i = 0; i < 320; i++) {
+    const [x, y] = platz(78, [], 0);
+    k.C.push({ x, y, r: 0.5 + z() * 1.2, a: 0.45 + z() * 0.5 });
+  }
+  for (let i = 0; i < 9; i++) {                      // kleine Klümpchen
+    const [x, y] = platz(60, [], 0);
+    for (let j = 0; j < 16; j++)
+      k.C.push({ x: x + (z() - 0.5) * 10, y: y + (z() - 0.5) * 8, r: 0.7 + z() * 1.0, a: 0.85 });
+  }
+  for (let i = 0; i < 26; i++) k.haufen.push([z(), z()]);   // Pünktchen auf dem Pulverhaufen
+  return k;
+}
+
+function _c8aInit() {
+  _c8a = {
+    t: 0, pulver: 'A', probe: 'lupe', phase: 'bereit', pt: 0,
+    erledigt: {}, flug: null, aha: null, ahaW: false, ahaL: false, gleich: null,
+    w: { teile: [], trueb: 0, geloest: 0, rest: 1 },
+    fx: { teile: [] }, koerner: _c8aKoerner(), zeile: ''
+  };
+}
+function _c8aKey() { return _c8a.pulver + '-' + _c8a.probe; }
+
+/* ── Bedienung ─────────────────────────────────────────────────────── */
+function _c8aZurueck() {
+  // Ein abgebrochenes Aha darf beim nächsten Mal wiederkommen.
+  if (_c8a.aha && _c8a.aha.t < _C8A_AHA - 0.6) _c8a[_c8a.aha.art === 'wasser' ? 'ahaW' : 'ahaL'] = false;
+  _c8a.phase = 'bereit'; _c8a.pt = 0; _c8a.aha = null;
+  _c8a.w = { teile: [], trueb: 0, geloest: 0, rest: 1 };
+  _c8a.fx.teile = []; _c8a.fx.banner = null; _c8a.fx.stempel = null;
+  _c8aStatus();
+}
+function _c8aPulver(p) {
+  if (!_c8a || !_C8A_ART[p]) return;
+  _c8a.pulver = p; _c8aZurueck();
+}
+function _c8aProbe(p) {
+  if (!_c8a || !_C8A_PNAME[p]) return;
+  _c8a.probe = p; _c8aZurueck();
+}
+function _c8aStart() {
+  if (!_c8a || _c8a.phase === 'laeuft') return;
+  _c8aZurueck();
+  _c8a.phase = 'laeuft';
+  _c8aStatus();
+}
+function _c8aNeu() {
+  if (!_c8a) return;
+  const k = _c8a.koerner;
+  _c8aInit(); _c8a.koerner = k;
+  _c8aStatus();
+}
+// Sprungmarke: Pulver und Probe auf einmal, das Ergebnis steht sofort da.
+function _c8aMarke(p, probe) {
+  if (!_c8a) return;
+  _c8a.pulver = p; _c8a.probe = probe;
+  _c8aZurueck();
+  _c8a.phase = 'laeuft';
+  if (probe === 'wasser') {
+    _c8a.pt = _C8A_T_WASSER; _c8a.w.rest = 0;
+    if (!_C8A_LOEST[p]) {
+      for (let i = 0; i < 90; i++) _c8a.w.teile.push(_c8aTeilchenNass(true));
+      _c8a.w.trueb = 0.72;
+    } else _c8a.w.geloest = 1;
+  } else _c8a.pt = _C8A_T_LUPE;
+  _c8aFertig();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────── */
+function _c8aZeile() {
+  const p = _c8a.pulver, pr = _c8a.probe;
+  if (_c8a.phase === 'fertig') return _C8A_ERG[_c8aKey()];
+  if (_c8a.phase === 'bereit')
+    return 'Pulver ' + p + ' · Probe ' + _C8A_PNAME[pr] + ' · Drücke „▶ Probe starten“.';
+  if (pr === 'lupe')
+    return _c8a.pt < 0.9 ? 'Die Lupe wird über Pulver ' + p + ' gehalten …'
+                         : 'Die Lupe wird scharf gestellt …';
+  if (_c8a.pt < 0.8) return 'Ein Löffel Pulver ' + p + ' wird geholt …';
+  if (_c8a.pt < 1.6) return 'Pulver ' + p + ' rieselt ins Wasser …';
+  return 'Der Rührstab rührt …';
+}
+function _c8aStatus() {
+  if (!_c8a) return;
+  const z = _c8aZeile();
+  _c8a.zeile = z;
+  const el = document.getElementById('_c8a-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-c8a]').forEach(b => {
+      const d = b.getAttribute('data-c8a');
+      const an = d === 'p' + _c8a.pulver || d === 'r' + _c8a.probe ||
+                 (d === 'los' && _c8a.phase !== 'laeuft');
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _c8aHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-c8a="${d}" onclick="${f}">${txt}</button>`;
+  const karte = (name, rest) =>
+    `<div class="fpm-note" style="margin-top:4px;border:1px solid #cbd5e1;border-radius:8px;padding:5px 8px;background:#fff">${name}: ${rest}</div>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Drei weiße Pulver</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf dem Tisch stehen drei Schälchen mit weißem Pulver: A, B und C. Im Chemieraum wird nie probiert. Stelle „Pulver“ und „Probe“ ein. Dann drücke „▶ Probe starten“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8a-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Pulver</span>
+          ${k('pA', "_c8aPulver('A')", 'A')}
+          ${k('pB', "_c8aPulver('B')", 'B')}
+          ${k('pC', "_c8aPulver('C')", 'C')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <span class="fpm-label" style="margin-right:4px">Probe</span>
+          ${k('rlupe', "_c8aProbe('lupe')", 'Lupe')}
+          ${k('rwasser', "_c8aProbe('wasser')", 'Wasser')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" data-c8a="los" onclick="_c8aStart()">▶ Probe starten</button>
+          <button class="sim-btn" onclick="_c8aNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was siehst du?</div>
+        <div class="lmp-status on" id="_c8a-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Steckbriefe</div>
+        ${karte('Kochsalz', 'weiß, kleine Würfel, löst sich in Wasser')}
+        ${karte('Zucker', 'weiß, unregelmäßige Stücke, löst sich in Wasser')}
+        ${karte('Mehl', 'weiß, feiner Staub, löst sich nicht in Wasser')}
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8aMarke('A','lupe')">A, Lupe</button>
+          <button class="sim-btn" onclick="_c8aMarke('B','lupe')">B, Lupe</button>
+          <button class="sim-btn" onclick="_c8aMarke('C','lupe')">C, Lupe</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8aMarke('A','wasser')">A, Wasser</button>
+          <button class="sim-btn" onclick="_c8aMarke('B','wasser')">B, Wasser</button>
+          <button class="sim-btn" onclick="_c8aMarke('C','wasser')">C, Wasser</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Pulver A, Probe Lupe &nbsp;|&nbsp; Die Plaketten über den Schälchen zeigen, was du schon untersucht hast.</p>
+  </div>`;
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────── */
+function _c8aFertig() {
+  const key = _c8aKey();
+  _c8a.phase = 'fertig';
+  _c8a.pt = _c8a.probe === 'lupe' ? _C8A_T_LUPE : _C8A_T_WASSER;
+  if (_c8a.probe === 'wasser') {
+    _c8a.w.rest = 0;
+    if (_C8A_LOEST[_c8a.pulver]) { _c8a.w.geloest = 1; _c8a.w.teile = []; }
+    else _c8a.w.trueb = 0.72;
+  }
+  _c8a.erledigt[key] = true;
+  _c8a.flug = { key, t: 0 };
+  const cx = _c8a.probe === 'lupe' ? _C8A_LX : _C8A_BX;
+  const cy = _c8a.probe === 'lupe' ? _C8A_LY : 176;
+  _bioFxWelle(_c8a.fx.teile, cx, cy, '#fde68a', _c8a.probe === 'lupe' ? 96 : 60);
+  _c8aStatus();
+  // Aha: erst nach der Beobachtung (1,4 s warten), nur einmal je Durchgang
+  if (_c8a.pulver === 'A' || _c8a.pulver === 'B') {
+    const e = _c8a.erledigt;
+    if (_c8a.probe === 'wasser' && !_c8a.ahaW && e['A-wasser'] && e['B-wasser']) {
+      _c8a.ahaW = true; _c8a.aha = { art: 'wasser', t: -1.4, an: false };
+    }
+    if (_c8a.probe === 'lupe' && !_c8a.ahaL && e['A-lupe'] && e['B-lupe']) {
+      _c8a.ahaL = true; _c8a.aha = { art: 'lupe', t: -1.4, an: false };
+    }
+    // Beide gesehen: „=“ und „≠“ erscheinen nach dem Aha (läuft auch weiter, wenn umgestellt wird)
+    if (_c8a.aha && _c8a.ahaW && _c8a.ahaL && _c8a.gleich === null) _c8a.gleich = -(1.4 + _C8A_AHA);
+  }
+}
+function _c8aWasserOben(x, t) { return _C8A_WY + Math.sin(x * 0.11 + t * 2.2) * 1.3; }
+// Ein Pulverteilchen, das schon im Wasser schwebt (für Sprungmarke und Rieseln)
+function _c8aTeilchenNass(verteilt) {
+  const tief = _C8A_BB - 8 - _C8A_WY;
+  return { x: _C8A_BX, y: _C8A_WY + 6, vx: 0, vy: 0, nass: true,
+           rad: verteilt ? Math.random() * 38 : Math.random() * 10,
+           ang: Math.random() * 6.28, rz: 4 + Math.random() * 34,
+           yz: _C8A_WY + 8 + Math.random() * (tief - 6), r: 0.8 + Math.random() * 1.2,
+           ...(verteilt ? { y: _C8A_WY + 8 + Math.random() * (tief - 6) } : {}) };
+}
+function _c8aLoeffel() {
+  // Löffelspitze: vom Schälchen zum Becherglas (0–0,8 s), dann kippen
+  const pt = _c8a.pt, x0 = _C8A_DX[_c8a.pulver], y0 = _C8A_DY - 10;
+  const x1 = _C8A_BX - 6, y1 = 82;
+  if (_c8a.phase === 'bereit') return { x: 250, y: 236, kipp: 0, liegt: true };
+  const u = _bioFxEase.sanft(_bioFxKlemme(pt / 0.8));
+  const x = x0 + (x1 - x0) * u, y = y0 + (y1 - y0) * u - Math.sin(Math.PI * u) * 34;
+  const kipp = _bioFxEase.sanft(_bioFxKlemme((pt - 0.8) / 0.25));
+  return { x, y, kipp, liegt: false };
+}
+function _c8aWasserSchritt(d) {
+  const w = _c8a.w, pt = _c8a.pt, laeuft = _c8a.phase === 'laeuft';
+  const loest = _C8A_LOEST[_c8a.pulver];
+  if (laeuft && pt > 0.85 && pt < 1.6) {                // rieseln
+    w.rest = 1 - _bioFxKlemme((pt - 0.85) / 0.7);
+    const n = loest ? 1 : 2;
+    for (let i = 0; i < n; i++) {
+      const l = _c8aLoeffel();
+      w.teile.push({ x: l.x + 4 + Math.random() * 8, y: l.y + 4, vx: (Math.random() - 0.5) * 12,
+                     vy: 20 + Math.random() * 30, nass: false, rad: 0, ang: 0,
+                     rz: 4 + Math.random() * 34, yz: _C8A_WY + 10 + Math.random() * 70,
+                     r: loest ? 1.4 + Math.random() * 0.9 : 0.8 + Math.random() * 1.1 });
+    }
+    if (!loest) w.trueb = Math.min(0.72, w.trueb + d * 0.12);
+  }
+  const ruehrt = laeuft && pt >= 1.6;
+  const om = ruehrt ? 3.4 : (_c8a.phase === 'fertig' ? 0.45 : 0.2);
+  for (const p of w.teile) {
+    if (!p.nass) {
+      p.vy += 260 * d; p.x += p.vx * d; p.y += p.vy * d;
+      if (p.y >= _c8aWasserOben(p.x, _c8a.t)) {
+        p.nass = true; p.rad = Math.abs(p.x - _C8A_BX); p.ang = p.x >= _C8A_BX ? 0 : Math.PI;
+        p.vy = 14 + Math.random() * 10;
+      }
+    } else {
+      p.ang += om * d * (1.25 - p.rad / 60);
+      if (ruehrt || _c8a.phase === 'fertig') {
+        p.rad += (p.rz - p.rad) * Math.min(1, d * 1.5);
+        p.y += (p.yz - p.y) * Math.min(1, d * 1.2);
+      } else p.y = Math.min(_C8A_BB - 10, p.y + p.vy * d);
+    }
+  }
+  if (ruehrt) {
+    const s = (pt - 1.6) / 3.2;
+    if (loest) w.geloest = _bioFxKlemme(s / 0.7);
+    else w.trueb = Math.max(w.trueb, 0.72 * _bioFxKlemme(s / 0.6));
+  }
+  if (loest && w.geloest >= 1) w.teile = [];
+}
+function _c8aUpdate(dt) {
+  if (!_c8a) return;
+  dt = _bioFxDt(dt);
+  _c8a.t += dt;
+  if (_c8a.phase === 'laeuft') {
+    _c8a.pt += dt;
+    if (_c8a.probe === 'wasser') _c8aWasserSchritt(dt);
+    const T = _c8a.probe === 'lupe' ? _C8A_T_LUPE : _C8A_T_WASSER;
+    if (_c8a.pt >= T) _c8aFertig();
+    else if (_c8aZeile() !== _c8a.zeile) _c8aStatus();
+  } else if (_c8a.phase === 'fertig' && _c8a.probe === 'wasser') _c8aWasserSchritt(dt);
+  if (_c8a.flug) {
+    _c8a.flug.t += dt;
+    if (_c8a.flug.t >= 0.75 && !_c8a.flug.da) {             // Plakette landet
+      _c8a.flug.da = true;
+      const q = _c8aPlakettenOrt(_c8a.flug.key);
+      _bioFxFunken(_c8a.fx.teile, q.x, q.y, 6, ['#fde68a', '#ffffff', '#bae6fd']);
+    }
+  }
+  const a = _c8a.aha;
+  if (a) {
+    a.t += dt;
+    if (a.t >= 0 && !a.an) {
+      a.an = true;
+      const fx = _c8a.fx;
+      if (a.art === 'wasser') {
+        for (const x of [_C8A_BX - 48, _C8A_BX + 48]) {
+          _bioFxWelle(fx.teile, x, 178, '#7dd3fc', 50);
+          _bioFxBlasen(fx.teile, x, 205, 5, 'rgba(224,242,254,1)');
+        }
+        _bioFxBanner(fx, 'Wasser: A und B sehen gleich aus.', 3.2, '#7dd3fc');
+      } else {
+        _bioFxFunken(fx.teile, _C8A_LX - 42, _C8A_LY, 8, ['#fde68a', '#ffffff']);
+        _bioFxFunken(fx.teile, _C8A_LX + 42, _C8A_LY, 8, ['#fde68a', '#ffffff']);
+        _bioFxBanner(fx, 'Lupe: A und B sehen verschieden aus.', 3.2, '#fde68a');
+      }
+    }
+    if (a.t >= _C8A_AHA) _c8a.aha = null;
+  }
+  if (_c8a.gleich !== null) {
+    const vor = _c8a.gleich;
+    _c8a.gleich += dt;
+    if (vor < 0 && _c8a.gleich >= 0)
+      _bioFxWelle(_c8a.fx.teile, (_C8A_DX.A + _C8A_DX.B) / 2, 158, '#fde68a', 40);
+  }
+  _bioFxAlleUpdate(_c8a.fx, dt);
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────── */
+function _c8aPlakettenOrt(key) {
+  const [p, probe] = key.split('-');
+  return { x: _C8A_DX[p], y: probe === 'lupe' ? 142 : 168 };
+}
+// Körnerbild einer Pulversorte um den Ursprung (Aufrufer hat translate/clip gesetzt)
+function _c8aKornbild(ctx, p, sc, unscharf, t) {
+  const k = _c8a.koerner, art = _C8A_ART[p];
+  const lagen = unscharf > 0.02 ? [[unscharf * 6, unscharf * 3, 0.35], [0, 0, 1 - 0.45 * unscharf]]
+                                : [[0, 0, 1]];
+  for (const [ox, oy, al] of lagen) {
+    ctx.save();
+    ctx.globalAlpha = al;
+    ctx.translate(ox, oy);
+    ctx.scale(sc, sc);
+    if (art === 'staub') {
+      for (const s of k.C) {
+        ctx.fillStyle = 'rgba(246,242,232,' + s.a.toFixed(2) + ')';
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI); ctx.fill();
+      }
+    } else if (art === 'wuerfel') {
+      k.B.forEach((s, i) => {
+        const h = s.s / 2, q = s.s * 0.36;
+        ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.w);
+        ctx.strokeStyle = '#8391a3'; ctx.lineWidth = 0.8;
+        ctx.fillStyle = '#ffffff';                          // Deckfläche
+        ctx.beginPath(); ctx.moveTo(-h, -h); ctx.lineTo(-h + q, -h - q); ctx.lineTo(h + q, -h - q); ctx.lineTo(h, -h); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#c3cedb';                          // Seitenfläche
+        ctx.beginPath(); ctx.moveTo(h, -h); ctx.lineTo(h + q, -h - q); ctx.lineTo(h + q, h - q); ctx.lineTo(h, h); ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#eef2f7';                          // Vorderfläche
+        ctx.fillRect(-h, -h, s.s, s.s); ctx.strokeRect(-h, -h, s.s, s.s);
+        const g = 0.5 + 0.5 * Math.sin(t * 1.1 + i * 1.7);  // Lichtpunkt wandert langsam
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.35 + 0.5 * g).toFixed(2) + ')';
+        ctx.beginPath(); ctx.arc(-h + 2 + g * (s.s - 4), -h + 2.5, 1.1, 0, 2 * Math.PI); ctx.fill();
+        ctx.restore();
+      });
+    } else {
+      k.A.forEach((s, i) => {
+        const n = s.ecken.length;
+        ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(s.w);
+        ctx.fillStyle = 'rgba(232,240,250,0.9)';
+        ctx.strokeStyle = 'rgba(150,168,190,0.95)'; ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        for (let j = 0; j < n; j++) {
+          const w = j * 2 * Math.PI / n, r = s.s * s.ecken[j];
+          if (j === 0) ctx.moveTo(Math.cos(w) * r, Math.sin(w) * r); else ctx.lineTo(Math.cos(w) * r, Math.sin(w) * r);
+        }
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1.1;   // glasige Kante
+        ctx.beginPath(); ctx.moveTo(-s.s * 0.35, -s.s * 0.2); ctx.lineTo(s.s * 0.15, -s.s * 0.45); ctx.stroke();
+        const g = 0.5 + 0.5 * Math.sin(t * 0.9 + i * 2.3);
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.3 + 0.55 * g).toFixed(2) + ')';
+        ctx.beginPath(); ctx.arc(-s.s * 0.2 + g * s.s * 0.4, s.s * 0.1, 1.2, 0, 2 * Math.PI); ctx.fill();
+        ctx.restore();
+      });
+    }
+    ctx.restore();
+  }
+}
+// Lupe mit Griff; Inhalt: ein Pulver oder (Aha) zwei Hälften A | B
+function _c8aLupe(ctx, cx, cy, r, unscharf, t, geteilt) {
+  ctx.save();
+  // Griff
+  ctx.strokeStyle = '#3f3f46'; ctx.lineWidth = 11; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx + r * 0.74, cy + r * 0.74); ctx.lineTo(cx + r * 1.02, cy + r * 1.08); ctx.stroke();
+  ctx.strokeStyle = '#71717a'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(cx + r * 0.78, cy + r * 0.76); ctx.lineTo(cx + r * 1.0, cy + r * 1.03); ctx.stroke();
+  // Glas: dunkle Unterlage, darauf die Körner
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.clip();
+  const g = ctx.createRadialGradient(cx - r * 0.3, cy - r * 0.3, r * 0.1, cx, cy, r);
+  g.addColorStop(0, '#334155'); g.addColorStop(1, '#0f172a');
+  ctx.fillStyle = g; ctx.fillRect(cx - r, cy - r, 2 * r, 2 * r);
+  const sc = r / _C8A_LR;
+  const dx = Math.sin(t * 0.6) * 3 * sc, dy = Math.cos(t * 0.45) * 2 * sc;   // Hand zittert leicht
+  if (geteilt > 0) {
+    const off = 42 * sc * geteilt;
+    for (const [p, s] of [['A', -1], ['B', 1]]) {
+      ctx.save();
+      ctx.beginPath(); ctx.rect(s < 0 ? cx - r : cx, cy - r, r, 2 * r); ctx.clip();
+      ctx.translate(cx + dx + s * off * 0.35, cy + dy);
+      _c8aKornbild(ctx, p, sc * (1 - 0.18 * geteilt), 0, t);
+      ctx.restore();
+    }
+    ctx.strokeStyle = 'rgba(253,230,138,' + (0.9 * geteilt).toFixed(2) + ')'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(cx, cy - r); ctx.lineTo(cx, cy + r); ctx.stroke();
+    ctx.fillStyle = 'rgba(15,23,42,' + (0.75 * geteilt).toFixed(2) + ')';
+    ctx.fillRect(cx - 38, cy - r + 8, 22, 20); ctx.fillRect(cx + 16, cy - r + 8, 22, 20);
+    ctx.fillStyle = 'rgba(253,230,138,' + geteilt.toFixed(2) + ')';
+    ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('A', cx - 27, cy - r + 23); ctx.fillText('B', cx + 27, cy - r + 23);
+  } else {
+    ctx.translate(cx + dx, cy + dy);
+    if (unscharf < 0.999) _c8aKornbild(ctx, _c8a.pulver, sc, unscharf, t);   // leer, solange nichts darunter liegt
+  }
+  ctx.restore();
+  // Spiegelung auf dem Glas, wandert langsam
+  ctx.save();
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.clip();
+  const sw = (t * 0.12) % 1.6 - 0.3;
+  ctx.fillStyle = 'rgba(255,255,255,0.07)';
+  ctx.beginPath(); ctx.ellipse(cx - r * 0.35 + sw * r * 0.4, cy - r * 0.45, r * 0.55, r * 0.18, -0.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+  ctx.strokeStyle = '#52525b'; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = '#a1a1aa'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, r - 3, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+// Becherglas; trueb 0..1, Teilchen, Schlieren s (0..1)
+function _c8aBecher(ctx, bx, bt, bb, bw, wy, t, trueb, teile, schliere, alphaT) {
+  ctx.save();
+  // Wasser
+  ctx.fillStyle = 'rgba(186,222,252,0.55)';
+  ctx.beginPath(); ctx.moveTo(bx - bw + 2, wy);
+  for (let x = bx - bw + 2; x <= bx + bw - 2; x += 4) ctx.lineTo(x, wy + Math.sin(x * 0.11 + t * 2.2) * 1.3);
+  ctx.lineTo(bx + bw - 2, bb - 2); ctx.lineTo(bx - bw + 2, bb - 2); ctx.closePath(); ctx.fill();
+  if (trueb > 0.01) {                                  // weißliche Wolke
+    ctx.fillStyle = 'rgba(248,246,238,' + trueb.toFixed(3) + ')'; ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.25 * trueb).toFixed(3) + ')';
+    for (let k = 0; k < 4; k++) {
+      const x = bx + Math.sin(t * 0.5 + k * 1.6) * bw * 0.45, y = wy + 22 + k * 18;
+      ctx.beginPath(); ctx.ellipse(x, y, bw * 0.4, 8, 0, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  if (schliere > 0.01) {                               // Schlieren beim Lösen
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.5 * schliere).toFixed(3) + ')'; ctx.lineWidth = 2;
+    for (let k = 0; k < 3; k++) {
+      const ph = t * 2.6 + k * 2.1, y = wy + 24 + k * 22;
+      ctx.beginPath(); ctx.moveTo(bx - bw * 0.7, y);
+      ctx.quadraticCurveTo(bx + Math.sin(ph) * bw * 0.6, y - 14 * Math.cos(ph), bx + bw * 0.7, y + 4);
+      ctx.stroke();
+    }
+  }
+  if (teile) {
+    for (const p of teile) {
+      const x = p.nass ? bx + p.rad * Math.cos(p.ang) : p.x;
+      const tiefe = p.nass ? 0.65 + 0.35 * Math.sin(p.ang) : 1;
+      ctx.fillStyle = 'rgba(255,255,255,' + (alphaT * tiefe).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(120,140,160,' + (0.6 * alphaT * tiefe).toFixed(3) + ')'; ctx.lineWidth = 0.6;
+      ctx.beginPath(); ctx.arc(x, p.y, p.r, 0, 2 * Math.PI); ctx.fill(); if (p.r > 1.3) ctx.stroke();
+    }
+  }
+  // Glas
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx - bw, bt); ctx.lineTo(bx - bw, bb - 6); ctx.quadraticCurveTo(bx - bw, bb, bx - bw + 6, bb);
+  ctx.lineTo(bx + bw - 6, bb); ctx.quadraticCurveTo(bx + bw, bb, bx + bw, bb - 6); ctx.lineTo(bx + bw, bt); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(bx - bw - 4, bt - 2); ctx.lineTo(bx - bw, bt + 2); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.55)'; ctx.lineWidth = 1;
+  for (let k = 0; k < 4; k++) { const y = bb - 22 - k * 22; ctx.beginPath(); ctx.moveTo(bx - bw + 3, y); ctx.lineTo(bx - bw + 12, y); ctx.stroke(); }
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx + bw - 9, bt + 10); ctx.lineTo(bx + bw - 9, bb - 14); ctx.stroke();
+  ctx.restore();
+}
+function _c8aLoeffelZeichnen(ctx, l, rest) {
+  ctx.save();
+  ctx.translate(l.x, l.y);
+  ctx.rotate(l.liegt ? -0.1 : 0.9 * l.kipp);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(-34, -2); ctx.lineTo(-8, 0); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(2, 0, 10, 5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (rest > 0.02 && !l.liegt) {
+    ctx.fillStyle = '#fbfaf6';
+    ctx.beginPath(); ctx.ellipse(2, -2 * rest, 8 * Math.sqrt(rest), 4 * rest + 1, 0, Math.PI, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _c8aRuehrstab(ctx, t) {
+  const laeuft = _c8a.phase === 'laeuft', pt = _c8a.pt;
+  let ox, ux;
+  if (laeuft && pt >= 1.6) {
+    const w = (pt - 1.6) * 5.2;
+    ox = _C8A_BX + Math.cos(w) * 10; ux = _C8A_BX + Math.cos(w) * 28;
+  } else if (laeuft) { ox = _C8A_BX + 58; ux = _C8A_BX + 40; }
+  else { ox = _C8A_BX + 34; ux = _C8A_BX + 12; }
+  const oy = laeuft && pt < 1.6 ? 74 : 70, uy = laeuft && pt < 1.6 ? 120 : 214;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,0.9)'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ux, uy); ctx.stroke();
+  ctx.strokeStyle = 'rgba(241,245,249,0.95)'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ux, uy); ctx.stroke();
+  ctx.restore();
+}
+function _c8aPlakette(ctx, key, x, y, t) {
+  const [p, probe] = key.split('-');
+  ctx.save();
+  if (probe === 'lupe') {
+    ctx.save();
+    ctx.beginPath(); ctx.arc(x, y, 11, 0, 2 * Math.PI); ctx.clip();
+    ctx.fillStyle = '#1e293b'; ctx.fillRect(x - 11, y - 11, 22, 22);
+    ctx.translate(x, y);
+    _c8aKornbild(ctx, p, 0.2, 0, t);
+    ctx.restore();
+    ctx.strokeStyle = '#52525b'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.arc(x, y, 11, 0, 2 * Math.PI); ctx.stroke();
+    ctx.lineWidth = 3; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x + 8, y + 8); ctx.lineTo(x + 13, y + 13); ctx.stroke();
+  } else {
+    const klar = _C8A_LOEST[p];
+    ctx.fillStyle = 'rgba(186,222,252,0.9)'; ctx.fillRect(x - 8, y - 4, 16, 13);
+    if (!klar) { ctx.fillStyle = 'rgba(248,246,238,0.8)'; ctx.fillRect(x - 8, y - 4, 16, 13); }
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x - 9, y - 10); ctx.lineTo(x - 9, y + 10); ctx.lineTo(x + 9, y + 10); ctx.lineTo(x + 9, y - 10); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _c8aDraw(ctx, cv) {
+  if (!_c8a) return;
+  const W = cv.width, H = cv.height, t = _c8a.t;
+  ctx.clearRect(0, 0, W, H);
+  // Raum: Wand und Labortisch
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef4f8'); bg.addColorStop(1, '#dde7ee');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#cfd8df'; ctx.fillRect(0, 214, W, H - 214);
+  ctx.fillStyle = '#b8c4cd'; ctx.fillRect(0, 212, W, 3);
+  ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 42) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 212); ctx.stroke(); }
+
+  // Drei Schälchen – alle drei sehen genau gleich aus
+  for (const p of ['A', 'B', 'C']) {
+    const x = _C8A_DX[p], y = _C8A_DY, an = p === _c8a.pulver;
+    if (an) {
+      ctx.fillStyle = 'rgba(253,230,138,0.55)';
+      ctx.beginPath(); ctx.ellipse(x, y + 10, 30, 9, 0, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.fillStyle = 'rgba(226,232,240,0.9)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(x, y + 6, 24, 7, 0, 0, Math.PI); ctx.lineTo(x - 24, y - 2);
+    ctx.ellipse(x, y - 2, 24, 7, 0, Math.PI, 0, true); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#fbfaf6';                                   // Pulverhaufen
+    ctx.beginPath(); ctx.ellipse(x, y - 2, 19, 10, 0, Math.PI, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgba(203,213,225,0.9)';
+    for (const [u, v] of _c8a.koerner.haufen) {
+      const px = x - 15 + u * 30, py = y - 3 - v * 7 * (1 - Math.abs(u - 0.5) * 1.6);
+      ctx.fillRect(px, py, 1, 1);
+    }
+    ctx.strokeStyle = 'rgba(148,163,184,0.8)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(x, y - 2, 24, 7, 0, 0, 2 * Math.PI); ctx.stroke();
+    // Schild
+    ctx.fillStyle = an ? '#fef3c7' : '#ffffff'; ctx.strokeStyle = an ? '#b45309' : '#64748b'; ctx.lineWidth = an ? 2 : 1.2;
+    ctx.fillRect(x - 11, 222, 22, 20); ctx.strokeRect(x - 11, 222, 22, 20);
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(p, x, 237);
+  }
+  // Merk-Plaketten über den Schälchen
+  for (const key in _c8a.erledigt) {
+    const q = _c8aPlakettenOrt(key);
+    let x = q.x, y = q.y;
+    if (_c8a.flug && _c8a.flug.key === key && _c8a.flug.t < 0.75) {
+      const u = _bioFxEase.sanft(_c8a.flug.t / 0.75);
+      const sx = key.endsWith('lupe') ? _C8A_LX : _C8A_BX, sy = key.endsWith('lupe') ? _C8A_LY : 170;
+      x = sx + (q.x - sx) * u; y = sy + (q.y - sy) * u - Math.sin(Math.PI * u) * 40;
+    }
+    _c8aPlakette(ctx, key, x, y, t);
+  }
+  // Nach beiden Aha-Momenten: „=“ bei Wasser, „≠“ bei Lupe zwischen A und B
+  if (_c8a.gleich !== null && _c8a.gleich >= 0) {
+    const a = _bioFxKlemme(_c8a.gleich / 0.6), xm = (_C8A_DX.A + _C8A_DX.B) / 2;
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.fillStyle = '#b45309'; ctx.font = '700 20px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('≠', xm, 149); ctx.fillStyle = '#0369a1'; ctx.fillText('=', xm, 175);
+    ctx.restore();
+  }
+
+  // Arbeitsfläche rechts
+  const aha = _c8a.aha && _c8a.aha.t >= 0 ? _c8a.aha : null;
+  const ahaK = aha ? _bioFxKlemme(Math.min(aha.t / 0.5, (_C8A_AHA - aha.t) / 0.5)) : 0;
+  if (_c8a.probe === 'lupe') {
+    let cx = _C8A_LX, cy = _C8A_LY, r = _C8A_LR, uns = 0;
+    if (_c8a.phase === 'bereit') {                       // Lupe wartet, schwebt leicht
+      r = 30; cx = _C8A_LX - 20; cy = 150 + Math.sin(t * 1.4) * 3;
+      uns = 1;
+    } else if (_c8a.phase === 'laeuft') {
+      const u = _bioFxEase.sanft(_bioFxKlemme(_c8a.pt / 0.9));
+      const x0 = _C8A_DX[_c8a.pulver], y0 = _C8A_DY - 20;
+      cx = x0 + (_C8A_LX - x0) * u; cy = y0 + (_C8A_LY - y0) * u; r = 14 + (_C8A_LR - 14) * u;
+      uns = 0.95 * (1 - _bioFxKlemme((_c8a.pt - 0.9) / 0.7));
+    }
+    if (_c8a.phase === 'bereit') {
+      ctx.save(); ctx.globalAlpha = 0.9;
+      _c8aLupe(ctx, cx, cy, r, 1, t, 0);
+      ctx.restore();
+      ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('Lupe', cx, cy - r - 8);
+    } else {
+      _c8aLupe(ctx, cx, cy, r, uns, t, aha && aha.art === 'lupe' ? ahaK : 0);
+    }
+  } else {
+    const split = aha && aha.art === 'wasser' ? ahaK : 0;
+    if (split > 0.01) {
+      // Aha: zwei Gläser A | B nebeneinander, beide gleich klar
+      for (const [p, s] of [['A', -1], ['B', 1]]) {
+        const bx = _C8A_BX + s * 48 * split;
+        ctx.save(); ctx.globalAlpha = split;
+        _c8aBecher(ctx, bx, _C8A_BT + 20, _C8A_BB, 36, _C8A_WY + 12, t, 0, null, 0, 0);
+        ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(p, bx, _C8A_BT + 12);
+        ctx.restore();
+      }
+      if (split < 0.99) {
+        ctx.save(); ctx.globalAlpha = 1 - split;
+        _c8aBecher(ctx, _C8A_BX, _C8A_BT, _C8A_BB, _C8A_BW, _C8A_WY, t, 0, null, 0, 0);
+        ctx.restore();
+      }
+    } else {
+      const w = _c8a.w, pt = _c8a.pt, laeuft = _c8a.phase === 'laeuft', loest = _C8A_LOEST[_c8a.pulver];
+      const schl = laeuft && loest && pt >= 1.6 ? Math.sin(Math.PI * _bioFxKlemme((pt - 1.6) / 2.6)) : 0;
+      const alphaT = loest ? 1 - w.geloest : 1;
+      _c8aBecher(ctx, _C8A_BX, _C8A_BT, _C8A_BB, _C8A_BW, _C8A_WY, t, w.trueb, w.teile, schl, alphaT);
+      _c8aRuehrstab(ctx, t);
+      if (_c8a.phase !== 'fertig') _c8aLoeffelZeichnen(ctx, _c8aLoeffel(), w.rest);
+      if (_c8a.phase === 'bereit') {
+        ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('Becherglas mit Wasser', _C8A_BX, _C8A_BT - 10);
+      }
+    }
+  }
+  if (_c8a.phase === 'laeuft') {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶ Probe läuft', 10, 18);
+  }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Pulver ' + _c8a.pulver + ' · Probe ' + _C8A_PNAME[_c8a.probe], 10, 36);
+  _bioFxAlleDraw(ctx, _c8a.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – cs2 „Klar ist nicht gleich rein“ (Kennung chem-gemische)
+// Links ein Becherglas mit der gewaehlten Probe – immer klar und farblos,
+// Schild am Glas „klar, farblos“. Rechts ein Uhrglas auf einer Heizplatte,
+// darauf ein Tropfen der Probe; ganz rechts dasselbe Uhrglas vergroessert
+// (von oben). „▶ Tropfen erhitzen“: Die Heizplatte gluehet ruhig auf, der
+// Tropfen wird 4 s lang kleiner, Dampfwoelkchen steigen auf, dann ist er weg.
+// Ergebnis (Modellbild, Lehrerteil): Laborwasser (destilliertes Wasser)
+// → nichts; Salzwasser → dicker weisser Rand (Kochsalz); Mineralwasser →
+// duenner weisser Rand (Mineralstoffe). Die Randdicke ist ein Modellbild.
+// Das Wort „verdampfen“ kommt bewusst nicht vor (Lehrerteil, erst cs3);
+// ebenso nicht „Reinstoff“, „Stoffgemisch“, „rein“, „gemischt“ (Luecken).
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Beim Salz- und Mineral-
+// wasser zieht sich der klare Tropfen zurueck und ein weisser Rand bleibt
+// stehen – ein ruhiger Lichtring und silberne Funken markieren ihn, dann
+// oeffnet sich im Becherglas der Teilchenblick: Wasserteilchen UND eine
+// zweite Teilchensorte (beim Laborwasser nur Wasserteilchen). Sind alle
+// drei Proben erhitzt, leuchten die drei Ergebnisfelder unten nacheinander
+// auf. Nichts blinkt (Puls 0,8 Hz), kein Ton, keine Wertung.
+// ════════════════════════════════════════════════════════════════════════
+let _c8b = null;
+const _C8B_PROBEN = ['labor', 'salz', 'mineral'];
+const _C8B_NAME = { labor: 'Laborwasser', salz: 'Salzwasser', mineral: 'Mineralwasser' };
+const _C8B_BILD = { labor: 'leer', salz: 'dicker weißer Rand', mineral: 'dünner weißer Rand' };
+const _C8B_ENDE = {
+  labor:   'Der Tropfen ist weg. Auf dem Glas bleibt nichts zurück.',
+  salz:    'Der Tropfen ist weg. Auf dem Glas bleibt ein dicker weißer Rand zurück.',
+  mineral: 'Der Tropfen ist weg. Auf dem Glas bleibt ein dünner weißer Rand zurück.'
+};
+const _C8B_ANDERE = { labor: 0, salz: 9, mineral: 3 };          // zweite Teilchensorte im Teilchenblick
+const _C8B_TEILNAME = { salz: 'Salzteilchen', mineral: 'Mineralstoffteilchen' };
+const _C8B_DAUER = 4.0;                                         // s: so lange wird der Tropfen kleiner
+
+function _c8bZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _c8bInit() {
+  const z = _c8bZufall(82);
+  const wasser = [], andere = [], kristall = [];
+  for (let i = 0; i < 30; i++) wasser.push({ w: z() * 6.283, r: Math.sqrt(z()) * 34, f: 0.7 + z() * 0.9, p: z() * 6.283 });
+  for (let i = 0; i < 9; i++) andere.push({ w: z() * 6.283, r: 8 + Math.sqrt(z()) * 24, f: 0.5 + z() * 0.6, p: z() * 6.283 });
+  for (let i = 0; i < 40; i++) kristall.push({ w: i / 40 * 6.283 + z() * 0.12, d: (z() - 0.5) * 5, g: 1.6 + z() * 1.8, k: z() * 0.8 });
+  _c8b = {
+    t: 0, probe: 'labor', phase: 'bereit', pt: 0, nach: -1, schritt: 0,
+    getestet: { labor: false, salz: false, mineral: false }, alleGezeigt: false, alleT: -1,
+    dampf: [], dampfUhr: 0, heiz: 0, blick: 0,
+    wasser, andere, kristall, fx: { teile: [] }, letzt: ''
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _c8bFxLeer() {
+  _c8b.fx = { teile: [] }; _c8b.zeitlupe = null;
+  _c8b.nach = -1; _c8b.schritt = 0; _c8b.dampf = []; _c8b.blick = 0;
+}
+function _c8bProbe(p) {
+  if (!_c8b || !_C8B_NAME[p]) return;
+  _c8b.probe = p; _c8b.phase = 'bereit'; _c8b.pt = 0;       // neue Probe = frischer Tropfen
+  _c8bFxLeer(); _c8bStatus();
+}
+function _c8bErhitzen() {
+  if (!_c8b || _c8b.phase === 'heizt') return;
+  _c8bFxLeer();
+  _c8b.phase = 'heizt'; _c8b.pt = 0; _c8bStatus();
+}
+function _c8bNeu() {
+  if (!_c8b) return;
+  _c8b.probe = 'labor'; _c8b.phase = 'bereit'; _c8b.pt = 0;
+  _c8b.getestet = { labor: false, salz: false, mineral: false };
+  _c8b.alleGezeigt = false; _c8b.alleT = -1;
+  _c8bFxLeer(); _c8bStatus();
+}
+/* Sprungmarke: Probe waehlen und gleich erhitzen. */
+function _c8bMarke(p) {
+  if (!_c8b || !_C8B_NAME[p]) return;
+  _c8b.probe = p; _c8b.phase = 'bereit';
+  _c8bErhitzen();
+}
+
+function _c8bHTML() {
+  const k = p => `<button class="sim-btn" data-c8b="${p}" onclick="_c8bProbe('${p}')">${_C8B_NAME[p]}</button>`;
+  const m = p => `<button class="sim-btn" onclick="_c8bMarke('${p}')">${_C8B_NAME[p]} erhitzen</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Drei klare Proben</h3>
+    <div class="fpm-note" style="margin-top:2px">Links das Becherglas mit der Probe. Rechts liegt ein Tropfen der Probe auf einem Uhrglas. Die Heizplatte erhitzt den Tropfen, bis er weg ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8b-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Probe</span>
+          ${k('labor')}
+          ${k('salz')}
+          ${k('mineral')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8b-los" onclick="_c8bErhitzen()">▶ Tropfen erhitzen</button>
+          <button class="sim-btn" onclick="_c8bNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was bleibt auf dem Uhrglas?</div>
+        <div class="lmp-status on" id="_c8b-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_c8b-probe" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${m('labor')}
+          ${m('salz')}
+          ${m('mineral')}
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Unten im Bild stehen die drei Proben nebeneinander. Dort bleibt jedes Ergebnis stehen, bis du „neu“ drückst.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _c8bZeile() {
+  const name = _C8B_NAME[_c8b.probe];
+  if (_c8b.phase === 'bereit') return 'Probe: ' + name + '. Im Becherglas ist sie klar, farblos. Drücke „▶ Tropfen erhitzen“.';
+  if (_c8b.phase === 'heizt') return 'Die Heizplatte ist an. Der Tropfen wird kleiner. Kleine Dampfwölkchen steigen auf.';
+  return _C8B_ENDE[_c8b.probe];
+}
+function _c8bStatus() {
+  if (!_c8b) return;
+  const z = _c8bZeile();
+  _c8b.letzt = z;
+  const el = document.getElementById('_c8b-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const pr = document.getElementById('_c8b-probe');
+  if (pr) pr.textContent = 'Probe: ' + _C8B_NAME[_c8b.probe] + ' · im Becherglas: klar, farblos';
+  try {
+    document.querySelectorAll('[data-c8b]').forEach(b => {
+      const d = b.getAttribute('data-c8b');
+      if (b.classList) b.classList.toggle('primary', d === _c8b.probe);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_c8b-los');
+  if (los && los.classList) los.classList.toggle('primary', _c8b.phase !== 'heizt');
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _c8bUpdate(dt) {
+  if (!_c8b) return;
+  dt = _bioFxDt(dt);
+  _c8b.t += dt;
+  const an = _c8b.phase === 'heizt';
+  _c8b.heiz += ((an ? 1 : 0) - _c8b.heiz) * Math.min(1, dt * (an ? 2.2 : 0.9));   // gluehet weich an und aus
+  if (an) {
+    if (_c8b.probe !== 'labor' && !_c8b.zeitlupe && _c8b.pt >= 0.8 * _C8B_DAUER)
+      _bioFxZeitlupe(_c8b, 0.5, 0.7);                         // der Rand bleibt stehen: kurz langsamer
+    _c8b.pt += dt * _bioFxZeitlupeFaktor(_c8b, dt);
+    // Dampfwoelkchen ueber dem Tropfen
+    _c8b.dampfUhr += dt;
+    const p = _c8b.pt / _C8B_DAUER;
+    if (_c8b.dampfUhr > 0.22 && p < 0.97) {
+      _c8b.dampfUhr = 0;
+      _c8b.dampf.push({ x: 220 + (Math.random() - 0.5) * 22 * (1 - p), y: 136, a: 0, r: 3 + Math.random() * 2, s: Math.random() * 6 });
+    }
+    if (_c8b.pt >= _C8B_DAUER) {
+      _c8b.pt = _C8B_DAUER; _c8b.phase = 'fertig'; _c8b.nach = 0; _c8b.schritt = 0;
+      _c8b.getestet[_c8b.probe] = true;
+      _c8bStatus();
+    }
+  } else if (_c8b.nach >= 0) {
+    _c8b.nach += dt;
+    _c8bNachher();
+  }
+  for (let i = _c8b.dampf.length - 1; i >= 0; i--) {
+    const d = _c8b.dampf[i];
+    d.a += dt; d.y -= dt * 26; d.r += dt * 5; d.s += dt * 2;
+    if (d.a > 1.6) _c8b.dampf.splice(i, 1);
+  }
+  if (_c8b.phase === 'fertig' && _c8b.nach > 0.9) _c8b.blick = Math.min(1, _c8b.blick + dt / 0.7);
+  if (_c8b.alleT >= 0) _c8b.alleT += dt;
+  _bioFxAlleUpdate(_c8b.fx, dt);
+}
+
+// Nach der Beobachtung: erst sehen, dann bestaetigt der Effekt.
+function _c8bNachher() {
+  const fx = _c8b.fx, t = _c8b.nach, p = _c8b.probe;
+  const lx = 352, ly = 104;                                   // Mitte der Lupe
+  if (_c8b.schritt === 0 && t >= 0.3) {
+    _c8b.schritt = 1;
+    if (p === 'labor') {
+      _bioFxWelle(fx.teile, lx, ly, '#bfdbfe', 44);
+      _bioFxFunken(fx.teile, lx - 18, ly - 16, 3, ['#ffffff', '#e0f2fe']);   // blankes Glas glaenzt
+    } else {
+      _bioFxWelle(fx.teile, lx, ly, '#f8fafc', 46);
+      for (let i = 0; i < 6; i++) {
+        const w = i / 6 * 6.283 + 0.3;
+        _bioFxFunken(fx.teile, lx + Math.cos(w) * 30, ly + Math.sin(w) * 21, 2, ['#ffffff', '#e2e8f0', '#cbd5e1']);
+      }
+    }
+  }
+  if (_c8b.schritt === 1 && t >= 1.5) {
+    _c8b.schritt = 2;
+    _bioFxWelle(fx.teile, 74, 124, p === 'labor' ? '#93c5fd' : '#e2e8f0', 50);   // Teilchenblick ist offen
+    if (p !== 'labor') _bioFxBanner(fx, 'Klar im Glas – und doch bleibt etwas zurück!', 3.2, '#e2e8f0');
+  }
+  if (_c8b.schritt === 2 && t >= 2.0) {
+    _c8b.schritt = 3;
+    const alle = _C8B_PROBEN.every(q => _c8b.getestet[q]);
+    if (alle && !_c8b.alleGezeigt) {
+      _c8b.alleGezeigt = true; _c8b.alleT = 0;
+      _C8B_PROBEN.forEach((q, i) => _bioFxFunken(fx.teile, 72 + i * 138, 222, 4, ['#fff3b0', '#ffffff', '#bae6fd']));
+      if (p === 'labor') _bioFxBanner(fx, 'Drei gleiche Gläser – drei Uhrgläser im Vergleich', 3.4, '#bae6fd');
+    }
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _c8bFortschritt() {
+  if (_c8b.phase === 'bereit') return 0;
+  if (_c8b.phase === 'heizt') return _c8b.pt / _C8B_DAUER;
+  return 1;
+}
+// Zeichnet den weissen Rand (Draufsicht) um (cx,cy) mit Halbachsen rx,ry.
+function _c8bRand(ctx, cx, cy, rx, ry, art, deck, kr) {
+  if (art === 'labor' || deck <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = deck;
+  if (art === 'salz') {
+    ctx.strokeStyle = 'rgba(255,255,255,0.95)'; ctx.lineWidth = 7;
+    ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, 2 * Math.PI); ctx.stroke();
+    ctx.strokeStyle = 'rgba(148,163,184,0.55)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(cx, cy, rx + 3.5, ry + 3.5, 0, 0, 2 * Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(cx, cy, rx - 3.5, ry - 3.5, 0, 0, 2 * Math.PI); ctx.stroke();
+    for (const c of kr) {                                      // kleine Salzkristalle (Wuerfel)
+      const x = cx + Math.cos(c.w) * (rx + c.d), y = cy + Math.sin(c.w) * (ry + c.d * 0.7);
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = 'rgba(100,116,139,0.7)'; ctx.lineWidth = 0.6;
+      ctx.save(); ctx.translate(x, y); ctx.rotate(c.k);
+      ctx.fillRect(-c.g, -c.g, 2 * c.g, 2 * c.g); ctx.strokeRect(-c.g, -c.g, 2 * c.g, 2 * c.g);
+      ctx.restore();
+    }
+  } else {
+    ctx.strokeStyle = 'rgba(255,255,255,0.95)'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, 2 * Math.PI); ctx.stroke();
+    ctx.strokeStyle = 'rgba(148,163,184,0.5)'; ctx.lineWidth = 0.7;
+    ctx.beginPath(); ctx.ellipse(cx, cy, rx + 1.6, ry + 1.6, 0, 0, 2 * Math.PI); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _c8bDraw(ctx, cv) {
+  if (!_c8b) return;
+  const W = cv.width, H = cv.height, t = _c8b.t, pr = _c8b.probe;
+  const p = _c8bFortschritt();
+  ctx.clearRect(0, 0, W, H);
+  // Laborraum: heller Hintergrund, Tischplatte
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef4f8'); bg.addColorStop(1, '#dbe6ee');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#c9b89a'; ctx.fillRect(0, 170, W, 20);
+  ctx.fillStyle = '#b3a283'; ctx.fillRect(0, 188, W, 2);
+
+  // ── Becherglas links ──
+  const bx0 = 34, bx1 = 114, by0 = 44, by1 = 168, fl = 78;
+  ctx.fillStyle = 'rgba(214,236,250,0.55)';                   // klare, farblose Probe (leichter Glasschimmer)
+  ctx.beginPath(); ctx.moveTo(bx0 + 2, fl);
+  for (let x = bx0 + 2; x <= bx1 - 2; x += 4) ctx.lineTo(x, fl + Math.sin(x * 0.14 + t * 2.2) * 1.2);
+  ctx.lineTo(bx1 - 2, by1 - 2); ctx.lineTo(bx0 + 2, by1 - 2); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(147,197,253,0.8)'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let x = bx0 + 2; x <= bx1 - 2; x += 4) { const y = fl + Math.sin(x * 0.14 + t * 2.2) * 1.2; x === bx0 + 2 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx0 - 4, by0 - 2); ctx.lineTo(bx0, by0); ctx.lineTo(bx0, by1);
+  ctx.lineTo(bx1, by1); ctx.lineTo(bx1, by0); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx0 + 7, by0 + 10); ctx.lineTo(bx0 + 7, by1 - 10); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.6)'; ctx.lineWidth = 1;          // Skalenstriche
+  for (let k = 0; k < 4; k++) { const y = 100 + k * 16; ctx.beginPath(); ctx.moveTo(bx1 - 14, y); ctx.lineTo(bx1 - 4, y); ctx.stroke(); }
+  // Schild am Glas
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, bx0 + 8, 52, 64, 18, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('klar, farblos', bx0 + 40, 61.5);
+  ctx.textBaseline = 'alphabetic';
+  // Namensschild vor dem Glas
+  ctx.fillStyle = '#fef9c3'; ctx.strokeStyle = '#a16207';
+  _bioFxRundRect(ctx, 16, 174, 116, 14, 3); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#422006'; ctx.font = '700 11px sans-serif';
+  ctx.fillText(_C8B_NAME[pr], 74, 185);
+
+  // ── Heizplatte mit Uhrglas (Seitenansicht) ──
+  const hx = 168, hw = 104, hy = 150, cxT = 220;
+  const h = _c8b.heiz;
+  ctx.fillStyle = '#475569'; ctx.fillRect(hx, hy + 6, hw, 14);
+  ctx.fillStyle = 'rgb(' + Math.round(100 + 140 * h) + ',' + Math.round(116 - 20 * h) + ',' + Math.round(139 - 90 * h) + ')';
+  ctx.fillRect(hx + 6, hy, hw - 12, 7);
+  if (h > 0.02) {                                              // ruhiges Gluehen, nur ueber der Platte
+    const g = ctx.createRadialGradient(cxT, hy + 3, 4, cxT, hy + 3, 60);
+    g.addColorStop(0, 'rgba(251,146,60,' + (0.35 * h).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(251,146,60,0)');
+    ctx.fillStyle = g; ctx.fillRect(hx - 10, hy - 50, hw + 20, 58);
+  }
+  ctx.fillStyle = h > 0.5 ? '#f97316' : '#94a3b8';            // Kontrolllampe
+  ctx.beginPath(); ctx.arc(hx + 12, hy + 13, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Heizplatte', hx + 20, hy + 16.5);
+  // Uhrglas: flache Schale
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 1.6; ctx.fillStyle = 'rgba(226,240,250,0.7)';
+  ctx.beginPath(); ctx.moveTo(cxT - 44, hy - 12); ctx.quadraticCurveTo(cxT, hy + 6, cxT + 44, hy - 12);
+  ctx.quadraticCurveTo(cxT, hy - 2, cxT - 44, hy - 12); ctx.fill(); ctx.stroke();
+  // Tropfen (Seitenansicht): wird flacher und schmaler
+  const hoch = 11 * (1 - p), breit = p < 0.6 ? 20 : 20 * (1 - (p - 0.6) / 0.4);
+  const boden = hy - 5;
+  if (p < 1 && breit > 0.5) {
+    ctx.fillStyle = 'rgba(191,219,254,0.85)'; ctx.strokeStyle = 'rgba(59,130,246,0.7)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(cxT - breit, boden);
+    ctx.quadraticCurveTo(cxT, boden - 2 * Math.max(0.6, hoch), cxT + breit, boden); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  // Rand in der Seitenansicht (kleine weisse Hoecker am alten Tropfenrand)
+  if (pr !== 'labor' && p > 0.5) {
+    const d = _bioFxKlemme((p - 0.5) / 0.5), g = pr === 'salz' ? 2.6 : 1.3;
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.95 * d).toFixed(3) + ')';
+    ctx.strokeStyle = 'rgba(100,116,139,' + (0.6 * d).toFixed(3) + ')'; ctx.lineWidth = 0.6;
+    for (const s of [-1, 1]) { ctx.beginPath(); ctx.ellipse(cxT + s * 20, boden - g * 0.4, g * 1.6, g, 0, Math.PI, 2 * Math.PI); ctx.fill(); ctx.stroke(); }
+  }
+  // Dampfwoelkchen
+  for (const d of _c8b.dampf) {
+    const a = Math.max(0, 0.55 * (1 - d.a / 1.6)) * _bioFxKlemme(d.a / 0.2);
+    ctx.fillStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')';
+    ctx.strokeStyle = 'rgba(148,163,184,' + (a * 0.6).toFixed(3) + ')'; ctx.lineWidth = 0.8;
+    const x = d.x + Math.sin(d.s) * 4;
+    ctx.beginPath(); ctx.arc(x, d.y, d.r, 0, 2 * Math.PI); ctx.arc(x + d.r * 0.9, d.y + 1, d.r * 0.7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+
+  // ── Lupe: Uhrglas vergroessert, von oben ──
+  const lx = 352, ly = 104, lr = 56;
+  ctx.strokeStyle = 'rgba(100,116,139,0.55)'; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(cxT + 24, hy - 14); ctx.lineTo(lx - lr * 0.8, ly + lr * 0.55); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cxT + 18, hy - 18); ctx.lineTo(lx - lr * 0.55, ly - lr * 0.8); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.save();
+  ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.clip();
+  ctx.fillStyle = '#3f4b5a'; ctx.fillRect(lx - lr, ly - lr, 2 * lr, 2 * lr);   // dunkle Platte unter dem Glas
+  const gg = ctx.createRadialGradient(lx - 10, ly - 12, 5, lx, ly, 48);
+  gg.addColorStop(0, 'rgba(236,244,250,0.55)'); gg.addColorStop(1, 'rgba(180,200,215,0.35)');
+  ctx.fillStyle = gg; ctx.beginPath(); ctx.ellipse(lx, ly, 48, 42, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = 'rgba(226,232,240,0.9)'; ctx.lineWidth = 1.5; ctx.stroke();
+  // Tropfen von oben: bleibt erst am Rand haengen, wird duenner, zieht sich dann zurueck
+  const rx = 30, ry = 21;
+  const deck = pr === 'labor' ? 0 : _bioFxKlemme((p - 0.45) / 0.55);
+  _c8bRand(ctx, lx, ly, rx, ry, pr, deck, _c8b.kristall);
+  if (p < 1) {
+    const k = p < 0.6 ? 1 : 1 - (p - 0.6) / 0.4;
+    const a = 0.55 - 0.25 * p;
+    ctx.fillStyle = 'rgba(191,219,254,' + a.toFixed(3) + ')'; ctx.strokeStyle = 'rgba(96,165,250,' + (a + 0.2).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(lx, ly, Math.max(0.5, (rx - 2) * k), Math.max(0.5, (ry - 1.5) * k), 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.6 * k).toFixed(3) + ')';                  // Glanzpunkt
+    ctx.beginPath(); ctx.ellipse(lx - 9 * k, ly - 7 * k, 5 * k + 0.3, 3 * k + 0.3, -0.4, 0, 2 * Math.PI); ctx.fill();
+  } else if (pr === 'labor') {
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 2;                     // blankes Glas
+    ctx.beginPath(); ctx.arc(lx - 6, ly - 4, 26, 3.6, 4.4); ctx.stroke();
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(lx, ly, lr, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Uhrglas, vergrößert', lx, 40);
+  if (_c8b.phase === 'fertig') {
+    const a = _bioFxKlemme(_c8b.nach / 0.5);
+    ctx.globalAlpha = a;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+    ctx.font = '700 11px sans-serif';
+    const txt = _C8B_BILD[pr], bw = ctx.measureText(txt).width + 14;
+    _bioFxRundRect(ctx, lx - bw / 2, 164, bw, 17, 4); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.fillText(txt, lx, 176.5);
+    ctx.globalAlpha = 1;
+  }
+
+  // ── Teilchenblick im Becherglas (erst nach der Beobachtung) ──
+  if (_c8b.blick > 0.01) {
+    const s = _bioFxEase.raus(_c8b.blick), tx = 74, ty = 124, tr = 40 * s;
+    ctx.save();
+    ctx.beginPath(); ctx.arc(tx, ty, tr, 0, 2 * Math.PI);
+    ctx.fillStyle = 'rgba(239,246,255,0.97)'; ctx.fill();
+    ctx.clip();
+    for (const w of _c8b.wasser) {                              // Wasserteilchen, stets in Bewegung
+      const r = w.r * s, a = w.w + Math.sin(t * w.f + w.p) * 0.35;
+      const x = tx + Math.cos(a) * r + Math.sin(t * 3.1 * w.f + w.p) * 1.8;
+      const y = ty + Math.sin(a) * r + Math.cos(t * 2.7 * w.f + w.p) * 1.8;
+      ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(x, y, 3.6 * s, 0, 2 * Math.PI); ctx.fill();
+    }
+    const n = _C8B_ANDERE[pr];
+    for (let i = 0; i < n; i++) {                               // zweite Teilchensorte
+      const w = _c8b.andere[i], r = w.r * s, a = w.w + Math.sin(t * w.f + w.p) * 0.3;
+      const x = tx + Math.cos(a) * r + Math.sin(t * 2.3 * w.f + w.p) * 1.5;
+      const y = ty + Math.sin(a) * r + Math.cos(t * 2.0 * w.f + w.p) * 1.5;
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.4;
+      ctx.beginPath(); ctx.arc(x, y, 4.4 * s, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+    ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(tx, ty, tr, 0, 2 * Math.PI); ctx.stroke();
+    if (_c8b.blick >= 1) {                                      // Legende oben links
+      ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+      const zeilen = pr === 'labor' ? 1 : 2;
+      _bioFxRundRect(ctx, 4, 4, 150, 14 + 13 * zeilen, 4); ctx.fill(); ctx.stroke();
+      ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#0f172a';
+      ctx.fillText('Teilchenblick', 10, 15);
+      ctx.fillStyle = '#3b82f6'; ctx.beginPath(); ctx.arc(14, 25, 3.6, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#0f172a'; ctx.font = '10px sans-serif'; ctx.fillText('Wasserteilchen', 22, 28.5);
+      if (zeilen === 2) {
+        ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.arc(14, 38, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#0f172a'; ctx.fillText(_C8B_TEILNAME[pr], 22, 41.5);
+      }
+    }
+  }
+
+  // ── Leiste unten: die drei Proben im Vergleich ──
+  for (let i = 0; i < 3; i++) {
+    const q = _C8B_PROBEN[i], x0 = 6 + i * 138, y0 = 194, w = 132, hh = 52;
+    const fertig = _c8b.getestet[q] && !(q === pr && _c8b.phase !== 'fertig');
+    ctx.fillStyle = q === pr ? '#ffffff' : 'rgba(255,255,255,0.7)';
+    ctx.strokeStyle = q === pr ? '#1e40af' : '#94a3b8'; ctx.lineWidth = q === pr ? 2 : 1;
+    _bioFxRundRect(ctx, x0, y0, w, hh, 6); ctx.fill(); ctx.stroke();
+    if (_c8b.alleT >= 0) {                                      // alle drei erhitzt: Felder leuchten nacheinander weich auf
+      const a = Math.sin(Math.PI * _bioFxKlemme((_c8b.alleT - i * 0.35) / 1.1));
+      if (a > 0.01) {
+        ctx.save(); ctx.globalAlpha = 0.5 * a; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4;
+        _bioFxRundRect(ctx, x0 - 1, y0 - 1, w + 2, hh + 2, 7); ctx.stroke(); ctx.restore();
+      }
+    }
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(_C8B_NAME[q], x0 + 6, y0 + 13);
+    // kleines Uhrglas von oben
+    const ux = x0 + 20, uy = y0 + 33;
+    ctx.fillStyle = '#4b5563'; ctx.beginPath(); ctx.ellipse(ux, uy, 14, 10, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgba(226,240,250,0.45)'; ctx.beginPath(); ctx.ellipse(ux, uy, 12, 8, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.font = '10px sans-serif'; ctx.fillStyle = '#334155';
+    if (fertig) {
+      if (q === 'salz') { ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3; ctx.beginPath(); ctx.ellipse(ux, uy, 7, 4.8, 0, 0, 2 * Math.PI); ctx.stroke(); }
+      if (q === 'mineral') { ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(ux, uy, 7, 4.8, 0, 0, 2 * Math.PI); ctx.stroke(); }
+      ctx.fillText(_C8B_BILD[q], x0 + 38, y0 + 36, w - 42);
+    } else {
+      ctx.fillText('noch nicht erhitzt', x0 + 38, y0 + 36, w - 42);
+    }
+  }
+
+  // Laufanzeige waehrend des Erhitzens
+  if (_c8b.phase === 'heizt') {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('erhitzen …', cxT, 30);
+    ctx.fillStyle = '#cbd5e1'; ctx.fillRect(cxT - 40, 36, 80, 5);
+    ctx.fillStyle = '#f97316'; ctx.fillRect(cxT - 40, 36, 80 * p, 5);
+  }
+  _bioFxAlleDraw(ctx, _c8b.fx);
+}
+// ═══════════════════════════════════════════════════════
+// CHEMIE 8 FÖRDER · SAND, SALZ UND WASSER TRENNEN   (Förderheft Chemie 8 · cs3)
+// Links ein Becherglas mit trübem Stoffgemisch (Sand, Salz, Wasser), in der
+// Mitte ein Trichter mit Filterpapier über einem leeren Glas, rechts eine
+// Porzellanschale auf einer Heizplatte (keine Flamme).
+// ▶ filtrieren: das Becherglas wird in den Trichter gegossen (etwa 5 s). Der
+//   Sand bleibt im Filterpapier, unten tropft eine klare Flüssigkeit ins Glas.
+// ▶ eindampfen: was gerade da ist, kommt in die Schale (klare Flüssigkeit oder
+//   das ganze Stoffgemisch); die Heizplatte heizt, Dampf steigt auf (etwa 5 s),
+//   am Rand wächst eine weiße Kruste.
+// Aha (nach der Beobachtung, _bioFx): Die klare Flüssigkeit sah aus wie Wasser –
+//   beim Eindampfen tauchen in der Schale weiße Kristalle auf (kurze Zeitlupe,
+//   Glitzer, ruhiger Hinweisstreifen „Das war nicht nur Wasser!“), Sand im
+//   Filter und Salz in der Schale leuchten weich. Bei „gleich eindampfen“
+//   liegt alles zusammen in der Schale.
+// Modell: Jeder Schritt dauert Sekunden (Zeitraffer); im Versuch braucht das
+// Eindampfen mehrere Minuten. Die Flüssigkeit unter dem Filter heißt am
+// Bildschirm bewusst nur „klare Flüssigkeit“.
+// Effekte kurz und ruhig, nichts blinkt, kein Ton, keine Wertung.
+// ═══════════════════════════════════════════════════════
+let _c8c = null;
+const _C8C_BECHER = { x: 48, y: 186, w: 52, h: 66 };     // Becherglas (Ruheplatz)
+const _C8C_GLAS   = { x: 200, y: 197, w: 50, h: 48 };    // Glas unter dem Trichter
+const _C8C_SCH    = { x: 352, y: 192, rx: 42, ry: 13 };  // Porzellanschale (Rand)
+const _C8C_T_FILT = 5.0;                                 // s: Filtrieren
+const _C8C_T_DAMPF = { filtrat: 5.5, gemisch: 5.8 };     // s: Eindampfen
+const _C8C_TEXT = {
+  start:   'Im Becherglas ist ein Stoffgemisch aus Sand, Salz und Wasser. Filter und Schale sind leer.',
+  filtern: 'Das Stoffgemisch läuft durch das Filterpapier …',
+  filtEnde: 'Im Filterpapier bleibt Sand. Unten kommt eine klare Flüssigkeit an.',
+  giessF:  'Die klare Flüssigkeit kommt in die Schale …',
+  giessG:  'Das ganze Stoffgemisch kommt in die Schale …',
+  heizt:   'Die Heizplatte ist an. Das Wasser verdampft …',
+  endeF:   'Das Wasser ist verdampft. In der Schale bleibt ein weißer Stoff: Salz.',
+  endeG:   'Das Wasser ist verdampft. In der Schale bleiben Sand und Salz zusammen.',
+  keinW:   'Es ist kein Wasser mehr da. Filtrieren geht jetzt nicht.',
+  getrennt: 'Sand und Salz sind getrennt.',
+  nicht:    'Sand und Salz sind nicht getrennt.'
+};
+
+function _c8cZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _c8cInit() {
+  const z = _c8cZufall(83);
+  const koerner = [];                                    // Sandkörner im Becherglas
+  for (let i = 0; i < 26; i++) koerner.push([z(), z(), 0.6 + z() * 1.2, z() * 6.28]);
+  const kristalle = [];                                  // Salzkristalle in der Schale
+  for (let i = 0; i < 46; i++) kristalle.push([z() * 2 - 1, 0.25 + z() * 0.75, 1.4 + z() * 1.6, z() * 1.5]);
+  const sandSchale = [];
+  for (let i = 0; i < 40; i++) sandSchale.push([z() * 2 - 1, z(), z()]);
+  _c8c = { t: 0, koerner, kristalle, sandSchale, letzt: '', letztE: '', letztF: '' };
+  _c8cLeer();
+}
+// Alles auf Anfang: Stoffgemisch im Becherglas, Filter und Schale leer.
+function _c8cLeer() {
+  Object.assign(_c8c, {
+    phase: 'bereit', pt: 0, weg: '',
+    gefiltert: false, gedampft: false, keinWasser: false,
+    becherF: 1, trichterF: 0, sandF: 0, trueb: 0, glasF: 0,
+    schaleF: 0, schaleArt: '', sandS: 0, kristall: 0, heiz: 0,
+    becherPose: null, glasPose: null, strahl: null,
+    tropfen: [], dampf: [], tropfZeit: 0, dampfZeit: 0,
+    fx: { teile: [] }, zeitlupe: null, nach: -1, schritt: 0, nachArt: '',
+    lupeGezeigt: false, ergebnis: ''
+  });
+}
+
+function _c8cHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Sand, Salz und Wasser trennen</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Becherglas ist ein Stoffgemisch aus Sand, Salz und Wasser. Probiere zwei Wege aus. Beobachte genau, was wo bleibt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8c-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8c-filt" onclick="_c8cFiltrieren()">▶ filtrieren</button>
+          <button class="sim-btn primary" id="_c8c-dampf" onclick="_c8cEindampfen()">▶ eindampfen</button>
+          <button class="sim-btn" onclick="_c8cNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="lmp-status on" id="_c8c-status"></div>
+        <div class="fpm-note" id="_c8c-feld1" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_c8c-feld2" style="margin-top:4px"></div>
+        <div class="fpm-note" id="_c8c-ergebnis" style="margin-top:8px;font-weight:700"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (Ergebnis sofort)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8cMarkeFiltriert()">filtriert</button>
+          <button class="sim-btn" onclick="_c8cMarkeGetrennt()">filtriert, dann eingedampft</button>
+          <button class="sim-btn" onclick="_c8cMarkeGleich()">gleich eingedampft</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px"><b>Filtrieren:</b> Man gießt das Stoffgemisch durch ein Filterpapier. <b>Eindampfen:</b> Man erhitzt, bis das Wasser verdampft ist.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Stoffgemisch im Becherglas, Filter und Schale leer &nbsp;|&nbsp; Im Modell dauert jeder Schritt nur Sekunden (Zeitraffer).</p>
+  </div>`;
+}
+
+/* ── Anzeige ─────────────────────────────────────────── */
+function _c8cZeile() {
+  const z = _c8c;
+  if (z.keinWasser) return _C8C_TEXT.keinW;
+  if (z.phase === 'filtern') return _C8C_TEXT.filtern;
+  if (z.phase === 'dampfen') {
+    const giess = z.weg === 'filtrat' ? 1.8 : 2.2;
+    if (z.pt < giess) return z.weg === 'filtrat' ? _C8C_TEXT.giessF : _C8C_TEXT.giessG;
+    return _C8C_TEXT.heizt;
+  }
+  if (z.gedampft) return z.weg === 'filtrat' ? _C8C_TEXT.endeF : _C8C_TEXT.endeG;
+  if (z.gefiltert) return _C8C_TEXT.filtEnde;
+  return _C8C_TEXT.start;
+}
+function _c8cFelder() {
+  const z = _c8c;
+  const f1 = 'Im Filterpapier: ' + (z.gefiltert ? 'Sand' : 'noch nichts');
+  let f2 = 'Im Glas darunter: noch nichts';
+  if (z.gefiltert) f2 = (z.gedampft && z.weg === 'filtrat')
+    ? 'Im Glas darunter: leer (in die Schale gegossen)'
+    : 'Im Glas darunter: klare Flüssigkeit';
+  return [f1, f2];
+}
+function _c8cStatus() {
+  if (!_c8c) return;
+  const zeile = _c8cZeile();
+  const el = document.getElementById('_c8c-status');
+  if (el) { el.textContent = zeile; el.className = 'lmp-status on'; }
+  _c8c.letzt = zeile;
+  const [f1, f2] = _c8cFelder();
+  const a = document.getElementById('_c8c-feld1'); if (a) a.textContent = f1;
+  const b = document.getElementById('_c8c-feld2'); if (b) b.textContent = f2;
+  _c8c.letztF = f1 + f2;
+  const e = document.getElementById('_c8c-ergebnis');
+  if (e) e.textContent = _c8c.ergebnis;
+  _c8c.letztE = _c8c.ergebnis;
+}
+
+/* ── Bedienung ───────────────────────────────────────── */
+function _c8cFiltrieren() {
+  const z = _c8c;
+  if (!z || z.phase !== 'bereit') return;
+  if (z.gedampft) {                                      // kein Wasser mehr da
+    z.keinWasser = true; z.fx = { teile: [] }; z.nach = 0; z.schritt = 0; z.nachArt = 'kein';
+    _c8cStatus(); return;
+  }
+  if (z.gefiltert) return;                               // schon filtriert
+  z.fx = { teile: [] }; z.nach = -1;
+  z.phase = 'filtern'; z.pt = 0; z.tropfZeit = 0;
+  _c8cStatus();
+}
+function _c8cEindampfen() {
+  const z = _c8c;
+  if (!z || z.phase !== 'bereit' || z.gedampft) return;
+  z.fx = { teile: [] }; z.nach = -1; z.keinWasser = false;
+  z.weg = z.gefiltert ? 'filtrat' : 'gemisch';
+  z.schaleArt = z.weg;
+  z.phase = 'dampfen'; z.pt = 0; z.lupeGezeigt = false;
+  _c8cStatus();
+}
+function _c8cNeu() {
+  if (!_c8c) return;
+  _c8cLeer(); _c8cStatus();
+}
+// Endzustände (auch für die Sprungmarken)
+function _c8cEndeFilter() {
+  const z = _c8c;
+  Object.assign(z, { phase: 'bereit', pt: 0, gefiltert: true, becherF: 0, trichterF: 0,
+    sandF: 1, trueb: 0, glasF: 1, becherPose: null, strahl: null });
+  z.nach = 0; z.schritt = 0; z.nachArt = 'filter';
+  _c8cStatus();
+}
+function _c8cEndeDampf() {
+  const z = _c8c;
+  Object.assign(z, { phase: 'bereit', pt: 0, gedampft: true, schaleF: 0, kristall: 1,
+    heiz: 1, becherPose: null, glasPose: null, strahl: null, zeitlupe: null });
+  if (z.weg === 'filtrat') { z.glasF = 0; z.sandS = 0; }
+  else { z.becherF = 0; z.sandS = 1; }
+  z.ergebnis = z.weg === 'filtrat' ? _C8C_TEXT.getrennt : _C8C_TEXT.nicht;
+  z.nach = 0; z.schritt = 0; z.nachArt = z.weg;
+  _c8cStatus();
+}
+function _c8cMarkeFiltriert() {
+  if (!_c8c) return;
+  _c8cLeer(); _c8cEndeFilter();
+}
+function _c8cMarkeGetrennt() {
+  if (!_c8c) return;
+  _c8cLeer(); _c8cEndeFilter();
+  _c8c.weg = 'filtrat'; _c8c.schaleArt = 'filtrat'; _c8cEndeDampf();
+}
+function _c8cMarkeGleich() {
+  if (!_c8c) return;
+  _c8cLeer();
+  _c8c.weg = 'gemisch'; _c8c.schaleArt = 'gemisch'; _c8cEndeDampf();
+}
+
+/* ── Ablauf ──────────────────────────────────────────── */
+const _c8cK = v => _bioFxKlemme(v);
+function _c8cLerp(a, b, u) { return a + (b - a) * u; }
+// Gefäß auf einer Bahn: Ruheplatz -> Gießstellung (u = 0..1) mit Kippen
+function _c8cBahn(von, nach, u, kipp, bogen) {
+  const e = _bioFxEase.sanft(_c8cK(u));
+  const x = _c8cLerp(von.x, nach.x, e);
+  const y = _c8cLerp(von.y, nach.y, e) - bogen * Math.sin(Math.PI * e);
+  return { x, y, a: kipp * e };
+}
+// Wo liegt die Ausgusskante eines gekippten Gefäßes?
+function _c8cLippe(p, w, h) {
+  const c = Math.cos(p.a), s = Math.sin(p.a), lx = w / 2, ly = -h / 2;
+  return { x: p.x + lx * c - ly * s, y: p.y + lx * s + ly * c };
+}
+function _c8cUpdate(dt) {
+  const z = _c8c;
+  if (!z) return;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  let d = dt;
+  if (z.phase !== 'bereit') {
+    d = dt * _bioFxZeitlupeFaktor(z, dt);
+    z.pt += d;
+    if (z.phase === 'filtern') _c8cFiltern(d);
+    else _c8cDampfen(d);
+    if (_c8cZeile() !== z.letzt) _c8cStatus();
+  } else {
+    if (z.gedampft) z.heiz = Math.max(0.35, z.heiz - dt * 0.2);   // Platte bleibt warm
+    if (z.nach >= 0) { z.nach += dt; _c8cNachher(); }
+  }
+  // Tropfen fallen, Dampf steigt
+  for (const tr of z.tropfen) { tr.vy += 420 * d; tr.y += tr.vy * d; }
+  const flaeche = _C8C_GLAS.y + _C8C_GLAS.h / 2 - 3 - 34 * z.glasF;
+  z.tropfen = z.tropfen.filter(tr => tr.y < flaeche);
+  for (const p of z.dampf) { p.alter += d; p.y += p.vy * d; p.x += Math.sin(z.t * 1.3 + p.ph) * 6 * d; p.r += 4 * d; }
+  z.dampf = z.dampf.filter(p => p.alter < p.leben);
+  _bioFxAlleUpdate(z.fx, dt);
+}
+function _c8cFiltern(d) {
+  const z = _c8c, t = z.pt;
+  const pose = { x: 150, y: 58 };
+  // Becherglas: hin (0–0,9 s), gießen (0,9–2,6 s), zurück (2,6–3,5 s)
+  if (t < 0.9) z.becherPose = _c8cBahn(_C8C_BECHER, pose, t / 0.9, 1.25, 30);
+  else if (t < 2.6) z.becherPose = { x: pose.x, y: pose.y, a: _c8cLerp(1.25, 1.85, (t - 0.9) / 1.7) };
+  else if (t < 3.5) { const b = _c8cBahn(_C8C_BECHER, pose, 1 - (t - 2.6) / 0.9, 1.85, 30); z.becherPose = b; }
+  else z.becherPose = null;
+  const zu = _c8cK((t - 0.9) / 1.7);                     // was schon in den Trichter kam
+  const ab = _c8cK((t - 1.3) / 3.7);                     // was schon unten ankam
+  z.becherF = 1 - zu;
+  z.trichterF = Math.max(0, zu - ab);
+  z.sandF = _bioFxEase.sanft(_c8cK((t - 1.0) / 2.2));
+  z.trueb = 1 - _c8cK((t - 2.4) / 1.0);
+  z.glasF = ab;
+  if (t > 0.9 && t < 2.6) {
+    const l = _c8cLippe(z.becherPose, _C8C_BECHER.w, _C8C_BECHER.h);
+    z.strahl = { x0: l.x, y0: l.y, x1: 196, y1: 118 - 18 * z.trichterF, art: 'gemisch' };
+  } else z.strahl = null;
+  // Tropfen aus dem Trichterrohr
+  if (ab > 0 && ab < 1) {
+    z.tropfZeit -= d;
+    if (z.tropfZeit <= 0) { z.tropfZeit = 0.14; z.tropfen.push({ x: 200, y: 178, vy: 20 }); }
+  }
+  if (t >= _C8C_T_FILT) _c8cEndeFilter();
+}
+function _c8cDampfen(d) {
+  const z = _c8c, t = z.pt, fil = z.weg === 'filtrat';
+  const pose = fil ? { x: 305, y: 140 } : { x: 300, y: 128 };
+  const hin = fil ? 0.9 : 1.2, giess = fil ? 1.8 : 2.2, zurueck = fil ? 2.6 : 3.4;
+  const von = fil ? _C8C_GLAS : _C8C_BECHER, w = von.w, h = von.h, bogen = fil ? 40 : 110;
+  let p = null;
+  if (t < hin) p = _c8cBahn(von, pose, t / hin, 1.3, bogen);
+  else if (t < giess) p = { x: pose.x, y: pose.y, a: _c8cLerp(1.3, 1.9, (t - hin) / (giess - hin)) };
+  else if (t < zurueck) p = _c8cBahn(von, pose, 1 - (t - giess) / (zurueck - giess), 1.9, bogen);
+  if (fil) z.glasPose = p; else z.becherPose = p;
+  const rein = _c8cK((t - hin) / (giess - hin));
+  if (fil) z.glasF = 1 - rein; else z.becherF = 1 - rein;
+  if (!fil) z.sandS = _bioFxEase.sanft(_c8cK((t - hin - 0.3) / 1.4));
+  z.heiz = _c8cK((t - (hin + 0.1)) / 1.0);
+  const ev0 = giess + 0.4, ev1 = _C8C_T_DAMPF[z.weg] - 0.3;
+  const weg = _c8cK((t - ev0) / (ev1 - ev0));
+  z.schaleF = Math.max(0, rein - weg);
+  z.kristall = _bioFxEase.sanft(_c8cK((t - (ev0 + 1.3)) / (ev1 - ev0 - 1.1)));
+  if (p && t >= hin && t < giess) {
+    const l = _c8cLippe(p, w, h);
+    z.strahl = { x0: l.x, y0: l.y, x1: 346, y1: 198 - 8 * z.schaleF, art: fil ? 'klar' : 'gemisch' };
+  } else z.strahl = null;
+  // Aha: die ersten weißen Kristalle tauchen auf – kurz in Zeitlupe
+  if (!z.lupeGezeigt && z.kristall > 0.06) {
+    z.lupeGezeigt = true;
+    _bioFxZeitlupe(z, 0.35, 1.2);
+    _bioFxFunken(z.fx.teile, _C8C_SCH.x - 22, _C8C_SCH.y + 6, 3, ['#ffffff', '#e0f2fe']);
+    _bioFxFunken(z.fx.teile, _C8C_SCH.x + 20, _C8C_SCH.y + 5, 3, ['#ffffff', '#e0f2fe']);
+  }
+  // Dampf steigt auf, solange noch Wasser in der Schale ist
+  if (z.schaleF > 0.02 && z.heiz > 0.3) {
+    z.dampfZeit -= d;
+    if (z.dampfZeit <= 0) {
+      z.dampfZeit = 0.09 / z.heiz;
+      const r = (z.t * 7.3) % 1;
+      z.dampf.push({ x: _C8C_SCH.x - 26 + 52 * r, y: _C8C_SCH.y + 4, vy: -(20 + 10 * ((z.t * 3.1) % 1)),
+                     r: 3, alter: 0, leben: 1.7 + 0.6 * r, ph: r * 6.28 });
+    }
+  }
+  if (t >= _C8C_T_DAMPF[z.weg]) _c8cEndeDampf();
+}
+// Nach der Beobachtung: erst hinsehen, dann bestätigt der Effekt.
+function _c8cNachher() {
+  const z = _c8c, fx = z.fx, t = z.nach, sx = _C8C_SCH.x, sy = _C8C_SCH.y;
+  if (z.nachArt === 'filter') {
+    if (z.schritt === 0 && t >= 0.15) {
+      z.schritt = 1;
+      _bioFxWelle(fx.teile, 200, 128, '#d9b778', 26);
+      _bioFxWelle(fx.teile, _C8C_GLAS.x, _C8C_GLAS.y + 4, '#93c5fd', 30);
+    }
+  } else if (z.nachArt === 'filtrat') {
+    if (z.schritt === 0 && t >= 0.2) {
+      z.schritt = 1;
+      _bioFxWelle(fx.teile, sx, sy + 6, '#7dd3fc', 50);
+      for (const dx of [-22, 0, 22]) _bioFxFunken(fx.teile, sx + dx, sy + 6, 4, ['#ffffff', '#e0f2fe', '#bae6fd']);
+    }
+    if (z.schritt === 1 && t >= 0.8) {
+      z.schritt = 2;
+      _bioFxBanner(fx, 'Das war nicht nur Wasser!', 3.2, '#7dd3fc');
+    }
+  } else if (z.nachArt === 'gemisch') {
+    if (z.schritt === 0 && t >= 0.2) {
+      z.schritt = 1;
+      _bioFxWelle(fx.teile, sx, sy + 6, '#d9b778', 50);
+      _bioFxFunken(fx.teile, sx, sy + 6, 5, ['#ffffff', '#d9b778', '#c8a165']);
+    }
+    if (z.schritt === 1 && t >= 0.8) {
+      z.schritt = 2;
+      _bioFxBanner(fx, 'Alles liegt in einer Schale.', 3.0, '#d9b778');
+    }
+  } else if (z.nachArt === 'kein') {
+    if (z.schritt === 0 && t >= 0.1) {
+      z.schritt = 1;
+      _bioFxWelle(fx.teile, _C8C_BECHER.x, _C8C_BECHER.y, '#94a3b8', 34);
+    }
+  }
+}
+
+/* ── Zeichnen ────────────────────────────────────────── */
+function _c8cMisch(a, b, u) {
+  u = _c8cK(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+// Becherglas oder Glas, auch gekippt. Die Oberfläche bleibt waagerecht.
+function _c8cGefaess(ctx, p, w, h, fuell, art, koerner) {
+  const z = _c8c;
+  ctx.save();
+  ctx.translate(p.x, p.y); ctx.rotate(p.a);
+  if (fuell > 0.005) {
+    ctx.save();
+    ctx.beginPath(); ctx.rect(-w / 2 + 2, -h / 2 + 2, w - 4, h - 4); ctx.clip();
+    ctx.rotate(-p.a);
+    const halb = (h / 2) * Math.abs(Math.cos(p.a)) + (w / 2) * Math.abs(Math.sin(p.a));
+    const kipp = _c8cK(p.a / 1.2);
+    const ys = halb - 2 * halb * fuell * (1 - 0.35 * kipp);
+    ctx.fillStyle = art === 'klar' ? 'rgba(186,222,247,0.6)' : 'rgba(190,160,112,0.78)';
+    ctx.beginPath(); ctx.moveTo(-80, 90);
+    for (let x = -80; x <= 80; x += 6) ctx.lineTo(x, ys + Math.sin(x * 0.18 + z.t * 2.6) * 0.9);
+    ctx.lineTo(80, 90); ctx.closePath(); ctx.fill();
+    if (art === 'gemisch' && koerner) {                  // Sandkörner wirbeln im Wasser
+      ctx.fillStyle = '#9c7437';
+      for (const k of koerner) {
+        const kx = (k[0] - 0.5) * (w - 10) + Math.sin(z.t * k[2] + k[3]) * 4;
+        const ky = ys + 4 + k[1] * (halb * 2) * 0.9 + Math.cos(z.t * k[2] * 0.8 + k[3]) * 3;
+        if (ky > ys + 2) { ctx.beginPath(); ctx.arc(kx, ky, 1.5, 0, 2 * Math.PI); ctx.fill(); }
+      }
+    }
+    if (art === 'klar') {                                // Glanzlinie auf der klaren Oberfläche
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(-w / 2 + 6, ys + 1); ctx.lineTo(-w / 2 + 16 + 4 * Math.sin(z.t * 1.5), ys + 1); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Glaswand (oben offen) mit Ausguss
+  ctx.strokeStyle = 'rgba(71,85,105,0.95)'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(-w / 2 - 3, -h / 2 - 2); ctx.lineTo(-w / 2, -h / 2 + 2); ctx.lineTo(-w / 2, h / 2);
+  ctx.lineTo(w / 2, h / 2); ctx.lineTo(w / 2, -h / 2 + 2); ctx.lineTo(w / 2 + 4, -h / 2 - 3);
+  ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(-w / 2 + 6, -h / 2 + 8); ctx.lineTo(-w / 2 + 6, h / 2 - 8); ctx.stroke();
+  ctx.restore();
+}
+function _c8cStrahl(ctx, s) {
+  const z = _c8c;
+  ctx.save();
+  ctx.strokeStyle = s.art === 'klar' ? 'rgba(147,197,253,0.9)' : 'rgba(176,140,90,0.9)';
+  ctx.lineWidth = 3.2; ctx.lineCap = 'round';
+  const mx = (s.x0 + s.x1) / 2 + 4, my = s.y0 + 4;
+  ctx.beginPath(); ctx.moveTo(s.x0, s.y0); ctx.quadraticCurveTo(mx, my, s.x1, s.y1); ctx.stroke();
+  // fließende Stellen im Strahl
+  ctx.setLineDash([3, 7]); ctx.lineDashOffset = -z.t * 40;
+  ctx.strokeStyle = s.art === 'klar' ? 'rgba(255,255,255,0.8)' : 'rgba(110,80,40,0.8)';
+  ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(s.x0, s.y0); ctx.quadraticCurveTo(mx, my, s.x1, s.y1); ctx.stroke();
+  ctx.restore();
+}
+// Halbe Ellipse der Schale bei Tiefe dy (0 = Rand, 1 = Boden): halbe Breite
+function _c8cSchaleBreite(dy) { return _C8C_SCH.rx * Math.sqrt(Math.max(0, 1 - dy * dy)); }
+function _c8cSchild(ctx, text, x, y, zx, zy) {
+  ctx.save();
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const w = ctx.measureText(text).width + 12;
+  if (zx !== undefined) {
+    ctx.strokeStyle = 'rgba(30,41,59,0.55)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(zx, zy); ctx.stroke();
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = 'rgba(30,41,59,0.45)';
+  _bioFxRundRect(ctx, x - w / 2, y - 9, w, 18, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1e293b'; ctx.fillText(text, x, y + 1);
+  ctx.restore();
+}
+function _c8cDraw(ctx, cv) {
+  const z = _c8c;
+  if (!z) return;
+  const W = cv.width, H = cv.height, t = z.t;
+  ctx.clearRect(0, 0, W, H);
+  // Raum und Labortisch
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f1f6fa'); bg.addColorStop(1, '#dde7ef');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#c9b08c'; ctx.fillRect(0, 222, W, H - 222);
+  ctx.fillStyle = '#b39873'; ctx.fillRect(0, 222, W, 3);
+
+  // Stativ mit Ring
+  ctx.fillStyle = '#6b7280';
+  ctx.fillRect(248, 217, 44, 5); ctx.fillRect(260, 30, 4, 188);
+  ctx.strokeStyle = '#6b7280'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(236, 95); ctx.lineTo(260, 95); ctx.stroke();
+
+  // Glas unter dem Trichter (wenn es nicht gerade gießt)
+  if (!z.glasPose) _c8cGefaess(ctx, { x: _C8C_GLAS.x, y: _C8C_GLAS.y, a: 0 }, _C8C_GLAS.w, _C8C_GLAS.h, 0.72 * z.glasF, 'klar');
+
+  // Trichter mit Filterpapier
+  ctx.save();
+  ctx.beginPath(); ctx.moveTo(168, 93); ctx.lineTo(232, 93); ctx.lineTo(200, 136); ctx.closePath();
+  ctx.fillStyle = '#f5f3ec'; ctx.fill();
+  ctx.clip();
+  if (z.trichterF > 0.005) {                           // Flüssigkeit im Trichter
+    const yl = 136 - 42 * z.trichterF;
+    ctx.fillStyle = z.trueb > 0.02
+      ? 'rgba(' + [Math.round(_c8cLerp(186, 190, z.trueb)), Math.round(_c8cLerp(222, 160, z.trueb)), Math.round(_c8cLerp(247, 112, z.trueb))].join(',') + ',0.75)'
+      : 'rgba(186,222,247,0.7)';
+    ctx.beginPath(); ctx.moveTo(160, 140);
+    for (let x = 160; x <= 240; x += 6) ctx.lineTo(x, yl + Math.sin(x * 0.2 + t * 3) * 0.8);
+    ctx.lineTo(240, 140); ctx.closePath(); ctx.fill();
+  }
+  if (z.sandF > 0.005) {                               // Sand bleibt im Filterpapier
+    const ys = 136 - 20 * z.sandF;
+    ctx.fillStyle = '#d2ac6a'; ctx.fillRect(160, ys, 80, 40);
+    ctx.fillStyle = '#9c7437';
+    for (let i = 0; i < 30; i++) {
+      const gx = 172 + (i * 37) % 56, gy = ys + 2 + ((i * 13) % 20);
+      if (gy < 136) { ctx.beginPath(); ctx.arc(gx, gy, 1.2, 0, 2 * Math.PI); ctx.fill(); }
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = 'rgba(203,197,180,0.9)'; ctx.lineWidth = 0.8;       // Falten im Filterpapier
+  for (const fx0 of [184, 200, 216]) { ctx.beginPath(); ctx.moveTo(fx0, 94); ctx.lineTo(200, 134); ctx.stroke(); }
+  ctx.strokeStyle = 'rgba(71,85,105,0.95)'; ctx.lineWidth = 2;          // Glastrichter
+  ctx.beginPath(); ctx.moveTo(162, 90); ctx.lineTo(197, 139); ctx.lineTo(197, 180);
+  ctx.moveTo(238, 90); ctx.lineTo(203, 139); ctx.lineTo(203, 180); ctx.stroke();
+  if (z.phase === 'filtern' && z.glasF > 0 && z.glasF < 1) {
+    ctx.fillStyle = 'rgba(147,197,253,0.8)'; ctx.fillRect(198.5, 139, 3, 40);
+  }
+  // Tropfen
+  ctx.fillStyle = 'rgba(125,185,240,0.95)';
+  for (const tr of z.tropfen) { ctx.beginPath(); ctx.ellipse(tr.x, tr.y, 1.8, 2.6, 0, 0, 2 * Math.PI); ctx.fill(); }
+
+  // Heizplatte (keine Flamme) mit Porzellanschale
+  const hz = z.heiz;
+  ctx.fillStyle = '#475569'; ctx.fillRect(306, 207, 92, 15);
+  ctx.fillStyle = _c8cMisch('#6b7280', '#d9532f', hz); ctx.fillRect(312, 203, 80, 5);
+  ctx.fillStyle = hz > 0.05 ? _c8cMisch('#64748b', '#f59e0b', hz) : '#64748b';
+  ctx.beginPath(); ctx.arc(388, 215, 3, 0, 2 * Math.PI); ctx.fill();
+  if (hz > 0.15) {                                     // warme Luft flimmert ruhig
+    ctx.save(); ctx.strokeStyle = 'rgba(217,83,47,' + (0.22 * hz).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    for (const ox of [-30, 30]) {
+      ctx.beginPath();
+      for (let k = 0; k <= 10; k++) { const yy = 200 - k * 4; ctx.lineTo(_C8C_SCH.x + ox + Math.sin(k * 0.9 - t * 2.2) * 2.5, yy); }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  const sx = _C8C_SCH.x, sy = _C8C_SCH.y, rx = _C8C_SCH.rx, ry = _C8C_SCH.ry;
+  ctx.save();
+  ctx.beginPath(); ctx.ellipse(sx, sy, rx, ry, 0, 0, Math.PI); ctx.closePath();
+  ctx.fillStyle = '#e4e8ee'; ctx.fill();
+  ctx.clip();
+  if (z.sandS > 0.005) {                               // Sand am Boden der Schale
+    const top = sy + ry - 6 * z.sandS;
+    ctx.fillStyle = '#d2ac6a'; ctx.fillRect(sx - rx, top, 2 * rx, 20);
+    ctx.fillStyle = '#9c7437';
+    for (const s of z.sandSchale) {
+      const gy = top + 1 + s[1] * 6, gx = sx + s[0] * _c8cSchaleBreite((gy - sy) / ry) * 0.9;
+      ctx.beginPath(); ctx.arc(gx, gy, 1.1, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  if (z.schaleF > 0.005) {                             // Flüssigkeit in der Schale
+    const yl = sy + ry - 1 - (ry - 2) * z.schaleF;
+    ctx.fillStyle = z.schaleArt === 'filtrat' ? 'rgba(160,205,245,0.7)' : 'rgba(190,160,112,0.72)';
+    ctx.beginPath(); ctx.moveTo(sx - rx, sy + ry + 2);
+    for (let x = sx - rx; x <= sx + rx; x += 6) ctx.lineTo(x, yl + Math.sin(x * 0.25 + t * 3.2) * 0.7);
+    ctx.lineTo(sx + rx, sy + ry + 2); ctx.closePath(); ctx.fill();
+  }
+  if (z.kristall > 0.005) {                            // weiße Kristalle wachsen
+    const n = Math.round(z.kristall * z.kristalle.length);
+    for (let i = 0; i < n; i++) {
+      const k = z.kristalle[i];
+      const dy = z.schaleArt === 'gemisch' ? 0.55 + k[1] * 0.4 : k[1];
+      const gy = sy + dy * ry - 1.5, gx = sx + k[0] * _c8cSchaleBreite(dy) * 0.9;
+      ctx.save(); ctx.translate(gx, gy); ctx.rotate(k[3]);
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#a3adbb'; ctx.lineWidth = 0.6;
+      ctx.fillRect(-k[2], -k[2], 2 * k[2], 2 * k[2]); ctx.strokeRect(-k[2], -k[2], 2 * k[2], 2 * k[2]);
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.ellipse(sx, sy, rx, ry, 0, 0, Math.PI); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(sx, sy, rx, 3.5, 0, 0, 2 * Math.PI); ctx.stroke();
+  // Dampf
+  for (const p of z.dampf) {
+    const a = 0.38 * Math.sin(Math.PI * _c8cK(p.alter / p.leben));
+    ctx.fillStyle = 'rgba(148,163,184,' + a.toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Becherglas am Platz
+  if (!z.becherPose) _c8cGefaess(ctx, { x: _C8C_BECHER.x, y: _C8C_BECHER.y, a: 0 }, _C8C_BECHER.w, _C8C_BECHER.h, 0.8 * z.becherF, 'gemisch', z.koerner);
+
+  // Aha-Leuchten: Sand im Filter und Salz in der Schale
+  if (z.nachArt === 'filtrat' && z.nach >= 0.8 && z.nach < 4.0) {
+    _bioFxLeuchten(ctx, 200, 128, 14, t, '217,183,120');
+    _bioFxLeuchten(ctx, sx, sy + 5, 22, t, '125,211,252');
+  } else if (z.nachArt === 'gemisch' && z.nach >= 0.8 && z.nach < 4.0) {
+    _bioFxLeuchten(ctx, sx, sy + 5, 22, t, '217,183,120');
+  }
+
+  // Beschriftung am Tisch
+  ctx.fillStyle = '#1e293b'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Becherglas', _C8C_BECHER.x, 240);
+  ctx.fillText('Glas', _C8C_GLAS.x, 240);
+  ctx.fillText('Schale auf Heizplatte', sx, 240);
+  ctx.font = '10px sans-serif'; ctx.fillStyle = '#334155';
+  ctx.fillText('Trichter mit Filterpapier', 200, 84);
+  // Schilder mit dem, was man sieht
+  if (z.phase === 'bereit') {
+    if (z.gefiltert) _c8cSchild(ctx, 'Sand im Filterpapier', 104, 118, 190, 128);
+    if (z.gefiltert && !(z.gedampft && z.weg === 'filtrat')) _c8cSchild(ctx, 'klare Flüssigkeit', 126, 204, 175, 204);
+    if (z.gedampft) _c8cSchild(ctx, z.weg === 'filtrat' ? 'Salz in der Schale' : 'Sand und Salz zusammen', sx - 6, 168, sx, 190);
+  }
+  // Gießendes Gefäß vorne
+  if (z.strahl) _c8cStrahl(ctx, z.strahl);
+  if (z.becherPose) _c8cGefaess(ctx, z.becherPose, _C8C_BECHER.w, _C8C_BECHER.h, 0.8 * z.becherF, 'gemisch', z.koerner);
+  if (z.glasPose) _c8cGefaess(ctx, z.glasPose, _C8C_GLAS.w, _C8C_GLAS.h, 0.72 * z.glasF, 'klar');
+  // Zeitraffer-Zeichen
+  if (z.phase !== 'bereit') {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(z.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 10, 18);
+  }
+  _bioFxAlleDraw(ctx, z.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER · WANN SIEDET WASSER?   (Förderheft Chemie 8 · cs5)
+// Links ein Becherglas mit Wasser und Thermometer über einer Gasflamme,
+// oben eine Stoppuhr; rechts das Diagramm „Siedekurve“ (Zeit in Minuten
+// 0 bis 10 nach rechts, Temperatur in °C 0 bis 120 nach oben).
+// Jeder Druck auf „▶ 1 Minute heizen“ spielt eine Minute live ab: Die
+// Flamme brennt, der Uhrzeiger läuft, die Thermometersäule steigt, die Linie
+// wächst mit – am Ende der Minute sitzt ein Punkt. Nach „neu“ bleibt die
+// Linie der anderen Flamme stehen (klein blau, groß orange).
+// Modellwerte (Lehrerteil): Start 20 °C; klein +10 °C je Minute, groß +20 °C
+// je Minute; ab 100 °C bleibt die Temperatur bei 100 °C (Normaldruck).
+// Aha (nach der Beobachtung, _bioFx): In der ersten Minute nach 100 °C wächst
+// eine gestrichelte graue Linie mit „?“ weiter nach oben (die Erwartung
+// „steigt immer weiter“), während die echte Linie bei 100 °C weiterläuft.
+// Am Ende der Minute löst sich die graue Linie auf, am echten Punkt breitet
+// sich ein Lichtring aus, das Thermometer leuchtet ruhig; bei großer Flamme
+// Banner „Große Flamme – aber nicht heißer!“. Sind beide Linien bei
+// 10 Minuten, treffen sie sich: Funken und Banner „Beide Linien treffen sich.“
+// Am Bildschirm NICHT: die Lückenwörter aus Merksatz und Aufgabe 2.
+// ═══════════════════════════════════════════════════════
+let _c8d = null;
+const _C8D_RATE = { klein: 10, gross: 20 };                  // °C je Minute (Modell)
+const _C8D_FARBE = { klein: '#2563eb', gross: '#ea580c' };   // Linie und Knopf
+const _C8D_WORT = { klein: 'klein', gross: 'groß' };
+const _C8D_DAUER = 1.1;                                      // s je Minute (live)
+const _C8D_SCHNELL = 0.4;                                    // s je Minute (Sprungmarke)
+// Diagramm (Nennmaß 420x250)
+const _C8D_PX0 = 224, _C8D_PX1 = 404, _C8D_PY0 = 212, _C8D_PY1 = 40;
+
+// Temperatur nach m Minuten (Modellwert)
+function _c8dT(flamme, m) { return Math.min(100, 20 + _C8D_RATE[flamme] * m); }
+function _c8dX(m) { return _C8D_PX0 + (_C8D_PX1 - _C8D_PX0) * m / 10; }
+function _c8dY(T) { return _C8D_PY0 - (_C8D_PY0 - _C8D_PY1) * T / 120; }
+
+function _c8dInit() {
+  _c8d = { t: 0, flamme: 'klein', min: 0, temp: 20, lauf: null, warte: 0, schnell: false,
+           linien: { klein: [], gross: [] }, fx: { teile: [] }, blasen: [], dampf: [],
+           geist: null, glimm: 0, hinweis: 'start', beideGezeigt: false, andere: false,
+           blasenTakt: 0, dampfTakt: 0, flammeAn: 0 };
+}
+function _c8dMinTxt(m) { return 'Zeit: ' + m + (m === 1 ? ' Minute' : ' Minuten'); }
+function _c8dTempTxt(T) { return 'Temperatur: ' + Math.round(T) + ' °C'; }
+function _c8dKocht() { return _c8d.temp >= 100; }
+
+function _c8dHTML() {
+  const fl = (w) => `<button class="sim-btn" data-c8d="${w}" onclick="_c8dFlamme('${w}')">${_C8D_WORT[w]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wasser heizen: Wie heiß wird es?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Becherglas sind Wasser und ein Thermometer. Stelle die Flamme ein. Drücke dann immer wieder „▶ 1 Minute heizen“. Das Diagramm rechts im Bild ist die Siedekurve.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8d-los" onclick="_c8dHeizen()">▶ 1 Minute heizen</button>
+          <button class="sim-btn" onclick="_c8dNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Flamme</span>
+          <div class="sim-btn-row">
+            ${fl('klein')}
+            ${fl('gross')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_c8d-anzeige" style="margin-top:10px;font-weight:700"></div>
+        <div class="lmp-status on" id="_c8d-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_c8d-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8dMarke('klein')">klein: 10 Minuten am Stück</button>
+          <button class="sim-btn" onclick="_c8dMarke('gross')">groß: 10 Minuten am Stück</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Flamme klein · 0 Minuten · 20 °C &nbsp;|&nbsp; Die blaue Linie gehört zur kleinen Flamme, die orange zur großen.</p>
+  </div>`;
+}
+
+// ── Bedienung ─────────────────────────────────────────
+// Neues Becherglas: Uhr auf 0, Wasser 20 °C. Die Linien im Diagramm bleiben.
+function _c8dTopf() {
+  _c8d.min = 0; _c8d.temp = 20; _c8d.lauf = null; _c8d.warte = 0; _c8d.schnell = false;
+  _c8d.geist = null; _c8d.glimm = 0; _c8d.blasen = []; _c8d.fx = { teile: [] };
+}
+function _c8dFlamme(w) {
+  if (!_c8d || !_C8D_RATE[w]) return;
+  const neu = w !== _c8d.flamme;
+  _c8d.flamme = w;
+  if (neu || _c8d.min > 0 || _c8d.lauf) _c8dTopf();        // andere Flamme = neues Becherglas
+  const andere = w === 'klein' ? 'gross' : 'klein';
+  _c8d.andere = _c8d.linien[andere].length > 1;
+  _c8d.hinweis = _c8d.andere ? 'andere' : 'start';
+  _c8dStatus();
+}
+function _c8dNeu() {
+  if (!_c8d) return;
+  _c8dTopf();
+  const andere = _c8d.flamme === 'klein' ? 'gross' : 'klein';
+  _c8d.andere = _c8d.linien[andere].length > 1;
+  _c8d.hinweis = 'neu';
+  _c8dStatus();
+}
+function _c8dHeizen() {
+  if (!_c8d) return;
+  const geplant = _c8d.min + (_c8d.lauf ? 1 : 0) + _c8d.warte;
+  if (geplant >= 10) { _c8d.hinweis = 'ende'; _c8dStatus(); return; }
+  if (_c8d.lauf) { _c8d.warte++; return; }                  // Druck merken, Minute läuft noch
+  _c8dMinuteStart();
+}
+// Sprungmarke: neues Becherglas mit dieser Flamme, 10 Minuten zügig am Stück.
+function _c8dMarke(w) {
+  if (!_c8d || !_C8D_RATE[w]) return;
+  _c8d.flamme = w;
+  _c8dTopf();
+  _c8d.schnell = true;
+  _c8d.warte = 9;
+  _c8d.hinweis = 'lauf';
+  _c8dMinuteStart();
+}
+function _c8dMinuteStart() {
+  const w = _c8d.flamme, m = _c8d.min;
+  if (m === 0) _c8d.linien[w] = [{ m: 0, T: 20 }];         // neue Messreihe dieser Flamme
+  const T0 = _c8dT(w, m), T1 = _c8dT(w, m + 1);
+  _c8d.lauf = { u: 0, m0: m, T0, T1 };
+  _c8d.hinweis = 'lauf';
+  // Erste Minute nach 100 °C: die Erwartung „steigt weiter“ wächst gestrichelt mit.
+  if (T0 >= 100 && m >= 1 && _c8dT(w, m - 1) < 100)
+    _c8d.geist = { m0: m, T0: 100, rate: _C8D_RATE[w], u: 0, aus: -1 };
+  _c8dStatus();
+}
+function _c8dMinuteEnde() {
+  const L = _c8d.lauf, w = _c8d.flamme, fx = _c8d.fx;
+  _c8d.lauf = null;
+  _c8d.min = L.m0 + 1; _c8d.temp = L.T1;
+  _c8d.linien[w].push({ m: _c8d.min, T: _c8d.temp });
+  const px = _c8dX(_c8d.min), py = _c8dY(_c8d.temp);
+  _bioFxWelle(fx.teile, px, py, _C8D_FARBE[w], 10);         // Punkt setzt sich
+  if (L.T0 < 100 && L.T1 >= 100) {                           // große Blasen setzen ein
+    _bioFxWelle(fx.teile, 75, 122, '#bae6fd', 46);
+    _bioFxBlasen(fx.teile, 75, 118, 6, 'rgba(186,230,253,1)');
+  }
+  if (_c8d.geist && _c8d.geist.aus < 0) {                    // Aha: Erwartung löst sich auf
+    const g = _c8d.geist;
+    g.aus = 0;
+    const gx = _c8dX(g.m0 + 1), gy = _c8dY(Math.min(120, 100 + g.rate));
+    _bioFxFunken(fx.teile, gx, gy, 6, ['#cbd5e1', '#e2e8f0', '#94a3b8']);
+    _bioFxWelle(fx.teile, px, py, '#fde68a', 34);
+    _c8d.glimm = 2.0;
+    if (w === 'gross' && !_c8d.schnell) {
+      _bioFxBanner(fx, 'Große Flamme – aber nicht heißer!', 3.2, '#fdba74');
+    }
+  }
+  if (_c8d.min >= 10) {
+    _c8d.warte = 0; _c8d.schnell = false; _c8d.hinweis = 'ende';
+    const andere = w === 'klein' ? 'gross' : 'klein';
+    const la = _c8d.linien[andere];
+    if (la.length && la[la.length - 1].m >= 10 && !_c8d.beideGezeigt) {
+      _c8d.beideGezeigt = true;
+      _bioFxFunken(fx.teile, px, py, 12, ['#93c5fd', '#fdba74', '#fff3b0', '#ffffff']);
+      _bioFxWelle(fx.teile, px, py, '#fde68a', 40);
+      _bioFxBanner(fx, 'Beide Linien treffen sich.', 3.0, '#fde68a');
+    }
+  } else if (_c8d.warte > 0) {
+    _c8d.warte--;
+    _c8dMinuteStart();
+    return;
+  }
+  _c8dStatus();
+}
+
+// ── Anzeigen ──────────────────────────────────────────
+function _c8dStatusZeile() {
+  if (_c8d.min === 0 && !_c8d.lauf) return 'Die Flamme ist noch aus. Das Wasser ist 20 °C warm.';
+  const T = _c8d.lauf ? Math.max(_c8d.lauf.T0, _c8d.temp) : _c8d.temp;
+  return T >= 100 ? 'Große Blasen steigen auf.' : 'Das Wasser wird wärmer.';
+}
+function _c8dHinweis() {
+  const f = _C8D_WORT[_c8d.flamme];
+  switch (_c8d.hinweis) {
+    case 'ende':
+      return 'Flamme ' + f + ': Die Uhr zeigt 10 Minuten. Lies in der Siedekurve ab. Dann drücke „neu“.';
+    case 'andere':
+    case 'neu':
+      return _c8d.andere
+        ? 'Neues Becherglas, Flamme ' + f + '. Die ' + (_c8d.flamme === 'klein' ? 'orange' : 'blaue') +
+          ' Linie der anderen Flamme bleibt im Diagramm stehen.'
+        : 'Neues Becherglas, Flamme ' + f + '. Drücke „▶ 1 Minute heizen“.';
+    case 'lauf':
+      return 'Flamme ' + f + '. Drücke weiter, bis die Uhr 10 Minuten zeigt.';
+    default:
+      return 'Flamme ' + f + '. Drücke „▶ 1 Minute heizen“.';
+  }
+}
+function _c8dStatus() {
+  if (!_c8d) return;
+  const a = document.getElementById('_c8d-anzeige');
+  if (a) a.innerHTML = _c8dMinTxt(_c8d.min) + '<br>' + _c8dTempTxt(_c8d.temp);
+  const s = document.getElementById('_c8d-status');
+  if (s) s.textContent = _c8dStatusZeile();
+  const h = document.getElementById('_c8d-hinweis');
+  if (h) h.textContent = _c8dHinweis();
+  try {
+    document.querySelectorAll('[data-c8d]').forEach(b => {
+      const w = String(b.getAttribute('data-c8d'));
+      const an = w === _c8d.flamme;
+      if (b.classList) b.classList.toggle('primary', an);
+      if (b.style) {
+        b.style.background = an ? _C8D_FARBE[w] : '';
+        b.style.borderColor = _C8D_FARBE[w];
+        b.style.color = an ? '#ffffff' : '';
+      }
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+// ── Ablauf ────────────────────────────────────────────
+function _c8dUpdate(dt) {
+  if (!_c8d) return;
+  dt = _bioFxDt(dt);
+  _c8d.t += dt;
+  const zl = _bioFxZeitlupeFaktor(_c8d, dt);
+  const L = _c8d.lauf;
+  // Flamme weich an und aus
+  const ziel = L ? 1 : 0;
+  _c8d.flammeAn += (ziel - _c8d.flammeAn) * Math.min(1, dt * 6);
+  if (L) {
+    L.u = Math.min(1, L.u + dt * zl / (_c8d.schnell ? _C8D_SCHNELL : _C8D_DAUER));
+    if (_c8d.geist && _c8d.geist.aus < 0) _c8d.geist.u = L.u;
+    if (L.u >= 1) _c8dMinuteEnde();
+  }
+  if (_c8d.geist && _c8d.geist.aus >= 0) {
+    _c8d.geist.aus += dt;
+    if (_c8d.geist.aus > 0.9) _c8d.geist = null;
+  }
+  if (_c8d.glimm > 0) _c8d.glimm = Math.max(0, _c8d.glimm - dt);
+  // Blasen und Dampf im Becherglas
+  const T = _c8dTJetzt();
+  const heiz = _c8d.flammeAn;
+  let rate = 0;
+  if (T >= 99.5) rate = heiz > 0.5 ? (_c8d.flamme === 'gross' ? 16 : 9) : 2.5;
+  _c8d.blasenTakt += dt * rate;
+  while (_c8d.blasenTakt >= 1) {
+    _c8d.blasenTakt -= 1;
+    _c8d.blasen.push({ x: 46 + Math.random() * 46, y: 184, r: 1.5, v: 26 + Math.random() * 20,
+                       gross: true, ph: Math.random() * 6 });
+  }
+  if (T >= 60 && T < 99.5 && heiz > 0.5 && Math.random() < dt * (T - 55) / 8)
+    _c8d.blasen.push({ x: 48 + Math.random() * 44, y: 185, r: 0.9, v: 10, gross: false, ph: 0, leben: 0.5 });
+  for (let i = _c8d.blasen.length - 1; i >= 0; i--) {
+    const b = _c8d.blasen[i];
+    b.y -= b.v * dt; b.ph += dt * 5;
+    if (b.gross) { b.r = Math.min(6.5, b.r + dt * 7); b.v += dt * 30; }
+    else { b.leben -= dt; if (b.leben <= 0) { _c8d.blasen.splice(i, 1); continue; } }
+    if (b.y <= _c8dWasserY() + 2) {
+      if (b.gross && Math.random() < 0.5) _bioFxBlasen(_c8d.fx.teile, b.x, b.y - 2, 1, 'rgba(224,242,254,1)');
+      _c8d.blasen.splice(i, 1);
+    }
+  }
+  const dRate = T >= 99.5 ? (heiz > 0.5 ? 7 : 3) : T >= 70 ? (T - 65) / 10 : 0;
+  _c8d.dampfTakt += dt * dRate;
+  while (_c8d.dampfTakt >= 1) {
+    _c8d.dampfTakt -= 1;
+    _c8d.dampf.push({ x: 48 + Math.random() * 44, y: _c8dWasserY() - 4, a: 0, leben: 1.6 + Math.random() * 0.8,
+                      ph: Math.random() * 6 });
+  }
+  for (let i = _c8d.dampf.length - 1; i >= 0; i--) {
+    const d = _c8d.dampf[i];
+    d.a += dt; d.y -= 16 * dt; d.x += Math.sin(d.a * 2 + d.ph) * 6 * dt;
+    if (d.a >= d.leben) _c8d.dampf.splice(i, 1);
+  }
+  _bioFxAlleUpdate(_c8d.fx, dt);
+}
+// Temperatur gerade jetzt (auch mitten in einer Minute)
+function _c8dTJetzt() {
+  const L = _c8d.lauf;
+  return L ? L.T0 + (L.T1 - L.T0) * L.u : _c8d.temp;
+}
+function _c8dMinJetzt() {
+  const L = _c8d.lauf;
+  return L ? L.m0 + L.u : _c8d.min;
+}
+function _c8dWasserY() { return 122; }
+
+// ── Zeichnen ──────────────────────────────────────────
+function _c8dDraw(ctx, cv) {
+  if (!_c8d) return;
+  const W = cv.width, H = cv.height, t = _c8d.t;
+  const T = _c8dTJetzt(), mJ = _c8dMinJetzt();
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#e8eef5');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Labortisch
+  ctx.fillStyle = '#d6c7ad'; ctx.fillRect(0, 226, 190, H - 226);
+  ctx.fillStyle = '#b9a787'; ctx.fillRect(0, 226, 190, 2);
+
+  _c8dSzene(ctx, t, T, mJ);
+  _c8dDiagramm(ctx, t, mJ, T);
+
+  // Texte links: Uhr oben, Thermometer unten
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '700 13px sans-serif';
+  ctx.fillText(_c8dMinTxt(Math.floor(mJ + 1e-9)), 8, 20);
+  ctx.fillText(_c8dTempTxt(T), 8, 244);
+  ctx.font = '600 11px sans-serif'; ctx.fillStyle = _C8D_FARBE[_c8d.flamme];
+  ctx.fillText('Flamme: ' + _C8D_WORT[_c8d.flamme], 8, 36);
+  _bioFxAlleDraw(ctx, _c8d.fx);
+}
+
+function _c8dSzene(ctx, t, T, mJ) {
+  const heiz = _c8d.flammeAn, gross = _c8d.flamme === 'gross';
+  // Stoppuhr (voller Kreis = 10 Minuten)
+  const ux = 150, uy = 44, ur = 22;
+  ctx.fillStyle = '#475569'; ctx.fillRect(ux - 4, uy - ur - 7, 8, 6);
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI);
+  ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5; ctx.stroke();
+  // bereits geheizte Zeit als Tortenstück in der Linienfarbe
+  if (mJ > 0) {
+    ctx.fillStyle = _C8D_FARBE[_c8d.flamme] + '33';
+    ctx.beginPath(); ctx.moveTo(ux, uy);
+    ctx.arc(ux, uy, ur - 3, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * mJ / 10); ctx.closePath(); ctx.fill();
+  }
+  ctx.strokeStyle = '#334155';
+  for (let k = 0; k < 10; k++) {
+    const a = -Math.PI / 2 + k * Math.PI / 5;
+    ctx.lineWidth = k % 5 === 0 ? 2 : 1;
+    ctx.beginPath(); ctx.moveTo(ux + Math.cos(a) * (ur - 6), uy + Math.sin(a) * (ur - 6));
+    ctx.lineTo(ux + Math.cos(a) * (ur - 2), uy + Math.sin(a) * (ur - 2)); ctx.stroke();
+  }
+  const ah = -Math.PI / 2 + 2 * Math.PI * mJ / 10;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(ah) * (ur - 5), uy + Math.sin(ah) * (ur - 5)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(ux, uy, 2.5, 0, 2 * Math.PI); ctx.fill();
+
+  // Gasbrenner mit Dreifuß
+  ctx.fillStyle = '#64748b'; ctx.fillRect(22, 212, 110, 14);
+  ctx.fillStyle = '#475569'; ctx.fillRect(22, 210, 110, 3);
+  // Drehknopf: Zeiger links = klein, rechts = groß
+  const kx = 118, ky = 219;
+  ctx.fillStyle = '#e2e8f0'; ctx.beginPath(); ctx.arc(kx, ky, 5.5, 0, 2 * Math.PI); ctx.fill();
+  const ka = gross ? -0.4 : -2.7;
+  ctx.strokeStyle = _C8D_FARBE[_c8d.flamme]; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + Math.cos(ka) * 5, ky + Math.sin(ka) * 5); ctx.stroke();
+  // Brennerkopf
+  ctx.fillStyle = '#334155'; ctx.fillRect(58, 202, 34, 9);
+  ctx.fillStyle = '#1e293b'; ctx.beginPath(); ctx.ellipse(75, 202, 18, 3, 0, 0, 2 * Math.PI); ctx.fill();
+  // Flamme: ruhige blaue Gasflamme, wiegt sich leicht
+  if (heiz > 0.03) {
+    const hoch = (gross ? 15 : 7) * heiz;
+    const breit = gross ? 16 : 11;
+    ctx.save();
+    ctx.globalAlpha = 0.85 * heiz;
+    for (let k = 0; k < 7; k++) {
+      const fx = 75 + (k - 3) * breit / 3.2;
+      const h = hoch * (0.75 + 0.25 * Math.sin(t * 5 + k * 1.7));
+      ctx.fillStyle = '#60a5fa';
+      ctx.beginPath(); ctx.moveTo(fx - 3, 201); ctx.quadraticCurveTo(fx - 2, 201 - h * 0.6, fx, 201 - h);
+      ctx.quadraticCurveTo(fx + 2, 201 - h * 0.6, fx + 3, 201); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = '#dbeafe';
+      ctx.beginPath(); ctx.moveTo(fx - 1.3, 201); ctx.lineTo(fx, 201 - h * 0.45); ctx.lineTo(fx + 1.3, 201); ctx.closePath(); ctx.fill();
+    }
+    // warmer Schein unter dem Glas
+    const g = ctx.createRadialGradient(75, 194, 2, 75, 194, gross ? 40 : 26);
+    g.addColorStop(0, 'rgba(251,146,60,' + (0.28 * heiz) + ')'); g.addColorStop(1, 'rgba(251,146,60,0)');
+    ctx.fillStyle = g; ctx.fillRect(30, 170, 90, 40);
+    ctx.restore();
+  }
+  // Dreifuß und Drahtnetz
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(34, 226); ctx.lineTo(42, 188); ctx.moveTo(116, 226); ctx.lineTo(108, 188); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(30, 186, 90, 3);
+
+  // Becherglas
+  const bx0 = 42, bx1 = 108, by0 = 88, by1 = 185;
+  const wy = _c8dWasserY();
+  const kochen = T >= 99.5;
+  const welle = kochen ? (heiz > 0.5 ? 2.2 : 1.2) : 0.7;
+  const warm = Math.max(0, Math.min(1, (T - 20) / 80));
+  ctx.fillStyle = 'rgba(' + Math.round(147 + 40 * warm) + ',' + Math.round(197 - 10 * warm) + ',' + Math.round(253 - 30 * warm) + ',0.55)';
+  ctx.beginPath(); ctx.moveTo(bx0 + 2, wy);
+  for (let x = bx0 + 2; x <= bx1 - 2; x += 4) ctx.lineTo(x, wy + Math.sin(x * 0.25 + t * 3.2) * welle);
+  ctx.lineTo(bx1 - 2, by1 - 2); ctx.lineTo(bx0 + 2, by1 - 2); ctx.closePath(); ctx.fill();
+  // Blasen im Wasser
+  for (const b of _c8d.blasen) {
+    const x = b.x + (b.gross ? Math.sin(b.ph) * 1.2 : 0);
+    ctx.strokeStyle = b.gross ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)';
+    ctx.lineWidth = b.gross ? 1.4 : 0.8;
+    ctx.beginPath(); ctx.arc(x, b.y, b.r, 0, 2 * Math.PI); ctx.stroke();
+    if (b.gross) { ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fill(); }
+  }
+  // Dampf über dem Wasser
+  for (const d of _c8d.dampf) {
+    const u = d.a / d.leben;
+    ctx.fillStyle = 'rgba(203,213,225,' + (0.45 * Math.sin(Math.PI * u)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(d.x, d.y, 3 + u * 6, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Glaswand
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(bx0 - 4, by0 - 2); ctx.lineTo(bx0, by0 + 2); ctx.lineTo(bx0, by1);
+  ctx.lineTo(bx1, by1); ctx.lineTo(bx1, by0); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(bx0 + 5, by0 + 10); ctx.lineTo(bx0 + 5, by1 - 10); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.55)'; ctx.lineWidth = 1;
+  for (let k = 0; k < 3; k++) { const y = 140 + k * 14; ctx.beginPath(); ctx.moveTo(bx1 - 10, y); ctx.lineTo(bx1 - 2, y); ctx.stroke(); }
+
+  // Thermometer (steht im Wasser, Skala 0 bis 120 °C)
+  const tx = 92, tTop = 58, tBot = 176;
+  const tY = v => 170 - 100 * v / 120;
+  if (_c8d.glimm > 0) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, _c8d.glimm / 0.6);
+    _bioFxLeuchten(ctx, tx, tY(T), 8, t, '253,186,116');
+    ctx.restore();
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(tx - 3.5, tBot); ctx.lineTo(tx - 3.5, tTop + 3.5);
+  ctx.arc(tx, tTop + 3.5, 3.5, Math.PI, 0); ctx.lineTo(tx + 3.5, tBot); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(tx, tBot + 2, 5.5, 0, 2 * Math.PI); ctx.fillStyle = '#dc2626'; ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(tx - 1.6, tY(T), 3.2, tBot - tY(T) + 2);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 0.8;
+  for (let v = 0; v <= 120; v += 20) {
+    ctx.beginPath(); ctx.moveTo(tx + 3.5, tY(v)); ctx.lineTo(tx + 7, tY(v)); ctx.stroke();
+  }
+}
+
+function _c8dDiagramm(ctx, t, mJ, T) {
+  const X0 = _C8D_PX0, X1 = _C8D_PX1, Y0 = _C8D_PY0, Y1 = _C8D_PY1;
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(X0, Y1, X1 - X0, Y0 - Y1);
+  // Gitter: jede Minute, alle 10 °C (dünn), alle 20 °C (kräftiger)
+  ctx.lineWidth = 1;
+  for (let m = 0; m <= 10; m++) {
+    ctx.strokeStyle = m % 2 ? '#eef2f7' : '#dbe3ee';
+    ctx.beginPath(); ctx.moveTo(_c8dX(m), Y0); ctx.lineTo(_c8dX(m), Y1); ctx.stroke();
+  }
+  for (let v = 10; v <= 120; v += 10) {
+    ctx.strokeStyle = v % 20 ? '#eef2f7' : '#d3dce8';
+    ctx.beginPath(); ctx.moveTo(X0, _c8dY(v)); ctx.lineTo(X1, _c8dY(v)); ctx.stroke();
+  }
+  // Achsen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(X0, Y1 - 6); ctx.lineTo(X0, Y0); ctx.lineTo(X1 + 6, Y0); ctx.stroke();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.moveTo(X0 - 4, Y1 - 4); ctx.lineTo(X0, Y1 - 11); ctx.lineTo(X0 + 4, Y1 - 4); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(X1 + 4, Y0 - 4); ctx.lineTo(X1 + 11, Y0); ctx.lineTo(X1 + 4, Y0 + 4); ctx.fill();
+  ctx.fillStyle = '#1e293b'; ctx.font = '600 11px sans-serif';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  for (let v = 0; v <= 120; v += 20) ctx.fillText(String(v), X0 - 4, _c8dY(v));
+  ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+  for (let m = 0; m <= 10; m += 2) ctx.fillText(String(m), _c8dX(m), Y0 + 4);
+  ctx.textBaseline = 'alphabetic';
+  ctx.font = '600 11px sans-serif';
+  ctx.fillText('Zeit in Minuten', (X0 + X1) / 2, 245);
+  ctx.save();
+  ctx.translate(197, (Y0 + Y1) / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Temperatur in °C', 0, 0);
+  ctx.restore();
+  // Titel und Legende
+  ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Siedekurve', X0, 18);
+  ctx.font = '600 11px sans-serif';
+  const leg = [['klein', 318], ['gross', 364]];
+  for (const [w, lx] of leg) {
+    ctx.strokeStyle = _C8D_FARBE[w]; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(lx, 14); ctx.lineTo(lx + 14, 14); ctx.stroke();
+    ctx.fillStyle = _C8D_FARBE[w]; ctx.fillText(_C8D_WORT[w], lx + 17, 18);
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '600 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Flamme:', 314, 18);
+
+  // Erwartung (Aha): gestrichelt, grau, mit „?“ – löst sich nach der Minute auf
+  const g = _c8d.geist;
+  if (g) {
+    const a = g.aus < 0 ? 1 : Math.max(0, 1 - g.aus / 0.8);
+    const u = g.u;
+    const Tg = Math.min(120, g.T0 + g.rate * u);
+    const mg = g.m0 + (Tg - g.T0) / g.rate;
+    ctx.save(); ctx.globalAlpha = 0.85 * a;
+    if (ctx.setLineDash) ctx.setLineDash([4, 4]); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(_c8dX(g.m0), _c8dY(g.T0)); ctx.lineTo(_c8dX(mg), _c8dY(Tg)); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    if (u > 0.15) {
+      ctx.fillStyle = '#64748b'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('?', _c8dX(mg) + 7, _c8dY(Tg) + 2);
+    }
+    ctx.restore();
+  }
+
+  // Linien: zuerst die andere Flamme, dann die aktive obenauf
+  const reihe = _c8d.flamme === 'klein' ? ['gross', 'klein'] : ['klein', 'gross'];
+  for (const w of reihe) {
+    const pk = _c8d.linien[w].slice();
+    const aktiv = w === _c8d.flamme;
+    if (aktiv && _c8d.lauf && pk.length) pk.push({ m: mJ, T: T, live: true });
+    if (!pk.length) continue;
+    ctx.strokeStyle = _C8D_FARBE[w]; ctx.lineWidth = aktiv ? 3 : 2.4; ctx.lineJoin = 'round';
+    ctx.beginPath();
+    pk.forEach((p, i) => { const x = _c8dX(p.m), y = _c8dY(p.T); if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+    ctx.stroke();
+    ctx.fillStyle = _C8D_FARBE[w];
+    for (const p of pk) {
+      if (p.live) continue;
+      ctx.beginPath(); ctx.arc(_c8dX(p.m), _c8dY(p.T), aktiv ? 3.4 : 2.8, 0, 2 * Math.PI); ctx.fill();
+    }
+    // Spitze der wachsenden Linie: ruhiger Leuchtpunkt
+    const e = pk[pk.length - 1];
+    if (e.live) {
+      ctx.save(); ctx.globalAlpha = 0.9;
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = _C8D_FARBE[w]; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(_c8dX(e.m), _c8dY(e.T), 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+    // Namensschild am Linienende (klein unter, groß über der Linie)
+    const lx = Math.min(X1 - 16, _c8dX(e.m) + 2), ly = _c8dY(e.T) + (w === 'klein' ? 14 : -8);
+    ctx.fillStyle = _C8D_FARBE[w]; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(_C8D_WORT[w], lx, ly);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FÖRDER · WACHS ODER KARAMELL   (Förderheft Chemie 8 · cs6)
+// Ein Metalllöffel hängt an einem Stativ über einem kleinen Brenner. Im Löffel
+// liegt Kerzenwachs, Schokolade oder Zucker. „▶ erhitzen“: 4 s lang schmilzt der
+// Stoff sichtbar (Zucker wird dabei gelb, dann braun, kleine Rauchwölkchen).
+// „▶ abkühlen lassen“: die Flamme geht aus, 4 s lang kühlt der Stoff ab.
+// Unter dem Löffel stehen immer zwei kleine Bilder „vorher“ und „nachher“;
+// „nachher“ zeigt ein Fragezeichen, bis der Stoff abgekühlt ist.
+// Fachlich: Wachs und Schokolade schmelzen und erstarren wieder (derselbe
+// Stoff). Zucker schmilzt bei etwa 186 °C und zersetzt sich dabei; es entsteht
+// Karamell (braun, anderer Geruch), das beim Abkühlen hart und braun bleibt.
+// Temperaturen zeigt die Sim bewusst nicht (Wärmebalken nur „kalt“ – „heiß“).
+// Aha (NACH dem Abkühlen, Bibliothek _bioFx): Das Bild „nachher“ wird
+// aufgedeckt. Bei Wachs und Schokolade erscheint zwischen den Bildern ein
+// ruhiges grünes „=“, beim Zucker ein oranges „≠“ mit Lichtring, Funken und
+// weichem Leuchten um das Bild „nachher“. Kurz, ruhig, kein Blinken, kein Ton,
+// keine Wertung. Die Lückenwörter (chemische Reaktion, physikalische
+// Veränderung, neuer Stoff) stehen nirgends am Bildschirm.
+// ═══════════════════════════════════════════════════════════════════════════
+let _c8e = null;
+const _C8E_DAUER = 4;                                   // s je Vorgang
+const _C8E_NAMEN = ['Kerzenwachs', 'Schokolade', 'Zucker'];
+const _C8E_STOFF = {
+  Kerzenwachs: {
+    heiss: 'Das Wachs wird flüssig und klar.',
+    kalt:  'Das Wachs wird wieder fest und weiß.',
+    fest: [245, 242, 230, 1], fluessig: [238, 228, 190, 0.42], ende: [244, 241, 230, 1],
+    schmilzt: [0.05, 0.8], gleich: true
+  },
+  Schokolade: {
+    heiss: 'Die Schokolade wird flüssig.',
+    kalt:  'Die Schokolade wird wieder fest und braun.',
+    fest: [92, 56, 32, 1], fluessig: [78, 43, 21, 1], ende: [88, 54, 31, 1],
+    schmilzt: [0.05, 0.7], gleich: true
+  },
+  Zucker: {
+    heiss: 'Der Zucker wird flüssig und braun. Es riecht nach Karamell.',
+    kalt:  'Eine harte, braune Masse bleibt. Sie wird nicht wieder weiß.',
+    fest: [251, 251, 248, 1], fluessig: [135, 70, 22, 1], ende: [112, 56, 18, 1],
+    schmilzt: [0.15, 0.7], gleich: false
+  }
+};
+// Lage im Bild
+const _C8E_LX = 200, _C8E_LY = 74;                     // Mitte des Löffelrands
+const _C8E_KV = { x: 112, y: 176, w: 90, h: 66 };      // Bild „vorher“
+const _C8E_KN = { x: 238, y: 176, w: 90, h: 66 };      // Bild „nachher“
+
+function _c8eZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _c8eInit() {
+  const z = _c8eZufall(86);
+  const kristalle = [];                                 // Zuckerhäufchen (fest verteilt)
+  for (let i = 0; i < 46; i++) {
+    const u = z() * 2 - 1, h = z();
+    kristalle.push({ u: u, h: h * (1 - Math.abs(u)), d: z() * 6.28, g: 1.4 + z() * 1.2 });
+  }
+  _c8e = { stoff: 'Kerzenwachs', phase: 'fest', pt: 0, t: 0, nach: -1, schritt: 0,
+           protoHeiss: '', protoKalt: '', hinweis: '', rauch: [], zufall: z,
+           kristalle: kristalle, fx: { teile: [] } };
+}
+function _c8eFxLeer() {
+  _c8e.fx = { teile: [] }; _c8e.nach = -1; _c8e.schritt = 0; _c8e.rauch = [];
+}
+function _c8eKlemme(u) { return u < 0 ? 0 : u > 1 ? 1 : u; }
+function _c8eSanft(u) { u = _c8eKlemme(u); return u * u * (3 - 2 * u); }
+
+// ── Zustand, aus Phase und Zeit berechnet ─────────────────────────────────
+function _c8eFortschritt() {
+  const p = _c8e.phase, u = _c8eKlemme(_c8e.pt / _C8E_DAUER);
+  if (p === 'fest') return 0;
+  if (p === 'heizen') return u;
+  return 1;
+}
+function _c8eGeschmolzen() {
+  const s = _C8E_STOFF[_c8e.stoff], u = _c8eFortschritt();
+  return _c8eSanft((u - s.schmilzt[0]) / (s.schmilzt[1] - s.schmilzt[0]));
+}
+function _c8eAbgekuehlt() {
+  const p = _c8e.phase;
+  if (p === 'kalt') return 1;
+  if (p === 'kuehlen') return _c8eSanft(_c8e.pt / _C8E_DAUER);
+  return 0;
+}
+function _c8eWaerme() {
+  const p = _c8e.phase, u = _c8eKlemme(_c8e.pt / _C8E_DAUER);
+  if (p === 'heizen') return u;
+  if (p === 'heiss') return 1;
+  if (p === 'kuehlen') return 1 - _c8eSanft(u);
+  return 0;
+}
+function _c8eFlamme() {
+  const p = _c8e.phase;
+  if (p === 'heizen') return _c8eKlemme(_c8e.pt / 0.4);
+  if (p === 'heiss') return 1;
+  if (p === 'kuehlen') return _c8eKlemme(1 - _c8e.pt / 0.6);
+  return 0;
+}
+
+// ── Bedienung ─────────────────────────────────────────────────────────────
+function _c8eFrisch() {
+  _c8e.phase = 'fest'; _c8e.pt = 0; _c8e.protoHeiss = ''; _c8e.protoKalt = '';
+  _c8e.hinweis = ''; _c8eFxLeer();
+}
+function _c8eStoff(name) {
+  if (!_c8e || !_C8E_STOFF[name]) return;
+  _c8e.stoff = name; _c8eFrisch(); _c8eStatus();       // neuer Stoff = frischer Löffel
+}
+function _c8eErhitzen() {
+  if (!_c8e) return;
+  const p = _c8e.phase;
+  if (p === 'heizen' || p === 'kuehlen') return;
+  if (p === 'heiss') { _c8e.hinweis = ''; _c8eStatus(); return; }
+  if (p === 'kalt') {
+    _c8e.hinweis = 'Der Versuch ist fertig. Drücke „neu“ für einen frischen Löffel.';
+    _c8eStatus(); return;
+  }
+  _c8eFxLeer(); _c8e.hinweis = '';
+  _c8e.phase = 'heizen'; _c8e.pt = 0; _c8eStatus();
+}
+function _c8eAbkuehlen() {
+  if (!_c8e) return;
+  const p = _c8e.phase;
+  if (p === 'heizen' || p === 'kuehlen' || p === 'kalt') return;
+  if (p === 'fest') {
+    _c8e.hinweis = 'Der Stoff ist noch nicht erhitzt. Drücke zuerst „▶ erhitzen“.';
+    _c8eStatus(); return;
+  }
+  _c8e.hinweis = '';
+  _c8e.phase = 'kuehlen'; _c8e.pt = 0; _c8eStatus();
+  // Die Flamme geht aus: ein kleines, ruhiges Rauchfähnchen über dem Brenner
+  for (let i = 0; i < 4; i++)
+    _c8e.rauch.push({ x: _C8E_LX + (i - 1.5) * 2, y: 110 - i * 3, vx: 2 * (i - 1.5), vy: -12,
+                      r: 2, alter: -i * 0.12, leben: 1.2, farbe: '150,150,150' });
+}
+function _c8eNeu() {
+  if (!_c8e) return;
+  _c8eFrisch(); _c8eStatus();
+}
+// Sprungmarke für den Beamer: Stoff wählen und gleich das Ende zeigen.
+function _c8eMarke(i) {
+  if (!_c8e) return;
+  const name = _C8E_NAMEN[i] || _C8E_NAMEN[0];
+  _c8e.stoff = name; _c8eFxLeer(); _c8e.hinweis = '';
+  _c8e.protoHeiss = _C8E_STOFF[name].heiss;
+  _c8e.phase = 'kalt'; _c8e.pt = 0; _c8e.nach = 0; _c8e.schritt = 0;
+  _c8e.protoKalt = _C8E_STOFF[name].kalt;
+  _c8eStatus();
+}
+
+// ── Oberfläche ────────────────────────────────────────────────────────────
+function _c8eHTML() {
+  const stoff = n => `<button class="sim-btn" data-c8e="${n}" onclick="_c8eStoff('${n}')">${n}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wachs oder Karamell</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Metalllöffel hängt über einer kleinen Flamme. Im Löffel liegt ein Stoff. Erhitze ihn. Dann lass ihn abkühlen. Unten siehst du ihn vorher und nachher.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8e-heiz" onclick="_c8eErhitzen()">▶ erhitzen</button>
+          <button class="sim-btn" id="_c8e-kuehl" onclick="_c8eAbkuehlen()">▶ abkühlen lassen</button>
+          <button class="sim-btn" id="_c8e-neu" onclick="_c8eNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Stoff</span>
+          <div class="sim-btn-row">
+            ${stoff('Kerzenwachs')}
+            ${stoff('Schokolade')}
+            ${stoff('Zucker')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_c8e-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_c8e-proto" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: gleich das Ende zeigen</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8eMarke(0)">Ende: Kerzenwachs</button>
+          <button class="sim-btn" onclick="_c8eMarke(1)">Ende: Schokolade</button>
+          <button class="sim-btn" onclick="_c8eMarke(2)">Ende: Zucker</button>
+        </div>
+        <div class="fpm-note" style="margin-top:8px">Vorsicht: Heißer Zucker klebt an der Haut und verbrennt sie stark. Probiere das nicht zu Hause aus.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Kerzenwachs &nbsp;|&nbsp; Erst „▶ erhitzen“, dann „▶ abkühlen lassen“. Vergleiche die Bilder „vorher“ und „nachher“.</p>
+  </div>`;
+}
+function _c8eZeile() {
+  const s = _C8E_STOFF[_c8e.stoff], p = _c8e.phase;
+  if (_c8e.hinweis) return _c8e.hinweis;
+  if (p === 'fest') return 'Im Löffel liegt ' + _c8e.stoff + '. Drücke „▶ erhitzen“.';
+  if (p === 'heizen') return 'Die Flamme brennt. Der Löffel wird heiß …';
+  if (p === 'heiss') return s.heiss;
+  if (p === 'kuehlen') return 'Die Flamme ist aus. Der Stoff kühlt ab …';
+  return s.kalt;
+}
+function _c8eStatus() {
+  if (!_c8e) return;
+  const el = document.getElementById('_c8e-status');
+  if (el) { el.textContent = _c8eZeile(); el.className = 'lmp-status on'; }
+  const pr = document.getElementById('_c8e-proto');
+  if (pr) pr.innerHTML = '<b>' + _c8e.stoff + '</b><br>Beim Erhitzen: ' + (_c8e.protoHeiss || '–') +
+    '<br>Nach dem Abkühlen: ' + (_c8e.protoKalt || '–');
+  try {
+    document.querySelectorAll('[data-c8e]').forEach(b => {
+      const n = b.getAttribute('data-c8e');
+      if (b.classList) b.classList.toggle('primary', n === _c8e.stoff);
+    });
+    const p = _c8e.phase;
+    const setz = (id, an) => { const b = document.getElementById(id); if (b && b.classList) b.classList.toggle('primary', an); };
+    setz('_c8e-heiz', p === 'fest');
+    setz('_c8e-kuehl', p === 'heiss');
+    setz('_c8e-neu', p === 'kalt');
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+// ── Ablauf ────────────────────────────────────────────────────────────────
+function _c8eUpdate(dt) {
+  if (!_c8e) return;
+  dt = _bioFxDt(dt);
+  _c8e.t += dt;
+  const p = _c8e.phase;
+  if (p === 'heizen' || p === 'kuehlen' || p === 'heiss') _c8e.pt += dt;
+  if (p === 'heizen' && _c8e.pt >= _C8E_DAUER) {
+    _c8e.phase = 'heiss'; _c8e.pt = 0;
+    _c8e.protoHeiss = _C8E_STOFF[_c8e.stoff].heiss;
+    _bioFxWelle(_c8e.fx.teile, _C8E_LX, _C8E_LY + 4, '#fde68a', 34);   // leise: „jetzt ablesen“
+    _c8eStatus();
+  } else if (p === 'kuehlen' && _c8e.pt >= _C8E_DAUER) {
+    _c8e.phase = 'kalt'; _c8e.pt = 0; _c8e.nach = 0; _c8e.schritt = 0;
+    _c8e.protoKalt = _C8E_STOFF[_c8e.stoff].kalt;
+    _c8eStatus();
+  }
+  if (_c8e.phase === 'kalt' && _c8e.nach >= 0) { _c8e.nach += dt; _c8eAha(); }
+  // Rauchwölkchen beim Zucker, solange er heiß wird oder heiß ist
+  const zucker = _c8e.stoff === 'Zucker';
+  const raucht = zucker && ((_c8e.phase === 'heizen' && _c8eFortschritt() > 0.55) || _c8e.phase === 'heiss');
+  if (raucht && _c8e.zufall() < dt * (_c8e.phase === 'heiss' ? 1.6 : 2.8)) {
+    const z = _c8e.zufall;
+    _c8e.rauch.push({ x: _C8E_LX - 12 + z() * 24, y: _C8E_LY - 2, vx: (z() - 0.5) * 6, vy: -14 - z() * 6,
+                      r: 2.5, alter: 0, leben: 2 + z() * 0.6, farbe: '128,116,104' });
+  }
+  for (const w of _c8e.rauch) { w.alter += dt; if (w.alter > 0) { w.x += w.vx * dt; w.y += w.vy * dt; w.r += 3.2 * dt; } }
+  _c8e.rauch = _c8e.rauch.filter(w => w.alter < w.leben);
+  _bioFxAlleUpdate(_c8e.fx, dt);
+}
+// Aha nach dem Abkühlen: erst das Bild „nachher“ aufdecken, dann vergleichen.
+function _c8eAha() {
+  const fx = _c8e.fx, t = _c8e.nach, gleich = _C8E_STOFF[_c8e.stoff].gleich;
+  const kn = _C8E_KN, kv = _C8E_KV;
+  const nx = kn.x + kn.w / 2, ny = kn.y + kn.h / 2;
+  if (_c8e.schritt === 0) {
+    _c8e.schritt = 1;
+    _bioFxWelle(fx.teile, nx, ny, gleich ? '#bbf7d0' : '#fed7aa', 48);
+  }
+  if (_c8e.schritt === 1 && t >= 0.6) {
+    _c8e.schritt = 2;
+    const mx = (kv.x + kv.w + kn.x) / 2, my = ny;
+    if (gleich) {
+      _bioFxFunken(fx.teile, mx, my - 6, 6, ['#86efac', '#dcfce7', '#ffffff']);
+      _bioFxBanner(fx, 'Vorher und nachher sehen gleich aus.', 2.8, '#86efac');
+    } else {
+      _bioFxWelle(fx.teile, nx, ny, '#fb923c', 60);
+      _bioFxFunken(fx.teile, nx, kn.y + 8, 10, ['#fdba74', '#fde68a', '#ffffff']);
+      _bioFxFunken(fx.teile, mx, my - 6, 5, ['#fb923c', '#fed7aa']);
+      _bioFxBanner(fx, 'Vorher und nachher sehen verschieden aus!', 3.2, '#fb923c');
+    }
+  }
+}
+
+// ── Zeichnen ──────────────────────────────────────────────────────────────
+function _c8eRGBA(c, a) {
+  return 'rgba(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ',' +
+    (a == null ? c[3] : a).toFixed(3) + ')';
+}
+function _c8eMisch(a, b, u) {
+  u = _c8eKlemme(u);
+  return a.map((v, i) => v + (b[i] - v) * u);
+}
+// Farbe der Flüssigkeit beim Erhitzen (Zucker wird gelb, dann braun)
+function _c8eFluessigFarbe(name, m) {
+  const s = _C8E_STOFF[name];
+  if (name !== 'Zucker') return s.fluessig;
+  if (m < 0.35) return _c8eMisch([248, 244, 230, 0.7], [236, 205, 120, 0.85], m / 0.35);
+  if (m < 0.7) return _c8eMisch([236, 205, 120, 0.85], [205, 135, 45, 0.95], (m - 0.35) / 0.35);
+  return _c8eMisch([205, 135, 45, 0.95], s.fluessig, (m - 0.7) / 0.3);
+}
+// Löffelschale samt Inhalt, Mitte des Rands bei (0,0). z = {name, m, k, w, t}
+function _c8eSchale(ctx, z) {
+  const rx = 32, ry = 8, tief = 17;
+  // Außenseite der Schale
+  const g = ctx.createLinearGradient(0, -ry, 0, tief);
+  g.addColorStop(0, '#dde3e8'); g.addColorStop(1, '#8a939c');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.ellipse(0, 0, rx, tief, 0, 0, Math.PI); ctx.closePath(); ctx.fill();
+  // Glut von unten, wenn heiß
+  if (z.w > 0.05) {
+    ctx.fillStyle = 'rgba(251,146,60,' + (0.28 * z.w).toFixed(3) + ')';
+    ctx.beginPath(); ctx.ellipse(0, tief * 0.55, rx * 0.55, tief * 0.45, 0, 0, Math.PI); ctx.fill();
+  }
+  // Innenseite
+  ctx.fillStyle = '#b3bcc5';
+  ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#c9d1d8';
+  ctx.beginPath(); ctx.ellipse(-4, -1, rx * 0.7, ry * 0.6, 0, 0, 2 * Math.PI); ctx.fill();
+
+  const s = _C8E_STOFF[z.name], m = z.m, k = z.k;
+  // Pfütze aus geschmolzenem (oder wieder festem) Stoff
+  if (m > 0.01) {
+    const pr = (rx - 3) * (0.45 + 0.55 * m), pry = (ry - 1) * (0.45 + 0.55 * m);
+    const wack = (z.w > 0.2 && k < 1) ? Math.sin(z.t * 3.2) * 0.7 * z.w * (1 - k) : 0;
+    const py = 1.6 * (1 - m) + wack;
+    const fl = _c8eFluessigFarbe(z.name, m);
+    const farbe = _c8eMisch(fl, s.ende, k);
+    ctx.fillStyle = _c8eRGBA(farbe);
+    ctx.beginPath(); ctx.ellipse(0, py, pr, pry, 0, 0, 2 * Math.PI); ctx.fill();
+    if (z.name === 'Kerzenwachs' && k > 0) {          // wird vom Rand her weiß
+      ctx.strokeStyle = 'rgba(250,248,240,' + (0.9 * Math.min(1, k * 1.6)).toFixed(3) + ')';
+      ctx.lineWidth = 1 + 2.5 * k;
+      ctx.beginPath(); ctx.ellipse(0, py, pr - 1, pry - 0.5, 0, 0, 2 * Math.PI); ctx.stroke();
+    }
+    if (z.name === 'Zucker' && k > 0.6) {             // harte Masse: feiner Sprung
+      ctx.strokeStyle = 'rgba(60,25,5,' + ((k - 0.6) * 1.5).toFixed(3) + ')'; ctx.lineWidth = 0.8;
+      ctx.beginPath(); ctx.moveTo(-pr * 0.5, py - 1); ctx.lineTo(-pr * 0.15, py + 1.5);
+      ctx.lineTo(pr * 0.2, py - 0.5); ctx.lineTo(pr * 0.45, py + 1.2); ctx.stroke();
+    }
+    // Glanz: flüssig glänzt, Wachs und Schokolade werden matt, Karamell bleibt glasig
+    const glanz = z.name === 'Zucker' ? 0.45 : 0.55 * (1 - k);
+    if (glanz > 0.02 && (z.name !== 'Kerzenwachs' || k < 1)) {
+      ctx.fillStyle = 'rgba(255,255,255,' + (glanz * m).toFixed(3) + ')';
+      ctx.beginPath(); ctx.ellipse(-pr * 0.35 + Math.sin(z.t * 0.9) * 1.5, py - pry * 0.35, pr * 0.28, pry * 0.25, -0.1, 0, 2 * Math.PI); ctx.fill();
+    }
+    // Bläschen im heißen Zucker
+    if (z.name === 'Zucker' && z.w > 0.6 && k < 0.3) {
+      ctx.strokeStyle = 'rgba(255,236,200,0.8)'; ctx.lineWidth = 0.8;
+      for (let i = 0; i < 5; i++) {
+        const ph = (z.t * 1.3 + i * 0.37) % 1;
+        const bx = Math.sin(i * 2.3) * pr * 0.6, by = py + Math.cos(i * 1.7) * pry * 0.4;
+        ctx.beginPath(); ctx.arc(bx, by, 0.5 + 1.4 * ph, 0, 2 * Math.PI); ctx.stroke();
+      }
+    }
+  }
+  // Fester Rest, der noch nicht geschmolzen ist
+  const rest = 1 - m;
+  if (rest > 0.02) {
+    const f = s.fest;
+    if (z.name === 'Kerzenwachs') {
+      const w = 26 * (0.55 + 0.45 * rest), h = 20 * rest;
+      ctx.fillStyle = _c8eRGBA(f);
+      ctx.strokeStyle = '#cfc8b0'; ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(-w / 2, 2); ctx.lineTo(-w / 2, 2 - h + 3);
+      ctx.quadraticCurveTo(-w / 2, 2 - h, -w / 2 + 3, 2 - h);
+      ctx.lineTo(w / 2 - 3, 2 - h); ctx.quadraticCurveTo(w / 2, 2 - h, w / 2, 2 - h + 3);
+      ctx.lineTo(w / 2, 2); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.7)';
+      ctx.fillRect(-w / 2 + 3, 2 - h + 2, 3, Math.max(0, h - 5));
+    } else if (z.name === 'Schokolade') {
+      const w = 30 * (0.55 + 0.45 * rest), h = 14 * rest;
+      ctx.fillStyle = _c8eRGBA(f);
+      ctx.fillRect(-w / 2, 2 - h, w, h);
+      ctx.strokeStyle = '#3b2213'; ctx.lineWidth = 1;
+      ctx.strokeRect(-w / 2, 2 - h, w, h);
+      if (h > 4) {
+        ctx.beginPath(); ctx.moveTo(0, 2 - h); ctx.lineTo(0, 2);
+        ctx.moveTo(-w / 2, 2 - h / 2); ctx.lineTo(w / 2, 2 - h / 2); ctx.stroke();
+      }
+      ctx.fillStyle = 'rgba(255,255,255,0.18)'; ctx.fillRect(-w / 2 + 2, 2 - h + 1, w - 4, 2);
+    } else {
+      // Häufchen aus weißen Kristallen, das in sich zusammensinkt
+      const hoch = 16 * rest, breit = 26 * (0.6 + 0.4 * rest);
+      ctx.fillStyle = 'rgba(250,250,246,0.95)';
+      ctx.beginPath(); ctx.moveTo(-breit, 3); ctx.quadraticCurveTo(0, 3 - hoch * 2, breit, 3); ctx.closePath(); ctx.fill();
+      for (let i = 0; i < _c8e.kristalle.length; i++) {
+        const c = _c8e.kristalle[i];
+        const x = c.u * breit * 0.9, y = 2 - c.h * hoch * 0.95;
+        const fun = 0.5 + 0.5 * Math.sin(z.t * 1.6 + c.d);      // ruhiges Glitzern (< 1 Hz)
+        ctx.fillStyle = fun > 0.93 ? '#ffffff' : (i % 3 ? '#eef0f2' : '#dfe3e6');
+        ctx.fillRect(x - c.g / 2, y - c.g / 2, c.g, c.g);
+      }
+    }
+  }
+  // Rand der Schale
+  ctx.strokeStyle = '#7b848d'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, 2 * Math.PI); ctx.stroke();
+}
+function _c8eKarte(ctx, k, text, inhalt, aufgedeckt, t) {
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, k.x, k.y, k.w, k.h, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(text, k.x + k.w / 2, k.y + 13);
+  const cx = k.x + k.w / 2, cy = k.y + 38;
+  if (aufgedeckt < 1) {
+    ctx.fillStyle = 'rgba(100,116,139,' + (0.55 * (1 - aufgedeckt)).toFixed(3) + ')';
+    ctx.font = '700 26px sans-serif';
+    ctx.fillText('?', cx, cy + 12 - 2 * Math.sin(t * 2.4));
+  }
+  if (aufgedeckt > 0 && inhalt) {
+    ctx.globalAlpha = aufgedeckt;
+    ctx.translate(cx, cy);
+    ctx.scale(0.95, 0.95);
+    ctx.strokeStyle = '#9aa3ab'; ctx.lineWidth = 3;          // Griffstummel
+    ctx.beginPath(); ctx.moveTo(30, -1); ctx.lineTo(44, -4); ctx.stroke();
+    _c8eSchale(ctx, inhalt);
+  }
+  ctx.restore();
+}
+function _c8eDraw(ctx, cv) {
+  if (!_c8e) return;
+  const W = cv.width, H = cv.height, t = _c8e.t;
+  const m = _c8eGeschmolzen(), k = _c8eAbgekuehlt(), w = _c8eWaerme(), f = _c8eFlamme();
+  ctx.clearRect(0, 0, W, H);
+  // Laborwand mit Fliesen
+  const bg = ctx.createLinearGradient(0, 0, 0, 160);
+  bg.addColorStop(0, '#eef3f7'); bg.addColorStop(1, '#dde5ec');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, 160);
+  ctx.strokeStyle = 'rgba(148,163,184,0.25)'; ctx.lineWidth = 1;
+  for (let x = 0; x <= W; x += 35) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 158); ctx.stroke(); }
+  for (let y = 0; y <= 158; y += 35) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  // Labortisch
+  ctx.fillStyle = '#9ca3af'; ctx.fillRect(0, 156, W, 10);
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 166, W, H - 166);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 156.5); ctx.lineTo(W, 156.5); ctx.stroke();
+
+  // Stativ mit Muffe
+  ctx.fillStyle = '#475569'; ctx.fillRect(318, 150, 70, 7);
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(350, 26, 5, 126);
+  ctx.fillStyle = '#334155'; ctx.fillRect(343, 63, 19, 14);
+  // Brenner mit Schlauch
+  ctx.strokeStyle = '#f97316'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(175, 150); ctx.quadraticCurveTo(120, 160, 95, 152); ctx.stroke();
+  ctx.fillStyle = '#3f4a56';
+  ctx.beginPath(); ctx.ellipse(_C8E_LX, 153, 24, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  const rg = ctx.createLinearGradient(193, 0, 207, 0);
+  rg.addColorStop(0, '#7c8792'); rg.addColorStop(0.5, '#c4ccd4'); rg.addColorStop(1, '#6b7580');
+  ctx.fillStyle = rg; ctx.fillRect(193, 110, 14, 43);
+  ctx.fillStyle = '#4b5563'; ctx.fillRect(191, 138, 18, 5);
+  // Flamme: ruhig, blau, wackelt nur leicht in der Form
+  if (f > 0.01) {
+    const fh = 30 * f, sw = Math.sin(t * 6.5) * 1.2 + Math.sin(t * 3.1) * 0.8;
+    ctx.fillStyle = 'rgba(96,140,255,0.45)';
+    ctx.beginPath(); ctx.moveTo(193, 110);
+    ctx.quadraticCurveTo(190, 110 - fh * 0.6, _C8E_LX + sw, 110 - fh);
+    ctx.quadraticCurveTo(210, 110 - fh * 0.6, 207, 110); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = 'rgba(37,99,235,0.7)';
+    ctx.beginPath(); ctx.moveTo(196, 110);
+    ctx.quadraticCurveTo(196, 110 - fh * 0.35, _C8E_LX + sw * 0.4, 110 - fh * 0.5);
+    ctx.quadraticCurveTo(204, 110 - fh * 0.35, 204, 110); ctx.closePath(); ctx.fill();
+  }
+  // Löffel: Griff zum Stativ, dann Schale mit Inhalt
+  ctx.strokeStyle = '#9aa3ab'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(_C8E_LX + 30, _C8E_LY); ctx.lineTo(348, 70); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(_C8E_LX + 34, _C8E_LY - 1.5); ctx.lineTo(344, 68.5); ctx.stroke();
+  // wandernder Lichtpunkt auf dem Griff (die Sim steht nie ganz still)
+  const gl = (t * 0.35) % 1.6;
+  if (gl < 1) {
+    const gx = _C8E_LX + 34 + (344 - _C8E_LX - 34) * gl, gy = _C8E_LY - 1.5 + (68.5 - _C8E_LY + 1.5) * gl;
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.8 * Math.sin(Math.PI * gl)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(gx, gy, 2.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.lineCap = 'butt';
+  ctx.save();
+  ctx.translate(_C8E_LX, _C8E_LY);
+  _c8eSchale(ctx, { name: _c8e.stoff, m: m, k: k, w: w, t: t });
+  ctx.restore();
+  // flimmernde Luft über dem heißen Löffel
+  if (w > 0.3) {
+    ctx.strokeStyle = 'rgba(148,163,184,' + (0.35 * (w - 0.3)).toFixed(3) + ')'; ctx.lineWidth = 1;
+    for (let i = -1; i <= 1; i++) {
+      ctx.beginPath();
+      for (let y = 0; y <= 22; y += 2) {
+        const x = _C8E_LX + i * 12 + Math.sin(y * 0.4 - t * 3 + i) * 2;
+        if (y === 0) ctx.moveTo(x, _C8E_LY - 12 - y); else ctx.lineTo(x, _C8E_LY - 12 - y);
+      }
+      ctx.stroke();
+    }
+  }
+  // Rauchwölkchen
+  for (const r of _c8e.rauch) {
+    if (r.alter <= 0) continue;
+    const a = 0.32 * Math.min(1, r.alter / 0.3) * (1 - r.alter / r.leben);
+    ctx.fillStyle = 'rgba(' + r.farbe + ',' + a.toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(r.x, r.y, r.r, 0, 2 * Math.PI); ctx.arc(r.x + r.r * 0.8, r.y + 1, r.r * 0.75, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Wärmebalken ohne Zahlen: kalt – heiß
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Stoff: ' + _c8e.stoff, 12, 20);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 26, 36, 14, 104, 7); ctx.fill(); ctx.stroke();
+  const hb = 96 * w;
+  const wg = ctx.createLinearGradient(0, 136, 0, 40);
+  wg.addColorStop(0, '#60a5fa'); wg.addColorStop(0.6, '#f59e0b'); wg.addColorStop(1, '#dc2626');
+  ctx.fillStyle = wg;
+  if (hb > 0.5) { _bioFxRundRect(ctx, 29, 136 - hb, 8, hb, 4); ctx.fill(); }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('heiß', 46, 46); ctx.fillText('kalt', 46, 138);
+  ctx.fillText('Wärme', 14, 152);
+
+  // Unten: vorher und nachher
+  const vorher = { name: _c8e.stoff, m: 0, k: 0, w: 0, t: t };
+  const ende = { name: _c8e.stoff, m: 1, k: 1, w: 0, t: t };
+  const auf = _c8e.phase === 'kalt' ? (_c8e.nach < 0 ? 1 : _bioFxEase.raus(_c8eKlemme(_c8e.nach / 0.5))) : 0;
+  _c8eKarte(ctx, _C8E_KV, 'vorher', vorher, 1, t);
+  _c8eKarte(ctx, _C8E_KN, 'nachher', ende, auf, t);
+  // Vergleichszeichen zwischen den Bildern
+  const zx = (_C8E_KV.x + _C8E_KV.w + _C8E_KN.x) / 2, zy = _C8E_KV.y + _C8E_KV.h / 2 + 8;
+  if (_c8e.phase === 'kalt') {
+    const gleich = _C8E_STOFF[_c8e.stoff].gleich;
+    const nach = _c8e.nach < 0 ? 9 : _c8e.nach;
+    const e = _bioFxEase.federn(_c8eKlemme((nach - 0.6) / 0.5));
+    if (!gleich && nach > 0.6 && nach < 2.6)
+      _bioFxLeuchten(ctx, _C8E_KN.x + _C8E_KN.w / 2, _C8E_KN.y + _C8E_KN.h / 2, 34, t, '251,146,60');
+    if (e > 0.01) {
+      ctx.save();
+      ctx.translate(zx, zy); ctx.scale(e, e);
+      ctx.fillStyle = gleich ? '#15803d' : '#c2410c';
+      ctx.font = '700 26px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText(gleich ? '=' : '≠', 0, 0);
+      ctx.restore();
+    }
+  } else {
+    ctx.fillStyle = '#94a3b8'; ctx.font = '700 18px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('→', zx, zy - 2);
+  }
+  // Was gerade passiert (klein, rechts oben)
+  const was = { fest: '', heizen: 'erhitzen …', heiss: 'heiß', kuehlen: 'abkühlen …', kalt: 'abgekühlt' }[_c8e.phase];
+  if (was) {
+    ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(was, W - 12, 20);
+  }
+  _bioFxAlleDraw(ctx, _c8e.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – cb1 „Ein Glas über der Kerze“ (Kennung chem-feuer)
+// Eine brennende Kerze auf dem Tisch. Bei „Glas“ wählt das Kind kein Glas,
+// ein großes oder ein kleines Glas. „▶ starten“ senkt das Glas über die Kerze,
+// die Stoppuhr läuft (Zeitraffer, 3 Uhr-Sekunden je echter Sekunde).
+// Modellwerte (Lehrerteil): großes Glas (1 l) → Flamme nach 20 s aus,
+// kleines Glas (0,5 l) → nach 10 s; ohne Glas brennt sie nach 60 s noch.
+// Unter dem Glas wird die Flamme langsam kleiner und blasser, dann geht sie
+// aus; ein dünner Rauchfaden steigt auf und sammelt sich unter dem Glasboden.
+// Die Kerze wird in 60 s nur um einen Hauch kürzer: Das Wachs ist noch da.
+// Die Lückenwörter aus sim_plan.nicht_am_bildschirm stehen nirgends im Bild
+// (Lückenwörter der Seite).
+// Aha (nach der Beobachtung, Bibliothek _bioFx): kurze Zeitlupe, wenn die
+// Flamme ausgeht; danach leuchtet der Wachskörper weich auf (Lichtring,
+// wenige Funken) und ein Streifen sagt „Noch Wachs da – aber keine
+// Flamme!“. Sind beide Gläser gemessen, leuchten beide Balken der Messungen
+// auf: Im kleinen Glas dauert es halb so lang. Zuletzt eine offene Frage
+// ohne Antwort. Nichts blinkt (Puls 0,8 Hz), kein Ton, keine Wertung, kein
+// Blitz über die Fläche.
+// ════════════════════════════════════════════════════════════════════════
+let _c8f = null;
+const _C8F_GLAS = ['kein Glas', 'großes Glas', 'kleines Glas'];
+const _C8F_ENDE = [60, 20, 10];          // s auf der Uhr: 60 = Ende ohne Glas, sonst Flamme aus
+const _C8F_TEMPO = 3;                    // Uhr-Sekunden je echter Sekunde (Zeitraffer)
+const _C8F_SENK = 0.8;                   // s: das Glas senkt sich
+const _C8F_TY = 212;                     // Tischkante
+const _C8F_CX = 132;                     // Kerzenmitte
+const _C8F_KH = 54;                      // Kerzenhöhe am Anfang (px)
+const _C8F_GW = [0, 128, 88];            // Glasbreite
+const _C8F_GH = [0, 150, 104];           // Glashöhe
+const _C8F_HOCH = 112;                   // so weit hängt das Glas vor dem Start höher
+
+function _c8fInit() {
+  _c8f = {
+    glas: 0, phase: 'bereit', uhr: 0, t: 0, senk: 0, nach: 0, schritt: 0,
+    mess: [null, null, null],     // gemessene Uhrzeit je Glas
+    wachs: [0, 0, 0],             // Balken wachsen (0..1)
+    letzt: '', fx: { teile: [] }, zeitlupe: null, zweiter: false
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _c8fFxLeer() {
+  _c8f.fx = { teile: [] }; _c8f.zeitlupe = null; _c8f.nach = 0; _c8f.schritt = 0;
+  _c8f.zweiter = false; _c8f.zlGesetzt = false;
+}
+function _c8fZurueck() {
+  _c8fFxLeer();
+  _c8f.phase = 'bereit'; _c8f.uhr = 0; _c8f.senk = 0;
+  _c8fStatus();
+}
+function _c8fGlas(i) {
+  if (!_c8f) return;
+  _c8f.glas = Math.max(0, Math.min(2, Number(i) || 0));
+  _c8fZurueck();
+}
+function _c8fStart() {
+  if (!_c8f || _c8f.phase !== 'bereit') return;
+  _c8fFxLeer();
+  _c8f.uhr = 0; _c8f.senk = 0;
+  _c8f.phase = _c8f.glas ? 'senken' : 'laeuft';
+  _c8fStatus();
+}
+function _c8fNeu() {
+  if (!_c8f) return;
+  _c8fZurueck();
+}
+/* Sprungmarken: Glas steht schon, die Uhr steht kurz vor dem Ende – das
+   Ausgehen selbst sieht man trotzdem. */
+function _c8fSprung(i) {
+  _c8fGlas(i);
+  _c8f.senk = 1; _c8f.uhr = _C8F_ENDE[i] - 2; _c8f.phase = 'laeuft';
+  _c8fStatus();
+}
+function _c8fSprungKein()  { if (_c8f) _c8fSprung(0); }
+function _c8fSprungGross() { if (_c8f) _c8fSprung(1); }
+function _c8fSprungKlein() { if (_c8f) _c8fSprung(2); }
+
+function _c8fHTML() {
+  const k = (i) => `<button class="sim-btn" data-c8f="${i}" onclick="_c8fGlas(${i})">${_C8F_GLAS[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Ein Glas über der Kerze</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Kerze brennt auf dem Tisch. Stelle bei „Glas“ ein, ob ein Glas über die Kerze kommt. Dann drücke „▶ starten“ und sieh auf die Stoppuhr.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8f-los" onclick="_c8fStart()">▶ starten</button>
+          <button class="sim-btn" onclick="_c8fNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Glas</span>
+          <div class="sim-btn-row">${k(0)}${k(1)}${k(2)}</div>
+        </div>
+        <div class="lmp-status on" id="_c8f-status" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (kurz vor dem Ende)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8fSprungKein()">Sprung: kein Glas</button>
+          <button class="sim-btn" onclick="_c8fSprungGross()">Sprung: großes Glas</button>
+          <button class="sim-btn" onclick="_c8fSprungKlein()">Sprung: kleines Glas</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Die Stoppuhr läuft schneller als in echt (Zeitraffer). Die gestrichelte Linie zeigt, wie hoch die Kerze am Anfang war.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: kein Glas &nbsp;|&nbsp; Die Stoppuhr bleibt stehen, wenn die Flamme ausgeht.</p>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _c8fSek() { return Math.floor(_c8f.uhr + 1e-9); }
+function _c8fZeile() {
+  const z = 'Zeit: ' + _c8fSek() + ' s';
+  switch (_c8f.phase) {
+    case 'bereit': return ['Glas: ' + _C8F_GLAS[_c8f.glas] + '. Drücke „▶ starten“.', z];
+    case 'senken': return ['Das Glas senkt sich über die Kerze.', z];
+    case 'laeuft': return ['Die Kerze brennt.', z];
+    case 'aus':    return ['Die Flamme ist aus. · ' + z, 'Glas: ' + _C8F_GLAS[_c8f.glas]];
+    default:       return ['60 Sekunden vorbei. Die Kerze brennt noch.', z];
+  }
+}
+function _c8fStatus() {
+  if (!_c8f) return;
+  const [a, b] = _c8fZeile();
+  _c8f.letzt = a + '|' + b;
+  const el = document.getElementById('_c8f-status');
+  if (el) { el.innerHTML = '<b>' + a + '</b><br>' + b; el.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-c8f]').forEach(btn => {
+      const d = btn.getAttribute('data-c8f');
+      if (btn.classList) btn.classList.toggle('primary', String(_c8f.glas) === String(d));
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_c8f-los');
+  if (los && los.classList) los.classList.toggle('primary', _c8f.phase === 'bereit');
+}
+
+/* ── Modell ────────────────────────────────────────────────────────────── */
+// Flammengröße (1 = normal) und Blässe (0..1) zur Uhrzeit u.
+function _c8fFlamme(u) {
+  if (_c8f.glas === 0) return { s: 1, p: 0 };
+  const T = _C8F_ENDE[_c8f.glas];
+  if (_c8f.phase === 'aus' || u >= T) return { s: 0, p: 1 };
+  const x = _bioFxKlemme((u / T - 0.3) / 0.7);
+  return { s: 1 - 0.72 * Math.pow(x, 1.3), p: x };
+}
+function _c8fKerzenHoehe() {
+  return _C8F_KH - 2 * Math.min(_c8f.uhr, 60) / 60;   // in 60 s nur 2 px kürzer
+}
+function _c8fGlasY() {           // Versatz nach oben (0 = auf dem Tisch)
+  if (!_c8f.glas) return 0;
+  if (_c8f.phase === 'bereit') return _C8F_HOCH;
+  if (_c8f.phase === 'senken') return _C8F_HOCH * (1 - _bioFxEase.sanft(_bioFxKlemme(_c8f.senk)));
+  return 0;
+}
+
+function _c8fUpdate(dt) {
+  if (!_c8f) return;
+  const roh = _bioFxDt(dt);
+  _c8f.t += roh;
+  _bioFxAlleUpdate(_c8f.fx, roh);
+  for (let i = 0; i < 3; i++) if (_c8f.mess[i] != null) _c8f.wachs[i] = Math.min(1, _c8f.wachs[i] + roh / 0.7);
+  const ph = _c8f.phase;
+  if (ph === 'senken') {
+    _c8f.senk += roh / _C8F_SENK;
+    if (_c8f.senk >= 1) { _c8f.senk = 1; _c8f.phase = 'laeuft'; _c8fStatus(); }
+  } else if (ph === 'laeuft') {
+    const T = _C8F_ENDE[_c8f.glas];
+    if (_c8f.glas && !_c8f.zlGesetzt && T - _c8f.uhr < 1.4) {
+      _c8f.zlGesetzt = true; _bioFxZeitlupe(_c8f, 0.3, 1.6);   // das Ausgehen in Zeitlupe
+    }
+    const zl = _c8f.glas ? _bioFxZeitlupeFaktor(_c8f, roh) : 1;
+    _c8f.uhr += roh * _C8F_TEMPO * zl;
+    if (_c8f.uhr >= T) {
+      _c8f.uhr = T; _c8f.zeitlupe = null;
+      _c8f.phase = _c8f.glas ? 'aus' : 'fertig';
+      _c8f.nach = 0; _c8f.schritt = 0;
+      const vorher = _c8f.mess[3 - _c8f.glas];
+      _c8f.zweiter = _c8f.glas > 0 && vorher != null && _c8f.mess[_c8f.glas] == null;
+      _c8f.mess[_c8f.glas] = T; _c8f.wachs[_c8f.glas] = 0;
+      if (_c8f.glas) _bioFxWelle(_c8f.fx.teile, _C8F_CX, _C8F_TY - _c8fKerzenHoehe() - 8, '#94a3b8', 26);
+    }
+    if (_c8fZeile().join('|') !== _c8f.letzt) _c8fStatus();
+  } else if (ph === 'aus' || ph === 'fertig') {
+    _c8f.nach += roh;
+    _c8fNachher();
+  }
+}
+
+// Nach der Beobachtung: erst hinsehen, dann bestätigt der Effekt.
+function _c8fBalkenEnde(i) {
+  return { x: 294 + 62 * (_c8f.mess[i] || 0) / 60, y: 168 + i * 24 + 9 };
+}
+function _c8fNachher() {
+  const fx = _c8f.fx, t = _c8f.nach, g = _c8f.glas;
+  const top = _C8F_TY - _c8fKerzenHoehe();
+  if (_c8f.schritt === 0 && t >= 0.4) {
+    _c8f.schritt = 1;
+    const e = _c8fBalkenEnde(g);
+    _bioFxWelle(fx.teile, e.x, e.y, g ? '#fde68a' : '#fdba74', 18);
+  }
+  if (g === 0) {
+    if (_c8f.schritt === 1 && t >= 0.8) {
+      _c8f.schritt = 2;
+      _bioFxWelle(fx.teile, _C8F_CX, top - 22, '#fde68a', 46);
+      _bioFxBanner(fx, 'Die Flamme brennt ruhig weiter.', 3.0, '#fdba74');
+    }
+    return;
+  }
+  if (_c8f.schritt === 1 && t >= 1.0) {
+    _c8f.schritt = 2;
+    _bioFxWelle(fx.teile, _C8F_CX, _C8F_TY - _c8fKerzenHoehe() / 2, '#fde68a', 52);
+    _bioFxFunken(fx.teile, _C8F_CX, top, 6, ['#fde68a', '#fff7d6', '#f5d08a']);
+  }
+  if (_c8f.schritt === 2 && t >= 1.4) {
+    _c8f.schritt = 3;
+    _bioFxBanner(fx, 'Noch Wachs da – aber keine Flamme!', 3.2, '#fde68a');
+  }
+  if (_c8f.schritt === 3 && t >= 4.8) {
+    _c8f.schritt = 4;
+    if (_c8f.zweiter) {
+      for (const i of [1, 2]) {
+        const e = _c8fBalkenEnde(i);
+        _bioFxWelle(fx.teile, e.x, e.y, '#93c5fd', 22);
+        _bioFxFunken(fx.teile, e.x, e.y, 4, ['#bfdbfe', '#ffffff', '#93c5fd']);
+      }
+      _bioFxBanner(fx, 'Im kleinen Glas dauert es nur halb so lang!', 3.2, '#93c5fd');
+    } else {
+      _bioFxBanner(fx, 'Was fehlt der Flamme unter dem Glas?', 3.4, '#93c5fd');
+      _c8f.schritt = 5;
+    }
+  }
+  if (_c8f.schritt === 4 && t >= 8.2) {
+    _c8f.schritt = 5;
+    _bioFxBanner(fx, 'Was fehlt der Flamme unter dem Glas?', 3.4, '#93c5fd');
+  }
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _c8fMisch(a, b, u) {
+  u = _bioFxKlemme(u);
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _c8fFlammeZeichnen(ctx, x, yb, s, p, t) {
+  if (s <= 0.01) return;
+  const h = 30 * s * (1 + 0.04 * Math.sin(t * 8.1)), w = 8.5 * Math.sqrt(s);
+  const wob = (Math.sin(t * 7.3) * 1.2 + Math.sin(t * 11.1) * 0.6) * s;
+  ctx.save();
+  // weicher Schein
+  const gl = ctx.createRadialGradient(x, yb - h * 0.5, 2, x, yb - h * 0.5, 44 * s);
+  gl.addColorStop(0, 'rgba(255,205,90,' + (0.38 * (1 - p * 0.75)).toFixed(3) + ')');
+  gl.addColorStop(1, 'rgba(255,205,90,0)');
+  ctx.fillStyle = gl;
+  ctx.beginPath(); ctx.arc(x, yb - h * 0.5, 44 * s, 0, Math.PI * 2); ctx.fill();
+  // äußere Flamme
+  const gr = ctx.createLinearGradient(0, yb - h, 0, yb + 2);
+  gr.addColorStop(0, _c8fMisch('#ffd24a', '#dbe6f5', p * 0.85));
+  gr.addColorStop(0.55, _c8fMisch('#ff9a2e', '#b9cdea', p * 0.85));
+  gr.addColorStop(1, _c8fMisch('#3b6fe0', '#7f9fd6', p));
+  ctx.globalAlpha = 0.92 - 0.3 * p;
+  ctx.fillStyle = gr;
+  ctx.beginPath();
+  ctx.moveTo(x, yb + 2);
+  ctx.bezierCurveTo(x - w, yb, x - w * 0.9, yb - h * 0.55, x + wob, yb - h);
+  ctx.bezierCurveTo(x + w * 0.9, yb - h * 0.55, x + w, yb, x, yb + 2);
+  ctx.fill();
+  // heller Kern
+  ctx.globalAlpha = 0.85 * (1 - p);
+  ctx.fillStyle = '#fff8dc';
+  ctx.beginPath();
+  ctx.ellipse(x + wob * 0.3, yb - h * 0.35, w * 0.35, h * 0.28, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+function _c8fGlasZeichnen(ctx, g, dy, fort) {
+  const w = _C8F_GW[g], h = _C8F_GH[g], x0 = _C8F_CX - w / 2, yb = _C8F_TY - dy, y0 = yb - h;
+  ctx.save();
+  // Halter von oben
+  if (y0 > -8) {
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(_C8F_CX, 0); ctx.lineTo(_C8F_CX, y0); ctx.stroke();
+  }
+  // Glaskörper (umgedreht: Boden oben, Öffnung unten)
+  ctx.fillStyle = 'rgba(205,230,250,0.22)';
+  _bioFxRundRect(ctx, x0, y0, w, h, 14); ctx.fill();
+  ctx.strokeStyle = 'rgba(90,120,150,0.85)'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x0, y0, w, h, 14); ctx.stroke();
+  // Rand an der Öffnung (Gewinde)
+  ctx.strokeStyle = 'rgba(90,120,150,0.6)'; ctx.lineWidth = 1.5;
+  for (const k of [6, 10]) { ctx.beginPath(); ctx.moveTo(x0 + 2, yb - k); ctx.lineTo(x0 + w - 2, yb - k); ctx.stroke(); }
+  // Glanz
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x0 + 9, y0 + 16); ctx.lineTo(x0 + 9, yb - 18); ctx.stroke();
+  // Beschlag innen (Tröpfchen), wächst mit der Brenndauer
+  if (fort > 0.02) {
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.55 * fort).toFixed(3) + ')';
+    for (let k = 0; k < 16; k++) {
+      const seite = k % 2 ? 1 : -1;
+      const px = _C8F_CX + seite * (w / 2 - 5 - (k % 3) * 3);
+      const py = y0 + 14 + ((k * 37) % Math.max(20, h - 60));
+      ctx.beginPath(); ctx.arc(px, py, 1.3 + (k % 3) * 0.4, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+function _c8fRauch(ctx, xw, yw, t, glasTop) {
+  if (t <= 0 || t > 6) return;
+  const a = 0.55 * (1 - t / 6);
+  const lang = Math.min(yw - (glasTop != null ? glasTop + 6 : 20), 45 * t);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(110,110,120,' + a.toFixed(3) + ')';
+  ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(xw, yw);
+  for (let d = 2; d <= lang; d += 2) {
+    const amp = 1 + d * 0.08;
+    ctx.lineTo(xw + Math.sin(d * 0.09 - _c8f.t * 2.2) * amp, yw - d);
+  }
+  ctx.stroke();
+  // unter dem Glasboden breitet sich der Rauch aus
+  if (glasTop != null && 45 * t > yw - glasTop - 6) {
+    const b = Math.min(1, (45 * t - (yw - glasTop - 6)) / 60);
+    const gr = ctx.createRadialGradient(xw, glasTop + 8, 2, xw, glasTop + 8, 12 + 34 * b);
+    gr.addColorStop(0, 'rgba(120,120,130,' + (0.35 * b * (1 - t / 6)).toFixed(3) + ')');
+    gr.addColorStop(1, 'rgba(120,120,130,0)');
+    ctx.fillStyle = gr;
+    ctx.beginPath(); ctx.ellipse(xw, glasTop + 8, 12 + 34 * b, 6 + 6 * b, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+function _c8fUhrZeichnen(ctx) {
+  const cx = 352, cy = 56, r = 34, u = _c8f.uhr;
+  ctx.save();
+  ctx.fillStyle = '#64748b';
+  ctx.fillRect(cx - 5, cy - r - 9, 10, 7);
+  ctx.beginPath(); ctx.arc(cx, cy, r + 3, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#334155';
+  for (let k = 0; k < 12; k++) {
+    const w = k / 12 * Math.PI * 2;
+    ctx.lineWidth = k % 3 ? 1 : 2;
+    const r0 = k % 3 ? r - 5 : r - 8;
+    ctx.beginPath(); ctx.moveTo(cx + Math.sin(w) * r0, cy - Math.cos(w) * r0);
+    ctx.lineTo(cx + Math.sin(w) * (r - 2), cy - Math.cos(w) * (r - 2)); ctx.stroke();
+  }
+  // gelaufene Zeit als Tortenstück
+  if (u > 0) {
+    ctx.fillStyle = 'rgba(251,146,60,0.25)';
+    ctx.beginPath(); ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r - 9, -Math.PI / 2, -Math.PI / 2 + Math.min(u, 60) / 60 * Math.PI * 2); ctx.closePath(); ctx.fill();
+  }
+  const w = Math.min(u, 60) / 60 * Math.PI * 2;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.sin(w) * (r - 7), cy - Math.cos(w) * (r - 7)); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Zeit: ' + _c8fSek() + ' s', cx, cy + r + 20);
+  ctx.restore();
+}
+function _c8fMessZeichnen(ctx) {
+  const x0 = 286, y0 = 124, w = 128, h = 116;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x0, y0, w, h, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Messungen', x0 + 8, y0 + 15);
+  for (let i = 0; i < 3; i++) {
+    const y = 168 + i * 24;
+    ctx.fillStyle = i === _c8f.glas ? '#0f172a' : '#475569';
+    ctx.font = (i === _c8f.glas ? '700 ' : '400 ') + '10px sans-serif';
+    ctx.fillText(_C8F_GLAS[i], x0 + 8, y);
+    ctx.fillStyle = '#e2e8f0'; ctx.fillRect(294, y + 5, 62, 8);
+    const m = _c8f.mess[i];
+    if (m == null) { ctx.fillStyle = '#94a3b8'; ctx.fillText('–', 362, y + 13); continue; }
+    const l = 62 * m / 60 * _bioFxEase.raus(_c8f.wachs[i]);
+    ctx.fillStyle = i === 0 ? '#f59e0b' : '#64748b';
+    ctx.fillRect(294, y + 5, l, 8);
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif';
+    ctx.fillText(m + ' s', 362, y + 13);
+    if (i === 0) _c8fFlammeZeichnen(ctx, 402, y + 14, 0.38, 0, _c8f.t);   // brennt noch
+    else {
+      ctx.strokeStyle = 'rgba(100,100,110,0.8)'; ctx.lineWidth = 1.2;       // Rauchfaden: aus
+      ctx.beginPath(); ctx.moveTo(402, y + 14);
+      ctx.bezierCurveTo(398, y + 9, 406, y + 6, 402, y + 1); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _c8fDraw(ctx, cv) {
+  if (!_c8f) return;
+  const W = cv.width, H = cv.height, t = _c8f.t, g = _c8f.glas;
+  ctx.clearRect(0, 0, W, H);
+  // Raum
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef2f7'); bg.addColorStop(1, '#dde4ee');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tisch
+  ctx.fillStyle = '#c8a27a'; ctx.fillRect(0, _C8F_TY, 278, H - _C8F_TY);
+  ctx.fillStyle = '#a57f58'; ctx.fillRect(0, _C8F_TY, 278, 4);
+
+  const kh = _c8fKerzenHoehe(), top = _C8F_TY - kh, xw = _C8F_CX, yw = top - 7;
+  // Linie: so hoch war die Kerze am Anfang
+  ctx.save();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(54, _C8F_TY - _C8F_KH); ctx.lineTo(_C8F_CX - 16, _C8F_TY - _C8F_KH); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#475569'; ctx.font = '400 10px sans-serif'; ctx.textAlign = 'right';
+  ctx.fillText('Anfang', 51, _C8F_TY - _C8F_KH + 3);
+  ctx.restore();
+
+  // Wachsleuchten nach dem Ausgehen (Aha)
+  if (_c8f.phase === 'aus' && _c8f.nach > 1.0 && _c8f.nach < 4.0)
+    _bioFxLeuchten(ctx, _C8F_CX, _C8F_TY - kh / 2, 26, _c8f.nach, '253,230,138');
+
+  // Kerze
+  ctx.save();
+  const kg = ctx.createLinearGradient(_C8F_CX - 12, 0, _C8F_CX + 12, 0);
+  kg.addColorStop(0, '#f3e6c8'); kg.addColorStop(0.5, '#fffaf0'); kg.addColorStop(1, '#e6d4ae');
+  ctx.fillStyle = kg; ctx.strokeStyle = '#c9b48a'; ctx.lineWidth = 1;
+  ctx.fillRect(_C8F_CX - 12, top, 24, kh); ctx.strokeRect(_C8F_CX - 12, top, 24, kh);
+  // kleine Wachsmulde, glänzt, solange die Flamme brennt
+  const fl = _c8fFlamme(_c8f.uhr);
+  const brennt = _c8f.phase !== 'aus' && fl.s > 0.01;
+  ctx.fillStyle = brennt ? 'rgba(255,236,170,0.9)' : '#efe3c6';
+  ctx.beginPath(); ctx.ellipse(_C8F_CX, top + 1.5, 9, 2.4, 0, 0, Math.PI * 2); ctx.fill();
+  // Wachstropfen am Rand
+  ctx.fillStyle = '#f7ecd2';
+  ctx.beginPath(); ctx.ellipse(_C8F_CX + 9, top + 7, 2.2, 5, 0, 0, Math.PI * 2); ctx.fill();
+  // Docht
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.moveTo(_C8F_CX, top); ctx.quadraticCurveTo(_C8F_CX + 1, top - 4, _C8F_CX + 1.5, yw); ctx.stroke();
+  // glimmende Dochtspitze kurz nach dem Ausgehen
+  if (_c8f.phase === 'aus' && _c8f.nach < 1.6) {
+    ctx.fillStyle = 'rgba(239,68,68,' + (0.9 * (1 - _c8f.nach / 1.6)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(_C8F_CX + 1.5, yw, 1.8, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+
+  // Flamme
+  if (brennt) _c8fFlammeZeichnen(ctx, xw + 1, yw + 1, fl.s, fl.p, t);
+  // Rauchfaden
+  const glasTop = g ? _C8F_TY - _C8F_GH[g] : null;
+  if (_c8f.phase === 'aus') _c8fRauch(ctx, xw + 1.5, yw - 1, _c8f.nach, glasTop);
+
+  // Glas
+  if (g) {
+    const fort = (_c8f.phase === 'laeuft' || _c8f.phase === 'aus') ? _c8f.uhr / _C8F_ENDE[g] : 0;
+    _c8fGlasZeichnen(ctx, g, _c8fGlasY(), fort);
+  }
+
+  // Beschriftung links oben
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Glas: ' + _C8F_GLAS[g], 10, H - 10);
+  if (_c8f.phase === 'laeuft') {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif';
+    ctx.fillText(_c8f.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 10, 18);
+  }
+  ctx.restore();
+
+  _c8fUhrZeichnen(ctx);
+  _c8fMessZeichnen(ctx);
+  _bioFxAlleDraw(ctx, _c8f.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – cb2 „Ein kleiner Anstoß“ (Kennung chem-aktivierung)
+// Links: ein Streichholz auf der Reibfläche einer Schachtel, am Kopf ein
+// kleines Thermometer („Kopf: 20 °C“). Rechts: Energiediagramm und zwei
+// Balken aus Kästchen, „Energie hinein“ (vom Reiben) und „Energie heraus“
+// (von der Flamme).
+// Das Kind stellt EINE Bedingung um (Reiben: nicht / leicht / fest) und
+// drückt „▶ los“. Beobachtet wird die Kopftemperatur und ob es brennt.
+//   nicht reiben: 30 s warten (im Zeitraffer), Kopf bleibt 20 °C, 0 | 0
+//   leicht reiben: Kopf steigt auf 100 °C, brennt nicht, 1 | 0
+//   fest reiben:   Kopf steigt auf 200 °C, dann Flamme, 2 | 20
+// Modellwerte (Lehrerteil): Zündtemperatur des Kopfes rund 200 °C; die
+// Kästchen sind Modellmaße, das Verhältnis 2 : 20 zeigt „kleiner Anstoß,
+// viel mehr heraus“. Das Thermometer bleibt beim Höchstwert VOR dem
+// Aufflammen stehen (Schleppzeiger), die Flamme wird nicht gemessen.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Bei „fest reiben“ flammt der
+// Kopf auf – kurze Zeitlupe, ruhiger Lichtring und wenige Funken NUR am Kopf,
+// kein Blitz über die Fläche. Danach rollt „Energie heraus“ Kästchen für
+// Kästchen bis 20 hoch, weit über die 2 Kästchen „Energie hinein“; zugleich
+// fällt die Linie im Energiediagramm tief hinunter. Bei „nicht reiben“ läuft
+// die Wartezeit bis 30 s, das Thermometer rührt sich nicht (Gegenbeleg zur
+// Vermutung „brennt, wenn man lange wartet“). Keine Wertung, kein Ton.
+// Nicht am Bildschirm: Aktivierungsenergie, exotherm, Zündtemperatur.
+// ════════════════════════════════════════════════════════════════════════
+let _c8g = null;
+const _C8G_STUFEN = ['nicht reiben', 'leicht reiben', 'fest reiben'];
+const _C8G_TMAX = [20, 100, 200];      // °C: Höchstwert am Kopf
+const _C8G_HINEIN = [0, 1, 2];         // Kästchen „Energie hinein“
+const _C8G_HERAUS = 20;                // Kästchen „Energie heraus“ (nur fest)
+const _C8G_WARTEN = 30;                // s Wartezeit bei „nicht reiben“
+const _C8G_RAFFER = 5;                 // Zeitraffer: 5 s Wartezeit je Sekunde
+const _C8G_REIB = [0, 3.2, 2.0];       // s Reibdauer
+const _C8G_ZUEGE = [0, 3, 5];          // Reibzüge
+const _C8G_FLAMME = 3.4;               // s bis „Energie heraus“ voll ist
+
+function _c8gZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _c8gInit() {
+  const z = _c8gZufall(82);
+  const koerner = [];
+  for (let i = 0; i < 90; i++) koerner.push([z(), z(), 0.5 + z() * 0.9]);
+  _c8g = {
+    t: 0, stufe: 0,
+    phase: 'bereit', pt: 0,
+    temp: 20, warte: 0, hinein: 0, heraus: 0,
+    auf: 0, ab: 0,              // Energiediagramm: Anstieg / Abfall (0..1)
+    lift: 0,                    // Streichholz hebt sich nach dem Aufflammen
+    reibX: 0,                   // Lage des Kopfes auf der Reibfläche
+    fb: 0,                      // s seit dem Aufflammen (Flammengröße)
+    rauchT: 0,
+    koerner, key: '',
+    fx: { teile: [] }
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _c8gSetze(i) {
+  if (!_c8g) return;
+  _c8g.stufe = i;
+  _c8gZurueck();
+}
+function _c8gFxLeer() {
+  _c8g.fx = { teile: [] }; _c8g.zeitlupe = null;
+}
+function _c8gZurueck() {
+  _c8gFxLeer();
+  Object.assign(_c8g, { phase: 'bereit', pt: 0, temp: 20, warte: 0, hinein: 0, heraus: 0,
+                        auf: 0, ab: 0, lift: 0, reibX: 0, fb: 0 });
+  _c8gStatus(); _c8gKnoepfe();
+}
+function _c8gStart() {
+  if (!_c8g) return;
+  _c8gZurueck();
+  _c8g.phase = _c8g.stufe === 0 ? 'warten' : 'reiben';
+  _c8gStatus();
+}
+function _c8gNeu() {
+  if (!_c8g) return;
+  _c8gZurueck();
+}
+/* Endzustand einer Stufe sofort herstellen (Sprungmarke, Lehrkraft). */
+function _c8gEnde() {
+  const s = _c8g.stufe;
+  _c8g.temp = _C8G_TMAX[s];
+  _c8g.hinein = _C8G_HINEIN[s];
+  _c8g.warte = s === 0 ? _C8G_WARTEN : 0;
+  _c8g.reibX = 0;
+  if (s === 2) {
+    _c8g.auf = 1; _c8g.ab = 1; _c8g.heraus = _C8G_HERAUS; _c8g.lift = 1; _c8g.fb = 2;
+  }
+  _c8g.phase = 'fertig'; _c8g.pt = 0;
+}
+function _c8gMarke(i) {
+  if (!_c8g) return;
+  _c8g.stufe = i;
+  _c8gZurueck();
+  _c8gEnde();
+  _c8gStatus(); _c8gKnoepfe();
+}
+function _c8gKnoepfe() {
+  if (!_c8g || typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-c8g]').forEach(b => {
+      const d = b.dataset ? b.dataset.c8g : b.getAttribute('data-c8g');
+      if (b.classList) b.classList.toggle('primary', d === 's' + _c8g.stufe);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _c8gHTML() {
+  const k = i => `<button class="sim-btn" data-c8g="s${i}" onclick="_c8gSetze(${i})">${_C8G_STUFEN[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Ein kleiner Anstoß</h3>
+    <div class="fpm-note" style="margin-top:2px">Links ein Streichholz auf der Reibfläche einer Schachtel, am Kopf ein Thermometer. Rechts ein Energiediagramm und zwei Balken aus Kästchen. Stelle „Reiben“ ein. Dann drücke „▶ los“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8g-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Reiben</span>
+          ${k(0)}${k(1)}${k(2)}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_c8gStart()">▶ los</button>
+          <button class="sim-btn" onclick="_c8gNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert am Streichholz?</div>
+        <div class="lmp-status on" id="_c8g-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8gMarke(0)">nicht reiben, nach 30 s</button>
+          <button class="sim-btn" onclick="_c8gMarke(1)">leicht reiben, Ende</button>
+          <button class="sim-btn" onclick="_c8gMarke(2)">fest reiben, Ende</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Das Thermometer bleibt beim höchsten Wert stehen. Wenn der Kopf aufflammt, misst es nicht weiter. Ein Kästchen im Balken ist eine Portion Energie. Bei „nicht reiben“ läuft die Wartezeit schneller ab als in echt.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _c8gBrennt() { return _c8g.phase === 'flamme' || (_c8g.phase === 'fertig' && _c8g.stufe === 2); }
+function _c8gKopfText() {
+  const tt = Math.round(_c8g.temp);
+  return 'Kopf: ' + tt + ' °C' + (_c8gBrennt() ? ', dann Flamme' : '');
+}
+function _c8gBrennText() { return _c8gBrennt() ? 'Das Streichholz brennt!' : 'Das Streichholz brennt nicht.'; }
+function _c8gHineinText() { return 'Energie hinein: ' + Math.floor(_c8g.hinein + 1e-6) + ' Kästchen'; }
+function _c8gHerausText() { return 'Energie heraus: ' + Math.floor(_c8g.heraus + 1e-6) + ' Kästchen'; }
+function _c8gWarteText() { return 'Wartezeit: ' + Math.floor(_c8g.warte + 1e-6) + ' s'; }
+
+function _c8gSchluessel() {
+  return [_c8g.phase, _c8g.stufe, Math.round(_c8g.temp), Math.floor(_c8g.warte + 1e-6),
+          Math.floor(_c8g.hinein + 1e-6), Math.floor(_c8g.heraus + 1e-6)].join('|');
+}
+function _c8gStatus() {
+  if (!_c8g) return;
+  _c8g.key = _c8gSchluessel();
+  const el = document.getElementById('_c8g-status');
+  if (!el) return;
+  const s = _c8g.stufe;
+  let h = `<b>Reiben: ${_C8G_STUFEN[s]}</b><br>`;
+  if (_c8g.phase === 'bereit') {
+    h += `${_c8gKopfText()}<br>${_c8gBrennText()}<br>Drücke „▶ los“.`;
+    el.innerHTML = h; return;
+  }
+  h += `${_c8gKopfText()}<br>${_c8gBrennText()}<br>`;
+  if (s === 0) h += `${_c8gWarteText()}<br>`;
+  h += `${_c8gHineinText()}<br>${_c8gHerausText()}`;
+  if (_c8g.phase === 'reiben') h += '<br>Das Streichholz wird über die Reibfläche gezogen.';
+  if (_c8g.phase === 'warten') h += '<br>Das Streichholz liegt still auf der Reibfläche.';
+  if (_c8g.phase === 'fertig') h += '<br>Drücke „neu“ und wähle eine andere Einstellung.';
+  el.innerHTML = h;
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _c8gUpdate(dt) {
+  if (!_c8g) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_c8g, roh);
+  _c8g.t += d;
+  _bioFxAlleUpdate(_c8g.fx, roh);
+  const s = _c8g.stufe;
+  if (_c8g.phase === 'warten') {
+    _c8g.pt += d;
+    _c8g.warte = Math.min(_C8G_WARTEN, _c8g.pt * _C8G_RAFFER);
+    if (_c8g.warte >= _C8G_WARTEN) { _c8g.phase = 'fertig'; _c8g.pt = 0; _c8gAhaWarten(); }
+  } else if (_c8g.phase === 'reiben') {
+    _c8g.pt += d;
+    const p = Math.min(1, _c8g.pt / _C8G_REIB[s]);
+    // Hin und her: Züge als weiche Schwingung, am Ende wieder in der Mitte
+    _c8g.reibX = Math.sin(p * Math.PI * _C8G_ZUEGE[s]) * (s === 2 ? 1 : 0.8);
+    _c8g.temp = 20 + (_C8G_TMAX[s] - 20) * _bioFxEase.sanft(p);
+    _c8g.hinein = _C8G_HINEIN[s] * p;
+    if (s === 2) _c8g.auf = p;
+    if (p >= 1) {
+      _c8g.temp = _C8G_TMAX[s]; _c8g.hinein = _C8G_HINEIN[s]; _c8g.reibX = 0; _c8g.pt = 0;
+      if (s === 2) { _c8g.phase = 'flamme'; _c8gAhaFlamme(); }
+      else { _c8g.phase = 'fertig'; _c8gAhaLeicht(); }
+    }
+  } else if (_c8g.phase === 'flamme') {
+    _c8g.pt += d;
+    _c8g.fb += d;
+    _c8g.lift = _bioFxEase.sanft(Math.min(1, _c8g.pt / 0.9));
+    const q = Math.min(1, _c8g.pt / _C8G_FLAMME);
+    _c8g.ab = _bioFxEase.sanft(q);
+    _c8g.heraus = _C8G_HERAUS * q;
+    if (q >= 1) { _c8g.heraus = _C8G_HERAUS; _c8g.ab = 1; _c8g.phase = 'fertig'; _c8g.pt = 0; _c8gAhaVoll(); }
+  } else if (_c8g.phase === 'fertig' && s === 2) {
+    _c8g.fb += d;
+  }
+  if (_c8gBrennt()) _c8gRauch(d);
+  if (_c8gSchluessel() !== _c8g.key) _c8gStatus();
+}
+
+/* ── Geometrie ─────────────────────────────────────────────────────────── */
+function _c8gGeo(W, H) {
+  const sx = W / 420, sy = H / 250;
+  const g = {
+    sx, sy,
+    // linke Hälfte: Schachtel, Streichholz, Thermometer
+    bx: 22 * sx, by: 176 * sy, bw: 176 * sx, bh: 50 * sy,   // Schachtel
+    rx: 30 * sx, rw: 130 * sx,                              // Reibfläche (oben auf der Schachtel)
+    // rechte Hälfte: Diagramm und Balken
+    dx: 224 * sx, dy: 26 * sy, dw: 188 * sx, dh: 112 * sy,
+    kx: 214 * sx, kw: 9.6 * sx, kh: 11 * sy,
+    y1: 172 * sy, y2: 214 * sy
+  };
+  // Kopf des Streichholzes
+  const mitte = g.rx + g.rw / 2;
+  g.hx = mitte + _c8g.reibX * 35 * sx;
+  g.hy = g.by - 4 * sy - _c8g.lift * 52 * sy;
+  return g;
+}
+
+/* ── Aha-Effekte (nur Aufrufe der Bibliothek _bioFx) ───────────────────── */
+function _c8gAhaFlamme() {
+  const g = _c8gGeo(420 * (_c8g.sxW || 1), 250 * (_c8g.syH || 1)), fx = _c8g.fx.teile;
+  _bioFxZeitlupe(_c8g, 0.35, 1.0);                    // kurz langsamer: der Augenblick des Aufflammens
+  _bioFxWelle(fx, g.hx, g.hy, 'rgba(251,146,60,0.95)', 34 * g.sx);
+  _bioFxFunken(fx, g.hx, g.hy, 8, ['#fde047', '#fdba74', '#fff7c2', '#fb923c']);
+  _bioFxBanner(_c8g.fx, 'Das Streichholz brennt!', 2.4, '#fb923c');
+}
+function _c8gAhaVoll() {
+  const g = _c8gGeo(420 * (_c8g.sxW || 1), 250 * (_c8g.syH || 1)), fx = _c8g.fx.teile;
+  // Lichtring am Ende des vollen Balkens „Energie heraus“ und am Ende der Linie
+  _bioFxWelle(fx, g.kx + (_C8G_HERAUS - 0.5) * g.kw, g.y2 + g.kh / 2, 'rgba(234,88,12,0.9)', 22 * g.sx);
+  _bioFxWelle(fx, g.dx + g.dw - 8 * g.sx, _c8gDiaY(g, 18), 'rgba(234,88,12,0.9)', 22 * g.sx);
+}
+function _c8gAhaLeicht() {
+  const g = _c8gGeo(420 * (_c8g.sxW || 1), 250 * (_c8g.syH || 1));
+  _bioFxWelle(_c8g.fx.teile, 16 * g.sx, _c8gThermY(g, 100), 'rgba(59,130,246,0.85)', 18 * g.sx);
+}
+function _c8gAhaWarten() {
+  const g = _c8gGeo(420 * (_c8g.sxW || 1), 250 * (_c8g.syH || 1));
+  _bioFxWelle(_c8g.fx.teile, 16 * g.sx, _c8gThermY(g, 20), 'rgba(59,130,246,0.85)', 18 * g.sx);
+  _bioFxWelle(_c8g.fx.teile, 150 * g.sx, 60 * g.sy, 'rgba(59,130,246,0.85)', 26 * g.sx);
+}
+/* Rauch: graue weiche Punkte steigen über der Flamme auf. */
+function _c8gRauch(d) {
+  _c8g.rauchT += d;
+  if (_c8g.rauchT < 0.22) return;
+  _c8g.rauchT = 0;
+  const g = _c8gGeo(420 * (_c8g.sxW || 1), 250 * (_c8g.syH || 1));
+  _bioFxNeu(_c8g.fx.teile, { art: 'punkt', x: g.hx + (Math.random() - 0.5) * 4, y: g.hy - 30 * g.sy,
+    vx: (Math.random() - 0.5) * 8, vy: -18 - Math.random() * 10, g: 0, alter: 0,
+    leben: 1.6 + Math.random() * 0.4, r: 3 + Math.random() * 3,
+    farbe: 'rgba(148,163,184,0.45)', dreh: 0, dw: 0, luft: 0.3 });
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _c8gThermY(g, T) {             // Thermometer links: 0 °C unten, 250 °C oben
+  const y0 = 150 * g.sy, y1 = 40 * g.sy;
+  return y0 - (y1 < y0 ? (y0 - y1) * Math.max(0, Math.min(250, T)) / 250 : 0);
+}
+function _c8gDiaY(g, e) {               // e in Kästchen unter dem Start (negativ = höher)
+  const u = 3.4 * g.sy;                 // ein Kästchen im Diagramm
+  const y0 = g.dy + 22 * g.sy + 2 * u;  // Startniveau
+  return y0 + e * u;
+}
+
+function _c8gDraw(ctx, cv) {
+  if (!_c8g) return;
+  const W = cv.width, H = cv.height, t = _c8g.t;
+  _c8g.sxW = W / 420; _c8g.syH = H / 250;
+  const g = _c8gGeo(W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Trennlinie zwischen links und rechts
+  ctx.save();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(206 * g.sx, 8 * g.sy); ctx.lineTo(206 * g.sx, H - 8 * g.sy); ctx.stroke();
+  ctx.restore();
+  _c8gLinks(ctx, g, t);
+  _c8gDiagramm(ctx, g, t);
+  _c8gBalken(ctx, g, t);
+  _bioFxDraw(ctx, _c8g.fx.teile);
+  _c8gBannerDraw(ctx, g);
+}
+
+function _c8gLinks(ctx, g, t) {
+  const sx = g.sx, sy = g.sy;
+  // Thermometer
+  const tx = 16 * sx, yT = _c8gThermY(g, _c8g.temp), yu = _c8gThermY(g, 0);
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, tx - 4 * sx, 34 * sy, 8 * sx, yu - 34 * sy + 2, 4 * sx); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(tx, yu + 7 * sy, 7 * sx, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  const rot = _c8g.temp > 150 ? '#dc2626' : _c8g.temp > 60 ? '#ef4444' : '#f87171';
+  ctx.fillStyle = rot;
+  ctx.beginPath(); ctx.arc(tx, yu + 7 * sy, 5 * sx, 0, Math.PI * 2); ctx.fill();
+  const zit = _c8g.phase === 'reiben' ? 0.6 * Math.sin(t * 9) * sy : 0;   // Säule zittert beim Steigen leicht
+  ctx.fillRect(tx - 2 * sx, yT + zit, 4 * sx, yu + 4 * sy - yT - zit);
+  ctx.fillStyle = '#475569'; ctx.font = (9 * sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  [0, 100, 200].forEach(T => {
+    const y = _c8gThermY(g, T);
+    ctx.beginPath(); ctx.moveTo(tx + 4 * sx, y); ctx.lineTo(tx + 8 * sx, y); ctx.stroke();
+    ctx.fillText(T + ' °C', tx + 10 * sx, y);
+  });
+  ctx.restore();
+
+  // Anzeige „Kopf: … °C“ oben
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 56 * sx, 8 * sy, 144 * sx, 24 * sy, 6 * sx); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold ' + (12 * sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(_c8gKopfText(), 128 * sx, 20.5 * sy, 138 * sx);
+  ctx.restore();
+
+  // Wartezeit (nur „nicht reiben“): Uhr mit laufendem Zeiger
+  if (_c8g.stufe === 0 && _c8g.phase !== 'bereit') {
+    const cx = 150 * sx, cy = 64 * sy, r = 16 * sx;
+    ctx.save();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.8;
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    const w = _c8g.warte / _C8G_WARTEN * Math.PI * 2;
+    ctx.fillStyle = 'rgba(59,130,246,0.25)';
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r - 2, -Math.PI / 2, -Math.PI / 2 + w); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#1e293b';
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(w - Math.PI / 2) * (r - 3), cy + Math.sin(w - Math.PI / 2) * (r - 3)); ctx.stroke();
+    ctx.fillStyle = '#1e293b'; ctx.font = 'bold ' + (10 * sx).toFixed(1) + 'px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillText(_c8gWarteText(), cx, cy + r + 4 * sy);
+    ctx.restore();
+  }
+
+  // Schachtel mit Reibfläche
+  ctx.save();
+  ctx.fillStyle = '#fcd34d'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, g.bx, g.by, g.bw, g.bh, 4 * sx); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dc2626';
+  _bioFxRundRect(ctx, g.bx + 10 * sx, g.by + 22 * sy, g.bw - 20 * sx, 16 * sy, 3 * sx); ctx.fill();
+  ctx.fillStyle = '#7c2d12';
+  ctx.fillRect(g.rx, g.by - 1 * sy, g.rw, 8 * sy);
+  ctx.fillStyle = 'rgba(0,0,0,0.25)';
+  for (const [a, b, r] of _c8g.koerner) ctx.fillRect(g.rx + a * g.rw, g.by + b * 6 * sy, r * sx, r * sy);
+  ctx.restore();
+
+  // Reibspur: warmer Schimmer auf der Reibfläche, wo der Kopf entlangfährt
+  if (_c8g.phase === 'reiben') {
+    ctx.save();
+    const s = _c8g.stufe, a = s === 2 ? 0.55 : 0.3;
+    const gr = ctx.createRadialGradient(g.hx, g.by + 2 * sy, 1, g.hx, g.by + 2 * sy, 22 * sx);
+    gr.addColorStop(0, 'rgba(251,146,60,' + a + ')'); gr.addColorStop(1, 'rgba(251,146,60,0)');
+    ctx.fillStyle = gr;
+    ctx.fillRect(g.hx - 24 * sx, g.by - 20 * sy, 48 * sx, 40 * sy);
+    ctx.restore();
+  }
+
+  // Streichholz: Kopf unten auf der Reibfläche, Holz schräg nach rechts oben
+  const ruhig = _c8g.phase !== 'reiben' && !_c8gBrennt() ? Math.sin(t * 1.3) * 1.2 * sy : 0;   // Hand hält das Holz, leichtes Schwanken
+  const hx = g.hx, hy = g.hy + ruhig - (_c8g.phase === 'bereit' ? 6 * sy : 0);
+  const winkel = -0.55 - 0.5 * _c8g.lift;
+  const L = 70 * sx;
+  const ex = hx + Math.cos(winkel) * L, ey = hy + Math.sin(winkel) * L;
+  ctx.save();
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#d6a45c'; ctx.lineWidth = 5 * sx;
+  ctx.beginPath(); ctx.moveTo(hx, hy); ctx.lineTo(ex, ey); ctx.stroke();
+  ctx.strokeStyle = '#b7853f'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(hx + 2 * sx, hy - 2 * sy); ctx.lineTo(ex, ey - 2 * sy); ctx.stroke();
+  // Fingerspitzen am Ende
+  ctx.fillStyle = '#f2c7a5'; ctx.strokeStyle = '#c99373'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(ex + 4 * sx, ey - 4 * sy, 9 * sx, 6 * sy, winkel, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(ex + 2 * sx, ey + 5 * sy, 9 * sx, 6 * sy, winkel, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Kopf: glüht mit der Temperatur
+  const w = Math.max(0, Math.min(1, (_c8g.temp - 20) / 180));
+  if (w > 0.05) {
+    const gl = ctx.createRadialGradient(hx, hy, 1, hx, hy, 14 * sx);
+    gl.addColorStop(0, 'rgba(251,146,60,' + (0.55 * w).toFixed(3) + ')');
+    gl.addColorStop(1, 'rgba(251,146,60,0)');
+    ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(hx, hy, 14 * sx, 0, Math.PI * 2); ctx.fill();
+  }
+  const kr = Math.round(185 - 40 * w), kg = Math.round(28 + 40 * w);
+  ctx.fillStyle = _c8gBrennt() ? '#3f3f46' : 'rgb(' + kr + ',' + kg + ',28)';
+  ctx.beginPath(); ctx.ellipse(hx, hy, 7.5 * sx, 5.5 * sy, winkel, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+
+  // kleines Thermometer direkt am Kopf (Fühler), verbunden mit der Anzeige
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,0.8)'; ctx.setLineDash([3 * sx, 3 * sx]); ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(tx + 5 * sx, 34 * sy); ctx.lineTo(hx - 8 * sx, hy - 10 * sy); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#64748b';
+  ctx.beginPath(); ctx.arc(hx - 8 * sx, hy - 10 * sy, 2.5 * sx, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+
+  // Flamme
+  if (_c8gBrennt()) _c8gFlamme(ctx, hx, hy, g, t);
+
+  // Statuszeile unten links
+  ctx.save();
+  ctx.fillStyle = _c8gBrennt() ? '#c2410c' : '#334155';
+  ctx.font = 'bold ' + (11.5 * sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(_c8gBrennText(), g.bx + g.bw / 2, 240 * sy, 190 * sx);
+  ctx.restore();
+}
+
+/* Ruhige Flamme: wächst in 0,6 s auf, flackert nur in der Form (kein Blinken). */
+function _c8gFlamme(ctx, hx, hy, g, t) {
+  const sx = g.sx, sy = g.sy;
+  const gr = _bioFxEase.raus(Math.min(1, _c8g.fb / 0.6));
+  const fl = 1 + 0.06 * Math.sin(t * 7.1) + 0.04 * Math.sin(t * 11.3);
+  const h = 30 * sy * gr * fl, b = 9 * sx * gr;
+  const wob = 1.5 * sx * Math.sin(t * 5.3);
+  ctx.save();
+  const halo = ctx.createRadialGradient(hx, hy - h * 0.4, 1, hx, hy - h * 0.4, h * 1.1 + 1);
+  halo.addColorStop(0, 'rgba(253,224,71,0.35)'); halo.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(hx, hy - h * 0.4, h * 1.1 + 1, 0, Math.PI * 2); ctx.fill();
+  const zeichne = (k, farbe) => {
+    ctx.fillStyle = farbe;
+    ctx.beginPath();
+    ctx.moveTo(hx, hy + 3 * sy);
+    ctx.bezierCurveTo(hx - b * k, hy, hx - b * k * 0.9, hy - h * k * 0.5, hx + wob * k, hy - h * k);
+    ctx.bezierCurveTo(hx + b * k * 0.9, hy - h * k * 0.5, hx + b * k, hy, hx, hy + 3 * sy);
+    ctx.fill();
+  };
+  zeichne(1, 'rgba(249,115,22,0.9)');
+  zeichne(0.7, 'rgba(250,204,21,0.95)');
+  zeichne(0.35, 'rgba(255,251,235,0.95)');
+  ctx.restore();
+}
+
+function _c8gDiagramm(ctx, g, t) {
+  const sx = g.sx, sy = g.sy;
+  const x0 = g.dx, y0 = g.dy, w = g.dw, h = g.dh;
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold ' + (11 * sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Energiediagramm', x0, y0 - 10 * sy);
+  // Achsen
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0, y0 + h); ctx.lineTo(x0 + w, y0 + h); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0 - 4 * sx, y0 + 6 * sy); ctx.lineTo(x0, y0); ctx.lineTo(x0 + 4 * sx, y0 + 6 * sy); ctx.stroke();
+  ctx.save();
+  ctx.translate(x0 - 6 * sx, y0 + h / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = '#475569'; ctx.font = (9 * sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.fillText('Energie', 0, 0);
+  ctx.restore();
+
+  if (_c8g.stufe !== 2) {
+    ctx.fillStyle = '#94a3b8'; ctx.font = (10 * sx).toFixed(1) + 'px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('Das Diagramm erscheint', x0 + w / 2, y0 + h / 2 - 7 * sy);
+    ctx.fillText('bei „fest reiben“.', x0 + w / 2, y0 + h / 2 + 7 * sy);
+    ctx.restore();
+    return;
+  }
+  // Linie: Start – kleiner Anstieg (2 Kästchen) – tiefer Abfall (20 Kästchen)
+  const xa = x0 + 8 * sx, xb = x0 + 84 * sx, xc = x0 + 104 * sx, xd = x0 + 160 * sx, xe = x0 + w - 6 * sx;
+  const ys = _c8gDiaY(g, 0), yp = _c8gDiaY(g, -2), yend = _c8gDiaY(g, 18);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Startniveau immer sichtbar
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(xa, ys); ctx.lineTo(xb, ys); ctx.stroke();
+  // Anstieg (Farbe wie „Energie hinein“)
+  if (_c8g.auf > 0) {
+    const p = _c8g.auf;
+    ctx.strokeStyle = '#f59e0b';
+    ctx.beginPath(); ctx.moveTo(xb, ys);
+    const n = 16;
+    for (let i = 1; i <= Math.ceil(n * p); i++) {
+      const q = Math.min(p, i / n);
+      ctx.lineTo(xb + (xc - xb) * q, ys + (yp - ys) * Math.sin(q * Math.PI / 2));
+    }
+    ctx.stroke();
+  }
+  // Abfall (Farbe wie „Energie heraus“)
+  if (_c8g.ab > 0) {
+    const p = _c8g.ab;
+    ctx.strokeStyle = '#ea580c';
+    ctx.beginPath(); ctx.moveTo(xc, yp);
+    const n = 30;
+    for (let i = 1; i <= Math.ceil(n * p); i++) {
+      const q = Math.min(p, i / n);
+      // weiche Kuppe oben, dann weit hinunter
+      ctx.lineTo(xc + (xd - xc) * q, yp + (yend - yp) * (1 - Math.cos(q * Math.PI)) / 2);
+    }
+    if (p >= 1) ctx.lineTo(xe, yend);
+    ctx.stroke();
+    // fortschreitender Punkt auf der Linie
+    if (p < 1) {
+      const x = xc + (xd - xc) * p, y = yp + (yend - yp) * (1 - Math.cos(p * Math.PI)) / 2;
+      ctx.fillStyle = '#ea580c'; ctx.beginPath(); ctx.arc(x, y, 3.5 * sx, 0, Math.PI * 2); ctx.fill();
+    }
+  } else if (_c8g.auf > 0 && _c8g.auf < 1) {
+    const p = _c8g.auf, x = xb + (xc - xb) * p, y = ys + (yp - ys) * Math.sin(p * Math.PI / 2);
+    ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(x, y, 3.5 * sx, 0, Math.PI * 2); ctx.fill();
+  }
+  // Beschriftung Anfang und Ende (Anstieg bleibt unbeschriftet)
+  ctx.fillStyle = '#1e293b'; ctx.font = (9.5 * sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+  ctx.fillText('Streichholz und Luft', xa, ys + 5 * sy);
+  if (_c8g.ab >= 1) {
+    ctx.textAlign = 'right'; ctx.textBaseline = 'top';
+    ctx.fillText('Asche und Rauchgase', xe, yend + 4 * sy);
+  }
+  ctx.restore();
+}
+
+function _c8gBalken(ctx, g, t) {
+  const sx = g.sx, sy = g.sy;
+  const reihe = (y, n, voll, farbe, text, aktiv) => {
+    ctx.save();
+    ctx.fillStyle = '#0f172a'; ctx.font = 'bold ' + (10.5 * sx).toFixed(1) + 'px sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+    ctx.fillText(text, g.kx, y - 3 * sy);
+    for (let i = 0; i < n; i++) {
+      const x = g.kx + i * g.kw;
+      const f = Math.max(0, Math.min(1, voll - i));
+      ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+      ctx.fillRect(x + 0.5, y, g.kw - 1.5, g.kh); ctx.strokeRect(x + 0.5, y, g.kw - 1.5, g.kh);
+      if (f > 0) {
+        ctx.fillStyle = farbe;
+        const hh = g.kh * f;
+        ctx.fillRect(x + 0.5, y + g.kh - hh, g.kw - 1.5, hh);
+      }
+    }
+    // das gerade wachsende Kästchen schimmert weich
+    if (aktiv && voll > 0 && voll < n) {
+      const i = Math.floor(voll);
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.25 + 0.2 * Math.sin(t * 5)).toFixed(3) + ')';
+      ctx.fillRect(g.kx + i * g.kw + 0.5, y, g.kw - 1.5, g.kh);
+    }
+    ctx.restore();
+  };
+  reihe(g.y1, _C8G_HERAUS, _c8g.hinein, '#f59e0b', _c8gHineinText(), _c8g.phase === 'reiben');
+  reihe(g.y2, _C8G_HERAUS, _c8g.heraus, '#ea580c', _c8gHerausText(), _c8g.phase === 'flamme');
+}
+
+/* Kurzer Hinweisstreifen links oben über der Schachtel (Zustand aus _bioFx). */
+function _c8gBannerDraw(ctx, g) {
+  const b = _c8g.fx.banner;
+  if (!b) return;
+  const ein = _bioFxEase.raus(_bioFxKlemme(b.alter / 0.35));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((b.alter - (b.dauer - 0.6)) / 0.6));
+  const a = ein * aus;
+  if (a <= 0.01) return;
+  const bw = 146 * g.sx, bh = 24 * g.sy;
+  const x = 56 * g.sx, y = 44 * g.sy + (1 - ein) * 10 * g.sy;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.shadowColor = b.farbe; ctx.shadowBlur = 12;
+  ctx.fillStyle = 'rgba(20,30,50,0.9)';
+  _bioFxRundRect(ctx, x, y, bw, bh, bh / 2); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = b.farbe; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x, y, bw, bh, bh / 2); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = 'bold ' + (11 * g.sx).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(b.text, x + bw / 2, y + bh / 2 + 1, bw - 12 * g.sx);
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER · cb3 „Schwerer nach dem Feuer“ (Kennung chem-stahlwolle)
+// Eine digitale Waage mit feuerfester Schale. Darauf liegt der gewaehlte
+// Stoff (Kerze, Holzspan, Stahlwolle). „▶ anzuenden“: ein Stabfeuerzeug
+// faehrt heran und zuendet an, dann brennt/glueht der Stoff 20 s.
+// Kerze und Holzspan: gelbe Flamme, graue Gase steigen auf (die Waage
+// verliert Masse). Stahlwolle: orange Glut ohne Flamme wandert durch den
+// Bausch, die Faeden werden von silbergrau zu blauschwarz, kleine blaue
+// Punkte (Luft) wandern in den Bausch, nichts steigt auf.
+// Modellwerte (Lehrerteil): Kerze 20 g → 18 g, Holzspan 5 g → 1 g (graue
+// Asche bleibt), Stahlwolle 10 g → 12 g (nicht alles Eisen reagiert – die
+// rechte Kante des Bauschs bleibt silbergrau).
+// Auch an der Kerzen- und Holzflamme wandern (wenige) blaue Luftpunkte in
+// die Flamme – chemisch richtig, passt zum Beispiel auf der Heftseite.
+// Aha (nach der Beobachtung, _bioFx): Bei jeder Aenderung der Anzeige ein
+// Lichtring an der Waage und ein kleiner Pfeil; beim ersten Anstieg der
+// Stahlwolle kurze Zeitlupe. Nach „Fertig.“: Lichtring, Funken, Stempel
+// „vorher g → nachher g“ und eine offene Frage („Woher kommen die 2 g?“),
+// keine Loesung, keine Wertung. Nie im Bild: die Lueckenwoerter des Hefts.
+// ═══════════════════════════════════════════════════════════════════════
+let _c8h = null;
+const _C8H_BRENN = 20;          // s: so lange brennt / glueht der Stoff
+const _C8H_ZUEND = 0.9;         // s: Feuerzeug faehrt heran
+const _C8H_STOFF = {
+  Kerze:      { m0: 20, m1: 18, flamme: true,  nom: 'Die Kerze',      akk: 'die Kerze' },
+  Holzspan:   { m0: 5,  m1: 1,  flamme: true,  nom: 'Der Holzspan',   akk: 'den Holzspan' },
+  Stahlwolle: { m0: 10, m1: 12, flamme: false, nom: 'Die Stahlwolle', akk: 'die Stahlwolle' }
+};
+// Stahlwolle-Bausch
+const _C8H_BX = 212, _C8H_BY = 165, _C8H_BRX = 46, _C8H_BRY = 17;
+const _C8H_F0 = 168, _C8H_F1 = 250;   // Glutfront wandert von links nach rechts
+// Holzspan
+const _C8H_HA = [156, 177], _C8H_HB = [266, 168];
+// Waage
+const _C8H_LX = 211, _C8H_LY = 214;   // Mitte der Anzeige
+
+function _c8hZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _c8hFaeden() {
+  const r = _c8hZufall(38), f = [];
+  for (let i = 0; i < 110; i++) {
+    const w = r() * Math.PI * 2, q = Math.sqrt(r());
+    f.push({ x: _C8H_BX + Math.cos(w) * _C8H_BRX * q, y: _C8H_BY + Math.sin(w) * _C8H_BRY * q,
+             a: r() * Math.PI, l: 9 + r() * 12, k: (r() - 0.5) * 14, d: r() });
+  }
+  return f;
+}
+function _c8hInit() {
+  _c8h = { stoff: 'Kerze', phase: 'bereit', tz: 0, tb: 0, t: 0, nach: 0, schritt: 0,
+           letzt: '', hinweis: '', fx: { teile: [] }, luft: [], gase: [], acc: { gas: 0, luft: 0, funke: 0 },
+           mAnz: 20, pfeil: null, lupe: false, faeden: _c8hFaeden(), rnd: _c8hZufall(7) };
+}
+function _c8hHTML() {
+  const stoffKnopf = s =>
+    `<button class="sim-btn" data-c8h="${s}" onclick="_c8hStoff('${s}')">${s}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wird Stahlwolle beim Verbrennen leichter?</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf der Waage steht eine feuerfeste Schale. Wähle einen Stoff. Lies die Masse ab. Dann zünde ihn an und beobachte die Waage.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8h-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8h-los" onclick="_c8hZuenden()">▶ anzünden</button>
+          <button class="sim-btn" onclick="_c8hNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Stoff</span>
+          <div class="sim-btn-row">
+            ${stoffKnopf('Kerze')}
+            ${stoffKnopf('Holzspan')}
+            ${stoffKnopf('Stahlwolle')}
+          </div>
+        </div>
+        <div class="lmp-status" id="_c8h-status"></div>
+        <div class="fpm-note" id="_c8h-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px"><b>Flamme:</b> Über dem Stoff brennt ein gelbes Feuer.<br><b>Glut:</b> Der Stoff selbst leuchtet orange, ohne Flamme.<br>Blaue Punkte im Bild: Luft.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken: die letzten Sekunden</div>
+        <div class="sim-btn-row">
+          <button class="sim-btn" onclick="_c8hMarke('Kerze')">» Kerze, Ende</button>
+          <button class="sim-btn" onclick="_c8hMarke('Holzspan')">» Holzspan, Ende</button>
+          <button class="sim-btn" onclick="_c8hMarke('Stahlwolle')">» Stahlwolle, Ende</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Kerze &nbsp;|&nbsp; Vergleiche alle drei Stoffe: Kerze, Holzspan und Stahlwolle.</p>
+  </div>`;
+}
+
+// ---- Zustand ---------------------------------------------------------------
+function _c8hDaten() { return _C8H_STOFF[_c8h.stoff]; }
+function _c8hFortschritt() {
+  if (_c8h.phase === 'fertig') return 1;
+  if (_c8h.phase === 'brennt') return Math.max(0, Math.min(1, _c8h.tb / _C8H_BRENN));
+  return 0;
+}
+// Masse ohne Runden (fuer Kerzenhoehe, Holzlaenge)
+function _c8hMasseGenau() {
+  const d = _c8hDaten();
+  return d.m0 + (d.m1 - d.m0) * _c8hFortschritt();
+}
+// Masse in ganzen Gramm, wie die Waage sie zeigt
+function _c8hMasse() {
+  const d = _c8hDaten();
+  if (_c8h.phase === 'fertig') return d.m1;
+  return Math.round(_c8hMasseGenau()) + 0;
+}
+// Staerke des Feuers 0..1: weich an, weich aus
+function _c8hFeuer() {
+  if (_c8h.phase !== 'brennt') return 0;
+  const tb = _c8h.tb;
+  return Math.max(0, Math.min(1, tb / 1.0, (_C8H_BRENN - tb) / 1.5));
+}
+function _c8hFront() { return _C8H_F0 + (_C8H_F1 - _C8H_F0) * _c8hFortschritt(); }
+function _c8hKerzeOben() { return 180 - 46 * _c8hMasseGenau() / 20; }
+function _c8hHolzPunkt(u) {
+  return [_C8H_HA[0] + (_C8H_HB[0] - _C8H_HA[0]) * u, _C8H_HA[1] + (_C8H_HB[1] - _C8H_HA[1]) * u];
+}
+// Wo sitzt das Feuer? (Flammenfuss / Glutfront)
+function _c8hFeuerOrt() {
+  if (_c8h.stoff === 'Kerze') return [_C8H_LX - 1, _c8hKerzeOben() - 5];
+  if (_c8h.stoff === 'Holzspan') { const p = _c8hHolzPunkt(Math.min(0.97, _c8hFortschritt())); return [p[0], p[1] - 3]; }
+  return [_c8hFront() - 4, _C8H_BY];
+}
+// Zuendstelle fuer das Feuerzeug
+function _c8hZuendOrt() {
+  if (_c8h.stoff === 'Kerze') return [_C8H_LX - 3, _c8hKerzeOben() - 8];
+  if (_c8h.stoff === 'Holzspan') return [_C8H_HA[0] + 2, _C8H_HA[1] - 4];
+  return [_C8H_F0 + 2, _C8H_BY];
+}
+
+// ---- Bedienung ---------------------------------------------------------------
+function _c8hFrisch() {
+  _c8h.phase = 'bereit'; _c8h.tz = 0; _c8h.tb = 0; _c8h.nach = 0; _c8h.schritt = 0;
+  _c8h.fx = { teile: [] }; _c8h.zeitlupe = null; _c8h.luft = []; _c8h.gase = [];
+  _c8h.pfeil = null; _c8h.lupe = false; _c8h.hinweis = '';
+  _c8h.mAnz = _c8hDaten().m0;
+}
+function _c8hStoff(s) {
+  if (!_c8h || !_C8H_STOFF[s]) return;
+  _c8h.stoff = s; _c8hFrisch(); _c8hStatus();
+}
+function _c8hNeu() {
+  if (!_c8h) return;
+  _c8hFrisch(); _c8hStatus();
+}
+function _c8hZuenden() {
+  if (!_c8h) return;
+  if (_c8h.phase === 'fertig') {
+    _c8h.hinweis = 'Der Stoff ist schon verbrannt. Drücke „neu“ für ein frisches Stück.';
+    _c8hStatus(); return;
+  }
+  if (_c8h.phase !== 'bereit') return;
+  _c8h.phase = 'zuenden'; _c8h.tz = 0; _c8h.hinweis = '';
+  _c8hStatus();
+}
+// Sprungmarke: Stoff waehlen, anzuenden und bis kurz vor Schluss vorspulen.
+function _c8hMarke(s) {
+  if (!_c8h || !_C8H_STOFF[s]) return;
+  _c8h.stoff = s; _c8hFrisch();
+  _c8h.phase = 'brennt'; _c8h.tb = _C8H_BRENN - 1.6; _c8h.lupe = true;
+  _c8h.mAnz = _c8hMasse();
+  _c8h.hinweis = 'Vorgespult: die letzten Sekunden. Am Anfang zeigte die Waage „Masse: ' +
+    _c8hDaten().m0 + ' g“.';
+  _c8hStatus();
+}
+
+function _c8hZeile() {
+  const d = _c8hDaten(), m = _c8hMasse();
+  if (_c8h.phase === 'bereit')
+    return d.nom + ' liegt auf der Waage. Masse: ' + m + ' g. Drücke „▶ anzünden“.';
+  if (_c8h.phase === 'zuenden') return 'Die Flamme zündet ' + d.akk + ' an …';
+  if (_c8h.phase === 'brennt') {
+    if (d.flamme) return d.nom + ' brennt · gelbe Flamme · Masse: ' + m + ' g';
+    return d.nom + ' glüht · Glut, keine Flamme · Masse: ' + m + ' g';
+  }
+  if (_c8h.stoff === 'Kerze') return 'Fertig. Masse: ' + m + ' g · Es brannte eine gelbe Flamme.';
+  if (_c8h.stoff === 'Holzspan') return 'Fertig. Masse: ' + m + ' g · Es brannte eine gelbe Flamme, graue Asche bleibt.';
+  return 'Fertig. Masse: ' + m + ' g · Glut, keine Flamme.';
+}
+function _c8hStatus() {
+  if (!_c8h) return;
+  const z = _c8hZeile();
+  const el = document.getElementById('_c8h-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _c8h.letzt = z;
+  const h = document.getElementById('_c8h-hinweis');
+  if (h) h.textContent = _c8h.hinweis;
+  document.querySelectorAll('[data-c8h]').forEach(b =>
+    b.classList.toggle('primary', b.getAttribute('data-c8h') === _c8h.stoff));
+  const los = document.getElementById('_c8h-los');
+  if (los) los.classList.toggle('primary', _c8h.phase === 'bereit');
+}
+
+// ---- Ablauf ------------------------------------------------------------------
+function _c8hUpdate(dt) {
+  if (!_c8h) return;
+  dt = _bioFxDt(dt);
+  _c8h.t += dt;
+  const zl = _bioFxZeitlupeFaktor(_c8h, dt);
+  const d = dt * zl;
+  if (_c8h.phase === 'zuenden') {
+    _c8h.tz += d;
+    if (_c8h.tz >= _C8H_ZUEND) { _c8h.phase = 'brennt'; _c8h.tb = 0; }
+  } else if (_c8h.phase === 'brennt') {
+    _c8h.tb += d;
+    _c8hTeilchenNeu(d);
+    const m = _c8hMasse();
+    if (m !== _c8h.mAnz) _c8hAnzeigeSprung(m);
+    if (_c8h.tb >= _C8H_BRENN) {
+      _c8h.tb = _C8H_BRENN; _c8h.phase = 'fertig'; _c8h.nach = 0; _c8h.schritt = 0;
+      _c8h.mAnz = _c8hDaten().m1;
+      // letzter Rauchfaden
+      if (_c8hDaten().flamme) { const o = _c8hFeuerOrt(); _c8hGas(o[0], o[1] - 6, 0.6); }
+    }
+  } else if (_c8h.phase === 'fertig') {
+    _c8h.nach += dt;
+    _c8hNachher();
+  }
+  _c8hTeilchenBewegen(d);
+  if (_c8h.pfeil) { _c8h.pfeil.alter += dt; if (_c8h.pfeil.alter > 1.2) _c8h.pfeil = null; }
+  _bioFxAlleUpdate(_c8h.fx, dt);
+  if (_c8hZeile() !== _c8h.letzt) _c8hStatus();
+}
+// Die Waage springt auf den naechsten Grammwert
+function _c8hAnzeigeSprung(m) {
+  const auf = m > _c8h.mAnz;
+  _c8h.mAnz = m;
+  _c8h.pfeil = { auf, alter: 0 };
+  _bioFxWelle(_c8h.fx.teile, _C8H_LX, _C8H_LY, auf ? '#60a5fa' : '#94a3b8', 46);
+  if (auf && !_c8h.lupe) {                 // erster Anstieg: kurz langsamer
+    _c8h.lupe = true;
+    _bioFxZeitlupe(_c8h, 0.35, 1.3);
+  }
+}
+function _c8hNachher() {
+  const d = _c8hDaten(), fx = _c8h.fx, t = _c8h.nach, auf = d.m1 > d.m0;
+  if (_c8h.schritt === 0 && t >= 0.3) {
+    _c8h.schritt = 1;
+    _bioFxWelle(fx.teile, _C8H_LX, _C8H_LY, auf ? '#60a5fa' : '#94a3b8', 70);
+    _bioFxFunken(fx.teile, _C8H_LX, _C8H_LY - 12, auf ? 10 : 5,
+      auf ? ['#93c5fd', '#ffd84d', '#ffffff', '#bfdbfe'] : ['#e5e7eb', '#cbd5e1', '#ffffff']);
+  }
+  if (_c8h.schritt === 1 && t >= 0.8) {
+    _c8h.schritt = 2;
+    _bioFxStempel(fx, d.m0 + ' g → ' + d.m1 + ' g', _C8H_LX, 104, auf ? '#1d4ed8' : '#475569');
+  }
+  if (_c8h.schritt === 2 && t >= 1.5) {
+    _c8h.schritt = 3;
+    const diff = Math.abs(d.m1 - d.m0);
+    _bioFxBanner(fx, auf ? 'Woher kommen die ' + diff + ' g?' : 'Wohin sind die ' + diff + ' g?',
+      4.0, auf ? '#93c5fd' : '#cbd5e1');
+  }
+}
+
+// ---- Gase und Luftpunkte ---------------------------------------------------------
+function _c8hGas(x, y, st) {
+  const r = _c8h.rnd;
+  _c8h.gase.push({ x: x + (r() - 0.5) * 4, y, vx: (r() - 0.5) * 10, alter: 0,
+                   leben: 2.2 + r() * 0.8, st: st || 1, ph: r() * 6 });
+}
+function _c8hTeilchenNeu(d) {
+  const f = _c8hFeuer(), r = _c8h.rnd, a = _c8h.acc, dat = _c8hDaten();
+  if (f <= 0) return;
+  const o = _c8hFeuerOrt();
+  if (dat.flamme) {
+    a.gas += d * 7 * f;
+    while (a.gas >= 1) { a.gas -= 1; _c8hGas(o[0], o[1] - 26 * f, 1); }
+  }
+  a.luft += d * (dat.flamme ? 3 : 7) * f;
+  while (a.luft >= 1) {
+    a.luft -= 1;
+    // Ziel: Flammenfuss bzw. eine Stelle an der Glutfront im Bausch
+    const zx = dat.flamme ? o[0] + (r() - 0.5) * 6 : o[0] - r() * 10;
+    const zy = dat.flamme ? o[1] - 2 : _C8H_BY + (r() - 0.5) * 2 * _C8H_BRY * 0.8;
+    const w = Math.PI + r() * Math.PI;                       // von oben und von den Seiten
+    const ab = 70 + r() * 45;
+    const sx = zx + Math.cos(w) * ab * 1.3, sy = Math.min(176, zy + Math.sin(w) * ab * 0.8);
+    _c8h.luft.push({ sx, sy, zx, zy, alter: 0, dauer: 1.4 + r() * 0.6, ph: r() * 6 });
+  }
+  if (!dat.flamme) {                                         // ein paar ruhige Glutfunken
+    a.funke += d * 1.5 * f;
+    while (a.funke >= 1) { a.funke -= 1;
+      _bioFxFunken(_c8h.fx.teile, o[0], o[1] - 6, 2, ['#ffb14d', '#ffd84d']); }
+  }
+}
+function _c8hTeilchenBewegen(d) {
+  for (let i = _c8h.gase.length - 1; i >= 0; i--) {
+    const g = _c8h.gase[i];
+    g.alter += d;
+    if (g.alter >= g.leben) { _c8h.gase.splice(i, 1); continue; }
+    g.y -= 26 * d; g.x += (g.vx + Math.sin(g.alter * 2 + g.ph) * 6) * d;
+  }
+  for (let i = _c8h.luft.length - 1; i >= 0; i--) {
+    const p = _c8h.luft[i];
+    p.alter += d;
+    if (p.alter >= p.dauer) _c8h.luft.splice(i, 1);          // in den Stoff aufgenommen
+  }
+}
+
+// ---- Zeichnen ------------------------------------------------------------------
+function _c8hMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _c8hFlamme(ctx, x, y, s, t) {
+  if (s <= 0.01) return;
+  const fl = 1 + 0.07 * Math.sin(t * 9) + 0.04 * Math.sin(t * 5.3);   // ruhiges Flackern (< 1,5 Hz)
+  const h = 30 * s * fl, b = 7 * s;
+  ctx.save();
+  const halo = ctx.createRadialGradient(x, y - h * 0.45, 2, x, y - h * 0.45, h * 1.1);
+  halo.addColorStop(0, 'rgba(255,214,90,' + (0.35 * s).toFixed(3) + ')');
+  halo.addColorStop(1, 'rgba(255,214,90,0)');
+  ctx.fillStyle = halo;
+  ctx.beginPath(); ctx.arc(x, y - h * 0.45, h * 1.1, 0, Math.PI * 2); ctx.fill();
+  const g = ctx.createLinearGradient(x, y, x, y - h);
+  g.addColorStop(0, '#fff7cc'); g.addColorStop(0.45, '#ffd23f'); g.addColorStop(1, '#ff9f1c');
+  ctx.fillStyle = g;
+  const wx = Math.sin(t * 3.1) * 1.5 * s;
+  ctx.beginPath();
+  ctx.moveTo(x + wx, y - h);
+  ctx.quadraticCurveTo(x + b * 1.5, y - h * 0.35, x, y);
+  ctx.quadraticCurveTo(x - b * 1.5, y - h * 0.35, x + wx, y - h);
+  ctx.fill();
+  ctx.fillStyle = 'rgba(96,165,250,0.55)';                   // blauer Flammenfuss
+  ctx.beginPath(); ctx.ellipse(x, y - 2 * s, b * 0.6, 3 * s, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function _c8hFeuerzeug(ctx) {
+  let u = 0;
+  if (_c8h.phase === 'zuenden') u = _bioFxEase.sanft(Math.min(1, _c8h.tz / 0.5));
+  else if (_c8h.phase === 'brennt' && _c8h.tb < 0.7) u = 1 - _bioFxEase.sanft(_c8h.tb / 0.7);
+  if (u <= 0.001) return;
+  const z = _c8hZuendOrt();
+  const tipX = z[0] - 10 - (1 - u) * 150, tipY = z[1] + 2;
+  ctx.save();
+  ctx.translate(tipX, tipY); ctx.rotate(-0.18);
+  ctx.fillStyle = '#9ca3af'; ctx.fillRect(-58, -2.5, 58, 5);            // Rohr
+  ctx.fillStyle = '#dc2626'; _bioFxRundRect(ctx, -104, -7, 50, 14, 5); ctx.fill();   // Griff
+  ctx.fillStyle = '#7f1d1d'; ctx.fillRect(-72, 5, 8, 6);                 // Druecker
+  ctx.restore();
+  _c8hFlamme(ctx, tipX + 5, tipY + 3, 0.35, _c8h.t);
+}
+function _c8hKerze(ctx) {
+  const oben = _c8hKerzeOben(), x0 = _C8H_LX - 14, x1 = _C8H_LX + 12, unten = 181;
+  const g = ctx.createLinearGradient(x0, 0, x1, 0);
+  g.addColorStop(0, '#f3ead3'); g.addColorStop(0.5, '#fffaf0'); g.addColorStop(1, '#e8dcc0');
+  ctx.fillStyle = g;
+  ctx.fillRect(x0, oben, x1 - x0, unten - oben);
+  ctx.fillStyle = '#fbf3de';
+  ctx.beginPath(); ctx.ellipse((x0 + x1) / 2, oben, (x1 - x0) / 2, 3, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = '#d6c7a2'; ctx.lineWidth = 1; ctx.strokeRect(x0, oben, x1 - x0, unten - oben);
+  const f = _c8hFeuer(), p = _c8hFortschritt();
+  if (p > 0) {                                                      // Wachstropfen
+    ctx.fillStyle = '#f8efd9';
+    ctx.beginPath(); ctx.ellipse(x0 + 1, oben + 6 + 10 * p, 2, 4 + 5 * p, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.strokeStyle = p > 0 ? '#1f2937' : '#4b5563'; ctx.lineWidth = 1.6;  // Docht
+  ctx.beginPath(); ctx.moveTo(_C8H_LX - 1, oben); ctx.lineTo(_C8H_LX - 1 + (p > 0 ? 1.5 : 0), oben - 6); ctx.stroke();
+  _c8hFlamme(ctx, _C8H_LX - 1, oben - 5, f, _c8h.t);
+}
+function _c8hHolz(ctx) {
+  const p = _c8hFortschritt(), f = _c8hFeuer();
+  // graue Asche, wo das Holz schon verbrannt ist
+  ctx.fillStyle = '#9ca3af';
+  for (let u = 0.02; u < p - 0.05; u += 0.055) {
+    const q = _c8hHolzPunkt(u);
+    ctx.beginPath(); ctx.ellipse(q[0], 179 - (q[1] - 168) * 0.1, 5, 2.4, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.fillStyle = '#cbd5e1';
+  for (let u = 0.05; u < p - 0.08; u += 0.11) {
+    const q = _c8hHolzPunkt(u);
+    ctx.beginPath(); ctx.ellipse(q[0] + 2, 177.5 - (q[1] - 168) * 0.1, 2.5, 1.4, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  if (p >= 0.999) return;
+  // verkohlter Abschnitt direkt hinter der Front, dann das helle Holz
+  const a = _c8hHolzPunkt(Math.max(0, p - 0.06)), m = _c8hHolzPunkt(p), b = _c8hHolzPunkt(1);
+  ctx.save(); ctx.lineCap = 'round';
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 6;
+  if (p > 0) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(m[0], m[1]); ctx.stroke(); }
+  ctx.strokeStyle = '#c8955a'; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.moveTo(m[0], m[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+  ctx.strokeStyle = 'rgba(120,80,40,0.45)'; ctx.lineWidth = 1;     // Maserung
+  ctx.beginPath(); ctx.moveTo(m[0], m[1] - 1); ctx.lineTo(b[0], b[1] - 1); ctx.stroke();
+  if (f > 0) {                                                      // Glutrand an der Front
+    ctx.strokeStyle = 'rgba(255,120,30,' + (0.7 * f).toFixed(3) + ')'; ctx.lineWidth = 6;
+    const c = _c8hHolzPunkt(Math.min(1, p + 0.015));
+    ctx.beginPath(); ctx.moveTo(m[0], m[1]); ctx.lineTo(c[0], c[1]); ctx.stroke();
+  }
+  ctx.restore();
+  const o = _c8hFeuerOrt();
+  _c8hFlamme(ctx, o[0], o[1], f, _c8h.t);
+}
+function _c8hStahl(ctx) {
+  const fr = _c8hFront(), f = _c8hFeuer(), t = _c8h.t;
+  const an = _c8h.phase === 'brennt' || _c8h.phase === 'fertig';
+  // Schatten des Bauschs
+  ctx.fillStyle = 'rgba(71,85,105,0.18)';
+  ctx.beginPath(); ctx.ellipse(_C8H_BX, _C8H_BY + 2, _C8H_BRX + 4, _C8H_BRY + 3, 0, 0, Math.PI * 2); ctx.fill();
+  if (f > 0) {                                                      // orange Glut, ruhig pulsierend
+    const puls = 0.85 + 0.15 * Math.sin(t * Math.PI * 2 * 0.8);
+    const g = ctx.createRadialGradient(fr - 6, _C8H_BY, 2, fr - 6, _C8H_BY, 30);
+    g.addColorStop(0, 'rgba(255,150,40,' + (0.75 * f * puls).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(255,120,30,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(fr - 6, _C8H_BY, 30, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 1.3;
+  for (const s of _c8h.faeden) {
+    const dx = an ? fr - s.x : -1;
+    let farbe;
+    if (dx < 0) farbe = _c8hMisch('#9aa3ad', '#d5dbe1', s.d);           // silbergrau
+    else if (dx < 12 && f > 0) farbe = _c8hMisch('#ff8a1f', '#ffd166', s.d * (0.6 + 0.4 * Math.sin(t * 2 + s.a)));
+    else farbe = _c8hMisch('#6b7a8f', s.d < 0.5 ? '#2a3345' : '#1e2a44', dx / 26);   // blauschwarz
+    ctx.strokeStyle = farbe;
+    const cx = Math.cos(s.a) * s.l / 2, cy = Math.sin(s.a) * s.l / 2 * 0.6;
+    ctx.beginPath();
+    ctx.moveTo(s.x - cx, s.y - cy);
+    ctx.quadraticCurveTo(s.x + s.k * 0.4, s.y + s.k * 0.3, s.x + cx, s.y + cy);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+function _c8hWaage(ctx) {
+  const t = _c8h.t;
+  // Gehaeuse
+  ctx.fillStyle = '#e5e7eb'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 118, 194, 186, 38, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1';
+  _bioFxRundRect(ctx, 108, 187, 206, 8, 3); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.stroke();
+  // Anzeige
+  const lx = _C8H_LX - 54, ly = 201, lw = 108, lh = 26;
+  const glanz = _c8h.phase === 'fertig' && _c8h.nach > 0.3 && _c8h.nach < 3.2;
+  ctx.save();
+  if (glanz) {
+    const puls = 0.5 + 0.5 * Math.sin((_c8h.nach - 0.3) * Math.PI * 2 * 0.8);
+    const auf = _c8hDaten().m1 > _c8hDaten().m0;
+    ctx.shadowColor = auf ? 'rgba(96,165,250,0.9)' : 'rgba(148,163,184,0.9)';
+    ctx.shadowBlur = 8 + 10 * puls;
+  }
+  ctx.fillStyle = '#d4ecd0';
+  _bioFxRundRect(ctx, lx, ly, lw, lh, 4); ctx.fill();
+  ctx.restore();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, lx, ly, lw, lh, 4); ctx.stroke();
+  ctx.fillStyle = '#0f2a17'; ctx.font = '700 15px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Masse: ' + _c8hMasse() + ' g', _C8H_LX, ly + lh / 2 + 1);
+  ctx.textBaseline = 'alphabetic';
+  // kleiner Pfeil bei jeder Aenderung
+  const pf = _c8h.pfeil;
+  if (pf) {
+    const a = 1 - pf.alter / 1.2, y = 214 - pf.alter * 10, x = lx + lw + 12;
+    ctx.save(); ctx.globalAlpha = Math.max(0, a);
+    ctx.fillStyle = pf.auf ? '#2563eb' : '#64748b';
+    ctx.beginPath();
+    if (pf.auf) { ctx.moveTo(x, y - 6); ctx.lineTo(x + 6, y + 4); ctx.lineTo(x - 6, y + 4); }
+    else        { ctx.moveTo(x, y + 6); ctx.lineTo(x + 6, y - 4); ctx.lineTo(x - 6, y - 4); }
+    ctx.closePath(); ctx.fill(); ctx.restore();
+  }
+  // Schale (Keramik)
+  ctx.fillStyle = '#efe9df'; ctx.strokeStyle = '#b8ad9c'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(_C8H_LX, 183, 64, 8, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#e2d9cb';
+  ctx.beginPath(); ctx.ellipse(_C8H_LX, 181.5, 56, 5.5, 0, 0, Math.PI * 2); ctx.fill();
+  void t;
+}
+function _c8hDraw(ctx, cv) {
+  if (!_c8h) return;
+  const W = cv.width, H = cv.height, t = _c8h.t, dat = _c8hDaten();
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef3f8'); bg.addColorStop(1, '#dde6ef');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = 'rgba(148,163,184,0.18)'; ctx.lineWidth = 1;     // Fliesen
+  for (let x = 0; x < W; x += 30) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 232); ctx.stroke(); }
+  for (let y = 0; y < 232; y += 30) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  ctx.fillStyle = '#b9a07a'; ctx.fillRect(0, 232, W, H - 232);        // Labortisch
+  ctx.fillStyle = '#8d7550'; ctx.fillRect(0, 232, W, 2);
+
+  // Luft ist ueberall: ruhig treibende blaue Punkte (auch vor dem Anzuenden)
+  for (let k = 0; k < 12; k++) {
+    const x = 30 + (k * 97) % 360 + Math.sin(t * 0.45 + k * 1.7) * 18;
+    const y = 40 + (k * 53) % 120 + Math.cos(t * 0.37 + k * 2.3) * 12;
+    ctx.fillStyle = 'rgba(37,99,235,0.35)';
+    ctx.beginPath(); ctx.arc(x, y, 2.3, 0, Math.PI * 2); ctx.fill();
+  }
+  _c8hWaage(ctx);
+  // Luftpunkte, Gase und Feuerzeug vor dem Stoff, damit man sie wandern sieht
+  if (_c8h.stoff === 'Kerze') _c8hKerze(ctx);
+  else if (_c8h.stoff === 'Holzspan') _c8hHolz(ctx);
+  else _c8hStahl(ctx);
+
+  // graue Gase
+  for (const g of _c8h.gase) {
+    const u = g.alter / g.leben;
+    ctx.fillStyle = 'rgba(100,110,120,' + (0.32 * g.st * (1 - u) * Math.min(1, u * 6)).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(g.x, g.y, 3 + 9 * u, 0, Math.PI * 2); ctx.fill();
+  }
+  // blaue Luftpunkte, die in den Stoff wandern
+  for (const p of _c8h.luft) {
+    const u = _bioFxEase.sanft(Math.min(1, p.alter / p.dauer));
+    const x = p.sx + (p.zx - p.sx) * u + Math.sin(p.alter * 4 + p.ph) * 2 * (1 - u);
+    const y = p.sy + (p.zy - p.sy) * u;
+    const a = Math.min(1, p.alter * 4) * (u > 0.8 ? (1 - u) / 0.2 : 1);
+    ctx.fillStyle = 'rgba(37,99,235,' + (0.9 * a).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(x, y, 2.6 * (u > 0.8 ? 0.5 + 0.5 * (1 - u) / 0.2 : 1), 0, Math.PI * 2); ctx.fill();
+  }
+  _c8hFeuerzeug(ctx);
+
+  // Legende oben rechts
+  ctx.textAlign = 'left'; ctx.font = '700 11px sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.8)'; _bioFxRundRect(ctx, W - 78, 54, 68, dat.flamme ? 38 : 22, 6); ctx.fill();
+  ctx.fillStyle = '#2563eb'; ctx.beginPath(); ctx.arc(W - 66, 65, 3.5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#1e293b'; ctx.fillText('Luft', W - 56, 69);
+  if (dat.flamme) {
+    ctx.fillStyle = 'rgba(100,110,120,0.7)'; ctx.beginPath(); ctx.arc(W - 66, 81, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#1e293b'; ctx.fillText('Gase', W - 56, 85);
+  }
+  // Uhr oben links
+  if (_c8h.phase !== 'bereit') {
+    const s = _c8h.phase === 'zuenden' ? 0 : Math.floor(_c8h.tb + 1e-9);
+    ctx.fillStyle = 'rgba(255,255,255,0.85)'; _bioFxRundRect(ctx, 10, 54, 78, 22, 6); ctx.fill();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+    ctx.fillText('Zeit: ' + s + ' s', 18, 69);
+    if (_c8h.zeitlupe) { ctx.fillStyle = '#2563eb'; ctx.fillText('Zeitlupe', 18, 90); }
+  }
+  // Stoff unten links
+  ctx.fillStyle = '#3b2f1c'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Stoff: ' + _c8h.stoff, 12, H - 5);
+  _bioFxAlleDraw(ctx, _c8h.fx);
+  void t;
+}
+// ═══════════════════════════════════════════════════════
+// CHEMIE 8 FÖRDER · KUGELN IM GESCHLOSSENEN GLAS   (Förderheft Chemie 8 · cb4)
+// Daltons Kugelmodell: Bei einer Reaktion ordnen sich die Kugeln nur neu.
+// Im fest verschlossenen Glas zeigt die Waage deshalb vorher und nachher
+// denselben Wert.
+// Modellwerte (Lehrerteil): Glas mit Inhalt 60 g / 40 g / 80 g.
+// Kugelzahlen chemisch stimmig:
+//   4 Eisen + 3 Sauerstoff-Paare  → 2 Gruppen Eisenoxid (je 2 grau, 3 rot)
+//   3 Holzkohle + 3 Sauerstoff-Paare → 3 Gruppen Kohlenstoffdioxid (rot-schwarz-rot)
+//   4 Kupfer + 2 Sauerstoff-Paare → 4 Gruppen Kupferoxid (je 1 braun, 1 rot)
+// Aha: Die Holzkohle verschwindet sichtbar, die neuen Gruppen schweben als Gas
+// im Glas – doch die Anzeige und die Linie im Waagen-Verlauf rühren sich nicht.
+// Danach leuchtet die Anzeige auf, und die Kugeln werden Farbe für Farbe
+// nachgezählt (vorher- und nachher-Zeile stehen untereinander).
+// Nicht am Bildschirm (Lückenwörter): die Wörter für die kleinsten Kugeln, für
+// Stoffe aus einer oder zwei Sorten, und das Wort für „nicht anders“.
+// Effekte aus _bioFx (kurz, ruhig, kein Blinken, keine Wertung).
+// ═══════════════════════════════════════════════════════
+let _c8i = null;
+const _C8I_T = 3.6;                                    // Dauer der Reaktion in s
+const _C8I_ART = {
+  Fe: { farbe: '#9aa3ad', hell: '#e6eaee', rand: '#58616b', r: 8.5, name: 'Eisen',     wort: 'graue' },
+  C:  { farbe: '#262626', hell: '#8a8a8a', rand: '#000000', r: 8.0, name: 'Holzkohle', wort: 'schwarze' },
+  Cu: { farbe: '#c0773f', hell: '#f3c9a0', rand: '#7a4520', r: 8.5, name: 'Kupfer',    wort: 'braune' },
+  O:  { farbe: '#e0483c', hell: '#ffc2bb', rand: '#962a22', r: 7.0, name: 'Sauerstoff', wort: 'rote' }
+};
+const _C8I_STOFFE = [
+  { name: 'Eisen + Sauerstoff',     m: 'Fe', nM: 4, nP: 3, masse: 60, produkt: 'Eisenoxid' },
+  { name: 'Holzkohle + Sauerstoff', m: 'C',  nM: 3, nP: 3, masse: 40, produkt: 'Kohlenstoffdioxid' },
+  { name: 'Kupfer + Sauerstoff',    m: 'Cu', nM: 4, nP: 2, masse: 80, produkt: 'Kupferoxid' }
+];
+// Glas (Innenraum) und Klumpen-Mitte
+const _C8I_G = { x0: 62, x1: 238, y0: 34, y1: 156 };
+const _C8I_LX = 150, _C8I_LY = 146;
+// Plätze für die Sauerstoff-Paare vor der Reaktion
+const _C8I_PLATZ = [[96, 60], [150, 52], [204, 64], [122, 98], [182, 100]];
+
+function _c8iInit() {
+  _c8i = { wahl: 0, phase: 'vor', t: 0, rt: 0, nt: 0, schritt: 0, fx: { teile: [] },
+           zeitlupe: null, atome: [], rg: [], pg: [], zHell: [-9, -9], leuchtAb: -9,
+           letzt: '', funkeT: 0 };
+  _c8iBaue();
+}
+function _c8iZufall(a, b) { return a + Math.random() * (b - a); }
+
+// Baut das Glas für die gewählten Stoffe: Kugeln, Ausgangs- und Endgruppen.
+function _c8iBaue() {
+  const s = _C8I_STOFFE[_c8i.wahl];
+  const atome = [], rg = [], pg = [];
+  // Ausgangsstoff 1: Klumpen am Boden (fest)
+  const klumpen = s.nM === 4 ? [[-17, 0], [0, 0], [17, 0], [-8.5, -15]] : [[-8.5, 0], [8.5, 0], [0, -15]];
+  rg.push({ x: _C8I_LX, y: _C8I_LY, vx: 0, vy: 0, w: 0, dw: 0, fest: true, R: 26, off: klumpen });
+  const metall = [];
+  for (let i = 0; i < s.nM; i++) {
+    metall.push(atome.length);
+    atome.push({ art: s.m, rg: 0, ri: i, pg: -1, pi: 0, d: 0.12 + 0.1 * i });
+  }
+  // Ausgangsstoff 2: Sauerstoff, immer als Paar
+  const sauer = [];
+  for (let p = 0; p < s.nP; p++) {
+    const pl = _C8I_PLATZ[p];
+    const w = _c8iZufall(0, Math.PI), v = _c8iZufall(14, 24), rich = _c8iZufall(0, 2 * Math.PI);
+    rg.push({ x: pl[0] + _c8iZufall(-6, 6), y: pl[1] + _c8iZufall(-4, 4),
+              vx: Math.cos(rich) * v, vy: Math.sin(rich) * v, w, dw: _c8iZufall(-0.8, 0.8),
+              fest: false, R: 15, off: [[-7, 0], [7, 0]] });
+    for (let k = 0; k < 2; k++) {
+      sauer.push(atome.length);
+      atome.push({ art: 'O', rg: rg.length - 1, ri: k, pg: -1, pi: 0, d: 0.05 * sauer.length });
+    }
+  }
+  // Endstoff: neue Gruppen
+  const setze = (ai, g, i) => { atome[ai].pg = g; atome[ai].pi = i; };
+  if (s.m === 'Fe') {
+    const off = [[-27, 5], [-13.5, -5], [0, 5], [13.5, -5], [27, 5]];   // rot-grau-rot-grau-rot
+    const plan = [[sauer[0], metall[0], sauer[2], metall[1], sauer[1]],
+                  [sauer[3], metall[2], sauer[4], metall[3], sauer[5]]];
+    plan.forEach((liste, g) => {
+      pg.push({ x: g ? 184 : 116, y: 146, vx: 0, vy: 0, w: 0, dw: 0, fest: true, R: 35, off });
+      liste.forEach((ai, i) => setze(ai, g, i));
+    });
+  } else if (s.m === 'C') {
+    const off = [[-15, 0], [0, 0], [15, 0]];                             // rot-schwarz-rot
+    const plan = [[sauer[0], metall[0], sauer[3]], [sauer[2], metall[1], sauer[5]],
+                  [sauer[4], metall[2], sauer[1]]];
+    const start = [[110, 116], [150, 94], [190, 118]];
+    plan.forEach((liste, g) => {
+      const rich = _c8iZufall(0, 2 * Math.PI), v = _c8iZufall(12, 20);
+      pg.push({ x: start[g][0], y: start[g][1], vx: Math.cos(rich) * v, vy: Math.sin(rich) * v,
+                w: _c8iZufall(-0.5, 0.5), dw: _c8iZufall(-0.6, 0.6), fest: false, R: 23, off, gas: true });
+      liste.forEach((ai, i) => setze(ai, g, i));
+    });
+  } else {
+    const off = [[-8, 0], [8, 0]];                                      // braun-rot
+    for (let g = 0; g < 4; g++) {
+      pg.push({ x: 150 + [-57, -19, 19, 57][g], y: 148, vx: 0, vy: 0, w: 0, dw: 0, fest: true, R: 16, off });
+      setze(metall[g], g, 0); setze(sauer[g], g, 1);
+    }
+  }
+  _c8i.atome = atome; _c8i.rg = rg; _c8i.pg = pg;
+}
+function _c8iFxLeer() {
+  _c8i.fx = { teile: [] }; _c8i.zeitlupe = null; _c8i.schritt = 0; _c8i.nt = 0;
+  _c8i.zHell = [-9, -9]; _c8i.leuchtAb = -9; _c8i.funkeT = 0;
+}
+
+function _c8iHTML() {
+  const k = (d, f, txt, cls) => `<button class="sim-btn${cls || ''}" data-c8i="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Kugeln im geschlossenen Glas</h3>
+    <div class="fpm-note" style="margin-top:2px">Herr Keller hat zwei Stoffe in ein Glas gegeben und das Glas fest verschlossen. Nichts kommt hinein, nichts kommt heraus. Das Glas steht auf einer Waage.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8i-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8i-los" onclick="_c8iReaktion()">▶ Reaktion</button>
+          <button class="sim-btn" onclick="_c8iNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Stoffe im Glas</span>
+          <div class="sim-btn-row">
+            ${k('s0', '_c8iStoffe(0)', 'Eisen + Sauerstoff')}
+            ${k('s1', '_c8iStoffe(1)', 'Holzkohle + Sauerstoff')}
+            ${k('s2', '_c8iStoffe(2)', 'Kupfer + Sauerstoff')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_c8i-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_c8i-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Jede Farbe steht für eine Sorte Kugeln: <b>grau</b> Eisen, <b>schwarz</b> Holzkohle, <b>braun</b> Kupfer, <b>rot</b> Sauerstoff. Im Sauerstoff-Gas hängen immer zwei rote Kugeln als Paar zusammen.</div>
+        <div class="fpm-note" style="margin-top:6px">Die Kugeln sind riesig gezeichnet. In Wirklichkeit sind sie so klein, dass niemand sie sehen kann.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (Ende der Reaktion)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('m0', '_c8iMarke(0)', 'Eisen · nachher')}
+          ${k('m1', '_c8iMarke(1)', 'Holzkohle · nachher')}
+          ${k('m2', '_c8iMarke(2)', 'Kupfer · nachher')}
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Eisen + Sauerstoff &nbsp;|&nbsp; Lies zuerst die Waage ab. Dann drücke „▶ Reaktion“.</p>
+  </div>`;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _c8iStoffe(i) {
+  if (!_c8i) return;
+  _c8i.wahl = Math.max(0, Math.min(2, Number(i) || 0));
+  _c8i.phase = 'vor'; _c8i.rt = 0;                     // andere Stoffe = neues Glas
+  _c8iFxLeer(); _c8iBaue(); _c8iStatus();
+}
+function _c8iReaktion() {
+  if (!_c8i || _c8i.phase !== 'vor') { _c8iStatus(); return; }
+  _c8iFxLeer();
+  _c8i.phase = 'lauf'; _c8i.rt = 0;
+  _c8iStatus();
+}
+function _c8iNeu() {
+  if (!_c8i) return;
+  _c8i.phase = 'vor'; _c8i.rt = 0;
+  _c8iFxLeer(); _c8iBaue(); _c8iStatus();
+}
+// Sprungmarke: Stoffe wählen und gleich ans Ende der Reaktion. Das Nachher läuft wie sonst.
+function _c8iMarke(i) {
+  if (!_c8i) return;
+  _c8i.wahl = Math.max(0, Math.min(2, Number(i) || 0));
+  _c8iFxLeer(); _c8iBaue();
+  _c8i.rt = _C8I_T; _c8i.phase = 'nach'; _c8i.nt = 0; _c8i.schritt = 0;
+  _c8iStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+// Die Kugeln werden wirklich gezählt – aus der Liste, nicht aus einer Tabelle.
+function _c8iZaehle() {
+  const s = _C8I_STOFFE[_c8i.wahl];
+  let nM = 0, nO = 0;
+  for (const a of _c8i.atome) { if (a.art === 'O') nO++; else if (a.art === s.m) nM++; }
+  return { nM, nO, text: _C8I_ART[s.m].wort + ' Kugeln: ' + nM + ' · rote Kugeln: ' + nO };
+}
+// Die Waage zeigt die Summe aus Glas und Inhalt. Nichts kommt hinein oder heraus,
+// die Kugeln bleiben dieselben – also bleibt auch die Anzeige stehen.
+function _c8iMasse() { return _C8I_STOFFE[_c8i.wahl].masse; }
+function _c8iZeile() {
+  const s = _C8I_STOFFE[_c8i.wahl], z = _c8iZaehle(), m = 'Masse: ' + _c8iMasse() + ' g';
+  if (_c8i.phase === 'vor')  return 'vorher · Stoffe im Glas: ' + s.name + ' · ' + m + ' · ' + z.text;
+  if (_c8i.phase === 'lauf') return 'Reaktion läuft · ' + m + ' · ' + z.text;
+  return 'nachher · ' + m + ' · ' + z.text + ' · Es ist ' + s.produkt + ' entstanden.';
+}
+function _c8iStatus() {
+  if (!_c8i) return;
+  const z = _c8iZeile();
+  const el = document.getElementById('_c8i-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _c8i.letzt = z;
+  const h = document.getElementById('_c8i-hinweis');
+  if (h) {
+    if (_c8i.phase === 'vor') h.textContent = 'Lies die Waage ab. Zähle die Kugeln. Dann drücke „▶ Reaktion“.';
+    else if (_c8i.phase === 'lauf') h.textContent = 'Sieh auf die Waage und auf die Kugeln.';
+    else h.textContent = 'Lies ab, was entstanden ist. Für ein neues Glas drücke „neu“.';
+  }
+  try {
+    document.querySelectorAll('[data-c8i]').forEach(b => {
+      const d = String(b.getAttribute('data-c8i'));
+      if (b.classList && d.charAt(0) === 's') b.classList.toggle('primary', d === 's' + _c8i.wahl);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_c8i-los');
+  if (los && los.classList) los.classList.toggle('primary', _c8i.phase === 'vor');
+}
+
+// ── Bewegung ───────────────────────────────────────────
+function _c8iSchwebe(g, dt, bodenFrei) {
+  const G = _C8I_G, rand = 4;
+  const yMax = bodenFrei ? G.y1 - rand - g.R * 0.45 : G.y1 - 34 - g.R * 0.45;
+  g.vx += _c8iZufall(-16, 16) * dt; g.vy += _c8iZufall(-16, 16) * dt;
+  const v = Math.hypot(g.vx, g.vy) || 1, vz = Math.max(12, Math.min(28, v));
+  g.vx *= vz / v; g.vy *= vz / v;
+  g.x += g.vx * dt; g.y += g.vy * dt; g.w += g.dw * dt;
+  const xa = G.x0 + rand + g.R, xb = G.x1 - rand - g.R, ya = G.y0 + rand + g.R * 0.45;
+  if (g.x < xa) { g.x = xa; g.vx = Math.abs(g.vx); }
+  if (g.x > xb) { g.x = xb; g.vx = -Math.abs(g.vx); }
+  if (g.y < ya) { g.y = ya; g.vy = Math.abs(g.vy); }
+  if (g.y > yMax) { g.y = yMax; g.vy = -Math.abs(g.vy); }
+}
+function _c8iWelt(g, o) {
+  const c = Math.cos(g.w), s = Math.sin(g.w);
+  return { x: g.x + c * o[0] - s * o[1], y: g.y + s * o[0] + c * o[1] };
+}
+// Fortschritt einer Kugel auf dem Weg in ihre neue Gruppe (0..1).
+function _c8iWeg(a) {
+  if (_c8i.phase === 'vor') return 0;
+  if (_c8i.phase === 'nach') return 1;
+  return _bioFxKlemme((_c8i.rt - 0.9 - a.d) / 1.3);
+}
+function _c8iOrt(a, i) {
+  const u = _c8iWeg(a), t = _c8i.t;
+  const rg = _c8i.rg[a.rg], pg = _c8i.pg[a.pg];
+  const src = _c8iWelt(rg, rg.off[a.ri]), dst = _c8iWelt(pg, pg.off[a.pi]);
+  const e = _bioFxEase.sanft(u);
+  let x = src.x + (dst.x - src.x) * e, y = src.y + (dst.y - src.y) * e - Math.sin(Math.PI * u) * 12;
+  // feste Stoffe zittern nur ganz leicht an ihrem Platz
+  const fest = u < 0.5 ? rg.fest : pg.fest;
+  if (fest) { x += Math.sin(t * 5.3 + i * 1.7) * 0.6; y += Math.cos(t * 4.7 + i * 2.3) * 0.5; }
+  return { x, y };
+}
+function _c8iUpdate(dt) {
+  if (!_c8i) return;
+  dt = _bioFxDt(dt);
+  _c8i.t += dt;
+  const s = _C8I_STOFFE[_c8i.wahl];
+  if (_c8i.phase === 'vor') {
+    for (const g of _c8i.rg) if (!g.fest) _c8iSchwebe(g, dt, false);
+  } else if (_c8i.phase === 'lauf') {
+    const vor = _c8i.rt;
+    if (vor < 0.9 && vor + dt >= 0.9) _bioFxZeitlupe(_c8i, 0.5, 1.4);   // Kugeln lösen sich: langsamer
+    const zdt = dt * _bioFxZeitlupeFaktor(_c8i, dt);
+    _c8i.rt = Math.min(_C8I_T, _c8i.rt + zdt);
+    // Sauerstoff-Paare treiben zur Glut am Boden
+    for (const g of _c8i.rg) {
+      if (g.fest) continue;
+      if (_c8i.rt < 1.4) {
+        g.vx += (_C8I_LX - g.x) * 0.9 * zdt; g.vy += (_C8I_LY - 34 - g.y) * 0.9 * zdt;
+      }
+      _c8iSchwebe(g, zdt, false);
+    }
+    // Gasgruppen schweben los, sobald ihre Kugeln angekommen sind
+    for (const g of _c8i.pg) if (g.gas && _c8i.rt > 2.9) _c8iSchwebe(g, zdt, true);
+    // ruhige Glut: ein paar kleine Funken am Klumpen (kein Blitz)
+    _c8i.funkeT -= zdt;
+    if (_c8i.rt > 0.3 && _c8i.rt < 2.6 && _c8i.funkeT <= 0) {
+      _c8i.funkeT = s.m === 'Fe' ? 0.3 : 0.45;
+      const fb = s.m === 'Fe' ? ['#ffb347', '#ffd27a', '#fff3b0'] : ['#ff8a3d', '#ffb347'];
+      _bioFxFunken(_c8i.fx.teile, _C8I_LX + _c8iZufall(-18, 18), _C8I_LY - 14, s.m === 'Fe' ? 3 : 2, fb);
+    }
+    if (_c8i.rt >= _C8I_T) { _c8i.phase = 'nach'; _c8i.nt = 0; _c8i.schritt = 0; _c8i.zeitlupe = null; }
+    if (_c8iZeile() !== _c8i.letzt) _c8iStatus();
+  } else {
+    _c8i.nt += dt;
+    for (const g of _c8i.pg) if (g.gas) _c8iSchwebe(g, dt, true);
+    _c8iNachher();
+  }
+  _bioFxAlleUpdate(_c8i.fx, dt);
+}
+// Nach der Reaktion: erst hinsehen, dann bestätigt der Effekt – ohne Wertung.
+function _c8iNachher() {
+  const fx = _c8i.fx, t = _c8i.nt, s = _C8I_STOFFE[_c8i.wahl];
+  if (_c8i.schritt === 0 && t >= 0.15) {               // Anzeige leuchtet auf
+    _c8i.schritt = 1; _c8i.leuchtAb = t;
+    _bioFxWelle(fx.teile, 150, 189, '#86efac', 72);
+    _bioFxFunken(fx.teile, 150, 184, 8, ['#bbf7d0', '#fff3b0', '#ffffff']);
+  }
+  if (_c8i.schritt === 1 && t >= 0.45) {
+    _c8i.schritt = 2;
+    _bioFxBanner(fx, s.m === 'C' ? 'Die Holzkohle ist weg. Und die Waage?' : 'Ein neuer Stoff ist da. Und die Waage?',
+                 3.0, s.m === 'C' ? '#fdba74' : '#86efac');
+  }
+  if (_c8i.schritt === 2 && t >= 1.9) {                // erste Farbe nachzählen
+    _c8i.schritt = 3; _c8i.zHell[0] = t; _c8iZaehlWelle(false);
+  }
+  if (_c8i.schritt === 3 && t >= 2.7) {                // zweite Farbe nachzählen
+    _c8i.schritt = 4; _c8i.zHell[1] = t; _c8iZaehlWelle(true);
+  }
+  if (_c8i.schritt === 4 && t >= 3.5) {
+    _c8i.schritt = 5;
+    _bioFxKonfetti(fx.teile, 150, 186, 16);
+    _bioFxFunken(fx.teile, 404, 142 - _c8iMasse() * 0.9, 6, ['#93c5fd', '#fff3b0', '#ffffff']);
+  }
+}
+function _c8iZaehlWelle(rot) {
+  _c8i.atome.forEach((a, i) => {
+    if ((a.art === 'O') !== rot) return;
+    const p = _c8iOrt(a, i);
+    _bioFxWelle(_c8i.fx.teile, p.x, p.y, _C8I_ART[a.art].hell, 16);
+  });
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _c8iKugel(ctx, x, y, art) {
+  const A = _C8I_ART[art], r = A.r;
+  const g = ctx.createRadialGradient(x - r * 0.35, y - r * 0.4, r * 0.15, x, y, r);
+  g.addColorStop(0, A.hell); g.addColorStop(1, A.farbe);
+  ctx.fillStyle = g; ctx.strokeStyle = A.rand; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+}
+function _c8iKlumpenBild(ctx, m, a) {                  // Ausgangsstoff, wie man ihn sieht
+  if (a <= 0.01) return;
+  ctx.save(); ctx.globalAlpha = a;
+  const x = _C8I_LX, y = _C8I_LY;
+  if (m === 'Fe') {                                     // Eisenwolle: graue Fäden
+    ctx.strokeStyle = '#7b8591'; ctx.lineWidth = 1;
+    for (let k = 0; k < 16; k++) {
+      ctx.beginPath();
+      ctx.ellipse(x + Math.sin(k * 2.1) * 20, y - 6 + Math.cos(k * 1.3) * 7, 10 + (k % 4) * 3, 5 + (k % 3) * 2, k * 0.7, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+  } else if (m === 'C') {                               // Holzkohle: dunkler Klumpen mit Maserung
+    ctx.fillStyle = '#4a4038';
+    ctx.beginPath();
+    const pk = [[-30, 9], [-34, -4], [-22, -22], [-4, -30], [16, -26], [31, -12], [33, 6], [16, 11], [-10, 12]];
+    pk.forEach((p, i) => i ? ctx.lineTo(x + p[0], y + p[1]) : ctx.moveTo(x + p[0], y + p[1]));
+    ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#6b5d51'; ctx.lineWidth = 1;
+    for (let k = 0; k < 5; k++) {
+      ctx.beginPath(); ctx.moveTo(x - 26 + k * 4, y - 16 + k * 5); ctx.lineTo(x + 24 - k * 3, y - 20 + k * 6); ctx.stroke();
+    }
+  } else {                                              // Kupferblech
+    const g = ctx.createLinearGradient(0, y + 4, 0, y + 10);
+    g.addColorStop(0, '#e0a070'); g.addColorStop(1, '#9a5a2e');
+    ctx.fillStyle = g; ctx.fillRect(x - 38, y + 5, 76, 5);
+  }
+  ctx.restore();
+}
+function _c8iProduktBild(ctx, m, a) {                  // Endstoff am Boden, wie man ihn sieht
+  if (a <= 0.01 || m === 'C') return;
+  ctx.save(); ctx.globalAlpha = a;
+  if (m === 'Fe') {                                     // Eisenoxid: rotbraunes Pulver
+    ctx.fillStyle = 'rgba(139,58,31,0.55)';
+    ctx.beginPath(); ctx.ellipse(150, 153, 76, 7, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#8b3a1f';
+    for (let k = 0; k < 24; k++) { ctx.beginPath(); ctx.arc(80 + k * 6, 153 + Math.sin(k * 2.7) * 3, 1.3, 0, 2 * Math.PI); ctx.fill(); }
+  } else {                                              // Kupferoxid: schwarze Schicht
+    ctx.fillStyle = 'rgba(30,30,30,0.6)';
+    ctx.beginPath(); ctx.ellipse(150, 154, 80, 5, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _c8iDraw(ctx, cv) {
+  if (!_c8i) return;
+  const W = cv.width, H = cv.height, t = _c8i.t, G = _C8I_G;
+  const s = _C8I_STOFFE[_c8i.wahl], rt = _c8i.rt, ph = _c8i.phase;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f1');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Glas: Rückwand
+  ctx.fillStyle = 'rgba(214,232,244,0.55)';
+  ctx.fillRect(G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0);
+  // ruhige Glut während der Reaktion (nur um den Klumpen, kein Blitz)
+  let glut = 0;
+  if (ph === 'lauf') glut = _bioFxKlemme(rt / 0.8) * (1 - _bioFxKlemme((rt - 2.6) / 0.9));
+  if (glut > 0.01) {
+    const gg = ctx.createRadialGradient(_C8I_LX, _C8I_LY - 6, 4, _C8I_LX, _C8I_LY - 6, 62);
+    const a = (0.34 + 0.05 * Math.sin(t * 2.4)) * glut;
+    gg.addColorStop(0, 'rgba(255,150,60,' + a.toFixed(3) + ')');
+    gg.addColorStop(1, 'rgba(255,150,60,0)');
+    ctx.fillStyle = gg; ctx.fillRect(G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0);
+  }
+  // was man vom Stoff sieht: vorher der Klumpen, nachher der neue Stoff
+  const aKl = ph === 'vor' ? 1 : ph === 'lauf' ? 1 - _bioFxKlemme((rt - 0.9) / 1.6) : 0;
+  const aPr = ph === 'nach' ? 1 : ph === 'lauf' ? _bioFxKlemme((rt - 2.0) / 1.2) : 0;
+  _c8iKlumpenBild(ctx, s.m, aKl);
+  _c8iProduktBild(ctx, s.m, aPr);
+  // Kugeln: erst Metall, dann Sauerstoff, damit Rot vorne liegt
+  const orte = _c8i.atome.map((a, i) => _c8iOrt(a, i));
+  for (const pass of [false, true])
+    _c8i.atome.forEach((a, i) => { if ((a.art === 'O') === pass) _c8iKugel(ctx, orte[i].x, orte[i].y, a.art); });
+  // Glas vorne: Rand, Glanz, Deckel
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(G.x0, G.y0); ctx.lineTo(G.x0, G.y1 - 6);
+  ctx.quadraticCurveTo(G.x0, G.y1, G.x0 + 6, G.y1); ctx.lineTo(G.x1 - 6, G.y1);
+  ctx.quadraticCurveTo(G.x1, G.y1, G.x1, G.y1 - 6); ctx.lineTo(G.x1, G.y0); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(G.x0 + 8, G.y0 + 10); ctx.lineTo(G.x0 + 8, G.y1 - 16); ctx.stroke();
+  ctx.fillStyle = '#5b6b7c';
+  ctx.fillRect(G.x0 - 7, G.y0 - 14, G.x1 - G.x0 + 14, 14);
+  ctx.strokeStyle = '#3b4756'; ctx.lineWidth = 1;
+  for (let x = G.x0; x < G.x1; x += 8) { ctx.beginPath(); ctx.moveTo(x, G.y0 - 13); ctx.lineTo(x, G.y0 - 2); ctx.stroke(); }
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Deckel fest zu', 150, G.y0 - 3.5);
+
+  // Waage
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(G.x0 - 12, 157, G.x1 - G.x0 + 24, 7);
+  ctx.fillStyle = '#475569';
+  ctx.beginPath(); ctx.moveTo(44, 164); ctx.lineTo(256, 164); ctx.lineTo(262, 214); ctx.lineTo(38, 214); ctx.closePath(); ctx.fill();
+  if (_c8i.leuchtAb > -1 && _c8i.nt - _c8i.leuchtAb < 2.6)
+    _bioFxLeuchten(ctx, 150, 189, 40, t, '134,239,172');
+  ctx.fillStyle = '#0f2a1d'; ctx.fillRect(88, 174, 124, 30);
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2; ctx.strokeRect(88, 174, 124, 30);
+  ctx.fillStyle = '#7dfc9b'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Masse: ' + _c8iMasse() + ' g', 150, 195);
+
+  // Kugelzähler unter der Waage
+  const z = _c8iZaehle(), A = _C8I_ART[s.m];
+  const reihen = ph === 'nach' ? [['vorher:', 229, 0.55], ['nachher:', 245, 1]]
+                               : [[ph === 'vor' ? 'vorher:' : 'jetzt:', 236, 1]];
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillRect(6, 218, 298, 31);
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.strokeRect(6, 218, 298, 31);
+  ctx.font = '700 10.5px sans-serif'; ctx.textBaseline = 'alphabetic';
+  for (const [lab, y, alpha] of reihen) {
+    ctx.save(); ctx.globalAlpha = alpha;
+    ctx.textAlign = 'left'; ctx.fillStyle = '#334155'; ctx.fillText(lab, 12, y);
+    let x = 64;
+    const teil = (art, text, k) => {
+      const hell = alpha === 1 && _c8i.zHell[k] > -1 ? Math.sin(Math.PI * _bioFxKlemme((_c8i.nt - _c8i.zHell[k]) / 1.2)) : 0;
+      const w = ctx.measureText(text).width;
+      if (hell > 0.01) {
+        ctx.fillStyle = 'rgba(253,224,71,' + (0.55 * hell).toFixed(3) + ')';
+        ctx.fillRect(x - 2, y - 11, w + 16, 14);
+      }
+      ctx.save(); ctx.translate(x + 5, y - 4); ctx.scale(0.62, 0.62); _c8iKugel(ctx, 0, 0, art); ctx.restore();
+      ctx.fillStyle = '#0f172a'; ctx.fillText(text, x + 12, y);
+      x += 12 + w + 7;
+    };
+    teil(s.m, A.wort + ' Kugeln: ' + z.nM, 0);
+    ctx.fillStyle = '#64748b'; ctx.fillText('·', x - 5, y); x += 4;
+    teil('O', 'rote Kugeln: ' + z.nO, 1);
+    ctx.restore();
+  }
+
+  // rechte Spalte: Phase, Waagen-Verlauf, Farben
+  ctx.textAlign = 'left'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText(ph === 'vor' ? 'vorher' : ph === 'lauf' ? 'Reaktion läuft' : 'nachher', 272, 20);
+  if (ph === 'lauf' && _c8i.zeitlupe) { ctx.font = '10px sans-serif'; ctx.fillStyle = '#475569'; ctx.fillText('Zeitlupe', 272, 32); }
+  const cx0 = 300, cx1 = 410, cy0 = 52, cy1 = 142;
+  ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#334155';
+  ctx.fillText('Waage', 272, 44);
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  for (const gw of [0, 50, 100]) {
+    const y = cy1 - gw * 0.9;
+    ctx.beginPath(); ctx.moveTo(cx0, y); ctx.lineTo(cx1, y); ctx.stroke();
+  }
+  ctx.fillStyle = '#334155'; ctx.font = '10px sans-serif'; ctx.textAlign = 'right';
+  for (const gw of [0, 50, 100]) ctx.fillText(gw + ' g', cx0 - 3, cy1 - gw * 0.9 + 3);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(cx0, cy0 - 4); ctx.lineTo(cx0, cy1); ctx.lineTo(cx1, cy1); ctx.stroke();
+  const dx = (cx1 - cx0) / 3;
+  ctx.strokeStyle = '#cbd5e1'; ctx.setLineDash([3, 3]);
+  for (const k of [1, 2]) { ctx.beginPath(); ctx.moveTo(cx0 + dx * k, cy0); ctx.lineTo(cx0 + dx * k, cy1); ctx.stroke(); }
+  ctx.setLineDash([]);
+  if (ph === 'lauf') { ctx.fillStyle = 'rgba(255,170,90,0.18)'; ctx.fillRect(cx0 + dx, cy0, dx, cy1 - cy0); }
+  ctx.fillStyle = '#475569'; ctx.font = '9.5px sans-serif'; ctx.textAlign = 'center';
+  ['vorher', 'Reaktion', 'nachher'].forEach((w, k) => ctx.fillText(w, cx0 + dx * (k + 0.5), cy1 + 12));
+  const anteil = ph === 'vor' ? 1 / 3 : ph === 'lauf' ? (1 + rt / _C8I_T) / 3 : (2 + _bioFxKlemme(_c8i.nt / 1.2)) / 3;
+  const ly = cy1 - _c8iMasse() * 0.9, lx = cx0 + (cx1 - cx0) * anteil;
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(cx0, ly); ctx.lineTo(lx, ly); ctx.stroke();
+  if (_c8i.leuchtAb > -1 && _c8i.nt - _c8i.leuchtAb < 2.6) _bioFxLeuchten(ctx, lx, ly, 6, t, '147,197,253');
+  ctx.fillStyle = '#2563eb';
+  ctx.beginPath(); ctx.arc(lx, ly, 4 + 0.8 * Math.sin(t * Math.PI * 1.6), 0, 2 * Math.PI); ctx.fill();
+  // Farben
+  ctx.textAlign = 'left'; ctx.font = '11px sans-serif';
+  [[s.m, A.name], ['O', 'Sauerstoff']].forEach(([art, name], k) => {
+    const y = 180 + k * 22;
+    _c8iKugel(ctx, 286, y - 4, art);
+    ctx.fillStyle = '#0f172a'; ctx.fillText(name, 300, y);
+  });
+  _bioFxAlleDraw(ctx, _c8i.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – cb5 „Welches Gas ist im Glas?“ (Kennung chem-nachweis)
+// Ein Standzylinder mit Deckel auf dem Tisch, links ein glimmender Holzspan,
+// rechts ein Fläschchen Kalkwasser. Das Kind wählt das Gas im Glas und macht
+// nacheinander zwei Proben: „▶ Glimmspan hinein“ und „▶ Kalkwasser dazu“.
+// Fachlich (Modellwerte, Lehrerteil):
+//   Luft               → Glimmspan glimmt weiter · Kalkwasser bleibt klar
+//                        (0,04 % Kohlenstoffdioxid: im Modell bleibt es klar)
+//   Sauerstoff         → Glimmspan flammt hell auf · Kalkwasser bleibt klar
+//   Kohlenstoffdioxid  → Glimmspan geht aus · Kalkwasser wird milchig
+//   Gas über der Kerze → Glimmspan geht aus · Kalkwasser wird milchig ·
+//                        Tröpfchen an der Wand (Kerzenwachs + Sauerstoff →
+//                        Kohlenstoffdioxid + Wasser)
+// Bei „Gas über der Kerze“ steht zuerst eine brennende Kerze unter dem
+// umgedrehten Zylinder; sie geht aus, die Innenwand beschlägt, dann wird der
+// Zylinder umgedreht und mit dem Deckel verschlossen.
+// Aha (NACH der Beobachtung, Bibliothek _bioFx, kurz und ruhig): In Sauerstoff
+// wird die Glut in Zeitlupe heller, dann steht eine helle Flamme am Span –
+// Lichtring und Funken nur an der Spitze, Banner „Aus der Glut wird eine
+// Flamme!“ (widerlegt „geht aus“ / „glimmt genauso weiter“). Beim Kalkwasser
+// ziehen weiße Schlieren durch die Flüssigkeit, bis sie ganz weiß ist.
+// Kein Blitz über die Fläche, nichts blinkt, kein Ton, keine Wertung.
+// Nie am Bildschirm: die Lückenwörter aus sim_plan.nicht_am_bildschirm.
+// ════════════════════════════════════════════════════════════════════════
+let _c8j = null;
+const _C8J_GASE = ['Luft', 'Sauerstoff', 'Kohlenstoffdioxid', 'Gas über der Kerze'];
+const _C8J_KERZE = 'Gas über der Kerze';
+const _C8J_GLIMM = {            // was der Glimmspan im Gas tut
+  'Luft': 'weiter', 'Sauerstoff': 'auf', 'Kohlenstoffdioxid': 'aus', 'Gas über der Kerze': 'aus' };
+const _C8J_MILCH = {            // wird das Kalkwasser milchig?
+  'Luft': false, 'Sauerstoff': false, 'Kohlenstoffdioxid': true, 'Gas über der Kerze': true };
+const _C8J_SATZ_G = {
+  weiter: 'Der Glimmspan glimmt weiter.',
+  auf: 'Der Glimmspan flammt hell auf.',
+  aus: 'Der Glimmspan geht aus.' };
+const _C8J_SATZ_K = { klar: 'Das Kalkwasser bleibt klar.', milchig: 'Das Kalkwasser wird milchig.' };
+const _C8J_TROPFEN = 'Tröpfchen an der Wand';
+// Maße (Nennmaß 420 x 250)
+const _C8J_CX = 200, _C8J_TISCH = 212;                 // Fuß des Zylinders
+const _C8J_HOCH = 146;                                 // Zylinderhöhe (Fuß bis Rand)
+const _C8J_RUHE = { x: 104, y: 124 };                  // Spanspitze in der Halterung
+const _C8J_FL = { x: 352, y: 212 };                    // Fläschchen (Boden Mitte)
+
+function _c8jInit() {
+  _c8j = { gas: 'Luft', t: 0, letzt: '', fx: { teile: [] } };
+  _c8jGlas();
+}
+// Ein frisches Glas mit dem gewählten Gas.
+function _c8jGlas() {
+  const z = _c8j;
+  z.phase = 'bereit'; z.pt = 0; z.zeitlupe = null;
+  z.glimm = null; z.kalk = null;                       // Ergebnisse (erst nach dem Hinsehen)
+  z.pos = 0; z.posStart = 0;                           // Span: 0 Halterung, 1 im Glas
+  z.glut = 0.8; z.flamme = 0; z.aus = false; z.ausT = 0;
+  z.deckel = 0; z.deckelA = 1;                         // 0 zu, 1 zur Seite · Sichtbarkeit
+  z.fuell = 0; z.milch = 0; z.wackel = 0; z.hebFl = 0; z.giess = 0;
+  z.kerze = null; z.tropfen = 0;
+  z.merk = { g: false, k: false, w: false, a: false, b: false };
+  z.fx = { teile: [] };
+  if (z.gas === _C8J_KERZE) {
+    z.phase = 'kerze';
+    z.kerze = { flamme: 1, aus: false, ausT: 0, hub: 0, dreh: Math.PI, weg: 0 };
+    z.deckelA = 0;
+  }
+}
+
+function _c8jHTML() {
+  const g = (i, txt) => `<button class="sim-btn" data-c8j="${i}" onclick="_c8jGas(${i})">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welches Gas ist im Glas?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Glas ist ein Gas. Du siehst es nicht. Wähle das Gas. Dann mache zwei Proben: erst mit dem Glimmspan, dann mit dem Kalkwasser.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8j-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8j-glimm" onclick="_c8jGlimmspan()">▶ Glimmspan hinein</button>
+          <button class="sim-btn" id="_c8j-kalk" onclick="_c8jKalkwasser()">▶ Kalkwasser dazu</button>
+          <button class="sim-btn" onclick="_c8jNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Gas im Glas</span>
+          <div class="sim-btn-row">
+            ${g(0, 'Luft')}
+            ${g(1, 'Sauerstoff')}
+            ${g(2, 'Kohlenstoffdioxid')}
+            ${g(3, 'Gas über der Kerze')}
+          </div>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Was siehst du?</div>
+        <div class="lmp-status on" id="_c8j-status" style="margin-top:4px"></div>
+        <div class="fpm-note" id="_c8j-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Ein <b>Glimmspan</b> ist ein Holzspan, der ohne Flamme glüht. <b>Kalkwasser</b> ist eine klare Flüssigkeit. Nach dem Eingießen wird das Glas geschüttelt.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken (beide Proben sofort)</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8jMarke(0)">⏭ Luft</button>
+          <button class="sim-btn" onclick="_c8jMarke(1)">⏭ Sauerstoff</button>
+          <button class="sim-btn" onclick="_c8jMarke(2)">⏭ Kohlenstoffdioxid</button>
+          <button class="sim-btn" onclick="_c8jMarke(3)">⏭ Gas über der Kerze</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Luft &nbsp;|&nbsp; Neues Gas = neues Glas.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _c8jGas(i) {
+  if (!_c8j) return;
+  const g = _C8J_GASE[Number(i)];
+  if (!g) return;
+  _c8j.gas = g; _c8jGlas(); _c8jStatus();
+}
+function _c8jNeu() {
+  if (!_c8j) return;
+  _c8jGlas(); _c8jStatus();
+}
+function _c8jGlimmspan() {
+  const z = _c8j;
+  if (!z || z.phase !== 'bereit' || z.glimm || z.merk.g) return;
+  z.phase = 'glimm'; z.pt = 0; z.merk.g = true; z.posStart = z.pos;
+  _c8jStatus();
+}
+function _c8jKalkwasser() {
+  const z = _c8j;
+  if (!z || z.phase !== 'bereit' || z.kalk || z.merk.k) return;
+  z.phase = 'kalk'; z.pt = 0; z.merk.k = true; z.posStart = z.pos;
+  _c8jStatus();
+}
+// Sprungmarke: Gas wählen und beide Proben gleich fertig zeigen.
+function _c8jMarke(i) {
+  if (!_c8j) return;
+  const g = _C8J_GASE[Number(i)];
+  if (!g) return;
+  const z = _c8j;
+  z.gas = g; _c8jGlas();
+  if (z.kerze) { z.kerze = null; z.tropfen = 1; }
+  z.phase = 'bereit'; z.deckelA = 1; z.deckel = 0;
+  z.glimm = _C8J_GLIMM[g]; z.merk.g = true;
+  z.aus = z.glimm === 'aus'; z.ausT = z.aus ? 0.2 : 0;
+  z.glut = z.aus ? 0 : (z.glimm === 'auf' ? 1 : 0.8);
+  z.flamme = z.glimm === 'auf' ? 0.75 : 0;
+  z.kalk = _C8J_MILCH[g] ? 'milchig' : 'klar'; z.merk.k = true;
+  z.fuell = 1; z.milch = _C8J_MILCH[g] ? 1 : 0;
+  _bioFxWelle(z.fx.teile, _C8J_CX, _C8J_TISCH - 20, z.milch ? '#f1f5f9' : '#bae6fd', 46);
+  _c8jStatus();
+}
+
+/* ── Anzeige ───────────────────────────────────────────────────────────── */
+function _c8jZeile() {
+  const z = _c8j;
+  if (z.phase === 'kerze' && !(z.kerze && z.kerze.aus && z.tropfen >= 1)) return 'Die Kerze brennt unter dem Glas.';
+  const teile = [];
+  if (z.glimm) teile.push(_C8J_SATZ_G[z.glimm]);
+  if (z.kalk) teile.push(_C8J_SATZ_K[z.kalk]);
+  if (z.gas === _C8J_KERZE && z.tropfen >= 1) {
+    if (!teile.length) teile.push('Die Kerze ist aus.');
+    teile.push(_C8J_TROPFEN);
+  }
+  if (teile.length) return teile.join(' · ');
+  if (z.phase === 'glimm') return 'Der Glimmspan geht in das Glas …';
+  if (z.phase === 'kalk') return 'Das Kalkwasser kommt in das Glas …';
+  return 'Im Glas ist ' + z.gas + '. Noch keine Probe.';
+}
+function _c8jHinweisText() {
+  const z = _c8j;
+  if (z.phase === 'kerze') return 'Das Glas steht umgedreht über der Kerze. Warte, bis es wieder richtig herum steht.';
+  if (z.phase === 'glimm') return 'Sieh genau zur Spitze vom Glimmspan.';
+  if (z.phase === 'kalk') return 'Sieh genau in das Kalkwasser im Glas.';
+  if (!z.glimm && !z.kalk) return 'Nächster Schritt: Drücke „▶ Glimmspan hinein“.';
+  if (z.glimm && !z.kalk) return 'Trage ein. Nächster Schritt: Drücke „▶ Kalkwasser dazu“.';
+  if (!z.glimm && z.kalk) return 'Trage ein. Nächster Schritt: Drücke „▶ Glimmspan hinein“.';
+  return 'Trage beide Beobachtungen ein. Dann drücke „neu“ und wähle das nächste Gas.';
+}
+function _c8jStatus() {
+  const z = _c8j;
+  if (!z) return;
+  const zeile = _c8jZeile();
+  z.letzt = zeile + '|' + _c8jHinweisText();
+  const el = document.getElementById('_c8j-status');
+  if (el) { el.textContent = zeile; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_c8j-hinweis');
+  if (h) h.textContent = _c8jHinweisText();
+  try {
+    document.querySelectorAll('[data-c8j]').forEach(b => {
+      b.classList.toggle('primary', _C8J_GASE[Number(b.getAttribute('data-c8j'))] === z.gas);
+    });
+    const gb = document.getElementById('_c8j-glimm'), kb = document.getElementById('_c8j-kalk');
+    const frei = z.phase === 'bereit';
+    if (gb) gb.classList.toggle('primary', frei && !z.glimm);
+    if (kb) kb.classList.toggle('primary', frei && !!z.glimm && !z.kalk);
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _c8jKl(t) { return _bioFxKlemme(t); }
+function _c8jSpitze() {
+  // Spitze des Spans entlang des Wegs: Halterung → über der Öffnung → im Glas
+  const z = _c8j, p = z.pos;
+  const oben = { x: _C8J_CX, y: _C8J_TISCH - _C8J_HOCH - 26 };
+  const innen = { x: _C8J_CX, y: _C8J_TISCH - 62 };
+  if (p <= 0.5) {
+    const u = _bioFxEase.sanft(p / 0.5);
+    return { x: _C8J_RUHE.x + (oben.x - _C8J_RUHE.x) * u,
+             y: _C8J_RUHE.y + (oben.y - _C8J_RUHE.y) * u - Math.sin(Math.PI * u) * 14 };
+  }
+  const u = _bioFxEase.sanft((p - 0.5) / 0.5);
+  return { x: oben.x, y: oben.y + (innen.y - oben.y) * u };
+}
+function _c8jWinkel() {
+  // Richtung Spitze → Ende: in der Halterung schräg nach unten links, im Glas steil nach oben
+  const u = _bioFxEase.sanft(_c8jKl(_c8j.pos * 1.4));
+  const a0 = Math.atan2(52, -66), a1 = Math.atan2(-120, -22);
+  return a0 + (a1 - a0) * u;
+}
+
+function _c8jUpdate(dt) {
+  const z = _c8j;
+  if (!z) return;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  const d = dt * _bioFxZeitlupeFaktor(z, dt);
+  if (z.phase === 'kerze') _c8jKerzeLauf(d);
+  else if (z.phase === 'glimm') _c8jGlimmLauf(d);
+  else if (z.phase === 'kalk') _c8jKalkLauf(d);
+  if (z.aus) z.ausT += dt;
+  _bioFxAlleUpdate(z.fx, dt);
+  if (_c8jZeile() + '|' + _c8jHinweisText() !== z.letzt) _c8jStatus();
+}
+
+// Kerze unter dem umgedrehten Zylinder: brennt, wird kleiner, geht aus;
+// die Innenwand beschlägt. Dann umdrehen, Deckel drauf.
+function _c8jKerzeLauf(d) {
+  const z = _c8j, k = z.kerze, q = (z.pt += d);
+  k.flamme = q < 1.4 ? 1 : Math.max(0, 1 - (q - 1.4) / 1.2);
+  z.tropfen = _c8jKl((q - 0.4) / 2.2);
+  if (!k.aus && q >= 2.6) {
+    k.aus = true; k.ausT = 0;
+  }
+  if (k.aus) k.ausT += d;
+  if (!z.merk.w && q >= 2.7) {
+    z.merk.w = true;                                    // die Tröpfchen kurz hervorheben
+    _bioFxWelle(z.fx.teile, _C8J_CX - 24, _C8J_TISCH - 60, '#bfdbfe', 22);
+    _bioFxWelle(z.fx.teile, _C8J_CX + 24, _C8J_TISCH - 96, '#bfdbfe', 22);
+  }
+  k.hub = q < 3.2 ? 0 : q < 3.7 ? 64 * _bioFxEase.sanft((q - 3.2) / 0.5)
+        : q < 4.5 ? 64 : 64 * (1 - _bioFxEase.sanft(_c8jKl((q - 4.5) / 0.4)));
+  k.dreh = Math.PI * (1 + _bioFxEase.sanft(_c8jKl((q - 3.7) / 0.8)));
+  k.weg = _c8jKl((q - 3.7) / 0.8);
+  z.deckelA = _c8jKl((q - 4.9) / 0.25);
+  if (q >= 5.2) { z.phase = 'bereit'; z.pt = 0; z.kerze = null; z.deckelA = 1; }
+}
+
+function _c8jGlimmLauf(d) {
+  const z = _c8j, p = (z.pt += d), art = _C8J_GLIMM[z.gas];
+  z.deckel = _bioFxEase.sanft(_c8jKl(p / 0.3));
+  z.pos = z.posStart + (1 - z.posStart) * _c8jKl((p - 0.15) / 0.85);
+  if (p < 0.95) return;
+  const s = _c8jSpitze();
+  if (art === 'auf') {
+    if (!z.merk.a) { z.merk.a = true; _bioFxZeitlupe(z, 0.35, 1.2); }
+    z.glut = 0.8 + 0.2 * _c8jKl((p - 0.95) / 0.3);
+    z.flamme = _bioFxEase.sanft(_c8jKl((p - 1.2) / 0.45));
+    if (!z.merk.b && p >= 1.45) {
+      z.merk.b = true; z.glimm = 'auf';
+      _bioFxWelle(z.fx.teile, s.x, s.y - 12, '#fff3b0', 44);
+      _bioFxFunken(z.fx.teile, s.x, s.y - 16, 10, ['#fff3b0', '#ffd84d', '#ffffff']);
+    }
+    if (p >= 1.9 && !z.fx.banner && z.merk.b && !z.merk.bn) {
+      z.merk.bn = true; _bioFxBanner(z.fx, 'Aus der Glut wird eine Flamme!', 2.8, '#ffd84d');
+    }
+    if (p >= 2.1) z.phase = 'bereit';
+  } else if (art === 'weiter') {
+    if (!z.merk.b && p >= 1.35) {
+      z.merk.b = true; z.glimm = 'weiter';
+      _bioFxWelle(z.fx.teile, s.x, s.y, '#fdba74', 26);
+    }
+    if (p >= 1.6) z.phase = 'bereit';
+  } else {
+    z.glut = 0.8 * (1 - _c8jKl((p - 0.95) / 0.75));
+    if (!z.aus && z.glut <= 0) { z.aus = true; z.ausT = 0; }
+    if (!z.merk.b && p >= 1.8) {
+      z.merk.b = true; z.glimm = 'aus';
+      _bioFxWelle(z.fx.teile, s.x, s.y, '#94a3b8', 26);
+    }
+    if (p >= 2.0) z.phase = 'bereit';
+  }
+}
+
+function _c8jKalkLauf(d) {
+  const z = _c8j, p = (z.pt += d), milchig = _C8J_MILCH[z.gas];
+  if (z.posStart > 0) {                                 // Span zuerst zurück in die Halterung
+    z.pos = z.posStart * (1 - _bioFxEase.sanft(_c8jKl(p / 0.5)));
+    if (z.flamme > 0) z.flamme = Math.max(0.6, z.flamme - d);   // an der Luft kleiner
+  }
+  z.deckel = p < 1.9 ? Math.max(z.deckel, _bioFxEase.sanft(_c8jKl(p / 0.3)))
+                     : 1 - _bioFxEase.sanft(_c8jKl((p - 1.9) / 0.25));
+  z.hebFl = p < 1.5 ? _bioFxEase.sanft(_c8jKl((p - 0.45) / 0.45))
+                    : 1 - _bioFxEase.sanft(_c8jKl((p - 1.5) / 0.4));
+  z.giess = p > 0.9 && p < 1.5 ? 1 : 0;
+  z.fuell = _c8jKl((p - 0.95) / 0.55);
+  // Schütteln: das Glas kippt ruhig hin und her (2 Schwünge je Sekunde)
+  const sp = p - 2.2;
+  z.wackel = sp > 0 && sp < 1 ? Math.sin(sp * Math.PI * 4) * 0.06 * Math.sin(Math.PI * sp) : 0;
+  if (milchig) z.milch = _bioFxEase.sanft(_c8jKl((p - 2.35) / 0.9));
+  if (!z.merk.m && milchig && p >= 2.5) {             // weiße Schlieren
+    z.merk.m = true;
+    _bioFxWelle(z.fx.teile, _C8J_CX, _C8J_TISCH - 22, '#f8fafc', 40);
+  }
+  if (!z.kalk && p >= 3.3) {
+    z.kalk = milchig ? 'milchig' : 'klar';
+    if (milchig) {
+      _bioFxFunken(z.fx.teile, _C8J_CX, _C8J_TISCH - 30, 8, ['#ffffff', '#e2e8f0', '#f8fafc']);
+      _bioFxBanner(z.fx, 'Weiße Wolken im Kalkwasser!', 2.6, '#e2e8f0');
+    } else {
+      _bioFxWelle(z.fx.teile, _C8J_CX, _C8J_TISCH - 22, '#7dd3fc', 36);
+    }
+  }
+  if (p >= 3.5) z.phase = 'bereit';
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+// Zylinder in eigenen Koordinaten: Fuß-Mitte unten = (0,0), Rand oben bei -146.
+function _c8jZylinder(ctx, mitInhalt) {
+  const z = _c8j, t = z.t, H = _C8J_HOCH;
+  // Rückwand (leicht getönt)
+  ctx.fillStyle = 'rgba(219,234,254,0.28)';
+  ctx.fillRect(-30, -H + 4, 60, H - 12);
+  // Beschlag und Tröpfchen an der Innenwand
+  if (z.tropfen > 0) {
+    ctx.fillStyle = 'rgba(241,245,249,' + (0.35 * z.tropfen).toFixed(3) + ')';
+    ctx.fillRect(-29, -H + 6, 58, H - 30);
+    const n = Math.round(22 * z.tropfen);
+    for (let i = 0; i < n; i++) {
+      const seite = i % 2 ? 1 : -1;
+      const x = seite * (20 + (i * 7) % 8) + (i % 3) * 3 * -seite;
+      const y = -H + 16 + ((i * 37) % (H - 50));
+      const r = 1.4 + (i % 4) * 0.5;
+      ctx.fillStyle = 'rgba(147,197,253,0.85)';
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.35, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Kalkwasser im Glas
+  if (mitInhalt && z.fuell > 0) {
+    const hoehe = 30 * z.fuell, top = -8 - hoehe;
+    const m = z.milch;
+    const r = Math.round(210 + 38 * m), g = Math.round(235 + 13 * m), b = Math.round(250 - 6 * m);
+    ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + (0.45 + 0.5 * m).toFixed(3) + ')';
+    ctx.beginPath(); ctx.moveTo(-29, -8);
+    for (let x = -29; x <= 29; x += 4) ctx.lineTo(x, top + Math.sin(x * 0.2 + t * 3) * (1 + 3 * Math.abs(z.wackel) * 10));
+    ctx.lineTo(29, -8); ctx.closePath(); ctx.fill();
+    // weiße Schlieren, solange es milchig wird; danach ruhige Schwebeteilchen
+    if (m > 0) {
+      for (let i = 0; i < 14; i++) {
+        const w = t * (0.6 + (i % 4) * 0.2) + i * 1.7;
+        const x = Math.sin(w) * 22, y = top + 6 + ((i * 5 + Math.cos(w * 0.7) * 6) % Math.max(4, hoehe - 8));
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.8 * Math.min(1, m * 1.6)).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(x, y, 1.6 + (i % 3) * 0.6, 0, 2 * Math.PI); ctx.fill();
+      }
+    }
+  }
+  // Glaswand, Fuß und Rand
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(-30, -H + 4); ctx.lineTo(-30, -8); ctx.moveTo(30, -H + 4); ctx.lineTo(30, -8); ctx.stroke();
+  ctx.fillStyle = 'rgba(203,213,225,0.75)';
+  ctx.fillRect(-40, -8, 80, 8); ctx.strokeRect(-40, -8, 80, 8);
+  ctx.fillStyle = 'rgba(226,232,240,0.9)';
+  ctx.fillRect(-33, -H, 66, 5); ctx.strokeRect(-33, -H, 66, 5);
+  // Glanzstreifen
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(-22, -H + 14); ctx.lineTo(-22, -20); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.35)'; ctx.lineWidth = 2;
+  const gl = -H + 20 + ((t * 18) % (H - 40));           // wandernder Lichtreflex
+  ctx.beginPath(); ctx.moveTo(18, gl); ctx.lineTo(18, gl + 16); ctx.stroke();
+}
+
+function _c8jKerzeZeichnen(ctx, x, y, flamme, t, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#d6b36a'; ctx.lineWidth = 1;
+  ctx.fillRect(x - 8, y - 34, 16, 34); ctx.strokeRect(x - 8, y - 34, 16, 34);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(x, y - 34); ctx.lineTo(x, y - 40); ctx.stroke();
+  if (flamme > 0.02) _c8jFlamme(ctx, x, y - 40, 16 * flamme, t, 0.9);
+  ctx.restore();
+}
+// Ruhige Flamme: Spitze nach oben, leichtes Flackern (unter 1 Hz Helligkeit).
+function _c8jFlamme(ctx, x, y, h, t, hell) {
+  const fl = 1 + 0.08 * Math.sin(t * 9) + 0.05 * Math.sin(t * 13.7);
+  const hh = h * fl, b = h * 0.36;
+  ctx.save();
+  const halo = ctx.createRadialGradient(x, y - hh * 0.4, 2, x, y - hh * 0.4, hh * 1.4);
+  halo.addColorStop(0, 'rgba(255,236,160,' + (0.45 * hell).toFixed(3) + ')');
+  halo.addColorStop(1, 'rgba(255,236,160,0)');
+  ctx.fillStyle = halo;
+  ctx.beginPath(); ctx.arc(x, y - hh * 0.4, hh * 1.4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fb923c';
+  ctx.beginPath(); ctx.moveTo(x, y - hh);
+  ctx.quadraticCurveTo(x + b * 1.3, y - hh * 0.35, x, y + 2);
+  ctx.quadraticCurveTo(x - b * 1.3, y - hh * 0.35, x, y - hh); ctx.fill();
+  ctx.fillStyle = '#fde68a';
+  ctx.beginPath(); ctx.moveTo(x, y - hh * 0.8);
+  ctx.quadraticCurveTo(x + b * 0.8, y - hh * 0.3, x, y);
+  ctx.quadraticCurveTo(x - b * 0.8, y - hh * 0.3, x, y - hh * 0.8); ctx.fill();
+  ctx.fillStyle = '#fffbeb';
+  ctx.beginPath(); ctx.ellipse(x, y - hh * 0.25, b * 0.35, hh * 0.22, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Rauchfaden: dünne graue Linie, die sich hochschlängelt und verblasst.
+function _c8jRauch(ctx, x, y, t, stark, laenge) {
+  if (stark <= 0.01) return;
+  ctx.save();
+  ctx.lineCap = 'round';
+  for (let k = 0; k < 2; k++) {
+    ctx.strokeStyle = 'rgba(100,116,139,' + (stark * (k ? 0.25 : 0.5)).toFixed(3) + ')';
+    ctx.lineWidth = k ? 4 : 1.8;
+    ctx.beginPath(); ctx.moveTo(x, y);
+    for (let s = 1; s <= 12; s++) {
+      const u = s / 12;
+      ctx.lineTo(x + Math.sin(u * 5 - t * 2.2 + k) * 5 * u + u * 6, y - u * laenge);
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _c8jSpan(ctx) {
+  const z = _c8j, t = z.t, s = _c8jSpitze(), a = _c8jWinkel();
+  const L = 118, ex = s.x + Math.cos(a) * L, ey = s.y + Math.sin(a) * L;
+  ctx.save();
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#a16207'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(s.x, s.y); ctx.stroke();
+  ctx.strokeStyle = '#d6a45a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(s.x, s.y); ctx.stroke();
+  // verkohlte Spitze
+  const tx = s.x + Math.cos(a) * 7, ty = s.y + Math.sin(a) * 7;
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(s.x, s.y); ctx.stroke();
+  // Glut: pulsiert langsam (0,7 Hz)
+  if (z.glut > 0.02) {
+    const puls = 0.85 + 0.15 * Math.sin(t * Math.PI * 1.4);
+    const g = z.glut * puls;
+    const hof = ctx.createRadialGradient(s.x, s.y, 1, s.x, s.y, 12 + 6 * g);
+    hof.addColorStop(0, 'rgba(255,120,40,' + (0.75 * g).toFixed(3) + ')');
+    hof.addColorStop(1, 'rgba(255,120,40,0)');
+    ctx.fillStyle = hof;
+    ctx.beginPath(); ctx.arc(s.x, s.y, 12 + 6 * g, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = 'rgb(255,' + Math.round(80 + 110 * g) + ',' + Math.round(30 + 60 * g) + ')';
+    ctx.beginPath(); ctx.arc(s.x, s.y, 3.2, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  if (z.flamme > 0.02) _c8jFlamme(ctx, s.x, s.y - 1, 30 * z.flamme, t, 1);
+  // Rauch: dünn, solange er glimmt; ein deutlicher Faden, wenn er ausgeht
+  if (z.aus) _c8jRauch(ctx, s.x, s.y - 2, t, Math.max(0.25, 1 - z.ausT / 4), 48);
+  else if (z.flamme < 0.05 && z.glut > 0.3) _c8jRauch(ctx, s.x, s.y - 3, t, 0.35, 26);
+}
+
+function _c8jFlasche(ctx) {
+  const z = _c8j, t = z.t, u = z.hebFl;
+  // Ruhe: Boden bei (352,212); beim Gießen über der Öffnung, gekippt
+  const zx = _C8J_CX + 61, zy = _C8J_TISCH - _C8J_HOCH - 41;
+  const x = _C8J_FL.x + (zx - _C8J_FL.x) * u, y = _C8J_FL.y + (zy - _C8J_FL.y) * u;
+  const w = -2.0 * u;                                   // Kippwinkel (gegen den Uhrzeigersinn)
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w);
+  // Flüssigkeit im Fläschchen (klar, leicht bläulich)
+  const rest = 1 - 0.6 * z.fuell;
+  ctx.fillStyle = 'rgba(191,219,254,0.55)';
+  ctx.fillRect(-15, -4 - 34 * rest, 30, 34 * rest);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(-16, 0); ctx.lineTo(-16, -40); ctx.lineTo(-6, -50); ctx.lineTo(-6, -60);
+  ctx.moveTo(16, 0); ctx.lineTo(16, -40); ctx.lineTo(6, -50); ctx.lineTo(6, -60);
+  ctx.moveTo(-16, 0); ctx.lineTo(16, 0); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(-10, -8); ctx.lineTo(-10, -34); ctx.stroke();
+  ctx.restore();
+  // Strahl vom Hals ins Glas
+  if (z.giess) {
+    const hx = x + 60 * Math.sin(w), hy = y - 60 * Math.cos(w);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(147,197,253,0.8)'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(hx, hy);
+    const ziel = _C8J_TISCH - 10 - 30 * z.fuell;
+    for (let s = 1; s <= 8; s++) {
+      const v = s / 8;
+      ctx.lineTo(hx + (_C8J_CX + 6 - hx) * Math.min(1, v * 1.6) + Math.sin(t * 20 + s) * 0.8, hy + (ziel - hy) * v);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function _c8jDraw(ctx, cv) {
+  const z = _c8j;
+  if (!z) return;
+  const W = cv.width, H = cv.height, t = z.t;
+  ctx.clearRect(0, 0, W, H);
+  // Chemieraum: Wand und Kacheln
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef4f8'); bg.addColorStop(1, '#dde7ee');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = 'rgba(148,163,184,0.25)'; ctx.lineWidth = 1;
+  for (let x = 0; x < W; x += 30) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, _C8J_TISCH); ctx.stroke(); }
+  for (let y = 0; y < _C8J_TISCH; y += 30) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  // Tisch
+  ctx.fillStyle = '#475569'; ctx.fillRect(0, _C8J_TISCH, W, 5);
+  ctx.fillStyle = '#334155'; ctx.fillRect(0, _C8J_TISCH + 5, W, H - _C8J_TISCH - 5);
+
+  // Halterung für den Glimmspan
+  ctx.fillStyle = '#64748b';
+  ctx.fillRect(40, 175, 8, _C8J_TISCH - 175);
+  ctx.fillRect(26, _C8J_TISCH - 5, 36, 5);
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(34, 166, 20, 9);
+
+  // Kerze (nur bei „Gas über der Kerze“, solange sie noch da ist)
+  const k = z.kerze;
+  if (k) {
+    const kx = _C8J_CX - 150 * k.weg;
+    _c8jKerzeZeichnen(ctx, kx, _C8J_TISCH, k.flamme, t, 1 - k.weg);
+    if (k.aus) _c8jRauch(ctx, kx, _C8J_TISCH - 42, t, Math.max(0, 1 - k.ausT / 3) * (1 - k.weg), 30);
+  }
+
+  // Zylinder (mit Umdrehen und Schütteln)
+  ctx.save();
+  if (k) {
+    ctx.translate(_C8J_CX, _C8J_TISCH - _C8J_HOCH / 2 - k.hub);
+    ctx.rotate(k.dreh);
+    ctx.translate(0, _C8J_HOCH / 2);
+  } else {
+    ctx.translate(_C8J_CX, _C8J_TISCH);
+    ctx.rotate(z.wackel);
+  }
+  _c8jZylinder(ctx, !k);
+  // Deckel: Glasplatte auf dem Rand, beim Öffnen zur Seite geschoben
+  if (z.deckelA > 0.01) {
+    ctx.globalAlpha = z.deckelA;
+    const dx = 46 * z.deckel;
+    ctx.fillStyle = 'rgba(186,230,253,0.7)'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    ctx.fillRect(-38 + dx, -_C8J_HOCH - 5, 76, 5); ctx.strokeRect(-38 + dx, -_C8J_HOCH - 5, 76, 5);
+    ctx.globalAlpha = 1;
+  }
+  ctx.restore();
+
+  // Glimmspan und Fläschchen
+  _c8jSpan(ctx);
+  _c8jFlasche(ctx);
+
+  // Beschriftung auf der Tischkante
+  ctx.fillStyle = '#f8fafc'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '700 12px sans-serif';
+  ctx.fillText('Gas im Glas: ' + z.gas, _C8J_CX, H - 12);
+  ctx.font = '700 11px sans-serif';
+  ctx.fillText('Glimmspan', 52, H - 12);
+  ctx.fillText('Kalkwasser', _C8J_FL.x + 10, H - 12);
+
+  // Zeitlupe sichtbar machen
+  if (z.zeitlupe) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶ Zeitlupe', 10, 18);
+  }
+  _bioFxAlleDraw(ctx, z.fx);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – cb6 „Deckel statt Wasser“ (Kennung chem-loeschen)
+// Modellversuch im Labor: Holz brennt in einer Porzellanschale oder Fett
+// brennt in einer kleinen Pfanne (aufgeschnitten gezeichnet, man sieht die
+// Fettschicht). Geloescht wird mit einem Becher Wasser oder einem Glasdeckel.
+// Fachlich (Lehrerteil): Wasser kuehlt Holz unter die Zuendtemperatur ->
+// aus. Auf brennendem Fett (ueber 300 °C) sinkt Wasser nach unten (hoehere
+// Dichte), verdampft schlagartig (1 l Wasser -> rund 1700 l Dampf) und
+// reisst brennende Fetttroepfchen mit -> sehr hohe Flamme. Das Fett brennt
+// danach weiter. Der Deckel nimmt dem Feuer die Luft -> aus.
+// Bildschirm-Sperrliste (Lueckenwoerter aus Merksatz/Aufgabe 2): diese vier
+// Woerter stehen NIRGENDS im Bild, in Knoepfen oder Statuszeilen.
+// Aha (NACH der Beobachtung, _bioFx): Die Tropfen sinken in Zeitlupe unter
+// das Fett, werden zu Dampfblasen, dann schiesst eine Flammensaeule bis an
+// den oberen Bildrand – als schmale Saeule mit weichem Schein, KEIN Blitz
+// ueber die Flaeche. Orange Funken (Fetttroepfchen), ein Lichtring an der
+// Pfanne, danach ein ruhiger Hinweisstreifen. Beim Deckel: gruener Ring,
+// duenner Rauchfaden unter dem Deckelrand. Kein Ton, keine Wertung.
+// „neu“ zuendet das Feuer neu und BEHAELT die Einstellung (Heft: Schritt c
+// und d stellen nach „neu“ nur EINE Sache um).
+// ═══════════════════════════════════════════════════════════════════════
+let _c8k = null;
+const _C8K_FEUER = { holz: 'Holz', fett: 'Fett in der Pfanne' };
+const _C8K_MITTEL = { wasser: 'Wasser', deckel: 'Deckel' };
+const _C8K_AUS = 'Das Feuer ist aus.';
+const _C8K_HOCH = 'Das Feuer schießt plötzlich hoch!';
+// Zeitplan in Sekunden ab „▶ löschen“
+const _C8K_T = {
+  giessen: 0.3,      // Becher ist gekippt, Wasser fliesst
+  stromEnde: 0.75,
+  holzAus: 1.5,      // Holz + Wasser: Flamme ist aus
+  tropfen: 0.55,     // Fett + Wasser: Tropfen treffen das Fett
+  sinkenEnde: 1.3,
+  hoch: 1.45,        // Fett + Wasser: Flamme schiesst hoch
+  saeule: 1.85,
+  halten: 2.6,
+  ruhig: 3.6,
+  deckelUnten: 0.6,  // Deckel liegt auf
+  deckelAus: 1.4
+};
+const _C8K_TROPFEN_X = [192, 204, 216];
+
+function _c8kInit() {
+  _c8k = { feuer: 'holz', mittel: 'wasser', phase: 'brennt', pt: 0, t: 0,
+           fx: { teile: [] }, schritt: 0, letzt: '', gesehen: {} };
+}
+function _c8kHTML() {
+  const k = (d, f, txt) => `<button class="sim-btn" data-c8k="${d}" onclick="${f}">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie löscht man welches Feuer?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Modellversuch im Labor. Wähle bei „Feuer“, was brennt, und bei „Löschen mit“, womit gelöscht wird. Dann drücke „▶ löschen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8k-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8k-los" onclick="_c8kLoeschen()">▶ löschen</button>
+          <button class="sim-btn" onclick="_c8kNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Feuer</span>
+          <div class="sim-btn-row">
+            ${k('f-holz', "_c8kFeuer('holz')", 'Holz')}
+            ${k('f-fett', "_c8kFeuer('fett')", 'Fett in der Pfanne')}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Löschen mit</span>
+          <div class="sim-btn-row">
+            ${k('m-wasser', "_c8kMittel('wasser')", 'Wasser')}
+            ${k('m-deckel', "_c8kMittel('deckel')", 'Deckel')}
+          </div>
+        </div>
+        <div class="lmp-status on" id="_c8k-status" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Sieh genau hin: Was passiert im Moment des Löschens?</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8kMarke('holz','wasser')">Holz · Wasser</button>
+          <button class="sim-btn" onclick="_c8kMarke('fett','wasser')">Fett in der Pfanne · Wasser</button>
+          <button class="sim-btn" onclick="_c8kMarke('fett','deckel')">Fett in der Pfanne · Deckel</button>
+          <button class="sim-btn" onclick="_c8kMarke('holz','deckel')">Holz · Deckel</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Nur ein Modell am Bildschirm. Diesen Versuch nie selbst ausprobieren!</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Holz · Wasser &nbsp;|&nbsp; „neu“ zündet das Feuer neu, die Einstellung bleibt.</p>
+  </div>`;
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _c8kZuenden() {
+  _c8k.phase = 'brennt'; _c8k.pt = 0; _c8k.schritt = 0;
+  _c8k.fx = { teile: [] };
+}
+function _c8kFeuer(v) {
+  if (!_c8k || !_C8K_FEUER[v]) return;
+  _c8k.feuer = v; _c8kZuenden(); _c8kStatus();
+}
+function _c8kMittel(v) {
+  if (!_c8k || !_C8K_MITTEL[v]) return;
+  _c8k.mittel = v; _c8kZuenden(); _c8kStatus();
+}
+function _c8kLoeschen() {
+  if (!_c8k || _c8k.phase !== 'brennt') return;
+  _c8k.phase = 'loeschen'; _c8k.pt = 0; _c8k.schritt = 0;
+  _c8kStatus();
+}
+function _c8kNeu() {
+  if (!_c8k) return;
+  _c8kZuenden(); _c8kStatus();
+}
+// Sprungmarke: beide Einstellungen auf einmal, neues Feuer, gleich löschen.
+function _c8kMarke(f, m) {
+  if (!_c8k) return;
+  _c8k.feuer = f; _c8k.mittel = m; _c8kZuenden(); _c8kLoeschen();
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _c8kFall() { return _c8k.feuer + '-' + _c8k.mittel; }
+// Zeitpunkt, ab dem das Ergebnis am Bildschirm steht
+function _c8kErgebnisZeit() {
+  const f = _c8kFall();
+  if (f === 'fett-wasser') return _C8K_T.hoch;
+  if (_c8k.mittel === 'wasser') return _C8K_T.holzAus;
+  return _C8K_T.deckelAus;
+}
+function _c8kEndZeit() {
+  return _c8kFall() === 'fett-wasser' ? _C8K_T.ruhig : _c8kErgebnisZeit();
+}
+function _c8kErgebnis() { return _c8kFall() === 'fett-wasser' ? _C8K_HOCH : _C8K_AUS; }
+function _c8kZeile() {
+  if (_c8k.phase === 'brennt') {
+    return (_c8k.feuer === 'holz' ? 'Das Holz brennt.' : 'Das Fett in der Pfanne brennt.') +
+           ' Drücke „▶ löschen“.';
+  }
+  if (_c8k.phase === 'loeschen' && _c8k.pt < _c8kErgebnisZeit()) {
+    return _c8k.mittel === 'wasser' ? 'Wasser wird auf das Feuer gegossen …'
+                                    : 'Der Deckel wird aufgelegt …';
+  }
+  // Einstellung vor dem Ergebnis: so steht in der Zeile, WOZU das Ergebnis
+  // gehoert (und simfakten liest Felder unter 19 Zeichen nicht ab).
+  return _C8K_FEUER[_c8k.feuer] + ' · ' + _C8K_MITTEL[_c8k.mittel] + ': ' + _c8kErgebnis();
+}
+function _c8kStatus() {
+  if (!_c8k) return;
+  const z = _c8kZeile();
+  _c8k.letzt = z;
+  const el = document.getElementById('_c8k-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-c8k]').forEach(b => {
+      const d = String(b.getAttribute('data-c8k'));
+      const an = d === 'f-' + _c8k.feuer || d === 'm-' + _c8k.mittel;
+      if (b.classList) b.classList.toggle('primary', an);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_c8k-los');
+  if (los && los.classList) los.classList.toggle('primary', _c8k.phase === 'brennt');
+}
+function _c8kUpdate(dt) {
+  if (!_c8k) return;
+  dt = _bioFxDt(dt);
+  _c8k.t += dt;
+  if (_c8k.phase === 'loeschen') {
+    _c8k.pt += dt;
+    _c8kEffekte();
+    if (_c8k.pt >= _c8kEndZeit()) {
+      _c8k.phase = 'fertig';
+      _c8k.gesehen[_c8kFall()] = true;
+    }
+  } else if (_c8k.phase === 'fertig') {
+    _c8k.pt += dt;
+    _c8kEffekte();
+  }
+  if (_c8kZeile() !== _c8k.letzt) _c8kStatus();
+  _bioFxAlleUpdate(_c8k.fx, dt);
+}
+// Effekte nach Zeitplan – jeder Schritt genau einmal.
+function _c8kEffekte() {
+  const fx = _c8k.fx, pt = _c8k.pt, f = _c8kFall(), s = _c8k.schritt;
+  const dampf = 'rgba(236,241,246,1)';
+  if (f === 'holz-wasser') {
+    if (s === 0 && pt >= 0.5)  { _c8k.schritt = 1; _bioFxBlasen(fx.teile, 205, 166, 7, dampf); }
+    if (s === 1 && pt >= 0.85) { _c8k.schritt = 2; _bioFxBlasen(fx.teile, 214, 166, 7, dampf); }
+    if (s === 2 && pt >= _C8K_T.holzAus) {
+      _c8k.schritt = 3;
+      _bioFxWelle(fx.teile, 210, 174, '#93c5fd', 70);
+      _bioFxBlasen(fx.teile, 210, 170, 5, dampf);
+    }
+    if (s === 3 && pt >= _C8K_T.holzAus + 0.4) {
+      _c8k.schritt = 4;
+      _bioFxBanner(fx, 'Das Wasser zischt. Dampf steigt auf.', 3.0, '#93c5fd');
+    }
+  } else if (f === 'fett-wasser') {
+    if (s === 0 && pt >= _C8K_T.tropfen) {
+      _c8k.schritt = 1; _bioFxWelle(fx.teile, 204, 182, '#bfdbfe', 22);
+    }
+    if (s === 1 && pt >= _C8K_T.hoch) {
+      _c8k.schritt = 2;
+      _bioFxFunken(fx.teile, 204, 176, 18, ['#f97316', '#fb923c', '#fbbf24', '#ea580c']);
+      _bioFxWelle(fx.teile, 210, 182, '#fb923c', 95);
+    }
+    if (s === 2 && pt >= 2.0) {
+      _c8k.schritt = 3;
+      _bioFxFunken(fx.teile, 214, 150, 8, ['#fb923c', '#fbbf24']);
+    }
+    if (s === 3 && pt >= 2.9) {
+      _c8k.schritt = 4;
+      _bioFxBanner(fx, _c8k.gesehen['holz-wasser'] ? 'Beim Holz ging das Feuer aus. Hier nicht!'
+                                                  : 'Wasser löscht dieses Feuer nicht!', 3.6, '#fb923c');
+    }
+  } else {
+    // Deckel auf Schale oder Pfanne
+    if (s === 0 && pt >= _C8K_T.deckelUnten) {
+      _c8k.schritt = 1; _bioFxWelle(fx.teile, 210, _c8kRand(), '#cbd5e1', 40);
+    }
+    if (s === 1 && pt >= _C8K_T.deckelAus) {
+      _c8k.schritt = 2; _bioFxWelle(fx.teile, 210, _c8kRand() - 8, '#86efac', 80);
+    }
+    if (s === 2 && pt >= _C8K_T.deckelAus + 0.5) {
+      _c8k.schritt = 3;
+      _bioFxBanner(fx, _c8k.feuer === 'fett' ? 'Der Deckel schließt die Pfanne ab.'
+                                            : 'Der Deckel schließt die Schale ab.', 3.2, '#86efac');
+    }
+  }
+}
+
+/* ── Groessen fuer das Bild ────────────────────────────────────────────── */
+function _c8kRand() { return _c8k.feuer === 'holz' ? 180 : 177; }   // Oberkante Gefaess
+function _c8kBasis() { return _c8k.feuer === 'holz' ? 175 : 182; }  // Fuss der Flamme
+const _c8kGlatt = u => { u = u < 0 ? 0 : u > 1 ? 1 : u; return u * u * (3 - 2 * u); };
+// Flammengroesse: 1 = normales Feuer, 0 = aus, ~4,3 = Saeule bis an den Bildrand
+function _c8kGroesse() {
+  if (_c8k.phase === 'brennt') return 1;
+  const pt = _c8k.pt, f = _c8kFall(), T = _C8K_T;
+  if (f === 'holz-wasser') return 1 - _c8kGlatt((pt - 0.5) / (T.holzAus - 0.5));
+  if (f === 'fett-wasser') {
+    if (pt < T.hoch) return 1 - 0.15 * _c8kGlatt((pt - T.tropfen) / 0.3);
+    if (pt < T.saeule) return 0.85 + 3.45 * _bioFxEase.raus(_bioFxKlemme((pt - T.hoch) / (T.saeule - T.hoch)));
+    if (pt < T.halten) return 4.3 + 0.12 * Math.sin(pt * 5);
+    return 4.3 - 2.5 * _c8kGlatt((pt - T.halten) / (T.ruhig - T.halten));   // brennt gross weiter
+  }
+  // Deckel
+  return 1 - _c8kGlatt((pt - T.deckelUnten + 0.15) / (T.deckelAus - T.deckelUnten + 0.15));
+}
+// Flamme aus mehreren Zungen; ruhiges Wiegen (unter 1 Hz), kein Blinken.
+function _c8kFlamme(ctx, x, y, s, t) {
+  if (s <= 0.02) return;
+  const h = 42 * s, hw = 22 + 9 * Math.max(0, s - 1);
+  ctx.save();
+  // weicher Schein nur um die Flamme
+  const rg = Math.min(120, hw + h * 0.6);      // Schein bleibt an der Flamme, nie ueber das ganze Bild
+  const g = ctx.createRadialGradient(x, y - h * 0.4, 4, x, y - h * 0.4, rg);
+  g.addColorStop(0, 'rgba(251,146,60,' + (0.16 + 0.05 * Math.min(1, s / 2)).toFixed(3) + ')');
+  g.addColorStop(1, 'rgba(251,146,60,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(x, y - h * 0.4, rg, 0, 2 * Math.PI); ctx.fill();
+  const zungen = [[-0.6, 0.62], [-0.3, 0.86], [0, 1], [0.3, 0.8], [0.6, 0.58]];
+  const schichten = [['#dc2626', 1, 0.85], ['#f97316', 0.78, 0.95], ['#fde047', 0.5, 0.95]];
+  for (const [farbe, k, a] of schichten) {
+    ctx.fillStyle = farbe; ctx.globalAlpha = a;
+    zungen.forEach(([dx, hf], i) => {
+      const wieg = Math.sin(t * 2.3 + i * 1.7) * 0.07;
+      const hh = h * hf * k * (1 + wieg);
+      const bw = hw * 0.48 * k;
+      const cx = x + dx * hw;
+      const sway = Math.sin(t * 1.9 + i * 2.1) * (3 + 2 * s) * k;
+      ctx.beginPath();
+      ctx.moveTo(cx - bw, y);
+      ctx.quadraticCurveTo(cx - bw * 0.95, y - hh * 0.55, cx + sway, y - hh);
+      ctx.quadraticCurveTo(cx + bw * 0.95, y - hh * 0.55, cx + bw, y);
+      ctx.quadraticCurveTo(cx, y + bw * 0.45, cx - bw, y);
+      ctx.fill();
+    });
+  }
+  ctx.restore();
+}
+function _c8kRauch(ctx, x, y, t, alpha) {
+  if (alpha <= 0.01) return;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,' + alpha.toFixed(3) + ')';
+  ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y);
+  for (let k = 1; k <= 14; k++) {
+    const yy = y - k * 5;
+    ctx.lineTo(x + Math.sin(t * 1.4 - k * 0.5) * (1 + k * 0.5), yy);
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _c8kSchale(ctx, verkohlt, nass) {
+  // Holzstaebe ueber der Schale
+  const holz = verkohlt ? '#3f3a36' : '#8b5a2b';
+  const stab = (x1, y1, x2, y2) => {
+    ctx.strokeStyle = holz; ctx.lineWidth = 7; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  };
+  stab(178, 182, 238, 170); stab(182, 170, 242, 182); stab(192, 176, 230, 176);
+  if (verkohlt) {
+    ctx.fillStyle = '#9ca3af';
+    for (const [px, py] of [[196, 171], [222, 173], [208, 179]]) {
+      ctx.beginPath(); ctx.arc(px, py, 1.6, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  if (nass) {
+    ctx.fillStyle = 'rgba(59,130,246,0.7)';
+    for (const [px, py] of [[190, 168], [215, 166], [233, 171]]) {
+      ctx.beginPath(); ctx.arc(px, py, 1.8, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  // Porzellanschale
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(146, 180); ctx.quadraticCurveTo(210, 232, 274, 180); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(210, 180, 64, 5, 0, 0, 2 * Math.PI); ctx.stroke();
+}
+function _c8kPfanne(ctx, t) {
+  // Heizplatte
+  ctx.fillStyle = '#4b5563'; ctx.fillRect(158, 199, 104, 15);
+  ctx.fillStyle = '#ef4444'; ctx.globalAlpha = 0.55 + 0.1 * Math.sin(t * 1.2);
+  ctx.fillRect(166, 199, 88, 3); ctx.globalAlpha = 1;
+  // Pfanne aufgeschnitten: Wand, Boden, Stiel
+  ctx.fillStyle = '#334155';
+  ctx.beginPath();
+  ctx.moveTo(148, 176); ctx.lineTo(156, 176); ctx.lineTo(164, 193); ctx.lineTo(256, 193);
+  ctx.lineTo(264, 176); ctx.lineTo(272, 176); ctx.lineTo(262, 199); ctx.lineTo(158, 199);
+  ctx.closePath(); ctx.fill();
+  ctx.fillRect(270, 176, 62, 6);
+  ctx.fillStyle = '#1f2937'; ctx.fillRect(306, 175, 26, 8);
+  // Fettschicht
+  const og = ctx.createLinearGradient(0, 182, 0, 193);
+  og.addColorStop(0, '#fbbf24'); og.addColorStop(1, '#d97706');
+  ctx.fillStyle = og;
+  ctx.beginPath(); ctx.moveTo(158, 182);
+  for (let x = 158; x <= 262; x += 6) ctx.lineTo(x, 182 + Math.sin(x * 0.2 + t * 2) * 0.6);
+  ctx.lineTo(256, 193); ctx.lineTo(164, 193); ctx.closePath(); ctx.fill();
+}
+function _c8kBecher(ctx, pt) {
+  const T = _C8K_T;
+  // Weg: Ruhe (92,108) -> Giessstellung (172,108), 110° gekippt; zurueck ab 0,9 s
+  const hin = _c8kGlatt(pt / T.giessen);
+  const weg = _c8kGlatt((pt - 0.95) / 0.45);
+  const u = hin * (1 - weg);
+  const cx = 92 + 80 * u, cy = 108, rot = u * 1.92;
+  const voll = _c8k.phase === 'brennt' ? 1 : 1 - _c8kGlatt((pt - T.giessen) / (T.stromEnde - T.giessen));
+  ctx.save();
+  ctx.translate(cx, cy); ctx.rotate(rot);
+  if (voll > 0.02) {
+    ctx.fillStyle = 'rgba(96,165,250,0.6)';
+    const wh = 32 * voll;
+    ctx.fillRect(-14, 20 - wh, 28, wh);
+  }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(-15, -20); ctx.lineTo(-15, 20); ctx.lineTo(15, 20); ctx.lineTo(15, -20);
+  ctx.lineTo(19, -23); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(-10, -14); ctx.lineTo(-10, 14); ctx.stroke();
+  ctx.restore();
+  if (u < 0.05 && voll > 0.5) {
+    ctx.fillStyle = '#1e3a5f'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('Wasser', cx, cy + 36);
+  }
+  // Wasserstrahl von der Ausgussecke zum Feuer
+  if (_c8k.phase !== 'brennt' && pt > T.giessen - 0.05 && pt < T.stromEnde + 0.1) {
+    const c = Math.cos(rot), s = Math.sin(rot);
+    const sx = cx + 19 * c + 23 * s, sy = cy + 19 * s - 23 * c;
+    const zielY = _c8k.feuer === 'holz' ? 170 : 182;
+    const a = 1 - _c8kGlatt((pt - T.stromEnde) / 0.1);
+    ctx.save();
+    ctx.strokeStyle = 'rgba(59,130,246,' + (0.75 * a).toFixed(3) + ')';
+    ctx.lineWidth = 4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.quadraticCurveTo(sx + 12, sy + 10, 204, zielY); ctx.stroke();
+    ctx.fillStyle = 'rgba(59,130,246,' + (0.8 * a).toFixed(3) + ')';
+    for (let k = 0; k < 3; k++) {
+      const q = ((pt * 3 + k / 3) % 1);
+      ctx.beginPath(); ctx.arc(sx + (204 - sx) * q, sy + (zielY - sy) * q * q, 2.2, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+// Wasser unter dem Fett: Tropfen sinken (Zeitlupe), werden zu Dampfblasen.
+function _c8kTropfen(ctx, pt) {
+  const T = _C8K_T;
+  if (pt < T.tropfen || pt > T.hoch + 0.15) return;
+  const sink = _c8kGlatt((pt - T.tropfen) / (T.sinkenEnde - T.tropfen));
+  const blase = _bioFxKlemme((pt - 1.2) / (T.hoch - 1.2));
+  const weg = _bioFxKlemme((pt - T.hoch) / 0.15);
+  _C8K_TROPFEN_X.forEach((x, i) => {
+    const y = 183 + 8 * sink + i % 2;
+    if (blase <= 0) {
+      ctx.fillStyle = '#2563eb';
+      ctx.beginPath(); ctx.ellipse(x, y, 2.6, 3.2, 0, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      ctx.save();
+      ctx.globalAlpha = 0.9 * (1 - weg);
+      ctx.fillStyle = 'rgba(241,245,249,0.9)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(x, y - 2 * blase, 2.6 + 6 * blase, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+  });
+}
+function _c8kDeckel(ctx, pt) {
+  const rand = _c8kRand();
+  const u = _c8k.phase === 'brennt' ? 0 : _c8kGlatt(pt / _C8K_T.deckelUnten);
+  const y = 70 + (rand - 70) * u;
+  ctx.save();
+  ctx.fillStyle = 'rgba(186,230,253,0.35)'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(142, y); ctx.quadraticCurveTo(210, y - 44, 278, y); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.fillRect(203, y - 30, 14, 8);
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(170, y - 10); ctx.quadraticCurveTo(185, y - 18, 198, y - 20); ctx.stroke();
+  ctx.restore();
+  if (u < 0.05) {
+    ctx.fillStyle = '#1e3a5f'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Deckel', 284, y - 4);
+  }
+  return y;
+}
+function _c8kDraw(ctx, cv) {
+  if (!_c8k) return;
+  const W = cv.width, H = cv.height, t = _c8k.t, pt = _c8k.pt;
+  const f = _c8kFall();
+  ctx.clearRect(0, 0, W, H);
+  // Laborwand und Tisch
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#eef2f7'); bg.addColorStop(1, '#dde4ec');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1;
+  for (let y = 30; y < 214; y += 30) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  ctx.fillStyle = '#a8a29e'; ctx.fillRect(0, 214, W, H - 214);
+  ctx.fillStyle = '#78716c'; ctx.fillRect(0, 214, W, 3);
+
+  const s = _c8kGroesse();
+  const aus = s <= 0.02;
+  const basis = _c8kBasis();
+  // Gefaess
+  if (_c8k.feuer === 'holz') _c8kSchale(ctx, _c8k.phase !== 'brennt' && pt > 0.9, f === 'holz-wasser' && pt > 0.5);
+  else { _c8kPfanne(ctx, t); _c8kTropfen(ctx, pt); }
+  // Flamme (unter dem Deckel wird sie vom Glas begrenzt)
+  let deckelY = null;
+  if (_c8k.mittel === 'deckel') {
+    const u = _c8k.phase === 'brennt' ? 0 : _c8kGlatt(pt / _C8K_T.deckelUnten);
+    deckelY = 70 + (_c8kRand() - 70) * u;
+  }
+  ctx.save();
+  if (deckelY !== null) { ctx.beginPath(); ctx.rect(0, deckelY - 20, W, H); ctx.clip(); }
+  _c8kFlamme(ctx, 210, basis, s, t);
+  ctx.restore();
+  // Rauchfaden, wenn das Feuer aus ist
+  if (aus && _c8k.phase !== 'brennt') {
+    const seit = pt - _c8kErgebnisZeit();
+    const a = 0.55 * _bioFxKlemme(seit / 0.6);
+    if (_c8k.mittel === 'deckel') _c8kRauch(ctx, 146, _c8kRand() - 2, t, a);
+    else _c8kRauch(ctx, 210, basis - 4, t, a);
+  }
+  // Dampfwolke beim Holz
+  if (f === 'holz-wasser' && _c8k.phase !== 'brennt' && pt > 0.5 && pt < 3.2) {
+    const a = 0.5 * _bioFxKlemme((pt - 0.5) / 0.3) * (1 - _bioFxKlemme((pt - 2.4) / 0.8));
+    ctx.save(); ctx.fillStyle = 'rgba(241,245,249,' + a.toFixed(3) + ')';
+    for (let k = 0; k < 4; k++) {
+      const yy = 160 - ((pt - 0.5) * 22 + k * 12) % 60;
+      ctx.beginPath(); ctx.arc(196 + k * 10 + Math.sin(t + k) * 3, yy, 9 + k * 2, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Loeschmittel
+  if (_c8k.mittel === 'wasser') _c8kBecher(ctx, pt);
+  else _c8kDeckel(ctx, pt);
+
+  // Beschriftung
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(_C8K_FEUER[_c8k.feuer] + ' · ' + _C8K_MITTEL[_c8k.mittel], 10, H - 10);
+  if (f === 'fett-wasser' && _c8k.phase !== 'brennt' && pt >= _C8K_T.tropfen && pt < _C8K_T.hoch) {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 11px sans-serif';
+    ctx.fillText('▶ Zeitlupe', 10, 18);
+    ctx.fillStyle = '#1e3a5f'; ctx.textAlign = 'right';
+    ctx.fillText('Wasser sinkt unter das Fett', W - 10, 206);
+  }
+  if (_c8k.phase !== 'brennt' && pt >= _c8kErgebnisZeit()) {
+    ctx.textAlign = 'right'; ctx.font = '700 12px sans-serif';
+    ctx.fillStyle = f === 'fett-wasser' ? '#c2410c' : '#15803d';
+    ctx.fillText(f === 'fett-wasser' ? 'Das Feuer brennt weiter.' : 'Keine Flamme mehr.', W - 10, H - 10);
+  }
+  _bioFxAlleDraw(ctx, _c8k.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – ca1 „Was steckt in der Luft?“ (Kennung chem-luft)
+// Zwei Kolbenprober, dazwischen ein waagerechtes Glasrohr mit Kupfer ueber
+// einer kleinen Brennerflamme. 100 ml Luft = 100 Teilchen im Bild:
+// rot = Sauerstoff (Legende), blau und ein graues Teilchen ohne Beschriftung.
+// Jeder Druck auf „▶ hin und her schieben“ schiebt das Gas nach rechts ueber
+// das heisse Kupfer und wieder zurueck. Rote Teilchen bleiben am Kupfer
+// haengen, dort wird das Kupfer schwarz (Kupfer + Sauerstoff → Kupferoxid).
+// Modellwerte (Lehrerteil, ganze ml): 100 → 88 → 81 → 79 → 79 → 79 ml.
+// Am Kupfer bleiben je Durchgang 12, 7 und 2 rote Teilchen haengen (zusammen
+// alle roten); ab dem 4. Mal bleibt nichts mehr haengen.
+// Der Wert in der Statuszeile springt erst, wenn das Gas wieder links steht
+// und abgekuehlt ist (warmes Gas nimmt kurz etwas mehr Platz ein).
+// Glimmspan: vor dem Schieben glueht er weiter; nach 1- und 2-mal glimmt er
+// nur noch schwach; ab 3-mal wird die Glut dunkel, ein duenner Rauchfaden
+// steigt auf (kein Text dazu).
+// Aha (_bioFx): Im 3. Durchgang Zeitlupe, wenn die letzten roten Teilchen das
+// Kupfer erreichen; danach Lichtring ueber dem Gas und ein Hinweisstreifen
+// „Kein rotes Teilchen mehr im Gas!“. Beim 4. Mal: nichts bleibt haengen,
+// Lichtringe an der Marke „vorher“ und am Kolben, der stehen bleibt.
+// Kein Text mit den Lueckenwoertern des Hefts, das Gas nur in ml.
+// ════════════════════════════════════════════════════════════════════════
+let _c8l = null;
+const _C8L_V = [100, 88, 81, 79, 79, 79];   // ml nach 0..5 Durchgaengen
+const _C8L_WEG = [12, 7, 2];                  // rote Teilchen je Durchgang (1..3)
+const _C8L_K = 1.1;                           // px je ml
+const _C8L_XL = 150, _C8L_XR = 270, _C8L_YC = 80;
+const _C8L_BH = 34;                           // Innenhoehe der Kolbenprober
+const _C8L_CU0 = 180, _C8L_CU1 = 252;         // Kupfer im Rohr
+const _C8L_TAU = 0.2;                         // Anteil der Laufzeit im Rohr
+const _C8L_THIN = 0.95, _C8L_THER = 0.95, _C8L_TKUEHL = 0.65;   // s
+const _C8L_WARM = 1.04;                       // warmes Gas: etwas mehr Platz
+
+function _c8lZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+// Wie weit ist das Kupfer schwarz, wenn c rote Teilchen haengen geblieben sind?
+function _c8lZone(c) {
+  const alle = _C8L_WEG.reduce((a, b) => a + b, 0);
+  return _C8L_CU0 + (c / alle) * (_C8L_CU1 - _C8L_CU0) * 0.9;
+}
+function _c8lTeilchen() {
+  const r = _c8lZufall(8117);
+  const liste = [];
+  for (let i = 0; i < 100; i++) {
+    // 21 rot, 78 blau, 1 grau – rot wird gleichmaessig ueber die Wolke verteilt
+    const art = (i % 5 === 2 && liste.filter(p => p.art === 'o').length < 21) ? 'o' : 'n';
+    liste.push({ art, u: r(), v: r(), ph: r() * 6.3, w: 1.2 + r() * 1.4,
+                 x: 0, y: 0, pass: 0, sx: 0, sy: 0, fest: false, festAlter: 0, rang: 0 });
+  }
+  let rot = liste.filter(p => p.art === 'o');
+  while (rot.length < 21) { const p = liste.find(q => q.art === 'n'); p.art = 'o'; rot = liste.filter(q => q.art === 'o'); }
+  liste.filter(p => p.art === 'n')[37].art = 'g';
+  // welcher Durchgang welches rote Teilchen festhaelt, und wo am Kupfer
+  const reihe = rot.slice().sort((a, b) => a.v - b.v);
+  let k = 0, vorher = 0;
+  _C8L_WEG.forEach((n, d) => {
+    for (let j = 0; j < n; j++, k++) {
+      const p = reihe[k];
+      p.pass = d + 1;
+      const a = _c8lZone(vorher), b = _c8lZone(vorher + n);
+      p.sx = a + (b - a) * ((j + 0.5) / n) + (r() - 0.5) * 2;
+      p.sy = _C8L_YC + (r() - 0.5) * 9;
+    }
+    vorher += n;
+  });
+  return liste;
+}
+function _c8lInit() {
+  _c8l = { n: 0, phase: 'ruhe', pt: 0, t: 0, teile: _c8lTeilchen(), fest: 0,
+           zone: _C8L_CU0, zoneVorher: _C8L_CU0, warm: 1,
+           span: 0, spanZiel: 0, glut: 1, rauch: 0, spanZeit: 0,
+           fx: { teile: [] }, zeitlupe: null, zlGezeigt: false, leuchtKolben: 0, leuchtMarke: 0 };
+  _c8lRuhePositionen(true);
+}
+function _c8lGas() { return _c8l.teile.filter(p => !p.fest); }
+// Ruhelage: Gas steht links, u = 0 am Ausgang, u = 1 am Stempel.
+function _c8lRuhePositionen(sofort) {
+  const lg = _C8L_V[_c8l.n] * _C8L_K * _c8l.warm;
+  for (const p of _c8lGas()) {
+    const tx = _C8L_XL - 3 - p.u * (lg - 6), ty = _C8L_YC + (p.v - 0.5) * (_C8L_BH - 8);
+    if (sofort) { p.x = tx; p.y = ty; }
+    p.tx = tx; p.ty = ty;
+  }
+}
+function _c8lHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel Sauerstoff ist in der Luft?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im linken Kolbenprober sind 100 ml Luft. Das Kupfer im Glasrohr wird vom Brenner erhitzt. Jeder Druck schiebt das Gas einmal über das heiße Kupfer und wieder zurück.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8l-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8l-los" onclick="_c8lSchieben()">▶ hin und her schieben</button>
+          <button class="sim-btn" id="_c8l-span" onclick="_c8lGlimmspan()">Glimmspan hineinhalten</button>
+          <button class="sim-btn" onclick="_c8lNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Kolbenprober links</div>
+        <div class="lmp-status on" id="_c8l-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_c8l-zaehler" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Lies erst ab, wenn der Zähler weitergesprungen ist. Dann steht das Gas wieder links und ist abgekühlt.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8lSprung(1)">nach 1-mal</button>
+          <button class="sim-btn" onclick="_c8lSprung(3)">nach 3-mal</button>
+          <button class="sim-btn" onclick="_c8lSprung(5)">nach 5-mal</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Im Gas sind viele kleine Teilchen. Die <b style="color:#dc2626">roten</b> Teilchen sind Sauerstoff. Achte darauf, was am heißen Kupfer passiert.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 100 ml Luft, noch nicht geschoben</p>
+  </div>`;
+}
+function _c8lLaeuft() { return _c8l.phase !== 'ruhe'; }
+function _c8lStatus() {
+  if (!_c8l) return;
+  const st = document.getElementById('_c8l-status');
+  if (st) {
+    st.textContent = 'Gas im Kolben: ' + _C8L_V[_c8l.n] + ' ml';
+    st.className = 'lmp-status' + (_c8lLaeuft() ? '' : ' on');
+  }
+  const z = document.getElementById('_c8l-zaehler');
+  if (z) {
+    z.textContent = 'hin und her: ' + (_c8l.n ? _c8l.n + '-mal' : 'noch nicht');
+    z.className = 'lmp-status' + (_c8lLaeuft() ? '' : ' on');
+  }
+  const los = document.getElementById('_c8l-los');
+  if (los) {
+    const aus = _c8l.n >= 5;
+    los.disabled = aus;
+    los.classList.toggle('primary', !aus && !_c8lLaeuft());
+    los.style.opacity = aus ? '0.45' : '';
+  }
+  const sp = document.getElementById('_c8l-span');
+  if (sp) sp.disabled = _c8lLaeuft();
+}
+function _c8lSchieben() {
+  if (!_c8l || _c8lLaeuft() || _c8l.n >= 5) return;
+  _c8l.spanZiel = 0; _c8l.rauch = 0;                // Glimmspan heraus
+  _c8l.fx.banner = null;
+  _c8l.zoneVorher = _c8l.zone;
+  // Reihenfolge: wer am Ausgang steht, geht zuerst
+  const gas = _c8lGas().sort((a, b) => a.u - b.u);
+  gas.forEach((p, i) => { p.rang = i / gas.length * (1 - _C8L_TAU); });
+  _c8l.phase = 'hin'; _c8l.pt = 0; _c8l.zlGezeigt = false;
+  _c8lStatus();
+}
+function _c8lGlimmspan() {
+  if (!_c8l || _c8lLaeuft()) return;
+  _c8l.span = 0; _c8l.spanZiel = 1; _c8l.glut = 1; _c8l.rauch = 0; _c8l.spanZeit = 0;
+}
+function _c8lNeu() {
+  if (!_c8l) return;
+  _c8lInit(); _c8lStatus();
+}
+// Sprungmarke: gleich der Zustand nach k Durchgaengen (Gas steht links, kalt).
+function _c8lSprung(k) {
+  if (!_c8l) return;
+  _c8lInit();
+  let c = 0, cv = 0;
+  for (const p of _c8l.teile) {
+    if (p.art === 'o' && p.pass && p.pass <= k) { p.fest = true; p.festAlter = 9; p.x = p.sx; p.y = p.sy; c++; }
+    if (p.art === 'o' && p.pass && p.pass <= k - 1) cv++;
+  }
+  _c8l.fest = c; _c8l.n = k;
+  _c8l.zone = _c8lZone(c); _c8l.zoneVorher = _c8lZone(cv);
+  _c8lRuhePositionen(true);
+  _bioFxWelle(_c8l.fx.teile, _C8L_XL - _C8L_V[k] * _C8L_K, _C8L_YC, '#93c5fd', 26);
+  _c8lStatus();
+}
+function _c8lUpdate(dt) {
+  if (!_c8l) return;
+  dt = _bioFxDt(dt);
+  _c8l.t += dt;
+  const zl = _bioFxZeitlupeFaktor(_c8l, dt);
+  const d = dt * zl;
+  const L = _C8L_XR - _C8L_XL, tau = _C8L_TAU;
+  if (_c8l.phase === 'hin') {
+    _c8l.pt += d;
+    const f = _bioFxEase.sanft(_bioFxKlemme(_c8l.pt / _C8L_THIN));
+    const lgL = _C8L_V[_c8l.n] * _C8L_K, lgR = _C8L_V[_c8l.n + 1] * _C8L_K * _C8L_WARM;
+    for (const p of _c8lGas()) {
+      const r = p.rang;
+      if (f < r) { p.tx = _C8L_XL - (r - f) / (1 - tau) * lgL; p.ty = _C8L_YC + (p.v - 0.5) * (_C8L_BH - 8); }
+      else if (f < r + tau) {
+        p.tx = _C8L_XL + (f - r) / tau * L; p.ty = _C8L_YC + (p.v - 0.5) * 9;
+        p.x = p.tx;                                     // im Rohr ohne Nachziehen
+        // Zeitlupe, wenn im 3. Durchgang die letzten roten Teilchen ins Rohr kommen
+        if (p.pass === 3 && _c8l.n === 2 && !_c8l.zlGezeigt) { _c8l.zlGezeigt = true; _bioFxZeitlupe(_c8l, 0.3, 1.1); }
+        if (p.art === 'o' && p.pass === _c8l.n + 1 && p.tx >= p.sx) {
+          p.fest = true; p.festAlter = 0; p.x = p.sx; p.y = p.sy;
+          _c8l.fest++;
+          _bioFxFunken(_c8l.fx.teile, p.sx, p.sy, 2, ['#fca5a5', '#fde68a']);
+        }
+      } else {
+        p.tx = _C8L_XR + (f - r - tau) / (1 - tau) * lgR; p.ty = _C8L_YC + (p.v - 0.5) * (_C8L_BH - 8);
+      }
+    }
+    if (_c8l.pt >= _C8L_THIN) {
+      _c8l.phase = 'her'; _c8l.pt = 0;
+      const gas = _c8lGas().sort((a, b) => b.rang - a.rang);    // zuletzt angekommen = am Rohr
+      gas.forEach((p, i) => { p.rang = i / gas.length * (1 - tau); });
+    }
+  } else if (_c8l.phase === 'her') {
+    _c8l.pt += d;
+    const f = _bioFxEase.sanft(_bioFxKlemme(_c8l.pt / _C8L_THER));
+    const lg = _C8L_V[_c8l.n + 1] * _C8L_K * _C8L_WARM;
+    for (const p of _c8lGas()) {
+      const r = p.rang;
+      if (f < r) { p.tx = _C8L_XR + (r - f) / (1 - tau) * lg; p.ty = _C8L_YC + (p.v - 0.5) * (_C8L_BH - 8); }
+      else if (f < r + tau) { p.tx = _C8L_XR - (f - r) / tau * L; p.ty = _C8L_YC + (p.v - 0.5) * 9; p.x = p.tx; }
+      else { p.tx = _C8L_XL - (f - r - tau) / (1 - tau) * lg; p.ty = _C8L_YC + (p.v - 0.5) * (_C8L_BH - 8); }
+    }
+    if (_c8l.pt >= _C8L_THER) {
+      for (const p of _c8lGas()) p.u = (1 - p.rang - tau) / (1 - tau);
+      _c8l.phase = 'kuehl'; _c8l.pt = 0; _c8l.n++; _c8l.warm = _C8L_WARM;
+    }
+  } else if (_c8l.phase === 'kuehl') {
+    _c8l.pt += d;
+    _c8l.warm = 1 + (_C8L_WARM - 1) * (1 - _bioFxEase.sanft(_bioFxKlemme(_c8l.pt / _C8L_TKUEHL)));
+    _c8lRuhePositionen(false);
+    if (_c8l.pt >= _C8L_TKUEHL) { _c8l.warm = 1; _c8l.phase = 'ruhe'; _c8lRuhePositionen(false); _c8lStatus(); _c8lAha(); }
+  } else {
+    _c8lRuhePositionen(false);
+  }
+  // schwarze Zone waechst mit den festgehaltenen Teilchen
+  const zz = _c8lZone(_c8l.fest);
+  _c8l.zone += (zz - _c8l.zone) * Math.min(1, dt * 5);
+  // Teilchen: weich zum Ziel, dazu Zittern (Waermebewegung)
+  const k = Math.min(1, dt * 12);
+  for (const p of _c8l.teile) {
+    if (p.fest) { p.festAlter += dt; continue; }
+    p.x += (p.tx - p.x) * k; p.y += (p.ty - p.y) * k;
+  }
+  // Glimmspan
+  _c8l.span += (_c8l.spanZiel - _c8l.span) * Math.min(1, dt * (_c8l.spanZiel ? 2.6 : 6));
+  if (_c8l.spanZiel && _c8l.span > 0.97) {
+    _c8l.spanZeit += dt;
+    const ziel = _c8l.n === 0 ? 1 : _c8l.n === 1 ? 0.5 : _c8l.n === 2 ? 0.28 : 0;
+    const vor = _c8l.glut;
+    _c8l.glut += (ziel - _c8l.glut) * Math.min(1, dt * 1.6);
+    if (ziel === 0 && vor > 0.15 && _c8l.glut <= 0.15) _c8l.rauch = 1;
+  }
+  if (_c8l.rauch > 0) _c8l.rauch = Math.max(0, _c8l.rauch - dt * 0.18);
+  _c8l.leuchtKolben = Math.max(0, _c8l.leuchtKolben - dt);
+  _c8l.leuchtMarke = Math.max(0, _c8l.leuchtMarke - dt);
+  _bioFxAlleUpdate(_c8l.fx, dt);
+}
+// Nach dem Ablesen: kurze, ruhige Bestaetigung.
+function _c8lAha() {
+  const fx = _c8l.fx, xs = _C8L_XL - _C8L_V[_c8l.n] * _C8L_K;
+  if (_c8l.n === 3) {
+    _bioFxWelle(fx.teile, (xs + _C8L_XL) / 2, _C8L_YC, '#93c5fd', 70);
+    _bioFxFunken(fx.teile, (xs + _C8L_XL) / 2, _C8L_YC - 10, 10, ['#bfdbfe', '#ffffff', '#93c5fd']);
+    _bioFxBanner(fx, 'Kein rotes Teilchen mehr im Gas!', 3.4, '#93c5fd');
+  } else if (_c8l.n === 4) {
+    _bioFxWelle(fx.teile, _c8l.zone, _C8L_YC, '#e2e8f0', 30);
+    _bioFxWelle(fx.teile, xs, _C8L_YC, '#fde68a', 34);
+    _c8l.leuchtKolben = 2; _c8l.leuchtMarke = 2;
+  } else if (_c8l.n < 3) {
+    _bioFxWelle(fx.teile, xs, _C8L_YC, '#fde68a', 26);
+  }
+}
+function _c8lDraw(ctx, cv) {
+  if (!_c8l) return;
+  const W = cv.width, H = cv.height, t = _c8l.t;
+  const XL = _C8L_XL, XR = _C8L_XR, YC = _C8L_YC, BH = _C8L_BH, K = _C8L_K;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tisch und Stativstangen
+  ctx.fillStyle = '#cbb89a'; ctx.fillRect(0, 228, W, H - 228);
+  ctx.fillStyle = '#94a3b8';
+  for (const x of [96, 330]) { ctx.fillRect(x - 2, YC + BH / 2 + 2, 4, 228 - YC - BH / 2 - 2); ctx.fillRect(x - 16, 224, 32, 5); }
+
+  // Stempelstellung aus den Teilchen ableiten (weich mitlaufend)
+  const gas = _c8lGas();
+  let minL = XL, maxR = XR;
+  for (const p of gas) { if (p.x < XL) minL = Math.min(minL, p.x); if (p.x > XR) maxR = Math.max(maxR, p.x); }
+  const ruhe = !_c8lLaeuft() || _c8l.phase === 'kuehl';
+  const lgR0 = _C8L_V[_c8l.n] * K * _c8l.warm;
+  const stL = ruhe ? XL - lgR0 : Math.min(XL, minL - 3);
+  const stR = ruhe ? XR : Math.max(XR, maxR + 3);
+  _c8l.stL = _c8l.stL == null ? stL : _c8l.stL + (stL - _c8l.stL) * 0.35;
+  _c8l.stR = _c8l.stR == null ? stR : _c8l.stR + (stR - _c8l.stR) * 0.35;
+
+  // Brenner mit kleiner blauer Flamme
+  const bx = 216;
+  ctx.fillStyle = '#64748b'; ctx.fillRect(bx - 22, 220, 44, 8);
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(bx - 6, 150, 12, 70);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(bx - 6, 150, 12, 70);
+  const fl = 1 + 0.05 * Math.sin(t * 9) + 0.03 * Math.sin(t * 14.3);
+  ctx.save();
+  ctx.fillStyle = 'rgba(96,165,250,0.55)';
+  ctx.beginPath(); ctx.moveTo(bx - 7, 150);
+  ctx.quadraticCurveTo(bx - 9, 120, bx + Math.sin(t * 5) * 1.5, 150 - 52 * fl);
+  ctx.quadraticCurveTo(bx + 9, 120, bx + 7, 150); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = 'rgba(37,99,235,0.75)';
+  ctx.beginPath(); ctx.moveTo(bx - 4, 150);
+  ctx.quadraticCurveTo(bx - 5, 138, bx, 150 - 22 * fl);
+  ctx.quadraticCurveTo(bx + 5, 138, bx + 4, 150); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  // Waermeflimmern ueber der Flamme
+  ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.lineWidth = 1;
+  for (let j = -1; j <= 1; j++) {
+    ctx.beginPath();
+    for (let y = 96; y <= 104; y += 2) ctx.lineTo(bx + j * 8 + Math.sin(y * 0.8 + t * 6 + j) * 1.5, y);
+    ctx.stroke();
+  }
+
+  // Glasrohr
+  const r0 = YC - 8, r1 = YC + 8;
+  ctx.fillStyle = 'rgba(219,234,254,0.55)'; ctx.fillRect(XL, r0, XR - XL, r1 - r0);
+  // Kupfer: rotbraune Spaene, schwarz bis zur Zone
+  for (let x = _C8L_CU0; x <= _C8L_CU1; x += 3) {
+    const schwarz = x <= _c8l.zone;
+    const heiss = Math.max(0, 1 - Math.abs(x - bx) / 40);
+    ctx.strokeStyle = schwarz ? '#1f1a17' : (heiss > 0.4 ? '#c7652e' : '#b1602f');
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(x, YC + ((x / 3) % 2 ? 2 : -2), 4.2, 0.3 + (x % 7), 0.3 + (x % 7) + 4.2); ctx.stroke();
+  }
+  // Marke „vorher“
+  if (_c8l.zoneVorher > _C8L_CU0 + 0.5) {
+    const mx = _c8l.zoneVorher;
+    if (_c8l.leuchtMarke > 0) {
+      ctx.save(); ctx.globalAlpha = Math.min(1, _c8l.leuchtMarke);
+      _bioFxLeuchten(ctx, mx, YC, 10, t, '226,232,240'); ctx.restore();
+    }
+    ctx.save(); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; if (ctx.setLineDash) ctx.setLineDash([3, 2]);
+    ctx.beginPath(); ctx.moveTo(mx, r0 - 10); ctx.lineTo(mx, r1 + 2); ctx.stroke(); ctx.restore();
+    ctx.fillStyle = '#475569'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('vorher', mx, r0 - 13);
+  }
+  ctx.strokeStyle = '#7b8ea3'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(XL, r0); ctx.lineTo(XR, r0); ctx.moveTo(XL, r1); ctx.lineTo(XR, r1); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(XL + 4, r0 + 2.5); ctx.lineTo(XR - 4, r0 + 2.5); ctx.stroke();
+
+  // Kolbenprober: Glaszylinder, Stempel, Skala
+  const kolben = (links) => {
+    const x0 = links ? 26 : XR, x1 = links ? XL : 394;
+    const y0 = YC - BH / 2, y1 = YC + BH / 2;
+    ctx.fillStyle = 'rgba(224,236,246,0.6)'; ctx.fillRect(x0, y0, x1 - x0, BH);
+    // Stempel (Glaskoerper) von der Stirnflaeche nach aussen
+    const st = links ? _c8l.stL : _c8l.stR;
+    ctx.fillStyle = 'rgba(203,213,225,0.95)';
+    if (links) ctx.fillRect(Math.max(0, st - 140), y0 + 2, Math.min(st, 140), BH - 4);
+    else ctx.fillRect(st, y0 + 2, Math.min(W - st, 140), BH - 4);
+    ctx.fillStyle = '#475569';
+    ctx.fillRect(links ? st - 4 : st, y0 + 1, 4, BH - 2);
+    const griff = links ? st - 140 : st + 140;
+    if (griff > 0 && griff < W) { ctx.fillStyle = '#64748b'; ctx.fillRect(griff - 3, y0 - 6, 6, BH + 12); }
+    ctx.strokeStyle = '#7b8ea3'; ctx.lineWidth = 1.8; ctx.strokeRect(x0, y0, x1 - x0, BH);
+    ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x0 + 4, y0 + 4); ctx.lineTo(x1 - 4, y0 + 4); ctx.stroke();
+    // Skala: kurze Striche alle 5 ml, lange alle 10 ml, Zahlen alle 20 ml
+    ctx.strokeStyle = '#334155'; ctx.fillStyle = '#1e293b'; ctx.textAlign = 'center';
+    ctx.font = '700 10px sans-serif';
+    for (let v = 0; v <= 100; v += 5) {
+      const x = links ? XL - v * K : XR + v * K;
+      ctx.lineWidth = v % 10 ? 0.8 : 1.3;
+      ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 + (v % 10 ? 5 : 9)); ctx.stroke();
+      if (v % 20 === 0) ctx.fillText(String(v), x, y0 - 4);
+    }
+    ctx.font = '600 10px sans-serif'; ctx.fillStyle = '#475569';
+    ctx.fillText('ml', links ? 16 : 406, y0 - 4);
+  };
+  kolben(true); kolben(false);
+  // Zeiger an der Stempelflaeche links, wenn das Gas steht
+  if (ruhe) {
+    const x = _c8l.stL, y0 = YC - BH / 2;
+    if (_c8l.leuchtKolben > 0) {
+      ctx.save(); ctx.globalAlpha = Math.min(1, _c8l.leuchtKolben);
+      _bioFxLeuchten(ctx, x, YC, 16, t, '253,230,138'); ctx.restore();
+    }
+    ctx.fillStyle = '#b45309';
+    ctx.beginPath(); ctx.moveTo(x, y0 + 11); ctx.lineTo(x - 4, y0 + 17); ctx.lineTo(x + 4, y0 + 17); ctx.closePath(); ctx.fill();
+  }
+  // Teilchen
+  const farbe = { o: '#dc2626', n: '#3b82f6', g: '#9ca3af' };
+  for (const p of _c8l.teile) {
+    if (p.fest) {
+      // haengt am Kupfer: wird in 0,6 s dunkel und klein
+      const a = _bioFxKlemme(p.festAlter / 0.6);
+      ctx.fillStyle = a < 1 ? 'rgba(220,38,38,' + (1 - a).toFixed(3) + ')' : 'rgba(0,0,0,0)';
+      if (a < 1) { ctx.beginPath(); ctx.arc(p.sx, p.sy, 2.6 * (1 - 0.5 * a), 0, 2 * Math.PI); ctx.fill(); }
+      ctx.fillStyle = '#0f0c0a';
+      ctx.beginPath(); ctx.arc(p.sx, p.sy, 1.4 * a, 0, 2 * Math.PI); ctx.fill();
+      continue;
+    }
+    const zit = _c8l.warm > 1 || _c8l.phase !== 'ruhe' ? 1.6 : 1;   // warm = lebhafter
+    const jx = Math.sin(t * p.w * 3.1 + p.ph) * 1.6 * zit, jy = Math.cos(t * p.w * 2.7 + p.ph * 1.3) * 1.8 * zit;
+    ctx.fillStyle = farbe[p.art];
+    ctx.beginPath(); ctx.arc(p.x + jx, p.y + jy, 2.4, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Glimmspan im linken Kolbenprober
+  if (_c8l.span > 0.01) {
+    const e = _c8l.span, ex = XL - 34, ey = YC + 2, dx = 0.3, dy = -0.95;
+    const tx = ex + dx * 70 * (1 - e), ty = ey + dy * 70 * (1 - e);
+    ctx.save();
+    ctx.strokeStyle = '#c8a26b'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(tx + dx * 95, ty + dy * 95); ctx.stroke();
+    ctx.strokeStyle = '#3f3a36'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(tx + dx * 5, ty + dy * 5); ctx.stroke();
+    const g = _c8l.glut;
+    if (g > 0.03) {
+      const puls = 0.88 + 0.12 * Math.sin(t * Math.PI * 2 * 0.7);
+      ctx.shadowColor = '#f97316'; ctx.shadowBlur = 12 * g * puls;
+      ctx.fillStyle = 'rgba(249,115,22,' + (g * puls).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(tx, ty, 2.2 + 1.6 * g, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = 'rgba(254,240,138,' + (g * g * puls).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(tx, ty, 1.3 * g, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+    if (_c8l.rauch > 0.01) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(100,116,139,' + (0.55 * _c8l.rauch).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for (let j = 0; j <= 14; j++) {
+        const y = ty - j * 3.2, x = tx + Math.sin(j * 0.6 - t * 2.2) * (0.5 + j * 0.35);
+        if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke(); ctx.restore();
+    }
+  }
+  // Beschriftungen
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Kolbenprober', 78, 38); ctx.fillText('Kolbenprober', 332, 38);
+  ctx.font = '700 11px sans-serif';
+  ctx.fillText('Kupfer', 176, 118);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(180, 108); ctx.lineTo(188, YC + 7); ctx.stroke();
+  ctx.textAlign = 'left'; ctx.fillText('Brenner', bx + 12, 196);
+  // Legende
+  ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(18, 241, 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('rot: Sauerstoff', 27, 245);
+  // Zaehler auch im Bild (Beamer): springt mit der Statuszeile
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'right';
+  const nz = _c8l.phase === 'kuehl' ? _c8l.n - 1 : _c8l.n;
+  ctx.fillText('hin und her: ' + (nz ? nz + '-mal' : 'noch nicht'), W - 10, 245);
+  if (_c8l.zeitlupe) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('▶ Zeitlupe', W - 10, 226);
+  }
+  _bioFxAlleDraw(ctx, _c8l.fx);
+}
+// ═══════════════════════════════════════════════════════
+// CHEMIE 8 · STICKSTOFFDIOXID AN DER STRASSE   (Förderheft Chemie 8 · ca2)
+// Eine Stadtstraße von der Seite: Autos fahren, aus jedem Auspuff kommen kleine
+// braune Teilchen Stickstoffdioxid (ein blaues und zwei rote Kügelchen) und
+// treiben mit dem Wind. Die Teilchen, die in die durchsichtige Messbox geraten,
+// bleiben dort liegen. Eine Lupe schaut in den heißen Motor: Stickstoff und
+// Sauerstoff kommen mit der angesaugten Luft herein, in der Flamme lösen sich
+// die Paare und setzen sich neu zusammen. Aus dem Benzin kommt kein Blau.
+// Zählmodell (Lehrerteil): 1 Teilchen je 3 Autos im Bild in einer Stunde –
+//   wenig: 3 Autos → 1 Teilchen · viel: 12 → 4 · Stau: 24 → 8.
+// Zeitraffer: 1 Stunde = 10 Sekunden. Der Zähler der Messbox steht erst nach
+// der vollen Stunde fest.
+// Aha: Schon bei „wenig“ landet ein Teilchen in der Box (die Box bleibt nicht
+// leer); eine graue Marke „vorher“ zeigt den Stand der letzten Stunde, bei
+// „Stau“ füllt sich die Box am schnellsten. In der Lupe wird ein blaues Paar
+// vom Lufteinlass bis ins fertige braune Teilchen verfolgt (Spur + Funken).
+// Effekte aus _bioFx (kurz, ruhig, kein Blinken, keine Wertung, kein Ton).
+// Nicht am Bildschirm: die Lückenwörter aus Merksatz und Aufgabe 2.
+// ═══════════════════════════════════════════════════════
+let _c8m = null;
+const _C8M_ART = {
+  wenig: { nah: 2,  fern: 1,  v: 58 },
+  viel:  { nah: 6,  fern: 6,  v: 40 },
+  Stau:  { nah: 12, fern: 12, v: 0 }
+};
+const _C8M_STUFEN = ['wenig', 'viel', 'Stau'];
+const _C8M_JE = 3;                                   // Zählmodell: 1 Teilchen je 3 Autos
+const _C8M_FLUG = 9;                                 // Minuten vom Auspuff bis in die Box
+const _C8M_BOX = { x0: 204, x1: 254, y0: 98, y1: 146 };
+const _C8M_LUPE = { x: 364, y: 62, r: 44 };
+const _C8M_SPUR = { nah: { y: 209, s: 1, dir: 1 }, fern: { y: 182, s: 0.8, dir: -1 } };
+const _C8M_FARBEN = ['#2563eb', '#dc2626', '#f59e0b', '#16a34a', '#7c3aed', '#0891b2',
+                     '#e11d48', '#64748b', '#ea580c', '#0d9488', '#9333ea', '#ca8a04'];
+const _C8M_P = 2.4;                                  // Takt der Reaktion in der Lupe (s)
+
+function _c8mZufall() {                              // fester Zufall: jeder Lauf gleich
+  _c8m.saat = (_c8m.saat * 16807) % 2147483647;
+  return (_c8m.saat - 1) / 2147483646;
+}
+function _c8mInit() {
+  _c8m = { verkehr: 'wenig', min: 0, laeuft: false, fertig: false, t: 0, saat: 4711,
+           autos: [], teilchen: [], box: 0, flug: [], ankunft: [], naechster: 0,
+           vorher: null, letzte: null, letzt: '', fx: { teile: [] }, glanz: 0,
+           spurK: -1, spurFunke: false, ersteLandung: false, wolke: 0 };
+  _c8m.passanten = [];
+  for (let i = 0; i < 9; i++) {
+    _c8m.passanten.push({ art: i % 4 === 3 ? 'O' : 'N', x0: _c8mZufall() * 110,
+                          y: -15 + _c8mZufall() * 30, v: 20 + _c8mZufall() * 10, ph: _c8mZufall() * 6 });
+  }
+  _c8mAutos();
+}
+function _c8mAutos() {
+  const a = _C8M_ART[_c8m.verkehr], W = 420;
+  _c8m.autos = [];
+  let f = 0;
+  for (const spur of ['fern', 'nah']) {
+    const n = a[spur], off = spur === 'nah' ? 0.35 : 0.8;
+    for (let i = 0; i < n; i++) {
+      _c8m.autos.push({ spur, x: ((i + off) * W / n) % W, farbe: _C8M_FARBEN[(f++ * 5) % _C8M_FARBEN.length],
+                        em: _c8mZufall() * 1.8, rad: 0 });
+    }
+  }
+}
+function _c8mAnzahlAutos() { const a = _C8M_ART[_c8m.verkehr]; return a.nah + a.fern; }
+function _c8mSoll() { return Math.round(_c8mAnzahlAutos() / _C8M_JE); }
+// Ankunftszeiten (Minuten) der Teilchen, die in der Box landen – gleichmäßig verteilt.
+function _c8mPlan() {
+  const n = _c8mSoll(), a = [];
+  for (let i = 0; i < n; i++) a.push(12 + (i + 0.5) * 44 / n);
+  return a;
+}
+
+function _c8mHTML() {
+  const k = (v) => `<button class="sim-btn" data-c8m="${v}" onclick="_c8mVerkehr('${v}')">${v}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Dicke Luft an der Straße</h3>
+    <div class="fpm-note" style="margin-top:2px">Am Straßenrand steht eine durchsichtige Messbox. Der Wind treibt die Luft von der Straße zur Box. Stelle den Verkehr ein. Dann drücke „▶ 1 Stunde abspielen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8m-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Verkehr</span>
+          ${k('wenig')}
+          ${k('viel')}
+          ${k('Stau')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8m-los" onclick="_c8mAbspielen()">▶ 1 Stunde abspielen</button>
+          <button class="sim-btn" onclick="_c8mNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was zeigt die Messbox?</div>
+        <div class="lmp-status on" id="_c8m-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8mMarke('wenig')">wenig, nach 1 Stunde</button>
+          <button class="sim-btn" onclick="_c8mMarke('viel')">viel, nach 1 Stunde</button>
+          <button class="sim-btn" onclick="_c8mMarke('Stau')">Stau, nach 1 Stunde</button>
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Die Lupe oben rechts schaut in den heißen Motor eines Autos. Der Motor saugt Luft an. Blaue Kügelchen stehen für Stickstoff, rote für Sauerstoff. In der Luft hängen immer zwei gleiche Kügelchen aneinander. Ein braunes Teilchen <b>Stickstoffdioxid</b> besteht aus einem blauen und zwei roten Kügelchen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: wenig &nbsp;|&nbsp; Die Uhr läuft im Zeitraffer: 1 Stunde dauert etwa 10 Sekunden.</p>
+  </div>`;
+}
+
+// ── Bedienung ────────────────────────────────────────────────
+// Eine neue Stunde beginnt: leere Box, die letzte volle Stunde wird zur Marke „vorher“.
+function _c8mNeueStunde() {
+  _c8m.vorher = _c8m.letzte;
+  _c8m.min = 0; _c8m.box = 0; _c8m.flug = []; _c8m.fertig = false; _c8m.laeuft = false;
+  _c8m.ankunft = _c8mPlan(); _c8m.naechster = 0; _c8m.glanz = 0; _c8m.ersteLandung = false;
+  _c8m.fx = { teile: [] }; _c8m.zeitlupe = null; _c8m.spurK = -1; _c8m.spurFunke = false;
+}
+function _c8mVerkehr(v) {
+  if (!_c8m || !_C8M_ART[v]) return;
+  _c8m.verkehr = v;
+  _c8mAutos();
+  _c8m.teilchen = [];
+  _c8mNeueStunde();
+  _c8mStatus();
+}
+function _c8mAbspielen() {
+  if (!_c8m || _c8m.laeuft) return;
+  _c8mNeueStunde();
+  _c8m.laeuft = true;
+  _c8m.spurK = Math.ceil(_c8m.t / _C8M_P);           // diese Gruppe in der Lupe verfolgen
+  _c8mStatus();
+}
+function _c8mNeu() {
+  if (!_c8m) return;
+  _c8m.verkehr = 'wenig'; _c8m.letzte = null;
+  _c8mAutos(); _c8m.teilchen = [];
+  _c8mNeueStunde();
+  _c8m.vorher = null;
+  _c8mStatus();
+}
+// Sprungmarke: Verkehr einstellen und gleich das Ende der Stunde zeigen.
+function _c8mMarke(v) {
+  if (!_c8m || !_C8M_ART[v]) return;
+  if (v !== _c8m.verkehr) { _c8m.verkehr = v; _c8mAutos(); _c8m.teilchen = []; }
+  _c8mNeueStunde();
+  _c8m.box = _c8mSoll(); _c8m.naechster = _c8m.ankunft.length;
+  _c8m.min = 60;
+  _c8mEnde();
+}
+
+// ── Anzeige ──────────────────────────────────────────────────
+function _c8mZeile() {
+  let s = 'Verkehr: ' + _c8m.verkehr + ' · Zeit: ' + Math.floor(_c8m.min + 1e-9) + ' Minuten · Autos auf der Straße: ' +
+          _c8mAnzahlAutos() + ' · Stickstoffdioxid in der Messbox: ' + _c8m.box + ' Teilchen';
+  if (_c8m.fertig) s += ' · Die Stunde ist um.';
+  else if (_c8m.laeuft) s += ' · Die Stunde läuft.';
+  else s += ' · Drücke „▶ 1 Stunde abspielen“.';
+  return s;
+}
+function _c8mStatus() {
+  if (!_c8m) return;
+  const z = _c8mZeile();
+  const el = document.getElementById('_c8m-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _c8m.letzt = z;
+  document.querySelectorAll('[data-c8m]').forEach(b =>
+    b.classList.toggle('primary', b.getAttribute('data-c8m') === _c8m.verkehr));
+  const los = document.getElementById('_c8m-los');
+  if (los) los.classList.toggle('primary', !_c8m.laeuft);
+}
+
+// ── Ablauf ───────────────────────────────────────────────────
+function _c8mAuspuff(a) {
+  const sp = _C8M_SPUR[a.spur], L = 30 * sp.s;
+  return { x: a.x - sp.dir * (L / 2 + 1), y: sp.y - 5 * sp.s };
+}
+function _c8mSlot(i) {
+  const B = _C8M_BOX;
+  return { x: B.x0 + 12 + (i % 3) * 13, y: B.y1 - 6 - Math.floor(i / 3) * 11 };
+}
+function _c8mStarteFlug(i) {
+  // Das Auto, dessen Auspuff am besten vor der Box liegt, schickt das Teilchen los.
+  let best = null, bd = 1e9;
+  for (const a of _c8m.autos) {
+    const p = _c8mAuspuff(a);
+    const d = Math.abs(p.x - 110);
+    if (p.x > 20 && p.x < 175 && d < bd) { bd = d; best = p; }
+  }
+  const p0 = best || { x: 110, y: 200 };
+  _c8m.flug.push({ i, start: _c8m.ankunft[i] - _C8M_FLUG, p0,
+                   p1: { x: p0.x + 30, y: p0.y - 70 }, p2: { x: _C8M_BOX.x0 - 30, y: 116 },
+                   p3: { x: _C8M_BOX.x0 + 8, y: 116 }, ziel: _c8mSlot(i) });
+}
+function _c8mFlugPos(f) {
+  const u = _bioFxKlemme((_c8m.min - f.start) / _C8M_FLUG);
+  if (u < 0.8) {
+    const s = _bioFxEase.sanft(u / 0.8), r = 1 - s;
+    const b = (k) => r * r * r * f.p0[k] + 3 * r * r * s * f.p1[k] + 3 * r * s * s * f.p2[k] + s * s * s * f.p3[k];
+    return { x: b('x') + Math.sin(u * 20) * 2, y: b('y') };
+  }
+  const v = (u - 0.8) / 0.2;
+  return { x: f.p3.x + (f.ziel.x - f.p3.x) * _bioFxEase.sanft(v),
+           y: f.p3.y + (f.ziel.y - f.p3.y) * _bioFxEase.aufprall(v) };
+}
+function _c8mLanden(f) {
+  _c8m.box++;
+  const fx = _c8m.fx;
+  _bioFxWelle(fx.teile, f.ziel.x, f.ziel.y, '#d97706', 16);
+  _bioFxFunken(fx.teile, f.ziel.x, f.ziel.y - 3, 4, ['#f5d0a9', '#fde68a', '#ffffff']);
+  if (!_c8m.ersteLandung) {
+    _c8m.ersteLandung = true;
+    _bioFxZeitlupe(_c8m, 0.35, 1.1);
+    if (_c8m.verkehr === 'wenig')
+      _bioFxBanner(fx, 'Schon bei wenig Verkehr landet etwas in der Box.', 3.0, '#f59e0b');
+  }
+}
+function _c8mEnde() {
+  _c8m.laeuft = false; _c8m.fertig = true; _c8m.min = 60;
+  for (const f of _c8m.flug) _c8mLanden(f);                 // Sicherheitsnetz: alle sind drin
+  _c8m.flug = [];
+  _c8m.box = _c8mSoll();
+  _c8m.glanz = 1.8;
+  const B = _C8M_BOX, fx = _c8m.fx;
+  _bioFxWelle(fx.teile, (B.x0 + B.x1) / 2, (B.y0 + B.y1) / 2, '#fbbf24', 42);
+  const v = _c8m.vorher;
+  if (v != null && v !== _c8m.box && !(fx.banner && fx.banner.alter < 1.5)) {
+    _bioFxBanner(fx, _c8m.box > v ? 'Die Box füllt sich schneller als vorher.'
+                                  : 'Die Box füllt sich langsamer als vorher.', 2.8, '#fbbf24');
+  }
+  _c8m.letzte = _c8m.box;
+  _c8mStatus();
+}
+function _c8mUpdate(dt) {
+  if (!_c8m) return;
+  dt = _bioFxDt(dt);
+  _c8m.t += dt;
+  const W = 420, art = _C8M_ART[_c8m.verkehr], t = _c8m.t;
+  // Autos: fahren oder rücken im Stau langsam vor (Motor läuft weiter)
+  const v = _c8m.verkehr === 'Stau' ? 7 * Math.max(0, Math.sin(t * 0.8)) : art.v;
+  for (const a of _c8m.autos) {
+    const sp = _C8M_SPUR[a.spur];
+    const d = sp.dir * v * sp.s * dt;
+    a.x = ((a.x + d) % W + W) % W;
+    a.rad += d / (4 * sp.s);
+    a.em -= dt;
+    if (a.em <= 0) {                                     // jeder Auspuff gibt Teilchen ab
+      a.em = 1.5 + _c8mZufall() * 0.9;
+      const p = _c8mAuspuff(a);
+      if (_c8m.teilchen.length < 80)
+        _c8m.teilchen.push({ x: p.x, y: p.y, vx: 18 + _c8mZufall() * 12, vy: -8 - _c8mZufall() * 12,
+                             alter: 0, leben: 2.0 + _c8mZufall() * 0.7, ph: _c8mZufall() * 6 });
+    }
+  }
+  for (const p of _c8m.teilchen) {
+    p.alter += dt; p.x += p.vx * dt; p.y += p.vy * dt + Math.sin(t * 2 + p.ph) * 0.15;
+  }
+  _c8m.teilchen = _c8m.teilchen.filter(p => p.alter < p.leben && p.x < W + 10);
+  // Stunde im Zeitraffer: 60 Minuten in 10 Sekunden
+  if (_c8m.laeuft) {
+    const zl = _bioFxZeitlupeFaktor(_c8m, dt);
+    _c8m.min = Math.min(60, _c8m.min + dt * 6 * zl);
+    while (_c8m.naechster < _c8m.ankunft.length && _c8m.min >= _c8m.ankunft[_c8m.naechster] - _C8M_FLUG) {
+      _c8mStarteFlug(_c8m.naechster); _c8m.naechster++;
+    }
+    const noch = [];
+    for (const f of _c8m.flug) { if (_c8m.min >= f.start + _C8M_FLUG) _c8mLanden(f); else noch.push(f); }
+    _c8m.flug = noch;
+    if (_c8m.min >= 60) _c8mEnde();
+    else if (_c8mZeile() !== _c8m.letzt) _c8mStatus();
+  }
+  // Lupe: Funken, wenn das verfolgte blaue Paar im fertigen Teilchen steckt
+  if (_c8m.spurK >= 0) {
+    const s = t - _c8m.spurK * _C8M_P;
+    if (!_c8m.spurFunke && s >= 1.8) {
+      _c8m.spurFunke = true;
+      const L = _C8M_LUPE;
+      _bioFxFunken(_c8m.fx.teile, L.x + 4, L.y - 8, 5, ['#93c5fd', '#fde68a', '#ffffff']);
+    }
+    if (s > 3.2) _c8m.spurK = -1;
+  }
+  if (_c8m.glanz > 0) _c8m.glanz = Math.max(0, _c8m.glanz - dt);
+  _c8m.wolke += dt;
+  _bioFxAlleUpdate(_c8m.fx, dt);
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────
+// Stickstoffdioxid: ein blaues und zwei rote Kügelchen, brauner Hof.
+function _c8mNO2(ctx, x, y, k, a) {
+  ctx.save();
+  ctx.globalAlpha = a == null ? 1 : a;
+  ctx.fillStyle = 'rgba(146,84,32,0.45)';
+  ctx.beginPath(); ctx.arc(x, y + 0.6 * k, 5.2 * k, 0, 2 * Math.PI); ctx.fill();
+  _c8mKugel(ctx, x - 3 * k, y + 2 * k, 2.3 * k, 'O');
+  _c8mKugel(ctx, x + 3 * k, y + 2 * k, 2.3 * k, 'O');
+  _c8mKugel(ctx, x, y - 1 * k, 2.5 * k, 'N');
+  ctx.restore();
+}
+function _c8mKugel(ctx, x, y, r, art) {
+  const g = ctx.createRadialGradient(x - r * 0.35, y - r * 0.35, r * 0.2, x, y, r);
+  if (art === 'N') { g.addColorStop(0, '#bfdbfe'); g.addColorStop(1, '#1d4ed8'); }
+  else { g.addColorStop(0, '#fecaca'); g.addColorStop(1, '#dc2626'); }
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+}
+function _c8mPaar(ctx, x, y, art, r) {
+  _c8mKugel(ctx, x - r * 0.8, y, r, art);
+  _c8mKugel(ctx, x + r * 0.8, y, r, art);
+}
+function _c8mAuto(ctx, a, t) {
+  const sp = _C8M_SPUR[a.spur], s = sp.s, dir = sp.dir, L = 30 * s, H = 9 * s;
+  const stau = _c8m.verkehr === 'Stau';
+  const zitter = stau ? Math.sin(t * 26 + a.x) * 0.35 : 0;   // Motor läuft
+  for (const x of [a.x, a.x - 420, a.x + 420]) {
+    if (x < -L || x > 420 + L) continue;
+    const yb = sp.y - 4 * s + zitter;
+    ctx.fillStyle = a.farbe;
+    _bioFxRundRect(ctx, x - L / 2, yb - H, L, H, 3 * s); ctx.fill();
+    // Kabine
+    ctx.beginPath();
+    ctx.moveTo(x - L * 0.3 - dir * 2 * s, yb - H); ctx.lineTo(x - L * 0.2 - dir * 2 * s, yb - H - 7 * s);
+    ctx.lineTo(x + L * 0.15 - dir * 2 * s, yb - H - 7 * s); ctx.lineTo(x + L * 0.28 - dir * 2 * s, yb - H);
+    ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#dbeafe';
+    ctx.fillRect(x - L * 0.2 - dir * 2 * s + 1, yb - H - 6 * s, L * 0.33, 5 * s);
+    // Lichter: vorn gelb, hinten rot (im Stau leuchten die Bremslichter)
+    ctx.fillStyle = '#fde68a';
+    ctx.fillRect(x + dir * (L / 2 - 2 * s) - 1.5 * s, yb - H + 2 * s, 3 * s, 2.5 * s);
+    ctx.fillStyle = stau ? '#ef4444' : '#991b1b';
+    ctx.fillRect(x - dir * (L / 2 - 1.5 * s) - 1.5 * s, yb - H + 2 * s, 3 * s, 2.5 * s);
+    // Räder mit Speiche
+    for (const wx of [x - L * 0.3, x + L * 0.3]) {
+      ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(wx, sp.y - 4 * s, 4 * s, 0, 2 * Math.PI); ctx.fill();
+      ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(wx, sp.y - 4 * s);
+      ctx.lineTo(wx + Math.cos(a.rad) * 3 * s, sp.y - 4 * s + Math.sin(a.rad) * 3 * s); ctx.stroke();
+    }
+    // Auspuffrohr
+    ctx.fillStyle = '#6b7280';
+    ctx.fillRect(x - dir * (L / 2 + 1) - 1.5, sp.y - 6 * s, 3, 1.8);
+  }
+}
+// Lage der Kügelchen einer Reaktionsgruppe in der Lupe (lokale Koordinaten).
+// Ein Stickstoff-Paar und zwei Sauerstoff-Paare kommen mit der Luft, lösen
+// sich in der Flamme und setzen sich zu zwei Teilchen Stickstoffdioxid zusammen.
+function _c8mGruppe(s) {
+  const basis = { N1: [-7, 0], N2: [-1, 0], A1: [-17, -9], A2: [-11, -9], B1: [-17, 9], B2: [-11, 9] };
+  const los   = { N1: [-12, -1], N2: [4, 1], A1: [-21, -14], A2: [-7, -15], B1: [-21, 14], B2: [-7, 15] };
+  const ziel  = { N1: [4, -8], A1: [-1, -12], A2: [9, -12], N2: [4, 8], B1: [-1, 12], B2: [9, 12] };
+  const out = {};
+  let phase;
+  for (const k in basis) {
+    let x, y;
+    if (s < 1.0) {                                     // mit der angesaugten Luft herein
+      const dx = -48 * (1 - s / 1.0);
+      x = basis[k][0] + dx; y = basis[k][1]; phase = 'rein';
+    } else if (s < 1.4) {                              // in der Flamme lösen sich die Paare
+      const u = _bioFxEase.sanft((s - 1.0) / 0.4);
+      x = basis[k][0] + (los[k][0] - basis[k][0]) * u; y = basis[k][1] + (los[k][1] - basis[k][1]) * u; phase = 'los';
+    } else if (s < 1.8) {                              // … und setzen sich neu zusammen
+      const u = _bioFxEase.sanft((s - 1.4) / 0.4);
+      x = los[k][0] + (ziel[k][0] - los[k][0]) * u; y = los[k][1] + (ziel[k][1] - los[k][1]) * u; phase = 'neu';
+    } else {                                           // hinten heraus
+      x = ziel[k][0] + (s - 1.8) / 1.2 * 52; y = ziel[k][1]; phase = 'raus';
+    }
+    out[k] = [x, y];
+  }
+  out.phase = phase;
+  return out;
+}
+function _c8mLupe(ctx, t) {
+  const L = _C8M_LUPE;
+  ctx.save();
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.clip();
+  ctx.translate(L.x, L.y);
+  // Brennraum: Metallwände oben und unten, links Einlass, rechts Auslass
+  ctx.fillStyle = '#fff7ed'; ctx.fillRect(-50, -50, 100, 100);
+  ctx.fillStyle = '#9ca3af'; ctx.fillRect(-50, -50, 100, 26); ctx.fillRect(-50, 24, 100, 26);
+  ctx.fillStyle = '#6b7280'; ctx.fillRect(-50, -26, 100, 2); ctx.fillRect(-50, 24, 100, 2);
+  // Flamme (ruhig, sanft wabernd)
+  const fl = 1 + 0.06 * Math.sin(t * 7) + 0.04 * Math.sin(t * 4.3);
+  const g = ctx.createRadialGradient(0, 2, 2, 0, 2, 17 * fl);
+  g.addColorStop(0, 'rgba(255,237,160,0.95)'); g.addColorStop(0.5, 'rgba(251,146,60,0.55)');
+  g.addColorStop(1, 'rgba(251,146,60,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 2, 17 * fl, 0, 2 * Math.PI); ctx.fill();
+  // Benzin: Düse oben, Tröpfchen fallen in die Flamme und vergehen dort
+  ctx.fillStyle = '#4b5563'; ctx.fillRect(-3, -40, 6, 16);
+  for (let k = 0; k < 3; k++) {
+    const u = ((t + k * 0.23) % 0.7) / 0.7;
+    ctx.globalAlpha = 1 - u;
+    ctx.fillStyle = '#eab308';
+    ctx.beginPath(); ctx.arc(Math.sin(k * 2.1) * 3, -23 + u * 18, 1.6, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  ctx.fillStyle = '#111827'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Benzin', 5, -28);
+  ctx.fillText('Luft', -27, -28);
+  ctx.strokeStyle = '#111827'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(-24, -35); ctx.lineTo(-9, -35); ctx.lineTo(-12, -37.5); ctx.moveTo(-9, -35); ctx.lineTo(-12, -32.5); ctx.stroke();
+  // Luft zieht durch: viele Stickstoff-Paare, einige Sauerstoff-Paare
+  for (const p of _c8m.passanten) {
+    const x = ((p.x0 + p.v * t) % 110) - 55, y = p.y + Math.sin(t * 1.5 + p.ph) * 1.5;
+    _c8mPaar(ctx, x, y, p.art, 2.6);
+  }
+  // Reaktionsgruppen
+  const kAb = Math.floor((t - 3.2) / _C8M_P), kBis = Math.floor(t / _C8M_P);
+  for (let k = Math.max(0, kAb); k <= kBis; k++) {
+    const s = t - k * _C8M_P;
+    if (s < 0 || s > 3.2) continue;
+    const q = _c8mGruppe(s);
+    const verfolgt = k === _c8m.spurK;
+    if (verfolgt) {                                     // Spur des verfolgten blauen Paars
+      ctx.strokeStyle = 'rgba(37,99,235,0.55)'; ctx.lineWidth = 1.4; ctx.setLineDash([2, 2]);
+      ctx.beginPath();
+      for (let u = 0; u <= s; u += 0.08) { const r = _c8mGruppe(u); const m = [(r.N1[0] + (u < 1.4 ? r.N2[0] : r.N1[0])) / 2, (r.N1[1] + (u < 1.4 ? r.N2[1] : r.N1[1])) / 2];
+        if (u === 0) ctx.moveTo(m[0], m[1]); else ctx.lineTo(m[0], m[1]); }
+      ctx.stroke(); ctx.setLineDash([]);
+    }
+    if (q.phase === 'rein') {
+      _c8mPaar(ctx, (q.N1[0] + q.N2[0]) / 2, 0, 'N', 3);
+      _c8mPaar(ctx, (q.A1[0] + q.A2[0]) / 2, q.A1[1], 'O', 3);
+      _c8mPaar(ctx, (q.B1[0] + q.B2[0]) / 2, q.B1[1], 'O', 3);
+    } else if (q.phase === 'los' || q.phase === 'neu') {
+      for (const kk of ['A1', 'A2', 'B1', 'B2']) _c8mKugel(ctx, q[kk][0], q[kk][1], 3, 'O');
+      for (const kk of ['N1', 'N2']) _c8mKugel(ctx, q[kk][0], q[kk][1], 3.2, 'N');
+    } else {
+      _c8mNO2(ctx, q.N1[0], q.N1[1] - 1, 1.3);
+      _c8mNO2(ctx, q.N2[0], q.N2[1] - 1, 1.3);
+    }
+    if (verfolgt) {
+      const m = q.phase === 'rein' ? [(q.N1[0] + q.N2[0]) / 2, 0] : q.N1;
+      _bioFxLeuchten(ctx, m[0], m[1], 6, t, '96,165,250');
+    }
+  }
+  ctx.restore();
+  // Rand der Lupe mit Griff
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('im heißen Motor', L.x, L.y - L.r - 5);
+}
+function _c8mLegende(ctx) {
+  const x = 300, y = 110;
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  _bioFxRundRect(ctx, x, y, 116, 40, 6); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.stroke();
+  _c8mPaar(ctx, x + 12, y + 8, 'N', 3);
+  _c8mPaar(ctx, x + 12, y + 20, 'O', 3);
+  _c8mNO2(ctx, x + 12, y + 31, 1.05);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 9.5px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Stickstoff', x + 24, y + 11);
+  ctx.fillText('Sauerstoff', x + 24, y + 23);
+  ctx.fillText('Stickstoffdioxid', x + 24, y + 35);
+}
+function _c8mDraw(ctx, cv) {
+  if (!_c8m) return;
+  const W = cv.width, H = cv.height, t = _c8m.t, B = _C8M_BOX;
+  ctx.clearRect(0, 0, W, H);
+  // Himmel
+  const bg = ctx.createLinearGradient(0, 0, 0, 150);
+  bg.addColorStop(0, '#bfe3ff'); bg.addColorStop(1, '#eef7ff');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, 150);
+  // Wolken ziehen mit dem Wind
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  for (let k = 0; k < 3; k++) {
+    const x = ((k * 150 + _c8m.wolke * 8) % 520) - 60, y = 18 + k * 11;
+    ctx.beginPath(); ctx.arc(x, y, 9, 0, 2 * Math.PI); ctx.arc(x + 11, y - 3, 11, 0, 2 * Math.PI); ctx.arc(x + 23, y, 8, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Häuser im Hintergrund
+  const haus = [[70, 84, 38, '#fcd9b6'], [110, 70, 44, '#e2e8f0'], [156, 90, 36, '#fde2e4']];
+  for (const [x, y, w, f] of haus) {
+    ctx.fillStyle = f; ctx.fillRect(x, y, w, 148 - y);
+    ctx.fillStyle = '#94a3b8';
+    for (let r = y + 8; r < 138; r += 16) for (let c = x + 6; c < x + w - 6; c += 12) ctx.fillRect(c, r, 6, 8);
+  }
+  // Wind
+  ctx.strokeStyle = 'rgba(71,85,105,0.55)'; ctx.lineWidth = 1.3;
+  for (let k = 0; k < 3; k++) {
+    const x = 60 + ((t * 30 + k * 40) % 120), y = 70 + k * 7;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 16, y); ctx.lineTo(x + 12, y - 3); ctx.moveTo(x + 16, y); ctx.lineTo(x + 12, y + 3); ctx.stroke();
+  }
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Wind', 64, 63);
+  // Gehweg und Baum
+  ctx.fillStyle = '#d6d3d1'; ctx.fillRect(0, 146, W, 12);
+  const wieg = Math.sin(t * 1.3) * 2;
+  ctx.fillStyle = '#7c4a1e'; ctx.fillRect(28, 108, 7, 40);
+  ctx.fillStyle = '#3f9b3a';
+  ctx.beginPath(); ctx.arc(31 + wieg, 96, 20, 0, 2 * Math.PI); ctx.arc(18 + wieg * 0.8, 106, 13, 0, 2 * Math.PI); ctx.arc(45 + wieg * 0.8, 106, 13, 0, 2 * Math.PI); ctx.fill();
+  // Straße
+  ctx.fillStyle = '#4b5563'; ctx.fillRect(0, 158, W, 56);
+  ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 2; ctx.setLineDash([14, 12]);
+  ctx.beginPath(); ctx.moveTo(0, 188); ctx.lineTo(W, 188); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#a8a29e'; ctx.fillRect(0, 214, W, 4);
+  // Lupen-Kegel zum Motor eines Autos der vorderen Spur
+  let ziel = null, zd = 1e9;
+  for (const a of _c8m.autos) if (a.spur === 'nah') { const d = Math.abs(a.x - 335); if (d < zd) { zd = d; ziel = a; } }
+  const L = _C8M_LUPE;
+  if (ziel) {
+    const mx = ziel.x + 9, my = 199;
+    ctx.fillStyle = 'rgba(148,163,184,0.18)';
+    ctx.beginPath(); ctx.moveTo(L.x - 22, L.y + L.r - 6); ctx.lineTo(L.x + 22, L.y + L.r - 6); ctx.lineTo(mx + 3, my); ctx.lineTo(mx - 3, my); ctx.closePath(); ctx.fill();
+  }
+  // Autos: hintere Spur, dann vordere
+  for (const a of _c8m.autos) if (a.spur === 'fern') _c8mAuto(ctx, a, t);
+  for (const a of _c8m.autos) if (a.spur === 'nah') _c8mAuto(ctx, a, t);
+  if (ziel) { ctx.strokeStyle = 'rgba(251,146,60,0.8)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(ziel.x + 9, 199, 4, 0, 2 * Math.PI); ctx.stroke(); }
+  // Teilchen in der Luft (verdünnen sich vor der Box)
+  for (const p of _c8m.teilchen) {
+    const a = Math.min(1, p.alter / 0.25) * Math.min(1, (p.leben - p.alter) / 0.6);
+    const dx = Math.max(B.x0 - p.x, 0, p.x - B.x1), dy = Math.max(B.y0 - p.y, 0, p.y - B.y1);
+    const nah = _bioFxKlemme((Math.hypot(dx, dy) - 4) / 16);
+    if (a * nah > 0.02) _c8mNO2(ctx, p.x, p.y, 0.8, a * nah);
+  }
+  // Messbox: Pfosten, Glas, Einlass links
+  ctx.fillStyle = '#64748b'; ctx.fillRect((B.x0 + B.x1) / 2 - 2, B.y1, 4, 4);
+  if (_c8m.glanz > 0) _bioFxLeuchten(ctx, (B.x0 + B.x1) / 2, (B.y0 + B.y1) / 2, 30, t, '251,191,36');
+  ctx.fillStyle = 'rgba(219,234,254,0.45)'; ctx.fillRect(B.x0, B.y0, B.x1 - B.x0, B.y1 - B.y0);
+  ctx.fillStyle = '#94a3b8';
+  ctx.beginPath(); ctx.moveTo(B.x0 - 10, 108); ctx.lineTo(B.x0, 111); ctx.lineTo(B.x0, 121); ctx.lineTo(B.x0 - 10, 124); ctx.closePath(); ctx.fill();
+  // Marke „vorher“: Stand der letzten Stunde
+  if (_c8m.vorher != null && _c8m.vorher > 0) {
+    ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 1; ctx.setLineDash([2, 2]);
+    for (let i = 0; i < _c8m.vorher; i++) { const s = _c8mSlot(i); ctx.beginPath(); ctx.arc(s.x, s.y, 5, 0, 2 * Math.PI); ctx.stroke(); }
+    const oben = _c8mSlot(_c8m.vorher - 1).y - 7;
+    ctx.lineWidth = 2; ctx.setLineDash([4, 3]); ctx.strokeStyle = '#6b7280';
+    ctx.beginPath(); ctx.moveTo(B.x0 - 2, oben); ctx.lineTo(B.x1 + 4, oben); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = '#4b5563'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('vorher', B.x1 + 6, oben + 3);
+  }
+  // Teilchen in der Box
+  for (let i = 0; i < _c8m.box; i++) { const s = _c8mSlot(i); _c8mNO2(ctx, s.x, s.y + Math.sin(t * 2 + i) * 0.4, 1.1); }
+  for (const f of _c8m.flug) {
+    if (_c8m.min < f.start) continue;
+    const p = _c8mFlugPos(f); _c8mNO2(ctx, p.x, p.y, 1.0);
+  }
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.strokeRect(B.x0, B.y0, B.x1 - B.x0, B.y1 - B.y0);
+  ctx.clearRect(B.x0 - 1, 112, 3, 8);                  // Öffnung zum Einlass
+  ctx.fillStyle = 'rgba(219,234,254,0.45)'; ctx.fillRect(B.x0 - 1, 112, 3, 8);
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(B.x1 - 6, B.y0 + 5); ctx.lineTo(B.x1 - 6, B.y0 + 22); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Messbox', (B.x0 + B.x1) / 2, B.y0 - 5);
+  // Lupe und Legende
+  _c8mLupe(ctx, t);
+  _c8mLegende(ctx);
+  // Uhr
+  const ux = 22, uy = 24;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(ux, uy, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (_c8m.min > 0) {
+    ctx.fillStyle = 'rgba(245,158,11,0.35)';
+    ctx.beginPath(); ctx.moveTo(ux, uy); ctx.arc(ux, uy, 13, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * _c8m.min / 60); ctx.closePath(); ctx.fill();
+  }
+  const w = -Math.PI / 2 + 2 * Math.PI * _c8m.min / 60;
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(w) * 11, uy + Math.sin(w) * 11); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Zeit: ' + Math.floor(_c8m.min + 1e-9) + ' Minuten', 42, 22);
+  ctx.font = '700 9px sans-serif'; ctx.fillStyle = '#475569';
+  if (_c8m.laeuft) ctx.fillText(_c8m.zeitlupe ? '▶ Zeitlupe' : '▶▶ Zeitraffer', 42, 35);
+  else if (_c8m.fertig) ctx.fillText('Die Stunde ist um.', 42, 35);
+  if (_c8m.verkehr === 'Stau') { ctx.fillStyle = '#b91c1c'; ctx.fillText('Stau: Die Motoren laufen weiter.', 42, 46); }
+  // Zähler unten
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(0, 218, W, H - 218);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Autos auf der Straße: ' + _c8mAnzahlAutos(), 10, 231);
+  ctx.fillText('Stickstoffdioxid in der Messbox: ' + _c8m.box + ' Teilchen', 10, 245);
+  ctx.textAlign = 'right'; ctx.fillStyle = '#334155';
+  ctx.fillText('Verkehr: ' + _c8m.verkehr, W - 10, 231);
+  _bioFxAlleDraw(ctx, _c8m.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER – cw1 „Wasser auf Reisen“ (Kennung chem-wasserkreislauf)
+// Eine Landschaft im Schnitt: links das Meer mit der Sonne darueber, in der
+// Mitte eine Wolke, rechts ein Berg, von dem ein Fluss ins Meer fliesst.
+// Das ganze Wasser der Landschaft ist als 100 blaue Tropfen gezeichnet.
+// Das Kind stellt die Sonne ein (schwach · mittel · stark) und drueckt
+// „▶ einen Tag abspielen“ (10 s): Tropfen steigen als helle Punkte vom Meer
+// auf, sammeln sich in der Wolke, die Wolke zieht zum Berg, dort fallen die
+// Tropfen als Regen, fliessen den Hang hinab und ueber den Fluss ins Meer.
+// Zaehler: oben „in die Luft“ und „zurück als Regen“ (zaehlen hoch), unten
+// „Wasser zusammen: 100 Tropfen“ – er wird aus den gezeichneten Tropfen
+// GEZAEHLT und steht deshalb in jedem Augenblick auf 100.
+// Modellwerte (Lehrerteil): schwach 10, mittel 20, stark 30 Tropfen je Tag;
+// Thermometer 15, 20, 25 °C. Glatte Modellzahlen, keine Messwerte.
+// Aha (NACH dem Tag, Bibliothek _bioFx): ein Lichtstreif laeuft ueber alle
+// 100 Tropfen im Meer, danach leuchtet der Zaehler „Wasser zusammen“ ruhig
+// auf, Lichtring und wenige Funken, ein Hinweisstreifen „Alle 100 Tropfen
+// sind wieder im Meer.“ Sind alle drei Sonnen abgespielt, zusaetzlich wenig
+// Konfetti am Zaehler. Kein Lueckenwort im Bild (Waerme, verloren, fluessig,
+// das Verb fuer das Aufsteigen, der Fachname des Kreislaufs), keine Wertung,
+// kein Ton, Puls 0,8 Hz.
+// ════════════════════════════════════════════════════════════════════════
+let _c8n = null;
+const _C8N_STUFEN = ['schwach', 'mittel', 'stark'];
+const _C8N_N = { schwach: 10, mittel: 20, stark: 30 };      // Tropfen je Tag
+const _C8N_GRAD = { schwach: 15, mittel: 20, stark: 25 };   // °C am Thermometer
+const _C8N_ALLE = 100;          // Tropfen in der ganzen Landschaft
+const _C8N_TAG = 10;            // s: ein Tag
+const _C8N_OBER = 170;          // y der Meeresoberflaeche
+const _C8N_AUF = 0.25;          // s: Tropfen gleitet zur Oberflaeche
+const _C8N_STEIG = 1.25;        // s: heller Punkt steigt zur Wolke
+const _C8N_FALL = 0.7;          // s: Regentropfen faellt
+const _C8N_HANG = 0.35;         // s: den Hang hinab zur Quelle
+const _C8N_FLUSS = 1.2;         // s: den Fluss entlang
+const _C8N_HEIM = 0.35;         // s: von der Muendung an den alten Platz
+// Flusslauf von der Quelle am Berg bis zur Muendung ins Meer
+const _C8N_FLUSSWEG = [[298, 134], [284, 152], [264, 166], [240, 176], [214, 181], [190, 178], [166, 172]];
+
+function _c8nZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+function _c8nKlemme(u) { return u < 0 ? 0 : u > 1 ? 1 : u; }
+function _c8nSanft(u) { u = _c8nKlemme(u); return u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2; }
+
+function _c8nInit() {
+  _c8n = { sonne: 'mittel', t: 0, zeit: 0, laeuft: false, fertig: false, letzt: '',
+           fx: { teile: [] }, nach: -1, schritt: 0, gespielt: {}, alleDrei: false,
+           pop: { luft: 0, regen: 0 }, zahl: { luft: 0, regen: 0 }, hinweis: null,
+           plaetze: [], reise: [], flussLang: [] };
+  // 100 feste Plaetze im Meer: 10 Reihen zu je 10 Tropfen
+  for (let i = 0; i < _C8N_ALLE; i++) {
+    const r = Math.floor(i / 10), c = i % 10;
+    _c8n.plaetze.push({ x: 12 + c * 14 + (r % 2) * 7, y: 177 + r * 5 });
+  }
+  // Flusslauf: aufsummierte Laengen
+  let L = 0; _c8n.flussLang = [0];
+  for (let k = 1; k < _C8N_FLUSSWEG.length; k++) {
+    const a = _C8N_FLUSSWEG[k - 1], b = _C8N_FLUSSWEG[k];
+    L += Math.hypot(b[0] - a[0], b[1] - a[1]); _c8n.flussLang.push(L);
+  }
+  _c8nPlan();
+}
+// Reiseplan fuer die eingestellte Sonne: welcher Tropfen wann aufsteigt und wann er faellt.
+function _c8nPlan() {
+  const N = _C8N_N[_c8n.sonne], z = _c8nZufall(7);
+  const oben = [];                                    // die obersten drei Reihen
+  for (let i = 0; i < 30; i++) oben.push(i);
+  for (let i = oben.length - 1; i > 0; i--) { const j = Math.floor(z() * (i + 1)); [oben[i], oben[j]] = [oben[j], oben[i]]; }
+  const regenReihe = [];
+  for (let k = 0; k < N; k++) regenReihe.push(k);
+  for (let i = N - 1; i > 0; i--) { const j = Math.floor(z() * (i + 1)); [regenReihe[i], regenReihe[j]] = [regenReihe[j], regenReihe[i]]; }
+  _c8n.reise = [];
+  for (let k = 0; k < N; k++) {
+    const w = z() * 2 * Math.PI, r = Math.sqrt(z());
+    _c8n.reise.push({
+      platz: oben[k],
+      a: 0.3 + 3.0 * k / N + z() * 0.08,               // Aufbruch aus dem Meer
+      b: 5.0 + 2.0 * regenReihe[k] / N + z() * 0.08,   // Regen faellt
+      ox: Math.cos(w) * r * 24, oy: Math.sin(w) * r * 8, // Platz in der Wolke
+      lx: 294 + z() * 44,                               // wo er auf den Berg faellt
+      ph: z() * 6.28
+    });
+  }
+  _c8n.reiseVon = {};
+  _c8n.reise.forEach(d => { _c8n.reiseVon[d.platz] = d; });
+}
+
+// ── Landschaft ─────────────────────────────────────────────────────────────
+function _c8nBergY(x) {                     // linker Hang: von (240,192) zum Gipfel (345,70)
+  if (x <= 240) return 192;
+  if (x <= 345) return 192 - (x - 240) * (122 / 105);
+  return 70 + (x - 345) * (50 / 75);
+}
+function _c8nWolke(t) {                     // Wolke zieht im Lauf des Tages zum Berg
+  const u = _c8nSanft((t - 0.6) / 4.2);
+  return { x: 212 + 110 * u + Math.sin(_c8n.zeit * 0.7) * 2.5, y: 60 + Math.sin(_c8n.zeit * 0.9) * 1.5 };
+}
+function _c8nFlussPunkt(u) {
+  const L = _c8n.flussLang, ges = L[L.length - 1], s = _c8nKlemme(u) * ges;
+  for (let k = 1; k < L.length; k++) {
+    if (s <= L[k]) {
+      const f = (s - L[k - 1]) / (L[k] - L[k - 1] || 1), a = _C8N_FLUSSWEG[k - 1], b = _C8N_FLUSSWEG[k];
+      return { x: a[0] + (b[0] - a[0]) * f, y: a[1] + (b[1] - a[1]) * f };
+    }
+  }
+  const e = _C8N_FLUSSWEG[_C8N_FLUSSWEG.length - 1];
+  return { x: e[0], y: e[1] };
+}
+// Wo ist Tropfen i zur Tageszeit t?  art: meer · steigt · wolke · faellt · land
+function _c8nOrt(i, t) {
+  const p = _c8n.plaetze[i], zt = _c8n.zeit;
+  const ruhe = { x: p.x + Math.sin(zt * 1.3 + i * 0.7) * 0.8, y: p.y + Math.sin(zt * 1.7 + i) * 0.7, art: 'meer' };
+  const d = _c8n.reiseVon[i];
+  if (!d || t <= d.a) return ruhe;
+  let s = t - d.a;
+  if (s < _C8N_AUF) {
+    const u = _c8nSanft(s / _C8N_AUF);
+    return { x: ruhe.x, y: ruhe.y + (_C8N_OBER - 2 - ruhe.y) * u, art: 'meer' };
+  }
+  s -= _C8N_AUF;
+  if (s < _C8N_STEIG) {
+    const u = s / _C8N_STEIG, w = _c8nWolke(t);
+    const x = p.x + (w.x + d.ox - p.x) * _c8nSanft(u) + Math.sin(zt * 5 + d.ph) * 2.5 * (1 - u);
+    const y = _C8N_OBER - 2 + (w.y + d.oy - _C8N_OBER + 2) * (1 - Math.pow(1 - u, 2));
+    return { x, y, art: 'steigt' };
+  }
+  if (t < d.b) {
+    const w = _c8nWolke(t);
+    return { x: w.x + d.ox + Math.sin(zt * 2 + d.ph) * 1.2, y: w.y + d.oy + Math.cos(zt * 1.7 + d.ph), art: 'wolke' };
+  }
+  s = t - d.b;
+  if (s < _C8N_FALL) {
+    const u = s / _C8N_FALL, w = _c8nWolke(d.b), y0 = w.y + d.oy, y1 = _c8nBergY(d.lx) - 2;
+    return { x: w.x + d.ox + (d.lx - w.x - d.ox) * u, y: y0 + (y1 - y0) * u * u, art: 'faellt' };
+  }
+  s -= _C8N_FALL;
+  const q = _C8N_FLUSSWEG[0];
+  if (s < _C8N_HANG) {
+    const u = _c8nSanft(s / _C8N_HANG), y1 = _c8nBergY(d.lx) - 2;
+    return { x: d.lx + (q[0] - d.lx) * u, y: y1 + (q[1] - y1) * u, art: 'land' };
+  }
+  s -= _C8N_HANG;
+  if (s < _C8N_FLUSS) {
+    const f = _c8nFlussPunkt(s / _C8N_FLUSS);
+    return { x: f.x, y: f.y + Math.sin(zt * 6 + d.ph) * 0.6, art: 'land' };
+  }
+  s -= _C8N_FLUSS;
+  if (s < _C8N_HEIM) {
+    const u = _c8nSanft(s / _C8N_HEIM), m = _C8N_FLUSSWEG[_C8N_FLUSSWEG.length - 1];
+    return { x: m[0] + (ruhe.x - m[0]) * u, y: m[1] + (ruhe.y - m[1]) * u, art: 'meer' };
+  }
+  return ruhe;
+}
+// Zaehler aus dem Reiseplan: wer hat das Meer verlassen, wer faellt als Regen?
+function _c8nZaehle(t) {
+  let luft = 0, regen = 0;
+  for (const d of _c8n.reise) {
+    if (t >= d.a + _C8N_AUF) luft++;
+    if (t >= d.b) regen++;
+  }
+  return { luft, regen };
+}
+
+// ── Oberflaeche ────────────────────────────────────────────────────────────
+function _c8nHTML() {
+  const k = (s) => `<button class="sim-btn" data-c8n="${s}" onclick="_c8nSonne('${s}')">${s}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo ist das Wasser überall unterwegs?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Landschaft im Schnitt: Meer, Wolke, Berg und Fluss. Das ganze Wasser ist als 100 blaue Tropfen gezeichnet. Stelle die Sonne ein. Dann drücke „▶ einen Tag abspielen“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8n-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8n-los" onclick="_c8nAbspielen()">▶ einen Tag abspielen</button>
+          <button class="sim-btn" onclick="_c8nNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Sonne</span>
+          <div class="sim-btn-row">${_C8N_STUFEN.map(k).join('')}</div>
+        </div>
+        <div class="lmp-status on" id="_c8n-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_c8n-tage" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Blaue Tropfen: Wasser. Helle Punkte: Wasser, das als Wasserdampf in der Luft ist.</div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8nSprung('schwach')">⏭ ganzer Tag · schwach</button>
+          <button class="sim-btn" onclick="_c8nSprung('mittel')">⏭ ganzer Tag · mittel</button>
+          <button class="sim-btn" onclick="_c8nSprung('stark')">⏭ ganzer Tag · stark</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Sonne mittel &nbsp;|&nbsp; Stelle nur die Sonne um. Lies die Zähler ab, wenn der Tag vorbei ist.</p>
+  </div>`;
+}
+function _c8nZeile() {
+  const s = _c8n.sonne, g = _C8N_GRAD[s] + ' °C';
+  if (_c8n.fertig) {
+    const z = _c8nZaehle(_C8N_TAG);
+    return 'Ein Tag ist vorbei.<br>Sonne: ' + s + ' · ' + g + ' · in die Luft: ' + z.luft +
+      ' Tropfen · zurück als Regen: ' + z.regen + ' Tropfen · Wasser zusammen: ' + _C8N_ALLE + ' Tropfen';
+  }
+  if (_c8n.laeuft) return 'Der Tag läuft … Sonne: ' + s + ' · ' + g;
+  return 'Sonne: ' + s + ' · ' + g + '. Drücke „▶ einen Tag abspielen“.';
+}
+function _c8nStatus() {
+  if (!_c8n) return;
+  const z = _c8nZeile();
+  const el = document.getElementById('_c8n-status');
+  if (el) { el.innerHTML = z; el.className = 'lmp-status on'; }
+  _c8n.letzt = z;
+  const tg = document.getElementById('_c8n-tage');
+  if (tg) tg.textContent = 'Schon abgespielt: ' +
+    _C8N_STUFEN.map(s => s + (_c8n.gespielt[s] ? ' ✓' : ' –')).join(' · ');
+  try {
+    document.querySelectorAll('[data-c8n]').forEach(b => {
+      const v = b.getAttribute('data-c8n');
+      if (b.classList) b.classList.toggle('primary', v === _c8n.sonne);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_c8n-los');
+  if (los && los.classList) los.classList.toggle('primary', !_c8n.laeuft);
+}
+function _c8nLeer() {
+  _c8n.t = 0; _c8n.laeuft = false; _c8n.fertig = false;
+  _c8n.fx = { teile: [] }; _c8n.nach = -1; _c8n.schritt = 0; _c8n.hinweis = null;
+  _c8n.zahl = { luft: 0, regen: 0 }; _c8n.pop = { luft: 0, regen: 0 };
+}
+function _c8nSonne(s) {
+  if (!_c8n || !_C8N_N[s]) return;
+  _c8n.sonne = s; _c8nLeer(); _c8nPlan(); _c8nStatus();
+}
+function _c8nAbspielen() {
+  if (!_c8n || _c8n.laeuft) return;
+  _c8nLeer(); _c8n.laeuft = true; _c8nStatus();
+}
+function _c8nNeu() {
+  if (!_c8n) return;
+  _c8nLeer(); _c8nStatus();
+}
+// Sprungmarke: Sonne einstellen und gleich den fertigen Tag zeigen.
+function _c8nSprung(s) {
+  if (!_c8n || !_C8N_N[s]) return;
+  _c8n.sonne = s; _c8nLeer(); _c8nPlan();
+  _c8n.t = _C8N_TAG; _c8nFertig();
+}
+function _c8nFertig() {
+  _c8n.t = _C8N_TAG; _c8n.laeuft = false; _c8n.fertig = true;
+  _c8n.zahl = _c8nZaehle(_C8N_TAG);
+  const neu3 = !_c8n.alleDrei;
+  _c8n.gespielt[_c8n.sonne] = true;
+  _c8n.alleDrei = _C8N_STUFEN.every(s => _c8n.gespielt[s]);
+  _c8n.dreiJetzt = neu3 && _c8n.alleDrei;
+  _c8n.nach = 0; _c8n.schritt = 0;
+  _c8nStatus();
+}
+
+// ── Ablauf ─────────────────────────────────────────────────────────────────
+function _c8nUpdate(dt) {
+  if (!_c8n) return;
+  dt = _bioFxDt(dt);
+  _c8n.zeit += dt;
+  if (_c8n.laeuft) {
+    _c8n.t = Math.min(_C8N_TAG, _c8n.t + dt);
+    const z = _c8nZaehle(_c8n.t);
+    if (z.luft !== _c8n.zahl.luft) {
+      if (_c8n.zahl.luft === 0) _bioFxWelle(_c8n.fx.teile, 80, _C8N_OBER, '#ffffff', 40);
+      _c8n.pop.luft = 0.25;
+    }
+    if (z.regen !== _c8n.zahl.regen) {
+      if (_c8n.zahl.regen === 0) _bioFxWelle(_c8n.fx.teile, 320, 100, '#93c5fd', 36);
+      _c8n.pop.regen = 0.25;
+    }
+    _c8n.zahl = z;
+    if (_c8n.t >= _C8N_TAG) _c8nFertig();
+    else if (_c8nZeile() !== _c8n.letzt) _c8nStatus();
+  } else if (_c8n.nach >= 0) {
+    _c8n.nach += dt;
+    _c8nNachher();
+  }
+  _c8n.pop.luft = Math.max(0, _c8n.pop.luft - dt);
+  _c8n.pop.regen = Math.max(0, _c8n.pop.regen - dt);
+  if (_c8n.hinweis) { _c8n.hinweis.alter += dt; if (_c8n.hinweis.alter > _c8n.hinweis.dauer) _c8n.hinweis = null; }
+  _bioFxAlleUpdate(_c8n.fx, dt);
+}
+// Nach dem Tag: erst Lichtstreif ueber das Meer, dann leuchtet der untere Zaehler.
+function _c8nNachher() {
+  const fx = _c8n.fx, t = _c8n.nach;
+  if (_c8n.schritt === 0 && t >= 1.35) {
+    _c8n.schritt = 1;
+    _bioFxWelle(fx.teile, 210, 238, '#fde68a', 90);
+    _bioFxFunken(fx.teile, 130, 234, 5, ['#fff3b0', '#ffffff', '#bfdbfe']);
+    _bioFxFunken(fx.teile, 290, 234, 5, ['#fff3b0', '#ffffff', '#bfdbfe']);
+  }
+  if (_c8n.schritt === 1 && t >= 1.6) {
+    _c8n.schritt = 2;
+    if (_c8n.dreiJetzt) {
+      _bioFxKonfetti(fx.teile, 210, 226, 16);
+      _c8n.hinweis = { text: 'Schwach, mittel, stark: zusammen immer 100 Tropfen.', alter: 0, dauer: 4 };
+    } else {
+      _c8n.hinweis = { text: 'Alle 100 Tropfen sind wieder im Meer.', alter: 0, dauer: 3.4 };
+    }
+  }
+  if (t > 5) _c8n.nach = -1;
+}
+
+// ── Zeichnen ───────────────────────────────────────────────────────────────
+function _c8nMisch(a, b, u) {
+  u = _c8nKlemme(u);
+  return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * u)).join(',') + ')';
+}
+function _c8nTropfen(ctx, x, y, r, farbe) {       // Tropfenform, Spitze nach oben
+  ctx.fillStyle = farbe;
+  ctx.beginPath();
+  ctx.moveTo(x, y - r * 2.1);
+  ctx.quadraticCurveTo(x + r * 1.05, y - r * 0.6, x + r, y);
+  ctx.arc(x, y, r, 0, Math.PI);
+  ctx.quadraticCurveTo(x - r * 1.05, y - r * 0.6, x, y - r * 2.1);
+  ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.65)';
+  ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.2, r * 0.3, 0, 2 * Math.PI); ctx.fill();
+}
+function _c8nKasten(ctx, x, y, w, h, text, pop, leucht) {
+  ctx.save();
+  if (leucht > 0) {
+    ctx.shadowColor = 'rgba(253,224,71,' + (0.9 * leucht).toFixed(3) + ')';
+    ctx.shadowBlur = 16;
+  }
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  _bioFxRundRect(ctx, x, y, w, h, 7); ctx.fill();
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = leucht > 0 ? 'rgba(234,179,8,' + (0.5 + 0.5 * leucht).toFixed(3) + ')' : '#64748b';
+  ctx.lineWidth = leucht > 0 ? 2.5 : 1.2;
+  _bioFxRundRect(ctx, x, y, w, h, 7); ctx.stroke();
+  const k = 1 + 0.12 * Math.sin(Math.PI * _c8nKlemme(pop / 0.25));
+  ctx.translate(x + w / 2, y + h / 2 + 1);
+  ctx.scale(k, k);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, 0, 0, w - 8);
+  ctx.restore();
+}
+function _c8nDraw(ctx, cv) {
+  if (!_c8n) return;
+  const W = cv.width, H = cv.height, t = _c8n.t, zt = _c8n.zeit, s = _c8n.sonne;
+  const stufe = _C8N_STUFEN.indexOf(s);                 // 0, 1, 2
+  ctx.clearRect(0, 0, W, H);
+
+  // Himmel: Morgen – Mittag – Abend, nur waehrend und nach dem Tag
+  const u = (_c8n.laeuft || _c8n.fertig) ? t / _C8N_TAG : 0.35;
+  const abend = _c8nKlemme((u - 0.72) / 0.28), morgen = _c8nKlemme((0.18 - u) / 0.18);
+  const oben = _c8nMisch(_c8nMisch([125, 190, 240], [120, 140, 205], abend).match(/\d+/g).map(Number), [170, 190, 230], morgen);
+  const unten = _c8nMisch([220, 238, 252], [253, 206, 160], Math.max(abend, morgen * 0.8));
+  const hg = ctx.createLinearGradient(0, 0, 0, _C8N_OBER);
+  hg.addColorStop(0, oben); hg.addColorStop(1, unten);
+  ctx.fillStyle = hg; ctx.fillRect(0, 0, W, H);
+
+  // Sonne ueber dem Meer, wandert im Lauf des Tages ein Stueck
+  const sx = 34 + 36 * u, sy = 86 - 26 * Math.sin(Math.PI * u);
+  const sr = 13 + stufe * 3.5;
+  const glanz = ctx.createRadialGradient(sx, sy, sr * 0.6, sx, sy, sr * (2.4 + stufe * 0.5));
+  glanz.addColorStop(0, 'rgba(253,224,71,' + (0.35 + 0.12 * stufe) + ')');
+  glanz.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = glanz; ctx.beginPath(); ctx.arc(sx, sy, sr * (2.4 + stufe * 0.5), 0, 2 * Math.PI); ctx.fill();
+  ctx.save();
+  ctx.translate(sx, sy); ctx.rotate(zt * 0.25);
+  ctx.strokeStyle = 'rgba(245,158,11,0.8)'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  for (let k = 0; k < 12; k++) {
+    const w = k * Math.PI / 6, l = sr + 4 + (6 + stufe * 3) * (0.8 + 0.2 * Math.sin(zt * 1.4 + k));
+    ctx.beginPath(); ctx.moveTo(Math.cos(w) * (sr + 3), Math.sin(w) * (sr + 3)); ctx.lineTo(Math.cos(w) * l, Math.sin(w) * l); ctx.stroke();
+  }
+  ctx.restore();
+  ctx.fillStyle = '#fcd34d'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(sx, sy, sr, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+
+  // Thermometer ueber dem Meer
+  const tx = 134, ty0 = 44, ty1 = 110;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.3;
+  _bioFxRundRect(ctx, tx - 4, ty0, 8, ty1 - ty0 + 4, 4); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(tx, ty1 + 7, 6.5, 0, 2 * Math.PI); ctx.fillStyle = '#ef4444'; ctx.fill(); ctx.stroke();
+  const saeule = 26 + stufe * 12;
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(tx - 2, ty1 + 2 - saeule, 4, saeule + 2);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let k = 0; k < 6; k++) { const y = ty1 - 6 - k * 10; ctx.beginPath(); ctx.moveTo(tx + 4, y); ctx.lineTo(tx + 7, y); ctx.stroke(); }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(_C8N_GRAD[s] + ' °C', tx + 10, ty1 + 2 - saeule + 4);
+
+  // Land und Berg
+  ctx.fillStyle = '#86b36a';
+  ctx.beginPath(); ctx.moveTo(152, 226); ctx.lineTo(170, _C8N_OBER); ctx.lineTo(176, 178); ctx.lineTo(205, 186); ctx.lineTo(240, 192);
+  for (let x = 240; x <= W; x += 5) ctx.lineTo(x, _c8nBergY(x));
+  ctx.lineTo(W, H); ctx.lineTo(152, H); ctx.closePath(); ctx.fill();
+  const bg = ctx.createLinearGradient(0, 70, 0, 200);
+  bg.addColorStop(0, '#8d8a80'); bg.addColorStop(1, '#6f8f58');
+  ctx.fillStyle = bg;
+  ctx.beginPath(); ctx.moveTo(236, 194);
+  for (let x = 240; x <= W; x += 5) ctx.lineTo(x, _c8nBergY(x));
+  ctx.lineTo(W, 200); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(60,60,50,0.35)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(318, 102); ctx.lineTo(330, 128); ctx.moveTo(360, 88); ctx.lineTo(372, 118); ctx.stroke();
+  ctx.fillStyle = '#c8b58a'; ctx.fillRect(130, 226, W - 130, H - 226);
+
+  // Fluss mit fliessenden Wellenstrichen
+  ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); _C8N_FLUSSWEG.forEach((p, k) => k ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 1.2;
+  for (let k = 0; k < 7; k++) {
+    const f = ((zt * 0.18 + k / 7) % 1), a = _c8nFlussPunkt(f), b = _c8nFlussPunkt(f + 0.025);
+    ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  }
+
+  // Meer mit Wellen an der Oberflaeche
+  ctx.fillStyle = '#7fb3e3';
+  ctx.beginPath(); ctx.moveTo(0, _C8N_OBER);
+  for (let x = 0; x <= 170; x += 5) ctx.lineTo(x, _C8N_OBER + Math.sin(x * 0.09 + zt * 1.8) * 1.4);
+  ctx.lineTo(152, 226); ctx.lineTo(0, 226); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#c8b58a'; ctx.fillRect(0, 226, 152, H - 226);
+  if (stufe >= 0) {                                   // Sonnenglitzern auf dem Wasser
+    ctx.fillStyle = 'rgba(255,244,190,' + (0.35 + 0.15 * stufe) + ')';
+    for (let k = 0; k < 5 + stufe * 3; k++) {
+      const x = 10 + ((k * 37 + zt * 12) % 150), a = 0.5 + 0.5 * Math.sin(zt * 1.2 + k);
+      ctx.globalAlpha = a; ctx.fillRect(x, _C8N_OBER + 2 + (k % 3) * 2, 6, 1.4);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // Wolke (wird groesser und grauer, je mehr Tropfen in ihr sind)
+  const wo = _c8nWolke(t);
+  let inWolke = 0;
+  for (const d of _c8n.reise) if (t >= d.a + _C8N_AUF + _C8N_STEIG && t < d.b) inWolke++;
+  const gr = 1 + 0.018 * inWolke, grau = _c8nKlemme(inWolke / 30);
+  ctx.save(); ctx.translate(wo.x, wo.y); ctx.scale(gr, gr);
+  ctx.fillStyle = _c8nMisch([250, 252, 255], [168, 178, 192], grau);
+  ctx.strokeStyle = 'rgba(100,116,139,0.45)'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(-22, 4, 13, Math.PI * 0.5, Math.PI * 1.5); ctx.arc(-8, -8, 15, Math.PI, Math.PI * 1.9);
+  ctx.arc(12, -6, 14, Math.PI * 1.2, Math.PI * 2); ctx.arc(26, 4, 11, Math.PI * 1.5, Math.PI * 0.5);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+
+  // Die 100 Tropfen – jeder wird gezeichnet und dabei gezaehlt
+  let gezaehlt = 0;
+  const streif = (_c8n.nach >= 0 && _c8n.nach < 1.4) ? -20 + (_c8n.nach / 1.2) * 190 : -999;
+  for (let i = 0; i < _C8N_ALLE; i++) {
+    const o = _c8nOrt(i, t);
+    gezaehlt++;
+    if (o.art === 'steigt') {
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.beginPath(); ctx.arc(o.x, o.y, 4.2, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath(); ctx.arc(o.x, o.y, 2.1, 0, 2 * Math.PI); ctx.fill();
+    } else if (o.art === 'wolke') {
+      ctx.fillStyle = '#3b82f6';
+      ctx.beginPath(); ctx.arc(o.x, o.y, 1.7, 0, 2 * Math.PI); ctx.fill();
+    } else if (o.art === 'faellt') {
+      ctx.strokeStyle = 'rgba(59,130,246,0.4)'; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(o.x, o.y - 8); ctx.lineTo(o.x, o.y - 3); ctx.stroke();
+      _c8nTropfen(ctx, o.x, o.y, 2.1, '#2563eb');
+    } else {
+      if (Math.abs(o.x - streif) < 14 && o.art === 'meer') {
+        const a = 1 - Math.abs(o.x - streif) / 14;
+        ctx.fillStyle = 'rgba(255,246,200,' + (0.8 * a).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(o.x, o.y - 1.5, 5, 0, 2 * Math.PI); ctx.fill();
+      }
+      _c8nTropfen(ctx, o.x, o.y, 2.1, o.art === 'land' ? '#2563eb' : '#1d4ed8');
+    }
+  }
+
+  // Beschriftung der Orte (klein, ruhig)
+  ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Meer', 8, _C8N_OBER - 5);
+  ctx.fillText('Berg', 372, 100);
+  ctx.fillText('Fluss', 214, 199);
+  ctx.textAlign = 'center';
+  ctx.fillText('Wolke', wo.x, wo.y + 18 * gr + 11);
+
+  // Zaehler oben und unten
+  _c8nKasten(ctx, 6, 5, 176, 24, 'in die Luft: ' + _c8n.zahl.luft + ' Tropfen', _c8n.pop.luft, 0);
+  _c8nKasten(ctx, 214, 5, 200, 24, 'zurück als Regen: ' + _c8n.zahl.regen + ' Tropfen', _c8n.pop.regen, 0);
+  let leucht = 0;
+  if (_c8n.nach >= 1.3) {
+    const a = _c8n.nach - 1.3;
+    leucht = _c8nKlemme(a / 0.3) * (1 - _c8nKlemme((a - 2.6) / 0.8)) * (0.55 + 0.45 * Math.sin(a * Math.PI * 2 * 0.8));
+  }
+  _c8nKasten(ctx, 110, 226, 200, 21, 'Wasser zusammen: ' + gezaehlt + ' Tropfen', 0, leucht);
+
+  // Hinweisstreifen nach dem Tag (ruhig ein- und ausblenden)
+  const hw = _c8n.hinweis;
+  if (hw) {
+    const a = _c8nKlemme(hw.alter / 0.35) * (1 - _c8nKlemme((hw.alter - hw.dauer + 0.6) / 0.6));
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.font = '700 13px sans-serif';
+    const bw = Math.min(W - 16, ctx.measureText(hw.text).width + 28);
+    ctx.fillStyle = 'rgba(20,30,50,0.86)';
+    _bioFxRundRect(ctx, (W - bw) / 2, 132, bw, 26, 13); ctx.fill();
+    ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, (W - bw) / 2, 132, bw, 26, 13); ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(hw.text, W / 2, 146, bw - 16);
+    ctx.restore();
+  }
+  // Tageszeit waehrend des Abspielens
+  if (_c8n.laeuft) {
+    const std = Math.floor(6 + 12 * t / _C8N_TAG);
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText(std + ' Uhr', 414, 44);
+  }
+  ctx.textBaseline = 'alphabetic';
+  _bioFxAlleDraw(ctx, _c8n.fx);
+}
+
+// ═══════════════════════════════════════════════════════
+// CHEMIE 8 · WASSERZERSETZUNG IM MODELL   (Förderheft Chemie 8 · cw2)
+// Hofmannscher Zersetzungsapparat: zwei Glasrohre, unten verbunden, in der
+// Mitte ein offenes Vorratsrohr. Links der Minuspol, rechts der Pluspol.
+// Modellwerte (Lehrerteil): je Minute Strom 2 ml Gas am Minuspol und 1 ml am
+// Pluspol (Volumenverhältnis 2 : 1 ist echt), höchstens 3 Minuten.
+// Proben entnehmen im Modell so wenig Gas, dass die Zähler bleiben.
+// „Gase zusammen zünden“ erst ab 3 Minuten: beide Gase strömen in ein
+// geschlossenes Glas, ein Funke, kurzer Blitz NUR im Glas; danach Gas: 0 ml,
+// Tropfen an der Glaswand, das Watesmo-Papier wird blau.
+// Aha: Nach der dritten Minute hebt sich eine Kopie der Gassäule vom Pluspol
+// heraus und passt zweimal in die Säule am Minuspol – ohne Worte.
+// Die Wörter der Lösung (u. a. die Namen der Gase und das Wort für den
+// Stoff im Rohr) stehen NICHT am Bildschirm.
+// Effekte aus _bioFx: kurz, ruhig, kein Blinken, kein Vollflächenblitz.
+// ═══════════════════════════════════════════════════════
+let _c8o = null;
+const _C8O_MAX = 3;            // höchstens 3 Minuten Strom
+const _C8O_MINUTE = 1.8;       // eine Modellminute dauert 1,8 s
+const _C8O_ML = 13;            // Pixel je ml in den Rohren
+const _C8O_L = 100, _C8O_R = 200, _C8O_M = 150;   // Rohrmitten
+const _C8O_OBEN = 40, _C8O_UNTEN = 196, _C8O_HB = 11; // Rohr innen
+const _C8O_GLAS = { x0: 306, x1: 400, y0: 64, y1: 204 };
+
+function _c8oInit() {
+  _c8o = { t: 0, min: 0, gm: 0, gp: 0, fluss: null, probe: null, zuend: null,
+           aha: null, gezuendet: false, blau: 0, tropfen: 0, dunst: 0, schlauch: 0,
+           blitz: 0, funke: 0, mark: { m: false, p: false }, blasen: [],
+           fx: { teile: [] }, zeile: '', hand: 0, wack: 0 };
+  _c8o.zeile = _c8oRuhe();
+}
+function _c8oNeu() {
+  if (!_c8o) return;
+  _c8oInit();
+  _c8oStatus();
+}
+// Strom und Zünden laufen zu Ende; eine laufende Probe endet, sobald etwas Neues beginnt.
+function _c8oBeschaeftigt() { return !!(_c8o.fluss || _c8o.zuend); }
+function _c8oZeit(n) { return 'Zeit: ' + n + (n === 1 ? ' Minute' : ' Minuten'); }
+function _c8oRuhe() {
+  if (_c8o.min === 0) return _c8oZeit(0) + '. Die Rohre sind bis oben voll. Noch kein Gas.';
+  return _c8oZeit(_c8o.min) + '. Minuspol: Gas: ' + (2 * _c8o.min) + ' ml, Pluspol: Gas: ' +
+         _c8o.min + ' ml';
+}
+function _c8oSetz(z) { _c8o.zeile = z; _c8oStatus(); }
+
+// ── Bedienung ────────────────────────────────────────────
+function _c8oStrom() {
+  if (!_c8o || _c8oBeschaeftigt()) return;
+  if (_c8o.gezuendet) { _c8oSetz('Kein Gas mehr. Das Papier ist blau. Für einen neuen Versuch: „neu“.'); return; }
+  if (_c8o.min >= _C8O_MAX) { _c8oSetz(_c8oRuhe() + '. Mehr als 3 Minuten geht hier nicht.'); return; }
+  _c8o.aha = null; _c8o.probe = null;
+  _c8o.fluss = { alter: 0, spawnM: 0, spawnP: 0 };
+  _c8oSetz('Strom fließt. An beiden Polen steigen Bläschen auf.');
+}
+function _c8oFlamme() {
+  if (!_c8o || _c8oBeschaeftigt()) return;
+  if (_c8o.gm <= 0) { _c8oSetz(_c8o.gezuendet ? 'Im Rohr ist kein Gas mehr.' : 'Im Rohr ist noch kein Gas.'); return; }
+  _c8o.probe = { art: 'flamme', alter: 0, schritt: 0 };
+  _c8oSetz('Die Flamme kommt an das Rohr am Minuspol. Der Hahn geht kurz auf.');
+}
+function _c8oSpan() {
+  if (!_c8o || _c8oBeschaeftigt()) return;
+  if (_c8o.gp <= 0) { _c8oSetz(_c8o.gezuendet ? 'Im Rohr ist kein Gas mehr.' : 'Im Rohr ist noch kein Gas.'); return; }
+  _c8o.probe = { art: 'span', alter: 0, schritt: 0 };
+  _c8oSetz('Der glühende Span kommt in das Rohr am Pluspol. Der Hahn geht kurz auf.');
+}
+function _c8oZuenden() {
+  if (!_c8o || _c8oBeschaeftigt()) return;
+  if (_c8o.gezuendet) { _c8oSetz('Kein Gas mehr. Das Papier ist blau.'); return; }
+  if (_c8o.min < _C8O_MAX) {
+    _c8oSetz('Es passiert nichts. Zünden geht erst nach 3 Minuten Strom.');
+    return;
+  }
+  _c8o.aha = null; _c8o.probe = null;
+  _c8o.zuend = { alter: 0, schritt: 0, gm0: _c8o.gm, gp0: _c8o.gp };
+  _c8oSetz('Die Hähne gehen auf. Beide Gase strömen in das geschlossene Glas.');
+}
+// Sprungmarke: sofort n Minuten Strom (fertig gelaufen), alles andere neu.
+function _c8oMarke(n) {
+  if (!_c8o) return;
+  _c8oInit();
+  _c8o.min = n; _c8o.gm = 2 * n; _c8o.gp = n;
+  _c8o.zeile = _c8oRuhe();
+  _c8oStatus();
+  if (n === _C8O_MAX) _c8o.aha = { alter: -0.4, schritt: 0 };
+}
+
+function _c8oStatus() {
+  if (!_c8o) return;
+  const el = document.getElementById('_c8o-status');
+  if (el) { el.textContent = _c8o.zeile; el.className = 'lmp-status on'; }
+  const s = document.getElementById('_c8o-strom');
+  if (s && s.classList) s.classList.toggle('primary', _c8o.min < _C8O_MAX && !_c8o.gezuendet);
+  const z = document.getElementById('_c8o-zuend');
+  if (z && z.classList) z.classList.toggle('primary', _c8o.min >= _C8O_MAX && !_c8o.gezuendet);
+}
+
+function _c8oHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Strom durch zwei Glasrohre</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Glasrohre, unten verbunden und bis oben gefüllt. Links unten ist der Minuspol, rechts unten der Pluspol. Rechts steht ein geschlossenes Glas mit Watesmo-Papier.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8o-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8o-strom" onclick="_c8oStrom()">▶ 1 Minute Strom</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Sprungmarken</span>
+          <button class="sim-btn" onclick="_c8oMarke(1)">nach 1 Minute</button>
+          <button class="sim-btn" onclick="_c8oMarke(2)">nach 2 Minuten</button>
+          <button class="sim-btn" onclick="_c8oMarke(3)">nach 3 Minuten</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Proben</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_c8oFlamme()">Flamme an das Rohr am Minuspol</button>
+          <button class="sim-btn" onclick="_c8oSpan()">Glimmspan in das Rohr am Pluspol</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_c8o-zuend" onclick="_c8oZuenden()">Gase zusammen zünden</button>
+          <button class="sim-btn" onclick="_c8oNeu()">neu</button>
+        </div>
+        <div class="lmp-status on" id="_c8o-status" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die Skala an jedem Rohr zeigt ml. Oben ist 0. Das Gas sammelt sich oben im Rohr.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ── Ablauf ───────────────────────────────────────────────
+function _c8oSpiegel(gas) { return _C8O_OBEN + gas * _C8O_ML; }   // Grenze Gas/Flüssigkeit
+function _c8oVorrat() { return 96 - (_c8o.gm + _c8o.gp) * 3.4; }  // Stand im Mittelrohr
+
+function _c8oUpdate(dt) {
+  if (!_c8o) return;
+  dt = _bioFxDt(dt);
+  _c8o.t += dt;
+  const fx = _c8o.fx;
+
+  // Strom: eine Minute
+  if (_c8o.fluss) {
+    const f = _c8o.fluss;
+    f.alter += dt;
+    const u = Math.min(1, f.alter / _C8O_MINUTE);
+    _c8o.gm = 2 * (_c8o.min + u); _c8o.gp = _c8o.min + u;
+    _c8o.hand += dt * Math.PI * 2 / _C8O_MINUTE;
+    // Bläschen: am Minuspol doppelt so viele
+    f.spawnM += dt * 22; f.spawnP += dt * 11;
+    while (f.spawnM >= 1) { f.spawnM -= 1; _c8oBlase(_C8O_L); }
+    while (f.spawnP >= 1) { f.spawnP -= 1; _c8oBlase(_C8O_R); }
+    if (u >= 1) {
+      _c8o.fluss = null; _c8o.min++;
+      _c8o.gm = 2 * _c8o.min; _c8o.gp = _c8o.min;
+      _c8o.hand = 0;
+      _bioFxWelle(fx.teile, 44, 114, '#93c5fd', 30);
+      _bioFxWelle(fx.teile, 256, 114, '#fca5a5', 30);
+      _c8oSetz(_c8oRuhe());
+      if (_c8o.min === _C8O_MAX) _c8o.aha = { alter: -0.5, schritt: 0 };
+    }
+  }
+
+  // Bläschen steigen bis zur Gasgrenze
+  for (let i = _c8o.blasen.length - 1; i >= 0; i--) {
+    const b = _c8o.blasen[i];
+    b.y -= b.v * dt; b.ph += dt * 5;
+    const grenze = _c8oSpiegel(b.x0 === _C8O_L ? _c8o.gm : _c8o.gp);
+    if (b.y - b.r <= grenze + 1) _c8o.blasen.splice(i, 1);
+  }
+
+  // Probe mit Flamme oder Span
+  if (_c8o.probe) {
+    const p = _c8o.probe;
+    p.alter += dt;
+    if (p.art === 'flamme') {
+      if (p.schritt === 0 && p.alter >= 0.9) {
+        p.schritt = 1; _c8o.blitz = 0.35; _c8o.mark.m = true;
+        _bioFxWelle(fx.teile, _C8O_L, 12, '#fdba74', 34);
+        _bioFxFunken(fx.teile, _C8O_L, 10, 6, ['#fde68a', '#fdba74', '#ffffff']);
+        _c8oSetz('Plopp! Es knallt leise.');
+      }
+      if (p.alter >= 2.3) _c8o.probe = null;
+    } else {
+      if (p.schritt === 0 && p.alter >= 1.0) {
+        p.schritt = 1; _c8o.mark.p = true;
+        _bioFxWelle(fx.teile, _C8O_R, 8, '#fde047', 36);
+        _bioFxFunken(fx.teile, _C8O_R, 4, 8);
+        _c8oSetz('Der Span flammt hell auf.');
+      }
+      if (p.alter >= 3.0) _c8o.probe = null;
+    }
+  }
+  if (_c8o.blitz > 0) _c8o.blitz = Math.max(0, _c8o.blitz - dt);
+
+  // Zünden: Gase ins Glas, Funke, Blitz im Glas, Tropfen, Papier blau
+  if (_c8o.zuend) {
+    const z = _c8o.zuend;
+    z.alter += dt;
+    const a = z.alter;
+    _c8o.schlauch = _bioFxKlemme(a / 0.4) * (1 - _bioFxKlemme((a - 3.0) / 0.6));
+    const leer = _bioFxEase.sanft(_bioFxKlemme((a - 0.4) / 1.4));
+    _c8o.gm = z.gm0 * (1 - leer); _c8o.gp = z.gp0 * (1 - leer);
+    if (a < 1.8) {
+      _c8o.dunst = leer;
+      if (Math.random() < dt * 18) _c8oStrich();
+    }
+    if (z.schritt === 0 && a >= 1.8) {
+      z.schritt = 1; _c8o.gm = 0; _c8o.gp = 0; _c8o.funke = 0.3;
+      _c8oSetz('Ein Funke zündet die Gase im Glas.');
+    }
+    if (z.schritt === 1 && a >= 2.05) {
+      z.schritt = 2; _c8o.blitz = 0.45; _c8o.wack = 0.35;
+      _bioFxWelle(fx.teile, 353, 120, '#fde68a', 44);
+    }
+    if (a >= 2.05) _c8o.dunst = Math.max(0, 1 - (a - 2.05) / 0.3);
+    if (a >= 2.5) _c8o.tropfen = _bioFxEase.raus(_bioFxKlemme((a - 2.5) / 1.0));
+    if (a >= 3.2) _c8o.blau = _bioFxEase.sanft(_bioFxKlemme((a - 3.2) / 1.5));
+    if (z.schritt === 2 && a >= 4.7) {
+      z.schritt = 3; _c8o.blau = 1; _c8o.tropfen = 1; _c8o.gezuendet = true;
+      _bioFxWelle(fx.teile, 384, 110, '#60a5fa', 40);
+      _bioFxFunken(fx.teile, 384, 100, 10, ['#93c5fd', '#bfdbfe', '#ffffff', '#3b82f6']);
+      _c8o.zuend = null;
+      _c8oSetz('Kein Gas mehr. Das Papier ist blau.');
+    }
+  }
+  if (_c8o.funke > 0) _c8o.funke = Math.max(0, _c8o.funke - dt);
+  if (_c8o.wack > 0) _c8o.wack = Math.max(0, _c8o.wack - dt);
+
+  // Aha: die Säule vom Pluspol passt zweimal in die Säule am Minuspol
+  if (_c8o.aha) {
+    const h = _c8o.aha;
+    h.alter += dt;
+    if (h.schritt === 0 && h.alter >= 0.9) {
+      h.schritt = 1;
+      _bioFxWelle(fx.teile, _C8O_L, _C8O_OBEN + 1.5 * _C8O_ML, '#fdba74', 26);
+    }
+    if (h.schritt === 1 && h.alter >= 1.9) {
+      h.schritt = 2;
+      _bioFxWelle(fx.teile, _C8O_L, _C8O_OBEN + 4.5 * _C8O_ML, '#fdba74', 26);
+      _bioFxFunken(fx.teile, _C8O_L, _C8O_OBEN + 6 * _C8O_ML, 6, ['#fde68a', '#fdba74', '#ffffff']);
+    }
+    if (h.alter >= 3.6) _c8o.aha = null;
+  }
+
+  _bioFxAlleUpdate(fx, dt);
+  // Gasstriche laufen den Schlauch entlang
+  for (const p of fx.teile) {
+    if (p.links === undefined) continue;
+    const q = _c8oSchlauchPunkt(p.links, p.alter / p.leben);
+    p.x = q.x; p.y = q.y;
+  }
+}
+function _c8oBlase(x) {
+  if (_c8o.blasen.length > 160) return;
+  _c8o.blasen.push({ x0: x, dx: (Math.random() - 0.5) * 12, y: 186 + Math.random() * 6,
+                     v: 40 + Math.random() * 30, r: 1.2 + Math.random() * 1.6, ph: Math.random() * 6 });
+}
+// Gasteilchen-Strich, der durch den Schlauch ins Glas läuft (nur Bewegung, kein Teilchenmodell)
+function _c8oStrich() {
+  const links = Math.random() < 0.67;       // vom Minuspol kommt mehr
+  _bioFxNeu(_c8o.fx.teile, { art: 'punkt', x: links ? _C8O_L : _C8O_R, y: 14, vx: 0, vy: 0, g: 0,
+    alter: 0, leben: 1.2, r: 2.2, farbe: '#94a3b8', dreh: 0, dw: 0, weg: 0, links });
+}
+
+// ── Zeichnen ─────────────────────────────────────────────
+function _c8oSchlauchPunkt(links, u) {
+  // Weg: Rohröffnung → hoch auf y=4 → nach rechts bis x=353 → hinunter in den Deckel
+  const x0 = links ? _C8O_L : _C8O_R, y0 = 12;
+  const l1 = y0 - 4, l2 = 353 - x0, l3 = 58 - 4, L = l1 + l2 + l3;
+  let s = u * L;
+  if (s < l1) return { x: x0, y: y0 - s };
+  s -= l1;
+  if (s < l2) return { x: x0 + s, y: 4 };
+  s -= l2;
+  return { x: 353, y: 4 + Math.min(s, l3) };
+}
+function _c8oRohr(ctx, x, gas, farbeGas) {
+  const x0 = x - _C8O_HB, x1 = x + _C8O_HB, t = _c8o.t;
+  const sp = _c8oSpiegel(gas);
+  // Flüssigkeit (blassblau) unter der Grenze
+  ctx.fillStyle = 'rgba(147,197,253,0.45)';
+  ctx.fillRect(x0, sp, 2 * _C8O_HB, _C8O_UNTEN - sp);
+  // Gas oben (fast farblos, leicht getönt nur zur Sichtbarkeit)
+  if (gas > 0.01) {
+    ctx.fillStyle = farbeGas;
+    ctx.fillRect(x0, _C8O_OBEN, 2 * _C8O_HB, sp - _C8O_OBEN);
+    // Meniskus
+    ctx.strokeStyle = 'rgba(37,99,235,0.7)'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(x0, sp - 1.5);
+    ctx.quadraticCurveTo(x, sp + 1.5 + Math.sin(t * 2 + x) * 0.4, x1, sp - 1.5); ctx.stroke();
+  }
+  // Glaswand
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0, _C8O_UNTEN); ctx.lineTo(x0, _C8O_OBEN + 4);
+  ctx.quadraticCurveTo(x0, _C8O_OBEN - 4, x - 4, _C8O_OBEN - 6); ctx.lineTo(x - 4, 22);
+  ctx.moveTo(x1, _C8O_UNTEN); ctx.lineTo(x1, _C8O_OBEN + 4);
+  ctx.quadraticCurveTo(x1, _C8O_OBEN - 4, x + 4, _C8O_OBEN - 6); ctx.lineTo(x + 4, 22);
+  ctx.stroke();
+  // Lichtreflex, der langsam wandert
+  ctx.strokeStyle = 'rgba(255,255,255,' + (0.55 + 0.15 * Math.sin(t * 0.9 + x)).toFixed(3) + ')';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0 + 4, _C8O_OBEN + 10); ctx.lineTo(x0 + 4, _C8O_UNTEN - 30); ctx.stroke();
+}
+function _c8oSkala(ctx, x, seite) {
+  // Striche jeden ml, Zahlen jeden zweiten; oben ist 0
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.fillStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.font = '10px sans-serif'; ctx.textBaseline = 'middle';
+  ctx.textAlign = seite > 0 ? 'left' : 'right';
+  const kante = x + seite * _C8O_HB;
+  for (let ml = 0; ml <= 10; ml++) {
+    const y = _C8O_OBEN + ml * _C8O_ML;
+    const lang = ml % 2 === 0 ? 6 : 3;
+    ctx.beginPath(); ctx.moveTo(kante, y); ctx.lineTo(kante - seite * lang, y); ctx.stroke();
+    if (ml % 2 === 0) ctx.fillText(String(ml), kante + seite * 3, y);
+  }
+  ctx.fillText('ml', kante + seite * 3, _C8O_OBEN + 10.9 * _C8O_ML);
+  ctx.restore();
+}
+function _c8oHahn(ctx, x, offen) {
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x, 27, 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.save(); ctx.translate(x, 27); ctx.rotate(offen ? Math.PI / 2 : 0);
+  ctx.fillStyle = '#475569'; ctx.fillRect(-11, -2, 22, 4); ctx.restore();
+  // Düse oben
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x - 3, 21); ctx.lineTo(x - 2, 12); ctx.moveTo(x + 3, 21); ctx.lineTo(x + 2, 12); ctx.stroke();
+}
+function _c8oFlammeForm(ctx, x, y, gr, t) {
+  // ruhige Flamme: Form wiegt leicht, Helligkeit bleibt
+  const w = Math.sin(t * 7) * 0.08 + Math.sin(t * 4.3) * 0.05;
+  ctx.save(); ctx.translate(x, y); ctx.scale(gr, gr);
+  const g = ctx.createRadialGradient(0, -4, 1, 0, -6, 12);
+  g.addColorStop(0, '#fffbe6'); g.addColorStop(0.45, '#fde047'); g.addColorStop(1, 'rgba(249,115,22,0.15)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.moveTo(0, 3);
+  ctx.bezierCurveTo(7, 1, 6, -8, w * 20, -17);
+  ctx.bezierCurveTo(-6, -8, -7, 1, 0, 3); ctx.fill();
+  ctx.restore();
+}
+function _c8oProbeZeichnen(ctx) {
+  const p = _c8o.probe, t = _c8o.t;
+  if (!p) return;
+  if (p.art === 'flamme') {
+    // Holzspan mit Flamme kommt von links oben an die Düse (x=100, y=12)
+    const hin = _bioFxEase.sanft(_bioFxKlemme(p.alter / 0.8));
+    const weg = _bioFxEase.sanft(_bioFxKlemme((p.alter - 1.6) / 0.7));
+    const k = hin * (1 - weg);
+    const sx = 40 + (_C8O_L - 8 - 40) * k, sy = 60 + (16 - 60) * k;
+    ctx.strokeStyle = '#a16207'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(sx - 30, sy + 22); ctx.lineTo(sx, sy); ctx.stroke();
+    _c8oFlammeForm(ctx, sx + 1, sy - 1, 0.8, t);
+  } else {
+    // Glimmspan kommt von rechts oben an die Düse (x=200, y=12)
+    const hin = _bioFxEase.sanft(_bioFxKlemme(p.alter / 0.9));
+    const weg = _bioFxEase.sanft(_bioFxKlemme((p.alter - 2.3) / 0.7));
+    const k = hin * (1 - weg);
+    const sx = 262 + (_C8O_R + 4 - 262) * k, sy = 58 + (19 - 58) * k;
+    ctx.strokeStyle = '#a16207'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(sx + 34, sy + 20); ctx.lineTo(sx, sy); ctx.stroke();
+    if (p.schritt === 0) {
+      // Glut: rot, ruhig (Puls 0,8 Hz)
+      _bioFxLeuchten(ctx, sx, sy, 3, t, '239,68,68');
+      ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(sx, sy, 2.6, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      const auf = _bioFxEase.federn(_bioFxKlemme((p.alter - 1.0) / 0.45));
+      const g = ctx.createRadialGradient(sx, sy - 6, 2, sx, sy - 6, 26);
+      g.addColorStop(0, 'rgba(255,245,200,' + (0.55 * auf * (1 - weg)).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(255,245,200,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(sx, sy - 6, 26, 0, 2 * Math.PI); ctx.fill();
+      _c8oFlammeForm(ctx, sx, sy, 0.4 + 0.65 * auf, t);
+    }
+  }
+}
+function _c8oZaehler(ctx, x, y, text, rand) {
+  ctx.save();
+  ctx.font = 'bold 13px sans-serif';
+  const w = 70, h = 22;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = rand; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, x, y + 1);
+  ctx.restore();
+}
+function _c8oMarkeZeichnen(ctx, x, y, text, farbe) {
+  ctx.save();
+  ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const w = ctx.measureText(text).width + 12;
+  ctx.fillStyle = farbe; _bioFxRundRect(ctx, x - w / 2, y - 8, w, 16, 8); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.fillText(text, x, y + 0.5);
+  ctx.restore();
+}
+
+function _c8oDraw(ctx, cv) {
+  if (!_c8o) return;
+  const W = cv.width, H = cv.height, t = _c8o.t;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#e2e8f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tischkante
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(0, H - 14, W, 14);
+
+  // Schläuche beim Zünden
+  if (_c8o.schlauch > 0.01) {
+    ctx.save(); ctx.globalAlpha = _c8o.schlauch;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 4; ctx.lineJoin = 'round';
+    for (const links of [true, false]) {
+      const x0 = links ? _C8O_L : _C8O_R;
+      ctx.beginPath(); ctx.moveTo(x0, 12); ctx.lineTo(x0, 4); ctx.lineTo(353, 4); ctx.lineTo(353, 58); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // Verbindung unten und Mittelrohr (Vorrat)
+  const vy = _c8oVorrat() + Math.sin(t * 1.7) * 0.8;
+  ctx.fillStyle = 'rgba(147,197,253,0.45)';
+  ctx.fillRect(_C8O_L - _C8O_HB, _C8O_UNTEN, _C8O_R - _C8O_L + 2 * _C8O_HB, 12);
+  ctx.save();
+  ctx.beginPath(); ctx.arc(_C8O_M, 58, 18, 0, 2 * Math.PI); ctx.rect(_C8O_M - 5, 58, 10, _C8O_UNTEN - 58 + 1);
+  ctx.clip();
+  ctx.fillStyle = 'rgba(147,197,253,0.45)';
+  ctx.fillRect(_C8O_M - 20, vy, 40, _C8O_UNTEN - vy + 2);
+  ctx.strokeStyle = 'rgba(37,99,235,0.6)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(_C8O_M - 20, vy); ctx.lineTo(_C8O_M + 20, vy); ctx.stroke();
+  ctx.restore();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(_C8O_M - 5, _C8O_UNTEN); ctx.lineTo(_C8O_M - 5, 75);
+  ctx.arc(_C8O_M, 58, 18, Math.PI * 0.6, Math.PI * 1.35);
+  ctx.moveTo(_C8O_M + 5, _C8O_UNTEN); ctx.lineTo(_C8O_M + 5, 75);
+  ctx.arc(_C8O_M, 58, 18, Math.PI * 0.4, -Math.PI * 0.35, true);
+  ctx.stroke();
+  // Unterseite der Verbindung
+  ctx.beginPath();
+  ctx.moveTo(_C8O_L - _C8O_HB, _C8O_UNTEN); ctx.lineTo(_C8O_L - _C8O_HB, _C8O_UNTEN + 12);
+  ctx.lineTo(_C8O_R + _C8O_HB, _C8O_UNTEN + 12); ctx.lineTo(_C8O_R + _C8O_HB, _C8O_UNTEN);
+  ctx.moveTo(_C8O_L + _C8O_HB, _C8O_UNTEN); ctx.lineTo(_C8O_M - 5, _C8O_UNTEN);
+  ctx.moveTo(_C8O_M + 5, _C8O_UNTEN); ctx.lineTo(_C8O_R - _C8O_HB, _C8O_UNTEN);
+  ctx.stroke();
+
+  // Rohre
+  _c8oRohr(ctx, _C8O_L, _c8o.gm, 'rgba(255,255,255,0.92)');
+  _c8oRohr(ctx, _C8O_R, _c8o.gp, 'rgba(255,255,255,0.92)');
+
+  // Aha: Kopie der Pluspol-Säule passt zweimal in die Minuspol-Säule
+  if (_c8o.aha && _c8o.aha.alter > 0) {
+    const a = _c8o.aha.alter, hS = _C8O_MAX * _C8O_ML;
+    const aus = 1 - _bioFxKlemme((a - 3.0) / 0.6);
+    const block = (u, zielY) => {
+      const e = _bioFxEase.sanft(_bioFxKlemme(u));
+      const bx = _C8O_R + (_C8O_L - _C8O_R) * e;
+      const by = _C8O_OBEN + (zielY - _C8O_OBEN) * e - Math.sin(Math.PI * e) * 26;
+      ctx.fillStyle = 'rgba(251,146,60,' + (0.35 * aus).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(234,88,12,' + (0.9 * aus).toFixed(3) + ')'; ctx.lineWidth = 2;
+      ctx.fillRect(bx - _C8O_HB + 1, by, 2 * _C8O_HB - 2, hS);
+      ctx.strokeRect(bx - _C8O_HB + 1, by, 2 * _C8O_HB - 2, hS);
+    };
+    block(a / 0.9, _C8O_OBEN);
+    if (a > 1.0) block((a - 1.0) / 0.9, _C8O_OBEN + hS);
+    // der Umriss am Pluspol bleibt als Vergleich stehen
+    ctx.setLineDash([3, 3]);
+    ctx.strokeStyle = 'rgba(234,88,12,' + (0.7 * aus).toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    ctx.strokeRect(_C8O_R - _C8O_HB + 1, _C8O_OBEN, 2 * _C8O_HB - 2, hS);
+    ctx.setLineDash([]);
+  }
+
+  // Bläschen
+  ctx.strokeStyle = 'rgba(255,255,255,0.95)'; ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 1;
+  for (const b of _c8o.blasen) {
+    const x = b.x0 + b.dx * 0.5 + Math.sin(b.ph) * 1.5;
+    ctx.beginPath(); ctx.arc(x, b.y, b.r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+
+  // Elektroden
+  for (const [x, farbe] of [[_C8O_L, '#1e293b'], [_C8O_R, '#b91c1c']]) {
+    ctx.fillStyle = '#9ca3af'; ctx.fillRect(x - 3, 176, 6, 32);
+    ctx.fillStyle = farbe; ctx.fillRect(x - 3, 204, 6, 4);
+  }
+  _c8oSkala(ctx, _C8O_L, 1);
+  _c8oSkala(ctx, _C8O_R, -1);
+  const offenL = (_c8o.probe && _c8o.probe.art === 'flamme' && _c8o.probe.alter > 0.75 && _c8o.probe.alter < 1.4) || !!_c8o.zuend;
+  const offenR = (_c8o.probe && _c8o.probe.art === 'span' && _c8o.probe.alter > 0.85 && _c8o.probe.alter < 1.6) || !!_c8o.zuend;
+  _c8oHahn(ctx, _C8O_L, offenL);
+  _c8oHahn(ctx, _C8O_R, offenR);
+
+  // Kabel und Energiequelle
+  const strom = !!_c8o.fluss;
+  ctx.strokeStyle = strom ? '#334155' : '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(_C8O_L, 208); ctx.lineTo(_C8O_L, 228); ctx.lineTo(128, 228);
+  ctx.moveTo(_C8O_R, 208); ctx.lineTo(_C8O_R, 228); ctx.lineTo(172, 228); ctx.stroke();
+  ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1.5;
+  ctx.fillRect(128, 218, 44, 20); ctx.strokeRect(128, 218, 44, 20);
+  ctx.fillStyle = '#1e293b'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillRect(131, 227, 10, 2.5);                       // Minuszeichen gezeichnet
+  ctx.fillStyle = '#b91c1c'; ctx.fillRect(159, 227, 10, 2.5); ctx.fillRect(162.75, 223.25, 2.5, 10);
+  if (strom) {
+    // Punkte laufen langsam die Kabel entlang
+    ctx.fillStyle = '#f59e0b';
+    for (let k = 0; k < 3; k++) {
+      const u = (t * 0.6 + k / 3) % 1;
+      ctx.beginPath(); ctx.arc(128 - u * 28, 228, 2, 0, 2 * Math.PI); ctx.fill();
+      ctx.beginPath(); ctx.arc(172 + u * 28, 228, 2, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  ctx.font = 'bold 12px sans-serif'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#1e293b'; ctx.textAlign = 'right'; ctx.fillText('Minuspol', _C8O_L - 16, 232);
+  ctx.fillStyle = '#b91c1c'; ctx.textAlign = 'left'; ctx.fillText('Pluspol', _C8O_R + 16, 232);
+
+  // Uhr oben zwischen rechtem Rohr und Glas
+  ctx.save();
+  const ux = 300, uy = 24;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(ux, uy, 12, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const wh = _c8o.hand - Math.PI / 2;
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(wh) * 9, uy + Math.sin(wh) * 9); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = 'bold 12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(_c8oZeit(_c8o.min), 250, 47);
+  ctx.restore();
+
+  // Zähler an den Rohren
+  const ml = g => Math.floor(g + 1e-6);
+  _c8oZaehler(ctx, 44, 114, 'Gas: ' + ml(_c8o.gm) + ' ml', '#1e293b');
+  _c8oZaehler(ctx, 256, 114, 'Gas: ' + ml(_c8o.gp) + ' ml', '#b91c1c');
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(79, 114); ctx.lineTo(_C8O_L - _C8O_HB - 2, 114);
+  ctx.moveTo(221, 114); ctx.lineTo(_C8O_R + _C8O_HB + 2, 114); ctx.stroke();
+  if (_c8o.mark.m) _c8oMarkeZeichnen(ctx, 44, 140, 'plopp', '#fed7aa');
+  if (_c8o.mark.p) _c8oMarkeZeichnen(ctx, 256, 140, 'flammt auf', '#fef08a');
+
+  // Geschlossenes Glas mit Watesmo-Papier
+  const G = _C8O_GLAS;
+  ctx.save();
+  if (_c8o.wack > 0) ctx.translate(Math.sin(_c8o.wack * 60) * 1.5 * (_c8o.wack / 0.35), 0);
+  ctx.fillStyle = 'rgba(241,245,249,0.8)';
+  _bioFxRundRect(ctx, G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0, 10); ctx.fill();
+  if (_c8o.dunst > 0.01) {
+    ctx.fillStyle = 'rgba(203,213,225,' + (0.45 * _c8o.dunst).toFixed(3) + ')';
+    _bioFxRundRect(ctx, G.x0 + 2, G.y0 + 2, G.x1 - G.x0 - 4, G.y1 - G.y0 - 4, 9); ctx.fill();
+  }
+  // kurzer Blitz NUR im Glas (weicher Lichtfleck, einmal)
+  if (_c8o.zuend && _c8o.blitz > 0) {
+    const s = Math.sin(Math.PI * (1 - _c8o.blitz / 0.45));
+    const g = ctx.createRadialGradient(353, 110, 4, 353, 120, 60);
+    g.addColorStop(0, 'rgba(255,237,160,' + (0.75 * s).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(255,200,90,0)');
+    ctx.save(); _bioFxRundRect(ctx, G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0, 10); ctx.clip();
+    ctx.fillStyle = g; ctx.fillRect(G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0); ctx.restore();
+  }
+  // Papierstreifen: weiß → blau
+  const bl = _c8o.blau;
+  const r = Math.round(255 + (59 - 255) * bl), gg = Math.round(255 + (110 - 255) * bl), b = Math.round(255 + (214 - 255) * bl);
+  ctx.fillStyle = 'rgb(' + r + ',' + gg + ',' + b + ')'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.fillRect(378, 64, 13, 92); ctx.strokeRect(378, 64, 13, 92);
+  // Tropfen an der Glaswand
+  if (_c8o.tropfen > 0.01) {
+    ctx.fillStyle = 'rgba(96,165,250,' + (0.8 * _c8o.tropfen).toFixed(3) + ')';
+    const TR = [[312, 90], [315, 128], [311, 160], [318, 186], [396, 172], [394, 190], [314, 110], [397, 150], [320, 146], [312, 196]];
+    TR.forEach(([x, y], i) => {
+      const rr = (1.6 + (i % 3) * 0.7) * _c8o.tropfen;
+      const lauf = _c8o.gezuendet ? Math.min(6, ((t * 2 + i * 1.3) % 30) * 0.2) : 0;
+      ctx.beginPath(); ctx.ellipse(x, y + lauf, rr, rr * 1.35, 0, 0, 2 * Math.PI); ctx.fill();
+    });
+  }
+  // Glaswand und Deckel
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, G.x0, G.y0, G.x1 - G.x0, G.y1 - G.y0, 10); ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(G.x0 - 4, G.y0 - 8, G.x1 - G.x0 + 8, 9);
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(G.x0 + 8, G.y0 + 16); ctx.lineTo(G.x0 + 8, G.y1 - 20); ctx.stroke();
+  // Zünddrähte im Deckel
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(340, G.y0); ctx.lineTo(340, 80); ctx.moveTo(366, G.y0); ctx.lineTo(366, 80); ctx.stroke();
+  if (_c8o.funke > 0) {
+    ctx.strokeStyle = '#facc15'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(341, 80); ctx.lineTo(347, 76); ctx.lineTo(352, 83); ctx.lineTo(358, 77); ctx.lineTo(365, 80); ctx.stroke();
+  }
+  ctx.restore();
+  ctx.fillStyle = '#334155'; ctx.font = '11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Watesmo-Papier', 353, 217);
+  ctx.fillText('geschlossenes Glas', 353, 231);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(384, 207); ctx.lineTo(384, 158); ctx.stroke();
+  if (_c8o.tropfen > 0.5) {
+    ctx.save(); ctx.globalAlpha = _bioFxKlemme((_c8o.tropfen - 0.5) * 2);
+    ctx.fillStyle = '#1d4ed8'; ctx.textAlign = 'left'; ctx.fillText('Tropfen', 322, 98);
+    ctx.strokeStyle = '#60a5fa'; ctx.beginPath(); ctx.moveTo(320, 95); ctx.lineTo(314, 91); ctx.stroke();
+    ctx.restore();
+  }
+
+  // kleiner Lichtblitz an der Düse (nur bei der Flammenprobe)
+  if (!_c8o.zuend && _c8o.blitz > 0) {
+    const s = Math.sin(Math.PI * (1 - _c8o.blitz / 0.35));
+    const g = ctx.createRadialGradient(_C8O_L, 10, 1, _C8O_L, 10, 24);
+    g.addColorStop(0, 'rgba(255,240,180,' + (0.85 * s).toFixed(3) + ')');
+    g.addColorStop(1, 'rgba(255,190,90,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(_C8O_L, 10, 24, 0, 2 * Math.PI); ctx.fill();
+  }
+  if (_c8o.probe && _c8o.probe.art === 'flamme' && _c8o.probe.schritt === 1 && _c8o.probe.alter < 2.0) {
+    const a = 1 - _bioFxKlemme((_c8o.probe.alter - 1.4) / 0.6);
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.fillStyle = '#c2410c'; ctx.font = 'italic bold 14px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('plopp', _C8O_L + 12, 12 + (_c8o.probe.alter - 0.9) * -6 + 6);
+    ctx.restore();
+  }
+  _c8oProbeZeichnen(ctx);
+
+  _bioFxAlleDraw(ctx, _c8o.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FOERDER · cw3 (Kennung chem-eis)
+// Links ein Messzylinder mit genau 1000 g Wasser auf einer Waage, daneben
+// ein Thermometer, rechts davon eine Lupe auf den oberen Teil der Skala und
+// ein kleines Teilchenbild (ohne Beschriftung); ganz rechts ein Glas Wasser.
+// Das Kind stellt die „Temperatur“ um (20 °C · 4 °C · 0 °C, gefroren) und
+// liest Waage und Volumen ab.
+// Modellwerte (Lehrerteil): 20 °C → 1002 ml (0,998 g/ml), 4 °C → 1000 ml
+// (1,000 g/ml), Eis → 1090 ml (0,917 g/ml, gerundet). Die Waage zeigt immer
+// 1000 g. Im Glas taucht das Eis so tief ein, dass es 1000 g Wasser
+// verdraengt: 1002 ml von 1090 ml unter Wasser, 88 ml (etwa 8 %) ragen heraus.
+// Aha (nach der Beobachtung, Bibliothek _bioFx): Beim Gefrieren wird der
+// Inhalt weiss, Kristallnadeln wachsen von der Wand, die Zahl rollt von
+// 1000 auf 1090 ml, und der Spiegel steigt in der Lupe sichtbar ueber die
+// orange Marke 1000 ml. Danach ein Lichtring an der Marke, Eisglitzer am
+// neuen Spiegel, die Waagenanzeige leuchtet ruhig auf, und ein Streifen
+// sagt, was man gerade gesehen hat. Beim Eis im Glas: es taucht ganz unter
+// und kommt wieder hoch. Keine Lueckenwoerter aus Merksatz und Aufgabe 2
+// am Bildschirm (Liste in sim_plan). Nichts blinkt, kein
+// Ton, keine Wertung, Teilchen werden nicht vermenschlicht.
+// ═══════════════════════════════════════════════════════════════════════
+let _c8p = null;
+const _C8P_VOL = { '20': 1002, '4': 1000, '0': 1090 };      // ml je 1000 g
+const _C8P_TEMP = { '20': 20, '4': 4, '0': 0 };
+const _C8P_WORT = { '20': '20 °C', '4': '4 °C', '0': '0 °C, gefroren' };
+const _C8P_MASSE = 1000;                                       // g, immer
+// Messzylinder (Hauptbild)
+const _C8P_ZX0 = 54, _C8P_ZX1 = 92, _C8P_ZY0 = 206, _C8P_PXML = 0.14;
+// Lupe: Ausschnitt 985 … 1112 ml
+const _C8P_LX0 = 128, _C8P_LX1 = 214, _C8P_LY0 = 38, _C8P_LY1 = 196;
+const _C8P_LV0 = 985, _C8P_LV1 = 1112;
+// Glas rechts
+const _C8P_GX0 = 316, _C8P_GX1 = 402, _C8P_GY1 = 226, _C8P_GSP = 150;
+const _C8P_EB = 40, _C8P_EH = 46;                              // Eisstueck
+const _C8P_EINTAUCH = 1002 / 1090;                             // Anteil unter Wasser
+// Teilchenbild
+const _C8P_TX = 264, _C8P_TY = 96, _C8P_TR = 38;
+
+function _c8pZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+// Teilchen: gefroren auf einem Wabengitter mit Luecken, fluessig dichter und
+// ungeordnet. Beide Listen gleich lang, damit der Uebergang gleitet.
+function _c8pTeilchenBau() {
+  const b = 10.5, a = b * Math.sqrt(3), ice = [];
+  // Wabengitter: Ecken regelmaessiger Sechsecke, die Mitten bleiben leer (Luecken)
+  for (let j = -4; j <= 4; j++) for (let i = -4; i <= 4; i++) {
+    const cx = i * a + j * a / 2, cy = j * a * Math.sqrt(3) / 2;
+    for (let k = 0; k < 6; k++) {
+      const w = Math.PI / 6 + k * Math.PI / 3;
+      const x = cx + b * Math.cos(w), y = cy + b * Math.sin(w);
+      if (Math.hypot(x, y) > _C8P_TR + 5) continue;
+      if (ice.some(q => Math.hypot(q[0] - x, q[1] - y) < 2)) continue;
+      ice.push([x, y]);
+    }
+  }
+  // fluessig: dieselben Teilchen enger und verrutscht (ungeordnet, dicht)
+  const z = _c8pZufall(31);
+  const flu = ice.map(p => [p[0] * 0.86 + (z() - 0.5) * 7, p[1] * 0.86 + (z() - 0.5) * 7]);
+  const phase = ice.map(() => [z() * 6.28, z() * 6.28, 0.8 + z() * 1.2, 0.8 + z() * 1.2]);
+  return { ice, flu, phase };
+}
+
+// Kristallnadeln fuer den gefrierenden Zylinder (fest verteilt)
+function _c8pNadelnBau() {
+  const z = _c8pZufall(77), n = [];
+  for (let i = 0; i < 26; i++) {
+    const links = i % 2 === 0;
+    n.push({ links, v: 40 + z() * 950, w: (z() - 0.5) * 1.2, l: 8 + z() * 14, d: z() * 0.5 });
+  }
+  return n;
+}
+
+function _c8pInit() {
+  _c8p = {
+    t: 0, ziel: '20', T: 20, V: 1002, E: 0,          // angezeigte Werte
+    kf: null, kt: 0, art: '',                         // laufender Uebergang
+    fx: { teile: [] }, nach: -1, schritt: 0, wg: -1,  // Effekte danach
+    eis: null, glasText: 'Im Glas ist Wasser.',
+    tb: _c8pTeilchenBau(), nadeln: _c8pNadelnBau(), letzt: ''
+  };
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _c8pTemp(w) {
+  if (!_c8p || !_C8P_VOL[w]) return;
+  if (w === _c8p.ziel && !_c8p.kf) { _c8pStatus(); return; }
+  _c8p.ziel = w;
+  const a = { t: 0, T: _c8p.T, V: _c8p.V, E: _c8p.E };
+  const tT = _C8P_TEMP[w], tV = _C8P_VOL[w], kf = [a];
+  if (w === '0') {
+    // erst auf 0 °C abkuehlen, dann gefrieren (Volumen waechst mit dem Eis)
+    const dA = a.E > 0 ? 0.1 : 0.2 + 0.3 * Math.min(1, a.T / 20);
+    const vA = a.E > 0 ? a.V : 1000;
+    kf.push({ t: dA, T: 0, V: vA, E: a.E });
+    kf.push({ t: dA + 1.3 * (1 - a.E) + 0.05, T: 0, V: 1090, E: 1 });
+    _c8p.art = 'gefrieren';
+  } else {
+    let t0 = 0;
+    if (a.E > 0) { t0 = 0.2 + 0.7 * a.E; kf.push({ t: t0, T: 0, V: 1000, E: 0 }); _c8p.art = 'tauen'; }
+    else _c8p.art = tT < a.T ? 'kuehlen' : 'waermen';
+    kf.push({ t: t0 + 0.8, T: tT, V: tV, E: 0 });
+  }
+  _c8p.kf = kf; _c8p.kt = 0;
+  _c8p.nach = -1; _c8p.schritt = 0; _c8p.wg = -1;
+  _c8p.fx.banner = null; _c8p.fx.stempel = null;
+  _c8pStatus();
+}
+function _c8pEis() {
+  if (!_c8p) return;
+  if (_c8p.ziel !== '0') {
+    _c8p.eis = null;
+    _c8p.glasText = 'Stelle zuerst „Temperatur“ auf „0 °C, gefroren“.';
+    _c8pStatus();
+    return;
+  }
+  _c8p.eis = { t: 0, unter: false, hoch: false, fertig: false, y: -20 };
+  _c8p.glasText = 'Das Eis fällt ins Glas …';
+  _c8pStatus();
+}
+function _c8pNeu() {
+  if (!_c8p) return;
+  const tb = _c8p.tb, nd = _c8p.nadeln;
+  _c8pInit();
+  _c8p.tb = tb; _c8p.nadeln = nd;
+  _c8pStatus();
+}
+
+function _c8pHTML() {
+  const k = (w) => `<button class="sim-btn" data-c8p="${w}" onclick="_c8pTemp('${w}')">${_C8P_WORT[w]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wasser wird zu Eis</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Messzylinder sind genau 1000 g Wasser. Er steht auf einer Waage. Stelle die „Temperatur“ um. Lies dann die Waage und das Volumen ab.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8p-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Temperatur</span>
+          ${k('20')}
+          ${k('4')}
+          ${k('0')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_c8p-eis" onclick="_c8pEis()">Eis in ein Glas Wasser legen</button>
+          <button class="sim-btn" onclick="_c8pNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Messzylinder</div>
+        <div class="lmp-status on" id="_c8p-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Glas</div>
+        <div class="lmp-status on" id="_c8p-glas" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Das Volumen steht groß unter der Lupe. Die Lupe zeigt den oberen Teil der Skala. Die orange Linie ist die Marke 1000 ml.</div>
+        <div class="fpm-note" style="margin-top:6px">„Eis in ein Glas Wasser legen“ geht nur bei „0 °C, gefroren“.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 20 °C &nbsp;|&nbsp; Die Waage zeigt die Masse, der Messzylinder das Volumen.</p>
+  </div>`;
+}
+
+function _c8pZeile() {
+  const a = _c8p.art;
+  if (_c8p.kf) {
+    if (a === 'gefrieren') return _c8p.T > 0.5 ? 'Das Wasser kühlt ab …' : 'Das Wasser gefriert …';
+    if (a === 'tauen') return 'Das Eis taut …';
+    if (a === 'kuehlen') return 'Das Wasser kühlt ab …';
+    return 'Das Wasser wird wärmer …';
+  }
+  return 'Temperatur: ' + _C8P_WORT[_c8p.ziel] + ' · Waage: ' + _C8P_MASSE + ' g, Volumen: ' +
+    _C8P_VOL[_c8p.ziel] + ' ml';
+}
+function _c8pStatus() {
+  if (!_c8p) return;
+  const z = _c8pZeile();
+  _c8p.letzt = z;
+  const el = document.getElementById('_c8p-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const g = document.getElementById('_c8p-glas');
+  if (g) { g.textContent = _c8p.glasText; g.className = 'lmp-status on'; }
+  try {
+    document.querySelectorAll('[data-c8p]').forEach(b => {
+      const w = b.dataset ? b.dataset.c8p : b.getAttribute('data-c8p');
+      if (b.classList) b.classList.toggle('primary', w === _c8p.ziel);
+    });
+    const e = document.getElementById('_c8p-eis');
+    if (e && e.classList) e.classList.toggle('primary', _c8p.ziel === '0' && !_c8p.kf);
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Rechnen ─────────────────────────────────────────────────────────── */
+function _c8pUpdate(dt) {
+  if (!_c8p) return;
+  dt = _bioFxDt(dt);
+  _c8p.t += dt;
+  if (_c8p.kf) {
+    _c8p.kt += dt;
+    const kf = _c8p.kf, t = _c8p.kt;
+    let i = 1;
+    while (i < kf.length - 1 && t > kf[i].t) i++;
+    const a = kf[i - 1], b = kf[i];
+    const u = _bioFxEase.sanft(_bioFxKlemme((t - a.t) / Math.max(1e-6, b.t - a.t)));
+    const uv = b.E !== a.E ? _bioFxKlemme((t - a.t) / Math.max(1e-6, b.t - a.t)) : u;
+    _c8p.T = a.T + (b.T - a.T) * u;
+    _c8p.E = a.E + (b.E - a.E) * uv;
+    _c8p.V = a.V + (b.V - a.V) * uv;
+    if (t >= kf[kf.length - 1].t) {
+      const w = _c8p.ziel;
+      _c8p.T = _C8P_TEMP[w]; _c8p.V = _C8P_VOL[w]; _c8p.E = w === '0' ? 1 : 0;
+      _c8p.kf = null; _c8p.nach = 0; _c8p.schritt = 0;
+      _c8pStatus();
+    } else if (_c8pZeile() !== _c8p.letzt) _c8pStatus();
+    // waehrend des Gefrierens: leises Glitzern an der wachsenden Eisgrenze
+    if (_c8p.art === 'gefrieren' && _c8p.E > 0.02 && _c8p.E < 0.99 && Math.random() < dt * 5) {
+      const y = _C8P_ZY0 - 30 - Math.random() * 100;
+      _bioFxFunken(_c8p.fx.teile, _C8P_ZX0 + 4 + Math.random() * 30, y, 1, ['#ffffff', '#dbeafe']);
+    }
+  } else if (_c8p.nach >= 0) {
+    _c8p.nach += dt;
+    _c8pNachher();
+  }
+  if (_c8p.wg >= 0) { _c8p.wg += dt; if (_c8p.wg > 2.4) _c8p.wg = -1; }
+  if (_c8p.eis) _c8pEisUpdate(dt);
+  _bioFxAlleUpdate(_c8p.fx, dt);
+}
+
+// y-Wert eines Volumens im Hauptbild und in der Lupe
+function _c8pYZyl(v) { return _C8P_ZY0 - v * _C8P_PXML; }
+function _c8pYLupe(v) {
+  return _C8P_LY1 - (v - _C8P_LV0) * (_C8P_LY1 - _C8P_LY0) / (_C8P_LV1 - _C8P_LV0);
+}
+const _C8P_LZX0 = 160, _C8P_LZX1 = 210;          // Zylinderwand in der Lupe
+
+// Nach der Beobachtung: erst hinsehen, dann bestaetigt der Effekt.
+function _c8pNachher() {
+  const fx = _c8p.fx, t = _c8p.nach, a = _c8p.art;
+  const lm = (_C8P_LZX0 + _C8P_LZX1) / 2;
+  if (a === 'gefrieren') {
+    if (_c8p.schritt === 0) {
+      _c8p.schritt = 1;
+      _bioFxWelle(fx.teile, lm, _c8pYLupe(1000), '#fb923c', 34);
+      _bioFxFunken(fx.teile, lm, _c8pYLupe(1090), 10, ['#ffffff', '#dbeafe', '#bfdbfe']);
+      _bioFxWelle(fx.teile, (_C8P_ZX0 + _C8P_ZX1) / 2, _c8pYZyl(1090), '#e0f2fe', 26);
+    }
+    if (_c8p.schritt === 1 && t >= 0.6) {
+      _c8p.schritt = 2;
+      _bioFxBanner(fx, 'Der Spiegel steigt über die Marke 1000 ml.', 3.0, '#fb923c');
+    }
+    if (_c8p.schritt === 2 && t >= 1.2) { _c8p.schritt = 3; _c8p.wg = 0; }
+    if (_c8p.schritt === 3 && t >= 3.7) {
+      _c8p.schritt = 4;
+      _bioFxBanner(fx, 'Die Waage zeigt dasselbe wie vorher.', 2.8, '#86efac');
+    }
+  } else if (a === 'kuehlen' || a === 'waermen' || a === 'tauen') {
+    if (_c8p.schritt === 0) {
+      _c8p.schritt = 1;
+      _bioFxWelle(fx.teile, lm, _c8pYLupe(_c8p.V), '#60a5fa', 26);
+    }
+  }
+}
+
+// Eisstueck im Glas: faellt, taucht ganz unter, kommt wieder hoch, bleibt oben.
+function _c8pGlasSpiegel(e) {
+  if (!e) return _C8P_GSP;
+  const unten = e.y, d = Math.max(0, Math.min(_C8P_EH, unten - (e.sp || _C8P_GSP)));
+  return _C8P_GSP - d * 0.2;                       // verdraengtes Wasser hebt den Spiegel
+}
+function _c8pEisUpdate(dt) {
+  const e = _c8p.eis, fx = _c8p.fx;
+  e.t += dt;
+  const sp = _c8pGlasSpiegel(e); e.sp = sp;
+  const gl = sp + _C8P_EH * _C8P_EINTAUCH;         // Unterkante im Gleichgewicht
+  const tief = sp + _C8P_EH + 14;                  // ganz unter Wasser
+  const t = e.t, mx = (_C8P_GX0 + _C8P_GX1) / 2;
+  if (t < 0.35) {
+    const u = _bioFxEase.rein(t / 0.35);
+    e.y = 20 + (_C8P_GSP - 20) * u;
+  } else if (t < 0.75) {
+    if (!e.unter) {
+      e.unter = true;
+      _bioFxWelle(fx.teile, mx, sp, '#bfdbfe', 40);
+      _bioFxBlasen(fx.teile, mx, sp + 30, 6, 'rgba(255,255,255,0.9)');
+    }
+    const u = _bioFxEase.raus((t - 0.35) / 0.4);
+    e.y = _C8P_GSP + (tief - _C8P_GSP) * u;
+  } else {
+    const tau = t - 0.75;
+    const aus = 1 - _bioFxKlemme((tau - 0.8) / 0.25);
+    e.y = gl + (tief - gl) * Math.exp(-3.2 * tau) * Math.cos(5.5 * tau) * aus;
+    if (!e.hoch && e.y - _C8P_EH < sp - 1) {
+      e.hoch = true;
+      _bioFxBlasen(fx.teile, mx, sp + 10, 5, 'rgba(255,255,255,0.9)');
+      _bioFxBanner(fx, 'Das Eis kommt wieder hoch!', 2.2, '#93c5fd');
+    }
+    if (!e.fertig && t >= 1.8) {
+      e.fertig = true;
+      _bioFxWelle(fx.teile, mx, sp - 2, '#fde68a', 30);
+      _c8p.glasText = 'Das Eis bleibt oben. Ein kleines Stück ragt heraus.';
+      _c8pStatus();
+    }
+    if (e.fertig) e.y = gl + Math.sin(_c8p.t * 1.4) * 0.6;
+  }
+}
+
+/* ── Zeichnen ─────────────────────────────────────────────────────────── */
+function _c8pMisch(a, b, u) {
+  u = Math.max(0, Math.min(1, u));
+  return 'rgba(' + [0, 1, 2, 3].map(i => {
+    const v = a[i] + (b[i] - a[i]) * u; return i === 3 ? v.toFixed(3) : Math.round(v);
+  }).join(',') + ')';
+}
+const _C8P_WASSER = [96, 165, 250, 0.55], _C8P_EISF = [252, 253, 255, 1];
+
+function _c8pThermo(ctx) {
+  const x = 18, y0 = 44, y1 = 186;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x - 5, y0, 10, y1 - y0, 5); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(x, y1 + 8, 9, 0, 2 * Math.PI); ctx.fillStyle = '#ef4444'; ctx.fill(); ctx.stroke();
+  // Skala: 0 °C bei y 168, je Grad 5 px
+  const y = T => 168 - T * 5;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let T = 0; T <= 24; T += 4) { ctx.beginPath(); ctx.moveTo(x + 5, y(T)); ctx.lineTo(x + 9, y(T)); ctx.stroke(); }
+  const top = y(_c8p.T) + Math.sin(_c8p.t * 2) * 0.3;
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(x - 2, top, 4, y1 + 2 - top);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(Math.round(_c8p.T) + ' °C', x + 2, 34);
+}
+
+function _c8pWaage(ctx) {
+  const x0 = 36, x1 = 116, y0 = 210, y1 = 240;
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(x0 + 4, y0 - 4, x1 - x0 - 8, 5);   // Teller
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 5); ctx.fill(); ctx.stroke();
+  if (_c8p.wg >= 0) {
+    const a = Math.sin(Math.PI * _bioFxKlemme(_c8p.wg / 2.4));
+    ctx.save(); ctx.globalAlpha = a; _bioFxLeuchten(ctx, 76, 225, 22, _c8p.t, '134,239,172'); ctx.restore();
+  }
+  ctx.fillStyle = '#1f2937';
+  _bioFxRundRect(ctx, 50, 215, 52, 20, 3); ctx.fill();
+  ctx.fillStyle = '#86efac'; ctx.font = '700 13px monospace'; ctx.textAlign = 'center';
+  ctx.fillText(_C8P_MASSE + ' g', 76, 230);
+}
+
+function _c8pZylinder(ctx) {
+  const x0 = _C8P_ZX0, x1 = _C8P_ZX1, yb = _C8P_ZY0, ytop = 36;
+  const E = _c8p.E, ys = _c8pYZyl(_c8p.V);
+  // Fuss
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x0 - 10, yb + 2); ctx.lineTo(x1 + 10, yb + 2); ctx.lineTo(x1 + 6, yb - 3); ctx.lineTo(x0 - 6, yb - 3); ctx.closePath(); ctx.fill(); ctx.stroke();
+  // Inhalt
+  ctx.save();
+  ctx.beginPath(); ctx.rect(x0, ytop, x1 - x0, yb - 3 - ytop); ctx.clip();
+  ctx.fillStyle = _c8pMisch(_C8P_WASSER, _C8P_EISF, E);
+  ctx.fillRect(x0, ys, x1 - x0, yb - ys);
+  if (E < 0.98) {                                   // Glanz auf der Wasseroberflaeche
+    const g = (Math.sin(_c8p.t * 1.3) + 1) / 2;
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.5 * (1 - E)).toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x0 + 3 + g * 10, ys + 1.5); ctx.lineTo(x0 + 13 + g * 10, ys + 1.5); ctx.stroke();
+  }
+  if (E > 0.02) {                                   // Oberkante des Eises
+    ctx.strokeStyle = 'rgba(71,85,105,' + E.toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x0, ys); ctx.lineTo(x1, ys); ctx.stroke();
+  }
+  // Kristallnadeln wachsen von der Wand nach innen
+  if (E > 0) {
+    ctx.strokeStyle = 'rgba(147,197,253,0.95)'; ctx.lineWidth = 1.2;
+    for (const n of _c8p.nadeln) {
+      const vy = _c8pYZyl(n.v * (_c8p.V / 1000));
+      if (vy < ys + 2) continue;
+      const s = _bioFxKlemme(E * 1.6 - n.d);
+      if (s <= 0) continue;
+      const bx = n.links ? x0 : x1, dir = n.links ? 1 : -1, L = n.l * s;
+      const ex = bx + dir * L * Math.cos(n.w), ey = vy + L * Math.sin(n.w);
+      ctx.beginPath(); ctx.moveTo(bx, vy); ctx.lineTo(ex, ey); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(bx + dir * L * 0.5, vy + L * 0.5 * Math.sin(n.w));
+      ctx.lineTo(bx + dir * L * 0.5 + dir * 4 * s, vy + L * 0.5 * Math.sin(n.w) - 4 * s); ctx.stroke();
+    }
+  }
+  ctx.restore();
+  // Skala: alle 100 ml ein Strich, Beschriftung 200 … 1000; 1000 ml orange
+  ctx.lineWidth = 1; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  for (let v = 100; v <= 1100; v += 100) {
+    const y = _c8pYZyl(v), gross = v % 200 === 0;
+    ctx.strokeStyle = v === 1000 ? '#f97316' : '#475569'; ctx.lineWidth = v === 1000 ? 2 : 1;
+    ctx.beginPath(); ctx.moveTo(x1 - (gross ? 12 : 7), y); ctx.lineTo(x1, y); ctx.stroke();
+    if (gross && v < 1100) { ctx.fillStyle = v === 1000 ? '#c2410c' : '#475569'; ctx.fillText(String(v), x1 + 3, y + 3); }
+  }
+  // Glaswand
+  ctx.strokeStyle = 'rgba(100,116,139,0.95)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0, ytop); ctx.lineTo(x0, yb - 3); ctx.moveTo(x1, ytop); ctx.lineTo(x1, yb - 3); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0 - 3, ytop); ctx.lineTo(x1 + 3, ytop); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x0 + 5, ytop + 10); ctx.lineTo(x0 + 5, yb - 14); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '8px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('ml', x1 + 3, ytop + 6);
+}
+
+function _c8pLupe(ctx) {
+  const X0 = _C8P_LX0, X1 = _C8P_LX1, Y0 = _C8P_LY0, Y1 = _C8P_LY1;
+  const zx0 = _C8P_LZX0, zx1 = _C8P_LZX1;
+  // Verbindungslinien zum Zylinder (Ausschnitt 985 … 1112 ml)
+  ctx.save();
+  ctx.strokeStyle = 'rgba(100,116,139,0.6)'; ctx.lineWidth = 1;
+  if (ctx.setLineDash) ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(_C8P_ZX1 + 1, _c8pYZyl(_C8P_LV1)); ctx.lineTo(X0, Y0);
+  ctx.moveTo(_C8P_ZX1 + 1, _c8pYZyl(_C8P_LV0)); ctx.lineTo(X0, Y1);
+  ctx.stroke();
+  ctx.restore();
+  ctx.save();
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, X0, Y0, X1 - X0, Y1 - Y0, 8); ctx.fill(); ctx.stroke();
+  _bioFxRundRect(ctx, X0, Y0, X1 - X0, Y1 - Y0, 8); ctx.clip();
+  ctx.fillStyle = '#dde6ef'; ctx.fillRect(zx0, Y0, zx1 - zx0, Y1 - Y0);   // Luft im Zylinder
+  // Inhalt in der Lupe
+  const ys = _c8pYLupe(_c8p.V), E = _c8p.E;
+  ctx.fillStyle = _c8pMisch(_C8P_WASSER, _C8P_EISF, E);
+  ctx.fillRect(zx0, ys, zx1 - zx0, Y1 - ys);
+  if (E < 0.98) {                                   // Wasserspiegel mit leichter Wellung
+    ctx.strokeStyle = 'rgba(37,99,235,' + (0.8 * (1 - E)).toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    for (let x = zx0; x <= zx1; x += 3) {
+      const y = ys + Math.sin(x * 0.35 + _c8p.t * 3) * 0.6 * (1 - E) + (Math.abs(x - (zx0 + zx1) / 2) > 18 ? -1.5 : 0);
+      if (x === zx0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  if (E > 0.02) {                                   // Oberkante des Eises
+    ctx.strokeStyle = 'rgba(71,85,105,' + E.toFixed(3) + ')'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(zx0, ys); ctx.lineTo(zx1, ys); ctx.stroke();
+  }
+  if (E > 0) {                                      // Eis: Kristallmuster
+    ctx.strokeStyle = 'rgba(96,165,250,' + (0.8 * E).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    for (let k = 0; k < 7; k++) {
+      const yy = ys + 10 + k * 22, xx = zx0 + 8 + (k * 13) % 30;
+      if (yy > Y1) break;
+      ctx.beginPath(); ctx.moveTo(xx, yy); ctx.lineTo(xx + 8, yy + 6); ctx.lineTo(xx + 16, yy + 2);
+      ctx.moveTo(xx + 8, yy + 6); ctx.lineTo(xx + 9, yy + 14); ctx.stroke();
+    }
+  }
+  // Zylinderwand in der Lupe
+  ctx.strokeStyle = 'rgba(100,116,139,0.95)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(zx0, Y0); ctx.lineTo(zx0, Y1); ctx.moveTo(zx1, Y0); ctx.lineTo(zx1, Y1); ctx.stroke();
+  // Skala: Striche alle 5 ml, Zahlen alle 50 ml
+  ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
+  for (let v = 990; v <= 1100; v += 5) {
+    const y = _c8pYLupe(v), zehn = v % 10 === 0, fuenfzig = v % 50 === 0;
+    const L = fuenfzig ? 22 : zehn ? 13 : 7;
+    ctx.strokeStyle = v === 1000 ? '#f97316' : '#475569';
+    ctx.lineWidth = v === 1000 ? 2.5 : fuenfzig ? 1.5 : 1;
+    ctx.beginPath(); ctx.moveTo(zx0, y); ctx.lineTo(zx0 + L, y); ctx.stroke();
+    if (fuenfzig) { ctx.fillStyle = v === 1000 ? '#c2410c' : '#334155'; ctx.fillText(String(v), zx0 - 3, y + 3); }
+  }
+  // Marke 1000 ml ganz ueber die Breite (gestrichelt), damit man sie auch im Eis sieht
+  ctx.strokeStyle = 'rgba(249,115,22,0.8)'; ctx.lineWidth = 1.5;
+  if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(zx0, _c8pYLupe(1000)); ctx.lineTo(zx1, _c8pYLupe(1000)); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  ctx.restore();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Lupe', X0 + 2, Y0 - 5);
+  ctx.font = '9px sans-serif'; ctx.fillText('in ml', X0 + 30, Y0 - 5);
+}
+
+function _c8pVolumenZahl(ctx) {
+  const x0 = 122, y0 = 204, w = 150, h = 32;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x0, y0, w, h, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Volumen: ' + Math.round(_c8p.V) + ' ml', x0 + w / 2, y0 + 22);
+}
+
+function _c8pTeilchen(ctx) {
+  const tb = _c8p.tb, E = _bioFxEase.sanft(_c8p.E), t = _c8p.t;
+  const cx = _C8P_TX, cy = _C8P_TY, R = _C8P_TR;
+  ctx.save();
+  ctx.fillStyle = '#f1f5f9'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx, cy, R - 1, 0, 2 * Math.PI); ctx.clip();
+  const warm = _c8p.T / 20;                         // 20 °C wackelt mehr als 4 °C
+  const amp = (2.2 + 2.0 * warm) * (1 - E) + 0.6 * E;
+  const dreh = t * (0.10 + 0.12 * warm) * (1 - E);  // langsames Durchmischen
+  // Bindungen im Gitter, wenn gefroren
+  if (E > 0.6) {
+    ctx.strokeStyle = 'rgba(148,163,184,' + ((E - 0.6) * 1.5).toFixed(3) + ')'; ctx.lineWidth = 1;
+    for (let i = 0; i < tb.ice.length; i++) for (let j = i + 1; j < tb.ice.length; j++) {
+      const a = tb.ice[i], b = tb.ice[j];
+      if (Math.hypot(a[0] - b[0], a[1] - b[1]) < 11.5) {
+        ctx.beginPath(); ctx.moveTo(cx + a[0], cy + a[1]); ctx.lineTo(cx + b[0], cy + b[1]); ctx.stroke();
+      }
+    }
+  }
+  ctx.fillStyle = '#2563eb';
+  for (let i = 0; i < tb.ice.length; i++) {
+    const f = tb.flu[i] || tb.ice[i], g = tb.ice[i], ph = tb.phase[i];
+    const c = Math.cos(dreh), s = Math.sin(dreh);
+    const fx = f[0] * c - f[1] * s, fy = f[0] * s + f[1] * c;
+    let x = fx + (g[0] - fx) * E, y = fy + (g[1] - fy) * E;
+    x += Math.sin(t * ph[2] * 3 + ph[0]) * amp; y += Math.cos(t * ph[3] * 3 + ph[1]) * amp;
+    ctx.beginPath(); ctx.arc(cx + x, cy + y, 3.6, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+
+function _c8pGlas(ctx) {
+  const X0 = _C8P_GX0, X1 = _C8P_GX1, Yb = _C8P_GY1, Yt = 80;
+  const e = _c8p.eis, sp = _c8pGlasSpiegel(e);
+  const mx = (X0 + X1) / 2;
+  // Eisstueck (hinter dem Wasser gezeichnet, damit der Teil unter Wasser blau wirkt)
+  if (e) {
+    const unten = e.y, oben = unten - _C8P_EH, l = mx - _C8P_EB / 2 - 4;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(X0 - 20, -60, X1 - X0 + 40, Yb - 2 + 60); ctx.clip();
+    ctx.fillStyle = 'rgba(224,242,254,0.95)'; ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 1.2;
+    ctx.fillRect(l, oben, _C8P_EB, _C8P_EH); ctx.strokeRect(l, oben, _C8P_EB, _C8P_EH);
+    // Oberseite schraeg (Wuerfel von oben gesehen)
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.moveTo(l, oben); ctx.lineTo(l + 8, oben - 6); ctx.lineTo(l + _C8P_EB + 8, oben - 6);
+    ctx.lineTo(l + _C8P_EB, oben); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#bae6fd';
+    ctx.beginPath(); ctx.moveTo(l + _C8P_EB, oben); ctx.lineTo(l + _C8P_EB + 8, oben - 6);
+    ctx.lineTo(l + _C8P_EB + 8, unten - 6); ctx.lineTo(l + _C8P_EB, unten); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(l + 6, oben + 6); ctx.lineTo(l + 6, oben + 20); ctx.stroke();
+    ctx.restore();
+  }
+  // Wasser (halb durchsichtig, vorne)
+  ctx.fillStyle = 'rgba(96,165,250,0.45)';
+  ctx.beginPath(); ctx.moveTo(X0 + 2, sp);
+  for (let x = X0 + 2; x <= X1 - 2; x += 4) ctx.lineTo(x, sp + Math.sin(x * 0.2 + _c8p.t * 2.4) * 0.8);
+  ctx.lineTo(X1 - 2, Yb - 2); ctx.lineTo(X0 + 2, Yb - 2); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(37,99,235,0.7)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(X0 + 2, sp);
+  for (let x = X0 + 2; x <= X1 - 2; x += 4) ctx.lineTo(x, sp + Math.sin(x * 0.2 + _c8p.t * 2.4) * 0.8);
+  ctx.stroke();
+  // Hinweisring um das Stueck, das herausragt (ruhig, 0,8 Hz)
+  if (e && e.fertig && e.t < 5) {
+    ctx.save(); ctx.globalAlpha = 1 - _bioFxKlemme((e.t - 3.5) / 1.5);
+    _bioFxLeuchten(ctx, mx, sp - 5, 13, _c8p.t, '253,230,138');
+    ctx.restore();
+  }
+  // Glaswand
+  ctx.strokeStyle = 'rgba(100,116,139,0.95)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(X0, Yt); ctx.lineTo(X0 + 3, Yb); ctx.lineTo(X1 - 3, Yb); ctx.lineTo(X1, Yt); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.7)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(X0 + 7, Yt + 10); ctx.lineTo(X0 + 9, Yb - 12); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Glas mit Wasser', mx, Yb + 16);
+}
+
+function _c8pDraw(ctx, cv) {
+  if (!_c8p) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  const kalt = _c8p.E > 0.5 || _c8p.T < 2;
+  bg.addColorStop(0, kalt ? '#eef6fc' : '#f8fafc'); bg.addColorStop(1, kalt ? '#d6e8f5' : '#e5edf5');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tischkante
+  ctx.fillStyle = '#d6c3a1'; ctx.fillRect(0, 240, W, H - 240);
+  _c8pThermo(ctx);
+  _c8pZylinder(ctx);
+  _c8pWaage(ctx);
+  _c8pLupe(ctx);
+  _c8pTeilchen(ctx);
+  _c8pVolumenZahl(ctx);
+  _c8pGlas(ctx);
+  _bioFxAlleDraw(ctx, _c8p.fx);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// CHEMIE 8 FÖRDER · GENUG SALZ IM WASSER   (Förderheft Chemie 8 · cw4)
+// Ein Becherglas mit 1 l Wasser bei 20 °C, daneben eine Schale mit Kochsalz
+// und ein Rührstab. Das Kind wählt 100 g, 300 g, 400 g oder 500 g und drückt
+// „▶ Salz einrühren“: Die Schale kippt, das Salz rieselt etwa 4 s ins Wasser,
+// der Rührstab dreht sich. Solange das Wasser noch Salz aufnimmt, werden die
+// Körner im Wasser kleiner und verschwinden aus dem Bild; danach sinken sie
+// und bleiben am Boden liegen.
+// Modellwert (Lehrerteil): 360 g Kochsalz je 1 l Wasser bei 20 °C. Ein Korn
+// im Bild steht für 5 g. Anzeige „am Boden“: eingerührt − 360 g, mindestens 0.
+// Werte: 100 g → 0 g · 300 g → 0 g · 400 g → 40 g · 500 g → 140 g.
+// NICHT am Bildschirm: „gelöst: … g“, die Zahl 360 (auch nicht 240), die
+// Wörter „gesättigt“ und „Löslichkeit“.
+// Aha (Bibliothek _bioFx, kurz, ruhig, keine Wertung): Beim ersten Korn, das
+// nicht mehr kleiner wird, läuft kurz eine Zeitlupe, ein Lichtkranz folgt dem
+// Korn bis zum Boden: „Dieses Korn bleibt liegen.“ Rechts wächst nach jedem
+// Versuch ein Balken (blau = im Wasser, weiß = am Boden). Stehen zwei Balken
+// mit weißem Teil da, verbindet eine Linie die blauen Teile: gleich hoch –
+// die Zahl dazu rechnet das Kind selbst (Schritt d).
+// ═══════════════════════════════════════════════════════════════════════
+let _c8q = null;
+const _C8Q_WERTE = [100, 300, 400, 500];
+const _C8Q_GRENZE = 360;          // g je 1 l Wasser bei 20 °C (Modellwert, nie angezeigt)
+const _C8Q_KORN = 5;              // g je gezeichnetem Korn
+const _C8Q_HEBEN = 0.5;           // s: Schale zum Becherglas heben
+const _C8Q_RIESELN = 3.6;         // s: Salz rieselt
+const _C8Q_ZURUECK = 0.5;         // s: Schale zurückstellen
+// Becherglas
+const _C8Q_BX0 = 112, _C8Q_BX1 = 248, _C8Q_BTOP = 60, _C8Q_BBOT = 212, _C8Q_WY = 100;
+const _C8Q_CX = 180;
+
+function _c8qZufall(seed) {
+  let s = seed >>> 0;
+  return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+}
+
+function _c8qInit() {
+  // Plätze am Boden: in der Mitte zuerst, so wächst ein flacher Haufen
+  const plaetze = [];
+  for (let r = 0; r < 5; r++) {
+    const halb = 56 - r * 9;
+    for (let x = _C8Q_CX - halb; x <= _C8Q_CX + halb + 0.1; x += 5) {
+      plaetze.push({ x: x + (r % 2) * 2.5, y: _C8Q_BBOT - 6 - r * 4.2,
+                     k: Math.abs(x - _C8Q_CX) / 50 + r * 0.8 });
+    }
+  }
+  plaetze.sort((a, b) => a.k - b.k);
+  const z = _c8qZufall(36);
+  const salzHaufen = [];
+  for (let i = 0; i < 40; i++) salzHaufen.push([z(), z(), z() * 6.28]);
+  _c8q = {
+    t: 0, salz: 100,
+    phase: 'bereit',        // bereit · laeuft · fertig
+    pt: 0,                  // s seit Start
+    koerner: [], gestreut: 0, boden: 0, platzNr: 0,
+    dreh: 0, drehV: 0,      // Rührstab: Winkel und Tempo
+    plaetze, salzHaufen, z: _c8qZufall(7),
+    fx: { teile: [] }, zeitlupe: null, fokus: null, erstesGezeigt: false,
+    nach: -1, schritt: 0,
+    versuche: {},           // salz -> {boden, wachs}
+    linie: -1, linieFuer: '',
+    letzt: ''
+  };
+}
+
+/* ── Bedienung ──────────────────────────────────────────────────────── */
+function _c8qFrisch() {
+  // neues Becherglas mit frischem Wasser, volle Schale
+  _c8q.phase = 'bereit'; _c8q.pt = 0;
+  _c8q.koerner = []; _c8q.gestreut = 0; _c8q.boden = 0; _c8q.platzNr = 0;
+  _c8q.fx = { teile: [] }; _c8q.zeitlupe = null; _c8q.fokus = null; _c8q.erstesGezeigt = false;
+  _c8q.nach = -1; _c8q.schritt = 0;
+}
+function _c8qSalz(g) {
+  if (!_c8q) return;
+  _c8q.salz = Number(g);
+  _c8qFrisch(); _c8qStatus();
+}
+function _c8qStart() {
+  if (!_c8q || _c8q.phase === 'laeuft') return;
+  _c8qFrisch();
+  _c8q.phase = 'laeuft'; _c8q.pt = 0;
+  _c8qStatus();
+}
+function _c8qNeu() {
+  if (!_c8q) return;
+  _c8qFrisch(); _c8qStatus();
+}
+function _c8qAnzahl() { return Math.round(_c8q.salz / _C8Q_KORN); }
+function _c8qBleibt(k) { return (k + 1) * _C8Q_KORN > _C8Q_GRENZE; }
+function _c8qBodenSoll() { return Math.max(0, _c8q.salz - _C8Q_GRENZE); }
+
+/* Sprungmarke: Salz wählen und gleich das fertig gerührte Glas zeigen. */
+function _c8qMarke(g) {
+  if (!_c8q) return;
+  _c8q.salz = Number(g);
+  _c8qFrisch();
+  const n = _c8qAnzahl();
+  let p = 0;
+  for (let k = 0; k < n; k++) {
+    if (!_c8qBleibt(k)) continue;
+    const pl = _c8q.plaetze[p++ % _c8q.plaetze.length];
+    _c8q.koerner.push({ k, bleibt: true, phase: 'boden', x: pl.x, y: pl.y, zx: pl.x, zy: pl.y,
+                        vx: 0, vy: 0, a: 0, rot: _c8q.z() * 6.28 });
+  }
+  _c8q.gestreut = n; _c8q.boden = p * _C8Q_KORN;
+  _c8qFertig();
+}
+function _c8qFertig() {
+  _c8q.phase = 'fertig'; _c8q.nach = 0; _c8q.schritt = 0; _c8q.fokus = null;
+  _c8q.versuche[_c8q.salz] = { boden: _c8q.boden, wachs: 0 };
+  _c8qStatus();
+}
+
+function _c8qKnoepfe() {
+  if (typeof document.querySelectorAll !== 'function') return;
+  try {
+    document.querySelectorAll('[data-c8q]').forEach(b => {
+      const d = b.dataset ? b.dataset.c8q : b.getAttribute('data-c8q');
+      if (b.classList) b.classList.toggle('primary', Number(d) === _c8q.salz);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+function _c8qHTML() {
+  const k = g => `<button class="sim-btn" data-c8q="${g}" onclick="_c8qSalz(${g})">${g} g</button>`;
+  const m = g => `<button class="sim-btn" onclick="_c8qMarke(${g})">${g} g, fertig gerührt</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel Salz löst sich in Wasser?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Becherglas ist 1 l Wasser bei 20 °C. Stelle ein, wie viel Salz in das Wasser kommt. Dann drücke „▶ Salz einrühren“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_c8q-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Salz</span>
+          ${_C8Q_WERTE.map(k).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_c8q-los" onclick="_c8qStart()">▶ Salz einrühren</button>
+          <button class="sim-btn" onclick="_c8qNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was siehst du im Becherglas?</div>
+        <div class="lmp-status on" id="_c8q-status" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${_C8Q_WERTE.map(m).join('\n          ')}
+        </div>
+        <div class="fpm-note" style="margin-top:10px">Lies die Anzeige <b>am Boden</b> unter dem Becherglas ab. Ein Korn, das du nicht mehr siehst, ist nicht weg: Das Wasser schmeckt danach salzig.</div>
+        <div class="fpm-note" style="margin-top:6px">Rechts im Bild: ein Balken für jeden Versuch. Blau ist das Salz im Wasser, weiß das Salz am Boden.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 100 g &nbsp;|&nbsp; Für jeden Versuch frisches Wasser: „neu“.</p>
+  </div>`;
+}
+
+/* ── Anzeige ────────────────────────────────────────────────────────── */
+function _c8qErgebnis() {
+  const b = _c8q.boden;
+  return 'am Boden: ' + b + ' g, ' + (b > 0 ? 'Körner bleiben am Boden liegen.' : 'Kein Korn ist mehr zu sehen.');
+}
+function _c8qStatus() {
+  if (!_c8q) return;
+  const kopf = '<b>Salz: ' + _c8q.salz + ' g</b> · 1 l Wasser · 20 °C';
+  let h;
+  if (_c8q.phase === 'bereit') {
+    h = kopf + '<br>Das Salz liegt noch in der Schale. Drücke „▶ Salz einrühren“.';
+  } else if (_c8q.phase === 'laeuft') {
+    h = kopf + '<br>' + (_c8q.pt < _C8Q_HEBEN + _C8Q_RIESELN
+      ? 'Das Salz rieselt ins Wasser. Der Rührstab dreht sich.'
+      : 'Die Schale ist leer. Der Rührstab dreht sich.');
+  } else {
+    h = '<b>Salz: ' + _c8q.salz + ' g</b> · ' + _c8qErgebnis();
+  }
+  _c8q.letzt = h;
+  const el = document.getElementById('_c8q-status');
+  if (el) { el.innerHTML = h; el.className = 'lmp-status on'; }
+  _c8qKnoepfe();
+}
+
+/* ── Rechnen ────────────────────────────────────────────────────────── */
+function _c8qUpdate(dt) {
+  if (!_c8q) return;
+  const roh = Math.min(_bioFxDt(dt), 0.05);
+  const d = roh * _bioFxZeitlupeFaktor(_c8q, roh);
+  _c8q.t += roh;
+  _bioFxAlleUpdate(_c8q.fx, roh);
+  // Rührstab: dreht beim Einrühren, läuft danach weich aus
+  const zielV = _c8q.phase === 'laeuft' ? 5.0 : 0;
+  _c8q.drehV += (zielV - _c8q.drehV) * Math.min(1, roh * 2.5);
+  _c8q.dreh += _c8q.drehV * d;
+
+  if (_c8q.phase === 'laeuft') {
+    const vorher = _c8q.pt;
+    _c8q.pt += d;
+    // Salz rieselt gleichmäßig aus der Schale
+    const n = _c8qAnzahl();
+    const soll = Math.min(n, Math.floor(n * _bioFxKlemme((_c8q.pt - _C8Q_HEBEN) / _C8Q_RIESELN) + 1e-9));
+    while (_c8q.gestreut < soll) _c8qStreuen(_c8q.gestreut++);
+    if (vorher < _C8Q_HEBEN + _C8Q_RIESELN && _c8q.pt >= _C8Q_HEBEN + _C8Q_RIESELN) _c8qStatus();
+    _c8qKoerner(d);
+    const ruhig = _c8q.koerner.every(g => g.phase === 'weg' || g.phase === 'boden');
+    if (_c8q.gestreut >= n && ruhig && _c8q.pt >= _C8Q_HEBEN + _C8Q_RIESELN + _C8Q_ZURUECK) _c8qFertig();
+  } else if (_c8q.phase === 'fertig') {
+    _c8q.nach += roh;
+    _c8qNachher();
+  }
+  // Balken rechts wachsen weich heraus
+  for (const v of Object.values(_c8q.versuche)) v.wachs = Math.min(1, v.wachs + (_c8q.nach > 0.5 || _c8q.phase !== 'fertig' ? roh / 0.7 : 0));
+  if (_c8q.linie >= 0) _c8q.linie = Math.min(1, _c8q.linie + roh / 0.8);
+}
+
+function _c8qStreuen(k) {
+  const z = _c8q.z;
+  _c8q.koerner.push({ k, bleibt: _c8qBleibt(k), phase: 'luft',
+    x: 144 + z() * 6, y: 70 + z() * 3, vx: 12 + z() * 26, vy: 10 + z() * 20,
+    zx: 0, zy: 0, a: 0, rot: z() * 6.28, w: z() * 6.28 });
+}
+
+function _c8qKoerner(d) {
+  const swirl = _c8q.drehV / 5;               // 0..1
+  for (const g of _c8q.koerner) {
+    if (g.phase === 'luft') {
+      g.vy += 520 * d; g.x += g.vx * d; g.y += g.vy * d;
+      if (g.y >= _C8Q_WY) {
+        g.phase = 'wasser'; g.y = _C8Q_WY; g.a = 0; g.vy = g.bleibt ? 62 : 26;
+        if (g.bleibt) {
+          const pl = _c8q.plaetze[(_c8q.platzNr++) % _c8q.plaetze.length];
+          g.zx = pl.x; g.zy = pl.y;
+          if (!_c8q.erstesGezeigt) {           // das erste Korn, das bleibt
+            _c8q.erstesGezeigt = true; _c8q.fokus = g;
+            _bioFxZeitlupe(_c8q, 0.3, 1.6);
+          }
+        }
+      }
+    } else if (g.phase === 'wasser') {
+      g.a += d;
+      g.x += Math.sin(g.w + _c8q.t * 3) * 22 * swirl * d;
+      if (g.bleibt) {
+        g.y += g.vy * d;
+        g.x += (g.zx - g.x) * Math.min(1, d * 2.2);
+        g.rot += d * 2 * swirl;
+        if (g.y >= g.zy) {
+          g.y = g.zy; g.x = g.zx; g.phase = 'boden';
+          _c8q.boden += _C8Q_KORN;
+          if (_c8q.fokus === g) {
+            _c8q.fokus = null;
+            _bioFxWelle(_c8q.fx.teile, g.x, g.y, '#fde68a', 26);
+            _bioFxBanner(_c8q.fx, 'Dieses Korn bleibt liegen.', 2.6, '#fde68a');
+          }
+        }
+      } else {
+        g.y += g.vy * d;
+        g.rot += d * 3;
+        if (g.a >= 0.95) g.phase = 'weg';
+      }
+    }
+  }
+  // Abgelaufene Körner aus der Liste nehmen (Bodenkörner bleiben)
+  _c8q.koerner = _c8q.koerner.filter(g => g.phase !== 'weg');
+}
+
+// Nach dem Einrühren: erst hinsehen, dann bestätigt der Effekt.
+function _c8qNachher() {
+  const fx = _c8q.fx, t = _c8q.nach;
+  if (_c8q.schritt === 0 && t >= 0.25) {
+    _c8q.schritt = 1;
+    if (_c8q.boden > 0) {
+      _bioFxFunken(fx.teile, _C8Q_CX, _C8Q_BBOT - 10, 8, ['#ffffff', '#e2e8f0', '#fde68a']);
+      _bioFxWelle(fx.teile, _C8Q_CX, 234, '#fde68a', 60);
+    } else {
+      _bioFxWelle(fx.teile, _C8Q_CX, 160, '#93c5fd', 70);
+      _bioFxWelle(fx.teile, _C8Q_CX, 234, '#93c5fd', 60);
+    }
+  }
+  if (_c8q.schritt === 1 && t >= 1.4) {
+    _c8q.schritt = 2;
+    // Zwei Versuche mit Salz am Boden? Dann die blauen Teile verbinden.
+    const voll = Object.keys(_c8q.versuche).map(Number).filter(g => _c8q.versuche[g].boden > 0).sort((a, b) => a - b);
+    const key = voll.join(',');
+    if (_c8q.boden > 0 && voll.length >= 2 && key !== _c8q.linieFuer) {
+      const neuLinie = _c8q.linie < 0;
+      _c8q.linieFuer = key;
+      if (neuLinie) _c8q.linie = 0;
+      for (const g of voll) {
+        const p = _c8qBalkenPos(g);
+        _bioFxWelle(fx.teile, p.x + 10, _c8qBalkenY(_C8Q_GRENZE), '#60a5fa', 22);
+      }
+      _bioFxBanner(fx, 'Der blaue Teil ist gleich hoch.', 2.8, '#60a5fa');
+    }
+  }
+}
+
+/* ── Zeichnen ───────────────────────────────────────────────────────── */
+function _c8qBalkenPos(g) { return { x: 296 + _C8Q_WERTE.indexOf(g) * 29 }; }
+function _c8qBalkenY(m) { return 196 - m * 0.25; }
+
+function _c8qSchale(ctx, x, y, winkel, rest) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(winkel);
+  // Salzhaufen (schrumpft mit dem Rest)
+  if (rest > 0.01) {
+    const h = 4 + 12 * Math.sqrt(rest), b = 22 + 8 * rest;
+    ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(0, -1, b, h, 0, Math.PI, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#cbd5e1';
+    for (const [u, v, r] of _c8q.salzHaufen) {
+      const px = (u - 0.5) * 2 * b * 0.85, py = -1 - v * h * Math.sqrt(Math.max(0, 1 - Math.pow(px / b, 2)));
+      ctx.save(); ctx.translate(px, py); ctx.rotate(r); ctx.fillRect(-1, -1, 2, 2); ctx.restore();
+    }
+  }
+  // Schale
+  ctx.fillStyle = '#7dd3fc'; ctx.strokeStyle = '#0369a1'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(-32, 0); ctx.quadraticCurveTo(-28, 18, 0, 18);
+  ctx.quadraticCurveTo(28, 18, 32, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.fillRect(-24, 3, 10, 3);
+  ctx.restore();
+}
+
+function _c8qKorn(ctx, x, y, s, rot, a) {
+  if (s <= 0.05) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(x, y); ctx.rotate(rot);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 0.6;
+  const q = 2.4 * s;                                // Salzkristalle sind kleine Würfel
+  ctx.fillRect(-q - 0.8, -q, q * 1.6, q * 1.6); ctx.strokeRect(-q - 0.8, -q, q * 1.6, q * 1.6);
+  ctx.fillRect(0.6, -q * 0.4, q * 1.3, q * 1.3); ctx.strokeRect(0.6, -q * 0.4, q * 1.3, q * 1.3);
+  ctx.restore();
+}
+
+function _c8qDraw(ctx, cv) {
+  if (!_c8q) return;
+  const W = cv.width, H = cv.height, t = _c8q.t;
+  ctx.clearRect(0, 0, W, H);
+  // Raum und Tisch
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f1f5f9'); bg.addColorStop(1, '#e2e8f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#cbb89a'; ctx.fillRect(0, 214, 282, H - 214);
+  ctx.fillStyle = '#b39e7c'; ctx.fillRect(0, 214, 282, 3);
+
+  const X0 = _C8Q_BX0, X1 = _C8Q_BX1, TOP = _C8Q_BTOP, BOT = _C8Q_BBOT, WY = _C8Q_WY;
+  // Wasser mit leichter Wellenlinie
+  const wg = ctx.createLinearGradient(0, WY, 0, BOT);
+  wg.addColorStop(0, 'rgba(147,197,253,0.45)'); wg.addColorStop(1, 'rgba(96,165,250,0.55)');
+  ctx.fillStyle = wg;
+  ctx.beginPath(); ctx.moveTo(X0 + 2, WY);
+  const welle = 0.8 + 1.6 * (_c8q.drehV / 5);
+  for (let x = X0 + 2; x <= X1 - 2; x += 4) ctx.lineTo(x, WY + Math.sin(x * 0.09 + t * 2.2) * welle);
+  ctx.lineTo(X1 - 2, BOT - 2); ctx.lineTo(X0 + 2, BOT - 2); ctx.closePath(); ctx.fill();
+  // Strömung beim Rühren
+  if (_c8q.drehV > 0.2) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,' + (0.35 * _c8q.drehV / 5).toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    for (let i = 0; i < 3; i++) {
+      const y = 125 + i * 28, ph = _c8q.dreh + i * 1.7;
+      ctx.beginPath(); ctx.ellipse(_C8Q_CX, y, 48 - i * 4, 6, 0, ph, ph + 2.2); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Rührstab (Glas), hinten
+  const rs = Math.sin(_c8q.dreh), rc = Math.cos(_c8q.dreh);
+  const rod = () => {
+    ctx.strokeStyle = 'rgba(203,213,225,0.95)'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(_C8Q_CX + 6 * rc, 28); ctx.lineTo(_C8Q_CX + 34 * rc, BOT - 16); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(_C8Q_CX + 6 * rc - 1, 30); ctx.lineTo(_C8Q_CX + 34 * rc - 1, BOT - 18); ctx.stroke();
+  };
+  if (rs < 0) rod();
+
+  // Körner im Wasser und am Boden
+  for (const g of _c8q.koerner) {
+    if (g.phase === 'boden') {
+      const zit = _c8q.drehV > 0.2 ? Math.sin(t * 9 + g.k) * 0.5 * _c8q.drehV / 5 : 0;
+      _c8qKorn(ctx, g.x + zit, g.y, 1, g.rot, 1);
+    } else if (g.phase === 'wasser' && !g.bleibt) {
+      const s = 1 - _bioFxEase.rein(_bioFxKlemme(g.a / 0.95));
+      // feine Schliere, wo das Korn kleiner wird
+      ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,' + (0.45 * s).toFixed(3) + ')'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(g.x, g.y);
+      ctx.quadraticCurveTo(g.x + 4 * Math.sin(g.w + t * 2), g.y - 8, g.x - 2, g.y - 16 * (1 - s) - 4); ctx.stroke();
+      ctx.restore();
+      _c8qKorn(ctx, g.x, g.y, 0.3 + 0.7 * s, g.rot, 0.35 + 0.65 * s);
+    } else {
+      _c8qKorn(ctx, g.x, g.y, 1, g.rot, 1);
+    }
+  }
+  if (_c8q.fokus) _bioFxLeuchten(ctx, _c8q.fokus.x, _c8q.fokus.y, 9, t, '253,230,138');
+
+  // Thermometer im Wasser
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, 228, 34, 8, 160, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ef4444';
+  ctx.beginPath(); ctx.arc(232, 196, 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillRect(230, 128, 4, 66);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b';
+  _bioFxRundRect(ctx, 240, 20, 40, 18, 5); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('20 °C', 260, 33);
+
+  // Becherglas vorne
+  ctx.strokeStyle = 'rgba(71,85,105,0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(X0 - 4, TOP - 2); ctx.lineTo(X0, TOP); ctx.lineTo(X0, BOT - 4);
+  ctx.quadraticCurveTo(X0, BOT, X0 + 4, BOT); ctx.lineTo(X1 - 4, BOT);
+  ctx.quadraticCurveTo(X1, BOT, X1, BOT - 4); ctx.lineTo(X1, TOP); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(X0 + 6, TOP + 10); ctx.lineTo(X0 + 6, BOT - 14); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.7)'; ctx.lineWidth = 1;
+  for (let y = WY; y < BOT - 10; y += 22) { ctx.beginPath(); ctx.moveTo(X0, y); ctx.lineTo(X0 + (y === WY ? 14 : 8), y); ctx.stroke(); }
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('1 l', X0 + 16, WY - 4);
+  if (rs >= 0) rod();
+
+  // Schale: steht links, wird zum Einrühren gehoben und gekippt
+  let hub = 0;
+  if (_c8q.phase === 'laeuft') {
+    const p = _c8q.pt;
+    if (p < _C8Q_HEBEN) hub = _bioFxEase.sanft(p / _C8Q_HEBEN);
+    else if (p < _C8Q_HEBEN + _C8Q_RIESELN) hub = 1;
+    else hub = 1 - _bioFxEase.sanft(_bioFxKlemme((p - _C8Q_HEBEN - _C8Q_RIESELN) / _C8Q_ZURUECK));
+  }
+  const n = Math.max(1, _c8qAnzahl());
+  const rest = _c8q.phase === 'bereit' ? 1 : Math.max(0, 1 - _c8q.gestreut / n);
+  const sx = 52 + (122 - 52) * hub, sy = 196 + (50 - 196) * hub;
+  _c8qSchale(ctx, sx, sy, 0.75 * hub + (hub > 0.95 ? Math.sin(t * 7) * 0.03 : 0), rest);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Salz: ' + _c8q.salz + ' g', 52, 234);
+
+  // Anzeige unter dem Becherglas
+  const txt = 'am Boden: ' + _c8q.boden + ' g';
+  ctx.font = '700 14px sans-serif';
+  const bw = ctx.measureText(txt).width + 18;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = _c8q.boden > 0 ? '#b45309' : '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, _C8Q_CX - bw / 2, 222, bw, 22, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center';
+  ctx.fillText(txt, _C8Q_CX, 238);
+
+  // Rechts: ein Balken je Versuch
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 288, 8, 126, 236, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Deine Versuche', 351, 24);
+  for (const g of _C8Q_WERTE) {
+    const x = _c8qBalkenPos(g).x, v = _c8q.versuche[g];
+    ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = '#cbd5e1';
+    ctx.strokeRect(x, _c8qBalkenY(g), 20, 196 - _c8qBalkenY(g)); ctx.restore();
+    if (v) {
+      const w = _bioFxEase.raus(v.wachs);
+      const imW = Math.min(g, _C8Q_GRENZE) * w, amB = (g - Math.min(g, _C8Q_GRENZE)) * w;
+      ctx.fillStyle = '#60a5fa';
+      ctx.fillRect(x, _c8qBalkenY(imW), 20, 196 - _c8qBalkenY(imW));
+      if (amB > 0) {
+        ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#94a3b8';
+        ctx.fillRect(x, _c8qBalkenY(imW + amB), 20, _c8qBalkenY(imW) - _c8qBalkenY(imW + amB));
+        ctx.strokeRect(x, _c8qBalkenY(imW + amB), 20, _c8qBalkenY(imW) - _c8qBalkenY(imW + amB));
+      }
+    }
+    ctx.fillStyle = '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(g + ' g', x + 10, 208);
+  }
+  // Linie über die blauen Teile (erst wenn zwei Versuche Salz am Boden hatten)
+  if (_c8q.linie >= 0) {
+    const y = _c8qBalkenY(_C8Q_GRENZE), l = _bioFxEase.sanft(_c8q.linie);
+    ctx.save(); ctx.setLineDash([5, 3]); ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(292, y); ctx.lineTo(292 + (118) * l, y); ctx.stroke(); ctx.restore();
+  }
+  // Legende
+  ctx.font = '600 10px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#60a5fa'; ctx.fillRect(296, 216, 10, 10);
+  ctx.fillStyle = '#334155'; ctx.fillText('im Wasser', 310, 225);
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#94a3b8'; ctx.fillRect(296, 230, 10, 10); ctx.strokeRect(296, 230, 10, 10);
+  ctx.fillStyle = '#334155'; ctx.fillText('am Boden', 310, 239);
+
+  if (_c8q.zeitlupe) {
+    ctx.fillStyle = 'rgba(15,23,42,0.7)'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶ Zeitlupe', 8, 16);
+  }
+  _bioFxAlleDraw(ctx, _c8q.fx);
 }

@@ -5816,6 +5816,33 @@ const HEFT_SEITEN = {
     frage: "Kommen Nikotin und Alkohol durch die Plazenta zum Kind?",
     schritte: ["Stelle „Die Mutter …“ auf „trinkt Wasser“. Drücke „▶ 1 Stunde abspielen“.", "Beobachte, welche Punkte beim Kind ankommen. Lies den Sauerstoff beim Kind ab.", "Wiederhole das mit „raucht“ und mit „trinkt Alkohol“.", "Vergleiche bei „trinkt Alkohol“ die Zähler bei Mutter und Kind."]
   },
+  "cs1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-stoffe", seite: 7,
+    kapitel: "Stoffe des Alltags",
+    name: "Woran erkennt man einen Stoff?",
+    titel: "Drei weiße Pulver",
+    frage: "Woran erkennst du, welches Pulver Kochsalz ist?",
+    schritte: ["Stelle „Pulver“ auf „A“ und „Probe“ auf „Lupe“. Drücke „▶ Probe starten“.", "Lies die Statuszeile. Trage ein, wie die Körner aussehen.", "Stelle „Probe“ auf „Wasser“. Drücke „▶ Probe starten“. Trage ein, was passiert.", "Wiederhole a bis c für B und C. Vergleiche mit den drei Steckbriefen."]
+  },
+  "cs2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-gemische", seite: 11,
+    kapitel: "Stoffe des Alltags",
+    name: "Reinstoff oder Gemisch?",
+    titel: "Klar ist nicht gleich rein",
+    frage: "Welche der drei klaren Proben ist ein Reinstoff?",
+    schritte: ["Stelle „Probe“ auf „Laborwasser“. Drücke „▶ Tropfen erhitzen“.", "Lies die Statuszeile, wenn der Tropfen weg ist. Trage ein, was auf dem Glas bleibt.", "Wiederhole a und b für „Salzwasser“ und „Mineralwasser“.", "Vergleiche die drei Zeilen: Wo bleibt nichts zurück?"]
+  },
+  "cs3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-trennen", seite: 15,
+    kapitel: "Stoffe des Alltags",
+    name: "Wie trennt man Sand, Salz und Wasser?",
+    titel: "Erst filtrieren, dann eindampfen",
+    frage: "Hält das Filterpapier auch das Salz zurück?",
+    schritte: ["Drücke „▶ filtrieren“. Trage ein, was durchläuft und was im Filter bleibt.", "Drücke „▶ eindampfen“. Trage ein, was in der Schale bleibt.", "Drücke „neu“. Drücke jetzt gleich „▶ eindampfen“. Trage ein.", "Vergleiche die Zeilen: Welche Reihenfolge trennt Sand und Salz?"]
+  },
   "cs4": {
     klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
     sim: "aggregatzustaende", seite: 19,
@@ -5825,6 +5852,96 @@ const HEFT_SEITEN = {
     frage: "Was machen die Teilchen, wenn Eis schmilzt und Wasser verdampft?",
     schritte: ["Schiebe den Regler „Temperatur“ auf −10 °C. Lies die Statuszeile. Trage den Aggregatzustand ein.", "Beobachte die Kugeln im Kasten. Trage ein, wie sich die Teilchen bewegen.", "Wiederhole a und b bei 50 °C und bei 120 °C.", "Lies an der Skala ab, bei welcher Temperatur „Schmelzen“ und „Sieden“ stehen."]
   },
+  "cs5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-siedekurve", seite: 23,
+    kapitel: "Stoffe des Alltags",
+    name: "Wann siedet Wasser?",
+    titel: "Heißer als 100 °C?",
+    frage: "Wird das Wasser mit großer Flamme heißer als mit kleiner Flamme?",
+    schritte: ["Stelle „Flamme“ auf „klein“. Drücke „▶ 1 Minute heizen“, bis die Uhr 10 Minuten zeigt.", "Lies in der Siedekurve die Temperatur nach 2, 4, 6 und 10 Minuten ab. Trage ein.", "Drücke „neu“. Stelle „Flamme“ auf „groß“. Wiederhole a und b.", "Beobachte: Was macht die Linie, wenn große Blasen aufsteigen?"]
+  },
+  "cs6": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-reaktion", seite: 27,
+    kapitel: "Stoffe des Alltags",
+    name: "Schmelzen oder neuer Stoff?",
+    titel: "Wachs oder Karamell",
+    frage: "Ist geschmolzener Zucker nach dem Abkühlen wieder Zucker?",
+    schritte: ["Stelle „Stoff“ auf „Kerzenwachs“. Drücke „▶ erhitzen“. Trage ein, was passiert.", "Drücke „▶ abkühlen lassen“. Trage ein, wie der Stoff danach aussieht.", "Wiederhole a und b mit „Schokolade“ und mit „Zucker“.", "Vergleiche: Bei welchem Stoff sieht das Ende anders aus als der Anfang?"]
+  },
+  "cb1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-feuer", seite: 39,
+    kapitel: "Brände und Brandbekämpfung",
+    name: "Was braucht ein Feuer?",
+    titel: "Ein Glas über der Kerze",
+    frage: "Was passiert mit der Flamme unter dem Glas?",
+    schritte: ["Stelle „Glas“ auf „kein Glas“. Drücke „▶ starten“.", "Lies an der Uhr ab, wann die Flamme ausgeht. Trage ein.", "Sieh dir die Kerze an: Ist noch Wachs da? Trage ein.", "Drücke „neu“. Wiederhole a bis c mit „großes Glas“ und „kleines Glas“."]
+  },
+  "cb2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-aktivierung", seite: 43,
+    kapitel: "Brände und Brandbekämpfung",
+    name: "Warum brennt das Streichholz erst nach dem Reiben?",
+    titel: "Ein kleiner Anstoß",
+    frage: "Kommt die Wärme der Flamme vom Reiben?",
+    schritte: ["Stelle „Reiben“ auf „nicht reiben“. Drücke „▶ los“.", "Lies am Thermometer ab, wie heiß der Kopf wird. Trage ein, ob es brennt.", "Drücke „neu“. Wiederhole a und b mit „leicht reiben“ und „fest reiben“.", "Vergleiche bei „fest reiben“ die Balken „Energie hinein“ und „Energie heraus“."]
+  },
+  "cb3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-stahlwolle", seite: 47,
+    kapitel: "Brände und Brandbekämpfung",
+    name: "Wird Stahlwolle beim Verbrennen leichter?",
+    titel: "Schwerer nach dem Feuer",
+    frage: "Was zeigt die Waage, wenn Stahlwolle verbrennt?",
+    schritte: ["Stelle „Stoff“ auf „Kerze“. Lies die Masse ab. Drücke „▶ anzünden“.", "Beobachte: Brennt eine Flamme, oder glüht der Stoff nur? Trage ein.", "Lies die Masse ab, wenn „Fertig.“ erscheint. Trage beide Massen ein.", "Drücke „neu“. Wiederhole a bis c mit „Holzspan“ und „Stahlwolle“."]
+  },
+  "cb4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-atome", seite: 51,
+    kapitel: "Brände und Brandbekämpfung",
+    name: "Woraus bestehen Stoffe?",
+    titel: "Kugeln im geschlossenen Glas",
+    frage: "Was zeigt die Waage, wenn die Holzkohle im geschlossenen Glas verbrennt?",
+    schritte: ["Stelle „Stoffe im Glas“ auf „Eisen + Sauerstoff“. Lies die Masse ab.", "Drücke „▶ Reaktion“. Lies ab, was entsteht und was die Waage zeigt.", "Drücke „neu“. Wiederhole a und b mit „Holzkohle + Sauerstoff“ und „Kupfer + Sauerstoff“.", "Vergleiche bei „Holzkohle + Sauerstoff“ die Zahl der Kugeln vorher und nachher."]
+  },
+  "cb5": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-nachweis", seite: 55,
+    kapitel: "Brände und Brandbekämpfung",
+    name: "Wie weist man Sauerstoff und Kohlenstoffdioxid nach?",
+    titel: "Welches Gas ist im Glas?",
+    frage: "Was passiert mit einem Glimmspan in reinem Sauerstoff?",
+    schritte: ["Stelle „Gas im Glas“ auf „Luft“. Drücke „▶ Glimmspan hinein“. Trage ein.", "Drücke „▶ Kalkwasser dazu“. Beobachte das Kalkwasser. Trage ein.", "Drücke „neu“. Wiederhole a und b mit „Sauerstoff“ und „Kohlenstoffdioxid“.", "Wiederhole a und b mit „Gas über der Kerze“."]
+  },
+  "cb6": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-loeschen", seite: 59,
+    kapitel: "Brände und Brandbekämpfung",
+    name: "Wie löscht man welches Feuer?",
+    titel: "Deckel statt Wasser",
+    frage: "Was passiert, wenn man einen Fettbrand mit Wasser löscht?",
+    schritte: ["Stelle „Feuer“ auf „Holz“ und „Löschen mit“ auf „Wasser“.", "Drücke „▶ löschen“. Beobachte das Feuer. Trage ein.", "Drücke „neu“. Stelle „Feuer“ auf „Fett in der Pfanne“. Wiederhole b.", "Drücke „neu“. Stelle „Löschen mit“ auf „Deckel“. Wiederhole b."]
+  },
+  "ca1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-luft", seite: 71,
+    kapitel: "Unsere Atmosphäre",
+    name: "Wie viel Sauerstoff ist in der Luft?",
+    titel: "Was steckt in der Luft?",
+    frage: "Wie viel von der Luft ist Sauerstoff?",
+    schritte: ["Drücke einmal „▶ hin und her schieben“. Lies ab, wie viel Gas im Kolben ist.", "Drücke weiter, bis der Zähler „3-mal“ zeigt. Lies wieder ab.", "Drücke weiter bis „5-mal“. Achte: Wird das Kupfer noch schwärzer?", "Drücke „Glimmspan hineinhalten“. Beobachte den Glimmspan."]
+  },
+  "ca2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-schadstoffe", seite: 75,
+    kapitel: "Unsere Atmosphäre",
+    name: "Woher kommen Luftschadstoffe?",
+    titel: "Dicke Luft an der Straße",
+    frage: "Wie hängt der Verkehr mit dem Stickstoffdioxid in der Luft zusammen?",
+    schritte: ["Stelle „Verkehr“ auf „wenig“. Drücke „▶ 1 Stunde abspielen“.", "Lies die Zähler „Autos auf der Straße“ und „Stickstoffdioxid in der Messbox“ ab.", "Wiederhole das mit „viel“ und mit „Stau“.", "Beobachte die Lupe am Motor: Welche Teilchen gehen hinein, welche kommen heraus?"]
+  },
   "ca3": {
     klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
     sim: "bio-treibhaus", seite: 79,
@@ -5833,6 +5950,42 @@ const HEFT_SEITEN = {
     titel: "Wärme auf dem Rückweg",
     frage: "Wie warm wird die Erde mit weniger oder mehr Treibhausgasen?",
     schritte: ["Stelle „Treibhausgase“ auf „keine“. Drücke „▶ 50 Jahre warten“.", "Lies die mittlere Temperatur ab. Zähle die roten Pfeile, die umkehren.", "Wiederhole das mit „wie 1850“, „wie heute“ und „doppelt so viel wie 1850“.", "Vergleiche die Zeilen „keine“ und „wie 1850“."]
+  },
+  "cw1": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-wasserkreislauf", seite: 90,
+    kapitel: "Wasser als Trink- und Nutzwasser",
+    name: "Wo ist das Wasser überall unterwegs?",
+    titel: "Wasser auf Reisen",
+    frage: "Geht beim Verdunsten Wasser verloren?",
+    schritte: ["Stelle „Sonne“ auf „schwach“. Drücke „▶ einen Tag abspielen“.", "Lies die Zähler „in die Luft“ und „Wasser zusammen“ ab. Trage ein.", "Drücke „neu“. Wiederhole a und b mit „mittel“ und mit „stark“.", "Vergleiche: Wie viele Tropfen kommen als Regen zurück?"]
+  },
+  "cw2": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-elektrolyse", seite: 94,
+    kapitel: "Wasser als Trink- und Nutzwasser",
+    name: "Woraus besteht Wasser?",
+    titel: "Wasser zerlegen",
+    frage: "Was entsteht, wenn Strom durch Wasser fließt?",
+    schritte: ["Drücke dreimal „▶ 1 Minute Strom“. Lies an beiden Rohren ab. Trage ein.", "Drücke „Flamme an das Rohr am Minuspol“. Macht es „plopp“, ist Wasserstoff darin.", "Drücke „Glimmspan in das Rohr am Pluspol“. Flammt er auf, ist Sauerstoff darin.", "Drücke „Gase zusammen zünden“. Beobachte das Gas und das Watesmo-Papier."]
+  },
+  "cw3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-eis", seite: 98,
+    kapitel: "Wasser als Trink- und Nutzwasser",
+    name: "Warum schwimmt Eis auf dem Wasser?",
+    titel: "Eis braucht mehr Platz",
+    frage: "Wie ändert sich das Volumen, wenn Wasser zu Eis wird?",
+    schritte: ["Stelle „Temperatur“ auf „20 °C“. Lies die Waage und das Volumen ab. Trage ein.", "Wiederhole a mit „4 °C“ und mit „0 °C, gefroren“.", "Drücke „Eis in ein Glas Wasser legen“. Beobachte das Eis.", "Vergleiche: Bei welcher Temperatur ist das Volumen am kleinsten?"]
+  },
+  "cw4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "chem-loesen", seite: 102,
+    kapitel: "Wasser als Trink- und Nutzwasser",
+    name: "Wie viel Salz löst sich in Wasser?",
+    titel: "Genug Salz im Wasser",
+    frage: "Wie viel Salz löst sich in 1 l Wasser?",
+    schritte: ["Stelle „Salz“ auf „100 g“. Drücke „▶ Salz einrühren“.", "Lies die Anzeige „am Boden“ ab. Trage ein.", "Drücke „neu“. Wiederhole a und b mit 300 g, 400 g und 500 g.", "Berechne: Wie viel Salz hat sich bei 500 g gelöst?"]
   },
   "fm1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
