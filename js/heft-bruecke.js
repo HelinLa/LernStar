@@ -5816,6 +5816,24 @@ const HEFT_SEITEN = {
     frage: "Kommen Nikotin und Alkohol durch die Plazenta zum Kind?",
     schritte: ["Stelle „Die Mutter …“ auf „trinkt Wasser“. Drücke „▶ 1 Stunde abspielen“.", "Beobachte, welche Punkte beim Kind ankommen. Lies den Sauerstoff beim Kind ab.", "Wiederhole das mit „raucht“ und mit „trinkt Alkohol“.", "Vergleiche bei „trinkt Alkohol“ die Zähler bei Mutter und Kind."]
   },
+  "cs4": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "aggregatzustaende", seite: 19,
+    kapitel: "Stoffe des Alltags",
+    name: "Was machen die Teilchen beim Schmelzen und Verdampfen?",
+    titel: "Teilchen in Bewegung",
+    frage: "Was machen die Teilchen, wenn Eis schmilzt und Wasser verdampft?",
+    schritte: ["Schiebe den Regler „Temperatur“ auf −10 °C. Lies die Statuszeile. Trage den Aggregatzustand ein.", "Beobachte die Kugeln im Kasten. Trage ein, wie sich die Teilchen bewegen.", "Wiederhole a und b bei 50 °C und bei 120 °C.", "Lies an der Skala ab, bei welcher Temperatur „Schmelzen“ und „Sieden“ stehen."]
+  },
+  "ca3": {
+    klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
+    sim: "bio-treibhaus", seite: 79,
+    kapitel: "Unsere Atmosphäre",
+    name: "Wie halten Treibhausgase die Wärme fest?",
+    titel: "Wärme auf dem Rückweg",
+    frage: "Wie warm wird die Erde mit weniger oder mehr Treibhausgasen?",
+    schritte: ["Stelle „Treibhausgase“ auf „keine“. Drücke „▶ 50 Jahre warten“.", "Lies die mittlere Temperatur ab. Zähle die roten Pfeile, die umkehren.", "Wiederhole das mit „wie 1850“, „wie heute“ und „doppelt so viel wie 1850“.", "Vergleiche die Zeilen „keine“ und „wie 1850“."]
+  },
   "fm1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
     sim: "gleichfoermig", seite: 7,
