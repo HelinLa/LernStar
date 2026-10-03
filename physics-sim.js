@@ -72125,7 +72125,7 @@ function _gabStatus() {
   const f = _gabF(_gab.m1, _gab.m2, _gab.r), f0 = _gabF(1, 1, 1);
   let s = '🪐 Anziehungskraft: ' + _fpmNum(f, f < 1 ? 2 : 1) + ' Einheiten';
   const v = f / f0;
-  if (Math.abs(v - 1) > 0.01) s += ' – das ' + (v > 1 ? _fpmNum(v, 2) + '-Fache' : 'Bruchteil ' + _fpmNum(v, 3)) + ' des Ausgangswerts (8).';
+  if (Math.abs(v - 1) > 0.01) s += (v > 1 ? ' – das ' + _fpmNum(v, 2) + '-Fache' : ' – der Bruchteil ' + _fpmNum(v, 3)) + ' des Ausgangswerts (8).';
   else s += ' (Ausgangswert).';
   el.textContent = s; el.className = 'lmp-status on';
 }

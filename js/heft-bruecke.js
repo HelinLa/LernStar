@@ -4203,7 +4203,7 @@ const HEFT_SEITEN = {
     name: "Was macht das Fernrohr mit dem Bild?",
     titel: "Zwei Linsen und ein Rohr",
     frage: "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
-    schritte: ["Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke.", "Drücke „mit Teleskop“ und lies die Vergrößerung ab.", "Vergleiche „große Öffnung“ und „◦ kleine Öffnung“: Achte nur auf die Helligkeit.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke.", "Drücke „mit Teleskop“ und lies die Vergrößerung ab.", "Vergleiche „große Öffnung“ und „kleine Öffnung“: Achte nur auf die Helligkeit.", "Trage alle drei Zeilen in die Tabelle ein."]
   },
   "fw8": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4266,7 +4266,7 @@ const HEFT_SEITEN = {
     name: "Wie wirken Ladungen aufeinander?",
     titel: "Das Knistern im Pullover",
     frage: "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
-    schritte: ["Öffne die Simulation und lies am Anfang die Statuszeile.", "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.", "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.", "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"]
+    schritte: ["Lies am Anfang die Statuszeile.", "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.", "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.", "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"]
   },
   "fs3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4383,7 +4383,7 @@ const HEFT_SEITEN = {
     name: "Wie misst und rechnet man die Geschwindigkeit?",
     titel: "Messen und ausrechnen",
     frage: "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
-    schritte: ["Drücke den Knopf langsam und danach den Knopf „Messung starten“.", "Lies die Zeit t im Bild ab. Trage die erste Zeile ein.", "Drücke mittel und dann „Messung starten“. Trage die zweite Zeile ein.", "Drücke schnell und dann „Messung starten“. Ergänze die letzte Zeile."]
+    schritte: ["Drücke „langsam“ und danach „Messung starten“.", "Lies die Zeit t im Bild ab. Trage die erste Zeile ein.", "Drücke „mittel“ und dann „Messung starten“. Trage die zweite Zeile ein.", "Drücke „schnell“ und dann „Messung starten“. Ergänze die letzte Zeile."]
   },
   "fb3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4419,7 +4419,7 @@ const HEFT_SEITEN = {
     name: "Was verrät die Linie im Geschwindigkeit-Zeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
     frage: "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
-    schritte: ["Öffne die Simulation. Das Bild oben heißt dort „v-t-Diagramm“ – gemeint ist das Geschwindigkeit-Zeit-Diagramm.", "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 1 aus.", "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 2 aus.", "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 3 aus."]
+    schritte: ["Das Bild oben in der Simulation heißt „v-t-Diagramm“ – gemeint ist das Geschwindigkeit-Zeit-Diagramm.", "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 1 aus.", "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 2 aus.", "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 3 aus."]
   },
   "fb7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4506,7 +4506,7 @@ const HEFT_SEITEN = {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
     sim: "traegheit-rs", seite: 32,
     kapitel: "Kräfte auf der Bühne",
-    name: "Warum rutscht die Kiste weiter?",
+    name: "Warum rollt der Wagen weiter?",
     titel: "Niemand schiebt mehr",
     frage: "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
     schritte: ["Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.", "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.", "Wähle „Weltall“, stoße an und lies die Statuszeile.", "Trage alles in die Tabelle ein."]
@@ -4524,10 +4524,10 @@ const HEFT_SEITEN = {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
     sim: "druck-flaeche", seite: 38,
     kapitel: "Kräfte auf der Bühne",
-    name: "Warum sinkt der schmale Fuß ein?",
+    name: "Warum machen schmale Rollen Dellen?",
     titel: "Vier Dellen im neuen Podest",
     frage: "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
-    schritte: ["Drücke Turnschuhe. Lies bei p die Zahl vor kPa. Fülle die erste Zeile aus.", "Drücke Stöckelabsatz und fülle die zweite Zeile aus.", "Drücke Skier und fülle die letzte Zeile aus."]
+    schritte: ["Drücke Turnschuhe. Lies bei p die Zahl vor „kPa“. Fülle die erste Zeile aus.", "Drücke Stöckelabsatz und fülle die zweite Zeile aus.", "Drücke Skier und fülle die letzte Zeile aus."]
   },
   "fk12": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4536,7 +4536,7 @@ const HEFT_SEITEN = {
     name: "Warum drückt Wasser in der Tiefe mehr?",
     titel: "Der untere Hahn spritzt weiter",
     frage: "Warum drückt das Wasser unten stärker als oben?",
-    schritte: ["Drücke zuerst Wasser. Die Tiefe bleibt 10 m. Lies unter der Überschrift Der Schweredruck die Zahl vor kPa.", "Drücke Öl und trage den Wert bei 10 m ein.", "Drücke Quecksilber und fülle die dritte Zeile aus.", "Drücke zuletzt 40 m – Tauchgrenze. Quecksilber bleibt gewählt. Ergänze die letzte Zeile."]
+    schritte: ["Drücke zuerst „Wasser“. Die Tiefe bleibt 10 m. Lies unter der Überschrift „Der Schweredruck“ die Zahl vor „kPa“.", "Drücke Öl und trage den Wert bei 10 m ein.", "Drücke Quecksilber und fülle die dritte Zeile aus.", "Drücke zuletzt 40 m – Tauchgrenze. Quecksilber bleibt gewählt. Ergänze die letzte Zeile."]
   },
   "fk13": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4590,7 +4590,7 @@ const HEFT_SEITEN = {
     name: "Was passiert beim Fallen?",
     titel: "Der Ball vom Bühnenrand",
     frage: "Wo bleibt die Lageenergie, während der Ball fällt?",
-    schritte: ["Öffne die Simulation. Fasse die beiden Regler nicht an. Am Anfang ruht der Ball in 20,0 m Höhe.", "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.", "Beobachte die Höhe und die zwei Balken „E_pot“ und „E_kin“, solange der Ball nach unten fällt.", "Trage Höhe, E_pot und E_kin ein: Wird der Balken kürzer oder länger?"]
+    schritte: ["Fasse die beiden Regler nicht an. Am Anfang ruht der Ball in 20,0 m Höhe.", "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.", "Beobachte die Höhe und die zwei Balken „E_pot“ und „E_kin“, solange der Ball nach unten fällt.", "Trage Höhe, E_pot und E_kin ein: Wird der Balken kürzer oder länger?"]
   },
   "fe5": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4639,7 +4639,7 @@ const HEFT_SEITEN = {
   },
   "fe10": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zahnrad", seite: 81,
+    sim: "zahnrad", seite: 82,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum dreht sich das kleine Rad schneller?",
     titel: "Dreimal kurbeln, einmal herum",
@@ -4648,7 +4648,7 @@ const HEFT_SEITEN = {
   },
   "fe11": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "schiefe-ebene", seite: 84,
+    sim: "schiefe-ebene", seite: 85,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was spart die Rampe?",
     titel: "Zwei Bretter an der Bühnenkante",
@@ -5233,7 +5233,7 @@ const HEFT_SEITEN = {
   },
   "bj4": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-jahreslauf", seite: 51,
+    sim: "bio-jahreslauf", seite: 52,
     kapitel: "Leben mit der Sonne",
     name: "Warum verlieren Bäume im Herbst ihre Blätter?",
     titel: "Die alte Buche im Jahreslauf",
@@ -5242,7 +5242,7 @@ const HEFT_SEITEN = {
   },
   "bj5": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-winter", seite: 54,
+    sim: "bio-winter", seite: 55,
     kapitel: "Leben mit der Sonne",
     name: "Wie überstehen Tiere den Winter?",
     titel: "Igel, Eichhörnchen und Frosch im Winter",
@@ -5251,7 +5251,7 @@ const HEFT_SEITEN = {
   },
   "bj6": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-isolation", seite: 57,
+    sim: "bio-isolation", seite: 58,
     kapitel: "Leben mit der Sonne",
     name: "Warum friert der Eisbär nicht?",
     titel: "Warme Dosen im Eis",
@@ -5260,7 +5260,7 @@ const HEFT_SEITEN = {
   },
   "bj7": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-wueste", seite: 61,
+    sim: "bio-wueste", seite: 62,
     kapitel: "Leben mit der Sonne",
     name: "Wie überlebt ein Kaktus in der Wüste?",
     titel: "Dreißig Tage ohne Regen",
@@ -5269,7 +5269,7 @@ const HEFT_SEITEN = {
   },
   "bk1": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-skelett", seite: 71,
+    sim: "bio-skelett", seite: 72,
     kapitel: "Mein Körper",
     name: "Welche Knochen tragen mich?",
     titel: "Das Gerüst in meinem Körper",
@@ -5278,7 +5278,7 @@ const HEFT_SEITEN = {
   },
   "bk2": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-arm", seite: 74,
+    sim: "bio-arm", seite: 75,
     kapitel: "Mein Körper",
     name: "Wie bewegt sich mein Arm?",
     titel: "Zwei Muskeln für einen Arm",
@@ -5287,7 +5287,7 @@ const HEFT_SEITEN = {
   },
   "bk3": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-heben", seite: 77,
+    sim: "bio-heben", seite: 78,
     kapitel: "Mein Körper",
     name: "Wie hebe ich richtig?",
     titel: "Die Kiste mit Blumenerde",
@@ -5296,7 +5296,7 @@ const HEFT_SEITEN = {
   },
   "bk4": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-atmung", seite: 80,
+    sim: "bio-atmung", seite: 81,
     kapitel: "Mein Körper",
     name: "Wie kommt die Luft in die Lunge?",
     titel: "Die Flasche, die atmet",
@@ -5305,7 +5305,7 @@ const HEFT_SEITEN = {
   },
   "bk5": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-puls", seite: 83,
+    sim: "bio-puls", seite: 84,
     kapitel: "Mein Körper",
     name: "Wie schnell schlägt mein Herz?",
     titel: "Mein Herz beim Rennen",
@@ -5314,7 +5314,7 @@ const HEFT_SEITEN = {
   },
   "bk6": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-kreislauf", seite: 86,
+    sim: "bio-kreislauf", seite: 88,
     kapitel: "Mein Körper",
     name: "Was bringt das Blut in den Körper?",
     titel: "Das Blut auf großer Reise",
@@ -5323,7 +5323,7 @@ const HEFT_SEITEN = {
   },
   "bk7": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-naehrstoffe", seite: 89,
+    sim: "bio-naehrstoffe", seite: 91,
     kapitel: "Mein Körper",
     name: "Welche Nährstoffe stecken im Essen?",
     titel: "Detektive am Picknicktisch",
@@ -5332,7 +5332,7 @@ const HEFT_SEITEN = {
   },
   "bk8": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-verdauung", seite: 92,
+    sim: "bio-verdauung", seite: 94,
     kapitel: "Mein Körper",
     name: "Welchen Weg nimmt die Nahrung?",
     titel: "Der lange Weg des Butterbrots",
@@ -5341,7 +5341,7 @@ const HEFT_SEITEN = {
   },
   "bk9": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-teller", seite: 95,
+    sim: "bio-teller", seite: 97,
     kapitel: "Mein Körper",
     name: "Was gehört auf einen guten Teller?",
     titel: "Drei Teller im Vergleich",
@@ -5350,7 +5350,7 @@ const HEFT_SEITEN = {
   },
   "bk10": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-rauchen", seite: 98,
+    sim: "bio-rauchen", seite: 100,
     kapitel: "Mein Körper",
     name: "Was macht Rauchen mit der Lunge?",
     titel: "Rauch in der Lunge",
@@ -5359,7 +5359,7 @@ const HEFT_SEITEN = {
   },
   "bs1": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-auge", seite: 104,
+    sim: "bio-auge", seite: 106,
     kapitel: "Meine Sinne",
     name: "Wie sieht das Auge?",
     titel: "Ein Bild hinten im Auge",
@@ -5368,7 +5368,7 @@ const HEFT_SEITEN = {
   },
   "bs2": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-blinder-fleck", seite: 107,
+    sim: "bio-blinder-fleck", seite: 109,
     kapitel: "Meine Sinne",
     name: "Wo sieht das Auge nichts?",
     titel: "Der Punkt verschwindet",
@@ -5377,7 +5377,7 @@ const HEFT_SEITEN = {
   },
   "bs3": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-ohr", seite: 110,
+    sim: "bio-ohr", seite: 112,
     kapitel: "Meine Sinne",
     name: "Wie hört das Ohr?",
     titel: "Der Weg des Schalls ins Ohr",
@@ -5386,7 +5386,7 @@ const HEFT_SEITEN = {
   },
   "bs4": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-richtungshoeren", seite: 113,
+    sim: "bio-richtungshoeren", seite: 115,
     kapitel: "Meine Sinne",
     name: "Aus welcher Richtung kommt der Ton?",
     titel: "Wo klatscht Samir?",
@@ -5395,7 +5395,7 @@ const HEFT_SEITEN = {
   },
   "bs5": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-reaktion", seite: 116,
+    sim: "bio-reaktion", seite: 118,
     kapitel: "Meine Sinne",
     name: "Wie schnell reagiere ich?",
     titel: "Das fallende Lineal",
@@ -5404,7 +5404,7 @@ const HEFT_SEITEN = {
   },
   "bs6": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-haut", seite: 119,
+    sim: "bio-haut", seite: 121,
     kapitel: "Meine Sinne",
     name: "Was fühlt die Haut?",
     titel: "Fingerspitze oder Rücken?",
@@ -5413,7 +5413,7 @@ const HEFT_SEITEN = {
   },
   "bs7": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-reflektor", seite: 122,
+    sim: "bio-reflektor", seite: 124,
     kapitel: "Meine Sinne",
     name: "Warum sieht der Autofahrer dich im Dunkeln?",
     titel: "Gesehen werden im Dunkeln",
@@ -5422,7 +5422,7 @@ const HEFT_SEITEN = {
   },
   "bs8": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-fledermaus", seite: 126,
+    sim: "bio-fledermaus", seite: 128,
     kapitel: "Meine Sinne",
     name: "Wie findet die Fledermaus ihr Futter?",
     titel: "Rufen und horchen in der Nacht",
@@ -6007,7 +6007,7 @@ const HEFT_SEITEN = {
   },
   "fm3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "beschleunigung-ef", seite: 14,
+    sim: "beschleunigung-ef", seite: 15,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum trägt man t² auf?",
     titel: "Aus der Parabel eine Gerade machen",
@@ -6016,7 +6016,7 @@ const HEFT_SEITEN = {
   },
   "fm4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "freierfall", seite: 18,
+    sim: "freierfall", seite: 19,
     kapitel: "Grundlagen der Mechanik",
     name: "Zwei Rechenwege zur Fallbeschleunigung – warum kommt nicht dasselbe heraus?",
     titel: "Zwei Rechenwege, zwei Werte",
@@ -6025,7 +6025,7 @@ const HEFT_SEITEN = {
   },
   "fm5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "wurf-waagerecht", seite: 22,
+    sim: "wurf-waagerecht", seite: 23,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum trifft die geworfene Kugel gleichzeitig auf?",
     titel: "Ein Schlag, nicht zwei",
@@ -6034,7 +6034,7 @@ const HEFT_SEITEN = {
   },
   "fm7": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "traegheit", seite: 30,
+    sim: "traegheit", seite: 31,
     kapitel: "Grundlagen der Mechanik",
     name: "Was macht ein Körper, wenn keine Kraft mehr zieht?",
     titel: "Niemand schiebt, nichts ändert sich",
@@ -6043,7 +6043,7 @@ const HEFT_SEITEN = {
   },
   "fm8": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "newton2", seite: 33,
+    sim: "newton2", seite: 34,
     kapitel: "Grundlagen der Mechanik",
     name: "Wovon hängt die Beschleunigung ab?",
     titel: "Ein Regler nach dem anderen",
@@ -6052,7 +6052,7 @@ const HEFT_SEITEN = {
   },
   "fm9": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "kraefte-gleichgewicht", seite: 36,
+    sim: "kraefte-gleichgewicht", seite: 37,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
     titel: "Die Lampe über dem Schreibtisch",
@@ -6061,7 +6061,7 @@ const HEFT_SEITEN = {
   },
   "fm10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "wechselwirkung-ef", seite: 39,
+    sim: "wechselwirkung-ef", seite: 40,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum drückt die Wand zurück?",
     titel: "Zwei Wagen, eine Feder",
@@ -6070,7 +6070,7 @@ const HEFT_SEITEN = {
   },
   "fm11": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "reibung", seite: 42,
+    sim: "reibung", seite: 43,
     kapitel: "Grundlagen der Mechanik",
     name: "Wie viel Kraft bleibt zum Beschleunigen übrig?",
     titel: "Was von 80 Newton übrig bleibt",
@@ -6079,7 +6079,7 @@ const HEFT_SEITEN = {
   },
   "fm12": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "arbeit", seite: 45,
+    sim: "arbeit", seite: 46,
     kapitel: "Grundlagen der Mechanik",
     name: "Wann wird wirklich Arbeit verrichtet?",
     titel: "Vier Meter getragen, null Joule",
@@ -6088,7 +6088,7 @@ const HEFT_SEITEN = {
   },
   "fm13": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "bewegungsenergie", seite: 48,
+    sim: "bewegungsenergie", seite: 49,
     kapitel: "Grundlagen der Mechanik",
     name: "Warum zählt die Geschwindigkeit doppelt?",
     titel: "Zweimal verdoppelt, zweimal anders",
@@ -6097,7 +6097,7 @@ const HEFT_SEITEN = {
   },
   "fm14": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "spannenergie", seite: 51,
+    sim: "spannenergie", seite: 52,
     kapitel: "Grundlagen der Mechanik",
     name: "Die gespannte Feder – wo steckt die Energie?",
     titel: "Das Dreieck unter dem Graphen",
@@ -6106,7 +6106,7 @@ const HEFT_SEITEN = {
   },
   "fm15": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "impuls", seite: 54,
+    sim: "impuls", seite: 56,
     kapitel: "Grundlagen der Mechanik",
     name: "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
     titel: "Die Summe mit Vorzeichen",
@@ -6115,7 +6115,7 @@ const HEFT_SEITEN = {
   },
   "fg1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "kreisbewegung", seite: 60,
+    sim: "kreisbewegung", seite: 62,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Wie schnell ist ein Punkt auf der Kreisbahn?",
     titel: "Außen sitzen, schneller fahren",
@@ -6124,7 +6124,7 @@ const HEFT_SEITEN = {
   },
   "fg2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "zentripetalkraft", seite: 64,
+    sim: "zentripetalkraft", seite: 66,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was hält den Körper auf der Kreisbahn?",
     titel: "Wer hält den Sitz auf der Bahn?",
@@ -6133,7 +6133,7 @@ const HEFT_SEITEN = {
   },
   "fg3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "zentripetalkraft", seite: 68,
+    sim: "zentripetalkraft", seite: 70,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Was sagt eine Messreihe über die Zentripetalkraft?",
     titel: "Sieben Messpunkte, eine Gerade",
@@ -6142,7 +6142,7 @@ const HEFT_SEITEN = {
   },
   "fg4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "gravitation-abstand", seite: 71,
+    sim: "gravitation-abstand", seite: 73,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Mehr Masse oder weniger Abstand – was wirkt stärker?",
     titel: "Masse gegen Abstand",
@@ -6151,7 +6151,7 @@ const HEFT_SEITEN = {
   },
   "fg5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "ortsfaktor", seite: 74,
+    sim: "ortsfaktor", seite: 76,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum wiegt derselbe Mensch auf dem Mond weniger?",
     titel: "Gleiche Person, anderer Ort",
@@ -6160,7 +6160,7 @@ const HEFT_SEITEN = {
   },
   "fg8": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "planetenbahn", seite: 83,
+    sim: "planetenbahn", seite: 85,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum fällt die Erde nicht in die Sonne?",
     titel: "Das ewige Vorbeifallen",
@@ -6169,7 +6169,7 @@ const HEFT_SEITEN = {
   },
   "fg10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "weltbild", seite: 89,
+    sim: "weltbild", seite: 91,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum läuft der Mars manchmal rückwärts?",
     titel: "Zwei Modelle, ein Himmel",
@@ -6178,7 +6178,7 @@ const HEFT_SEITEN = {
   },
   "fg12": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
-    sim: "lichtuhr", seite: 95,
+    sim: "lichtuhr", seite: 97,
     kapitel: "Kreisbewegung, Gravitation und Weltbilder",
     name: "Warum geht die bewegte Uhr langsamer?",
     titel: "Die Uhr, die langsamer tickt",
