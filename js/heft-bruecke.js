@@ -6311,6 +6311,60 @@ const HEFT_SEITEN = {
     frage: "Wie oft tickt eine bewegte Uhr, während die ruhende 200-mal tickt?",
     schritte: ["Drücke „6 · Zeitdehnung messen“.", "Stelle „Geschwindigkeit v/c“ auf 0,10. Das heißt: 10 % von c.", "Lies ab: „bewegte Ticks je 200 ruhende“. Trage Zeile 1 ein.", "Stelle nacheinander 0,60, 0,80 und 0,95 ein. Trage die Zeilen ein."]
   },
+  "mz1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-buendeln", seite: 7,
+    kapitel: "Große Zahlen",
+    name: "Zehn Einer sind ein Zehner",
+    titel: "Tarek schreibt 1 910",
+    frage: "Welche Zahl liegt da wirklich?",
+    schritte: ["Drücke „1 H, 9 Z, 10 E“. Sieh dir „Zahl:“ an.", "Drücke „bündeln“, bis „Es gibt nichts mehr zu bündeln.“ dasteht.", "Lies „Auf dem Tisch:“ und „Zahl:“ ab. Trage beides ein.", "Wiederhole a bis c mit „2 H, 9 Z, 12 E“, „0 H, 15 Z, 7 E“ und „4 H, 10 Z, 0 E“."]
+  },
+  "mz2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-stellenwert", seite: 10,
+    kapitel: "Große Zahlen",
+    name: "Welchen Wert hat die 4?",
+    titel: "Die wandernde Vier",
+    frage: "Welchen Wert hat die 4 in 34, 340, 3 400 und 34 000?",
+    schritte: ["Drücke „34“. Lies den Wert der 4 ab. Trage ihn ein.", "Drücke „340“. Lies ab: Wo steht die 4? Welchen Wert hat sie? Trage ein.", "Wiederhole Schritt b mit „3 400“ und mit „34 000“.", "Vergleiche die Werte der 4 von oben nach unten."]
+  },
+  "mz3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-null", seite: 13,
+    kapitel: "Große Zahlen",
+    name: "Wo bleibt die Null?",
+    titel: "Tarek schreibt 350",
+    frage: "Wie schreibt man dreitausendfünfzig mit Ziffern?",
+    schritte: ["Drücke „dreitausendfünfzig“. Lies ab, welche Stellen leer sind.", "Drücke „mit Ziffern schreiben“. Trage die Zahl ein.", "Wiederhole Schritt a und b mit den anderen drei Zahlwörtern. Trage alles ein.", "Drücke „ohne leere Stellen schreiben“. Lies ab, wie man die Zahl jetzt spricht."]
+  },
+  "mz4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-grosse-zahlen", seite: 16,
+    kapitel: "Große Zahlen",
+    name: "Wie liest man große Zahlen?",
+    titel: "83 000 000 im Radio",
+    frage: "Wie spricht man die Zahl 83 000 000?",
+    schritte: ["Drücke „Dortmund“. Versuche, die Zahl ohne Lücken zu lesen.", "Drücke „Gruppen bilden“. Trage die Zahl mit Lücken ein.", "Drücke „vorlesen“. Trage ein, wie man die Zahl spricht.", "Wiederhole a bis c mit „Nordrhein-Westfalen“, „Deutschland“ und „Erde“."]
+  },
+  "mz5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-zahlenstrahl", seite: 19,
+    kapitel: "Große Zahlen",
+    name: "Welche Zahl ist größer?",
+    titel: "9 870 oder 12 300?",
+    frage: "Welche Zahl ist größer: 9 870 oder 12 300?",
+    schritte: ["Drücke „9 870 und 12 300“. Zähle die Stellen jeder Zahl. Trage ein.", "Sieh am Zahlenstrahl nach, welche Zahl größer ist. Trage ein.", "Drücke „Lupe an“. Wiederhole a und b mit „4 506 und 4 560“, „7 999 und 8 001“ und „30 012 und 3 012“.", "Drücke „4 506 und 4 560“ und „Ziffern untereinander“. Welche Spalte leuchtet?"]
+  },
+  "mz6": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-runden", seite: 22,
+    kapitel: "Große Zahlen",
+    name: "Auf welche Zahl rundet man?",
+    titel: "2 449 – runter oder rauf?",
+    frage: "Was ist 2 449 auf Hunderter gerundet?",
+    schritte: ["Drücke „Hunderter“ und „2 449“. Lies die Abstände ab. Trage sie ein.", "Drücke „runden“. Lies ab, wo die Kugel liegt. Trage ein.", "Wiederhole a und b mit „2 451“, „2 450“ und „2 380“."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

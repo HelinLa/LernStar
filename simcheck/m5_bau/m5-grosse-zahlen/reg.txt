@@ -1,0 +1,1 @@
+  'm5-grosse-zahlen': modal => { _m5dInit(); modal.innerHTML = _m5dHTML(); _m5dStatus(); _pSim = new PhysicsSimEngine('_m5d-cv', '_m5d-cv'); _pSim.start(dt => _m5dUpdate(dt), (ctx, cv) => _m5dDraw(ctx, cv), []); },

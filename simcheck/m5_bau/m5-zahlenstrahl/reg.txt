@@ -1,0 +1,1 @@
+  'm5-zahlenstrahl': modal => { _m5eInit(); modal.innerHTML = _m5eHTML(); _m5eStatus(); _pSim = new PhysicsSimEngine('_m5e-cv', '_m5e-cv'); _pSim.start(dt => _m5eUpdate(dt), (ctx, cv) => _m5eDraw(ctx, cv), []); },

@@ -1,0 +1,1 @@
+  'm5-buendeln': modal => { _m5aInit(); modal.innerHTML = _m5aHTML(); _m5aStatus(); _pSim = new PhysicsSimEngine('_m5a-cv', '_m5a-cv'); _pSim.start(dt => _m5aUpdate(dt), (ctx, cv) => _m5aDraw(ctx, cv), []); },

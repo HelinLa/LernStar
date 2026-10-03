@@ -7583,6 +7583,12 @@ const _physSimDefs = {
   'kraftwerke': modal => { _f10iInit(); modal.innerHTML = _f10iHTML(); _f10iStatus(); _pSim = new PhysicsSimEngine('_f10i-cv', '_f10i-cv'); _pSim.start(dt => _f10iUpdate(dt), (ctx, cv) => _f10iDraw(ctx, cv), []); },
 
   'energietraeger': modal => { _f10jInit(); modal.innerHTML = _f10jHTML(); _f10jStatus(); _pSim = new PhysicsSimEngine('_f10j-cv', '_f10j-cv'); _pSim.start(dt => _f10jUpdate(dt), (ctx, cv) => _f10jDraw(ctx, cv), []); },
+  'm5-buendeln': modal => { _m5aInit(); modal.innerHTML = _m5aHTML(); _m5aStatus(); _pSim = new PhysicsSimEngine('_m5a-cv', '_m5a-cv'); _pSim.start(dt => _m5aUpdate(dt), (ctx, cv) => _m5aDraw(ctx, cv), []); },
+  'm5-stellenwert': modal => { _m5bInit(); modal.innerHTML = _m5bHTML(); _m5bStatus(); _pSim = new PhysicsSimEngine('_m5b-cv', '_m5b-cv'); _pSim.start(dt => _m5bUpdate(dt), (ctx, cv) => _m5bDraw(ctx, cv), []); },
+  'm5-null': modal => { _m5cInit(); modal.innerHTML = _m5cHTML(); _m5cStatus(); _pSim = new PhysicsSimEngine('_m5c-cv', '_m5c-cv'); _pSim.start(dt => _m5cUpdate(dt), (ctx, cv) => _m5cDraw(ctx, cv), []); },
+  'm5-grosse-zahlen': modal => { _m5dInit(); modal.innerHTML = _m5dHTML(); _m5dStatus(); _pSim = new PhysicsSimEngine('_m5d-cv', '_m5d-cv'); _pSim.start(dt => _m5dUpdate(dt), (ctx, cv) => _m5dDraw(ctx, cv), []); },
+  'm5-zahlenstrahl': modal => { _m5eInit(); modal.innerHTML = _m5eHTML(); _m5eStatus(); _pSim = new PhysicsSimEngine('_m5e-cv', '_m5e-cv'); _pSim.start(dt => _m5eUpdate(dt), (ctx, cv) => _m5eDraw(ctx, cv), []); },
+  'm5-runden': modal => { _m5fInit(); modal.innerHTML = _m5fHTML(); _m5fStatus(); _pSim = new PhysicsSimEngine('_m5f-cv', '_m5f-cv'); _pSim.start(dt => _m5fUpdate(dt), (ctx, cv) => _m5fDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -145640,4 +145646,3030 @@ function _f10jBaum(ctx, x, s, kipp, sw, a) {
   ctx.fillStyle = '#22c55e';
   ctx.beginPath(); ctx.arc(sw - r * 0.3, -h - r * 0.9, r * 0.55, 0, 2 * Math.PI); ctx.fill();
   ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mz1 „Zehn Einer sind ein Zehner“ (Kennung m5-buendeln)
+// Ueberschrift = Frage der Einheit: „Welche Zahl liegt da wirklich?“
+//
+// Was man sieht: einen Legetisch, gebaut wie eine Stellenwerttafel. Vier
+// Felder nebeneinander, links nach rechts T | H | Z | E; oben in jedem Feld
+// der Buchstabe gross und darunter das Wort („Tausender“, „Hunderter“,
+// „Zehner“, „Einer“). Das Material liegt in Zehner- und Fuenferstruktur,
+// nie als Haufen:
+//   Einer      gruene Wuerfelchen in Fuenferreihen; zwei Reihen = zehn,
+//              danach eine Luecke
+//   Zehner     blaue Stangen aus 10 Wuerfeln mit dunkler Fuenfermarke in der
+//              Mitte, in Fuenfergruppen nebeneinander, zehn je Reihe
+//   Hunderter  rote Platten 10 x 10 mit Fuenferlinien, in Fuenferreihen
+//   Tausender  lila Wuerfel, in Fuenfersaeulen
+// Unten im Bild, unter jedem Feld, steht die ANZAHL der Stuecke – das ist
+// die Tafel T · H · Z · E. Eine Anzahl ab 10 ist orange hinterlegt und
+// pulsiert leise. T bleibt leer, solange dort nichts liegt. (Die Tafel steht
+// IM Bild statt als HTML unter der Leinwand: so fluchten ihre Zellen immer
+// mit den Feldern darueber, auch im Vollbild, und sie leuchtet im selben
+// Augenblick auf, in dem das Material landet.)
+//
+// Knoepfe (Bauplan mz1, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_m5aMarke('…')):
+//     „1 H, 9 Z, 10 E“ · „2 H, 9 Z, 12 E“ · „0 H, 15 Z, 7 E“ · „4 H, 10 Z, 0 E“
+//   Reihe 2: „+ 1 Einer“ · „+ 1 Zehner“ · „+ 1 Hunderter“ (_m5aPlus(1|10|100))
+//            · „bündeln“ (_m5aBuendeln()) · „neu“ (_m5aNeu())
+// Eine Sprungmarke raeumt den Tisch ab und legt das Material neu: die Stuecke
+// fallen gestaffelt von oben in ihre Plaetze (rund 0,7 s). „+ 1 …“ laesst
+// ein Stueck in sein Feld fallen.
+//
+// „bündeln“ macht EINEN Tausch, von rechts her: die erste Stelle (E, dann Z,
+// dann H) mit 10 oder mehr Stueck. Zehn Stueck gleiten zusammen (0,8 s:
+// zehn Einer zu einer Saeule, zehn Stangen zu einem Quadrat, zehn Platten zu
+// einem Stapel), verschmelzen mit kurzem Aufhellen zu einem Stueck der
+// naechsten Stelle, und das gleitet ins linke Feld (0,6 s) – die Platte
+// schrumpft dabei auf ihre Feldgroesse. ERST BEI DER LANDUNG springen Tafel
+// und Statuszeilen um; die beiden beteiligten Zellen leuchten kurz. Wer
+// waehrend der Bewegung einen Knopf drueckt, laesst den Tausch sofort landen
+// und dann geschieht das Neue (so ergibt jede Knopffolge denselben Zustand).
+// Nichts mehr zu tauschen -> Statuszeile „Es gibt nichts mehr zu bündeln.“
+//
+// Grenzen: „+ 1 …“ legt je Feld bis 19 Stueck, danach „Das Feld ist voll.“
+// (das Feld wackelt kurz). Ein Buendel darf ein Feld auf 20 bringen – sonst
+// saesse man bei 19 Einern und 19 Zehnern fest. Ist das Zielfeld voll, nimmt
+// „bündeln“ die naechste Stelle weiter links; geht gar nichts, steht „Das
+// Feld ist voll.“ da. T traegt hoechstens 9 Wuerfel: links davon gibt es
+// kein Feld mehr (erreichbar nur mit rund hundert Mal „+ 1 Hunderter“).
+//
+// Statuszeilen (woertlich):
+//   _m5a-tisch    „Auf dem Tisch: 1 H, 9 Z, 10 E“ (T nur, wenn > 0:
+//                 „Auf dem Tisch: 1 T, 0 H, 0 Z, 0 E“)
+//   _m5a-zahl     „Zahl: ?“, solange eine Stelle 10 oder mehr hat, sonst
+//                 „Zahl: 200“ (Tausendertrenner U+00A0: „Zahl: 1 000“)
+//   _m5a-menge    „Zusammen: 200 Einer“ – bleibt beim Buendeln gleich, das
+//                 ist die Invariante
+//   _m5a-meldung  nur bei Bedarf: „Es gibt nichts mehr zu bündeln.“ ·
+//                 „Das Feld ist voll.“
+//
+// Werte (jeder Schritt nachgerechnet mit simcheck/werte.js):
+//   1 H, 9 Z, 10 E -> 1 H, 10 Z, 0 E (Zahl: ?) -> 2 H, 0 Z, 0 E · Zahl: 200
+//                     · Zusammen: 200 Einer (vorher, dazwischen, danach)
+//   2 H, 9 Z, 12 E -> 2 H, 10 Z, 2 E (Zahl: ?) -> 3 H, 0 Z, 2 E · Zahl: 302
+//   0 H, 15 Z, 7 E -> 1 H, 5 Z, 7 E · Zahl: 157
+//   4 H, 10 Z, 0 E -> 5 H, 0 Z, 0 E · Zahl: 500
+// Start: leerer Tisch, „Auf dem Tisch: 0 H, 0 Z, 0 E“, „Zahl: 0“,
+// „Zusammen: 0 Einer“.
+//
+// Aha (_bioFx, ruhig, OHNE Textstreifen): die zweite Buendelung in Zeile 1 –
+// zehn Zehner werden ein Hunderter, unmittelbar nachdem zehn Einer ein
+// Zehner wurden (1 H, 10 Z, 0 E -> 2 H). Dann laeuft ein Lichtring ueber das
+// Hunderterfeld (um die Platte, die gerade gelandet ist), und die Zelle H
+// der Tafel leuchtet laenger nach. Dasselbe in Zeile 2 (2 H, 10 Z, 2 E ->
+// 3 H). Wird eine Zahl lesbar (keine Stelle mehr ab 10), leuchten alle
+// Zellen der Tafel kurz auf – ohne Wort.
+//
+// Faktendump: simfakten.js nimmt nur Textfelder ueber 18 Zeichen auf. „Zahl:
+// 200“ ist kuerzer und fehlt deshalb im Dump; die Zahl steht dort in
+// „Zusammen: 200 Einer“, die Zeile „Zahl: …“ belegt werte.js.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): das Merksatzwort
+// „einem“, „höchstens“, „neun“ – und ueberhaupt keine Regel: Die Seite
+// benennt sie erst im Merksatz. Keine Namen, keine Punkte, keine Zeit.
+// Deterministisch, ohne Zufall.
+// ════════════════════════════════════════════════════════════════════════
+let _m5a = null;
+const _m5aREIHE = ['T', 'H', 'Z', 'E'];                 // links nach rechts
+const _m5aNACH = { E: 'Z', Z: 'H', H: 'T' };            // wohin ein Buendel gleitet
+const _m5aWORT = { T: 'Tausender', H: 'Hunderter', Z: 'Zehner', E: 'Einer' };
+const _m5aMARKEN = {                                      // [H, Z, E]
+  '1-9-10': [1, 9, 10], '2-9-12': [2, 9, 12], '0-15-7': [0, 15, 7], '4-10-0': [4, 10, 0]
+};
+const _m5aK = {
+  VOLL: 19,                    // „+ 1 …“ legt bis hierhin
+  PLATZ: 20,                   // so viele Stuecke fasst ein Feld (19 + 1 aus einem Buendel)
+  T_MAX: 9,                    // links von T gibt es kein Feld
+  SAMMELN: 0.8, GLEITEN: 0.6, BLITZ: 0.3,   // s
+  X0: 6, X1: 414,              // Tisch links/rechts
+  Y0: 6, YK: 42, YT: 194, Y1: 244,          // oben, Kopf bis YK, Tafelzeile ab YT, unten
+  SP: { T: [6, 74], H: [74, 228], Z: [228, 332], E: [332, 414] }   // Felder (x von, x bis)
+};
+const _m5aFARBE = {
+  T: { grund: '#f5f3ff', fuell: '#c4b5fd', oben: '#ede9fe', seite: '#a78bfa', rand: '#6d28d9' },
+  H: { grund: '#fef2f2', fuell: '#fca5a5', linie: 'rgba(185,28,28,0.35)', rand: '#b91c1c' },
+  Z: { grund: '#eff6ff', fuell: '#93c5fd', linie: 'rgba(29,78,216,0.45)', rand: '#1d4ed8' },
+  E: { grund: '#f0fdf4', fuell: '#86efac', licht: '#dcfce7', rand: '#15803d' }
+};
+
+// Platz des i-ten Stuecks (0 = erstes) in einem Feld: Kasten x, y, w, h.
+function _m5aPlatz(st, i) {
+  const S = _m5aK.SP[st][0];
+  if (st === 'E') {                       // Fuenferreihen, nach zehn eine Luecke
+    const c = i % 5, r = Math.floor(i / 5);
+    return { x: S + 7.5 + c * 14, y: 52 + r * 14 + (r >= 2 ? 7 : 0), w: 11, h: 11 };
+  }
+  if (st === 'Z') {                       // zehn Stangen je Reihe, 5 + 5
+    const k = i % 10, r = Math.floor(i / 10);
+    return { x: S + 5.5 + k * 9 + (k >= 5 ? 5 : 0), y: 52 + r * 67, w: 7, h: 55 };
+  }
+  if (st === 'H') {                       // Fuenferreihen, nach zehn eine Luecke
+    const c = i % 5, r = Math.floor(i / 5);
+    return { x: S + 6 + c * 29, y: 52 + r * 29 + (r >= 2 ? 8 : 0), w: 26, h: 26 };
+  }
+  const c = Math.floor(i / 5), r = i % 5;  // T: Fuenfersaeulen
+  return { x: S + 4 + c * 32, y: 47 + r * 29, w: 28, h: 28 };
+}
+// Wohin das k-te der zehn Stuecke beim Sammeln gleitet.
+function _m5aSammelZiel(st, k) {
+  if (st === 'E') return { x: 369.5, y: 128 + k * 5.5, w: 7, h: 5.5 };   // Saeule = Stange
+  if (st === 'Z') return { x: 252.5 + k * 5.5, y: 52, w: 5.5, h: 55 };   // Quadrat = Platte
+  return { x: 138, y: 78 - k * 2.2, w: 26, h: 26 };                      // Stapel = Wuerfel
+}
+// Wo das verschmolzene Stueck entsteht.
+function _m5aBuendelStart(st) {
+  if (st === 'E') return { x: 369.5, y: 128, w: 7, h: 55 };
+  if (st === 'Z') return { x: 252.5, y: 52, w: 55, h: 55 };
+  return { x: 134, y: 60, w: 34, h: 34 };
+}
+// Ein neues Stueck, das von oben in seinen Platz faellt.
+function _m5aStueck(st, i, verz) {
+  const p = _m5aPlatz(st, i);
+  return { art: st, x: p.x, y: p.y - 26, w: p.w, h: p.h, tx: p.x, ty: p.y, tw: p.w, th: p.h,
+           a: 0, verz: verz || 0 };
+}
+
+function _m5aInit() {
+  _m5a = { n: { T: 0, H: 0, Z: 0, E: 0 }, feld: { T: [], H: [], Z: [], E: [] }, weg: [],
+           anim: null, meldung: '', letzte: null, t: 0, alle: 0,
+           glanz: { T: 0, H: 0, Z: 0, E: 0 }, wackel: { T: 0, H: 0, Z: 0, E: 0 },
+           fx: { teile: [] } };
+}
+function _m5aHTML() {
+  const m = (k, txt) => `<button class="sim-btn" onclick="_m5aMarke('${k}')">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welche Zahl liegt da wirklich?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lege mit den Knöpfen Stücke auf den Tisch. Drücke dann „bündeln“ und sieh genau hin.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5a-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${m('1-9-10', '1 H, 9 Z, 10 E')}
+          ${m('2-9-12', '2 H, 9 Z, 12 E')}
+          ${m('0-15-7', '0 H, 15 Z, 7 E')}
+          ${m('4-10-0', '4 H, 10 Z, 0 E')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_m5aPlus(1)">+ 1 Einer</button>
+          <button class="sim-btn" onclick="_m5aPlus(10)">+ 1 Zehner</button>
+          <button class="sim-btn" onclick="_m5aPlus(100)">+ 1 Hunderter</button>
+          <button class="sim-btn primary" onclick="_m5aBuendeln()">bündeln</button>
+          <button class="sim-btn" onclick="_m5aNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Ablesen</div>
+        <div class="lmp-status on" id="_m5a-tisch" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5a-zahl" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5a-menge" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5a-meldung" style="margin-top:6px;display:none"></div>
+        <div class="fpm-note" style="margin-top:10px">Unten im Bild steht, wie viele Stücke in jedem Feld liegen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: leerer Tisch</p>
+  </div>`;
+}
+
+// ── Zahlen und Statuszeilen ─────────────────────────────────────────────
+function _m5aFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+function _m5aMenge() { const n = _m5a.n; return n.T * 1000 + n.H * 100 + n.Z * 10 + n.E; }
+function _m5aOffen() { const n = _m5a.n; return n.T >= 10 || n.H >= 10 || n.Z >= 10 || n.E >= 10; }
+function _m5aTischText() {
+  const n = _m5a.n;
+  return (n.T > 0 ? n.T + ' T, ' : '') + n.H + ' H, ' + n.Z + ' Z, ' + n.E + ' E';
+}
+function _m5aStatus() {
+  if (!_m5a) return;
+  const z = _m5a;
+  const setze = (id, s) => { const e = document.getElementById(id); if (e) e.textContent = s; return e; };
+  setze('_m5a-tisch', 'Auf dem Tisch: ' + _m5aTischText());
+  setze('_m5a-zahl', 'Zahl: ' + (_m5aOffen() ? '?' : _m5aFmt(_m5aMenge())));
+  setze('_m5a-menge', 'Zusammen: ' + _m5aFmt(_m5aMenge()) + ' Einer');
+  const m = setze('_m5a-meldung', z.meldung);
+  if (m && m.style) m.style.display = z.meldung ? '' : 'none';
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Alles, was auf dem Tisch liegt (auch ein Buendel unterwegs), faellt weg.
+function _m5aAbraeumen() {
+  const z = _m5a;
+  for (const st of _m5aREIHE) { for (const p of z.feld[st]) z.weg.push(p); z.feld[st] = []; }
+  if (z.anim) {
+    for (const p of z.anim.teile) z.weg.push(p);
+    if (z.anim.stueck) z.weg.push(z.anim.stueck);
+    z.anim = null;
+  }
+}
+// Ein laufender Tausch landet sofort (vor jeder neuen Bedienung).
+function _m5aFertig() { if (_m5a && _m5a.anim) _m5aLanden(); }
+
+function _m5aMarke(k) {
+  if (!_m5a || !_m5aMARKEN[k]) return;
+  const z = _m5a, [h, zz, e] = _m5aMARKEN[k];
+  _m5aAbraeumen();
+  z.n = { T: 0, H: h, Z: zz, E: e };
+  let j = 0;
+  for (const st of _m5aREIHE)
+    for (let i = 0; i < z.n[st]; i++) z.feld[st].push(_m5aStueck(st, i, 0.12 + 0.022 * j++));
+  for (const st of _m5aREIHE) { z.glanz[st] = 0; z.wackel[st] = 0; }
+  z.meldung = ''; z.letzte = null; z.alle = 0;
+  _m5aStatus();
+}
+function _m5aPlus(w) {
+  if (!_m5a) return;
+  const st = w === 1 ? 'E' : w === 10 ? 'Z' : w === 100 ? 'H' : null;
+  if (!st) return;
+  const z = _m5a;
+  _m5aFertig();
+  if (z.n[st] >= _m5aK.VOLL) {
+    z.meldung = 'Das Feld ist voll.'; z.wackel[st] = 0.45;
+    _m5aStatus(); return;
+  }
+  z.feld[st].push(_m5aStueck(st, z.n[st], 0));
+  z.n[st]++;
+  z.glanz[st] = 0.7; z.meldung = ''; z.letzte = null;
+  _m5aStatus();
+}
+function _m5aBuendeln() {
+  if (!_m5a) return;
+  const z = _m5a, K = _m5aK;
+  _m5aFertig();
+  let von = null, voll = null;
+  for (const st of ['E', 'Z', 'H']) {
+    if (z.n[st] < 10) continue;
+    const nach = _m5aNACH[st], grenze = nach === 'T' ? K.T_MAX : K.PLATZ;
+    if (z.n[nach] >= grenze) { if (!voll) voll = nach; continue; }
+    von = st; break;
+  }
+  if (!von) {
+    z.meldung = voll ? 'Das Feld ist voll.' : 'Es gibt nichts mehr zu bündeln.';
+    if (voll) z.wackel[voll] = 0.45;
+    _m5aStatus(); return;
+  }
+  const nach = _m5aNACH[von];
+  // Die ersten zehn Stuecke (volle Reihe bzw. volles Zehnerfeld) gehen los.
+  const teile = z.feld[von].splice(0, 10).map((p, k) => {
+    const da = p.verz > 0 || p.a < 0.5;           // noch im Fallen: vom Platz aus
+    const x = da ? p.tx : p.x, y = da ? p.ty : p.y, w = da ? p.tw : p.w, h = da ? p.th : p.h;
+    const q = _m5aSammelZiel(von, k);
+    return { art: von, a: 1, x, y, w, h, x0: x, y0: y, w0: w, h0: h, x1: q.x, y1: q.y, w1: q.w, h1: q.h };
+  });
+  z.anim = { von, nach, phase: 'sammeln', t: 0, teile, stueck: null, blitz: 0,
+             s0: _m5aBuendelStart(von), s1: _m5aPlatz(nach, z.n[nach]),
+             aha: von === 'Z' && z.letzte === 'E' };
+  z.meldung = '';
+  z.glanz[von] = 0.8;
+  _m5aStatus();
+}
+function _m5aNeu() {
+  if (!_m5a) return;
+  const z = _m5a;
+  _m5aAbraeumen();
+  z.n = { T: 0, H: 0, Z: 0, E: 0 };
+  for (const st of _m5aREIHE) { z.glanz[st] = 0; z.wackel[st] = 0; }
+  z.meldung = ''; z.letzte = null; z.alle = 0;
+  _m5aStatus();
+}
+// Die uebrigen Stuecke eines Feldes ruecken auf die ersten Plaetze nach.
+function _m5aNachruecken(st, verz) {
+  _m5a.feld[st].forEach((p, i) => {
+    const q = _m5aPlatz(st, i);
+    if (p.tx !== q.x || p.ty !== q.y) { p.tx = q.x; p.ty = q.y; p.tw = q.w; p.th = q.h; if (verz) p.verz = Math.max(p.verz, verz); }
+  });
+}
+// Landung: erst JETZT aendern sich Anzahlen, Tafel und Statuszeilen.
+function _m5aLanden() {
+  const z = _m5a, a = z.anim;
+  if (!a) return;
+  z.anim = null;
+  z.n[a.von] -= 10; z.n[a.nach] += 1;
+  const p = _m5aPlatz(a.nach, z.n[a.nach] - 1);
+  z.feld[a.nach].push({ art: a.nach, x: p.x, y: p.y, w: p.w, h: p.h, tx: p.x, ty: p.y, tw: p.w, th: p.h, a: 1, verz: 0 });
+  _m5aNachruecken(a.von);
+  z.glanz[a.von] = 0.9; z.glanz[a.nach] = 0.9;
+  z.letzte = a.von;
+  if (a.aha) {
+    // Aha: zehn Zehner sind ein Hunderter geworden. Ruhiger Ring, kein Text.
+    _bioFxWelle(z.fx.teile, p.x + p.w / 2, p.y + p.h / 2, '#f59e0b', 46);
+    z.glanz.H = 2.4;
+  }
+  if (!_m5aOffen()) z.alle = 1.2;
+  _m5aStatus();
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5aUpdate(dt) {
+  if (!_m5a) return;
+  dt = _bioFxDt(dt);
+  const z = _m5a, K = _m5aK;
+  z.t += dt;
+  const k = 1 - Math.exp(-dt * 11);
+  for (const st of _m5aREIHE) {
+    for (const p of z.feld[st]) {
+      if (p.verz > 0) { p.verz -= dt; continue; }
+      p.x += (p.tx - p.x) * k; p.y += (p.ty - p.y) * k;
+      p.w += (p.tw - p.w) * k; p.h += (p.th - p.h) * k;
+      p.a += (1 - p.a) * k;
+      if (Math.abs(p.tx - p.x) + Math.abs(p.ty - p.y) + Math.abs(p.tw - p.w) + Math.abs(p.th - p.h) < 0.05 && p.a > 0.995) {
+        p.x = p.tx; p.y = p.ty; p.w = p.tw; p.h = p.th; p.a = 1;
+      }
+    }
+    z.glanz[st] = Math.max(0, z.glanz[st] - dt);
+    z.wackel[st] = Math.max(0, z.wackel[st] - dt);
+  }
+  z.alle = Math.max(0, z.alle - dt);
+  for (let i = z.weg.length - 1; i >= 0; i--) {
+    const p = z.weg[i];
+    p.a -= dt / 0.25; p.y += 40 * dt;
+    if (p.a <= 0) z.weg.splice(i, 1);
+  }
+  const a = z.anim;
+  if (a) {
+    a.t += dt;
+    if (a.phase === 'sammeln') {
+      const u = _bioFxEase.sanft(Math.min(1, a.t / K.SAMMELN));
+      for (const p of a.teile) {
+        p.x = p.x0 + (p.x1 - p.x0) * u; p.y = p.y0 + (p.y1 - p.y0) * u;
+        p.w = p.w0 + (p.w1 - p.w0) * u; p.h = p.h0 + (p.h1 - p.h0) * u;
+      }
+      if (a.t >= K.SAMMELN) {
+        // verschmelzen: aus zehn Stuecken wird eins der naechsten Stelle
+        a.phase = 'gleiten'; a.t = 0; a.blitz = K.BLITZ; a.teile = [];
+        a.stueck = { art: a.nach, a: 1, x: a.s0.x, y: a.s0.y, w: a.s0.w, h: a.s0.h };
+        _m5aNachruecken(a.von, 0.2);
+      }
+    } else {
+      a.blitz = Math.max(0, a.blitz - dt);
+      const u = _bioFxEase.sanft(Math.min(1, a.t / K.GLEITEN)), s = a.stueck;
+      s.x = a.s0.x + (a.s1.x - a.s0.x) * u; s.y = a.s0.y + (a.s1.y - a.s0.y) * u;
+      s.w = a.s0.w + (a.s1.w - a.s0.w) * u; s.h = a.s0.h + (a.s1.h - a.s0.h) * u;
+      if (a.t >= K.GLEITEN) _m5aLanden();
+    }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5aEiner(ctx, x, y, w, h) {
+  const F = _m5aFARBE.E;
+  ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x, y, w, h, Math.min(2.5, w / 4, h / 4)); ctx.fill(); ctx.stroke();
+  if (w > 8 && h > 8) {
+    ctx.strokeStyle = F.licht; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x + 2.5, y + h - 3); ctx.lineTo(x + 2.5, y + 2.5); ctx.lineTo(x + w - 3, y + 2.5); ctx.stroke();
+  }
+}
+function _m5aStange(ctx, x, y, w, h) {
+  const F = _m5aFARBE.Z;
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = 0.8;
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    const yy = y + h * k / 10;
+    ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x + w, yy); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = 1.8;           // Fuenfermarke
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+}
+function _m5aPlatte(ctx, x, y, w, h) {
+  const F = _m5aFARBE.H;
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = Math.max(0.4, w / 70);
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    ctx.beginPath(); ctx.moveTo(x + w * k / 10, y); ctx.lineTo(x + w * k / 10, y + h); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = Math.max(0.9, w / 32);   // Fuenferlinien
+  ctx.beginPath(); ctx.moveTo(x + w / 2, y); ctx.lineTo(x + w / 2, y + h); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+}
+function _m5aWuerfel(ctx, x, y, w) {
+  const F = _m5aFARBE.T, d = w * 0.26, s = w - d;
+  ctx.lineWidth = 1; ctx.strokeStyle = F.rand;
+  ctx.fillStyle = F.oben;                                   // Deckel
+  ctx.beginPath(); ctx.moveTo(x, y + d); ctx.lineTo(x + d, y); ctx.lineTo(x + d + s, y); ctx.lineTo(x + s, y + d); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = F.seite;                                  // Seite
+  ctx.beginPath(); ctx.moveTo(x + s, y + d); ctx.lineTo(x + s + d, y); ctx.lineTo(x + s + d, y + s); ctx.lineTo(x + s, y + d + s); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y + d, s, s);    // Vorderseite
+  ctx.strokeRect(x, y + d, s, s);
+  ctx.strokeStyle = 'rgba(109,40,217,0.55)'; ctx.lineWidth = Math.max(0.8, w / 30);   // Fuenferlinien
+  ctx.beginPath(); ctx.moveTo(x + s / 2, y + d); ctx.lineTo(x + s / 2, y + d + s); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + d + s / 2); ctx.lineTo(x + s, y + d + s / 2); ctx.stroke();
+}
+function _m5aZeichneStueck(ctx, p, dx) {
+  const al = Math.max(0, Math.min(1, p.a));
+  if (al <= 0.01) return;
+  ctx.save(); ctx.globalAlpha = al;
+  const x = p.x + (dx || 0);
+  if (p.art === 'E') _m5aEiner(ctx, x, p.y, p.w, p.h);
+  else if (p.art === 'Z') _m5aStange(ctx, x, p.y, p.w, p.h);
+  else if (p.art === 'H') _m5aPlatte(ctx, x, p.y, p.w, p.h);
+  else _m5aWuerfel(ctx, x, p.y, p.w);
+  ctx.restore();
+}
+function _m5aText(ctx, s, x, y, groesse, farbe, fett) {
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.font = (fett === false ? '400 ' : '700 ') + groesse + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _m5aDraw(ctx, cv) {
+  if (!_m5a) return;
+  const z = _m5a, K = _m5aK, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tisch
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.X0, K.Y0, K.X1 - K.X0, K.Y1 - K.Y0, 10); ctx.fill();
+  // Kopf: Buchstabe und Wort je Feld
+  for (const st of _m5aREIHE) {
+    const [a, b] = K.SP[st], cx = (a + b) / 2, F = _m5aFARBE[st];
+    ctx.fillStyle = F.grund;
+    _bioFxRundRect(ctx, a + 4, K.Y0 + 4, b - a - 8, K.YK - K.Y0 - 6, 7); ctx.fill();
+    _m5aText(ctx, st, cx, 25, 17, F.rand);
+    _m5aText(ctx, _m5aWORT[st], cx, 38, 11, '#334155', false);
+  }
+  // Linien der Tafel
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  for (const st of ['H', 'Z', 'E']) {
+    const x = K.SP[st][0];
+    ctx.beginPath(); ctx.moveTo(x, K.YK); ctx.lineTo(x, K.Y1); ctx.stroke();
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(K.X0, K.YK); ctx.lineTo(K.X1, K.YK); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(K.X0, K.YT); ctx.lineTo(K.X1, K.YT); ctx.stroke();
+  // Material
+  for (const st of _m5aREIHE) {
+    const wk = z.wackel[st], dx = wk > 0 ? Math.sin(wk * 48) * 3 * (wk / 0.45) : 0;
+    for (const p of z.feld[st]) _m5aZeichneStueck(ctx, p, dx);
+  }
+  for (const p of z.weg) _m5aZeichneStueck(ctx, p);
+  const an = z.anim;
+  if (an) {
+    for (const p of an.teile) _m5aZeichneStueck(ctx, p);
+    if (an.stueck) {
+      _m5aZeichneStueck(ctx, an.stueck);
+      if (an.blitz > 0) {                                   // kurzes Aufhellen beim Verschmelzen
+        const s = an.stueck;
+        ctx.save(); ctx.globalAlpha = 0.75 * an.blitz / K.BLITZ; ctx.fillStyle = '#ffffff';
+        ctx.fillRect(s.x - 2, s.y - 2, s.w + 4, s.h + 4); ctx.restore();
+      }
+    }
+  }
+  // Tafelzeile: die Anzahl je Feld, ab 10 orange
+  const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+  for (const st of _m5aREIHE) {
+    const [a, b] = K.SP[st], cx = (a + b) / 2, n = z.n[st];
+    const x = a + 5, y = K.YT + 5, w = b - a - 10, h = K.Y1 - K.YT - 10;
+    const viel = n >= 10;
+    ctx.fillStyle = viel ? '#fed7aa' : '#f8fafc';
+    ctx.strokeStyle = viel ? '#ea580c' : '#cbd5e1';
+    ctx.lineWidth = viel ? 2 + puls : 1;
+    _bioFxRundRect(ctx, x, y, w, h, 7); ctx.fill(); ctx.stroke();
+    const gl = Math.max(Math.min(1, z.glanz[st] / 0.5), Math.min(1, z.alle / 0.6) * 0.8);
+    if (gl > 0.01) {
+      ctx.save(); ctx.globalAlpha = gl; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3.5;
+      _bioFxRundRect(ctx, x - 2, y - 2, w + 4, h + 4, 9); ctx.stroke(); ctx.restore();
+    }
+    if (st !== 'T' || n > 0) _m5aText(ctx, String(n), cx, y + h / 2 + 9, 24, '#1f2937');
+  }
+  // Rahmen des Tisches
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.X0, K.Y0, K.X1 - K.X0, K.Y1 - K.Y0, 10); ctx.stroke();
+  _bioFxDraw(ctx, z.fx.teile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mz2 „Welchen Wert hat die 4?“
+// (Kennung m5-stellenwert, Praefix _m5b, Bauplan KAPITEL1_PROFIL.md)
+//
+// Was man sieht: Oben eine Tafel mit sechs Spalten HT | ZT | T | H | Z | E
+// (Kopfzeile grau), darunter die Ziffernkarten der Zahl, rechtsbuendig.
+// Eine Karte ist orange markiert (Start: die 4 in 34). Unter der Tafel
+// liegt der Wert der markierten Ziffer als Material, im Schraegbild und in
+// Zehner-/Fuenferstruktur (Gitterlinien, jede fuenfte kraeftiger):
+//   Einer = Wuerfelchen · Zehner = Stange aus 10 Wuerfelchen ·
+//   Hunderter = Platte 10 × 10 · Tausender = Wuerfel 10 × 10 × 10 ·
+//   Zehntausender = Riegel aus 10 Tausenderwuerfeln (schematisch) ·
+//   Hunderttausender = Feld aus 10 Riegeln (schematisch).
+// Eine orange Linie fuehrt von der markierten Karte zu einer Klammer ueber
+// dem Material; darunter die Bildunterschrift „4 Hunderter = 400“ (Zahl in
+// Orange) – Bild und Zeichen sind so sichtbar verbunden.
+//
+// Bewegung (0,8 s, weich): Beim Wechsel 34 → 340 rueckt jede Karte eine
+// Spalte nach links, in der E-Spalte faellt eine 0 herein, und jedes Stueck
+// Material zieht sich zur naechsten Form auseinander (Wuerfelchen → Stange
+// → Platte → Wuerfel → Riegel), waehrend das Bild herauszoomt. Rueckwaerts
+// laeuft dieselbe Bewegung umgekehrt. Sprung ueber mehrere Spalten und
+// „andere Ziffer markieren“: altes Material blendet aus, neues ein; die
+// Markierung wechselt die Karte weich. Beim Oeffnen fallen die Karten herein
+// und das Material erscheint.
+//
+// Knoepfe (Bauplan, woertlich): „34“ · „340“ · „3 400“ · „34 000“ (Wahl-
+// gruppe _m5bZahl('…'); die markierte Ziffer wandert mit) · „andere Ziffer
+// markieren“ (zur naechsten von 0 verschiedenen Ziffer nach links, im Kreis)
+// · „neu“ (34, die 4 markiert). Tausendertrenner als geschuetztes
+// Leerzeichen (U+00A0).
+//
+// Statuszeilen (woertlich):
+//   _m5b-zahl  „Zahl: 3 400“
+//   _m5b-ort   „Die 4 steht bei den Hundertern.“ (Einern · Zehnern ·
+//              Hundertern · Tausendern · Zehntausendern · Hunderttausendern)
+//   _m5b-wert  „Wert der 4: 400“
+// Sie stehen sofort nach dem Knopfdruck (im selben Augenblick, in dem die
+// Bewegung beginnt); im Bild erscheint die Unterschrift mit dem Material.
+//
+// Werte (Bauplan, nachgerechnet mit simcheck/werte.js):
+//   die 4: 34 → Einern, 4 · 340 → Zehnern, 40 · 3 400 → Hundertern, 400 ·
+//          34 000 → Tausendern, 4 000
+//   die 3: 34 → Zehnern, 30 · 340 → Hundertern, 300 · 3 400 → Tausendern,
+//          3 000 · 34 000 → Zehntausendern, 30 000
+//
+// Aha (_bioFx, ruhig, OHNE Textstreifen): Jeder Schritt in Folge auf dem
+// Weg 34 → 340 → 3 400 → 34 000, bei dem die markierte Ziffer mitwandert,
+// endet mit einem Lichtring an der markierten Karte; ihr Rand glueht kurz nach.
+// Ist der ganze Weg Schritt fuer Schritt gegangen, laeuft zum Schluss ein
+// zweiter, groesserer Ring um die Bildunterschrift.
+//
+// NICHT am Bildschirm (sim_plan.nicht_am_bildschirm, Merksatz mz2):
+// „Stelle“ (auch nicht als Wortteil, also kein „Stellenwert“ und keine
+// „Stellenwerttafel“) und „zehnmal“ – kein „mal 10“, kein Faktor an den
+// Pfeilen. Die Regel muss das Kind aus seiner Tabelle selbst finden.
+// Deterministisch, ohne Zufall. Kein Urteil, keine Punkte, keine Zeit.
+// ════════════════════════════════════════════════════════════════════════
+let _m5b = null;
+const _m5bREIHE = [34, 340, 3400, 34000];
+const _m5bKURZ = ['E', 'Z', 'H', 'T', 'ZT', 'HT'];
+const _m5bNAME = ['Einer', 'Zehner', 'Hunderter', 'Tausender', 'Zehntausender', 'Hunderttausender'];
+const _m5bDATIV = ['Einern', 'Zehnern', 'Hundertern', 'Tausendern', 'Zehntausendern', 'Hunderttausendern'];
+const _m5bK = {
+  X0: 18, X1: 402,                 // Tafel links / rechts (6 Spalten zu 64 px)
+  KY: 8, KH: 24, ZH: 52,           // Oberkante, Hoehe Kopfzeile, Hoehe Kartenzeile
+  KW: 46, KHK: 40,                 // Karte: Breite, Hoehe
+  AX0: 20, AX1: 400,               // Materialfeld links / rechts
+  AY1: 212, AH: 110,               // Unterkante und Hoehe des Materialfelds
+  BY: 96,                          // hoechste Lage der Klammer
+  CY: 239,                         // Grundlinie der Bildunterschrift
+  Q: 0.35,                         // Tiefe im Schraegbild
+  GAP: 10,                         // Luft zwischen zwei Stuecken (px)
+  DAUER: 0.8                       // s je Bewegung
+};
+// Formen in Wuerfelchen (Breite w, Hoehe h, Tiefe d). achse = Richtung, in
+// die das Stueck der vorigen Form sich auseinanderzieht. uMax = groesster
+// Massstab (px je Wuerfelchen), damit kleine Stuecke nicht riesig werden.
+const _m5bFORM = [
+  { w: 1,   h: 1,   d: 1,  uMax: 22 },                            // Einer
+  { w: 1,   h: 10,  d: 1,  uMax: 10,  achse: 'h' },               // Zehner
+  { w: 10,  h: 10,  d: 1,  uMax: 8,   achse: 'w' },               // Hunderter
+  { w: 10,  h: 10,  d: 10, uMax: 6.4, achse: 'd' },               // Tausender
+  { w: 100, h: 10,  d: 10, uMax: 2.0, achse: 'w', stapel: true }, // Zehntausender
+  { w: 100, h: 100, d: 10, uMax: 0.9, achse: 'h' }                // Hunderttausender
+];
+const _m5bFARBE = {
+  vorn: '#fed7aa', oben: '#ffedd5', seite: '#fdba74', kante: '#c2410c',
+  gitter: '154,52,18', linie: '#ea580c', wert: '#c2410c'
+};
+
+// ── Zahlen ───────────────────────────────────────────────────────────────
+function _m5bFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'); }
+function _m5bZiffer(n, p) { return Math.floor(n / Math.pow(10, p)) % 10; }
+function _m5bLaenge(n) { return String(n).length; }
+function _m5bWert(n, p) { return _m5bZiffer(n, p) * Math.pow(10, p); }
+function _m5bSpalteX(p) { const K = _m5bK, cw = (K.X1 - K.X0) / 6; return K.X0 + (5 - p + 0.5) * cw; }
+function _m5bKarteY() { const K = _m5bK; return K.KY + K.KH + K.ZH / 2; }
+function _m5bMisch(a, b, t) { return a + (b - a) * t; }
+function _m5bFarbe(c1, c2, t) {
+  const h = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+  const a = h(c1), b = h(c2);
+  return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',') + ')';
+}
+
+// ── Zustand ──────────────────────────────────────────────────────────────
+function _m5bInit() {
+  _m5b = { zahl: 34, mark: 0, alt: null, t: 0, an: true, weg: 0, ring: false,
+           glanz: 0, uhr: 0, fx: { teile: [] } };
+}
+// Neuen Zustand setzen und die Bewegung starten. Gibt false zurueck, wenn
+// sich nichts aendert.
+function _m5bSetze(zahl, mark) {
+  const z = _m5b;
+  if (zahl === z.zahl && mark === z.mark) return false;
+  const k0 = _m5bREIHE.indexOf(z.zahl), k1 = _m5bREIHE.indexOf(zahl);
+  const schritt = k1 === k0 + 1;
+  // Weg 34 → 340 → 3 400 → 34 000 Schritt fuer Schritt (ohne Spruenge)
+  if (zahl !== z.zahl) z.weg = schritt && z.weg === k0 ? k1 : (k1 === 0 ? 0 : -1);
+  // Lichtring nur, wenn die markierte Ziffer einen Schritt mitgewandert ist
+  z.ring = schritt && mark === z.mark + 1;
+  z.alt = { zahl: z.zahl, mark: z.mark };
+  z.zahl = zahl; z.mark = mark; z.t = 0; z.an = true;
+  return true;
+}
+
+// ── Oberflaeche ──────────────────────────────────────────────────────────
+function _m5bHTML() {
+  const k = n => `<button class="sim-btn${n === 34 ? ' primary' : ''}" id="_m5b-b-${n}" onclick="_m5bZahl('${n}')">${_m5bFmt(n)}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welchen Wert hat die 4 in 34, 340, 3 400 und 34 000?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die orange Karte ist markiert. Das Material unten zeigt, wie viel sie wert ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5b-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5bREIHE.map(k).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_m5bAndere()">andere Ziffer markieren</button>
+          <button class="sim-btn" onclick="_m5bNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Ablesen</div>
+        <div class="lmp-status on" id="_m5b-zahl" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5b-ort" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5b-wert" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">HT Hunderttausender · ZT Zehntausender · T Tausender · H Hunderter · Z Zehner · E Einer</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 34, die 4 ist markiert</p>
+  </div>`;
+}
+function _m5bStatus() {
+  if (!_m5b) return;
+  const z = _m5b, d = _m5bZiffer(z.zahl, z.mark);
+  const setze = (id, s) => { const e = document.getElementById(id); if (e) e.textContent = s; };
+  setze('_m5b-zahl', 'Zahl: ' + _m5bFmt(z.zahl));
+  setze('_m5b-ort', 'Die ' + d + ' steht bei den ' + _m5bDATIV[z.mark] + '.');
+  setze('_m5b-wert', 'Wert der ' + d + ': ' + _m5bFmt(_m5bWert(z.zahl, z.mark)));
+  for (const n of _m5bREIHE) {
+    const b = document.getElementById('_m5b-b-' + n);
+    if (b && b.classList) b.classList.toggle('primary', n === z.zahl);
+  }
+}
+// Sprungmarke: die markierte Ziffer wandert mit (die 4 bleibt die 4).
+function _m5bZahl(s) {
+  if (!_m5b) return;
+  const zahl = Number(s), k1 = _m5bREIHE.indexOf(zahl);
+  if (k1 < 0) return;
+  const k0 = _m5bREIHE.indexOf(_m5b.zahl);
+  if (_m5bSetze(zahl, _m5b.mark + (k1 - k0))) _m5bStatus();
+}
+// Markierung zur naechsten von 0 verschiedenen Ziffer nach links, im Kreis.
+function _m5bAndere() {
+  if (!_m5b) return;
+  const z = _m5b, n = _m5bLaenge(z.zahl);
+  for (let i = 1; i <= n; i++) {
+    const p = (z.mark + i) % n;
+    if (_m5bZiffer(z.zahl, p) !== 0) {
+      if (_m5bSetze(z.zahl, p)) _m5bStatus();
+      return;
+    }
+  }
+}
+function _m5bNeu() {
+  if (!_m5b) return;
+  _m5bSetze(34, 0);
+  _m5b.weg = 0;
+  _m5bStatus();
+}
+
+// ── Ablauf ───────────────────────────────────────────────────────────────
+function _m5bAngekommen() {
+  const z = _m5b, K = _m5bK;
+  if (z.ring) {
+    _bioFxWelle(z.fx.teile, _m5bSpalteX(z.mark), _m5bKarteY(), '#f59e0b', 42);
+    z.glanz = 1.6;
+    if (z.weg === 3) {
+      // der ganze Weg ist gegangen: ein zweiter Ring um die Unterschrift
+      _bioFxWelle(z.fx.teile, (K.AX0 + K.AX1) / 2, K.CY - 6, '#f59e0b', 56);
+    }
+  }
+  z.ring = false;
+}
+function _m5bUpdate(dt) {
+  if (!_m5b) return;
+  dt = _bioFxDt(dt);
+  const z = _m5b;
+  z.uhr += dt;
+  if (z.an) {
+    z.t += dt;
+    if (z.t >= _m5bK.DAUER) { z.t = _m5bK.DAUER; z.an = false; _m5bAngekommen(); }
+  }
+  z.glanz = Math.max(0, z.glanz - dt);
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// ── Material: Lage und Zeichnung ─────────────────────────────────────────
+// Lage von n Stuecken der Form f im Materialfeld. x, y = linke untere Ecke
+// der Vorderseite; alle Stuecke stehen auf der Unterkante des Feldes.
+function _m5bLage(f, n) {
+  const F = _m5bFORM[f], K = _m5bK;
+  const bw = F.w + K.Q * F.d, bh = F.h + K.Q * F.d;
+  const reihe = Math.min(n, 5), zwei = Math.max(1, Math.ceil(n / 5));
+  const cols = F.stapel ? zwei : reihe, rows = F.stapel ? reihe : zwei;
+  const u = Math.min(F.uMax,
+                     (K.AX1 - K.AX0 - (cols - 1) * K.GAP) / (cols * bw),
+                     (K.AH - (rows - 1) * K.GAP) / (rows * bh));
+  const pw = bw * u, ph = bh * u;
+  const TW = cols * pw + (cols - 1) * K.GAP, TH = rows * ph + (rows - 1) * K.GAP;
+  const x0 = (K.AX0 + K.AX1) / 2 - TW / 2, y0 = K.AY1 - TH;
+  const st = [];
+  for (let i = 0; i < n; i++) {
+    const r = F.stapel ? i % 5 : Math.floor(i / 5), c = F.stapel ? Math.floor(i / 5) : i % 5;
+    st.push({ x: x0 + c * (pw + K.GAP), y: y0 + r * (ph + K.GAP) + ph });
+  }
+  return { u, pw, ph, st };
+}
+// Ausdehnung eines Stuecks (fuer die Klammer)
+function _m5bMass(s) {
+  const F = _m5bFORM[s.f], Q = _m5bK.Q;
+  const W = F.w * s.u * s.sx, H = F.h * s.u * s.sy, D = F.d * s.u * s.sz * Q;
+  return { x0: s.x, x1: s.x + W + D, y0: s.y - H - D, y1: s.y };
+}
+// Gitterlinien einer Achse: jedes Wuerfelchen (fein) und jeder Zehnerblock
+// (grob). Zu enge Linien blenden weich aus; jede fuenfte ist kraeftiger.
+function _m5bLinien(L, sp) {
+  const a1 = _bioFxKlemme((sp - 2) / 3), a10 = _bioFxKlemme((sp * 10 - 2) / 3);
+  const out = [];
+  for (let i = 1; i < L; i++) {
+    const grob = i % 10 === 0, a = grob ? a10 : a1;
+    if (a <= 0.02) continue;
+    out.push({ i, a, grob, dick: grob ? i % 50 === 0 : i % 5 === 0 });
+  }
+  return out;
+}
+function _m5bStrich(ctx, x1, y1, x2, y2, l) {
+  ctx.strokeStyle = 'rgba(' + _m5bFARBE.gitter + ',' + (l.a * (l.dick ? 0.95 : l.grob ? 0.8 : 0.42)).toFixed(3) + ')';
+  ctx.lineWidth = l.dick ? 1.6 : l.grob ? 1.2 : 0.8;
+  ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+}
+// Ein Stueck im Schraegbild. s = {f, x, y, u, sx, sy, sz, a}
+function _m5bKlotz(ctx, s) {
+  const F = _m5bFORM[s.f], Q = _m5bK.Q, C = _m5bFARBE;
+  const W = F.w * s.u * s.sx, H = F.h * s.u * s.sy, D = F.d * s.u * s.sz * Q;
+  const x = s.x, y = s.y;
+  if (s.a <= 0.01 || W < 0.3 || H < 0.3) return;
+  ctx.save();
+  ctx.globalAlpha = s.a;
+  ctx.lineJoin = 'round';
+  // Flaechen: vorn, oben, rechts
+  ctx.fillStyle = C.vorn; ctx.fillRect(x, y - H, W, H);
+  ctx.fillStyle = C.oben;
+  ctx.beginPath(); ctx.moveTo(x, y - H); ctx.lineTo(x + W, y - H);
+  ctx.lineTo(x + W + D, y - H - D); ctx.lineTo(x + D, y - H - D); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = C.seite;
+  ctx.beginPath(); ctx.moveTo(x + W, y - H); ctx.lineTo(x + W, y);
+  ctx.lineTo(x + W + D, y - D); ctx.lineTo(x + W + D, y - H - D); ctx.closePath(); ctx.fill();
+  // Gitter
+  const spx = s.u * s.sx, spy = s.u * s.sy, spz = s.u * s.sz * Q;
+  for (const l of _m5bLinien(F.w, spx)) {
+    const X = x + l.i * spx;
+    _m5bStrich(ctx, X, y, X, y - H, l);
+    _m5bStrich(ctx, X, y - H, X + D, y - H - D, l);
+  }
+  for (const l of _m5bLinien(F.h, spy)) {
+    const Y = y - l.i * spy;
+    _m5bStrich(ctx, x, Y, x + W, Y, l);
+    _m5bStrich(ctx, x + W, Y, x + W + D, Y - D, l);
+  }
+  for (const l of _m5bLinien(F.d, spz * 1.6)) {
+    const Z = l.i * spz;
+    _m5bStrich(ctx, x + Z, y - H - Z, x + W + Z, y - H - Z, l);
+    _m5bStrich(ctx, x + W + Z, y - Z, x + W + Z, y - H - Z, l);
+  }
+  // Kanten
+  ctx.strokeStyle = C.kante; ctx.lineWidth = 1.2;
+  ctx.strokeRect(x, y - H, W, H);
+  ctx.beginPath();
+  ctx.moveTo(x, y - H); ctx.lineTo(x + D, y - H - D); ctx.lineTo(x + W + D, y - H - D);
+  ctx.lineTo(x + W + D, y - D); ctx.lineTo(x + W, y);
+  ctx.moveTo(x + W, y - H); ctx.lineTo(x + W + D, y - H - D);
+  ctx.stroke();
+  ctx.restore();
+}
+// Stuecke eines ruhenden Zustands, mit Zoom k um die Mitte der Unterkante
+function _m5bRuhend(f, n, a, k) {
+  const L = _m5bLage(f, n), out = [];
+  for (const p of L.st) {
+    const cx = p.x + L.pw / 2;
+    out.push({ f, x: cx - L.pw * k / 2, y: p.y, u: L.u * k, sx: 1, sy: 1, sz: 1, a });
+  }
+  return out;
+}
+// Alle Stuecke des aktuellen Bildes (mit Bewegung)
+function _m5bStuecke(e) {
+  const z = _m5b, A = z.an ? z.alt : null;
+  const fB = z.mark, nB = _m5bZiffer(z.zahl, z.mark);
+  if (!z.an) return _m5bRuhend(fB, nB, 1, 1);
+  if (!A) return _m5bRuhend(fB, nB, _bioFxKlemme(e * 1.4), 0.8 + 0.2 * e);   // Start
+  const fA = A.mark, nA = _m5bZiffer(A.zahl, A.mark);
+  const kA = _m5bREIHE.indexOf(A.zahl), kB = _m5bREIHE.indexOf(z.zahl);
+  const mit = nA === nB && fB - fA === kB - kA && Math.abs(fB - fA) === 1;
+  if (mit) {
+    // Jedes Stueck zieht sich zur naechsten Form auseinander (oder zurueck).
+    // g = Weg von der kleinen zur grossen Form (0 klein, 1 gross).
+    const auf = fB > fA, f = Math.max(fA, fB), F = _m5bFORM[f], ach = F.achse;
+    const Lk = auf ? _m5bLage(fA, nA) : _m5bLage(fB, nB);    // kleine Form
+    const Lg = auf ? _m5bLage(fB, nB) : _m5bLage(fA, nA);    // grosse Form
+    const g = auf ? e : 1 - e, lang = ach === 'w' ? F.w : ach === 'h' ? F.h : F.d;
+    let u, sa, gp;
+    if (!!_m5bFORM[fA].stapel === !!_m5bFORM[fB].stapel) {
+      // gleiche Anordnung: Massstab und gezeichnete Laenge wachsen gleichmaessig
+      // (Laenge linear, sonst schiesst sie in der Mitte ueber das Ziel hinaus)
+      u = _m5bMisch(Lk.u, Lg.u, g); gp = g;
+      sa = _m5bMisch(lang / 10 * Lk.u, lang * Lg.u, g) / (lang * u);
+    } else {
+      // andere Anordnung (Wuerfel in der Reihe → Riegel uebereinander):
+      // erst ruecken die Stuecke an ihren Platz, dann ziehen sie sich auseinander
+      gp = _bioFxKlemme(g * 2);
+      u = _m5bMisch(Lk.u, Lg.u, gp);
+      sa = _m5bMisch(0.1, 1, _bioFxKlemme(g * 2 - 1));
+    }
+    return Lk.st.map((p, i) => ({ f, u, a: 1,
+      x: _m5bMisch(p.x, Lg.st[i].x, gp), y: _m5bMisch(p.y, Lg.st[i].y, gp),
+      sx: ach === 'w' ? sa : 1, sy: ach === 'h' ? sa : 1, sz: ach === 'd' ? sa : 1 }));
+  }
+  // Sonst: altes Material blendet aus, neues ein
+  return _m5bRuhend(fA, nA, 1 - _bioFxKlemme(e * 1.7), 1 - 0.12 * e)
+    .concat(_m5bRuhend(fB, nB, _bioFxKlemme((e - 0.35) * 1.6), 0.88 + 0.12 * e));
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _m5bText(ctx, s, x, y, ausr, farbe, groesse, gewicht) {
+  ctx.fillStyle = farbe || '#1e293b';
+  ctx.font = (gewicht || '700') + ' ' + (groesse || 14) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Pfad der Kopfzeile: oben rund, unten gerade
+function _m5bKopfPfad(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x, y + h); ctx.lineTo(x, y + r); ctx.arcTo(x, y, x + r, y, r);
+  ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y, x + w, y + r, r);
+  ctx.lineTo(x + w, y + h); ctx.closePath();
+}
+function _m5bKarte(ctx, x, y, ziffer, o, a, glut) {
+  const K = _m5bK, w = K.KW, h = K.KHK;
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, x - w / 2 + 2, y - h / 2 + 3, w, h, 7); ctx.fill();
+  if (glut > 0) {
+    // ruhiger Glanz: ein heller Rand, kein Blinken
+    ctx.strokeStyle = 'rgba(251,191,36,' + (0.55 * glut).toFixed(3) + ')'; ctx.lineWidth = 6;
+    _bioFxRundRect(ctx, x - w / 2 - 4, y - h / 2 - 4, w + 8, h + 8, 10); ctx.stroke();
+  }
+  ctx.fillStyle = _m5bFarbe('#ffffff', '#fdba74', o);
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 7); ctx.fill();
+  ctx.strokeStyle = _m5bFarbe('#94a3b8', '#ea580c', o); ctx.lineWidth = 1.5 + 1.5 * o;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 7); ctx.stroke();
+  _m5bText(ctx, String(ziffer), x, y + 10, 'center', _m5bFarbe('#1e293b', '#7c2d12', o), 28);
+  ctx.restore();
+}
+function _m5bTafel(ctx, e) {
+  const z = _m5b, K = _m5bK, cw = (K.X1 - K.X0) / 6;
+  const yK = K.KY, yZ = K.KY + K.KH, yU = yZ + K.ZH, w = K.X1 - K.X0;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.X0, yK, w, K.KH + K.ZH, 9); ctx.fill();
+  ctx.fillStyle = '#e2e8f0';
+  _m5bKopfPfad(ctx, K.X0, yK, w, K.KH, 9); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let c = 1; c < 6; c++) {
+    ctx.beginPath(); ctx.moveTo(K.X0 + c * cw, yK); ctx.lineTo(K.X0 + c * cw, yU); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(K.X0, yZ); ctx.lineTo(K.X1, yZ); ctx.stroke();
+  for (let p = 0; p < 6; p++) _m5bText(ctx, _m5bKURZ[p], _m5bSpalteX(p), yK + 17, 'center', '#334155', 14);
+  _bioFxRundRect(ctx, K.X0, yK, w, K.KH + K.ZH, 9); ctx.stroke();
+
+  // Karten: Ziel B, Herkunft A (beim Wechsel ruecken alle um dieselbe Zahl Spalten)
+  const yC = _m5bKarteY(), A = z.an ? z.alt : null;
+  const karten = [];
+  if (!A) {
+    const a = z.an ? _bioFxKlemme(e * 1.6) : 1, dy = z.an ? -16 * (1 - e) : 0;
+    for (let p = 0; p < _m5bLaenge(z.zahl); p++)
+      karten.push({ x: _m5bSpalteX(p), y: yC + dy, d: _m5bZiffer(z.zahl, p), o: p === z.mark ? 1 : 0, a });
+  } else {
+    const s = _m5bREIHE.indexOf(z.zahl) - _m5bREIHE.indexOf(A.zahl);
+    for (let p = 0; p < _m5bLaenge(A.zahl); p++) {
+      const q = p + s;                                   // Platz in der neuen Zahl
+      const o = (p === A.mark ? 1 - e : 0) + (q === z.mark ? e : 0);
+      karten.push({ x: _m5bMisch(_m5bSpalteX(p), _m5bSpalteX(q), e), y: yC,
+                    d: _m5bZiffer(A.zahl, p), o, a: q < 0 ? 1 - _bioFxKlemme(e * 2.5) : 1 });
+    }
+    // neue Nullen fallen herein, wenn die Karten davor fast weitergerueckt sind
+    for (let q = 0; q < s; q++)
+      karten.push({ x: _m5bSpalteX(q), y: yC - 16 * (1 - e), d: 0, o: 0, a: _bioFxKlemme((e - 0.55) * 2.6) });
+  }
+  karten.sort((a, b) => a.o - b.o);
+  // nach einem Schritt in Folge glueht der Rand der markierten Karte kurz nach
+  const g = _bioFxKlemme(z.glanz / 0.6);
+  for (const k of karten) _m5bKarte(ctx, k.x, k.y, k.d, k.o, k.a, k.o > 0.5 ? g : 0);
+}
+// Orange Linie von der markierten Karte zur Klammer ueber dem Material
+function _m5bKlammer(ctx, e, st) {
+  const z = _m5b, K = _m5bK;
+  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, a = 0;
+  for (const s of st) {
+    if (s.a < 0.05) continue;
+    const m = _m5bMass(s);
+    x0 = Math.min(x0, m.x0); x1 = Math.max(x1, m.x1); y0 = Math.min(y0, m.y0); a = Math.max(a, s.a);
+  }
+  if (!isFinite(x0)) return;
+  const A = z.an ? z.alt : null;
+  const xk = A ? _m5bMisch(_m5bSpalteX(A.mark), _m5bSpalteX(z.mark), e) : _m5bSpalteX(z.mark);
+  const yk = _m5bKarteY() + K.KHK / 2 + 3, yb = Math.max(K.BY, y0 - 9), xm = (x0 + x1) / 2;
+  ctx.save();
+  ctx.globalAlpha = A ? 1 : (z.an ? _bioFxKlemme(e * 1.4) : 1) * Math.max(a, 0.4);
+  ctx.strokeStyle = _m5bFARBE.linie; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(xk, yk);
+  ctx.bezierCurveTo(xk, yk + (yb - yk) * 0.6, xm, yb - (yb - yk) * 0.5, xm, yb);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x0, yb + 5); ctx.lineTo(x0, yb); ctx.lineTo(x1, yb); ctx.lineTo(x1, yb + 5);
+  ctx.stroke();
+  ctx.fillStyle = _m5bFARBE.linie;
+  ctx.beginPath(); ctx.arc(xk, yk, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+// Bildunterschrift „4 Hunderter = 400“: am Gleichheitszeichen ausgerichtet
+// (links die Stuecke, rechts der Wert in Orange) – so steht sie unabhaengig
+// von der Schriftbreite ruhig in der Mitte.
+function _m5bUnterschrift(ctx, zahl, mark, a) {
+  if (a <= 0.01) return;
+  const K = _m5bK, d = _m5bZiffer(zahl, mark), xm = (K.AX0 + K.AX1) / 2;
+  ctx.save();
+  ctx.globalAlpha = a;
+  _m5bText(ctx, d + ' ' + _m5bNAME[mark], xm - 13, K.CY, 'right', '#334155', 17);
+  _m5bText(ctx, '=', xm, K.CY, 'center', '#334155', 17);
+  _m5bText(ctx, _m5bFmt(_m5bWert(zahl, mark)), xm + 13, K.CY, 'left', _m5bFARBE.wert, 20);
+  ctx.restore();
+}
+function _m5bDraw(ctx, cv) {
+  if (!_m5b) return;
+  const z = _m5b, K = _m5bK, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const e = z.an ? _bioFxEase.sanft(_bioFxKlemme(z.t / K.DAUER)) : 1;
+  _m5bTafel(ctx, e);
+  const st = _m5bStuecke(e);
+  _m5bKlammer(ctx, e, st);
+  for (const s of st) _m5bKlotz(ctx, s);
+  // Unterschrift: die alte blendet aus, die neue ein
+  const A = z.an ? z.alt : null;
+  if (A) _m5bUnterschrift(ctx, A.zahl, A.mark, 1 - _bioFxKlemme(e * 2));
+  _m5bUnterschrift(ctx, z.zahl, z.mark, A ? _bioFxKlemme(e * 2 - 1) : (z.an ? _bioFxKlemme(e * 1.4) : 1));
+  _bioFxDraw(ctx, z.fx.teile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHE 5 FOERDER – mz3 „Wo bleibt die Null?“  (Kennung m5-null, Praefix _m5c)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL1_PROFIL.md, Abschnitt m5-null.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, von oben nach unten):
+//   - das Zahlwort gross. Nach der Wahl zerfaellt es in seine zwei Teile
+//     („dreitausend“ · „fünfzig“), jeder Teil leuchtet auf, und seine
+//     Ziffernkarte fliegt in ihre Spalte (Teil 1 blau, Teil 2 gruen - Wortteil
+//     und Karte tragen dieselbe Farbe, das ist die Verbindung Wort <-> Karte).
+//   - die Stellenwerttafel HT | ZT | T | H | Z | E (Kuerzel in der Kopfzeile,
+//     dicker Strich zwischen T und H = Tausendergrenze). Leere Spalten INNERHALB
+//     der Zahl bleiben leer und sind hellgrau gestrichelt umrandet; die Spalten
+//     links der ersten Karte gehoeren nicht zur Zahl und sind nur blass getoent.
+//   - die Zeile „Mit Ziffern“ unter der Tafel, Spalte fuer Spalte unter ihrer
+//     Spalte, und darunter der Kasten „Zahl“ mit der geschriebenen Zahl
+//     („3 050“, nach der Gegenprobe orange „35“).
+//
+// KNOEPFE (woertlich):
+//   Reihe 1 (Sprungmarken = Tabellenzeilen im Heft):
+//     „dreitausendfünfzig“ · „zweitausendsieben“ · „vierzigtausendzwanzig“ ·
+//     „sechshunderttausendacht“                  (Wahlgruppe _m5cWahl('…'))
+//   Reihe 2: „mit Ziffern schreiben“ (_m5cSchreiben) · „ohne leere Stellen
+//     schreiben“ (_m5cOhne, Gegenprobe) · „neu“ (_m5cNeu)
+//   „mit Ziffern schreiben“: Spalte fuer Spalte von links ab der ersten
+//   belegten (1,0 s); eine belegte Spalte gibt ihre Ziffer (sie faellt aus der
+//   Karte in die Zeile), eine leere eine 0, die orange aufleuchtet. Danach
+//   steht die Zahl im Kasten.
+//   „ohne leere Stellen schreiben“: Nur die Karten-Ziffern ruecken in der
+//   Zeile nach rechts zusammen (die 0 verblassen, 0,8 s), gestrichelte Linien
+//   zeigen, wohin jede Ziffer gewandert ist; die Tafel bleibt, wie sie ist.
+//   „neu“: wie beim Oeffnen - dreitausendfünfzig wird neu gelegt.
+//
+// STATUSZEILEN (woertlich):
+//   _m5c-wort     „Zahlwort: dreitausendfünfzig“
+//   _m5c-tafel    „In der Tafel: 3 T, 5 Z“ (waechst mit jeder gelandeten Karte;
+//                 vor der ersten „In der Tafel: …“)
+//   _m5c-leer     „Leere Stellen: H und E“ (sobald beide Karten liegen, vorher
+//                 „Leere Stellen: …“)
+//   _m5c-ziffern  „Zahl mit Ziffern: …“ bis zum Schreiben, dann „Zahl mit
+//                 Ziffern: 3 050“; nach der Gegenprobe „Ohne leere Stellen: 35 –
+//                 so liest man das: fünfunddreißig“
+//   Tausendertrenner ist das geschuetzte Leerzeichen U+00A0.
+//
+//   ABWEICHUNG vom Bauplan (Gegenpruefung 03.10.2026): Der Bauplan nennt
+//   „Leer: H und E“ und „Mit Ziffern: 3 050“. simcheck/simfakten.js nimmt nur
+//   Textfelder mit MEHR als 18 Zeichen in den Faktendump auf: „Leer: H und E“
+//   hat 13, „Leer: T, H und E“ 16, „Mit Ziffern: 3 050“ genau 18. Vier der
+//   acht Werte, die lehrer.tabelle_erwartet verlangt, fehlten damit im Dump
+//   (gegen MATHE_PROFIL § 10.12) – derselbe Grund wie bei m5-grosse-zahlen.
+//   „Leere Stellen:“ traegt zugleich das Wort der Heftspalte („Welche Stellen
+//   sind leer?“), „Zahl mit Ziffern:“ das Wort des Kastens „Zahl“ im Bild.
+//
+// WERTE (Profil mz3, alle nachgerechnet mit simcheck/werte.js):
+//   dreitausendfünfzig      3 T, 5 Z   · Leer: H und E          · 3 050   · ohne: 35, fünfunddreißig
+//   zweitausendsieben       2 T, 7 E   · Leer: H und Z          · 2 007   · ohne: 27, siebenundzwanzig
+//   vierzigtausendzwanzig   4 ZT, 2 Z  · Leer: T, H und E       · 40 020  · ohne: 42, zweiundvierzig
+//   sechshunderttausendacht 6 HT, 8 E  · Leer: ZT, T, H und Z   · 600 008 · ohne: 68, achtundsechzig
+//
+// START: dreitausendfünfzig wird beim Oeffnen gelegt (die Karten fliegen),
+//   noch nicht mit Ziffern geschrieben.
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen): bei der Gegenprobe faerbt sich das
+//   Zahlwort oben orange um und heisst jetzt „fünfunddreißig“; je ein
+//   Lichtring (_bioFxWelle) zeigt auf jede leere Spalte der Tafel - genau dort
+//   fehlt jetzt etwas.
+//
+// NICHT AM BILDSCHIRM (sim_plan.nicht_am_bildschirm, Merksatzwoerter mz3):
+//   „Null“ (als Wort - die Ziffer 0 steht natuerlich da) und „Wert“, auch nicht
+//   als Wortteil (deshalb auch keine Beschriftung „Stellenwerttafel“). Kein
+//   „falsch“, keine Punkte, keine Zeit, keine Namen. Deterministisch, ohne Zufall.
+// ════════════════════════════════════════════════════════════════════════
+let _m5c = null;
+// Spalten: 0 HT · 1 ZT · 2 T · 3 H · 4 Z · 5 E.
+// teile: [Wortteil, Spalte, Ziffer]; ohne: so spricht man die zusammengerueckten Karten.
+const _m5cWORTE = {
+  dreitausendfuenfzig:     { wort: 'dreitausendfünfzig',
+                             teile: [['dreitausend', 2, 3], ['fünfzig', 4, 5]], ohne: 'fünfunddreißig' },
+  zweitausendsieben:       { wort: 'zweitausendsieben',
+                             teile: [['zweitausend', 2, 2], ['sieben', 5, 7]], ohne: 'siebenundzwanzig' },
+  vierzigtausendzwanzig:   { wort: 'vierzigtausendzwanzig',
+                             teile: [['vierzigtausend', 1, 4], ['zwanzig', 4, 2]], ohne: 'zweiundvierzig' },
+  sechshunderttausendacht: { wort: 'sechshunderttausendacht',
+                             teile: [['sechshunderttausend', 0, 6], ['acht', 5, 8]], ohne: 'achtundsechzig' }
+};
+const _m5cREIHE = ['dreitausendfuenfzig', 'zweitausendsieben', 'vierzigtausendzwanzig', 'sechshunderttausendacht'];
+const _m5cSPALTEN = ['HT', 'ZT', 'T', 'H', 'Z', 'E'];
+const _m5cK = {
+  W: 420, H: 250,
+  X0: 98, CW: 52,               // Tafel: linker Rand, Spaltenbreite (6 Spalten bis 410)
+  WY: 27, WH: 34,               // Zahlwortzeile: Mitte, Hoehe der Wortteile
+  KY0: 58, KY1: 80,             // Kopfzeile der Tafel
+  ZY0: 80, ZY1: 128,            // Kartenzeile
+  RY0: 140, RY1: 182,           // Zeile „Mit Ziffern“
+  BY0: 194, BY1: 242,           // Kasten mit der geschriebenen Zahl
+  FLUG: 0.5,                    // s je Kartenflug
+  START: [0.25, 0.6],           // s: Abflug der Karte 1 und 2
+  SCHREIBEN: 1.0,               // s fuer alle Spalten zusammen
+  FALL: 0.2,                    // s, bis eine Ziffer in der Zeile steht
+  RUECKEN: 0.8,                 // s: Ende des Zusammenrueckens (Gegenprobe)
+  OHNE: 1.4                     // s: Ende der Gegenprobe (Wort ist umgefaerbt)
+};
+// Farben je Wortteil: [Grund, Rand, Schrift]
+const _m5cFARBE = [
+  { grund: '#dbeafe', rand: '#2563eb', schrift: '#1e3a8a' },
+  { grund: '#dcfce7', rand: '#16a34a', schrift: '#14532d' }
+];
+const _m5cORANGE = { grund: '#ffedd5', rand: '#ea580c', schrift: '#c2410c' };
+
+// ── Rechnen: alles kommt aus derselben Tabelle wie die Zeichnung ──────────
+function _m5cZahl(key) {
+  let n = 0;
+  for (const t of _m5cWORTE[key].teile) n += t[2] * Math.pow(10, 5 - t[1]);
+  return n;
+}
+function _m5cFormat(n) {
+  const s = String(n);
+  let out = '';
+  for (let i = 0; i < s.length; i++) {
+    if (i > 0 && (s.length - i) % 3 === 0) out += ' ';
+    out += s[i];
+  }
+  return out;
+}
+function _m5cErste(key) { return Math.min.apply(null, _m5cWORTE[key].teile.map(t => t[1])); }
+function _m5cBelegt(key, c) { return _m5cWORTE[key].teile.findIndex(t => t[1] === c); }
+function _m5cLeer(key) {
+  const out = [];
+  for (let c = _m5cErste(key); c <= 5; c++) if (_m5cBelegt(key, c) < 0) out.push(c);
+  return out;
+}
+function _m5cListe(a) {
+  if (a.length <= 1) return a.join('');
+  return a.slice(0, -1).join(', ') + ' und ' + a[a.length - 1];
+}
+// Ziffern der Karten ohne leere Stellen hintereinander: 3 und 5 -> 35
+function _m5cOhneZahl(key) {
+  return _m5cWORTE[key].teile.slice().sort((a, b) => a[1] - b[1]).map(t => t[2]).join('');
+}
+function _m5cMitte(c) { return _m5cK.X0 + c * _m5cK.CW + _m5cK.CW / 2; }
+function _m5cSanft(t) { t = t < 0 ? 0 : t > 1 ? 1 : t; return t * t * (3 - 2 * t); }
+
+// ── Zustand ───────────────────────────────────────────────────────────────
+function _m5cInit() {
+  _m5c = { key: 'dreitausendfuenfzig', t: 0, anim: null, at: 0, modus: 'gelegt',
+           gelandet: 0, vonGeschrieben: false, ohneFertig: false, seit: 0, tafelSeit: 0,
+           fx: { teile: [] } };
+  _m5cLegen('dreitausendfuenfzig');
+}
+function _m5cLegen(key) {
+  const z = _m5c;
+  z.key = key; z.modus = 'gelegt'; z.anim = 'legen'; z.at = 0; z.gelandet = 0;
+  z.ohneFertig = false; z.vonGeschrieben = false; z.fx.teile = [];
+}
+// Eine laufende Bewegung sofort zu Ende bringen (vor jeder neuen Handlung).
+function _m5cAbschliessen() {
+  const z = _m5c;
+  if (z.anim === 'legen') { z.gelandet = 2; z.modus = 'gelegt'; z.seit = 1; z.tafelSeit = 1; }
+  else if (z.anim === 'schreiben') { z.modus = 'geschrieben'; z.seit = 1; }
+  else if (z.anim === 'ohne' && !z.ohneFertig) { z.ohneFertig = true; z.modus = 'ohne'; z.seit = 1; _m5cAha(); }
+  z.anim = null; z.at = 0;
+}
+
+function _m5cHTML() {
+  const k = (key) => `<button class="sim-btn${key === 'dreitausendfuenfzig' ? ' primary' : ''}" id="_m5c-b-${key}" onclick="_m5cWahl('${key}')">${_m5cWORTE[key].wort}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie schreibt man dreitausendfünfzig mit Ziffern?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle ein Zahlwort. Jeder Teil des Wortes legt seine Ziffernkarte in die passende Spalte.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5c-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5cREIHE.map(k).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5c-schreiben" onclick="_m5cSchreiben()">mit Ziffern schreiben</button>
+          <button class="sim-btn" id="_m5c-ohne" onclick="_m5cOhne()">ohne leere Stellen schreiben</button>
+          <button class="sim-btn" onclick="_m5cNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5c-wort" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5c-tafel" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5c-leer" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5c-ziffern" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">HT Hunderttausender · ZT Zehntausender · T Tausender · H Hunderter · Z Zehner · E Einer</div>
+        <div class="fpm-note" style="margin-top:6px">Gestrichelt: In dieser Spalte liegt keine Karte.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: dreitausendfünfzig, noch nicht mit Ziffern geschrieben</p>
+  </div>`;
+}
+
+function _m5cZiffernText() {
+  const z = _m5c, d = _m5cWORTE[z.key];
+  if (z.anim === 'legen' || z.anim === 'schreiben') return 'Zahl mit Ziffern: …';
+  if (z.modus === 'geschrieben') return 'Zahl mit Ziffern: ' + _m5cFormat(_m5cZahl(z.key));
+  if (z.modus === 'ohne') return 'Ohne leere Stellen: ' + _m5cOhneZahl(z.key) + ' – so liest man das: ' + d.ohne;
+  return 'Zahl mit Ziffern: …';
+}
+function _m5cStatus() {
+  if (!_m5c) return;
+  const z = _m5c, d = _m5cWORTE[z.key];
+  const setze = (id, s) => { const e = document.getElementById(id); if (e) e.textContent = s; };
+  setze('_m5c-wort', 'Zahlwort: ' + d.wort);
+  const gel = z.anim === 'legen' ? z.gelandet : 2;
+  const liegt = d.teile.slice(0, gel).slice().sort((a, b) => a[1] - b[1]);
+  setze('_m5c-tafel', 'In der Tafel: ' +
+        (liegt.length ? liegt.map(t => t[2] + ' ' + _m5cSPALTEN[t[1]]).join(', ') : '…'));
+  setze('_m5c-leer', 'Leere Stellen: ' + (gel < 2 ? '…' : _m5cListe(_m5cLeer(z.key).map(c => _m5cSPALTEN[c]))));
+  setze('_m5c-ziffern', _m5cZiffernText());
+  for (const key of _m5cREIHE) {
+    const b = document.getElementById('_m5c-b-' + key);
+    if (b && b.classList) b.classList.toggle('primary', key === z.key);
+  }
+}
+
+// ── Knoepfe ───────────────────────────────────────────────────────────────
+function _m5cWahl(key) {
+  if (!_m5c || !_m5cWORTE[key]) return;
+  _m5cLegen(key);
+  _m5cStatus();
+}
+function _m5cSchreiben() {
+  if (!_m5c) return;
+  _m5cAbschliessen();
+  const z = _m5c;
+  z.fx.teile = [];
+  z.modus = 'gelegt';                                 // auch nach der Gegenprobe: neu schreiben
+  z.anim = 'schreiben'; z.at = 0; z.seit = 0;
+  _m5cStatus();
+}
+function _m5cOhne() {
+  if (!_m5c) return;
+  _m5cAbschliessen();
+  const z = _m5c;
+  if (z.modus === 'ohne') z.modus = 'gelegt';        // noch einmal von vorn zeigen
+  z.vonGeschrieben = z.modus === 'geschrieben';
+  z.fx.teile = [];
+  z.anim = 'ohne'; z.at = 0; z.ohneFertig = false; z.seit = 0;
+  _m5cStatus();
+}
+function _m5cNeu() {
+  if (!_m5c) return;
+  _m5cLegen('dreitausendfuenfzig');
+  _m5cStatus();
+}
+// Aha: ein ruhiger Lichtring auf jeder leeren Spalte der Tafel - ohne Text.
+function _m5cAha() {
+  const z = _m5c, K = _m5cK;
+  for (const c of _m5cLeer(z.key))
+    _bioFxWelle(z.fx.teile, _m5cMitte(c), (K.ZY0 + K.ZY1) / 2, '#f97316', 30);
+}
+
+function _m5cUpdate(dt) {
+  if (!_m5c) return;
+  dt = _bioFxDt(dt);
+  const z = _m5c, K = _m5cK;
+  z.t += dt;
+  z.seit += dt;
+  z.tafelSeit += dt;
+  if (z.anim) {
+    z.at += dt;
+    if (z.anim === 'legen') {
+      const n = (z.at >= K.START[0] + K.FLUG ? 1 : 0) + (z.at >= K.START[1] + K.FLUG ? 1 : 0);
+      if (n !== z.gelandet) {
+        z.gelandet = n;
+        if (n >= 2) { z.anim = null; z.modus = 'gelegt'; z.seit = 0; z.tafelSeit = 0; }
+        _m5cStatus();
+      }
+    } else if (z.anim === 'schreiben') {
+      if (z.at >= K.SCHREIBEN + 0.05) { z.anim = null; z.modus = 'geschrieben'; z.seit = 0; _m5cStatus(); }
+    } else if (z.anim === 'ohne') {
+      if (!z.ohneFertig && z.at >= K.RUECKEN) {
+        z.ohneFertig = true; z.modus = 'ohne'; z.seit = 0;
+        _m5cAha();
+        _m5cStatus();
+      }
+      if (z.at >= K.OHNE) z.anim = null;
+    }
+  }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// ── Zeichnen ──────────────────────────────────────────────────────────────
+function _m5cRund(ctx, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.arc(x + w - r, y + r, r, -Math.PI / 2, 0);
+  ctx.lineTo(x + w, y + h - r); ctx.arc(x + w - r, y + h - r, r, 0, Math.PI / 2);
+  ctx.lineTo(x + r, y + h); ctx.arc(x + r, y + h - r, r, Math.PI / 2, Math.PI);
+  ctx.lineTo(x, y + r); ctx.arc(x + r, y + r, r, Math.PI, Math.PI * 1.5);
+  ctx.closePath();
+}
+function _m5cText(ctx, s, x, y, groesse, farbe, ausr) {
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.font = '700 ' + (groesse || 13) + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(s, x, y);
+}
+function _m5cStrich(ctx, an) { if (ctx.setLineDash) ctx.setLineDash(an ? [4, 3] : []); }
+
+// Lage der Wortteile oben: Schriftgroesse passt sich der laengsten Zeile an.
+function _m5cWortLage(ctx, texte, spreiz) {
+  const K = _m5cK, PAD = 10, LUECKE = 16;
+  let fs = 22, ws = [];
+  for (let v = 0; v < 6; v++) {
+    ctx.font = '700 ' + fs + 'px sans-serif';
+    ws = texte.map(t => ctx.measureText(t).width);
+    const voll = ws.reduce((a, b) => a + b, 0) + texte.length * 2 * PAD + LUECKE * (texte.length - 1);
+    if (voll <= K.W - 24 || fs <= 15) break;
+    fs = Math.max(15, Math.floor(fs * (K.W - 24) / voll));
+  }
+  const pad = PAD * spreiz, luecke = LUECKE * spreiz;
+  const breit = ws.reduce((a, b) => a + b, 0) + texte.length * 2 * pad + luecke * (texte.length - 1);
+  let x = (K.W - breit) / 2;
+  const lage = [];
+  for (let i = 0; i < texte.length; i++) {
+    lage.push({ x: x, w: ws[i] + 2 * pad, text: texte[i], mx: x + pad + ws[i] / 2 });
+    x += ws[i] + 2 * pad + luecke;
+  }
+  return { fs: fs, lage: lage };
+}
+// Wo die Karte i beim Abflug sitzt: unter der Mitte ihres Wortteils.
+function _m5cAbflug(ctx, i) {
+  const d = _m5cWORTE[_m5c.key];
+  const L = _m5cWortLage(ctx, d.teile.map(t => t[0]), 1);
+  return { x: L.lage[i].mx, y: _m5cK.WY + 6 };
+}
+
+function _m5cZeichneWort(ctx) {
+  const z = _m5c, K = _m5cK, d = _m5cWORTE[z.key];
+  // Umfaerben bei der Gegenprobe: alte Teile blenden aus, das neue Wort ein.
+  let m = 0;
+  if (z.anim === 'ohne' && z.at >= K.RUECKEN) m = _m5cSanft((z.at - K.RUECKEN) / (K.OHNE - K.RUECKEN));
+  else if (z.modus === 'ohne' && !z.anim) m = 1;
+  // Nacheinander, nicht ueberblendet: erst verschwindet das alte Wort, dann
+  // erscheint das neue - zwei Woerter liegen nie uebereinander.
+  const alt = Math.max(0, 1 - 2 * m), neu = Math.max(0, 2 * m - 1);
+  if (alt > 0) {
+    const spreiz = z.anim === 'legen' ? _m5cSanft(z.at / K.START[0]) : 1;
+    const L = _m5cWortLage(ctx, d.teile.map(t => t[0]), spreiz);
+    for (let i = 0; i < L.lage.length; i++) {
+      const p = L.lage[i], f = _m5cFARBE[i];
+      // Aufleuchten, solange die Karte dieses Teils fliegt
+      let glanz = 0;
+      if (z.anim === 'legen') {
+        const s = K.START[i];
+        if (z.at >= s - 0.1 && z.at < s + K.FLUG + 0.15)
+          glanz = Math.sin(Math.PI * _m5cSanft((z.at - s + 0.1) / (K.FLUG + 0.25)));
+      }
+      ctx.save();
+      ctx.globalAlpha = alt;
+      if (glanz > 0.02) {
+        ctx.save(); ctx.globalAlpha = alt * 0.55 * glanz;
+        ctx.fillStyle = '#fcd34d';
+        _m5cRund(ctx, p.x - 5, K.WY - K.WH / 2 - 5, p.w + 10, K.WH + 10, 12); ctx.fill();
+        ctx.restore();
+      }
+      if (spreiz > 0.02) {
+        ctx.save(); ctx.globalAlpha = alt * spreiz;
+        ctx.fillStyle = f.grund; ctx.strokeStyle = f.rand; ctx.lineWidth = glanz > 0.3 ? 2.5 : 1.5;
+        _m5cRund(ctx, p.x, K.WY - K.WH / 2, p.w, K.WH, 8); ctx.fill(); ctx.stroke();
+        ctx.restore();
+      }
+      _m5cText(ctx, p.text, p.mx, K.WY + 1, L.fs, spreiz > 0.5 ? f.schrift : '#1f2937');
+      ctx.restore();
+    }
+  }
+  if (neu > 0) {
+    const L = _m5cWortLage(ctx, [d.ohne], 1), p = L.lage[0], o = _m5cORANGE;
+    ctx.save();
+    ctx.globalAlpha = neu;
+    ctx.fillStyle = o.grund; ctx.strokeStyle = o.rand; ctx.lineWidth = 2;
+    _m5cRund(ctx, p.x, K.WY - K.WH / 2, p.w, K.WH, 8); ctx.fill(); ctx.stroke();
+    _m5cText(ctx, p.text, p.mx, K.WY + 1, L.fs, o.schrift);
+    ctx.restore();
+  }
+}
+
+function _m5cZeichneTafel(ctx) {
+  const z = _m5c, K = _m5cK, key = z.key;
+  const X1 = K.X0 + 6 * K.CW, erste = _m5cErste(key);
+  // Spalten links der ersten Karte gehoeren nicht zur Zahl: nur blass getoent
+  ctx.fillStyle = '#f1f5f9';
+  for (let c = 0; c < erste; c++) ctx.fillRect(K.X0 + c * K.CW, K.ZY0, K.CW, K.ZY1 - K.ZY0);
+  // Kopfzeile
+  ctx.fillStyle = '#e2e8f0';
+  ctx.fillRect(K.X0, K.KY0, 6 * K.CW, K.KY1 - K.KY0);
+  _m5cSpaltenLicht(ctx, K.KY0 + 1, K.ZY1 - 1);
+  for (let c = 0; c < 6; c++)
+    _m5cText(ctx, _m5cSPALTEN[c], _m5cMitte(c), (K.KY0 + K.KY1) / 2 + 1, 13, c < erste ? '#64748b' : '#1f2937');
+  // Gitter
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; _m5cStrich(ctx, false);
+  ctx.strokeRect(K.X0, K.KY0, 6 * K.CW, K.ZY1 - K.KY0);
+  ctx.beginPath(); ctx.moveTo(K.X0, K.KY1); ctx.lineTo(X1, K.KY1); ctx.stroke();
+  for (let c = 1; c < 6; c++) {
+    if (c === 3) continue;
+    ctx.beginPath(); ctx.moveTo(K.X0 + c * K.CW, K.KY0); ctx.lineTo(K.X0 + c * K.CW, K.ZY1); ctx.stroke();
+  }
+  // Tausendergrenze zwischen T und H
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(K.X0 + 3 * K.CW, K.KY0); ctx.lineTo(K.X0 + 3 * K.CW, K.ZY1); ctx.stroke();
+  // Leere Spalten innerhalb der Zahl: hellgrau gestrichelt (erst wenn beide Karten liegen)
+  const gel = z.anim === 'legen' ? z.gelandet : 2;
+  if (gel >= 2) {
+    ctx.save(); ctx.globalAlpha = Math.max(0.05, _m5cSanft(z.tafelSeit / 0.4));
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6; _m5cStrich(ctx, true);
+    for (const c of _m5cLeer(key)) {
+      _m5cRund(ctx, K.X0 + c * K.CW + 7, K.ZY0 + 5, K.CW - 14, K.ZY1 - K.ZY0 - 10, 6);
+      ctx.stroke();
+    }
+    _m5cStrich(ctx, false);
+    ctx.restore();
+  }
+}
+
+// Die Spalte, die gerade geschrieben wird, hell hinterlegen (Tafel und Zeile).
+function _m5cSpaltenLicht(ctx, y0, y1) {
+  const z = _m5c, K = _m5cK;
+  if (z.anim !== 'schreiben') return;
+  const erste = _m5cErste(z.key), n = 6 - erste, schritt = K.SCHREIBEN / n;
+  const k = Math.min(n - 1, Math.floor(z.at / schritt));
+  const a = 1 - 0.5 * _m5cSanft((z.at - k * schritt) / (schritt + 0.15));
+  ctx.save(); ctx.globalAlpha = 0.6 * a;
+  ctx.fillStyle = '#fef08a';
+  ctx.fillRect(K.X0 + (erste + k) * K.CW + 1, y0, K.CW - 2, y1 - y0);
+  ctx.restore();
+}
+
+function _m5cKarte(ctx, x, y, ziffer, f, k, rand) {
+  const w = (_m5cK.CW - 14) * k, h = (_m5cK.ZY1 - _m5cK.ZY0 - 10) * k;
+  ctx.fillStyle = f.grund; ctx.strokeStyle = f.rand; ctx.lineWidth = rand || 2;
+  _m5cRund(ctx, x - w / 2, y - h / 2, w, h, 6); ctx.fill(); ctx.stroke();
+  _m5cText(ctx, String(ziffer), x, y + 1, Math.round(26 * k), f.schrift);
+}
+
+function _m5cZeichneKarten(ctx) {
+  const z = _m5c, K = _m5cK, d = _m5cWORTE[z.key];
+  const zy = (K.ZY0 + K.ZY1) / 2;
+  for (let i = 0; i < d.teile.length; i++) {
+    const t = d.teile[i], f = _m5cFARBE[i], ex = _m5cMitte(t[1]);
+    if (z.anim === 'legen') {
+      const s = K.START[i];
+      if (z.at < s) continue;
+      if (z.at < s + K.FLUG) {
+        const a = _m5cAbflug(ctx, i);
+        const p = _m5cSanft((z.at - s) / K.FLUG), q = 1 - p;
+        const cx = ex, cy = a.y;                       // erst seitwaerts, dann hinab
+        const x = q * q * a.x + 2 * q * p * cx + p * p * ex;
+        const y = q * q * a.y + 2 * q * p * cy + p * p * zy;
+        _m5cKarte(ctx, x, y, t[2], f, 0.6 + 0.4 * p);
+        continue;
+      }
+      // gerade gelandet: kurzer Rand, der verblasst
+      const nach = z.at - s - K.FLUG;
+      if (nach < 0.35) {
+        ctx.save(); ctx.globalAlpha = 1 - nach / 0.35;
+        ctx.strokeStyle = f.rand; ctx.lineWidth = 2;
+        _m5cRund(ctx, ex - (K.CW - 6) / 2, K.ZY0 + 1, K.CW - 6, K.ZY1 - K.ZY0 - 2, 8); ctx.stroke();
+        ctx.restore();
+      }
+    }
+    _m5cKarte(ctx, ex, zy, t[2], f, 1);
+  }
+}
+
+// Ziffern in der Zeile „Mit Ziffern“: [{x, ziffer, f, alpha, glanz, quelle}]
+function _m5cReihenZiffern() {
+  const z = _m5c, K = _m5cK, key = z.key, d = _m5cWORTE[key];
+  const ry = (K.RY0 + K.RY1) / 2, zy = (K.ZY0 + K.ZY1) / 2, erste = _m5cErste(key);
+  const out = [];
+  const voll = (alpha) => {
+    for (let c = erste; c <= 5; c++) {
+      const i = _m5cBelegt(key, c);
+      out.push(i >= 0 ? { x: _m5cMitte(c), y: ry, ziffer: d.teile[i][2], f: _m5cFARBE[i], alpha: 1, quelle: c }
+                      : { x: _m5cMitte(c), y: ry, ziffer: 0, f: _m5cORANGE, alpha: alpha, null0: true, quelle: c });
+    }
+  };
+  if (z.anim === 'schreiben') {
+    const n = 6 - erste, schritt = K.SCHREIBEN / n;
+    for (let c = erste; c <= 5; c++) {
+      const k = c - erste, q = (z.at - k * schritt) / K.FALL;
+      if (q <= 0) continue;
+      const p = _m5cSanft(q), i = _m5cBelegt(key, c);
+      const glanz = Math.max(0, 1 - (z.at - k * schritt) / 0.9);
+      if (i >= 0) out.push({ x: _m5cMitte(c), y: zy + (ry - zy) * p, ziffer: d.teile[i][2], f: _m5cFARBE[i],
+                             alpha: p, quelle: c });
+      else out.push({ x: _m5cMitte(c), y: ry, ziffer: 0, f: _m5cORANGE, alpha: p, glanz: glanz,
+                      null0: true, quelle: c, k: 0.7 + 0.3 * p });
+    }
+    return out;
+  }
+  if (z.anim === 'ohne') {
+    const A = 0.3;
+    const karten = d.teile.slice().sort((a, b) => a[1] - b[1]);
+    const ziel = karten.map((t, j) => 6 - karten.length + j);
+    if (z.vonGeschrieben && z.at < A) {
+      for (let c = erste; c <= 5; c++) if (_m5cBelegt(key, c) < 0)
+        out.push({ x: _m5cMitte(c), y: ry, ziffer: 0, f: _m5cORANGE, alpha: 1 - z.at / A, null0: true, quelle: c });
+    }
+    for (let j = 0; j < karten.length; j++) {
+      const t = karten[j], i = d.teile.indexOf(t);
+      let y = ry, alpha = 1;
+      if (!z.vonGeschrieben && z.at < A) { const p = _m5cSanft(z.at / A); y = zy + (ry - zy) * p; alpha = p; }
+      const p2 = _m5cSanft((z.at - A) / (K.RUECKEN - A));
+      const x = _m5cMitte(t[1]) + (_m5cMitte(ziel[j]) - _m5cMitte(t[1])) * p2;
+      out.push({ x: x, y: y, ziffer: t[2], f: _m5cFARBE[i], alpha: alpha, quelle: t[1] });
+    }
+    return out;
+  }
+  if (z.modus === 'geschrieben') { voll(1); return out; }
+  if (z.modus === 'ohne') {
+    const karten = d.teile.slice().sort((a, b) => a[1] - b[1]);
+    karten.forEach((t, j) => out.push({ x: _m5cMitte(6 - karten.length + j), y: ry, ziffer: t[2],
+                                        f: _m5cFARBE[d.teile.indexOf(t)], alpha: 1, quelle: t[1] }));
+  }
+  return out;
+}
+
+function _m5cZeichneReihe(ctx) {
+  const z = _m5c, K = _m5cK;
+  const X1 = K.X0 + 6 * K.CW, ry = (K.RY0 + K.RY1) / 2, zy = (K.ZY0 + K.ZY1) / 2;
+  _m5cText(ctx, 'Mit Ziffern', 8, ry, 13, '#334155', 'left');
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _m5cRund(ctx, K.X0, K.RY0, 6 * K.CW, K.RY1 - K.RY0, 8); ctx.fill(); ctx.stroke();
+  _m5cSpaltenLicht(ctx, K.RY0 + 1, K.RY1 - 1);
+  // feine Tausendergrenze auch in der Zeile
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(K.X0 + 3 * K.CW, K.RY0 + 6); ctx.lineTo(K.X0 + 3 * K.CW, K.RY1 - 6); ctx.stroke();
+  const liste = _m5cReihenZiffern();
+  // Wohin ist jede Karten-Ziffer gewandert? (nur, wenn sie nicht mehr unter ihrer Spalte steht)
+  ctx.save();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; _m5cStrich(ctx, true);
+  for (const e of liste) {
+    if (e.null0) continue;
+    const qx = _m5cMitte(e.quelle);
+    if (Math.abs(e.x - qx) < 2 || e.alpha < 0.99) continue;
+    ctx.beginPath(); ctx.moveTo(qx, K.ZY1 - 4); ctx.lineTo(e.x, K.RY0 + 3); ctx.stroke();
+  }
+  _m5cStrich(ctx, false);
+  ctx.restore();
+  for (const e of liste) {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, Math.min(1, e.alpha));
+    if (e.null0) {
+      // die 0 einer leeren Spalte leuchtet beim Schreiben orange auf
+      if (e.glanz > 0.02) {
+        ctx.save(); ctx.globalAlpha = 0.6 * e.glanz;
+        ctx.fillStyle = '#fdba74';
+        _m5cRund(ctx, e.x - 21, K.RY0 + 1, 42, K.RY1 - K.RY0 - 2, 10); ctx.fill();
+        ctx.restore();
+      }
+      ctx.fillStyle = _m5cORANGE.grund;
+      _m5cRund(ctx, e.x - 15, ry - 16, 30, 32, 6); ctx.fill();
+    }
+    _m5cText(ctx, String(e.ziffer), e.x, e.y + 1, Math.round(26 * (e.k || 1)), e.f.schrift);
+    ctx.restore();
+  }
+}
+
+function _m5cZeichneKasten(ctx) {
+  const z = _m5c, K = _m5cK, key = z.key;
+  const X1 = K.X0 + 6 * K.CW, by = (K.BY0 + K.BY1) / 2;
+  let text = '', farbe = '#1f2937', a = 0;
+  if (!z.anim && z.modus === 'geschrieben') { text = _m5cFormat(_m5cZahl(key)); a = _m5cSanft(z.seit / 0.3); }
+  else if (z.anim === 'ohne' && z.modus === 'geschrieben') {
+    text = _m5cFormat(_m5cZahl(key)); a = 1 - _m5cSanft(z.at / 0.3);           // alte Zahl blendet aus
+    if (a <= 0.02) text = '';
+  }
+  else if (z.modus === 'ohne') { text = _m5cOhneZahl(key); farbe = _m5cORANGE.schrift; a = _m5cSanft(z.seit / 0.3); }
+  _m5cText(ctx, 'Zahl', 8, by, 13, '#334155', 'left');
+  ctx.fillStyle = text ? '#f1f5f9' : '#ffffff';
+  ctx.strokeStyle = text && z.modus === 'ohne' ? _m5cORANGE.rand : '#cbd5e1';
+  ctx.lineWidth = text ? 1.5 : 1;
+  _m5cRund(ctx, K.X0, K.BY0, 6 * K.CW, K.BY1 - K.BY0, 10); ctx.fill(); ctx.stroke();
+  if (text) {
+    ctx.save(); ctx.globalAlpha = Math.max(0.02, a);
+    _m5cText(ctx, text, (K.X0 + X1) / 2, by + 1, 30, farbe);
+    ctx.restore();
+  }
+}
+
+function _m5cDraw(ctx, cv) {
+  if (!_m5c) return;
+  const K = _m5cK;
+  ctx.clearRect(0, 0, K.W, K.H);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, K.W, K.H);
+  _m5cZeichneWort(ctx);
+  _m5cZeichneTafel(ctx);
+  _m5cZeichneReihe(ctx);
+  _m5cZeichneKasten(ctx);
+  _m5cZeichneKarten(ctx);
+  _bioFxAlleDraw(ctx, _m5c.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHE 5 FOERDER – mz4 „Wie liest man große Zahlen?“
+// (Kennung m5-grosse-zahlen, Praefix _m5d; Bauplan
+// arbeitsheft_mathe_foe5/KAPITEL1_PROFIL.md, Abschnitt „m5-grosse-zahlen“)
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, von oben nach unten):
+//   - ein gelbes Ortsschild mit dem gewaehlten Ort,
+//   - darunter die Einwohnerzahl gross (34 px), anfangs OHNE Luecken
+//     („18000000“),
+//   - darunter eine lange Stellenwerttafel in vier Gruppen
+//     Milliarden | Millionen | Tausender | Einer, jede mit den Spalten H Z E.
+//     Jede Ziffer steht in ihrer Spalte, jede Gruppe hat ihre ruhige Farbe
+//     (Einer bernstein, Tausender gruen, Millionen blau, Milliarden violett),
+//   - ganz unten ein Lautsprecher und die Schreiblinie, auf der das Zahlwort
+//     waechst.
+// Bild und Zahl sind VERBUNDEN: Nach „Gruppen bilden“ traegt jede Ziffer der
+// grossen Zahl die Farbe ihrer Gruppe in der Tafel, ueber jeder Gruppe steht
+// ein Bogen mit ihrem Namen, und beim Vorlesen leuchtet dieselbe Gruppe in
+// Zahl UND Tafel gleichzeitig; das neue Stueck des Zahlworts wird in ihrer
+// Farbe unterstrichen.
+//
+// KNOEPFE (Bauplan, woertlich):
+//   Reihe 1, Wahlgruppe _m5dOrt('…'): „Dortmund“ · „Nordrhein-Westfalen“ ·
+//            „Deutschland“ · „Erde“
+//   Reihe 2: „Gruppen bilden“ · „vorlesen“ · „neu“
+// Start: Dortmund, Zahl ohne Luecken (Satz unter der Leinwand:
+// „Start: Dortmund, Zahl ohne Lücken“).
+//
+// ABLAUF (jede Handlung bewegt sich, deterministisch, ohne Zufall):
+//   Ort waehlen     Das Schild gleitet von oben herein (0,35 s), die Ziffern
+//                   fallen von den Einern her nacheinander in Zahl und Tafel
+//                   (0,7 s). Die Zahl steht ohne Luecken da.
+//   Gruppen bilden  Je Gruppe ein Schritt zu 0,5 s, angefangen bei den Einern:
+//                   ueber der Gruppe waechst ein Bogen mit ihrem Namen, ihre
+//                   Ziffern nehmen die Farbe der Tafel an, und alle Ziffern
+//                   LINKS davon ruecken um eine Luecke weiter. Der Einer-Block
+//                   bleibt stehen. Am Ende ein ruhiger Lichtring an der Gruppe
+//                   ganz links (Aha, OHNE Textstreifen). Ein zweites Druecken
+//                   zeigt nur noch einmal den Lichtring.
+//   vorlesen        Bildet zuerst die Gruppen, falls sie noch fehlen. Dann
+//                   leuchten die BELEGTEN Gruppen von links nach rechts, je
+//                   1,0 s: erst erscheint das Zahlwort ihrer Ziffern
+//                   („dreiundachtzig“), nach 0,5 s der Name der Gruppe
+//                   („ Millionen“). Gruppen aus 000 werden nicht gesprochen.
+//                   Der Lautsprecher sendet dabei Schallboegen.
+//   neu             zurueck zum Start.
+//
+// STATUSZEILEN (woertlich; das Heft mz4 zitiert sie):
+//   _m5d-ort     „Einwohner von Nordrhein-Westfalen (rund)“
+//                (Erde: „Einwohner der Erde (rund)“)
+//   _m5d-zahl    vorher „Zahl ohne Lücken: 18000000“,
+//                nach „Gruppen bilden“ „Zahl mit Lücken: 18 000 000“
+//                (Tausendertrenner U+00A0)
+//   _m5d-gruppe  „Linke Gruppe: Millionen“ – erst nach „Gruppen bilden“,
+//                vorher leer und ausgeblendet
+//   _m5d-wort    „So spricht man sie: …“, nach „vorlesen“
+//                „So spricht man sie: achtzehn Millionen“
+//
+//   ABWEICHUNG vom Bauplan (03.10.2026): Der Bauplan nennt „Zahl: 18000000“ /
+//   „Zahl: 18 000 000“. simcheck/simfakten.js nimmt aber nur Textfelder mit
+//   MEHR als 18 Zeichen in den Faktendump auf („Zahl: 600 000“ hat 13,
+//   „Zahl: 83 000 000“ hat 16). Drei der vier Werte, die die Heftspalte
+//   „Zahl mit Lücken“ verlangt, haetten im Dump gefehlt – gegen MATHE_PROFIL
+//   § 10.12. „Zahl mit Lücken: …“ ist lang genug UND traegt woertlich den
+//   Kopf der Heftspalte.
+//
+// WERTE (gerundete Modellwerte; die Lehrkraft-Werte stehen im Lehrerteil:
+// Dortmund rund 590 000, NRW rund 18,1 Mio., Deutschland rund 83,5 Mio.,
+// Erde rund 8,1 Mrd.):
+//   Dortmund             600 000         Tausender   sechshunderttausend
+//   Nordrhein-Westfalen  18 000 000      Millionen   achtzehn Millionen
+//   Deutschland          83 000 000      Millionen   dreiundachtzig Millionen
+//   Erde                 8 000 000 000   Milliarden  acht Milliarden
+//
+// AHA: beim Abschluss von „Gruppen bilden“ ein Lichtring (_bioFxWelle) am
+// Namen der Gruppe ganz links – dort steht, wie die Zahl heisst. Kein
+// Textstreifen, der die Antwort vorsagt.
+//
+// NICHT AM BILDSCHIRM (sim_plan.nicht_am_bildschirm, Merksatzwoerter):
+// „drei“ (als Wort – es steckt nur im Zahlwort „dreiundachtzig“),
+// „Dreiergruppe“, „rechts“. Keine Regel, kein „Merke“, kein „falsch“, keine
+// Punkte, keine Zeit, keine Namen.
+// ════════════════════════════════════════════════════════════════════════
+let _m5d = null;
+const _m5dORTE = {
+  dortmund:    { name: 'Dortmund',            zahl: 600000,     ort: 'Einwohner von Dortmund (rund)' },
+  nrw:         { name: 'Nordrhein-Westfalen', zahl: 18000000,   ort: 'Einwohner von Nordrhein-Westfalen (rund)' },
+  deutschland: { name: 'Deutschland',         zahl: 83000000,   ort: 'Einwohner von Deutschland (rund)' },
+  erde:        { name: 'Erde',                zahl: 8000000000, ort: 'Einwohner der Erde (rund)' }
+};
+const _m5dREIHE = ['dortmund', 'nrw', 'deutschland', 'erde'];
+// Gruppen, Index g = 0 sind die Einer. farbe: [Grund, Rand, dunkel]
+const _m5dGRUPPE = [
+  { name: 'Einer',      farbe: ['#fef3c7', '#f59e0b', '#92400e'] },
+  { name: 'Tausender',  farbe: ['#dcfce7', '#22c55e', '#166534'] },
+  { name: 'Millionen',  farbe: ['#e0f2fe', '#38bdf8', '#075985'] },
+  { name: 'Milliarden', farbe: ['#f3e8ff', '#a78bfa', '#5b21b6'] }
+];
+const _m5dK = {
+  MX: 210,                 // Mitte der grossen Zahl, wenn alle Luecken offen sind
+  ZY: 108,                 // Grundlinie der grossen Zahl
+  ZF: 34,                  // Schriftgrad der grossen Zahl
+  DW: 23,                  // Abstand zweier Ziffern
+  LUECKE: 24,              // eine Luecke zwischen zwei Gruppen
+  BY0: 76, BY1: 66,        // Bogen: Hoehe der Enden, Hoehe des Scheitels
+  BL: 54,                  // Mitte der Bogenbeschriftung
+  TX0: 10, TX1: 410, TG: 6,                     // Tafel: links, rechts, Gruppenabstand
+  TY0: 120, TY1: 138, TY2: 154, TY3: 188,       // Tafel: oben, Kopf, H Z E, unten
+  WX: 72, WY: 228,         // Zahlwort: Anfang, Grundlinie
+  SCHRITT: 0.5,            // s je Gruppe beim Gruppenbilden
+  LESEN: 1.0,              // s je belegter Gruppe beim Vorlesen
+  EIN: 0.7                 // s fuer das Hereinfallen der Ziffern
+};
+
+// ── Zahlwoerter (deutsch, bis 999 Milliarden) ───────────────────────────
+const _m5dEINS = ['', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun'];
+const _m5dZEHN = ['zehn', 'elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn',
+                  'siebzehn', 'achtzehn', 'neunzehn'];
+const _m5dZEHNER = ['', '', 'zwanzig', 'dreißig', 'vierzig', 'fünfzig', 'sechzig', 'siebzig',
+                    'achtzig', 'neunzig'];
+// 1 … 999. ein = true gibt die Form vor „tausend“ („eintausend“, nicht „einstausend“).
+function _m5dBis999(v, ein) {
+  const h = Math.floor(v / 100), r = v % 100, z = Math.floor(r / 10), e = r % 10;
+  let s = h ? _m5dEINS[h] + 'hundert' : '';
+  if (r >= 10 && r < 20) s += _m5dZEHN[r - 10];
+  else if (z && e) s += _m5dEINS[e] + 'und' + _m5dZEHNER[z];
+  else if (z) s += _m5dZEHNER[z];
+  else if (e) s += (e === 1 && !ein) ? 'eins' : _m5dEINS[e];
+  return s;
+}
+// Wert der Gruppe g (0 = Einer) einer Ziffernfolge
+function _m5dWertGruppe(s, g) {
+  const n = s.length, b = n - 3 * g, a = Math.max(0, b - 3);
+  return b > 0 ? parseInt(s.slice(a, b), 10) : 0;
+}
+// Die belegten Gruppen von links nach rechts, je mit dem Zahlwort ihrer
+// Ziffern (zw) und dem Wort fuer die Gruppe (gw).
+function _m5dTeile(zahl) {
+  const s = String(zahl), G = Math.ceil(s.length / 3), teile = [];
+  for (let g = G - 1; g >= 0; g--) {
+    const v = _m5dWertGruppe(s, g);
+    if (!v) continue;
+    let zw, gw;
+    if (g === 0)      { zw = _m5dBis999(v, false); gw = ''; }
+    else if (g === 1) { zw = _m5dBis999(v, true);  gw = 'tausend'; }
+    else {
+      zw = v === 1 ? 'eine' : _m5dBis999(v, true);
+      gw = g === 2 ? (v === 1 ? ' Million' : ' Millionen') : (v === 1 ? ' Milliarde' : ' Milliarden');
+    }
+    teile.push({ g, zw, gw });
+  }
+  // Nach „Millionen“ und „Milliarden“ folgt ein Leerzeichen, nach „tausend“ nicht.
+  for (let i = 1; i < teile.length; i++) if (teile[i - 1].g >= 2) teile[i].zw = ' ' + teile[i].zw;
+  return teile;
+}
+function _m5dWort(zahl) {
+  const t = _m5dTeile(zahl);
+  return t.length ? t.map(x => x.zw + x.gw).join('') : 'null';
+}
+function _m5dMitLuecken(zahl) { return String(zahl).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+// ── Hilfen ───────────────────────────────────────────────────────────────
+function _m5dKlemme(u) { return u < 0 ? 0 : u > 1 ? 1 : u; }
+function _m5dSanft(u) { u = _m5dKlemme(u); return u * u * (3 - 2 * u); }
+function _m5dMisch(a, b, u) {
+  const p = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = p(a), y = p(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * _m5dKlemme(u))).join(',') + ')';
+}
+function _m5dGeteilt(z) { return z.phase === 'gruppen' || z.phase === 'lesen' || z.phase === 'gelesen'; }
+
+// Lage aller Ziffern der grossen Zahl. Der rechte Rand steht fest: so bleibt
+// der Einer-Block stehen, und alles links davon rueckt auseinander.
+function _m5dLage(z) {
+  const K = _m5dK, s = String(_m5dORTE[z.ort].zahl), n = s.length, G = Math.ceil(n / 3);
+  const rechts = K.MX + (n * K.DW + (G - 1) * K.LUECKE) / 2;
+  const off = [0, 0, 0, 0];
+  for (let g = 1; g < 4; g++) off[g] = off[g - 1] + (z.auf[g - 1] || 0) * K.LUECKE;
+  const ziffern = [];
+  for (let i = 0; i < n; i++) {
+    const p = n - 1 - i, g = Math.floor(p / 3);
+    ziffern.push({ x: rechts - (p + 1) * K.DW - off[g], ch: s[i], p, g });
+  }
+  const spanne = [];
+  for (let g = 0; g < G; g++) {
+    const pmax = Math.min(3 * g + 2, n - 1);
+    spanne.push([rechts - (pmax + 1) * K.DW - off[g], rechts - 3 * g * K.DW - off[g]]);
+  }
+  return { s, n, G, ziffern, spanne };
+}
+
+// ── Zustand ──────────────────────────────────────────────────────────────
+function _m5dInit() {
+  _m5d = { ort: 'dortmund', t: 0,
+           phase: 'ohne',            // ohne · teilen · gruppen · lesen · gelesen
+           schritt: 0, st: 0,        // Animationsschritt und Zeit darin
+           auf: [0, 0, 0],           // Oeffnung der Luecken (Grenze Einer|Tausender, …)
+           bogen: [0, 0, 0, 0],      // Bogen ueber Gruppe g (0 … 1)
+           nachLesen: false,         // „vorlesen“ wartet auf die Gruppen
+           lesen: [], li: 0, zwDa: false, gwDa: false,
+           gezeigt: '', neuAb: 0,    // Zahlwort bis jetzt, Anfang des neuen Stuecks
+           aktiv: -1, aktivName: false,
+           ein: 0, schild: 0,
+           fx: { teile: [] } };
+}
+function _m5dHTML() {
+  const k = a => `<button class="sim-btn${a === 'dortmund' ? ' primary' : ''}" id="_m5d-b-${a}" onclick="_m5dOrt('${a}')">${_m5dORTE[a].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie spricht man die Zahl 83 000 000?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle einen Ort. Seine Einwohnerzahl steht zuerst ohne Lücken da. Jede Farbe gehört zu einer Gruppe der Stellenwerttafel.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5dREIHE.map(k).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5d-gruppen" onclick="_m5dGruppen()">Gruppen bilden</button>
+          <button class="sim-btn" id="_m5d-lesen" onclick="_m5dVorlesen()">vorlesen</button>
+          <button class="sim-btn" onclick="_m5dNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Ort</div>
+        <div class="lmp-status on" id="_m5d-ort" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:10px">Die Zahl</div>
+        <div class="lmp-status on" id="_m5d-zahl" style="margin-top:4px"></div>
+        <div class="lmp-status on" id="_m5d-gruppe" style="margin-top:6px;display:none"></div>
+        <div class="fpm-label" style="margin-top:10px">Zahlwort</div>
+        <div class="lmp-status on" id="_m5d-wort" style="margin-top:4px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Dortmund, Zahl ohne Lücken</p>
+  </div>`;
+}
+function _m5dStatus() {
+  if (!_m5d) return;
+  const z = _m5d, d = _m5dORTE[z.ort], geteilt = _m5dGeteilt(z);
+  const G = Math.ceil(String(d.zahl).length / 3);
+  const setze = (id, txt) => { const e = document.getElementById(id); if (e) e.textContent = txt; return e; };
+  setze('_m5d-ort', d.ort);
+  setze('_m5d-zahl', geteilt ? 'Zahl mit Lücken: ' + _m5dMitLuecken(d.zahl)
+                             : 'Zahl ohne Lücken: ' + String(d.zahl));
+  const gr = setze('_m5d-gruppe', geteilt ? 'Linke Gruppe: ' + _m5dGRUPPE[G - 1].name : '');
+  if (gr) gr.style.display = geteilt ? '' : 'none';
+  setze('_m5d-wort', 'So spricht man sie: ' + (z.phase === 'gelesen' ? _m5dWort(d.zahl) : '…'));
+  for (const a of _m5dREIHE) {
+    const b = document.getElementById('_m5d-b-' + a);
+    if (b && b.classList) b.classList.toggle('primary', a === z.ort);
+  }
+  // Der Knopf fuer den naechsten sinnvollen Schritt ist hervorgehoben.
+  const bg = document.getElementById('_m5d-gruppen'), bl = document.getElementById('_m5d-lesen');
+  if (bg && bg.classList) bg.classList.toggle('primary', z.phase === 'ohne' || z.phase === 'teilen');
+  if (bl && bl.classList) bl.classList.toggle('primary', !(z.phase === 'ohne' || z.phase === 'teilen'));
+}
+
+// ── Bedienung ────────────────────────────────────────────────────────────
+function _m5dOrt(a) {
+  if (!_m5d || !_m5dORTE[a]) return;
+  _m5dInit();
+  _m5d.ort = a;
+  _m5dStatus();
+}
+function _m5dNeu() {
+  if (!_m5d) return;
+  _m5dInit();
+  _m5dStatus();
+}
+function _m5dGruppen() {
+  if (!_m5d) return;
+  const z = _m5d;
+  if (z.phase === 'ohne') { z.phase = 'teilen'; z.schritt = 0; z.st = 0; _m5dStatus(); return; }
+  // Schon geteilt: nur noch einmal auf die Gruppe ganz links zeigen.
+  if (z.phase === 'gruppen' || z.phase === 'gelesen') _m5dRing();
+}
+function _m5dVorlesen() {
+  if (!_m5d) return;
+  const z = _m5d;
+  if (z.phase === 'ohne') { z.nachLesen = true; _m5dGruppen(); return; }
+  if (z.phase === 'teilen') { z.nachLesen = true; return; }
+  if (z.phase === 'lesen') return;
+  _m5dLos();                                   // geteilt oder schon gelesen: (noch einmal) vorlesen
+}
+function _m5dLos() {
+  const z = _m5d;
+  z.phase = 'lesen'; z.lesen = _m5dTeile(_m5dORTE[z.ort].zahl);
+  z.li = 0; z.st = 0; z.zwDa = false; z.gwDa = false;
+  z.gezeigt = ''; z.neuAb = 0; z.aktiv = -1; z.aktivName = false;
+  _m5dStatus();
+}
+function _m5dRing() {
+  const z = _m5d, L = _m5dLage(z), sp = L.spanne[L.G - 1];
+  _bioFxWelle(z.fx.teile, (sp[0] + sp[1]) / 2, _m5dK.BL + 2, '#fcd34d', 40);
+}
+
+// ── Ablauf ───────────────────────────────────────────────────────────────
+function _m5dUpdate(dt) {
+  if (!_m5d) return;
+  dt = _bioFxDt(dt);
+  const z = _m5d, K = _m5dK;
+  const G = Math.ceil(String(_m5dORTE[z.ort].zahl).length / 3);
+  z.t += dt;
+  z.ein = Math.min(1, z.ein + dt / K.EIN);
+  z.schild = Math.min(1, z.schild + dt / 0.35);
+  if (z.phase === 'teilen') {
+    z.st += dt;
+    const k = z.schritt, u = _m5dKlemme(z.st / K.SCHRITT);
+    z.bogen[k] = u;
+    if (k < G - 1) z.auf[k] = _m5dSanft(u);
+    if (u >= 1) {
+      z.schritt++; z.st = 0;
+      if (z.schritt >= G) {
+        z.phase = 'gruppen';
+        _m5dRing();
+        if (z.nachLesen) { z.nachLesen = false; _m5dLos(); }
+        else _m5dStatus();
+      }
+    }
+  } else if (z.phase === 'lesen') {
+    const teil = z.lesen[z.li];
+    if (!teil) {
+      z.phase = 'gelesen'; z.aktiv = -1; z.aktivName = false; _m5dStatus();
+    } else {
+      if (!z.zwDa) {                           // Ziffern der Gruppe sprechen
+        z.zwDa = true; z.aktiv = teil.g; z.aktivName = false;
+        z.neuAb = z.gezeigt.length; z.gezeigt += teil.zw;
+      }
+      z.st += dt;
+      if (!z.gwDa && z.st >= K.LESEN / 2) {   // dann den Namen der Gruppe
+        z.gwDa = true; z.aktivName = true;
+        if (teil.gw) { z.neuAb = z.gezeigt.length; z.gezeigt += teil.gw; }
+      }
+      if (z.st >= K.LESEN) {
+        z.li++; z.st = 0; z.zwDa = false; z.gwDa = false;
+        if (z.li >= z.lesen.length) { z.phase = 'gelesen'; z.aktiv = -1; z.aktivName = false; _m5dStatus(); }
+      }
+    }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _m5dText(ctx, s, x, y, groesse, farbe, ausr, grund) {
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = grund || 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _m5dSchild(ctx) {
+  const z = _m5d, d = _m5dORTE[z.ort];
+  const e = _m5dSanft(z.schild);
+  ctx.font = '700 16px sans-serif';
+  const w = ctx.measureText(d.name).width + 44, h = 28;
+  const x = 210 - w / 2, y = 6 - (1 - e) * 34;
+  ctx.save();
+  ctx.globalAlpha = _m5dKlemme(z.schild * 1.6);
+  ctx.fillStyle = '#fde68a';
+  _bioFxRundRect(ctx, x, y, w, h, 5); ctx.fill();
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x, y, w, h, 5); ctx.stroke();
+  ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x + 4, y + 4, w - 8, h - 8, 3); ctx.stroke();
+  _m5dText(ctx, d.name, 210, y + h / 2 + 1, 16, '#111827', 'center', 'middle');
+  ctx.restore();
+}
+// Wie weit ist Ziffer p hereingefallen? (0 … 1, Einer zuerst)
+function _m5dFall(z, p) { return _m5dSanft((z.ein * _m5dK.EIN - p * 0.04) / 0.3); }
+
+function _m5dZahl(ctx) {
+  const z = _m5d, K = _m5dK, L = _m5dLage(z);
+  // Leuchten hinter der Gruppe, die gerade gesprochen wird
+  if (z.aktiv >= 0 && L.spanne[z.aktiv]) {
+    const sp = L.spanne[z.aktiv], F = _m5dGRUPPE[z.aktiv].farbe;
+    const puls = 0.55 + 0.25 * Math.sin(z.t * Math.PI * 2 * 0.8);
+    ctx.save();
+    ctx.globalAlpha = puls;
+    ctx.fillStyle = F[0];
+    _bioFxRundRect(ctx, sp[0] - 5, K.ZY - 30, sp[1] - sp[0] + 10, 38, 8); ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = F[1]; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, sp[0] - 5, K.ZY - 30, sp[1] - sp[0] + 10, 38, 8); ctx.stroke();
+    ctx.restore();
+  }
+  // Boegen mit dem Namen der Gruppe
+  for (let g = 0; g < L.G; g++) {
+    const b = z.bogen[g];
+    if (!(b > 0)) continue;
+    const F = _m5dGRUPPE[g].farbe, sp = L.spanne[g];
+    // Mindestbreite 34 px: ueber einer einzelnen Ziffer saehe der Bogen sonst wie ein Haken aus.
+    const xm = (sp[0] + sp[1]) / 2, hb = Math.max(17, (sp[1] - sp[0]) / 2 - 3);
+    const xr = xm + hb, xl = xm - hb, cy = 2 * K.BY1 - K.BY0;
+    ctx.save();
+    ctx.strokeStyle = F[2]; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(xr, K.BY0 + 4);
+    ctx.lineTo(xr, K.BY0);
+    const n = 16;
+    for (let i = 1; i <= n; i++) {
+      const t = b * i / n, u = 1 - t;
+      ctx.lineTo(u * u * xr + 2 * u * t * xm + t * t * xl, u * u * K.BY0 + 2 * u * t * cy + t * t * K.BY0);
+    }
+    if (b >= 1) ctx.lineTo(xl, K.BY0 + 4);
+    ctx.stroke();
+    const a = _m5dKlemme((b - 0.35) / 0.65);
+    if (a > 0) {
+      ctx.globalAlpha = a;
+      if (z.aktiv === g && z.aktivName) {
+        ctx.font = '700 12px sans-serif';
+        const lw = ctx.measureText(_m5dGRUPPE[g].name).width + 12;
+        ctx.fillStyle = F[0];
+        _bioFxRundRect(ctx, xm - lw / 2, K.BL - 9, lw, 18, 9); ctx.fill();
+        ctx.strokeStyle = F[1]; ctx.lineWidth = 1.5;
+        _bioFxRundRect(ctx, xm - lw / 2, K.BL - 9, lw, 18, 9); ctx.stroke();
+      }
+      _m5dText(ctx, _m5dGRUPPE[g].name, xm, K.BL + 1, 12, F[2], 'center', 'middle');
+    }
+    ctx.restore();
+  }
+  // Die Ziffern
+  for (const q of L.ziffern) {
+    const f = _m5dFall(z, q.p);
+    if (f <= 0) continue;
+    const farbe = _m5dMisch('#1f2937', _m5dGRUPPE[q.g].farbe[2], z.bogen[q.g]);
+    ctx.save();
+    ctx.globalAlpha = f;
+    _m5dText(ctx, q.ch, q.x + K.DW / 2, K.ZY - (1 - f) * 18, K.ZF, farbe, 'center', 'alphabetic');
+    ctx.restore();
+  }
+}
+
+function _m5dTafel(ctx) {
+  const z = _m5d, K = _m5dK, s = String(_m5dORTE[z.ort].zahl), n = s.length;
+  const CW = (K.TX1 - K.TX0 - 3 * K.TG) / 12;
+  for (let gi = 0; gi < 4; gi++) {
+    const g = 3 - gi, F = _m5dGRUPPE[g].farbe;
+    const x0 = K.TX0 + gi * (3 * CW + K.TG), x1 = x0 + 3 * CW;
+    const an = z.aktiv === g;
+    ctx.save();
+    ctx.fillStyle = F[0];
+    _bioFxRundRect(ctx, x0, K.TY0, x1 - x0, K.TY3 - K.TY0, 6); ctx.fill();
+    if (an) {
+      ctx.globalAlpha = 0.35 + 0.25 * Math.sin(z.t * Math.PI * 2 * 0.8);
+      ctx.fillStyle = '#ffffff';
+      _bioFxRundRect(ctx, x0, K.TY2, x1 - x0, K.TY3 - K.TY2, 6); ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    ctx.strokeStyle = an ? F[2] : F[1]; ctx.lineWidth = an ? 2.5 : 1.2;
+    _bioFxRundRect(ctx, x0, K.TY0, x1 - x0, K.TY3 - K.TY0, 6); ctx.stroke();
+    // Kopf: Name der Gruppe, darunter H Z E
+    _m5dText(ctx, _m5dGRUPPE[g].name, (x0 + x1) / 2, (K.TY0 + K.TY1) / 2 + 1, 12, F[2], 'center', 'middle');
+    ctx.strokeStyle = F[1]; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x0, K.TY1); ctx.lineTo(x1, K.TY1); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x0, K.TY2); ctx.lineTo(x1, K.TY2); ctx.stroke();
+    for (let j = 1; j < 3; j++) {
+      ctx.beginPath(); ctx.moveTo(x0 + j * CW, K.TY1); ctx.lineTo(x0 + j * CW, K.TY3); ctx.stroke();
+    }
+    for (let j = 0; j < 3; j++) {
+      const xc = x0 + (j + 0.5) * CW;
+      _m5dText(ctx, ['H', 'Z', 'E'][j], xc, (K.TY1 + K.TY2) / 2 + 1, 12, F[2], 'center', 'middle');
+      const p = g * 3 + (2 - j);
+      if (p >= n) continue;                    // fuehrende Stellen bleiben leer
+      const f = _m5dFall(z, p);
+      if (f <= 0) continue;
+      ctx.globalAlpha = f;
+      _m5dText(ctx, s[n - 1 - p], xc, K.TY3 - 9 - (1 - f) * 6, 20, '#1f2937', 'center', 'alphabetic');
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+  }
+}
+
+function _m5dWortZeile(ctx) {
+  const z = _m5d, K = _m5dK, liest = z.phase === 'lesen';
+  // Lautsprecher
+  const lx = 30, ly = K.WY - 7;
+  ctx.save();
+  ctx.fillStyle = liest ? '#334155' : '#94a3b8';
+  ctx.beginPath();
+  ctx.moveTo(lx, ly - 5); ctx.lineTo(lx + 7, ly - 5); ctx.lineTo(lx + 15, ly - 12);
+  ctx.lineTo(lx + 15, ly + 12); ctx.lineTo(lx + 7, ly + 5); ctx.lineTo(lx, ly + 5);
+  ctx.closePath(); ctx.fill();
+  if (liest) {
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 2;
+    for (let i = 0; i < 2; i++) {
+      const u = (z.t * 1.4 + i * 0.5) % 1;
+      ctx.globalAlpha = 1 - u;
+      ctx.beginPath(); ctx.arc(lx + 16, ly, 5 + 9 * u, -0.9, 0.9); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+  // Schreiblinie
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(K.WX, K.WY + 8); ctx.lineTo(392, K.WY + 8); ctx.stroke();
+  // Das Zahlwort, so weit es schon gesprochen ist
+  if (z.gezeigt) {
+    _m5dText(ctx, z.gezeigt, K.WX, K.WY, 20, '#1f2937', 'left', 'alphabetic');
+    if (liest && z.aktiv >= 0) {
+      ctx.font = '700 20px sans-serif';
+      // Unterstrichen wird nur das neue Stueck, ohne sein Leerzeichen davor.
+      const vorn = z.gezeigt.slice(0, z.neuAb) + (z.gezeigt[z.neuAb] === ' ' ? ' ' : '');
+      const a = z.neuAb ? ctx.measureText(vorn).width : 0;
+      const b = ctx.measureText(z.gezeigt).width;
+      ctx.strokeStyle = _m5dGRUPPE[z.aktiv].farbe[1]; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(K.WX + a, K.WY + 6); ctx.lineTo(K.WX + b, K.WY + 6); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+function _m5dDraw(ctx, cv) {
+  if (!_m5d) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5dSchild(ctx);
+  _m5dZahl(ctx);
+  _m5dTafel(ctx);
+  _m5dWortZeile(ctx);
+  _bioFxDraw(ctx, _m5d.fx.teile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHE 5 FOERDER – mz5 „Welche Zahl ist größer?“
+// (Kennung m5-zahlenstrahl, Praefix _m5e)
+//
+// Was man sieht: oben ein Zahlenstrahl von 0 bis 40 000 mit Pfeil am Ende -
+// lange Striche alle 10 000 mit Zahl, halblange bei jedem 5 000er, kurze alle
+// 1 000 (Zehner- und Fuenferstruktur). Zwei Punkte, A blau und B orange, mit
+// je einem Faehnchen, das die Zahl traegt (A-Faehnchen in der oberen Reihe,
+// B-Faehnchen darunter). Bei jeder Wahl fallen beide Punkte samt Faehnchen
+// von oben an ihren Platz (0,8 s, B 0,12 s spaeter).
+// „Lupe an“ legt einen gelben Rahmen um den Ausschnitt des Paares auf dem
+// Zahlenstrahl; aus dem Rahmen zieht sich ein Lupenkasten unter dem Strahl
+// auseinander (0,8 s), mit zwei gestrichelten Linien zum Rahmen verbunden.
+// Im Kasten liegt der Ausschnitt als eigener Zahlenstrahl, darauf A und B
+// mit kleineren Faehnchen. „Lupe aus“ zieht ihn wieder in den Rahmen (0,45 s).
+// „Ziffern untereinander“ setzt unten eine kleine Tafel ZT | T | H | Z | E:
+// Zeile A blau, Zeile B orange, die Ziffern fallen Spalte fuer Spalte in
+// ihre Zellen, die Einer zuerst (beide Zahlen stehen an den Einern
+// ausgerichtet). Danach leuchtet die erste Spalte, in der sich die beiden
+// Zeilen unterscheiden (gelb hinterlegt, ein Lichtring).
+//
+// Knoepfe (Profil KAPITEL1 mz5, woertlich):
+//   Reihe 1 (Sprungmarken, Wahlgruppe _m5ePaar('p1'…'p4')):
+//     „9 870 und 12 300“ · „4 506 und 4 560“ · „7 999 und 8 001“ ·
+//     „30 012 und 3 012“
+//   Reihe 2: „Lupe an“ / „Lupe aus“ (ein Knopf, _m5eLupe()) ·
+//            „Ziffern untereinander“ (_m5eZiffern()) · „neu“ (_m5eNeu())
+//   Start und „neu“: Paar „9 870 und 12 300“, Lupe aus, keine Tafel.
+//   Ein neues Paar behaelt die Lupe (sie oeffnet sich nach der Landung neu)
+//   und die Tafel (sie fuellt sich mit den neuen Ziffern).
+//
+// Statuszeilen (woertlich, Tausendertrenner U+00A0):
+//   _m5e-a        „A: 9 870 (4 Stellen)“                (blau)
+//   _m5e-b        „B: 12 300 (5 Stellen)“               (orange)
+//   _m5e-lupe     „Lupe: 9 000 bis 13 000“              nur bei Lupe an
+//   _m5e-ziffern  „Erste verschiedene Stelle: Zehntausender (leer und 1)“
+//                 nur nach „Ziffern untereinander“
+//   Alle Zeilen stehen sofort nach dem Knopfdruck; das Bild zieht in 0,8 s nach.
+//
+// Werte (gerechnet, nicht eingetragen: Stellenzahl = Laenge der Ziffernfolge,
+// erste verschiedene Stelle = erste Spalte von ZT bis E mit ungleichem Inhalt):
+//   P1  9 870 (4)  · 12 300 (5) · Zehntausender (leer und 1) · Lupe 9 000 bis 13 000
+//   P2  4 506 (4)  · 4 560 (4)  · Zehner (0 und 6)          · Lupe 4 500 bis 4 600
+//   P3  7 999 (4)  · 8 001 (4)  · Tausender (7 und 8)       · Lupe 7 990 bis 8 010
+//   P4  30 012 (5) · 3 012 (4)  · Zehntausender (3 und leer) · Lupe 0 bis 40 000
+//   Lupenstriche: P1 alle 100 (Zahl alle 1 000) · P2 alle 10 (Zahl alle 50) ·
+//   P3 alle 1 (Zahl alle 5) · P4 wie der Hauptstrahl.
+//
+// Aha (_bioFx, ruhig, OHNE Textstreifen): bei P2 und „Lupe an“ – oben liegen
+// 4 506 und 4 560 aufeinander (0,5 px auseinander), in der Lupe stehen sie
+// weit auseinander; sobald die Lupe ganz offen ist, je ein Lichtring an
+// beiden Punkten. Nach „Ziffern untereinander“ ein Lichtring an der
+// leuchtenden Spalte.
+//
+// NICHT am Bildschirm (sim_plan.nicht_am_bildschirm, Merksatz und Regel):
+// „größer“, „kleiner“, „links“, „rechts“, „mehr“ – auch nicht als Wortteil
+// (also nicht „vergrößert“, „rechtsbündig“, „mehrere“). Die Ueberschrift ist
+// deshalb nicht die Frage der Einheit („Welche Zahl ist größer?“), sondern
+// „Wo stehen die Zahlen auf dem Zahlenstrahl?“. Keine Namen, keine Punkte,
+// keine Zeit, kein Urteil. Deterministisch, ohne Zufall.
+// ════════════════════════════════════════════════════════════════════════
+let _m5e = null;
+const _m5ePAARE = {
+  p1: { a: 9870,  b: 12300, von: 9000, bis: 13000, fein: 100,  mitte: 500,  lang: 1000,  zahl: 1000 },
+  p2: { a: 4506,  b: 4560,  von: 4500, bis: 4600,  fein: 10,   mitte: 50,   lang: 100,   zahl: 50 },
+  p3: { a: 7999,  b: 8001,  von: 7990, bis: 8010,  fein: 1,    mitte: 5,    lang: 10,    zahl: 5 },
+  p4: { a: 30012, b: 3012,  von: 0,    bis: 40000, fein: 1000, mitte: 5000, lang: 10000, zahl: 10000 }
+};
+const _m5eREIHE = ['p1', 'p2', 'p3', 'p4'];
+const _m5eHAUPT = { von: 0, bis: 40000, fein: 1000, mitte: 5000, lang: 10000, zahl: 10000 };
+const _m5eSTELLE = ['Zehntausender', 'Tausender', 'Hunderter', 'Zehner', 'Einer'];
+const _m5eKOPF = ['ZT', 'T', 'H', 'Z', 'E'];
+const _m5eK = {
+  XL: 30, XR: 390,                 // Hauptstrahl: 0 bei XL, 40 000 bei XR
+  YS: 74,                          // Hoehe des Hauptstrahls
+  FA: 6, FB: 30, FH: 20,           // Faehnchen oben: Reihe A, Reihe B, Hoehe
+  BOX: [12, 106, 408, 186],        // Lupenkasten (x0, y0, x1, y1)
+  LX0: 40, LX1: 380, YL: 157,      // Lupenstrahl
+  LA: 111, LB: 131, LH: 17,        // Faehnchen in der Lupe
+  ZY: 19,                          // Abstand Strahl -> Mitte der Zahlen darunter
+  TX: 112, TY: 192, TS: 26, TW: 34, TK: 15, TR: 19,   // Tafel: x, y, Kennspalte, Spalte, Kopf, Zeile
+  FLUG: 0.8, VERSATZ: 0.12, AUF: 0.8, ZU: 0.45,
+  ZIF: 0.6, ZIF_STAFFEL: 0.08, ZIF_ALLE: 0.95,
+  FENSTER: 12                      // Mindestbreite des Lupenrahmens oben (px)
+};
+const _m5eFARBE = { a: '#1d4ed8', b: '#c2410c', strahl: '#334155', text: '#1f2937',
+                    lupe: '#b45309', lupeGrund: '#fffbeb', rahmen: 'rgba(251,191,36,0.32)',
+                    licht: '#fcd34d', hell: 'rgba(250,204,21,0.45)' };
+
+// ── Rechnen (alles, was angezeigt wird, kommt von hier) ──────────────────
+function _m5eZahl(n) {
+  const s = String(n);
+  let o = '';
+  for (let i = 0; i < s.length; i++) {
+    if (i > 0 && (s.length - i) % 3 === 0) o += ' ';
+    o += s[i];
+  }
+  return o;
+}
+function _m5eStellen(n) { return String(n).length; }
+// Ziffern in den Spalten ZT T H Z E, an den Einern ausgerichtet; '' = leer
+function _m5eSpalten(n) {
+  const s = String(n), r = ['', '', '', '', ''];
+  for (let i = 0; i < s.length; i++) r[5 - s.length + i] = s[i];
+  return r;
+}
+function _m5eErsteVerschieden(p) {
+  const a = _m5eSpalten(p.a), b = _m5eSpalten(p.b);
+  for (let i = 0; i < 5; i++) {
+    if (a[i] !== b[i]) return { i: i, a: a[i] || 'leer', b: b[i] || 'leer' };
+  }
+  return null;
+}
+function _m5eX(v) { const K = _m5eK; return K.XL + (K.XR - K.XL) * v / _m5eHAUPT.bis; }
+function _m5eGelandet() { return !!_m5e && _m5e.flug >= _m5eK.FLUG + _m5eK.VERSATZ; }
+
+// ── Zustand, Oberflaeche, Status ─────────────────────────────────────────
+function _m5eInit() {
+  _m5e = { paar: 'p1', lupe: false, ziffern: false, t: 0,
+           flug: 0,          // s seit der Wahl des Paares (Anflug)
+           lupeK: 0,         // 0 = Lupe zu, 1 = ganz offen
+           zifT: 0,          // s seit dem Fuellen der Tafel
+           ahaFertig: false, ringFertig: false,
+           fx: { teile: [] } };
+}
+function _m5eHTML() {
+  const pk = (k) => {
+    const p = _m5ePAARE[k];
+    return `<button class="sim-btn${k === 'p1' ? ' primary' : ''}" id="_m5e-p-${k}" onclick="_m5ePaar('${k}')">${_m5eZahl(p.a)} und ${_m5eZahl(p.b)}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo stehen die Zahlen auf dem Zahlenstrahl?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jede Zahl hat auf dem Zahlenstrahl ihren festen Platz. Oben sind es von Strich zu Strich 1 000. Die Lupe zeigt einen kleinen Teil des Zahlenstrahls ganz nah.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5eREIHE.map(pk).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5e-lupe-knopf" onclick="_m5eLupe()">Lupe an</button>
+          <button class="sim-btn" id="_m5e-ziffern-knopf" onclick="_m5eZiffern()">Ziffern untereinander</button>
+          <button class="sim-btn" onclick="_m5eNeu()">neu</button>
+        </div>
+        <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 9 870 und 12 300, Lupe aus</p>
+      </div>
+      <div>
+        <div class="fpm-label">Die zwei Zahlen</div>
+        <div class="lmp-status on" id="_m5e-a" style="margin-top:6px;color:${_m5eFARBE.a};font-weight:700"></div>
+        <div class="lmp-status on" id="_m5e-b" style="margin-top:6px;color:${_m5eFARBE.b};font-weight:700"></div>
+        <div class="lmp-status on" id="_m5e-lupe" style="margin-top:6px;display:none"></div>
+        <div class="lmp-status on" id="_m5e-ziffern" style="margin-top:6px;display:none"></div>
+        <div class="fpm-note" style="margin-top:10px">A ist blau, B ist orange. Die Fähnchen tragen die Zahlen. In der Tafel stehen die Ziffern untereinander: ZT Zehntausender, T Tausender, H Hunderter, Z Zehner, E Einer.</div>
+      </div>
+    </div>
+  </div>`;
+}
+function _m5eStatus() {
+  if (!_m5e) return;
+  const z = _m5e, p = _m5ePAARE[z.paar];
+  const setze = (id, text, zeigen) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = zeigen ? text : '';
+    if (el.style) el.style.display = zeigen ? '' : 'none';
+  };
+  setze('_m5e-a', 'A: ' + _m5eZahl(p.a) + ' (' + _m5eStellen(p.a) + ' Stellen)', true);
+  setze('_m5e-b', 'B: ' + _m5eZahl(p.b) + ' (' + _m5eStellen(p.b) + ' Stellen)', true);
+  setze('_m5e-lupe', 'Lupe: ' + _m5eZahl(p.von) + ' bis ' + _m5eZahl(p.bis), z.lupe);
+  const v = _m5eErsteVerschieden(p);
+  setze('_m5e-ziffern', v ? 'Erste verschiedene Stelle: ' + _m5eSTELLE[v.i] + ' (' + v.a + ' und ' + v.b + ')' : '',
+        z.ziffern && !!v);
+  const lk = document.getElementById('_m5e-lupe-knopf');
+  if (lk) {
+    lk.textContent = z.lupe ? 'Lupe aus' : 'Lupe an';
+    if (lk.classList) lk.classList.toggle('primary', z.lupe);
+  }
+  const zk = document.getElementById('_m5e-ziffern-knopf');
+  if (zk && zk.classList) zk.classList.toggle('primary', z.ziffern);
+  for (const k of _m5eREIHE) {
+    const b = document.getElementById('_m5e-p-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.paar);
+  }
+}
+
+// ── Knoepfe ──────────────────────────────────────────────────────────────
+function _m5ePaar(k) {
+  if (!_m5e || !_m5ePAARE[k]) return;
+  const z = _m5e;
+  z.paar = k; z.flug = 0;
+  z.lupeK = 0; z.ahaFertig = false;      // die Lupe oeffnet sich nach der Landung neu
+  z.zifT = 0; z.ringFertig = false;      // die Tafel fuellt sich neu
+  _m5eStatus();
+}
+function _m5eLupe() {
+  if (!_m5e) return;
+  const z = _m5e;
+  z.lupe = !z.lupe;
+  if (z.lupe) z.ahaFertig = false;
+  _m5eStatus();
+}
+function _m5eZiffern() {
+  if (!_m5e) return;
+  const z = _m5e;
+  z.ziffern = true; z.zifT = 0; z.ringFertig = false;
+  _m5eStatus();
+}
+function _m5eNeu() {
+  if (!_m5e) return;
+  _m5eInit(); _m5eStatus();
+}
+
+// ── Bewegung ─────────────────────────────────────────────────────────────
+function _m5eUpdate(dt) {
+  if (!_m5e) return;
+  dt = _bioFxDt(dt);
+  const z = _m5e, K = _m5eK;
+  z.t += dt;
+  z.flug += dt;
+  const da = _m5eGelandet();
+  if (z.lupe) {
+    if (da && z.lupeK < 1) {
+      z.lupeK = Math.min(1, z.lupeK + dt / K.AUF);
+      if (z.lupeK >= 1 && !z.ahaFertig) {
+        z.ahaFertig = true;
+        // Aha: nur bei 4 506 und 4 560 - oben aufeinander, in der Lupe weit auseinander
+        if (z.paar === 'p2') {
+          const g = _m5eLupeGeo(1), p = _m5ePAARE[z.paar];
+          _bioFxWelle(z.fx.teile, g.wert(p.a), K.YL, _m5eFARBE.licht, 30);
+          _bioFxWelle(z.fx.teile, g.wert(p.b), K.YL, _m5eFARBE.licht, 30);
+        }
+      }
+    }
+  } else if (z.lupeK > 0) {
+    z.lupeK = Math.max(0, z.lupeK - dt / K.ZU);
+  }
+  if (z.ziffern && da) {
+    const vor = z.zifT;
+    z.zifT += dt;
+    if (vor < K.ZIF_ALLE && z.zifT >= K.ZIF_ALLE && !z.ringFertig) {
+      z.ringFertig = true;
+      const v = _m5eErsteVerschieden(_m5ePAARE[z.paar]);
+      if (v) _bioFxWelle(z.fx.teile, K.TX + K.TS + K.TW * (v.i + 0.5), K.TY + K.TK + K.TR, _m5eFARBE.licht, 24);
+    }
+  }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+// Lupengeometrie bei Oeffnung e (0 = im Rahmen oben, 1 = ganz offen).
+function _m5eLupeGeo(e) {
+  const K = _m5eK, p = _m5ePAARE[_m5e.paar];
+  let w0 = _m5eX(p.von), w1 = _m5eX(p.bis);
+  if (w1 - w0 < K.FENSTER) { const m = (w0 + w1) / 2; w0 = m - K.FENSTER / 2; w1 = m + K.FENSTER / 2; }
+  const fen = { x0: w0 - 4, y0: K.YS - 11, x1: w1 + 4, y1: K.YS + 10 };
+  const L = (a, b) => a + (b - a) * e;
+  const box = { x0: L(fen.x0, K.BOX[0]), y0: L(fen.y0, K.BOX[1]), x1: L(fen.x1, K.BOX[2]), y1: L(fen.y1, K.BOX[3]) };
+  const lx0 = L(w0, K.LX0), lx1 = L(w1, K.LX1), ly = L(K.YS, K.YL);
+  return { fen, box, lx0, lx1, ly,
+           wert: (v) => lx0 + (lx1 - lx0) * (v - p.von) / (p.bis - p.von) };
+}
+function _m5eText(ctx, s, x, y, farbe, groesse, ausr, gewicht) {
+  ctx.fillStyle = farbe || _m5eFARBE.text;
+  ctx.font = (gewicht || '600') + ' ' + (groesse || 12) + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(s, x, y);
+}
+// Ein Zahlenstrahl-Stueck von x0 bis x1 fuer die Werte von..bis.
+// st: Strichabstaende (fein, mitte, lang) und Zahlabstand (zahl).
+function _m5eStrahl(ctx, x0, x1, y, von, bis, st, aStriche, aZahlen, pfeil, grund) {
+  ctx.save();
+  ctx.strokeStyle = _m5eFARBE.strahl; ctx.lineCap = 'round';
+  ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(pfeil ? x1 + 11 : x1, y); ctx.stroke();
+  if (pfeil) {
+    ctx.fillStyle = _m5eFARBE.strahl;
+    ctx.beginPath(); ctx.moveTo(x1 + 18, y); ctx.lineTo(x1 + 8, y - 5); ctx.lineTo(x1 + 8, y + 5); ctx.closePath(); ctx.fill();
+  } else {
+    // ein Ausschnitt: der Strahl geht an beiden Enden weiter
+    ctx.setLineDash([3, 3]); ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(x0 - 14, y); ctx.lineTo(x0, y); ctx.moveTo(x1, y); ctx.lineTo(x1 + 14, y); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  const n = Math.round((bis - von) / st.fein);
+  if (aStriche > 0.01) {
+    ctx.globalAlpha = aStriche;
+    for (let k = 0; k <= n; k++) {
+      const v = von + k * st.fein, x = x0 + (x1 - x0) * k / n;
+      const lang = v % st.lang === 0, mitte = v % st.mitte === 0;
+      const hh = lang ? 8 : mitte ? 6 : 3.5;
+      ctx.lineWidth = lang ? 1.8 : mitte ? 1.4 : 1;
+      ctx.beginPath(); ctx.moveTo(x, y - hh); ctx.lineTo(x, y + hh); ctx.stroke();
+    }
+  }
+  if (aZahlen > 0.01) {
+    ctx.globalAlpha = aZahlen;
+    ctx.font = '600 12px sans-serif';
+    for (let k = 0; k <= n; k++) {
+      const v = von + k * st.fein;
+      if (v % st.zahl !== 0) continue;
+      const x = x0 + (x1 - x0) * k / n, s = _m5eZahl(v);
+      const w = ctx.measureText(s).width;
+      // Grund hinter der Zahl: Linien der Lupe laufen hinter den Zahlen durch
+      ctx.fillStyle = grund || '#ffffff'; ctx.fillRect(x - w / 2 - 3, y + _m5eK.ZY - 8, w + 6, 16);
+      ctx.fillStyle = _m5eFARBE.text;
+      _m5eText(ctx, s, x, y + _m5eK.ZY, _m5eFARBE.text, 12);
+    }
+  }
+  ctx.restore();
+}
+function _m5ePunkt(ctx, x, y, farbe, r) {
+  ctx.save();
+  ctx.fillStyle = farbe; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Faehnchen: Mast vom Punkt bis zum Tuch, das Tuch traegt die Zahl.
+// seite -1: Tuch vor dem Mast, +1: Tuch hinter dem Mast (weicht am Rand aus).
+function _m5eFahne(ctx, x, yPunkt, yTuch, hoch, text, farbe, seite, groesse, xmin, xmax, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha == null ? 1 : alpha;
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  const w = Math.ceil(ctx.measureText(text).width) + 16;
+  let s = seite;
+  if (s < 0 && x - w < xmin) s = 1;
+  if (s > 0 && x + w > xmax) s = -1;
+  const t0 = s < 0 ? x - w : x;
+  ctx.strokeStyle = farbe; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(x, yPunkt); ctx.lineTo(x, yTuch); ctx.stroke();
+  ctx.fillStyle = farbe;
+  _bioFxRundRect(ctx, t0, yTuch, w, hoch, 4); ctx.fill();
+  _m5eText(ctx, text, t0 + w / 2, yTuch + hoch / 2 + 1, '#ffffff', groesse, 'center', '700');
+  ctx.restore();
+}
+// Rahmen oben und Trichter: zwei gestrichelte Linien vom Rahmen zum Kasten.
+// Wird VOR dem Hauptstrahl gezeichnet, damit die Linien hinter den Zahlen laufen.
+function _m5eLupeRahmen(ctx) {
+  const z = _m5e, F = _m5eFARBE;
+  const g0 = _m5eLupeGeo(0), g = _m5eLupeGeo(_bioFxEase.sanft(z.lupeK));
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, z.lupeK * 3);
+  ctx.fillStyle = F.rahmen;
+  _bioFxRundRect(ctx, g0.fen.x0, g0.fen.y0, g0.fen.x1 - g0.fen.x0, g0.fen.y1 - g0.fen.y0, 4); ctx.fill();
+  ctx.strokeStyle = F.lupe; ctx.lineWidth = 1.4;
+  _bioFxRundRect(ctx, g0.fen.x0, g0.fen.y0, g0.fen.x1 - g0.fen.x0, g0.fen.y1 - g0.fen.y0, 4); ctx.stroke();
+  ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+  ctx.beginPath();
+  ctx.moveTo(g.fen.x0, g.fen.y1); ctx.lineTo(g.box.x0, g.box.y0);
+  ctx.moveTo(g.fen.x1, g.fen.y1); ctx.lineTo(g.box.x1, g.box.y0);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+function _m5eLupeZeichnen(ctx, W) {
+  const z = _m5e, K = _m5eK, F = _m5eFARBE, p = _m5ePAARE[z.paar];
+  const e = _bioFxEase.sanft(z.lupeK), g = _m5eLupeGeo(e);
+  ctx.save();
+  // Kasten
+  ctx.fillStyle = F.lupeGrund;
+  _bioFxRundRect(ctx, g.box.x0, g.box.y0, g.box.x1 - g.box.x0, g.box.y1 - g.box.y0, 8); ctx.fill();
+  ctx.strokeStyle = F.lupe; ctx.lineWidth = 1.6;
+  _bioFxRundRect(ctx, g.box.x0, g.box.y0, g.box.x1 - g.box.x0, g.box.y1 - g.box.y0, 8); ctx.stroke();
+  ctx.restore();
+  // Lupenstrahl mit Strichen und Zahlen
+  const aS = _bioFxKlemme((e - 0.15) / 0.4), aZ = _bioFxKlemme((e - 0.65) / 0.35);
+  _m5eStrahl(ctx, g.lx0, g.lx1, g.ly, p.von, p.bis, p, aS, aZ, false, F.lupeGrund);
+  // A und B in der Lupe
+  const xa = g.wert(p.a), xb = g.wert(p.b), aF = _bioFxKlemme((e - 0.55) / 0.45);
+  const yA = K.LA + (g.ly - K.YL), yB = K.LB + (g.ly - K.YL);
+  if (aF > 0.01) {
+    _m5eFahne(ctx, xa, g.ly, yA, K.LH, _m5eZahl(p.a), F.a, -1, 12, K.BOX[0] + 4, K.BOX[2] - 4, aF);
+    _m5eFahne(ctx, xb, g.ly, yB, K.LH, _m5eZahl(p.b), F.b, 1, 12, K.BOX[0] + 4, K.BOX[2] - 4, aF);
+  }
+  _m5ePunkt(ctx, xa, g.ly, F.a, 5.5);
+  _m5ePunkt(ctx, xb, g.ly, F.b, 5.5);
+}
+function _m5eTafel(ctx) {
+  const z = _m5e, K = _m5eK, F = _m5eFARBE, p = _m5ePAARE[z.paar];
+  const x0 = K.TX, y0 = K.TY, xs = x0 + K.TS, x1 = xs + 5 * K.TW, y1 = y0 + K.TK + 2 * K.TR;
+  const v = _m5eErsteVerschieden(p);
+  ctx.save();
+  // Kopfzeile und Raster
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(xs, y0, x1 - xs, K.TK);
+  // leuchtende Spalte, sobald alle Ziffern stehen
+  const aH = _bioFxKlemme((z.zifT - K.ZIF_ALLE) / 0.3);
+  if (v && aH > 0) {
+    ctx.globalAlpha = aH;
+    ctx.fillStyle = F.hell; ctx.fillRect(xs + K.TW * v.i, y0, K.TW, y1 - y0);
+    ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 2;
+    ctx.strokeRect(xs + K.TW * v.i + 1, y0 + 1, K.TW - 2, y1 - y0 - 2);
+    ctx.globalAlpha = 1;
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.strokeRect(xs, y0, x1 - xs, y1 - y0);
+  ctx.beginPath();
+  for (let c = 1; c < 5; c++) { ctx.moveTo(xs + c * K.TW, y0); ctx.lineTo(xs + c * K.TW, y1); }
+  ctx.moveTo(xs, y0 + K.TK); ctx.lineTo(x1, y0 + K.TK);
+  ctx.moveTo(xs, y0 + K.TK + K.TR); ctx.lineTo(x1, y0 + K.TK + K.TR);
+  ctx.stroke();
+  for (let c = 0; c < 5; c++) _m5eText(ctx, _m5eKOPF[c], xs + K.TW * (c + 0.5), y0 + K.TK / 2 + 1, '#334155', 12, 'center', '700');
+  _m5eText(ctx, 'A', x0 + K.TS / 2, y0 + K.TK + K.TR / 2 + 1, F.a, 14, 'center', '700');
+  _m5eText(ctx, 'B', x0 + K.TS / 2, y0 + K.TK + K.TR * 1.5 + 1, F.b, 14, 'center', '700');
+  // Ziffern fallen Spalte fuer Spalte in ihre Zelle, die Einer zuerst -
+  // jede bleibt in ihrer eigenen Spalte, nichts ueberkreuzt sich.
+  const reihen = [[_m5eSpalten(p.a), F.a], [_m5eSpalten(p.b), F.b]];
+  reihen.forEach(([sp, farbe], r) => {
+    for (let c = 0; c < 5; c++) {
+      if (!sp[c]) continue;
+      const t = _bioFxKlemme((z.zifT - (4 - c) * K.ZIF_STAFFEL) / K.ZIF);
+      if (t <= 0) continue;
+      const e = _bioFxEase.raus(t);
+      ctx.globalAlpha = e;
+      _m5eText(ctx, sp[c], xs + K.TW * (c + 0.5), y0 + K.TK + K.TR * (r + 0.5) + 1 - (1 - e) * 8, farbe, 16, 'center', '700');
+    }
+  });
+  ctx.restore();
+}
+function _m5eDraw(ctx, cv) {
+  if (!_m5e) return;
+  const z = _m5e, K = _m5eK, F = _m5eFARBE, p = _m5ePAARE[z.paar];
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+  // Lupenrahmen oben und Trichter (hinter dem Strahl und seinen Zahlen)
+  if (z.lupeK > 0) _m5eLupeRahmen(ctx);
+  // Hauptstrahl 0 bis 40 000
+  _m5eStrahl(ctx, K.XL, K.XR, K.YS, _m5eHAUPT.von, _m5eHAUPT.bis, _m5eHAUPT, 1, 1, true);
+  // Lupe
+  if (z.lupeK > 0) _m5eLupeZeichnen(ctx, W);
+  // Tafel
+  if (z.ziffern) _m5eTafel(ctx);
+  // A und B fallen von oben an ihren Platz
+  const ea = _bioFxEase.raus(_bioFxKlemme(z.flug / K.FLUG));
+  const eb = _bioFxEase.raus(_bioFxKlemme((z.flug - K.VERSATZ) / K.FLUG));
+  const dya = -(1 - ea) * (K.YS + 20), dyb = -(1 - eb) * (K.YS + 20);
+  const xa = _m5eX(p.a), xb = _m5eX(p.b);
+  _m5eFahne(ctx, xa, K.YS + dya, K.FA + dya, K.FH, _m5eZahl(p.a), F.a, -1, 13, 2, W - 2, 1);
+  _m5eFahne(ctx, xb, K.YS + dyb, K.FB + dyb, K.FH, _m5eZahl(p.b), F.b, 1, 13, 2, W - 2, 1);
+  _m5ePunkt(ctx, xa, K.YS + dya, F.a, 6);
+  _m5ePunkt(ctx, xb, K.YS + dyb, F.b, 6);
+  _bioFxAlleDraw(ctx, z.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mz6 „Auf welche Zahl rundet man?“ (Kennung m5-runden)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL1_PROFIL.md, Abschnitt m5-runden.
+//
+// Was man sieht: einen Ausschnitt des Zahlenstrahls zwischen den beiden
+// Nachbarzahlen der gewaehlten Stelle (Hunderter: z. B. 2 400 bis 2 500,
+// Striche alle 10; der Strich in der Haelfte ist gestrichelt und traegt keine
+// Zahl – das ist die Fuenferstruktur des Ausschnitts). Nur die beiden
+// Nachbarzahlen sind beschriftet. Die Zahl ist ein dunkelblauer Punkt mit
+// Faehnchen, auf dem die Zahl gross steht. Zwei Boegen ueber dem Strahl
+// verbinden den Punkt mit beiden Nachbarzahlen; auf jedem Bogen steht der
+// Abstand (links tuerkis, rechts violett – dieselben Farben tragen die beiden
+// Zahlen in der Zeile „Abstände“). Unten im Bild: „Stelle: Hunderter ·
+// Striche alle 10“.
+// „runden“: Eine goldene Kugel erscheint am Punkt (0,18 s) und rollt in
+// 0,9 s ueber den Strahl zu der Nachbarzahl, deren Abstand kleiner ist; bei
+// gleichen Abstaenden zur rechten. Der Bogen auf ihrer Seite wird dicker, der
+// andere blass. Wo sie liegen bleibt, bekommt die Nachbarzahl einen goldenen
+// Kasten und leuchtet 2,5 s ruhig nach (_bioFxLeuchten, 0,8 Hz).
+// Jede andere Handlung bewegt sich auch: Eine neue Zahl (Sprungmarke, „– 1“,
+// „+ 1“) laesst den Punkt in 0,7 s gleiten, das Faehnchen macht dabei einen
+// kleinen Hopser; liegt die neue Zahl in einem anderen Ausschnitt, rollt der
+// Strahl mit. Eine andere Stelle zoomt den Ausschnitt in 0,7 s (die Breite
+// aendert sich logarithmisch, Striche und Zahlen blenden ueber).
+//
+// Knoepfe (Profil, woertlich):
+//   Sprungmarken  „2 449“ · „2 451“ · „2 450“ · „2 380“      _m5fZahl(n)
+//   „Stelle:“     „Zehner“ · „Hunderter“ · „Tausender“      _m5fStelle('Z'|'H'|'T')
+//                 (Wahlgruppe, Start Hunderter)
+//   „– 1“ · „+ 1“ (_m5fSchritt(-1|1)) · „runden“ (_m5fRunden()) ·
+//   „neu“ (_m5fNeu(): 2 449, Hunderter, Aha-Gedaechtnis geloescht)
+// Ist die Zahl selbst eine glatte Zahl der Stelle, gilt sie als linke
+// Nachbarzahl (Abstaende 0 und 10/100/1 000) – die Kugel bleibt dann am Punkt.
+// Bereich der Zahl: 0 bis 99 999.
+//
+// Statuszeilen (woertlich, Tausendertrenner geschuetztes Leerzeichen):
+//   _m5f-zahl      „Zahl: 2 449“
+//   _m5f-nachbarn  „Nachbarzahlen: 2 400 und 2 500“
+//   _m5f-abstand   „Abstände: 49 und 51“
+//   _m5f-ergebnis  „Gerundet: …“ bis die Kugel liegt, dann „Gerundet: 2 400“
+// Eine neue Zahl oder eine andere Stelle setzt „Gerundet: …“ zurueck. Die
+// Zahl selbst aendert „runden“ nie – gerundet wird immer von ihr aus.
+//
+// Werte (Hunderter):
+//   2 449 → 2 400 und 2 500 · 49 und 51 · Gerundet: 2 400
+//   2 451 → 2 400 und 2 500 · 51 und 49 · Gerundet: 2 500
+//   2 450 → 2 400 und 2 500 · 50 und 50 · Gerundet: 2 500
+//   2 380 → 2 300 und 2 400 · 80 und 20 · Gerundet: 2 400
+//   Zehner:    2 449 → 2 440 und 2 450 · 9 und 1 · Gerundet: 2 450
+//   Tausender: 2 449 → 2 000 und 3 000 · 449 und 551 · Gerundet: 2 000
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Sind auf Hunderter 2 449 UND
+// 2 450 gerundet worden (Reihenfolge egal, z. B. „2 449“ → „runden“ → „+ 1“ →
+// „runden“), laufen bei der zweiten Landung zwei Lichtringe – einer am Punkt
+// (2 450 sitzt genau auf dem gestrichelten Strich), einer an der Nachbarzahl,
+// wo die Kugel liegt. 2 449 landet bei 2 400, eins mehr bei 2 500: Das
+// widerlegt das schrittweise Runden (2 449 → 2 450 → 2 500) aus Vermutung 2.
+// Einmal je Sitzung; „neu“ setzt es zurueck.
+//
+// Nicht am Bildschirm (Merksatzwoerter und Regel, sim_plan.nicht_am_bildschirm):
+// „näher“, „auf“ als „aufrunden“, „Mitte“, „größer“, „abrunden“. Darum steht
+// im Bild ausser Zahlen nur die Stellen-Zeile, und kein Hinweistext nennt die
+// Regel, nach der die Kugel rollt.
+// Deterministisch, ohne Zufall: jede Zahl im Bild kommt aus _m5fNachbarn().
+// ════════════════════════════════════════════════════════════════════════
+let _m5f = null;
+const _m5fSTELLE = {
+  Z: { name: 'Zehner',    s: 10 },
+  H: { name: 'Hunderter', s: 100 },
+  T: { name: 'Tausender', s: 1000 }
+};
+const _m5fREIHE = ['Z', 'H', 'T'];
+const _m5fMARKEN = [2449, 2451, 2450, 2380];
+const _m5fK = {
+  X0: 50, X1: 370,          // Zahlenstrahl: linke und rechte Nachbarzahl (px)
+  LY: 160,                  // Hoehe des Strahls
+  FY: 16, FH: 36,           // Faehnchen: Oberkante, Hoehe
+  R: 10,                    // Radius der Kugel
+  MIN: 0, MAX: 99999,       // Bereich der Zahl
+  T_ZUG: 0.7,               // s: Punkt gleitet, Strahl rollt oder zoomt
+  T_AUF: 0.18,              // s: Kugel erscheint
+  T_ROLL: 0.9,              // s: Kugel rollt
+  T_HOPS: 0.35,             // s: kleiner Hopser beim Ankommen
+  LEUCHT: 2.5,              // s: die Nachbarzahl leuchtet nach
+  F_L: '#0f766e',           // linker Bogen (tuerkis)
+  F_R: '#6d28d9',           // rechter Bogen (violett)
+  F_PUNKT: '#1e3a8a',       // Punkt und Faehnchen
+  F_STRAHL: '#1e293b'
+};
+
+// 2449 -> "2 449" mit geschuetztem Leerzeichen (wie im Heft, dort normales)
+function _m5fFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+// Nachbarzahlen, Abstaende und Ergebnis. Eine glatte Zahl ist ihre eigene
+// linke Nachbarzahl; bei gleichen Abstaenden geht es zur rechten.
+function _m5fNachbarn(zahl, stelle) {
+  const s = _m5fSTELLE[stelle].s;
+  const lo = Math.floor(zahl / s) * s, hi = lo + s;
+  const dl = zahl - lo, dr = hi - zahl;
+  return { s, lo, hi, dl, dr, ziel: dl < dr ? lo : hi };
+}
+function _m5fLage(zahl, stelle) {
+  const nb = _m5fNachbarn(zahl, stelle);
+  return { p: zahl, w: nb.s, r: nb.dl / nb.s };
+}
+
+function _m5fInit() {
+  const l = _m5fLage(2449, 'H');
+  _m5f = { zahl: 2449, stelle: 'H', p: l.p, w: l.w, r: l.r, zug: null,
+           kugel: null, ergebnis: null, leucht: 0, erledigt: {}, aha: false,
+           t: 0, fx: { teile: [] } };
+}
+function _m5fHTML() {
+  const marke = n => `<button class="sim-btn" id="_m5f-b-${n}" onclick="_m5fZahl(${n})">${_m5fFmt(n)}</button>`;
+  const stelle = k => `<button class="sim-btn${k === 'H' ? ' primary' : ''}" id="_m5f-s-${k}" onclick="_m5fStelle('${k}')">${_m5fSTELLE[k].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was ist 2 449 auf Hunderter gerundet?</h3>
+    <div class="fpm-note" style="margin-top:2px">Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. Die beiden Bögen zeigen die Abstände zu den Nachbarzahlen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5fMARKEN.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px;align-items:center">
+          <span class="fpm-label" style="margin:0 4px 0 0">Stelle:</span>
+          ${_m5fREIHE.map(stelle).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_m5fSchritt(-1)">–&nbsp;1</button>
+          <button class="sim-btn" onclick="_m5fSchritt(1)">+&nbsp;1</button>
+          <button class="sim-btn primary" id="_m5f-runden" onclick="_m5fRunden()">runden</button>
+          <button class="sim-btn" onclick="_m5fNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5f-zahl" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5f-nachbarn" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5f-abstand" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5f-ergebnis" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„runden“ lässt eine Kugel vom Punkt zu einer Nachbarzahl rollen. Mit „–&nbsp;1“ und „+&nbsp;1“ wandert der Punkt um eins.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Zahl 2&nbsp;449, Stelle Hunderter, noch nicht gerundet</p>
+  </div>`;
+}
+function _m5fZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5fStatus() {
+  if (!_m5f) return;
+  const z = _m5f, nb = _m5fNachbarn(z.zahl, z.stelle), K = _m5fK;
+  _m5fZeile('_m5f-zahl', 'Zahl: ' + _m5fFmt(z.zahl));
+  _m5fZeile('_m5f-nachbarn', 'Nachbarzahlen: ' + _m5fFmt(nb.lo) + ' und ' + _m5fFmt(nb.hi));
+  _m5fZeile('_m5f-abstand', 'Abstände: <b style="color:' + K.F_L + '">' + _m5fFmt(nb.dl) +
+            '</b> und <b style="color:' + K.F_R + '">' + _m5fFmt(nb.dr) + '</b>');
+  _m5fZeile('_m5f-ergebnis', 'Gerundet: ' + (z.ergebnis === null ? '…' : _m5fFmt(z.ergebnis)));
+  for (const k of _m5fREIHE) {
+    const b = document.getElementById('_m5f-s-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.stelle);
+  }
+  for (const n of _m5fMARKEN) {
+    const b = document.getElementById('_m5f-b-' + n);
+    if (b && b.classList) b.classList.toggle('primary', n === z.zahl);
+  }
+  const rb = document.getElementById('_m5f-runden');
+  if (rb) {
+    const rollt = !!(z.kugel && z.kugel.phase !== 'da');
+    rb.disabled = rollt;
+    rb.style.opacity = rollt ? '0.45' : '';
+  }
+}
+
+// Neues Ziel setzen; das Bild gleitet vom ANGEZEIGTEN Stand dorthin.
+function _m5fSetze(zahl, stelle) {
+  const z = _m5f;
+  const alt = { zahl: z.zahl, stelle: z.stelle };
+  z.zahl = zahl; z.stelle = stelle;
+  z.kugel = null; z.ergebnis = null; z.leucht = 0;
+  const nach = _m5fLage(zahl, stelle), von = { p: z.p, w: z.w, r: z.r };
+  if (von.p === nach.p && von.w === nach.w && Math.abs(von.r - nach.r) < 1e-9) z.zug = null;
+  else z.zug = { von, nach, t: 0, e: 0, alt };
+  _m5fStatus();
+}
+function _m5fZahl(n) {
+  if (!_m5f) return;
+  _m5fSetze(Math.max(_m5fK.MIN, Math.min(_m5fK.MAX, Math.round(n))), _m5f.stelle);
+}
+function _m5fStelle(k) {
+  if (!_m5f || !_m5fSTELLE[k]) return;
+  _m5fSetze(_m5f.zahl, k);
+}
+function _m5fSchritt(d) {
+  if (!_m5f) return;
+  const n = Math.max(_m5fK.MIN, Math.min(_m5fK.MAX, _m5f.zahl + d));
+  if (n === _m5f.zahl) return;
+  _m5fSetze(n, _m5f.stelle);
+}
+function _m5fRunden() {
+  if (!_m5f) return;
+  const z = _m5f;
+  if (z.kugel && z.kugel.phase !== 'da') return;          // rollt noch
+  if (z.zug) {                                              // Bild steht sofort
+    z.p = z.zug.nach.p; z.w = z.zug.nach.w; z.r = z.zug.nach.r; z.zug = null;
+  }
+  const nb = _m5fNachbarn(z.zahl, z.stelle);
+  z.kugel = { von: z.zahl, nach: nb.ziel, phase: 'auf', t: 0,
+              dauer: nb.ziel === z.zahl ? 0.25 : _m5fK.T_ROLL };
+  z.ergebnis = null; z.leucht = 0;
+  _m5fStatus();
+}
+function _m5fNeu() {
+  if (!_m5f) return;
+  _m5f.erledigt = {}; _m5f.aha = false;
+  _m5fSetze(2449, 'H');
+}
+// Die Kugel liegt: Ergebnis zeigen, Aha pruefen.
+function _m5fAngekommen() {
+  const z = _m5f, K = _m5fK, k = z.kugel;
+  z.ergebnis = k.nach;
+  z.leucht = K.LEUCHT;
+  z.erledigt[z.stelle + ':' + z.zahl] = k.nach;
+  if (!z.aha && z.stelle === 'H' && (z.zahl === 2449 || z.zahl === 2450) &&
+      z.erledigt['H:2449'] === 2400 && z.erledigt['H:2450'] === 2500) {
+    z.aha = true;
+    _bioFxWelle(z.fx.teile, _m5fX(z.zahl), K.LY, '#fcd34d', 40);
+    _bioFxWelle(z.fx.teile, _m5fX(k.nach), K.LY + 30, '#fcd34d', 48);
+  }
+  _m5fStatus();
+}
+
+function _m5fUpdate(dt) {
+  if (!_m5f) return;
+  dt = _bioFxDt(dt);
+  const z = _m5f, K = _m5fK;
+  z.t += dt;
+  if (z.zug) {
+    const g = z.zug;
+    g.t += dt;
+    const u = Math.min(1, g.t / K.T_ZUG), e = _bioFxEase.sanft(u);
+    g.e = e;
+    z.p = g.von.p + (g.nach.p - g.von.p) * e;
+    z.w = Math.exp(Math.log(g.von.w) + (Math.log(g.nach.w) - Math.log(g.von.w)) * e);
+    z.r = g.von.r + (g.nach.r - g.von.r) * e;
+    if (u >= 1) { z.p = g.nach.p; z.w = g.nach.w; z.r = g.nach.r; z.zug = null; }
+  }
+  const k = z.kugel;
+  if (k) {
+    k.t += dt;
+    if (k.phase === 'auf' && k.t >= K.T_AUF) { k.phase = 'rollt'; k.t = 0; }
+    else if (k.phase === 'rollt' && k.t >= k.dauer) { k.phase = 'da'; k.t = 0; _m5fAngekommen(); }
+  }
+  if (z.leucht > 0) z.leucht = Math.max(0, z.leucht - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _m5fLo() { return _m5f.p - _m5f.r * _m5f.w; }
+function _m5fX(v) {
+  const K = _m5fK;
+  return K.X0 + (v - _m5fLo()) / _m5f.w * (K.X1 - K.X0);
+}
+function _m5fText(ctx, s, x, y, ausr, farbe, groesse, gew) {
+  ctx.fillStyle = farbe || _m5fK.F_STRAHL;
+  ctx.font = (gew || '700') + ' ' + (groesse || 14) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Striche einer Stelle (s), mit Deckkraft a. Zu dichte Striche entfallen.
+function _m5fStriche(ctx, s, a) {
+  const z = _m5f, K = _m5fK, st = s / 10, L = K.X1 - K.X0;
+  if (a <= 0.01 || st / z.w * L < 4) return;
+  const lo = _m5fLo(), rand = 12 / L * z.w;
+  const k0 = Math.ceil((lo - rand) / st - 1e-9), k1 = Math.floor((lo + z.w + rand) / st + 1e-9);
+  ctx.save();
+  ctx.globalAlpha = a;
+  for (let k = k0; k <= k1; k++) {
+    const v = k * st, x = _m5fX(v);
+    if (v % s === 0) {                                     // glatte Zahl der Stelle
+      ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(x, K.LY - 15); ctx.lineTo(x, K.LY + 15); ctx.stroke();
+    } else if (v % (s / 2) === 0) {                        // Haelfte: gestrichelt, ohne Zahl
+      ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+      if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(x, K.LY - 52); ctx.lineTo(x, K.LY + 12); ctx.stroke();
+      if (ctx.setLineDash) ctx.setLineDash([]);
+    } else {
+      ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(x, K.LY - 8); ctx.lineTo(x, K.LY + 8); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+// Beschriftung der glatten Zahlen einer Stelle (nur, wenn sie Platz haben).
+function _m5fMarken(ctx, s, a, W) {
+  const z = _m5f, K = _m5fK, L = K.X1 - K.X0;
+  if (a <= 0.01 || s / z.w * L < 70) return;
+  const lo = _m5fLo();
+  const k0 = Math.ceil((lo - 0.25 * z.w) / s), k1 = Math.floor((lo + 1.25 * z.w) / s);
+  ctx.save();
+  ctx.globalAlpha = a;
+  for (let k = k0; k <= k1; k++) {
+    const v = k * s, x = _m5fX(v);
+    if (x < -40 || x > W + 40) continue;
+    const txt = _m5fFmt(v);
+    ctx.font = '700 18px sans-serif';
+    const tw = ctx.measureText(txt).width;
+    if (z.ergebnis === v && !z.zug) {
+      ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+      _bioFxRundRect(ctx, x - tw / 2 - 9, K.LY + 18, tw + 18, 26, 7); ctx.fill(); ctx.stroke();
+    }
+    _m5fText(ctx, txt, x, K.LY + 37, 'center', K.F_STRAHL, 18);
+  }
+  ctx.restore();
+}
+// Die gelandete Nachbarzahl leuchtet nach – HINTER dem Strahl, damit Strich
+// und Zahl scharf bleiben.
+function _m5fGlanz(ctx) {
+  const z = _m5f, K = _m5fK;
+  if (z.ergebnis === null || z.zug || z.leucht <= 0) return;
+  ctx.save();
+  ctx.font = '700 18px sans-serif';
+  const tw = ctx.measureText(_m5fFmt(z.ergebnis)).width;
+  ctx.globalAlpha = Math.min(1, z.leucht / 0.8);
+  _bioFxLeuchten(ctx, _m5fX(z.ergebnis), K.LY + 31, tw / 2 + 2, z.t, '252,211,77');
+  ctx.restore();
+}
+function _m5fStrahl(ctx, W) {
+  const z = _m5f, K = _m5fK;
+  // der Strahl selbst, an beiden Enden etwas laenger
+  ctx.save();
+  ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.X0 - 22, K.LY); ctx.lineTo(K.X1 + 22, K.LY); ctx.stroke();
+  ctx.fillStyle = K.F_STRAHL;                              // Pfeilspitze rechts
+  ctx.beginPath(); ctx.moveTo(K.X1 + 32, K.LY); ctx.lineTo(K.X1 + 21, K.LY - 6);
+  ctx.lineTo(K.X1 + 21, K.LY + 6); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  const sNeu = _m5fSTELLE[z.stelle].s;
+  if (z.zug && z.zug.alt.stelle !== z.stelle) {            // Zoom: ueberblenden
+    const sAlt = _m5fSTELLE[z.zug.alt.stelle].s, e = z.zug.e;
+    _m5fStriche(ctx, sAlt, 1 - e); _m5fStriche(ctx, sNeu, e);
+    _m5fMarken(ctx, sAlt, 1 - e, W); _m5fMarken(ctx, sNeu, e, W);
+  } else {
+    _m5fStriche(ctx, sNeu, 1);
+    _m5fMarken(ctx, sNeu, 1, W);
+  }
+}
+// Ein Bogen von xa nach xb ueber dem Strahl, oben der Abstand als Zahl.
+// xp ist der Punkt (Fahnenstab): Der Zahlenkasten haelt von ihm Abstand,
+// und bei kurzen Boegen steht er hoeher, damit er die Kugel nicht beruehrt.
+function _m5fBogen(ctx, xa, xb, xp, farbe, a, text, dick, seite, W) {
+  const K = _m5fK, breite = Math.abs(xb - xa);
+  const h = Math.max(9, Math.min(50, breite * 0.32));
+  ctx.save();
+  ctx.globalAlpha = a;
+  if (breite >= 1) {
+    ctx.strokeStyle = farbe; ctx.lineWidth = dick ? 4.5 : 3; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(xa, K.LY - 2);
+    ctx.quadraticCurveTo((xa + xb) / 2, K.LY - 2 * h, xb, K.LY - 2);
+    ctx.stroke();
+  }
+  ctx.font = '700 16px sans-serif';
+  const tw = ctx.measureText(text).width, pw = Math.max(30, tw + 18), ph = 24;
+  let cx = (xa + xb) / 2;
+  if (seite === 'L') cx = Math.min(cx, xp - pw / 2 - 9);
+  else cx = Math.max(cx, xp + pw / 2 + 9);
+  cx = Math.max(pw / 2 + 3, Math.min(W - pw / 2 - 3, cx));
+  const cy = K.LY - Math.max(h, 28) - 17;
+  // deckender Grund auch beim blassen Bogen: Striche scheinen nicht durch
+  ctx.globalAlpha = Math.min(1, a * 3.4);
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, cx - pw / 2, cy - ph / 2, pw, ph, 8); ctx.fill();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = farbe; ctx.lineWidth = dick ? 3 : 2;
+  _bioFxRundRect(ctx, cx - pw / 2, cy - ph / 2, pw, ph, 8); ctx.stroke();
+  _m5fText(ctx, text, cx, cy + 6, 'center', farbe, 16);
+  ctx.restore();
+}
+function _m5fBogenPaar(ctx, zahl, stelle, a, seite, W) {
+  if (a <= 0.01) return;
+  const K = _m5fK, nb = _m5fNachbarn(zahl, stelle);
+  const xp = _m5fX(zahl), xl = _m5fX(nb.lo), xr = _m5fX(nb.hi);
+  _m5fBogen(ctx, xl, xp, xp, K.F_L, a * (seite === 'R' ? 0.3 : 1), _m5fFmt(nb.dl), seite === 'L', 'L', W);
+  _m5fBogen(ctx, xp, xr, xp, K.F_R, a * (seite === 'L' ? 0.3 : 1), _m5fFmt(nb.dr), seite === 'R', 'R', W);
+}
+function _m5fBoegen(ctx, W) {
+  const z = _m5f;
+  if (z.zug) {
+    const e = z.zug.e;
+    _m5fBogenPaar(ctx, z.zug.alt.zahl, z.zug.alt.stelle, Math.max(0, 1 - e * 2.2), null, W);
+    _m5fBogenPaar(ctx, z.zahl, z.stelle, Math.max(0, (e - 0.55) / 0.45), null, W);
+    return;
+  }
+  let seite = null;
+  if (z.kugel && z.kugel.phase !== 'auf') {
+    const nb = _m5fNachbarn(z.zahl, z.stelle);
+    seite = z.kugel.nach === nb.hi ? 'R' : 'L';
+  }
+  _m5fBogenPaar(ctx, z.zahl, z.stelle, 1, seite, W);
+}
+function _m5fFahne(ctx, W) {
+  const z = _m5f, K = _m5fK, xp = _m5fX(z.p);
+  const hops = z.zug ? -9 * Math.sin(Math.PI * z.zug.e) : 0;
+  const fy = K.FY + hops;
+  ctx.save();
+  ctx.font = '700 22px sans-serif';
+  const txt = _m5fFmt(z.zahl), tw = ctx.measureText(txt).width, bw = tw + 30;
+  const bx = Math.max(4, Math.min(W - 4 - bw, xp - bw / 2));
+  ctx.strokeStyle = K.F_PUNKT; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(xp, fy + K.FH); ctx.lineTo(xp, K.LY - 6); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_PUNKT; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, bx, fy, bw, K.FH, 8); ctx.fill(); ctx.stroke();
+  _m5fText(ctx, txt, bx + bw / 2, fy + K.FH / 2 + 8, 'center', K.F_PUNKT, 22);
+  ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(xp, K.LY, 6.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _m5fKugel(ctx) {
+  const z = _m5f, K = _m5fK, k = z.kugel;
+  if (!k) return;
+  const xa = _m5fX(k.von), xb = _m5fX(k.nach);
+  let x = xa, sc = 1, dy = 0;
+  if (k.phase === 'auf') sc = Math.max(0.05, _bioFxEase.federn(Math.min(1, k.t / K.T_AUF)));
+  else if (k.phase === 'rollt') x = xa + (xb - xa) * _bioFxEase.sanft(Math.min(1, k.t / k.dauer));
+  else {
+    x = xb;
+    if (k.t < K.T_HOPS) dy = -5 * Math.sin(Math.PI * k.t / K.T_HOPS);
+  }
+  const r = K.R * sc, cy = K.LY - 1.5 - r + dy, dreh = (x - xa) / K.R;
+  ctx.save();
+  ctx.fillStyle = '#fbbf24'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // ein Streifen dreht sich mit: so sieht man das Rollen
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(x - Math.cos(dreh) * r * 0.8, cy - Math.sin(dreh) * r * 0.8);
+  ctx.lineTo(x + Math.cos(dreh) * r * 0.8, cy + Math.sin(dreh) * r * 0.8);
+  ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  ctx.beginPath(); ctx.arc(x - r * 0.38, cy - r * 0.38, r * 0.24, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function _m5fDraw(ctx, cv) {
+  if (!_m5f) return;
+  const W = cv.width, H = cv.height, z = _m5f;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#ffffff'); bg.addColorStop(1, '#f4f7fb');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5fGlanz(ctx);
+  _bioFxDraw(ctx, z.fx.teile);             // Lichtringe HINTER Strahl und Zahlen
+  _m5fStrahl(ctx, W);
+  _m5fBoegen(ctx, W);
+  _m5fFahne(ctx, W);
+  _m5fKugel(ctx);
+  const st = _m5fSTELLE[z.stelle];
+  _m5fText(ctx, 'Stelle: ' + st.name + ' · Striche alle ' + _m5fFmt(st.s / 10),
+           W / 2, H - 14, 'center', '#475569', 13, '600');
 }

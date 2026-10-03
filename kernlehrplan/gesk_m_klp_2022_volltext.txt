@@ -1,0 +1,1527 @@
+=== S.1 ===
+Kernlehrplan  
+für die Sekundarstufe I 
+Gesamtschule/Sekundarschule 
+in Nordrhein-Westfalen 
+Mathematik 
+=== S.2 ===
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Herausgeber:  
+Ministerium für Schule und Bildung  
+des Landes Nordrhein-Westfalen 
+Völklinger Straße 49, 40221 Düsseldorf 
+ 
+Telefon 0211-5867-40 
+Telefax 0211-5867-3220 
+ 
+poststelle@schulministerium.nrw.de  
+www.schulministerium.nrw.de 
+ 
+Heft 3106 
+ 
+1. Auflage 2022
+=== S.3 ===
+Vorwort 
+Liebe Leserin, lieber Leser, 
+ 
+Schule hat den Auftrag, unsere Schülerinnen und Schüler zur erfolgreichen Teilhabe und 
+zur selbstbestimmten Gestaltung ihrer Zukunft zu befähigen. Die Basis hierfür bilden die 
+Lehrpläne und Richtlinien. Der gesellschaftliche und technologische Wandel sowie die 
+Weiterentwicklung der Fächer erfordern, dass Bildungsziele und Bildungsinhalte immer 
+wieder zeitgemäß gefasst werden.  
+ 
+Der neue Kernlehrplan für das Fach Mathematik stärkt und schärft diesen Bildungsauftrag, 
+indem er obligatorische Wissensbestände, F ähigkeiten und Fertigkeiten noch konkreter 
+und klarer als bislang ausweist. Mit Blick auf die Bildung in einer zunehmend digitalen Welt 
+greift der Kernlehrplan systematisch die Ziele des Medienkompetenzrahmens NRW auf. 
+Der Kernlehrplan und der Medienkompet enzrahmen NRW bilden die verbindliche 
+Grundlage dafür, dass das Lernen und Leben mit digitalen Medien eine 
+Selbstverständlichkeit im Unterricht darstellt.  
+ 
+Kernlehrpläne setzen landesweite Standards und konzentrieren sich auf die im 
+Bildungsgang von den S chülerinnen und Schülern zu erwartenden Lernergebnisse und 
+Kompetenzen. Auf welche Weise diese Lernergebnisse erreicht werden, liegt in der 
+Verantwortung der Handlungsträgerinnen und Handlungsträger vor Ort. Auf Schulebene 
+werden die curricularen Vorgaben in schulinternen Lehrplänen konkretisiert. In ihnen 
+verschränken sich die Vorgaben des Kernlehrplanes mit den konkreten 
+Rahmenbedingungen der Schule, den Lernvoraussetzungen und Lernmöglichkeiten der 
+Schülerinnen und Schüler sowie mit der Einbindung außers chulischer Partner und 
+Lernorte. 
+ 
+Zur Unterstützung der Schulen bei dieser wichtigen Aufgabe stellt die Qualitäts - und 
+Unterstützungsagentur – Landesinstitut für Schule NRW auf dem Lehrplannavigator 
+Angebote bereit. 
+ 
+Ich danke allen, die an der Entwicklung  der neuen Kernlehrpläne mitgewirkt haben,  und 
+insbesondere all denjenigen, die sie in den Schulen umsetzen. Vor allem danke ich den 
+Lehrerinnen und Lehrern, die sich tagtäglich verantwortungsvoll unseren Kindern und 
+Jugendlichen widmen. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Yvonne Gebauer  
+Ministerin für Schule und Bildung  
+des Landes Nordrhein-Westfalen 
+ 
+
+=== S.4 ===
+Auszug aus dem Amtsblatt 
+des Ministeriums für Schule und Bildung  
+des Landes Nordrhein-Westfalen 
+Nr. 07-08/19 
+Sekundarstufe l – Gesamtschule/Sekundarschule 
+RdErl. d. Ministeriums für Schule und Bildung  
+v. 02.06.2022 – 526-2022-05-0001474 
+ 
+Für die Gesamt- und Sekundarschule werden hiermit gemäß § 29 Abs. 1 SchulG 
+(BASS 1-1) die Kernlehrlehrpläne für die Fächer Deutsch und Mathematik festgesetzt.  
+ 
+Die Kernlehrpläne treten zum 01.08.2022 beginnend mit Klasse 5 aufsteigend in Kraft.  
+ 
+Die Richtlinien für die Gesamtschule, RdErl. d. KM v. 27.11.1998, GABl NW. 1 01/99, 
+veröffentlicht online unter: https://www.schulentwicklung.nrw.de/ gelten unverändert 
+fort. 
+ 
+Heft-Nr. Fach Bezeichnung 
+3107 Deutsch Kernlehrplan 
+3106 Mathematik Kernlehrplan 
+ 
+Die Kernlehrpläne sind veröffentlicht und abrufbar über den Lehrplannavigator: 
+https://www.schulentwicklung.nrw.de/lehrplaene/lehrplannavigator-s-i/ 
+Zum 31.07.2022 treten die nachstehenden Unterrichtsvorgaben für die Sekundarstufe 
+I beginnend mit Klasse 6 auslaufend außer Kraft. 
+ 
+Heft-Nr. Fach Bezeichnung Fundstelle 
+3107 Deutsch Kernlehrplan 27.09.2004 (ABl. 
+NRW S. 340) 
+3106 Mathematik Kernlehplan 27.09.2004 (ABl. 
+NRW S. 340) 
+ 
+ 
+ 
+=== S.5 ===
+Inhalt 
+ 
+Vorbemerkungen: Kernlehrpläne als kompetenzorientierte 
+Unterrichtsvorgaben 7 
+1 Aufgaben und Ziele des Faches 8 
+2 Kompetenzbereiche, Inhaltsfelder und 
+Kompetenzerwartungen 13 
+2.1 Kompetenzbereiche und Inhaltsfelder des Faches 16 
+2.2 Prozessbezogene Kompetenzerwartungen bis zum Ende der 
+Sekundarstufe I 20 
+2.3 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum 
+Ende der Doppeljahrgangsstufe 5/6 26 
+2.4  Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum 
+Ende der Doppeljahrgangsstufe 7/8 32 
+2.5 Kompetenzerwartungen und inhaltliche Schwerpunkte bis zum 
+Ende der Doppeljahrgangsstufe 9/10 37 
+3 Lernerfolgsüberprüfung und Leistungsbewertung 42 
+ 
+ 
+=== S.6 ===
+7 
+Vorbemerkungen: Kernlehrpläne als kompetenzorientierte 
+Unterrichtsvorgaben 
+Kernlehrpläne leisten einen wichtigen Beitrag zur Sicherung des 
+Anspruchsniveaus an der Einzelschule sowie im ganzen Land und schaffen 
+notwendige Voraussetzungen für die Vergleichbarkeit von 
+Lernergebnissen. 
+Kernlehrpläne 
+• bieten allen an Schule Beteiligten Orientierung über die Aufgaben und 
+Ziele der Fächer, 
+• geben eine curriculare Stufung vor und legen fest, welche 
+fachbezogenen Kompe tenzen einschließlich zugrundeliegender 
+Wissensbestände Schülerinnen und Schüler am Ende der Stufen 
+erworben haben sollen, 
+• stellen eine landesweite Obligatorik strukturiert in fachspezifische Inhalte 
+und darauf bezogene fachliche Kompetenzen dar, 
+• sind Grundlage für die Überprüfung von Lernergebnissen und  
+Leistungsständen, 
+• fokussieren auf überprüfbares fachliches Wissen und Können. Aussagen 
+zu all gemeinen, fächerübergreifend relevanten Bildungs - und 
+Erziehungszielen werden im Wesentlichen außerhalb der Kernlehrpläne, 
+u.a. in Richtlinien und Rahmenvor gaben getroffen. Sie sind neben den 
+fachspezifischen Vorgaben der Kernlehrpläne bei der Entwicklung von 
+schuleigenen Vorgaben und bei der Gestaltung des  Unterrichts zu 
+berücksichtigen, 
+• bilden die curriculare Grundlage für die Entwicklung schuleigener 
+Unterrichtsvorgaben beziehungsweise schulinterner Lehrpläne (§ 29 
+sowie § 70 SchulG NRW). Da sich Kernlehrpläne auf zentrale fachliche 
+Fertigkeiten und Wissensbestände beschränken, erhalten Schulen die 
+Möglichkeit, aber auch die Aufgabe, gegebene Freiräume schul - und 
+lerngruppenbezogen auszugestalten. In Verbindung mit dem 
+Schulprogramm erfolgen Schwerpunktsetzungen im Unterricht in 
+inhaltlicher, didaktischer und methodischer Hinsicht. 
+=== S.7 ===
+8 
+1 Aufgaben und Ziele des Faches 
+Mathematik ist eine der bedeutsamsten globalen Kulturleistungen, die sich 
+über tausende von Jahren auf der Suche nach dem Schlüssel zum 
+Verständnis der Welt entwickelt hat. Sie stellt ein eigenständiges Gebäude 
+aus Begriffen, Theorien und Strukturen dar, das es ermöglicht, Ausschnitte 
+der naturgegebenen Wirklichkeit und Vorgänge in komplexen Systemen wie 
+der Wirtschaft und der Gesellschaft zu erfassen und zu verstehen. 
+Als Sprache der Naturwissenschaften und Technik  ermöglicht die 
+Mathematik wis senschaftliche Entwicklungen und Lösungen technischer 
+Probleme und leistet damit einen wesentlichen Beitrag zur Gestaltung 
+unserer modernen Welt. Ebenso bilden mit mathematischen Methoden 
+gewonnene Erkenntnisse in Politik und Wirtschaft sowie in den Sozial- und 
+Geisteswissenschaften häufig die Grundlage für Entscheidungen. 
+Das Ziel des Mathematikunterrichts ist eine grundlegende, erweiterte oder 
+vertiefte mathematische Grundbildung der Schülerinnen und Schüler. 
+Während bei der gru ndlegenden mathematischen Bildung die Fähigkeiten 
+bezogen auf die Bewältigung von gegenwärtigen und zukünftigen 
+Anforderungen im Alltag fokussiert werden, geht die erweiterte bzw. 
+vertiefte mathematische Grundbildung darüber hinaus und es werden 
+vermehrt gegenwärtige und zukünftige gesellschaftliche und individuelle 
+Anforderungen in den Blick genommen. Allen Schülerinnen und Schülern 
+sollen im Mathematikunterricht Angebote gemacht werden, die sie in die 
+Lage versetzen, die Rolle der Mathematik in der Welt zu erkennen, 
+begründete mathematische Urteile zu fällen sowie die Mathematik aktiv zu 
+nutzen. Ausgangspun kt dafür sind die in der Primarstufe erworbenen 
+Kompetenzen, auf denen der Mathematikunterricht der Sekundarstufe I 
+unter Berücksichtigung individueller Fähigkeiten spiralförmig aufbaut. 
+Dieser Kernlehrplan setzt die KMK -Bildungsstandards um und orientiert 
+sich am Konzept eines allgemeinbildenden Mathematikunterrichts 1. 
+Demnach sollen den Schülerinnen und Schülern im Mathematikunterri cht 
+mit dem Ziel der mathemati schen Grundbildung insbesondere die 
+                                                
+1 Nach Heinrich Winter, GDM-Mitteilungen Nr. 61 (1995) 
+ 
+=== S.8 ===
+9 
+folgenden Grunderfahrungen ermöglicht werden: 
+• technische, natürliche, soziale und kulturelle Erscheinungen und 
+Vorgänge mithilfe der Mathematik wahrnehmen, verstehen, beurteilen 
+und beeinflussen (Mathematik als Anwendung), 
+• mathematische Gegenstände und Sachverhalte, r epräsentiert in 
+Sprache, Symbolen und Bildern, als geistige Schöpfungen, als eine 
+deduktiv geordnete Welt eigener Art erkennen und weiterentwickeln 
+(Mathematik als Struktur), 
+• in der Auseinandersetzung mit mathematischen Fragestellungen 
+Kreativität und Problemlösefähigkeit, die über die Mathematik  
+hinausgehen, erwerben und einsetzen (Mathematik als individuelle und 
+kreative intellektuelle Tätigkeit). 
+Ein Mathematikunterricht, der Anwendungen als Grunderfahrungen ernst 
+nimmt, bildet die Voraussetzung zur eigenverantwortlichen Bewältigung der 
+Anforderungen in der digitalen Welt, in Wirtschaft und Politik und des 
+gesellschaftlichen Alltags . Als Basis für objektivierte Beurteilungen von 
+Daten und Informationen ermöglicht die zu erreichende mathematische 
+Grundbildung fundierte Argumentationen in Entscheidungsprozessen und 
+trägt so zur Entwicklung von Verantwortungsbereitschaft und zur 
+Entwicklung der Persönlichkeit bei.  Der Mathematikunterricht der 
+Gesamtschulen erschließt die Mathematik als zentralen Bestandteil unserer 
+Kultur. 
+Im Mathematikunterricht werden beim Lösen von Aufgaben und im Umgang 
+mit Problemen individuelle Zugänge bzw. kreative Lösungen entwickelt, 
+ausgetauscht und diskutiert. Auch beim Beschreiten von Umwegen oder 
+Irrwegen werden durch Reflexion neue Erkenntnisse gewonnen. Die 
+Wirkung des Mathematikunterrichts entfaltet sich in der individuellen 
+Auseinandersetzung mit fachlichen Strukturen ebenso wie in der 
+wechselseitigen Verständigung und Kooperation.  Ein so gestalteter 
+Mathematikunterricht trägt wesentlich zur allgemeinen Bildung der 
+Schülerinnen und Schüler bei und wirkt weit über die Schulzeit hinaus.  
+Das planvolle, systematische Vorgehen, ein präziser Sprachgebrauch und 
+die folgerichtige Argumentation beim Erfassen von Zusammenhängen 
+entwickelt das Denk - und Abstraktionsvermögen der Schülerinnen und 
+Schüler. Der Unterricht ist so anzulegen, dass beim Entdec ken von 
+Zusammenhängen und Gesetzmäßigkeiten, sowie dem Vergleichen und 
+Bewerten von Lösungswegen sich bei den Schülerinnen und Schülern 
+=== S.9 ===
+10 
+kognitive Strategien ausbilden können. Dadurch sollen die Schülerinnen 
+und Schüler in die Lage versetzt werden, Situati onen aus verschiedenen 
+Blickwinkeln zu erfassen und Fragestellungen zu variieren. Die für die 
+Mathematik typische systematische Analyse von Fragestellungen 
+ermöglicht es, sich eine begründete Meinung zu bilden. Den Schülerinnen 
+und Schülern gelingt es, durch die eingesetzten Methoden die persönliche 
+Urteilsfähigkeit auszubilden, um Ergebnisse zu überprüfen und zu werten. 
+Dieser Prozess des Kompetenzerwerbs wird durch die L ehrkräfte mithilfe 
+sinnstiftender und motivierender Lernumgebungen initiiert, begl eitet und 
+ausgewertet. Die konkrete Gestaltung dieser Lernumgebung ist nicht nur an 
+der jeweiligen Kompetenzerwartung auszurichten, sondern muss auch dem 
+Individuum ebenso wie der Lerngruppe als Ganzem gerecht werden. 
+Alltagsnahe Situationen stellen den Bezug zwischen der Lebenswirklichkeit 
+der Schülerinnen und Schüler sowie den mathematischen 
+Zusammenhängen und Erkenntnissen her. Die Lehrkräfte unterstüt zen 
+Schülerinnen und Schüler bei verständnisorientierter Auseinandersetzung 
+mit Mathematik, wecken Interesse an mathematikhaltigen Fragestellungen 
+und ermögli chen Erfolgserlebnisse im Umgang mit mathematischen 
+Problemstellungen. Dies  wird durch vielfältige und variierende 
+Unterrichtsformen ermöglicht, die von der ver ständnisorientierten 
+Wissensvermittlung durch die Lehrkraft bis hin zum entdeckenden Lernen 
+reichen. Das Lernen aus Fehlern ist immanenter Bestandteil des Lernpro-  
+zesses. In einem derart gestalteten Mathematikunterricht ist die Diskussion 
+über die Tragfähigkeit und Übertragbarkeit von Verfahren und Modellen 
+Quelle für neue Erkenntnisse. 
+Unterricht in Mathematik muss unterschiedliche Vorerfahrungen von allen 
+Geschlechtern wahrnehmen und alle Geschlechter dazu ermutigen, ihr 
+Interesse an mathematischen Zusammenhängen selbstbewusst zu 
+verfolgen und so i hre Fähigkeiten und Entwicklungspotenziale zu nutzen. 
+Er sollte außerdem aufzeigen, dass mathematische Kenntnisse für alle 
+Geschlechter attraktive berufliche Perspektiven eröffnen. 
+Gemäß dem Bildungsauftrag der Gesamtschule leistet das Fach 
+Mathematik einen Beitrag dazu, den Schülerinnen und Schülern eine 
+grundlegende, erweiterte oder vertiefte Allgemeinbildung zu vermitteln und 
+sie entsprechend ihren Leistungen und Neigungen zu befähigen, nach 
+Maßgabe der Abschlüsse in der Sekundarstufe I ihren Bildungsweg  in 
+berufsqualifizierenden Bildungsgängen oder i m Bildungsgang der 
+=== S.10 ===
+11 
+Sekundarstufe II fortzusetzen. 
+Im Rahmen des allgemeinen Bildungs- und Erziehungsauftrags der Schule 
+unterstützt der Unterricht im Fach Mathematik die Entwicklung einer 
+mündigen und sozial verantwortlichen Persönlichkeit und leistet weitere 
+Beiträge zu fachübergreifenden Querschnittsaufgaben in Schule und 
+Unterricht, hierzu zählen u.a. 
+• Menschenrechtsbildung, 
+• Werteerziehung, 
+• politische Bildung und Demokratieerziehung, 
+• Bildung für die digitale Welt und Medienbildung, 
+• Bildung für nachhaltige Entwicklung, 
+• geschlechtersensible Bildung, 
+• kulturelle und interkulturelle Bildung. 
+Sprache ist ein notwendiges Hilfsmittel bei der Entwicklung von 
+Kompetenzen und besitzt deshalb für den Erwerb einer grundlegenden, 
+erweiterten oder vertieften mathematischen Grundbildung eine besondere 
+Bedeutung. Kognitive Prozesse des mathematischen Argumentierens,  
+Kommunizierens, Modellierens, Problemlösens und Operierens sind 
+ebenso sprachlich vermittelt wie der kommunikative Austausch darüber und 
+die Präsentation von Lernergebnis sen. In einem sprachsensiblen 
+Fachunterricht erweitert sich der vorhandene Wortschatz durch eine aktive 
+Auseinandersetzung mit fachlichen Inhalten, Prozessen und Ideen, und es 
+entwickelt sich  ein zunehmend differnzierter und bewusster Einsatz von 
+Sprache. Hierbei kann die Ressource der Mehrsprachigkeit von Kindern 
+und Jugendlichen mit internationaler Familiengeschichte den 
+Mathematikunterricht bereichern.  Dadurch entstehen Mög lichkeiten, 
+Konzepte sowie eigene Wahrnehmungen, Gedanken und Interessen 
+angemessen darzustellen. 
+Die interdisziplinäre Verknüpfung von Schritten einer kumulativen 
+Kompetenzentwicklung, inhaltliche Kooperationen mit anderen Fächern 
+und Lernbereichen sowie außerschulisches Lernen und Kooperationen mit 
+außerschulischen Partnern können sowohl zum Erreichen und zur 
+Vertiefung der jeweils fachlichen Ziele als auch zur Erfüllung übergreifender 
+Aufgaben beitragen. 
+Der vorliegende Kernlehrplan ist so gestaltet, dass er Freiräume für 
+Vertiefung, schuleigene Projekte und aktuelle Entwicklungen läss t. Die 
+=== S.11 ===
+12 
+Umsetzung der verbindli chen curricularen Vorgaben in schuleigene 
+Vorgaben liegt in der Gestaltungsfreiheit  – und Gestaltungspflicht –  der 
+Fachkonferenzen sowie der pädagogischen Verant wortung der 
+Lehrerinnen und Lehrer. Damit ist der Rahmen geschaffen, gezielt Kom - 
+petenzen und Interessen der Schülerinnen und Schüler aufzugreifen und 
+zu fördern bzw. Ergänzungen der jeweiligen Schule in sinnvoller 
+Erweiterung der Kompetenzen und Inhalte zu ermöglichen. 
+=== S.12 ===
+13 
+2 Kompetenzbereiche, Inhaltsfelder und 
+Kompetenzerwartungen 
+Im Kapitel „Aufgaben und Ziele“ der Kernlehrpläne werden u.a. die Ziele 
+des Faches sowie die allgemeinen Kompetenzen, die Schülerinnen und 
+Schüler im jeweilig en Fach entwickeln sollen (übergreifende fachliche 
+Kompetenz), beschrieben. 
+Sie werden ausdifferenziert, indem fachspezifische Kompetenzbereiche 
+und Inhaltsfelder identifiziert und ausgewiesen werden. Dieses analytische 
+Vorgehen erfolgt, um die Strukturier ung der fachrelevanten Prozesse 
+einerseits sowie der Gegenstände andererseits transparent zu machen. In 
+Kompetenzerwartungen werden beide Seiten miteinander verknüpft. Damit 
+wird der Tatsache Rechnung getragen, dass der gleichzeitige Einsatz von 
+Können und Wissen bei der Bewältigung von Anforderungssituationen eine 
+zentrale Rolle spielt. 
+ 
+ 
+Kompetenzbereiche repräsentieren die Grunddimensionen des fachlichen 
+Handelns. Sie dienen dazu, die einzelnen Teiloperationen entlang der 
+fachlichen Prozesse zu strukturieren und  den Zugriff für die am Lehr -
+Lernprozess Beteiligten zu verdeutlichen. 
+ 
+Ziele des Faches/ 
+Übergreifende fachliche Kompetenz 
+Kapitel 1 
+Kompetenzbereiche 
+(Prozesse) 
+Kapitel 2.1 
+Inhaltsfelder 
+(Gegenstände) 
+Kapitel 2.1 
+Kompetenzerwartungen 
+(Verknüpfung von Prozessen und Gegenständen) 
+Kapitel 2.2, 2.3, 2.4 und 2.5 
+=== S.13 ===
+14 
+Inhaltsfelder systematisieren mit ihren jeweiligen inhaltlichen 
+Schwerpunkten die im Unterricht verbindlichen und unverzichtbaren 
+Gegenstände und liefern Hinweise für die inhaltliche A usrichtung des 
+Lehrens und Lernens. 
+ 
+Kompetenzerwartungen führen Prozesse u nd Gegenstände zusammen 
+und beschreiben die fachlichen Anforderungen und intendierten 
+Lernergebnisse. 
+ 
+Kompetenzerwartungen 
+• beziehen sich auf beobachtbare Handlungen und sind auf die 
+Bewältigung von Anforderungssituationen ausgerichtet, 
+• stellen im Sinne von Regelstandards die erwarteten Kenntnisse, 
+Fähigkeiten und Fertigkeiten auf einem mittleren Abstraktionsgrad dar, 
+• beschreiben Ergebnisse eines kumulativen, systematisch vernetzten  
+Lernens, 
+• können in Aufgabenstellungen umgesetzt und überprüft werden. 
+ 
+Insgesamt ist der Unterricht in der Sekundarstufe I nicht allein auf das 
+Erreichen der aufgeführten Kompetenzerwartungen beschränkt, sondern 
+soll es Schülerinnen und Schülern ermöglic hen, diese weiter auszubauen 
+und darüber hinausgehendes Wissen und Können zu erwerben. 
+ 
+Anforderungen am Ende der Sekundarstufe I  
+ 
+Für das Ende der Sekundarstufe I werden im Folgenden die Kompetenzen 
+ausgewiesen, die alle Schülerinnen und Schüler erworben haben, die mit 
+Erfolg am Mathematikunterricht teilgenommen haben. Die Schülerinnen 
+und Schüler sollen in der Lage sein, diese Kompetenzen für ihre persönliche 
+Lebensgestaltung, für ihren weiteren Bildungsweg und für ihr berufliches 
+Leben zu nutzen.  
+Diese für den Mathematikunterricht in Nordrhein- Westfalen verbindlichen 
+Kompetenzen werden in enger Anlehnung an die Bildungsstandards der 
+KMK auf der Anforderungsebene des Mittleren Schulabschlusses ( MSA) 
+beschrieben.  
+Hierdurch soll die Vergleichbarkeit der fachlichen Anforderungen für diesen 
+=== S.14 ===
+15 
+Abschluss in allen Schulformen der Sekundarstufe I gesichert werden. Zum 
+Erwerb der Berechtigung zum Besuch der gymnasialen Oberstufe ist 
+Folgendes festzustellen: Der Mathematikunterricht an Gesamtschulen 
+ermöglicht Schül erinnen und Schülern im oberen Leistungsbereich die 
+Fortsetzung des Bildungsganges in der Sekundarstufe II auch bis zum 
+Abitur. Die für den M ittleren Schulabschluss ( MSA) geforderten 
+Kompetenzen sind in unterschiedlichem Umfang und auf unterschiedlichem 
+Niveau erreichbar. Von Schülerinnen und Schülern, die die Berechtigung 
+zum Besuch der gymnasialen Oberstufe erwerben, wird erwartet, dass sie 
+die Kompetenzen auf einem höheren Niveau erreichen. Es gibt allerdings 
+für diese Berechtigung keine curriculare, inhaltliche Definition. Diese 
+Berechtigung wird vielmehr auf Grund des Notenbildes in der 
+Versetzungskonferenz vergeben. Entsprechende fachliche Kompetenzen 
+werden daher auch nicht gesondert ausgewiesen. 
+Das bedeutet, dass unabhängig von der Anforderungsebene  im Fach 
+Mathematik, prinzipiell allen Schülerinnen und Schüler n an der 
+Gesamtschule die Möglichkeit zuteilwird, die Berechtigung zum Besuch der 
+gymnasialen Oberstufe zu erwerben. Entsprechend gilt dies auch für die 
+weiteren möglichen Abschlüsse, die an der Gesamtschule erworben 
+werden können. Dies sind konkret der Mittlere Schulabschluss (MSA), der 
+Erste Schulabschluss  (ESA/Hauptschulabschluss nach Klasse 9) und der 
+Erweiterte Erste Schulabschluss (EESA/Hauptschulabschluss nach Klasse 
+10). 
+Die Schülerinnen und Schüler, die an der Gesamtschule in der Klasse 10 
+den Grundkurs besucht haben, verfügen über die in den Kapiteln 2.2 bis 2.5 
+nicht fett gesetzten Kompetenzen. Die fett gesetzten Textpassagen 
+beschreiben die Kompetenzen, die im Erweiterungskurs zusätzlich erreicht 
+werden müssen. 
+Diejenigen Schülerinnen und Schüler, die mit Vollendung der 
+Vollzeitschulpflicht nach der Klasse 9 den Ersten Schulabschluss (ESA 
+erwerben und nicht die Klasse 10 besuchen, können aufgrund dessen nur 
+Teile der in den Kapiteln 2.2 und 2.5 detailliert beschriebenen Kompetenzen 
+erreichen.  
+ 
+ 
+ 
+ 
+ 
+=== S.15 ===
+16 
+ 
+2.1 Kompetenzbereiche und Inhaltsfelder des Faches 
+ 
+Die Entwicklung der für das Fach Mathematik angestrebten grundlegenden, 
+erweiterten oder vertieften mathematischen Grundbildung erfolgt durch die 
+Vermittlung grundlegender fachlicher Prozesse, die den untereinander 
+vernetzten Kompetenzbereichen zugeordnet werden können. 
+ 
+Kompetenzbereiche  
+ 
+Operieren 
+Mathematisches Operieren beinhaltet den Umgang mit symbolischen, 
+formalen und technischen Elementen der Mathematik, ihre Darstellung 
+sowie den Wechsel zwischen mathematischen Darstellungsformen sowohl 
+mit als auch ohne Hilfsmittel in allen Jahrgangsstufen. Mathematisches 
+Operieren äußert sich in einem flex ibel verfügbaren Handlungsvermögen, 
+welches situativ eingesetzt und begründet werden kann. Es ist ein 
+grundlegender Bestandteil aller mathematischen Prozesse. 
+Hilfsmittelfreies Operieren umfasst Fertigkeiten, Routineaufgaben und 
+algorithmische Verfahren im  Kalkülbereich und beruht auf dem 
+verständigen Umgang mit mathematischen Objekten. Dies ermöglicht das 
+Erkennen mathematis cher Strukturen in neuartigen Situationen und das 
+Anwenden und Weiterentwickeln mathematischer Begriffe. 
+Das Arbeiten mit Medien und W erkzeugen macht auch komplexere 
+Sachverhalte einer mathematischen Bearbeitung zugänglich und 
+ermöglicht, mathematis che Zusammenhänge zu visualisieren und zu 
+dynamisieren. Dies erleichtert, begründete Vermutungen zu 
+allgemeingültigen Aussagen aufzus tellen und diese weiter zu bear beiten. 
+Ein verständiger Umgang mit Medien und Werk zeugen setzt sicheres 
+hilfsmittelfreies Operieren voraus. 
+ 
+Modellieren 
+Um reale Situationen mathematisch zu erfassen und damit Fragestellungen 
+zu beantworten, wird der Prozess des mathematischen Modellierens in 
+mehreren Teilschritten durchlaufen. 
+Dieser Prozess beinhaltet die Strukturierung der Situation im Hinblick auf 
+=== S.16 ===
+17 
+ 
+eine Frages tellung. Darauf baut die Mathematisierung durch 
+mathematische Begriffe, Strukturen und Relationen auf; innerhalb des 
+mathematischen Modells wird eine Lösung entwi ckelt. Zur Interpretation 
+und Validierung muss die Lösung als Antwort auf die Frage stellung 
+bezogen und das gewählte mathematische Modell überprüft werden. 
+ 
+Problemlösen 
+Die Bearbeitung außer - oder i nnermathematischer Kontexte führt zu 
+mathematischen Fragestellungen, die nicht unmittelbar mithilfe be kannter 
+Lösungswege und Verfahren bearbeitet werden können. Das Problemlösen 
+ist der Prozess der Bearbeitung solcher Problemsituationen. 
+Dieser Prozess beinhaltet das Erkunden der Situation, darauf aufbauend 
+das planvolle Lösen und das Reflektieren der gefundenen Lösungsansätze. 
+ 
+Argumentieren 
+Bei der Auseinandersetzung mit mathematischen Begriffen und 
+Gesetzmäßigkeiten werden Argumentationsketten nachvollzogen und 
+weitere Zusammenhänge vermutet oder entdeckt. Diese zu prüfen und ggf. 
+zu verallgemeinern ist wesentlicher Bestandteil des mathematischen 
+Argumentierens. 
+Das mathematische Argumentieren umfasst das Aufstellen von 
+Vermutungen, das Begründen der erkannten mathematischen 
+Zusammenhänge durch Rückgriff auf Bekanntes und durch die Regeln des 
+mathematischen Schlussfolgerns und Beweisens sowie das Beurteilen von 
+Argumentationen. 
+ 
+Kommunizieren 
+Mathematisches Kommunizieren beinhaltet die adressaten-  und 
+sachgerechte Ver sprachlichung mathematischer Sachverhalte, 
+Problemstellungen und Lösungsideen. Die Verwendung von Fachsprache 
+ermöglicht, mathematische Aussagen präzise und eindeutig zu formulieren 
+und zu präsentieren. Für die Mathematik sind neben d er verbalen 
+Darstellung insbesondere die ikonische und die symbolische Darstellung 
+von zentraler Bedeutung. 
+Mathematisches Kommunizieren umfasst die Rezeption, die Produktion 
+und die Diskussion fachlicher Bearbeitungen. 
+=== S.17 ===
+18 
+ 
+Inhaltsfelder 
+ 
+Kompetenzen sind immer an fachliche Inhalte gebunden. Die 
+grundlegende, erweiterte oder vertiefte mathematische Bildung soll deshalb 
+mit Blick auf die nachfolgenden Inhaltsfelder bis zum Ende der 
+Sekundarstufe I entwickelt werden. 
+ 
+Arithmetik/Algebra 
+Die Erweiterung der Zahlbereiche von den natürlichen Zahlen bis hin zu den 
+reellen Zahlen und die Verallgemeinerung des konkreten Umgangs mit 
+Zahlen durch Variablen, Terme, Gleichungen und Gleichungssysteme sind 
+Gegenstände der Arithmetik und Algebra. 
+In der Bruchrechnung werden vertraute Grundvorstellungen erweitert und 
+Zahlen mit Anteilen identifiziert. Die Grundrechenarten werden auf neue 
+Zahlbereiche übertragen, verallgemeinert und durch Potenzieren und  
+Radizieren erweitert. Damit erweitert sich das Spektrum der zu lösenden 
+Gleichungen. Verschiedene Lösungsverfahren werden genutzt und 
+hinsichtlich ihrer Effizienz verglichen. 
+ 
+Funktionen 
+Zuordnungen und Funktionen erlauben es, die Abhängigkeit zweier Größen 
+zu beschreiben und in quantitativen Zusammenhängen anzuwenden. 
+Verschiedene Dar stellungsformen werden genutzt und 
+situationsangemessen ineinander transformiert. 
+Ausgehend von einfachen Zuordnungen wird der Funktionsbegriff 
+erarbeitet. Funktionen werden selbst zu Objekten mathematischer 
+Untersuchungen und werden als Modell für vielfältige 
+Anwendungssituationen genutzt; ihre Parameter und Eigenschaften sind 
+dabei einer Interpretation zugänglich. Mithilfe von Funktionen kann somit 
+ein Teil der Wirklichkeit quantitativ beschrieben werden.  
+ 
+Geometrie 
+Geometrische Objekte i n Ebene und Raum können beschrieben, 
+klassifiziert, vermessen und konstruiert werden. Diese Objekte werden in 
+verschiedenen Formen dargestellt und durch Abbildungen transformiert. 
+Die Geometrie ist besonders geeignet, um allgemeingültige Entdeckungen 
+zu machen, ein Denkgebäude aus Begriffen und Sätzen aufzubauen und 
+=== S.18 ===
+19 
+ 
+erste Beweise zu führen. Zunehmend werden Formeln und Sätze als 
+analytische Mittel zur Bearbeitung geometrischer Sachverhalte in inner- und 
+außermathematischen Zusammenhängen eingesetzt. 
+ 
+Stochastik 
+In vielen gesellschaftlich relevanten Bereichen spielen stochastische 
+Begriffe, Daten und Wahrscheinlichkeitsaussagen eine zentrale Roll e. In 
+der Stochastik werden Daten mathematisch aufbereitet und dargestellt 
+sowie durch die Bestimmung von relevanten Kenngrößen untersucht. 
+Auf der Basis eines tragfähigen Wahrscheinlichkeits begriffs können 
+Zufallserscheinungen in alltäglichen Situationen gedeutet werden. 
+Ausgehend von relativen Häufigkeiten werden mithilfe stochastischer Sätze 
+statistische Aussagen in authentischen Texten beurteilt. 
+ 
+Vernetzung der Inhaltsfelder 
+Die Inhaltsfelder Arithmetik/Algebra, Funktionen, Geometrie und Stochastik 
+sind nicht isoliert nebeneinander zu betrachten, vielmehr werden sie 
+konzeptionell vernetzt. Wo  möglich, sollten fächerverbindende Aspekte  
+Berücksichtigung finden. Im Mathematikunterricht stehen realitätsbezogene 
+Anwendungen gleichgewichtig und gleichwertig neben 
+innermathematischen Fragestellungen. Schülerinnen und Schüler sollen 
+zum Ende der Sekundarstufe I Fachkompetenzen erworben haben, die es 
+ihnen ermöglichen,  sowohl die Gemeinsamkeiten als auch die 
+Besonderheiten der Inhaltsfelder zu identi fizieren und die ihnen zugrunde 
+gelegten Konzepte flexibel zu nutzen. 
+ 
+Verknüpfung von Kompetenzbereichen und Inhaltsfeldern 
+In der Sekundarstufe I werden fachliche Prozesse grundgelegt, gefestigt 
+und bewusst  gemacht. Durch die Verbindung mit Inhaltsfeldern in 
+zunehmend komplexen und kognitiv anspruchsvollen Lernsituationen 
+werden prozessbezogene Kompet enzen vertieft, ausdifferenziert und 
+miteinander vernetzt. 
+Im Sinne erwarteter  mathematischer Kompetenzen ist prinzipiell jede 
+Verknüpfung von fachlichen Prozessen und fachlichen Gegenständen 
+denkbar und relevant. Der Unterricht muss jedoch nicht jede einz elne 
+Verknüpfung explizit in den Blick nehmen. 
+=== S.19 ===
+20  
+2.2 Prozessbezogene Kompetenzerwartungen bis zum 
+Ende der Sekundarstufe I 
+In den fünf Kompetenzbereichen werden die für das Fach 
+charakteristischen Prozes se Operieren, Modellieren, Problemlösen, 
+Argumentieren und Kommunizieren mit verbindlichen 
+Kompetenzerwartungen dargestellt. 
+Am Ende der Sekundarstufe I sollen die Schülerinnen und Schüler – 
+aufbauend auf der Kompetenzentwicklung in der Primarstufe – über die im 
+Folgenden genannten prozessbezogenen Kompetenzen bezüglich der 
+obligatorischen Inhalte verfügen. Dabei werden in diesem Kapitel zu allen 
+Kompetenzbereichen (Prozessen) zunächst übergeordnete 
+prozessbezogene Kompetenzerwartungen aufgeführt und in den Ka piteln 
+2.3 , 2.4 und 2.5 inhaltsfeldbezogen konkretisierte Kompetenzerwartungen 
+formuliert. 
+ 
+Operieren 
+ 
+Hilfsmittelfreies Operieren 
+Die Schülerinnen und Schüler 
+(1) wenden grundlegende Kopfrechenfertigkeiten sicher an, 
+(2) stellen sich geometrische Situationen räumlich vor und wechseln 
+zwischen Perspektiven, 
+(3) übersetzen symbolische und formale Sprache in natürliche Sprache 
+und umgekehrt, 
+(4) führen geeignete Rechenoperationen auf der Grundlage eines 
+inhaltlichen Verständnisses durch, 
+(5) arbeiten unter Berücksichtigung mathematischer Regeln und Gesetze 
+mit Variablen, Termen, Gleichungen und Funktionen, 
+(6) führen Darstellungswechsel sicher aus, 
+(7) führen Lösungs- und Kontrollverfahren sicher und effizient durch, 
+(8) nutzen schematisierte und strategiegeleitete Verfahren, Algorithmen 
+und Regeln.  
+ 
+=== S.20 ===
+21  
+Arbeiten mit Medien und Werkzeugen 
+Die Schülerinnen und Schüler 
+(9) nutzen mathematische Hilfsmittel (Lineal, Geodreieck und Zirkel) zum 
+Messen, genauen Zeichnen und Konstruieren, 
+(10) recherchieren Informationen und Daten aus Medienangeboten 
+(Printmedien, Internet und Formelsammlung),  
+(11) nutzen digitale Mathematikwerkzeuge (dynamische 
+Geometriesoftware, Computer-Algebra-Systeme, 
+Multirepräsentationssysteme, Taschenrechner und 
+Tabellenkalkulation),  
+(12) entscheiden situationsangemessen über den Einsatz mathematischer 
+Hilfsmittel und digitaler Mathematikwerkzeuge und wählen diese 
+begründet aus,  
+(13) nutzen analoge und digitale Medien zur Unterstützung, zur Gestaltung 
+mathematischer Prozesse und zur Präsentation.  
+ 
+Modellieren 
+Strukturieren 
+Die Schülerinnen und Schüler 
+(1) erfassen reale Situationen und beschreiben diese mit Worten und  
+Skizzen, 
+(2) stellen eigene Fragen zu realen Situationen, die mithilfe 
+mathematischer Kenntnisse und Fertigkeiten beantwortet werden 
+können, 
+(3) treffen begründet Annahmen und nehmen V ereinfachungen realer 
+Situationen vor. 
+ 
+Mathematisieren 
+Die Schülerinnen und Schüler 
+(4) übersetzen reale Situationen in mathematische Modelle bzw. wählen 
+geeignete Modelle aus und nutzen geeignete Darstellungen, 
+=== S.21 ===
+22  
+(5) ordnen einem mathematischen Modell passende reale Situationen zu, 
+(6) erarbeiten mithilfe mathematischer Kenntnisse und Fertigkeiten 
+Lösungen innerhalb des mathematischen Modells.  
+ 
+Interpretieren und Validieren 
+ 
+Die Schülerinnen und Schüler 
+(7) beziehen erarbeitete Lösungen auf die reale Situation und 
+interpretieren diese als Antwort auf die Fragestellung, 
+(8) überprüfen Lösungen auf ihre Plausibilität in realen Situationen, 
+(9) benennen G renzen aufgestellter mathematischer Modelle und 
+verbessern aufgestellte Modelle mit Blick auf die Fragestellung. 
+ 
+Problemlösen 
+Erkunden 
+Die Schülerinnen und Schüler 
+(1) geben Problemsituationen in eigenen Worten wieder und stellen 
+Fragen zu einer gegebenen Problemsituation, 
+(2) wählen geeignete heuristische Hilfsmittel aus (Skizze, informative 
+Figur, Tabelle, experimentelle Verfahren), 
+(3) setzen Muster und Zahlenfolgen fort, beschreiben Beziehungen 
+zwischen Größen und stellen begründete Vermutungen über 
+Zusammenhänge auf.  
+ 
+Lösen 
+Die Schülerinnen und Schüler 
+(4) wählen geeignete Begriffe, Zusammenhänge, Verfahren, Medien und 
+Werkzeuge zur Problemlösung aus,  
+(5) nutzen heuristische Strategien und Prinzipien (Beispiele finden, 
+Spezialfälle finden, Analogiebetrachtungen, Schätz en und 
+=== S.22 ===
+23  
+Überschlagen, systemati sches Probieren oder Ausschließen, 
+Darstellungswechsel, Zerlegen und Er gänzen, Symmetrien 
+verwenden, Invarianten finden, Zurückführen auf Bekanntes, Zerlegen 
+in Teilprobleme, Fallunterscheidungen, Vorwärts - und 
+Rückwärtsarbeiten, Schlussfolgern, Verallgemeinern),  
+(6) entwickeln Ideen für mögliche Lösungswege, planen 
+Vorgehensweisen zur Lösung eines Problems und führen 
+Lösungspläne zielgerichtet aus. 
+ 
+Reflektieren 
+Die Schülerinnen und Schüler 
+(7) überprüfen die Plausibilität von Ergebnissen, 
+(8) vergleichen verschiedene Lösungswege im Hinblick auf 
+Gemeinsamkeiten und Unterschiede und beurteilen deren Effizienz, 
+(9) analysieren und reflektieren Ursachen von Fehlern, 
+(10) benennen zugrundeliegende heuristische Strategien und Prinzipien 
+und übertragen diese begründet auf andere Problemstellungen. 
+ 
+Argumentieren 
+Vermuten 
+Die Schülerinnen und Schüler 
+(1) stellen Fragen, die für die Mathematik charakt eristisch sind, und 
+stellen begründete Vermutungen über die Existenz und Art von 
+Zusammenhängen auf, 
+(2) benennen Beispiele für vermutete Zusammenhänge, 
+(3) präzisieren Vermutungen mithilfe von Fachbegriffen und unter 
+Berücksichtigung der logischen Struktur. 
+ 
+ 
+=== S.23 ===
+24  
+Begründen 
+Die Schülerinnen und Schüler 
+(4) stellen Relationen zwischen Fachbegriffen her (Ober-/Unterbegriff), 
+(5) begründen Lösungswege und nutzen dabei mathematische Regeln 
+bzw. Sätze und sachlogische Argumente, 
+(6) verknüpfen Argumente zu Argumentationsketten, 
+(7) nutzen verschiedene Argumentationsstrategien (Gegenbeispiel, 
+direktes Schlussfolgern, Widerspruch), 
+(8) erläutern v orgegebene Argumentationen und Beweise hinsichtli ch 
+ihrer logischen Struktur. 
+ 
+Beurteilen 
+Die Schülerinnen und Schüler 
+(9) beurteilen, ob vorliegende Argumentationen und 
+Argumentationsketten vollständig und fehlerfrei sind,  
+(10) ergänzen lückenhafte und korrigieren fehlerhafte  
+Argumentationsketten. 
+ 
+Kommunizieren 
+Rezipieren 
+Die Schülerinnen und Schüler 
+(1) entnehmen und strukturieren Informationen aus mathematikhaltigen 
+Texten und Darstellungen, 
+(2) recherchieren und bewerten fachbezogene Informationen, 
+(3) erläutern Begriffsinhalte anhand von typischen inner - und 
+außermathematischen Anwendungssituationen. 
+ 
+=== S.24 ===
+25  
+Produzieren 
+Die Schülerinnen und Schüler 
+(4) geben Beobachtungen, bekannte Lösungswege und Verfahren mit 
+eigenen Worten und mithilfe mathematischer Begriffe wieder, 
+(5) verbalisieren eigene Denkprozesse und beschreiben eigene 
+Lösungswege, 
+(6) verwenden in angemessenem Umfang die fachgebundene Sprache, 
+(7) wählen je nach Situation und Zweck geeignete Darstellungsformen, 
+(8) dokumentieren Arbeitsschritte nachvollziehbar und präsentiere n 
+diese.  
+ 
+Diskutieren 
+Die Schülerinnen und Schüler 
+(9) greifen Beiträge auf und entwickeln sie weiter, 
+(10) vergleichen und beurteilen Ausarbeitungen und Präsentationen 
+hinsichtlich ihrer fachlichen Richtigkeit, Verständlichkeit und 
+fachsprachlichen Qualität, 
+(11) führen Entscheidungen auf der Grundlage fachbezogener 
+Diskussionen herbei. 
+=== S.25 ===
+26  
+2.3 Kompetenzerwartungen und inhaltliche Schwerpunkte 
+bis zum Ende der Doppeljahrgangsstufe 5/6 
+Am Ende der Doppeljahrgangsstufe 5/6 sollen die Schülerinnen und  
+Schüler – aufbauend auf der Kompetenzentwicklung in der Primarstufe –  
+über die im Folgenden genannten Kompetenzen bezüglich der 
+obligatorischen Inhalte verfügen. 
+Die Kompetenzen sollen im Rahmen der Erarbeitung der nachfolgenden, 
+für die Jahrgangsstufen bis zum Ende der Doppeljahrgangsstufe 5/6  
+obligatorischen Inhaltsfelder entwickelt werden: 
+− Arithmetik/Algebra 
+− Funktionen 
+− Geometrie 
+− Stochastik 
+ 
+Verknüpft man die mathematischen Prozesse und  deren übergeordnete 
+prozessbezogene Kompetenzerwartungen (Abschnitt 2.2) mit den 
+aufgeführten obligatorischen Inhaltsfeldern, so ergeben sich die 
+nachfolgenden konkretisierten Kompetenzerwartungen. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+=== S.26 ===
+27  
+Arithmetik/Algebra 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) führen Grundrechenarten in unterschiedlichen Darstellungen sowohl 
+im Kopf als auch schriftlich durch und stellen Rechenschritte 
+nachvollziehbar dar, 
+(2) runden Zahlen im Kontext sinnvoll und wenden Überschlag und Probe 
+als Kontrollstrategien an, 
+(3) begründen mithilfe von Rechengesetzen Strategien zum vorteilhaften 
+Rechnen und nutzen diese, 
+(4) verbalisieren Rechenterme unter Verwendung von Fachbegriffen und 
+übersetzen Rechenanweisungen und Sachsituationen in 
+Rechenterme, 
+(5) nutzen Variablen bei der Beschreibung  von einfachen 
+Sachzusammenhängen und bei der Formulierung von 
+Rechengesetzen, 
+(6) setzen Zahlen in Terme mit Variablen ein und berechnen deren Wert, 
+(7) kehren Rechenanweisungen um, 
+Inhaltliche Schwerpunkte: 
+− Grundrechenarten: Addition, Subtraktion, Multiplikation und 
+Division natürlicher Zahlen sowie endlicher Dezimalzahlen, Addition 
+und Subtraktion einfacher Brüche, schriftliche Division 
+− Gesetze und Regeln: Kommutativ -, Assoziativ - und 
+Distributivgesetz für Addition und Multiplikation natürlicher Zahlen, 
+Teilbarkeitsregeln 
+− Begriffsbildung: Anteile, Bruchteile von Größen, Kürzen, Erweitern, 
+Rechenterm 
+− Zahlbereichserweiterung: positive rationale Zahlen, Darstellung 
+ganzer Zahlen 
+− Darstellung: Stellenwerttafel, Zahlenstrahl, Wortform, Bruch, 
+endliche und periodische Dezimalzahl, Prozentzahl 
+− Größen und Einheiten: Länge, Flächeninhalt , Volumen, Zeit, Geld, 
+Masse 
+ 
+=== S.27 ===
+28  
+(8) bestimmen Teiler natürlicher Zahlen, wenden dabei die 
+Teilbarkeitsregeln für 2, 3,  5 und 10 an und kombinieren diese zu 
+weiteren Teilbarkeitsregeln, 
+(9) erläutern Eigenschaften von Primzahlen,  
+(10) deuten Brüche als Anteile, Operatoren, Quotienten, Zahlen und 
+Verhältnisse, 
+(11) berechnen und deuten Bruchteil, Anteil und Ganzes im Kontext, 
+(12) kürzen und erweitern Brüche und deuten dies als Vergröbern bzw. 
+Verfeinern der Einteilung,  
+(13) führen Grundrechenarten der Addition und der Subtraktion mit 
+einfachen Brüchen durch und stellen Rechenschritte nachvollziehbar 
+dar,  
+(14) nutzen ganze Zahlen zur Beschreibung von Zuständen und 
+Veränderungen in Sachzusammenhängen, 
+(15) stellen Zahlen auf unterschiedlichen Weisen dar, vergleichen sie und 
+wechseln situati onsangemessen zwischen den verschiedenen 
+Darstellungen auch mithilfe digitaler Medien, 
+(16) schätzen Größen, wählen Einheiten von Größen situationsgerecht aus 
+und wandeln sie um. 
+ 
+Funktionen 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) beschreiben den Zusammenhang zwischen zwei Größen mithilfe von 
+Worten, Diagrammen und Tabellen, 
+(2) erkennen Zusammenhänge in konkreten Situationen und 
+Sachproblemen und lösen durch Rechnen, 
+Inhaltliche Schwerpunkte: 
+− Zusammenhang zwischen Größen: Diagramm, Tabelle, Wortform, 
+Maßstab 
+ 
+=== S.28 ===
+29  
+(3) erkunden M uster in Zahlenfolgen und beschreiben die 
+Gesetzmäßigkeiten in Worten und mit Termen,  
+(4) erfassen gängige Maßstabsverhältnisse und fertigen Zeichnungen in 
+geeigneten Maßstäben an. 
+ 
+Geometrie  
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) erläutern Grundbegriffe und verwenden diese zur Beschreibung von 
+ebenen Figuren und Körpern sowie deren Lagebeziehungen 
+zueinander,  
+(2) charakterisieren und klassifizieren besondere Dreiecke und Vierecke, 
+(3) identifizieren und charakterisieren Körper  in bildlichen Darstellungen 
+und in der Umwelt, 
+(4) zeichnen ebene Figuren unter Verwendung angemessener Hilfsmittel 
+wie Zirkel, Lineal und Geodreieck sowie dynamischer  
+Geometriesoftware,  
+(5) erzeugen ebene symmetrische Figuren und Muster und ermitteln 
+Symmetrieachsen bzw. Symmetriepunkte, 
+(6) stellen ebene Figuren im kartesischen Koordinatensystem dar, 
+Inhaltliche Schwerpunkte: 
+− Ebene Figuren: Kreis, besondere Dreiecke, besondere Vierecke, 
+Winkel, Strecke, Gerade, kartesisches Koordinatensystem, 
+Zeichnung, Umfang und Flächeninhalt (Rechteck, rechtwinkliges 
+Dreieck), Zerlegungs- und Ergänzungsstrategien 
+− Körper: Quader, Pyramide, Zylinder, Kegel, Kugel, Schrägbilder 
+und Netze (Quader und Würfel), Oberflächeninhalt und Volumen 
+(Quader und Würfel) 
+− Lagebeziehung und Symmetrie: Parallelität, Orthogonalität, Punkt - 
+und Achsensymmetrie 
+− Abbildungen: Verschiebungen, Drehungen, Punkt - und 
+Achsenspiegelungen 
+ 
+=== S.29 ===
+30 
+(7) erzeugen Abbildungen ebener Figuren durch Verschieben und
+Spiegeln, auch im Koordinatensystem,
+(8) nutzen dynamische Geometriesoftware zur Analyse von Verkettungen
+von Abbildungen ebener Figuren,
+(9) schätzen und messen die Größe von Winkeln und klassifizieren
+Winkel mit Fachbegriffen,
+(10) schätzen die Länge von Strecken und bestimmen sie mithilfe von
+Maßstäben,
+(11) nutzen das Grundprinzip des Messens bei der Flächen- und
+Volumenbestimmung,
+(12) berechnen den Umfang von Drei - und Vierecken, den Flächeninhalt
+von Rechtecken und rechtwinkligen Dreiecken sowie den
+Oberflächeninhalt und das Volumen von Quadern,
+(13) bestimmen den Flächeninhalt ebener Figuren durch Zerlegungs - und
+Ergänzungsstrategien,
+(14) beschreiben das Ergebnis von Drehungen und Verschiebungen eines
+Quaders aus der Vorstellung heraus,
+(15) stellen Quader und Würfel als Netz, Schrägbild und Modell dar und
+erkennen Körper aus ihren entsprechenden Darstellungen.
+S
+tochastik 
+Die
+ Schülerinnen und Schüler 
+(1) erheben Daten, fassen sie in Ur - und Strichlisten zusammen und
+Inhaltliche Schwerpunkte: 
+− statistische Daten: Datener hebung, Ur- und Strichlisten,  
+Klasseneinteilung, Säulen- und Kreisdiagramme
+− Begriffsbildung: relative und absolute Häufigkeit
+− Kenngrößen: arithmetisches M ittel, Median, Minimum und  
+Maximum, Spannweite 
+=== S.30 ===
+31  
+bilden geeignete Klasseneinteilungen, 
+(2) stellen Häufigkeiten in Tabellen und Di agrammen dar auch unter 
+Verwendung digitaler Mathematikwerkzeuge (Tabellenkalkulation), 
+(3) bestimmen, vergleichen und deuten Häufig keiten und Kenngrößen 
+statistischer Daten, 
+(4) lesen und interpretieren graphi sche Darstellungen statistischer 
+Erhebungen, 
+(5) diskutieren Vor- und Nachteile graphischer Darstellungen. 
+ 
+=== S.31 ===
+32  
+2.4  Kompetenzerwartungen und inhaltliche Schwerpunkte 
+bis zum Ende der Doppeljahrgangsstufe 7/8 
+Am Ende der Doppeljahrgangsstufe 7/8 sollen die Schülerinnen und 
+Schüler über die im Folgenden genannten Kompetenzen bezüglich der 
+obligatorischen Inhalte verfügen. 
+Die Kompetenzen sollen im Rahmen der Erarbeitung der nachfolgenden, 
+für die Jahrgangsstufen bis zum Ende der Doppeljahrgangsstufe 7/8  
+obligatorischen Inhaltsfelder entwickelt werden: 
+− Arithmetik/Algebra 
+− Funktionen 
+− Geometrie 
+− Stochastik 
+ 
+Verknüpft man die mathematischen Prozesse und  deren übergeordnete 
+prozessbezogene Kompetenzerwartungen (Abschnitt 2.2) mit den 
+aufgeführten obligatorischen Inhaltsfeldern, so ergeben sich die 
+nachfolgenden konkretisierten Kompetenzerwartungen. 
+ 
+Arithmetik/Algebra 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) führen die Grundrechenarten der Multiplikation und der Division mit 
+Brüchen durch und stellen Rechenschritte nachvollziehbar dar, 
+Inhaltliche Schwerpunkte: 
+− Grundrechenarten: Multiplikation und Division von Brüchen 
+− Zahlbereichserweiterung: rationale Zahlen 
+− Term und Variable: Variable als Veränderliche, als Platzhalter sowie 
+als Unbekannte, Termumformungen 
+− Gesetze und Regeln: Vorzeichenregeln, Rechengesetze für 
+rationale Zahlen, binomische Formeln 
+− Lösungsverfahren: algebraische Lösungsverfahren linearer 
+Gleichungen 
+ 
+=== S.32 ===
+33  
+(2) stellen rationale Zahlen auf der Zahlengeraden dar und ordnen sie der 
+Größe nach, 
+(3) geben Gründe und Beispiele für Zahlbereichserweiterungen an, 
+(4) leiten Vorzeichenregeln zur Addition und Mul tiplikation anhand von 
+Beispielen ab und nutzen Rechengesetze und Regeln, 
+(5) deuten Variablen als Veränderliche zur Beschreibung von 
+Zuordnungen, als Platzhalter in Termen und Rechengesetzen sowie 
+als Unbekannte in Gleichungen, 
+(6) stellen Terme als Rechenvorschrift von Zuordnungen und zur 
+Berechnung von Flächeninhalten und Volumina auf, 
+(7) stellen Gleichungen zur Formulierung von Bedingungen in 
+Sachsituationen auf,  
+(8) formen Terme  (auch mithilfe der binomischen Formel n) 
+zielgerichtet um und korrigieren fehlerhafte Termumformungen, 
+(9) ermitteln Exponenten im R ahmen der Zinsrechnung durch 
+systematisches Probieren , auch unter Verwendung von 
+Tabellenkalkulationen, 
+(10) ermitteln Lösungsmengen linearer Gleichungen sowohl durch 
+systematisches Probieren als auch algebraisc h und deuten sie im 
+Sachkontext.  
+ 
+Funktionen 
+ 
+ 
+Inhaltliche Schwerpunkte: 
+− proportionale und antiproportionale Zuordnung: 
+Zuordnungsvorschrift, Graph, Tabelle, Wortform, 
+Quotientengleichheit, Proportionalitätsfaktor, 
+Produktgleichheit, Dreisatz 
+− lineare Zuordnungen: Zuordnungsterm, Graph, Tabelle, Wortform 
+− Prozent- und Zinsrechnung: Grundwert, Prozentwert, Prozentsatz, 
+prozentuale Veränderung, Wachstumsfaktor 
+ 
+=== S.33 ===
+34  
+Die Schülerinnen und Schüler 
+(1) charakterisieren Zuordnungen und grenzen diese anhand ihrer 
+Eigenschaften voneinander ab, 
+(2) beschreiben zu gegebenen Zuordnungen passende Sachsituationen, 
+(3) klassifizieren eindeutige Zuordnungen als Funktionen, 
+(4) stellen Zuordnungen mit eigenen Worten,  in Wertetabellen, als 
+Graphen und als  Terme dar, nutzen die Darstellungen 
+situationsangemessen und wechseln zwisc hen den 
+Darstellungsformen auch mithilfe digitaler Mathematikwerkzeuge, 
+(5) interpretieren Graphen von Zuordnungen und Terme linearer 
+Zuordnungen, 
+(6) wenden die Eigenschaften von proportionalen, antiproportionalen und 
+linearen Zuordnungen sowie Dreisatzverfahren zur Lösung außer - 
+und innermathematischer Problemstellungen an,  
+(7) lösen innermathematische und alltagsnahe Probleme mithilfe von 
+Zuordnungen auch mit digitalen Mathematikwerkzeugen 
+(Taschenrechner, Tabellenkalkulation und 
+Multirepräsentationssysteme), 
+(8) unterscheiden in S achkontexten und Problemstellungen Grundwert, 
+Prozentsatz und -wert und berechnen fehlende Größen, 
+(9) wenden Prozent - und Zinsrechnung auf allgemeine 
+Konsumsituationen an und erstellen dazu anwendungsbezogene 
+Tabellenkalkulationen mit relativen und absoluten Zellbezügen, 
+(10) beschreiben prozentuale Veränderungen mit Wachstumsfaktoren 
+und kombinieren prozentuale Veränderungen. 
+ 
+ 
+ 
+ 
+ 
+=== S.34 ===
+35  
+Geometrie 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) nutzen geometrische Sätze zur Winkelbestimmung in ebenen Figuren, 
+(2) berechnen Umfang und Flächeninhalt ebener Figuren und entwickeln 
+Terme zu ihrer Berechnung,  
+(3) benennen und charakterisieren einfache Prismen und bestimmen 
+Oberflächeninhalt und Volumen,  
+(4) begründen die Beweisführung zur Summe der Innenwinkel in 
+einem Dreieck, 
+(5) führen Konstruktionen mit Zirkel und Lineal sowie mithil fe 
+dynamischer Geometriesoftware durch und nutzen Konstruktionen zur 
+Beantwortung von Fragestellungen, 
+(6) formulieren und begründen Aussagen zur Lösbarkeit und 
+Eindeutigkeit von Konstruktionsaufgaben, 
+(7) zeichnen Dreiecke aus gegebenen Winkel - und Seitenmaßen und 
+geben die Abfolge der Konstruktionsschritte mit Fachbegriffen an,  
+(8) erkunden geometrische Zusammenhänge mithilfe dynamischer 
+Geometriesoftware,  
+(9) lösen geometrische Probleme mithilfe von geometrischen Sätzen. 
+ 
+ 
+ 
+ 
+Inhaltliche Schwerpunkte: 
+− Umfang und Flächeninhalt: Dreieck, Viereck, zusammengesetzte 
+Figuren 
+− Körper: Oberflächeninhalt und Volumen einfacher Prismen 
+− geometrische Sätze: Neben- , Scheitel -, Stufen - und 
+Wechselwinkelsatz, Innenwinkelsatz (Dreieck, Viereck), 
+Kongruenzsätze, Satz des Thales 
+− Konstruktion: Dreieck, Mittelsenkrechte  
+ 
+=== S.35 ===
+36  
+Stochastik 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) schätzen Wahrscheinlichkeiten auf der Basis von Hypothesen sowie 
+auf der Basis relativer Häufigkeiten langer Versuchsreihen ab, 
+(2) bestimmen Wahrscheinlichkeiten bei einstufigen Zufallsexperimenten 
+mithilfe der Laplace-Regel, 
+(3) grenzen Laplace- Versuche anhand von B eispielen gegenüber 
+anderen Zufallsversuchen ab, 
+(4) simulieren Zufallserscheinungen in alltäglichen Situationen mit einem 
+stochastischen Modell auch mithilfe digitaler Medien, 
+(5) interpretieren Spannweite und Quartile in statistischen 
+Darstellungen und stellen unter Verwendung dieser Kenngrößen 
+Häufigkeitsverteilungen als Boxplots dar. 
+Inhaltliche Schwerpunkte: 
+− Wahrscheinlichkeiten und Zufallsexperimente: einstufige 
+Zufallsversuche 
+− stochastische Regeln : empirisches Gesetz der großen Zahlen, 
+Laplace-Wahrscheinlichkeit 
+− Begriffsbildung: Ereignis, Gegenereignis, Ergebnis,  
+Wahrscheinlichkeit 
+− statistische Daten und Kenngrößen: Quartile und Boxplots 
+ 
+=== S.36 ===
+37  
+2.5 Kompetenzerwartungen und inhaltliche Schwerpunkte 
+bis zum Ende der Doppeljahrgangsstufe 9/10 
+Am Ende der Doppeljahrgangsstufe 9/10 sollen die Schülerinnen und 
+Schüler über die im Fol genden genannten Kompetenzen bezüglich der 
+obligatorischen Inhalte verfügen. 
+Die Kompetenzen sollen im Rahmen der Erarbeitung der nachfolgenden, 
+für die Jahrgangsstufen bis zum Ende der Doppeljahrgangsstufe 9/10 
+obligatorischen Inhaltsfelder entwickelt werden: 
+− Arithmetik/Algebra 
+− Funktionen 
+− Geometrie 
+− Stochastik 
+ 
+Verknüpft man die mathematischen Prozesse und  deren übergeordnete 
+prozessbezogene Kompetenzerwartungen (Abschnitt 2.2) mit den 
+aufgeführten obligatorischen Inhaltsfeldern, so ergeben sich die 
+nachfolgenden konkretisierten Kompetenzerwartungen. 
+ 
+Arithmetik/Algebra 
+ 
+ 
+ 
+Inhaltliche Schwerpunkte: 
+− Zahlbereichserweiterung: reelle Zahlen 
+− Begriffsbildung: Potenzen, Wurzeln 
+− Gesetze und Regeln: Potenzieren und Radizieren, Potenzgesetze  
+− Lösungsverfahren und Algorithmen: 
+Für G-Kurs: Lösen rein quadratischer Gleichungen 
+algorithmisches Näherungsverfahren, Lösungsverfahren für 
+quadratische Glei chungen (quadratische Ergänzung, p- q-
+Formel), algebraische und graphische Lösungsverfahren 
+linearer Gleichungssysteme mit zwei Variablen, Lösen von 
+Exponentialgleichungen der Form b
+x 
+= c durch systematisches 
+Probieren 
+ 
+=== S.37 ===
+38  
+Die Schülerinnen und Schüler 
+(1) stellen Zahlen in Zehnerpotenzschreibweise dar, 
+(2) unterscheiden rationale und irrationale Zahlen und geben 
+Beispiele für irrationale Zahlen an,  
+(3) vereinfachen Terme, bei denen die Potenzgesetze unmittelbar 
+anzuwenden sind, 
+(4) wechseln zwischen Bruchdarstellung und Potenzschreibweise, 
+(5) nutzen und beschreiben ein algorithmisches Verfahren, um 
+Quadratwurzeln näherungsweise zu bestimmen,  
+(6) berechnen und überschlagen Quadratwurzeln einfacher Zahlen im 
+Kopf, 
+(7) ermitteln algeb raisch und graphisch Lösungsmengen linearer 
+Gleichungssysteme mit zwei Variablen unter Verwendung 
+geeigneter Verfahren, deuten sie im Sachkontext und nutzen die 
+Probe als Rechenkontrolle, 
+(8) wählen algebraische Lösungsverfahren für lineare 
+Gleichungssysteme zielgerichtet aus und vergleichen die 
+Effizienz unterschiedlicher Lösungswege, 
+(9) wählen Verfahren zum Lösen quadratischer Gleichungen 
+begründet aus, vergleichen deren Effizienz und bestimmen die 
+Lösungsmenge einer quadratischen Gleichung auch ohne 
+Hilfsmittel, 
+für G-Kurs: lösen rein quadratische Gleichungen, 
+(10) wenden das Radizieren als Umkehrung des Potenzierens an, 
+(11) beschreiben die Bedeutung des Logarithmierens als eine 
+Umkehrung des Potenzierens und lösen einfache 
+Exponentialgleichungen der Form b
+x 
+= c, 
+(12) wenden ihre Kenntnisse über quadratische Gleichungen und 
+Exponentialgleichungen zum Lösen inner - und 
+außermathematischer Probleme an und deuten Ergebnisse in 
+Kontexten. 
+=== S.38 ===
+39  
+Funktionen 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) charakterisieren Funktionen als Klasse eindeutiger Zuordnungen, 
+(2) stellen Funktionen (lineare, quadratische, exponentielle Funktionen) 
+mit eigenen Worten, in Wertetabellen, als Graphen und als Terme dar, 
+(3) grenzen lineares, quadratisches  und exponentielles Wachstum an 
+Beispielen voneinander ab, 
+für G -Kurs: ermitteln exponentielles Wachstum an praktischen 
+Beispielen,  
+(4) verwenden aus Graph, Wertetabelle und Term ablesbare 
+Eigenschaften als Argumente beim Bearbeiten mathematischer 
+Fragestellungen, 
+(5) bestimmen anhand des Graphen einer Funktion die Parameter ei nes 
+Funktionsterms dieser Funktion, 
+(6) erklären den Einfluss der Parameter eines Funktionsterms auf den 
+Graphen der Funktion (Ausnahme bei quadratischen Funktionen in 
+der Normalform: nur Streckfaktor und y-Achsenabschnitt), 
+(7) erkunden und systematisieren mithilfe dynamischer 
+Geometriesoftware den Einfluss der Parameter von Funktionen,  
+Inhaltliche Schwerpunkte: 
+− Funktionsbegriff 
+− lineare Funktionen: Funktionsterm, Graph, Tabelle, Wortform, 
+Achsenabschnitte, Steigung, Steigungsdreieck 
+− quadratische Funktionen: Term (Normalform, Scheitelpunktform), 
+Graph, Tabelle, Scheitelpunkt, Symmetrie, Öffnung, Nullstellen und 
+y-Achsenabschnitt, Transformation der Normalparabel (G -Kurs: 
+keine Verschiebung entlang der x-Achse) 
+− Für G-Kurs: exponentielle Wachstumsprozesse 
+exponentielle Funktionen: f(x) = a ⋅ qx , a > 0, q > 0 , Term, Graph, 
+Tabelle, Wortform, Wachstum (Anfangswert, Wachstumsfaktor 
+und -rate, langfristige Entwicklung) 
+ 
+ 
+=== S.39 ===
+40  
+(8) deuten Parameter und Eigenschaften einer Funktion in 
+Anwendungssituationen, 
+(9) formen Funktionsterme quadratischer Funktionen um und 
+nutzen verschiedene Formen der Termdarstellung 
+situationsabhängig, 
+(10) berechnen Nullstellen quadratischer Funktionen durch geeignete 
+Verfahren, 
+(11) wählen begründet mathematische Modelle zur Beschreibung von 
+Wachstumsprozessen aus, treffen Vorhersagen zur langfristigen 
+Entwicklung und überprüfen die Eignung des Modells, 
+(12) identifizieren funktionale Zusammenhänge in Messreihen mit 
+digitalen Medien, 
+(13) wenden lineare, quadratische und exponentielle Funktionen zur 
+Lösung inner- und außermathematischer Problemstellungen an,  
+(14) beschreiben unter Anwendung digitaler Mathematikwerkzeuge 
+periodische Vorgänge mithilfe von Sinusfunktionen der 
+Form  f(x) = a ⋅sin(b ⋅ x). 
+ 
+Geometrie 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) vergrößern und verkleinern einfache Figuren maßstabsgetreu, 
+(2) berechnen Längen und Flächeninhalt e an Kreisen und 
+Kreissektoren, 
+Inhaltliche Schwerpunkte: 
+− Kreis: Umfang und Flächeninhalt (Kreis, Kreisbogen, Kreissektor) 
+− Körper: Kugel, Zylinder, Kegel und Pyramide, Oberflächeninhalt 
+und Volumen 
+− maßstäbliches Vergrößern und Verkleinern 
+− Ähnlichkeit 
+− geometrische Sätze: Satz des Pythagoras 
+− Trigonometrie: Sinus, Kosinus, Tangens 
+ 
+=== S.40 ===
+41  
+(3) schätzen und berechnen Oberflächeninhalt  und Volumen von 
+Körpern, Teilkörpern sowie zusammengesetzten Körpern, 
+(4) beweisen den Satz des Pythagoras, 
+(5) beschreiben Beziehungen in rechtwinkligen Dreiecken mit hilfe 
+der Trigonometrie (Sinus/Kosinus/Tangens), 
+(6) berechnen Größen mithilfe von Ähnlichkeitsbeziehungen, 
+geometrischen Sätzen und trigonometrischen Beziehungen, 
+(7) ermitteln Maßangaben in Sachsituationen  und nutzen diese für 
+geometrische Berechnungen. 
+ 
+Stochastik 
+ 
+ 
+Die Schülerinnen und Schüler 
+(1) planen statistische Datenerhebungen und nutzen zur Erfassung un d 
+Auswertung digitale Mathematikwerkzeuge, 
+(2) analysieren auch mithilfe digitaler Mathematikwerkzeuge graphische 
+Darstellungen statistischer Erhebungen kritisch und erkennen 
+Manipulationen, 
+(3) stellen zweistufige Zufallsversuche mit Baumdiagrammen dar 
+und entnehmen Wahrscheinlichkeiten aus ihnen, 
+(4) führen in konkrete n Situationen kombinatorische Überlegungen 
+durch, um die Anzahl der jeweiligen Möglichkeiten zu bestimmen, 
+(5) berechnen Wahrscheinlichkeiten mithilfe von Pfadregeln und 
+Vierfeldertafel und deuten diese im Sachzusammenhang, 
+(6) interpretieren und beurteilen Daten und statistische Aussagen in 
+authentischen Texten.
+Inhaltliche Schwerpunkte: 
+− statistische Daten: Erhebung, Diagramm, Manipulation 
+− Wahrscheinlichkeiten und Zufallsexperimente : zweistufige 
+Zufallsversuche, Baumdiagramme, Pfadregeln, bedingte 
+Wahrscheinlichkeit, Vierfeldertafel 
+=== S.41 ===
+42  
+3 Lernerfolgsüberprüfung und Leistungsbewertung 
+Die rechtlich verbindlichen Grundsätze der Leistungsbewertung sind im 
+Schulgesetz (§ 48 SchulG) sowie in der Ausbildungs- und Prüfungsordnung 
+für die Sekundarstu fe I (§ 6 APO- SI) dargestellt. Demgemäß sind bei d er 
+Leistungsbewertung von Schülerinnen und Schülern im Fach Mathematik 
+erbrachte Leistungen in den Beurtei lungsbereichen „Schriftliche Arbeiten“ 
+sowie „Sonstige Leistungen im Unterricht“ zu berücksichtigen. Die 
+Leistungsbewertung insgesamt bezieht sich auf die im Zusammenhang mit 
+dem Unterricht erworbenen Kompetenzen und setzt voraus, dass die 
+Schülerinnen und Schüler hinreichend Gelegenheit hat ten, die in Kapitel 2 
+ausgewiesenen Kompetenzen zu erwerben. 
+Erfolgreiches Lernen ist kumulativ. Dies erfordert, dass Unterricht und 
+Lernerfolgsüberprüfungen darauf ausgerichtet sein müssen, Schülerinnen 
+und Schülern Gelegenheit zu geben, Kompetenzen wiederholt und in 
+wechselnden Zusammenhängen unter Beweis zu stellen. Für Lehrerinnen 
+und Lehrer sind die Ergebnisse der Lerner folgsüberprüfungen Anlass, die 
+Zielsetzungen und die Methoden ihres Unterrichts zu überprüfen und ggf. 
+zu modifizieren. Für die Schülerinnen und Schüler sollen ein den  
+Lernprozess begleitendes Feedback sowie Rückmeldungen zu den 
+erreichten Lernständen eine Hilfe für die Selbsteinschätzung sowie eine 
+Ermutigung für das weitere Lernen darstellen. Dies kann auch in Phasen 
+des Unterrichts erfolgen, in denen keine Leistungsbeurteilung durchgeführt 
+wird. Die Beurteilung von Leistungen soll eben falls grundsätzlich mit der 
+Diagnose des erreichten Lernstandes und Hinweisen zum individuellen 
+Lernfortschritt verknüpft sein. 
+Die Leistungsbewertung ist so anzulegen, dass sie den in d en 
+Fachkonferenzen gemäß Schulgesetz (§ 70 Abs. 4 SchulG) beschlossenen 
+Grundsätzen entspricht, dass die Kriterien für die Notengebung den 
+Schülerinnen und Schülern transparent sind und die Korrekturen sowie die 
+Kommentierungen den Lernenden auch Erkennt nisse über die individuelle 
+Lernentwicklung ermöglichen. Dazu gehören – neben der Etablierung eines 
+angemessenen Umgangs mit ei genen Stärken, 
+Entwicklungsnotwendigkeiten und Fehlern –  insbesondere auch Hinw eise 
+zu individuell Erfolg ver sprechenden allgemeinen und fachmethodischen 
+Lernstrategien. 
+=== S.42 ===
+43  
+Im Sinne der Orientierung an den zuvor formulierten Anforderungen sind 
+grundsätzlich alle in Kapitel 2 des Lehrplans ausgewiesenen 
+Kompetenzbereiche bei der Leis tungsbewertung angemessen zu 
+berücksichtigen. Überprüfungsformen schriftlicher, mündlicher und 
+praktischer Art sollen deshalb darauf ausgerichtet sein, die Erreichung der 
+dort aufgeführten Kompetenzerwartungen zu überprüfen. Ein isoliertes, 
+lediglich auf Reproduktion angelegtes Abfragen einzelner Date n und 
+Sachverhalte allein kann dabei den zuvor formulierten Ansprüchen an die 
+Leistungsfeststellung nicht gerecht werden. Durch die zunehmende 
+Komplexität der Lernerfolgsüberprü fungen im Verlauf der Sekundarstufe I 
+werden die Schülerinnen und Schüler auf die Anforderungen der 
+nachfolgenden schulischen und beruflichen Ausbildung vorbereitet. 
+ 
+Beurteilungsbereich „Schriftliche Arbeiten“ 
+ 
+Schriftliche Arbeiten dienen der schriftlichen Überprüfung von 
+Kompetenzen. Sie sind so anzulegen, dass die Schülerinnen un d Schüler 
+ihr Wissen sowie ihre Fähigkeiten und Fertigkeiten nachweisen können. Sie 
+bedürfen angemessener Vorbereitung und verlangen klar verständliche 
+Aufgabenstellungen. In ihrer Gesamtheit sollen die Aufgabenstellungen die 
+Vielfalt der im Unterricht  erworbenen Kompetenzen und Ar beitsweisen 
+widerspiegeln. Überprüfungsformen, die für schriftliche Arbeiten einge-  
+setzt werden, müssen bei verschiedenen Gelegenheiten hinreichend und 
+rechtzeitig angewandt werden, sodass Schülerinnen und Schüler mit ihnen 
+vertraut sind. Für den Einsatz in schriftlichen Arbeiten können 
+Überprüfungsformen – ggf. auch in Kombination – in Betracht kommen, die 
+im letzten A bschnitt dieses Kapitels aufge führt sind. Zur Schaffung einer 
+angemessenen Transparenz erfolgt die Bewertung der schriftlichen 
+Arbeiten kriteriengeleitet. Einmal im Schuljahr kann gem. APO -S I eine 
+schriftliche Arbeit durch eine andere, in der Regel schriftliche, in 
+Ausnahmefällen auch gleichwertige nicht schriftliche Leistungsüberprüfung 
+ersetzt werden. 
+Im Mathemati kunterricht werden Problemstellungen bewusst mit bzw. 
+bewusst ohne Hilfsmittel bearbeitet (vgl. Kapitel 2.2). In den schriftli chen 
+Arbeiten soll dies berücksichtigt werden. In den Arbeiten ist auf eine formal 
+und fachsprachlich korrekte Darstellung der Lösungswege zu achten. 
+ 
+ 
+=== S.43 ===
+44  
+Beurteilungsbereich „Sonstige Leistungen im Unterricht“ 
+ 
+Der Beurteilungsbereich „Sonstige Leistungen im Unterricht“ erfasst die im 
+Unterrichtsgeschehen durch mündliche, schriftliche und praktische Beiträge 
+erkennbare Kompetenzentwicklung der Schülerinnen und Schüler. Bei der 
+Bewertung berücks ichtigt werden die Qualität, die Quantität und die 
+Kontinuität der Beiträge. Die Kom petenzentwicklung im 
+Beurteilungsbereich „Sonstige Leistungen im Unterricht“ wird sowohl durch 
+kontinuierliche B eobachtung während des Schuljahres (Prozess der 
+Kompetenzentwicklung) als auch durch punktuell e Überprüfungen (Stand 
+der Kompetenzentwicklung) festgestellt. Bei der Bewertung von Leistungen, 
+die die Schülerinnen und Schüler im Rahmen von Partner - oder 
+Gruppenarbeiten erbringen, kann der individuelle Beitrag zum Ergebnis der 
+Partner- bzw. Gruppenarbeit einbezogen werden. 
+Im Fach Mathematik ist besonders darauf zu achten, dass fehlerhafte 
+Unterrichtsbeiträge in Erarbeitungs- und Übungsphasen nicht zum Anlass 
+punktueller Abwertung genommen, sondern produktiv für den individuellen 
+und generellen Lernfortschritt genutzt werden. 
+Zum Beurteilungsbereich „Sonstige Leistungen im Unterricht“ –  ggf. auch 
+auf der Grundlage der außerschulischen Vor - und Nachbereitung von 
+Unterricht – zählen u.a.: 
+ 
+• Beiträge zum Unterrichtsgespräch, 
+• sachgerechter und reflektierter Einsatz analoger und digitaler  
+Werkzeuge, 
+• kooperative Leistungen im Rahmen von Gruppenarbeit, 
+• im Unterricht eingeforderte Leistungsnachweise sowie 
+• kurze schriftliche Übungen. 
+ 
+Mögliche Überprüfungsformen 
+ 
+Die Kompetenzerwartungen des Kernlehrplans ermöglichen eine Vielzahl 
+von Überprüfungsformen. Im Verlauf der Sekundarstufe I soll ein möglichst 
+breites Spektrum der im Folgenden aufgeführten Überprüfungsformen in 
+schriftlichen, mündlichen oder praktischen Kontexten zum Einsatz gebracht 
+werden. Darüber hinaus können weitere Überprüfungsformen nach 
+Entscheidung der Lehrkraft eingesetzt werden. 
+=== S.44 ===
+45  
+Grundsätzlich sind alle in Kapitel 2 des Lehrplans a usgewiesenen 
+Kompetenzbereiche „Operieren“, „Modellieren“, „Problemlösen“, 
+„Argumentieren“, und „Kommunizieren“ in Verbindung mit den jeweiligen 
+Inhaltsfeldern „Arithmetik/Algebra“, „Funktio nen“, „Geometrie“ und 
+„Stochastik“ bei der Leistungsbewertung angemessen zu berücksichtigen. 
+Im Folgenden werden mögliche Überprüfungsformen beschrieben, welche 
+sowohl die prozessbezogenen Kompetenzerwartungen als auch di e 
+konkretisierten inhaltsbezog enen Kompetenzerwartungen angemessen 
+berücksichtigen. Diese eignen sich zum Einsatz im Unterricht als 
+Lernaufgaben sowie als Überprüfungsformen. Dabei sind auch 
+Kombinationen verschiedener Formen möglich. Die nachfolgenden  
+Aufzählungen sind nicht abschließend. 
+ 
+Aufgabe mit alltagsbezogenem Sachzusammenhang 
+• Ordnen, Strukturieren, Darstellen realer Zusammenhänge 
+• Modellierungen, Simulationen, Variation von Parametern 
+• Auswählen, Aufstellen und Begründen geeigneter mathematischer  
+Modelle 
+• Möglichkeiten und Grenzen von Modellierungen, Vergleich funktionaler  
+Ansätze 
+• Interpretationen, Argumentationen, Beurteilungen aus allen 
+Inhaltsfeldern 
+ 
+Innermathematische Argumentationsaufgabe 
+• Begriffe, Regeln, Gesetze oder (algorithmische) Lösungsverfahren 
+auswählen und anwenden 
+• Beweise erläutern oder ergänzen 
+• Fehler beschreiben und korrigieren 
+• Argumentation anhand von vorgegeben Graphen und Graphiken 
+• Bewerten von Lösungswegen und -verfahren 
+ 
+Hilfsmittelfrei zu bearbeitende Aufgabe 
+• Kompetenzen aus dem Kompetenzbereich „Operieren“  
+• Veranschaulichung grundlegender Begriffe 
+• einfache Rechnungen, unmittelbare Anwendung von Regeln, 
+Algorithmen, Lösungsverfahren einfacher Gleichungen ohne oder mit 
+geringem Rechenaufwand 
+=== S.45 ===
+46  
+Problemlösende Aufgabe 
+• Entwickeln und Darstellen von Lösungsstrategien 
+ 
+Geschlossene Aufgabe 
+• Erkennbarer oder vorgegebener Lösungsweg 
+• Umkehrung von gegebenen Lösungswegen 
+• Anwenden von Algorithmen 
+• Interpretation vorgegebener Ergebnisse 
+ 
+Offene Aufgabe 
+• Darstellung sinnvoller Lösungswege 
+• Fermi-Aufgabe 
+ 
+Explorative Aufgabe 
+• Regelmäßigkeiten und Zusammenhänge durch Simulationen, 
+Variationen von Parametern und graphischen Darstellungen entdecken 
+und begründen 
+ 
+Auswahlaufgabe 
+• Aufgaben mit mehreren vorgegebenen Lösungen, von denen 
+mindestens eine richtig ist 
+• Auswahl begründen, Alternativen widerlegen 
+ 
+Vernetzende Aufgabe 
+• Inhaltsfeld übergreifende Aufgaben 
+ 
+Präsentationsaufgabe 
+• Präsentationen, Referate, adressatenbezogene Erläuterungen 
+• Kurzvortrag zu konkret umrissener Aufgabenstellung 
+ 
+Dokumentationsaufgabe 
+• Portfolio, Lerntagebücher 
+• Dokumentation von Recherchen 

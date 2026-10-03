@@ -1,0 +1,1 @@
+  'm5-stellenwert': modal => { _m5bInit(); modal.innerHTML = _m5bHTML(); _m5bStatus(); _pSim = new PhysicsSimEngine('_m5b-cv', '_m5b-cv'); _pSim.start(dt => _m5bUpdate(dt), (ctx, cv) => _m5bDraw(ctx, cv), []); },
