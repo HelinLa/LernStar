@@ -7564,6 +7564,25 @@ const _physSimDefs = {
     _pSim = new PhysicsSimEngine('_c8q-cv', '_c8q-cv');
     _pSim.start(dt => _c8qUpdate(dt), (ctx, cv) => _c8qDraw(ctx, cv), []);
   },
+  'drei-finger': modal => { _f10aInit(); modal.innerHTML = _f10aHTML(); _f10aStatus(); _pSim = new PhysicsSimEngine('_f10a-cv', '_f10a-cv'); _pSim.start(dt => _f10aUpdate(dt), (ctx, cv) => _f10aDraw(ctx, cv), []); },
+
+  'dauer-elektro': modal => { _f10bInit(); modal.innerHTML = _f10bHTML(); _f10bStatus(); _pSim = new PhysicsSimEngine('_f10b-cv', '_f10b-cv'); _pSim.start(dt => _f10bUpdate(dt), (ctx, cv) => _f10bDraw(ctx, cv), []); },
+
+  'motor-takt': modal => { _f10cInit(); modal.innerHTML = _f10cHTML(); _f10cStatus(); _pSim = new PhysicsSimEngine('_f10c-cv', '_f10c-cv'); _pSim.start(dt => _f10cUpdate(dt), (ctx, cv) => _f10cDraw(ctx, cv), []); },
+
+  'induktion-betrag': modal => { _f10dInit(); modal.innerHTML = _f10dHTML(); _f10dStatus(); _pSim = new PhysicsSimEngine('_f10d-cv', '_f10d-cv'); _pSim.start(dt => _f10dUpdate(dt), (ctx, cv) => _f10dDraw(ctx, cv), []); },
+
+  'magnet-rohr': modal => { _f10eInit(); modal.innerHTML = _f10eHTML(); _f10eStatus(); _pSim = new PhysicsSimEngine('_f10e-cv', '_f10e-cv'); _pSim.start(dt => _f10eUpdate(dt), (ctx, cv) => _f10eDraw(ctx, cv), []); },
+
+  'wechselgenerator': modal => { _f10fInit(); modal.innerHTML = _f10fHTML(); _f10fStatus(); _pSim = new PhysicsSimEngine('_f10f-cv', '_f10f-cv'); _pSim.start(dt => _f10fUpdate(dt), (ctx, cv) => _f10fDraw(ctx, cv), []); },
+
+  'trafo-einfach': modal => { _f10gInit(); modal.innerHTML = _f10gHTML(); _f10gStatus(); _pSim = new PhysicsSimEngine('_f10g-cv', '_f10g-cv'); _pSim.start(dt => _f10gUpdate(dt), (ctx, cv) => _f10gDraw(ctx, cv), []); },
+
+  'fernleitung-modell': modal => { _f10hInit(); modal.innerHTML = _f10hHTML(); _f10hStatus(); _pSim = new PhysicsSimEngine('_f10h-cv', '_f10h-cv'); _pSim.start(dt => _f10hUpdate(dt), (ctx, cv) => _f10hDraw(ctx, cv), []); },
+
+  'kraftwerke': modal => { _f10iInit(); modal.innerHTML = _f10iHTML(); _f10iStatus(); _pSim = new PhysicsSimEngine('_f10i-cv', '_f10i-cv'); _pSim.start(dt => _f10iUpdate(dt), (ctx, cv) => _f10iDraw(ctx, cv), []); },
+
+  'energietraeger': modal => { _f10jInit(); modal.innerHTML = _f10jHTML(); _f10jStatus(); _pSim = new PhysicsSimEngine('_f10j-cv', '_f10j-cv'); _pSim.start(dt => _f10jUpdate(dt), (ctx, cv) => _f10jDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -139842,4 +139861,5783 @@ function _c8qDraw(ctx, cv) {
     ctx.fillText('▶ Zeitlupe', 8, 16);
   }
   _bioFxAlleDraw(ctx, _c8q.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz2 „In welche Richtung wirkt die Kraft?“ (Kennung drei-finger)
+// Leiterschaukel von der Seite, leicht schraeg gezeichnet: was auf dich zu zeigt,
+// laeuft im Bild nach links unten. Ein Kupferstab haengt an zwei Draehten
+// zwischen den Polen eines liegenden Hufeisenmagneten (ein Pol oben, einer
+// unten, gross N und S, Nord rot, Sued gruen, Joch links). Der Stab zeigt auf
+// dich zu; seine Stirnseite ist der Querschnitt mit ⊙ (Strom auf dich zu) oder
+// ⊗ (Strom von dir weg). Ein Netzgeraet oben rechts, + und − an den Buchsen.
+// Nach „▶ Strom an“ wandern rote Punkte vom Pluspol ueber Draht und Stab zum
+// Minuspol (technische Stromrichtung + → −), die Schaukel schwingt aus und
+// pendelt gedaempft um ihre neue Lage; ein blauer Pfeil F zeigt die Kraft.
+// „Strom umpolen“ und „Magnet umdrehen“ schalten den Strom AUS (sim_plan fz2):
+// die Schaukel pendelt zurueck und haengt still, Pfeil F und Zeile 3
+// verschwinden, eine gestrichelte Marke „vorher“ zeigt die alte Auslenkung.
+// „Hand zeigen“ blendet die rechte Hand am Stab ein (bleibt bis „neu“) und
+// aendert sonst nichts. Finger: rot = Strom (aus dem Bild heraus bzw. hinein,
+// verkuerzt), gruen = Magnetfeld (N → S), blau = Kraft F. Bei jeder Umstellung
+// dreht sich die Hand um 180° um die Achse, die bleibt, wie sie ist. Beschriftet
+// werden nur die Groessen, nie die Finger (nicht_am_bildschirm).
+// Physik: F = I · (L × B), technische Stromrichtung, Feld zwischen den Polen
+// von N nach S. Koordinaten: x nach rechts, y nach oben, z auf dich zu.
+//   auf dich zu (+z), N oben (B = −y): F ~ z × (−y) = +x → rechts
+//   von dir weg (−z), N oben:          F ~ (−z) × (−y) = −x → links
+//   auf dich zu, N unten (B = +y):     F ~ z × y = −x → links
+//   von dir weg, N unten:              F ~ (−z) × y = +x → rechts
+// Die Hand ist ein Rechtssystem: Strom × Feld = Kraft (rot × gruen = blau).
+// Schaukel: theta'' = w²·(s·tan(theta0)·cos(theta) − sin(theta)) − 2·D·w·theta',
+// Ruhelage bei Strom tan(theta) = F/(m·g), Modellwert theta0 = 15°, keine Zahl
+// am Bildschirm.
+// Statuszeilen (woertlich aus KAPITEL1_PROFIL.md), alle in EINEM Feld:
+//   „Strom: auf dich zu“ / „Strom: von dir weg“
+//   „Magnetfeld: von oben nach unten“ / „Magnetfeld: von unten nach oben“
+//   erst nach „▶ Strom an“: „Die Schaukel schwingt nach rechts.“ / „… nach links.“
+// Warum ein Feld: Die Zeilen „Strom: auf dich zu“ und „Strom: von dir weg“ sind
+// genau 18 Zeichen lang, simfakten.js liest ein Feld erst ab 19 Zeichen.
+// Knopfreihenfolge Strom umpolen · ▶ Strom an · neu · Magnet umdrehen · Hand
+// zeigen: so liest simfakten.js beide Richtungen ab (rechts UND links) – in der
+// Reihenfolge des Profils kaeme dort nur eine vor.
+// Aha (_bioFx, ohne Text): Strom UND Magnet umgedreht, Strom an → die Schaukel
+// schwingt wieder nach rechts; Lichtringe an N/S, an + und − und am Pfeil F.
+// ════════════════════════════════════════════════════════════════════════
+let _f10a = null;
+const _F10A_KX = 0.26, _F10A_KY = 0.20;              // Schraegbild: z → links unten
+const _F10A_XP = 176, _F10A_YP = 34, _F10A_L = 120;   // Aufhaengung, Pendellaenge (px)
+const _F10A_ZS = 40, _F10A_ZD = 33, _F10A_R = 8;      // Stab: halbe Laenge, Draehte, Radius
+const _F10A_TH0 = 15 * Math.PI / 180;                 // Ruhelage bei Strom (Modellwert)
+const _F10A_OM = 2 * Math.PI / 1.3;                   // Eigenkreisfrequenz der Schaukel
+const _F10A_DG = 0.2;                                 // Daempfungsgrad
+const _F10A_PZ = 26;                                  // Magnet: halbe Tiefe
+const _F10A_POL = { x0: 92, x1: 262, o0: 100, o1: 127, u0: 181, u1: 208 };
+const _F10A_SX = 252;                                 // N und S: an den offenen Enden der Pole
+const _F10A_JOCH = { x0: 66, x1: 92 };
+const _F10A_NG = { x0: 318, x1: 404, y0: 8, y1: 58 };
+const _F10A_BU = [{ x: 343, y: 48 }, { x: 379, y: 48 }];  // [0] hinteres, [1] vorderes Drahtende
+const _F10A_LA = [262, 70], _F10A_LB = [280, 104];        // Kontrollpunkte der Zuleitungen
+const _F10A_FARBE = {
+  strom: { fuell: '#dc2626', rand: '#7f1d1d', text: '#b91c1c' },
+  feld:  { fuell: '#16a34a', rand: '#14532d', text: '#15803d' },
+  kraft: { fuell: '#2563eb', rand: '#1e3a8a', text: '#1d4ed8' }
+};
+const _F10A_ROT = { vorn: '#dc2626', oben: '#f87171', seite: '#b91c1c' };
+const _F10A_GRUEN = { vorn: '#16a34a', oben: '#4ade80', seite: '#15803d' };
+const _F10A_GRAU = { vorn: '#9ca3af', oben: '#cbd5e1', seite: '#6b7280' };   // Mitte beim Umdrehen
+// Rechte Hand in eigenen Koordinaten (a = Stromrichtung, b = Feldrichtung,
+// c = a × b = Kraftrichtung; die Handflaeche liegt in der a-b-Ebene und schaut
+// nach c). Massstab und Schraegbild wie die Szene, nur weniger verkuerzt.
+const _F10A_HK = 0.8, _F10A_HKX = 0.572, _F10A_HKY = 0.44;
+const _F10A_HM = {
+  flaeche: [[8, -2], [-6, 2], [-20, 2], [-33, -1], [-43, -6], [-45, -30], [-39, -50], [-8, -54], [9, -46], [11, -24]],
+  arm: [[-39, -48], [8, -48], [5, -72], [-36, -72]],
+  aermel: [[-38, -68], [7, -68], [7, -82], [-39, -82]],
+  finger: [
+    { pts: [[-28, -3, 0], [-28, 6, 8], [-28, 0, 16], [-28, -9, 16]], w: 10, art: null, text: '' },
+    { pts: [[-39, -7, 0], [-39, 1, 7], [-39, -4, 13], [-39, -12, 13]], w: 9, art: null, text: '' },
+    { pts: [[-3, -2, 0], [-3, 56, 0]], w: 11, art: 'feld', text: 'Magnetfeld (N → S)' },
+    { pts: [[-15, -2, 0], [-15, 9, 3], [-15, 10, 48]], w: 11, art: 'kraft', text: 'Kraft F' },
+    { pts: [[8, -50, 0], [20, -46, 0], [52, -46, 0]], w: 12, art: 'strom', text: 'Strom' }
+  ]
+};
+// Lage der Hand am Stab (Bildpunkte gegen die Stabmitte) je Einstellung: der
+// blaue Finger laeuft knapp ueber dem Pfeil F, die Stirnseite bleibt frei.
+function _f10aHandVersatz(strom, nord) {
+  if (nord > 0) return strom > 0 ? [4, -13.5] : [4, -24];
+  return strom > 0 ? [4, 2] : [4, -8.7];
+}
+
+function _f10aP(x, y, z) { return [x - _F10A_KX * z, y + _F10A_KY * z]; }
+function _f10aRichtung() { return _f10a.strom * _f10a.nord; }     // +1 rechts, −1 links
+function _f10aKreuz(u, v) {
+  return [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
+}
+function _f10aZielHand() {
+  const a = [0, 0, _f10a.strom], b = [0, -_f10a.nord, 0];
+  return { a, b, c: _f10aKreuz(a, b), v: _f10aHandVersatz(_f10a.strom, _f10a.nord) };
+}
+// Drehung von v um die Einheitsachse k um den Winkel w (Rodrigues).
+function _f10aDreh(v, k, w) {
+  const c = Math.cos(w), s = Math.sin(w), kv = k[0] * v[0] + k[1] * v[1] + k[2] * v[2];
+  const x = _f10aKreuz(k, v);
+  return [0, 1, 2].map(i => v[i] * c + x[i] * s + k[i] * kv * (1 - c));
+}
+function _f10aPolSchilder() {      // Mitte der Schilder N/S [oben, unten] im Bild
+  return [_f10aP(_F10A_SX, (_F10A_POL.o0 + _F10A_POL.o1) / 2, _F10A_PZ), _f10aP(_F10A_SX, (_F10A_POL.u0 + _F10A_POL.u1) / 2, _F10A_PZ)];
+}
+function _f10aStabMitte() {
+  return [_F10A_XP + _F10A_L * Math.sin(_f10a.th), _F10A_YP + _F10A_L * Math.cos(_f10a.th)];
+}
+
+function _f10aInit() {
+  _f10a = { t: 0, strom: 1, nord: 1, an: false, th: 0, om: 0, lauf: 0,
+            polU: 1, magU: 1, geist: null, leuchtF: 0, richtungAlt: 0, plan: [],
+            hand: { sicht: false, auf: 0, dreh: null, lab: 0 }, fx: { teile: [] } };
+  const h = _f10aZielHand();
+  Object.assign(_f10a.hand, { a: h.a, b: h.b, c: h.c, v: h.v });
+}
+function _f10aHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">In welche Richtung wirkt die Kraft?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Kupferstab hängt wie eine Schaukel zwischen den Polen eines Magneten. Ein Ende vom Stab zeigt auf dich.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10a-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_f10a-pol" onclick="_f10aUmpolen()">Strom umpolen</button>
+          <button class="sim-btn primary" id="_f10a-los" onclick="_f10aStromAn()">▶ Strom an</button>
+          <button class="sim-btn" onclick="_f10aNeu()">neu</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" id="_f10a-mag" onclick="_f10aMagnet()">Magnet umdrehen</button>
+          <button class="sim-btn" id="_f10a-hand" onclick="_f10aHand()">Hand zeigen</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_f10a-status" style="margin-top:6px;line-height:1.5"></div>
+        <div class="fpm-note" style="margin-top:10px">⊙ – der Strom fließt auf dich zu.<br>⊗ – der Strom fließt von dir weg.</div>
+        <div class="fpm-note" style="margin-top:8px">Die roten Punkte zeigen den Strom von + nach −. Rot ist der Nordpol, grün der Südpol.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Strom auf dich zu, Nordpol oben, Strom aus</p>
+  </div>`;
+}
+function _f10aStatus() {
+  if (!_f10a) return;
+  const z = _f10a;
+  const st = document.getElementById('_f10a-status');
+  if (st) {
+    let h = 'Strom: ' + (z.strom > 0 ? 'auf dich zu' : 'von dir weg') + '<br>' +
+            'Magnetfeld: ' + (z.nord > 0 ? 'von oben nach unten' : 'von unten nach oben');
+    if (z.an) h += '<br><b>Die Schaukel schwingt nach ' + (_f10aRichtung() > 0 ? 'rechts' : 'links') + '.</b>';
+    st.innerHTML = h;
+  }
+  const los = document.getElementById('_f10a-los');
+  if (los) {
+    los.disabled = z.an;
+    los.classList.toggle('primary', !z.an);
+    los.style.opacity = z.an ? '0.45' : '';
+  }
+}
+// Hand auf die neue Einstellung drehen: 180° um die Achse, die sich nicht aendert.
+function _f10aHandDrehen(achse) {
+  const H = _f10a.hand, ziel = _f10aZielHand();
+  if (H.dreh) { const d = H.dreh.ziel; H.a = d.a; H.b = d.b; H.c = d.c; H.v = d.v; H.dreh = null; }
+  if (!H.sicht) { H.a = ziel.a; H.b = ziel.b; H.c = ziel.c; H.v = ziel.v; return; }
+  H.dreh = { k: H[achse].slice(), p: 0, ziel,
+             von: { a: H.a.slice(), b: H.b.slice(), c: H.c.slice(), v: H.v.slice() } };
+  H.lab = 0;
+}
+// Gemeinsamer Teil von „Strom umpolen“ und „Magnet umdrehen“: Strom aus.
+function _f10aUmstellen(achse) {
+  const z = _f10a;
+  if (z.an) {
+    z.geist = { th: z.richtungAlt * _F10A_TH0, alter: 0 };
+    z.an = false;
+  }
+  _f10aHandDrehen(achse);
+  _f10aStatus();
+}
+function _f10aUmpolen() {
+  if (!_f10a) return;
+  const z = _f10a;
+  z.richtungAlt = _f10aRichtung();
+  z.strom = -z.strom; z.polU = 0;
+  _f10aUmstellen('b');
+  for (const b of _F10A_BU) _bioFxWelle(z.fx.teile, b.x, b.y - 13, '#fca5a5', 16);
+}
+function _f10aMagnet() {
+  if (!_f10a) return;
+  const z = _f10a;
+  z.richtungAlt = _f10aRichtung();
+  z.nord = -z.nord; z.magU = 0;
+  _f10aUmstellen('a');
+  const [o, u] = _f10aPolSchilder();
+  _bioFxWelle(z.fx.teile, o[0], o[1], '#fde68a', 22);
+  _bioFxWelle(z.fx.teile, u[0], u[1], '#fde68a', 22);
+}
+function _f10aStromAn() {
+  if (!_f10a || _f10a.an) return;
+  const z = _f10a;
+  z.an = true;
+  const m = _f10aStabMitte(), v = _f10aP(m[0], m[1], _F10A_ZS);
+  _bioFxWelle(z.fx.teile, v[0], v[1], '#fca5a5', 26);
+  // Aha: Strom UND Magnet umgedreht – wieder nach rechts
+  if (z.strom < 0 && z.nord < 0) z.plan.push({ at: z.t + 0.9, was: 'aha' });
+  _f10aStatus();
+}
+function _f10aHand() {
+  if (!_f10a) return;
+  const H = _f10a.hand;
+  if (H.dreh) { const d = H.dreh.ziel; H.a = d.a; H.b = d.b; H.c = d.c; H.v = d.v; H.dreh = null; }
+  H.sicht = true; H.auf = 0; H.lab = 0;
+  const m = _f10aStabMitte();
+  _bioFxWelle(_f10a.fx.teile, m[0], m[1], '#fde68a', 46);
+}
+function _f10aNeu() {
+  if (!_f10a) return;
+  _f10aInit(); _f10aStatus();
+}
+function _f10aAha() {
+  const z = _f10a;
+  if (!z.an || z.strom > 0 || z.nord > 0) return;          // inzwischen umgestellt
+  const m = _f10aStabMitte();
+  const [o, u] = _f10aPolSchilder();
+  _bioFxWelle(z.fx.teile, o[0], o[1], '#fca5a5', 24);
+  _bioFxWelle(z.fx.teile, u[0], u[1], '#86efac', 24);
+  for (const b of _F10A_BU) _bioFxWelle(z.fx.teile, b.x, b.y - 13, '#fca5a5', 18);
+  _bioFxWelle(z.fx.teile, m[0] + 50, m[1], '#93c5fd', 30);
+  z.leuchtF = 2.4;
+}
+
+function _f10aUpdate(dt) {
+  if (!_f10a) return;
+  dt = _bioFxDt(dt);
+  const z = _f10a;
+  z.t += dt;
+  // Schaukel (gedaempftes Pendel, Kraft nur bei Strom)
+  const s = z.an ? _f10aRichtung() : 0;
+  const T = Math.tan(_F10A_TH0), w2 = _F10A_OM * _F10A_OM, d = 2 * _F10A_DG * _F10A_OM;
+  const n = 4, h = dt / n;
+  for (let i = 0; i < n; i++) {
+    const acc = w2 * (s * T * Math.cos(z.th) - Math.sin(z.th)) - d * z.om;
+    z.om += acc * h; z.th += z.om * h;
+  }
+  if (!z.an && Math.abs(z.th) < 1e-4 && Math.abs(z.om) < 1e-4) { z.th = 0; z.om = 0; }
+  // Strom: Punkte wandern von + nach − (Pfad laeuft von Buchse 0 zu Buchse 1)
+  if (z.an) z.lauf += dt * 55 * z.strom;
+  z.polU = Math.min(1, z.polU + dt / 0.45);
+  z.magU = Math.min(1, z.magU + dt / 0.6);
+  if (z.geist) z.geist.alter += dt;
+  z.leuchtF = Math.max(0, z.leuchtF - dt);
+  // Hand
+  const H = z.hand;
+  if (H.sicht) H.auf = Math.min(1, H.auf + dt / 0.55);
+  if (H.dreh) {
+    H.dreh.p += dt / 0.8;
+    if (H.dreh.p >= 1) {
+      const g = H.dreh.ziel; H.a = g.a; H.b = g.b; H.c = g.c; H.v = g.v; H.dreh = null;
+    } else {
+      const e = _bioFxEase.sanft(H.dreh.p), w = Math.PI * e, v = H.dreh.von;
+      H.a = _f10aDreh(v.a, H.dreh.k, w); H.b = _f10aDreh(v.b, H.dreh.k, w); H.c = _f10aDreh(v.c, H.dreh.k, w);
+      H.v = [v.v[0] + (H.dreh.ziel.v[0] - v.v[0]) * e, v.v[1] + (H.dreh.ziel.v[1] - v.v[1]) * e];
+    }
+  } else if (H.sicht && H.auf >= 1) H.lab = Math.min(1, H.lab + dt / 0.35);
+  // geplante Effekte
+  for (let i = z.plan.length - 1; i >= 0; i--) {
+    if (z.t >= z.plan[i].at) { const p = z.plan.splice(i, 1)[0]; if (p.was === 'aha') _f10aAha(); }
+  }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// Stromweg im Bild: Buchse 0 → Zuleitung → hinterer Draht → Stab → vorderer
+// Draht → Zuleitung → Buchse 1. lage: h = hinter dem oberen Pol, s = Stab, v = vorn.
+function _f10aPfad(xr, yr) {
+  const P = _f10aP, pts = [], B = _F10A_BU;
+  const quad = (p0, c, p1, lage) => {
+    for (let i = 0; i <= 14; i++) {
+      const t = i / 14, u = 1 - t;
+      pts.push({ x: u * u * p0[0] + 2 * t * u * c[0] + t * t * p1[0],
+                 y: u * u * p0[1] + 2 * t * u * c[1] + t * t * p1[1], lage });
+    }
+  };
+  const dazu = (p, lage) => pts.push({ x: p[0], y: p[1], lage });
+  quad([B[0].x, B[0].y], _F10A_LA, P(_F10A_XP, _F10A_YP, -_F10A_ZS), 'h');
+  dazu(P(_F10A_XP, _F10A_YP, -_F10A_ZD), 'h');
+  dazu(P(xr, yr - _F10A_R, -_F10A_ZD), 'h');
+  dazu(P(xr, yr, -_F10A_ZD), 's');
+  dazu(P(xr, yr, _F10A_ZD), 's');
+  dazu(P(xr, yr - _F10A_R, _F10A_ZD), 'v');
+  dazu(P(_F10A_XP, _F10A_YP, _F10A_ZD), 'v');
+  quad(P(_F10A_XP, _F10A_YP, _F10A_ZS), _F10A_LB, [B[1].x, B[1].y], 'v');
+  let s = 0; pts[0].s = 0;
+  for (let i = 1; i < pts.length; i++) {
+    s += Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); pts[i].s = s;
+  }
+  return { pts, laenge: s };
+}
+function _f10aPunkte(ctx, pf, lage) {
+  if (!_f10a.an) return;
+  const ab = 16, n = Math.floor(pf.laenge / ab), pts = pf.pts;
+  ctx.fillStyle = '#dc2626';
+  for (let k = 0; k < n; k++) {
+    let s = (k * ab + _f10a.lauf) % pf.laenge; if (s < 0) s += pf.laenge;
+    let i = 1; while (i < pts.length - 1 && pts[i].s < s) i++;
+    if (pts[i].lage !== lage) continue;
+    const a = pts[i - 1], b = pts[i], f = b.s > a.s ? (s - a.s) / (b.s - a.s) : 0;
+    ctx.beginPath(); ctx.arc(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f, 2.3, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _f10aQuader(ctx, x0, x1, y0, y1, z0, z1, f, alpha) {
+  const P = _f10aP;
+  const flaeche = (pts, farbe) => {
+    ctx.fillStyle = farbe; ctx.beginPath();
+    pts.forEach((p, i) => (i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])));
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  };
+  ctx.save(); ctx.globalAlpha = alpha; ctx.strokeStyle = 'rgba(15,23,42,0.35)'; ctx.lineWidth = 1;
+  flaeche([P(x0, y0, z1), P(x1, y0, z1), P(x1, y0, z0), P(x0, y0, z0)], f.oben);
+  flaeche([P(x1, y0, z1), P(x1, y1, z1), P(x1, y1, z0), P(x1, y0, z0)], f.seite);
+  flaeche([P(x0, y0, z1), P(x1, y0, z1), P(x1, y1, z1), P(x0, y1, z1)], f.vorn);
+  ctx.restore();
+}
+function _f10aPfeil(ctx, x0, y0, x1, y1, farbe, breite, spitze) {
+  const l = Math.hypot(x1 - x0, y1 - y0); if (l < 1) return;
+  const ux = (x1 - x0) / l, uy = (y1 - y0) / l;
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = breite; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1 - ux * spitze * 0.8, y1 - uy * spitze * 0.8); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x1, y1);
+  ctx.lineTo(x1 - ux * spitze - uy * spitze * 0.55, y1 - uy * spitze + ux * spitze * 0.55);
+  ctx.lineTo(x1 - ux * spitze + uy * spitze * 0.55, y1 - uy * spitze - ux * spitze * 0.55);
+  ctx.closePath(); ctx.fill();
+}
+// Stirnseite des Stabs (Querschnitt) mit ⊙ oder ⊗.
+function _f10aStirn(ctx, x, y) {
+  const z = _f10a, R = _F10A_R;
+  ctx.fillStyle = '#e0a46c'; ctx.strokeStyle = '#7c4a1e'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x, y, R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const f = z.an ? '#b91c1c' : '#3f2a1a';
+  ctx.strokeStyle = f; ctx.fillStyle = f; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(x, y, R - 2, 0, 2 * Math.PI); ctx.stroke();
+  const e = _bioFxKlemme(z.polU);
+  const k = e < 0.5 ? 1 - 2 * e : 2 * e - 1, zeichen = e < 0.5 ? -z.strom : z.strom;
+  if (zeichen > 0) {
+    ctx.beginPath(); ctx.arc(x, y, 2.4 * (0.4 + 0.6 * k), 0, 2 * Math.PI); ctx.fill();
+  } else {
+    const a = 3.6 * (0.4 + 0.6 * k);
+    ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x - a, y - a); ctx.lineTo(x + a, y + a);
+    ctx.moveTo(x + a, y - a); ctx.lineTo(x - a, y + a); ctx.stroke();
+  }
+}
+function _f10aStab(ctx, xr, yr) {
+  const P = _f10aP, R = _F10A_R;
+  const h = P(xr, yr, -_F10A_ZS), v = P(xr, yr, _F10A_ZS);
+  const dx = v[0] - h[0], dy = v[1] - h[1], l = Math.hypot(dx, dy), nx = -dy / l * R, ny = dx / l * R;
+  ctx.fillStyle = '#b8733a'; ctx.strokeStyle = '#7c4a1e'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(h[0], h[1], R, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(h[0] + nx, h[1] + ny); ctx.lineTo(v[0] + nx, v[1] + ny);
+  ctx.lineTo(v[0] - nx, v[1] - ny); ctx.lineTo(h[0] - nx, h[1] - ny); ctx.closePath(); ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(h[0] + nx, h[1] + ny); ctx.lineTo(v[0] + nx, v[1] + ny);
+  ctx.moveTo(h[0] - nx, h[1] - ny); ctx.lineTo(v[0] - nx, v[1] - ny); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,220,180,0.7)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(h[0] + nx * 0.45, h[1] + ny * 0.45); ctx.lineTo(v[0] + nx * 0.45, v[1] + ny * 0.45); ctx.stroke();
+}
+// Rechte Hand am Stab. Teile nach Tiefe sortiert (hinten zuerst). Gibt die
+// Schilder (Fingerspitzen) und die Flaechen der farbigen Finger zurueck, damit
+// die Beschriftung nichts davon verdeckt.
+function _f10aHandZeichnen(ctx, xr, yr) {
+  const H = _f10a.hand, erg = { schilder: [], kaesten: [] };
+  if (!H.sicht) return erg;
+  const K = _F10A_HK, KX = _F10A_HKX, KY = _F10A_HKY;
+  const ox = xr + H.v[0], oy = yr + H.v[1];
+  const welt = p => [0, 1, 2].map(i => p[0] * H.a[i] + p[1] * H.b[i] + (p[2] || 0) * H.c[i]);
+  const bild = W => [ox + K * (W[0] - KX * W[2]), oy + K * (-W[1] + KY * W[2])];
+  const tief = Ws => Ws.reduce((s, W) => s + W[2], 0) / Ws.length;
+  const g = 0.3 + 0.7 * _bioFxEase.raus(_bioFxKlemme(H.auf));
+  const teile = [];
+  const flaeche = (pts, fuell, rand) => {
+    const Ws = pts.map(welt);
+    teile.push({ form: 'f', tief: tief(Ws), pts: Ws.map(bild), fuell, rand });
+  };
+  flaeche(_F10A_HM.aermel, '#cbd5e1', '#64748b');
+  flaeche(_F10A_HM.arm, '#f2c4a0', '#9a6b4b');
+  flaeche(_F10A_HM.flaeche, '#f2c4a0', '#9a6b4b');
+  for (const f of _F10A_HM.finger) {
+    const p0 = f.pts[0];
+    const pts = f.art ? f.pts.map(p => [0, 1, 2].map(i => p0[i] + (p[i] - p0[i]) * g)) : f.pts;
+    const Ws = pts.map(welt);
+    teile.push({ form: 'l', tief: tief(Ws), pts: Ws.map(bild), w: f.w * K, art: f.art, text: f.text });
+  }
+  teile.sort((p, q) => p.tief - q.tief);
+  ctx.save();
+  ctx.globalAlpha = _bioFxKlemme(H.auf * 2.5);
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  for (const t of teile) {
+    if (t.form === 'f') {
+      ctx.fillStyle = t.fuell; ctx.strokeStyle = t.rand; ctx.lineWidth = 1.5;
+      ctx.beginPath(); t.pts.forEach((p, i) => (i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1])));
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+      continue;
+    }
+    const F = t.art ? _F10A_FARBE[t.art] : { fuell: '#f2c4a0', rand: '#9a6b4b' };
+    const zug = (farbe, breite) => {
+      ctx.strokeStyle = farbe; ctx.lineWidth = breite; ctx.beginPath();
+      t.pts.forEach((p, i) => (i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]))); ctx.stroke();
+    };
+    if (t.art) zug('rgba(255,255,255,0.9)', t.w + 6);     // heller Rand: hebt den Finger vom Pol ab
+    zug(F.rand, t.w + 2.5); zug(F.fuell, t.w);
+    if (!t.art) continue;
+    // Pfeilspitze an der Fingerspitze
+    const a = t.pts[t.pts.length - 2], b = t.pts[t.pts.length - 1];
+    const l = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, ux = (b[0] - a[0]) / l, uy = (b[1] - a[1]) / l;
+    const bx = b[0] + ux * (t.w / 2 - 1), by = b[1] + uy * (t.w / 2 - 1);
+    const sx = bx + ux * 11, sy = by + uy * 11, q = 7.5;
+    ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(bx - uy * q, by + ux * q); ctx.lineTo(bx + uy * q, by - ux * q);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    erg.schilder.push({ text: t.text, farbe: F.text, x: sx, y: sy, ux, uy });
+    const r = t.w / 2 + 3;
+    for (const p of t.pts.concat([[sx, sy]])) erg.kaesten.push({ x0: p[0] - r, x1: p[0] + r, y0: p[1] - r, y1: p[1] + r });
+    for (let i = 1; i < t.pts.length; i++) {
+      const m = [(t.pts[i][0] + t.pts[i - 1][0]) / 2, (t.pts[i][1] + t.pts[i - 1][1]) / 2];
+      erg.kaesten.push({ x0: m[0] - r, x1: m[0] + r, y0: m[1] - r, y1: m[1] + r });
+    }
+  }
+  ctx.restore();
+  return erg;
+}
+// Platz fuer ein Schild suchen: die erste Lage, die nichts Wichtiges verdeckt
+// (N/S, Legende, Netzgeraet, Stirnseite, Finger, andere Schilder).
+function _f10aPlatz(kandidaten, w, h, verboten) {
+  let best = null, bestUeber = Infinity;
+  for (const [cx, cy] of kandidaten) {
+    const r = { x0: cx - w / 2, x1: cx + w / 2, y0: cy - h / 2, y1: cy + h / 2 };
+    if (r.x0 < 2 || r.x1 > 418 || r.y0 < 2 || r.y1 > 248) continue;
+    let ueber = 0;
+    for (const v of verboten) {
+      const dx = Math.min(r.x1, v.x1) - Math.max(r.x0, v.x0), dy = Math.min(r.y1, v.y1) - Math.max(r.y0, v.y0);
+      if (dx > 0 && dy > 0) ueber += dx * dy;
+    }
+    if (ueber === 0) return r;
+    if (ueber < bestUeber) { bestUeber = ueber; best = r; }
+  }
+  if (best) return best;
+  const [cx, cy] = kandidaten[0];
+  const x0 = Math.max(2, Math.min(418 - w, cx - w / 2)), y0 = Math.max(2, Math.min(248 - h, cy - h / 2));
+  return { x0, x1: x0 + w, y0, y1: y0 + h };
+}
+function _f10aSchildIn(ctx, text, r, farbe, groesse) {
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  _bioFxRundRect(ctx, r.x0, r.y0, r.x1 - r.x0, r.y1 - r.y0, 4); ctx.fill();
+  ctx.fillStyle = farbe; ctx.textAlign = 'center';
+  ctx.fillText(text, (r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2 + groesse * 0.36);
+}
+// Lagen rund um eine Pfeilspitze (s) in Richtung (ux, uy), die beste zuerst.
+function _f10aLagen(s, ux, uy, w, h) {
+  const aus = d => Math.abs(ux) * w / 2 + Math.abs(uy) * h / 2 + d;
+  const nx = -uy, ny = ux, quer = d => Math.abs(nx) * w / 2 + Math.abs(ny) * h / 2 + d;
+  const L = [[s.x + ux * aus(10), s.y + uy * aus(10)]];
+  for (const sg of [1, -1]) L.push([s.x - ux * 4 + sg * nx * quer(9), s.y - uy * 4 + sg * ny * quer(9)]);
+  L.push([s.x + ux * aus(22), s.y + uy * aus(22)]);
+  for (const sg of [1, -1]) L.push([s.x - ux * 24 + sg * nx * quer(10), s.y - uy * 24 + sg * ny * quer(10)]);
+  for (const sg of [1, -1]) L.push([s.x + ux * aus(10) + sg * nx * quer(4), s.y + uy * aus(10) + sg * ny * quer(4)]);
+  return L;
+}
+
+// N und S gross auf den Polen (ueber der Hand, damit sie immer lesbar bleiben).
+function _f10aPolBuchstaben(ctx) {
+  const z = _f10a, em = _bioFxEase.sanft(_bioFxKlemme(z.magU));
+  const k = em < 0.5 ? 1 - 2 * em : 2 * em - 1, nd = em < 0.5 ? -z.nord : z.nord;
+  const [o, u] = _f10aPolSchilder();
+  for (const [p, nordHier] of [[o, nd > 0], [u, nd < 0]]) {
+    ctx.save(); ctx.globalAlpha = 0.2 + 0.8 * k;
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    ctx.beginPath(); ctx.arc(p[0], p[1], 10.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#1f2937'; ctx.font = '800 18px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(nordHier ? 'N' : 'S', p[0], p[1] + 6.5);
+    ctx.restore();
+  }
+}
+function _f10aDraw(ctx, cv) {
+  if (!_f10a) return;
+  const z = _f10a, W = cv.width, Hh = cv.height, t = z.t, P = _f10aP;
+  const XP = _F10A_XP, YP = _F10A_YP, ZS = _F10A_ZS, ZD = _F10A_ZD, R = _F10A_R, PZ = _F10A_PZ;
+  const PO = _F10A_POL, JO = _F10A_JOCH;
+  ctx.clearRect(0, 0, W, Hh);
+  const bg = ctx.createLinearGradient(0, 0, 0, Hh);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, Hh);
+  // Tisch
+  ctx.fillStyle = '#cbb89a'; ctx.fillRect(0, 228, W, Hh - 228);
+  ctx.strokeStyle = '#a8916f'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(0, 228); ctx.lineTo(W, 228); ctx.stroke();
+  // Stativ mit Arm bis zur Querstange
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(34, 30, 6, 198); ctx.fillRect(18, 224, 40, 6);
+  ctx.fillRect(37, 31, XP - 37, 5);
+  // Netzgeraet
+  const NG = _F10A_NG, B = _F10A_BU;
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, NG.x0, NG.y0, NG.x1 - NG.x0, NG.y1 - NG.y0, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Netzgerät', (NG.x0 + NG.x1) / 2, NG.y0 + 15);
+  // Kontrolllampe: leuchtet bei Strom
+  const lx = (B[0].x + B[1].x) / 2;
+  ctx.fillStyle = z.an ? '#facc15' : '#94a3b8';
+  if (z.an) { ctx.save(); ctx.shadowColor = '#facc15'; ctx.shadowBlur = 8; }
+  ctx.beginPath(); ctx.arc(lx, B[0].y, 3.5, 0, 2 * Math.PI); ctx.fill();
+  if (z.an) ctx.restore();
+  for (const b of B) {
+    ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(b.x, b.y, 5.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(b.x, b.y, 2.5, 0, 2 * Math.PI); ctx.fill();
+  }
+  // + und − an den Buchsen (Buchse 0 fuehrt zum hinteren Drahtende)
+  {
+    const e = _bioFxKlemme(z.polU), k = e < 0.5 ? 1 - 2 * e : 2 * e - 1, st = e < 0.5 ? -z.strom : z.strom;
+    ctx.save(); ctx.globalAlpha = 0.25 + 0.75 * k;
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 15px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(st > 0 ? '+' : '−', B[0].x, B[0].y - 9);
+    ctx.fillText(st > 0 ? '−' : '+', B[1].x, B[1].y - 9);
+    ctx.restore();
+  }
+  const m = _f10aStabMitte(), xr = m[0], yr = m[1];
+  const pf = _f10aPfad(xr, yr);
+  // Zuleitungen
+  const leitung = (p0, c, p1) => {
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.quadraticCurveTo(c[0], c[1], p1[0], p1[1]); ctx.stroke();
+  };
+  const tH = P(XP, YP, -ZS), tV = P(XP, YP, ZS);
+  leitung([B[0].x, B[0].y], _F10A_LA, tH);
+  // hinterer Draht
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  { const a = P(XP, YP, -ZD), b = P(xr, yr - R, -ZD);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+  _f10aPunkte(ctx, pf, 'h');
+  // Querstange mit Klemmen
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(tH[0], tH[1]); ctx.lineTo(tV[0], tV[1]); ctx.stroke();
+  ctx.fillStyle = '#64748b';
+  for (const p of [tH, tV]) { ctx.beginPath(); ctx.arc(p[0], p[1], 3.5, 0, 2 * Math.PI); ctx.fill(); }
+  // Holzklotz und Magnet (Joch links; oben/unten je nach Lage rot oder gruen)
+  _f10aQuader(ctx, 80, 254, 208, 222, -30, 30, { vorn: '#c8a06a', oben: '#dcb985', seite: '#a8804c' }, 1);
+  const em = _bioFxEase.sanft(_bioFxKlemme(z.magU));
+  const farbeOben = nd => (nd > 0 ? _F10A_ROT : _F10A_GRUEN), farbeUnten = nd => (nd > 0 ? _F10A_GRUEN : _F10A_ROT);
+  // Umdrehen: alte Farbe blasst nach Grau aus, die neue kommt aus dem Grau (kein Braun).
+  const magnetTeil = (x0, x1, y0, y1, fOben) => {
+    if (em >= 1) { _f10aQuader(ctx, x0, x1, y0, y1, -PZ, PZ, fOben(z.nord), 1); return; }
+    _f10aQuader(ctx, x0, x1, y0, y1, -PZ, PZ, _F10A_GRAU, 1);
+    _f10aQuader(ctx, x0, x1, y0, y1, -PZ, PZ, fOben(em < 0.5 ? -z.nord : z.nord), em < 0.5 ? 1 - 2 * em : 2 * em - 1);
+  };
+  magnetTeil(JO.x0, JO.x1, 154, PO.u1, farbeUnten);
+  magnetTeil(JO.x0, JO.x1, PO.o0, 154, farbeOben);
+  magnetTeil(PO.x0, PO.x1, PO.u0, PO.u1, farbeUnten);
+  // Feldlinien zwischen den Polen (gruen, von N nach S)
+  {
+    const k = em < 0.5 ? 1 - 2 * em : 2 * em - 1, nd = em < 0.5 ? -z.nord : z.nord;
+    ctx.save(); ctx.globalAlpha = 0.25 + 0.75 * k;
+    for (const x of [106, 134, 162, 190, 218, 246]) {
+      const a = P(x, PO.o1, -8), b = P(x, PO.u0, -8);
+      ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2; ctx.lineCap = 'butt';
+      ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+      const ym = (a[1] + b[1]) / 2 + nd * 6, xm = (a[0] + b[0]) / 2;
+      ctx.fillStyle = '#16a34a'; ctx.beginPath();
+      ctx.moveTo(xm, ym + nd * 6); ctx.lineTo(xm - 5, ym - nd * 4); ctx.lineTo(xm + 5, ym - nd * 4);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Marke „vorher“: wo die Schaukel zuletzt mit Strom stand
+  if (z.geist) {
+    const g = z.geist, xg = XP + _F10A_L * Math.sin(g.th), yg = YP + _F10A_L * Math.cos(g.th);
+    const f = P(xg, yg, ZS), d = P(xg, yg - R, ZD), o = P(XP, YP, ZD);
+    ctx.save(); ctx.globalAlpha = Math.min(1, g.alter / 0.4) * 0.85;
+    if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(o[0], o[1]); ctx.lineTo(d[0], d[1]); ctx.stroke();
+    ctx.beginPath(); ctx.arc(f[0], f[1], R, 0, 2 * Math.PI); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    ctx.restore();
+  }
+  // Stab mit Strompunkten
+  _f10aStab(ctx, xr, yr);
+  _f10aPunkte(ctx, pf, 's');
+  const sv = P(xr, yr, ZS);
+  _f10aStirn(ctx, sv[0], sv[1]);
+  // oberer Pol (vor dem hinteren Teil des Stabs)
+  magnetTeil(PO.x0, PO.x1, PO.o0, PO.o1, farbeOben);
+  // vorderer Draht und vordere Zuleitung
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  { const a = P(XP, YP, ZD), b = P(xr, yr - R, ZD);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+  leitung(tV, _F10A_LB, [B[1].x, B[1].y]);
+  _f10aPunkte(ctx, pf, 'v');
+  for (const b of B) {             // Stecker in den Buchsen
+    ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(b.x, b.y, 3, 0, 2 * Math.PI); ctx.fill();
+  }
+  // Legende ⊙ / ⊗
+  {
+    const x0 = 292, y0 = 160;
+    ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+    _bioFxRundRect(ctx, x0, y0, 120, 60, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('Strom:', x0 + 8, y0 + 15);
+    const sym = (cx, cy, punkt) => {
+      ctx.fillStyle = '#e0a46c'; ctx.strokeStyle = '#3f2a1a'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(cx, cy, 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#3f2a1a';
+      if (punkt) { ctx.beginPath(); ctx.arc(cx, cy, 2.2, 0, 2 * Math.PI); ctx.fill(); }
+      else { ctx.lineWidth = 1.8; ctx.beginPath(); ctx.moveTo(cx - 3.4, cy - 3.4); ctx.lineTo(cx + 3.4, cy + 3.4);
+             ctx.moveTo(cx + 3.4, cy - 3.4); ctx.lineTo(cx - 3.4, cy + 3.4); ctx.stroke(); }
+    };
+    sym(x0 + 16, y0 + 29, true); sym(x0 + 16, y0 + 48, false);
+    ctx.fillStyle = '#1f2937'; ctx.font = '600 12px sans-serif';
+    ctx.fillText('auf dich zu', x0 + 30, y0 + 33);
+    ctx.fillText('von dir weg', x0 + 30, y0 + 52);
+  }
+  // rechte Hand am Stab, danach Stirnseite und Pfeil F obenauf
+  const hand = _f10aHandZeichnen(ctx, xr, yr);
+  if (z.hand.sicht) _f10aStirn(ctx, sv[0], sv[1]);
+  _f10aPolBuchstaben(ctx);
+  const verboten = hand.kaesten.slice();
+  if (z.geist) {
+    const g = z.geist, xg = XP + _F10A_L * Math.sin(g.th), yg = YP + _F10A_L * Math.cos(g.th);
+    const f = P(xg, yg, ZS);
+    ctx.font = '700 12px sans-serif';
+    const w = ctx.measureText('vorher').width + 6;
+    const r = { x0: f[0] + 4 - w / 2, x1: f[0] + 4 + w / 2, y0: yg - 23, y1: yg - 6 };
+    ctx.save(); ctx.globalAlpha = Math.min(1, g.alter / 0.4) * 0.9;
+    ctx.fillStyle = 'rgba(255,255,255,0.75)';
+    _bioFxRundRect(ctx, r.x0, r.y0, w, r.y1 - r.y0, 4); ctx.fill();
+    ctx.fillStyle = '#374151'; ctx.textAlign = 'center';
+    ctx.fillText('vorher', f[0] + 4, yg - 10);
+    ctx.restore();
+    verboten.push(r);
+  }
+  for (const p of _f10aPolSchilder()) verboten.push({ x0: p[0] - 14, x1: p[0] + 14, y0: p[1] - 14, y1: p[1] + 14 });
+  verboten.push({ x0: 290, x1: 414, y0: 158, y1: 222 }, { x0: 316, x1: 406, y0: 6, y1: 60 },
+                { x0: sv[0] - 10, x1: sv[0] + 10, y0: sv[1] - 10, y1: sv[1] + 10 });
+  let fSchild = null, x1 = xr;
+  if (z.an) {
+    const s = _f10aRichtung(); x1 = xr + s * 50;
+    verboten.push({ x0: Math.min(xr, x1) - 2, x1: Math.max(xr, x1) + 2, y0: yr - 6, y1: yr + 6 });
+    ctx.font = '800 14px sans-serif';
+    const w = ctx.measureText('F').width + 10, h = 19;
+    fSchild = _f10aPlatz([[x1 - s * 4, yr + 15], [x1 + s * 13, yr], [x1 - s * 4, yr - 15], [x1 - s * 20, yr + 15]], w, h, verboten);
+    verboten.push(fSchild);
+  }
+  if (z.hand.lab > 0.01) {
+    ctx.save(); ctx.globalAlpha = z.hand.lab;
+    // Reihenfolge: die langen Schilder zuerst, sie haben die wenigsten freien Plaetze
+    const reihe = hand.schilder.slice().sort((p, q) => q.text.length - p.text.length);
+    for (const sc of reihe) {
+      ctx.font = '700 12px sans-serif';
+      const w = ctx.measureText(sc.text).width + 8, h = 18;
+      const r = _f10aPlatz(_f10aLagen(sc, sc.ux, sc.uy, w, h), w, h, verboten);
+      verboten.push(r);
+      _f10aSchildIn(ctx, sc.text, r, sc.farbe, 12);
+    }
+    ctx.restore();
+  }
+  if (z.an) {
+    if (z.leuchtF > 0) {
+      ctx.save(); ctx.globalAlpha = Math.min(1, z.leuchtF);
+      _bioFxLeuchten(ctx, x1, yr, 10, t, '147,197,253'); ctx.restore();
+    }
+    ctx.save(); ctx.globalAlpha = 0.9;
+    _f10aPfeil(ctx, xr, yr, x1, yr, '#ffffff', 7, 13);
+    ctx.restore();
+    _f10aPfeil(ctx, xr, yr, x1, yr, '#2563eb', 4, 11);
+    ctx.font = '800 14px sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.92)';
+    _bioFxRundRect(ctx, fSchild.x0, fSchild.y0, fSchild.x1 - fSchild.x0, fSchild.y1 - fSchild.y0, 4); ctx.fill();
+    ctx.fillStyle = '#1e3a8a'; ctx.textAlign = 'center';
+    ctx.fillText('F', (fSchild.x0 + fSchild.x1) / 2, (fSchild.y0 + fSchild.y1) / 2 + 5);
+  }
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz3 „Dauermagnet oder Elektromagnet?“ (Kennung dauer-elektro)
+// Links ein Stabmagnet (Dauermagnet) auf einem Stativ: Nordhaelfte rot,
+// Suedhaelfte gruen. Rechts eine Spule mit Eisenkern (Elektromagnet), oben
+// verdrahtet mit einer Energiequelle und einem Schalter. Unter beiden haengen
+// Eisennaegel, unter dem Elektromagneten liegt ein Haufen Naegel auf dem Tisch.
+// Links neben beiden steht auf der Achse eine Kompassnadel (rote Spitze = Nordpol
+// der Nadel; sie zeigt vom Nordpol des Magneten WEG, zum Suedpol HIN).
+// Modellwerte (Lehrerteil): Dauermagnet haelt 5 Naegel; Elektromagnet haelt
+// 2 Naegel je Ampere (1 A → 2, 2 A → 4, 3 A → 6), ausgeschaltet 0.
+// Wicklung (rechte-Hand-Regel nachgerechnet): Der Draht kommt oben links an,
+// laeuft hinter dem Kern nach unten und vorn wieder nach oben. Pluspol links →
+// der Strom laeuft auf der Vorderseite der Windungen nach OBEN → von links
+// gesehen gegen den Uhrzeigersinn → Nordpol links. „Strom umpolen“ tauscht die
+// Pole der Energiequelle: die Pakete laufen andersherum, Nordpol rechts.
+// Der Strom ist als rote Pakete sichtbar (technische Stromrichtung + → −),
+// Tempo proportional zur Stromstaerke. Ohne Strom keine Pakete; die Nadel am
+// Elektromagneten dreht sich dann nach Norden (oben, Erdfeld).
+// Kompassnadeln: gedaempfte Drehschwingung im Feld B = Magnet + Erdfeld (klein).
+// Feld eines Dipols auf seiner Achse: B ~ (−2·cos θ, sin θ) fuer den Stabmagneten,
+// der beim „Dauermagnet umdrehen“ in 1 s um die senkrechte Achse gedreht wird
+// (Stirnflaeche sichtbar, die Naegel drehen mit und pendeln nach).
+// Aha: Schalter aus → die Naegel fallen auf den Tisch (beim ersten Mal nach
+// „neu“ in Zeitlupe), die Naegel am Dauermagneten bleiben haengen (Lichtringe).
+// Am Dauermagneten gibt es KEINEN Schalter – der Unterschied ist sichtbar.
+// Alle angezeigten Werte sind fest (kein Zufall); Text im Bild nur Beschriftung
+// und die Stromstaerke, die auch in der Statuszeile steht.
+// ════════════════════════════════════════════════════════════════════════
+let _f10b = null;
+const _F10B_DAUER = 5;                         // Naegel am Dauermagneten
+const _F10B_JE_A = 2;                          // Naegel je Ampere am Elektromagneten
+const _F10B_YA = 112;                          // Achse beider Magnete
+const _F10B_TISCH = 200;                       // Tischkante
+const _F10B_NL = 26;                           // Nagellaenge in px
+const _F10B_ERDE = 0.03;                       // Erdfeld, klein gegen den Magneten
+const _F10B_TDREH = 1.0;                       // s fuer „Dauermagnet umdrehen“
+const _F10B_G = 1200;                          // px/s² beim Fallen
+const _F10B_D = { cx: 102, L: 104, h: 24, tief: 22 };          // Stabmagnet
+const _F10B_K = { x0: 228, x1: 356, h: 22 };                   // Eisenkern
+const _F10B_W = { a: 248, p: 11, n: 8, r: 19 };                // Windungen
+const _F10B_KD = { x: 26, y: _F10B_YA }, _F10B_KE = { x: 204, y: _F10B_YA };  // Kompasse
+// Haengeplaetze. Reihenfolge links aussen, rechts aussen, links, rechts, ...
+// Dauermagnet: [Abstand u von der Mitte, Neigung]; Elektromagnet: [x, Neigung].
+const _F10B_PLATZ_D = [[-49, -0.35], [49, 0.35], [-42, -0.16], [42, 0.16], [-35, 0]];
+const _F10B_PLATZ_E = [[231, -0.35], [353, 0.35], [238, -0.16], [346, 0.16], [245, 0], [339, 0]];
+// Nagelhaufen unter dem Elektromagneten: Mitte x, Mitte y, Richtung Kopf → Spitze
+const _F10B_HAUFEN = [[244, 198, 0.06], [340, 198, -0.05], [259, 195, -0.2], [326, 195, 0.18],
+                      [250, 192, 0.3], [334, 192, -0.28], [262, 198, 3.1], [322, 198, -3.12]];
+
+// Stromweg, wenn der Pluspol LINKS ist (technische Stromrichtung).
+// art: draht | hinten (Windung hinter dem Kern) | vorn | quelle (in der Energiequelle)
+function _f10bPfad() {
+  const W = _F10B_W, oben = _F10B_YA - W.r, unten = _F10B_YA + W.r, xe = W.a + W.n * W.p;
+  const seg = [];
+  let x = 276, y = 30;
+  const zu = (nx, ny, art) => {
+    seg.push({ x0: x, y0: y, x1: nx, y1: ny, art, len: Math.hypot(nx - x, ny - y), s0: 0 });
+    x = nx; y = ny;
+  };
+  zu(W.a, 30, 'draht'); zu(W.a, oben, 'draht');
+  for (let k = 0; k < W.n; k++) {
+    const xk = W.a + k * W.p;
+    zu(xk + W.p / 2, unten, 'hinten');
+    zu(xk + W.p, oben, 'vorn');
+  }
+  zu(xe, 64, 'draht'); zu(404, 64, 'draht'); zu(404, 30, 'draht'); zu(324, 30, 'draht');
+  zu(276, 30, 'quelle');
+  let s = 0;
+  for (const g of seg) { g.s0 = s; s += g.len; }
+  return { seg, L: s };
+}
+const _F10B_PFAD = _f10bPfad();
+
+function _f10bWinkelDiff(a, b) {          // b − a, auf (−π, π]
+  let d = (b - a) % (2 * Math.PI);
+  if (d > Math.PI) d -= 2 * Math.PI;
+  if (d <= -Math.PI) d += 2 * Math.PI;
+  return d;
+}
+function _f10bInit() {
+  const startD = [0.12, -0.1, 0.08, -0.11, 0.09];
+  _f10b = {
+    t: 0, an: false, I: 2, plusLinks: true, dauerLinks: true,
+    theta: 0, dreh: null, b: 0, strom: 0, hebel: 1, pol: 1, s: 0,
+    nadelD: { phi: Math.PI - 0.35, w: 0 }, nadelE: { phi: -Math.PI / 2 + 0.45, w: 0 },
+    naegelD: _F10B_PLATZ_D.map((p, j) => ({ d: startD[j], w: 0, xa: null, vx: 0, x: 0, y: 0, psi: 0 })),
+    naegelE: _F10B_HAUFEN.map(h => ({ mode: 'liegt', x: h[0], y: h[1], psi: h[2], d: 0, w: 0, tw: null, hupf: 0 })),
+    fx: { teile: [] }, zeitlupe: null, ahaGezeigt: false
+  };
+  _f10bNaegelD(0);
+}
+function _f10bHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Dauermagnet oder Elektromagnet?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links steht ein Dauermagnet. Rechts steht ein Elektromagnet. Er ist an eine Energiequelle mit Schalter angeschlossen. Neben jedem Magneten steht eine Kompassnadel.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10b-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10b-schalter" onclick="_f10bSchalter()">Schalter an</button>
+          <button class="sim-btn" id="_f10b-a1" onclick="_f10bStrom(1)">1 A</button>
+          <button class="sim-btn primary" id="_f10b-a2" onclick="_f10bStrom(2)">2 A</button>
+          <button class="sim-btn" id="_f10b-a3" onclick="_f10bStrom(3)">3 A</button>
+          <button class="sim-btn" onclick="_f10bUmpolen()">Strom umpolen</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_f10bUmdrehen()">Dauermagnet umdrehen</button>
+          <button class="sim-btn" onclick="_f10bNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Dauermagnet</div>
+        <div class="lmp-status on" id="_f10b-status"></div>
+        <div class="fpm-label" style="margin-top:10px">Elektromagnet</div>
+        <div class="lmp-status on" id="_f10b-elektro"></div>
+        <div class="fpm-note" style="margin-top:10px">Zähle die Nägel, die an jedem Magneten hängen. Die rote Spitze der Kompassnadel ist ihr Nordpol.</div>
+        <div class="fpm-note" style="margin-top:8px">Schalte den Elektromagneten an und wieder aus. Achte dabei auf die Nägel.</div>
+        <div class="fpm-note" style="margin-top:8px">Die Zahlen der Nägel sind Modellwerte.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Schalter aus, 2 A</p>
+  </div>`;
+}
+function _f10bTextDauer() {
+  return 'Dauermagnet: hält ' + _F10B_DAUER + ' Nägel. Nordpol ' + (_f10b.dauerLinks ? 'links' : 'rechts') + '.';
+}
+function _f10bTextElektro() {
+  const z = _f10b;
+  if (!z.an) return 'Elektromagnet: aus – hält 0 Nägel.';
+  return 'Elektromagnet: an, ' + z.I + ' A – hält ' + (_F10B_JE_A * z.I) + ' Nägel. Nordpol ' +
+         (z.plusLinks ? 'links' : 'rechts') + '.';
+}
+function _f10bStatus() {
+  if (!_f10b) return;
+  const d = document.getElementById('_f10b-status');
+  if (d) { d.textContent = _f10bTextDauer(); d.className = 'lmp-status on'; }
+  const e = document.getElementById('_f10b-elektro');
+  if (e) { e.textContent = _f10bTextElektro(); e.className = 'lmp-status on'; }
+  const s = document.getElementById('_f10b-schalter');
+  if (s) s.textContent = _f10b.an ? 'Schalter aus' : 'Schalter an';
+  for (const i of [1, 2, 3]) {
+    const b = document.getElementById('_f10b-a' + i);
+    try { if (b && b.classList) b.classList.toggle('primary', _f10b.I === i); } catch (err) { /* Beiwerk */ }
+  }
+}
+function _f10bSchalter() {
+  if (!_f10b) return;
+  const z = _f10b, vorher = z.an ? _F10B_JE_A * z.I : 0;
+  z.an = !z.an;
+  if (!z.an && vorher > 0) _f10bAha();
+  _f10bStatus();
+}
+function _f10bStrom(i) {
+  if (!_f10b || !(i === 1 || i === 2 || i === 3)) return;
+  _f10b.I = i;
+  _f10bStatus();
+}
+function _f10bUmpolen() {
+  if (!_f10b) return;
+  const z = _f10b;
+  z.plusLinks = !z.plusLinks;
+  if (z.an) {
+    // Das Feld kehrt sich um: die Nadel schwingt ueber Norden (Erdfeld) herum,
+    // die Naegel zucken kurz, bleiben aber haengen.
+    const n = z.nadelE;
+    n.w += 3.2 * (_f10bWinkelDiff(n.phi, -Math.PI / 2) >= 0 ? 1 : -1);
+    z.naegelE.forEach((m, k) => { if (m.mode === 'haengt') m.w += (k % 2 ? 1 : -1) * 1.4; });
+  }
+  _f10bStatus();
+}
+function _f10bUmdrehen() {
+  if (!_f10b) return;
+  const z = _f10b;
+  z.dauerLinks = !z.dauerLinks;
+  const bis = (z.dreh ? z.dreh.bis : z.theta) + Math.PI;
+  z.dreh = { von: z.theta, bis, p: 0 };
+  _f10bStatus();
+}
+function _f10bNeu() {
+  if (!_f10b) return;
+  _f10bInit(); _f10bStatus();
+}
+// Ausschalten: Die Naegel fallen. Der Dauermagnet haelt weiter (Lichtringe).
+function _f10bAha() {
+  const z = _f10b, c = Math.cos(z.theta);
+  if (!z.ahaGezeigt) { z.ahaGezeigt = true; _bioFxZeitlupe(z, 0.3, 1.1); }
+  _bioFxWelle(z.fx.teile, _F10B_D.cx - 42 * c, 140, '#fde68a', 26);
+  _bioFxWelle(z.fx.teile, _F10B_D.cx + 42 * c, 140, '#fde68a', 26);
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _f10bNadel(n, bx, by, d) {
+  const B = Math.hypot(bx, by), ziel = Math.atan2(by, bx);
+  const k = 16 * Math.max(B, 0.5);
+  n.w += (k * Math.sin(ziel - n.phi) - 2.4 * n.w) * d;
+  n.phi += n.w * d;
+}
+function _f10bHaengePoseE(k, delta) {
+  const p = _F10B_PLATZ_E[k], psi = Math.PI / 2 - (p[1] + delta);
+  const ax = p[0], ay = _F10B_YA + _F10B_K.h / 2 + 1, h = _F10B_NL / 2;
+  return { x: ax + Math.cos(psi) * h, y: ay + Math.sin(psi) * h, psi };
+}
+// Naegel am Dauermagneten: drehen mit dem Magneten, pendeln, wenn er sich dreht.
+function _f10bNaegelD(d) {
+  const z = _f10b, c = Math.cos(z.theta), h = _F10B_NL / 2;
+  const ay = _F10B_YA + _F10B_D.h / 2 + 1;
+  z.naegelD.forEach((n, j) => {
+    const p = _F10B_PLATZ_D[j], ax = _F10B_D.cx + p[0] * c;
+    if (d > 0) {
+      const vx = n.xa == null ? 0 : (ax - n.xa) / d;
+      const beschl = (vx - n.vx) / d;
+      n.vx = vx;
+      n.w += (-42 * n.d - 0.9 * n.w - beschl / 60) * d;
+      n.d = Math.max(-0.6, Math.min(0.6, n.d + n.w * d));
+    }
+    n.xa = ax;
+    const neig = Math.atan2(Math.sin(p[1]) * c, Math.cos(p[1])) + n.d;
+    n.psi = Math.PI / 2 - neig;
+    n.x = ax + Math.cos(n.psi) * h; n.y = ay + Math.sin(n.psi) * h;
+  });
+}
+function _f10bNaegelE(d) {
+  const z = _f10b, soll = z.an ? _F10B_JE_A * z.I : 0;
+  // Wer jetzt neu hochfliegt: paarweise (links/rechts) kurz nacheinander
+  let erster = -1;
+  z.naegelE.forEach((n, k) => { if (erster < 0 && k < soll && (n.mode === 'liegt' || n.mode === 'faellt')) erster = k; });
+  z.naegelE.forEach((n, k) => {
+    const oben = k < soll;
+    if (oben && (n.mode === 'liegt' || n.mode === 'faellt')) {
+      const vomHaufen = n.mode === 'liegt';
+      n.mode = 'fliegt';
+      n.tw = { p: vomHaufen ? -0.06 * Math.floor((k - erster) / 2) : 0, T: 0.3,
+               x0: n.x, y0: n.y, psi0: n.psi, vomHaufen };
+    } else if (!oben && n.mode === 'fliegt' && n.tw.vomHaufen && n.tw.p <= 0) {
+      n.mode = 'liegt'; n.tw = null;                    // war noch gar nicht losgeflogen
+    } else if (!oben && (n.mode === 'haengt' || n.mode === 'fliegt')) {
+      const hz = _F10B_HAUFEN[k];
+      n.mode = 'faellt';
+      n.tw = { p: 0, T: Math.max(0.12, Math.sqrt(2 * Math.max(1, hz[1] - n.y) / _F10B_G)),
+               x0: n.x, y0: n.y, psi0: n.psi };
+    }
+    if (n.mode === 'fliegt') {
+      n.tw.p += d;
+      const q = _bioFxKlemme(n.tw.p / n.tw.T), ziel = _f10bHaengePoseE(k, 0), e = q * q;
+      n.x = n.tw.x0 + (ziel.x - n.tw.x0) * e;
+      n.y = n.tw.y0 + (ziel.y - n.tw.y0) * e;
+      n.psi = n.tw.psi0 + _f10bWinkelDiff(n.tw.psi0, ziel.psi) * _bioFxEase.raus(q);
+      if (q >= 1) {
+        n.mode = 'haengt'; n.tw = null; n.d = 0; n.w = (k % 2 ? 1 : -1) * 2.4;
+        _bioFxWelle(z.fx.teile, _F10B_PLATZ_E[k][0], _F10B_YA + _F10B_K.h / 2 + 1, '#cbd5e1', 10);
+      }
+    } else if (n.mode === 'haengt') {
+      n.w += (-42 * n.d - 1.0 * n.w) * d;
+      n.d = Math.max(-0.6, Math.min(0.6, n.d + n.w * d));
+      const pose = _f10bHaengePoseE(k, n.d);
+      n.x = pose.x; n.y = pose.y; n.psi = pose.psi;
+    } else if (n.mode === 'faellt') {
+      n.tw.p += d;
+      const hz = _F10B_HAUFEN[k], q = _bioFxKlemme(n.tw.p / n.tw.T);
+      n.x = n.tw.x0 + (hz[0] - n.tw.x0) * q;
+      n.y = n.tw.y0 + (hz[1] - n.tw.y0) * q * q;
+      n.psi = n.tw.psi0 + _f10bWinkelDiff(n.tw.psi0, hz[2]) * q * q * q;
+      if (q >= 1) {
+        n.mode = 'liegt'; n.tw = null; n.hupf = 0.25;
+        n.x = hz[0]; n.y = hz[1]; n.psi = hz[2];
+        _bioFxWelle(z.fx.teile, hz[0], hz[1], '#94a3b8', 12);
+      }
+    } else {
+      const hz = _F10B_HAUFEN[k];
+      n.hupf = Math.max(0, n.hupf - d);
+      n.x = hz[0]; n.psi = hz[2];
+      n.y = hz[1] - Math.sin(Math.PI * n.hupf / 0.25) * 3;
+    }
+  });
+}
+function _f10bUpdate(dt) {
+  if (!_f10b) return;
+  const z = _f10b;
+  dt = _bioFxDt(dt);
+  const d = dt * _bioFxZeitlupeFaktor(z, dt);
+  z.t += d;
+  // Dauermagnet dreht sich um die senkrechte Achse
+  if (z.dreh) {
+    z.dreh.p += d / _F10B_TDREH;
+    const e = _bioFxEase.sanft(_bioFxKlemme(z.dreh.p));
+    z.theta = z.dreh.von + (z.dreh.bis - z.dreh.von) * e;
+    if (z.dreh.p >= 1) { z.theta = z.dreh.bis; z.dreh = null; }
+  }
+  // Elektromagnet: Feld folgt dem Strom schnell (Spule mit Eisenkern)
+  const bZiel = z.an ? (z.plusLinks ? 1 : -1) * 0.4 * z.I : 0;
+  z.b += (bZiel - z.b) * Math.min(1, d / 0.06);
+  z.strom += ((z.an ? 1 : 0) - z.strom) * Math.min(1, d * 10);
+  z.hebel += ((z.an ? 0 : 1) - z.hebel) * Math.min(1, d * 12);
+  z.pol += ((z.plusLinks ? 1 : -1) - z.pol) * Math.min(1, d * 9);
+  if (z.an) z.s += d * 24 * z.I * (z.plusLinks ? 1 : -1);
+  // Kompassnadeln: Dipolfeld auf der Achse plus Erdfeld (nach oben = Norden)
+  const c = Math.cos(z.theta), s = Math.sin(z.theta);
+  _f10bNadel(z.nadelD, -2 * c, s - _F10B_ERDE, d);
+  _f10bNadel(z.nadelE, -2 * z.b, -_F10B_ERDE, d);
+  _f10bNaegelD(d);
+  _f10bNaegelE(d);
+  _bioFxAlleUpdate(z.fx, d);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _f10bNagel(ctx, cx, cy, psi, lf) {
+  const c = Math.cos(psi), s = Math.sin(psi), h = _F10B_NL / 2 * (lf || 1);
+  const kx = cx - c * h, ky = cy - s * h, sx = cx + c * h, sy = cy + s * h;
+  ctx.save();
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#6b7280'; ctx.lineWidth = 2.4;
+  ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(sx - c * 4, sy - s * 4); ctx.stroke();
+  ctx.fillStyle = '#6b7280';
+  ctx.beginPath(); ctx.moveTo(sx, sy);
+  ctx.lineTo(sx - c * 5 - s * 1.3, sy - s * 5 + c * 1.3);
+  ctx.lineTo(sx - c * 5 + s * 1.3, sy - s * 5 - c * 1.3);
+  ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(kx - s * 0.6, ky + c * 0.6); ctx.lineTo(sx - c * 6 - s * 0.6, sy - s * 6 + c * 0.6); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.strokeStyle = '#374151'; ctx.lineWidth = 2.6;
+  ctx.beginPath(); ctx.moveTo(kx - s * 3.6, ky + c * 3.6); ctx.lineTo(kx + s * 3.6, ky - c * 3.6); ctx.stroke();
+  ctx.restore();
+}
+function _f10bKompass(ctx, x, y, phi) {
+  ctx.save();
+  ctx.fillStyle = '#f8fafc';
+  ctx.beginPath(); ctx.arc(x, y, 16, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, 16, 0, 2 * Math.PI); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  for (let k = 0; k < 4; k++) {
+    const a = k * Math.PI / 2;
+    ctx.beginPath(); ctx.moveTo(x + 11.5 * Math.cos(a), y + 11.5 * Math.sin(a));
+    ctx.lineTo(x + 14.5 * Math.cos(a), y + 14.5 * Math.sin(a)); ctx.stroke();
+  }
+  ctx.translate(x, y); ctx.rotate(phi);
+  ctx.fillStyle = '#dc2626';                       // Nordpol der Nadel: rot
+  ctx.beginPath(); ctx.moveTo(13, 0); ctx.lineTo(0, -3.4); ctx.lineTo(0, 3.4); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#16a34a';                       // Suedpol der Nadel: gruen
+  ctx.beginPath(); ctx.moveTo(-13, 0); ctx.lineTo(0, -3.4); ctx.lineTo(0, 3.4); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(0, 0, 1.9, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Stabmagnet, um die senkrechte Achse um theta gedreht. Koerperfest: Nordpol bei u < 0.
+function _f10bStab(ctx, z) {
+  const D = _F10B_D, c = Math.cos(z.theta), s = Math.sin(z.theta);
+  const y0 = _F10B_YA - D.h / 2, h = D.h;
+  const X = (u, w) => D.cx + u * c - w * s;
+  const rot = '#f87171', gruen = '#4ade80', rotStirn = '#e35d5d', gruenStirn = '#2fbf68';
+  const fl = (xa, xb, farbe) => {
+    const l = Math.min(xa, xb), r = Math.max(xa, xb);
+    if (r - l < 0.3) return;
+    ctx.fillStyle = farbe; ctx.fillRect(l, y0, r - l, h);
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; ctx.strokeRect(l, y0, r - l, h);
+  };
+  // Stirnflaechen: Nordende (u = −L/2) sichtbar, wenn sin θ < 0; Suedende, wenn sin θ > 0
+  if (s < -0.001) fl(X(-D.L / 2, -D.tief / 2), X(-D.L / 2, D.tief / 2), rotStirn);
+  if (s > 0.001) fl(X(D.L / 2, -D.tief / 2), X(D.L / 2, D.tief / 2), gruenStirn);
+  // sichtbare Laengsseite
+  const w0 = c >= 0 ? D.tief / 2 : -D.tief / 2;
+  const xa = X(-D.L / 2, w0), xm = X(0, w0), xb = X(D.L / 2, w0);
+  fl(xa, xm, rot); fl(xm, xb, gruen);
+  ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(Math.min(xa, xb) + 2, y0 + 3); ctx.lineTo(Math.max(xa, xb) - 2, y0 + 3); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  if (Math.abs(xm - xa) > 16) { ctx.fillText('N', (xa + xm) / 2, _F10B_YA + 5); ctx.fillText('S', (xm + xb) / 2, _F10B_YA + 5); }
+}
+function _f10bPakete(ctx, z, hinten) {
+  if (z.strom < 0.02) return;
+  const P = _F10B_PFAD, n = Math.round(P.L / 17), ab = P.L / n;
+  ctx.save();
+  ctx.fillStyle = '#dc2626';
+  for (let i = 0; i < n; i++) {
+    const s = ((i * ab + z.s) % P.L + P.L) % P.L;
+    let g = P.seg[0];
+    for (const q of P.seg) { if (s >= q.s0) g = q; else break; }
+    if (g.art === 'quelle' || (g.art === 'hinten') !== hinten) continue;
+    const f = (s - g.s0) / g.len;
+    ctx.globalAlpha = z.strom * (hinten ? 0.45 : 1);
+    ctx.beginPath(); ctx.arc(g.x0 + (g.x1 - g.x0) * f, g.y0 + (g.y1 - g.y0) * f, 2.7, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _f10bDraw(ctx, cv) {
+  if (!_f10b) return;
+  const z = _f10b, W = cv.width, H = cv.height, YA = _F10B_YA, T = _F10B_TISCH;
+  const Wi = _F10B_W, oben = YA - Wi.r, unten = YA + Wi.r, xe = Wi.a + Wi.n * Wi.p;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Tisch und Trennlinie
+  ctx.fillStyle = '#cbb89a'; ctx.fillRect(0, T, W, H - T);
+  ctx.fillStyle = '#a8957a'; ctx.fillRect(0, T, W, 2);
+  ctx.save(); ctx.strokeStyle = 'rgba(100,116,139,0.45)'; ctx.lineWidth = 1;
+  if (ctx.setLineDash) ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(177, 6); ctx.lineTo(177, T - 4); ctx.stroke(); ctx.restore();
+  // Stativstangen (hinter den Magneten)
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(_F10B_D.cx - 2, YA + _F10B_D.h / 2, 4, T - YA - _F10B_D.h / 2);
+  ctx.fillRect(290, unten, 4, T - unten);
+  ctx.fillStyle = '#64748b';
+  ctx.fillRect(_F10B_D.cx - 17, T - 4, 34, 5); ctx.fillRect(275, T - 4, 34, 5);
+
+  // Leitungen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(276, 30); ctx.lineTo(Wi.a, 30); ctx.lineTo(Wi.a, oben);
+  ctx.moveTo(324, 30); ctx.lineTo(404, 30); ctx.lineTo(404, 64); ctx.lineTo(384, 64);
+  ctx.moveTo(356, 64); ctx.lineTo(xe, 64); ctx.lineTo(xe, oben);
+  ctx.stroke();
+
+  // Naegel (vor Kern und Magnet gezeichnet, damit die Koepfe anliegen)
+  for (const n of z.naegelE) _f10bNagel(ctx, n.x, n.y, n.psi);
+  const cD = Math.abs(Math.cos(z.theta));
+  z.naegelD.forEach((n, j) => {
+    const p = _F10B_PLATZ_D[j];
+    const lf = Math.sqrt(Math.cos(p[1]) ** 2 + (Math.sin(p[1]) * cD) ** 2);
+    _f10bNagel(ctx, n.x, n.y, n.psi, lf);
+  });
+
+  // Spule: hintere Windungen, Kern, vordere Windungen
+  ctx.save(); ctx.lineCap = 'round';
+  ctx.strokeStyle = 'rgba(124,63,18,0.75)'; ctx.lineWidth = 2.4;
+  for (let k = 0; k < Wi.n; k++) {
+    const x = Wi.a + k * Wi.p;
+    ctx.beginPath(); ctx.moveTo(x, oben); ctx.lineTo(x + Wi.p / 2, unten); ctx.stroke();
+  }
+  ctx.restore();
+  _f10bPakete(ctx, z, true);
+  const kg = ctx.createLinearGradient(0, YA - _F10B_K.h / 2, 0, YA + _F10B_K.h / 2);
+  kg.addColorStop(0, '#b6bcc6'); kg.addColorStop(1, '#6b7280');
+  ctx.fillStyle = kg; ctx.fillRect(_F10B_K.x0, YA - _F10B_K.h / 2, _F10B_K.x1 - _F10B_K.x0, _F10B_K.h);
+  ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(_F10B_K.x0, YA - _F10B_K.h / 2, _F10B_K.x1 - _F10B_K.x0, _F10B_K.h);
+  ctx.save(); ctx.lineCap = 'round';
+  for (let k = 0; k < Wi.n; k++) {
+    const x = Wi.a + k * Wi.p;
+    ctx.strokeStyle = '#7c3f12'; ctx.lineWidth = 3.6;
+    ctx.beginPath(); ctx.moveTo(x + Wi.p / 2, unten); ctx.lineTo(x + Wi.p, oben); ctx.stroke();
+    ctx.strokeStyle = '#d08a4a'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x + Wi.p / 2, unten); ctx.lineTo(x + Wi.p, oben); ctx.stroke();
+  }
+  ctx.restore();
+  _f10bPakete(ctx, z, false);
+  // Halterung der Spule
+  ctx.fillStyle = '#64748b'; ctx.fillRect(284, unten - 2, 16, 7);
+
+  // Energiequelle mit Schaltzeichen; pol = +1: Pluspol links
+  ctx.save();
+  ctx.fillStyle = '#f1f5f9'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.6;
+  _bioFxRundRect(ctx, 276, 18, 48, 24, 4); ctx.fill(); ctx.stroke();
+  const pol = z.pol, xl = 300 - 4 * pol, xk = 300 + 4 * pol;
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(276, 30); ctx.lineTo(Math.min(xl, xk), 30);
+  ctx.moveTo(Math.max(xl, xk), 30); ctx.lineTo(324, 30); ctx.stroke();
+  ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(xl, 22); ctx.lineTo(xl, 38); ctx.stroke();
+  ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(xk, 26); ctx.lineTo(xk, 34); ctx.stroke();
+  ctx.globalAlpha = Math.min(1, Math.abs(pol) * 1.2);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('+', 300 - 15 * pol, 27); ctx.fillText('−', 300 + 15 * pol, 27);
+  ctx.restore();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Energiequelle', 300, 12);
+  // Schalter: Drehpunkt rechts, Kontakt links
+  const al = 0.55 * z.hebel;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(384, 64); ctx.lineTo(384 - 29 * Math.cos(al), 64 - 29 * Math.sin(al)); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(384, 64, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(356, 64, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Schalter', 370, 84);
+
+  // Dauermagnet und seine Halterung
+  _f10bStab(ctx, z);
+  ctx.fillStyle = '#64748b'; ctx.fillRect(_F10B_D.cx - 7, YA + _F10B_D.h / 2, 14, 6);
+
+  // Kompassnadeln
+  _f10bKompass(ctx, _F10B_KD.x, _F10B_KD.y, z.nadelD.phi);
+  _f10bKompass(ctx, _F10B_KE.x, _F10B_KE.y, z.nadelE.phi);
+
+  // Stromstaerke am Zuleitungsdraht (nur wenn der Strom fliesst – wie die Statuszeile)
+  if (z.an && z.strom > 0.3) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, (z.strom - 0.3) / 0.5);
+    const x = Wi.a, ya = z.plusLinks ? 44 : 78, yb = z.plusLinks ? 78 : 44, r = z.plusLinks ? 1 : -1;
+    ctx.strokeStyle = '#dc2626'; ctx.fillStyle = '#dc2626'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(x - 7, ya); ctx.lineTo(x - 7, yb - 7 * r); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - 7, yb); ctx.lineTo(x - 12, yb - 9 * r); ctx.lineTo(x - 2, yb - 9 * r); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(z.I + ' A', x - 16, 66);
+    ctx.restore();
+  }
+
+  // Beschriftungen auf dem Tisch
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Dauermagnet', 90, 228);
+  ctx.fillText('Elektromagnet', 292, 228);
+  if (z.zeitlupe) {
+    ctx.fillStyle = 'rgba(15,23,42,0.75)'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('▶ Zeitlupe', 8, 18);
+  }
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz4 „Wie dreht sich ein Elektromotor?“ (Kennung motor-takt)
+// Buchversuch S. 129 „Kompassnadel im Takt drehen“, von oben gesehen:
+// Unten liegt eine Spule mit Eisenkern (Elektromagnet), ihr oberes Ende zeigt
+// zur Kompassnadel. Darueber dreht sich die Nadel (rote Spitze = Nordpol,
+// gruen = Suedpol). Links Energiequelle und Schalter, dazwischen der
+// Kommutator (Polwender): zwei Leitungen gerade durch oder ueber Kreuz.
+// Das obere Spulenende wird gefaerbt: gruen = Suedpol, rot = Nordpol, grau = aus.
+// Rote Punkte = Strom (technische Stromrichtung, von + nach −). Pluspol unten.
+// Kommutator gerade: Strom kommt am unteren Spulenanschluss an und steigt durch
+// die Spule nach oben; in den sichtbaren Windungen laeuft er von rechts nach
+// links -> Rechte-Faust-Regel: Suedpol oben. Ueber Kreuz: umgekehrt, Nordpol oben.
+//
+// Physik (Winkel phi der roten Spitze, phi = 0: zeigt auf die Spule,
+// phi waechst im Uhrzeigersinn):
+//  * Strom an, Kommutator aus: Suedpol oben, Drehmoment -K sin(phi). Die Nadel
+//    dreht sich zur Spule, schwingt etwas nach und bleibt mit der roten Spitze
+//    an der Spule stehen („Die Nadel bleibt stehen.“).
+//    Daempfung mit Strom staerker (bewegter Magnet induziert im geschlossenen
+//    Kreis Strom, der bremst), ohne Strom nur Lagerreibung.
+//  * Strom an, Kommutator ein: bei jeder halben Umdrehung wird umgepolt
+//    (phi = 0: Suedpol -> Nordpol, phi = 180°: Nordpol -> Suedpol). Das
+//    Drehmoment zeigt so immer im Uhrzeigersinn; die Nadel laeuft in rund
+//    1 s gleichmaessig auf 1 Umdrehung je Sekunde hoch (Betriebsdrehzahl,
+//    Modell).
+//  * Strom aus: kein Magnetfeld, die Nadel dreht sich mit ihrer Traegheit
+//    weiter und wird von der Lagerreibung gebremst.
+//  * Von Hand: „Strom an“, solange die rote Spitze auf die Spule zulaeuft,
+//    „Strom aus“ kurz vor dem Pol – dann dreht sich die Nadel im Takt.
+//  * Das Magnetfeld der Erde ist im Modell weggelassen.
+// „▶ 10 Sekunden laufen lassen“ (nur mit Kommutator ein): schaltet den Strom
+// ein; sobald die Nadel gleichmaessig laeuft, startet die Stoppuhr und der
+// Zaehler beginnt bei 0. Nach genau 10,0 s: Strom aus, Stoppuhr und Zaehler
+// halten an – „volle Umdrehungen: 10“. Die Nadel laeuft danach frei aus
+// (zaehlt nicht mehr mit).
+// Statuszeilen (Profil KAPITEL1_PROFIL.md, „### motor-takt“, woertlich):
+//  „Die Nadel bleibt stehen.“ / „Die Nadel dreht sich. Elektrische Energie wird
+//  zu Bewegungsenergie.“ / „volle Umdrehungen: n“.
+// Keine Zufallszahlen in angezeigten Werten; Funken des Aha-Effekts sind Deko.
+// Aha (_bioFx): Kommt die Nadel an der Spule zur Ruhe, leuchtet die Stelle
+// kurz auf. Nach dem 10-s-Lauf: Lichtring an Stoppuhr und Zaehler.
+// ════════════════════════════════════════════════════════════════════════
+let _f10c = null;
+const _f10cP = {
+  PX: 210, PY: 80,          // Drehpunkt der Nadel
+  NL: 56,                   // halbe Nadellaenge
+  RG: 64,                   // Glasrand des Kompasses
+  K: 20,                    // Drehmoment je Traegheit (1/s²)
+  C_AN: 2.0, C_AUS: 0.3,    // Daempfung mit / ohne Strom (1/s)
+  MU: 0.4,                  // Lagerreibung, nur ohne Strom (rad/s²)
+  OM: 2 * Math.PI,          // Betriebsdrehzahl: 1 Umdrehung je Sekunde
+  TAU_AN: 0.25,             // Hochlaufzeitkonstante (s)
+  LAUF: 10,                 // Laufzeit der Messung (s)
+  WT: 165, WB: 220,         // obere / untere Leitung
+  BX0: 104, BX1: 148,       // Kommutator-Kasten
+  QX: 44,                   // Energiequelle
+  SX0: 70, SX1: 92          // Schalter
+};
+
+function _f10cInit() {
+  _f10c = {
+    t: 0, phi: -Math.PI / 2, om: 0,         // Start: rote Spitze zeigt nach rechts
+    strom: false, komm: false, pol: 0,
+    n: 0, acc: 0, zaehlt: true,
+    lauf: null,                              // {phase:'anlauf'|'lauf', s}
+    uhr: { art: 'neu', s: 0 },               // 'neu' | 'anlauf' | 'lauf' | 'halt'
+    steht: true, kreuz: 0,
+    angefasst: false, ruheGlanz: 0, warRuhig: true,
+    fx: { teile: [] }, sig: ''
+  };
+}
+
+function _f10cHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie dreht sich ein Elektromotor?</h3>
+    <div class="fpm-note" style="margin-top:2px">Unten liegt eine Spule mit Eisenkern. Darüber kann sich eine Kompassnadel drehen. Die rote Spitze ist der Nordpol.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10c-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_f10c-strom" onclick="_f10cStrom()">Strom an</button>
+          <button class="sim-btn" id="_f10c-komm" onclick="_f10cKomm()">Kommutator ein</button>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10c-los" onclick="_f10cLos()">▶ 10 Sekunden laufen lassen</button>
+          <button class="sim-btn" onclick="_f10cNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_f10c-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_f10c-schalter" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_f10c-zaehler" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_f10c-uhr" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Achte auf das obere Ende der Spule: <b style="color:#dc2626">rot</b> ist ein Nordpol, <b style="color:#15803d">grün</b> ist ein Südpol.</div>
+        <div class="fpm-note" style="margin-top:6px">„▶ 10 Sekunden laufen lassen“ geht nur mit „Kommutator ein“.</div>
+        <div class="fpm-note" style="margin-top:6px">Versuche auch: Bring die Nadel nur mit „Strom an“ und „Strom aus“ zum Drehen.</div>
+        <div class="fpm-note" style="margin-top:6px">Im Modell zählt nur das Magnetfeld der Spule.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Strom aus, Kommutator aus. Die rote Spitze zeigt nach rechts.</p>
+  </div>`;
+}
+
+// ---- Hilfen -------------------------------------------------------------
+function _f10cKomma(x) { return x.toFixed(1).replace('.', ','); }
+function _f10cMod(a) { const T = 2 * Math.PI; return ((a % T) + T) % T; }
+// Pol am oberen Spulenende: +1 = Suedpol (zieht die rote Spitze an),
+// -1 = Nordpol, 0 = kein Strom.
+function _f10cPolBei(phi) {
+  if (!_f10c.strom) return 0;
+  if (!_f10c.komm) return 1;
+  return _f10cMod(phi) < Math.PI ? -1 : 1;
+}
+function _f10cUhrZehntel(s) { return Math.floor(s * 10 + 1e-6) / 10; }
+
+function _f10cTexte() {
+  const z = _f10c;
+  let haupt, an = true;
+  if (z.strom && z.komm) haupt = 'Die Nadel dreht sich. Elektrische Energie wird zu Bewegungsenergie.';
+  else if (z.strom && z.steht) haupt = 'Die Nadel bleibt stehen.';
+  else if (z.strom) { haupt = 'Strom an. Die Nadel dreht sich zur Spule …'; an = false; }
+  else if (!z.steht) { haupt = 'Strom aus. Die Nadel dreht sich weiter …'; an = false; }
+  else haupt = 'Strom aus. Die Nadel steht still.';
+  const schalter = 'Strom: ' + (z.strom ? 'an' : 'aus') + ' · Kommutator: ' + (z.komm ? 'ein' : 'aus');
+  const zaehler = 'volle Umdrehungen: ' + z.n;
+  let uhr;
+  const u = z.uhr;
+  if (u.art === 'neu') uhr = 'Stoppuhr: 0,0 s (noch nicht gestartet)';
+  else if (u.art === 'anlauf') uhr = 'Stoppuhr: 0,0 s (startet, wenn die Nadel gleichmäßig läuft)';
+  else if (u.art === 'lauf') uhr = 'Stoppuhr läuft: ' + _f10cKomma(_f10cUhrZehntel(u.s)) + ' s';
+  else uhr = 'Stoppuhr angehalten: ' + _f10cKomma(_f10cUhrZehntel(u.s)) + ' s';
+  return { haupt, an, schalter, zaehler, uhr };
+}
+
+function _f10cStatus() {
+  if (!_f10c) return;
+  const z = _f10c, x = _f10cTexte();
+  z.sig = x.haupt + '|' + x.schalter + '|' + x.zaehler + '|' + x.uhr;
+  const setze = (id, txt, an) => {
+    const e = document.getElementById(id);
+    if (!e) return;
+    e.textContent = txt;
+    e.className = 'lmp-status' + (an ? ' on' : '');
+  };
+  setze('_f10c-status', x.haupt, x.an);
+  setze('_f10c-schalter', x.schalter, true);
+  setze('_f10c-zaehler', x.zaehler, !z.lauf);
+  setze('_f10c-uhr', x.uhr, !z.lauf);
+  const bs = document.getElementById('_f10c-strom');
+  if (bs) bs.textContent = z.strom ? 'Strom aus' : 'Strom an';
+  const bk = document.getElementById('_f10c-komm');
+  if (bk) bk.textContent = z.komm ? 'Kommutator aus' : 'Kommutator ein';
+  const los = document.getElementById('_f10c-los');
+  if (los) {
+    const aus = !z.komm || !!z.lauf;
+    los.disabled = aus;
+    los.style.opacity = aus ? '0.45' : '';
+    los.classList.toggle('primary', !aus);
+  }
+}
+
+// Nach einer fertigen Messung beginnt jede neue Bedienung wieder bei 0.
+function _f10cNachMessung() {
+  const z = _f10c;
+  if (z.uhr.art === 'halt' && !z.zaehlt) {
+    z.n = 0; z.acc = 0; z.zaehlt = true;
+    z.uhr = { art: 'neu', s: 0 };
+  }
+}
+// Strom oder Kommutator waehrend der Messung: Messung abbrechen.
+function _f10cAbbruch() {
+  const z = _f10c;
+  if (!z.lauf) return;
+  z.uhr = z.lauf.phase === 'lauf' ? { art: 'halt', s: z.lauf.s } : { art: 'neu', s: 0 };
+  z.lauf = null; z.zaehlt = true; z.acc = 0;
+}
+
+function _f10cStrom() {
+  if (!_f10c) return;
+  const z = _f10c;
+  _f10cAbbruch(); _f10cNachMessung();
+  z.strom = !z.strom; z.angefasst = true;
+  if (z.strom) z.steht = false;
+  _f10cStatus();
+}
+function _f10cKomm() {
+  if (!_f10c) return;
+  const z = _f10c;
+  _f10cAbbruch(); _f10cNachMessung();
+  z.komm = !z.komm;
+  if (z.strom) z.steht = false;
+  _f10cStatus();
+}
+function _f10cLos() {
+  if (!_f10c) return;
+  const z = _f10c;
+  if (!z.komm || z.lauf) return;             // nur mit Kommutator, nicht doppelt
+  z.strom = true; z.steht = false; z.angefasst = true;
+  z.n = 0; z.acc = 0; z.zaehlt = false;      // Hochlaufen zaehlt nicht mit
+  z.lauf = { phase: 'anlauf', s: 0 };
+  z.uhr = { art: 'anlauf', s: 0 };
+  z.fx.banner = null;
+  _f10cStatus();
+}
+function _f10cNeu() {
+  if (!_f10c) return;
+  _f10cInit(); _f10cStatus();
+}
+
+// ---- Bewegung -----------------------------------------------------------
+function _f10cUpdate(dt) {
+  if (!_f10c) return;
+  const z = _f10c, P = _f10cP;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  const phiAlt = z.phi;
+
+  if (z.strom && z.komm) {
+    // Kommutator: umpolen bei jeder halben Umdrehung -> gleichmaessiger Lauf
+    if (z.lauf && z.lauf.phase === 'lauf') {
+      z.om = P.OM;
+      z.phi += P.OM * dt;
+    } else {
+      z.om += (P.OM - z.om) * (1 - Math.exp(-dt / P.TAU_AN));
+      if (Math.abs(P.OM - z.om) < 0.03) z.om = P.OM;
+      z.phi += z.om * dt;
+    }
+    z.steht = false;
+  } else {
+    // Nadel als Magnet im Feld der Spule (oder frei), in kleinen Teilschritten
+    const n = 8, h = dt / n;
+    const c = z.strom ? P.C_AN : P.C_AUS;
+    const mu = z.strom ? 0 : P.MU;           // Lagerreibung haelt nur die freie Nadel an
+    for (let i = 0; i < n; i++) {
+      const p = _f10cPolBei(z.phi);
+      const moment = -p * P.K * Math.sin(z.phi);
+      let a = moment - c * z.om;
+      if (z.om !== 0) {
+        a -= mu * Math.sign(z.om);
+        const neu = z.om + a * h;
+        z.om = (neu * z.om < 0) ? 0 : neu;   // Reibung kehrt nicht um
+      } else {
+        z.om += moment * h;                  // aus der Ruhe: jedes Moment setzt in Gang
+      }
+      z.phi += z.om * h;
+    }
+    // Ruhe erkennen
+    if (z.strom) {
+      // Restschwingung kleiner als 1,5°: steht; die letzten Bruchteile weich auf 0
+      const ruhe = Math.round(z.phi / (2 * Math.PI)) * 2 * Math.PI;
+      const d = z.phi - ruhe, amp = Math.hypot(d, z.om / Math.sqrt(P.K));
+      if (z.steht || amp < 0.026) {
+        z.steht = true; z.om = 0;
+        z.phi = ruhe + d * Math.exp(-dt * 10);
+        if (Math.abs(z.phi - ruhe) < 1e-4) z.phi = ruhe;
+      }
+    } else {
+      if (Math.abs(z.om) < 0.02) z.om = 0;
+      z.steht = z.om === 0;
+    }
+  }
+  z.pol = _f10cPolBei(z.phi);
+
+  // Messlauf
+  if (z.lauf) {
+    if (z.lauf.phase === 'anlauf' && z.om === P.OM) {
+      z.lauf = { phase: 'lauf', s: 0 };
+      z.uhr = { art: 'lauf', s: 0 };
+      z.n = 0; z.acc = 0;
+    } else if (z.lauf.phase === 'lauf') {
+      z.lauf.s += dt;
+      if (z.lauf.s >= P.LAUF - 1e-6) {
+        z.lauf = null;
+        z.uhr = { art: 'halt', s: P.LAUF };
+        z.n = P.LAUF; z.acc = 0; z.zaehlt = false;   // Zaehler haelt an
+        z.strom = false; z.steht = false;            // Strom aus, Nadel laeuft aus
+        _f10cAhaLauf();
+      } else {
+        z.n = Math.floor(z.lauf.s + 1e-6);
+        z.uhr.s = z.lauf.s;
+      }
+    }
+  } else if (z.zaehlt) {
+    // volle Umdrehungen in eine Richtung; Hin- und Herschwingen hebt sich auf
+    const T = 2 * Math.PI;
+    z.acc += z.phi - phiAlt;
+    while (z.acc >= T) { z.acc -= T; z.n++; }
+    while (z.acc <= -T) { z.acc += T; z.n++; }
+  }
+
+  // Kommutator-Kasten: gerade (Suedpol oben) oder ueber Kreuz (Nordpol oben)
+  const ziel = z.komm && z.pol === -1 ? 1 : 0;
+  z.kreuz += (ziel - z.kreuz) * Math.min(1, dt * 22);
+
+  // Aha: Nadel ist an der Spule zur Ruhe gekommen
+  const ruhig = z.strom && !z.komm && z.steht;
+  if (ruhig && !z.warRuhig) _f10cAhaRuhe();
+  z.warRuhig = ruhig;
+  z.ruheGlanz = Math.max(0, z.ruheGlanz - dt);
+
+  _bioFxAlleUpdate(z.fx, dt);
+  const x = _f10cTexte();
+  if (x.haupt + '|' + x.schalter + '|' + x.zaehler + '|' + x.uhr !== z.sig) _f10cStatus();
+}
+
+function _f10cAhaRuhe() {
+  const z = _f10c, P = _f10cP;
+  z.ruheGlanz = 2.2;
+  _bioFxWelle(z.fx.teile, P.PX, P.PY + P.NL + 4, '#fde68a', 30);
+}
+function _f10cAhaLauf() {
+  const z = _f10c;
+  _bioFxWelle(z.fx.teile, 370, 58, '#93c5fd', 44);
+  _bioFxWelle(z.fx.teile, 352, 151, '#fde68a', 40);
+  _bioFxFunken(z.fx.teile, 352, 146, 8, ['#fde68a', '#ffffff', '#93c5fd']);
+}
+
+// ---- Zeichnen -----------------------------------------------------------
+// Punkte entlang einer Linie (Strom): Abstand 14 px, 42 px/s, richtung +1/-1.
+function _f10cPunkte(ctx, pts, richtung, t) {
+  let L = 0;
+  const seg = [];
+  for (let i = 1; i < pts.length; i++) {
+    const l = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+    seg.push(l); L += l;
+  }
+  const ab = 14, v = 42;
+  const off = (((richtung * v * t) % ab) + ab) % ab;
+  ctx.fillStyle = '#dc2626';
+  for (let d = off; d < L; d += ab) {
+    let r = d, i = 0;
+    while (i < seg.length - 1 && r > seg[i]) { r -= seg[i]; i++; }
+    const f = seg[i] ? r / seg[i] : 0;
+    const x = pts[i][0] + (pts[i + 1][0] - pts[i][0]) * f;
+    const y = pts[i][1] + (pts[i + 1][1] - pts[i][1]) * f;
+    ctx.beginPath(); ctx.arc(x, y, 2.3, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _f10cLinie(ctx, pts) {
+  ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+  for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+  ctx.stroke();
+}
+
+function _f10cDraw(ctx, cv) {
+  if (!_f10c) return;
+  const z = _f10c, P = _f10cP, W = cv.width, H = cv.height, t = z.t;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const WT = P.WT, WB = P.WB, BX0 = P.BX0, BX1 = P.BX1, QX = P.QX;
+  const strom = z.strom;
+  const gerade = z.kreuz < 0.5;              // Stromrichtung an der Spule
+  const draht = '#334155';
+
+  // ── Leitungen ──
+  ctx.strokeStyle = draht; ctx.lineWidth = 2;
+  const obenA = [[QX, 184], [QX, WT], [P.SX0, WT]];
+  const obenB = [[P.SX1, WT], [BX0, WT]];
+  const untenQ = [[BX0, WB], [QX, WB], [QX, 196]];
+  const zuSpuleO = [[BX1, WT], [188, WT]];
+  const zuSpuleU = [[188, WB], [BX1, WB]];
+  [obenA, obenB, untenQ, zuSpuleO, zuSpuleU].forEach(p => _f10cLinie(ctx, p));
+
+  // ── Energiequelle ──
+  // langer duenner Strich = Pluspol (unten), kurzer dicker = Minuspol (oben)
+  ctx.strokeStyle = '#111827'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(QX - 7, 184); ctx.lineTo(QX + 7, 184); ctx.stroke();
+  ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(QX - 13, 196); ctx.lineTo(QX + 13, 196); ctx.stroke();
+  // Vorzeichen als Striche (unabhaengig von der Schrift)
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(QX - 27, 183); ctx.lineTo(QX - 19, 183); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(QX - 27, 199); ctx.lineTo(QX - 19, 199);
+  ctx.moveTo(QX - 23, 195); ctx.lineTo(QX - 23, 203); ctx.stroke();
+  // Schriftfarbe ausdruecklich setzen: vorher stand hier noch der Verlauf des
+  // Hintergrunds als fillStyle, die Beschriftung war unsichtbar (Abgleich 03.10.).
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Energiequelle', 8, 244);
+
+  // ── Schalter ──
+  if (!z.angefasst) {
+    ctx.save(); ctx.globalAlpha = 0.8;
+    _bioFxLeuchten(ctx, (P.SX0 + P.SX1) / 2, WT - 4, 15, t, '253,230,138');
+    ctx.restore();
+  }
+  ctx.strokeStyle = '#111827'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(P.SX0, WT);
+  if (strom) ctx.lineTo(P.SX1, WT); else ctx.lineTo(P.SX1 - 3, WT - 14);
+  ctx.stroke();
+  ctx.fillStyle = '#111827';
+  for (const x of [P.SX0, P.SX1]) { ctx.beginPath(); ctx.arc(x, WT, 2.6, 0, 2 * Math.PI); ctx.fill(); }
+
+  // ── Kommutator (Polwender) ──
+  ctx.fillStyle = z.komm ? '#fefce8' : '#e5e7eb';
+  ctx.strokeStyle = z.komm ? '#a16207' : '#6b7280'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, BX0, 152, BX1 - BX0, 78, 6); ctx.fill(); ctx.stroke();
+  const k = _bioFxEase.sanft(_bioFxKlemme(z.kreuz));
+  ctx.strokeStyle = z.komm ? '#111827' : '#6b7280'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(BX0, WT); ctx.lineTo(BX1, WT + (WB - WT) * k); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(BX0, WB); ctx.lineTo(BX1, WB - (WB - WT) * k); ctx.stroke();
+  ctx.fillStyle = '#111827';
+  for (const [x, y] of [[BX0, WT], [BX0, WB], [BX1, WT], [BX1, WB]]) {
+    ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Kommutator: ' + (z.komm ? 'ein' : 'aus'), (BX0 + BX1) / 2, 146);
+
+  // ── Spule mit Eisenkern ──
+  const pol = z.pol;
+  if (pol !== 0) {
+    const f = pol === 1 ? '22,163,74' : '220,38,38';
+    const g = ctx.createRadialGradient(210, 150, 2, 210, 150, 26);
+    g.addColorStop(0, 'rgba(' + f + ',0.35)'); g.addColorStop(1, 'rgba(' + f + ',0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(210, 150, 26, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = '#9ca3af'; ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1.5;
+  ctx.fillRect(201, 146, 18, 82); ctx.strokeRect(201, 146, 18, 82);
+  ctx.fillStyle = pol === 1 ? '#16a34a' : pol === -1 ? '#dc2626' : '#9ca3af';
+  ctx.fillRect(199, 145, 22, 9); ctx.strokeRect(199, 145, 22, 9);
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  // Sichtbare Windungen (Oberseite der liegenden Spule). Steigung so, dass der
+  // Strom, der unten hineinfliesst und oben heraus, auf der Oberseite von rechts
+  // nach links nach OBEN laeuft – sonst passt die Wicklung nicht zur Stromrichtung
+  // (Abgleich 03.10.: vorher fiel die Windung nach links ab).
+  const wind = [];
+  for (let i = 0; i < 8; i++) {
+    const y = 160 + i * 7.5;
+    wind.push([[232, y + 5], [188, y]]);
+    ctx.beginPath(); ctx.moveTo(188, y); ctx.lineTo(232, y + 5); ctx.stroke();
+  }
+  ctx.lineCap = 'butt';
+  if (pol !== 0) {
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(pol === 1 ? 'S' : 'N', 225, 153);
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Spule mit', 242, 198); ctx.fillText('Eisenkern', 242, 213);
+
+  // ── Strom: rote Punkte ──
+  // Technische Stromrichtung: vom Pluspol (unten) ueber die untere Leitung zum
+  // Kommutator. Gerade: weiter zum unteren Spulenanschluss, durch die Spule
+  // nach oben, zurueck ueber die obere Leitung und den Schalter zum Minuspol.
+  if (strom) {
+    _f10cPunkte(ctx, untenQ, -1, t);
+    _f10cPunkte(ctx, obenB, -1, t);
+    _f10cPunkte(ctx, [[P.SX0, WT], [P.SX1, WT]], -1, t);
+    _f10cPunkte(ctx, obenA, -1, t);
+    const r = gerade ? -1 : 1;
+    _f10cPunkte(ctx, zuSpuleO, r, t);
+    _f10cPunkte(ctx, zuSpuleU, r, t);
+    // sichtbare Windungen: gerade -> von rechts nach links (Suedpol oben)
+    for (const w of wind) _f10cPunkte(ctx, w, -r, t);
+  }
+
+  // ── Kompass ──
+  const PX = P.PX, PY = P.PY, NL = P.NL;
+  ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(PX, PY, P.RG, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let i = 0; i < 12; i++) {
+    const a = i * Math.PI / 6;
+    ctx.beginPath();
+    ctx.moveTo(PX + Math.cos(a) * (P.RG - 7), PY + Math.sin(a) * (P.RG - 7));
+    ctx.lineTo(PX + Math.cos(a) * (P.RG - 2), PY + Math.sin(a) * (P.RG - 2));
+    ctx.stroke();
+  }
+  // Aha-Glanz an der Spitze, die an der Spule haengt
+  if (z.ruheGlanz > 0) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, z.ruheGlanz);
+    _bioFxLeuchten(ctx, PX, PY + NL + 2, 14, t, '253,230,138');
+    ctx.restore();
+  }
+  // Bewegungsspur hinter beiden Spitzen
+  const al = z.phi + Math.PI / 2;            // Winkel der roten Spitze auf der Leinwand
+  if (Math.abs(z.om) > 0.8) {
+    const len = Math.min(1.5, Math.abs(z.om) * 0.13), sg = Math.sign(z.om);
+    for (let j = 0; j < 6; j++) {
+      const a0 = al - sg * len * (j + 1) / 6, a1 = al - sg * len * j / 6;
+      const alpha = (0.32 * (1 - j / 6)).toFixed(3);
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = 'rgba(220,38,38,' + alpha + ')';
+      ctx.beginPath(); ctx.arc(PX, PY, NL - 6, Math.min(a0, a1), Math.max(a0, a1)); ctx.stroke();
+      ctx.strokeStyle = 'rgba(22,163,74,' + alpha + ')';
+      ctx.beginPath(); ctx.arc(PX, PY, NL - 6, Math.min(a0, a1) + Math.PI, Math.max(a0, a1) + Math.PI); ctx.stroke();
+    }
+  }
+  // Nadel
+  const dx = Math.cos(al), dy = Math.sin(al), qx = -dy * 6, qy = dx * 6;
+  ctx.lineWidth = 1; ctx.strokeStyle = '#1f2937';
+  ctx.fillStyle = '#dc2626';
+  ctx.beginPath(); ctx.moveTo(PX + dx * NL, PY + dy * NL); ctx.lineTo(PX + qx, PY + qy); ctx.lineTo(PX - qx, PY - qy); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#16a34a';
+  ctx.beginPath(); ctx.moveTo(PX - dx * NL, PY - dy * NL); ctx.lineTo(PX + qx, PY + qy); ctx.lineTo(PX - qx, PY - qy); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(PX, PY, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#e2e8f0'; ctx.beginPath(); ctx.arc(PX - 1.5, PY - 1.5, 1.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Kompassnadel', 284, 130);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(282, 124); ctx.lineTo(PX + 50, PY + 34); ctx.stroke();
+
+  // ── Legende ──
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(10, 11, 11, 11);
+  ctx.fillStyle = '#16a34a'; ctx.fillRect(10, 29, 11, 11);
+  ctx.fillStyle = '#1f2937';
+  ctx.fillText('rot: Nordpol', 26, 21); ctx.fillText('grün: Südpol', 26, 39);
+
+  // ── Stoppuhr (gleiche Zahl wie in der Statuszeile) ──
+  const ux = 370, uy = 58, ur = 28;
+  const us = z.uhr.art === 'lauf' || z.uhr.art === 'halt' ? z.uhr.s : 0;
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Stoppuhr', ux, 22);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.fillRect(ux - 4, uy - ur - 7, 8, 5);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  for (let i = 0; i < 10; i++) {
+    const a = -Math.PI / 2 + i * Math.PI / 5;
+    ctx.beginPath();
+    ctx.moveTo(ux + Math.cos(a) * (ur - 6), uy + Math.sin(a) * (ur - 6));
+    ctx.lineTo(ux + Math.cos(a) * (ur - 2), uy + Math.sin(a) * (ur - 2));
+    ctx.stroke();
+  }
+  const ua = -Math.PI / 2 + (us / P.LAUF) * 2 * Math.PI;
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(ua) * (ur - 7), uy + Math.sin(ua) * (ur - 7)); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(ux, uy, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 14px sans-serif';
+  ctx.fillText(_f10cKomma(_f10cUhrZehntel(us)) + ' s', ux, 106);
+
+  // ── Zaehler (gleiche Zahl wie in der Statuszeile) ──
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'right'; ctx.fillStyle = '#1f2937';
+  ctx.fillText('volle Umdrehungen: ' + z.n, 412, 156);
+
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz6 „Wovon haengt die Induktionsspannung ab?“
+// (Kennung induktion-betrag; Schulbuch S. 133, Erforsche es a–c)
+// Eine Spule liegt waagerecht auf einem Sockel, ihre Enden fuehren zu einem
+// Spannungsmesser mit Zeiger in der Mitte (Ausschlag nach links und rechts).
+// Ein Stabmagnet (Nordpol rot, Suedpol gruen) steckt mit dem Nordpol in der
+// Spulenmitte, eine Hand haelt ihn am Suedpol. „▶ Magnet herausziehen“
+// zieht ihn gleichmaessig nach rechts heraus. Der Zeiger schlaegt aus, ein
+// oranger Schleppzeiger bleibt beim groessten Ausschlag stehen; eine graue,
+// gestrichelte Marke zeigt die Messung davor („vorher“).
+// Knopfgruppen: Magnet schwach/stark · Tempo langsam/schnell · Spule 300/
+// 600/1200 Windungen · ohne/mit Eisenkern · neu. Start: stark, langsam,
+// 600 Windungen, ohne Eisenkern.
+// MODELLWERTE (Profil KAPITEL1_PROFIL.md, Abschnitt induktion-betrag):
+//   U_max = 1,0 V · (N : 600) · (stark 1 | schwach 0,5)
+//                 · (langsam 1 | schnell 2) · (ohne 1 | mit Eisenkern 4)
+//   Start 1,0 V · schnell 2,0 V · schwach 0,5 V · 1200 Windungen 2,0 V ·
+//   300 Windungen 0,5 V · mit Eisenkern 4,0 V. Alle Werte sind Zweierpotenzen
+//   (0,25 V … 16,0 V) und werden exakt gerechnet.
+// Zeitverlauf (Faraday, U = N · dΦ/dt = Tempo · dΛ/dx): Die Hand faehrt
+// sanft an (erste 10 % der Zugdauer), zieht dann gleichmaessig und bremst
+// am Ende sanft ab; Weg s = 0 … 1 in T Sekunden (langsam 1,6 s, schnell
+// 0,8 s). dΛ/dx kommt aus einem Zwei-Pol-Modell des Magneten in der
+// gezeichneten Spule (Laenge 150 px, Radius 30 px): gross, solange der
+// Nordpol in der Spule ist, klein, sobald er sie verlassen hat. Deshalb
+// steigt der Ausschlag beim Anfahren, ist am groessten, waehrend der
+// Nordpol noch in der Spule laeuft (bei s ≈ 0,15), und faellt, wenn er
+// die Spule verlaesst (am Spulenende etwa halb so gross, danach fast 0).
+// Die Spitze ist exakt U_max. Die Flaeche unter U(t) ist N · ΔΦ und haengt
+// nicht vom Tempo ab: bei „schnell“ doppelte Spannung, halbe Zeit.
+// (Bis 03.10.2026 stand hier U = U_max · sin²(π·s) mit der Spitze am
+// Spulenende – das passt nicht zu einem Pol, der ab dem ersten Frame mit
+// vollem Tempo aus der Spulenmitte laeuft.)
+// Ruht der Magnet (vorher und nachher), ist U = 0 und der Zeiger steht auf 0.
+// Mit Eisenkern: Der Kern steckt in der linken Spulenhaelfte und beruehrt
+// den Nordpol; die Feldlinien laufen erst durch Kern und Magnet, beim
+// Herausziehen loest sich das Feld vom Kern (weiches Eisen).
+// Feldlinien gruen; stark = zwei Linien je Seite, schwach = eine.
+// Statuszeilen: „Größter Ausschlag: – (Magnet ruht)“, waehrend des Zugs bis
+// zum groessten Ausschlag „Größter Ausschlag: – (Magnet bewegt sich)“,
+// danach „Größter Ausschlag: 1,0 V“; dazu „Einstellung: 600 Windungen,
+// starker Magnet, langsam, ohne Eisenkern“.
+// Messbereich: bis 5 V; nur ueber 5 V (8,0 V und 16,0 V, kommen im Heft
+// nicht vor) schaltet der Spannungsmesser auf 20 V und sagt das im Bild.
+// Eine Einstellung aendern setzt den Magneten in die Spule zurueck; das
+// letzte Ergebnis wird zur Marke „vorher“. Nochmal „▶ Magnet herausziehen“
+// setzt ihn ebenfalls zurueck und zieht neu. „neu“ stellt alles auf Start.
+// Aha (_bioFx): Lichtring an der Spitze des Schleppzeigers, sobald der
+// groesste Ausschlag erreicht ist. Kein „je … desto“ im Bild oder Text.
+// ════════════════════════════════════════════════════════════════════════
+let _f10d = null;
+const _f10d_SX0 = 60, _f10d_SX1 = 210;   // Spule links/rechts (px)
+const _f10d_YA = 172, _f10d_SR = 30;     // Achse, halbe Spulenhoehe
+const _f10d_ML = 110, _f10d_MH = 10;     // Magnetlaenge, halbe Magnetdicke
+const _f10d_X0 = 135;                     // Nordpol in Ruhe = Spulenmitte
+const _f10d_WEG = 150;                    // Zugweg; bei s = 0,5 am Spulenende
+const _f10d_KX0 = 46;                     // linkes Ende des Eisenkerns
+const _f10d_T = { langsam: 1.6, schnell: 0.8 };            // Zugdauer in s
+const _f10d_RAMPE = 0.1;                  // Anfahren/Abbremsen: Anteil der Zugdauer
+const _f10d_VC = 1 / (1 - _f10d_RAMPE);   // gleichmaessiges Tempo in Weg je Zugdauer
+const _f10d_MX = 318, _f10d_MY = 112, _f10d_MR = 82;       // Spannungsmesser
+const _f10d_MA = 50 * Math.PI / 180;                       // halber Zeigerwinkel
+const _f10d_GRUPPEN = {
+  st: ['schwach', 'stark'],
+  tempo: ['langsam', 'schnell'],
+  n: ['300', '600', '1200'],
+  kern: ['ohne', 'mit'],
+};
+
+function _f10dInit() {
+  _f10d = { st: 'stark', tempo: 'langsam', n: 600, kern: false,
+            phase: 'ruhe', pt: 0, s: 0, u: 0, schlepp: 0,
+            ergebnis: null, vorher: null, t: 0, fade: 1,
+            fx: { teile: [] } };
+}
+// Groesster Ausschlag fuer die aktuelle Einstellung (Modellwert, exakt).
+function _f10dUmax() {
+  const z = _f10d;
+  return 1.0 * (z.n / 600) * (z.st === 'stark' ? 1 : 0.5)
+             * (z.tempo === 'schnell' ? 2 : 1) * (z.kern ? 4 : 1);
+}
+// 1,0 · 0,5 · 16,0 – zwei Stellen nur, wenn eine nicht reicht (0,25).
+function _f10dZahl(v) {
+  const eine = Math.round(v * 10) / 10;
+  return (Math.abs(eine - v) < 1e-9 ? v.toFixed(1) : v.toFixed(2)).replace('.', ',');
+}
+function _f10dBereich() { return _f10dUmax() > 5 ? 20 : 5; }
+
+// Bewegung der Hand ueber die Zugzeit tau = 0 … 1: Tempo (0 … 1, 1 = gleichmaessig)
+// und zurueckgelegter Weg s (0 … 1). Anfahren und Abbremsen je mit sin².
+function _f10dTempo(tau) {
+  const a = _f10d_RAMPE;
+  if (tau <= 0 || tau >= 1) return 0;
+  if (tau < a) { const q = Math.sin(Math.PI * tau / (2 * a)); return q * q; }
+  if (tau > 1 - a) { const q = Math.cos(Math.PI * (tau - 1 + a) / (2 * a)); return q * q; }
+  return 1;
+}
+function _f10dWeg(tau) {
+  const a = _f10d_RAMPE, P = Math.PI;
+  if (tau <= 0) return 0;
+  if (tau >= 1) return 1;
+  if (tau < a) return _f10d_VC * (tau / 2 - a / (2 * P) * Math.sin(P * tau / a));
+  if (tau <= 1 - a) return _f10d_VC * (a / 2 + tau - a);
+  const u = tau - 1 + a;
+  return Math.min(1, _f10d_VC * (a / 2 + 1 - 2 * a + u / 2 + a / (2 * P) * Math.sin(P * u / a)));
+}
+// dΛ/dx: Aenderung der Flussverkettung je Weg, Zwei-Pol-Modell (Nordpol bei xN,
+// Suedpol eine Magnetlaenge weiter rechts), ueber alle Windungen der Spule.
+function _f10dKopplung(xN) {
+  const R = _f10d_SR, x0 = _f10d_SX0, x1 = _f10d_SX1, xS = xN + _f10d_ML;
+  const q = d => d / Math.sqrt(d * d + R * R);
+  return 0.5 * (q(x1 - xN) - q(x0 - xN) - q(x1 - xS) + q(x0 - xS));
+}
+// Form des Spannungsverlaufs (Tempo · dΛ/dx) und wann er seine Spitze hat.
+function _f10dForm(tau) { return _f10dTempo(tau) * _f10dKopplung(_f10d_X0 + _f10dWeg(tau) * _f10d_WEG); }
+let _f10d_SPITZE = null;
+function _f10dSpitze() {
+  if (_f10d_SPITZE) return _f10d_SPITZE;
+  let fmax = 0, tau = 0;
+  for (let i = 0; i <= 8000; i++) {
+    const t = i / 8000, f = _f10dForm(t);
+    if (f > fmax) { fmax = f; tau = t; }
+  }
+  return (_f10d_SPITZE = { fmax, tau });
+}
+function _f10dZieht() { return !!_f10d && _f10d.phase === 'zieht'; }
+
+function _f10dHTML() {
+  const k = (g, w, txt) => `<button class="sim-btn" id="_f10d-b-${g}-${w}" onclick="_f10dSet('${g}','${w}')">${txt}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wovon hängt die Induktionsspannung ab?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Stabmagnet steckt in der Spule. Die Spule ist mit einem Spannungsmesser verbunden. Sein Zeiger kann nach links und nach rechts ausschlagen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10d-los" onclick="_f10dZiehen()">▶ Magnet herausziehen</button>
+          <button class="sim-btn" onclick="_f10dNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Spannungsmesser</div>
+        <div class="lmp-status on" id="_f10d-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_f10d-einst" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Der <b style="color:#c2410c">orange Schleppzeiger</b> bleibt beim größten Ausschlag stehen. Die graue Marke zeigt die Messung davor.</div>
+        <div class="fpm-label" style="margin-top:10px">Magnet</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('st', 'schwach', 'schwach')}
+          ${k('st', 'stark', 'stark')}
+        </div>
+        <div class="fpm-label" style="margin-top:6px">Tempo</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('tempo', 'langsam', 'langsam')}
+          ${k('tempo', 'schnell', 'schnell')}
+        </div>
+        <div class="fpm-label" style="margin-top:6px">Spule</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('n', '300', '300 Windungen')}
+          ${k('n', '600', '600 Windungen')}
+          ${k('n', '1200', '1200 Windungen')}
+        </div>
+        <div class="fpm-label" style="margin-top:6px">Eisenkern</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${k('kern', 'ohne', 'ohne Eisenkern')}
+          ${k('kern', 'mit', 'mit Eisenkern')}
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 600 Windungen, starker Magnet, langsam, ohne Eisenkern &nbsp;|&nbsp; Alles wie am Anfang: „neu“</p>
+  </div>`;
+}
+
+function _f10dStatus() {
+  if (!_f10d) return;
+  const z = _f10d;
+  const st = document.getElementById('_f10d-status');
+  if (st) {
+    st.textContent = 'Größter Ausschlag: ' + (z.ergebnis != null ? _f10dZahl(z.ergebnis) + ' V'
+      : z.phase === 'zieht' ? '– (Magnet bewegt sich)' : '– (Magnet ruht)');
+    st.className = 'lmp-status on';
+  }
+  const ei = document.getElementById('_f10d-einst');
+  if (ei) {
+    ei.textContent = 'Einstellung: ' + z.n + ' Windungen, ' + (z.st === 'stark' ? 'starker' : 'schwacher')
+      + ' Magnet, ' + z.tempo + ', ' + (z.kern ? 'mit' : 'ohne') + ' Eisenkern';
+    ei.className = 'lmp-status on';
+  }
+  _f10dKnoepfe();
+}
+// Gewaehlte Knoepfe hell hinterlegen; waehrend des Zugs ist nichts zu stellen.
+function _f10dKnoepfe() {
+  const z = _f10d, zieht = _f10dZieht();
+  const wert = { st: z.st, tempo: z.tempo, n: String(z.n), kern: z.kern ? 'mit' : 'ohne' };
+  for (const g in _f10d_GRUPPEN) {
+    for (const w of _f10d_GRUPPEN[g]) {
+      const b = document.getElementById('_f10d-b-' + g + '-' + w);
+      if (!b) continue;
+      const an = wert[g] === w;
+      if (b.style) {
+        b.style.background = an ? '#ede9fe' : '';
+        b.style.borderColor = an ? '#7C3AED' : '';
+        b.style.color = an ? '#4c1d95' : '';
+        b.style.fontWeight = an ? '700' : '';
+        b.style.opacity = zieht && !an ? '0.5' : '';
+      }
+      b.disabled = zieht;
+      if (b.setAttribute) b.setAttribute('aria-pressed', an ? 'true' : 'false');
+    }
+  }
+  const los = document.getElementById('_f10d-los');
+  if (los) { los.disabled = zieht; if (los.style) los.style.opacity = zieht ? '0.6' : ''; }
+}
+
+// Magnet zurueck in die Spule; ein Ergebnis wird zur Marke „vorher“.
+function _f10dZurueck() {
+  const z = _f10d;
+  if (z.ergebnis != null) z.vorher = z.ergebnis;
+  if (z.phase === 'draussen') z.fade = 0;
+  z.ergebnis = null; z.schlepp = 0; z.u = 0; z.s = 0; z.pt = 0;
+  z.phase = 'ruhe';
+}
+function _f10dSet(g, w) {
+  if (!_f10d || _f10dZieht()) return;
+  const z = _f10d;
+  if (g === 'st' && (w === 'stark' || w === 'schwach')) z.st = w;
+  else if (g === 'tempo' && (w === 'langsam' || w === 'schnell')) z.tempo = w;
+  else if (g === 'n' && _f10d_GRUPPEN.n.includes(String(w))) z.n = Number(w);
+  else if (g === 'kern' && (w === 'mit' || w === 'ohne')) z.kern = w === 'mit';
+  else return;
+  _f10dZurueck();
+  _f10dStatus();
+}
+function _f10dZiehen() {
+  if (!_f10d || _f10dZieht()) return;
+  _f10dZurueck();
+  _f10d.phase = 'zieht';
+  _f10dStatus();
+}
+function _f10dNeu() {
+  if (!_f10d) return;
+  _f10dInit(); _f10dStatus();
+}
+
+function _f10dUpdate(dt) {
+  if (!_f10d) return;
+  const z = _f10d, d = _bioFxDt(dt);
+  z.t += d;
+  if (z.fade < 1) z.fade = Math.min(1, z.fade + d / 0.3);
+  if (z.phase === 'zieht') {
+    const T = _f10d_T[z.tempo], um = _f10dUmax();
+    z.pt += d;
+    const tau = Math.min(1, z.pt / T), spz = _f10dSpitze();
+    z.s = _f10dWeg(tau);
+    z.u = um * Math.min(1, Math.max(0, _f10dForm(tau) / spz.fmax));
+    if (z.u > z.schlepp) z.schlepp = z.u;
+    // Groesster Ausschlag: Nordpol noch in der Spule, Hand zieht gleichmaessig
+    if (z.ergebnis == null && tau >= spz.tau - 1e-9) {
+      z.ergebnis = um; z.schlepp = um;
+      const sp = _f10dZeigerSpitze(um);
+      _bioFxWelle(z.fx.teile, sp.x, sp.y, '#fdba74', 24);
+      _f10dStatus();
+    }
+    if (z.s >= 1) { z.s = 1; z.u = 0; z.phase = 'draussen'; _f10dStatus(); }
+  }
+  _bioFxAlleUpdate(z.fx, d);
+}
+
+// Winkel des Zeigers (0 = senkrecht nach oben), mit Anschlag knapp hinter dem Bereich.
+function _f10dWinkel(v) {
+  const q = v / _f10dBereich();
+  return Math.max(-1.06, Math.min(1.06, q)) * _f10d_MA;
+}
+function _f10dZeigerSpitze(v) {
+  const w = _f10dWinkel(v), r = _f10d_MR - 4;
+  return { x: _f10d_MX + Math.sin(w) * r, y: _f10d_MY - Math.cos(w) * r };
+}
+
+function _f10dDraw(ctx, cv) {
+  if (!_f10d) return;
+  const z = _f10d, W = cv.width, H = cv.height, t = z.t;
+  const YA = _f10d_YA, SR = _f10d_SR, SX0 = _f10d_SX0, SX1 = _f10d_SX1;
+  const links = _f10d_X0 + z.s * _f10d_WEG, rechts = links + _f10d_ML;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#cbb89a'; ctx.fillRect(0, 228, W, H - 228);
+
+  _f10dLegende(ctx);
+  _f10dLeitungen(ctx);
+  _f10dMesser(ctx, t);
+
+  // Spule: Rohr und hintere Windungshaelften
+  const nZ = z.n / 50;                                   // 6, 12, 24 gezeichnete Windungen
+  const xw = i => SX0 + 5 + (i + 0.5) * (SX1 - SX0 - 10) / nZ;
+  ctx.fillStyle = 'rgba(226,232,240,0.7)';
+  ctx.fillRect(SX0, YA - SR, SX1 - SX0, 2 * SR);
+  ctx.strokeStyle = 'rgba(180,83,9,0.35)'; ctx.lineWidth = 1;
+  for (let i = 0; i < nZ; i++) {
+    ctx.beginPath(); ctx.ellipse(xw(i), YA, 5, SR, 0, -Math.PI / 2, Math.PI / 2); ctx.stroke();
+  }
+
+  // Feldlinien: mit Eisenkern beginnt das Feld am Kernende, bis sich der Magnet loest
+  const kopp = z.kern ? Math.exp(-(links - _f10d_X0) / 18) : 0;
+  const fl = links - kopp * (links - _f10d_KX0), fr = rechts;
+  const nF = z.st === 'stark' ? 2 : 1;
+  ctx.save();
+  ctx.globalAlpha = z.fade;
+  ctx.strokeStyle = 'rgba(22,163,74,0.8)'; ctx.fillStyle = 'rgba(22,163,74,0.9)'; ctx.lineWidth = 1.4;
+  const cx = (fl + fr) / 2;
+  for (let k = 1; k <= nF; k++) {
+    const rx = (fr - fl) / 2 + 3 + 5 * k, ry = 6 + 13 * k;
+    for (const oben of [true, false]) {
+      ctx.beginPath();
+      if (oben) ctx.ellipse(cx, YA, rx, ry, 0, Math.PI, 2 * Math.PI);
+      else ctx.ellipse(cx, YA, rx, ry, 0, 0, Math.PI);
+      ctx.stroke();
+      const y = oben ? YA - ry : YA + ry;               // Pfeil: aussen von N nach S
+      ctx.beginPath(); ctx.moveTo(cx + 5, y); ctx.lineTo(cx - 2, y - 3.5); ctx.lineTo(cx - 2, y + 3.5);
+      ctx.closePath(); ctx.fill();
+    }
+  }
+  ctx.restore();
+
+  // Eisenkern (bleibt liegen)
+  if (z.kern) {
+    const kx1 = _f10d_X0;
+    ctx.fillStyle = '#6b7280'; ctx.fillRect(_f10d_KX0, YA - _f10d_MH, kx1 - _f10d_KX0, 2 * _f10d_MH);
+    ctx.fillStyle = '#9ca3af'; ctx.fillRect(_f10d_KX0, YA - _f10d_MH, kx1 - _f10d_KX0, 4);
+    ctx.strokeStyle = '#374151'; ctx.lineWidth = 1;
+    ctx.strokeRect(_f10d_KX0, YA - _f10d_MH, kx1 - _f10d_KX0, 2 * _f10d_MH);
+  }
+
+  // Stabmagnet: Nordpol rot (links), Suedpol gruen (rechts)
+  ctx.save();
+  ctx.globalAlpha = z.fade;
+  const mh = _f10d_MH, halb = _f10d_ML / 2;
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(links, YA - mh, halb, 2 * mh);
+  ctx.fillStyle = '#22c55e'; ctx.fillRect(links + halb, YA - mh, halb, 2 * mh);
+  ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(links, YA - mh, _f10d_ML, 4);
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.2; ctx.strokeRect(links, YA - mh, _f10d_ML, 2 * mh);
+  ctx.restore();
+
+  // vordere Windungshaelften (Kupfer) ueber Kern und Magnet
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = z.n >= 1200 ? 2 : 2.6;
+  for (let i = 0; i < nZ; i++) {
+    ctx.beginPath(); ctx.ellipse(xw(i), YA, 5, SR, 0, Math.PI / 2, 3 * Math.PI / 2); ctx.stroke();
+  }
+  // Spulenkoerper: Flansche mit Bohrung, Sockel mit Windungszahl
+  ctx.fillStyle = '#475569';
+  for (const x of [SX0, SX1]) {
+    ctx.fillRect(x - 3, YA - SR - 6, 6, SR + 6 - mh - 2);
+    ctx.fillRect(x - 3, YA + mh + 2, 6, SR + 6 - mh - 2);
+  }
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(SX0 - 8, 208, SX1 - SX0 + 16, 20);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(SX0 - 8, 208, SX1 - SX0 + 16, 20);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(z.n + ' Windungen', (SX0 + SX1) / 2, 218);
+
+  // Polbuchstaben mit hellem Rand, damit sie auch zwischen den Windungen lesbar sind
+  ctx.save();
+  ctx.globalAlpha = z.fade;
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.fillStyle = '#111827';
+  for (const [b, x] of [['N', links + halb / 2], ['S', links + halb * 1.5]]) {
+    ctx.strokeText(b, x, YA + 1); ctx.fillText(b, x, YA + 1);
+  }
+  ctx.restore();
+
+  // Hand am Suedpol, Zugrichtung als Pfeil
+  _f10dHand(ctx, rechts, z.fade);
+  if (z.phase !== 'draussen') {
+    const a = z.phase === 'zieht' ? 1 : 0.35 + 0.6 * (0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8));
+    const y = YA + 27, x0 = rechts - 22, x1 = rechts + 14;
+    ctx.save(); ctx.globalAlpha = a * z.fade;
+    ctx.strokeStyle = '#334155'; ctx.fillStyle = '#334155'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1 - 6, y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x1 + 2, y); ctx.lineTo(x1 - 8, y - 6); ctx.lineTo(x1 - 8, y + 6); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
+  // Beschriftung Eisenkern
+  if (z.kern) {
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('Eisenkern', 6, 128);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(26, 132); ctx.lineTo(_f10d_KX0 + 4, YA - _f10d_MH - 1); ctx.stroke();
+  }
+  ctx.textBaseline = 'alphabetic';
+  _bioFxAlleDraw(ctx, z.fx);
+}
+
+// Legende oben links
+function _f10dLegende(ctx) {
+  const zeilen = [['#1f2937', false, 'Zeiger'], ['#ea580c', false, 'Schleppzeiger'],
+                  ['#64748b', true, 'Messung davor'], ['#16a34a', false, 'Feldlinien']];
+  ctx.save();
+  ctx.font = '600 12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  zeilen.forEach(([f, gestr, txt], i) => {
+    const y = 18 + i * 18;
+    ctx.strokeStyle = f; ctx.lineWidth = gestr ? 2 : 2.5;
+    if (ctx.setLineDash) ctx.setLineDash(gestr ? [4, 3] : []);
+    ctx.beginPath(); ctx.moveTo(10, y); ctx.lineTo(32, y); ctx.stroke();
+    ctx.fillStyle = '#1f2937'; ctx.fillText(txt, 38, y);
+  });
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  ctx.restore();
+}
+
+// Leitungen von den Spulenenden zu den Buchsen des Spannungsmessers
+function _f10dLeitungen(ctx) {
+  const yo = _f10d_YA - _f10d_SR;
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(_f10d_SX0 + 9, yo + 2); ctx.lineTo(_f10d_SX0 + 9, 130); ctx.lineTo(296, 130); ctx.lineTo(296, 124);
+  ctx.moveTo(_f10d_SX1 - 9, yo + 2); ctx.lineTo(_f10d_SX1 - 9, 138); ctx.lineTo(340, 138); ctx.lineTo(340, 124);
+  ctx.stroke();
+  ctx.restore();
+}
+
+// Spannungsmesser mit Mittelnullpunkt, Schleppzeiger und Marke der Messung davor
+function _f10dMesser(ctx, t) {
+  const z = _f10d, X = _f10d_MX, Y = _f10d_MY, R = _f10d_MR, A = _f10d_MA;
+  const bereich = _f10dBereich();
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; _bioFxRundRect(ctx, 226, 4, 186, 120, 10); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; _bioFxRundRect(ctx, 226, 4, 186, 120, 10); ctx.stroke();
+  // Skala
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(X, Y, R, -Math.PI / 2 - A, -Math.PI / 2 + A); ctx.stroke();
+  const fein = bereich === 5 ? 0.5 : 2.5, grob = bereich === 5 ? 1 : 5;
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#1f2937';
+  for (let v = -bereich; v <= bereich + 1e-9; v += fein) {
+    const w = v / bereich * A, gr = Math.abs(v / grob - Math.round(v / grob)) < 1e-9;
+    const s = Math.sin(w), c = Math.cos(w);
+    ctx.lineWidth = gr ? 1.6 : 1;
+    ctx.beginPath(); ctx.moveTo(X + s * (R - (gr ? 9 : 5)), Y - c * (R - (gr ? 9 : 5))); ctx.lineTo(X + s * R, Y - c * R); ctx.stroke();
+    if (gr) ctx.fillText(String(Math.round(Math.abs(v))), X + s * (R + 10), Y - c * (R + 10));
+  }
+  ctx.font = '700 16px sans-serif'; ctx.fillText('V', X - 30, Y - 12);   // seitlich: der Zeiger steht sonst darauf
+  if (bereich !== 5) {
+    // unten rechts, wo weder Skala noch Zeiger hinkommen
+    ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#92400e'; ctx.textAlign = 'right';
+    ctx.fillText('Messbereich', 404, 100); ctx.fillText('20 V', 404, 114);
+  }
+  // Marke der Messung davor
+  if (z.vorher != null) {
+    const w = _f10dWinkel(z.vorher), s = Math.sin(w), c = Math.cos(w);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+    if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(X + s * 36, Y - c * 36); ctx.lineTo(X + s * (R + 2), Y - c * (R + 2)); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+  }
+  // Schleppzeiger
+  if (z.schlepp > 1e-6) {
+    const w = _f10dWinkel(z.schlepp), s = Math.sin(w), c = Math.cos(w);
+    ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(X + s * 18, Y - c * 18); ctx.lineTo(X + s * (R - 4), Y - c * (R - 4)); ctx.stroke();
+  }
+  // Zeiger
+  const w = _f10dWinkel(z.u), s = Math.sin(w), c = Math.cos(w);
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(X - s * 10, Y + c * 10); ctx.lineTo(X + s * (R + 1), Y - c * (R + 1)); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(X, Y, 5, 0, 2 * Math.PI); ctx.fill();
+  // Buchsen
+  ctx.fillStyle = '#111827'; ctx.beginPath(); ctx.arc(296, 124, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(340, 124, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+
+// Hand, die den Magneten am rechten Ende haelt (Unterarm nach rechts)
+function _f10dHand(ctx, x, alpha) {
+  const y = _f10d_YA;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(x + 14, y - 9, 60, 18);
+  ctx.fillStyle = '#f5d0a9'; ctx.strokeStyle = '#b07a4f'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x - 9, y - 14, 26, 28, 7); ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  for (const dy of [-6, 0, 6]) { ctx.moveTo(x - 9, y + dy); ctx.lineTo(x + 3, y + dy); }
+  ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(x + 2, y - 15, 8, 4, -0.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz7 „Warum fällt der Magnet im Kupferrohr so langsam?“
+// (Kennung magnet-rohr, Schulbuch S. 134: Wirbelströme, lenzsches Gesetz)
+// Ein senkrechtes Rohr, 1 m lang, im Bild als durchsichtiger Laengsschnitt.
+// Rohr: „Kunststoff“, „Kupfer“, „Kupfer mit Schlitz“. Koerper: „Magnet“
+// (Nordpol rot unten, Suedpol gruen oben) oder „Eisenstück“ – gleich schwer,
+// gleich gross. Ein Halter oeffnet sich bei „▶ fallen lassen“; eine Stoppuhr
+// (Zeiger: eine Umdrehung je Sekunde, Anzeige in Zehntelsekunden) laeuft vom
+// oberen bis zum unteren Rohrende. Danach faellt der Koerper frei auf ein
+// Schaumstoffpolster.
+// Modellwerte (Profil, KAPITEL1_PROFIL.md): Fallzeit Kunststoff 0,45 s (beide
+// Koerper) · Kupfer: Magnet 3,0 s, Eisenstueck 0,45 s · Kupfer mit Schlitz:
+// Magnet 1,0 s, Eisenstueck 0,45 s.
+// Physik: frei s = ½·g·t² (g = 9,81 m/s² → 1 m in 0,4515 s, angezeigt 0,45 s).
+// Magnet im Kupfer: Bremskraft F = k·v (Wirbelstroeme ∝ Tempo), also
+// v(t) = vE·(1 − e^(−t/τ)), τ = vE/g, s(t) = vE·(t − τ·(1 − e^(−t/τ))).
+// vE wird je Rohr so bestimmt, dass s(T) = 1 m genau bei T = 3,0 s bzw. 1,0 s
+// liegt (Kupfer vE ≈ 0,34 m/s, Schlitz vE ≈ 1,13 m/s). Nach wenigen
+// Zentimetern faellt der Magnet gleichmaessig: Bremskraft = Gewichtskraft.
+// Kupfer ist nicht magnetisch: Das Eisenstueck faellt im Kupfer frei.
+// Im Bild: rote Ringe an der Rohrwand ueber und unter dem Magneten (Ströme im
+// Kupfer), Helligkeit und Umlauftempo ∝ v/vE. Richtung nach Lenz: unter dem
+// fallenden Nordpol waechst der Fluss nach unten → Ringstrom mit Feld nach
+// oben (vorn nach rechts); ueber dem Suedpol nimmt er ab → Gegenrichtung.
+// Beim Schlitz kann kein Ring um das Rohr laufen: Der untere und der obere
+// Bogen schliessen sich ueber die Schlitzkanten zu EINER schwaecheren Schleife
+// (links hoch, rechts runter) - Strom fliesst nur auf geschlossenen Bahnen. Gruene
+// Feldlinien des Magneten (laufend N → S), blauer Pfeil = bremsende Kraft
+// (Laenge ∝ v/vE, voll = Gewichtskraft).
+// Statuszeilen: „Fallzeit: 3,0 s“ (vorher „Fallzeit: – (noch nicht
+// gefallen)“, waehrenddessen „Die Stoppuhr läuft: 1,2 s“ – dieselbe Zahl wie
+// auf der Stoppuhr, in Zehntelsekunden abgeschnitten) und nur bei
+// Magnet im Rohr „Kupfer“: „Im Kupfer fließen Wirbelströme. Ihr Magnetfeld
+// bremst den Magneten.“ Im Feld der Fallzeit steht darunter die Einstellung
+// („Rohr: Kupfer · Körper: Magnet“) – so ist klar, wozu die Zeit gehoert, und
+// simfakten.js liest das Feld auch (es ueberspringt Felder unter 19 Zeichen;
+// „Fallzeit: 3,0 s“ allein hat 15). Die Stoppuhr zeigt am Ende dieselbe Zahl wie die
+// Statuszeile. Keine Zufallswerte; die Zeit laeuft aus dem Modell, nicht aus
+// gezaehlten Einzelbildern.
+// Aha: Magnet im Kupfer unten angekommen → ruhiger Lichtrahmen (0,8 Hz) um die
+// Stoppuhranzeige. Keine Zeitlupe (die Stoppuhr misst echte Zeit).
+// Start: Kunststoff, Magnet.
+// ════════════════════════════════════════════════════════════════════════
+let _f10e = null;
+const _F10E_G = 9.81;                          // m/s²
+const _F10E_K = 170;                           // px je m: das Rohr (1 m) ist 170 px lang
+const _F10E_TX = 110;                          // Rohrmitte
+const _F10E_Y0 = 36, _F10E_Y1 = 206;           // oberes / unteres Rohrende
+const _F10E_YP = 230;                          // Oberkante Schaumstoffpolster
+const _F10E_RA = 18, _F10E_RI = 13;            // halbe Rohrbreite aussen / innen
+const _F10E_BW = 11, _F10E_BH = 22;            // Koerper: halbe Breite, Hoehe
+const _F10E_SX = _F10E_TX + 5;                 // Schlitz (vorn im Rohr)
+const _F10E_UX = 322, _F10E_UY = 70, _F10E_UR = 44;   // Stoppuhr
+const _F10E_ROHR = { kunststoff: 'Kunststoff', kupfer: 'Kupfer', schlitz: 'Kupfer mit Schlitz' };
+const _F10E_KOERPER = { magnet: 'Magnet', eisen: 'Eisenstück' };
+// Fallzeit, wie sie in der Statuszeile und auf der Stoppuhr steht (Modellwerte)
+const _F10E_ZEIT = {
+  kunststoff: { magnet: '0,45', eisen: '0,45' },
+  kupfer:     { magnet: '3,0',  eisen: '0,45' },
+  schlitz:    { magnet: '1,0',  eisen: '0,45' },
+};
+// Gebremst wird nur der Magnet im Kupfer – mit diesen Fallzeiten in s
+const _F10E_TBREMS = { kupfer: 3.0, schlitz: 1.0 };
+const _F10E_HELL = { kupfer: 1, schlitz: 0.5 };    // Helligkeit der Ringe
+
+// Weg in m nach t s: frei (vE = 0) oder mit Bremskraft k·v (Endtempo vE)
+function _f10eWeg(vE, t) {
+  if (!vE) return 0.5 * _F10E_G * t * t;
+  const tau = vE / _F10E_G;
+  return vE * (t - tau * (1 - Math.exp(-t / tau)));
+}
+function _f10eTempo(vE, t) {
+  if (!vE) return _F10E_G * t;
+  return vE * (1 - Math.exp(-t * _F10E_G / vE));
+}
+// Endtempo, mit dem der Magnet 1 m genau in T s durchfaellt (Intervallhalbierung)
+function _f10eEndtempo(T) {
+  let a = 1 / T, b = 20;
+  for (let i = 0; i < 80; i++) {
+    const m = (a + b) / 2;
+    if (_f10eWeg(m, T) < 1) a = m; else b = m;
+  }
+  return (a + b) / 2;
+}
+// Fallplan der eingestellten Kombination
+function _f10ePlan() {
+  const T = _f10e.koerper === 'magnet' ? _F10E_TBREMS[_f10e.rohr] : 0;
+  if (T) return { T, vE: _f10eEndtempo(T) };
+  return { T: Math.sqrt(2 / _F10E_G), vE: 0 };
+}
+function _f10eGebremst() {
+  return _f10e.koerper === 'magnet' && _f10e.rohr !== 'kunststoff';
+}
+
+function _f10eInit() {
+  _f10e = { rohr: 'kunststoff', koerper: 'magnet', phase: 'oben', t: 0, te: 0, ta: 0,
+            plan: null, yb: _F10E_Y0, vAus: 0, ring: 0, ringPh: 0, backe: 0,
+            blitzO: 0, blitzU: 0, glanz: 0, prall: 0, letzt: '', fx: { teile: [] } };
+  _f10e.plan = _f10ePlan();
+}
+// Koerper zurueck in den Halter, Stoppuhr auf null
+function _f10eOben() {
+  const s = _f10e;
+  s.phase = 'oben'; s.te = 0; s.ta = 0; s.yb = _F10E_Y0; s.vAus = 0;
+  s.ring = 0; s.glanz = 0; s.prall = 0;
+  s.plan = _f10ePlan();
+}
+
+function _f10eHTML() {
+  const s = _f10e;
+  const r = k => `<button class="sim-btn${s.rohr === k ? ' primary' : ''}" data-f10e-rohr="${k}" onclick="_f10eRohr('${k}')">${_F10E_ROHR[k]}</button>`;
+  const kb = k => `<button class="sim-btn${s.koerper === k ? ' primary' : ''}" data-f10e-koerper="${k}" onclick="_f10eKoerper('${k}')">${_F10E_KOERPER[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Warum fällt der Magnet im Kupferrohr so langsam?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Rohr steht senkrecht. Es ist 1 m lang. Wähle ein Rohr und einen Körper. Drücke dann „▶ fallen lassen“. Die Stoppuhr misst die Zeit von oben bis unten.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10e-los" onclick="_f10eFallen()">▶ fallen lassen</button>
+          <button class="sim-btn" onclick="_f10eNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Rohr</span>
+          <div class="sim-btn-row">${['kunststoff', 'kupfer', 'schlitz'].map(r).join('')}</div>
+        </div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Körper</span>
+          <div class="sim-btn-row">${['magnet', 'eisen'].map(kb).join('')}</div>
+        </div>
+        <div class="fpm-note" style="margin-top:6px">Magnet und Eisenstück sind gleich schwer und gleich groß.</div>
+        <div class="lmp-status on" id="_f10e-status" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_f10e-wirbel" style="margin-top:6px;display:none"></div>
+        <div class="fpm-note" style="margin-top:8px">Lies die Fallzeit ab, wenn der Körper unten liegt.</div>
+        <div class="fpm-note" style="margin-top:6px"><b style="color:#16a34a">Grüne Linien:</b> Magnetfeld des Magneten. <b style="color:#dc2626">Rote Ringe:</b> Ströme im Kupfer. <b style="color:#2563eb">Blauer Pfeil:</b> Kraft, die den Magneten bremst.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Kunststoff, Magnet</p>
+  </div>`;
+}
+
+function _f10eZeile() {
+  const s = _f10e;
+  if (s.phase === 'oben') return 'Fallzeit: – (noch nicht gefallen)';
+  if (s.phase === 'faellt') return 'Die Stoppuhr läuft: ' + _f10eAnzeige();
+  return 'Fallzeit: ' + _F10E_ZEIT[s.rohr][s.koerper] + ' s';
+}
+function _f10eStatus() {
+  if (!_f10e) return;
+  const s = _f10e;
+  const st = document.getElementById('_f10e-status');
+  if (st) {
+    // Zweite Zeile im SELBEN Feld: sagt, zu welcher Einstellung die Zeit gehoert.
+    st.innerHTML = _f10eZeile() + '<br>Rohr: ' + _F10E_ROHR[s.rohr] + ' · Körper: ' + _F10E_KOERPER[s.koerper];
+    st.className = 'lmp-status on';
+  }
+  const w = document.getElementById('_f10e-wirbel');
+  if (w) {
+    const an = s.koerper === 'magnet' && s.rohr === 'kupfer' && s.phase !== 'oben';
+    w.textContent = an ? 'Im Kupfer fließen Wirbelströme. Ihr Magnetfeld bremst den Magneten.' : '';
+    if (w.style) w.style.display = an ? '' : 'none';
+  }
+  try {
+    document.querySelectorAll('[data-f10e-rohr]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-f10e-rohr') === s.rohr);
+    });
+    document.querySelectorAll('[data-f10e-koerper]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-f10e-koerper') === s.koerper);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_f10e-los');
+  if (los) {
+    const sperr = s.phase === 'faellt' || s.phase === 'aus';
+    los.disabled = sperr;
+    if (los.classList) los.classList.toggle('primary', !sperr);
+  }
+}
+
+function _f10eRohr(r) {
+  if (!_f10e || !_F10E_ROHR[r]) return;
+  _f10e.rohr = r; _f10eOben(); _f10eStatus();
+}
+function _f10eKoerper(k) {
+  if (!_f10e || !_F10E_KOERPER[k]) return;
+  _f10e.koerper = k; _f10eOben(); _f10eStatus();
+}
+function _f10eFallen() {
+  if (!_f10e || _f10e.phase === 'faellt' || _f10e.phase === 'aus') return;
+  _f10eOben();                     // liegt er schon unten: zurueck in den Halter
+  _f10e.phase = 'faellt'; _f10e.blitzO = 1;
+  _f10eStatus();
+}
+function _f10eNeu() {
+  if (!_f10e) return;
+  _f10eInit(); _f10eStatus();
+}
+
+function _f10eUpdate(dt) {
+  if (!_f10e) return;
+  dt = _bioFxDt(dt);
+  const s = _f10e, p = s.plan;
+  s.t += dt;
+  let ziel = 0;                    // Ziel fuer die Ringe: v / vE
+  if (s.phase === 'faellt') {
+    s.te += dt;
+    if (s.te >= p.T) {
+      // unteres Rohrende erreicht: Stoppuhr steht auf genau T
+      s.te = p.T; s.yb = _F10E_Y1;
+      s.vAus = _f10eTempo(p.vE, p.T);
+      s.phase = 'aus'; s.ta = 0; s.blitzU = 1;
+      _f10eStatus();
+    } else {
+      s.yb = _F10E_Y0 + _f10eWeg(p.vE, s.te) * _F10E_K;
+      if (p.vE) ziel = _f10eTempo(p.vE, s.te) / p.vE;
+      // Statuszeile laeuft mit der Stoppuhr mit (jede Zehntelsekunde)
+      const a = _f10eAnzeige();
+      if (a !== s.letzt) { s.letzt = a; _f10eStatus(); }
+    }
+  } else if (s.phase === 'aus') {
+    // unter dem Rohr: kein Kupfer mehr, der Koerper faellt frei auf das Polster
+    s.ta += dt;
+    const weg = s.vAus * s.ta + 0.5 * _F10E_G * s.ta * s.ta;
+    s.yb = Math.min(_F10E_YP, _F10E_Y1 + weg * _F10E_K);
+    if (s.yb >= _F10E_YP) {
+      s.phase = 'unten'; s.prall = 1;
+      _bioFxWelle(s.fx.teile, _F10E_TX, _F10E_YP, '#cbd5e1', 34);
+      if (s.koerper === 'magnet' && s.rohr === 'kupfer') s.glanz = 2.6;
+      _f10eStatus();
+    }
+  }
+  s.ring += (ziel - s.ring) * Math.min(1, dt * 14);
+  if (s.ring < 0.002) s.ring = 0;
+  s.ringPh += dt * 7 * s.ring;
+  const offen = s.phase === 'oben' ? 0 : 1;
+  s.backe += (offen - s.backe) * Math.min(1, dt * 10);
+  s.blitzO = Math.max(0, s.blitzO - dt * 2.5);
+  s.blitzU = Math.max(0, s.blitzU - dt * 2.5);
+  s.glanz = Math.max(0, s.glanz - dt);
+  s.prall = Math.max(0, s.prall - dt * 4);
+  _bioFxAlleUpdate(s.fx, dt);
+}
+
+// Anzeige der Stoppuhr: waehrend des Falls Zehntelsekunden (abgeschnitten),
+// am Ende genau die Zahl der Statuszeile
+function _f10eAnzeige() {
+  const s = _f10e;
+  if (s.phase === 'oben') return '0,0 s';
+  if (s.phase === 'faellt') return (Math.floor(s.te * 10 + 1e-9) / 10).toFixed(1).replace('.', ',') + ' s';
+  return _F10E_ZEIT[s.rohr][s.koerper] + ' s';
+}
+
+// Stroeme an der Rohrwand: vorn = untere Haelfte der Ellipse.
+// Kupfer: je zwei geschlossene Ringe unter und ueber dem Magneten.
+// Kupfer mit Schlitz: Um das Rohr herum kann kein Strom kreisen. Strom fliesst
+// aber nur auf geschlossenen Bahnen: Der Strom unter dem Magneten (vorn nach
+// rechts) biegt an der linken Schlitzkante nach oben in den Bogen ueber dem
+// Magneten (vorn nach links) und kommt an der rechten Kante wieder herunter -
+// eine einzige, schwache Schleife. Umlaufsinn unten und oben bleibt wie im
+// vollen Kupferrohr (Lenz).
+function _f10eRinge(ctx, vorn) {
+  const s = _f10e;
+  if (!_f10eGebremst() || s.ring < 0.02) return;
+  const TX = _F10E_TX, RA = _F10E_RA, schlitz = s.rohr === 'schlitz';
+  const hell = _F10E_HELL[s.rohr] * Math.min(1, s.ring);
+  const yu = s.yb, yo = s.yb - _F10E_BH;
+  const ymin = _F10E_Y0 + 3, ymax = _F10E_Y1 - 3;
+  const rx = RA - 1.5, ry = 5;
+  // dir -1: vorn nach rechts (unter dem Nordpol), dir +1: vorn nach links (ueber dem Suedpol)
+  const lagen = schlitz
+    // Schleife schliesst sich am Rohrende ueber den Rand: Boegen nicht ueber das Rohr hinaus
+    ? [{ y: Math.min(ymax, Math.max(ymin, yu + 5)), a: 1, dir: -1 },
+       { y: Math.min(ymax, Math.max(ymin, yo - 5)), a: 1, dir: 1 }]
+    : [{ y: yu + 5, a: 1, dir: -1 }, { y: yu + 15, a: 0.5, dir: -1 },
+       { y: yo - 5, a: 1, dir: 1 }, { y: yo - 15, a: 0.5, dir: 1 }].filter(L => L.y >= ymin && L.y <= ymax);
+  // Winkel, unter denen der vordere Bogen die rechte / linke Schlitzkante trifft
+  const KANTE = 4;
+  const phR = Math.acos(Math.max(-1, Math.min(1, (_F10E_SX + KANTE - TX) / rx)));
+  const phL = Math.acos(Math.max(-1, Math.min(1, (_F10E_SX - KANTE - TX) / rx)));
+  const bogen = (y, p0, p1) => {
+    for (let i = 0; i <= 24; i++) {
+      const ph = p0 + (p1 - p0) * i / 24;
+      const x = TX + rx * Math.cos(ph), yy = y + ry * Math.sin(ph);
+      if (i === 0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
+    }
+  };
+  const stil = (a) => {
+    ctx.strokeStyle = 'rgba(239,68,68,' + (vorn ? a : a * 0.45).toFixed(3) + ')';
+    ctx.lineWidth = vorn ? 3 : 2;
+    if (vorn) { ctx.shadowColor = '#ef4444'; ctx.shadowBlur = 8 * a; }
+  };
+  const punkt = (x, y, a) => {
+    ctx.fillStyle = vorn ? 'rgba(255,241,242,' + a.toFixed(3) + ')' : 'rgba(254,202,202,' + (a * 0.5).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(x, y, vorn ? 2 : 1.5, 0, 2 * Math.PI); ctx.fill();
+  };
+  for (const L of lagen) {
+    const a = hell * L.a;
+    ctx.save();
+    stil(a);
+    ctx.beginPath();
+    if (!vorn) bogen(L.y, Math.PI, 2 * Math.PI);
+    else if (!schlitz) bogen(L.y, 0, Math.PI);
+    else { bogen(L.y, 0, phR); bogen(L.y, phL, Math.PI); }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    // kreisende Punkte zeigen die Stromrichtung
+    for (let j = 0; j < 6; j++) {
+      let ph = (L.dir * s.ringPh + j * Math.PI / 3) % (2 * Math.PI);
+      if (ph < 0) ph += 2 * Math.PI;
+      if ((ph < Math.PI) !== vorn) continue;
+      if (schlitz && vorn && ph > phR && ph < phL) continue;
+      punkt(TX + rx * Math.cos(ph), L.y + ry * Math.sin(ph), a);
+    }
+    ctx.restore();
+  }
+  // Schlitz: die beiden Boegen ueber die Schlitzkanten zu einer Schleife schliessen
+  if (schlitz && vorn && lagen.length === 2) {
+    const yU = lagen[0].y, yO = lagen[1].y, a = hell, h = yU - yO;
+    const xL = _F10E_SX - KANTE, xR = _F10E_SX + KANTE;
+    const dL = ry * Math.sin(phL), dR = ry * Math.sin(phR);
+    const kanten = () => {
+      ctx.beginPath();
+      ctx.moveTo(xL, yU + dL); ctx.lineTo(xL, yO + dL);    // linke Kante: Strom nach oben
+      ctx.moveTo(xR, yO + dR); ctx.lineTo(xR, yU + dR);    // rechte Kante: Strom nach unten
+      ctx.stroke();
+    };
+    ctx.save();
+    stil(a);
+    kanten();
+    ctx.shadowBlur = 0;
+    // helle Innenlinie: die Kanten laufen vor dem Magneten vorbei (rot auf rot sonst unsichtbar)
+    ctx.strokeStyle = 'rgba(255,228,230,' + (0.9 * a).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    kanten();
+    if (h > 6) {
+      for (let j = 0; j < 2; j++) {
+        const f = (s.ringPh * 0.5 + j / 2) % 1;
+        punkt(xL, yU + dL - f * h, a);
+        punkt(xR, yO + dR + f * h, a);
+      }
+    }
+    ctx.restore();
+  }
+}
+
+// Feldlinien des Magneten: aus dem Nordpol (unten) heraus, in den Suedpol (oben) hinein
+function _f10eFeld(ctx, x, yb, t) {
+  const h = _F10E_BH, yn = yb, ys = yb - h;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(22,163,74,0.55)'; ctx.lineWidth = 1.3;
+  if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+  ctx.lineDashOffset = -((t * 14) % 9);
+  for (const sg of [-1, 1]) {
+    for (let k = 1; k <= 3; k++) {
+      const x0 = x + sg * 2.7 * k, bx = x + sg * (10 + 13 * k), dy = 8 + 7 * k;
+      ctx.beginPath(); ctx.moveTo(x0, yn);
+      ctx.bezierCurveTo(bx, yn + dy, bx, ys - dy, x0, ys);
+      ctx.stroke();
+    }
+  }
+  ctx.beginPath(); ctx.moveTo(x, yn); ctx.lineTo(x, yn + 20); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, ys - 20); ctx.lineTo(x, ys); ctx.stroke();
+  ctx.restore();
+}
+
+function _f10eKoerperBild(ctx, x, yb) {
+  const s = _f10e, w = _F10E_BW, h = _F10E_BH, y0 = yb - h;
+  ctx.save();
+  if (s.koerper === 'magnet') {
+    ctx.fillStyle = '#15803d'; ctx.fillRect(x - w, y0, 2 * w, h / 2);        // Suedpol oben
+    ctx.fillStyle = '#dc2626'; ctx.fillRect(x - w, y0 + h / 2, 2 * w, h / 2); // Nordpol unten
+    ctx.fillStyle = 'rgba(255,255,255,0.25)'; ctx.fillRect(x - w + 2, y0 + 1, 3, h - 2);
+    ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1; ctx.strokeRect(x - w, y0, 2 * w, h);
+    ctx.fillStyle = '#ffffff'; ctx.font = '700 12px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('S', x, y0 + h / 4 + 0.5);
+    ctx.fillText('N', x, y0 + 3 * h / 4 + 0.5);
+  } else {
+    const g = ctx.createLinearGradient(x - w, 0, x + w, 0);
+    g.addColorStop(0, '#9ca3af'); g.addColorStop(0.35, '#d1d5db'); g.addColorStop(1, '#4b5563');
+    ctx.fillStyle = g; ctx.fillRect(x - w, y0, 2 * w, h);
+    ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1; ctx.strokeRect(x - w, y0, 2 * w, h);
+  }
+  ctx.restore();
+}
+
+function _f10ePfeil(ctx, x, y0, y1, farbe, breite) {
+  const d = y1 < y0 ? -1 : 1;
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = breite;
+  ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y1 - d * 6); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y1); ctx.lineTo(x - 5.5, y1 - d * 9); ctx.lineTo(x + 5.5, y1 - d * 9);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+
+function _f10eDraw(ctx, cv) {
+  if (!_f10e) return;
+  const s = _f10e, W = cv.width, H = cv.height, t = s.t;
+  const TX = _F10E_TX, Y0 = _F10E_Y0, Y1 = _F10E_Y1, RA = _F10E_RA, RI = _F10E_RI;
+  const kupfer = s.rohr !== 'kunststoff', schlitz = s.rohr === 'schlitz';
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#cbb89a'; ctx.fillRect(0, 242, W, H - 242);
+
+  // Stativ mit zwei Klemmen am Rohr und einem Arm fuer den Halter
+  ctx.fillStyle = '#94a3b8';
+  ctx.fillRect(166, 4, 5, 238); ctx.fillRect(146, 237, 46, 5);
+  ctx.fillStyle = '#64748b';
+  for (const y of [70, 176]) { ctx.fillRect(TX + RA, y - 2, 166 - TX - RA, 4); ctx.fillRect(TX + RA - 1, y - 5, 4, 10); }
+  ctx.fillRect(TX - 20, 6, 166 - TX + 20, 4);
+
+  // Massangabe 1 m
+  const DX = 74;
+  ctx.save();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  if (ctx.setLineDash) ctx.setLineDash([2, 3]);
+  ctx.beginPath(); ctx.moveTo(DX - 4, Y0); ctx.lineTo(TX - RA - 2, Y0); ctx.moveTo(DX - 4, Y1); ctx.lineTo(TX - RA - 2, Y1); ctx.stroke();
+  ctx.restore();
+  ctx.save();
+  ctx.strokeStyle = '#475569'; ctx.fillStyle = '#475569'; ctx.lineWidth = 1.4;
+  ctx.beginPath(); ctx.moveTo(DX, Y0 + 2); ctx.lineTo(DX, Y1 - 2); ctx.stroke();
+  for (const [y, d] of [[Y0, 1], [Y1, -1]]) {
+    ctx.beginPath(); ctx.moveTo(DX, y); ctx.lineTo(DX - 4, y + d * 8); ctx.lineTo(DX + 4, y + d * 8); ctx.closePath(); ctx.fill();
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 13px sans-serif';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  ctx.fillText('1 m', DX - 6, (Y0 + Y1) / 2);
+  ctx.restore();
+
+  // Kabel von den beiden Messstellen zur Stoppuhr
+  ctx.save();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(TX + RA + 7, Y0 + 5);
+  ctx.bezierCurveTo(200, Y0 - 6, 240, 60, _F10E_UX - _F10E_UR - 4, _F10E_UY + 8); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(TX + RA + 7, Y1 - 5);
+  ctx.bezierCurveTo(210, Y1 + 8, 240, 130, _F10E_UX - _F10E_UR - 4, _F10E_UY + 16); ctx.stroke();
+  ctx.restore();
+
+  // Schaumstoffpolster
+  ctx.fillStyle = '#fde68a'; ctx.fillRect(TX - 28, _F10E_YP, 56, 242 - _F10E_YP);
+  ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 1; ctx.strokeRect(TX - 28, _F10E_YP, 56, 242 - _F10E_YP);
+  ctx.fillStyle = 'rgba(202,138,4,0.45)';
+  for (let i = 0; i < 9; i++) { ctx.beginPath(); ctx.arc(TX - 22 + i * 5.5, _F10E_YP + 4 + (i % 3) * 3, 1, 0, 2 * Math.PI); ctx.fill(); }
+
+  // Rohr, Rueckseite (Innenraum)
+  if (kupfer) {
+    const g = ctx.createLinearGradient(TX - RA, 0, TX + RA, 0);
+    g.addColorStop(0, '#7a3e1c'); g.addColorStop(0.5, '#a05a30'); g.addColorStop(1, '#6b3518');
+    ctx.fillStyle = g;
+  } else ctx.fillStyle = 'rgba(203,213,225,0.35)';
+  ctx.fillRect(TX - RA, Y0, 2 * RA, Y1 - Y0);
+  // Oeffnung oben: ganzer Rand und dunkles Innere (hinter dem Koerper)
+  if (ctx.ellipse) {
+    ctx.fillStyle = kupfer ? '#b46a3a' : 'rgba(203,213,225,0.9)';
+    ctx.beginPath(); ctx.ellipse(TX, Y0, RA, 4.5, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = kupfer ? '#3b1d0c' : 'rgba(100,116,139,0.55)';
+    ctx.beginPath(); ctx.ellipse(TX, Y0, RI, 3, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  _f10eRinge(ctx, false);
+
+  // Koerper (im Halter, im Rohr oder auf dem Polster)
+  let yb = s.yb;
+  if (s.phase === 'unten' && s.prall > 0) yb -= 3 * Math.sin(Math.PI * (1 - s.prall)) * s.prall;
+  _f10eKoerperBild(ctx, TX, yb);
+
+  // Rohr, Vorderseite: Waende deckend, Mitte durchscheinend
+  if (kupfer) {
+    const g = ctx.createLinearGradient(TX - RA, 0, TX + RA, 0);
+    g.addColorStop(0, '#9a5524'); g.addColorStop(0.3, '#d08a52'); g.addColorStop(1, '#8a4a20');
+    ctx.fillStyle = g;
+    ctx.fillRect(TX - RA, Y0, RA - RI, Y1 - Y0); ctx.fillRect(TX + RI, Y0, RA - RI, Y1 - Y0);
+    ctx.fillStyle = 'rgba(205,127,50,0.22)'; ctx.fillRect(TX - RI, Y0, 2 * RI, Y1 - Y0);
+  } else {
+    ctx.fillStyle = 'rgba(148,163,184,0.55)';
+    ctx.fillRect(TX - RA, Y0, RA - RI, Y1 - Y0); ctx.fillRect(TX + RI, Y0, RA - RI, Y1 - Y0);
+    ctx.fillStyle = 'rgba(255,255,255,0.18)'; ctx.fillRect(TX - RI, Y0, 2 * RI, Y1 - Y0);
+  }
+  ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(TX - RA + 3, Y0 + 4); ctx.lineTo(TX - RA + 3, Y1 - 4); ctx.stroke();
+  if (schlitz) {
+    ctx.fillStyle = '#2b1609'; ctx.fillRect(_F10E_SX - 1.5, Y0, 3, Y1 - Y0);
+  }
+  ctx.strokeStyle = kupfer ? '#5c2c14' : '#64748b'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(TX - RA, Y0, 2 * RA, Y1 - Y0);
+  // vorderer Rand der Oeffnung oben (liegt vor dem Koerper) und unteres Ende
+  if (ctx.ellipse) {
+    ctx.fillStyle = kupfer ? '#b46a3a' : 'rgba(203,213,225,0.9)';
+    ctx.beginPath(); ctx.ellipse(TX, Y0, RA, 4.5, 0, 0, Math.PI);
+    ctx.ellipse(TX, Y0, RI, 3, 0, Math.PI, 0, true); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = kupfer ? '#5c2c14' : '#64748b'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(TX, Y0, RA, 4.5, 0, 0, Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(TX, Y1, RA, 4.5, 0, 0, Math.PI); ctx.stroke();
+  }
+  _f10eRinge(ctx, true);
+
+  // Feldlinien und bremsende Kraft
+  if (s.koerper === 'magnet') _f10eFeld(ctx, TX, yb, t);
+  if (_f10eGebremst() && s.ring > 0.03) {
+    const yo = yb - _F10E_BH;
+    _f10ePfeil(ctx, TX, yo, yo - 34 * Math.min(1, s.ring), '#2563eb', 3.5);
+  }
+
+  // Halter oben: zwei Backen, die sich beim Loslassen oeffnen
+  const off = 7 * s.backe;
+  ctx.fillStyle = '#475569';
+  ctx.fillRect(TX - _F10E_BW - 5 - off, 8, 4, 22);
+  ctx.fillRect(TX + _F10E_BW + 1 + off, 8, 4, 22);
+  ctx.fillRect(TX - _F10E_BW - 5 - off, 26, 6, 4);
+  ctx.fillRect(TX + _F10E_BW - 1 + off, 26, 6, 4);
+
+  // Messstellen oben und unten (leuchten kurz beim Start und beim Ziel)
+  for (const [y, b] of [[Y0 + 5, s.blitzO], [Y1 - 5, s.blitzU]]) {
+    ctx.fillStyle = '#334155'; ctx.fillRect(TX + RA, y - 5, 8, 10);
+    ctx.fillStyle = b > 0 ? 'rgba(245,158,11,' + (0.45 + 0.55 * b).toFixed(3) + ')' : '#94a3b8';
+    ctx.beginPath(); ctx.arc(TX + RA + 4, y, 2.5, 0, 2 * Math.PI); ctx.fill();
+  }
+
+  // Stoppuhr
+  const UX = _F10E_UX, UY = _F10E_UY, UR = _F10E_UR;
+  ctx.fillStyle = '#4b5563'; ctx.fillRect(UX - 7, UY - UR - 12, 14, 7); ctx.fillRect(UX - 3, UY - UR - 6, 6, 5);
+  ctx.fillStyle = '#374151';
+  ctx.beginPath(); ctx.arc(UX, UY, UR + 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath(); ctx.arc(UX, UY, UR, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#1f2937';
+  for (let i = 0; i < 50; i++) {
+    const a = -Math.PI / 2 + i * 2 * Math.PI / 50, lang = i % 5 === 0;
+    ctx.lineWidth = lang ? 2 : 0.8;
+    ctx.beginPath();
+    ctx.moveTo(UX + Math.cos(a) * (UR - (lang ? 9 : 5)), UY + Math.sin(a) * (UR - (lang ? 9 : 5)));
+    ctx.lineTo(UX + Math.cos(a) * (UR - 2), UY + Math.sin(a) * (UR - 2));
+    ctx.stroke();
+  }
+  const tz = s.phase === 'oben' ? 0 : s.te;
+  const wz = -Math.PI / 2 + tz * 2 * Math.PI;      // eine Umdrehung je Sekunde
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(UX - Math.cos(wz) * 8, UY - Math.sin(wz) * 8);
+  ctx.lineTo(UX + Math.cos(wz) * (UR - 7), UY + Math.sin(wz) * (UR - 7));
+  ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(UX, UY, 3.5, 0, 2 * Math.PI); ctx.fill();
+  // Anzeige unter der Uhr
+  ctx.fillStyle = '#374151'; ctx.fillRect(UX - 48, 121, 96, 30);
+  if (s.glanz > 0) {
+    // Aha: ruhiger Lichtrahmen um die Anzeige (Puls 0,8 Hz)
+    const puls = 0.6 + 0.4 * Math.sin(t * Math.PI * 2 * 0.8);
+    ctx.save(); ctx.globalAlpha = Math.min(1, s.glanz) * puls;
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3; ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 12;
+    ctx.strokeRect(UX - 51, 118, 102, 36); ctx.restore();
+  }
+  ctx.fillStyle = '#dfe8d4'; ctx.fillRect(UX - 44, 124, 88, 24);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 18px ui-monospace, monospace';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(_f10eAnzeige(), UX, 137);
+
+  // Was gerade eingestellt ist
+  ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.fillRect(240, 164, 168, 70);
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; ctx.strokeRect(240, 164, 168, 70);
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#475569'; ctx.font = '600 12px sans-serif';
+  ctx.fillText('Rohr:', 248, 180); ctx.fillText('Körper:', 248, 212);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 13px sans-serif';
+  ctx.fillText(_F10E_ROHR[s.rohr], 248, 196); ctx.fillText(_F10E_KOERPER[s.koerper], 248, 228);
+
+  _bioFxAlleDraw(ctx, s.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz8 „Wie erzeugt ein Generator Wechselspannung?“
+// (Kennung wechselgenerator)
+// Ein Stabmagnet (Nordpol rot, Suedpol gruen) dreht sich vor einer Spule mit
+// Eisenkern – wie im Fahrraddynamo. An der Spule haengen parallel ein
+// Spannungsmesser (am Bildschirm wie im Heft: „Messgerät“) mit dem Nullpunkt
+// in der Mitte und eine Lampe. Unten
+// schreibt ein Diagramm U ueber t (Fenster 2 s, der Schreibkopf laeuft immer,
+// auch wenn der Magnet steht).
+// Knoepfe: „1 / 2 / 4 Umdrehungen pro Sekunde“ (waehlt die Drehzahl und dreht
+// sofort damit), „▶ drehen“ / „anhalten“ (zwei Knoepfe auf einem Platz, immer
+// nur einer sichtbar),
+// „Batterie zum Vergleich“ (Batterie statt Spule an Spannungsmesser und
+// Lampe), „neu“. Start: 1 Umdrehung pro Sekunde, der Magnet steht still.
+//
+// Physik (Modellwerte, Lehrerteil): Fluss in der Spule ~ cos(phi), induzierte
+// Spannung U = U^ · sin(phi), U^ = 1,0 V je Umdrehung pro Sekunde
+// (U^ ~ Drehzahl, weil U ~ Aenderungsrate des Flusses), Frequenz = Umdrehungen
+// pro Sekunde (ein Polpaar). U ist am groessten, wenn der Magnet QUER zur
+// Spule steht (Fluss geht gerade durch null), und null, wenn ein Pol genau auf
+// die Spule zeigt (Fluss am groessten, aendert sich dort nicht).
+// Gruener Pfeil im Eisenkern = Magnetfeld in der Spule, Laenge ~ cos(phi).
+// Rote Punkte auf der Leitung = Strom (technische Richtung, + → −). Ihr Hin-
+// und Herweg ist bei jeder Drehzahl gleich lang (verschobene Ladung ~
+// Flussaenderung), sie laufen nur schneller hin und her. Durch den
+// Spannungsmesser fliesst (praktisch) kein Strom – dort keine Punkte.
+// Lampe traege (Gluehfaden, Zeitkonstante 0,12 s), Helligkeit ~ |U|: bei
+// 1 U/s flackert sie schwach mit 2 Hz, bei 4 U/s leuchtet sie fast ruhig und
+// hell. Batterie: 1,5 V konstant, Zeiger bleibt rechts, Kurve waagerecht.
+//
+// Statuszeilen (Profil fz8, woertlich):
+//   _f10f-status  „Höchste Spannung: 1,0 V · Frequenz: 1 Hz“
+//                 (2 → 2,0 V · 2 Hz, 4 → 4,0 V · 4 Hz)
+//   _f10f-art     „Der Zeiger schlägt abwechselnd nach links und nach rechts
+//                 aus: Wechselspannung.“
+//   Batterie:     _f10f-status „Batterie: 1,5 V. Der Zeiger bleibt auf einer
+//                 Seite: Gleichspannung.“ (zweite Zeile leer und verborgen)
+//   Magnet steht: KEINE Statuszeile (beide Zeilen leer und verborgen; so will
+//                 es der sim_plan von fz8). Dass er steht, sagt das Bild
+//                 („Magnet steht still“), der Zeiger steht auf 0.
+//   Info-Kasten:  „In der Steckdose: 50 Hz.“
+// Die Statuszeile springt sofort mit dem Knopf; Drehzahl und Spannung
+// wechseln im Modell ohne Anlauf (sonst stimmt die Zaehlung unten nicht).
+//
+// Aha (_bioFx, ruhig): Bei jedem Wechsel beginnt das Diagramm links neu, die
+// alte Kurve bleibt gestrichelt als „vorher“ stehen – hoeher UND dichter.
+// In der ersten Sekunde jedes Durchlaufs bekommen die Wellenberge beim
+// Schreiben die Nummern 1, 2, 3 … – es sind so viele, wie die Statuszeile Hz
+// nennt; an der 1-s-Linie ein Lichtring.
+// Deterministisch, ohne Zufall; Zahlen im Bild (Skalen, 1,5 V auf der
+// Batterie, Nummern der Wellenberge) passen zur Statuszeile.
+// ════════════════════════════════════════════════════════════════════════
+let _f10f = null;
+const _f10fK = {
+  UPRO: 1.0,                   // V Scheitelspannung je Umdrehung pro Sekunde
+  UBAT: 1.5,                   // V Batterie
+  FENSTER: 2,                  // s im Diagramm
+  PXS: 184,                    // px je s
+  SPALTEN: 368,                // FENSTER * PXS
+  GX: 40, GY0: 158, GY1: 234, GYM: 196, PXV: 7,      // Diagramm (±5 V)
+  MX: 62, MY: 72, ML: 38, MB: 10,                    // Magnet
+  KX0: 108, KX1: 186, KY: 72,                        // Eisenkern
+  SPO: 114, SPU: 182,                                // Spulenanschluesse (x)
+  BX: 147,                                           // Batterie (x)
+  OBEN: 16, UNTEN: 132,                              // Leitungen (y)
+  VX: 262, VY: 104, VR: 50,                          // Spannungsmesser
+  LX: 362, LY: 56,                                   // Lampe
+  PFAD0: 190, STROM: 100,      // Strompunkte: ab x, px je (V · s)
+  TAU: 0.12                    // s Traegheit des Gluehfadens
+};
+
+function _f10fInit() {
+  _f10f = { n: 1, quelle: 'gen', laeuft: false, w: 0, phi: 0, t: 0,
+            U: 0, mix: 0, lampe: 0, s: 0,
+            spur: new Array(_f10fK.SPALTEN).fill(null), spalte: 0, ts: 0,
+            phi0: 0, phiStart: 0, zaehlbar: false, einsGezeigt: false,
+            geist: null, fx: { teile: [] } };
+}
+function _f10fKomma(v, st) { return v.toFixed(st).replace('.', ','); }
+function _f10fTempoText(n) {
+  return n === 1 ? '1 Umdrehung pro Sekunde' : n + ' Umdrehungen pro Sekunde';
+}
+// Was gerade anliegt – fuer die „vorher“-Kurve. null = Magnet steht.
+function _f10fZustand() {
+  const z = _f10f;
+  if (z.quelle === 'bat') return { art: 'bat' };
+  return z.laeuft ? { art: 'gen', n: z.n } : null;
+}
+function _f10fGleich(a, b) {
+  return !!a && !!b && a.art === b.art && (a.art === 'bat' || a.n === b.n);
+}
+function _f10fZeilen() {
+  const z = _f10f;
+  if (z.quelle === 'bat')
+    return ['Batterie: 1,5 V. Der Zeiger bleibt auf einer Seite: Gleichspannung.', ''];
+  if (!z.laeuft) return ['', ''];                 // Magnet steht: keine Statuszeile
+  return ['Höchste Spannung: ' + _f10fKomma(z.n * _f10fK.UPRO, 1) + ' V · Frequenz: ' + z.n + ' Hz',
+          'Der Zeiger schlägt abwechselnd nach links und nach rechts aus: Wechselspannung.'];
+}
+
+function _f10fHTML() {
+  const k = n => `<button class="sim-btn" data-f10f="${n}" onclick="_f10fTempo(${n})">${_f10fTempoText(n)}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie erzeugt ein Generator Wechselspannung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Magnet dreht sich vor einer Spule – wie im Fahrraddynamo. An der Spule hängen ein Messgerät und eine Lampe. Beim Messgerät ist die Null in der Mitte.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10f-dreh" onclick="_f10fDreh()">▶ drehen</button>
+          <button class="sim-btn" id="_f10f-halt" onclick="_f10fHalt()" style="display:none">anhalten</button>
+          <button class="sim-btn" id="_f10f-bat" onclick="_f10fBatterie()">Batterie zum Vergleich</button>
+          <button class="sim-btn" onclick="_f10fNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">So schnell dreht sich der Magnet</span>
+          <div class="sim-btn-row">
+            ${k(1)}
+            ${k(2)}
+            ${k(4)}
+          </div>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Messgerät</div>
+        <div class="lmp-status" id="_f10f-status" style="margin-top:6px;display:none"></div>
+        <div class="lmp-status" id="_f10f-art" style="margin-top:6px;display:none"></div>
+        <div class="fpm-note" style="margin-top:8px">Achte auf den Zeiger, auf die Lampe und auf die Kurve im Diagramm unten.</div>
+        <div class="fpm-label" style="margin-top:10px">Info</div>
+        <div class="fpm-note" style="margin-top:4px">In der Steckdose: 50 Hz.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 1 Umdrehung pro Sekunde, der Magnet steht still &nbsp;|&nbsp; „neu“ stellt alles auf Anfang.</p>
+  </div>`;
+}
+
+function _f10fStatus() {
+  if (!_f10f) return;
+  const z = _f10f, [a, b] = _f10fZeilen();
+  const st = document.getElementById('_f10f-status');
+  if (st) {
+    st.textContent = a;
+    st.className = 'lmp-status' + (a ? ' on' : '');
+    if (st.style) st.style.display = a ? '' : 'none';
+  }
+  const ar = document.getElementById('_f10f-art');
+  if (ar) {
+    ar.textContent = b;
+    ar.className = 'lmp-status' + (b ? ' on' : '');
+    if (ar.style) ar.style.display = b ? '' : 'none';
+  }
+  // „▶ drehen“ und „anhalten“ teilen sich den Platz: immer nur einer zu sehen.
+  const dr = document.getElementById('_f10f-dreh'), ha = document.getElementById('_f10f-halt');
+  if (dr && dr.style) dr.style.display = z.laeuft ? 'none' : '';
+  if (ha && ha.style) ha.style.display = z.laeuft ? '' : 'none';
+  const bt = document.getElementById('_f10f-bat');
+  if (bt && bt.classList) bt.classList.toggle('primary', z.quelle === 'bat');
+  try {
+    document.querySelectorAll('[data-f10f]').forEach(el => {
+      const n = Number(el.getAttribute('data-f10f'));
+      if (el.classList) el.classList.toggle('primary', z.quelle === 'gen' && z.n === n);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+// Neuer Durchlauf im Diagramm: links beginnen, die alte Kurve als „vorher“.
+function _f10fNeustart(alt) {
+  const z = _f10f, neu = _f10fZustand();
+  if (alt && !_f10fGleich(alt, neu)) z.geist = alt;
+  else if (_f10fGleich(z.geist, neu)) z.geist = null;
+  z.spur = new Array(_f10fK.SPALTEN).fill(null);
+  z.spalte = 0; z.ts = 0;
+  z.phi0 = z.phi; z.phiStart = z.phi;
+  z.zaehlbar = z.quelle === 'gen' && z.laeuft;
+  z.einsGezeigt = false;
+}
+function _f10fTempo(n) {
+  if (!_f10f || (n !== 1 && n !== 2 && n !== 4)) return;
+  const z = _f10f, alt = _f10fZustand();
+  const schon = z.quelle === 'gen' && z.laeuft && z.n === n;
+  z.n = n; z.quelle = 'gen'; z.laeuft = true; z.w = 2 * Math.PI * n;
+  if (!schon) _f10fNeustart(alt);
+  _f10fStatus();
+}
+// „▶ drehen“: mit der gewaehlten Drehzahl los (auch aus der Batterie zurueck).
+function _f10fDreh() {
+  if (!_f10f || (_f10f.quelle === 'gen' && _f10f.laeuft)) return;
+  const z = _f10f, alt = _f10fZustand();
+  z.quelle = 'gen'; z.laeuft = true; z.w = 2 * Math.PI * z.n;
+  _f10fNeustart(alt);
+  _f10fStatus();
+}
+// „anhalten“: der Magnet steht sofort, die Kurve laeuft als Nulllinie weiter.
+function _f10fHalt() {
+  if (!_f10f || !_f10f.laeuft) return;
+  const z = _f10f;
+  z.laeuft = false; z.w = 0; z.zaehlbar = false;
+  _f10fStatus();
+}
+function _f10fBatterie() {
+  if (!_f10f || _f10f.quelle === 'bat') return;
+  const z = _f10f, alt = _f10fZustand();
+  z.quelle = 'bat'; z.laeuft = false; z.w = 0;
+  _f10fNeustart(alt);
+  _f10fStatus();
+}
+function _f10fNeu() {
+  if (!_f10f) return;
+  _f10fInit(); _f10fStatus();
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+// Spannung an Spannungsmesser und Lampe beim Drehwinkel phi.
+function _f10fUBei(phi) {
+  const z = _f10f;
+  if (z.quelle === 'bat') return _f10fK.UBAT;
+  return z.w / (2 * Math.PI) * _f10fK.UPRO * Math.sin(phi);
+}
+// Schreibkopf: jede Spalte (1/184 s) bekommt den Wert zu IHRER Zeit, auch
+// wenn ein Bild mehrere Spalten ueberspringt (bei 4 Hz sind das 3 je Bild).
+function _f10fSchreiben(dt, phiAlt) {
+  const z = _f10f, K = _f10fK;
+  let t0 = z.ts, t1 = z.ts + dt;
+  for (let schutz = 0; schutz < 4000; schutz++) {
+    if (z.spalte >= K.SPALTEN) {                 // Fenster voll: links weiter
+      const d = K.FENSTER - t0;                  // Zeit vom Bildanfang bis zum Umbruch
+      z.phi0 = phiAlt + z.w * d;
+      z.zaehlbar = z.quelle === 'gen' && z.laeuft;
+      z.einsGezeigt = false;
+      t0 -= K.FENSTER; t1 -= K.FENSTER; z.spalte = 0;
+    }
+    const tc = z.spalte / K.PXS;
+    if (tc > t1 + 1e-9) break;
+    z.spur[z.spalte] = _f10fUBei(phiAlt + z.w * (tc - t0));
+    for (let g = 1; g <= 8; g++) z.spur[(z.spalte + g) % K.SPALTEN] = null;   // Luecke vor dem Kopf
+    z.spalte++;
+  }
+  z.ts = t1;
+}
+// Zeiten der Wellenberge (U = U^) in der ersten Sekunde des Durchlaufs.
+function _f10fBerge() {
+  const z = _f10f, out = [];
+  if (!z.zaehlbar || z.quelle !== 'gen' || !(z.w > 0)) return out;
+  const zw = 2 * Math.PI;
+  let d = (Math.PI / 2 - z.phi0) % zw;
+  if (d < 0) d += zw;
+  for (let k = 0; k < 8; k++) {
+    const tk = (d + zw * k) / z.w;
+    if (tk >= 1 - 1e-9) break;
+    out.push(tk);
+  }
+  return out;
+}
+function _f10fUpdate(dt) {
+  if (!_f10f) return;
+  dt = _bioFxDt(dt);
+  const z = _f10f, K = _f10fK;
+  z.t += dt;
+  const phiAlt = z.phi;
+  z.phi += z.w * dt;
+  _f10fSchreiben(dt, phiAlt);
+  z.U = _f10fUBei(z.phi);
+  z.mix += ((z.quelle === 'bat' ? 1 : 0) - z.mix) * Math.min(1, dt * 6);
+  const P = z.U * z.U / 16;                                 // relativ zu 4 V
+  z.lampe += (P - z.lampe) * (1 - Math.exp(-dt / K.TAU));
+  z.s += K.STROM * z.U * dt;
+  if (z.zaehlbar && !z.einsGezeigt && z.ts >= 1) {
+    z.einsGezeigt = true;
+    _bioFxWelle(z.fx.teile, K.GX + K.PXS, K.GYM, '#fbbf24', 28);
+  }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _f10fDraw(ctx, cv) {
+  if (!_f10f) return;
+  const z = _f10f, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e8edf3');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  _f10fLeitungen(ctx);
+  _f10fStromPunkte(ctx);
+  // Wechsel der Quelle: erst blendet die eine aus, dann die andere ein.
+  const aGen = _bioFxKlemme(1 - 2 * z.mix), aBat = _bioFxKlemme(2 * z.mix - 1);
+  if (aGen > 0.01) { ctx.save(); ctx.globalAlpha = aGen; _f10fGenerator(ctx); ctx.restore(); }
+  if (aBat > 0.01) { ctx.save(); ctx.globalAlpha = aBat; _f10fBatterieBild(ctx); ctx.restore(); }
+  _f10fMesser(ctx);
+  _f10fLampe(ctx);
+  _f10fDiagramm(ctx);
+  ctx.textBaseline = 'alphabetic';
+  _bioFxAlleDraw(ctx, z.fx);
+}
+function _f10fLeitungen(ctx) {
+  const z = _f10f, K = _f10fK, bat = z.quelle === 'bat';
+  const xo = bat ? K.BX : K.SPO, xu = bat ? K.BX : K.SPU;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(xo, K.OBEN); ctx.lineTo(K.LX, K.OBEN);
+  ctx.moveTo(xu, K.UNTEN); ctx.lineTo(K.LX, K.UNTEN);
+  ctx.moveTo(K.VX, K.OBEN); ctx.lineTo(K.VX, 26);              // zum Spannungsmesser
+  ctx.moveTo(K.VX, 118); ctx.lineTo(K.VX, K.UNTEN);
+  ctx.moveTo(K.LX, K.OBEN); ctx.lineTo(K.LX, K.LY - 15);       // zur Lampe
+  ctx.moveTo(K.LX, K.LY + 31); ctx.lineTo(K.LX, K.UNTEN);
+  ctx.stroke();
+  ctx.fillStyle = '#334155';
+  for (const y of [K.OBEN, K.UNTEN]) { ctx.beginPath(); ctx.arc(K.VX, y, 3.2, 0, 2 * Math.PI); ctx.fill(); }
+}
+// Punkt auf dem Stromweg ausserhalb der Quelle: oben nach rechts, durch die
+// Lampe nach unten, unten nach links (Richtung bei U > 0).
+function _f10fPfad(s) {
+  const K = _f10fK, a = K.LX - K.PFAD0, b = K.UNTEN - K.OBEN, L = 2 * a + b;
+  s = ((s % L) + L) % L;
+  if (s < a) return { x: K.PFAD0 + s, y: K.OBEN, senk: false };
+  s -= a;
+  if (s < b) return { x: K.LX, y: K.OBEN + s, senk: true };
+  s -= b;
+  return { x: K.LX - s, y: K.UNTEN, senk: false };
+}
+function _f10fStromPunkte(ctx) {
+  const z = _f10f, K = _f10fK;
+  const L = 2 * (K.LX - K.PFAD0) + (K.UNTEN - K.OBEN), n = 20;
+  ctx.fillStyle = '#dc2626';
+  for (let i = 0; i < n; i++) {
+    const p = _f10fPfad(z.s + i * L / n);
+    if (p.senk && p.y > K.LY - 20 && p.y < K.LY + 36) continue;      // in der Lampe
+    ctx.beginPath(); ctx.arc(p.x, p.y, 2.8, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _f10fGenerator(ctx) {
+  const z = _f10f, K = _f10fK;
+  // Drehpfeil (gegen den Uhrzeigersinn), nur wenn der Magnet dreht
+  if (z.laeuft) {
+    const r = 48, a0 = -0.15 * Math.PI, a1 = -0.85 * Math.PI;
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(K.MX, K.MY, r, a0, a1, true); ctx.stroke();
+    const px = K.MX + r * Math.cos(a1), py = K.MY + r * Math.sin(a1);
+    const tx = Math.sin(a1), ty = -Math.cos(a1);                    // Laufrichtung
+    ctx.fillStyle = '#64748b';
+    ctx.beginPath();
+    ctx.moveTo(px + tx * 7, py + ty * 7);
+    ctx.lineTo(px - ty * 5, py + tx * 5);
+    ctx.lineTo(px + ty * 5, py - tx * 5);
+    ctx.closePath(); ctx.fill();
+  }
+  // Stabmagnet
+  ctx.save(); ctx.translate(K.MX, K.MY); ctx.rotate(-z.phi);
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(0, -K.MB, K.ML, 2 * K.MB);
+  ctx.fillStyle = '#16a34a'; ctx.fillRect(-K.ML, -K.MB, K.ML, 2 * K.MB);
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(-K.ML, -K.MB, 2 * K.ML, 2 * K.MB);
+  ctx.restore();
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(K.MX, K.MY, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  const c = Math.cos(z.phi), s = Math.sin(z.phi);
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('N', K.MX + 25 * c, K.MY - 25 * s + 1);
+  ctx.fillText('S', K.MX - 25 * c, K.MY + 25 * s + 1);
+  ctx.textBaseline = 'alphabetic';
+  // Eisenkern
+  ctx.fillStyle = '#9ca3af'; ctx.fillRect(K.KX0, K.KY - 12, K.KX1 - K.KX0, 24);
+  ctx.strokeStyle = '#6b7280'; ctx.lineWidth = 1; ctx.strokeRect(K.KX0, K.KY - 12, K.KX1 - K.KX0, 24);
+  // Windungen (Kupfer) und Anschluesse
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 3;
+  for (let k = 0; k < 9; k++) {
+    const x = K.SPO + 8 * k;
+    ctx.beginPath(); ctx.moveTo(x, K.KY - 20); ctx.lineTo(x + 4, K.KY + 20); ctx.stroke();
+  }
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(K.SPO, K.KY - 20); ctx.lineTo(K.SPO, K.OBEN);
+  ctx.moveTo(K.SPU, K.KY + 20); ctx.lineTo(K.SPU, K.UNTEN);
+  ctx.stroke();
+  // Magnetfeld in der Spule: gruener Pfeil, Laenge ~ cos(phi)
+  const h = 30 * c, xm = (K.KX0 + K.KX1) / 2;
+  if (Math.abs(h) > 3) {
+    const r = h > 0 ? 1 : -1;
+    for (const [farbe, br] of [['#ffffff', 5.5], ['#15803d', 3]]) {
+      ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = br;
+      ctx.beginPath(); ctx.moveTo(xm - h, K.KY); ctx.lineTo(xm + h - r * 6, K.KY); ctx.stroke();
+      const e = br > 4 ? 2 : 0;
+      ctx.beginPath();
+      ctx.moveTo(xm + h + r * e, K.KY);
+      ctx.lineTo(xm + h - r * (9 + e), K.KY - 6 - e);
+      ctx.lineTo(xm + h - r * (9 + e), K.KY + 6 + e);
+      ctx.closePath(); ctx.fill();
+    }
+  }
+  // Beschriftung
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Spule', 140, 110);
+  ctx.textAlign = 'left';
+  ctx.fillText(z.laeuft ? _f10fTempoText(z.n) : 'Magnet steht still', 6, 130);
+}
+function _f10fBatterieBild(ctx) {
+  const K = _f10fK, x = K.BX;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  ctx.moveTo(x, 28); ctx.lineTo(x, K.OBEN);
+  ctx.moveTo(x, 108); ctx.lineTo(x, K.UNTEN);
+  ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(x - 7, 28, 14, 7);            // Pluskappe
+  ctx.fillStyle = '#fde68a'; _bioFxRundRect(ctx, x - 20, 34, 40, 74, 6); ctx.fill();
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, x - 20, 34, 40, 74, 6); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.textAlign = 'center';
+  ctx.font = '700 15px sans-serif';
+  ctx.fillText('+', x, 52); ctx.fillText('−', x, 102);
+  ctx.font = '700 12px sans-serif';
+  ctx.fillText('1,5 V', x, 76);
+  ctx.fillText('Batterie', 70, 76);
+}
+// Winkel des Zeigers: ±5 V = ±60° um die Mitte.
+function _f10fWinkel(u) {
+  const a = u / 5 * (Math.PI / 3);
+  return Math.max(-1.15, Math.min(1.15, a));
+}
+function _f10fMesser(ctx) {
+  const z = _f10f, K = _f10fK;
+  ctx.fillStyle = '#f8fafc'; _bioFxRundRect(ctx, 206, 26, 112, 92, 8); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, 206, 26, 112, 92, 8); ctx.stroke();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(K.VX, K.VY, K.VR, -Math.PI / 2 - Math.PI / 3, -Math.PI / 2 + Math.PI / 3); ctx.stroke();
+  for (let u = -5; u <= 5; u++) {
+    const a = _f10fWinkel(u), lang = u % 2 === 0, innen = K.VR - (lang ? 9 : 5);
+    ctx.lineWidth = lang ? 1.6 : 1;
+    ctx.beginPath();
+    ctx.moveTo(K.VX + Math.sin(a) * innen, K.VY - Math.cos(a) * innen);
+    ctx.lineTo(K.VX + Math.sin(a) * K.VR, K.VY - Math.cos(a) * K.VR);
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  for (const u of [-4, -2, 0, 2, 4]) {
+    const a = _f10fWinkel(u);
+    ctx.fillText(u < 0 ? '−' + (-u) : String(u), K.VX + Math.sin(a) * 61, K.VY - Math.cos(a) * 61 + 4);
+  }
+  ctx.fillText('V', 302, 112);
+  const a = _f10fWinkel(z.U);
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2.2;
+  ctx.beginPath(); ctx.moveTo(K.VX, K.VY);
+  ctx.lineTo(K.VX + Math.sin(a) * (K.VR + 2), K.VY - Math.cos(a) * (K.VR + 2)); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(K.VX, K.VY, 4.5, 0, 2 * Math.PI); ctx.fill();
+}
+function _f10fLampe(ctx) {
+  const z = _f10f, K = _f10fK;
+  const g = Math.sqrt(Math.max(0, z.lampe));            // 0 … 1, wahrgenommen ~ |U|
+  if (g > 0.02) {
+    const r = ctx.createRadialGradient(K.LX, K.LY, 4, K.LX, K.LY, 44);
+    r.addColorStop(0, 'rgba(253,224,71,' + Math.min(0.9, 1.1 * g).toFixed(3) + ')');
+    r.addColorStop(1, 'rgba(253,224,71,0)');
+    ctx.fillStyle = r; ctx.beginPath(); ctx.arc(K.LX, K.LY, 44, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.fillStyle = g > 0.02 ? 'rgba(254,240,138,' + (0.35 + 0.65 * Math.min(1, g * 1.3)).toFixed(3) + ')'
+                           : 'rgba(241,245,249,0.95)';
+  ctx.beginPath(); ctx.arc(K.LX, K.LY, 15, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(K.LX - 8, K.LY + 13, 16, 18);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(K.LX - 8, K.LY + 13, 16, 18);
+  ctx.strokeStyle = g > 0.05 ? 'rgba(234,88,12,' + (0.55 + 0.45 * Math.min(1, g * 1.3)).toFixed(3) + ')' : '#475569';
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(K.LX - 5, K.LY + 13); ctx.lineTo(K.LX - 5, K.LY + 2);
+  for (let i = 0; i <= 5; i++) ctx.lineTo(K.LX - 5 + i * 2, K.LY + (i % 2 ? -3 : 2));
+  ctx.lineTo(K.LX + 5, K.LY + 13);
+  ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lampe', 394, 112);
+}
+function _f10fDiagramm(ctx) {
+  const z = _f10f, K = _f10fK;
+  const x0 = K.GX, x1 = K.GX + K.SPALTEN, y0 = K.GY0, y1 = K.GY1;
+  const yU = u => K.GYM - u * K.PXV;
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+  ctx.strokeStyle = '#e5e9f0'; ctx.lineWidth = 1;
+  for (let u = -5; u <= 5; u++) {
+    if (!u) continue;
+    ctx.beginPath(); ctx.moveTo(x0, yU(u)); ctx.lineTo(x1, yU(u)); ctx.stroke();
+  }
+  ctx.save(); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(x0 + K.PXS, y0); ctx.lineTo(x0 + K.PXS, y1); ctx.stroke();
+  ctx.restore();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x0, K.GYM); ctx.lineTo(x1, K.GYM); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(x0, y0, x1 - x0, y1 - y0);
+  // Achsen
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'right';
+  for (const u of [4, 2, 0, -2, -4]) ctx.fillText(u < 0 ? '−' + (-u) : String(u), x0 - 5, yU(u) + 4);
+  ctx.textAlign = 'left'; ctx.fillText('U in V', 4, 152);
+  ctx.textAlign = 'center'; ctx.fillText('0', x0, 248); ctx.fillText('1 s', x0 + K.PXS, 248);
+  ctx.textAlign = 'right'; ctx.fillText('2 s', x1, 248);
+  // „vorher“: der Zustand vor dem letzten Wechsel, gleiche Startlage
+  const gst = z.geist;
+  if (gst) {
+    ctx.save(); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6;
+    if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+    ctx.beginPath();
+    for (let c = 0; c <= K.SPALTEN; c += 2) {
+      const u = gst.art === 'bat' ? K.UBAT
+              : gst.n * K.UPRO * Math.sin(z.phiStart + 2 * Math.PI * gst.n * c / K.PXS);
+      if (c) ctx.lineTo(x0 + c, yU(u)); else ctx.moveTo(x0 + c, yU(u));
+    }
+    ctx.stroke(); ctx.restore();
+  }
+  // die geschriebene Kurve
+  ctx.strokeStyle = '#6d28d9'; ctx.lineWidth = 2.2;
+  ctx.beginPath();
+  let an = false;
+  for (let c = 0; c < K.SPALTEN; c++) {
+    const u = z.spur[c];
+    if (u === null || u === undefined) { an = false; continue; }
+    if (!an) { ctx.moveTo(x0 + c, yU(u)); an = true; } else ctx.lineTo(x0 + c, yU(u));
+  }
+  ctx.stroke();
+  // Schreibkopf
+  const xk = x0 + Math.min(K.SPALTEN, z.ts * K.PXS);
+  ctx.strokeStyle = 'rgba(109,40,217,0.3)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(xk, y0); ctx.lineTo(xk, y1); ctx.stroke();
+  ctx.fillStyle = '#6d28d9';
+  ctx.beginPath(); ctx.arc(xk, yU(z.U), 3.5, 0, 2 * Math.PI); ctx.fill();
+  // Wellenberge der ersten Sekunde nummerieren, sobald der Kopf vorbei ist
+  const berge = _f10fBerge(), A = z.n * K.UPRO;
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  berge.forEach((tk, i) => {
+    const alter = z.ts - tk;
+    if (alter < 0) return;
+    const x = x0 + tk * K.PXS, y = yU(A), a = _bioFxKlemme(alter / 0.2);
+    ctx.save(); ctx.globalAlpha = a;
+    ctx.fillStyle = '#f59e0b'; ctx.beginPath(); ctx.arc(x, y, 3.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#1f2937'; ctx.fillText(String(i + 1), x, y - 6);
+    ctx.restore();
+  });
+  // Legende, sobald es eine „vorher“-Kurve gibt
+  if (gst) {
+    ctx.lineWidth = 2.2; ctx.strokeStyle = '#6d28d9';
+    ctx.beginPath(); ctx.moveTo(252, 148); ctx.lineTo(270, 148); ctx.stroke();
+    ctx.save(); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6;
+    if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(318, 148); ctx.lineTo(338, 148); ctx.stroke();
+    ctx.restore();
+    ctx.fillStyle = '#1f2937'; ctx.textAlign = 'left';
+    ctx.fillText('jetzt', 275, 152); ctx.fillText('vorher', 343, 152);
+  }
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz9 „Wie ändert ein Transformator die Spannung?“
+// (Kennung trafo-einfach)
+// Ein geschlossener Eisenkern (grau, geblecht angedeutet) traegt links die
+// Primaerspule (N1), rechts die Sekundaerspule (N2). Am Bildschirm heissen sie
+// „Spule 1“ und „Spule 2“ (sim_plan fz9: die Buchwoerter waeren das dritte und
+// vierte neue Fachwort). Ueberschrift = Seitentitel „Zwei Spulen, ein
+// Eisenkern“, nicht die Leitfrage: „aendert“ ist Lueckenwort im Merksatz und
+// darf nicht am Bildschirm stehen. Die Zahl der gezeichneten
+// Windungen ist proportional zu N (250 → 5, 500 → 10, 1000 → 20 Striche),
+// die Spulen sind gleich lang wie die Schul-Steckspulen.
+// Links ein Netzgeraet mit der Anzeige „U₁ = 6,0 V“ und einem kleinen
+// Schirmbild, das den Verlauf von U1 zeigt (Welle bzw. waagerechte Linie).
+// Rechts haengen parallel ein Spannungsmesser (Zeiger, Skala 0 … 30 V,
+// darunter die Anzeige „U₂ = … V“) und eine Lampe an der Sekundaerspule.
+// Knoepfe (Profil fz9, woertlich): N₁ „250“/„500“/„1000“,
+// N₂ „250“/„500“/„1000“, „Wechselspannung“/„Gleichspannung“, „neu“.
+// Start: Wechselspannung, N₁ = 500, N₂ = 500.
+// Handler: _f10gWahl('n1'|'n2'|'art', wert) – drei Wahlgruppen, damit
+// simfakten.js alle 18 Kombinationen abfaehrt; _f10gNeu().
+//
+// Physik (idealer Transformator, Modellwerte fuer den Lehrerteil):
+//   U2 = 6,0 V × N2 : N1. Alle neun Einstellungen:
+//               N2 = 250    500    1000
+//     N1 = 250       6,0   12,0   24,0 V
+//     N1 = 500       3,0    6,0   12,0 V
+//     N1 = 1000      1,5    3,0    6,0 V
+//   Gleichspannung: U2 = 0 V – das Magnetfeld im Kern ist da, aendert sich
+//   aber nicht, also wird in der Sekundaerspule nichts induziert.
+// Der Spannungsmesser zeigt wie ein Schul-Messgeraet fuer Wechselspannung
+// einen ruhigen Wert (Effektivwert), kein Zappeln mit 50 Hz; die Lampe ist
+// traege (Gluehfaden) und flackert nicht.
+//
+// Bewegung im Bild (Zeitlupe: 0,5 Hz statt 50 Hz, steht als „Bild in
+// Zeitlupe“ im Bild und im Hinweistext):
+//   - Gruene Pfeile im Eisenkern = Magnetfeld, Laenge ~ Fluss Φ. Bei
+//     Wechselspannung wachsen, schrumpfen und kippen sie. Amplitude ~ 1 : N1
+//     (Φ^ = U1 : (ω·N1)) – bei 250 doppelt, bei 1000 halb so lang wie bei 500.
+//     Bei Gleichspannung stehen sie still (Φ fest, unabhaengig von N1, weil der
+//     Gleichstrom ~ 1 : Drahtlaenge ~ 1 : N1 ist und N1·I gleich bleibt).
+//   - Rote Punkte = Strom (technische Richtung). Primaerkreis im Gleichtakt
+//     mit dem Feld (Schulerklaerung: der Strom in der Primaerspule macht das
+//     Feld; Windungssinn: Strom oben hinein → Feld im linken Schenkel nach
+//     oben, im Kern im Uhrzeigersinn). Hub ~ Feld. Bei Gleichspannung laufen
+//     sie gleichmaessig in eine Richtung.
+//     Sekundaerkreis: Ladungsverschiebung Δs = −k·N2·ΔΦ, der Strom ist also
+//     am groessten, wenn das Feld gerade kippt (wie beim Generator fz8); Hub
+//     ~ U2 (1,4 px je V). Durch den Spannungsmesser fliesst kein Strom.
+//     Bei Gleichspannung stehen die Punkte still – nur beim Umschalten ruckt es
+//     einmal kurz, weil sich das Feld dabei aendert (Einschaltstoss); der
+//     Zeiger (Effektivwert) bleibt dabei ruhig.
+//   - Lampe: Helligkeit ~ U2 (24 V = voll), bei Gleichspannung aus.
+//   - Der Zeiger schwingt gedaempft auf den neuen Wert ein.
+// Modellvereinfachung (Lehrerteil): Der Hub der Primaerpunkte haengt nur am
+// Feld, nicht an der Last – mit Lampe waere der Primaerstrom groesser und
+// gegen das Feld phasenverschoben.
+//
+// Statuszeile _f10g-status (Profil fz9, woertlich):
+//   „U₁ = 6,0 V · N₁ = 500 · N₂ = 1000 → U₂ = 12,0 V“
+//   „Gleichspannung: U₂ = 0 V. Ein Transformator arbeitet nur mit
+//    Wechselspannung.“
+// Die Zeile springt sofort mit dem Knopf. Zahlen im Bild: „U₁ = 6,0 V“,
+// „N₁ = …“, „N₂ = …“, „U₂ = … V“ – genau die Werte der Statuszeile; dazu
+// die Skalenzahlen 0, 10, 20, 30 am Spannungsmesser.
+// Aha (_bioFx, ruhig): Bei jedem Wechsel des Messwerts bleibt der alte
+// Zeigerstand als grauer gestrichelter Zeiger stehen; kommt der neue Zeiger
+// zur Ruhe, ein Lichtring an seiner Spitze. Kein Text dazu, keine Regelsaetze,
+// keine Woerter wie „doppelt“, „halb“, „mehr“ oder „weniger“ am Bildschirm.
+// Deterministisch, ohne Zufall.
+// ════════════════════════════════════════════════════════════════════════
+let _f10g = null;
+const _f10gK = {
+  U1: 6.0, NS: [250, 500, 1000], UMAX: 30,
+  W: Math.PI,                                      // rad/s im Bild: 0,5 Hz (Zeitlupe)
+  KX0: 139, KX1: 277, KY0: 30, KY1: 218, KB: 22,   // Eisenkern aussen, Staerke
+  LX: 150, RX: 266,                                // Mitte der Schenkel
+  SY0: 62, SY1: 186, SB: 21,                       // Spulen oben/unten, halbe Breite
+  OB: 62, UN: 186,                                 // Leitungen rechts (y)
+  VX: 339, VY: 140, VR: 34,                        // Spannungsmesser
+  LAX: 400, LAY: 110,                              // Lampe
+  STROM1: 30,                                      // px/s je Flusseinheit (Primaerkreis)
+  STROM2: 8.4,                                     // px je Flusseinheit bei N2 = 500
+  PFEIL: 26                                        // px Pfeillaenge je Flusseinheit
+};
+// Stromwege als geschlossene Linienzuege [x0, y0, x1, y1, sichtbar].
+const _f10gWEG1 = [
+  [92, 104, 110, 104, 1], [110, 104, 110, 62, 1], [110, 62, 129, 62, 1],
+  [129, 62, 129, 186, 0],                          // in der Primaerspule
+  [129, 186, 110, 186, 1], [110, 186, 110, 148, 1], [110, 148, 92, 148, 1],
+  [92, 148, 92, 104, 0]                            // im Netzgeraet
+];
+const _f10gWEG2 = [
+  [287, 62, 400, 62, 1], [400, 62, 400, 96, 1],
+  [400, 96, 400, 141, 0],                          // in der Lampe
+  [400, 141, 400, 186, 1], [400, 186, 287, 186, 1],
+  [287, 186, 287, 62, 0]                           // in der Sekundaerspule
+];
+
+function _f10gInit() {
+  _f10g = { n1: 500, n2: 500, art: 'wechsel', t: 0, ph: 0,
+            amp: 1, mix: 0, phi: 0, s1: 0, s2: 0,
+            zg: 6, zv: 0, lampe: 0.25, geist: null, aha: false, fx: { teile: [] } };
+}
+function _f10gKomma(v) { return v.toFixed(1).replace('.', ','); }
+function _f10gU2() { return _f10gK.U1 * _f10g.n2 / _f10g.n1; }
+// Was der Spannungsmesser zeigen soll (V).
+function _f10gZiel() { return _f10g.art === 'gleich' ? 0 : _f10gU2(); }
+function _f10gZeile() {
+  const z = _f10g;
+  if (z.art === 'gleich')
+    return 'Gleichspannung: U₂ = 0 V. Ein Transformator arbeitet nur mit Wechselspannung.';
+  return 'U₁ = ' + _f10gKomma(_f10gK.U1) + ' V · N₁ = ' + z.n1 + ' · N₂ = ' + z.n2 +
+         ' → U₂ = ' + _f10gKomma(_f10gU2()) + ' V';
+}
+// Anzeige im Bild am Spannungsmesser – dieselbe Zahl wie in der Statuszeile.
+function _f10gAnzeige() {
+  return _f10g.art === 'gleich' ? 'U₂ = 0 V' : 'U₂ = ' + _f10gKomma(_f10gU2()) + ' V';
+}
+
+function _f10gHTML() {
+  const k = (g, n) => `<button class="sim-btn${n === 500 ? ' primary' : ''}" id="_f10g-${g}-${n}" onclick="_f10gWahl('${g}','${n}')">${n}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Zwei Spulen, ein Eisenkern</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Spulen sitzen auf einem Eisenkern. Spule 1 links hängt an einem Netzgerät mit 6,0 V. An Spule 2 rechts hängen ein Spannungsmesser und eine Lampe.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10g-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10g-wechsel" onclick="_f10gWahl('art','wechsel')">Wechselspannung</button>
+          <button class="sim-btn" id="_f10g-gleich" onclick="_f10gWahl('art','gleich')">Gleichspannung</button>
+          <button class="sim-btn" onclick="_f10gNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Spule 1: Windungszahl N₁</span>
+          <div class="sim-btn-row">
+            ${k('n1', 250)}
+            ${k('n1', 500)}
+            ${k('n1', 1000)}
+          </div>
+        </div>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <span class="phys-ctrl-label">Spule 2: Windungszahl N₂</span>
+          <div class="sim-btn-row">
+            ${k('n2', 250)}
+            ${k('n2', 500)}
+            ${k('n2', 1000)}
+          </div>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Messwerte</div>
+        <div class="lmp-status on" id="_f10g-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Rote Punkte zeigen den Strom. Grüne Pfeile zeigen das Magnetfeld im Eisenkern. Das Bild läuft in Zeitlupe.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Wechselspannung, N₁ = 500, N₂ = 500 &nbsp;|&nbsp; „neu“ stellt alles auf Anfang.</p>
+  </div>`;
+}
+
+function _f10gStatus() {
+  if (!_f10g) return;
+  const z = _f10g;
+  const st = document.getElementById('_f10g-status');
+  if (st) { st.textContent = _f10gZeile(); st.className = 'lmp-status on'; }
+  for (const n of _f10gK.NS) {
+    const a = document.getElementById('_f10g-n1-' + n), b = document.getElementById('_f10g-n2-' + n);
+    if (a && a.classList) a.classList.toggle('primary', z.n1 === n);
+    if (b && b.classList) b.classList.toggle('primary', z.n2 === n);
+  }
+  for (const art of ['wechsel', 'gleich']) {
+    const e = document.getElementById('_f10g-' + art);
+    if (e && e.classList) e.classList.toggle('primary', z.art === art);
+  }
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _f10gWahl(gruppe, wert) {
+  if (!_f10g) return;
+  const z = _f10g, alt = _f10gZiel();
+  if (gruppe === 'n1' || gruppe === 'n2') {
+    const n = Number(wert);
+    if (_f10gK.NS.indexOf(n) < 0) return;
+    z[gruppe] = n;
+  } else if (gruppe === 'art') {
+    if (wert !== 'wechsel' && wert !== 'gleich') return;
+    z.art = wert;
+  } else return;
+  if (_f10gZiel() !== alt) { z.geist = alt; z.aha = true; }
+  _f10gStatus();
+}
+function _f10gNeu() {
+  if (!_f10g) return;
+  _f10gInit(); _f10gStatus();
+}
+
+/* ── Rechnen ───────────────────────────────────────────────────────────── */
+function _f10gUpdate(dt) {
+  if (!_f10g) return;
+  dt = _bioFxDt(dt);
+  const z = _f10g, K = _f10gK;
+  z.t += dt;
+  z.ph += K.W * dt;
+  if (z.ph > 2 * Math.PI) z.ph -= 2 * Math.PI;
+  // Feldamplitude ~ 1 : N1 (Wechselspannung), fester Wert bei Gleichspannung
+  const k = Math.min(1, dt * 5), ampZiel = 500 / z.n1, mixZiel = z.art === 'gleich' ? 1 : 0;
+  z.amp += (ampZiel - z.amp) * k;
+  z.mix += (mixZiel - z.mix) * k;
+  if (Math.abs(ampZiel - z.amp) < 1e-4) z.amp = ampZiel;          // einrasten: danach steht
+  if (Math.abs(mixZiel - z.mix) < 1e-4) z.mix = mixZiel;          // bei Gleichspannung alles
+  const phiAlt = z.phi;
+  z.phi = (1 - z.mix) * z.amp * Math.sin(z.ph) + z.mix;
+  // Primaerkreis: Strom im Gleichtakt mit dem Feld
+  z.s1 += K.STROM1 * z.phi * dt;
+  // Sekundaerkreis: verschobene Ladung ~ N2 · Feldaenderung
+  z.s2 -= K.STROM2 * (z.n2 / 500) * (z.phi - phiAlt);
+  // Zeiger: gedaempfte Schwingung zum Messwert
+  const ziel = _f10gZiel();
+  for (let i = 0; i < 4; i++) {
+    const h = dt / 4, a = 80 * (ziel - z.zg) - 9.8 * z.zv;
+    z.zv += a * h; z.zg += z.zv * h;
+  }
+  z.lampe += (ziel / 24 - z.lampe) * Math.min(1, dt * 6);
+  if (z.aha && Math.abs(z.zg - ziel) < 0.08 && Math.abs(z.zv) < 0.3) {
+    z.aha = false;
+    const w = _f10gWinkel(z.zg);
+    _bioFxWelle(z.fx.teile, K.VX + Math.sin(w) * K.VR, K.VY - Math.cos(w) * K.VR, '#fbbf24', 22);
+  }
+  _bioFxAlleUpdate(z.fx, dt);
+}
+function _f10gWegLaenge(weg) {
+  let L = 0;
+  for (const g of weg) L += Math.hypot(g[2] - g[0], g[3] - g[1]);
+  return L;
+}
+// Punkt bei Weglaenge s auf dem geschlossenen Weg; null, wenn dort verdeckt.
+function _f10gWegPunkt(weg, s) {
+  const L = _f10gWegLaenge(weg);
+  s = ((s % L) + L) % L;
+  for (const g of weg) {
+    const l = Math.hypot(g[2] - g[0], g[3] - g[1]);
+    if (s <= l) {
+      if (!g[4]) return null;
+      const f = l ? s / l : 0;
+      return { x: g[0] + (g[2] - g[0]) * f, y: g[1] + (g[3] - g[1]) * f };
+    }
+    s -= l;
+  }
+  return null;
+}
+// Zeigerwinkel (rad, von senkrecht, rechts positiv): 0 V = −50°, 30 V = +50°.
+function _f10gWinkel(u) {
+  const K = _f10gK, max = 50 * Math.PI / 180;
+  const v = Math.max(-0.6, Math.min(K.UMAX + 0.6, u));
+  return (v / K.UMAX * 2 - 1) * max;
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _f10gDraw(ctx, cv) {
+  if (!_f10g) return;
+  const z = _f10g, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e8edf3');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  _f10gLampenSchein(ctx);
+  _f10gLeitungen(ctx);
+  _f10gNetzgeraet(ctx);
+  _f10gKern(ctx);
+  _f10gSpule(ctx, _f10gK.LX, z.n1, -1);
+  _f10gSpule(ctx, _f10gK.RX, z.n2, 1);
+  _f10gFeld(ctx);
+  _f10gPunkte(ctx);
+  _f10gMesser(ctx);
+  _f10gLampe(ctx);
+  _f10gTexte(ctx);
+  ctx.textBaseline = 'alphabetic';
+  _bioFxAlleDraw(ctx, z.fx);
+}
+function _f10gLeitungen(ctx) {
+  const K = _f10gK;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  for (const weg of [_f10gWEG1, _f10gWEG2]) {
+    for (const g of weg) {
+      if (!g[4]) continue;
+      ctx.moveTo(g[0], g[1]); ctx.lineTo(g[2], g[3]);
+    }
+  }
+  ctx.moveTo(K.VX, K.OB); ctx.lineTo(K.VX, 80);                  // zum Spannungsmesser
+  ctx.moveTo(K.VX, 170); ctx.lineTo(K.VX, K.UN);
+  ctx.stroke();
+  ctx.fillStyle = '#334155';
+  for (const y of [K.OB, K.UN]) { ctx.beginPath(); ctx.arc(K.VX, y, 3.2, 0, 2 * Math.PI); ctx.fill(); }
+}
+function _f10gNetzgeraet(ctx) {
+  const z = _f10g, K = _f10gK;
+  ctx.fillStyle = '#e5e7eb'; _bioFxRundRect(ctx, 6, 84, 86, 84, 7); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, 6, 84, 86, 84, 7); ctx.stroke();
+  // Anzeige
+  ctx.fillStyle = '#ecfccb'; ctx.fillRect(11, 91, 76, 24);
+  ctx.strokeStyle = '#65a30d'; ctx.lineWidth = 1; ctx.strokeRect(11, 91, 76, 24);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('U₁ = ' + _f10gKomma(K.U1) + ' V', 49, 108);
+  // kleines Schirmbild: Verlauf von U1, rechts = jetzt
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(11, 122, 76, 38);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(11, 122, 76, 38);
+  ctx.strokeStyle = '#cbd5e1';
+  ctx.beginPath(); ctx.moveTo(13, 141); ctx.lineTo(85, 141); ctx.stroke();
+  ctx.strokeStyle = '#6d28d9'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let x = 13; x <= 85; x += 2) {
+    const tau = (85 - x) / 36;
+    const u = (1 - z.mix) * Math.cos(z.ph - K.W * tau) + z.mix * 0.8;
+    if (x === 13) ctx.moveTo(x, 141 - 13 * u); else ctx.lineTo(x, 141 - 13 * u);
+  }
+  ctx.stroke();
+  // Buchsen
+  for (const y of [104, 148]) {
+    ctx.fillStyle = '#334155'; ctx.beginPath(); ctx.arc(92, y, 4.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#cbd5e1'; ctx.beginPath(); ctx.arc(92, y, 1.8, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _f10gKern(ctx) {
+  const K = _f10gK, b = K.KB, w = K.KX1 - K.KX0, h = K.KY1 - K.KY0;
+  ctx.fillStyle = '#9ca3af';
+  ctx.fillRect(K.KX0, K.KY0, w, b);
+  ctx.fillRect(K.KX0, K.KY1 - b, w, b);
+  ctx.fillRect(K.KX0, K.KY0 + b, b, h - 2 * b);
+  ctx.fillRect(K.KX1 - b, K.KY0 + b, b, h - 2 * b);
+  // Bleche andeuten
+  ctx.strokeStyle = 'rgba(75,85,99,0.35)'; ctx.lineWidth = 1;
+  for (let i = 1; i < 4; i++) {
+    const d = i * b / 4;
+    ctx.strokeRect(K.KX0 + d, K.KY0 + d, w - 2 * d, h - 2 * d);
+  }
+  ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(K.KX0, K.KY0, w, h);
+  ctx.strokeRect(K.KX0 + b, K.KY0 + b, w - 2 * b, h - 2 * b);
+}
+// Spule auf dem Schenkel bei xc; seite −1: Anschluesse links, +1: rechts.
+function _f10gSpule(ctx, xc, n, seite) {
+  const K = _f10gK, sb = K.SB, y0 = K.SY0, y1 = K.SY1;
+  const anz = Math.round(n / 50), ab = (y1 - y0) / anz, d = Math.min(3, ab * 0.3);
+  // Rueckseite der Windungen (durch den Spulenkoerper zu sehen)
+  ctx.strokeStyle = 'rgba(146,64,14,0.5)'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  for (let k = 0; k < anz - 1; k++) {
+    const y = y0 + (k + 0.5) * ab;
+    ctx.moveTo(xc + sb, y - d); ctx.lineTo(xc - sb, y + ab + d);
+  }
+  ctx.stroke();
+  // Spulenkoerper mit Flanschen
+  ctx.fillStyle = 'rgba(226,232,240,0.5)'; ctx.fillRect(xc - sb, y0 - 3, 2 * sb, y1 - y0 + 6);
+  ctx.fillStyle = '#64748b';
+  ctx.fillRect(xc - sb - 4, y0 - 8, 2 * sb + 8, 5);
+  ctx.fillRect(xc - sb - 4, y1 + 3, 2 * sb + 8, 5);
+  // Vorderseite: Kupferdraht, dazu die beiden Anschluesse
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2.6;
+  ctx.beginPath();
+  for (let k = 0; k < anz; k++) {
+    const y = y0 + (k + 0.5) * ab;
+    ctx.moveTo(xc - sb, y + d); ctx.lineTo(xc + sb, y - d);
+  }
+  const xa = xc + seite * sb;
+  ctx.moveTo(xa, y0); ctx.lineTo(xa, y0 + 0.5 * ab - seite * d);
+  ctx.moveTo(xa, y0 + (anz - 0.5) * ab - seite * d); ctx.lineTo(xa, y1);
+  ctx.stroke();
+}
+// Pfeil mit Mitte (x, y) in Richtung (dx, dy); len < 0 dreht ihn um.
+function _f10gPfeil(ctx, x, y, dx, dy, len) {
+  const L = Math.abs(len);
+  if (L < 5) return;
+  const r = len > 0 ? 1 : -1, ux = dx * r, uy = dy * r;
+  const x0 = x - ux * L / 2, y0 = y - uy * L / 2, x1 = x + ux * L / 2, y1 = y + uy * L / 2;
+  const kopf = Math.min(9, L * 0.45), br = kopf * 0.65;
+  for (const [farbe, lw, e] of [['#ffffff', 6, 2], ['#15803d', 3, 0]]) {
+    ctx.strokeStyle = farbe; ctx.fillStyle = farbe; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1 - ux * kopf * 0.8, y1 - uy * kopf * 0.8); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x1 + ux * e, y1 + uy * e);
+    ctx.lineTo(x1 - ux * (kopf + e) - uy * (br + e), y1 - uy * (kopf + e) + ux * (br + e));
+    ctx.lineTo(x1 - ux * (kopf + e) + uy * (br + e), y1 - uy * (kopf + e) - ux * (br + e));
+    ctx.closePath(); ctx.fill();
+  }
+}
+// Magnetfeld im Kern: Phi > 0 = im Uhrzeigersinn (links hoch, oben nach rechts).
+function _f10gFeld(ctx) {
+  const z = _f10g, K = _f10gK;
+  const L = Math.max(-54, Math.min(54, K.PFEIL * z.phi));
+  const xm = (K.LX + K.RX) / 2, ym = (K.KY0 + K.KY1) / 2, b2 = K.KB / 2;
+  _f10gPfeil(ctx, xm, K.KY0 + b2, 1, 0, L);
+  _f10gPfeil(ctx, K.RX, ym, 0, 1, L);
+  _f10gPfeil(ctx, xm, K.KY1 - b2, -1, 0, L);
+  _f10gPfeil(ctx, K.LX, ym, 0, -1, L);
+}
+function _f10gPunkte(ctx) {
+  const z = _f10g;
+  ctx.fillStyle = '#dc2626';
+  for (const [weg, s, n] of [[_f10gWEG1, z.s1, 22], [_f10gWEG2, z.s2, 30]]) {
+    const L = _f10gWegLaenge(weg);
+    for (let i = 0; i < n; i++) {
+      const p = _f10gWegPunkt(weg, s + i * L / n);
+      if (!p) continue;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2.8, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+}
+function _f10gMesser(ctx) {
+  const z = _f10g, K = _f10gK;
+  ctx.fillStyle = '#f8fafc'; _bioFxRundRect(ctx, 296, 80, 86, 90, 8); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, 296, 80, 86, 90, 8); ctx.stroke();
+  const a0 = _f10gWinkel(0), a1 = _f10gWinkel(K.UMAX);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(K.VX, K.VY, K.VR, -Math.PI / 2 + a0, -Math.PI / 2 + a1); ctx.stroke();
+  for (let u = 0; u <= K.UMAX; u += 5) {
+    const a = _f10gWinkel(u), lang = u % 10 === 0, innen = K.VR - (lang ? 8 : 4);
+    ctx.lineWidth = lang ? 1.6 : 1;
+    ctx.beginPath();
+    ctx.moveTo(K.VX + Math.sin(a) * innen, K.VY - Math.cos(a) * innen);
+    ctx.lineTo(K.VX + Math.sin(a) * K.VR, K.VY - Math.cos(a) * K.VR);
+    ctx.stroke();
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  for (const u of [0, 10, 20, 30]) {
+    const a = _f10gWinkel(u);
+    ctx.fillText(String(u), K.VX + Math.sin(a) * 43, K.VY - Math.cos(a) * 43 + 4);
+  }
+  // der Stand vor dem letzten Wechsel, grau gestrichelt
+  if (z.geist !== null) {
+    const a = _f10gWinkel(z.geist);
+    ctx.save(); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2;
+    if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(K.VX, K.VY);
+    ctx.lineTo(K.VX + Math.sin(a) * (K.VR - 2), K.VY - Math.cos(a) * (K.VR - 2)); ctx.stroke();
+    ctx.restore();
+  }
+  const a = _f10gWinkel(z.zg);
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2.2;
+  ctx.beginPath(); ctx.moveTo(K.VX, K.VY);
+  ctx.lineTo(K.VX + Math.sin(a) * (K.VR + 2), K.VY - Math.cos(a) * (K.VR + 2)); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(K.VX, K.VY, 4.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_f10gAnzeige(), K.VX, 163);
+}
+function _f10gLampenSchein(ctx) {
+  const z = _f10g, K = _f10gK, g = Math.max(0, Math.min(1, z.lampe));
+  if (g < 0.02) return;
+  const R = 14 + 34 * g;
+  const r = ctx.createRadialGradient(K.LAX, K.LAY, 4, K.LAX, K.LAY, R);
+  r.addColorStop(0, 'rgba(253,224,71,' + (0.85 * g).toFixed(3) + ')');
+  r.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = r; ctx.beginPath(); ctx.arc(K.LAX, K.LAY, R, 0, 2 * Math.PI); ctx.fill();
+}
+function _f10gLampe(ctx) {
+  const z = _f10g, K = _f10gK, g = Math.max(0, Math.min(1, z.lampe));
+  const x = K.LAX, y = K.LAY;
+  ctx.fillStyle = g > 0.02 ? 'rgba(254,240,138,' + (0.2 + 0.8 * g).toFixed(3) + ')'
+                           : 'rgba(241,245,249,0.95)';
+  ctx.beginPath(); ctx.arc(x, y, 14, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(x - 8, y + 12, 16, 19);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(x - 8, y + 12, 16, 19);
+  ctx.strokeStyle = g > 0.03 ? 'rgba(234,88,12,' + (0.35 + 0.65 * g).toFixed(3) + ')' : '#475569';
+  ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(x - 5, y + 12); ctx.lineTo(x - 5, y + 2);
+  for (let i = 0; i <= 5; i++) ctx.lineTo(x - 5 + i * 2, y + (i % 2 ? -3 : 2));
+  ctx.lineTo(x + 5, y + 12);
+  ctx.stroke();
+}
+function _f10gTexte(ctx) {
+  const z = _f10g, K = _f10gK;
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Netzgerät', 49, 78);
+  ctx.fillText('Spule 1', K.LX, 22);
+  ctx.fillText('Spule 2', K.RX, 22);
+  ctx.fillText('Eisenkern', (K.LX + K.RX) / 2, 128);
+  ctx.fillText('Spannungsmesser', K.VX, 204);
+  ctx.fillText('Lampe', 398, 54);
+  ctx.font = '700 13px sans-serif';
+  ctx.fillText('N₁ = ' + z.n1, K.LX, 238);
+  ctx.fillText('N₂ = ' + z.n2, K.RX, 238);
+  // Legende
+  ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillStyle = '#dc2626'; ctx.beginPath(); ctx.arc(14, 192, 3.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.fillText('Strom', 24, 196);
+  _f10gPfeil(ctx, 17, 212, 1, 0, 20);
+  ctx.fillStyle = '#1f2937'; ctx.fillText('Magnetfeld', 32, 216);
+  ctx.fillStyle = '#334155'; ctx.fillText('Bild in Zeitlupe', 8, 240);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz10 „Warum transportiert man Energie mit Hochspannung?“
+// (Kennung fernleitung-modell)
+// Buchmodell S. 147, Modell einer Fernuebertragung: links eine Energiequelle
+// mit Wechselspannung 4,0 V und Schalter, Transformator 1 (250 → 1000
+// Windungen), eine „lange Leitung“ aus Hin- und Rueckleitung mit je einem
+// Widerstand 50 Ω (zusammen 100 Ω), Transformator 2 (1000 → 250 Windungen),
+// rechts eine Lampe (3,5 V / 0,2 A).
+// Knoepfe: „ohne Transformatoren“ / „mit Transformatoren“ (Aufbau waehlen: die
+// Transformatoren gleiten in die Schaltung bzw. verblassen zu einem
+// gestrichelten Umriss, die Leitung wird dort durchgezogen), „▶ einschalten“
+// (schliesst den Schalter), „neu“. Start und „neu“: MIT Transformatoren,
+// ausgeschaltet – keine Statuszeile, keine Pakete, Lampe aus (Heftseite fz10
+// misst zuerst mit, dann ohne Transformatoren).
+// Ein Wechsel des Aufbaus SCHALTET AUS: erst „▶ einschalten“ zeigt die neuen
+// Werte (fz10, Schritt c: „Drücke wieder „▶ einschalten““).
+//
+// Physik (Modellwerte, Lehrerteil): ideale Transformatoren, Lampe als fester
+// Widerstand R_Lampe = 3,5 V : 0,2 A = 17,5 Ω, Leitung R = 2 · 50 Ω = 100 Ω.
+//   ohne:  I = 4,0 V : (100 Ω + 17,5 Ω) = 34,0 mA
+//          U_Lampe = 34,0 mA · 17,5 Ω = 0,596 V          → „0,6 V“
+//          Verlust = 100 Ω : 117,5 Ω = 85,1 %            → „85 %“
+//   mit:   U_Leitung = 4,0 V · 1000 : 250 = 16,0 V
+//          Lampe von der Leitung aus gesehen: 17,5 Ω · 4² = 280 Ω
+//          I_Leitung = 16,0 V : (100 Ω + 280 Ω) = 42,1 mA (I_Lampe = 168 mA)
+//          U_Lampe = 42,1 mA · 280 Ω : 4 = 2,947 V        → „2,9 V“
+//          Verlust = 100 Ω : 380 Ω = 26,3 %              → „26 %“
+// ACHTUNG beim Vergleich der Stromstaerken: In DIESEM Modell ist der Strom in
+// der Leitung mit Transformatoren (42 mA) GROESSER als ohne (34 mA) – ohne
+// Transformatoren begrenzen die 100 Ω den Strom. Richtig ist der Vergleich in
+// der Schaltung mit Transformatoren (Leitung 42 mA, Lampe 168 mA, ein Viertel)
+// oder „bei gleicher Leistung“. Die Simulation zeigt deshalb keine
+// Stromstaerken und keine Stromteilchen.
+//
+// Energiepakete (gelb) laufen gleichmaessig von der Energiequelle zur Lampe.
+// Ein Paket steht fuer die Energie, die am Leitungsanfang hineingeht (Flaeche
+// = 100 %). An jedem Widerstand bricht die Haelfte des Verlusts ab (orange),
+// fliegt in den Widerstand und steigt dort als Flimmern auf; die Flaeche des
+// Pakets schrumpft auf 1 − Verlust/2, dann auf 1 − Verlust
+// (ohne 100 → 57,5 → 15 %, mit 100 → 86,8 → 73,7 %). An der Lampe kommt also
+// genau der Anteil an, der nicht in der Leitung bleibt. Das Bild zeigt
+// ANTEILE, keine Watt: absolut liefert die Energiequelle mit Transformatoren
+// mehr (0,67 W statt 0,14 W), auch die Widerstaende werden dann absolut etwas
+// waermer (je 89 mW statt 58 mW) – Lehrerteil, nicht am Bildschirm.
+// Lampe: Helligkeit ~ (U_Lampe : 3,5 V)² – ohne 0,03 (kein Leuchten),
+// mit 0,71 (hell). Der Energiestrom steht beim Einschalten sofort auf der
+// ganzen Strecke (kein Warten auf ein erstes Paket: die Lampe leuchtet sofort).
+//
+// Statuszeilen (Profil fz10, woertlich) – erst nach „▶ einschalten“:
+//   _f10h-status  „Spannung auf der Leitung: 4,0 V · an der Lampe: 0,6 V ·
+//                  Verlust in der Leitung: 85 %“
+//                 „Spannung auf der Leitung: 16,0 V · an der Lampe: 2,9 V ·
+//                  Verlust in der Leitung: 26 %“
+//   _f10h-lampe   „Die Lampe leuchtet nicht.“ / „Die Lampe leuchtet hell.“
+//   ausgeschaltet: beide Zeilen LEER (fz10: „keine Statuszeile“), im Bild
+//   keine Anzeigen; nur unten rechts „ausgeschaltet“.
+// Die Werte werden aus dem Modell gerechnet und erst am Ende formatiert. Im
+// Bild stehen dieselben Zahlen (Leitung, Verlust, Lampe); sie springen
+// zugleich mit der Statuszeile.
+// Aha (_bioFx), nur gezeichnet, KEIN Text (fz10: „der Aha-Satz steht nicht als
+// Text am Bildschirm“): Wird die Lampe hell, laeuft ein Lichtring um sie;
+// bleibt sie beim Einschalten dunkel, laeuft ein grauer Ring.
+// Nicht am Bildschirm: die Woerter Waerme und Stromstaerke (moegliche
+// Lueckenwoerter), kleiner, niedriger, viermal, groesste (Lueckenwoerter der
+// Seite), keine Stromstaerke, kein Verlust in Watt oder Joule – das Flimmern
+// an den Widerstaenden ist nur gezeichnet.
+// ════════════════════════════════════════════════════════════════════════
+let _f10h = null;
+const _F10H_U0 = 4.0, _F10H_N1 = 250, _F10H_N2 = 1000;     // Energiequelle, Windungen
+const _F10H_RLEIT = 100, _F10H_RLAMPE = 17.5, _F10H_UNENN = 3.5;
+// Geometrie (Leinwand 420 × 250)
+const _F10H_YO = 78, _F10H_YU = 168, _F10H_YM = 123;       // Hinleitung, Rueckleitung, Paketweg
+const _F10H_XQ = 28;                                        // Energiequelle (Mitte)
+const _F10H_XS0 = 36, _F10H_XS1 = 54;                       // Schalter in der Hinleitung
+const _F10H_T1 = 66, _F10H_T2 = 298, _F10H_TB = 56;         // Eisenkerne: linke Kante, Breite
+const _F10H_KY0 = 62, _F10H_KY1 = 184;                      // Eisenkern oben, unten
+const _F10H_SY0 = 92, _F10H_SY1 = 154;                      // Spulen oben, unten
+const _F10H_R1 = 168, _F10H_R2 = 252, _F10H_RB = 36;        // Widerstaende: Mitte, Breite
+const _F10H_XL = 392;                                       // Lampe (Mitte)
+const _F10H_PA = 46, _F10H_PE = 382;                        // Paketweg: Anfang, Ende
+const _F10H_V = 90, _F10H_TAKT = 0.5, _F10H_PG = 13;        // px/s, s, Kante bei 100 %
+const _F10H_FLUG = 0.35, _F10H_FLIMMER = 1.2;               // s
+
+// ── Modell ──────────────────────────────────────────────────────────────
+function _f10hWerte(mit) {
+  const u = mit ? _F10H_N2 / _F10H_N1 : 1;                 // Uebersetzung 1 : 4
+  const uLeit = _F10H_U0 * u;
+  const rLast = _F10H_RLAMPE * u * u;                       // Lampe, von der Leitung aus gesehen
+  const iLeit = uLeit / (_F10H_RLEIT + rLast);
+  const uLampe = iLeit * rLast / u;
+  const verlust = _F10H_RLEIT / (_F10H_RLEIT + rLast);
+  return { uLeit, uLampe, verlust, iLeit, hell: Math.pow(uLampe / _F10H_UNENN, 2) };
+}
+function _f10hZahl(x) { return x.toFixed(1).replace('.', ','); }
+function _f10hProzent(x) { return String(Math.round(x * 100)); }
+function _f10hMit() { return _f10h.modus === 'mit'; }
+
+function _f10hZeilen() {
+  const z = _f10h, mit = _f10hMit();
+  if (!z.an) return ['', ''];                               // ausgeschaltet: keine Statuszeile
+  const w = _f10hWerte(mit);
+  return [
+    'Spannung auf der Leitung: ' + _f10hZahl(w.uLeit) + ' V · an der Lampe: ' + _f10hZahl(w.uLampe) +
+      ' V · Verlust in der Leitung: ' + _f10hProzent(w.verlust) + ' %',
+    w.hell > 0.4 ? 'Die Lampe leuchtet hell.' : w.hell < 0.1 ? 'Die Lampe leuchtet nicht.'
+                 : 'Die Lampe leuchtet schwach.'];
+}
+
+// ── Zustand und Oberflaeche ─────────────────────────────────────────────
+function _f10hInit() {
+  _f10h = { modus: 'mit', an: false, t: 0, tr: 1, schalter: 0, ein: 1,
+            pakete: [], brocken: [], flimmer: [], bis: 0, hell: 0, glut: [0, 0],
+            warHell: false, fx: { teile: [] } };
+}
+function _f10hHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Warum transportiert man Energie mit Hochspannung?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Modell wie im Buch: Links ist eine Energiequelle mit Wechselspannung 4,0 V. Zwei Widerstände mit je 50 Ω stehen für eine lange Leitung. Rechts ist eine Lampe. Sie ist für 3,5 V gebaut.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10h-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10h-ein" onclick="_f10hEin()">▶ einschalten</button>
+          <button class="sim-btn" onclick="_f10hNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Aufbau</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" id="_f10h-mit" onclick="_f10hAufbau('mit')">mit Transformatoren</button>
+          <button class="sim-btn" id="_f10h-ohne" onclick="_f10hAufbau('ohne')">ohne Transformatoren</button>
+        </div>
+        <div class="fpm-note" style="margin-top:6px">Transformator 1: 250 → 1000 Windungen. Transformator 2: 1000 → 250 Windungen.</div>
+        <div class="lmp-status" id="_f10h-status" style="margin-top:8px"></div>
+        <div class="lmp-status" id="_f10h-lampe" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:8px">Die gelben Kästchen sind Energiepakete. Achte darauf, wie groß sie an der Lampe ankommen. Achte auch auf die Widerstände.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: mit Transformatoren, ausgeschaltet &nbsp;|&nbsp; Ein Wechsel des Aufbaus schaltet aus. &nbsp;|&nbsp; „neu“ stellt alles auf Anfang.</p>
+  </div>`;
+}
+function _f10hStatus() {
+  if (!_f10h) return;
+  const z = _f10h, [b, c] = _f10hZeilen();
+  const setze = (id, txt, an) => {
+    const e = document.getElementById(id);
+    if (e) { e.textContent = txt; e.className = 'lmp-status' + (an ? ' on' : ''); }
+  };
+  setze('_f10h-status', b, z.an);
+  setze('_f10h-lampe', c, z.an);
+  for (const m of ['ohne', 'mit']) {
+    const k = document.getElementById('_f10h-' + m);
+    if (!k) continue;
+    const an = z.modus === m;
+    if (k.style) {
+      k.style.background = an ? '#fef9c3' : '';
+      k.style.borderColor = an ? '#ca8a04' : '';
+      k.style.color = an ? '#713f12' : '';
+      k.style.fontWeight = an ? '700' : '';
+    }
+    if (k.setAttribute) k.setAttribute('aria-pressed', an ? 'true' : 'false');
+  }
+  const ein = document.getElementById('_f10h-ein');
+  if (ein) {
+    ein.disabled = z.an;
+    if (ein.classList) ein.classList.toggle('primary', !z.an);
+    if (ein.style) ein.style.opacity = z.an ? '0.5' : '';
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _f10hAufbau(m) {
+  if (!_f10h || (m !== 'mit' && m !== 'ohne')) return;
+  const z = _f10h;
+  if (z.modus !== m) {
+    z.modus = m;
+    if (z.an) {                                       // Wechsel schaltet aus
+      z.an = false; z.pakete = []; z.brocken = []; z.bis = 0;
+    }
+  }
+  _f10hStatus();
+}
+function _f10hPaket(s, fertig) {
+  const L = _f10hWerte(_f10hMit()).verlust;
+  const p = { s, r1: false, r2: false, g: 1 };
+  if (fertig) {
+    p.r1 = s >= _F10H_R1; p.r2 = s >= _F10H_R2;
+    p.g = 1 - (p.r1 ? L / 2 : 0) - (p.r2 ? L / 2 : 0);
+  }
+  return p;
+}
+function _f10hEin() {
+  if (!_f10h || _f10h.an) return;
+  const z = _f10h;
+  z.an = true; z.ein = 0;
+  // Der Energiestrom steht sofort auf der ganzen Strecke.
+  z.pakete = [];
+  for (let s = _F10H_PA; s < _F10H_PE; s += _F10H_V * _F10H_TAKT) z.pakete.push(_f10hPaket(s, true));
+  z.bis = _F10H_TAKT;
+  _bioFxFunken(z.fx.teile, (_F10H_XS0 + _F10H_XS1) / 2, _F10H_YO, 6, ['#fde68a', '#ffffff', '#facc15']);
+  // bleibt die Lampe dunkel, zeigt ein grauer Ring: hier kommt kaum etwas an
+  if (_f10hWerte(_f10hMit()).hell < 0.1) _bioFxWelle(z.fx.teile, _F10H_XL, _F10H_YM, '#94a3b8', 30);
+  _f10hStatus();
+}
+function _f10hNeu() {
+  if (!_f10h) return;
+  const tr = _f10h.tr;                                // Transformatoren gleiten sichtbar zurueck
+  _f10hInit(); _f10h.tr = tr; _f10hStatus();
+}
+function _f10hAha() {
+  const z = _f10h;
+  _bioFxWelle(z.fx.teile, _F10H_XL, _F10H_YM, '#fde68a', 42);
+  _bioFxFunken(z.fx.teile, _F10H_XL, _F10H_YM - 8, 8, ['#fde68a', '#ffffff', '#facc15']);
+}
+
+// ── Ablauf ──────────────────────────────────────────────────────────────
+function _f10hUpdate(dt) {
+  if (!_f10h) return;
+  dt = _bioFxDt(dt);
+  const z = _f10h, w = _f10hWerte(_f10hMit()), L = w.verlust;
+  z.t += dt;
+  // Transformatoren gleiten in 0,6 s hinein bzw. heraus
+  const trZiel = _f10hMit() ? 1 : 0;
+  z.tr += Math.sign(trZiel - z.tr) * Math.min(Math.abs(trZiel - z.tr), dt / 0.6);
+  z.schalter += ((z.an ? 1 : 0) - z.schalter) * Math.min(1, dt * 14);
+  z.ein = Math.min(1, z.ein + dt / 0.3);
+  // Lampe: Helligkeit ~ (U : U_nenn)², weich nachgefuehrt
+  z.hell += ((z.an ? w.hell : 0) - z.hell) * Math.min(1, dt * 6);
+  if (z.an && z.hell > 0.5 && !z.warHell) { z.warHell = true; _f10hAha(); }
+  if (z.hell < 0.25) z.warHell = false;
+  // neue Pakete im festen Takt
+  if (z.an) {
+    z.bis -= dt;
+    while (z.bis <= 0) { z.pakete.push(_f10hPaket(_F10H_PA - z.bis * _F10H_V, false)); z.bis += _F10H_TAKT; }
+  }
+  for (const p of z.pakete) {
+    p.s += _F10H_V * dt;
+    if (!p.r1 && p.s >= _F10H_R1) { p.r1 = true; _f10hAbbruch(0, L / 2); }
+    if (!p.r2 && p.s >= _F10H_R2) { p.r2 = true; _f10hAbbruch(1, L / 2); }
+    const ziel = 1 - (p.r1 ? L / 2 : 0) - (p.r2 ? L / 2 : 0);
+    p.g += (ziel - p.g) * Math.min(1, dt * 9);
+  }
+  z.pakete = z.pakete.filter(p => p.s < _F10H_PE);
+  // abgebrochene Stuecke fliegen in den Widerstand
+  for (const b of z.brocken) {
+    b.alter += dt;
+    if (b.alter >= _F10H_FLUG) {
+      z.flimmer.push({ x: b.x, r: b.r, m: b.m, alter: 0, ph: (b.x * 0.37) % 6.28 });
+      z.glut[b.r] = Math.min(1, z.glut[b.r] + b.m * 1.2);
+    }
+  }
+  z.brocken = z.brocken.filter(b => b.alter < _F10H_FLUG);
+  for (const f of z.flimmer) f.alter += dt;
+  z.flimmer = z.flimmer.filter(f => f.alter < _F10H_FLIMMER);
+  const abkl = Math.exp(-dt * 1.5);
+  z.glut[0] *= abkl; z.glut[1] *= abkl;
+  _bioFxAlleUpdate(z.fx, dt);
+}
+function _f10hAbbruch(r, m) {
+  _f10h.brocken.push({ x: r ? _F10H_R2 : _F10H_R1, r, m, alter: 0 });
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _f10hDraht(ctx, x0, y0, x1, y1) {
+  ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+}
+function _f10hSchild(ctx, x, y, text, ausr) {
+  ctx.save();
+  ctx.font = '700 12px sans-serif';
+  const b = ctx.measureText(text).width + 14, h = 20;
+  const x0 = ausr === 'right' ? x - b : ausr === 'left' ? x : x - b / 2;
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x0, y - h / 2, b, h, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, x0 + b / 2, y + 1);
+  ctx.restore();
+  return x0;
+}
+// Spule auf einem senkrechten Schenkel: je 50 Windungen eine gezeichnete Schleife.
+function _f10hSpule(ctx, xc, n, seite) {
+  const k = Math.round(n / 50), h = _F10H_SY1 - _F10H_SY0, ry = Math.min(2.6, h / k * 0.42);
+  ctx.lineWidth = k > 10 ? 1.4 : 2;
+  for (let i = 0; i < k; i++) {
+    const y = _F10H_SY0 + h * (i + 0.5) / k;
+    ctx.strokeStyle = '#c2410c';
+    ctx.beginPath(); ctx.ellipse(xc, y, 8, ry, 0, 0, Math.PI); ctx.stroke();
+    ctx.strokeStyle = '#9a3412';
+    ctx.beginPath(); ctx.ellipse(xc, y, 8, ry, 0, Math.PI, 2 * Math.PI); ctx.stroke();
+  }
+  // Anschluesse nach aussen zur Leitung
+  const xa = xc + seite * 8;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.4;
+  _f10hDraht(ctx, xa, _F10H_YO, xa, _F10H_SY0 + h * 0.5 / k);
+  _f10hDraht(ctx, xa, _F10H_YU, xa, _F10H_SY1 - h * 0.5 / k);
+}
+function _f10hTrafo(ctx, x0, nL, nR, a, name) {
+  const B = _F10H_TB, d = 8, y0 = _F10H_KY0, y1 = _F10H_KY1;
+  if (a < 0.99) {                                     // gestrichelter Umriss, wo er fehlt
+    ctx.save();
+    ctx.globalAlpha = 0.5 * (1 - a);
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+    if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+    ctx.strokeRect(x0, y0, B, y1 - y0);
+    ctx.restore();
+  }
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(0, -(1 - a) * 26);                    // gleitet von oben hinein
+  ctx.fillStyle = '#9ca3af';
+  ctx.fillRect(x0, y0, B, d); ctx.fillRect(x0, y1 - d, B, d);
+  ctx.fillRect(x0, y0, d, y1 - y0); ctx.fillRect(x0 + B - d, y0, d, y1 - y0);
+  ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(x0, y0, B, y1 - y0);
+  ctx.strokeRect(x0 + d, y0 + d, B - 2 * d, y1 - y0 - 2 * d);
+  ctx.strokeStyle = 'rgba(75,85,99,0.35)'; ctx.lineWidth = 0.8;   // Bleche
+  for (let y = y0 + 4; y < y1; y += 4) {
+    _f10hDraht(ctx, x0 + 1, y, x0 + d - 1, y);
+    _f10hDraht(ctx, x0 + B - d + 1, y, x0 + B - 1, y);
+  }
+  _f10hSpule(ctx, x0 + d / 2, nL, -1);
+  _f10hSpule(ctx, x0 + B - d / 2, nR, 1);
+  ctx.fillStyle = '#1f2937'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '700 12px sans-serif';
+  ctx.fillText(String(nL), x0 + d / 2, 200);
+  ctx.fillText(String(nR), x0 + B - d / 2, 200);
+  ctx.fillText(name, x0 + B / 2, 218);
+  ctx.restore();
+}
+function _f10hWiderstand(ctx, xm, y, glut) {
+  const b = _F10H_RB, h = 12;
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(xm - b / 2, y - h / 2, b, h);
+  if (glut > 0.01) {
+    ctx.fillStyle = 'rgba(249,115,22,' + (0.85 * glut).toFixed(3) + ')';
+    ctx.fillRect(xm - b / 2, y - h / 2, b, h);
+  }
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2;
+  ctx.strokeRect(xm - b / 2, y - h / 2, b, h);
+}
+function _f10hLampe(ctx, hell, t) {
+  const x = _F10H_XL, y = _F10H_YM, r = 13;
+  const g = _bioFxKlemme((hell - 0.06) / 0.6);
+  if (g > 0.01) {
+    const R = r + 26 * g;
+    const rg = ctx.createRadialGradient(x, y, 2, x, y, R);
+    rg.addColorStop(0, 'rgba(253,224,71,' + (0.95 * g).toFixed(3) + ')');
+    rg.addColorStop(1, 'rgba(253,224,71,0)');
+    ctx.fillStyle = rg;
+    ctx.beginPath(); ctx.arc(x, y, R, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = 'rgba(234,179,8,' + (0.85 * g).toFixed(3) + ')'; ctx.lineWidth = 2;
+    for (let k = 0; k < 8; k++) {
+      const wk = k * Math.PI / 4 + Math.PI / 8;
+      if (Math.sin(wk) > 0.5) continue;                // nicht in den Sockel
+      const l = (5 + 2.5 * Math.sin(t * 2.2 + k * 1.7)) * g;
+      _f10hDraht(ctx, x + Math.cos(wk) * (r + 4), y + Math.sin(wk) * (r + 4),
+                      x + Math.cos(wk) * (r + 4 + l), y + Math.sin(wk) * (r + 4 + l));
+    }
+  }
+  ctx.fillStyle = g > 0.01 ? 'rgba(254,249,195,' + (0.6 + 0.4 * g).toFixed(3) + ')' : '#f8fafc';
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.stroke();
+  // Gluehdraht
+  ctx.strokeStyle = g > 0.05 ? '#d97706' : '#6b7280'; ctx.lineWidth = g > 0.05 ? 1.8 : 1.3;
+  ctx.beginPath();
+  ctx.moveTo(x - 5, y + r - 1); ctx.lineTo(x - 5, y);
+  for (let i = 0; i <= 5; i++) ctx.lineTo(x - 5 + i * 2, y + (i % 2 ? -3 : 0));
+  ctx.lineTo(x + 5, y + r - 1);
+  ctx.stroke();
+  // Sockel
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(x - 6, y + r - 1, 12, 8);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(x - 6, y + r - 1, 12, 8);
+}
+function _f10hPaketZeichnen(ctx, x, y, f, alpha, farbe, rand) {
+  const s = _F10H_PG * Math.sqrt(Math.max(0, f));
+  if (s < 0.5 || alpha <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = farbe; ctx.strokeStyle = rand; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x - s / 2, y - s / 2, s, s, Math.min(3, s / 3));
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+function _f10hDraw(ctx, cv) {
+  if (!_f10h) return;
+  const z = _f10h, W = cv.width, H = cv.height, t = z.t;
+  const YO = _F10H_YO, YU = _F10H_YU, YM = _F10H_YM;
+  const a = _bioFxEase.sanft(z.tr);
+  const mit = _f10hMit(), w = _f10hWerte(mit);
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  // Leitungen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+  const L1 = _F10H_T1 - 4, R1 = _F10H_T1 + _F10H_TB + 4, L2 = _F10H_T2 - 4, R2 = _F10H_T2 + _F10H_TB + 4;
+  _f10hDraht(ctx, _F10H_XQ, YM - 15, _F10H_XQ, YO);
+  _f10hDraht(ctx, _F10H_XQ, YO, _F10H_XS0, YO);
+  _f10hDraht(ctx, _F10H_XS1, YO, L1, YO);
+  _f10hDraht(ctx, _F10H_XQ, YM + 15, _F10H_XQ, YU);
+  _f10hDraht(ctx, _F10H_XQ, YU, L1, YU);
+  for (const y of [YO, YU]) { _f10hDraht(ctx, R1, y, L2, y); _f10hDraht(ctx, R2, y, _F10H_XL, y); }
+  _f10hDraht(ctx, _F10H_XL, YO, _F10H_XL, YM - 13);
+  _f10hDraht(ctx, _F10H_XL, YM + 20, _F10H_XL, YU);
+  if (a < 0.99) {                                     // ohne Transformatoren: durchgezogen
+    ctx.save(); ctx.globalAlpha = 1 - a;
+    for (const y of [YO, YU]) { _f10hDraht(ctx, L1, y, R1, y); _f10hDraht(ctx, L2, y, R2, y); }
+    ctx.restore();
+  }
+  // „lange Leitung“: Unterbrechungszeichen
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.6;
+  for (const y of [YO, YU]) for (const dx of [-3, 3]) _f10hDraht(ctx, 210 + dx - 3, y + 6, 210 + dx + 3, y - 6);
+
+  // Transformatoren
+  _f10hTrafo(ctx, _F10H_T1, _F10H_N1, _F10H_N2, a, 'Transformator 1');
+  _f10hTrafo(ctx, _F10H_T2, _F10H_N2, _F10H_N1, a, 'Transformator 2');
+
+  // Widerstaende mit Flimmern
+  _f10hWiderstand(ctx, _F10H_R1, YO, z.glut[0]);
+  _f10hWiderstand(ctx, _F10H_R2, YU, z.glut[1]);
+  for (const f of z.flimmer) {
+    const k = f.alter / _F10H_FLIMMER;
+    const al = (1 - k) * _bioFxKlemme(f.alter / 0.15);
+    // Staerke ~ abgebrochener Anteil m (ohne 0,425, mit 0,132 je Widerstand)
+    const oben = (f.r ? YU : YO) - 8, hoehe = (6 + 12 * k) * (0.5 + 1.2 * f.m), amp = 1 + 7 * f.m;
+    ctx.strokeStyle = 'rgba(234,88,12,' + (Math.min(1, 0.3 + 1.4 * f.m) * al).toFixed(3) + ')';
+    ctx.lineWidth = 1 + 2.5 * f.m;
+    for (const dx of (f.m > 0.25 ? [-10, 0, 10] : [-6, 6])) {
+      ctx.beginPath();
+      for (let j = 0; j <= 8; j++) {
+        const yy = oben - k * 8 - j * hoehe / 8;
+        const xx = f.x + dx + Math.sin(j * 1.1 + t * 7 + f.ph + dx) * amp * (0.3 + j / 8);
+        if (j) ctx.lineTo(xx, yy); else ctx.moveTo(xx, yy);
+      }
+      ctx.stroke();
+    }
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText('50 Ω', _F10H_R1, YO + 22);
+  ctx.fillText('50 Ω', _F10H_R2, YU + 22);
+  ctx.fillText('lange Leitung', 210, 218);
+
+  // Energiequelle mit Schalter
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(_F10H_XQ, YM, 15, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = z.an ? '#1f2937' : '#64748b'; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let i = 0; i <= 18; i++) {
+    const xx = _F10H_XQ - 9 + i, yy = YM - 4.5 * Math.sin(i / 18 * 2 * Math.PI + (z.an ? t * 5 : 0));
+    if (i) ctx.lineTo(xx, yy); else ctx.moveTo(xx, yy);
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('4,0 V', _F10H_XQ, 200);
+  if (!z.an) {
+    ctx.save(); ctx.globalAlpha = 0.75;
+    _bioFxLeuchten(ctx, (_F10H_XS0 + _F10H_XS1) / 2, YO - 3, 11, t, '250,204,21');
+    ctx.restore();
+  }
+  const wk = -(1 - z.schalter) * 0.62;
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2.4;
+  _f10hDraht(ctx, _F10H_XS0, YO, _F10H_XS0 + Math.cos(wk) * 19, YO + Math.sin(wk) * 19);
+  ctx.fillStyle = '#1f2937';
+  for (const x of [_F10H_XS0, _F10H_XS1]) { ctx.beginPath(); ctx.arc(x, YO, 2.6, 0, 2 * Math.PI); ctx.fill(); }
+
+  // Lampe
+  _f10hLampe(ctx, z.hell, t);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Lampe', _F10H_XL, 200);
+
+  // abbrechende Stuecke und Energiepakete
+  for (const b of z.brocken) {
+    const k = _bioFxEase.sanft(_bioFxKlemme(b.alter / _F10H_FLUG));
+    const yz = b.r ? YU : YO;
+    _f10hPaketZeichnen(ctx, b.x, YM + (yz - YM) * k, b.m * (1 - 0.6 * k), 1, '#fb923c', '#c2410c');
+  }
+  for (const p of z.pakete) {
+    const al = z.ein * _bioFxKlemme((_F10H_PE - p.s) / 14) * _bioFxKlemme((p.s - _F10H_PA + 6) / 8);
+    _f10hPaketZeichnen(ctx, p.s, YM, p.g, al, '#facc15', '#a16207');
+  }
+
+  // Anzeigen oben: dieselben Zahlen wie in der Statuszeile – nur eingeschaltet
+  if (z.an) {
+    const tL = 'Lampe: ' + _f10hZahl(w.uLampe) + ' V';
+    const tLeit = 'Leitung: ' + _f10hZahl(w.uLeit) + ' V · Verlust: ' + _f10hProzent(w.verlust) + ' %';
+    const xl = _f10hSchild(ctx, W - 6, 20, tL, 'right');
+    ctx.save(); ctx.font = '700 12px sans-serif';
+    const bLeit = ctx.measureText(tLeit).width + 14;
+    ctx.restore();
+    _f10hSchild(ctx, Math.min(210, xl - 8 - bLeit / 2), 20, tLeit, 'center');
+  }
+
+  // Legende
+  _f10hPaketZeichnen(ctx, 14, 239, 0.6, 1, '#facc15', '#a16207');
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('gelb: Energiepakete', 24, 243);
+  ctx.textAlign = 'right';
+  ctx.fillText(z.an ? 'eingeschaltet' : 'ausgeschaltet', W - 8, 243);
+
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz11 „Welches Kraftwerk ist das beste?“
+// (Kennung kraftwerke)
+// Vier Kraftwerke sollen je 100 kWh elektrische Energie liefern. Links oben
+// steht das Kraftwerk als kleines Bild (Kohle: Kohlehaufen, Kesselhaus,
+// Schornstein, Kuehlturm · Gas: gelbe Gasleitung, Kesselhaus, Schornstein,
+// kleiner Kuehlturm · Wasser: Stausee, Staumauer, Fallrohr, Turbine, Fluss ·
+// Wind: Turm mit drehendem Rotor, Windstriche). Rechts daneben das
+// Flussbild: Der Pfeil „hinein“ teilt sich in „Strom“ (gerade nach rechts)
+// und „Wärme“ (biegt nach unten ab). Darunter die Energiekette als Kaesten,
+// ganz unten vier Ergebniskarten (Kohle, Gas, Wasser, Wind), die stehen
+// bleiben, bis „neu“ gedrueckt wird.
+//
+// Knoepfe (Profil fz11, woertlich): „Kohlekraftwerk“, „Gaskraftwerk“,
+// „Wasserkraftwerk“, „Windkraftanlage“ (Wahlgruppe _f10iWahl('…')),
+// „▶ 100 kWh Strom erzeugen“, „neu“. Start: Kohlekraftwerk, noch nichts erzeugt.
+//
+// Ablauf: „▶ 100 kWh Strom erzeugen“ schickt Energiepakete zu je 10 kWh
+// durch das Flussbild – alle in 3,0 s gleichmaessig verteilt, damit jedes
+// Kraftwerk seine 100 kWh in derselben Zeit liefert (Kohle: dichter Strom
+// aus 25 Paketen, Wasser: lockerer Strom aus 11). An der Teilung gehen
+// 10 Pakete geradeaus (Strom), die uebrigen biegen ab (Wärme). Einzige
+// Ausnahme: das eine Wärmepaket des Wasserkraftwerks traegt 11 kWh (siehe
+// Modellwerte) – darum sagt der Hinweis „etwa 10 kWh“. Die Baender
+// wachsen hinter den ersten Paketen her, ihre Breite ist 0,2 px je kWh
+// (250 kWh = 50 px, 100 kWh = 20 px). Die Zaehler im Bild und in der Zeile
+// „Zähler“ zaehlen mit; die Ergebniszeile steht erst, wenn das letzte Paket
+// angekommen ist (rund 4,3 s).
+// Kohle und Gas: Mit jedem Paket, das hineingeht, steigt eine graue
+// Rauchwolke aus dem Schornstein, und der CO₂-Zaehler im Bild steigt um
+// 4 kg (Kohle, 25 Pakete) bzw. 2 kg (Gas, 20 Pakete).
+//
+// Modellwerte (Profil fz11, gerundet), alle fuer 100 kWh elektrische Energie:
+//   Kohle   hinein 250 kWh · Wärme 150 kWh · Wirkungsgrad 40 % · CO₂ 100 kg
+//   Gas     hinein 200 kWh · Wärme 100 kWh · Wirkungsgrad 50 % · CO₂  40 kg
+//   Wasser  hinein 111 kWh · Wärme  11 kWh · Wirkungsgrad 90 % · CO₂   0 kg
+//           (Abgleich 03.10.2026: Das Profil nennt 110/10 kWh UND 90 %;
+//           100 : 110 = 90,9 % waere aber gerundet 91 %. Wer am Bildschirm
+//           nachrechnet, muss auf den angezeigten Wirkungsgrad kommen:
+//           100 : 111 = 90,1 % -> 90 %. Wirkungsgrad wie Profil, Buch S. 152
+//           und Heft fz11; die beiden kWh-Werte sind um 1 angepasst.)
+//   Wind    hinein 250 kWh · Rest 150 kWh  · Wirkungsgrad 40 % · CO₂   0 kg
+//           Der Rest ist beim Windrad keine Wärme: er bleibt als
+//           Bewegungsenergie im Wind (Profil: „Rest bleibt im Wind“). Band
+//           und Pakete sind deshalb tuerkis wie der Wind, nicht rot.
+// Energieketten (Profil, woertlich, in der Zeile „Energiekette“ und als
+// Kaesten im Bild): Kohle/Gas „chemische Energie → Wärme → Bewegungsenergie →
+// elektrische Energie“ · Wasser „Lageenergie → Bewegungsenergie →
+// elektrische Energie“ · Wind „Bewegungsenergie des Windes →
+// Bewegungsenergie des Rotors → elektrische Energie“.
+//
+// Statuszeilen:
+//   _f10i-status   vorher „Kohlekraftwerk: noch nichts erzeugt.“,
+//                  waehrend „Kohlekraftwerk erzeugt Strom …“, danach
+//                  „Kohlekraftwerk: hinein 250 kWh · Strom 100 kWh · Wärme
+//                  150 kWh · Wirkungsgrad 40 % · CO₂ 100 kg“ (Wind:
+//                  „… · Rest 150 kWh (bleibt im Wind) · …“)
+//   _f10i-wind     nur bei Wind: „Nur wenn der Wind weht.“
+//   _f10i-zaehler  „Zähler: hinein 120 kWh · Strom 40 kWh · Wärme 60 kWh“
+//   _f10i-kette    die Energiekette des gewaehlten Kraftwerks
+//
+// Aha (_bioFx, ruhig): Am Ende jedes Laufs ein Lichtring an der Spitze des
+// Strompfeils. Sind Kohle UND Wind gemessen, leuchten beide Karten – ihre
+// Zahlen (40 % und 40 %, CO₂ 100 kg und 0 kg) stehen dort nebeneinander.
+// OHNE Textstreifen: Heft fz11 fragt „denselben“ (Aufgabe 2) und „kein“
+// (Merksatz) ab; ein Satz wie „beide 40 %“ wuerde die Antwort vorsagen.
+// Ebenso stehen „kein“, „vergleichen“, „gleich“, „besser“ nirgends am
+// Bildschirm (sim_plan.nicht_am_bildschirm).
+// Deterministisch, ohne Zufall. Jede Zahl im Bild ist ein Zaehler, der am
+// Ende genau auf dem Wert der Ergebniszeile steht.
+// ════════════════════════════════════════════════════════════════════════
+let _f10i = null;
+const _f10iKETTE_FOSSIL = ['chemische Energie', 'Wärme', 'Bewegungsenergie', 'elektrische Energie'];
+const _f10iARTEN = {
+  kohle:  { name: 'Kohlekraftwerk',  kurz: 'Kohle',  ein: 250, rest: 150, eta: 40, co2: 100, wind: false,
+            kette: _f10iKETTE_FOSSIL },
+  gas:    { name: 'Gaskraftwerk',    kurz: 'Gas',    ein: 200, rest: 100, eta: 50, co2: 40,  wind: false,
+            kette: _f10iKETTE_FOSSIL },
+  wasser: { name: 'Wasserkraftwerk', kurz: 'Wasser', ein: 111, rest: 11,  eta: 90, co2: 0,   wind: false,
+            kette: ['Lageenergie', 'Bewegungsenergie', 'elektrische Energie'] },
+  wind:   { name: 'Windkraftanlage', kurz: 'Wind',   ein: 250, rest: 150, eta: 40, co2: 0,   wind: true,
+            kette: ['Bewegungsenergie des Windes', 'Bewegungsenergie des Rotors', 'elektrische Energie'] }
+};
+const _f10iREIHE = ['kohle', 'gas', 'wasser', 'wind'];
+const _f10iK = {
+  STROM: 100,                  // kWh elektrische Energie je Lauf
+  PAKET: 10,                   // kWh je Energiepaket
+  KPX: 0.2,                    // px Bandbreite je kWh
+  X0: 128, XS: 250, XE: 400, XT: 412,   // Band: Anfang, Teilung, Ende Strom, Pfeilspitze
+  YT: 32,                      // Oberkante des Bandes
+  RI: 10,                      // Innenradius des Bogens (Wärme / Rest)
+  YH: 112, YHT: 124,           // Wärmepfeil: Bandende, Spitze
+  V: 180,                      // px/s Paketgeschwindigkeit
+  FENSTER: 3.0,                // s, in denen alle Pakete losgehen
+  BX0: 4, BY0: 4, BX1: 122, BY1: 124, BODEN: 110,   // Bildfeld
+  KY: 132, KH: 36,             // Energiekette
+  CY: 180, CH: 64, CW: 98      // Ergebniskarten
+};
+// Farben: [Band, Paket]
+const _f10iFARBE = {
+  chemisch: ['#d6d3d1', '#57534e'],
+  lage:     ['#a5f3fc', '#0e7490'],
+  wind:     ['#99f6e4', '#0f766e'],
+  strom:    ['#fde68a', '#d97706'],
+  waerme:   ['#fecaca', '#dc2626']
+};
+
+function _f10iEinFarbe(a) { return a === 'wasser' ? _f10iFARBE.lage : a === 'wind' ? _f10iFARBE.wind : _f10iFARBE.chemisch; }
+function _f10iRestFarbe(a) { return _f10iARTEN[a].wind ? _f10iFARBE.wind : _f10iFARBE.waerme; }
+function _f10iRestWort(a) { return _f10iARTEN[a].wind ? 'Rest' : 'Wärme'; }
+// Pakete: 10 Strompakete zu 10 kWh, dazu Rest-/Wärmepakete zu rund 10 kWh
+// (Kohle 15 × 10, Gas 10 × 10, Wasser 1 × 11, Wind 15 × 10).
+function _f10iNR(a) { return Math.max(1, Math.round(_f10iARTEN[a].rest / _f10iK.PAKET)); }
+function _f10iN(a) { return _f10iK.STROM / _f10iK.PAKET + _f10iNR(a); }
+
+// Bandgeometrie eines Kraftwerks
+function _f10iGeo(a) {
+  const d = _f10iARTEN[a], K = _f10iK;
+  const he = K.STROM * K.KPX, hr = d.rest * K.KPX, hi = d.ein * K.KPX;
+  const y1 = K.YT + he;                  // Grenze Strom / Rest
+  const ro = K.RI + hr;                  // Aussenradius des Bogens
+  return { he, hr, hi, y1, ro, rm: K.RI + hr / 2, cx: K.XS, cy: y1 + ro };
+}
+
+// Energiepakete eines Laufs: welche geradeaus gehen, ist gleichmaessig
+// verteilt (genau 10 von N), die Spur im Band ebenfalls fest.
+function _f10iPakete(a) {
+  const K = _f10iK, N = _f10iN(a), E = K.STROM / K.PAKET;
+  const kRest = _f10iARTEN[a].rest / _f10iNR(a);      // kWh je Rest-/Wärmepaket
+  const liste = [];
+  let je = 0, jr = 0;
+  for (let i = 0; i < N; i++) {
+    const e = Math.floor((i + 1) * E / N + 0.5) - Math.floor(i * E / N + 0.5) === 1;
+    const j = e ? je++ : jr++;
+    const f = 0.2 + 0.6 * ((j * 0.618034 + 0.31) % 1);
+    liste.push({ i, e, f, kwh: e ? K.PAKET : kRest, t0: i * K.FENSTER / N, s: 0, los: false, an: false });
+  }
+  return liste;
+}
+function _f10iLaenge(p, g) {
+  const K = _f10iK;
+  if (p.e) return K.XE - K.X0;
+  const r = g.ro - p.f * g.hr;
+  return (K.XS - K.X0) + r * Math.PI / 2 + (K.YH - g.cy);
+}
+function _f10iOrt(p, g) {
+  const K = _f10iK;
+  let s = p.s;
+  if (p.e) return { x: K.X0 + s, y: K.YT + p.f * g.he, ab: K.X0 + s >= K.XS };
+  const d = p.f * g.hr, r = g.ro - d, l1 = K.XS - K.X0;
+  if (s <= l1) return { x: K.X0 + s, y: g.y1 + d, ab: false };
+  s -= l1;
+  const lb = r * Math.PI / 2;
+  if (s <= lb) { const phi = s / r; return { x: K.XS + r * Math.sin(phi), y: g.cy - r * Math.cos(phi), ab: true }; }
+  return { x: K.XS + r, y: g.cy + (s - lb), ab: true };
+}
+
+function _f10iInit() {
+  _f10i = { art: 'kohle', phase: 'bereit', t: 0, lt: 0, pakete: [],
+            cin: 0, cel: 0, crest: 0, co2: 0,
+            erg: { kohle: false, gas: false, wasser: false, wind: false },
+            karte: { kohle: null, gas: null, wasser: null, wind: null },
+            aha: false, glanz: 0, dreh: 0, w: 0, wolken: 0,
+            puffs: [], dampfUhr: 0, fx: { teile: [] } };
+}
+function _f10iHTML() {
+  const k = (a) => `<button class="sim-btn${a === 'kohle' ? ' primary' : ''}" id="_f10i-b-${a}" onclick="_f10iWahl('${a}')">${_f10iARTEN[a].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welches Kraftwerk ist das beste?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jedes Kraftwerk soll 100 kWh elektrische Energie liefern. Ein Energiepaket im Flussbild steht für etwa 10 kWh. Achte darauf, wie viel Energie dafür hineingehen muss.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10i-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_f10iREIHE.map(k).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10i-los" onclick="_f10iLos()">▶ 100 kWh Strom erzeugen</button>
+          <button class="sim-btn" onclick="_f10iNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Ergebnis</div>
+        <div class="lmp-status on" id="_f10i-status" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_f10i-wind" style="margin-top:6px;display:none"></div>
+        <div class="lmp-status on" id="_f10i-zaehler" style="margin-top:6px"></div>
+        <div class="fpm-label" style="margin-top:10px">Energiekette</div>
+        <div class="lmp-status on" id="_f10i-kette" style="margin-top:4px"></div>
+        <div class="fpm-note" style="margin-top:10px">Je breiter ein Pfeil, desto mehr Energie. Unten im Bild bleiben deine Ergebnisse stehen, bis du „neu“ drückst.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Kohlekraftwerk, noch nichts erzeugt</p>
+  </div>`;
+}
+function _f10iErgebnis(a) {
+  const d = _f10iARTEN[a];
+  const rest = d.wind ? 'Rest ' + d.rest + ' kWh (bleibt im Wind)' : 'Wärme ' + d.rest + ' kWh';
+  return d.name + ': hinein ' + d.ein + ' kWh · Strom ' + _f10iK.STROM + ' kWh · ' + rest +
+         ' · Wirkungsgrad ' + d.eta + ' % · CO₂ ' + d.co2 + ' kg';
+}
+function _f10iStatus() {
+  if (!_f10i) return;
+  const z = _f10i, d = _f10iARTEN[z.art];
+  const st = document.getElementById('_f10i-status');
+  if (st) {
+    st.textContent = z.phase === 'fertig' ? _f10iErgebnis(z.art)
+                   : z.phase === 'laeuft' ? d.name + ' erzeugt Strom …'
+                   : d.name + ': noch nichts erzeugt.';
+    st.className = 'lmp-status' + (z.phase === 'laeuft' ? '' : ' on');
+  }
+  const wl = document.getElementById('_f10i-wind');
+  if (wl) {
+    wl.textContent = d.wind ? 'Nur wenn der Wind weht.' : '';
+    wl.style.display = d.wind ? '' : 'none';
+  }
+  const zl = document.getElementById('_f10i-zaehler');
+  if (zl) {
+    zl.textContent = 'Zähler: hinein ' + z.cin + ' kWh · Strom ' + z.cel + ' kWh · ' +
+                     _f10iRestWort(z.art) + ' ' + z.crest + ' kWh';
+    zl.className = 'lmp-status' + (z.phase === 'laeuft' ? '' : ' on');
+  }
+  const kl = document.getElementById('_f10i-kette');
+  if (kl) kl.textContent = d.kette.join(' → ');
+  for (const a of _f10iREIHE) {
+    const b = document.getElementById('_f10i-b-' + a);
+    if (b && b.classList) b.classList.toggle('primary', a === z.art);
+  }
+  const los = document.getElementById('_f10i-los');
+  if (los) {
+    los.disabled = z.phase === 'laeuft';
+    if (los.classList) los.classList.toggle('primary', z.phase !== 'laeuft');
+    los.style.opacity = z.phase === 'laeuft' ? '0.45' : '';
+  }
+}
+// Zuruecksetzen auf „noch nichts erzeugt“ fuer das gewaehlte Kraftwerk.
+function _f10iBereit() {
+  const z = _f10i;
+  z.phase = 'bereit'; z.lt = 0; z.pakete = [];
+  z.cin = 0; z.cel = 0; z.crest = 0; z.co2 = 0;
+  z.puffs = []; z.dampfUhr = 0;
+}
+function _f10iWahl(a) {
+  if (!_f10i || !_f10iARTEN[a]) return;
+  _f10i.art = a;
+  _f10iBereit();
+  _f10i.w = 0;
+  _f10iStatus();
+}
+function _f10iLos() {
+  if (!_f10i || _f10i.phase === 'laeuft') return;
+  _f10iBereit();
+  _f10i.phase = 'laeuft';
+  _f10i.pakete = _f10iPakete(_f10i.art);
+  _f10iStatus();
+}
+function _f10iNeu() {
+  if (!_f10i) return;
+  _f10iInit(); _f10iStatus();
+}
+function _f10iFertig() {
+  const z = _f10i, K = _f10iK, d = _f10iARTEN[z.art];
+  z.phase = 'fertig';
+  // Die Zaehler stehen hier schon auf den Endwerten; zur Sicherheit festnageln.
+  z.cin = d.ein; z.cel = K.STROM; z.crest = d.rest; z.co2 = d.co2;
+  z.erg[z.art] = true;
+  if (z.karte[z.art] === null) z.karte[z.art] = 0;
+  _f10iStatus();
+  _bioFxWelle(z.fx.teile, K.XT - 6, K.YT + _f10iGeo(z.art).he / 2, '#fcd34d', 30);
+  if (!z.aha && z.erg.kohle && z.erg.wind && (z.art === 'kohle' || z.art === 'wind')) {
+    z.aha = true; z.glanz = 4.5;
+    // Kein Textstreifen (siehe Kopf): nur die beiden Karten leuchten auf.
+    for (const a of ['kohle', 'wind']) {
+      const j = _f10iREIHE.indexOf(a);
+      _bioFxWelle(z.fx.teile, 8 + j * (K.CW + 4) + K.CW / 2, K.CY + K.CH / 2, '#fcd34d', 46);
+    }
+  }
+}
+function _f10iUpdate(dt) {
+  if (!_f10i) return;
+  dt = _bioFxDt(dt);
+  const z = _f10i, K = _f10iK, d = _f10iARTEN[z.art];
+  z.t += dt;
+  if (z.phase === 'laeuft') {
+    z.lt += dt;
+    const g = _f10iGeo(z.art);
+    let neu = false;
+    for (const p of z.pakete) {
+      if (p.an || z.lt < p.t0) continue;
+      if (!p.los) {
+        p.los = true; neu = true;
+        // CO₂ entsteht beim Verbrennen, also mit der Energie, die hineingeht
+        z.cin += p.kwh; z.co2 += d.co2 * p.kwh / d.ein;
+        if (d.co2 > 0) {
+          const sx = z.art === 'kohle' ? 70 : 65, sy = z.art === 'kohle' ? 36 : 46;
+          z.puffs.push({ x: sx, y: sy, vx: 6 + (p.i % 3) * 1.5, vy: -13 - (p.i % 2) * 3,
+                         r: z.art === 'kohle' ? 3.5 : 2.8, alter: 0, leben: 2.6, art: 'rauch',
+                         farbe: z.art === 'kohle' ? '#4b5563' : '#9ca3af' });
+        }
+      }
+      p.s = (z.lt - p.t0) * K.V;
+      const L = _f10iLaenge(p, g);
+      if (p.s >= L) {
+        p.s = L; p.an = true; neu = true;
+        if (p.e) z.cel += p.kwh; else z.crest += p.kwh;
+      }
+    }
+    // Dampf ueber dem Kuehlturm (Wärme an die Umgebung)
+    if (z.art === 'kohle' || z.art === 'gas') {
+      z.dampfUhr += dt;
+      const takt = z.art === 'kohle' ? 0.28 : 0.4;
+      while (z.dampfUhr >= takt) {
+        z.dampfUhr -= takt;
+        const n = Math.round(z.lt / takt);
+        z.puffs.push({ x: z.art === 'kohle' ? 101 : 101, y: z.art === 'kohle' ? 72 : 82,
+                       vx: 3 + (n % 3), vy: -10 - (n % 2) * 2, r: 4.5, alter: 0, leben: 2.0, art: 'dampf' });
+      }
+    }
+    if (z.pakete.length && z.pakete.every(p => p.an)) _f10iFertig();
+    else if (neu) _f10iStatus();
+  }
+  // Rauch und Dampf steigen auf und verblassen
+  for (let i = z.puffs.length - 1; i >= 0; i--) {
+    const q = z.puffs[i];
+    q.alter += dt;
+    if (q.alter >= q.leben) { z.puffs.splice(i, 1); continue; }
+    q.x += q.vx * dt; q.y += q.vy * dt; q.r += dt * (q.art === 'rauch' ? 3.2 : 4);
+  }
+  if (z.puffs.length > 120) z.puffs.splice(0, z.puffs.length - 120);
+  // Turbine / Rotor: laeuft nur, solange Strom erzeugt wird
+  const ziel = z.phase === 'laeuft' ? (z.art === 'wind' ? 3.2 : 9) : 0;
+  z.w += (ziel - z.w) * Math.min(1, dt * 1.4);
+  z.dreh = (z.dreh + z.w * dt) % (Math.PI * 2);
+  // Ergebniskarten fuellen sich
+  for (const a of _f10iREIHE) if (z.karte[a] !== null && z.karte[a] < 1) z.karte[a] = Math.min(1, z.karte[a] + dt / 0.7);
+  z.glanz = Math.max(0, z.glanz - dt);
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _f10iText(ctx, s, x, y, ausr, farbe, groesse) {
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.font = '700 ' + (groesse || 12) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _f10iWolke(ctx, x, y, k) {
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.beginPath();
+  ctx.arc(x, y, 6 * k, 0, Math.PI * 2); ctx.arc(x + 8 * k, y - 3 * k, 7 * k, 0, Math.PI * 2);
+  ctx.arc(x + 16 * k, y, 6 * k, 0, Math.PI * 2);
+  ctx.fill();
+}
+function _f10iBild(ctx) {
+  const z = _f10i, K = _f10iK, a = z.art, t = z.t, lauf = z.phase === 'laeuft';
+  const x0 = K.BX0, y0 = K.BY0, x1 = K.BX1, y1 = K.BY1, GR = K.BODEN;
+  ctx.save();
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 8);
+  ctx.clip();
+  const sky = ctx.createLinearGradient(0, y0, 0, GR);
+  sky.addColorStop(0, '#cfe3fb'); sky.addColorStop(1, '#eef6ff');
+  ctx.fillStyle = sky; ctx.fillRect(x0, y0, x1 - x0, y1 - y0);
+  // Wolken ziehen immer langsam vorbei
+  for (let k = 0; k < 2; k++) {
+    const wx = x0 - 30 + ((t * (5 + 2 * k) + 70 * k) % 150);
+    _f10iWolke(ctx, wx, 34 + 14 * k, 1 - 0.25 * k);
+  }
+  // Boden
+  ctx.fillStyle = '#bfe3b4'; ctx.fillRect(x0, GR, x1 - x0, y1 - GR);
+  ctx.strokeStyle = '#86b97a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(x0, GR); ctx.lineTo(x1, GR); ctx.stroke();
+
+  if (a === 'kohle') _f10iBildKohle(ctx, t, lauf);
+  else if (a === 'gas') _f10iBildGas(ctx, t, lauf);
+  else if (a === 'wasser') _f10iBildWasser(ctx, t, lauf);
+  else _f10iBildWind(ctx, t, lauf);
+
+  // Rauch (grau) und Dampf (hell)
+  for (const q of z.puffs) {
+    const al = (1 - q.alter / q.leben) * Math.min(1, q.alter / 0.15);
+    ctx.save(); ctx.globalAlpha = Math.max(0, al);
+    ctx.fillStyle = q.art === 'rauch' ? q.farbe : '#f8fafc';
+    ctx.beginPath(); ctx.arc(q.x, q.y, q.r, 0, Math.PI * 2); ctx.fill();
+    if (q.art === 'dampf') { ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.stroke(); }
+    ctx.restore();
+  }
+  ctx.restore();
+  // Rahmen und CO₂-Zaehler
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 8); ctx.stroke();
+  const co2 = 'CO₂ ' + Math.round(z.co2) + ' kg';
+  ctx.font = '700 12px sans-serif';
+  ctx.fillStyle = 'rgba(255,255,255,0.88)';
+  _bioFxRundRect(ctx, x0 + 4, y0 + 4, ctx.measureText(co2).width + 12, 18, 5); ctx.fill();
+  _f10iText(ctx, co2, x0 + 10, y0 + 18);
+}
+function _f10iBildKohle(ctx, t, lauf) {
+  const z = _f10i, GR = _f10iK.BODEN;
+  // Kohlehaufen und Foerderband
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.moveTo(7, GR); ctx.quadraticCurveTo(17, 92, 30, GR); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(18, 100); ctx.lineTo(42, 82); ctx.stroke();
+  if (lauf) {
+    ctx.fillStyle = '#111827';
+    for (let k = 0; k < 3; k++) {
+      const u = (z.lt * 0.9 + k / 3) % 1;
+      ctx.fillRect(18 + 24 * u - 2, 100 - 18 * u - 6, 4, 4);
+    }
+  }
+  // Kesselhaus mit Feuer
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(40, 72, 40, 38);
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.strokeRect(40, 72, 40, 38);
+  const fl = lauf ? 0.8 + 0.2 * Math.sin(t * 9) * Math.sin(t * 5.3) : 0;
+  ctx.fillStyle = lauf ? 'rgba(249,115,22,' + fl.toFixed(3) + ')' : '#475569';
+  ctx.fillRect(47, 86, 14, 12);
+  if (lauf) { ctx.fillStyle = 'rgba(253,224,71,' + (fl * 0.9).toFixed(3) + ')'; ctx.fillRect(50, 91, 8, 7); }
+  // Schornstein
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(66, 36, 8, 36);
+  ctx.fillStyle = '#ef4444'; ctx.fillRect(66, 36, 8, 4); ctx.fillRect(66, 46, 8, 3);
+  // Kuehlturm
+  _f10iKuehlturm(ctx, 101, 72, 11, 17, GR);
+}
+function _f10iKuehlturm(ctx, cx, top, rTop, rFuss, GR) {
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(cx - rFuss, GR);
+  ctx.quadraticCurveTo(cx - rTop * 0.7, (top + GR) / 2 + 4, cx - rTop, top);
+  ctx.lineTo(cx + rTop, top);
+  ctx.quadraticCurveTo(cx + rTop * 0.7, (top + GR) / 2 + 4, cx + rFuss, GR);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+}
+function _f10iBildGas(ctx, t, lauf) {
+  const z = _f10i, GR = _f10iK.BODEN;
+  // gelbe Gasleitung mit wanderndem Gas
+  ctx.fillStyle = '#facc15'; ctx.fillRect(4, 98, 34, 7);
+  ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1; ctx.strokeRect(4, 98, 34, 7);
+  if (lauf) {
+    ctx.fillStyle = '#a16207';
+    for (let k = 0; k < 4; k++) { const u = (z.lt * 1.4 + k / 4) % 1; ctx.fillRect(5 + 30 * u, 100.5, 3, 2); }
+  }
+  // Kesselhaus mit blauer Flamme
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(38, 74, 36, 36);
+  ctx.strokeStyle = '#64748b'; ctx.strokeRect(38, 74, 36, 36);
+  ctx.fillStyle = '#334155'; ctx.fillRect(45, 86, 14, 12);
+  if (lauf) {
+    const fl = 1 + 0.12 * Math.sin(t * 11);
+    ctx.fillStyle = 'rgba(59,130,246,0.85)';
+    ctx.beginPath(); ctx.moveTo(47, 98); ctx.quadraticCurveTo(52, 98 - 12 * fl, 57, 98); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = 'rgba(147,197,253,0.9)';
+    ctx.beginPath(); ctx.moveTo(49.5, 98); ctx.quadraticCurveTo(52, 98 - 6 * fl, 54.5, 98); ctx.closePath(); ctx.fill();
+  }
+  // Schornstein
+  ctx.fillStyle = '#94a3b8'; ctx.fillRect(62, 46, 6, 28);
+  // kleiner Kuehlturm
+  _f10iKuehlturm(ctx, 101, 82, 9, 14, GR);
+}
+function _f10iBildWasser(ctx, t, lauf) {
+  const z = _f10i, GR = _f10iK.BODEN;
+  // Stausee mit leichten Wellen
+  ctx.fillStyle = '#60a5fa';
+  ctx.beginPath(); ctx.moveTo(4, GR);
+  for (let x = 4; x <= 42; x += 2) ctx.lineTo(x, 50 + Math.sin(x * 0.45 + t * 2.2) * 1.2);
+  ctx.lineTo(42, GR); ctx.closePath(); ctx.fill();
+  // Staumauer
+  ctx.fillStyle = '#9ca3af'; ctx.strokeStyle = '#6b7280'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(40, 44); ctx.lineTo(48, 44); ctx.lineTo(58, GR); ctx.lineTo(40, GR); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  // Fallrohr
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(46, 62); ctx.lineTo(84, 98); ctx.stroke();
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(46, 62); ctx.lineTo(84, 98); ctx.stroke();
+  ctx.lineCap = 'butt';
+  if (lauf) {
+    ctx.fillStyle = '#1d4ed8';
+    for (let k = 0; k < 4; k++) {
+      const u = (z.lt * 1.6 + k / 4) % 1;
+      ctx.beginPath(); ctx.arc(46 + 38 * u, 62 + 36 * u, 1.6, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  // Fluss unten
+  ctx.fillStyle = '#93c5fd'; ctx.fillRect(58, GR, 64, 14);
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 1;
+  for (let k = 0; k < 3; k++) {
+    const wx = 60 + ((t * 14 + k * 21) % 60);
+    ctx.beginPath(); ctx.moveTo(wx, GR + 5 + k * 3); ctx.lineTo(wx + 6, GR + 5 + k * 3); ctx.stroke();
+  }
+  // Maschinenhaus mit Turbinenrad
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(78, 88, 36, 22);
+  ctx.strokeStyle = '#64748b'; ctx.strokeRect(78, 88, 36, 22);
+  ctx.save(); ctx.translate(98, 99); ctx.rotate(z.dreh);
+  ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.stroke();
+  for (let k = 0; k < 4; k++) { const w = k * Math.PI / 2; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(7 * Math.cos(w), 7 * Math.sin(w)); ctx.stroke(); }
+  ctx.restore();
+}
+function _f10iBildWind(ctx, t, lauf) {
+  const z = _f10i, GR = _f10iK.BODEN;
+  // Windstriche (der Wind weht immer)
+  ctx.strokeStyle = 'rgba(15,118,110,0.55)'; ctx.lineWidth = 1.6;
+  for (let k = 0; k < 5; k++) {
+    const y = 26 + k * 17, wx = 2 + ((t * 42 + k * 29) % 130);
+    ctx.beginPath(); ctx.moveTo(wx, y); ctx.lineTo(wx + 14, y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(wx + 14, y); ctx.lineTo(wx + 10, y - 3); ctx.stroke();
+  }
+  // Turm und Gondel
+  ctx.fillStyle = '#f1f5f9'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(57, GR); ctx.lineTo(65, GR); ctx.lineTo(62.5, 50); ctx.lineTo(59.5, 50); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillRect(56, 42, 14, 8); ctx.strokeRect(56, 42, 14, 8);
+  // Rotor mit drei Blaettern
+  ctx.save(); ctx.translate(61, 46); ctx.rotate(z.dreh);
+  for (let k = 0; k < 3; k++) {
+    ctx.save(); ctx.rotate(k * Math.PI * 2 / 3);
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-3, -2); ctx.quadraticCurveTo(-4, -20, 0, -34); ctx.quadraticCurveTo(3, -18, 3, -2); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.fillStyle = '#475569'; ctx.beginPath(); ctx.arc(0, 0, 3, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+// Flussbild: Baender wachsen hinter den ersten Paketen her.
+function _f10iFluss(ctx) {
+  const z = _f10i, K = _f10iK, a = z.art, g = _f10iGeo(a);
+  const fe = _f10iEinFarbe(a), fr = _f10iRestFarbe(a), fs = _f10iFARBE.strom;
+  const l1 = K.XS - K.X0, lr = g.rm * Math.PI / 2 + (K.YH - g.cy);
+  let vIn = 0, vE = 0, vR = 0;                 // gefuellte Laengen
+  if (z.phase === 'fertig') { vIn = l1; vE = K.XE - K.XS; vR = lr; }
+  else if (z.phase === 'laeuft') {
+    for (const p of z.pakete) {
+      if (!p.los) continue;
+      vIn = Math.max(vIn, Math.min(p.s, l1));
+      if (p.s > l1) {
+        if (p.e) vE = Math.max(vE, Math.min(p.s - l1, K.XE - K.XS));
+        else {
+          const L = _f10iLaenge(p, g);
+          vR = Math.max(vR, (p.s - l1) / (L - l1) * lr);
+        }
+      }
+    }
+  }
+  // Ein sehr schmales Band (Wasser: 10 kWh = 2 px) in der kraeftigen Farbe
+  const rf = g.hr < 4 ? fr[1] : fr[0];
+  // Vor dem Lauf: gestrichelte Wege, auf denen die Pakete gleich laufen
+  if (z.phase === 'bereit') {
+    ctx.save();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+    if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+    const ym = K.YT + g.he / 2;
+    ctx.beginPath(); ctx.moveTo(K.X0, ym); ctx.lineTo(K.XT - 8, ym); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(K.XS, g.cy - g.rm); ctx.arc(g.cx, g.cy, g.rm, -Math.PI / 2, 0); ctx.lineTo(g.cx + g.rm, K.YHT - 8); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    ctx.fillStyle = '#94a3b8';
+    ctx.beginPath(); ctx.moveTo(K.XT, ym); ctx.lineTo(K.XT - 9, ym - 5); ctx.lineTo(K.XT - 9, ym + 5); ctx.closePath(); ctx.fill();
+    const ax = g.cx + g.rm;
+    ctx.beginPath(); ctx.moveTo(ax, K.YHT); ctx.lineTo(ax - 5, K.YHT - 9); ctx.lineTo(ax + 5, K.YHT - 9); ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+  // Eingangsband
+  if (vIn > 0) {
+    ctx.fillStyle = fe[0]; ctx.fillRect(K.X0, K.YT, vIn, g.hi);
+    // Kerbe am Anfang (Pfeilschwanz)
+    ctx.fillStyle = '#f8fafc';
+    ctx.beginPath(); ctx.moveTo(K.X0, K.YT); ctx.lineTo(K.X0 + 6, K.YT + g.hi / 2); ctx.lineTo(K.X0, K.YT + g.hi); ctx.closePath(); ctx.fill();
+  }
+  // Strom: geradeaus
+  if (vE > 0) {
+    ctx.fillStyle = fs[0]; ctx.fillRect(K.XS, K.YT, vE, g.he);
+    if (z.cel > 0 || z.phase === 'fertig') {
+      ctx.beginPath(); ctx.moveTo(K.XE, K.YT - 5); ctx.lineTo(K.XT, K.YT + g.he / 2); ctx.lineTo(K.XE, K.YT + g.he + 5); ctx.closePath(); ctx.fill();
+    }
+  }
+  // Wärme / Rest: Bogen nach unten
+  if (vR > 0) {
+    ctx.save();
+    ctx.strokeStyle = rf; ctx.lineWidth = Math.max(2, g.hr); ctx.lineCap = 'butt';
+    const lb = g.rm * Math.PI / 2;
+    ctx.beginPath();
+    ctx.moveTo(K.XS, g.cy - g.rm);
+    if (vR <= lb) ctx.arc(g.cx, g.cy, g.rm, -Math.PI / 2, -Math.PI / 2 + vR / g.rm);
+    else { ctx.arc(g.cx, g.cy, g.rm, -Math.PI / 2, 0); ctx.lineTo(g.cx + g.rm, g.cy + (vR - lb)); }
+    ctx.stroke();
+    ctx.restore();
+    if (z.crest > 0 || z.phase === 'fertig') {
+      ctx.fillStyle = rf;
+      ctx.beginPath(); ctx.moveTo(g.cx + K.RI - 5, K.YH); ctx.lineTo(g.cx + g.ro + 5, K.YH); ctx.lineTo(g.cx + g.rm, K.YHT); ctx.closePath(); ctx.fill();
+    }
+  }
+  // Pakete
+  for (const p of z.pakete) {
+    if (!p.los || p.an) continue;
+    const o = _f10iOrt(p, g);
+    ctx.fillStyle = !o.ab ? fe[1] : p.e ? fs[1] : fr[1];
+    _bioFxRundRect(ctx, o.x - 3, o.y - 3, 6, 6, 1.5); ctx.fill();
+  }
+  // Beschriftung (Zaehler)
+  _f10iText(ctx, 'hinein ' + z.cin + ' kWh', K.X0 + 2, 24);
+  _f10iText(ctx, 'Strom ' + z.cel + ' kWh', K.XT, 24, 'right');
+  const lx = g.cx + g.ro + 9;
+  _f10iText(ctx, _f10iRestWort(a) + ' ' + z.crest + ' kWh', lx, 102);
+  if (_f10iARTEN[a].wind) _f10iText(ctx, 'bleibt im Wind', lx, 117);
+  if (z.phase === 'fertig') _f10iText(ctx, 'Wirkungsgrad ' + _f10iARTEN[a].eta + ' %', K.XT, 74, 'right');
+}
+function _f10iFormFarbe(s) {
+  if (/^chemische/.test(s)) return ['#e7e5e4', '#78716c'];
+  if (/^Wärme/.test(s)) return ['#fee2e2', '#dc2626'];
+  if (/^Lage/.test(s)) return ['#cffafe', '#0891b2'];
+  if (/Windes$/.test(s)) return ['#ccfbf1', '#0d9488'];
+  if (/^Bewegung/.test(s)) return ['#e0e7ff', '#4f46e5'];
+  return ['#fef3c7', '#d97706'];
+}
+function _f10iKette(ctx, W) {
+  const z = _f10i, K = _f10iK, d = _f10iARTEN[z.art];
+  ctx.save();
+  ctx.font = '700 12px sans-serif';
+  const boxen = d.kette.map(s => {
+    const i = s.indexOf(' ');
+    const zeilen = i < 0 ? [s] : [s.slice(0, i), s.slice(i + 1)];
+    return { s, zeilen, w: Math.max(...zeilen.map(q => ctx.measureText(q).width)) + 16 };
+  });
+  const PF = 24;
+  const gesamt = boxen.reduce((s, b) => s + b.w, 0) + PF * (boxen.length - 1);
+  let x = Math.round((W - gesamt) / 2);
+  const x00 = x, y = K.KY, h = K.KH;
+  // Lichtpunkt laeuft waehrend der Erzeugung die Kette entlang
+  const puls = z.phase === 'laeuft' ? x00 + ((z.lt % 1.4) / 1.4) * gesamt : null;
+  boxen.forEach((b, j) => {
+    const [hell, rand] = _f10iFormFarbe(b.s);
+    const an = puls !== null && puls >= x && puls <= x + b.w;
+    if (an) _bioFxLeuchten(ctx, x + b.w / 2, y + h / 2, Math.min(26, b.w / 2), z.t, '252,211,77');
+    ctx.fillStyle = hell; ctx.strokeStyle = rand; ctx.lineWidth = an ? 2.5 : 1.5;
+    _bioFxRundRect(ctx, x, y, b.w, h, 7); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#1f2937'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    if (b.zeilen.length === 1) ctx.fillText(b.zeilen[0], x + b.w / 2, y + h / 2 + 4);
+    else { ctx.fillText(b.zeilen[0], x + b.w / 2, y + 15); ctx.fillText(b.zeilen[1], x + b.w / 2, y + 30); }
+    if (j < boxen.length - 1) {
+      const ax = x + b.w + 4, bx = x + b.w + PF - 4, ay = y + h / 2;
+      ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx - 2, ay); ctx.stroke();
+      ctx.fillStyle = '#475569';
+      ctx.beginPath(); ctx.moveTo(bx, ay); ctx.lineTo(bx - 7, ay - 5); ctx.lineTo(bx - 7, ay + 5); ctx.closePath(); ctx.fill();
+    }
+    x += b.w + PF;
+  });
+  if (puls !== null) {
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.arc(puls, y + h + 3, 3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+function _f10iKarten(ctx) {
+  const z = _f10i, K = _f10iK, y0 = K.CY, h = K.CH, bw = K.CW;
+  _f10iREIHE.forEach((a, j) => {
+    const d = _f10iARTEN[a], x = 8 + j * (bw + 4), f = z.karte[a], gew = a === z.art;
+    if (z.glanz > 0 && (a === 'kohle' || a === 'wind')) {
+      ctx.save(); ctx.globalAlpha = Math.min(1, z.glanz / 0.8);
+      _bioFxLeuchten(ctx, x + bw - 24, y0 + 27, 15, z.t, '252,211,77');
+      ctx.restore();
+    }
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = gew ? '#2563eb' : '#cbd5e1'; ctx.lineWidth = gew ? 2.5 : 1.2;
+    _bioFxRundRect(ctx, x, y0, bw, h, 8); ctx.fill(); ctx.stroke();
+    _f10iText(ctx, d.kurz, x + 8, y0 + 16);
+    // Balken: Anteil, der zu elektrischer Energie wird
+    const bx = x + 8, by = y0 + 22, bl = 46;
+    ctx.fillStyle = '#f1f5f9'; ctx.fillRect(bx, by, bl, 10);
+    if (f !== null) { ctx.fillStyle = '#f59e0b'; ctx.fillRect(bx, by, bl * d.eta / 100 * _bioFxEase.raus(f), 10); }
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1; ctx.strokeRect(bx, by, bl, 10);
+    _f10iText(ctx, f !== null ? d.eta + ' %' : '–', x + bw - 8, y0 + 32, 'right', f !== null ? '#1f2937' : '#4b5563');
+    _f10iText(ctx, f !== null ? 'CO₂ ' + d.co2 + ' kg' : 'CO₂ –', x + 8, y0 + 54, 'left', f !== null ? '#1f2937' : '#4b5563');
+  });
+}
+function _f10iDraw(ctx, cv) {
+  if (!_f10i) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _f10iBild(ctx);
+  _f10iFluss(ctx);
+  _f10iKette(ctx, W);
+  _f10iKarten(ctx);
+  _bioFxDraw(ctx, _f10i.fx.teile);
+  // Hinweisstreifen ueber der Energiekette, damit die Zahlen oben frei bleiben
+  ctx.save(); ctx.translate(0, 124); _bioFxBannerDraw(ctx, _f10i.fx); ctx.restore();
+}
+// ════════════════════════════════════════════════════════════════════════
+// PHYSIK 10 FOERDER – fz12 „Erneuerbar oder nicht erneuerbar?“ (Kennung energietraeger)
+// Acht Karten: Kohle, Erdöl, Erdgas, Uran, Sonne, Wind, Wasser, Holz.
+// Ohne Karte liegen alle acht im Bild und wippen leise. Wer eine Karte waehlt,
+// sieht ihre Landschaft: links die Quelle (Foerderturm ueber dem Kohlefloez,
+// Pferdekopfpumpe ueber der Oelblase, Bohrkopf ueber der Gasblase, Stollen mit
+// Uranerz, Sonne ueber der Solaranlage, zwei Windraeder, Regen ueber Huegel und
+// Fluss mit Wasserrad, Wald), in der Mitte das Kraftwerk, rechts ein Haus.
+// Energiepakete wandern ueber die Leitung zum Haus. Rechts der Balken „Vorrat“
+// – OHNE Zahl.
+// „▶ 100 Jahre vorspulen“ laesst die Zeit im Zeitraffer laufen (3 s; die Szene
+// laeuft sechsmal so schnell, ein Zeiger wandert auf der Zeitleiste 0 … 100 Jahre,
+// die Zeile „Karte: … · vorgespult: … Jahre“ zaehlt in 10-Jahres-Schritten mit).
+//   nicht erneuerbar (Kohle, Erdöl, Erdgas, Uran): der Balken sinkt gleichmaessig
+//     (gleichbleibender Verbrauch) auf 40 %. MODELLWERT, fuer alle vier gleich:
+//     Der Balken zeigt nur die Richtung, keine Menge (Hinweis am Bildschirm).
+//     Das Lager unter der Erde schrumpft mit.
+//     Kohle/Erdöl/Erdgas: CO₂-Blasen steigen aus dem Schornstein.
+//     Uran: Kuppel statt Schornstein, kein CO₂, das Fasslager „Atommüll“ waechst.
+//   erneuerbar (Sonne, Wind, Wasser, Holz): der Balken bleibt voll.
+//     Sonne: Tag und Nacht wechseln, Energie fliesst nur am Tag.
+//     Holz: jeder Baum wird einmal gefaellt und waechst nach; die CO₂-Blasen
+//     aus dem Schornstein ziehen zurueck in die jungen Baeume.
+// Statuszeilen nach dem Vorspulen WOERTLICH aus arbeitsheft_foe10/KAPITEL1_PROFIL.md
+// (das Heft zitiert sie). Danach fliegt die Karte in den Kasten „erneuerbar“ oder
+// „nicht erneuerbar“ (Lichtring, Funken); die dritte Zeile nennt beide Kaesten.
+// Aha (_bioFx): Lichtring am Balken, wenn die Zeit steht; sind alle acht Karten
+// einsortiert, der Hinweisstreifen „Alle Karten sind sortiert.“
+// „neu“ legt alle Karten zurueck. Deterministisch: Text und Bild haengen nur an
+// Karte und Zeit; Math.random nur in den Funken (_bioFx).
+// Abgleich mit der Heftseite fz12 (03.10.2026):
+//   - EINE Statuszeile (_f10j-status, lmp-status). Sie bleibt leer, bis die
+//     100 Jahre um sind (sim_plan: „Statuszeile leer“); Kartenzeile und
+//     Kastenzeile sind schlichter Text, damit „Lies die Statuszeile“ eindeutig ist.
+//   - Nirgends „leer“ oder „voll“ am Bildschirm (Lueckenwoerter des Merksatzes):
+//     leere Kaesten heissen „noch keine Karte“; ohne Karte wird kein Balken
+//     gezeichnet (ein weisser Kasten saehe „leer“ aus).
+//   - Eine schon einsortierte Karte erneut waehlen zeigt ihren Stand NACH
+//     100 Jahren (Kohle waechst nicht nach - ein wieder voller Balken waere
+//     physikalisch falsch). Ein zweites Vorspulen aendert nichts.
+// ════════════════════════════════════════════════════════════════════════
+let _f10j = null;
+const _f10jREIHE = ['kohle', 'erdoel', 'erdgas', 'uran', 'sonne', 'wind', 'wasser', 'holz'];
+const _f10jFOSSIL = 'Der Vorrat wird kleiner. Er wächst nicht nach. Beim Verbrennen entsteht CO₂.';
+const _f10jKARTEN = {
+  kohle:  { name: 'Kohle',  ern: false, farbe: '#374151', kw: 'schlot', text: _f10jFOSSIL },
+  erdoel: { name: 'Erdöl',  ern: false, farbe: '#6b3f1d', kw: 'schlot', text: _f10jFOSSIL },
+  erdgas: { name: 'Erdgas', ern: false, farbe: '#38bdf8', kw: 'schlot', text: _f10jFOSSIL },
+  uran:   { name: 'Uran',   ern: false, farbe: '#ca8a04', kw: 'kuppel',
+            text: 'Der Vorrat wird kleiner. Er wächst nicht nach. Es entsteht kein CO₂, aber Atommüll.' },
+  sonne:  { name: 'Sonne',  ern: true,  farbe: '#facc15', kw: '',
+            text: 'Die Sonne scheint jeden Tag neu. Es entsteht kein CO₂.' },
+  wind:   { name: 'Wind',   ern: true,  farbe: '#93c5fd', kw: '',
+            text: 'Der Wind weht immer wieder neu. Es entsteht kein CO₂.' },
+  wasser: { name: 'Wasser', ern: true,  farbe: '#2563eb', kw: '',
+            text: 'Regen füllt die Flüsse immer wieder auf. Es entsteht kein CO₂.' },
+  holz:   { name: 'Holz',   ern: true,  farbe: '#15803d', kw: 'schlot',
+            text: 'Neue Bäume wachsen nach. Beim Verbrennen entsteht CO₂, aber die Bäume haben es vorher aus der Luft genommen.' },
+};
+const _f10jTLAUF = 3.0;        // s Bildschirmzeit fuer 100 Jahre
+const _f10jTFLUG = 0.8;        // s Flug der Karte in ihren Kasten
+const _f10jRAFFER = 6;         // Zeitraffer: Szene laeuft sechsmal so schnell
+const _f10jREST = 0.4;         // Modell: Balken nicht erneuerbar nach 100 Jahren
+const _f10jSZ = { x: 6, y: 30, w: 360, h: 120 };            // Szene
+const _f10jBAL = { x: 378, y: 52, w: 24, h: 94 };            // Balken „Vorrat“
+const _f10jZL = { x0: 118, x1: 318, y: 16 };                 // Zeitleiste
+const _f10jLTG = [[214, 96], [238, 68], [296, 68], [322, 98]];   // Leitung zum Haus
+const _f10jBAUM = [0.80, 0.93, 0.50, 0.86, 0.62, 0.97];      // Wachstumsphase je Baum
+const _f10jERZ = [[132, 135], [118, 141], [104, 133], [90, 140], [76, 134],
+                  [62, 141], [48, 133], [34, 140], [20, 135]];
+
+/* ── Zustand ───────────────────────────────────────────────────────────── */
+function _f10jInit() {
+  _f10j = { karte: null, phase: 'wahl', pt: 0, t: 0, st: 0, ein: 1, ohne: false,
+            sortiert: { nicht: [], ern: [] }, flug: null, glanz: 0, letzt: '',
+            fx: { teile: [] } };
+}
+// 0 … 1: wie weit die 100 Jahre schon gelaufen sind
+function _f10jFortschritt() {
+  const z = _f10j;
+  if (z.phase === 'lauf') return _bioFxKlemme(z.pt / _f10jTLAUF);
+  return z.phase === 'flug' || z.phase === 'fertig' ? 1 : 0;
+}
+// vorgespulte Jahre in 10er-Schritten (Statuszeile)
+function _f10jJahre() {
+  const z = _f10j;
+  if (z.phase === 'lauf') return Math.min(100, Math.floor(_f10jFortschritt() * 10 + 1e-9) * 10);
+  return z.phase === 'flug' || z.phase === 'fertig' ? 100 : 0;
+}
+// Vorrat 0 … 1: nicht erneuerbar sinkt gleichmaessig auf _f10jREST, erneuerbar bleibt 1
+function _f10jVorrat() {
+  const z = _f10j;
+  if (!z.karte || _f10jKARTEN[z.karte].ern) return 1;
+  return 1 - (1 - _f10jREST) * _f10jFortschritt();
+}
+// Platz Nummer i im Kasten (links „nicht erneuerbar“, rechts „erneuerbar“)
+function _f10jPlatz(ern, i) {
+  return { x: (ern ? 214 : 6) + 8 + (i % 2) * 96, y: 178 + Math.floor(i / 2) * 28 };
+}
+
+/* ── Oberflaeche ───────────────────────────────────────────────────────── */
+function _f10jHTML() {
+  const k = id => `<button class="sim-btn" data-f10j="${id}" onclick="_f10jKarte('${id}')">${_f10jKARTEN[id].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Erneuerbar oder nicht erneuerbar?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jede Karte zeigt einen Energieträger. Wähle eine Karte. Dann spule 100 Jahre vor und achte auf den Balken „Vorrat“.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_f10j-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_f10j-los" onclick="_f10jVorspulen()">▶ 100 Jahre vorspulen</button>
+          <button class="sim-btn" onclick="_f10jNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Karten</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          ${_f10jREIHE.map(k).join('\n          ')}
+        </div>
+        <div id="_f10j-karte" style="margin-top:8px;font-size:.82rem;font-weight:700;color:#334155"></div>
+        <div class="lmp-status" id="_f10j-status" style="margin-top:6px;min-height:2.9em"></div>
+        <div id="_f10j-spalten" style="margin-top:6px;font-size:.78rem;color:#334155;line-height:1.5"></div>
+        <div class="fpm-note" style="margin-top:8px">Der Balken zeigt nur, ob der Vorrat kleiner wird. Er zeigt keine genaue Menge.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: noch keine Karte gewählt &nbsp;|&nbsp; „neu“ legt alle Karten zurück.</p>
+  </div>`;
+}
+function _f10jZeilen() {
+  const z = _f10j, k = z.karte ? _f10jKARTEN[z.karte] : null;
+  let karte, status;
+  // Die Statuszeile bleibt leer, bis die 100 Jahre um sind (sim_plan fz12).
+  // Einzige Ausnahme: Rueckmeldung, wenn ohne Karte vorgespult wird.
+  if (!k) {
+    karte = 'Noch keine Karte gewählt.';
+    status = z.ohne ? 'Wähle zuerst eine Karte.' : '';
+  } else {
+    karte = 'Karte: ' + k.name + ' · vorgespult: ' + _f10jJahre() + ' Jahre';
+    status = z.phase === 'flug' || z.phase === 'fertig' ? k.text : '';
+  }
+  // NIE „leer“: das ist das Lueckenwort des Merksatzes
+  const namen = l => l.length ? l.map(i => _f10jKARTEN[i].name).join(', ') : 'noch keine Karte';
+  const spalten = 'nicht erneuerbar: ' + namen(z.sortiert.nicht) + '<br>erneuerbar: ' + namen(z.sortiert.ern);
+  return { karte, status, spalten, schluessel: karte + '|' + status + '|' + spalten };
+}
+function _f10jStatus() {
+  if (!_f10j) return;
+  const z = _f10j, s = _f10jZeilen();
+  z.letzt = s.schluessel;
+  const a = document.getElementById('_f10j-karte');
+  if (a) a.textContent = s.karte;
+  const b = document.getElementById('_f10j-status');
+  if (b) { b.textContent = s.status; b.className = 'lmp-status' + (z.phase === 'flug' || z.phase === 'fertig' ? ' on' : ''); }
+  const c = document.getElementById('_f10j-spalten');
+  if (c) c.innerHTML = s.spalten;
+  const los = document.getElementById('_f10j-los');
+  if (los) {
+    const aus = z.phase === 'lauf' || z.phase === 'flug' || z.phase === 'fertig';
+    los.disabled = aus;
+    if (los.classList) los.classList.toggle('primary', !aus);
+    if (los.style) los.style.opacity = aus ? '0.45' : '';
+  }
+  try {
+    document.querySelectorAll('[data-f10j]').forEach(btn => {
+      if (btn.classList) btn.classList.toggle('primary', btn.getAttribute('data-f10j') === z.karte);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+
+/* ── Bedienung ─────────────────────────────────────────────────────────── */
+function _f10jKarte(id) {
+  if (!_f10j || !_f10jKARTEN[id]) return;
+  const z = _f10j;
+  if (z.phase === 'flug') _f10jLanden();          // fliegende Karte erst ablegen
+  z.karte = id; z.phase = 'bereit'; z.pt = 0; z.ein = 0; z.ohne = false; z.glanz = 0;
+  // Schon einsortiert: Die 100 Jahre sind fuer diese Karte vorbei. Balken,
+  // Zeitleiste und Statuszeile zeigen den Stand danach; Vorspulen bleibt grau.
+  const k = _f10jKARTEN[id];
+  if (z.sortiert[k.ern ? 'ern' : 'nicht'].includes(id)) { z.phase = 'fertig'; z.pt = _f10jTLAUF; }
+  _f10jStatus();
+}
+function _f10jVorspulen() {
+  if (!_f10j) return;
+  const z = _f10j;
+  if (!z.karte) { z.ohne = true; _f10jStatus(); return; }
+  if (z.phase !== 'bereit') return;
+  z.phase = 'lauf'; z.pt = 0;
+  _f10jStatus();
+}
+function _f10jNeu() {
+  if (!_f10j) return;
+  _f10jInit(); _f10jStatus();
+}
+
+/* ── Ablauf ────────────────────────────────────────────────────────────── */
+function _f10jUpdate(dt) {
+  if (!_f10j) return;
+  const z = _f10j;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  z.ein = Math.min(1, z.ein + dt / 0.35);
+  z.st += dt * (z.phase === 'lauf' ? _f10jRAFFER : 1);
+  if (z.phase === 'lauf') {
+    z.pt += dt;
+    if (z.pt >= _f10jTLAUF) { z.pt = _f10jTLAUF; _f10jEnde(); }
+  } else if (z.phase === 'flug' && z.flug) {
+    z.flug.alter += dt;
+    if (z.flug.alter >= _f10jTFLUG) _f10jLanden();
+  }
+  z.glanz = Math.max(0, z.glanz - dt);
+  if (_f10jZeilen().schluessel !== z.letzt) _f10jStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+// Die 100 Jahre sind um: Lichtring am Balken, Karte fliegt in ihren Kasten.
+function _f10jEnde() {
+  const z = _f10j, k = _f10jKARTEN[z.karte], B = _f10jBAL;
+  const liste = z.sortiert[k.ern ? 'ern' : 'nicht'];
+  z.glanz = 1.8;
+  _bioFxWelle(z.fx.teile, B.x + B.w / 2, B.y + B.h * (1 - (k.ern ? 1 : _f10jREST)), '#fde68a', 28);
+  if (liste.includes(z.karte)) {                  // liegt schon im Kasten
+    z.phase = 'fertig';
+    const p = _f10jPlatz(k.ern, liste.indexOf(z.karte));
+    _bioFxWelle(z.fx.teile, p.x + 44, p.y + 12, '#fde68a', 40);
+    return;
+  }
+  z.phase = 'flug';
+  z.flug = { id: z.karte, ern: k.ern, i: liste.length, alter: 0 };
+}
+function _f10jLanden() {
+  const z = _f10j, f = z.flug;
+  if (!f) return;
+  const liste = z.sortiert[f.ern ? 'ern' : 'nicht'];
+  if (!liste.includes(f.id)) liste.push(f.id);
+  z.flug = null;
+  if (z.phase === 'flug') z.phase = 'fertig';
+  const p = _f10jPlatz(f.ern, liste.indexOf(f.id));
+  _bioFxWelle(z.fx.teile, p.x + 44, p.y + 12, '#fde68a', 44);
+  _bioFxFunken(z.fx.teile, p.x + 44, p.y + 6, 10, ['#fde68a', '#ffffff', '#93c5fd']);
+  if (z.sortiert.nicht.length + z.sortiert.ern.length === _f10jREIHE.length)
+    _bioFxBanner(z.fx, 'Alle Karten sind sortiert.', 3.2, '#93c5fd');
+}
+
+/* ── Zeichnen ──────────────────────────────────────────────────────────── */
+function _f10jDraw(ctx, cv) {
+  if (!_f10j) return;
+  const z = _f10j, W = cv.width, H = cv.height, S = _f10jSZ;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f4f7fb'); bg.addColorStop(1, '#e3e9f0');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.textBaseline = 'alphabetic';
+  _f10jZeitleiste(ctx);
+  // Szene, auf ihren Rahmen beschnitten
+  ctx.save();
+  _bioFxRundRect(ctx, S.x, S.y, S.w, S.h, 8); ctx.clip();
+  if (!z.karte) _f10jStapel(ctx);
+  else { ctx.globalAlpha = z.ein; _f10jSzene(ctx); }
+  ctx.restore();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, S.x, S.y, S.w, S.h, 8); ctx.stroke();
+  if (z.phase === 'lauf') {
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText('▶▶ Zeitraffer', S.x + S.w - 8, S.y + 16);
+  }
+  _f10jBalken(ctx);
+  _f10jKaesten(ctx);
+  if (z.karte) _f10jChip(ctx, z.karte, 8, 4, 88);
+  if (z.flug) {
+    const f = z.flug, e = _bioFxEase.sanft(_bioFxKlemme(f.alter / _f10jTFLUG));
+    const p = _f10jPlatz(f.ern, f.i);
+    _f10jChip(ctx, f.id, 8 + (p.x - 8) * e, 4 + (p.y - 4) * e - Math.sin(Math.PI * e) * 26, 88);
+  }
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// Karte als Kaertchen: weiss, Farbstreifen, Name
+function _f10jChip(ctx, id, x, y, w) {
+  const k = _f10jKARTEN[id];
+  ctx.save();
+  ctx.shadowColor = 'rgba(15,23,42,0.18)'; ctx.shadowBlur = 4; ctx.shadowOffsetY = 1;
+  ctx.fillStyle = '#ffffff'; _bioFxRundRect(ctx, x, y, w, 24, 6); ctx.fill();
+  ctx.shadowColor = 'rgba(0,0,0,0)'; ctx.shadowBlur = 0; ctx.shadowOffsetY = 0;
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2; _bioFxRundRect(ctx, x, y, w, 24, 6); ctx.stroke();
+  ctx.fillStyle = k.farbe; _bioFxRundRect(ctx, x + 5, y + 5, 8, 14, 3); ctx.fill();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(k.name, x + 19, y + 12.5);
+  ctx.restore();
+}
+function _f10jZeitleiste(ctx) {
+  const L = _f10jZL, z = _f10j, p = z.karte ? _f10jFortschritt() : 0;
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'right'; ctx.fillText('0', L.x0 - 8, L.y + 4);
+  ctx.textAlign = 'left'; ctx.fillText('100 Jahre', L.x1 + 8, L.y + 4);
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineWidth = 6;
+  ctx.strokeStyle = '#cbd5e1';
+  ctx.beginPath(); ctx.moveTo(L.x0, L.y); ctx.lineTo(L.x1, L.y); ctx.stroke();
+  const xp = L.x0 + (L.x1 - L.x0) * p;
+  if (p > 0) {
+    ctx.strokeStyle = '#2563eb';
+    ctx.beginPath(); ctx.moveTo(L.x0, L.y); ctx.lineTo(xp, L.y); ctx.stroke();
+  }
+  ctx.lineCap = 'butt'; ctx.lineWidth = 1; ctx.strokeStyle = '#64748b';
+  for (let i = 0; i <= 10; i++) {
+    const x = L.x0 + (L.x1 - L.x0) * i / 10;
+    ctx.beginPath(); ctx.moveTo(x, L.y + 5); ctx.lineTo(x, L.y + (i % 5 ? 8 : 11)); ctx.stroke();
+  }
+  if (z.phase === 'lauf') { ctx.shadowColor = '#60a5fa'; ctx.shadowBlur = 10; }
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(xp, L.y, 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _f10jBalken(ctx) {
+  const B = _f10jBAL, z = _f10j, t = z.t;
+  // Ohne Karte kein Balken: ein weisser, ungefuellter Kasten saehe „leer“ aus.
+  // Mit Karte blenden Aufschrift, Kasten, Fuellung und Rahmen gemeinsam ein.
+  if (!z.karte) return;
+  const k = _f10jKARTEN[z.karte], v = _f10jVorrat(), top = B.y + B.h * (1 - v);
+  ctx.save(); ctx.globalAlpha = z.ein;
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Vorrat', B.x + B.w / 2, B.y - 8);
+  ctx.fillStyle = '#ffffff'; _bioFxRundRect(ctx, B.x, B.y, B.w, B.h, 5); ctx.fill();
+  ctx.save();
+  _bioFxRundRect(ctx, B.x, B.y, B.w, B.h, 5); ctx.clip();
+  ctx.fillStyle = k.farbe;
+  // Oberflaeche wogt leise (lebendig), bleibt aber im Mittel genau auf dem Stand
+  ctx.beginPath(); ctx.moveTo(B.x, B.y + B.h);
+  for (let x = 0; x <= B.w; x += 3)
+    ctx.lineTo(B.x + x, top + Math.sin(x * 0.45 + t * 3) * (v < 0.995 ? 1.4 : 0));
+  ctx.lineTo(B.x + B.w, B.y + B.h); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.28)'; ctx.fillRect(B.x + 4, top + 2, 4, Math.max(0, B.y + B.h - top - 6));
+  ctx.restore();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, B.x, B.y, B.w, B.h, 5); ctx.stroke();
+  ctx.restore();
+  if (z.glanz > 0) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, z.glanz);
+    _bioFxLeuchten(ctx, B.x + B.w / 2, top, 12, t, '253,230,138');
+    ctx.restore();
+  }
+}
+function _f10jKaesten(ctx) {
+  const z = _f10j;
+  for (const ern of [false, true]) {
+    const x0 = ern ? 214 : 6;
+    ctx.fillStyle = 'rgba(255,255,255,0.8)'; _bioFxRundRect(ctx, x0, 156, 200, 90, 8); ctx.fill();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; _bioFxRundRect(ctx, x0, 156, 200, 90, 8); ctx.stroke();
+    ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(ern ? 'erneuerbar' : 'nicht erneuerbar', x0 + 100, 171);
+    z.sortiert[ern ? 'ern' : 'nicht'].forEach((id, i) => {
+      const p = _f10jPlatz(ern, i);
+      _f10jChip(ctx, id, p.x, p.y, 88);
+    });
+  }
+}
+// Ohne Karte: alle acht Karten wippen in der Szene
+function _f10jStapel(ctx) {
+  const z = _f10j, t = z.t;
+  _f10jHimmel(ctx, null, z.st);
+  _f10jWolken(ctx, z.st);
+  _f10jBoden(ctx);
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Wähle eine Karte.', 186, 52);
+  _f10jREIHE.forEach((id, i) => {
+    const x = 14 + (i % 4) * 88, y = 62 + Math.floor(i / 4) * 30 + Math.sin(t * 1.6 + i * 0.9) * 2.5;
+    _f10jChip(ctx, id, x, y, 80);
+  });
+}
+// Szene der gewaehlten Karte
+function _f10jSzene(ctx) {
+  const z = _f10j, id = z.karte, k = _f10jKARTEN[id], st = z.st, t = z.t;
+  const p = _f10jFortschritt(), v = _f10jVorrat();
+  _f10jHimmel(ctx, id, st);
+  let fliesst = 1;
+  if (id === 'sonne') fliesst = _f10jSonne(ctx, st);
+  _f10jWolken(ctx, st);
+  _f10jBoden(ctx);
+  if (id === 'kohle') _f10jKohle(ctx, st, v);
+  else if (id === 'erdoel') _f10jOel(ctx, st, v);
+  else if (id === 'erdgas') _f10jGas(ctx, st, v);
+  else if (id === 'uran') _f10jUranLager(ctx, st, v);
+  else if (id === 'wind') _f10jWind(ctx, st);
+  else if (id === 'wasser') _f10jWasser(ctx, st);
+  else if (id === 'holz') _f10jWald(ctx, t, p);
+  if (k.kw) _f10jKraftwerk(ctx, k.kw);
+  _f10jLeitung(ctx, st, fliesst);
+  if (id === 'uran') _f10jMuell(ctx, p);
+  if (id === 'kohle' || id === 'erdoel' || id === 'erdgas') _f10jCO2(ctx, st, false);
+  if (id === 'holz') _f10jCO2(ctx, st, true);
+}
+// Sonnenstand: ein Tag dauert 10 s Szenenzeit (im Zeitraffer 1,7 s)
+function _f10jSonnenstand(st) {
+  const u = ((st / 10 + 0.12) % 1 + 1) % 1;
+  if (u < 0.65) {
+    const q = u / 0.65;
+    return { tag: true, nacht: 0, x: 22 + q * 320, y: 112 - Math.sin(Math.PI * q) * 66 };
+  }
+  return { tag: false, nacht: Math.sin(Math.PI * (u - 0.65) / 0.35) };
+}
+function _f10jHimmel(ctx, id, st) {
+  const g = ctx.createLinearGradient(0, 30, 0, 122);
+  g.addColorStop(0, '#bfdbfe'); g.addColorStop(1, '#eff6ff');
+  ctx.fillStyle = g; ctx.fillRect(6, 30, 360, 92);
+  if (id === 'sonne') {
+    const s = _f10jSonnenstand(st);
+    if (s.nacht > 0) {
+      ctx.fillStyle = 'rgba(30,41,59,' + (0.3 * s.nacht).toFixed(3) + ')';
+      ctx.fillRect(6, 30, 360, 92);
+    }
+  }
+}
+function _f10jWolken(ctx, st) {
+  ctx.fillStyle = 'rgba(255,255,255,0.9)';
+  for (let k = 0; k < 2; k++) {
+    const x = ((st * (6 + k * 3) + k * 190) % 420) - 30, y = 42 + k * 13;
+    ctx.beginPath();
+    ctx.arc(x, y, 7, 0, 2 * Math.PI); ctx.arc(x + 9, y - 4, 8, 0, 2 * Math.PI);
+    ctx.arc(x + 19, y, 7, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _f10jBoden(ctx) {
+  ctx.fillStyle = '#a07a52'; ctx.fillRect(6, 122, 360, 28);
+  ctx.fillStyle = 'rgba(120,86,52,0.35)';
+  for (let x = 12; x < 366; x += 23) ctx.fillRect(x, 126 + (x % 3) * 6, 9, 2);
+  ctx.fillStyle = '#7fb069'; ctx.fillRect(6, 117, 360, 6);
+}
+function _f10jKraftwerk(ctx, art) {
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2;
+  if (art === 'schlot') {
+    ctx.fillStyle = '#94a3b8'; ctx.fillRect(196, 56, 10, 36); ctx.strokeRect(196, 56, 10, 36);
+  } else if (art === 'kuppel') {
+    ctx.fillStyle = '#e2e8f0';
+    ctx.beginPath(); ctx.arc(180, 92, 18, Math.PI, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(158, 92, 56, 30); ctx.strokeRect(158, 92, 56, 30);
+  ctx.fillStyle = '#fde68a';
+  for (let i = 0; i < 4; i++) ctx.fillRect(163 + i * 12, 100, 7, 7);
+}
+// Masten, Leitung, Energiepakete, Haus
+function _f10jLeitung(ctx, st, an) {
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  for (const x of [238, 296]) {
+    ctx.beginPath(); ctx.moveTo(x, 118); ctx.lineTo(x, 66); ctx.moveTo(x - 6, 68); ctx.lineTo(x + 6, 68); ctx.stroke();
+  }
+  const P = _f10jLTG;
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+  for (let i = 1; i < P.length; i++) ctx.lineTo(P[i][0], P[i][1]);
+  ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Energie', 267, 61);
+  // Haus
+  ctx.fillStyle = '#fef3c7'; ctx.fillRect(318, 98, 32, 24);
+  ctx.strokeStyle = '#78716c'; ctx.lineWidth = 1.2; ctx.strokeRect(318, 98, 32, 24);
+  ctx.fillStyle = '#b91c1c';
+  ctx.beginPath(); ctx.moveTo(314, 98); ctx.lineTo(334, 82); ctx.lineTo(354, 98); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = an > 0.5 ? '#fde047' : '#94a3b8'; ctx.fillRect(323, 104, 12, 10);
+  ctx.fillStyle = '#92400e'; ctx.fillRect(340, 108, 6, 14);
+  if (an <= 0.01) return;
+  // Pakete laufen gleichmaessig die Leitung entlang
+  const seg = [];
+  let L = 0;
+  for (let i = 1; i < P.length; i++) {
+    const d = Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]);
+    seg.push({ a: P[i - 1], b: P[i], s0: L, d }); L += d;
+  }
+  ctx.save();
+  ctx.fillStyle = '#f59e0b'; ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 6;
+  for (let k = 0; k * 24 < L; k++) {
+    const s = ((st * 30 + k * 24) % L + L) % L;
+    const g = seg.find(q => s >= q.s0 && s <= q.s0 + q.d) || seg[seg.length - 1];
+    const f = (s - g.s0) / g.d;
+    ctx.beginPath();
+    ctx.arc(g.a[0] + (g.b[0] - g.a[0]) * f, g.a[1] + (g.b[1] - g.a[1]) * f, 3, 0, 2 * Math.PI);
+    ctx.fill();
+  }
+  ctx.restore();
+}
+// CO₂-Blasen aus dem Schornstein; Holz: sie ziehen in die jungen Baeume zurueck
+function _f10jCO2(ctx, st, holz) {
+  const T = 1.3, LEB = holz ? 4.2 : 2.6;
+  const k1 = Math.floor(st / T);
+  ctx.save();
+  for (let k = k1; k >= k1 - Math.ceil(LEB / T); k--) {
+    const a = st - k * T;
+    if (a < 0 || a > LEB) continue;
+    let x, y, r, al;
+    if (!holz) {
+      x = 201 + a * 9 + Math.sin(a * 2 + k) * 2; y = 54 - a * 12; r = 5 + a * 3.2; al = 1 - a / LEB;
+    } else {
+      const q = a / LEB;
+      x = 201 - q * (90 + (((k % 3) + 3) % 3) * 35);
+      y = 54 - Math.sin(Math.PI * q) * 20 + q * 32; r = 7 - q * 3;
+      al = q < 0.85 ? 1 : (1 - q) / 0.15;
+    }
+    ctx.fillStyle = 'rgba(148,163,184,' + (0.35 * al).toFixed(3) + ')';
+    ctx.strokeStyle = 'rgba(71,85,105,' + (0.8 * al).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = holz ? 'left' : 'right';
+  ctx.fillText('CO₂', holz ? 212 : 191, 50);
+}
+function _f10jKohle(ctx, st, v) {
+  // Floez unter der Erde, schrumpft mit dem Vorrat
+  ctx.fillStyle = '#111827'; _bioFxRundRect(ctx, 14, 131, 8 + 132 * v, 12, 5); ctx.fill();
+  ctx.fillStyle = 'rgba(148,163,184,0.5)';
+  for (let x = 20; x < 14 + 132 * v; x += 11) ctx.fillRect(x, 134 + (x % 4), 2, 2);
+  // Schacht und Foerderturm
+  ctx.save(); ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+  if (ctx.setLineDash) ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(46, 80); ctx.lineTo(46, 133); ctx.stroke();
+  ctx.restore();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(34, 118); ctx.lineTo(46, 76); ctx.lineTo(58, 118);
+  ctx.moveTo(38, 104); ctx.lineTo(54, 104); ctx.stroke();
+  const w = st * 3;
+  ctx.lineWidth = 1.8; ctx.fillStyle = '#e2e8f0';
+  ctx.beginPath(); ctx.arc(46, 74, 8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.lineWidth = 1.2; ctx.beginPath();
+  for (let i = 0; i < 3; i++) {
+    const a = w + i * Math.PI / 3;
+    ctx.moveTo(46 - Math.cos(a) * 8, 74 - Math.sin(a) * 8); ctx.lineTo(46 + Math.cos(a) * 8, 74 + Math.sin(a) * 8);
+  }
+  ctx.stroke();
+  ctx.fillStyle = '#d6d3d1'; ctx.fillRect(22, 106, 14, 12);
+  // Schienen und Lore
+  ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(60, 119); ctx.lineTo(158, 119); ctx.stroke();
+  const q = ((st / 5) % 1 + 1) % 1, hin = q < 0.5;
+  const e = _bioFxEase.sanft(hin ? q * 2 : (q - 0.5) * 2);
+  const x = hin ? 64 + 68 * e : 132 - 68 * e;
+  if (hin) {
+    ctx.fillStyle = '#111827';
+    for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.arc(x + 4 + i * 4.7, 107, 3, 0, 2 * Math.PI); ctx.fill(); }
+  }
+  ctx.fillStyle = '#78716c'; ctx.fillRect(x, 107, 22, 10);
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(x + 5, 118, 2.5, 0, 2 * Math.PI); ctx.arc(x + 17, 118, 2.5, 0, 2 * Math.PI); ctx.fill();
+}
+function _f10jBlase(ctx, v, fuell, rand) {
+  ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  if (ctx.ellipse) ctx.ellipse(84, 138, 12 + 56 * v, 4 + 5 * v, 0, 0, 2 * Math.PI);
+  else ctx.arc(84, 138, 12 + 56 * v, 0, 2 * Math.PI);
+  ctx.fill(); ctx.stroke();
+}
+function _f10jFluss(ctx, x0, y, x1, farbe, punkte, st) {
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([5, 7]);
+  ctx.lineDashOffset = -st * 18;
+  ctx.strokeStyle = punkte; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+  ctx.restore();
+}
+function _f10jOel(ctx, st, v) {
+  _f10jBlase(ctx, v, '#3b2412', '#1c1917');
+  ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(52, 114); ctx.lineTo(52, 137); ctx.stroke();
+  _f10jFluss(ctx, 52, 114, 158, '#78350f', '#1c1917', st);
+  // Pferdekopfpumpe nickt
+  const a = Math.sin(st * 1.8) * 0.22, px = 82, py = 86, Lb = 30;
+  const lx = px - Lb * Math.cos(a), ly = py + Lb * Math.sin(a);
+  const rx = px + Lb * Math.cos(a), ry = py - Lb * Math.sin(a);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(74, 117); ctx.lineTo(px, py); ctx.lineTo(90, 117); ctx.stroke();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(lx - 2, ly + 6); ctx.lineTo(52, 112); ctx.stroke();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 4.5;
+  ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(rx, ry); ctx.stroke();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.arc(lx, ly + 2, 6, Math.PI * 0.5, Math.PI * 1.5); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(rx + 2, ry + 9, 5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#64748b'; ctx.fillRect(70, 115, 36, 3);
+}
+function _f10jGas(ctx, st, v) {
+  _f10jBlase(ctx, v, '#bae6fd', '#0284c7');
+  ctx.strokeStyle = '#57534e'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(60, 116); ctx.lineTo(60, 136); ctx.stroke();
+  _f10jFluss(ctx, 64, 108, 158, '#eab308', '#fef9c3', st);
+  ctx.fillStyle = '#64748b'; ctx.fillRect(56, 94, 8, 24);
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  for (const y of [99, 108]) { ctx.beginPath(); ctx.arc(52, y, 3.5, 0, 2 * Math.PI); ctx.stroke(); }
+}
+function _f10jUranLager(ctx, st, v) {
+  // Erzbrocken: es bleiben so viele, wie der Vorrat zeigt
+  const n = Math.round(_f10jERZ.length * v);
+  ctx.fillStyle = '#d4b106'; ctx.strokeStyle = '#854d0e'; ctx.lineWidth = 1;
+  for (let i = _f10jERZ.length - n; i < _f10jERZ.length; i++) {
+    const [x, y] = _f10jERZ[i];
+    ctx.beginPath(); ctx.moveTo(x - 5, y + 2); ctx.lineTo(x - 2, y - 4); ctx.lineTo(x + 4, y - 3);
+    ctx.lineTo(x + 6, y + 2); ctx.lineTo(x, y + 5); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  // Huegel mit Stollen
+  ctx.fillStyle = '#8f9a6a';
+  ctx.beginPath(); ctx.moveTo(8, 118); ctx.lineTo(28, 96); ctx.lineTo(66, 92); ctx.lineTo(96, 118); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.moveTo(44, 118); ctx.lineTo(44, 108); ctx.arc(51, 108, 7, Math.PI, 0); ctx.lineTo(58, 118); ctx.closePath(); ctx.fill();
+  // Lastwagen bringt Uran zum Kraftwerk
+  const q = ((st / 5) % 1 + 1) % 1, hin = q < 0.5;
+  const e = _bioFxEase.sanft(hin ? q * 2 : (q - 0.5) * 2);
+  const x = hin ? 84 + 50 * e : 134 - 50 * e;
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(x, 106, 16, 10);
+  ctx.fillStyle = '#60a5fa'; ctx.fillRect(hin ? x + 16 : x - 7, 108, 7, 8);
+  if (hin) { ctx.fillStyle = '#facc15'; ctx.fillRect(x + 4, 99, 8, 7); }
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(x + 4, 117, 2.5, 0, 2 * Math.PI); ctx.arc(x + 15, 117, 2.5, 0, 2 * Math.PI); ctx.fill();
+}
+// Fasslager: es kommen Faesser dazu, solange die Zeit laeuft
+function _f10jMuell(ctx, p) {
+  const n = 2 + Math.round(6 * p);
+  for (let i = 0; i < n; i++) {
+    const x = 247 + (i % 4) * 11, y = 104 - Math.floor(i / 4) * 14;
+    ctx.fillStyle = '#facc15'; ctx.fillRect(x, y, 9, 13);
+    ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 1; ctx.strokeRect(x, y, 9, 13);
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(x + 4.5, y + 6.5, 1.2, 0, 2 * Math.PI); ctx.fill();
+    for (let j = 0; j < 3; j++) {
+      const a = -Math.PI / 2 + j * 2 * Math.PI / 3;
+      ctx.beginPath(); ctx.moveTo(x + 4.5, y + 6.5);
+      ctx.arc(x + 4.5, y + 6.5, 3.4, a - 0.45, a + 0.45); ctx.closePath(); ctx.fill();
+    }
+  }
+  ctx.fillStyle = '#1f2937'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Atommüll', 267, 86);
+}
+// Sonne zieht ueber den Himmel, ihr Licht wandert zur Solaranlage. Rueckgabe: fliesst Energie?
+function _f10jSonne(ctx, st) {
+  const s = _f10jSonnenstand(st);
+  if (s.tag) {
+    ctx.save();
+    const g = ctx.createRadialGradient(s.x, s.y, 4, s.x, s.y, 24);
+    g.addColorStop(0, 'rgba(253,224,71,0.7)'); g.addColorStop(1, 'rgba(253,224,71,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(s.x, s.y, 24, 0, 2 * Math.PI); ctx.fill();
+    ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(s.x, s.y, 11, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#fde047';
+    const T = 0.4, k1 = Math.floor(st / T);
+    for (let k = k1; k >= k1 - 3; k--) {
+      const f = (st - k * T) / 1.0;
+      if (f < 0.08 || f > 1) continue;
+      ctx.beginPath(); ctx.arc(s.x + (182 - s.x) * f, s.y + (98 - s.y) * f, 2.6, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Solaranlage mit Kasten
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(182, 102); ctx.lineTo(182, 118); ctx.moveTo(170, 118); ctx.lineTo(194, 118); ctx.stroke();
+  ctx.save(); ctx.translate(182, 100); ctx.rotate(-0.35);
+  ctx.fillStyle = '#1e3a8a'; ctx.fillRect(-26, -9, 52, 18);
+  ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 0.8; ctx.beginPath();
+  for (let i = -13; i <= 13; i += 13) { ctx.moveTo(i, -9); ctx.lineTo(i, 9); }
+  ctx.moveTo(-26, 0); ctx.lineTo(26, 0); ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(206, 92, 9, 26);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(206, 92, 9, 26);
+  return s.tag ? 1 : 0;
+}
+function _f10jWindrad(ctx, x, y, L, w) {
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(x, 118); ctx.lineTo(x, y); ctx.stroke();
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  for (let i = 0; i < 3; i++) {
+    const a = w + i * 2 * Math.PI / 3, c = Math.cos(a), s = Math.sin(a);
+    ctx.beginPath();
+    ctx.moveTo(x - s * 2.5, y + c * 2.5);
+    ctx.lineTo(x + c * L, y + s * L);
+    ctx.lineTo(x + s * 2.5 + c * 6, y - c * 2.5 + s * 6);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  ctx.fillStyle = '#64748b'; ctx.beginPath(); ctx.arc(x, y, 3, 0, 2 * Math.PI); ctx.fill();
+}
+function _f10jWind(ctx, st) {
+  ctx.strokeStyle = 'rgba(100,116,139,0.6)'; ctx.lineWidth = 1.5;
+  for (let k = 0; k < 8; k++) {
+    const y = 40 + k * 10, x = ((st * 70 + k * 67) % 400) - 20;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + 9, y - 3, x + 18, y); ctx.stroke();
+  }
+  _f10jWindrad(ctx, 104, 80, 18, st * 2.2 + 0.7);
+  _f10jWindrad(ctx, 180, 60, 26, st * 2.0);
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(205, 92, 10, 26);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1; ctx.strokeRect(205, 92, 10, 26);
+}
+function _f10jWasser(ctx, st) {
+  // Regenwolke und Regen ueber dem Huegel
+  ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1.5;
+  for (let k = 0; k < 9; k++) {
+    const x = 24 + k * 6, y = 54 + ((st * 55 + k * 11) % 26);
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 1, y + 4); ctx.stroke();
+  }
+  ctx.fillStyle = '#94a3b8';
+  ctx.beginPath(); ctx.arc(30, 48, 9, 0, 2 * Math.PI); ctx.arc(44, 42, 11, 0, 2 * Math.PI);
+  ctx.arc(58, 48, 9, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#86a86b';
+  ctx.beginPath(); ctx.moveTo(6, 118); ctx.lineTo(6, 92); ctx.lineTo(28, 80); ctx.lineTo(58, 84);
+  ctx.lineTo(96, 106); ctx.lineTo(124, 118); ctx.closePath(); ctx.fill();
+  // Fluss vom Huegel bis zum rechten Rand
+  ctx.save();
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 6;
+  // Der Fluss laeuft vorn am Ufer entlang (vor Kraftwerk und Haus)
+  const pfad = () => { ctx.beginPath(); ctx.moveTo(46, 86); ctx.quadraticCurveTo(80, 98, 104, 114);
+                       ctx.quadraticCurveTo(116, 127, 140, 127); ctx.lineTo(366, 127); };
+  pfad(); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([6, 10]);
+  ctx.lineDashOffset = -st * 30;
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 1.5;
+  pfad(); ctx.stroke();
+  ctx.restore();
+  // Wasserkraftwerk mit Rad
+  ctx.fillStyle = '#cbd5e1'; ctx.fillRect(158, 90, 56, 26);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2; ctx.strokeRect(158, 90, 56, 26);
+  ctx.fillStyle = '#fde68a'; for (let i = 0; i < 4; i++) ctx.fillRect(163 + i * 12, 96, 7, 6);
+  // Wasserrad taucht in den Fluss und dreht sich
+  const w = st * 2.4;
+  ctx.strokeStyle = '#78350f'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(186, 119, 8, 0, 2 * Math.PI); ctx.stroke();
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const a = w + i * Math.PI / 3;
+    ctx.moveTo(186, 119); ctx.lineTo(186 + Math.cos(a) * 11, 119 + Math.sin(a) * 11);
+  }
+  ctx.stroke();
+}
+// Wald: jeder Baum wird in den 100 Jahren einmal gefaellt und waechst nach
+function _f10jWald(ctx, t, p) {
+  ctx.fillStyle = '#8b5a2b'; ctx.strokeStyle = '#5b3a1e'; ctx.lineWidth = 1;
+  for (const [x, y] of [[144, 118], [152, 118], [148, 111]]) {
+    ctx.beginPath(); ctx.arc(x, y - 3, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  _f10jBAUM.forEach((o, i) => {
+    const x = 18 + i * 22, c = (o + p) % 1, sw = Math.sin(t * 1.3 + i) * 1.2;
+    if (c < 0.06) _f10jBaum(ctx, x, 1, (c / 0.06) * Math.PI / 2, 0, 1 - c / 0.06 * 0.5);
+    else if (c < 0.14) _f10jStumpf(ctx, x);
+    else if (c < 0.74) { _f10jStumpf(ctx, x); _f10jBaum(ctx, x, 0.15 + 0.85 * (c - 0.14) / 0.6, 0, sw, 1); }
+    else _f10jBaum(ctx, x, 1, 0, sw, 1);
+    if (c >= 0.06 && c < 0.3) {               // Stamm rollt zum Holzstapel
+      const lx = x + (140 - x) * (c - 0.06) / 0.24;
+      ctx.fillStyle = '#8b5a2b'; ctx.fillRect(lx - 6, 113, 12, 4);
+    }
+  });
+}
+function _f10jStumpf(ctx, x) {
+  ctx.fillStyle = '#7c4a1e'; ctx.fillRect(x - 2.5, 113, 5, 5);
+}
+function _f10jBaum(ctx, x, s, kipp, sw, a) {
+  const h = 8 + 14 * s, r = 3 + 8 * s;
+  ctx.save(); ctx.globalAlpha *= a;
+  ctx.translate(x, 118); ctx.rotate(kipp);
+  ctx.fillStyle = '#7c4a1e'; ctx.fillRect(-1.5 - s, -h, 3 + 2 * s, h);
+  ctx.fillStyle = '#15803d';
+  ctx.beginPath(); ctx.arc(sw, -h - r * 0.6, r, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#22c55e';
+  ctx.beginPath(); ctx.arc(sw - r * 0.3, -h - r * 0.9, r * 0.55, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
 }

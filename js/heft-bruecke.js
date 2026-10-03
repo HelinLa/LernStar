@@ -4655,6 +4655,240 @@ const HEFT_SEITEN = {
     frage: "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
     schritte: ["Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.", "Lies die Kraft F in der Statuszeile ab. Die Zahl steht vor N.", "Trage „flach“, „mittel“ und „steil“ mit Kraft und Weg in die Tabelle ein."]
   },
+  "fz1": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "leiterkraft", seite: 7,
+    kapitel: "Woher der Strom kommt",
+    name: "Warum bewegt sich ein Draht im Magnetfeld?",
+    titel: "Der Motor im Elektroauto",
+    frage: "Was passiert mit dem Stab im Magnetfeld, wenn Strom fließt?",
+    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Trage ein.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum.", "Drücke danach „Magnet umdrehen“. Trage beide Zeilen ein."]
+  },
+  "fz2": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "drei-finger", seite: 10,
+    kapitel: "Woher der Strom kommt",
+    name: "In welche Richtung wirkt die Kraft?",
+    titel: "Drei Finger zeigen die Richtung",
+    frage: "Wohin schwingt die Schaukel, wenn du den Strom umpolst und den Magneten umdrehst?",
+    schritte: ["Drücke „neu“, dann „▶ Strom an“. Fülle die Lücke in Zeile 1.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Trage Zeile 2 ein.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Trage Zeile 3 ein.", "Drücke „Hand zeigen“. Welcher Finger zeigt wie der Pfeil F?"]
+  },
+  "fz3": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "dauer-elektro", seite: 13,
+    kapitel: "Woher der Strom kommt",
+    name: "Dauermagnet oder Elektromagnet?",
+    titel: "Magnet mit und ohne Strom",
+    frage: "Worin unterscheidet sich ein Elektromagnet von einem Dauermagneten?",
+    schritte: ["Drücke „neu“, dann „Schalter an“. Lies beide Statuszeilen ab. Ergänze Zeile 1.", "Drücke „3 A“. Trage Zeile 2 ein.", "Drücke „Schalter aus“. Beobachte die Nägel am Elektromagneten. Trage Zeile 3 ein.", "Drücke „Schalter an“, dann „Strom umpolen“. Der Strom fließt jetzt andersherum. Lies ab: Wo liegen die Nordpole?"]
+  },
+  "fz4": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "motor-takt", seite: 16,
+    kapitel: "Woher der Strom kommt",
+    name: "Wie dreht sich ein Elektromotor?",
+    titel: "Die Nadel im Takt",
+    frage: "Was braucht die Nadel, damit sie sich immer weiter dreht?",
+    schritte: ["Drücke „Strom an“. Beobachte Nadel und Zähler. Trage Zeile 1 ein.", "Drücke „neu“. Drücke „Strom an“ und „Strom aus“ im Takt, kurz bevor eine Spitze zur Spule zeigt. Trage Zeile 2 ein.", "Drücke „neu“ und „Kommutator ein“. Drücke „▶ 10 Sekunden laufen lassen“. Trage Zeile 3 ein."]
+  },
+  "fz5": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "induktion-rs", seite: 19,
+    kapitel: "Woher der Strom kommt",
+    name: "Wie entsteht Spannung ohne Batterie?",
+    titel: "Ein Magnet in der Spule",
+    frage: "Wann entsteht in der Spule eine Spannung?",
+    schritte: ["Beobachte eine Runde: Der Magnet fährt hinein, bleibt liegen, fährt heraus, bleibt liegen.", "Trage in jede Zeile ein, was der Magnet macht. Bewegt er sich: ja oder nein?", "Lies jedes Mal das Messgerät ab. Trage den Wert ein, auch ein Minus.", "Lies am Bildschirm nach: „Woher kommt die Energie?“"]
+  },
+  "fz6": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "induktion-betrag", seite: 22,
+    kapitel: "Woher der Strom kommt",
+    name: "Wovon hängt die Induktionsspannung ab?",
+    titel: "Mehr Spannung aus der Spule",
+    frage: "Wovon hängt die Induktionsspannung ab?",
+    schritte: ["Drücke „▶ Magnet herausziehen“. Lies „Größter Ausschlag“ ab: Das ist die Induktionsspannung.", "Drücke „neu“ und wähle nur „schnell“. Miss wie in Schritt a.", "Drücke „neu“ und wähle nur „1200 Windungen“. Miss wie in Schritt a.", "Drücke „neu“ und wähle nur „mit Eisenkern“. Miss wie in Schritt a."]
+  },
+  "fz7": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "magnet-rohr", seite: 25,
+    kapitel: "Woher der Strom kommt",
+    name: "Warum fällt der Magnet im Kupferrohr so langsam?",
+    titel: "Langsam durchs Kupferrohr",
+    frage: "Was bremst den Magneten im Kupferrohr?",
+    schritte: ["Wähle „Kunststoff“ und „Magnet“. Drücke „▶ fallen lassen“. Fülle die Lücke in Zeile 1.", "Wähle „Kupfer“. Drücke „▶ fallen lassen“. Lies die Statuszeile. Trage Zeile 2 ein.", "Wähle „Eisenstück“ und drücke „▶ fallen lassen“. Trage Zeile 3 ein.", "Wähle „Kupfer mit Schlitz“ und „Magnet“. Drücke „▶ fallen lassen“. Trage Zeile 4 ein."]
+  },
+  "fz8": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "wechselgenerator", seite: 28,
+    kapitel: "Woher der Strom kommt",
+    name: "Wie erzeugt ein Generator Wechselspannung?",
+    titel: "Mal links, mal rechts",
+    frage: "Was zeigt das Messgerät, wenn sich der Magnet dreht?",
+    schritte: ["Drücke „▶ drehen“. Beobachte den Zeiger. Lies „Höchste Spannung“ ab.", "Wähle „2 Umdrehungen pro Sekunde“, dann „4 Umdrehungen pro Sekunde“. Miss wie in Schritt a.", "Drücke „Batterie zum Vergleich“. Beobachte den Zeiger. Lies die Spannung ab.", "Vergleiche Zeile 1 und Zeile 4."]
+  },
+  "fz9": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "trafo-einfach", seite: 31,
+    kapitel: "Woher der Strom kommt",
+    name: "Wie ändert ein Transformator die Spannung?",
+    titel: "Zwei Spulen, ein Eisenkern",
+    frage: "Wovon hängt die Spannung U₂ an Spule 2 ab?",
+    schritte: ["Lies am Start die Statuszeile ab. Trage U₂ ein.", "Wähle bei N₂ „1000“. Trage die Zeile ein.", "Wähle bei N₂ „250“. Trage die Zeile ein.", "Drücke „neu“ und dann „Gleichspannung“. Trage die Zeile ein."]
+  },
+  "fz10": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "fernleitung-modell", seite: 35,
+    kapitel: "Woher der Strom kommt",
+    name: "Warum transportiert man Energie mit Hochspannung?",
+    titel: "Hohe Spannung für lange Leitungen",
+    frage: "Warum transportiert man Energie mit Hochspannung?",
+    schritte: ["Wähle „mit Transformatoren“. Drücke „▶ einschalten“.", "Lies die Statuszeilen ab. Fülle die Lücke in Zeile 1 und die Zeilen darunter.", "Wähle „ohne Transformatoren“. Drücke wieder „▶ einschalten“. Trage in die Spalte „ohne Transformatoren“ ein.", "Beobachte die Energiepakete: Wo kommen sie größer bei der Lampe an?"]
+  },
+  "fz11": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kraftwerke", seite: 38,
+    kapitel: "Woher der Strom kommt",
+    name: "Welches Kraftwerk ist das beste?",
+    titel: "Vier Kraftwerke im Vergleich",
+    frage: "Welches Kraftwerk hat den größten Wirkungsgrad?",
+    schritte: ["Wähle „Kohlekraftwerk“. Drücke „▶ 100 kWh Strom erzeugen“.", "Lies in der Statuszeile CO₂ und Wirkungsgrad ab. Trage sie ein.", "Wiederhole a und b für „Wasserkraftwerk“ und „Windkraftanlage“.", "Lies bei „Windkraftanlage“ auch die zweite Statuszeile. Wann liefert sie Strom?"]
+  },
+  "fz12": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "energietraeger", seite: 41,
+    kapitel: "Woher der Strom kommt",
+    name: "Erneuerbar oder nicht erneuerbar?",
+    titel: "Was nach 100 Jahren bleibt",
+    frage: "Welche Energieträger sind erneuerbar?",
+    schritte: ["Wähle die Karte „Kohle“. Drücke „▶ 100 Jahre vorspulen“.", "Beobachte den Vorratsbalken. Lies die Statuszeile. Trage ein, was du siehst.", "Wiederhole a und b mit „Uran“, „Wind“ und „Holz“.", "Vergleiche die Spalten „erneuerbar“ und „nicht erneuerbar“ mit deiner Tabelle. Passen sie zum Vorrat oder zum CO₂?"]
+  },
+  "fz13": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "bio-treibhaus", seite: 44,
+    kapitel: "Woher der Strom kommt",
+    name: "Was macht CO₂ mit unserem Klima?",
+    titel: "Wärme, die zurückkommt",
+    frage: "Wie warm wird die Erde mit mehr oder weniger Treibhausgasen?",
+    schritte: ["Drücke „keine“. Drücke dann „▶ 50 Jahre warten“.", "Beobachte: Kehren rote Pfeile zur Erde um?", "Lies die mittlere Temperatur ab.", "Wiederhole Schritt a bis c mit „wie 1850“, „wie heute“ und „doppelt so viel wie 1850“."]
+  },
+  "fz14": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "stromkosten", seite: 47,
+    kapitel: "Woher der Strom kommt",
+    name: "Was kostet ein Gerät im Jahr?",
+    titel: "Die hohe Stromrechnung",
+    frage: "Wovon hängen die Kosten im Jahr ab?",
+    schritte: ["Lies ab, was der Fernseher im Jahr kostet. Trage es in Zeile 1 ein.", "Drücke „LED 10 W“. Trage die Zeile ein wie Zeile 1.", "Drücke „Wasserkocher 2000 W“. Trage die Zeile ein.", "Drücke „1 h“. Trage die Zeile ein."]
+  },
+  "fn1": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "atombau-isotope", seite: 53,
+    kapitel: "Aus dem Atomkern",
+    name: "Woraus besteht ein Atomkern?",
+    titel: "Der Kühlschrank mit den Zahlen",
+    frage: "Welche Teilchen im Kern bestimmen den Namen?",
+    schritte: ["Drücke Wasserstoff-1. Trage die erste Zeile ein.", "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.", "Drücke Kohlenstoff-14. Trage die dritte Zeile ein.", "Stelle den Regler Protonen im Kern auf 8. Lies oben den Namen ab. Trage die vierte Zeile ein."]
+  },
+  "fn2": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "geiger-mueller", seite: 57,
+    kapitel: "Aus dem Atomkern",
+    name: "Was ist radioaktive Strahlung?",
+    titel: "Das Knacken an der Wand",
+    frage: "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
+    schritte: ["Drücke oben den Knopf „2 · Die Kennlinie“.", "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.", "Lies die Zahl hinter „Bereich“ ab. Trage sie ein.", "Lies den Text unter der Zahl. Trage ein: „zählt“ heißt zählt, „zerstört“ heißt geht kaputt."]
+  },
+  "fn3": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "absorption-strahlung", seite: 60,
+    kapitel: "Aus dem Atomkern",
+    name: "Welche Strahlung kommt wie weit?",
+    titel: "Die Schürze aus Blei",
+    frage: "Welches Material hält welche Strahlung auf?",
+    schritte: ["Drücke oben den Knopf „1 · Drei Strahlungsarten“. Die Materialknöpfe stehen in der Zeile „Absorber“.", "Drücke „γ-Strahlung“ und „Blei“. Lies oben rechts im Bild ab. Trage die erste Zeile ein.", "Drücke „α-Strahlung“ und „Papier“. Lies oben rechts im Bild ab, wie viel durchkommt. Trage die Zeile ein.", "Drücke zuerst „Aluminium“, dann „β-Strahlung“. Lies ab. Trage die letzte Zeile ein."]
+  },
+  "fn4": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "ionisation", seite: 63,
+    kapitel: "Aus dem Atomkern",
+    name: "Warum ist die Strahlung gefährlich?",
+    titel: "Das Fläschchen, das zubleibt",
+    frage: "Warum ist Alphastrahlung im Körper am gefährlichsten?",
+    schritte: ["Drücke α Alpha. Lies beide Werte ab und trage die erste Zeile ein.", "Drücke β Beta und trage beide Werte in die Tabelle ein.", "Drücke γ Gamma. Trage zwei Wortangaben ein, keine Zahlen. Eine steht im letzten Satz.", "Drücke wieder α Alpha. Lies den letzten Abschnitt: Er erklärt die Gefahr im Körper."]
+  },
+  "fn5": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "geiger-mueller", seite: 66,
+    kapitel: "Aus dem Atomkern",
+    name: "Wie weist man Strahlung nach?",
+    titel: "Das Knacken im Messraum",
+    frage: "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
+    schritte: ["Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.", "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.", "Drücke „Auslösebereich“. Lies dieselbe Spalte unter „Auslösebereich (~450 V)“. Ergänze die rechte Spalte.", "Drücke „4 · Totzeit & wahre Zählrate“."]
+  },
+  "fn6": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "zerfall-halbwertszeit", seite: 69,
+    kapitel: "Aus dem Atomkern",
+    name: "Wann ist die Hälfte zerfallen?",
+    titel: "Das Fläschchen wird schwächer",
+    frage: "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
+    schritte: ["Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.", "Vergleiche deine Zahl mit Zeile 3.", "Wähle Iod-131 und danach Cäsium-137. Trage alle drei Nuklide mit ihren Werten ein."]
+  },
+  "fn7": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "zerfall-halbwertszeit", seite: 72,
+    kapitel: "Aus dem Atomkern",
+    name: "Wie alt ist der Fund?",
+    titel: "Ein Holzstück aus dem Moor",
+    frage: "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
+    schritte: ["Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.", "Lies im dritten Teil die Zahl hinter „Erwartet hätte man“ ab.", "Drücke „eine Halbwertszeit weiter“ noch zweimal. Lies Teil 2 und 3 ab. Trage für 0, 1, 2, 3 Halbwertszeiten alle Zahlen ohne Punkt ein."]
+  },
+  "fn8": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kernspaltung", seite: 75,
+    kapitel: "Aus dem Atomkern",
+    name: "Was passiert bei einer Kernspaltung?",
+    titel: "Der Güterzug und der Würfel",
+    frage: "Woher kommt die Energie bei einer Kernspaltung?",
+    schritte: ["Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.", "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.", "Lies in der Statuszeile die Energie ab. Sie steht vor „je Spaltung“. Trage „Barium + Krypton“ und beide Werte ein.", "Wähle „Xenon + Strontium“. Trage beide Werte ein. Wiederhole das mit „Cäsium + Rubidium“."]
+  },
+  "fn9": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kettenreaktion", seite: 78,
+    kapitel: "Aus dem Atomkern",
+    name: "Wie hält man eine Kettenreaktion in Schach?",
+    titel: "Der Beitrag im Aufenthaltsraum",
+    frage: "Wie ändert sich k, wenn die Steuerstäbe weiter drin sind?",
+    schritte: ["Schiebe den Regler auf 0 %. Lies k und die Zahl darunter.", "Stelle 50 % ein. Lies den Satz zum Kernkraftwerk.", "Stelle 75 % und 100 % ein. Trage alles ein."]
+  },
+  "fn10": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kettenreaktion", seite: 82,
+    kapitel: "Aus dem Atomkern",
+    name: "Wie ist ein Kernkraftwerk aufgebaut?",
+    titel: "Der Pfeil auf Nours Folie",
+    frage: "Wo im Kernkraftwerk entsteht der Strom?",
+    schritte: ["Lies den Text „Vom Reaktor zur Steckdose“ unter der Anzeige „Wie geht es weiter?“.", "Prüfe im Text: Wo steht Strom?", "Trage der Reihe nach ein: Brennstab, Wasser, Turbine, Generator."]
+  },
+  "fn12": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "strahlenschutz", seite: 89,
+    kapitel: "Aus dem Atomkern",
+    name: "Wie schützt man sich vor Strahlung?",
+    titel: "Nours Schritt zurück",
+    frage: "Was hilft mehr: ein Schritt zurück oder Blei?",
+    schritte: ["Stelle den Abstand auf 50 cm und lies beide Zahlen ab.", "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.", "Stelle wieder 50 cm ein und schiebe „Blei dazwischen“ auf 7 mm.", "Trage die Zahlen ein. „Aufenthaltsdauer“ bleibt auf 20 Minuten."]
+  },
+  "fn14": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "kernfusion", seite: 96,
+    kapitel: "Aus dem Atomkern",
+    name: "Woher nimmt die Sonne ihre Energie?",
+    titel: "Die Heizung ohne Holz",
+    frage: "Ab welcher Temperatur verschmelzen Wasserstoffkerne zu einem Heliumkern?",
+    schritte: ["Schiebe den Regler nach links auf 4 Millionen °C.", "Lies die Statuszeile rechts neben dem Bild ab.", "Stelle nacheinander 8, 10 und 16 Millionen °C ein.", "Trage alles in die Tabelle ein."]
+  },
   "fv1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
     sim: "magnetfeld", seite: 7,
@@ -4762,114 +4996,6 @@ const HEFT_SEITEN = {
     titel: "Die Rechnung am Tresen",
     frage: "Wovon hängt es ab, was ein Gerät im Jahr kostet?",
     schritte: ["Lies die Statuszeile zum Fernseher 100 W ab. Nimm nur die Zahl hinter „Im Jahr:“.", "Drücke „LED 10 W“. Trage die Zeile ein.", "Drücke „Wasserkocher 2000 W“. Trage die Zeile ein.", "Drücke „1 h“. Der Wasserkocher bleibt gewählt. Trage die Zeile ein."]
-  },
-  "fn1": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "atombau-isotope", seite: 52,
-    kapitel: "Aus dem Atomkern",
-    name: "Woraus besteht ein Atomkern?",
-    titel: "Der Kühlschrank mit den Zahlen",
-    frage: "Welche Teilchen im Kern bestimmen den Namen?",
-    schritte: ["Drücke Wasserstoff-1. Trage die erste Zeile ein.", "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.", "Drücke Kohlenstoff-14. Trage die dritte Zeile ein.", "Stelle den Regler Protonen im Kern auf 8. Lies oben den Namen ab. Trage die vierte Zeile ein."]
-  },
-  "fn2": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "geiger-mueller", seite: 56,
-    kapitel: "Aus dem Atomkern",
-    name: "Was ist radioaktive Strahlung?",
-    titel: "Das Knacken an der Wand",
-    frage: "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
-    schritte: ["Drücke oben den Knopf „2 · Die Kennlinie“.", "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.", "Lies die Zahl hinter „Bereich“ ab. Trage sie ein.", "Lies den Text unter der Zahl. Trage ein: „zählt“ heißt zählt, „zerstört“ heißt geht kaputt."]
-  },
-  "fn3": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "absorption-strahlung", seite: 59,
-    kapitel: "Aus dem Atomkern",
-    name: "Welche Strahlung kommt wie weit?",
-    titel: "Die Schürze aus Blei",
-    frage: "Welches Material hält welche Strahlung auf?",
-    schritte: ["Drücke oben den Knopf „1 · Drei Strahlungsarten“. Die Materialknöpfe stehen in der Zeile „Absorber“.", "Drücke „γ-Strahlung“ und „Blei“. Lies oben rechts im Bild ab. Trage die erste Zeile ein.", "Drücke „α-Strahlung“ und „Papier“. Lies oben rechts im Bild ab, wie viel durchkommt. Trage die Zeile ein.", "Drücke zuerst „Aluminium“, dann „β-Strahlung“. Lies ab. Trage die letzte Zeile ein."]
-  },
-  "fn4": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ionisation", seite: 62,
-    kapitel: "Aus dem Atomkern",
-    name: "Warum ist die Strahlung gefährlich?",
-    titel: "Das Fläschchen, das zubleibt",
-    frage: "Warum ist Alphastrahlung im Körper am gefährlichsten?",
-    schritte: ["Drücke α Alpha. Lies beide Werte ab und trage die erste Zeile ein.", "Drücke β Beta und trage beide Werte in die Tabelle ein.", "Drücke γ Gamma. Trage zwei Wortangaben ein, keine Zahlen. Eine steht im letzten Satz.", "Drücke wieder α Alpha. Lies den letzten Abschnitt: Er erklärt die Gefahr im Körper."]
-  },
-  "fn5": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "geiger-mueller", seite: 65,
-    kapitel: "Aus dem Atomkern",
-    name: "Wie weist man Strahlung nach?",
-    titel: "Das Knacken im Messraum",
-    frage: "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
-    schritte: ["Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.", "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.", "Drücke „Auslösebereich“. Lies dieselbe Spalte unter „Auslösebereich (~450 V)“. Ergänze die rechte Spalte.", "Drücke „4 · Totzeit & wahre Zählrate“."]
-  },
-  "fn6": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zerfall-halbwertszeit", seite: 68,
-    kapitel: "Aus dem Atomkern",
-    name: "Wann ist die Hälfte zerfallen?",
-    titel: "Das Fläschchen wird schwächer",
-    frage: "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
-    schritte: ["Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.", "Vergleiche deine Zahl mit Zeile 3.", "Wähle Iod-131 und danach Cäsium-137. Trage alle drei Nuklide mit ihren Werten ein."]
-  },
-  "fn7": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zerfall-halbwertszeit", seite: 71,
-    kapitel: "Aus dem Atomkern",
-    name: "Wie alt ist der Fund?",
-    titel: "Ein Holzstück aus dem Moor",
-    frage: "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
-    schritte: ["Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.", "Lies im dritten Teil die Zahl hinter „Erwartet hätte man“ ab.", "Drücke „eine Halbwertszeit weiter“ noch zweimal. Lies Teil 2 und 3 ab. Trage für 0, 1, 2, 3 Halbwertszeiten alle Zahlen ohne Punkt ein."]
-  },
-  "fn8": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernspaltung", seite: 74,
-    kapitel: "Aus dem Atomkern",
-    name: "Was passiert bei einer Kernspaltung?",
-    titel: "Der Güterzug und der Würfel",
-    frage: "Woher kommt die Energie bei einer Kernspaltung?",
-    schritte: ["Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.", "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.", "Lies in der Statuszeile die Energie ab. Sie steht vor „je Spaltung“. Trage „Barium + Krypton“ und beide Werte ein.", "Wähle „Xenon + Strontium“. Trage beide Werte ein. Wiederhole das mit „Cäsium + Rubidium“."]
-  },
-  "fn9": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kettenreaktion", seite: 77,
-    kapitel: "Aus dem Atomkern",
-    name: "Wie hält man eine Kettenreaktion in Schach?",
-    titel: "Der Beitrag im Aufenthaltsraum",
-    frage: "Wie ändert sich k, wenn die Steuerstäbe weiter drin sind?",
-    schritte: ["Schiebe den Regler auf 0 %. Lies k und die Zahl darunter.", "Stelle 50 % ein. Lies den Satz zum Kernkraftwerk.", "Stelle 75 % und 100 % ein. Trage alles ein."]
-  },
-  "fn10": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kettenreaktion", seite: 81,
-    kapitel: "Aus dem Atomkern",
-    name: "Wie ist ein Kernkraftwerk aufgebaut?",
-    titel: "Der Pfeil auf Nours Folie",
-    frage: "Wo im Kernkraftwerk entsteht der Strom?",
-    schritte: ["Lies den Text „Vom Reaktor zur Steckdose“ unter der Anzeige „Wie geht es weiter?“.", "Prüfe im Text: Wo steht Strom?", "Trage der Reihe nach ein: Brennstab, Wasser, Turbine, Generator."]
-  },
-  "fn12": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "strahlenschutz", seite: 88,
-    kapitel: "Aus dem Atomkern",
-    name: "Wie schützt man sich vor Strahlung?",
-    titel: "Nours Schritt zurück",
-    frage: "Was hilft mehr: ein Schritt zurück oder Blei?",
-    schritte: ["Stelle den Abstand auf 50 cm und lies beide Zahlen ab.", "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.", "Stelle wieder 50 cm ein und schiebe „Blei dazwischen“ auf 7 mm.", "Trage die Zahlen ein. „Aufenthaltsdauer“ bleibt auf 20 Minuten."]
-  },
-  "fn14": {
-    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernfusion", seite: 95,
-    kapitel: "Aus dem Atomkern",
-    name: "Woher nimmt die Sonne ihre Energie?",
-    titel: "Die Heizung ohne Holz",
-    frage: "Ab welcher Temperatur verschmelzen Wasserstoffkerne zu einem Heliumkern?",
-    schritte: ["Schiebe den Regler nach links auf 4 Millionen °C.", "Lies die Statuszeile rechts neben dem Bild ab.", "Stelle nacheinander 8, 10 und 16 Millionen °C ein.", "Trage alles in die Tabelle ein."]
   },
   "ki1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW",
