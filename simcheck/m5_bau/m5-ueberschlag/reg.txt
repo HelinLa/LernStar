@@ -1,0 +1,1 @@
+  'm5-ueberschlag': modal => { _m5kInit(); modal.innerHTML = _m5kHTML(); _m5kStatus(); _pSim = new PhysicsSimEngine('_m5k-cv', '_m5k-cv'); _pSim.start(dt => _m5kUpdate(dt), (ctx, cv) => _m5kDraw(ctx, cv), []); },

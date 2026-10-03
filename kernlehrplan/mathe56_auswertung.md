@@ -47,7 +47,7 @@ Wortlaut aller 93 Kompetenzerwartungen bis Ende 5/6: `../arbeitsheft/kompetenzen
 | Geo-1 … 15 | Geometrie | |
 | Sto-1 … 5 | Stochastik | |
 
-## Inhaltliche Schwerpunkte bis Ende 5/6 (wörtlich)
+## Inhaltliche Schwerpunkte bis Ende 5/6 (gekürzt – zum Zitieren den Wortlaut aus `rs_m_klp_2022_volltext.txt` nehmen)
 
 - **Arithmetik/Algebra:** Grundrechenarten (natürliche Zahlen, endliche Dezimalzahlen,
   einfache Brüche, schriftliche Division) · Gesetze und Regeln (Kommutativ-, Assoziativ-,

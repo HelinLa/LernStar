@@ -7589,6 +7589,12 @@ const _physSimDefs = {
   'm5-grosse-zahlen': modal => { _m5dInit(); modal.innerHTML = _m5dHTML(); _m5dStatus(); _pSim = new PhysicsSimEngine('_m5d-cv', '_m5d-cv'); _pSim.start(dt => _m5dUpdate(dt), (ctx, cv) => _m5dDraw(ctx, cv), []); },
   'm5-zahlenstrahl': modal => { _m5eInit(); modal.innerHTML = _m5eHTML(); _m5eStatus(); _pSim = new PhysicsSimEngine('_m5e-cv', '_m5e-cv'); _pSim.start(dt => _m5eUpdate(dt), (ctx, cv) => _m5eDraw(ctx, cv), []); },
   'm5-runden': modal => { _m5fInit(); modal.innerHTML = _m5fHTML(); _m5fStatus(); _pSim = new PhysicsSimEngine('_m5f-cv', '_m5f-cv'); _pSim.start(dt => _m5fUpdate(dt), (ctx, cv) => _m5fDraw(ctx, cv), []); },
+  'm5-rechenstrich': modal => { _m5gInit(); modal.innerHTML = _m5gHTML(); _m5gStatus(); _pSim = new PhysicsSimEngine('_m5g-cv', '_m5g-cv'); _pSim.start(dt => _m5gUpdate(dt), (ctx, cv) => _m5gDraw(ctx, cv), []); },
+  'm5-umkehr': modal => { _m5hInit(); modal.innerHTML = _m5hHTML(); _m5hStatus(); _pSim = new PhysicsSimEngine('_m5h-cv', '_m5h-cv'); _pSim.start(dt => _m5hUpdate(dt), (ctx, cv) => _m5hDraw(ctx, cv), []); },
+  'm5-plus-schriftlich': modal => { _m5iInit(); modal.innerHTML = _m5iHTML(); _m5iStatus(); _pSim = new PhysicsSimEngine('_m5i-cv', '_m5i-cv'); _pSim.start(dt => _m5iUpdate(dt), (ctx, cv) => _m5iDraw(ctx, cv), []); },
+  'm5-minus-schriftlich': modal => { _m5jInit(); modal.innerHTML = _m5jHTML(); _m5jStatus(); _pSim = new PhysicsSimEngine('_m5j-cv', '_m5j-cv'); _pSim.start(dt => _m5jUpdate(dt), (ctx, cv) => _m5jDraw(ctx, cv), []); },
+  'm5-ueberschlag': modal => { _m5kInit(); modal.innerHTML = _m5kHTML(); _m5kStatus(); _pSim = new PhysicsSimEngine('_m5k-cv', '_m5k-cv'); _pSim.start(dt => _m5kUpdate(dt), (ctx, cv) => _m5kDraw(ctx, cv), []); },
+  'm5-zahlenmauer': modal => { _m5lInit(); modal.innerHTML = _m5lHTML(); _m5lStatus(); _pSim = new PhysicsSimEngine('_m5l-cv', '_m5l-cv'); _pSim.start(dt => _m5lUpdate(dt), (ctx, cv) => _m5lDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -148672,4 +148678,3517 @@ function _m5fDraw(ctx, cv) {
   const st = _m5fSTELLE[z.stelle];
   _m5fText(ctx, 'Stelle: ' + st.name + ' · Striche alle ' + _m5fFmt(st.s / 10),
            W / 2, H - 14, 'center', '#475569', 13, '600');
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mp1 „Wie rechnest du 46 + 37 im Kopf?“ (Kennung m5-rechenstrich)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL2_PROFIL.md, Abschnitt m5-rechenstrich.
+// Ueberschrift = Frage der Einheit: „Welche Summe hat 46 + 37?“
+//
+// Was man sieht: oben links die Aufgabe („Aufgabe: 46 + 37“). In der Mitte
+// ein Rechenstrich – eine waagerechte Linie OHNE Striche, gezeichnet fuer den
+// Bereich 40 bis 90 (7,4 px je 1, damit jeder Sprung so lang ist, wie er
+// zaehlt). Nur die Punkte, an denen gerechnet wird, tragen eine Zahl: als
+// Faehnchen UNTER der Linie (Start dunkelblau, Zwischenergebnis orange, Ziel
+// gold). Jeder Rechenschritt ist ein Bogen UEBER der Linie, beschriftet mit
+// „+ 30“ usw.; ein Minus-Schritt ist ein Bogen UNTER der Linie zurueck.
+// Unten ein Kasten „Rechnung“: dort steht jeder Schritt als Zeile, in DER
+// Farbe seines Bogens (Sprung 1 blau, Sprung 2 violett), und blitzt kurz
+// auf, sobald der Bogen landet – Bild und Zeichen sind so verbunden.
+// Ist ein Weg fertig, bleibt er als duenner grauer Bogen stehen, wenn der
+// naechste Weg beginnt. Nach drei Wegen enden drei verschiedene Boegen am
+// selben Punkt (nur im Bild, nie als Satz).
+//
+// Knoepfe (Sprungmarken = Zeilen der Heft-Tabelle, woertlich) – _m5gWeg(…):
+//   „erst Zehner, dann Einer“   ('zehner')    46 → + 30 → 76 → + 7 → 83
+//   „Zehner und Einer getrennt“ ('getrennt')  Kaertchen „40 + 30 = 70“ und
+//        „6 + 7 = 13“ fliegen oben ein; unter der 13 teilt sie sich in
+//        „1 Z“ und „3 E“; die 70 faellt auf den Rechenstrich, eine blaue
+//        Zehnerstange (10 Wuerfel) und 3 gruene Einerwuerfel legen sich von 70
+//        bis 83 auf die Linie; dann ein Sprung „+ 13“ von 70 nach 83.
+//   „bis 50, dann weiter“       ('fuenfzig')  46 → + 4 → 50 → + 33 → 83
+//   „plus 40, dann minus 3“     ('minus')     46 → + 40 → 86 → − 3 → 83
+//                                              (der − 3 ist ein Bogen UNTER der Linie)
+//   „nebeneinander schreiben“   ('neben')     Gegenprobe zu Tareks Weg: dieselben
+//        Kaertchen, dann ruecken die Ergebnisse 70 und 13 als Plaettchen
+//        aneinander: die 13 schiebt sich auf die 0 der 70, die 0 verblasst,
+//        es steht „713“ da. Ein gestrichelter Pfeil zeigt aus dem
+//        Rechenstrich hinaus, im Bild steht „713 passt nicht auf diesen
+//        Rechenstrich“, im Rechnungskasten „7 Zehner und 13 Einer
+//        nebeneinander: 713“. Der Punkt 46 bleibt blass stehen.
+//        (Der Bauplan nennt den Knopf „Tareks Weg“ – eine Simulation traegt
+//        keine Figurennamen, MATHE_PROFIL § 10 Regel 11; Kapitel 1 benennt
+//        die Gegenprobe ebenso nach der Handlung: „ohne leere Stellen schreiben“.)
+//   „neu“ (_m5gNeu()): nur der Startpunkt 46, keine grauen Boegen, Aha-
+//        Gedaechtnis geloescht.
+// Ein Knopf waehrend eines laufenden Weges startet sofort den neuen Weg; der
+// alte blendet in 0,2 s aus. Jede Knopffolge ergibt am Ende denselben Zustand.
+//
+// Zeiten (s, ab Knopfdruck): Sprungwege 0,2 Vorlauf, Sprung 1 0,2–0,8, Sprung 2
+// 0,95–1,55. „getrennt“: Kaertchen 0,2–0,5 und 0,3–0,6, Teilen 0,6–0,85,
+// Fallen 0,85–1,15, Sprung + 13 1,15–1,65. „nebeneinander“: Kaertchen wie oben,
+// Zusammenruecken 0,65–1,15, Pfeil 1,15–1,55. Alles ist nach hoechstens 1,65 s
+// fertig (simfakten.js liest mit --frames=25 --verlauf=4 bis 2,0 s ab).
+//
+// Statuszeilen (woertlich; jede, deren Wert das Heft verlangt, hat mehr als
+// 18 Zeichen, sonst fehlt sie im Faktendump):
+//   _m5g-weg       „Rechenweg: erst Zehner, dann Einer“ (Start: „Rechenweg: noch
+//                  nicht gewählt“) – sofort beim Knopfdruck
+//   _m5g-rechnung  „Rechnung: …“, waechst mit jeder Landung:
+//                  „Rechnung: 46 + 30 = 76“ → „Rechnung: 46 + 30 = 76, 76 + 7 = 83“
+//   _m5g-zwischen  „Zwischenergebnis: …“ → „Zwischenergebnis: 76“
+//   _m5g-summe     „Ergebnis der Aufgabe: …“ → „Ergebnis der Aufgabe: 83“;
+//                  beim Weg „nebeneinander schreiben“:
+//                  „Nebeneinander geschrieben: …“ → „Nebeneinander geschrieben: 713“
+//
+// Werte (jeder Endwert nachgerechnet mit simcheck/werte.js):
+//   erst Zehner, dann Einer   46 + 30 = 76, 76 + 7 = 83            · 76         · 83
+//   Zehner und Einer getrennt 40 + 30 = 70, 6 + 7 = 13, 70 + 13 = 83 · 70 und 13 · 83
+//   bis 50, dann weiter       46 + 4 = 50, 50 + 33 = 83            · 50         · 83
+//   plus 40, dann minus 3     46 + 40 = 86, 86 − 3 = 83            · 86         · 83
+//   nebeneinander schreiben   40 + 30 = 70, 6 + 7 = 13             · 70 und 13  · Nebeneinander geschrieben: 713
+// Alle Zahlen kommen aus EINER Rechnung (_m5gPlan) mit A = 46, B = 37: Zehner
+// und Einer werden zerlegt, die Spruenge daraus gebildet (+ 4 = 50 − 46,
+// + 40 = naechster Zehner ueber 37, − 3 = 37 − 40), „713“ ist die Zehnerziffer
+// „7“ der 70 mit „13“ dahinter – die 13 setzt sich im Bild auf die 0 der 70
+// (NICHT „70“ + „13“ = „7013“). Rechenzeichen: + und − (U+2212).
+// Faehnchen dicht beieinander liegender Punkte zeigen nach aussen: 46 links /
+// 50 rechts; bei 86 − 3 haengen 83 und 86 eine Stufe tiefer, schraeg nach
+// aussen, und das Schild „− 3“ steht zwischen ihnen unter dem Bogen.
+// Start: Punkt bei 46, kein Sprung, alle Statuszeilen mit „…“.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Landet der DRITTE verschiedene
+// Weg (Gegenprobe nicht mitgezaehlt) wieder bei 83, laufen zwei Lichtringe um
+// das Ziel; die beiden frueheren Wege stehen dabei als graue Boegen, die am
+// selben Punkt enden. Einmal je Sitzung, „neu“ setzt es zurueck. Jede Landung
+// auf 83 laesst das Ziel 2,5 s ruhig leuchten (_bioFxLeuchten, 0,8 Hz).
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „selben“, „gleichen“
+// (auch nicht in „vergleichen“), „dazu“ – und keine Regel als Satz. Keine
+// Namen, keine Punkte, keine Zeit. Deterministisch, ohne Zufall.
+// ════════════════════════════════════════════════════════════════════════
+let _m5g = null;
+const _m5gA = 46, _m5gB = 37;                       // die Aufgabe
+const _m5gWEGE = {
+  zehner:   'erst Zehner, dann Einer',
+  getrennt: 'Zehner und Einer getrennt',
+  fuenfzig: 'bis 50, dann weiter',
+  minus:    'plus 40, dann minus 3',
+  neben:    'nebeneinander schreiben'
+};
+const _m5gREIHE = ['zehner', 'getrennt', 'fuenfzig', 'minus', 'neben'];
+const _m5gK = {
+  X0: 24, X1: 394, V0: 40, V1: 90,     // Rechenstrich: 40 bei x = 24, 90 bei x = 394
+  LY: 120,                             // Hoehe der Linie
+  FY: 14, FH: 24,                      // Faehnchen: Abstand unter der Linie, Hoehe
+  KY: 6, KH: 32,                       // Kaertchen oben
+  RY: 192,                             // Rechnungskasten
+  T_VOR: 0.2, T_SPRUNG: 0.6, T_PAUSE: 0.15,
+  T_KARTE: 0.3, T_TEIL: 0.25, T_FALL: 0.3, T_SPRUNG13: 0.5, T_SCHIEB: 0.5, T_PFEIL: 0.4,
+  LEUCHT: 2.5, BLITZ: 0.8, POP: 0.22,
+  F_S1: '#1d4ed8', F_S2: '#7c3aed', F_Z: '#1d4ed8', F_E: '#15803d', F_NEBEN: '#c2410c',
+  F_LINIE: '#1e293b', F_GEIST: '#b8c2d1'
+};
+const _m5gFLAGGE = {                  // Rand, Grund, Schrift, Punkt
+  start:    ['#1e3a8a', '#ffffff', '#1e3a8a', '#1e3a8a'],
+  zwischen: ['#c2410c', '#fff7ed', '#9a3412', '#ea580c'],
+  ziel:     ['#b45309', '#fef3c7', '#92400e', '#f59e0b']
+};
+
+function _m5gX(v) {
+  const K = _m5gK;
+  return K.X0 + (v - K.V0) * (K.X1 - K.X0) / (K.V1 - K.V0);
+}
+
+// ── Der Plan eines Weges: jede Zahl, jede Zeile, jede Zeit ─────────────────
+function _m5gPlan(key) {
+  const K = _m5gK, A = _m5gA, B = _m5gB;
+  const zA = A - A % 10, eA = A % 10, zB = B - B % 10, eB = B % 10;   // 40, 6, 30, 7
+  const p = { key, start: A, startAb: 0, startBlass: false, spruenge: [], zeilen: [],
+              flaggen: [], ereignisse: [], karten: null, teil: null, fall: null,
+              schieb: null, pfeil: null, ende: 0 };
+  const zeile = (text, farbe, t, nurBild) => {
+    p.zeilen.push({ text, farbe, t });
+    p.ereignisse.push({ t, art: 'zeile', text, nurBild: !!nurBild });
+  };
+  if (key === 'getrennt' || key === 'neben') {
+    const k1 = { text: zA + ' + ' + zB + ' = ' + (zA + zB), erg: String(zA + zB), farbe: K.F_Z,
+                 t0: K.T_VOR, t1: K.T_VOR + K.T_KARTE };
+    const k2 = { text: eA + ' + ' + eB + ' = ' + (eA + eB), erg: String(eA + eB), farbe: K.F_E,
+                 t0: K.T_VOR + 0.1, t1: K.T_VOR + 0.1 + K.T_KARTE };
+    p.karten = [k1, k2];
+    zeile(k1.text, k1.farbe, k1.t1);
+    zeile(k2.text, k2.farbe, k2.t1);
+    p.ereignisse.push({ t: k2.t1, art: 'zwischen', text: (zA + zB) + ' und ' + (eA + eB) });
+    if (key === 'getrennt') {
+      const v0 = zA + zB, d = eA + eB, v1 = v0 + d;                    // 70, 13, 83
+      const tTeil = k2.t1, tFall = tTeil + K.T_TEIL, tSpr = tFall + K.T_FALL, tZ = tSpr + K.T_SPRUNG13;
+      p.teil = { t0: tTeil, t1: tFall, z: Math.floor(d / 10), e: d % 10 };
+      p.fall = { t0: tFall, t1: tSpr, v: v0, z: Math.floor(d / 10), e: d % 10 };
+      p.start = v0; p.startAb = tSpr;
+      p.spruenge.push({ von: v0, nach: v1, d, s: tSpr, dauer: K.T_SPRUNG13, farbe: K.F_S2 });
+      zeile(v0 + ' + ' + d + ' = ' + v1, K.F_S2, tZ);
+      p.flaggen.push({ v: v0, text: String(v0), art: 'start', dir: 'M', t: tSpr });
+      p.flaggen.push({ v: v1, text: String(v1), art: 'ziel', dir: 'M', t: tZ });
+      p.ereignisse.push({ t: tZ, art: 'ziel', wert: v1 });
+      p.ende = tZ;
+    } else {
+      // Tareks Weg: die Zehnerziffer 7 und die 13 nebeneinander – die 13
+      // setzt sich auf die Einerstelle der 70 (die 0 verschwindet): „713“.
+      const zz = String((zA + zB) / 10), neben = zz + String(eA + eB);   // "7" + "13"
+      const tS = k2.t1 + 0.05, tP = tS + K.T_SCHIEB;
+      p.schieb = { t0: tS, t1: tP, links: String(zA + zB), ziffer: zz, rechts: String(eA + eB), text: neben };
+      p.pfeil = { t0: tP, t1: tP + K.T_PFEIL, text: neben + ' passt nicht auf diesen Rechenstrich' };
+      zeile(zz + ' Zehner und ' + (eA + eB) + ' Einer nebeneinander: ' + neben, K.F_NEBEN, tP, true);
+      p.ereignisse.push({ t: tP, art: 'neben', text: neben });
+      p.startBlass = true;
+      p.flaggen.push({ v: A, text: String(A), art: 'start', dir: 'M', t: 0 });
+      p.ende = tP + K.T_PFEIL;
+    }
+  } else {
+    let d;
+    if (key === 'zehner') d = [zB, eB];                                  // + 30, + 7
+    else if (key === 'fuenfzig') { const bis = zA + 10 - A; d = [bis, B - bis]; }   // + 4, + 33
+    else { const auf = zB + 10; d = [auf, B - auf]; }                    // + 40, − 3
+    // Lage der Faehnchen [dir, dx, ebene]: dicht beieinander liegende Punkte
+    // (46/50, 83/86) bekommen Faehnchen, die nach aussen zeigen.
+    const lagen = { zehner:   [['M', 0, 0], ['M', 0, 0], ['M', 0, 0]],
+                    fuenfzig: [['L', 0, 0], ['R', 0, 0], ['M', 0, 0]],
+                    minus:    [['M', 0, 0], ['M', 32, 1], ['M', -32, 1]] }[key];
+    const fl = (v, art, i, t) => ({ v, text: String(v), art, dir: lagen[i][0], dx: lagen[i][1],
+                                    ebene: lagen[i][2], t });
+    let v = A, t = K.T_VOR;
+    p.flaggen.push(fl(A, 'start', 0, 0));
+    d.forEach((dd, i) => {
+      const nach = v + dd, letzte = i === d.length - 1, tl = t + K.T_SPRUNG;
+      p.spruenge.push({ von: v, nach, d: dd, s: t, dauer: K.T_SPRUNG, farbe: i ? K.F_S2 : K.F_S1 });
+      zeile(v + (dd < 0 ? ' − ' : ' + ') + Math.abs(dd) + ' = ' + nach, i ? K.F_S2 : K.F_S1, tl);
+      p.flaggen.push(fl(nach, letzte ? 'ziel' : 'zwischen', i + 1, tl));
+      if (letzte) p.ereignisse.push({ t: tl, art: 'ziel', wert: nach });
+      else p.ereignisse.push({ t: tl, art: 'zwischen', text: String(nach) });
+      v = nach; t = tl + K.T_PAUSE;
+    });
+    p.ende = t - K.T_PAUSE;
+  }
+  p.ereignisse.sort((a, b) => a.t - b.t);
+  return p;
+}
+
+function _m5gInit() {
+  _m5g = { weg: null, plan: null, t: 0, ei: 0, zeilen: [], zwischen: null, summe: null,
+           neben: null, alt: null, altA: 0, erledigt: {}, geister: {}, aha: false,
+           leucht: 0, zeit: 0, fx: { teile: [] } };
+}
+function _m5gHTML() {
+  const knopf = k => `<button class="sim-btn" id="_m5g-b-${k}" onclick="_m5gWeg('${k}')">${_m5gWEGE[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welche Summe hat 46 + 37?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jeder Bogen ist ein Sprung auf dem Rechenstrich. Unten im Bild steht die Rechnung in Zeilen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5g-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${knopf('zehner')}
+          ${knopf('getrennt')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${knopf('fuenfzig')}
+          ${knopf('minus')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${knopf('neben')}
+          <button class="sim-btn" onclick="_m5gNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5g-weg" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5g-rechnung" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5g-zwischen" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5g-summe" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Jeder Knopf zeigt einen anderen Rechenweg für 46 + 37. „nebeneinander schreiben“ schreibt die Ergebnisse von Zehnern und Einern nebeneinander.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Punkt bei 46, noch kein Sprung</p>
+  </div>`;
+}
+function _m5gStatus() {
+  if (!_m5g) return;
+  const z = _m5g;
+  const setze = (id, s) => { const e = document.getElementById(id); if (e) e.textContent = s; };
+  setze('_m5g-weg', 'Rechenweg: ' + (z.weg ? _m5gWEGE[z.weg] : 'noch nicht gewählt'));
+  setze('_m5g-rechnung', 'Rechnung: ' + (z.zeilen.length ? z.zeilen.join(', ') : '…'));
+  setze('_m5g-zwischen', 'Zwischenergebnis: ' + (z.zwischen || '…'));
+  setze('_m5g-summe', z.weg === 'neben'
+    ? 'Nebeneinander geschrieben: ' + (z.neben || '…')
+    : 'Ergebnis der Aufgabe: ' + (z.summe || '…'));
+  for (const k of _m5gREIHE) {
+    const b = document.getElementById('_m5g-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.weg);
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Was gerade zu sehen ist, blendet in 0,2 s aus (auch der blosse Startpunkt).
+function _m5gAbblenden() {
+  const z = _m5g;
+  z.alt = { plan: z.plan, t: z.t };
+  z.altA = 1;
+}
+function _m5gWeg(key) {
+  if (!_m5g || !_m5gWEGE[key]) return;
+  const z = _m5g;
+  _m5gAbblenden();
+  z.weg = key; z.plan = _m5gPlan(key); z.t = 0; z.ei = 0;
+  z.zeilen = []; z.zwischen = null; z.summe = null; z.neben = null; z.leucht = 0;
+  _m5gStatus();
+}
+function _m5gNeu() {
+  if (!_m5g) return;
+  const z = _m5g;
+  _m5gAbblenden();
+  z.weg = null; z.plan = null; z.t = 0; z.ei = 0;
+  z.zeilen = []; z.zwischen = null; z.summe = null; z.neben = null; z.leucht = 0;
+  z.erledigt = {}; z.aha = false; z.fx.teile.length = 0;
+  _m5gStatus();
+}
+function _m5gEreignis(e) {
+  const z = _m5g, K = _m5gK;
+  if (e.art === 'zeile') { if (!e.nurBild) z.zeilen.push(e.text); }
+  else if (e.art === 'zwischen') z.zwischen = e.text;
+  else if (e.art === 'neben') z.neben = e.text;
+  else if (e.art === 'ziel') {
+    z.summe = String(e.wert);
+    z.leucht = K.LEUCHT;
+    if (!z.erledigt[z.weg]) {
+      z.erledigt[z.weg] = true;
+      // Aha: der dritte verschiedene Weg landet wieder bei 83.
+      if (!z.aha && Object.keys(z.erledigt).length === 3) {
+        z.aha = true;
+        const zf = z.plan.flaggen.find(f => f.art === 'ziel'), [mx, my] = _m5gFlaggeMitte(zf);
+        _bioFxWelle(z.fx.teile, _m5gX(e.wert), K.LY, '#f59e0b', 52);
+        _bioFxWelle(z.fx.teile, mx, my, '#fcd34d', 38);
+      }
+    }
+  }
+}
+function _m5gUpdate(dt) {
+  if (!_m5g) return;
+  dt = _bioFxDt(dt);
+  const z = _m5g;
+  z.zeit += dt;
+  if (z.altA > 0) z.altA = Math.max(0, z.altA - dt / _m5gK.T_VOR);
+  if (z.plan) {
+    z.t += dt;
+    const p = z.plan;
+    let neu = false;
+    while (z.ei < p.ereignisse.length && p.ereignisse[z.ei].t <= z.t + 1e-9) {
+      _m5gEreignis(p.ereignisse[z.ei]); z.ei++; neu = true;
+    }
+    if (neu) _m5gStatus();
+  }
+  if (z.leucht > 0) z.leucht = Math.max(0, z.leucht - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5gKl(u) { return u < 0 ? 0 : u > 1 ? 1 : u; }
+function _m5gText(ctx, s, x, y, ausr, farbe, groesse, gew) {
+  ctx.fillStyle = farbe || _m5gK.F_LINIE;
+  ctx.font = (gew || '700') + ' ' + (groesse || 15) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _m5gBreite(ctx, s, groesse, gew) {
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  return ctx.measureText(s).width;
+}
+// Lage der beiden Kaertchen: Die „70“ steht genau ueber 70 auf dem Strich.
+function _m5gKartenLage(ctx) {
+  const K = _m5gK;
+  const t1 = (_m5gA - _m5gA % 10) + ' + ' + (_m5gB - _m5gB % 10) + ' = ';
+  const t2 = (_m5gA % 10) + ' + ' + (_m5gB % 10) + ' = ';
+  const e1 = String((_m5gA - _m5gA % 10) + (_m5gB - _m5gB % 10)), e2 = String(_m5gA % 10 + _m5gB % 10);
+  const w1 = _m5gBreite(ctx, t1, 16), we1 = _m5gBreite(ctx, e1, 16);
+  const w2 = _m5gBreite(ctx, t2, 16), we2 = _m5gBreite(ctx, e2, 16);
+  const xErg1 = _m5gX(+e1);
+  const xs1 = xErg1 - we1 / 2 - w1;
+  const k1 = { x: xs1 - 11, w: w1 + we1 + 22, xs: xs1, xErg: xErg1, wErg: we1 };
+  const xs2 = k1.x + k1.w + 26;
+  const k2 = { x: xs2 - 11, w: w2 + we2 + 22, xs: xs2, xErg: xs2 + w2 + we2 / 2, wErg: we2 };
+  return [k1, k2];
+}
+function _m5gKarte(ctx, lage, karte, t, a) {
+  const K = _m5gK;
+  const u = _m5gKl((t - karte.t0) / (karte.t1 - karte.t0));
+  if (u <= 0) return;
+  const y = K.KY - (1 - _bioFxEase.raus(u)) * 44;
+  ctx.save();
+  ctx.globalAlpha = a * Math.min(1, u * 2.5);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = karte.farbe; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, lage.x, y, lage.w, K.KH, 8); ctx.fill(); ctx.stroke();
+  _m5gText(ctx, karte.text, lage.xs, y + K.KH / 2 + 6, 'left', karte.farbe, 16);
+  ctx.restore();
+}
+// Punkt auf der Linie mit Faehnchen darunter. dir: M mittig, L links, R rechts vom Stab.
+// Mitte des Faehnchenkastens (fuer das Leuchten und den Lichtring).
+function _m5gFlaggeMitte(f) {
+  const K = _m5gK;
+  return [_m5gX(f.v) + (f.dx || 0), K.LY + K.FY + (f.ebene ? 26 : 0) + K.FH / 2];
+}
+function _m5gFlagge(ctx, f, a, pop) {
+  const K = _m5gK, F = _m5gFLAGGE[f.art], x = _m5gX(f.v), xm = x + (f.dx || 0);
+  const w = _m5gBreite(ctx, f.text, 16) + 16, y = K.LY + K.FY + (f.ebene ? 26 : 0);
+  const bx = f.dir === 'L' ? x + 2 - w : f.dir === 'R' ? x - 2 : xm - w / 2;
+  const k = 1 + 0.25 * pop;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = F[0]; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(x, K.LY + 5); ctx.lineTo(xm, y + 2); ctx.stroke();
+  ctx.fillStyle = F[1]; ctx.strokeStyle = F[0]; ctx.lineWidth = f.art === 'ziel' ? 2.5 : 2;
+  _bioFxRundRect(ctx, bx, y, w, K.FH, 6); ctx.fill(); ctx.stroke();
+  _m5gText(ctx, f.text, bx + w / 2, y + K.FH / 2 + 6, 'center', F[2], 16);
+  ctx.fillStyle = F[3]; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, K.LY, 6.5 * k, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Geometrie eines Bogens: oben fuer plus, unten (tiefes U) fuer minus.
+function _m5gBogenForm(s) {
+  const K = _m5gK, xa = _m5gX(s.von), xb = _m5gX(s.nach), b = Math.abs(xb - xa);
+  if (s.d >= 0) {
+    const h = Math.max(17, Math.min(52, b * 0.32));
+    return { xa, xb, y0: K.LY - 3, cx: (xa + xb) / 2, cy: K.LY - 3 - 2 * h,
+             lx: (xa + xb) / 2, ly: K.LY - 3 - h - 15 };
+  }
+  const h = 26;
+  return { xa, xb, y0: K.LY + 3, cx: (xa + xb) / 2, cy: K.LY + 3 + 2 * h,
+           lx: (xa + xb) / 2, ly: K.LY + 3 + h + 16 };
+}
+function _m5gBogenPfad(ctx, g, u) {
+  // Teilkurve [0,u] einer quadratischen Kurve (de Casteljau)
+  const qx = g.xa + (g.cx - g.xa) * u, qy = g.y0 + (g.cy - g.y0) * u;
+  const ex = (1 - u) * (1 - u) * g.xa + 2 * u * (1 - u) * g.cx + u * u * g.xb;
+  const ey = (1 - u) * (1 - u) * g.y0 + 2 * u * (1 - u) * g.cy + u * u * g.y0;
+  ctx.beginPath(); ctx.moveTo(g.xa, g.y0); ctx.quadraticCurveTo(qx, qy, ex, ey);
+  return [ex, ey];
+}
+function _m5gBogen(ctx, s, u, a) {
+  const g = _m5gBogenForm(s);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = s.farbe; ctx.lineWidth = 3.5; ctx.lineCap = 'round';
+  const [ex, ey] = _m5gBogenPfad(ctx, g, u);
+  ctx.stroke();
+  if (u < 1) {                                   // der Springer an der Spitze
+    ctx.fillStyle = s.farbe; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(ex, ey, 5.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  } else {                                       // Pfeilspitze an der Landung
+    const dx = g.xb - g.cx, dy = g.y0 - g.cy, n = Math.hypot(dx, dy) || 1;
+    const ux = dx / n, uy = dy / n, px = -uy, py = ux;
+    ctx.fillStyle = s.farbe;
+    ctx.beginPath();
+    ctx.moveTo(g.xb - ux * 6, g.y0 - uy * 6);
+    ctx.lineTo(g.xb - ux * 16 + px * 5, g.y0 - uy * 16 + py * 5);
+    ctx.lineTo(g.xb - ux * 16 - px * 5, g.y0 - uy * 16 - py * 5);
+    ctx.closePath(); ctx.fill();
+  }
+  // Beschriftung „+ 30“ – blendet ein, waehrend der Bogen waechst
+  const la = _m5gKl((u - 0.3) / 0.35);
+  if (la > 0) {
+    const txt = (s.d < 0 ? '− ' : '+ ') + Math.abs(s.d);
+    const w = Math.max(40, _m5gBreite(ctx, txt, 16) + 18), h = 24;
+    ctx.globalAlpha = a * la;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = s.farbe; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, g.lx - w / 2, g.ly - h / 2, w, h, 8); ctx.fill(); ctx.stroke();
+    _m5gText(ctx, txt, g.lx, g.ly + 6, 'center', s.farbe, 16);
+  }
+  ctx.restore();
+}
+function _m5gGeist(ctx, s) {
+  const g = _m5gBogenForm(s);
+  ctx.save();
+  ctx.strokeStyle = _m5gK.F_GEIST; ctx.lineWidth = 2;
+  if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+  _m5gBogenPfad(ctx, g, 1); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  ctx.restore();
+}
+// Zehnerstange und Einerwuerfel – genau so lang, wie sie auf dem Strich zaehlen.
+function _m5gStange(ctx, x, y, w, h) {
+  ctx.fillStyle = '#93c5fd'; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = 'rgba(29,78,216,0.45)'; ctx.lineWidth = 0.8;
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    ctx.beginPath(); ctx.moveTo(x + w * k / 10, y); ctx.lineTo(x + w * k / 10, y + h); ctx.stroke();
+  }
+  ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1.6;           // Fuenfermarke
+  ctx.beginPath(); ctx.moveTo(x + w / 2, y); ctx.lineTo(x + w / 2, y + h); ctx.stroke();
+  ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+}
+function _m5gWuerfel(ctx, x, y, w, h) {
+  ctx.fillStyle = '#86efac'; ctx.strokeStyle = '#15803d'; ctx.lineWidth = 1;
+  ctx.fillRect(x, y, w, h); ctx.strokeRect(x, y, w, h);
+}
+function _m5gGetrennt(ctx, p, t, a, lage) {
+  const K = _m5gK;
+  // die 13 teilt sich: „1 Z“ und „3 E“ gleiten unter dem Kaertchen auseinander
+  const ut = _m5gKl((t - p.teil.t0) / (p.teil.t1 - p.teil.t0));
+  const k2 = lage[1];
+  const yT = K.KY + K.KH, xZ = k2.xErg - 19 * _bioFxEase.sanft(ut), xE = k2.xErg + 19 * _bioFxEase.sanft(ut);
+  if (ut > 0) {
+    ctx.save();
+    ctx.globalAlpha = a * Math.min(1, ut * 2);
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(k2.xErg - 3, yT + 1); ctx.lineTo(xZ, yT + 8); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(k2.xErg + 3, yT + 1); ctx.lineTo(xE, yT + 8); ctx.stroke();
+    _m5gText(ctx, p.teil.z + ' Z', xZ, yT + 22, 'center', K.F_Z, 14);
+    _m5gText(ctx, p.teil.e + ' E', xE, yT + 22, 'center', K.F_E, 14);
+    ctx.restore();
+  }
+  // die 70 faellt auf den Strich, Stange und Wuerfel legen sich daneben
+  const uf = _m5gKl((t - p.fall.t0) / (p.fall.t1 - p.fall.t0)), e = _bioFxEase.sanft(uf);
+  if (uf <= 0) return;
+  const xv = _m5gX(p.fall.v), einh = _m5gX(1) - _m5gX(0), yM = K.LY - 15, hM = 7;
+  ctx.save();
+  ctx.globalAlpha = a;
+  if (uf < 1) {                                  // Plaettchen „70“ unterwegs
+    const lx = lage[0].xErg + (xv - lage[0].xErg) * e;
+    const ly = (K.KY + K.KH / 2) + (K.LY - 14 - (K.KY + K.KH / 2)) * e;
+    const w = lage[0].wErg + 12;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_Z; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, lx - w / 2, ly - 12, w, 24, 6); ctx.fill(); ctx.stroke();
+    _m5gText(ctx, p.karten[0].erg, lx, ly + 6, 'center', K.F_Z, 16);
+  }
+  // Material: von unter „1 Z“/„3 E“ auf die Linie, waechst dabei auf volle Laenge
+  const sx0 = xZ - 2.5 * einh, sy0 = yT + 28, sx1 = xv + 0.5, sw1 = 10 * einh - 1;
+  const sx = sx0 + (sx1 - sx0) * e, sy = sy0 + (yM - sy0) * e, sw = (5 * einh) + (sw1 - 5 * einh) * e;
+  _m5gStange(ctx, sx, sy, sw, hM);
+  for (let i = 0; i < p.fall.e; i++) {
+    const wx0 = xE - 1.5 * einh * 0.6 + i * einh * 0.6, wx1 = xv + (10 + i) * einh + 0.5;
+    const ww = einh * (0.6 + 0.4 * e) - 1;
+    _m5gWuerfel(ctx, wx0 + (wx1 - wx0) * e, sy, ww, hM);
+  }
+  ctx.restore();
+}
+function _m5gNeben(ctx, p, t, a, lage) {
+  const K = _m5gK, sb = p.schieb;
+  const u = _m5gKl((t - sb.t0) / (sb.t1 - sb.t0)), e = _bioFxEase.sanft(u);
+  if (u <= 0) return;
+  const gr = 22, wL = _m5gBreite(ctx, sb.links, gr), wZ = _m5gBreite(ctx, sb.ziffer, gr);
+  const wR = _m5gBreite(ctx, sb.rechts, gr);
+  const MX = 352, MY = 84, w = wZ + wR + 24, h = 32;
+  const li = MX - (wZ + wR) / 2;                 // linker Rand von „713“
+  const zl = li + wL / 2, zr = li + wZ + wR / 2;   // Ziel: „70“ links, „13“ auf der 0
+  const yK = K.KY + K.KH / 2;
+  ctx.save();
+  ctx.globalAlpha = a;
+  if (u < 1) {
+    const lx = lage[0].xErg + (zl - lage[0].xErg) * e, rx = lage[1].xErg + (zr - lage[1].xErg) * e;
+    const yy = yK + (MY - yK) * e;
+    ctx.lineWidth = 2;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_Z;
+    _bioFxRundRect(ctx, lx - wL / 2 - 6, yy - h / 2, wL + 12, h, 6); ctx.fill(); ctx.stroke();
+    _m5gText(ctx, sb.ziffer, lx - wL / 2, yy + 8, 'left', K.F_Z, gr);
+    ctx.save(); ctx.globalAlpha = a * (1 - e);   // die 0 der 70 verschwindet unter der 13
+    _m5gText(ctx, sb.links.slice(sb.ziffer.length), lx - wL / 2 + wZ, yy + 8, 'left', K.F_Z, gr);
+    ctx.restore();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_E;
+    _bioFxRundRect(ctx, rx - wR / 2 - 6, yy - h / 2, wR + 12, h, 6); ctx.fill(); ctx.stroke();
+    _m5gText(ctx, sb.rechts, rx, yy + 8, 'center', K.F_E, gr);
+  } else {
+    ctx.fillStyle = '#fff7ed'; ctx.strokeStyle = K.F_NEBEN; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, MX - w / 2, MY - h / 2, w, h, 7); ctx.fill(); ctx.stroke();
+    _m5gText(ctx, sb.text, MX, MY + 8, 'center', '#9a3412', gr);
+  }
+  // Pfeil aus dem Rechenstrich hinaus, dazu der Hinweis im Bild
+  const up = _m5gKl((t - p.pfeil.t0) / (p.pfeil.t1 - p.pfeil.t0));
+  if (up > 0) {
+    const x0 = MX + w / 2 + 4, y0 = MY, cx = 412, cy = MY, x1 = 414, y1 = K.LY - 14;
+    // eigene Teilkurve (Endpunkt hat ein anderes y als der Anfang)
+    const qx = x0 + (cx - x0) * up, qy = y0 + (cy - y0) * up;
+    const ex = (1 - up) * (1 - up) * x0 + 2 * up * (1 - up) * cx + up * up * x1;
+    const ey = (1 - up) * (1 - up) * y0 + 2 * up * (1 - up) * cy + up * up * y1;
+    ctx.strokeStyle = K.F_NEBEN; ctx.lineWidth = 2.5;
+    if (ctx.setLineDash) ctx.setLineDash([6, 4]);
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.quadraticCurveTo(qx, qy, ex, ey); ctx.stroke();
+    // die Linie selbst laeuft gestrichelt ueber ihr Ende hinaus
+    ctx.beginPath(); ctx.moveTo(K.X1 + 14, K.LY); ctx.lineTo(K.X1 + 14 + 12 * up, K.LY); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    if (up >= 1) {
+      ctx.fillStyle = K.F_NEBEN;
+      ctx.beginPath(); ctx.moveTo(x1, y1 + 8); ctx.lineTo(x1 - 6, y1 - 3); ctx.lineTo(x1 + 5, y1 - 3);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.globalAlpha = a * up;
+    _m5gText(ctx, p.pfeil.text, 412, K.LY + K.FY + K.FH / 2 + 6, 'right', '#9a3412', 14);
+  }
+  ctx.restore();
+}
+// Alles, was ein Weg zur Zeit t zeigt (ohne Rechnungskasten).
+function _m5gZeichnePlan(ctx, p, t, a) {
+  const K = _m5gK;
+  if (a <= 0.01) return;
+  if (!p) {                                      // Startzustand
+    _m5gFlagge(ctx, { v: _m5gA, text: String(_m5gA), art: 'start', dir: 'M' }, a, 0);
+    return;
+  }
+  const lage = p.karten ? _m5gKartenLage(ctx) : null;
+  if (p.karten) p.karten.forEach((k, i) => _m5gKarte(ctx, lage[i], k, t, a));
+  if (p.teil) _m5gGetrennt(ctx, p, t, a, lage);
+  for (const s of p.spruenge) {
+    const u = _m5gKl((t - s.s) / s.dauer);
+    if (u > 0) _m5gBogen(ctx, s, _bioFxEase.sanft(u), a);
+  }
+  for (const f of p.flaggen) {
+    if (t < f.t) continue;
+    const pop = _m5gKl(1 - (t - f.t) / K.POP);
+    const fa = (p.startBlass && f.art === 'start') ? a * 0.4 : a;
+    _m5gFlagge(ctx, f, fa, pop);
+  }
+  if (p.schieb) _m5gNeben(ctx, p, t, a, lage);
+}
+function _m5gRechnung(ctx, p, t, a) {
+  const K = _m5gK;
+  if (!p || a <= 0.01) return;
+  ctx.save();
+  p.zeilen.forEach((zl, i) => {
+    if (t < zl.t) return;
+    const y = K.RY + 17 + 17 * i, b = _m5gKl(1 - (t - zl.t) / K.BLITZ);
+    if (b > 0) {
+      ctx.globalAlpha = a * b * 0.9;
+      ctx.fillStyle = '#fde68a';
+      _bioFxRundRect(ctx, 10, y - 14, _m5gBreite(ctx, zl.text, 15) + 12, 18, 4); ctx.fill();
+    }
+    ctx.globalAlpha = a;
+    _m5gText(ctx, zl.text, 16, y, 'left', zl.farbe, 15);
+  });
+  ctx.restore();
+}
+function _m5gDraw(ctx, cv) {
+  if (!_m5g) return;
+  const z = _m5g, K = _m5gK, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#ffffff'); bg.addColorStop(1, '#f4f7fb');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // die Aufgabe
+  _m5gText(ctx, 'Aufgabe: ' + _m5gA + ' + ' + _m5gB, 10, 27, 'left', '#475569', 14, '700');
+  // fruehere Wege: duenne graue Boegen
+  for (const k of _m5gREIHE) {
+    if (!z.erledigt[k] || k === z.weg) continue;
+    if (!z.geister[k]) z.geister[k] = _m5gPlan(k);
+    for (const s of z.geister[k].spruenge) _m5gGeist(ctx, s);
+  }
+  // der Rechenstrich: eine Linie ohne Striche
+  ctx.save();
+  ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.X0 - 12, K.LY); ctx.lineTo(K.X1 + 12, K.LY); ctx.stroke();
+  ctx.restore();
+  // das Ziel leuchtet nach der Landung
+  if (z.plan && z.leucht > 0) {
+    const zf = z.plan.flaggen.find(f => f.art === 'ziel');
+    if (zf) {
+      const [mx, my] = _m5gFlaggeMitte(zf);
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, z.leucht / 0.8);
+      _bioFxLeuchten(ctx, mx, my, 24, z.zeit, '252,211,77');
+      ctx.restore();
+    }
+  }
+  if (z.alt && z.altA > 0) _m5gZeichnePlan(ctx, z.alt.plan, z.alt.t, z.altA);
+  if (z.plan) _m5gZeichnePlan(ctx, z.plan, z.t, 1);
+  else _m5gZeichnePlan(ctx, null, 0, 1 - z.altA);
+  // Rechnungskasten
+  ctx.save();
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, 6, K.RY, W - 12, H - K.RY - 3, 8); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  _m5gText(ctx, 'Rechnung', W - 14, K.RY + 16, 'right', '#64748b', 12, '600');
+  if (z.alt && z.altA > 0) _m5gRechnung(ctx, z.alt.plan, z.alt.t, z.altA);
+  _m5gRechnung(ctx, z.plan, z.t, 1);
+  _bioFxDraw(ctx, z.fx.teile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mp2 „Plus und Minus gehören zusammen“ (Kennung m5-umkehr)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL2_PROFIL.md, Abschnitt m5-umkehr.
+// Ueberschrift: „Wie prüft man eine Minusaufgabe?“ – die Frage der Einheit
+// („Wie kann Leni prüfen, ob 54 stimmt?“) traegt einen Namen und das Wort
+// „stimmt“ (nicht am Bildschirm), deshalb eine neutrale Frage.
+//
+// Was man sieht: oben ein Zettel aus Karopapier mit der Aufgabe, z. B.
+// „83 − 37 = 54“ – die erste Zahl blau, die Zahl vom Zettel orange. Darunter
+// ein Rechenstrich (waagerechte Linie OHNE Striche, nur Punkte mit Zahl; der
+// Bereich passt zur Aufgabe: 40 bis 100, 70 bis 130 oder 130 bis 220). Die
+// erste Zahl der Aufgabe ist ein blauer Punkt, ihre Zahl haengt als blaues
+// Faehnchen UNTER dem Strich. Die Zahl vom Zettel ist ein oranger Punkt mit
+// orangem Faehnchen UEBER dem Strich. Wie im Rechenstrich von mp1 gehen
+// Plus-Spruenge ueber dem Strich, Minus-Spruenge darunter.
+//
+// „rückwärts springen“: Eine graue Kugel erscheint am blauen Punkt (0,15 s)
+// und springt in 1,0 s auf einem Bogen UNTER dem Strich nach links, um so
+// viel, wie die Aufgabe abzieht; am Bogen steht „− 37“. Wo sie landet,
+// erscheinen ein grauer Ring und die Zahl (z. B. 46) als graues Faehnchen
+// unter dem Strich – so sieht man, wo der Minus-Sprung WIRKLICH landet,
+// neben dem orangen Faehnchen vom Zettel. Ist das genau die Zahl vom Zettel
+// (83 − 37 = 46), umschliesst der graue Ring den orangen Punkt.
+// „Probe“: Eine gruene Kugel erscheint am orangen Punkt (0,15 s) und springt
+// in 1,0 s auf einem Bogen UEBER dem Strich nach rechts zurueck; am Bogen
+// steht „+ 37“. Wo sie landet, steht ein gruener Ring mit gruener Zahl, und
+// auf dem Zettel erscheint die zweite Zeile, z. B. „54 + 37 = 91“ (54 orange,
+// 91 gruen). Erst bei der Landung aendern sich die Statuszeilen. Landet die
+// Probe nicht auf dem blauen Punkt, leuchtet die Luecke zwischen beiden auf
+// dem Strich rosa (ruhiger Puls, 0,8 Hz). Landet sie darauf, umschliesst der
+// gruene Ring den blauen Punkt. Die Boegen enden am Landering, die
+// Pfeilspitze steckt nie im Ring.
+// Eine Sprungmarke loescht beide Boegen; die Faehnchen gleiten in 0,7 s an
+// ihre neuen Plaetze (der Strich zoomt mit), der Zettel blendet die neue
+// Aufgabe ein. Ein Knopf waehrend einer Bewegung laesst sie sofort fertig
+// werden; ein zweiter Druck auf „Probe“ oder „rückwärts springen“ spielt den
+// Sprung neu ab. Jede Knopffolge endet so im selben Zustand.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5hAufgabe('a'|'b'|'c'|'d')):
+//     „83 − 37 = 54“ · „83 − 37 = 46“ · „125 − 48 = 77“ · „200 − 65 = 145“
+//   „rückwärts springen“ (_m5hRueck()) · „Probe“ (_m5hProbe()) ·
+//   „neu“ (_m5hNeu(): 83 − 37 = 54, keine Boegen, Aha-Gedaechtnis geloescht)
+//
+// Statuszeilen (woertlich; Rechenzeichen U+2212, zwischen den Gliedern
+// geschuetzte Leerzeichen, damit die Gleichung nicht umbricht):
+//   _m5h-zettel   „Aufgabe auf dem Zettel: 83 − 37 = 54“
+//   _m5h-probe    „Umkehraufgabe: …“, nach der Landung der Probe
+//                 „Umkehraufgabe: 54 + 37 = 91“
+//   _m5h-landung  „Die Probe landet bei …“, nach der Landung der Probe
+//                 „Die Probe landet bei 91. Gestartet wurde bei 83.“
+// Alle Zeilen, deren Wert das Heft verlangt, sind laenger als 18 Zeichen
+// (simfakten.js nimmt kuerzere nicht in den Dump).
+//
+// Werte (Probe = Zettel-Zahl + abgezogene Zahl; Minus-Sprung = Start − Zahl;
+// jede Zeile nachgerechnet mit simcheck/werte.js, die Probe nach dem Auslaufen):
+//   83 − 37 = 54   → Umkehraufgabe 54 + 37 = 91   · landet bei 91, gestartet bei 83
+//                    (Minus-Sprung landet bei 46)
+//   83 − 37 = 46   → Umkehraufgabe 46 + 37 = 83   · landet bei 83, gestartet bei 83
+//   125 − 48 = 77  → Umkehraufgabe 77 + 48 = 125  · landet bei 125, gestartet bei 125
+//   200 − 65 = 145 → Umkehraufgabe 145 + 65 = 210 · landet bei 210, gestartet bei 200
+//                    (Minus-Sprung landet bei 135)
+// Start: „Aufgabe auf dem Zettel: 83 − 37 = 54“, „Umkehraufgabe: …“,
+// „Die Probe landet bei …“.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Landet die Probe von
+// „83 − 37 = 46“, laeuft ein goldener Lichtring um den blauen Punkt, und er
+// leuchtet 2,5 s nach (_bioFxLeuchten, 0,8 Hz). Dort ist zu sehen, was die
+// Vermutung „noch einmal genauso rechnen“ nicht zeigt: Die Rueckwaertsrechnung
+// kommt genau dort an, wo man begonnen hat. Einmal je Sitzung; „neu“ setzt
+// es zurueck.
+//
+// NICHT am Bildschirm (sim_plan.nicht_am_bildschirm): „Plusaufgabe“,
+// „Startzahl“, „stimmt“, „falsch“ – und keine Regel als Satz. Ob die Aufgabe
+// aufgeht, sagt kein Text; das Kind vergleicht die beiden Zahlen der Zeile
+// „Die Probe landet bei … Gestartet wurde bei …“. Keine Namen, keine Punkte,
+// keine Zeit. Deterministisch, ohne Zufall: jede Zahl kommt aus _m5hRechne().
+// ════════════════════════════════════════════════════════════════════════
+let _m5h = null;
+const _m5hAUFGABEN = {
+  a: { start: 83,  minus: 37, zettel: 54,  lo: 40,  hi: 100 },
+  b: { start: 83,  minus: 37, zettel: 46,  lo: 40,  hi: 100 },
+  c: { start: 125, minus: 48, zettel: 77,  lo: 70,  hi: 130 },
+  d: { start: 200, minus: 65, zettel: 145, lo: 130, hi: 220 }
+};
+const _m5hREIHE = ['a', 'b', 'c', 'd'];
+const _m5hK = {
+  X0: 40, X1: 380,              // Rechenstrich: Bereichsanfang und -ende (px)
+  LY: 150,                      // Hoehe des Strichs
+  KX: 110, KY: 6, KW: 200, KH: 58,   // Zettel oben (Karopapier)
+  H_PLUS: 48, H_MINUS: 44,      // Bogenhoehe ueber / Bogentiefe unter dem Strich
+  T_ZUG: 0.7,                   // s: Faehnchen gleiten, Strich zoomt
+  T_AUF: 0.15,                  // s: Kugel erscheint
+  T_SPRUNG: 1.0,                // s: Kugel springt
+  T_EIN: 0.35,                  // s: Text blendet ein, Faehnchen springt auf
+  LEUCHT: 2.5,                  // s: der blaue Punkt leuchtet nach (Aha)
+  F_START: '#1d4ed8',           // blau: erste Zahl der Aufgabe
+  F_ZETTEL: '#c2410c',          // orange: Zahl vom Zettel
+  F_PROBE: '#15803d',           // gruen: Probe
+  F_MINUS: '#475569',           // grau: Minus-Sprung
+  F_LUECKE: '#db2777',          // rosa: Luecke
+  F_STRICH: '#1e293b'
+};
+
+// 1234 -> "1 234" mit geschuetztem Leerzeichen (wie im Heft, dort normales)
+function _m5hFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+// Die ganze Rechnung einer Aufgabe – Bild und Statuszeilen lesen nur hier.
+function _m5hRechne(k) {
+  const a = _m5hAUFGABEN[k];
+  return { start: a.start, minus: a.minus, zettel: a.zettel, lo: a.lo, hi: a.hi,
+           wirklich: a.start - a.minus,          // wo der Minus-Sprung landet
+           probe: a.zettel + a.minus };          // wo die Probe landet
+}
+// "83 − 37 = 54" als Text (Glieder mit geschuetztem Leerzeichen)
+function _m5hGleichung(a, op, b, c) {
+  const nb = ' ';
+  return _m5hFmt(a) + nb + op + nb + _m5hFmt(b) + nb + '=' + nb + _m5hFmt(c);
+}
+function _m5hXin(v, lo, hi) {
+  const K = _m5hK;
+  return K.X0 + (v - lo) / (hi - lo) * (K.X1 - K.X0);
+}
+function _m5hX(v) { return _m5hXin(v, _m5h.lo, _m5h.hi); }
+
+function _m5hInit() {
+  const r = _m5hRechne('a');
+  _m5h = { auf: 'a', lo: r.lo, hi: r.hi, zug: null,
+           xs: _m5hXin(r.start, r.lo, r.hi), xz: _m5hXin(r.zettel, r.lo, r.hi),
+           rueck: null, probe: null, aha: false, leucht: 0, karte: 1, fahne: 1,
+           t: 0, fx: { teile: [] } };
+}
+function _m5hHTML() {
+  const marke = k => {
+    const r = _m5hRechne(k);
+    return `<button class="sim-btn" id="_m5h-b-${k}" onclick="_m5hAufgabe('${k}')">${_m5hGleichung(r.start, '−', r.minus, r.zettel)}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie prüft man eine Minusaufgabe?</h3>
+    <div class="fpm-note" style="margin-top:2px">Oben im Bild liegt der Zettel mit der Aufgabe. Der blaue Punkt zeigt, wo die Rechnung beginnt. Das orange Fähnchen zeigt die Zahl vom Zettel.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5h-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5hREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5h-rueck" onclick="_m5hRueck()">rückwärts springen</button>
+          <button class="sim-btn primary" id="_m5h-pruef" onclick="_m5hProbe()">Probe</button>
+          <button class="sim-btn" onclick="_m5hNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5h-zettel" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5h-probe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5h-landung" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„rückwärts springen“ zeigt den Minus-Sprung unter dem Strich. „Probe“ springt vom orangen Fähnchen aus über dem Strich.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 83&nbsp;−&nbsp;37&nbsp;=&nbsp;54 auf dem Zettel, noch nicht gesprungen</p>
+  </div>`;
+}
+function _m5hZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5hStatus() {
+  if (!_m5h) return;
+  const z = _m5h, K = _m5hK, r = _m5hRechne(z.auf), nb = ' ';
+  const f = (n, farbe) => '<b style="color:' + farbe + '">' + _m5hFmt(n) + '</b>';
+  _m5hZeile('_m5h-zettel', 'Aufgabe auf dem Zettel: ' + f(r.start, K.F_START) + nb + '−' + nb +
+            _m5hFmt(r.minus) + nb + '=' + nb + f(r.zettel, K.F_ZETTEL));
+  const da = !!(z.probe && z.probe.phase === 'da');
+  _m5hZeile('_m5h-probe', 'Umkehraufgabe: ' + (da
+    ? f(r.zettel, K.F_ZETTEL) + nb + '+' + nb + _m5hFmt(r.minus) + nb + '=' + nb + f(r.probe, K.F_PROBE)
+    : '…'));
+  _m5hZeile('_m5h-landung', da
+    ? 'Die Probe landet bei ' + f(r.probe, K.F_PROBE) + '. Gestartet wurde bei ' + f(r.start, K.F_START) + '.'
+    : 'Die Probe landet bei …');
+  for (const k of _m5hREIHE) {
+    const b = document.getElementById('_m5h-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.auf);
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Ein laufendes Gleiten steht sofort am Ziel.
+function _m5hZugFertig() {
+  const z = _m5h, g = z.zug;
+  if (!g) return;
+  z.lo = g.nach.lo; z.hi = g.nach.hi; z.xs = g.nach.xs; z.xz = g.nach.xz;
+  z.zug = null;
+}
+function _m5hAufgabe(k) {
+  if (!_m5h || !_m5hAUFGABEN[k]) return;
+  const z = _m5h, r = _m5hRechne(k);
+  const von = { lo: z.lo, hi: z.hi, xs: z.xs, xz: z.xz };
+  const nach = { lo: r.lo, hi: r.hi, xs: _m5hXin(r.start, r.lo, r.hi), xz: _m5hXin(r.zettel, r.lo, r.hi) };
+  z.auf = k; z.rueck = null; z.probe = null; z.leucht = 0;
+  z.zug = { von, nach, t: 0, e: 0 };
+  z.karte = 0; z.fahne = 0;                        // neue Aufgabe blendet ein
+  _m5hStatus();
+}
+function _m5hRueck() {
+  if (!_m5h) return;
+  _m5hZugFertig();
+  _m5h.rueck = { phase: 'auf', t: 0 };
+  _m5hStatus();
+}
+function _m5hProbe() {
+  if (!_m5h) return;
+  _m5hZugFertig();
+  _m5h.probe = { phase: 'auf', t: 0 };
+  _m5h.leucht = 0;
+  _m5hStatus();
+}
+function _m5hNeu() {
+  if (!_m5h) return;
+  _m5h.aha = false;
+  _m5hAufgabe('a');
+}
+// Die Probe ist gelandet: Statuszeilen, Zettelzeile, Aha.
+function _m5hProbeDa() {
+  const z = _m5h, K = _m5hK, r = _m5hRechne(z.auf);
+  if (!z.aha && z.auf === 'b' && r.probe === r.start) {
+    z.aha = true;
+    z.leucht = K.LEUCHT;
+    _bioFxWelle(z.fx.teile, _m5hX(r.start), K.LY, '#fcd34d', 46);
+  }
+  _m5hStatus();
+}
+
+function _m5hUpdate(dt) {
+  if (!_m5h) return;
+  dt = _bioFxDt(dt);
+  const z = _m5h, K = _m5hK;
+  z.t += dt;
+  if (z.zug) {
+    const g = z.zug;
+    g.t += dt;
+    const u = Math.min(1, g.t / K.T_ZUG), e = _bioFxEase.sanft(u);
+    g.e = e;
+    z.lo = g.von.lo + (g.nach.lo - g.von.lo) * e;
+    z.hi = g.von.hi + (g.nach.hi - g.von.hi) * e;
+    z.xs = g.von.xs + (g.nach.xs - g.von.xs) * e;
+    z.xz = g.von.xz + (g.nach.xz - g.von.xz) * e;
+    if (u >= 1) _m5hZugFertig();
+  }
+  z.karte = Math.min(1, z.karte + dt / K.T_EIN);
+  z.fahne = Math.min(1, z.fahne + dt / K.T_EIN);
+  for (const art of ['rueck', 'probe']) {
+    const s = z[art];
+    if (!s) continue;
+    s.t += dt;
+    if (s.phase === 'auf' && s.t >= K.T_AUF) { s.phase = 'springt'; s.t = 0; }
+    else if (s.phase === 'springt' && s.t >= K.T_SPRUNG) {
+      s.phase = 'da'; s.t = 0;
+      if (art === 'probe') _m5hProbeDa();
+    }
+  }
+  if (z.leucht > 0) z.leucht = Math.max(0, z.leucht - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5hText(ctx, s, x, y, ausr, farbe, groesse, gew) {
+  ctx.fillStyle = farbe || _m5hK.F_STRICH;
+  ctx.font = (gew || '700') + ' ' + (groesse || 16) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Glieder einer Gleichung nebeneinander, mittig um cx; jedes Glied mit eigener Farbe.
+function _m5hGlieder(ctx, glieder, cx, y, groesse) {
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  const luft = groesse * 0.38;
+  const br = glieder.map(g => ctx.measureText(g[0]).width);
+  let x = cx - (br.reduce((s, b) => s + b, 0) + luft * (glieder.length - 1)) / 2;
+  glieder.forEach((g, i) => { _m5hText(ctx, g[0], x, y, 'left', g[1], groesse); x += br[i] + luft; });
+}
+// Der Zettel oben: Karopapier, Zeile 1 die Aufgabe, Zeile 2 nach der Probe.
+function _m5hZettel(ctx, r) {
+  const z = _m5h, K = _m5hK, x = K.KX, y = K.KY, w = K.KW, h = K.KH;
+  const hops = z.karte < 1 ? -4 * Math.sin(Math.PI * z.karte) : 0;
+  ctx.save();
+  ctx.translate(0, hops);
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.strokeStyle = '#dbeafe'; ctx.lineWidth = 1;          // Kaestchen
+  for (let gx = x + 10; gx < x + w - 2; gx += 10) { ctx.beginPath(); ctx.moveTo(gx, y + 2); ctx.lineTo(gx, y + h - 2); ctx.stroke(); }
+  for (let gy = y + 10; gy < y + h - 2; gy += 10) { ctx.beginPath(); ctx.moveTo(x + 2, gy); ctx.lineTo(x + w - 2, gy); ctx.stroke(); }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.stroke();
+  ctx.globalAlpha = z.karte;
+  _m5hGlieder(ctx, [[_m5hFmt(r.start), K.F_START], ['−', K.F_STRICH], [_m5hFmt(r.minus), K.F_STRICH],
+                    ['=', K.F_STRICH], [_m5hFmt(r.zettel), K.F_ZETTEL]], x + w / 2, y + 25, 20);
+  const p = z.probe;
+  if (p && p.phase === 'da') {
+    ctx.globalAlpha = Math.min(1, p.t / K.T_EIN);
+    _m5hGlieder(ctx, [[_m5hFmt(r.zettel), K.F_ZETTEL], ['+', K.F_STRICH], [_m5hFmt(r.minus), K.F_STRICH],
+                      ['=', K.F_STRICH], [_m5hFmt(r.probe), K.F_PROBE]], x + w / 2, y + 50, 20);
+  }
+  ctx.restore();
+}
+function _m5hStrich(ctx) {
+  const K = _m5hK;
+  ctx.save();
+  ctx.strokeStyle = K.F_STRICH; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.X0 - 26, K.LY); ctx.lineTo(K.X1 + 24, K.LY); ctx.stroke();
+  ctx.fillStyle = K.F_STRICH;                              // Pfeilspitze rechts
+  ctx.beginPath(); ctx.moveTo(K.X1 + 34, K.LY); ctx.lineTo(K.X1 + 23, K.LY - 6);
+  ctx.lineTo(K.X1 + 23, K.LY + 6); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Ein Punkt der Bogenlinie bei t (seite -1 = ueber dem Strich, +1 = darunter).
+function _m5hBogenPunkt(xa, xb, h, seite, t) {
+  return [xa + (xb - xa) * t, _m5hK.LY + seite * (3 + 4 * h * t * (1 - t))];
+}
+// Bis wohin der Bogen gezeichnet wird: er endet am Landering (Radius rEnde),
+// nicht im Punkt – sonst steckt die Pfeilspitze im Ring.
+function _m5hBogenEnde(xa, xb, h, seite, rEnde) {
+  const K = _m5hK;
+  let a = 0.5, b = 1;
+  for (let i = 0; i < 24; i++) {
+    const m = (a + b) / 2, p = _m5hBogenPunkt(xa, xb, h, seite, m);
+    if (Math.hypot(p[0] - xb, p[1] - K.LY) > rEnde) a = m; else b = m;
+  }
+  return a;
+}
+// Ein Sprung als Bogen von xa nach xb, gezeichnet bis u (0..1), mit
+// Pfeilspitze am Ende und der Sprungweite als Zahl am hoechsten Punkt.
+function _m5hBogen(ctx, xa, xb, h, seite, u, farbe, text, W) {
+  const K = _m5hK, n = 48;
+  if (u <= 0) return;
+  const tEnde = _m5hBogenEnde(xa, xb, h, seite, 13), te = Math.min(u, tEnde);
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 3.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  for (let i = 0; i <= n; i++) {
+    const t = te * i / n, p = _m5hBogenPunkt(xa, xb, h, seite, t);
+    if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]);
+  }
+  ctx.stroke();
+  // Pfeilspitze, sobald der Bogen den Landering erreicht hat
+  const p = _m5hBogenPunkt(xa, xb, h, seite, te);
+  let dx = xb - xa, dy = seite * 4 * h * (1 - 2 * te);
+  const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+  if (u >= tEnde) {
+    ctx.fillStyle = farbe;
+    ctx.beginPath();
+    ctx.moveTo(p[0] + dx * 3, p[1] + dy * 3);
+    ctx.lineTo(p[0] - dx * 11 - dy * 6, p[1] - dy * 11 + dx * 6);
+    ctx.lineTo(p[0] - dx * 11 + dy * 6, p[1] - dy * 11 - dx * 6);
+    ctx.closePath(); ctx.fill();
+  }
+  // Sprungweite am Scheitel, sobald die Kugel ihn passiert hat
+  const a = Math.max(0, Math.min(1, (u - 0.45) / 0.2));
+  if (a > 0) {
+    ctx.globalAlpha = a;
+    ctx.font = '700 16px sans-serif';
+    const tw = ctx.measureText(text).width, pw = tw + 18, ph = 24;
+    const cx = Math.max(pw / 2 + 3, Math.min(W - pw / 2 - 3, (xa + xb) / 2));
+    const cy = K.LY + seite * (3 + h + 16);
+    ctx.fillStyle = '#ffffff';
+    _bioFxRundRect(ctx, cx - pw / 2, cy - ph / 2, pw, ph, 8); ctx.fill();
+    ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, cx - pw / 2, cy - ph / 2, pw, ph, 8); ctx.stroke();
+    _m5hText(ctx, text, cx, cy + 6, 'center', farbe, 16);
+  }
+  ctx.restore();
+}
+// Die springende Kugel: erscheint (federnd), springt, ist bei der Landung weg.
+function _m5hKugel(ctx, xa, xb, h, seite, s, farbe) {
+  const K = _m5hK;
+  if (!s || s.phase === 'da') return;
+  let x = xa, y = K.LY, r = 7;
+  if (s.phase === 'auf') r = 7 * Math.max(0.05, _bioFxEase.federn(Math.min(1, s.t / K.T_AUF)));
+  else {
+    const u = _bioFxEase.sanft(Math.min(1, s.t / K.T_SPRUNG));
+    const p = _m5hBogenPunkt(xa, xb, h, seite, u);
+    x = p[0]; y = p[1];
+  }
+  ctx.save();
+  ctx.fillStyle = farbe; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.8)';
+  ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.28, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+// Fortschritt eines Sprungs fuer den Bogen (0 vor dem Start, 1 nach der Landung).
+function _m5hFortschritt(s) {
+  if (!s || s.phase === 'auf') return 0;
+  if (s.phase === 'da') return 1;
+  return _bioFxEase.sanft(Math.min(1, s.t / _m5hK.T_SPRUNG));
+}
+// Ein Faehnchen mit Zahl. oben = true: ueber dem Strich, sonst haengend darunter.
+// sk = Groesse beim Aufspringen (0..1), y0 = Oberkante des Kastens (sonst
+// Voreinstellung), abst = Luecke zwischen Stab und Strich.
+function _m5hFahne(ctx, x, zahl, farbe, oben, sk, W, y0, abst) {
+  const K = _m5hK;
+  if (sk <= 0.01) return;
+  ctx.save();
+  ctx.font = '700 18px sans-serif';
+  const txt = _m5hFmt(zahl), tw = ctx.measureText(txt).width, bw = tw + 24, bh = 26;
+  const by = y0 != null ? y0 : (oben ? K.LY - 74 : K.LY + 26);
+  const bx = Math.max(3, Math.min(W - 3 - bw, x - bw / 2));
+  ctx.globalAlpha = Math.min(1, sk);
+  ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+  ctx.beginPath();
+  const ab = abst || 7;                         // Luecke zwischen Stab und Punkt/Ring
+  if (oben) { ctx.moveTo(x, by + bh); ctx.lineTo(x, K.LY - ab); }
+  else { ctx.moveTo(x, K.LY + ab); ctx.lineTo(x, by); }
+  ctx.stroke();
+  const mx = bx + bw / 2, my = by + bh / 2;
+  ctx.translate(mx, my); ctx.scale(sk, sk); ctx.translate(-mx, -my);
+  ctx.fillStyle = '#ffffff'; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, bx, by, bw, bh, 7); ctx.fill(); ctx.stroke();
+  _m5hText(ctx, txt, mx, my + 6.5, 'center', farbe, 18);
+  ctx.restore();
+}
+// Ein Punkt auf dem Strich.
+function _m5hPunkt(ctx, x, r, farbe) {
+  ctx.save();
+  ctx.fillStyle = farbe; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(x, _m5hK.LY, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Die Luecke zwischen Landung der Probe und blauem Punkt leuchtet ruhig.
+function _m5hLuecke(ctx, r) {
+  const z = _m5h, K = _m5hK, p = z.probe;
+  if (!p || p.phase !== 'da' || r.probe === r.start) return;
+  const xa = _m5hX(Math.min(r.probe, r.start)), xb = _m5hX(Math.max(r.probe, r.start));
+  const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+  const ein = Math.min(1, p.t / K.T_EIN);
+  ctx.save();
+  ctx.globalAlpha = ein * (0.3 + 0.35 * puls);
+  ctx.fillStyle = K.F_LUECKE;
+  _bioFxRundRect(ctx, xa - 4, K.LY - 8, xb - xa + 8, 16, 8); ctx.fill();
+  ctx.globalAlpha = ein;
+  ctx.strokeStyle = K.F_LUECKE; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, xa - 4, K.LY - 8, xb - xa + 8, 16, 8); ctx.stroke();
+  ctx.restore();
+}
+function _m5hDraw(ctx, cv) {
+  if (!_m5h) return;
+  const W = cv.width, H = cv.height, z = _m5h, K = _m5hK, r = _m5hRechne(z.auf);
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#ffffff'); bg.addColorStop(1, '#f4f7fb');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5hZettel(ctx, r);
+  _m5hLuecke(ctx, r);
+  if (z.leucht > 0 && !z.zug) {                       // Aha: der blaue Punkt leuchtet nach
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, z.leucht / 0.8);
+    _bioFxLeuchten(ctx, z.xs, K.LY, 16, z.t, '252,211,77');
+    ctx.restore();
+  }
+  _bioFxDraw(ctx, z.fx.teile);                        // Lichtring HINTER Strich und Zahlen
+  _m5hStrich(ctx);
+  const xs = z.xs, xz = z.xz, sk = _bioFxEase.federn(z.fahne);
+  // Minus-Sprung unter dem Strich: vom blauen Punkt nach links
+  const xw = _m5hX(r.wirklich), xp = _m5hX(r.probe);
+  if (z.rueck && !z.zug) {
+    _m5hBogen(ctx, xs, xw, K.H_MINUS, 1, _m5hFortschritt(z.rueck), K.F_MINUS,
+              '− ' + _m5hFmt(r.minus), W);
+  }
+  // Probe ueber dem Strich: vom orangen Punkt nach rechts
+  if (z.probe && !z.zug) {
+    _m5hBogen(ctx, xz, xp, K.H_PLUS, -1, _m5hFortschritt(z.probe), K.F_PROBE,
+              '+ ' + _m5hFmt(r.minus), W);
+  }
+  // Faehnchen: blau haengend unter dem Strich, orange darueber
+  _m5hFahne(ctx, xs, r.start, K.F_START, false, 1, W);
+  _m5hFahne(ctx, xz, r.zettel, K.F_ZETTEL, true, Math.max(0.05, sk), W);
+  // Landestellen: ein Ring in der Farbe des Sprungs, darin ein kleiner Punkt –
+  // ausser die Landestelle IST schon ein Punkt (dann umschliesst ihn der Ring).
+  const ring = (x, farbe, e) => {
+    ctx.save();
+    ctx.strokeStyle = farbe; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(x, K.LY, 11 * e, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  };
+  // wo der Minus-Sprung wirklich landet: grauer Ring, graue Zahl unter dem Strich
+  const wDa = z.rueck && z.rueck.phase === 'da' && !z.zug;
+  if (wDa) {
+    const e = Math.max(0.05, _bioFxEase.federn(Math.min(1, z.rueck.t / K.T_EIN)));
+    _m5hFahne(ctx, xw, r.wirklich, K.F_MINUS, false, e, W, K.LY + 26, 13);
+    if (r.wirklich !== r.zettel) _m5hPunkt(ctx, xw, 4.5, K.F_MINUS);
+  }
+  _m5hPunkt(ctx, xz, 6, K.F_ZETTEL);
+  _m5hPunkt(ctx, xs, 7, K.F_START);
+  if (wDa) ring(xw, K.F_MINUS, Math.max(0.05, _bioFxEase.federn(Math.min(1, z.rueck.t / K.T_EIN))));
+  // wo die Probe landet: gruener Ring, gruene Zahl ueber dem Strich
+  if (z.probe && z.probe.phase === 'da' && !z.zug) {
+    const e = Math.max(0.05, _bioFxEase.federn(Math.min(1, z.probe.t / K.T_EIN)));
+    if (r.probe !== r.start) _m5hPunkt(ctx, xp, 4.5, K.F_PROBE);
+    ring(xp, K.F_PROBE, e);
+    _m5hFahne(ctx, xp, r.probe, K.F_PROBE, true, e, W, K.LY - 50, 13);
+  }
+  // die Kugeln zuletzt, damit sie vor allem liegen
+  if (!z.zug) {
+    _m5hKugel(ctx, xs, xw, K.H_MINUS, 1, z.rueck, K.F_MINUS);
+    _m5hKugel(ctx, xz, xp, K.H_PLUS, -1, z.probe, K.F_PROBE);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mp3 „Wie addiert man schriftlich?“ (Kennung m5-plus-schriftlich)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL2_PROFIL.md, Abschnitt m5-plus-schriftlich.
+// Ueberschrift = Frage der Einheit: „Was ergibt 457 + 368 wirklich?“
+//
+// Was man sieht: links ein Rechenblatt aus Karopapier (helle Kaestchen, eine
+// Ziffer je Kaestchen). Oben klein die Spalten H Z E (T nur, wenn das Ergebnis
+// vier Stellen hat). Darunter die obere Zahl (blau), die untere Zahl mit „+“
+// davor (gruen), beide rechtsbuendig; dann eine Zeile fuer die Uebertraege
+// (kleine Ziffern, bernsteinfarben), der Strich und die Ergebniszeile
+// (dunkel). Rechts oben eine Sprechblase, rechts darunter ein Zwanzigerfeld
+// (zwei Reihen zu je zehn Plaetzen, nach fuenf eine Luecke) und ein kleiner
+// Farbschluessel: „Würfel aus 457“ (blau), „Würfel aus 368“ (gruen),
+// „Übertrag“ (bernstein).
+//
+// „nächste Spalte“ rechnet EINE Spalte, von rechts her:
+//   1. Die Spalte bekommt ein helles Band. Aus jeder Ziffer der Spalte fliegen
+//      so viele kleine Wuerfel ins Zwanzigerfeld, wie sie angibt (gestaffelt,
+//      rund 0,8 s) – in der Farbe ihrer Zeile; ein Uebertrag aus der Spalte
+//      davor fliegt als ein bernsteinfarbener Wuerfel mit. In der Sprechblase
+//      steht die Rechnung, z. B. „7 + 8 = “, und sobald alle Wuerfel liegen,
+//      „15“ dazu.
+//   2. Sind es 10 oder mehr Wuerfel, ist die obere Reihe voll: Die zehn
+//      Wuerfel gleiten zu einer Stange zusammen (0,8 s) und werden dabei
+//      bernsteinfarben; die Stange fliegt in die Uebertragszeile der naechsten
+//      Spalte links (0,8 s), schrumpft und wird dort zur kleinen „1“.
+//   3. Die uebrigen Wuerfel gleiten in das Ergebniskaestchen der Spalte
+//      (0,7 s), und dort erscheint die Ziffer (z. B. „5“). Erst jetzt steht die
+//      ganze Zeile in „_m5i-spalte“.
+// „alles rechnen“ rechnet die restlichen Spalten nacheinander, genauso
+// bewegt, mit 0,3 s Pause dazwischen. Wer waehrend einer Bewegung „nächste
+// Spalte“ drueckt, laesst die laufende Spalte sofort landen und beginnt die
+// naechste. Ist alles gerechnet, wird das Ergebnis doppelt unterstrichen, die
+// Sprechblase zeigt die ganze Aufgabe („457 + 368 = 825“), und die beiden
+// Rechenknoepfe werden blass.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5iAufgabe('…'), Wahlgruppe):
+//     „457 + 368“ · „345 + 62“ · „508 + 294“ · „136 + 251“
+//   „nächste Spalte“ (_m5iSpalte()) · „alles rechnen“ (_m5iAlles()) ·
+//   „neu“ (_m5iNeu(): wieder 457 + 368, nichts gerechnet)
+// Eine Sprungmarke laedt die Aufgabe neu: die Ziffern schreiben sich von
+// links nach rechts ein (0,6 s), der Strich zieht sich durch.
+//
+// Statuszeilen (woertlich; Tausendertrenner waere U+00A0, kommt hier nicht vor):
+//   _m5i-aufgabe    „Aufgabe: 457 + 368 (schriftlich)“
+//   _m5i-spalte     vor dem Rechnen „Noch keine Spalte gerechnet.“; waehrend
+//                   einer Spalte „Jetzt die Einer: 7 + 8 = …“; nach der Landung
+//                   „Einer: 7 + 8 = 15, schreibe 5, Übertrag 1“ /
+//                   „Zehner: 5 + 6 + 1 = 12, schreibe 2, Übertrag 1“ /
+//                   „Hunderter: 4 + 3 + 1 = 8, schreibe 8“
+//   _m5i-uebertrag  „Übertrag entstanden bei: …“, wenn alles gerechnet ist
+//                   „Übertrag entstanden bei: E und Z“ (sonst „… bei: nirgends“)
+//   _m5i-ergebnis   „Ergebnis der Aufgabe: …“, am Ende „Ergebnis der Aufgabe: 825“
+// Alle vier Zeilen haben mehr als 18 Zeichen (simfakten.js-Grenze).
+//
+// Werte (jede Spalte nachgerechnet, simcheck/werte.js):
+//   457 + 368 → E 7 + 8 = 15, Z 5 + 6 + 1 = 12, H 4 + 3 + 1 = 8 → E und Z → 825
+//   345 + 62  → E 5 + 2 = 7, Z 4 + 6 = 10, H 3 + 1 = 4           → Z       → 407
+//   508 + 294 → E 8 + 4 = 12, Z 0 + 9 + 1 = 10, H 5 + 2 + 1 = 8  → E und Z → 802
+//   136 + 251 → E 6 + 1 = 7, Z 3 + 5 = 8, H 1 + 2 = 3            → nirgends → 387
+// Start: 457 + 368, noch keine Spalte gerechnet.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): der erste Uebertrag in
+// 457 + 368 – wenn die Stange aus den Einern als kleine „1“ ueber den Zehnern
+// landet, laeuft ein Lichtring um diese „1“, und sie leuchtet 2,6 s nach
+// (_bioFxLeuchten). Einmal je geladener Aufgabe. Das widerlegt „715“: die zehn
+// Einer verschwinden nicht, sie wandern als 1 Zehner weiter.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm, die Merksatzwoerter):
+// „Stellen“, „eins“, „mit“ – und keine Regel als Satz. „Übertrag 1“ ist
+// erlaubt. Keine Namen, keine Punkte, keine Zeit. Deterministisch, ohne
+// Zufall: jede Zahl im Bild kommt aus _m5iSchritte().
+// ════════════════════════════════════════════════════════════════════════
+let _m5i = null;
+const _m5iAUFGABEN = {
+  '457+368': [457, 368], '345+62': [345, 62], '508+294': [508, 294], '136+251': [136, 251]
+};
+const _m5iREIHE = ['457+368', '345+62', '508+294', '136+251'];
+const _m5iNAME = ['Einer', 'Zehner', 'Hunderter', 'Tausender'];
+const _m5iKURZ = ['E', 'Z', 'H', 'T'];
+const _m5iK = {
+  KA: 38,                         // Kaestchen (px)
+  XR: 191,                        // rechte Kante der Einerspalte (Block + H Z E mittig auf dem Papier)
+  Y0: 8,                          // Kopfzeile 8..46
+  R1: 46, R2: 84, RU: 122, RE: 160, RF: 198,   // obere Zahl, untere Zahl, Uebertrag, Ergebnis, Ende
+  GZ: 28, BL: 29,                 // Ziffern: Schriftgrad, Grundlinie ab Zeilenoberkante
+  GU: 18, UM: 24,                 // Uebertrag: Schriftgrad, Mitte ab Zeilenoberkante
+  GK: 16,                         // Kopfzeile H Z E
+  PX0: 4, PX1: 226, PY0: 4, PY1: 246,          // Papier
+  BX0: 240, BX1: 414, BY0: 10, BY1: 56,        // Sprechblase
+  FX0: 240, FX1: 414, FY0: 70, FY1: 122,       // Zwanzigerfeld (Rahmen)
+  FXS: 245, FR1: 80, FR2: 100,                 // erster Platz, Reihen (Oberkante)
+  W: 14, LUECKE: 2, FUENF: 8,                  // Wuerfel, Abstand, Luecke nach fuenf
+  BARX: 257,                                   // linke Kante der Stange (10 · 14 px)
+  LY: 146,                                     // Farbschluessel: erste Zeile
+  T_SCHREIB: 0.6, T_FLUG: 0.55, T_HALT: 0.35, T_SAMMEL: 0.8,
+  T_UEBER: 0.8, T_ZIFFER: 0.7, T_PAUSE: 0.3, T_BAND: 0.6,
+  A: { fuell: '#93c5fd', rand: '#1d4ed8', text: '#1d4ed8' },   // obere Zahl
+  B: { fuell: '#86efac', rand: '#15803d', text: '#15803d' },   // untere Zahl
+  U: { fuell: '#fcd34d', rand: '#b45309', text: '#b45309' },   // Uebertrag
+  F_ERG: '#111827', F_LINIE: '#1f2937', F_KARO: '#d4e3f1', F_GRAU: '#475569'
+};
+
+// 1234 -> "1 234" mit geschuetztem Leerzeichen (im Heft normales Leerzeichen)
+function _m5iFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+// Die Spalten von rechts: Ziffer oben, Ziffer unten, Uebertrag hinein, Summe.
+function _m5iSchritte(a, b) {
+  const sa = String(a), sb = String(b), n = Math.max(sa.length, sb.length);
+  const out = [];
+  let ue = 0;
+  for (let c = 0; c < n; c++) {
+    const da = c < sa.length ? +sa[sa.length - 1 - c] : null;
+    const db = c < sb.length ? +sb[sb.length - 1 - c] : null;
+    const s = (da || 0) + (db || 0) + ue;
+    out.push({ c, da, db, ue, s, ziffer: s % 10, aus: s >= 10 ? 1 : 0 });
+    ue = s >= 10 ? 1 : 0;
+  }
+  if (ue) out.push({ c: n, da: null, db: null, ue: 1, s: 1, ziffer: 1, aus: 0 });
+  return out;
+}
+// Teile der Spaltenrechnung: [Text, Art] mit Art 'A', 'B', 'U'
+function _m5iTeile(st) {
+  const t = [];
+  if (st.da !== null) t.push([String(st.da), 'A']);
+  if (st.db !== null) t.push([String(st.db), 'B']);
+  if (st.ue) t.push(['1', 'U']);
+  return t;
+}
+function _m5iZeile(st, fertig, html) {
+  const K = _m5iK;
+  const farbig = (s, art) => html ? '<b style="color:' + K[art].text + '">' + s + '</b>' : s;
+  if (st.da === null && st.db === null)
+    return fertig ? _m5iNAME[st.c] + ': nur der Übertrag ' + farbig('1', 'U') + ', schreibe 1'
+                  : 'Jetzt die ' + _m5iNAME[st.c] + ': nur der Übertrag ' + farbig('1', 'U');
+  const r = _m5iTeile(st).map(p => farbig(p[0], p[1])).join(' + ');
+  if (!fertig) return 'Jetzt die ' + _m5iNAME[st.c] + ': ' + r + ' = …';
+  return _m5iNAME[st.c] + ': ' + r + ' = ' + st.s + ', schreibe ' + st.ziffer +
+         (st.aus ? ', Übertrag ' + farbig('1', 'U') : '');
+}
+
+function _m5iInit() {
+  _m5i = { t: 0, fx: { teile: [] } };
+  _m5iLaden('457+368');
+}
+function _m5iLaden(key) {
+  const z = _m5i, [a, b] = _m5iAUFGABEN[key];
+  z.key = key; z.a = a; z.b = b;
+  z.schritte = _m5iSchritte(a, b);
+  z.stellen = Math.max(String(a).length, String(b).length, String(a + b).length);
+  z.fertig = 0; z.lauf = null; z.auto = false;
+  z.ueSicht = {}; z.ergSicht = {}; z.popU = {}; z.popE = {};
+  z.komplett = false; z.schreib = 0; z.band = 0; z.bandC = 0;
+  z.aha = false; z.ahaGlanz = 0; z.endGlanz = 0; z.strich2 = 0; z.wackel = 0;
+  z.blase = 'aufgabe'; z.blaseI = -1; z.blaseSumme = false; z.blaseT = 0;
+  z.zeile = 'Noch keine Spalte gerechnet.';
+  z.fx.teile.length = 0;
+}
+function _m5iHTML() {
+  const marke = (k, i) => {
+    const [a, b] = _m5iAUFGABEN[k];
+    return `<button class="sim-btn" id="_m5i-b-${i}" onclick="_m5iAufgabe('${k}')">${a}&nbsp;+&nbsp;${b}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was ergibt 457 + 368 wirklich?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Aufgabe. „nächste Spalte“ rechnet eine Spalte, von rechts her. Sieh genau hin, was die Würfel tun.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5i-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5iREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5i-weiter" onclick="_m5iSpalte()">nächste Spalte</button>
+          <button class="sim-btn" id="_m5i-alles" onclick="_m5iAlles()">alles rechnen</button>
+          <button class="sim-btn" onclick="_m5iNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5i-aufgabe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5i-spalte" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5i-uebertrag" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5i-ergebnis" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Jede Ziffer wird zu Würfeln. Die Farbe zeigt, aus welcher Zeile sie kommen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Aufgabe 457&nbsp;+&nbsp;368, noch keine Spalte gerechnet</p>
+  </div>`;
+}
+function _m5iSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+function _m5iStatus() {
+  if (!_m5i) return;
+  const z = _m5i, K = _m5iK;
+  _m5iSetze('_m5i-aufgabe', 'Aufgabe: <b style="color:' + K.A.text + '">' + _m5iFmt(z.a) +
+            '</b> + <b style="color:' + K.B.text + '">' + _m5iFmt(z.b) + '</b> (schriftlich)');
+  _m5iSetze('_m5i-spalte', z.zeile);
+  let bei = '…';
+  if (z.komplett) {
+    const wo = z.schritte.filter(s => s.aus).map(s => _m5iKURZ[s.c]);
+    bei = !wo.length ? 'nirgends' : wo.length === 1 ? wo[0]
+        : wo.slice(0, -1).join(', ') + ' und ' + wo[wo.length - 1];
+  }
+  _m5iSetze('_m5i-uebertrag', 'Übertrag entstanden bei: ' + bei);
+  _m5iSetze('_m5i-ergebnis', 'Ergebnis der Aufgabe: ' + (z.komplett ? _m5iFmt(z.a + z.b) : '…'));
+  _m5iREIHE.forEach((k, i) => {
+    const b = document.getElementById('_m5i-b-' + i);
+    if (b && b.classList) b.classList.toggle('primary', k === z.key);
+  });
+  for (const id of ['_m5i-weiter', '_m5i-alles']) {
+    const b = document.getElementById(id);
+    if (!b) continue;
+    b.disabled = z.komplett;
+    if (b.style) b.style.opacity = z.komplett ? '0.45' : '';
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5iAufgabe(key) {
+  if (!_m5i || !_m5iAUFGABEN[key]) return;
+  _m5iLaden(key);
+  _m5iStatus();
+}
+function _m5iNeu() {
+  if (!_m5i) return;
+  _m5iLaden('457+368');
+  _m5iStatus();
+}
+function _m5iSpalte() {
+  if (!_m5i) return;
+  const z = _m5i;
+  z.auto = false;
+  if (z.lauf) _m5iFertig();
+  if (z.fertig >= z.schritte.length) { z.wackel = 0.45; _m5iStatus(); return; }
+  _m5iStart(z.fertig);
+  _m5iStatus();
+}
+function _m5iAlles() {
+  if (!_m5i) return;
+  const z = _m5i;
+  if (z.fertig >= z.schritte.length && !z.lauf) { z.wackel = 0.45; return; }
+  z.auto = true;
+  if (!z.lauf) _m5iStart(z.fertig);
+  _m5iStatus();
+}
+
+// Platz k im Zwanzigerfeld (Mitte des Wuerfels).
+function _m5iPlatz(k) {
+  const K = _m5iK, j = k % 10;
+  return { x: K.FXS + j * (K.W + K.LUECKE) + (j >= 5 ? K.FUENF - K.LUECKE : 0) + K.W / 2,
+           y: (k < 10 ? K.FR1 : K.FR2) + K.W / 2 };
+}
+function _m5iCX(c) { return _m5iK.XR - (c + 0.5) * _m5iK.KA; }
+// Spalte i beginnen: Wuerfel fliegen aus den Ziffern ins Zwanzigerfeld.
+function _m5iStart(i) {
+  const z = _m5i, K = _m5iK, st = z.schritte[i], cx = _m5iCX(st.c);
+  const quellen = [];
+  if (st.da !== null) for (let k = 0; k < st.da; k++) quellen.push(['A', K.R1 + K.KA / 2]);
+  if (st.db !== null) for (let k = 0; k < st.db; k++) quellen.push(['B', K.R2 + K.KA / 2]);
+  if (st.ue) quellen.push(['U', K.RU + K.UM]);
+  const n = quellen.length, stag = n > 1 ? Math.min(0.04, 0.4 / (n - 1)) : 0;
+  const wuerfel = quellen.map((q, k) => {
+    const p = _m5iPlatz(k);
+    return { art: q[0], x0: cx, y0: q[1], x1: p.x, y1: p.y, x: cx, y: q[1], s: 6, a: 0,
+             verz: k * stag, mix: 0 };
+  });
+  z.lauf = { i, phase: 'fliegen', t: 0, wuerfel, stange: null,
+             dauer: K.T_FLUG + (n ? (n - 1) * stag : 0) };
+  z.band = 1; z.bandC = st.c;
+  z.blase = 'spalte'; z.blaseI = i; z.blaseSumme = false; z.blaseT = 0;
+  z.zeile = _m5iZeile(st, false, true);
+}
+// Die laufende Spalte sofort landen lassen (vor jeder neuen Bedienung).
+function _m5iFertig() {
+  const z = _m5i, L = z.lauf;
+  if (!L) return;
+  z.lauf = null;
+  if (L.phase === 'pause') return;
+  const st = z.schritte[L.i];
+  if (st.aus) z.ueSicht[st.c + 1] = true;
+  _m5iGelandet(st, false);
+}
+// Die Ergebnisziffer steht: Statuszeilen nachfuehren, ggf. abschliessen.
+function _m5iGelandet(st, weiter) {
+  const z = _m5i;
+  z.ergSicht[st.c] = true; z.popE[st.c] = 0;
+  z.fertig = Math.max(z.fertig, z.schritte.indexOf(st) + 1);
+  z.zeile = _m5iZeile(st, true, true);
+  z.blaseSumme = true;
+  if (z.fertig >= z.schritte.length) {
+    z.komplett = true; z.auto = false; z.strich2 = 0; z.endGlanz = 1.6;
+    z.blase = 'ganz'; z.blaseT = 0;
+    z.lauf = null;
+  } else if (weiter && z.auto) {
+    z.lauf = { i: -1, phase: 'pause', t: 0, wuerfel: [], stange: null, dauer: _m5iK.T_PAUSE };
+  } else z.lauf = null;
+  _m5iStatus();
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5iUpdate(dt) {
+  if (!_m5i) return;
+  dt = _bioFxDt(dt);
+  const z = _m5i, K = _m5iK, E = _bioFxEase, kl = _bioFxKlemme;
+  z.t += dt; z.schreib += dt; z.blaseT += dt;
+  for (const c in z.popU) z.popU[c] += dt;
+  for (const c in z.popE) z.popE[c] += dt;
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  z.endGlanz = Math.max(0, z.endGlanz - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  if (z.komplett) z.strich2 = Math.min(1, z.strich2 + dt / 0.5);
+  const L = z.lauf;
+  if (!L || L.phase === 'pause') z.band = Math.max(0, z.band - dt / K.T_BAND);
+  if (L) {
+    L.t += dt;
+    const st = L.i >= 0 ? z.schritte[L.i] : null;
+    if (L.phase === 'fliegen') {
+      for (const w of L.wuerfel) {
+        const u = kl((L.t - w.verz) / K.T_FLUG), e = E.sanft(u);
+        w.x = w.x0 + (w.x1 - w.x0) * e;
+        w.y = w.y0 + (w.y1 - w.y0) * e + 12 * Math.sin(Math.PI * e);   // leicht durchhaengend: bleibt unter der Sprechblase
+        w.s = 6 + (K.W - 6) * e; w.a = kl(u * 4);
+      }
+      if (L.t >= L.dauer) { L.phase = 'halten'; L.t = 0; z.blaseSumme = true; }
+    } else if (L.phase === 'halten') {
+      if (L.t >= K.T_HALT) {
+        L.t = 0;
+        if (st.s >= 10) {
+          L.phase = 'sammeln';
+          L.wuerfel.forEach((w, k) => {
+            w.x0 = w.x; w.y0 = w.y;
+            if (k < 10) { w.x1 = K.BARX + k * K.W + K.W / 2; w.y1 = w.y; }
+          });
+        } else {
+          L.phase = 'ziffer';
+          _m5iZumErgebnis(L, st);
+        }
+      }
+    } else if (L.phase === 'sammeln') {
+      const u = kl(L.t / K.T_SAMMEL), e = E.sanft(u);
+      L.wuerfel.forEach((w, k) => {
+        if (k >= 10) return;
+        w.x = w.x0 + (w.x1 - w.x0) * e; w.mix = kl((e - 0.6) / 0.4);   // erst am Ende bernstein, sonst wird es grau
+      });
+      if (u >= 1) {
+        // verschmelzen: aus zehn Wuerfeln wird eine Stange
+        L.stange = { x0: K.BARX + 5 * K.W, y0: K.FR1 + K.W / 2, w0: 10 * K.W, h0: K.W,
+                     x1: _m5iCX(st.c + 1), y1: K.RU + K.UM, w1: 11, h1: 18,
+                     x: K.BARX + 5 * K.W, y: K.FR1 + K.W / 2, w: 10 * K.W, h: K.W, morph: 0, blitz: 0.3 };
+        L.wuerfel = L.wuerfel.slice(10);
+        L.phase = 'uebertrag'; L.t = 0;
+      }
+    } else if (L.phase === 'uebertrag') {
+      const u = kl(L.t / K.T_UEBER), e = E.sanft(u), S = L.stange;
+      S.x = S.x0 + (S.x1 - S.x0) * e; S.y = S.y0 + (S.y1 - S.y0) * e - 26 * Math.sin(Math.PI * e);
+      S.w = S.w0 + (S.w1 - S.w0) * e; S.h = S.h0 + (S.h1 - S.h0) * e;
+      S.morph = kl((u - 0.55) / 0.45); S.blitz = Math.max(0, S.blitz - dt);
+      if (u >= 1) {
+        z.ueSicht[st.c + 1] = true; z.popU[st.c + 1] = 0;
+        L.stange = null;
+        if (z.key === '457+368' && st.c === 0 && !z.aha) {
+          // Aha: die zehn Einer sind als kleine 1 bei den Zehnern angekommen
+          z.aha = true; z.ahaGlanz = 2.6;
+          _bioFxWelle(z.fx.teile, _m5iCX(1), K.RU + K.UM, '#f59e0b', 34);
+        }
+        L.phase = 'ziffer'; L.t = 0;
+        _m5iZumErgebnis(L, st);
+      }
+    } else if (L.phase === 'ziffer') {
+      const u = kl(L.t / L.dauer), e = E.sanft(u);
+      for (const w of L.wuerfel) {
+        w.x = w.x0 + (w.x1 - w.x0) * e; w.y = w.y0 + (w.y1 - w.y0) * e - 14 * Math.sin(Math.PI * e);
+        w.s = K.W + (5 - K.W) * e; w.a = 1 - kl((u - 0.75) / 0.25);
+      }
+      if (u >= 1) _m5iGelandet(st, true);
+    } else if (L.phase === 'pause') {
+      if (L.t >= L.dauer) { z.lauf = null; _m5iStart(z.fertig); _m5iStatus(); }
+    }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+// Die uebrigen Wuerfel machen sich auf den Weg ins Ergebniskaestchen.
+function _m5iZumErgebnis(L, st) {
+  const K = _m5iK, x1 = _m5iCX(st.c), y1 = K.RE + K.KA / 2;
+  for (const w of L.wuerfel) { w.x0 = w.x; w.y0 = w.y; w.x1 = x1; w.y1 = y1; }
+  L.dauer = L.wuerfel.length ? K.T_ZIFFER : 0.35;
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5iMisch(h1, h2, u) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const a = p(h1), b = p(h2);
+  return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * u)).join(',') + ')';
+}
+function _m5iText(ctx, s, x, y, groesse, farbe, ausr, gew) {
+  ctx.fillStyle = farbe || _m5iK.F_ERG;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Ziffer mit Einschreiben (a: 0..1) und kleinem Federn (pop in s seit Erscheinen).
+function _m5iZiffer(ctx, s, x, y, groesse, farbe, a, pop) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  const k = pop !== undefined && pop < 0.35 ? Math.max(0.3, _bioFxEase.federn(pop / 0.35)) : 1;
+  ctx.translate(x, y - groesse * 0.36);
+  ctx.scale(k, k);
+  _m5iText(ctx, s, 0, groesse * 0.36 + (1 - Math.min(1, a)) * -6, groesse, farbe);
+  ctx.restore();
+}
+function _m5iWuerfel(ctx, x, y, s, art, mix, a) {
+  if (a <= 0.01 || s <= 0.5) return;
+  const K = _m5iK, F = K[art], U = K.U;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = mix > 0 ? _m5iMisch(F.fuell, U.fuell, mix) : F.fuell;
+  ctx.strokeStyle = mix > 0 ? _m5iMisch(F.rand, U.rand, mix) : F.rand;
+  ctx.lineWidth = 1.3;
+  _bioFxRundRect(ctx, x - s / 2, y - s / 2, s, s, Math.min(3, s / 4)); ctx.fill(); ctx.stroke();
+  if (s > 9) {                                       // Lichtkante: sieht aus wie ein Wuerfel
+    ctx.strokeStyle = 'rgba(255,255,255,0.75)'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x - s / 2 + 2.5, y + s / 2 - 3); ctx.lineTo(x - s / 2 + 2.5, y - s / 2 + 2.5);
+    ctx.lineTo(x + s / 2 - 3, y - s / 2 + 2.5); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _m5iStange(ctx, S) {
+  const K = _m5iK, U = K.U, x = S.x - S.w / 2, y = S.y - S.h / 2;
+  const a = 1 - S.morph;
+  if (a > 0.01) {
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.fillStyle = U.fuell; ctx.strokeStyle = U.rand; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, x, y, S.w, S.h, Math.min(3, S.h / 4)); ctx.fill(); ctx.stroke();
+    if (S.w > 40) {                                   // Fugen der zehn Wuerfel, Fuenfermarke dicker
+      for (let k = 1; k < 10; k++) {
+        ctx.lineWidth = k === 5 ? 2.2 : 0.8;
+        ctx.beginPath(); ctx.moveTo(x + S.w * k / 10, y); ctx.lineTo(x + S.w * k / 10, y + S.h); ctx.stroke();
+      }
+    }
+    if (S.blitz > 0) {
+      ctx.globalAlpha = a * S.blitz / 0.3 * 0.8; ctx.fillStyle = '#ffffff';
+      ctx.fillRect(x - 2, y - 2, S.w + 4, S.h + 4);
+    }
+    ctx.restore();
+  }
+  if (S.morph > 0) {
+    ctx.save(); ctx.globalAlpha = S.morph;
+    _m5iText(ctx, '1', S.x, S.y + K.GU * 0.36, K.GU, U.text);
+    ctx.restore();
+  }
+}
+function _m5iPapier(ctx) {
+  const K = _m5iK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, K.PX0 + 2, K.PY0 + 3, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  for (let x = K.XR; x > K.PX0 + 1; x -= K.KA) {
+    ctx.beginPath(); ctx.moveTo(x, K.PY0 + 1); ctx.lineTo(x, K.PY1 - 1); ctx.stroke();
+  }
+  for (let y = K.Y0; y < K.PY1 - 1; y += K.KA) {
+    ctx.beginPath(); ctx.moveTo(K.PX0 + 1, y); ctx.lineTo(K.PX1 - 1, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.stroke();
+  ctx.restore();
+}
+function _m5iBlatt(ctx) {
+  const z = _m5i, K = _m5iK, n = z.stellen;
+  // Band ueber der Spalte, die gerade gerechnet wird
+  if (z.band > 0.01) {
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, z.band);
+    const x = K.XR - (z.bandC + 1) * K.KA;
+    ctx.fillStyle = 'rgba(254,240,138,0.6)'; ctx.strokeStyle = '#eab308'; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, x + 1.5, K.Y0 + 1.5, K.KA - 3, K.RF - K.Y0 - 3, 5); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // Kopfzeile: H Z E (T nur bei vier Stellen)
+  for (let c = 0; c < n; c++) {
+    const aktiv = z.band > 0.01 && z.bandC === c;
+    _m5iText(ctx, _m5iKURZ[c], _m5iCX(c), K.Y0 + 25, K.GK, aktiv ? '#1f2937' : '#64748b');
+  }
+  // obere und untere Zahl, von links nach rechts eingeschrieben
+  const zahl = (wert, zeile, farbe, start) => {
+    const s = String(wert);
+    for (let i = 0; i < s.length; i++) {
+      const c = s.length - 1 - i;
+      const a = (z.schreib - start - i * 0.07) / 0.22;
+      _m5iZiffer(ctx, s[i], _m5iCX(c), zeile + K.BL, K.GZ, farbe, a);
+    }
+  };
+  zahl(z.a, K.R1, K.A.text, 0);
+  zahl(z.b, K.R2, K.B.text, 0.22);
+  const plusC = n;                                    // Pluszeichen links vor dem Block
+  _m5iZiffer(ctx, '+', _m5iCX(plusC), K.R2 + K.BL, K.GZ, K.F_LINIE, (z.schreib - 0.4) / 0.2);
+  // Strich unter der Uebertragszeile, zieht sich von rechts nach links durch
+  const u = _bioFxKlemme((z.schreib - 0.35) / 0.3);
+  if (u > 0) {
+    const xl = K.XR - (plusC + 1) * K.KA + 5;
+    ctx.save(); ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 2.6; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(K.XR - 2, K.RE); ctx.lineTo(K.XR - 2 - (K.XR - 2 - xl) * u, K.RE); ctx.stroke();
+    ctx.restore();
+  }
+  // Uebertraege: klein, bernsteinfarben, im unteren Teil der Zeile
+  for (const c in z.ueSicht) {
+    const cx = _m5iCX(+c), cy = K.RU + K.UM;
+    if (z.ahaGlanz > 0 && +c === 1 && z.key === '457+368') {
+      ctx.save(); ctx.globalAlpha = Math.min(1, z.ahaGlanz / 0.8);
+      _bioFxLeuchten(ctx, cx, cy, 11, z.t, '245,158,11');
+      ctx.restore();
+    }
+    _m5iZiffer(ctx, '1', cx, cy + K.GU * 0.36, K.GU, K.U.text, 1, z.popU[c]);
+  }
+  // Ergebnis
+  const wk = z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / 0.45) : 0;
+  if (z.endGlanz > 0) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, z.endGlanz / 0.6) * (0.6 + 0.4 * Math.sin(z.t * 6));
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    const xl = K.XR - z.schritte.length * K.KA;
+    _bioFxRundRect(ctx, xl - 2, K.RE + 3, K.XR - xl + 4, K.KA - 5, 7); ctx.stroke();
+    ctx.restore();
+  }
+  for (const st of z.schritte) {
+    if (!z.ergSicht[st.c]) continue;
+    _m5iZiffer(ctx, String(st.ziffer), _m5iCX(st.c) + wk, K.RE + K.BL, K.GZ, K.F_ERG, 1, z.popE[st.c]);
+  }
+  // doppelt unterstrichen, wenn alles gerechnet ist
+  if (z.komplett && z.strich2 > 0) {
+    const xl = K.XR - (plusC + 1) * K.KA + 5, xr = K.XR - 2, xm = xr - (xr - xl) * z.strich2;
+    ctx.save(); ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 2; ctx.lineCap = 'round';
+    for (const y of [K.RF + 3, K.RF + 7]) { ctx.beginPath(); ctx.moveTo(xr, y); ctx.lineTo(xm, y); ctx.stroke(); }
+    ctx.restore();
+  }
+}
+// Sprechblase: vor dem Rechnen die Aufgabe, dann die Spalte, am Ende alles.
+// Gesetzt wird Zeichen fuer Zeichen (Zahl, „+“, „=“) mit festem Abstand, nicht
+// ueber Leerzeichen: so steht der Text in jeder Darstellung gleich.
+function _m5iBlase(ctx) {
+  const z = _m5i, K = _m5iK;
+  let teile;
+  if (z.blase === 'spalte') {
+    const st = z.schritte[z.blaseI];
+    teile = [];
+    _m5iTeile(st).forEach((p, i) => {
+      if (i) teile.push(['+', K.F_ERG]);
+      teile.push([p[0], K[p[1]].text]);
+    });
+    teile.push(['=', K.F_ERG]);
+    if (z.blaseSumme) teile.push([String(st.s), K.F_ERG]);
+  } else {
+    teile = [[_m5iFmt(z.a), K.A.text], ['+', K.F_ERG], [_m5iFmt(z.b), K.B.text], ['=', K.F_ERG],
+             [z.blase === 'ganz' ? _m5iFmt(z.a + z.b) : '?', K.F_ERG]];
+  }
+  const a = Math.min(1, z.blaseT / 0.25);
+  ctx.save();
+  // Blase mit Spitze nach links, zum Rechenblatt
+  ctx.fillStyle = '#fefce8'; ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, K.BX0, K.BY0, K.BX1 - K.BX0, K.BY1 - K.BY0, 12); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(K.BX0 + 1, K.BY0 + 15); ctx.lineTo(K.PX1 + 3, K.BY0 + 22);
+  ctx.lineTo(K.BX0 + 1, K.BY0 + 29); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(K.BX0, K.BY0 + 15); ctx.lineTo(K.PX1 + 3, K.BY0 + 22);
+  ctx.lineTo(K.BX0, K.BY0 + 29); ctx.stroke();
+  ctx.globalAlpha = 0.25 + 0.75 * a;
+  const platz = K.BX1 - K.BX0 - 20;
+  let gr = 22, br, luft, ges;
+  const messen = () => {
+    ctx.font = '700 ' + gr + 'px sans-serif';
+    br = teile.map(t => ctx.measureText(t[0]).width);
+    luft = gr * 0.32;
+    ges = br.reduce((p, q) => p + q, 0) + luft * (teile.length - 1);
+  };
+  messen();
+  if (ges > platz) { gr = Math.max(15, Math.floor(gr * platz / ges)); messen(); }
+  let x = (K.BX0 + K.BX1) / 2 - ges / 2;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  teile.forEach((t, i) => {
+    ctx.fillStyle = t[1];
+    ctx.fillText(t[0], x, (K.BY0 + K.BY1) / 2 + gr * 0.36);
+    x += br[i] + luft;
+  });
+  ctx.restore();
+}
+function _m5iFeld(ctx) {
+  const z = _m5i, K = _m5iK;
+  ctx.save();
+  ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.FX0, K.FY0, K.FX1 - K.FX0, K.FY1 - K.FY0, 9); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  for (let k = 0; k < 20; k++) {
+    const p = _m5iPlatz(k);
+    _bioFxRundRect(ctx, p.x - K.W / 2, p.y - K.W / 2, K.W, K.W, 3); ctx.stroke();
+  }
+  ctx.restore();
+  // Farbschluessel
+  const zeilen = [['A', 'Würfel aus ' + _m5iFmt(z.a)], ['B', 'Würfel aus ' + _m5iFmt(z.b)], ['U', 'Übertrag']];
+  zeilen.forEach((zl, i) => {
+    const y = K.LY + i * 22;
+    _m5iWuerfel(ctx, K.FX0 + 12, y - 5, 13, zl[0], 0, 1);
+    _m5iText(ctx, zl[1], K.FX0 + 26, y, 14, K[zl[0]].text, 'left', '600');
+  });
+}
+function _m5iDraw(ctx, cv) {
+  if (!_m5i) return;
+  const z = _m5i, K = _m5iK, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5iPapier(ctx);
+  _m5iBlatt(ctx);
+  _m5iFeld(ctx);
+  _m5iBlase(ctx);
+  const L = z.lauf;
+  if (L) {
+    for (const w of L.wuerfel) _m5iWuerfel(ctx, w.x, w.y, w.s, w.art, w.mix, w.a);
+    if (L.stange) _m5iStange(ctx, L.stange);
+  }
+  _bioFxDraw(ctx, z.fx.teile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mp4 „Wie subtrahiert man schriftlich?“
+// (Kennung m5-minus-schriftlich, Praefix _m5j)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL2_PROFIL.md, Abschnitt m5-minus-schriftlich.
+// Ueberschrift = Frage der Einheit: „Was ergibt 432 − 158 wirklich?“
+//
+// Was man sieht – zwei Darstellungen nebeneinander, Spalte fuer Spalte gleich
+// gefaerbt (H rot, Z blau, E gruen wie in m5-buendeln):
+//   RECHENBLATT (Karopapier, Kaestchen 28 px): klein darueber die Spalten
+//     H Z E, darunter eine Notizzeile, die obere Zahl, die untere Zahl mit dem
+//     Rechenzeichen „−“ davor, ein Strich, die Ergebniszeile. Unter dem Blatt
+//     eine Sprechblase, die auf die Spalte zeigt, die gerade dran ist.
+//   MATERIAL (daneben): die OBERE Zahl als Platten (Hunderter, Fuenfersaeulen),
+//     Stangen (Zehner, 10 Wuerfel mit Fuenfermarke, 5 + 5 je Reihe) und Wuerfel
+//     (Einer, Fuenferreihen, nach zehn eine Luecke). Unten im Bild steht je Feld
+//     die ANZAHL der Stuecke; ab 10 ist sie orange hinterlegt (wie m5-buendeln).
+//
+// „nächste Spalte“ rechnet EINE Spalte, von den Einern aus. Die Spalte wird im
+// Blatt UND im Material gelb hinterlegt, die Sprechblase zeigt „2 − 8“.
+//   Reicht es:      die unteren Stuecke heben ab und verblassen (0,8 s), die
+//                   Anzahl faellt, die Ergebnisziffer erscheint im Blatt.
+//   Reicht es nicht: die Stuecke wackeln („2 − 8 reicht nicht“). Dann zerfaellt
+//                   EINE Stange der Nachbarspalte sichtbar in zehn Wuerfel (bzw.
+//                   eine Platte in zehn Stangen, 0,55 s) – die Nachbarspalte ist
+//                   orange hinterlegt –, und die zehn Teile wandern nach rechts in
+//                   das Feld der Spalte (0,75 s). Im Blatt wird dabei die Ziffer
+//                   der Nachbarspalte durchgestrichen, darueber steht klein die um
+//                   eins kleinere Ziffer, und die Spalte bekommt eine kleine 1
+//                   davor (2 -> 12). Erst DANN wird weggenommen und geschrieben.
+//   Ist in der Nachbarspalte nichts (503 − 128): „Bei den Zehnern ist nichts“,
+//                   das leere Feld pulsiert; erst zerfaellt eine Platte in zehn
+//                   Stangen, dann eine dieser Stangen in zehn Wuerfel. Im Blatt:
+//                   5 durchgestrichen, klein 4; vor die 0 eine kleine 1; dann die
+//                   10 durchgestrichen, klein 9; vor die 3 eine kleine 1.
+// „alles rechnen“ rechnet die uebrigen Spalten nacheinander mit denselben
+// Bewegungen (0,35 s Pause dazwischen). Waehrend eine Spalte laeuft, sind
+// „nächste Spalte“ und „alles rechnen“ blass und tun nichts (bzw. „alles
+// rechnen“ merkt sich, dass es weitergehen soll). Eine Aufgabe oder „neu“
+// bricht alles ab: das alte Material faellt weg, das neue faellt von oben ein.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken „432 − 158“ · „563 − 241“ · „745 − 382“ · „503 − 128“
+//                (_m5jAufgabe('432-158') usw.; Leerzeichen als &nbsp;)
+//   „nächste Spalte“ (_m5jWeiter()) · „alles rechnen“ (_m5jAlles()) ·
+//   „neu“ (_m5jNeu(): wieder 432 − 158, nichts gerechnet)
+//
+// Statuszeilen (woertlich; jede, deren Wert das Heft verlangt, hat >= 19
+// Zeichen, sonst fehlt sie im Faktendump):
+//   _m5j-aufgabe   „Aufgabe: 432 − 158 (schriftlich)“
+//   _m5j-spalte    Start „Noch keine Spalte gerechnet.“; waehrend der Spalte
+//                  waechst die Zeile mit der Bewegung mit („Einer: 2 − 8 …“ ->
+//                  „Einer: 2 − 8 reicht nicht. …“ -> „… entbündeln: …“), am
+//                  Ende der Spalte z. B.
+//                  „Einer: 2 − 8 reicht nicht. 1 Zehner entbündeln: 12 − 8 = 4, schreibe 4“
+//                  „Hunderter: 3 − 1 = 2, schreibe 2“
+//                  „Einer: 3 − 8 reicht nicht. Bei den Zehnern ist nichts. Erst
+//                   1 Hunderter, dann 1 Zehner entbündeln: 13 − 8 = 5, schreibe 5“
+//   _m5j-reicht    „Nicht gereicht hat es bei: …“, am Ende z. B.
+//                  „Nicht gereicht hat es bei: E und Z“ (sonst „… bei: nirgends“)
+//   _m5j-ergebnis  „Ergebnis der Aufgabe: …“, am Ende „Ergebnis der Aufgabe: 274“
+//
+// Werte (jede Zeile mit simcheck/werte.js nachgerechnet):
+//   432 − 158: E 2 − 8 reicht nicht, 1 Zehner entbuendeln, 12 − 8 = 4 ·
+//              Z 2 − 5 reicht nicht, 1 Hunderter entbuendeln, 12 − 5 = 7 ·
+//              H 3 − 1 = 2  ->  bei: E und Z  ->  274
+//   563 − 241: E 3 − 1 = 2 · Z 6 − 4 = 2 · H 5 − 2 = 3  ->  nirgends  ->  322
+//   745 − 382: E 5 − 2 = 3 · Z 4 − 8 reicht nicht, 1 Hunderter entbuendeln,
+//              14 − 8 = 6 · H 6 − 3 = 3  ->  Z  ->  363
+//   503 − 128: E 3 − 8 reicht nicht, bei den Zehnern ist nichts, erst
+//              1 Hunderter, dann 1 Zehner entbuendeln, 13 − 8 = 5 ·
+//              Z 9 − 2 = 7 · H 4 − 1 = 3  ->  E  ->  375
+// Material am Ende = Ergebnis (2 Platten, 7 Stangen, 4 Wuerfel bei 274) –
+// die Anzahlzeile zeigt dann dieselben Ziffern wie die Ergebniszeile.
+// Start: Aufgabe 432 − 158, noch keine Spalte gerechnet.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): in 432 − 158 die erste Stange,
+// die zerfaellt (Einerspalte) – Lichtring um die Stange; wenn ihre zehn Wuerfel
+// angekommen sind, ein zweiter Ring an der kleinen 1 im Blatt. Das widerlegt
+// „326 stimmt“ (kleiner von groesser) und „2 − 8 geht nicht“ zugleich: Die
+// 2 bleibt oben, und es geht doch, weil eine Stange zu zehn Einern wird.
+// Bei jedem Durchgang durch 432 − 158; ist die Aufgabe fertig, leuchtet die
+// Ergebniszeile kurz nach.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): die Merksatzwoerter
+// „links“ und „minus“ (als Wort), „oben minus unten“ – und ueberhaupt keine
+// Regel: Die Seite benennt sie erst im Merksatz. Das Rechenzeichen „−“ ist
+// erlaubt. Keine Namen, keine Punkte, keine Zeit, kein „falsch“.
+// Deterministisch, ohne Zufall: jede Zahl im Bild und in den Statuszeilen
+// kommt aus _m5jRechne().
+// ════════════════════════════════════════════════════════════════════════
+let _m5j = null;
+const _m5jAUFGABEN = {
+  '432-158': [432, 158], '563-241': [563, 241], '745-382': [745, 382], '503-128': [503, 128]
+};
+const _m5jREIHE = ['432-158', '563-241', '745-382', '503-128'];
+const _m5jSP = ['H', 'Z', 'E'];                          // Spalten im Bild
+const _m5jWORT = { H: 'Hunderter', Z: 'Zehner', E: 'Einer' };
+const _m5jDATIV = { H: 'Hundertern', Z: 'Zehnern' };
+const _m5jVOR = { E: 'Z', Z: 'H' };                      // woher eine Spalte entbuendelt
+const _m5jK = {
+  // Rechenblatt
+  PX0: 6, PX1: 186, PY0: 6, PY1: 244,
+  GX: 12, GY: 8, C: 28,                                  // Karogitter
+  SPX: { V: 40, H: 68, Z: 96, E: 124 },                  // linke Kanten (V = Rechenzeichen)
+  YN: 36, YO: 64, YU: 92, YE: 120,                       // Notiz, oben, unten, Ergebnis
+  BL: 160,                                               // Oberkante der Sprechblase
+  // Material
+  MX0: 194, MX1: 414, MY0: 6, MY1: 244,
+  FELD: { H: [194, 268], Z: [268, 348], E: [348, 414] },
+  YF0: 44, YT: 198,                                      // Feldflaeche ab, Anzahlzeile ab
+  // Zeiten in s
+  T_ZEIGEN: 0.5, T_REICHT: 0.7, T_NICHTS: 0.8, T_ZERFALL: 0.55, T_WANDERN: 0.75,
+  T_WEG: 0.8, T_SCHREIBEN: 0.45, T_PAUSE: 0.35
+};
+const _m5jFARBE = {
+  H: { grund: '#fef2f2', fuell: '#fca5a5', linie: 'rgba(185,28,28,0.35)', rand: '#b91c1c' },
+  Z: { grund: '#eff6ff', fuell: '#93c5fd', linie: 'rgba(29,78,216,0.45)', rand: '#1d4ed8' },
+  E: { grund: '#f0fdf4', fuell: '#86efac', licht: '#dcfce7', rand: '#15803d' }
+};
+const _m5jNOTIZ = '#c2410c';           // Notizen im Blatt: Strich, kleine Ziffer, kleine 1
+const _m5jERG = '#0f766e';             // Ergebnisziffern
+
+// ── Rechnen ─────────────────────────────────────────────────────────────
+function _m5jFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+function _m5jStellen(n) {
+  return { H: Math.floor(n / 100) % 10, Z: Math.floor(n / 10) % 10, E: n % 10 };
+}
+// Der ganze Rechenweg einer Aufgabe, Spalte fuer Spalte von den Einern aus.
+function _m5jRechne(oben, unten) {
+  const a = _m5jStellen(oben), b = _m5jStellen(unten);
+  const cur = { H: a.H, Z: a.Z, E: a.E };
+  const spalten = [];
+  for (const c of ['E', 'Z', 'H']) {
+    const s = { c, oben: cur[c], unten: b[c], reicht: cur[c] >= b[c], nichts: null, schritte: [] };
+    if (!s.reicht && _m5jVOR[c]) {
+      const g = _m5jVOR[c];
+      if (cur[g] === 0 && _m5jVOR[g]) {                  // ueber eine leere Spalte
+        const gg = _m5jVOR[g];
+        s.nichts = g;
+        s.schritte.push({ von: gg, nach: g }); cur[gg] -= 1; cur[g] += 10;
+      }
+      s.schritte.push({ von: g, nach: c }); cur[g] -= 1; cur[c] += 10;
+    }
+    s.neu = cur[c];                                      // nach dem Entbuendeln
+    cur[c] -= s.unten;
+    s.ziffer = cur[c];
+    s.texte = _m5jTexte(s);
+    spalten.push(s);
+  }
+  const ergebnis = oben - unten;
+  const nicht = spalten.filter(s => !s.reicht).map(s => s.c);
+  const reicht = nicht.length === 0 ? 'nirgends'
+    : nicht.length === 1 ? nicht[0]
+    : nicht.slice(0, -1).join(', ') + ' und ' + nicht[nicht.length - 1];
+  return { a, b, spalten, ergebnis, reicht, oben, unten };
+}
+// Die Statuszeile einer Spalte in ihren Teilen – sie waechst mit der Bewegung.
+function _m5jTexte(s) {
+  const kopf = _m5jWORT[s.c] + ': ' + s.oben + ' − ' + s.unten;
+  if (s.reicht) return { kopf, rn: '', nichts: '', ent: '', ende: kopf + ' = ' + s.ziffer + ', schreibe ' + s.ziffer };
+  const rn = kopf + ' reicht nicht.';
+  const nichts = s.nichts ? ' Bei den ' + _m5jDATIV[s.nichts] + ' ist nichts.' : '';
+  const ent = s.schritte.length === 1
+    ? ' 1 ' + _m5jWORT[s.schritte[0].von] + ' entbündeln:'
+    : ' Erst 1 ' + _m5jWORT[s.schritte[0].von] + ', dann 1 ' + _m5jWORT[s.schritte[1].von] + ' entbündeln:';
+  return { kopf, rn, nichts, ent,
+           ende: rn + nichts + ent + ' ' + s.neu + ' − ' + s.unten + ' = ' + s.ziffer + ', schreibe ' + s.ziffer };
+}
+
+// ── Material: Plaetze in den Feldern ────────────────────────────────────
+function _m5jPlatz(art, i) {
+  if (art === 'E') {                       // Fuenferreihen, nach zehn eine Luecke
+    const c = i % 5, r = Math.floor(i / 5);
+    return { x: 352 + c * 12, y: 50 + r * 12 + (r >= 2 ? 6 : 0), w: 10, h: 10 };
+  }
+  if (art === 'Z') {                       // zehn Stangen je Reihe, 5 + 5
+    const k = i % 10, r = Math.floor(i / 10);
+    return { x: 271 + k * 7 + (k >= 5 ? 4 : 0), y: 50 + r * 60, w: 6, h: 52 };
+  }
+  const c = Math.floor(i / 5), r = i % 5;  // H: Fuenfersaeulen
+  return { x: 205 + c * 30, y: 48 + r * 28, w: 24, h: 24 };
+}
+function _m5jStueck(art, i, verz) {
+  const p = _m5jPlatz(art, i);
+  return { art, x: p.x, y: p.y - 26, w: p.w, h: p.h, tx: p.x, ty: p.y, tw: p.w, th: p.h,
+           a: 0, verz: verz || 0 };
+}
+
+// ── Zustand ─────────────────────────────────────────────────────────────
+function _m5jInit() {
+  _m5j = { key: null, r: null, k: 0, fertig: false, alles: false, job: null, pause: 0,
+           feld: { H: [], Z: [], E: [] }, n: { H: 0, Z: 0, E: 0 }, weg: [], teile: null,
+           papier: null, erg: { H: null, Z: null, E: null }, papierT: 0,
+           band: null, band2: null, blase: null, puls: null, spalteText: '',
+           wackel: { H: 0, Z: 0, E: 0 }, glanz: { H: 0, Z: 0, E: 0 }, fertigGlanz: 0,
+           t: 0, fx: { teile: [] } };
+  _m5jSetze('432-158');
+}
+function _m5jSetze(key) {
+  const z = _m5j, [oben, unten] = _m5jAUFGABEN[key];
+  // altes Material faellt weg
+  for (const c of _m5jSP) { for (const p of z.feld[c]) { p.modus = 'fall'; z.weg.push(p); } z.feld[c] = []; }
+  if (z.teile) { for (const p of z.teile.liste) { p.modus = 'fall'; p.a = 1; z.weg.push(p); } }
+  z.key = key; z.r = _m5jRechne(oben, unten);
+  z.k = 0; z.fertig = false; z.alles = false; z.job = null; z.pause = 0; z.teile = null;
+  z.band = null; z.band2 = null; z.blase = null; z.puls = null; z.fertigGlanz = 0;
+  z.spalteText = 'Noch keine Spalte gerechnet.';
+  z.erg = { H: null, Z: null, E: null };
+  z.papier = {};
+  for (const c of _m5jSP)
+    z.papier[c] = { gross: z.r.a[c], weg: null, eins: null, klein: null, kleinT: null, kleinEins: null };
+  z.papierT = 0;
+  let j = 0;
+  for (const c of _m5jSP) {
+    z.n[c] = z.r.a[c];
+    for (let i = 0; i < z.r.a[c]; i++) z.feld[c].push(_m5jStueck(c, i, 0.12 + 0.03 * j++));
+    z.wackel[c] = 0; z.glanz[c] = 0;
+  }
+}
+
+function _m5jHTML() {
+  const marke = k => {
+    const [o, u] = _m5jAUFGABEN[k];
+    return `<button class="sim-btn" id="_m5j-b-${k}" onclick="_m5jAufgabe('${k}')">${o}&nbsp;−&nbsp;${u}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was ergibt 432&nbsp;−&nbsp;158 wirklich?</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf dem Rechenblatt steht die Aufgabe. Daneben liegt die obere Zahl als Material: Platten, Stangen und Würfel.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5j-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5jREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5j-weiter" onclick="_m5jWeiter()">nächste Spalte</button>
+          <button class="sim-btn" id="_m5j-alles" onclick="_m5jAlles()">alles rechnen</button>
+          <button class="sim-btn" onclick="_m5jNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5j-aufgabe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5j-spalte" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5j-reicht" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5j-ergebnis" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„nächste Spalte“ rechnet eine Spalte, von den Einern aus. Unten im Bild steht, wie viele Stücke in jedem Feld liegen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Aufgabe 432&nbsp;−&nbsp;158, noch keine Spalte gerechnet</p>
+  </div>`;
+}
+
+function _m5jStatus() {
+  if (!_m5j) return;
+  const z = _m5j, r = z.r;
+  const setze = (id, s) => { const e = document.getElementById(id); if (e) e.textContent = s; };
+  setze('_m5j-aufgabe', 'Aufgabe: ' + _m5jFmt(r.oben) + ' − ' + _m5jFmt(r.unten) + ' (schriftlich)');
+  setze('_m5j-spalte', z.spalteText);
+  setze('_m5j-reicht', 'Nicht gereicht hat es bei: ' + (z.fertig ? r.reicht : '…'));
+  setze('_m5j-ergebnis', 'Ergebnis der Aufgabe: ' + (z.fertig ? _m5jFmt(r.ergebnis) : '…'));
+  for (const k of _m5jREIHE) {
+    const b = document.getElementById('_m5j-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.key);
+  }
+  const laeuft = !!(z.job || z.pause > 0);
+  for (const id of ['_m5j-weiter', '_m5j-alles']) {
+    const b = document.getElementById(id);
+    if (!b) continue;
+    const aus = z.fertig || laeuft;
+    b.disabled = aus;
+    if (b.style) b.style.opacity = aus ? '0.45' : '';
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5jAufgabe(key) {
+  if (!_m5j || !_m5jAUFGABEN[key]) return;
+  _m5jSetze(key);
+  _m5jStatus();
+}
+function _m5jNeu() {
+  if (!_m5j) return;
+  _m5jSetze('432-158');
+  _m5jStatus();
+}
+function _m5jWeiter() {
+  const z = _m5j;
+  if (!z || z.job || z.pause > 0 || z.fertig) return;
+  _m5jStarte();
+  _m5jStatus();
+}
+function _m5jAlles() {
+  const z = _m5j;
+  if (!z || z.fertig) return;
+  z.alles = true;
+  if (!z.job && !(z.pause > 0)) _m5jStarte();
+  _m5jStatus();
+}
+// Drehbuch einer Spalte: eine Liste von Phasen, jede mit Dauer.
+function _m5jStarte() {
+  const z = _m5j, K = _m5jK, s = z.r.spalten[z.k];
+  const ph = [{ art: 'zeigen', dauer: K.T_ZEIGEN }];
+  if (!s.reicht) ph.push({ art: 'reichtnicht', dauer: K.T_REICHT });
+  if (s.nichts) ph.push({ art: 'nichts', dauer: K.T_NICHTS });
+  s.schritte.forEach((st, i) => {
+    ph.push({ art: 'zerfallen', dauer: K.T_ZERFALL, st, nr: i });
+    ph.push({ art: 'wandern', dauer: K.T_WANDERN, st, nr: i, letzter: i === s.schritte.length - 1 });
+  });
+  ph.push({ art: 'wegnehmen', dauer: K.T_WEG });
+  ph.push({ art: 'schreiben', dauer: K.T_SCHREIBEN });
+  z.job = { s, phasen: ph, i: 0, t: 0, begonnen: false };
+}
+function _m5jBlase(text, c) { _m5j.blase = { text, c, t: 0 }; }
+function _m5jMitte(p) { return { x: p.x + p.w / 2, y: p.y + p.h / 2 }; }
+
+// Beginn einer Phase
+function _m5jBeginn(ph, s) {
+  const z = _m5j, T = s.texte;
+  if (ph.art === 'zeigen') {
+    z.band = { c: s.c, t: 0 }; z.band2 = null; z.puls = null;
+    _m5jBlase(s.oben + ' − ' + s.unten, s.c);
+    z.spalteText = T.kopf + ' …';
+  } else if (ph.art === 'reichtnicht') {
+    _m5jBlase(s.oben + ' − ' + s.unten + ' reicht nicht', s.c);
+    z.wackel[s.c] = 0.6;
+    z.spalteText = T.rn + ' …';
+  } else if (ph.art === 'nichts') {
+    _m5jBlase('Bei den ' + _m5jDATIV[s.nichts] + ' ist nichts', s.c);
+    z.band2 = { c: s.nichts, t: 0 }; z.puls = s.nichts;
+    z.spalteText = T.rn + T.nichts + ' …';
+  } else if (ph.art === 'zerfallen') {
+    const g = ph.st.von, p = z.feld[g].pop();
+    z.band2 = { c: g, t: 0 }; z.puls = null;
+    _m5jBlase('1 ' + _m5jWORT[g] + ' entbündeln', s.c);
+    z.papier[g].weg = 0;                                   // die Ziffer wird durchgestrichen
+    const liste = [];
+    for (let i = 0; i < 10; i++) {
+      let a, b;
+      if (g === 'Z') {                                     // Stange -> zehn Wuerfelchen
+        a = { x: p.x, y: p.y + i * p.h / 10, w: p.w, h: p.h / 10 };
+        b = { x: p.x, y: p.y + p.h / 2 - 31 + i * 6.6, w: 6, h: 5.5 };
+      } else {                                             // Platte -> zehn Streifen
+        a = { x: p.x + i * p.w / 10, y: p.y, w: p.w / 10, h: p.h };
+        b = { x: p.x - 7 + i * 3.8, y: p.y - 4, w: 2.4, h: p.h + 8 };
+      }
+      liste.push({ art: g, teil: true, x: a.x, y: a.y, w: a.w, h: a.h, a: 1, s0: a, s1: b, s2: null });
+    }
+    z.teile = { liste, von: g, nach: ph.st.nach };
+    z.glanz[g] = 0.9;
+    if (z.key === '432-158' && s.c === 'E' && ph.nr === 0) {
+      const m = _m5jMitte(p);                              // Aha: die erste Stange zerfaellt
+      _bioFxWelle(z.fx.teile, m.x, m.y, '#f59e0b', 44);
+    }
+  } else if (ph.art === 'wandern') {
+    const tl = z.teile, basis = z.feld[tl.nach].length;
+    tl.blitz = 0.3;
+    tl.liste.forEach((p, i) => {
+      p.art = tl.nach; p.teil = false;
+      p.s1 = { x: p.x, y: p.y, w: p.w, h: p.h };
+      p.s2 = _m5jPlatz(tl.nach, basis + i);
+    });
+  } else if (ph.art === 'wegnehmen') {
+    _m5jBlase(s.neu + ' − ' + s.unten, s.c);
+    z.band2 = null;
+    const f = z.feld[s.c], los = f.splice(f.length - s.unten, s.unten);
+    los.forEach((p, i) => { p.modus = 'hoch'; p.verz = 0.04 * i; p.a = 1; z.weg.push(p); });
+  } else if (ph.art === 'schreiben') {
+    _m5jBlase(s.neu + ' − ' + s.unten + ' = ' + s.ziffer, s.c);
+    z.erg[s.c] = { ziffer: s.ziffer, t: 0 };
+    z.spalteText = T.ende;
+  }
+  _m5jStatus();
+}
+// Ende einer Phase
+function _m5jEnde(ph, s) {
+  const z = _m5j;
+  if (ph.art === 'zerfallen') {
+    const g = ph.st.von, P = z.papier[g];
+    z.n[g] -= 1;
+    const wert = P.klein !== null ? (P.kleinEins !== null ? 10 : 0) + P.klein
+               : (P.eins !== null ? 10 : 0) + P.gross;
+    P.klein = wert - 1; P.kleinT = 0; P.kleinEins = null;
+  } else if (ph.art === 'wandern') {
+    const tl = z.teile, P = z.papier[tl.nach];
+    for (const p of tl.liste) {
+      const q = p.s2;
+      z.feld[tl.nach].push({ art: tl.nach, x: q.x, y: q.y, w: q.w, h: q.h,
+                             tx: q.x, ty: q.y, tw: q.w, th: q.h, a: 1, verz: 0 });
+    }
+    z.teile = null;
+    z.n[tl.nach] += 10;
+    z.glanz[tl.nach] = 0.9;
+    if (P.klein !== null) P.kleinEins = 0; else P.eins = 0;   // die kleine 1 davor
+    if (z.key === '432-158' && s.c === 'E' && ph.nr === 0) {
+      const x = _m5jK.SPX.E + 7, y = _m5jK.YO + 9;          // Aha, zweiter Ring: im Blatt
+      _bioFxWelle(z.fx.teile, x, y, '#f59e0b', 24);
+    }
+    if (ph.letzter) z.spalteText = s.texte.rn + s.texte.nichts + s.texte.ent + ' …';
+  } else if (ph.art === 'wegnehmen') {
+    z.n[s.c] -= s.unten;
+  }
+  _m5jStatus();
+}
+// Eine Spalte ist fertig.
+function _m5jSpalteFertig() {
+  const z = _m5j;
+  z.job = null;
+  z.k += 1;
+  if (z.k >= z.r.spalten.length) {
+    z.fertig = true; z.alles = false;
+    z.band = null; z.band2 = null;
+    z.fertigGlanz = 2.0;
+  } else if (z.alles) {
+    z.pause = _m5jK.T_PAUSE;
+  }
+  _m5jStatus();
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5jUpdate(dt) {
+  if (!_m5j) return;
+  dt = _bioFxDt(dt);
+  const z = _m5j, K = _m5jK;
+  z.t += dt;
+  z.papierT += dt;
+  const k = 1 - Math.exp(-dt * 11);
+  for (const c of _m5jSP) {
+    for (const p of z.feld[c]) {
+      if (p.verz > 0) { p.verz -= dt; continue; }
+      p.x += (p.tx - p.x) * k; p.y += (p.ty - p.y) * k;
+      p.w += (p.tw - p.w) * k; p.h += (p.th - p.h) * k;
+      p.a += (1 - p.a) * k;
+      if (Math.abs(p.tx - p.x) + Math.abs(p.ty - p.y) < 0.05 && p.a > 0.995) {
+        p.x = p.tx; p.y = p.ty; p.w = p.tw; p.h = p.th; p.a = 1;
+      }
+    }
+    z.wackel[c] = Math.max(0, z.wackel[c] - dt);
+    z.glanz[c] = Math.max(0, z.glanz[c] - dt);
+    const P = z.papier[c];
+    if (P.weg !== null) P.weg += dt;
+    if (P.eins !== null) P.eins += dt;
+    if (P.kleinT !== null) P.kleinT += dt;
+    if (P.kleinEins !== null) P.kleinEins += dt;
+    if (z.erg[c]) z.erg[c].t += dt;
+  }
+  for (let i = z.weg.length - 1; i >= 0; i--) {
+    const p = z.weg[i];
+    if (p.modus === 'hoch') {
+      if (p.verz > 0) { p.verz -= dt; continue; }
+      p.a -= dt / 0.6; p.y -= 30 * dt;
+    } else {
+      p.a -= dt / 0.25; p.y += 40 * dt;
+    }
+    if (p.a <= 0) z.weg.splice(i, 1);
+  }
+  if (z.band) z.band.t += dt;
+  if (z.band2) z.band2.t += dt;
+  if (z.blase) z.blase.t += dt;
+  if (z.fertigGlanz > 0) z.fertigGlanz = Math.max(0, z.fertigGlanz - dt);
+  // Drehbuch der laufenden Spalte
+  const j = z.job;
+  if (j) {
+    let ph = j.phasen[j.i];
+    if (!j.begonnen) { j.begonnen = true; _m5jBeginn(ph, j.s); }
+    j.t += dt;
+    const u = Math.min(1, j.t / ph.dauer);
+    if (z.teile && (ph.art === 'zerfallen' || ph.art === 'wandern')) {
+      const e = _bioFxEase.sanft(u);
+      for (const p of z.teile.liste) {
+        const a = ph.art === 'zerfallen' ? p.s0 : p.s1, b = ph.art === 'zerfallen' ? p.s1 : p.s2;
+        p.x = a.x + (b.x - a.x) * e; p.y = a.y + (b.y - a.y) * e;
+        p.w = a.w + (b.w - a.w) * e; p.h = a.h + (b.h - a.h) * e;
+      }
+      if (z.teile.blitz > 0) z.teile.blitz = Math.max(0, z.teile.blitz - dt);
+    }
+    if (j.t >= ph.dauer) {
+      _m5jEnde(ph, j.s);
+      j.i += 1; j.t = 0; j.begonnen = false;
+      if (j.i >= j.phasen.length) _m5jSpalteFertig();
+    }
+  } else if (z.pause > 0) {
+    z.pause -= dt;
+    if (z.pause <= 0) { z.pause = 0; if (!z.fertig) _m5jStarte(); _m5jStatus(); }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5jText(ctx, s, x, y, groesse, farbe, gew, ausr) {
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _m5jMitteX(c) { return _m5jK.SPX[c] + _m5jK.C / 2; }
+function _m5jEin(t, d) { return t === null || t === undefined ? 0 : Math.min(1, t / (d || 0.35)); }
+
+function _m5jPapier(ctx) {
+  const z = _m5j, K = _m5jK, C = K.C;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 8); ctx.fill();
+  // Karos
+  ctx.strokeStyle = '#d7e3f1'; ctx.lineWidth = 1;
+  for (let x = K.GX; x <= K.PX1 - 4; x += C) { ctx.beginPath(); ctx.moveTo(x, K.PY0 + 2); ctx.lineTo(x, K.PY1 - 2); ctx.stroke(); }
+  for (let y = K.GY; y <= K.PY1 - 4; y += C) { ctx.beginPath(); ctx.moveTo(K.PX0 + 2, y); ctx.lineTo(K.PX1 - 2, y); ctx.stroke(); }
+  // Baender: die Spalte, die dran ist (gelb), und die Nachbarspalte, aus der entbuendelt wird (orange)
+  const band = (b, farbe) => {
+    if (!b) return;
+    ctx.save(); ctx.globalAlpha = _m5jEin(b.t, 0.3);
+    ctx.fillStyle = farbe;
+    _bioFxRundRect(ctx, K.SPX[b.c] + 1.5, K.YN + 1, C - 3, K.YE + C - K.YN - 2, 5); ctx.fill();
+    ctx.restore();
+  };
+  band(z.band, 'rgba(253,224,71,0.45)');
+  band(z.band2, 'rgba(251,146,60,0.30)');
+  // Spaltenkoepfe
+  for (const c of _m5jSP) _m5jText(ctx, c, _m5jMitteX(c), K.GY + 19, 14, _m5jFARBE[c].rand);
+  const vis = Math.min(1, z.papierT / 0.35), vis2 = Math.min(1, Math.max(0, z.papierT - 0.15) / 0.35);
+  ctx.save(); ctx.globalAlpha = vis;
+  // obere Zahl mit Notizen
+  for (const c of _m5jSP) {
+    const P = z.papier[c], cx = _m5jMitteX(c), y0 = K.YO + 21;
+    const ein = P.eins !== null, dx = ein ? 3 : 0;
+    _m5jText(ctx, String(P.gross), cx + dx, y0, 22, '#1f2937');
+    if (ein) {                                              // kleine 1 vor der Ziffer
+      const e = _m5jEin(P.eins, 0.3);
+      ctx.save(); ctx.globalAlpha = vis * e;
+      _m5jText(ctx, '1', K.SPX[c] + 6, K.YO + 12, 13, _m5jNOTIZ);
+      ctx.restore();
+    }
+    if (P.weg !== null) {                                   // durchstreichen (waechst)
+      const e = _m5jEin(P.weg, 0.4);
+      const xa = cx - 9 - (ein ? 9 : 0) + dx, ya = y0 + 1, xb = cx + 9 + dx, yb = y0 - 17;
+      ctx.strokeStyle = _m5jNOTIZ; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(xa, ya); ctx.lineTo(xa + (xb - xa) * e, ya + (yb - ya) * e); ctx.stroke();
+    }
+    if (P.klein !== null) {                                 // kleine Ziffer darueber
+      const e = _m5jEin(P.kleinT, 0.35);
+      ctx.save(); ctx.globalAlpha = vis * e;
+      _m5jText(ctx, String(P.klein), cx + 3, K.YN + 22 - (1 - e) * 4, 15, _m5jNOTIZ);
+      if (P.kleinEins !== null) {
+        ctx.globalAlpha = vis * _m5jEin(P.kleinEins, 0.3);
+        _m5jText(ctx, '1', cx - 5, K.YN + 22, 15, _m5jNOTIZ);
+      }
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+  // untere Zahl mit Rechenzeichen, Strich
+  ctx.save(); ctx.globalAlpha = vis2;
+  _m5jText(ctx, '−', _m5jMitteX('V'), K.YU + 21, 22, '#1f2937');
+  for (const c of _m5jSP) _m5jText(ctx, String(z.r.b[c]), _m5jMitteX(c), K.YU + 21, 22, '#1f2937');
+  ctx.strokeStyle = '#1f2937'; ctx.lineWidth = 2.5; ctx.lineCap = 'butt';
+  ctx.beginPath(); ctx.moveTo(K.SPX.V + 4, K.YE + 1); ctx.lineTo(K.SPX.E + C - 2, K.YE + 1); ctx.stroke();
+  ctx.restore();
+  // Ergebniszeile
+  if (z.fertigGlanz > 0) {                                  // die fertige Zeile leuchtet kurz nach
+    const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+    ctx.save(); ctx.globalAlpha = Math.min(1, z.fertigGlanz / 0.8) * (0.6 + 0.4 * puls);
+    ctx.fillStyle = 'rgba(253,230,138,0.55)'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, K.SPX.H + 1, K.YE + 3, 3 * C - 2, C - 4, 6); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  for (const c of _m5jSP) {
+    const e = z.erg[c];
+    if (!e) continue;
+    const u = _m5jEin(e.t, 0.35), sc = 0.6 + 0.4 * _bioFxEase.federn(u);
+    ctx.save(); ctx.globalAlpha = Math.min(1, u * 1.5);
+    ctx.translate(_m5jMitteX(c), K.YE + 14); ctx.scale(sc, sc);
+    _m5jText(ctx, String(e.ziffer), 0, 8, 22, _m5jERG);
+    ctx.restore();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 8); ctx.stroke();
+}
+
+// Sprechblase unter dem Blatt, zeigt auf die Spalte (Text bricht um).
+function _m5jSprechblase(ctx) {
+  const z = _m5j, K = _m5jK, b = z.blase;
+  if (!b) return;
+  ctx.save();
+  ctx.font = '700 15px sans-serif';
+  const max = K.PX1 - K.PX0 - 26, woerter = b.text.split(' '), zeilen = [];
+  let zl = '';
+  for (const w of woerter) {
+    const neu = zl ? zl + ' ' + w : w;
+    if (ctx.measureText(neu).width > max && zl) { zeilen.push(zl); zl = w; } else zl = neu;
+  }
+  if (zl) zeilen.push(zl);
+  const bw = Math.max(...zeilen.map(s => ctx.measureText(s).width)) + 20, bh = zeilen.length * 19 + 12;
+  const px = _m5jMitteX(b.c);
+  const cx = Math.max(K.PX0 + bw / 2 + 5, Math.min(K.PX1 - bw / 2 - 5, px));
+  const top = K.BL, e = _bioFxEase.raus(_m5jEin(b.t, 0.25));
+  ctx.globalAlpha = e;
+  ctx.translate(0, (1 - e) * 6);
+  ctx.fillStyle = '#fffbeb'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, cx - bw / 2, top, bw, bh, 9); ctx.fill(); ctx.stroke();
+  ctx.beginPath();                                          // Zipfel zur Spalte
+  ctx.moveTo(px - 7, top + 1); ctx.lineTo(px, top - 9); ctx.lineTo(px + 7, top + 1); ctx.closePath();
+  ctx.fill();
+  ctx.beginPath(); ctx.moveTo(px - 7, top); ctx.lineTo(px, top - 9); ctx.lineTo(px + 7, top); ctx.stroke();
+  zeilen.forEach((s, i) => _m5jText(ctx, s, cx, top + 21 + i * 19, 15, '#1f2937'));
+  ctx.restore();
+}
+
+function _m5jEiner(ctx, x, y, w, h) {
+  const F = _m5jFARBE.E;
+  ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x, y, w, h, Math.min(2.5, w / 4, h / 4)); ctx.fill(); ctx.stroke();
+  if (w > 7 && h > 7) {
+    ctx.strokeStyle = F.licht; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x + 2.5, y + h - 3); ctx.lineTo(x + 2.5, y + 2.5); ctx.lineTo(x + w - 3, y + 2.5); ctx.stroke();
+  }
+}
+function _m5jStange(ctx, x, y, w, h) {
+  const F = _m5jFARBE.Z;
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = 0.8;
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    ctx.beginPath(); ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = 1.8;                     // Fuenfermarke
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+}
+function _m5jPlatte(ctx, x, y, w, h) {
+  const F = _m5jFARBE.H;
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = 0.5;
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    ctx.beginPath(); ctx.moveTo(x + w * k / 10, y); ctx.lineTo(x + w * k / 10, y + h); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = 1;                       // Fuenferlinien
+  ctx.beginPath(); ctx.moveTo(x + w / 2, y); ctx.lineTo(x + w / 2, y + h); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.strokeRect(x, y, w, h);
+}
+// Ein Teilstueck beim Zerfallen: ein Wuerfel der Stange bzw. ein Streifen der Platte.
+function _m5jTeilstueck(ctx, p) {
+  const F = _m5jFARBE[p.art];
+  ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 0.9;
+  ctx.fillRect(p.x, p.y, p.w, p.h); ctx.strokeRect(p.x, p.y, p.w, p.h);
+}
+function _m5jZeichneStueck(ctx, p, dx) {
+  const al = Math.max(0, Math.min(1, p.a));
+  if (al <= 0.01) return;
+  ctx.save(); ctx.globalAlpha = al;
+  const x = p.x + (dx || 0);
+  if (p.teil) _m5jTeilstueck(ctx, Object.assign({}, p, { x }));
+  else if (p.art === 'E') _m5jEiner(ctx, x, p.y, p.w, p.h);
+  else if (p.art === 'Z') _m5jStange(ctx, x, p.y, p.w, p.h);
+  else _m5jPlatte(ctx, x, p.y, p.w, p.h);
+  ctx.restore();
+}
+
+function _m5jMaterial(ctx) {
+  const z = _m5j, K = _m5jK;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.MX0, K.MY0, K.MX1 - K.MX0, K.MY1 - K.MY0, 8); ctx.fill();
+  // Baender (dieselben Farben wie im Blatt)
+  const band = (b, farbe) => {
+    if (!b) return;
+    const [a, e] = K.FELD[b.c];
+    ctx.save(); ctx.globalAlpha = _m5jEin(b.t, 0.3); ctx.fillStyle = farbe;
+    _bioFxRundRect(ctx, a + 2, K.YF0 - 1, e - a - 4, K.MY1 - K.YF0 - 3, 6); ctx.fill();
+    ctx.restore();
+  };
+  band(z.band, 'rgba(253,224,71,0.40)');
+  band(z.band2, 'rgba(251,146,60,0.26)');
+  // Koepfe
+  for (const c of _m5jSP) {
+    const [a, b] = K.FELD[c], cx = (a + b) / 2, F = _m5jFARBE[c];
+    ctx.fillStyle = F.grund;
+    _bioFxRundRect(ctx, a + 4, K.MY0 + 4, b - a - 8, 34, 7); ctx.fill();
+    _m5jText(ctx, c, cx, 25, 17, F.rand);
+    _m5jText(ctx, _m5jWORT[c], cx, 38, 11, '#334155', '400');
+  }
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  for (const c of ['Z', 'E']) {
+    const x = K.FELD[c][0];
+    ctx.beginPath(); ctx.moveTo(x, K.MY0 + 2); ctx.lineTo(x, K.MY1 - 2); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(K.MX0, K.YT - 2); ctx.lineTo(K.MX1, K.YT - 2); ctx.stroke();
+  // ein leeres Feld, aus dem nichts zu holen ist, pulsiert
+  if (z.puls) {
+    const [a, b] = K.FELD[z.puls], puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 1.2);
+    ctx.save(); ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2;
+    if (ctx.setLineDash) ctx.setLineDash([6, 4]);
+    ctx.globalAlpha = 0.45 + 0.4 * puls;
+    _bioFxRundRect(ctx, a + 7, K.YF0 + 4, b - a - 14, K.YT - K.YF0 - 12, 6); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    ctx.restore();
+  }
+  // Material
+  for (const c of _m5jSP) {
+    const wk = z.wackel[c], dx = wk > 0 ? Math.sin(wk * 40) * 2.5 * (wk / 0.6) : 0;
+    for (const p of z.feld[c]) _m5jZeichneStueck(ctx, p, dx);
+  }
+  for (const p of z.weg) _m5jZeichneStueck(ctx, p);
+  if (z.teile) {
+    for (const p of z.teile.liste) _m5jZeichneStueck(ctx, p);
+    if (z.teile.blitz > 0) {
+      ctx.save(); ctx.globalAlpha = 0.7 * z.teile.blitz / 0.3; ctx.fillStyle = '#ffffff';
+      for (const p of z.teile.liste) ctx.fillRect(p.x - 1, p.y - 1, p.w + 2, p.h + 2);
+      ctx.restore();
+    }
+  }
+  // Anzahlzeile: wie viele Stuecke liegen im Feld (ab 10 orange)
+  const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+  for (const c of _m5jSP) {
+    const [a, b] = K.FELD[c], n = z.n[c];
+    const x = a + 6, y = K.YT + 3, w = b - a - 12, h = K.MY1 - K.YT - 8, viel = n >= 10;
+    ctx.fillStyle = viel ? '#fed7aa' : '#f8fafc';
+    ctx.strokeStyle = viel ? '#ea580c' : '#cbd5e1';
+    ctx.lineWidth = viel ? 2 + puls : 1;
+    _bioFxRundRect(ctx, x, y, w, h, 7); ctx.fill(); ctx.stroke();
+    const gl = Math.min(1, z.glanz[c] / 0.5);
+    if (gl > 0.01) {
+      ctx.save(); ctx.globalAlpha = gl; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+      _bioFxRundRect(ctx, x - 2, y - 2, w + 4, h + 4, 9); ctx.stroke(); ctx.restore();
+    }
+    _m5jText(ctx, String(n), (a + b) / 2, y + h / 2 + 8, 22, '#1f2937');
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.MX0, K.MY0, K.MX1 - K.MX0, K.MY1 - K.MY0, 8); ctx.stroke();
+}
+
+function _m5jDraw(ctx, cv) {
+  if (!_m5j) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5jPapier(ctx);
+  _m5jMaterial(ctx);
+  _m5jSprechblase(ctx);
+  _bioFxDraw(ctx, _m5j.fx.teile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mp5 „Stimmt das Ergebnis ungefähr?“ (Kennung m5-ueberschlag)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL2_PROFIL.md, Abschnitt m5-ueberschlag.
+//
+// Ueberschrift: NICHT die Frage der Einheit („Kann 4 105 stimmen?“). Sie
+// enthaelt „stimmen“, und „stimmt“ steht in nicht_am_bildschirm (Kapitel-2-
+// Regel 3). Neutral: „Wie weit liegt das Ergebnis vom Überschlag entfernt?“
+//
+// Was man sieht (von oben nach unten, alles auf EINER Leinwand 420 x 250):
+// 1. Der Zettel: ein Stueck Karopapier mit der Aufgabe und dem Ergebnis, das
+//    dort jemand hingeschrieben hat, z. B. „398 + 207 = 4 105“. Das Ergebnis
+//    steht ORANGE – in der Farbe seines Faehnchens am grossen Zahlenstrahl.
+//    Bei jeder Wahl faellt der Zettel von oben herein (0,5 s), und das
+//    Ergebnis fliegt als oranges Faehnchen auf seinen Platz am Strahl (0,6 s).
+// 2. Zwei kleine Zahlenstrahlen, einer je Zahl der Aufgabe, dazwischen das
+//    Rechenzeichen. Jeder reicht von der glatten Zahl unter der Zahl bis zur
+//    glatten Zahl ueber ihr, gebildet an der ERSTEN Stelle der Zahl (398: 300
+//    bis 400 · 98: 90 bis 100 · 1 985: 1 000 bis 2 000); Striche alle zehntel,
+//    der Strich in der Haelfte gestrichelt und ohne Zahl, beschriftet sind nur
+//    die beiden Enden. Die Zahl ist eine goldene Kugel mit Faehnchen.
+// 3. Die Zeile fuer den Ueberschlag: anfangs ein leerer, gestrichelter Rahmen.
+// 4. Der grosse Zahlenstrahl 0 bis 7 000, Striche alle 1 000 mit Zahl, darunter
+//    klein „Striche alle 1 000“. Das Zettel-Ergebnis steht dort als oranges
+//    Faehnchen mit Raute auf dem Strahl.
+//
+// „Überschlag rechnen“ (_m5kRechnen) – vier Bewegungen hintereinander, 1,8 s:
+//   rollen   0,65 s  beide Kugeln rollen zu der glatten Zahl, die naeher
+//                    liegt (bei gleichem Abstand zur oberen); das Faehnchen
+//                    zeigt danach diese Zahl in Blau, das Ende des kleinen
+//                    Strahls bekommt einen goldenen Kasten und leuchtet nach
+//   zeile    0,40 s  die beiden blauen Zahlen fliegen aus den Faehnchen in die
+//                    Zeile, Rechenzeichen und „= 600“ blenden ein; erst jetzt
+//                    steht die Statuszeile „Überschlag: …“
+//   fallen   0,40 s  das Ergebnis des Ueberschlags faellt als blauer Punkt auf
+//                    den grossen Strahl und bekommt ein blaues Faehnchen
+//   klammer  0,35 s  eine violette Klammer waechst vom blauen Punkt zum
+//                    orangen Faehnchen; gestrichelte Linien fuehren von ihren
+//                    Enden zu beiden Punkten; der Abstand steht in der Klammer
+//                    und leuchtet 2,5 s ruhig nach (_m5kGlimmen, 0,8 Hz);
+//                    erst jetzt steht „Abstand zum Überschlag: …“
+// Waehrend der Bewegung ist „Überschlag rechnen“ gesperrt (der Handler kehrt
+// sofort zurueck, die Bewegung laeuft weiter – jede Knopffolge endet also im
+// selben Zustand). Ist alles fertig, spielt ein zweiter Druck dieselbe Bewegung
+// noch einmal ab und endet wieder gleich.
+//
+// Knoepfe (Bauplan, woertlich; Tausendertrenner U+00A0, Minus U+2212):
+//   Sprungmarken = Zeilen der Heft-Tabelle, _m5kZettel('a'|'b'|'c'|'d'):
+//     „398 + 207 = 4 105“ · „512 − 289 = 223“ · „1 985 + 3 020 = 5 005“ ·
+//     „703 − 98 = 6 050“
+//   „Überschlag rechnen“ (_m5kRechnen()) · „neu“ (_m5kNeu(): Zettel „398 + 207
+//   = 4 105“, ohne Ueberschlag, Aha-Gedaechtnis geloescht)
+// Eine Sprungmarke setzt den Zettel neu und loescht den Ueberschlag.
+//
+// Statuszeilen (woertlich; alle Endwerte mit mindestens 19 Zeichen, damit
+// simcheck/simfakten.js sie in den Faktendump nimmt):
+//   _m5k-zettel      „Auf dem Zettel: 398 + 207 = 4 105“ (sofort bei der Wahl)
+//   _m5k-ueberschlag „Überschlag: …“, nach „Überschlag rechnen“ (Ende der
+//                    Phase zeile, 1,05 s) „Überschlag: 400 + 200 = 600“
+//   _m5k-abstand     „Abstand zum Überschlag: …“, nach „Überschlag rechnen“
+//                    (Ende der Klammer, 1,8 s) „Abstand zum Überschlag: 3 505“
+//
+// Werte (jede Zahl auf ihre erste Stelle; nachgerechnet mit simcheck/werte.js):
+//   398 + 207 = 4 105     400 + 200 = 600        Abstand 3 505
+//   512 − 289 = 223       500 − 300 = 200        Abstand 23
+//   1 985 + 3 020 = 5 005 2 000 + 3 000 = 5 000  Abstand 5
+//   703 − 98 = 6 050      700 − 100 = 600        Abstand 5 450
+//   kleine Strahlen: 300–400 / 200–300 · 500–600 / 200–300 ·
+//                    1 000–2 000 / 3 000–4 000 · 700–800 / 90–100
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Steht die Klammer zum ersten
+// Mal in der Sitzung und ist der Abstand groesser als der halbe Ueberschlag
+// (4 105 gegen 600, 6 050 gegen 600 – nicht 223 gegen 200, nicht 5 005 gegen
+// 5 000), laeuft ein goldener Lichtring um die Klammer: 4 105 liegt weit weg
+// vom blauen Punkt. Das widerlegt „der Taschenrechner rechnet immer richtig“
+// und „ohne genaues Rechnen kann man das nicht sagen“. Einmal je Sitzung,
+// „neu“ setzt es zurueck.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „gerundet“, „runden“,
+// „nach“, „stimmt“, „falsch“ – auch nicht als Wortteil („danach“,
+// „Nachbarzahl“), und kein Satz, der sagt, ob das Zettel-Ergebnis passt. Das
+// entscheidet das Kind. Keine Namen, keine Punkte, keine Zeit.
+// Deterministisch, ohne Zufall: jede Zahl im Bild kommt aus _m5kRechnung().
+// ════════════════════════════════════════════════════════════════════════
+let _m5k = null;
+const _m5kAUFGABEN = {
+  a: { a: 398,  op: '+',      b: 207,  r: 4105 },
+  b: { a: 512,  op: '−', b: 289,  r: 223 },
+  c: { a: 1985, op: '+',      b: 3020, r: 5005 },
+  d: { a: 703,  op: '−', b: 98,   r: 6050 }
+};
+const _m5kREIHE = ['a', 'b', 'c', 'd'];
+const _m5kPHASEN = ['rollen', 'zeile', 'fallen', 'klammer'];
+const _m5kK = {
+  ZY: 3, ZH: 32,                           // Zettel: Oberkante, Hoehe
+  ML: [[32, 180], [240, 388]], MY: 80,     // kleine Strahlen: x von/bis, Hoehe
+  MOPX: 210,                               // Rechenzeichen dazwischen
+  RY: 110, RH: 22,                         // Zeile fuer den Ueberschlag
+  KY: 146,                                 // Klammer
+  OY: 159, BY: 181, FH: 18,                // Faehnchen orange / blau
+  X0: 30, X1: 390, LY: 212, MAX: 7000,     // grosser Strahl: 0 bei X0, 7 000 bei X1
+  R: 6.5,                                  // Kugelradius
+  T_ZETTEL: 0.5, T_FAHNE: 0.6,             // s: Zettel faellt herein, Faehnchen fliegt
+  DAUER: { rollen: 0.65, zeile: 0.4, fallen: 0.4, klammer: 0.35 },
+  LEUCHT: 2.5, GLANZ: 1.6,                 // s: Abstand leuchtet / Ende leuchtet
+  F_ORANGE: '#c2410c', F_ORANGE_GRUND: '#fff7ed',
+  F_BLAU: '#1d4ed8', F_BLAU_GRUND: '#eff6ff',
+  F_KLAMMER: '#6d28d9', F_STRAHL: '#1e293b', F_TEXT: '#1f2937', F_GRAU: '#475569'
+};
+
+// 4105 -> "4 105" mit geschuetztem Leerzeichen (im Heft steht ein normales)
+function _m5kFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+// Stellenwert der ersten Ziffer: 398 -> 100, 98 -> 10, 1 985 -> 1 000
+function _m5kStelle(n) {
+  let s = 1;
+  while (s * 10 <= n) s *= 10;
+  return s;
+}
+// Die glatten Zahlen an der ersten Stelle und die, zu der die Kugel rollt
+// (die naehere; bei gleichem Abstand die obere).
+function _m5kNachbar(n) {
+  const s = _m5kStelle(n), lo = Math.floor(n / s) * s, hi = lo + s;
+  return { s, lo, hi, ziel: (n - lo) < (hi - n) ? lo : hi };
+}
+// Alles, was am Bildschirm als Zahl steht, kommt von hier.
+function _m5kRechnung(k) {
+  const A = _m5kAUFGABEN[k], na = _m5kNachbar(A.a), nb = _m5kNachbar(A.b);
+  const u = A.op === '+' ? na.ziel + nb.ziel : na.ziel - nb.ziel;
+  return { A, na, nb, ga: na.ziel, gb: nb.ziel, u, abstand: Math.abs(A.r - u) };
+}
+function _m5kX(v) {
+  const K = _m5kK;
+  return K.X0 + v / K.MAX * (K.X1 - K.X0);
+}
+
+function _m5kInit() {
+  _m5k = { k: 'a', t: 0, ein: 0, phase: null, pt: 0, zeigeU: false, zeigeA: false,
+           glanz: 0, leucht: 0, aha: false, fx: { teile: [] } };
+}
+function _m5kHTML() {
+  const knopf = k => {
+    const A = _m5kAUFGABEN[k];
+    return `<button class="sim-btn" id="_m5k-b-${k}" onclick="_m5kZettel('${k}')">${_m5kFmt(A.a)} ${A.op} ${_m5kFmt(A.b)} = ${_m5kFmt(A.r)}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie weit liegt das Ergebnis vom Überschlag entfernt?</h3>
+    <div class="fpm-note" style="margin-top:2px">Oben liegt ein Zettel mit einer Aufgabe und ihrem Ergebnis. Das orange Fähnchen zeigt dieses Ergebnis am Zahlenstrahl.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5k-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5kREIHE.map(knopf).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5k-rechnen" onclick="_m5kRechnen()">Überschlag rechnen</button>
+          <button class="sim-btn" onclick="_m5kNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5k-zettel" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5k-ueberschlag" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5k-abstand" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„Überschlag rechnen“ lässt beide Zahlen zu einer glatten Zahl rollen. Der blaue Punkt zeigt den Überschlag, die Klammer den Abstand.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Zettel 398 + 207 = 4&nbsp;105, noch ohne Überschlag</p>
+  </div>`;
+}
+function _m5kZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5kLaeuft() {
+  return !!(_m5k && _m5k.phase && _m5k.phase !== 'fertig');
+}
+function _m5kStatus() {
+  if (!_m5k) return;
+  const z = _m5k, K = _m5kK, R = _m5kRechnung(z.k), A = R.A;
+  const b = (farbe, s) => '<b style="color:' + farbe + '">' + s + '</b>';
+  _m5kZeile('_m5k-zettel', 'Auf dem Zettel: ' + _m5kFmt(A.a) + ' ' + A.op + ' ' +
+            _m5kFmt(A.b) + ' = ' + b(K.F_ORANGE, _m5kFmt(A.r)));
+  _m5kZeile('_m5k-ueberschlag', 'Überschlag: ' + (z.zeigeU
+            ? _m5kFmt(R.ga) + ' ' + A.op + ' ' + _m5kFmt(R.gb) + ' = ' + b(K.F_BLAU, _m5kFmt(R.u))
+            : '…'));
+  _m5kZeile('_m5k-abstand', 'Abstand zum Überschlag: ' +
+            (z.zeigeA ? b(K.F_KLAMMER, _m5kFmt(R.abstand)) : '…'));
+  for (const k of _m5kREIHE) {
+    const e = document.getElementById('_m5k-b-' + k);
+    if (e && e.classList) e.classList.toggle('primary', k === z.k);
+  }
+  const rb = document.getElementById('_m5k-rechnen');
+  if (rb) {
+    const l = _m5kLaeuft();
+    rb.disabled = l;
+    rb.style.opacity = l ? '0.45' : '';
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5kZettel(k) {
+  if (!_m5k || !_m5kAUFGABEN[k]) return;
+  const z = _m5k;
+  z.k = k; z.ein = 0; z.phase = null; z.pt = 0;
+  z.zeigeU = false; z.zeigeA = false; z.glanz = 0; z.leucht = 0;
+  _m5kStatus();
+}
+function _m5kRechnen() {
+  if (!_m5k) return;
+  const z = _m5k;
+  if (_m5kLaeuft()) return;                       // laeuft noch: weiterlaufen lassen
+  z.ein = Math.max(z.ein, 5);                     // Zettel und Faehnchen stehen sofort
+  z.phase = 'rollen'; z.pt = 0;
+  z.zeigeU = false; z.zeigeA = false; z.glanz = 0; z.leucht = 0;
+  _m5kStatus();
+}
+function _m5kNeu() {
+  if (!_m5k) return;
+  _m5k.aha = false;
+  _m5k.fx.teile.length = 0;
+  _m5kZettel('a');
+}
+// Fortschritt (0 bis 1) einer Phase, gemessen am jetzigen Stand.
+function _m5kFort(name) {
+  const z = _m5k;
+  if (!z.phase) return 0;
+  if (z.phase === 'fertig') return 1;
+  const i = _m5kPHASEN.indexOf(z.phase), j = _m5kPHASEN.indexOf(name);
+  if (j < i) return 1;
+  if (j > i) return 0;
+  return Math.min(1, z.pt / _m5kK.DAUER[name]);
+}
+// Die Klammer steht: Abstand zeigen, Aha pruefen.
+function _m5kFertig() {
+  const z = _m5k, K = _m5kK, R = _m5kRechnung(z.k);
+  z.phase = 'fertig'; z.pt = 0;
+  z.zeigeA = true; z.leucht = K.LEUCHT;
+  if (!z.aha && R.abstand * 2 > R.u) {
+    z.aha = true;
+    const xa = _m5kX(R.u), xb = _m5kX(R.A.r);
+    _bioFxWelle(z.fx.teile, (xa + xb) / 2, K.KY, '#fcd34d',
+                Math.max(44, Math.min(110, Math.abs(xb - xa) / 2 + 14)));
+  }
+  _m5kStatus();
+}
+
+function _m5kUpdate(dt) {
+  if (!_m5k) return;
+  dt = _bioFxDt(dt);
+  const z = _m5k, K = _m5kK;
+  z.t += dt;
+  z.ein += dt;
+  if (_m5kLaeuft()) {
+    z.pt += dt;
+    if (z.pt >= K.DAUER[z.phase]) {
+      if (z.phase === 'rollen') { z.phase = 'zeile'; z.pt = 0; z.glanz = K.GLANZ; }
+      else if (z.phase === 'zeile') { z.phase = 'fallen'; z.pt = 0; z.zeigeU = true; _m5kStatus(); }
+      else if (z.phase === 'fallen') { z.phase = 'klammer'; z.pt = 0; }
+      else _m5kFertig();
+    }
+  }
+  if (z.glanz > 0) z.glanz = Math.max(0, z.glanz - dt);
+  if (z.leucht > 0) z.leucht = Math.max(0, z.leucht - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────────
+function _m5kText(ctx, s, x, y, ausr, farbe, groesse, gew) {
+  ctx.fillStyle = farbe || _m5kK.F_TEXT;
+  ctx.font = (gew || '700') + ' ' + (groesse || 14) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Eine Zeile aus Stuecken, mittig um `mitte`; liefert die Lage jedes Stuecks.
+function _m5kTeile(ctx, liste, groesse, mitte) {
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  let w = 0;
+  const t = liste.map(s => { const b = ctx.measureText(s).width; w += b; return { s, w: b }; });
+  let x = mitte - w / 2;
+  for (const e of t) { e.x = x; e.cx = x + e.w / 2; x += e.w; }
+  return { t, w };
+}
+// Faehnchen: Kasten mit Zahl, Mitte (cx, cy). Liefert die Kastenmasse.
+function _m5kPille(ctx, txt, cx, cy, farbe, grund, groesse, W) {
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  const pw = ctx.measureText(txt).width + 16, ph = groesse + 5;
+  const x = Math.max(3, Math.min(W - 3 - pw, cx - pw / 2));
+  ctx.fillStyle = grund; ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x, cy - ph / 2, pw, ph, 6); ctx.fill(); ctx.stroke();
+  _m5kText(ctx, txt, x + pw / 2, cy + groesse * 0.36, 'center', farbe, groesse);
+  return { x, w: pw, h: ph };
+}
+
+// Ruhiges Nachleuchten um einen Kasten (0,8 Hz, Deckkraft 45–85 %) – ein Rahmen,
+// keine Scheibe: so bleibt alles darum herum lesbar.
+function _m5kGlimmen(ctx, x, y, w, h, t, farbe, a) {
+  if (!(a > 0.01)) return;
+  const puls = 0.5 + 0.5 * Math.sin((t || 0) * Math.PI * 2 * 0.8);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = 'rgba(' + farbe + ',' + (0.45 + 0.4 * puls).toFixed(3) + ')';
+  ctx.lineWidth = 3 + 1.5 * puls;
+  _bioFxRundRect(ctx, x - 4, y - 4, w + 8, h + 8, 9); ctx.stroke();
+  ctx.restore();
+}
+
+function _m5kZettelZeichnen(ctx, W) {
+  const z = _m5k, K = _m5kK, A = _m5kAUFGABEN[z.k];
+  const e = _bioFxEase.raus(_bioFxKlemme(z.ein / K.T_ZETTEL));
+  const T = _m5kTeile(ctx, [_m5kFmt(A.a), ' ' + A.op + ' ', _m5kFmt(A.b), ' = ', _m5kFmt(A.r)],
+                      21, W / 2);
+  const bw = Math.max(230, T.w + 56), bx = W / 2 - bw / 2, by = K.ZY - 44 * (1 - e), bh = K.ZH;
+  ctx.save();
+  ctx.globalAlpha = 0.25 + 0.75 * e;
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';                 // Schatten
+  _bioFxRundRect(ctx, bx + 3, by + 3, bw, bh, 4); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, bx, by, bw, bh, 4); ctx.fill();
+  ctx.strokeStyle = '#d6e4f5'; ctx.lineWidth = 1;          // Karo
+  for (let x = bx + 8; x < bx + bw - 3; x += 8) {
+    ctx.beginPath(); ctx.moveTo(x, by + 1); ctx.lineTo(x, by + bh - 1); ctx.stroke();
+  }
+  for (let y = by + 8; y < by + bh - 3; y += 8) {
+    ctx.beginPath(); ctx.moveTo(bx + 1, y); ctx.lineTo(bx + bw - 1, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, bx, by, bw, bh, 4); ctx.stroke();
+  const base = by + 23;
+  // jedes Stueck mittig auf seinen Platz (Leerzeichen nur fuer den Abstand)
+  T.t.forEach((s, i) => _m5kText(ctx, s.s.trim(), s.cx, base, 'center', i === 4 ? K.F_ORANGE : K.F_TEXT, 21));
+  const r = T.t[4];                                       // Ergebnis orange unterstrichen
+  ctx.strokeStyle = K.F_ORANGE; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(r.x + 1, base + 4); ctx.lineTo(r.x + r.w - 1, base + 4); ctx.stroke();
+  ctx.restore();
+  return { r: { cx: r.cx, y: base + 6 } };
+}
+
+// Die beiden kleinen Strahlen; liefert die Lage der beiden Faehnchen.
+function _m5kMini(ctx, W) {
+  const z = _m5k, K = _m5kK, A = _m5kAUFGABEN[z.k];
+  const sicht = _bioFxKlemme((z.ein - 0.15) / 0.35);
+  const pr = _m5kFort('rollen'), e = _bioFxEase.sanft(pr);
+  const flaggen = [];
+  ctx.save();
+  ctx.globalAlpha = sicht;
+  [A.a, A.b].forEach((n, i) => {
+    const nb = _m5kNachbar(n), x0 = K.ML[i][0], x1 = K.ML[i][1], y = K.MY, L = x1 - x0;
+    const X = v => x0 + (v - nb.lo) / nb.s * L;
+    ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x0 - 8, y); ctx.lineTo(x1 + 8, y); ctx.stroke();
+    for (let k = 0; k <= 10; k++) {
+      const x = x0 + k / 10 * L;
+      if (k === 0 || k === 10) {
+        ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.moveTo(x, y - 9); ctx.lineTo(x, y + 9); ctx.stroke();
+      } else if (k === 5) {                                // Haelfte: gestrichelt, ohne Zahl
+        ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+        if (ctx.setLineDash) ctx.setLineDash([3, 3]);
+        ctx.beginPath(); ctx.moveTo(x, y - 14); ctx.lineTo(x, y + 6); ctx.stroke();
+        if (ctx.setLineDash) ctx.setLineDash([]);
+      } else {
+        ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(x, y - 5); ctx.lineTo(x, y + 5); ctx.stroke();
+      }
+    }
+    // die beiden Enden; das, wo die Kugel liegt, golden
+    for (const [v, x] of [[nb.lo, x0], [nb.hi, x1]]) {
+      const txt = _m5kFmt(v);
+      ctx.font = '700 13px sans-serif';
+      const tw = ctx.measureText(txt).width;
+      if (pr >= 1 && v === nb.ziel) {
+        if (z.glanz > 0)
+          _m5kGlimmen(ctx, x - tw / 2 - 6, y + 7, tw + 12, 19, z.t,
+                      '245,158,11', sicht * Math.min(1, z.glanz / 0.6));
+        ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+        _bioFxRundRect(ctx, x - tw / 2 - 6, y + 7, tw + 12, 19, 6); ctx.fill(); ctx.stroke();
+      }
+      _m5kText(ctx, txt, x, y + 21, 'center', '#334155', 13);
+    }
+    // Kugel
+    const p = n + (nb.ziel - n) * e, xb = X(p), r = K.R, cy = y - 1.5 - r;
+    const dreh = (xb - X(n)) / r;
+    ctx.fillStyle = '#fbbf24'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(xb, cy, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.lineWidth = 1.6;                                   // Streifen dreht sich mit
+    ctx.beginPath();
+    ctx.moveTo(xb - Math.cos(dreh) * r * 0.75, cy - Math.sin(dreh) * r * 0.75);
+    ctx.lineTo(xb + Math.cos(dreh) * r * 0.75, cy + Math.sin(dreh) * r * 0.75);
+    ctx.stroke();
+    // Faehnchen ueber der Kugel: erst die Zahl, nach dem Rollen die glatte Zahl
+    const da = pr >= 1, txt = _m5kFmt(da ? nb.ziel : n), farbe = da ? K.F_BLAU : '#1e3a8a';
+    ctx.font = '700 14px sans-serif';
+    const pw = ctx.measureText(txt).width + 16, ph = K.FH;
+    const px = Math.max(x0 - 16, Math.min(x1 + 16 - pw, xb - pw / 2)), py = y - 40;
+    ctx.strokeStyle = farbe; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(xb, py + ph); ctx.lineTo(xb, cy - r); ctx.stroke();
+    ctx.fillStyle = da ? K.F_BLAU_GRUND : '#ffffff'; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, px, py, pw, ph, 6); ctx.fill(); ctx.stroke();
+    _m5kText(ctx, txt, px + pw / 2, py + 14, 'center', farbe, 14);
+    flaggen.push({ cx: px + pw / 2, base: py + 14 });
+  });
+  _m5kText(ctx, A.op, K.MOPX, K.MY + 2, 'center', K.F_STRAHL, 24);
+  ctx.restore();
+  return flaggen;
+}
+
+// Die Zeile fuer den Ueberschlag; liefert die Lage seines Ergebnisses.
+function _m5kZeileZeichnen(ctx, W, flaggen) {
+  const z = _m5k, K = _m5kK, R = _m5kRechnung(z.k), A = R.A;
+  const T = _m5kTeile(ctx, [_m5kFmt(R.ga), ' ' + A.op + ' ', _m5kFmt(R.gb), ' = ', _m5kFmt(R.u)],
+                      18, W / 2);
+  const bw = Math.max(170, T.w + 40), bx = W / 2 - bw / 2, by = K.RY, bh = K.RH, base = by + 17;
+  const pz = _m5kFort('zeile');
+  ctx.save();
+  ctx.globalAlpha = _bioFxKlemme((z.ein - 0.15) / 0.35);
+  if (pz > 0) {
+    ctx.fillStyle = K.F_BLAU_GRUND;
+    _bioFxRundRect(ctx, bx, by, bw, bh, 8); ctx.fill();
+    ctx.strokeStyle = K.F_BLAU; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, bx, by, bw, bh, 8); ctx.stroke();
+  } else {
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+    if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+    _bioFxRundRect(ctx, bx, by, bw, bh, 8); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+  }
+  if (pz > 0) {
+    const e = _bioFxEase.sanft(pz);
+    [[0, flaggen[0]], [2, flaggen[1]]].forEach(([i, f]) => {   // die zwei Zahlen fliegen
+      const t = T.t[i];
+      const x = f.cx + (t.cx - f.cx) * e, y = f.base + (base - f.base) * e;
+      _m5kText(ctx, t.s, x, y, 'center', K.F_BLAU, Math.round(14 + 4 * e));
+    });
+    const a = _bioFxKlemme((pz - 0.45) / 0.55);
+    if (a > 0) {
+      ctx.globalAlpha *= a;
+      for (const i of [1, 3, 4]) _m5kText(ctx, T.t[i].s.trim(), T.t[i].cx, base, 'center', K.F_BLAU, 18);
+    }
+  }
+  ctx.restore();
+  return { ux: T.t[4].cx, uy: by + bh };
+}
+
+function _m5kStrahl(ctx, W, H) {
+  const K = _m5kK;
+  ctx.save();
+  ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.X0 - 10, K.LY); ctx.lineTo(K.X1 + 12, K.LY); ctx.stroke();
+  ctx.fillStyle = K.F_STRAHL;                               // Pfeilspitze
+  ctx.beginPath(); ctx.moveTo(K.X1 + 22, K.LY); ctx.lineTo(K.X1 + 11, K.LY - 6);
+  ctx.lineTo(K.X1 + 11, K.LY + 6); ctx.closePath(); ctx.fill();
+  for (let v = 0; v <= K.MAX; v += 1000) {
+    const x = _m5kX(v);
+    ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(x, K.LY - 8); ctx.lineTo(x, K.LY + 8); ctx.stroke();
+    _m5kText(ctx, _m5kFmt(v), x, K.LY + 21, 'center', '#334155', 12);
+  }
+  _m5kText(ctx, 'Striche alle ' + _m5kFmt(1000), W / 2, H - 4, 'center', K.F_GRAU, 11, '600');
+  ctx.restore();
+}
+
+function _m5kKlammer(ctx, W) {
+  const z = _m5k, K = _m5kK, pk = _m5kFort('klammer');
+  if (pk <= 0) return;
+  const R = _m5kRechnung(z.k), xu = _m5kX(R.u), xr = _m5kX(R.A.r);
+  const xe = xu + (xr - xu) * _bioFxEase.sanft(pk), y = K.KY;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(109,40,217,0.5)'; ctx.lineWidth = 1.5;   // Linien zu den Punkten
+  if (ctx.setLineDash) ctx.setLineDash([3, 4]);
+  for (const x of [xu, xe]) { ctx.beginPath(); ctx.moveTo(x, y + 8); ctx.lineTo(x, K.LY - 3); ctx.stroke(); }
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  ctx.strokeStyle = K.F_KLAMMER; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(xu, y + 8); ctx.lineTo(xu, y); ctx.lineTo(xe, y); ctx.lineTo(xe, y + 8);
+  ctx.stroke();
+  if (pk >= 1) {
+    const txt = _m5kFmt(R.abstand), cx = (xu + xr) / 2;
+    const p = _m5kPille(ctx, txt, cx, y, K.F_KLAMMER, '#ffffff', 14, W);
+    if (z.leucht > 0)
+      _m5kGlimmen(ctx, p.x, y - p.h / 2, p.w, p.h, z.t, '109,40,217', Math.min(1, z.leucht / 0.8));
+  }
+  ctx.restore();
+}
+
+function _m5kOrange(ctx, W, zettel) {
+  const z = _m5k, K = _m5kK, A = _m5kAUFGABEN[z.k];
+  const u = _bioFxKlemme((z.ein - 0.3) / K.T_FAHNE);
+  if (u <= 0) return;
+  const xr = _m5kX(A.r), e = _bioFxEase.sanft(u), cy0 = K.OY + K.FH / 2;
+  const cx = zettel.r.cx + (xr - zettel.r.cx) * e, cy = zettel.r.y + (cy0 - zettel.r.y) * e;
+  ctx.save();
+  if (u >= 1) {                                             // Stab und Raute auf dem Strahl
+    ctx.strokeStyle = K.F_ORANGE; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(xr, cy0 + K.FH / 2); ctx.lineTo(xr, K.LY - 6); ctx.stroke();
+    ctx.fillStyle = K.F_ORANGE; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(xr, K.LY - 7); ctx.lineTo(xr + 7, K.LY); ctx.lineTo(xr, K.LY + 7);
+    ctx.lineTo(xr - 7, K.LY); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  _m5kPille(ctx, _m5kFmt(A.r), cx, cy, K.F_ORANGE, K.F_ORANGE_GRUND, 14, W);
+  ctx.restore();
+}
+
+function _m5kBlau(ctx, W, zeile) {
+  const z = _m5k, K = _m5kK, pf = _m5kFort('fallen');
+  if (pf <= 0) return;
+  const R = _m5kRechnung(z.k), xu = _m5kX(R.u);
+  ctx.save();
+  if (pf < 1) {                                             // der Punkt faellt
+    const e = _bioFxEase.rein(pf);
+    const x = zeile.ux + (xu - zeile.ux) * _bioFxEase.sanft(pf), y = zeile.uy + (K.LY - zeile.uy) * e;
+    ctx.strokeStyle = 'rgba(29,78,216,0.35)'; ctx.lineWidth = 2;
+    if (ctx.setLineDash) ctx.setLineDash([2, 4]);
+    ctx.beginPath(); ctx.moveTo(zeile.ux, zeile.uy); ctx.lineTo(x, y); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    ctx.fillStyle = '#2563eb'; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(x, y, K.R, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  } else {
+    const hops = z.phase === 'klammer' ? -5 * Math.sin(Math.PI * Math.min(1, z.pt / 0.3)) : 0;
+    const cy0 = K.BY + K.FH / 2 + hops;
+    ctx.strokeStyle = K.F_BLAU; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(xu, cy0 + K.FH / 2); ctx.lineTo(xu, K.LY - 6); ctx.stroke();
+    _m5kPille(ctx, _m5kFmt(R.u), xu, cy0, K.F_BLAU, K.F_BLAU_GRUND, 14, W);
+    ctx.fillStyle = '#2563eb'; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(xu, K.LY, K.R, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _m5kDraw(ctx, cv) {
+  if (!_m5k) return;
+  const W = cv.width, H = cv.height, z = _m5k;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#ffffff'); bg.addColorStop(1, '#f4f7fb');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _bioFxDraw(ctx, z.fx.teile);                // Lichtring HINTER allem anderen
+  const zettel = _m5kZettelZeichnen(ctx, W);
+  const flaggen = _m5kMini(ctx, W);
+  const zeile = _m5kZeileZeichnen(ctx, W, flaggen);
+  _m5kStrahl(ctx, W, H);
+  _m5kKlammer(ctx, W);
+  _m5kOrange(ctx, W, zettel);
+  _m5kBlau(ctx, W, zeile);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mp6 „Was fällt an der Zahlenmauer auf?“
+// (Kennung m5-zahlenmauer). Bauplan: arbeitsheft_mathe_foe5/KAPITEL2_PROFIL.md,
+// Abschnitt m5-zahlenmauer. Ueberschrift = Frage der Einheit:
+// „Um wie viel wächst der Deckstein, wenn ein Grundstein um 1 wächst?“
+//
+// Was man sieht: eine Zahlenmauer aus drei Reihen Ziegeln auf einer
+// Bodenlinie – unten 3 Grundsteine (orange), darueber 2 Mittelsteine (hell),
+// oben der Deckstein (gold, dicker Rand). In jedem Ziegel steht seine Zahl
+// gross; jeder Stein ist die Summe der beiden Steine darunter. Rechts neben
+// der Mauer stehen die Woerter „Deckstein“ und „Grundsteine“ an ihrer Reihe.
+// Wird ein Grundstein um 1 groesser, springt seine Zahl hoch und er leuchtet
+// kurz. Aus ihm steigt eine goldene Kugel mit der Aufschrift „+ 1“ in jeden
+// Mittelstein, in dem er steckt (0,55 s), haelt dort kurz an (0,1 s) – der
+// Mittelstein waechst um 1 und leuchtet – und steigt weiter in den Deckstein
+// (0,55 s), der dann um 1 waechst und leuchtet. Danach rueckt die Kugel auf
+// den Deckstein (0,3 s) und bleibt dort liegen bis zur naechsten Handlung.
+// Jede Kugel zieht eine goldene Spur hinter sich her, die stehen bleibt: ein
+// Pfeil von Zahl zu Zahl (er haelt von den Zahlen Abstand). Man sieht danach
+// den Weg, auf dem der Grundstein gewirkt hat.
+//   linker Grundstein   EIN Weg: linker Mittelstein -> Deckstein
+//   rechter Grundstein  EIN Weg: rechter Mittelstein -> Deckstein
+//   mittlerer           ZWEI Wege, die zweite Kugel startet 0,25 s spaeter:
+//                       ueber den linken UND ueber den rechten Mittelstein.
+//                       Am Deckstein kommen zwei Kugeln an, er zaehlt 16, dann
+//                       17; oben liegen danach zwei Kugeln „+ 1“ nebeneinander,
+//                       und die vier Pfeile bilden eine Raute.
+// Die Zahlen in den Ziegeln haben einen weissen Rand und liegen ueber allem:
+// Kugeln und Lichtring laufen hinter ihnen durch und verdecken sie nie – man
+// sieht die Zahl genau in dem Augenblick wachsen, in dem die Kugel ankommt.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5lMarke('5-3-4') usw.):
+//     „5, 3, 4“ (Start) · „6, 3, 4“ · „5, 4, 4“ · „5, 3, 5“
+//   Reihe 2: „+ 1 links“ · „+ 1 Mitte“ · „+ 1 rechts“ (_m5lPlus(0|1|2)) ·
+//            „neu“ (_m5lNeu())
+// Eine Sprungmarke stellt die Mauer zuerst auf den Start 5, 3, 4 zurueck
+// (die Mauer blinkt kurz hell, 0,25 s; steht sie schon dort, entfaellt das)
+// und macht dann den Grundstein, der sich vom Start unterscheidet, um 1
+// groesser – mit Kugeln wie oben. So zeigt jede Sprungmarke genau ihren
+// Unterschied zum Start. „5, 3, 4“ und „neu“ stellen nur den Start her.
+// „+ 1 …“ macht den Stein um 1 groesser, ausgehend von der Mauer, wie sie
+// gerade steht (freies Probieren); der Knopf der Sprungmarke, deren Zahlen
+// gerade unten stehen, ist hervorgehoben. Ein Grundstein geht bis 99, danach
+// wackelt er nur. Wer waehrend der Bewegung einen Knopf drueckt, laesst alle
+// Kugeln sofort ankommen; dann geschieht das Neue. Jede Knopffolge ergibt so
+// dieselben Zahlen.
+//
+// Statuszeilen (woertlich). Sie folgen den Kugeln: Der Deckstein in der
+// Anzeige waechst erst, wenn eine Kugel bei ihm ankommt – Bild und Zahl
+// stimmen in jedem Augenblick ueberein. Die Zahlen tragen die Farbe ihres
+// Ziegels; der Unterschied traegt das Gold der Kugeln.
+//   _m5l-grund        „Grundsteine: 5, 3, 4“
+//   _m5l-deck         „Oberster Stein (Deckstein): 15“
+//   _m5l-start        „Deckstein beim Start 5, 3, 4: 15“ (steht immer da)
+//   _m5l-unterschied  „Unterschied zum Start: 0“, sonst z. B. „Unterschied
+//                     zum Start: + 2“ (zwischen + und Zahl U+00A0)
+// Alle vier Zeilen haben mehr als 18 Zeichen (simfakten.js-Grenze).
+//
+// Werte (Grundsteine -> Mittelsteine -> Deckstein · Unterschied zum Start),
+// jede Sprungmarke nachgerechnet mit simcheck/werte.js:
+//   5, 3, 4 -> 8, 7 -> 15 · 0
+//   6, 3, 4 -> 9, 7 -> 16 · + 1   (eine Kugel kommt oben an)
+//   5, 4, 4 -> 9, 8 -> 17 · + 2   (zwei Kugeln kommen oben an)
+//   5, 3, 5 -> 8, 8 -> 16 · + 1   (eine Kugel kommt oben an)
+// Gemessen (Frames zu 16 ms, simcheck-Treiber): Ein aeusserer Grundstein ist
+// vom Start aus nach rund 1,25 s fertig (78 Frames), der mittlere nach rund
+// 1,5 s (93 Frames). Steht die Mauer nicht am Start, kommt bei einer
+// Sprungmarke der Ruecksprung dazu: hoechstens rund 1,75 s (108 Frames).
+// simfakten.js mit --frames=25 --verlauf=4 liest bis 125 Frames – jeder
+// Endwert steht also im Faktendump.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Kommt die ZWEITE Kugel des
+// mittleren Grundsteins am Deckstein an („5, 4, 4“ oder „+ 1 Mitte“), laeuft
+// ein goldener Lichtring um den Deckstein, und er leuchtet laenger nach. Das
+// widerlegt Vermutung 2 („Der Deckstein wächst immer um 1.“). Jedes Mal, wenn
+// der mittlere Grundstein waechst.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „doppelt“, „zweimal“,
+// „genauso“ – und ueberhaupt keine Regel als Satz: Die Seite benennt sie erst
+// im Merksatz. Die Kugeln und die Zahlen zeigen es, kein Wort sagt es.
+// Keine Namen, keine Punkte, keine Zeit. Deterministisch, ohne Zufall: jede
+// Zahl im Bild kommt aus denselben Feldern wie die Statuszeilen.
+// ════════════════════════════════════════════════════════════════════════
+let _m5l = null;
+const _m5lSTART = [5, 3, 4];
+const _m5lMARKEN = {                                    // Grundsteine links, Mitte, rechts
+  '5-3-4': [5, 3, 4], '6-3-4': [6, 3, 4], '5-4-4': [5, 4, 4], '5-3-5': [5, 3, 5]
+};
+const _m5lPLUS = ['links', 'Mitte', 'rechts'];
+const _m5lK = {
+  BW: 96, BH: 48, FUGE: 6,      // Ziegel: Breite, Hoehe, Fuge (px)
+  MX: 170,                      // Mitte der Mauer; rechts bleibt Platz fuer die Woerter
+  YG: 186, YM: 132, YD: 78,     // Oberkante der Reihen: Grund-, Mittel-, Deckstein
+  BODEN: 237,                   // Bodenlinie unter der Mauer
+  R: 13,                        // Radius der Kugel
+  T_HOCH: 0.55,                 // s: Kugel steigt eine Reihe
+  T_HALT: 0.1,                  // s: Kugel haelt im Mittelstein
+  T_VERSATZ: 0.25,              // s: zweite Kugel des mittleren Steins startet spaeter
+  T_PARK: 0.3,                  // s: Kugel rueckt auf den Deckstein
+  T_ZURUECK: 0.25,              // s: Mauer springt auf den Start zurueck
+  T_POP: 0.35,                  // s: Zahl springt hoch
+  MAX: 99,                      // groesster Grundstein
+  F_G: { fuell: '#fed7aa', licht: '#ffedd5', rand: '#c2410c', wort: '#9a3412' },
+  F_M: { fuell: '#ffe9d4', licht: '#fff6ec', rand: '#c2410c' },
+  F_D: { fuell: '#fde68a', licht: '#fef3c7', rand: '#b45309', wort: '#92400e' },
+  F_ZAHL: '#1f2937',
+  F_SPUR: 'rgba(217,119,6,0.6)',
+  F_KUGEL: '#fbbf24', F_KRAND: '#b45309', F_KTEXT: '#78350f'
+};
+
+// 1234 -> "1 234" mit geschuetztem Leerzeichen (im Heft normales Leerzeichen)
+function _m5lFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+function _m5lPosG(i) { const K = _m5lK; return { x: K.MX + (i - 1) * (K.BW + K.FUGE), y: K.YG + K.BH / 2 }; }
+function _m5lPosM(j) { const K = _m5lK; return { x: K.MX + (j - 0.5) * (K.BW + K.FUGE), y: K.YM + K.BH / 2 }; }
+function _m5lPosD() { const K = _m5lK; return { x: K.MX, y: K.YD + K.BH / 2 }; }
+// Deckstein einer Mauer mit den Grundsteinen g
+function _m5lDeck(g) { return (g[0] + g[1]) + (g[1] + g[2]); }
+// Mittel- und Deckstein aus den Grundsteinen neu rechnen (nur beim Zuruecksetzen;
+// sonst wachsen sie mit den Kugeln)
+function _m5lRechne() {
+  const z = _m5l;
+  z.m = [z.g[0] + z.g[1], z.g[1] + z.g[2]];
+  z.d = z.m[0] + z.m[1];
+}
+
+function _m5lInit() {
+  _m5l = { g: _m5lSTART.slice(), m: [0, 0], d: 0, kugeln: [], plan: [],
+           glanz: { g: [0, 0, 0], m: [0, 0], d: 0 }, pop: { g: [0, 0, 0], m: [0, 0], d: 0 },
+           wackel: [0, 0, 0], zurueck: 0, t: 0, fx: { teile: [] } };
+  _m5lRechne();
+}
+function _m5lHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5l-b-${k}" onclick="_m5lMarke('${k}')">${_m5lMARKEN[k].join(', ')}</button>`;
+  const plus = i => `<button class="sim-btn" onclick="_m5lPlus(${i})">+&nbsp;1 ${_m5lPLUS[i]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Um wie viel wächst der Deckstein, wenn ein Grundstein um 1 wächst?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jeder Stein ist die Summe der beiden Steine darunter. Die Kugeln „+&nbsp;1“ zeigen, welche Steine mitwachsen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5l-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${Object.keys(_m5lMARKEN).map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${[0, 1, 2].map(plus).join('\n          ')}
+          <button class="sim-btn" onclick="_m5lNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5l-grund" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5l-deck" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5l-start" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5l-unterschied" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Mit „+&nbsp;1 links“, „+&nbsp;1 Mitte“ und „+&nbsp;1 rechts“ wird ein Grundstein um 1 größer.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Grundsteine 5, 3, 4 – Deckstein 15</p>
+  </div>`;
+}
+function _m5lZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+// Die Grundsteine, wie sie nach allen geplanten Schritten stehen.
+function _m5lZiel() {
+  const g = _m5l.g.slice();
+  for (const p of _m5l.plan) g[p.i] += 1;
+  return g;
+}
+function _m5lStatus() {
+  if (!_m5l) return;
+  const z = _m5l, K = _m5lK;
+  const b = (s, f) => '<b style="color:' + f + '">' + s + '</b>';
+  _m5lZeile('_m5l-grund', 'Grundsteine: ' + z.g.map(n => b(_m5lFmt(n), K.F_G.wort)).join(', '));
+  _m5lZeile('_m5l-deck', 'Oberster Stein (Deckstein): ' + b(_m5lFmt(z.d), K.F_D.wort));
+  const s = _m5lDeck(_m5lSTART), u = z.d - s;
+  _m5lZeile('_m5l-start', 'Deckstein beim Start ' + _m5lSTART.join(', ') + ': ' + _m5lFmt(s));
+  _m5lZeile('_m5l-unterschied', 'Unterschied zum Start: ' +
+            (u === 0 ? '0' : b((u > 0 ? '+' : '−') + ' ' + _m5lFmt(Math.abs(u)), K.F_KRAND)));
+  const ziel = _m5lZiel();
+  for (const k of Object.keys(_m5lMARKEN)) {
+    const e = document.getElementById('_m5l-b-' + k);
+    if (e && e.classList) e.classList.toggle('primary', _m5lMARKEN[k].every((n, i) => n === ziel[i]));
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Grundstein i waechst um 1; seine Kugeln machen sich auf den Weg.
+function _m5lWachse(i) {
+  const z = _m5l, K = _m5lK;
+  z.g[i] += 1;
+  z.glanz.g[i] = 0.9; z.pop.g[i] = K.T_POP;
+  const wege = i === 0 ? [0] : i === 2 ? [1] : [0, 1];   // in welchen Mittelstein
+  wege.forEach((j, n) => z.kugeln.push({ i, j, phase: 'warten', t: 0, verz: n * K.T_VERSATZ, oben: false }));
+}
+// Faellige geplante Schritte ausfuehren (eine Sprungmarke wartet erst den
+// Ruecksprung ab).
+function _m5lPlanen(dt) {
+  const z = _m5l;
+  for (const p of z.plan) p.verz -= dt;
+  let neu = false;
+  while (z.plan.length && z.plan[0].verz <= 1e-9) { _m5lWachse(z.plan.shift().i); neu = true; }
+  if (neu) _m5lStatus();
+}
+// Alles Laufende sofort ankommen lassen (vor jeder neuen Bedienung).
+function _m5lFertig() {
+  const z = _m5l;
+  while (z.plan.length) _m5lWachse(z.plan.shift().i);
+  for (const k of z.kugeln) {
+    if (k.phase === 'liegt') continue;
+    if (k.phase === 'warten' || k.phase === 'hoch1') z.m[k.j] += 1;
+    if (k.phase !== 'park') z.d += 1;
+    k.phase = 'liegt'; k.t = 0; k.oben = true;
+  }
+  z.zurueck = 0;
+  _m5lStatus();
+}
+// Zurueck auf den Start 5, 3, 4; gibt zurueck, ob die Mauer dafuer springen musste.
+function _m5lZumStart() {
+  const z = _m5l;
+  z.kugeln = [];
+  if (z.g.every((n, i) => n === _m5lSTART[i])) return false;
+  z.g = _m5lSTART.slice(); _m5lRechne();
+  z.zurueck = _m5lK.T_ZURUECK;
+  return true;
+}
+function _m5lMarke(k) {
+  if (!_m5l || !_m5lMARKEN[k]) return;
+  _m5lFertig();
+  const z = _m5l, K = _m5lK, ziel = _m5lMARKEN[k];
+  let verz = _m5lZumStart() ? K.T_ZURUECK : 0;
+  for (let i = 0; i < 3; i++)
+    for (let n = _m5lSTART[i]; n < ziel[i]; n++) { z.plan.push({ i, verz }); verz += 0.8; }
+  _m5lPlanen(0);
+  _m5lStatus();
+}
+function _m5lPlus(i) {
+  if (!_m5l || !(i === 0 || i === 1 || i === 2)) return;
+  _m5lFertig();
+  const z = _m5l;
+  if (z.g[i] >= _m5lK.MAX) { z.wackel[i] = 0.45; return; }
+  z.kugeln = [];
+  _m5lWachse(i);
+  _m5lStatus();
+}
+function _m5lNeu() {
+  if (!_m5l) return;
+  _m5lFertig();
+  _m5lZumStart();
+  _m5lStatus();
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5lUpdate(dt) {
+  if (!_m5l) return;
+  dt = _bioFxDt(dt);
+  const z = _m5l, K = _m5lK;
+  z.t += dt;
+  if (z.plan.length) _m5lPlanen(dt);
+  let neu = false;
+  for (const k of z.kugeln) {
+    if (k.phase === 'liegt') continue;
+    k.t += dt;
+    if (k.phase === 'warten' && k.t >= k.verz) { k.phase = 'hoch1'; k.t = 0; }
+    else if (k.phase === 'hoch1' && k.t >= K.T_HOCH) {
+      k.phase = 'halt'; k.t = 0;
+      z.m[k.j] += 1; z.glanz.m[k.j] = 0.9; z.pop.m[k.j] = K.T_POP; neu = true;
+    } else if (k.phase === 'halt' && k.t >= K.T_HALT) { k.phase = 'hoch2'; k.t = 0; }
+    else if (k.phase === 'hoch2' && k.t >= K.T_HOCH) {
+      k.phase = 'park'; k.t = 0; k.oben = true;
+      z.d += 1; z.glanz.d = 0.9; z.pop.d = K.T_POP; neu = true;
+      // Aha: die zweite Kugel des mittleren Grundsteins ist oben angekommen.
+      const mitte = z.kugeln.filter(q => q.i === 1);
+      if (k.i === 1 && mitte.length >= 2 && mitte.every(q => q.oben)) {
+        const p = _m5lPosD();
+        _bioFxWelle(z.fx.teile, p.x, p.y, '#f59e0b', 60);
+        z.glanz.d = 2.4;
+      }
+    } else if (k.phase === 'park' && k.t >= K.T_PARK) { k.phase = 'liegt'; k.t = 0; }
+  }
+  for (let i = 0; i < 3; i++) {
+    z.glanz.g[i] = Math.max(0, z.glanz.g[i] - dt);
+    z.pop.g[i] = Math.max(0, z.pop.g[i] - dt);
+    z.wackel[i] = Math.max(0, z.wackel[i] - dt);
+  }
+  for (let j = 0; j < 2; j++) {
+    z.glanz.m[j] = Math.max(0, z.glanz.m[j] - dt);
+    z.pop.m[j] = Math.max(0, z.pop.m[j] - dt);
+  }
+  z.glanz.d = Math.max(0, z.glanz.d - dt);
+  z.pop.d = Math.max(0, z.pop.d - dt);
+  z.zurueck = Math.max(0, z.zurueck - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+  if (neu) _m5lStatus();
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5lMisch(a, b, u) { return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u }; }
+// Wo die k-te von n Kugeln auf dem Deckstein liegt.
+function _m5lPlatz(k, n) {
+  const K = _m5lK;
+  return { x: K.MX + (k - (n - 1) / 2) * (2 * K.R + 6), y: K.YD - K.R - 5 };
+}
+// Ort der Kugel und die Strecken ihrer Spur: [von, nach, wie weit 0..1].
+function _m5lWeg(k, idx, n) {
+  const K = _m5lK, a = _m5lPosG(k.i), b = _m5lPosM(k.j), c = _m5lPosD();
+  if (k.phase === 'warten') return { ort: null, spur: [] };
+  if (k.phase === 'hoch1') {
+    const u = _bioFxEase.sanft(Math.min(1, k.t / K.T_HOCH));
+    return { ort: _m5lMisch(a, b, u), spur: [[a, b, u]] };
+  }
+  if (k.phase === 'halt') return { ort: b, spur: [[a, b, 1]] };
+  if (k.phase === 'hoch2') {
+    const u = _bioFxEase.sanft(Math.min(1, k.t / K.T_HOCH));
+    return { ort: _m5lMisch(b, c, u), spur: [[a, b, 1], [b, c, u]] };
+  }
+  const ziel = _m5lPlatz(idx, n);
+  const p = k.phase === 'park' ? _m5lMisch(c, ziel, _bioFxEase.sanft(Math.min(1, k.t / K.T_PARK))) : ziel;
+  return { ort: p, spur: [[a, b, 1], [b, c, 1]] };
+}
+function _m5lZiegel(ctx, p, F, glanz, dx, dick) {
+  const K = _m5lK, x = p.x - K.BW / 2 + (dx || 0), y = p.y - K.BH / 2;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';                   // Schatten
+  _bioFxRundRect(ctx, x + 2, y + 3, K.BW, K.BH, 6); ctx.fill();
+  ctx.fillStyle = F.fuell;
+  _bioFxRundRect(ctx, x, y, K.BW, K.BH, 6); ctx.fill();
+  ctx.fillStyle = F.licht;                                  // helle Kante oben
+  _bioFxRundRect(ctx, x + 5, y + 4, K.BW - 10, 6, 3); ctx.fill();
+  ctx.strokeStyle = F.rand; ctx.lineWidth = dick ? 3 : 2;
+  _bioFxRundRect(ctx, x, y, K.BW, K.BH, 6); ctx.stroke();
+  if (glanz > 0.01) {                                       // leuchtet kurz
+    ctx.globalAlpha = Math.min(1, glanz / 0.5);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 4;
+    _bioFxRundRect(ctx, x - 4, y - 4, K.BW + 8, K.BH + 8, 9); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _m5lZahl(ctx, n, p, pop, groesse, dx) {
+  const K = _m5lK;
+  const s = pop > 0 ? 1 + 0.3 * Math.sin(Math.PI * (1 - pop / K.T_POP)) : 1;
+  ctx.save();
+  ctx.translate(p.x + (dx || 0), p.y);
+  ctx.scale(s, s);
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 6;           // weisser Rand: Spuren laufen dahinter
+  ctx.strokeText(_m5lFmt(n), 0, groesse * 0.36);
+  ctx.fillStyle = K.F_ZAHL;
+  ctx.fillText(_m5lFmt(n), 0, groesse * 0.36);
+  ctx.restore();
+}
+// Spur einer Strecke von a nach b, so weit die Kugel gekommen ist. Sie haelt
+// von beiden Zahlen Abstand (r0, r1) und bekommt am Ende eine Pfeilspitze: Man
+// sieht, aus welchem Stein in welchen Stein die „+ 1“ gewandert ist.
+function _m5lSpur(ctx, a, b, u) {
+  const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy);
+  const r0 = 20, r1 = b.y < _m5lK.YM ? 27 : 22;          // am Deckstein steht die Zahl groesser
+  if (L < 1) return;
+  const ux = dx / L, uy = dy / L, s0 = r0, s1 = Math.min(L * u, L - r1);
+  if (s1 <= s0 + 1) return;
+  ctx.save();
+  ctx.strokeStyle = _m5lK.F_SPUR; ctx.lineWidth = 5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(a.x + ux * s0, a.y + uy * s0); ctx.lineTo(a.x + ux * s1, a.y + uy * s1); ctx.stroke();
+  if (u >= 1) {
+    const ex = a.x + ux * s1, ey = a.y + uy * s1, px = -uy, py = ux;
+    ctx.fillStyle = _m5lK.F_KRAND;
+    ctx.beginPath();
+    ctx.moveTo(ex + ux * 3, ey + uy * 3);
+    ctx.lineTo(ex - ux * 8 + px * 6, ey - uy * 8 + py * 6);
+    ctx.lineTo(ex - ux * 8 - px * 6, ey - uy * 8 - py * 6);
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+}
+function _m5lKugel(ctx, p, k, t) {
+  const K = _m5lK;
+  let sc = 1;
+  if (k.phase === 'hoch1') sc = 0.45 + 0.55 * _bioFxEase.raus(Math.min(1, k.t / 0.15));
+  const r = K.R * sc;
+  ctx.save();
+  const puls = k.phase === 'liegt' ? 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8) : 1;
+  ctx.fillStyle = 'rgba(251,191,36,' + (0.22 + 0.18 * puls).toFixed(3) + ')';   // Schein
+  ctx.beginPath(); ctx.arc(p.x, p.y, r + 6, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = K.F_KUGEL; ctx.strokeStyle = K.F_KRAND; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  if (sc > 0.8) {
+    ctx.fillStyle = K.F_KTEXT;
+    ctx.font = '700 12px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('+ 1', p.x, p.y + 4.5);
+  }
+  ctx.restore();
+}
+function _m5lDraw(ctx, cv) {
+  if (!_m5l) return;
+  const W = cv.width, H = cv.height, z = _m5l, K = _m5lK;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#ffffff'); bg.addColorStop(1, '#f4f7fb');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Boden
+  const xl = _m5lPosG(0).x - K.BW / 2 - 12, xr = _m5lPosG(2).x + K.BW / 2 + 12;
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(xl, K.BODEN); ctx.lineTo(xr, K.BODEN); ctx.stroke();
+  // Ziegel
+  const dx = i => z.wackel[i] > 0 ? Math.sin(z.wackel[i] * 48) * 3 * (z.wackel[i] / 0.45) : 0;
+  for (let i = 0; i < 3; i++) _m5lZiegel(ctx, _m5lPosG(i), K.F_G, z.glanz.g[i], dx(i));
+  for (let j = 0; j < 2; j++) _m5lZiegel(ctx, _m5lPosM(j), K.F_M, z.glanz.m[j]);
+  _m5lZiegel(ctx, _m5lPosD(), K.F_D, z.glanz.d, 0, true);
+  if (z.zurueck > 0) {                                      // Ruecksprung: die Mauer blinkt hell
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.7 * z.zurueck / K.T_ZURUECK).toFixed(3) + ')';
+    for (const p of [_m5lPosG(0), _m5lPosG(1), _m5lPosG(2), _m5lPosM(0), _m5lPosM(1), _m5lPosD()]) {
+      _bioFxRundRect(ctx, p.x - K.BW / 2, p.y - K.BH / 2, K.BW, K.BH, 6); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Spuren der Kugeln, hinter den Zahlen
+  const n = z.kugeln.length;
+  const wege = z.kugeln.map((k, idx) => _m5lWeg(k, idx, n));
+  for (const w of wege) for (const st of w.spur) _m5lSpur(ctx, st[0], st[1], st[2]);
+  _bioFxDraw(ctx, z.fx.teile);                              // Lichtring hinter den Zahlen
+  // Kugeln HINTER den Zahlen: Kommt eine Kugel in einem Stein an, liegt sie
+  // unter seiner Zahl, und man sieht die Zahl im selben Augenblick wachsen.
+  z.kugeln.forEach((k, idx) => { if (wege[idx].ort) _m5lKugel(ctx, wege[idx].ort, k, z.t); });
+  // Zahlen
+  for (let i = 0; i < 3; i++) _m5lZahl(ctx, z.g[i], _m5lPosG(i), z.pop.g[i], 26, dx(i));
+  for (let j = 0; j < 2; j++) _m5lZahl(ctx, z.m[j], _m5lPosM(j), z.pop.m[j], 26);
+  _m5lZahl(ctx, z.d, _m5lPosD(), z.pop.d, 28);
+  // Woerter an den Reihen
+  ctx.save();
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = K.F_D.wort;
+  ctx.fillText('Deckstein', _m5lPosD().x + K.BW / 2 + 15, _m5lPosD().y + 5);
+  ctx.fillStyle = K.F_G.wort;
+  ctx.fillText('Grundsteine', _m5lPosG(2).x + K.BW / 2 + 10, _m5lPosG(2).y + 5);
+  ctx.restore();
 }

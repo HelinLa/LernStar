@@ -1,0 +1,1 @@
+  'm5-plus-schriftlich': modal => { _m5iInit(); modal.innerHTML = _m5iHTML(); _m5iStatus(); _pSim = new PhysicsSimEngine('_m5i-cv', '_m5i-cv'); _pSim.start(dt => _m5iUpdate(dt), (ctx, cv) => _m5iDraw(ctx, cv), []); },

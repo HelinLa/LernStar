@@ -1,0 +1,1 @@
+  'm5-zahlenmauer': modal => { _m5lInit(); modal.innerHTML = _m5lHTML(); _m5lStatus(); _pSim = new PhysicsSimEngine('_m5l-cv', '_m5l-cv'); _pSim.start(dt => _m5lUpdate(dt), (ctx, cv) => _m5lDraw(ctx, cv), []); },

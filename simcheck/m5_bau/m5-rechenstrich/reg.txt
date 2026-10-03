@@ -1,0 +1,1 @@
+  'm5-rechenstrich': modal => { _m5gInit(); modal.innerHTML = _m5gHTML(); _m5gStatus(); _pSim = new PhysicsSimEngine('_m5g-cv', '_m5g-cv'); _pSim.start(dt => _m5gUpdate(dt), (ctx, cv) => _m5gDraw(ctx, cv), []); },

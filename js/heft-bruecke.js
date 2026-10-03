@@ -6365,6 +6365,60 @@ const HEFT_SEITEN = {
     frage: "Was ist 2 449 auf Hunderter gerundet?",
     schritte: ["Drücke „Hunderter“ und „2 449“. Lies die Abstände ab. Trage sie ein.", "Drücke „runden“. Lies ab, wo die Kugel liegt. Trage ein.", "Wiederhole a und b mit „2 451“, „2 450“ und „2 380“."]
   },
+  "mp1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-rechenstrich", seite: 32,
+    kapitel: "Plus und Minus",
+    name: "Wie rechnest du 46 + 37 im Kopf?",
+    titel: "Tarek kommt auf 713",
+    frage: "Welche Summe hat 46 + 37?",
+    schritte: ["Drücke „erst Zehner, dann Einer“. Sieh zu, wie der Punkt springt.", "Lies „Zwischenergebnis:“ und „Ergebnis der Aufgabe:“ ab. Trage die Summe in Zeile 1 ein.", "Wiederhole a und b mit „Zehner und Einer getrennt“, „bis 50, dann weiter“ und „plus 40, dann minus 3“. Trage alle drei Spalten ein.", "Drücke „nebeneinander schreiben“. So kommt Tarek auf 713. Lies, was im Bild steht."]
+  },
+  "mp2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-umkehr", seite: 35,
+    kapitel: "Plus und Minus",
+    name: "Plus und Minus gehören zusammen",
+    titel: "Stimmt 83 − 37 = 54?",
+    frage: "Wie kann Leni prüfen, ob 54 stimmt?",
+    schritte: ["Drücke „83 − 37 = 54“ und dann „Probe“.", "Lies „Umkehraufgabe:“ ab. Trage sie ein.", "Vergleiche „Die Probe landet bei“ mit „Gestartet wurde bei“. Trage ja oder nein ein.", "Wiederhole a bis c mit „83 − 37 = 46“, „125 − 48 = 77“ und „200 − 65 = 145“."]
+  },
+  "mp3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-plus-schriftlich", seite: 38,
+    kapitel: "Plus und Minus",
+    name: "Wie rechnet man schriftlich plus?",
+    titel: "Leni schreibt 715",
+    frage: "Was ergibt 457 + 368 wirklich?",
+    schritte: ["Drücke „457 + 368“ und dann „nächste Spalte“. Beobachte, wohin die Würfel wandern.", "Drücke „nächste Spalte“, bis bei „Ergebnis der Aufgabe:“ eine Zahl steht.", "Lies „Übertrag entstanden bei:“ und „Ergebnis der Aufgabe:“ ab. Trage beides ein.", "Wiederhole a bis c mit „345 + 62“, „508 + 294“ und „136 + 251“."]
+  },
+  "mp4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-minus-schriftlich", seite: 41,
+    kapitel: "Plus und Minus",
+    name: "Wie rechnet man schriftlich minus?",
+    titel: "Tarek kommt auf 326",
+    frage: "Was ergibt 432 − 158 wirklich?",
+    schritte: ["Drücke „432 − 158“. Drücke „nächste Spalte“ und beobachte das Material.", "Drücke „nächste Spalte“, bis bei „Ergebnis der Aufgabe:“ eine Zahl steht.", "Lies „Nicht gereicht hat es bei:“ und „Ergebnis der Aufgabe:“ ab. Trage beides ein.", "Wiederhole a bis c mit „563 − 241“, „745 − 382“ und „503 − 128“."]
+  },
+  "mp5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-ueberschlag", seite: 44,
+    kapitel: "Plus und Minus",
+    name: "Stimmt das Ergebnis ungefähr?",
+    titel: "4 105 auf dem Taschenrechner",
+    frage: "Kann 4 105 stimmen?",
+    schritte: ["Drücke „398 + 207 = 4 105“. Drücke dann „Überschlag rechnen“.", "Lies „Überschlag:“ ab. Trage die Rechnung ein.", "Vergleiche das orange Fähnchen mit dem blauen Punkt. Kann das Ergebnis stimmen? Trage ja oder nein ein.", "Wiederhole a bis c mit „512 − 289 = 223“, „1 985 + 3 020 = 5 005“ und „703 − 98 = 6 050“."]
+  },
+  "mp6": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-zahlenmauer", seite: 47,
+    kapitel: "Plus und Minus",
+    name: "Was fällt an der Zahlenmauer auf?",
+    titel: "Leni ändert einen Stein",
+    frage: "Um wie viel wächst der Deckstein, wenn ein Grundstein um 1 wächst?",
+    schritte: ["Drücke „5, 3, 4“. Lies „Unterschied zum Start:“ ab. Trage ihn in Zeile 1 ein.", "Drücke „6, 3, 4“. Zähle die Kugeln, die oben am Deckstein ankommen.", "Trage die Grundsteine, den Deckstein und den Unterschied ein.", "Wiederhole b und c mit „5, 4, 4“ und „5, 3, 5“."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen
