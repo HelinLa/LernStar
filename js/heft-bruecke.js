@@ -4662,7 +4662,7 @@ const HEFT_SEITEN = {
     name: "Warum bewegt sich ein Draht im Magnetfeld?",
     titel: "Der Motor im Elektroauto",
     frage: "Was passiert mit dem Stab im Magnetfeld, wenn Strom fließt?",
-    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Trage ein.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum.", "Drücke danach „Magnet umdrehen“. Trage beide Zeilen ein."]
+    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Trage ein.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum. Trage ein.", "Drücke „zurücksetzen“, dann „Magnet umdrehen“. Trage ein."]
   },
   "fz2": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4671,7 +4671,7 @@ const HEFT_SEITEN = {
     name: "In welche Richtung wirkt die Kraft?",
     titel: "Drei Finger zeigen die Richtung",
     frage: "Wohin schwingt die Schaukel, wenn du den Strom umpolst und den Magneten umdrehst?",
-    schritte: ["Drücke „neu“, dann „▶ Strom an“. Fülle die Lücke in Zeile 1.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Trage Zeile 2 ein.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Trage Zeile 3 ein.", "Drücke „Hand zeigen“. Welcher Finger zeigt wie der Pfeil F?"]
+    schritte: ["Drücke „neu“, dann „▶ Strom an“. Fülle die Lücke in Zeile 1.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Trage Zeile 2 ein.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Trage Zeile 3 ein.", "Drücke „Hand zeigen“. Welcher Finger zeigt in dieselbe Richtung wie der Pfeil F?"]
   },
   "fz3": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4698,7 +4698,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht Spannung ohne Batterie?",
     titel: "Ein Magnet in der Spule",
     frage: "Wann entsteht in der Spule eine Spannung?",
-    schritte: ["Beobachte eine Runde: Der Magnet fährt hinein, bleibt liegen, fährt heraus, bleibt liegen.", "Trage in jede Zeile ein, was der Magnet macht. Bewegt er sich: ja oder nein?", "Lies jedes Mal das Messgerät ab. Trage den Wert ein, auch ein Minus.", "Lies am Bildschirm nach: „Woher kommt die Energie?“"]
+    schritte: ["Beobachte eine Runde: Der Magnet fährt hinein, bleibt liegen, fährt heraus, bleibt liegen.", "Trage in jede Zeile ein: Was macht der Magnet? Bewegt er sich?", "Lies jedes Mal das Messgerät ab. Trage den Wert ein, auch ein Minus.", "Lies am Bildschirm: „Woher kommt die Energie?“"]
   },
   "fz6": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4716,7 +4716,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt der Magnet im Kupferrohr so langsam?",
     titel: "Langsam durchs Kupferrohr",
     frage: "Was bremst den Magneten im Kupferrohr?",
-    schritte: ["Wähle „Kunststoff“ und „Magnet“. Drücke „▶ fallen lassen“. Fülle die Lücke in Zeile 1.", "Wähle „Kupfer“. Drücke „▶ fallen lassen“. Lies die Statuszeile. Trage Zeile 2 ein.", "Wähle „Eisenstück“ und drücke „▶ fallen lassen“. Trage Zeile 3 ein.", "Wähle „Kupfer mit Schlitz“ und „Magnet“. Drücke „▶ fallen lassen“. Trage Zeile 4 ein."]
+    schritte: ["Wähle „Kunststoff“ und „Magnet“. Drücke „▶ fallen lassen“. Trage Zeile 1 ein.", "Wähle „Kupfer“. Drücke „▶ fallen lassen“. Die roten Ringe sind Ströme im Kupfer. Sie heißen Wirbelströme. Trage Zeile 2 ein.", "Wähle „Eisenstück“ und drücke „▶ fallen lassen“. Trage Zeile 3 ein.", "Wähle „Kupfer mit Schlitz“ und „Magnet“. Drücke „▶ fallen lassen“. Trage Zeile 4 ein."]
   },
   "fz8": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4738,25 +4738,25 @@ const HEFT_SEITEN = {
   },
   "fz10": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "fernleitung-modell", seite: 35,
+    sim: "fernleitung-modell", seite: 34,
     kapitel: "Woher der Strom kommt",
     name: "Warum transportiert man Energie mit Hochspannung?",
     titel: "Hohe Spannung für lange Leitungen",
     frage: "Warum transportiert man Energie mit Hochspannung?",
-    schritte: ["Wähle „mit Transformatoren“. Drücke „▶ einschalten“.", "Lies die Statuszeilen ab. Fülle die Lücke in Zeile 1 und die Zeilen darunter.", "Wähle „ohne Transformatoren“. Drücke wieder „▶ einschalten“. Trage in die Spalte „ohne Transformatoren“ ein.", "Beobachte die Energiepakete: Wo kommen sie größer bei der Lampe an?"]
+    schritte: ["Wähle „mit Transformatoren“. Drücke „▶ einschalten“.", "Lies die Statuszeilen ab. Fülle die Lücke in Zeile 1 und die Zeilen darunter.", "Wähle „ohne Transformatoren“. Drücke wieder „▶ einschalten“. Fülle die Spalte „ohne Transformatoren“.", "Beobachte die Energiepakete: Wo kommen sie größer bei der Lampe an?"]
   },
   "fz11": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kraftwerke", seite: 38,
+    sim: "kraftwerke", seite: 37,
     kapitel: "Woher der Strom kommt",
     name: "Welches Kraftwerk ist das beste?",
     titel: "Vier Kraftwerke im Vergleich",
     frage: "Welches Kraftwerk hat den größten Wirkungsgrad?",
-    schritte: ["Wähle „Kohlekraftwerk“. Drücke „▶ 100 kWh Strom erzeugen“.", "Lies in der Statuszeile CO₂ und Wirkungsgrad ab. Trage sie ein.", "Wiederhole a und b für „Wasserkraftwerk“ und „Windkraftanlage“.", "Lies bei „Windkraftanlage“ auch die zweite Statuszeile. Wann liefert sie Strom?"]
+    schritte: ["Wähle „Kohlekraftwerk“. Drücke „▶ 100 kWh Strom erzeugen“.", "Lies in der Statuszeile CO₂ und Wirkungsgrad ab. Trage sie ein.", "Wiederhole a und b für „Wasserkraftwerk“ und „Windkraftanlage“.", "Lies bei „Windkraftanlage“ die zweite Statuszeile. Wann liefert sie Strom?"]
   },
   "fz12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "energietraeger", seite: 41,
+    sim: "energietraeger", seite: 40,
     kapitel: "Woher der Strom kommt",
     name: "Erneuerbar oder nicht erneuerbar?",
     titel: "Was nach 100 Jahren bleibt",
@@ -4765,7 +4765,7 @@ const HEFT_SEITEN = {
   },
   "fz13": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "bio-treibhaus", seite: 44,
+    sim: "bio-treibhaus", seite: 43,
     kapitel: "Woher der Strom kommt",
     name: "Was macht CO₂ mit unserem Klima?",
     titel: "Wärme, die zurückkommt",
@@ -4774,7 +4774,7 @@ const HEFT_SEITEN = {
   },
   "fz14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromkosten", seite: 47,
+    sim: "stromkosten", seite: 46,
     kapitel: "Woher der Strom kommt",
     name: "Was kostet ein Gerät im Jahr?",
     titel: "Die hohe Stromrechnung",
@@ -4783,7 +4783,7 @@ const HEFT_SEITEN = {
   },
   "fn1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "atombau-isotope", seite: 53,
+    sim: "atombau-isotope", seite: 52,
     kapitel: "Aus dem Atomkern",
     name: "Woraus besteht ein Atomkern?",
     titel: "Der Kühlschrank mit den Zahlen",
@@ -4792,7 +4792,7 @@ const HEFT_SEITEN = {
   },
   "fn2": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "geiger-mueller", seite: 57,
+    sim: "geiger-mueller", seite: 56,
     kapitel: "Aus dem Atomkern",
     name: "Was ist radioaktive Strahlung?",
     titel: "Das Knacken an der Wand",
@@ -4801,7 +4801,7 @@ const HEFT_SEITEN = {
   },
   "fn3": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "absorption-strahlung", seite: 60,
+    sim: "absorption-strahlung", seite: 59,
     kapitel: "Aus dem Atomkern",
     name: "Welche Strahlung kommt wie weit?",
     titel: "Die Schürze aus Blei",
@@ -4810,7 +4810,7 @@ const HEFT_SEITEN = {
   },
   "fn4": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ionisation", seite: 63,
+    sim: "ionisation", seite: 62,
     kapitel: "Aus dem Atomkern",
     name: "Warum ist die Strahlung gefährlich?",
     titel: "Das Fläschchen, das zubleibt",
@@ -4819,7 +4819,7 @@ const HEFT_SEITEN = {
   },
   "fn5": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "geiger-mueller", seite: 66,
+    sim: "geiger-mueller", seite: 65,
     kapitel: "Aus dem Atomkern",
     name: "Wie weist man Strahlung nach?",
     titel: "Das Knacken im Messraum",
@@ -4828,7 +4828,7 @@ const HEFT_SEITEN = {
   },
   "fn6": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zerfall-halbwertszeit", seite: 69,
+    sim: "zerfall-halbwertszeit", seite: 68,
     kapitel: "Aus dem Atomkern",
     name: "Wann ist die Hälfte zerfallen?",
     titel: "Das Fläschchen wird schwächer",
@@ -4837,7 +4837,7 @@ const HEFT_SEITEN = {
   },
   "fn7": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zerfall-halbwertszeit", seite: 72,
+    sim: "zerfall-halbwertszeit", seite: 71,
     kapitel: "Aus dem Atomkern",
     name: "Wie alt ist der Fund?",
     titel: "Ein Holzstück aus dem Moor",
@@ -4846,7 +4846,7 @@ const HEFT_SEITEN = {
   },
   "fn8": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernspaltung", seite: 75,
+    sim: "kernspaltung", seite: 74,
     kapitel: "Aus dem Atomkern",
     name: "Was passiert bei einer Kernspaltung?",
     titel: "Der Güterzug und der Würfel",
@@ -4855,7 +4855,7 @@ const HEFT_SEITEN = {
   },
   "fn9": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kettenreaktion", seite: 78,
+    sim: "kettenreaktion", seite: 77,
     kapitel: "Aus dem Atomkern",
     name: "Wie hält man eine Kettenreaktion in Schach?",
     titel: "Der Beitrag im Aufenthaltsraum",
@@ -4864,7 +4864,7 @@ const HEFT_SEITEN = {
   },
   "fn10": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kettenreaktion", seite: 82,
+    sim: "kettenreaktion", seite: 81,
     kapitel: "Aus dem Atomkern",
     name: "Wie ist ein Kernkraftwerk aufgebaut?",
     titel: "Der Pfeil auf Nours Folie",
@@ -4873,7 +4873,7 @@ const HEFT_SEITEN = {
   },
   "fn12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "strahlenschutz", seite: 89,
+    sim: "strahlenschutz", seite: 88,
     kapitel: "Aus dem Atomkern",
     name: "Wie schützt man sich vor Strahlung?",
     titel: "Nours Schritt zurück",
@@ -4882,7 +4882,7 @@ const HEFT_SEITEN = {
   },
   "fn14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernfusion", seite: 96,
+    sim: "kernfusion", seite: 95,
     kapitel: "Aus dem Atomkern",
     name: "Woher nimmt die Sonne ihre Energie?",
     titel: "Die Heizung ohne Holz",
