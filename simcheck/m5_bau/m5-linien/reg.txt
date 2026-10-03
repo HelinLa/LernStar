@@ -1,0 +1,1 @@
+  'm5-linien': modal => { _m5mInit(); modal.innerHTML = _m5mHTML(); _m5mStatus(); _pSim = new PhysicsSimEngine('_m5m-cv', '_m5m-cv'); _pSim.start(dt => _m5mUpdate(dt), (ctx, cv) => _m5mDraw(ctx, cv), []); },

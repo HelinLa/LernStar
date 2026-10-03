@@ -1,0 +1,1 @@
+  'm5-koordinaten': modal => { _m5oInit(); modal.innerHTML = _m5oHTML(); _m5oStatus(); _pSim = new PhysicsSimEngine('_m5o-cv', '_m5o-cv'); _pSim.start(dt => _m5oUpdate(dt), (ctx, cv) => _m5oDraw(ctx, cv), []); },

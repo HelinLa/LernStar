@@ -1,0 +1,1 @@
+  'm5-geodreieck': modal => { _m5nInit(); modal.innerHTML = _m5nHTML(); _m5nStatus(); _pSim = new PhysicsSimEngine('_m5n-cv', '_m5n-cv'); _pSim.start(dt => _m5nUpdate(dt), (ctx, cv) => _m5nDraw(ctx, cv), []); },

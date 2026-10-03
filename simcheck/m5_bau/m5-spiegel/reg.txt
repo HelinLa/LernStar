@@ -1,0 +1,1 @@
+  'm5-spiegel': modal => { _m5qInit(); modal.innerHTML = _m5qHTML(); _m5qStatus(); _pSim = new PhysicsSimEngine('_m5q-cv', '_m5q-cv'); _pSim.start(dt => _m5qUpdate(dt), (ctx, cv) => _m5qDraw(ctx, cv), []); },

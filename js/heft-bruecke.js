@@ -6313,7 +6313,7 @@ const HEFT_SEITEN = {
   },
   "mz1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-buendeln", seite: 7,
+    sim: "m5-buendeln", seite: 8,
     kapitel: "Große Zahlen",
     name: "Zehn Einer sind ein Zehner",
     titel: "Tarek schreibt 1 910",
@@ -6322,7 +6322,7 @@ const HEFT_SEITEN = {
   },
   "mz2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-stellenwert", seite: 10,
+    sim: "m5-stellenwert", seite: 11,
     kapitel: "Große Zahlen",
     name: "Welchen Wert hat die 4?",
     titel: "Die wandernde Vier",
@@ -6331,7 +6331,7 @@ const HEFT_SEITEN = {
   },
   "mz3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-null", seite: 13,
+    sim: "m5-null", seite: 14,
     kapitel: "Große Zahlen",
     name: "Wo bleibt die Null?",
     titel: "Tarek schreibt 350",
@@ -6340,7 +6340,7 @@ const HEFT_SEITEN = {
   },
   "mz4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-grosse-zahlen", seite: 16,
+    sim: "m5-grosse-zahlen", seite: 17,
     kapitel: "Große Zahlen",
     name: "Wie liest man große Zahlen?",
     titel: "83 000 000 im Radio",
@@ -6349,7 +6349,7 @@ const HEFT_SEITEN = {
   },
   "mz5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenstrahl", seite: 19,
+    sim: "m5-zahlenstrahl", seite: 20,
     kapitel: "Große Zahlen",
     name: "Welche Zahl ist größer?",
     titel: "9 870 oder 12 300?",
@@ -6358,7 +6358,7 @@ const HEFT_SEITEN = {
   },
   "mz6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-runden", seite: 22,
+    sim: "m5-runden", seite: 23,
     kapitel: "Große Zahlen",
     name: "Auf welche Zahl rundet man?",
     titel: "2 449 – runter oder rauf?",
@@ -6367,7 +6367,7 @@ const HEFT_SEITEN = {
   },
   "mp1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-rechenstrich", seite: 32,
+    sim: "m5-rechenstrich", seite: 33,
     kapitel: "Plus und Minus",
     name: "Wie rechnest du 46 + 37 im Kopf?",
     titel: "Tarek kommt auf 713",
@@ -6376,7 +6376,7 @@ const HEFT_SEITEN = {
   },
   "mp2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-umkehr", seite: 35,
+    sim: "m5-umkehr", seite: 36,
     kapitel: "Plus und Minus",
     name: "Plus und Minus gehören zusammen",
     titel: "Stimmt 83 − 37 = 54?",
@@ -6385,7 +6385,7 @@ const HEFT_SEITEN = {
   },
   "mp3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-plus-schriftlich", seite: 38,
+    sim: "m5-plus-schriftlich", seite: 39,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich plus?",
     titel: "Leni schreibt 715",
@@ -6394,7 +6394,7 @@ const HEFT_SEITEN = {
   },
   "mp4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-minus-schriftlich", seite: 41,
+    sim: "m5-minus-schriftlich", seite: 42,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich minus?",
     titel: "Tarek kommt auf 326",
@@ -6403,7 +6403,7 @@ const HEFT_SEITEN = {
   },
   "mp5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-ueberschlag", seite: 44,
+    sim: "m5-ueberschlag", seite: 45,
     kapitel: "Plus und Minus",
     name: "Stimmt das Ergebnis ungefähr?",
     titel: "4 105 auf dem Taschenrechner",
@@ -6412,12 +6412,57 @@ const HEFT_SEITEN = {
   },
   "mp6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenmauer", seite: 47,
+    sim: "m5-zahlenmauer", seite: 48,
     kapitel: "Plus und Minus",
     name: "Was fällt an der Zahlenmauer auf?",
     titel: "Leni ändert einen Stein",
     frage: "Um wie viel wächst der Deckstein, wenn ein Grundstein um 1 wächst?",
     schritte: ["Drücke „5, 3, 4“. Lies „Unterschied zum Start:“ ab. Trage ihn in Zeile 1 ein.", "Drücke „6, 3, 4“. Zähle die Kugeln, die oben am Deckstein ankommen.", "Trage die Grundsteine, den Deckstein und den Unterschied ein.", "Wiederhole b und c mit „5, 4, 4“ und „5, 3, 5“."]
+  },
+  "mf1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-linien", seite: 55,
+    kapitel: "Linien und Figuren",
+    name: "Strecke oder Gerade?",
+    titel: "Tareks Gerade ist 10 cm lang",
+    frage: "Kann man die Länge einer Geraden messen?",
+    schritte: ["Drücke „Strecke AB“. Warte, bis das Lineal an der Linie liegt.", "Lies „Anzahl der Endpunkte:“ und „Länge auf dem Lineal:“ ab. Trage beides ein.", "Wiederhole a und b mit „Gerade AB“, „Strecke CD“ und „Gerade CD“.", "Drücke „Gerade AB“ und dann „Blatt vergrößern“. Beobachte die Enden der Linie."]
+  },
+  "mf2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-geodreieck", seite: 58,
+    kapitel: "Linien und Figuren",
+    name: "Senkrecht oder parallel?",
+    titel: "Ein schräges Kreuz",
+    frage: "Können schräge Geraden senkrecht zueinander sein?",
+    schritte: ["Drücke „Kreuz, gerade“. Lies ab, ob sich g und h schneiden. Trage es ein.", "Drücke „Papierecke anlegen“. Entscheide: senkrecht, parallel oder keins? Trage ein.", "Wiederhole a und b mit „Kreuz, schräg“, „schräg geschnitten“ und „nebeneinander, schräg“.", "Drücke bei „nebeneinander, schräg“ noch „Abstand messen“. Vergleiche die zwei Abstände."]
+  },
+  "mf3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-koordinaten", seite: 61,
+    kapitel: "Linien und Figuren",
+    name: "Wo liegt der Punkt?",
+    titel: "Die Schatzkarte",
+    frage: "Kommt Tarek mit seinem Weg zum Punkt (3|5)?",
+    schritte: ["Drücke „A(3|5)“. Beobachte, wie die Figur Kästchen für Kästchen geht.", "Lies „Weg:“ und „Die Figur steht beim …“ ab. Trage beides ein.", "Wiederhole a und b mit „B(5|3)“, „C(0|4)“ und „D(6|0)“.", "Drücke „A(3|5)“ und dann „vertauscht gehen“. So geht Tarek. Lies ab, wo die Figur jetzt steht."]
+  },
+  "mf4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-vierecke", seite: 64,
+    kapitel: "Linien und Figuren",
+    name: "Welches Viereck ist das?",
+    titel: "Ist ein Quadrat ein Rechteck?",
+    frage: "Ist ein Quadrat auch ein Rechteck?",
+    schritte: ["Drücke „Figur 1“ und dann „Papierecke prüfen“. Zähle die grünen Haken.", "Drücke „Seiten messen“. Lies die vier Seitenlängen ab.", "Trage die Zahl der Haken und die Seitenlängen ein.", "Wiederhole a bis c mit „Figur 2“, „Figur 3“ und „Figur 4“."]
+  },
+  "mf5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-spiegel", seite: 67,
+    kapitel: "Linien und Figuren",
+    name: "Wo ist die Spiegelachse?",
+    titel: "Leni faltet von Ecke zu Ecke",
+    frage: "Ist die Diagonale eines Rechtecks eine Spiegelachse?",
+    schritte: ["Drücke „Rechteck, senkrecht“ und dann „falten“. Beobachte die Ecken.", "Lies „Figur:“ und „Achse:“ ab. Trage beides ein.", "Lies „Nach dem Falten:“ ab. Entscheide: Ist die Achse eine Spiegelachse? Schreibe ja oder nein.", "Wiederhole a bis c mit „Rechteck, Ecke zu Ecke“, „Quadrat, Ecke zu Ecke“ und „Quadrat, waagerecht“."]
   },
 };
 

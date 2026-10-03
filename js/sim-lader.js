@@ -19,7 +19,7 @@
 'use strict';
 
 (function () {
-  const QUELLE = 'physics-sim.js?v=158';
+  const QUELLE = 'physics-sim.js?v=159';
   let laeuft = null;
 
   const melden = simId =>

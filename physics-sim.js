@@ -7595,6 +7595,11 @@ const _physSimDefs = {
   'm5-minus-schriftlich': modal => { _m5jInit(); modal.innerHTML = _m5jHTML(); _m5jStatus(); _pSim = new PhysicsSimEngine('_m5j-cv', '_m5j-cv'); _pSim.start(dt => _m5jUpdate(dt), (ctx, cv) => _m5jDraw(ctx, cv), []); },
   'm5-ueberschlag': modal => { _m5kInit(); modal.innerHTML = _m5kHTML(); _m5kStatus(); _pSim = new PhysicsSimEngine('_m5k-cv', '_m5k-cv'); _pSim.start(dt => _m5kUpdate(dt), (ctx, cv) => _m5kDraw(ctx, cv), []); },
   'm5-zahlenmauer': modal => { _m5lInit(); modal.innerHTML = _m5lHTML(); _m5lStatus(); _pSim = new PhysicsSimEngine('_m5l-cv', '_m5l-cv'); _pSim.start(dt => _m5lUpdate(dt), (ctx, cv) => _m5lDraw(ctx, cv), []); },
+  'm5-linien': modal => { _m5mInit(); modal.innerHTML = _m5mHTML(); _m5mStatus(); _pSim = new PhysicsSimEngine('_m5m-cv', '_m5m-cv'); _pSim.start(dt => _m5mUpdate(dt), (ctx, cv) => _m5mDraw(ctx, cv), []); },
+  'm5-geodreieck': modal => { _m5nInit(); modal.innerHTML = _m5nHTML(); _m5nStatus(); _pSim = new PhysicsSimEngine('_m5n-cv', '_m5n-cv'); _pSim.start(dt => _m5nUpdate(dt), (ctx, cv) => _m5nDraw(ctx, cv), []); },
+  'm5-koordinaten': modal => { _m5oInit(); modal.innerHTML = _m5oHTML(); _m5oStatus(); _pSim = new PhysicsSimEngine('_m5o-cv', '_m5o-cv'); _pSim.start(dt => _m5oUpdate(dt), (ctx, cv) => _m5oDraw(ctx, cv), []); },
+  'm5-vierecke': modal => { _m5pInit(); modal.innerHTML = _m5pHTML(); _m5pStatus(); _pSim = new PhysicsSimEngine('_m5p-cv', '_m5p-cv'); _pSim.start(dt => _m5pUpdate(dt), (ctx, cv) => _m5pDraw(ctx, cv), []); },
+  'm5-spiegel': modal => { _m5qInit(); modal.innerHTML = _m5qHTML(); _m5qStatus(); _pSim = new PhysicsSimEngine('_m5q-cv', '_m5q-cv'); _pSim.start(dt => _m5qUpdate(dt), (ctx, cv) => _m5qDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -152191,4 +152196,2964 @@ function _m5lDraw(ctx, cv) {
   ctx.fillStyle = K.F_G.wort;
   ctx.fillText('Grundsteine', _m5lPosG(2).x + K.BW / 2 + 10, _m5lPosG(2).y + 5);
   ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mf1 „Strecke oder Gerade?“ (Kennung m5-linien)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL3_PROFIL.md, Abschnitt m5-linien.
+// Ueberschrift = Frage der Einheit: „Kann man die Länge einer Geraden messen?“
+//
+// Was man sieht: ein Blatt Karopapier auf einem Holztisch (der Tisch ist
+// dunkler als das Blatt). Ein Kaestchen ist 0,5 cm (9 px), 1 cm sind 18 px.
+// Auf dem Blatt liegen vier Punkte (dunkle Kreise mit Buchstaben): A und B
+// waagerecht, 6 cm auseinander; C und D schraeg darunter, 4 cm auseinander.
+// Das Blatt ist am Start 12 cm x 7,5 cm gross.
+//   Strecke   Die Linie wird von P nach Q gezogen (P/Q = A/B bzw. C/D), mit
+//             leuchtender Stiftspitze (0,6 s). Sie hoert sichtbar an beiden
+//             Punkten auf: ein kleiner Querstrich und ein roter Ring an jedem
+//             Ende – der erste Ring erscheint beim Losziehen, der zweite beim
+//             Ankommen. Danach gleitet ein gelbes Lineal (0 bis 7 cm) an die
+//             Linie (0,5 s), die 0 genau am ersten Punkt; ein gruener Streifen
+//             waechst an der Kante von 0 bis zum zweiten Punkt (0,3 s), und die
+//             Zahl dort (6 bzw. 4) steht weiss in einem gruenen Kreis.
+//   Gerade    Die Linie waechst von der Mitte zwischen den beiden Punkten nach
+//             beiden Seiten zugleich (0,75 s), laeuft durch die Punkte bis an
+//             den Rand des Blatts und darueber hinaus 14 px in den Tisch; dort
+//             verblasst sie und endet in zwei kleinen Pfeilen. Kein roter Ring.
+//             Das Lineal legt sich an wie bei der Strecke (0 am ersten Punkt),
+//             die Linie laeuft an beiden Enden ueber das Lineal hinaus; kein
+//             gruener Streifen, keine Zahl im Kreis.
+//   „Blatt vergrößern“  Das Blatt waechst in 0,9 s auf allen Seiten auf
+//             19 cm x 11,5 cm; der Massstab bleibt (ein Kaestchen bleibt ein
+//             Kaestchen, das Lineal bleibt liegen). Wo das Blatt vorher war,
+//             bleibt ein gestrichelter Rand mit „Blatt vorher“. Eine Strecke
+//             bleibt genau so, wie sie war (der gruene Streifen leuchtet kurz
+//             nach). Eine Gerade waechst auf beiden Seiten mit dem Rand mit bis
+//             an den neuen Rand und wieder in den Tisch; die neu dazugekommenen
+//             Stuecke leuchten 2,5 s orange.
+// Die Punkte der anderen Linie stehen blasser da, solange eine Linie gewaehlt
+// ist. Ein Knopfdruck waehrend einer Bewegung laesst sie sofort fertig werden;
+// dann geschieht das Neue. Jede Knopffolge endet so im selben Zustand.
+//
+// Texte neben der Leinwand (woertlich): oben „Auf dem Blatt liegen die Punkte
+// A, B, C und D. Die ersten vier Knöpfe zeichnen eine Linie. Danach legt sich
+// ein Lineal an die Linie.“ · rechts „„Blatt vergrößern“ macht das Blatt auf
+// allen Seiten größer. Das Lineal bleibt liegen.“ · unten „Start: ein Blatt mit
+// den Punkten A, B, C und D, noch keine Linie“. Im Bild stehen nur A, B, C, D,
+// die Zahlen 0 bis 7 auf dem Lineal und „Blatt vorher“.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5mWahl('strecke-AB') usw.):
+//     „Strecke AB“ · „Gerade AB“ · „Strecke CD“ · „Gerade CD“
+//     Ist das Blatt gerade gross, schrumpft es zuerst zurueck (0,4 s), dann
+//     wird gezeichnet. Der Knopf der gewaehlten Linie ist hervorgehoben.
+//   „Blatt vergrößern“ (_m5mGross()) – ist das Blatt schon gross, wackelt es nur.
+//   „neu“ (_m5mNeu()): keine Linie, kleines Blatt, alle Anzeigen auf „…“.
+//
+// Statuszeilen (woertlich):
+//   _m5m-linie   „Gezeichnet: noch keine Linie“, nach einer Wahl sofort
+//                „Gezeichnet: Strecke AB“ (bzw. Gerade AB, Strecke CD, Gerade CD)
+//   _m5m-enden   „Anzahl der Endpunkte: …“, sobald die Linie fertig gezogen ist
+//                „Anzahl der Endpunkte: 2“ bzw. „Anzahl der Endpunkte: 0“
+//   _m5m-laenge  „Länge auf dem Lineal: …“, sobald das Lineal anliegt
+//                „Länge auf dem Lineal: 6 cm“ (6 und cm mit U+00A0) bzw.
+//                „Länge auf dem Lineal: keine“
+//   _m5m-zoom    „Beim Vergrößern: …“, nach „Blatt vergrößern“
+//                „Beim Vergrößern: Die Linie bleibt gleich lang.“ (Strecke) bzw.
+//                „Beim Vergrößern: Die Linie wird auf beiden Seiten länger.“
+//                (Gerade) bzw. „Beim Vergrößern: Es ist noch keine Linie
+//                gezeichnet.“; eine neue Wahl setzt die Zeile auf „…“ zurueck.
+// Alle Zeilen, deren Wert das Heft verlangt, haben mehr als 18 Zeichen
+// (simfakten.js-Grenze). Farben: Endpunkte rot wie die Ringe, Laenge gruen
+// wie der Streifen am Lineal, „länger“ orange wie die neuen Stuecke.
+//
+// Werte (Endpunkte · Laenge; jede Sprungmarke nachgerechnet mit
+// simcheck/werte.js, die Animation ausgelaufen). Die Laenge kommt aus dem
+// Abstand der Punkte im Bild (px : 18, gerundet):
+//   Strecke AB  2 · 6 cm      Gerade AB  0 · keine
+//   Strecke CD  2 · 4 cm      Gerade CD  0 · keine
+//   „Blatt vergrößern“: Strecke -> „Die Linie bleibt gleich lang.“,
+//                       Gerade  -> „Die Linie wird auf beiden Seiten länger.“
+// Zeiten (Frames zu 16 ms): Strecke fertig nach 1,4 s (88 Frames), Gerade nach
+// 1,25 s (79 Frames), bei grossem Blatt je 0,4 s mehr; „Blatt vergrößern“ nach
+// 0,9 s (57 Frames). simfakten.js mit --frames=25 --verlauf=4 liest bis 125
+// Frames – jeder Endwert steht also im Faktendump.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): „Blatt vergrößern“ bei einer
+// Geraden – sobald das Blatt gross ist, laeuft an BEIDEN Pfeilen ein goldener
+// Lichtring, und beide Pfeile leuchten 2,5 s nach. Das widerlegt die
+// Vermutungen „Die Gerade ist 10 cm lang“ und „so lang wie das Blatt breit“:
+// Das Blatt wird breiter, und die Gerade ist wieder bis an den Rand da.
+//
+// NICHT am Bildschirm (sim_plan.nicht_am_bildschirm): „weiter“, „hört auf“,
+// „aufhören“, „unendlich“ – und keine Regel als Satz. Was eine Strecke und was
+// eine Gerade ist, sagt kein Text; Ringe, Pfeile, Lineal und das grosse Blatt
+// zeigen es. Keine Namen, keine Punkte, keine Zeit. Deterministisch, ohne
+// Zufall: jede Zahl kommt aus den Punkten in _m5mPUNKT.
+// ════════════════════════════════════════════════════════════════════════
+let _m5m = null;
+const _m5mK = {
+  KAST: 9,                       // px je Kaestchen (0,5 cm im Modell)
+  CM: 18,                        // px je cm
+  NETZ_X: 102, NETZ_Y: 57,       // ein Gitterpunkt: alle Kaestchen haengen daran
+  KLEIN: { x: 102, y: 57, w: 216, h: 135 },   // 24 x 15 Kaestchen = 12 cm x 7,5 cm
+  GROSS: { x: 39, y: 21, w: 342, h: 207 },    // 38 x 23 Kaestchen = 19 cm x 11,5 cm
+  TISCH: 14,                     // px: so weit sieht man eine Gerade auf dem Tisch
+  L_VON: -9, L_BIS: 135,         // Lineal entlang der Linie: 0 bis 7 cm, je 0,5 cm Rand
+  L_ABST: 7, L_BREIT: 24,        // Abstand des Lineals zur Linie, Breite des Lineals
+  L_CM: 7,                       // groesste Zahl auf dem Lineal
+  T_SCHRUMPF: 0.4, T_ZIEHEN_S: 0.6, T_ZIEHEN_G: 0.75, T_LINEAL: 0.5, T_BAND: 0.3,
+  T_ZOOM: 0.9, T_POP: 0.25, T_LEUCHT: 2.5, T_GLANZ: 1.5, T_WACKEL: 0.45,
+  F_LINIE: '#1d4ed8', F_ENDE: '#dc2626', F_LAENGE: '#047857', F_NEU: '#ea580c',
+  F_PUNKT: '#334155', F_NETZ: '#d3e2f4', F_LINEAL: 'rgba(253,230,138,0.94)',
+  F_LRAND: '#b45309', F_STRICH: '#713f12'
+};
+// Die vier Punkte. D liegt 4 cm von C entfernt, schraeg nach rechts oben
+// (Steigung 0,375 je Laengeneinheit, also 1,5 cm hoeher auf 4 cm Weg).
+const _m5mPUNKT = (() => {
+  const C = { x: 129, y: 165 }, s = 0.375, c = Math.sqrt(1 - s * s), L = 4 * _m5mK.CM;
+  return { A: { x: 156, y: 84 }, B: { x: 264, y: 84 }, C, D: { x: C.x + L * c, y: C.y - L * s } };
+})();
+// Buchstaben: A und B ueber dem Punkt, C und D darunter (dort liegt das Lineal nicht).
+const _m5mSCHILD = { A: -15, B: -15, C: 25, D: 25 };
+// seite: auf welcher Seite der Linie das Lineal liegt (+1 unter AB, -1 ueber CD)
+const _m5mPAAR = { AB: { p: 'A', q: 'B', seite: 1 }, CD: { p: 'C', q: 'D', seite: -1 } };
+const _m5mLINIEN = {
+  'strecke-AB': { art: 'strecke', paar: 'AB', name: 'Strecke AB' },
+  'gerade-AB':  { art: 'gerade',  paar: 'AB', name: 'Gerade AB' },
+  'strecke-CD': { art: 'strecke', paar: 'CD', name: 'Strecke CD' },
+  'gerade-CD':  { art: 'gerade',  paar: 'CD', name: 'Gerade CD' }
+};
+const _m5mREIHE = ['strecke-AB', 'gerade-AB', 'strecke-CD', 'gerade-CD'];
+
+// ── Rechnung: Bild und Statuszeilen lesen nur hier ─────────────────────
+function _m5mGeo(paarName) {
+  const pa = _m5mPAAR[paarName], P = _m5mPUNKT[pa.p], Q = _m5mPUNKT[pa.q];
+  const dx = Q.x - P.x, dy = Q.y - P.y, L = Math.hypot(dx, dy);
+  return { P, Q, L, ux: dx / L, uy: dy / L, nx: -dy / L, ny: dx / L, seite: pa.seite };
+}
+// Laenge einer Strecke in cm, so wie das Lineal sie zeigt.
+function _m5mCm(paarName) { return Math.round(_m5mGeo(paarName).L / _m5mK.CM); }
+// Wo die Linie P + t*u das Rechteck r verlaesst: t von lo bis hi.
+function _m5mSchnitt(g, r) {
+  let lo = -Infinity, hi = Infinity;
+  for (const [u, p, a, b] of [[g.ux, g.P.x, r.x, r.x + r.w], [g.uy, g.P.y, r.y, r.y + r.h]]) {
+    if (Math.abs(u) < 1e-9) continue;
+    const t1 = (a - p) / u, t2 = (b - p) / u;
+    lo = Math.max(lo, Math.min(t1, t2)); hi = Math.min(hi, Math.max(t1, t2));
+  }
+  return { lo, hi };
+}
+function _m5mPkt(g, t, w) { return { x: g.P.x + g.ux * t + g.nx * (w || 0), y: g.P.y + g.uy * t + g.ny * (w || 0) }; }
+// Das Blatt, wie es gerade liegt (e = 0 klein, 1 gross).
+function _m5mBlattRect(e) {
+  const a = _m5mK.KLEIN, b = _m5mK.GROSS;
+  return { x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e, w: a.w + (b.w - a.w) * e, h: a.h + (b.h - a.h) * e };
+}
+
+function _m5mInit() {
+  _m5m = { wahl: null, ablauf: [], blattE: 0, ziehen: 0, lineal: 0, band: 0,
+           enden: null, laenge: null, zoomText: null,
+           popQ: -1, glanzNeu: 0, glanzBand: 0, leucht: 0, wackel: 0,
+           zeit: 0, fx: { teile: [] } };
+}
+function _m5mHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5m-b-${k}" onclick="_m5mWahl('${k}')">${_m5mLINIEN[k].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Kann man die Länge einer Geraden messen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf dem Blatt liegen die Punkte A, B, C und D. Die ersten vier Knöpfe zeichnen eine Linie. Danach legt sich ein Lineal an die Linie.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5m-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5mREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5m-gross" onclick="_m5mGross()">Blatt vergrößern</button>
+          <button class="sim-btn" onclick="_m5mNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5m-linie" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5m-enden" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5m-laenge" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5m-zoom" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„Blatt vergrößern“ macht das Blatt auf allen Seiten größer. Das Lineal bleibt liegen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: ein Blatt mit den Punkten A, B, C und D, noch keine Linie</p>
+  </div>`;
+}
+function _m5mZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5mStatus() {
+  if (!_m5m) return;
+  const z = _m5m, K = _m5mK;
+  const b = (s, f) => '<b style="color:' + f + '">' + s + '</b>';
+  const L = z.wahl ? _m5mLINIEN[z.wahl] : null;
+  _m5mZeile('_m5m-linie', 'Gezeichnet: ' + (L ? b(L.name, K.F_LINIE) : 'noch keine Linie'));
+  _m5mZeile('_m5m-enden', 'Anzahl der Endpunkte: ' + (z.enden == null ? '…' : b(String(z.enden), K.F_ENDE)));
+  _m5mZeile('_m5m-laenge', 'Länge auf dem Lineal: ' + (z.laenge == null ? '…' : b(z.laenge, K.F_LAENGE)));
+  const zt = { strecke: b('Die Linie bleibt gleich lang.', K.F_LAENGE),
+               gerade: b('Die Linie wird auf beiden Seiten länger.', K.F_NEU),
+               leer: 'Es ist noch keine Linie gezeichnet.' }[z.zoomText];
+  _m5mZeile('_m5m-zoom', 'Beim Vergrößern: ' + (zt || '…'));
+  for (const k of _m5mREIHE) {
+    const e = document.getElementById('_m5m-b-' + k);
+    if (e && e.classList) e.classList.toggle('primary', k === z.wahl);
+  }
+}
+
+// ── Ablauf: Schritte nacheinander, jeder mit Dauer ──────────────────────
+// Ein Schritt setzt waehrend seiner Dauer einen Wert (0..1) und am Ende das,
+// was die Statuszeilen zeigen. _m5mFertig() spult alles sofort ans Ende.
+function _m5mSetze(ph, u) {
+  const z = _m5m, e = _bioFxEase.sanft(u);
+  if (ph.art === 'schrumpfen') z.blattE = ph.von * (1 - e);
+  else if (ph.art === 'zoom') z.blattE = e;
+  else if (ph.art === 'ziehen') z.ziehen = u;
+  else if (ph.art === 'lineal') z.lineal = u;
+  else if (ph.art === 'band') z.band = u;
+}
+function _m5mEnde(ph) {
+  const z = _m5m, K = _m5mK;
+  const L = z.wahl ? _m5mLINIEN[z.wahl] : null;
+  if (ph.art === 'ziehen' && L) {
+    z.enden = L.art === 'strecke' ? 2 : 0;
+    if (L.art === 'strecke') z.popQ = 0;
+  } else if (ph.art === 'lineal' && L && L.art === 'gerade') {
+    z.laenge = 'keine';
+  } else if (ph.art === 'band' && L) {
+    z.laenge = _m5mCm(L.paar) + '\u00a0cm';
+  } else if (ph.art === 'zoom') {
+    z.zoomText = L ? L.art : 'leer';
+    if (L && L.art === 'gerade') {
+      // Aha: an beiden Pfeilen ein Lichtring, die neuen Stuecke leuchten.
+      const g = _m5mGeo(L.paar), s = _m5mSchnitt(g, K.GROSS);
+      for (const t of [s.lo - K.TISCH, s.hi + K.TISCH]) {
+        const p = _m5mPkt(g, t);
+        _bioFxWelle(z.fx.teile, p.x, p.y, '#f59e0b', 22);
+      }
+      z.leucht = K.T_LEUCHT; z.glanzNeu = K.T_LEUCHT;
+    } else if (L) z.glanzBand = K.T_GLANZ;
+  }
+  _m5mStatus();
+}
+function _m5mFertig() {
+  const z = _m5m;
+  while (z.ablauf.length) { const ph = z.ablauf.shift(); _m5mSetze(ph, 1); _m5mEnde(ph); }
+  if (z.popQ >= 0) z.popQ = _m5mK.T_POP;
+}
+// Alles zuruecksetzen, was zu einer Linie gehoert (Blatt bleibt, wie es ist).
+function _m5mLeeren() {
+  const z = _m5m;
+  z.wahl = null; z.ziehen = 0; z.lineal = 0; z.band = 0;
+  z.enden = null; z.laenge = null; z.zoomText = null;
+  z.popQ = -1; z.glanzNeu = 0; z.glanzBand = 0; z.leucht = 0;
+  z.fx.teile.length = 0;
+}
+function _m5mSchrumpfen() {
+  const z = _m5m;
+  if (z.blattE > 0) z.ablauf.push({ art: 'schrumpfen', dauer: _m5mK.T_SCHRUMPF, t: 0, von: z.blattE });
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5mWahl(k) {
+  if (!_m5m || !_m5mLINIEN[k]) return;
+  _m5mFertig();
+  const z = _m5m, K = _m5mK, strecke = _m5mLINIEN[k].art === 'strecke';
+  _m5mLeeren();
+  z.wahl = k;
+  _m5mSchrumpfen();
+  z.ablauf.push({ art: 'ziehen', dauer: strecke ? K.T_ZIEHEN_S : K.T_ZIEHEN_G, t: 0 });
+  z.ablauf.push({ art: 'lineal', dauer: K.T_LINEAL, t: 0 });
+  if (strecke) z.ablauf.push({ art: 'band', dauer: K.T_BAND, t: 0 });
+  _m5mStatus();
+}
+function _m5mGross() {
+  if (!_m5m) return;
+  _m5mFertig();
+  const z = _m5m;
+  if (z.blattE >= 1 - 1e-9) { z.wackel = _m5mK.T_WACKEL; return; }
+  z.glanzBand = 0;
+  z.ablauf.push({ art: 'zoom', dauer: _m5mK.T_ZOOM, t: 0 });
+  _m5mStatus();
+}
+function _m5mNeu() {
+  if (!_m5m) return;
+  _m5mFertig();
+  _m5mLeeren();
+  _m5mSchrumpfen();
+  _m5mStatus();
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5mUpdate(dt) {
+  if (!_m5m) return;
+  dt = _bioFxDt(dt);
+  const z = _m5m, K = _m5mK;
+  z.zeit += dt;
+  let rest = dt;
+  while (z.ablauf.length && rest > 0) {
+    const ph = z.ablauf[0];
+    ph.t += rest; rest = 0;
+    if (ph.t >= ph.dauer) {
+      rest = ph.t - ph.dauer;
+      z.ablauf.shift();
+      _m5mSetze(ph, 1);
+      _m5mEnde(ph);
+    } else _m5mSetze(ph, ph.t / ph.dauer);
+  }
+  if (z.popQ >= 0) z.popQ = Math.min(K.T_POP, z.popQ + dt);
+  z.glanzNeu = Math.max(0, z.glanzNeu - dt);
+  z.glanzBand = Math.max(0, z.glanzBand - dt);
+  z.leucht = Math.max(0, z.leucht - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5mTisch(ctx, W, H) {
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#cfb184'); bg.addColorStop(1, '#c2a170');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(120,80,35,0.16)'; ctx.lineWidth = 1.5;   // Maserung
+  for (const y of [18, 47, 83, 121, 152, 188, 226]) {
+    ctx.beginPath(); ctx.moveTo(0, y);
+    ctx.quadraticCurveTo(W * 0.35, y + 5, W * 0.6, y - 2);
+    ctx.quadraticCurveTo(W * 0.8, y - 6, W, y + 3);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+function _m5mBlatt(ctx, r) {
+  const K = _m5mK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(70,45,10,0.25)';                    // Schatten
+  ctx.fillRect(r.x + 3, r.y + 4, r.w, r.h);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(r.x, r.y, r.w, r.h);
+  ctx.strokeStyle = K.F_NETZ; ctx.lineWidth = 1;            // Kaestchen
+  const k0 = Math.ceil((r.x - K.NETZ_X) / K.KAST - 1e-6), k1 = Math.floor((r.x + r.w - K.NETZ_X) / K.KAST + 1e-6);
+  for (let k = k0; k <= k1; k++) {
+    const x = K.NETZ_X + k * K.KAST;
+    ctx.beginPath(); ctx.moveTo(x, r.y); ctx.lineTo(x, r.y + r.h); ctx.stroke();
+  }
+  const j0 = Math.ceil((r.y - K.NETZ_Y) / K.KAST - 1e-6), j1 = Math.floor((r.y + r.h - K.NETZ_Y) / K.KAST + 1e-6);
+  for (let j = j0; j <= j1; j++) {
+    const y = K.NETZ_Y + j * K.KAST;
+    ctx.beginPath(); ctx.moveTo(r.x, y); ctx.lineTo(r.x + r.w, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#a8b4c4'; ctx.lineWidth = 1.2;
+  ctx.strokeRect(r.x, r.y, r.w, r.h);
+  ctx.restore();
+}
+// Wo das Blatt vorher lag: gestrichelter Rand, sobald es waechst.
+function _m5mVorher(ctx, e) {
+  if (e <= 0.01) return;
+  const K = _m5mK, r = K.KLEIN;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, e * 1.6);
+  ctx.setLineDash([6, 4]); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  ctx.strokeRect(r.x, r.y, r.w, r.h);
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#475569'; ctx.font = '600 11px sans-serif';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Blatt vorher', r.x + r.w - 5, r.y + r.h - 5);
+  ctx.restore();
+}
+// Das Lineal, an die Linie gelegt: 0 am ersten Punkt. ein = 0..1 (gleitet an),
+// band = 0..1 (gruener Streifen bis zum zweiten Punkt, nur bei der Strecke).
+function _m5mLineal(ctx, g, ein, band, glanz) {
+  const K = _m5mK, s = g.seite;
+  if (ein <= 0) return;
+  const e = _bioFxEase.sanft(Math.min(1, ein));
+  ctx.save();
+  ctx.translate(g.P.x, g.P.y);
+  ctx.rotate(Math.atan2(g.uy, g.ux));
+  ctx.translate(0, s * (1 - e) * 30);                       // gleitet von der Seite heran
+  ctx.globalAlpha = e;
+  const y0 = s * K.L_ABST, top = s > 0 ? K.L_ABST : -(K.L_ABST + K.L_BREIT);
+  const w = K.L_BIS - K.L_VON;
+  ctx.fillStyle = 'rgba(15,23,42,0.14)';
+  _bioFxRundRect(ctx, K.L_VON + 2, top + 2.5, w, K.L_BREIT, 3); ctx.fill();
+  ctx.fillStyle = K.F_LINEAL;
+  _bioFxRundRect(ctx, K.L_VON, top, w, K.L_BREIT, 3); ctx.fill();
+  ctx.strokeStyle = K.F_LRAND; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.L_VON, top, w, K.L_BREIT, 3); ctx.stroke();
+  const lp = g.L * Math.max(0, Math.min(1, band));          // gruener Streifen an der Kante
+  if (band > 0) {
+    ctx.fillStyle = 'rgba(4,120,87,' + (0.55 + 0.35 * Math.min(1, glanz / 0.6)).toFixed(3) + ')';
+    ctx.fillRect(0, s > 0 ? y0 : y0 - 5, lp, 5);
+  }
+  ctx.strokeStyle = K.F_STRICH; ctx.lineWidth = 1.2;        // Striche: cm lang, halbe cm kurz
+  for (let k = 0; k <= 2 * K.L_CM; k++) {
+    const x = k * K.CM / 2, len = k % 2 ? 5 : 9;
+    ctx.beginPath(); ctx.moveTo(x, y0); ctx.lineTo(x, y0 + s * len); ctx.stroke();
+  }
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  const yz = s > 0 ? y0 + 20 : y0 - 11, ym = yz - 4;        // Grundlinie und Mitte der Zahlen
+  const lesen = band >= 1 ? Math.round(g.L / K.CM) : -1;    // die abgelesene Zahl
+  for (let n = 0; n <= K.L_CM; n++) {
+    if (n === lesen) {
+      ctx.fillStyle = K.F_LAENGE;
+      ctx.beginPath(); ctx.arc(n * K.CM, ym, 8.5, 0, Math.PI * 2); ctx.fill();
+      if (glanz > 0) {
+        ctx.save(); ctx.globalAlpha = e * Math.min(1, glanz / 0.6);
+        ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(n * K.CM, ym, 12, 0, Math.PI * 2); ctx.stroke();
+        ctx.restore();
+      }
+      ctx.fillStyle = '#ffffff';
+    } else ctx.fillStyle = K.F_STRICH;
+    ctx.fillText(String(n), n * K.CM, yz);
+  }
+  ctx.restore();
+}
+function _m5mStrich(ctx, a, b, farbe, breite, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha == null ? 1 : alpha;
+  ctx.strokeStyle = farbe; ctx.lineWidth = breite; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  ctx.restore();
+}
+function _m5mSpitze(ctx, p) {                                // leuchtende Stiftspitze
+  ctx.save();
+  ctx.fillStyle = 'rgba(29,78,216,0.18)';
+  ctx.beginPath(); ctx.arc(p.x, p.y, 8, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = _m5mK.F_LINIE; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Querstrich am Ende einer Strecke.
+function _m5mQuer(ctx, g, t) {
+  _m5mStrich(ctx, _m5mPkt(g, t, -7), _m5mPkt(g, t, 7), _m5mK.F_LINIE, 3);
+}
+function _m5mStrecke(ctx, g, u) {
+  if (u <= 0) return;
+  const K = _m5mK, t = g.L * _bioFxEase.sanft(Math.min(1, u));
+  _m5mStrich(ctx, g.P, _m5mPkt(g, t), K.F_LINIE, 3.2);
+  _m5mQuer(ctx, g, 0);
+  if (u >= 1) _m5mQuer(ctx, g, g.L);
+  else _m5mSpitze(ctx, _m5mPkt(g, t));
+}
+// Ein Stueck, das in den Tisch hinein verblasst, mit Pfeil am Ende.
+function _m5mAuslauf(ctx, g, t0, t1, pfeil) {
+  const K = _m5mK, n = 5, d = t1 - t0;
+  if (Math.abs(d) < 0.5) return;
+  for (let i = 0; i < n; i++) {
+    const a = _m5mPkt(g, t0 + d * i / n), b = _m5mPkt(g, t0 + d * (i + 1) / n);
+    _m5mStrich(ctx, a, b, K.F_LINIE, 3, 0.85 - 0.5 * (i / (n - 1)));
+  }
+  if (pfeil) {
+    const sg = Math.sign(d), p = _m5mPkt(g, t1), ux = g.ux * sg, uy = g.uy * sg;
+    ctx.save();
+    ctx.globalAlpha = 0.75;
+    ctx.fillStyle = K.F_LINIE;
+    ctx.beginPath();
+    ctx.moveTo(p.x + ux * 4, p.y + uy * 4);
+    ctx.lineTo(p.x - ux * 6 - uy * 5, p.y - uy * 6 + ux * 5);
+    ctx.lineTo(p.x - ux * 6 + uy * 5, p.y - uy * 6 - ux * 5);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+}
+function _m5mGerade(ctx, g, r, u) {
+  if (u <= 0) return;
+  const K = _m5mK, s = _m5mSchnitt(g, r), tm = g.L / 2, e = _bioFxEase.sanft(Math.min(1, u));
+  const a = tm + (s.lo - K.TISCH - tm) * e, b = tm + (s.hi + K.TISCH - tm) * e;
+  const z = _m5m;
+  if (z.leucht > 0 && u >= 1) {                             // Aha: beide Pfeile leuchten nach
+    ctx.save();                                             // (hinter der Linie, die Pfeile bleiben sichtbar)
+    ctx.globalAlpha = Math.min(1, z.leucht / 0.8);
+    for (const t of [a, b]) { const p = _m5mPkt(g, t); _bioFxLeuchten(ctx, p.x, p.y, 9, z.zeit, '252,211,77'); }
+    ctx.restore();
+  }
+  if (z.glanzNeu > 0) {                                     // die neuen Stuecke leuchten orange
+    const k = _m5mSchnitt(g, K.KLEIN), al = Math.min(1, z.glanzNeu / 0.8);
+    _m5mStrich(ctx, _m5mPkt(g, s.lo), _m5mPkt(g, k.lo), K.F_NEU, 9, 0.45 * al);
+    _m5mStrich(ctx, _m5mPkt(g, k.hi), _m5mPkt(g, s.hi), K.F_NEU, 9, 0.45 * al);
+  }
+  _m5mStrich(ctx, _m5mPkt(g, Math.max(a, s.lo)), _m5mPkt(g, Math.min(b, s.hi)), K.F_LINIE, 3.2);
+  if (a < s.lo) _m5mAuslauf(ctx, g, s.lo, a, u >= 1);
+  if (b > s.hi) _m5mAuslauf(ctx, g, s.hi, b, u >= 1);
+  if (u < 1) { _m5mSpitze(ctx, _m5mPkt(g, a)); _m5mSpitze(ctx, _m5mPkt(g, b)); }
+}
+function _m5mRing(ctx, p, u) {                               // roter Ring um einen Endpunkt
+  if (u <= 0) return;
+  const k = Math.max(0.05, _bioFxEase.federn(Math.min(1, u)));
+  ctx.save();
+  ctx.strokeStyle = _m5mK.F_ENDE; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(p.x, p.y, 11 * k, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+function _m5mPunkte(ctx, aktiv) {
+  const K = _m5mK;
+  ctx.save();
+  ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  for (const n of ['A', 'B', 'C', 'D']) {
+    const p = _m5mPUNKT[n];
+    ctx.globalAlpha = (aktiv && aktiv.indexOf(n) < 0) ? 0.45 : 1;
+    ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 3.6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.fillText(n, p.x, p.y + _m5mSCHILD[n]);
+  }
+  ctx.restore();
+}
+function _m5mDraw(ctx, cv) {
+  if (!_m5m) return;
+  const W = cv.width, H = cv.height, z = _m5m, K = _m5mK;
+  ctx.clearRect(0, 0, W, H);
+  _m5mTisch(ctx, W, H);
+  ctx.save();
+  if (z.wackel > 0) ctx.translate(Math.sin(z.wackel * 48) * 3 * (z.wackel / K.T_WACKEL), 0);
+  const r = _m5mBlattRect(z.blattE);
+  _m5mBlatt(ctx, r);
+  _m5mVorher(ctx, z.blattE);
+  const L = z.wahl ? _m5mLINIEN[z.wahl] : null;
+  let g = null;
+  if (L) {
+    g = _m5mGeo(L.paar);
+    _m5mLineal(ctx, g, z.lineal, L.art === 'strecke' ? z.band : 0, z.glanzBand);
+    if (L.art === 'strecke') _m5mStrecke(ctx, g, z.ziehen);
+    else _m5mGerade(ctx, g, r, z.ziehen);
+  }
+  _m5mPunkte(ctx, L ? L.paar : null);
+  if (L && L.art === 'strecke' && z.ziehen > 0) {
+    _m5mRing(ctx, g.P, z.ziehen * K.T_ZIEHEN_S / K.T_POP);
+    if (z.popQ >= 0) _m5mRing(ctx, g.Q, z.popQ / K.T_POP);
+  }
+  _bioFxDraw(ctx, z.fx.teile);                              // Lichtring an den Pfeilen
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mf2 „Senkrecht oder parallel?“ (Kennung m5-geodreieck)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL3_PROFIL.md, Abschnitt m5-geodreieck.
+// Ueberschrift: „Wie liegen die Geraden g und h zueinander?“ – die Frage der
+// Einheit („Können schräge Geraden senkrecht zueinander sein?“) traegt das
+// Wort „senkrecht“ (nicht am Bildschirm), deshalb eine neutrale Frage.
+//
+// Was man sieht: ein Blatt Karopapier (Kaestchen 12 px = 0,5 cm im Modell,
+// also 24 px = 1 cm). Darauf zwei Geraden ueber das ganze Bild: g blau, h
+// orange, beschriftet mit „g“ und „h“. Schneiden sie sich, sitzt dort ein
+// kleiner dunkler Punkt (immer in der Bildmitte 196|120).
+// Eine Sprungmarke dreht die Geraden in 0,8 s in ihre neue Lage (Bewegung
+// statt Sprung):
+//   „Kreuz, gerade“          g waagerecht (0°), h von oben nach unten (90°)
+//   „Kreuz, schräg“          dasselbe Kreuz um 30° gedreht: g 30°, h 120°
+//   „schräg geschnitten“     g bleibt bei 30°, h steht bei 90°: Winkel 60°
+//   „nebeneinander, schräg“  g bleibt bei 30°, h dreht ebenfalls auf 30° und
+//                            liegt 48 px = 2 cm daneben
+// In den drei schraegen Lagen bleibt g also stehen, nur h dreht sich (eine
+// Groesse wird veraendert, alles andere bleibt – MATHE_PROFIL § 10, Regel 3).
+// „Papierecke anlegen“: Eine weisse Papierecke (Ecke eines Blatts, zwei
+// gerade Kanten, die dritte Kante abgerissen) mit Schatten gleitet in 0,9 s
+// von unten rechts herein. Ihre eine Kante legt sie auf g, ihre Ecke an den
+// Schnittpunkt; die zweite Kante zeigt nach unten rechts.
+//   passt genau  – die zweite Kante liegt auf h: innen laeuft ein gruener
+//                  Rand an beiden Kanten auf (0,45 s)
+//   passt nicht  – zwischen der zweiten Kante und h bleibt ein Keil frei
+//                  (30°), er fuellt sich orange (0,45 s)
+//   kein Schnittpunkt – die Ecke liegt auf g, ihre zweite Kante reicht ueber h
+//                  hinaus; sie rutscht 0,9 s auf g hin und her (sucht) und
+//                  bleibt dann liegen
+// „Abstand messen“:
+//   g und h schneiden sich nicht – zwei Messpfeile wachsen an zwei Stellen
+//     von g bis h (rechtwinklig zu h, jeder 0,55 s, der zweite 0,3 s
+//     spaeter); hinter h erscheint je ein Schild „2 cm“
+//   g und h schneiden sich – ein Messpfeil von einem Punkt auf g bis h
+//     (rechtwinklig zu h) rutscht in 1,1 s auf g bis zum Schnittpunkt und
+//     wird dabei immer kuerzer, bis nichts mehr uebrig ist; dort springt ein
+//     Ring auf. Keine Zahl.
+// Ein Knopfdruck waehrend einer Bewegung laesst sie sofort fertig werden; eine
+// Sprungmarke nimmt Papierecke und Messpfeile weg. Jede Knopffolge endet so
+// im selben Zustand.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5nLage('a'|'b'|'c'|'d')):
+//     „Kreuz, gerade“ · „Kreuz, schräg“ · „schräg geschnitten“ ·
+//     „nebeneinander, schräg“
+//   „Papierecke anlegen“ (_m5nEcke()) · „Abstand messen“ (_m5nAbstand()) ·
+//   „neu“ (_m5nNeu(): zurueck zu „Kreuz, gerade“, alles weg)
+//
+// Statuszeilen (woertlich; jede laenger als 18 Zeichen, simfakten.js-Grenze):
+//   _m5n-lage     „Lage: Kreuz, schräg“
+//   _m5n-schnitt  „Schneiden sich g und h? ja“ bzw. „… nein“
+//                 (waehrend die Geraden sich drehen: „… ?“ mit „…“)
+//   _m5n-ecke     vorher „Papierecke: noch nicht angelegt“, waehrend der
+//                 Bewegung „Papierecke: wird angelegt …“, danach
+//                 „Papierecke am Schnittpunkt: passt genau“ /
+//                 „Papierecke am Schnittpunkt: passt nicht“ /
+//                 „Papierecke: Es gibt keinen Schnittpunkt.“
+//   _m5n-abstand  vorher „Abstand: noch nicht gemessen“, waehrend der
+//                 Bewegung „Abstand: wird gemessen …“, danach
+//                 „Abstand an zwei Stellen: 2 cm und 2 cm“ (nur bei
+//                 „nebeneinander, schräg“), sonst „Abstand: g und h schneiden
+//                 sich.“
+// Farben verbinden Bild und Zeile: g blau und h orange in beiden; „passt
+// genau“ gruen wie der Rand, „passt nicht“ orange wie der Keil.
+//
+// Werte (jede Sprungmarke nachgerechnet mit simcheck/werte.js, Bewegungen
+// ausgelaufen; alles aus _m5nRechne(), dieselbe Rechnung wie das Bild):
+//   Kreuz, gerade          schneiden ja   · passt genau  · g und h schneiden sich
+//   Kreuz, schräg          schneiden ja   · passt genau  · g und h schneiden sich
+//   schräg geschnitten     schneiden ja   · passt nicht (Winkel 60°, Keil 30°)
+//                                         · g und h schneiden sich
+//   nebeneinander, schräg  schneiden nein · keinen Schnittpunkt · 2 cm und 2 cm
+// Gemessen (Frames zu 16 ms): Drehen 50 Frames, Papierecke 86 Frames (mit
+// Pruefen) bzw. 114 Frames (mit Suchen), Abstand 69 Frames (zwei Messpfeile)
+// bzw. 85 Frames (rutschender Messpfeil) – alles
+// unter den 125 Frames, die simfakten.js mit --frames=25 --verlauf=4 liest.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): „Kreuz, schräg“ und
+// „Papierecke anlegen“ – sobald die Ecke liegt und genau passt, laeuft ein
+// goldener Lichtring um die Ecke, und sie leuchtet 2,5 s nach (0,8 Hz). Das
+// widerlegt Vermutung 1 („senkrecht heißt von oben nach unten“): Keine der
+// beiden Geraden geht von oben nach unten, und die Ecke passt trotzdem.
+//
+// NICHT am Bildschirm (sim_plan.nicht_am_bildschirm): „senkrecht“,
+// „parallel“, „gleich“ (auch nicht in „vergleichen“ o. Ae.) – die Kinder
+// entscheiden selbst, welches Wort zur Lage passt. Keine Regel als Satz, kein
+// Winkel in Grad. Keine Namen, keine Punkte, keine Zeit. Deterministisch,
+// ohne Zufall: jede Zahl und jede Lage im Bild kommt aus _m5nLAGEN.
+// ════════════════════════════════════════════════════════════════════════
+let _m5n = null;
+const _m5nLAGEN = {                       // [Winkel in Grad, Abstand von der Mitte in px]
+  a: { name: 'Kreuz, gerade',         g: [0, 0],  h: [90, 0] },
+  b: { name: 'Kreuz, schräg',         g: [30, 0], h: [120, 0] },
+  c: { name: 'schräg geschnitten',    g: [30, 0], h: [90, 0] },
+  d: { name: 'nebeneinander, schräg', g: [30, 0], h: [30, 48] }
+};
+const _m5nREIHE = ['a', 'b', 'c', 'd'];
+const _m5nK = {
+  CX: 196, CY: 120,             // Mitte des Bilds: hier schneiden sich g und h
+  KAST: 12,                     // px je Kaestchen (0,5 cm)
+  PX_CM: 24,                    // px je cm
+  L: 84,                        // Kantenlaenge der Papierecke (px)
+  MESS_T: [-112, 128],          // wo auf g gemessen wird (px von der Mitte, entlang g)
+  RUTSCH_T0: -150,              // wo der rutschende Messpfeil auf g startet
+  T_DREH: 0.8,                  // s: Geraden drehen sich in die neue Lage
+  T_GLEIT: 0.9,                 // s: Papierecke gleitet herein
+  T_PRUEF: 0.45,                // s: gruener Rand bzw. oranger Keil laeuft auf
+  T_SUCH: 0.9,                  // s: Papierecke rutscht auf g hin und her
+  T_PFEIL: 0.55,                // s: ein Messpfeil waechst
+  T_VERSATZ: 0.3,               // s: der zweite Messpfeil startet spaeter
+  T_ZAHL: 0.25,                 // s: Schild bzw. Ring springt auf
+  T_RUTSCH: 1.1,                // s: Messpfeil rutscht zum Schnittpunkt
+  LEUCHT: 2.5,                  // s: die Ecke leuchtet nach (Aha)
+  F_G: '#2563eb', F_H: '#ea580c', F_GRUEN: '#16a34a', F_KEIL: '234,88,12',
+  F_MESS: '#334155', F_KARO: '#d6e4f5', F_PAPIER: '#fdfdfb', F_PUNKT: '#1e293b'
+};
+
+// ── Geometrie: alles aus Winkel und Abstand einer Geraden ──────────────
+// Richtung einer Geraden auf dem Bildschirm (y zeigt nach unten).
+function _m5nRich(w) { const r = w * Math.PI / 180; return { x: Math.cos(r), y: -Math.sin(r) }; }
+// Die Richtung rechtwinklig dazu (nach unten rechts bei 30°).
+function _m5nNorm(w) { const r = w * Math.PI / 180; return { x: Math.sin(r), y: Math.cos(r) }; }
+// Punkt einer Geraden l = [Winkel, Abstand] beim Parameter t (px entlang l).
+function _m5nPunkt(l, t) {
+  const K = _m5nK, u = _m5nRich(l[0]), n = _m5nNorm(l[0]);
+  return { x: K.CX + t * u.x + l[1] * n.x, y: K.CY + t * u.y + l[1] * n.y };
+}
+// Schnittpunkt zweier Geraden, null wenn sie sich nicht schneiden.
+function _m5nSchnitt(g, h) {
+  const K = _m5nK, ng = _m5nNorm(g[0]), nh = _m5nNorm(h[0]);
+  const det = ng.x * nh.y - ng.y * nh.x;
+  if (Math.abs(det) < 1e-9) return null;
+  return { x: K.CX + (g[1] * nh.y - ng.y * h[1]) / det,
+           y: K.CY + (ng.x * h[1] - g[1] * nh.x) / det };
+}
+// Fusspunkt von p auf der Geraden l (rechtwinklig zu l) und der Abstand.
+function _m5nLot(p, l) {
+  const K = _m5nK, n = _m5nNorm(l[0]);
+  const s = (p.x - K.CX) * n.x + (p.y - K.CY) * n.y - l[1];
+  return { fuss: { x: p.x - s * n.x, y: p.y - s * n.y }, abst: Math.abs(s) };
+}
+// Die ganze Rechnung einer Lage – Bild und Statuszeilen lesen nur hier.
+function _m5nRechne(k) {
+  const L = _m5nLAGEN[k], K = _m5nK;
+  const S = _m5nSchnitt(L.g, L.h);
+  let winkel = ((L.h[0] - L.g[0]) % 180 + 180) % 180;      // 0 bis 180
+  if (winkel > 90) winkel = 180 - winkel;                    // der kleinere Winkel
+  return {
+    name: L.name, g: L.g, h: L.h, S, schneiden: !!S, winkel,
+    passt: !!S && Math.abs(winkel - 90) < 0.5,
+    keil: S ? 90 - winkel : 0,                               // was die Papierecke frei laesst
+    abstand: K.MESS_T.map(t => _m5nLot(_m5nPunkt(L.g, t), L.h).abst / K.PX_CM)
+  };
+}
+// 2 -> "2 cm", 2.5 -> "2,5 cm" (geschuetztes Leerzeichen)
+function _m5nCm(x) {
+  return String(Math.round(x * 10) / 10).replace('.', ',') + ' cm';
+}
+
+function _m5nInit() {
+  const L = _m5nLAGEN.a;
+  _m5n = { lage: 'a', g: L.g.slice(), h: L.h.slice(), dreh: null, ecke: null, mess: null,
+           leucht: 0, t: 0, fx: { teile: [] } };
+}
+function _m5nHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5n-b-${k}" onclick="_m5nLage('${k}')">${_m5nLAGEN[k].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie liegen die Geraden g und h zueinander?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Geraden g (blau) und h (orange) gehen über das ganze Blatt. Die Papierecke ist die Ecke eines Blatts Papier.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5n-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5nREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_m5nEcke()">Papierecke anlegen</button>
+          <button class="sim-btn" onclick="_m5nAbstand()">Abstand messen</button>
+          <button class="sim-btn" onclick="_m5nNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5n-lage" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5n-schnitt" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5n-ecke" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5n-abstand" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„Papierecke anlegen“ legt die Papierecke dorthin, wo sich g und h schneiden. „Abstand messen“ misst von g bis h.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Kreuz, gerade – noch keine Papierecke, noch nicht gemessen</p>
+  </div>`;
+}
+function _m5nZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5nStatus() {
+  if (!_m5n) return;
+  const z = _m5n, K = _m5nK, r = _m5nRechne(z.lage);
+  const b = (s, f) => '<b style="color:' + f + '">' + s + '</b>';
+  const gh = b('g', K.F_G) + ' und ' + b('h', K.F_H);
+  _m5nZeile('_m5n-lage', 'Lage: ' + r.name);
+  _m5nZeile('_m5n-schnitt', 'Schneiden sich ' + gh + '? ' + (z.dreh ? '…' : (r.schneiden ? 'ja' : 'nein')));
+  const e = z.ecke;
+  _m5nZeile('_m5n-ecke', !e ? 'Papierecke: noch nicht angelegt'
+    : e.phase !== 'liegt' ? 'Papierecke: wird angelegt …'
+    : !r.schneiden ? 'Papierecke: Es gibt keinen Schnittpunkt.'
+    : 'Papierecke am Schnittpunkt: ' + (r.passt ? b('passt genau', K.F_GRUEN) : b('passt nicht', K.F_H)));
+  const m = z.mess;
+  _m5nZeile('_m5n-abstand', !m ? 'Abstand: noch nicht gemessen'
+    : !m.fertig ? 'Abstand: wird gemessen …'
+    : r.schneiden ? 'Abstand: ' + gh + ' schneiden sich.'
+    : 'Abstand an zwei Stellen: ' + r.abstand.map(a => b(_m5nCm(a), K.F_MESS)).join(' und '));
+  for (const k of _m5nREIHE) {
+    const el = document.getElementById('_m5n-b-' + k);
+    if (el && el.classList) el.classList.toggle('primary', k === z.lage);
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Eine laufende Drehung steht sofort am Ziel.
+function _m5nDrehFertig() {
+  const z = _m5n;
+  if (!z.dreh) return;
+  z.g = z.dreh.nach.g.slice(); z.h = z.dreh.nach.h.slice();
+  z.dreh = null;
+}
+// Die Papierecke liegt (Aha, wenn sie in „Kreuz, schräg“ genau passt).
+function _m5nEckeLiegt() {
+  const z = _m5n, e = z.ecke;
+  if (!e || e.phase === 'liegt') return;
+  const vorPruefen = e.phase === 'gleiten';
+  e.phase = 'liegt'; e.t = 0;
+  if (vorPruefen) _m5nAha();
+}
+function _m5nAha() {
+  const z = _m5n, e = z.ecke;
+  if (!e || !e.r.passt || z.lage !== 'b') return;
+  z.leucht = _m5nK.LEUCHT;
+  _bioFxWelle(z.fx.teile, e.r.S.x, e.r.S.y, '#f59e0b', 58);
+}
+function _m5nLage(k) {
+  if (!_m5n || !_m5nLAGEN[k]) return;
+  const z = _m5n, L = _m5nLAGEN[k];
+  z.lage = k; z.ecke = null; z.mess = null; z.leucht = 0;
+  const da = (a, c) => Math.abs(a[0] - c[0]) < 1e-9 && Math.abs(a[1] - c[1]) < 1e-9;
+  z.dreh = (da(z.g, L.g) && da(z.h, L.h)) ? null
+         : { von: { g: z.g.slice(), h: z.h.slice() }, nach: { g: L.g.slice(), h: L.h.slice() }, t: 0 };
+  _m5nStatus();
+}
+function _m5nEcke() {
+  if (!_m5n) return;
+  const z = _m5n;
+  _m5nDrehFertig();
+  if (z.mess) { z.mess.fertig = true; z.mess.t = z.mess.dauer; }
+  z.leucht = 0;
+  z.ecke = { phase: 'gleiten', t: 0, r: _m5nRechne(z.lage) };
+  _m5nStatus();
+}
+function _m5nAbstand() {
+  if (!_m5n) return;
+  const z = _m5n, K = _m5nK;
+  _m5nDrehFertig();
+  _m5nEckeLiegt();
+  const r = _m5nRechne(z.lage);
+  z.mess = { t: 0, fertig: false, r,
+             dauer: r.schneiden ? K.T_RUTSCH + K.T_ZAHL : K.T_VERSATZ + K.T_PFEIL + K.T_ZAHL };
+  _m5nStatus();
+}
+function _m5nNeu() {
+  if (!_m5n) return;
+  _m5nLage('a');
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5nUpdate(dt) {
+  if (!_m5n) return;
+  dt = _bioFxDt(dt);
+  const z = _m5n, K = _m5nK;
+  z.t += dt;
+  let neu = false;
+  if (z.dreh) {
+    const d = z.dreh;
+    d.t += dt;
+    const u = Math.min(1, d.t / K.T_DREH), e = _bioFxEase.sanft(u);
+    const misch = (a, c) => [a[0] + (c[0] - a[0]) * e, a[1] + (c[1] - a[1]) * e];
+    z.g = misch(d.von.g, d.nach.g); z.h = misch(d.von.h, d.nach.h);
+    if (u >= 1) { _m5nDrehFertig(); neu = true; }
+  }
+  const e = z.ecke;
+  if (e) {
+    e.t += dt;
+    if (e.phase === 'gleiten' && e.t >= K.T_GLEIT) {
+      e.phase = e.r.schneiden ? 'pruefen' : 'suchen'; e.t = 0;
+      if (e.phase === 'pruefen') _m5nAha();
+    } else if (e.phase === 'pruefen' && e.t >= K.T_PRUEF) {
+      e.phase = 'liegt'; e.t = 0; neu = true;
+    } else if (e.phase === 'suchen' && e.t >= K.T_SUCH) {
+      e.phase = 'liegt'; e.t = 0; neu = true;
+    }
+  }
+  const m = z.mess;
+  if (m && !m.fertig) {
+    m.t += dt;
+    if (m.t >= m.dauer) { m.fertig = true; m.t = m.dauer; neu = true; }
+  }
+  if (z.leucht > 0) z.leucht = Math.max(0, z.leucht - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+  if (neu) _m5nStatus();
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+// Das Stueck einer Geraden, das im Bild liegt (von -u nach +u).
+function _m5nKappen(l, W, H) {
+  const a = _m5nPunkt(l, -1200), c = _m5nPunkt(l, 1200);
+  const dx = c.x - a.x, dy = c.y - a.y;
+  const p = [-dx, dx, -dy, dy], q = [a.x, W - a.x, a.y, H - a.y];
+  let t0 = 0, t1 = 1;
+  for (let i = 0; i < 4; i++) {
+    if (Math.abs(p[i]) < 1e-12) { if (q[i] < 0) return null; continue; }
+    const r = q[i] / p[i];
+    if (p[i] < 0) { if (r > t1) return null; if (r > t0) t0 = r; }
+    else { if (r < t0) return null; if (r < t1) t1 = r; }
+  }
+  return [{ x: a.x + t0 * dx, y: a.y + t0 * dy }, { x: a.x + t1 * dx, y: a.y + t1 * dy }];
+}
+function _m5nText(ctx, s, x, y, farbe, groesse, ausr) {
+  ctx.save();
+  ctx.font = '700 ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 5;
+  ctx.strokeText(s, x, y);
+  ctx.fillStyle = farbe;
+  ctx.fillText(s, x, y);
+  ctx.restore();
+}
+// Eine Gerade ueber das ganze Bild, mit ihrem Namen am Ende in Richtung +u.
+// seite: auf welcher Seite der Name steht (-1 oder +1, entlang der Normalen).
+// Beide Namen stehen auf der Seite +1 (unter g bzw. rechts von h): Bei 30°
+// laeuft g oben rechts aus dem Bild, ueber der Linie waere dort kein Platz.
+function _m5nGerade(ctx, l, farbe, name, seite, W, H) {
+  const s = _m5nKappen(l, W, H);
+  if (!s) return;
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(s[0].x, s[0].y); ctx.lineTo(s[1].x, s[1].y); ctx.stroke();
+  ctx.restore();
+  const u = _m5nRich(l[0]), n = _m5nNorm(l[0]);
+  let x = s[1].x - u.x * 24 + seite * n.x * 17, y = s[1].y - u.y * 24 + seite * n.y * 17 + 6;
+  x = Math.max(12, Math.min(W - 12, x)); y = Math.max(20, Math.min(H - 8, y));
+  _m5nText(ctx, name, x, y, farbe, 19);
+}
+// Punkt der Papierecke: lokale Koordinaten (entlang Kante 1, entlang Kante 2).
+function _m5nEckPunkt(V, phi, a, c) {
+  const e1 = _m5nRich(phi), e2 = _m5nRich(phi - 90);
+  return { x: V.x + a * e1.x + c * e2.x, y: V.y + a * e1.y + c * e2.y };
+}
+// Umriss der Papierecke: zwei gerade Kanten, die dritte abgerissen (fest
+// gezackt, ohne Zufall).
+function _m5nUmriss(ctx, V, phi, L) {
+  ctx.beginPath();
+  let p = _m5nEckPunkt(V, phi, 0, 0); ctx.moveTo(p.x, p.y);
+  p = _m5nEckPunkt(V, phi, L, 0); ctx.lineTo(p.x, p.y);
+  for (let k = 1; k < 18; k++) {
+    const w = k / 18 * Math.PI / 2, r = L + [2, -1, 1, -2, 0, 2][k % 6];
+    p = _m5nEckPunkt(V, phi, r * Math.cos(w), r * Math.sin(w)); ctx.lineTo(p.x, p.y);
+  }
+  p = _m5nEckPunkt(V, phi, 0, L); ctx.lineTo(p.x, p.y);
+  ctx.closePath();
+}
+// Lage der Papierecke im Augenblick: Ecke V, Richtung der Kante 1, Anheben.
+function _m5nEckLage(e) {
+  const K = _m5nK, r = e.r;
+  const ziel = r.S || _m5nPunkt(r.g, 0), phi = r.g[0];
+  if (e.phase === 'gleiten') {
+    const u = _bioFxEase.sanft(Math.min(1, e.t / K.T_GLEIT));
+    const von = { x: 470, y: 300 }, phi0 = phi - 40;
+    return { V: { x: von.x + (ziel.x - von.x) * u, y: von.y + (ziel.y - von.y) * u },
+             phi: phi0 + (phi - phi0) * u, hub: 1 - u };
+  }
+  if (e.phase === 'suchen') {
+    const s = 30 * Math.sin(2 * Math.PI * Math.min(1, e.t / K.T_SUCH)), d = _m5nRich(phi);
+    return { V: { x: ziel.x + s * d.x, y: ziel.y + s * d.y }, phi, hub: 0 };
+  }
+  return { V: ziel, phi, hub: 0 };
+}
+// Der freie Keil zwischen der zweiten Kante und h (nur wenn sie nicht passt).
+function _m5nKeil(ctx, e) {
+  const K = _m5nK, r = e.r;
+  if (!r.schneiden || r.passt || e.phase === 'gleiten') return;
+  const a = e.phase === 'pruefen' ? _bioFxEase.raus(Math.min(1, e.t / K.T_PRUEF)) : 1;
+  // Kante 2 zeigt in Richtung g - 90°; h liegt r.keil Grad weiter im Uhrzeigersinn.
+  const w2 = -(r.g[0] - 90) * Math.PI / 180;              // Bildschirmwinkel der Kante 2
+  const wh = w2 + r.keil * Math.PI / 180 * a;
+  const R = K.L * 1.05;
+  ctx.save();
+  ctx.fillStyle = 'rgba(' + K.F_KEIL + ',0.38)';
+  ctx.beginPath(); ctx.moveTo(r.S.x, r.S.y); ctx.arc(r.S.x, r.S.y, R, w2, wh, false); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(' + K.F_KEIL + ',0.9)'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(r.S.x, r.S.y, R, w2, wh, false); ctx.stroke();
+  ctx.restore();
+}
+function _m5nPapierecke(ctx, e) {
+  const K = _m5nK, r = e.r, p = _m5nEckLage(e), L = K.L;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,' + (0.16 + 0.08 * p.hub).toFixed(3) + ')';   // Schatten
+  _m5nUmriss(ctx, { x: p.V.x + 3 + 6 * p.hub, y: p.V.y + 4 + 8 * p.hub }, p.phi, L); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.93)';
+  _m5nUmriss(ctx, p.V, p.phi, L); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
+  _m5nUmriss(ctx, p.V, p.phi, L); ctx.stroke();
+  // passt genau: innen an beiden geraden Kanten laeuft ein gruener Rand auf
+  if (r.passt && e.phase !== 'gleiten') {
+    const a = e.phase === 'pruefen' ? _bioFxEase.raus(Math.min(1, e.t / K.T_PRUEF)) : 1;
+    const q0 = _m5nEckPunkt(p.V, p.phi, 4, 4);
+    const q1 = _m5nEckPunkt(p.V, p.phi, 4 + (L - 10) * a, 4);
+    const q2 = _m5nEckPunkt(p.V, p.phi, 4, 4 + (L - 10) * a);
+    ctx.strokeStyle = K.F_GRUEN; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(q1.x, q1.y); ctx.lineTo(q0.x, q0.y); ctx.lineTo(q2.x, q2.y); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Doppelpfeil von a nach c.
+function _m5nPfeil(ctx, a, c, farbe) {
+  const dx = c.x - a.x, dy = c.y - a.y, l = Math.hypot(dx, dy);
+  if (l < 1) return;
+  const ux = dx / l, uy = dy / l, px = -uy, py = ux, sp = Math.min(8, l / 2.5);
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
+  ctx.strokeStyle = farbe; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
+  ctx.fillStyle = farbe;
+  for (const [s, e, v] of [[a, 1, 1], [c, -1, 1]]) {
+    ctx.beginPath();
+    ctx.moveTo(s.x, s.y);
+    ctx.lineTo(s.x + e * ux * sp * 1.4 + px * sp * 0.7 * v, s.y + e * uy * sp * 1.4 + py * sp * 0.7 * v);
+    ctx.lineTo(s.x + e * ux * sp * 1.4 - px * sp * 0.7 * v, s.y + e * uy * sp * 1.4 - py * sp * 0.7 * v);
+    ctx.closePath(); ctx.fill();
+  }
+  ctx.restore();
+}
+// Schild mit einer Zahl (springt auf, sk 0..1).
+function _m5nSchild(ctx, s, x, y, sk, W, H) {
+  if (sk <= 0.01) return;
+  ctx.save();
+  ctx.font = '700 15px sans-serif';
+  const bw = ctx.measureText(s).width + 16, bh = 23;
+  x = Math.max(bw / 2 + 3, Math.min(W - bw / 2 - 3, x));
+  y = Math.max(bh / 2 + 3, Math.min(H - bh / 2 - 3, y));
+  ctx.translate(x, y); ctx.scale(sk, sk);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = _m5nK.F_MESS; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, -bw / 2, -bh / 2, bw, bh, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = _m5nK.F_MESS; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, 0, 5.5);
+  ctx.restore();
+}
+function _m5nMessen(ctx, m, W, H) {
+  const K = _m5nK, r = m.r;
+  if (!r.schneiden) {
+    // zwei Messpfeile wachsen von g bis h, dahinter je ein Schild
+    K.MESS_T.forEach((t, i) => {
+      const s = m.t - i * K.T_VERSATZ;
+      if (s <= 0) return;
+      const P = _m5nPunkt(r.g, t), lot = _m5nLot(P, r.h);
+      const u = _bioFxEase.sanft(Math.min(1, s / K.T_PFEIL));
+      const F = { x: P.x + (lot.fuss.x - P.x) * u, y: P.y + (lot.fuss.y - P.y) * u };
+      _m5nPfeil(ctx, P, F, K.F_MESS);
+      const sz = (s - K.T_PFEIL) / K.T_ZAHL;
+      if (sz > 0) {
+        const n = _m5nNorm(r.h[0]);
+        _m5nSchild(ctx, _m5nCm(r.abstand[i]), lot.fuss.x + n.x * 22, lot.fuss.y + n.y * 22,
+                   _bioFxEase.federn(Math.min(1, sz)), W, H);
+      }
+    });
+    return;
+  }
+  // g und h schneiden sich: der Messpfeil rutscht auf g bis zum Schnittpunkt
+  const u = _bioFxEase.sanft(Math.min(1, m.t / K.T_RUTSCH));
+  const P = _m5nPunkt(r.g, K.RUTSCH_T0 * (1 - u)), lot = _m5nLot(P, r.h);
+  if (lot.abst > 2) _m5nPfeil(ctx, P, lot.fuss, K.F_MESS);
+  const sz = (m.t - K.T_RUTSCH) / K.T_ZAHL;
+  if (sz > 0) {
+    const rr = 11 * Math.max(0.05, _bioFxEase.federn(Math.min(1, sz)));
+    ctx.save();
+    ctx.strokeStyle = K.F_MESS; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(r.S.x, r.S.y, rr, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
+}
+function _m5nDraw(ctx, cv) {
+  if (!_m5n) return;
+  const W = cv.width, H = cv.height, z = _m5n, K = _m5nK;
+  ctx.clearRect(0, 0, W, H);
+  // Karopapier: Kaestchen 0,5 cm, ein Gitterpunkt liegt in der Bildmitte
+  ctx.fillStyle = K.F_PAPIER; ctx.fillRect(0, 0, W, H);
+  ctx.save();
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let x = K.CX % K.KAST; x <= W; x += K.KAST) { ctx.moveTo(x + 0.5, 0); ctx.lineTo(x + 0.5, H); }
+  for (let y = K.CY % K.KAST; y <= H; y += K.KAST) { ctx.moveTo(0, y + 0.5); ctx.lineTo(W, y + 0.5); }
+  ctx.stroke();
+  ctx.restore();
+  const e = z.ecke, m = z.mess;
+  if (e) _m5nKeil(ctx, e);
+  // die beiden Geraden
+  _m5nGerade(ctx, z.h, K.F_H, 'h', 1, W, H);
+  _m5nGerade(ctx, z.g, K.F_G, 'g', 1, W, H);
+  const S = _m5nSchnitt(z.g, z.h);
+  if (S && S.x > -20 && S.x < W + 20 && S.y > -20 && S.y < H + 20) {
+    ctx.save();
+    ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(S.x, S.y, 4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  if (e) {
+    if (z.leucht > 0 && e.r.S) {                           // Aha: die Ecke leuchtet nach
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, z.leucht / 0.8);
+      _bioFxLeuchten(ctx, e.r.S.x, e.r.S.y, 18, z.t, '252,211,77');
+      ctx.restore();
+    }
+    _m5nPapierecke(ctx, e);
+  }
+  _bioFxDraw(ctx, z.fx.teile);                             // Lichtring
+  if (m) _m5nMessen(ctx, m, W, H);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mf3 „Wo liegt der Punkt?“ (Kennung m5-koordinaten)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL3_PROFIL.md, Abschnitt m5-koordinaten.
+// Ueberschrift: „Wo liegt der Punkt?“ (der Name der Einheit). Die Frage der
+// Einheit („Kommt Tarek mit seinem Weg zum Punkt (3|5)?“) traegt einen Namen,
+// und am Bildschirm stehen keine Namen (MATHE_PROFIL § 10, Regel 11).
+//
+// Was man sieht: links eine Schatzkarte aus Karopapier als Koordinaten-
+// system, waagerechte Achse 0 bis 8, senkrechte Achse 0 bis 6, beide mit
+// Pfeil und mit Zahlen an jedem Kaestchen. Vier gezeichnete Dinge stehen mit
+// dem Fuss auf ihrem Gitterpunkt, der einen dunklen Ortspunkt traegt, das
+// Wort steht daneben: Baum bei (3|5), Haus bei (5|3), Brunnen bei (0|4),
+// Boot bei (6|0). Eine violette Spielfigur steht beim Start (0|0).
+// Wird ein Punkt gewaehlt, geht die Figur Kaestchen fuer Kaestchen (jeder
+// Schritt ein kleiner Huepfer, 0,18 s): erst so viele Schritte, wie die
+// ERSTE Zahl sagt, waagerecht – die Spur ist BLAU –, dann eine kurze Pause an
+// der Ecke, dann so viele Schritte, wie die ZWEITE Zahl sagt, senkrecht – die
+// Spur ist ORANGE. An jedem Gitterpunkt, den sie erreicht, bleibt ein Punkt
+// in der Farbe der Spur liegen; ist ein Wegstueck fertig, bekommt es eine
+// Pfeilspitze. Schrittzaehler: Neben jedem Wegstueck steht ein Schild in
+// seiner Farbe mit der Zahl der Schritte, die schon gegangen sind (1, 2,
+// 3 …); es wandert mit der Mitte der Spur mit. Ein Wegstueck mit 0 Schritten
+// faellt weg. Am Ziel springt das Ding federnd schraeg in die Mitte des
+// Kaestchens darueber (0,35 s) – so verdeckt die Figur es nie, und es landet
+// auf keinem anderen Gitterpunkt – und leuchtet mit einem pulsierenden
+// Lichtkranz nach (2,2 s); sein Wort bleibt am Punkt stehen. Die Achsen-
+// zahlen werden zuletzt gezeichnet, mit hellem Rand, damit nichts sie verdeckt.
+// Steht die Figur nicht am Start, verschwindet sie zuerst (0,125 s), die
+// alte Spur verblasst, und sie taucht beim Start wieder auf (0,125 s).
+// Rechts eine Tafel: „Punkt“ mit dem gewaehlten Punkt gross („A(3|5)“, die
+// erste Zahl blau, die zweite orange – dieselben Farben wie die Spuren),
+// beim vertauschten Gehen darunter das Wort „vertauscht“; „Figur“ mit der
+// Stelle, an der die Figur gerade steht, ebenso gefaerbt (erste Zahl blau,
+// zweite orange) – sie zaehlt Schritt fuer Schritt mit: (1|0), (2|0) …;
+// unten die Farberklaerung „erste Zahl“ (blau) und „zweite Zahl“ (orange).
+// „vertauscht gehen“: dieselben zwei Zahlen, aber die Wegstuecke vertauscht –
+// erst die erste Zahl senkrecht (blau), dann die zweite waagerecht (orange).
+// Der Weg zum gewaehlten Punkt bleibt dabei blass gestrichelt stehen, zum
+// Vergleich. Landet die Figur auf keinem Ding, liegt dort ein gestrichelter
+// grauer Ring am Boden. In der Tafel sieht man dabei, dass die BLAUE Spur jetzt die
+// ORANGE Zahl der Figur wachsen laesst.
+// Ein Knopf waehrend einer Bewegung: Die Figur geht sofort zurueck zum Start
+// und dann den neuen Weg. Jede Knopffolge endet so im selben Zustand.
+// Texte um die Leinwand (woertlich): darueber „Die Figur startet bei (0|0)
+// und geht Kästchen für Kästchen. Neben jedem Wegstück steht, wie viele
+// Schritte sie gegangen ist.“ · rechts „„vertauscht gehen“ geht den
+// gewählten Punkt noch einmal, mit vertauschten Wegstücken.“ · darunter
+// „Start: Die Figur steht bei (0|0), noch kein Punkt gewählt“.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5oPunkt('a'|'b'|'c'|'d')):
+//     „A(3|5)“ · „B(5|3)“ · „C(0|4)“ · „D(6|0)“
+//   Reihe 2: „vertauscht gehen“ (_m5oVertauscht(): fuer den gewaehlten
+//     Punkt erst senkrecht so viele Schritte wie die erste Zahl, dann
+//     waagerecht wie die zweite; ohne gewaehlten Punkt wackelt die Figur
+//     nur) · „neu“ (_m5oNeu(): kein Punkt, Figur beim Start, keine Spur)
+//
+// Statuszeilen (woertlich; jede mit mehr als 18 Zeichen, simfakten.js-Grenze):
+//   _m5o-punkt  „Gewählter Punkt: noch keiner“ → „Gewählter Punkt: A(3|5)“
+//   _m5o-weg    „Weg: noch kein Punkt gewählt“ →
+//               „Weg: erst 3 Schritte, dann 5 Schritte“ (gleich beim Waehlen;
+//               beim vertauschten Gehen derselbe Text – die Zahlen bleiben,
+//               nur die Richtungen wechseln, und die zeigt allein das Bild)
+//   _m5o-ziel   „Die Figur steht am Start (0|0).“ · unterwegs „Die Figur ist
+//               unterwegs …“ · bei Ankunft „Die Figur steht beim Baum.“ ·
+//               vertauscht „Vertauscht gegangen: Die Figur steht beim Haus.“
+//               bzw. „Vertauscht gegangen: Die Figur steht an einer leeren
+//               Stelle.“ · ohne Punkt nach „vertauscht gehen“: „Zuerst einen
+//               Punkt wählen: A, B, C oder D.“
+//
+// Werte (jede Sprungmarke nachgerechnet mit simcheck/werte.js, die Figur
+// jeweils bis zur Ankunft gelaufen):
+//   A(3|5)  Weg erst 3, dann 5  → Baum     · vertauscht (5|3) → Haus
+//   B(5|3)  Weg erst 5, dann 3  → Haus     · vertauscht (3|5) → Baum
+//   C(0|4)  Weg erst 0, dann 4  → Brunnen  · vertauscht (4|0) → leere Stelle
+//   D(6|0)  Weg erst 6, dann 0  → Boot     · vertauscht (0|6) → leere Stelle
+// Zeiten (Frames zu 16 ms, simcheck-Treiber): Ein Weg mit 8 Schritten von
+// einem anderen Punkt aus ist nach 1,91 s fertig (0,25 zurueck + 0,1 Start +
+// 8 · 0,18 + 0,12 Pause), also nach 120 Frames. simfakten.js mit
+// --frames=25 --verlauf=4 liest bis 125 Frames – jede Ankunft steht im Dump.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Kommt die Figur bei
+// „vertauscht gehen“ mit dem Punkt A(3|5) beim HAUS an, laeuft ein goldener
+// Lichtring um das Haus, und es leuchtet laenger nach (3,2 s). Das widerlegt
+// Vermutung 1 („Ja, Tarek landet genau bei (3|5).“). Jedes Mal.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „oben“, „hoch“,
+// „rechts“, „anderen“, „tauschen“ (der Knopf „vertauscht gehen“ und das
+// Wort „vertauscht“ sind erlaubt) – und ueberhaupt keine Regel als Satz:
+// Welche Zahl in welche Richtung zaehlt, zeigt nur die Figur, kein Wort.
+// Keine Namen, keine Wertung, keine Zeitmessung. Deterministisch, ohne Zufall: jede
+// Zahl im Bild und in der Anzeige kommt aus _m5oPUNKTE und _m5oBeine().
+// ════════════════════════════════════════════════════════════════════════
+let _m5o = null;
+const _m5oPUNKTE = {
+  a: { name: 'A', x: 3, y: 5 },
+  b: { name: 'B', x: 5, y: 3 },
+  c: { name: 'C', x: 0, y: 4 },
+  d: { name: 'D', x: 6, y: 0 }
+};
+const _m5oREIHE = ['a', 'b', 'c', 'd'];
+const _m5oDINGE = [
+  { x: 3, y: 5, art: 'baum', wort: 'Baum' },
+  { x: 5, y: 3, art: 'haus', wort: 'Haus' },
+  { x: 0, y: 4, art: 'brunnen', wort: 'Brunnen' },
+  { x: 6, y: 0, art: 'boot', wort: 'Boot' }
+];
+const _m5oK = {
+  OX: 52, OY: 214, KA: 30,      // Ursprung (px) und Kaestchenbreite (px)
+  NX: 8, NY: 6,                 // waagerecht 0 bis 8, senkrecht 0 bis 6
+  TX: 316, TW: 96,              // Tafel rechts: linke Kante, Breite
+  T_ZURUECK: 0.25,              // s: Figur verschwindet und taucht beim Start auf
+  T_START: 0.1,                 // s: kurzer Halt beim Start
+  T_SCHRITT: 0.18,              // s: ein Kaestchen
+  T_PAUSE: 0.12,                // s: Halt an der Ecke
+  T_POP: 0.35,                  // s: das Ding hopst bei der Ankunft
+  T_GLANZ: 2.2,                 // s: das Ding leuchtet nach
+  T_AHA: 3.2,                   // s: das Haus leuchtet nach (Aha)
+  HOPS: 6,                      // px: Hoehe eines Huepfers
+  HUB_X: 15, HUB_Y: 24,         // px: so weit springt das gefundene Ding (Mitte des Kaestchens)
+  F_EINS: '#1d4ed8',            // blau: erste Zahl, erstes Wegstueck
+  F_ZWEI: '#c2410c',            // orange: zweite Zahl, zweites Wegstueck
+  F_FIGUR: '#7c3aed', F_FRAND: '#4c1d95',
+  F_PAPIER: '#f8eed6', F_KARTE: '#fbf4e2', F_KRAND: '#c9ad78',
+  F_GITTER: '#e2cc9c', F_ACHSE: '#4a3726', F_ZAHL: '#3b2a1c',
+  F_WORT: '#5b4636', F_LEISE: '#7a6650'
+};
+
+// Gitterpunkt -> Bildpunkt
+function _m5oPx(gx, gy) {
+  const K = _m5oK;
+  return { x: K.OX + gx * K.KA, y: K.OY - gy * K.KA };
+}
+function _m5oDingBei(gx, gy) {
+  return _m5oDINGE.find(d => d.x === gx && d.y === gy) || null;
+}
+// Die zwei Wegstuecke eines Punkts. Normal: erst die erste Zahl waagerecht,
+// dann die zweite senkrecht. Vertauscht: erst die erste Zahl senkrecht, dann
+// die zweite waagerecht. Bild, Tafel und Statuszeilen lesen nur hier.
+function _m5oBeine(k, modus) {
+  const P = _m5oPUNKTE[k];
+  return modus === 'vertauscht'
+    ? [{ dx: 0, dy: 1, n: P.x }, { dx: 1, dy: 0, n: P.y }]
+    : [{ dx: 1, dy: 0, n: P.x }, { dx: 0, dy: 1, n: P.y }];
+}
+function _m5oSchritte(n) { return n + (n === 1 ? ' Schritt' : ' Schritte'); }
+
+function _m5oInit() {
+  _m5o = { wahl: null, modus: 'normal', phase: 'ruhe', pt: 0,
+           pos: { x: 0, y: 0 },          // Gitterpunkt, den die Figur zuletzt erreicht hat
+           beine: [], bein: 0, schritt: 0, gezaehlt: [0, 0],
+           alt: null,                    // alte Spur und alter Ort beim Zuruecksetzen
+           bitte: false, wackel: 0, pop: 0, glanz: 0, zeit: 0, fx: { teile: [] } };
+}
+function _m5oHTML() {
+  const marke = k => {
+    const P = _m5oPUNKTE[k];
+    return `<button class="sim-btn" id="_m5o-b-${k}" onclick="_m5oPunkt('${k}')">${P.name}(${P.x}|${P.y})</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo liegt der Punkt?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Figur startet bei (0|0) und geht Kästchen für Kästchen. Neben jedem Wegstück steht, wie viele Schritte sie gegangen ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5o-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5oREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5o-vt" onclick="_m5oVertauscht()">vertauscht gehen</button>
+          <button class="sim-btn" onclick="_m5oNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5o-punkt" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5o-weg" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5o-ziel" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„vertauscht gehen“ geht den gewählten Punkt noch einmal, mit vertauschten Wegstücken.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Die Figur steht bei (0|0), noch kein Punkt gewählt</p>
+  </div>`;
+}
+function _m5oZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5oStatus() {
+  if (!_m5o) return;
+  const z = _m5o, K = _m5oK;
+  const f = (s, farbe) => '<b style="color:' + farbe + '">' + s + '</b>';
+  const P = z.wahl ? _m5oPUNKTE[z.wahl] : null;
+  _m5oZeile('_m5o-punkt', 'Gewählter Punkt: ' + (P
+    ? P.name + '(' + f(P.x, K.F_EINS) + '|' + f(P.y, K.F_ZWEI) + ')'
+    : 'noch keiner'));
+  _m5oZeile('_m5o-weg', P
+    ? 'Weg: erst ' + f(_m5oSchritte(P.x), K.F_EINS) + ', dann ' + f(_m5oSchritte(P.y), K.F_ZWEI)
+    : 'Weg: noch kein Punkt gewählt');
+  let ziel;
+  if (z.phase === 'da') {
+    const d = _m5oDingBei(z.pos.x, z.pos.y);
+    ziel = 'Die Figur steht ' + (d ? 'beim ' + d.wort : 'an einer leeren Stelle') + '.';
+    if (z.modus === 'vertauscht') ziel = 'Vertauscht gegangen: ' + ziel;
+  } else if (z.phase !== 'ruhe') ziel = 'Die Figur ist unterwegs …';
+  else if (z.bitte) ziel = 'Zuerst einen Punkt wählen: A, B, C oder D.';
+  else ziel = 'Die Figur steht am Start (0|0).';
+  _m5oZeile('_m5o-ziel', ziel);
+  for (const k of _m5oREIHE) {
+    const b = document.getElementById('_m5o-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.wahl);
+  }
+  const vt = document.getElementById('_m5o-vt');
+  if (vt && vt.classList) vt.classList.toggle('primary', z.modus === 'vertauscht' && !!z.wahl);
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Wo die Figur gerade gezeichnet wird (Bildpunkt), wie gross (sk) und wie
+// hoch sie huepft.
+function _m5oFigurOrt() {
+  const z = _m5o, K = _m5oK;
+  if (z.phase === 'zurueck') {
+    const h = K.T_ZURUECK / 2;
+    if (z.pt < h && z.alt) return { p: z.alt.fig, sk: 1 - _bioFxEase.sanft(z.pt / h), hops: 0 };
+    return { p: _m5oPx(0, 0), sk: Math.max(0.02, _bioFxEase.federn(Math.min(1, (z.pt - h) / h))), hops: 0 };
+  }
+  if (z.phase === 'gehen') {
+    const b = z.beine[z.bein], u = Math.min(1, z.pt / K.T_SCHRITT), e = _bioFxEase.sanft(u);
+    const a = _m5oPx(z.pos.x, z.pos.y), c = _m5oPx(z.pos.x + b.dx, z.pos.y + b.dy);
+    return { p: { x: a.x + (c.x - a.x) * e, y: a.y + (c.y - a.y) * e }, sk: 1,
+             hops: Math.sin(Math.PI * u) * K.HOPS };
+  }
+  return { p: _m5oPx(z.pos.x, z.pos.y), sk: 1, hops: 0 };
+}
+// Der Teil eines Schritts, der gerade gegangen wird (fuer die Spur).
+function _m5oTeil() {
+  const z = _m5o;
+  if (z.phase !== 'gehen') return null;
+  return { bein: z.bein, u: _bioFxEase.sanft(Math.min(1, z.pt / _m5oK.T_SCHRITT)) };
+}
+// Einen neuen Weg beginnen. Steht die Figur nicht ruhig beim Start, geht sie
+// zuerst dorthin zurueck; ein schon laufendes Zuruecksetzen laeuft weiter.
+function _m5oLos(k, modus) {
+  const z = _m5o;
+  const ruhigAmStart = (z.phase === 'ruhe' || z.phase === 'start') && z.pos.x === 0 && z.pos.y === 0;
+  if (z.phase !== 'zurueck') {
+    if (ruhigAmStart) { z.phase = 'start'; z.pt = 0; z.alt = null; }
+    else {
+      z.alt = { fig: _m5oFigurOrt().p, pos: { x: z.pos.x, y: z.pos.y },
+                beine: z.beine, gezaehlt: z.gezaehlt.slice(), teil: _m5oTeil() };
+      z.phase = 'zurueck'; z.pt = 0;
+    }
+  }
+  if (z.phase === 'zurueck' && z.pt >= _m5oK.T_ZURUECK / 2) z.pos = { x: 0, y: 0 };
+  z.wahl = k; z.modus = modus; z.bitte = false;
+  z.beine = k ? _m5oBeine(k, modus) : [];
+  z.bein = 0; z.schritt = 0; z.gezaehlt = [0, 0];
+  z.pop = 0; z.glanz = 0;
+  _m5oStatus();
+}
+function _m5oPunkt(k) {
+  if (!_m5o || !_m5oPUNKTE[k]) return;
+  _m5oLos(k, 'normal');
+}
+function _m5oVertauscht() {
+  if (!_m5o) return;
+  const z = _m5o;
+  if (!z.wahl) {                          // ohne Punkt: die Figur wackelt nur
+    z.bitte = true; z.wackel = 0.45;
+    _m5oStatus();
+    return;
+  }
+  _m5oLos(z.wahl, 'vertauscht');
+}
+function _m5oNeu() {
+  if (!_m5o) return;
+  const z = _m5o;
+  _m5oLos(null, 'normal');
+  if (z.phase === 'start') z.phase = 'ruhe';
+  _m5oStatus();
+}
+// Das naechste Wegstueck mit mindestens einem Schritt beginnen – oder ankommen.
+function _m5oNaechstesBein(ab) {
+  const z = _m5o;
+  for (let b = ab; b < 2; b++) {
+    if (z.beine[b].n > 0) { z.phase = 'gehen'; z.bein = b; z.schritt = 0; z.pt = 0; return; }
+  }
+  _m5oAngekommen();
+}
+function _m5oAngekommen() {
+  const z = _m5o, K = _m5oK;
+  z.phase = 'da'; z.pt = 0;
+  z.pop = K.T_POP; z.glanz = K.T_GLANZ;
+  const d = _m5oDingBei(z.pos.x, z.pos.y);
+  // Aha: Punkt A vertauscht gegangen – die Figur steht beim Haus.
+  if (z.modus === 'vertauscht' && z.wahl === 'a' && d && d.art === 'haus') {
+    const p = _m5oDingMitte(d, 1, 0);
+    _bioFxWelle(z.fx.teile, p.x, p.y, '#f59e0b', 46);
+    z.glanz = K.T_AHA;
+  }
+  _m5oStatus();
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+// Die Zeit wird uebertragen: Was von einem Abschnitt uebrig bleibt, geht in
+// den naechsten. So dauert ein Weg genau so lange, wie die Konstanten sagen.
+function _m5oUpdate(dt) {
+  if (!_m5o) return;
+  dt = _bioFxDt(dt);
+  const z = _m5o, K = _m5oK;
+  z.zeit += dt;
+  let rest = dt, n = 0, neu = false;
+  while (rest > 1e-9 && n++ < 40) {
+    if (z.phase === 'zurueck') {
+      const h = K.T_ZURUECK / 2;
+      if (z.pt < h && z.pt + rest >= h) z.pos = { x: 0, y: 0 };   // Figur ist beim Start
+      const bis = K.T_ZURUECK - z.pt;
+      if (rest < bis) { z.pt += rest; rest = 0; break; }
+      rest -= bis; z.alt = null; z.pos = { x: 0, y: 0 }; z.pt = 0;
+      if (z.wahl) z.phase = 'start';
+      else { z.phase = 'ruhe'; neu = true; }
+    } else if (z.phase === 'start') {
+      const bis = K.T_START - z.pt;
+      if (rest < bis) { z.pt += rest; rest = 0; break; }
+      rest -= bis;
+      _m5oNaechstesBein(0);
+    } else if (z.phase === 'gehen') {
+      const bis = K.T_SCHRITT - z.pt;
+      if (rest < bis) { z.pt += rest; rest = 0; break; }
+      rest -= bis;
+      const b = z.beine[z.bein];
+      z.pos = { x: z.pos.x + b.dx, y: z.pos.y + b.dy };
+      z.gezaehlt[z.bein] += 1; z.schritt += 1; z.pt = 0;
+      if (z.schritt >= b.n) {
+        if (z.bein === 0 && z.beine[1].n > 0) { z.phase = 'pause'; z.pt = 0; }
+        else _m5oAngekommen();
+      }
+    } else if (z.phase === 'pause') {
+      const bis = K.T_PAUSE - z.pt;
+      if (rest < bis) { z.pt += rest; rest = 0; break; }
+      rest -= bis;
+      _m5oNaechstesBein(1);
+    } else break;                            // ruhe, da: nichts laeuft
+  }
+  z.pop = Math.max(0, z.pop - dt);
+  z.glanz = Math.max(0, z.glanz - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+  if (neu) _m5oStatus();
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5oText(ctx, s, x, y, ausr, farbe, groesse, gew) {
+  ctx.fillStyle = farbe || _m5oK.F_ZAHL;
+  ctx.font = (gew || '700') + ' ' + (groesse || 13) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Text mit hellem Rand: Linien laufen dahinter durch, das Wort bleibt lesbar.
+function _m5oWort(ctx, s, x, y, farbe, groesse) {
+  ctx.save();
+  ctx.font = '700 ' + (groesse || 12) + 'px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.lineJoin = 'round'; ctx.strokeStyle = _m5oK.F_KARTE; ctx.lineWidth = 4;
+  ctx.strokeText(s, x, y);
+  ctx.fillStyle = farbe; ctx.fillText(s, x, y);
+  ctx.restore();
+}
+// Ein Zahlenpaar wie „A(3|5)“ mittig um cx: erste Zahl blau, zweite orange.
+// Jedes Zeichen steht mittig in einem festen Platz (Breite je Zeichenart) –
+// so haengt die Zeile nicht an measureText und wird nirgends zerrissen.
+function _m5oPaar(ctx, name, a, b, cx, y, g) {
+  const K = _m5oK;
+  const teile = [];
+  if (name) teile.push([name, K.F_ZAHL, 0.72]);
+  teile.push(['(', K.F_ZAHL, 0.38], [String(a), K.F_EINS, 0.62], ['|', K.F_ZAHL, 0.34],
+             [String(b), K.F_ZWEI, 0.62], [')', K.F_ZAHL, 0.38]);
+  let x = cx - teile.reduce((s, t) => s + t[2] * g, 0) / 2;
+  ctx.save();
+  ctx.font = '700 ' + g + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  for (const t of teile) {
+    ctx.fillStyle = t[1];
+    ctx.fillText(t[0], x + t[2] * g / 2, y);
+    x += t[2] * g;
+  }
+  ctx.restore();
+}
+function _m5oKarte(ctx) {
+  const K = _m5oK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(90,60,20,0.10)';                     // Schatten
+  _bioFxRundRect(ctx, 8, 9, 300, 236, 10); ctx.fill();
+  ctx.fillStyle = K.F_KARTE;
+  _bioFxRundRect(ctx, 6, 6, 300, 236, 10); ctx.fill();
+  ctx.strokeStyle = K.F_KRAND; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 6, 6, 300, 236, 10); ctx.stroke();
+  // Kaestchen
+  ctx.strokeStyle = K.F_GITTER; ctx.lineWidth = 1;
+  const o = _m5oPx(0, 0), e = _m5oPx(K.NX, K.NY);
+  for (let i = 0; i <= K.NX; i++) {
+    const x = o.x + i * K.KA;
+    ctx.beginPath(); ctx.moveTo(x, e.y - 8); ctx.lineTo(x, o.y); ctx.stroke();
+  }
+  for (let j = 0; j <= K.NY; j++) {
+    const y = o.y - j * K.KA;
+    ctx.beginPath(); ctx.moveTo(o.x, y); ctx.lineTo(e.x + 8, y); ctx.stroke();
+  }
+  // Achsen mit Pfeil
+  ctx.strokeStyle = K.F_ACHSE; ctx.fillStyle = K.F_ACHSE; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(e.x + 12, o.y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(o.x, e.y - 12); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(e.x + 20, o.y); ctx.lineTo(e.x + 10, o.y - 5.5); ctx.lineTo(e.x + 10, o.y + 5.5); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(o.x, e.y - 20); ctx.lineTo(o.x - 5.5, e.y - 10); ctx.lineTo(o.x + 5.5, e.y - 10); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Zahlen an den Achsen – zuletzt gezeichnet, mit hellem Rand, damit kein
+// Leuchten und kein Kreis sie verdeckt.
+function _m5oAchsenZahlen(ctx) {
+  const K = _m5oK, o = _m5oPx(0, 0);
+  ctx.save();
+  ctx.font = '700 13px sans-serif'; ctx.textBaseline = 'alphabetic';
+  ctx.lineJoin = 'round'; ctx.strokeStyle = K.F_KARTE; ctx.lineWidth = 4;
+  ctx.fillStyle = K.F_ZAHL;
+  const z = (s, x, y, a) => { ctx.textAlign = a; ctx.strokeText(s, x, y); ctx.fillText(s, x, y); };
+  for (let i = 0; i <= K.NX; i++) z(String(i), o.x + i * K.KA, o.y + 18, 'center');
+  for (let j = 1; j <= K.NY; j++) z(String(j), o.x - 10, o.y - j * K.KA + 4.5, 'right');
+  ctx.restore();
+}
+// Wo das Bild eines Dings sitzt: mit dem Fuss genau auf seinem Gitterpunkt,
+// darauf ein dunkler Ortspunkt (_m5oOrtspunkt). Ist die Figur dort
+// angekommen, springt das Bild schraeg in das Kaestchen darueber (u = 0 auf
+// dem Punkt, 1 ganz gesprungen) – so verdeckt die Figur es nie, man sieht:
+// gefunden. Es landet MITTEN im Kaestchen, nie auf einem anderen Gitterpunkt.
+function _m5oDingFuss(d, u, wipp) {
+  const p = _m5oPx(d.x, d.y), K = _m5oK;
+  return { x: p.x + K.HUB_X * (u || 0), y: p.y - K.HUB_Y * (u || 0) - (wipp || 0) };
+}
+function _m5oDingMitte(d, u, wipp) {
+  const f = _m5oDingFuss(d, u, wipp);
+  return { x: f.x, y: f.y - 13 };
+}
+// Wie weit das Bild des Ziels gerade gesprungen ist (0 = auf seinem Punkt).
+function _m5oHub(d) {
+  const z = _m5o, K = _m5oK;
+  if (z.phase !== 'da' || !d || d.x !== z.pos.x || d.y !== z.pos.y) return 0;
+  return _bioFxEase.federn(Math.min(1, 1 - z.pop / K.T_POP));
+}
+function _m5oOrtspunkt(ctx, d) {
+  const p = _m5oPx(d.x, d.y);
+  ctx.save();
+  ctx.fillStyle = _m5oK.F_ACHSE; ctx.strokeStyle = _m5oK.F_KARTE; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Ein gezeichnetes Ding, Fuss bei _m5oDingFuss; sk = Groesse beim Hopsen.
+function _m5oDing(ctx, d, sk, u, wipp) {
+  const p = _m5oDingFuss(d, u, wipp);
+  ctx.save();
+  ctx.translate(p.x, p.y); ctx.scale(sk, sk);
+  ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
+  if (d.art === 'baum') {
+    ctx.fillStyle = '#7c4a1e';
+    ctx.fillRect(-2.5, -11, 5, 11);
+    ctx.fillStyle = '#22a046'; ctx.strokeStyle = '#166534';
+    for (const c of [[-6, -15, 6.5], [6, -15, 6.5], [0, -20, 9]]) {
+      ctx.beginPath(); ctx.arc(c[0], c[1], c[2], 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+  } else if (d.art === 'haus') {
+    ctx.fillStyle = '#fde4b8'; ctx.strokeStyle = '#7c2d12';
+    ctx.fillRect(-9, -13, 18, 13); ctx.strokeRect(-9, -13, 18, 13);
+    ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#7f1d1d';
+    ctx.beginPath(); ctx.moveTo(-11.5, -12); ctx.lineTo(0, -24); ctx.lineTo(11.5, -12); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#92400e'; ctx.fillRect(-2.5, -7, 5, 7);
+  } else if (d.art === 'brunnen') {
+    ctx.strokeStyle = '#6b3f1d'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(-6.5, -8); ctx.lineTo(-6.5, -17); ctx.moveTo(6.5, -8); ctx.lineTo(6.5, -17); ctx.stroke();
+    ctx.fillStyle = '#b45309'; ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(-10, -16); ctx.lineTo(0, -23); ctx.lineTo(10, -16); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#cbd5e1'; ctx.strokeStyle = '#475569';
+    ctx.fillRect(-8, -9, 16, 9); ctx.strokeRect(-8, -9, 16, 9);
+    ctx.beginPath(); ctx.moveTo(-8, -4.5); ctx.lineTo(8, -4.5); ctx.stroke();
+    ctx.fillStyle = '#3b82f6';
+    ctx.beginPath(); ctx.ellipse(0, -9, 6, 2, 0, 0, Math.PI * 2); ctx.fill();
+  } else if (d.art === 'boot') {
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(0, -8); ctx.lineTo(0, -28); ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b';
+    ctx.beginPath(); ctx.moveTo(1.5, -27); ctx.lineTo(1.5, -10); ctx.lineTo(12, -10); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#92400e'; ctx.strokeStyle = '#451a03';
+    ctx.beginPath(); ctx.moveTo(-12, -8); ctx.lineTo(12, -8); ctx.lineTo(8, 0); ctx.lineTo(-8, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Schild mit der Zahl der Schritte eines Wegstuecks.
+function _m5oSchild(ctx, text, x, y, farbe) {
+  ctx.save();
+  ctx.font = '700 14px sans-serif';
+  const w = Math.max(22, ctx.measureText(text).width + 12), h = 20;
+  ctx.fillStyle = farbe;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 7); ctx.fill();
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 7); ctx.stroke();
+  _m5oText(ctx, text, x, y + 5, 'center', '#ffffff', 14);
+  ctx.restore();
+}
+// Die Spur eines Wegs: je Wegstueck eine Linie in seiner Farbe, Punkte an den
+// erreichten Gitterpunkten, Pfeilspitze am fertigen Wegstueck. teil = der
+// Schritt, der gerade gegangen wird ({bein, u}) oder null.
+function _m5oSpur(ctx, beine, gezaehlt, teil, alpha, mitSchild) {
+  const K = _m5oK;
+  if (!beine || !beine.length || alpha <= 0.01) return;
+  const farben = [K.F_EINS, K.F_ZWEI];
+  const schilder = [];
+  let sx = 0, sy = 0;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  for (let b = 0; b < 2; b++) {
+    const bn = beine[b];
+    const len = gezaehlt[b] + (teil && teil.bein === b ? teil.u : 0);
+    if (len > 0.001) {
+      const a = _m5oPx(sx, sy), c = _m5oPx(sx + bn.dx * len, sy + bn.dy * len);
+      ctx.strokeStyle = farben[b]; ctx.lineWidth = 5; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(c.x, c.y); ctx.stroke();
+      ctx.fillStyle = farben[b];
+      for (let s = 1; s <= gezaehlt[b]; s++) {
+        const q = _m5oPx(sx + bn.dx * s, sy + bn.dy * s);
+        ctx.beginPath(); ctx.arc(q.x, q.y, 4.5, 0, Math.PI * 2); ctx.fill();
+      }
+      if (gezaehlt[b] >= bn.n) {                            // Pfeilspitze am Ende
+        const ux = bn.dx, uy = -bn.dy;
+        ctx.beginPath();
+        ctx.moveTo(c.x + ux * 9, c.y + uy * 9);
+        ctx.lineTo(c.x - ux * 3 + uy * 7, c.y - uy * 3 - ux * 7);
+        ctx.lineTo(c.x - ux * 3 - uy * 7, c.y - uy * 3 + ux * 7);
+        ctx.closePath(); ctx.fill();
+      }
+      if (gezaehlt[b] >= 1) {
+        const m = _m5oPx(sx + bn.dx * len / 2, sy + bn.dy * len / 2);
+        schilder.push([String(gezaehlt[b]), bn.dy ? m.x + 17 : m.x, bn.dy ? m.y : m.y - 15, farben[b]]);
+      }
+    }
+    sx += bn.dx * bn.n; sy += bn.dy * bn.n;
+  }
+  ctx.restore();
+  return schilder;
+}
+// Gestrichelt: der Weg zum gewaehlten Punkt (beim vertauschten Gehen, zum Vergleich).
+function _m5oGeist(ctx, k) {
+  const P = _m5oPUNKTE[k], a = _m5oPx(0, 0), b = _m5oPx(P.x, 0), c = _m5oPx(P.x, P.y);
+  ctx.save();
+  ctx.strokeStyle = 'rgba(71,85,105,0.55)'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.setLineDash([6, 6]);
+  ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.lineTo(c.x, c.y); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+function _m5oFigur(ctx, p, sk, hops) {
+  const K = _m5oK;
+  if (sk <= 0.02) return;
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.fillStyle = 'rgba(40,25,10,0.25)';                    // Schatten am Boden
+  ctx.beginPath(); ctx.ellipse(0, 0, 9 * sk, 3.2 * sk, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.translate(0, -hops); ctx.scale(sk, sk);
+  ctx.fillStyle = K.F_FIGUR; ctx.strokeStyle = K.F_FRAND; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(-8, -1.5); ctx.quadraticCurveTo(-3, -9, -3.5, -16);
+  ctx.lineTo(3.5, -16); ctx.quadraticCurveTo(3, -9, 8, -1.5); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(0, -1.5, 8.5, 3, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(0, -21, 6.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.6)';
+  ctx.beginPath(); ctx.arc(-2.2, -23.2, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+// Rechts: gewaehlter Punkt, Ort der Figur, Farberklaerung.
+function _m5oTafel(ctx) {
+  const z = _m5o, K = _m5oK, x0 = K.TX, cx = K.TX + K.TW / 2;
+  ctx.save();
+  ctx.fillStyle = '#fffdf7';
+  _bioFxRundRect(ctx, x0, 6, K.TW, 236, 10); ctx.fill();
+  ctx.strokeStyle = K.F_KRAND; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x0, 6, K.TW, 236, 10); ctx.stroke();
+  _m5oText(ctx, 'Punkt', cx, 32, 'center', K.F_LEISE, 12);
+  const P = z.wahl ? _m5oPUNKTE[z.wahl] : null;
+  if (P) _m5oPaar(ctx, P.name, P.x, P.y, cx, 60, 23);
+  else _m5oText(ctx, '–', cx, 60, 'center', K.F_LEISE, 23);
+  if (P && z.modus === 'vertauscht') _m5oText(ctx, 'vertauscht', cx, 81, 'center', '#9a3412', 12);
+  ctx.strokeStyle = '#e7d9b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(x0 + 12, 95); ctx.lineTo(x0 + K.TW - 12, 95); ctx.stroke();
+  // Figur: kleines Zeichen und ihr Ort, Schritt fuer Schritt
+  _m5oFigur(ctx, { x: x0 + 22, y: 126 }, 0.62, 0);
+  _m5oText(ctx, 'Figur', x0 + 34, 123, 'left', K.F_LEISE, 12);
+  let ort = z.pos;
+  if (z.phase === 'zurueck' && z.alt && z.pt < K.T_ZURUECK / 2) ort = z.alt.pos;
+  _m5oPaar(ctx, '', ort.x, ort.y, cx, 156, 23);
+  ctx.beginPath(); ctx.moveTo(x0 + 12, 175); ctx.lineTo(x0 + K.TW - 12, 175); ctx.stroke();
+  // Farberklaerung
+  const zeile = (y, farbe, wort) => {
+    ctx.fillStyle = farbe;
+    _bioFxRundRect(ctx, x0 + 10, y - 10, 12, 12, 3); ctx.fill();
+    _m5oText(ctx, wort, x0 + 27, y, 'left', farbe, 12);
+  };
+  zeile(200, K.F_EINS, 'erste Zahl');
+  zeile(222, K.F_ZWEI, 'zweite Zahl');
+  ctx.restore();
+}
+function _m5oDraw(ctx, cv) {
+  if (!_m5o) return;
+  const W = cv.width, H = cv.height, z = _m5o, K = _m5oK;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = K.F_PAPIER; ctx.fillRect(0, 0, W, H);
+  _m5oKarte(ctx);
+  // Beim vertauschten Gehen: der Weg zum gewaehlten Punkt, blass gestrichelt
+  if (z.wahl && z.modus === 'vertauscht') _m5oGeist(ctx, z.wahl);
+  // Spuren: die alte verblasst beim Zuruecksetzen, die neue waechst
+  let schilder = [];
+  if (z.phase === 'zurueck' && z.alt) {
+    const a = 1 - Math.min(1, z.pt / K.T_ZURUECK);
+    schilder = schilder.concat((_m5oSpur(ctx, z.alt.beine, z.alt.gezaehlt, z.alt.teil, a) || [])
+      .map(s => s.concat([a])));
+  } else {
+    schilder = (_m5oSpur(ctx, z.beine, z.gezaehlt, _m5oTeil(), 1) || []).map(s => s.concat([1]));
+  }
+  // Die Dinge auf ihren Punkten, jedes mit Ortspunkt und Wort; das Ziel kommt
+  // erst nach der Figur dran (es hebt sich ueber ihren Kopf).
+  const ziel = z.phase === 'da' ? _m5oDingBei(z.pos.x, z.pos.y) : null;
+  for (const d of _m5oDINGE) {
+    if (d === ziel) { _m5oOrtspunkt(ctx, d); continue; }
+    _m5oDing(ctx, d, 1, 0, 0);
+    _m5oOrtspunkt(ctx, d);
+  }
+  // leere Stelle: gestrichelter grauer Ring am Boden um den Gitterpunkt
+  if (z.phase === 'da' && !ziel) {
+    const p = _m5oPx(z.pos.x, z.pos.y);
+    ctx.save();
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 2; ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.ellipse(p.x, p.y, 17, 7, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  }
+  // die Figur (in Ruhe wippt sie leicht); das gefundene Ding hebt sich ueber
+  // ihren Kopf, hopst und leuchtet – Leuchten und Aha-Ring liegen HINTER
+  // Figur und Ding, damit beide ganz zu sehen sind.
+  const f = _m5oFigurOrt();
+  const wx = z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / 0.45) : 0;
+  const ruhig = z.phase === 'ruhe' || z.phase === 'da';
+  const wipp = ruhig ? 1.2 * (1 + Math.sin(z.zeit * Math.PI * 2 * 0.6)) : 0;
+  const u = ziel ? _m5oHub(ziel) : 0;
+  if (ziel && z.glanz > 0) {
+    const m = _m5oDingMitte(ziel, u, wipp);
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, z.glanz / 0.6);
+    _bioFxLeuchten(ctx, m.x, m.y, 15, z.zeit, '245,158,11');
+    ctx.restore();
+  }
+  _bioFxDraw(ctx, z.fx.teile);
+  _m5oFigur(ctx, { x: f.p.x + wx, y: f.p.y }, f.sk, f.hops + wipp);
+  if (ziel) {
+    const sk = z.pop > 0 ? 1 + 0.2 * Math.sin(Math.PI * (1 - z.pop / K.T_POP)) : 1;
+    _m5oDing(ctx, ziel, sk, u, wipp);
+  }
+  // Woerter neben den Punkten – sie bleiben stehen, auch wenn das Ding springt
+  for (const d of _m5oDINGE) {
+    const p = _m5oPx(d.x, d.y);
+    _m5oWort(ctx, d.wort, p.x + 15, p.y - 9, K.F_WORT, 12);
+  }
+  _m5oAchsenZahlen(ctx);
+  // Schrittzaehler-Schilder zuletzt, damit die Figur sie nie verdeckt
+  for (const s of schilder) {
+    ctx.save(); ctx.globalAlpha = s[4];
+    _m5oSchild(ctx, s[0], s[1], s[2], s[3]);
+    ctx.restore();
+  }
+  _m5oTafel(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mf4 „Welches Viereck ist das?“ (Kennung m5-vierecke)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL3_PROFIL.md, Abschnitt m5-vierecke.
+// Ueberschrift: „Wo passt die Papierecke – und wie lang sind die Seiten?“ – die
+// Frage der Einheit („Ist ein Quadrat auch ein Rechteck?“) traegt zwei Woerter,
+// die nicht am Bildschirm stehen duerfen, deshalb eine neutrale Frage.
+//
+// Was man sieht: links ein Geobrett aus hellem Holz auf Karopapier (Kaestchen
+// 0,5 cm), 9 × 9 Naegel im Abstand 1 cm (Koordinaten 0 bis 8). Ein blaues
+// Gummiband ist um vier Naegel gespannt; an diesen Naegeln liegt das Band
+// sichtbar um den Nagel. Wechselt die Figur, gleiten die vier Ecken des
+// Bandes in 0,7 s zu den neuen Naegeln (das Band wird umgespannt).
+// Rechts vier Merkfelder „Figur 1“ … „Figur 4“, je mit der Figur klein auf
+// einem Mini-Brett; das Feld der gewaehlten Figur ist blau umrandet. Darunter
+// eine Legende: gruener Haken „passt genau“, oranger Keil „passt nicht“.
+//
+// „Papierecke prüfen“: Eine weisse Papierecke (Kaestchenpapier, mit Schatten)
+// gleitet nacheinander in jede Ecke der Figur (je 0,4 s) und legt sich mit
+// einer Kante an die Seite zur naechsten Ecke. Sie bleibt 0,3 s liegen. Passt
+// sie genau, faerben sich ihre beiden Kanten gruen; danach bleiben in der Ecke
+// ein kleines gruenes Eckzeichen und aussen ein gruener Haken stehen. Passt sie
+// nicht, waechst zwischen ihrer zweiten Kante und der Seite der Figur ein
+// oranger Keil (bei einer spitzen Ecke steht die Papierecke ueber, bei einer
+// stumpfen bleibt eine Luecke); der Keil bleibt stehen. Aus jeder Ecke fliegt
+// ein kleiner Punkt (gruen mit Haken bzw. orange, 0,45 s) in die gleiche Ecke
+// der kleinen Figur im Merkfeld; dort zaehlt die Zahl neben dem Haken hoch.
+// Nach der vierten Ecke gleitet die Papierecke weg (0,3 s).
+// „Seiten messen“: Ein gelbes Lineal mit cm-Teilung (Ziffern 0, 1, 2 …, am
+// Ende „cm“) legt sich aussen an jede Seite (je 0,4 s gleiten, 0,3 s liegen);
+// dann erscheint die Laenge als Schild an der Seite (z. B. „3 cm“) und bleibt.
+// Die Ziffern stehen nie kopf: Laeuft eine Seite nach links, zaehlt das Lineal
+// von der anderen Ecke.
+// Ein Knopf waehrend einer Bewegung laesst sie sofort fertig werden; dann
+// geschieht das Neue. Jede Knopffolge endet so in denselben Zahlen.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5pFigur('1'|'2'|'3'|'4')):
+//     „Figur 1“ · „Figur 2“ · „Figur 3“ · „Figur 4“
+//     (eine Sprungmarke loescht Haken, Keile und Laengen der grossen Figur;
+//      die Merkfelder bleiben stehen)
+//   „Papierecke prüfen“ (_m5pEcke()) · „Seiten messen“ (_m5pMessen()) ·
+//   „neu“ (_m5pNeu(): Figur 1, nichts geprueft, Merkfelder leer)
+//
+// Statuszeilen (woertlich; alle laenger als 18 Zeichen, simfakten.js-Grenze;
+// zwischen Zahl und „cm“ ein geschuetztes Leerzeichen):
+//   _m5p-figur   „Gewählt ist Figur 2“
+//   _m5p-ecken   „Papierecke: noch nicht geprüft“ → waehrend der Pruefung
+//                „Papierecke wird angelegt: Ecke 2 von 4“ → sobald die vierte
+//                Ecke ihr Zeichen hat „Papierecke passt in 4 Ecken.“
+//                (bei Figur 4 „Papierecke passt in 0 Ecken.“)
+//   _m5p-seiten  „Seitenlängen: noch nicht gemessen“ → waehrend der Messung
+//                „Seitenlängen: wird gemessen …“, dann waechst die Zeile mit
+//                jedem Schild: „Seitenlängen: 4 cm …“, „Seitenlängen: 4 cm,
+//                2 cm …“ → am Ende „Seitenlängen: 4 cm, 2 cm, 4 cm, 2 cm“
+//                (Reihenfolge: unten bzw. erste Seite, dann gegen den
+//                Uhrzeigersinn – dieselbe Reihenfolge, in der das Lineal geht)
+//
+// Werte (Ecken in cm; jede Sprungmarke nachgerechnet mit simcheck/werte.js):
+//   Figur 1  (2|3) (6|3) (6|5) (2|5)  → passt in 4 Ecken · 4 cm, 2 cm, 4 cm, 2 cm
+//   Figur 2  (2|3) (5|3) (5|6) (2|6)  → passt in 4 Ecken · 3 cm, 3 cm, 3 cm, 3 cm
+//   Figur 3  (4|0) (7|4) (3|7) (0|3)  → passt in 4 Ecken · 5 cm, 5 cm, 5 cm, 5 cm
+//   Figur 4  (0|0) (5|0) (8|4) (3|4)  → passt in 0 Ecken · 5 cm, 5 cm, 5 cm, 5 cm
+// Gerechnet wird ganzzahlig: Die Papierecke passt, wenn das Skalarprodukt der
+// beiden Seiten an der Ecke 0 ist (Figur 3: 3·(−4) + 4·3 = 0; Figur 4:
+// 5·3 + 0·4 = 15, Winkel 53° und 127°). Seitenlaenge = Wurzel aus dx² + dy²
+// (3-4-5: Wurzel aus 25 = 5). Bild und Statuszeilen lesen nur _m5pRechne().
+// Gemessen (Frames zu 16 ms, simcheck-Treiber): Figurwechsel 44 Frames; die
+// Eckenzeile ist nach rund 2,8 s fertig (176 Frames), die Papierecke ist nach
+// 195 Frames weg, der letzte Punkt landet im Merkfeld nach 204 Frames; die
+// Laengenzeile ist nach 176 Frames fertig, das Lineal nach 195 weg.
+// simfakten.js faehrt die Sprungmarken als Wahlgruppe (_m5pFigur('…')) und
+// laesst danach jeden Aktionsknopf auslaufen – jeder Endwert steht im Dump.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Landet bei Figur 2 der vierte
+// gruene Punkt im Merkfeld (vier Haken wie bei Figur 1), laeuft ein goldener
+// Lichtring um die Figur und um das Merkfeld 2, das Band leuchtet 2,5 s golden
+// nach. Ist Figur 1 schon geprueft und hat ebenfalls vier Haken, laeuft ein
+// zweiter Ring um Merkfeld 1 und es leuchtet mit. Das widerlegt „Ein Quadrat
+// ist nie ein Rechteck“: dieselben vier Haken wie bei der langen Figur.
+//
+// NICHT am Bildschirm (sim_plan.nicht_am_bildschirm): „Rechteck“, „Quadrat“,
+// „Raute“, „rechte“, „rechter Winkel“, „gleich lang“ – und keine Regel als
+// Satz. Die Figuren heissen nur „Figur 1“ bis „Figur 4“. Keine Namen, keine
+// Punkte, keine Zeit. Deterministisch, ohne Zufall.
+// ════════════════════════════════════════════════════════════════════════
+let _m5p = null;
+const _m5pFIGUREN = {                       // Ecken in cm (x|y), gegen den Uhrzeigersinn
+  '1': [[2, 3], [6, 3], [6, 5], [2, 5]],    // 4 cm lang, 2 cm hoch
+  '2': [[2, 3], [5, 3], [5, 6], [2, 6]],    // 3 cm, 3 cm
+  '3': [[4, 0], [7, 4], [3, 7], [0, 3]],    // gedreht, Seiten 5 cm
+  '4': [[0, 0], [5, 0], [8, 4], [3, 4]]     // Seiten 5 cm, schief
+};
+const _m5pREIHE = ['1', '2', '3', '4'];
+const _m5pK = {
+  S: 24,                        // px je cm (Nagelabstand)
+  X0: 26, Y0: 214,              // Bildpunkt des Nagels (0|0); y waechst nach oben
+  N: 8,                         // Brett von 0 bis 8 cm: 9 × 9 Naegel
+  BX: 12, BY: 8, BW: 220, BH: 220,          // Holzbrett
+  R_PAPIER: 46,                 // Kantenlaenge der Papierecke (px)
+  R_KEIL: 28,                   // Radius des orangen Keils
+  B_LINEAL: 18,                 // Breite des Lineals
+  T_ZUG: 0.7,                   // s: Band wird umgespannt
+  T_GLEIT: 0.4,                 // s: Papierecke / Lineal gleitet zur naechsten Stelle
+  T_LIEG: 0.3,                  // s: liegt an, dann das Ergebnis
+  T_WEG: 0.3,                   // s: gleitet weg
+  T_FLUG: 0.45,                 // s: Punkt fliegt ins Merkfeld
+  T_POP: 0.35,                  // s: Zeichen springt auf
+  LEUCHT: 2.5,                  // s: Nachleuchten beim Aha
+  ZX: [246, 334], ZY: [8, 110], ZW: 80, ZH: 94,   // Merkfelder (2 × 2)
+  MINI: 6,                      // px je cm im Merkfeld
+  F_BAND: '#2563eb', F_BAND_D: '#1e3a8a',
+  F_JA: '#16a34a', F_JA_D: '#15803d',
+  F_NEIN: '#ea580c', F_NEIN_D: '#c2410c',
+  F_GOLD: '#f59e0b',
+  F_HOLZ: '#f3e2bf', F_HOLZ_R: '#c8a46a',
+  F_NAGEL: '#475569',
+  F_LINEAL: '#fef3c7', F_LINEAL_R: '#b45309', F_LINEAL_T: '#78350f',
+  F_KARO: '#e2ecf7'
+};
+
+// Bildpunkt eines Nagels (x|y in cm)
+function _m5pPx(c) { const K = _m5pK; return [K.X0 + c[0] * K.S, K.Y0 - c[1] * K.S]; }
+function _m5pRichtung(a, b) {
+  const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+  return [dx / l, dy / l];
+}
+// Laenge in cm als Text: „5 cm“ (Komma, falls je noetig; sp = Leerzeichen)
+function _m5pCm(l, sp) {
+  const r = Math.round(l * 10) / 10;
+  return String(r).replace('.', ',') + (sp || ' ') + 'cm';
+}
+// Die ganze Rechnung einer Figur – Bild und Statuszeilen lesen nur hier.
+function _m5pRechne(k) {
+  const P = _m5pFIGUREN[k];
+  const ecken = P.map((v, i) => {
+    const nach = P[(i + 1) % 4], vor = P[(i + 3) % 4];
+    const ax = nach[0] - v[0], ay = nach[1] - v[1], bx = vor[0] - v[0], by = vor[1] - v[1];
+    return ax * bx + ay * by === 0;           // ganzzahlig: 0 heisst, die Papierecke passt
+  });
+  const seiten = P.map((v, i) => { const n = P[(i + 1) % 4]; return Math.hypot(n[0] - v[0], n[1] - v[1]); });
+  return { ecken, passt: ecken.filter(Boolean).length, seiten };
+}
+
+function _m5pInit() {
+  _m5p = { fig: '1', pos: _m5pFIGUREN['1'].map(c => c.slice()), zug: null,
+           pruef: null, marken: [null, null, null, null], pop: [0, 0, 0, 0],
+           mess: null, laengen: [null, null, null, null], lpop: [0, 0, 0, 0],
+           flug: [], merk: { '1': null, '2': null, '3': null, '4': null },
+           glanz: { '1': 0, '2': 0, '3': 0, '4': 0 }, leucht: 0, blink: 0,
+           t: 0, fx: { teile: [] } };
+}
+function _m5pHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5p-b-${k}" onclick="_m5pFigur('${k}')">Figur ${k}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo passt die Papierecke – und wie lang sind die Seiten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf dem Geobrett ist ein Gummiband um vier Nägel gespannt. Von Nagel zu Nagel sind es 1&nbsp;cm.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5p-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5pREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_m5pEcke()">Papierecke prüfen</button>
+          <button class="sim-btn" onclick="_m5pMessen()">Seiten messen</button>
+          <button class="sim-btn" onclick="_m5pNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5p-figur" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5p-ecken" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5p-seiten" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">„Papierecke prüfen“ legt die Ecke eines Blatts nacheinander in jede Ecke der Figur. „Seiten messen“ legt ein Lineal an jede Seite.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Figur 1 auf dem Geobrett, noch nichts geprüft und nichts gemessen</p>
+  </div>`;
+}
+function _m5pZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5pStatus() {
+  if (!_m5p) return;
+  const z = _m5p, K = _m5pK, nb = ' ';
+  const b = (s, f) => '<b style="color:' + f + '">' + s + '</b>';
+  _m5pZeile('_m5p-figur', 'Gewählt ist Figur ' + b(z.fig, K.F_BAND));
+  // Ecken: erst wenn alle vier Zeichen stehen, steht die Zahl da.
+  let ecken;
+  if (z.marken.every(m => m !== null)) {
+    const n = z.marken.filter(m => m === true).length;
+    ecken = 'Papierecke passt in ' + b(String(n), n > 0 ? K.F_JA_D : K.F_NEIN_D) + (n === 1 ? ' Ecke.' : ' Ecken.');
+  } else if (z.pruef) {
+    ecken = 'Papierecke wird angelegt: Ecke ' + (z.pruef.i + 1) + ' von 4';
+  } else {
+    ecken = 'Papierecke: noch nicht geprüft';
+  }
+  _m5pZeile('_m5p-ecken', ecken);
+  // Seiten: die Zeile waechst mit jedem Schild.
+  const da = z.laengen.filter(l => l !== null).map(l => b(_m5pCm(l, nb), K.F_BAND_D));
+  let seiten;
+  if (da.length === 4) seiten = 'Seitenlängen: ' + da.join(', ');
+  else if (z.mess) seiten = 'Seitenlängen: ' + (da.length ? da.join(', ') + ' …' : 'wird gemessen …');
+  else seiten = 'Seitenlängen: noch nicht gemessen';
+  _m5pZeile('_m5p-seiten', seiten);
+  for (const k of _m5pREIHE) {
+    const e = document.getElementById('_m5p-b-' + k);
+    if (e && e.classList) e.classList.toggle('primary', k === z.fig);
+  }
+}
+
+// ── Lagen: Papierecke und Lineal ────────────────────────────────────────
+// Papierecke an Ecke i: Spitze im Nagel, erste Kante entlang der Seite zur
+// naechsten Ecke, zweite Kante 90° dazu ins Innere der Figur.
+function _m5pEckLage(i) {
+  const p = _m5p.pos, V = _m5pPx(p[i]), N = _m5pPx(p[(i + 1) % 4]);
+  const u = _m5pRichtung(V, N);
+  return { x: V[0], y: V[1], a: Math.atan2(u[1], u[0]), l: 0 };
+}
+// Lineal an Seite j: von Ecke j zu Ecke j+1, aussen an der Seite.
+function _m5pSeitLage(j) {
+  const p = _m5p.pos, A = _m5pPx(p[j]), B = _m5pPx(p[(j + 1) % 4]);
+  const d = _m5pRichtung(A, B);
+  return { x: A[0], y: A[1], a: Math.atan2(d[1], d[0]), l: Math.hypot(B[0] - A[0], B[1] - A[1]) };
+}
+function _m5pVersetzt(L, dx, dy) { return { x: L.x + dx, y: L.y + dy, a: L.a, l: L.l }; }
+function _m5pMischLage(a, b, u) {
+  let d = b.a - a.a;
+  while (d > Math.PI) d -= 2 * Math.PI;
+  while (d <= -Math.PI) d += 2 * Math.PI;
+  return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, a: a.a + d * u, l: a.l + (b.l - a.l) * u };
+}
+// Wo die Papierecke gerade liegt und wie deutlich sie zu sehen ist.
+function _m5pPapierJetzt() {
+  const z = _m5p, s = z.pruef, K = _m5pK;
+  if (!s) return null;
+  const e = _bioFxEase.sanft(Math.min(1, s.t / (s.phase === 'weg' ? K.T_WEG : K.T_GLEIT)));
+  if (s.phase === 'gleiten') return { L: _m5pMischLage(s.von, _m5pEckLage(s.i), e), alpha: s.i === 0 ? e : 1 };
+  if (s.phase === 'liegen') return { L: _m5pEckLage(s.i), alpha: 1 };
+  const L0 = _m5pEckLage(3);
+  return { L: _m5pMischLage(L0, _m5pVersetzt(L0, 40, -40), e), alpha: 1 - e };
+}
+function _m5pLinealJetzt() {
+  const z = _m5p, s = z.mess, K = _m5pK;
+  if (!s) return null;
+  const e = _bioFxEase.sanft(Math.min(1, s.t / (s.phase === 'weg' ? K.T_WEG : K.T_GLEIT)));
+  if (s.phase === 'gleiten') return { L: _m5pMischLage(s.von, _m5pSeitLage(s.j), e), alpha: s.j === 0 ? e : 1, ziffern: 0 };
+  if (s.phase === 'liegen') return { L: _m5pSeitLage(s.j), alpha: 1, ziffern: Math.min(1, s.t / 0.12) };
+  const L0 = _m5pSeitLage(3), n = [-Math.sin(L0.a), Math.cos(L0.a)];
+  return { L: _m5pMischLage(L0, _m5pVersetzt(L0, n[0] * 26, n[1] * 26), e), alpha: 1 - e, ziffern: 1 - e };
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Ecke i ist geprueft: Zeichen setzen, Punkt ins Merkfeld schicken.
+function _m5pMarke(i, fliegen) {
+  const z = _m5p, K = _m5pK, ja = _m5pRechne(z.fig).ecken[i];
+  z.marken[i] = ja; z.pop[i] = K.T_POP;
+  if (!z.merk[z.fig]) z.merk[z.fig] = [null, null, null, null];
+  if (fliegen) z.flug.push({ k: z.fig, i, ja, t: 0, von: _m5pMarkenOrt(i, ja) });
+  else z.merk[z.fig][i] = ja;
+}
+// Ein Punkt ist im Merkfeld gelandet.
+function _m5pLande(f, mitAha) {
+  const z = _m5p, K = _m5pK;
+  if (!z.merk[f.k]) z.merk[f.k] = [null, null, null, null];
+  z.merk[f.k][f.i] = f.ja;
+  const m = z.merk[f.k];
+  if (!mitAha || f.k !== '2' || !m.every(x => x === true)) return;
+  // Aha: vier Haken bei Figur 2 – wie bei Figur 1
+  const pts = z.pos.map(_m5pPx);
+  const cx = pts.reduce((s, p) => s + p[0], 0) / 4, cy = pts.reduce((s, p) => s + p[1], 0) / 4;
+  _bioFxWelle(z.fx.teile, cx, cy, K.F_GOLD, 78);
+  const zf = _m5pFeld('2');
+  _bioFxWelle(z.fx.teile, zf.x + K.ZW / 2, zf.y + K.ZH / 2, K.F_GOLD, 56);
+  z.glanz['2'] = K.LEUCHT; z.leucht = K.LEUCHT;
+  const m1 = z.merk['1'];
+  if (m1 && m1.every(x => x === true)) {
+    const z1 = _m5pFeld('1');
+    _bioFxWelle(z.fx.teile, z1.x + K.ZW / 2, z1.y + K.ZH / 2, K.F_GOLD, 56);
+    z.glanz['1'] = K.LEUCHT;
+  }
+}
+// Alles Laufende sofort fertig werden lassen (vor jeder neuen Bedienung).
+function _m5pFertig() {
+  const z = _m5p;
+  if (z.zug) { z.pos = z.zug.nach.map(c => c.slice()); z.zug = null; }
+  for (const f of z.flug) _m5pLande(f, false);
+  z.flug = [];
+  if (z.pruef) {
+    if (z.pruef.phase !== 'weg') for (let i = z.pruef.i; i < 4; i++) _m5pMarke(i, false);
+    z.pruef = null;
+  }
+  if (z.mess) {
+    const r = _m5pRechne(z.fig);
+    if (z.mess.phase !== 'weg') for (let j = z.mess.j; j < 4; j++) z.laengen[j] = r.seiten[j];
+    z.mess = null;
+  }
+  _m5pStatus();
+}
+function _m5pFigur(k) {
+  if (!_m5p || !_m5pFIGUREN[k]) return;
+  _m5pFertig();
+  const z = _m5p;
+  z.zug = { von: z.pos.map(c => c.slice()), nach: _m5pFIGUREN[k].map(c => c.slice()), t: 0 };
+  if (k === z.fig) z.blink = 0.4;
+  z.fig = k;
+  z.marken = [null, null, null, null]; z.laengen = [null, null, null, null];
+  z.leucht = 0;
+  _m5pStatus();
+}
+function _m5pEcke() {
+  if (!_m5p) return;
+  _m5pFertig();
+  const z = _m5p;
+  z.marken = [null, null, null, null];
+  z.merk[z.fig] = [null, null, null, null];
+  z.glanz[z.fig] = 0; z.leucht = 0;
+  z.pruef = { i: 0, phase: 'gleiten', t: 0, von: _m5pVersetzt(_m5pEckLage(0), 46, -46) };
+  _m5pStatus();
+}
+function _m5pMessen() {
+  if (!_m5p) return;
+  _m5pFertig();
+  const z = _m5p, L0 = _m5pSeitLage(0), n = [-Math.sin(L0.a), Math.cos(L0.a)];
+  z.laengen = [null, null, null, null];
+  z.mess = { j: 0, phase: 'gleiten', t: 0, von: _m5pVersetzt(L0, n[0] * 26, n[1] * 26) };
+  _m5pStatus();
+}
+function _m5pNeu() {
+  if (!_m5p) return;
+  _m5pFertig();
+  const z = _m5p;
+  z.merk = { '1': null, '2': null, '3': null, '4': null };
+  z.glanz = { '1': 0, '2': 0, '3': 0, '4': 0 };
+  _m5pFigur('1');
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5pUpdate(dt) {
+  if (!_m5p) return;
+  dt = _bioFxDt(dt);
+  const z = _m5p, K = _m5pK;
+  z.t += dt;
+  let neu = false;
+  if (z.zug) {
+    const g = z.zug;
+    g.t += dt;
+    const e = _bioFxEase.sanft(Math.min(1, g.t / K.T_ZUG));
+    z.pos = g.von.map((c, i) => [c[0] + (g.nach[i][0] - c[0]) * e, c[1] + (g.nach[i][1] - c[1]) * e]);
+    if (g.t >= K.T_ZUG) { z.pos = g.nach.map(c => c.slice()); z.zug = null; }
+  }
+  const s = z.pruef;
+  if (s) {
+    s.t += dt;
+    if (s.phase === 'gleiten' && s.t >= K.T_GLEIT) { s.phase = 'liegen'; s.t = 0; }
+    else if (s.phase === 'liegen' && s.t >= K.T_LIEG) {
+      _m5pMarke(s.i, true); neu = true;
+      if (s.i < 3) { s.von = _m5pEckLage(s.i); s.i += 1; s.phase = 'gleiten'; s.t = 0; }
+      else { s.phase = 'weg'; s.t = 0; }
+    } else if (s.phase === 'weg' && s.t >= K.T_WEG) { z.pruef = null; neu = true; }
+  }
+  const m = z.mess;
+  if (m) {
+    m.t += dt;
+    if (m.phase === 'gleiten' && m.t >= K.T_GLEIT) { m.phase = 'liegen'; m.t = 0; }
+    else if (m.phase === 'liegen' && m.t >= K.T_LIEG) {
+      z.laengen[m.j] = _m5pRechne(z.fig).seiten[m.j]; z.lpop[m.j] = K.T_POP; neu = true;
+      if (m.j < 3) { m.von = _m5pSeitLage(m.j); m.j += 1; m.phase = 'gleiten'; m.t = 0; }
+      else { m.phase = 'weg'; m.t = 0; }
+    } else if (m.phase === 'weg' && m.t >= K.T_WEG) { z.mess = null; neu = true; }
+  }
+  for (let n = z.flug.length - 1; n >= 0; n--) {
+    const f = z.flug[n];
+    f.t += dt;
+    if (f.t >= K.T_FLUG) { z.flug.splice(n, 1); _m5pLande(f, true); }
+  }
+  for (let i = 0; i < 4; i++) {
+    z.pop[i] = Math.max(0, z.pop[i] - dt);
+    z.lpop[i] = Math.max(0, z.lpop[i] - dt);
+  }
+  for (const k of _m5pREIHE) z.glanz[k] = Math.max(0, z.glanz[k] - dt);
+  z.leucht = Math.max(0, z.leucht - dt);
+  z.blink = Math.max(0, z.blink - dt);
+  _bioFxUpdate(z.fx.teile, dt);
+  if (neu) _m5pStatus();
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5pVieleck(ctx, pts) {
+  ctx.beginPath();
+  pts.forEach((p, i) => { if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]); });
+  ctx.closePath();
+}
+function _m5pText(ctx, s, x, y, ausr, farbe, groesse, gew) {
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.font = (gew || '700') + ' ' + (groesse || 13) + 'px sans-serif';
+  ctx.textAlign = ausr || 'left';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Merkfeld der Figur k: linke obere Ecke
+function _m5pFeld(k) {
+  const K = _m5pK, i = _m5pREIHE.indexOf(k);
+  return { x: K.ZX[i % 2], y: K.ZY[Math.floor(i / 2)] };
+}
+// Ecke c (cm) der kleinen Figur im Merkfeld k
+function _m5pMiniPx(k, c) {
+  const K = _m5pK, f = _m5pFeld(k), mx = f.x + (K.ZW - 8 * K.MINI) / 2, my = f.y + 22;
+  return [mx + c[0] * K.MINI, my + 8 * K.MINI - c[1] * K.MINI];
+}
+// Richtungen an Ecke i der grossen Figur (Bildpunkte): u zur naechsten Ecke,
+// p zur vorigen, w = u um 90° ins Innere gedreht.
+function _m5pAnEcke(i) {
+  const p = _m5p.pos, V = _m5pPx(p[i]);
+  const u = _m5pRichtung(V, _m5pPx(p[(i + 1) % 4])), q = _m5pRichtung(V, _m5pPx(p[(i + 3) % 4]));
+  return { V, u, p: q, w: [u[1], -u[0]] };
+}
+// Wo das Zeichen einer Ecke steht (Haken aussen, Keil in der Ecke).
+function _m5pMarkenOrt(i, ja) {
+  const E = _m5pAnEcke(i), K = _m5pK;
+  if (ja) {
+    const o = [-(E.u[0] + E.p[0]), -(E.u[1] + E.p[1])], l = Math.hypot(o[0], o[1]) || 1;
+    // nie ueber den Rand der Leinwand (Figur 3: die Ecke (0|3) liegt am Brettrand)
+    return [Math.max(12, E.V[0] + o[0] / l * 17), Math.max(12, E.V[1] + o[1] / l * 17)];
+  }
+  const m = [E.w[0] + E.p[0], E.w[1] + E.p[1]], l = Math.hypot(m[0], m[1]) || 1;
+  return [E.V[0] + m[0] / l * K.R_KEIL * 0.6, E.V[1] + m[1] / l * K.R_KEIL * 0.6];
+}
+function _m5pHaken(ctx, x, y, r, sk, alpha) {
+  const K = _m5pK;
+  ctx.save();
+  ctx.globalAlpha = alpha == null ? 1 : alpha;
+  ctx.translate(x, y); ctx.scale(sk, sk);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_JA; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = K.F_JA_D; ctx.lineWidth = Math.max(2, r * 0.28); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(-r * 0.45, r * 0.02); ctx.lineTo(-r * 0.1, r * 0.38); ctx.lineTo(r * 0.5, -r * 0.36);
+  ctx.stroke();
+  ctx.restore();
+}
+// Der orange Keil an Ecke i: zwischen der zweiten Kante der Papierecke (w)
+// und der Seite der Figur (p).
+function _m5pKeil(ctx, i, r, alpha) {
+  const E = _m5pAnEcke(i), K = _m5pK;
+  const aw = Math.atan2(E.w[1], E.w[0]), ap = Math.atan2(E.p[1], E.p[0]);
+  let d = ap - aw;
+  while (d > Math.PI) d -= 2 * Math.PI;
+  while (d <= -Math.PI) d += 2 * Math.PI;
+  if (Math.abs(d) < 1e-6) return;
+  ctx.save();
+  ctx.beginPath(); ctx.moveTo(E.V[0], E.V[1]);
+  ctx.arc(E.V[0], E.V[1], r, aw, aw + d, d < 0);
+  ctx.closePath();
+  ctx.globalAlpha = 0.42 * alpha; ctx.fillStyle = K.F_NEIN; ctx.fill();
+  ctx.globalAlpha = alpha; ctx.strokeStyle = K.F_NEIN_D; ctx.lineWidth = 2; ctx.stroke();
+  ctx.restore();
+}
+// Kleines Eckzeichen in einer Ecke, in die die Papierecke genau passt.
+function _m5pEckZeichen(ctx, i, sk) {
+  const E = _m5pAnEcke(i), K = _m5pK, s = 10 * sk;
+  ctx.save();
+  ctx.strokeStyle = K.F_JA; ctx.lineWidth = 2.2;
+  ctx.beginPath();
+  ctx.moveTo(E.V[0] + E.u[0] * s, E.V[1] + E.u[1] * s);
+  ctx.lineTo(E.V[0] + (E.u[0] + E.w[0]) * s, E.V[1] + (E.u[1] + E.w[1]) * s);
+  ctx.lineTo(E.V[0] + E.w[0] * s, E.V[1] + E.w[1] * s);
+  ctx.stroke();
+  ctx.restore();
+}
+function _m5pPapier(ctx, L, alpha, gruen) {
+  const K = _m5pK, R = K.R_PAPIER;
+  const u = [Math.cos(L.a), Math.sin(L.a)], w = [u[1], -u[0]];
+  const P = (a, b) => [L.x + a * u[0] + b * w[0], L.y + a * u[1] + b * w[1]];
+  const ecken = [P(0, 0), P(R, 0), P(R, R), P(0, R)];
+  ctx.save();
+  ctx.globalAlpha = 0.18 * alpha;                           // Schatten
+  ctx.fillStyle = '#0f172a';
+  _m5pVieleck(ctx, ecken.map(p => [p[0] + 2, p[1] + 3])); ctx.fill();
+  ctx.globalAlpha = 0.93 * alpha;
+  ctx.fillStyle = '#ffffff';
+  _m5pVieleck(ctx, ecken); ctx.fill();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = '#cfe0f5'; ctx.lineWidth = 1;          // Kaestchen
+  for (const s of [R / 3, 2 * R / 3]) {
+    let a = P(s, 0), b = P(s, R);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+    a = P(0, s); b = P(R, s);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+  }
+  // Rand: gruen, sobald feststeht, dass die Ecke genau passt
+  ctx.strokeStyle = gruen > 0 ? K.F_JA : '#94a3b8'; ctx.lineWidth = gruen > 0 ? 1.2 + 1.8 * gruen : 1.2;
+  _m5pVieleck(ctx, ecken); ctx.stroke();
+  // die beiden Kanten an der Spitze – gruen, wenn die Ecke genau passt
+  ctx.strokeStyle = gruen > 0 ? K.F_JA : '#475569'; ctx.lineWidth = 2.5 + 1.5 * (gruen || 0);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const a = P(R, 0), c = P(0, R);
+  ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(L.x, L.y); ctx.lineTo(c[0], c[1]); ctx.stroke();
+  ctx.restore();
+}
+function _m5pLineal(ctx, L, alpha, ziffern) {
+  const K = _m5pK, B = K.B_LINEAL, hS = K.S / 2;
+  const d = [Math.cos(L.a), Math.sin(L.a)], n = [-d[1], d[0]];      // n zeigt nach aussen
+  // Ziffern nie kopf: laeuft die Seite nach links (oder senkrecht nach unten),
+  // zaehlt das Lineal von der anderen Ecke.
+  const kipp = d[0] < -1e-6 || (Math.abs(d[0]) <= 1e-6 && d[1] > 0);
+  const e0 = kipp ? 26 : 6, e1 = kipp ? 6 : 26;
+  const Q = (s, o) => [L.x + s * d[0] + o * n[0], L.y + s * d[1] + o * n[1]];
+  ctx.save();
+  ctx.globalAlpha = 0.16 * alpha;                           // Schatten
+  ctx.fillStyle = '#0f172a';
+  _m5pVieleck(ctx, [Q(-e0, 2), Q(L.l + e1, 2), Q(L.l + e1, 2 + B), Q(-e0, 2 + B)].map(p => [p[0] + 2, p[1] + 3]));
+  ctx.fill();
+  ctx.globalAlpha = 0.96 * alpha;
+  ctx.fillStyle = K.F_LINEAL;
+  _m5pVieleck(ctx, [Q(-e0, 2), Q(L.l + e1, 2), Q(L.l + e1, 2 + B), Q(-e0, 2 + B)]); ctx.fill();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = K.F_LINEAL_R; ctx.lineWidth = 1.5; ctx.stroke();
+  // Teilung: alle 0,5 cm ein Strich, jeder volle cm laenger
+  const n2 = Math.floor(L.l / hS + 1e-6);
+  ctx.strokeStyle = K.F_LINEAL_T; ctx.lineWidth = 1.2;
+  for (let k = 0; k <= n2; k++) {
+    const s = kipp ? L.l - k * hS : k * hS, lang = k % 2 === 0 ? 7 : 4;
+    const a = Q(s, 2), b = Q(s, 2 + lang);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+  }
+  if (ziffern > 0.01) {
+    const wl = kipp ? L.a + Math.PI : L.a;
+    ctx.globalAlpha = alpha * ziffern;
+    ctx.fillStyle = K.F_LINEAL_T;
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    const zeige = (txt, s) => {
+      const p = Q(s, 2 + 12.5);
+      ctx.save(); ctx.translate(p[0], p[1]); ctx.rotate(wl); ctx.fillText(txt, 0, 0); ctx.restore();
+    };
+    for (let k = 0; k <= n2; k += 2) zeige(String(k / 2), kipp ? L.l - k * hS : k * hS);
+    zeige('cm', kipp ? -15 : L.l + 15);
+  }
+  ctx.restore();
+}
+// Schild mit der Laenge an Seite j, aussen neben der Seite.
+function _m5pSchild(ctx, j, text, sk) {
+  const K = _m5pK, p = _m5p.pos, A = _m5pPx(p[j]), Bp = _m5pPx(p[(j + 1) % 4]);
+  const d = _m5pRichtung(A, Bp), n = [-d[1], d[0]];
+  ctx.save();
+  ctx.font = '700 14px sans-serif';
+  const pw = ctx.measureText(text).width + 14, ph = 21;
+  const off = 3 + Math.abs(n[0]) * pw / 2 + Math.abs(n[1]) * ph / 2;
+  const mx = (A[0] + Bp[0]) / 2 + n[0] * off, my = (A[1] + Bp[1]) / 2 + n[1] * off;
+  ctx.translate(mx, my); ctx.scale(sk, sk);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_BAND; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, -pw / 2, -ph / 2, pw, ph, 8); ctx.fill(); ctx.stroke();
+  _m5pText(ctx, text, 0, 5, 'center', K.F_BAND_D, 14);
+  ctx.restore();
+}
+function _m5pBrett(ctx) {
+  const K = _m5pK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.12)';
+  _bioFxRundRect(ctx, K.BX + 2, K.BY + 3, K.BW, K.BH, 10); ctx.fill();
+  ctx.fillStyle = K.F_HOLZ;
+  _bioFxRundRect(ctx, K.BX, K.BY, K.BW, K.BH, 10); ctx.fill();
+  ctx.strokeStyle = K.F_HOLZ_R; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, K.BX, K.BY, K.BW, K.BH, 10); ctx.stroke();
+  for (let x = 0; x <= K.N; x++) {
+    for (let y = 0; y <= K.N; y++) {
+      const p = _m5pPx([x, y]);
+      ctx.fillStyle = K.F_NAGEL;
+      ctx.beginPath(); ctx.arc(p[0], p[1], 3.2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#cbd5e1';
+      ctx.beginPath(); ctx.arc(p[0] - 1, p[1] - 1, 1.1, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+function _m5pBand(ctx) {
+  const z = _m5p, K = _m5pK, pts = z.pos.map(_m5pPx);
+  ctx.save();
+  if (z.leucht > 0) {                                       // Aha: das Band leuchtet nach
+    const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+    ctx.globalAlpha = Math.min(1, z.leucht / 0.8) * (0.35 + 0.3 * puls);
+    ctx.strokeStyle = K.F_GOLD; ctx.lineWidth = 14; ctx.lineJoin = 'round';
+    _m5pVieleck(ctx, pts); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  if (z.blink > 0) {
+    ctx.globalAlpha = z.blink / 0.4 * 0.5;
+    ctx.strokeStyle = '#93c5fd'; ctx.lineWidth = 10; ctx.lineJoin = 'round';
+    _m5pVieleck(ctx, pts); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.strokeStyle = K.F_BAND; ctx.lineWidth = 4; ctx.lineJoin = 'round';
+  _m5pVieleck(ctx, pts); ctx.stroke();
+  for (const p of pts) {                                    // das Band liegt um den Nagel
+    ctx.fillStyle = K.F_BAND;
+    ctx.beginPath(); ctx.arc(p[0], p[1], 5.4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#1e293b';
+    ctx.beginPath(); ctx.arc(p[0], p[1], 2.8, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+function _m5pMerkfelder(ctx) {
+  const z = _m5p, K = _m5pK;
+  for (const k of _m5pREIHE) {
+    const f = _m5pFeld(k), aktiv = k === z.fig;
+    ctx.save();
+    if (z.glanz[k] > 0) {                                   // Aha: das Feld leuchtet nach
+      const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+      ctx.globalAlpha = Math.min(1, z.glanz[k] / 0.8) * (0.45 + 0.4 * puls);
+      ctx.strokeStyle = K.F_GOLD; ctx.lineWidth = 6;
+      _bioFxRundRect(ctx, f.x - 3, f.y - 3, K.ZW + 6, K.ZH + 6, 11); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    ctx.fillStyle = aktiv ? '#eff6ff' : '#ffffff';
+    _bioFxRundRect(ctx, f.x, f.y, K.ZW, K.ZH, 9); ctx.fill();
+    ctx.strokeStyle = aktiv ? K.F_BAND : '#cbd5e1'; ctx.lineWidth = aktiv ? 2.5 : 1.2;
+    _bioFxRundRect(ctx, f.x, f.y, K.ZW, K.ZH, 9); ctx.stroke();
+    _m5pText(ctx, 'Figur ' + k, f.x + K.ZW / 2, f.y + 16, 'center', aktiv ? K.F_BAND_D : '#334155', 13);
+    // Mini-Brett mit der Figur
+    const m0 = _m5pMiniPx(k, [0, 8]), mb = 8 * K.MINI;
+    ctx.fillStyle = K.F_HOLZ;
+    _bioFxRundRect(ctx, m0[0] - 3, m0[1] - 3, mb + 6, mb + 6, 4); ctx.fill();
+    ctx.strokeStyle = K.F_HOLZ_R; ctx.lineWidth = 1;
+    _bioFxRundRect(ctx, m0[0] - 3, m0[1] - 3, mb + 6, mb + 6, 4); ctx.stroke();
+    const mp = _m5pFIGUREN[k].map(c => _m5pMiniPx(k, c));
+    ctx.strokeStyle = K.F_BAND; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+    _m5pVieleck(ctx, mp); ctx.stroke();
+    const m = z.merk[k];
+    if (m) {
+      m.forEach((ja, i) => {
+        if (ja === null) return;
+        ctx.fillStyle = ja ? K.F_JA : K.F_NEIN; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(mp[i][0], mp[i][1], 4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      });
+      if (m.some(x => x !== null)) {
+        const n = m.filter(x => x === true).length;
+        _m5pHaken(ctx, f.x + K.ZW / 2 - 9, f.y + K.ZH - 11, 8, 1);
+        _m5pText(ctx, String(n), f.x + K.ZW / 2 + 5, f.y + K.ZH - 5.5, 'left', '#14532d', 16);
+      }
+    }
+    ctx.restore();
+  }
+  // Legende
+  _m5pHaken(ctx, 256, 222, 7.5, 1);
+  _m5pText(ctx, 'passt genau', 269, 227, 'left', '#334155', 12, '600');
+  ctx.save();
+  ctx.beginPath(); ctx.moveTo(250, 246); ctx.arc(250, 246, 14, -Math.PI * 0.5, -Math.PI * 0.27, false); ctx.closePath();
+  ctx.globalAlpha = 0.42; ctx.fillStyle = K.F_NEIN; ctx.fill();
+  ctx.globalAlpha = 1; ctx.strokeStyle = K.F_NEIN_D; ctx.lineWidth = 1.8; ctx.stroke();
+  ctx.restore();
+  _m5pText(ctx, 'passt nicht', 269, 245, 'left', '#334155', 12, '600');
+}
+function _m5pDraw(ctx, cv) {
+  if (!_m5p) return;
+  const W = cv.width, H = cv.height, z = _m5p, K = _m5pK;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+  ctx.save();                                               // Karopapier, 0,5 cm
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  for (let x = K.X0 % 12; x <= W; x += 12) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+  for (let y = K.Y0 % 12; y <= H; y += 12) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+  ctx.restore();
+  _m5pBrett(ctx);
+  // Papierecke (unter dem Band: das Band liegt sichtbar an ihren Kanten)
+  const pa = _m5pPapierJetzt(), s = z.pruef;
+  let gruen = 0, keil = -1, keilA = 0;
+  if (s && s.phase === 'liegen') {
+    const ja = _m5pRechne(z.fig).ecken[s.i], a = Math.min(1, s.t / 0.15);
+    if (ja) gruen = a; else { keil = s.i; keilA = a; }
+  }
+  if (pa) _m5pPapier(ctx, pa.L, pa.alpha, gruen);
+  // Keile: die stehen gebliebenen und der, der gerade waechst
+  z.marken.forEach((ja, i) => { if (ja === false) _m5pKeil(ctx, i, K.R_KEIL, 1); });
+  if (keil >= 0) _m5pKeil(ctx, keil, K.R_KEIL, keilA);
+  _bioFxDraw(ctx, z.fx.teile);                              // Lichtring hinter dem Band
+  _m5pBand(ctx);
+  // Zeichen der passenden Ecken
+  z.marken.forEach((ja, i) => {
+    if (ja !== true) return;
+    const sk = z.pop[i] > 0 ? _bioFxEase.federn(1 - z.pop[i] / K.T_POP) : 1;
+    _m5pEckZeichen(ctx, i, Math.max(0.05, sk));
+    const o = _m5pMarkenOrt(i, true);
+    _m5pHaken(ctx, o[0], o[1], 9, Math.max(0.05, sk));
+  });
+  // Lineal und Schilder
+  const li = _m5pLinealJetzt();
+  if (li) _m5pLineal(ctx, li.L, li.alpha, li.ziffern);
+  z.laengen.forEach((l, j) => {
+    if (l === null) return;
+    const sk = z.lpop[j] > 0 ? _bioFxEase.federn(1 - z.lpop[j] / K.T_POP) : 1;
+    _m5pSchild(ctx, j, _m5pCm(l), Math.max(0.05, sk));
+  });
+  _m5pMerkfelder(ctx);
+  // fliegende Punkte: von der Ecke in die kleine Figur
+  for (const f of z.flug) {
+    const u = _bioFxEase.sanft(Math.min(1, f.t / K.T_FLUG));
+    const ziel = _m5pMiniPx(f.k, _m5pFIGUREN[f.k][f.i]);
+    const c = [(f.von[0] + ziel[0]) / 2, Math.min(f.von[1], ziel[1]) - 40];
+    const x = (1 - u) * (1 - u) * f.von[0] + 2 * (1 - u) * u * c[0] + u * u * ziel[0];
+    const y = (1 - u) * (1 - u) * f.von[1] + 2 * (1 - u) * u * c[1] + u * u * ziel[1];
+    if (f.ja) _m5pHaken(ctx, x, y, 7 - 2 * u, 1);
+    else {
+      ctx.save();
+      ctx.fillStyle = K.F_NEIN; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(x, y, 6 - 1.5 * u, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mf5 „Ist die Figur symmetrisch?“ (Kennung m5-spiegel)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL3_PROFIL.md, Abschnitt m5-spiegel.
+// Ueberschrift: „Was passiert mit den Ecken beim Falten?“ – die Frage der
+// Einheit („Ist die Diagonale eines Rechtecks eine Spiegelachse?“) traegt
+// „Diagonale“ und „Spiegelachse“ (beide nicht am Bildschirm), deshalb eine
+// neutrale Frage.
+//
+// Was man sieht: Karopapier (ein Kaestchen = 0,5 cm, 16 px; 1 cm = 32 px).
+// Darauf liegt eine Figur aus hellblauem Papier, ihre Ecken auf den Linien:
+// ein Rechteck 6 cm × 3 cm (12 × 6 Kaestchen) oder ein Quadrat 4 cm × 4 cm
+// (8 × 8 Kaestchen). Die Unterkante liegt immer an derselben Stelle. Unter
+// der Figur und links daneben stehen Masslinien mit „6 cm“ und „3 cm“ (bzw.
+// „4 cm“, „4 cm“). Eine violette gestrichelte Linie ist die Achse, an ihrem
+// oberen bzw. rechten Ende steht das Wort „Achse“ (dieselbe Farbe wie das
+// Wort „Achse“ in der Statuszeile).
+// „falten“: Die eine Haelfte klappt sichtbar ueber die Achse (0,9 s) – sie
+// hebt sich, wird dabei schmaler, steht kurz hochkant, legt sich auf der
+// anderen Seite ab und zeigt dann ihre Rueckseite (etwas dunkleres Blau);
+// darunter wandert ihr Schatten mit. Welche Haelfte klappt:
+//   senkrecht    die rechte Haelfte nach links
+//   Ecke zu Ecke das untere rechte Dreieck nach oben links (Achse von der
+//                Ecke unten links zur Ecke oben rechts)
+//   waagerecht   die untere Haelfte nach oben
+// Liegt sie, zeigt das Bild sofort das Ergebnis: Wo zwei Lagen Papier
+// uebereinanderliegen, ist das Blau dunkler. Wo nur eine Lage liegt, obwohl
+// gefaltet ist (ueberstehende Teile), ist das Papier orange getoent (ohne
+// Ueberblenden – Blau und Orange gemischt saehen einen Augenblick grau aus).
+// In 0,35 s springen die Ringe auf: An jeder Stelle, an der Ecken
+// uebereinanderliegen, ein gruener Ring; jede ueberstehende Ecke leuchtet
+// orange (ruhiger Puls, 0,8 Hz) und traegt eine orange Nummer 1, 2 – so
+// laesst sich die Zahl der Statuszeile abzaehlen.
+// Die Masslinien blenden beim Falten aus (gefaltet sind es nicht mehr 6 cm)
+// und beim Aufklappen wieder ein.
+// „aufklappen“ klappt die Haelfte in 0,9 s zurueck. Eine Sprungmarke legt
+// die neue Figur hin: Das Blatt zieht sich in 0,6 s von der alten auf die
+// neue Groesse, die Achse dreht und schiebt sich mit, die Masslinien der
+// neuen Figur blenden im letzten Drittel ein; war gefaltet, liegt es sofort
+// wieder offen. Ein Knopf waehrend einer Bewegung: Der Uebergang steht
+// sofort am Ziel; „falten“ und „aufklappen“ kehren eine laufende Faltung an
+// der Stelle um, an der sie gerade ist. Jede Knopffolge endet so im selben
+// Zustand.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5qWahl('rs'|'rd'|'qd'|'qw')):
+//     „Rechteck, senkrecht“ · „Rechteck, Ecke zu Ecke“ · „Quadrat, Ecke zu
+//     Ecke“ · „Quadrat, waagerecht“ (die gewaehlte ist hervorgehoben)
+//   „falten“ (_m5qFalten()) · „aufklappen“ (_m5qAuf()) ·
+//   „neu“ (_m5qNeu(): Rechteck, senkrecht, offen)
+//
+// Statuszeilen (woertlich):
+//   _m5q-wahl    „Figur: Rechteck · Achse: senkrecht durch die Mitte“
+//                (bzw. „… · Achse: von Ecke zu Ecke“, „… · Achse: waagerecht
+//                durch die Mitte“; „Figur: Quadrat · …“)
+//   _m5q-falten  „Nach dem Falten: …“; sobald die Haelfte liegt,
+//                „Nach dem Falten: Alle Ecken liegen übereinander.“ (gruen)
+//                bzw. „Nach dem Falten: 2 Ecken stehen über.“ (orange);
+//                bei „aufklappen“ und bei jeder Sprungmarke wieder „…“
+// Texte neben der Leinwand (woertlich): darueber „Die Figur ist aus Papier.
+// Die gestrichelte Linie ist die Achse. „falten“ klappt eine Hälfte über die
+// Achse.“ · rechts „Grüner Ring: Hier liegen Ecken übereinander. Oranger Ring
+// mit Nummer: Diese Ecke steht über.“ · darunter „Start: Rechteck, Achse
+// senkrecht durch die Mitte, nicht gefaltet“. Im Bild: „Achse“, „6 cm“,
+// „3 cm“, „4 cm“ und die Nummern „1“, „2“.
+// Beide Zeilen, deren Wert das Heft verlangt, sind laenger als 18 Zeichen
+// (simfakten.js-Grenze); der Platzhalter „Nach dem Falten: …“ (18) muss es
+// nicht sein.
+//
+// Werte (gerechnet in _m5qRechne(): Ecken der Klappe an der Achse
+// gespiegelt, mit den festen Ecken verglichen; jede Sprungmarke nachgerechnet
+// mit simcheck/werte.js, die Faltung ausgelaufen):
+//   Rechteck, senkrecht     -> Achse: senkrecht durch die Mitte
+//                              Alle Ecken liegen übereinander. (2 gruene Ringe)
+//   Rechteck, Ecke zu Ecke  -> Achse: von Ecke zu Ecke
+//                              2 Ecken stehen über. Die Ecke unten rechts
+//                              landet 1,8 cm ueber der Oberkante (bei 3,6 cm
+//                              von links), die Ecke oben links bleibt frei.
+//                              Doppelt liegt ein Dreieck von 5,625 cm², je
+//                              3,375 cm² stehen ueber (2 gruene Ringe an den
+//                              Achsenenden, 2 orange mit 1 und 2)
+//   Quadrat, Ecke zu Ecke   -> Achse: von Ecke zu Ecke
+//                              Alle Ecken liegen übereinander. (3 gruene Ringe)
+//   Quadrat, waagerecht     -> Achse: waagerecht durch die Mitte
+//                              Alle Ecken liegen übereinander. (2 gruene Ringe)
+// Gemessen (Frames zu 16 ms): Faltung fertig nach 57 Frames (dann steht auch
+// die Statuszeile), Ringe ganz aufgesprungen nach 78. simfakten.js mit
+// --frames=25 liest also spaetestens beim dritten Ablesen (75 Frames) den
+// Endwert; im Faktendump stehen alle vier Ergebnisse unter „… + falten“.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Liegt „Rechteck, Ecke zu
+// Ecke“ gefaltet, laeuft je ein oranger Lichtring um die beiden
+// ueberstehenden Ecken; sie leuchten danach weiter, solange gefaltet ist.
+// Das widerlegt Vermutung 1 („Ja, die Hälften liegen genau aufeinander.“) und
+// Vermutung 2 (es entsteht kein Quadrat, sondern eine Figur mit zwei Zipfeln).
+// Jedes Mal, wenn diese Faltung fertig ist.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „aufeinander“,
+// „Spiegelachse“, „Diagonale“, „keine“, „symmetrisch“ – und keine Regel als
+// Satz. Ob die Achse eine Spiegelachse ist, sagt kein Text; das Kind
+// entscheidet an „Alle Ecken liegen übereinander.“ / „2 Ecken stehen über.“
+// Keine Namen, keine Punkte, keine Zeit. Deterministisch, ohne Zufall: Bild
+// und Statuszeilen lesen dieselbe Rechnung (_m5qRechne).
+// ════════════════════════════════════════════════════════════════════════
+let _m5q = null;
+const _m5qREIHE = ['rs', 'rd', 'qd', 'qw'];
+const _m5qFIG = {
+  rs: { knopf: 'Rechteck, senkrecht',    figur: 'Rechteck', w: 6, h: 3, achse: 'senkrecht',  wort: 'senkrecht durch die Mitte' },
+  rd: { knopf: 'Rechteck, Ecke zu Ecke', figur: 'Rechteck', w: 6, h: 3, achse: 'ecke',       wort: 'von Ecke zu Ecke' },
+  qd: { knopf: 'Quadrat, Ecke zu Ecke',  figur: 'Quadrat',  w: 4, h: 4, achse: 'ecke',       wort: 'von Ecke zu Ecke' },
+  qw: { knopf: 'Quadrat, waagerecht',    figur: 'Quadrat',  w: 4, h: 4, achse: 'waagerecht', wort: 'waagerecht durch die Mitte' }
+};
+const _m5qK = {
+  S: 32,                        // px je cm
+  KAST: 16, GX: 2, GY: 4,       // Karopapier: Kaestchen 0,5 cm; Versatz, damit die Ecken auf Linien liegen
+  MX: 210, BODEN: 196,          // Mitte der Figur, Unterkante (liegt immer gleich)
+  T_FALT: 0.9,                  // s: eine Haelfte klappt
+  T_FORM: 0.6,                  // s: das Blatt zieht sich auf die neue Figur
+  T_NACH: 0.35,                 // s: Ringe und Nummern springen auf
+  F_KARO: '#d6e4f5',
+  F_VORN: '#bfdbfe',            // Papier, Vorderseite
+  F_HINTEN: '#a3c4ec',          // Papier, Rueckseite
+  F_DOPPELT: '#6c9fdb',         // zwei Lagen
+  F_RAND: '#1e3a8a',
+  F_UEBER: '#fdba74',           // eine Lage, steht ueber
+  F_ORANGE: '#c2410c', F_GLUT: '249,115,22',
+  F_GRUEN: '#15803d',
+  F_ACHSE: '#7e22ce',
+  F_MASS: '#475569'
+};
+
+// ── Rechnung ───────────────────────────────────────────────────────────
+function _m5qP(x, y) { return { x: x, y: y }; }
+// Die Figur in cm (x nach rechts, y nach unten, Ursprung oben links): Ecken,
+// Achse a1 -> a2 (a2 ist das obere bzw. rechte Ende), der feste Teil und die
+// Klappe (die Haelfte, die sich bewegt), n = Einheitsnormale zur Klappe hin.
+function _m5qGeo(k) {
+  const f = _m5qFIG[k], w = f.w, h = f.h, P = _m5qP;
+  const OL = P(0, 0), OR = P(w, 0), UR = P(w, h), UL = P(0, h);
+  let a1, a2, fest, klappe;
+  if (f.achse === 'senkrecht') {
+    a1 = P(w / 2, h); a2 = P(w / 2, 0);
+    fest = [OL, P(w / 2, 0), P(w / 2, h), UL];
+    klappe = [P(w / 2, 0), OR, UR, P(w / 2, h)];
+  } else if (f.achse === 'ecke') {
+    a1 = UL; a2 = OR;
+    fest = [OL, OR, UL];
+    klappe = [OR, UR, UL];
+  } else {
+    a1 = P(0, h / 2); a2 = P(w, h / 2);
+    fest = [OL, OR, P(w, h / 2), P(0, h / 2)];
+    klappe = [P(0, h / 2), P(w, h / 2), UR, UL];
+  }
+  const L = Math.hypot(a2.x - a1.x, a2.y - a1.y);
+  let n = { x: -(a2.y - a1.y) / L, y: (a2.x - a1.x) / L };
+  const sx = klappe.reduce((s, p) => s + p.x, 0) / klappe.length;
+  const sy = klappe.reduce((s, p) => s + p.y, 0) / klappe.length;
+  if ((sx - a1.x) * n.x + (sy - a1.y) * n.y < 0) n = { x: -n.x, y: -n.y };
+  return { f: f, w: w, h: h, ecken: [OL, OR, UR, UL], a1: a1, a2: a2, n: n, fest: fest, klappe: klappe };
+}
+function _m5qAbstand(g, p) { return (p.x - g.a1.x) * g.n.x + (p.y - g.a1.y) * g.n.y; }
+// Ein Punkt der Klappe beim Klappwinkel th (0 = offen, PI = umgeklappt), von oben gesehen.
+function _m5qGeklappt(g, p, th) {
+  const s = _m5qAbstand(g, p) * (1 - Math.cos(th));
+  return { x: p.x - s * g.n.x, y: p.y - s * g.n.y };
+}
+function _m5qGleich(p, q) { return Math.abs(p.x - q.x) < 1e-6 && Math.abs(p.y - q.y) < 1e-6; }
+// Schnitt zweier konvexer Vielecke (Sutherland-Hodgman): die Flaeche mit zwei Lagen.
+function _m5qSchnitt(a, b) {
+  let A = 0;
+  for (let i = 0; i < b.length; i++) { const p = b[i], q = b[(i + 1) % b.length]; A += p.x * q.y - q.x * p.y; }
+  const sg = A >= 0 ? 1 : -1;
+  let aus = a.slice();
+  for (let i = 0; i < b.length && aus.length; i++) {
+    const p = b[i], q = b[(i + 1) % b.length], ex = q.x - p.x, ey = q.y - p.y;
+    const innen = r => sg * (ex * (r.y - p.y) - ey * (r.x - p.x)) >= -1e-9;
+    const treff = (c, d) => {
+      const dx = d.x - c.x, dy = d.y - c.y;
+      const t = (ey * (c.x - p.x) - ex * (c.y - p.y)) / (ex * dy - ey * dx);
+      return { x: c.x + t * dx, y: c.y + t * dy };
+    };
+    const ein = aus; aus = [];
+    for (let j = 0; j < ein.length; j++) {
+      const c = ein[(j + ein.length - 1) % ein.length], d = ein[j];
+      const ci = innen(c), di = innen(d);
+      if (di) { if (!ci) aus.push(treff(c, d)); aus.push(d); }
+      else if (ci) aus.push(treff(c, d));
+    }
+  }
+  return aus;
+}
+function _m5qFlaeche(p) {
+  let A = 0;
+  for (let i = 0; i < p.length; i++) { const a = p[i], b = p[(i + 1) % p.length]; A += a.x * b.y - b.x * a.y; }
+  return Math.abs(A) / 2;
+}
+// Was nach dem Falten uebereinanderliegt – Bild UND Statuszeile lesen nur hier.
+//   gleich: Stellen, an denen Ecken uebereinanderliegen (oder die auf der Achse liegen)
+//   ueber:  Ecken, die ueberstehen (von links nach rechts), anzahl = ihre Zahl
+function _m5qRechne(k) {
+  const g = _m5qGeo(k);
+  const achse = [], fest = [], klapp = [];
+  for (const e of g.ecken) {
+    const d = _m5qAbstand(g, e);
+    if (Math.abs(d) < 1e-6) achse.push(e);
+    else if (d > 0) klapp.push(_m5qGeklappt(g, e, Math.PI));
+    else fest.push(e);
+  }
+  const gleich = achse.slice(), ueber = [];
+  for (const e of klapp) (fest.some(q => _m5qGleich(q, e)) ? gleich : ueber).push(e);
+  for (const e of fest) if (!klapp.some(q => _m5qGleich(q, e))) ueber.push(e);
+  ueber.sort((a, b) => (a.x - b.x) || (a.y - b.y));
+  const klappeZu = g.klappe.map(p => _m5qGeklappt(g, p, Math.PI));
+  const doppelt = _m5qSchnitt(klappeZu, g.fest);
+  return { g: g, gleich: gleich, ueber: ueber, anzahl: ueber.length, klappeZu: klappeZu,
+           doppelt: doppelt, flaecheDoppelt: _m5qFlaeche(doppelt) };
+}
+function _m5qUrsprung(g) { const K = _m5qK; return { x: K.MX - g.w * K.S / 2, y: K.BODEN - g.h * K.S }; }
+function _m5qPx(o, p) { return { x: o.x + p.x * _m5qK.S, y: o.y + p.y * _m5qK.S }; }
+
+// ── Oberflaeche ────────────────────────────────────────────────────────
+function _m5qInit() {
+  _m5q = { wahl: 'rs', u: 0, richtung: 0, fertig: false, nach: 0, form: null,
+           t: 0, fx: { teile: [] } };
+}
+function _m5qHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5q-b-${k}" onclick="_m5qWahl('${k}')">${_m5qFIG[k].knopf}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was passiert mit den Ecken beim Falten?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Figur ist aus Papier. Die gestrichelte Linie ist die Achse. „falten“ klappt eine Hälfte über die Achse.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5q-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5qREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" onclick="_m5qFalten()">falten</button>
+          <button class="sim-btn" onclick="_m5qAuf()">aufklappen</button>
+          <button class="sim-btn" onclick="_m5qNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5q-wahl" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5q-falten" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Grüner Ring: Hier liegen Ecken übereinander. Oranger Ring mit Nummer: Diese Ecke steht über.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Rechteck, Achse senkrecht durch die Mitte, nicht gefaltet</p>
+  </div>`;
+}
+function _m5qZeile(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+}
+function _m5qStatus() {
+  if (!_m5q) return;
+  const z = _m5q, K = _m5qK, f = _m5qFIG[z.wahl];
+  const b = (s, c) => '<b style="color:' + c + '">' + s + '</b>';
+  _m5qZeile('_m5q-wahl', 'Figur: ' + b(f.figur, K.F_RAND) + ' · Achse: ' + b(f.wort, K.F_ACHSE));
+  let t = 'Nach dem Falten: …';
+  if (z.fertig) {
+    const n = _m5qRechne(z.wahl).anzahl;
+    t = 'Nach dem Falten: ' + (n === 0 ? b('Alle Ecken liegen übereinander.', K.F_GRUEN)
+      : b(n === 1 ? '1 Ecke steht über.' : n + ' Ecken stehen über.', K.F_ORANGE));
+  }
+  _m5qZeile('_m5q-falten', t);
+  for (const k of _m5qREIHE) {
+    const e = document.getElementById('_m5q-b-' + k);
+    if (e && e.classList) e.classList.toggle('primary', k === z.wahl);
+  }
+}
+
+// ── Bedienung ──────────────────────────────────────────────────────────
+// Lage des offenen Blatts in px, so wie es gerade gezeichnet wird.
+function _m5qLage() {
+  const z = _m5q, g = _m5qGeo(z.wahl), o = _m5qUrsprung(g);
+  const ziel = { ecken: g.ecken.map(p => _m5qPx(o, p)), a1: _m5qPx(o, g.a1), a2: _m5qPx(o, g.a2) };
+  if (!z.form) return ziel;
+  const e = _bioFxEase.sanft(Math.min(1, z.form.t / _m5qK.T_FORM)), v = z.form.von;
+  const m = (p, q) => ({ x: p.x + (q.x - p.x) * e, y: p.y + (q.y - p.y) * e });
+  return { ecken: v.ecken.map((p, i) => m(p, ziel.ecken[i])), a1: m(v.a1, ziel.a1), a2: m(v.a2, ziel.a2) };
+}
+function _m5qWahl(k) {
+  if (!_m5q || !_m5qFIG[k]) return;
+  const z = _m5q, von = _m5qLage();
+  z.wahl = k; z.u = 0; z.richtung = 0; z.fertig = false; z.nach = 0;
+  z.form = { von: von, t: 0 };
+  _m5qStatus();
+}
+function _m5qFalten() {
+  if (!_m5q) return;
+  const z = _m5q;
+  z.form = null;
+  if (z.fertig) return;                       // liegt schon gefaltet da
+  z.richtung = 1;
+  _m5qStatus();
+}
+function _m5qAuf() {
+  if (!_m5q) return;
+  const z = _m5q;
+  z.form = null;
+  if (z.u <= 0) { z.richtung = 0; return; }   // ist schon offen
+  z.richtung = -1; z.fertig = false; z.nach = 0;
+  _m5qStatus();
+}
+function _m5qNeu() {
+  if (!_m5q) return;
+  _m5q.fx.teile = [];
+  _m5qWahl('rs');
+}
+// Die Haelfte liegt: Statuszeile, und bei ueberstehenden Ecken der Lichtring.
+function _m5qGefaltet() {
+  const z = _m5q, r = _m5qRechne(z.wahl);
+  if (r.anzahl > 0) {
+    const o = _m5qUrsprung(r.g);
+    for (const e of r.ueber) { const p = _m5qPx(o, e); _bioFxWelle(z.fx.teile, p.x, p.y, '#f97316', 46); }
+  }
+  _m5qStatus();
+}
+function _m5qUpdate(dt) {
+  if (!_m5q) return;
+  dt = _bioFxDt(dt);
+  const z = _m5q, K = _m5qK;
+  z.t += dt;
+  if (z.form) { z.form.t += dt; if (z.form.t >= K.T_FORM) z.form = null; }
+  if (z.richtung > 0) {
+    z.u = Math.min(1, z.u + dt / K.T_FALT);
+    if (z.u >= 1) { z.u = 1; z.richtung = 0; z.fertig = true; z.nach = 0; _m5qGefaltet(); }
+  } else if (z.richtung < 0) {
+    z.u = Math.max(0, z.u - dt / K.T_FALT);
+    if (z.u <= 0) { z.u = 0; z.richtung = 0; }
+  }
+  if (z.fertig) z.nach += dt;
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ───────────────────────────────────────────────────────────
+function _m5qVieleck(ctx, pts, fuell, rand, breite) {
+  if (!pts || pts.length < 3) return;
+  ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+  for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+  ctx.closePath();
+  if (fuell) { ctx.fillStyle = fuell; ctx.fill(); }
+  if (rand) { ctx.strokeStyle = rand; ctx.lineWidth = breite || 2; ctx.lineJoin = 'round'; ctx.stroke(); }
+}
+function _m5qSchatten(ctx, pts, dx, dy, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  _m5qVieleck(ctx, pts.map(p => ({ x: p.x + dx, y: p.y + dy })), '#0f172a');
+  ctx.restore();
+}
+function _m5qText(ctx, s, x, y, ausr, grund, farbe, groesse) {
+  ctx.font = '700 ' + (groesse || 13) + 'px sans-serif';
+  ctx.textAlign = ausr; ctx.textBaseline = grund; ctx.fillStyle = farbe;
+  ctx.fillText(s, x, y);
+}
+// Die Achse: violett gestrichelt, 12 px ueber die Figur hinaus, am oberen bzw.
+// rechten Ende das Wort „Achse“.
+function _m5qAchse(ctx, a1, a2) {
+  const K = _m5qK, dx = a2.x - a1.x, dy = a2.y - a1.y, L = Math.hypot(dx, dy) || 1;
+  const ux = dx / L, uy = dy / L, ext = 12;
+  ctx.save();
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 5; ctx.globalAlpha = 0.7;   // heller Saum: lesbar auf jedem Blau
+  ctx.beginPath(); ctx.moveTo(a1.x - ux * ext, a1.y - uy * ext); ctx.lineTo(a2.x + ux * ext, a2.y + uy * ext); ctx.stroke();
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = K.F_ACHSE; ctx.lineWidth = 2.5; ctx.lineCap = 'butt';
+  ctx.setLineDash([9, 6]);
+  ctx.beginPath(); ctx.moveTo(a1.x - ux * ext, a1.y - uy * ext); ctx.lineTo(a2.x + ux * ext, a2.y + uy * ext); ctx.stroke();
+  ctx.setLineDash([]);
+  const lx = a2.x + ux * (ext + 6), ly = a2.y + uy * (ext + 6);
+  _m5qText(ctx, 'Achse', lx, ly, ux > 0.5 ? 'left' : ux < -0.5 ? 'right' : 'center',
+           uy < -0.5 ? 'bottom' : uy > 0.5 ? 'top' : 'middle', K.F_ACHSE, 13);
+  ctx.restore();
+}
+// Masslinien unter und links neben dem offenen Blatt (ecken: OL, OR, UR, UL in px).
+function _m5qMasse(ctx, ecken, w, h, alpha) {
+  if (alpha <= 0.01) return;
+  const K = _m5qK, OL = ecken[0], UR = ecken[2], UL = ecken[3];
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = K.F_MASS; ctx.lineWidth = 1.5;
+  const yb = UL.y + 10, xl = OL.x - 10;
+  ctx.beginPath();
+  ctx.moveTo(UL.x, yb); ctx.lineTo(UR.x, yb);
+  ctx.moveTo(UL.x, yb - 4); ctx.lineTo(UL.x, yb + 4);
+  ctx.moveTo(UR.x, yb - 4); ctx.lineTo(UR.x, yb + 4);
+  ctx.moveTo(xl, OL.y); ctx.lineTo(xl, UL.y);
+  ctx.moveTo(xl - 4, OL.y); ctx.lineTo(xl + 4, OL.y);
+  ctx.moveTo(xl - 4, UL.y); ctx.lineTo(xl + 4, UL.y);
+  ctx.stroke();
+  _m5qText(ctx, w + ' cm', (UL.x + UR.x) / 2, yb + 14, 'center', 'middle', K.F_MASS, 13);
+  _m5qText(ctx, h + ' cm', xl - 7, (OL.y + UL.y) / 2, 'right', 'middle', K.F_MASS, 13);
+  ctx.restore();
+}
+// Gruene Ringe (Ecken liegen uebereinander), orange leuchtende Ecken mit Nummer.
+function _m5qMarken(ctx, r, o, e) {
+  const K = _m5qK, z = _m5q;
+  const pop = e < 1 ? _bioFxEase.federn(e) : 1;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, e * 1.5);
+  for (const q of r.gleich) {
+    const p = _m5qPx(o, q);
+    ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 9 * pop, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = K.F_GRUEN; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 9 * pop, 0, Math.PI * 2); ctx.stroke();
+  }
+  const mx = o.x + r.g.w * K.S / 2, my = o.y + r.g.h * K.S / 2;
+  r.ueber.forEach((q, i) => {
+    const p = _m5qPx(o, q);
+    _bioFxLeuchten(ctx, p.x, p.y, 12, z.t, K.F_GLUT);
+    ctx.strokeStyle = K.F_ORANGE; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(p.x, p.y, 9 * pop, 0, Math.PI * 2); ctx.stroke();
+    const dx = p.x - mx, dy = p.y - my, L = Math.hypot(dx, dy) || 1;
+    const bx = p.x + dx / L * 24, by = p.y + dy / L * 24;
+    ctx.fillStyle = K.F_ORANGE;
+    ctx.beginPath(); ctx.arc(bx, by, 11 * pop, 0, Math.PI * 2); ctx.fill();
+    _m5qText(ctx, String(i + 1), bx, by + 0.5, 'center', 'middle', '#ffffff', 14);
+  });
+  ctx.restore();
+}
+function _m5qDraw(ctx, cv) {
+  if (!_m5q) return;
+  const W = cv.width, H = cv.height, z = _m5q, K = _m5qK;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;          // Karopapier
+  ctx.beginPath();
+  for (let x = K.GX; x <= W; x += K.KAST) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
+  for (let y = K.GY; y <= H; y += K.KAST) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
+  ctx.stroke();
+
+  const f = _m5qFIG[z.wahl];
+  // Uebergang auf eine neue Figur: offenes Blatt, das sich zieht
+  if (z.form) {
+    const L = _m5qLage();
+    _m5qSchatten(ctx, L.ecken, 2, 3, 0.12);
+    _m5qVieleck(ctx, L.ecken, K.F_VORN, K.F_RAND, 2);
+    _m5qAchse(ctx, L.a1, L.a2);
+    // Die Masse der NEUEN Figur erst, wenn das Blatt fast so gross ist
+    const e = Math.min(1, z.form.t / K.T_FORM);
+    _m5qMasse(ctx, L.ecken, f.w, f.h, Math.max(0, (e - 0.6) / 0.4));
+    _bioFxDraw(ctx, z.fx.teile);
+    return;
+  }
+  const g = _m5qGeo(z.wahl), o = _m5qUrsprung(g), px = p => _m5qPx(o, p);
+  const ecken = g.ecken.map(px), a1 = px(g.a1), a2 = px(g.a2);
+
+  if (z.fertig) {
+    // gefaltet: zwei Lagen dunkler, ueberstehende Teile orange
+    const r = _m5qRechne(z.wahl), e = Math.min(1, z.nach / K.T_NACH);
+    const fest = g.fest.map(px), zu = r.klappeZu.map(px), dop = r.doppelt.map(px);
+    _m5qSchatten(ctx, fest, 2, 3, 0.12);
+    _m5qSchatten(ctx, zu, 2, 3, 0.12);
+    _m5qVieleck(ctx, fest, K.F_VORN);
+    _m5qVieleck(ctx, zu, K.F_HINTEN);
+    // Ohne Ueberblenden: Blau und Orange gemischt ergaeben einen Augenblick lang Grau.
+    if (r.anzahl > 0) { _m5qVieleck(ctx, fest, K.F_UEBER); _m5qVieleck(ctx, zu, K.F_UEBER); }
+    _m5qVieleck(ctx, dop, K.F_DOPPELT);
+    _m5qVieleck(ctx, fest, null, K.F_RAND, 2);
+    _m5qVieleck(ctx, zu, null, K.F_RAND, 2);
+    _m5qAchse(ctx, a1, a2);
+    _bioFxDraw(ctx, z.fx.teile);
+    _m5qMarken(ctx, r, o, e);
+    return;
+  }
+
+  if (z.u <= 0) {
+    // offen
+    _m5qSchatten(ctx, ecken, 2, 3, 0.12);
+    _m5qVieleck(ctx, ecken, K.F_VORN, K.F_RAND, 2);
+    _m5qAchse(ctx, a1, a2);
+    _m5qMasse(ctx, ecken, f.w, f.h, 1);
+    _bioFxDraw(ctx, z.fx.teile);
+    return;
+  }
+
+  // die Haelfte klappt: hebt sich, steht hochkant, legt sich drueben ab
+  const th = Math.PI * _bioFxEase.sanft(z.u), c = Math.cos(th), s = Math.sin(th);
+  const fest = g.fest.map(px);
+  const klappe = g.klappe.map(p => px(_m5qGeklappt(g, p, th)));
+  const schatten = g.klappe.map(p => {
+    const q = px(_m5qGeklappt(g, p, th)), hoch = Math.abs(_m5qAbstand(g, p)) * K.S * s * 0.22;
+    return { x: q.x + hoch * 0.6, y: q.y + hoch * 0.9 };
+  });
+  _m5qSchatten(ctx, fest, 2, 3, 0.12);
+  _m5qVieleck(ctx, fest, K.F_VORN, K.F_RAND, 2);
+  _m5qSchatten(ctx, schatten, 0, 0, 0.10 + 0.12 * s);
+  _m5qVieleck(ctx, klappe, c >= 0 ? K.F_VORN : K.F_HINTEN);
+  ctx.save();                                           // Licht: hochkant ist die Klappe dunkler
+  ctx.globalAlpha = 0.22 * s;
+  _m5qVieleck(ctx, klappe, '#1e293b');
+  ctx.restore();
+  _m5qVieleck(ctx, klappe, null, K.F_RAND, 2);
+  _m5qAchse(ctx, a1, a2);
+  _m5qMasse(ctx, ecken, f.w, f.h, Math.max(0, 1 - 2 * z.u));
+  _bioFxDraw(ctx, z.fx.teile);
 }

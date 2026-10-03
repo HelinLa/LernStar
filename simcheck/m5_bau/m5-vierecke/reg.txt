@@ -1,0 +1,1 @@
+  'm5-vierecke': modal => { _m5pInit(); modal.innerHTML = _m5pHTML(); _m5pStatus(); _pSim = new PhysicsSimEngine('_m5p-cv', '_m5p-cv'); _pSim.start(dt => _m5pUpdate(dt), (ctx, cv) => _m5pDraw(ctx, cv), []); },
