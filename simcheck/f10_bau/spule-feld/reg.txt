@@ -1,0 +1,1 @@
+  'spule-feld': modal => { _f10kInit(); modal.innerHTML = _f10kHTML(); _f10kStatus(); _pSim = new PhysicsSimEngine('_f10k-cv', '_f10k-cv'); _pSim.start(dt => _f10kUpdate(dt), (ctx, cv) => _f10kDraw(ctx, cv), []); },
