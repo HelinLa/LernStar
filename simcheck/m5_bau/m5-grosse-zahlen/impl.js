@@ -7,11 +7,11 @@
 // WAS MAN SIEHT (Leinwand 420 x 250, von oben nach unten):
 //   - ein gelbes Ortsschild mit dem gewaehlten Ort,
 //   - darunter die Einwohnerzahl gross (34 px), anfangs OHNE Luecken
-//     („18000000“),
-//   - darunter eine lange Stellenwerttafel in vier Gruppen
-//     Milliarden | Millionen | Tausender | Einer, jede mit den Spalten H Z E.
+//     („4000000“),
+//   - darunter eine Stellenwerttafel in drei Gruppen
+//     Millionen | Tausender | Einer, jede mit den Spalten H Z E.
 //     Jede Ziffer steht in ihrer Spalte, jede Gruppe hat ihre ruhige Farbe
-//     (Einer bernstein, Tausender gruen, Millionen blau, Milliarden violett),
+//     (Einer bernstein, Tausender gruen, Millionen blau),
 //   - ganz unten ein Lautsprecher und die Schreiblinie, auf der das Zahlwort
 //     waechst.
 // Bild und Zahl sind VERBUNDEN: Nach „Gruppen bilden“ traegt jede Ziffer der
@@ -20,9 +20,15 @@
 // Zahl UND Tafel gleichzeitig; das neue Stueck des Zahlworts wird in ihrer
 // Farbe unterstrichen.
 //
+// FOERDERHEFT BIS ZUR MILLION (04.10.2026, Abdullah „ja“): Die Milliarde
+// faellt im Foerderheft weg - auch hier. Vorher gab es „Erde“ (8 000 000 000,
+// Gruppe Milliarden) und dazu „Nordrhein-Westfalen“ (18 000 000) und
+// „Deutschland“ (83 000 000); die Tafel hatte vier Gruppen. Jetzt bleibt jede
+// Zahl unter 10 000 000, die Tafel hat drei Gruppen, und das Zahlwort kennt
+// keine Milliarden mehr. Die Simulation traegt nur mz4 (js/heft-bruecke.js).
+//
 // KNOEPFE (Bauplan, woertlich):
-//   Reihe 1, Wahlgruppe _m5dOrt('…'): „Dortmund“ · „Nordrhein-Westfalen“ ·
-//            „Deutschland“ · „Erde“
+//   Reihe 1, Wahlgruppe _m5dOrt('…'): „Dortmund“ · „Köln“ · „Berlin“
 //   Reihe 2: „Gruppen bilden“ · „vorlesen“ · „neu“
 // Start: Dortmund, Zahl ohne Luecken (Satz unter der Leinwand:
 // „Start: Dortmund, Zahl ohne Lücken“).
@@ -41,21 +47,20 @@
 //   vorlesen        Bildet zuerst die Gruppen, falls sie noch fehlen. Dann
 //                   leuchten die BELEGTEN Gruppen von links nach rechts, je
 //                   1,0 s: erst erscheint das Zahlwort ihrer Ziffern
-//                   („dreiundachtzig“), nach 0,5 s der Name der Gruppe
+//                   („vier“), nach 0,5 s der Name der Gruppe
 //                   („ Millionen“). Gruppen aus 000 werden nicht gesprochen.
 //                   Der Lautsprecher sendet dabei Schallboegen.
 //   neu             zurueck zum Start.
 //
 // STATUSZEILEN (woertlich; das Heft mz4 zitiert sie):
-//   _m5d-ort     „Einwohner von Nordrhein-Westfalen (rund)“
-//                (Erde: „Einwohner der Erde (rund)“)
-//   _m5d-zahl    vorher „Zahl ohne Lücken: 18000000“,
-//                nach „Gruppen bilden“ „Zahl mit Lücken: 18 000 000“
+//   _m5d-ort     „Einwohner von Berlin (rund)“
+//   _m5d-zahl    vorher „Zahl ohne Lücken: 4000000“,
+//                nach „Gruppen bilden“ „Zahl mit Lücken: 4 000 000“
 //                (Tausendertrenner U+00A0)
 //   _m5d-gruppe  „Linke Gruppe: Millionen“ – erst nach „Gruppen bilden“,
 //                vorher leer und ausgeblendet
 //   _m5d-wort    „So spricht man sie: …“, nach „vorlesen“
-//                „So spricht man sie: achtzehn Millionen“
+//                „So spricht man sie: vier Millionen“
 //
 //   ABWEICHUNG vom Bauplan (03.10.2026): Der Bauplan nennt „Zahl: 18000000“ /
 //   „Zahl: 18 000 000“. simcheck/simfakten.js nimmt aber nur Textfelder mit
@@ -66,37 +71,33 @@
 //   Kopf der Heftspalte.
 //
 // WERTE (gerundete Modellwerte; die Lehrkraft-Werte stehen im Lehrerteil:
-// Dortmund rund 590 000, NRW rund 18,1 Mio., Deutschland rund 83,5 Mio.,
-// Erde rund 8,1 Mrd.):
-//   Dortmund             600 000         Tausender   sechshunderttausend
-//   Nordrhein-Westfalen  18 000 000      Millionen   achtzehn Millionen
-//   Deutschland          83 000 000      Millionen   dreiundachtzig Millionen
-//   Erde                 8 000 000 000   Milliarden  acht Milliarden
+// Dortmund knapp 600 000, Koeln gut 1 Mio., Berlin knapp 4 Mio.):
+//   Dortmund   600 000     Tausender   sechshunderttausend
+//   Köln       1 000 000   Millionen   eine Million
+//   Berlin     4 000 000   Millionen   vier Millionen
 //
 // AHA: beim Abschluss von „Gruppen bilden“ ein Lichtring (_bioFxWelle) am
 // Namen der Gruppe ganz links – dort steht, wie die Zahl heisst. Kein
 // Textstreifen, der die Antwort vorsagt.
 //
 // NICHT AM BILDSCHIRM (sim_plan.nicht_am_bildschirm, Merksatzwoerter):
-// „drei“ (als Wort – es steckt nur im Zahlwort „dreiundachtzig“),
-// „Dreiergruppe“, „rechts“. Keine Regel, kein „Merke“, kein „falsch“, keine
+// „drei“ (als Wort), „Dreiergruppe“, „rechts“. Keine Regel, kein „Merke“, kein „falsch“, keine
 // Punkte, keine Zeit, keine Namen.
 // ════════════════════════════════════════════════════════════════════════
 let _m5d = null;
 const _m5dORTE = {
-  dortmund:    { name: 'Dortmund',            zahl: 600000,     ort: 'Einwohner von Dortmund (rund)' },
-  nrw:         { name: 'Nordrhein-Westfalen', zahl: 18000000,   ort: 'Einwohner von Nordrhein-Westfalen (rund)' },
-  deutschland: { name: 'Deutschland',         zahl: 83000000,   ort: 'Einwohner von Deutschland (rund)' },
-  erde:        { name: 'Erde',                zahl: 8000000000, ort: 'Einwohner der Erde (rund)' }
+  dortmund: { name: 'Dortmund', zahl: 600000,  ort: 'Einwohner von Dortmund (rund)' },
+  koeln:    { name: 'Köln',     zahl: 1000000, ort: 'Einwohner von Köln (rund)' },
+  berlin:   { name: 'Berlin',   zahl: 4000000, ort: 'Einwohner von Berlin (rund)' }
 };
-const _m5dREIHE = ['dortmund', 'nrw', 'deutschland', 'erde'];
+const _m5dREIHE = ['dortmund', 'koeln', 'berlin'];
 // Gruppen, Index g = 0 sind die Einer. farbe: [Grund, Rand, dunkel]
 const _m5dGRUPPE = [
   { name: 'Einer',      farbe: ['#fef3c7', '#f59e0b', '#92400e'] },
   { name: 'Tausender',  farbe: ['#dcfce7', '#22c55e', '#166534'] },
-  { name: 'Millionen',  farbe: ['#e0f2fe', '#38bdf8', '#075985'] },
-  { name: 'Milliarden', farbe: ['#f3e8ff', '#a78bfa', '#5b21b6'] }
+  { name: 'Millionen',  farbe: ['#e0f2fe', '#38bdf8', '#075985'] }
 ];
+const _m5dNG = _m5dGRUPPE.length;   // drei Gruppen: Einer, Tausender, Millionen
 const _m5dK = {
   MX: 210,                 // Mitte der grossen Zahl, wenn alle Luecken offen sind
   ZY: 108,                 // Grundlinie der grossen Zahl
@@ -113,7 +114,7 @@ const _m5dK = {
   EIN: 0.7                 // s fuer das Hereinfallen der Ziffern
 };
 
-// ── Zahlwoerter (deutsch, bis 999 Milliarden) ───────────────────────────
+// ── Zahlwoerter (deutsch, bis 999 Millionen) ────────────────────────────
 const _m5dEINS = ['', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun'];
 const _m5dZEHN = ['zehn', 'elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn',
                   'siebzehn', 'achtzehn', 'neunzehn'];
@@ -146,11 +147,11 @@ function _m5dTeile(zahl) {
     else if (g === 1) { zw = _m5dBis999(v, true);  gw = 'tausend'; }
     else {
       zw = v === 1 ? 'eine' : _m5dBis999(v, true);
-      gw = g === 2 ? (v === 1 ? ' Million' : ' Millionen') : (v === 1 ? ' Milliarde' : ' Milliarden');
+      gw = v === 1 ? ' Million' : ' Millionen';
     }
     teile.push({ g, zw, gw });
   }
-  // Nach „Millionen“ und „Milliarden“ folgt ein Leerzeichen, nach „tausend“ nicht.
+  // Nach „Million(en)“ folgt ein Leerzeichen, nach „tausend“ nicht.
   for (let i = 1; i < teile.length; i++) if (teile[i - 1].g >= 2) teile[i].zw = ' ' + teile[i].zw;
   return teile;
 }
@@ -175,8 +176,8 @@ function _m5dGeteilt(z) { return z.phase === 'gruppen' || z.phase === 'lesen' ||
 function _m5dLage(z) {
   const K = _m5dK, s = String(_m5dORTE[z.ort].zahl), n = s.length, G = Math.ceil(n / 3);
   const rechts = K.MX + (n * K.DW + (G - 1) * K.LUECKE) / 2;
-  const off = [0, 0, 0, 0];
-  for (let g = 1; g < 4; g++) off[g] = off[g - 1] + (z.auf[g - 1] || 0) * K.LUECKE;
+  const off = [0, 0, 0];
+  for (let g = 1; g < _m5dNG; g++) off[g] = off[g - 1] + (z.auf[g - 1] || 0) * K.LUECKE;
   const ziffern = [];
   for (let i = 0; i < n; i++) {
     const p = n - 1 - i, g = Math.floor(p / 3);
@@ -195,8 +196,8 @@ function _m5dInit() {
   _m5d = { ort: 'dortmund', t: 0,
            phase: 'ohne',            // ohne · teilen · gruppen · lesen · gelesen
            schritt: 0, st: 0,        // Animationsschritt und Zeit darin
-           auf: [0, 0, 0],           // Oeffnung der Luecken (Grenze Einer|Tausender, …)
-           bogen: [0, 0, 0, 0],      // Bogen ueber Gruppe g (0 … 1)
+           auf: [0, 0],              // Oeffnung der Luecken (Einer|Tausender, Tausender|Millionen)
+           bogen: [0, 0, 0],         // Bogen ueber Gruppe g (0 … 1)
            nachLesen: false,         // „vorlesen“ wartet auf die Gruppen
            lesen: [], li: 0, zwDa: false, gwDa: false,
            gezeigt: '', neuAb: 0,    // Zahlwort bis jetzt, Anfang des neuen Stuecks
@@ -208,7 +209,7 @@ function _m5dHTML() {
   const k = a => `<button class="sim-btn${a === 'dortmund' ? ' primary' : ''}" id="_m5d-b-${a}" onclick="_m5dOrt('${a}')">${_m5dORTE[a].name}</button>`;
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">Wie spricht man die Zahl 83 000 000?</h3>
+    <h3 class="sim-h3">Wie spricht man die Zahl 4 000 000?</h3>
     <div class="fpm-note" style="margin-top:2px">Wähle einen Ort. Seine Einwohnerzahl steht zuerst ohne Lücken da. Jede Farbe gehört zu einer Gruppe der Stellenwerttafel.</div>
     <div class="fpm-grid">
       <div>
@@ -433,9 +434,9 @@ function _m5dZahl(ctx) {
 
 function _m5dTafel(ctx) {
   const z = _m5d, K = _m5dK, s = String(_m5dORTE[z.ort].zahl), n = s.length;
-  const CW = (K.TX1 - K.TX0 - 3 * K.TG) / 12;
-  for (let gi = 0; gi < 4; gi++) {
-    const g = 3 - gi, F = _m5dGRUPPE[g].farbe;
+  const CW = (K.TX1 - K.TX0 - (_m5dNG - 1) * K.TG) / (3 * _m5dNG);
+  for (let gi = 0; gi < _m5dNG; gi++) {
+    const g = _m5dNG - 1 - gi, F = _m5dGRUPPE[g].farbe;
     const x0 = K.TX0 + gi * (3 * CW + K.TG), x1 = x0 + 3 * CW;
     const an = z.aktiv === g;
     ctx.save();

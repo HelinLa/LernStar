@@ -147258,11 +147258,11 @@ function _m5cDraw(ctx, cv) {
 // WAS MAN SIEHT (Leinwand 420 x 250, von oben nach unten):
 //   - ein gelbes Ortsschild mit dem gewaehlten Ort,
 //   - darunter die Einwohnerzahl gross (34 px), anfangs OHNE Luecken
-//     („18000000“),
-//   - darunter eine lange Stellenwerttafel in vier Gruppen
-//     Milliarden | Millionen | Tausender | Einer, jede mit den Spalten H Z E.
+//     („4000000“),
+//   - darunter eine Stellenwerttafel in drei Gruppen
+//     Millionen | Tausender | Einer, jede mit den Spalten H Z E.
 //     Jede Ziffer steht in ihrer Spalte, jede Gruppe hat ihre ruhige Farbe
-//     (Einer bernstein, Tausender gruen, Millionen blau, Milliarden violett),
+//     (Einer bernstein, Tausender gruen, Millionen blau),
 //   - ganz unten ein Lautsprecher und die Schreiblinie, auf der das Zahlwort
 //     waechst.
 // Bild und Zahl sind VERBUNDEN: Nach „Gruppen bilden“ traegt jede Ziffer der
@@ -147271,9 +147271,15 @@ function _m5cDraw(ctx, cv) {
 // Zahl UND Tafel gleichzeitig; das neue Stueck des Zahlworts wird in ihrer
 // Farbe unterstrichen.
 //
+// FOERDERHEFT BIS ZUR MILLION (04.10.2026, Abdullah „ja“): Die Milliarde
+// faellt im Foerderheft weg - auch hier. Vorher gab es „Erde“ (8 000 000 000,
+// Gruppe Milliarden) und dazu „Nordrhein-Westfalen“ (18 000 000) und
+// „Deutschland“ (83 000 000); die Tafel hatte vier Gruppen. Jetzt bleibt jede
+// Zahl unter 10 000 000, die Tafel hat drei Gruppen, und das Zahlwort kennt
+// keine Milliarden mehr. Die Simulation traegt nur mz4 (js/heft-bruecke.js).
+//
 // KNOEPFE (Bauplan, woertlich):
-//   Reihe 1, Wahlgruppe _m5dOrt('…'): „Dortmund“ · „Nordrhein-Westfalen“ ·
-//            „Deutschland“ · „Erde“
+//   Reihe 1, Wahlgruppe _m5dOrt('…'): „Dortmund“ · „Köln“ · „Berlin“
 //   Reihe 2: „Gruppen bilden“ · „vorlesen“ · „neu“
 // Start: Dortmund, Zahl ohne Luecken (Satz unter der Leinwand:
 // „Start: Dortmund, Zahl ohne Lücken“).
@@ -147292,21 +147298,20 @@ function _m5cDraw(ctx, cv) {
 //   vorlesen        Bildet zuerst die Gruppen, falls sie noch fehlen. Dann
 //                   leuchten die BELEGTEN Gruppen von links nach rechts, je
 //                   1,0 s: erst erscheint das Zahlwort ihrer Ziffern
-//                   („dreiundachtzig“), nach 0,5 s der Name der Gruppe
+//                   („vier“), nach 0,5 s der Name der Gruppe
 //                   („ Millionen“). Gruppen aus 000 werden nicht gesprochen.
 //                   Der Lautsprecher sendet dabei Schallboegen.
 //   neu             zurueck zum Start.
 //
 // STATUSZEILEN (woertlich; das Heft mz4 zitiert sie):
-//   _m5d-ort     „Einwohner von Nordrhein-Westfalen (rund)“
-//                (Erde: „Einwohner der Erde (rund)“)
-//   _m5d-zahl    vorher „Zahl ohne Lücken: 18000000“,
-//                nach „Gruppen bilden“ „Zahl mit Lücken: 18 000 000“
+//   _m5d-ort     „Einwohner von Berlin (rund)“
+//   _m5d-zahl    vorher „Zahl ohne Lücken: 4000000“,
+//                nach „Gruppen bilden“ „Zahl mit Lücken: 4 000 000“
 //                (Tausendertrenner U+00A0)
 //   _m5d-gruppe  „Linke Gruppe: Millionen“ – erst nach „Gruppen bilden“,
 //                vorher leer und ausgeblendet
 //   _m5d-wort    „So spricht man sie: …“, nach „vorlesen“
-//                „So spricht man sie: achtzehn Millionen“
+//                „So spricht man sie: vier Millionen“
 //
 //   ABWEICHUNG vom Bauplan (03.10.2026): Der Bauplan nennt „Zahl: 18000000“ /
 //   „Zahl: 18 000 000“. simcheck/simfakten.js nimmt aber nur Textfelder mit
@@ -147317,37 +147322,33 @@ function _m5cDraw(ctx, cv) {
 //   Kopf der Heftspalte.
 //
 // WERTE (gerundete Modellwerte; die Lehrkraft-Werte stehen im Lehrerteil:
-// Dortmund rund 590 000, NRW rund 18,1 Mio., Deutschland rund 83,5 Mio.,
-// Erde rund 8,1 Mrd.):
-//   Dortmund             600 000         Tausender   sechshunderttausend
-//   Nordrhein-Westfalen  18 000 000      Millionen   achtzehn Millionen
-//   Deutschland          83 000 000      Millionen   dreiundachtzig Millionen
-//   Erde                 8 000 000 000   Milliarden  acht Milliarden
+// Dortmund knapp 600 000, Koeln gut 1 Mio., Berlin knapp 4 Mio.):
+//   Dortmund   600 000     Tausender   sechshunderttausend
+//   Köln       1 000 000   Millionen   eine Million
+//   Berlin     4 000 000   Millionen   vier Millionen
 //
 // AHA: beim Abschluss von „Gruppen bilden“ ein Lichtring (_bioFxWelle) am
 // Namen der Gruppe ganz links – dort steht, wie die Zahl heisst. Kein
 // Textstreifen, der die Antwort vorsagt.
 //
 // NICHT AM BILDSCHIRM (sim_plan.nicht_am_bildschirm, Merksatzwoerter):
-// „drei“ (als Wort – es steckt nur im Zahlwort „dreiundachtzig“),
-// „Dreiergruppe“, „rechts“. Keine Regel, kein „Merke“, kein „falsch“, keine
+// „drei“ (als Wort), „Dreiergruppe“, „rechts“. Keine Regel, kein „Merke“, kein „falsch“, keine
 // Punkte, keine Zeit, keine Namen.
 // ════════════════════════════════════════════════════════════════════════
 let _m5d = null;
 const _m5dORTE = {
-  dortmund:    { name: 'Dortmund',            zahl: 600000,     ort: 'Einwohner von Dortmund (rund)' },
-  nrw:         { name: 'Nordrhein-Westfalen', zahl: 18000000,   ort: 'Einwohner von Nordrhein-Westfalen (rund)' },
-  deutschland: { name: 'Deutschland',         zahl: 83000000,   ort: 'Einwohner von Deutschland (rund)' },
-  erde:        { name: 'Erde',                zahl: 8000000000, ort: 'Einwohner der Erde (rund)' }
+  dortmund: { name: 'Dortmund', zahl: 600000,  ort: 'Einwohner von Dortmund (rund)' },
+  koeln:    { name: 'Köln',     zahl: 1000000, ort: 'Einwohner von Köln (rund)' },
+  berlin:   { name: 'Berlin',   zahl: 4000000, ort: 'Einwohner von Berlin (rund)' }
 };
-const _m5dREIHE = ['dortmund', 'nrw', 'deutschland', 'erde'];
+const _m5dREIHE = ['dortmund', 'koeln', 'berlin'];
 // Gruppen, Index g = 0 sind die Einer. farbe: [Grund, Rand, dunkel]
 const _m5dGRUPPE = [
   { name: 'Einer',      farbe: ['#fef3c7', '#f59e0b', '#92400e'] },
   { name: 'Tausender',  farbe: ['#dcfce7', '#22c55e', '#166534'] },
-  { name: 'Millionen',  farbe: ['#e0f2fe', '#38bdf8', '#075985'] },
-  { name: 'Milliarden', farbe: ['#f3e8ff', '#a78bfa', '#5b21b6'] }
+  { name: 'Millionen',  farbe: ['#e0f2fe', '#38bdf8', '#075985'] }
 ];
+const _m5dNG = _m5dGRUPPE.length;   // drei Gruppen: Einer, Tausender, Millionen
 const _m5dK = {
   MX: 210,                 // Mitte der grossen Zahl, wenn alle Luecken offen sind
   ZY: 108,                 // Grundlinie der grossen Zahl
@@ -147364,7 +147365,7 @@ const _m5dK = {
   EIN: 0.7                 // s fuer das Hereinfallen der Ziffern
 };
 
-// ── Zahlwoerter (deutsch, bis 999 Milliarden) ───────────────────────────
+// ── Zahlwoerter (deutsch, bis 999 Millionen) ────────────────────────────
 const _m5dEINS = ['', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun'];
 const _m5dZEHN = ['zehn', 'elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn',
                   'siebzehn', 'achtzehn', 'neunzehn'];
@@ -147397,11 +147398,11 @@ function _m5dTeile(zahl) {
     else if (g === 1) { zw = _m5dBis999(v, true);  gw = 'tausend'; }
     else {
       zw = v === 1 ? 'eine' : _m5dBis999(v, true);
-      gw = g === 2 ? (v === 1 ? ' Million' : ' Millionen') : (v === 1 ? ' Milliarde' : ' Milliarden');
+      gw = v === 1 ? ' Million' : ' Millionen';
     }
     teile.push({ g, zw, gw });
   }
-  // Nach „Millionen“ und „Milliarden“ folgt ein Leerzeichen, nach „tausend“ nicht.
+  // Nach „Million(en)“ folgt ein Leerzeichen, nach „tausend“ nicht.
   for (let i = 1; i < teile.length; i++) if (teile[i - 1].g >= 2) teile[i].zw = ' ' + teile[i].zw;
   return teile;
 }
@@ -147426,8 +147427,8 @@ function _m5dGeteilt(z) { return z.phase === 'gruppen' || z.phase === 'lesen' ||
 function _m5dLage(z) {
   const K = _m5dK, s = String(_m5dORTE[z.ort].zahl), n = s.length, G = Math.ceil(n / 3);
   const rechts = K.MX + (n * K.DW + (G - 1) * K.LUECKE) / 2;
-  const off = [0, 0, 0, 0];
-  for (let g = 1; g < 4; g++) off[g] = off[g - 1] + (z.auf[g - 1] || 0) * K.LUECKE;
+  const off = [0, 0, 0];
+  for (let g = 1; g < _m5dNG; g++) off[g] = off[g - 1] + (z.auf[g - 1] || 0) * K.LUECKE;
   const ziffern = [];
   for (let i = 0; i < n; i++) {
     const p = n - 1 - i, g = Math.floor(p / 3);
@@ -147446,8 +147447,8 @@ function _m5dInit() {
   _m5d = { ort: 'dortmund', t: 0,
            phase: 'ohne',            // ohne · teilen · gruppen · lesen · gelesen
            schritt: 0, st: 0,        // Animationsschritt und Zeit darin
-           auf: [0, 0, 0],           // Oeffnung der Luecken (Grenze Einer|Tausender, …)
-           bogen: [0, 0, 0, 0],      // Bogen ueber Gruppe g (0 … 1)
+           auf: [0, 0],              // Oeffnung der Luecken (Einer|Tausender, Tausender|Millionen)
+           bogen: [0, 0, 0],         // Bogen ueber Gruppe g (0 … 1)
            nachLesen: false,         // „vorlesen“ wartet auf die Gruppen
            lesen: [], li: 0, zwDa: false, gwDa: false,
            gezeigt: '', neuAb: 0,    // Zahlwort bis jetzt, Anfang des neuen Stuecks
@@ -147459,7 +147460,7 @@ function _m5dHTML() {
   const k = a => `<button class="sim-btn${a === 'dortmund' ? ' primary' : ''}" id="_m5d-b-${a}" onclick="_m5dOrt('${a}')">${_m5dORTE[a].name}</button>`;
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
-    <h3 class="sim-h3">Wie spricht man die Zahl 83 000 000?</h3>
+    <h3 class="sim-h3">Wie spricht man die Zahl 4 000 000?</h3>
     <div class="fpm-note" style="margin-top:2px">Wähle einen Ort. Seine Einwohnerzahl steht zuerst ohne Lücken da. Jede Farbe gehört zu einer Gruppe der Stellenwerttafel.</div>
     <div class="fpm-grid">
       <div>
@@ -147684,9 +147685,9 @@ function _m5dZahl(ctx) {
 
 function _m5dTafel(ctx) {
   const z = _m5d, K = _m5dK, s = String(_m5dORTE[z.ort].zahl), n = s.length;
-  const CW = (K.TX1 - K.TX0 - 3 * K.TG) / 12;
-  for (let gi = 0; gi < 4; gi++) {
-    const g = 3 - gi, F = _m5dGRUPPE[g].farbe;
+  const CW = (K.TX1 - K.TX0 - (_m5dNG - 1) * K.TG) / (3 * _m5dNG);
+  for (let gi = 0; gi < _m5dNG; gi++) {
+    const g = _m5dNG - 1 - gi, F = _m5dGRUPPE[g].farbe;
     const x0 = K.TX0 + gi * (3 * CW + K.TG), x1 = x0 + 3 * CW;
     const an = z.aktiv === g;
     ctx.save();
@@ -148226,19 +148227,21 @@ function _m5eDraw(ctx, cv) {
 // Bauplan: arbeitsheft_mathe_foe5/KAPITEL1_PROFIL.md, Abschnitt m5-runden.
 //
 // Was man sieht: einen Ausschnitt des Zahlenstrahls zwischen den beiden
-// Nachbarzahlen der gewaehlten Stelle (Hunderter: z. B. 2 400 bis 2 500,
-// Striche alle 10; der Strich in der Haelfte ist gestrichelt und traegt keine
-// Zahl – das ist die Fuenferstruktur des Ausschnitts). Nur die beiden
-// Nachbarzahlen sind beschriftet. Die Zahl ist ein dunkelblauer Punkt mit
+// Nachbarzehnern, Nachbarhundertern oder Nachbartausendern der gewaehlten
+// Stelle (Hunderter: z. B. 2 400 bis 2 500, Striche alle 10; der Strich in
+// der Haelfte ist gestrichelt und traegt keine Zahl – das ist die
+// Fuenferstruktur des Ausschnitts). Nur diese beiden glatten Zahlen sind
+// beschriftet. Die Zahl ist ein dunkelblauer Punkt mit
 // Faehnchen, auf dem die Zahl gross steht. Zwei Boegen ueber dem Strahl
-// verbinden den Punkt mit beiden Nachbarzahlen; auf jedem Bogen steht der
+// verbinden den Punkt mit beiden; auf jedem Bogen steht der
 // Abstand (links tuerkis, rechts violett – dieselben Farben tragen die beiden
 // Zahlen in der Zeile „Abstände“). Unten im Bild: „Stelle: Hunderter ·
 // Striche alle 10“.
 // „runden“: Eine goldene Kugel erscheint am Punkt (0,18 s) und rollt in
-// 0,9 s ueber den Strahl zu der Nachbarzahl, deren Abstand kleiner ist; bei
-// gleichen Abstaenden zur rechten. Der Bogen auf ihrer Seite wird dicker, der
-// andere blass. Wo sie liegen bleibt, bekommt die Nachbarzahl einen goldenen
+// 0,9 s ueber den Strahl zu dem Nachbarhunderter (-zehner, -tausender), dessen
+// Abstand kleiner ist; bei gleichen Abstaenden zum rechten. Der Bogen auf
+// ihrer Seite wird dicker, der andere blass. Wo sie liegen bleibt, bekommt
+// die glatte Zahl einen goldenen
 // Kasten und leuchtet 2,5 s ruhig nach (_bioFxLeuchten, 0,8 Hz).
 // Jede andere Handlung bewegt sich auch: Eine neue Zahl (Sprungmarke, „– 1“,
 // „+ 1“) laesst den Punkt in 0,7 s gleiten, das Faehnchen macht dabei einen
@@ -148252,50 +148255,63 @@ function _m5eDraw(ctx, cv) {
 //                 (Wahlgruppe, Start Hunderter)
 //   „– 1“ · „+ 1“ (_m5fSchritt(-1|1)) · „runden“ (_m5fRunden()) ·
 //   „neu“ (_m5fNeu(): 2 449, Hunderter, Aha-Gedaechtnis geloescht)
-// Ist die Zahl selbst eine glatte Zahl der Stelle, gilt sie als linke
-// Nachbarzahl (Abstaende 0 und 10/100/1 000) – die Kugel bleibt dann am Punkt.
+// Ist die Zahl selbst eine glatte Zahl der Stelle, gilt sie als linker
+// Nachbarhunderter (-zehner, -tausender; Abstaende 0 und 10/100/1 000) – die
+// Kugel bleibt dann am Punkt.
 // Bereich der Zahl: 0 bis 99 999.
+//
+// Fachwort (04.10.2026, Abdullah „ja“ zu Schulbuch-Abgleich A3): Die beiden
+// glatten Zahlen heissen je nach Stelle „Nachbarzehner“, „Nachbarhunderter“
+// oder „Nachbartausender“ – nicht mehr das fruehere Sammelwort „Nachbar-
+// zahl“: So heissen in der Grundschule Vorgaenger und Nachfolger (2 448 und
+// 2 450), und genau dorthin schieben die Knoepfe „– 1“ / „+ 1“ den Punkt.
 //
 // Statuszeilen (woertlich, Tausendertrenner geschuetztes Leerzeichen):
 //   _m5f-zahl      „Zahl: 2 449“
-//   _m5f-nachbarn  „Nachbarzahlen: 2 400 und 2 500“
+//   _m5f-nachbarn  „Nachbarhunderter: 2 400 und 2 500“
+//                  (Zehner: „Nachbarzehner: 2 440 und 2 450“,
+//                   Tausender: „Nachbartausender: 2 000 und 3 000“;
+//                   jede Fassung hat mehr als 18 Zeichen, steht also im Dump)
 //   _m5f-abstand   „Abstände: 49 und 51“
 //   _m5f-ergebnis  „Gerundet: …“ bis die Kugel liegt, dann „Gerundet: 2 400“
 // Eine neue Zahl oder eine andere Stelle setzt „Gerundet: …“ zurueck. Die
 // Zahl selbst aendert „runden“ nie – gerundet wird immer von ihr aus.
 //
 // Werte (Hunderter):
-//   2 449 → 2 400 und 2 500 · 49 und 51 · Gerundet: 2 400
-//   2 451 → 2 400 und 2 500 · 51 und 49 · Gerundet: 2 500
-//   2 450 → 2 400 und 2 500 · 50 und 50 · Gerundet: 2 500
-//   2 380 → 2 300 und 2 400 · 80 und 20 · Gerundet: 2 400
-//   Zehner:    2 449 → 2 440 und 2 450 · 9 und 1 · Gerundet: 2 450
-//   Tausender: 2 449 → 2 000 und 3 000 · 449 und 551 · Gerundet: 2 000
+//   2 449 → Nachbarhunderter 2 400 und 2 500 · 49 und 51 · Gerundet: 2 400
+//   2 451 → Nachbarhunderter 2 400 und 2 500 · 51 und 49 · Gerundet: 2 500
+//   2 450 → Nachbarhunderter 2 400 und 2 500 · 50 und 50 · Gerundet: 2 500
+//   2 380 → Nachbarhunderter 2 300 und 2 400 · 80 und 20 · Gerundet: 2 400
+//   Zehner:    2 449 → Nachbarzehner 2 440 und 2 450 · 9 und 1 · Gerundet: 2 450
+//   Tausender: 2 449 → Nachbartausender 2 000 und 3 000 · 449 und 551 · Gerundet: 2 000
 //
 // Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Sind auf Hunderter 2 449 UND
 // 2 450 gerundet worden (Reihenfolge egal, z. B. „2 449“ → „runden“ → „+ 1“ →
 // „runden“), laufen bei der zweiten Landung zwei Lichtringe – einer am Punkt
-// (2 450 sitzt genau auf dem gestrichelten Strich), einer an der Nachbarzahl,
+// (2 450 sitzt genau auf dem gestrichelten Strich), einer am Nachbarhunderter,
 // wo die Kugel liegt. 2 449 landet bei 2 400, eins mehr bei 2 500: Das
 // widerlegt das schrittweise Runden (2 449 → 2 450 → 2 500) aus Vermutung 2.
 // Einmal je Sitzung; „neu“ setzt es zurueck.
 //
 // Nicht am Bildschirm (Merksatzwoerter und Regel, sim_plan.nicht_am_bildschirm):
-// „näher“, „auf“ als „aufrunden“, „Mitte“, „größer“, „abrunden“. Darum steht
+// „aufgerundet“, „abgerundet“ (die beiden Merksatzwoerter seit 04.10.2026),
+// „näher“, „Mitte“, „größer“, „kleiner“. Darum steht
 // im Bild ausser Zahlen nur die Stellen-Zeile, und kein Hinweistext nennt die
 // Regel, nach der die Kugel rollt.
 // Deterministisch, ohne Zufall: jede Zahl im Bild kommt aus _m5fNachbarn().
 // ════════════════════════════════════════════════════════════════════════
 let _m5f = null;
+// nb/nbDat: das Fachwort fuer die beiden glatten Zahlen der Stelle
+// (Statuszeile „Nachbarhunderter: …“, Hinweistext im Dativ Plural).
 const _m5fSTELLE = {
-  Z: { name: 'Zehner',    s: 10 },
-  H: { name: 'Hunderter', s: 100 },
-  T: { name: 'Tausender', s: 1000 }
+  Z: { name: 'Zehner',    s: 10,   nb: 'Nachbarzehner',    nbDat: 'Nachbarzehnern' },
+  H: { name: 'Hunderter', s: 100,  nb: 'Nachbarhunderter', nbDat: 'Nachbarhundertern' },
+  T: { name: 'Tausender', s: 1000, nb: 'Nachbartausender', nbDat: 'Nachbartausendern' }
 };
 const _m5fREIHE = ['Z', 'H', 'T'];
 const _m5fMARKEN = [2449, 2451, 2450, 2380];
 const _m5fK = {
-  X0: 50, X1: 370,          // Zahlenstrahl: linke und rechte Nachbarzahl (px)
+  X0: 50, X1: 370,          // Zahlenstrahl: linker und rechter Nachbarhunderter (px)
   LY: 160,                  // Hoehe des Strahls
   FY: 16, FH: 36,           // Faehnchen: Oberkante, Hoehe
   R: 10,                    // Radius der Kugel
@@ -148304,7 +148320,7 @@ const _m5fK = {
   T_AUF: 0.18,              // s: Kugel erscheint
   T_ROLL: 0.9,              // s: Kugel rollt
   T_HOPS: 0.35,             // s: kleiner Hopser beim Ankommen
-  LEUCHT: 2.5,              // s: die Nachbarzahl leuchtet nach
+  LEUCHT: 2.5,              // s: die erreichte glatte Zahl leuchtet nach
   F_L: '#0f766e',           // linker Bogen (tuerkis)
   F_R: '#6d28d9',           // rechter Bogen (violett)
   F_PUNKT: '#1e3a8a',       // Punkt und Faehnchen
@@ -148315,8 +148331,9 @@ const _m5fK = {
 function _m5fFmt(n) {
   return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
-// Nachbarzahlen, Abstaende und Ergebnis. Eine glatte Zahl ist ihre eigene
-// linke Nachbarzahl; bei gleichen Abstaenden geht es zur rechten.
+// Die beiden glatten Zahlen der Stelle (Nachbarzehner/-hunderter/-tausender),
+// Abstaende und Ergebnis. Eine glatte Zahl ist ihr eigener linker Nachbar;
+// bei gleichen Abstaenden geht es zum rechten.
 function _m5fNachbarn(zahl, stelle) {
   const s = _m5fSTELLE[stelle].s;
   const lo = Math.floor(zahl / s) * s, hi = lo + s;
@@ -148340,7 +148357,7 @@ function _m5fHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">Was ist 2 449 auf Hunderter gerundet?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. Die beiden Bögen zeigen die Abstände zu den Nachbarzahlen.</div>
+    <div class="fpm-note" id="_m5f-note-boegen" style="margin-top:2px">Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. Die beiden Bögen zeigen die Abstände zu den Nachbarhundertern.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="_m5f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
@@ -148364,7 +148381,7 @@ function _m5fHTML() {
         <div class="lmp-status on" id="_m5f-nachbarn" style="margin-top:6px"></div>
         <div class="lmp-status on" id="_m5f-abstand" style="margin-top:6px"></div>
         <div class="lmp-status on" id="_m5f-ergebnis" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">„runden“ lässt eine Kugel vom Punkt zu einer Nachbarzahl rollen. Mit „–&nbsp;1“ und „+&nbsp;1“ wandert der Punkt um eins.</div>
+        <div class="fpm-note" id="_m5f-note-kugel" style="margin-top:10px">„runden“ lässt eine Kugel vom Punkt zu einem Nachbarhunderter rollen. Mit „–&nbsp;1“ und „+&nbsp;1“ wandert der Punkt um eins.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Zahl 2&nbsp;449, Stelle Hunderter, noch nicht gerundet</p>
@@ -148376,9 +148393,14 @@ function _m5fZeile(id, html) {
 }
 function _m5fStatus() {
   if (!_m5f) return;
-  const z = _m5f, nb = _m5fNachbarn(z.zahl, z.stelle), K = _m5fK;
+  const z = _m5f, nb = _m5fNachbarn(z.zahl, z.stelle), K = _m5fK, st = _m5fSTELLE[z.stelle];
   _m5fZeile('_m5f-zahl', 'Zahl: ' + _m5fFmt(z.zahl));
-  _m5fZeile('_m5f-nachbarn', 'Nachbarzahlen: ' + _m5fFmt(nb.lo) + ' und ' + _m5fFmt(nb.hi));
+  _m5fZeile('_m5f-nachbarn', st.nb + ': ' + _m5fFmt(nb.lo) + ' und ' + _m5fFmt(nb.hi));
+  // Die beiden Hinweistexte nennen das Fachwort der gewaehlten Stelle.
+  _m5fZeile('_m5f-note-boegen', 'Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. ' +
+            'Die beiden Bögen zeigen die Abstände zu den ' + st.nbDat + '.');
+  _m5fZeile('_m5f-note-kugel', '„runden“ lässt eine Kugel vom Punkt zu einem ' + st.nb +
+            ' rollen. Mit „–\u00a01“ und „+\u00a01“ wandert der Punkt um eins.');
   _m5fZeile('_m5f-abstand', 'Abstände: <b style="color:' + K.F_L + '">' + _m5fFmt(nb.dl) +
             '</b> und <b style="color:' + K.F_R + '">' + _m5fFmt(nb.dr) + '</b>');
   _m5fZeile('_m5f-ergebnis', 'Gerundet: ' + (z.ergebnis === null ? '…' : _m5fFmt(z.ergebnis)));
@@ -148541,7 +148563,7 @@ function _m5fMarken(ctx, s, a, W) {
   }
   ctx.restore();
 }
-// Die gelandete Nachbarzahl leuchtet nach – HINTER dem Strahl, damit Strich
+// Die erreichte glatte Zahl leuchtet nach – HINTER dem Strahl, damit Strich
 // und Zahl scharf bleiben.
 function _m5fGlanz(ctx) {
   const z = _m5f, K = _m5fK;

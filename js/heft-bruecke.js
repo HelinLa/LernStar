@@ -6352,9 +6352,9 @@ const HEFT_SEITEN = {
     sim: "m5-grosse-zahlen", seite: 17,
     kapitel: "Große Zahlen",
     name: "Wie liest man große Zahlen?",
-    titel: "83 000 000 im Radio",
-    frage: "Wie spricht man die Zahl 83 000 000?",
-    schritte: ["Drücke „Dortmund“. Versuche, die Zahl ohne Lücken zu lesen.", "Drücke „Gruppen bilden“. Trage die Zahl mit Lücken ein.", "Drücke „vorlesen“. Trage ein, wie man die Zahl spricht.", "Wiederhole a bis c mit „Nordrhein-Westfalen“, „Deutschland“ und „Erde“."]
+    titel: "4 000 000 im Radio",
+    frage: "Wie spricht man die Zahl 4 000 000?",
+    schritte: ["Drücke „Dortmund“. Versuche, die Zahl ohne Lücken zu lesen.", "Drücke „Gruppen bilden“. Trage die Zahl mit Lücken ein.", "Drücke „vorlesen“. Trage ein, wie man die Zahl spricht.", "Wiederhole a bis c mit „Köln“ und „Berlin“."]
   },
   "mz5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6468,10 +6468,10 @@ const HEFT_SEITEN = {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
     sim: "m5-spiegel", seite: 69,
     kapitel: "Linien und Figuren",
-    name: "Wo ist die Spiegelachse?",
+    name: "Wo ist die Symmetrieachse?",
     titel: "Leni faltet von Ecke zu Ecke",
-    frage: "Ist die Diagonale eines Rechtecks eine Spiegelachse?",
-    schritte: ["Drücke „Rechteck, senkrecht“ und dann „falten“. Beobachte die Ecken.", "Lies „Figur:“ und „Achse:“ ab. Trage beides ein.", "Lies „Nach dem Falten:“ ab. Entscheide: Ist die Achse eine Spiegelachse? Schreibe ja oder nein.", "Wiederhole a bis c mit „Rechteck, Ecke zu Ecke“, „Quadrat, Ecke zu Ecke“ und „Quadrat, waagerecht“."]
+    frage: "Ist die Diagonale eines Rechtecks eine Symmetrieachse?",
+    schritte: ["Drücke „Rechteck, senkrecht“ und dann „falten“. Beobachte die Ecken.", "Lies „Figur:“ und „Achse:“ ab. Trage beides ein.", "Lies „Nach dem Falten:“ ab. Entscheide: Ist die Achse eine Symmetrieachse? Schreibe ja oder nein.", "Wiederhole a bis c mit „Rechteck, Ecke zu Ecke“, „Quadrat, Ecke zu Ecke“ und „Quadrat, waagerecht“."]
   },
 };
 

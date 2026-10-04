@@ -4,19 +4,21 @@
 // Bauplan: arbeitsheft_mathe_foe5/KAPITEL1_PROFIL.md, Abschnitt m5-runden.
 //
 // Was man sieht: einen Ausschnitt des Zahlenstrahls zwischen den beiden
-// Nachbarzahlen der gewaehlten Stelle (Hunderter: z. B. 2 400 bis 2 500,
-// Striche alle 10; der Strich in der Haelfte ist gestrichelt und traegt keine
-// Zahl – das ist die Fuenferstruktur des Ausschnitts). Nur die beiden
-// Nachbarzahlen sind beschriftet. Die Zahl ist ein dunkelblauer Punkt mit
+// Nachbarzehnern, Nachbarhundertern oder Nachbartausendern der gewaehlten
+// Stelle (Hunderter: z. B. 2 400 bis 2 500, Striche alle 10; der Strich in
+// der Haelfte ist gestrichelt und traegt keine Zahl – das ist die
+// Fuenferstruktur des Ausschnitts). Nur diese beiden glatten Zahlen sind
+// beschriftet. Die Zahl ist ein dunkelblauer Punkt mit
 // Faehnchen, auf dem die Zahl gross steht. Zwei Boegen ueber dem Strahl
-// verbinden den Punkt mit beiden Nachbarzahlen; auf jedem Bogen steht der
+// verbinden den Punkt mit beiden; auf jedem Bogen steht der
 // Abstand (links tuerkis, rechts violett – dieselben Farben tragen die beiden
 // Zahlen in der Zeile „Abstände“). Unten im Bild: „Stelle: Hunderter ·
 // Striche alle 10“.
 // „runden“: Eine goldene Kugel erscheint am Punkt (0,18 s) und rollt in
-// 0,9 s ueber den Strahl zu der Nachbarzahl, deren Abstand kleiner ist; bei
-// gleichen Abstaenden zur rechten. Der Bogen auf ihrer Seite wird dicker, der
-// andere blass. Wo sie liegen bleibt, bekommt die Nachbarzahl einen goldenen
+// 0,9 s ueber den Strahl zu dem Nachbarhunderter (-zehner, -tausender), dessen
+// Abstand kleiner ist; bei gleichen Abstaenden zum rechten. Der Bogen auf
+// ihrer Seite wird dicker, der andere blass. Wo sie liegen bleibt, bekommt
+// die glatte Zahl einen goldenen
 // Kasten und leuchtet 2,5 s ruhig nach (_bioFxLeuchten, 0,8 Hz).
 // Jede andere Handlung bewegt sich auch: Eine neue Zahl (Sprungmarke, „– 1“,
 // „+ 1“) laesst den Punkt in 0,7 s gleiten, das Faehnchen macht dabei einen
@@ -30,50 +32,63 @@
 //                 (Wahlgruppe, Start Hunderter)
 //   „– 1“ · „+ 1“ (_m5fSchritt(-1|1)) · „runden“ (_m5fRunden()) ·
 //   „neu“ (_m5fNeu(): 2 449, Hunderter, Aha-Gedaechtnis geloescht)
-// Ist die Zahl selbst eine glatte Zahl der Stelle, gilt sie als linke
-// Nachbarzahl (Abstaende 0 und 10/100/1 000) – die Kugel bleibt dann am Punkt.
+// Ist die Zahl selbst eine glatte Zahl der Stelle, gilt sie als linker
+// Nachbarhunderter (-zehner, -tausender; Abstaende 0 und 10/100/1 000) – die
+// Kugel bleibt dann am Punkt.
 // Bereich der Zahl: 0 bis 99 999.
+//
+// Fachwort (04.10.2026, Abdullah „ja“ zu Schulbuch-Abgleich A3): Die beiden
+// glatten Zahlen heissen je nach Stelle „Nachbarzehner“, „Nachbarhunderter“
+// oder „Nachbartausender“ – nicht mehr das fruehere Sammelwort „Nachbar-
+// zahl“: So heissen in der Grundschule Vorgaenger und Nachfolger (2 448 und
+// 2 450), und genau dorthin schieben die Knoepfe „– 1“ / „+ 1“ den Punkt.
 //
 // Statuszeilen (woertlich, Tausendertrenner geschuetztes Leerzeichen):
 //   _m5f-zahl      „Zahl: 2 449“
-//   _m5f-nachbarn  „Nachbarzahlen: 2 400 und 2 500“
+//   _m5f-nachbarn  „Nachbarhunderter: 2 400 und 2 500“
+//                  (Zehner: „Nachbarzehner: 2 440 und 2 450“,
+//                   Tausender: „Nachbartausender: 2 000 und 3 000“;
+//                   jede Fassung hat mehr als 18 Zeichen, steht also im Dump)
 //   _m5f-abstand   „Abstände: 49 und 51“
 //   _m5f-ergebnis  „Gerundet: …“ bis die Kugel liegt, dann „Gerundet: 2 400“
 // Eine neue Zahl oder eine andere Stelle setzt „Gerundet: …“ zurueck. Die
 // Zahl selbst aendert „runden“ nie – gerundet wird immer von ihr aus.
 //
 // Werte (Hunderter):
-//   2 449 → 2 400 und 2 500 · 49 und 51 · Gerundet: 2 400
-//   2 451 → 2 400 und 2 500 · 51 und 49 · Gerundet: 2 500
-//   2 450 → 2 400 und 2 500 · 50 und 50 · Gerundet: 2 500
-//   2 380 → 2 300 und 2 400 · 80 und 20 · Gerundet: 2 400
-//   Zehner:    2 449 → 2 440 und 2 450 · 9 und 1 · Gerundet: 2 450
-//   Tausender: 2 449 → 2 000 und 3 000 · 449 und 551 · Gerundet: 2 000
+//   2 449 → Nachbarhunderter 2 400 und 2 500 · 49 und 51 · Gerundet: 2 400
+//   2 451 → Nachbarhunderter 2 400 und 2 500 · 51 und 49 · Gerundet: 2 500
+//   2 450 → Nachbarhunderter 2 400 und 2 500 · 50 und 50 · Gerundet: 2 500
+//   2 380 → Nachbarhunderter 2 300 und 2 400 · 80 und 20 · Gerundet: 2 400
+//   Zehner:    2 449 → Nachbarzehner 2 440 und 2 450 · 9 und 1 · Gerundet: 2 450
+//   Tausender: 2 449 → Nachbartausender 2 000 und 3 000 · 449 und 551 · Gerundet: 2 000
 //
 // Aha (_bioFxWelle, ruhig, OHNE Textstreifen): Sind auf Hunderter 2 449 UND
 // 2 450 gerundet worden (Reihenfolge egal, z. B. „2 449“ → „runden“ → „+ 1“ →
 // „runden“), laufen bei der zweiten Landung zwei Lichtringe – einer am Punkt
-// (2 450 sitzt genau auf dem gestrichelten Strich), einer an der Nachbarzahl,
+// (2 450 sitzt genau auf dem gestrichelten Strich), einer am Nachbarhunderter,
 // wo die Kugel liegt. 2 449 landet bei 2 400, eins mehr bei 2 500: Das
 // widerlegt das schrittweise Runden (2 449 → 2 450 → 2 500) aus Vermutung 2.
 // Einmal je Sitzung; „neu“ setzt es zurueck.
 //
 // Nicht am Bildschirm (Merksatzwoerter und Regel, sim_plan.nicht_am_bildschirm):
-// „näher“, „auf“ als „aufrunden“, „Mitte“, „größer“, „abrunden“. Darum steht
+// „aufgerundet“, „abgerundet“ (die beiden Merksatzwoerter seit 04.10.2026),
+// „näher“, „Mitte“, „größer“, „kleiner“. Darum steht
 // im Bild ausser Zahlen nur die Stellen-Zeile, und kein Hinweistext nennt die
 // Regel, nach der die Kugel rollt.
 // Deterministisch, ohne Zufall: jede Zahl im Bild kommt aus _m5fNachbarn().
 // ════════════════════════════════════════════════════════════════════════
 let _m5f = null;
+// nb/nbDat: das Fachwort fuer die beiden glatten Zahlen der Stelle
+// (Statuszeile „Nachbarhunderter: …“, Hinweistext im Dativ Plural).
 const _m5fSTELLE = {
-  Z: { name: 'Zehner',    s: 10 },
-  H: { name: 'Hunderter', s: 100 },
-  T: { name: 'Tausender', s: 1000 }
+  Z: { name: 'Zehner',    s: 10,   nb: 'Nachbarzehner',    nbDat: 'Nachbarzehnern' },
+  H: { name: 'Hunderter', s: 100,  nb: 'Nachbarhunderter', nbDat: 'Nachbarhundertern' },
+  T: { name: 'Tausender', s: 1000, nb: 'Nachbartausender', nbDat: 'Nachbartausendern' }
 };
 const _m5fREIHE = ['Z', 'H', 'T'];
 const _m5fMARKEN = [2449, 2451, 2450, 2380];
 const _m5fK = {
-  X0: 50, X1: 370,          // Zahlenstrahl: linke und rechte Nachbarzahl (px)
+  X0: 50, X1: 370,          // Zahlenstrahl: linker und rechter Nachbarhunderter (px)
   LY: 160,                  // Hoehe des Strahls
   FY: 16, FH: 36,           // Faehnchen: Oberkante, Hoehe
   R: 10,                    // Radius der Kugel
@@ -82,7 +97,7 @@ const _m5fK = {
   T_AUF: 0.18,              // s: Kugel erscheint
   T_ROLL: 0.9,              // s: Kugel rollt
   T_HOPS: 0.35,             // s: kleiner Hopser beim Ankommen
-  LEUCHT: 2.5,              // s: die Nachbarzahl leuchtet nach
+  LEUCHT: 2.5,              // s: die erreichte glatte Zahl leuchtet nach
   F_L: '#0f766e',           // linker Bogen (tuerkis)
   F_R: '#6d28d9',           // rechter Bogen (violett)
   F_PUNKT: '#1e3a8a',       // Punkt und Faehnchen
@@ -93,8 +108,9 @@ const _m5fK = {
 function _m5fFmt(n) {
   return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
-// Nachbarzahlen, Abstaende und Ergebnis. Eine glatte Zahl ist ihre eigene
-// linke Nachbarzahl; bei gleichen Abstaenden geht es zur rechten.
+// Die beiden glatten Zahlen der Stelle (Nachbarzehner/-hunderter/-tausender),
+// Abstaende und Ergebnis. Eine glatte Zahl ist ihr eigener linker Nachbar;
+// bei gleichen Abstaenden geht es zum rechten.
 function _m5fNachbarn(zahl, stelle) {
   const s = _m5fSTELLE[stelle].s;
   const lo = Math.floor(zahl / s) * s, hi = lo + s;
@@ -118,7 +134,7 @@ function _m5fHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">Was ist 2 449 auf Hunderter gerundet?</h3>
-    <div class="fpm-note" style="margin-top:2px">Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. Die beiden Bögen zeigen die Abstände zu den Nachbarzahlen.</div>
+    <div class="fpm-note" id="_m5f-note-boegen" style="margin-top:2px">Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. Die beiden Bögen zeigen die Abstände zu den Nachbarhundertern.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="_m5f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
@@ -142,7 +158,7 @@ function _m5fHTML() {
         <div class="lmp-status on" id="_m5f-nachbarn" style="margin-top:6px"></div>
         <div class="lmp-status on" id="_m5f-abstand" style="margin-top:6px"></div>
         <div class="lmp-status on" id="_m5f-ergebnis" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">„runden“ lässt eine Kugel vom Punkt zu einer Nachbarzahl rollen. Mit „–&nbsp;1“ und „+&nbsp;1“ wandert der Punkt um eins.</div>
+        <div class="fpm-note" id="_m5f-note-kugel" style="margin-top:10px">„runden“ lässt eine Kugel vom Punkt zu einem Nachbarhunderter rollen. Mit „–&nbsp;1“ und „+&nbsp;1“ wandert der Punkt um eins.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Zahl 2&nbsp;449, Stelle Hunderter, noch nicht gerundet</p>
@@ -154,9 +170,14 @@ function _m5fZeile(id, html) {
 }
 function _m5fStatus() {
   if (!_m5f) return;
-  const z = _m5f, nb = _m5fNachbarn(z.zahl, z.stelle), K = _m5fK;
+  const z = _m5f, nb = _m5fNachbarn(z.zahl, z.stelle), K = _m5fK, st = _m5fSTELLE[z.stelle];
   _m5fZeile('_m5f-zahl', 'Zahl: ' + _m5fFmt(z.zahl));
-  _m5fZeile('_m5f-nachbarn', 'Nachbarzahlen: ' + _m5fFmt(nb.lo) + ' und ' + _m5fFmt(nb.hi));
+  _m5fZeile('_m5f-nachbarn', st.nb + ': ' + _m5fFmt(nb.lo) + ' und ' + _m5fFmt(nb.hi));
+  // Die beiden Hinweistexte nennen das Fachwort der gewaehlten Stelle.
+  _m5fZeile('_m5f-note-boegen', 'Der Punkt mit dem Fähnchen zeigt die Zahl am Zahlenstrahl. ' +
+            'Die beiden Bögen zeigen die Abstände zu den ' + st.nbDat + '.');
+  _m5fZeile('_m5f-note-kugel', '„runden“ lässt eine Kugel vom Punkt zu einem ' + st.nb +
+            ' rollen. Mit „–\u00a01“ und „+\u00a01“ wandert der Punkt um eins.');
   _m5fZeile('_m5f-abstand', 'Abstände: <b style="color:' + K.F_L + '">' + _m5fFmt(nb.dl) +
             '</b> und <b style="color:' + K.F_R + '">' + _m5fFmt(nb.dr) + '</b>');
   _m5fZeile('_m5f-ergebnis', 'Gerundet: ' + (z.ergebnis === null ? '…' : _m5fFmt(z.ergebnis)));
@@ -319,7 +340,7 @@ function _m5fMarken(ctx, s, a, W) {
   }
   ctx.restore();
 }
-// Die gelandete Nachbarzahl leuchtet nach – HINTER dem Strahl, damit Strich
+// Die erreichte glatte Zahl leuchtet nach – HINTER dem Strahl, damit Strich
 // und Zahl scharf bleiben.
 function _m5fGlanz(ctx) {
   const z = _m5f, K = _m5fK;
