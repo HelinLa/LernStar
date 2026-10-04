@@ -68,6 +68,60 @@
 // (_bioFxLeuchten). Einmal je geladener Aufgabe. Das widerlegt „715“: die zehn
 // Einer verschwinden nicht, sie wandern als 1 Zehner weiter.
 //
+// FUER DIE LEHRKRAFT (seit 04.10.2026). Abdullah: „könntest du ein Stoppzeichen
+// einbauen, damit man im Unterricht den Kindern zeigen kann, was da passiert
+// mit dem Übertrag, das ist wirklich sehr schnell“. Eine eigene Knopfzeile
+// UNTER den Heftknoepfen, davor klein „Für die Lehrkraft:“ – so verwechselt
+// kein Kind sie mit den Knoepfen, die das Heft nennt:
+//   „Pause“ ↔ „weiter“ (_m5iAnhalten()): friert ALLES sofort ein, auch mitten in
+//     einer Spalte (Wuerfel, Stange, Ziffern, Lichtring); „weiter“ macht genau
+//     dort weiter. Im Bild oben links auf dem Rechenblatt das Schild „Pause“
+//     (Stelle und Aussehen wie in m5-minus-schriftlich).
+//   „Halt beim Übertrag: aus“ ↔ „… an“ (_m5iHaltSchalter()): haelt von selbst
+//     an, sobald die zehn Wuerfel einer Spalte zusammenliegen und bernstein-
+//     farben sind – BEVOR sie zur Stange verschmelzen und in die naechste
+//     Spalte wandern. Dann ist Pause (Knopf „weiter“), die zehn Wuerfel sind
+//     eingerahmt, und unten auf dem Blatt steht „10 Einer = 1 Zehner“
+//     (Zehnerspalte: „10 Zehner = 1 Hunderter“).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_m5iTempo()): alles ein Drittel so schnell.
+//   Bei „Halt …“ und „Tempo …“ wechselt nur das letzte Wort (eigenes <span>
+//   _m5i-halt-an / _m5i-tempo-an, Bauart wie in m5-minus-schriftlich).
+// Hinweiszeile _m5i-lehrkraft (immer mehr als 18 Zeichen; direkt unter der
+// Lehrkraft-Zeile, in der Pause bernsteinfarben – Stelle wie in m5-minus-schriftlich):
+//   sonst      „Für die Lehrkraft: „Pause“ hält alles an. „Halt beim Übertrag“ stoppt von selbst.“
+//   Pause      „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“
+//   Halt       „Halt: 10 Einer werden zu 1 Zehner. Das ist der Übertrag.“
+//              („Halt: 10 Zehner werden zu 1 Hunderter. Das ist der Übertrag.“)
+// So ist es gebaut:
+//   * EIN Zeitfaktor (_m5iZeitfaktor: 0 in der Pause, 1/3 langsam, 1 normal)
+//     an der einen Stelle, an der dt in die Bewegung geht (Anfang von
+//     _m5iUpdate). Alles, was sich bewegt oder leuchtet, laeuft auf diesem dt.
+//     Ohne Zeit auch kein Phasenwechsel (`dt > 0` vor dem Ablauf). In der
+//     Voreinstellung ist der Faktor 1 und dt bitgleich wie vorher.
+//   * Der Halt ist ein EREIGNIS im Ablauf: das Ende der Phase 'sammeln'
+//     (L.angehalten), keine Zeitmessung. Nicht zu verwechseln mit der Phase
+//     'halten', in der die Wuerfel nach dem Flug kurz ruhen, und mit der
+//     Phase 'pause' zwischen zwei Spalten bei „alles rechnen“.
+//   * Waehrend der Pause bewegt KEIN Knopf etwas. Regel: vorgemerkt wird, was
+//     nichts Laufendes anfasst; was Laufendes anfassen wuerde, entfaellt.
+//       „nächste Spalte“: Ist eine Spalte unterwegs (auch die kurze Luecke
+//         zwischen zwei Spalten bei „alles rechnen“), ENTFAELLT der Druck – er
+//         liesse die Spalte sofort landen und uebersprange genau das, was man
+//         zeigen will. Steht keine Spalte an, wird er VORGEMERKT: die naechste
+//         Spalte beginnt mit „weiter“.
+//       „alles rechnen“ wird VORGEMERKT: Es schaltet wie sonst nur auf
+//         Weiterrechnen um, die stehende Bewegung bleibt stehen; steht keine
+//         Spalte an, beginnt die naechste mit „weiter“.
+//       Bei beiden leuchtet das Schild „Pause“ kurz auf (in echter Zeit).
+//       „Halt …“ und „Tempo …“ schalten um und wirken ab „weiter“.
+//       „neu“ und die Aufgabenknoepfe laden wie bisher neu und heben die Pause auf.
+//     Halt und Tempo bleiben ueber „neu“ und Aufgabenwechsel stehen: Die
+//     Lehrkraft stellt sie einmal fuer die Stunde ein.
+//   * „nächste Spalte“ WAEHREND einer Bewegung (ohne Pause) laesst die Spalte
+//     wie bisher sofort landen; ein Halt in dieser Spalte entfaellt dann.
+//   * Voreinstellung Pause aus, Halt aus, Tempo normal: alles wie vorher,
+//     keine Knopfaufschrift und keine Statuszeile ist anders.
+//
 // Nicht am Bildschirm (sim_plan.nicht_am_bildschirm, die Merksatzwoerter):
 // „Stellen“, „eins“, „mit“ – und keine Regel als Satz. „Übertrag 1“ ist
 // erlaubt. Keine Namen, keine Punkte, keine Zeit. Deterministisch, ohne
@@ -143,7 +197,7 @@ function _m5iZeile(st, fertig, html) {
 }
 
 function _m5iInit() {
-  _m5i = { t: 0, fx: { teile: [] } };
+  _m5i = { t: 0, fx: { teile: [] }, haltAn: false, langsam: false };   // Lehrkraft-Einstellungen
   _m5iLaden('457+368');
 }
 function _m5iLaden(key) {
@@ -158,6 +212,7 @@ function _m5iLaden(key) {
   z.blase = 'aufgabe'; z.blaseI = -1; z.blaseSumme = false; z.blaseT = 0;
   z.zeile = 'Noch keine Spalte gerechnet.';
   z.fx.teile.length = 0;
+  z.pause = false; z.halt = null; z.blink = 0; z.vormerken = false;   // neu laden hebt die Pause auf
 }
 function _m5iHTML() {
   const marke = (k, i) => {
@@ -179,6 +234,13 @@ function _m5iHTML() {
           <button class="sim-btn" id="_m5i-alles" onclick="_m5iAlles()">alles rechnen</button>
           <button class="sim-btn" onclick="_m5iNeu()">neu</button>
         </div>
+        <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+          <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+          <button class="sim-btn" id="_m5i-pause" onclick="_m5iAnhalten()">Pause</button>
+          <button class="sim-btn" id="_m5i-halt" onclick="_m5iHaltSchalter()">Halt beim Übertrag: <span id="_m5i-halt-an">aus</span></button>
+          <button class="sim-btn" id="_m5i-tempo" onclick="_m5iTempo()">Tempo: <span id="_m5i-tempo-an">normal</span></button>
+        </div>
+        <div class="lmp-status on" id="_m5i-lehrkraft" style="margin-top:4px"></div>
       </div>
       <div>
         <div class="fpm-label">Anzeige</div>
@@ -221,6 +283,25 @@ function _m5iStatus() {
     b.disabled = z.komplett;
     if (b.style) b.style.opacity = z.komplett ? '0.45' : '';
   }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _m5iSetze('_m5i-pause', z.pause ? 'weiter' : 'Pause');
+  // Nur das wechselnde Wort steht in einem eigenen <span> (Bauart wie in
+  // m5-minus-schriftlich): So taucht die Knopfaufschrift „Halt beim Übertrag: aus“
+  // (> 18 Zeichen) nicht als Statuszeile im Faktendump auf; im Bild steht sie ganz da.
+  _m5iSetze('_m5i-halt-an', z.haltAn ? 'an' : 'aus');
+  _m5iSetze('_m5i-tempo-an', z.langsam ? 'langsam' : 'normal');
+  const hz = _m5iSetze('_m5i-lehrkraft', _m5iHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_m5i-pause', z.pause], ['_m5i-halt', z.haltAn]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+function _m5iHinweis() {
+  const z = _m5i;
+  if (z.halt) return 'Halt: 10 ' + _m5iNAME[z.halt.c] + ' werden zu 1 ' + _m5iNAME[z.halt.c + 1] +
+                     '. Das ist der Übertrag.';
+  if (z.pause) return 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.';
+  return 'Für die Lehrkraft: „Pause“ hält alles an. „Halt beim Übertrag“ stoppt von selbst.';
 }
 
 // ── Bedienung ───────────────────────────────────────────────────────────
@@ -237,6 +318,11 @@ function _m5iNeu() {
 function _m5iSpalte() {
   if (!_m5i) return;
   const z = _m5i;
+  if (z.pause) {                                     // in der Pause: vormerken oder ignorieren (siehe Kopf)
+    z.blink = 0.6;
+    if (!z.lauf && z.fertig < z.schritte.length) { z.auto = false; z.vormerken = true; }
+    return;
+  }
   z.auto = false;
   if (z.lauf) _m5iFertig();
   if (z.fertig >= z.schritte.length) { z.wackel = 0.45; _m5iStatus(); return; }
@@ -246,9 +332,47 @@ function _m5iSpalte() {
 function _m5iAlles() {
   if (!_m5i) return;
   const z = _m5i;
+  if (z.pause) {                                     // in der Pause vorgemerkt (siehe Kopf)
+    z.blink = 0.6;
+    if (z.lauf || z.fertig < z.schritte.length) { z.auto = true; if (!z.lauf) z.vormerken = true; }
+    return;
+  }
   if (z.fertig >= z.schritte.length && !z.lauf) { z.wackel = 0.45; return; }
   z.auto = true;
   if (!z.lauf) _m5iStart(z.fertig);
+  _m5iStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+// „Pause“ ↔ „weiter“. Beim Weitermachen laeuft die Bewegung genau dort weiter,
+// wo sie stand; eine vorgemerkte Spalte beginnt jetzt.
+function _m5iAnhalten() {
+  if (!_m5i) return;
+  const z = _m5i;
+  if (z.pause) {
+    z.pause = false; z.halt = null; z.blink = 0;
+    if (z.vormerken) {
+      z.vormerken = false;
+      if (!z.lauf && z.fertig < z.schritte.length) _m5iStart(z.fertig);
+    }
+  } else z.pause = true;
+  _m5iStatus();
+}
+function _m5iHaltSchalter() {
+  if (!_m5i) return;
+  _m5i.haltAn = !_m5i.haltAn;
+  _m5iStatus();
+}
+function _m5iTempo() {
+  if (!_m5i) return;
+  _m5i.langsam = !_m5i.langsam;
+  _m5iStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _m5iZeitfaktor(z) { return z.pause ? 0 : z.langsam ? 1 / 3 : 1; }
+// Das Halt-Ereignis: die zehn Wuerfel liegen zusammen, gleich werden sie eine Stange.
+function _m5iHalt(st) {
+  const z = _m5i;
+  z.pause = true; z.halt = { c: st.c };
   _m5iStatus();
 }
 
@@ -308,8 +432,10 @@ function _m5iGelandet(st, weiter) {
 // ── Bewegung ────────────────────────────────────────────────────────────
 function _m5iUpdate(dt) {
   if (!_m5i) return;
-  dt = _bioFxDt(dt);
   const z = _m5i, K = _m5iK, E = _bioFxEase, kl = _bioFxKlemme;
+  const roh = _bioFxDt(dt);
+  z.blink = Math.max(0, z.blink - roh);              // Schild „Pause“ leuchtet in echter Zeit
+  dt = roh * _m5iZeitfaktor(z);                      // ab hier Sim-Zeit: 0 Pause, 1/3 langsam, 1 normal
   z.t += dt; z.schreib += dt; z.blaseT += dt;
   for (const c in z.popU) z.popU[c] += dt;
   for (const c in z.popE) z.popE[c] += dt;
@@ -319,7 +445,7 @@ function _m5iUpdate(dt) {
   if (z.komplett) z.strich2 = Math.min(1, z.strich2 + dt / 0.5);
   const L = z.lauf;
   if (!L || L.phase === 'pause') z.band = Math.max(0, z.band - dt / K.T_BAND);
-  if (L) {
+  if (L && dt > 0) {                                 // ohne Zeit kein Schritt im Ablauf
     L.t += dt;
     const st = L.i >= 0 ? z.schritte[L.i] : null;
     if (L.phase === 'fliegen') {
@@ -350,7 +476,11 @@ function _m5iUpdate(dt) {
         if (k >= 10) return;
         w.x = w.x0 + (w.x1 - w.x0) * e; w.mix = kl((e - 0.6) / 0.4);   // erst am Ende bernstein, sonst wird es grau
       });
-      if (u >= 1) {
+      if (u >= 1 && z.haltAn && !L.angehalten) {
+        // HALT beim Uebertrag: die zehn Wuerfel liegen zusammen, noch nicht verschmolzen
+        L.angehalten = true;
+        _m5iHalt(st);
+      } else if (u >= 1) {
         // verschmelzen: aus zehn Wuerfeln wird eine Stange
         L.stange = { x0: K.BARX + 5 * K.W, y0: K.FR1 + K.W / 2, w0: 10 * K.W, h0: K.W,
                      x1: _m5iCX(st.c + 1), y1: K.RU + K.UM, w1: 11, h1: 18,
@@ -626,8 +756,53 @@ function _m5iDraw(ctx, cv) {
   _m5iBlase(ctx);
   const L = z.lauf;
   if (L) {
+    if (z.halt && L.phase === 'sammeln') _m5iHaltRahmen(ctx);
     for (const w of L.wuerfel) _m5iWuerfel(ctx, w.x, w.y, w.s, w.art, w.mix, w.a);
     if (L.stange) _m5iStange(ctx, L.stange);
   }
   _bioFxDraw(ctx, z.fx.teile);
+  if (z.halt) _m5iHaltSchild(ctx, z.halt.c);
+  if (z.pause) _m5iPauseSchild(ctx);
+}
+// Halt: die zehn zusammengeschobenen Wuerfel der oberen Reihe einrahmen (hinter den Wuerfeln).
+function _m5iHaltRahmen(ctx) {
+  const K = _m5iK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(252,211,77,0.38)'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, K.BARX - 5, K.FR1 - 4, 10 * K.W + 10, K.W + 8, 7); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Halt: Beschriftung unten auf dem Rechenblatt, unter der Ergebniszeile.
+function _m5iHaltSchild(ctx, c) {
+  const K = _m5iK, s = '10 ' + _m5iNAME[c] + ' = 1 ' + _m5iNAME[c + 1];
+  const x0 = K.PX0 + 8, x1 = K.PX1 - 8, y0 = K.RF + 10, y1 = K.PY1 - 7;
+  ctx.save();
+  ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 9); ctx.fill(); ctx.stroke();
+  let gr = 18;
+  ctx.font = '700 ' + gr + 'px sans-serif';
+  const br = ctx.measureText(s).width, platz = x1 - x0 - 16;
+  if (br > platz) gr = Math.max(13, Math.floor(gr * platz / br));
+  _m5iText(ctx, s, (x0 + x1) / 2, (y0 + y1) / 2 + gr * 0.36, gr, '#78350f');
+  ctx.restore();
+}
+// Schild „Pause“ oben links auf dem Rechenblatt, links neben der Kopfzeile H Z E –
+// gleiche Stelle, gleiche Groesse, gleiche Farbe wie in m5-minus-schriftlich, damit
+// die Lehrkraft es in beiden Simulationen am selben Ort findet. Leuchtet kurz auf,
+// wenn waehrend der Pause „nächste Spalte“ oder „alles rechnen“ gedrueckt wird.
+function _m5iPauseSchild(ctx) {
+  const z = _m5i, w = 64, h = 25, x = 8, y = 8;       // endet vor dem Band der Hunderterspalte (x = 78)
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _m5iText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
 }

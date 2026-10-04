@@ -45,6 +45,41 @@
 //   „nächste Spalte“ (_m5jWeiter()) · „alles rechnen“ (_m5jAlles()) ·
 //   „neu“ (_m5jNeu(): wieder 432 − 158, nichts gerechnet)
 //
+// FUER DIE LEHRKRAFT (seit 04.10.2026, Wunsch aus dem Unterricht: „die
+// Entbündelung kurz stoppen und den Kindern erklären, was da passiert“).
+// Eine eigene Zeile UNTER den Heftknoepfen, davor klein „Für die Lehrkraft:“:
+//   „Pause“ <-> „weiter“ (_m5jAnhalten()): friert JEDE Bewegung sofort ein,
+//                auch mitten in einer Spalte; „weiter“ macht genau dort weiter.
+//                Im Bild steht oben links ein dunkles Schild „Pause“ (Stelle
+//                und Aussehen wie in m5-plus-schriftlich).
+//   „Halt beim Entbündeln: aus“ <-> „…: an“ (_m5jHaltSchalter()): ist er an,
+//                haelt die Spalte VON SELBST an, bevor ein Stueck zerfaellt –
+//                die Stange (bzw. Platte), die gleich zerfaellt, ist orange
+//                umrandet, darunter steht „1 Zehner = 10 Einer“ (bzw.
+//                „1 Hunderter = 10 Zehner“). Bei 503 − 128 zweimal. Die
+//                Sprechblase nennt dabei den Grund: „2 − 8 reicht nicht“ bzw.
+//                „Bei den Zehnern ist nichts“; beim zweiten Halt ueber die Null
+//                wieder „3 − 8 reicht nicht“ (nicht das alte „1 Hunderter entbündeln“).
+//   „Tempo: normal“ <-> „Tempo: langsam“ (_m5jTempo()): langsam = ein Drittel.
+// Bauart: EIN Zeitfaktor (_m5jZeitfaktor: 0 angehalten, 1/3 langsam, 1 normal)
+// an der einen Stelle, an der dt in _m5jUpdate hineingeht. Bei 0 kehrt
+// _m5jUpdate sofort zurueck – es laeuft keine Uhr weiter und es beginnt auch
+// keine neue Phase. Der Halt ist ein EREIGNIS im Drehbuch: Er faellt beim
+// Phasenwechsel, wenn die naechste Phase „zerfallen“ ist (also nach
+// „reicht nicht“, „ist nichts“ bzw. nach dem ersten Wandern bei 503 − 128),
+// nicht nach einer gemessenen Zeit. Mit „weiter“ beginnt genau diese Phase.
+// Waehrend der Pause:
+//   – „nächste Spalte“ / „alles rechnen“: laeuft gerade eine Spalte, sind sie
+//     blass wie sonst auch (nichts aendert sich). Steht die Rechnung ZWISCHEN
+//     zwei Spalten, wird die naechste Spalte VORGEMERKT (sie ist angelegt,
+//     die Knoepfe werden blass) und beginnt erst mit „weiter“.
+//   – „Halt …“ und „Tempo …“ schalten nur um; das Bild bleibt stehen.
+//   – „neu“ und die vier Aufgabenknoepfe heben die Pause auf (die Schalter
+//     „Halt“ und „Tempo“ bleiben, wie die Lehrkraft sie gestellt hat).
+// Voreinstellung: Pause aus, Halt aus, Tempo normal -> genau wie vorher (der
+// Faktor ist dann 1 und dt * 1 === dt; nachgefahren mit werte.js und einem
+// Bild-fuer-Bild-Vergleich des Zustands gegen die alte Fassung).
+//
 // Statuszeilen (woertlich; jede, deren Wert das Heft verlangt, hat >= 19
 // Zeichen, sonst fehlt sie im Faktendump):
 //   _m5j-aufgabe   „Aufgabe: 432 − 158 (schriftlich)“
@@ -59,6 +94,13 @@
 //   _m5j-reicht    „Nicht gereicht hat es bei: …“, am Ende z. B.
 //                  „Nicht gereicht hat es bei: E und Z“ (sonst „… bei: nirgends“)
 //   _m5j-ergebnis  „Ergebnis der Aufgabe: …“, am Ende „Ergebnis der Aufgabe: 274“
+//   _m5j-lehrkraft (Hinweis fuer die Lehrkraft, direkt unter der Lehrkraft-Zeile;
+//                  in der Pause bernsteinfarben „lmp-status off“, sonst „on“)
+//                  normal „Für die Lehrkraft: „Pause“ hält alles an. „Halt beim
+//                  Entbündeln“ stoppt von selbst.“ · von Hand angehalten
+//                  „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“ ·
+//                  beim Halt „Halt: 1 Zehner wird zu 10 Einern. Das ist das
+//                  Entbündeln.“ bzw. „Halt: 1 Hunderter wird zu 10 Zehnern. …“
 //
 // Werte (jede Zeile mit simcheck/werte.js nachgerechnet):
 //   432 − 158: E 2 − 8 reicht nicht, 1 Zehner entbuendeln, 12 − 8 = 4 ·
@@ -96,7 +138,7 @@ const _m5jAUFGABEN = {
 const _m5jREIHE = ['432-158', '563-241', '745-382', '503-128'];
 const _m5jSP = ['H', 'Z', 'E'];                          // Spalten im Bild
 const _m5jWORT = { H: 'Hunderter', Z: 'Zehner', E: 'Einer' };
-const _m5jDATIV = { H: 'Hundertern', Z: 'Zehnern' };
+const _m5jDATIV = { H: 'Hundertern', Z: 'Zehnern', E: 'Einern' };
 const _m5jVOR = { E: 'Z', Z: 'H' };                      // woher eine Spalte entbuendelt
 const _m5jK = {
   // Rechenblatt
@@ -111,7 +153,8 @@ const _m5jK = {
   YF0: 44, YT: 198,                                      // Feldflaeche ab, Anzahlzeile ab
   // Zeiten in s
   T_ZEIGEN: 0.5, T_REICHT: 0.7, T_NICHTS: 0.8, T_ZERFALL: 0.55, T_WANDERN: 0.75,
-  T_WEG: 0.8, T_SCHREIBEN: 0.45, T_PAUSE: 0.35
+  T_WEG: 0.8, T_SCHREIBEN: 0.45, T_PAUSE: 0.35,
+  LANGSAM: 1 / 3                                         // Zeitfaktor bei „Tempo: langsam“
 };
 const _m5jFARBE = {
   H: { grund: '#fef2f2', fuell: '#fca5a5', linie: 'rgba(185,28,28,0.35)', rand: '#b91c1c' },
@@ -194,7 +237,9 @@ function _m5jInit() {
            papier: null, erg: { H: null, Z: null, E: null }, papierT: 0,
            band: null, band2: null, blase: null, puls: null, spalteText: '',
            wackel: { H: 0, Z: 0, E: 0 }, glanz: { H: 0, Z: 0, E: 0 }, fertigGlanz: 0,
-           t: 0, fx: { teile: [] } };
+           t: 0, fx: { teile: [] },
+           // fuer die Lehrkraft: angehalten? warum (Halt)? Schalter Halt / langsam
+           steht: false, haltInfo: null, haltAn: false, langsam: false };
   _m5jSetze('432-158');
 }
 function _m5jSetze(key) {
@@ -205,6 +250,7 @@ function _m5jSetze(key) {
   z.key = key; z.r = _m5jRechne(oben, unten);
   z.k = 0; z.fertig = false; z.alles = false; z.job = null; z.pause = 0; z.teile = null;
   z.band = null; z.band2 = null; z.blase = null; z.puls = null; z.fertigGlanz = 0;
+  z.steht = false; z.haltInfo = null;                    // eine Aufgabe / „neu“ hebt die Pause auf
   z.spalteText = 'Noch keine Spalte gerechnet.';
   z.erg = { H: null, Z: null, E: null };
   z.papier = {};
@@ -239,6 +285,13 @@ function _m5jHTML() {
           <button class="sim-btn" id="_m5j-alles" onclick="_m5jAlles()">alles rechnen</button>
           <button class="sim-btn" onclick="_m5jNeu()">neu</button>
         </div>
+        <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+          <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+          <button class="sim-btn" id="_m5j-pause" onclick="_m5jAnhalten()">Pause</button>
+          <button class="sim-btn" id="_m5j-halt" onclick="_m5jHaltSchalter()">Halt beim Entbündeln: <span id="_m5j-halt-an">aus</span></button>
+          <button class="sim-btn" id="_m5j-tempo" onclick="_m5jTempo()">Tempo: <span id="_m5j-tempo-an">normal</span></button>
+        </div>
+        <div class="lmp-status on" id="_m5j-lehrkraft" style="margin-top:4px"></div>
       </div>
       <div>
         <div class="fpm-label">Anzeige</div>
@@ -273,6 +326,23 @@ function _m5jStatus() {
     b.disabled = aus;
     if (b.style) b.style.opacity = aus ? '0.45' : '';
   }
+  // fuer die Lehrkraft: Knopfaufschriften und Hinweiszeile
+  setze('_m5j-pause', z.steht ? 'weiter' : 'Pause');
+  // Nur das wechselnde Wort steht in einem eigenen <span>: So taucht die
+  // Knopfaufschrift „Halt beim Entbündeln: aus“ (> 18 Zeichen) nicht als
+  // Statuszeile im Faktendump auf; im Bild steht sie unveraendert ganz da.
+  setze('_m5j-halt-an', z.haltAn ? 'an' : 'aus');
+  setze('_m5j-tempo-an', z.langsam ? 'langsam' : 'normal');
+  for (const [id, an] of [['_m5j-pause', z.steht], ['_m5j-halt', z.haltAn]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+  const h = z.haltInfo;
+  setze('_m5j-lehrkraft',
+    h ? 'Halt: 1 ' + _m5jWORT[h.von] + ' wird zu 10 ' + _m5jDATIV[h.nach] + '. Das ist das Entbündeln.'
+      : z.steht ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+      : 'Für die Lehrkraft: „Pause“ hält alles an. „Halt beim Entbündeln“ stoppt von selbst.');
+  const hz = document.getElementById('_m5j-lehrkraft');   // in der Pause bernsteinfarben
+  if (hz) hz.className = 'lmp-status ' + (z.steht ? 'off' : 'on');
 }
 
 // ── Bedienung ───────────────────────────────────────────────────────────
@@ -297,6 +367,65 @@ function _m5jAlles() {
   if (!z || z.fertig) return;
   z.alles = true;
   if (!z.job && !(z.pause > 0)) _m5jStarte();
+  _m5jStatus();
+}
+// ── Für die Lehrkraft ───────────────────────────────────────────────────
+// „Pause“ <-> „weiter“. Angehalten wird nur die Zeit (_m5jZeitfaktor = 0);
+// „nächste Spalte“ / „alles rechnen“ legen waehrend der Pause hoechstens die
+// naechste Spalte an (vorgemerkt), sie beginnt erst mit „weiter“.
+function _m5jAnhalten() {
+  const z = _m5j;
+  if (!z) return;
+  z.steht = !z.steht;
+  z.haltInfo = null;                       // „weiter“ nach einem Halt: das Stueck zerfaellt jetzt
+  _m5jStatus();
+}
+function _m5jHaltSchalter() {
+  const z = _m5j;
+  if (!z) return;
+  z.haltAn = !z.haltAn;                    // gilt fuer das NAECHSTE Entbuendeln
+  _m5jStatus();
+}
+function _m5jTempo() {
+  const z = _m5j;
+  if (!z) return;
+  z.langsam = !z.langsam;
+  _m5jStatus();
+}
+// Der eine Zeitfaktor: 0 = angehalten, 1/3 = langsam, 1 = normal.
+function _m5jZeitfaktor() {
+  const z = _m5j;
+  return z.steht ? 0 : z.langsam ? _m5jK.LANGSAM : 1;
+}
+// Halt beim Entbuendeln: ein Ereignis im Drehbuch. Gerufen beim Phasenwechsel,
+// wenn als Naechstes eine Phase „zerfallen“ kommt – das Stueck liegt noch ganz
+// in seinem Feld und ist das letzte dort (genau das nimmt _m5jBeginn gleich).
+function _m5jHalt(ph) {
+  const z = _m5j;
+  z.steht = true;
+  z.haltInfo = { von: ph.st.von, nach: ph.st.nach };
+  // Die Sprechblase nennt beim Halt immer den GRUND fuers Entbuendeln („2 − 8
+  // reicht nicht“, „Bei den Zehnern ist nichts“). Beim zweiten Halt ueber die
+  // Null (503 − 128) stand dort sonst noch „1 Hunderter entbündeln“ vom Schritt
+  // davor, und die Hunderterspalte war noch orange, waehrend das Schild schon
+  // „1 Zehner = 10 Einer“ zeigt. Mit „weiter“ kommt wie immer „1 Zehner entbündeln“.
+  if (ph.nr > 0) {
+    const s = z.job.s;
+    _m5jBlase(s.oben + ' − ' + s.unten + ' reicht nicht', s.c);
+    z.band2 = null; z.puls = null;
+  }
+  // Was gerade erst erscheint, steht beim Halt GANZ da (sonst fehlte bei
+  // 503 − 128 im zweiten Halt die kleine 1 vor der 0: Sie beginnt genau beim
+  // Phasenwechsel einzublenden). Nur Einblend-Uhren, keine Bewegung.
+  const voll = (t, d) => (t === null || t === undefined ? t : Math.max(t, d));
+  for (const c of _m5jSP) {
+    const P = z.papier[c];
+    P.weg = voll(P.weg, 0.4); P.eins = voll(P.eins, 0.3);
+    P.kleinT = voll(P.kleinT, 0.35); P.kleinEins = voll(P.kleinEins, 0.3);
+    if (z.erg[c]) z.erg[c].t = voll(z.erg[c].t, 0.35);
+  }
+  for (const b of [z.band, z.band2, z.blase]) if (b) b.t = voll(b.t, 0.3);
+  z.papierT = voll(z.papierT, 0.5);
   _m5jStatus();
 }
 // Drehbuch einer Spalte: eine Liste von Phasen, jede mit Dauer.
@@ -422,7 +551,11 @@ function _m5jSpalteFertig() {
 // ── Bewegung ────────────────────────────────────────────────────────────
 function _m5jUpdate(dt) {
   if (!_m5j) return;
-  dt = _bioFxDt(dt);
+  // EIN Zeitfaktor fuer jede Bewegung. Angehalten: nichts laeuft weiter, und es
+  // beginnt auch keine neue Phase. Normal ist er 1, dann ist dt unveraendert.
+  const f = _m5jZeitfaktor();
+  if (f === 0) return;
+  dt = _bioFxDt(dt) * f;
   const z = _m5j, K = _m5jK;
   z.t += dt;
   z.papierT += dt;
@@ -480,6 +613,7 @@ function _m5jUpdate(dt) {
       _m5jEnde(ph, j.s);
       j.i += 1; j.t = 0; j.begonnen = false;
       if (j.i >= j.phasen.length) _m5jSpalteFertig();
+      else if (z.haltAn && j.phasen[j.i].art === 'zerfallen') _m5jHalt(j.phasen[j.i]);
     }
   } else if (z.pause > 0) {
     z.pause -= dt;
@@ -732,6 +866,54 @@ function _m5jMaterial(ctx) {
   _bioFxRundRect(ctx, K.MX0, K.MY0, K.MX1 - K.MX0, K.MY1 - K.MY0, 8); ctx.stroke();
 }
 
+// Fuer die Lehrkraft: beim Halt das Stueck, das gleich zerfaellt, orange
+// umrandet und darunter „1 Zehner = 10 Einer“; waehrend jeder Pause oben links
+// das Schild „Pause“. Alles steht still (gezeichnet aus dem eingefrorenen Zustand).
+function _m5jLehrkraftBild(ctx) {
+  const z = _m5j, h = z.haltInfo;
+  if (h) {
+    const f = z.feld[h.von], p = f[f.length - 1];
+    // Beschriftung im freien Streifen ueber der Anzahlzeile (dort liegt bei
+    // keiner der vier Aufgaben Material: Platten reichen links bis x = 259)
+    const text = '1 ' + _m5jWORT[h.von] + ' = 10 ' + _m5jWORT[h.nach];
+    const bx = 236, by = 162, bw = 174, bh = 30;
+    if (p) {
+      const pd = p.w < 10 ? 2.5 : 4;                         // Stangen stehen dicht: schmaler Rand
+      const r0 = { x: p.x - pd, y: p.y - pd, x1: p.x + p.w + pd, y1: p.y + p.h + pd };
+      ctx.save();
+      // Verbindung Beschriftung -> Stueck (kuerzeste Strecke zwischen den Rechtecken)
+      const kl = (v, a, b) => Math.max(a, Math.min(b, v));
+      const ax = kl((r0.x + r0.x1) / 2, bx + 10, bx + bw - 10), ay = kl((r0.y + r0.y1) / 2, by, by + bh);
+      const ex = kl(ax, r0.x, r0.x1), ey = kl(ay, r0.y, r0.y1);
+      if (Math.abs(ax - ex) + Math.abs(ay - ey) > 3) {
+        ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(ex, ey); ctx.stroke();
+      }
+      ctx.fillStyle = 'rgba(251,146,60,0.30)'; ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 3;
+      _bioFxRundRect(ctx, r0.x, r0.y, r0.x1 - r0.x, r0.y1 - r0.y, 4); ctx.fill(); ctx.stroke();
+      ctx.restore();
+      _m5jZeichneStueck(ctx, p);                            // das Stueck selbst bleibt gut zu sehen
+    }
+    ctx.save();
+    ctx.fillStyle = '#fff7ed'; ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, bx, by, bw, bh, 8); ctx.fill(); ctx.stroke();
+    let gr = 16;
+    ctx.font = '700 ' + gr + 'px sans-serif';
+    while (gr > 11 && ctx.measureText(text).width > bw - 14) { gr -= 1; ctx.font = '700 ' + gr + 'px sans-serif'; }
+    _m5jText(ctx, text, bx + bw / 2, by + bh / 2 + gr * 0.36, gr, '#9a3412');
+    ctx.restore();
+  }
+  if (z.steht) {                                            // Schild „Pause“, oben links auf dem Blatt
+    ctx.save();
+    ctx.fillStyle = '#1e293b';
+    _bioFxRundRect(ctx, 8, 8, 64, 25, 6); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(14, 14.5, 3.5, 12); ctx.fillRect(20.5, 14.5, 3.5, 12);
+    _m5jText(ctx, 'Pause', 28, 25.5, 13, '#ffffff', '700', 'left');
+    ctx.restore();
+  }
+}
+
 function _m5jDraw(ctx, cv) {
   if (!_m5j) return;
   const W = cv.width, H = cv.height;
@@ -743,4 +925,5 @@ function _m5jDraw(ctx, cv) {
   _m5jMaterial(ctx);
   _m5jSprechblase(ctx);
   _bioFxDraw(ctx, _m5j.fx.teile);
+  if (_m5j.steht || _m5j.haltInfo) _m5jLehrkraftBild(ctx);
 }
