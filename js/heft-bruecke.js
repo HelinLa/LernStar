@@ -6327,7 +6327,7 @@ const HEFT_SEITEN = {
     name: "Zehn Einer sind ein Zehner",
     titel: "Tarek schreibt 1 910",
     frage: "Welche Zahl liegt da wirklich?",
-    schritte: ["Drücke „1 H, 9 Z, 10 E“. Sieh dir „Zahl:“ an.", "Drücke „bündeln“, bis „Es gibt nichts mehr zu bündeln.“ dasteht.", "Lies „Auf dem Tisch:“ und „Zahl:“ ab. Trage beides ein.", "Wiederhole a bis c mit „2 H, 9 Z, 12 E“, „0 H, 15 Z, 7 E“ und „4 H, 10 Z, 0 E“."]
+    schritte: ["Drücke „1 H, 9 Z, 10 E“. Sieh dir die Zahl an.", "Drücke 2-mal „bündeln“. Trage ein: Was liegt auf dem Tisch?", "Trage die Zahl ein.", "Mache das auch mit „2 H, 9 Z, 12 E“, „0 H, 15 Z, 7 E“ und „4 H, 10 Z, 0 E“."]
   },
   "mz2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6336,7 +6336,7 @@ const HEFT_SEITEN = {
     name: "Welchen Wert hat die 4?",
     titel: "Die wandernde Vier",
     frage: "Welchen Wert hat die 4 in 34, 340, 3 400 und 34 000?",
-    schritte: ["Drücke „34“. Lies den Wert der 4 ab. Trage ihn ein.", "Drücke „340“. Lies ab: Wo steht die 4? Welchen Wert hat sie? Trage ein.", "Wiederhole Schritt b mit „3 400“ und mit „34 000“.", "Vergleiche die Werte der 4 von oben nach unten."]
+    schritte: ["Drücke „34“. Trage ein: Wo steht die 4?", "Trage den Wert der 4 ein.", "Mache das auch mit „340“, „3 400“ und „34 000“.", "Vergleiche die Werte von oben nach unten."]
   },
   "mz3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6345,7 +6345,7 @@ const HEFT_SEITEN = {
     name: "Wo bleibt die Null?",
     titel: "Tarek schreibt 350",
     frage: "Wie schreibt man dreitausendfünfzig mit Ziffern?",
-    schritte: ["Drücke „dreitausendfünfzig“. Lies ab, welche Stellen leer sind.", "Drücke „mit Ziffern schreiben“. Trage die Zahl ein.", "Wiederhole Schritt a und b mit den anderen drei Zahlwörtern. Trage alles ein.", "Drücke „ohne leere Stellen schreiben“. Lies ab, wie man die Zahl jetzt spricht."]
+    schritte: ["Drücke „dreitausendfünfzig“. Trage ein: Welche Stellen sind leer?", "Drücke „mit Ziffern schreiben“. Trage die Zahl ein.", "Mache das auch für Zeile 2 bis 4.", "Drücke „ohne leere Stellen schreiben“. Lies ab: Wie liest man die Zahl jetzt?"]
   },
   "mz4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6354,7 +6354,7 @@ const HEFT_SEITEN = {
     name: "Wie liest man große Zahlen?",
     titel: "4 000 000 im Radio",
     frage: "Wie spricht man die Zahl 4 000 000?",
-    schritte: ["Drücke „Dortmund“. Versuche, die Zahl ohne Lücken zu lesen.", "Drücke „Gruppen bilden“. Trage die Zahl mit Lücken ein.", "Drücke „vorlesen“. Trage ein, wie man die Zahl spricht.", "Wiederhole a bis c mit „Köln“ und „Berlin“."]
+    schritte: ["Drücke „Dortmund“. Lies die Zahl ohne Lücken laut.", "Drücke „Gruppen bilden“. Trage die Zahl mit Lücken ein.", "Drücke „vorlesen“. Trage ein: Wie spricht man die Zahl?", "Mache das auch mit „Köln“ und „Berlin“."]
   },
   "mz5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6363,7 +6363,7 @@ const HEFT_SEITEN = {
     name: "Welche Zahl ist größer?",
     titel: "9 870 oder 12 300?",
     frage: "Welche Zahl ist größer: 9 870 oder 12 300?",
-    schritte: ["Drücke „9 870 und 12 300“. Zähle die Stellen jeder Zahl. Trage ein.", "Sieh am Zahlenstrahl nach, welche Zahl größer ist. Trage ein.", "Drücke „Lupe an“. Wiederhole a und b mit „4 506 und 4 560“, „7 999 und 8 001“ und „30 012 und 3 012“.", "Drücke „4 506 und 4 560“ und „Ziffern untereinander“. Welche Spalte leuchtet?"]
+    schritte: ["Drücke „9 870 und 12 300“. Trage ein: Wie viele Stellen?", "Schau auf den Zahlenstrahl. Trage die größere Zahl ein.", "Drücke „Lupe an“. Mache das auch für Zeile 2 bis 4.", "Drücke „Ziffern untereinander“. Welche Spalte leuchtet?"]
   },
   "mz6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6372,7 +6372,7 @@ const HEFT_SEITEN = {
     name: "Auf welche Zahl rundet man?",
     titel: "2 449 – runter oder rauf?",
     frage: "Was ist 2 449 auf Hunderter gerundet?",
-    schritte: ["Drücke „Hunderter“ und „2 449“. Lies die Abstände ab. Trage sie ein.", "Drücke „runden“. Lies ab, wo die Kugel liegt. Trage ein.", "Wiederhole a und b mit „2 451“, „2 450“ und „2 380“."]
+    schritte: ["Drücke „Hunderter“.", "Drücke „2 449“. Trage die Abstände ein.", "Drücke „runden“. Trage die gerundete Zahl ein.", "Mache das auch mit „2 451“, „2 450“ und „2 380“."]
   },
   "mp1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6381,7 +6381,7 @@ const HEFT_SEITEN = {
     name: "Wie rechnest du 46 + 37 im Kopf?",
     titel: "Tarek kommt auf 713",
     frage: "Welche Summe hat 46 + 37?",
-    schritte: ["Drücke „erst Zehner, dann Einer“. Sieh zu, wie der Punkt springt.", "Lies „Zwischenergebnis:“ und „Ergebnis der Aufgabe:“ ab. Trage die Summe in Zeile 1 ein.", "Wiederhole a und b mit „Zehner und Einer getrennt“, „bis 50, dann weiter“ und „plus 40, dann minus 3“. Trage alle drei Spalten ein.", "Drücke „nebeneinander schreiben“. So kommt Tarek auf 713. Lies, was im Bild steht."]
+    schritte: ["Drücke „erst Zehner, dann Einer“. Trage das Zwischenergebnis ein.", "Trage das Ergebnis als Summe ein.", "Mache das auch für Zeile 2 bis 4.", "Drücke „nebeneinander schreiben“. Lies ab: Passt 713 auf den Rechenstrich?"]
   },
   "mp2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6390,7 +6390,7 @@ const HEFT_SEITEN = {
     name: "Plus und Minus gehören zusammen",
     titel: "Stimmt 83 − 37 = 54?",
     frage: "Wie kann Leni prüfen, ob 54 stimmt?",
-    schritte: ["Drücke „83 − 37 = 54“ und dann „Probe“.", "Lies „Umkehraufgabe:“ ab. Trage sie ein.", "Vergleiche „Die Probe landet bei“ mit „Gestartet wurde bei“. Trage ja oder nein ein.", "Wiederhole a bis c mit „83 − 37 = 46“, „125 − 48 = 77“ und „200 − 65 = 145“."]
+    schritte: ["Drücke „83 − 37 = 54“.", "Drücke „Probe“. Trage die Umkehraufgabe ein.", "Prüfe: Landet die Probe beim Start? Trage ja oder nein ein.", "Mache das auch mit „83 − 37 = 46“, „125 − 48 = 77“ und „200 − 65 = 145“."]
   },
   "mp3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6399,7 +6399,7 @@ const HEFT_SEITEN = {
     name: "Wie rechnet man schriftlich plus?",
     titel: "Leni schreibt 715",
     frage: "Was ergibt 457 + 368 wirklich?",
-    schritte: ["Drücke „457 + 368“ und dann „nächste Spalte“. Beobachte, wohin die Würfel wandern.", "Drücke „nächste Spalte“, bis bei „Ergebnis der Aufgabe:“ eine Zahl steht.", "Lies „Übertrag entstanden bei:“ und „Ergebnis der Aufgabe:“ ab. Trage beides ein.", "Wiederhole a bis c mit „345 + 62“, „508 + 294“ und „136 + 251“."]
+    schritte: ["Drücke „457 + 368“.", "Drücke 3-mal „nächste Spalte“. Trage ein: Wo entsteht ein Übertrag?", "Trage das Ergebnis ein.", "Mache das auch mit „345 + 62“, „508 + 294“ und „136 + 251“."]
   },
   "mp4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6408,7 +6408,7 @@ const HEFT_SEITEN = {
     name: "Wie rechnet man schriftlich minus?",
     titel: "Tarek kommt auf 326",
     frage: "Was ergibt 432 − 158 wirklich?",
-    schritte: ["Drücke „432 − 158“. Drücke „nächste Spalte“ und beobachte das Material.", "Drücke „nächste Spalte“, bis bei „Ergebnis der Aufgabe:“ eine Zahl steht.", "Lies „Nicht gereicht hat es bei:“ und „Ergebnis der Aufgabe:“ ab. Trage beides ein.", "Wiederhole a bis c mit „563 − 241“, „745 − 382“ und „503 − 128“."]
+    schritte: ["Drücke „432 − 158“.", "Drücke „alles rechnen“. Trage ein: Wo reicht es nicht?", "Trage das Ergebnis ein.", "Mache das auch mit „563 − 241“, „745 − 382“ und „503 − 128“."]
   },
   "mp5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6417,7 +6417,7 @@ const HEFT_SEITEN = {
     name: "Stimmt das Ergebnis ungefähr?",
     titel: "4 105 auf dem Taschenrechner",
     frage: "Kann 4 105 stimmen?",
-    schritte: ["Drücke „398 + 207 = 4 105“. Drücke dann „Überschlag rechnen“.", "Lies „Überschlag:“ ab. Trage die Rechnung ein.", "Vergleiche das orange Fähnchen mit dem blauen Punkt. Kann das Ergebnis stimmen? Trage ja oder nein ein.", "Wiederhole a bis c mit „512 − 289 = 223“, „1 985 + 3 020 = 5 005“ und „703 − 98 = 6 050“."]
+    schritte: ["Drücke „398 + 207 = 4 105“.", "Drücke „Überschlag rechnen“. Trage den Überschlag ein.", "Prüfe den Abstand: Kann das stimmen? Trage ja oder nein ein.", "Mache das auch für Zeile 2 bis 4."]
   },
   "mp6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6426,7 +6426,7 @@ const HEFT_SEITEN = {
     name: "Was fällt an der Zahlenmauer auf?",
     titel: "Leni ändert einen Stein",
     frage: "Um wie viel wächst der Deckstein, wenn ein Grundstein um 1 wächst?",
-    schritte: ["Drücke „5, 3, 4“. Lies „Unterschied zum Start:“ ab. Trage ihn in Zeile 1 ein.", "Drücke „6, 3, 4“. Zähle die Kugeln, die oben am Deckstein ankommen.", "Trage die Grundsteine, den Deckstein und den Unterschied ein.", "Wiederhole b und c mit „5, 4, 4“ und „5, 3, 5“."]
+    schritte: ["Drücke „5, 3, 4“. Trage die Grundsteine ein.", "Trage den obersten Stein ein.", "Trage den Unterschied ein.", "Mache das auch mit „6, 3, 4“, „5, 4, 4“ und „5, 3, 5“."]
   },
   "mf1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6435,7 +6435,7 @@ const HEFT_SEITEN = {
     name: "Strecke oder Gerade?",
     titel: "Tareks Gerade ist 10 cm lang",
     frage: "Kann man die Länge einer Geraden messen?",
-    schritte: ["Drücke „Strecke AB“. Warte, bis das Lineal an der Linie liegt.", "Lies „Anzahl der Endpunkte:“ und „Länge auf dem Lineal:“ ab. Trage beides ein.", "Wiederhole a und b mit „Gerade AB“, „Strecke CD“ und „Gerade CD“.", "Drücke „Gerade AB“ und dann „Blatt vergrößern“. Beobachte die Enden der Linie."]
+    schritte: ["Drücke „Strecke AB“. Trage ein: Wie viele Endpunkte?", "Trage die Länge ein.", "Mache das auch mit „Gerade AB“, „Strecke CD“ und „Gerade CD“.", "Drücke „Blatt vergrößern“. Lies ab: Was passiert mit der Linie?"]
   },
   "mf2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6444,7 +6444,7 @@ const HEFT_SEITEN = {
     name: "Senkrecht oder parallel?",
     titel: "Ein schräges Kreuz",
     frage: "Können schräge Geraden senkrecht zueinander sein?",
-    schritte: ["Drücke „Kreuz, gerade“. Lies ab, ob sich g und h schneiden. Trage es ein.", "Drücke „Papierecke anlegen“. Entscheide: senkrecht, parallel oder keins? Trage ein.", "Wiederhole a und b mit „Kreuz, schräg“, „schräg geschnitten“ und „nebeneinander, schräg“.", "Drücke bei „nebeneinander, schräg“ noch „Abstand messen“. Vergleiche die zwei Abstände."]
+    schritte: ["Drücke „Kreuz, gerade“. Trage ein: Schneiden sich g und h?", "Drücke „Papierecke anlegen“. Trage ein: senkrecht, parallel oder keins?", "Mache das auch mit „Kreuz, schräg“, „schräg geschnitten“ und „nebeneinander, schräg“.", "Drücke jetzt „Abstand messen“. Vergleiche die zwei Abstände."]
   },
   "mf3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6453,7 +6453,7 @@ const HEFT_SEITEN = {
     name: "Wo liegt der Punkt?",
     titel: "Die Schatzkarte",
     frage: "Kommt Tarek mit seinem Weg zum Punkt (3|5)?",
-    schritte: ["Drücke „A(3|5)“. Beobachte, wie die Figur Kästchen für Kästchen geht.", "Lies „Weg:“ und „Die Figur steht beim …“ ab. Trage beides ein.", "Wiederhole a und b mit „B(5|3)“, „C(0|4)“ und „D(6|0)“.", "Drücke „A(3|5)“ und dann „vertauscht gehen“. So geht Tarek. Lies ab, wo die Figur jetzt steht."]
+    schritte: ["Drücke „A(3|5)“. Trage den Weg ein.", "Trage ein: Wo steht die Figur?", "Mache das auch mit „B(5|3)“, „C(0|4)“ und „D(6|0)“.", "Drücke „A(3|5)“, dann „vertauscht gehen“. Wo steht die Figur jetzt?"]
   },
   "mf4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6462,7 +6462,7 @@ const HEFT_SEITEN = {
     name: "Welches Viereck ist das?",
     titel: "Ist ein Quadrat ein Rechteck?",
     frage: "Ist ein Quadrat auch ein Rechteck?",
-    schritte: ["Drücke „Figur 1“ und dann „Papierecke prüfen“. Zähle die grünen Haken.", "Drücke „Seiten messen“. Lies die vier Seitenlängen ab.", "Trage die Zahl der Haken und die Seitenlängen ein.", "Wiederhole a bis c mit „Figur 2“, „Figur 3“ und „Figur 4“."]
+    schritte: ["Drücke „Figur 1“.", "Drücke „Papierecke prüfen“. Trage ein: Wie viele Ecken passen?", "Drücke „Seiten messen“. Trage die Seitenlängen ein.", "Mache das auch mit „Figur 2“, „Figur 3“ und „Figur 4“."]
   },
   "mf5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
@@ -6471,7 +6471,7 @@ const HEFT_SEITEN = {
     name: "Wo ist die Symmetrieachse?",
     titel: "Leni faltet von Ecke zu Ecke",
     frage: "Ist die Diagonale eines Rechtecks eine Symmetrieachse?",
-    schritte: ["Drücke „Rechteck, senkrecht“ und dann „falten“. Beobachte die Ecken.", "Lies „Figur:“ und „Achse:“ ab. Trage beides ein.", "Lies „Nach dem Falten:“ ab. Entscheide: Ist die Achse eine Symmetrieachse? Schreibe ja oder nein.", "Wiederhole a bis c mit „Rechteck, Ecke zu Ecke“, „Quadrat, Ecke zu Ecke“ und „Quadrat, waagerecht“."]
+    schritte: ["Drücke „Rechteck, senkrecht“. Trage Figur und Achse ein.", "Drücke „falten“. Lies ab: Stehen Ecken über?", "Entscheide: Ist die Achse eine Symmetrieachse? Schreibe ja oder nein.", "Mache das auch mit „Rechteck, Ecke zu Ecke“, „Quadrat, Ecke zu Ecke“ und „Quadrat, waagerecht“."]
   },
 };
 
