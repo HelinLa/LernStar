@@ -6367,7 +6367,7 @@ const HEFT_SEITEN = {
   },
   "mp1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-rechenstrich", seite: 33,
+    sim: "m5-rechenstrich", seite: 34,
     kapitel: "Plus und Minus",
     name: "Wie rechnest du 46 + 37 im Kopf?",
     titel: "Tarek kommt auf 713",
@@ -6376,7 +6376,7 @@ const HEFT_SEITEN = {
   },
   "mp2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-umkehr", seite: 36,
+    sim: "m5-umkehr", seite: 37,
     kapitel: "Plus und Minus",
     name: "Plus und Minus gehören zusammen",
     titel: "Stimmt 83 − 37 = 54?",
@@ -6385,7 +6385,7 @@ const HEFT_SEITEN = {
   },
   "mp3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-plus-schriftlich", seite: 39,
+    sim: "m5-plus-schriftlich", seite: 40,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich plus?",
     titel: "Leni schreibt 715",
@@ -6394,7 +6394,7 @@ const HEFT_SEITEN = {
   },
   "mp4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-minus-schriftlich", seite: 42,
+    sim: "m5-minus-schriftlich", seite: 43,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich minus?",
     titel: "Tarek kommt auf 326",
@@ -6403,7 +6403,7 @@ const HEFT_SEITEN = {
   },
   "mp5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-ueberschlag", seite: 45,
+    sim: "m5-ueberschlag", seite: 46,
     kapitel: "Plus und Minus",
     name: "Stimmt das Ergebnis ungefähr?",
     titel: "4 105 auf dem Taschenrechner",
@@ -6412,7 +6412,7 @@ const HEFT_SEITEN = {
   },
   "mp6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenmauer", seite: 48,
+    sim: "m5-zahlenmauer", seite: 49,
     kapitel: "Plus und Minus",
     name: "Was fällt an der Zahlenmauer auf?",
     titel: "Leni ändert einen Stein",
@@ -6421,7 +6421,7 @@ const HEFT_SEITEN = {
   },
   "mf1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-linien", seite: 55,
+    sim: "m5-linien", seite: 57,
     kapitel: "Linien und Figuren",
     name: "Strecke oder Gerade?",
     titel: "Tareks Gerade ist 10 cm lang",
@@ -6430,7 +6430,7 @@ const HEFT_SEITEN = {
   },
   "mf2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-geodreieck", seite: 58,
+    sim: "m5-geodreieck", seite: 60,
     kapitel: "Linien und Figuren",
     name: "Senkrecht oder parallel?",
     titel: "Ein schräges Kreuz",
@@ -6439,7 +6439,7 @@ const HEFT_SEITEN = {
   },
   "mf3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-koordinaten", seite: 61,
+    sim: "m5-koordinaten", seite: 63,
     kapitel: "Linien und Figuren",
     name: "Wo liegt der Punkt?",
     titel: "Die Schatzkarte",
@@ -6448,7 +6448,7 @@ const HEFT_SEITEN = {
   },
   "mf4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-vierecke", seite: 64,
+    sim: "m5-vierecke", seite: 66,
     kapitel: "Linien und Figuren",
     name: "Welches Viereck ist das?",
     titel: "Ist ein Quadrat ein Rechteck?",
@@ -6457,7 +6457,7 @@ const HEFT_SEITEN = {
   },
   "mf5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-spiegel", seite: 67,
+    sim: "m5-spiegel", seite: 69,
     kapitel: "Linien und Figuren",
     name: "Wo ist die Spiegelachse?",
     titel: "Leni faltet von Ecke zu Ecke",
