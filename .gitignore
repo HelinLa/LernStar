@@ -35,3 +35,10 @@ __pycache__/
 # gehoert nicht in die Versionsverwaltung. Die Dumps IN den Baenden bleiben
 # getrackt: Sie sind der Stand, gegen den die Seiten geschrieben wurden.
 simcheck/fakten/
+
+# Schulbuecher (Scans, Fotos, Transkripte) sind fremdes Urheberrecht und
+# gehoeren NIE in dieses oeffentliche Repository - sie liegen nur lokal als
+# fachliche Orientierung (Abdullah, 04.10.2026: "wir duerfen es aber nicht
+# das gleiche aufbauen").
+arbeitsheft*/schulbuch/
+arbeitsheft*/vorlage_kapitel*/
