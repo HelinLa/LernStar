@@ -4655,23 +4655,23 @@ const HEFT_SEITEN = {
     frage: "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
     schritte: ["Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.", "Lies die Kraft F in der Statuszeile ab. Die Zahl steht vor N.", "Trage „flach“, „mittel“ und „steil“ mit Kraft und Weg in die Tabelle ein."]
   },
-  "fz1": {
+  "fz16": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "leiterkraft", seite: 7,
+    sim: "leiter-feld", seite: 7,
     kapitel: "Woher der Strom kommt",
-    name: "Warum bewegt sich ein Draht im Magnetfeld?",
-    titel: "Der Motor im Elektroauto",
-    frage: "Was passiert mit dem Stab im Magnetfeld, wenn Strom fließt?",
-    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Trage ein.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum. Trage ein.", "Drücke „zurücksetzen“, dann „Magnet umdrehen“. Trage ein."]
+    name: "Welches Magnetfeld hat ein gerader Draht?",
+    titel: "Zwölf Nadeln und ein Draht",
+    frage: "Wie sieht das Magnetfeld um einen geraden Draht mit Strom aus?",
+    schritte: ["Drücke „neu“, dann „Feldlinien zeigen“. Ergänze Zeile 1.", "Drücke „Schalter an“. Trage Zeile 2 ein.", "Drücke „rechte Hand zeigen“. Halte deine rechte Hand genauso um einen Stift.", "Drücke „Strom umpolen“. Trage Zeile 3 ein."]
   },
-  "fz2": {
+  "fz15": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "drei-finger", seite: 10,
+    sim: "spule-feld", seite: 10,
     kapitel: "Woher der Strom kommt",
-    name: "In welche Richtung wirkt die Kraft?",
-    titel: "Drei Finger zeigen die Richtung",
-    frage: "Wohin schwingt die Schaukel, wenn du den Strom umpolst und den Magneten umdrehst?",
-    schritte: ["Drücke „neu“, dann „▶ Strom an“. Fülle die Lücke in Zeile 1.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Trage Zeile 2 ein.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Trage Zeile 3 ein.", "Drücke „Hand zeigen“. Welcher Finger zeigt in dieselbe Richtung wie der Pfeil F?"]
+    name: "Wie sieht das Magnetfeld einer Spule aus?",
+    titel: "Ein Magnet aus Draht",
+    frage: "Wie sieht das Magnetfeld einer Spule mit Strom aus?",
+    schritte: ["Drücke „neu“, „Schalter an“ und „Feldlinien zeigen“. Lies die Statuszeilen ab. Ergänze Zeile 1.", "Drücke „1200 Windungen“. Trage Zeile 2 ein.", "Drücke „mit Eisenkern“. Trage Zeile 3 ein.", "Drücke „Strom umpolen“. Beobachte die Kompassnadeln. Trage Zeile 4 ein."]
   },
   "fz3": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4682,18 +4682,27 @@ const HEFT_SEITEN = {
     frage: "Worin unterscheidet sich ein Elektromagnet von einem Dauermagneten?",
     schritte: ["Drücke „neu“, dann „Schalter an“. Lies beide Statuszeilen ab. Ergänze Zeile 1.", "Drücke „3 A“. Trage Zeile 2 ein.", "Drücke „Schalter aus“. Beobachte die Nägel am Elektromagneten. Trage Zeile 3 ein.", "Drücke „Schalter an“, dann „Strom umpolen“. Der Strom fließt jetzt andersherum. Lies ab: Wo liegen die Nordpole?"]
   },
-  "fz15": {
+  "fz1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "spule-feld", seite: 16,
+    sim: "leiterkraft", seite: 16,
     kapitel: "Woher der Strom kommt",
-    name: "Wie sieht das Magnetfeld einer Spule aus?",
-    titel: "Ein Magnet aus Draht",
-    frage: "Wie sieht das Magnetfeld einer Spule mit Strom aus?",
-    schritte: ["Drücke „neu“, „Schalter an“ und „Feldlinien zeigen“. Lies die Statuszeilen ab. Ergänze Zeile 1.", "Drücke „1200 Windungen“. Trage Zeile 2 ein.", "Drücke „mit Eisenkern“. Trage Zeile 3 ein.", "Drücke „Strom umpolen“. Beobachte die Kompassnadeln. Trage Zeile 4 ein."]
+    name: "Warum bewegt sich ein Draht im Magnetfeld?",
+    titel: "Der Motor im Elektroauto",
+    frage: "Was passiert mit dem Stab im Magnetfeld, wenn Strom fließt?",
+    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Trage ein.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum. Trage ein.", "Drücke „zurücksetzen“, dann „Magnet umdrehen“. Trage ein."]
+  },
+  "fz2": {
+    klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
+    sim: "drei-finger", seite: 19,
+    kapitel: "Woher der Strom kommt",
+    name: "In welche Richtung wirkt die Kraft?",
+    titel: "Drei Finger zeigen die Richtung",
+    frage: "Wohin schwingt die Schaukel, wenn du den Strom umpolst und den Magneten umdrehst?",
+    schritte: ["Drücke „neu“, dann „▶ Strom an“. Fülle die Lücke in Zeile 1.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Trage Zeile 2 ein.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Trage Zeile 3 ein.", "Drücke „Hand zeigen“. Welcher Finger zeigt in dieselbe Richtung wie der Pfeil F?"]
   },
   "fz4": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "motor-takt", seite: 19,
+    sim: "motor-takt", seite: 22,
     kapitel: "Woher der Strom kommt",
     name: "Wie dreht sich ein Elektromotor?",
     titel: "Die Nadel im Takt",
@@ -4702,7 +4711,7 @@ const HEFT_SEITEN = {
   },
   "fz5": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "induktion-rs", seite: 22,
+    sim: "induktion-rs", seite: 25,
     kapitel: "Woher der Strom kommt",
     name: "Wie entsteht Spannung ohne Batterie?",
     titel: "Ein Magnet in der Spule",
@@ -4711,7 +4720,7 @@ const HEFT_SEITEN = {
   },
   "fz6": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "induktion-betrag", seite: 25,
+    sim: "induktion-betrag", seite: 28,
     kapitel: "Woher der Strom kommt",
     name: "Wovon hängt die Induktionsspannung ab?",
     titel: "Mehr Spannung aus der Spule",
@@ -4720,7 +4729,7 @@ const HEFT_SEITEN = {
   },
   "fz7": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "magnet-rohr", seite: 28,
+    sim: "magnet-rohr", seite: 31,
     kapitel: "Woher der Strom kommt",
     name: "Warum fällt der Magnet im Kupferrohr so langsam?",
     titel: "Langsam durchs Kupferrohr",
@@ -4729,7 +4738,7 @@ const HEFT_SEITEN = {
   },
   "fz8": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "wechselgenerator", seite: 31,
+    sim: "wechselgenerator", seite: 34,
     kapitel: "Woher der Strom kommt",
     name: "Wie erzeugt ein Generator Wechselspannung?",
     titel: "Mal links, mal rechts",
@@ -4738,7 +4747,7 @@ const HEFT_SEITEN = {
   },
   "fz9": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "trafo-einfach", seite: 34,
+    sim: "trafo-einfach", seite: 37,
     kapitel: "Woher der Strom kommt",
     name: "Wie ändert ein Transformator die Spannung?",
     titel: "Zwei Spulen, ein Eisenkern",
@@ -4747,7 +4756,7 @@ const HEFT_SEITEN = {
   },
   "fz10": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "fernleitung-modell", seite: 37,
+    sim: "fernleitung-modell", seite: 40,
     kapitel: "Woher der Strom kommt",
     name: "Warum transportiert man Energie mit Hochspannung?",
     titel: "Hohe Spannung für lange Leitungen",
@@ -4756,7 +4765,7 @@ const HEFT_SEITEN = {
   },
   "fz11": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kraftwerke", seite: 40,
+    sim: "kraftwerke", seite: 43,
     kapitel: "Woher der Strom kommt",
     name: "Welches Kraftwerk ist das beste?",
     titel: "Vier Kraftwerke im Vergleich",
@@ -4765,7 +4774,7 @@ const HEFT_SEITEN = {
   },
   "fz12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "energietraeger", seite: 43,
+    sim: "energietraeger", seite: 46,
     kapitel: "Woher der Strom kommt",
     name: "Erneuerbar oder nicht erneuerbar?",
     titel: "Was nach 100 Jahren bleibt",
@@ -4774,7 +4783,7 @@ const HEFT_SEITEN = {
   },
   "fz13": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "bio-treibhaus", seite: 46,
+    sim: "bio-treibhaus", seite: 49,
     kapitel: "Woher der Strom kommt",
     name: "Was macht CO₂ mit unserem Klima?",
     titel: "Wärme, die zurückkommt",
@@ -4783,7 +4792,7 @@ const HEFT_SEITEN = {
   },
   "fz14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromkosten", seite: 49,
+    sim: "stromkosten", seite: 52,
     kapitel: "Woher der Strom kommt",
     name: "Was kostet ein Gerät im Jahr?",
     titel: "Die hohe Stromrechnung",
@@ -4792,7 +4801,7 @@ const HEFT_SEITEN = {
   },
   "fn1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "atombau-isotope", seite: 55,
+    sim: "atombau-isotope", seite: 58,
     kapitel: "Aus dem Atomkern",
     name: "Woraus besteht ein Atomkern?",
     titel: "Der Kühlschrank mit den Zahlen",
@@ -4801,7 +4810,7 @@ const HEFT_SEITEN = {
   },
   "fn2": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "geiger-mueller", seite: 59,
+    sim: "geiger-mueller", seite: 62,
     kapitel: "Aus dem Atomkern",
     name: "Was ist radioaktive Strahlung?",
     titel: "Das Knacken an der Wand",
@@ -4810,7 +4819,7 @@ const HEFT_SEITEN = {
   },
   "fn3": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "absorption-strahlung", seite: 62,
+    sim: "absorption-strahlung", seite: 65,
     kapitel: "Aus dem Atomkern",
     name: "Welche Strahlung kommt wie weit?",
     titel: "Die Schürze aus Blei",
@@ -4819,7 +4828,7 @@ const HEFT_SEITEN = {
   },
   "fn4": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ionisation", seite: 65,
+    sim: "ionisation", seite: 68,
     kapitel: "Aus dem Atomkern",
     name: "Warum ist die Strahlung gefährlich?",
     titel: "Das Fläschchen, das zubleibt",
@@ -4828,7 +4837,7 @@ const HEFT_SEITEN = {
   },
   "fn5": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "geiger-mueller", seite: 68,
+    sim: "geiger-mueller", seite: 71,
     kapitel: "Aus dem Atomkern",
     name: "Wie weist man Strahlung nach?",
     titel: "Das Knacken im Messraum",
@@ -4837,7 +4846,7 @@ const HEFT_SEITEN = {
   },
   "fn6": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zerfall-halbwertszeit", seite: 71,
+    sim: "zerfall-halbwertszeit", seite: 74,
     kapitel: "Aus dem Atomkern",
     name: "Wann ist die Hälfte zerfallen?",
     titel: "Das Fläschchen wird schwächer",
@@ -4846,7 +4855,7 @@ const HEFT_SEITEN = {
   },
   "fn7": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "zerfall-halbwertszeit", seite: 74,
+    sim: "zerfall-halbwertszeit", seite: 77,
     kapitel: "Aus dem Atomkern",
     name: "Wie alt ist der Fund?",
     titel: "Ein Holzstück aus dem Moor",
@@ -4855,7 +4864,7 @@ const HEFT_SEITEN = {
   },
   "fn8": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernspaltung", seite: 77,
+    sim: "kernspaltung", seite: 80,
     kapitel: "Aus dem Atomkern",
     name: "Was passiert bei einer Kernspaltung?",
     titel: "Der Güterzug und der Würfel",
@@ -4864,7 +4873,7 @@ const HEFT_SEITEN = {
   },
   "fn9": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kettenreaktion", seite: 80,
+    sim: "kettenreaktion", seite: 83,
     kapitel: "Aus dem Atomkern",
     name: "Wie hält man eine Kettenreaktion in Schach?",
     titel: "Der Beitrag im Aufenthaltsraum",
@@ -4873,7 +4882,7 @@ const HEFT_SEITEN = {
   },
   "fn10": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kettenreaktion", seite: 84,
+    sim: "kettenreaktion", seite: 87,
     kapitel: "Aus dem Atomkern",
     name: "Wie ist ein Kernkraftwerk aufgebaut?",
     titel: "Der Pfeil auf Nours Folie",
@@ -4882,7 +4891,7 @@ const HEFT_SEITEN = {
   },
   "fn12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "strahlenschutz", seite: 91,
+    sim: "strahlenschutz", seite: 94,
     kapitel: "Aus dem Atomkern",
     name: "Wie schützt man sich vor Strahlung?",
     titel: "Nours Schritt zurück",
@@ -4891,7 +4900,7 @@ const HEFT_SEITEN = {
   },
   "fn14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "kernfusion", seite: 98,
+    sim: "kernfusion", seite: 101,
     kapitel: "Aus dem Atomkern",
     name: "Woher nimmt die Sonne ihre Energie?",
     titel: "Die Heizung ohne Holz",
@@ -6322,34 +6331,34 @@ const HEFT_SEITEN = {
   },
   "mz1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-buendeln", seite: 8,
+    sim: "m5-buendeln", seite: 9,
     kapitel: "Große Zahlen",
     name: "Zehn Einer sind ein Zehner",
     titel: "Tarek schreibt 1 910",
     frage: "Welche Zahl liegt da wirklich?",
-    schritte: ["Drücke „1 H, 9 Z, 10 E“. Sieh dir die Zahl an.", "Drücke 2-mal „bündeln“. Trage ein: Was liegt auf dem Tisch?", "Trage die Zahl ein.", "Mache das auch mit „2 H, 9 Z, 12 E“, „0 H, 15 Z, 7 E“ und „4 H, 10 Z, 0 E“."]
+    schritte: ["Drücke „4 H, 10 Z, 0 E“.", "Drücke 2-mal „bündeln“. Trage ein: Was liegt auf dem Tisch?", "Trage die Zahl ein.", "Mache das auch mit „0 H, 15 Z, 7 E“ und „1 H, 9 Z, 10 E“."]
   },
   "mz2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-stellenwert", seite: 11,
+    sim: "m5-stellenwert", seite: 12,
     kapitel: "Große Zahlen",
     name: "Welchen Wert hat die 4?",
     titel: "Die wandernde Vier",
-    frage: "Welchen Wert hat die 4 in 34, 340, 3 400 und 34 000?",
-    schritte: ["Drücke „34“. Trage ein: Wo steht die 4?", "Trage den Wert der 4 ein.", "Mache das auch mit „340“, „3 400“ und „34 000“.", "Vergleiche die Werte von oben nach unten."]
+    frage: "Welchen Wert hat die 4 in 34, 340 und 3 400?",
+    schritte: ["Drücke „34“. Trage ein: Wo steht die 4?", "Trage den Wert der 4 ein.", "Mache das auch mit „340“ und „3 400“.", "Vergleiche die Werte von oben nach unten."]
   },
   "mz3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-null", seite: 14,
+    sim: "m5-null", seite: 15,
     kapitel: "Große Zahlen",
     name: "Wo bleibt die Null?",
     titel: "Tarek schreibt 350",
     frage: "Wie schreibt man dreitausendfünfzig mit Ziffern?",
-    schritte: ["Drücke „dreitausendfünfzig“. Trage ein: Welche Stellen sind leer?", "Drücke „mit Ziffern schreiben“. Trage die Zahl ein.", "Mache das auch für Zeile 2 bis 4.", "Drücke „ohne leere Stellen schreiben“. Lies ab: Wie liest man die Zahl jetzt?"]
+    schritte: ["Drücke „dreitausendfünfzig“. Trage ein: Welche Stellen sind leer?", "Drücke „mit Ziffern schreiben“. Trage die Zahl ein.", "Mache das auch für Zeile 2 und 3.", "Drücke „ohne leere Stellen schreiben“. Lies ab: Wie liest man die Zahl jetzt?"]
   },
   "mz4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-grosse-zahlen", seite: 17,
+    sim: "m5-grosse-zahlen", seite: 18,
     kapitel: "Große Zahlen",
     name: "Wie liest man große Zahlen?",
     titel: "4 000 000 im Radio",
@@ -6358,7 +6367,7 @@ const HEFT_SEITEN = {
   },
   "mz5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenstrahl", seite: 20,
+    sim: "m5-zahlenstrahl", seite: 21,
     kapitel: "Große Zahlen",
     name: "Welche Zahl ist größer?",
     titel: "9 870 oder 12 300?",
@@ -6367,70 +6376,70 @@ const HEFT_SEITEN = {
   },
   "mz6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-runden", seite: 23,
+    sim: "m5-runden", seite: 24,
     kapitel: "Große Zahlen",
     name: "Auf welche Zahl rundet man?",
     titel: "2 449 – runter oder rauf?",
     frage: "Was ist 2 449 auf Hunderter gerundet?",
-    schritte: ["Drücke „Hunderter“.", "Drücke „2 449“. Trage die Abstände ein.", "Drücke „runden“. Trage die gerundete Zahl ein.", "Mache das auch mit „2 451“, „2 450“ und „2 380“."]
+    schritte: ["Drücke „Hunderter“.", "Drücke „2 380“. Trage die Abstände ein.", "Drücke „runden“. Trage die gerundete Zahl ein.", "Mache das auch mit „2 449“ und „2 450“."]
   },
   "mp1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-rechenstrich", seite: 34,
+    sim: "m5-rechenstrich", seite: 35,
     kapitel: "Plus und Minus",
     name: "Wie rechnest du 46 + 37 im Kopf?",
     titel: "Tarek kommt auf 713",
-    frage: "Welche Summe hat 46 + 37?",
-    schritte: ["Drücke „erst Zehner, dann Einer“. Trage das Zwischenergebnis ein.", "Trage das Ergebnis als Summe ein.", "Mache das auch für Zeile 2 bis 4.", "Drücke „nebeneinander schreiben“. Lies ab: Passt 713 auf den Rechenstrich?"]
+    frage: "Was ergibt 46 + 37 wirklich?",
+    schritte: ["Drücke „erst Zehner, dann Einer“. Trage das Zwischenergebnis ein.", "Trage das Ergebnis ein.", "Mache das auch für Zeile 2 und 3."]
   },
   "mp2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-umkehr", seite: 37,
+    sim: "m5-umkehr", seite: 38,
     kapitel: "Plus und Minus",
     name: "Plus und Minus gehören zusammen",
     titel: "Stimmt 83 − 37 = 54?",
     frage: "Wie kann Leni prüfen, ob 54 stimmt?",
-    schritte: ["Drücke „83 − 37 = 54“.", "Drücke „Probe“. Trage die Umkehraufgabe ein.", "Prüfe: Landet die Probe beim Start? Trage ja oder nein ein.", "Mache das auch mit „83 − 37 = 46“, „125 − 48 = 77“ und „200 − 65 = 145“."]
+    schritte: ["Drücke „83 − 37 = 54“.", "Drücke „Probe“. Trage die Umkehraufgabe ein.", "Prüfe: Landet die Probe beim Start? Trage ja oder nein ein.", "Mache das auch mit „83 − 37 = 46“ und „125 − 48 = 77“."]
   },
   "mp3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-plus-schriftlich", seite: 40,
+    sim: "m5-plus-schriftlich", seite: 41,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich plus?",
     titel: "Leni schreibt 715",
     frage: "Was ergibt 457 + 368 wirklich?",
-    schritte: ["Drücke „457 + 368“.", "Drücke 3-mal „nächste Spalte“. Trage ein: Wo entsteht ein Übertrag?", "Trage das Ergebnis ein.", "Mache das auch mit „345 + 62“, „508 + 294“ und „136 + 251“."]
+    schritte: ["Drücke „136 + 251“.", "Drücke 3-mal „nächste Spalte“. Trage ein: Wo entsteht ein Übertrag?", "Trage das Ergebnis ein.", "Mache das auch mit „345 + 62“ und „457 + 368“."]
   },
   "mp4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-minus-schriftlich", seite: 43,
+    sim: "m5-minus-schriftlich", seite: 44,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich minus?",
     titel: "Tarek kommt auf 326",
     frage: "Was ergibt 432 − 158 wirklich?",
-    schritte: ["Drücke „432 − 158“.", "Drücke „alles rechnen“. Trage ein: Wo reicht es nicht?", "Trage das Ergebnis ein.", "Mache das auch mit „563 − 241“, „745 − 382“ und „503 − 128“."]
+    schritte: ["Drücke „563 − 241“.", "Drücke „alles rechnen“. Trage ein: Wo reicht es nicht?", "Trage das Ergebnis ein.", "Mache das auch mit „745 − 382“ und „432 − 158“."]
   },
   "mp5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-ueberschlag", seite: 46,
+    sim: "m5-ueberschlag", seite: 47,
     kapitel: "Plus und Minus",
     name: "Stimmt das Ergebnis ungefähr?",
     titel: "4 105 auf dem Taschenrechner",
     frage: "Kann 4 105 stimmen?",
-    schritte: ["Drücke „398 + 207 = 4 105“.", "Drücke „Überschlag rechnen“. Trage den Überschlag ein.", "Prüfe den Abstand: Kann das stimmen? Trage ja oder nein ein.", "Mache das auch für Zeile 2 bis 4."]
+    schritte: ["Drücke „398 + 207 = 4 105“.", "Drücke „Überschlag rechnen“. Trage den Überschlag ein.", "Prüfe den Abstand: Kann das stimmen? Trage ja oder nein ein.", "Mache das auch für Zeile 2 und 3."]
   },
   "mp6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenmauer", seite: 49,
+    sim: "m5-zahlenmauer", seite: 50,
     kapitel: "Plus und Minus",
     name: "Was fällt an der Zahlenmauer auf?",
     titel: "Leni ändert einen Stein",
-    frage: "Um wie viel wächst der Deckstein, wenn ein Grundstein um 1 wächst?",
+    frage: "Wächst der Deckstein immer um 1?",
     schritte: ["Drücke „5, 3, 4“. Trage die Grundsteine ein.", "Trage den obersten Stein ein.", "Trage den Unterschied ein.", "Mache das auch mit „6, 3, 4“, „5, 4, 4“ und „5, 3, 5“."]
   },
   "mf1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-linien", seite: 57,
+    sim: "m5-linien", seite: 58,
     kapitel: "Linien und Figuren",
     name: "Strecke oder Gerade?",
     titel: "Tareks Gerade ist 10 cm lang",
@@ -6439,39 +6448,39 @@ const HEFT_SEITEN = {
   },
   "mf2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-geodreieck", seite: 60,
+    sim: "m5-geodreieck", seite: 61,
     kapitel: "Linien und Figuren",
     name: "Senkrecht oder parallel?",
     titel: "Ein schräges Kreuz",
     frage: "Können schräge Geraden senkrecht zueinander sein?",
-    schritte: ["Drücke „Kreuz, gerade“. Trage ein: Schneiden sich g und h?", "Drücke „Papierecke anlegen“. Trage ein: senkrecht, parallel oder keins?", "Mache das auch mit „Kreuz, schräg“, „schräg geschnitten“ und „nebeneinander, schräg“.", "Drücke jetzt „Abstand messen“. Vergleiche die zwei Abstände."]
+    schritte: ["Drücke „Kreuz, gerade“. Trage ein: Schneiden sich g und h?", "Drücke „Papierecke anlegen“. Trage ein: Passt sie genau?", "Mache das auch mit „Kreuz, schräg“, „schräg geschnitten“ und „nebeneinander, schräg“."]
   },
   "mf3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-koordinaten", seite: 63,
+    sim: "m5-koordinaten", seite: 64,
     kapitel: "Linien und Figuren",
     name: "Wo liegt der Punkt?",
     titel: "Die Schatzkarte",
-    frage: "Kommt Tarek mit seinem Weg zum Punkt (3|5)?",
-    schritte: ["Drücke „A(3|5)“. Trage den Weg ein.", "Trage ein: Wo steht die Figur?", "Mache das auch mit „B(5|3)“, „C(0|4)“ und „D(6|0)“.", "Drücke „A(3|5)“, dann „vertauscht gehen“. Wo steht die Figur jetzt?"]
+    frage: "Ist (5|3) derselbe Punkt wie (3|5)?",
+    schritte: ["Drücke „A(3|5)“. Trage den Weg ein.", "Trage ein: Wo steht die Figur?", "Mache das auch mit „B(5|3)“ und „C(0|4)“.", "Drücke „A(3|5)“, dann „vertauscht gehen“. Lies ab: Wo steht die Figur jetzt?"]
   },
   "mf4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-vierecke", seite: 66,
+    sim: "m5-vierecke", seite: 67,
     kapitel: "Linien und Figuren",
     name: "Welches Viereck ist das?",
     titel: "Ist ein Quadrat ein Rechteck?",
-    frage: "Ist ein Quadrat auch ein Rechteck?",
-    schritte: ["Drücke „Figur 1“.", "Drücke „Papierecke prüfen“. Trage ein: Wie viele Ecken passen?", "Drücke „Seiten messen“. Trage die Seitenlängen ein.", "Mache das auch mit „Figur 2“, „Figur 3“ und „Figur 4“."]
+    frage: "Hat ein Quadrat so viele rechte Winkel wie ein Rechteck?",
+    schritte: ["Drücke „Figur 1“. Drücke „Papierecke prüfen“.", "Zähle die grünen Haken. Trage die Zahl ein.", "Drücke „Seiten messen“. Sind alle Seiten gleich lang?", "Mache das auch mit „Figur 2“ und „Figur 4“."]
   },
   "mf5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-spiegel", seite: 69,
+    sim: "m5-spiegel", seite: 70,
     kapitel: "Linien und Figuren",
     name: "Wo ist die Symmetrieachse?",
     titel: "Leni faltet von Ecke zu Ecke",
-    frage: "Ist die Diagonale eines Rechtecks eine Symmetrieachse?",
-    schritte: ["Drücke „Rechteck, senkrecht“. Trage Figur und Achse ein.", "Drücke „falten“. Lies ab: Stehen Ecken über?", "Entscheide: Ist die Achse eine Symmetrieachse? Schreibe ja oder nein.", "Mache das auch mit „Rechteck, Ecke zu Ecke“, „Quadrat, Ecke zu Ecke“ und „Quadrat, waagerecht“."]
+    frage: "Liegen beide Hälften wirklich genau aufeinander?",
+    schritte: ["Drücke „Rechteck, senkrecht“. Trage Figur und Achse ein.", "Drücke „falten“. Trage ein: Wie viele Ecken stehen über?", "Mache das auch mit „Rechteck, Ecke zu Ecke“ und „Quadrat, Ecke zu Ecke“."]
   },
 };
 

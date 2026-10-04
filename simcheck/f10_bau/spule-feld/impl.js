@@ -462,7 +462,7 @@ function _f10kTextFeld() {
   const z = _f10k;
   if (!z.zeigen) return 'Feldlinien sind ausgeblendet.';
   return z.an ? 'Feldlinien: außen vom Nordpol zum Südpol. In der Spule dicht und gerade.'
-              : 'Ohne Strom gibt es kein Magnetfeld und keine Feldlinien.';
+              : 'Ohne Strom hat die Spule kein Magnetfeld und keine Feldlinien.';
 }
 function _f10kStatus() {
   if (!_f10k) return;
