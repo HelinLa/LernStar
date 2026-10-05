@@ -27,6 +27,8 @@ WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Lage des QR-Abzeichens auf der gesetzten Seite - dieselbe Messung wie in
 # simcheck/seitenzahlen.py, die Hefte teilen sich das Seitenraster.
 AUSSCHNITT = (1050, 53, 1176, 179)
+# Foerderhefte seit 05.10.2026 mit 2 cm Lochrand: Code 54 Einheiten weiter links.
+AUSSCHNITT_LOCHRAND = (996, 53, 1122, 179)
 
 
 def hole(pfad):
@@ -47,16 +49,18 @@ def qr_der_seite(pfad):
     Blatt in der Hand des Kindes."""
     import cv2, numpy as np
     from PIL import Image
-    im = Image.open(pfad).convert("RGB").crop(AUSSCHNITT)
+    seite = Image.open(pfad).convert("RGB")
     det = cv2.QRCodeDetector()
-    for f in (4, 6, 3, 8, 5, 2):
-        gross = np.array(im.resize((im.width * f, im.height * f), Image.NEAREST))
-        try:
-            txt = det.detectAndDecode(cv2.cvtColor(gross, cv2.COLOR_RGB2BGR))[0]
-        except cv2.error:
-            continue
-        if txt:
-            return txt
+    for aus in (AUSSCHNITT, AUSSCHNITT_LOCHRAND):
+        im = seite.crop(aus)
+        for f in (4, 6, 3, 8, 5, 2):
+            gross = np.array(im.resize((im.width * f, im.height * f), Image.NEAREST))
+            try:
+                txt = det.detectAndDecode(cv2.cvtColor(gross, cv2.COLOR_RGB2BGR))[0]
+            except cv2.error:
+                continue
+            if txt:
+                return txt
     return None
 
 

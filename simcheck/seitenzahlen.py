@@ -14,25 +14,31 @@ dazukam. 124 von 173 Seitenzahlen in der App waren falsch, bei Klasse 9 teils um
 """
 import json, os, re, sys, glob
 
-# Lage des QR-Abzeichens auf der gesetzten Seite (gemessen, nicht geraten)
+# Lage des QR-Abzeichens auf der gesetzten Seite (gemessen, nicht geraten).
+# Seit dem 05.10.2026 ZWEI Lagen: die Foerderhefte haben links und rechts 2 cm
+# Lochrand, ihr Code steht deshalb 54 Einheiten weiter links (X1 = 1122).
 AUSSCHNITT = (1050, 53, 1176, 179)
+AUSSCHNITT_LOCHRAND = (996, 53, 1122, 179)
+AUSSCHNITTE = (AUSSCHNITT, AUSSCHNITT_LOCHRAND)
 
 
-def lies_qr(pfad, ausschnitt=AUSSCHNITT):
+def lies_qr(pfad, ausschnitt=None):
     """Gibt die Kennung zurueck, die der QR-Code dieser Seite traegt - oder None."""
     import cv2, numpy as np
     from PIL import Image
-    im = Image.open(pfad).convert("RGB").crop(ausschnitt)
+    seite = Image.open(pfad).convert("RGB")
     det = cv2.QRCodeDetector()
-    # Mehrere Vergroesserungen versuchen: der Decoder ist bei manchen Codes
-    # waehlerisch, und ein einzelner Fehlversuch darf keine Seite verschlucken.
-    for f in (4, 6, 3, 8, 5):
-        gross = np.array(im.resize((im.width * f, im.height * f), Image.NEAREST))
-        txt = det.detectAndDecode(cv2.cvtColor(gross, cv2.COLOR_RGB2BGR))[0]
-        if txt:
-            m = re.search(r"heft=([A-Za-z]+\d+)", txt)
-            if m:
-                return m.group(1)
+    for aus in ((ausschnitt,) if ausschnitt else AUSSCHNITTE):
+        im = seite.crop(aus)
+        # Mehrere Vergroesserungen versuchen: der Decoder ist bei manchen Codes
+        # waehlerisch, und ein einzelner Fehlversuch darf keine Seite verschlucken.
+        for f in (4, 6, 3, 8, 5):
+            gross = np.array(im.resize((im.width * f, im.height * f), Image.NEAREST))
+            txt = det.detectAndDecode(cv2.cvtColor(gross, cv2.COLOR_RGB2BGR))[0]
+            if txt:
+                m = re.search(r"heft=([A-Za-z]+\d+)", txt)
+                if m:
+                    return m.group(1)
     return None
 
 
