@@ -121,7 +121,7 @@ const HEFT_SEITEN = {
   },
   "s3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "leiter-nichtleiter", seite: 48,
+    sim: "leiter-nichtleiter", seite: 49,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Welche Stoffe leiten Strom?",
     titel: "Der Riss im Kabel",
@@ -130,7 +130,7 @@ const HEFT_SEITEN = {
   },
   "s6": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: null, seite: 51,
+    sim: null, seite: 52,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Der Schalter",
     titel: "Muss der Schalter an die Batterie?",
@@ -139,7 +139,7 @@ const HEFT_SEITEN = {
   },
   "s4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "reihenschaltung-rs", seite: 56,
+    sim: "reihenschaltung-rs", seite: 58,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Reihenschaltung",
     titel: "Zwei Lampen, und beide funzeln",
@@ -148,7 +148,7 @@ const HEFT_SEITEN = {
   },
   "s5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "parallelschaltung-rs", seite: 60,
+    sim: "parallelschaltung-rs", seite: 62,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Parallelschaltung",
     titel: "Vorne aus, hinten an",
@@ -157,7 +157,7 @@ const HEFT_SEITEN = {
   },
   "s7": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "elektromagnet", seite: 63,
+    sim: "elektromagnet", seite: 65,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Elektromagnet",
     titel: "Der Knopf, der den Magneten anschaltet",
@@ -166,7 +166,7 @@ const HEFT_SEITEN = {
   },
   "s1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "schaltplan", seite: 54,
+    sim: "schaltplan", seite: 56,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Stromkreis und Schaltzeichen",
     titel: "Der Zettel aus dem Fahrradladen",
@@ -175,7 +175,7 @@ const HEFT_SEITEN = {
   },
   "w1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "temperatur-waerme", seite: 69,
+    sim: "temperatur-waerme", seite: 71,
     kapitel: "Temperatur & Wärme",
     name: "Sind Temperatur und Wärme das Gleiche?",
     titel: "Der Löffel in der Teetasse",
@@ -184,7 +184,7 @@ const HEFT_SEITEN = {
   },
   "w2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "thermometer", seite: 72,
+    sim: "thermometer", seite: 74,
     kapitel: "Temperatur & Wärme",
     name: "Wie funktioniert ein Thermometer?",
     titel: "Der Faden, der wandert",
@@ -193,7 +193,7 @@ const HEFT_SEITEN = {
   },
   "w3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "waermeausdehnung", seite: 75,
+    sim: "waermeausdehnung", seite: 77,
     kapitel: "Temperatur & Wärme",
     name: "Was geschieht beim Erwärmen von Stoffen?",
     titel: "Der bockige Deckel",
@@ -202,7 +202,7 @@ const HEFT_SEITEN = {
   },
   "w4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "aggregatzustaende", seite: 78,
+    sim: "aggregatzustaende", seite: 80,
     kapitel: "Temperatur & Wärme",
     name: "Wie verändern sich Aggregatzustände?",
     titel: "Aus Eis wird Wasser",
@@ -211,7 +211,7 @@ const HEFT_SEITEN = {
   },
   "w5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "waermeuebertragung", seite: 81,
+    sim: "waermeuebertragung", seite: 83,
     kapitel: "Temperatur & Wärme",
     name: "Wie wird Wärme übertragen?",
     titel: "Zu heiß zum Anfassen",
@@ -220,7 +220,7 @@ const HEFT_SEITEN = {
   },
   "sc1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "ton-entsteht", seite: 86,
+    sim: "ton-entsteht", seite: 88,
     kapitel: "Schall & Hören",
     name: "Wie entsteht ein Ton?",
     titel: "Das Brummen aus der Keksdose",
@@ -229,7 +229,7 @@ const HEFT_SEITEN = {
   },
   "sc2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "lautstaerke", seite: 89,
+    sim: "lautstaerke", seite: 91,
     kapitel: "Schall & Hören",
     name: "Wovon hängt die Lautstärke ab?",
     titel: "Nicht so laut!",
@@ -238,7 +238,7 @@ const HEFT_SEITEN = {
   },
   "sc3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "tonhoehe", seite: 92,
+    sim: "tonhoehe", seite: 94,
     kapitel: "Schall & Hören",
     name: "Wovon hängt die Tonhöhe ab?",
     titel: "Zu hoch, zu tief",
@@ -247,7 +247,7 @@ const HEFT_SEITEN = {
   },
   "sc4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "schallausbreitung", seite: 95,
+    sim: "schallausbreitung", seite: 97,
     kapitel: "Schall & Hören",
     name: "Wie breitet sich Schall aus?",
     titel: "Der Nachbar hört alles",
@@ -256,7 +256,7 @@ const HEFT_SEITEN = {
   },
   "sc5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "ohr", seite: 98,
+    sim: "ohr", seite: 100,
     kapitel: "Schall & Hören",
     name: "Wie funktioniert das Ohr?",
     titel: "Das Pfeifen im Ohr",
@@ -265,7 +265,7 @@ const HEFT_SEITEN = {
   },
   "h1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "tag-nacht", seite: 103,
+    sim: "tag-nacht", seite: 105,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entstehen Tag und Nacht?",
     titel: "Tag hier, Nacht dort",
@@ -274,7 +274,7 @@ const HEFT_SEITEN = {
   },
   "h2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "jahreszeiten", seite: 106,
+    sim: "jahreszeiten", seite: 108,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entstehen die Jahreszeiten?",
     titel: "Vom Schnee zum Sonnenbrand",
@@ -283,7 +283,7 @@ const HEFT_SEITEN = {
   },
   "h3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "mondphasen", seite: 109,
+    sim: "mondphasen", seite: 111,
     kapitel: "Sonne, Erde & Mond",
     name: "Warum verändert der Mond sein Aussehen?",
     titel: "Jeden Abend ein anderer Mond",
@@ -292,7 +292,7 @@ const HEFT_SEITEN = {
   },
   "h4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "sonnenfinsternis", seite: 112,
+    sim: "sonnenfinsternis", seite: 114,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entsteht eine Sonnenfinsternis?",
     titel: "Nacht am Mittag",
@@ -301,7 +301,7 @@ const HEFT_SEITEN = {
   },
   "h5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "mondfinsternis", seite: 115,
+    sim: "mondfinsternis", seite: 117,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entsteht eine Mondfinsternis?",
     titel: "Der Mond wird rot",
@@ -328,7 +328,7 @@ const HEFT_SEITEN = {
   },
   "o8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sammellinse", seite: 13,
+    sim: "sammellinse", seite: 14,
     kapitel: "Optik: Wie wir sehen",
     name: "Sammellinse und Zerstreuungslinse im Vergleich",
     titel: "Das Glas, das nichts bündelt",
@@ -337,7 +337,7 @@ const HEFT_SEITEN = {
   },
   "o3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "bild-linse", seite: 16,
+    sim: "bild-linse", seite: 18,
     kapitel: "Optik: Wie wir sehen",
     name: "Wann entsteht ein vergrößertes oder verkleinertes Bild?",
     titel: "Mal riesig, mal winzig",
@@ -346,7 +346,7 @@ const HEFT_SEITEN = {
   },
   "o4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "lupe", seite: 20,
+    sim: "lupe", seite: 22,
     kapitel: "Optik: Wie wir sehen",
     name: "Wie funktioniert eine Lupe?",
     titel: "Wenn das Bild kippt",
@@ -355,7 +355,7 @@ const HEFT_SEITEN = {
   },
   "o5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "kamera", seite: 24,
+    sim: "kamera", seite: 26,
     kapitel: "Optik: Wie wir sehen",
     name: "Wie funktioniert eine Kamera?",
     titel: "Das Papier muss wandern",
@@ -364,7 +364,7 @@ const HEFT_SEITEN = {
   },
   "o6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "auge", seite: 28,
+    sim: "auge", seite: 30,
     kapitel: "Optik: Wie wir sehen",
     name: "Wie funktioniert das Auge?",
     titel: "Der Turm auf dem Papier",
@@ -373,7 +373,7 @@ const HEFT_SEITEN = {
   },
   "o7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brille", seite: 32,
+    sim: "brille", seite: 34,
     kapitel: "Optik: Wie wir sehen",
     name: "Wie korrigiert eine Brille Sehfehler?",
     titel: "Das Bild landet daneben",
@@ -382,7 +382,7 @@ const HEFT_SEITEN = {
   },
   "f8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "licht-oberflaeche", seite: 38,
+    sim: "licht-oberflaeche", seite: 40,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Was passiert, wenn Licht auf eine Oberfläche trifft?",
     titel: "Zwei Bilder in einer Scheibe",
@@ -391,7 +391,7 @@ const HEFT_SEITEN = {
   },
   "f9": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "reflexionsgesetz", seite: 42,
+    sim: "reflexionsgesetz", seite: 44,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Nach welcher Regel wird Licht an einem Spiegel zurückgeworfen?",
     titel: "Der Punkt an der Wand",
@@ -400,7 +400,7 @@ const HEFT_SEITEN = {
   },
   "f1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "spiegelbild", seite: 45,
+    sim: "spiegelbild", seite: 47,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie entsteht ein Spiegelbild?",
     titel: "Hinter dem Glas steht niemand",
@@ -409,7 +409,7 @@ const HEFT_SEITEN = {
   },
   "f10": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechung-eintritt", seite: 49,
+    sim: "brechung-eintritt", seite: 51,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wo ändert das Licht beim Übergang von Luft in Glas seine Richtung?",
     titel: "Der Knick am Rand",
@@ -418,7 +418,7 @@ const HEFT_SEITEN = {
   },
   "f2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechung", seite: 52,
+    sim: "brechung", seite: 55,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Warum erscheint ein Gegenstand im Wasser verschoben?",
     titel: "Die Münze kommt zurück",
@@ -427,7 +427,7 @@ const HEFT_SEITEN = {
   },
   "f3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechungswinkel", seite: 56,
+    sim: "brechungswinkel", seite: 59,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wovon hängt die Stärke der Brechung ab?",
     titel: "Immer zehn Grad weiter",
@@ -436,7 +436,7 @@ const HEFT_SEITEN = {
   },
   "f11": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechung-austritt", seite: 60,
+    sim: "brechung-austritt", seite: 63,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Was geschieht beim Übergang von Glas in Luft?",
     titel: "Zurück ins Freie",
@@ -445,7 +445,7 @@ const HEFT_SEITEN = {
   },
   "f4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "totalreflexion", seite: 63,
+    sim: "totalreflexion", seite: 67,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie funktioniert ein Lichtleiter?",
     titel: "Das Licht macht die Kurve",
@@ -454,7 +454,7 @@ const HEFT_SEITEN = {
   },
   "f5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "prisma", seite: 67,
+    sim: "prisma", seite: 71,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Welche Farben stecken im weißen Licht?",
     titel: "Der Streifen auf dem Bauplan",
@@ -463,7 +463,7 @@ const HEFT_SEITEN = {
   },
   "f6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "regenbogen", seite: 70,
+    sim: "regenbogen", seite: 75,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie entstehen die Farben eines Regenbogens?",
     titel: "Der Bogen über dem Feld",
@@ -472,7 +472,7 @@ const HEFT_SEITEN = {
   },
   "g1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "himmelskoerper", seite: 76,
+    sim: "himmelskoerper", seite: 81,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Sonne, Mond und Sterne – was leuchtet am Himmel?",
     titel: "Einer funkelt, einer nicht",
@@ -481,7 +481,7 @@ const HEFT_SEITEN = {
   },
   "g2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "tag-nacht", seite: 80,
+    sim: "tag-nacht", seite: 85,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie entstehen Tag und Nacht?",
     titel: "Dieselbe Minute, vier Uhrzeiten",
@@ -490,7 +490,7 @@ const HEFT_SEITEN = {
   },
   "g3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gravitation", seite: 84,
+    sim: "gravitation", seite: 89,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Die Gravitation – warum fällt alles nach unten?",
     titel: "Wer ist zuerst unten?",
@@ -499,7 +499,7 @@ const HEFT_SEITEN = {
   },
   "g9": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gravitation-abstand", seite: 88,
+    sim: "gravitation-abstand", seite: 93,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wovon hängt die Anziehungskraft zweier Körper ab?",
     titel: "Der Kleine zieht, der Große nicht",
@@ -508,7 +508,7 @@ const HEFT_SEITEN = {
   },
   "g6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "planetenbahn", seite: 92,
+    sim: "planetenbahn", seite: 97,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Warum fallen die Planeten nicht in die Sonne?",
     titel: "Warum stürzt er nicht?",
@@ -517,7 +517,7 @@ const HEFT_SEITEN = {
   },
   "g7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sonnensystem", seite: 96,
+    sim: "sonnensystem", seite: 101,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Acht Planeten, zwei Sorten",
     titel: "Die Kleinen und die Riesen",
@@ -526,7 +526,7 @@ const HEFT_SEITEN = {
   },
   "g8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "ortsfaktor", seite: 100,
+    sim: "ortsfaktor", seite: 105,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wäre ich auf dem Mond wirklich leichter?",
     titel: "Hüpfen wie auf dem Mond",
@@ -535,7 +535,7 @@ const HEFT_SEITEN = {
   },
   "g10": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gezeiten", seite: 104,
+    sim: "gezeiten", seite: 109,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Warum steigt und fällt das Meer zweimal am Tag?",
     titel: "Zweimal am Tag",
@@ -544,7 +544,7 @@ const HEFT_SEITEN = {
   },
   "g4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "weltall-aufbau", seite: 108,
+    sim: "weltall-aufbau", seite: 113,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie groß ist das Sonnensystem wirklich?",
     titel: "Der Fußball und die Stecknadel",
@@ -553,7 +553,7 @@ const HEFT_SEITEN = {
   },
   "g5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "entfernungen", seite: 112,
+    sim: "entfernungen", seite: 117,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie weit ist es im Weltall? (Lichtjahr)",
     titel: "Wie alt ist dieses Licht?",
@@ -562,7 +562,7 @@ const HEFT_SEITEN = {
   },
   "t1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "teleskop", seite: 117,
+    sim: "teleskop", seite: 123,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie holt ein Teleskop ferne Objekte näher heran?",
     titel: "Zwei Gläser auf der Leiste",
@@ -571,7 +571,7 @@ const HEFT_SEITEN = {
   },
   "t2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "spezialteleskop", seite: 121,
+    sim: "spezialteleskop", seite: 127,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie sieht man mit besonderen Teleskopen unsichtbares Licht?",
     titel: "Die Lampe, die keiner sieht",
@@ -580,7 +580,7 @@ const HEFT_SEITEN = {
   },
   "t6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sternleben", seite: 125,
+    sim: "sternleben", seite: 131,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Warum leuchtet ein Stern – und warum nicht ewig?",
     titel: "Wer zuerst ausgeht",
@@ -589,7 +589,7 @@ const HEFT_SEITEN = {
   },
   "t7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sternspektrum", seite: 129,
+    sim: "sternspektrum", seite: 135,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Woraus bestehen die Sterne?",
     titel: "Streifen, die fehlen",
@@ -598,7 +598,7 @@ const HEFT_SEITEN = {
   },
   "t8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "milchstrasse", seite: 133,
+    sim: "milchstrasse", seite: 139,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Die Milchstraße – wo stehen wir?",
     titel: "Das Band über dem Feld",
@@ -607,7 +607,7 @@ const HEFT_SEITEN = {
   },
   "t3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "weltbild", seite: 137,
+    sim: "weltbild", seite: 143,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie hat sich die Vorstellung vom Weltall verändert?",
     titel: "Wer steht in der Mitte?",
@@ -616,7 +616,7 @@ const HEFT_SEITEN = {
   },
   "t4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "schwarzes-loch", seite: 141,
+    sim: "schwarzes-loch", seite: 147,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Was passiert bei einem schwarzen Loch?",
     titel: "Ein Ring um nichts",
@@ -625,7 +625,7 @@ const HEFT_SEITEN = {
   },
   "t5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "urknall", seite: 145,
+    sim: "urknall", seite: 151,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie ist das Weltall entstanden? (Urknall)",
     titel: "Punkte auf dem Ballon",
@@ -670,7 +670,7 @@ const HEFT_SEITEN = {
   },
   "sp5": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "stromabhaengigkeit", seite: 18,
+    sim: "stromabhaengigkeit", seite: 19,
     kapitel: "Spannung, Strom und der erste Kreis",
     name: "Wovon hängt die Stromstärke ab?",
     titel: "Zwei Stellschrauben",
@@ -679,7 +679,7 @@ const HEFT_SEITEN = {
   },
   "wd1": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "widerstand", seite: 24,
+    sim: "widerstand", seite: 25,
     kapitel: "Widerstand und das Ohmsche Gesetz",
     name: "Was ist ein elektrischer Widerstand?",
     titel: "Warum das Kabel warm wird",
@@ -688,7 +688,7 @@ const HEFT_SEITEN = {
   },
   "wd2": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "ohm-kennlinie", seite: 28,
+    sim: "ohm-kennlinie", seite: 29,
     kapitel: "Widerstand und das Ohmsche Gesetz",
     name: "Das Ohmsche Gesetz – die U-I-Kennlinie",
     titel: "Eine Gerade durch den Nullpunkt",
@@ -697,7 +697,7 @@ const HEFT_SEITEN = {
   },
   "wd3": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "draht", seite: 32,
+    sim: "draht", seite: 33,
     kapitel: "Widerstand und das Ohmsche Gesetz",
     name: "Wovon hängt der Widerstand eines Drahtes ab?",
     titel: "Lang, dünn, oder woraus?",
@@ -706,7 +706,7 @@ const HEFT_SEITEN = {
   },
   "wd4": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "reihe-widerstand", seite: 36,
+    sim: "reihe-widerstand", seite: 37,
     kapitel: "Widerstand und das Ohmsche Gesetz",
     name: "Reihenschaltung von Widerständen",
     titel: "Hintereinander wird es weniger",
@@ -715,7 +715,7 @@ const HEFT_SEITEN = {
   },
   "wd5": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "parallel-widerstand", seite: 40,
+    sim: "parallel-widerstand", seite: 41,
     kapitel: "Widerstand und das Ohmsche Gesetz",
     name: "Parallelschaltung von Widerständen",
     titel: "Nebeneinander wird es mehr",
@@ -724,7 +724,7 @@ const HEFT_SEITEN = {
   },
   "wd6": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "potentiometer", seite: 44,
+    sim: "potentiometer", seite: 45,
     kapitel: "Widerstand und das Ohmsche Gesetz",
     name: "Das Potentiometer – ein veränderbarer Widerstand",
     titel: "Der Regler am Motor",
@@ -733,7 +733,7 @@ const HEFT_SEITEN = {
   },
   "lt1": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "elektrische-leistung", seite: 50,
+    sim: "elektrische-leistung", seite: 51,
     kapitel: "Leistung, Energie und was der Strom kostet",
     name: "Elektrische Leistung P = U · I",
     titel: "Wie schnell die Energie verbraucht wird",
@@ -742,7 +742,7 @@ const HEFT_SEITEN = {
   },
   "lt2": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "elektrische-energie", seite: 54,
+    sim: "elektrische-energie", seite: 55,
     kapitel: "Leistung, Energie und was der Strom kostet",
     name: "Elektrische Energie E = P · t",
     titel: "Watt mal Stunden",
@@ -751,7 +751,7 @@ const HEFT_SEITEN = {
   },
   "lt3": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "stromkosten", seite: 58,
+    sim: "stromkosten", seite: 59,
     kapitel: "Leistung, Energie und was der Strom kostet",
     name: "Was kostet elektrische Energie? (kWh)",
     titel: "Was eine Kilowattstunde kostet",
@@ -760,7 +760,7 @@ const HEFT_SEITEN = {
   },
   "lt4": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "energiesparen", seite: 62,
+    sim: "energiesparen", seite: 63,
     kapitel: "Leistung, Energie und was der Strom kostet",
     name: "Energie sparen im Haushalt",
     titel: "Wo sich das Sparen lohnt",
@@ -769,7 +769,7 @@ const HEFT_SEITEN = {
   },
   "lt5": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "stromgefahren", seite: 66,
+    sim: "stromgefahren", seite: 67,
     kapitel: "Leistung, Energie und was der Strom kostet",
     name: "Gefahren des elektrischen Stroms & Schutz",
     titel: "Wenn die Sicherung kommt",
@@ -778,7 +778,7 @@ const HEFT_SEITEN = {
   },
   "bg1": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "v-begriff", seite: 71,
+    sim: "v-begriff", seite: 72,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Was bedeutet Geschwindigkeit?",
     titel: "Wer ist schneller?",
@@ -787,7 +787,7 @@ const HEFT_SEITEN = {
   },
   "bg2": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "v-messen", seite: 74,
+    sim: "v-messen", seite: 75,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Wie misst man eine Geschwindigkeit?",
     titel: "Zehn Meter und eine Stoppuhr",
@@ -796,7 +796,7 @@ const HEFT_SEITEN = {
   },
   "bg3": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "v-formel", seite: 78,
+    sim: "v-formel", seite: 79,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Wie berechnet man eine Geschwindigkeit? (v = s/t)",
     titel: "Strecke geteilt durch Zeit",
@@ -805,7 +805,7 @@ const HEFT_SEITEN = {
   },
   "bg4": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "v-umrechnung", seite: 82,
+    sim: "v-umrechnung", seite: 83,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Wie werden m/s und km/h umgerechnet?",
     titel: "Mal 3,6 und zurück",
@@ -814,7 +814,7 @@ const HEFT_SEITEN = {
   },
   "bg5": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "gleichfoermig-rs", seite: 85,
+    sim: "gleichfoermig-rs", seite: 86,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Was ist eine gleichförmige Bewegung?",
     titel: "Immer gleich weit",
@@ -823,7 +823,7 @@ const HEFT_SEITEN = {
   },
   "bg6": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "beschleunigung-rs", seite: 88,
+    sim: "beschleunigung-rs", seite: 89,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Was ist eine beschleunigte Bewegung?",
     titel: "Immer weiter, immer enger",
@@ -832,7 +832,7 @@ const HEFT_SEITEN = {
   },
   "bg7": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "weg-zeit-diagramm", seite: 91,
+    sim: "weg-zeit-diagramm", seite: 92,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Wie stellt man eine Bewegung im Weg-Zeit-Diagramm dar?",
     titel: "Die Linie, die steigt",
@@ -841,7 +841,7 @@ const HEFT_SEITEN = {
   },
   "bg8": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "v-zeit-diagramm", seite: 94,
+    sim: "v-zeit-diagramm", seite: 95,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Wie liest man ein Geschwindigkeit-Zeit-Diagramm?",
     titel: "Die Linie, die waagerecht bleibt",
@@ -850,7 +850,7 @@ const HEFT_SEITEN = {
   },
   "bg9": {
     klasse: 8, schulform: "Realschule NRW",
-    sim: "verkehr-messung", seite: 97,
+    sim: "verkehr-messung", seite: 98,
     kapitel: "Geschwindigkeit: wie schnell ist schnell?",
     name: "Wie funktioniert eine Geschwindigkeitsmessung im Straßenverkehr?",
     titel: "Der Blitzer an der Straße",
@@ -1354,7 +1354,7 @@ const HEFT_SEITEN = {
   },
   "mo2": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "kompass", seite: 9,
+    sim: "kompass", seite: 10,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Die Erde als großer Magnet",
     titel: "Warum der Kompass nicht lügt",
@@ -1363,7 +1363,7 @@ const HEFT_SEITEN = {
   },
   "mo3": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "oersted", seite: 13,
+    sim: "oersted", seite: 14,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Der Versuch von Ørsted",
     titel: "Ein Draht, der sich benimmt wie ein Magnet",
@@ -1372,7 +1372,7 @@ const HEFT_SEITEN = {
   },
   "mo4": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "elektromagnet", seite: 17,
+    sim: "elektromagnet", seite: 18,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Der Elektromagnet",
     titel: "Ein Magnet mit Schalter",
@@ -1381,7 +1381,7 @@ const HEFT_SEITEN = {
   },
   "mo5": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "elektromagnet", seite: 20,
+    sim: "elektromagnet", seite: 22,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Was einen Elektromagneten stärker macht",
     titel: "Zwei Schrauben, an denen man drehen kann",
@@ -1390,7 +1390,7 @@ const HEFT_SEITEN = {
   },
   "mo6": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "stromwirkungen", seite: 24,
+    sim: "stromwirkungen", seite: 26,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Wirkungen des elektrischen Stroms",
     titel: "Vier Geräte an derselben Batterie",
@@ -1399,7 +1399,7 @@ const HEFT_SEITEN = {
   },
   "mo7": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "leiterkraft", seite: 27,
+    sim: "leiterkraft", seite: 30,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Kraft auf einen stromdurchflossenen Leiter",
     titel: "Der Stab, der von selbst hochspringt",
@@ -1408,7 +1408,7 @@ const HEFT_SEITEN = {
   },
   "mo8": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "leiterkraft", seite: 31,
+    sim: "leiterkraft", seite: 34,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Die Richtung der Kraft vorhersagen",
     titel: "Ben baut den Motor falsch herum ein",
@@ -1417,7 +1417,7 @@ const HEFT_SEITEN = {
   },
   "mo9": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "elektromotor", seite: 35,
+    sim: "elektromotor", seite: 38,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Aus Kraft wird Drehung",
     titel: "Warum sich die Spule überhaupt dreht",
@@ -1426,7 +1426,7 @@ const HEFT_SEITEN = {
   },
   "mo10": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "elektromotor", seite: 39,
+    sim: "elektromotor", seite: 42,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Der Kommutator",
     titel: "Das kleine Teil, ohne das nichts läuft",
@@ -1435,7 +1435,7 @@ const HEFT_SEITEN = {
   },
   "mo11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "elektromotor", seite: 43,
+    sim: "elektromotor", seite: 46,
     kapitel: "Magnetfeld, Kraft und Motor",
     name: "Was einen Motor kräftiger macht",
     titel: "Vier Stellschrauben am fertigen Motor",
@@ -1444,7 +1444,7 @@ const HEFT_SEITEN = {
   },
   "ge1": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "induktion-rs", seite: 49,
+    sim: "induktion-rs", seite: 52,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Induktion – Spannung ohne Batterie",
     titel: "Das Messgerät zeigt etwas an, obwohl nichts angeschlossen ist",
@@ -1453,7 +1453,7 @@ const HEFT_SEITEN = {
   },
   "ge2": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "induktion-rs", seite: 53,
+    sim: "induktion-rs", seite: 56,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Wovon die induzierte Spannung abhängt",
     titel: "Drei Schrauben an derselben Spule",
@@ -1462,7 +1462,7 @@ const HEFT_SEITEN = {
   },
   "ge3": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "thomson-ring", seite: 57,
+    sim: "thomson-ring", seite: 60,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Die Lenzsche Regel",
     titel: "Der Ring, der von der Spule wegspringt",
@@ -1471,7 +1471,7 @@ const HEFT_SEITEN = {
   },
   "ge4": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "generator", seite: 60,
+    sim: "generator", seite: 64,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Der Generator",
     titel: "Eine Spule, die sich nicht mehr anhalten lässt",
@@ -1480,7 +1480,7 @@ const HEFT_SEITEN = {
   },
   "ge5": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "generator", seite: 64,
+    sim: "generator", seite: 68,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Wechselspannung",
     titel: "Warum die Steckdose keinen Plus- und Minuspol hat",
@@ -1489,7 +1489,7 @@ const HEFT_SEITEN = {
   },
   "ge6": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 68,
+    sim: null, seite: 72,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Gleichstrom und Wechselstrom",
     titel: "Zwei Sorten Strom in einem einzigen Gerät",
@@ -1498,7 +1498,7 @@ const HEFT_SEITEN = {
   },
   "ge7": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "transformator-schluessel", seite: 72,
+    sim: "transformator-schluessel", seite: 76,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Der Transformator",
     titel: "Zwei Spulen, die sich nicht berühren",
@@ -1507,7 +1507,7 @@ const HEFT_SEITEN = {
   },
   "ge8": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "transformator-schluessel", seite: 76,
+    sim: "transformator-schluessel", seite: 80,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Die Transformatorgleichung",
     titel: "Das Verhältnis, auf das es ankommt",
@@ -1516,7 +1516,7 @@ const HEFT_SEITEN = {
   },
   "ge9": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "freileitungen", seite: 80,
+    sim: "freileitungen", seite: 84,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Verluste auf der Leitung",
     titel: "Was zwischen Kraftwerk und Lampe verlorengeht",
@@ -1525,7 +1525,7 @@ const HEFT_SEITEN = {
   },
   "ge10": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "freileitungen", seite: 84,
+    sim: "freileitungen", seite: 88,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Warum Hochspannung",
     titel: "380 000 Volt über dem Acker",
@@ -1534,7 +1534,7 @@ const HEFT_SEITEN = {
   },
   "ge11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 88,
+    sim: null, seite: 92,
     kapitel: "Induktion, Generator und das Stromnetz",
     name: "Vom Kraftwerk in die Steckdose",
     titel: "Vier Spannungen auf demselben Weg",
@@ -1543,7 +1543,7 @@ const HEFT_SEITEN = {
   },
   "ak1": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "atombau-isotope", seite: 95,
+    sim: "atombau-isotope", seite: 99,
     kapitel: "Atomkern und Strahlung",
     name: "Der Aufbau des Atoms",
     titel: "Was hinter der Bleitür passiert",
@@ -1552,7 +1552,7 @@ const HEFT_SEITEN = {
   },
   "ak2": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "atombau-isotope", seite: 98,
+    sim: "atombau-isotope", seite: 102,
     kapitel: "Atomkern und Strahlung",
     name: "Isotope",
     titel: "Warum im Periodensystem 35,45 steht",
@@ -1561,7 +1561,7 @@ const HEFT_SEITEN = {
   },
   "ak3": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "zerfallsreihe", seite: 101,
+    sim: "zerfallsreihe", seite: 106,
     kapitel: "Atomkern und Strahlung",
     name: "Warum Kerne zerfallen",
     titel: "Der Kern, der es nicht aushält",
@@ -1570,7 +1570,7 @@ const HEFT_SEITEN = {
   },
   "ak4": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "zerfallsreihe", seite: 104,
+    sim: "zerfallsreihe", seite: 109,
     kapitel: "Atomkern und Strahlung",
     name: "Woher die Strahlung kommt",
     titel: "Strahlung aus dem Kellerfußboden",
@@ -1579,7 +1579,7 @@ const HEFT_SEITEN = {
   },
   "ak5": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "ionisation", seite: 107,
+    sim: "ionisation", seite: 112,
     kapitel: "Atomkern und Strahlung",
     name: "Ionisierende Strahlung",
     titel: "Was die Strahlung im Gewebe anrichtet",
@@ -1588,7 +1588,7 @@ const HEFT_SEITEN = {
   },
   "ak6": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "geiger-mueller", seite: 110,
+    sim: "geiger-mueller", seite: 116,
     kapitel: "Atomkern und Strahlung",
     name: "Das Geiger-Müller-Zählrohr",
     titel: "Das Gerät, das die Strahlung hörbar macht",
@@ -1597,7 +1597,7 @@ const HEFT_SEITEN = {
   },
   "ak7": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "absorption-strahlung", seite: 114,
+    sim: "absorption-strahlung", seite: 120,
     kapitel: "Atomkern und Strahlung",
     name: "Alphastrahlung",
     titel: "Ein Blatt Papier reicht",
@@ -1606,7 +1606,7 @@ const HEFT_SEITEN = {
   },
   "ak8": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "absorption-strahlung", seite: 117,
+    sim: "absorption-strahlung", seite: 123,
     kapitel: "Atomkern und Strahlung",
     name: "Betastrahlung",
     titel: "Wenn Papier nicht mehr genügt",
@@ -1615,7 +1615,7 @@ const HEFT_SEITEN = {
   },
   "ak9": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "absorption-strahlung", seite: 120,
+    sim: "absorption-strahlung", seite: 127,
     kapitel: "Atomkern und Strahlung",
     name: "Gammastrahlung",
     titel: "Die Bleitür, die nur die Hälfte schafft",
@@ -1624,7 +1624,7 @@ const HEFT_SEITEN = {
   },
   "ak10": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "absorption-strahlung", seite: 124,
+    sim: "absorption-strahlung", seite: 131,
     kapitel: "Atomkern und Strahlung",
     name: "Abschirmung im Vergleich",
     titel: "Drei Absorber, drei Ergebnisse",
@@ -1633,7 +1633,7 @@ const HEFT_SEITEN = {
   },
   "ak11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 127,
+    sim: null, seite: 135,
     kapitel: "Atomkern und Strahlung",
     name: "Die drei Strahlungsarten unterscheiden",
     titel: "Ein Präparat ohne Beschriftung",
@@ -1642,7 +1642,7 @@ const HEFT_SEITEN = {
   },
   "ak12": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "zerfallsreihe", seite: 131,
+    sim: "zerfallsreihe", seite: 139,
     kapitel: "Atomkern und Strahlung",
     name: "Zerfallsgleichungen",
     titel: "Aus Uran wird am Ende Blei",
@@ -1651,7 +1651,7 @@ const HEFT_SEITEN = {
   },
   "ak13": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "zerfall-halbwertszeit", seite: 134,
+    sim: "zerfall-halbwertszeit", seite: 142,
     kapitel: "Atomkern und Strahlung",
     name: "Halbwertszeit",
     titel: "Der Kern, dem man nicht ansieht, wann er dran ist",
@@ -1660,7 +1660,7 @@ const HEFT_SEITEN = {
   },
   "ak14": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "zerfall-halbwertszeit", seite: 138,
+    sim: "zerfall-halbwertszeit", seite: 146,
     kapitel: "Atomkern und Strahlung",
     name: "Altersbestimmung mit C-14",
     titel: "Wie alt ist der Mann aus dem Eis",
@@ -1669,7 +1669,7 @@ const HEFT_SEITEN = {
   },
   "ke1": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 143,
+    sim: null, seite: 152,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Strahlung in der Medizin",
     titel: "Warum Mia die Spritze in einem Bleibehälter holt",
@@ -1678,7 +1678,7 @@ const HEFT_SEITEN = {
   },
   "ke2": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 147,
+    sim: null, seite: 156,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Strahlung in der Technik",
     titel: "Der Sensor über dem Fließband",
@@ -1687,7 +1687,7 @@ const HEFT_SEITEN = {
   },
   "ke3": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 151,
+    sim: null, seite: 160,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Strahlung im Alltag",
     titel: "Die Dosis, die jeder mitbringt",
@@ -1696,7 +1696,7 @@ const HEFT_SEITEN = {
   },
   "ke4": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "strahlenschutz", seite: 154,
+    sim: "strahlenschutz", seite: 163,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Die drei A des Strahlenschutzes",
     titel: "Zwei Schritte zurück sind mehr wert als eine Bleiweste",
@@ -1705,7 +1705,7 @@ const HEFT_SEITEN = {
   },
   "ke5": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "kernspaltung", seite: 158,
+    sim: "kernspaltung", seite: 167,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Kernspaltung",
     titel: "Ein Würfel Uran gegen einen ganzen Güterzug",
@@ -1714,7 +1714,7 @@ const HEFT_SEITEN = {
   },
   "ke6": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "kettenreaktion", seite: 162,
+    sim: "kettenreaktion", seite: 171,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Die Kettenreaktion steuern",
     titel: "Die eine Zahl, auf die alles ankommt",
@@ -1723,7 +1723,7 @@ const HEFT_SEITEN = {
   },
   "ke7": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "kettenreaktion", seite: 165,
+    sim: "kettenreaktion", seite: 174,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Vom Reaktor zur Steckdose",
     titel: "Ein Dampfkraftwerk mit ungewöhnlichem Feuer",
@@ -1732,7 +1732,7 @@ const HEFT_SEITEN = {
   },
   "ke8": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 168,
+    sim: null, seite: 177,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Wenn ein Reaktor außer Kontrolle gerät",
     titel: "Zwei Daten, die niemand vergisst",
@@ -1741,7 +1741,7 @@ const HEFT_SEITEN = {
   },
   "ke9": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "zerfall-halbwertszeit", seite: 172,
+    sim: "zerfall-halbwertszeit", seite: 181,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Endlagerung",
     titel: "Ein Behälter für hunderttausend Jahre",
@@ -1750,7 +1750,7 @@ const HEFT_SEITEN = {
   },
   "ke10": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: "kernfusion", seite: 175,
+    sim: "kernfusion", seite: 184,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Kernfusion",
     titel: "Das Feuer, das seit viereinhalb Milliarden Jahren brennt",
@@ -1759,7 +1759,7 @@ const HEFT_SEITEN = {
   },
   "ke11": {
     klasse: 10, schulform: "Realschule NRW",
-    sim: null, seite: 178,
+    sim: null, seite: 187,
     kapitel: "Kernenergie nutzen und verantworten",
     name: "Kernenergie bewerten",
     titel: "Zwei Listen und eine eigene Entscheidung",
@@ -1795,7 +1795,7 @@ const HEFT_SEITEN = {
   },
   "oi4": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "brechung-eintritt", seite: 18,
+    sim: "brechung-eintritt", seite: 19,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Warum knickt der Lichtstrahl beim Eintritt ins Glas?",
     titel: "Der halbrunde Glasklotz",
@@ -1804,7 +1804,7 @@ const HEFT_SEITEN = {
   },
   "oi5": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "brechung-austritt", seite: 21,
+    sim: "brechung-austritt", seite: 22,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Was passiert beim Austritt aus dem Glas?",
     titel: "Ein Glasklotz wird zum Spiegel",
@@ -1813,7 +1813,7 @@ const HEFT_SEITEN = {
   },
   "oi6": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "totalreflexion", seite: 24,
+    sim: "totalreflexion", seite: 25,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie kommt Licht durch eine gebogene Faser?",
     titel: "Ein Bündel dünner Glasfäden",
@@ -1822,7 +1822,7 @@ const HEFT_SEITEN = {
   },
   "oi7": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sammellinse", seite: 28,
+    sim: "sammellinse", seite: 29,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Welches Glas bündelt das Licht, welches nicht?",
     titel: "Zwei geschliffene Gläser ohne Aufschrift",
@@ -1831,7 +1831,7 @@ const HEFT_SEITEN = {
   },
   "oi8": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "bild-linse", seite: 31,
+    sim: "bild-linse", seite: 33,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wo entsteht das Bild einer Linse?",
     titel: "Das zerlegte Fernrohr auf dem Tisch",
@@ -1840,7 +1840,7 @@ const HEFT_SEITEN = {
   },
   "oi9": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "lupe", seite: 35,
+    sim: "lupe", seite: 37,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Warum vergrößert eine Lupe?",
     titel: "Das Glas mit dem Griff",
@@ -1849,7 +1849,7 @@ const HEFT_SEITEN = {
   },
   "oi10": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "auge", seite: 39,
+    sim: "auge", seite: 41,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie entsteht ein Bild im Auge?",
     titel: "Das aufklappbare Augenmodell",
@@ -1858,7 +1858,7 @@ const HEFT_SEITEN = {
   },
   "oi11": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "brille", seite: 42,
+    sim: "brille", seite: 44,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie hilft eine Brille beim Scharfsehen?",
     titel: "Zwei Brillen ohne Etikett",
@@ -1867,7 +1867,7 @@ const HEFT_SEITEN = {
   },
   "oi12": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "lochkamera", seite: 45,
+    sim: "lochkamera", seite: 47,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie macht eine Kamera ein Bild ohne Linse?",
     titel: "Die Pappkiste mit dem Nadelloch",
@@ -1876,7 +1876,7 @@ const HEFT_SEITEN = {
   },
   "oi13": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "prisma", seite: 49,
+    sim: "prisma", seite: 51,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Woraus besteht weißes Licht?",
     titel: "Der Glaskeil in der Schublade",
@@ -1885,7 +1885,7 @@ const HEFT_SEITEN = {
   },
   "oi14": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "farbmischung-additiv", seite: 52,
+    sim: "farbmischung-additiv", seite: 54,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie entstehen die Farben auf einem Bildschirm?",
     titel: "Die Lupe auf dem Bildschirm",
@@ -1894,7 +1894,7 @@ const HEFT_SEITEN = {
   },
   "oi15": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "spektrum-unsichtbar", seite: 55,
+    sim: "spektrum-unsichtbar", seite: 57,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Welches Licht sehen wir nicht?",
     titel: "Das Thermometer mit der schwarzen Kugel",
@@ -1903,7 +1903,7 @@ const HEFT_SEITEN = {
   },
   "ew1": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "himmelskoerper", seite: 61,
+    sim: "himmelskoerper", seite: 64,
     kapitel: "Der Blick ins Weltall",
     name: "Was leuchtet da eigentlich am Nachthimmel?",
     titel: "Ein Karton voller Sternkarten",
@@ -1912,7 +1912,7 @@ const HEFT_SEITEN = {
   },
   "ew2": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "tag-nacht", seite: 64,
+    sim: "tag-nacht", seite: 67,
     kapitel: "Der Blick ins Weltall",
     name: "Warum ist es nicht überall gleichzeitig hell?",
     titel: "Der staubige Globus neben dem Schrank",
@@ -1921,7 +1921,7 @@ const HEFT_SEITEN = {
   },
   "ew3": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "gravitation", seite: 67,
+    sim: "gravitation", seite: 71,
     kapitel: "Der Blick ins Weltall",
     name: "Warum fällt alles nach unten?",
     titel: "Zwei Glasrohre aus dem Sammlungsschrank",
@@ -1930,7 +1930,7 @@ const HEFT_SEITEN = {
   },
   "ew4": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "gravitation-abstand", seite: 71,
+    sim: "gravitation-abstand", seite: 75,
     kapitel: "Der Blick ins Weltall",
     name: "Wovon hängt die Stärke der Anziehung ab?",
     titel: "Zwei Messingkugeln in der Schublade",
@@ -1939,7 +1939,7 @@ const HEFT_SEITEN = {
   },
   "ew5": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "planetenbahn", seite: 75,
+    sim: "planetenbahn", seite: 79,
     kapitel: "Der Blick ins Weltall",
     name: "Warum stürzen die Planeten nicht in die Sonne?",
     titel: "Der Bogen mit den Bahnen",
@@ -1948,7 +1948,7 @@ const HEFT_SEITEN = {
   },
   "ew6": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sonnensystem", seite: 78,
+    sim: "sonnensystem", seite: 83,
     kapitel: "Der Blick ins Weltall",
     name: "Was unterscheidet die acht Planeten voneinander?",
     titel: "Acht gleich große Kugeln",
@@ -1957,7 +1957,7 @@ const HEFT_SEITEN = {
   },
   "ew7": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "entfernungen", seite: 81,
+    sim: "entfernungen", seite: 86,
     kapitel: "Der Blick ins Weltall",
     name: "Wie groß ist das Sonnensystem wirklich?",
     titel: "Ein Wort auf der Rückseite",
@@ -1966,7 +1966,7 @@ const HEFT_SEITEN = {
   },
   "ew8": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "teleskop", seite: 84,
+    sim: "teleskop", seite: 89,
     kapitel: "Der Blick ins Weltall",
     name: "Wie holt ein Fernrohr Fernes heran?",
     titel: "Zwei Linsen und ein Rohr",
@@ -1975,7 +1975,7 @@ const HEFT_SEITEN = {
   },
   "ew9": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sternparallaxe", seite: 88,
+    sim: "sternparallaxe", seite: 93,
     kapitel: "Der Blick ins Weltall",
     name: "Wie misst man die Entfernung zu einem Stern?",
     titel: "Kein Maßband bis zum Stern",
@@ -1984,7 +1984,7 @@ const HEFT_SEITEN = {
   },
   "ew10": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sternleben", seite: 92,
+    sim: "sternleben", seite: 97,
     kapitel: "Der Blick ins Weltall",
     name: "Warum leuchtet ein Stern - und wie lange?",
     titel: "Die Randnotiz auf der Sternkarte",
@@ -1993,7 +1993,7 @@ const HEFT_SEITEN = {
   },
   "ew11": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "milchstrasse", seite: 95,
+    sim: "milchstrasse", seite: 101,
     kapitel: "Der Blick ins Weltall",
     name: "Wo stehen wir in der Milchstraße?",
     titel: "Das blasse Band auf der Sternkarte",
@@ -2002,7 +2002,7 @@ const HEFT_SEITEN = {
   },
   "ew12": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "weltbild", seite: 98,
+    sim: "weltbild", seite: 105,
     kapitel: "Der Blick ins Weltall",
     name: "Wer steht in der Mitte? Zwei Weltbilder",
     titel: "Ein vergilbtes Blatt voller Kreise",
@@ -2011,7 +2011,7 @@ const HEFT_SEITEN = {
   },
   "ew13": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "schwarzes-loch", seite: 101,
+    sim: "schwarzes-loch", seite: 108,
     kapitel: "Der Blick ins Weltall",
     name: "Wie findet man etwas, das kein Licht aussendet?",
     titel: "Ein Kreis um ein leeres Feld",
@@ -2020,7 +2020,7 @@ const HEFT_SEITEN = {
   },
   "ew14": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "urknall", seite: 104,
+    sim: "urknall", seite: 112,
     kapitel: "Der Blick ins Weltall",
     name: "Woher kommt alles? Der Urknall",
     titel: "Die Frage auf der Rückseite",
@@ -2047,7 +2047,7 @@ const HEFT_SEITEN = {
   },
   "st4": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "stromstaerke", seite: 13,
+    sim: "stromstaerke", seite: 14,
     kapitel: "Stromkreise verstehen",
     name: "Wie viel fließt da eigentlich?",
     titel: "Ein Schalter unterbricht den Kreis",
@@ -2056,7 +2056,7 @@ const HEFT_SEITEN = {
   },
   "st5": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "messen", seite: 16,
+    sim: "messen", seite: 18,
     kapitel: "Stromkreise verstehen",
     name: "Wie schließt man ein Messgerät richtig an?",
     titel: "Zwei Messgeräte an der Werkbank",
@@ -2065,7 +2065,7 @@ const HEFT_SEITEN = {
   },
   "st6": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "widerstand", seite: 19,
+    sim: "widerstand", seite: 22,
     kapitel: "Stromkreise verstehen",
     name: "Was bremst den Strom?",
     titel: "Drei Bauteile an derselben Batterie",
@@ -2074,7 +2074,7 @@ const HEFT_SEITEN = {
   },
   "st7": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "draht", seite: 23,
+    sim: "draht", seite: 26,
     kapitel: "Stromkreise verstehen",
     name: "Wovon hängt der Widerstand eines Drahtes ab?",
     titel: "Drahtrollen aus der Restekiste",
@@ -2083,7 +2083,7 @@ const HEFT_SEITEN = {
   },
   "st8": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "ohm-kennlinie", seite: 27,
+    sim: "ohm-kennlinie", seite: 30,
     kapitel: "Stromkreise verstehen",
     name: "Wie hängen Spannung, Stromstärke und Widerstand zusammen?",
     titel: "Eine Gerade aus Messpunkten",
@@ -2092,25 +2092,25 @@ const HEFT_SEITEN = {
   },
   "st9": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "reihe-widerstand", seite: 31,
+    sim: "reihe-widerstand", seite: 34,
     kapitel: "Stromkreise verstehen",
     name: "Was passiert, wenn alles hintereinander hängt?",
     titel: "Die Lichterkette an der Werkbank",
     frage: "Wie verändert ein zweiter Widerstand in Reihe die Stromstärke im Stromkreis?",
-    schritte: ["Lies ab, welchen Gesamtwiderstand und welche Stromstärke die Statuszeile in der Grundstellung mit 10 Ω und 20 Ω anzeigt.", "Wähle für den ersten Widerstand nacheinander 20 Ω und 30 Ω, stelle danach auch den zweiten auf 30 Ω und notiere jedes Mal R_ges und I.", "Vergleiche die beiden Teilspannungen U₁ und U₂ mit den 6 V der Energiequelle."]
+    schritte: ["Lies ab, welchen Gesamtwiderstand und welche Stromstärke die Statuszeile in der Grundstellung mit 10 Ω und 20 Ω anzeigt.", "Wähle für den ersten Widerstand nacheinander 20 Ω und 30 Ω, stelle danach auch den zweiten auf 30 Ω und notiere jedes Mal Rges und I.", "Vergleiche die beiden Teilspannungen U₁ und U₂ mit den 6 V der Energiequelle."]
   },
   "st10": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "parallel-widerstand", seite: 35,
+    sim: "parallel-widerstand", seite: 38,
     kapitel: "Stromkreise verstehen",
     name: "Warum bleibt das Licht an, wenn eine Lampe ausfällt?",
     titel: "Eine Lampe fällt aus",
     frage: "Wie verteilen sich Spannung und Stromstärke auf zwei parallele Widerstände?",
-    schritte: ["Lies ab, welche Zweigströme und welchen Gesamtstrom die Statuszeile mit R₁ = 10 Ω und R₂ = 20 Ω anzeigt.", "Wähle für R₁ nacheinander 20 Ω und 30 Ω und notiere jedes Mal I₁, I₂ und den Gesamtstrom.", "Vergleiche den angezeigten Gesamtwiderstand R_ges mit dem kleineren der beiden Einzelwiderstände."]
+    schritte: ["Lies ab, welche Zweigströme und welchen Gesamtstrom die Statuszeile mit R₁ = 10 Ω und R₂ = 20 Ω anzeigt.", "Wähle für R₁ nacheinander 20 Ω und 30 Ω und notiere jedes Mal I₁, I₂ und den Gesamtstrom.", "Vergleiche den angezeigten Gesamtwiderstand Rges mit dem kleineren der beiden Einzelwiderstände."]
   },
   "st11": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "elektronen-drift", seite: 39,
+    sim: "elektronen-drift", seite: 42,
     kapitel: "Stromkreise verstehen",
     name: "Was bewegt sich im Draht wirklich?",
     titel: "Sofort hell trotz drei Metern Kabel",
@@ -2119,7 +2119,7 @@ const HEFT_SEITEN = {
   },
   "st12": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "blitz", seite: 43,
+    sim: "blitz", seite: 46,
     kapitel: "Stromkreise verstehen",
     name: "Was passiert bei einem Blitz?",
     titel: "Gewitter über dem Schulhof",
@@ -2128,7 +2128,7 @@ const HEFT_SEITEN = {
   },
   "st13": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "elektrische-leistung", seite: 47,
+    sim: "elektrische-leistung", seite: 50,
     kapitel: "Stromkreise verstehen",
     name: "Wie viel Energie braucht ein Gerät?",
     titel: "Zwei Lampen an einem Netzteil",
@@ -2137,7 +2137,7 @@ const HEFT_SEITEN = {
   },
   "st14": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "stromgefahren", seite: 51,
+    sim: "stromgefahren", seite: 54,
     kapitel: "Stromkreise verstehen",
     name: "Wo wird Strom im Haushalt gefährlich?",
     titel: "Zu viel an einer Steckdose",
@@ -2146,7 +2146,7 @@ const HEFT_SEITEN = {
   },
   "be1": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-begriff", seite: 56,
+    sim: "v-begriff", seite: 60,
     kapitel: "Bewegungen beschreiben",
     name: "Wer ist schneller - und woran misst man das?",
     titel: "Das Wettrennen auf dem Schulhof",
@@ -2155,7 +2155,7 @@ const HEFT_SEITEN = {
   },
   "be2": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-messen", seite: 59,
+    sim: "v-messen", seite: 63,
     kapitel: "Bewegungen beschreiben",
     name: "Wie misst man eine Geschwindigkeit?",
     titel: "Zehn Meter und eine Stoppuhr",
@@ -2164,7 +2164,7 @@ const HEFT_SEITEN = {
   },
   "be3": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-formel", seite: 63,
+    sim: "v-formel", seite: 67,
     kapitel: "Bewegungen beschreiben",
     name: "Wie rechnet man aus Weg und Zeit die Geschwindigkeit?",
     titel: "Der Rechenzettel an der Werkbank",
@@ -2173,7 +2173,7 @@ const HEFT_SEITEN = {
   },
   "be4": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-umrechnung", seite: 67,
+    sim: "v-umrechnung", seite: 71,
     kapitel: "Bewegungen beschreiben",
     name: "Warum steht auf dem Schild km/h und im Heft m/s?",
     titel: "Tacho und Heft widersprechen sich",
@@ -2182,7 +2182,7 @@ const HEFT_SEITEN = {
   },
   "be5": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "gleichfoermig-rs", seite: 70,
+    sim: "gleichfoermig-rs", seite: 75,
     kapitel: "Bewegungen beschreiben",
     name: "Was heißt gleichförmige Bewegung?",
     titel: "Kreidestriche auf dem Schulhof",
@@ -2191,7 +2191,7 @@ const HEFT_SEITEN = {
   },
   "be6": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "weg-zeit-diagramm", seite: 74,
+    sim: "weg-zeit-diagramm", seite: 79,
     kapitel: "Bewegungen beschreiben",
     name: "Was verrät ein Zeit-Weg-Diagramm?",
     titel: "Linien an der Werkstattwand",
@@ -2200,7 +2200,7 @@ const HEFT_SEITEN = {
   },
   "be7": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "beschleunigung-rs", seite: 78,
+    sim: "beschleunigung-rs", seite: 83,
     kapitel: "Bewegungen beschreiben",
     name: "Was passiert beim Anfahren und Bremsen?",
     titel: "Anfahren und Bremsen am Hoftor",
@@ -2209,7 +2209,7 @@ const HEFT_SEITEN = {
   },
   "be8": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "v-zeit-diagramm", seite: 82,
+    sim: "v-zeit-diagramm", seite: 87,
     kapitel: "Bewegungen beschreiben",
     name: "Was verrät ein Zeit-Geschwindigkeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
@@ -2218,7 +2218,7 @@ const HEFT_SEITEN = {
   },
   "be9": {
     klasse: 8, schulform: "Gesamtschule NRW",
-    sim: "bremsweg-jg9", seite: 85,
+    sim: "bremsweg-jg9", seite: 91,
     kapitel: "Bewegungen beschreiben",
     name: "Wie weit fährt ein Auto, bis es steht?",
     titel: "Ein Schild für die Einfahrt",
@@ -2236,7 +2236,7 @@ const HEFT_SEITEN = {
   },
   "kf2": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraftmesser", seite: 10,
+    sim: "kraftmesser", seite: 11,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Wie misst man eine Kraft?",
     titel: "Was der Zeiger verrät",
@@ -2245,7 +2245,7 @@ const HEFT_SEITEN = {
   },
   "kf3": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "federgesetz", seite: 14,
+    sim: "federgesetz", seite: 15,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum geben zwei Federn nicht gleich nach?",
     titel: "Weicher Puffer, harter Puffer",
@@ -2254,7 +2254,7 @@ const HEFT_SEITEN = {
   },
   "kf4": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "masse-gewicht", seite: 18,
+    sim: "masse-gewicht", seite: 19,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Was ist der Unterschied zwischen Masse und Gewichtskraft?",
     titel: "Kilogramm oder Newton",
@@ -2263,7 +2263,7 @@ const HEFT_SEITEN = {
   },
   "kf5": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "ortsfaktor", seite: 22,
+    sim: "ortsfaktor", seite: 23,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Wäre dasselbe Klavier auf dem Mond leichter?",
     titel: "Das Klavier auf dem Mond",
@@ -2272,7 +2272,7 @@ const HEFT_SEITEN = {
   },
   "kf6": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraftpfeil", seite: 26,
+    sim: "kraftpfeil", seite: 27,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Wie zeichnet man eine Kraft auf?",
     titel: "Ein Pfeil für jede Kraft",
@@ -2281,7 +2281,7 @@ const HEFT_SEITEN = {
   },
   "kf7": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraefte-addieren", seite: 29,
+    sim: "kraefte-addieren", seite: 31,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Was passiert, wenn zwei Menschen ziehen?",
     titel: "Zwei ziehen am selben Seil",
@@ -2290,7 +2290,7 @@ const HEFT_SEITEN = {
   },
   "kf8": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "kraefte-gleichgewicht", seite: 33,
+    sim: "kraefte-gleichgewicht", seite: 35,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Wann bewegt sich trotz Kraft nichts?",
     titel: "Der Scheinwerfer hängt still",
@@ -2299,7 +2299,7 @@ const HEFT_SEITEN = {
   },
   "kf9": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "traegheit-rs", seite: 36,
+    sim: "traegheit-rs", seite: 38,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum rutscht die Kiste weiter, obwohl niemand schiebt?",
     titel: "Die Kiste rutscht weiter",
@@ -2308,7 +2308,7 @@ const HEFT_SEITEN = {
   },
   "kf10": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "wechselwirkung", seite: 40,
+    sim: "wechselwirkung", seite: 42,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum rollt das Rollbrett zurück?",
     titel: "Rückwärts auf dem Rollbrett",
@@ -2317,7 +2317,7 @@ const HEFT_SEITEN = {
   },
   "kf11": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "druck-flaeche", seite: 44,
+    sim: "druck-flaeche", seite: 46,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum sinkt das Podest unter dem schmalen Fuß ein?",
     titel: "Vier Dellen im neuen Podest",
@@ -2326,7 +2326,7 @@ const HEFT_SEITEN = {
   },
   "kf12": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "schweredruck", seite: 48,
+    sim: "schweredruck", seite: 50,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum drückt Wasser in der Tiefe stärker?",
     titel: "Der untere Hahn spritzt weiter",
@@ -2335,7 +2335,7 @@ const HEFT_SEITEN = {
   },
   "kf13": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "dichte", seite: 52,
+    sim: "dichte", seite: 54,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum haben gleich große Körper ganz verschiedene Massen?",
     titel: "Zwei gleich große Klötze in der Werkstatt",
@@ -2344,7 +2344,7 @@ const HEFT_SEITEN = {
   },
   "kf14": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "auftrieb", seite: 56,
+    sim: "auftrieb", seite: 58,
     kapitel: "Kräfte, Druck und Auftrieb",
     name: "Warum schwimmt ein Schiff aus Eisen?",
     titel: "Ein Traversenrohr in der Regentonne",
@@ -2353,7 +2353,7 @@ const HEFT_SEITEN = {
   },
   "el1": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "arbeit", seite: 63,
+    sim: "arbeit", seite: 65,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wann wird in der Physik Arbeit verrichtet?",
     titel: "Vier Meter über den Hof",
@@ -2362,7 +2362,7 @@ const HEFT_SEITEN = {
   },
   "el2": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "lageenergie", seite: 67,
+    sim: "lageenergie", seite: 69,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wo steckt die Energie, wenn etwas oben liegt?",
     titel: "Der Klotz über dem Pfahl",
@@ -2371,7 +2371,7 @@ const HEFT_SEITEN = {
   },
   "el3": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "bewegungsenergie", seite: 71,
+    sim: "bewegungsenergie", seite: 73,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wo steckt die Energie, wenn etwas rollt?",
     titel: "Die Kabeltrommel auf der Rampe",
@@ -2380,7 +2380,7 @@ const HEFT_SEITEN = {
   },
   "el4": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "energieerhaltung", seite: 75,
+    sim: "energieerhaltung", seite: 77,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Bleibt die Energie beim Umwandeln erhalten?",
     titel: "Der Ball vom Bühnenrand",
@@ -2389,7 +2389,7 @@ const HEFT_SEITEN = {
   },
   "el5": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "energie-entwerten", seite: 79,
+    sim: "energie-entwerten", seite: 81,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum wird alles am Ende warm?",
     titel: "Der heiße Scheinwerfer am Abend",
@@ -2398,7 +2398,7 @@ const HEFT_SEITEN = {
   },
   "el6": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "leistung-rs", seite: 83,
+    sim: "leistung-rs", seite: 85,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was unterscheidet Arbeit von Leistung?",
     titel: "Zwei Kisten, zwei Tempos",
@@ -2407,7 +2407,7 @@ const HEFT_SEITEN = {
   },
   "el7": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "wirkungsgrad", seite: 87,
+    sim: "wirkungsgrad", seite: 89,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wie viel von der Energie kommt an?",
     titel: "Glühlampe oder LED",
@@ -2416,7 +2416,7 @@ const HEFT_SEITEN = {
   },
   "el8": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "hebel", seite: 91,
+    sim: "hebel", seite: 93,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum ist eine Stange länger als der Weg der Last?",
     titel: "Die Eisenstange unter dem Klavier",
@@ -2425,7 +2425,7 @@ const HEFT_SEITEN = {
   },
   "el9": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "feste-rolle", seite: 95,
+    sim: "feste-rolle", seite: 97,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was bringt eine Rolle an der Decke?",
     titel: "Die Rolle unter dem Hallendach",
@@ -2434,7 +2434,7 @@ const HEFT_SEITEN = {
   },
   "el10": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "flaschenzug", seite: 99,
+    sim: "flaschenzug", seite: 101,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Wie viele Seile tragen die Last?",
     titel: "Vier Seile für das Klavier",
@@ -2443,7 +2443,7 @@ const HEFT_SEITEN = {
   },
   "el11": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "zahnrad", seite: 103,
+    sim: "zahnrad", seite: 105,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum dreht sich das kleine Rad schneller?",
     titel: "Im Getriebe der Seilwinde",
@@ -2452,7 +2452,7 @@ const HEFT_SEITEN = {
   },
   "el12": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "schiefe-ebene", seite: 107,
+    sim: "schiefe-ebene", seite: 109,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Warum ist die Rampe leichter als das Heben?",
     titel: "Zwei Bohlen an der Bühnenkante",
@@ -2461,7 +2461,7 @@ const HEFT_SEITEN = {
   },
   "el13": {
     klasse: 9, schulform: "Gesamtschule NRW",
-    sim: "schiefe-ebene", seite: 110,
+    sim: "schiefe-ebene", seite: 113,
     kapitel: "Arbeit, Energie und Maschinen",
     name: "Was spart man wirklich - Kraft oder Arbeit?",
     titel: "Kraft gespart, Arbeit nicht",
@@ -2668,7 +2668,7 @@ const HEFT_SEITEN = {
   },
   "rk8": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "zerfallsreihe", seite: 97,
+    sim: "zerfallsreihe", seite: 98,
     kapitel: "Aus dem Atomkern",
     name: "Was wird aus einem Kern, der zerfällt?",
     titel: "Vierzehn Schritte bis zum Blei",
@@ -2677,7 +2677,7 @@ const HEFT_SEITEN = {
   },
   "rk9": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "kernspaltung", seite: 101,
+    sim: "kernspaltung", seite: 102,
     kapitel: "Aus dem Atomkern",
     name: "Was passiert bei einer Kernspaltung?",
     titel: "Ein Würfel gegen einen Güterzug",
@@ -2686,7 +2686,7 @@ const HEFT_SEITEN = {
   },
   "rk10": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "kettenreaktion", seite: 105,
+    sim: "kettenreaktion", seite: 106,
     kapitel: "Aus dem Atomkern",
     name: "Wie hält man eine Kettenreaktion unter Kontrolle?",
     titel: "Der Beitrag im Aufenthaltsraum",
@@ -2695,7 +2695,7 @@ const HEFT_SEITEN = {
   },
   "rk11": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "kettenreaktion", seite: 109,
+    sim: "kettenreaktion", seite: 110,
     kapitel: "Aus dem Atomkern",
     name: "Wie ist ein Kernkraftwerk aufgebaut?",
     titel: "Der Umweg über den Dampf",
@@ -2704,7 +2704,7 @@ const HEFT_SEITEN = {
   },
   "rk12": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 113,
+    sim: null, seite: 114,
     kapitel: "Aus dem Atomkern",
     name: "Wohin mit dem, was übrig bleibt?",
     titel: "Der abgeschlossene Raum im Keller",
@@ -2713,7 +2713,7 @@ const HEFT_SEITEN = {
   },
   "rk13": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "strahlenschutz", seite: 117,
+    sim: "strahlenschutz", seite: 118,
     kapitel: "Aus dem Atomkern",
     name: "Wie schützt man sich vor Strahlung?",
     titel: "Dosimeter, Blei und ein Schritt zurück",
@@ -2722,7 +2722,7 @@ const HEFT_SEITEN = {
   },
   "rk14": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "strahlenschutz", seite: 121,
+    sim: "strahlenschutz", seite: 122,
     kapitel: "Aus dem Atomkern",
     name: "Wie viel Strahlung ist noch vertretbar?",
     titel: "Ein Flug, eine Röntgenaufnahme, ein Grenzwert",
@@ -2731,7 +2731,7 @@ const HEFT_SEITEN = {
   },
   "rk15": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 125,
+    sim: null, seite: 126,
     kapitel: "Aus dem Atomkern",
     name: "Wie hilft Strahlung in der Medizin?",
     titel: "Die Liste im Vorbereitungsraum",
@@ -2740,7 +2740,7 @@ const HEFT_SEITEN = {
   },
   "rk16": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: "kernfusion", seite: 129,
+    sim: "kernfusion", seite: 130,
     kapitel: "Aus dem Atomkern",
     name: "Woher nimmt die Sonne ihre Energie?",
     titel: "Der Ofen im Sonnenkern",
@@ -2749,7 +2749,7 @@ const HEFT_SEITEN = {
   },
   "rk17": {
     klasse: 10, schulform: "Gesamtschule NRW",
-    sim: null, seite: 133,
+    sim: null, seite: 134,
     kapitel: "Aus dem Atomkern",
     name: "Kernenergie: Wie stehst du dazu?",
     titel: "Die Folie, die noch fehlt",
