@@ -33,7 +33,7 @@ def fluss(bb, band, ch, ti, tid):
     mess = []
     # wie einheit_pages: erst mit, dann ohne die Zeile "Das möchte ich noch üben"
     for ueben in (True, False):
-        for deckel in (None, 4, 3):
+        for deckel in (None, 2):
             bb.ZEILEN_DECKEL = deckel; bb.UEBEN_ZEILE = ueben
             B, _k, _q = bb.topic_pages(cfg, ch["title"], ti + 1, 1, *extra, nur_bausteine=True)
             if ub is not None:
