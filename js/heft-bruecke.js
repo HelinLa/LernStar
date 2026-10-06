@@ -4270,7 +4270,7 @@ const HEFT_SEITEN = {
   },
   "fs3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "spannung", seite: 9,
+    sim: "spannung", seite: 8,
     kapitel: "Strom in der Werkstatt",
     name: "Was sagt die Spannung der Energiequelle?",
     titel: "Die Spannung an der Energiequelle",
@@ -4279,7 +4279,7 @@ const HEFT_SEITEN = {
   },
   "fs4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromstaerke", seite: 12,
+    sim: "stromstaerke", seite: 11,
     kapitel: "Strom in der Werkstatt",
     name: "Wie viel Strom fließt?",
     titel: "Wie viel fließt da?",
@@ -4288,7 +4288,7 @@ const HEFT_SEITEN = {
   },
   "fs5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "messen", seite: 15,
+    sim: "messen", seite: 14,
     kapitel: "Strom in der Werkstatt",
     name: "Wohin kommt das Messgerät?",
     titel: "Zwei Messgeräte auf der Werkbank",
@@ -4297,7 +4297,7 @@ const HEFT_SEITEN = {
   },
   "fs6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "widerstand", seite: 18,
+    sim: "widerstand", seite: 17,
     kapitel: "Strom in der Werkstatt",
     name: "Großer Widerstand, kleiner Strom",
     titel: "Was bremst den Strom?",
@@ -4306,7 +4306,7 @@ const HEFT_SEITEN = {
   },
   "fs7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "draht", seite: 21,
+    sim: "draht", seite: 20,
     kapitel: "Strom in der Werkstatt",
     name: "Wovon hängt der Widerstand ab?",
     titel: "Der lange dünne Draht",
@@ -4315,7 +4315,7 @@ const HEFT_SEITEN = {
   },
   "fs8": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ohm-kennlinie", seite: 24,
+    sim: "ohm-kennlinie", seite: 23,
     kapitel: "Strom in der Werkstatt",
     name: "Doppelte Spannung, doppelter Strom",
     titel: "Was macht doppelte Spannung?",
@@ -4324,7 +4324,7 @@ const HEFT_SEITEN = {
   },
   "fs9": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "reihe-widerstand", seite: 27,
+    sim: "reihe-widerstand", seite: 26,
     kapitel: "Strom in der Werkstatt",
     name: "Zwei Widerstände in einer Reihe",
     titel: "Was passiert hintereinander?",
@@ -4333,7 +4333,7 @@ const HEFT_SEITEN = {
   },
   "fs10": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "parallel-widerstand", seite: 30,
+    sim: "parallel-widerstand", seite: 29,
     kapitel: "Strom in der Werkstatt",
     name: "Zwei Wege für den Strom",
     titel: "Was passiert nebeneinander?",
@@ -4342,7 +4342,7 @@ const HEFT_SEITEN = {
   },
   "fs11": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "elektronen-drift", seite: 33,
+    sim: "elektronen-drift", seite: 32,
     kapitel: "Strom in der Werkstatt",
     name: "Langsames Wandern, schnelles Signal",
     titel: "Warum geht das Licht sofort an?",
@@ -4351,7 +4351,7 @@ const HEFT_SEITEN = {
   },
   "fs12": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "blitz", seite: 36,
+    sim: "blitz", seite: 35,
     kapitel: "Strom in der Werkstatt",
     name: "Warum kommt der Donner später?",
     titel: "Blitz und Donner",
@@ -4360,7 +4360,7 @@ const HEFT_SEITEN = {
   },
   "fs13": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromgefahren", seite: 39,
+    sim: "stromgefahren", seite: 38,
     kapitel: "Strom in der Werkstatt",
     name: "Wann schaltet die Sicherung ab?",
     titel: "Zu viel an einer Steckdose",
@@ -4369,7 +4369,7 @@ const HEFT_SEITEN = {
   },
   "fb1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-begriff", seite: 45,
+    sim: "v-begriff", seite: 44,
     kapitel: "Wie schnell ist schnell?",
     name: "Wer ist schneller?",
     titel: "Das Wettrennen am Bildschirm",
@@ -4378,7 +4378,7 @@ const HEFT_SEITEN = {
   },
   "fb2": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-messen", seite: 48,
+    sim: "v-messen", seite: 47,
     kapitel: "Wie schnell ist schnell?",
     name: "Wie misst und rechnet man die Geschwindigkeit?",
     titel: "Messen und ausrechnen",
@@ -4387,7 +4387,7 @@ const HEFT_SEITEN = {
   },
   "fb3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-umrechnung", seite: 51,
+    sim: "v-umrechnung", seite: 50,
     kapitel: "Wie schnell ist schnell?",
     name: "Von m/s zu km/h – mal 3,6",
     titel: "km/h oder m/s?",
@@ -4396,7 +4396,7 @@ const HEFT_SEITEN = {
   },
   "fb4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "gleichfoermig-rs", seite: 54,
+    sim: "gleichfoermig-rs", seite: 53,
     kapitel: "Wie schnell ist schnell?",
     name: "Was sagen die Abstände?",
     titel: "Kreidestriche auf dem Schulhof",
@@ -4405,7 +4405,7 @@ const HEFT_SEITEN = {
   },
   "fb5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "weg-zeit-diagramm", seite: 57,
+    sim: "weg-zeit-diagramm", seite: 56,
     kapitel: "Wie schnell ist schnell?",
     name: "Was verrät die Linie im Weg-Zeit-Diagramm?",
     titel: "Linien an der Werkstattwand",
@@ -4414,7 +4414,7 @@ const HEFT_SEITEN = {
   },
   "fb6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-zeit-diagramm", seite: 60,
+    sim: "v-zeit-diagramm", seite: 59,
     kapitel: "Wie schnell ist schnell?",
     name: "Was verrät die Linie im Geschwindigkeit-Zeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
@@ -4423,7 +4423,7 @@ const HEFT_SEITEN = {
   },
   "fb7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "bremsweg-jg9", seite: 63,
+    sim: "bremsweg-jg9", seite: 62,
     kapitel: "Wie schnell ist schnell?",
     name: "Wie weit fährt ein Auto bis zum Halt?",
     titel: "Bis das Auto steht",
@@ -6309,7 +6309,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt die Erde nicht in die Sonne?",
     titel: "Das ewige Vorbeifallen",
     frage: "Warum stürzt ein Planet nicht in die Sonne, obwohl sie ihn anzieht?",
-    schritte: ["Drücke „ganz klein“. Lies in der Statuszeile die Bahnform ab.", "Drücke danach „mittlerer Wert“ und „etwas darüber“.", "Drücke zuletzt „Gegenprobe groß“.", "Trage für jeden Knopf die Startgeschwindigkeit und die Bahnform ein."]
+    schritte: ["Drücke „ganz klein“. Lies in der Statuszeile die Bahnform ab.", "Drücke danach „mittlerer Wert“ und „etwas darüber“.", "Drücke zuletzt „Gegenprobe groß“.", "Trage für jeden Knopf die Startgeschwindigkeit v und die Bahnform ein."]
   },
   "fg10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
