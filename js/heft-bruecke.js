@@ -112,7 +112,7 @@ const HEFT_SEITEN = {
   },
   "s2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "stromkreis-lampe", seite: 45,
+    sim: "stromkreis-lampe", seite: 44,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Wann leuchtet eine Lampe?",
     titel: "Alles heil, und trotzdem dunkel",
@@ -121,7 +121,7 @@ const HEFT_SEITEN = {
   },
   "s3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "leiter-nichtleiter", seite: 49,
+    sim: "leiter-nichtleiter", seite: 48,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Welche Stoffe leiten Strom?",
     titel: "Der Riss im Kabel",
@@ -130,7 +130,7 @@ const HEFT_SEITEN = {
   },
   "s6": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: null, seite: 52,
+    sim: null, seite: 51,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Der Schalter",
     titel: "Muss der Schalter an die Batterie?",
@@ -139,7 +139,7 @@ const HEFT_SEITEN = {
   },
   "s4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "reihenschaltung-rs", seite: 58,
+    sim: "reihenschaltung-rs", seite: 57,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Reihenschaltung",
     titel: "Zwei Lampen, und beide funzeln",
@@ -148,7 +148,7 @@ const HEFT_SEITEN = {
   },
   "s5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "parallelschaltung-rs", seite: 62,
+    sim: "parallelschaltung-rs", seite: 61,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Parallelschaltung",
     titel: "Vorne aus, hinten an",
@@ -157,7 +157,7 @@ const HEFT_SEITEN = {
   },
   "s7": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "elektromagnet", seite: 65,
+    sim: "elektromagnet", seite: 64,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Elektromagnet",
     titel: "Der Knopf, der den Magneten anschaltet",
@@ -166,7 +166,7 @@ const HEFT_SEITEN = {
   },
   "s1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "schaltplan", seite: 56,
+    sim: "schaltplan", seite: 55,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Stromkreis und Schaltzeichen",
     titel: "Der Zettel aus dem Fahrradladen",
@@ -175,7 +175,7 @@ const HEFT_SEITEN = {
   },
   "w1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "temperatur-waerme", seite: 71,
+    sim: "temperatur-waerme", seite: 70,
     kapitel: "Temperatur & Wärme",
     name: "Sind Temperatur und Wärme das Gleiche?",
     titel: "Der Löffel in der Teetasse",
@@ -184,7 +184,7 @@ const HEFT_SEITEN = {
   },
   "w2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "thermometer", seite: 74,
+    sim: "thermometer", seite: 73,
     kapitel: "Temperatur & Wärme",
     name: "Wie funktioniert ein Thermometer?",
     titel: "Der Faden, der wandert",
@@ -193,7 +193,7 @@ const HEFT_SEITEN = {
   },
   "w3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "waermeausdehnung", seite: 77,
+    sim: "waermeausdehnung", seite: 76,
     kapitel: "Temperatur & Wärme",
     name: "Was geschieht beim Erwärmen von Stoffen?",
     titel: "Der bockige Deckel",
@@ -202,7 +202,7 @@ const HEFT_SEITEN = {
   },
   "w4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "aggregatzustaende", seite: 80,
+    sim: "aggregatzustaende", seite: 79,
     kapitel: "Temperatur & Wärme",
     name: "Wie verändern sich Aggregatzustände?",
     titel: "Aus Eis wird Wasser",
@@ -211,7 +211,7 @@ const HEFT_SEITEN = {
   },
   "w5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "waermeuebertragung", seite: 83,
+    sim: "waermeuebertragung", seite: 82,
     kapitel: "Temperatur & Wärme",
     name: "Wie wird Wärme übertragen?",
     titel: "Zu heiß zum Anfassen",
@@ -220,7 +220,7 @@ const HEFT_SEITEN = {
   },
   "sc1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "ton-entsteht", seite: 88,
+    sim: "ton-entsteht", seite: 87,
     kapitel: "Schall & Hören",
     name: "Wie entsteht ein Ton?",
     titel: "Das Brummen aus der Keksdose",
@@ -229,7 +229,7 @@ const HEFT_SEITEN = {
   },
   "sc2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "lautstaerke", seite: 91,
+    sim: "lautstaerke", seite: 90,
     kapitel: "Schall & Hören",
     name: "Wovon hängt die Lautstärke ab?",
     titel: "Nicht so laut!",
@@ -238,7 +238,7 @@ const HEFT_SEITEN = {
   },
   "sc3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "tonhoehe", seite: 94,
+    sim: "tonhoehe", seite: 93,
     kapitel: "Schall & Hören",
     name: "Wovon hängt die Tonhöhe ab?",
     titel: "Zu hoch, zu tief",
@@ -247,7 +247,7 @@ const HEFT_SEITEN = {
   },
   "sc4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "schallausbreitung", seite: 97,
+    sim: "schallausbreitung", seite: 96,
     kapitel: "Schall & Hören",
     name: "Wie breitet sich Schall aus?",
     titel: "Der Nachbar hört alles",
@@ -256,7 +256,7 @@ const HEFT_SEITEN = {
   },
   "sc5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "ohr", seite: 100,
+    sim: "ohr", seite: 99,
     kapitel: "Schall & Hören",
     name: "Wie funktioniert das Ohr?",
     titel: "Das Pfeifen im Ohr",
@@ -265,7 +265,7 @@ const HEFT_SEITEN = {
   },
   "h1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "tag-nacht", seite: 105,
+    sim: "tag-nacht", seite: 104,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entstehen Tag und Nacht?",
     titel: "Tag hier, Nacht dort",
@@ -274,7 +274,7 @@ const HEFT_SEITEN = {
   },
   "h2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "jahreszeiten", seite: 108,
+    sim: "jahreszeiten", seite: 107,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entstehen die Jahreszeiten?",
     titel: "Vom Schnee zum Sonnenbrand",
@@ -283,7 +283,7 @@ const HEFT_SEITEN = {
   },
   "h3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "mondphasen", seite: 111,
+    sim: "mondphasen", seite: 110,
     kapitel: "Sonne, Erde & Mond",
     name: "Warum verändert der Mond sein Aussehen?",
     titel: "Jeden Abend ein anderer Mond",
@@ -292,7 +292,7 @@ const HEFT_SEITEN = {
   },
   "h4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "sonnenfinsternis", seite: 114,
+    sim: "sonnenfinsternis", seite: 113,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entsteht eine Sonnenfinsternis?",
     titel: "Nacht am Mittag",
@@ -301,7 +301,7 @@ const HEFT_SEITEN = {
   },
   "h5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "mondfinsternis", seite: 117,
+    sim: "mondfinsternis", seite: 116,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entsteht eine Mondfinsternis?",
     titel: "Der Mond wird rot",
@@ -427,7 +427,7 @@ const HEFT_SEITEN = {
   },
   "f3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechungswinkel", seite: 59,
+    sim: "brechungswinkel", seite: 58,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wovon hängt die Stärke der Brechung ab?",
     titel: "Immer zehn Grad weiter",
@@ -436,7 +436,7 @@ const HEFT_SEITEN = {
   },
   "f11": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechung-austritt", seite: 63,
+    sim: "brechung-austritt", seite: 62,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Was geschieht beim Übergang von Glas in Luft?",
     titel: "Zurück ins Freie",
@@ -445,7 +445,7 @@ const HEFT_SEITEN = {
   },
   "f4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "totalreflexion", seite: 67,
+    sim: "totalreflexion", seite: 66,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie funktioniert ein Lichtleiter?",
     titel: "Das Licht macht die Kurve",
@@ -454,7 +454,7 @@ const HEFT_SEITEN = {
   },
   "f5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "prisma", seite: 71,
+    sim: "prisma", seite: 70,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Welche Farben stecken im weißen Licht?",
     titel: "Der Streifen auf dem Bauplan",
@@ -463,7 +463,7 @@ const HEFT_SEITEN = {
   },
   "f6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "regenbogen", seite: 75,
+    sim: "regenbogen", seite: 74,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie entstehen die Farben eines Regenbogens?",
     titel: "Der Bogen über dem Feld",
@@ -472,7 +472,7 @@ const HEFT_SEITEN = {
   },
   "g1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "himmelskoerper", seite: 81,
+    sim: "himmelskoerper", seite: 79,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Sonne, Mond und Sterne – was leuchtet am Himmel?",
     titel: "Einer funkelt, einer nicht",
@@ -481,7 +481,7 @@ const HEFT_SEITEN = {
   },
   "g2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "tag-nacht", seite: 85,
+    sim: "tag-nacht", seite: 83,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie entstehen Tag und Nacht?",
     titel: "Dieselbe Minute, vier Uhrzeiten",
@@ -490,7 +490,7 @@ const HEFT_SEITEN = {
   },
   "g3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gravitation", seite: 89,
+    sim: "gravitation", seite: 87,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Die Gravitation – warum fällt alles nach unten?",
     titel: "Wer ist zuerst unten?",
@@ -499,7 +499,7 @@ const HEFT_SEITEN = {
   },
   "g9": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gravitation-abstand", seite: 93,
+    sim: "gravitation-abstand", seite: 91,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wovon hängt die Anziehungskraft zweier Körper ab?",
     titel: "Der Kleine zieht, der Große nicht",
@@ -508,7 +508,7 @@ const HEFT_SEITEN = {
   },
   "g6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "planetenbahn", seite: 97,
+    sim: "planetenbahn", seite: 95,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Warum fallen die Planeten nicht in die Sonne?",
     titel: "Warum stürzt er nicht?",
@@ -517,7 +517,7 @@ const HEFT_SEITEN = {
   },
   "g7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sonnensystem", seite: 101,
+    sim: "sonnensystem", seite: 99,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Acht Planeten, zwei Sorten",
     titel: "Die Kleinen und die Riesen",
@@ -526,7 +526,7 @@ const HEFT_SEITEN = {
   },
   "g8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "ortsfaktor", seite: 105,
+    sim: "ortsfaktor", seite: 103,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wäre ich auf dem Mond wirklich leichter?",
     titel: "Hüpfen wie auf dem Mond",
@@ -535,7 +535,7 @@ const HEFT_SEITEN = {
   },
   "g10": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gezeiten", seite: 109,
+    sim: "gezeiten", seite: 107,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Warum steigt und fällt das Meer zweimal am Tag?",
     titel: "Zweimal am Tag",
@@ -544,7 +544,7 @@ const HEFT_SEITEN = {
   },
   "g4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "weltall-aufbau", seite: 113,
+    sim: "weltall-aufbau", seite: 110,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie groß ist das Sonnensystem wirklich?",
     titel: "Der Fußball und die Stecknadel",
@@ -553,7 +553,7 @@ const HEFT_SEITEN = {
   },
   "g5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "entfernungen", seite: 117,
+    sim: "entfernungen", seite: 114,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie weit ist es im Weltall? (Lichtjahr)",
     titel: "Wie alt ist dieses Licht?",
@@ -562,7 +562,7 @@ const HEFT_SEITEN = {
   },
   "t1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "teleskop", seite: 123,
+    sim: "teleskop", seite: 120,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie holt ein Teleskop ferne Objekte näher heran?",
     titel: "Zwei Gläser auf der Leiste",
@@ -571,7 +571,7 @@ const HEFT_SEITEN = {
   },
   "t2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "spezialteleskop", seite: 127,
+    sim: "spezialteleskop", seite: 124,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie sieht man mit besonderen Teleskopen unsichtbares Licht?",
     titel: "Die Lampe, die keiner sieht",
@@ -580,7 +580,7 @@ const HEFT_SEITEN = {
   },
   "t6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sternleben", seite: 131,
+    sim: "sternleben", seite: 128,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Warum leuchtet ein Stern – und warum nicht ewig?",
     titel: "Wer zuerst ausgeht",
@@ -589,7 +589,7 @@ const HEFT_SEITEN = {
   },
   "t7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sternspektrum", seite: 135,
+    sim: "sternspektrum", seite: 132,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Woraus bestehen die Sterne?",
     titel: "Streifen, die fehlen",
@@ -598,7 +598,7 @@ const HEFT_SEITEN = {
   },
   "t8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "milchstrasse", seite: 139,
+    sim: "milchstrasse", seite: 136,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Die Milchstraße – wo stehen wir?",
     titel: "Das Band über dem Feld",
@@ -607,7 +607,7 @@ const HEFT_SEITEN = {
   },
   "t3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "weltbild", seite: 143,
+    sim: "weltbild", seite: 140,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie hat sich die Vorstellung vom Weltall verändert?",
     titel: "Wer steht in der Mitte?",
@@ -616,7 +616,7 @@ const HEFT_SEITEN = {
   },
   "t4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "schwarzes-loch", seite: 147,
+    sim: "schwarzes-loch", seite: 144,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Was passiert bei einem schwarzen Loch?",
     titel: "Ein Ring um nichts",
@@ -625,7 +625,7 @@ const HEFT_SEITEN = {
   },
   "t5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "urknall", seite: 151,
+    sim: "urknall", seite: 148,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie ist das Weltall entstanden? (Urknall)",
     titel: "Punkte auf dem Ballon",
