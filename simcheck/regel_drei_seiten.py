@@ -28,22 +28,17 @@ def laden(band):
 
 
 def fluss(bb, band, ch, ti, tid):
+    """Dieselbe Auswahl wie build_book.einheit_pages (einheit_auswahl)."""
     fd = bb.fd; cfg = bb.FSD[tid]; ub = bb.UEBD.get(tid)
     extra = (bb._diag(ch["id"], tid),) if band == "arbeitsheft" else ()
-    mess = []
-    # wie einheit_pages: erst mit, dann ohne die Zeile "Das möchte ich noch üben"
-    for ueben in (True, False):
-        for deckel in (None, 2):
-            bb.ZEILEN_DECKEL = deckel; bb.UEBEN_ZEILE = ueben
-            B, _k, _q = bb.topic_pages(cfg, ch["title"], ti + 1, 1, *extra, nur_bausteine=True)
-            if ub is not None:
-                U = bb.ch_uebung(ub, cfg, ch["title"], ti + 1, 1, cfg.get("ueberleitung"), nur_bausteine=True)
-                U = [bb.b_band("Übungen", "Balken Übungen")] + [x for x in U[1:] if x.name != "Themenzeile"]
-                B[-1].abstand = fd.ABS_ABSCHNITT; B = B + U
-            mess.append((len(fd.umbrechen(B, fd.messe_bausteine(B, fd.STIL))), len(mess), B))
-    bb.ZEILEN_DECKEL = None; bb.UEBEN_ZEILE = True
-    smin = min(m[0] for m in mess)
-    return min([m for m in mess if m[0] == smin], key=lambda m: m[1])[2]
+    def bauen():
+        B, k, q = bb.topic_pages(cfg, ch["title"], ti + 1, 1, *extra, nur_bausteine=True)
+        if ub is not None:
+            U = bb.ch_uebung(ub, cfg, ch["title"], ti + 1, 1, cfg.get("ueberleitung"), nur_bausteine=True)
+            U = [bb.b_band("Übungen", "Balken Übungen")] + [x for x in U[1:] if x.name != "Themenzeile"]
+            B[-1].abstand = fd.ABS_ABSCHNITT; B = B + U
+        return B, k, q
+    return bb.einheit_auswahl(bauen)[0]
 
 
 def band_messen(band):
