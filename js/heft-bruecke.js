@@ -4270,7 +4270,7 @@ const HEFT_SEITEN = {
   },
   "fs3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "spannung", seite: 8,
+    sim: "spannung", seite: 9,
     kapitel: "Strom in der Werkstatt",
     name: "Was sagt die Spannung der Energiequelle?",
     titel: "Die Spannung an der Energiequelle",
@@ -4279,7 +4279,7 @@ const HEFT_SEITEN = {
   },
   "fs4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromstaerke", seite: 11,
+    sim: "stromstaerke", seite: 12,
     kapitel: "Strom in der Werkstatt",
     name: "Wie viel Strom fließt?",
     titel: "Wie viel fließt da?",
@@ -4288,7 +4288,7 @@ const HEFT_SEITEN = {
   },
   "fs5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "messen", seite: 14,
+    sim: "messen", seite: 15,
     kapitel: "Strom in der Werkstatt",
     name: "Wohin kommt das Messgerät?",
     titel: "Zwei Messgeräte auf der Werkbank",
@@ -4297,7 +4297,7 @@ const HEFT_SEITEN = {
   },
   "fs6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "widerstand", seite: 17,
+    sim: "widerstand", seite: 18,
     kapitel: "Strom in der Werkstatt",
     name: "Großer Widerstand, kleiner Strom",
     titel: "Was bremst den Strom?",
@@ -4306,7 +4306,7 @@ const HEFT_SEITEN = {
   },
   "fs7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "draht", seite: 20,
+    sim: "draht", seite: 21,
     kapitel: "Strom in der Werkstatt",
     name: "Wovon hängt der Widerstand ab?",
     titel: "Der lange dünne Draht",
@@ -4315,7 +4315,7 @@ const HEFT_SEITEN = {
   },
   "fs8": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "ohm-kennlinie", seite: 23,
+    sim: "ohm-kennlinie", seite: 24,
     kapitel: "Strom in der Werkstatt",
     name: "Doppelte Spannung, doppelter Strom",
     titel: "Was macht doppelte Spannung?",
@@ -4324,7 +4324,7 @@ const HEFT_SEITEN = {
   },
   "fs9": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "reihe-widerstand", seite: 26,
+    sim: "reihe-widerstand", seite: 27,
     kapitel: "Strom in der Werkstatt",
     name: "Zwei Widerstände in einer Reihe",
     titel: "Was passiert hintereinander?",
@@ -4333,7 +4333,7 @@ const HEFT_SEITEN = {
   },
   "fs10": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "parallel-widerstand", seite: 29,
+    sim: "parallel-widerstand", seite: 30,
     kapitel: "Strom in der Werkstatt",
     name: "Zwei Wege für den Strom",
     titel: "Was passiert nebeneinander?",
@@ -4342,7 +4342,7 @@ const HEFT_SEITEN = {
   },
   "fs11": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "elektronen-drift", seite: 32,
+    sim: "elektronen-drift", seite: 33,
     kapitel: "Strom in der Werkstatt",
     name: "Langsames Wandern, schnelles Signal",
     titel: "Warum geht das Licht sofort an?",
@@ -4351,7 +4351,7 @@ const HEFT_SEITEN = {
   },
   "fs12": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "blitz", seite: 35,
+    sim: "blitz", seite: 36,
     kapitel: "Strom in der Werkstatt",
     name: "Warum kommt der Donner später?",
     titel: "Blitz und Donner",
@@ -4360,7 +4360,7 @@ const HEFT_SEITEN = {
   },
   "fs13": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "stromgefahren", seite: 38,
+    sim: "stromgefahren", seite: 39,
     kapitel: "Strom in der Werkstatt",
     name: "Wann schaltet die Sicherung ab?",
     titel: "Zu viel an einer Steckdose",
@@ -4369,7 +4369,7 @@ const HEFT_SEITEN = {
   },
   "fb1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-begriff", seite: 44,
+    sim: "v-begriff", seite: 45,
     kapitel: "Wie schnell ist schnell?",
     name: "Wer ist schneller?",
     titel: "Das Wettrennen am Bildschirm",
@@ -4378,7 +4378,7 @@ const HEFT_SEITEN = {
   },
   "fb2": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-messen", seite: 47,
+    sim: "v-messen", seite: 48,
     kapitel: "Wie schnell ist schnell?",
     name: "Wie misst und rechnet man die Geschwindigkeit?",
     titel: "Messen und ausrechnen",
@@ -4387,7 +4387,7 @@ const HEFT_SEITEN = {
   },
   "fb3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-umrechnung", seite: 50,
+    sim: "v-umrechnung", seite: 51,
     kapitel: "Wie schnell ist schnell?",
     name: "Von m/s zu km/h – mal 3,6",
     titel: "km/h oder m/s?",
@@ -4396,7 +4396,7 @@ const HEFT_SEITEN = {
   },
   "fb4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "gleichfoermig-rs", seite: 53,
+    sim: "gleichfoermig-rs", seite: 54,
     kapitel: "Wie schnell ist schnell?",
     name: "Was sagen die Abstände?",
     titel: "Kreidestriche auf dem Schulhof",
@@ -4405,7 +4405,7 @@ const HEFT_SEITEN = {
   },
   "fb5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "weg-zeit-diagramm", seite: 56,
+    sim: "weg-zeit-diagramm", seite: 57,
     kapitel: "Wie schnell ist schnell?",
     name: "Was verrät die Linie im Weg-Zeit-Diagramm?",
     titel: "Linien an der Werkstattwand",
@@ -4414,7 +4414,7 @@ const HEFT_SEITEN = {
   },
   "fb6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "v-zeit-diagramm", seite: 59,
+    sim: "v-zeit-diagramm", seite: 60,
     kapitel: "Wie schnell ist schnell?",
     name: "Was verrät die Linie im Geschwindigkeit-Zeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
@@ -4423,7 +4423,7 @@ const HEFT_SEITEN = {
   },
   "fb7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
-    sim: "bremsweg-jg9", seite: 62,
+    sim: "bremsweg-jg9", seite: 63,
     kapitel: "Wie schnell ist schnell?",
     name: "Wie weit fährt ein Auto bis zum Halt?",
     titel: "Bis das Auto steht",
@@ -5503,7 +5503,7 @@ const HEFT_SEITEN = {
   },
   "bs1": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-auge", seite: 100,
+    sim: "bio-auge", seite: 101,
     kapitel: "Meine Sinne",
     name: "Wie sieht das Auge?",
     titel: "Ein Bild hinten im Auge",
@@ -5512,7 +5512,7 @@ const HEFT_SEITEN = {
   },
   "bs2": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-blinder-fleck", seite: 103,
+    sim: "bio-blinder-fleck", seite: 104,
     kapitel: "Meine Sinne",
     name: "Wo sieht das Auge nichts?",
     titel: "Der Punkt verschwindet",
@@ -5521,7 +5521,7 @@ const HEFT_SEITEN = {
   },
   "bs3": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-ohr", seite: 106,
+    sim: "bio-ohr", seite: 107,
     kapitel: "Meine Sinne",
     name: "Wie hört das Ohr?",
     titel: "Der Weg des Schalls ins Ohr",
@@ -5530,7 +5530,7 @@ const HEFT_SEITEN = {
   },
   "bs4": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-richtungshoeren", seite: 109,
+    sim: "bio-richtungshoeren", seite: 110,
     kapitel: "Meine Sinne",
     name: "Aus welcher Richtung kommt der Ton?",
     titel: "Wo klatscht Samir?",
@@ -5539,7 +5539,7 @@ const HEFT_SEITEN = {
   },
   "bs5": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-reaktion", seite: 112,
+    sim: "bio-reaktion", seite: 113,
     kapitel: "Meine Sinne",
     name: "Wie schnell reagiere ich?",
     titel: "Das fallende Lineal",
@@ -5548,7 +5548,7 @@ const HEFT_SEITEN = {
   },
   "bs6": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-haut", seite: 115,
+    sim: "bio-haut", seite: 116,
     kapitel: "Meine Sinne",
     name: "Was fühlt die Haut?",
     titel: "Fingerspitze oder Rücken?",
@@ -5557,7 +5557,7 @@ const HEFT_SEITEN = {
   },
   "bs7": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-reflektor", seite: 118,
+    sim: "bio-reflektor", seite: 119,
     kapitel: "Meine Sinne",
     name: "Warum sieht der Autofahrer dich im Dunkeln?",
     titel: "Gesehen werden im Dunkeln",
@@ -5566,7 +5566,7 @@ const HEFT_SEITEN = {
   },
   "bs8": {
     klasse: "5/6", schulform: "Gesamtschule NRW · Förderheft Biologie",
-    sim: "bio-fledermaus", seite: 121,
+    sim: "bio-fledermaus", seite: 122,
     kapitel: "Meine Sinne",
     name: "Wie findet die Fledermaus ihr Futter?",
     titel: "Rufen und horchen in der Nacht",
