@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · DER WEG DES EMBRYOS IN DEN ERSTEN TAGEN  (Förderheft Bio 9 · bz2) ──
+  'bio-embryo': modal => { _n9mInit(); modal.innerHTML = _n9mHTML(); _n9mStatus(); _pSim = new PhysicsSimEngine('_n9m-cv', '_n9m-cv'); _pSim.start(dt => _n9mUpdate(dt), (ctx, cv) => _n9mDraw(ctx, cv), []); },

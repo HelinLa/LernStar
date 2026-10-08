@@ -1880,7 +1880,7 @@ function _stbTabelleHTML() {
   const zelle = (v, hell) => '<td style="padding:3px 4px;border-bottom:1px solid #f1f5f9;color:' + (hell ? '#334155' : '#94a3b8') + '">' + v + '</td>';
   let s = '<table style="width:100%;border-collapse:collapse;font-size:.68rem;line-height:1.3">' +
           '<tr style="color:#64748b;font-weight:800;text-align:left">' +
-          ['Masse', 'Lebensdauer', 'Farbe', 'Ende'].map(k =>
+          ['Masse (Sonnenmassen)', 'Lebensdauer', 'Farbe', 'Ende'].map(k =>
             '<th style="padding:2px 4px;border-bottom:1px solid #e2e8f0">' + k + '</th>').join('') +
           '</tr>';
   _STB_HEFT.forEach(m => {
@@ -4913,9 +4913,9 @@ const _physSimDefs = {
         ctx.fillStyle = '#7c3aed'; ctx.beginPath(); ctx.arc(x1, cv.height / 2, r1, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#f97316'; ctx.beginPath(); ctx.arc(x2, cv.height / 2, r2, 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = '#fff'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
-        ctx.fillText(`m${m1}`, x1, cv.height / 2 + 4); ctx.fillText(`m${m2}`, x2, cv.height / 2 + 4);
+        ctx.fillText(`${m1} kg`, x1, cv.height / 2 + 4); ctx.fillText(`${m2} kg`, x2, cv.height / 2 + 4);   // Masse mit Einheit statt "m3" (08.10.2026)
         ctx.textAlign = 'left';
-        _infoBox(ctx, cv, [`p₁=${(m1*v1).toFixed(1)}`, `p₂=${(m2*v2).toFixed(1)}`, `p_ges=${(m1*v1+m2*v2).toFixed(1)}`]);
+        _infoBox(ctx, cv, [`p₁=${(m1*v1).toFixed(1)} kg·m/s`, `p₂=${(m2*v2).toFixed(1)} kg·m/s`, `p_ges=${(m1*v1+m2*v2).toFixed(1)} kg·m/s`]);   // Einheit wie an der Diagrammachse (08.10.2026)
       },
       [
         { series: 'p1',   title: 'Impuls Ball 1',   label: 'p₁',   unit: 'kg·m/s', color: '#7c3aed' },
@@ -5265,7 +5265,7 @@ const _physSimDefs = {
         // Legende
         ctx.fillStyle = '#10b981'; ctx.font = '700 11px sans-serif'; ctx.fillText('v (tangential)', cv.width - 130, 20);
         ctx.fillStyle = '#ef4444'; ctx.fillText('F_z (Zentripetal)', cv.width - 130, 36);
-        _infoBox(ctx, cv, [`ω=${omega}rad/s`, `v≈${v}`, `F_z≈${fz}N`]);
+        _infoBox(ctx, cv, [`ω=${omega}rad/s`, `v≈${v}m/s`, `F_z≈${fz}N`]);   // v = ω·r/10 in m/s (10 px = 1 m, wie bei F_z); Einheit in jeder Anzeige (Abdullah, 08.10.2026)
       },
       [
         { series: 'phi', title: 'Winkel φ(t)', label: 'φ', unit: '°',    color: '#7c3aed' },
@@ -5348,7 +5348,7 @@ const _physSimDefs = {
         const carX = (x * 2) % (cv.width + 80) - 40;
         const col = F === 0 ? '#10b981' : (F > 0 ? '#7c3aed' : '#ef4444');
         _drawCar(ctx, carX, cv.height - 70, col);
-        const lbl = F === 0 ? 'F = 0 → v bleibt konstant! (Trägheit)' : (F > 0 ? 'F > 0 → Beschleunigung!' : 'F < 0 → Verzögerung!');
+        const lbl = F === 0 ? 'F = 0 N → v bleibt konstant! (Trägheit)' : (F > 0 ? 'F > 0 N → Beschleunigung!' : 'F < 0 N → Verzögerung!');
         ctx.fillStyle = col; ctx.font = '700 12px sans-serif'; ctx.fillText(lbl, 10, 22);
         _infoBox(ctx, cv, [`v₀=${v0}m/s`, `F=${F}N`, `v=${v.toFixed(1)}m/s`]);
       },
@@ -7602,6 +7602,49 @@ const _physSimDefs = {
   'm5-spiegel': modal => { _m5qInit(); modal.innerHTML = _m5qHTML(); _m5qStatus(); _pSim = new PhysicsSimEngine('_m5q-cv', '_m5q-cv'); _pSim.start(dt => _m5qUpdate(dt), (ctx, cv) => _m5qDraw(ctx, cv), []); },
   'spule-feld': modal => { _f10kInit(); modal.innerHTML = _f10kHTML(); _f10kStatus(); _pSim = new PhysicsSimEngine('_f10k-cv', '_f10k-cv'); _pSim.start(dt => _f10kUpdate(dt), (ctx, cv) => _f10kDraw(ctx, cv), []); },
   'leiter-feld': modal => { _f10lInit(); modal.innerHTML = _f10lHTML(); _f10lStatus(); _pSim = new PhysicsSimEngine('_f10l-cv', '_f10l-cv'); _pSim.start(dt => _f10lUpdate(dt), (ctx, cv) => _f10lDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WIE VIELE CHROMOSOMEN HAT EINE ZELLE?  (Förderheft Bio 9 · bt1) ──
+  'bio-chromosomen': modal => { _n9nInit(); modal.innerHTML = _n9nHTML(); _n9nStatus(); _pSim = new PhysicsSimEngine('_n9n-cv', '_n9n-cv'); _pSim.start(dt => _n9nUpdate(dt), (ctx, cv) => _n9nDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · BLUTWÄSCHE: WIE OFT IN DER WOCHE?  (Förderheft Bio 9 · bd3) ──
+  'bio-dialyse': modal => { _n9jInit(); modal.innerHTML = _n9jHTML(); _n9jStatus(); _pSim = new PhysicsSimEngine('_n9j-cv', '_n9j-cv'); _pSim.start(dt => _n9jUpdate(dt), (ctx, cv) => _n9jDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WAS STEHT IN DER DNA?  (Förderheft Bio 9 · bt4) ──
+  'bio-dna': modal => { _n9qInit(); modal.innerHTML = _n9qHTML(); _n9qStatus(); _pSim = new PhysicsSimEngine('_n9q-cv', '_n9q-cv'); _pSim.start(dt => _n9qUpdate(dt), (ctx, cv) => _n9qDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · DER WEG DES EMBRYOS IN DEN ERSTEN TAGEN  (Förderheft Bio 9 · bz2) ──
+  'bio-embryo': modal => { _n9mInit(); modal.innerHTML = _n9mHTML(); _n9mStatus(); _pSim = new PhysicsSimEngine('_n9m-cv', '_n9m-cv'); _pSim.start(dt => _n9mUpdate(dt), (ctx, cv) => _n9mDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WIE WIRD AUS EINEM GEN EIN MERKMAL?  (Förderheft Bio 9 · bt5) ──
+  'bio-genmerkmal': modal => { _n9rInit(); modal.innerHTML = _n9rHTML(); _n9rStatus(); _pSim = new PhysicsSimEngine('_n9r-cv', '_n9r-cv'); _pSim.start(dt => _n9rUpdate(dt), (ctx, cv) => _n9rDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WARUM TAUCHT EIN MERKMAL WIEDER AUF?  (Förderheft Bio 9 · bt3) ──
+  'bio-kreuzung': modal => { _n9pInit(); modal.innerHTML = _n9pHTML(); _n9pStatus(); _pSim = new PhysicsSimEngine('_n9p-cv', '_n9p-cv'); _pSim.start(dt => _n9pUpdate(dt), (ctx, cv) => _n9pDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WIE LERNT DAS GEHIRN?  (Förderheft Bio 9 · br6) ──
+  'bio-lernen': modal => { _n9fInit(); modal.innerHTML = _n9fHTML(); _n9fStatus(); _pSim = new PhysicsSimEngine('_n9f-cv', '_n9f-cv'); _pSim.start(dt => _n9fUpdate(dt), (ctx, cv) => _n9fDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WELCHE FARBE HABEN MENDELS ERBSEN?  (Förderheft Bio 9 · bt2) ──
+  'bio-mendel': modal => { _n9oInit(); modal.innerHTML = _n9oHTML(); _n9oStatus(); _pSim = new PhysicsSimEngine('_n9o-cv', '_n9o-cv'); _pSim.start(dt => _n9oUpdate(dt), (ctx, cv) => _n9oDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · KURZ GEMERKT ODER LANGE GEWUSST?  (Förderheft Bio 9 · br7) ──
+  'bio-merken': modal => { _n9gInit(); modal.innerHTML = _n9gHTML(); _n9gStatus(); _pSim = new PhysicsSimEngine('_n9g-cv', '_n9g-cv'); _pSim.start(dt => _n9gUpdate(dt), (ctx, cv) => _n9gDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WIE TEILT SICH EINE ZELLE?  (Förderheft Bio 9 · bz1) ──
+  'bio-mitose': modal => { _n9lInit(); modal.innerHTML = _n9lHTML(); _n9lStatus(); _pSim = new PhysicsSimEngine('_n9l-cv', '_n9l-cv'); _pSim.start(dt => _n9lUpdate(dt), (ctx, cv) => _n9lDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · EIN NETZ DURCH DEN GANZEN KÖRPER  (Förderheft Bio 9 · br1) ──
+  'bio-nervensystem': modal => { _n9aInit(); modal.innerHTML = _n9aHTML(); _n9aStatus(); _pSim = new PhysicsSimEngine('_n9a-cv', '_n9a-cv'); _pSim.start(dt => _n9aUpdate(dt), (ctx, cv) => _n9aDraw(ctx, cv), []); },
+  // ── BIO 9 · WIE IST DIE NERVENZELLE GEBAUT?  (Förderheft Bio 9 · br3) ──
+  'bio-nervenzelle': modal => { _n9cInit(); modal.innerHTML = _n9cHTML(); _n9cStatus(); _pSim = new PhysicsSimEngine('_n9c-cv', '_n9c-cv'); _pSim.start(dt => _n9cUpdate(dt), (ctx, cv) => _n9cDraw(ctx, cv), []); },
+  // ── BIO 9 · WAS MACHT DIE NIERE MIT DEM BLUT?  (Förderheft Bio 9 · bd1) ──
+  'bio-niere': modal => { _n9hInit(); modal.innerHTML = _n9hHTML(); _n9hStatus(); _pSim = new PhysicsSimEngine('_n9h-cv', '_n9h-cv'); _pSim.start(dt => _n9hUpdate(dt), (ctx, cv) => _n9hDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · EINE NEUE NIERE FÜR LINAS OPA  (Förderheft Bio 9 · bd5) ──
+  'bio-organspende': modal => { _n9kInit(); modal.innerHTML = _n9kHTML(); _n9kStatus(); _pSim = new PhysicsSimEngine('_n9k-cv', '_n9k-cv'); _pSim.start(dt => _n9kUpdate(dt), (ctx, cv) => _n9kDraw(ctx, cv), []); },
+  // ── BIO 9 FOERDER · WIE SCHNELL REAGIERST DU?  (Förderheft Bio 9 · br5) ──
+  'bio-reaktionszeit': modal => { _n9eInit(); modal.innerHTML = _n9eHTML(); _n9eStatus(); _pSim = new PhysicsSimEngine('_n9e-cv', '_n9e-cv'); _pSim.start(dt => _n9eUpdate(dt), (ctx, cv) => _n9eDraw(ctx, cv), []); },
+
+  // ── BIO 9 FOERDER · WIE KOMMT EIN REIZ INS GEHIRN?  (Förderheft Bio 9 · br2) ──
+  'bio-reizweg': modal => { _n9bInit(); modal.innerHTML = _n9bHTML(); _n9bStatus(); _pSim = new PhysicsSimEngine('_n9b-cv', '_n9b-cv'); _pSim.start(dt => _n9bUpdate(dt), (ctx, cv) => _n9bDraw(ctx, cv), []); },
+  // ── BIO 9 · DIE LÜCKE ZWISCHEN ZWEI ZELLEN  (Förderheft Bio 9 · br4) ──
+  'bio-synapse': modal => { _n9dInit(); modal.innerHTML = _n9dHTML(); _n9dStatus(); _pSim = new PhysicsSimEngine('_n9d-cv', '_n9d-cv'); _pSim.start(dt => _n9dUpdate(dt), (ctx, cv) => _n9dDraw(ctx, cv), []); },
+  // ── BIO 9 · EIN LITER ODER DREI LITER: TRINKEN UND HARN  (Förderheft Bio 9 · bd2) ──
+  'bio-wasserhaushalt': modal => { _n9iInit(); modal.innerHTML = _n9iHTML(); _n9iStatus(); _pSim = new PhysicsSimEngine('_n9i-cv', '_n9i-cv'); _pSim.start(dt => _n9iUpdate(dt), (ctx, cv) => _n9iDraw(ctx, cv), []); },
+  'm5-punktefeld': modal => { _m5rInit(); modal.innerHTML = _m5rHTML(); _m5rStatus(); _pSim = new PhysicsSimEngine('_m5r-cv', '_m5r-cv'); _pSim.start(dt => _m5rUpdate(dt), (ctx, cv) => _m5rDraw(ctx, cv), []); },
+  'm5-mal-zehn': modal => { _m5sInit(); modal.innerHTML = _m5sHTML(); _m5sStatus(); _pSim = new PhysicsSimEngine('_m5s-cv', '_m5s-cv'); _pSim.start(dt => _m5sUpdate(dt), (ctx, cv) => _m5sDraw(ctx, cv), []); },
+  'm5-malkreuz': modal => { _m5tInit(); modal.innerHTML = _m5tHTML(); _m5tStatus(); _pSim = new PhysicsSimEngine('_m5t-cv', '_m5t-cv'); _pSim.start(dt => _m5tUpdate(dt), (ctx, cv) => _m5tDraw(ctx, cv), []); },
+  'm5-verteilen': modal => { _m5uInit(); modal.innerHTML = _m5uHTML(); _m5uStatus(); _pSim = new PhysicsSimEngine('_m5u-cv', '_m5u-cv'); _pSim.start(dt => _m5uUpdate(dt), (ctx, cv) => _m5uDraw(ctx, cv), []); },
+  'm5-rest': modal => { _m5vInit(); modal.innerHTML = _m5vHTML(); _m5vStatus(); _pSim = new PhysicsSimEngine('_m5v-cv', '_m5v-cv'); _pSim.start(dt => _m5vUpdate(dt), (ctx, cv) => _m5vDraw(ctx, cv), []); },
+  'm5-teilen-schriftlich': modal => { _m5wInit(); modal.innerHTML = _m5wHTML(); _m5wStatus(true); _pSim = new PhysicsSimEngine('_m5w-cv', '_m5w-cv'); _pSim.start(dt => _m5wUpdate(dt), (ctx, cv) => _m5wDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -8886,7 +8929,7 @@ function _stzStatus() {
   let t = `<b>Quelle:</b> Cäsium-137, 1 GBq – eine Quelle, wie sie in der Technik wirklich verwendet wird.<br><br>`;
 
   t += `<b>1 · Abstand</b> &nbsp; ${_fpmNum(rM, 2)} m<br>`;
-  t += `H' = 0,0927 · 1000 / ${_fpmNum(rM, 2)}² = <b>${_fpmNum(ohne, 1)} µSv/h</b><br>`;
+  t += `H' = 0,0927 µSv·m²/(h·MBq) · 1000 MBq / (${_fpmNum(rM, 2)} m)² = <b>${_fpmNum(ohne, 1)} µSv/h</b><br>`;
   if (_stz.r !== 100) {
     const gegen = _STZ_GAMMA * _STZ_AKT;
     t += `<span style="color:#475569">Bei 1 m wären es ${_fpmNum(gegen, 1)} µSv/h. Doppelter Abstand heißt <b>ein Viertel</b>, nicht die Hälfte – der Abstand geht <b>quadratisch</b> ein.</span><br>`;
@@ -9837,7 +9880,9 @@ function _oerStatus() {
     t += `Der Draht liegt genau so da wie vorher. Trotzdem passiert nichts: Ein Draht <b>ohne</b> Strom ist kein Magnet.<br><br>`;
   } else {
     t += `<b>Strom an: ${_fpmNum(_oer.i, 1)} A</b>, Abstand ${_fpmNum(_oer.r, 1)} cm.<br><br>`;
-    t += `Feld des Drahtes: B = 20 µT · ${_fpmNum(_oer.i, 1)} / ${_fpmNum(_oer.r, 1)} = <b>${_fpmNum(B, 1)} µT</b><br>`;
+    // Einheiten in der Rechnung (Abdullah, 08.10.2026): "20 µT · 3,0 / 2,0" hatte keine; die
+    // Form "(3,0 A : 1 A) : (2,0 cm : 1 cm)" steht so in den Loesungen der Regelhefte 10.
+    t += `Feld des Drahtes: B = 20 µT · (${_fpmNum(_oer.i, 1)} A : 1 A) : (${_fpmNum(_oer.r, 1)} cm : 1 cm) = <b>${_fpmNum(B, 1)} µT</b><br>`;
     t += `Erdfeld (waagerecht): <b>${_OER_ERDE} µT</b><br><br>`;
     t += `Die Nadel stellt sich zwischen beide Felder. Wie weit sie sich dreht, sagt das Verhältnis:<br>`;
     t += `${_fpmNum(B, 1)} µT / ${_OER_ERDE} µT = <b>${_fpmNum(B / _OER_ERDE, 2)}</b> &nbsp;→&nbsp; Ausschlag <b>${_fpmNum(Math.abs(a), 1)}°</b> nach ${a >= 0 ? 'Osten' : 'Westen'}.<br><br>`;
@@ -10140,7 +10185,7 @@ function _lkrDraw(ctx, cv) {
                (vorn ? 'nach vorn (aus dem Bild heraus) ⊙' : 'nach hinten (ins Bild hinein) ⊗'), 14, 42);
   ctx.font = 'bold 12px system-ui'; ctx.fillStyle = _lkr.i > 0 ? '#16a34a' : '#dc2626';
   ctx.fillText(_lkr.i > 0
-    ? 'F = ' + _fpmNum(_lkr.b, 2) + ' · ' + _fpmNum(_lkr.i, 1) + ' · 0,10 = ' + _fpmNum(F, 3) + ' N  nach ' + (r > 0 ? 'oben' : 'unten')
+    ? 'F = ' + _fpmNum(_lkr.b, 2) + ' T · ' + _fpmNum(_lkr.i, 1) + ' A · 0,10 m = ' + _fpmNum(F, 3) + ' N  nach ' + (r > 0 ? 'oben' : 'unten')   // Einheiten in der Rechnung wie in der Statuszeile (08.10.2026)
     : 'Kein Strom – keine Kraft', 14, 300);
   ctx.font = '10px system-ui'; ctx.fillStyle = '#64748b';
   ctx.fillText('⊙ Strom kommt auf dich zu    ⊗ Strom fließt von dir weg', 14, 316);
@@ -23471,7 +23516,7 @@ function _thrMDrawApp(ctx, cv) {
     const big = c % 5 === 0;
     ctx.strokeStyle = big ? '#94a3b8' : '#475569';
     ctx.beginPath(); ctx.moveTo(70, y); ctx.lineTo(70 + (big ? 8 : 4), y); ctx.stroke();
-    if (big) { ctx.fillStyle = '#94a3b8'; ctx.fillText(c + '', 66, y + 3); }
+    if (big) { ctx.fillStyle = '#94a3b8'; ctx.fillText(c + ' cm', 66, y + 3); }
   }
   // Feldspule
   ctx.fillStyle = '#334155'; ctx.fillRect(cx - 34, coilY, 68, 24);
@@ -23576,7 +23621,7 @@ function _thrMRenderFit(fit, P) {
   const cls = abw < 5 ? 'ok' : abw < 12 ? 'mid' : 'no';
   el.innerHTML = `<div class="fpm-fitline">
      <span class="fpm-fitmeta">${_thr.rows.length} Messwerte</span>
-     <span class="fpm-fiteq">h = ${_fpmNum(fit.k, 3)}·ln(U) ${fit.b >= 0 ? '+ ' + _fpmNum(fit.b, 2) : '− ' + _fpmNum(-fit.b, 2)}</span>
+     <span class="fpm-fiteq">h = ${_fpmNum(fit.k, 3)} cm · ln(U) ${fit.b >= 0 ? '+ ' + _fpmNum(fit.b, 2) : '− ' + _fpmNum(-fit.b, 2)} cm</span>
      <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
      <span class="fpm-fiteq" style="color:#075985">λ = ${_fpmNum(lam * 100, 2)} cm</span>
      ${_thr.reveal ? `<span class="fpm-badge ${cls}">Modell λ = ${_fpmNum(theo * 100, 1)} cm · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
@@ -26518,28 +26563,28 @@ const _GEN_PRESETS = [
   { xl: 'Drehfrequenz f in Hz', yl: 'Scheitelwert Û in V',
     x: r => r.f, y: r => r.U,
     fest: r => Math.abs(r.I - _gen.hI) < 1e-9 && Math.abs(r.A - _gen.A) < 1e-12 && r.n === _gen.n,
-    k: () => _gen.n * _genB(_gen.hI) * _gen.A * 2 * Math.PI, ktxt: 'n · B · A · 2π',
+    k: () => _gen.n * _genB(_gen.hI) * _gen.A * 2 * Math.PI, ktxt: 'n · B · A · 2π', ke: 'V/Hz',
     note: 'Nur Messwerte mit demselben Feld, derselben Fläche und Windungszahl gehören auf diese Gerade.',
     typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (n·B·A·2π) · f',
     deutung: 'Wegen ω = 2π·f wächst der Scheitelwert proportional zur Drehfrequenz. Das ist der praktisch wichtigste Zusammenhang: Ein Generator liefert beim schnelleren Drehen nicht nur eine höhere Frequenz, sondern auch eine höhere Spannung. Deshalb muss die Drehzahl im Kraftwerk sehr genau gehalten werden.' },
   { xl: 'Magnetfeld B in mT', yl: 'Scheitelwert Û in V',
     x: r => r.B * 1000, y: r => r.U,
     fest: r => Math.abs(r.f - _gen.f) < 1e-9 && Math.abs(r.A - _gen.A) < 1e-12 && r.n === _gen.n,
-    k: () => _gen.n * _gen.A * _genOmega(_gen.f) / 1000, ktxt: 'n · A · ω',
+    k: () => _gen.n * _gen.A * _genOmega(_gen.f) / 1000, ktxt: 'n · A · ω', ke: 'V/mT',
     note: 'Nur Messwerte mit derselben Drehfrequenz, Fläche und Windungszahl gehören auf diese Gerade.',
     typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (n·A·ω) · B',
     deutung: 'Das Feld verändert man über den Strom durch die Helmholtzspulen. Wichtig ist dabei ein stabilisiertes Netzteil: Schwankt der Strom, so ändert sich B mit der Zeit – und man misst eine zusätzliche Induktionsspannung aus der falschen Ursache.' },
   { xl: 'Spulenfläche A in cm²', yl: 'Scheitelwert Û in V',
     x: r => r.A * 1e4, y: r => r.U,
     fest: r => Math.abs(r.f - _gen.f) < 1e-9 && Math.abs(r.I - _gen.hI) < 1e-9 && r.n === _gen.n,
-    k: () => _gen.n * _genB(_gen.hI) * _genOmega(_gen.f) * 1e-4, ktxt: 'n · B · ω',
+    k: () => _gen.n * _genB(_gen.hI) * _genOmega(_gen.f) * 1e-4, ktxt: 'n · B · ω', ke: 'V/cm²',
     note: 'Nur Messwerte mit derselben Drehfrequenz, demselben Feld und derselben Windungszahl gehören auf diese Gerade.',
     typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (n·B·ω) · A',
     deutung: 'Je größer die Spulenfläche, desto mehr Fluss wird umgeschlossen und desto größer ist seine Änderungsrate. Diese Proportionalität lässt sich nur prüfen, wenn man Spulen verschiedener Geometrie zur Verfügung hat – die Handreichung nennt das ausdrücklich als Möglichkeit.' },
   { xl: 'Windungszahl n', yl: 'Scheitelwert Û in V',
     x: r => r.n, y: r => r.U,
     fest: r => Math.abs(r.f - _gen.f) < 1e-9 && Math.abs(r.I - _gen.hI) < 1e-9 && Math.abs(r.A - _gen.A) < 1e-12,
-    k: () => _genB(_gen.hI) * _gen.A * _genOmega(_gen.f), ktxt: 'B · A · ω',
+    k: () => _genB(_gen.hI) * _gen.A * _genOmega(_gen.f), ktxt: 'B · A · ω', ke: 'V',
     note: 'Nur Messwerte mit derselben Drehfrequenz, demselben Feld und derselben Fläche gehören auf diese Gerade.',
     typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'Û = (B·A·ω) · n',
     deutung: 'Jede Windung liefert denselben Beitrag, und alle liegen in Reihe – deshalb addieren sich ihre Spannungen. Genau darum verwendet die Handreichung eine Spule mit 8000 Windungen: So wird die Spannung ohne Messverstärker gut messbar.' }
@@ -26670,7 +26715,7 @@ function _genDrawPlot() {
           alle.length > pts.length ? ', ' + (alle.length - pts.length) + ' andere blass' : ''}</span>
         <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 5)}·x</span>
         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
-        <span class="fpm-fiteq" style="color:#5b21b6">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}</span>
+        <span class="fpm-fiteq" style="color:#5b21b6">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)} ${P.ke}</span>
         ${_gen.reveal ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
       </div><div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.note}</div>`;
     }
@@ -28028,14 +28073,14 @@ const _TRF_UPRESETS = [
   { xl: 'Windungszahl N_S', yl: 'Sekundärspannung U_S in V',
     x: r => r.Ns, y: r => r.Us,
     fest: r => r.Np === _trf.Np && Math.abs(r.Up - _trf.Up) < 1e-9 && r.kern === _trf.kern,
-    k: () => _trfKern().k * _trf.Up / _trf.Np, ktxt: 'k·U_P/N_P', durchNull: true,
+    k: () => _trfKern().k * _trf.Up / _trf.Np, ktxt: 'k·U_P/N_P', einheitK: 'V', durchNull: true,
     note: 'Nur Messwerte mit derselben Primärwindungszahl, derselben Primärspannung und demselben Kern gehören auf diese Gerade.',
     typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'U_S = (k·U_P/N_P) · N_S',
     deutung: 'Jede Sekundärwindung umschließt denselben Fluss und liefert denselben Spannungsbeitrag; alle liegen in Reihe. Deshalb wächst die Sekundärspannung proportional zur Windungszahl. Das ist die eine Hälfte des Übersetzungsverhältnisses.' },
   { xl: '1000/N_P', yl: 'Sekundärspannung U_S in V',
     x: r => 1000 / r.Np, y: r => r.Us,
     fest: r => r.Ns === _trf.Ns && Math.abs(r.Up - _trf.Up) < 1e-9 && r.kern === _trf.kern,
-    k: () => _trfKern().k * _trf.Up * _trf.Ns / 1000, ktxt: 'k·U_P·N_S/1000', durchNull: true,
+    k: () => _trfKern().k * _trf.Up * _trf.Ns / 1000, ktxt: 'k·U_P·N_S/1000', einheitK: 'V', durchNull: true,
     note: 'Nur Messwerte mit derselben Sekundärwindungszahl, derselben Primärspannung und demselben Kern gehören auf diese Gerade.',
     typ: 'Ursprungsgerade nach Linearisierung', form: 'U_S = (k·U_P·N_S/1000) · (1000/N_P)',
     deutung: 'U_S gegen N_P aufgetragen ergibt eine Hyperbel – daran lässt sich schlecht ablesen. Trägt man stattdessen den Kehrwert auf, so wird daraus eine Ursprungsgerade. Physikalisch steckt dahinter: Je mehr Primärwindungen, desto kleiner der Fluss, den eine gegebene Primärspannung im Kern aufbaut.' },
@@ -28110,14 +28155,14 @@ const _TRF_IPRESETS = [
   { xl: 'Windungszahl N_P', yl: 'Sekundärstrom I_S in A',
     x: r => r.Np, y: r => r.Is,
     fest: r => r.Ns === _trf.Ns && Math.abs(r.Ip - _trf.Ip) < 1e-9 && r.kern === _trf.kern,
-    k: () => (_trf.Ip - _trfKern().im) / _trf.Ns, ktxt: '(I_P−I_m)/N_S', durchNull: true,
+    k: () => (_trf.Ip - _trfKern().im) / _trf.Ns, ktxt: '(I_P−I_m)/N_S', einheitK: 'A', durchNull: true,
     note: 'Nur Messwerte mit derselben Sekundärwindungszahl, demselben Primärstrom und demselben Kern gehören auf diese Gerade.',
     typ: 'Ursprungsgerade (proportionale Zuordnung)', form: 'I_S = ((I_P−I_m)/N_S) · N_P',
     deutung: 'Der Sekundärstrom wächst proportional zur Primärwindungszahl – genau umgekehrt zur Spannung, die mit der Sekundärwindungszahl wächst. Dahinter steht die Energiebilanz: Was an Spannung gewonnen wird, muss an Stromstärke abgegeben werden.' },
   { xl: '1000/N_S', yl: 'Sekundärstrom I_S in A',
     x: r => 1000 / r.Ns, y: r => r.Is,
     fest: r => r.Np === _trf.Np && Math.abs(r.Ip - _trf.Ip) < 1e-9 && r.kern === _trf.kern,
-    k: () => _trf.Np * (_trf.Ip - _trfKern().im) / 1000, ktxt: 'N_P·(I_P−I_m)/1000', durchNull: true,
+    k: () => _trf.Np * (_trf.Ip - _trfKern().im) / 1000, ktxt: 'N_P·(I_P−I_m)/1000', einheitK: 'A', durchNull: true,
     note: 'Nur Messwerte mit derselben Primärwindungszahl, demselben Primärstrom und demselben Kern gehören auf diese Gerade.',
     typ: 'Ursprungsgerade nach Linearisierung', form: 'I_S = (N_P·(I_P−I_m)/1000) · (1000/N_S)',
     deutung: 'Wenige Sekundärwindungen bedeuten viel Strom. Weil das eine Hyperbel ergibt, wird der Kehrwert aufgetragen. Der Hochstromversuch nutzt genau diesen Ast: fünf Windungen an der Netzspannung liefern Hunderte von Ampere.' },
@@ -28125,7 +28170,7 @@ const _TRF_IPRESETS = [
     x: r => r.Ip, y: r => r.Is,
     fest: r => r.Np === _trf.Np && r.Ns === _trf.Ns && r.kern === _trf.kern,
     k: () => _trf.Np / _trf.Ns, ktxt: 'N_P/N_S', durchNull: false,
-    b: () => -_trf.Np / _trf.Ns * _trfKern().im,
+    b: () => -_trf.Np / _trf.Ns * _trfKern().im, einheitB: 'A',
     note: 'Nur Messwerte mit denselben beiden Windungszahlen und demselben Kern gehören auf diese Gerade.',
     typ: 'Gerade mit negativem Achsenabschnitt', form: 'I_S = (N_P/N_S)·I_P − (N_P/N_S)·I_m',
     deutung: 'Diese Gerade geht NICHT durch den Ursprung – und das ist kein Messfehler. Der Achsenabschnitt verrät den Magnetisierungsstrom: Verlängert man die Gerade bis zur waagerechten Achse, so liest man dort I_m ab. Das geht über die Handreichung hinaus, folgt aber zwingend aus ihren eigenen Messwerten, die sich mit einem einzigen festen Prozentsatz nicht beschreiben lassen.' }
@@ -28236,8 +28281,8 @@ function _trfPlot(cvId, fitId, presets, prIdx, rows, fn, reveal) {
         <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 5)}·x${
           P.durchNull ? '' : (fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(fit.b), 5)}</span>
         <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 5)}</span>
-        <span class="fpm-fiteq" style="color:#075985">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}</span>
-        ${P.durchNull ? '' : `<span class="fpm-fiteq" style="color:#b45309">Achsenabschnitt erwartet ${_fpmNum(sollB, 5)}</span>`}
+        <span class="fpm-fiteq" style="color:#075985">Steigung = ${P.ktxt} = ${_fpmNum(soll, 5)}${P.einheitK ? ' ' + P.einheitK : ''}</span>
+        ${P.durchNull ? '' : `<span class="fpm-fiteq" style="color:#b45309">Achsenabschnitt erwartet ${_fpmNum(sollB, 5)}${P.einheitB ? ' ' + P.einheitB : ''}</span>`}
         ${reveal ? `<span class="fpm-badge ${cls}">Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
       </div><div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${P.note}</div>`;
     }
@@ -28329,7 +28374,7 @@ function _trfRenderHandbuch() {
     }).join('');
     h1.innerHTML = `<div class="git-sch-kopf">Die Messwerte der Handreichung, Tabelle 1</div>
       <div class="fpm-tablewrap"><table class="sim-table thr-tab">
-        <thead><tr><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>U<sub>P</sub></th><th>U<sub>S</sub></th>
+        <thead><tr><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>U<sub>P</sub> (V)</th><th>U<sub>S</sub> (V)</th>
           <th>N<sub>S</sub>/N<sub>P</sub></th><th>U<sub>S</sub>/U<sub>P</sub></th><th>Anteil</th></tr></thead>
         <tbody>${z}</tbody></table></div>
       <div class="fpm-note">Die letzte Spalte zeigt, wie viel vom idealen Wert wirklich ankommt:
@@ -28349,7 +28394,7 @@ function _trfRenderHandbuch() {
     }).join('');
     h2.innerHTML = `<div class="git-sch-kopf">Die Messwerte der Handreichung, Tabelle 2</div>
       <div class="fpm-tablewrap"><table class="sim-table thr-tab">
-        <thead><tr><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>I<sub>P</sub></th><th>I<sub>S</sub></th>
+        <thead><tr><th>N<sub>P</sub></th><th>N<sub>S</sub></th><th>I<sub>P</sub> (A)</th><th>I<sub>S</sub> (A)</th>
           <th>N<sub>P</sub>/N<sub>S</sub></th><th>I<sub>S</sub>/I<sub>P</sub></th><th>fehlt</th></tr></thead>
         <tbody>${z}</tbody></table></div>
       <div class="fpm-note">Die letzte Spalte rechnet aus jeder Zeile zurück, wie viel
@@ -28991,7 +29036,7 @@ function _trfDrawOszi(ctx, cv) {
   ctx.font = '9px sans-serif'; ctx.textAlign = 'right'; ctx.fillStyle = '#94a3b8';
   ctx.fillText(_fpmNum(skal, 1) + ' V', x0 - 4, yo + 10);
   ctx.fillText('0', x0 - 4, my + 3);
-  ctx.fillText('−' + _fpmNum(skal, 1), x0 - 4, yu - 2);
+  ctx.fillText('−' + _fpmNum(skal, 1) + ' V', x0 - 4, yu - 2);
   ctx.textAlign = 'center';
   for (let i = 0; i <= 5; i++) {
     const x = x0 + i / 5 * (x1 - x0);
@@ -29671,7 +29716,7 @@ function _frlUpdate() {
     if (K.trafo) {
       r.innerHTML = `
         <div class="pho-rz"><span class="pho-rz-t">Leitungswiderstand (CrNi 4 m + 2 Spulen)</span>
-          <span class="pho-rz-f">R = 5,4·4 + 2·2,5</span>
+          <span class="pho-rz-f">R = 5,4 Ω/m · 4 m + 2 · 2,5 Ω</span>
           <span class="pho-rz-v">${_fpmNum(m.Rline, 1)} Ω</span></div>
         <div class="pho-rz"><span class="pho-rz-t">hochtransformiert auf</span>
           <span class="pho-rz-f">U<sub>HV</sub> = (n₂/n₁)·U<sub>Netz</sub></span>
@@ -29689,7 +29734,7 @@ function _frlUpdate() {
     } else {
       r.innerHTML = `
         <div class="pho-rz"><span class="pho-rz-t">Leitungswiderstand (${K.draht === 'Cu' ? 'Kupfer' : 'CrNi'} 4 m)</span>
-          <span class="pho-rz-f">R = ${K.draht === 'Cu' ? '0,0075' : '5,4'}·4</span>
+          <span class="pho-rz-f">R = ${K.draht === 'Cu' ? '0,0075' : '5,4'} Ω/m · 4 m</span>
           <span class="pho-rz-v">${_fpmNum(Rl, Rl < 1 ? 3 : 1)} Ω</span></div>
         <div class="pho-rz"><span class="pho-rz-t">Strom (Reihenschaltung Leitung + Lampen)</span>
           <span class="pho-rz-f">I = U<sub>Netz</sub>/(R<sub>Leitung</sub>+R<sub>Lampe</sub>)</span>
@@ -29776,7 +29821,7 @@ const _FRL_PRESETS = [
   { xl: 'U in V', yl: 'P_Verlust in W', x: r => r.U, y: r => r.P, kurve: true,
     typ: 'fallende Kurve (kein linearer Zusammenhang)',
     form: 'P_V = R·P² / U²',
-    param: () => 'Theoriekurve R·P²/U² mit R·P² = ' + _fpmNum(_FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS(), 0),
+    param: () => 'Theoriekurve R·P²/U² mit R·P² = ' + _fpmNum(_FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS(), 0) + ' Ω·W²',
     term: () => _frlZahl(_FRL_RMESS() * _FRL_PMESS() * _FRL_PMESS()) + '/x^2',
     deutung: 'Trägt man den Verlust direkt über der Übertragungsspannung auf, ergibt sich eine stark fallende Kurve: Bei kleiner Spannung ist der Verlust riesig, bei großer Spannung winzig. Der Zusammenhang ist aber nicht linear – deshalb wechselt man die Achse zu 1/U².' },
   { xl: '1/U² · 10⁴ in 1/V²', yl: 'P_Verlust in W', x: r => 1e4 / (r.U * r.U), y: r => r.P, origin: true,
@@ -30025,8 +30070,8 @@ function _frlRenderFit(fit, PR) {
      <span class="fpm-fitmeta">${_frl.rows.length} Messwerte</span>
      <span class="fpm-fiteq">y = ${_fpmNum(fit.k, 4)}·x</span>
      <span class="fpm-fitmeta">R² = ${_fpmNum(fit.r2, 4)}</span>
-     <span class="fpm-fiteq" style="color:#075985">R·P² = ${_fpmNum(RP2, 0)}</span>
-     ${_frl.reveal ? `<span class="fpm-badge ${cls}">Theorie R·P² = ${_fpmNum(theoRP2, 0)} · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
+     <span class="fpm-fiteq" style="color:#075985">R·P² = ${_fpmNum(RP2, 0)} Ω·W²</span>
+     ${_frl.reveal ? `<span class="fpm-badge ${cls}">Theorie R·P² = ${_fpmNum(theoRP2, 0)} Ω·W² · Abweichung ${_fpmNum(abw, 2)} %</span>` : ''}
    </div>
    <div class="fpm-note" style="border-top:1px solid #e2e8f0;padding-top:7px;margin-top:5px">${PR.deutung}</div>`;
 }
@@ -37920,7 +37965,7 @@ function _absRenderAuswert() {
     if (lbl) lbl.textContent = 'Zählrate über der Dicke mit Hilfslinien zur Halbwertsdicke';
     el.innerHTML = `<div class="git-sch-kopf">Grafisch: die Halbwertsdicke abzählen</div>
       <div class="abs-aus-t">Man liest an der Kurve ab, nach welcher Dicke die Rate auf die
-        <b>Hälfte</b> gesunken ist. Von 2462 auf 1231 sind es rund <b>6 mm</b>; von 1231 auf 616
+        <b>Hälfte</b> gesunken ist. Von 2462 /10min auf 1231 /10min sind es rund <b>6 mm</b>; von 1231 /10min auf 616 /10min
         wieder etwa 6 mm. Dass dieser Abstand <b>gleich bleibt</b>, ist bereits der Beweis für den
         exponentiellen Verlauf.</div>
       <div class="abs-aus-form">d<sub>½</sub> ≈ 6 mm &nbsp;→&nbsp; α = ln2/d<sub>½</sub> =
@@ -38080,7 +38125,7 @@ function _absDrawKurve(ctx, cv) {
   ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'right';
   ctx.fillText('Bleidicke d / mm', x1, y0 + 24);
   ctx.save(); ctx.translate(11, y1 + 4); ctx.rotate(-Math.PI / 2);
-  ctx.fillText('Zählrate R', 0, 0); ctx.restore();
+  ctx.fillText('Zählrate R in 1/(10 min)', 0, 0); ctx.restore();
   ctx.textAlign = 'left';
   // Exponentialkurve
   ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 2;
@@ -42658,7 +42703,7 @@ function _glfErgebnis(label, wert, soll, nk, einheit, sollTxt, formel) {
 // ── Die drei Auftragungen ──────────────────────────────
 const _GLF_PRESETS = [
   { tab: 't → s', xl: 't in s', yl: 's in m', x: r => r.t, y: r => r.s, grp: r => r.g, orig: true,
-    gl: k => _glfGl(k), slope: k => _glfKeyV(k),
+    gl: k => _glfGl(k), slope: k => _glfKeyV(k), einheitK: 'm/s',
     col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
     curveFn: (xv, k) => _glfKeyV(k) * xv,
     note: 'Ursprungsgerade ⇒ s ~ t. Die <b>Steigung</b> dieser Geraden ist die gefahrene Geschwindigkeit: v = Δs/Δt. Hier wird v <b>gemessen</b>, nicht abgelesen. Es ist gleichgültig, in welchem Augenblick du gestoppt hast – jeder Messwert liegt auf derselben Geraden, und ihre Steigung kommt immer gleich heraus. Steiler = schneller.',
@@ -42672,7 +42717,7 @@ const _GLF_PRESETS = [
       's = v · t &nbsp;⇒&nbsp; v = Steigung = Δs/Δt – aus allen ' + g0.n + ' Messwerten dieser Reihe zugleich') },
 
   { tab: 't → v', xl: 't in s', yl: 'v in m/s', x: r => r.t, y: r => r.v, grp: r => r.g, orig: false,
-    steigungHeisst: 'Beschleunigung a – hier null, die Gerade ist waagerecht',
+    steigungHeisst: 'Beschleunigung a – hier null, die Gerade ist waagerecht', einheitK: 'm/s²',
     gl: k => _glfGl(k), slope: () => 0,
     col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
     curveFn: (xv, k) => _glfKeyV(k),
@@ -42684,18 +42729,18 @@ const _GLF_PRESETS = [
     ergebnis: (g0, st) => st.origin ? _glfOrigWarnung('Geschwindigkeit v und Beschleunigung a') :
       _glfErgebnis('Geschwindigkeit v aus dem Achsenabschnitt der Waagerechten',
         _glfFitB(g0.fit.b), _glfKeyV(g0.key), _GLF_NK, 'm/s', 'eingestellt für diese Reihe',
-        'v(t) = 0 · t + v &nbsp;⇒&nbsp; die Höhe der Waagerechten ist die Geschwindigkeit') +
+        'v(t) = 0 m/s² · t + v &nbsp;⇒&nbsp; die Höhe der Waagerechten ist die Geschwindigkeit') +
       _glfErgebnis('Beschleunigung a aus der Steigung der v-t-Geraden',
         _glfFitK(g0.fit.k), 0, 4, 'm/s²', 'erwartet',
-        'a = Δv/Δt = 0 &nbsp;⇒&nbsp; die Geschwindigkeit bleibt, wie sie ist') },
+        'a = Δv/Δt = 0 m/s² &nbsp;⇒&nbsp; die Geschwindigkeit bleibt, wie sie ist') },
 
   { tab: 't → a', xl: 't in s', yl: 'a in m/s²', x: r => r.tm, y: r => r.a, grp: r => r.g, orig: false,
-    gl: k => _glfGl(k), slope: () => 0,
+    gl: k => _glfGl(k), slope: () => 0, einheitK: 'm/s³',
     col: (k, i) => _MLAB_PALETTE[i % _MLAB_PALETTE.length],
     curveFn: () => 0,
     note: 'Die Beschleunigung wird nicht abgelesen, sondern <b>gerechnet</b>: a = Δv/Δt aus je zwei aufeinanderfolgenden Zeilen derselben Fahrt, aufgetragen bei der mittleren Zeit. Weil der Tacho jedes Mal denselben Wert zeigt, ist Δv = 0,00 m/s – also a = 0,00 m/s², zu jedem Zeitpunkt. Alle Punkte liegen auf der <b>Nulllinie</b>. Deshalb ist die t-s-Auftragung überhaupt eine Gerade: Was sich nicht ändert, krümmt nichts.',
-    typ: 'konstante Funktion mit dem Wert null', form: 'a(t) = Δv/Δt = 0',
-    param: () => 'Steigung = 0, Achsenabschnitt = a = 0,00 m/s² (bei jeder Reglerstellung, auch bei v = ' + _fpmNum(_glf.v, _GLF_NK) + ' m/s)',
+    typ: 'konstante Funktion mit dem Wert null', form: 'a(t) = Δv/Δt = 0 m/s²',
+    param: () => 'Steigung = 0 m/s³, Achsenabschnitt = a = 0,00 m/s² (bei jeder Reglerstellung, auch bei v = ' + _fpmNum(_glf.v, _GLF_NK) + ' m/s)',
     term: () => '0*x',
     deutung: 'Keine Beschleunigung: Es wirkt keine resultierende Kraft in Fahrtrichtung. Eine gleichförmige Bewegung ist der kräftefreie Fall des Trägheitssatzes.',
     ergebnis: (g0, st) => st.origin ? _glfOrigWarnung('Beschleunigung a') :
@@ -43992,7 +44037,7 @@ const _SHA_PRESETS = [
     term: () => (_SHA_G / _SHA_A_FIX).toString() + '*x',
     deutung: 'Der Schatten wächst gleichmäßig mit dem Schirmabstand. Verdoppelst du b, verdoppelt sich B.',
     ergebnis: (g0) => _mlabErgebnis('Steigung G/a aus der Ausgleichsgeraden',
-      _fpmNum(g0.fit.k, 3), '', _fpmNum(_SHA_G / (+g0.key), 3), 'B = G·b/a  ⇒  Steigung = G/a = ' + _SHA_G + '/' + _fpmNum(+g0.key, 0)) },
+      _fpmNum(g0.fit.k, 3), '', _fpmNum(_SHA_G / (+g0.key), 3), 'B = G·b/a  ⇒  Steigung = G/a = ' + _SHA_G + ' cm / ' + _fpmNum(+g0.key, 0) + ' cm') },
   // Preset 1 – Gegenstand verschieben: B über a (fallende Kurve, qualitativ)
   { tab: 'Gegenstand a → Schatten B',
     xl: 'Gegenstandsabstand a in cm', yl: 'Schattengröße B in cm',
@@ -44225,7 +44270,7 @@ function _shaArbeitsblattHTML() {
         <ol class="ab-ol">
           <li>Stelle oben den Modus <b>„Schirm verschieben"</b> ein.</li>
           <li>Schiebe den Schirm auf <b>30 cm</b>. Lies die Schattengröße <b>B</b> ab und drücke <b>„Messwert übernehmen"</b>.</li>
-          <li>Wiederhole das für <b>40, 50, 60, 70, 80 cm</b>. Der Gegenstand bleibt die ganze Zeit <b>gleich</b> (a = 20 cm).</li>
+          <li>Wiederhole das für <b>40 cm, 50 cm, 60 cm, 70 cm, 80 cm</b>. Der Gegenstand bleibt die ganze Zeit <b>gleich</b> (a = 20 cm).</li>
           <li>Öffne unten die Auswertung und trage <b>B über b</b> auf.</li>
         </ol></div>
 
@@ -44238,7 +44283,7 @@ function _shaArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">5 · Durchführung (Versuch 2: Gegenstand verschieben)</div>
         <ol class="ab-ol">
           <li>Stelle den Modus <b>„Gegenstand verschieben"</b> ein (der Schirm bleibt jetzt fest bei b = 60 cm).</li>
-          <li>Schiebe den Gegenstand auf <b>10, 20, 30, 40, 50 cm</b> und übernimm jeweils den Messwert.</li>
+          <li>Schiebe den Gegenstand auf <b>10 cm, 20 cm, 30 cm, 40 cm, 50 cm</b> und übernimm jeweils den Messwert.</li>
         </ol>
         <table class="ab-table"><tbody>
           <tr><td>Gegenstandsabstand a (cm)</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr>
@@ -44252,7 +44297,7 @@ function _shaArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">7 · Auswertung</div>
         <ol class="ab-ol">
           <li>Versuch 1: Wie liegen die Punkte im Diagramm? ${inp('a1', 'z. B. auf einer Geraden …')}</li>
-          <li>Was passiert mit B, wenn du den Schirmabstand b <b>verdoppelst</b> (z. B. von 40 auf 80 cm)? ${inp('a2', '')}</li>
+          <li>Was passiert mit B, wenn du den Schirmabstand b <b>verdoppelst</b> (z. B. von 40 cm auf 80 cm)? ${inp('a2', '')}</li>
           <li>Versuch 2: Wird der Schatten größer, wenn der Gegenstand <b>näher an die Lampe</b> rückt? ${inp('a3', 'ja / nein, weil …')}</li>
         </ol></div>
 
@@ -44281,8 +44326,8 @@ function _shaArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Versuch 1 (a = 20 cm): B = 6 · b/30-Werte → 6; 8; 10; 12; 14; 16 cm. Die Punkte liegen auf einer <b>Ursprungsgeraden</b> (kleine Messstreuung). Versuch 2 (b = 60 cm): a = 10→24; 20→12; 30→8; 40→6; 50→4,8 cm → <b>fallende Kurve</b>.</div>
-        <div class="ab-t"><b>Fachlich richtige Auswertung.</b> Strahlensatz: B = G · b/a mit G = 4 cm. Versuch 1: B ∝ b (Steigung G/a = 4/20 = 0,2) → doppelter Schirmabstand = doppelte Schattengröße. Versuch 2: B ∝ 1/a → je näher der Gegenstand an der Lampe, desto größer der Schatten.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Versuch 1 (a = 20 cm): B = 6 cm · b/(30 cm) → 6 cm; 8 cm; 10 cm; 12 cm; 14 cm; 16 cm. Die Punkte liegen auf einer <b>Ursprungsgeraden</b> (kleine Messstreuung). Versuch 2 (b = 60 cm): a = 10 cm → 24 cm; 20 cm → 12 cm; 30 cm → 8 cm; 40 cm → 6 cm; 50 cm → 4,8 cm → <b>fallende Kurve</b>.</div>
+        <div class="ab-t"><b>Fachlich richtige Auswertung.</b> Strahlensatz: B = G · b/a mit G = 4 cm. Versuch 1: B ∝ b (Steigung G/a = 4 cm / 20 cm = 0,2) → doppelter Schirmabstand = doppelte Schattengröße. Versuch 2: B ∝ 1/a → je näher der Gegenstand an der Lampe, desto größer der Schatten.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Schatten ist genauso groß wie der Gegenstand." (2) „Ein größerer Abstand macht den Schatten kleiner." (3) Verwechslung: näher zum Schirm ↔ näher zur Lampe. (4) „Bei Sonne (großer Abstand) gäbe es keinen Halbschatten" – hier bewusst Punktlichtquelle.</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Zwei Grenzstrahlen von der Lampe über Ober- und Unterkante des Gegenstands einzeichnen lassen; Strahlensatz als „Fächer" veranschaulichen; erst nur EINEN Abstand verändern lassen.</div>
         <div class="ab-t"><b>Musterlösung Merksatz.</b> weiter · näher · doppelt so groß. <b>Transfer:</b> Figur nah an die Lampe (kleines a) → größter Schatten. <b>Minidiagnose:</b> 1 → „wird größer"; 2 → „24 cm"; 3 → „nah an die Lampe".</div>
@@ -44680,8 +44725,9 @@ const _ELM_PRESETS = [
     param: () => 'I fest = ' + _ELM_I_FIX + ' A',
     term: () => (_ELM_K * _ELM_I_FIX).toString() + '*x',
     deutung: 'Mehr Windungen bündeln das Magnetfeld stärker. Die Tragkraft wächst gleichmäßig mit der Windungszahl.',
+    einheitK: 'Klammern/Windung',      // Einheit der erwarteten Steigung (08.10.2026)
     ergebnis: (g0) => _mlabErgebnis('Tragkraft pro Windung (Steigung)',
-      _fpmNum(g0.fit.k, 3), 'Klammern/Windung', _fpmNum(_ELM_K * (+g0.key), 3), 'T = k·I·N  ⇒  mehr Windungen = stärker') },
+      _fpmNum(g0.fit.k, 3), 'Klammern/Windung', _fpmNum(_ELM_K * (+g0.key), 3) + ' Klammern/Windung', 'T = k·I·N  ⇒  mehr Windungen = stärker') },
   // Preset 1 – Stromstärke verändern: T über I (Ursprungsgerade)
   { tab: 'Strom I → Tragkraft', xl: 'Stromstärke I in A', yl: 'Tragkraft (Büroklammern)',
     x: r => r.mode === 'strom' ? r.I : NaN, y: r => r.T, grp: r => r.N,
@@ -44693,8 +44739,9 @@ const _ELM_PRESETS = [
     param: () => 'N fest = ' + _ELM_N_FIX,
     term: () => (_ELM_K * _ELM_N_FIX).toString() + '*x',
     deutung: 'Mehr Strom bedeutet ein stärkeres Magnetfeld. Die Tragkraft wächst gleichmäßig mit der Stromstärke.',
+    einheitK: 'Klammern/A',            // Einheit der erwarteten Steigung (08.10.2026)
     ergebnis: (g0) => _mlabErgebnis('Tragkraft pro Ampere (Steigung)',
-      _fpmNum(g0.fit.k, 2), 'Klammern/A', _fpmNum(_ELM_K * (+g0.key), 2), 'T = k·N·I  ⇒  mehr Strom = stärker') }
+      _fpmNum(g0.fit.k, 2), 'Klammern/A', _fpmNum(_ELM_K * (+g0.key), 2) + ' Klammern/A', 'T = k·N·I  ⇒  mehr Strom = stärker') }
 ];
 
 function _elmInit() {
@@ -44899,7 +44946,7 @@ function _elmArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">5 · Durchführung (Versuch 2: Stromstärke ändern)</div>
         <ol class="ab-ol">
           <li>Modus <b>„Stromstärke ändern"</b> (Windungen bleiben fest bei N = 150).</li>
-          <li>Stelle I = 1, 2, 3, 4, 5 A ein und übernimm jeweils die Tragkraft.</li>
+          <li>Stelle I = 1 A, 2 A, 3 A, 4 A und 5 A ein und übernimm jeweils die Tragkraft.</li>
         </ol>
         <table class="ab-table"><tbody>
           <tr><td>Stromstärke I (A)</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
@@ -44942,7 +44989,7 @@ function _elmArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Messwerte.</b> Versuch 1 (I = 2 A): N = 50/100/150/200/250/300 → ≈ 3/6/9/12/15/18 Klammern (Ursprungsgerade). Versuch 2 (N = 150): I = 1..5 A → ≈ 5/9/14/18/23 Klammern (Ursprungsgerade). Kleine Messstreuung ist normal.</div>
+        <div class="ab-t"><b>Erwartete Messwerte.</b> Versuch 1 (I = 2 A): N = 50/100/150/200/250/300 → ≈ 3/6/9/12/15/18 Klammern (Ursprungsgerade). Versuch 2 (N = 150): I = 1 A bis 5 A → ≈ 5/9/14/18/23 Klammern (Ursprungsgerade). Kleine Messstreuung ist normal.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Modell T = k·N·I: Tragkraft proportional zur Windungszahl UND zur Stromstärke. Der weichmagnetische Eisenkern verstärkt das Feld deutlich (Verzicht auf Formel B = µ₀·µ_r·n·I in Kl. 5).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Batteriegröße allein zählt." (2) „Ein Elektromagnet ist immer magnetisch" – nein, nur bei Stromfluss. (3) „Der Eisenkern ist unwichtig."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Streng nur eine Größe verändern; Tragkraft = Anzahl Klammern zählen lassen; Diagramm mit Ausgleichsgerade anlegen.</div>
@@ -45058,7 +45105,7 @@ function _mpoHTML() {
         </div>
         <div class="fpm-tablewrap">
           <table class="sim-table">
-            <thead><tr><th>Abstand d (cm)</th><th>Kraft F</th><th></th></tr></thead>
+            <thead><tr><th>Abstand d (cm)</th><th>Kraft F (Skalenteile)</th><th></th></tr></thead>
             <tbody id="mpoTbody"></tbody>
           </table>
           <div class="fpm-empty" id="mpoEmpty">Noch keine Messwerte.<br>Abstand einstellen → „Messwert übernehmen".</div>
@@ -45163,7 +45210,7 @@ function _mpoDraw(ctx, cv) {
   ctx.fillText('d = ' + _fpmNum(_mpo.d, 0) + ' cm', (lx + mw + rx) / 2, midY + mh / 2 + 26);
   // Kraftmesser oben
   ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText((anz ? '↔ Anziehung' : '⇄ Abstoßung') + '  ·  Kraft F = ' + _fpmNum(F, 1), 20, 22);
+  ctx.fillText((anz ? '↔ Anziehung' : '⇄ Abstoßung') + '  ·  Kraft F = ' + _fpmNum(F, 1) + ' Skalenteile', 20, 22);   // Einheit wie unter dem Bild (08.10.2026)
   ctx.fillStyle = '#e2e8f0'; ctx.fillRect(20, 28, 180, 8);
   ctx.fillStyle = '#7c3aed'; ctx.fillRect(20, 28, Math.min(180, F * 12), 8);
 }
@@ -45194,7 +45241,7 @@ function _mpoArbeitsblattHTML() {
         </tbody></table>
         <table class="ab-table" style="margin-top:6px"><tbody>
           <tr><td>Abstand d (cm)</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>8</td><td>10</td></tr>
-          <tr><td>Kraft F</td><td>${inp('f2', '')}</td><td>${inp('f3', '')}</td><td>${inp('f4', '')}</td><td>${inp('f5', '')}</td><td>${inp('f6', '')}</td><td>${inp('f8', '')}</td><td>${inp('f10', '')}</td></tr>
+          <tr><td>Kraft F (Skalenteile)</td><td>${inp('f2', '')}</td><td>${inp('f3', '')}</td><td>${inp('f4', '')}</td><td>${inp('f5', '')}</td><td>${inp('f6', '')}</td><td>${inp('f8', '')}</td><td>${inp('f10', '')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
@@ -45233,7 +45280,7 @@ function _mpoArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> N–S: Anziehung; N–N (bzw. S–S): Abstoßung. Kraft F fällt mit wachsendem Abstand stark ab (Modell F ~ 1/d²): d = 2/3/4/5/6/8/10 cm → ≈ 15 / 6,7 / 3,8 / 2,4 / 1,7 / 0,9 / 0,6 Skalenteile.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> N–S: Anziehung; N–N (bzw. S–S): Abstoßung. Kraft F fällt mit wachsendem Abstand stark ab (Modell F ~ 1/d²): ungefähr 2 cm → 15 Skalenteile, 3 cm → 6,7 Skalenteile, 4 cm → 3,8 Skalenteile, 5 cm → 2,4 Skalenteile, 6 cm → 1,7 Skalenteile, 8 cm → 0,9 Skalenteile, 10 cm → 0,6 Skalenteile.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Ungleichnamige Pole ziehen sich an, gleichnamige stoßen sich ab. Die Kraft nimmt mit dem Abstand rasch ab (überproportional). Für Kl. 5 genügt „je näher, desto stärker" – keine Formel.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Magnete ziehen sich immer an." (2) „Die Kraft nimmt gleichmäßig (linear) ab." (3) „Nur der Nordpol ist stark."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Pole farbig (N rot, S blau); Kraftpfeile einzeichnen lassen; nur den Abstand verändern, Pole gleich lassen.</div>
@@ -48134,7 +48181,7 @@ function _twStatus() {
   if (_tw.mixed) { el.textContent = '🔗 Wärme fließt vom Warmen zum Kalten → Mischtemperatur ≈ ' + _fpmNum(_twMix(), 0) + ' °C.'; el.className = 'lmp-status on'; }
   else {
     const more = W1 > W2 ? 'Gefäß 1' : (W2 > W1 ? 'Gefäß 2' : 'beide gleich');
-    el.textContent = 'Wärmemenge: Gefäß 1 = ' + _fpmNum(W1, 0) + ', Gefäß 2 = ' + _fpmNum(W2, 0) + ' Einheiten → mehr Wärme: ' + more + '.';
+    el.textContent = 'Wärmemenge: Gefäß 1 = ' + _fpmNum(W1, 0) + ' Einheiten, Gefäß 2 = ' + _fpmNum(W2, 0) + ' Einheiten → mehr Wärme: ' + more + '.';
     el.className = 'lmp-status';
   }
 }
@@ -48156,7 +48203,7 @@ function _twBeaker(ctx, x, y, w, h, m, T, W, label) {
   // Wärmemenge-Balken
   ctx.fillStyle = '#e2e8f0'; ctx.fillRect(x, y + h + 22, w, 8);
   ctx.fillStyle = '#f97316'; ctx.fillRect(x, y + h + 22, w * Math.min(1, W / 300), 8);
-  ctx.fillStyle = '#92400e'; ctx.font = '9px sans-serif'; ctx.fillText('Wärme: ' + _fpmNum(W, 0), x + w / 2, y + h + 42);
+  ctx.fillStyle = '#92400e'; ctx.font = '9px sans-serif'; ctx.fillText('Wärme: ' + _fpmNum(W, 0) + ' Einheiten', x + w / 2, y + h + 42);
 }
 function _twDraw(ctx, cv) {
   if (!_tw) return;
@@ -48241,7 +48288,7 @@ function _twArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 1 L/80 °C hat Wärme 80 Einheiten, 2 L/20 °C hat 40 – hier ist das heißere Gefäß auch das energiereichere. Mit 3 L/40 °C (=120) gegen 1 L/90 °C (=90) hat das kältere Gefäß mehr Wärme. Bei Kontakt: Wärme fließt vom Warmen zum Kalten bis zur Mischtemperatur.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> 1 L/80 °C hat Wärme 80 Einheiten, 2 L/20 °C hat 40 Einheiten – hier ist das heißere Gefäß auch das energiereichere. Mit 3 L/40 °C (= 120 Einheiten) gegen 1 L/90 °C (= 90 Einheiten) hat das kältere Gefäß mehr Wärme. Bei Kontakt: Wärme fließt vom Warmen zum Kalten bis zur Mischtemperatur.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Temperatur ist eine Zustandsgröße (wie warm). Wärme ist übertragene Energie und hängt von Menge (Masse) und Temperatur ab. „Heiß" ≠ „viel Wärme". Wärme fließt stets vom wärmeren zum kälteren Körper.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Heißer = mehr Wärme, immer." (2) „Temperatur und Wärme sind dasselbe." (3) „Kälte fließt in den warmen Körper."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Wärmemenge-Balken (Menge × Temperatur) beobachten; Gegenbeispiel Badewanne vs. Funke; Fluss immer warm → kalt.</div>
@@ -48368,6 +48415,7 @@ function _thmDraw(ctx, cv) {
     ctx.beginPath(); ctx.moveTo(tx + 10, y); ctx.lineTo(tx + 10 + (long ? 12 : 6), y); ctx.stroke();
     if (long) ctx.fillText(T + '', tx + 26, y + 3);
   }
+  ctx.fillText('°C', tx + 26, topY + 8);   // Einheit der Skala (Abdullah, 08.10.2026)
   // Fixpunkte markieren
   ctx.fillStyle = '#2563eb'; ctx.font = '9px sans-serif';
   const y0 = bulbY - ((0 - _THM_MIN) / (_THM_MAX - _THM_MIN)) * (bulbY - topY - 6);
@@ -48875,7 +48923,7 @@ function _aggArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Aggregatzustände hängen von der Teilchenbewegung ab. Schmelzen/Verdampfen brauchen Energie, Erstarren/Kondensieren geben Energie ab (in Kl. 6 qualitativ). Fixpunkte für Wasser: 0 °C und 100 °C (Normaldruck).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Beim Schmelzen verschwinden Teilchen." (2) „Dampf ist die sichtbare Wolke" (der sichtbare Nebel ist bereits kondensiert). (3) „Erstarren = Verdampfen rückwärts."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Teilchenbilder der drei Zustände zeichnen lassen; Übergangsnamen paarweise (hin/zurück) lernen; Alltagsbezüge Pfütze/Brille.</div>
-        <div class="ab-t"><b>Musterlösung.</b> 6.1 Schmelzen · 6.2 Verdampfen (Sieden) · 6.3 Kondensieren / Erstarren. Merksatz: geordnet · frei/schnell · 0 · 100. Transfer: Pfütze → Verdunsten/Verdampfen; Brille → Kondensieren. Minidiagnose: 1→Schmelzen · 2→Verdampfen · 3→„geordnet".</div>
+        <div class="ab-t"><b>Musterlösung.</b> 6.1 Schmelzen · 6.2 Verdampfen (Sieden) · 6.3 Kondensieren / Erstarren. Merksatz: geordnet · frei/schnell · 0 °C · 100 °C. Transfer: Pfütze → Verdunsten/Verdampfen; Brille → Kondensieren. Minidiagnose: 1→Schmelzen · 2→Verdampfen · 3→„geordnet".</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -50328,7 +50376,7 @@ function _scaArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Schall ist eine mechanische Welle: Teilchen geben die Schwingung als Verdichtungen/Verdünnungen weiter. Ohne Medium (Vakuum) keine Ausbreitung. In dichteren/festeren Stoffen breitet sich Schall schneller aus.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schall geht auch durchs Vakuum (wie Licht)." (2) „In Luft ist Schall am schnellsten." (3) „Schall braucht kein Medium."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Teilchenmodell (Kette, die anstößt); Vakuumglocken-Versuch beschreiben; Ohr-an-Schiene-Beispiel; Licht vs. Schall abgrenzen (Licht braucht kein Medium).</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Luft/Wasser/Metall ja, Vakuum nein; 340/1500/5000 m/s. 6.1 „einen Stoff/Teilchen" · 6.2 „keine Teilchen da sind" · 6.3 „Metall". Merksatz: Stoff · Vakuum · schneller. Transfer: Wasser hat Teilchen → hörbar; Weltall ist Vakuum → Stille, daher Funk. Minidiagnose: 1→nein · 2→Metall · 3→„einen Stoff".</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Luft/Wasser/Metall ja, Vakuum nein; 340 m/s, 1500 m/s, 5000 m/s. 6.1 „einen Stoff/Teilchen" · 6.2 „keine Teilchen da sind" · 6.3 „Metall". Merksatz: Stoff · Vakuum · schneller. Transfer: Wasser hat Teilchen → hörbar; Weltall ist Vakuum → Stille, daher Funk. Minidiagnose: 1→nein · 2→Metall · 3→„einen Stoff".</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -53405,10 +53453,10 @@ function _sliStatus() {
   const el = document.getElementById('sliStatus'); if (!el) return;
   if (_sli.art === 'sammel') {
     el.innerHTML = '🔆 <b>Sammellinse</b>, in der Mitte dicker. Die Strahlen treffen sich im Brennpunkt, ' +
-      _fpmNum(_sli.f, 0) + ' hinter dem Glas – dort ist es am hellsten und heißesten.';
+      _fpmNum(_sli.f, 0) + ' mm hinter dem Glas – dort ist es am hellsten und heißesten.';
   } else {
     el.innerHTML = '🌫️ <b>Zerstreuungslinse</b>, in der Mitte dünner. Die Strahlen laufen auseinander. ' +
-      'Rückwärts verlängert kommen sie aus einem Punkt ' + _fpmNum(_sli.f, 0) + ' <b>vor</b> dem Glas. ' +
+      'Rückwärts verlängert kommen sie aus einem Punkt ' + _fpmNum(_sli.f, 0) + ' mm <b>vor</b> dem Glas. ' +
       'Hinter dem Glas entsteht nie ein heller Fleck.';
   }
   el.className = 'lmp-status on';
@@ -53527,7 +53575,7 @@ function _sliDraw(ctx, cv) {
   ctx.setLineDash([4, 4]);
   ctx.beginPath(); ctx.moveTo(x1, cy + hh + 30); ctx.lineTo(x2, cy + hh + 30); ctx.stroke();
   ctx.setLineDash([]);
-  _wrText(ctx, (x1 + x2) / 2, cy + hh + 44, 'Brennweite f = ' + _fpmNum(f, 0),
+  _wrText(ctx, (x1 + x2) / 2, cy + hh + 44, 'Brennweite f = ' + _fpmNum(f, 0) + ' mm',   // 1 Bildpunkt = 1 mm, wie in der Statuszeile (08.10.2026)
           { font: '10.5px system-ui, sans-serif' });
   _wrText(ctx, 12, cy - 66, 'paralleles Licht →', { align: 'left', font: '10px system-ui, sans-serif', farbe: '#fde047' });
 
@@ -54737,7 +54785,7 @@ function _spgHTML() {
 
 // ── Bedienung ──────────────────────────────────────────
 function _spgSetG(v) { _spg.g = +v; const el = document.getElementById('spgGLbl'); if (el) el.textContent = _fpmNum(+v, 0); _spgStatus(); }
-function _spgStatus() { const el = document.getElementById('spgStatus'); if (!el) return; el.textContent = '🪞 Bild virtuell & aufrecht, ' + _fpmNum(_spg.g, 0) + ' hinter dem Spiegel (genauso weit wie davor).'; el.className = 'lmp-status on'; }
+function _spgStatus() { const el = document.getElementById('spgStatus'); if (!el) return; el.textContent = '🪞 Bild virtuell & aufrecht, ' + _fpmNum(_spg.g, 0) + ' cm hinter dem Spiegel (genauso weit wie davor).'; el.className = 'lmp-status on'; }
 
 // ── Animation ──────────────────────────────────────────
 function _spgUpdate(dt) { if (_spg) _spg.t += dt; }
@@ -54930,7 +54978,7 @@ function _breHTML() {
 
 // ── Bedienung ──────────────────────────────────────────
 function _breSetD(v) { _bre.depth = +v; const el = document.getElementById('breDLbl'); if (el) el.textContent = _fpmNum(+v, 0); _breStatus(); }
-function _breStatus() { const el = document.getElementById('breStatus'); if (!el) return; el.textContent = '🐟 Der Gegenstand liegt bei Tiefe ' + _fpmNum(_bre.depth, 0) + ', erscheint aber nur bei ≈ ' + _fpmNum(_bre.depth * 0.75, 0) + ' (flacher).'; el.className = 'lmp-status on'; }
+function _breStatus() { const el = document.getElementById('breStatus'); if (!el) return; el.textContent = '🐟 Der Gegenstand liegt bei Tiefe ' + _fpmNum(_bre.depth, 0) + ' cm, erscheint aber nur bei ≈ ' + _fpmNum(_bre.depth * 0.75, 0) + ' cm (flacher).'; el.className = 'lmp-status on'; }
 
 // ── Animation ──────────────────────────────────────────
 function _breUpdate(dt) { if (_bre) _bre.t += dt; }
@@ -57172,10 +57220,10 @@ function _grvArbeitsblattHTML() {
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> Im luftleeren Rohr kommen Stein und Feder gleichzeitig unten an – auf jedem der drei Himmelskörper. Im Luftrohr fällt der Stein fast unverändert, die Feder ist beim Aufschlag des Steins erst etwa auf halber Strecke und sinkt danach gleichmäßig weiter. Die Abstände der vier Zeitmarken verhalten sich wie 1 : 3 : 5 : 7 – nach doppelter Zeit ist der Fallweg viermal so lang.</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Ohne Luft fallen alle Körper gleich schnell, unabhängig von ihrer Masse: Der Himmelskörper zieht an der doppelten Masse zwar doppelt so stark, muss dafür aber auch die doppelte Masse in Bewegung setzen – beides hebt sich genau auf. Die Luft bremst dagegen nach Fläche und Geschwindigkeit, deshalb trifft sie eine Feder hart und einen Stein kaum. g: Mond 1,6 · Erde 9,8 · Jupiter 24,8 m/s²; Fallzeit aus 1,50 m: 1,37 s · 0,55 s · 0,35 s. Die Animation läuft rund dreimal langsamer als die Wirklichkeit.</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Ohne Luft fallen alle Körper gleich schnell, unabhängig von ihrer Masse: Der Himmelskörper zieht an der doppelten Masse zwar doppelt so stark, muss dafür aber auch die doppelte Masse in Bewegung setzen – beides hebt sich genau auf. Die Luft bremst dagegen nach Fläche und Geschwindigkeit, deshalb trifft sie eine Feder hart und einen Stein kaum. g: Mond 1,6 m/s², Erde 9,8 m/s², Jupiter 24,8 m/s²; Fallzeit aus 1,50 m: 1,37 s, 0,55 s, 0,35 s. Die Animation läuft rund dreimal langsamer als die Wirklichkeit.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schwerere Dinge fallen schneller." – der Kern dieser Stunde; das luftleere Rohr widerlegt es direkt. (2) „Die Feder ist im Luftrohr langsamer, weil sie leichter ist." – nicht die Masse bremst, sondern die Luft an ihrer großen Fläche; im leeren Rohr ist sie genauso schnell. (3) „Im Weltall gibt es keine Gravitation."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Erst nur das linke Rohr zeigen und die Vermutung abstimmen lassen, dann das rechte dazunehmen. Papierblatt und Papierkugel im Klassenzimmer fallen lassen. <b>Bewusst noch nicht dran:</b> Gewichtskraft, die Formel F = m · g und die Einheit Newton – das kommt erst im Thema „Wäre ich auf dem Mond wirklich leichter?".</div>
-        <div class="ab-t"><b>Musterlösung.</b> 4: beide gleichzeitig · der Stein · die Abstände werden größer. Tabelle: 1,6 / 9,8 / 24,8 m/s²; 1,37 / 0,55 / 0,35 s. 6.1 beide gleich schnell · 6.2 die Luft · 6.3 weil er schwer ist und eine kleine Fläche hat · 6.4 viermal · 6.5 auf dem Jupiter · 6.6 nein – die Masse bleibt gleich, aber jeder Himmelskörper zieht verschieden stark. Merksatz: Gravitation · gleich · schwer (oder leicht) · Luft · größer. Transfer: Zusammengeknüllt hat das Blatt eine viel kleinere Fläche, die Luft kann es kaum noch bremsen. Minidiagnose: 1→beide gleichzeitig · 2→Die Luft · 3→Auf dem Jupiter · 4→viermal so weit.</div>
+        <div class="ab-t"><b>Musterlösung.</b> 4: beide gleichzeitig · der Stein · die Abstände werden größer. Tabelle: g = 1,6 m/s², 9,8 m/s², 24,8 m/s²; Fallzeit 1,37 s, 0,55 s, 0,35 s. 6.1 beide gleich schnell · 6.2 die Luft · 6.3 weil er schwer ist und eine kleine Fläche hat · 6.4 viermal · 6.5 auf dem Jupiter · 6.6 nein – die Masse bleibt gleich, aber jeder Himmelskörper zieht verschieden stark. Merksatz: Gravitation · gleich · schwer (oder leicht) · Luft · größer. Transfer: Zusammengeknüllt hat das Blatt eine viel kleinere Fläche, die Luft kann es kaum noch bremsen. Minidiagnose: 1→beide gleichzeitig · 2→Die Luft · 3→Auf dem Jupiter · 4→viermal so weit.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -58751,7 +58799,7 @@ function _entDraw(ctx, cv) {
     _wrText(ctx, 62, uy + 4, 'angekommen nach ' + nz(D.zeit) + ' ' + D.eh,
             { align: 'left', font: '700 12px system-ui, sans-serif', farbe: '#86efac' });
   } else {
-    _wrText(ctx, 62, uy + 4, 'unterwegs: ' + nz(p * D.zeit) + ' von ' + nz(D.zeit) + ' ' + D.eh,
+    _wrText(ctx, 62, uy + 4, 'unterwegs: ' + nz(p * D.zeit) + ' ' + D.eh.replace(/Jahren$/, 'Jahre') + ' von ' + nz(D.zeit) + ' ' + D.eh,
             { align: 'left', font: '700 12px system-ui, sans-serif', farbe: '#fde68a' });
   }
 }
@@ -62246,7 +62294,7 @@ function _sabArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Die Stromstärke wird durch die antreibende Spannung erhöht und durch den Widerstand begrenzt: I = U/R (Ohmsches Gesetz, folgt in 8.2). Bei konstantem R ist I proportional zu U; bei konstantem U ist I umgekehrt proportional zu R. Nur eine Größe variieren (Variablenkontrolle).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Strom hängt nur von der Batterie ab." (2) „Ein größerer Widerstand macht den Strom stärker." (3) „Man darf mehrere Größen gleichzeitig ändern."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Variablenkontrolle betonen (nur eine Größe ändern); Wasser-Analogie (Druck = U, enges Rohr = R); Werte in eine Tabelle eintragen und Muster suchen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,10 · 0,20 · 0,30 · 0,60 · 0,07 A; Regel „U↑→I↑, R↑→I↓". 6.1 „größer/mehr" · 6.2 „kleiner/weniger". Merksatz: mehr · weniger. Transfer: Ein engeres Rohr (großer Widerstand) lässt weniger Wasser durch – also fließt weniger Strom. Minidiagnose: 1→Sie wird größer · 2→Sie wird kleiner · 3→Von Spannung und Widerstand.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,10 A, 0,20 A, 0,30 A, 0,60 A, 0,07 A; Regel „U↑→I↑, R↑→I↓". 6.1 „größer/mehr" · 6.2 „kleiner/weniger". Merksatz: mehr · weniger. Transfer: Ein engeres Rohr (großer Widerstand) lässt weniger Wasser durch – also fließt weniger Strom. Minidiagnose: 1→Sie wird größer · 2→Sie wird kleiner · 3→Von Spannung und Widerstand.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -63760,7 +63808,7 @@ function _elpArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Elektrische Leistung P = U · I (Einheit Watt, W = V·A); sie ist die pro Zeit umgesetzte Energie. Bei ohmschen Verbrauchern auch P = U²/R = I²·R. Höhere Leistung → mehr Licht/Wärme.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Leistung = Spannung." (2) „Leistung wird in Ampere gemessen." (3) „Nur die Spannung zählt."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> P = U·I gemeinsam ausrechnen; Einheit W = V·A festhalten; beide Faktoren (U und I) betonen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,20 A/0,60 W · 0,40 A/2,40 W · 0,60 A/1,80 W. 6.1 P = U·I · 6.2 Watt (W) · 6.3 „mehr Spannung oder mehr Strom". Merksatz: U·I · Watt (W) · mehr. Transfer: P = 6·0,5 = 3 W; bei 12 V: 12·0,5 = 6 W. Minidiagnose: 1→P = U·I · 2→Watt (W) · 3→Sie wird größer.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,20 A/0,60 W · 0,40 A/2,40 W · 0,60 A/1,80 W. 6.1 P = U·I · 6.2 Watt (W) · 6.3 „mehr Spannung oder mehr Strom". Merksatz: U·I · Watt (W) · mehr. Transfer: P = 6 V · 0,5 A = 3 W; bei 12 V: P = 12 V · 0,5 A = 6 W. Minidiagnose: 1→P = U·I · 2→Watt (W) · 3→Sie wird größer.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -63961,7 +64009,7 @@ function _eenArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> Elektrische Energie E = P · t (Einheit Joule; im Alltag Wh bzw. kWh). 1 kWh = 1000 Wh = 3,6 MJ. Die Energie ist das Produkt aus Leistung und Zeit – wichtig für die Stromrechnung.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Leistung und Energie sind dasselbe." (2) „Nur die Leistung zählt, nicht die Zeit." (3) „1 kWh = 100 Wh."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Leistung (momentan) vs. Energie (über Zeit) trennen; E = P·t rechnen; Einheiten Wh↔kWh (÷/×1000).</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 Wh/0,03 · 300 Wh/0,3 · 2000 Wh/2. 6.1 E = P·t · 6.2 1000 Wh · 6.3 „mehr Leistung oder längere Zeit". Merksatz: P·t · Wattstunde (Wh) · 1000. Transfer: E = 1500·4 = 6000 Wh = 6 kWh. Minidiagnose: 1→E = P·t · 2→1000 Wh · 3→Sie wird doppelt so groß.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 30 Wh = 0,03 kWh, 300 Wh = 0,3 kWh, 2000 Wh = 2 kWh. 6.1 E = P·t · 6.2 1000 Wh · 6.3 „mehr Leistung oder längere Zeit". Merksatz: P·t · Wattstunde (Wh) · 1000. Transfer: E = 1500 W · 4 h = 6000 Wh = 6 kWh. Minidiagnose: 1→E = P·t · 2→1000 Wh · 3→Sie wird doppelt so groß.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -64062,7 +64110,13 @@ function _kosSetH(h) { _kos.std = h; _KOS_STD.forEach(x => document.getElementBy
 function _kosReset() { _kosInit(); _kosSetG('tv'); _kosSetH(3); _kosStatus(); }
 function _kosStatus() {
   const el = document.getElementById('kosStatus'); if (!el) return;
-  el.textContent = `${_KOS_GERAETE[_kos.geraet].name} (${_kosP()} W) · ${_kos.std} h/Tag → ${String(Math.round(_kosKWhTag() * 100) / 100).replace('.', ',')} kWh/Tag = ${_kosEur(_kosTag())} €/Tag. Im Jahr: ${_kosEur(_kosJahr())} €.`;
+  // „0,3 kWh/Tag = 0,09 €/Tag“ setzte Energie gleich Geld. Der Preis steht jetzt mit
+  // Einheit in der Rechnung (Abdullah, 08.10.2026). Gerechnet wird mit den ANGEZEIGTEN
+  // Zahlen: geht das Produkt nicht auf den Cent auf (0,45 kWh · 0,30 €/kWh = 0,135 €),
+  // steht „≈“ statt „=“. Die Centbetraege selbst bleiben unveraendert.
+  const kwhA = Math.round(_kosKWhTag() * 100) / 100, eurA = _kosEur(_kosTag());
+  const glatt = Math.abs(kwhA * _KOS_PREIS - parseFloat(eurA.replace(',', '.'))) < 1e-9;
+  el.textContent = `${_KOS_GERAETE[_kos.geraet].name} (${_kosP()} W) · ${_kos.std} h/Tag → ${String(kwhA).replace('.', ',')} kWh/Tag · ${_kosEur(_KOS_PREIS)} €/kWh ${glatt ? '=' : '≈'} ${eurA} €/Tag. Im Jahr: ${_kosEur(_kosJahr())} €.`;
   el.className = 'lmp-status on';
 }
 
@@ -64162,11 +64216,11 @@ function _kosArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Hohe Leistung und/oder lange Laufzeit → hohe Kosten. Beispiele (0,30 €/kWh): LED 10 W·3 h = 0,03 kWh ≈ 0,01 € · TV 100 W·3 h = 0,3 kWh = 0,09 € · Wasserkocher 2000 W·1 h = 2 kWh = 0,60 €.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Hohe Leistung und/oder lange Laufzeit → hohe Kosten. Beispiele (0,30 €/kWh): LED 10 W·3 h = 0,03 kWh, Kosten ≈ 0,01 € · TV 100 W·3 h = 0,3 kWh, Kosten 0,09 € · Wasserkocher 2000 W·1 h = 2 kWh, Kosten 0,60 €.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Der Energiezähler misst die elektrische Arbeit in kWh (1 kWh = 1000 Wh). Kosten = Energie (kWh) · Arbeitspreis (€/kWh). E (kWh) = P(kW) · t(h). Für den Jahreswert × 365 (bzw. Betriebstage).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Zähler misst in Watt." (2) „Kleine Geräte kosten nie viel." (3) „Die Zeit ist egal."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Erst kWh berechnen (P in kW × Stunden), dann × Preis; Einheiten sauber; Dauerläufer (Kühlschrank) vs. Kurzläufer vergleichen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,03 kWh/≈0,01 € · 0,3 kWh/0,09 € · 2 kWh/0,60 €. 6.1 Kilowattstunden (kWh) · 6.2 Kosten = Energie · Preis · 6.3 der Wasserkocher (bzw. Dauerläufer). Merksatz: kWh · Energie (kWh) · Preis pro kWh. Transfer: 3000 · 0,30 = 900 €. Minidiagnose: 1→In kWh · 2→Energie · Preis · 3→Der Wasserkocher.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 0,03 kWh/≈0,01 € · 0,3 kWh/0,09 € · 2 kWh/0,60 €. 6.1 Kilowattstunden (kWh) · 6.2 Kosten = Energie · Preis · 6.3 der Wasserkocher (bzw. Dauerläufer). Merksatz: kWh · Energie (kWh) · Preis pro kWh. Transfer: 3000 kWh · 0,30 €/kWh = 900 €. Minidiagnose: 1→In kWh · 2→Energie · Preis · 3→Der Wasserkocher.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -64267,7 +64321,7 @@ function _sprSet(f) { _spr.fall = f; Object.keys(_SPR_FAELLE).forEach(k => docum
 function _sprReset() { _sprInit(); _sprSet('lampe'); _sprStatus(); }
 function _sprStatus() {
   const el = document.getElementById('sprStatus'); if (!el) return;
-  el.textContent = `${_sprF().name}: vorher ${_sprN(_sprAltJahr())} kWh/Jahr, nachher ${_sprN(_sprNeuJahr())} kWh/Jahr. Ersparnis: ${_sprN(_sprSparKWh())} kWh = ${_sprN(_sprSparEur(), 2)} € pro Jahr.`;
+  el.textContent = `${_sprF().name}: vorher ${_sprN(_sprAltJahr())} kWh/Jahr, nachher ${_sprN(_sprNeuJahr())} kWh/Jahr. Ersparnis: ${_sprN(_sprSparKWh())} kWh · ${_sprN(_SPR_PREIS, 2)} €/kWh = ${_sprN(_sprSparEur(), 2)} € pro Jahr.`;
   el.className = 'lmp-status on';
 }
 
@@ -64296,7 +64350,7 @@ function _sprDraw(ctx, cv) {
   ctx.fillStyle = '#86efac'; ctx.font = '700 16px sans-serif'; ctx.textAlign = 'center';
   ctx.fillText('Ersparnis: ' + _sprN(_sprSparKWh()) + ' kWh/Jahr', W / 2, 176);
   ctx.fillStyle = '#fde047'; ctx.font = '700 18px sans-serif';
-  ctx.fillText('= ' + _sprN(_sprSparEur(), 2) + ' € pro Jahr', W / 2, 202);
+  ctx.fillText('· ' + _sprN(_SPR_PREIS, 2) + ' €/kWh = ' + _sprN(_sprSparEur(), 2) + ' € pro Jahr', W / 2, 202);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -64360,7 +64414,7 @@ function _sprArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Jede Maßnahme senkt den Energiebedarf pro Jahr. Beispiele (0,30 €/kWh): Glühlampe 60 W→LED 8 W (4 h/Tag): ~87,6 → ~11,7 kWh, Ersparnis ≈ 75,9 kWh ≈ 22,77 €. Standby 10 W (20 h)→aus: ~73 kWh ≈ 21,90 €. Kühlschrank alt 0,55→neu 0,25 kWh/Tag: ~109,5 kWh ≈ 32,85 €.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Jede Maßnahme senkt den Energiebedarf pro Jahr. Beispiele (0,30 €/kWh): Glühlampe 60 W→LED 8 W (4 h/Tag): ~87,6 kWh → ~11,7 kWh, Ersparnis ≈ 75,9 kWh ≈ 22,77 €. Standby 10 W (20 h)→aus: ~73 kWh ≈ 21,90 €. Kühlschrank alt 0,55 kWh/Tag → neu 0,25 kWh/Tag: ~109,5 kWh ≈ 32,85 €.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Energiesparen = weniger elektrische Energie (kWh) umsetzen: effizientere Geräte (Energielabel), Standby-Verluste vermeiden, Laufzeiten verkürzen, niedrigere Temperaturen (Waschen/Heizen). Weniger kWh → weniger Kosten (Kosten = kWh · Preis) und weniger CO₂.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Standby verbraucht nichts." (2) „Eine einzelne Lampe ist egal." (3) „Sparen bringt kaum Geld."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Ersparnis konkret in €/Jahr rechnen; Dauerläufer (Kühlschrank, Standby) betonen; Energielabel/LED als Anker.</div>
@@ -65204,7 +65258,7 @@ function _vstArbeitsblattHTML() {
         <div class="ab-t"><b>Fachlich richtig.</b> v = s/t; Umstellungen s = v·t und t = s/v (Formeldreieck: s oben, v·t unten). Einheit m/s. v proportional zu s (bei festem t), umgekehrt proportional zu t (bei festem s).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „v = s·t." (2) „Mehr Zeit heißt schneller." (3) „Man kann die Formel nicht umstellen."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Formeldreieck als Merkhilfe; Einheiten mitführen; je einzeln s bzw. t verdoppeln und v vergleichen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10 · 20 · 5 · 10 m/s. 6.1 v = s/t · 6.2 s = v·t · 6.3 t = s/v. Merksatz: s/t · v·t · s/v. Transfer: s = 15·8 = 120 m. Minidiagnose: 1→v = s/t · 2→20 m/s · 3→s = v·t.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10 m/s, 20 m/s, 5 m/s, 10 m/s. 6.1 v = s/t · 6.2 s = v·t · 6.3 t = s/v. Merksatz: s/t · v·t · s/v. Transfer: s = 15 m/s · 8 s = 120 m. Minidiagnose: 1→v = s/t · 2→20 m/s · 3→s = v·t.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -66377,7 +66431,7 @@ function _radArbeitsblattHTML() {
 
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
-          <li>Stelle die erlaubte Höchstgeschwindigkeit (z. B. 50) ein.</li>
+          <li>Stelle die erlaubte Höchstgeschwindigkeit (z. B. 50 km/h) ein.</li>
           <li>Lass Autos mit verschiedenen Geschwindigkeiten vorbeifahren.</li>
           <li>Notiere, welche geblitzt werden und um wie viel sie zu schnell sind.</li>
         </ol></div>
@@ -66422,7 +66476,7 @@ function _radArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Autos mit v > Limit werden geblitzt, Autos ≤ Limit nicht. Bei erlaubten 50: 30 ok, 50 ok, 70 geblitzt (20 km/h zu schnell).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Autos mit v > Limit werden geblitzt, Autos ≤ Limit nicht. Bei erlaubten 50 km/h: 30 km/h ok, 50 km/h ok, 70 km/h geblitzt (20 km/h zu schnell).</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Radar/Laser messen die Momentangeschwindigkeit (Doppler bzw. Weg/Zeit über sehr kurze Strecke). Die Abschnittskontrolle (Section Control) misst die Zeit über eine feste Strecke und bildet die Durchschnittsgeschwindigkeit v = s/t. Vergleich mit dem Tempolimit → Verstoß, wenn v größer ist.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Der Blitzer bremst das Auto." (2) „Man wird immer geblitzt." (3) „Genau am Limit wird geblitzt."</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Vergleich gemessen ↔ erlaubt; v = s/t bei der Abschnittskontrolle rechnen; Einheiten m/s ↔ km/h (×3,6).</div>
@@ -66448,7 +66502,7 @@ const _RAD_MINI = [
          'Gemessen wird genau, nicht geschätzt.'] },
   { q: '3. Erlaubt sind 50 km/h. Ein Auto fährt 70 km/h. Um wie viel ist es zu schnell?',
     opts: ['20 km/h', '120 km/h', 'gar nicht'], correct: 0,
-    fb: ['Richtig! 70 − 50 = 20 km/h zu schnell.',
+    fb: ['Richtig! 70 km/h − 50 km/h = 20 km/h zu schnell.',
          'Man addiert die Werte nicht.',
          'Es ist zu schnell (über dem Limit).'] }
 ];
@@ -69626,7 +69680,7 @@ function _gswArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beim Rennen legt das schnellere Auto in derselben Zeit einen größeren Weg zurück und erreicht das Ziel zuerst. Beispiel: A (10 m/s) und B (6 m/s): Erreicht A nach 12 s die 120 m, ist B erst bei 72 m; v_A = 120/12 = 10 m/s, v_B = 72/12 = 6 m/s.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beim Rennen legt das schnellere Auto in derselben Zeit einen größeren Weg zurück und erreicht das Ziel zuerst. Beispiel: A (10 m/s) und B (6 m/s): Erreicht A nach 12 s die 120 m, ist B erst bei 72 m; v_A = 120 m / 12 s = 10 m/s, v_B = 72 m / 12 s = 6 m/s.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Geschwindigkeit ist Weg pro Zeit: v = s/t, Einheit m/s (auch km/h). „Schneller“ = größere Geschwindigkeit = mehr Weg in gleicher Zeit bzw. gleiche Strecke in kürzerer Zeit. Bei gleichförmiger Bewegung ist v konstant.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Wer weiter vorn startet, ist schneller.“ (2) „Schnell hängt nur vom Weg ab.“ (3) „m/s und km/h sind dasselbe.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Gleiche Zeit betonen; v = s/t je Auto ausrechnen; Einheit mitschreiben.</div>
@@ -69765,7 +69819,7 @@ function _glbDraw(ctx, cv) {
   _glb.marks.forEach(mk => {
     const x = pxs(mk.s);
     ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, roadY - 8); ctx.lineTo(x, roadY + 26); ctx.stroke();
-    ctx.fillStyle = '#b45309'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(mk.t + 's', x, roadY - 10);
+    ctx.fillStyle = '#b45309'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText(mk.t + ' s', x, roadY - 10);
   });
   // Wagen
   ctx.font = '22px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('🚗', pxs(_glb.s), roadY + 20);
@@ -69852,11 +69906,11 @@ function _glbArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei konstanter Geschwindigkeit (z. B. 10 m/s) haben die Sekundenmarken gleiche Abstände (je 10 m). Weg nach 1/2/3 s = 10/20/30 m. Das s-t-Diagramm ist eine Gerade durch den Ursprung.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei konstanter Geschwindigkeit (z. B. 10 m/s) haben die Sekundenmarken gleiche Abstände (je 10 m). Weg nach 1 s, 2 s und 3 s: 10 m, 20 m und 30 m. Das s-t-Diagramm ist eine Gerade durch den Ursprung.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Gleichförmige Bewegung = konstante Geschwindigkeit. Es gilt s = v · t, also ist s proportional zu t (Ursprungsgerade im s-t-Diagramm; Steigung = Geschwindigkeit). „Gleich schnell“ meint konstantes v – der zurückgelegte Weg wächst dabei stetig weiter.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Gleich schnell heißt, der Wagen bleibt an einer Stelle.“ (2) „Die Marken werden immer größer.“ (das wäre beschleunigt). (3) „Das s-t-Diagramm ist eine Kurve.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Marken-Abstände direkt vergleichen; s = v · t für einzelne Sekunden ausrechnen; Steigung = Geschwindigkeit.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10/20/30 m. 6.1 alle gleich groß. 6.2 eine Gerade durch den Ursprung. 6.3 doppelten Weg. Merksatz: konstant · gleiche · Gerade · proportional. Minidiagnose: 1→konstante Geschwindigkeit, gleiche Wege · 2→Gerade durch den Ursprung · 3→doppelter Weg.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 10 m, 20 m, 30 m. 6.1 alle gleich groß. 6.2 eine Gerade durch den Ursprung. 6.3 doppelten Weg. Merksatz: konstant · gleiche · Gerade · proportional. Minidiagnose: 1→konstante Geschwindigkeit, gleiche Wege · 2→Gerade durch den Ursprung · 3→doppelter Weg.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -70022,7 +70076,7 @@ function _stgDraw(ctx, cv) {
   ctx.fillStyle = z.farbe; ctx.beginPath(); ctx.arc(px(_stg.t), py(_stgS(_stg.t)), 4.5, 0, 2 * Math.PI); ctx.fill();
   // Beschriftung an der Linie
   ctx.fillStyle = z.farbe; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'left';
-  ctx.fillText(z.label + ' → ' + (v === 0 ? 'v = 0' : 'v = ' + v + ' m/s'), oxL + 8, oyT + 12);
+  ctx.fillText(z.label + ' → v = ' + v + ' m/s', oxL + 8, oyT + 12);   // auch bei Ruhe mit Einheit: „v = 0 m/s“ (08.10.2026)
 }
 
 // ═══════════════════════════════════════════════════════
@@ -70088,11 +70142,11 @@ function _stgArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Steile Linie → Körper bewegt sich schnell (großes v, hier 12 m/s). Flache Linie → langsam (4 m/s). Waagerechte Linie → Stillstand (v = 0, der Weg ändert sich nicht).</div>
-        <div class="ab-t"><b>Fachlich richtig.</b> Die Steigung einer Linie im s-t-Diagramm entspricht der Geschwindigkeit: v = Δs/Δt. Je steiler die Linie, desto größer v. Eine waagerechte Linie hat die Steigung 0 → v = 0 → Ruhe. Bei gleichförmiger Bewegung ist die Linie eine Gerade (konstante Steigung).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Steile Linie → Körper bewegt sich schnell (großes v, hier 12 m/s). Flache Linie → langsam (4 m/s). Waagerechte Linie → Stillstand (v = 0 m/s, der Weg ändert sich nicht).</div>
+        <div class="ab-t"><b>Fachlich richtig.</b> Die Steigung einer Linie im s-t-Diagramm entspricht der Geschwindigkeit: v = Δs/Δt. Je steiler die Linie, desto größer v. Eine waagerechte Linie hat die Steigung 0 m/s → v = 0 m/s → Ruhe. Bei gleichförmiger Bewegung ist die Linie eine Gerade (konstante Steigung).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Eine waagerechte Linie heißt, der Körper fährt gleichmäßig.“ (verwechselt mit konstantem Weg = Ruhe). (2) „Die Höhe des Punktes ist die Geschwindigkeit.“ (das ist der Weg, nicht v). (3) „Steil heißt langsam.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Zwei Gitterpunkte wählen und Δs/Δt ausrechnen; steil/flach direkt vergleichen; waagerecht = kein Weg-Zuwachs.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: steil→schnell→12 m/s · flach→langsam→4 m/s · waagerecht→Ruhe→0 m/s. 6.1 der Körper ist schnell. 6.2 der Körper ist in Ruhe (v = 0). 6.3 v = Δs/Δt. Merksatz: Geschwindigkeit · steiler · waagerechte · Δs/Δt. Minidiagnose: 1→je steiler, desto schneller · 2→Stillstand (v = 0) · 3→die Steigung Δs/Δt.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: steil→schnell→12 m/s · flach→langsam→4 m/s · waagerecht→Ruhe→0 m/s. 6.1 der Körper ist schnell. 6.2 der Körper ist in Ruhe (v = 0 m/s). 6.3 v = Δs/Δt. Merksatz: Geschwindigkeit · steiler · waagerechte · Δs/Δt. Minidiagnose: 1→je steiler, desto schneller · 2→Stillstand (v = 0) · 3→die Steigung Δs/Δt.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -70454,7 +70508,7 @@ function _vatReset() {
 function _vatStatus() {
   const el = document.getElementById('vatStatus'); if (!el) return;
   const a = _vatA(), t = _vat.t, v = _vatVt(t);
-  el.innerHTML = `<b>a = ${a} m/s²</b> → in jeder Sekunde kommen <b>${a} m/s</b> dazu.<br>Nach t = ${t.toFixed(1).replace('.', ',')} s: v = a · t = ${a} · ${t.toFixed(1).replace('.', ',')} = <b>${v.toFixed(1).replace('.', ',')} m/s</b>.`;
+  el.innerHTML = `<b>a = ${a} m/s²</b> → in jeder Sekunde kommen <b>${a} m/s</b> dazu.<br>Nach t = ${t.toFixed(1).replace('.', ',')} s: v = a · t = ${a} m/s² · ${t.toFixed(1).replace('.', ',')} s = <b>${v.toFixed(1).replace('.', ',')} m/s</b>.`;
   el.className = 'lmp-status on';
 }
 
@@ -70522,7 +70576,7 @@ function _vatArbeitsblattHTML() {
       <div class="ab-sec"><div class="ab-h">3 · Durchführung</div>
         <ol class="ab-ol">
           <li>Wähle a = 2 m/s² und starte.</li>
-          <li>Lies am Tacho die Geschwindigkeit nach 1, 2 und 3 s ab.</li>
+          <li>Lies am Tacho die Geschwindigkeit nach 1 s, 2 s und 3 s ab.</li>
           <li>Vergleiche mit größerer und kleinerer Beschleunigung.</li>
         </ol></div>
 
@@ -70569,11 +70623,11 @@ function _vatArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei a = 2 m/s² wächst v um 2 m/s pro Sekunde: nach 1/2/3 s = 2/4/6 m/s. Das v-t-Diagramm ist eine Gerade durch den Ursprung. Größeres a → steilere Gerade, kleineres a → flacher.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Bei a = 2 m/s² wächst v um 2 m/s pro Sekunde: nach 1 s 2 m/s, nach 2 s 4 m/s, nach 3 s 6 m/s. Das v-t-Diagramm ist eine Gerade durch den Ursprung. Größeres a → steilere Gerade, kleineres a → flacher.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Gleichmäßig beschleunigte Bewegung aus dem Stand: v = a · t. Die Beschleunigung a = Δv/Δt hat die Einheit m/s² (Geschwindigkeitsänderung pro Sekunde). Im v-t-Diagramm ist a die Steigung der Geraden. (Der Weg wächst dabei quadratisch, s = ½·a·t² – s. 9.2.5.)</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „a ist dasselbe wie v.“ (2) „Einheit von a ist m/s.“ (richtig: m/s²). (3) „Die v-t-Linie ist eine Kurve.“ (bei konstantem a ist sie eine Gerade – die s-t-Linie ist die Kurve).</div>
         <div class="ab-t"><b>Hilfestellungen.</b> „pro Sekunde so viel dazu“ betonen; Einheit m/s² als „m/s pro s“ lesen; v = a·t für einzelne Sekunden ausrechnen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 2/4/6 m/s. 6.1 um 2 m/s. 6.2 v = a · t. 6.3 steiler. Merksatz: m/s² · a · t · Gerade · steiler. Transfer: desto größer die Beschleunigung, weil in kürzerer Zeit dieselbe Geschwindigkeit erreicht wird. Minidiagnose: 1→m/s² · 2→v = a · t · 3→eine steilere Gerade.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 2 m/s, 4 m/s, 6 m/s. 6.1 um 2 m/s. 6.2 v = a · t. 6.3 steiler. Merksatz: m/s² · a · t · Gerade · steiler. Transfer: desto größer die Beschleunigung, weil in kürzerer Zeit dieselbe Geschwindigkeit erreicht wird. Minidiagnose: 1→m/s² · 2→v = a · t · 3→eine steilere Gerade.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -70653,7 +70707,7 @@ function _vzgHTML() {
       <div>
         <div class="fpm-label">Beschleunigen &amp; Verzögern</div>
         <div class="lmp-status" id="vzgStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Beim <b>Beschleunigen</b> (Gas) <b>nimmt v zu</b> – die v-t-Linie <b>steigt</b>. Beim <b>Bremsen</b> <b>nimmt v ab</b> – die v-t-Linie <b>fällt</b> bis auf 0. Das Bremsen ist eine <b>Verzögerung</b> = eine <b>negative Beschleunigung</b> (−a): dieselbe Idee, nur „andersherum".</div>
+        <div class="fpm-note" style="margin-top:10px">Beim <b>Beschleunigen</b> (Gas) <b>nimmt v zu</b> – die v-t-Linie <b>steigt</b>. Beim <b>Bremsen</b> <b>nimmt v ab</b> – die v-t-Linie <b>fällt</b> bis auf 0 m/s. Das Bremsen ist eine <b>Verzögerung</b> = eine <b>negative Beschleunigung</b> (−a): dieselbe Idee, nur „andersherum".</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -70811,11 +70865,11 @@ function _vzgArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gas geben: v nimmt zu, die v-t-Linie steigt. Bremsen: v nimmt ab, die v-t-Linie fällt und endet bei v = 0 (das Auto steht). Beide Vorgänge sind gleichmäßig (konstanter Betrag von a).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Gas geben: v nimmt zu, die v-t-Linie steigt. Bremsen: v nimmt ab, die v-t-Linie fällt und endet bei v = 0 m/s (das Auto steht). Beide Vorgänge sind gleichmäßig (konstanter Betrag von a).</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Beschleunigen und Verzögern sind dasselbe Konzept mit anderem Vorzeichen: Beschleunigung a = Δv/Δt. Beim Bremsen ist Δv negativ → a < 0 (Verzögerung, „negative Beschleunigung“). Im v-t-Diagramm: steigende Gerade (+a) bzw. fallende Gerade (−a) bis v = 0.</div>
-        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bremsen hat nichts mit Beschleunigung zu tun.“ (2) „Beim Bremsen wird v sofort 0.“ (nein: gleichmäßig abnehmend). (3) „Negative Beschleunigung heißt rückwärtsfahren.“ (nein: langsamer werden).</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> Vorzeichen von Δv betrachten; v-t-Linien steigend vs. fallend gegenüberstellen; Endpunkt v = 0 markieren.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Gas → nimmt zu / steigt · Bremsen → nimmt ab / fällt. 6.1 sie steigt. 6.2 sie fällt und endet bei v = 0. 6.3 Verzögerung (negative Beschleunigung). Merksatz: nimmt zu · nimmt ab · Verzögerung · negative · 0. Minidiagnose: 1→sie nimmt ab · 2→eine fallende Linie · 3→negative Beschleunigung / Verzögerung.</div>
+        <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Bremsen hat nichts mit Beschleunigung zu tun.“ (2) „Beim Bremsen wird v sofort 0 m/s.“ (nein: gleichmäßig abnehmend). (3) „Negative Beschleunigung heißt rückwärtsfahren.“ (nein: langsamer werden).</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> Vorzeichen von Δv betrachten; v-t-Linien steigend vs. fallend gegenüberstellen; Endpunkt v = 0 m/s markieren.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: Gas → nimmt zu / steigt · Bremsen → nimmt ab / fällt. 6.1 sie steigt. 6.2 sie fällt und endet bei v = 0 m/s. 6.3 Verzögerung (negative Beschleunigung). Merksatz: nimmt zu · nimmt ab · Verzögerung · negative · 0 m/s. Minidiagnose: 1→sie nimmt ab · 2→eine fallende Linie · 3→negative Beschleunigung / Verzögerung.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -71288,7 +71342,7 @@ function _fflArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Kugeln fallen synchron und kommen gleichzeitig an – egal ob die schwere Kugel eine Masse von 1, 5 oder 10 kg hat. Die Fallzeit bleibt gleich (bei 20 m ≈ 2,0 s). Die häufige Vermutung „schwerer = schneller“ bestätigt sich nicht.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Beide Kugeln fallen synchron und kommen gleichzeitig an – egal ob die schwere Kugel eine Masse von 1 kg, 5 kg oder 10 kg hat. Die Fallzeit bleibt gleich (bei 20 m ≈ 2,0 s). Die häufige Vermutung „schwerer = schneller“ bestätigt sich nicht.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Ohne Luftwiderstand fallen alle Körper mit derselben Fallbeschleunigung g ≈ 9,8 m/s² (freier Fall). Die Fallzeit t = √(2h/g) hängt nur von der Höhe ab, nicht von der Masse. Es gilt s = ½·g·t² und v = g·t. (Die Gewichtskraft ist zwar größer, aber die größere Masse ist auch „träger“ – beides hebt sich auf.)</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Schwere Dinge fallen schneller.“ (gilt nur mit Luftwiderstand). (2) „Doppelte Masse = halbe Fallzeit.“ (3) „g hängt vom Gegenstand ab.“ (g ist für alle gleich).</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Fallzeit bei verschiedenen Massen direkt vergleichen; Höhe konstant halten; Vakuum-Idee betonen (Luft weglassen).</div>
@@ -72189,7 +72243,7 @@ function _gabStatus() {
   const f = _gabF(_gab.m1, _gab.m2, _gab.r), f0 = _gabF(1, 1, 1);
   let s = '🪐 Anziehungskraft: ' + _fpmNum(f, f < 1 ? 2 : 1) + ' Einheiten';
   const v = f / f0;
-  if (Math.abs(v - 1) > 0.01) s += (v > 1 ? ' – das ' + _fpmNum(v, 2) + '-Fache' : ' – der Bruchteil ' + _fpmNum(v, 3)) + ' des Ausgangswerts (8).';
+  if (Math.abs(v - 1) > 0.01) s += (v > 1 ? ' – das ' + _fpmNum(v, 2) + '-Fache' : ' – der Bruchteil ' + _fpmNum(v, 3)) + ' des Ausgangswerts (8 Einheiten).';
   else s += ' (Ausgangswert).';
   el.textContent = s; el.className = 'lmp-status on';
 }
@@ -72235,7 +72289,7 @@ function _gabDraw(ctx, cv) {
   ctx.strokeStyle = 'rgba(226,232,240,0.5)'; ctx.setLineDash([2, 3]); ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(bx + bw / 5, by - 3); ctx.lineTo(bx + bw / 5, by + bh + 3); ctx.stroke(); ctx.setLineDash([]);
   ctx.fillStyle = '#64748b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('Start (8)', bx + bw / 5, by + bh + 13);
+  ctx.fillText('Start (8 Einheiten)', bx + bw / 5, by + bh + 13);
   ctx.fillStyle = v >= 1 ? '#fbbf24' : '#38bdf8';
   ctx.fillRect(bx, by, Math.max(2, Math.min(bw, bw / 5 * v)), bh);
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
@@ -72353,8 +72407,8 @@ const _GAB_PRESETS = [
     note: 'Die Punkte liegen auf einer fallenden Kurve, nicht auf einer Geraden. Von r = 1 auf r = 2 stürzt die Anziehungskraft auf ein Viertel ab, von r = 4 auf r = 5 nur noch wenig – der Abfall wird immer flacher. Aus einer Kurve lässt sich keine Steigung ablesen, deshalb wird hier bewusst keine Ausgleichsgerade gezeichnet. Der Ausweg heißt Linearisieren: nicht r auf die x-Achse, sondern 1/r².',
     typ: 'umgekehrt quadratische Funktion – eine Kurve, keine Gerade',
     form: 'F(r) = 8 · m₁ · m₂ / r²',
-    param: () => 'Zähler = 8 · m₁ · m₂ = 8 · ' + _gabP().m1 + ' · ' + _gabP().m2 + ' = '
-      + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' (aktuelle Reglerstellung)',
+    param: () => 'Zähler = 8 · m₁ · m₂ = 8 Einheiten je kg² · ' + _gabP().m1 + ' kg · ' + _gabP().m2 + ' kg = '
+      + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' Einheiten (aktuelle Reglerstellung)',
     term: () => (_GAB_E * _gabP().m1 * _gabP().m2).toFixed(4) + '/x^2',
     deutung: 'Der Abstand zählt doppelt: Er steht im Nenner und dort im Quadrat. Deshalb fällt die Kurve zuerst steil und wird dann immer flacher – ganz auf null geht sie nie.' },
 
@@ -72362,13 +72416,13 @@ const _GAB_PRESETS = [
   { tab: 'F über 1/r² auftragen', xl: '1/r² (reine Zahl)', yl: 'F in Einheiten',
     x: z => _gabInvR2(z), y: z => z.F, grp: z => _gabKey(z.m1, z.m2),
     gl: k => 'm₁ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, m₂ = ' + _fpmNum(_gabKeyB(k), 0) + ' kg',
-    slope: k => _GAB_E * _gabKeyA(k) * _gabKeyB(k),
+    slope: k => _GAB_E * _gabKeyA(k) * _gabKeyB(k), einheitK: 'Einheiten',
     curveFn: (xv, k) => _GAB_E * _gabKeyA(k) * _gabKeyB(k) * xv,
     note: 'Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ F ist zu 1/r² proportional, also F ~ 1/r². Damit ist das Abstandsgesetz nachgewiesen und nicht nur behauptet. Die Steigung ist 8 · m₁ · m₂ und steht in Einheiten. Teilt man sie durch das Produkt der beiden Massen, bleibt für jede Messreihe dieselbe Zahl übrig. Ein Punkt, der einzeln danebenliegt, stammt aus einer Einstellung, bei der auch eine Masse verändert wurde.',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Linearisieren)',
     form: 'F(1/r²) = (8 · m₁ · m₂) · 1/r²',
-    param: () => 'Steigung = 8 · m₁ · m₂ = 8 · ' + _gabP().m1 + ' · ' + _gabP().m2 + ' = '
-      + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' (aktuelle Reglerstellung)',
+    param: () => 'Steigung = 8 · m₁ · m₂ = 8 Einheiten je kg² · ' + _gabP().m1 + ' kg · ' + _gabP().m2 + ' kg = '
+      + _fpmNum(_GAB_E * _gabP().m1 * _gabP().m2, 0) + ' Einheiten (aktuelle Reglerstellung)',
     term: () => (_GAB_E * _gabP().m1 * _gabP().m2).toFixed(4) + '*x',
     deutung: 'Trägt man F gegen 1/r² auf, wird aus der Kurve eine Gerade durch den Ursprung. Genau das meint der Satz „die Anziehungskraft ist zum Quadrat des Abstands antiproportional“.',
     ergebnis: g0 => {
@@ -72377,20 +72431,20 @@ const _GAB_PRESETS = [
       const v = _gabRund(k / (m1 * m2), 3);
       return _gabErgebnis('Verhältniszahl der Simulation aus der Steigung k', v, 'Einheiten je kg²', _GAB_E,
         'F = k · 1/r² mit k = 8 · m₁ · m₂ &nbsp;⇒&nbsp; k / (m₁ · m₂) = '
-        + _gabFmtK(k) + ' / ' + (m1 * m2) + ' = ' + _fpmNum(v, 3)
+        + _gabFmtK(k) + ' Einheiten / ' + (m1 * m2) + ' kg² = ' + _fpmNum(v, 3) + ' Einheiten je kg²'
         + ' – dieselbe Zahl für jede Messreihe. In Newton lässt sie sich nicht umrechnen, die Simulation zählt in Einheiten.'); } },
 
   // 2 – die Massenabhaengigkeit. Steigung 8·m2/r², daraus faellt m2 heraus.
   { tab: 'F über m₁ auftragen', xl: 'm₁ in kg', yl: 'F in Einheiten',
     x: z => z.m1, y: z => z.F, grp: z => _gabKey(z.m2, z.r),
     gl: k => 'm₂ = ' + _fpmNum(_gabKeyA(k), 0) + ' kg, r = ' + _fpmNum(_gabKeyB(k), 0),
-    slope: k => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)),
+    slope: k => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)), einheitK: 'Einheiten je kg',
     curveFn: (xv, k) => _GAB_E * _gabKeyA(k) / (_gabKeyB(k) * _gabKeyB(k)) * xv,
     note: 'Ursprungsgerade ⇒ F ~ m₁ bei festgehaltener zweiter Masse und festem Abstand. Doppelte Masse, doppelte Anziehungskraft – hier ist keine Linearisierung nötig, die Masse zählt einfach. Die Steigung ist 8 · m₂ / r² und steht in Einheiten je Kilogramm. Aus ihr lässt sich die Masse der rechten Kugel zurückrechnen, obwohl an ihr nie ein Regler bewegt wurde. Für m₂ gilt dasselbe: Beide Kugeln ziehen gleich stark aneinander.',
     typ: 'proportionale Funktion (Ursprungsgerade)',
     form: 'F(m₁) = (8 · m₂ / r²) · m₁',
-    param: () => 'Steigung = 8 · m₂ / r² = 8 · ' + _gabP().m2 + ' / ' + _gabP().r + '² = '
-      + _fpmNum(_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r), 3) + ' (aktuelle Reglerstellung)',
+    param: () => 'Steigung = 8 · m₂ / r² = 8 Einheiten je kg² · ' + _gabP().m2 + ' kg / ' + _gabP().r + '² = '
+      + _fpmNum(_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r), 3) + ' Einheiten je kg (aktuelle Reglerstellung)',
     term: () => (_GAB_E * _gabP().m2 / (_gabP().r * _gabP().r)).toFixed(4) + '*x',
     deutung: 'Jede der beiden Massen zählt einfach. Verdoppelt man m₁, verdoppelt sich die Anziehungskraft – die Punkte bleiben dabei auf derselben Geraden, sie rücken nur weiter hinaus.',
     ergebnis: g0 => {
@@ -72399,17 +72453,17 @@ const _GAB_PRESETS = [
       const v = _gabRund(k * r * r / _GAB_E, 3);
       return _gabErgebnis('Masse m₂ der rechten Kugel aus der Steigung k', v, 'kg', m2,
         'F = k · m₁ mit k = 8 · m₂ / r² &nbsp;⇒&nbsp; m₂ = k · r² / 8 = '
-        + _gabFmtK(k) + ' · ' + (r * r) + ' / 8 = ' + _fpmNum(v, 3)); } },
+        + _gabFmtK(k) + ' Einheiten je kg · ' + (r * r) + ' / 8 Einheiten je kg² = ' + _fpmNum(v, 3) + ' kg'); } },
 
   // 3 – das ganze Gesetz in einer Auftragung. Alle Messreihen fallen zusammen.
   { tab: 'F über m₁·m₂/r² auftragen', xl: 'm₁ · m₂ / r² in kg²', yl: 'F in Einheiten',
     x: z => _gabProdR2(z), y: z => z.F, grp: null,
-    slope: () => _GAB_E,
+    slope: () => _GAB_E, einheitK: 'Einheiten je kg²',
     curveFn: xv => _GAB_E * xv,
     note: 'Hier zählt keine Messreihe mehr für sich: Alle Punkte aus allen Einstellungen liegen auf EINER Ursprungsgeraden, gleich welche Massen und welcher Abstand eingestellt waren ⇒ F ~ m₁ · m₂ / r². Die Steigung ist unmittelbar die Verhältniszahl der Simulation, 8 Einheiten je kg². An ihrer Stelle steht in der Natur die Gravitationskonstante G – die kennt die Simulation nicht, weil sie in Einheiten statt in Newton rechnet.',
     typ: 'proportionale Funktion (Ursprungsgerade) – das vollständige Gesetz',
     form: 'F = 8 · (m₁ · m₂ / r²)',
-    param: () => 'Steigung = 8 (die Verhältniszahl selbst) – sie hängt von keiner Reglerstellung ab',
+    param: () => 'Steigung = 8 Einheiten je kg² (die Verhältniszahl selbst) – sie hängt von keiner Reglerstellung ab',
     term: () => _GAB_E.toFixed(4) + '*x',
     deutung: 'Masse mal Masse, geteilt durch den Abstand zum Quadrat: In dieser einen Auftragung steckt das ganze Gesetz. Dass alle Messreihen auf dieselbe Gerade fallen, ist der Beweis, dass die drei Regler nicht drei Gesetze haben, sondern eines.',
     ergebnis: g0 => {
@@ -73085,8 +73139,8 @@ function _rstDraw(ctx, cv) {
   ctx.fillStyle = '#fbbf24'; ctx.fillRect(bx, by, bw / 2 - 1, 16);
   ctx.fillStyle = '#38bdf8'; ctx.fillRect(bx + bw / 2 + 1, by, bw / 2 - 1, 16);
   ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText(_fpmNum(p, 0), bx + bw / 4, by + 12);
-  ctx.fillText(_fpmNum(p, 0), bx + 3 * bw / 4, by + 12);
+  ctx.fillText(_fpmNum(p, 0) + ' kg·m/s', bx + bw / 4, by + 12);   // Impuls mit Einheit wie in der Statuszeile (Abdullah, 08.10.2026)
+  ctx.fillText(_fpmNum(p, 0) + ' kg·m/s', bx + 3 * bw / 4, by + 12);
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif';
   ctx.fillText('beide Seiten immer gleich groß', W / 2, H - 10);
 }
@@ -74724,10 +74778,13 @@ function _uvlDraw(ctx, cv) {
   }
   ctx.setLineDash([]);
   ctx.fillStyle = '#475569'; ctx.font = '9px system-ui'; ctx.textAlign = 'center';
-  ctx.fillText('380', _uvlX(380), _UVL_YB - 12);
-  ctx.fillText('780', _uvlX(780), _UVL_YB - 12);
+  // Grenzwerte mit Einheit (08.10.2026). „780“ lag frueher mitten auf „Infrarot – unsichtbar ▶“
+  // (beide bei x ≈ 376…392). Jetzt endet der Infrarot-Hinweis an der 780-nm-Linie und
+  // „780 nm“ steht rechts daneben ueber dem Infrarot-Streifen.
+  ctx.fillText('380 nm', _uvlX(380), _UVL_YB - 12);
+  ctx.textAlign = 'left';  ctx.fillText('780 nm', _uvlX(780) + 3, _UVL_YB - 12);
   ctx.textAlign = 'left';  ctx.fillText('◀ UV – unsichtbar', _UVL_X0 + 2, _UVL_YB - 12);
-  ctx.textAlign = 'right'; ctx.fillText('Infrarot – unsichtbar ▶', _UVL_X1 - 2, _UVL_YB - 12);
+  ctx.textAlign = 'right'; ctx.fillText('Infrarot – unsichtbar ▶', _uvlX(780) - 3, _UVL_YB - 12);
 
   // ── Das wandernde Lichtpaket ────────────────────────────
   const f = _uvl.t / 2.2;
@@ -74903,7 +74960,7 @@ function _plxStatus() {
   const dTxt = _fpmNum(d, d < 10 ? 3 : 1);
   let t = `Entfernung: <b>${dTxt} Parsec</b> – das sind ${_fpmNum(lj, 1)} Lichtjahre.<br><br>`;
   t += `<b>Der gemessene Winkel</b><br>`;
-  t += `p = 1 / ${dTxt} = <b>${_fpmNum(p, 4)} Bogensekunden</b>.<br>`;
+  t += `p = 1″ · 1 pc / ${dTxt} pc = <b>${_fpmNum(p, 4)} Bogensekunden</b>.<br>`;   // Einheiten in der Rechnung (08.10.2026): 1 pc sieht 1 AE unter 1″
   t += `Über ein halbes Jahr springt der Stern um das Doppelte hin und her: ${_fpmNum(2 * p, 4)}″.<br><br>`;
   t += `So klein ist das: eine 1-Euro-Münze aus <b>${km >= 1000 ? _fpmNum(km / 1000, 1) + ' tausend km' : _fpmNum(km, 1) + ' km'}</b> Entfernung.<br><br>`;
 
@@ -81638,7 +81695,7 @@ function _speHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim spe-sim">
     <button class="sim-x" onclick="closePhysicsSim()">✕</button>
     <h3 class="sim-h3">Spannenergie – warum E = ½ · D · s² und nicht F · s</h3>
-    <div class="fpm-note" style="margin-top:2px">Beim Spannen wächst die Kraft von 0 auf F. Die gespeicherte Energie ist deshalb nicht F · s, sondern die <b>Fläche unter der F-s-Geraden</b>: ein Dreieck. Verstelle D und s und verfolge, wie sich Kraft und Fläche unterschiedlich schnell ändern.</div>
+    <div class="fpm-note" style="margin-top:2px">Beim Spannen wächst die Kraft von 0 N auf F. Die gespeicherte Energie ist deshalb nicht F · s, sondern die <b>Fläche unter der F-s-Geraden</b>: ein Dreieck. Verstelle D und s und verfolge, wie sich Kraft und Fläche unterschiedlich schnell ändern.</div>
     <div class="fpm-grid">
       <div>
         <canvas id="speAnim" width="440" height="340" class="phys-anim-cv"></canvas>
@@ -81658,7 +81715,7 @@ function _speHTML() {
           <button class="sim-btn" id="speBReihe" onclick="_speMessreihe()">Messreihe automatisch aufnehmen</button>
           <button class="sim-btn" id="speBLeer" onclick="_speTabelleLeeren()">Tabelle leeren</button>
         </div>
-        <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. „Messreihe automatisch aufnehmen“ hält die eingestellte Federkonstante fest und fährt die Auslenkung von einem Reglerende zum anderen: s = 0, 5, 10, 15, 20, 25, 30 cm. Für eine zweite Gerade stellst du danach eine andere Federkonstante ein und nimmst die Reihe noch einmal auf.</div>
+        <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden. „Messreihe automatisch aufnehmen“ hält die eingestellte Federkonstante fest und fährt die Auslenkung von einem Reglerende zum anderen: s = 0 cm, 5 cm, 10 cm, 15 cm, 20 cm, 25 cm, 30 cm. Für eine zweite Gerade stellst du danach eine andere Federkonstante ein und nimmst die Reihe noch einmal auf.</div>
       </div>
       <div>
         <div class="fpm-label">Kraft, Fläche, Energie</div>
@@ -81754,6 +81811,7 @@ const _SPE_PRESETS = [
     x: r => r.s / 100, y: r => r.F, grp: r => r.D,
     gl: k => 'D = ' + _fpmNum(k, 0) + ' N/m',
     slope: k => k,
+    einheitK: 'N/m',                   // Einheit der erwarteten Steigung (F ueber s: N/m), 08.10.2026
     curveFn: (xv, k) => k * xv,
     note: 'Ursprungsgerade ⇒ F ~ s. Doppelte Auslenkung, doppelte Kraft. Die Steigung ist die Federkonstante D selbst, ihre Einheit ist N/m. Auf der x-Achse steht die Auslenkung in Metern: 10 cm aus der Tabelle sind 0,10 m. Liegen zwei Federn in der Tabelle, gehört zu jeder eine eigene Gerade – die härtere ist die steilere.',
     typ: 'proportionale Funktion (Ursprungsgerade)', form: 'F(s) = D · s',
@@ -81782,6 +81840,7 @@ const _SPE_PRESETS = [
     x: r => _speS2(r.s), y: r => r.E, grp: r => r.D,
     gl: k => 'D = ' + _fpmNum(k, 0) + ' N/m',
     slope: k => k / 2,
+    einheitK: 'N/m',                   // Einheit der erwarteten Steigung (E ueber s²: J/m² = N/m), 08.10.2026
     curveFn: (xv, k) => k / 2 * xv,
     note: 'Über s² liegen dieselben Messwerte auf einer Ursprungsgeraden ⇒ E ~ s². Die Steigung ist D/2, also die HALBE Federkonstante. Dieselbe Feder liefert damit zwei Geraden: F über s hat die Steigung D, E über s² die Steigung D/2. Der Faktor ½ ist kein Zufall – die Energie ist die Fläche unter der Kraftgeraden, und diese Fläche ist ein Dreieck: halb so groß wie das Rechteck F · s mit denselben Seiten. Genau deshalb heißt es E = ½ · D · s² und nicht E = F · s. Die Werte für die x-Achse stehen in der Tabellenspalte s².',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 'E(s²) = (D/2) · s²',
@@ -82416,7 +82475,7 @@ const _WWF_PRESETS = [
   { tab: 't_F² über h auftragen', xl: 'h in m', yl: 't_F² in s²',
     x: r => r.h, y: r => r.tF * r.tF, grp: null, orig: true,
     col: () => '#7c3aed',
-    slope: () => 2 / _WWF_G,
+    slope: () => 2 / _WWF_G, einheitK: 's²/m',
     curveFn: xv => 2 / _WWF_G * xv,
     note: 'Nach dem Quadrieren liegen die Punkte auf einer <b>Ursprungsgeraden</b> ⇒ t_F² ~ h. Genau das ist das Linearisieren: Aus der krummen Auftragung wird eine Gerade, und die Gerade hat eine ablesbare Steigung. Sie ist 2/g in s²/m; daraus folgt der Ortsfaktor g = 2/k zurück. Punkte mit gleicher Höhe, aber verschiedener Abwurfgeschwindigkeit fallen aufeinander – die Fallzeit hängt nur von h ab.',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 't_F²(h) = (2/g) · h',
@@ -82426,12 +82485,12 @@ const _WWF_PRESETS = [
     ergebnis: g0 => {
       const k = _wwfFitK(g0.fit.k);
       return _wwfErgebnis('Ortsfaktor g aus der Steigung k', 2 / k, _WWF_G, 3, 'm/s²',
-        'Literatur', 't_F² = (2/g) · h &nbsp;⇒&nbsp; g = 2/k = 2 / ' + _fpmNum(k, 4)); } },
+        'Literatur', 't_F² = (2/g) · h &nbsp;⇒&nbsp; g = 2/k = 2 / ' + _fpmNum(k, 4) + ' s²/m'); } },
 
   { tab: 't_F über v₀ auftragen', xl: 'v₀ in m/s', yl: 't_F in s',
     x: r => r.v0, y: r => r.tF, grp: r => r.h, orig: false,
     gl: k => 'h = ' + _fpmNum(k, 0) + ' m',
-    slope: () => 0,
+    slope: () => 0, einheitK: 's²/m',
     curveFn: (xv, k) => _wwfTF(k),
     note: 'Alle Punkte einer Höhe liegen auf <b>derselben Waagerechten</b>: Die Fallzeit ändert sich nicht, während die Abwurfgeschwindigkeit von einem Reglerende zum anderen wandert. Die Steigung ist null, der Achsenabschnitt ist die Fallzeit. Diese Gerade geht <b>nicht</b> durch den Ursprung – das Häkchen „Ausgleichsgerade durch den Ursprung“ ist für diese Auftragung ausgeschaltet, sonst würde die Gerade zum Nullpunkt gezwungen und die Aussage verschwände.',
     typ: 'lineare Funktion mit der Steigung null (waagerechte Gerade)', form: 't_F(v₀) = √(2·h/g) = konstant',
@@ -82443,12 +82502,12 @@ const _WWF_PRESETS = [
       return _wwfErgebnis('Steigung k der Ausgleichsgeraden', k, 0, 4, 's²/m',
         'erwartet', 'k = 0 heißt: t_F ist von v₀ unabhängig – die Kernaussage dieser Einheit') +
         _wwfErgebnis('Abwurfhöhe h aus dem Achsenabschnitt b', _WWF_G * b * b / 2, g0.key, 2, 'm',
-          'eingestellt', 'b = t_F = √(2h/g) &nbsp;⇒&nbsp; h = g·b²/2 = 9,81 · ' + _fpmNum(b, _WWF_NK_T) + '² / 2'); } },
+          'eingestellt', 'b = t_F = √(2h/g) &nbsp;⇒&nbsp; h = g·b²/2 = 9,81 m/s² · (' + _fpmNum(b, _WWF_NK_T) + ' s)² / 2'); } },
 
   { tab: 'x_W über v₀ auftragen', xl: 'v₀ in m/s', yl: 'x_W in m',
     x: r => r.v0, y: r => r.xW, grp: r => r.h, orig: true,
     gl: k => 'h = ' + _fpmNum(k, 0) + ' m',
-    slope: k => _wwfTF(k),
+    slope: k => _wwfTF(k), einheitK: 's',
     curveFn: (xv, k) => _wwfTF(k) * xv,
     note: 'Ursprungsgerade ⇒ x_W ~ v₀. Die Steigung ist die <b>Fallzeit</b> und hat die Einheit s. Doppelte Abwurfgeschwindigkeit, doppelte Wurfweite – bei unveränderter Flugdauer. Die Abwurfgeschwindigkeit wirkt sich also auf die Weite aus, nicht auf die Zeit. Jede Höhe gibt eine eigene Gerade; die höhere Abwurfhöhe ist die steilere.',
     typ: 'proportionale Funktion (Ursprungsgerade)', form: 'x_W(v₀) = t_F · v₀  mit  t_F = √(2·h/g)',
@@ -82460,7 +82519,7 @@ const _WWF_PRESETS = [
       return _wwfErgebnis('Fallzeit t_F aus der Steigung k', k, _wwfTF(g0.key), _WWF_NK_T, 's',
         'gemessen', 'x_W = t_F · v₀ &nbsp;⇒&nbsp; t_F = k') +
         _wwfErgebnis('Abwurfhöhe h aus der Steigung k', _WWF_G * k * k / 2, g0.key, 2, 'm',
-          'eingestellt', 'k = √(2h/g) &nbsp;⇒&nbsp; h = g·k²/2 = 9,81 · ' + _fpmNum(k, 3) + '² / 2'); } }
+          'eingestellt', 'k = √(2h/g) &nbsp;⇒&nbsp; h = g·k²/2 = 9,81 m/s² · (' + _fpmNum(k, 3) + ' s)² / 2'); } }
 ];
 
 // ── Messwerterfassung ──────────────────────────────────
@@ -82947,12 +83006,12 @@ function _wwkfHTML() {
       <div>
         <div class="fpm-label">Messwerte</div>
         <div class="lmp-status" id="wwkfStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px"><b>Drittes Newton'sches Gesetz (Wechselwirkungsprinzip):</b> Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Die beiden Kräfte sind <b>gleich groß und entgegengesetzt gerichtet</b>, greifen aber an <b>verschiedenen</b> Körpern an – deshalb heben sie sich nicht auf. Aus F = m·a folgt sofort a1 : a2 = m2 : m1 und aus F1 = −F2 über die ganze Stoßdauer p1 + p2 = 0.</div>
+        <div class="fpm-note" style="margin-top:10px"><b>Drittes Newton'sches Gesetz (Wechselwirkungsprinzip):</b> Übt Körper 1 auf Körper 2 die Kraft F2 aus, so übt Körper 2 auf Körper 1 die Kraft F1 = −F2 aus. Die beiden Kräfte sind <b>gleich groß und entgegengesetzt gerichtet</b>, greifen aber an <b>verschiedenen</b> Körpern an – deshalb heben sie sich nicht auf. Aus F = m·a folgt sofort a1 : a2 = m2 : m1 und aus F1 = −F2 über die ganze Stoßdauer p1 + p2 = 0 kg·m/s.</div>
         <div class="fpm-note" style="margin-top:8px"><b>Modellgrenzen:</b> Die Bahn ist reibungsfrei und die Feder ideal (masselos, F = D·s). Die Bewegung läuft in <b>Zeitlupe</b>, und zwar in zwei Stufen: Das Abstoßen dauert in Wirklichkeit nur rund 0,12 s und ist auf etwa 2 Sekunden gedehnt (1 s am Bildschirm = 0,06 s), die freie Fahrt danach läuft schneller ab (1 s am Bildschirm = 0,30 s). Angezeigt wird immer die <b>wirkliche</b> Zeit t. Am Bahnende stoppt die Messfahrt – der Puffer ist nur eine Anzeigegrenze und gehört nicht zum Versuch. Die Stoßdauer Δt hängt von den Massen ab (Δt = (π/2)·√(μ/D) mit der reduzierten Masse μ = m1·m2/(m1+m2)), die Höchstkraft dagegen nicht.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      <b>|F1| = |F2|</b> immer &nbsp;·&nbsp; <b>a1 : a2 = m2 : m1</b> &nbsp;·&nbsp; <b>p1 + p2 = 0</b>
+      <b>|F1| = |F2|</b> immer &nbsp;·&nbsp; <b>a1 : a2 = m2 : m1</b> &nbsp;·&nbsp; <b>p1 + p2 = 0 kg·m/s</b>
     </p>
   </div>`;
 }
@@ -83102,7 +83161,7 @@ function _zpkErgebnis(label, wert, einheit, soll, formel) {
 
 // ── Die drei Auftragungen ──────────────────────────────
 const _ZPK_PRESETS = [
-  { tab: 'F über r auftragen', xl: 'r in m', yl: 'F_z in N',
+  { tab: 'F über r auftragen', xl: 'r in m', yl: 'F_z in N', einheitK: 'N/m',
     x: z => z.r, y: z => z.F, grp: z => _zpkKey(z.m, z.f),
     gl: k => 'm = ' + _fpmNum(_zpkKeyA(k), 1) + ' kg, f = ' + _fpmNum(_zpkKeyB(k), 1) + ' Hz',
     slope: k => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * _zpkKeyB(k),
@@ -83117,7 +83176,7 @@ const _ZPK_PRESETS = [
       return _zpkErgebnis('Masse m aus der Steigung k', g0.fit.k / (_ZPK_4PI2 * f * f), 'kg', m,
         'F_z = 4·π²·m·f²·r  ⇒  m = k / (4·π²·f²)'); } },
 
-  { tab: 'F über f² auftragen', xl: 'f² in 1/s²', yl: 'F_z in N',
+  { tab: 'F über f² auftragen', xl: 'f² in 1/s²', yl: 'F_z in N', einheitK: 'N·s²',
     x: z => z.f * z.f, y: z => z.F, grp: z => _zpkKey(z.m, z.r),
     gl: k => 'm = ' + _fpmNum(_zpkKeyA(k), 1) + ' kg, r = ' + _fpmNum(_zpkKeyB(k), 1) + ' m',
     slope: k => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k),
@@ -83132,7 +83191,7 @@ const _ZPK_PRESETS = [
       return _zpkErgebnis('Masse m aus der Steigung k', g0.fit.k / (_ZPK_4PI2 * r), 'kg', m,
         'F_z = 4·π²·m·r·f²  ⇒  m = k / (4·π²·r)'); } },
 
-  { tab: 'F über m auftragen', xl: 'm in kg', yl: 'F_z in N',
+  { tab: 'F über m auftragen', xl: 'm in kg', yl: 'F_z in N', einheitK: 'm/s²',
     x: z => z.m, y: z => z.F, grp: z => _zpkKey(z.r, z.f),
     gl: k => 'r = ' + _fpmNum(_zpkKeyA(k), 1) + ' m, f = ' + _fpmNum(_zpkKeyB(k), 1) + ' Hz',
     slope: k => _ZPK_4PI2 * _zpkKeyA(k) * _zpkKeyB(k) * _zpkKeyB(k),
@@ -83576,6 +83635,7 @@ const _N2M_PRESETS = [
     x: r => r.F, y: r => _n2mAnzA(r), grp: r => r.m,
     gl: k => 'm = ' + _fpmNum(k, 0) + ' kg',
     slope: k => 1 / k,
+    einheitK: '1/kg',                  // Einheit der Steigung: (m/s²)/N = 1/kg (08.10.2026)
     curveFn: (xv, k) => xv / k,
     note: 'Ursprungsgerade ⇒ a ~ F bei festgehaltener Masse. Doppelte Kraft, doppelte Beschleunigung. Die Steigung ist 1/m mit der Einheit 1/kg – aus ihr lässt sich die eingestellte Masse zurückrechnen. Messpunkte, bei denen auch die Masse verändert wurde, bilden eine eigene Farbe und eine eigene Gerade.',
     typ: 'proportionale Funktion (Ursprungsgerade)', form: 'a(F) = (1/m) · F',
@@ -83589,6 +83649,7 @@ const _N2M_PRESETS = [
     x: r => _n2mAnzKm(r), y: r => _n2mAnzA(r), grp: r => r.F,
     gl: k => 'F = ' + _fpmNum(k, 0) + ' N',
     slope: k => k,
+    einheitK: 'N',                     // Einheit der Steigung: (m/s²)/(1/kg) = kg · m/s² = N (08.10.2026)
     curveFn: (xv, k) => k * xv,
     note: 'Über der Masse selbst liegen dieselben Messwerte auf einer Hyperbel (rechter Reiter). Erst über dem Kehrwert 1/m liegen sie auf einer Ursprungsgeraden ⇒ a ~ 1/m. Die Steigung ist die festgehaltene Kraft F; ihre Einheit kg · m/s² ist gerade das Newton.',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Bilden des Kehrwerts)', form: 'a(1/m) = F · (1/m)',
@@ -83664,7 +83725,7 @@ function _n2mLaborHTML() {
       <button class="sim-btn" onclick="_n2mReihe()">Messreihe automatisch aufnehmen</button>
       <button class="sim-btn" onclick="_n2mClear()">Tabelle leeren</button>
     </div>
-    <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden – das ist die Variablenkontrolle. Die automatische Messreihe verändert genau die Größe, die im gewählten Reiter auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen und hält die andere Größe fest. Der Wagen fährt ohne Reibung, die eingestellte Kraft ist zugleich die resultierende Kraft: Die Messwerte streuen nicht. Die Spalte m · a ist genau das Produkt der beiden Spalten links daneben; dass dort nicht in jeder Zeile dieselbe Zahl steht, liegt allein an der Rundung von a – bei F = 40 N und m = 3 kg etwa ist 3 · 13,33 = 39,99.</div>
+    <div class="fpm-note" style="margin-top:5px">Für eine auswertbare Gerade darf zwischen zwei Messpunkten <b>nur eine</b> Größe verändert werden – das ist die Variablenkontrolle. Die automatische Messreihe verändert genau die Größe, die im gewählten Reiter auf der x-Achse steht, fährt dabei von einem Reglerende zum anderen und hält die andere Größe fest. Der Wagen fährt ohne Reibung, die eingestellte Kraft ist zugleich die resultierende Kraft: Die Messwerte streuen nicht. Die Spalte m · a ist genau das Produkt der beiden Spalten links daneben; dass dort nicht in jeder Zeile dieselbe Zahl steht, liegt allein an der Rundung von a – bei F = 40 N und m = 3 kg etwa ist 3 kg · 13,33 m/s² = 39,99 N.</div>
     <div class="fpm-tablewrap">
       <table class="sim-table">
         <thead><tr><th>F (N)</th><th>m (kg)</th><th>1/m (1/kg)</th><th>a (m/s²)</th><th>m · a (N)</th><th></th></tr></thead>
@@ -83786,7 +83847,7 @@ function _n2mStatus() {
 
   t += `<div class="fpm-note" style="margin-top:7px">${g.genau
       ? 'Die Probe geht <b>genau auf</b>: m · a ergibt wieder die eingestellten ' + g.sF + ' N. Das ist der ganze Inhalt von F = m · a – und zugleich die Festlegung 1 N = 1 kg · m/s².'
-      : 'Die Probe ergibt <b>' + g.sprod + ' N</b> statt der eingestellten ' + g.sF + ' N. Der Unterschied steckt allein in der Rundung: ' + g.sF + ' : ' + g.sm + ' lässt sich mit ' + g.nk + ' Nachkommastellen nicht genau angeben, und weitergerechnet wird mit dem <b>angezeigten</b> a. Genau aufgehen kann die Probe nur, wenn a mit ' + g.nk + ' Stellen genau darstellbar ist – mit m = 1, 2, 4, 5, 10 oder 20 kg ist das bei jeder Kraft der Fall.'}
+      : 'Die Probe ergibt <b>' + g.sprod + ' N</b> statt der eingestellten ' + g.sF + ' N. Der Unterschied steckt allein in der Rundung: ' + g.sF + ' N : ' + g.sm + ' kg lässt sich mit ' + g.nk + ' Nachkommastellen nicht genau angeben, und weitergerechnet wird mit dem <b>angezeigten</b> a. Genau aufgehen kann die Probe nur, wenn a mit ' + g.nk + ' Stellen genau darstellbar ist – mit m = 1, 2, 4, 5, 10 oder 20 kg ist das bei jeder Kraft der Fall.'}
     Dieselbe Beschleunigung steht im Infofeld oben im Bild – dort mit einer Nachkommastelle.</div>`;
 
   el.innerHTML = t;
@@ -83967,7 +84028,7 @@ const _FF_PRESETS = [
 
   { tab: 't² → s auftragen', xl: 't² in s²', yl: 's in m',
     x: r => r.t2, y: r => r.s, grp: null, col: () => '#0284c7',
-    slope: () => _FF_G / 2, curveFn: xv => _FF_G / 2 * xv,
+    slope: () => _FF_G / 2, einheitK: 'm/s²', curveFn: xv => _FF_G / 2 * xv,
     note: 'Jetzt liegen die Punkte auf einer Ursprungsgeraden ⇒ s ~ t². Die Steigung ist g/2, also g = 2 · Steigung. Messpunkte aus verschiedenen Fallhöhen liegen auf derselben Geraden – die Fallbeschleunigung hängt nicht davon ab, aus welcher Höhe man loslässt.',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 's(t²) = (g/2) · t²',
     param: () => 'Steigung = g/2 = ' + _fpmNum(_FF_G / 2, 3) + ' m/s² (mit dem Literaturwert g = ' + _fpmNum(_FF_G, 2) + ' m/s²)',
@@ -83977,7 +84038,7 @@ const _FF_PRESETS = [
 
   { tab: 't → v auftragen', xl: 't in s', yl: 'v in m/s',
     x: r => r.t, y: r => r.v, grp: null, col: () => '#16a34a',
-    slope: () => _FF_G, curveFn: xv => _FF_G * xv,
+    slope: () => _FF_G, einheitK: 'm/s²', curveFn: xv => _FF_G * xv,
     note: 'Ursprungsgerade ⇒ v ~ t. Die Steigung ist unmittelbar g, ohne Umweg über eine Formel. Dieser Weg braucht den Fallweg gar nicht – und v = g·t ist im Rechenverfahren der Simulation exakt, anders als der aufsummierte Weg s.',
     typ: 'proportionale Funktion (Ursprungsgerade)', form: 'v(t) = g · t',
     param: () => 'Steigung = g = ' + _fpmNum(_FF_G, 2) + ' m/s² (Literaturwert)',
@@ -84639,7 +84700,7 @@ function _befDemo() {
       _bef.rows.push({ id: _bef.nextId++, q: 1, v: r.v, s: r.s, t: r.t, g: _befKey(1, a), f, a: NaN, tm: NaN });
     });
   });
-  _bef.meldung = 'Beispielmessreihe: drei Lichtschranken-Läufe mit 1,00, 2,00 und 4,00 m/s²';
+  _bef.meldung = 'Beispielmessreihe: drei Läufe mit 1,00 m/s², 2,00 m/s² und 4,00 m/s²';
   _bef.flash = 1;
   _befNachTabelle();
 }
@@ -115156,6 +115217,8 @@ function _b8oDraw(ctx, cv) {
     ctx.beginPath(); ctx.moveTo(391, y); ctx.lineTo(397, y); ctx.stroke();
     if (txt) { ctx.fillStyle = '#475569'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText(txt, 399, y + 3); }
   }
+  // Einheit der Thermometerskala (Abdullah, 08.10.2026): −20, 0, 20 standen ohne °C.
+  ctx.fillStyle = '#475569'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('°C', 397, 34);
   const yT = _b8oSaeuleY(_b8o.T);
   const warm = _bioFxKlemme((_b8o.T + 18) / 35);
   const saeule = _b8oMisch('#3b82f6', '#ef4444', warm);
@@ -143680,6 +143743,7 @@ function _f10gMesser(ctx) {
     const a = _f10gWinkel(u);
     ctx.fillText(String(u), K.VX + Math.sin(a) * 43, K.VY - Math.cos(a) * 43 + 4);
   }
+  ctx.fillText('V', K.VX + 27, K.VY + 5);   // Einheit der Skala wie beim Wechselgenerator (08.10.2026)
   // der Stand vor dem letzten Wechsel, grau gestrichelt
   if (z.geist !== null) {
     const a = _f10gWinkel(z.geist);
@@ -157173,4 +157237,16418 @@ function _f10lDraw(ctx, cv) {
   ctx.restore();
   _f10lPakete(ctx, z, ['kabel']);
   _bioFxAlleDraw(ctx, z.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WIE VIELE CHROMOSOMEN HAT EINE ZELLE?   (Förderheft Bio 9 · bt1)
+// Kennung bio-chromosomen, Präfix _n9n. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bt1.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 440 x 280, heller Grund):
+//   Eine Zelle, stark vergrößert. Im hellen lila Oval in ihrer Mitte liegen die
+//   Chromosomen als einfache Stäbchen (Modell, KEINE X-Form) durcheinander wie
+//   Wollfäden und bewegen sich leicht. Jedes Stäbchen hat ein Bandmuster aus
+//   dunklen Querstreifen; die 23 Sorten sind verschieden lang (Modell:
+//   116, 112, … 28 Bildpunkte, je 4 kürzer) und haben je ein eigenes Muster.
+//   Die vier Zellen sind schematisch und ohne Schrift im Bild:
+//     Hautzelle der Mutter  runde Vieleck-Zelle zwischen Nachbarzellen
+//     Eizelle               große runde Zelle mit heller Hülle und kleinen
+//                           Hüllzellen außen
+//     Spermium              großer ovaler Kopf, Mittelstück, schlagender Schwanz
+//     befruchtete Eizelle   wie die Eizelle
+//   Zähler oben links im Bild (weißes Kästchen): „Chromosomen: 46“ – er zählt
+//   die Stäbchen, die im Oval liegen.
+//
+// BEDIENUNG (wörtlich):
+//   Zelle: „Hautzelle der Mutter“ · „Eizelle“ · „Spermium“ · „befruchtete
+//          Eizelle“ (Wahlgruppe _n9nZelle('haut'|'ei'|'sp'|'bef'); jede Wahl
+//          legt die Stäbchen neu durcheinander)
+//   „▶ ordnen“ (_n9nOrdnen) · „neu“ (_n9nNeu → Hautzelle der Mutter, neu gemischt)
+//   Start: Hautzelle der Mutter.
+//
+// ABLAUF NACH „▶ ordnen“ (Zeiten in s):
+//   0–1,0   die Ansicht fährt in das Oval hinein (Vergrößerung 1 → 2,9); in den
+//           Ecken bleibt der Rand des Ovals und das Zellinnere sichtbar. Die
+//           ruhenden Stäbchen fahren mit (Lage und Länge x 2,9), danach haben
+//           sie fast schon ihre Endlänge (0,36 x 2,9 = 1,04)
+//   0,3–2,8 die Stäbchen fliegen der Größe nach (das längste zuerst, je Sorte
+//           0,07 s später) auf eine Linie und stehen dort senkrecht, das längste
+//           links: Hautzelle und befruchtete Eizelle zwei gleiche Stäbchen dicht
+//           nebeneinander (Lücke 1,4 Bildpunkte, zur nächsten Sorte 4,9),
+//           Eizelle und Spermium jedes Stäbchen allein (Abstand 18,3).
+//           Linie bei y = 212, das längste Stäbchen reicht bis y = 96.
+//           Befruchtete Eizelle: links immer das rote gepunktete, rechts das
+//           blaue glatte Stäbchen.
+//   3,0     fertig; das Bild bleibt stehen, bis man umstellt oder „neu“ drückt.
+//   Wird „▶ ordnen“ noch während des Spermium-Eintritts gedrückt (siehe unten),
+//   ist der Druck vorgemerkt: Das Ordnen beginnt, sobald der Eintritt fertig ist.
+//
+// BEFRUCHTETE EIZELLE – EINTRITT (startet beim Umstellen, 3,7 s):
+//   Am Anfang liegen nur die 23 roten gepunkteten Stäbchen im Oval, der Zähler
+//   zeigt „Chromosomen: 23“. 0–1,4 ein kleines Spermium (im Kopf drei blaue
+//   Striche) schwimmt von rechts oben zwischen den Hüllzellen heran,
+//   1,4–1,9 sein Kopf dringt ein (heller Ring), der Schwanz verblasst.
+//   1,8–3,5 die 23 blauen glatten Stäbchen kommen nacheinander aus dem Kopf und
+//   legen sich ins Oval; der Zähler zählt jedes angekommene Stäbchen mit
+//   (24 … 46). 3,7 ruhiger Lichtring um das Oval und um den Zähler.
+//   Legende unten im Bild (nur bei befruchteter Eizelle): rotes gepunktetes
+//   Stäbchen „gepunktet: aus der Eizelle“, blaues glattes Stäbchen „glatt: aus
+//   dem Spermium“. Farbe UND Muster – auch ohne Farbsehen lesbar.
+//
+// STATUSZEILE (_n9n-status, Zähler vorn wie auf der Leinwand):
+//   „Chromosomen: 46 · Zelle: Hautzelle der Mutter“
+//   („Chromosomen: 46“ allein hat 15 Zeichen – simfakten.js nimmt erst Felder
+//   über 18 Zeichen in den Dump. Die Zelle steht deshalb mit in der Zeile.)
+// HINWEIS (_n9n-hinweis), in allen Zellen dieselben Sätze:
+//   vorher    „Die Stäbchen liegen durcheinander. Drücke „▶ ordnen“.“
+//   Eintritt  „Ein Spermium kommt zur Eizelle. Sieh auf den Zähler.“
+//             (vorgemerkt: + „ Danach ordnen sich die Stäbchen.“)
+//   ordnen    „Die Stäbchen stellen sich der Größe nach in eine Reihe.“
+//   fertig    „Lies den Zähler ab. Stehen immer zwei gleich große Stäbchen dicht
+//             nebeneinander? Notiere die Zahl und „ja“ oder „nein“ in Zeile N
+//             der Tabelle.“ – bei Zeile 1 (Hautzelle) ohne Zähler, nur „ja“ oder
+//             „nein“: Die 46 steht im Heft schon in der Beispielzeile. + WEITER:
+//             „ Stelle dann „Eizelle“ ein.“ (Spermium, befruchtete Eizelle);
+//             zuletzt „ Sieh auch auf die Muster. Dann geht es im Heft weiter.“
+//   Die Simulation sagt nie, ob es Paare gibt – das entscheidet das Kind am Bild.
+//
+// WERTE (lehrer.tabelle_erwartet, Modellwerte; Zahl am Zähler, Rest am Bild):
+//   Hautzelle der Mutter  Chromosomen: 46 · je zwei gleiche nebeneinander
+//   Eizelle               Chromosomen: 23 · jedes allein
+//   Spermium              Chromosomen: 23 · jedes allein
+//   befruchtete Eizelle   Chromosomen: 46 · je zwei gleiche nebeneinander,
+//                         immer ein rotes gepunktetes und ein blaues glattes
+//   Eizelle und Spermium tragen von jeder der 23 Sorten genau ein Stäbchen.
+//   Im Modell trägt das Spermium ein X: Alle 23 Sorten sind in der befruchteten
+//   Eizelle gleich lang gepaart (Lehrerteil: Mädchen).
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen): Der Eintritt zeigt 23 + 23 = 46 am
+//   Zähler (gegen „alle 46 von der Mutter“ und gegen „92“); nach dem Ordnen hat
+//   jede Sorte der befruchteten Eizelle ein rotes UND ein blaues Stäbchen. Beim
+//   Landen jeder Sorte ein kleiner Lichtring unter der Linie.
+//
+// NICHT AM BILDSCHIRM (Lückenwörter aus Merksatz und Aufgabe 2, Wortbank):
+//   „Gen“, „Hälfte“, „Paar“, „Vater“, „Zellkern“, „doppelt“ – auch nicht
+//   „Kern“ oder „halb“. Keine Zahl der Sorten im Bild (nur der Zähler).
+//   Deterministisch: eigener Zufallsgenerator mit festem Startwert.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9n = null;
+const _N9N_ZELLEN = {
+  haut: { name: 'Hautzelle der Mutter', paare: true,  nx: 222, ny: 144 },
+  ei:   { name: 'Eizelle',              paare: false, nx: 222, ny: 144 },
+  sp:   { name: 'Spermium',             paare: false, nx: 180, ny: 144 },
+  bef:  { name: 'befruchtete Eizelle',  paare: true,  nx: 222, ny: 144 }
+};
+const _N9N_REIHE = ['haut', 'ei', 'sp', 'bef'];   // Reihenfolge wie in der Tabelle
+const _N9N_SORTEN = 23;
+const _N9N_KRX = 82, _N9N_KRY = 56;              // Oval in der Gesamtansicht
+const _N9N_ZOOM = 2.9;                           // Vergrößerung beim Ordnen
+const _N9N_MX = 220, _N9N_MY = 140;              // Mitte der vergrößerten Ansicht
+const _N9N_X0 = 10, _N9N_X1 = 430;               // Linie, auf der die Stäbchen stehen
+const _N9N_BASIS = 212;
+const _N9N_DICK = 6.0, _N9N_SPALT = 1.4;         // geordnet: Dicke, Lücke im Zweier
+const _N9N_KLEIN = 0.36, _N9N_DUENN = 3.2;       // durcheinander: Länge x 0,36, Dicke
+const _N9N_ZOOMT = 1.0;
+const _N9N_START0 = 0.3, _N9N_STAFFEL = 0.07, _N9N_ZWEITER = 0.035, _N9N_FLUG = 0.95;
+const _N9N_ENDE = 3.0;
+// Eintritt des Spermiums (befruchtete Eizelle)
+const _N9N_E_SCHWIMM = 1.4, _N9N_E_REIN = 1.9, _N9N_E_AUS0 = 1.8;
+const _N9N_E_STAFFEL = 0.05, _N9N_E_FLUG = 0.6, _N9N_E_ENDE = 3.7;
+const _N9N_E_WINKEL = -35 * Math.PI / 180;       // zwischen zwei Hüllzellen hindurch
+const _N9N_E_START = { x: 222 + 300 * Math.cos(_N9N_E_WINKEL), y: 144 + 300 * Math.sin(_N9N_E_WINKEL) };
+const _N9N_E_RAND = { x: 222 + 106 * Math.cos(_N9N_E_WINKEL), y: 144 + 106 * Math.sin(_N9N_E_WINKEL) };
+const _N9N_E_INNEN = { x: 222 + 84 * Math.cos(_N9N_E_WINKEL), y: 144 + 84 * Math.sin(_N9N_E_WINKEL) };
+const _N9N_FARBE = {
+  grau: { f: '#9aa3af', b: '#4b5563', r: '#374151' },
+  ei:   { f: '#dc4a4a', b: '#7f1d1d', r: '#7f1d1d' },
+  sp:   { f: '#4f8fe6', b: '#1e3a8a', r: '#1e3a8a' }
+};
+const _N9N_HG = '#eef3f6';
+const _N9N_KERN = '#f3eefc', _N9N_KERNRAND = '#7c6aa8';
+// Hautzelle: Ecken des Vielecks (wird rund geglättet) und Nachbarzellwände
+const _N9N_HAUT = [[70, 64], [200, 42], [352, 54], [414, 140], [380, 232], [228, 252], [76, 236], [30, 146]];
+const _N9N_WAND = [[34, -10], [214, -10], [392, -10], [452, 112], [452, 270], [214, 292], [-10, 272], [-10, 118]];
+// Hüllzellen der Eizelle: Winkel (Grad), Abstand, Radius
+const _N9N_KRANZ = [[-45, 118, 11], [-25, 118, 10], [-5, 118, 11], [15, 119, 10], [35, 118, 11],
+                    [135, 118, 11], [155, 119, 10], [175, 118, 11], [195, 119, 10], [215, 118, 11],
+                    [-50, 136, 9], [-20, 137, 9], [0, 136, 9], [25, 137, 9],
+                    [145, 136, 9], [165, 137, 9], [185, 136, 9], [205, 137, 9]];
+
+// Eigener Zufall (mulberry32): gleiche Bedienung → gleiches Bild
+function _n9nZufall(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+// Bandmuster je Sorte: Lage p (Anteil der Länge) und Breite h (Anteil)
+const _N9N_BANDEN = (function () {
+  const alle = [];
+  for (let k = 0; k < 23; k++) {
+    const r = _n9nZufall(7 + k * 131);
+    const n = (k < 8 ? 4 : k < 16 ? 3 : 2) + (r() < 0.4 ? 1 : 0);
+    const b = [];
+    for (let v = 0; v < 300 && b.length < n; v++) {
+      const p = 0.16 + r() * 0.68;
+      if (b.every(q => Math.abs(q.p - p) > 0.17)) b.push({ p, h: 0.05 + r() * 0.05 });
+    }
+    b.sort((x, y) => x.p - y.p);
+    alle.push(b);
+  }
+  return alle;
+})();
+
+function _n9nKl(x) { return _bioFxKlemme(x); }
+function _n9nE(x) { return _bioFxEase.sanft(_bioFxKlemme(x)); }
+function _n9nLaenge(k) { return 116 - 4 * k; }
+function _n9nSlotX(k) { return _N9N_X0 + (k + 0.5) * (_N9N_X1 - _N9N_X0) / _N9N_SORTEN; }
+
+function _n9nInit() {
+  _n9n = { zelle: 'haut', t: 0, s: 0, ein: 0, wurf: 0, phase: 'ruhe', vorgemerkt: false,
+           zahl: 46, staebe: [], ev: {}, fx: { teile: [] } };
+  _n9nAufbau();
+}
+
+// ── Stäbchen anlegen und durcheinander legen ───────────
+function _n9nAufbau() {
+  const zn = _n9n.zelle, z = _N9N_ZELLEN[zn];
+  const r = _n9nZufall(101 + 37 * _n9n.wurf + 7 * _N9N_REIHE.indexOf(zn));
+  const st = [];
+  for (let k = 0; k < _N9N_SORTEN; k++) {
+    if (zn === 'haut') { st.push({ k, m: 0, her: 'grau' }); st.push({ k, m: 1, her: 'grau' }); }
+    else if (zn === 'bef') { st.push({ k, m: 0, her: 'ei' }); st.push({ k, m: 1, her: 'sp' }); }
+    else st.push({ k, m: 0, her: 'grau' });
+  }
+  // Lange zuerst legen, dann die kurzen in die Lücken: so liegt alles locker verteilt
+  const lege = st.map(s => ({ s, w: r() })).sort((p, q) => p.s.k - q.s.k || p.w - q.w).map(o => o.s);
+  const fertig = [];
+  for (const s of lege) {
+    const l = _n9nLaenge(s.k) * _N9N_KLEIN;
+    let best = null, bestWert = -1;
+    for (let v = 0; v < 400 && (best === null || v < 30); v++) {
+      const u = r() * 2 * Math.PI, q = Math.sqrt(r());
+      const cx = z.nx + Math.cos(u) * q * (_N9N_KRX - 8), cy = z.ny + Math.sin(u) * q * (_N9N_KRY - 7);
+      const a = r() * Math.PI;
+      const hx = Math.cos(a) * l / 2, hy = Math.sin(a) * l / 2;
+      const drin = p => Math.pow((p[0] - z.nx) / (_N9N_KRX - 6), 2) + Math.pow((p[1] - z.ny) / (_N9N_KRY - 6), 2) <= 1;
+      if (!drin([cx - hx, cy - hy]) || !drin([cx + hx, cy + hy])) continue;
+      let w = 1e9;
+      for (const f of fertig) w = Math.min(w, _n9nAbstand(cx - hx, cy - hy, cx + hx, cy + hy, f.x - f.hx, f.y - f.hy, f.x + f.hx, f.y + f.hy));
+      if (w > bestWert) { bestWert = w; best = { x: cx, y: cy, a, hx, hy }; }
+    }
+    if (!best) best = { x: z.nx, y: z.ny, a: 0, hx: l / 2, hy: 0 };        // kommt nie vor, sicher ist sicher
+    s.x0 = best.x; s.y0 = best.y; s.a0 = best.a; s.l0 = l;
+    s.ph = r() * 2 * Math.PI;
+    fertig.push({ x: best.x, y: best.y, hx: best.hx, hy: best.hy });
+  }
+  // Platz auf der Linie und Abflugzeit beim Ordnen
+  for (const s of st) {
+    const L = _n9nLaenge(s.k), xk = _n9nSlotX(s.k);
+    s.L = L;
+    s.x1 = z.paare ? xk + (s.m === 0 ? -1 : 1) * (_N9N_DICK + _N9N_SPALT) / 2 : xk;
+    s.y1 = _N9N_BASIS - L / 2;
+    s.start = _N9N_START0 + _N9N_STAFFEL * s.k + (s.m ? _N9N_ZWEITER : 0);
+  }
+  // Befruchtete Eizelle: Reihenfolge, in der die blauen aus dem Spermium kommen
+  if (zn === 'bef') {
+    const blau = st.filter(s => s.her === 'sp');
+    const folge = blau.map((s, i) => ({ s, w: r() })).sort((p, q) => p.w - q.w);
+    folge.forEach((o, j) => { o.s.kommt = _N9N_E_AUS0 + j * _N9N_E_STAFFEL; });
+  }
+  _n9n.staebe = st;
+  _n9n.ein = 0;
+  _n9n.ev = {};
+  _n9n.zahl = _n9nGezaehlt();
+}
+// Kleinster Abstand zweier Strecken (0, wenn sie sich kreuzen)
+function _n9nAbstand(ax, ay, bx, by, cx, cy, dx, dy) {
+  const o = (px, py, qx, qy, rx, ry) => (qx - px) * (ry - py) - (qy - py) * (rx - px);
+  const d1 = o(ax, ay, bx, by, cx, cy), d2 = o(ax, ay, bx, by, dx, dy);
+  const d3 = o(cx, cy, dx, dy, ax, ay), d4 = o(cx, cy, dx, dy, bx, by);
+  if (((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0))) return 0;
+  const ps = (px, py, sx, sy, ex, ey) => {
+    const vx = ex - sx, vy = ey - sy, ll = vx * vx + vy * vy || 1;
+    const u = _n9nKl(((px - sx) * vx + (py - sy) * vy) / ll);
+    return Math.hypot(px - sx - u * vx, py - sy - u * vy);
+  };
+  return Math.min(ps(ax, ay, cx, cy, dx, dy), ps(bx, by, cx, cy, dx, dy),
+                  ps(cx, cy, ax, ay, bx, by), ps(dx, dy, ax, ay, bx, by));
+}
+// Gezählt wird, was im Oval liegt
+function _n9nGezaehlt() {
+  if (_n9n.zelle === 'bef' && _n9n.phase === 'eintritt') {
+    let n = 0;
+    for (const s of _n9n.staebe) if (s.her === 'ei' || _n9n.s >= s.kommt + _N9N_E_FLUG) n++;
+    return n;
+  }
+  return _n9n.staebe.length;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9nNeuLegen(zn) {
+  _n9n.zelle = zn;
+  _n9n.wurf++;
+  _n9n.s = 0; _n9n.vorgemerkt = false; _n9n.fx = { teile: [] };
+  _n9n.phase = zn === 'bef' ? 'eintritt' : 'ruhe';
+  _n9nAufbau();
+}
+function _n9nZelle(zn) {
+  if (!_n9n || !_N9N_ZELLEN[zn]) return;
+  _n9nNeuLegen(zn);
+  _n9nStatus();
+}
+function _n9nOrdnen() {
+  if (!_n9n) return;
+  if (_n9n.phase === 'eintritt') { _n9n.vorgemerkt = true; _n9nStatus(); return; }
+  if (_n9n.phase !== 'ruhe') return;
+  _n9nOrdnenLos();
+}
+function _n9nOrdnenLos() {
+  _n9n.phase = 'ordnen'; _n9n.s = 0; _n9n.vorgemerkt = false; _n9n.ev = {};
+  _n9nStatus();
+}
+function _n9nNeu() {
+  if (!_n9n) return;
+  _n9nNeuLegen('haut');
+  _n9nStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9nZeile() {
+  return 'Chromosomen: ' + _n9n.zahl + ' · Zelle: ' + _N9N_ZELLEN[_n9n.zelle].name;
+}
+function _n9nHinweis() {
+  const p = _n9n.phase;
+  if (p === 'eintritt') return 'Ein Spermium kommt zur Eizelle. Sieh auf den Zähler.'
+                             + (_n9n.vorgemerkt ? ' Danach ordnen sich die Stäbchen.' : '');
+  if (p === 'ordnen') return 'Die Stäbchen stellen sich der Größe nach in eine Reihe.';
+  if (p === 'fertig') {
+    const i = _N9N_REIHE.indexOf(_n9n.zelle);
+    const weiter = i < _N9N_REIHE.length - 1
+      ? ' Stelle dann „' + _N9N_ZELLEN[_N9N_REIHE[i + 1]].name + '“ ein.'
+      : ' Sieh auch auf die Muster. Dann geht es im Heft weiter.';
+    // Zeile 1 steht im Heft schon als Beispiel da (Zähler 46); offen ist nur
+    // „ja“ oder „nein“ – genau wie Schritt a der Seite.
+    if (i === 0) return 'Stehen immer zwei gleich große Stäbchen dicht nebeneinander? '
+                      + 'Notiere „ja“ oder „nein“ in Zeile 1 der Tabelle.' + weiter;
+    return 'Lies den Zähler ab. Stehen immer zwei gleich große Stäbchen dicht nebeneinander? '
+         + 'Notiere die Zahl und „ja“ oder „nein“ in Zeile ' + (i + 1) + ' der Tabelle.' + weiter;
+  }
+  return 'Die Stäbchen liegen durcheinander. Drücke „▶ ordnen“.';
+}
+function _n9nStatus() {
+  if (!_n9n) return;
+  _n9n.zahl = _n9nGezaehlt();
+  const el = document.getElementById('_n9n-status');
+  if (el) { el.textContent = _n9nZeile(); el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9n-hinweis');
+  if (h) h.textContent = _n9nHinweis();
+  try {
+    document.querySelectorAll('[data-n9n]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9n') === _n9n.zelle);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9n-los');
+  if (los && los.classList) los.classList.toggle('primary', _n9n.phase === 'ruhe' || _n9n.phase === 'eintritt');
+}
+function _n9nHTML() {
+  const k = zn => `<button class="sim-btn" data-n9n="${zn}" onclick="_n9nZelle('${zn}')">${_N9N_ZELLEN[zn].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viele Chromosomen hat eine Zelle?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Zelle, stark vergrößert. Innen liegen die Chromosomen als Stäbchen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9n-cv" width="440" height="280" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9n-los" onclick="_n9nOrdnen()">▶ ordnen</button>
+          <button class="sim-btn" onclick="_n9nNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label" style="margin-top:0">Zähler</div>
+        <div class="lmp-status on" id="_n9n-status"></div>
+        <div class="phys-ctrl" style="margin-top:10px">
+          <span class="phys-ctrl-label">Zelle</span>
+          <div class="sim-btn-row">${_N9N_REIHE.map(k).join('')}</div>
+        </div>
+        <div class="fpm-note" id="_n9n-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Jedes Stäbchen ist ein Chromosom. Der Zähler zählt alle Stäbchen in der Zelle.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Hautzelle der Mutter &nbsp;|&nbsp; Modell: Die Chromosomen sind als einfache Stäbchen gezeichnet.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9nUpdate(dt) {
+  if (!_n9n) return;
+  dt = _bioFxDt(dt);
+  const z = _n9n, fx = z.fx;
+  z.t += dt; z.ein += dt;
+  if (z.phase === 'eintritt') {
+    z.s += dt;
+    if (!z.ev.kontakt && z.s >= _N9N_E_SCHWIMM) {
+      z.ev.kontakt = true;
+      _bioFxWelle(fx.teile, _N9N_E_RAND.x, _N9N_E_RAND.y, '#93c5fd', 20);
+    }
+    const n = _n9nGezaehlt();
+    if (n !== z.zahl) _n9nStatus();
+    if (z.s >= _N9N_E_ENDE) {
+      z.phase = 'ruhe'; z.s = 0;
+      _bioFxWelle(fx.teile, 222, 144, '#a78bfa', 78);
+      _bioFxWelle(fx.teile, 84, 22, '#fde047', 46);
+      if (z.vorgemerkt) _n9nOrdnenLos(); else _n9nStatus();
+    }
+  } else if (z.phase === 'ordnen') {
+    z.s += dt;
+    const paare = _N9N_ZELLEN[z.zelle].paare;
+    for (let k = 0; k < _N9N_SORTEN; k++) {
+      const da = _N9N_START0 + _N9N_STAFFEL * k + (paare ? _N9N_ZWEITER : 0) + _N9N_FLUG;
+      if (!z.ev['k' + k] && z.s >= da) {
+        z.ev['k' + k] = true;
+        _bioFxWelle(fx.teile, _n9nSlotX(k), _N9N_BASIS + 9, '#a78bfa', 9);
+      }
+    }
+    if (z.s >= _N9N_ENDE) { z.s = _N9N_ENDE; z.phase = 'fertig'; _n9nStatus(); }
+  }
+  _bioFxAlleUpdate(fx, dt);
+}
+
+// ── Wo steht ein Stäbchen jetzt? ───────────────────────
+// Ruhende Stäbchen fahren mit der Kamera mit (Lage und Länge x k, Dicke
+// gedämpft): Beim Hineinfahren wächst alles gemeinsam, erst dann wird sortiert.
+function _n9nLage(st, kam) {
+  const t = _n9n.t, p = _n9n.phase, s = _n9n.s;
+  kam = kam || _n9nKamera();
+  const wx = 0.8 * Math.sin(t * 0.7 + st.ph * 1.3), wy = 0.8 * Math.cos(t * 0.8 + st.ph);
+  const wa = 0.06 * Math.sin(t * 0.9 + st.ph);
+  const ruhe = { x: kam.cx + (st.x0 + wx - kam.nx) * kam.k, y: kam.cy + (st.y0 + wy - kam.ny) * kam.k,
+                 a: st.a0 + wa, l: st.l0 * kam.k,
+                 d: _N9N_DUENN + (_N9N_DICK - _N9N_DUENN) * kam.e, al: 1 };
+  if (p === 'fertig') return { x: st.x1, y: st.y1, a: Math.PI / 2, l: st.L, d: _N9N_DICK, al: 1 };
+  if (p === 'ordnen') {
+    const u = _n9nKl((s - st.start) / _N9N_FLUG), e = _bioFxEase.sanft(u);
+    if (u <= 0) return ruhe;
+    const bx = (ruhe.x + st.x1) / 2, by = Math.min(ruhe.y, st.y1) - 30;
+    const f = 1 - e;
+    return { x: f * f * ruhe.x + 2 * f * e * bx + e * e * st.x1,
+             y: f * f * ruhe.y + 2 * f * e * by + e * e * st.y1,
+             a: ruhe.a + (Math.PI / 2 - ruhe.a) * e, l: ruhe.l + (st.L - ruhe.l) * e,
+             d: ruhe.d + (_N9N_DICK - ruhe.d) * e, al: 1 };
+  }
+  if (p === 'eintritt' && st.her === 'sp') {
+    if (s < st.kommt) return null;                          // noch im Kopf des Spermiums
+    const u = _n9nKl((s - st.kommt) / _N9N_E_FLUG), e = _bioFxEase.sanft(u);
+    if (u >= 1) return ruhe;
+    return { x: _N9N_E_INNEN.x + (ruhe.x - _N9N_E_INNEN.x) * e, y: _N9N_E_INNEN.y + (ruhe.y - _N9N_E_INNEN.y) * e,
+             a: ruhe.a, l: 3 + (st.l0 - 3) * e, d: _N9N_DUENN, al: 0.5 + 0.5 * e };
+  }
+  return ruhe;
+}
+function _n9nKamera() {
+  let e = 0;
+  if (_n9n.phase === 'ordnen') e = _n9nE(_n9n.s / _N9N_ZOOMT);
+  else if (_n9n.phase === 'fertig') e = 1;
+  const z = _N9N_ZELLEN[_n9n.zelle];
+  return { e, k: 1 + (_N9N_ZOOM - 1) * e, cx: z.nx + (_N9N_MX - z.nx) * e, cy: z.ny + (_N9N_MY - z.ny) * e,
+           nx: z.nx, ny: z.ny };
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+// Stäbchen mit runden Enden, Längsachse senkrecht (vor dem Drehen)
+function _n9nKapsel(ctx, d, l) {
+  const r = d / 2, h = Math.max(0, l / 2 - r);
+  ctx.beginPath();
+  ctx.moveTo(-r, -h);
+  ctx.arc(0, -h, r, Math.PI, 0, false);
+  ctx.lineTo(r, h);
+  ctx.arc(0, h, r, 0, Math.PI, false);
+  ctx.closePath();
+}
+function _n9nStab(ctx, x, y, a, l, d, k, her, al) {
+  if (al <= 0.01 || l < 1) return;
+  const c = _N9N_FARBE[her];
+  ctx.save();
+  ctx.globalAlpha = al;
+  ctx.translate(x, y);
+  ctx.rotate(a - Math.PI / 2);
+  _n9nKapsel(ctx, d, l);
+  ctx.fillStyle = c.f; ctx.fill();
+  const r = d / 2, oben = -l / 2 + r * 0.9, unten = l / 2 - r * 0.9;
+  ctx.fillStyle = c.b;
+  for (const b of _N9N_BANDEN[k]) {
+    const h = Math.max(d >= 5 ? 2 : 1, b.h * l);
+    const y0 = Math.max(oben, -l / 2 + b.p * l - h / 2), y1 = Math.min(unten, -l / 2 + b.p * l + h / 2);
+    if (y1 > y0) ctx.fillRect(-r, y0, d, y1 - y0);
+  }
+  if (her === 'ei') {                                          // gepunktet
+    const abst = Math.max(2.4, d * 0.72), rr = Math.max(0.6, d * 0.2);
+    const n = Math.max(0, Math.floor((l - d) / abst));
+    ctx.fillStyle = '#ffffff';
+    for (let i = 0; i <= n; i++) {
+      ctx.beginPath(); ctx.arc(0, -n * abst / 2 + i * abst, rr, 0, 2 * Math.PI); ctx.fill();
+    }
+  }
+  _n9nKapsel(ctx, d, l);
+  ctx.strokeStyle = c.r; ctx.lineWidth = Math.max(0.7, d * 0.15); ctx.stroke();
+  ctx.restore();
+}
+// Glatte Zellwand durch die Ecken eines Vielecks
+function _n9nRund(ctx, ecken) {
+  const n = ecken.length, mid = i => {
+    const a = ecken[(i + n) % n], b = ecken[(i + 1 + n) % n];
+    return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+  };
+  ctx.beginPath();
+  const m0 = mid(-1);
+  ctx.moveTo(m0[0], m0[1]);
+  for (let i = 0; i < n; i++) { const m = mid(i); ctx.quadraticCurveTo(ecken[i][0], ecken[i][1], m[0], m[1]); }
+  ctx.closePath();
+}
+function _n9nHautzelle(ctx, t) {
+  ctx.fillStyle = '#f6dcc6'; ctx.fillRect(-40, -40, 520, 360);            // Nachbarzellen
+  const n = _N9N_HAUT.length;
+  ctx.strokeStyle = '#c98b5a'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  for (let i = 0; i < n; i++) {
+    const v = _N9N_HAUT[i], a = _N9N_HAUT[(i + n - 1) % n], b = _N9N_HAUT[(i + 1) % n];
+    // Punkt der geglätteten Wand nahe der Ecke
+    const px = 0.125 * (a[0] + v[0]) + 0.5 * v[0] + 0.125 * (v[0] + b[0]);
+    const py = 0.125 * (a[1] + v[1]) + 0.5 * v[1] + 0.125 * (v[1] + b[1]);
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(_N9N_WAND[i][0], _N9N_WAND[i][1]); ctx.stroke();
+  }
+  _n9nRund(ctx, _N9N_HAUT);
+  ctx.fillStyle = '#fdebd7'; ctx.fill();
+  ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2.4; ctx.lineJoin = 'round'; ctx.stroke();
+  _n9nKoerner(ctx, 222, 144, 116, 84, t, 'rgba(180,110,60,0.35)');
+}
+function _n9nKoerner(ctx, cx, cy, ax, ay, t, farbe) {
+  ctx.fillStyle = farbe;
+  for (let i = 0; i < 16; i++) {
+    const w = i * 2.39996 + 0.3 + 0.1 * Math.sin(t * 0.35 + i);
+    const f = 0.9 + 0.08 * ((i * 0.618) % 1);
+    ctx.beginPath(); ctx.arc(cx + ax * f * Math.cos(w), cy + ay * f * Math.sin(w), 1.7, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _n9nEizelle(ctx, t) {
+  ctx.fillStyle = _N9N_HG; ctx.fillRect(-40, -40, 520, 360);
+  for (let i = 0; i < _N9N_KRANZ.length; i++) {                         // Hüllzellen
+    const c = _N9N_KRANZ[i], w = c[0] * Math.PI / 180;
+    const x = 222 + c[1] * Math.cos(w) + 0.6 * Math.sin(t * 0.6 + i), y = 144 + c[1] * Math.sin(w) + 0.6 * Math.cos(t * 0.5 + i);
+    ctx.beginPath(); ctx.arc(x, y, c[2], 0, 2 * Math.PI);
+    ctx.fillStyle = '#fde3c4'; ctx.fill(); ctx.strokeStyle = '#c9894a'; ctx.lineWidth = 1.3; ctx.stroke();
+    ctx.beginPath(); ctx.arc(x + 1, y - 1, c[2] * 0.32, 0, 2 * Math.PI);
+    ctx.fillStyle = 'rgba(201,137,74,0.45)'; ctx.fill();
+  }
+  ctx.beginPath(); ctx.arc(222, 144, 106, 0, 2 * Math.PI);              // helle Hülle
+  ctx.fillStyle = '#dbe8f5'; ctx.fill(); ctx.strokeStyle = '#8aa4c4'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.beginPath(); ctx.arc(222, 144, 96, 0, 2 * Math.PI);               // Zellinneres
+  ctx.fillStyle = '#fff3d6'; ctx.fill(); ctx.strokeStyle = '#c08a2e'; ctx.lineWidth = 2; ctx.stroke();
+  _n9nKoerner(ctx, 222, 144, 89, 75, t, 'rgba(192,138,46,0.4)');
+}
+function _n9nSpermium(ctx, t) {
+  ctx.fillStyle = _N9N_HG; ctx.fillRect(-40, -40, 520, 360);
+  // Schwanz: wandernde Welle, nach hinten dünner
+  ctx.strokeStyle = '#64748b'; ctx.lineCap = 'round';
+  let px = 336, py = 144;
+  for (let i = 1; i <= 44; i++) {
+    const u = i / 44, x = 336 + 136 * u;
+    const y = 144 + (1.5 + 14 * u) * Math.sin(u * 2 * Math.PI * 1.5 - t * 4.5);
+    ctx.lineWidth = 6.5 - 4.5 * u;
+    ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(x, y); ctx.stroke();
+    px = x; py = y;
+  }
+  // Mittelstück
+  ctx.beginPath();
+  ctx.moveTo(272, 132); ctx.lineTo(340, 137); ctx.lineTo(340, 151); ctx.lineTo(272, 156); ctx.closePath();
+  ctx.fillStyle = '#d5dde8'; ctx.fill(); ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.6; ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  for (let x = 282; x <= 332; x += 7) { ctx.beginPath(); ctx.moveTo(x, 135); ctx.lineTo(x + 5, 153); ctx.stroke(); }
+  // Kopf mit heller Kappe vorn
+  ctx.beginPath(); ctx.ellipse(172, 144, 112, 76, 0, 0, 2 * Math.PI);
+  ctx.fillStyle = '#e3ecf7'; ctx.fill();
+  ctx.beginPath();
+  for (let i = 0; i <= 28; i++) {
+    const w = (110 + 140 * i / 28) * Math.PI / 180;
+    const x = 172 + 112 * Math.cos(w), y = 144 + 76 * Math.sin(w);
+    i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  }
+  for (let i = 28; i >= 0; i--) {
+    const w = (110 + 140 * i / 28) * Math.PI / 180;
+    ctx.lineTo(172 + 96 * Math.cos(w), 144 + 64 * Math.sin(w));
+  }
+  ctx.closePath(); ctx.fillStyle = '#c9dcf2'; ctx.fill();
+  ctx.beginPath(); ctx.ellipse(172, 144, 112, 76, 0, 0, 2 * Math.PI);
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.2; ctx.stroke();
+}
+// Das helle Oval (ohne Beschriftung)
+function _n9nOval(ctx, nx, ny, k) {
+  ctx.beginPath(); ctx.ellipse(nx, ny, _N9N_KRX, _N9N_KRY, 0, 0, 2 * Math.PI);
+  ctx.fillStyle = _N9N_KERN; ctx.fill();
+  ctx.strokeStyle = _N9N_KERNRAND; ctx.lineWidth = 2 / k; ctx.stroke();
+}
+// Kleines Spermium beim Eintritt: Kopf bei (hx, hy), Blickrichtung (dx, dy)
+function _n9nGast(ctx, hx, hy, dx, dy, t, aKopf, aSchwanz) {
+  const nx = -dy, ny = dx;
+  if (aSchwanz > 0.01) {
+    ctx.save();
+    ctx.globalAlpha = aSchwanz;
+    ctx.strokeStyle = '#475569'; ctx.lineCap = 'round'; ctx.lineWidth = 1.7;
+    ctx.beginPath();
+    for (let i = 0; i <= 24; i++) {
+      const u = i / 24, s = 15 + u * 38, w = (0.4 + 4.6 * u) * Math.sin(u * 2 * Math.PI * 1.3 - t * 9);
+      const x = hx - dx * s + nx * w, y = hy - dy * s + ny * w;
+      if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+  if (aKopf > 0.01) {
+    ctx.save();
+    ctx.globalAlpha = aKopf;
+    ctx.translate(hx, hy); ctx.rotate(Math.atan2(dy, dx));
+    ctx.fillStyle = '#d5dde8'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.1;
+    ctx.beginPath(); ctx.moveTo(-8, -2.4); ctx.lineTo(-16, -1.6); ctx.lineTo(-16, 1.6); ctx.lineTo(-8, 2.4); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(0, 0, 8.5, 6, 0, 0, 2 * Math.PI);
+    ctx.fillStyle = '#e3ecf7'; ctx.fill(); ctx.lineWidth = 1.4; ctx.stroke();
+    ctx.strokeStyle = _N9N_FARBE.sp.f; ctx.lineWidth = 1.6; ctx.lineCap = 'round';
+    for (const [x0, y0, x1, y1] of [[-4, -2.5, 1, -1.5], [-3, 0.6, 3, 0.2], [-4, 2.6, 0, 3]]) {
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+function _n9nGastZeichnen(ctx) {
+  const s = _n9n.s, t = _n9n.t;
+  const dx0 = _N9N_E_RAND.x - _N9N_E_START.x, dy0 = _N9N_E_RAND.y - _N9N_E_START.y;
+  const dl = Math.hypot(dx0, dy0), dx = dx0 / dl, dy = dy0 / dl;
+  let hx, hy;
+  if (s < _N9N_E_SCHWIMM) {
+    const u = s / _N9N_E_SCHWIMM, q = 1.2 * Math.sin(t * 9);
+    hx = _N9N_E_START.x + dx0 * u - dy * q; hy = _N9N_E_START.y + dy0 * u + dx * q;
+  } else {
+    const u = _n9nE((s - _N9N_E_SCHWIMM) / (_N9N_E_REIN - _N9N_E_SCHWIMM));
+    hx = _N9N_E_RAND.x + (_N9N_E_INNEN.x - _N9N_E_RAND.x) * u; hy = _N9N_E_RAND.y + (_N9N_E_INNEN.y - _N9N_E_RAND.y) * u;
+  }
+  const aSchwanz = 1 - _n9nKl((s - _N9N_E_SCHWIMM) / 0.6);
+  const aKopf = 1 - _n9nKl((s - 2.6) / 0.6);
+  _n9nGast(ctx, hx, hy, dx, dy, t, aKopf, aSchwanz);
+}
+function _n9nZaehler(ctx) {
+  ctx.save();
+  ctx.font = '700 16px sans-serif';
+  const txt = 'Chromosomen: ' + _n9n.zahl, w = Math.max(150, ctx.measureText(txt).width + 22);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 8, 8, w, 28, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(txt, 8 + w / 2, 28);
+  ctx.restore();
+}
+function _n9nLegende(ctx, W, H) {
+  ctx.save();
+  const t1 = 'gepunktet: aus der Eizelle', t2 = 'glatt: aus dem Spermium';
+  const st = 22, luft = 7, mitte = 26;
+  let px = 12, w1 = 0, w2 = 0;
+  for (; px >= 9; px--) {
+    ctx.font = '600 ' + px + 'px sans-serif';
+    w1 = ctx.measureText(t1).width; w2 = ctx.measureText(t2).width;
+    if (2 * (st + luft) + w1 + w2 + mitte <= W - 36) break;
+  }
+  const breit = 2 * (st + luft) + w1 + w2 + mitte, x = (W - breit) / 2, y = H - 16;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x - 10, y - 12, breit + 20, 24, 7); ctx.fill(); ctx.stroke();
+  ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  _n9nStab(ctx, x + st / 2, y, 0, st, 6, 3, 'ei', 1);
+  ctx.fillStyle = '#0f172a'; ctx.fillText(t1, x + st + luft, y + 0.5);
+  const x2 = x + st + luft + w1 + mitte;
+  _n9nStab(ctx, x2 + st / 2, y, 0, st, 6, 3, 'sp', 1);
+  ctx.fillStyle = '#0f172a'; ctx.fillText(t2, x2 + st + luft, y + 0.5);
+  ctx.restore();
+}
+function _n9nDraw(ctx, cv) {
+  if (!_n9n) return;
+  const W = cv.width, H = cv.height, t = _n9n.t, zn = _n9n.zelle;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9N_HG; ctx.fillRect(0, 0, W, H);
+  const kam = _n9nKamera();
+
+  // ── Zelle und Oval, mit der Kamera vergrößert ──
+  ctx.save();
+  ctx.translate(kam.cx, kam.cy); ctx.scale(kam.k, kam.k); ctx.translate(-kam.nx, -kam.ny);
+  if (zn === 'haut') _n9nHautzelle(ctx, t);
+  else if (zn === 'sp') _n9nSpermium(ctx, t);
+  else _n9nEizelle(ctx, t);
+  _n9nOval(ctx, kam.nx, kam.ny, kam.k);
+  ctx.restore();
+
+  // ── Linie, auf der die Stäbchen stehen ──
+  if (kam.e > 0.01) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(100,116,139,' + (0.7 * kam.e).toFixed(3) + ')'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(_N9N_X0 - 2, _N9N_BASIS + 1.5); ctx.lineTo(_N9N_X1 + 2, _N9N_BASIS + 1.5); ctx.stroke();
+    ctx.restore();
+  }
+
+  // ── Spermium beim Eintritt ──
+  if (_n9n.phase === 'eintritt') _n9nGastZeichnen(ctx);
+
+  // ── Stäbchen: erst die ruhenden, dann die fliegenden obenauf ──
+  const auf = 0.25 + 0.75 * _n9nKl(_n9n.ein / 0.35);
+  const fliegt = [];
+  for (const st of _n9n.staebe) {
+    const q = _n9nLage(st, kam);
+    if (!q) continue;
+    const imFlug = (_n9n.phase === 'ordnen' && _n9n.s > st.start && _n9n.s < st.start + _N9N_FLUG);
+    if (imFlug) fliegt.push([st, q]);
+    else _n9nStab(ctx, q.x, q.y, q.a, q.l, q.d, st.k, st.her, q.al * auf);
+  }
+  for (const [st, q] of fliegt) _n9nStab(ctx, q.x, q.y, q.a, q.l, q.d, st.k, st.her, q.al * auf);
+
+  _bioFxAlleDraw(ctx, _n9n.fx);
+  _n9nZaehler(ctx);
+  if (zn === 'bef') _n9nLegende(ctx, W, H);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · BLUTWÄSCHE: WIE OFT IN DER WOCHE?   (Förderheft Bio 9 · bd3)
+// Kennung bio-dialyse, Präfix _n9j. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bd3.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250):
+//   oben   ein Wochenkalender mit sieben Feldern „Mo“ … „So“. Dialysetage
+//          tragen von Anfang an ein kleines Maschinen-Bild (grau und
+//          hellblau, NICHT rot – sonst hält man den Dialysetag für einen
+//          roten Tag, die Stolperstelle aus dem Lehrerteil).
+//          1-mal: Montag · 3-mal: Montag, Mittwoch, Freitag.
+//   darunter die Kurve „Harnstoff-Punkte im Blut“, genau unter den Feldern
+//          (eine Spalte je Tag), Achse 0 bis 18, beschriftet 0, 2, … 16.
+//          Grüner Bereich unter 8, roter Bereich ab 8 (rote Linie, „8“ rot).
+//          Das letzte Drittel jeder Spalte ist leicht abgedunkelt: der Abend.
+//   an Dialysetagen erscheint am Abend ein Bild (Sprechblase, zeigt auf das
+//          Kalenderfeld): Arm, roter Schlauch hinein, liegender Zylinder mit
+//          drei roten Röhrchen, außen herum hellblaue Spülflüssigkeit,
+//          dunkelroter Schlauch zurück in den Arm, Maschine mit leerem
+//          Bildschirm und Pumpenrad. Das Blut fließt (Rad dreht sich), gelbe
+//          Punkte kommen mit dem Blut an, treten aus den Röhrchen in die
+//          hellblaue Flüssigkeit und werden zur Maschine getragen. Wie viele
+//          gelbe Punkte ankommen, richtet sich nach der Kurve: viel Harnstoff,
+//          viele Punkte. Das Bild steht nur im oberen Teil der Kurvenfläche;
+//          dort ist die Kurve an Dialyseabenden nie (höchstens 6 Punkte).
+//
+// BEDIENUNG (wörtlich):
+//   „Dialyse in der Woche“: „keine“ · „1-mal“ · „3-mal“
+//            (Wahlgruppe _n9jWahl('keine'|'ein'|'drei')); Start „keine“.
+//   „▶ 1 Woche abspielen“ (_n9jAbspielen) · „neu“ (_n9jNeu → „keine“).
+//   Umstellen beendet die laufende Woche und leert Kalender und Kurve.
+//   „▶“ während der Woche bewirkt nichts; nach dem Ende spielt es die Woche
+//   noch einmal von Montag an.
+//
+// MODELL (Modellwerte, Lehrerteil): Montag früh 2 Punkte. Jeder Tag: +2
+//   Punkte (Spalte 0 … 0,7, gleichmäßig), dann der Abend (0,7 … 1,0): ohne
+//   Dialyse bleibt die Kurve stehen, mit Dialyse fällt sie auf 2 Punkte. Am
+//   Ende des Tages färbt sich das Feld: rot, wenn die Kurve bei 8 Punkten
+//   oder darüber liegt, sonst grün.
+//   WERTE (sim_plan, nachgerechnet mit _n9jErgebnis() am GEZEICHNETEN Bild):
+//     keine  4, 6, 8, 10, 12, 14, 16  rot Mi–So (5 Tage)   Sonntag 16
+//     1-mal  2, 4, 6,  8, 10, 12, 14  rot Do–So (4 Tage)   Sonntag 14
+//     3-mal  2, 4, 2,  4,  2,  4,  6  kein Tag rot (0)     Sonntag  6
+//
+// ZEITPLAN eines Tages (s): Anstieg 0,46 · Abend 0,12 (mit Dialyse 0,90:
+//   0,08 Bild erscheint, 0,66 Fallen, 0,16 Ruhe) · Feld färbt sich, 0,10.
+//   Woche: keine 4,76 s · 1-mal 5,54 s · 3-mal 7,10 s.
+//   Warum so knapp: simfakten.js fährt eine Wahlgruppe mit höchstens acht
+//   Knopfdrücken zu je 62 Frames (≈ 7,9 s) und bricht ab, wenn die Anzeige rund
+//   0,5 s gleich bleibt. Die Statuszeile ändert sich deshalb spätestens nach
+//   0,41 s (Tag, Abend, ganze Punkte), und die längste Woche endet vor 7,9 s.
+//   So steht das Ende JEDER Einstellung auch im Dump mit Voreinstellungen.
+//
+// STATUSZEILE (_n9j-status):
+//   vorher   „Dialyse in der Woche: keine“ (bzw. 1-mal, 3-mal)
+//   Woche    „Dienstag · Harnstoff-Punkte im Blut: 5“, am Dialyseabend
+//            „Montagabend · Dialyse · Harnstoff-Punkte im Blut: 3“
+//            (ganze Punkte: beim Anstieg abgerundet, beim Fallen aufgerundet –
+//            eine Zahl erscheint erst, wenn die Kurve sie erreicht hat)
+//   danach   der Zähler „Harnstoff-Punkte am Sonntag: 16“ (14 / 6)
+//   KEIN Zähler für rote Tage – auch nicht im Hinweis, nicht im Bild.
+// HINWEIS (_n9j-hinweis):
+//   vorher   „Dialyse in der Woche: „keine“. Drücke „▶ 1 Woche abspielen“.“
+//   Woche    „Die Woche läuft. Sieh auf die Kurve und auf den Kalender.“
+//   danach   „Die Woche mit „keine“ ist zu Ende. Lies den Zähler ab. Zähle die
+//            roten Tage im Kalender.“
+// IM BILD: „Mo“ … „So“, Achsenzahlen, „Harnstoff-Punkte im Blut“, „Dialyse“
+//   und „Arm“ im Bild der Maschine, am Ende der Wert vom Sonntag („16“) in
+//   einem Kästchen rechts neben dem Kurvenende (freier Rand x 384 … 420 –
+//   über der Kurve lag es bei „3-mal“ auf der roten Linie).
+//
+// AHA (_bioFx, ohne Text): Jedes Feld bekommt beim Färben einen ruhigen Ring
+//   in seiner Farbe. Bei „1-mal“ sieht man, wie die Kurve nach dem Montag
+//   wieder in den roten Bereich läuft (Vermutung 1 widerlegt); bei „3-mal“
+//   holt jede Dialyse sie zurück, am Ende grüne Funken über dem Kalender.
+//   Sonst am Ende ein ruhiger roter Ring am Ende der Kurve.
+//
+// NICHT AM BILDSCHIRM: „Niere“, „Nieren“, „steigt“, „sinkt“, „Filter“,
+//   „Stunden“ (auch nicht als Wortteil) und aus Hilfe 3 „jeden Tag“,
+//   „ständig“, „die ganze Zeit“. Kein Name, keine Nadel, keine Person.
+//   Deterministisch, ohne Zufall (außer den Funken der Effektbibliothek).
+// ═══════════════════════════════════════════════════════════════════════
+let _n9j = null;
+const _N9J_WAHL = { keine: 'keine', ein: '1-mal', drei: '3-mal' };
+const _N9J_DIA = { keine: [], ein: [0], drei: [0, 2, 4] };      // Tage mit Dialyse, 0 = Montag
+const _N9J_TAG = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+const _N9J_KURZ = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+const _N9J_START = 2, _N9J_PRO_TAG = 2, _N9J_NACH = 2, _N9J_ROT = 8, _N9J_VMAX = 18;
+// Zeitplan in s
+const _N9J_STEIG = 0.46, _N9J_ABEND = 0.12, _N9J_PAUSE = 0.10;
+const _N9J_DIAL = 0.90, _N9J_AUF = 0.08, _N9J_FALL = 0.66;
+// Bildaufbau
+const _N9J_X0 = 34, _N9J_CW = 50, _N9J_X1 = _N9J_X0 + 7 * _N9J_CW;   // 34 … 384; rechts davon
+                                                                     // steht am Ende der Wert vom Sonntag
+const _N9J_YT = 54, _N9J_YB = 234;                                   // 10 Bildpunkte je Punkt
+const _N9J_KY = 4, _N9J_KH = 40;                                     // Kalenderfelder
+const _N9J_ANT = 0.7, _N9J_FX = 0.92;          // Tag bis 0,7 der Spalte; Fallen endet bei 0,92
+// Bild der Maschine (Sprechblase), eigene Koordinaten 0 … BW / 0 … BH
+const _N9J_BW = 186, _N9J_BH = 82, _N9J_BY = 58;
+const _N9J_FASER = [27, 33, 39];                // drei Röhrchen im Zylinder
+const _N9J_VB = 140, _N9J_VF = 60;             // Blut und Spülflüssigkeit in Bildpunkten je s
+
+function _n9jY(v) { return _N9J_YB - v * (_N9J_YB - _N9J_YT) / _N9J_VMAX; }
+
+// Fahrplan einer Woche: Stützpunkte der Kurve {t, x, v} und je Tag die Zeiten.
+function _n9jPlan(w) {
+  const dia = _N9J_DIA[w], keys = [], tage = [];
+  let t = 0, v = _N9J_START;
+  for (let d = 0; d < 7; d++) {
+    const x0 = _N9J_X0 + d * _N9J_CW, xa = x0 + _N9J_ANT * _N9J_CW, x1 = x0 + _N9J_CW;
+    const tag = { d, t0: t, v0: v, dialyse: dia.indexOf(d) >= 0 };
+    keys.push({ t, x: x0, v });
+    t += _N9J_STEIG; v += _N9J_PRO_TAG;
+    keys.push({ t, x: xa, v });
+    tag.tAbend = t; tag.spitze = v;
+    if (tag.dialyse) {
+      keys.push({ t: t + _N9J_AUF, x: xa + 0.03 * _N9J_CW, v });
+      v = _N9J_NACH;
+      keys.push({ t: t + _N9J_AUF + _N9J_FALL, x: x0 + _N9J_FX * _N9J_CW, v });
+      tag.ta = t + 0.04; tag.tb = t + _N9J_AUF + _N9J_FALL;     // Maschine läuft
+      t += _N9J_DIAL;
+    } else t += _N9J_ABEND;
+    keys.push({ t, x: x1, v });
+    tag.tFarbe = t; tag.ende = v; tag.rot = v >= _N9J_ROT;
+    t += _N9J_PAUSE;
+    keys.push({ t, x: x1, v });                                  // der Stift wartet
+    tag.t1 = t;
+    tage.push(tag);
+  }
+  return { keys, tage, dauer: t };
+}
+
+function _n9jInit() {
+  _n9j = { wahl: 'keine', t: 0 };
+  _n9jRuhe();
+}
+function _n9jRuhe() {
+  _n9j.plan = _n9jPlan(_n9j.wahl);
+  _n9j.phase = 'bereit'; _n9j.s = 0; _n9j.ev = {}; _n9j.fx = { teile: [] };
+  _n9j.letzt = ''; _n9j.gemalt = null;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9jWahl(w) {
+  if (!_n9j || !_N9J_WAHL[w]) return;
+  _n9j.wahl = w;
+  _n9jRuhe();
+  _n9jStatus();
+}
+function _n9jAbspielen() {
+  if (!_n9j || _n9j.phase === 'lauf') return;
+  _n9jRuhe();
+  _n9j.phase = 'lauf';
+  _n9jStatus();
+}
+function _n9jNeu() {
+  if (!_n9j) return;
+  _n9j.wahl = 'keine';
+  _n9jRuhe();
+  _n9jStatus();
+}
+
+// ── Wo steht der Stift? ────────────────────────────────
+function _n9jStift(s) {
+  const k = _n9j.plan.keys;
+  if (s <= k[0].t) return { x: k[0].x, v: k[0].v, i: 0, fallend: false };
+  for (let i = 0; i < k.length - 1; i++) {
+    const a = k[i], b = k[i + 1];
+    if (s <= b.t) {
+      const u = b.t > a.t ? (s - a.t) / (b.t - a.t) : 1;
+      return { x: a.x + (b.x - a.x) * u, v: a.v + (b.v - a.v) * u, i, fallend: b.v < a.v };
+    }
+  }
+  const z = k[k.length - 1];
+  return { x: z.x, v: z.v, i: k.length - 1, fallend: false };
+}
+function _n9jHeute(s) {
+  const tage = _n9j.plan.tage;
+  for (const g of tage) if (s < g.t1) return g;
+  return tage[tage.length - 1];
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9jZeile() {
+  const name = _N9J_WAHL[_n9j.wahl];
+  if (_n9j.phase === 'bereit') return 'Dialyse in der Woche: ' + name;
+  if (_n9j.phase === 'fertig') return 'Harnstoff-Punkte am Sonntag: ' + _n9j.plan.tage[6].ende;
+  const s = _n9j.s, g = _n9jHeute(s), p = _n9jStift(s);
+  const n = p.fallend ? Math.ceil(p.v - 1e-9) : Math.floor(p.v + 1e-9);
+  const abend = g.dialyse && s >= g.tAbend;
+  // „Montagabend“ in einem Wort (Duden), nicht „Montag Abend“
+  return _N9J_TAG[g.d] + (abend ? 'abend · Dialyse' : '') + ' · Harnstoff-Punkte im Blut: ' + n;
+}
+function _n9jHinweis() {
+  const name = _N9J_WAHL[_n9j.wahl];
+  if (_n9j.phase === 'lauf') return 'Die Woche läuft. Sieh auf die Kurve und auf den Kalender.';
+  if (_n9j.phase === 'fertig') return 'Die Woche mit „' + name + '“ ist zu Ende. Lies den Zähler ab. Zähle die roten Tage im Kalender.';
+  return 'Dialyse in der Woche: „' + name + '“. Drücke „▶ 1 Woche abspielen“.';
+}
+function _n9jStatus() {
+  if (!_n9j) return;
+  const z = _n9jZeile();
+  const el = document.getElementById('_n9j-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _n9j.letzt = z;
+  const h = document.getElementById('_n9j-hinweis');
+  if (h) h.textContent = _n9jHinweis();
+  try {
+    document.querySelectorAll('[data-n9j]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9j') === _n9j.wahl);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9j-los');
+  if (los && los.classList) los.classList.toggle('primary', _n9j.phase !== 'lauf');
+}
+function _n9jHTML() {
+  const k = w => `<button class="sim-btn" data-n9j="${w}" onclick="_n9jWahl('${w}')">${_N9J_WAHL[w]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie oft in der Woche ist die Dialyse nötig?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Woche eines Menschen an der Dialyse, im Zeitraffer. Oben der Kalender, darunter die Kurve: So viel Harnstoff ist in seinem Blut.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9j-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9j-los" onclick="_n9jAbspielen()">▶ 1 Woche abspielen</button>
+          <button class="sim-btn" onclick="_n9jNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Dialyse in der Woche</span>
+          <div class="sim-btn-row">${k('keine')}${k('ein')}${k('drei')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9j-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_n9j-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Grüner Bereich: wenig Harnstoff im Blut. Roter Bereich (ab 8 Punkten): zu viel Harnstoff im Blut. Dunkler Streifen: Abend. Im Bild der Maschine ist rot das Blut, hellblau die Spülflüssigkeit, und die gelben Punkte sind Harnstoff.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Dialyse in der Woche „keine“ &nbsp;|&nbsp; Montag früh: 2 Harnstoff-Punkte im Blut</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9jUpdate(dt) {
+  if (!_n9j) return;
+  dt = _bioFxDt(dt);
+  _n9j.t += dt;
+  if (_n9j.phase === 'lauf') {
+    _n9j.s += dt;
+    _n9jEreignisse();
+    if (_n9j.s >= _n9j.plan.dauer) {
+      _n9j.s = _n9j.plan.dauer;
+      _n9j.phase = 'fertig';
+      _n9jSchluss();
+      _n9jStatus();
+    } else if (_n9jZeile() !== _n9j.letzt) _n9jStatus();
+  }
+  _bioFxAlleUpdate(_n9j.fx, dt);
+}
+// Ein ruhiger Ring, sobald sich ein Feld färbt – in seiner eigenen Farbe.
+function _n9jEreignisse() {
+  const s = _n9j.s, ev = _n9j.ev;
+  for (const g of _n9j.plan.tage) {
+    if (!ev['f' + g.d] && s >= g.tFarbe) {
+      ev['f' + g.d] = true;
+      const f = _n9jFeld(g.d);
+      _bioFxWelle(_n9j.fx.teile, f.x + f.w / 2, f.y + f.h / 2, g.rot ? '#ef4444' : '#22c55e', 22);
+    }
+  }
+}
+function _n9jSchluss() {
+  const p = _n9j.plan, z = p.keys[p.keys.length - 1], fx = _n9j.fx;
+  const rote = p.tage.filter(g => g.rot).length;
+  if (rote === 0) {
+    for (let d = 0; d < 7; d += 2) {
+      const f = _n9jFeld(d);
+      _bioFxFunken(fx.teile, f.x + f.w / 2, f.y + f.h / 2, 5, ['#86efac', '#ffffff', '#4ade80', '#bbf7d0']);
+    }
+    _bioFxWelle(fx.teile, z.x, _n9jY(z.v), '#22c55e', 22);
+  } else {
+    _bioFxWelle(fx.teile, z.x, _n9jY(z.v), '#ef4444', 22);
+  }
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9jFeld(d) {
+  return { x: _N9J_X0 + d * _N9J_CW + 2, y: _N9J_KY, w: _N9J_CW - 4, h: _N9J_KH };
+}
+function _n9jKurvenfeld(ctx) {
+  const X0 = _N9J_X0, X1 = _N9J_X1, YT = _N9J_YT, YB = _N9J_YB, y8 = _n9jY(_N9J_ROT);
+  ctx.fillStyle = '#fee2e2'; ctx.fillRect(X0, YT, X1 - X0, y8 - YT);
+  ctx.fillStyle = '#dcfce7'; ctx.fillRect(X0, y8, X1 - X0, YB - y8);
+  // Abend: das letzte Drittel jeder Spalte leicht abgedunkelt
+  ctx.fillStyle = 'rgba(51,65,85,0.07)';
+  for (let d = 0; d < 7; d++) {
+    const xa = _N9J_X0 + (d + _N9J_ANT) * _N9J_CW;
+    ctx.fillRect(xa, YT, (1 - _N9J_ANT) * _N9J_CW, YB - YT);
+  }
+  // Gitter alle 2 Punkte, Tagesgrenzen
+  ctx.strokeStyle = 'rgba(100,116,139,0.28)'; ctx.lineWidth = 1;
+  for (let v = 2; v <= 16; v += 2) {
+    if (v === _N9J_ROT) continue;
+    ctx.beginPath(); ctx.moveTo(X0, _n9jY(v)); ctx.lineTo(X1, _n9jY(v)); ctx.stroke();
+  }
+  ctx.strokeStyle = 'rgba(100,116,139,0.45)';
+  for (let d = 1; d < 7; d++) {
+    const x = X0 + d * _N9J_CW;
+    ctx.beginPath(); ctx.moveTo(x, YT); ctx.lineTo(x, YB); ctx.stroke();
+  }
+  // Grenze zum roten Bereich
+  ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(X0, y8); ctx.lineTo(X1, y8); ctx.stroke();
+  // Achsen
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(X0, YT); ctx.lineTo(X0, YB); ctx.lineTo(X1, YB); ctx.stroke();
+  // Titel unten, rechts vom Startpunkt (dort ist die Kurve nie: sie fällt nie unter 2)
+  ctx.textAlign = 'left';
+  ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#14532d';
+  ctx.fillText('Harnstoff-Punkte im Blut', X0 + 20, YB - 6);
+}
+// Achsenzahlen NACH der Kurve, damit der Leuchtpunkt am Start die „2“ nicht verdeckt
+function _n9jAchsenzahlen(ctx) {
+  ctx.textAlign = 'right';
+  for (let v = 0; v <= 16; v += 2) {
+    ctx.font = v === _N9J_ROT ? '700 11px sans-serif' : '10px sans-serif';
+    ctx.fillStyle = v === _N9J_ROT ? '#b91c1c' : '#334155';
+    ctx.fillText(String(v), _N9J_X0 - 6, _n9jY(v) + 4);
+  }
+  ctx.textAlign = 'left';
+}
+// Kleines Maschinen-Bild im Kalenderfeld: grau und hellblau, ohne Rot.
+function _n9jIkon(ctx, cx, cy) {
+  ctx.save();
+  ctx.fillStyle = '#bae6fd'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, cx - 13, cy - 5, 9, 12, 3); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(cx - 4, cy + 1); ctx.lineTo(cx - 1, cy + 1); ctx.stroke();
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, cx - 1, cy - 7, 14, 16, 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(cx + 1.5, cy - 4.5, 9, 5); ctx.strokeRect(cx + 1.5, cy - 4.5, 9, 5);
+  ctx.beginPath(); ctx.arc(cx + 6, cy + 4.5, 2, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+function _n9jKalender(ctx, s) {
+  const p = _n9j.plan, lauf = _n9j.phase === 'lauf', heute = lauf ? _n9jHeute(s).d : -1;
+  const gemalt = [];
+  for (let d = 0; d < 7; d++) {
+    const f = _n9jFeld(d), g = p.tage[d];
+    // Einblenden in 0,08 s – kürzer als die Pause danach (0,10 s), sonst
+    // bliebe der Sonntag am Ende der Woche nur halb gefärbt.
+    const a = s < 0 ? 0 : _n9j.phase === 'fertig' ? 1 : _bioFxKlemme((s - g.tFarbe) / 0.08);
+    ctx.fillStyle = '#ffffff';
+    _bioFxRundRect(ctx, f.x, f.y, f.w, f.h, 6); ctx.fill();
+    if (a > 0) {
+      ctx.save(); ctx.globalAlpha = a;
+      ctx.fillStyle = g.rot ? '#f87171' : '#86efac';
+      _bioFxRundRect(ctx, f.x, f.y, f.w, f.h, 6); ctx.fill();
+      ctx.restore();
+    }
+    gemalt.push(a >= 1 ? (g.rot ? 'rot' : 'grün') : 'leer');
+    ctx.strokeStyle = d === heute ? '#f59e0b' : (a >= 1 ? (g.rot ? '#b91c1c' : '#15803d') : '#94a3b8');
+    ctx.lineWidth = d === heute ? 3 : 1.5;
+    _bioFxRundRect(ctx, f.x, f.y, f.w, f.h, 6); ctx.stroke();
+    ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.fillStyle = '#0f172a';
+    ctx.fillText(_N9J_KURZ[d], f.x + f.w / 2, f.y + 14);
+    if (g.dialyse) _n9jIkon(ctx, f.x + f.w / 2, f.y + 29);
+  }
+  ctx.textAlign = 'left';
+  return gemalt;
+}
+// Lichtpaket an der Spitze der Kurve
+function _n9jLicht(ctx, x, y, k) {
+  ctx.save();
+  const g = ctx.createRadialGradient(x, y, 0, x, y, 13 * k);
+  g.addColorStop(0, 'rgba(255,248,196,0.95)');
+  g.addColorStop(0.45, 'rgba(253,224,71,0.6)');
+  g.addColorStop(1, 'rgba(250,204,21,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 13 * k, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _n9jKurve(ctx, s) {
+  const k = _n9j.plan.keys, t = _n9j.t;
+  const p = s < 0 ? { x: k[0].x, v: k[0].v, i: 0 } : _n9jStift(s);
+  const pts = [[k[0].x, _n9jY(k[0].v)]];
+  for (let i = 1; i <= p.i; i++) pts.push([k[i].x, _n9jY(k[i].v)]);
+  pts.push([p.x, _n9jY(p.v)]);
+  if (pts.length > 1) {
+    ctx.save();
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    for (const [farbe, breite] of [['rgba(255,255,255,0.85)', 6], ['#1e293b', 3]]) {
+      ctx.strokeStyle = farbe; ctx.lineWidth = breite;
+      ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+      for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  const x = p.x, y = _n9jY(p.v);
+  if (_n9j.phase === 'bereit') _bioFxLeuchten(ctx, x, y, 9, t, '255,216,77');
+  else if (_n9j.phase === 'lauf') _n9jLicht(ctx, x, y, 1);
+  else _n9jLicht(ctx, x, y, 0.7 + 0.1 * Math.sin(t * 2.4));
+  ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(x, y, 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Wert vom Sonntag am Ende der Woche: rechts neben dem Kurvenende, im
+  // freien Rand – dort liegt weder Kurve noch Grenzlinie.
+  if (_n9j.phase === 'fertig') {
+    const txt = String(_n9j.plan.tage[6].ende);
+    ctx.font = '700 12px sans-serif';
+    const w = Math.max(22, ctx.measureText(txt).width + 10), bx = _N9J_X1 + 7;
+    ctx.fillStyle = 'rgba(255,255,255,0.96)'; _bioFxRundRect(ctx, bx, y - 9, w, 18, 6); ctx.fill();
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2; _bioFxRundRect(ctx, bx, y - 9, w, 18, 6); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center';
+    ctx.fillText(txt, bx + w / 2, y + 4.5);
+    ctx.textAlign = 'left';
+  }
+  return pts;
+}
+
+// ── Bild der Maschine ──────────────────────────────────
+function _n9jZufall(i, k) {
+  const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453;
+  return x - Math.floor(x);
+}
+function _n9jWegLaenge(P) {
+  let L = 0;
+  for (let i = 1; i < P.length; i++) L += Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]);
+  return L;
+}
+function _n9jAufWeg(P, L) {
+  if (L < 0) return null;
+  for (let i = 1; i < P.length; i++) {
+    const dx = P[i][0] - P[i - 1][0], dy = P[i][1] - P[i - 1][1], l = Math.hypot(dx, dy);
+    if (L <= l) { const u = l ? L / l : 0; return [P[i - 1][0] + dx * u, P[i - 1][1] + dy * u]; }
+    L -= l;
+  }
+  return null;
+}
+function _n9jBlutweg(k) {
+  const y = _N9J_FASER[k];
+  return [[48, 64], [48, 33], [66, 33], [72, y], [122, y], [128, 33], [134, 33], [134, 58], [56, 58], [56, 64]];
+}
+const _N9J_REIN = [[48, 64], [48, 33], [66, 33]];
+const _N9J_ZURUECK = [[128, 33], [134, 33], [134, 58], [56, 58], [56, 64]];
+const _N9J_FRISCH = [[142, 18], [116, 18], [116, 22]];
+const _N9J_RAUS = [[78, 22], [78, 11], [142, 11]];
+// Gelbe Punkte: geboren am Arm, mit dem Blut in ein Röhrchen; die meisten
+// treten unterwegs in die Spülflüssigkeit über und werden zur Maschine
+// getragen. Wie dicht sie kommen, folgt der Kurve (viel Harnstoff, viele Punkte).
+function _n9jTeilchen(g, tau) {
+  const out = [], b0 = g.ta - 0.45, n = Math.ceil((g.tb - b0) / 0.025);
+  for (let i = 0; i <= n; i++) {
+    const b = b0 + i * 0.025;
+    if (b > tau) break;
+    const v = b <= g.ta ? g.spitze : _n9jStiftWert(b);
+    if (_n9jZufall(i, 0) >= v / 7) continue;
+    const k = i % 3, weg = _n9jBlutweg(k), L = (tau - b) * _N9J_VB;
+    const raus = _n9jZufall(i, 1) < 0.82;
+    const ue = 76 + 40 * _n9jZufall(i, 2);
+    const lRaus = _n9jWegLaenge(weg.slice(0, 4)) + (ue - 72);
+    if (!raus || L < lRaus) {
+      const q = _n9jAufWeg(weg, L);
+      if (q) out.push(q);
+      continue;
+    }
+    const yk = _N9J_FASER[k], oben = _n9jZufall(i, 3) < 0.5;
+    const yz = Math.min(42, Math.max(24, yk + (oben ? -3 : 3)));
+    const fl = [[ue, yk], [ue - 2, yz], [80, yz], [78, 22], [78, 11], [142, 11]];
+    const q = _n9jAufWeg(fl, (L - lRaus) * _N9J_VF / _N9J_VB);
+    if (q) out.push(q);
+  }
+  return out;
+}
+function _n9jStiftWert(s) { return _n9jStift(s).v; }
+function _n9jRohr(ctx, P, farbe, breite, laeuft, tau, tempo) {
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.strokeStyle = farbe; ctx.lineWidth = breite;
+  ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+  for (let i = 1; i < P.length; i++) ctx.lineTo(P[i][0], P[i][1]);
+  ctx.stroke();
+  // Fließen: wandernde helle Striche
+  ctx.setLineDash([3, 6]);
+  ctx.lineDashOffset = -tau * tempo;
+  ctx.strokeStyle = 'rgba(255,255,255,' + (laeuft ? 0.75 : 0.35) + ')'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(P[0][0], P[0][1]);
+  for (let i = 1; i < P.length; i++) ctx.lineTo(P[i][0], P[i][1]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+// Deckkraft des Bildes an einem Dialysetag
+function _n9jBildAlpha(g, s) {
+  if (!g.dialyse || s < g.tAbend) return 0;
+  const ein = _bioFxEase.raus(_bioFxKlemme((s - g.tAbend) / 0.12));
+  const aus = 1 - _bioFxEase.sanft(_bioFxKlemme((s - g.t1 - 0.22) / 0.25));
+  return { a: ein * aus, k: 0.78 + 0.22 * ein };
+}
+function _n9jMaschinenbild(ctx, s) {
+  if (s < 0) return;
+  for (const g of _n9j.plan.tage) {
+    const z = _n9jBildAlpha(g, s);
+    if (!z || z.a <= 0.01) continue;
+    const BW = _N9J_BW, BH = _N9J_BH;
+    const cx = _N9J_X0 + (g.d + 0.5) * _N9J_CW;
+    const bx = Math.max(_N9J_X0 + 4, Math.min(_N9J_X1 - 4 - BW, cx - BW / 2)), by = _N9J_BY;
+    const tau = Math.max(g.ta, Math.min(g.tb, s)), laeuft = s >= g.ta && s <= g.tb;
+    ctx.save();
+    ctx.globalAlpha = z.a;
+    ctx.translate(bx + BW / 2, by); ctx.scale(z.k, z.k); ctx.translate(-BW / 2, 0);
+    // Sprechblase mit Spitze zum Kalenderfeld
+    const px = Math.max(14, Math.min(BW - 14, cx - bx));
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, 0, 0, BW, BH, 10); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(px - 8, 1); ctx.lineTo(px, -12); ctx.lineTo(px + 8, 1); ctx.closePath();
+    ctx.fill();
+    ctx.beginPath(); ctx.moveTo(px - 8, 0); ctx.lineTo(px, -12); ctx.lineTo(px + 8, 0); ctx.stroke();
+    ctx.font = '700 10px sans-serif'; ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left';
+    ctx.fillText('Dialyse', 8, 14);
+    // Arm (heller Umriss)
+    ctx.fillStyle = '#f5e6d8'; ctx.strokeStyle = '#a8a29e'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(13, 69, 7, 6, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();   // Hand
+    ctx.beginPath();                                                                     // Unterarm
+    ctx.moveTo(18, 65.5); ctx.lineTo(62, 62);
+    ctx.quadraticCurveTo(69, 62, 69, 69); ctx.quadraticCurveTo(69, 76, 62, 76);
+    ctx.lineTo(18, 72.5); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.font = '9px sans-serif'; ctx.fillStyle = '#57534e';
+    ctx.fillText('Arm', 26, 72);
+    // Spülflüssigkeit hin und zurück (hellblau)
+    _n9jRohr(ctx, _N9J_FRISCH, '#7dd3fc', 3, laeuft, tau, 30);
+    _n9jRohr(ctx, _N9J_RAUS, '#7dd3fc', 3, laeuft, tau, 30);
+    // Blut hinein (rot) und zurück (dunkelrot)
+    _n9jRohr(ctx, _N9J_REIN, '#dc2626', 3.5, laeuft, tau, 60);
+    _n9jRohr(ctx, _N9J_ZURUECK, '#991b1b', 3.5, laeuft, tau, 60);
+    // Zylinder: hellblaue Flüssigkeit, drei rote Röhrchen
+    ctx.fillStyle = '#dbeafe'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, 66, 22, 62, 22, 10); ctx.fill();
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 1;
+    for (let j = 0; j < 4; j++) {                       // Flüssigkeit strömt nach links
+      const u = 120 - ((tau * 26 + j * 12) % 46);
+      ctx.beginPath(); ctx.moveTo(u, 30); ctx.lineTo(u + 5, 30); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(u - 6, 36); ctx.lineTo(u - 1, 36); ctx.stroke();
+    }
+    ctx.restore();
+    ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+    for (const y of _N9J_FASER) { ctx.beginPath(); ctx.moveTo(71, y); ctx.lineTo(123, y); ctx.stroke(); }
+    ctx.lineCap = 'butt';
+    ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, 66, 22, 62, 22, 10); ctx.stroke();
+    // Maschine mit leerem Bildschirm und Pumpenrad
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, 142, 6, 38, 70, 5); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+    ctx.fillRect(147, 24, 28, 16); ctx.strokeRect(147, 24, 28, 16);
+    ctx.fillStyle = '#cbd5e1'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(161, 57, 9, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.lineWidth = 1.5;
+    for (let j = 0; j < 3; j++) {
+      const w = tau * 7 + j * 2 * Math.PI / 3;
+      ctx.beginPath(); ctx.moveTo(161, 57); ctx.lineTo(161 + 7 * Math.cos(w), 57 + 7 * Math.sin(w)); ctx.stroke();
+    }
+    // gelbe Punkte (Harnstoff)
+    ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 0.8;
+    for (const q of _n9jTeilchen(g, tau)) {
+      ctx.beginPath(); ctx.arc(q[0], q[1], 2.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+
+function _n9jDraw(ctx, cv) {
+  if (!_n9j) return;
+  const W = cv.width, H = cv.height;
+  const s = _n9j.phase === 'bereit' ? -1 : _n9j.s;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  _n9jKurvenfeld(ctx);
+  const felder = _n9jKalender(ctx, s);
+  const pts = _n9jKurve(ctx, s);
+  _n9jAchsenzahlen(ctx);
+  _n9jMaschinenbild(ctx, s);
+  _bioFxAlleDraw(ctx, _n9j.fx);
+  _n9j.gemalt = { felder, pts };
+}
+
+// Nur für den Rechentest, nie am Bildschirm: liest aus dem LETZTEN Bild, was
+// wirklich gezeichnet wurde – Kurvenwert am Ende jeder Spalte (aus den
+// gezeichneten Bildpunkten zurückgerechnet) und Farbe jedes Feldes.
+function _n9jErgebnis() {
+  const g = _n9j && _n9j.gemalt;
+  if (!g) return '';
+  const wert = x => {
+    let y = null;
+    for (const p of g.pts) if (Math.abs(p[0] - x) < 0.01) y = p[1];   // letzter Punkt an dieser Stelle
+    return y === null ? '–' : String(Math.round((_N9J_YB - y) * _N9J_VMAX / (_N9J_YB - _N9J_YT) * 100) / 100);
+  };
+  const teile = [];
+  for (let d = 0; d < 7; d++) teile.push(_N9J_KURZ[d] + ' ' + wert(_N9J_X0 + (d + 1) * _N9J_CW) + ' ' + g.felder[d]);
+  return teile.join(' | ') + ' || rote Felder: ' + g.felder.filter(f => f === 'rot').length;
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WAS STEHT IN DER DNA?   (Förderheft Bio 9 · bt4)
+// Kennung bio-dna, Präfix _n9q. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bt4.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, heller Grund, schematisch):
+//   - oben links ein Schild mit Bild und Namen des Lebewesens
+//     („Mensch“, „Erbse“, „Hund“).
+//   - links ein runder Zellkern (Beschriftung „Zellkern“), darin EIN
+//     Chromosom als einfaches Stäbchen (Beschriftung „Chromosom“). Vor dem
+//     Aufdrehen leuchtet es ruhig (0,8 Hz).
+//     KEIN X: Im Band ist das X die Form kurz vor der Teilung (bz1: „jedes
+//     Stäbchen wird doppelt und sieht aus wie ein X“, danach löst sich die
+//     Hülle des Zellkerns auf), und bt1 zeigt Chromosomen ausdrücklich als
+//     Stäbchen ohne X-Form. Ein X in einem heilen Zellkern widerspräche beidem
+//     (Prüfung 08.10.2026).
+//   - nach „▶ aufdrehen“ rechts das vergrößerte Stück DNA: Ein heller Kegel
+//     führt vom oberen Ende des Chromosoms (Ring) zur Leiter; darin
+//     läuft der Faden als enge Schraube weiter (dreht sich langsam).
+//   - Leiter mit 6 Sprossen (Mitte x = 146, 194, 242, 290, 338, 386).
+//     Oben das Seil „Strang 1“ (y = 82), unten das Seil „Strang 2“ (y = 186);
+//     die Beschriftungen stehen am rechten Ende über bzw. unter dem Seil.
+//   - Jede Sprosse sind zwei Halbstücke (32 x 52), je mit großem Buchstaben
+//     (22 px) und eigener Farbe: A grün, T rot, G gelb, C blau. Die Enden in
+//     der Mitte sind Puzzle-Enden: A hat eine Spitze, T eine spitze Kerbe,
+//     G eine runde Nase, C eine runde Kerbe. Strang 2 wird NICHT eingetragen,
+//     sondern aus den Enden gerechnet (_n9qPartner): gesucht wird das Stück,
+//     dessen Kerbe die Nase genau füllt.
+//   - Am Ende: die ersten 3 Sprossen von links liegen in einem hellen Rahmen.
+//
+// BEDIENUNG (wörtlich): Lebewesen „Mensch“ · „Erbse“ · „Hund“ (Wahlgruppe
+//   _n9qWahl) · „▶ aufdrehen“ (_n9qAufdrehen) · „neu“ (_n9qNeu → „Mensch“).
+//   Start: „Mensch“. Umstellen bringt das Chromosom zurück in den Zellkern.
+//   Während des Aufdrehens ist „▶ aufdrehen“ grau.
+//
+// ABLAUF NACH „▶ aufdrehen“ (5,8 s; Zeiten in s):
+//   0,0–0,5  der Faden zieht sich aus dem Chromosom (Kegel blendet ein)
+//   0,5–1,5  das Stück DNA wächst als gedrehte Leiter nach rechts heraus
+//   1,5–3,7  es dreht sich zu einer geraden Leiter auf; die Buchstaben werden
+//            lesbar, sobald eine Sprosse ganz zu sehen ist
+//   3,8–4,4  Strang 2 rückt 16 px nach unten – die Enden liegen frei
+//   4,4–4,8  Pause: Nase und Kerbe sind einzeln zu sehen
+//   4,8–5,3  Strang 2 rastet wieder ein (federnd); bei 5,3 an jeder Sprosse
+//            ein kleiner Lichtring
+//   5,3–5,8  der helle Rahmen um die ersten 3 Sprossen blendet ein
+//   ab 5,8   Endbild; ein Lichtpunkt wandert ruhig über beide Seile.
+//
+// STATUSZEILE (_n9q-status):
+//   vorher   „Ein Chromosom vom Menschen.“ (von der Erbse / vom Hund)
+//   Lauf     „Ein Stück DNA wird herausgezogen …“ · „Die DNA dreht sich auf …“
+//            · „Die Stränge rücken kurz auseinander …“
+//   danach   „Ein Stück DNA vom Menschen.“ · „Ein Stück DNA von der Erbse.“
+//            · „Ein Stück DNA vom Hund.“            (wörtlich aus dem sim_plan)
+// HINWEIS (_n9q-hinweis) führt durch die Schritte a–c der Seite und nennt
+//   immer das nächste Ziel (Zeile der Tabelle, nächstes Lebewesen, Spalten).
+//
+// WERTE (sim_plan.werte; lehrer.tabelle_erwartet = die ersten 3 Sprossen):
+//   Mensch  Strang 1 A T G C G A · Strang 2 T A C G C T   (A, T, G | T, A, C)
+//   Erbse   Strang 1 G G A T C A · Strang 2 C C T A G T   (G, G, A | C, C, T)
+//   Hund    Strang 1 C T A G G T · Strang 2 G A T C C A   (C, T, A | G, A, T)
+//   Die Abschnitte sind ausgedachte Modellabschnitte, keine echten Gene.
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen, ohne Zufall): Strang 2 rückt kurz
+//   ab und rastet wieder ein – man sieht, dass jede Nase genau in ihre Kerbe
+//   fällt (gegen Vermutung 1 „gleiche Basen zusammen“ und Vermutung 3
+//   „keine feste Regel“). Bei allen drei Lebewesen dieselben Formen.
+//   Es leuchtet nichts gruppenweise auf: Zuordnen und Vergleichen bleibt
+//   Aufgabe des Kindes (Schritt d).
+//
+// NICHT AM BILDSCHIRM (Lückenwörter aus Merksatz und Aufgabe 2 und die
+//   Falschwahl der Wortbank): „gegenüber“, „Reihenfolge“, „vier“, „zwei“,
+//   „T, C, A“; keine Regel wie „A passt zu T“, kein „Paar“. Keine Zahl der
+//   Basenarten. Deterministisch, ohne Zufall.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9q = null;
+const _N9Q_ART = {
+  mensch: { name: 'Mensch', von: 'vom Menschen',  zeile: 1, s1: 'ATGCGA' },
+  erbse:  { name: 'Erbse',  von: 'von der Erbse', zeile: 2, s1: 'GGATCA' },
+  hund:   { name: 'Hund',   von: 'vom Hund',      zeile: 3, s1: 'CTAGGT' }
+};
+const _N9Q_WAHL = ['mensch', 'erbse', 'hund'];
+// Die Basen als Puzzlestücke: Form des Endes, Nase (true) oder Kerbe (false)
+const _N9Q_BASE = {
+  A: { form: 'spitz', nase: true,  farbe: '#16a34a', rand: '#14532d', schrift: '#ffffff' },
+  T: { form: 'spitz', nase: false, farbe: '#dc2626', rand: '#7f1d1d', schrift: '#ffffff' },
+  G: { form: 'rund',  nase: true,  farbe: '#f59e0b', rand: '#92400e', schrift: '#422006' },
+  C: { form: 'rund',  nase: false, farbe: '#2563eb', rand: '#1e3a8a', schrift: '#ffffff' }
+};
+// Leiter
+const _N9Q_YM = 134, _N9Q_H = 52;                 // Mitte, halbe Höhe: Seile bei 82 und 186
+const _N9Q_N = 6, _N9Q_X0 = 146, _N9Q_DX = 48, _N9Q_B = 16;   // Sprossen, halbe Stückbreite
+const _N9Q_XL = 118, _N9Q_XR = 410;               // Seile von … bis
+const _N9Q_K = 2 * Math.PI / 120;                 // Windung der gedrehten Leiter
+const _N9Q_SPALT = 16;                            // so weit rückt Strang 2 ab
+// Zellkern und Chromosom
+const _N9Q_KX = 60, _N9Q_KY = 142, _N9Q_KR = 44;
+const _N9Q_OBEN = 20, _N9Q_UNTEN = 30, _N9Q_WO = 0.5, _N9Q_WU = 0.42;  // Stäbchen: Länge und Winkel oben/unten
+const _N9Q_LX = _N9Q_KX + _N9Q_OBEN * Math.sin(_N9Q_WO);             // Ring am oberen Ende des Stäbchens
+const _N9Q_LY = _N9Q_KY - _N9Q_OBEN * Math.cos(_N9Q_WO);
+const _N9Q_XS = _N9Q_LX + 6;                      // hier beginnt der Faden
+const _N9Q_KF = 2 * Math.PI / 14;                 // Windung im Faden
+// Zeitplan in s nach „▶ aufdrehen“
+const _N9Q_FADEN = 0.5, _N9Q_RAUS = 1.5, _N9Q_AUF = 3.7;
+const _N9Q_AB = 3.8, _N9Q_ZU = 4.8, _N9Q_EIN = 5.3, _N9Q_ENDE = 5.8;
+const _N9Q_ABSCHNITT = [[0, _N9Q_RAUS], [_N9Q_RAUS, _N9Q_AUF], [_N9Q_AB, _N9Q_ENDE]];
+const _N9Q_HG = '#eef3f6';
+
+function _n9qKl(x) { return _bioFxKlemme(x); }
+function _n9qE(x) { return _bioFxEase.sanft(_bioFxKlemme(x)); }
+function _n9qSprosse(i) { return _N9Q_X0 + _N9Q_DX * i; }
+
+// Das Stück, dessen Ende das Ende von b genau füllt: gleiche Form, Nase ↔ Kerbe
+function _n9qPartner(b) {
+  const s = _N9Q_BASE[b];
+  for (const k of Object.keys(_N9Q_BASE)) {
+    const o = _N9Q_BASE[k];
+    if (o.form === s.form && o.nase !== s.nase) return k;
+  }
+  return '?';
+}
+function _n9qStrang2(s1) { return s1.split('').map(_n9qPartner).join(''); }
+
+// Profil der Enden: Tiefe p je Stelle u (von +16 bis -16). Nase und Kerbe
+// derselben Form haben dasselbe Profil – das eine steht vor, das andere fehlt.
+function _n9qProfil(form) {
+  const pts = [];
+  for (let u = _N9Q_B; u >= -_N9Q_B; u -= 1) {
+    const p = form === 'spitz' ? Math.max(0, 9 * (1 - Math.abs(u) / 9))
+                               : Math.sqrt(Math.max(0, 64 - u * u));
+    pts.push([u, p]);
+  }
+  return pts;
+}
+const _N9Q_KANTE = { spitz: _n9qProfil('spitz'), rund: _n9qProfil('rund') };
+
+function _n9qInit() {
+  _n9q = { t: 0, art: 'mensch', phase: 'ruhe', s: 0, fx: { teile: [] }, letzt: '' };
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9qRuhe() {
+  _n9q.phase = 'ruhe'; _n9q.s = 0; _n9q.fx = { teile: [] };
+}
+function _n9qWahl(v) {
+  if (!_n9q || !_N9Q_ART[v]) return;
+  _n9q.art = v;
+  _n9qRuhe();
+  _n9qStatus();
+}
+function _n9qAufdrehen() {
+  if (!_n9q || _n9q.phase === 'lauf') return;
+  _n9qRuhe();
+  _n9q.phase = 'lauf';
+  _bioFxWelle(_n9q.fx.teile, _N9Q_LX, _N9Q_LY, '#fde68a', 16);
+  _n9qStatus();
+}
+function _n9qNeu() {
+  if (!_n9q) return;
+  _n9q.art = 'mensch';
+  _n9qRuhe();
+  _n9qStatus();
+}
+// Strang 2 ist wieder eingerastet: an jeder Sprosse ein kleiner Lichtring
+function _n9qEingerastet() {
+  for (let i = 0; i < _N9Q_N; i++) _bioFxWelle(_n9q.fx.teile, _n9qSprosse(i), _N9Q_YM, '#fde68a', 20);
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9qZeile() {
+  const a = _N9Q_ART[_n9q.art];
+  if (_n9q.phase === 'fertig') return 'Ein Stück DNA ' + a.von + '.';
+  if (_n9q.phase === 'lauf') {
+    if (_n9q.s < _N9Q_RAUS) return 'Ein Stück DNA wird herausgezogen …';
+    if (_n9q.s < _N9Q_AB) return 'Die DNA dreht sich auf …';
+    return 'Die Stränge rücken kurz auseinander …';
+  }
+  return 'Ein Chromosom ' + a.von + '.';
+}
+function _n9qHinweis() {
+  if (_n9q.phase === 'lauf') return 'Sieh genau hin: Wie sehen die Enden der Basen aus?';
+  if (_n9q.phase === 'ruhe') return 'Drücke „▶ aufdrehen“. Dann siehst du ein kurzes Stück DNA ganz nah.';
+  if (_n9q.art === 'mensch') return 'Lies auf Strang 2 die ersten 3 Basen im hellen Rahmen ab. '
+    + 'Notiere sie in Zeile 1 der Tabelle. Stelle danach „Erbse“ ein.';
+  const a = _N9Q_ART[_n9q.art];
+  return 'Lies die ersten 3 Basen im hellen Rahmen ab, auf Strang 1 und auf Strang 2. '
+    + 'Notiere sie in Zeile ' + a.zeile + ' der Tabelle. '
+    + (_n9q.art === 'erbse' ? 'Stelle danach „Hund“ ein.' : 'Vergleiche dann Spalte 2 und Spalte 3.');
+}
+function _n9qStatus() {
+  if (!_n9q) return;
+  const zl = _n9qZeile(), hw = _n9qHinweis();
+  _n9q.letzt = zl + '|' + hw;
+  const el = document.getElementById('_n9q-status');
+  if (el) { el.textContent = zl; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9q-hinweis');
+  if (h) h.textContent = hw;
+  try {
+    document.querySelectorAll('[data-n9q]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9q') === _n9q.art);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9q-los');
+  if (los) {
+    const zu = _n9q.phase === 'lauf';
+    los.disabled = zu;
+    try { if (los.classList) los.classList.toggle('primary', !zu); } catch (e) { /* Beiwerk */ }
+  }
+}
+function _n9qHTML() {
+  const k = v => `<button class="sim-btn" data-n9q="${v}" onclick="_n9qWahl('${v}')">${_N9Q_ART[v].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was steht in der DNA?</h3>
+    <div class="fpm-note" style="margin-top:2px">Im Zellkern liegt ein Chromosom. Es ist ein langer, aufgewickelter Faden: die DNA. Nach „▶ aufdrehen“ siehst du rechts ein kurzes Stück davon, stark vergrößert.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9q-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9q-los" onclick="_n9qAufdrehen()">▶ aufdrehen</button>
+          <button class="sim-btn" onclick="_n9qNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Lebewesen</span>
+          <div class="sim-btn-row">${_N9Q_WAHL.map(k).join('')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9q-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_n9q-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Im Modell ist jede Base ein Puzzlestück mit einem Buchstaben. Die Stücke von Mensch, Erbse und Hund sind ausgedacht. Echte DNA ist viel länger.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Lebewesen „Mensch“ &nbsp;|&nbsp; Das Aufdrehen dauert etwa 6 Sekunden.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9qUpdate(dt) {
+  if (!_n9q) return;
+  dt = _bioFxDt(dt);
+  const z = _n9q;
+  z.t += dt;
+  if (z.phase === 'lauf') {
+    const vor = z.s;
+    z.s += dt;
+    if (vor < _N9Q_EIN && z.s >= _N9Q_EIN) _n9qEingerastet();
+    if (z.s >= _N9Q_ENDE) { z.s = _N9Q_ENDE; z.phase = 'fertig'; }
+  }
+  if (_n9qZeile() + '|' + _n9qHinweis() !== z.letzt) _n9qStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// ── Geometrie: was steht zur Zeit s wo? ────────────────
+// w = Windung (1 gedreht, 0 gerade), spalt = Abstand von Strang 2,
+// xf = Ende des Fadens, xe = Ende der Leiter, dazu Deckkraft von Kegel,
+// Rahmen und Strang-Beschriftungen. In Ruhe: null (nur der Zellkern).
+function _n9qGeo() {
+  const z = _n9q;
+  if (z.phase === 'ruhe') return null;
+  if (z.phase === 'fertig') return { w: 0, spalt: 0, xf: _N9Q_XL, xe: _N9Q_XR, kegel: 1, rahmen: 1, namen: 1 };
+  const s = z.s;
+  const w = 1 - _n9qE((s - _N9Q_RAUS) / (_N9Q_AUF - _N9Q_RAUS));
+  let spalt = 0;
+  if (s >= _N9Q_AB && s < _N9Q_ZU) spalt = _N9Q_SPALT * _n9qE((s - _N9Q_AB) / 0.6);
+  else if (s >= _N9Q_ZU) spalt = _N9Q_SPALT * (1 - _bioFxEase.aufprall(_n9qKl((s - _N9Q_ZU) / (_N9Q_EIN - _N9Q_ZU))));
+  return {
+    w, spalt,
+    xf: _N9Q_XS + (_N9Q_XL - _N9Q_XS) * _n9qE(s / _N9Q_FADEN),
+    xe: _N9Q_XL + (_N9Q_XR - _N9Q_XL) * _n9qE((s - _N9Q_FADEN) / (_N9Q_RAUS - _N9Q_FADEN)),
+    kegel: _n9qKl(s / 0.4),
+    rahmen: _n9qKl((s - _N9Q_EIN) / (_N9Q_ENDE - _N9Q_EIN)),
+    namen: _n9qKl((0.45 - w) / 0.35)
+  };
+}
+// Punkt eines Seils an der Stelle x (strang 1 oben, 2 unten); z > 0 = vorn
+function _n9qPunkt(x, strang, g, t) {
+  const sg = strang === 1 ? -1 : 1;
+  if (x >= _N9Q_XL) {
+    const th = g.w * _N9Q_K * (x - _N9Q_XL);
+    return { x, y: _N9Q_YM + sg * _N9Q_H * Math.cos(th) + (strang === 2 ? g.spalt : 0), z: -sg * Math.sin(th) };
+  }
+  // im Faden: enge Schraube, die zum Chromosom hin dünner wird und sich langsam dreht
+  const f = _n9qKl((x - _N9Q_XS) / (_N9Q_XL - _N9Q_XS));
+  const a = 3 + (_N9Q_H - 3) * Math.pow(f, 2.2);
+  const ym = _N9Q_LY + (_N9Q_YM - _N9Q_LY) * f;
+  const th = _N9Q_KF * (x - _N9Q_XL) + 0.7 * t * (1 - f);
+  return { x, y: ym + sg * a * Math.cos(th) + (strang === 2 ? g.spalt * f * f : 0), z: -sg * Math.sin(th) };
+}
+// Seil in Stücke teilen: vorn liegende und hinten liegende
+function _n9qLaeufe(strang, g, t) {
+  const xa = _N9Q_XS, xb = g.xf < _N9Q_XL ? g.xf : g.xe;
+  const out = { vorn: [], hinten: [] };
+  if (xb - xa < 0.5) return out;
+  const n = Math.max(2, Math.ceil((xb - xa) / 2.5));
+  let lauf = null, v = null;
+  for (let k = 0; k <= n; k++) {
+    const p = _n9qPunkt(xa + (xb - xa) * k / n, strang, g, t), pv = p.z >= -0.02;
+    if (lauf === null) { lauf = [p]; v = pv; continue; }
+    lauf.push(p);
+    if (pv !== v) { (v ? out.vorn : out.hinten).push(lauf); lauf = [p]; v = pv; }
+  }
+  (v ? out.vorn : out.hinten).push(lauf);
+  return out;
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9qSeil(ctx, lauf, vorn) {
+  if (!lauf || lauf.length < 2) return;
+  const weg = () => { ctx.beginPath(); ctx.moveTo(lauf[0].x, lauf[0].y); for (let k = 1; k < lauf.length; k++) ctx.lineTo(lauf[k].x, lauf[k].y); };
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = vorn ? '#1e3a8a' : '#9aa8c4'; ctx.lineWidth = 7;
+  weg(); ctx.stroke();
+  if (vorn) {
+    ctx.strokeStyle = '#5b7fd6'; ctx.lineWidth = 2;
+    ctx.translate(0, -1.5); weg(); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Ein Halbstück: Base b an der Sprosse x; c = Windungs-Faktor (1 = von vorn),
+// unten = Strang 2. v läuft vom Seil (0) bis zur Mitte (H), das Ende ragt
+// bei einer Nase um p über die Mitte hinaus, bei einer Kerbe um p zurück.
+function _n9qStueck(ctx, b, x, c, unten, spalt, deck) {
+  const B = _N9Q_BASE[b], H = _N9Q_H, hb = _N9Q_B;
+  const ort = (u, v) => [x + u, unten ? _N9Q_YM + (H - v) * c + spalt : _N9Q_YM - (H - v) * c];
+  const pts = [ort(-hb, 0), ort(hb, 0)];
+  for (const [u, p] of _N9Q_KANTE[B.form]) pts.push(ort(u, H + (B.nase ? p : -p)));
+  ctx.save();
+  ctx.globalAlpha = deck * (0.55 + 0.45 * Math.abs(c));
+  ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+  for (let k = 1; k < pts.length; k++) ctx.lineTo(pts[k][0], pts[k][1]);
+  ctx.closePath();
+  ctx.fillStyle = B.farbe; ctx.fill();
+  ctx.strokeStyle = B.rand; ctx.lineWidth = 1.4; ctx.stroke();
+  ctx.restore();
+}
+function _n9qBuchstabe(ctx, b, x, y, c, deck) {
+  if (deck <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = deck;
+  ctx.fillStyle = _N9Q_BASE[b].schrift; ctx.font = '800 22px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  if (Math.abs(c - 1) < 1e-9) ctx.fillText(b, x, y);
+  else { ctx.translate(x, y); ctx.scale(1, c); ctx.fillText(b, 0, 0); }
+  ctx.restore();
+}
+// Rahmen um die ersten 3 Sprossen: Lage (auch für die Probe)
+function _n9qRahmen() {
+  const x = _n9qSprosse(0) - _N9Q_B - 8, x2 = _n9qSprosse(2) + _N9Q_B + 8;
+  return { x, y: _N9Q_YM - _N9Q_H - 11, w: x2 - x, h: 2 * _N9Q_H + 22 };
+}
+function _n9qRahmenFlaeche(ctx, a) {
+  const r = _n9qRahmen();
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#fffbe0';
+  _bioFxRundRect(ctx, r.x, r.y, r.w, r.h, 10); ctx.fill();
+  ctx.restore();
+}
+function _n9qRahmenRand(ctx, a, t) {
+  const r = _n9qRahmen();
+  ctx.save();
+  ctx.globalAlpha = a * (0.8 + 0.2 * Math.sin(t * Math.PI * 2 * 0.5));
+  ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3.5;
+  _bioFxRundRect(ctx, r.x, r.y, r.w, r.h, 10); ctx.stroke();
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, r.x + 2.5, r.y + 2.5, r.w - 5, r.h - 5, 8); ctx.stroke();
+  ctx.restore();
+}
+function _n9qLeiter(ctx, g, t) {
+  const a = _N9Q_ART[_n9q.art], s1 = a.s1, s2 = _n9qStrang2(s1);
+  const l1 = _n9qLaeufe(1, g, t), l2 = _n9qLaeufe(2, g, t);
+  for (const l of l1.hinten) _n9qSeil(ctx, l, false);
+  for (const l of l2.hinten) _n9qSeil(ctx, l, false);
+  for (let i = 0; i < _N9Q_N; i++) {
+    const x = _n9qSprosse(i);
+    const da = _n9qKl((g.xe - (x - _N9Q_B)) / (2 * _N9Q_B));
+    if (da <= 0.01) continue;
+    const c = Math.cos(g.w * _N9Q_K * (x - _N9Q_XL));
+    _n9qStueck(ctx, s1[i], x, c, false, g.spalt, da);
+    _n9qStueck(ctx, s2[i], x, c, true, g.spalt, da);
+    const lesbar = da * _n9qKl((c - 0.6) / 0.35);
+    _n9qBuchstabe(ctx, s1[i], x, _N9Q_YM - 0.58 * _N9Q_H * c, c, lesbar);
+    _n9qBuchstabe(ctx, s2[i], x, _N9Q_YM + 0.58 * _N9Q_H * c + g.spalt, c, lesbar);
+  }
+  for (const l of l1.vorn) _n9qSeil(ctx, l, true);
+  for (const l of l2.vorn) _n9qSeil(ctx, l, true);
+  // Lichtpunkt auf beiden Seilen (nur im Endbild): das Bild lebt
+  if (_n9q.phase === 'fertig') {
+    const L = _N9Q_XR - _N9Q_XL + 80;
+    for (const strang of [1, 2]) {
+      const xg = _N9Q_XL - 40 + ((t * 55 + (strang === 2 ? L / 2 : 0)) % L);
+      if (xg < _N9Q_XL + 4 || xg > _N9Q_XR - 4) continue;
+      const p = _n9qPunkt(xg, strang, g, t);
+      ctx.save();
+      ctx.fillStyle = 'rgba(191,219,254,0.55)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2.6, 0, 2 * Math.PI); ctx.fill();
+      ctx.restore();
+    }
+  }
+}
+function _n9qStrangNamen(ctx, g) {
+  if (g.namen <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = g.namen;
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Strang 1', _N9Q_XR + 4, _N9Q_YM - _N9Q_H - 11);
+  ctx.fillText('Strang 2', _N9Q_XR + 4, _N9Q_YM + _N9Q_H + 22 + g.spalt);
+  ctx.restore();
+}
+// Heller Kegel vom Ring am Chromosom zur Leiter (= stark vergrößert)
+function _n9qKegel(ctx, g) {
+  if (g.kegel <= 0.01) return;
+  const xr = _N9Q_XL - 4, yo = _N9Q_YM - _N9Q_H - 14, yu = _N9Q_YM + _N9Q_H + 14 + g.spalt;
+  ctx.save();
+  ctx.globalAlpha = g.kegel;
+  ctx.fillStyle = 'rgba(148,163,184,0.16)';
+  ctx.beginPath(); ctx.moveTo(_N9Q_LX + 3, _N9Q_LY - 5); ctx.lineTo(xr, yo); ctx.lineTo(xr, yu);
+  ctx.lineTo(_N9Q_LX + 3, _N9Q_LY + 5); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(_N9Q_LX + 3, _N9Q_LY - 5); ctx.lineTo(xr, yo); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(_N9Q_LX + 3, _N9Q_LY + 5); ctx.lineTo(xr, yu); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+function _n9qRing(ctx, a) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(_N9Q_LX, _N9Q_LY, 6, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+// Zellkern mit EINEM Chromosom als Stäbchen (leicht geknickt, wie bz1/bt1).
+// Es läuft von unten links durch die Mitte zum Ring am oberen Ende, an dem
+// der Faden herausgezogen wird.
+function _n9qKern(ctx, t, ruhe) {
+  const kx = _N9Q_KX, ky = _N9Q_KY;
+  ctx.save();
+  ctx.fillStyle = '#fdf6e9'; ctx.strokeStyle = '#b8956a'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(kx, ky, _N9Q_KR + 0.6 * Math.sin(t * 1.2), 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (ruhe) _bioFxLeuchten(ctx, kx, ky + 3, 22, t, '250,204,21');
+  const su = Math.sin(_N9Q_WU), cu = Math.cos(_N9Q_WU);
+  const haelften = [
+    [[kx - _N9Q_UNTEN * su, ky + _N9Q_UNTEN * cu], [kx, ky], [_N9Q_LX, _N9Q_LY]]
+  ];
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  for (const [farbe, breite] of [['#4c1d95', 13], ['#8b5cf6', 10]]) {
+    ctx.strokeStyle = farbe; ctx.lineWidth = breite;
+    for (const hf of haelften) {
+      ctx.beginPath(); ctx.moveTo(hf[0][0], hf[0][1]); ctx.lineTo(hf[1][0], hf[1][1]); ctx.lineTo(hf[2][0], hf[2][1]); ctx.stroke();
+    }
+  }
+  // aufgewickelter Faden: feine Querstriche
+  ctx.strokeStyle = 'rgba(237,233,254,0.8)'; ctx.lineWidth = 1.2;
+  for (const hf of haelften) {
+    for (let k = 0; k < 2; k++) {
+      const p = hf[k], q = hf[k + 1], d = Math.hypot(q[0] - p[0], q[1] - p[1]);
+      const ux = (q[0] - p[0]) / d, uy = (q[1] - p[1]) / d;
+      for (let m = 3; m < d - 2; m += 4.5) {
+        const mx = p[0] + ux * m, my = p[1] + uy * m;
+        const nx = -uy * Math.cos(0.5) - ux * Math.sin(0.5), ny = ux * Math.cos(0.5) - uy * Math.sin(0.5);
+        ctx.beginPath(); ctx.moveTo(mx - nx * 4, my - ny * 4); ctx.lineTo(mx + nx * 4, my + ny * 4); ctx.stroke();
+      }
+    }
+  }
+  ctx.restore();
+}
+function _n9qBeschriftung(ctx) {
+  ctx.save();
+  ctx.fillStyle = '#334155'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  ctx.font = '600 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Chromosom', 46, 86);
+  // Zeiger endet auf dem Stäbchen (Strecke Mitte 60/142 → Ring 69,6/124,4)
+  ctx.beginPath(); ctx.moveTo(49, 91); ctx.lineTo(62, 131); ctx.stroke();
+  ctx.fillText('Zellkern', _N9Q_KX, _N9Q_KY + _N9Q_KR + 17);
+  ctx.restore();
+}
+// Schild oben links: Bild und Name des Lebewesens
+function _n9qSchild(ctx) {
+  const v = _n9q.art, cx = 28, cy = 26;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 8, 8, 118, 36, 8); ctx.fill(); ctx.stroke();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  if (v === 'mensch') {
+    ctx.fillStyle = '#475569';
+    ctx.beginPath(); ctx.arc(cx, cy - 8, 4.6, 0, 2 * Math.PI); ctx.fill();
+    _bioFxRundRect(ctx, cx - 7.5, cy - 2, 15, 14, 5); ctx.fill();
+  } else if (v === 'erbse') {
+    ctx.strokeStyle = '#3f6212'; ctx.fillStyle = '#65a30d'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.ellipse(cx, cy, 13, 6.5, -0.25, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#bef264';
+    for (const k of [-1, 0, 1]) {
+      ctx.beginPath(); ctx.arc(cx + 7 * k * Math.cos(0.25), cy - 7 * k * Math.sin(0.25), 3.3, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.beginPath(); ctx.moveTo(cx - 12, cy + 3); ctx.lineTo(cx - 16, cy + 1); ctx.stroke();
+  } else {
+    ctx.fillStyle = '#92400e'; ctx.strokeStyle = '#92400e';
+    ctx.beginPath(); ctx.ellipse(cx - 2, cy + 2, 9, 5, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx + 8, cy - 4, 4.6, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(cx + 12.5, cy - 2.6, 3.2, 2.2, 0, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(cx + 6, cy - 6.5, 2, 3.6, -0.5, 0, 2 * Math.PI); ctx.fill();
+    ctx.lineWidth = 2.2;
+    for (const lx of [-8, -5, 2, 5]) { ctx.beginPath(); ctx.moveTo(cx + lx, cy + 5); ctx.lineTo(cx + lx, cy + 11); ctx.stroke(); }
+    ctx.beginPath(); ctx.moveTo(cx - 10, cy); ctx.lineTo(cx - 14, cy - 6); ctx.stroke();
+  }
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(_N9Q_ART[v].name, 50, 31);
+  ctx.restore();
+}
+// Band unten: drei Felder für die drei Abschnitte, ohne Schrift
+function _n9qBand(ctx, s, H) {
+  const bw = 40, luft = 6, x0 = 264 - (3 * bw + 2 * luft) / 2, y = H - 14;
+  ctx.save();
+  _N9Q_ABSCHNITT.forEach((ab, k) => {
+    const x = x0 + k * (bw + luft), u = _n9qKl((s - ab[0]) / (ab[1] - ab[0]));
+    ctx.fillStyle = '#dbe4ea'; _bioFxRundRect(ctx, x, y, bw, 6, 3); ctx.fill();
+    if (u > 0.01) { ctx.fillStyle = '#f59e0b'; _bioFxRundRect(ctx, x, y, Math.max(6, bw * u), 6, 3); ctx.fill(); }
+  });
+  ctx.restore();
+}
+function _n9qDraw(ctx, cv) {
+  if (!_n9q) return;
+  const W = cv.width, H = cv.height, t = _n9q.t, g = _n9qGeo();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9Q_HG; ctx.fillRect(0, 0, W, H);
+  _n9qKern(ctx, t, !g);
+  _n9qBeschriftung(ctx);
+  _n9qSchild(ctx);
+  if (g) {
+    _n9qKegel(ctx, g);
+    if (g.rahmen > 0.01) _n9qRahmenFlaeche(ctx, g.rahmen);
+    _n9qLeiter(ctx, g, t);
+    if (g.rahmen > 0.01) _n9qRahmenRand(ctx, g.rahmen, t);
+    _n9qRing(ctx, g.kegel);
+    _n9qStrangNamen(ctx, g);
+    if (_n9q.phase === 'lauf') _n9qBand(ctx, _n9q.s, H);
+  }
+  _bioFxAlleDraw(ctx, _n9q.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · DER WEG DES EMBRYOS IN DEN ERSTEN TAGEN   (Förderheft Bio 9 · bz2)
+// Kennung bio-embryo, Präfix _n9m. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bz2.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 300, schematischer Schnitt, OHNE Körperumriss):
+//   - links ein Eierstock (Oval mit Bläschen), darüber öffnet sich ein Trichter
+//     mit fünf wehenden Fransen; daraus führt ein gebogener Gang (OHNE
+//     Beschriftung) nach rechts oben in die Gebärmutter. Im Gang schlagen feine
+//     Härchen in einer Welle (das Bild lebt auch im Stand).
+//   - rechts die Gebärmutter als Birne im Schnitt: Muskelwand, weiche Wand
+//     innen mit kleinen Adern, heller Hohlraum. Beschriftet sind NUR
+//     „Eierstock“ und „Gebärmutter“.
+//   - ein kleiner oranger Kreis mit Lupenring: der Embryo.
+//   - unten links eine Lupe, die den Embryo groß zeigt; darunter der Zähler
+//     „Zellen: …“. Gestrichelte Linie von der Lupe zum Embryo.
+//   - unten rechts der Tagesstreifen 1 bis 7 und darüber „Tag 3“; darunter
+//     eine Legende „Embryo“.
+//
+// BEDIENUNG (wörtlich):
+//   Regler „Tag“: 1 · 3 · 5 · 7 (Start 1)   (_n9mTag(wert))
+//   „neu“ (_n9mNeu → Tag 1, Spur gelöscht)
+//
+// ABLAUF: Die Zeit D läuft beim Umstellen weich vom alten zum neuen Tag
+//   (vorwärts 1,5 s je Tag, also 3 s je Reglerschritt; rückwärts schneller).
+//   Ort, Lupe, Zähler und Tagesstreifen hängen NUR an D:
+//     Ort   D 1 → 10 % des Gangs (nahe dem Eierstock) · D 3 → 50 % (halber Weg)
+//           D 4,6 → Eingang der Gebärmutter · D 5 → Mitte des Hohlraums (frei)
+//           D 6,2 → berührt die rechte Wand · D 6,9 → halb in der Wand
+//     Lupe  1 → 2 (D 1,25–1,75) · 2 → 4 (2,0–2,4) · 4 → 8 (2,55–2,95)
+//           8 → 16 (3,15–3,55) · 16 → 32 (3,65–4,05) · 32 → hohles Bläschen
+//           (4,15–4,8) · Bläschen wächst, die Hülle öffnet sich (5,2–6,0)
+//           · von rechts schiebt sich die Wand heran (5,8–6,3) · das Bläschen
+//           sinkt hinein (6,3–6,95)
+//   Jede neue Zelle entsteht sichtbar aus einer alten: Sie startet genau auf
+//   ihrer Mutterzelle (dieselbe Größe) und rückt dann an ihren Platz.
+//
+// WERTE (sim_plan.werte = lehrer.tabelle_erwartet, am Bild abzulesen):
+//   Tag 1  Zähler „Zellen: 1“            Embryo im Gang nahe dem Eierstock
+//   Tag 3  Zähler „Zellen: 8“            Embryo im Gang, etwa auf halbem Weg
+//   Tag 5  Zähler „Zellen: etwa 100“     Embryo frei im Hohlraum der Gebärmutter;
+//                                        Lupe: hohles Bläschen aus kleinen Zellen
+//   Tag 7  Zähler „Zellen: mehr als 100“ Embryo halb in der Wand der Gebärmutter;
+//                                        Lupe: Bläschen sinkt in die Wand
+//   Unterwegs zählt der Zähler 2, 4, 16, 32 mit (Verdopplung sichtbar).
+//
+// STATUSZEILE (_n9m-status), nennt den Ort NIE mit Namen:
+//   unterwegs  „Die Zeit läuft bis Tag 5.“ / „Die Zeit läuft zurück bis Tag 1.“
+//   Tag 1, 3   „Der Embryo ist unterwegs.“
+//   Tag 5      „Der Embryo schwimmt frei.“
+//   Tag 7      „Der Embryo sitzt jetzt fest in der Wand.“   (wörtlich, Bauplan)
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen, ohne Zufall): Eine violette Punktspur
+//   bleibt hinter dem Embryo liegen, mit Tagesmarken 1, 3, 5, 7 an den
+//   besuchten Orten. Erreicht der Embryo die Gebärmutter, läuft ein Licht die
+//   ganze Spur vom Eierstock bis zum Eingang entlang, und am Eingang breitet
+//   sich ein Lichtring aus – der Weg war lang, am Anfang war er NICHT in der
+//   Gebärmutter. Am Tag 7 je ein Lichtring an der Wand und in der Lupe.
+//   Jeder neue Zählerwert springt kurz an; am Ziel ein Rahmen um den Zähler.
+//
+// NICHT AM BILDSCHIRM: die Lückenwörter aus Merksatz und Aufgabe 2 und die
+//   Fachwörter der Seite (siehe bz2.json, sim_plan.anzeigen, letzte Zeile).
+//   Der Gang trägt keine Beschriftung. Keine Körper, keine Personen.
+//   Kein clip(): Alles in der Lupe bleibt aus eigener Geometrie im Kreis
+//   (der Nachzeichner leinwand_bild.js bildet clip nicht nach).
+// ═══════════════════════════════════════════════════════════════════════
+let _n9m = null;
+const _N9M_STATUS = {
+  1: 'Der Embryo ist unterwegs.',
+  3: 'Der Embryo ist unterwegs.',
+  5: 'Der Embryo schwimmt frei.',
+  7: 'Der Embryo sitzt jetzt fest in der Wand.'
+};
+const _N9M_L = { x: 112, y: 218, r: 54 };        // Lupe
+const _N9M_ZONA = 32;                             // Hülle um die ersten Zellen
+const _N9M_EIER = { x: 56, y: 116, rx: 32, ry: 20 };
+// Gang: zwei kubische Bögen vom Trichter bis in die Gebärmutter
+const _N9M_GANG = [
+  [[96, 92], [120, 58], [160, 24], [214, 28]],
+  [[214, 28], [252, 31], [274, 42], [292, 54]]
+];
+const _N9M_MUND = [84, 106];                      // Öffnung des Trichters
+const _N9M_EINGANG = [306, 60];                   // Ende des Gangs im Hohlraum
+const _N9M_MITTE = [340, 84];                     // Tag 5: frei im Hohlraum
+const _N9M_WAND = [365, 80];                      // berührt die Wand
+const _N9M_TIEF = [373, 80];                      // halb in der Wand
+// Zeitplan der Lupe: [von Lage, zu Lage, D-Anfang, D-Ende]
+const _N9M_PLAN = [
+  [0, 1, 1.25, 1.75], [1, 2, 2.0, 2.4], [2, 3, 2.55, 2.95],
+  [3, 4, 3.15, 3.55], [4, 5, 3.65, 4.05], [5, 6, 4.15, 4.8], [6, 7, 5.2, 6.0]
+];
+const _N9M_FARBE = { zelle: '#fed7aa', rand: '#c2410c', kern: '#9a3412',
+                     spur: '124,58,237', wand: '#f4b9b9', wandRand: '#c97a7a' };
+
+// ── Geometrie ──────────────────────────────────────────
+function _n9mBez(a, b, c, d, u) {
+  const v = 1 - u;
+  return [v * v * v * a[0] + 3 * v * v * u * b[0] + 3 * v * u * u * c[0] + u * u * u * d[0],
+          v * v * v * a[1] + 3 * v * v * u * b[1] + 3 * v * u * u * c[1] + u * u * u * d[1]];
+}
+// Weg des Embryos als Polygonzug mit Bogenlängen; Marken je Ort
+function _n9mWeg() {
+  const p = [];
+  for (const b of _N9M_GANG) {
+    for (let i = p.length ? 1 : 0; i <= 40; i++) p.push(_n9mBez(b[0], b[1], b[2], b[3], i / 40));
+  }
+  p.push(_N9M_EINGANG);
+  const iGang = p.length - 1;
+  // in den Hohlraum hinein, leicht gebogen
+  const e = _N9M_EINGANG, m = _N9M_MITTE, k = [326, 60];
+  for (let i = 1; i <= 12; i++) {
+    const u = i / 12, v = 1 - u;
+    p.push([v * v * e[0] + 2 * v * u * k[0] + u * u * m[0], v * v * e[1] + 2 * v * u * k[1] + u * u * m[1]]);
+  }
+  const iMitte = p.length - 1;
+  for (let i = 1; i <= 8; i++) {
+    const u = i / 8;
+    p.push([m[0] + (_N9M_WAND[0] - m[0]) * u, m[1] + (_N9M_WAND[1] - m[1]) * u]);
+  }
+  const iWand = p.length - 1;
+  for (let i = 1; i <= 4; i++) {
+    const u = i / 4;
+    p.push([_N9M_WAND[0] + (_N9M_TIEF[0] - _N9M_WAND[0]) * u, _N9M_WAND[1] + (_N9M_TIEF[1] - _N9M_WAND[1]) * u]);
+  }
+  const s = [0];
+  for (let i = 1; i < p.length; i++) s.push(s[i - 1] + Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]));
+  const lg = s[iGang];
+  return { p, s, iGang, sGang: lg, sMitte: s[iMitte], sWand: s[iWand], sTief: s[p.length - 1],
+           s1: 0.10 * lg, s3: 0.50 * lg };
+}
+// Bogenlänge auf dem Weg für die Zeit D (stückweise linear)
+function _n9mS(D) {
+  const W = _n9m.weg;
+  const K = [[1, W.s1], [3, W.s3], [4.6, W.sGang], [5, W.sMitte], [6.2, W.sWand], [6.9, W.sTief], [7, W.sTief]];
+  if (D <= K[0][0]) return K[0][1];
+  for (let i = 1; i < K.length; i++) {
+    if (D <= K[i][0]) {
+      const u = (D - K[i - 1][0]) / (K[i][0] - K[i - 1][0]);
+      return K[i - 1][1] + (K[i][1] - K[i - 1][1]) * u;
+    }
+  }
+  return K[K.length - 1][1];
+}
+function _n9mPunkt(s) {
+  const W = _n9m.weg;
+  if (s <= 0) return { x: W.p[0][0], y: W.p[0][1], i: 0 };
+  for (let i = 1; i < W.p.length; i++) {
+    if (s <= W.s[i]) {
+      const u = (s - W.s[i - 1]) / Math.max(1e-6, W.s[i] - W.s[i - 1]);
+      return { x: W.p[i - 1][0] + (W.p[i][0] - W.p[i - 1][0]) * u,
+               y: W.p[i - 1][1] + (W.p[i][1] - W.p[i - 1][1]) * u, i };
+    }
+  }
+  const q = W.p[W.p.length - 1];
+  return { x: q[0], y: q[1], i: W.p.length - 1 };
+}
+function _n9mOrt(D) { return _n9mPunkt(_n9mS(D)); }
+
+// ── Lagen der Zellen in der Lupe (relativ zur Lupenmitte) ──
+function _n9mZ(x, y, r, hinten) { return { x, y, rx: r, ry: r, rot: 0, hinten: !!hinten, ring: false }; }
+function _n9mSonne(n, R) {
+  const a = [];
+  for (let i = 0; i < n; i++) {
+    const rr = R * Math.sqrt((i + 0.5) / n), w = i * 2.399963;
+    a.push([rr * Math.cos(w), rr * Math.sin(w)]);
+  }
+  return a;
+}
+// hohles Bläschen: Ring flacher Zellen und innen rechts ein Zellhaufen
+function _n9mBlase(R, nRing, nInnen) {
+  const a = [], halb = Math.PI * R / nRing * 1.1;
+  for (let i = 0; i < nRing; i++) {
+    const w = (i + 0.5) / nRing * 2 * Math.PI;
+    a.push({ x: R * Math.cos(w), y: R * Math.sin(w), rx: halb, ry: 2.1, rot: w + Math.PI / 2, hinten: false, ring: true });
+  }
+  const hx = 6.2, hy = R * 0.46, cx = R - 2.1 - hx - 0.6;
+  const rz = Math.sqrt(hx * hy / nInnen) * 1.12;
+  for (const q of _n9mSonne(nInnen, 1)) a.push(_n9mZ(cx + q[0] * (hx - rz * 0.4), q[1] * (hy - rz * 0.4), rz));
+  return a;
+}
+function _n9mLagen() {
+  const Z = _n9mZ, L = [];
+  L.push([Z(0, 0, 26)]);
+  L.push([Z(-13.5, 0, 14), Z(13.5, 0, 14)]);
+  L.push([Z(-11.5, -11.5, 11.5), Z(-11.5, 11.5, 11.5), Z(11.5, -11.5, 11.5), Z(11.5, 11.5, 11.5)]);
+  L.push([Z(-9, -9, 9.5), Z(-16, 0, 9.5, true), Z(-9, 9, 9.5), Z(0, 16, 9.5, true),
+          Z(9, -9, 9.5), Z(0, -16, 9.5, true), Z(9, 9, 9.5), Z(16, 0, 9.5, true)]);
+  L.push(_n9mSonne(16, 20).map(q => Z(q[0], q[1], 6.4)));
+  L.push(_n9mSonne(32, 21.5).map(q => Z(q[0], q[1], 4.9)));
+  L.push(_n9mBlase(24, 32, 18));            // Tag 5
+  L.push(_n9mBlase(28, 38, 24));            // Tag 7
+  return L;
+}
+// Mutterzelle je Tochterzelle: erst bekommt jede alte Zelle ihre nächste neue
+// (keine verschwindet), dann die übrigen neuen ihre nächste alte (höchstens zwei).
+function _n9mEltern(A, B) {
+  const paare = [];
+  B.forEach((b, j) => A.forEach((a, i) => paare.push([(a.x - b.x) ** 2 + (a.y - b.y) ** 2, i, j])));
+  paare.sort((p, q) => p[0] - q[0] || p[1] - q[1] || p[2] - q[2]);
+  const n = A.map(() => 0), el = B.map(() => -1);
+  for (const [, i, j] of paare) if (el[j] < 0 && n[i] === 0) { el[j] = i; n[i] = 1; }
+  for (const [, i, j] of paare) if (el[j] < 0 && n[i] < 2) { el[j] = i; n[i]++; }
+  return el;
+}
+
+function _n9mInit() {
+  const lagen = _n9mLagen();
+  const eltern = [null, [0, 0], [0, 0, 1, 1], [0, 0, 1, 1, 2, 2, 3, 3]];
+  for (let k = 4; k < lagen.length; k++) eltern.push(_n9mEltern(lagen[k - 1], lagen[k]));
+  _n9m = { t: 0, tag: 1, D: 1, von: 1, nach: 1, p: 1, dauer: 3, dmax: 1,
+           besucht: { 1: true }, fx: { teile: [] }, zahl: '1', pop: 0, puls: [],
+           spur: -1, lagen, eltern, weg: null };
+  _n9m.weg = _n9mWeg();
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9mTag(v) {
+  if (!_n9m) return;
+  let w = Math.round(Number(v));
+  if (!isFinite(w)) w = 1;
+  w = Math.max(1, Math.min(7, 1 + 2 * Math.round((w - 1) / 2)));
+  _n9m.tag = w;
+  const d = w - _n9m.D;
+  if (Math.abs(d) < 1e-6) {
+    _n9m.p = 1; _n9m.D = w; _n9m.von = w; _n9m.nach = w;
+  } else {
+    _n9m.von = _n9m.D; _n9m.nach = w; _n9m.p = 0;
+    _n9m.dauer = d > 0 ? Math.min(6, 1.5 * d) : Math.max(0.8, 0.5 * -d);
+  }
+  _n9mStatus();
+}
+function _n9mNeu() {
+  if (!_n9m) return;
+  _n9m.tag = 1; _n9m.D = 1; _n9m.von = 1; _n9m.nach = 1; _n9m.p = 1; _n9m.dmax = 1;
+  _n9m.besucht = { 1: true }; _n9m.fx = { teile: [] }; _n9m.puls = []; _n9m.spur = -1;
+  _n9m.zahl = '1'; _n9m.pop = 0;
+  _n9mStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9mZeile() {
+  if (_n9m.p < 1) {
+    return _n9m.nach > _n9m.von ? 'Die Zeit läuft bis Tag ' + _n9m.nach + '.'
+                                : 'Die Zeit läuft zurück bis Tag ' + _n9m.nach + '.';
+  }
+  return _N9M_STATUS[_n9m.tag];
+}
+function _n9mStatus() {
+  if (!_n9m) return;
+  const el = document.getElementById('_n9m-status');
+  if (el) { el.textContent = _n9mZeile(); el.className = 'lmp-status on'; }
+  const lb = document.getElementById('_n9m-tagLbl');
+  if (lb) lb.textContent = String(_n9m.tag);
+  const r = document.getElementById('_n9m-tag');
+  if (r && String(r.value) !== String(_n9m.tag)) r.value = String(_n9m.tag);
+}
+function _n9mHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wo ist der Embryo in den ersten Tagen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Schnitt, ganz einfach gezeichnet: links ein Eierstock, rechts die Gebärmutter. Der kleine Kreis ist der Embryo. Die Lupe unten zeigt ihn groß.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9m-cv" width="420" height="300" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <label class="phys-ctrl-label" for="_n9m-tag">Tag: <b id="_n9m-tagLbl">1</b></label>
+          <input type="range" id="_n9m-tag" min="1" max="7" step="2" value="1" oninput="_n9mTag(this.value)" style="width:100%;accent-color:#ea580c">
+          <div style="display:flex;justify-content:space-between;font-size:.74rem;font-weight:700;color:#64748b"><span>1</span><span>3</span><span>5</span><span>7</span></div>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_n9mNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Was passiert?</div>
+        <div class="lmp-status on" id="_n9m-status" style="margin-top:6px"></div>
+        <div class="fpm-note" style="margin-top:10px">Stelle „Tag“ um. Die Zeit läuft dann bis zu diesem Tag. Lies erst danach ab.</div>
+        <div class="fpm-note" style="margin-top:8px">Unter der Lupe steht, wie viele Zellen der Embryo hat.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Tag 1 &nbsp;|&nbsp; Alle Zahlen sind Modellwerte.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9mZahl(D) {
+  if (D >= 5.6) return 'mehr als 100';
+  if (D >= 4.8) return 'etwa 100';
+  if (D >= 4.05) return '32';
+  if (D >= 3.55) return '16';
+  if (D >= 2.95) return '8';
+  if (D >= 2.4) return '4';
+  if (D >= 1.75) return '2';
+  return '1';
+}
+function _n9mUpdate(dt) {
+  if (!_n9m) return;
+  dt = _bioFxDt(dt);
+  _n9m.t += dt;
+  if (_n9m.p < 1) {
+    const D0 = _n9m.D;
+    _n9m.p = Math.min(1, _n9m.p + dt / _n9m.dauer);
+    _n9m.D = _n9m.p >= 1 ? _n9m.nach
+                         : _n9m.von + (_n9m.nach - _n9m.von) * _bioFxEase.sanft(_n9m.p);
+    if (_n9m.D > _n9m.dmax) _n9m.dmax = _n9m.D;
+    // vorwärts in die Gebärmutter: Licht läuft die Spur entlang, Ring am Eingang
+    if (D0 < 4.6 && _n9m.D >= 4.6) {
+      _bioFxWelle(_n9m.fx.teile, _N9M_EINGANG[0], _N9M_EINGANG[1], '#c4b5fd', 30);
+      _n9m.spur = 0;
+    }
+    // vorwärts in die Wand: Ring an der Wand und in der Lupe
+    if (D0 < 6.9 && _n9m.D >= 6.9) {
+      _bioFxWelle(_n9m.fx.teile, _N9M_TIEF[0], _N9M_TIEF[1], '#fde047', 26);
+      _bioFxWelle(_n9m.fx.teile, _N9M_L.x + 32, _N9M_L.y, '#fde047', 30);
+    }
+    if (_n9m.p >= 1) {
+      _n9m.besucht[_n9m.nach] = true;
+      _n9m.puls.push({ t0: _n9m.t });
+      _n9mStatus();
+    }
+  }
+  const z = _n9mZahl(_n9m.D);
+  if (z !== _n9m.zahl) { _n9m.zahl = z; _n9m.pop = 0.35; }
+  if (_n9m.pop > 0) _n9m.pop = Math.max(0, _n9m.pop - dt);
+  if (_n9m.spur >= 0) { _n9m.spur += dt; if (_n9m.spur > 1.8) _n9m.spur = -1; }
+  _bioFxAlleUpdate(_n9m.fx, dt);
+}
+
+// ── Zeichnen: Hilfen ───────────────────────────────────
+function _n9mK(t) { return t < 0 ? 0 : t > 1 ? 1 : t; }
+function _n9mMisch(a, b, u) { return a + (b - a) * u; }
+function _n9mFarbe(a, b, u) {
+  const h = s => [1, 3, 5].map(i => parseInt(s.slice(i, i + 2), 16));
+  const x = h(a), y = h(b);
+  return 'rgb(' + x.map((v, i) => Math.round(v + (y[i] - v) * u)).join(',') + ')';
+}
+function _n9mRund(ctx, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9mDraw(ctx, cv) {
+  if (!_n9m) return;
+  const W = cv.width, H = cv.height, t = _n9m.t, D = _n9m.D;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#fbf8f3'; ctx.fillRect(0, 0, W, H);
+  _n9mEierstock(ctx);
+  _n9mTrichter(ctx, t);
+  _n9mGangBild(ctx, t);
+  _n9mGebaermutter(ctx);
+  _n9mSpur(ctx);
+  const P = _n9mOrt(D);
+  const fest = D >= 6.2;
+  const E = { x: P.x, y: P.y + (fest ? 0 : 0.7 * Math.sin(t * 1.3)) };
+  _n9mVerbindung(ctx, E);
+  _n9mEmbryoKlein(ctx, E, D, t);
+  _n9mSchilder(ctx);
+  _n9mLupe(ctx, D, t);
+  _n9mZaehler(ctx);
+  _n9mTage(ctx, D);
+  _n9mLegende(ctx);
+  _bioFxAlleDraw(ctx, _n9m.fx);
+}
+function _n9mEierstock(ctx) {
+  const O = _N9M_EIER;
+  ctx.save();
+  ctx.fillStyle = '#f8dcc0'; ctx.strokeStyle = '#c0835a'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.ellipse(O.x, O.y, O.rx, O.ry, -0.12, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#fff4e4'; ctx.strokeStyle = '#d9a679'; ctx.lineWidth = 1;
+  for (const [dx, dy, r] of [[-15, -4, 5], [-2, 7, 6.5], [12, -6, 4.5], [-18, 9, 3.5], [16, 8, 3.5], [3, -10, 3]]) {
+    ctx.beginPath(); ctx.arc(O.x + dx, O.y + dy, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Trichter am Anfang des Gangs mit fünf wehenden Fransen
+function _n9mTrichter(ctx, t) {
+  const a = _N9M_GANG[0][0], m = _N9M_MUND;
+  const ax = m[0] - a[0], ay = m[1] - a[1], L = Math.hypot(ax, ay);
+  const ux = ax / L, uy = ay / L, nx = -uy, ny = ux;
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Fransen: viele dünne, leicht gebogene Fäden am Rand, die langsam wehen
+  for (let i = 0; i < 9; i++) {
+    const q = (i - 4) / 4;                                   // -1 … 1
+    const bx = m[0] + nx * q * 13 - ux * 1.5, by = m[1] + ny * q * 13 - uy * 1.5;
+    const w = q * 0.95 + 0.2 * Math.sin(t * 1.3 + i * 0.9);
+    const dx = ux * Math.cos(w) - uy * Math.sin(w), dy = ux * Math.sin(w) + uy * Math.cos(w);
+    const len = 7 + 2.5 * Math.cos(i * 2.3) ** 2;
+    const kx = bx + dx * len * 0.55 + nx * 1.8 * Math.sin(t * 1.1 + i), ky = by + dy * len * 0.55 + ny * 1.8 * Math.sin(t * 1.1 + i);
+    for (const [farbe, br] of [['#c98a82', 3.6], ['#f4c4bc', 2]]) {
+      ctx.strokeStyle = farbe; ctx.lineWidth = br;
+      ctx.beginPath(); ctx.moveTo(bx, by); ctx.quadraticCurveTo(kx, ky, bx + dx * len, by + dy * len); ctx.stroke();
+    }
+  }
+  // Trichter
+  ctx.fillStyle = '#f4c4bc'; ctx.strokeStyle = '#c98a82'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(a[0] + nx * 8.5, a[1] + ny * 8.5);
+  ctx.quadraticCurveTo(a[0] + ux * 6 + nx * 10, a[1] + uy * 6 + ny * 10, m[0] + nx * 15, m[1] + ny * 15);
+  ctx.quadraticCurveTo(m[0] + ux * 4, m[1] + uy * 4, m[0] - nx * 15, m[1] - ny * 15);
+  ctx.quadraticCurveTo(a[0] + ux * 6 - nx * 10, a[1] + uy * 6 - ny * 10, a[0] - nx * 8.5, a[1] - ny * 8.5);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#fff8f5';
+  ctx.beginPath();
+  ctx.moveTo(a[0] + nx * 3.6, a[1] + ny * 3.6);
+  ctx.quadraticCurveTo(a[0] + ux * 6 + nx * 5, a[1] + uy * 6 + ny * 5, m[0] + nx * 10, m[1] + ny * 10);
+  ctx.quadraticCurveTo(m[0] + ux * 1, m[1] + uy * 1, m[0] - nx * 10, m[1] - ny * 10);
+  ctx.quadraticCurveTo(a[0] + ux * 6 - nx * 5, a[1] + uy * 6 - ny * 5, a[0] - nx * 3.6, a[1] - ny * 3.6);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+function _n9mGangPfad(ctx, bis) {
+  const p = _n9m.weg.p;
+  ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+  for (let i = 1; i <= bis; i++) ctx.lineTo(p[i][0], p[i][1]);
+}
+function _n9mGangBild(ctx, t) {
+  const W = _n9m.weg, p = W.p;
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  _n9mGangPfad(ctx, W.iGang);
+  ctx.strokeStyle = '#c98a82'; ctx.lineWidth = 19; ctx.stroke();
+  ctx.strokeStyle = '#f4c4bc'; ctx.lineWidth = 16; ctx.stroke();
+  ctx.strokeStyle = '#fff8f5'; ctx.lineWidth = 8; ctx.stroke();
+  // feine Härchen an beiden Innenrändern, sie schlagen in einer Welle
+  ctx.strokeStyle = '#e2a097'; ctx.lineWidth = 0.9;
+  for (let i = 1; i < W.iGang - 1; i++) {
+    const tx = p[i + 1][0] - p[i - 1][0], ty = p[i + 1][1] - p[i - 1][1], tl = Math.hypot(tx, ty) || 1;
+    const ux = tx / tl, uy = ty / tl, nx = -uy, ny = ux;
+    const sw = 0.75 * Math.sin(t * 2 * Math.PI * 0.9 - W.s[i] * 0.22);
+    for (const sg of [1, -1]) {
+      const bx = p[i][0] + nx * 4 * sg, by = p[i][1] + ny * 4 * sg;
+      const ix = -nx * sg, iy = -ny * sg;             // nach innen
+      const kx = ix * Math.cos(sw) + ux * Math.sin(sw), ky = iy * Math.cos(sw) + uy * Math.sin(sw);
+      ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + kx * 2.6, by + ky * 2.6); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _n9mGebaermutter(ctx) {
+  ctx.save();
+  // Muskelwand
+  ctx.fillStyle = '#e9a3a3'; ctx.strokeStyle = '#b45f5f'; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(282, 52);
+  ctx.bezierCurveTo(286, 14, 398, 14, 402, 52);
+  ctx.bezierCurveTo(404, 92, 376, 122, 360, 140);
+  ctx.lineTo(358, 162);
+  ctx.quadraticCurveTo(342, 169, 326, 162);
+  ctx.lineTo(324, 140);
+  ctx.bezierCurveTo(308, 122, 280, 92, 282, 52);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  // weiche Wand innen
+  ctx.fillStyle = _N9M_FARBE.wand;
+  ctx.beginPath();
+  ctx.moveTo(293, 55);
+  ctx.bezierCurveTo(297, 27, 387, 27, 391, 55);
+  ctx.bezierCurveTo(392, 88, 368, 114, 352, 131);
+  ctx.lineTo(351, 157);
+  ctx.quadraticCurveTo(342, 161, 333, 157);
+  ctx.lineTo(332, 131);
+  ctx.bezierCurveTo(316, 114, 292, 88, 293, 55);
+  ctx.closePath(); ctx.fill();
+  // kleine Adern in der Wand
+  ctx.strokeStyle = '#e08c8c'; ctx.lineWidth = 1.1; ctx.lineCap = 'round';
+  for (const [x, y, w] of [[300, 82, 1.2], [318, 112, 0.9], [384, 70, 1.9], [367, 112, 2.3], [330, 38, 0.1], [356, 37, 0.2]]) {
+    ctx.beginPath(); ctx.moveTo(x, y);
+    for (let i = 1; i <= 4; i++) ctx.lineTo(x + Math.cos(w) * i * 3 + Math.sin(i * 2.1) * 1.4, y + Math.sin(w) * i * 3 + Math.cos(i * 2.1) * 1.4);
+    ctx.stroke();
+  }
+  // der Gang führt durch die Wand
+  ctx.lineCap = 'butt';
+  ctx.strokeStyle = '#d99a92'; ctx.lineWidth = 10;
+  ctx.beginPath(); ctx.moveTo(289, 53.6); ctx.lineTo(_N9M_EINGANG[0], _N9M_EINGANG[1]); ctx.stroke();
+  ctx.strokeStyle = '#fff3f0'; ctx.lineWidth = 7;
+  ctx.beginPath(); ctx.moveTo(287, 52.9); ctx.lineTo(_N9M_EINGANG[0], _N9M_EINGANG[1]); ctx.stroke();
+  // Hohlraum
+  ctx.fillStyle = '#fff4f3'; ctx.strokeStyle = '#e7a9a9'; ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(304, 57);
+  ctx.bezierCurveTo(320, 47, 364, 47, 380, 57);
+  ctx.bezierCurveTo(378, 82, 356, 106, 346, 124);
+  ctx.lineTo(345, 151);
+  ctx.lineTo(339, 151);
+  ctx.lineTo(338, 124);
+  ctx.bezierCurveTo(328, 106, 306, 82, 304, 57);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// violette Punktspur bis zum weitesten erreichten Ort, Tagesmarken an den Orten
+function _n9mSpur(ctx) {
+  const W = _n9m.weg, smax = _n9mS(_n9m.dmax), s0 = W.s1;
+  if (smax > s0 + 2) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(' + _N9M_FARBE.spur + ',0.55)';
+    for (let s = s0; s <= smax; s += 6) {
+      const q = _n9mPunkt(s);
+      ctx.beginPath(); ctx.arc(q.x, q.y, 1.4, 0, 2 * Math.PI); ctx.fill();
+    }
+    // Licht läuft die Spur entlang (beim Ankommen in der Gebärmutter)
+    if (_n9m.spur >= 0) {
+      const u = _bioFxEase.sanft(_n9mK(_n9m.spur / 1.3));
+      const a = 1 - _n9mK((_n9m.spur - 1.3) / 0.5);
+      const sk = s0 + (W.sGang - s0) * u;
+      for (let s = s0; s <= sk; s += 6) {
+        const q = _n9mPunkt(s), nah = _n9mK(1 - (sk - s) / 60);
+        ctx.fillStyle = 'rgba(' + _N9M_FARBE.spur + ',' + (a * (0.35 + 0.6 * nah)).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(q.x, q.y, 1.8 + 1.4 * nah, 0, 2 * Math.PI); ctx.fill();
+      }
+      const q = _n9mPunkt(sk);
+      const g = ctx.createRadialGradient(q.x, q.y, 0, q.x, q.y, 11);
+      g.addColorStop(0, 'rgba(237,233,254,' + (0.95 * a).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(196,181,253,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(q.x, q.y, 11, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Tagesmarken (nur besuchte Tage)
+  // Marke 1 lag bei (104, 58) und berührte am Tag 1 den Lupenring des Embryos
+  // (Abstand 16,6 bei 7 + 9,5); jetzt bleiben rund 5 px Luft, auch zum Gang.
+  const M = { 1: [98, 54], 3: [200, 50], 5: [354, 62], 7: [378, 104] };
+  const A = { 1: _n9mOrt(1), 3: _n9mOrt(3), 5: _n9mOrt(5), 7: _n9mOrt(7) };
+  ctx.save();
+  for (const d of [1, 3, 5, 7]) {
+    if (!_n9m.besucht[d]) continue;
+    const m = M[d], a = A[d];
+    ctx.strokeStyle = 'rgba(' + _N9M_FARBE.spur + ',0.6)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(m[0], m[1]); ctx.lineTo(a.x, a.y); ctx.stroke();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#7c3aed'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(m[0], m[1], 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#5b21b6'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(d), m[0], m[1] + 3.2);
+  }
+  ctx.restore();
+}
+function _n9mVerbindung(ctx, E) {
+  const L = _N9M_L, dx = E.x - L.x, dy = E.y - L.y, d = Math.hypot(dx, dy) || 1;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(51,65,85,0.45)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(L.x + dx / d * (L.r + 3), L.y + dy / d * (L.r + 3));
+  ctx.lineTo(E.x - dx / d * 11, E.y - dy / d * 11);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+// der kleine Kreis im Schnitt: erst voll, ab dem Bläschen hohl
+function _n9mEmbryoKlein(ctx, E, D, t) {
+  const r = 5 + 0.8 * _n9mK((D - 5.2) / 0.8);
+  const hohl = _n9mK((D - 4.15) / 0.65);
+  ctx.save();
+  const g = ctx.createRadialGradient(E.x, E.y, r * 0.5, E.x, E.y, r * 2.4);
+  g.addColorStop(0, 'rgba(251,146,60,0.30)'); g.addColorStop(1, 'rgba(251,146,60,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(E.x, E.y, r * 2.4, 0, 2 * Math.PI); ctx.fill();
+  if (hohl < 1) {
+    ctx.globalAlpha = 1 - hohl;
+    ctx.fillStyle = '#fb923c'; ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.3;
+    ctx.beginPath(); ctx.arc(E.x, E.y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  if (hohl > 0) {
+    ctx.globalAlpha = hohl;
+    ctx.fillStyle = '#fff7ed'; ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.arc(E.x, E.y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ea580c';
+    ctx.beginPath(); ctx.arc(E.x + r * 0.45, E.y, r * 0.38, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  // halb in der Wand: die Wand legt sich über die rechte Hälfte
+  const tief = _n9mK((D - 6.2) / 0.7);
+  if (tief > 0) {
+    ctx.fillStyle = 'rgba(244,185,185,' + (0.8 * tief).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(E.x, E.y, r + 1.2, -Math.PI / 2, Math.PI / 2); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = 'rgba(217,140,140,' + (0.9 * tief).toFixed(3) + ')'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(E.x + 0.5, E.y, r + 1.2, -Math.PI / 2, Math.PI / 2); ctx.stroke();
+  }
+  // Lupenring
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(E.x, E.y, r + 4.5, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+function _n9mSchilder(ctx) {
+  ctx.save();
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Eierstock', _N9M_EIER.x, _N9M_EIER.y + _N9M_EIER.ry + 17);
+  ctx.fillText('Gebärmutter', 342, 186);
+  ctx.restore();
+}
+// Zellen in der Lupe für die Zeit D (Teilung: Tochter startet auf der Mutter)
+function _n9mZellen(D) {
+  let tr = null;
+  for (const s of _N9M_PLAN) if (D >= s[2]) tr = s;
+  const lg = _n9m.lagen;
+  if (!tr) return { z: lg[0], hohl: 0 };
+  const e0 = _n9mK((D - tr[2]) / (tr[3] - tr[2]));
+  const hohl = tr[1] >= 6 ? (tr[1] === 6 ? e0 : 1) : 0;
+  if (e0 >= 1) return { z: lg[tr[1]], hohl };
+  const e = _bioFxEase.sanft(e0), A = lg[tr[0]], B = lg[tr[1]], el = _n9m.eltern[tr[1]];
+  const z = B.map((b, j) => {
+    const a = A[el[j]];
+    let dr = (b.rot - a.rot) % Math.PI;
+    if (dr > Math.PI / 2) dr -= Math.PI; else if (dr < -Math.PI / 2) dr += Math.PI;
+    return { x: _n9mMisch(a.x, b.x, e), y: _n9mMisch(a.y, b.y, e), rx: _n9mMisch(a.rx, b.rx, e),
+             ry: _n9mMisch(a.ry, b.ry, e), rot: a.rot + dr * e, hinten: b.hinten, ring: b.ring };
+  });
+  return { z, hohl };
+}
+// Kreisabschnitt der Lupe rechts von xb (wellig: Rand der Wand bewegt sich leicht)
+function _n9mAbschnitt(ctx, xb, t, wellig) {
+  const L = _N9M_L, r = L.r - 2, h = xb - L.x;
+  if (h >= r - 0.5) return false;
+  const yy = Math.sqrt(r * r - h * h), a0 = Math.atan2(-yy, h), a1 = Math.atan2(yy, h);
+  ctx.beginPath();
+  ctx.moveTo(xb, L.y - yy);
+  for (let i = 1; i <= 18; i++) {
+    const y = L.y - yy + 2 * yy * i / 18;
+    const rand = wellig && i < 18 ? 1.6 * Math.sin(y * 0.3 + t * 0.7) : 0;
+    ctx.lineTo(xb + rand, y);
+  }
+  ctx.arc(L.x, L.y, r, a1, a0, true);
+  ctx.closePath();
+  return true;
+}
+// Wand in der Lupe: weiche Wand mit Adern, ganz außen die Muskelwand
+function _n9mLupeWand(ctx, xb, t, deck) {
+  const L = _N9M_L, r = L.r - 2;
+  if (!_n9mAbschnitt(ctx, xb, t, true)) return;
+  if (deck > 0) {
+    ctx.fillStyle = 'rgba(244,185,185,' + deck.toFixed(3) + ')'; ctx.fill();
+    return;
+  }
+  ctx.fillStyle = _N9M_FARBE.wand; ctx.fill();
+  ctx.strokeStyle = _N9M_FARBE.wandRand; ctx.lineWidth = 1.5; ctx.stroke();
+  if (_n9mAbschnitt(ctx, Math.max(xb + 8, L.x + r - 9), t, false)) {
+    ctx.fillStyle = '#e9a3a3'; ctx.fill();
+  }
+  // Adern
+  ctx.strokeStyle = '#d97777'; ctx.lineWidth = 1.2; ctx.lineCap = 'round';
+  const mx = xb + 6;
+  for (const [y0, w] of [[-26, 0.6], [-4, -0.4], [18, 0.5]]) {
+    ctx.beginPath();
+    for (let i = 0; i <= 4; i++) {
+      const x = mx + i * 2.2, y = L.y + y0 + i * 2.6 * w + Math.sin(i * 1.9) * 1.6;
+      if (Math.hypot(x - L.x, y - L.y) > r - 10) break;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+}
+function _n9mLupe(ctx, D, t) {
+  const L = _N9M_L;
+  ctx.save();
+  // Hintergrund: Flüssigkeit im Gang, dann im Hohlraum
+  ctx.fillStyle = _n9mFarbe('#e8f3fa', '#fff5f4', _n9mK((D - 4.4) / 0.5));
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.fill();
+  // Wand schiebt sich heran (Tag 6 bis 7)
+  const wE = _bioFxEase.sanft(_n9mK((D - 5.8) / 0.5));
+  const xb = L.x + L.r - (L.r - 30.5) * wE;
+  if (wE > 0) _n9mLupeWand(ctx, xb, t, 0);
+  // Zellen
+  const sink = _bioFxEase.sanft(_n9mK((D - 6.3) / 0.65));
+  const ox = L.x + 11 * sink, oy = L.y;
+  const atem = 1 + 0.012 * Math.sin(t * 1.1);
+  const Z = _n9mZellen(D);
+  // Hohlraum des Bläschens
+  if (Z.hohl > 0) {
+    const R = _n9mMisch(24, 28, _n9mK((D - 5.2) / 0.8)) * atem - 1.5;
+    ctx.globalAlpha = Z.hohl;
+    ctx.fillStyle = '#fffaf2';
+    ctx.beginPath(); ctx.arc(ox, oy, R, 0, 2 * Math.PI); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  const zeichne = (c, j) => {
+    const x = ox + c.x * atem + 0.35 * Math.sin(t * 1.7 + j * 0.9);
+    const y = oy + c.y * atem + 0.35 * Math.cos(t * 1.5 + j * 1.3);
+    ctx.fillStyle = c.hinten ? '#fbc595' : _N9M_FARBE.zelle;
+    ctx.strokeStyle = _N9M_FARBE.rand;
+    ctx.lineWidth = Math.min(c.rx, c.ry) > 4 ? 1.1 : 0.7;
+    ctx.beginPath(); ctx.ellipse(x, y, c.rx, c.ry, c.rot, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = _N9M_FARBE.kern;
+    ctx.beginPath(); ctx.arc(x, y, Math.max(0.8, Math.min(c.rx, c.ry) * 0.3), 0, 2 * Math.PI); ctx.fill();
+  };
+  Z.z.forEach((c, j) => { if (c.hinten) zeichne(c, j); });
+  Z.z.forEach((c, j) => { if (!c.hinten) zeichne(c, j); });
+  // Hülle: bleibt bis Tag 5, öffnet sich dann rechts und verschwindet
+  const auf = _n9mK((D - 5.3) / 0.6);
+  if (auf < 1) {
+    const g = auf * 1.7 * Math.PI;
+    ctx.globalAlpha = 1 - auf * 0.7;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.arc(ox, oy, _N9M_ZONA, g / 2, 2 * Math.PI - g / 2); ctx.stroke();
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 3.6;
+    ctx.beginPath(); ctx.arc(ox, oy, _N9M_ZONA, g / 2, 2 * Math.PI - g / 2); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  // die Wand legt sich halb über das Bläschen
+  if (sink > 0) _n9mLupeWand(ctx, xb, t, 0.5 * sink);
+  // Rahmen und Griff
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(L.x + L.r * 0.74, L.y + L.r * 0.74);
+  ctx.lineTo(L.x + L.r * 0.98, L.y + L.r * 0.98);
+  ctx.stroke();
+  ctx.restore();
+}
+// Zähler unter der Lupe
+function _n9mZaehler(ctx) {
+  const L = _N9M_L, txt = 'Zellen: ' + _n9m.zahl;
+  ctx.save();
+  ctx.font = '700 13px sans-serif';
+  const w = ctx.measureText(txt).width + 22, h = 21, x = L.x - w / 2, y = 277;
+  const k = _n9m.pop > 0 ? 1 + 0.12 * Math.sin(Math.PI * (0.35 - _n9m.pop) / 0.35) : 1;
+  ctx.translate(L.x, y + h / 2); ctx.scale(k, k); ctx.translate(-L.x, -(y + h / 2));
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = _N9M_FARBE.rand; ctx.lineWidth = 2;
+  _n9mRund(ctx, x, y, w, h, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center';
+  ctx.fillText(txt, L.x, y + 15);
+  ctx.restore();
+  // Rahmen, der sich beim Ankommen einmal ausbreitet
+  _n9m.puls = _n9m.puls.filter(p => _n9m.t - p.t0 < 1.2);
+  for (const p of _n9m.puls) {
+    const e = _bioFxEase.raus(_n9mK((_n9m.t - p.t0) / 1.2)), d = 2 + 8 * e;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(234,88,12,' + (0.8 * (1 - e)).toFixed(3) + ')'; ctx.lineWidth = 2.5;
+    _n9mRund(ctx, x - d, y - d, w + 2 * d, h + 2 * d, 7 + d); ctx.stroke();
+    ctx.restore();
+  }
+}
+// Tagesstreifen 1 bis 7
+function _n9mTage(ctx, D) {
+  const x0 = 236, y0 = 226, b = 22, g = 3;
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 17px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Tag ' + Math.floor(D + 1e-6), x0, y0 - 9);
+  for (let d = 1; d <= 7; d++) {
+    const x = x0 + (d - 1) * (b + g);
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+    _n9mRund(ctx, x, y0, b, b, 4); ctx.fill(); ctx.stroke();
+    const f = _n9mK(D - (d - 1));
+    if (f > 0) {
+      ctx.fillStyle = '#fed7aa';
+      _n9mRund(ctx, x + 1, y0 + 1, (b - 2) * f, b - 2, 3); ctx.fill();
+    }
+    const jetzt = d === Math.floor(D + 1e-6);
+    if (jetzt) { ctx.strokeStyle = _N9M_FARBE.rand; ctx.lineWidth = 2.2; _n9mRund(ctx, x, y0, b, b, 4); ctx.stroke(); }
+    ctx.fillStyle = jetzt ? '#9a3412' : '#475569'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(String(d), x + b / 2, y0 + 15);
+  }
+  ctx.restore();
+}
+function _n9mLegende(ctx) {
+  ctx.save();
+  const x = 244, y = 280;
+  ctx.fillStyle = '#fb923c'; ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(x, y, 5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#334155';
+  ctx.beginPath(); ctx.arc(x, y, 9.5, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('= Embryo', x + 15, y + 4);
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WIE WIRD AUS EINEM GEN EIN MERKMAL?   (Förderheft Bio 9 · bt5)
+// Kennung bio-genmerkmal, Präfix _n9r. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bt5.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, heller Grund, schematisch):
+//   - links eine Pflanzenzelle aus einem reifenden Erbsensamen (doppelte Wand),
+//     in der Mitte ein runder Körper OHNE Beschriftung (Zellkern, Mitte 100/141,
+//     Radius 44, rechts zwei Poren). Darin ein Chromosomenpaar (zwei waagerechte
+//     Stäbe); auf jedem ein orangefarbenes Gen-Feld mit seinem Buchstaben
+//     (G oder g, je nach Einstellung).
+//   - um ihn herum 10 Körner mit Blattgrün: grün MIT drei dunklen Streifen.
+//     Wird das Blattgrün abgebaut, werden sie blass und GLATT (Farbe UND Form).
+//   - oben zwei Zähler: „arbeitende Proteine: N“ und „Blattgrün: N %“.
+//   - oben rechts die Stationsleiste 1 2 3 4, darunter klein der ganze Samen
+//     (Zeichnung wie bio-mendel: grün mit drei Streifen bzw. gelb und glatt mit
+//     Glanzpunkt, Farbe UND Muster). Er hat so viel Blattgrün wie die Körner:
+//     Am Start ist der reifende Samen grün, beim Abbau wird er gelb.
+//   - rechts unten „Ergebnisse“: drei Fächer „G und G“, „G und g“, „g und g“.
+//     Nach jedem Durchgang liegt dort der reife Samen dieser Einstellung – so
+//     liegen am Ende die Samen von G und G und G und g nebeneinander.
+//
+// BEDIENUNG (wörtlich): „Allele“ mit „G und G“ · „G und g“ · „g und g“
+//   (_n9rAllele, Start G und G) · „▶ Samen reifen lassen“ (_n9rReifen, grau
+//   während des Laufs; nach dem Ende startet er denselben Lauf neu) · „neu“
+//   (_n9rNeu: G und G, Ergebnisfächer leer). Allele umstellen = neue Zelle,
+//   die Ergebnisfächer bleiben.
+//
+// ABLAUF (Sekunden nach dem Druck, ohne Zufall):
+//   Station 1   0,0–2,4  „1: Das Gen wird abgeschrieben.“  Beide Gen-Felder
+//               leuchten; daneben wächst je eine Abschrift (orangefarbenes Band
+//               mit dem Buchstaben ihres Gens) 0,3–1,8.
+//   Station 2   2,4–4,4  „2: Die Abschrift wandert hinaus.“  Die beiden
+//               Abschriften wandern 2,5–4,2 durch je eine Pore nach draußen.
+//               Das Gen selbst steht weiter an seinem Platz.
+//   Station 3   4,4–6,8  „3: Nach der Abschrift entstehen Proteine.“  An jeder
+//               Abschrift entstehen 5 Proteine (4,6 + 0,36 · k s) und warten im
+//               Fächer (Radius 24 px, die Zangen der beiden Fächer zeigen
+//               voneinander weg). Nach einer
+//               G-Abschrift: dunkelblau mit Zange (arbeitet), nach einer
+//               g-Abschrift: grau mit abgebrochener Zange (Farbe UND Form).
+//               Der Zähler „arbeitende Proteine“ zählt nur die dunkelblauen.
+//   Station 4   ab 6,8   „4: Die Proteine arbeiten am Blattgrün.“  Alle
+//               Proteine laufen auf Wegen ÜBER und UNTER dem runden Körper zu
+//               den Körnern (Abfahrt 6,8 + 0,08 · i, Fahrt 0,9 s). Ein
+//               dunkelblaues baut in 1,7 s das Blattgrün EINES Korns ab
+//               (Krümel fliegen weg). Ein graues hält sich am Korn fest, seine
+//               Zange greift nicht – das Korn ändert sich nicht.
+//               G und g: Die 5 dunkelblauen machen erst 5 Körner, wechseln dann
+//               zum linken Nachbarkorn (0,3 s; eines wechselt von unten rechts
+//               nach oben rechts, 0,75 s) und machen die anderen 5 – an denen
+//               sitzt die ganze Zeit ein graues. Zwei benachbarte Kornenden
+//               (13 px) sind dabei nie zugleich besetzt.
+//   Ende        Blattgrün 0 % (bzw. Probezeit vorbei) + 0,6 s:
+//               „Allele: … · Der Samen ist reif.“
+//   Laufzeiten (gemessen, 16 ms je Bild): G und G 670 Bilder = 10,72 s ·
+//   G und g 799 = 12,78 s · g und g 670 = 10,72 s. Damit erreicht jeder Lauf
+//   sein Ende innerhalb der 875 Bilder, die simfakten.js mit den Schaltern von
+//   fakten_ziehen.py (--frames=25) nach einem Aktionsknopf abwartet. OHNE
+//   Schalter (2 Bilder je Ablesung) sieht der Dump nur Station 1.
+//   Gegengerechnet (Mini-DOM, Bild für Bild, mit vier kaputten Gegenproben):
+//   kein Protein im runden Körper oder in der Zellwand, keines fährt über ein
+//   fremdes Korn, ruhende Proteine mindestens 14 px auseinander.
+//
+// WERTE (lehrer.tabelle_erwartet, Modellwerte; Zähler auf der Leinwand und im
+//   Zählerfeld _n9r-zaehler):
+//   G und G  arbeitende Proteine: 10 · Blattgrün: 0 %   · Samen gelb, glatt
+//   G und g  arbeitende Proteine: 5 (5 graue daneben) · Blattgrün: 0 % · gelb
+//   g und g  arbeitende Proteine: 0 (10 graue) · Blattgrün: 100 % · grün, Streifen
+//   Blattgrün = Mittel der 10 Körner, gerundet; ganz abgebaut ist exakt 0 %.
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen): Wenn das Blattgrün bei 0 % ankommt,
+//   Lichtringe um den Zähler „Blattgrün“, um den Samen und um jedes
+//   dunkelblaue Protein, dazu goldene Funken am Samen. Bei G und g sieht man
+//   davor, wie dieselben 5 Proteine nach den ersten 5 Körnern weitermachen
+//   (der Zähler hält nicht bei der Mitte an), und im Ergebnisfach liegt der
+//   Samen genau wie der von G und G (Lichtring um beide Fächer). Bei g und g
+//   sitzen 10 graue Proteine an den Körnern, und nichts ändert sich (blauer,
+//   ruhiger Ring um Samen und Zähler).
+//
+// NICHT AM BILDSCHIRM (Lückenwörter aus Merksatz und Aufgabe 2, Wortbank):
+//   „Bauplan“, „Hälfte“, „bleibt“, „Zellkern“ (auch nicht „Kern“),
+//   „dominant“, „verschwindet“, „Farbstoff“ – und „gelb“/„grün“ als Farbwort
+//   für den Samen (nur der Name „Blattgrün“ steht da). Der runde Körper in der
+//   Mitte trägt keine Beschriftung.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9r = null;
+const _N9R_ALLELE = {
+  GG: { name: 'G und G', b: ['G', 'G'], zeile: 1 },
+  Gg: { name: 'G und g', b: ['G', 'g'], zeile: 2 },
+  gg: { name: 'g und g', b: ['g', 'g'], zeile: 3 }
+};
+const _N9R_REIHE = ['GG', 'Gg', 'gg'];
+// Zeitplan in s nach dem Druck
+const _N9R_S2 = 2.4, _N9R_S3 = 4.4, _N9R_S4 = 6.8;
+const _N9R_POP0 = 4.6, _N9R_POPAB = 0.36;            // Proteine entstehen
+const _N9R_ABFAHRT = 0.08, _N9R_FAHRT = 0.9;          // Station 4: Abfahrt, Fahrt
+const _N9R_ARBEIT = 1.7, _N9R_HUEPF = 0.3;            // ein Korn abbauen, zum Nachbarn
+const _N9R_AUSKLANG = 0.6;
+const _N9R_TEXT = [
+  '1: Das Gen wird abgeschrieben.',
+  '2: Die Abschrift wandert hinaus.',
+  '3: Nach der Abschrift entstehen Proteine.',
+  '4: Die Proteine arbeiten am Blattgrün.'
+];
+// Lage im Bild
+const _N9R_ZK = { x: 100, y: 141, r: 44 };            // runder Körper in der Mitte
+const _N9R_CHR_Y = [127, 155], _N9R_CHR_X0 = 74, _N9R_CHR_X1 = 126;
+const _N9R_GEN_X0 = 106, _N9R_GEN_X1 = 122;
+const _N9R_BAND_Y = [114, 168], _N9R_BAND_L = 18;     // Abschrift: Lage beim Entstehen, Länge
+const _N9R_PORE_W = 35 * Math.PI / 180;               // Poren bei ±35°
+const _N9R_BAU = [{ x: 178, y: 110 }, { x: 178, y: 172 }];
+const _N9R_KORN_X = [45, 99, 153, 207, 261], _N9R_KORN_Y = [66, 216];
+const _N9R_KORN_RX = 14, _N9R_KORN_RY = 8.5, _N9R_SPOT = 21;
+const _N9R_GANG = [86, 196];                          // Laufwege über / unter dem runden Körper
+const _N9R_SPUR_AB = 220, _N9R_SPUR_AUF = 232;        // senkrechte Laufwege rechts
+const _N9R_SAMEN = { x: 362, y: 76, r: 25 };
+const _N9R_FACH_Y = [150, 180, 210];
+const _N9R_MARKE = [{ x: 56, y: 98 }, { x: 160, y: 141 }, { x: 160, y: 141 }, { x: 262, y: 141 }];
+const _N9R_LEISTE_X = [330, 351, 372, 393];
+// Farben
+const _N9R_HG = '#eef3f6';
+const _N9R_SAMENF = { gelb: '#fcd34d', gelbR: '#a16207', glanz: '#fff7d1',
+                      gruen: '#4caf50', gruenR: '#14532d', streif: '#1b5e20' };
+
+function _n9rKl(x) { return _bioFxKlemme(x); }
+function _n9rE(x) { return _bioFxEase.sanft(_bioFxKlemme(x)); }
+// Farbe zwischen a (u = 0) und b (u = 1)
+function _n9rMisch(a, b, u) {
+  const p = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
+  const A = p(a), B = p(b);
+  return 'rgb(' + A.map((v, i) => Math.round(v + (B[i] - v) * u)).join(',') + ')';
+}
+function _n9rWinkel(a, b, u) {                       // auf dem kürzesten Weg drehen
+  let d = b - a;
+  while (d > Math.PI) d -= 2 * Math.PI;
+  while (d < -Math.PI) d += 2 * Math.PI;
+  return a + d * u;
+}
+function _n9rPore(c) {
+  const w = c === 0 ? -_N9R_PORE_W : _N9R_PORE_W;
+  return { x: _N9R_ZK.x + _N9R_ZK.r * Math.cos(w), y: _N9R_ZK.y + _N9R_ZK.r * Math.sin(w) };
+}
+// Korn g (0–4 obere Reihe, 5–9 untere), Stelle 'A' rechts davon, 'B' links davon
+function _n9rKornOrt(g) { return { x: _N9R_KORN_X[g % 5], y: _N9R_KORN_Y[g < 5 ? 0 : 1] }; }
+function _n9rStelle(g, st) {
+  const k = _n9rKornOrt(g), A = st === 'A';
+  return { x: k.x + (A ? _N9R_SPOT : -_N9R_SPOT), y: k.y, w: A ? Math.PI : 0 };
+}
+// Laufweg vom Start S zur Stelle P: über den oberen oder unteren Gang, wer die
+// Seite wechselt, nimmt rechts eine senkrechte Spur. Nie durch den runden Körper.
+function _n9rWeg(S, P) {
+  const oben = P.y < _N9R_ZK.y, vonOben = S.y < _N9R_ZK.y;
+  const gy = _N9R_GANG[oben ? 0 : 1];
+  const roh = [{ x: S.x, y: S.y }];
+  if (oben !== vonOben) {
+    const lx = oben ? _N9R_SPUR_AUF : _N9R_SPUR_AB;
+    roh.push({ x: lx, y: S.y }, { x: lx, y: gy });
+  } else roh.push({ x: S.x, y: gy });
+  roh.push({ x: P.x, y: gy }, { x: P.x, y: P.y });
+  return _n9rPunkte(roh);
+}
+function _n9rPunkte(roh) {
+  const pts = [roh[0]];
+  for (const p of roh.slice(1)) {
+    const q = pts[pts.length - 1];
+    if (Math.hypot(p.x - q.x, p.y - q.y) > 0.5) pts.push(p);
+  }
+  return pts;
+}
+// Punkt und Richtung nach dem Anteil f (0–1) der Weglänge
+function _n9rAufWeg(pts, f) {
+  let L = 0;
+  const seg = [];
+  for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y); seg.push(d); L += d; }
+  if (L < 1e-6) return { x: pts[0].x, y: pts[0].y, w: 0 };
+  let r = _n9rKl(f) * L;
+  for (let i = 0; i < seg.length; i++) {
+    if (r <= seg[i] || i === seg.length - 1) {
+      const u = seg[i] > 0 ? Math.min(1, r / seg[i]) : 1, a = pts[i], b = pts[i + 1];
+      return { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u, w: Math.atan2(b.y - a.y, b.x - a.x) };
+    }
+    r -= seg[i];
+  }
+  const z = pts[pts.length - 1];
+  return { x: z.x, y: z.y, w: 0 };
+}
+
+// ── Der Plan eines Durchgangs (alles vorher festgelegt, ohne Zufall) ──────
+function _n9rPlan(al) {
+  const b = _N9R_ALLELE[al].b;
+  const prot = [];
+  for (let c = 0; c < 2; c++) for (let k = 0; k < 5; k++) {
+    // Fächer: oben von -110° bis 30°, unten von -30° bis 110° – die Zangen zeigen voneinander weg
+    const B = _N9R_BAU[c], w = ((c === 0 ? -110 : -30) + 35 * k) * Math.PI / 180;
+    prot.push({
+      c, k, ok: b[c] === 'G', pop: _N9R_POP0 + _N9R_POPAB * k,
+      // wer am Gang liegt, fährt zuerst: oben von oben nach unten, unten von unten nach oben
+      i: c === 0 ? 2 * k : 2 * (4 - k) + 1,
+      fan: { x: B.x + 24 * Math.cos(w), y: B.y + 24 * Math.sin(w), w },
+      auf: []
+    });
+  }
+  const P = (c, k) => prot[c * 5 + k];
+  const korn = [];
+  for (let g = 0; g < 10; g++) korn.push({ ds: null, de: null });
+  const ziele = [];                                  // [c, k, [[korn, stelle], ...]]
+  if (al === 'Gg') {
+    // Die 5 dunkelblauen arbeiten erst an T1 T3 U4 U3 U1 (linkes Ende), dann
+    // am linken Nachbarn (rechtes Ende); das von U4 wechselt nach T4. Die
+    // grauen warten genau an diesen zweiten Körnern. So sind nie zwei
+    // benachbarte Kornenden (13 px) zugleich besetzt.
+    const erst = [[1, 'B'], [3, 'B'], [9, 'B'], [8, 'B'], [6, 'B']];
+    const dann = [[0, 'A'], [2, 'A'], [4, 'B'], [7, 'A'], [5, 'A']];
+    const grau = [[0, 'B'], [2, 'B'], [4, 'A'], [7, 'B'], [5, 'B']];
+    for (let k = 0; k < 5; k++) {
+      ziele.push([0, k, [erst[k], dann[k]]]);
+      ziele.push([1, k, [grau[k]]]);
+    }
+  } else {
+    for (let k = 0; k < 5; k++) { ziele.push([0, k, [[k, 'A']]]); ziele.push([1, k, [[5 + k, 'A']]]); }
+  }
+  let ende = 0;
+  for (const [c, k, liste] of ziele) {
+    const p = P(c, k);
+    let von = { x: p.fan.x, y: p.fan.y }, ab = _N9R_S4 + _N9R_ABFAHRT * p.i, erster = true;
+    for (const [g, st] of liste) {
+      const ziel = _n9rStelle(g, st);
+      const weg = erster ? _n9rWeg(von, ziel) : _n9rPunkte([von, { x: ziel.x, y: ziel.y }]);
+      // Fahrt: fest; Wechsel zum Nachbarkorn: nach Weglänge (die Reihe wechseln dauert länger)
+      const dauer = erster ? _N9R_FAHRT : Math.max(_N9R_HUEPF, Math.hypot(ziel.x - von.x, ziel.y - von.y) / 200);
+      const a = { g, st, ab, an: ab + dauer, weg, w0: erster ? p.fan.w : null, w1: ziel.w, krumel: ab + dauer };
+      if (!erster) a.w0 = p.auf[p.auf.length - 1].w1;
+      p.auf.push(a);
+      if (p.ok) {
+        korn[g].ds = a.an; korn[g].de = a.an + _N9R_ARBEIT;
+        a.bis = korn[g].de;
+        ende = Math.max(ende, korn[g].de);
+        ab = korn[g].de;
+      } else {
+        a.bis = Infinity;
+        ende = Math.max(ende, a.an + _N9R_ARBEIT);   // so lange versucht es ein graues
+      }
+      von = { x: ziel.x, y: ziel.y }; erster = false;
+    }
+  }
+  const okZahl = prot.filter(p => p.ok).length;
+  return { al, prot, korn, ende, fertig: ende + _N9R_AUSKLANG, okZahl };
+}
+
+function _n9rInit() {
+  _n9r = { t: 0, al: 'GG', ernte: { GG: null, Gg: null, gg: null }, pill2: { x: 240, y: 18 } };
+  _n9rAnfang();
+}
+// Neue Zelle: nichts abgeschrieben, alle Körner voll Blattgrün
+function _n9rAnfang() {
+  const n = _n9r;
+  n.phase = 'ruhe'; n.s = 0; n.plan = _n9rPlan(n.al);
+  n.fx = { teile: [] }; n.aha = false; n.krumen = []; n.krumZahl = 0; n.letzt = '';
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9rAllele(a) {
+  if (!_n9r || !_N9R_ALLELE[a]) return;
+  _n9r.al = a;
+  _n9rAnfang();
+  _n9rStatus();
+}
+function _n9rReifen() {
+  if (!_n9r || _n9r.phase === 'lauf') return;
+  _n9rAnfang();
+  _n9r.phase = 'lauf';
+  for (const y of _N9R_CHR_Y) _bioFxWelle(_n9r.fx.teile, (_N9R_GEN_X0 + _N9R_GEN_X1) / 2, y, '#fdba74', 22);
+  _n9rStatus();
+}
+function _n9rNeu() {
+  if (!_n9r) return;
+  _n9r.al = 'GG';
+  _n9r.ernte = { GG: null, Gg: null, gg: null };
+  _n9rAnfang();
+  _n9rStatus();
+}
+
+// ── Zustand ablesen ────────────────────────────────────
+function _n9rStation() {                              // 0 = noch nicht gestartet, 5 = fertig
+  const n = _n9r;
+  if (n.phase === 'ruhe') return 0;
+  if (n.phase === 'fertig') return 5;
+  return n.s < _N9R_S2 ? 1 : n.s < _N9R_S3 ? 2 : n.s < _N9R_S4 ? 3 : 4;
+}
+function _n9rStufe(g, s) {                            // Blattgrün eines Korns, 1 = voll
+  const k = _n9r.plan.korn[g];
+  if (k.ds == null || _n9r.phase === 'ruhe') return 1;
+  return 1 - _n9rKl((s - k.ds) / (k.de - k.ds));
+}
+function _n9rBlattgruen() {                           // Mittel aller Körner, 0–1
+  let m = 0;
+  for (let g = 0; g < 10; g++) m += _n9rStufe(g, _n9r.s);
+  return m / 10;
+}
+function _n9rProzent() { return Math.round(100 * _n9rBlattgruen()); }
+function _n9rArbeitende() {
+  const n = _n9r;
+  if (n.phase === 'ruhe') return 0;
+  return n.plan.prot.filter(p => p.ok && n.s >= p.pop).length;
+}
+function _n9rZeile() {
+  const n = _n9r, st = _n9rStation(), name = _N9R_ALLELE[n.al].name;
+  if (st === 0) return 'Allele: ' + name + ' · Der Samen ist noch nicht reif.';
+  if (st === 5) return 'Allele: ' + name + ' · Der Samen ist reif.';
+  return _N9R_TEXT[st - 1];
+}
+function _n9rZaehlerText() {
+  return 'arbeitende Proteine: ' + _n9rArbeitende() + '<br>Blattgrün: ' + _n9rProzent() + ' %';
+}
+function _n9rHinweis() {
+  const n = _n9r, st = _n9rStation(), z = _N9R_ALLELE[n.al].zeile;
+  if (st === 0) return 'Drücke „▶ Samen reifen lassen“. Beobachte die vier Stationen.';
+  if (st === 1) return 'Sieh in die Mitte der Zelle: Was passiert am Gen?';
+  if (st === 2) return 'Folge der Abschrift mit den Augen. Wohin wandert sie?';
+  if (st === 3) return 'Zähle mit: Wie viele Proteine sind dunkelblau?';
+  if (st === 4) return 'Beobachte den Zähler „Blattgrün“ und den Samen rechts.';
+  if (z === 1) return 'Notiere in Zeile 1 der Tabelle die Farbe des Samens. Stelle dann „G und g“ ein.';
+  if (z === 2) return 'Notiere in Zeile 2 der Tabelle: arbeitende Proteine und Farbe des Samens. Stelle dann „g und g“ ein.';
+  return 'Notiere in Zeile 3 der Tabelle: arbeitende Proteine und Farbe des Samens. Vergleiche dann Zeile 1 und 2.';
+}
+function _n9rStatus() {
+  if (!_n9r) return;
+  const n = _n9r;
+  const z = _n9rZeile(), zt = _n9rZaehlerText(), h = _n9rHinweis();
+  n.letzt = z + '|' + zt + '|' + h;
+  const el = document.getElementById('_n9r-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const za = document.getElementById('_n9r-zaehler');
+  if (za) { za.innerHTML = zt; za.className = 'lmp-status on'; }
+  const hi = document.getElementById('_n9r-hinweis');
+  if (hi) hi.textContent = h;
+  const los = document.getElementById('_n9r-los');
+  if (los) {
+    los.disabled = n.phase === 'lauf';
+    try { if (los.classList) los.classList.toggle('primary', n.phase !== 'lauf'); } catch (e) { /* Beiwerk */ }
+  }
+  try {
+    document.querySelectorAll('[data-n9r]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9r') === n.al);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _n9rHTML() {
+  const k = a => `<button class="sim-btn${a === 'GG' ? ' primary' : ''}" data-n9r="${a}" onclick="_n9rAllele('${a}')">${_N9R_ALLELE[a].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie wird aus einem Gen ein Merkmal?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Zelle aus einem reifenden Erbsensamen, stark vergrößert. In der Mitte liegen zwei Chromosomen mit dem Gen für die Samenfarbe. Die Körner um sie herum enthalten Blattgrün.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9r-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <span class="fpm-label" style="margin-right:4px">Allele</span>
+          ${_N9R_REIHE.map(k).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9r-los" onclick="_n9rReifen()">▶ Samen reifen lassen</button>
+          <button class="sim-btn" onclick="_n9rNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Station</div>
+        <div class="lmp-status on" id="_n9r-status" style="margin-top:4px"></div>
+        <div class="fpm-label" style="margin-top:8px">Zähler</div>
+        <div class="lmp-status on" id="_n9r-zaehler" style="margin-top:4px"></div>
+        <div class="fpm-note" id="_n9r-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Dunkelblau mit Zange: Dieses Protein arbeitet. Grau mit abgebrochener Zange: Dieses Protein arbeitet nicht.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: G und G &nbsp;|&nbsp; Ein Durchgang dauert etwa 12 Sekunden.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9rUpdate(dt) {
+  if (!_n9r) return;
+  dt = _bioFxDt(dt);
+  const n = _n9r;
+  n.t += dt;
+  if (n.phase !== 'ruhe') n.s += dt;
+  if (n.phase === 'lauf') {
+    _n9rKrumenNeu();
+    if (!n.aha && n.s >= n.plan.ende) { n.aha = true; _n9rAha(); }
+    if (n.s >= n.plan.fertig) { n.phase = 'fertig'; _n9rErnten(); }
+  }
+  for (let i = n.krumen.length - 1; i >= 0; i--) {
+    const q = n.krumen[i];
+    q.alter += dt;
+    if (q.alter >= q.leben) { n.krumen.splice(i, 1); continue; }
+    q.x += q.vx * dt; q.y += q.vy * dt;
+  }
+  for (const a of _N9R_REIHE) if (n.ernte[a]) n.ernte[a].alter += dt;
+  _bioFxAlleUpdate(n.fx, dt);
+  const jetzt = _n9rZeile() + '|' + _n9rZaehlerText() + '|' + _n9rHinweis();
+  if (jetzt !== n.letzt) _n9rStatus();
+}
+// Krümel Blattgrün fliegen vom Korn weg, solange ein dunkelblaues arbeitet
+function _n9rKrumenNeu() {
+  const n = _n9r, s = n.s;
+  for (const p of n.plan.prot) {
+    if (!p.ok) continue;
+    for (const a of p.auf) {
+      while (s >= a.krumel && a.krumel < a.bis - 0.2) {
+        const k = _n9rKornOrt(a.g), seite = a.st === 'A' ? 1 : -1, m = n.krumZahl++;
+        const w = (m % 2 ? -1 : 1) * (0.9 + 0.35 * Math.sin(m * 1.7));
+        n.krumen.push({ x: k.x + seite * (_N9R_KORN_RX - 3), y: k.y,
+                        vx: seite * 7 * Math.cos(w) + 4 * Math.sin(m), vy: 16 * Math.sin(w),
+                        alter: 0, leben: 0.8 });
+        if (n.krumen.length > 80) n.krumen.shift();
+        a.krumel += 0.28;
+      }
+    }
+  }
+}
+// Blattgrün ist am Ende angekommen (bzw. die grauen haben es lange genug versucht)
+function _n9rAha() {
+  const n = _n9r, fx = n.fx, S = _N9R_SAMEN, p2 = n.pill2;
+  if (n.plan.okZahl > 0) {
+    _bioFxWelle(fx.teile, p2.x, p2.y, '#86efac', 42);
+    _bioFxWelle(fx.teile, S.x, S.y, '#fde047', S.r + 22);
+    _bioFxFunken(fx.teile, S.x, S.y, 10, ['#ffd84d', '#fff3b0', '#ffffff']);
+    for (const p of n.plan.prot) if (p.ok) { const o = _n9rProteinOrt(p, n.s); _bioFxWelle(fx.teile, o.x, o.y, '#93c5fd', 20); }
+  } else {
+    _bioFxWelle(fx.teile, p2.x, p2.y, '#93c5fd', 42);
+    _bioFxWelle(fx.teile, S.x, S.y, '#93c5fd', S.r + 22);
+  }
+}
+// Der reife Samen kommt in sein Ergebnisfach
+function _n9rErnten() {
+  const n = _n9r, j = _N9R_REIHE.indexOf(n.al);
+  n.ernte[n.al] = { stufe: _n9rBlattgruen(), alter: 0 };
+  _bioFxWelle(n.fx.teile, 326, _N9R_FACH_Y[j] + 13, '#fde68a', 22);
+  const partner = n.al === 'GG' ? 'Gg' : n.al === 'Gg' ? 'GG' : null;
+  if (partner && n.ernte[partner]) {
+    const jp = _N9R_REIHE.indexOf(partner);
+    _bioFxWelle(n.fx.teile, 326, _N9R_FACH_Y[jp] + 13, '#fde68a', 22);
+  }
+}
+
+// ── Wo steht ein Protein zur Zeit s? ───────────────────
+function _n9rSchweb(g, t) {                           // Körner treiben sacht im Zellsaft
+  return { x: 1.1 * Math.sin(0.55 * t + 1.3 * g), y: 0.9 * Math.cos(0.47 * t + 2.1 * g) };
+}
+function _n9rProteinOrt(p, s) {
+  const n = _n9r, t = n.t, B = _N9R_BAU[p.c];
+  if (s < p.pop) return null;
+  const wack = { x: 0.6 * Math.sin(1.3 * t + p.i), y: 0.6 * Math.cos(1.1 * t + 1.7 * p.i) };
+  // (3) entstehen an der Abschrift und an den Wartplatz gehen
+  if (s < p.pop + 0.6) {
+    const sc = 0.25 + 0.75 * _bioFxEase.raus(_n9rKl((s - p.pop) / 0.25));
+    const u = _n9rE((s - p.pop - 0.25) / 0.35);
+    const x0 = B.x + 9, y0 = B.y;
+    return { x: x0 + (p.fan.x - x0) * u, y: y0 + (p.fan.y - y0) * u, w: p.fan.w, sc, zu: 'neu' };
+  }
+  const a0 = p.auf[0];
+  if (!a0 || s < a0.ab) return { x: p.fan.x + wack.x, y: p.fan.y + wack.y, w: p.fan.w, sc: 1, zu: 'warten' };
+  // (4) Fahrt zu den Körnern, Arbeit am Korn
+  for (let i = 0; i < p.auf.length; i++) {
+    const a = p.auf[i], naechste = p.auf[i + 1];
+    if (s < a.an) {
+      const f = _n9rE((s - a.ab) / (a.an - a.ab));
+      const o = _n9rAufWeg(a.weg, f);
+      let w = o.w;
+      w = _n9rWinkel(a.w0, w, _n9rKl(f / 0.15));
+      w = _n9rWinkel(w, a.w1, _n9rKl((f - 0.8) / 0.2));
+      return { x: o.x, y: o.y, w, sc: 1, zu: 'fahrt' };
+    }
+    if (!naechste || s < naechste.ab) {
+      const st = _n9rStelle(a.g, a.st), sw = _n9rSchweb(a.g, t), m = _n9rKl((s - a.an) / 0.3);
+      let x = st.x + sw.x * m, y = st.y + sw.y * m, zu;
+      if (!p.ok) {
+        // ein graues drückt gegen das Korn, die Zange rutscht ab
+        const stoss = Math.max(0, Math.sin(2 * Math.PI * 0.8 * (s - a.an) + p.i));
+        x += Math.cos(a.w1) * 1.6 * stoss;
+        zu = 'probe';
+      } else zu = s < a.bis ? 'arbeit' : 'fertig';
+      return { x, y, w: a.w1, sc: 1, zu };
+    }
+  }
+  const z = p.auf[p.auf.length - 1], st = _n9rStelle(z.g, z.st);
+  return { x: st.x, y: st.y, w: z.w1, sc: 1, zu: p.ok ? 'fertig' : 'probe' };
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9rZelle(ctx, t) {
+  ctx.save();
+  ctx.fillStyle = '#dfe9cc'; ctx.strokeStyle = '#6f8f3e'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 8, 38, 290, 206, 16); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#f7faef'; ctx.strokeStyle = '#a8bd84'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, 14, 44, 278, 194, 12); ctx.fill(); ctx.stroke();
+  // feine Teilchen im Zellsaft – das Bild lebt
+  ctx.fillStyle = 'rgba(110,130,80,0.28)';
+  for (let i = 0; i < 16; i++) {
+    const px = 20 + ((i * 53 + t * 5) % 266), py = 50 + ((i * 37) % 182) + 2 * Math.sin(t * 0.6 + i);
+    if (Math.hypot(px - _N9R_ZK.x, py - _N9R_ZK.y) < _N9R_ZK.r + 4) continue;
+    ctx.beginPath(); ctx.arc(px, py, 1.3, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Ein Korn mit Blattgrün: grün mit drei dunklen Streifen; abgebaut blass und glatt
+function _n9rKorn(ctx, x, y, st) {
+  ctx.save();
+  ctx.fillStyle = _n9rMisch('#fde9a6', '#5aae55', st);
+  ctx.strokeStyle = _n9rMisch('#b8892a', '#22622b', st); ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.ellipse(x, y, _N9R_KORN_RX, _N9R_KORN_RY, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (st > 0.02) {
+    ctx.globalAlpha = st;
+    ctx.strokeStyle = '#1d5c27'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+    for (const dx of [-7, 0, 7]) {
+      const h = dx ? 3.4 : 4.6;
+      ctx.beginPath(); ctx.moveTo(x + dx, y - h); ctx.lineTo(x + dx, y + h); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+// Der runde Körper in der Mitte mit zwei Poren rechts (ohne Beschriftung)
+function _n9rMitte(ctx, t) {
+  const K = _N9R_ZK, luecke = 0.13;
+  ctx.save();
+  ctx.fillStyle = '#fdf3dc';
+  ctx.beginPath(); ctx.arc(K.x, K.y, K.r, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#9a7b4f'; ctx.lineWidth = 2.6;
+  const r = K.r + 0.4 * Math.sin(t * 1.2);
+  const stuecke = [[_N9R_PORE_W + luecke, 2 * Math.PI - _N9R_PORE_W - luecke], [-_N9R_PORE_W + luecke, _N9R_PORE_W - luecke]];
+  for (const [a0, a1] of stuecke) { ctx.beginPath(); ctx.arc(K.x, K.y, r, a0, a1); ctx.stroke(); }
+  ctx.fillStyle = '#7a5f38';
+  for (const sg of [-1, 1]) for (const d of [-luecke, luecke]) {
+    const w = sg * _N9R_PORE_W + d;
+    ctx.beginPath(); ctx.arc(K.x + r * Math.cos(w), K.y + r * Math.sin(w), 1.9, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Chromosomenpaar mit dem Gen; während Station 1 leuchten die Gen-Felder
+function _n9rChromosomen(ctx, t, s, st) {
+  const b = _N9R_ALLELE[_n9r.al].b, gx = (_N9R_GEN_X0 + _N9R_GEN_X1) / 2;
+  ctx.save();
+  if (st === 0) for (const y of _N9R_CHR_Y) _bioFxLeuchten(ctx, gx, y, 11, t, '251,146,60');
+  if (st === 1) for (const y of _N9R_CHR_Y) _bioFxLeuchten(ctx, gx, y, 13, t, '251,146,60');
+  _N9R_CHR_Y.forEach((y, c) => {
+    ctx.lineCap = 'round';
+    // erst alle Ränder, dann alle Füllungen – sonst malt die Taille ihren Rand über den Arm
+    const teile = [[_N9R_CHR_X0, 86, 12], [94, _N9R_CHR_X1, 12], [84, 96, 7]];
+    for (const [rand, farbe, dick] of [[true, '#4c1d95', 2], [false, '#8b5cf6', 0]]) {
+      ctx.strokeStyle = farbe;
+      for (const [x0, x1, d] of teile) {
+        ctx.lineWidth = d + dick;
+        ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+      }
+    }
+    ctx.strokeStyle = '#c4b5fd'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(_N9R_CHR_X0 + 2, y - 3); ctx.lineTo(84, y - 3); ctx.stroke();
+    // Gen-Feld mit Buchstabe
+    ctx.fillStyle = '#fb923c'; ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.2;
+    ctx.fillRect(_N9R_GEN_X0, y - 6.5, _N9R_GEN_X1 - _N9R_GEN_X0, 13);
+    ctx.strokeRect(_N9R_GEN_X0, y - 6.5, _N9R_GEN_X1 - _N9R_GEN_X0, 13);
+    ctx.fillStyle = '#1c1917'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(b[c], gx, y + 0.5);
+    // Station 1: ein heller Leser wandert über das Gen
+    if (st === 1) {
+      const g = _n9rKl((s - 0.3) / 1.5);
+      if (g > 0 && g < 1) {
+        ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(_N9R_GEN_X0 + g * (_N9R_GEN_X1 - _N9R_GEN_X0), y + (c ? 6.5 : -6.5), 2.6, 0, 2 * Math.PI);
+        ctx.fill(); ctx.stroke();
+      }
+    }
+  });
+  ctx.restore();
+}
+// Eine Abschrift: orangefarbenes Band mit Basenstrichen, Mitte x/y, Winkel w, Länge L
+function _n9rBand(ctx, x, y, w, L, buch) {
+  if (L < 0.5) return;
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const welle = u => 1.4 * Math.sin(u * 0.75);
+  ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.3;
+  for (let u = -L / 2 + 1.5; u <= L / 2 - 1; u += 3) {
+    ctx.beginPath(); ctx.moveTo(u, welle(u)); ctx.lineTo(u, welle(u) + 4); ctx.stroke();
+  }
+  ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 3;
+  ctx.beginPath();
+  for (let u = -L / 2, i = 0; u <= L / 2 + 0.01; u += 1.5, i++) { if (i) ctx.lineTo(u, welle(u)); else ctx.moveTo(u, welle(u)); }
+  ctx.stroke();
+  ctx.restore();
+  if (buch && L > 8) {
+    // Buchstabe immer waagerecht lesbar, links neben dem Band
+    const tx = x - (L / 2 + 6) * Math.abs(Math.cos(w)) - 9 * Math.abs(Math.sin(w));
+    ctx.save();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.arc(tx, y, 5.6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#7c2d12'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(buch, tx, y + 0.5);
+    ctx.restore();
+  }
+}
+function _n9rAbschriften(ctx, s, st) {
+  if (st === 0) return;
+  const b = _N9R_ALLELE[_n9r.al].b, L = _N9R_BAND_L;
+  for (let c = 0; c < 2; c++) {
+    const y0 = _N9R_BAND_Y[c], B = _N9R_BAU[c];
+    if (s < _N9R_S2 && st === 1) {
+      const g = _n9rKl((s - 0.3) / 1.5);             // wächst von links nach rechts mit
+      _n9rBand(ctx, _N9R_GEN_X0 - 2 + L * g / 2, y0, 0, L * g, g > 0.5 ? b[c] : '');
+      continue;
+    }
+    const u = _n9rE((s - 2.5) / 1.7);
+    const start = { x: _N9R_GEN_X0 - 2 + L / 2, y: y0 }, pore = _n9rPore(c);
+    const o = _n9rAufWeg([start, pore, { x: B.x, y: B.y }], u);
+    const w = _n9rWinkel(o.w, -Math.PI / 2, _n9rKl((u - 0.75) / 0.25));
+    _n9rBand(ctx, o.x, o.y, u >= 1 ? -Math.PI / 2 : w, L, b[c]);
+  }
+}
+// Ein Protein: Körper und Zange vorn (Richtung w). ok = dunkelblau mit ganzer
+// Zange; sonst grau mit abgebrochener unterer Backe und Riss im Körper.
+function _n9rProtein(ctx, x, y, w, ok, auf, sc) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w); ctx.scale(sc, sc);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const off = 0.2 + 0.36 * auf, L = 7.5;
+  ctx.strokeStyle = ok ? '#1e3a8a' : '#6b7280'; ctx.lineWidth = 2.4;
+  for (const sg of [-1, 1]) {
+    const kurz = !ok && sg > 0;
+    const l = kurz ? 3.2 : L;
+    const ex = 4.6 + Math.cos(off) * l, ey = sg * (1.4 + Math.sin(off) * l);
+    ctx.beginPath(); ctx.moveTo(4.2, sg * 1.4); ctx.lineTo(ex, ey);
+    if (!kurz) ctx.lineTo(ex + 1.3, ey - sg * 2.3);
+    ctx.stroke();
+    if (kurz) {                                       // Bruchkante
+      ctx.save(); ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(ex - 0.6, ey - 1.4); ctx.lineTo(ex + 1.2, ey - 0.4);
+      ctx.lineTo(ex + 0.2, ey + 0.6); ctx.lineTo(ex + 1.6, ey + 1.6); ctx.stroke();
+      ctx.restore();
+    }
+  }
+  ctx.fillStyle = ok ? '#1e3a8a' : '#c3c8d0';
+  ctx.strokeStyle = ok ? '#0b1640' : '#6b7280'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.ellipse(-0.6, 0, 6.2, 5.1, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (ok) {
+    ctx.fillStyle = '#93c5fd';
+    ctx.beginPath(); ctx.arc(-2.4, -1.9, 1.4, 0, 2 * Math.PI); ctx.fill();
+  } else {
+    ctx.strokeStyle = '#6b7280'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(1.4, -4.6); ctx.lineTo(-0.4, -1.6); ctx.lineTo(1.2, 0.6); ctx.lineTo(-0.2, 3); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _n9rProteine(ctx, s) {
+  const n = _n9r, t = n.t, liste = [];
+  for (const p of n.plan.prot) {
+    const o = _n9rProteinOrt(p, s);
+    if (o) liste.push([p, o]);
+  }
+  // wer fährt, liegt oben
+  liste.sort((a, b) => (a[1].zu === 'fahrt') - (b[1].zu === 'fahrt'));
+  for (const [p, o] of liste) {
+    let auf = 0.6;
+    if (o.zu === 'arbeit') auf = 0.5 + 0.5 * Math.sin(2 * Math.PI * 1.0 * s + p.i);
+    else if (o.zu === 'probe') auf = 0.5 + 0.5 * Math.sin(2 * Math.PI * 0.8 * s + p.i);
+    else if (o.zu === 'fertig') auf = 0.45 + 0.1 * Math.sin(t * 1.5 + p.i);
+    _n9rProtein(ctx, o.x, o.y, o.w, p.ok, auf, o.sc);
+  }
+}
+// Zähler oben: feste Breite nach dem längsten Text, damit nichts springt
+function _n9rPillen(ctx) {
+  const n = _n9r;
+  ctx.save();
+  ctx.font = '700 12px sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+  const w1 = Math.ceil(ctx.measureText('arbeitende Proteine: 10').width) + 18;
+  const w2 = Math.ceil(ctx.measureText('Blattgrün: 100 %').width) + 18;
+  const x1 = 8, x2 = x1 + w1 + 6, y = 7, h = 23;
+  ctx.fillStyle = '#ffffff'; ctx.lineWidth = 1.6;
+  ctx.strokeStyle = '#1e3a8a';
+  _bioFxRundRect(ctx, x1, y, w1, h, 9); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#3f8f46';
+  _bioFxRundRect(ctx, x2, y, w2, h, 9); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a';
+  ctx.fillText('arbeitende Proteine: ' + _n9rArbeitende(), x1 + 9, y + h / 2 + 0.5);
+  ctx.fillText('Blattgrün: ' + _n9rProzent() + ' %', x2 + 9, y + h / 2 + 0.5);
+  n.pill2 = { x: x2 + w2 / 2, y: y + h / 2 };
+  ctx.restore();
+}
+// Stationsleiste 1–4 oben rechts
+function _n9rLeiste(ctx, st, t) {
+  const y = 18;
+  ctx.save();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.moveTo(_N9R_LEISTE_X[0], y); ctx.lineTo(_N9R_LEISTE_X[3], y); ctx.stroke();
+  for (let i = 0; i < 4; i++) {
+    const x = _N9R_LEISTE_X[i], nr = i + 1, jetzt = st === nr, fertig = st > nr;
+    if (jetzt) _bioFxLeuchten(ctx, x, y, 9, t, '20,184,166');
+    ctx.fillStyle = jetzt ? '#0f766e' : fertig ? '#ccfbf1' : '#ffffff';
+    ctx.strokeStyle = jetzt || fertig ? '#0f766e' : '#cbd5e1'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.arc(x, y, 8.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = jetzt ? '#ffffff' : fertig ? '#0f766e' : '#94a3b8';
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(String(nr), x, y + 0.5);
+  }
+  ctx.restore();
+}
+// Nummer der Station an der Stelle, wo es gerade passiert
+function _n9rMarke(ctx, st, s) {
+  if (st < 1 || st > 4) return;
+  const beginn = [0, _N9R_S2, _N9R_S3, _N9R_S4][st - 1], m = _N9R_MARKE[st - 1];
+  const a = _n9rKl((s - beginn) / 0.3);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = '#0f766e'; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(m.x, m.y, 10, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(String(st), m.x, m.y + 0.5);
+  ctx.restore();
+}
+// Ein Erbsensamen (wie bio-mendel): st = Blattgrün 0–1. Voll: grün mit drei
+// Streifen. Leer: gelb und glatt mit Glanzpunkt. Streifen ohne clip() gerechnet.
+function _n9rSamenZeichnen(ctx, x, y, r, st) {
+  const F = _N9R_SAMENF;
+  ctx.save();
+  ctx.fillStyle = _n9rMisch(F.gelb, F.gruen, st);
+  ctx.strokeStyle = _n9rMisch(F.gelbR, F.gruenR, st); ctx.lineWidth = Math.max(1.4, r * 0.08);
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (st > 0.02) {
+    ctx.globalAlpha = st;
+    ctx.strokeStyle = F.streif; ctx.lineWidth = Math.max(1.4, r * 0.16); ctx.lineCap = 'round';
+    const w = -0.7, nx = Math.cos(w + Math.PI / 2), ny = Math.sin(w + Math.PI / 2);
+    for (const o of [-0.45, 0, 0.45]) {
+      const d = o * r, hl = Math.sqrt(Math.max(0, (0.78 * r) ** 2 - d * d));
+      const mx = x + nx * d, my = y + ny * d;
+      ctx.beginPath(); ctx.moveTo(mx - Math.cos(w) * hl, my - Math.sin(w) * hl);
+      ctx.lineTo(mx + Math.cos(w) * hl, my + Math.sin(w) * hl); ctx.stroke();
+    }
+  }
+  if (st < 0.98) {
+    ctx.globalAlpha = 1 - st;
+    ctx.fillStyle = F.glanz;
+    ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.28, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _n9rRechts(ctx, st, t) {
+  const n = _n9r, S = _N9R_SAMEN;
+  _n9rLeiste(ctx, st, t);
+  _n9rSamenZeichnen(ctx, S.x, S.y + 0.6 * Math.sin(t * 0.9), S.r, _n9rBlattgruen());
+  ctx.save();
+  ctx.fillStyle = '#334155'; ctx.font = '600 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('der ganze Samen', S.x, 120);
+  ctx.fillStyle = '#475569'; ctx.font = '700 11px sans-serif';
+  ctx.fillText('Ergebnisse', S.x, 143);
+  _N9R_REIHE.forEach((a, j) => {
+    const y = _N9R_FACH_Y[j], e = n.ernte[a], jetzt = a === n.al;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = jetzt ? '#0f766e' : '#cbd5e1'; ctx.lineWidth = jetzt ? 2 : 1.2;
+    _bioFxRundRect(ctx, 312, y, 100, 26, 7); ctx.fill(); ctx.stroke();
+    if (e) {
+      const sc = 0.4 + 0.6 * _bioFxEase.raus(_n9rKl(e.alter / 0.4));
+      _n9rSamenZeichnen(ctx, 326, y + 13, 9 * sc, e.stufe);
+    } else {
+      ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2; ctx.setLineDash([2.5, 2.5]);
+      ctx.beginPath(); ctx.arc(326, y + 13, 8, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]);
+    }
+    ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText(_N9R_ALLELE[a].name, 342, y + 13.5);
+  });
+  ctx.restore();
+}
+function _n9rDraw(ctx, cv) {
+  if (!_n9r) return;
+  const n = _n9r, W = cv.width, H = cv.height, t = n.t, s = n.s, st = _n9rStation();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9R_HG; ctx.fillRect(0, 0, W, H);
+  _n9rZelle(ctx, t);
+  for (let g = 0; g < 10; g++) {
+    const k = _n9rKornOrt(g), sw = _n9rSchweb(g, t);
+    _n9rKorn(ctx, k.x + sw.x, k.y + sw.y, _n9rStufe(g, s));
+  }
+  _n9rMitte(ctx, t);
+  _n9rChromosomen(ctx, t, s, st);
+  _n9rAbschriften(ctx, s, st);
+  if (st >= 3) _n9rProteine(ctx, s);
+  ctx.save();
+  for (const q of n.krumen) {
+    ctx.globalAlpha = 1 - q.alter / q.leben;
+    ctx.fillStyle = '#3f9b48';
+    ctx.beginPath(); ctx.arc(q.x, q.y, 1.7, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+  _n9rMarke(ctx, st, s);
+  _n9rPillen(ctx);
+  _n9rRechts(ctx, st, t);
+  _bioFxAlleDraw(ctx, n.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WARUM TAUCHT EIN MERKMAL WIEDER AUF?   (Förderheft Bio 9 · bt3)
+// Kennung bio-kreuzung, Präfix _n9p. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bt3.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, heller Grund, schematisch):
+//   - ein Kreuzungsquadrat aus 2 x 2 weißen Feldern (x 204–412, y 102–244);
+//   - LINKS eine Elternpflanze auf einer Karte (x 6–200, y 100–246), OBEN die
+//     andere (x 204–412, y 4–98). Jede Pflanze: Stängel, zwei Blattpaare,
+//     Ranke, weiße Blüte; davor liegt ein Samen in ihrer Farbe (der Samen,
+//     aus dem sie wuchs); daneben ihr Name: „gelb“, „grün“ oder „Tochter“.
+//   - neben jeder Pflanze GROSS ihre zwei Buchstaben, genau an den Zeilen
+//     (links) bzw. Spalten (oben) des Quadrats: G auf gelbem, glattem Kreis,
+//     g auf grünem Kreis mit Streifen (Farbe UND Muster UND Größe).
+//   - oben links eine Ecke mit „Kreuzung“ und der Einstellung („gelb × grün“).
+//   - in jedem leeren Feld gestrichelte Plätze für einen Samen und zwei
+//     Buchstaben.
+//
+// BEDIENUNG (wörtlich): Knopfreihe „Kreuzung“ mit „gelb × grün“ · „gelb ×
+//   gelb“ · „Tochter × Tochter“ (_n9pKreuzung) · „▶ 4 Samen bilden“
+//   (_n9pBilden) · „neu“ (_n9pNeu, zurück auf den Start „gelb × grün“).
+//   Eine andere Kreuzung leert die Felder. „▶ 4 Samen bilden“ ist grau,
+//   solange die Samen entstehen; danach baut ein Druck dieselben 4 Samen
+//   neu auf (das Modell ist fest, kein Zufall).
+//
+// ABLAUF JE DRUCK (5,3 s): Feld für Feld in Lesereihenfolge (oben links,
+//   oben rechts, unten links, unten rechts), je 1,2 s ab 0,3 s:
+//   0,0–0,8  der Buchstabe der LINKEN Pflanze aus dieser Zeile und der
+//            Buchstabe der OBEREN Pflanze aus dieser Spalte leuchten kurz auf;
+//            je eine Kopie wandert (mit feiner Spur) in das Feld – die linke
+//            auf den linken Platz, die obere auf den rechten. Die Eltern
+//            behalten ihre Buchstaben.
+//   0,8–1,15 zwischen den beiden Buchstaben wächst ein Samen: gelb und glatt,
+//            sobald ein G dabei ist, grün mit Streifen nur bei g und g.
+//   Ein kurzer Lichtring markiert jeden fertigen Samen.
+//
+// STATUSZEILE (_n9p-status), immer, wörtlich aus dem Bauplan:
+//   „Jede Elternpflanze gibt jedem Samen einen ihrer zwei Buchstaben.“
+// HINWEIS (_n9p-hinweis) führt durch die Schritte a–d der Seite:
+//   vorher   „Kreuzung: <Einstellung>. Drücke „▶ 4 Samen bilden“.“
+//   Lauf     „Sieh genau hin: Welcher Buchstabe kommt von welcher Elternpflanze?“
+//   fertig   Zeile 1: „Zähle die grünen Samen. Notiere die Zahl in Zeile 1 der
+//            Tabelle.“ – Zeile 2/3: „Lies die Buchstaben neben den
+//            Elternpflanzen ab. Zähle die grünen Samen. Notiere beides in
+//            Zeile N der Tabelle.“ (Zeile 3 dazu: „Vergleiche dann Zeile 2 und 3.“)
+//   KEIN Zähler: Die Zahl der grünen Samen steht nirgends – das Kind zählt.
+//
+// WERTE (lehrer.tabelle_erwartet, am Bild abzulesen; Modell, kein Zufall):
+//   gelb × grün        Eltern G G und g g · Samen Gg Gg Gg Gg · 4 gelb, 0 grün
+//   gelb × gelb        Eltern G G und G G · Samen GG GG GG GG · 4 gelb, 0 grün
+//   Tochter × Tochter  Eltern G g und G g · Samen GG Gg gG gg · 3 gelb, 1 grün
+//   Im Feld (Zeile r, Spalte c) steht links der Buchstabe r der linken
+//   Pflanze, rechts der Buchstabe c der oberen.
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen, ohne Zahl): nach dem letzten Samen
+//   (a) 0,4–1,9 s: jedes kleine g IN DEN FELDERN bekommt einen hellen Ring –
+//       bei gelb × grün steckt in jedem gelben Samen ein g;
+//   (b) nur Tochter × Tochter, 2,0–5,0 s (getrennt von (a), damit es ruhig
+//       bleibt): die beiden g der gelben Tochterpflanzen leuchten, von jedem
+//       läuft ein Lichtpunkt mit kurzer Spur in das Feld mit dem grünen Samen
+//       (2,1–3,3 s; die Spur verschwindet mit der Ankunft); dort leuchten die
+//       beiden g, bei 3,4 s Lichtring und Funken um den grünen Samen, danach
+//       ein ruhiger Ring bis 5,0 s. Damit fallen „Grün ist verschwunden“ und
+//       „die Hälfte“ sichtbar.
+//   Vor dem ersten Druck pulsieren die vier Eltern-Buchstaben ruhig (0,8 Hz).
+//
+// NICHT AM BILDSCHIRM: die Lückenwörter aus Merksatz und Aufgabe 2 und die
+//   Fachwörter, die sim_plan.anzeigen ausschließt. Keine Zahl grüner Samen.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9p = null;
+const _N9P_KREUZ = {
+  'gelb-gruen': { name: 'gelb × grün', zeile: 1,
+                  links: { name: 'gelb', b: ['G', 'G'] }, oben: { name: 'grün', b: ['g', 'g'] } },
+  'gelb-gelb':  { name: 'gelb × gelb', zeile: 2,
+                  links: { name: 'gelb', b: ['G', 'G'] }, oben: { name: 'gelb', b: ['G', 'G'] } },
+  'tochter':    { name: 'Tochter × Tochter', zeile: 3,
+                  links: { name: 'Tochter', b: ['G', 'g'] }, oben: { name: 'Tochter', b: ['G', 'g'] } }
+};
+const _N9P_REIHE = ['gelb-gruen', 'gelb-gelb', 'tochter'];
+const _N9P_START = 'gelb-gruen';
+// Kreuzungsquadrat: linke obere Ecke, Feldbreite, Feldhöhe
+const _N9P_GX = 204, _N9P_GY = 102, _N9P_ZW = 104, _N9P_ZH = 71;
+const _N9P_OY = 80;                                // Buchstaben der oberen Pflanze (y)
+const _N9P_LX = 172;                               // Buchstaben der linken Pflanze (x)
+const _N9P_RP = 15, _N9P_RF = 10, _N9P_RS = 14;    // Radien: Buchstabe an der Pflanze, im Feld; Samen
+// Pflanzen: Fuß (x, y) und Höhe
+const _N9P_PO = { x: 308, y: 56 }, _N9P_PL = { x: 62, y: 190 }, _N9P_PH = 44;
+// Ablauf: Feld k beginnt bei VOR + k * FELD; die Buchstaben wandern WEG s, dann wächst der Samen
+const _N9P_VOR = 0.3, _N9P_FELD = 1.2, _N9P_WEG = 0.8, _N9P_WACHS = 0.35;
+const _N9P_ENDE = _N9P_VOR + 4 * _N9P_FELD + 0.2;  // 5,3 s
+const _N9P_NACHENDE = 5.4;
+const _N9P_HG = '#eef4ee';
+// Buchstabenkreise: Fläche, Rand, Schrift (grün zusätzlich: Streifen)
+const _N9P_GELB = ['#fde047', '#a16207', '#3b2604'];
+const _N9P_GRUEN = ['#86efac', '#15803d', '#052e16', '#16a34a'];
+const _N9P_RING = '#f59e0b';
+
+function _n9pKl(x) { return _bioFxKlemme(x); }
+function _n9pE(x) { return _bioFxEase.sanft(_bioFxKlemme(x)); }
+function _n9pK() { return _N9P_KREUZ[_n9p.k]; }
+function _n9pMitte(r, c) { return { x: _N9P_GX + (c + 0.5) * _N9P_ZW, y: _N9P_GY + (r + 0.5) * _N9P_ZH }; }
+function _n9pOben(c) { return { x: _N9P_GX + (c + 0.5) * _N9P_ZW, y: _N9P_OY }; }
+function _n9pLinks(r) { return { x: _N9P_LX, y: _N9P_GY + (r + 0.5) * _N9P_ZH }; }
+// Feld k (0..3) in Lesereihenfolge: Zeile, Spalte, Buchstaben, Lage von Samen und Plätzen
+function _n9pFeld(k) {
+  const r = Math.floor(k / 2), c = k % 2, K = _n9pK(), m = _n9pMitte(r, c);
+  const a = K.links.b[r], b = K.oben.b[c];
+  return { r, c, m, a, b, gruen: a === 'g' && b === 'g',
+           samen: { x: m.x, y: m.y - 11 },
+           pa: { x: m.x - 16, y: m.y + 19 }, pb: { x: m.x + 16, y: m.y + 19 } };
+}
+function _n9pStartZeit(k) { return _N9P_VOR + k * _N9P_FELD; }
+
+function _n9pInit() {
+  _n9p = { t: 0, k: _N9P_START };
+  _n9pAnfang();
+}
+// Leere Felder, nichts läuft
+function _n9pAnfang() {
+  _n9p.laeuft = false; _n9p.fertig = false; _n9p.s = 0; _n9p.nach = -1;
+  _n9p.gesetzt = 0; _n9p.funken = false; _n9p.fx = { teile: [] };
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9pKreuzung(k) {
+  if (!_n9p || !_N9P_KREUZ[k]) return;
+  _n9p.k = k;
+  _n9pAnfang();
+  _n9pStatus();
+}
+function _n9pBilden() {
+  if (!_n9p || _n9p.laeuft) return;
+  _n9pAnfang();
+  _n9p.laeuft = true;
+  _n9pStatus();
+}
+function _n9pNeu() {
+  if (!_n9p) return;
+  _n9p.k = _N9P_START;
+  _n9pAnfang();
+  _n9pStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9pZeile() {
+  return 'Jede Elternpflanze gibt jedem Samen einen ihrer zwei Buchstaben.';
+}
+function _n9pHinweis() {
+  const K = _n9pK();
+  if (_n9p.laeuft) return 'Sieh genau hin: Welcher Buchstabe kommt von welcher Elternpflanze?';
+  if (!_n9p.fertig) return 'Kreuzung: ' + K.name + '. Drücke „▶ 4 Samen bilden“.';
+  if (K.zeile === 1) return 'Zähle die grünen Samen. Notiere die Zahl in Zeile 1 der Tabelle.';
+  let s = 'Lies die Buchstaben neben den Elternpflanzen ab. Zähle die grünen Samen. '
+        + 'Notiere beides in Zeile ' + K.zeile + ' der Tabelle.';
+  if (K.zeile === 3) s += ' Vergleiche dann Zeile 2 und 3.';
+  return s;
+}
+function _n9pStatus() {
+  if (!_n9p) return;
+  const el = document.getElementById('_n9p-status');
+  if (el) { el.textContent = _n9pZeile(); el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9p-hinweis');
+  if (h) h.textContent = _n9pHinweis();
+  const los = document.getElementById('_n9p-los');
+  if (los) {
+    los.disabled = _n9p.laeuft;
+    try { if (los.classList) los.classList.toggle('primary', !_n9p.laeuft); } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  }
+  try {
+    document.querySelectorAll('[data-n9p]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9p') === _n9p.k);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _n9pHTML() {
+  const k = (v) => `<button class="sim-btn${v === _n9p.k ? ' primary' : ''}" data-n9p="${v}" onclick="_n9pKreuzung('${v}')">${_N9P_KREUZ[v].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Warum taucht ein Merkmal wieder auf?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Kreuzungsquadrat: links eine Elternpflanze, oben die andere. In den 4 Feldern entstehen 4 Samen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9p-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:6px">
+          <span class="phys-ctrl-label">Kreuzung</span>
+          <div class="sim-btn-row">${_N9P_REIHE.map(k).join('')}</div>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9p-los" onclick="_n9pBilden()">▶ 4 Samen bilden</button>
+          <button class="sim-btn" onclick="_n9pNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="lmp-status on" id="_n9p-status"></div>
+        <div class="fpm-note" id="_n9p-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Großes G: gelber, glatter Kreis. Kleines g: grüner Kreis mit Streifen.</div>
+        <div class="fpm-note" style="margin-top:6px">Tochter: eine Pflanze aus einem gelben Samen von gelb × grün.</div>
+        <div class="fpm-note" style="margin-top:6px">Das Quadrat ist ein Modell. Echte Erbsen bilden viel mehr Samen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Kreuzung gelb × grün &nbsp;|&nbsp; 4 Samen entstehen in etwa 5 Sekunden.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9pUpdate(dt) {
+  if (!_n9p) return;
+  dt = _bioFxDt(dt);
+  _n9p.t += dt;
+  if (_n9p.laeuft) {
+    _n9p.s += dt;
+    // ein Samen ist ausgewachsen: kurzer Lichtring
+    while (_n9p.gesetzt < 4 && _n9p.s >= _n9pStartZeit(_n9p.gesetzt) + _N9P_WEG + _N9P_WACHS) {
+      const f = _n9pFeld(_n9p.gesetzt);
+      _bioFxWelle(_n9p.fx.teile, f.samen.x, f.samen.y, f.gruen ? '#86efac' : '#fde68a', 24);
+      _n9p.gesetzt++;
+    }
+    if (_n9p.s >= _N9P_ENDE) {
+      _n9p.laeuft = false; _n9p.fertig = true; _n9p.nach = 0;
+      _n9pStatus();
+    }
+  } else if (_n9p.nach >= 0) {
+    _n9p.nach += dt;
+    _n9pNachher();
+    if (_n9p.nach > _N9P_NACHENDE) _n9p.nach = -1;
+  }
+  _bioFxAlleUpdate(_n9p.fx, dt);
+}
+// Nach dem letzten Samen: Funken am grünen Samen (nur wo g und g zusammentreffen)
+function _n9pNachher() {
+  if (_n9p.funken || _n9p.nach < 3.4) return;
+  _n9p.funken = true;
+  for (let k = 0; k < 4; k++) {
+    const f = _n9pFeld(k);
+    if (!f.gruen) continue;
+    _bioFxWelle(_n9p.fx.teile, f.samen.x, f.samen.y, '#4ade80', 28);
+    _bioFxFunken(_n9p.fx.teile, f.samen.x, f.samen.y, 6, ['#bbf7d0', '#ffffff', '#fde68a']);
+  }
+}
+// Stand eines Feldes: u = Weg der Buchstaben (0..1), g = Wachsen des Samens (0..1)
+function _n9pStand(k) {
+  if (_n9p.fertig) return { u: 1, g: 1, an: true };
+  if (!_n9p.laeuft) return { u: 0, g: 0, an: false };
+  const a = _n9pStartZeit(k), s = _n9p.s;
+  return { u: _n9pKl((s - a) / _N9P_WEG), g: _n9pKl((s - a - _N9P_WEG) / _N9P_WACHS), an: s >= a };
+}
+// Leuchten eines Eltern-Buchstabens (seite 'links' Zeile i, 'oben' Spalte i)
+function _n9pElternGlanz(seite, i) {
+  if (!_n9p.laeuft && !_n9p.fertig) return 0.25 + 0.2 * Math.sin(_n9p.t * Math.PI * 2 * 0.8);
+  let g = 0;
+  if (_n9p.laeuft) {
+    for (let k = 0; k < 4; k++) {
+      if ((seite === 'links' ? Math.floor(k / 2) : k % 2) !== i) continue;
+      const u = (_n9p.s - _n9pStartZeit(k) + 0.15) / 0.5;
+      if (u > 0 && u < 1) g = Math.max(g, 0.9 * Math.sin(Math.PI * u));
+    }
+  }
+  // Aha (b): die g der Eltern, deren Kopien sich im grünen Samen treffen
+  const n = _n9p.nach;
+  if (n > 2.0 && n < 5.0) {
+    const K = _n9pK(), P = seite === 'links' ? K.links : K.oben;
+    let traegt = false;
+    for (let k = 0; k < 4; k++) {
+      const f = _n9pFeld(k);
+      if (f.gruen && (seite === 'links' ? f.r : f.c) === i) traegt = true;
+    }
+    if (traegt && P.b[i] === 'g') g = Math.max(g, 0.85 * _n9pKl((n - 2.0) / 0.3) * (1 - _n9pKl((n - 3.2) / 0.5)));
+  }
+  return g;
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+// Drei schräge Streifen als Sehnen – ohne clip(), bleibt im Kreis
+function _n9pStreifen(ctx, x, y, r, farbe, lw) {
+  const w = -Math.PI / 4, dx = Math.cos(w), dy = Math.sin(w), nx = -dy, ny = dx;
+  ctx.save();
+  ctx.strokeStyle = farbe; ctx.lineWidth = lw; ctx.lineCap = 'butt';
+  for (const d of [-0.5, 0, 0.5]) {
+    const o = d * r, h = Math.sqrt(Math.max(0, r * r * 0.9 - o * o));
+    const cx = x + nx * o, cy = y + ny * o;
+    ctx.beginPath(); ctx.moveTo(cx - dx * h, cy - dy * h); ctx.lineTo(cx + dx * h, cy + dy * h); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Ein Buchstabe auf seinem Kreis: G gelb und glatt, g grün mit Streifen
+function _n9pBuchstabe(ctx, x, y, r, z) {
+  const gr = z === 'g', f = gr ? _N9P_GRUEN : _N9P_GELB;
+  ctx.save();
+  ctx.fillStyle = f[0];
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  if (gr) _n9pStreifen(ctx, x, y, r, f[3], Math.max(1.2, r * 0.15));
+  ctx.strokeStyle = f[1]; ctx.lineWidth = Math.max(1.5, r * 0.13);
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.font = '700 ' + Math.round(r * 1.3) + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  const ty = y + (gr ? -r * 0.14 : r * 0.04);
+  if (gr) {                                        // heller Saum, damit das g auf den Streifen lesbar bleibt
+    ctx.strokeStyle = '#dcfce7'; ctx.lineWidth = Math.max(2, r * 0.22); ctx.lineJoin = 'round';
+    ctx.strokeText(z, x, ty);
+  }
+  ctx.fillStyle = f[2];
+  ctx.fillText(z, x, ty);
+  ctx.restore();
+}
+// Ein Erbsensamen: gelb und glatt oder grün mit Streifen
+function _n9pSamen(ctx, x, y, r, gruen) {
+  if (r < 0.5) return;
+  ctx.save();
+  ctx.fillStyle = gruen ? '#4ade80' : '#facc15';
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+  if (gruen) _n9pStreifen(ctx, x, y, r, '#15803d', Math.max(1, r * 0.16));
+  ctx.strokeStyle = gruen ? '#166534' : '#a16207'; ctx.lineWidth = Math.max(1.2, r * 0.11);
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.65)';
+  ctx.beginPath(); ctx.ellipse(x - r * 0.36, y - r * 0.4, r * 0.28, r * 0.17, -0.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Gestrichelter Platz in einem leeren Feld
+function _n9pPlatz(ctx, x, y, r) {
+  ctx.save();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.3; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+function _n9pRing(ctx, x, y, r, a) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.strokeStyle = _N9P_RING; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+// Erbsenpflanze, schematisch; wiegt sich leicht
+function _n9pPflanze(ctx, x, yb, h, t, ph) {
+  const sw = 2.0 * Math.sin(t * 1.1 + ph);
+  const at = (q) => ({ x: x + sw * q * q, y: yb - h * q });
+  ctx.save();
+  ctx.fillStyle = '#b08a63';
+  ctx.beginPath(); ctx.ellipse(x, yb + 2, 17, 4, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#3f7d3a'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(x, yb);
+  for (let i = 1; i <= 10; i++) { const p = at(i / 10 * 0.86); ctx.lineTo(p.x, p.y); }
+  ctx.stroke();
+  for (const [q, s] of [[0.28, 1], [0.56, 0.82]]) {
+    const p = at(q);
+    for (const sd of [-1, 1]) {
+      ctx.fillStyle = '#6aa95c'; ctx.strokeStyle = '#2f6b2b'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.ellipse(p.x + sd * 8 * s, p.y - 3 * s, 8.5 * s, 4 * s, sd * -0.45, 0, 2 * Math.PI);
+      ctx.fill(); ctx.stroke();
+    }
+  }
+  const r0 = at(0.72);                              // Ranke
+  ctx.strokeStyle = '#4d8f45'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(r0.x, r0.y);
+  ctx.quadraticCurveTo(r0.x + 9, r0.y - 7, r0.x + 11, r0.y - 1);
+  ctx.quadraticCurveTo(r0.x + 12, r0.y + 3, r0.x + 8, r0.y + 2);
+  ctx.stroke();
+  const b = at(0.92);                               // weiße Blüte
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(b.x, b.y - 2, 7, 6, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(b.x - 4, b.y + 3, 4.5, 3.2, -0.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(b.x + 4, b.y + 3, 4.5, 3.2, 0.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#6aa95c';
+  ctx.beginPath(); ctx.ellipse(b.x, b.y + 6.5, 3, 2, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Elternpflanze mit dem Samen, aus dem sie wuchs, und ihrem Namen
+function _n9pElternpflanze(ctx, fuss, P, t, ph) {
+  _n9pPflanze(ctx, fuss.x, fuss.y, _N9P_PH, t, ph);
+  _n9pSamen(ctx, fuss.x + 15, fuss.y - 1, 7.5, P.b.indexOf('G') < 0);
+  ctx.save();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(P.name, fuss.x + 30, fuss.y - 18);
+  ctx.restore();
+}
+function _n9pKarte(ctx, x, y, w, h) {
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.72)'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x, y, w, h, 10); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Ecke oben links: Name der Einstellung
+function _n9pEcke(ctx, K) {
+  _n9pKarte(ctx, 6, 4, 194, 92);
+  ctx.save();
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#475569'; ctx.font = '600 12px sans-serif';
+  ctx.fillText('Kreuzung', 103, 38);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif';
+  ctx.fillText(K.name, 103, 64);
+  ctx.restore();
+}
+function _n9pFeldZeichnen(ctx, k) {
+  const f = _n9pFeld(k), st = _n9pStand(k), m = f.m;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, m.x - _N9P_ZW / 2 + 3, m.y - _N9P_ZH / 2 + 3, _N9P_ZW - 6, _N9P_ZH - 6, 8);
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+  if (st.g <= 0) _n9pPlatz(ctx, f.samen.x, f.samen.y, _N9P_RS);
+  if (st.u < 1) {
+    _n9pPlatz(ctx, f.pa.x, f.pa.y, _N9P_RF);
+    _n9pPlatz(ctx, f.pb.x, f.pb.y, _N9P_RF);
+  } else {
+    _n9pBuchstabe(ctx, f.pa.x, f.pa.y, _N9P_RF, f.a);
+    _n9pBuchstabe(ctx, f.pb.x, f.pb.y, _N9P_RF, f.b);
+  }
+  if (st.g > 0) _n9pSamen(ctx, f.samen.x, f.samen.y, _N9P_RS * Math.max(0, _bioFxEase.federn(st.g)), f.gruen);
+}
+// Buchstaben, die gerade von den Eltern in ein Feld wandern (mit feiner Spur)
+function _n9pWandern(ctx) {
+  if (!_n9p.laeuft) return;
+  for (let k = 0; k < 4; k++) {
+    const st = _n9pStand(k);
+    if (!st.an || st.u >= 1) continue;
+    const f = _n9pFeld(k), e = _n9pE(st.u);
+    const r = _N9P_RP + (_N9P_RF - _N9P_RP) * e;
+    const wege = [[_n9pLinks(f.r), f.pa, f.a], [_n9pOben(f.c), f.pb, f.b]];
+    for (const [von, nach, z] of wege) {
+      const x = von.x + (nach.x - von.x) * e, y = von.y + (nach.y - von.y) * e;
+      ctx.save();
+      ctx.globalAlpha = 0.55; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.4; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(von.x, von.y); ctx.lineTo(x, y); ctx.stroke();
+      ctx.restore();
+      _n9pBuchstabe(ctx, x, y, r, z);
+    }
+  }
+}
+// Aha nach dem letzten Samen (siehe Kopf)
+function _n9pAha(ctx) {
+  const n = _n9p.nach;
+  if (n < 0) return;
+  // (a) jedes kleine g in den Feldern
+  const a1 = n > 0.4 && n < 1.9 ? Math.sin(Math.PI * (n - 0.4) / 1.5) : 0;
+  if (a1 > 0.01) {
+    for (let k = 0; k < 4; k++) {
+      const f = _n9pFeld(k);
+      if (f.a === 'g') _n9pRing(ctx, f.pa.x, f.pa.y, _N9P_RF + 4, 0.9 * a1);
+      if (f.b === 'g') _n9pRing(ctx, f.pb.x, f.pb.y, _N9P_RF + 4, 0.9 * a1);
+    }
+  }
+  // (b) von den g der Eltern je ein Lichtpunkt zum grünen Samen
+  if (n <= 2.0 || n >= 5.0) return;
+  const u = _n9pE((n - 2.1) / 1.2);
+  const aus = 1 - _n9pKl((n - 4.4) / 0.6);
+  for (let k = 0; k < 4; k++) {
+    const f = _n9pFeld(k);
+    if (!f.gruen) continue;
+    for (const [von, nach] of [[_n9pLinks(f.r), f.pa], [_n9pOben(f.c), f.pb]]) {
+      if (u > 0 && u < 1) {
+        const x = von.x + (nach.x - von.x) * u, y = von.y + (nach.y - von.y) * u;
+        const ux = von.x + (nach.x - von.x) * Math.max(0, u - 0.3), uy = von.y + (nach.y - von.y) * Math.max(0, u - 0.3);
+        ctx.save();
+        ctx.globalAlpha = 0.6; ctx.strokeStyle = '#16a34a'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+        ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(x, y); ctx.stroke();
+        ctx.restore();
+        ctx.save();
+        ctx.fillStyle = 'rgba(253,230,138,0.55)';
+        ctx.beginPath(); ctx.arc(x, y, 9, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = '#fef9c3'; ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(x, y, 4.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+        ctx.restore();
+      }
+      // angekommen: die beiden g im Feld leuchten
+      if (n > 3.2) _n9pRing(ctx, nach.x, nach.y, _N9P_RF + 4, 0.9 * _n9pKl((n - 3.2) / 0.3) * aus);
+    }
+    if (n > 3.4) _n9pRing(ctx, f.samen.x, f.samen.y, _N9P_RS + 5, aus * (0.6 + 0.3 * Math.sin((n - 3.4) * Math.PI * 2 * 0.8)));
+  }
+}
+function _n9pDraw(ctx, cv) {
+  if (!_n9p) return;
+  const W = cv.width, H = cv.height, t = _n9p.t, K = _n9pK();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9P_HG; ctx.fillRect(0, 0, W, H);
+  _n9pEcke(ctx, K);
+  _n9pKarte(ctx, 204, 4, 208, 94);
+  _n9pKarte(ctx, 6, 100, 194, 146);
+  _n9pElternpflanze(ctx, _N9P_PO, K.oben, t, 0);
+  _n9pElternpflanze(ctx, _N9P_PL, K.links, t, 1.7);
+  for (let k = 0; k < 4; k++) _n9pFeldZeichnen(ctx, k);
+  for (let i = 0; i < 2; i++) {
+    const L = _n9pLinks(i), O = _n9pOben(i);
+    _n9pRing(ctx, L.x, L.y, _N9P_RP + 4, _n9pElternGlanz('links', i));
+    _n9pRing(ctx, O.x, O.y, _N9P_RP + 4, _n9pElternGlanz('oben', i));
+    _n9pBuchstabe(ctx, L.x, L.y, _N9P_RP, K.links.b[i]);
+    _n9pBuchstabe(ctx, O.x, O.y, _N9P_RP, K.oben.b[i]);
+  }
+  _n9pWandern(ctx);
+  _n9pAha(ctx);
+  _bioFxAlleDraw(ctx, _n9p.fx);
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WIE LERNT DAS GEHIRN?   (Förderheft Bio 9 · br6)
+// Kennung bio-lernen, Präfix _n9f. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// br6.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250):
+//   links  Deniz von vorn (flach, schematisch, angezogen, nur zwei Punkte als
+//          Augen). Er jongliert mit drei Bällen (rot, blau, grün): zwei in der
+//          Luft, einer in der Hand. Oben der Zähler „heruntergefallen: 9 von 10“,
+//          an der Wand ein Abreißkalender „Woche 0“ mit sieben Tageskästchen.
+//          Heruntergefallene Bälle bleiben am Boden liegen (man kann sie auch
+//          dort zählen).
+//   rechts ein Ausschnitt aus seinem Gehirn (gestrichelter Lupenkeil vom Kopf
+//          zum Kasten): 6 Nervenzellen als Kreise, dazwischen gelbe Linien.
+//          KEINE Beschriftung, KEINE Zahl der Linien – das Kind zählt selbst.
+//          Jede Linie ist EIN Strich (leicht gebogen, kreuzungsfrei: 5 Zellen
+//          im Kranz, eine in der Mitte, höchstens 10 Linien = Rad mit 5
+//          Speichen). Dicke Linien sind dick, dünne dünn; gezählt wird jede
+//          einmal.
+//
+// BEDIENUNG (wörtlich; Reihenfolge = Schritte a–d der Heftseite):
+//   „neu“ (_n9fNeu) · „▶ 1 Woche üben“ (_n9fUeben) · „▶ 1 Woche Pause“ (_n9fPause)
+//   Sprungmarken: „2 Wochen geübt → 1 Woche Pause“ (_n9fMarke(1))
+//                 „nach der Pause → 1 Woche üben“  (_n9fMarke(2))
+//   Ein Druck auf „▶ …“, während noch etwas läuft, bewirkt nichts (der Knopf
+//   ist dann nicht hervorgehoben). „neu“ und die Sprungmarken gehen immer.
+//   Höchstens Woche 8.
+//
+// ABLAUF eines Wochen-Knopfs (Zeiten in s):
+//   0–0,45  das alte Kalenderblatt klappt nach oben weg, darunter „Woche n“;
+//           die Bälle vom Boden werden eingesammelt (verblassen)
+//   0,45–2,55  die Woche im Zeitraffer, ein Kästchen je Tag:
+//           üben  – Deniz jongliert schnell; jeden Tag läuft ein Lichtpaket
+//                   durch das Netz; neue gelbe Linien wachsen von einer Zelle
+//                   zur anderen und blitzen kurz auf (Funken), die schon
+//                   vorhandenen werden dicker.
+//           Pause – Deniz lässt die Arme hängen, die Bälle liegen in der Kiste;
+//                   kein Lichtpaket; alle Linien werden dünner, die dünnsten
+//                   werden grau, verblassen und verschwinden.
+//   2,55–2,9   Deniz nimmt die Bälle
+//   2,9–7,6    Test: Deniz wirft 10 Bälle (alle 0,32 s einer). Ein Ball, der
+//           danebengeht, prallt von der Hand ab und rollt am Boden zur Seite;
+//           der Zähler zählt beim Aufprall mit. Bei jedem zweiten Wurf läuft
+//           ein Lichtpaket von der Zelle oben links durch alle Linien – wo es
+//           ankommt, leuchtet die Zelle auf.
+//   danach  Endbild steht: Zähler, Bälle am Boden, Linien. Alle 2,8 s ein
+//           ruhiges Lichtpaket.
+//   „neu“ und das Öffnen: Woche 0, sofort danach der Test (4,7 s).
+//
+// STATUSZEILEN (woertlich):
+//   _n9f-status  während der Woche „Woche 1 · üben · Deniz übt jeden Tag …“ bzw.
+//                „Woche 3 · Pause · Deniz übt in dieser Woche nicht …“,
+//                im Test „Woche 1 · üben · Deniz wirft 10 Bälle …“,
+//                danach „Woche 1 · üben · heruntergefallen: 6 von 10“;
+//                am Start „Woche 0 · heruntergefallen: 9 von 10“.
+//   Im Bild: Zähler „heruntergefallen: k von 10“ (zählt live, danach Endwert),
+//   Kalender „Woche n“ mit „Start“ / „üben“ / „Pause“ darunter.
+//
+// MODELL (Modellwerte, Lehrerteil):
+//   Übungsstand w (in Wochen): üben +1 (höchstens 4), Pause −0,5 (nie unter 0).
+//   Linie i ist da, wenn w ≥ tau_i; ihre Dicke wächst mit w − tau_i. Eine Pause
+//   nimmt also jeder Linie dasselbe Stück weg, und die jüngsten (dünnsten)
+//   verschwinden. Wird danach wieder geübt, kommen sie zurück.
+//   Zahl der heruntergefallenen Bälle je w: 0 → 9, 0,5 → 8, 1 → 6, 1,5 → 3,
+//   2 → 1, ab 2,5 → 0.  Welche Würfe danebengehen: _N9F_REIHE (die ersten k).
+//   Die Zahl der Nervenzellen ist immer 6.
+//   WERTE (sim_plan, alle nachgerechnet, siehe _n9fErgebnis()):
+//     neu (Start)                    Woche 0   9 von 10   2 Linien
+//     ▶ 1 Woche üben                 Woche 1   6 von 10   5 Linien
+//     ▶ 1 Woche üben (zweites Mal)   Woche 2   1 von 10   9 Linien
+//     ▶ 1 Woche Pause                Woche 3   3 von 10   7 Linien
+//     danach ▶ 1 Woche üben          Woche 4   0 von 10  10 Linien
+//   Gegenprobe sofort mit Pause: Woche 1 · 9 von 10 · 2 Linien (wie Start).
+//   _n9fErgebnis() zählt die Linien, die im LETZTEN Bild wirklich gezeichnet
+//   wurden – nur für den Rechentest, nie am Bildschirm.
+//
+// Aha (nur _bioFx, nach der Beobachtung, kein Text): neue Linien blitzen mit
+// Funken auf; je dichter das Netz, desto weiter kommt das Lichtpaket; nach einem
+// Test mit weniger heruntergefallenen Bällen als vorher kurze Funken über
+// Deniz, sonst nur ein ruhiger Ring um den Zähler. Keine Wertung, kein Blinken
+// über 1 Hz, kein Ton. Neue Kreise erscheinen NIE.
+// Nicht am Bildschirm: die Lückenwörter aus Merksatz, Aufgabe 2 und Hilfe 3
+// (Liste im sim_plan) – auch nicht als Wortteil. Geprüft über den Faktendump.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9f = null;
+const _N9F_MAXWOCHE = 8;
+const _N9F_WMAX = 4;                                   // höchster Übungsstand
+const _N9F_FALL = [9, 8, 6, 3, 1, 0];                  // w = 0; 0,5; 1; 1,5; 2; ab 2,5
+const _N9F_REIHE = [3, 6, 1, 8, 4, 9, 0, 5, 2, 7];     // diese Würfe gehen zuerst daneben
+const _N9F_BLATT = 0.45, _N9F_WOCHE = 2.1, _N9F_LUFT = 0.35;   // Phasen in s
+// Nervenzellen: Mitte (0) und Kranz (1–5) im Gehirnkasten x 210–414, y 6–244
+const _N9F_ZELLE = [[312, 128], [254, 62], [368, 50], [390, 152], [330, 212], [242, 180]];
+const _N9F_ZR = 15;                                    // Radius einer Nervenzelle
+// Linien in der Reihenfolge, in der sie wachsen; tau = Übungsstand, ab dem es sie gibt
+const _N9F_LINIE = [
+  { a: 0, b: 1, tau: -1,   bogen: 0.09 },              // schon am Start da
+  { a: 1, b: 5, tau: -1,   bogen: 0.10 },              // schon am Start da
+  { a: 0, b: 2, tau: 0.3,  bogen: -0.08 },
+  { a: 0, b: 5, tau: 0.6,  bogen: 0.08 },
+  { a: 2, b: 3, tau: 0.9,  bogen: 0.10 },
+  { a: 0, b: 3, tau: 1.2,  bogen: -0.08 },
+  { a: 1, b: 2, tau: 1.45, bogen: 0.10 },
+  { a: 0, b: 4, tau: 1.7,  bogen: 0.08 },
+  { a: 4, b: 5, tau: 1.95, bogen: 0.10 },
+  { a: 3, b: 4, tau: 2.3,  bogen: 0.10 }
+];
+const _N9F_KURVE = _N9F_LINIE.map((k, i) => _n9fKurveBauen(i));
+// Jonglieren: innen wird geworfen, außen gefangen (Bildschirmseite L/R)
+const _N9F_WURF = { L: 78, R: 122 };
+const _N9F_FANG = { L: 62, R: 138 };
+const _N9F_HY = 158;                                   // Höhe der Hände
+const _N9F_BODEN = 225.5;                              // Ballmitte, wenn er liegt
+const _N9F_BR = 6.5;                                   // Ballradius
+const _N9F_PLATZ = { L: [44, 30, 58, 16, 72], R: [156, 170, 142, 184, 128] };
+const _N9F_FARBE = ['#ef4444', '#3b82f6', '#22c55e'];
+const _N9F_RAND = ['#991b1b', '#1e3a8a', '#166534'];
+
+// ── Geometrie der Linien ─────────────────────────────────────────────
+function _n9fKurveBauen(i) {
+  const k = _N9F_LINIE[i], A = _N9F_ZELLE[k.a], B = _N9F_ZELLE[k.b];
+  const mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2;
+  const dx = B[0] - A[0], dy = B[1] - A[1], len = Math.hypot(dx, dy);
+  let nx = -dy / len, ny = dx / len, b = k.bogen;
+  if (k.a !== 0 && k.b !== 0) {                        // Kranz: nach außen wölben
+    const M = _N9F_ZELLE[0];
+    if ((mx - M[0]) * nx + (my - M[1]) * ny < 0) { nx = -nx; ny = -ny; }
+    b = Math.abs(b);
+  }
+  return { ax: A[0], ay: A[1], cx: mx + nx * b * len, cy: my + ny * b * len, bx: B[0], by: B[1], len };
+}
+function _n9fPunkt(i, s) {
+  const K = _N9F_KURVE[i], u = 1 - s;
+  return { x: u * u * K.ax + 2 * u * s * K.cx + s * s * K.bx,
+           y: u * u * K.ay + 2 * u * s * K.cy + s * s * K.by };
+}
+function _n9fFall(w) {
+  const i = Math.round(w * 2);
+  return i < _N9F_FALL.length ? _N9F_FALL[i] : 0;
+}
+
+// ── Zustand ──────────────────────────────────────────────────────────
+function _n9fInit() {
+  _n9f = { t: 0, s: 0, phase: 'test', linie: _N9F_LINIE.map(() => ({ da: 0, modus: 'weg', blitz: 0 })),
+           letzt: '', gezeichnet: 0 };
+  _n9fGrund(0, 0, 'start');
+  _n9fTestStart();
+}
+// Setzt alles ohne Übergang auf Übungsstand w in Woche „woche“.
+function _n9fGrund(w, woche, art) {
+  const n = _n9f;
+  n.w = w; n.w0 = w; n.w1 = w; n.woche = woche; n.art = art;
+  n.alteWoche = woche; n.alteArt = art;
+  n.fall = _n9fFall(w); n.vorher = null; n.gefallen = 0; n.zuck = 0; n.zGlanz = 0; n.besser = false;
+  n.test = null; n.raffer = null; n.ruhe = 0;
+  n.puls = []; n.glanz = [0, 0, 0, 0, 0, 0];
+  n.fx = { teile: [] };
+  _N9F_LINIE.forEach((k, i) => {
+    const da = w >= k.tau - 1e-9;
+    n.linie[i] = { da: da ? 1 : 0, modus: da ? 'da' : 'weg', blitz: 0 };
+  });
+}
+function _n9fPhase(p) {
+  const n = _n9f;
+  n.phase = p; n.s = 0;
+  if (p === 'woche') n.raffer = n.art === 'ueben' ? _n9fPlan(false, 0) : null;
+}
+function _n9fTestStart() {
+  const n = _n9f;
+  _n9fPhase('test');
+  n.test = _n9fPlan(true, n.fall);
+  n.gefallen = 0;
+}
+function _n9fFertig() {
+  const n = _n9f;
+  n.phase = 'fertig'; n.s = 0; n.ruhe = 0;
+  n.gefallen = n.fall;                                  // Endwert = Modellwert
+  n.besser = n.vorher !== null && n.fall < n.vorher;
+  n.zGlanz = 1;                                         // Rahmen des Zählers leuchtet kurz
+  if (n.besser) for (const x of [_N9F_FANG.L, _N9F_FANG.R])
+    _bioFxFunken(n.fx.teile, x, _N9F_HY - 10, 5, ['#ffd84d', '#fff3b0', '#bbf7d0']);
+  n.vorher = n.fall;
+  _n9fStatus();
+}
+
+// ── Bedienung ────────────────────────────────────────────────────────
+function _n9fSchritt(art) {
+  const n = _n9f;
+  if (!n || n.phase !== 'fertig' || n.woche >= _N9F_MAXWOCHE) return;
+  n.alteWoche = n.woche; n.alteArt = n.art;
+  n.woche += 1; n.art = art;
+  n.w0 = n.w;
+  n.w1 = art === 'ueben' ? Math.min(_N9F_WMAX, n.w + 1) : Math.max(0, n.w - 0.5);
+  n.fall = _n9fFall(n.w1);
+  _n9fPhase('blatt');
+  _n9fStatus();
+}
+function _n9fUeben() { _n9fSchritt('ueben'); }
+function _n9fPause() { _n9fSchritt('pause'); }
+function _n9fNeu() {
+  if (!_n9f) return;
+  _n9fGrund(0, 0, 'start');
+  _n9fTestStart();
+  _n9fStatus();
+}
+// Sprungmarken: 1 = nach 2 Wochen üben die Pause ansehen,
+//               2 = nach der Pause wieder üben (Weiterforschen).
+function _n9fMarke(m) {
+  if (!_n9f || (m !== 1 && m !== 2)) return;
+  const n = _n9f;
+  if (m === 1) _n9fGrund(2, 2, 'ueben'); else _n9fGrund(1.5, 3, 'pause');
+  n.test = _n9fPlan(true, n.fall); n.test.ts = 99;      // Ergebnis der Woche davor liegt schon da
+  n.gefallen = n.fall; n.vorher = n.fall;
+  n.phase = 'fertig'; n.s = 0;
+  _n9fSchritt(m === 1 ? 'pause' : 'ueben');
+}
+
+// ── Anzeige ──────────────────────────────────────────────────────────
+function _n9fArtWort(art) { return art === 'ueben' ? 'üben' : art === 'pause' ? 'Pause' : 'Start'; }
+function _n9fZeile() {
+  const n = _n9f;
+  const kopf = 'Woche ' + n.woche + (n.art === 'start' ? '' : ' · ' + _n9fArtWort(n.art));
+  if (n.phase === 'fertig') return kopf + ' · heruntergefallen: ' + n.fall + ' von 10';
+  if (n.phase === 'test') return kopf + ' · Deniz wirft 10 Bälle …';
+  return kopf + (n.art === 'pause' ? ' · Deniz übt in dieser Woche nicht …' : ' · Deniz übt jeden Tag …');
+}
+function _n9fHinweisText() {
+  const n = _n9f;
+  if (n.phase === 'test') return 'Sieh zu, wie viele Bälle herunterfallen.';
+  if (n.phase !== 'fertig') return n.art === 'pause'
+    ? 'Eine Woche vergeht im Zeitraffer. Deniz macht Pause. Sieh auf die gelben Linien.'
+    : 'Eine Woche vergeht im Zeitraffer. Deniz übt jeden Tag. Sieh auf die gelben Linien.';
+  if (n.woche >= _N9F_MAXWOCHE) return 'Woche 8 ist erreicht. Mit „neu“ beginnt alles von vorn.';
+  if (n.woche === 0) return 'Zähle die gelben Linien. Jede Linie zählt einmal, ob dick oder dünn. Drücke dann „▶ 1 Woche üben“.';
+  return 'Lies den Zähler ab. Zähle die gelben Linien: jede Linie einmal, ob dick oder dünn.';
+}
+function _n9fStatus() {
+  if (!_n9f) return;
+  const z = _n9fZeile();
+  _n9f.letzt = z;
+  const el = document.getElementById('_n9f-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9f-hinweis');
+  if (h) h.textContent = _n9fHinweisText();
+  const frei = _n9f.phase === 'fertig' && _n9f.woche < _N9F_MAXWOCHE;
+  const u = document.getElementById('_n9f-ueben');
+  if (u && u.classList) u.classList.toggle('primary', frei);
+}
+// Nur für den Rechentest: was steht da, und wie viele Linien sind im letzten Bild?
+function _n9fErgebnis() {
+  const n = _n9f;
+  let modell = 0;
+  _N9F_LINIE.forEach((k, i) => { if (n.linie[i].modus === 'da') modell++; });
+  return 'Woche ' + n.woche + ' · heruntergefallen: ' + n.gefallen + ' von 10 · Linien im Modell: ' + modell
+       + ' · Linien im Bild: ' + n.gezeichnet + ' · Nervenzellen: ' + _N9F_ZELLE.length;
+}
+function _n9fHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie lernt das Gehirn?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links jongliert Deniz. Rechts siehst du einen Ausschnitt aus seinem Gehirn: Jeder Kreis ist eine Nervenzelle, jede gelbe Linie eine Verbindung.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_n9fNeu()">neu</button>
+          <button class="sim-btn primary" id="_n9f-ueben" onclick="_n9fUeben()">▶ 1 Woche üben</button>
+          <button class="sim-btn" id="_n9f-pause" onclick="_n9fPause()">▶ 1 Woche Pause</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Kalender und Zähler</div>
+        <div class="lmp-status on" id="_n9f-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9f-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">
+          <button class="sim-btn" onclick="_n9fMarke(1)">2 Wochen geübt → 1 Woche Pause</button>
+          <button class="sim-btn" onclick="_n9fMarke(2)">nach der Pause → 1 Woche üben</button>
+        </div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Woche 0 &nbsp;|&nbsp; Nach „neu“ und nach jeder Woche wirft Deniz 10 Bälle. Alle Zahlen sind Modellwerte.</p>
+  </div>`;
+}
+
+// ── Jonglieren: ein Plan aus Würfen ──────────────────────────────────
+// test = true: 10 Würfe, die ersten „fall“ aus _N9F_REIHE gehen daneben.
+// test = false: schnelles Üben im Zeitraffer, 12 Würfe, alle gefangen.
+function _n9fPlan(test, fall) {
+  const n = test ? 10 : 12, faellt = [];
+  for (let k = 0; k < n; k++) faellt.push(false);
+  if (test) for (let j = 0; j < fall; j++) faellt[_N9F_REIHE[j]] = true;
+  return { test, n, faellt, T: test ? 0.32 : 0.15, F: test ? 0.58 : 0.27,
+           t0: test ? 0.3 : 0.05, hoch: test ? 46 : 50, ts: 0, gefeuert: -1, gelandet: 0 };
+}
+function _n9fA(L, k) { return L.t0 + k * L.T; }
+function _n9fVon(k) { return k % 2 === 0 ? 'R' : 'L'; }
+function _n9fNach(k) { return k % 2 === 0 ? 'L' : 'R'; }
+function _n9fLandezeit() {                             // vom verpassten Fang bis zum Boden
+  const g = 640, v = 40, h = _N9F_BODEN - _N9F_HY;
+  return (-v + Math.sqrt(v * v + 2 * g * h)) / g;
+}
+function _n9fEnde(L) { return _n9fA(L, L.n - 1) + L.F + _n9fLandezeit() + 0.55; }
+function _n9fPlatz(L, k) {
+  const z = _n9fNach(k);
+  let j = 0;
+  for (let m = 0; m < k; m++) if (L.faellt[m] && _n9fNach(m) === z) j++;
+  return _N9F_PLATZ[z][Math.min(j, 4)];
+}
+// Ein Ball, der danebengeht: prallt von der Hand ab, fällt, rollt zu seinem Platz.
+function _n9fFallPos(L, k, s) {
+  const d = s - (_n9fA(L, k) + L.F), z = _n9fNach(k);
+  const x0 = _N9F_FANG[z], vx = z === 'L' ? -46 : 46, tl = _n9fLandezeit();
+  if (d < tl) return { x: x0 + vx * d, y: _N9F_HY + 40 * d + 320 * d * d };
+  const xl = x0 + vx * tl, ziel = _n9fPlatz(L, k);
+  const u = _bioFxKlemme((d - tl) / 0.5);
+  return { x: xl + (ziel - xl) * _bioFxEase.raus(u),
+           y: _N9F_BODEN - 7 * Math.abs(Math.sin(u * Math.PI * 2)) * (1 - u) };
+}
+// Alle Bälle eines Plans zur Zeit s: in der Hand (hand), im Flug oder am Boden.
+function _n9fBaelle(L, s) {
+  const aus = [];
+  for (let k = 0; k < L.n; k++) {
+    const a = _n9fA(L, k), von = _n9fVon(k), nach = _n9fNach(k);
+    if (s < a) {
+      if (k < 3 || s >= _n9fA(L, k - 3) + L.F) aus.push({ k, hand: von });
+      continue;
+    }
+    if (s < a + L.F) {
+      const u = (s - a) / L.F, x0 = _N9F_WURF[von], x1 = _N9F_FANG[nach];
+      aus.push({ k, x: x0 + (x1 - x0) * u, y: _N9F_HY - 4 * (_N9F_HY - L.hoch) * u * (1 - u) });
+      continue;
+    }
+    if (L.faellt[k]) { const p = _n9fFallPos(L, k, s); aus.push({ k, x: p.x, y: p.y, boden: true }); continue; }
+    if (k + 3 >= L.n) aus.push({ k, hand: nach });     // die letzten bleiben in der Hand
+  }
+  return aus;
+}
+// Wo ist die Hand h zur Zeit s? Zwischen Fang (außen) und Wurf (innen) holt sie
+// unten aus, zwischen Wurf und Fang geht sie leicht nach oben.
+function _n9fHandPos(L, s, h) {
+  let vor = null, nach = null;
+  for (let k = 0; k < L.n; k++) {
+    const ev = [];
+    if (_n9fVon(k) === h) ev.push({ t: _n9fA(L, k), x: _N9F_WURF[h], wurf: true });
+    if (_n9fNach(k) === h) ev.push({ t: _n9fA(L, k) + L.F, x: _N9F_FANG[h], wurf: false });
+    for (const e of ev) {
+      if (e.t <= s && (!vor || e.t > vor.t)) vor = e;
+      if (e.t > s && (!nach || e.t < nach.t)) nach = e;
+    }
+  }
+  if (!vor && !nach) return { x: _N9F_WURF[h], y: _N9F_HY };
+  if (!vor) return { x: nach.x, y: _N9F_HY };
+  if (!nach) return { x: vor.x, y: _N9F_HY };
+  const u = _bioFxEase.sanft(_bioFxKlemme((s - vor.t) / (nach.t - vor.t)));
+  return { x: vor.x + (nach.x - vor.x) * u, y: _N9F_HY + (vor.wurf ? -4 : 7) * Math.sin(Math.PI * u) };
+}
+
+// ── Lichtpakete durch das Netz ───────────────────────────────────────
+function _n9fWelle(start) {
+  const n = _n9f, w = { erreicht: [false, false, false, false, false, false] };
+  w.erreicht[start] = true;
+  n.glanz[start] = 1;
+  _n9fSenden(start, w);
+}
+function _n9fSenden(z, w) {
+  const n = _n9f;
+  _N9F_LINIE.forEach((k, i) => {
+    if (n.linie[i].modus !== 'da' || n.puls.length >= 40) return;
+    let ziel;
+    if (k.a === z) ziel = k.b; else if (k.b === z) ziel = k.a; else return;
+    if (w.erreicht[ziel]) return;
+    n.puls.push({ i, rueck: k.b === z, s: 0, ziel, w });
+  });
+}
+function _n9fPulsUpdate(dt) {
+  const n = _n9f;
+  for (let j = n.puls.length - 1; j >= 0; j--) {
+    const p = n.puls[j];
+    if (n.linie[p.i].modus !== 'da') { n.puls.splice(j, 1); continue; }
+    p.s += dt * 150 / _N9F_KURVE[p.i].len;
+    if (p.s >= 1) {
+      n.puls.splice(j, 1);
+      if (!p.w.erreicht[p.ziel]) {
+        p.w.erreicht[p.ziel] = true;
+        n.glanz[p.ziel] = 1;
+        _n9fSenden(p.ziel, p.w);
+      }
+    }
+  }
+  for (let z = 0; z < 6; z++) n.glanz[z] = Math.max(0, n.glanz[z] - dt * 1.3);
+}
+// Lichtpaket bei jedem zweiten Wurf eines Plans
+function _n9fFeuern(L, s) {
+  while (L.gefeuert + 1 < L.n && s >= _n9fA(L, L.gefeuert + 1)) {
+    L.gefeuert++;
+    if (L.gefeuert % 2 === 0) _n9fWelle(1);
+  }
+}
+
+// ── Ablauf ───────────────────────────────────────────────────────────
+function _n9fLinienUpdate(dt) {
+  const n = _n9f;
+  _N9F_LINIE.forEach((k, i) => {
+    const l = n.linie[i], soll = n.w >= k.tau - 1e-9;
+    if (soll && l.da < 1) {
+      if (l.modus !== 'wachsen') {
+        if (l.da <= 0) {
+          const p = _n9fPunkt(i, 0.5);
+          _bioFxFunken(n.fx.teile, p.x, p.y, 7, ['#fef08a', '#ffffff', '#fde047']);
+          l.blitz = 1;
+        }
+        l.modus = 'wachsen';
+      }
+      l.da = Math.min(1, l.da + dt / 0.4);
+      if (l.da >= 1) l.modus = 'da';
+    } else if (!soll && l.da > 0) {
+      l.modus = 'welken';
+      l.da = Math.max(0, l.da - dt / 0.7);
+      if (l.da <= 0) l.modus = 'weg';
+    }
+    l.blitz = Math.max(0, l.blitz - dt * 0.9);
+  });
+}
+function _n9fUpdate(dt) {
+  if (!_n9f) return;
+  dt = _bioFxDt(dt);
+  const n = _n9f;
+  n.t += dt; n.s += dt;
+  if (n.phase === 'blatt') {
+    if (n.s >= _N9F_BLATT) _n9fPhase('woche');
+  } else if (n.phase === 'woche') {
+    n.w = n.w0 + (n.w1 - n.w0) * _bioFxKlemme(n.s / _N9F_WOCHE);
+    if (n.raffer) _n9fFeuern(n.raffer, n.s);
+    if (n.s >= _N9F_WOCHE) { n.w = n.w1; _n9fPhase('luft'); }
+  } else if (n.phase === 'luft') {
+    if (n.s >= _N9F_LUFT) _n9fTestStart();
+  } else if (n.phase === 'test') {
+    const L = n.test;
+    L.ts = n.s;
+    _n9fFeuern(L, n.s);
+    let g = 0;
+    const tl = _n9fLandezeit();
+    for (let k = 0; k < L.n; k++) {
+      if (!L.faellt[k] || n.s < _n9fA(L, k) + L.F + tl) continue;
+      g++;
+      if (g > L.gelandet) {                             // gerade aufgekommen
+        _bioFxWelle(n.fx.teile, _N9F_FANG[_n9fNach(k)] + (_n9fNach(k) === 'L' ? -19 : 19), _N9F_BODEN + 4, '#fcd34d', 16);
+      }
+    }
+    if (g !== n.gefallen) { n.gefallen = g; n.zuck = 0.35; }
+    L.gelandet = g;
+    if (n.s >= _n9fEnde(L)) _n9fFertig();
+  } else if (n.phase === 'fertig') {
+    n.ruhe += dt;
+    if (n.ruhe >= 2.8) { n.ruhe = 0; _n9fWelle(1); }
+  }
+  _n9fLinienUpdate(dt);
+  _n9fPulsUpdate(dt);
+  n.zuck = Math.max(0, n.zuck - dt);
+  n.zGlanz = Math.max(0, n.zGlanz - dt * 0.8);
+  _bioFxAlleUpdate(n.fx, dt);
+  if (_n9fZeile() !== n.letzt) _n9fStatus();
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────
+function _n9fBall(ctx, x, y, k, alpha) {
+  ctx.save();
+  ctx.globalAlpha = alpha == null ? 1 : alpha;
+  ctx.fillStyle = _N9F_FARBE[k % 3]; ctx.strokeStyle = _N9F_RAND[k % 3]; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(x, y, _N9F_BR, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  ctx.beginPath(); ctx.arc(x - 2.2, y - 2.2, 1.8, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _n9fZimmer(ctx, H) {
+  const wand = ctx.createLinearGradient(0, 0, 0, 232);
+  wand.addColorStop(0, '#fbf4e6'); wand.addColorStop(1, '#f1e4cc');
+  ctx.fillStyle = wand; ctx.fillRect(0, 0, 206, 232);
+  ctx.fillStyle = '#d9bf93'; ctx.fillRect(0, 232, 206, H - 232);
+  ctx.strokeStyle = 'rgba(120,85,40,0.22)'; ctx.lineWidth = 1;
+  for (let x = 34; x < 206; x += 46) { ctx.beginPath(); ctx.moveTo(x, 233); ctx.lineTo(x - 7, H); ctx.stroke(); }
+  ctx.strokeStyle = '#b8996a'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(0, 232); ctx.lineTo(206, 232); ctx.stroke();
+}
+// Lupenkeil: vom Kopf zum Gehirnkasten (zeigt: rechts ist ein Ausschnitt)
+function _n9fLupeKeil(ctx) {
+  ctx.save();
+  ctx.strokeStyle = 'rgba(79,70,229,0.35)'; ctx.lineWidth = 1.3; ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(115, 86); ctx.lineTo(210, 40); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(115, 110); ctx.lineTo(210, 236); ctx.stroke();
+  ctx.restore();
+}
+function _n9fLupeRing(ctx) {
+  ctx.save();
+  ctx.strokeStyle = 'rgba(79,70,229,0.55)'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.arc(100, 98, 19, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+function _n9fKalenderBlatt(ctx, woche, art, tage) {
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  ctx.fillRect(8, 51, 56, 49); ctx.strokeRect(8, 51, 56, 49);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Woche ' + woche, 36, 66);
+  for (let d = 0; d < 7; d++) {
+    const x = 11 + d * 7.3, y = 72;
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 0.8; ctx.strokeRect(x, y, 6, 6);
+    if (d < tage) {
+      if (art === 'pause') { ctx.fillStyle = '#cbd5e1'; ctx.fillRect(x + 0.6, y + 0.6, 4.8, 4.8); }
+      else { ctx.fillStyle = _N9F_FARBE[d % 3]; ctx.beginPath(); ctx.arc(x + 3, y + 3, 2.4, 0, 2 * Math.PI); ctx.fill(); }
+    }
+  }
+  ctx.fillStyle = art === 'pause' ? '#475569' : art === 'ueben' ? '#a16207' : '#64748b';
+  ctx.font = '700 10px sans-serif';
+  ctx.fillText(_n9fArtWort(art), 36, 93);
+}
+function _n9fKalender(ctx) {
+  const n = _n9f;
+  ctx.save();
+  // Nagel und Kopfleiste
+  ctx.fillStyle = '#64748b'; ctx.beginPath(); ctx.arc(36, 36, 2, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(8, 40, 56, 11);
+  ctx.fillStyle = '#fee2e2';
+  ctx.beginPath(); ctx.arc(24, 45.5, 2.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(48, 45.5, 2.2, 0, 2 * Math.PI); ctx.fill();
+  // Tage der laufenden Woche
+  let tage = 7;
+  if (n.art === 'start') tage = 0;
+  else if (n.phase === 'blatt') tage = 0;
+  else if (n.phase === 'woche') tage = Math.min(7, Math.floor(n.s / (_N9F_WOCHE / 7)) + 1);
+  _n9fKalenderBlatt(ctx, n.woche, n.art, tage);
+  // altes Blatt klappt nach oben weg
+  if (n.phase === 'blatt') {
+    const k = 1 - _bioFxEase.sanft(_bioFxKlemme(n.s / _N9F_BLATT));
+    if (k > 0.02) {
+      ctx.save();
+      ctx.translate(0, 51); ctx.scale(1, k); ctx.translate(0, -51);
+      _n9fKalenderBlatt(ctx, n.alteWoche, n.alteArt, n.alteArt === 'start' ? 0 : 7);
+      ctx.restore();
+    }
+  }
+  ctx.restore();
+}
+function _n9fKiste(ctx, alpha) {
+  if (alpha <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  [0, 1, 2].forEach(k => _n9fBall(ctx, 147 + k * 9, 211 - (k === 1 ? 3 : 0), k));
+  ctx.fillStyle = '#b45309'; ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.2;
+  ctx.fillRect(138, 212, 36, 20); ctx.strokeRect(138, 212, 36, 20);
+  ctx.strokeStyle = 'rgba(120,53,15,0.6)';
+  ctx.beginPath(); ctx.moveTo(138, 222); ctx.lineTo(174, 222); ctx.stroke();
+  ctx.restore();
+}
+function _n9fArm(ctx, sx, sy, hx, hy, aussen) {
+  const ex = (sx + hx) / 2 + aussen * 9, ey = (sy + hy) / 2 + 5;
+  ctx.strokeStyle = '#0f9d8a'; ctx.lineWidth = 8;                      // Ärmel
+  ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx + (ex - sx) * 0.45, sy + (ey - sy) * 0.45); ctx.stroke();
+  ctx.strokeStyle = '#e0a877'; ctx.lineWidth = 5;
+  ctx.beginPath(); ctx.moveTo(sx + (ex - sx) * 0.4, sy + (ey - sy) * 0.4); ctx.lineTo(ex, ey); ctx.lineTo(hx, hy); ctx.stroke();
+  ctx.fillStyle = '#e0a877'; ctx.beginPath(); ctx.arc(hx, hy, 3.6, 0, 2 * Math.PI); ctx.fill();
+}
+function _n9fDeniz(ctx, hl, hr) {
+  const n = _n9f, atem = Math.sin(n.t * 1.7) * 0.7;
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Beine und Schuhe
+  ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 9;
+  ctx.beginPath(); ctx.moveTo(94, 178); ctx.lineTo(91, 225); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(106, 178); ctx.lineTo(109, 225); ctx.stroke();
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.ellipse(90, 229, 7.5, 3.6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(110, 229, 7.5, 3.6, 0, 0, 2 * Math.PI); ctx.fill();
+  // Rumpf (T-Shirt)
+  ctx.fillStyle = '#0f9d8a';
+  _bioFxRundRect(ctx, 85, 118 + atem, 30, 64 - atem, 7); ctx.fill();
+  // Hals und Kopf
+  ctx.fillStyle = '#d99a6c'; ctx.fillRect(96, 107 + atem, 8, 13);
+  ctx.fillStyle = '#e0a877'; ctx.strokeStyle = '#9a6a45'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(100, 98 + atem, 13, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#2d1f14';
+  ctx.beginPath(); ctx.arc(100, 96 + atem, 13.4, Math.PI * 1.02, Math.PI * 1.98); ctx.fill();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(95.5, 100 + atem, 1.3, 0, 2 * Math.PI); ctx.fill();
+  ctx.beginPath(); ctx.arc(104.5, 100 + atem, 1.3, 0, 2 * Math.PI); ctx.fill();
+  // Arme
+  _n9fArm(ctx, 88, 124 + atem, hl.x, hl.y, -1);
+  _n9fArm(ctx, 112, 124 + atem, hr.x, hr.y, 1);
+  ctx.restore();
+}
+// Deniz, seine Hände und alle Bälle (in der Hand, in der Luft, am Boden)
+function _n9fSzene(ctx) {
+  const n = _n9f;
+  let L = null, s = 0, haende = 'halten', boden = null, bodenAlpha = 1;
+  if (n.phase === 'test') { L = n.test; s = n.s; }
+  else if (n.phase === 'fertig') { L = n.test; s = n.test ? Math.max(n.test.ts, _n9fEnde(n.test)) : 0; }
+  else if (n.phase === 'woche' && n.raffer) { L = n.raffer; s = n.s; }
+  else if (n.phase === 'woche' || (n.phase === 'blatt' && n.art === 'pause')) haende = 'unten';
+  if (n.phase === 'blatt' && n.test) {                  // Bälle vom Boden einsammeln
+    boden = n.test; bodenAlpha = 1 - _bioFxKlemme(n.s / (_N9F_BLATT * 0.9));
+  }
+  // Kiste in der Pause
+  let kiste = 0;
+  if (n.art === 'pause') {
+    if (n.phase === 'blatt') kiste = _bioFxKlemme(n.s / _N9F_BLATT);
+    else if (n.phase === 'woche') kiste = 1;
+    else if (n.phase === 'luft') kiste = 1 - _bioFxKlemme(n.s / _N9F_LUFT);
+  }
+  _n9fKiste(ctx, kiste);
+  let hl, hr;
+  if (L) { hl = _n9fHandPos(L, s, 'L'); hr = _n9fHandPos(L, s, 'R'); }
+  else if (haende === 'unten') { hl = { x: 82, y: 180 }; hr = { x: 118, y: 180 }; }
+  else { hl = { x: _N9F_WURF.L, y: _N9F_HY }; hr = { x: _N9F_WURF.R, y: _N9F_HY }; }
+  _n9fDeniz(ctx, hl, hr);
+  if (boden) {
+    for (const b of _n9fBaelle(boden, 99)) if (b.boden) _n9fBall(ctx, b.x, b.y, b.k, bodenAlpha);
+  }
+  if (L) {
+    const inHand = { L: [], R: [] };
+    for (const b of _n9fBaelle(L, s)) {
+      if (b.hand) inHand[b.hand].push(b);
+      else _n9fBall(ctx, b.x, b.y, b.k);
+    }
+    for (const h of ['L', 'R']) {
+      const p = h === 'L' ? hl : hr, liste = inHand[h];
+      liste.forEach((b, j) => _n9fBall(ctx, p.x + (liste.length > 1 ? (j - 0.5) * 9 : 0), p.y - 6, b.k));
+    }
+  } else if (haende === 'halten') {
+    _n9fBall(ctx, hr.x - 4.5, hr.y - 6, 0); _n9fBall(ctx, hr.x + 4.5, hr.y - 6, 2);
+    _n9fBall(ctx, hl.x, hl.y - 6, 1);
+  }
+  if (n.phase === 'woche') {
+    ctx.fillStyle = 'rgba(15,23,42,0.65)'; ctx.font = '700 10px sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('▶▶ Zeitraffer', 6, 245);
+  }
+}
+function _n9fZaehler(ctx) {
+  const n = _n9f, laeuft = n.phase === 'test', fertig = n.phase === 'fertig';
+  ctx.save();
+  if (n.zGlanz > 0.02) {                                // ruhiges Leuchten nach dem Test
+    ctx.save();
+    ctx.globalAlpha = n.zGlanz;
+    ctx.shadowColor = n.besser ? '#86efac' : '#fde68a'; ctx.shadowBlur = 14;
+    ctx.strokeStyle = n.besser ? '#4ade80' : '#facc15'; ctx.lineWidth = 5;
+    _bioFxRundRect(ctx, 6, 6, 194, 27, 8); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = fertig ? '#ca8a04' : '#94a3b8'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 6, 6, 194, 27, 8); ctx.fill(); ctx.stroke();
+  const txt = laeuft || fertig ? 'heruntergefallen: ' + n.gefallen + ' von 10' : 'heruntergefallen: …';
+  const k = 1 + 0.12 * Math.sin(Math.PI * _bioFxKlemme(n.zuck / 0.35));
+  ctx.translate(103, 20); ctx.scale(k, k);
+  ctx.fillStyle = laeuft || fertig ? '#0f172a' : '#94a3b8';
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(txt, 0, 1);
+  ctx.restore();
+}
+function _n9fLinie(ctx, i, l) {
+  const K = _N9F_KURVE[i], k = _N9F_LINIE[i];
+  const h = Math.max(0, _n9f.w - k.tau);
+  let breit = 2.2 + 1.45 * Math.min(h, 3), g = 1, alpha = 1, farbe = '#facc15';
+  if (l.modus === 'wachsen') { g = _bioFxEase.raus(l.da); farbe = '#fef08a'; }
+  else if (l.modus === 'welken') {
+    alpha = l.da;
+    const m = 1 - l.da, mix = (a, b) => Math.round(a + (b - a) * Math.min(1, m * 1.6));
+    farbe = 'rgb(' + mix(250, 148) + ',' + mix(204, 163) + ',' + mix(21, 184) + ')';
+  }
+  const qx = K.ax + (K.cx - K.ax) * g, qy = K.ay + (K.cy - K.ay) * g, e = _n9fPunkt(i, g);
+  const pfad = () => { ctx.beginPath(); ctx.moveTo(K.ax, K.ay); ctx.quadraticCurveTo(qx, qy, e.x, e.y); };
+  ctx.save();
+  ctx.lineCap = 'round';
+  if (l.modus !== 'welken' && l.blitz > 0.02) {        // Schein nur beim Aufblitzen
+    ctx.globalAlpha = 0.55 * l.blitz;
+    ctx.strokeStyle = '#fde047'; ctx.lineWidth = breit + 5 + 6 * l.blitz;
+    pfad(); ctx.stroke();
+  }
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = farbe; ctx.lineWidth = breit;
+  pfad(); ctx.stroke();
+  ctx.restore();
+  if (l.modus === 'da') _n9f.gezeichnet++;
+}
+function _n9fGehirn(ctx) {
+  const n = _n9f;
+  ctx.save();
+  const bg = ctx.createLinearGradient(0, 6, 0, 244);
+  bg.addColorStop(0, '#1e1b4b'); bg.addColorStop(1, '#0f172a');
+  ctx.fillStyle = bg; _bioFxRundRect(ctx, 210, 6, 204, 238, 12); ctx.fill();
+  // Nichts im Hintergrund, das wie eine blasse Linie aussehen könnte: Gezählt
+  // wird nur, was gelb ist.
+  n.gezeichnet = 0;
+  _N9F_LINIE.forEach((k, i) => { if (n.linie[i].da > 0) _n9fLinie(ctx, i, n.linie[i]); });
+  // Lichtpakete
+  for (const p of n.puls) {
+    const q = _n9fPunkt(p.i, p.rueck ? 1 - p.s : p.s);
+    ctx.save();
+    ctx.shadowColor = '#fde047'; ctx.shadowBlur = 8;
+    ctx.fillStyle = '#fffbeb';
+    ctx.beginPath(); ctx.arc(q.x, q.y, 3.2, 0, 2 * Math.PI); ctx.fill();
+    ctx.restore();
+  }
+  // Nervenzellen
+  _N9F_ZELLE.forEach((z, j) => {
+    const gl = n.glanz[j];
+    if (gl > 0.02) {
+      ctx.fillStyle = 'rgba(253,224,71,' + (0.32 * gl).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(z[0], z[1], _N9F_ZR + 7 * gl, 0, 2 * Math.PI); ctx.fill();
+    }
+    const zg = ctx.createRadialGradient(z[0] - 4, z[1] - 4, 2, z[0], z[1], _N9F_ZR);
+    zg.addColorStop(0, '#c4b5fd'); zg.addColorStop(1, '#8b5cf6');
+    ctx.fillStyle = zg; ctx.strokeStyle = gl > 0.02 ? '#fde68a' : '#ede9fe'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(z[0], z[1], _N9F_ZR, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#5b21b6';
+    ctx.beginPath(); ctx.arc(z[0] + 1.5, z[1] + 1.5, 5, 0, 2 * Math.PI); ctx.fill();
+  });
+  ctx.strokeStyle = '#818cf8'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 210, 6, 204, 238, 12); ctx.stroke();
+  ctx.restore();
+}
+function _n9fDraw(ctx, cv) {
+  if (!_n9f) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  _n9fZimmer(ctx, H);
+  _n9fLupeKeil(ctx);
+  _n9fKalender(ctx);
+  _n9fSzene(ctx);
+  _n9fLupeRing(ctx);
+  _n9fZaehler(ctx);
+  _n9fGehirn(ctx);
+  _bioFxAlleDraw(ctx, _n9f.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WELCHE FARBE HABEN MENDELS ERBSEN?   (Förderheft Bio 9 · bt2)
+// Kennung bio-mendel, Präfix _n9o. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bt2.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 300, flach gezeichnet, ohne Personen):
+//   - Mendels Klostergarten: Himmel mit zwei langsam ziehenden Wolken, eine
+//     helle Klostermauer mit zwei Bogenfenstern, davor Rasen.
+//   - links und rechts je eine Erbsenpflanze an einem Stab, in einem Beet,
+//     mit Blättern, Ranken und oben einer weißen Blüte. Die Blüten zeigen zur
+//     Mitte. Die Pflanzen wiegen sich leicht – das Bild lebt auch im Stand.
+//   - vor jeder Elternpflanze liegt ein Samen in ihrer Farbe, daneben (zum
+//     Rand hin) ein Schild „gelb“ oder „grün“. Doppelt kodiert: gelb = glatt,
+//     grün = mit drei Streifen (auch ohne Farbsehen zu unterscheiden).
+//   - in der Mitte steht ein feiner Pinsel in einem Tontopf.
+//   - unten in der Mitte ein leeres Erntebrett.
+//
+// BEDIENUNG (wörtlich):
+//   Wahlgruppe „Eltern“: „gelb × gelb“ · „grün × grün“ · „gelb × grün“
+//   (_n9oEltern('gelb-gelb' | 'gruen-gruen' | 'gelb-gruen'); Start gelb × gelb).
+//   Umstellen = neuer Anfang: Blüte wieder da, keine Schote.
+//   „▶ kreuzen und ernten“ (_n9oKreuzen) · „neu“ (_n9oNeu → gelb × gelb).
+//   Während eines Durchgangs ist „▶ kreuzen und ernten“ grau.
+//   Links steht immer die erste Farbe (sie gibt den Pollen), rechts die zweite
+//   (an ihr wächst die Schote).
+//
+// ABLAUF JE DRUCK (10,0 s; Zeiten in s nach dem Druck):
+//   0,0–1,3  der Pinsel hebt sich aus dem Topf und fliegt zur linken Blüte
+//   1,3–2,3  er tupft die Blüte ab; orange Pollenkörner haften an der Spitze
+//   2,3–3,9  er fliegt im Bogen zur rechten Blüte
+//   3,9–4,9  er tupft; die Pollenkörner gehen auf die rechte Blüte über
+//   4,9–6,0  er kehrt in den Topf zurück
+//   5,0–5,8  die rechte Blüte welkt; 5,4–7,4 dort wächst eine Schote
+//   7,4–7,8  die Schote reift (etwas heller)
+//   7,8–8,8  sie wird geerntet: gleitet klein auf das Brett (ihr Weg führt
+//            rechts am Topf vorbei, unter keinem Schild und keinem Samen durch)
+//   8,8–9,3  auf dem Brett wird sie groß (Mitte bleibt bei x = 210)
+//   9,3–9,9  sie öffnet sich: 8 Samen nebeneinander, gut zählbar. Die Samen
+//            sind sofort ganz deckend da (kein Überblenden – sonst sähe ein
+//            Samen beim Aufgehen kurz gelbgrün aus); die obere Hälfte klappt
+//            nach oben weg und gibt sie frei.
+//   10,0     Statuszeile „Die Schote ist reif. Zähle die Samen.“
+//
+// ERGEBNIS WIRD GERECHNET, NICHT EINGETRAGEN: gelbe Elternpflanzen tragen die
+//   Anlagen G G, grüne g g (Mendels reinerbige Ausgangspflanzen; die
+//   Buchstaben stehen NICHT am Bildschirm, sie kommen erst in bt3). Jeder Samen
+//   bekommt eine Anlage vom Pollen (links) und eine von der Blüte (rechts) und
+//   ist gelb, sobald ein G dabei ist.
+//
+// WERTE (lehrer.tabelle_erwartet, im Bild zu zählen – KEIN Zähler):
+//   gelb × gelb  → 8 gelbe Samen, 0 grüne
+//   grün × grün  → 0 gelbe Samen, 8 grüne
+//   gelb × grün  → 8 gelbe Samen, 0 grüne (an der Pflanze mit grünen Samen!)
+//   8 Samen je Schote sind ein glatter Modellwert.
+//
+// STATUSZEILEN:
+//   _n9o-eltern  „Eltern: gelb × grün“ (immer die aktuelle Einstellung)
+//   _n9o-status  vorher „Drücke „▶ kreuzen und ernten“.“ · im Lauf
+//                „Der Pinsel holt Pollen aus der linken Blüte …“ ·
+//                „Der Pinsel bringt den Pollen auf die rechte Blüte …“ ·
+//                „An der rechten Pflanze wächst eine Schote …“ ·
+//                „Die Schote wird geerntet …“ · danach WÖRTLICH
+//                „Die Schote ist reif. Zähle die Samen.“
+//   _n9o-hinweis führt durch die Schritte a–d der Seite (Zeile 1 wie Schritt a
+//                nur die grünen Samen – die gelbe Zahl steht im Heft schon in
+//                der Beispielzeile; Zeile 2/3 beide Zahlen; danach
+//                nennt er das nächste Ziel).
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen, ohne Zufall): Sobald die Schote
+//   offen ist, läuft um jeden der 8 Samen gleichzeitig ein kleiner blauer
+//   Lichtring (blau, nicht gelb – ein gelber Schein um einen grünen Samen
+//   läse sich als Farbe),
+//   dazu je einer um die beiden Samen vor den Eltern – der Blick geht von den
+//   Eltern zu den neuen Samen. Bei gelb × grün liegen dann neben dem
+//   gestreiften grünen Elternsamen nur glatte gelbe Samen, obwohl die Schote
+//   an der grünen Pflanze gewachsen ist. Keine Mischfarbe, nirgends.
+//
+// NICHT AM BILDSCHIRM (Lückenwörter aus Merksatz und Aufgabe 2, Wortbank):
+//   „dominant“, „gleich“ (auch nicht in „vergleiche“), „Kreuzung“, „keiner“,
+//   „gemischt“, „Hälfte“. Keine Allel-Buchstaben. Deterministisch.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9o = null;
+const _N9O_W = 420, _N9O_H = 300;
+const _N9O_ELTERN = {
+  'gelb-gelb':   { name: 'gelb × gelb', l: 'gelb',  r: 'gelb',  zeile: 1 },
+  'gruen-gruen': { name: 'grün × grün', l: 'gruen', r: 'gruen', zeile: 2 },
+  'gelb-gruen':  { name: 'gelb × grün', l: 'gelb',  r: 'gruen', zeile: 3 }
+};
+const _N9O_REIHE = ['gelb-gelb', 'gruen-gruen', 'gelb-gruen'];
+const _N9O_WORT = { gelb: 'gelb', gruen: 'grün' };
+const _N9O_ANLAGE = { gelb: ['G', 'G'], gruen: ['g', 'g'] };   // nur intern
+const _N9O_ZAHL = 8;                                         // Samen je Schote
+// Farben: Samen (Füllung, Rand, Glanz bzw. Streifen)
+const _N9O_SAMEN = {
+  gelb:  { f: '#fcd34d', r: '#a16207', g: '#fff7d1' },
+  gruen: { f: '#4caf50', r: '#14532d', g: '#d9f2d0', s: '#1b5e20' }
+};
+const _N9O_POLLEN = '#ea7a1a', _N9O_POLLENRAND = '#9a4a0c';
+// Lichtringe blau: ein gelber Schein um einen grünen Samen läse sich als Farbe
+const _N9O_RING = '#60a5fa';
+// Lage im Bild
+const _N9O_BODEN = 196;                         // Fuß der Pflanzen
+const _N9O_PFL = [{ x: 80, dir: 1, ph: 0.0 }, { x: 340, dir: -1, ph: 1.7 }];
+const _N9O_ELTERNSAMEN_Y = 218;                 // Schild steht außen neben dem Samen
+const _N9O_TOPF = { x: 210, o: 184, u: 204 };
+const _N9O_RUHE = { x: 210, y: 138, w: Math.PI / 2 };       // Pinselspitze im Topf
+const _N9O_BRETT = { l: 90, r: 330, o: 254, u: 295 };
+const _N9O_SCH = { a: 114, h: 17, cy: 272, ab: 25, rs: 10 };  // offene Schote (Endlage)
+const _N9O_KLEIN = 0.18;                         // Größe der Schote an der Pflanze
+const _N9O_BL = 1.35;                            // Blüte größer als gezeichnet
+// Zeitplan eines Durchgangs (s)
+const _N9O_P = {
+  hin: [0, 1.3], tupfL: [1.3, 2.3], rueber: [2.3, 3.9], tupfR: [3.9, 4.9],
+  zurueck: [4.9, 6.0], welk: [5.0, 5.8], wachs: [5.4, 7.4], reif: [7.4, 7.8],
+  ernte: [7.8, 8.8], gross: [8.8, 9.3], auf: [9.3, 9.9]
+};
+const _N9O_ENDE = 10.0;
+
+function _n9oKl(x) { return _bioFxKlemme(x); }
+function _n9oE(x) { return _bioFxEase.sanft(_bioFxKlemme(x)); }
+function _n9oU(ab, s) { return _n9oKl((s - ab[0]) / (ab[1] - ab[0])); }
+
+function _n9oInit() {
+  _n9o = { t: 0, el: 'gelb-gelb' };
+  _n9oAnfang();
+}
+// Anfang mit der eingestellten Elternwahl: Blüten offen, keine Schote
+function _n9oAnfang() {
+  _n9o.laeuft = false; _n9o.fertig = false; _n9o.s = 0; _n9o.letzt = '';
+  _n9o.samen = [];
+  _n9o.fx = { teile: [] };
+}
+
+// ── Vererbung: das Ergebnis wird gerechnet ─────────────
+// Linke Pflanze gibt den Pollen, rechte trägt die Schote. Jeder Samen erhält
+// je eine Anlage von beiden; ein G macht ihn gelb.
+function _n9oErnte(el) {
+  const e = _N9O_ELTERN[el], pollen = _N9O_ANLAGE[e.l], bluete = _N9O_ANLAGE[e.r];
+  const samen = [];
+  for (let k = 0; k < _N9O_ZAHL; k++) {
+    const a = pollen[k % 2], b = bluete[(k >> 1) % 2];
+    samen.push(a === 'G' || b === 'G' ? 'gelb' : 'gruen');
+  }
+  return samen;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9oEltern(v) {
+  if (!_n9o || !_N9O_ELTERN[v]) return;
+  _n9o.el = v;
+  _n9oAnfang();
+  _bioFxWelle(_n9o.fx.teile, _N9O_PFL[0].x, _N9O_ELTERNSAMEN_Y, _N9O_RING, 16);
+  _bioFxWelle(_n9o.fx.teile, _N9O_PFL[1].x, _N9O_ELTERNSAMEN_Y, _N9O_RING, 16);
+  _n9oStatus();
+}
+function _n9oKreuzen() {
+  if (!_n9o || _n9o.laeuft) return;
+  _n9oAnfang();
+  _n9o.samen = _n9oErnte(_n9o.el);
+  _n9o.laeuft = true; _n9o.s = 0;
+  _n9oStatus();
+}
+function _n9oNeu() {
+  if (!_n9o) return;
+  _n9o.el = 'gelb-gelb';
+  _n9oAnfang();
+  _n9oStatus();
+}
+function _n9oFertig() {
+  _n9o.laeuft = false; _n9o.fertig = true; _n9o.s = _N9O_ENDE;
+  for (let k = 0; k < _N9O_ZAHL; k++) _bioFxWelle(_n9o.fx.teile, _n9oSamenX(k), _N9O_SCH.cy, _N9O_RING, 14);
+  for (const p of _N9O_PFL) _bioFxWelle(_n9o.fx.teile, p.x, _N9O_ELTERNSAMEN_Y, _N9O_RING, 16);
+  _n9oStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9oZeile() {
+  if (_n9o.fertig) return 'Die Schote ist reif. Zähle die Samen.';
+  if (!_n9o.laeuft) return 'Drücke „▶ kreuzen und ernten“.';
+  const s = _n9o.s;
+  if (s < _N9O_P.rueber[0]) return 'Der Pinsel holt Pollen aus der linken Blüte …';
+  if (s < _N9O_P.zurueck[0]) return 'Der Pinsel bringt den Pollen auf die rechte Blüte …';
+  if (s < _N9O_P.ernte[0]) return 'An der rechten Pflanze wächst eine Schote …';
+  return 'Die Schote wird geerntet …';
+}
+function _n9oHinweis() {
+  if (_n9o.laeuft) return 'Sieh genau hin: Woher kommt der Pollen? Wo wächst die Schote?';
+  if (!_n9o.fertig) return 'Der Samen vor jeder Pflanze zeigt, welche Samenfarbe sie hat.';
+  const e = _N9O_ELTERN[_n9o.el];
+  // Zeile 1 steht im Heft schon als Beispiel da (8 gelbe Samen); offen ist
+  // nur die letzte Zelle. Deshalb dort wie Schritt a nur die grünen Samen.
+  if (e.zeile === 1) return 'Zähle die grünen Samen in der Schote. Notiere die Zahl in Zeile 1 der Tabelle.'
+                          + ' Stelle dann „grün × grün“ ein.';
+  const weiter = e.zeile === 2 ? ' Stelle dann „gelb × grün“ ein.'
+               : ' Lies dann noch einmal deine Vermutung. Passt sie zu Zeile 3?';
+  return 'Zähle die gelben und die grünen Samen in der Schote. Notiere beide Zahlen in Zeile '
+       + e.zeile + ' der Tabelle.' + weiter;
+}
+function _n9oStatus() {
+  if (!_n9o) return;
+  _n9o.letzt = _n9oZeile();
+  const el = document.getElementById('_n9o-status');
+  if (el) { el.textContent = _n9o.letzt; el.className = 'lmp-status on'; }
+  const ze = document.getElementById('_n9o-eltern');
+  if (ze) ze.textContent = 'Eltern: ' + _N9O_ELTERN[_n9o.el].name;
+  const h = document.getElementById('_n9o-hinweis');
+  if (h) h.textContent = _n9oHinweis();
+  const los = document.getElementById('_n9o-los');
+  if (los) {
+    los.disabled = _n9o.laeuft;
+    try { if (los.classList) los.classList.toggle('primary', !_n9o.laeuft); } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  }
+  try {
+    document.querySelectorAll('[data-n9o]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9o') === _n9o.el);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+}
+function _n9oHTML() {
+  const k = v => `<button class="sim-btn" data-n9o="${v}" onclick="_n9oEltern('${v}')">${_N9O_ELTERN[v].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welche Farbe haben Mendels Erbsen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Mendels Klostergarten mit zwei Erbsenpflanzen. Ein feiner Pinsel bringt Pollen von der linken Blüte auf die rechte Blüte. An der rechten Pflanze wächst danach eine Schote.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9o-cv" width="420" height="300" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9o-los" onclick="_n9oKreuzen()">▶ kreuzen und ernten</button>
+          <button class="sim-btn" onclick="_n9oNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Eltern</span>
+          <div class="sim-btn-row">${_N9O_REIHE.map(k).join('')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9o-eltern" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_n9o-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9o-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Im Bild sind gelbe Samen glatt. Grüne Samen haben Streifen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Eltern „gelb × gelb“ &nbsp;|&nbsp; Im Zeitraffer: Ein Durchgang dauert etwa 10 Sekunden.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9oUpdate(dt) {
+  if (!_n9o) return;
+  dt = _bioFxDt(dt);
+  _n9o.t += dt;
+  if (_n9o.laeuft) {
+    _n9o.s += dt;
+    if (_n9o.s >= _N9O_ENDE) _n9oFertig();
+    else if (_n9oZeile() !== _n9o.letzt) _n9oStatus();
+  }
+  _bioFxAlleUpdate(_n9o.fx, dt);
+}
+
+// ── Geometrie ──────────────────────────────────────────
+// Wiegen im Wind: oben stärker als unten
+function _n9oWiegen(p, y, t) {
+  const f = (_N9O_BODEN - y) / 110;
+  return 2.2 * Math.sin(t * 1.15 + p.ph) * f;
+}
+// x des Stängels in der Höhe y (windet sich leicht um die Mitte)
+function _n9oStengelX(p, y, t) {
+  return p.x + 3 * Math.sin((_N9O_BODEN - y) / 15 + p.ph) + _n9oWiegen(p, y, t);
+}
+// Mitte der Blüte und ihre Spitze (dort wird getupft)
+function _n9oBluete(p, t) {
+  const x = _n9oStengelX(p, 100, t) + p.dir * 16, y = 86 + 0.6 * Math.sin(t * 1.3 + p.ph);
+  return { x, y, sx: x + p.dir * 11 * _N9O_BL, sy: y + 5 * _N9O_BL };
+}
+function _n9oSamenX(k) { return 210 + (k - (_N9O_ZAHL - 1) / 2) * _N9O_SCH.ab; }
+function _n9oBez(a, c, b, u) {
+  const v = 1 - u;
+  return { x: v * v * a.x + 2 * v * u * c.x + u * u * b.x, y: v * v * a.y + 2 * v * u * c.y + u * u * b.y };
+}
+// Pinselspitze und Richtung (Winkel von der Spitze zum Stielende)
+function _n9oPinsel(s, t) {
+  const R = _N9O_RUHE;
+  if (!_n9o.laeuft) return { x: R.x, y: R.y, w: R.w };
+  const bl = _n9oBluete(_N9O_PFL[0], t), br = _n9oBluete(_N9O_PFL[1], t);
+  const L = { x: bl.sx, y: bl.sy, w: Math.PI / 3 }, Rt = { x: br.sx, y: br.sy, w: 2 * Math.PI / 3 };
+  const P = _N9O_P;
+  const tupf = (z, u) => {
+    const a = Math.sin(Math.PI * u) * 2.6, ph = 4 * Math.PI * u;
+    return { x: z.x + a * Math.cos(ph), y: z.y + a * Math.sin(ph), w: z.w };
+  };
+  if (s < P.hin[1]) {
+    const u = _n9oE(_n9oU(P.hin, s)), q = _n9oBez(R, { x: 170, y: 70 }, L, u);
+    return { x: q.x, y: q.y, w: R.w + (L.w - R.w) * u };
+  }
+  if (s < P.tupfL[1]) return tupf(L, _n9oU(P.tupfL, s));
+  if (s < P.rueber[1]) {
+    const u = _n9oE(_n9oU(P.rueber, s)), q = _n9oBez(L, { x: 210, y: 18 }, Rt, u);
+    return { x: q.x, y: q.y, w: L.w + (Rt.w - L.w) * u };
+  }
+  if (s < P.tupfR[1]) return tupf(Rt, _n9oU(P.tupfR, s));
+  const u = _n9oE(_n9oU(P.zurueck, s)), q = _n9oBez(Rt, { x: 250, y: 70 }, R, u);
+  return { x: q.x, y: q.y, w: Rt.w + (R.w - Rt.w) * u };
+}
+// Pollenkörner an der Pinselspitze und auf der rechten Blüte (je 0 … 5)
+function _n9oPollenPinsel(s) {
+  if (!_n9o.laeuft) return 0;
+  if (s < _N9O_P.tupfL[0]) return 0;
+  if (s < _N9O_P.tupfR[0]) return 5 * _n9oU(_N9O_P.tupfL, s);
+  return 5 * (1 - _n9oU(_N9O_P.tupfR, s));
+}
+function _n9oPollenBluete(s) {
+  if (!_n9o.laeuft && !_n9o.fertig) return 0;
+  return 5 * _n9oU(_N9O_P.tupfR, s);
+}
+// Lage der Schote: Drehpunkt (Stielende), Winkel, Größe, offen (0 … 1)
+function _n9oSchoteLage(s, t) {
+  const br = _n9oBluete(_N9O_PFL[1], t);
+  const A = { x: br.x, y: br.y + 5 }, w0 = 1.95;
+  if (s < _N9O_P.ernte[0]) {
+    const g = _n9oE(_n9oU(_N9O_P.wachs, s));
+    return { x: A.x, y: A.y, w: w0 + 0.05 * Math.sin(t * 1.15 + 1.7), k: 0.03 + (_N9O_KLEIN - 0.03) * g, auf: 0 };
+  }
+  // erst klein hinüber (Mitte der kleinen Schote landet bei x = 210) …
+  const u = _n9oE(_n9oU(_N9O_P.ernte, s));
+  const ZK = { x: 210 - _N9O_SCH.a * _N9O_KLEIN, y: _N9O_SCH.cy };
+  const q = _n9oBez(A, { x: 262, y: 236 }, ZK, u);
+  const w = w0 * (1 - _n9oE(u / 0.7));
+  // … dann auf dem Brett groß werden, die Mitte bleibt stehen
+  const g = _n9oE(_n9oU(_N9O_P.gross, s));
+  const k = _N9O_KLEIN + (1 - _N9O_KLEIN) * g;
+  const x = g > 0 ? 210 - _N9O_SCH.a * k : q.x;
+  return { x, y: q.y, w, k, auf: _n9oE(_n9oU(_N9O_P.auf, s)) };
+}
+
+// ── Zeichnen: Garten ───────────────────────────────────
+function _n9oWolke(ctx, x, y, k) {
+  ctx.fillStyle = '#ffffff';
+  for (const [dx, dy, r] of [[0, 0, 9], [11, -4, 11], [23, 0, 9], [12, 3, 9]]) {
+    ctx.beginPath(); ctx.arc(x + dx * k, y + dy * k, r * k, 0, 2 * Math.PI); ctx.fill();
+  }
+}
+function _n9oGarten(ctx, t) {
+  const W = _N9O_W, H = _N9O_H;
+  ctx.fillStyle = '#e3eff7'; ctx.fillRect(0, 0, W, H);
+  // zwei Wolken ziehen langsam
+  _n9oWolke(ctx, ((t * 5 + 60) % 500) - 40, 16, 1);
+  _n9oWolke(ctx, ((t * 3.5 + 300) % 500) - 40, 24, 0.8);
+  // Klostermauer mit Abdeckung
+  ctx.fillStyle = '#ebe1cf'; ctx.fillRect(0, 42, W, 138);
+  ctx.strokeStyle = '#d5c6ab'; ctx.lineWidth = 1;
+  for (let r = 0; r < 8; r++) {
+    const y = 42 + r * 17.25;
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    for (let x = (r % 2) * 22; x < W; x += 44) {
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 17.25); ctx.stroke();
+    }
+  }
+  ctx.fillStyle = '#a5684a'; ctx.fillRect(0, 34, W, 9);
+  ctx.fillStyle = '#8a5238'; ctx.fillRect(0, 42, W, 2);
+  // zwei Bogenfenster
+  for (const fx of [150, 270]) {
+    ctx.fillStyle = '#c9b796';
+    ctx.beginPath(); ctx.moveTo(fx - 18, 134); ctx.lineTo(fx - 18, 86);
+    ctx.arc(fx, 86, 18, Math.PI, 0, false); ctx.lineTo(fx + 18, 134); ctx.closePath(); ctx.fill();
+    ctx.fillStyle = '#8fa3b6';
+    ctx.beginPath(); ctx.moveTo(fx - 14, 130); ctx.lineTo(fx - 14, 86);
+    ctx.arc(fx, 86, 14, Math.PI, 0, false); ctx.lineTo(fx + 14, 130); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#c9b796'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(fx, 72); ctx.lineTo(fx, 130); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(fx - 14, 100); ctx.lineTo(fx + 14, 100); ctx.stroke();
+  }
+  // Rasen
+  ctx.fillStyle = '#d3e7bd'; ctx.fillRect(0, 180, W, H - 180);
+  ctx.fillStyle = '#c3dca8'; ctx.fillRect(0, 180, W, 3);
+  // Beete
+  ctx.fillStyle = '#8b6b4a';
+  for (const p of _N9O_PFL) { _bioFxRundRect(ctx, p.x - 32, 188, 64, 15, 7); ctx.fill(); }
+  // Erntebrett
+  const B = _N9O_BRETT;
+  ctx.fillStyle = '#ecd8b2'; ctx.strokeStyle = '#b48c5a'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, B.l, B.o, B.r - B.l, B.u - B.o, 7); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#dcc293'; ctx.lineWidth = 1;
+  for (const y of [B.o + 13, B.o + 27]) { ctx.beginPath(); ctx.moveTo(B.l + 8, y); ctx.lineTo(B.r - 8, y); ctx.stroke(); }
+}
+
+// ── Zeichnen: Pflanze ──────────────────────────────────
+function _n9oBlatt(ctx, x, y, rx, ry, w) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(w);
+  ctx.fillStyle = '#5aa63f'; ctx.strokeStyle = '#2f6b24'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(0, 0, rx, ry, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#3d8a2e'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.moveTo(-rx * 0.8, 0); ctx.lineTo(rx * 0.8, 0); ctx.stroke();
+  ctx.restore();
+}
+// Ranke: kleine Spirale, die zum Stab greift
+function _n9oRanke(ctx, x, y, zx, t) {
+  ctx.save();
+  ctx.strokeStyle = '#4f9a36'; ctx.lineWidth = 1.2;
+  const mx = zx + 1.5 * Math.sin(t * 1.4 + y);
+  ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo((x + mx) / 2, y - 9, mx, y - 6);
+  ctx.arc(mx, y - 3, 3, -Math.PI / 2, 1.2 * Math.PI, false);
+  ctx.stroke();
+  ctx.restore();
+}
+// Weiße Erbsenblüte von der Seite; deck 0 … 1 (welkt), pollen = Körner an der Spitze
+function _n9oBlueteZeichnen(ctx, p, b, deck, pollen) {
+  const d = p.dir;
+  ctx.save();
+  if (deck > 0.01) {
+    ctx.globalAlpha = deck;
+    const k = (0.55 + 0.45 * deck) * _N9O_BL;
+    ctx.translate(b.x, b.y); ctx.scale(k, k); ctx.translate(-b.x, -b.y);
+    // Kelch
+    ctx.fillStyle = '#5aa63f';
+    ctx.beginPath(); ctx.moveTo(b.x - d * 9, b.y + 6); ctx.lineTo(b.x - d * 2, b.y + 1); ctx.lineTo(b.x - d * 2, b.y + 9); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+    // Fahne (großes Blütenblatt hinten)
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath(); ctx.ellipse(b.x - d * 3, b.y - 3, 8, 10.5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    // Flügel
+    ctx.fillStyle = '#f8fafc';
+    ctx.beginPath(); ctx.ellipse(b.x + d * 4, b.y + 3, 7.5, 5, d * 0.25, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    // Schiffchen
+    ctx.fillStyle = '#e4f2d8';
+    ctx.beginPath(); ctx.ellipse(b.x + d * 8, b.y + 5, 4, 2.6, d * 0.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+  // Pollenkörner an der Spitze
+  const n = Math.floor(pollen + 1e-6), rest = pollen - n;
+  for (let i = 0; i < 5; i++) {
+    const a = i < n ? 1 : i === n ? rest : 0;
+    if (a <= 0.02) continue;
+    const w = i * 1.3 + 0.4, z = 0.55 + 0.45 * deck;        // welkt die Blüte, rücken die Körner mit
+    _n9oKorn(ctx, b.x + (b.sx - b.x) * z + 3 * Math.cos(w), b.y + (b.sy - b.y) * z + 2.4 * Math.sin(w), a * deck);
+  }
+}
+function _n9oKorn(ctx, x, y, a) {
+  if (a <= 0.02) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = _N9O_POLLEN; ctx.strokeStyle = _N9O_POLLENRAND; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.arc(x, y, 1.9, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _n9oPflanze(ctx, p, t, deck, pollen, stiel) {
+  // Stab
+  ctx.save();
+  ctx.strokeStyle = '#a07a50'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(p.x - p.dir * 9, 200); ctx.lineTo(p.x - p.dir * 9, 62); ctx.stroke();
+  ctx.restore();
+  // Stängel
+  ctx.save();
+  ctx.strokeStyle = '#3f8a2c'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  for (let y = _N9O_BODEN; y >= 100; y -= 4) {
+    const x = _n9oStengelX(p, y, t);
+    if (y === _N9O_BODEN) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.restore();
+  // Blätter (Fiederpaare) und Ranken
+  // Knoten abwechselnd zur Mitte und nach außen; der oberste zeigt nach
+  // außen, damit die Schote an der Blütenseite frei hängt
+  const knoten = [180, 161, 143, 124];
+  knoten.forEach((y, i) => {
+    const x = _n9oStengelX(p, y, t), s = (i % 2 ? -1 : 1) * p.dir;
+    const zit = 0.05 * Math.sin(t * 1.6 + i + p.ph);
+    ctx.save();
+    ctx.strokeStyle = '#3f8a2c'; ctx.lineWidth = 1.4;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + s * 22, y - 9); ctx.stroke();
+    ctx.restore();
+    _n9oBlatt(ctx, x + s * 10, y - 7, 7.5, 4.3, -s * 0.5 + zit);
+    _n9oBlatt(ctx, x + s * 13, y + 1, 7.5, 4.3, s * 0.35 + zit);
+    _n9oBlatt(ctx, x + s * 23, y - 6, 7, 4, s * 0.05 + zit);
+    if (i >= 2) _n9oRanke(ctx, x, y - 2, p.x - p.dir * 9, t);
+  });
+  // Blütenstiel und Blüte
+  const b = _n9oBluete(p, t), xs = _n9oStengelX(p, 100, t);
+  ctx.save();
+  ctx.strokeStyle = '#3f8a2c'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(xs, 100); ctx.quadraticCurveTo(xs + p.dir * 4, 90, b.x, b.y + 4); ctx.stroke();
+  ctx.restore();
+  if (stiel) {
+    ctx.save();
+    ctx.fillStyle = '#5aa63f'; ctx.strokeStyle = '#2f6b24'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(b.x, b.y + 4, 2.8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.restore();
+    return;
+  }
+  _n9oBlueteZeichnen(ctx, p, b, deck, pollen);
+}
+
+// ── Zeichnen: Samen ────────────────────────────────────
+// Ein Samen: gelb = glatt mit Glanzpunkt, grün = mit drei Streifen.
+// Die Streifen sind Sehnen des Kreises (gerechnet, ohne clip()).
+function _n9oSamen(ctx, x, y, r, farbe, a) {
+  const c = _N9O_SAMEN[farbe];
+  ctx.save();
+  ctx.globalAlpha = a == null ? 1 : a;
+  ctx.fillStyle = c.f; ctx.strokeStyle = c.r; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  if (farbe === 'gruen') {
+    ctx.strokeStyle = c.s; ctx.lineWidth = Math.max(1.4, r * 0.18); ctx.lineCap = 'round';
+    const w = -0.7, nx = Math.cos(w + Math.PI / 2), ny = Math.sin(w + Math.PI / 2);
+    for (const o of [-0.45, 0, 0.45]) {
+      const d = o * r, hl = Math.sqrt(Math.max(0, (0.78 * r) ** 2 - d * d));
+      const mx = x + nx * d, my = y + ny * d;
+      ctx.beginPath(); ctx.moveTo(mx - Math.cos(w) * hl, my - Math.sin(w) * hl);
+      ctx.lineTo(mx + Math.cos(w) * hl, my + Math.sin(w) * hl); ctx.stroke();
+    }
+  } else {
+    ctx.fillStyle = c.g;
+    ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.28, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Samen vor den Eltern mit Schild „gelb“ / „grün“
+function _n9oElternSamen(ctx) {
+  const e = _N9O_ELTERN[_n9o.el];
+  [e.l, e.r].forEach((f, i) => {
+    const x = _N9O_PFL[i].x;
+    _n9oSamen(ctx, x, _N9O_ELTERNSAMEN_Y, 11, f, 1);
+    ctx.save();
+    ctx.font = '700 13px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    const txt = _N9O_WORT[f], bw = ctx.measureText(txt).width + 14;
+    const d = _N9O_PFL[i].dir, mx = x - d * (17 + bw / 2), y0 = _N9O_ELTERNSAMEN_Y - 9;
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+    _bioFxRundRect(ctx, mx - bw / 2, y0, bw, 18, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#0f172a'; ctx.fillText(txt, mx, y0 + 13.5);
+    ctx.restore();
+  });
+}
+
+// ── Zeichnen: Pinsel und Topf ──────────────────────────
+function _n9oPinselZeichnen(ctx, P, pollen) {
+  ctx.save();
+  ctx.translate(P.x, P.y); ctx.rotate(P.w);
+  // Stiel
+  ctx.fillStyle = '#c0843d'; ctx.strokeStyle = '#7c4a1a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(20, -2.6); ctx.lineTo(58, -2); ctx.arc(58, 0, 2, -Math.PI / 2, Math.PI / 2, false);
+  ctx.lineTo(20, 2.6); ctx.closePath(); ctx.fill(); ctx.stroke();
+  // Zwinge
+  ctx.fillStyle = '#b6bec8'; ctx.strokeStyle = '#64748b';
+  ctx.beginPath(); ctx.rect(13, -3, 7, 6); ctx.fill(); ctx.stroke();
+  // Haare
+  ctx.fillStyle = '#5b3a1e';
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(4, -3.4, 13, -2.8); ctx.lineTo(13, 2.8);
+  ctx.quadraticCurveTo(4, 3.4, 0, 0); ctx.closePath(); ctx.fill();
+  ctx.restore();
+  const n = Math.floor(pollen + 1e-6), rest = pollen - n;
+  for (let i = 0; i < 5; i++) {
+    const a = i < n ? 1 : i === n ? rest : 0;
+    const d = 1.5 + i * 1.7, q = (i % 2 ? 1 : -1) * 2.2;
+    _n9oKorn(ctx, P.x + Math.cos(P.w) * d - Math.sin(P.w) * q, P.y + Math.sin(P.w) * d + Math.cos(P.w) * q, a);
+  }
+}
+function _n9oTopf(ctx) {
+  const T = _N9O_TOPF;
+  ctx.save();
+  ctx.fillStyle = '#c2703d'; ctx.strokeStyle = '#7c3f1d'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(T.x - 13, T.o + 4); ctx.lineTo(T.x + 13, T.o + 4);
+  ctx.lineTo(T.x + 10, T.u); ctx.lineTo(T.x - 10, T.u); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#d4834e';
+  _bioFxRundRect(ctx, T.x - 15, T.o, 30, 6, 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+// ── Zeichnen: Schote ───────────────────────────────────
+// Umriss einer Hälfte (oben sg = -1, unten sg = 1) in Schotenkoordinaten:
+// Stielende bei x = 0, Spitze bei x = 2a, Naht auf y = 0.
+function _n9oHaelfte(ctx, a, h, sg) {
+  const L = 2 * a;
+  ctx.beginPath();
+  ctx.moveTo(0, 0);
+  ctx.quadraticCurveTo(2, sg * h, 20, sg * h);
+  ctx.lineTo(L - 24, sg * h);
+  ctx.quadraticCurveTo(L - 2, sg * h, L, sg > 0 ? 0 : -3);
+  ctx.closePath();
+}
+function _n9oSchote(ctx, s, t) {
+  const g = _n9oSchoteLage(s, t);
+  const S = _N9O_SCH, a = S.a, h = S.h, k = g.k;
+  const reif = _n9oU(_N9O_P.reif, s);
+  const haut = reif > 0.5 ? '#86b84a' : '#6fae45', rand = '#2f6b24';
+  ctx.save();
+  ctx.translate(g.x, g.y); ctx.rotate(g.w); ctx.scale(k, k);
+  const lw = 1.6 / k;
+  // untere Hälfte
+  ctx.fillStyle = haut; ctx.strokeStyle = rand; ctx.lineWidth = lw;
+  _n9oHaelfte(ctx, a, h, 1); ctx.fill(); ctx.stroke();
+  if (g.auf <= 0.01) {
+    // geschlossen: obere Hälfte, Samen nur als Wölbungen, Naht
+    _n9oHaelfte(ctx, a, h, -1); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = 'rgba(47,107,36,0.45)'; ctx.lineWidth = 1.2 / k;
+    for (let j = 0; j < _N9O_ZAHL; j++) {
+      const x = a + (j - (_N9O_ZAHL - 1) / 2) * S.ab;
+      ctx.beginPath(); ctx.arc(x, 0, S.rs * 0.9, -2.4, -0.7, false); ctx.stroke();
+    }
+    ctx.strokeStyle = rand; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.moveTo(4, 0); ctx.lineTo(2 * a - 4, -1); ctx.stroke();
+    ctx.restore();
+    return;
+  }
+  // offen: helles Inneres und die Samen sind sofort ganz deckend da – nichts
+  // wird überblendet, sonst sähe ein Samen beim Aufgehen kurz gelbgrün aus.
+  // Die obere Hälfte liegt zuerst darüber und klappt nach oben weg.
+  const hoch = 12 * g.auf;
+  ctx.fillStyle = '#f1f8e4'; ctx.strokeStyle = '#a3c47c'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(6, -hoch * 0.5);
+  ctx.quadraticCurveTo(8, -h + 3 - hoch * 0.5, 24, -h + 3 - hoch * 0.4);
+  ctx.lineTo(2 * a - 26, -h + 3 - hoch * 0.4);
+  ctx.quadraticCurveTo(2 * a - 6, -h + 3 - hoch * 0.5, 2 * a - 6, -hoch * 0.5);
+  ctx.quadraticCurveTo(2 * a - 6, h - 3, 2 * a - 26, h - 3);
+  ctx.lineTo(24, h - 3);
+  ctx.quadraticCurveTo(8, h - 3, 6, -hoch * 0.5);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  _n9o.samen.forEach((f, j) => _n9oSamen(ctx, a + (j - (_N9O_ZAHL - 1) / 2) * S.ab, 0, S.rs, f, 1));
+  ctx.translate(0, -hoch);
+  ctx.fillStyle = '#9fcc6a'; ctx.strokeStyle = rand; ctx.lineWidth = lw;
+  _n9oHaelfte(ctx, a, h, -1); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+function _n9oDraw(ctx, cv) {
+  if (!_n9o) return;
+  const t = _n9o.t, s = _n9o.laeuft || _n9o.fertig ? _n9o.s : 0;
+  const lauf = _n9o.laeuft || _n9o.fertig;
+  ctx.clearRect(0, 0, cv.width, cv.height);
+  _n9oGarten(ctx, t);
+  // linke Pflanze: Blüte bleibt
+  _n9oPflanze(ctx, _N9O_PFL[0], t, 1, 4, false);
+  // rechte Pflanze: Blüte bekommt Pollen, welkt, dann bleibt der Stiel
+  const welk = lauf ? _n9oU(_N9O_P.welk, s) : 0;
+  const rechtsStiel = lauf && s >= _N9O_P.welk[1];
+  _n9oPflanze(ctx, _N9O_PFL[1], t, 1 - welk, _n9oPollenBluete(s), rechtsStiel);
+  _n9oElternSamen(ctx);
+  _n9oPinselZeichnen(ctx, _n9oPinsel(s, t), _n9oPollenPinsel(s));
+  _n9oTopf(ctx);
+  if (lauf && s >= _N9O_P.wachs[0]) _n9oSchote(ctx, s, t);
+  _bioFxAlleDraw(ctx, _n9o.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · KURZ GEMERKT ODER LANGE GEWUSST?   (Förderheft Bio 9 · br7)
+// Kennung bio-merken, Präfix _n9g. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// br7.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 300) – ein Gedächtnismodell OHNE Beschriftung:
+//   oben    Linas Wortkarten: englische Wörter mit kleinen Bildern
+//           (sun, fish, tree, house, car | ball, star, apple, cup, moon).
+//           5 Wörter: eine Reihe, 10 Wörter: zwei Reihen. Die Karten liegen
+//           ausgebreitet, damit jedes Wort lesbar bleibt.
+//   Mitte   ein kleiner Kasten mit 7 gestrichelten Plätzen.
+//   unten   ein großer Kasten ohne Plätze (viel Raum).
+//   rechts  ein Wandkalender: großes Blatt „Tag 1“ … „Tag 8“, darunter 8
+//           Tageskästchen; ein Buch-Symbol an jedem Lesetag (Tag 1; bei
+//           „an 3 Tagen lesen“ auch Tag 2 und Tag 3). Darunter die zwei Zähler
+//           „sofort gewusst:“ und „nach 1 Woche gewusst:“ (oben / unten).
+//
+// BEDIENUNG (wörtlich wie im sim_plan):
+//   „Lernen“: 5 Wörter, einmal lesen | 10 Wörter, einmal lesen |
+//             10 Wörter, an 3 Tagen lesen         (_n9gArt('a'|'b'|'c'))
+//   „▶ Lernen“ (_n9gLernen) · „▶ 1 Woche später“ (_n9gWoche) · „neu“ (_n9gNeu)
+//   Eine andere Einstellung oder „neu“ räumt alles ab (Einstellung bleibt bei
+//   „neu“ stehen). „▶ Lernen“ nach dem Lernen tut nichts (Hinweis), nach der
+//   Woche beginnt es von vorn. „▶ 1 Woche später“ vor „▶ Lernen“ tut nichts
+//   (Hinweis „Drücke zuerst „▶ Lernen“.“). Während etwas läuft, bewirken die
+//   beiden ▶-Knöpfe nichts – mit EINER Ausnahme: „▶ 1 Woche später“ während
+//   „▶ Lernen“ wird vorgemerkt (Knopf hervorgehoben, Hinweis) und startet,
+//   sobald Lina fertig gelesen hat. Die Heftschritte sagen „Drücke „▶ Lernen“,
+//   dann „▶ 1 Woche später““ in einem Atemzug; das Lesen dauert bis zu 6 s, und
+//   ein verschluckter Druck sähe für das Kind aus wie „geht nicht“.
+//
+// ABLAUF
+//   ▶ Lernen (Tag 1): Lina liest die Karten der Reihe nach (0,42 s je Karte).
+//     Jede Karte fliegt als kleine Kopie auf den nächsten freien Platz im
+//     kleinen Kasten. Sind alle 7 Plätze belegt, prallt die Kopie am Rand ab
+//     und fällt seitlich über den Rand heraus (Aha: Zeitlupe, Rand leuchtet,
+//     Banner „Kein Platz mehr frei!“ – einmal je Versuch). Danach rutschen einzelne
+//     Karten durch den Durchgang in den großen Kasten (5 Wörter: 1, 10 Wörter:
+//     2). Der Zähler „sofort gewusst“ zählt live jede gelandete Karte mit.
+//   ▶ 1 Woche später: Der Kalender blättert Tag 2 … Tag 8. In der ersten Nacht
+//     verblassen die Karten im kleinen Kasten und verschwinden; die Karten im
+//     großen Kasten bleiben. An Lesetagen (nur „an 3 Tagen lesen“: Tag 2 und
+//     Tag 3) leuchten zuerst die Karten auf, die schon im großen Kasten liegen;
+//     die übrigen fliegen wieder in den kleinen Kasten (7 Plätze, der Rest
+//     prallt ab). Jede Karte, die dort zum ZWEITEN Mal landet, rutscht in den
+//     großen Kasten. Erst an Tag 8 erscheint der Zähler „nach 1 Woche gewusst“.
+//
+// MODELL (Modellwerte, Lehrerteil) – Tag 1 rutschen nur die Karten aus
+//   _N9G_ART[x].erst; ab Tag 2 jede Karte, die zum zweiten Mal im kleinen
+//   Kasten landet. Nachgerechnet:
+//   a  5 einmal:   Tag 1: 0–4 rein, 1 rutscht            → sofort 5, Woche 1
+//   b  10 einmal:  Tag 1: 0–6 rein, 7–9 prallen ab, 1 und 4 rutschen
+//                                                        → sofort 7, Woche 2
+//   c  10 an 3 Tagen: Tag 1 wie b (sofort 7). Tag 2: 0,2,3,5,6,7,8 rein,
+//      9 prallt ab; 0,2,3,5,6 zum zweiten Mal → rutschen (groß: 7).
+//      Tag 3: 7,8,9 rein; 7,8 zum zweiten Mal → rutschen (groß: 9).
+//      Nacht zu Tag 4: 9 verblasst                       → Woche 9
+//   WERTE (sim_plan): sofort gewusst: 5 von 5 · nach 1 Woche gewusst: 1 von 5
+//                     sofort gewusst: 7 von 10 · nach 1 Woche gewusst: 2 von 10
+//                     sofort gewusst: 7 von 10 · nach 1 Woche gewusst: 9 von 10
+//
+// STATUSZEILEN: _n9g-sofort „sofort gewusst: 7 von 10“ (vor ▶ Lernen „–“),
+//   _n9g-woche „nach 1 Woche gewusst: 2 von 10“ (bis Tag 8 „–“), _n9g-tag
+//   „Lernen: 10 Wörter, einmal lesen · Kalender: Tag 3“, _n9g-hinweis (was
+//   gerade geschieht, wechselt je Karte, damit der Prüfstand nicht abbricht).
+//
+// ZEITEN: Die Woche bei „an 3 Tagen lesen“ dauert rund 6,6 s, ▶ Lernen mit
+//   10 Wörtern rund 6 s (mit Zeitlupe) – beides bleibt unter den rund 7,9 s,
+//   die simfakten.js ohne Schalter je Knopf abliest (8 Drücke zu je 62 Frames).
+//   Keine Anzeige steht länger als 0,45 s still, solange etwas läuft (sonst
+//   hört der Prüfstand nach 14 gleichen Ablesungen zu früh auf).
+//
+// Nicht am Bildschirm (Lückenwörter aus Merksatz, Aufgabe 2, Hilfe 3):
+//   Kurzzeitgedächtnis, Langzeitgedächtnis, wiederholen, vergessen, wenige –
+//   auch nicht als Wortteil („weniger“, „Gedächtnis“). Das Wort „alle“ steht
+//   ebenfalls nicht da (Ablenker der Wortbank).
+// Effekte nur aus _bioFx: kurz, ruhig, kein Blinken über 1 Hz, keine Wertung.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9g = null;
+const _N9G_WORT = ['sun', 'fish', 'tree', 'house', 'car', 'ball', 'star', 'apple', 'cup', 'moon'];
+const _N9G_ART = {
+  a: { name: '5 Wörter, einmal lesen',      n: 5,  tage: [1],       erst: [1] },
+  b: { name: '10 Wörter, einmal lesen',     n: 10, tage: [1],       erst: [1, 4] },
+  c: { name: '10 Wörter, an 3 Tagen lesen', n: 10, tage: [1, 2, 3], erst: [1, 4] }
+};
+const _N9G_START = 'a';
+const _N9G_PLAETZE = 7;                      // Plätze im kleinen Kasten
+const _N9G_TAGE = 8;                         // Tag 1 + 7 Tage = 1 Woche später
+// Zeiten in s
+const _N9G_T = {
+  vor: 0.3, takt1: 0.42, flug1: 0.40,        // Tag 1 (▶ Lernen)
+  glanz: 0.25, takt2: 0.2, flug2: 0.28,      // Tag 2 und Tag 3
+  rutsch: 0.42, rtakt: 0.18, rnach: 0.26,    // vom kleinen in den großen Kasten
+  nacht: 0.16, nachtRuhig: 0.28, nachtBlass: 0.32, blass: 0.32, raus: 0.5
+};
+// Geometrie (Leinwand 420 x 300; linke Spalte x 8–268, rechte x 282–414)
+const _N9G_MX = 138;                         // Mitte der linken Spalte
+const _N9G_KB = 46, _N9G_KH = 34;            // Wortkarte oben
+const _N9G_MH = 15;                          // halbe Kantenlänge der kleinen Kopie
+const _N9G_KLEIN = { x: 15, y: 100, w: 246, h: 46 };
+const _N9G_GROSS = { x: 8, y: 172, w: 260, h: 120 };
+const _N9G_KAL = { x: 284, y: 6, w: 126, h: 140 };
+
+// ── Lagen ────────────────────────────────────────────────────────────
+function _n9gObenPos(w) {
+  const n = _N9G_ART[_n9g.art].n;
+  return { x: 31 + (w % 5) * 53.5, y: n > 5 ? 23 + Math.floor(w / 5) * 40 : 43 };
+}
+function _n9gKleinPos(k) { return { x: 36 + k * 34, y: 123 }; }
+function _n9gGrossPos(p) { return { x: 34 + (p % 5) * 52, y: 206 + Math.floor(p / 5) * 50 }; }
+
+// ── Zustand ──────────────────────────────────────────────────────────
+function _n9gInit() {
+  _n9g = { art: _N9G_START, t: 0 };
+  _n9gLeer();
+}
+// Räumt den Versuch ab; die Einstellung bleibt.
+function _n9gLeer() {
+  const n = _n9g;
+  n.phase = 'bereit';                        // bereit · lernen · gelernt · woche · fertig
+  n.tag = 1; n.flip = null;
+  n.klein = new Array(_N9G_PLAETZE).fill(null);   // null | {w, da}
+  n.gross = [];                              // {w, da}
+  n.flieger = []; n.raus = []; n.blass = [];
+  n.mal = new Array(10).fill(0);             // wie oft im kleinen Kasten gelandet
+  n.oben = new Array(10).fill(0);            // Leuchten der Wortkarten (Restzeit)
+  n.sofort = null; n.woche = null;
+  n.plan = []; n.ps = 0; n.planEnde = null;
+  n.rand = 0; n.grossGlanz = 0; n.puls = [0, 0];
+  n.prallZahl = 0; n.voll = false; n.ersteNacht = false;
+  n.hinweis = 'Drücke „▶ Lernen“.';
+  n.fx = { teile: [] }; n.zeitlupe = null;
+  n.wocheDanach = false;                     // „▶ 1 Woche später“ schon während des Lesens gedrückt
+  n.letzt = '';
+}
+
+// ── Bedienung ────────────────────────────────────────────────────────
+function _n9gArt(v) {
+  if (!_n9g || !_N9G_ART[v]) return;
+  _n9g.art = v;
+  _n9gLeer();
+  _n9gStatus();
+}
+function _n9gNeu() {
+  if (!_n9g) return;
+  _n9gLeer();
+  _n9gStatus();
+}
+function _n9gLernen() {
+  const n = _n9g;
+  if (!n || n.phase === 'lernen' || n.phase === 'woche') return;
+  if (n.phase === 'gelernt') {
+    n.hinweis = 'Lina hat schon gelesen. Drücke „▶ 1 Woche später“.';
+    _n9gStatus(); return;
+  }
+  if (n.phase === 'fertig') _n9gLeer();      // nach der Woche: von vorn
+  const A = _N9G_ART[n.art];
+  n.phase = 'lernen'; n.sofort = 0;
+  n.plan = [{ dauer: _N9G_T.vor }];
+  for (let w = 0; w < A.n; w++) n.plan.push({ dauer: _N9G_T.takt1, tu: () => _n9gLies(w, _N9G_T.flug1) });
+  n.plan.push({ dauer: 0.2 });
+  n.plan.push({ dauer: 0, tu: () => _n9gRutschPlan(A.erst.slice(), _N9G_T.rutsch - _N9G_T.rtakt + 0.25) });
+  n.planEnde = _n9gGelernt;
+  n.hinweis = 'Lina liest die Karten.';
+  _n9gStatus();
+}
+function _n9gWoche() {
+  const n = _n9g;
+  if (!n || n.phase === 'woche') return;
+  if (n.phase === 'lernen') {                // zu früh gedrückt: vormerken, startet nach dem Lesen
+    n.wocheDanach = true;
+    _n9gStatus(); return;
+  }
+  if (n.phase === 'bereit') { n.hinweis = 'Drücke zuerst „▶ Lernen“.'; _n9gStatus(); return; }
+  if (n.phase === 'fertig') {
+    n.hinweis = 'Die Woche ist vorbei. Wähle bei „Lernen“ eine andere Einstellung.';
+    _n9gStatus(); return;
+  }
+  const A = _N9G_ART[n.art];
+  n.phase = 'woche';
+  n.plan = [];
+  for (let d = 2; d <= _N9G_TAGE; d++) {
+    n.plan.push({ dauer: _N9G_T.nacht, tu: st => _n9gNacht(d, st) });
+    if (A.tage.indexOf(d) >= 0) n.plan.push({ dauer: _N9G_T.glanz, tu: () => _n9gLeseTag(d) });
+  }
+  n.plan.push({ dauer: 0.1 });
+  n.planEnde = _n9gWocheEnde;
+  _n9gStatus();
+}
+
+// ── Ablaufplan: Schritte {dauer, tu}; tu läuft zu Beginn des Schritts und
+//    darf weitere Schritte direkt dahinter einfügen (splice an Stelle 1).
+function _n9gPlanLauf(d) {
+  const n = _n9g;
+  let rest = d, sicher = 0;
+  while (n.plan.length && sicher++ < 200) {
+    const st = n.plan[0];
+    if (!st.los) { st.los = true; n.ps = 0; if (st.tu) st.tu(st); }
+    const bleibt = st.dauer - n.ps;
+    if (rest < bleibt) { n.ps += rest; return; }
+    rest -= Math.max(0, bleibt);
+    n.plan.shift(); n.ps = 0;
+  }
+  if (!n.plan.length && n.planEnde) { const f = n.planEnde; n.planEnde = null; f(); }
+}
+// Lina liest Karte w: eine Kopie fliegt in den kleinen Kasten oder prallt ab.
+function _n9gLies(w, dauer) {
+  const n = _n9g;
+  n.oben[w] = 0.45;
+  n.hinweis = 'Lina liest die Karte „' + _N9G_WORT[w] + '“.';
+  const von = _n9gObenPos(w);
+  const k = n.klein.indexOf(null);
+  if (k >= 0) {
+    n.klein[k] = { w, da: false };
+    const z = _n9gKleinPos(k);
+    n.flieger.push({ w, art: 'rein', s: 0, dauer, x0: von.x, y0: von.y, x1: z.x, y1: z.y,
+                     cx: (von.x + z.x) / 2, cy: Math.min(von.y, z.y) - 18, slot: k });
+  } else {
+    n.prallZahl++;
+    const seite = n.prallZahl % 2 ? 1 : -1;
+    const x1 = _N9G_MX + seite * 16, y1 = _N9G_KLEIN.y - 5;
+    n.flieger.push({ w, art: 'prall', s: 0, dauer, x0: von.x, y0: von.y, x1, y1,
+                     cx: (von.x + x1) / 2, cy: Math.min(von.y, y1) - 16, seite });
+  }
+  _n9gStatus();
+}
+// Karten aus dem kleinen in den großen Kasten, eine nach der anderen.
+function _n9gRutschPlan(woerter, nach) {
+  const n = _n9g;
+  const steps = woerter.map(w => ({ dauer: _N9G_T.rtakt, tu: () => _n9gRutsch(w) }));
+  if (steps.length) steps.push({ dauer: nach });
+  n.plan.splice(1, 0, ...steps);
+}
+function _n9gRutsch(w) {
+  const n = _n9g;
+  const k = n.klein.findIndex(c => c && c.da && c.w === w);
+  if (k < 0) return;
+  const von = _n9gKleinPos(k);
+  n.klein[k] = null;
+  const platz = n.gross.length;
+  n.gross.push({ w, da: false });
+  const z = _n9gGrossPos(platz);
+  n.flieger.push({ w, art: 'rutsch', s: 0, dauer: _N9G_T.rutsch, x0: von.x, y0: von.y, x1: z.x, y1: z.y,
+                   cx: _N9G_MX, cy: 162, platz });
+  n.hinweis = 'Die Karte „' + _N9G_WORT[w] + '“ rutscht nach unten.';
+  _n9gStatus();
+}
+// Eine Nacht: Kalender blättert weiter, der kleine Kasten wird leer.
+function _n9gNacht(d, st) {
+  const n = _n9g, A = _N9G_ART[n.art];
+  n.tag = d;
+  let zahl = 0;
+  n.klein.forEach((c, k) => {
+    if (c && c.da) {
+      const p = _n9gKleinPos(k);
+      n.blass.push({ w: c.w, x: p.x, y: p.y, s: 0 });
+      n.klein[k] = null; zahl++;
+    }
+  });
+  st.dauer = zahl ? _N9G_T.nachtBlass : A.tage.length > 1 ? _N9G_T.nacht : _N9G_T.nachtRuhig;
+  n.flip = { von: d - 1, s: 0, dauer: Math.min(0.24, st.dauer * 0.8) };
+  if (zahl) {
+    _bioFxWelle(n.fx.teile, _N9G_MX, 123, '#94a3b8', 70);
+    if (!n.ersteNacht) {
+      n.ersteNacht = true;
+      if (A.tage.length === 1) _bioFxZeitlupe(n, 0.5, 0.5);
+    }
+  }
+  n.hinweis = 'Tag ' + d + (A.tage.indexOf(d) >= 0 ? ' beginnt.' : ': Lina liest nicht.');
+  _n9gStatus();
+}
+// Ein Lesetag in der Woche (Tag 2, Tag 3 bei „an 3 Tagen lesen“).
+function _n9gLeseTag(d) {
+  const n = _n9g, A = _N9G_ART[n.art];
+  const bekannt = {};
+  n.gross.forEach(g => { bekannt[g.w] = true; n.oben[g.w] = 0.4; });
+  if (n.gross.length) n.grossGlanz = 0.5;
+  n.hinweis = 'Tag ' + d + ': Lina liest die Karten noch einmal.';
+  _n9gStatus();
+  const steps = [];
+  for (let w = 0; w < A.n; w++)
+    if (!bekannt[w]) steps.push({ dauer: _N9G_T.takt2, tu: () => _n9gLies(w, _N9G_T.flug2) });
+  steps.push({ dauer: _N9G_T.flug2 - _N9G_T.takt2 + 0.1 });
+  steps.push({ dauer: 0, tu: () => _n9gRutschPlan(
+    n.klein.filter(c => c && c.da && n.mal[c.w] >= 2).map(c => c.w), _N9G_T.rnach) });
+  n.plan.splice(1, 0, ...steps);
+}
+function _n9gGelernt() {
+  const n = _n9g;
+  n.phase = 'gelernt';
+  n.hinweis = 'Drücke „▶ 1 Woche später“.';
+  _bioFxWelle(n.fx.teile, 348, 180, '#60a5fa', 46);
+  _n9gStatus();
+  if (n.wocheDanach) { n.wocheDanach = false; _n9gWoche(); }
+}
+function _n9gWocheEnde() {
+  const n = _n9g;
+  n.phase = 'fertig';
+  n.woche = n.gross.length;
+  n.grossGlanz = 1.2; n.puls[1] = 0.6;
+  n.hinweis = 'Die Woche ist vorbei. Wähle bei „Lernen“ eine andere Einstellung.';
+  _bioFxWelle(n.fx.teile, 348, 240, '#60a5fa', 50);
+  _bioFxWelle(n.fx.teile, _N9G_MX, 232, '#93c5fd', 90);
+  _n9gStatus();
+}
+
+// ── Anzeige ──────────────────────────────────────────────────────────
+function _n9gZeilen() {
+  const n = _n9g, A = _N9G_ART[n.art];
+  return [
+    'sofort gewusst: ' + (n.sofort === null ? '–' : n.sofort + ' von ' + A.n),
+    'nach 1 Woche gewusst: ' + (n.woche === null ? '–' : n.woche + ' von ' + A.n),
+    'Lernen: ' + A.name + ' · Kalender: Tag ' + n.tag,
+    n.hinweis + (n.wocheDanach ? ' Danach folgt „▶ 1 Woche später“.' : '')
+  ];
+}
+function _n9gStatus() {
+  const n = _n9g;
+  if (!n) return;
+  const z = _n9gZeilen();
+  n.letzt = z.join('|');
+  ['_n9g-sofort', '_n9g-woche', '_n9g-tag', '_n9g-hinweis'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = z[i];
+  });
+  try {
+    document.querySelectorAll('[data-n9g]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9g') === n.art);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9g-los');
+  if (los && los.classList) los.classList.toggle('primary', n.phase === 'bereit');
+  const sp = document.getElementById('_n9g-spaeter');
+  if (sp && sp.classList) sp.classList.toggle('primary', n.phase === 'gelernt' || n.wocheDanach);
+}
+function _n9gHTML() {
+  const k = v => `<button class="sim-btn" data-n9g="${v}" onclick="_n9gArt('${v}')">${_N9G_ART[v].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie merkt sich das Gehirn etwas?</h3>
+    <div class="fpm-note" style="margin-top:2px">Oben liegen Linas Wortkarten: englische Wörter mit Bildern. Darunter sind zwei Kästen, ein kleiner und ein großer. Rechts hängt ein Kalender.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9g-cv" width="420" height="300" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9g-los" onclick="_n9gLernen()">▶ Lernen</button>
+          <button class="sim-btn" id="_n9g-spaeter" onclick="_n9gWoche()">▶ 1 Woche später</button>
+          <button class="sim-btn" onclick="_n9gNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Lernen</span>
+          <div class="sim-btn-row" style="flex-direction:column;align-items:flex-start">${k('a')}${k('b')}${k('c')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9g-sofort" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_n9g-woche" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_n9g-tag" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9g-hinweis" style="margin-top:8px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: „5 Wörter, einmal lesen“ &nbsp;|&nbsp; Tag 1: Lina lernt die Wörter. Tag 8: 1 Woche später. Die Zahlen sind Modellwerte.</p>
+  </div>`;
+}
+
+// ── Lauf ─────────────────────────────────────────────────────────────
+function _n9gBez(f, u) {                     // Punkt auf der Flugbahn (quadratisch)
+  const v = 1 - u;
+  return { x: v * v * f.x0 + 2 * v * u * f.cx + u * u * f.x1,
+           y: v * v * f.y0 + 2 * v * u * f.cy + u * u * f.y1 };
+}
+function _n9gUpdate(dt) {
+  const n = _n9g;
+  if (!n) return;
+  dt = _bioFxDt(dt);
+  n.t += dt;
+  const d = dt * _bioFxZeitlupeFaktor(n, dt);
+  if (n.plan.length || n.planEnde) _n9gPlanLauf(d);
+  for (let i = n.flieger.length - 1; i >= 0; i--) {
+    const f = n.flieger[i];
+    f.s += d;
+    if (f.s < f.dauer) continue;
+    n.flieger.splice(i, 1);
+    if (f.art === 'rein') {
+      const c = n.klein[f.slot];
+      if (c && c.w === f.w) c.da = true;
+      n.mal[f.w]++;
+      if (n.phase === 'lernen') { n.sofort++; n.puls[0] = 0.35; }
+      _bioFxWelle(n.fx.teile, f.x1, f.y1, '#fcd34d', 20);
+    } else if (f.art === 'prall') {
+      n.raus.push({ w: f.w, x: f.x1, y: f.y1, vx: 240 * f.seite, vy: -40, s: 0, dreh: 0, dw: 7 * f.seite });
+      n.rand = 0.5;
+      _bioFxWelle(n.fx.teile, f.x1, _N9G_KLEIN.y, '#f97316', 34);
+      if (!n.voll) {
+        n.voll = true;
+        _bioFxZeitlupe(n, 0.4, 0.8);
+        _bioFxBanner(n.fx, 'Kein Platz mehr frei!', 2.4, '#f97316');
+      }
+    } else if (f.art === 'rutsch') {
+      const g = n.gross[f.platz];
+      if (g) g.da = true;
+      _bioFxWelle(n.fx.teile, f.x1, f.y1, '#93c5fd', 24);
+      if (!n.flieger.some(o => o.art === 'rutsch')) {
+        n.hinweis = 'Tag ' + n.tag + ': Lina hat fertig gelesen.';
+        _n9gStatus();
+      }
+    }
+  }
+  for (let i = n.raus.length - 1; i >= 0; i--) {
+    const r = n.raus[i];
+    r.s += d; r.vy += 520 * d; r.x += r.vx * d; r.y += r.vy * d; r.dreh += r.dw * d;
+    if (r.s >= _N9G_T.raus) n.raus.splice(i, 1);
+  }
+  for (let i = n.blass.length - 1; i >= 0; i--) {
+    n.blass[i].s += d;
+    if (n.blass[i].s >= _N9G_T.blass) n.blass.splice(i, 1);
+  }
+  for (let w = 0; w < 10; w++) n.oben[w] = Math.max(0, n.oben[w] - d);
+  n.grossGlanz = Math.max(0, n.grossGlanz - d);
+  n.rand = Math.max(0, n.rand - d);
+  n.puls[0] = Math.max(0, n.puls[0] - dt); n.puls[1] = Math.max(0, n.puls[1] - dt);
+  if (n.flip) { n.flip.s += d; if (n.flip.s >= n.flip.dauer) n.flip = null; }
+  _bioFxAlleUpdate(n.fx, dt);
+  if (_n9gZeilen().join('|') !== n.letzt) _n9gStatus();
+}
+
+// ── Zeichnen ─────────────────────────────────────────────────────────
+function _n9gRund(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y); ctx.lineTo(x + w - r, y); ctx.arc(x + w - r, y + r, r, -Math.PI / 2, 0);
+  ctx.lineTo(x + w, y + h - r); ctx.arc(x + w - r, y + h - r, r, 0, Math.PI / 2);
+  ctx.lineTo(x + r, y + h); ctx.arc(x + r, y + h - r, r, Math.PI / 2, Math.PI);
+  ctx.lineTo(x, y + r); ctx.arc(x + r, y + r, r, Math.PI, Math.PI * 1.5);
+  ctx.closePath();
+}
+// Kleines Bild zum Wort w, Mitte (x, y), Größe s; grund = Kartenfarbe
+function _n9gBild(ctx, w, x, y, s, grund) {
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  const lw = Math.max(0.8, s * 0.06);
+  ctx.lineWidth = lw;
+  if (w === 0) {                                        // sun
+    const r = s * 0.24;
+    ctx.strokeStyle = '#eab308'; ctx.lineWidth = Math.max(1, s * 0.08);
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const a = i * Math.PI / 4;
+      ctx.moveTo(x + Math.cos(a) * r * 1.4, y + Math.sin(a) * r * 1.4);
+      ctx.lineTo(x + Math.cos(a) * r * 1.95, y + Math.sin(a) * r * 1.95);
+    }
+    ctx.stroke();
+    ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  } else if (w === 1) {                                 // fish
+    ctx.fillStyle = '#0ea5e9'; ctx.strokeStyle = '#0369a1';
+    ctx.beginPath(); ctx.moveTo(x + s * 0.16, y); ctx.lineTo(x + s * 0.44, y - s * 0.2);
+    ctx.lineTo(x + s * 0.44, y + s * 0.2); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#38bdf8';
+    ctx.beginPath(); ctx.ellipse(x - s * 0.08, y, s * 0.3, s * 0.19, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath(); ctx.arc(x - s * 0.24, y - s * 0.04, Math.max(0.8, s * 0.045), 0, 2 * Math.PI); ctx.fill();
+  } else if (w === 2) {                                 // tree
+    ctx.fillStyle = '#92400e'; ctx.fillRect(x - s * 0.06, y + s * 0.04, s * 0.12, s * 0.42);
+    ctx.fillStyle = '#22c55e'; ctx.strokeStyle = '#15803d';
+    ctx.beginPath(); ctx.arc(x, y - s * 0.1, s * 0.29, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  } else if (w === 3) {                                 // house
+    ctx.fillStyle = '#fde68a'; ctx.strokeStyle = '#92400e';
+    ctx.beginPath(); ctx.rect(x - s * 0.27, y - s * 0.04, s * 0.54, s * 0.48); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#7f1d1d';
+    ctx.beginPath(); ctx.moveTo(x - s * 0.37, y - s * 0.02); ctx.lineTo(x, y - s * 0.44);
+    ctx.lineTo(x + s * 0.37, y - s * 0.02); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#92400e'; ctx.fillRect(x - s * 0.07, y + s * 0.2, s * 0.14, s * 0.24);
+  } else if (w === 4) {                                 // car
+    ctx.fillStyle = '#fca5a5'; ctx.strokeStyle = '#991b1b';
+    ctx.beginPath(); ctx.moveTo(x - s * 0.24, y - s * 0.02); ctx.lineTo(x - s * 0.14, y - s * 0.24);
+    ctx.lineTo(x + s * 0.14, y - s * 0.24); ctx.lineTo(x + s * 0.24, y - s * 0.02); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#ef4444';
+    ctx.beginPath(); ctx.rect(x - s * 0.44, y - s * 0.02, s * 0.88, s * 0.24); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(x - s * 0.24, y + s * 0.24, s * 0.1, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(x + s * 0.24, y + s * 0.24, s * 0.1, 0, 2 * Math.PI); ctx.fill();
+  } else if (w === 5) {                                 // ball
+    const r = s * 0.33;
+    ctx.fillStyle = '#fb923c'; ctx.strokeStyle = '#7c2d12';
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x - r, y); ctx.lineTo(x + r, y); ctx.moveTo(x, y - r); ctx.lineTo(x, y + r); ctx.stroke();
+  } else if (w === 6) {                                 // star
+    ctx.fillStyle = '#fde047'; ctx.strokeStyle = '#a16207';
+    ctx.beginPath();
+    for (let i = 0; i < 10; i++) {
+      const a = -Math.PI / 2 + i * Math.PI / 5, r = i % 2 ? s * 0.18 : s * 0.42;
+      const px = x + Math.cos(a) * r, py = y + s * 0.03 + Math.sin(a) * r;
+      if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+    }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  } else if (w === 7) {                                 // apple
+    ctx.fillStyle = '#ef4444'; ctx.strokeStyle = '#991b1b';
+    ctx.beginPath(); ctx.arc(x, y + s * 0.06, s * 0.29, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = '#78350f'; ctx.lineWidth = Math.max(1, s * 0.07);
+    ctx.beginPath(); ctx.moveTo(x, y - s * 0.2); ctx.lineTo(x + s * 0.05, y - s * 0.38); ctx.stroke();
+    ctx.fillStyle = '#22c55e';
+    ctx.beginPath(); ctx.ellipse(x + s * 0.17, y - s * 0.32, s * 0.11, s * 0.055, -0.5, 0, 2 * Math.PI); ctx.fill();
+  } else if (w === 8) {                                 // cup
+    ctx.strokeStyle = '#5b21b6'; ctx.lineWidth = Math.max(1, s * 0.07);
+    ctx.beginPath(); ctx.arc(x + s * 0.2, y + s * 0.02, s * 0.13, -Math.PI / 2, Math.PI / 2); ctx.stroke();
+    ctx.lineWidth = lw; ctx.fillStyle = '#a78bfa';
+    ctx.beginPath(); ctx.moveTo(x - s * 0.3, y - s * 0.24); ctx.lineTo(x + s * 0.22, y - s * 0.24);
+    ctx.lineTo(x + s * 0.15, y + s * 0.3); ctx.lineTo(x - s * 0.23, y + s * 0.3); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+  } else {                                              // moon
+    ctx.fillStyle = '#fde047'; ctx.strokeStyle = '#a16207';
+    ctx.beginPath(); ctx.arc(x - s * 0.03, y, s * 0.32, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = grund;
+    ctx.beginPath(); ctx.arc(x + s * 0.13, y - s * 0.07, s * 0.27, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Wortkarte oben (46 x 34); glanz > 0: Lina liest sie gerade
+function _n9gKarte(ctx, w, x, y, glanz) {
+  const hoch = glanz > 0 ? 3 : 0, gx = x - _N9G_KB / 2, gy = y - _N9G_KH / 2 - hoch;
+  ctx.fillStyle = 'rgba(15,23,42,0.12)';
+  _n9gRund(ctx, gx + 2, y - _N9G_KH / 2 + 2, _N9G_KB, _N9G_KH, 5); ctx.fill();
+  if (glanz > 0) {
+    ctx.strokeStyle = 'rgba(250,204,21,0.85)'; ctx.lineWidth = 5;
+    _n9gRund(ctx, gx - 2, gy - 2, _N9G_KB + 4, _N9G_KH + 4, 7); ctx.stroke();
+  }
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.3;
+  _n9gRund(ctx, gx, gy, _N9G_KB, _N9G_KH, 5); ctx.fill(); ctx.stroke();
+  _n9gBild(ctx, w, x, gy + 12, 17, '#ffffff');
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_N9G_WORT[w], x, gy + 30);
+}
+// Kleine Kopie (30 x 30)
+function _n9gMini(ctx, w, x, y, o) {
+  o = o || {};
+  const h = _N9G_MH, grau = !!o.grau, grund = grau ? '#e2e8f0' : '#ffffff';
+  ctx.save();
+  ctx.globalAlpha = o.a === undefined ? 1 : Math.max(0, Math.min(1, o.a));
+  ctx.translate(x, y);
+  if (o.dreh) ctx.rotate(o.dreh);
+  if (o.glanz > 0) {
+    ctx.strokeStyle = 'rgba(250,204,21,' + Math.min(0.9, o.glanz * 1.6).toFixed(3) + ')'; ctx.lineWidth = 4;
+    _n9gRund(ctx, -h - 3, -h - 3, 2 * h + 6, 2 * h + 6, 6); ctx.stroke();
+  }
+  ctx.fillStyle = grund; ctx.strokeStyle = grau ? '#94a3b8' : '#475569'; ctx.lineWidth = 1.2;
+  _n9gRund(ctx, -h, -h, 2 * h, 2 * h, 4); ctx.fill(); ctx.stroke();
+  if (grau) ctx.globalAlpha *= 0.35;
+  _n9gBild(ctx, w, 0, -4, 14, grund);
+  ctx.fillStyle = grau ? '#64748b' : '#0f172a'; ctx.font = '700 8px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(_N9G_WORT[w], 0, h - 3);
+  ctx.restore();
+}
+// Offene Schale (U-Form): oben offen, damit die Karten hineinfallen
+function _n9gSchale(ctx, B, fuell, rand, dicke) {
+  ctx.fillStyle = fuell;
+  _n9gRund(ctx, B.x, B.y, B.w, B.h, 8); ctx.fill();
+  ctx.strokeStyle = rand; ctx.lineWidth = dicke; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(B.x, B.y); ctx.lineTo(B.x, B.y + B.h - 8); ctx.arc(B.x + 8, B.y + B.h - 8, 8, Math.PI, Math.PI / 2, true);
+  ctx.lineTo(B.x + B.w - 8, B.y + B.h); ctx.arc(B.x + B.w - 8, B.y + B.h - 8, 8, Math.PI / 2, 0, true);
+  ctx.lineTo(B.x + B.w, B.y);
+  ctx.stroke();
+  ctx.lineCap = 'butt';
+}
+function _n9gPfeil(ctx, x, y) {                         // zwei kleine Winkel nach unten
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (const dy of [0, 7]) { ctx.moveTo(x - 6, y + dy); ctx.lineTo(x, y + dy + 5); ctx.lineTo(x + 6, y + dy); }
+  ctx.stroke();
+  ctx.lineCap = 'butt';
+}
+// Aufgeschlagenes Buch, Mitte (x, y), Breite b
+function _n9gBuch(ctx, x, y, b) {
+  const h = b * 0.6;
+  ctx.fillStyle = '#dbeafe'; ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1.2; ctx.lineJoin = 'round';
+  for (const sg of [-1, 1]) {
+    ctx.beginPath();
+    ctx.moveTo(x, y - h / 2 + 1.5);
+    ctx.quadraticCurveTo(x + sg * b * 0.25, y - h / 2 - 1.5, x + sg * b / 2, y - h / 2);
+    ctx.lineTo(x + sg * b / 2, y + h / 2);
+    ctx.quadraticCurveTo(x + sg * b * 0.25, y + h / 2 - 1.5, x, y + h / 2 + 1);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x + sg * b * 0.12, y - h * 0.12); ctx.lineTo(x + sg * b * 0.38, y - h * 0.12);
+    ctx.moveTo(x + sg * b * 0.12, y + h * 0.16); ctx.lineTo(x + sg * b * 0.38, y + h * 0.16);
+    ctx.stroke();
+  }
+}
+function _n9gKalender(ctx, n) {
+  const K = _N9G_KAL, A = _N9G_ART[n.art];
+  ctx.fillStyle = 'rgba(15,23,42,0.10)'; ctx.fillRect(K.x + 3, K.y + 3, K.w, K.h);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.3;
+  ctx.fillRect(K.x, K.y, K.w, K.h); ctx.strokeRect(K.x, K.y, K.w, K.h);
+  ctx.fillStyle = '#dc2626'; ctx.fillRect(K.x, K.y, K.w, 16);
+  for (const rx of [K.x + 26, K.x + K.w - 26]) {      // Ringe
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(rx, K.y + 2, 4, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  // großes Blatt
+  const bx = K.x + 6, by = K.y + 19, bw = K.w - 12, bh = 42;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.fillRect(bx, by, bw, bh); ctx.strokeRect(bx, by, bw, bh);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 21px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText('Tag ' + n.tag, bx + bw / 2, by + 29);
+  if (n.flip) {                                         // altes Blatt klappt nach oben weg
+    const p = Math.min(1, n.flip.s / n.flip.dauer);
+    ctx.save();
+    ctx.translate(0, by); ctx.scale(1, Math.max(0.02, 1 - p)); ctx.translate(0, -by);
+    ctx.fillStyle = '#f8fafc'; ctx.strokeStyle = '#94a3b8';
+    ctx.fillRect(bx, by, bw, bh); ctx.strokeRect(bx, by, bw, bh);
+    ctx.fillStyle = '#334155'; ctx.font = '700 21px sans-serif';
+    ctx.fillText('Tag ' + n.flip.von, bx + bw / 2, by + 29);
+    ctx.restore();
+  }
+  // acht Tageskästchen
+  for (let d = 1; d <= _N9G_TAGE; d++) {
+    const j = (d - 1) % 4, r = Math.floor((d - 1) / 4);
+    const x = K.x + 3 + j * 31, y = K.y + 66 + r * 37;
+    const jetzt = d === n.tag, vorbei = d < n.tag;
+    ctx.fillStyle = jetzt ? '#dbeafe' : vorbei ? '#f1f5f9' : '#ffffff';
+    ctx.strokeStyle = jetzt ? '#2563eb' : '#cbd5e1'; ctx.lineWidth = jetzt ? 2 : 1;
+    ctx.fillRect(x, y, 27, 33); ctx.strokeRect(x, y, 27, 33);
+    ctx.fillStyle = vorbei ? '#94a3b8' : '#334155'; ctx.font = '700 9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(String(d), x + 3, y + 10);
+    if (A.tage.indexOf(d) >= 0) _n9gBuch(ctx, x + 14.5, y + 22, 17);
+  }
+}
+function _n9gZaehler(ctx, y, text, wert, puls, an) {
+  const x = 282, b = 132, h = 52;
+  ctx.fillStyle = an ? '#ffffff' : '#f1f5f9';
+  ctx.strokeStyle = puls > 0 ? '#2563eb' : '#94a3b8'; ctx.lineWidth = puls > 0 ? 2.2 : 1.2;
+  _n9gRund(ctx, x, y, b, h, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif'; ctx.textAlign = 'center';
+  ctx.fillText(text, x + b / 2, y + 16);
+  ctx.fillStyle = an ? '#0f172a' : '#94a3b8'; ctx.font = '700 18px sans-serif';
+  ctx.fillText(wert, x + b / 2, y + 41);
+}
+function _n9gDraw(ctx, cv) {
+  const n = _n9g;
+  if (!n) return;
+  const W = cv.width, H = cv.height, t = n.t, A = _N9G_ART[n.art];
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+
+  // Wortkarten oben
+  for (let w = 0; w < A.n; w++) {
+    const p = _n9gObenPos(w);
+    _n9gKarte(ctx, w, p.x, p.y, n.oben[w]);
+  }
+  if (n.phase === 'bereit') {                           // ruhiger Hinweis: hier geht es los
+    const p = _n9gObenPos(0), a = 0.35 + 0.3 * Math.sin(t * 2 * Math.PI * 0.6);
+    ctx.strokeStyle = 'rgba(37,99,235,' + a.toFixed(3) + ')'; ctx.lineWidth = 2.5;
+    _n9gRund(ctx, p.x - _N9G_KB / 2 - 4, p.y - _N9G_KH / 2 - 4, _N9G_KB + 8, _N9G_KH + 8, 8); ctx.stroke();
+  }
+  _n9gPfeil(ctx, _N9G_MX, 86);
+
+  // kleiner Kasten mit 7 Plätzen
+  const KL = _N9G_KLEIN;
+  _n9gSchale(ctx, KL, '#fff7ed', '#f59e0b', 2.5);
+  ctx.save(); ctx.setLineDash([3, 3]); ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 1.2;
+  for (let k = 0; k < _N9G_PLAETZE; k++) {
+    const p = _n9gKleinPos(k);
+    ctx.strokeRect(p.x - _N9G_MH, p.y - _N9G_MH, 2 * _N9G_MH, 2 * _N9G_MH);
+  }
+  ctx.restore();
+  if (n.rand > 0) {                                     // Rand leuchtet: kein Platz mehr
+    ctx.strokeStyle = 'rgba(249,115,22,' + Math.min(1, n.rand * 2.2).toFixed(3) + ')'; ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.moveTo(KL.x, KL.y); ctx.lineTo(KL.x + KL.w, KL.y); ctx.stroke();
+  }
+  _n9gPfeil(ctx, _N9G_MX, 152);
+
+  // großer Kasten
+  const GR = _N9G_GROSS;
+  _n9gSchale(ctx, GR, '#eff6ff', '#3b82f6', 3);
+
+  // ruhende Karten
+  n.klein.forEach((c, k) => { if (c && c.da) { const p = _n9gKleinPos(k); _n9gMini(ctx, c.w, p.x, p.y); } });
+  const gl = n.grossGlanz > 0 ? n.grossGlanz : (n.phase === 'fertig' ? 0.12 + 0.1 * Math.sin(t * 2 * Math.PI * 0.5) : 0);
+  n.gross.forEach((g, i) => {
+    if (!g.da) return;
+    const p = _n9gGrossPos(i);
+    _n9gMini(ctx, g.w, p.x, p.y, { glanz: gl });
+  });
+  // verblassende Karten (Nacht)
+  for (const b of n.blass) {
+    const u = Math.min(1, b.s / _N9G_T.blass);
+    _n9gMini(ctx, b.w, b.x, b.y - 8 * u, { a: 1 - u, grau: true });
+  }
+  // fliegende Karten
+  for (const f of n.flieger) {
+    const u0 = Math.min(1, f.s / f.dauer), u = u0 * u0 * (3 - 2 * u0);
+    const p = _n9gBez(f, u);
+    _n9gMini(ctx, f.w, p.x, p.y);
+  }
+  // abgeprallte Karten fallen seitlich heraus
+  for (const r of n.raus) {
+    const u = Math.min(1, r.s / _N9G_T.raus);
+    _n9gMini(ctx, r.w, r.x, r.y, { a: 1 - u * u, dreh: r.dreh });
+  }
+
+  // Kalender und Zähler
+  _n9gKalender(ctx, n);
+  _n9gZaehler(ctx, 154, 'sofort gewusst:', n.sofort === null ? '–' : n.sofort + ' von ' + A.n, n.puls[0], n.sofort !== null);
+  _n9gZaehler(ctx, 214, 'nach 1 Woche gewusst:', n.woche === null ? '–' : n.woche + ' von ' + A.n, n.puls[1], n.woche !== null);
+  if (n.phase === 'gelernt') {                          // ruhiger Hinweis auf den nächsten Schritt
+    const a = 0.3 + 0.3 * Math.sin(t * 2 * Math.PI * 0.6);
+    ctx.strokeStyle = 'rgba(37,99,235,' + a.toFixed(3) + ')'; ctx.lineWidth = 2.5;
+    ctx.strokeRect(_N9G_KAL.x - 3, _N9G_KAL.y - 3, _N9G_KAL.w + 6, _N9G_KAL.h + 6);
+  }
+  // Effekte; das Banner steht über der linken Spalte, nicht über dem Kalender
+  _bioFxDraw(ctx, n.fx.teile);
+  ctx.save(); ctx.translate(_N9G_MX - W / 2, 0); _bioFxBannerDraw(ctx, n.fx); ctx.restore();
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WIE TEILT SICH EINE ZELLE?   (Förderheft Bio 9 · bz1)
+// Kennung bio-mitose, Präfix _n9l. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bz1.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, heller Grund, KEINE Nachbarzellen – das
+// Kind zählt die Zellen):
+//   - eine runde Körperzelle, stark vergrößert (Mitte 210/140, Radius 86).
+//   - darin ein heller Kreis OHNE Beschriftung, darin vier dicke Stäbchen:
+//     ein langes rotes, ein kurzes rotes, ein langes blaues, ein kurzes blaues.
+//   - am Start zeigt ein Pfeil mit der Aufschrift „Chromosomen“ auf die
+//     Stäbchen; alle vier leuchten ruhig (0,8 Hz).
+//   - Zähler oben links: „Zellen: 1“ (springt auf 2, dann auf 4).
+//
+// BEDIENUNG (wörtlich): „▶ Zelle teilen“ (_n9lTeilen) · „neu“ (_n9lNeu).
+//   Keine Regler. Während der Teilung und nach der zweiten Teilung ist
+//   „▶ Zelle teilen“ grau (disabled).
+//
+// ABLAUF JE DRUCK (langsam, 8,2 s; Zeiten in s nach dem Druck):
+//   (1) 0,6–1,5  neben jedem Stäbchen erscheint ein zweites, gleich lang, in
+//                derselben Farbe; 1,5–2,4 die beiden kreuzen sich zu einem X
+//                (dunkler Punkt in der Kreuzung)
+//   (2) 2,6–3,4  der helle Kreis zerfällt in Stücke und verblasst;
+//                2,8–3,6 links und rechts erscheint je ein Pol;
+//                3,0–4,4 die vier X wandern in die Mitte und stellen sich
+//                senkrecht übereinander auf
+//   (3) 4,4–4,8  Fäden von beiden Polen zu jedem X; 4,8–5,2 jedes X öffnet
+//                sich; 4,9–6,4 die Fäden ziehen die Hälften auseinander, je
+//                eine zu jeder Seite; die Zelle wird dabei länger
+//   (4) 6,4–8,0  die Zelle schnürt sich in der Mitte ein (glatte Taille, kein
+//                Steg), bis zwei Zellen da sind – getrennt bei 7,2 s (erste
+//                Teilung) bzw. 7,6 s (zweite); Fäden und Pole verblassen;
+//                6,4–7,6 die Hälften legen
+//                sich in jeder neuen Zelle wieder als Stäbchen hin;
+//                7,3–8,1 um sie erscheint ein neuer heller Kreis
+//   8,2          erst jetzt springt der Zähler (kein Hochrollen).
+//   Ein Band unten (vier Felder, ohne Schrift) zeigt, wo der Ablauf steht.
+//   Beim zweiten Druck teilen sich beide Zellen gleichzeitig nach demselben
+//   Plan. Die rechte Tochter behält die Lage der Stäbchen, die linke liegt
+//   spiegelbildlich – so, wie die Hälften auseinandergezogen wurden.
+//
+// LAGE DER ZELLEN (Mitte x / Radius; y immer 140):
+//   Start 210/86 · nach 1 Teilung 110/80 und 310/80 (Abstand 40) ·
+//   nach 2 Teilungen 60, 160, 260, 360 / 46 (Abstand je 8).
+//   Heller Kreis: Radius 14 + 0,32 · Zellradius (41,5 · 39,6 · 28,7).
+//   Stäbchen: lang 0,78, kurz 0,46, dick 0,165 Kreisradien.
+//   Gegengerechnet (Mini-DOM, Bild für Bild über beide Teilungen, mit fünf
+//   absichtlich kaputten Gegenproben): Dauer 8,21 s (513 Bilder à 16 ms);
+//   kein Stäbchen verlässt den Umriss seiner Zelle; zwei Zellen berühren sich
+//   nie; in der Mitte 8 Hälften je Zelle (4 X); der Zähler springt erst am
+//   Ende; jede ruhende Zelle zeigt genau rot lang, rot kurz, blau lang,
+//   blau kurz; kleinste Lücke zwischen zwei Stäbchen 4,3 px (Farbkern zu
+//   Farbkern, kleinste Zelle).
+//
+// STATUSZEILE (_n9l-status), Zähler vorn wie auf der Leinwand:
+//   Start      „Zellen: 1 · Drücke „▶ Zelle teilen“.“
+//   1. Lauf    „Zellen: 1 · Die Zelle teilt sich …“
+//   nach 1     „Zellen: 2 · Drücke noch einmal „▶ Zelle teilen“.“
+//   2. Lauf    „Zellen: 2 · Jetzt teilen sich beide Zellen …“
+//   nach 2     „Zellen: 4 · Drücke neu, um von vorn zu beginnen.“
+// HINWEIS (_n9l-hinweis) führt durch die Schritte a–d der Seite:
+//   Start  „Zähle die Chromosomen in der Zelle. Notiere die Zahl in Zeile 1
+//          der Tabelle.“
+//   Lauf   „Sieh genau hin: Was passiert zuerst mit jedem Chromosom?“
+//   nach 1 / nach 2  „Zähle die Chromosomen in jeder Zelle. Notiere Zellen
+//          und Chromosomen in Zeile 2 (3) der Tabelle.“
+//
+// WERTE (lehrer.tabelle_erwartet, am Bild abzulesen; Modellwerte):
+//   Start 1 Zelle, 4 Chromosomen · nach 1 Teilung 2 Zellen, je 4 ·
+//   nach 2 Teilungen 4 Zellen, je 4. Die Zahl der Chromosomen steht NIRGENDS –
+//   das Kind zählt die Stäbchen selbst.
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen, ohne Zufall): Nach jeder Teilung
+//   leuchten in ALLEN Zellen gleichzeitig dieselben Stäbchen auf, eins nach
+//   dem anderen (rot lang, rot kurz, blau lang, blau kurz; je 0,7 s, ab 0,8 s
+//   nach dem Zählersprung). Jede Zelle hat jedes Stäbchen genau einmal –
+//   „halb so viele“ (nur rote hier, nur blaue dort) und „doppelt so viele“
+//   fallen sichtbar. Dazu je ein Lichtring am Zähler und um jeden neuen
+//   hellen Kreis.
+//
+// NICHT AM BILDSCHIRM (Lückenwörter aus Merksatz und Aufgabe 2): „Mitose“,
+//   „kopiert“, „gleichen“, „Zellkern“, „halbiert“ – auch keine Umschreibung
+//   wie „Kopie“. Keine Phasennamen. Deterministisch, ohne Zufall.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9l = null;
+const _N9L_Y = 140;                     // alle Zellen liegen auf einer Linie
+const _N9L_LAGE = [
+  [{ x: 210, r: 86 }],
+  [{ x: 110, r: 80 }, { x: 310, r: 80 }],
+  [{ x: 60, r: 46 }, { x: 160, r: 46 }, { x: 260, r: 46 }, { x: 360, r: 46 }]
+];
+const _N9L_MAX = 2;                     // höchstens zwei Teilungen
+// Die vier Chromosomen: Lage im hellen Kreis (in Kreisradien), Winkel (rad)
+const _N9L_CHR = [
+  { f: 'rot',  lang: true,  x: -0.40, y: -0.12, w: 1.25 },
+  { f: 'rot',  lang: false, x:  0.18, y: -0.52, w: 0.15 },
+  { f: 'blau', lang: true,  x:  0.45, y:  0.10, w: 1.95 },
+  { f: 'blau', lang: false, x: -0.14, y:  0.56, w: -0.25 }
+];
+// (Kleinste Lücke zwischen zwei Stäbchen samt Zittern, Farbkern zu Farbkern:
+// große Zelle 6,7 px, kleinste Zelle 4,3 px (blau lang / blau kurz); zwischen
+// den dunklen Rändern bleiben dort 2,1 px. Bei 1:1 nachgesehen: vier getrennte
+// Stäbchen je Zelle. Die erste Lage hatte nur 1,9 px Farbkern zu Farbkern.)
+// Farbe, Rand, Glanzlicht
+const _N9L_FARBE = { rot: ['#dc2626', '#7f1d1d', '#fca5a5'], blau: ['#2563eb', '#1e3a8a', '#93c5fd'] };
+const _N9L_PLATTE = [1, 0, 2, 3];       // Reihenfolge in der Mitte, von oben nach unten
+const _N9L_SPREIZ = 0.42;               // halber Öffnungswinkel des X
+const _N9L_ENDE = 8.2;                  // Dauer einer Teilung in s
+const _N9L_GLUEH0 = 0.8, _N9L_GLUEHT = 0.8, _N9L_GLUEHD = 0.7, _N9L_GLUEHENDE = 4.0;
+const _N9L_HG = '#eef3f6', _N9L_PLASMA = '#fdebd7', _N9L_RAND = '#b45309';
+const _N9L_KERN = '#fffbf2', _N9L_KERNRAND = '#b8956a';
+const _N9L_ABSCHNITT = [[0.6, 2.4], [2.6, 4.4], [4.4, 6.4], [6.4, 8.2]];
+
+function _n9lKl(x) { return _bioFxKlemme(x); }
+function _n9lE(x) { return _bioFxEase.sanft(_bioFxKlemme(x)); }
+function _n9lKernR(r) { return 14 + 0.32 * r; }
+function _n9lLaenge(i, Rn) { return (_N9L_CHR[i].lang ? 0.78 : 0.46) * Rn; }
+function _n9lDicke(Rn) { return 0.165 * Rn; }
+function _n9lPh(x) { return x * 0.05; }
+
+function _n9lInit() {
+  _n9l = { t: 0 };
+  _n9lAnfang();
+}
+// Eine Zelle, nichts läuft
+function _n9lAnfang() {
+  _n9l.teilungen = 0; _n9l.laeuft = false; _n9l.s = 0; _n9l.nach = -1;
+  _n9l.zellen = [{ x: _N9L_LAGE[0][0].x, r: _N9L_LAGE[0][0].r, sp: false }];
+  _n9l.jobs = []; _n9l.zahl = 1; _n9l.fx = { teile: [] };
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9lTeilen() {
+  if (!_n9l || _n9l.laeuft || _n9l.teilungen >= _N9L_MAX) return;
+  const naechste = _N9L_LAGE[_n9l.teilungen + 1];
+  _n9l.jobs = _n9l.zellen.map((z, k) => {
+    const l = naechste[2 * k], r = naechste[2 * k + 1];
+    return { x: z.x, R: z.r, sp: z.sp, D: (r.x - l.x) / 2, r2: l.r, xl: l.x, xr: r.x };
+  });
+  _n9l.laeuft = true; _n9l.s = 0; _n9l.nach = -1; _n9l.fx = { teile: [] };
+  for (const z of _n9l.zellen) _bioFxWelle(_n9l.fx.teile, z.x, _N9L_Y, '#fde68a', _n9lKernR(z.r) + 16);
+  _n9lStatus();
+}
+function _n9lNeu() {
+  if (!_n9l) return;
+  _n9lAnfang();
+  _n9lStatus();
+}
+// Die Teilung ist zu Ende: aus jeder Zelle werden zwei
+function _n9lFertig() {
+  const neu = [];
+  for (const j of _n9l.jobs) {
+    neu.push({ x: j.xl, r: j.r2, sp: !j.sp });
+    neu.push({ x: j.xr, r: j.r2, sp: j.sp });
+  }
+  _n9l.zellen = neu; _n9l.jobs = [];
+  _n9l.teilungen++; _n9l.laeuft = false; _n9l.s = 0;
+  _n9l.zahl = neu.length;                           // gezählt wird, was daliegt
+  _n9l.nach = 0;
+  _bioFxWelle(_n9l.fx.teile, 62, 22, '#fde047', 44);
+  for (const z of neu) _bioFxWelle(_n9l.fx.teile, z.x, _N9L_Y, '#fde68a', _n9lKernR(z.r) + 12);
+  _n9lStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9lZeile() {
+  const n = 'Zellen: ' + _n9l.zahl + ' · ';
+  if (_n9l.laeuft) return n + (_n9l.teilungen === 0 ? 'Die Zelle teilt sich …' : 'Jetzt teilen sich beide Zellen …');
+  if (_n9l.teilungen === 0) return n + 'Drücke „▶ Zelle teilen“.';
+  if (_n9l.teilungen < _N9L_MAX) return n + 'Drücke noch einmal „▶ Zelle teilen“.';
+  return n + 'Drücke neu, um von vorn zu beginnen.';
+}
+function _n9lHinweis() {
+  if (_n9l.laeuft) return 'Sieh genau hin: Was passiert zuerst mit jedem Chromosom?';
+  if (_n9l.teilungen === 0) return 'Zähle die Chromosomen in der Zelle. Notiere die Zahl in Zeile 1 der Tabelle.';
+  return 'Zähle die Chromosomen in jeder Zelle. Notiere Zellen und Chromosomen in Zeile '
+       + (_n9l.teilungen + 1) + ' der Tabelle.';
+}
+function _n9lStatus() {
+  if (!_n9l) return;
+  const el = document.getElementById('_n9l-status');
+  if (el) { el.textContent = _n9lZeile(); el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9l-hinweis');
+  if (h) h.textContent = _n9lHinweis();
+  const los = document.getElementById('_n9l-los');
+  if (los) {
+    const zu = _n9l.laeuft || _n9l.teilungen >= _N9L_MAX;
+    los.disabled = zu;
+    try { if (los.classList) los.classList.toggle('primary', !zu); } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  }
+}
+function _n9lHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie teilt sich eine Zelle?</h3>
+    <div class="fpm-note" style="margin-top:2px">Modell einer Körperzelle aus der Haut, stark vergrößert. Die dicken Stäbchen in der Zelle sind die Chromosomen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9l-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9l-los" onclick="_n9lTeilen()">▶ Zelle teilen</button>
+          <button class="sim-btn" onclick="_n9lNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="lmp-status on" id="_n9l-status"></div>
+        <div class="fpm-note" id="_n9l-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Eine echte Hautzelle hat viel mehr Chromosomen als das Modell. Man sieht sie dort nur bei der Teilung so deutlich.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 1 Zelle &nbsp;|&nbsp; Eine Teilung dauert etwa 8 Sekunden.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9lUpdate(dt) {
+  if (!_n9l) return;
+  dt = _bioFxDt(dt);
+  _n9l.t += dt;
+  if (_n9l.laeuft) {
+    _n9l.s += dt;
+    if (_n9l.s >= _N9L_ENDE) _n9lFertig();
+  } else if (_n9l.nach >= 0) {
+    _n9l.nach += dt;
+    if (_n9l.nach > _N9L_GLUEHENDE) _n9l.nach = -1;
+  }
+  _bioFxAlleUpdate(_n9l.fx, dt);
+}
+
+// ── Geometrie: was steht zur Zeit s wo? ────────────────
+// Leichtes Zittern der Stäbchen – das Bild lebt
+function _n9lWackeln(i, t, ph) {
+  return { x: 0.55 * Math.sin(t * 1.1 + i * 1.9 + ph), y: 0.55 * Math.cos(t * 0.9 + i * 2.7 + ph),
+           w: 0.035 * Math.sin(t * 0.7 + i * 1.3 + ph) };
+}
+// Ruhelage eines Stäbchens im hellen Kreis um (cx, 140); sp = spiegelbildlich
+function _n9lRuhe(cx, Rn, sp, i) {
+  const c = _N9L_CHR[i], m = sp ? -1 : 1;
+  return { x: cx + m * c.x * Rn, y: _N9L_Y + c.y * Rn, w: sp ? Math.PI - c.w : c.w };
+}
+// Höhe jedes X, wenn alle vier in der Mitte übereinanderstehen
+function _n9lPlatteY(Rn) {
+  const luft = 0.16 * Rn, y = [];
+  let summe = 3 * luft;
+  for (const i of _N9L_PLATTE) summe += _n9lLaenge(i, Rn);
+  let c = -summe / 2;
+  for (const i of _N9L_PLATTE) { const l = _n9lLaenge(i, Rn); y[i] = c + l / 2; c += l + luft; }
+  return y;
+}
+// Drehen auf dem kürzesten Weg (ein Stäbchen sieht nach einer halben Drehung gleich aus)
+function _n9lDrehe(w0, w1, u) {
+  let d = w1 - w0;
+  while (d > Math.PI / 2) d -= Math.PI;
+  while (d <= -Math.PI / 2) d += Math.PI;
+  return w0 + d * u;
+}
+// Umriss einer Zelle, die sich teilt: zwei Hälften (Mitte j.x ± a, Radius rho).
+// Solange sie zusammenhängen, ist der Umriss das GLATTE Maximum der beiden
+// Kreise, vom Mittelpunkt aus gemessen (Glättung k). k = kMax füllt die Mitte
+// bis zur vollen Höhe (längliche Zelle ohne Taille), k = 0 ist die reine
+// Vereinigung (Spitze in der Mitte). Beim Einschnüren geht k auf 0, genau
+// wenn a = rho wird – dort berühren sich die beiden Kreise in einem Punkt,
+// danach sind es zwei getrennte Zellen.
+function _n9lForm(j, s) {
+  const e = s < 4.9 ? 0 : s < 6.4 ? 0.6 * _n9lE((s - 4.9) / 1.5) : 0.6 + 0.4 * _n9lE((s - 6.4) / 1.6);
+  const a = j.D * e, rho = j.R + (j.r2 - j.R) * e;
+  const eTrenn = j.R / (j.D - j.r2 + j.R);         // hier wird a = rho
+  const q = _n9lKl((e - 0.6) / (eTrenn - 0.6));
+  const getrennt = a >= rho;
+  const kMax = 4 * (rho - Math.sqrt(Math.max(0, rho * rho - a * a)));
+  return { a, rho, k: getrennt ? 0 : kMax * (1 - q), getrennt };
+}
+// Abstand des Umrisses vom Mittelpunkt in Richtung th (nur solange zusammenhängend)
+function _n9lRadius(a, rho, k, th) {
+  const c = Math.cos(th), w = Math.sqrt(Math.max(0, rho * rho - a * a * Math.sin(th) * Math.sin(th)));
+  const rR = a * c + w, rL = -a * c + w, m = Math.max(rL, rR);
+  if (k < 1e-6) return m;
+  const h = Math.max(k - Math.abs(rL - rR), 0) / k;
+  return m + h * h * k * 0.25;
+}
+// Alle Stäbchen des Chromosoms i in einer Zelle, die sich gerade teilt.
+// Je Stäbchen: x, y, w (Winkel), l (Länge), d (Dicke), i, a (Deckkraft), mitte (Punkt im X)
+function _n9lTeilStaebe(j, s, i, t) {
+  const RnP = _n9lKernR(j.R), RnD = _n9lKernR(j.r2);
+  const lP = _n9lLaenge(i, RnP), dP = _n9lDicke(RnP);
+  const wP = _n9lWackeln(i, t, _n9lPh(j.x));
+  const r0 = _n9lRuhe(j.x, RnP, j.sp, i);
+  const st = [];
+  const S = (x, y, w, l, d, a, mitte, wk) => st.push({ x: x + wk.x, y: y + wk.y, w: w + wk.w, l, d, i, a, mitte });
+  if (s < 2.4) {
+    // (1) ein zweites Stäbchen erscheint daneben, dann kreuzen sich beide zum X
+    const u1 = _n9lE((s - 0.6) / 0.9), u2 = _n9lE((s - 1.5) / 0.9);
+    const off = 1.15 * dP * (s < 1.5 ? u1 : 1 - u2), sp = _N9L_SPREIZ * u2;
+    const nx = -Math.sin(r0.w), ny = Math.cos(r0.w);
+    S(r0.x + nx * off / 2, r0.y + ny * off / 2, r0.w + sp, lP, dP, 1, false, wP);
+    const aB = _n9lKl((s - 0.6) / 0.4);
+    if (aB > 0) S(r0.x - nx * off / 2, r0.y - ny * off / 2, r0.w - sp, lP, dP, aB, u2 > 0.35, wP);
+    return st;
+  }
+  const pY = _n9lPlatteY(RnP)[i];
+  if (s < 4.8) {
+    // (2) die X wandern in die Mitte und stellen sich senkrecht auf
+    const u = _n9lE((s - 3.0) / 1.4);
+    const x = r0.x + (j.x - r0.x) * u, y = r0.y + (_N9L_Y + pY - r0.y) * u;
+    const w = _n9lDrehe(r0.w, Math.PI / 2, u);
+    S(x, y, w + _N9L_SPREIZ, lP, dP, 1, false, wP);
+    S(x, y, w - _N9L_SPREIZ, lP, dP, 1, true, wP);
+    return st;
+  }
+  const f3 = _n9lForm(j, 6.4);                     // Form am Ende von (3)
+  const ax = f3.a + 0.22 * f3.rho;                 // so weit ziehen die Fäden
+  if (s < 6.4) {
+    // (3) das X öffnet sich, die Hälften werden auseinandergezogen
+    const sp = _N9L_SPREIZ * (1 - _n9lE((s - 4.8) / 0.4));
+    const u = _n9lE((s - 4.9) / 1.5);
+    for (const sg of [1, -1]) {
+      S(j.x + sg * ax * u, _N9L_Y + pY * (1 - 0.15 * u), Math.PI / 2 + sg * sp, lP, dP, 1, false, wP);
+    }
+    return st;
+  }
+  // (4) die Hälften legen sich in der neuen Zelle wieder hin
+  const f = _n9lForm(j, s);
+  const u = _n9lE((s - 6.4) / 1.2);
+  const Rn = RnP + (RnD - RnP) * u;
+  for (const sg of [1, -1]) {
+    const ziel = _n9lRuhe(j.x + sg * f.a, RnD, sg < 0 ? !j.sp : j.sp, i);
+    const x0 = j.x + sg * ax, y0 = _N9L_Y + pY * 0.85;
+    const wD = _n9lWackeln(i, t, _n9lPh(sg < 0 ? j.xl : j.xr));
+    const wk = { x: wP.x + (wD.x - wP.x) * u, y: wP.y + (wD.y - wP.y) * u, w: wP.w + (wD.w - wP.w) * u };
+    S(x0 + (ziel.x - x0) * u, y0 + (ziel.y - y0) * u, _n9lDrehe(Math.PI / 2, ziel.w, u),
+      _n9lLaenge(i, Rn), _n9lDicke(Rn), 1, false, wk);
+  }
+  return st;
+}
+// Stäbchen einer ruhenden Zelle
+function _n9lRuheStaebe(z, t) {
+  const Rn = _n9lKernR(z.r), ph = _n9lPh(z.x), st = [];
+  for (let i = 0; i < 4; i++) {
+    const r = _n9lRuhe(z.x, Rn, z.sp, i), wk = _n9lWackeln(i, t, ph);
+    st.push({ x: r.x + wk.x, y: r.y + wk.y, w: r.w + wk.w, l: _n9lLaenge(i, Rn), d: _n9lDicke(Rn), i, a: 1, mitte: false });
+  }
+  return st;
+}
+// Pol (sg = -1 links, +1 rechts)
+function _n9lPol(j, s, sg) {
+  const f = _n9lForm(j, s);
+  return { x: j.x + sg * (f.a + 0.62 * f.rho), y: _N9L_Y };
+}
+// Leuchten eines Stäbchens (ruhende Zellen): am Start ruhiger Puls auf allen
+// vieren, nach einer Teilung der Reihe nach je eine Sorte in allen Zellen
+function _n9lGlanz(i, t) {
+  if (_n9l.laeuft) return 0;
+  if (_n9l.nach >= 0) {
+    const u = (_n9l.nach - _N9L_GLUEH0 - _N9L_GLUEHT * i) / _N9L_GLUEHD;
+    return u > 0 && u < 1 ? 0.85 * Math.sin(Math.PI * u) : 0;
+  }
+  if (_n9l.teilungen === 0) return 0.28 + 0.18 * Math.sin(t * Math.PI * 2 * 0.8);
+  return 0;
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+// Zellhaut und Zellinneres (f aus _n9lForm; eine ruhende Zelle hat a = 0)
+function _n9lHaut(ctx, x, f, atem) {
+  const y = _N9L_Y;
+  ctx.save();
+  ctx.fillStyle = _N9L_PLASMA; ctx.strokeStyle = _N9L_RAND; ctx.lineWidth = 2.6; ctx.lineJoin = 'round';
+  if (f.getrennt || f.a < 0.01) {
+    for (const sx of f.a < 0.01 ? [x] : [x - f.a, x + f.a]) {
+      ctx.beginPath(); ctx.arc(sx, y, f.rho + atem, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+  } else {
+    ctx.beginPath();
+    for (let n = 0; n <= 180; n++) {
+      const th = n * Math.PI / 90, r = _n9lRadius(f.a, f.rho, f.k, th) + atem;
+      if (n === 0) ctx.moveTo(x + r * Math.cos(th), y + r * Math.sin(th));
+      else ctx.lineTo(x + r * Math.cos(th), y + r * Math.sin(th));
+    }
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Feine Körnchen im Zellinneren; seite 0 = alle, -1/+1 = nur die eine Hälfte
+// voll, die andere mit Deckkraft rest (beim Teilen wachsen sie nach)
+function _n9lKoerner(ctx, cx, R, t, seite, rest) {
+  ctx.save();
+  for (let k = 0; k < 10; k++) {
+    const w0 = k * 2.39996 + 0.4;
+    const auf = !seite || Math.sign(Math.cos(w0)) === seite ? 1 : rest;
+    if (auf <= 0.02) continue;
+    const w = w0 + 0.12 * Math.sin(t * 0.4 + k);
+    const f = 0.72 + 0.16 * ((k * 0.618) % 1);
+    ctx.globalAlpha = auf;
+    ctx.fillStyle = 'rgba(180,110,60,0.35)';
+    ctx.beginPath(); ctx.arc(cx + f * R * Math.cos(w), _N9L_Y + f * R * Math.sin(w), 1.6, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Heller Kreis (ohne Beschriftung); zerfall 0 = ganz, 1 = verschwunden
+function _n9lKern(ctx, cx, Rn, deck, zerfall) {
+  if (deck <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = deck * (1 - zerfall);
+  ctx.fillStyle = _N9L_KERN;
+  ctx.beginPath(); ctx.arc(cx, _N9L_Y, Rn + 4 * zerfall, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = _N9L_KERNRAND; ctx.lineWidth = 2;
+  if (zerfall <= 0) {
+    ctx.beginPath(); ctx.arc(cx, _N9L_Y, Rn, 0, 2 * Math.PI); ctx.stroke();
+  } else {
+    // in zwölf Stücke zerfallen, die kürzer werden
+    const n = 12, stueck = 2 * Math.PI / n * (1 - 0.75 * zerfall);
+    for (let k = 0; k < n; k++) {
+      const m = k * 2 * Math.PI / n;
+      ctx.beginPath(); ctx.arc(cx, _N9L_Y, Rn + 4 * zerfall, m - stueck / 2, m + stueck / 2, false); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+function _n9lLinie(ctx, x, y, hx, hy) {
+  ctx.beginPath(); ctx.moveTo(x - hx, y - hy); ctx.lineTo(x + hx, y + hy); ctx.stroke();
+}
+// Ein Stäbchen (Chromosom bzw. eine Hälfte davon)
+function _n9lStab(ctx, s, glanz) {
+  const c = _N9L_FARBE[_N9L_CHR[s.i].f];
+  const k = Math.max(0, s.l - s.d) / 2;            // runde Enden machen es um d länger
+  const hx = Math.cos(s.w) * k, hy = Math.sin(s.w) * k;
+  ctx.save();
+  ctx.globalAlpha = s.a;
+  ctx.lineCap = 'round';
+  if (glanz > 0.01) {
+    ctx.strokeStyle = 'rgba(250,204,21,' + glanz.toFixed(3) + ')'; ctx.lineWidth = s.d + 9;
+    _n9lLinie(ctx, s.x, s.y, hx, hy);
+  }
+  ctx.strokeStyle = c[1]; ctx.lineWidth = s.d + 2.2;
+  _n9lLinie(ctx, s.x, s.y, hx, hy);
+  ctx.strokeStyle = c[0]; ctx.lineWidth = s.d;
+  _n9lLinie(ctx, s.x, s.y, hx, hy);
+  const nx = -Math.sin(s.w) * s.d * 0.2, ny = Math.cos(s.w) * s.d * 0.2;
+  ctx.strokeStyle = c[2]; ctx.lineWidth = Math.max(1, s.d * 0.26);
+  _n9lLinie(ctx, s.x - nx, s.y - ny, hx * 0.75, hy * 0.75);
+  if (s.mitte) {
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(s.x, s.y, Math.max(1.6, s.d * 0.42), 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+function _n9lZeichneZelle(ctx, z, t) {
+  _n9lHaut(ctx, z.x, { a: 0, rho: z.r, k: 0, getrennt: false }, 0.7 * Math.sin(t * 1.3 + _n9lPh(z.x)));
+  _n9lKoerner(ctx, z.x, z.r, t, 0, 1);
+  _n9lKern(ctx, z.x, _n9lKernR(z.r), 1, 0);
+  for (const s of _n9lRuheStaebe(z, t)) _n9lStab(ctx, s, _n9lGlanz(s.i, t));
+}
+function _n9lZeichneTeilung(ctx, j, s, t) {
+  const f = _n9lForm(j, s);
+  const atem = 0.7 * Math.sin(t * 1.3 + _n9lPh(j.x));
+  _n9lHaut(ctx, j.x, f, atem);
+  const e = j.D > 0 ? f.a / j.D : 0;
+  if (f.a > 0.01) {
+    _n9lKoerner(ctx, j.x - f.a, f.rho, t, -1, e);
+    _n9lKoerner(ctx, j.x + f.a, f.rho, t, 1, e);
+  } else {
+    _n9lKoerner(ctx, j.x, f.rho, t, 0, 1);
+  }
+  const RnP = _n9lKernR(j.R), RnD = _n9lKernR(j.r2);
+  // (2) der alte helle Kreis zerfällt, (4) neue erscheinen
+  if (s < 3.4) _n9lKern(ctx, j.x, RnP, 1, _n9lKl((s - 2.6) / 0.8));
+  const neu = _n9lKl((s - 7.3) / 0.8);
+  if (neu > 0) { _n9lKern(ctx, j.x - f.a, RnD, neu, 0); _n9lKern(ctx, j.x + f.a, RnD, neu, 0); }
+  // Stäbchen jetzt
+  const alle = [];
+  for (let i = 0; i < 4; i++) alle.push(_n9lTeilStaebe(j, s, i, t));
+  // Pole und Fäden
+  const aPol = _n9lKl((s - 2.8) / 0.8) * (1 - _n9lKl((s - 6.4) / 0.8));
+  const aFad = _n9lKl((s - 4.4) / 0.4) * (1 - _n9lKl((s - 6.4) / 0.6));
+  if (aPol > 0.01) {
+    const pole = { '-1': _n9lPol(j, s, -1), '1': _n9lPol(j, s, 1) };
+    ctx.save();
+    if (aFad > 0.01) {
+      ctx.globalAlpha = aFad;
+      ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+      for (const st of alle) {
+        for (const sg of [-1, 1]) {
+          const ziel = s < 4.8 ? st[0] : st[sg > 0 ? 0 : 1];
+          const p = pole[String(sg)];
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(ziel.x, ziel.y); ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = aPol;
+    ctx.strokeStyle = '#475569'; ctx.fillStyle = '#475569'; ctx.lineWidth = 1.4;
+    for (const sg of [-1, 1]) {
+      const p = pole[String(sg)];
+      for (let k = 0; k < 8; k++) {
+        const w = k * Math.PI / 4 + t * 0.3;
+        ctx.beginPath(); ctx.moveTo(p.x + 4 * Math.cos(w), p.y + 4 * Math.sin(w));
+        ctx.lineTo(p.x + 8 * Math.cos(w), p.y + 8 * Math.sin(w)); ctx.stroke();
+      }
+      ctx.beginPath(); ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI); ctx.fill();
+    }
+    ctx.restore();
+  }
+  for (const st of alle) for (const stab of st) _n9lStab(ctx, stab, 0);
+}
+// Zähler oben links
+function _n9lZaehler(ctx) {
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 10, 8, 104, 28, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 16px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Zellen: ' + _n9l.zahl, 62, 28);
+  ctx.restore();
+}
+// Am Start: Pfeil mit der Aufschrift „Chromosomen“ auf ein Stäbchen
+function _n9lPfeil(ctx, t) {
+  const z = _n9l.zellen[0], st = _n9lRuheStaebe(z, t)[1];       // das kurze rote
+  const k = st.l / 2;
+  const ex = st.x + Math.cos(st.w) * k, ey = st.y + Math.sin(st.w) * k;
+  const sx = 318, sy = 41;
+  const dx = sx - ex, dy = sy - ey, d = Math.hypot(dx, dy) || 1;
+  const px = ex + dx / d * 6, py = ey + dy / d * 6;              // Spitze knapp davor
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.fillStyle = '#334155'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  const a = Math.atan2(py - sy, px - sx);
+  ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(px - 6 * Math.cos(a), py - 6 * Math.sin(a)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(px, py);
+  ctx.lineTo(px - 11 * Math.cos(a - 0.42), py - 11 * Math.sin(a - 0.42));
+  ctx.lineTo(px - 11 * Math.cos(a + 0.42), py - 11 * Math.sin(a + 0.42));
+  ctx.closePath(); ctx.fill();
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  const txt = 'Chromosomen', bw = Math.max(ctx.measureText(txt).width + 20, 110);   // 300 … 410
+  ctx.fillStyle = '#ffffff'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, 300, 15, bw, 24, 8); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'center'; ctx.fillText(txt, 300 + bw / 2, 32);
+  ctx.restore();
+}
+// Band unten: vier Felder für die vier Abschnitte, ohne Schrift
+function _n9lBand(ctx, s, W, H) {
+  const bw = 36, luft = 6, x0 = W / 2 - (4 * bw + 3 * luft) / 2, y = H - 12;
+  ctx.save();
+  _N9L_ABSCHNITT.forEach((ab, k) => {
+    const x = x0 + k * (bw + luft), u = _n9lKl((s - ab[0]) / (ab[1] - ab[0]));
+    ctx.fillStyle = '#dbe4ea'; _bioFxRundRect(ctx, x, y, bw, 6, 3); ctx.fill();
+    if (u > 0.01) { ctx.fillStyle = '#f59e0b'; _bioFxRundRect(ctx, x, y, Math.max(6, bw * u), 6, 3); ctx.fill(); }
+  });
+  ctx.restore();
+}
+function _n9lDraw(ctx, cv) {
+  if (!_n9l) return;
+  const W = cv.width, H = cv.height, t = _n9l.t;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9L_HG; ctx.fillRect(0, 0, W, H);
+  if (_n9l.laeuft) for (const j of _n9l.jobs) _n9lZeichneTeilung(ctx, j, _n9l.s, t);
+  else for (const z of _n9l.zellen) _n9lZeichneZelle(ctx, z, t);
+  _n9lZaehler(ctx);
+  if (!_n9l.laeuft && _n9l.teilungen === 0) _n9lPfeil(ctx, t);
+  if (_n9l.laeuft) _n9lBand(ctx, _n9l.s, W, H);
+  _bioFxAlleDraw(ctx, _n9l.fx);
+}
+// ════════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER – br1 „Ein Netz durch den ganzen Körper“
+// Kennung bio-nervensystem, Präfix _n9a.
+// Bauplan: arbeitsheft_bio_foe9/einheiten/br1.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250): Lina von hinten als heller Umriss
+// (Shirt, kurze Hose, barfuß) vor dunklem Grund, unten ein Kiesweg. In ihr
+// gedämpft gelb: im Kopf ein Organ, ein Strang in der Wirbelsäule (die Wirbel
+// als kleine helle Plättchen), dünne Nerven in Arme und Beine, kurze Seitenäste
+// am Rumpf. KEINES der Teile ist beschriftet – die Kinder ordnen die Teile mit den
+// Sätzen aus dem Problem selbst zu.
+// Am gewählten Ort liegt der Reiz: ein spitzer Stein unter dem rechten Fuß
+// („Fuß“, „Fuß, betäubt“) oder ein Kaktus an der rechten Hand („Hand“).
+// Von hinten gesehen ist rechts im Bild auch Linas rechte Seite.
+// Bei „Fuß, betäubt“ liegt am rechten Knie eine grau markierte Stelle über dem
+// Nerv.
+//
+// BEDIENUNG (wörtlich):
+//   „Reiz an“: „Fuß“ · „Hand“ · „Fuß, betäubt“    _n9aReiz('fuss'|'hand'|'betaeubt')
+//   „▶ Reiz auslösen“ (_n9aLos) · „neu“ (_n9aNeu: zurück auf „Fuß“, kein Weg leuchtet)
+//   Sprungmarken „Fuß: Ergebnis“ · „Hand: Ergebnis“ · „Fuß, betäubt: Ergebnis“
+//   (_n9aMarke) zeigen sofort das Endbild – genau den Zustand nach dem Lauf.
+//
+// ABLAUF nach „▶ Reiz auslösen“: 0,4 s Berührung (heller Ring am Reizort,
+// der Lichtpunkt wächst dort heran), dann läuft er mit 68 Bildpunkten je
+// Sekunde den Weg entlang; jedes Stück, das er erreicht hat, bleibt hell.
+//   Fuß:   Nerv im Bein hinauf, am unteren Rücken in den Strang, darin von
+//          unten nach oben, dann in den Kopf (3,1 s Lauf).
+//   Hand:  Nerv im Arm hinauf, oben am Hals in den Strang, dann in den Kopf
+//          (2,4 s Lauf). Der Strang unterhalb des Halses bleibt dunkel.
+//   Erst wenn der Punkt im Kopf ankommt: Lichtring, das Organ im Kopf leuchtet,
+//   Sprechblase „Au!“.
+//   Fuß, betäubt: der Punkt läuft nur bis zur grauen Stelle am Knie, bleibt
+//   stehen und verblasst. Strang und Kopf bleiben dunkel, keine Sprechblase.
+//
+// STATUSZEILEN (wörtlich):
+//   _n9a-status   „Reiz an: Fuß · noch nicht ausgelöst“
+//                 „Reiz an: Fuß · Der Lichtpunkt läuft …“
+//                 „Reiz an: Fuß · Der Weg leuchtet. Lina ruft „Au!““
+//                 „Reiz an: Hand · Der Weg leuchtet. Lina ruft „Au!““
+//                 „Reiz an: Fuß, betäubt · Der Weg leuchtet nur bis zur grauen
+//                  Stelle. Lina ruft nicht „Au!“.“
+//   _n9a-info     nur bei „Fuß, betäubt“: „Eine Ärztin hat den Nerv am Knie betäubt.“
+//   _n9a-hinweis  Bedienhinweis je Phase (ohne Lückenwörter).
+//
+// HEFT ↔ BILDSCHIRM (lehrer.tabelle_erwartet):
+//   Zeile 1 Fuß           ja   – heller Weg Bein → Strang → Kopf, Sprechblase
+//   Zeile 2 Hand          ja   – heller Weg Arm → Strang (ab Hals) → Kopf, Sprechblase
+//   Zeile 3 Fuß, betäubt  nein – heller Weg nur bis zur grauen Stelle; die
+//                                Infozeile nennt das Knie; keine Sprechblase
+//
+// AHA (_bioFx, ruhig): Lichtring, wenn der Punkt in den Strang tritt, die
+//   Wirbel um den Punkt leuchten mit (er läuft IN der Wirbelsäule, nicht am
+//   Rücken vorbei); „Au!“ erst bei Ankunft im Kopf, nicht bei der Berührung;
+//   bei Betäubung grauer Ring an der Stelle, der Kopf bleibt dunkel.
+//
+// NICHT AM BILDSCHIRM: Beschriftungen der Körperteile und die Lückenwörter aus
+//   Merksatz und Aufgabe 2 (siehe sim_plan.anzeigen, letzter Eintrag). Keine
+//   Wertung, kein Gesicht (Lina ist von hinten zu sehen).
+// ════════════════════════════════════════════════════════════════════════
+let _n9a = null;
+let _n9aWege = null;                                   // einmal ausgerechnet
+const _N9A_NAME = { fuss: 'Fuß', hand: 'Hand', betaeubt: 'Fuß, betäubt' };
+const _N9A_V = 68;                                     // Lichtpunkt: Bildpunkte je Sekunde
+const _N9A_REIZ = 0.4;                                 // s Berührung, bevor er losläuft
+const _N9A_INFO = 'Eine Ärztin hat den Nerv am Knie betäubt.';
+// Wege vom Reizort bis in die Mitte des Kopfes (rechte Körperseite).
+// Index 7 ist jeweils der Eintritt in den Strang, ab Index 8 geht es in den Kopf.
+const _N9A_BEIN = [[220, 236], [219, 227], [219, 212], [218, 196], [216, 178], [213, 162], [207, 152], [200, 146]];
+const _N9A_ARM  = [[265, 161], [262, 150], [256, 131], [250, 112], [240, 92], [228, 74], [212, 68], [200, 68]];
+const _N9A_KOPF = [[200, 50], [200, 44], [200, 29]];
+const _N9A_KNIE = 3;                                   // Index des Knies in _N9A_BEIN
+const _N9A_VOR_KNIE = 8;                               // so weit vor dem Knie bleibt der Punkt stehen
+// Farben
+const _N9A_F = {
+  grund0: '#22304d', grund1: '#162036', weg: '#4a4339',
+  haut: '#5d6e8f', rand: '#e2e8f0', shirt: '#4a69a3', hose: '#36435e',
+  dim: '#e2c656', hell: '#ffe14d', schein: 'rgba(255,225,77,0.30)'
+};
+
+// ── Wege ──────────────────────────────────────────────────────────────────
+function _n9aBau(pk) {
+  const L = [0];
+  for (let i = 1; i < pk.length; i++)
+    L.push(L[i - 1] + Math.hypot(pk[i][0] - pk[i - 1][0], pk[i][1] - pk[i - 1][1]));
+  return { p: pk, L, len: L[L.length - 1], ein: L[7], kopf: L[9], block: L[_N9A_KNIE] - _N9A_VOR_KNIE };
+}
+function _n9aWeg() {
+  if (!_n9aWege) _n9aWege = { bein: _n9aBau(_N9A_BEIN.concat(_N9A_KOPF)),
+                              arm: _n9aBau(_N9A_ARM.concat(_N9A_KOPF)) };
+  return _n9a && _n9a.reiz === 'hand' ? _n9aWege.arm : _n9aWege.bein;
+}
+// Punkt auf dem Weg nach s Bildpunkten
+function _n9aPunkt(w, s) {
+  const p = w.p, L = w.L;
+  if (s <= 0) return p[0].slice();
+  for (let i = 1; i < p.length; i++) {
+    if (s <= L[i]) {
+      const u = (s - L[i - 1]) / ((L[i] - L[i - 1]) || 1);
+      return [p[i - 1][0] + (p[i][0] - p[i - 1][0]) * u, p[i - 1][1] + (p[i][1] - p[i - 1][1]) * u];
+    }
+  }
+  return p[p.length - 1].slice();
+}
+// Berührungsstelle des Reizes
+function _n9aKontakt() { return _n9a.reiz === 'hand' ? [271, 160] : [221, 237]; }
+function _n9aSp(p) { return [400 - p[0], p[1]]; }       // an der Körpermitte spiegeln
+
+// ── Zustand und Bedienung ─────────────────────────────────────────────────
+function _n9aInit() {
+  _n9a = { reiz: 'fuss', phase: 'bereit', s: 0, p: 0, t: 0, nach: -1, au: -1,
+           ein: false, stopp: false, ring2: false, fx: { teile: [] }, letzt: '' };
+}
+// Gleiche Einstellung, Bild wieder dunkel
+function _n9aZurueck() {
+  const z = _n9a;
+  z.phase = 'bereit'; z.s = 0; z.p = 0; z.nach = -1; z.au = -1;
+  z.ein = false; z.stopp = false; z.ring2 = false; z.fx = { teile: [] };
+}
+function _n9aReiz(v) {
+  if (!_n9a || !_N9A_NAME[v]) return;
+  _n9a.reiz = v;
+  _n9aZurueck();
+  _n9aStatus();
+}
+function _n9aLos() {
+  if (!_n9a || _n9a.phase === 'reiz' || _n9a.phase === 'lauf') return;
+  _n9aZurueck();
+  _n9a.phase = 'reiz';
+  const k = _n9aKontakt();
+  _bioFxWelle(_n9a.fx.teile, k[0], k[1], '#f8fafc', 16);       // Berührung: ruhiger Ring
+  _n9aStatus();
+}
+function _n9aNeu() {
+  if (!_n9a) return;
+  _n9a.reiz = 'fuss';
+  _n9aZurueck();
+  _n9aStatus();
+}
+// Sprungmarke: Reiz wählen und gleich das Endbild zeigen
+function _n9aMarke(v) {
+  if (!_n9a || !_N9A_NAME[v]) return;
+  _n9a.reiz = v;
+  _n9aZurueck();
+  const w = _n9aWeg();
+  _n9a.ein = v !== 'betaeubt';
+  _n9a.s = v === 'betaeubt' ? w.block : w.len;
+  _n9aAnkommen();
+}
+// Der Punkt ist am Ende seines Weges (Kopf) oder an der betäubten Stelle.
+function _n9aAnkommen() {
+  const z = _n9a, w = _n9aWeg();
+  z.phase = 'fertig'; z.nach = 0;
+  if (z.reiz === 'betaeubt') {
+    z.stopp = true;
+    const k = _n9aPunkt(w, w.block);
+    _bioFxWelle(z.fx.teile, k[0], k[1], '#cbd5e1', 22);
+  } else {
+    z.au = 0;
+    const k = w.p[w.p.length - 1];
+    _bioFxWelle(z.fx.teile, k[0], k[1], '#ffe066', 34);
+    _bioFxWelle(z.fx.teile, k[0], k[1], '#fff3b0', 22);
+  }
+  _n9aStatus();
+}
+
+// ── Anzeige ───────────────────────────────────────────────────────────────
+function _n9aZeile() {
+  const z = _n9a, s = 'Reiz an: ' + _N9A_NAME[z.reiz] + ' · ';
+  if (z.phase === 'bereit') return s + 'noch nicht ausgelöst';
+  if (z.phase !== 'fertig') return s + 'Der Lichtpunkt läuft …';
+  if (z.reiz === 'betaeubt') return s + 'Der Weg leuchtet nur bis zur grauen Stelle. Lina ruft nicht „Au!“.';
+  return s + 'Der Weg leuchtet. Lina ruft „Au!“';
+}
+function _n9aStatus() {
+  if (!_n9a) return;
+  const z = _n9a, zeile = _n9aZeile();
+  z.letzt = zeile;
+  const el = document.getElementById('_n9a-status');
+  if (el) { el.textContent = zeile; el.className = 'lmp-status on'; }
+  const inf = document.getElementById('_n9a-info');
+  if (inf) {
+    const txt = z.reiz === 'betaeubt' ? _N9A_INFO : '';
+    inf.textContent = txt;
+    if (inf.style) inf.style.display = txt ? '' : 'none';
+  }
+  const h = document.getElementById('_n9a-hinweis');
+  if (h) {
+    if (z.phase === 'bereit') h.textContent = 'Drücke „▶ Reiz auslösen“. Sieh dann genau auf den gelben Lichtpunkt.';
+    else if (z.phase !== 'fertig') h.textContent = 'Fahre den Weg des Lichtpunkts mit dem Finger nach.';
+    else h.textContent = 'Sieh dir den hellen Weg genau an. Stelle dann bei „Reiz an“ etwas anderes ein.';
+  }
+  try {
+    document.querySelectorAll('[data-n9a]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9a') === z.reiz);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9a-los');
+  if (los && los.classList) los.classList.toggle('primary', z.phase === 'bereit' || z.phase === 'fertig');
+}
+function _n9aHTML() {
+  const k = v => `<button class="sim-btn${v === 'fuss' ? ' primary' : ''}" data-n9a="${v}" onclick="_n9aReiz('${v}')">${_N9A_NAME[v]}</button>`;
+  const m = v => `<button class="sim-btn" onclick="_n9aMarke('${v}')">${_N9A_NAME[v]}: Ergebnis</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welchen Weg nimmt das Signal?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lina von hinten. Gelb gezeichnet ist das Netz, in dem Signale laufen. Der gelbe Lichtpunkt zeigt, wo das Signal gerade ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9a-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9a-los" onclick="_n9aLos()">▶ Reiz auslösen</button>
+          <button class="sim-btn" onclick="_n9aNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Reiz an</span>
+          <div class="sim-btn-row">${k('fuss')}${k('hand')}${k('betaeubt')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9a-status" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_n9a-info" style="margin-top:6px;display:none"></div>
+        <div class="fpm-note" id="_n9a-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">${m('fuss')}${m('hand')}${m('betaeubt')}</div>
+        <div class="fpm-note" style="margin-top:8px">Der Lichtpunkt läuft hier stark verlangsamt. In Wirklichkeit ist das Signal viel schneller.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Reiz an „Fuß“</p>
+  </div>`;
+}
+
+// ── Ablauf ────────────────────────────────────────────────────────────────
+function _n9aUpdate(dt) {
+  if (!_n9a) return;
+  const z = _n9a;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  if (z.phase === 'reiz') {
+    z.p += dt;
+    if (z.p >= _N9A_REIZ) { z.phase = 'lauf'; z.s = 0; }
+  } else if (z.phase === 'lauf') {
+    const w = _n9aWeg();
+    z.s += _N9A_V * dt;
+    if (z.reiz === 'betaeubt' && z.s >= w.block) {
+      z.s = w.block;
+      _n9aAnkommen();
+    } else {
+      if (!z.ein && z.s >= w.ein) {
+        z.ein = true;
+        const k = _n9aPunkt(w, w.ein);
+        _bioFxWelle(z.fx.teile, k[0], k[1], '#ffe066', 20);
+      }
+      if (z.s >= w.len) { z.s = w.len; _n9aAnkommen(); }
+    }
+  } else if (z.phase === 'fertig') {
+    z.nach += dt;
+    if (z.au >= 0) z.au += dt;
+    if (z.stopp && !z.ring2 && z.nach >= 0.6) {
+      z.ring2 = true;
+      const k = _n9aPunkt(_n9aWeg(), _n9aWeg().block);
+      _bioFxWelle(z.fx.teile, k[0], k[1], '#94a3b8', 18);
+    }
+  }
+  if (_n9aZeile() !== z.letzt) _n9aStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// ── Zeichnen ──────────────────────────────────────────────────────────────
+function _n9aDraw(ctx, cv) {
+  if (!_n9a) return;
+  const z = _n9a, W = cv.width, H = cv.height, t = z.t;
+  ctx.clearRect(0, 0, W, H);
+  _n9aGrund(ctx, W, H);
+  if (z.reiz === 'hand') _n9aKaktus(ctx);
+  _n9aKoerper(ctx);
+  _n9aNetz(ctx);
+  if (z.phase === 'bereit') {                          // hier geht es los – unter dem Stein
+    const k = _n9aWeg().p[0];
+    _bioFxLeuchten(ctx, k[0], k[1], 6, t, '255,216,77');
+  }
+  if (z.reiz !== 'hand') _n9aStein(ctx);
+  _n9aSpur(ctx);
+  if (z.reiz === 'betaeubt') _n9aGrau(ctx, t);
+  _n9aKopfLeuchten(ctx, t);
+  _n9aLichtpunkt(ctx, t);
+  _n9aBlase(ctx);
+  if (z.phase === 'reiz' || z.phase === 'lauf') {
+    ctx.save();
+    ctx.fillStyle = 'rgba(241,245,249,0.8)'; ctx.font = '700 10px sans-serif';
+    ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+    ctx.fillText('▶ stark verlangsamt', W - 8, 16);
+    ctx.restore();
+  }
+  _bioFxAlleDraw(ctx, z.fx);
+}
+function _n9aGrund(ctx, W, H) {
+  const g = ctx.createLinearGradient(0, 0, 0, H);
+  g.addColorStop(0, _N9A_F.grund0); g.addColorStop(1, _N9A_F.grund1);
+  ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  // Kiesweg
+  ctx.fillStyle = _N9A_F.weg; ctx.fillRect(0, 240, W, H - 240);
+  ctx.save();
+  ctx.fillStyle = 'rgba(214,204,186,0.35)';
+  for (let i = 0; i < 48; i++) {
+    const x = (i * 37.3 + 11) % W, y = 243 + (i * 5.3) % 6;
+    ctx.beginPath(); ctx.ellipse(x, y, 1.6 + (i % 3) * 0.5, 1.2, 0, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.strokeStyle = 'rgba(255,255,255,0.14)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, 240); ctx.lineTo(W, 240); ctx.stroke();
+  ctx.restore();
+}
+// Eine Gliedmaße als dicker Strich mit runden Enden
+function _n9aGlied(ctx, a, b, w) {
+  ctx.lineWidth = w;
+  ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+}
+// Alle Körperteile; rand > 0: Umriss-Durchgang (alles etwas breiter), sonst Füllung.
+// Erst der breitere Umriss, darüber die Füllung: so entsteht EIN Umriss um alles.
+function _n9aForm(ctx, rand) {
+  const flaeche = () => { if (rand > 0) ctx.stroke(); else ctx.fill(); };
+  ctx.lineWidth = rand;
+  ctx.beginPath(); ctx.ellipse(200, 31, 16, 19, 0, 0, 2 * Math.PI); flaeche();          // Kopf
+  for (const x of [184, 216]) { ctx.beginPath(); ctx.ellipse(x, 32, 3.2, 5.5, 0, 0, 2 * Math.PI); flaeche(); }
+  _bioFxRundRect(ctx, 192, 44, 16, 22, 4); flaeche();                                   // Hals
+  ctx.beginPath();                                                                      // Rumpf
+  ctx.moveTo(166, 80); ctx.quadraticCurveTo(168, 64, 186, 62); ctx.lineTo(214, 62);
+  ctx.quadraticCurveTo(232, 64, 234, 80); ctx.lineTo(229, 126); ctx.quadraticCurveTo(235, 140, 233, 158);
+  ctx.lineTo(167, 158); ctx.quadraticCurveTo(165, 140, 171, 126); ctx.closePath(); flaeche();
+  for (const sp of [false, true]) {
+    const P = p => sp ? _n9aSp(p) : p;
+    _n9aGlied(ctx, P([228, 72]), P([250, 112]), 14 + rand);                              // Oberarm
+    _n9aGlied(ctx, P([250, 112]), P([262, 150]), 11 + rand);                             // Unterarm
+    _n9aGlied(ctx, P([213, 150]), P([218, 196]), 22 + rand);                             // Oberschenkel
+    _n9aGlied(ctx, P([218, 196]), P([219, 227]), 15 + rand);                             // Unterschenkel
+    ctx.lineWidth = rand;
+    const hd = P([265, 161]);
+    ctx.beginPath(); ctx.ellipse(hd[0], hd[1], 6.5, 10, sp ? 0.25 : -0.25, 0, 2 * Math.PI); flaeche();
+    const fu = P([221, 233]);
+    ctx.beginPath(); ctx.ellipse(fu[0], fu[1], 9, 5, 0, 0, 2 * Math.PI); flaeche();
+  }
+}
+function _n9aKoerper(ctx) {
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = _N9A_F.rand; ctx.fillStyle = _N9A_F.rand;
+  _n9aForm(ctx, 3);
+  ctx.strokeStyle = _N9A_F.haut; ctx.fillStyle = _N9A_F.haut;
+  _n9aForm(ctx, 0);
+  // Haarknoten (Lina von hinten)
+  ctx.fillStyle = '#3d3247'; ctx.strokeStyle = _N9A_F.rand; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(200, 10, 6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Shirt
+  ctx.fillStyle = _N9A_F.shirt;
+  ctx.beginPath();
+  ctx.moveTo(166, 80); ctx.quadraticCurveTo(168, 64, 186, 62); ctx.lineTo(214, 62);
+  ctx.quadraticCurveTo(232, 64, 234, 80); ctx.lineTo(229.6, 130); ctx.lineTo(170.4, 130); ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = _N9A_F.shirt;
+  for (const sp of [false, true]) {
+    const a = sp ? _n9aSp([228, 72]) : [228, 72], b = sp ? _n9aSp([238, 90]) : [238, 90];
+    _n9aGlied(ctx, a, b, 16);
+  }
+  // kurze Hose
+  ctx.fillStyle = _N9A_F.hose;
+  ctx.beginPath();
+  ctx.moveTo(170.4, 130); ctx.lineTo(229.6, 130); ctx.lineTo(233, 158); ctx.lineTo(228, 182);
+  ctx.lineTo(205, 182); ctx.lineTo(200, 164); ctx.lineTo(195, 182); ctx.lineTo(172, 182);
+  ctx.lineTo(167, 158); ctx.closePath(); ctx.fill();
+  // Säume
+  ctx.strokeStyle = 'rgba(226,232,240,0.55)'; ctx.lineWidth = 1.1;
+  ctx.beginPath(); ctx.moveTo(190, 63); ctx.quadraticCurveTo(200, 67, 210, 63); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(170.4, 130); ctx.lineTo(229.6, 130); ctx.stroke();
+  for (const sp of [false, true]) {
+    const P = p => sp ? _n9aSp(p) : p;
+    let a = P([231, 93.8]), b = P([245, 86.2]);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+    a = P([205, 182]); b = P([228, 182]);
+    ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Linienzug zeichnen (Punkte als [x,y])
+function _n9aZug(ctx, pk) {
+  ctx.beginPath();
+  ctx.moveTo(pk[0][0], pk[0][1]);
+  for (let i = 1; i < pk.length; i++) ctx.lineTo(pk[i][0], pk[i][1]);
+  ctx.stroke();
+}
+// Das ganze Netz, gedämpft und ohne Beschriftung
+function _n9aNetz(ctx) {
+  ctx.save();
+  // Wirbel
+  ctx.fillStyle = 'rgba(203,213,225,0.32)';
+  for (let y = 54; y <= 152; y += 6.5) { _bioFxRundRect(ctx, 194, y - 2.2, 12, 4.4, 2); ctx.fill(); }
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = _N9A_F.dim; ctx.globalAlpha = 0.5;
+  ctx.lineWidth = 3.6;
+  ctx.beginPath(); ctx.moveTo(200, 46); ctx.lineTo(200, 150); ctx.stroke();               // Strang
+  for (const sp of [false, true]) {
+    const P = p => sp ? _n9aSp(p) : p;
+    ctx.lineWidth = 2;
+    _n9aZug(ctx, _N9A_BEIN.map(P));
+    _n9aZug(ctx, _N9A_ARM.map(P));
+    ctx.lineWidth = 1.1;
+    const aeste = [
+      [[216, 178], [224, 187]], [[219, 212], [224, 221]], [[219, 227], [226, 234]], [[219, 227], [214, 234]],
+      [[240, 92], [234, 103]], [[256, 131], [261, 126]],
+      [[265, 161], [261, 170]], [[265, 161], [266, 172]], [[265, 161], [270, 169]]
+    ];
+    for (const a of aeste) _n9aZug(ctx, a.map(P));
+    for (const y of [86, 98, 110, 122, 134]) {                                          // Seitenäste am Rumpf
+      const a = P([200, y]), c = P([213, y + 1]), b = P([225, y + 7]);
+      ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.quadraticCurveTo(c[0], c[1], b[0], b[1]); ctx.stroke();
+    }
+  }
+  ctx.globalAlpha = 1;
+  _n9aOrgan(ctx, 0);
+  ctx.restore();
+}
+// Das Organ im Kopf; glanz 0 = dunkel, 1 = leuchtet
+function _n9aOrgan(ctx, glanz) {
+  ctx.save();
+  const lagen = glanz > 0 ? [[glanz, '#ffd84d', '#fff3b0', 'rgba(146,104,10,0.75)']]
+                          : [[1, '#5f5532', '#a8924a', 'rgba(20,20,30,0.45)']];
+  // Von hinten: zwei Hälften mit welligen Windungen, darunter zwei kleine
+  // gestreifte Lappen und der Stiel zum Strang. KEINE gepaarten Bögen auf
+  // Augenhöhe – die lasen sich in der ersten Fassung als Gesicht.
+  for (const [a, fuell, rand, falte] of lagen) {
+    ctx.globalAlpha = a;
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.ellipse(200, 26.5, 12.6, 11.5, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(200, 15.5); ctx.lineTo(200, 37.5); ctx.stroke();       // Mittelspalt
+    for (const sx of [-1, 1]) {
+      ctx.beginPath(); ctx.ellipse(200 + sx * 4.6, 40.6, 5.2, 3.3, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+    ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(200, 43.5); ctx.lineTo(200, 50); ctx.stroke();
+    ctx.strokeStyle = falte; ctx.lineWidth = 0.9;
+    for (const sx of [-1, 1]) {
+      for (const [y0, x0, x1] of [[19.5, 2, 8.5], [25, 1.8, 10.5], [30.5, 1.8, 10.5], [35, 2.5, 7.5]]) {
+        ctx.beginPath();
+        for (let k = 0; k <= 12; k++) {
+          const x = 200 + sx * (x0 + (x1 - x0) * k / 12);
+          const y = y0 + Math.sin(k * 1.6 + y0 + (sx > 0 ? 1.3 : 0)) * 1.1;
+          if (k) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+        }
+        ctx.stroke();
+      }
+      for (const dy of [-1.1, 0.9]) {
+        ctx.beginPath(); ctx.moveTo(200 + sx * 1.6, 40.6 + dy); ctx.lineTo(200 + sx * 8.4, 40.6 + dy); ctx.stroke();
+      }
+    }
+  }
+  ctx.restore();
+}
+// Wie weit leuchtet das Organ im Kopf?
+function _n9aGlanz() {
+  const z = _n9a;
+  if (z.reiz === 'betaeubt' || z.phase === 'bereit' || z.phase === 'reiz') return 0;
+  if (z.phase === 'fertig') return 1;
+  const w = _n9aWeg();
+  return _bioFxKlemme((z.s - w.kopf) / (w.len - w.kopf));
+}
+function _n9aKopfLeuchten(ctx, t) {
+  const g = _n9aGlanz();
+  if (g <= 0) return;
+  if (_n9a.phase === 'fertig') _bioFxLeuchten(ctx, 200, 29, 11, t, '255,216,77');
+  _n9aOrgan(ctx, g);
+}
+// Der helle Weg: jedes erreichte Stück bleibt hell
+function _n9aSpur(ctx) {
+  const z = _n9a;
+  if (z.phase === 'bereit' || z.phase === 'reiz') return;
+  const w = _n9aWeg(), s = z.s, pk = [w.p[0]];
+  for (let i = 1; i < w.p.length && w.L[i] < s; i++) pk.push(w.p[i]);
+  pk.push(_n9aPunkt(w, s));
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Wirbel, durch die der Punkt schon gelaufen ist, leuchten mit
+  const y7 = w.p[7][1];
+  const dot = _n9aPunkt(w, s);
+  for (let y = 54; y <= 152; y += 6.5) {
+    if (y > y7 + 2 || y < 50) continue;
+    if (s < w.ein + (y7 - y)) continue;
+    const nah = (z.phase === 'lauf' && Math.abs(dot[0] - 200) < 0.5) ? _bioFxKlemme(1 - Math.abs(dot[1] - y) / 14) : 0;
+    ctx.fillStyle = 'rgba(255,225,77,' + (0.22 + 0.5 * nah).toFixed(3) + ')';
+    _bioFxRundRect(ctx, 194, y - 2.2, 12, 4.4, 2); ctx.fill();
+    if (nah > 0) {
+      ctx.strokeStyle = 'rgba(255,241,170,' + (0.9 * nah).toFixed(3) + ')'; ctx.lineWidth = 1.2;
+      ctx.stroke();
+    }
+  }
+  ctx.strokeStyle = _N9A_F.schein; ctx.lineWidth = 8;
+  _n9aZug(ctx, pk);
+  ctx.strokeStyle = _N9A_F.hell; ctx.lineWidth = 3.2;
+  ctx.shadowColor = '#ffd84d'; ctx.shadowBlur = 8;
+  _n9aZug(ctx, pk);
+  ctx.restore();
+}
+// Grau markierte Stelle am Knie (nur bei „Fuß, betäubt“)
+function _n9aGrau(ctx, t) {
+  const z = _n9a;
+  ctx.save();
+  ctx.fillStyle = 'rgba(148,163,184,0.95)'; ctx.strokeStyle = _N9A_F.rand; ctx.lineWidth = 1.4;
+  _bioFxRundRect(ctx, 206, 190, 24, 12, 5); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(71,85,105,0.7)'; ctx.lineWidth = 1;
+  for (let x = 209; x <= 225; x += 5) { ctx.beginPath(); ctx.moveTo(x, 200.5); ctx.lineTo(x + 4, 191.5); ctx.stroke(); }
+  if (z.stopp) {
+    const puls = 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.6);                         // 0,6 Hz, ruhig
+    ctx.strokeStyle = 'rgba(226,232,240,' + (0.25 + 0.45 * puls).toFixed(3) + ')'; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, 202.5, 186.5, 31, 19, 8); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Der Lichtpunkt selbst
+function _n9aLichtpunkt(ctx, t) {
+  const z = _n9a, w = _n9aWeg();
+  let a = 0, r = 4.2, s = z.s, grau = false;
+  if (z.phase === 'bereit') return;                    // Schein am Start zeichnet _n9aDraw
+  if (z.phase === 'reiz') { a = _bioFxKlemme(z.p / _N9A_REIZ); r = 4.2 * a; s = 0; }
+  else if (z.phase === 'lauf') a = 1;
+  else if (z.stopp) { a = 1 - _bioFxKlemme(z.nach / 1.4); grau = true; }
+  if (a <= 0.01) return;
+  const k = _n9aPunkt(w, s);
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.fillStyle = grau ? 'rgba(203,213,225,0.35)' : 'rgba(255,225,77,0.38)';
+  ctx.beginPath(); ctx.arc(k[0], k[1], r * 2.3, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = grau ? '#e5e7eb' : '#fffbe6'; ctx.strokeStyle = grau ? '#94a3b8' : '#ffd84d'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(k[0], k[1], Math.max(0.5, r), 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Spitzer Stein unter dem rechten Fuß
+function _n9aStein(ctx) {
+  ctx.save();
+  ctx.fillStyle = '#9aa1ab'; ctx.strokeStyle = _N9A_F.rand; ctx.lineWidth = 1.2; ctx.lineJoin = 'miter';
+  ctx.beginPath();
+  ctx.moveTo(204, 250); ctx.lineTo(208, 244); ctx.lineTo(212, 245); ctx.lineTo(216, 239.5);
+  ctx.lineTo(221, 234.5); ctx.lineTo(224.5, 240); ctx.lineTo(228, 241.5); ctx.lineTo(231.5, 238);
+  ctx.lineTo(234, 243); ctx.lineTo(238, 250);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  // Licht- und Schattenseite der Zacken
+  ctx.fillStyle = 'rgba(255,255,255,0.28)';
+  ctx.beginPath(); ctx.moveTo(221, 234.5); ctx.lineTo(216, 239.5); ctx.lineTo(219, 249); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = 'rgba(30,41,59,0.35)';
+  ctx.beginPath(); ctx.moveTo(231.5, 238); ctx.lineTo(234, 243); ctx.lineTo(236.5, 250); ctx.lineTo(230, 250); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Kaktus im Topf an der rechten Hand
+function _n9aKaktus(ctx) {
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.fillStyle = '#b45f3c'; ctx.strokeStyle = '#f1c7a8'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(285, 222); ctx.lineTo(315, 222); ctx.lineTo(311, 240); ctx.lineTo(289, 240); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  _bioFxRundRect(ctx, 282, 216, 36, 7, 2); ctx.fill(); ctx.stroke();
+  for (const [farbe, extra] of [['#d9f99d', 3], ['#4d8f46', 0]]) {
+    ctx.strokeStyle = farbe;
+    _n9aGlied(ctx, [300, 214], [300, 132], 18 + extra);
+    ctx.lineWidth = 10 + extra;
+    ctx.beginPath(); ctx.moveTo(300, 178); ctx.lineTo(281, 178); ctx.lineTo(281, 150); ctx.stroke();
+  }
+  ctx.strokeStyle = 'rgba(47,95,44,0.8)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(300, 136); ctx.lineTo(300, 212); ctx.stroke();
+  ctx.strokeStyle = '#f8fafc'; ctx.lineWidth = 1;
+  for (let y = 138; y <= 210; y += 9) {
+    ctx.beginPath(); ctx.moveTo(309.5, y); ctx.lineTo(313.5, y - 2); ctx.stroke();
+    if (y < 168 || y > 186) { ctx.beginPath(); ctx.moveTo(290.5, y); ctx.lineTo(286.5, y - 2); ctx.stroke(); }
+  }
+  for (let y = 151; y <= 176; y += 6) { ctx.beginPath(); ctx.moveTo(276, y); ctx.lineTo(272, y - 1); ctx.stroke(); }
+  ctx.restore();
+}
+// Sprechblase „Au!“ – erst wenn der Punkt im Kopf angekommen ist
+function _n9aBlase(ctx) {
+  const z = _n9a;
+  if (z.au < 0) return;
+  const k = 0.4 + 0.6 * _bioFxEase.federn(_bioFxKlemme(z.au / 0.4));
+  ctx.save();
+  ctx.globalAlpha = _bioFxKlemme(z.au / 0.15);
+  ctx.translate(132, 30); ctx.scale(k, k);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, -32, -17, 64, 34, 12); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(29, -2); ctx.lineTo(47, 6); ctx.lineTo(29, 8); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(31, -2); ctx.lineTo(47, 6); ctx.lineTo(31, 8); ctx.stroke();
+  ctx.fillStyle = '#b91c1c'; ctx.font = '700 22px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText('Au!', 0, 1);
+  ctx.restore();
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · WIE IST DIE NERVENZELLE GEBAUT?   (Förderheft Bio 9 · br3)
+// Kennung bio-nervenzelle, Präfix _n9c. Bauplan: arbeitsheft_bio_foe9/
+// einheiten/br3.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 310):
+//   links  Lina sitzt barfuß auf einer Matte, von der Seite, Blick nach links,
+//          in echtem Maßstab (150 Bildpunkte je Meter): schematischer Umriss,
+//          Sporthose, T-Shirt, keine Gesichtszüge. Durchscheinend gezeichnet
+//          das Gehirn und das Rückenmark (cremefarben). Im Rückenmark ein
+//          winziger gelber Punkt (der Zellkörper), von dort eine dünne gelbe
+//          Linie (die Nervenfaser) den Rücken hinunter, unter dem Bein entlang
+//          bis zu einem Muskel im Fuß (rot). Die Linie ist im Bild 164
+//          Bildpunkte lang, also rund 1,1 m.
+//          Um den Punkt ein kleiner Kreis, zwei gestrichelte Linien führen zur
+//   rechts Lupe: dieselbe Nervenzelle stark vergrößert – Zellkörper mit
+//          Zellkern, 6 deutlich getrennte, unverzweigte Dendriten, der Anfang
+//          der EINEN Nervenfaser (dicker, glatt, läuft unten aus der Lupe).
+//          Am oberen linken Dendriten endet in Grau die Faser einer anderen
+//          Nervenzelle mit einem Knöpfchen (sie bringt den Befehl vom Gehirn).
+//   unten  ein Maßband (Gehäuse) mit der großen Anzeige „Länge: …“ und die
+//          Legende „Erregung“ (gelber Lichtpunkt).
+//   Zellteile stehen NIRGENDS als Wort im Bild. Die Lupe ist schematisch,
+//   nicht maßstäblich (Dendriten im Bild rund 2-mal so lang wie der
+//   Zellkörper breit ist, in Wirklichkeit 10-mal) – deshalb trägt das
+//   Maßband keine Teilstriche, nur Endmarken.
+//
+// BEDIENUNG (wörtlich wie im Bauplan):
+//   Maßband an: „Zellkörper“ · „Dendriten“ · „Nervenfaser“
+//               (Wahlgruppe _n9cMass('koerper'|'dendrit'|'faser'); Start: Zellkörper)
+//   „▶ Erregung senden“ (_n9cSenden) · „neu“ (_n9cNeu → Maßband am Zellkörper)
+//   Der gewählte Teil blinkt in BEIDEN Bildern: er färbt sich weich blau und
+//   zurück, dazu ein blauer Schein (0,8 Hz, nie schneller, kein An/Aus).
+//   Im Körperbild sind Zellkörper und Dendriten zusammen nur der Punkt – also
+//   blinkt dort bei beiden der Punkt, bei „Nervenfaser“ die gelbe Linie.
+//   Das Maßband legt sich in 0,6 s an den Teil an:
+//     Zellkörper   quer über die untere Hälfte des Zellkörpers in der Lupe
+//     Dendriten    neben EINEN Dendriten in der Lupe (rechts oben)
+//     Nervenfaser  im Körperbild neben der gelben Linie vom Rückenmark bis
+//                  zum Fuß
+//   Die Anzahl der Teile wird NICHT angezeigt – das Kind zählt in der Lupe.
+//   Hinweiskasten: „Grau in der Lupe: die Nervenzelle davor. … Zähle nur die
+//   gelbe Zelle.“ (sonst zählt ein Kind die graue Faser als zweite Nervenfaser).
+//
+// STATUSZEILEN (wörtlich):
+//   _n9c-mass    „Maßband am Zellkörper · Länge: 0,1 mm“
+//                „Maßband am Dendriten · Länge: 1 mm“
+//                „Maßband an der Nervenfaser · Länge: 1 m“
+//                (im Bild unten groß: „Länge: 0,1 mm“ / „Länge: 1 mm“ / „Länge: 1 m“)
+//   _n9c-status  vorher        „Lina sitzt ruhig auf der Matte.“
+//                0–1,6 s       „Der Befehl kommt vom Gehirn.“
+//                1,6–3,35 s    „Sieh in die Lupe: Wo läuft die Erregung hinein?“
+//                3,35–4,45 s   „Sieh in die Lupe: Wo läuft die Erregung hinaus?“
+//                4,45–6,65 s   „Die Erregung läuft das Bein hinunter.“
+//                ab 6,65 s     „Lina wackelt mit den Zehen.“ (bleibt stehen)
+//   _n9c-hinweis Bedienhinweis (vorher / unterwegs / danach)
+//
+// ABLAUF NACH „▶ Erregung senden“ (stark verlangsamt, Zeiten in s):
+//   0–0,4    Lichtring im Gehirn, der gelbe Lichtpunkt liegt dort
+//   0,4–1,6  Körperbild: Lichtpunkt läuft das Rückenmark hinunter bis zum Punkt
+//   1,6–2,2  Lupe: er kommt auf der grauen Faser der anderen Nervenzelle an
+//   2,2–2,35 er springt vom Knöpfchen auf die Spitze des Dendriten
+//   2,35–3,35 er läuft den Dendriten entlang in den Zellkörper
+//   3,35–4,45 er läuft die Nervenfaser entlang unten aus der Lupe
+//   4,45–6,65 Körperbild: er läuft die gelbe Linie entlang bis zum Muskel
+//   6,65     der Muskel zieht sich zusammen, Linas Zehen wackeln (1,1 Hz, bis
+//            „neu“ oder bis zum nächsten Senden – so lange, wie die Statuszeile
+//            „Lina wackelt mit den Zehen.“ sagt)
+//   Jedes Stück, das der Lichtpunkt erreicht hat, bleibt hell (orange Spur):
+//   EIN Dendrit, Zellkörper, Nervenfaser, Linie bis zum Fuß. Ende bei 9,0 s.
+//   Während des Laufs bleibt der Knopf „▶ Erregung senden“ ohne Wirkung.
+//
+// WERTE (lehrer.tabelle_erwartet; Modellwerte, im Lehrerteil gekennzeichnet):
+//   Zellkörper   zählen: 1   Maßband: 0,1 mm
+//   Dendriten    zählen: 6   Maßband: 1 mm  (an einem Dendriten)
+//   Nervenfaser  zählen: 1   Maßband: 1 m
+//   ▶ Erregung senden: Weg Dendrit → Zellkörper → Nervenfaser → Muskel im Fuß,
+//                      danach bewegen sich die Zehen (nur als Bild, nicht als Text)
+//
+// SIMFAKTEN: Der Lauf dauert 9 s (563 Frames). Mit den Bandschaltern
+//   (--voll --frames=25 --verlauf=4, wie fakten_ziehen.py) stehen alle sechs
+//   Statuszeilen im Dump; mit den Voreinstellungen (2 Frames) endet er bei
+//   „Der Befehl kommt vom Gehirn.“.
+//
+// AHA (_bioFx, nach der Beobachtung): 0,95 s nach dem Ankommen am Fuß glüht
+//   die GANZE Zelle einmal weich auf – im Körperbild Punkt und Linie bis zum
+//   Fuß in einem Zug, in der Lupe die Zelle –, dazu das Banner
+//   „Bis zum Fuß: dieselbe Zelle!“. Das widerlegt die Kette aus Hunderten
+//   Zellen (Vermutung 1); dass die Dendriten nicht bis zum Fuß reichen
+//   (Vermutung 3), zeigt das Maßband (1 mm gegen 1 m) und der Weg hinaus.
+//
+// NICHT AM BILDSCHIRM (sim_plan.anzeigen): „empfängt“, „Meter“, „eine“,
+//   „viele“, „winzig“ – auch nicht als Wortteil (kein „Beine“, „keine“,
+//   „einem“, „Zentimeter“). Die Überschrift heißt deshalb „Wie ist die
+//   Nervenzelle gebaut?“ statt „… eine Nervenzelle …“.
+// Keine Nacktheit (Hose, T-Shirt, nur die Füße bloß), keine Gesichtszüge.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9c = null;
+let _n9cG = null;                                    // Geometrie, einmal berechnet
+const _n9cTEIL = { koerper: 'Zellkörper', dendrit: 'Dendriten', faser: 'Nervenfaser' };
+const _n9cLAENGE = { koerper: '0,1 mm', dendrit: '1 mm', faser: '1 m' };
+const _n9cAN = { koerper: 'Maßband am Zellkörper', dendrit: 'Maßband am Dendriten',
+                 faser: 'Maßband an der Nervenfaser' };
+const _n9cPXM = 150;                                 // Körperbild: Bildpunkte je Meter
+// Zeitplan von „▶ Erregung senden“ (s ab dem Druck)
+const _n9cZ = { hirn: 0.4, p1: 1.6, p2a: 2.2, sprung: 2.35, p2b: 3.35, p2c: 4.45,
+                p3: 6.65, aha: 7.6, ende: 9.0 };
+const _n9cSATZ = {
+  ruhe:   'Lina sitzt ruhig auf der Matte.',
+  hirn:   'Der Befehl kommt vom Gehirn.',
+  hinein: 'Sieh in die Lupe: Wo läuft die Erregung hinein?',
+  hinaus: 'Sieh in die Lupe: Wo läuft die Erregung hinaus?',
+  bein:   'Die Erregung läuft das Bein hinunter.',
+  zehen:  'Lina wackelt mit den Zehen.'
+};
+
+// ── Hilfen für Linienzüge ([x, y]-Listen) ──────────────────────────────
+function _n9cMessen(p) {
+  const c = [0];
+  for (let i = 1; i < p.length; i++) c.push(c[i - 1] + Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]));
+  p.cum = c; p.len = c[c.length - 1] || 1;
+  return p;
+}
+// Glatter Zug durch Stützpunkte (Catmull-Rom), k Punkte je Abschnitt
+function _n9cKurve(s, k) {
+  const out = [];
+  for (let i = 0; i < s.length - 1; i++) {
+    const a = s[Math.max(0, i - 1)], b = s[i], c = s[i + 1], d = s[Math.min(s.length - 1, i + 2)];
+    for (let j = 0; j < k; j++) {
+      const t = j / k, t2 = t * t, t3 = t2 * t;
+      const f = q => 0.5 * (2 * b[q] + (-a[q] + c[q]) * t + (2 * a[q] - 5 * b[q] + 4 * c[q] - d[q]) * t2
+                            + (-a[q] + 3 * b[q] - 3 * c[q] + d[q]) * t3);
+      out.push([f(0), f(1)]);
+    }
+  }
+  out.push(s[s.length - 1].slice());
+  return _n9cMessen(out);
+}
+function _n9cBez(p0, p1, p2, p3, n) {
+  const out = [];
+  for (let i = 0; i <= n; i++) {
+    const u = i / n, v = 1 - u;
+    const f = q => v * v * v * p0[q] + 3 * v * v * u * p1[q] + 3 * v * u * u * p2[q] + u * u * u * p3[q];
+    out.push([f(0), f(1)]);
+  }
+  return out;
+}
+// Punkt beim Anteil u (0 … 1) der Länge
+function _n9cAuf(p, u) {
+  if (!p.cum) _n9cMessen(p);
+  const s = Math.max(0, Math.min(1, u)) * p.len, c = p.cum;
+  let i = 1;
+  while (i < c.length - 1 && c[i] < s) i++;
+  const f = (s - c[i - 1]) / ((c[i] - c[i - 1]) || 1);
+  return { x: p[i - 1][0] + (p[i][0] - p[i - 1][0]) * f, y: p[i - 1][1] + (p[i][1] - p[i - 1][1]) * f };
+}
+// Teilstück von u0 bis u1
+function _n9cStueck(p, u0, u1) {
+  if (!p.cum) _n9cMessen(p);
+  const a = _n9cAuf(p, u0), b = _n9cAuf(p, u1), s0 = u0 * p.len, s1 = u1 * p.len;
+  const out = [[a.x, a.y]];
+  for (let i = 1; i < p.length - 1; i++) if (p.cum[i] > s0 && p.cum[i] < s1) out.push(p[i]);
+  out.push([b.x, b.y]);
+  return out;
+}
+// Parallele im Abstand d (rechts der Laufrichtung)
+function _n9cVersatz(p, d) {
+  const out = [];
+  for (let i = 0; i < p.length; i++) {
+    const a = p[Math.max(0, i - 1)], b = p[Math.min(p.length - 1, i + 1)];
+    let dx = b[0] - a[0], dy = b[1] - a[1];
+    const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+    out.push([p[i][0] - dy * d, p[i][1] + dx * d]);
+  }
+  return _n9cMessen(out);
+}
+// Schlauch um einen Zug; Breite wf(u) mit u = Anteil der Länge
+function _n9cSchlauch(p, wf) {
+  if (!p.cum) _n9cMessen(p);
+  const li = [], re = [];
+  for (let i = 0; i < p.length; i++) {
+    const a = p[Math.max(0, i - 1)], b = p[Math.min(p.length - 1, i + 1)];
+    let dx = b[0] - a[0], dy = b[1] - a[1];
+    const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+    const w = wf(p.cum[i] / p.len) / 2;
+    li.push([p[i][0] + dy * w, p[i][1] - dx * w]);
+    re.push([p[i][0] - dy * w, p[i][1] + dx * w]);
+  }
+  return li.concat(re.reverse());
+}
+// Farbe zwischen a und b mischen (#rrggbb), f = 0 … 1
+function _n9cMisch(a, b, f) {
+  const x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16);
+  const k = (sh) => Math.round(((x >> sh) & 255) + ((((y >> sh) & 255) - ((x >> sh) & 255)) * f));
+  return 'rgb(' + k(16) + ',' + k(8) + ',' + k(0) + ')';
+}
+function _n9cZug(ctx, p) {
+  ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+  for (let i = 1; i < p.length; i++) ctx.lineTo(p[i][0], p[i][1]);
+}
+function _n9cFlaeche(ctx, p) { _n9cZug(ctx, p); ctx.closePath(); }
+
+// Ein Dendrit: leicht geschwungen, unverzweigt, vom Zellkörper nach außen
+function _n9cDendrit(C, a, rt, i) {
+  const dx = Math.cos(a), dy = Math.sin(a), nx = -dy, ny = dx;
+  const b = (i % 2 ? 1 : -1) * 3.5, out = [];
+  for (let k = 0; k <= 16; k++) {
+    const u = k / 16, r = C.r * 0.75 + (rt - C.r * 0.75) * u, q = b * Math.sin(Math.PI * u);
+    out.push([C.x + dx * r + nx * q, C.y + dy * r + ny * q]);
+  }
+  return _n9cMessen(out);
+}
+
+function _n9cGeo() {
+  if (_n9cG) return _n9cG;
+  const G = {};
+  // ── Körperbild: Lina sitzt, Blick nach links (150 Bildpunkte je Meter) ──
+  G.matte = 210;
+  G.kopf = { x: 188, y: 94, r: 17 };
+  G.hirn = { x: 191, y: 89, rx: 10.5, ry: 8 };
+  G.punkt = { x: 198, y: 156 };                      // Zellkörper im Rückenmark
+  G.mark = _n9cKurve([[192, 97], [195, 114], [197, 134], [198, 162]], 6);
+  G.befehl = _n9cKurve([[191, 89], [192, 98], [195, 114], [197, 134], [198, 156]], 6);
+  G.faser = _n9cKurve([[198, 156], [199, 176], [197, 193], [190, 202], [176, 205], [140, 205],
+                       [100, 205], [90, 205], [84, 203], [80, 199], [80, 197]], 6);
+  G.muskel = { x: 80, y: 191, rx: 3, ry: 6 };
+  G.zehe = { x: 81, y: 183 };
+  G.bein = [[176, 184], [150, 188], [120, 193], [96, 198], [90, 200], [88, 209], [206, 209], [207, 194]];
+  G.fuss = _n9cKurve([[93, 199], [90, 190], [87, 183], [81, 181], [76, 183], [74, 192], [75, 202], [79, 208.5], [86, 210], [93, 209]], 4);
+  // ── Lupe ──
+  G.L = { x: 326, y: 122, r: 90 };
+  G.C = { x: 326, y: 104, r: 12 };
+  G.rt = 55;
+  G.winkel = [148, 196, 238, 290, 338, 32];
+  G.empf = 2;                                        // Dendrit, an dem die Erregung ankommt
+  G.mess = 4;                                        // Dendrit, an dem das Maßband liegt
+  G.dend = G.winkel.map((w, i) => _n9cDendrit(G.C, w * Math.PI / 180, G.rt, i));
+  G.dendForm = G.dend.map(d => _n9cSchlauch(d, u => 6.2 - 4.6 * u));
+  const ae = G.winkel[G.empf] * Math.PI / 180;
+  const T = G.dend[G.empf][G.dend[G.empf].length - 1];
+  G.spitze = { x: T[0], y: T[1] };
+  G.knopf = { x: G.C.x + Math.cos(ae) * (G.rt + 7), y: G.C.y + Math.sin(ae) * (G.rt + 7), r: 4 };
+  const ew = 205 * Math.PI / 180;
+  const E = [G.L.x + Math.cos(ew) * (G.L.r - 1), G.L.y + Math.sin(ew) * (G.L.r - 1)];
+  G.fremd = _n9cMessen(_n9cBez(E, [258, 70], [278, 54], [G.knopf.x, G.knopf.y], 24));
+  G.spalt = _n9cMessen([[G.knopf.x, G.knopf.y], [T[0], T[1]]]);
+  G.hinein = _n9cMessen(G.dend[G.empf].slice().reverse().concat([[G.C.x, G.C.y]]));
+  // Nervenfaser in der Lupe: vom Zellkörper nach unten bis an den Rand der Lupe
+  const roh = _n9cBez([G.C.x, G.C.y], [327, 140], [320, 172], [332, 218], 48), ax = [];
+  for (const p of roh) {
+    const d = Math.hypot(p[0] - G.L.x, p[1] - G.L.y);
+    if (d > G.L.r - 1) {
+      const q = ax[ax.length - 1], dq = Math.hypot(q[0] - G.L.x, q[1] - G.L.y);
+      const f = (G.L.r - 1 - dq) / ((d - dq) || 1);
+      ax.push([q[0] + (p[0] - q[0]) * f, q[1] + (p[1] - q[1]) * f]);
+      break;
+    }
+    ax.push(p);
+  }
+  G.axon = _n9cMessen(ax);
+  G.axonForm = _n9cSchlauch(G.axon, u => {
+    const s = u * G.axon.len;
+    return s < 24 ? 10 - 5.4 * (s / 24) : 4.6;
+  });
+  // Maßband-Lagen
+  const am = G.winkel[G.mess] * Math.PI / 180, mx = Math.cos(am), my = Math.sin(am);
+  G.band = {
+    koerper: _n9cMessen([[G.C.x - G.C.r, G.C.y + 6.5], [G.C.x + G.C.r, G.C.y + 6.5]]),
+    dendrit: _n9cMessen([[G.C.x + mx * G.C.r - my * 8, G.C.y + my * G.C.r + mx * 8],
+                         [G.C.x + mx * G.rt - my * 8, G.C.y + my * G.rt + mx * 8]]),
+    faser: _n9cVersatz(G.faser, -8)
+  };
+  // Lupenkreis im Körperbild und die beiden Verbindungslinien (äußere Tangenten)
+  G.zoom = { x: G.punkt.x, y: G.punkt.y, r: 11 };
+  const dz = Math.hypot(G.L.x - G.zoom.x, G.L.y - G.zoom.y);
+  const th = Math.atan2(G.L.y - G.zoom.y, G.L.x - G.zoom.x), ph = Math.acos((G.zoom.r - G.L.r) / dz);
+  G.zoomLinien = [th + ph, th - ph].map(a => [
+    [G.zoom.x + G.zoom.r * Math.cos(a), G.zoom.y + G.zoom.r * Math.sin(a)],
+    [G.L.x + G.L.r * Math.cos(a), G.L.y + G.L.r * Math.sin(a)]]);
+  _n9cG = G;
+  return G;
+}
+
+// ── Zustand und Bedienung ──────────────────────────────────────────────
+function _n9cLeer() {
+  const z = _n9c;
+  z.laeuft = false; z.fertig = false; z.s = 0;
+  z.hell = { empf: 0, soma: 0, axon: 0, faser: 0 };
+  z.zieh = 0; z.wackel = 0; z.glanz = 0;
+  z.fx = { teile: [] };
+}
+function _n9cInit() {
+  _n9cGeo();
+  _n9c = { t: 0, teil: 'koerper', band: 1, letzt: '' };
+  _n9cLeer();
+}
+function _n9cMass(v) {
+  if (!_n9c || !_n9cTEIL[v]) return;
+  if (v !== _n9c.teil) _n9c.band = 0;                 // Maßband legt sich neu an
+  _n9c.teil = v;
+  _n9cStatus();
+}
+function _n9cSenden() {
+  if (!_n9c || _n9c.laeuft) return;
+  const G = _n9cGeo();
+  _n9cLeer();
+  _n9c.laeuft = true;
+  _bioFxWelle(_n9c.fx.teile, G.hirn.x, G.hirn.y, '#fde047', 22);
+  _n9cStatus();
+}
+function _n9cNeu() {
+  if (!_n9c) return;
+  _n9cLeer();
+  if (_n9c.teil !== 'koerper') _n9c.band = 0;
+  _n9c.teil = 'koerper';
+  _n9cStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────────────────────
+function _n9cSatz() {
+  const z = _n9c, Z = _n9cZ, S = _n9cSATZ, s = z.s;
+  if (!z.laeuft && !z.fertig) return S.ruhe;
+  if (z.fertig || s >= Z.p3) return S.zehen;
+  if (s < Z.p1) return S.hirn;
+  if (s < Z.p2b) return S.hinein;
+  if (s < Z.p2c) return S.hinaus;
+  return S.bein;
+}
+function _n9cSchluessel() {
+  return _n9c.teil + '|' + _n9cSatz() + '|' + _n9c.laeuft + '|' + _n9c.fertig;
+}
+function _n9cHTML() {
+  const k = v => `<button class="sim-btn" data-n9c="${v}" onclick="_n9cMass('${v}')">${_n9cTEIL[v]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie ist die Nervenzelle gebaut?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links sitzt Lina auf der Matte, von der Seite gesehen. Rechts in der Lupe: der gelbe Punkt aus ihrem Rückenmark, stark vergrößert.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9c-cv" width="420" height="310" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9c-los" onclick="_n9cSenden()">▶ Erregung senden</button>
+          <button class="sim-btn" onclick="_n9cNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Maßband an</span>
+          <div class="sim-btn-row">${k('koerper')}${k('dendrit')}${k('faser')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9c-mass" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_n9c-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9c-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:8px">Grau in der Lupe: die Nervenzelle davor. Sie bringt den Befehl vom Gehirn. Zähle nur die gelbe Zelle.</div>
+        <div class="fpm-note" style="margin-top:8px">Bei den Dendriten misst das Maßband nur den Dendriten, an dem es liegt.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Maßband am Zellkörper &nbsp;|&nbsp; Alle Längen sind Modellwerte.</p>
+  </div>`;
+}
+function _n9cStatus() {
+  if (!_n9c) return;
+  const z = _n9c;
+  const m = document.getElementById('_n9c-mass');
+  if (m) { m.textContent = _n9cAN[z.teil] + ' · Länge: ' + _n9cLAENGE[z.teil]; m.className = 'lmp-status on'; }
+  const st = document.getElementById('_n9c-status');
+  if (st) { st.textContent = _n9cSatz(); st.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9c-hinweis');
+  if (h) h.textContent = z.laeuft ? 'Achte auf den gelben Lichtpunkt.'
+    : z.fertig ? 'Der Weg der Erregung bleibt hell. Mit „neu“ beginnt alles von vorn.'
+    : 'Stelle „Maßband an“ um und lies die Länge ab. Zähle die Teile in der Lupe selbst. Drücke dann „▶ Erregung senden“.';
+  try {
+    document.querySelectorAll('[data-n9c]').forEach(b => {
+      const v = b.getAttribute('data-n9c');
+      if (b.classList) b.classList.toggle('primary', v === z.teil);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9c-los');
+  if (los && los.classList) los.classList.toggle('primary', !z.laeuft);
+  z.letzt = _n9cSchluessel();
+}
+
+// ── Ablauf ─────────────────────────────────────────────────────────────
+function _n9cUpdate(dt) {
+  if (!_n9c) return;
+  dt = _bioFxDt(dt);
+  const z = _n9c, Z = _n9cZ, G = _n9cGeo();
+  z.t += dt;
+  z.band = Math.min(1, z.band + dt / 0.6);
+  if (z.laeuft) {
+    const s0 = z.s;
+    z.s += dt;
+    const s = z.s, ueber = x => s0 < x && s >= x, H = z.hell;
+    if (s >= Z.sprung) H.empf = Math.min(1, (s - Z.sprung) / (Z.p2b - Z.sprung));
+    if (s >= Z.p2b - 0.15) H.soma = Math.min(1, (s - Z.p2b + 0.15) / 0.4);
+    if (s >= Z.p2b) H.axon = Math.min(1, (s - Z.p2b) / (Z.p2c - Z.p2b));
+    if (s >= Z.p2c) H.faser = Math.min(1, (s - Z.p2c) / (Z.p3 - Z.p2c));
+    const fx = z.fx.teile;
+    if (ueber(Z.p1)) {                                // Blick in die Lupe lenken
+      _bioFxWelle(fx, G.zoom.x, G.zoom.y, '#fde047', 20);
+      _bioFxWelle(fx, G.fremd[0][0], G.fremd[0][1], '#fde047', 22);
+    }
+    if (ueber(Z.sprung)) _bioFxWelle(fx, G.spitze.x, G.spitze.y, '#fb923c', 16);
+    if (ueber(Z.p2c)) _bioFxWelle(fx, G.punkt.x, G.punkt.y, '#fde047', 20);
+    if (ueber(Z.p3)) {                                // am Muskel angekommen
+      z.zieh = 1; z.wackel = 0.001;
+      _bioFxWelle(fx, G.muskel.x, G.muskel.y, '#fca5a5', 22);
+      _bioFxWelle(fx, G.zehe.x, G.zehe.y - 6, '#fde047', 18);
+    }
+    if (ueber(Z.aha)) {                               // die ganze Zelle glüht einmal auf
+      z.glanz = 1;
+      _bioFxBanner(z.fx, 'Bis zum Fuß: dieselbe Zelle!', 3.2, '#fde047');
+    }
+    if (s >= Z.ende) { z.laeuft = false; z.fertig = true; }
+  }
+  if (z.wackel > 0) z.wackel += dt;                   // Zehen wackeln bis „neu“ oder neues Senden
+  z.zieh = Math.max(0, z.zieh - dt / 1.6);
+  z.glanz = Math.max(0, z.glanz - dt / 1.8);
+  if (_n9cSchluessel() !== z.letzt) _n9cStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+// Wo ist der Lichtpunkt gerade? {wo, pfad, u} oder null
+function _n9cLicht() {
+  const z = _n9c, Z = _n9cZ, G = _n9cGeo(), s = z.s;
+  if (!z.laeuft) return null;
+  const u = (a, b) => (s - a) / (b - a);
+  if (s < Z.hirn) return { wo: 'koerper', pfad: G.befehl, u: 0 };
+  if (s < Z.p1) return { wo: 'koerper', pfad: G.befehl, u: u(Z.hirn, Z.p1) };
+  if (s < Z.p2a) return { wo: 'lupe', pfad: G.fremd, u: u(Z.p1, Z.p2a) };
+  if (s < Z.sprung) return { wo: 'lupe', pfad: G.spalt, u: u(Z.p2a, Z.sprung) };
+  if (s < Z.p2b) return { wo: 'lupe', pfad: G.hinein, u: u(Z.sprung, Z.p2b) };
+  if (s < Z.p2c) return { wo: 'lupe', pfad: G.axon, u: u(Z.p2b, Z.p2c) };
+  if (s < Z.p3) return { wo: 'koerper', pfad: G.faser, u: u(Z.p2c, Z.p3) };
+  return null;
+}
+
+// ── Zeichnen ───────────────────────────────────────────────────────────
+// Zehen: leicht angehoben; nach dem Ankommen wackeln sie (1,1 Hz, Bewegung, kein Blinken)
+function _n9cZehenWinkel(z) {
+  return z.wackel > 0 ? 0.15 + 0.5 * Math.sin(z.wackel * Math.PI * 2 * 1.1) : 0.15;
+}
+function _n9cLichtpunkt(ctx, p, u) {
+  ctx.save();
+  for (let k = 5; k >= 1; k--) {                      // kurzer Schweif
+    const q = _n9cAuf(p, u - k * 3 / p.len);
+    ctx.fillStyle = 'rgba(253,224,71,' + (0.55 - k * 0.09).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(q.x, q.y, 4 - k * 0.45, 0, Math.PI * 2); ctx.fill();
+  }
+  const o = _n9cAuf(p, u);
+  ctx.fillStyle = 'rgba(253,224,71,0.45)';
+  ctx.beginPath(); ctx.arc(o.x, o.y, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fffbeb'; ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.arc(o.x, o.y, 4.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Maßband: weißes Band mit blauem Rand und zwei Endmarken, f = ausgerollter Anteil
+function _n9cMassband(ctx, p, f) {
+  if (f <= 0.01) return;
+  const q = _n9cStueck(p, 0, f);
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'butt';
+  ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 7.5; _n9cZug(ctx, q); ctx.stroke();
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 4.5; _n9cZug(ctx, q); ctx.stroke();
+  const marke = (i, j) => {
+    const a = q[i], b = q[j];
+    let dx = b[0] - a[0], dy = b[1] - a[1];
+    const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+    ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(a[0] - dy * 7, a[1] + dx * 7); ctx.lineTo(a[0] + dy * 7, a[1] - dx * 7); ctx.stroke();
+  };
+  marke(0, 1);
+  if (f >= 0.999) marke(q.length - 1, q.length - 2);
+  ctx.restore();
+}
+function _n9cKoerper(ctx, G, z, t, halo, blau) {
+  const S = _n9cZ;
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  // Matte
+  ctx.fillStyle = '#c7d2fe'; ctx.strokeStyle = '#818cf8'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 14, G.matte, 222, 9, 4); ctx.fill(); ctx.stroke();
+  // Bein in der Sporthose
+  ctx.fillStyle = '#475569'; ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.5;
+  _n9cFlaeche(ctx, G.bein); ctx.fill(); ctx.stroke();
+  // Fuß (barfuß) mit Zehen, die sich bewegen können
+  const haut = '#f3c9a8', hautRand = '#9a6b4f';
+  ctx.fillStyle = haut; ctx.strokeStyle = hautRand; ctx.lineWidth = 1.4;
+  _n9cFlaeche(ctx, G.fuss); ctx.fill(); ctx.stroke();
+  const w = _n9cZehenWinkel(z);
+  ctx.save();
+  ctx.translate(G.zehe.x, G.zehe.y); ctx.rotate(w);
+  ctx.fillStyle = haut; ctx.strokeStyle = hautRand;
+  ctx.beginPath(); ctx.moveTo(-5.4, 2); ctx.lineTo(-5.4, -8); ctx.arc(0, -8, 5.4, Math.PI, 0); ctx.lineTo(5.4, 2);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  // Rumpf im T-Shirt, Hals, Kopf
+  ctx.fillStyle = '#8fc3ae'; ctx.strokeStyle = '#3f6f5e'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 168, 122, 38, 87, 12); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = haut; ctx.strokeStyle = hautRand;
+  ctx.fillRect(182, 108, 12, 17); ctx.strokeRect(182, 108, 12, 17);
+  const K = G.kopf;
+  ctx.beginPath(); ctx.arc(K.x, K.y, K.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(K.x - K.r + 0.5, K.y + 3, 2.6, Math.PI * 0.5, Math.PI * 1.5); ctx.fill(); ctx.stroke();
+  // Haare: Kappe über Scheitel und Hinterkopf, Zopf
+  ctx.fillStyle = '#5b3a29';
+  ctx.beginPath(); ctx.arc(K.x, K.y, K.r + 1.5, Math.PI * 1.08, Math.PI * 2.28);
+  ctx.lineTo(K.x + 4, K.y + 2); ctx.lineTo(K.x - 8, K.y - 9); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(K.x + K.r + 3, K.y + 6, 4.5, 8, -0.35, 0, Math.PI * 2); ctx.fill();
+  // Arm, Hand liegt auf dem Oberschenkel
+  ctx.strokeStyle = '#3f6f5e'; ctx.lineWidth = 10.5;
+  ctx.beginPath(); ctx.moveTo(190, 131); ctx.lineTo(186, 146); ctx.stroke();
+  ctx.strokeStyle = '#8fc3ae'; ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.moveTo(190, 131); ctx.lineTo(186, 146); ctx.stroke();
+  ctx.strokeStyle = hautRand; ctx.lineWidth = 8;
+  ctx.beginPath(); ctx.moveTo(186, 146); ctx.lineTo(182, 163); ctx.lineTo(159, 184); ctx.stroke();
+  ctx.strokeStyle = haut; ctx.lineWidth = 5.5;
+  ctx.beginPath(); ctx.moveTo(186, 146); ctx.lineTo(182, 163); ctx.lineTo(159, 184); ctx.stroke();
+  // Gehirn und Rückenmark, durchscheinend gezeichnet
+  ctx.fillStyle = 'rgba(254,249,195,0.95)'; ctx.strokeStyle = '#b8a35a'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(G.hirn.x, G.hirn.y, G.hirn.rx, G.hirn.ry, -0.15, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#b8a35a'; ctx.lineWidth = 6.5; _n9cZug(ctx, G.mark); ctx.stroke();
+  ctx.strokeStyle = '#fef9c3'; ctx.lineWidth = 4; _n9cZug(ctx, G.mark); ctx.stroke();
+
+  // Gewählter Teil leuchtet (Punkt bzw. Linie)
+  if (z.teil === 'faser') {
+    ctx.strokeStyle = halo; ctx.lineWidth = 10; _n9cZug(ctx, G.faser); ctx.stroke();
+  } else {
+    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(G.punkt.x, G.punkt.y, 6.5, 0, Math.PI * 2); ctx.fill();
+  }
+  // Glühen der ganzen Zelle (Aha)
+  const ga = z.glanz > 0 ? Math.sin(Math.PI * (1 - z.glanz)) : 0;
+  if (ga > 0.01) {
+    ctx.strokeStyle = 'rgba(253,224,71,' + (0.8 * ga).toFixed(3) + ')'; ctx.lineWidth = 11;
+    _n9cZug(ctx, G.faser); ctx.stroke();
+    ctx.fillStyle = 'rgba(253,224,71,' + (0.8 * ga).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(G.punkt.x, G.punkt.y, 8, 0, Math.PI * 2); ctx.fill();
+  }
+  // Muskel im Fuß; er zieht sich zusammen, wenn die Erregung ankommt
+  const M = G.muskel, zz = Math.max(z.zieh, z.wackel > 0 ? 0.5 + 0.5 * Math.sin(z.wackel * Math.PI * 2 * 1.1) : 0);
+  ctx.fillStyle = zz > 0.05 ? '#ef4444' : '#f87171'; ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(M.x, M.y, M.rx + 0.9 * zz, M.ry - 1.4 * zz, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Die Nervenzelle in echtem Maßstab: Punkt und dünne gelbe Linie
+  ctx.strokeStyle = '#92400e'; ctx.lineWidth = 3.8; _n9cZug(ctx, G.faser); ctx.stroke();
+  ctx.strokeStyle = z.teil === 'faser' ? _n9cMisch('#facc15', '#93c5fd', blau) : '#facc15';
+  ctx.lineWidth = 2.2; _n9cZug(ctx, G.faser); ctx.stroke();
+  if (z.hell.faser > 0.001) {                         // Spur bleibt hell
+    const q = _n9cStueck(G.faser, 0, z.hell.faser);
+    ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 5; _n9cZug(ctx, q); ctx.stroke();
+    ctx.strokeStyle = '#fef9c3'; ctx.lineWidth = 2.6; _n9cZug(ctx, q); ctx.stroke();
+  }
+  const aktiv = z.laeuft && z.s >= S.p1 && z.s < S.p2c;
+  if (aktiv) _bioFxLeuchten(ctx, G.punkt.x, G.punkt.y, 5, t, '253,224,71');
+  ctx.fillStyle = z.teil !== 'faser' ? _n9cMisch('#facc15', '#93c5fd', blau) : '#facc15';
+  ctx.strokeStyle = '#92400e'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(G.punkt.x, G.punkt.y, 2.4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Maßband an der Nervenfaser
+  if (z.teil === 'faser') _n9cMassband(ctx, G.band.faser, z.band);
+  // Lichtpunkt im Körperbild
+  const L = _n9cLicht();
+  if (L && L.wo === 'koerper') _n9cLichtpunkt(ctx, L.pfad, L.u);
+  ctx.restore();
+}
+function _n9cZoom(ctx, G) {
+  ctx.save();
+  ctx.strokeStyle = 'rgba(51,65,85,0.5)'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+  for (const [a, b] of G.zoomLinien) { ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+  ctx.setLineDash([]);
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(G.zoom.x, G.zoom.y, G.zoom.r, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+function _n9cLupe(ctx, G, z, t, halo, blau) {
+  const L = G.L, C = G.C;
+  ctx.save();
+  ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  const bg = ctx.createRadialGradient(L.x - 25, L.y - 30, 8, L.x, L.y, L.r);
+  bg.addColorStop(0, '#ffffff'); bg.addColorStop(1, '#e2e8f0');
+  ctx.fillStyle = bg;
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, Math.PI * 2); ctx.fill();
+  ctx.save();
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r - 1, 0, Math.PI * 2); ctx.clip();
+  // Faser der anderen Nervenzelle mit Knöpfchen (grau)
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 5; _n9cZug(ctx, G.fremd); ctx.stroke();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 2.8; _n9cZug(ctx, G.fremd); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(G.knopf.x, G.knopf.y, G.knopf.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Gewählter Teil leuchtet
+  if (z.teil === 'koerper') {
+    ctx.fillStyle = halo; ctx.beginPath(); ctx.arc(C.x, C.y, C.r + 6, 0, Math.PI * 2); ctx.fill();
+  } else if (z.teil === 'dendrit') {
+    ctx.strokeStyle = halo; ctx.lineWidth = 12;
+    for (const d of G.dend) { _n9cZug(ctx, d); ctx.stroke(); }
+  } else {
+    ctx.strokeStyle = halo; ctx.lineWidth = 14; _n9cZug(ctx, G.axon); ctx.stroke();
+  }
+  // Zelle: erst ein gemeinsamer Umriss, dann die Füllung darüber
+  const formen = G.dendForm.concat([G.axonForm]);
+  const ga = z.glanz > 0 ? Math.sin(Math.PI * (1 - z.glanz)) : 0;
+  if (ga > 0.01) {
+    ctx.strokeStyle = 'rgba(253,224,71,' + (0.85 * ga).toFixed(3) + ')'; ctx.lineWidth = 9;
+    for (const f of formen) { _n9cFlaeche(ctx, f); ctx.stroke(); }
+    ctx.beginPath(); ctx.arc(C.x, C.y, C.r + 3, 0, Math.PI * 2); ctx.stroke();
+  }
+  ctx.fillStyle = '#b45309'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 2.6;
+  for (const f of formen) { _n9cFlaeche(ctx, f); ctx.fill(); ctx.stroke(); }
+  ctx.beginPath(); ctx.arc(C.x, C.y, C.r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  const gelb = '#fde68a', an = _n9cMisch(gelb, '#93c5fd', blau);
+  ctx.fillStyle = z.teil === 'dendrit' ? an : gelb;
+  for (const f of G.dendForm) { _n9cFlaeche(ctx, f); ctx.fill(); }
+  ctx.fillStyle = z.teil === 'faser' ? an : gelb;
+  _n9cFlaeche(ctx, G.axonForm); ctx.fill();
+  ctx.fillStyle = z.teil === 'koerper' ? an : gelb;
+  ctx.beginPath(); ctx.arc(C.x, C.y, C.r, 0, Math.PI * 2); ctx.fill();
+  // Spur der Erregung: ein Dendrit, Zellkörper, Nervenfaser
+  const H = z.hell;
+  if (H.soma > 0.01) {
+    ctx.fillStyle = 'rgba(251,146,60,' + (0.4 * H.soma).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(C.x, C.y, C.r - 0.5, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2.6;
+  if (H.empf > 0.001) { _n9cZug(ctx, _n9cStueck(G.hinein, 0, Math.min(H.empf, 0.97))); ctx.stroke(); }
+  if (H.axon > 0.001) { _n9cZug(ctx, _n9cStueck(G.axon, 0.08, Math.max(0.08, H.axon))); ctx.stroke(); }
+  // Zellkern
+  ctx.fillStyle = '#d97706'; ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(C.x, C.y, 4.8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#78350f';
+  ctx.beginPath(); ctx.arc(C.x + 1.2, C.y - 1, 1.4, 0, Math.PI * 2); ctx.fill();
+  // Maßband in der Lupe
+  if (z.teil === 'koerper' || z.teil === 'dendrit') _n9cMassband(ctx, G.band[z.teil], z.band);
+  // Lichtpunkt in der Lupe
+  const P = _n9cLicht();
+  if (P && P.wo === 'lupe') _n9cLichtpunkt(ctx, P.pfad, P.u);
+  ctx.restore();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(L.x, L.y, L.r, 0, Math.PI * 2); ctx.stroke();
+  ctx.restore();
+}
+function _n9cUnten(ctx, z, W) {
+  const y0 = 228, h = 74;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 10, y0, W - 20, h, 10); ctx.fill(); ctx.stroke();
+  // Gehäuse des Maßbands
+  const gx = 22, gy = y0 + 16;
+  ctx.fillStyle = '#1e40af';
+  _bioFxRundRect(ctx, gx, gy, 40, 40, 9); ctx.fill();
+  ctx.fillStyle = '#dbeafe';
+  ctx.beginPath(); ctx.arc(gx + 20, gy + 20, 11, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#1e40af';
+  ctx.beginPath(); ctx.arc(gx + 20, gy + 20, 3.5, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 1.5;
+  ctx.fillRect(gx + 40, gy + 31, 14, 6); ctx.strokeRect(gx + 40, gy + 31, 14, 6);
+  ctx.fillStyle = '#1e40af'; ctx.fillRect(gx + 53, gy + 27, 3, 12);
+  // Anzeige
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#475569'; ctx.font = '700 12px sans-serif';
+  ctx.fillText('Maßband', 86, y0 + 22);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 24px sans-serif';
+  ctx.fillText('Länge: ' + _n9cLAENGE[z.teil], 86, y0 + 53);
+  // Legende: gelber Lichtpunkt = Erregung
+  const lx = 306, ly = y0 + 37;
+  ctx.fillStyle = 'rgba(253,224,71,0.45)';
+  ctx.beginPath(); ctx.arc(lx, ly, 9, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#fffbeb'; ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.arc(lx, ly, 4.2, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155'; ctx.font = '700 13px sans-serif';
+  ctx.fillText('Erregung', lx + 15, ly + 5);
+  ctx.restore();
+}
+function _n9cDraw(ctx, cv) {
+  if (!_n9c) return;
+  const G = _n9cGeo(), z = _n9c, W = cv.width, H = cv.height, t = z.t;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  // Der gewählte Teil leuchtet weich auf und ab: 0,8 Hz, kein An/Aus
+  const puls = 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8);
+  const halo = 'rgba(59,130,246,' + ((z.laeuft ? 0.15 : 0.22) + (z.laeuft ? 0.2 : 0.43) * puls).toFixed(3) + ')';
+  const blau = (z.laeuft ? 0.35 : 0.8) * puls;
+  ctx.save();
+  ctx.fillStyle = '#334155'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Lina, von der Seite', 14, 19);
+  ctx.textAlign = 'center';
+  ctx.fillText('Lupe: stark vergrößert', G.L.x, 19);
+  ctx.restore();
+  _n9cKoerper(ctx, G, z, t, halo, blau);
+  _n9cZoom(ctx, G);
+  _n9cLupe(ctx, G, z, t, halo, blau);
+  _n9cUnten(ctx, z, W);
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · DER WEG VOM GLAS ZUR BLASE   (Förderheft Bio 9 · bd1)
+// Kennung bio-niere, Präfix _n9h. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bd1.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, schematisch, ohne Körper):
+//   - eine Niere im Schnitt als Bohnenform (blass rosa)
+//   - senkrecht hindurch ein Blutgefäß: oben fließt Blut hinein, unten fließt
+//     es weiter (rote Wände, Fließ-Winkel zeigen nach unten)
+//   - in der Mitte der rechten Gefäßwand ein feines Sieb (grau, sechs Löcher
+//     zu 7 Bildpunkten)
+//   - rechts davon ein gelber Kanal; er führt aus der Niere hinaus und als
+//     dünner Schlauch nach unten zu einer rundlichen Blase
+//   - zwei Zähler im Bild: „im Blut: …“ unten rechts neben dem Ausgang des Gefäßes,
+//     „im Harn: …“ über der Blase. Oben rechts steht, welche Teilchen fließen.
+//
+// BEDIENUNG (wörtlich):
+//   Teilchen im Blut: „Blutzellen“ · „Zucker“ · „Abfallstoffe“ · „Wasser“
+//                     (Wahlgruppe _n9hTeilchen('zellen'|'zucker'|'abfall'|'wasser'))
+//   „▶ 10 Teilchen losschicken“ (_n9hLos) · „neu“ (_n9hNeu → Blutzellen)
+//   Umstellen setzt beide Zähler auf 0 und leert das Bild. Jeder weitere Druck
+//   auf „▶“ (nach dem Ende eines Durchgangs) schickt 10 neue Teilchen, die
+//   Zähler zählen weiter. Während ein Durchgang läuft, wartet der Knopf.
+//
+// WEGE DER TEILCHEN (alle 0,3 s eines, Blutzellen alle 0,36 s; fest vorgegeben, ohne Zufall):
+//   Blutzellen   (rote Scheiben, 15 Bildpunkte) gleiten am Sieb entlang, drücken
+//                an jedes Loch, passen nicht hindurch und fließen unten weiter.
+//   Zucker       (weiße Würfel) gehen durch ein Loch in den gelben Kanal, sinken
+//                ein Stück ab und wandern dann in 2,0 s sichtbar durch die Wand
+//                zurück ins Blut (die Wand öffnet sich dort kurz, grüner Ring).
+//   Abfallstoffe (gelbe Punkte) gehen durch ein Loch und fließen durch den
+//                Kanal und den Schlauch in die Blase; dort liegen sie sichtbar.
+//   Wasser       (blaue Tropfen) alle 10 gehen durch das Sieb; 9 wandern zurück
+//                wie der Zucker, der sechste fließt zur Blase.
+//   Gezählt wird beim Ankommen: „im Blut“ am unteren Rand der Niere,
+//   „im Harn“ beim Eintritt in die Blase. Die Zähler stehen also erst fest,
+//   wenn das letzte Teilchen angekommen ist (Wasser: die Stolperstelle aus dem
+//   Lehrerteil – erst laufen alle 10 durch das Sieb).
+//
+// WERTE (lehrer.tabelle_erwartet; gegengerechnet im Mini-DOM, je 10 Teilchen):
+//   Blutzellen   im Blut: 10 · im Harn: 0
+//   Zucker       im Blut: 10 · im Harn: 0
+//   Abfallstoffe im Blut: 0  · im Harn: 10
+//   Wasser       im Blut: 9  · im Harn: 1
+//   Zusatz: Wasser dreimal → im Blut: 27 · im Harn: 3
+//   Ein Durchgang dauert je nach Teilchen 7 bis 9 s (gemessen im Mini-DOM).
+//
+// STATUSZEILE (_n9h-status): „im Blut: N · im Harn: N“, läuft live mit.
+// HINWEIS (_n9h-hinweis):
+//   vorher    „Teilchen im Blut: … Drücke „▶ 10 Teilchen losschicken“.“
+//   unterwegs „Die Teilchen sind unterwegs. Sieh genau auf das Sieb. Warte,
+//              bis alle angekommen sind.“
+//   danach    „Teilchen im Blut: … Alle Teilchen sind angekommen. Lies beide
+//              Zähler ab. Stelle dann andere Teilchen ein.“ (der Name steht mit
+//              da, damit Bild, Zähler und Einstellung auf einem Blick und im
+//              Dump zusammengehören – sonst fällt „Zucker“ als Doppel von
+//              „Blutzellen“ aus dem Dump)
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen): grauer Ring, wo eine Blutzelle am Sieb
+//   anstößt; grüner Ring und offene Wand, wo Zucker oder Wasser zurück ins Blut
+//   wandert; gelber Ring am Eingang der Blase; der passende Zähler pocht beim
+//   Zählen. Am Ende leuchten beide Zähler ruhig: jetzt ablesen.
+//
+// NICHT AM BILDSCHIRM (Lückenwörter): „filtern“, „Filter“, „bleiben“, „Magen“.
+//   „Zucker“ steht nur als Knopf- und Teilchenname da (so verlangt es der
+//   Bauplan), nie in einem Satz über den Harn.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9h = null;
+const _N9H_NAME = { zellen: 'Blutzellen', zucker: 'Zucker', abfall: 'Abfallstoffe', wasser: 'Wasser' };
+const _N9H_REIHE = ['zellen', 'zucker', 'abfall', 'wasser'];
+const _N9H_N = 10;                      // Teilchen je Druck
+const _N9H_TAKT = 0.3;                  // Abstand zweier Teilchen in s
+const _N9H_TAKT_Z = 0.36;               // Blutzellen sind größer: etwas mehr Abstand
+const _N9H_V = 80;                      // Fließen im Gefäß (Bildpunkte je s)
+const _N9H_VS = 56;                     // Anlauf an das Sieb
+const _N9H_VH = 64;                     // Fließen im gelben Kanal und Schlauch
+const _N9H_WASSER_HARN = 5;             // der sechste Wassertropfen fließt zur Blase
+// Gefäß: Innenraum x 95 … 137, Wände links bei 93,5, rechts (gemeinsam mit dem
+// gelben Kanal) bei 139
+const _N9H_GL = 95, _N9H_GR = 137, _N9H_GM = 116, _N9H_WAND = 139;
+// Sieb: von y 34 bis 104, sechs Löcher zu 7 Bildpunkten, Stege zu 4
+const _N9H_SIEB0 = 34, _N9H_SIEB1 = 104;
+const _N9H_LOCH = [41.5, 52.5, 63.5, 74.5, 85.5, 96.5];
+// Darunter (y 106 … 136) das Wandstück, durch das Zucker und Wasser zurückwandern.
+// gelber Kanal: Innenraum x 141 … 173, Bogen nach rechts bei y 137 … 163
+const _N9H_KM = 157;
+const _N9H_UNTEN = 220;                 // hier verlässt das Blut die Niere: Zählstelle
+// Blase
+const _N9H_BX = 358, _N9H_BY = 208, _N9H_BRX = 46, _N9H_BRY = 32;
+// Schlauch zur Blase (Bézier vom Nierenausgang bis in die Blase)
+const _N9H_SCHLAUCH = [[214, 150], [252, 150], [284, 194], [319, 196]];
+// seitliche Lage der Teilchen im Gefäß und im Kanal
+const _N9H_OFF = [-10, 6, -3, 11, -12, 2, 9, -6, 13, -1];
+const _N9H_OFF2 = [4, -9, 10, -4, 7, -11, 1, 12, -7, 5];
+const _N9H_KO = [-7, 5, -2, 8, -9, 1, 6, -4, 9, -6];
+const _N9H_LOCHWAHL = [1, 4, 2, 5, 0, 3, 1, 4, 2, 5];
+// Höhe des Rückwegs über y 108: zeitlich benachbarte Teilchen weit auseinander
+const _N9H_RUECKHOEHE = [0, 14, 28, 7, 21, 0, 14, 28, 7, 21];
+
+function _n9hInit() {
+  _n9h = { art: 'zellen', t: 0 };
+  _n9hLeeren();
+  _n9h.plaetze = _n9hPlaetze();
+}
+// Alles auf Anfang für die eingestellte Teilchenart
+function _n9hLeeren() {
+  _n9h.blut = 0; _n9h.harn = 0;
+  _n9h.teile = []; _n9h.platz = 0;
+  _n9h.laeuft = false; _n9h.gestartet = false; _n9h.fertig = false;
+  _n9h.durchgang = 0; _n9h.glanz = 0;
+  _n9h.pochB = 0; _n9h.pochH = 0;
+  _n9h.fx = { teile: [] };
+}
+// Liegeplätze in der Blase: Reihen von unten nach oben, je Reihe von der Mitte aus
+function _n9hPlaetze() {
+  const p = [];
+  const reihen = [231, 223, 215, 207, 199];
+  reihen.forEach((y, r) => {
+    const dy = (y - _N9H_BY) / _N9H_BRY;
+    const hw = _N9H_BRX * Math.sqrt(Math.max(0, 1 - dy * dy)) - 8;
+    const versatz = r % 2 ? 4 : 0;
+    const reihe = [];
+    for (let dx = -40 + versatz; dx <= 40; dx += 8) if (Math.abs(dx) <= hw) reihe.push(dx);
+    reihe.sort((a, b) => Math.abs(a) - Math.abs(b) || a - b);
+    for (const dx of reihe) {
+      // nicht in die Mündung des Schlauchs legen
+      const e = _N9H_SCHLAUCH[3];
+      if (Math.hypot(_N9H_BX + dx - e[0], y - e[1]) >= 13) p.push({ x: _N9H_BX + dx, y });
+    }
+  });
+  return p;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9hTeilchen(a) {
+  if (!_n9h || !_N9H_NAME[a]) return;
+  _n9h.art = a;
+  _n9hLeeren();
+  _n9hStatus();
+}
+function _n9hLos() {
+  if (!_n9h || _n9h.laeuft) return;
+  _n9h.durchgang++;
+  for (let i = 0; i < _N9H_N; i++) {
+    const p = _n9hBahn(_n9h.art, i);
+    p.u = -i * (_n9h.art === 'zellen' ? _N9H_TAKT_Z : _N9H_TAKT); p.ei = 1; p.d = _n9h.durchgang;
+    _n9h.teile.push(p);
+  }
+  _n9h.laeuft = true; _n9h.gestartet = true; _n9h.fertig = false; _n9h.glanz = 0;
+  _n9hStatus();
+}
+function _n9hNeu() {
+  if (!_n9h) return;
+  _n9h.art = 'zellen';
+  _n9hLeeren();
+  _n9hStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9hZeile() { return 'im Blut: ' + _n9h.blut + ' · im Harn: ' + _n9h.harn; }
+function _n9hHinweis() {
+  if (_n9h.laeuft) return 'Die Teilchen sind unterwegs. Sieh genau auf das Sieb. Warte, bis alle angekommen sind.';
+  if (_n9h.fertig) return 'Teilchen im Blut: ' + _N9H_NAME[_n9h.art] + '. Alle Teilchen sind angekommen. Lies beide Zähler ab. Stelle dann andere Teilchen ein.';
+  return 'Teilchen im Blut: ' + _N9H_NAME[_n9h.art] + '. Drücke „▶ 10 Teilchen losschicken“.';
+}
+function _n9hStatus() {
+  if (!_n9h) return;
+  const el = document.getElementById('_n9h-status');
+  if (el) { el.textContent = _n9hZeile(); el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9h-hinweis');
+  if (h) h.textContent = _n9hHinweis();
+  try {
+    document.querySelectorAll('[data-n9h]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9h') === _n9h.art);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9h-los');
+  if (los && los.classList) los.classList.toggle('primary', !_n9h.laeuft);
+}
+function _n9hHTML() {
+  const k = a => `<button class="sim-btn" data-n9h="${a}" onclick="_n9hTeilchen('${a}')">${_N9H_NAME[a]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was holt die Niere aus dem Blut heraus?</h3>
+    <div class="fpm-note" style="margin-top:2px">Eine Niere im Schnitt, ganz einfach gezeichnet. Oben fließt Blut hinein, unten fließt es weiter. In der Mitte liegt ein feines Sieb (grau). Ein zweiter Weg führt zur Blase.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9h-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9h-los" onclick="_n9hLos()">▶ 10 Teilchen losschicken</button>
+          <button class="sim-btn" onclick="_n9hNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Teilchen im Blut</span>
+          <div class="sim-btn-row">${_N9H_REIHE.map(k).join('')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9h-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_n9h-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Rote Scheiben sind Blutzellen. Weiße Würfel sind Zucker. Gelbe Punkte sind Abfallstoffe. Blaue Tropfen sind Wasser.</div>
+        <div class="fpm-note" style="margin-top:6px">Der Zähler „im Blut“ zählt die Teilchen, die unten mit dem Blut weiterfließen. Der Zähler „im Harn“ zählt die Teilchen, die in der Blase ankommen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: „Blutzellen“ · im Blut: 0 · im Harn: 0 &nbsp;|&nbsp; Ein Durchgang dauert höchstens 10 Sekunden.</p>
+  </div>`;
+}
+
+// ── Wege der Teilchen ──────────────────────────────────
+// Ein Weg ist eine Liste von Wegmarken {t, x, y}; t zählt ab dem Start des
+// Teilchens. ev: Ereignis beim Erreichen der Marke. e: 's' = weich ankommen.
+// g: am Sieb entlanggleiten (Blutzelle drückt an jedes Loch). r: Rückweg.
+function _n9hZu(b, x, y, v, o) {
+  const l = b.k[b.k.length - 1];
+  b.k.push(Object.assign({ t: l.t + Math.hypot(x - l.x, y - l.y) / v, x, y }, o || {}));
+}
+function _n9hIn(b, x, y, dauer, o) {
+  const l = b.k[b.k.length - 1];
+  b.k.push(Object.assign({ t: l.t + dauer, x, y }, o || {}));
+}
+function _n9hBezier(q, s) {
+  const f = 1 - s;
+  return [f * f * f * q[0][0] + 3 * f * f * s * q[1][0] + 3 * f * s * s * q[2][0] + s * s * s * q[3][0],
+          f * f * f * q[0][1] + 3 * f * f * s * q[1][1] + 3 * f * s * s * q[2][1] + s * s * s * q[3][1]];
+}
+function _n9hBahn(art, i) {
+  const x0 = _N9H_GM + _N9H_OFF[i];
+  const b = { art, i, k: [{ t: 0, x: x0, y: -12 }], wohin: 'blut' };
+  if (art === 'zellen') {
+    // an das Sieb heran, daran entlang, nicht hindurch – dann weiter mit dem Blut
+    _n9hZu(b, x0, 22, _N9H_V);
+    _n9hIn(b, 128, 40, 0.5, { ev: 'stoss', e: 's' });
+    _n9hIn(b, 128, 99, 0.85, { g: true });
+    const x1 = _N9H_GM + _N9H_OFF2[i];
+    _n9hIn(b, x1, 124, 0.5, { e: 's' });
+    _n9hZu(b, x1, _N9H_UNTEN, _N9H_V, { ev: 'blut' });
+    _n9hZu(b, x1, 262, _N9H_V);
+    return b;
+  }
+  // kleine Teilchen: durch ein Loch des Siebs in den gelben Kanal
+  const ly = _N9H_LOCH[_N9H_LOCHWAHL[i]];
+  const xk = _N9H_KM + _N9H_KO[i];
+  _n9hZu(b, x0, ly - 24, _N9H_V);
+  _n9hZu(b, 129, ly, _N9H_VS);
+  _n9hIn(b, 149, ly, 0.45);
+  _n9hZu(b, xk, ly + 12, _N9H_VS);
+  const zurHarn = art === 'abfall' || (art === 'wasser' && i === _N9H_WASSER_HARN);
+  if (!zurHarn) {
+    // Rückweg: 2,0 s von der Kanalmitte durch die Wand zurück ins Blut
+    const yd = 108 + _N9H_RUECKHOEHE[i];
+    const x1 = _N9H_GM + _N9H_OFF2[i];
+    _n9hZu(b, xk, yd, _N9H_VH);
+    _n9hIn(b, 147, yd + 3, 0.8, { e: 's', r: true });
+    _n9hIn(b, 131, yd + 8, 0.6, { ev: 'tuer', r: true });
+    _n9hIn(b, x1, yd + 18, 0.6, { e: 's', r: true });
+    _n9hZu(b, x1, _N9H_UNTEN, _N9H_V, { ev: 'blut' });
+    _n9hZu(b, x1, 262, _N9H_V);
+    return b;
+  }
+  // weiter durch den Kanal, aus der Niere hinaus und durch den Schlauch zur Blase
+  b.wohin = 'harn';
+  const d = _N9H_KO[i] * 0.6;
+  _n9hZu(b, _N9H_KM + _N9H_KO[i] * 0.6, 136, _N9H_VH);
+  _n9hZu(b, 166, 147 + d, _N9H_VH);
+  _n9hZu(b, 192, 150 + d * 0.8, _N9H_VH);
+  _n9hZu(b, 214, 150, _N9H_VH);
+  for (let s = 1; s <= 8; s++) {
+    const q = _n9hBezier(_N9H_SCHLAUCH, s / 8);
+    _n9hZu(b, q[0], q[1], _N9H_VH, s === 8 ? { ev: 'harn' } : null);
+  }
+  b.platz = true;                        // der Liegeplatz kommt beim Ankommen dazu
+  return b;
+}
+// Lage eines Teilchens zur Zeit u (seit seinem Start)
+function _n9hOrt(p, u) {
+  const k = p.k;
+  if (u <= 0) return { x: k[0].x, y: k[0].y, j: 0, f: 0 };
+  for (let j = 1; j < k.length; j++) {
+    if (u < k[j].t) {
+      let f = (u - k[j - 1].t) / ((k[j].t - k[j - 1].t) || 1);
+      if (k[j].e === 's') f = _bioFxEase.sanft(f);
+      let x = k[j - 1].x + (k[j].x - k[j - 1].x) * f;
+      const y = k[j - 1].y + (k[j].y - k[j - 1].y) * f;
+      if (k[j].g) x += 1.6 * _n9hDelle(y);
+      return { x, y, j, f };
+    }
+  }
+  const z = k[k.length - 1];
+  return { x: z.x, y: z.y, j: k.length, f: 1 };
+}
+// 1 genau vor einem Loch, 0 vor einem Steg
+function _n9hDelle(y) {
+  let m = 0;
+  for (const ly of _N9H_LOCH) m = Math.max(m, Math.exp(-Math.pow((y - ly) / 3.2, 2)));
+  return m;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9hUpdate(dt) {
+  if (!_n9h) return;
+  dt = _bioFxDt(dt);
+  _n9h.t += dt;
+  _n9h.pochB = Math.max(0, _n9h.pochB - dt);
+  _n9h.pochH = Math.max(0, _n9h.pochH - dt);
+  if (_n9h.glanz > 0) _n9h.glanz = Math.max(0, _n9h.glanz - dt);
+  let neu = false;
+  for (const p of _n9h.teile) {
+    p.u += dt;
+    while (p.ei < p.k.length && p.u >= p.k[p.ei].t) {
+      const ev = p.k[p.ei].ev;
+      if (ev) { _n9hEreignis(p, ev, p.k[p.ei]); if (ev === 'blut' || ev === 'harn') neu = true; }
+      p.ei++;
+    }
+  }
+  // Wer das Bild unten verlassen hat, ist weg; wer in der Blase liegt, ruht dort.
+  _n9h.teile = _n9h.teile.filter(p => !(p.wohin === 'blut' && p.u >= p.k[p.k.length - 1].t));
+  if (_n9h.laeuft && _n9h.teile.every(p => p.d !== _n9h.durchgang || p.u >= p.k[p.k.length - 1].t)) {
+    _n9h.laeuft = false; _n9h.fertig = true; _n9h.glanz = 2.0;
+    neu = true;
+  }
+  if (neu) _n9hStatus();
+  _bioFxAlleUpdate(_n9h.fx, dt);
+}
+function _n9hEreignis(p, ev, m) {
+  const fx = _n9h.fx;
+  if (ev === 'stoss') _bioFxWelle(fx.teile, _N9H_WAND - 1, m.y, '#94a3b8', 13);
+  if (ev === 'tuer') _bioFxWelle(fx.teile, _N9H_WAND, m.y - 3, '#4ade80', 15);
+  if (ev === 'blut') {
+    _n9h.blut++; _n9h.pochB = 0.45;
+    _bioFxWelle(fx.teile, m.x, _N9H_UNTEN, '#f87171', 14);
+  }
+  if (ev === 'harn') {
+    _n9h.harn++; _n9h.pochH = 0.45;
+    _bioFxWelle(fx.teile, m.x, m.y, '#facc15', 16);
+    // Liegeplatz in der Blase anhängen: in 0,5 s dorthin sinken
+    const pl = _n9h.plaetze[_n9h.platz % _n9h.plaetze.length];
+    const lage = Math.floor(_n9h.platz / _n9h.plaetze.length);
+    _n9h.platz++;
+    p.k.push({ t: m.t + 0.5, x: pl.x + (lage % 2 ? 4 : 0), y: pl.y - (lage % 2 ? 4 : 0), e: 's' });
+    p.ph = (_n9h.platz * 1.618) % (2 * Math.PI);
+  }
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9hNierePfad(ctx) {
+  ctx.beginPath();
+  ctx.moveTo(150, 12);
+  ctx.bezierCurveTo(210, 12, 252, 52, 252, 102);
+  ctx.bezierCurveTo(252, 118, 246, 124, 238, 128);     // obere Lippe
+  ctx.bezierCurveTo(231, 134, 229, 142, 229, 150);     // Einbuchtung: hier
+  ctx.bezierCurveTo(229, 158, 231, 166, 238, 172);     // verlässt der Schlauch die Niere
+  ctx.bezierCurveTo(250, 182, 248, 206, 218, 212);
+  ctx.bezierCurveTo(188, 220, 140, 222, 110, 219);
+  ctx.bezierCurveTo(70, 214, 54, 176, 54, 120);
+  ctx.bezierCurveTo(54, 56, 92, 12, 150, 12);
+  ctx.closePath();
+}
+// Innenraum des gelben Kanals (oben rund, unten Bogen nach rechts, Trichter)
+function _n9hKanalPfad(ctx) {
+  ctx.beginPath();
+  ctx.moveTo(141, 32);
+  ctx.arc(_N9H_KM, 32, 16, Math.PI, 0, false);
+  ctx.lineTo(173, 137);
+  ctx.lineTo(214, 137);
+  ctx.quadraticCurveTo(224, 137, 232, 144);
+  ctx.lineTo(232, 156);
+  ctx.quadraticCurveTo(224, 163, 214, 163);
+  ctx.lineTo(161, 163);
+  ctx.quadraticCurveTo(141, 163, 141, 143);
+  ctx.closePath();
+}
+function _n9hKanalRand(ctx) {
+  ctx.beginPath();
+  ctx.moveTo(141, 143);
+  ctx.lineTo(141, 32);
+  ctx.arc(_N9H_KM, 32, 16, Math.PI, 0, false);
+  ctx.lineTo(173, 137);
+  ctx.lineTo(214, 137);
+  ctx.quadraticCurveTo(224, 137, 232, 144);
+  ctx.moveTo(232, 156);
+  ctx.quadraticCurveTo(224, 163, 214, 163);
+  ctx.lineTo(161, 163);
+  ctx.quadraticCurveTo(141, 163, 141, 143);
+  ctx.stroke();
+}
+function _n9hSchlauch(ctx, breite, farbe) {
+  const q = _N9H_SCHLAUCH;
+  ctx.strokeStyle = farbe; ctx.lineWidth = breite;
+  ctx.beginPath(); ctx.moveTo(q[0][0] + 14, q[0][1]);
+  ctx.bezierCurveTo(q[1][0], q[1][1], q[2][0], q[2][1], q[3][0], q[3][1]);
+  ctx.stroke();
+}
+// Teilchen
+function _n9hZelle(ctx, x, y, sx, sy) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(sx, sy);
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(0, 0, 7.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#f87171';
+  ctx.beginPath(); ctx.arc(0, 0, 3.6, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _n9hWuerfel(ctx, x, y) {
+  const a = 3.2, h = 2.2;
+  ctx.save();
+  ctx.lineWidth = 0.9; ctx.strokeStyle = '#475569';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x - a, y - a + 1, 2 * a, 2 * a); ctx.strokeRect(x - a, y - a + 1, 2 * a, 2 * a);
+  ctx.fillStyle = '#e2e8f0';
+  ctx.beginPath();
+  ctx.moveTo(x - a, y - a + 1); ctx.lineTo(x - a + h, y - a + 1 - h);
+  ctx.lineTo(x + a + h, y - a + 1 - h); ctx.lineTo(x + a, y - a + 1); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1';
+  ctx.beginPath();
+  ctx.moveTo(x + a, y - a + 1); ctx.lineTo(x + a + h, y - a + 1 - h);
+  ctx.lineTo(x + a + h, y + a + 1 - h); ctx.lineTo(x + a, y + a + 1); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _n9hPunkt(ctx, x, y) {
+  ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#854d0e'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(x, y, 3.3, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+}
+function _n9hTropfen(ctx, x, y) {
+  ctx.save();
+  ctx.fillStyle = '#3b82f6'; ctx.strokeStyle = '#1e3a8a'; ctx.lineWidth = 0.9;
+  ctx.beginPath();
+  ctx.moveTo(x, y - 5.5);
+  ctx.quadraticCurveTo(x + 4.2, y - 0.5, x + 3.6, y + 1.6);
+  ctx.arc(x, y + 1.4, 3.6, 0, Math.PI, false);
+  ctx.quadraticCurveTo(x - 4.2, y - 0.5, x, y - 5.5);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.75)';
+  ctx.beginPath(); ctx.arc(x - 1.3, y + 0.6, 1, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _n9hTeil(ctx, art, x, y, sx, sy) {
+  if (art === 'zellen') _n9hZelle(ctx, x, y, sx || 1, sy || 1);
+  else if (art === 'zucker') _n9hWuerfel(ctx, x, y);
+  else if (art === 'abfall') _n9hPunkt(ctx, x, y);
+  else _n9hTropfen(ctx, x, y);
+}
+// Zählerkasten; a = 'l' (x ist linker Rand) oder 'r' (x ist rechter Rand)
+function _n9hKasten(ctx, text, x, y, a, rand, schrift, poch, glanz, t) {
+  ctx.save();
+  ctx.font = '700 12px sans-serif';
+  const w = ctx.measureText(text).width + 16, h = 20;
+  const x0 = a === 'r' ? x - w : x;
+  if (glanz > 0) {
+    // ruhiger gelber Rand: jetzt ablesen (0,8 Hz, blendet in 2 s aus)
+    const puls = 0.5 + 0.5 * Math.sin(t * Math.PI * 2 * 0.8);
+    ctx.strokeStyle = 'rgba(250,204,21,' + ((0.45 + 0.4 * puls) * Math.min(1, glanz)).toFixed(3) + ')';
+    ctx.lineWidth = 4;
+    _bioFxRundRect(ctx, x0 - 4, y - 4, w + 8, h + 8, 10); ctx.stroke();
+  }
+  const k = 1 + 0.12 * Math.sin(Math.PI * _bioFxKlemme(poch / 0.45));
+  ctx.translate(x0 + w / 2, y + h / 2); ctx.scale(k, k);
+  ctx.fillStyle = '#ffffff'; _bioFxRundRect(ctx, -w / 2, -h / 2, w, h, 7); ctx.fill();
+  ctx.strokeStyle = rand; ctx.lineWidth = 2; _bioFxRundRect(ctx, -w / 2, -h / 2, w, h, 7); ctx.stroke();
+  ctx.fillStyle = schrift; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(text, 0, 1);
+  ctx.restore();
+}
+function _n9hDraw(ctx, cv) {
+  if (!_n9h) return;
+  const W = cv.width, H = cv.height, t = _n9h.t;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f7f1ea'; ctx.fillRect(0, 0, W, H);
+
+  // ── Niere ──
+  _n9hNierePfad(ctx);
+  let g = ctx.createLinearGradient(0, 12, 0, 220);
+  g.addColorStop(0, '#efd3cb'); g.addColorStop(1, '#e8c5bb');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = '#9b3b35'; ctx.lineWidth = 2.5; ctx.stroke();
+
+  // ── Blase und Schlauch ──
+  ctx.fillStyle = '#fdf3c4'; ctx.strokeStyle = '#b7791f'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.ellipse(_N9H_BX, _N9H_BY, _N9H_BRX, _N9H_BRY, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  _n9hSchlauch(ctx, 16, '#b7791f');
+  _n9hSchlauch(ctx, 11, '#fdf3c4');
+
+  // ── gelber Kanal in der Niere ──
+  _n9hKanalPfad(ctx);
+  ctx.fillStyle = '#fdf3c4'; ctx.fill();
+  ctx.strokeStyle = '#b7791f'; ctx.lineWidth = 2.5;
+  _n9hKanalRand(ctx);
+  // langsame Fließ-Winkel im Kanal (nach unten)
+  ctx.save();
+  ctx.strokeStyle = 'rgba(183,121,31,0.28)'; ctx.lineWidth = 1.5;
+  for (let n = 0; n < 5; n++) {
+    const y = 38 + ((t * 18 + n * 20) % 96);
+    ctx.beginPath(); ctx.moveTo(_N9H_KM - 4, y - 3); ctx.lineTo(_N9H_KM, y); ctx.lineTo(_N9H_KM + 4, y - 3); ctx.stroke();
+  }
+  ctx.restore();
+
+  // ── Blutgefäß ──
+  g = ctx.createLinearGradient(_N9H_GL, 0, _N9H_GR, 0);
+  g.addColorStop(0, '#fbcaca'); g.addColorStop(1, '#fcdcdc');
+  ctx.fillStyle = g; ctx.fillRect(_N9H_GL, -2, _N9H_GR - _N9H_GL, H + 4);
+  // Fließ-Winkel nach unten
+  ctx.save();
+  ctx.strokeStyle = 'rgba(185,28,28,0.25)'; ctx.lineWidth = 1.6;
+  for (let n = 0; n < 10; n++) {
+    const y = ((t * 45 + n * 27) % 270) - 10;
+    ctx.beginPath(); ctx.moveTo(_N9H_GM - 5, y - 4); ctx.lineTo(_N9H_GM, y); ctx.lineTo(_N9H_GM + 5, y - 4); ctx.stroke();
+  }
+  ctx.restore();
+  // linke Wand
+  ctx.fillStyle = '#b91c1c';
+  ctx.fillRect(_N9H_GL - 3, -2, 3, H + 4);
+  // rechte Wand: oben fest, Sieb, Wandstück mit Durchgängen, unten fest
+  const spalt = _n9hSpalte();
+  ctx.fillRect(_N9H_GR, -2, 4, _N9H_SIEB0 + 2);
+  _n9hWandMitSpalten(ctx, _N9H_SIEB1, H + 2, spalt);
+  // Sieb: heller Grund, graue Stege, offene Löcher
+  ctx.fillStyle = 'rgba(100,116,139,0.18)'; ctx.fillRect(_N9H_GR - 3, _N9H_SIEB0, 10, _N9H_SIEB1 - _N9H_SIEB0);
+  ctx.fillStyle = '#ffffff';
+  for (const ly of _N9H_LOCH) ctx.fillRect(_N9H_GR - 1, ly - 3.5, 6, 7);
+  ctx.fillStyle = '#64748b';
+  for (let y = _N9H_SIEB0; y < _N9H_SIEB1; y += 11) ctx.fillRect(_N9H_GR - 2, y, 8, 4);
+
+  // ── Teilchen ──
+  for (const p of _n9h.teile) {
+    if (p.u < 0) continue;
+    const o = _n9hOrt(p, p.u);
+    let x = o.x, y = o.y;
+    const ruht = p.wohin === 'harn' && o.j >= p.k.length && p.k[p.k.length - 1].e === 's';
+    if (ruht) { x += Math.sin(t * 1.3 + p.ph) * 0.5; y += Math.cos(t * 1.1 + p.ph) * 0.4; }
+    else if (p.art !== 'zellen') x += Math.sin(t * 7 + p.i * 1.9) * 0.4;
+    // Blutzelle drückt am Sieb: etwas schmaler und höher
+    let sx = 1, sy = 1;
+    if (p.art === 'zellen' && o.j > 0 && o.j < p.k.length && p.k[o.j].g) {
+      const d = _n9hDelle(o.y);
+      sx = 1 - 0.1 * d; sy = 1 + 0.08 * d;
+    }
+    _n9hTeil(ctx, p.art, x, y, sx, sy);
+  }
+
+  // ── Beschriftung und Zähler ──
+  ctx.save();
+  ctx.font = '700 12px sans-serif'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = '#8b2f2a'; ctx.textAlign = 'left';
+  ctx.fillText('Niere', 184, 74);
+  ctx.fillText('Blut', 58, 13);
+  ctx.fillStyle = '#92600e'; ctx.textAlign = 'right';
+  ctx.fillText('Blase', 322, 244);
+  ctx.restore();
+  // Welche Teilchen fließen gerade? (oben rechts)
+  ctx.save();
+  ctx.font = '700 12px sans-serif';
+  const name = _N9H_NAME[_n9h.art];
+  const cw = ctx.measureText(name).width + 34;
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'; _bioFxRundRect(ctx, W - 8 - cw, 6, cw, 22, 8); ctx.fill();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1; _bioFxRundRect(ctx, W - 8 - cw, 6, cw, 22, 8); ctx.stroke();
+  ctx.restore();
+  _n9hTeil(ctx, _n9h.art, W - 8 - cw + 13, 17, 0.9, 0.9);
+  ctx.save();
+  ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#1e293b'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+  ctx.fillText(name, W - 8 - cw + 25, 18);
+  ctx.restore();
+
+  _n9hKasten(ctx, 'im Blut: ' + _n9h.blut, 148, 227, 'l', '#b91c1c', '#7f1d1d', _n9h.pochB, _n9h.glanz, t);
+  _n9hKasten(ctx, 'im Harn: ' + _n9h.harn, 410, 148, 'r', '#b7791f', '#78350f', _n9h.pochH, _n9h.glanz, t);
+
+  // Blickführung vor dem ersten Start: hier kommen die Teilchen herein
+  if (!_n9h.gestartet) _bioFxLeuchten(ctx, _N9H_GM, 10, 10, t, '255,216,77');
+
+  _bioFxAlleDraw(ctx, _n9h.fx);
+}
+// Wo öffnet sich die Wand gerade? Für jedes Teilchen auf dem Rückweg, das in
+// der Wand steckt, ein Spalt von 12 Bildpunkten um seine Höhe.
+function _n9hSpalte() {
+  const s = [];
+  for (const p of _n9h.teile) {
+    if (p.u < 0) continue;
+    const o = _n9hOrt(p, p.u);
+    if (o.j > 0 && o.j < p.k.length && p.k[o.j].r && o.x > 128 && o.x < 150) s.push(o.y);
+  }
+  return s.sort((a, b) => a - b);
+}
+function _n9hWandMitSpalten(ctx, y0, y1, spalt) {
+  let y = y0;
+  for (const m of spalt) {
+    const a = Math.max(y, m - 6), b = m + 6;
+    if (a > y) { ctx.fillStyle = '#b91c1c'; ctx.fillRect(_N9H_GR, y, 4, a - y); }
+    ctx.fillStyle = 'rgba(134,239,172,0.9)'; ctx.fillRect(_N9H_GR, a, 4, Math.max(0, b - a));
+    y = Math.max(y, b);
+  }
+  if (y < y1) { ctx.fillStyle = '#b91c1c'; ctx.fillRect(_N9H_GR, y, 4, y1 - y); }
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · EINE NEUE NIERE FÜR LINAS OPA   (Förderheft Bio 9 · bd5)
+// Kennung bio-organspende, Präfix _n9k. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// bd5.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, schematisch, keine Operation):
+//   - ein heller grauer Körper-Umriss von vorn (Kopf ohne Gesicht, Arme, Rumpf).
+//   - links im Rumpf ein Blutgefäß; Opas Blut fließt darin von oben nach unten:
+//     dunkelrote Blutkörperchen und kleine blaue Y-Teilchen (mit weißem Rand).
+//     Die Y-Teilchen schwimmen IMMER in Opas Blut, bei allen vier Einstellungen.
+//   - unten in der Mitte die Harnblase, rechts daneben (Leitlinie) der Zähler.
+//   - rechts neben dem Körper eine weiße Kühlbox, darin die neue Niere (rot),
+//     darüber das Schild „neue Niere / Blutgruppe …“.
+//   - oben links der Kasten „Opa: Blutgruppe A“, daneben die Tablettenschachtel
+//     „nimmt Medikamente“ – bei allen vier Einstellungen gleich. Oben rechts
+//     „Zeit: … min“ mit Balken.
+//
+// BEDIENUNG (wörtlich wie im Bauplan):
+//   Blutgruppe der neuen Niere: „A“ · „B“ · „AB“ · „0“   (Wahlgruppe _n9kGruppe)
+//   „▶ Niere einsetzen“ (_n9kEinsetzen) · „neu“ (_n9kNeu → zurück auf „A“)
+//
+// ABLAUF NACH „▶ Niere einsetzen“ (Zeiten in s):
+//   0–1,2   die Niere schwebt aus der Kühlbox in den Bauch unten rechts
+//   1,2–1,6 zwei kurze Blutgefäße wachsen vom großen Blutgefäß zur Niere, ein
+//           dünner Schlauch wächst von der Niere zur Harnblase
+//   1,6–6,6 EINE STUNDE im Zeitraffer (5 s): Ein Teil des Blutes fließt durch die
+//           neue Niere und wieder hinaus; die Y-Teilchen biegen in die Niere ab.
+//     A, 0:  Die Y-Teilchen fließen durch die Niere hindurch und wieder hinaus.
+//            Gelbe Tropfen laufen durch den Schlauch, die Harnblase füllt sich.
+//            1 ml je Minute (Modellwert) → nach 60 min 60 ml.
+//     B, AB: Die Y-Teilchen bleiben an der Niere hängen (8 Stellen), die Niere
+//            wird grau (ganz grau ab 6 Teilchen). Kein Harn: 0 ml.
+//   Das Endbild bleibt stehen, bis man umstellt oder neu einsetzt.
+//   Gerechnet wird das Ergebnis NICHT aus einer Tabelle, sondern aus der Regel:
+//   Opas Blut (Blutgruppe A) trägt Y-Teilchen gegen das Merkmal B; die Niere
+//   trägt die Merkmale ihrer Blutgruppe (A: A · B: B · AB: A und B · 0: keines).
+//
+// STATUSZEILE (_n9k-status):
+//   vorher   „Die neue Niere liegt in der Kühlbox.“
+//   Einsetzen „Die neue Niere wird eingesetzt.“
+//   Stunde   „Opas Blut fließt durch die neue Niere.“, dann
+//            A, 0:  „Die Niere arbeitet.“         (ab 1 ml Harn)
+//            B, AB: „Die Niere wird angegriffen.“ (ab dem ersten Y-Teilchen)
+// ZÄHLER (_n9k-harn, dazu im Bild an der Harnblase):
+//   vorher/Stunde „Zeit: 34 min · Harn: 34 ml“ (1 ml je Minute) bzw. „… 0 ml“
+//   danach        „Harn in 1 Stunde: 60 ml“ oder „Harn in 1 Stunde: 0 ml“
+// HINWEIS (_n9k-hinweis): vorher „Blutgruppe „B“ ist eingestellt. Drücke
+//   „▶ Niere einsetzen“.“ · Stunde „Niere mit Blutgruppe „B“: Eine Stunde läuft
+//   im Zeitraffer. …“ · danach „Niere mit Blutgruppe „B“: Die Stunde ist um.
+//   Trage dein Ergebnis in die Tabelle ein. …“
+//
+// WERTE (lehrer.tabelle_erwartet, am Bild abzulesen):
+//   A   nein  60 ml   „Die Niere arbeitet.“         „Harn in 1 Stunde: 60 ml“
+//   B   ja     0 ml   „Die Niere wird angegriffen.“ „Harn in 1 Stunde: 0 ml“
+//   AB  ja     0 ml   „Die Niere wird angegriffen.“ „Harn in 1 Stunde: 0 ml“
+//   0   nein  60 ml   „Die Niere arbeitet.“         „Harn in 1 Stunde: 60 ml“
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen, ohne Funken): B und AB – das erste
+//   Y-Teilchen heftet sich in kurzer Zeitlupe an, jede Stelle zeigt einen kleinen
+//   Ring, beim Grauwerden ein grauer Ring um die ganze Niere. A und 0 – der erste
+//   Tropfen kommt in Zeitlupe in der Harnblase an (gelber Ring). Am Ende ein Ring
+//   am Zähler. Die Y-Teilchen fließen bei A und 0 sichtbar an der Niere vorbei
+//   und durch sie hindurch – nur EINE Bedingung ist anders.
+//
+// NICHT AM BILDSCHIRM: „passen“, „passt“, „Abwehr“, „Spender“, „Transplantation“
+//   (Lückenwörter und neue Fachwörter der Seite), „gesund“ (Vermutung 3). Keine
+//   Operation, keine Instrumente, keine Wunde, kein Gesicht. Deterministisch,
+//   ohne Zufall.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9k = null;
+const _N9K_GRUPPEN = ['A', 'B', 'AB', '0'];
+// Merkmale auf der Niere je Blutgruppe; Opas Blut (A) trägt Y-Teilchen gegen B
+const _N9K_MERKMALE = { A: ['A'], B: ['B'], AB: ['A', 'B'], '0': [] };
+const _N9K_OPA_GEGEN = 'B';
+// Zeitplan in s nach „▶ Niere einsetzen“
+const _N9K_FLUG = 1.2;                  // Niere schwebt an ihren Platz
+const _N9K_ANSCHLUSS = 1.6;             // Blutgefäße und Schlauch fertig
+const _N9K_STUNDE = 5.0;                // 60 Minuten im Zeitraffer
+const _N9K_ENDE = _N9K_ANSCHLUSS + _N9K_STUNDE;
+const _N9K_ML_JE_MIN = 1;               // Modellwert: 60 ml Harn in 1 Stunde
+// Blutstrom
+const _N9K_TEMPO = 80;                  // Bildpunkte je s
+const _N9K_DT_BLUT = 0.1, _N9K_DT_Y = 0.22;   // Abstand der Teilchen in s
+const _N9K_GRAU_BEI = 6;                // so viele Y-Teilchen: Niere ganz grau
+const _N9K_TROPFEN_TEMPO = 70;
+// Lage
+const _N9K_CX = 150;                    // Körpermitte
+const _N9K_NX = 178, _N9K_NY = 165;     // Platz der neuen Niere (Bauch unten rechts)
+const _N9K_KX = 340, _N9K_KY = 112;     // Niere in der Kühlbox
+const _N9K_A = 18, _N9K_B = 25;         // halbe Breite und Höhe der Niere
+const _N9K_BX = 150, _N9K_BY = 228, _N9K_BRX = 17, _N9K_BRY = 13;   // Harnblase
+const _N9K_BOX = { x: 306, y: 124, w: 68, h: 36 };                  // Kühlbox
+const _N9K_ZB = { x: 266, y: 192, w: 146, h: 54 };                  // Zählerkasten
+const _N9K_HG = '#f8fafc';
+
+// ── Wege des Blutes (Polylinien) ───────────────────────
+function _n9kQuad(p0, c, p1, n) {
+  const out = [];
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, u = 1 - t;
+    out.push([u * u * p0[0] + 2 * u * t * c[0] + t * t * p1[0], u * u * p0[1] + 2 * u * t * c[1] + t * t * p1[1]]);
+  }
+  return out;
+}
+function _n9kLinie(p) {
+  const c = [0];
+  for (let i = 1; i < p.length; i++) c.push(c[i - 1] + Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]));
+  return { p, c, L: c[c.length - 1] };
+}
+// Punkt und Richtung bei Strecke d
+function _n9kAuf(lin, d) {
+  const p = lin.p, c = lin.c;
+  d = Math.max(0, Math.min(lin.L, d));
+  let i = 1;
+  while (i < p.length - 1 && c[i] < d) i++;
+  const s = c[i] - c[i - 1] || 1, u = (d - c[i - 1]) / s;
+  return { x: p[i - 1][0] + (p[i][0] - p[i - 1][0]) * u, y: p[i - 1][1] + (p[i][1] - p[i - 1][1]) * u,
+           w: Math.atan2(p[i][1] - p[i - 1][1], p[i][0] - p[i - 1][0]) };
+}
+const _N9K_OBEN = [[122, 92], [122, 154]];                    // bis zum Abzweig
+const _N9K_J1 = [122, 154], _N9K_J2 = [122, 182];            // Abzweig, Rückfluss
+const _N9K_HIN = [167, 160], _N9K_HAUS = [167, 171];         // an der Niere
+const _N9K_UNTEN = [_N9K_J2].concat(_n9kQuad(_N9K_J2, [122, 216], [100, 254], 12), [[94, 268]]);
+const _N9K_SCHLEIFE = [_N9K_HIN, [176, 150], [187, 155], [190, 166], [187, 177], [176, 181], _N9K_HAUS];
+const _N9K_WEG_H = _n9kLinie(_N9K_OBEN.concat(_N9K_UNTEN));
+const _N9K_WEG_N = _n9kLinie(_N9K_OBEN.concat(_N9K_SCHLEIFE, _N9K_UNTEN));
+const _N9K_D1 = 62;                                          // Strecke bis zum Abzweig
+// Stellen, an denen Y-Teilchen hängen bleiben (relativ zur Nierenmitte)
+// sieben auf einem Ring (Einbuchtung ausgespart) und eine in der Mitte
+const _N9K_FLECKEN = [[-8.1, -11.3], [-1, -15.9], [6.6, -13.1], [11.1, -4.1],
+                      [10.4, 6.8], [4.9, 14.5], [-3, 15.5], [1.5, 0.5]];
+const _N9K_WEG_S = _N9K_FLECKEN.map(f => _n9kLinie(_N9K_OBEN.concat([_N9K_HIN, [_N9K_NX + f[0], _N9K_NY + f[1]]])));
+const _N9K_LEITER = _n9kLinie([[175, 183]].concat(_n9kQuad([175, 183], [173, 206], [157, 217], 10), [[153, 223]]));
+
+function _n9kAngriff(bg) { return _N9K_MERKMALE[bg].indexOf(_N9K_OPA_GEGEN) >= 0; }
+
+function _n9kInit() {
+  _n9k = { bg: 'A', phase: 'ruhe', s: -1, t: 0, teil: [], tb: 0, ty: 0, nb: 0, ny: 0,
+           flecken: _N9K_FLECKEN.map(() => 0), fest: 0, grau: 0, tropfen: [], fuenf: -1,
+           ev: {}, fx: { teile: [] }, zeitlupe: null, letzt: '' };
+  // Das Blutgefäß ist schon beim Öffnen voll – drei Sekunden Blutstrom vorweg
+  for (let i = 0; i < 190; i++) _n9kTeilchen(0.016);
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9kRuhe() {
+  const z = _n9k;
+  z.phase = 'ruhe'; z.s = -1;
+  z.teil = z.teil.filter(p => p.weg === 'H');
+  z.flecken = _N9K_FLECKEN.map(() => 0); z.fest = 0; z.grau = 0;
+  z.tropfen = []; z.fuenf = -1; z.ev = {}; z.fx = { teile: [] }; z.zeitlupe = null;
+}
+function _n9kGruppe(g) {
+  if (!_n9k || _N9K_GRUPPEN.indexOf(g) < 0) return;
+  _n9k.bg = g;
+  _n9kRuhe();
+  _n9kStatus();
+}
+function _n9kEinsetzen() {
+  if (!_n9k || _n9k.phase === 'lauf') return;
+  _n9kRuhe();
+  _n9k.phase = 'lauf'; _n9k.s = 0;
+  _n9kStatus();
+}
+function _n9kNeu() {
+  if (!_n9k) return;
+  _n9k.bg = 'A';
+  _n9kRuhe();
+  _n9kStatus();
+}
+
+// ── Zeit, Harn, Anzeige ────────────────────────────────
+// Minuten seit dem Anschluss (Kommazahl, 0 … 60)
+function _n9kMinGlatt() {
+  const z = _n9k;
+  if (z.phase === 'fertig') return 60;
+  if (z.phase !== 'lauf' || z.s < _N9K_ANSCHLUSS) return 0;
+  return Math.min(60, (z.s - _N9K_ANSCHLUSS) / _N9K_STUNDE * 60);
+}
+function _n9kMinute() { return Math.min(60, Math.floor(_n9kMinGlatt() + 1e-9)); }
+function _n9kMl() { return _n9kAngriff(_n9k.bg) ? 0 : _n9kMinute() * _N9K_ML_JE_MIN; }
+function _n9kZeilen() {
+  const z = _n9k, an = _n9kAngriff(z.bg);
+  if (z.phase === 'ruhe') return ['Die neue Niere liegt in der Kühlbox.', 'Zeit: 0 min · Harn: 0 ml'];
+  if (z.phase === 'lauf' && z.s < _N9K_ANSCHLUSS) return ['Die neue Niere wird eingesetzt.', 'Zeit: 0 min · Harn: 0 ml'];
+  const min = _n9kMinute(), ml = _n9kMl();
+  let st = 'Opas Blut fließt durch die neue Niere.';
+  if (an && z.fest >= 1) st = 'Die Niere wird angegriffen.';
+  if (!an && ml >= 1) st = 'Die Niere arbeitet.';
+  const harn = z.phase === 'fertig' ? 'Harn in 1 Stunde: ' + ml + ' ml'
+                                    : 'Zeit: ' + min + ' min · Harn: ' + ml + ' ml';
+  return [st, harn];
+}
+function _n9kHinweis() {
+  // Der Hinweis nennt die Blutgruppe immer mit: Statuszeile und Zähler sind bei
+  // B und AB (und bei A und 0) wortgleich, und simfakten.js legt gleiche
+  // Ablesungen zusammen – ohne den Namen fehlten AB und 0 im Dump.
+  const z = _n9k, bg = 'Blutgruppe „' + z.bg + '“';
+  if (z.phase === 'lauf') return 'Niere mit ' + bg + ': Eine Stunde läuft im Zeitraffer. Sieh genau auf die neue Niere und auf die Harnblase.';
+  if (z.phase === 'fertig') return 'Niere mit ' + bg + ': Die Stunde ist um. Trage dein Ergebnis in die Tabelle ein. Stelle dann eine andere Blutgruppe ein.';
+  return bg + ' ist eingestellt. Drücke „▶ Niere einsetzen“.';
+}
+function _n9kStatus() {
+  if (!_n9k) return;
+  const zl = _n9kZeilen();
+  _n9k.letzt = zl.join('|') + '|' + _n9k.phase;
+  const el = document.getElementById('_n9k-status');
+  if (el) { el.textContent = zl[0]; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9k-harn');
+  if (h) { h.textContent = zl[1]; h.className = 'lmp-status on'; }
+  const hw = document.getElementById('_n9k-hinweis');
+  if (hw) hw.textContent = _n9kHinweis();
+  try {
+    document.querySelectorAll('[data-n9k]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9k') === _n9k.bg);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9k-los');
+  if (los && los.classList) los.classList.toggle('primary', _n9k.phase !== 'lauf');
+}
+function _n9kHTML() {
+  const k = g => `<button class="sim-btn" data-n9k="${g}" onclick="_n9kGruppe('${g}')">${g}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welche neue Niere arbeitet in Opas Körper?</h3>
+    <div class="fpm-note" style="margin-top:2px">Opa bekommt die Niere eines anderen Menschen. Opas Blut fließt dann durch die neue Niere. Eine Niere bildet Harn. Der Harn fließt in die Harnblase.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9k-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9k-los" onclick="_n9kEinsetzen()">▶ Niere einsetzen</button>
+          <button class="sim-btn" onclick="_n9kNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Blutgruppe der neuen Niere</span>
+          <div class="sim-btn-row">${_N9K_GRUPPEN.map(k).join('')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9k-status" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_n9k-harn" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9k-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die kleinen blauen Y-Teilchen schwimmen immer in Opas Blut. Opa nimmt jeden Tag seine Medikamente.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Blutgruppe der neuen Niere „A“ &nbsp;|&nbsp; Eine Stunde dauert im Zeitraffer etwa 5 Sekunden.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9kUpdate(dt) {
+  if (!_n9k) return;
+  dt = _bioFxDt(dt);
+  const z = _n9k;
+  z.t += dt;
+  const ds = dt * _bioFxZeitlupeFaktor(z, dt);
+  if (z.phase === 'lauf') {
+    z.s += ds;
+    if (z.s >= _N9K_ENDE) { z.s = _N9K_ENDE; z.phase = 'fertig'; _n9kSchluss(); }
+  }
+  _n9kTeilchen(ds);
+  _n9kHarn(ds);
+  const ziel = _n9kAngriff(z.bg) ? Math.min(1, z.fest / _N9K_GRAU_BEI) : 0;
+  z.grau += (ziel - z.grau) * Math.min(1, dt * 4);
+  if (_n9kZeilen().join('|') + '|' + z.phase !== z.letzt) _n9kStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+// Wie weit Blutgefäße und Schlauch zur neuen Niere schon reichen (0 … 1)
+function _n9kAnschluss() {
+  const z = _n9k;
+  if (z.phase === 'fertig') return 1;
+  if (z.phase !== 'lauf') return 0;
+  return _bioFxKlemme((z.s - _N9K_FLUG) / (_N9K_ANSCHLUSS - _N9K_FLUG));
+}
+// Blutkörperchen und Y-Teilchen: entstehen oben, fließen nach unten.
+// Am Abzweig entscheidet sich, wer durch die neue Niere fließt.
+function _n9kTeilchen(dt) {
+  const z = _n9k;
+  z.tb += dt;
+  while (z.tb >= _N9K_DT_BLUT) { z.tb -= _N9K_DT_BLUT; z.teil.push({ art: 'blut', weg: 'H', d: 0, nr: z.nb++, ent: false }); }
+  z.ty += dt;
+  while (z.ty >= _N9K_DT_Y) { z.ty -= _N9K_DT_Y; z.ny++; z.teil.push({ art: 'y', weg: 'H', d: 0, nr: z.ny, ph: (z.ny * 2.39) % 6.283, ent: false }); }
+  const offen = _n9kAnschluss() >= 1, an = _n9kAngriff(z.bg);
+  for (let i = z.teil.length - 1; i >= 0; i--) {
+    const p = z.teil[i];
+    p.d += _N9K_TEMPO * dt;
+    if (!p.ent && p.d >= _N9K_D1) {
+      p.ent = true;
+      if (offen) {
+        if (p.art === 'blut') { if (p.nr % 3 === 0) p.weg = 'N'; }
+        else if (an) {
+          const k = z.flecken.indexOf(0);
+          if (k >= 0) { p.weg = 'S'; p.spot = k; z.flecken[k] = 1; }
+        } else p.weg = 'N';
+      }
+    }
+    const L = p.weg === 'S' ? _N9K_WEG_S[p.spot].L : p.weg === 'N' ? _N9K_WEG_N.L : _N9K_WEG_H.L;
+    if (p.d >= L) {
+      z.teil.splice(i, 1);
+      if (p.weg === 'S') _n9kAngeheftet(p.spot);
+    }
+  }
+}
+function _n9kAngeheftet(k) {
+  const z = _n9k, f = _N9K_FLECKEN[k];
+  z.flecken[k] = 2; z.fest++;
+  _bioFxWelle(z.fx.teile, _N9K_NX + f[0], _N9K_NY + f[1], '#60a5fa', 9);
+  if (z.fest === 1) _bioFxZeitlupe(z, 0.35, 0.9);
+  if (z.fest === _N9K_GRAU_BEI) _bioFxWelle(z.fx.teile, _N9K_NX, _N9K_NY, '#94a3b8', 40);
+}
+// Harn: alle 5 Minuten startet ein Tropfen; nur wenn die Niere arbeitet
+function _n9kHarn(dt) {
+  const z = _n9k;
+  if (z.phase === 'lauf' && z.s >= _N9K_ANSCHLUSS && !_n9kAngriff(z.bg)) {
+    const f = Math.floor(_n9kMinGlatt() / 5 + 1e-9);
+    if (f > z.fuenf && f < 12) { z.fuenf = f; z.tropfen.push({ d: 0 }); }
+  }
+  for (let i = z.tropfen.length - 1; i >= 0; i--) {
+    const tr = z.tropfen[i];
+    tr.d += _N9K_TROPFEN_TEMPO * dt;
+    if (tr.d >= _N9K_LEITER.L) {
+      z.tropfen.splice(i, 1);
+      if (!z.ev.tropfen) {
+        z.ev.tropfen = true;
+        _bioFxZeitlupe(z, 0.35, 0.9);
+        _bioFxWelle(z.fx.teile, _N9K_BX, _N9K_BY, '#facc15', 26);
+      } else _bioFxWelle(z.fx.teile, _N9K_BX, _N9K_BY, '#fde047', 12);
+    }
+  }
+}
+function _n9kSchluss() {
+  const z = _n9k, fx = z.fx.teile, zb = _N9K_ZB;
+  if (_n9kAngriff(z.bg)) {
+    _bioFxWelle(fx, _N9K_NX, _N9K_NY, '#94a3b8', 34);
+    _bioFxWelle(fx, zb.x + 40, zb.y + zb.h - 10, '#94a3b8', 22);
+  } else {
+    _bioFxWelle(fx, _N9K_BX, _N9K_BY, '#facc15', 30);
+    _bioFxWelle(fx, zb.x + 40, zb.y + zb.h - 10, '#facc15', 22);
+  }
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9kMisch(a, b, g) {
+  return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * g)).join(',') + ')';
+}
+// Wo die Niere gerade ist: in der Kühlbox, unterwegs oder im Bauch
+function _n9kNierePos() {
+  const z = _n9k;
+  if (z.phase === 'ruhe') return { x: _N9K_KX, y: _N9K_KY + Math.sin(z.t * 1.6) * 0.8, u: 0 };
+  const u = z.phase === 'fertig' ? 1 : _bioFxEase.sanft(_bioFxKlemme(z.s / _N9K_FLUG)), v = 1 - u;
+  const cx = 270, cy = 85;
+  return { x: v * v * _N9K_KX + 2 * v * u * cx + u * u * _N9K_NX,
+           y: v * v * _N9K_KY + 2 * v * u * cy + u * u * _N9K_NY, u };
+}
+function _n9kKoerper(ctx) {
+  const c = _N9K_CX;
+  const rumpf = () => {
+    ctx.beginPath();
+    ctx.moveTo(c - 7, 62); ctx.lineTo(c + 7, 62); ctx.lineTo(c + 8, 76);
+    ctx.bezierCurveTo(c + 22, 80, c + 50, 80, c + 64, 86);
+    ctx.quadraticCurveTo(c + 79, 90, c + 79, 108);
+    ctx.bezierCurveTo(c + 78, 130, c + 66, 150, c + 64, 168);
+    ctx.bezierCurveTo(c + 62, 190, c + 74, 214, c + 74, 254);
+    ctx.lineTo(c - 74, 254);
+    ctx.bezierCurveTo(c - 74, 214, c - 62, 190, c - 64, 168);
+    ctx.bezierCurveTo(c - 66, 150, c - 78, 130, c - 79, 108);
+    ctx.quadraticCurveTo(c - 79, 90, c - 64, 86);
+    ctx.bezierCurveTo(c - 50, 80, c - 22, 80, c - 8, 76);
+    ctx.closePath();
+  };
+  const arme = () => {
+    ctx.beginPath();
+    ctx.moveTo(c + 83, 110); ctx.lineTo(c + 95, 212);
+    ctx.moveTo(c - 83, 110); ctx.lineTo(c - 95, 212);
+  };
+  const kopf = () => { ctx.beginPath(); ctx.arc(c, 49, 15, 0, 2 * Math.PI); };
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // erst alle Ränder, dann alle Flächen: ein einziger Umriss ohne Innenlinien
+  ctx.strokeStyle = '#a8b3c2';
+  ctx.lineWidth = 3; rumpf(); ctx.stroke(); kopf(); ctx.stroke();
+  ctx.lineWidth = 23; arme(); ctx.stroke();
+  ctx.fillStyle = '#e5e9ef'; ctx.strokeStyle = '#e5e9ef';
+  rumpf(); ctx.fill(); kopf(); ctx.fill();
+  ctx.lineWidth = 20; arme(); ctx.stroke();
+  ctx.restore();
+}
+function _n9kBlase(ctx) {
+  const ml = _n9kAngriff(_n9k.bg) ? 0 : _n9kMinGlatt() * _N9K_ML_JE_MIN;
+  const f = 0.85 * Math.min(60, ml) / 60;
+  ctx.save();
+  ctx.fillStyle = '#fefce8';
+  ctx.beginPath(); ctx.ellipse(_N9K_BX, _N9K_BY, _N9K_BRX, _N9K_BRY, 0, 0, 2 * Math.PI); ctx.fill();
+  if (f > 0.005) {
+    // Füllung als Ellipsenstück unterhalb des Pegels (ohne clip)
+    const yl = _N9K_BY + _N9K_BRY - f * 2 * _N9K_BRY;
+    const th = Math.asin(Math.max(-1, Math.min(1, (yl - _N9K_BY) / _N9K_BRY)));
+    ctx.fillStyle = '#fde047';
+    ctx.beginPath(); ctx.ellipse(_N9K_BX, _N9K_BY, _N9K_BRX, _N9K_BRY, 0, th, Math.PI - th, false); ctx.closePath(); ctx.fill();
+  }
+  ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.ellipse(_N9K_BX, _N9K_BY, _N9K_BRX, _N9K_BRY, 0, 0, 2 * Math.PI); ctx.stroke();
+  ctx.restore();
+}
+// Teilstück einer Polylinie bis zum Anteil a zeichnen
+function _n9kStueck(ctx, pts, a) {
+  const lin = _n9kLinie(pts), dE = lin.L * a;
+  ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+  for (let i = 1; i < pts.length; i++) {
+    if (lin.c[i] <= dE) ctx.lineTo(pts[i][0], pts[i][1]);
+    else { const q = _n9kAuf(lin, dE); ctx.lineTo(q.x, q.y); break; }
+  }
+}
+function _n9kSchlauch(ctx, c) {
+  if (c <= 0) return;
+  const pts = _N9K_LEITER.p;
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#b8860b'; ctx.lineWidth = 5; _n9kStueck(ctx, pts, c); ctx.stroke();
+  const gelb = !_n9kAngriff(_n9k.bg) && (_n9k.phase === 'fertig' || (_n9k.phase === 'lauf' && _n9k.s > _N9K_ANSCHLUSS + 0.3));
+  ctx.strokeStyle = gelb ? '#fde68a' : '#fdf6e3'; ctx.lineWidth = 2.8; _n9kStueck(ctx, pts, c); ctx.stroke();
+  ctx.restore();
+}
+function _n9kGefaess(ctx, c) {
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const haupt = _N9K_WEG_H.p.slice(0, -1);
+  const zug = (pts, lw1, lw2, a) => {
+    ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = lw1; _n9kStueck(ctx, pts, a); ctx.stroke();
+    ctx.strokeStyle = '#f87171'; ctx.lineWidth = lw2; _n9kStueck(ctx, pts, a); ctx.stroke();
+  };
+  zug(haupt, 11, 8, 1);
+  if (c > 0) {
+    zug([_N9K_J1, _N9K_HIN], 7, 4.5, c);
+    zug([_N9K_J2, _N9K_HAUS], 7, 4.5, c);
+  }
+  ctx.restore();
+}
+function _n9kNierePfad(ctx, x, y) {
+  ctx.beginPath();
+  for (let i = 0; i <= 60; i++) {
+    const th = i / 60 * 2 * Math.PI, dd = th - Math.PI;
+    const e = 0.32 * Math.exp(-(dd * dd) / 0.2);          // Einbuchtung zum Blutgefäß hin
+    const px = x + _N9K_A * Math.cos(th) * (1 - e), py = y + _N9K_B * Math.sin(th);
+    if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
+  }
+  ctx.closePath();
+}
+function _n9kNiere(ctx, x, y, g) {
+  ctx.save();
+  _n9kNierePfad(ctx, x, y);
+  ctx.fillStyle = _n9kMisch([220, 38, 38], [156, 163, 175], g); ctx.fill();
+  ctx.strokeStyle = _n9kMisch([127, 29, 29], [75, 85, 99], g); ctx.lineWidth = 2; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.22)';
+  ctx.beginPath(); ctx.ellipse(x + 6, y - 9, 4.5, 9, 0.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Ein Y-Teilchen: Arme zeigen in Richtung w, weißer Rand für den Kontrast
+function _n9kY(ctx, x, y, w, k) {
+  const arm = 4.2 * k, stiel = 4.6 * k, sp = 0.55;
+  const sx = x - stiel * Math.cos(w), sy = y - stiel * Math.sin(w);
+  const a1x = x + arm * Math.cos(w - sp), a1y = y + arm * Math.sin(w - sp);
+  const a2x = x + arm * Math.cos(w + sp), a2y = y + arm * Math.sin(w + sp);
+  const zug = () => { ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(x, y); ctx.lineTo(a1x, a1y); ctx.moveTo(x, y); ctx.lineTo(a2x, a2y); };
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3.8 * k; zug(); ctx.stroke();
+  ctx.strokeStyle = '#1d4ed8'; ctx.lineWidth = 1.9 * k; zug(); ctx.stroke();
+  ctx.restore();
+}
+function _n9kTeilchenMalen(ctx) {
+  const z = _n9k, t = z.t;
+  ctx.save();
+  for (const p of z.teil) {
+    const lin = p.weg === 'S' ? _N9K_WEG_S[p.spot] : p.weg === 'N' ? _N9K_WEG_N : _N9K_WEG_H;
+    const q = _n9kAuf(lin, p.d);
+    if (q.y > 252) continue;
+    const a = Math.min(1, p.d / 10);
+    if (p.art === 'blut') {
+      ctx.globalAlpha = 0.9 * a;
+      ctx.fillStyle = '#7f1d1d';
+      ctx.beginPath(); ctx.arc(q.x, q.y, 2.1, 0, 2 * Math.PI); ctx.fill();
+    } else {
+      ctx.globalAlpha = a;
+      _n9kY(ctx, q.x, q.y, q.w + 0.35 * Math.sin(t * 3 + p.ph), 0.9);
+    }
+  }
+  ctx.restore();
+}
+function _n9kFleckenMalen(ctx) {
+  const z = _n9k;
+  for (let k = 0; k < _N9K_FLECKEN.length; k++) {
+    if (z.flecken[k] !== 2) continue;
+    const f = _N9K_FLECKEN[k], x = _N9K_NX + f[0], y = _N9K_NY + f[1];
+    _n9kY(ctx, x, y, Math.atan2(y - _N9K_HIN[1], x - _N9K_HIN[0]), 0.95);
+  }
+}
+function _n9kTropfenMalen(ctx) {
+  ctx.save();
+  ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#a16207'; ctx.lineWidth = 0.8;
+  for (const tr of _n9k.tropfen) {
+    const q = _n9kAuf(_N9K_LEITER, tr.d);
+    ctx.beginPath(); ctx.arc(q.x, q.y, 2.6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
+}
+function _n9kKuehlboxHinten(ctx) {
+  const b = _N9K_BOX;
+  ctx.save();
+  ctx.fillStyle = '#cbd5e1';
+  _bioFxRundRect(ctx, b.x + 3, b.y - 6, b.w - 6, 9, 3); ctx.fill();
+  ctx.restore();
+}
+function _n9kKuehlboxVorn(ctx) {
+  const b = _N9K_BOX;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, b.x, b.y, b.w, b.h, 5); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#93c5fd'; ctx.fillRect(b.x + 1, b.y + 7, b.w - 2, 5);
+  ctx.fillStyle = '#cbd5e1';
+  _bioFxRundRect(ctx, b.x + b.w / 2 - 11, b.y + 21, 22, 5, 2.5); ctx.fill();
+  ctx.restore();
+}
+// Schild „neue Niere / Blutgruppe …“ über der Kühlbox, Leitlinie zur Niere
+function _n9kSchild(ctx, np) {
+  const z = _n9k, zeile = 'Blutgruppe ' + z.bg;
+  ctx.save();
+  ctx.font = '700 13px sans-serif';
+  const w = Math.max(96, ctx.measureText(zeile).width + 22), x = _N9K_KX - w / 2, y = 40, h = 33;
+  if (np.u > 0.25) {
+    ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(np.x + 13, np.y - 15); ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y, w, h, 7); ctx.fill(); ctx.stroke();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#475569'; ctx.font = '600 11px sans-serif';
+  ctx.fillText('neue Niere', _N9K_KX, y + 13);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 13px sans-serif';
+  ctx.fillText(zeile, _N9K_KX, y + 28);
+  ctx.restore();
+}
+// Zähler an der Harnblase
+function _n9kZaehler(ctx) {
+  const z = _n9k, b = _N9K_ZB, ml = _n9kMl();
+  ctx.save();
+  ctx.strokeStyle = '#a16207'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(_N9K_BX + _N9K_BRX + 2, _N9K_BY + 2); ctx.lineTo(b.x, _N9K_BY + 2); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, b.x, b.y, b.w, b.h, 8); ctx.fill(); ctx.stroke();
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#92400e'; ctx.font = '600 11px sans-serif';
+  ctx.fillText('Harnblase', b.x + 10, b.y + 14);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.fillText(z.phase === 'fertig' ? 'Harn in 1 Stunde:' : 'Harn bisher:', b.x + 10, b.y + 30);
+  ctx.fillStyle = '#a16207'; ctx.font = '700 17px sans-serif';
+  ctx.fillText(ml + ' ml', b.x + 10, b.y + 49);
+  ctx.restore();
+}
+function _n9kKopfzeile(ctx) {
+  ctx.save();
+  // Kasten „Opa: Blutgruppe A“ – bei allen vier Einstellungen gleich
+  ctx.font = '700 13px sans-serif';
+  const opa = 'Opa: Blutgruppe A', w = ctx.measureText(opa).width + 18;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 8, 6, w, 24, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.textAlign = 'left';
+  ctx.fillText(opa, 17, 23);
+  // Tablettenschachtel „nimmt Medikamente“: Blisterstreifen mit 2 x 3 Tabletten
+  const px = 8 + w + 12;
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, px, 8, 30, 20, 4); ctx.fill(); ctx.stroke();
+  for (let r = 0; r < 2; r++) for (let q = 0; q < 3; q++) {
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#2563eb'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(px + 7 + q * 8, 13.5 + r * 9, 3, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  ctx.fillStyle = '#0f172a'; ctx.font = '600 12px sans-serif';
+  ctx.fillText('nimmt Medikamente', px + 40, 23);
+  // Zeit mit Balken
+  const mg = _n9kMinGlatt();
+  ctx.textAlign = 'right'; ctx.font = '700 12px sans-serif'; ctx.fillStyle = '#0f172a';
+  ctx.fillText('Zeit: ' + _n9kMinute() + ' min', 412, 18);
+  ctx.fillStyle = '#e2e8f0'; ctx.fillRect(334, 24, 78, 5);
+  ctx.fillStyle = '#64748b'; ctx.fillRect(334, 24, 78 * mg / 60, 5);
+  ctx.restore();
+}
+function _n9kDraw(ctx, cv) {
+  if (!_n9k) return;
+  const W = cv.width, H = cv.height, z = _n9k;
+  const c = _n9kAnschluss(), np = _n9kNierePos();
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9K_HG; ctx.fillRect(0, 0, W, H);
+  _n9kKoerper(ctx);
+  _n9kKuehlboxHinten(ctx);
+  _n9kBlase(ctx);
+  _n9kSchlauch(ctx, c);
+  _n9kGefaess(ctx, c);
+  // Blickführung vor dem Start: ruhiger Lichtkranz um die Niere in der Kühlbox
+  if (z.phase === 'ruhe') _bioFxLeuchten(ctx, np.x, np.y, 24, z.t, '255,216,77');
+  _n9kNiere(ctx, np.x, np.y, z.grau);
+  _n9kTeilchenMalen(ctx);
+  _n9kFleckenMalen(ctx);
+  _n9kTropfenMalen(ctx);
+  _n9kKuehlboxVorn(ctx);
+  _n9kSchild(ctx, np);
+  _n9kZaehler(ctx);
+  _n9kKopfzeile(ctx);
+  _bioFxAlleDraw(ctx, z.fx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER – br5 „Wie schnell reagierst du?“
+// Kennung bio-reaktionszeit, Präfix _n9e.
+// Bauplan: arbeitsheft_bio_foe9/einheiten/br5.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250):
+//   - links oben die Szene, von der Seite: Lina sitzt auf einem Stuhl am Tisch.
+//       Lampe:          Auf dem Tisch stehen eine Lampe und ein roter Knopf.
+//                       Die Lampe leuchtet auf, danach drückt Lina den Knopf.
+//       heißer Topf:    Ein Topf auf einer Kochplatte. Lina berührt den Topf,
+//                       die Hand zuckt zurück; erst danach erscheint die
+//                       Sprechblase „Heiß!“.
+//       Hammer am Knie: Eine Ärztin steht vor dem Tisch und klopft mit dem
+//                       Hammer unter Linas Kniescheibe; der Unterschenkel
+//                       schnellt nach vorn (das Bein hängt frei, der Stuhl ist hoch).
+//   - rechts ein großer Körperumriss von der Seite (dieselbe Blickrichtung wie
+//     Lina) mit Gehirn, Rückenmark am Rücken, Nerven in Arm und Bein, Armmuskel
+//     und Oberschenkelmuskel - OHNE Beschriftung. Ein gelber Lichtpunkt läuft
+//     den Weg der Erregung entlang (Zeitlupe, 25-fach gedehnt). Wo er umdreht
+//     und zum Muskel zurückläuft, erscheint ein orangefarbener Ring und bleibt:
+//     bei der Lampe im Kopf, bei Topf und Knie am Rücken. Den Rückweg zum Muskel
+//     zeichnet eine orange Spur über der gelben.
+//       Lampe: Auge, Kopf (Ring; der Punkt kreist dort eine Weile), Rücken
+//              hinab bis zur Schulter, Armmuskel.
+//       Topf:  Hand, Arm hinauf, Rücken (Ring), Armmuskel. Vom Ring aus kriecht
+//              zugleich ein kleinerer Punkt den Rücken hinauf in den Kopf; erst
+//              wenn er ankommt (0,15 s, die Hand ist längst weg), leuchtet der
+//              Kopf auf, danach (0,16 s) kommt „Heiß!“.
+//       Knie:  Knie, Oberschenkel hinauf, unterer Rücken (Ring),
+//              Oberschenkelmuskel. Der Kopf bleibt dunkel.
+//   - links unten eine Stoppuhr (Zeiger: eine Umdrehung = 1 s) mit der Anzeige
+//     „Zeit: 0,20 s“ und drei Zeitbalken (Lampe, Topf, Knie) auf einer Achse
+//     0 s … 0,20 s mit Strichen alle 0,05 s. Der Balken wächst mit der Uhr und
+//     bleibt danach blass stehen: 0,05 s ist sichtbar ein Viertel von 0,20 s.
+//
+// BEDIENUNG (wörtlich):
+//   „Reiz“: „Lampe“ · „heißer Topf“ · „Hammer am Knie“   _n9eReiz('lampe'|'topf'|'knie')
+//   „▶ Start“ (_n9eStart) · „neu“ (_n9eNeu: zurück auf „Lampe“, Balken weg)
+//   Sprungmarken „Lampe: Ergebnis“ · „heißer Topf: Ergebnis“ ·
+//   „Hammer am Knie: Ergebnis“ (_n9eMarke) - zeigen sofort das Endbild.
+//   „▶ Start“ wirkt nicht, solange ein Lauf noch geht (kein Neustart mitten drin).
+//
+// ABLAUF nach „▶ Start“: 0,8 s Vorlauf (Lampe noch aus / Hand geht zum Topf /
+//   Ärztin holt aus), dann der Reiz - ab hier läuft die Stoppuhr. Sie hält an,
+//   wenn der Lichtpunkt im Muskel ankommt; genau dann bewegt sich Lina.
+//
+// STATUSZEILEN (wörtlich; jede länger als 18 Zeichen, sonst fehlt sie im
+//   Faktendump von simfakten.js):
+//   _n9e-reiz   „Reiz: Lampe – Lina wartet am Knopf. Die Lampe ist aus.“
+//               „Reiz: Lampe – Die Lampe leuchtet auf.“
+//               „Reiz: Lampe – Lina drückt den Knopf.“
+//               „Reiz: heißer Topf – Lina sitzt am Tisch. Der Topf ist heiß.“
+//               „Reiz: heißer Topf – Lina greift zum Topf.“
+//               „Reiz: heißer Topf – Lina berührt den Topf.“
+//               „Reiz: heißer Topf – Die Hand zuckt zurück.“
+//               „Reiz: heißer Topf – Die Hand ist schon zurück. Erst jetzt ruft Lina „Heiß!““
+//               „Reiz: Hammer am Knie – Lina sitzt. Ihr Bein hängt frei.“
+//               „Reiz: Hammer am Knie – Die Ärztin holt mit dem Hammer aus.“
+//               „Reiz: Hammer am Knie – Der Hammer klopft unter die Kniescheibe.“
+//               „Reiz: Hammer am Knie – Der Unterschenkel schnellt nach vorn.“
+//               „Reiz: Hammer am Knie – Der Unterschenkel ist nach vorn geschnellt.“
+//               (Endbild: das Bein hängt wieder, der Ausschlag ist vorbei)
+//   _n9e-ring   „Noch kein Ring zu sehen.“ · „Der Lichtpunkt läuft – noch kein Ring.“
+//               „Ring im Kopf – hier dreht der Lichtpunkt um.“
+//               „Ring im Rücken – hier dreht der Lichtpunkt um.“
+//   _n9e-zeit   „Stoppuhr · Zeit: 0,00 s“ · „Stoppuhr läuft · Zeit: 0,07 s“
+//               „Stoppuhr steht · Zeit: 0,20 s“
+//   _n9e-hinweis Bedienhinweis je Phase.
+//   Im Bild auf der Stoppuhr: „Zeit: 0,20 s“.
+//
+// HEFT ↔ BILDSCHIRM (lehrer.tabelle_erwartet):
+//   Zeile 1 Lampe           aus dem Gehirn      0,20 s – „Ring im Kopf“,     „Zeit: 0,20 s“
+//   Zeile 2 heißer Topf     aus dem Rückenmark  0,10 s – „Ring im Rücken“,   „Zeit: 0,10 s“
+//   Zeile 3 Hammer am Knie  aus dem Rückenmark  0,05 s – „Ring im Rücken“,   „Zeit: 0,05 s“
+//   Spalte 2 steht NICHT als Wort da: Das Kind schließt vom Ring (Kopf/Rücken)
+//   auf Gehirn/Rückenmark (so wie im Beispiel: „dreht die Erregung im Kopf um,
+//   der Befehl kommt also aus dem Gehirn“).
+//
+// MODELLWERTE (Lehrerteil): 0,20 s / 0,10 s / 0,05 s. Der Lichtpunkt läuft
+//   bei Lampe und Topf mit gut 1000 Bildpunkten je Modellsekunde, beim Knie
+//   etwa doppelt so schnell (dicke, schnelle Nervenfasern, nur eine
+//   Umschaltstelle) - so treffen alle drei Wege genau ihre Zeit. Bei der Lampe
+//   steckt der Rest der 0,20 s im Kopf (der Punkt kreist dort). Die Meldung in
+//   den Kopf beim Topf läuft langsamer (dünne Fasern für Hitze und Schmerz).
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen): Lichtring beim Umdrehen, Welle am
+//   Muskel und an der Hand/am Knopf/am Fuß, wenn der Befehl ankommt; beim Topf
+//   steht die Stoppuhr schon, während der kleine Punkt noch zum Kopf kriecht -
+//   die Vorhersage „das Gehirn arbeitet nur besonders schnell“ fällt sichtbar.
+//   Am Ende jedes Laufs eine Welle am Ende seines Balkens.
+//
+// NICHT AM BILDSCHIRM: „Reflex“, „Reaktionszeit“, „Rückenmark“, „Gehirn“,
+//   „schneller“, „langsamer“; keine Beschriftung am Körperumriss; keine
+//   Wertung. Deterministisch bis auf die Funken der Effektbibliothek.
+// ════════════════════════════════════════════════════════════════════════
+let _n9e = null;
+const _N9E_REIZE = ['lampe', 'topf', 'knie'];
+const _N9E_NAME = { lampe: 'Lampe', topf: 'heißer Topf', knie: 'Hammer am Knie' };
+const _N9E_KURZ = { lampe: 'Lampe', topf: 'Topf', knie: 'Knie' };
+const _N9E_ZEIT = { lampe: 0.20, topf: 0.10, knie: 0.05 };      // s vom Reiz bis zur Bewegung
+const _N9E_ORT = { lampe: 'Kopf', topf: 'Rücken', knie: 'Rücken' };
+const _N9E_FARBE = { lampe: '#d97706', topf: '#dc2626', knie: '#2563eb' };
+const _N9E_ZL = 25;              // Zeitlupe: 1 s Modellzeit dauert 25 s
+const _N9E_VOR = 0.8;            // s echte Zeit vor dem Reiz
+const _N9E_V = 1000;             // Bildpunkte je Modellsekunde: Lichtpunkt bei der Lampe
+const _N9E_HIRN_AN = 0.15;       // s: heißer Topf - die Meldung kommt im Kopf an
+const _N9E_HEISS = 0.16;         // s: heißer Topf - Sprechblase „Heiß!“
+const _N9E_ENDE = { lampe: 0.23, topf: 0.19, knie: 0.08 };      // s: dann ist alles gezeigt
+const _N9E_SKALA = 0.20;         // s: ganze Länge der Zeitbalken
+
+// ── Körperumriss (Seitenansicht, Blick nach rechts) ──────────────────────
+const _N9E_HIRN = [367, 20];
+const _N9E_AUGE = [382, 24];
+const _N9E_STRANG = [[364, 29], [361, 44], [357, 64], [354, 86], [355, 110], [358, 134]];
+const _N9E_RM_O = [357, 64];     // Rücken, Höhe der Schulter
+const _N9E_RM_U = [358, 134];    // unterer Rücken
+const _N9E_SCHULTER = [364, 70];
+const _N9E_ELLE = [363, 106];
+const _N9E_HAND = [388, 114];
+const _N9E_ARMMUSKEL = [366, 84];
+const _N9E_HUEFTE = [366, 146];
+const _N9E_OSCHENKEL = [374, 168];
+const _N9E_KNIE_N = [375, 188];
+const _N9E_KNIE = [377, 196];
+const _N9E_BEINMUSKEL = [373, 158];
+const _N9E_WEG = {
+  lampe: { ein: [_N9E_AUGE, _N9E_HIRN],
+           aus: [_N9E_HIRN, [364, 29], [361, 44], _N9E_RM_O, _N9E_SCHULTER, _N9E_ARMMUSKEL] },
+  topf:  { ein: [_N9E_HAND, _N9E_ELLE, _N9E_SCHULTER, _N9E_RM_O],
+           aus: [_N9E_RM_O, _N9E_SCHULTER, _N9E_ARMMUSKEL],
+           hoch: [_N9E_RM_O, [361, 44], [364, 29], _N9E_HIRN] },
+  knie:  { ein: [_N9E_KNIE, _N9E_KNIE_N, _N9E_OSCHENKEL, _N9E_HUEFTE, _N9E_RM_U],
+           aus: [_N9E_RM_U, _N9E_HUEFTE, _N9E_BEINMUSKEL] }
+};
+const _N9E_RING = { lampe: _N9E_HIRN, topf: _N9E_RM_O, knie: _N9E_RM_U };
+
+// ── Szene: Linas Arm in drei Haltungen je Reiz (Ellenbogen, Hand) ────────
+const _N9E_SCH = [58, 64];                                   // Linas Schulter
+const _N9E_POSE = {
+  schweben: [[78, 89], [122, 74]],    // Lampe: Hand über dem Knopf
+  druecken: [[78, 91], [122, 79]],    // Lampe: Knopf gedrückt
+  schoss:   [[66, 88], [86, 92]],     // Hand auf dem Oberschenkel
+  topf:     [[84, 84], [133, 74]],    // Hand am Topf
+  weg:      [[70, 82], [84, 58]]      // Hand zurückgezuckt
+};
+const _N9E_KN = [94, 98];            // Linas Knie in der Szene
+const _N9E_HAMMER = { hand: [128, 104], lang: 27.2, treffer: Math.atan2(6, -26.5) };   // Treffer bei (101,5 | 110)
+
+// ── Rechnen auf Streckenzügen ────────────────────────────────────────────
+function _n9eLaenge(p) {
+  let L = 0;
+  for (let i = 1; i < p.length; i++) L += Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]);
+  return L;
+}
+function _n9eAuf(p, q) {
+  const L = _n9eLaenge(p) * _bioFxKlemme(q);
+  let s = 0;
+  for (let i = 1; i < p.length; i++) {
+    const l = Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]);
+    if (s + l >= L) {
+      const u = l ? (L - s) / l : 0;
+      return [p[i - 1][0] + (p[i][0] - p[i - 1][0]) * u, p[i - 1][1] + (p[i][1] - p[i - 1][1]) * u];
+    }
+    s += l;
+  }
+  return p[p.length - 1].slice();
+}
+function _n9eZug(ctx, p, q) {
+  q = _bioFxKlemme(q);
+  if (q <= 0) return;
+  const e = _n9eAuf(p, q), L = _n9eLaenge(p) * q;
+  ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+  let s = 0;
+  for (let i = 1; i < p.length; i++) {
+    const l = Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]);
+    if (s + l >= L) break;
+    ctx.lineTo(p[i][0], p[i][1]); s += l;
+  }
+  ctx.lineTo(e[0], e[1]); ctx.stroke();
+}
+function _n9eMisch(a, b, u) { return [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u]; }
+
+// Takt je Reiz (Modellzeit in s): R = Ring (Umdrehen), A0 = Beginn des
+// Rückwegs zum Muskel, T = Befehl am Muskel = Ende der Stoppuhr.
+function _n9eTakt(r) {
+  const w = _N9E_WEG[r], le = _n9eLaenge(w.ein), la = _n9eLaenge(w.aus), T = _N9E_ZEIT[r];
+  if (r === 'lampe') return { R: le / _N9E_V, A0: T - la / _N9E_V, T };
+  const v = (le + la) / T;
+  return { R: le / v, A0: le / v, T };
+}
+// Wo ist der große Lichtpunkt zur Modellzeit tau? (null = im Muskel angekommen)
+function _n9ePunkt(r, tau) {
+  const k = _n9eTakt(r), w = _N9E_WEG[r];
+  if (tau < k.R) return _n9eAuf(w.ein, tau / k.R);
+  if (tau < k.A0) {                       // nur Lampe: der Punkt kreist im Kopf
+    const d = tau - k.R, rad = Math.min(1, d / 0.01, (k.A0 - tau) / 0.01);
+    const wi = d * 2 * Math.PI / 0.03;
+    return [_N9E_HIRN[0] + 5 * rad * Math.cos(wi), _N9E_HIRN[1] + 2.5 * rad * Math.sin(wi)];
+  }
+  if (tau < k.T) return _n9eAuf(w.aus, (tau - k.A0) / (k.T - k.A0));
+  return null;
+}
+
+// ── Zustand ───────────────────────────────────────────────────────────────
+function _n9eInit() {
+  _n9e = { reiz: 'lampe', phase: 'bereit', vor: 0, tau: 0, t: 0,
+           balken: {}, fx: { teile: [] }, letzt: '' };
+}
+function _n9eLos() { return _n9e.phase === 'lauf' || _n9e.phase === 'fertig'; }
+function _n9eFxLeer() { _n9e.fx = { teile: [] }; }
+function _n9eZurueck() {
+  _n9eFxLeer();
+  _n9e.phase = 'bereit'; _n9e.vor = 0; _n9e.tau = 0;
+  _n9eStatus();
+}
+// Knopfreihe „Reiz“
+function _n9eReiz(r) {
+  if (!_n9e || !_N9E_NAME[r]) return;
+  _n9e.reiz = r;
+  _n9eZurueck();
+}
+function _n9eStart() {
+  if (!_n9e || _n9e.phase === 'vor' || _n9e.phase === 'lauf') return;
+  _n9eFxLeer();
+  _n9e.phase = 'vor'; _n9e.vor = 0; _n9e.tau = 0;
+  _n9eStatus();
+}
+function _n9eNeu() {
+  if (!_n9e) return;
+  _n9e.reiz = 'lampe'; _n9e.balken = {};
+  _n9eZurueck();
+}
+// Sprungmarke: Reiz wählen und gleich das Endbild zeigen
+function _n9eMarke(r) {
+  if (!_n9e || !_N9E_NAME[r]) return;
+  _n9eFxLeer();
+  _n9e.reiz = r; _n9e.phase = 'fertig'; _n9e.vor = _N9E_VOR; _n9e.tau = _N9E_ENDE[r];
+  _n9e.balken[r] = true;
+  _n9eStatus();
+}
+
+function _n9eHTML() {
+  const k = (r) => `<button class="sim-btn" data-n9e="${r}" onclick="_n9eReiz('${r}')">${_N9E_NAME[r]}</button>`;
+  const m = (r) => `<button class="sim-btn" onclick="_n9eMarke('${r}')">${_N9E_NAME[r]}: Ergebnis</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie schnell reagierst du?</h3>
+    <div class="fpm-note" style="margin-top:2px">Links: Lina und der Reiz. Rechts: Linas Körper von der Seite mit den Nerven. Der gelbe Lichtpunkt zeigt, wo die Erregung gerade ist.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9e-los" onclick="_n9eStart()">▶ Start</button>
+          <button class="sim-btn" onclick="_n9eNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Reiz</span>
+          <div class="sim-btn-row">${k('lampe')}${k('topf')}${k('knie')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9e-reiz" style="margin-top:8px"></div>
+        <div class="lmp-status on" id="_n9e-ring" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_n9e-zeit" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9e-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-label" style="margin-top:10px">Sprungmarken</div>
+        <div class="sim-btn-row" style="margin-top:4px">${m('lampe')}${m('topf')}${m('knie')}</div>
+        <div class="fpm-note" style="margin-top:8px">Die Balken unten bleiben stehen. So kannst du die Zeiten vergleichen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Reiz „Lampe“ &nbsp;|&nbsp; Alles läuft in Zeitlupe. Die Stoppuhr zeigt die echte Zeit.</p>
+  </div>`;
+}
+
+// ── Anzeige ───────────────────────────────────────────────────────────────
+// Angezeigte Zeit in s: auf 0,01 s abgeschnitten, am Ende genau der Modellwert.
+function _n9eZeitWert() {
+  const z = _n9e;
+  if (!_n9eLos()) return 0;
+  const T = _N9E_ZEIT[z.reiz];
+  if (z.tau >= T - 1e-9) return T;
+  return Math.floor(z.tau * 100 + 1e-9) / 100;
+}
+function _n9eZahl(s) { return s.toFixed(2).replace('.', ','); }
+function _n9eZeitText() { return 'Zeit: ' + _n9eZahl(_n9eZeitWert()) + ' s'; }
+function _n9eNachT() { return _n9eLos() && _n9e.tau >= _N9E_ZEIT[_n9e.reiz] - 1e-9; }
+
+function _n9eSzeneText() {
+  const z = _n9e, r = z.reiz, los = _n9eLos(), nach = _n9eNachT();
+  let s;
+  if (r === 'lampe') {
+    s = !los ? 'Lina wartet am Knopf. Die Lampe ist aus.'
+      : !nach ? 'Die Lampe leuchtet auf.' : 'Lina drückt den Knopf.';
+  } else if (r === 'topf') {
+    s = z.phase === 'bereit' ? 'Lina sitzt am Tisch. Der Topf ist heiß.'
+      : z.phase === 'vor' ? 'Lina greift zum Topf.'
+      : !nach ? 'Lina berührt den Topf.'
+      : z.tau >= _N9E_HEISS - 1e-9 ? 'Die Hand ist schon zurück. Erst jetzt ruft Lina „Heiß!“'
+      : 'Die Hand zuckt zurück.';
+  } else {
+    s = z.phase === 'bereit' ? 'Lina sitzt. Ihr Bein hängt frei.'
+      : z.phase === 'vor' ? 'Die Ärztin holt mit dem Hammer aus.'
+      : !nach ? 'Der Hammer klopft unter die Kniescheibe.'
+      : z.tau < _N9E_ZEIT.knie + 0.03 - 1e-9 ? 'Der Unterschenkel schnellt nach vorn.'
+      : 'Der Unterschenkel ist nach vorn geschnellt.';
+  }
+  return 'Reiz: ' + _N9E_NAME[r] + ' – ' + s;
+}
+function _n9eRingText() {
+  const z = _n9e;
+  if (!_n9eLos()) return 'Noch kein Ring zu sehen.';
+  if (z.tau < _n9eTakt(z.reiz).R - 1e-9) return 'Der Lichtpunkt läuft – noch kein Ring.';
+  return 'Ring im ' + _N9E_ORT[z.reiz] + ' – hier dreht der Lichtpunkt um.';
+}
+function _n9eUhrText() {
+  if (!_n9eLos()) return 'Stoppuhr · ' + _n9eZeitText();
+  return (_n9eNachT() ? 'Stoppuhr steht · ' : 'Stoppuhr läuft · ') + _n9eZeitText();
+}
+function _n9eHinweisText() {
+  const p = _n9e.phase;
+  if (p === 'bereit') return 'Drücke „▶ Start“. Sieh auf den Ring und auf die Stoppuhr.';
+  if (p === 'fertig') return 'Fertig. Der Balken bleibt stehen. Stelle einen anderen Reiz ein.';
+  return 'Alles läuft in Zeitlupe. Die Stoppuhr zeigt, wie lange es in echt dauert.';
+}
+function _n9eZeilen() { return [_n9eSzeneText(), _n9eRingText(), _n9eUhrText(), _n9eHinweisText()]; }
+
+function _n9eStatus() {
+  if (!_n9e) return;
+  const zz = _n9eZeilen();
+  _n9e.letzt = zz.join('|');
+  const ids = ['_n9e-reiz', '_n9e-ring', '_n9e-zeit', '_n9e-hinweis'];
+  for (let i = 0; i < ids.length; i++) {
+    const el = document.getElementById(ids[i]);
+    if (el) el.textContent = zz[i];
+  }
+  try {
+    document.querySelectorAll('[data-n9e]').forEach(b => {
+      if (b.classList) b.classList.toggle('primary', b.getAttribute('data-n9e') === _n9e.reiz);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9e-los');
+  if (los && los.classList) los.classList.toggle('primary', _n9e.phase === 'bereit' || _n9e.phase === 'fertig');
+}
+
+// ── Ablauf ────────────────────────────────────────────────────────────────
+function _n9eUpdate(dt) {
+  if (!_n9e) return;
+  const z = _n9e;
+  dt = _bioFxDt(dt);
+  z.t += dt;
+  if (z.phase === 'vor') {
+    z.vor += dt;
+    if (z.vor >= _N9E_VOR) {
+      z.vor = _N9E_VOR; z.phase = 'lauf'; z.tau = 0;
+      _n9eAhaReiz();
+    }
+  } else if (z.phase === 'lauf') {
+    const alt = z.tau, ende = _N9E_ENDE[z.reiz];
+    z.tau = Math.min(ende, z.tau + dt / _N9E_ZL);
+    _n9eKanten(alt, z.tau);
+    if (z.tau >= ende) { z.tau = ende; z.phase = 'fertig'; }
+  }
+  if (_n9eZeilen().join('|') !== z.letzt) _n9eStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+
+// Bewegung in der Szene nach dem Befehl: 0 … 1 (Modellzeit 0,012 s)
+function _n9eBewegung() {
+  if (!_n9eLos()) return 0;
+  return _bioFxEase.sanft(_bioFxKlemme((_n9e.tau - _N9E_ZEIT[_n9e.reiz]) / 0.012));
+}
+// Knie: der Unterschenkel schnellt vor und fällt zurück (Winkel in rad)
+function _n9eKick() {
+  if (_n9e.reiz !== 'knie' || !_n9eLos()) return 0;
+  return 0.6 * Math.sin(Math.PI * _bioFxKlemme((_n9e.tau - _N9E_ZEIT.knie) / 0.03));
+}
+// Linas Arm: [Ellenbogen, Hand]
+function _n9eArm() {
+  const z = _n9e, r = z.reiz, P = _N9E_POSE;
+  const wipp = z.phase === 'bereit' ? 0.8 * Math.sin(z.t * 2.1) : 0;
+  let e, h;
+  if (r === 'lampe') {
+    const u = _n9eBewegung();
+    e = _n9eMisch(P.schweben[0], P.druecken[0], u); h = _n9eMisch(P.schweben[1], P.druecken[1], u);
+  } else if (r === 'topf') {
+    if (z.phase === 'bereit') { e = P.schoss[0]; h = P.schoss[1]; }
+    else if (z.phase === 'vor') {
+      const u = _bioFxEase.sanft(_bioFxKlemme(z.vor / (_N9E_VOR * 0.9)));
+      e = _n9eMisch(P.schoss[0], P.topf[0], u); h = _n9eMisch(P.schoss[1], P.topf[1], u);
+    } else {
+      const u = _n9eBewegung();
+      e = _n9eMisch(P.topf[0], P.weg[0], u); h = _n9eMisch(P.topf[1], P.weg[1], u);
+    }
+  } else { e = P.schoss[0]; h = P.schoss[1]; }
+  return [e, [h[0], h[1] + wipp]];
+}
+// Winkel des Reflexhammers (rad, Leinwand dreht im Uhrzeigersinn)
+function _n9eHammerWinkel() {
+  const z = _n9e, a0 = _N9E_HAMMER.treffer;
+  if (z.phase === 'bereit') return a0 + 1.4;
+  if (z.phase === 'vor') {
+    const u = _bioFxKlemme(z.vor / _N9E_VOR);
+    if (u < 0.5) return a0 + 1.4 + 0.15 * Math.sin(Math.PI * u / 0.5);
+    const v = (u - 0.5) / 0.5;
+    return a0 + 1.4 * (1 - v * v);
+  }
+  return a0 + 0.9 * _bioFxEase.sanft(_bioFxKlemme(z.tau / 0.015));
+}
+
+// ── Aha (nur Aufrufe der Bibliothek _bioFx) ─────────────────────────────────
+function _n9eAhaReiz() {
+  const fx = _n9e.fx.teile, r = _n9e.reiz;
+  if (r === 'lampe') {
+    _bioFxWelle(fx, 240, 58, 'rgba(250,204,21,0.9)', 28);
+    _bioFxWelle(fx, _N9E_AUGE[0], _N9E_AUGE[1], 'rgba(250,204,21,0.9)', 14);
+  } else if (r === 'topf') {
+    _bioFxWelle(fx, 133, 74, 'rgba(239,68,68,0.85)', 20);
+    _bioFxWelle(fx, _N9E_HAND[0], _N9E_HAND[1], 'rgba(239,68,68,0.85)', 14);
+  } else {
+    _bioFxWelle(fx, 101, 110, 'rgba(250,204,21,0.9)', 18);
+    _bioFxWelle(fx, _N9E_KNIE[0], _N9E_KNIE[1], 'rgba(250,204,21,0.9)', 14);
+  }
+}
+function _n9eKanten(a, b) {
+  const z = _n9e, r = z.reiz, k = _n9eTakt(r), fx = z.fx.teile;
+  const ueber = (x) => a < x && b >= x;
+  if (ueber(k.R)) {
+    const p = _N9E_RING[r];
+    _bioFxWelle(fx, p[0], p[1], 'rgba(249,115,22,0.95)', 22);
+  }
+  if (ueber(k.T)) {
+    const m = r === 'knie' ? [373, 165] : [368, 86];
+    _bioFxWelle(fx, m[0], m[1], 'rgba(239,68,68,0.9)', 20);
+    const s = r === 'lampe' ? [122, 82] : r === 'topf' ? [130, 72] : [110, 128];
+    _bioFxWelle(fx, s[0], s[1], 'rgba(250,204,21,0.9)', 18);
+    z.balken[r] = true;
+    const y = { lampe: 174, topf: 194, knie: 214 }[r];
+    _bioFxWelle(fx, 134 + 164 * _N9E_ZEIT[r] / _N9E_SKALA, y, _N9E_FARBE[r], 16);
+  }
+  if (r === 'topf' && ueber(_N9E_HIRN_AN)) {
+    _bioFxWelle(fx, _N9E_HIRN[0], _N9E_HIRN[1], 'rgba(250,204,21,0.95)', 24);
+  }
+  if (r === 'topf' && ueber(_N9E_HEISS)) {
+    _bioFxWelle(fx, 100, 23, 'rgba(220,38,38,0.8)', 30);
+  }
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────────
+function _n9eText(ctx, s, x, y, farbe, font, align) {
+  ctx.save();
+  ctx.font = font || '700 10px sans-serif';
+  ctx.textAlign = align || 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.fillText(s, x, y);
+  ctx.restore();
+}
+function _n9eLinie(ctx, a, b, farbe, w) {
+  ctx.strokeStyle = farbe; ctx.lineWidth = w;
+  ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+}
+function _n9eLicht(ctx, p, r) {
+  ctx.save();
+  const g = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], r);
+  g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.35, 'rgba(253,224,71,0.95)'); g.addColorStop(1, 'rgba(245,158,11,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+
+function _n9eDraw(ctx, cv) {
+  if (!_n9e) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, W, H);
+  _n9eSzene(ctx);
+  _n9eUnten(ctx);
+  _n9eKoerper(ctx);
+  _bioFxAlleDraw(ctx, _n9e.fx);
+}
+
+// ── Szene oben links ─────────────────────────────────────────────────────────
+function _n9eSzene(ctx) {
+  const z = _n9e, r = z.reiz;
+  ctx.save();
+  ctx.fillStyle = '#eff6ff'; ctx.strokeStyle = '#dbeafe'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 6, 6, 310, 144, 10); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#e7e5e4'; ctx.fillRect(12, 140, 298, 6);
+  ctx.restore();
+  // Tisch
+  ctx.fillStyle = '#b7834c'; ctx.fillRect(112, 90, 186, 6);
+  ctx.fillStyle = '#9a6a39'; ctx.fillRect(116, 96, 5, 44); ctx.fillRect(289, 96, 5, 44);
+  if (r === 'lampe') _n9eLampe(ctx);
+  if (r === 'topf') _n9eTopf(ctx);
+  _n9eLina(ctx);
+  if (r === 'knie') _n9eAerztin(ctx);
+  _n9eBlase(ctx);
+  if (z.phase === 'vor' || z.phase === 'lauf') {
+    ctx.save();
+    ctx.fillStyle = 'rgba(30,41,59,0.82)';
+    _bioFxRundRect(ctx, 248, 12, 60, 16, 8); ctx.fill();
+    ctx.restore();
+    _n9eText(ctx, 'Zeitlupe', 278, 20.5, '#ffffff', '700 10px sans-serif', 'center');
+  }
+}
+
+function _n9eLampe(ctx) {
+  const z = _n9e, an = _n9eLos(), u = _n9eBewegung();
+  // Knopf
+  ctx.fillStyle = '#475569'; ctx.fillRect(114, 84, 16, 6);
+  ctx.fillStyle = '#ef4444'; ctx.strokeStyle = '#991b1b'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 117, 80 + 2 * u, 10, 4.5 - 2 * u, 2); ctx.fill(); ctx.stroke();
+  // Lampe
+  ctx.fillStyle = '#334155'; ctx.fillRect(238, 70, 4, 20);
+  ctx.beginPath(); ctx.ellipse(240, 89, 11, 2.5, 0, 0, Math.PI * 2); ctx.fill();
+  if (an) {
+    _bioFxLeuchten(ctx, 240, 58, 13, z.t, '250,204,21');
+    ctx.save();
+    ctx.strokeStyle = 'rgba(234,179,8,0.85)'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+    for (let i = 0; i < 8; i++) {
+      const w = i * Math.PI / 4;
+      ctx.beginPath();
+      ctx.moveTo(240 + 14 * Math.cos(w), 58 + 14 * Math.sin(w));
+      ctx.lineTo(240 + 19 * Math.cos(w), 58 + 19 * Math.sin(w));
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  ctx.fillStyle = an ? '#fde047' : '#e2e8f0'; ctx.strokeStyle = an ? '#ca8a04' : '#94a3b8'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(240, 58, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Licht von der Lampe zum Auge (nur kurz nach dem Aufleuchten)
+  if (z.phase === 'lauf' && z.tau < 0.03) {
+    ctx.save();
+    ctx.globalAlpha = 1 - z.tau / 0.03;
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(229, 56); ctx.lineTo(67, 39); ctx.stroke();
+    ctx.restore();
+  }
+}
+
+function _n9eTopf(ctx) {
+  const t = _n9e.t;
+  // Kochplatte
+  ctx.fillStyle = '#1f2937'; ctx.fillRect(134, 86, 44, 4);
+  ctx.fillStyle = 'rgba(239,68,68,' + (0.6 + 0.2 * Math.sin(t * 2)).toFixed(3) + ')';
+  ctx.fillRect(136, 85, 40, 2);
+  // Topf mit Griffen
+  ctx.fillStyle = '#374151'; ctx.fillRect(131, 63, 7, 4); ctx.fillRect(174, 63, 7, 4);
+  ctx.fillStyle = '#9ca3af'; ctx.strokeStyle = '#4b5563'; ctx.lineWidth = 1.4;
+  ctx.fillRect(138, 60, 36, 26); ctx.strokeRect(138, 60, 36, 26);
+  ctx.fillStyle = '#6b7280'; ctx.fillRect(135, 57, 42, 4);
+  // Dampf steigt auf
+  ctx.save();
+  ctx.strokeStyle = 'rgba(148,163,184,0.6)'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  for (let i = 0; i < 3; i++) {
+    const x0 = 146 + 10 * i;
+    ctx.beginPath();
+    for (let k = 0; k <= 10; k++) {
+      const y = 53 - 2.2 * k, x = x0 + 3 * Math.sin(k * 0.8 - t * 3 + i * 1.7);
+      if (k === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function _n9eLina(ctx) {
+  const z = _n9e, t = z.t;
+  const atem = 1 + 0.015 * Math.sin(t * 1.7);
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  // Stuhl (hoch: das Bein hängt frei)
+  ctx.fillStyle = '#92603a';
+  ctx.fillRect(30, 56, 4, 84);
+  ctx.fillRect(30, 102, 48, 5);
+  ctx.fillRect(72, 107, 4, 33);
+  // Bein: Oberschenkel, Unterschenkel, Schuh
+  const phi = _n9eKick(), K = _N9E_KN;
+  const A = [K[0] + 34 * Math.sin(phi), K[1] + 34 * Math.cos(phi)];
+  _n9eLinie(ctx, [54, 98], K, '#1e3a8a', 13);
+  _n9eLinie(ctx, K, A, '#1e3a8a', 11);
+  ctx.fillStyle = '#334155';
+  ctx.beginPath(); ctx.ellipse(A[0] + 5 * Math.cos(phi), A[1] - 5 * Math.sin(phi) + 1, 8, 4, -phi, 0, Math.PI * 2); ctx.fill();
+  // Rumpf atmet ruhig
+  ctx.save();
+  ctx.translate(55, 104); ctx.scale(1, atem); ctx.translate(-55, -104);
+  ctx.fillStyle = '#14b8a6'; ctx.strokeStyle = '#0f766e'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, 42, 58, 26, 46, 9); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  // Hals und Kopf
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1.2;
+  ctx.fillRect(52, 49, 9, 11);
+  ctx.beginPath(); ctx.arc(57, 40, 13, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#4a2c17';
+  ctx.beginPath(); ctx.arc(57, 40, 13.6, Math.PI * 0.62, Math.PI * 1.75); ctx.lineTo(57, 33); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.ellipse(42, 46, 4.5, 9, 0.3, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(64, 39, 1.6, 0, Math.PI * 2); ctx.fill();
+  const ruft = z.reiz === 'topf' && _n9eLos() && z.tau >= _N9E_HEISS - 1e-9;
+  if (ruft) {
+    ctx.fillStyle = '#9f1239';
+    ctx.beginPath(); ctx.ellipse(66, 47, 2, 2.6, 0, 0, Math.PI * 2); ctx.fill();
+  } else {
+    _n9eLinie(ctx, [63, 47], [67, 47], '#9f1239', 1.3);
+  }
+  // Arm (vorne)
+  const [E, Hd] = _n9eArm();
+  _n9eLinie(ctx, _N9E_SCH, E, '#0f766e', 10);
+  _n9eLinie(ctx, _N9E_SCH, E, '#14b8a6', 8);
+  _n9eLinie(ctx, E, Hd, '#8a5a3b', 8);
+  _n9eLinie(ctx, E, Hd, '#f2c9a0', 6);
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(Hd[0], Hd[1], 4.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  // Hitze an der Hand, kurz nach der Berührung
+  if (z.reiz === 'topf' && z.phase === 'lauf' && z.tau < 0.02) {
+    _bioFxLeuchten(ctx, Hd[0], Hd[1], 7, t, '239,68,68');
+  }
+  ctx.restore();
+}
+
+function _n9eAerztin(ctx) {
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  _n9eLinie(ctx, [178, 120], [178, 138], '#475569', 6);
+  _n9eLinie(ctx, [190, 120], [190, 138], '#475569', 6);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+  _bioFxRundRect(ctx, 170, 62, 28, 62, 9); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#d6a77a'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1.2;
+  ctx.fillRect(180, 52, 8, 11);
+  ctx.beginPath(); ctx.arc(184, 49, 11, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1f2937';
+  ctx.beginPath(); ctx.arc(184, 49, 11.6, Math.PI * 1.2, Math.PI * 2.4); ctx.lineTo(184, 44); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(177.5, 48, 1.4, 0, Math.PI * 2); ctx.fill();
+  // Arm mit Reflexhammer
+  const S = [176, 70], E = [154, 94], Hd = _N9E_HAMMER.hand;
+  _n9eLinie(ctx, S, E, '#94a3b8', 9); _n9eLinie(ctx, S, E, '#ffffff', 7);
+  _n9eLinie(ctx, E, Hd, '#8a5a3b', 7); _n9eLinie(ctx, E, Hd, '#d6a77a', 5);
+  const a = _n9eHammerWinkel(), L = _N9E_HAMMER.lang;
+  const kopf = [Hd[0] + L * Math.cos(a), Hd[1] + L * Math.sin(a)];
+  _n9eLinie(ctx, Hd, kopf, '#78716c', 3);
+  ctx.save();
+  ctx.translate(kopf[0], kopf[1]); ctx.rotate(a);
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#7f1d1d'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, -2.5, -5.5, 5, 11, 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  ctx.fillStyle = '#d6a77a'; ctx.strokeStyle = '#8a5a3b'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(Hd[0], Hd[1], 4, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+
+// Sprechblase „Heiß!“ (heißer Topf, erst nach der Bewegung)
+function _n9eBlase(ctx) {
+  const z = _n9e;
+  if (z.reiz !== 'topf' || !_n9eLos() || z.tau < _N9E_HEISS - 1e-9) return;
+  const k = 1.2 - 0.2 * _bioFxEase.federn(_bioFxKlemme((z.tau - _N9E_HEISS) / 0.012));
+  ctx.save();
+  ctx.translate(100, 23); ctx.scale(k, k);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(-15, 10); ctx.lineTo(-30, 22); ctx.lineTo(-6, 10); ctx.closePath(); ctx.fill(); ctx.stroke();
+  _bioFxRundRect(ctx, -24, -11, 48, 22, 9); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.fillRect(-14, 8, 7, 3);
+  ctx.restore();
+  ctx.save();
+  ctx.translate(100, 23); ctx.scale(k, k);
+  _n9eText(ctx, 'Heiß!', 0, 0.5, '#dc2626', '800 13px sans-serif', 'center');
+  ctx.restore();
+}
+
+// ── Unten links: Stoppuhr und Zeitbalken ────────────────────────────────────
+const _N9E_BX0 = 134, _N9E_BX1 = 298;
+const _N9E_BY = { lampe: 174, topf: 194, knie: 214 };
+function _n9eUnten(ctx) {
+  const z = _n9e, t = z.t, r = z.reiz;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 6, 156, 310, 90, 10); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  // Stoppuhr: Zeiger, eine Umdrehung = 1 s
+  const cx = 49, cy = 186, rr = 18, s = _n9eZeitWert();
+  const zeiger = _n9eLos() ? Math.min(z.tau, _N9E_ZEIT[r]) : 0;
+  ctx.save();
+  ctx.fillStyle = '#334155';
+  ctx.fillRect(46, 162, 6, 6); ctx.fillRect(43, 159, 12, 3);
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.arc(cx, cy, rr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  if (zeiger > 0) {
+    ctx.fillStyle = _N9E_FARBE[r]; ctx.globalAlpha = 0.3;
+    ctx.beginPath(); ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, rr - 2.5, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * zeiger); ctx.closePath(); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1;
+  for (let i = 0; i < 10; i++) {
+    const w = -Math.PI / 2 + i * Math.PI / 5;
+    ctx.beginPath(); ctx.moveTo(cx + (rr - 6) * Math.cos(w), cy + (rr - 6) * Math.sin(w));
+    ctx.lineTo(cx + (rr - 2.5) * Math.cos(w), cy + (rr - 2.5) * Math.sin(w)); ctx.stroke();
+  }
+  const wz = -Math.PI / 2 + 2 * Math.PI * zeiger;
+  _n9eLinie(ctx, [cx, cy], [cx + (rr - 4) * Math.cos(wz), cy + (rr - 4) * Math.sin(wz)], '#0f172a', 2);
+  ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx, cy, 2.2, 0, Math.PI * 2); ctx.fill();
+  // Anzeige
+  ctx.fillStyle = '#0f172a';
+  _bioFxRundRect(ctx, 10, 211, 78, 22, 5); ctx.fill();
+  ctx.restore();
+  _n9eText(ctx, _n9eZeitText(), 49, 222.5, '#fef08a', '700 11px sans-serif', 'center');
+
+  // Zeitbalken: Gitter alle 0,05 s
+  const x0 = _N9E_BX0, x1 = _N9E_BX1;
+  ctx.save();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  for (let i = 0; i <= 4; i++) {
+    const x = x0 + (x1 - x0) * i / 4;
+    ctx.beginPath(); ctx.moveTo(x, 164); ctx.lineTo(x, 224); ctx.stroke();
+  }
+  ctx.restore();
+  _n9eLinie(ctx, [x0, 225], [x1, 225], '#475569', 1.5);
+  const marken = ['0 s', '0,05 s', '0,10 s', '0,15 s', '0,20 s'];
+  for (let i = 0; i <= 4; i++) {
+    const x = x0 + (x1 - x0) * i / 4;
+    _n9eLinie(ctx, [x, 225], [x, 229], '#475569', 1.2);
+    _n9eText(ctx, marken[i], x, 237, '#334155', '600 9px sans-serif', 'center');
+  }
+  for (const q of _N9E_REIZE) {
+    const y = _N9E_BY[q], h = 12;
+    _n9eText(ctx, _N9E_KURZ[q], x0 - 6, y, _N9E_FARBE[q], '700 10px sans-serif', 'right');
+    ctx.save();
+    ctx.fillStyle = '#f1f5f9';
+    _bioFxRundRect(ctx, x0, y - h / 2, x1 - x0, h, 4); ctx.fill();
+    const live = q === r && _n9eLos();
+    const wert = live ? Math.min(z.tau, _N9E_ZEIT[q]) : (z.balken[q] ? _N9E_ZEIT[q] : 0);
+    if (wert > 0) {
+      const b = (x1 - x0) * wert / _N9E_SKALA;
+      ctx.globalAlpha = live ? 1 : 0.45;
+      ctx.fillStyle = _N9E_FARBE[q];
+      _bioFxRundRect(ctx, x0, y - h / 2, Math.max(b, 4), h, 4); ctx.fill();
+      ctx.globalAlpha = 1;
+      if (live && !_n9eNachT()) _bioFxLeuchten(ctx, x0 + b, y, 5, t, '250,204,21');
+    }
+    ctx.restore();
+  }
+}
+
+// ── Rechts: Körperumriss von der Seite ──────────────────────────────────────
+function _n9eMuskel(ctx, x, y, rot, c) {
+  ctx.save();
+  ctx.translate(x, y); ctx.rotate(rot);
+  ctx.fillStyle = c > 0 ? 'rgba(239,68,68,' + (0.55 + 0.4 * c).toFixed(3) + ')' : 'rgba(248,113,113,0.5)';
+  ctx.strokeStyle = '#b91c1c'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(0, 0, 4.5 + 2 * c, 13 - 2.5 * c, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _n9eKoerper(ctx) {
+  const z = _n9e, r = z.reiz, t = z.t, los = _n9eLos(), tau = z.tau;
+  const k = _n9eTakt(r), w = _N9E_WEG[r];
+  ctx.save();
+  ctx.fillStyle = '#f1f5f9'; ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 322, 4, 94, 242, 10); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  ctx.save();
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const haut = '#e2e8f0', rand = '#64748b';
+  const glied = (p, d) => {
+    for (const [f, b] of [[rand, d + 3], [haut, d]]) {
+      ctx.strokeStyle = f; ctx.lineWidth = b;
+      ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+      for (let i = 1; i < p.length; i++) ctx.lineTo(p[i][0], p[i][1]);
+      ctx.stroke();
+    }
+  };
+  // Bein und Fuß
+  glied([[366, 140], [370, 190], [366, 230]], 14);
+  ctx.fillStyle = haut; ctx.strokeStyle = rand; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 357, 229, 32, 10, 5); ctx.fill(); ctx.stroke();
+  // Rumpf
+  ctx.beginPath();
+  ctx.moveTo(356, 56);
+  ctx.quadraticCurveTo(342, 70, 346, 100);
+  ctx.quadraticCurveTo(348, 125, 350, 144);
+  ctx.lineTo(382, 144);
+  ctx.quadraticCurveTo(385, 122, 380, 108);
+  ctx.quadraticCurveTo(388, 84, 380, 62);
+  ctx.quadraticCurveTo(372, 54, 356, 56);
+  ctx.closePath();
+  ctx.fillStyle = haut; ctx.fill(); ctx.strokeStyle = rand; ctx.lineWidth = 1.5; ctx.stroke();
+  // Hals und Kopf (mit Nase)
+  _n9eLinie(ctx, [365, 42], [362, 60], rand, 18);
+  _n9eLinie(ctx, [365, 42], [362, 60], haut, 15);
+  ctx.fillStyle = haut; ctx.strokeStyle = rand; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(372, 27, 19, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(389, 22); ctx.lineTo(395, 31); ctx.lineTo(389, 33); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = haut; ctx.fillRect(387, 23, 3, 9);
+  // Arm vor dem Rumpf
+  glied([[365, 64], [363, 106], [386, 114]], 11);
+  ctx.fillStyle = haut; ctx.strokeStyle = rand; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(390, 115, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+
+  // Gehirn und Rückenmark
+  const hirnAn = los && ((r === 'lampe' && tau >= k.R) || (r === 'topf' && tau >= _N9E_HIRN_AN));
+  if (hirnAn) _bioFxLeuchten(ctx, _N9E_HIRN[0], _N9E_HIRN[1], 15, t, '250,204,21');
+  ctx.fillStyle = hirnAn ? '#fde047' : '#f9a8d4'; ctx.strokeStyle = '#be185d'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(_N9E_HIRN[0], _N9E_HIRN[1], 13, 9.5, -0.1, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(357, 18); ctx.quadraticCurveTo(362, 12, 367, 18); ctx.quadraticCurveTo(372, 24, 377, 17);
+  ctx.stroke();
+  for (const [f, b] of [['#be185d', 7], ['#f9a8d4', 5]]) {
+    ctx.strokeStyle = f; ctx.lineWidth = b;
+    ctx.beginPath(); ctx.moveTo(_N9E_STRANG[0][0], _N9E_STRANG[0][1]);
+    for (let i = 1; i < _N9E_STRANG.length; i++) ctx.lineTo(_N9E_STRANG[i][0], _N9E_STRANG[i][1]);
+    ctx.stroke();
+  }
+  // Nerven (blass)
+  ctx.strokeStyle = 'rgba(202,138,4,0.55)'; ctx.lineWidth = 1.8;
+  _n9eZug(ctx, [_N9E_AUGE, _N9E_HIRN], 1);
+  _n9eZug(ctx, [_N9E_RM_O, _N9E_SCHULTER, _N9E_ELLE, _N9E_HAND], 1);
+  _n9eZug(ctx, [_N9E_RM_U, _N9E_HUEFTE, _N9E_OSCHENKEL, _N9E_KNIE_N, [370, 226]], 1);
+  // Muskeln: Armmuskel vorn am Oberarm, Oberschenkelmuskel vorn am Oberschenkel
+  const c = los ? _bioFxKlemme((tau - k.T) / 0.006) : 0;
+  _n9eMuskel(ctx, 368, 86, -0.05, r === 'knie' ? 0 : c);
+  _n9eMuskel(ctx, 373, 165, -0.08, r === 'knie' ? c : 0);
+  // Auge
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#334155'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(_N9E_AUGE[0], _N9E_AUGE[1], 3.4, 2.4, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(_N9E_AUGE[0] + 1.2, _N9E_AUGE[1], 1.2, 0, Math.PI * 2); ctx.fill();
+
+  // Ort des Reizes leuchtet kurz
+  if (los && tau < Math.min(k.R, 0.03)) {
+    const p = r === 'lampe' ? _N9E_AUGE : r === 'topf' ? [390, 115] : _N9E_KNIE;
+    _bioFxLeuchten(ctx, p[0], p[1], r === 'lampe' ? 5 : 7, t, r === 'topf' ? '239,68,68' : '250,204,21');
+  }
+  // Leuchtende Spur: Hinweg gelb, Rückweg zum Muskel orange darüber
+  if (los) {
+    ctx.save();
+    ctx.globalAlpha = z.phase === 'fertig' ? 0.8 : 1;
+    ctx.shadowColor = '#fde047'; ctx.shadowBlur = 8;
+    ctx.strokeStyle = '#facc15'; ctx.lineWidth = 3.5;
+    _n9eZug(ctx, w.ein, tau / k.R);
+    if (r === 'topf' && tau >= k.R) {
+      ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 2.5;
+      _n9eZug(ctx, w.hoch, (tau - k.R) / (_N9E_HIRN_AN - k.R));
+    }
+    if (tau >= k.A0) {
+      ctx.shadowColor = '#fb923c';
+      ctx.strokeStyle = '#f97316'; ctx.lineWidth = 2.5;
+      _n9eZug(ctx, w.aus, (tau - k.A0) / (k.T - k.A0));
+    }
+    ctx.restore();
+  }
+  // Ring: hier dreht der Lichtpunkt um
+  if (los && tau >= k.R - 1e-12) {
+    const p = _N9E_RING[r], rr = r === 'lampe' ? 11 : 9;
+    _bioFxLeuchten(ctx, p[0], p[1], rr, t, '249,115,22');
+    ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 4.5;
+    ctx.beginPath(); ctx.arc(p[0], p[1], rr, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.arc(p[0], p[1], rr, 0, Math.PI * 2); ctx.stroke();
+  }
+  // Lichtpunkte
+  if (z.phase === 'lauf') {
+    const p = _n9ePunkt(r, tau);
+    const imKopf = r === 'lampe' && tau >= k.R && tau < k.A0;
+    if (p) _n9eLicht(ctx, p, imKopf ? 6.5 : 9);
+    if (r === 'topf' && tau >= k.R && tau < _N9E_HIRN_AN) {
+      _n9eLicht(ctx, _n9eAuf(w.hoch, (tau - k.R) / (_N9E_HIRN_AN - k.R)), 6.5);
+    }
+  }
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER – br2 „Kino im Kopf“  (Kennung bio-reizweg, Praefix _n9b)
+// Bauplan: arbeitsheft_bio_foe9/einheiten/br2.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, dunkler Kinosaal):
+//   - links oben die Leinwand mit einer bunten Landschaft (Wolke zieht),
+//     darunter an der Wand der Lautsprecher.
+//   - Lina von der Seite, Blick nach links zur Leinwand. Ihr Kopf ist gross
+//     und schematisch geoeffnet: das Gehirn von der Seite in Hellgrau, OHNE
+//     Beschriftung (Furchen nur als feine Linien), darunter Kleinhirn und
+//     Hirnstamm, der als Rueckenmark in den Hals laeuft.
+//   - Auge (Augapfel offen gezeichnet, kleine Punkte in der Netzhaut), Ohr
+//     (Ohrmuschel, dahinter die kleine Schnecke mit Punkten) und Linas Hand
+//     auf der Armlehne (Punkte in der Haut). Die Punkte sind die
+//     Sinneszellen – das Wort steht NICHT am Bildschirm.
+//   - bei „Berührung“ schiebt sich Deniz' Arm von links ins Bild.
+//   Beschriftet sind nur Leinwand, Lautsprecher, Auge, Ohr, Haut der Hand,
+//   Lina und Deniz. Das Gehirn traegt keine Beschriftung.
+//
+// BEDIENUNG (woertlich):
+//   Wahlgruppe „Reiz“: „Licht“ · „Ton“ · „Berührung“   (_n9bReiz('…'))
+//   „▶ Reiz senden“ (_n9bSenden) · „neu“ (_n9bNeu)
+//   Ein anderer Reiz stellt alles zurueck (Gehirn wieder grau).
+//
+// ABLAUF nach „▶ Reiz senden“ (verlangsamt, zusammen 3,3 s):
+//   0,0–0,8 s  der Reiz: Lichtstrahlen von der Leinwand zum Auge · Schall-
+//              boegen vom Lautsprecher zum Ohr · Deniz tippt auf Linas Hand
+//   0,8–1,3 s  die Punkte im Auge / im Ohr / in der Haut der Hand leuchten
+//              nacheinander gelb auf und bleiben hell
+//   1,3–3,3 s  ein gelber Lichtpunkt laeuft den Nerv entlang ins Gehirn
+//              (2,0 s, eine gelbe Spur bleibt stehen)
+//   3,3 s      im Gehirn leuchtet EINE Stelle gelb auf und bleibt hell:
+//                Licht      → ganz hinten im Kopf (Sehrinde)
+//                Ton        → seitlich, direkt ueber dem Ohr (Hoerrinde)
+//                Berührung  → Streifen oben in der Mitte (hinter der
+//                             Zentralfurche)
+//
+// STATUSZEILEN (woertlich, _n9b-status):
+//   vor dem Senden   „Noch ist nichts im Gehirn angekommen.“
+//   0,0–1,3 s        „Der Reiz ist unterwegs …“
+//   1,3–3,3 s        „Der gelbe Lichtpunkt läuft ins Gehirn …“
+//   angekommen       „Lina sieht den Film.“ · „Lina hört die Musik.“ ·
+//                    „Lina spürt die Hand.“
+//   Hinweis (_n9b-hinweis): „Reiz: Licht. Drücke „▶ Reiz senden“.“ usw.
+//
+// WERTE (sim_plan.werte = lehrer.tabelle_erwartet, Spalten 2 und 3):
+//   Licht      Auge leuchtet           · Stelle ganz hinten im Kopf leuchtet
+//   Ton        Ohr leuchtet            · Stelle seitlich ueber dem Ohr leuchtet
+//   Berührung  Haut der Hand leuchtet  · Streifen oben in der Mitte leuchtet
+//   Spalte 3 ist BEOBACHTUNG (Lagewoerter stehen bewusst nicht am Schirm).
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen): bei jeder Ankunft ein Lichtring
+//   und ein paar Funken an der Stelle. Beim Licht laeuft der Punkt am
+//   vorderen Gehirn vorbei bis ganz nach hinten – sichtbar weit weg vom
+//   Auge (widerlegt Vermutung C). Sind alle drei Reize angekommen, erscheinen
+//   fuer 5 s auch die beiden anderen Stellen und Wege gestrichelt, jede mit
+//   einem Lichtring: drei Reize, drei Stellen (widerlegt Vermutung B).
+//   Kein Banner – ein Banner oben laege genau ueber dem Streifen.
+//
+// NICHT AM BILDSCHIRM (sim_plan.anzeigen, Merksatz und Aufgabe 2):
+//   „Erregung“, „Sinneszellen“, „Nervenzelle“, „hinten“, „vorn“, „seitlich“,
+//   „oben“, „verschiedenen“ – auch nicht als Wortteil. Keine Namen von
+//   Hirnlappen. Bedienwort ist immer „Drücke“.
+// ════════════════════════════════════════════════════════════════════════
+let _n9b = null;
+const _N9B_REIZE = {
+  licht:      { name: 'Licht',     status: 'Lina sieht den Film.' },
+  ton:        { name: 'Ton',       status: 'Lina hört die Musik.' },
+  beruehrung: { name: 'Berührung', status: 'Lina spürt die Hand.' }
+};
+const _N9B_REIHE = ['licht', 'ton', 'beruehrung'];
+const _N9B_T = { REIZ: 0.8, ZELLEN: 1.3, ANKUNFT: 3.3 };   // s nach dem Senden
+const _N9B_UEBER = 5.0;                                    // s: alle drei Stellen
+// Nervenwege: von den Punkten im Sinnesorgan bis zur Mitte der Stelle im Gehirn.
+const _N9B_WEG = {
+  licht:      [[205, 102], [222, 94], [250, 86], [285, 84], [318, 84], [342, 86]],
+  ton:        [[278, 148], [292, 142], [297, 126], [287, 114], [267, 110]],
+  beruehrung: [[186, 216], [205, 219], [288, 219], [300, 206], [301, 182], [297, 126],
+               [289, 94], [283, 64], [280, 46]]
+};
+// Stellen im Gehirn (in der Zeichnung grau, erst bei Ankunft gelb).
+const _N9B_STELLE = {
+  licht:      { art: 'oval', x: 342, y: 86, rx: 10, ry: 18, w: 0.18 },
+  ton:        { art: 'oval', x: 266, y: 110, rx: 18, ry: 8, w: -0.12 },
+  beruehrung: { art: 'band', p: [[290, 24], [284, 40], [277, 56], [272, 68]], b: 11 }
+};
+// Punkte im Sinnesorgan
+const _N9B_AUGE = { x: 195, y: 102, r: 9 };
+const _N9B_SCHNECKE = { x: 278, y: 148, r: 7 };
+const _N9B_PUNKTE = {
+  licht: [-0.95, -0.48, 0, 0.48, 0.95].map(a => [_N9B_AUGE.x + 7 * Math.cos(a), _N9B_AUGE.y + 7 * Math.sin(a)]),
+  ton: [[272, 145], [276, 152], [283, 150], [283, 144], [278, 146]],
+  beruehrung: [[178, 216], [185, 214], [192, 213], [199, 214], [189, 218]]
+};
+const _N9B_TIPP = [190, 212];                      // dort tippt Deniz auf die Hand
+
+function _n9bInit() {
+  _n9b = { t: 0, reiz: 'licht', phase: 'ruhe', s: 0, da: 0, gesehen: {},
+           ueber: null, ueberGezeigt: false, deniz: 0, letzt: '', letztH: '',
+           fx: { teile: [] } };
+}
+
+// ── Bedienung ─────────────────────────────────────────────────────────────
+function _n9bZurueck() {
+  const z = _n9b;
+  z.phase = 'ruhe'; z.s = 0; z.da = 0; z.ueber = null; z.fx = { teile: [] };
+}
+function _n9bReiz(r) {
+  if (!_n9b || !_N9B_REIZE[r]) return;
+  _n9b.reiz = r;
+  _n9bZurueck();
+  _n9bStatus();
+}
+function _n9bSenden() {
+  const z = _n9b;
+  if (!z || z.phase === 'laeuft') return;
+  _n9bZurueck();
+  z.phase = 'laeuft';
+  _n9bStatus();
+}
+function _n9bNeu() {
+  if (!_n9b) return;
+  _n9b.reiz = 'licht';
+  _n9b.gesehen = {}; _n9b.ueberGezeigt = false;
+  _n9bZurueck();
+  _n9bStatus();
+}
+
+// ── Anzeige ───────────────────────────────────────────────────────────────
+function _n9bAlleGesehen() {
+  return _N9B_REIHE.every(r => _n9b.gesehen[r]);
+}
+function _n9bZeile() {
+  const z = _n9b;
+  if (z.phase === 'ruhe') return 'Noch ist nichts im Gehirn angekommen.';
+  if (z.phase === 'da') return _N9B_REIZE[z.reiz].status;
+  return z.s < _N9B_T.ZELLEN ? 'Der Reiz ist unterwegs …' : 'Der gelbe Lichtpunkt läuft ins Gehirn …';
+}
+function _n9bHinweis() {
+  const z = _n9b;
+  if (z.phase === 'ruhe') return 'Reiz: ' + _N9B_REIZE[z.reiz].name + '. Drücke „▶ Reiz senden“.';
+  if (z.phase === 'laeuft') return z.s < _N9B_T.ZELLEN ? 'Sieh genau hin: Was leuchtet zuerst auf?'
+                                                       : 'Folge dem gelben Lichtpunkt mit den Augen.';
+  if (_n9bAlleGesehen()) return 'Alle drei Reize sind angekommen. Vergleiche die Stellen im Gehirn.';
+  return 'Wo leuchtet das Gehirn? Stelle danach einen anderen Reiz ein.';
+}
+function _n9bStatus() {
+  if (!_n9b) return;
+  const z = _n9b, s = _n9bZeile(), h = _n9bHinweis();
+  const el = document.getElementById('_n9b-status');
+  if (el) { el.textContent = s; el.className = 'lmp-status on'; }
+  const hi = document.getElementById('_n9b-hinweis');
+  if (hi) hi.textContent = h;
+  z.letzt = s; z.letztH = h;
+  try {
+    document.querySelectorAll('[data-n9b]').forEach(b => {
+      const r = b.getAttribute('data-n9b');
+      if (b.classList) b.classList.toggle('primary', r === z.reiz);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9b-los');
+  if (los && los.classList) los.classList.toggle('primary', z.phase !== 'laeuft');
+}
+function _n9bHTML() {
+  const k = r => `<button class="sim-btn${r === 'licht' ? ' primary' : ''}" data-n9b="${r}" onclick="_n9bReiz('${r}')">${_N9B_REIZE[r].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie kommt ein Reiz ins Gehirn?</h3>
+    <div class="fpm-note" style="margin-top:2px">Lina sitzt im Kino. Ihr Kopf ist offen gezeichnet. So siehst du ihr Gehirn (grau). Stelle einen Reiz ein und sende ihn los.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9b-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9b-los" onclick="_n9bSenden()">▶ Reiz senden</button>
+          <button class="sim-btn" onclick="_n9bNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Reiz</span>
+          <div class="sim-btn-row">${_N9B_REIHE.map(k).join('')}</div>
+        </div>
+        <div class="fpm-label" style="margin-top:10px">Was nimmt Lina wahr?</div>
+        <div class="lmp-status on" id="_n9b-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9b-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die kleinen Punkte in Auge, Ohr und Haut leuchten auf, wenn ein Reiz sie trifft.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Reiz „Licht“ &nbsp;|&nbsp; Der Lichtpunkt ist stark verlangsamt. In echt geht alles viel schneller.</p>
+  </div>`;
+}
+
+// ── Ablauf ────────────────────────────────────────────────────────────────
+function _n9bUpdate(dt) {
+  if (!_n9b) return;
+  dt = _bioFxDt(dt);
+  const z = _n9b;
+  z.t += dt;
+  // Deniz' Arm gleitet bei „Berührung“ ins Bild, sonst hinaus
+  const soll = z.reiz === 'beruehrung' ? 1 : 0;
+  if (z.deniz < soll) z.deniz = Math.min(soll, z.deniz + dt / 0.5);
+  else if (z.deniz > soll) z.deniz = Math.max(soll, z.deniz - dt / 0.4);
+  if (z.phase === 'laeuft') {
+    z.s += dt;
+    if (z.s >= _N9B_T.ANKUNFT) _n9bAngekommen();
+  } else if (z.phase === 'da') {
+    z.da += dt;
+  }
+  if (z.ueber) {
+    const u = z.ueber;
+    u.alter += dt;
+    if (u.alter >= 0 && !u.wellen) {
+      u.wellen = true;
+      _N9B_REIHE.filter(r => r !== z.reiz).forEach(r => {
+        const m = _n9bStellenMitte(r);
+        _bioFxWelle(z.fx.teile, m[0], m[1], '#fde68a', 30);
+      });
+    }
+    if (u.alter >= _N9B_UEBER) z.ueber = null;
+  }
+  if (_n9bZeile() !== z.letzt || _n9bHinweis() !== z.letztH) _n9bStatus();
+  _bioFxAlleUpdate(z.fx, dt);
+}
+function _n9bAngekommen() {
+  const z = _n9b;
+  z.phase = 'da'; z.s = _N9B_T.ANKUNFT; z.da = 0;
+  z.gesehen[z.reiz] = true;
+  const m = _n9bStellenMitte(z.reiz);
+  _bioFxWelle(z.fx.teile, m[0], m[1], '#fde047', 36);
+  _bioFxFunken(z.fx.teile, m[0], m[1], 7, ['#fde047', '#fff7c2', '#ffffff']);
+  if (_n9bAlleGesehen() && !z.ueberGezeigt) {
+    z.ueberGezeigt = true;
+    z.ueber = { alter: -0.9, wellen: false };          // erst hinsehen, dann der Ueberblick
+  }
+  _n9bStatus();
+}
+
+// ── Geometrie ─────────────────────────────────────────────────────────────
+function _n9bStellenMitte(r) {
+  const st = _N9B_STELLE[r];
+  if (st.art === 'oval') return [st.x, st.y];
+  const p = st.p;
+  return [(p[1][0] + p[2][0]) / 2, (p[1][1] + p[2][1]) / 2];
+}
+function _n9bLaenge(weg) {
+  let L = 0;
+  for (let i = 1; i < weg.length; i++) L += Math.hypot(weg[i][0] - weg[i - 1][0], weg[i][1] - weg[i - 1][1]);
+  return L;
+}
+// Punkt bei Anteil u (0..1) der Weglaenge
+function _n9bPunkt(weg, u) {
+  let rest = _n9bLaenge(weg) * _bioFxKlemme(u);
+  for (let i = 1; i < weg.length; i++) {
+    const a = weg[i - 1], b = weg[i], l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (rest <= l || i === weg.length - 1) {
+      const k = l > 0 ? Math.min(1, rest / l) : 0;
+      return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+    }
+    rest -= l;
+  }
+  return weg[weg.length - 1].slice();
+}
+// Weg bis zum Anteil u als Linie
+function _n9bWegZeichnen(ctx, weg, u) {
+  const L = _n9bLaenge(weg) * _bioFxKlemme(u);
+  let rest = L;
+  ctx.beginPath(); ctx.moveTo(weg[0][0], weg[0][1]);
+  for (let i = 1; i < weg.length; i++) {
+    const a = weg[i - 1], b = weg[i], l = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (rest >= l) { ctx.lineTo(b[0], b[1]); rest -= l; continue; }
+    const k = l > 0 ? rest / l : 0;
+    ctx.lineTo(a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k);
+    break;
+  }
+  ctx.stroke();
+}
+
+// ── Zeichnen: Saal, Leinwand, Lautsprecher ────────────────────────────────
+function _n9bSaal(ctx, W, H, t, blitz) {
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#1e2340'); bg.addColorStop(1, '#10131f');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  // Licht der Leinwand faellt weich in den Saal
+  const g = ctx.createRadialGradient(64, 42, 10, 64, 42, 190);
+  g.addColorStop(0, 'rgba(191,219,254,' + (0.16 + 0.22 * blitz).toFixed(3) + ')');
+  g.addColorStop(1, 'rgba(191,219,254,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(64, 42, 190, 0, 2 * Math.PI); ctx.fill();
+}
+function _n9bLeinwand(ctx, t, blitz) {
+  ctx.save();
+  ctx.fillStyle = '#0b0d18'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 8, 8, 112, 68, 3); ctx.fill(); ctx.stroke();
+  const x0 = 12, y0 = 12, w = 104, h = 60;
+  const himmel = ctx.createLinearGradient(0, y0, 0, y0 + h);
+  himmel.addColorStop(0, '#7dd3fc'); himmel.addColorStop(1, '#e0f2fe');
+  ctx.fillStyle = himmel; ctx.fillRect(x0, y0, w, h);
+  ctx.fillStyle = '#fde68a';
+  ctx.beginPath(); ctx.arc(98, 24, 6.5, 0, 2 * Math.PI); ctx.fill();
+  // Wolke zieht langsam ueber den Himmel (bleibt in der Leinwand)
+  const wx = x0 + 14 + ((t * 5) % 72), wa = Math.min(1, (wx - x0 - 10) / 10, (x0 + w - 12 - wx) / 10);
+  if (wa > 0) {
+    ctx.globalAlpha = wa;
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.ellipse(wx, 25, 9, 4.5, 0, 0, 2 * Math.PI);
+    ctx.ellipse(wx + 7, 22, 6, 4, 0, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+  // Huegel und ein Baum
+  ctx.fillStyle = '#4ade80';
+  ctx.beginPath(); ctx.moveTo(x0, y0 + 44);
+  ctx.quadraticCurveTo(x0 + 30, y0 + 28, x0 + 60, y0 + 42);
+  ctx.quadraticCurveTo(x0 + 84, y0 + 32, x0 + w, y0 + 40);
+  ctx.lineTo(x0 + w, y0 + h); ctx.lineTo(x0, y0 + h); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#16a34a';
+  ctx.beginPath(); ctx.moveTo(x0, y0 + 54);
+  ctx.quadraticCurveTo(x0 + 50, y0 + 42, x0 + w, y0 + 56);
+  ctx.lineTo(x0 + w, y0 + h); ctx.lineTo(x0, y0 + h); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#92400e'; ctx.fillRect(x0 + 26, y0 + 30, 3, 10);
+  ctx.fillStyle = '#15803d';
+  ctx.beginPath(); ctx.arc(x0 + 27.5, y0 + 28, 7, 0, 2 * Math.PI); ctx.fill();
+  if (blitz > 0.01) {                                  // eine helle Szene
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.55 * blitz).toFixed(3) + ')';
+    ctx.fillRect(x0, y0, w, h);
+  }
+  ctx.restore();
+}
+function _n9bLautsprecher(ctx, t, schwingt) {
+  const x = 18, y = 100, w = 40, h = 46;
+  const zit = schwingt > 0 ? Math.sin(t * 2 * Math.PI * 9) * 1.4 * schwingt : 0;
+  ctx.save();
+  ctx.fillStyle = '#334155'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y, w, h, 5); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#0f172a'; ctx.strokeStyle = '#94a3b8';
+  ctx.beginPath(); ctx.arc(x + w / 2, y + 15, 9 + zit, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(x + w / 2, y + 35, 5.5 + zit * 0.6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#475569';
+  ctx.beginPath(); ctx.arc(x + w / 2, y + 15, 3, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Schallboegen vom Lautsprecher Richtung Ohr. nahe = nur das Stueck am Ohr.
+function _n9bSchall(ctx, s, nahe) {
+  const qx = 58, qy = 115, zx = 252, zy = 147;
+  const D = Math.hypot(zx - qx, zy - qy), rw = Math.atan2(zy - qy, zx - qx);
+  ctx.save();
+  ctx.lineCap = 'round';
+  for (let j = 0; j < 3; j++) {
+    const p = (s - j * 0.14) / 0.62;
+    if (p <= 0 || p >= 1.08) continue;
+    const r = Math.min(1, p) * D;
+    const a = nahe ? (r > D - 26 ? 0.9 : 0) : Math.max(0, 0.85 - 0.35 * p);
+    if (a <= 0.02) continue;
+    const off = nahe ? 0.055 : 0.2;
+    ctx.strokeStyle = 'rgba(147,197,253,' + a.toFixed(3) + ')';
+    ctx.lineWidth = nahe ? 2.6 : 2.4;
+    ctx.beginPath(); ctx.arc(qx, qy, Math.max(2, r), rw - off, rw + off); ctx.stroke();
+  }
+  ctx.restore();
+}
+// Lichtstrahlen von der Leinwand ins Auge
+function _n9bLicht(ctx, s) {
+  const zx = 187, zy = 102;
+  ctx.save();
+  ctx.lineCap = 'round';
+  for (let i = 0; i < 6; i++) {
+    const sx = 120, sy = 18 + i * 10;
+    const p = _bioFxKlemme((s - i * 0.04) / 0.6);
+    const ein = _bioFxKlemme(s / 0.15), aus = 1 - _bioFxKlemme((s - 0.7) / 0.25);
+    ctx.strokeStyle = 'rgba(254,249,195,' + (0.28 * ein * aus).toFixed(3) + ')';
+    ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(zx, zy); ctx.stroke();
+    if (p > 0 && p < 1) {
+      const x = sx + (zx - sx) * p, y = sy + (zy - sy) * p;
+      const dx = (zx - sx), dy = (zy - sy), l = Math.hypot(dx, dy);
+      ctx.strokeStyle = 'rgba(255,251,214,0.95)'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(x - dx / l * 9, y - dy / l * 9); ctx.lineTo(x, y); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+// ── Zeichnen: Lina ────────────────────────────────────────────────────────
+function _n9bKopfPfad(ctx) {
+  ctx.beginPath();
+  ctx.moveTo(268, 10);                                   // Scheitel
+  ctx.bezierCurveTo(322, 10, 360, 50, 360, 100);         // Hinterkopf
+  ctx.bezierCurveTo(360, 142, 340, 168, 316, 182);       // Nacken
+  ctx.lineTo(314, 212);                                  // Hals, hinten
+  ctx.lineTo(252, 212);
+  ctx.lineTo(250, 194);                                  // Hals, vorn
+  ctx.quadraticCurveTo(232, 180, 204, 177);              // unter dem Kinn
+  ctx.quadraticCurveTo(186, 174, 182, 164);              // Kinn
+  ctx.quadraticCurveTo(178, 157, 177, 151);
+  ctx.quadraticCurveTo(171, 147, 175, 142);              // Unterlippe
+  ctx.quadraticCurveTo(170, 138, 174, 134);              // Oberlippe
+  ctx.lineTo(172, 127);
+  ctx.quadraticCurveTo(162, 125, 159, 119);              // Nasenspitze
+  ctx.quadraticCurveTo(170, 104, 180, 92);               // Nasenruecken
+  ctx.quadraticCurveTo(176, 84, 178, 76);                // Braue
+  ctx.bezierCurveTo(180, 38, 214, 10, 268, 10);          // Stirn
+  ctx.closePath();
+}
+function _n9bGehirnPfad(ctx) {
+  ctx.beginPath();
+  ctx.moveTo(190, 84);
+  ctx.bezierCurveTo(180, 60, 196, 26, 240, 21);
+  ctx.bezierCurveTo(276, 14, 318, 22, 340, 46);
+  ctx.bezierCurveTo(356, 62, 358, 84, 352, 100);
+  ctx.bezierCurveTo(348, 110, 338, 114, 326, 112);
+  ctx.bezierCurveTo(312, 118, 296, 126, 280, 128);
+  ctx.bezierCurveTo(262, 130, 244, 128, 236, 120);
+  ctx.bezierCurveTo(228, 112, 228, 100, 236, 94);
+  ctx.bezierCurveTo(226, 90, 206, 92, 190, 84);
+  ctx.closePath();
+}
+function _n9bKoerper(ctx) {
+  ctx.save();
+  // Kinosessel hinter Lina
+  ctx.fillStyle = '#5b1720'; ctx.strokeStyle = '#7f1d2d'; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, 334, 132, 80, 130, 18); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#6d1b28';
+  _bioFxRundRect(ctx, 344, 142, 60, 110, 12); ctx.fill();
+  // Oberkoerper
+  ctx.fillStyle = '#0f766e'; ctx.strokeStyle = '#115e59'; ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(232, 252); ctx.lineTo(234, 222);
+  ctx.quadraticCurveTo(238, 205, 260, 203);
+  ctx.lineTo(318, 203);
+  ctx.quadraticCurveTo(348, 205, 352, 226);
+  ctx.lineTo(354, 252); ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _n9bHaare(ctx, t) {
+  ctx.save();
+  ctx.fillStyle = '#4a2c1d';
+  // Pferdeschwanz, schwingt leicht
+  const sw = Math.sin(t * 1.3) * 0.06;
+  ctx.save(); ctx.translate(356, 58); ctx.rotate(-0.5 + sw);
+  ctx.beginPath(); ctx.ellipse(0, 30, 9, 30, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#f472b6';
+  _bioFxRundRect(ctx, -7, 4, 14, 6, 3); ctx.fill();
+  ctx.fillStyle = '#4a2c1d';
+  ctx.restore();
+  ctx.beginPath();
+  ctx.moveTo(180, 74);
+  ctx.bezierCurveTo(178, 30, 214, 4, 268, 4);
+  ctx.bezierCurveTo(326, 4, 366, 46, 366, 100);
+  ctx.bezierCurveTo(366, 140, 350, 160, 330, 172);
+  ctx.lineTo(320, 150); ctx.lineTo(200, 60); ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+function _n9bKopf(ctx, t) {
+  ctx.save();
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#b9825a'; ctx.lineWidth = 1.6;
+  _n9bKopfPfad(ctx); ctx.fill(); ctx.stroke();
+  // offen: Knochenrand um Gehirn, Kleinhirn und Hirnstamm
+  ctx.strokeStyle = '#f6ead7'; ctx.lineWidth = 9; ctx.lineJoin = 'round';
+  _n9bGehirnPfad(ctx); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(322, 122, 21, 11, 0.1, 0, 2 * Math.PI); ctx.stroke();
+  ctx.lineWidth = 6;
+  _bioFxRundRect(ctx, 291, 112, 12, 70, 6); ctx.stroke();
+  // Rueckenmark im Hals (offen)
+  ctx.fillStyle = '#f6ead7';
+  _bioFxRundRect(ctx, 293, 176, 10, 36, 4); ctx.fill();
+  ctx.fillStyle = '#e2e4e9';
+  _bioFxRundRect(ctx, 295.5, 176, 5, 36, 2.5); ctx.fill();
+  // Hirnstamm
+  ctx.fillStyle = '#e2e4e9'; ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, 291, 112, 12, 70, 6); ctx.fill(); ctx.stroke();
+  // Kleinhirn
+  ctx.beginPath(); ctx.ellipse(322, 122, 21, 11, 0.1, 0, 2 * Math.PI);
+  ctx.fillStyle = '#dcdfe5'; ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#b6bbc4'; ctx.lineWidth = 1;
+  for (const k of [-5, 0, 5]) {
+    ctx.beginPath(); ctx.ellipse(322, 122 + k, 17 - Math.abs(k), 2.5, 0.1, Math.PI * 0.05, Math.PI * 0.95); ctx.stroke();
+  }
+  // Grosshirn, hellgrau, ohne Beschriftung
+  ctx.fillStyle = '#e5e7eb'; ctx.strokeStyle = '#9ca3af'; ctx.lineWidth = 1.6;
+  _n9bGehirnPfad(ctx); ctx.fill(); ctx.stroke();
+  // Furchen als feine Linien
+  ctx.strokeStyle = '#b3b8c2'; ctx.lineWidth = 1.3; ctx.lineCap = 'round';
+  const linie = (pts) => {
+    ctx.beginPath(); ctx.moveTo(pts[0], pts[1]);
+    for (let i = 2; i < pts.length; i += 4) ctx.quadraticCurveTo(pts[i], pts[i + 1], pts[i + 2], pts[i + 3]);
+    ctx.stroke();
+  };
+  linie([236, 96, 270, 86, 306, 76]);                    // seitliche Furche
+  linie([280, 20, 274, 38, 268, 54, 262, 70, 258, 80]);  // Zentralfurche
+  linie([202, 50, 220, 42, 236, 52]);
+  linie([204, 70, 226, 62, 246, 72]);
+  linie([230, 30, 246, 40, 252, 60]);
+  linie([302, 40, 316, 48, 330, 42]);
+  linie([304, 62, 320, 70, 336, 62]);
+  linie([316, 86, 326, 96, 340, 104]);
+  linie([248, 122, 274, 116, 302, 118]);
+  ctx.restore();
+}
+function _n9bGesicht(ctx, t) {
+  ctx.save();
+  // Augenbraue, Nasenloch, Mund
+  ctx.strokeStyle = '#6b4226'; ctx.lineWidth = 2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(180, 88); ctx.quadraticCurveTo(188, 85, 196, 88); ctx.stroke();
+  ctx.strokeStyle = '#b9825a'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(166, 123); ctx.quadraticCurveTo(170, 124, 172, 122); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(175, 142); ctx.lineTo(183, 142); ctx.stroke();
+  // Auge, offen gezeichnet: Augapfel mit Linse vorn und Netzhaut hinten
+  const a = _N9B_AUGE;
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#f9a8a8'; ctx.lineWidth = 2;                  // Netzhaut
+  ctx.beginPath(); ctx.arc(a.x, a.y, a.r - 1.6, -1.15, 1.15); ctx.stroke();
+  ctx.fillStyle = '#7c5a3a';                                       // Iris
+  ctx.beginPath(); ctx.ellipse(a.x - a.r + 1.4, a.y, 1.8, 4.6, 0, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = 'rgba(186,230,253,0.9)'; ctx.strokeStyle = '#7dd3fc'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(a.x - a.r + 4.2, a.y, 1.8, 3.6, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Lid und Wimpern auf dem Profil (blinzelt selten)
+  const zu = (t % 5.2) > 5.05 ? 1 : 0;
+  ctx.strokeStyle = '#4a2c1d'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.arc(a.x, a.y, a.r + 1.5, Math.PI * 0.82, Math.PI * 1.22); ctx.stroke();
+  if (zu) {
+    ctx.fillStyle = '#f2c9a0';
+    ctx.beginPath(); ctx.arc(a.x, a.y, a.r + 0.5, Math.PI * 0.7, Math.PI * 1.3); ctx.closePath(); ctx.fill();
+  }
+  ctx.beginPath(); ctx.moveTo(a.x - a.r, a.y - 4); ctx.lineTo(a.x - a.r - 4, a.y - 6); ctx.stroke();
+  ctx.restore();
+}
+function _n9bOhr(ctx) {
+  ctx.save();
+  // Ohrmuschel
+  ctx.fillStyle = '#e8b48c'; ctx.strokeStyle = '#b77b52'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.ellipse(256, 146, 8, 14, 0.08, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(257, 145, 4.5, 9, 0.08, Math.PI * 1.2, Math.PI * 2.6); ctx.stroke();
+  ctx.fillStyle = '#9a5b36';
+  ctx.beginPath(); ctx.ellipse(258, 148, 1.8, 2.6, 0, 0, 2 * Math.PI); ctx.fill();
+  // Gehoergang und Schnecke (offen)
+  const s = _N9B_SCHNECKE;
+  ctx.fillStyle = '#f6ead7';
+  ctx.beginPath(); ctx.arc(s.x, s.y, s.r + 4, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#f6ead7'; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(260, 148); ctx.lineTo(s.x - s.r, s.y); ctx.stroke();
+  ctx.strokeStyle = '#d9a48a'; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+  ctx.beginPath();
+  for (let th = 0; th <= 2.4 * Math.PI; th += 0.2) {
+    const r = s.r * (1 - 0.7 * th / (2.4 * Math.PI)), x = s.x + r * Math.cos(th + Math.PI), y = s.y + r * Math.sin(th + Math.PI);
+    if (th === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+function _n9bArm(ctx) {
+  ctx.save();
+  // Armlehne
+  ctx.fillStyle = '#4c1520'; ctx.strokeStyle = '#7f1d2d'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, 120, 226, 214, 9, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#3b1018'; ctx.fillRect(318, 235, 10, 15);
+  // Oberarm und Unterarm im Aermel
+  ctx.lineCap = 'round'; ctx.strokeStyle = '#115e59'; ctx.lineWidth = 15;
+  ctx.beginPath(); ctx.moveTo(302, 208); ctx.lineTo(290, 219); ctx.lineTo(210, 219); ctx.stroke();
+  ctx.strokeStyle = '#0f766e'; ctx.lineWidth = 12.5;
+  ctx.beginPath(); ctx.moveTo(302, 208); ctx.lineTo(290, 219); ctx.lineTo(210, 219); ctx.stroke();
+  // Hand: Ruecken nach oben, Finger auf der Lehne
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#b9825a'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.ellipse(190, 219, 17, 7, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  for (let i = 0; i < 4; i++) {
+    const y = 216 + i * 2.6;
+    ctx.beginPath(); ctx.moveTo(176, y); ctx.lineTo(163 + i, y + 1.5);
+    ctx.lineWidth = 3.4; ctx.strokeStyle = '#b9825a'; ctx.stroke();
+    ctx.lineWidth = 2; ctx.strokeStyle = '#f2c9a0'; ctx.stroke();
+  }
+  ctx.fillStyle = '#f2c9a0'; ctx.strokeStyle = '#b9825a'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.ellipse(198, 223, 6, 3, -0.2, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// Deniz' Arm von links; Fingerspitze bei (tx, ty)
+function _n9bDeniz(ctx, tx, ty, a) {
+  ctx.save();
+  ctx.globalAlpha = a;
+  ctx.translate(tx, ty); ctx.rotate(0.05);
+  ctx.fillStyle = '#2563eb'; ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 1.4;
+  _bioFxRundRect(ctx, -240, -18, 196, 17, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#c98b5e'; ctx.strokeStyle = '#8a5a36';
+  _bioFxRundRect(ctx, -48, -19, 30, 19, 8); ctx.fill(); ctx.stroke();
+  _bioFxRundRect(ctx, -22, -8.5, 23, 7.5, 3.6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#ffffff'; ctx.font = '700 11px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Deniz', -96, -5.5);
+  ctx.restore();
+}
+
+// ── Zeichnen: Leuchten ────────────────────────────────────────────────────
+function _n9bGlut(ctx, x, y, r, a) {
+  const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+  g.addColorStop(0, 'rgba(253,224,71,' + (0.55 * a).toFixed(3) + ')');
+  g.addColorStop(1, 'rgba(253,224,71,0)');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fill();
+}
+// Stelle im Gehirn: hell (a = Deckkraft) oder gestrichelt (Ueberblick)
+function _n9bStelle(ctx, r, a, puls, strich) {
+  const st = _N9B_STELLE[r];
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  if (st.art === 'oval') {
+    if (!strich) _n9bGlut(ctx, st.x, st.y, Math.max(st.rx, st.ry) * (1.35 + 0.12 * puls), 0.8 + 0.2 * puls);
+    ctx.beginPath(); ctx.ellipse(st.x, st.y, st.rx, st.ry, st.w, 0, 2 * Math.PI);
+    ctx.fillStyle = strich ? 'rgba(253,224,71,0.28)' : '#fde047'; ctx.fill();
+    ctx.strokeStyle = '#eab308'; ctx.lineWidth = strich ? 2 : 1.6;
+    if (strich) ctx.setLineDash([4, 3]);
+    ctx.stroke(); ctx.setLineDash([]);
+  } else {
+    const p = st.p;
+    const band = (lw, farbe) => {
+      ctx.strokeStyle = farbe; ctx.lineWidth = lw; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]);
+      for (let i = 1; i < p.length; i++) ctx.lineTo(p[i][0], p[i][1]);
+      ctx.stroke();
+    };
+    if (strich) {
+      band(st.b, 'rgba(253,224,71,0.28)');
+      ctx.setLineDash([4, 3]); band(2, '#eab308'); ctx.setLineDash([]);
+    } else {
+      band(st.b + 9 + 3 * puls, 'rgba(253,224,71,' + (0.22 + 0.1 * puls).toFixed(3) + ')');
+      band(st.b + 2, '#eab308');
+      band(st.b - 1, '#fde047');
+    }
+  }
+  ctx.restore();
+}
+function _n9bPunkte(ctx, r, n, t) {
+  const pts = _N9B_PUNKTE[r];
+  ctx.save();
+  for (let i = 0; i < pts.length; i++) {
+    const an = i < n;
+    if (an) _n9bGlut(ctx, pts[i][0], pts[i][1], 5.5, 0.9);
+    ctx.fillStyle = an ? '#facc15' : (r === 'licht' ? '#e47d7d' : r === 'ton' ? '#b9785c' : '#c99474');
+    ctx.beginPath(); ctx.arc(pts[i][0], pts[i][1], an ? 2.1 : 1.6, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+
+// ── Draw ──────────────────────────────────────────────────────────────────
+function _n9bDraw(ctx, cv) {
+  if (!_n9b) return;
+  const z = _n9b, W = cv.width, H = cv.height, t = z.t, r = z.reiz;
+  const lauf = z.phase === 'laeuft', s = lauf ? z.s : (z.phase === 'da' ? _N9B_T.ANKUNFT : 0);
+  const imReiz = lauf && s < _N9B_T.REIZ;
+  const blitz = (r === 'licht' && imReiz) ? Math.sin(Math.PI * _bioFxKlemme(s / _N9B_T.REIZ)) : 0;
+  ctx.clearRect(0, 0, W, H);
+  _n9bSaal(ctx, W, H, t, blitz);
+  _n9bLeinwand(ctx, t, blitz);
+  _n9bLautsprecher(ctx, t, (r === 'ton' && imReiz) ? 1 : 0);
+  if (r === 'ton' && imReiz) _n9bSchall(ctx, s, false);
+
+  _n9bKoerper(ctx);
+  _n9bHaare(ctx, t);
+  _n9bKopf(ctx, t);
+  _n9bGesicht(ctx, t);
+  _n9bOhr(ctx);
+  _n9bArm(ctx);
+
+  // Wie viele Punkte im Sinnesorgan leuchten?
+  const nPunkte = _N9B_PUNKTE[r].length;
+  const n = s < _N9B_T.REIZ ? 0 : Math.min(nPunkte, 1 + Math.floor((s - _N9B_T.REIZ) / 0.09));
+  const anOrgan = n > 0;
+
+  // Ueberblick nach allen drei Reizen: die beiden anderen Wege und Stellen gestrichelt
+  if (z.ueber && z.ueber.alter > 0) {
+    const u = z.ueber.alter;
+    const a = _bioFxKlemme(u / 0.4) * (1 - _bioFxKlemme((u - (_N9B_UEBER - 0.8)) / 0.8));
+    for (const o of _N9B_REIHE) {
+      if (o === r) continue;
+      ctx.save(); ctx.globalAlpha = 0.75 * a;
+      ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]);
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      _n9bWegZeichnen(ctx, _N9B_WEG[o], 1);
+      ctx.restore();
+      _n9bStelle(ctx, o, a, 0, true);
+    }
+  }
+
+  // Nerv: erst sichtbar, wenn der Lichtpunkt losgeht; Spur bleibt gelb
+  if (s >= _N9B_T.ZELLEN) {
+    const weg = _N9B_WEG[r], u = (s - _N9B_T.ZELLEN) / (_N9B_T.ANKUNFT - _N9B_T.ZELLEN);
+    ctx.save();
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.strokeStyle = 'rgba(250,204,21,0.3)'; ctx.lineWidth = 2;
+    _n9bWegZeichnen(ctx, weg, 1);
+    ctx.strokeStyle = 'rgba(250,204,21,' + (lauf ? 0.95 : 0.7).toFixed(2) + ')'; ctx.lineWidth = 3;
+    _n9bWegZeichnen(ctx, weg, u);
+    ctx.restore();
+    if (lauf) {
+      const p = _n9bPunkt(weg, u);
+      ctx.save();
+      _n9bGlut(ctx, p[0], p[1], 13, 1);
+      ctx.fillStyle = '#facc15'; ctx.strokeStyle = '#fffbeb'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(p[0], p[1], 4.6, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+  }
+  // Stelle im Gehirn: leuchtet auf und bleibt hell
+  if (z.phase === 'da') {
+    const puls = 0.5 + 0.5 * Math.sin(t * 2 * Math.PI * 0.8);
+    _n9bStelle(ctx, r, _bioFxKlemme(z.da / 0.35), puls, false);
+  }
+  // Sinnesorgan: Glanz und Punkte
+  if (anOrgan) {
+    ctx.save();
+    const g = r === 'licht' ? [_N9B_AUGE.x, _N9B_AUGE.y, 15] : r === 'ton' ? [268, 147, 17] : [189, 217, 19];
+    _n9bGlut(ctx, g[0], g[1], g[2], 0.7);
+    ctx.restore();
+  }
+  _n9bPunkte(ctx, r, n, t);
+
+  // Reiz, der gerade ankommt (vorn)
+  if (r === 'licht' && imReiz) _n9bLicht(ctx, s);
+  if (r === 'ton' && imReiz) _n9bSchall(ctx, s, true);
+  if (z.deniz > 0.001) {
+    const ein = _bioFxEase.sanft(z.deniz);
+    let tx = _N9B_TIPP[0] - 14 + Math.sin(t * 1.6) * 1.5, ty = _N9B_TIPP[1] - 14 + Math.cos(t * 1.3) * 1.2;
+    if (r === 'beruehrung' && lauf) {
+      const hin = _bioFxEase.sanft(_bioFxKlemme(s / 0.4));
+      const weg = _bioFxEase.sanft(_bioFxKlemme((s - _N9B_T.ZELLEN) / 0.5));
+      const k = hin * (1 - weg);
+      tx += (_N9B_TIPP[0] - tx) * k; ty += (_N9B_TIPP[1] - ty) * k;
+      if (s > 0.4 && s < 0.75) {
+        ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,' + (0.8 * (1 - (s - 0.4) / 0.35)).toFixed(3) + ')';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.arc(_N9B_TIPP[0], _N9B_TIPP[1], 4 + (s - 0.4) * 30, 0, 2 * Math.PI); ctx.stroke();
+        ctx.restore();
+      }
+    }
+    _n9bDeniz(ctx, tx - (1 - ein) * 230, ty, Math.min(1, ein * 1.5));
+  }
+
+  // Beschriftung (das Gehirn bleibt ohne)
+  ctx.save();
+  ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'center';
+  ctx.fillStyle = '#cbd5e1'; ctx.font = '600 10px sans-serif';
+  ctx.fillText('Leinwand', 64, 89);
+  ctx.fillText('Lautsprecher', 38, 160);
+  ctx.font = '700 11px sans-serif';
+  ctx.fillText('Auge', 144, 108);
+  ctx.strokeStyle = 'rgba(203,213,225,0.7)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(158, 105); ctx.lineTo(184, 103); ctx.stroke();
+  ctx.fillText('Haut der Hand', 186, 247);
+  ctx.fillStyle = '#7c4a2a';
+  ctx.fillText('Ohr', 256, 177);
+  ctx.fillStyle = '#ecfdf5';
+  ctx.fillText('Lina', 282, 247);
+  ctx.restore();
+
+  _bioFxAlleDraw(ctx, z.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · DIE LÜCKE ZWISCHEN ZWEI ZELLEN   (Förderheft Bio 9 · br4)
+// Kennung bio-synapse, Präfix _n9d. Bauplan: arbeitsheft_bio_foe9/einheiten/
+// br4.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 250, OHNE jede Beschriftung im Bild):
+//   - links das verdickte Ende einer Nervenfaser (blassblau). Darin sechs runde
+//     Bläschen mit zusammen 20 violetten Kügelchen (4 + 3 + 3 + 3 + 3 + 4).
+//   - in der Mitte die schmale Lücke (30 Bildpunkte, überall gleich breit:
+//     beide Zellränder sind Bögen um denselben Mittelpunkt).
+//   - rechts der Dendrit der nächsten Nervenzelle (blassgrün), sein Rand trägt
+//     20 violette Mulden (Andockstellen), in die ein Kügelchen genau passt
+//     (Mulde 3,5, Kügelchen 3,0 Bildpunkte Radius, gleiche Farbe).
+//   Die rechte Zelle hat KEINE Bläschen.
+//
+// BEDIENUNG (wörtlich):
+//   Versuch: „normal“ · „Bläschen leer“ · „Erregung von rechts“
+//            (Wahlgruppe _n9dVersuch('normal'|'leer'|'rechts'))
+//   „▶ Erregung senden“ (_n9dSenden) · „neu“ (_n9dNeu → Versuch normal)
+//
+// ABLAUF NACH „▶ Erregung senden“ (alles stark verlangsamt, Zeiten in s):
+//   normal        0–1,8  gelber Lichtpunkt läuft von links bis vorn in das
+//                        verdickte Ende, seine Spur bleibt hell
+//                 1,8    er erlischt dort, der vordere Rand leuchtet auf
+//                 2,0–3,0 die Bläschen wandern an den Rand, 3,0–3,4 sie
+//                        öffnen sich zur Lücke hin, 4,6–5,2 schließen sie
+//                        sich wieder (leer) – der Rand ist danach wieder ganz
+//                 3,3–5,35 die 20 Kügelchen fliegen einzeln hinüber und
+//                        setzen sich in die Mulden (jede Mulde leuchtet kurz)
+//                 5,6    der rechte Rand leuchtet auf
+//                 5,8–7,4 ein NEUER gelber Lichtpunkt läuft rechts weiter
+//                        und verlässt das Bild; Ende bei 7,7
+//   Bläschen leer Bläschen grau und leer. Lichtpunkt, Rand, Wandern und
+//                 Öffnen und Schließen wie bei normal (nur EINE Bedingung
+//                 ist anders), aber nichts fliegt; 4,4 ruhiger grauer Ring in
+//                 der Lücke; rechts bleibt alles dunkel. Ende bei 5,4
+//   Erregung von  Lichtpunkt läuft von rechts bis an die Lücke (0–1,8) und
+//   rechts        erlischt dort (grauer Ring); nichts fliegt; links bleibt
+//                 alles dunkel. Ende bei 3,0
+//   Das Endbild bleibt stehen, bis man umstellt oder neu sendet: Spur(en),
+//   angedockte Kügelchen, Bläschen am Rand – so ist das Ergebnis am Ende noch
+//   ablesbar. Gegengerechnet (Mini-DOM, alle drei Versuche, mit Gegenproben):
+//   20 von 20 angedockt bei 5,36 s, also vor dem neuen Lichtpunkt (5,8 s);
+//   leer und von rechts: 0 Kügelchen im Flug, die andere Seite bleibt dunkel.
+//
+// STATUSZEILE (_n9d-status) nennt NUR den Versuch, nie das Ergebnis:
+//   „Versuch: normal“ · „Versuch: Bläschen leer“ · „Versuch: Erregung von rechts“
+// HINWEIS (_n9d-hinweis), in allen drei Versuchen dieselben Sätze:
+//   vorher   „Versuch „…“: Drücke „▶ Erregung senden“.“
+//   unterwegs „Die Erregung ist unterwegs. Sieh genau auf die Lücke in der Mitte.“
+//   danach   „Fertig. Trage „ja“ oder „nein“ in die Tabelle ein. Stelle dann
+//            einen anderen Versuch ein.“
+//   („Versuch: normal“ hat nur 15 Zeichen – simfakten.js nimmt erst Felder
+//   über 18 Zeichen in den Dump. Der Hinweis trägt den Versuchsnamen deshalb
+//   mit, die Statuszeile bleibt wörtlich wie im Bauplan.)
+//
+// WERTE (lehrer.tabelle_erwartet, am Bild abzulesen):
+//   normal              Kügelchen fliegen hinüber: ja · neuer Lichtpunkt rechts: ja
+//   Bläschen leer       keine Kügelchen: nein · rechts bleibt dunkel: nein
+//   Erregung von rechts keine Kügelchen: nein · erlischt an der Lücke: nein
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen, OHNE Funken – „Funke“ ist die
+//   Fehlvorstellung aus predict, deshalb nur Lichtringe): Die Kügelchen fliegen
+//   langsam und einzeln über die Lücke, kein Blitz; jede Mulde leuchtet beim
+//   Andocken auf, erst danach startet rechts der neue Lichtpunkt. Leer: ein
+//   grauer Ring mitten in der Lücke. Von rechts: ein grauer Ring dort, wo der
+//   Lichtpunkt erlischt.
+//
+// NICHT AM BILDSCHIRM: „Synapse“, „Botenstoff“, „Spalt“, „Endknöpfchen“,
+//   „Einbahnstraße“, „nicht“, „Funke“; kein Blitz. Deterministisch, ohne Zufall.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9d = null;
+const _N9D_VERSUCH = { normal: 'normal', leer: 'Bläschen leer', rechts: 'Erregung von rechts' };
+const _N9D_CX = -20, _N9D_CY = 125;     // gemeinsamer Mittelpunkt beider Randbögen
+const _N9D_RB = 222;                    // vorderer Rand links  (vorn bei x = 202)
+const _N9D_RR = 252;                    // vorderer Rand rechts (vorn bei x = 232)
+const _N9D_AE = 0.40;                   // halber Öffnungswinkel der Randbögen
+const _N9D_KR = 3.0;                    // Kügelchen
+const _N9D_MR = 3.5;                    // Mulde
+const _N9D_BR = 13;                     // Bläschen
+const _N9D_N = 20;                      // Kügelchen = Mulden
+const _N9D_HG = '#eef2f6';              // Flüssigkeit zwischen den Zellen
+// Bläschen: Ruhelage, Zahl der Kügelchen, Höhe am Rand beim Öffnen
+const _N9D_BL = [
+  { x: 164, y: 56,  n: 4, zy: 54 },
+  { x: 148, y: 84,  n: 3, zy: 79 },
+  { x: 184, y: 100, n: 3, zy: 104 },
+  { x: 184, y: 150, n: 3, zy: 146 },
+  { x: 148, y: 166, n: 3, zy: 171 },
+  { x: 164, y: 194, n: 4, zy: 196 }
+];
+const _N9D_LAGE = {
+  3: [[-4.5, -3], [4.5, -3], [0, 4.5]],
+  4: [[-4, -4], [4, -4], [-4, 4], [4, 4]]
+};
+// Zeitplan in s nach „▶ Erregung senden“
+const _N9D_LAUF = 1.8;                  // Lichtpunkt bis an die Lücke
+const _N9D_AUS = 0.5;                   // Erlöschen
+const _N9D_HIN0 = 2.0, _N9D_HIN1 = 3.0; // Bläschen wandern an den Rand
+const _N9D_AUF0 = 3.0, _N9D_AUF1 = 3.4; // Bläschen öffnen sich
+const _N9D_ZU0 = 4.6, _N9D_ZU1 = 5.2;   // … und schließen sich wieder
+const _N9D_AB = 3.3, _N9D_JS = 0.14, _N9D_VS = 0.025;   // Abflug der Kügelchen
+const _N9D_FLUG = 1.5;                  // Flugzeit eines Kügelchens
+const _N9D_FEUER = 5.6;                 // rechter Rand leuchtet auf
+const _N9D_R0 = 5.8, _N9D_R1 = 7.4;     // neuer Lichtpunkt rechts
+const _N9D_LEERRING = 4.4;
+const _N9D_ENDE = { normal: 7.7, leer: 5.4, rechts: 3.0 };
+const _N9D_XL0 = -6, _N9D_XL1 = 198;    // Weg des Lichtpunkts links
+const _N9D_XR0 = 238, _N9D_XR1 = 432;   // Weg des Lichtpunkts rechts
+
+function _n9dInit() {
+  _n9d = { versuch: 'normal', t: 0, s: -1, laeuft: false, gestartet: false, fertig: false,
+           ev: {}, fx: { teile: [] }, kugeln: [], mulden: _n9dMulden() };
+  _n9dKugelnNeu();
+}
+// Mulden auf dem rechten Randbogen, von oben nach unten
+function _n9dMulden() {
+  const m = [];
+  for (let i = 0; i < _N9D_N; i++) {
+    const a = -0.33 + i * 0.66 / (_N9D_N - 1);
+    m.push({ a, x: _N9D_CX + (_N9D_RR + 0.6) * Math.cos(a), y: _N9D_CY + (_N9D_RR + 0.6) * Math.sin(a) });
+  }
+  return m;
+}
+// Lage eines Bläschens am Rand (Mitte 12 Bildpunkte innerhalb des Randes)
+function _n9dZiel(b) {
+  const a = Math.asin((b.zy - _N9D_CY) / (_N9D_RB - 12));
+  return { a, x: _N9D_CX + (_N9D_RB - 12) * Math.cos(a), y: _N9D_CY + (_N9D_RB - 12) * Math.sin(a) };
+}
+// 20 Kügelchen, jedes mit seiner Mulde: von oben nach unten der Reihe nach
+function _n9dKugelnNeu() {
+  const k = [];
+  let nr = 0;
+  _N9D_BL.forEach((b, v) => {
+    const lage = _N9D_LAGE[b.n].slice().sort((p, q) => p[1] - q[1] || p[0] - q[0]);
+    lage.forEach((o, j) => {
+      k.push({ v, j, ox: o[0], oy: o[1], m: nr, ts: _N9D_AB + j * _N9D_JS + v * _N9D_VS,
+               ph: (nr * 1.618) % (2 * Math.PI), fest: false });
+      nr++;
+    });
+  });
+  _n9d.kugeln = k;
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9dRuhe() {
+  _n9d.s = -1; _n9d.laeuft = false; _n9d.gestartet = false; _n9d.fertig = false;
+  _n9d.ev = {}; _n9d.fx = { teile: [] };
+  _n9dKugelnNeu();
+}
+function _n9dVersuch(v) {
+  if (!_n9d || !_N9D_VERSUCH[v]) return;
+  _n9d.versuch = v;
+  _n9dRuhe();
+  _n9dStatus();
+}
+function _n9dSenden() {
+  if (!_n9d || _n9d.laeuft) return;
+  _n9dRuhe();
+  _n9d.s = 0; _n9d.laeuft = true; _n9d.gestartet = true;
+  _n9dStatus();
+}
+function _n9dNeu() {
+  if (!_n9d) return;
+  _n9d.versuch = 'normal';
+  _n9dRuhe();
+  _n9dStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9dHinweis() {
+  if (_n9d.laeuft) return 'Die Erregung ist unterwegs. Sieh genau auf die Lücke in der Mitte.';
+  if (_n9d.fertig) return 'Fertig. Trage „ja“ oder „nein“ in die Tabelle ein. Stelle dann einen anderen Versuch ein.';
+  return 'Versuch „' + _N9D_VERSUCH[_n9d.versuch] + '“: Drücke „▶ Erregung senden“.';
+}
+function _n9dStatus() {
+  if (!_n9d) return;
+  const el = document.getElementById('_n9d-status');
+  if (el) { el.textContent = 'Versuch: ' + _N9D_VERSUCH[_n9d.versuch]; el.className = 'lmp-status on'; }
+  const h = document.getElementById('_n9d-hinweis');
+  if (h) h.textContent = _n9dHinweis();
+  try {
+    document.querySelectorAll('[data-n9d]').forEach(b => {
+      const v = b.getAttribute('data-n9d');
+      if (b.classList) b.classList.toggle('primary', v === _n9d.versuch);
+    });
+  } catch (e) { /* Knopffarbe ist Beiwerk */ }
+  const los = document.getElementById('_n9d-los');
+  if (los && los.classList) los.classList.toggle('primary', !_n9d.laeuft);
+}
+function _n9dHTML() {
+  const k = v => `<button class="sim-btn" data-n9d="${v}" onclick="_n9dVersuch('${v}')">${_N9D_VERSUCH[v]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie kommt die Erregung zur nächsten Zelle?</h3>
+    <div class="fpm-note" style="margin-top:2px">Zwei Nervenzellen, stark vergrößert. Links endet eine Nervenfaser, rechts beginnt die nächste Nervenzelle. Der gelbe Lichtpunkt ist die Erregung.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9d-los" onclick="_n9dSenden()">▶ Erregung senden</button>
+          <button class="sim-btn" onclick="_n9dNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="phys-ctrl">
+          <span class="phys-ctrl-label">Versuch</span>
+          <div class="sim-btn-row">${k('normal')}${k('leer')}${k('rechts')}</div>
+        </div>
+        <div class="lmp-status on" id="_n9d-status" style="margin-top:8px"></div>
+        <div class="fpm-note" id="_n9d-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">In der linken Zelle liegen runde Bläschen. Darin sind kleine Kügelchen.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Versuch „normal“ &nbsp;|&nbsp; Alles läuft stark verlangsamt.</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9dUpdate(dt) {
+  if (!_n9d) return;
+  dt = _bioFxDt(dt);
+  _n9d.t += dt;
+  if (_n9d.laeuft) {
+    _n9d.s += dt;
+    _n9dEreignisse();
+    if (_n9d.s >= _N9D_ENDE[_n9d.versuch]) {
+      _n9d.s = _N9D_ENDE[_n9d.versuch];
+      _n9d.laeuft = false; _n9d.fertig = true;
+      _n9dStatus();
+    }
+  }
+  _bioFxAlleUpdate(_n9d.fx, dt);
+}
+// Einmalige Lichtringe im Ablauf – ruhig, nie Funken
+function _n9dEreignisse() {
+  const s = _n9d.s, v = _n9d.versuch, ev = _n9d.ev, fx = _n9d.fx;
+  if (v !== 'rechts' && s >= _N9D_LAUF && !ev.an) {
+    ev.an = true;
+    _bioFxWelle(fx.teile, _N9D_XL1, _N9D_CY, '#fde047', 24);
+  }
+  if (v === 'normal') {
+    for (const k of _n9d.kugeln) {
+      if (!k.fest && s >= k.ts + _N9D_FLUG) {
+        k.fest = true;
+        const m = _n9d.mulden[k.m];
+        _bioFxWelle(fx.teile, m.x, m.y, '#c4b5fd', 10);
+      }
+    }
+    if (s >= _N9D_FEUER && !ev.feuer) {
+      ev.feuer = true;
+      _bioFxWelle(fx.teile, _N9D_CX + _N9D_RR + 4, _N9D_CY, '#fde047', 40);
+    }
+  }
+  if (v === 'leer' && s >= _N9D_LEERRING && !ev.leer) {
+    ev.leer = true;
+    _bioFxWelle(fx.teile, _N9D_CX + (_N9D_RB + _N9D_RR) / 2, _N9D_CY, '#94a3b8', 30);
+  }
+  if (v === 'rechts' && s >= _N9D_LAUF + 0.2 && !ev.aus) {
+    ev.aus = true;
+    _bioFxWelle(fx.teile, _N9D_XR0, _N9D_CY, '#94a3b8', 26);
+  }
+}
+
+// ── Zeitplan: was steht zur Zeit s wo? ─────────────────
+function _n9dKl(x) { return _bioFxKlemme(x); }
+// Wandern (0…1) und Öffnen (0…1) der Bläschen – links nur bei normal und leer
+function _n9dWandern() {
+  if (_n9d.versuch === 'rechts' || _n9d.s < 0) return 0;
+  return _bioFxEase.sanft(_n9dKl((_n9d.s - _N9D_HIN0) / (_N9D_HIN1 - _N9D_HIN0)));
+}
+function _n9dOffen() {
+  if (_n9d.versuch === 'rechts' || _n9d.s < 0) return 0;
+  const auf = _bioFxEase.sanft(_n9dKl((_n9d.s - _N9D_AUF0) / (_N9D_AUF1 - _N9D_AUF0)));
+  const zu = _bioFxEase.sanft(_n9dKl((_n9d.s - _N9D_ZU0) / (_N9D_ZU1 - _N9D_ZU0)));
+  return auf * (1 - zu);
+}
+// Mitte eines Bläschens jetzt
+function _n9dBlPos(i) {
+  const b = _N9D_BL[i], z = _n9dZiel(b), w = _n9dWandern(), t = _n9d.t;
+  const ruhe = 1 - w;
+  return { x: b.x + (z.x - b.x) * w + Math.sin(t * 0.8 + i * 1.7) * 1.1 * ruhe,
+           y: b.y + (z.y - b.y) * w + Math.cos(t * 0.7 + i * 2.3) * 1.1 * ruhe,
+           a: z.a, r: _N9D_BR - 1 * w };
+}
+// Lage eines Kügelchens: im Bläschen, im Flug oder in seiner Mulde
+function _n9dKugelPos(k) {
+  const t = _n9d.t, s = _n9d.s, m = _n9d.mulden[k.m];
+  const flug = _n9d.versuch === 'normal' && s >= k.ts;
+  if (!flug) {
+    const p = _n9dBlPos(k.v);
+    return { x: p.x + k.ox + Math.sin(t * 3.1 + k.ph) * 0.8, y: p.y + k.oy + Math.cos(t * 2.7 + k.ph * 1.3) * 0.8, z: 'drin' };
+  }
+  const u = _n9dKl((s - k.ts) / _N9D_FLUG);
+  if (u >= 1) return { x: m.x + Math.sin(t * 2 + k.ph) * 0.3, y: m.y + Math.cos(t * 2.2 + k.ph) * 0.3, z: 'fest' };
+  const z = _n9dZiel(_N9D_BL[k.v]);
+  const p0x = z.x + k.ox, p0y = z.y + k.oy;
+  const p1x = p0x + 16 * Math.cos(z.a), p1y = p0y + 16 * Math.sin(z.a);
+  const p2x = m.x - 12 * Math.cos(m.a), p2y = m.y - 12 * Math.sin(m.a);
+  const e = _bioFxEase.sanft(u), f = 1 - e;
+  let x = f * f * f * p0x + 3 * f * f * e * p1x + 3 * f * e * e * p2x + e * e * e * m.x;
+  let y = f * f * f * p0y + 3 * f * f * e * p1y + 3 * f * e * e * p2y + e * e * e * m.y;
+  // leichtes Schlingern quer zur Flugrichtung
+  const dx = m.x - p0x, dy = m.y - p0y, d = Math.hypot(dx, dy) || 1;
+  const w = 2.2 * Math.sin(Math.PI * u) * Math.sin(u * Math.PI * 4 + k.ph);
+  x += -dy / d * w; y += dx / d * w;
+  return { x, y, z: 'flug' };
+}
+function _n9dAngedockt() {
+  if (_n9d.versuch !== 'normal' || _n9d.s < 0) return 0;
+  let n = 0;
+  for (const k of _n9d.kugeln) if (_n9d.s >= k.ts + _N9D_FLUG) n++;
+  return n;
+}
+// Leuchten der beiden vorderen Ränder (0…1)
+function _n9dGlutL() {
+  const s = _n9d.s;
+  if (_n9d.versuch === 'rechts' || s < 0) return 0;
+  if (s < 1.6) return 0;
+  if (s < 1.9) return (s - 1.6) / 0.3;
+  if (s < 3.4) return 1;
+  return 1 - _n9dKl((s - 3.4) / 1.2);
+}
+function _n9dGlutR() {
+  const s = _n9d.s, v = _n9d.versuch;
+  if (s < 0 || v === 'leer') return 0;
+  if (v === 'rechts') {
+    if (s < 1.6) return 0;
+    if (s < 1.9) return 0.9 * (s - 1.6) / 0.3;
+    return 0.9 * (1 - _n9dKl((s - 1.9) / 0.7));
+  }
+  if (s < _N9D_FEUER) return 0.45 * _n9dAngedockt() / _N9D_N;
+  if (s < _N9D_FEUER + 0.2) return 0.45 + 0.55 * (s - _N9D_FEUER) / 0.2;
+  if (s < 6.4) return 1;
+  return 1 - _n9dKl((s - 6.4) / 1.2);
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9dPfadLinks(ctx) {
+  const ft = { x: _N9D_CX + _N9D_RB * Math.cos(_N9D_AE), y: _N9D_CY - _N9D_RB * Math.sin(_N9D_AE) };
+  const fb = { x: ft.x, y: 2 * _N9D_CY - ft.y };
+  ctx.beginPath();
+  ctx.moveTo(-6, 113); ctx.lineTo(44, 113);
+  ctx.bezierCurveTo(70, 113, 74, 40, 126, 35);
+  ctx.bezierCurveTo(150, 32, 172, 32, ft.x, ft.y);
+  ctx.arc(_N9D_CX, _N9D_CY, _N9D_RB, -_N9D_AE, _N9D_AE, false);
+  ctx.bezierCurveTo(172, 218, 150, 218, 126, 215);
+  ctx.bezierCurveTo(74, 210, 70, 137, 44, 137);
+  ctx.lineTo(-6, 137);
+  ctx.closePath();
+}
+function _n9dPfadRechts(ctx) {
+  const rt = { x: _N9D_CX + _N9D_RR * Math.cos(_N9D_AE), y: _N9D_CY - _N9D_RR * Math.sin(_N9D_AE) };
+  const rb = { x: rt.x, y: 2 * _N9D_CY - rt.y };
+  ctx.beginPath();
+  ctx.moveTo(rt.x, rt.y);
+  ctx.bezierCurveTo(240, 14, 300, 14, 330, 34);
+  ctx.bezierCurveTo(352, 50, 356, 113, 384, 113);
+  ctx.lineTo(426, 113); ctx.lineTo(426, 137); ctx.lineTo(384, 137);
+  ctx.bezierCurveTo(356, 137, 352, 200, 330, 216);
+  ctx.bezierCurveTo(300, 236, 240, 236, rb.x, rb.y);
+  ctx.arc(_N9D_CX, _N9D_CY, _N9D_RR, _N9D_AE, -_N9D_AE, true);
+  ctx.closePath();
+}
+// Spur eines Lichtpunkts entlang der Mittellinie
+function _n9dSpur(ctx, x0, x1) {
+  if (x1 <= x0) return;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(250,204,21,0.5)'; ctx.lineWidth = 7; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(x0, _N9D_CY); ctx.lineTo(x1, _N9D_CY); ctx.stroke();
+  ctx.restore();
+}
+// Der gelbe Lichtpunkt: a = Deckkraft, k = Größe
+function _n9dPunkt(ctx, x, y, a, k) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = a;
+  const g = ctx.createRadialGradient(x, y, 0, x, y, 16 * k);
+  g.addColorStop(0, 'rgba(255,248,196,0.95)');
+  g.addColorStop(0.4, 'rgba(253,224,71,0.75)');
+  g.addColorStop(1, 'rgba(250,204,21,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 16 * k, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#facc15'; ctx.beginPath(); ctx.arc(x, y, 5.5 * k, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = '#fffbe6'; ctx.beginPath(); ctx.arc(x - 1.3 * k, y - 1.3 * k, 2.1 * k, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+function _n9dKugel(ctx, x, y) {
+  ctx.fillStyle = '#8b5cf6'; ctx.strokeStyle = '#4c1d95'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.arc(x, y, _N9D_KR, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.beginPath(); ctx.arc(x - 0.9, y - 0.9, 0.9, 0, 2 * Math.PI); ctx.fill();
+}
+// Glut entlang eines vorderen Randbogens
+function _n9dGlut(ctx, r, g) {
+  if (g <= 0.01) return;
+  ctx.save();
+  ctx.strokeStyle = 'rgba(250,204,21,' + (0.8 * g).toFixed(3) + ')'; ctx.lineWidth = 6;
+  ctx.beginPath(); ctx.arc(_N9D_CX, _N9D_CY, r, -_N9D_AE + 0.02, _N9D_AE - 0.02, false); ctx.stroke();
+  ctx.restore();
+}
+function _n9dDraw(ctx, cv) {
+  if (!_n9d) return;
+  const W = cv.width, H = cv.height, t = _n9d.t, s = _n9d.s, v = _n9d.versuch;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = _N9D_HG; ctx.fillRect(0, 0, W, H);
+
+  // ── die beiden Zellen ──
+  _n9dPfadRechts(ctx);
+  let g = ctx.createLinearGradient(0, 20, 0, 230);
+  g.addColorStop(0, '#dcfce7'); g.addColorStop(1, '#bbf0cf');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = '#15803d'; ctx.lineWidth = 2; ctx.stroke();
+  _n9dPfadLinks(ctx);
+  g = ctx.createLinearGradient(0, 30, 0, 220);
+  g.addColorStop(0, '#dbeafe'); g.addColorStop(1, '#bfd8f7');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = '#1e40af'; ctx.lineWidth = 2; ctx.stroke();
+
+  // ── Spuren der Lichtpunkte (bleiben hell) ──
+  if (s >= 0 && v !== 'rechts') {
+    _n9dSpur(ctx, 0, Math.min(_N9D_XL1, _N9D_XL0 + (_N9D_XL1 - _N9D_XL0) * s / _N9D_LAUF));
+  }
+  if (s >= 0 && v === 'normal' && s >= _N9D_R0) {
+    const xr = _N9D_XR0 + (_N9D_XR1 - _N9D_XR0) * _n9dKl((s - _N9D_R0) / (_N9D_R1 - _N9D_R0));
+    _n9dSpur(ctx, _N9D_XR0, Math.min(420, xr));
+  }
+  if (s >= 0 && v === 'rechts') {
+    const xr = _N9D_XR1 - (_N9D_XR1 - _N9D_XR0) * _n9dKl(s / _N9D_LAUF);
+    _n9dSpur(ctx, Math.max(_N9D_XR0, xr), 420);
+  }
+
+  // ── Leuchten der vorderen Ränder ──
+  _n9dGlut(ctx, _N9D_RB, _n9dGlutL());
+  _n9dGlut(ctx, _N9D_RR, _n9dGlutR());
+
+  // ── Mulden am rechten Rand (Kügelchen passen genau hinein) ──
+  for (let i = 0; i < _N9D_N; i++) {
+    const m = _n9d.mulden[i];
+    ctx.fillStyle = _N9D_HG;
+    ctx.beginPath(); ctx.arc(m.x, m.y, _N9D_MR + 0.6, 0, 2 * Math.PI); ctx.fill();
+    const besetzt = _n9d.kugeln.some(k => k.m === i && v === 'normal' && s >= k.ts + _N9D_FLUG);
+    ctx.strokeStyle = besetzt ? '#6d28d9' : '#a78bfa'; ctx.lineWidth = besetzt ? 2.4 : 2;
+    ctx.beginPath(); ctx.arc(m.x, m.y, _N9D_MR, m.a - Math.PI / 2, m.a + Math.PI / 2, false); ctx.stroke();
+  }
+
+  // ── Bläschen ──
+  const o = _n9dOffen(), leer = v === 'leer';
+  for (let i = 0; i < _N9D_BL.length; i++) {
+    const p = _n9dBlPos(i);
+    ctx.save();
+    // Inhalt: voll blassviolett, leer grau; beim Öffnen geht er in die Lücke über
+    ctx.fillStyle = leer ? 'rgba(229,231,235,' + (1 - 0.7 * o).toFixed(3) + ')'
+                         : 'rgba(237,233,254,' + (1 - 0.7 * o).toFixed(3) + ')';
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = leer ? '#9ca3af' : '#7c3aed'; ctx.lineWidth = 1.6;
+    const lu = o * 0.8;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, p.a + lu, p.a + 2 * Math.PI - lu, false); ctx.stroke();
+    // Öffnung im Zellrand
+    if (o > 0.02) {
+      const h = Math.asin(7 / _N9D_RB) * o;          // Pore 14 Bildpunkte breit
+      ctx.strokeStyle = _N9D_HG; ctx.lineWidth = 3.2;
+      ctx.beginPath(); ctx.arc(_N9D_CX, _N9D_CY, _N9D_RB, p.a - h, p.a + h, false); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // ── Kügelchen: im Bläschen, im Flug, angedockt ──
+  if (!leer) {
+    for (const k of _n9d.kugeln) {
+      const q = _n9dKugelPos(k);
+      if (q.z === 'fest') {
+        ctx.save();
+        ctx.fillStyle = 'rgba(196,181,253,' + (0.35 + 0.15 * Math.sin(t * 2 + k.ph)).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(q.x, q.y, _N9D_KR + 2.2, 0, 2 * Math.PI); ctx.fill();
+        ctx.restore();
+      }
+      _n9dKugel(ctx, q.x, q.y);
+    }
+  }
+
+  // ── Lichtpunkte ──
+  if (s >= 0 && v !== 'rechts') {
+    if (s < _N9D_LAUF) _n9dPunkt(ctx, _N9D_XL0 + (_N9D_XL1 - _N9D_XL0) * s / _N9D_LAUF, _N9D_CY, 1, 1);
+    else if (s < _N9D_LAUF + _N9D_AUS) {
+      const u = (s - _N9D_LAUF) / _N9D_AUS;
+      _n9dPunkt(ctx, _N9D_XL1, _N9D_CY, 1 - u, 1 - 0.5 * u);
+    }
+  }
+  if (s >= _N9D_R0 && v === 'normal' && s < _N9D_R1) {
+    const u = (s - _N9D_R0) / (_N9D_R1 - _N9D_R0);
+    _n9dPunkt(ctx, _N9D_XR0 + (_N9D_XR1 - _N9D_XR0) * u, _N9D_CY, 1, 1);
+  }
+  if (s >= 0 && v === 'rechts') {
+    if (s < _N9D_LAUF) _n9dPunkt(ctx, _N9D_XR1 - (_N9D_XR1 - _N9D_XR0) * s / _N9D_LAUF, _N9D_CY, 1, 1);
+    else if (s < _N9D_LAUF + _N9D_AUS) {
+      const u = (s - _N9D_LAUF) / _N9D_AUS;
+      _n9dPunkt(ctx, _N9D_XR0, _N9D_CY, 1 - u, 1 - 0.5 * u);
+    }
+  }
+
+  // ── Blickführung vor dem Start: ruhiger Lichtkranz, wo die Erregung herkommt ──
+  if (!_n9d.gestartet) {
+    _bioFxLeuchten(ctx, v === 'rechts' ? 404 : 16, _N9D_CY, 11, t, '255,216,77');
+  }
+
+  _bioFxAlleDraw(ctx, _n9d.fx);
+}
+// ═══════════════════════════════════════════════════════════════════════
+// BIO 9 FOERDER · EIN LITER ODER DREI LITER   (Förderheft Bio 9 · bd2)
+// Kennung bio-wasserhaushalt, Präfix _n9i. Bauplan: arbeitsheft_bio_foe9/
+// einheiten/bd2.json, seite.sim_plan.
+//
+// WAS MAN SIEHT (Leinwand 420 x 300, schematisch, ohne Gesicht):
+//   - Mitte: hellblauer Körper-Umriss (Kopf, Hals, Rumpf, Arme). Darin zwei
+//     dunkelrote Nieren (Bohnen), von jeder ein dünner Schlauch nach unten
+//     zu einer rundlichen Blase im unteren Bauch. Weiße Pünktchen treiben
+//     langsam im Körper (das Wasser im Körper) – das Bild lebt auch im Stand.
+//   - links: Kasten „Wasser rein“ („Getränke: 2 l“, „Essen: 0,5 l“), darunter
+//     ein Glas Wasser und ein Teller mit Obst. Blaue Tropfen fliegen vom Glas
+//     und vom Teller zum Mund und sinken in den Bauch.
+//   - rechts: Kasten „Wasser raus“ („Haut und Atem: 1 l“, „Harn: ?“ bis zum
+//     Tagesende, dann „Harn: 1,5 l“). Tropfen auf der Haut, Atemwolken am Kopf.
+//   - unten: Messbecher mit Liter-Skala (1 l, 2 l, 3 l, Striche alle 0,5 l).
+//     Von den Nieren rinnen Harntropfen in die Blase; hat sie 0,5 l gesammelt,
+//     leert sie sich in den Becher. Der Becher sammelt den Harn eines Tages.
+//   - unten rechts: Anzeige „Wasser im Körper: 30 l“ (immer 30 l).
+//   - oben Mitte: Uhr „6 Uhr“ bis „22 Uhr“ (Zeitraffer, 10 s für 16 Stunden).
+//
+// BEDIENUNG (wörtlich):
+//   Regler „Getränke am Tag“: 1 l · 2 l · 3 l (Start 1 l). Umstellen = neuer
+//   Tag (Uhr 6 Uhr, Becher leer, „Harn: ?“).
+//   „▶ 1 Tag abspielen“ (_n9iTag) · „neu“ (_n9iNeu → 1 l, 6 Uhr)
+//
+// MODELLWERTE (Lehrerteil): Essen 0,5 l, Haut und Atem 1 l, Wasser im Körper
+//   30 l. Harn = Getränke + 0,5 l − 1 l. Ein Tropfen im Bild = 0,1 l:
+//       Getränke   1 l / 2 l / 3 l   → 10 / 20 / 30 Tropfen vom Glas
+//       Essen      0,5 l             →  5 Tropfen vom Teller
+//       Haut, Atem 1 l               →  5 Tropfen auf der Haut + 5 Atemwolken
+//       Harn       0,5 / 1,5 / 2,5 l →  5 / 15 / 25 Harntropfen
+//   Rein = raus (15/25/35 gegen 15/25/35) – darum bleibt „Wasser im Körper“
+//   bei 30 l. Die Blase leert sich je 0,5 l, also 1-, 3- oder 5-mal am Tag.
+//   Der Becher endet genau bei 0,5 l / 1,5 l / 2,5 l (18 Bildpunkte je Liter).
+//
+// WERTE (lehrer.tabelle_erwartet, am Bildschirm abzulesen):
+//   1 l   Harn: 0,5 l · Becher dunkelgelb    · Wasser im Körper: 30 l
+//   2 l   Harn: 1,5 l · Becher hellgelb      · Wasser im Körper: 30 l
+//   3 l   Harn: 2,5 l · Becher fast farblos  · Wasser im Körper: 30 l
+//   Die Farbe steht NUR im Bild (Becher, Blase, Harntropfen), nie als Wort.
+//
+// STATUSZEILE (_n9i-status), mit der Uhr mitlaufend:
+//   „Uhr: 6 Uhr · Getränke am Tag: 1 l · Harn: ? · Wasser im Körper: 30 l“
+//   am Tagesende „Uhr: 22 Uhr · Getränke am Tag: 1 l · Harn: 0,5 l · Wasser im
+//   Körper: 30 l“. Die Uhr läuft in der Zeile mit – so bleibt die Anzeige
+//   während des Tages nicht stehen, und simfakten (--frames=25) läuft bis zum
+//   Tagesende durch, statt nach vierzehn gleichen Ablesungen abzubrechen.
+//
+// AHA (_bioFx, ruhig, ohne Textstreifen): Je Leeren der Blase ein kleiner
+//   Lichtring – bei 3 l fünfmal, bei 1 l einmal. Am Tagesende ein Ring am
+//   Becher und ein Rahmen um „Harn“, kurz danach ein blauer Rahmen um „Wasser
+//   im Körper: 30 l“: Die Zahl dort hat sich nicht bewegt, obwohl viel Wasser
+//   durchlief. Jeder Effekt einmal, 0,9–1,2 s, nichts blinkt.
+//
+// NICHT AM BILDSCHIRM: „mehr“, „dunkelgelb“, „hellgelb“, „gleich“ (auch nicht
+//   in „vergleiche“), „Wasserhaushalt“, „Harnblase“, „Blase“, „farblos“,
+//   „weniger“. Keine Toilette, keine Genitalien, kein Gesicht.
+//   Deterministisch, ohne Zufall.
+// ═══════════════════════════════════════════════════════════════════════
+let _n9i = null;
+const _N9I_DAUER = 10;                    // 6 bis 22 Uhr, in s
+const _N9I_STUNDE = _N9I_DAUER / 16;      // 0,625 s je Stunde
+const _N9I_TLAUF = 1.4;                   // Flug eines Trink-/Esstropfens bis in den Bauch
+const _N9I_HLAUF = 0.6;                   // Harntropfen Niere → Blase
+const _N9I_LEER = 0.7;                    // Blase leert sich in den Becher
+const _N9I_AUS = 1.2;                     // Hauttropfen, Atemwolke
+const _N9I_PXL = 18;                      // Bildpunkte je Liter im Becher
+// Harnfarbe je Einstellung: Füllung und Rand (Rand macht den fast farblosen
+// Harn als Flüssigkeit sichtbar). Bewusst ohne Farbnamen im Quelltext-Schlüssel.
+const _N9I_HARN = {
+  1: { f: '#d6a20e', r: '#9a7409' },
+  2: { f: '#f7e570', r: '#c2a82e' },
+  3: { f: '#fcfbea', r: '#9fb0c2' }
+};
+// feste Abläufe (s nach dem Start): Essen zu den Mahlzeiten, Haut und Atem
+const _N9I_ESSEN = [0.65, 4.3, 4.6, 7.95, 8.25];          // 5 × 0,1 l
+const _N9I_HAUT = [0.9, 2.8, 4.7, 6.6, 8.5];               // 5 × 0,1 l
+const _N9I_HAUT_Y = [112, 150, 128, 168, 140];
+const _N9I_ATEM = [1.75, 3.6, 5.45, 7.3, 8.7];            // 5 × 0,1 l (alles vor 22 Uhr vorbei)
+// Lage im Bild
+const _N9I_KOPF = { x: 210, y: 56, r: 19 };
+const _N9I_RUMPF = { l: 152, r: 268, o: 86, u: 220 };
+const _N9I_MUND = { x: 210, y: 70 };
+const _N9I_BAUCH = { x: 210, y: 112 };
+const _N9I_NIERE = [{ x: 188, y: 140, s: 1 }, { x: 232, y: 140, s: -1 }];
+const _N9I_BL = { x: 210, y: 194, rx: 18, ry: 14 };
+const _N9I_BECHER = { l: 182, r: 238, o: 232, u: 294 };
+const _N9I_GLAS = { x: 61, o: 120, u: 168, bo: 32, bu: 24 };
+const _N9I_TELLER = { x: 72, y: 224 };
+const _N9I_KW = { x: 258, y: 266, w: 156, h: 27 };          // Kasten „Wasser im Körper“
+
+function _n9iInit() {
+  _n9i = { g: 1, t: 0 };
+  _n9iRuhe();
+}
+// Ein neuer Tag in der eingestellten Menge: Uhr 6 Uhr, Becher leer.
+function _n9iRuhe() {
+  _n9i.s = -1; _n9i.laeuft = false; _n9i.fertig = false;
+  _n9i.nach = -1; _n9i.schritt = 0; _n9i.welleNr = 0; _n9i.letzt = '';
+  _n9i.plan = _n9iPlan(_n9i.g);
+  _n9i.fx = { teile: [] }; _n9i.puls = [];
+}
+// Alle Tropfen eines Tages als feste Zeiten – das Bild ist eine Funktion der
+// Tageszeit s, nichts hängt am Zufall oder an der Bildrate.
+function _n9iPlan(g) {
+  const nT = g * 10;                       // Getränke in Tropfen zu 0,1 l
+  const nH = g * 10 - 5;                   // Harn = Getränke + 0,5 l − 1 l
+  const trink = [], harn = [], leeren = [];
+  for (let k = 0; k < nT; k++) trink.push(0.15 + (k + 0.5 + 0.3 * Math.sin(k * 2.7)) * 8.4 / nT);
+  for (let k = 0; k < nH; k++) harn.push({ t0: 0.4 + (k + 0.5) * 8.9 / nH, seite: k % 2 });
+  // Nach jedem fünften Harntropfen (0,5 l) leert sich die Blase in den Becher.
+  for (let j = 1; j * 5 <= nH; j++) leeren.push(harn[j * 5 - 1].t0 + _N9I_HLAUF);
+  const ende = Math.max(_N9I_DAUER, leeren[leeren.length - 1] + _N9I_LEER) + 0.15;
+  return { trink, harn, leeren, ende, nH };
+}
+
+// ── Zahlen ─────────────────────────────────────────────
+// Zehntelliter als Text mit Komma: 5 → „0,5 l“, 30 → „3 l“.
+function _n9iL(z) {
+  return (z % 10 === 0 ? String(z / 10) : Math.floor(z / 10) + ',' + (z % 10)) + ' l';
+}
+function _n9iUhr() {
+  if (_n9i.s < 0) return 6;
+  return Math.min(22, 6 + Math.floor(_n9i.s / _N9I_STUNDE + 1e-6));
+}
+// Harn im Becher (in l) zur Tageszeit s
+function _n9iBecherL(s) {
+  let v = 0;
+  for (const f of _n9i.plan.leeren) {
+    if (s >= f + _N9I_LEER) v += 0.5;
+    else if (s > f) v += 0.5 * _bioFxEase.sanft((s - f) / _N9I_LEER);
+  }
+  return v;
+}
+// Füllung der Blase (0..1, voll = 0,5 l = 5 Tropfen) zur Tageszeit s
+function _n9iBlaseVoll(s) {
+  let n = 0;
+  for (const h of _n9i.plan.harn) if (s >= h.t0 + _N9I_HLAUF) n++;
+  for (const f of _n9i.plan.leeren) if (s > f) n -= 5 * _bioFxKlemme((s - f) / _N9I_LEER);
+  return Math.max(0, Math.min(1, n / 5));
+}
+
+// ── Bedienung ──────────────────────────────────────────
+function _n9iGetraenke(v) {
+  if (!_n9i) return;
+  const g = Math.max(1, Math.min(3, Math.round(Number(v) || 1)));
+  _n9i.g = g;
+  _n9iRuhe();                                         // anderer Wert = neuer Tag
+  _n9iStatus();
+}
+function _n9iTag() {
+  if (!_n9i || _n9i.laeuft) return;
+  _n9iRuhe();
+  _n9i.s = 0; _n9i.laeuft = true;
+  _n9iStatus();
+}
+function _n9iNeu() {
+  if (!_n9i) return;
+  _n9i.g = 1;
+  _n9iRuhe();
+  _n9iStatus();
+}
+
+// ── Anzeige ────────────────────────────────────────────
+function _n9iZeile() {
+  const harn = _n9i.fertig ? _n9iL(_n9i.plan.nH) : '?';
+  return 'Uhr: ' + _n9iUhr() + ' Uhr · Getränke am Tag: ' + _n9i.g + ' l · Harn: ' + harn
+       + ' · Wasser im Körper: 30 l';
+}
+function _n9iHinweis() {
+  if (_n9i.laeuft) return 'Der Tag läuft im Zeitraffer. Sieh genau hin: Wohin fließt das Wasser?';
+  if (_n9i.fertig) return 'Es ist 22 Uhr. Lies „Harn“ ab und sieh dir die Farbe im Messbecher an. '
+                        + 'Trage beides in die Tabelle ein. Stelle dann „Getränke am Tag“ auf einen anderen Wert.';
+  return 'Getränke am Tag: ' + _n9i.g + ' l. Drücke „▶ 1 Tag abspielen“.';
+}
+function _n9iStatus() {
+  if (!_n9i) return;
+  const z = _n9iZeile();
+  const el = document.getElementById('_n9i-status');
+  if (el) { el.textContent = z; el.className = 'lmp-status on'; }
+  _n9i.letzt = z;
+  const h = document.getElementById('_n9i-hinweis');
+  if (h) h.textContent = _n9iHinweis();
+  const lb = document.getElementById('_n9i-getLbl');
+  if (lb) lb.textContent = _n9i.g + ' l';
+  const r = document.getElementById('_n9i-get');
+  if (r && String(r.value) !== String(_n9i.g)) r.value = String(_n9i.g);
+  const los = document.getElementById('_n9i-los');
+  if (los && los.classList) los.classList.toggle('primary', !_n9i.laeuft);
+}
+function _n9iHTML() {
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel Harn bildet der Körper an einem Tag?</h3>
+    <div class="fpm-note" style="margin-top:2px">Ein Körper, ganz einfach gezeichnet. Links kommt Wasser hinein: aus dem Glas und aus dem Essen. Rechts geht Wasser hinaus: über die Haut und mit dem Atem. Unten sammelt ein Messbecher den Harn von einem Tag.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_n9i-cv" width="420" height="300" class="phys-anim-cv"></canvas>
+        <div class="phys-ctrl" style="margin-top:8px">
+          <label class="phys-ctrl-label" for="_n9i-get">Getränke am Tag: <b id="_n9i-getLbl">1 l</b></label>
+          <input type="range" id="_n9i-get" min="1" max="3" step="1" value="1" oninput="_n9iGetraenke(this.value)" style="width:100%;accent-color:#2563eb">
+          <div style="display:flex;justify-content:space-between;font-size:.74rem;font-weight:700;color:#64748b"><span>1 l</span><span>2 l</span><span>3 l</span></div>
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_n9i-los" onclick="_n9iTag()">▶ 1 Tag abspielen</button>
+          <button class="sim-btn" onclick="_n9iNeu()">neu</button>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeigen</div>
+        <div class="lmp-status on" id="_n9i-status" style="margin-top:6px"></div>
+        <div class="fpm-note" id="_n9i-hinweis" style="margin-top:8px"></div>
+        <div class="fpm-note" style="margin-top:10px">Die zwei roten Bohnen im Bauch sind die Nieren. Sie bilden den Harn.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Getränke am Tag: 1 l · Uhr: 6 Uhr</p>
+  </div>`;
+}
+
+// ── Ablauf ─────────────────────────────────────────────
+function _n9iUpdate(dt) {
+  if (!_n9i) return;
+  dt = _bioFxDt(dt);
+  _n9i.t += dt;
+  if (_n9i.laeuft) {
+    _n9i.s += dt;
+    // kleiner Lichtring an der Blase, sobald sie sich leert
+    const L = _n9i.plan.leeren;
+    while (_n9i.welleNr < L.length && _n9i.s >= L[_n9i.welleNr]) {
+      _bioFxWelle(_n9i.fx.teile, _N9I_BL.x, _N9I_BL.y, '#fde68a', 26);
+      _n9i.welleNr++;
+    }
+    if (_n9i.s >= _n9i.plan.ende) _n9iFertig();
+    else if (_n9iZeile() !== _n9i.letzt) _n9iStatus();
+  } else if (_n9i.nach >= 0) {
+    _n9i.nach += dt;
+    _n9iNachher();
+  }
+  _bioFxAlleUpdate(_n9i.fx, dt);
+}
+function _n9iFertig() {
+  _n9i.laeuft = false; _n9i.fertig = true;
+  _n9i.s = _n9i.plan.ende;
+  _n9i.nach = 0; _n9i.schritt = 0;
+  _n9iStatus();
+}
+// Nach dem Tag: erst der Becher und „Harn“, dann „Wasser im Körper“.
+function _n9iNachher() {
+  const fx = _n9i.fx;
+  if (_n9i.schritt === 0) {
+    _n9i.schritt = 1;
+    const B = _N9I_BECHER, yl = B.u - 2 - _n9iBecherL(_n9i.s) * _N9I_PXL;
+    _bioFxWelle(fx.teile, (B.l + B.r) / 2, yl, '#fde68a', 40);
+    _n9i.puls.push({ x: 294, y: 45, w: 116, h: 16, t0: _n9i.t, farbe: '245,158,11' });
+  }
+  if (_n9i.schritt === 1 && _n9i.nach >= 0.9) {
+    _n9i.schritt = 2;
+    const K = _N9I_KW;
+    _n9i.puls.push({ x: K.x, y: K.y, w: K.w, h: K.h, t0: _n9i.t, farbe: '59,130,246' });
+    _n9i.nach = -1;
+  }
+}
+// Ruhiger Rahmen, der sich einmal um einen Kasten ausbreitet und verblasst (1,2 s)
+function _n9iPulse(ctx) {
+  _n9i.puls = _n9i.puls.filter(p => _n9i.t - p.t0 < 1.2);
+  for (const p of _n9i.puls) {
+    const e = _bioFxEase.raus(_bioFxKlemme((_n9i.t - p.t0) / 1.2)), d = 2 + 4 * e;   // bleibt im Bild
+    ctx.save();
+    ctx.strokeStyle = 'rgba(' + p.farbe + ',' + (0.85 * (1 - e)).toFixed(3) + ')';
+    ctx.lineWidth = 3;
+    _n9iRund(ctx, p.x - d, p.y - d, p.w + 2 * d, p.h + 2 * d, 6 + d); ctx.stroke();
+    ctx.restore();
+  }
+}
+
+// ── Zeichnen: Hilfen ───────────────────────────────────
+function _n9iRund(ctx, x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y); ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r); ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h); ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r); ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+// Tropfen mit Spitze nach oben, Mitte des runden Teils bei (x, y)
+function _n9iTropfen(ctx, x, y, r, fuell, rand) {
+  ctx.beginPath();
+  ctx.moveTo(x, y - r * 1.9);
+  ctx.bezierCurveTo(x + r * 0.55, y - r * 1.0, x + r, y - r * 0.45, x + r, y);
+  ctx.arc(x, y, r, 0, Math.PI);
+  ctx.bezierCurveTo(x - r, y - r * 0.45, x - r * 0.55, y - r * 1.0, x, y - r * 1.9);
+  ctx.closePath();
+  ctx.fillStyle = fuell; ctx.fill();
+  if (rand) { ctx.strokeStyle = rand; ctx.lineWidth = 1; ctx.stroke(); }
+}
+function _n9iQ(p0, c, p1, u) {
+  const v = 1 - u;
+  return { x: v * v * p0.x + 2 * v * u * c.x + u * u * p1.x,
+           y: v * v * p0.y + 2 * v * u * c.y + u * u * p1.y };
+}
+
+// ── Zeichnen ───────────────────────────────────────────
+function _n9iDraw(ctx, cv) {
+  if (!_n9i) return;
+  const W = cv.width, H = cv.height, t = _n9i.t;
+  const s = _n9i.s < 0 ? -1 : _n9i.s;
+  const F = _N9I_HARN[_n9i.g];
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fbff'); bg.addColorStop(1, '#e9f0f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  _n9iUhrBild(ctx);
+  _n9iKaesten(ctx);
+  _n9iGlas(ctx, t);
+  _n9iTeller(ctx);
+  _n9iKoerper(ctx, t);
+  _n9iOrgane(ctx, s, F);
+  _n9iFluss(ctx, s, F);
+  _n9iBecher(ctx, s, F);
+  _n9iKoerperWasser(ctx);
+  _n9iPulse(ctx);
+  _bioFxAlleDraw(ctx, _n9i.fx);
+}
+// Uhr oben in der Mitte: Zifferblatt mit Stundenzeiger und „14 Uhr“
+function _n9iUhrBild(ctx) {
+  const ux = 178, uy = 17, ur = 10;
+  const st = _n9i.s < 0 ? 0 : Math.min(_N9I_DAUER, _n9i.s);
+  const std = 6 + st / _N9I_STUNDE;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.8;
+  ctx.beginPath(); ctx.arc(ux, uy, ur, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.lineWidth = 1.2;
+  for (let i = 0; i < 4; i++) {
+    const a = i * Math.PI / 2;
+    ctx.beginPath(); ctx.moveTo(ux + Math.cos(a) * (ur - 3), uy + Math.sin(a) * (ur - 3));
+    ctx.lineTo(ux + Math.cos(a) * ur, uy + Math.sin(a) * ur); ctx.stroke();
+  }
+  const a = -Math.PI / 2 + (std % 12) / 12 * 2 * Math.PI;
+  ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ux, uy); ctx.lineTo(ux + Math.cos(a) * (ur - 3.5), uy + Math.sin(a) * (ur - 3.5)); ctx.stroke();
+  ctx.lineCap = 'butt';
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 15px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  const txt = _n9iUhr() + ' Uhr';
+  ctx.fillText(txt, ux + 16, uy + 6);
+  if (_n9i.laeuft) {
+    ctx.fillStyle = 'rgba(15,23,42,0.55)'; ctx.font = '700 10px sans-serif';
+    ctx.font = '700 15px sans-serif';
+    const x = ux + 22 + ctx.measureText(txt).width;
+    ctx.font = '700 10px sans-serif';
+    ctx.fillText('▶▶', x, uy + 5);
+  }
+  ctx.restore();
+}
+function _n9iKasten(ctx, x, y, titel, zeilen, farbe) {
+  const w = 124, h = 60;
+  ctx.save();
+  ctx.fillStyle = 'rgba(255,255,255,0.94)'; ctx.strokeStyle = farbe; ctx.lineWidth = 2;
+  _n9iRund(ctx, x, y, w, h, 8); ctx.fill(); ctx.stroke();
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillStyle = farbe; ctx.font = '700 12px sans-serif';
+  ctx.fillText(titel, x + 8, y + 16);
+  zeilen.forEach((z, i) => {
+    if (z.hell) {
+      ctx.fillStyle = '#fef3c7';
+      _n9iRund(ctx, x + 4, y + 22 + i * 17, w - 8, 16, 5); ctx.fill();
+    }
+    ctx.fillStyle = z.grau ? '#64748b' : '#0f172a';
+    ctx.font = (z.fett ? '700 ' : '600 ') + '12px sans-serif';
+    ctx.fillText(z.text, x + 8, y + 34 + i * 17);
+  });
+  ctx.restore();
+}
+function _n9iKaesten(ctx) {
+  _n9iKasten(ctx, 6, 6, 'Wasser rein', [
+    { text: 'Getränke: ' + _n9i.g + ' l' },
+    { text: 'Essen: 0,5 l' }
+  ], '#2563eb');
+  const ende = _n9i.fertig;
+  _n9iKasten(ctx, 290, 6, 'Wasser raus', [
+    { text: 'Haut und Atem: 1 l' },
+    ende ? { text: 'Harn: ' + _n9iL(_n9i.plan.nH), fett: true, hell: true } : { text: 'Harn: ?', grau: true }
+  ], '#0d9488');
+}
+// Glas Wasser links, die Oberfläche schwappt leicht
+function _n9iGlas(ctx, t) {
+  const G = _N9I_GLAS;
+  const xl = y => G.x - (G.bo / 2 - (G.bo - G.bu) / 2 * (y - G.o) / (G.u - G.o));
+  const xr = y => 2 * G.x - xl(y);
+  const lv = G.o + 12, wob = Math.sin(t * 2.1) * 1.6;
+  ctx.save();
+  ctx.fillStyle = 'rgba(147,197,253,0.75)';
+  ctx.beginPath();
+  ctx.moveTo(xl(lv) + 1.5, lv + wob);
+  ctx.quadraticCurveTo(G.x, lv - wob * 0.5, xr(lv) - 1.5, lv - wob);
+  ctx.lineTo(xr(G.u) - 1.5, G.u - 2); ctx.lineTo(xl(G.u) + 1.5, G.u - 2);
+  ctx.closePath(); ctx.fill();
+  ctx.strokeStyle = 'rgba(37,99,235,0.6)'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(xl(lv) + 1.5, lv + wob);
+  ctx.quadraticCurveTo(G.x, lv - wob * 0.5, xr(lv) - 1.5, lv - wob); ctx.stroke();
+  // Glaswand
+  ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(xl(G.o), G.o); ctx.lineTo(xl(G.u), G.u);
+  ctx.lineTo(xr(G.u), G.u); ctx.lineTo(xr(G.o), G.o); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.85)'; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.moveTo(xl(G.o) + 5, G.o + 16); ctx.lineTo(xl(G.u) + 5, G.u - 8); ctx.stroke();
+  ctx.restore();
+}
+// Teller mit Apfel und Birne
+function _n9iTeller(ctx) {
+  const T = _N9I_TELLER;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.ellipse(T.x, T.y, 36, 8, 0, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.ellipse(T.x, T.y - 1, 25, 5, 0, 0, 2 * Math.PI); ctx.stroke();
+  // Apfel
+  ctx.fillStyle = '#dc2626'; ctx.strokeStyle = '#991b1b'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(T.x - 11, T.y - 10, 9, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.6;
+  ctx.beginPath(); ctx.moveTo(T.x - 11, T.y - 18); ctx.lineTo(T.x - 10, T.y - 23); ctx.stroke();
+  ctx.fillStyle = '#16a34a';
+  ctx.beginPath(); ctx.ellipse(T.x - 6, T.y - 22, 4, 2, -0.5, 0, 2 * Math.PI); ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.beginPath(); ctx.arc(T.x - 14, T.y - 13, 2.2, 0, 2 * Math.PI); ctx.fill();
+  // Birne
+  ctx.fillStyle = '#a3c93a'; ctx.strokeStyle = '#4d7c0f'; ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.arc(T.x + 13, T.y - 8, 8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(T.x + 13, T.y - 17, 5.5, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(T.x + 13, T.y - 8, 6.8, 0, 2 * Math.PI); ctx.fill();
+  ctx.strokeStyle = '#78350f'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(T.x + 13, T.y - 22); ctx.lineTo(T.x + 15, T.y - 26); ctx.stroke();
+  ctx.restore();
+}
+// Körper-Umriss: Arme, Hals, Rumpf, Kopf – hellblau, ohne Gesicht.
+// Arme als Kapseln von der Schulter leicht schräg nach außen.
+const _N9I_DRIFT = [4, -3, 5, -4, 3, -5, 2.5, -2.5, 4.5, -3.5, 3.5, -4.5];   // Bildpunkte je s
+const _N9I_ARM = [{ x0: 157, y0: 102, x1: 141, y1: 192 }, { x0: 263, y0: 102, x1: 279, y1: 192 }];
+// Außenkante des rechten Arms auf Höhe y (dort entstehen die Hauttropfen)
+function _n9iArmRand(y) {
+  const A = _N9I_ARM[1];
+  return A.x0 + (A.x1 - A.x0) * (y - A.y0) / (A.y1 - A.y0) + 10;
+}
+function _n9iKoerper(ctx, t) {
+  const R = _N9I_RUMPF, K = _N9I_KOPF;
+  const fuell = '#dbe9f8', rand = '#7f97b2';
+  ctx.save();
+  ctx.lineCap = 'round';
+  for (const A of _N9I_ARM) {
+    ctx.strokeStyle = rand; ctx.lineWidth = 21;
+    ctx.beginPath(); ctx.moveTo(A.x0, A.y0); ctx.lineTo(A.x1, A.y1); ctx.stroke();
+    ctx.strokeStyle = fuell; ctx.lineWidth = 17;
+    ctx.beginPath(); ctx.moveTo(A.x0, A.y0); ctx.lineTo(A.x1, A.y1); ctx.stroke();
+  }
+  ctx.lineCap = 'butt';
+  ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 2;
+  ctx.fillRect(K.x - 9, K.y + 12, 18, R.o - K.y - 6);
+  ctx.beginPath(); ctx.moveTo(K.x - 9, K.y + 14); ctx.lineTo(K.x - 9, R.o);
+  ctx.moveTo(K.x + 9, K.y + 14); ctx.lineTo(K.x + 9, R.o); ctx.stroke();
+  // Rumpf: Schultern, schmalere Taille, Hüfte
+  ctx.beginPath();
+  ctx.moveTo(K.x - 11, R.o - 2);
+  ctx.quadraticCurveTo(172, R.o, 160, R.o + 9);
+  ctx.quadraticCurveTo(150, R.o + 16, 151, R.o + 30);
+  ctx.quadraticCurveTo(153, R.o + 60, 160, R.o + 80);
+  ctx.quadraticCurveTo(163, R.o + 93, 158, R.o + 110);
+  ctx.quadraticCurveTo(156, R.u, 182, R.u);
+  ctx.lineTo(238, R.u);
+  ctx.quadraticCurveTo(264, R.u, 262, R.o + 110);
+  ctx.quadraticCurveTo(257, R.o + 93, 260, R.o + 80);
+  ctx.quadraticCurveTo(267, R.o + 60, 269, R.o + 30);
+  ctx.quadraticCurveTo(270, R.o + 16, 260, R.o + 9);
+  ctx.quadraticCurveTo(248, R.o, K.x + 11, R.o - 2);
+  ctx.closePath(); ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(K.x, K.y, K.r, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  // Wasser im Körper: weiße Pünktchen treiben langsam
+  ctx.fillStyle = 'rgba(255,255,255,0.85)';
+  for (let i = 0; i < 12; i++) {
+    const px = 168 + ((i * 37 + t * _N9I_DRIFT[i]) % 84 + 84) % 84;
+    const py = R.o + 14 + ((i * 59 + Math.sin(t * 0.6 + i) * 9 + t * 3) % 104 + 104) % 104;
+    ctx.beginPath(); ctx.arc(px, py, 1.9, 0, 2 * Math.PI); ctx.fill();
+  }
+  ctx.restore();
+}
+// Nieren, Schläuche, Blase und der Ausgang nach unten
+function _n9iOrgane(ctx, s, F) {
+  const B = _N9I_BL;
+  ctx.save();
+  // Schläuche von den Nieren zur Blase
+  ctx.strokeStyle = '#d29aa8'; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  for (const N of _N9I_NIERE) {
+    const p = _n9iSchlauch(N);
+    ctx.beginPath(); ctx.moveTo(p[0].x, p[0].y); ctx.quadraticCurveTo(p[1].x, p[1].y, p[2].x, p[2].y); ctx.stroke();
+  }
+  // Ausgang unten aus dem Körper
+  ctx.beginPath(); ctx.moveTo(B.x, B.y + B.ry); ctx.lineTo(B.x, _N9I_RUMPF.u); ctx.stroke();
+  ctx.lineCap = 'butt';
+  for (const N of _N9I_NIERE) _n9iNiere(ctx, N.x, N.y, N.s);
+  // Blase mit Harn
+  ctx.fillStyle = '#fdf2f4'; ctx.strokeStyle = '#b5778a'; ctx.lineWidth = 2.2;
+  ctx.beginPath(); ctx.ellipse(B.x, B.y, B.rx, B.ry, 0, 0, 2 * Math.PI); ctx.fill();
+  const voll = s < 0 ? 0 : _n9iBlaseVoll(s);
+  if (voll > 0.02) {
+    const rx = B.rx - 1.5, ry = B.ry - 1.5;
+    const yl = B.y + ry - 2 * ry * voll;
+    const a0 = Math.asin(Math.max(-1, Math.min(1, (yl - B.y) / ry)));
+    ctx.fillStyle = F.f;
+    ctx.beginPath(); ctx.ellipse(B.x, B.y, rx, ry, 0, a0, Math.PI - a0); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = F.r; ctx.lineWidth = 1.2;
+    const hw = rx * Math.cos(a0);
+    ctx.beginPath(); ctx.moveTo(B.x - hw, yl); ctx.lineTo(B.x + hw, yl); ctx.stroke();
+  }
+  ctx.strokeStyle = '#b5778a'; ctx.lineWidth = 2.2;
+  ctx.beginPath(); ctx.ellipse(B.x, B.y, B.rx, B.ry, 0, 0, 2 * Math.PI); ctx.stroke();
+  // gestrichelte Leitung vom Körper zum Becher
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(B.x, _N9I_RUMPF.u + 2); ctx.lineTo(B.x, _N9I_BECHER.o - 2); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+// Schlauch einer Niere: Anfang an der Einbuchtung, Kontrollpunkt, Ende an der Blase
+function _n9iSchlauch(N) {
+  return [{ x: N.x + 5 * N.s, y: N.y + 4 },
+          { x: N.x + 11 * N.s, y: N.y + 30 },
+          { x: _N9I_BL.x - 7 * N.s, y: _N9I_BL.y - _N9I_BL.ry + 2 }];
+}
+// Bohnenform; seite +1: Einbuchtung zeigt nach rechts (linke Niere im Bild)
+function _n9iNiere(ctx, x, y, seite) {
+  ctx.save();
+  ctx.translate(x, y); ctx.scale(seite, 1);
+  ctx.beginPath();
+  ctx.moveTo(1, -17);
+  ctx.bezierCurveTo(-15, -17, -15, 17, 1, 17);
+  ctx.bezierCurveTo(10, 17, 11, 9, 6, 4);
+  ctx.quadraticCurveTo(2, 0, 6, -4);
+  ctx.bezierCurveTo(11, -9, 10, -17, 1, -17);
+  ctx.closePath();
+  const g = ctx.createLinearGradient(-12, -17, 8, 17);
+  g.addColorStop(0, '#b4232f'); g.addColorStop(1, '#7a1820');
+  ctx.fillStyle = g; ctx.fill();
+  ctx.strokeStyle = '#5a1117'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.22)';
+  ctx.beginPath(); ctx.ellipse(-5, -7, 3, 6, 0.2, 0, 2 * Math.PI); ctx.fill();
+  ctx.restore();
+}
+// Alles, was fließt: Trink- und Esstropfen, Haut, Atem, Harn, Leeren
+function _n9iFluss(ctx, s, F) {
+  if (s < 0) return;
+  const P = _n9i.plan, M = _N9I_MUND, BA = _N9I_BAUCH, G = _N9I_GLAS, T = _N9I_TELLER;
+  ctx.save();
+  // rein: Glas und Teller → Mund → Bauch
+  const rein = (t0, start, kurve, hell) => {
+    const u = (s - t0) / _N9I_TLAUF;
+    if (u < 0 || u >= 1) return;
+    let p, a = 1;
+    if (u < 0.55) p = _n9iQ(start, kurve, M, u / 0.55);          // gleichmäßig, kein Stau am Mund
+    else {
+      const v = (u - 0.55) / 0.45;
+      p = { x: M.x, y: M.y + (BA.y - M.y) * v };
+      a = 1 - _bioFxKlemme((v - 0.55) / 0.45);
+    }
+    ctx.globalAlpha = a;
+    _n9iTropfen(ctx, p.x, p.y, 3.6, hell ? '#60a5fa' : '#2563eb', '#1e3a8a');
+    ctx.globalAlpha = 1;
+  };
+  for (const t0 of P.trink) rein(t0, { x: G.x, y: G.o + 8 }, { x: 132, y: 58 }, false);
+  for (const t0 of _N9I_ESSEN) rein(t0, { x: T.x + 13, y: T.y - 25 }, { x: 130, y: 70 }, true);
+  // raus: Tropfen auf der Haut (rechter Arm)
+  _N9I_HAUT.forEach((t0, i) => {
+    const u = (s - t0) / _N9I_AUS;
+    if (u < 0 || u >= 1) return;
+    const y0 = _N9I_HAUT_Y[i];
+    ctx.globalAlpha = _bioFxKlemme(u / 0.15) * (1 - _bioFxKlemme((u - 0.55) / 0.45));
+    _n9iTropfen(ctx, _n9iArmRand(y0) + 4 + 18 * u, y0 + 12 * u * u, 3.2, '#3b82f6', '#1e3a8a');
+    ctx.globalAlpha = 1;
+  });
+  // raus: Atemwolke am Kopf
+  for (const t0 of _N9I_ATEM) {
+    const u = (s - t0) / _N9I_AUS;
+    if (u < 0 || u >= 1) continue;
+    const x = _N9I_KOPF.x + 22 + 34 * u, y = _N9I_KOPF.y + 6 - 8 * u, r = 3.5 + 5 * u;
+    ctx.globalAlpha = 0.9 * _bioFxKlemme(u / 0.12) * (1 - u);
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(x - r * 0.8, y + r * 0.2, r * 0.75, 0, 2 * Math.PI);
+    ctx.arc(x, y - r * 0.25, r, 0, 2 * Math.PI);
+    ctx.arc(x + r * 0.85, y + r * 0.2, r * 0.7, 0, 2 * Math.PI);
+    ctx.fill(); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  // Harn: Niere → Schlauch → Blase
+  for (const h of P.harn) {
+    const u = (s - h.t0) / _N9I_HLAUF;
+    if (u < 0 || u >= 1) continue;
+    const p = _n9iSchlauch(_N9I_NIERE[h.seite]);
+    const q = _n9iQ(p[0], p[1], p[2], u);
+    ctx.fillStyle = F.f; ctx.strokeStyle = F.r; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(q.x, q.y, 2.8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+  }
+  // Leeren: Harn rinnt aus der Blase nach unten in den Becher
+  const yl = _N9I_BECHER.u - 2 - _n9iBecherL(s) * _N9I_PXL;
+  for (const f of P.leeren) {
+    const u = (s - f) / _N9I_LEER;
+    if (u < 0 || u >= 1) continue;
+    const y0 = _N9I_BL.y + _N9I_BL.ry;
+    ctx.strokeStyle = F.r; ctx.lineWidth = 5; ctx.lineCap = 'round';
+    ctx.globalAlpha = 0.35;
+    ctx.beginPath(); ctx.moveTo(_N9I_BL.x, y0); ctx.lineTo(_N9I_BL.x, yl); ctx.stroke();
+    ctx.globalAlpha = 1; ctx.lineCap = 'butt';
+    for (let i = 0; i < 4; i++) {
+      const v = (u * 2.2 + i * 0.27) % 1;
+      const y = y0 + (yl - y0) * v;
+      ctx.fillStyle = F.f; ctx.strokeStyle = F.r; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.arc(_N9I_BL.x, y, 2.8, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+// Messbecher mit Liter-Skala; füllt sich bis zur Harnmenge des Tages
+function _n9iBecher(ctx, s, F) {
+  const B = _N9I_BECHER, boden = B.u - 2, w = B.r - B.l;
+  const vol = s < 0 ? 0 : _n9iBecherL(s);
+  ctx.save();
+  ctx.fillStyle = 'rgba(226,234,244,0.9)';
+  ctx.fillRect(B.l, B.o, w, B.u - B.o);
+  if (vol > 0.001) {
+    const yl = boden - vol * _N9I_PXL;
+    ctx.fillStyle = F.f; ctx.fillRect(B.l + 2, yl, w - 4, boden - yl);
+    ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.fillRect(B.r - 11, yl + 1, 4, boden - yl - 1);
+    ctx.strokeStyle = F.r; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(B.l + 2, yl); ctx.lineTo(B.r - 2, yl); ctx.stroke();
+  }
+  // Skala: Striche alle 0,5 l, Zahlen bei 1 l, 2 l, 3 l
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.2;
+  ctx.fillStyle = '#334155'; ctx.font = '700 10px sans-serif';
+  ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+  for (let k = 1; k <= 6; k++) {
+    const y = boden - k * 0.5 * _N9I_PXL, lang = k % 2 === 0;
+    ctx.beginPath(); ctx.moveTo(B.l, y); ctx.lineTo(B.l + (lang ? 11 : 6), y); ctx.stroke();
+    if (lang) ctx.fillText((k / 2) + ' l', B.l - 4, y);
+  }
+  // Glaswand mit Ausguss
+  ctx.strokeStyle = '#475569'; ctx.lineWidth = 2.2; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(B.l - 4, B.o - 3); ctx.lineTo(B.l, B.o + 2);
+  ctx.lineTo(B.l, B.u); ctx.lineTo(B.r, B.u); ctx.lineTo(B.r, B.o);
+  ctx.stroke();
+  ctx.restore();
+}
+// Anzeige „Wasser im Körper: 30 l“ unten rechts
+function _n9iKoerperWasser(ctx) {
+  const K = _N9I_KW;
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
+  _n9iRund(ctx, K.x, K.y, K.w, K.h, 8); ctx.fill(); ctx.stroke();
+  _n9iTropfen(ctx, K.x + 12, K.y + 16, 4.2, '#bfdbfe', '#2563eb');
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 12px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Wasser im Körper: 30 l', K.x + 22, K.y + 18);
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mm1 „Was bedeutet 4 · 6?“ (Kennung m5-punktefeld)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL4_PROFIL.md, Abschnitt m5-punktefeld
+// (Einheit mm1; Regeln N1–N3, Lehrkraft-Zeile V3). Ueberschrift = Frage der
+// Einheit: „Wie viel ist 4 · 6?“
+//
+// Was man sieht: ein Blatt Karopapier (Kaestchen 15 px). Darauf das
+// Punktefeld: Reihen gleich vieler blauer Punkte, ein Punkt je Kaestchen –
+// wie der Ziffernkasten mit „●“ im Heft (V4). Nach dem 5. Punkt einer Reihe
+// bleibt ein Kaestchen frei (kleine Luecke), nach der 5. Reihe eine ganze
+// Kaestchenzeile (groesserer Abstand). Rechts neben jeder Reihe eine kleine
+// Klammer „]“ mit der Anzahl je Reihe. Unter dem Feld die Plusaufgabe
+// („6 + 6 + 6 + 6 + 6 = 30“), darunter gross die Malaufgabe („5 · 6 = 30“).
+// Blau ist ueberall „Punkte je Reihe“: die Punkte, die Klammerzahl, jeder
+// Summand, die zweite Zahl der Malaufgabe. Kommt eine Reihe dazu, leuchten
+// sie, ihre Klammerzahl und IHR Summand gleichzeitig bernsteinfarben auf
+// (0,9 s) – so sieht man, welcher Summand zu welcher Reihe gehoert.
+//
+// Bewegung (jede Handlung bewegt sich; Bild und Zahl stimmen in jedem
+// Augenblick ueberein – Malaufgabe und Statuszeilen wechseln erst, wenn die
+// Bewegung angekommen ist):
+//   „− 1 Reihe“    die unterste Reihe hebt sich (0,15 s: kleiner Hub, Schatten
+//                  auf dem Papier) und fliegt mit ihrer Klammer nach rechts aus
+//                  dem Bild (0,65 s); ihr Summand „+ 6“ blendet dabei aus und
+//                  gibt danach seinen Platz frei. Ist die Reihe weg, springt
+//                  das Produkt in EINEM Schritt um 6 (federt kurz).
+//   „+ 1 Reihe“    eine Reihe gleitet von rechts herein (0,8 s) und setzt sich
+//                  unten an; dann erscheint ihr Summand, Reihe und Summand
+//                  leuchten, das Produkt springt um die Reihe.
+//   „− 1 je Reihe“ in jeder Reihe schrumpft der letzte Punkt und steigt weg
+//                  (gestaffelt von oben nach unten), danach ruecken die
+//                  Klammern nach (0,7 s); dann aendern sich alle Summanden.
+//   „+ 1 je Reihe“ erst ruecken die Klammern zur Seite, dann springt in jeder
+//                  Reihe ein Punkt dazu (gestaffelt, 0,7 s); ueber die Luecke
+//                  nach dem 5. Punkt rueckt die Klammer zwei Kaestchen.
+//                  Klammer und Punkt bewegen sich nacheinander, so decken sie
+//                  sich nie; die Klammerzahl einer Reihe wechselt mit IHREM Punkt.
+//   Sprungmarke    das alte Feld blendet aus (0,15 s), dann baut sich das Feld
+//                  Reihe fuer Reihe auf (0,3 s je Reihe). Jede Reihe kommt mit
+//                  ihrem Summanden und leuchtet; die Malaufgabe zeigt immer das
+//                  Feld, das gerade dasteht (1 · 6 = 6, 2 · 6 = 12 …). Gemessen
+//                  (Frames zu 16 ms): 6 · 6 ist nach 1,65 s fertig (104 Frames);
+//                  simfakten.js mit --frames=25 --verlauf=4 liest bis 125.
+//   „neu“          sofort Start 5 · 6, die Punkte blenden ein (0,35 s).
+// Wer waehrend einer Bewegung einen Knopf drueckt, laesst sie sofort ankommen;
+// dann geschieht das Neue. Jede Knopffolge ergibt so dieselben Zahlen.
+// Grenzen: 0 bis 10 Reihen, 1 bis 10 Punkte je Reihe. Darueber wackelt das
+// Feld, und _m5r-grenze zeigt „Mehr Reihen passen nicht ins Feld.“ bzw. „Mehr
+// Punkte passen nicht in eine Reihe.“ (bis zur naechsten Handlung; sonst ist
+// die Zeile ausgeblendet). Unter 0 Reihen bzw. 1 Punkt wackelt es nur.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_m5rMarke('5x6') …):
+//     „5 · 6“ · „4 · 6“ · „6 · 6“
+//   Reihe 2: „− 1 Reihe“ · „+ 1 Reihe“ (_m5rReihe(-1|1)) ·
+//            „− 1 je Reihe“ · „+ 1 je Reihe“ (_m5rJe(-1|1)) · „neu“ (_m5rNeu())
+// Der Knopf der Sprungmarke, deren Feld gerade dasteht (oder gebaut wird),
+// ist hervorgehoben.
+//
+// Statuszeilen (woertlich, jede mit mehr als 18 Zeichen):
+//   _m5r-reihen       „Reihen: 4, Punkte je Reihe: 6“
+//   _m5r-plus         „Plusaufgabe: 6 + 6 + 6 + 6 = 24“ · 0 Reihen „Plusaufgabe:
+//                     keine Reihe, also 0“ · 1 Reihe „Plusaufgabe: eine Reihe, also 6“
+//   _m5r-produkt      „Das Produkt von 4 · 6 ist 24.“
+//   _m5r-unterschied  „Unterschied zu 5 · 6: 6 weniger“ / „…: 0“ / „…: 6 mehr“
+//                     (bei n Punkten je Reihe „Unterschied zu 5 · n: …“)
+//   _m5r-grenze       nur an der Grenze (siehe oben)
+// Zwischen Zahl und „·“ steht ein geschuetztes Leerzeichen (U+00A0), damit
+// „5 · 6“ in der schmalen Anzeige nicht umbricht.
+//
+// Werte (nachgerechnet mit simcheck/werte.js):
+//   5 · 6 → 30, Unterschied 0 · 4 · 6 (auch Start + „− 1 Reihe“) → 24,
+//   6 weniger · 6 · 6 → 36, 6 mehr · frei: 0 · 7 → 0, 35 weniger ·
+//   6 · 9 → 54, 9 mehr.
+// Start: 5 · 6, fertig aufgebaut („Start: 5 Reihen zu je 6 Punkten“).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): das erste „− 1 Reihe“ ab 5 · 6
+// (nach dem Oeffnen, einer Sprungmarke oder „neu“) – ein Lichtring breitet
+// sich um die Reihe aus, die hinausfliegt, und sie fliegt bernsteinfarben
+// umrandet hinaus. Das widerlegt „29“: weg ist eine ganze Reihe zu 6 Punkten.
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-plus-/minus-schriftlich; Container
+// <div class="fpm-lehrkraft">, V3). Eigene Zeile unter den Heftknoepfen,
+// davor klein „Für die Lehrkraft:“:
+//   „Pause“ ↔ „weiter“ (_m5rAnhalten()): friert jede Bewegung sofort ein; im
+//     Bild oben links das Schild „Pause“ (Stelle und Aussehen wie in
+//     m5-plus-schriftlich).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_m5rTempo()): alles ein Drittel so schnell.
+//   „Zahlen verdecken: aus“ ↔ „… an“ (_m5rVerdecken()): verdeckt Plusaufgabe,
+//     Produkt und Unterschied – im Bild graue Karten mit „?“, in den
+//     Statuszeilen „verdeckt“. Punkte, Klammern und „4 · 6 =“ bleiben
+//     sichtbar: zum Vermuten an der Tafel.
+//   Nur das wechselnde Wort steht in einem eigenen <span> (wie plus-schriftlich).
+//   Hinweiszeile _m5r-lehrkraft (in der Pause bernsteinfarben, „lmp-status off“):
+//     sonst    „Für die Lehrkraft: „Pause“ hält alles an. „Zahlen verdecken“ lässt erst vermuten.“
+//     verdeckt „Zahlen verdeckt. Erst vermuten lassen, dann wieder aufdecken.“
+//     Pause    „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“
+//   So ist es gebaut: EIN Zeitfaktor (_m5rZeitfaktor: 0 Pause, 1/3 langsam,
+//   1 normal) an der einen Stelle, an der dt in die Bewegung geht (Anfang von
+//   _m5rUpdate). Waehrend der Pause bewegt kein Knopf etwas: „± 1 …“ wird
+//   VORGEMERKT, wenn nichts unterwegs ist (es beginnt mit „weiter“), und
+//   ENTFAELLT, wenn eine Bewegung steht (er liesse sie sofort ankommen); das
+//   Schild „Pause“ leuchtet dabei kurz auf (in echter Zeit). Eine Sprungmarke
+//   und „neu“ heben die Pause auf; Tempo und Verdecken bleiben stehen.
+//   Voreinstellung Pause aus, Tempo normal, Verdecken aus.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „Faktor“, „Faktoren“,
+// „Nachbaraufgabe“ und die Regel als Satz (kein „eine Reihe weniger ist 6
+// weniger“). Keine Namen, keine Punktwertung, keine Zeit, kein „falsch“.
+// Deterministisch, ohne Zufall: jede Zahl im Bild und in der Anzeige kommt aus
+// z.r (Reihen) und z.n (Punkte je Reihe).
+// ════════════════════════════════════════════════════════════════════════
+let _m5r = null;
+const _m5rMARKEN = { '5x6': [5, 6], '4x6': [4, 6], '6x6': [6, 6] };   // [Reihen, Punkte je Reihe]
+const _m5rREIHE = ['5x6', '4x6', '6x6'];
+const _m5rK = {
+  KA: 15,                          // Kaestchen (px): ein Punkt je Kaestchen
+  GX: 127, GY: 10,                 // linke obere Ecke des Feldes; 11 Kaestchen breit, mittig
+  MITTE: 210,                      // Mitte der Plus- und der Malaufgabe
+  MAXR: 10, MAXN: 10,              // Grenzen
+  RP: 5.2,                         // Radius eines Punkts
+  PY: 203, MY: 232,                // Grundlinien: Plusaufgabe, Malaufgabe
+  GP: 15, GM: 26, GK: 13,          // Schriftgrade: Plus, Mal, Klammerzahl
+  PX0: 4, PX1: 416, PY0: 4, PY1: 246,   // Papier
+  FLUG: 305,                       // so weit fliegt eine Reihe hinaus / kommt sie herein (px)
+  BAND: 6.5,                       // halbe Hoehe eines Leuchtbands: 13 px, Nachbarreihen beruehren sich nicht
+  T_HEB: 0.15, T_RAUS: 0.8, T_REIN: 0.8, T_JE: 0.7, T_LEER: 0.15, T_BAU: 0.3,
+  T_POP: 0.3, T_GLANZ: 0.9, T_NEU: 0.35, T_AHA: 1.4, LANGSAM: 1 / 3,
+  F_PUNKT: '#3b82f6', F_PRAND: '#1d4ed8', F_BLAU: '#1d4ed8',
+  F_TEXT: '#111827', F_KARO: '#d4e3f1', F_KLAMMER: '#64748b'
+};
+
+// 1234 -> "1 234" mit geschuetztem Leerzeichen (im Heft normales Leerzeichen)
+function _m5rFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+// „4 · 6“ mit geschuetzten Leerzeichen
+function _m5rMal(a, b) { return a + ' · ' + b; }
+// Kaestchenspalte des j-ten Punkts einer Reihe (nach dem 5. ein Kaestchen frei)
+function _m5rSpalte(j) { return j + (j >= 5 ? 1 : 0); }
+function _m5rPX(j) { const K = _m5rK; return K.GX + _m5rSpalte(j) * K.KA + K.KA / 2; }
+// Mitte der Reihe i (nach der 5. Reihe eine Kaestchenzeile frei)
+function _m5rPY(i) { const K = _m5rK; return K.GY + (i + (i >= 5 ? 1 : 0)) * K.KA + K.KA / 2; }
+// Klammer rechts neben einer Reihe mit n Punkten
+function _m5rKX(n) {
+  const K = _m5rK;
+  return n <= 0 ? K.GX + 2 : K.GX + (_m5rSpalte(n - 1) + 1) * K.KA + 2;
+}
+
+function _m5rInit() {
+  _m5r = { r: 5, n: 6, lauf: null, t: 0, fx: { teile: [] },
+           glanz: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], auf: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+           popP: 0, wackel: 0, ein: 0, ahaGlanz: 0, aha: false, grenze: '',
+           pause: false, langsam: false, verdeckt: false, blink: 0, vormerk: null };   // Lehrkraft
+}
+function _m5rHTML() {
+  const marke = k => {
+    const [r, n] = _m5rMARKEN[k];
+    return `<button class="sim-btn" id="_m5r-b-${k}" onclick="_m5rMarke('${k}')">${r}&nbsp;·&nbsp;${n}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel ist 4&nbsp;·&nbsp;6?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jede Reihe hat gleich viele Punkte. „−&nbsp;1 Reihe“ und „+&nbsp;1 Reihe“ ändern die Zahl der Reihen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5r-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5rREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_m5rReihe(-1)">−&nbsp;1 Reihe</button>
+          <button class="sim-btn" onclick="_m5rReihe(1)">+&nbsp;1 Reihe</button>
+          <button class="sim-btn" onclick="_m5rJe(-1)">−&nbsp;1 je Reihe</button>
+          <button class="sim-btn" onclick="_m5rJe(1)">+&nbsp;1 je Reihe</button>
+          <button class="sim-btn" onclick="_m5rNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_m5r-pause" onclick="_m5rAnhalten()">Pause</button>
+            <button class="sim-btn" id="_m5r-tempo" onclick="_m5rTempo()">Tempo: <span id="_m5r-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_m5r-verdeckt" onclick="_m5rVerdecken()">Zahlen verdecken: <span id="_m5r-verdeckt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_m5r-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5r-reihen" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5r-plus" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5r-produkt" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5r-unterschied" style="margin-top:6px"></div>
+        <div class="lmp-status off" id="_m5r-grenze" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 5 Reihen zu je 6 Punkten</p>
+  </div>`;
+}
+function _m5rSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+function _m5rStatus() {
+  if (!_m5r) return;
+  const z = _m5r, K = _m5rK, r = z.r, n = z.n, p = r * n, u = p - 5 * n;
+  const blau = s => '<b style="color:' + K.F_BLAU + '">' + s + '</b>';
+  _m5rSetze('_m5r-reihen', 'Reihen: ' + r + ', Punkte je Reihe: ' + blau(n));
+  let plus;
+  if (z.verdeckt) plus = 'verdeckt';
+  else if (r === 0) plus = 'keine Reihe, also 0';
+  else if (r === 1) plus = 'eine Reihe, also ' + blau(n);
+  else plus = new Array(r).fill(blau(n)).join(' + ') + ' = ' + _m5rFmt(p);
+  _m5rSetze('_m5r-plus', 'Plusaufgabe: ' + plus);
+  _m5rSetze('_m5r-produkt', 'Das Produkt von ' + _m5rMal(r, blau(n)) + ' ist ' +
+            (z.verdeckt ? 'verdeckt' : _m5rFmt(p)) + '.');
+  _m5rSetze('_m5r-unterschied', 'Unterschied zu ' + _m5rMal(5, blau(n)) + ': ' +
+            (z.verdeckt ? 'verdeckt' : u === 0 ? '0' : _m5rFmt(Math.abs(u)) + (u < 0 ? ' weniger' : ' mehr')));
+  const g = _m5rSetze('_m5r-grenze', z.grenze);
+  if (g && g.style) g.style.display = z.grenze ? '' : 'none';
+  // Sprungmarke hervorheben, deren Feld gerade dasteht oder gebaut wird
+  const ziel = z.lauf && z.lauf.art === 'bau' ? z.lauf.ziel : [r, n];
+  for (const k of _m5rREIHE) {
+    const b = document.getElementById('_m5r-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', _m5rMARKEN[k][0] === ziel[0] && _m5rMARKEN[k][1] === ziel[1]);
+  }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _m5rSetze('_m5r-pause', z.pause ? 'weiter' : 'Pause');
+  _m5rSetze('_m5r-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _m5rSetze('_m5r-verdeckt-an', z.verdeckt ? 'an' : 'aus');
+  const hz = _m5rSetze('_m5r-lehrkraft',
+    z.pause ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : z.verdeckt ? 'Zahlen verdeckt. Erst vermuten lassen, dann wieder aufdecken.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an. „Zahlen verdecken“ lässt erst vermuten.');
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_m5r-pause', z.pause], ['_m5r-verdeckt', z.verdeckt]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Sprungmarke: das Feld neu aufbauen, Reihe fuer Reihe. Hebt die Pause auf.
+function _m5rMarke(k) {
+  if (!_m5r || !_m5rMARKEN[k]) return;
+  const z = _m5r;
+  _m5rFertig();
+  z.pause = false; z.vormerk = null; z.blink = 0;
+  z.grenze = ''; z.aha = false; z.wackel = 0; z.ein = 0;
+  z.lauf = { art: 'bau', ziel: _m5rMARKEN[k].slice(), t: 0, k: 0, naechste: _m5rK.T_LEER };
+  _m5rStatus();
+}
+// „neu“: sofort der Start 5 · 6. Hebt die Pause auf.
+function _m5rNeu() {
+  if (!_m5r) return;
+  const z = _m5r;
+  z.lauf = null; z.pause = false; z.vormerk = null; z.blink = 0;
+  z.r = 5; z.n = 6; z.grenze = ''; z.aha = false; z.wackel = 0;
+  z.ein = _m5rK.T_NEU; z.popP = 0; z.ahaGlanz = 0;
+  z.glanz.fill(0); z.auf.fill(0);
+  _m5rStatus();
+}
+// Waehrend der Pause: vormerken, wenn nichts unterwegs ist; sonst entfaellt der Druck.
+function _m5rInDerPause(tat) {
+  const z = _m5r;
+  z.blink = 0.6;
+  if (!z.lauf) z.vormerk = tat;
+}
+// „− 1 Reihe“ / „+ 1 Reihe“
+function _m5rReihe(d) {
+  if (!_m5r || (d !== 1 && d !== -1)) return;
+  const z = _m5r, K = _m5rK;
+  if (z.pause) { _m5rInDerPause(() => _m5rReihe(d)); return; }
+  _m5rFertig();
+  z.grenze = '';
+  if (d < 0 && z.r <= 0) { z.wackel = 0.45; _m5rStatus(); return; }
+  if (d > 0 && z.r >= K.MAXR) {
+    z.wackel = 0.45; z.grenze = 'Mehr Reihen passen nicht ins Feld.';
+    _m5rStatus(); return;
+  }
+  if (d < 0) {
+    const i = z.r - 1, aha = !z.aha && z.r === 5 && z.n === 6;
+    z.lauf = { art: 'raus', t: 0, i, aha };
+    if (aha) {
+      // Aha: eine ganze Reihe zu 6 Punkten geht weg, nicht 1
+      z.aha = true; z.ahaGlanz = K.T_AHA;
+      _bioFxWelle(z.fx.teile, (_m5rPX(0) + _m5rPX(z.n - 1)) / 2, _m5rPY(i), '#f59e0b', 70);
+    }
+  } else z.lauf = { art: 'rein', t: 0, i: z.r };
+  _m5rStatus();
+}
+// „− 1 je Reihe“ / „+ 1 je Reihe“
+function _m5rJe(d) {
+  if (!_m5r || (d !== 1 && d !== -1)) return;
+  const z = _m5r, K = _m5rK;
+  if (z.pause) { _m5rInDerPause(() => _m5rJe(d)); return; }
+  _m5rFertig();
+  z.grenze = '';
+  if (d < 0 && z.n <= 1) { z.wackel = 0.45; _m5rStatus(); return; }
+  if (d > 0 && z.n >= K.MAXN) {
+    z.wackel = 0.45; z.grenze = 'Mehr Punkte passen nicht in eine Reihe.';
+    _m5rStatus(); return;
+  }
+  z.lauf = { art: 'je', t: 0, d };
+  _m5rStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+// „Pause“ ↔ „weiter“. Beim Weitermachen laeuft die Bewegung genau dort weiter,
+// wo sie stand; ein vorgemerkter Knopf wirkt jetzt.
+function _m5rAnhalten() {
+  if (!_m5r) return;
+  const z = _m5r;
+  if (z.pause) {
+    z.pause = false; z.blink = 0;
+    const v = z.vormerk;
+    z.vormerk = null;
+    if (v && !z.lauf) v();
+  } else z.pause = true;
+  _m5rStatus();
+}
+function _m5rTempo() {
+  if (!_m5r) return;
+  _m5r.langsam = !_m5r.langsam;
+  _m5rStatus();
+}
+function _m5rVerdecken() {
+  if (!_m5r) return;
+  _m5r.verdeckt = !_m5r.verdeckt;
+  _m5rStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _m5rZeitfaktor(z) { return z.pause ? 0 : z.langsam ? _m5rK.LANGSAM : 1; }
+
+// Die laufende Bewegung ankommen lassen: erst jetzt aendern sich die Zahlen.
+function _m5rLanden() {
+  const z = _m5r, K = _m5rK, L = z.lauf;
+  if (!L) return;
+  z.lauf = null;
+  if (L.art === 'raus') {
+    z.r -= 1;
+  } else if (L.art === 'rein') {
+    z.r += 1; z.glanz[z.r - 1] = K.T_GLANZ;
+  } else if (L.art === 'je') {
+    z.n += L.d;
+    for (let i = 0; i < z.r; i++) z.glanz[i] = K.T_GLANZ;
+  } else if (L.art === 'bau') {
+    // abgebrochen: die fehlenden Reihen sind sofort da
+    for (let i = L.k ? z.r : 0; i < L.ziel[0]; i++) { z.glanz[i] = K.T_GLANZ; z.auf[i] = K.T_POP; }
+    z.r = L.ziel[0]; z.n = L.ziel[1];
+  }
+  z.popP = K.T_POP;
+  _m5rStatus();
+}
+function _m5rFertig() { if (_m5r && _m5r.lauf) _m5rLanden(); }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5rUpdate(dt) {
+  if (!_m5r) return;
+  const z = _m5r, K = _m5rK;
+  const roh = _bioFxDt(dt);
+  z.blink = Math.max(0, z.blink - roh);               // Schild „Pause“ leuchtet in echter Zeit
+  dt = roh * _m5rZeitfaktor(z);                       // ab hier Sim-Zeit: 0 Pause, 1/3 langsam, 1 normal
+  z.t += dt;
+  for (let i = 0; i < 10; i++) {
+    z.glanz[i] = Math.max(0, z.glanz[i] - dt);
+    z.auf[i] = Math.max(0, z.auf[i] - dt);
+  }
+  z.popP = Math.max(0, z.popP - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  z.ein = Math.max(0, z.ein - dt);
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  const L = z.lauf;
+  if (L && dt > 0) {                                  // ohne Zeit kein Schritt im Ablauf
+    L.t += dt;
+    if (L.art === 'raus' && L.t >= K.T_RAUS) _m5rLanden();
+    else if (L.art === 'rein' && L.t >= K.T_REIN) _m5rLanden();
+    else if (L.art === 'je' && L.t >= K.T_JE) _m5rLanden();
+    else if (L.art === 'bau') {
+      while (z.lauf === L && L.t >= L.naechste - 1e-9) {
+        if (L.k === 0) { z.r = 0; z.n = L.ziel[1]; }  // das alte Feld ist ausgeblendet
+        if (L.k < L.ziel[0]) {
+          z.r = L.k + 1;
+          z.glanz[L.k] = K.T_GLANZ; z.auf[L.k] = K.T_POP; z.popP = K.T_POP;
+          L.k++;
+        }
+        L.naechste += K.T_BAU;
+        if (L.k >= L.ziel[0]) z.lauf = null;
+        _m5rStatus();
+      }
+    }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5rPapier(ctx) {
+  const K = _m5rK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, K.PX0 + 2, K.PY0 + 3, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  let x0 = K.GX, y0 = K.GY;                           // Raster am Feld ausgerichtet
+  while (x0 - K.KA > K.PX0 + 1) x0 -= K.KA;
+  while (y0 - K.KA > K.PY0 + 1) y0 -= K.KA;
+  for (let x = x0; x < K.PX1 - 1; x += K.KA) {
+    ctx.beginPath(); ctx.moveTo(x, K.PY0 + 1); ctx.lineTo(x, K.PY1 - 1); ctx.stroke();
+  }
+  for (let y = y0; y < K.PY1 - 1; y += K.KA) {
+    ctx.beginPath(); ctx.moveTo(K.PX0 + 1, y); ctx.lineTo(K.PX1 - 1, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.stroke();
+  ctx.restore();
+}
+// Ein Punkt (Wendeplaettchen): s = Groesse 0..1+, a = Deckkraft
+function _m5rPunkt(ctx, x, y, s, a) {
+  const K = _m5rK, r = K.RP * s;
+  if (a <= 0.01 || r <= 0.3) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = K.F_PRAND; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  if (r > 3) {                                        // Lichtpunkt: sieht aus wie ein Plaettchen
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+// Klammer „]“ rechts neben einer Reihe, daneben die Anzahl je Reihe (blau)
+function _m5rKlammer(ctx, x, y, n, a) {
+  const K = _m5rK;
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.strokeStyle = K.F_KLAMMER; ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath(); ctx.moveTo(x, y - 6); ctx.lineTo(x + 3, y - 6); ctx.lineTo(x + 3, y + 6); ctx.lineTo(x, y + 6); ctx.stroke();
+  ctx.fillStyle = K.F_BLAU; ctx.font = '700 ' + K.GK + 'px sans-serif';
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(_m5rFmt(n), x + 7, y + K.GK * 0.36);
+  ctx.restore();
+}
+// Leuchtband hinter einer Reihe (mit Klammer und Klammerzahl)
+function _m5rBand(ctx, xl, xr, y, a, aha) {
+  const B = _m5rK.BAND;
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = 'rgba(252,211,77,0.35)'; ctx.strokeStyle = aha ? '#d97706' : 'rgba(217,119,6,0.75)';
+  ctx.lineWidth = aha ? 2.5 : 1.8;
+  _bioFxRundRect(ctx, xl, y - B, xr - xl, 2 * B, B); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+// „± 1 je Reihe“ in Reihe i: wie weit ist ihr Punkt dazugekommen bzw. weg (0..1)?
+// Nacheinander statt gleichzeitig, damit sich Klammer und Punkt nie decken:
+// bei + 1 rueckt erst die Klammer (0–0,25 s), dann springt der Punkt herein;
+// bei − 1 verschwindet erst der Punkt, dann rueckt die Klammer (0,4–0,65 s).
+function _m5rJeStand(je, i) {
+  const start = (je.d > 0 ? 0.2 : 0) + i * 0.02, dauer = je.d > 0 ? 0.25 : 0.3;
+  return _bioFxKlemme((je.t - start) / dauer);
+}
+function _m5rJeKlammer(je) {
+  return je.d > 0 ? _bioFxEase.sanft(_bioFxKlemme(je.t / 0.25))
+                  : _bioFxEase.sanft(_bioFxKlemme((je.t - 0.4) / 0.25));
+}
+// Welche Reihen stehen gerade da, und wie bewegen sie sich?
+function _m5rReihen() {
+  const z = _m5r, K = _m5rK, L = z.lauf, E = _bioFxEase, kl = _bioFxKlemme;
+  let a = z.ein > 0 ? 1 - z.ein / K.T_NEU : 1;
+  if (L && L.art === 'bau' && L.k === 0) a *= 1 - kl(L.t / K.T_LEER);   // altes Feld blendet aus
+  const out = [];
+  for (let i = 0; i < z.r; i++) out.push({ i, dx: 0, dy: 0, a, flieg: false });
+  if (L && L.art === 'raus' && out[L.i]) {
+    // „hebt sich“: kleiner Hub und ein Schatten unter den Punkten, dann hinaus
+    const R = out[L.i], heb = kl(L.t / K.T_HEB), u = kl((L.t - K.T_HEB) / (K.T_RAUS - K.T_HEB));
+    R.dy = -2 * E.sanft(heb); R.dx = K.FLUG * E.rein(u); R.flieg = true; R.aha = L.aha; R.schatten = heb;
+  }
+  if (L && L.art === 'rein')
+    out.push({ i: L.i, dx: K.FLUG * (1 - E.raus(kl(L.t / K.T_REIN))), dy: 0, a: 1, flieg: true });
+  return out;
+}
+function _m5rFeld(ctx) {
+  const z = _m5r, K = _m5rK, L = z.lauf, E = _bioFxEase, kl = _bioFxKlemme;
+  const wk = z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / 0.45) : 0;
+  const n = z.n, reihen = _m5rReihen();
+  const je = L && L.art === 'je' ? L : null;
+  // Klammer: waehrend „± 1 je Reihe“ rueckt sie zur neuen Stelle (vor bzw. nach dem Punkt)
+  const kx = je ? _m5rKX(n) + (_m5rKX(n + je.d) - _m5rKX(n)) * _m5rJeKlammer(je) : _m5rKX(n);
+  ctx.save();
+  ctx.font = '700 ' + K.GK + 'px sans-serif';
+  const zahlBreite = ctx.measureText(_m5rFmt(Math.max(n, n + (je ? je.d : 0)))).width;
+  ctx.restore();
+  // Leuchtbaender hinter den Reihen (Reihe, Klammer und Klammerzahl gemeinsam)
+  for (const R of reihen) {
+    const y = _m5rPY(R.i) + R.dy, xl = _m5rPX(0) - K.RP - 4 + R.dx + wk, xr = kx + 7 + zahlBreite + 4 + R.dx + wk;
+    if (R.aha && z.ahaGlanz > 0) _m5rBand(ctx, xl, xr, y, Math.min(1, z.ahaGlanz / 0.5), true);
+    else if (!R.flieg && z.glanz[R.i] > 0) _m5rBand(ctx, xl, xr, y, R.a * z.glanz[R.i] / K.T_GLANZ, false);
+  }
+  for (const R of reihen) {
+    const y = _m5rPY(R.i) + R.dy;
+    const auf = z.auf[R.i] > 0 ? K.T_POP - z.auf[R.i] : null;   // Reihe erscheint gerade
+    const st = je ? _m5rJeStand(je, R.i) : 0;
+    if (R.schatten > 0) {                              // die Reihe hebt sich vom Papier ab
+      ctx.save();
+      ctx.globalAlpha = 0.18 * R.schatten; ctx.fillStyle = '#0f172a';
+      for (let j = 0; j < n; j++) {
+        ctx.beginPath(); ctx.arc(_m5rPX(j) + R.dx + wk + 1.5, y - R.dy + 2.5, K.RP, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    }
+    for (let j = 0; j < n; j++) {
+      let s = 1, a = R.a, dy = 0;
+      if (auf !== null) s = Math.max(0, E.federn(kl((auf - j * 0.015) / 0.18)));
+      if (je && je.d < 0 && j === n - 1) {             // letzter Punkt schrumpft und steigt weg
+        const u = E.sanft(st);
+        s *= 1 - u; dy = -7 * u; a *= 1 - u;
+      }
+      _m5rPunkt(ctx, _m5rPX(j) + R.dx + wk, y + dy, s, a);
+    }
+    if (je && je.d > 0 && st > 0)                      // neuer Punkt springt dazu
+      _m5rPunkt(ctx, _m5rPX(n) + R.dx + wk, y, Math.max(0, E.federn(st)), R.a);
+    // Die Klammerzahl zaehlt die Punkte, die gerade in DIESER Reihe stehen
+    const kn = je && st >= 0.5 ? n + je.d : n;
+    const ka = auf !== null ? R.a * kl(auf / 0.15) : R.a;
+    _m5rKlammer(ctx, kx + R.dx + wk, y, kn, ka);
+  }
+}
+// Plusaufgabe als Folge von Teilen: { s, f, k (Nummer des Summanden), a (Deckkraft), w (Breite 0..1) }
+function _m5rPlusTeile() {
+  const z = _m5r, K = _m5rK, L = z.lauf, r = z.r, n = z.n, kl = _bioFxKlemme;
+  if (r === 0) return [{ s: 'keine Reihe, also 0', f: K.F_TEXT }];
+  if (r === 1) return [{ s: 'eine Reihe, also', f: K.F_TEXT }, { s: _m5rFmt(n), f: K.F_BLAU, k: 0 }];
+  const t = [];
+  for (let k = 0; k < r; k++) {
+    // Der Summand der Reihe, die hinausfliegt, blendet erst aus und gibt dann
+    // seinen Platz frei – so schiebt sich nie ein sichtbares Zeichen ueber ein anderes.
+    let a = 1, w = 1;
+    if (L && L.art === 'raus' && k === r - 1) {
+      const u = kl(L.t / K.T_RAUS);
+      a = 1 - kl(u / 0.55); w = 1 - _bioFxEase.sanft(kl((u - 0.55) / 0.45));
+    }
+    if (k) t.push({ s: '+', f: K.F_TEXT, a, w });
+    t.push({ s: _m5rFmt(n), f: K.F_BLAU, k, a, w });
+  }
+  t.push({ s: '=', f: K.F_TEXT }, { s: _m5rFmt(r * n), f: K.F_TEXT, pop: true });
+  return t;
+}
+// Teile mittig setzen; zu breit -> kleiner. Jedes Zeichen steht mittig in seinem
+// Platz (so bleibt „·“ auch bei geschaetzter Schriftbreite mittig zwischen den Zahlen).
+// Leuchten hinter Summanden, deren Reihe leuchtet; Karten fuer „verdeckt“.
+function _m5rSetzen(ctx, teile, y, gr0, a0) {
+  const z = _m5r, K = _m5rK;
+  if (a0 <= 0.01) return;
+  const breite = t => (t.w === undefined ? 1 : t.w), deck = t => (t.a === undefined ? 1 : t.a);
+  let gr = gr0, br = [], luft = 0, ges = 0;
+  const messen = () => {
+    ctx.font = '700 ' + gr + 'px sans-serif';
+    br = teile.map(t => t.karte ? Math.max(gr * 1.4, ctx.measureText(t.s).width + gr * 0.6) : ctx.measureText(t.s).width);
+    luft = gr * 0.3; ges = 0;
+    teile.forEach((t, i) => { ges += (br[i] + (i ? luft : 0)) * breite(t); });
+  };
+  ctx.save();
+  messen();
+  const platz = K.PX1 - K.PX0 - 24;
+  if (ges > platz) { gr = Math.max(10, Math.floor(gr * platz / ges)); messen(); }
+  const xm = [];                                       // Mitte jedes Platzes
+  let x = K.MITTE - ges / 2;
+  teile.forEach((t, i) => {
+    if (i) x += luft * breite(t);
+    xm.push(x + br[i] * breite(t) / 2);
+    x += br[i] * breite(t);
+  });
+  // Leuchten hinter den Summanden, deren Reihe gerade leuchtet
+  teile.forEach((t, i) => {
+    if (t.k === undefined || !(z.glanz[t.k] > 0)) return;
+    ctx.globalAlpha = a0 * Math.min(1, z.glanz[t.k] / K.T_GLANZ) * deck(t);
+    ctx.fillStyle = 'rgba(252,211,77,0.55)'; ctx.strokeStyle = 'rgba(217,119,6,0.75)'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, xm[i] - br[i] / 2 - 3, y - gr * 0.82, br[i] + 6, gr * 1.04, 4); ctx.fill(); ctx.stroke();
+  });
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  teile.forEach((t, i) => {
+    const a = a0 * deck(t);
+    if (a <= 0.01) return;
+    ctx.globalAlpha = Math.min(1, a);
+    if (t.karte) { _m5rKarte(ctx, xm[i] - br[i] / 2, y - gr * 0.85, br[i], gr * 1.1); return; }
+    ctx.font = '700 ' + gr + 'px sans-serif';
+    ctx.fillStyle = t.f;
+    if (t.pop && z.popP > 0) {                         // das Ergebnis springt und federt
+      const k = Math.max(0.6, _bioFxEase.federn(1 - z.popP / K.T_POP));
+      ctx.save(); ctx.translate(xm[i], y - gr * 0.36); ctx.scale(k, k);
+      ctx.fillText(t.s, 0, gr * 0.36);
+      ctx.restore();
+    } else ctx.fillText(t.s, xm[i], y);
+  });
+  ctx.restore();
+}
+// Graue Karte mit „?“ (Zahlen verdecken)
+function _m5rKarte(ctx, x, y, w, h) {
+  ctx.save();
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#475569'; ctx.font = '700 ' + Math.round(Math.max(13, h * 0.8)) + 'px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('?', x + w / 2, y + h / 2 + Math.max(13, h * 0.8) * 0.36);
+  ctx.restore();
+}
+function _m5rRechnungen(ctx) {
+  const z = _m5r, K = _m5rK, L = z.lauf, r = z.r, n = z.n;
+  // waehrend die Sprungmarke das alte Feld ausblendet, blenden die Rechnungen mit aus
+  const a = L && L.art === 'bau' && L.k === 0 ? 1 - _bioFxKlemme(L.t / K.T_LEER) : 1;
+  // verdeckt: eine Karte statt der Plusaufgabe (s gibt nur ihre Breite vor, gezeigt wird „?“)
+  if (z.verdeckt) _m5rSetzen(ctx, [{ s: '6 + 6 + 6 + 6 + 6 = 30', karte: true }], K.PY, K.GP, a);
+  else _m5rSetzen(ctx, _m5rPlusTeile(), K.PY, K.GP, a);
+  const mal = [{ s: String(r), f: K.F_TEXT }, { s: '·', f: K.F_TEXT }, { s: _m5rFmt(n), f: K.F_BLAU },
+               { s: '=', f: K.F_TEXT },
+               z.verdeckt ? { s: '00', karte: true } : { s: _m5rFmt(r * n), f: K.F_TEXT, pop: true }];
+  _m5rSetzen(ctx, mal, K.MY, K.GM, a);
+}
+function _m5rDraw(ctx, cv) {
+  if (!_m5r) return;
+  const z = _m5r, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5rPapier(ctx);
+  _bioFxDraw(ctx, z.fx.teile);                        // Lichtring hinter den Punkten
+  _m5rFeld(ctx);
+  _m5rRechnungen(ctx);
+  if (z.pause) _m5rPauseSchild(ctx);
+}
+// Schild „Pause“ oben links – gleiche Stelle, Groesse und Farbe wie in
+// m5-plus-schriftlich, damit die Lehrkraft es ueberall am selben Ort findet.
+// Leuchtet kurz auf, wenn waehrend der Pause ein Knopf gedrueckt wird.
+function _m5rPauseSchild(ctx) {
+  const z = _m5r, w = 64, h = 25, x = 8, y = 8;       // endet vor dem Feld (x = 127)
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Pause', x + 20, y + 17.5);
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mm2 „Was passiert bei mal 10?“ (Kennung m5-mal-zehn, Praefix _m5s)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL4_PROFIL.md, Abschnitte mm2 und m5-mal-zehn.
+// Ueberschrift = Frage der Einheit: „Wie viel ist 34 · 10?“
+//
+// WAS MAN SIEHT (Leinwand 420 x 250): eine Stellenwerttafel T | H | Z | E,
+// rechts neben einer schmalen Beschriftungsspalte („Ziffern“, „Material“).
+//   - Kopfzeile: Buchstabe gross, darunter das Wort (Tausender ... Einer),
+//     jede Spalte in ihrer Farbe (wie m5-buendeln: T lila, H rot, Z blau,
+//     E gruen).
+//   - Kartenzeile: je Stelle eine Ziffernkarte in der Farbe ihrer Spalte.
+//     Eine Stelle INNERHALB der Zahl ohne Material traegt die orange Karte 0,
+//     und ihre Materialspalte ist grau gestrichelt umrandet (wie mz3).
+//     Spalten links der ersten Ziffer gehoeren nicht zur Zahl: blass getoent.
+//   - Materialzeile, alles untereinander: Einer = gruene Wuerfelchen in
+//     Fuenfersaeulen, Zehner = liegende blaue Stangen (Fuenfermarke, Luecke
+//     nach fuenf), Hunderter = rote Platten und Tausender = lila Wuerfel in
+//     Fuenfersaeulen. So passt beim Gleiten jede Ordnung zur naechsten.
+//   Karte und Material einer Spalte tragen dieselbe Farbe: das ist die
+//   Verbindung Bild <-> Zeichen (MATHE_PROFIL § 10.2).
+//
+// KNOEPFE (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_m5sMarke('…'), Wahlgruppe):
+//     „7 · 10“ · „34 · 10“ · „34 · 100“
+//     Eine Sprungmarke legt die Startzahl neu (die Stuecke fallen gestaffelt in
+//     ihre Plaetze, 0,7 s) und spielt danach mal 10 ab („34 · 100“ zweimal,
+//     dazwischen 0,3 s Ruhe). So braucht der Heftschritt nur EINEN Knopf (N1).
+//   Reihe 2: „mal 10“ (_m5sMal: mal 10 auf die Zahl, die gerade in der Tafel
+//     steht) · „10 mehr“ (_m5sMehr, Gegenprobe) · „neu“ (_m5sNeu: wieder 34,
+//     nichts gerechnet)
+//   Ohne Knopf: _m5sLegen(n) legt eine freie Startzahl (1 bis 9 999). Nur fuer
+//     den Rechentest mit werte.js (305 · 10 aus dem Bauplan) – am Bildschirm
+//     ist 305 mit den Knoepfen nicht zu erreichen.
+//
+// BEWEGUNG:
+//   „mal 10“: jedes Stueck waechst zur naechsten Form (Wuerfel -> Stange,
+//     Stange -> Platte, Platte -> Tausenderwuerfel) und gleitet dabei eine
+//     Spalte weiter (0,9 s, kleiner Bogen, kurzes Aufbluehen). Die Ziffern-
+//     karten gleiten in ihrer Zeile mit und nehmen die Farbe der neuen Spalte
+//     an. Danach faellt in die leer gewordene Einerspalte eine orange Karte
+//     „0“ (0,35 s, von knapp oberhalb, waechst dabei auf volle Groesse) und
+//     leuchtet kurz; die Einerspalte wird gestrichelt umrandet.
+//     ERST BEI DER LANDUNG der Karte springen die Statuszeilen auf das Ergebnis.
+//   „10 mehr“: eine Stange gleitet von unten in Z (0,7 s), sonst bleibt alles
+//     stehen; die Karte Z zaehlt eins weiter. Werden es zehn Stangen, gleiten
+//     sie zu einem Quadrat zusammen und wandern als Platte nach H (wie mz1).
+//   Grenze: Steht schon etwas bei T, hat die Tafel fuer mal 10 keine Stelle
+//     mehr (ebenso bei 10 mehr ueber 9 999): die Spalte T wackelt, und die
+//     Zeile „Die Tafel hat keine Stelle mehr.“ erscheint. Sonst aendert sich nichts.
+//   Wer waehrend einer Bewegung „mal 10“ oder „10 mehr“ drueckt, laesst alles
+//   Laufende sofort landen (auch den Rest einer Sprungmarke); dann geschieht
+//   das Neue. So ergibt jede Knopffolge denselben Zustand.
+//
+// STATUSZEILEN (woertlich, alle > 18 Zeichen; Tausendertrenner U+00A0):
+//   _m5s-aufgabe   „Gerechnet wird: noch nichts“ · „Gerechnet wird: 34 · 10“ ·
+//                  „Gerechnet wird: 34 · 100“ · nach „10 mehr“ „Gerechnet wird: 34 + 10“
+//                  Kettet „mal 10“ an, zaehlt sie ab der Startzahl der Kette
+//                  (34 · 100, nicht 340 · 10). Sie steht schon WAEHREND der Bewegung.
+//   _m5s-vorher    „Vorher in der Tafel: 3 Z, 4 E“ (Startzahl der Kette; ohne
+//                  Rechnung: was gerade in der Tafel steht)
+//   _m5s-nachher   „Nachher in der Tafel: …“ -> „Nachher in der Tafel: 3 H, 4 Z, 0 E“
+//   _m5s-stellen   „Jede Ziffer ist gerückt um: …“ -> „… um: 1 Stelle“ /
+//                  „… um: 2 Stellen“; nach „10 mehr“ „… um: 0 Stellen“
+//   _m5s-ergebnis  „Ergebnis der Aufgabe: …“ -> „Ergebnis der Aufgabe: 340“
+//   _m5s-vergleich nur nach „10 mehr“: „Zum Vergleich: 34 + 10 = 44“. Sie bleibt
+//                  stehen, solange die Tafel mit derselben Startzahl rechnet –
+//                  „10 mehr“ und danach „34 · 10“ zeigt also 340 UND 44
+//                  nebeneinander. Eine andere Startzahl oder „neu“ nimmt sie weg.
+//   _m5s-meldung   nur an der Grenze: „Die Tafel hat keine Stelle mehr.“
+//
+// WERTE (jede Zeile nachgerechnet mit simcheck/werte.js):
+//   7 · 10   -> vorher 7 E                  -> nachher 7 Z, 0 E           · 1 Stelle  · 70
+//   34 · 10  -> vorher 3 Z, 4 E             -> nachher 3 H, 4 Z, 0 E      · 1 Stelle  · 340
+//   34 · 100 -> vorher 3 Z, 4 E             -> nachher 3 T, 4 H, 0 Z, 0 E · 2 Stellen · 3 400
+//               (ebenso „34 · 10“ + „mal 10“)
+//   frei 305 · 10 -> vorher 3 H, 0 Z, 5 E   -> nachher 3 T, 0 H, 5 Z, 0 E · 1 Stelle  · 3 050
+//   „10 mehr“ ab Start: 34 + 10 = 44 (vorher 3 Z, 4 E, nachher 4 Z, 4 E, 0 Stellen)
+// START: 34 in der Tafel, nicht gerechnet („Start: 34 in der Tafel“).
+//
+// AHA (_bioFx, ruhig, OHNE Textstreifen): in 34 · 10 kommen die 3 Stangen als
+// 3 Platten in der Hunderterspalte an – dort laeuft ein Lichtring, und die
+// Platten leuchten 2,4 s nach. Dahin kommt „10 mehr“ nie. Einmal je Laden.
+//
+// FUER DIE LEHRKRAFT (Bauplan: eigene Zeile unter den Heftknoepfen, in
+// <div class="fpm-lehrkraft">, davor klein „Für die Lehrkraft:“ – Bauart wie
+// m5-plus-schriftlich / m5-minus-schriftlich):
+//   „Pause“ <-> „weiter“ (_m5sAnhalten): friert JEDE Bewegung sofort ein (Gleiten,
+//     fallende Karte, Lichtring); „weiter“ macht genau dort weiter. Im Bild
+//     oben links das Schild „Pause“ (Stelle und Aussehen wie in m5-plus-schriftlich;
+//     dort steht in diesem Bausatz nichts, die Tafel beginnt erst bei x = 74).
+//   „Tempo: normal“ <-> „Tempo: langsam“ (_m5sTempo): alles ein Drittel so schnell.
+//   „Material: an“ <-> „Material: aus“ (_m5sMaterial): blendet das Material aus,
+//     nur die Karten bleiben – der Weg vom Bild zum Zeichen. Wirkt sofort, auch
+//     in der Pause (Blende in echter Zeit, 0,35 s).
+//   Nur das wechselnde Wort steht in einem eigenen <span> (_m5s-tempo-an,
+//   _m5s-material-an), wie in m5-plus-schriftlich.
+//   Hinweiszeile _m5s-lehrkraft: sonst „Für die Lehrkraft: „Pause“ hält alles
+//     an. „Material: aus“ zeigt nur die Karten.“ · in der Pause (bernstein)
+//     „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“
+//   Waehrend der Pause bewegt KEIN Heftknopf etwas: „mal 10“ / „10 mehr“
+//     entfallen, wenn gerade etwas laeuft, sonst werden sie VORGEMERKT und
+//     beginnen mit „weiter“ (das Schild leuchtet kurz auf). Eine Sprungmarke
+//     oder „neu“ laedt neu und HEBT DIE PAUSE AUF (Bauplan). Tempo und Material
+//     bleiben ueber „neu“ und Sprungmarken stehen.
+//   EIN Zeitfaktor (_m5sZeitfaktor: 0 Pause, 1/3 langsam, 1 normal) an der
+//   einen Stelle, an der dt in die Bewegung geht. Voreinstellung (Pause aus,
+//   Tempo normal, Material an): bildgleich, kein Text anders.
+//
+// NICHT AM BILDSCHIRM (sim_plan.nicht_am_bildschirm): „links“ (auch „nach
+// links“), „Null“ als Wort (die Ziffer 0 steht natuerlich da), „anhängen“, die
+// Regel als Satz. Kein „falsch“, keine Punkte, keine Zeit, keine Namen.
+// Deterministisch, ohne Zufall: jede Zahl im Bild kommt aus _m5sZiffern().
+// ════════════════════════════════════════════════════════════════════════
+let _m5s = null;
+const _m5sMARKEN = { '7x10': [7, 1], '34x10': [34, 1], '34x100': [34, 2] };   // [Startzahl, wie oft mal 10]
+const _m5sREIHE = ['7x10', '34x10', '34x100'];
+const _m5sAUFSCHRIFT = { '7x10': '7&nbsp;·&nbsp;10', '34x10': '34&nbsp;·&nbsp;10', '34x100': '34&nbsp;·&nbsp;100' };
+const _m5sSTART = 34;
+const _m5sKURZ = ['T', 'H', 'Z', 'E'];
+const _m5sWORT = ['Tausender', 'Hunderter', 'Zehner', 'Einer'];
+const _m5sK = {
+  X0: 6, X1: 414, Y0: 6, Y1: 244,         // Brett
+  LX: 74, CW: 85,                         // Tafel ab x = 74, vier Spalten zu 85 px (bis 414)
+  YK: 40, YC: 94, KY: 67,                 // Kopfzeile bis 40, Kartenzeile bis 94 (Mitte 67), darunter Material
+  KW: 40, KH: 46,                         // Ziffernkarte
+  T_LADEN: 0.7, T_WARTEN: 0.3, T_GLEIT: 0.9, T_NULL: 0.35,
+  T_STANGE: 0.7, T_SAMMEL: 0.5, T_BUENDEL: 0.6, T_GLANZ: 1.0, T_POP: 0.35,
+  NULL: { grund: '#ffedd5', rand: '#ea580c', schrift: '#c2410c' }   // Karte 0 (wie mz3)
+};
+// Farben je Spalte 0 T · 1 H · 2 Z · 3 E (Material wie m5-buendeln)
+const _m5sFARBE = [
+  { grund: '#f5f3ff', karte: '#ede9fe', fuell: '#c4b5fd', oben: '#ede9fe', seite: '#a78bfa', rand: '#6d28d9' },
+  { grund: '#fef2f2', karte: '#fee2e2', fuell: '#fca5a5', linie: 'rgba(185,28,28,0.35)', rand: '#b91c1c' },
+  { grund: '#eff6ff', karte: '#dbeafe', fuell: '#93c5fd', linie: 'rgba(29,78,216,0.45)', rand: '#1d4ed8' },
+  { grund: '#f0fdf4', karte: '#dcfce7', fuell: '#86efac', licht: '#dcfce7', rand: '#15803d' }
+];
+
+// ── Rechnen: alles kommt aus denselben Ziffern wie die Zeichnung ─────────
+function _m5sFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00A0'); }   // geschuetztes Leerzeichen
+function _m5sZiffern(n) {
+  return [Math.floor(n / 1000) % 10, Math.floor(n / 100) % 10, Math.floor(n / 10) % 10, n % 10];
+}
+function _m5sErste(d) { for (let c = 0; c < 3; c++) if (d[c]) return c; return 3; }
+// „3 H, 0 Z, 5 E“ – ab der ersten Ziffer, jede Stelle bis E
+function _m5sTafelText(n) {
+  const d = _m5sZiffern(n), t = [];
+  for (let c = _m5sErste(d); c < 4; c++) t.push(d[c] + ' ' + _m5sKURZ[c]);
+  return t.join(', ');
+}
+function _m5sStellenText(k) { return k + (k === 1 ? ' Stelle' : ' Stellen'); }
+function _m5sMitte(c) { return _m5sK.LX + c * _m5sK.CW + _m5sK.CW / 2; }
+// Platz des i-ten Stuecks in Spalte c (Kasten x, y, w, h)
+function _m5sPlatz(c, i) {
+  // ALLES liegt untereinander (Fuenfersaeulen, liegende Stangen): So passt beim
+  // Gleiten jede Ordnung zur naechsten, und kein Stueck faehrt durch ein anderes.
+  // (Mit stehenden Stangen nebeneinander ueberlagerten sich die Stuecke auf dem
+  // Weg von Z nach H – am Bild gesehen.)
+  const K = _m5sK, x0 = K.LX + c * K.CW;
+  if (c === 3) {                                  // Einer: Fuenfersaeulen
+    const s = Math.floor(i / 5), r = i % 5;
+    return { x: x0 + 27 + s * 17, y: K.YC + 10 + r * 15, w: 13, h: 13 };
+  }
+  if (c === 2)                                    // Zehner: liegende Stangen untereinander, Luecke nach fuenf
+    return { x: x0 + 7.5, y: K.YC + 10 + i * 9 + (i >= 5 ? 4 : 0), w: 70, h: 7 };
+  const s = Math.floor(i / 5), r = i % 5;         // Hunderter, Tausender: Fuenfersaeulen
+  return { x: x0 + 14.5 + s * 30, y: K.YC + 6 + r * 28, w: 26, h: 26 };
+}
+
+// ── Zustand ─────────────────────────────────────────────────────────────
+function _m5sInit() {
+  _m5s = { t: 0, zahl: _m5sSTART, start: _m5sSTART, mal: 0, letzte: null, plusVon: 0,
+           vergleich: null, meldung: '', lauf: null, schlange: [],
+           pause: false, langsam: false, material: true, matA: 1, blink: 0, vormerken: null,
+           aha: false, ahaGlanz: 0, ahaX: 0, ahaY: 0, wackel: 0, nullGlanz: 0,
+           pop: [9, 9, 9, 9], fx: { teile: [] } };
+  _m5sLaden(_m5sSTART, 0, true);
+}
+// Startzahl n neu legen; danach `schritte`-mal mal 10 abspielen.
+function _m5sLaden(n, schritte, erstes) {
+  const z = _m5s;
+  const alt = erstes ? null : _m5sZiffern(z.zahl);
+  z.zahl = n; z.start = n; z.mal = 0; z.letzte = null; z.meldung = '';
+  if (z.vergleich && z.vergleich.a !== n) z.vergleich = null;
+  z.aha = false; z.ahaGlanz = 0; z.nullGlanz = 0; z.wackel = 0; z.pop = [9, 9, 9, 9];
+  z.pause = false; z.vormerken = null; z.blink = 0;            // neu laden hebt die Pause auf
+  z.fx.teile.length = 0;
+  z.lauf = { art: 'laden', t: 0, dauer: _m5sK.T_LADEN, alt, neu: _m5sZiffern(n) };
+  z.schlange = [];
+  for (let k = 0; k < schritte; k++) z.schlange.push('warten', 'mal');
+}
+// Einen mal-10-Schritt beginnen. false an der Grenze.
+function _m5sMalStart() {
+  const z = _m5s, K = _m5sK;
+  if (z.zahl >= 1000) {
+    z.meldung = 'Die Tafel hat keine Stelle mehr.'; z.wackel = 0.45; z.schlange = [];
+    return false;
+  }
+  if (z.vergleich && z.vergleich.a !== z.start) z.vergleich = null;
+  z.meldung = '';
+  // Der Aha-Schein gehoert zu den Platten in H; gleiten sie weiter, laeuft er rasch aus.
+  z.ahaGlanz = Math.min(z.ahaGlanz, 0.25);
+  z.lauf = { art: 'mal', t: 0, dauer: K.T_GLEIT + K.T_NULL, von: _m5sZiffern(z.zahl),
+             nach: _m5sZiffern(z.zahl * 10), aha: z.start === _m5sSTART && z.mal === 0 && !z.aha,
+             ahaFertig: false };
+  return true;
+}
+// „10 mehr“ beginnen: eine Stange, bei zehn Stangen ein Buendel weiter nach H (und T).
+function _m5sPlusStart() {
+  const z = _m5s, K = _m5sK;
+  if (z.zahl + 10 > 9999) {
+    z.meldung = 'Die Tafel hat keine Stelle mehr.'; z.wackel = 0.45;
+    return false;
+  }
+  const von = _m5sZiffern(z.zahl), w = von.slice();
+  const phasen = [{ art: 'stange', dauer: K.T_STANGE }];
+  w[2] += 1;
+  for (let c = 2; c >= 1 && w[c] === 10; c--) {
+    phasen.push({ art: 'buendel', c, dauer: K.T_SAMMEL + K.T_BUENDEL });
+    w[c] = 0; w[c - 1] += 1;
+  }
+  z.meldung = '';
+  z.lauf = { art: 'plus', t: 0, i: 0, pt: 0, phasen, vonZahl: z.zahl,
+             zw: von.slice(), karten: von.slice() };
+  return true;
+}
+// Laufende Bewegung beenden und ihren Zustand uebernehmen.
+function _m5sLaufLanden(sofort) {
+  const z = _m5s, L = z.lauf;
+  if (!L) return;
+  z.lauf = null;
+  if (L.art === 'mal') {
+    z.zahl *= 10; z.mal += 1; z.letzte = 'mal';
+    if (L.aha) z.aha = true;                       // einmal je Laden, auch wenn sofort gelandet
+    if (!sofort) z.nullGlanz = _m5sK.T_GLANZ;      // die Karte 0 ist beim Fallen schon gewachsen: kein zweites Einfedern
+  } else if (L.art === 'plus') {
+    const a = L.vonZahl, b = a + 10;
+    z.zahl = b; z.letzte = 'plus'; z.plusVon = a; z.start = b; z.mal = 0;
+    z.vergleich = { a, b };
+  }
+}
+function _m5sNaechster() {
+  const z = _m5s, s = z.schlange.shift();
+  if (s === 'warten') z.lauf = { art: 'warten', t: 0, dauer: _m5sK.T_WARTEN };
+  else if (s === 'mal') { _m5sMalStart(); _m5sStatus(); }
+}
+// Alles Laufende und Vorgemerkte sofort landen lassen (vor jeder neuen Rechnung).
+function _m5sAllesLanden() {
+  const z = _m5s;
+  for (let schutz = 0; (z.lauf || z.schlange.length) && schutz < 24; schutz++) {
+    if (z.lauf) { _m5sLaufLanden(true); continue; }
+    if (z.schlange.shift() === 'mal') _m5sMalStart();
+  }
+}
+
+// ── Oberflaeche ─────────────────────────────────────────────────────────
+function _m5sHTML() {
+  const marke = (k, i) =>
+    `<button class="sim-btn" id="_m5s-b-${i}" onclick="_m5sMarke('${k}')">${_m5sAUFSCHRIFT[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viel ist 34&nbsp;·&nbsp;10?</h3>
+    <div class="fpm-note" style="margin-top:2px">„mal 10“ verändert jedes Stück. Sieh genau hin: Wohin gleiten die Karten?</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5s-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5sREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5s-mal" onclick="_m5sMal()">mal 10</button>
+          <button class="sim-btn" id="_m5s-mehr" onclick="_m5sMehr()">10 mehr</button>
+          <button class="sim-btn" onclick="_m5sNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_m5s-pause" onclick="_m5sAnhalten()">Pause</button>
+            <button class="sim-btn" id="_m5s-tempo" onclick="_m5sTempo()">Tempo: <span id="_m5s-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_m5s-material" onclick="_m5sMaterial()">Material: <span id="_m5s-material-an">an</span></button>
+          </div>
+          <div class="lmp-status on" id="_m5s-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5s-aufgabe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5s-vorher" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5s-nachher" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5s-stellen" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5s-ergebnis" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5s-vergleich" style="margin-top:6px;display:none"></div>
+        <div class="lmp-status off" id="_m5s-meldung" style="margin-top:6px;display:none"></div>
+        <div class="fpm-note" style="margin-top:10px">T Tausender · H Hunderter · Z Zehner · E Einer</div>
+        <div class="fpm-note" style="margin-top:6px">Gestrichelt: In dieser Spalte liegt kein Stück.</div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 34 in der Tafel</p>
+  </div>`;
+}
+function _m5sSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+function _m5sZeige(id, html) {                     // Zeile nur zeigen, wenn sie etwas sagt
+  const e = _m5sSetze(id, html || '');
+  if (e && e.style) e.style.display = html ? '' : 'none';
+}
+// Was die Statuszeilen gerade beschreiben: eine laufende oder die letzte Rechnung.
+function _m5sAnsicht() {
+  const z = _m5s, L = z.lauf;
+  if (L && L.art === 'mal') return { art: 'mal', start: z.start, mal: z.mal + 1, fertig: false };
+  if (L && L.art === 'plus') return { art: 'plus', von: L.vonZahl, fertig: false };
+  if (z.letzte === 'mal') return { art: 'mal', start: z.start, mal: z.mal, fertig: true };
+  if (z.letzte === 'plus') return { art: 'plus', von: z.plusVon, fertig: true };
+  return { art: 'nichts' };
+}
+function _m5sStatus() {
+  if (!_m5s) return;
+  const z = _m5s, a = _m5sAnsicht();
+  let aufgabe = 'noch nichts', vorher = _m5sTafelText(z.zahl), nachher = '…', stellen = '…', erg = '…';
+  if (a.art === 'mal') {
+    aufgabe = _m5sFmt(a.start) + ' · ' + _m5sFmt(Math.pow(10, a.mal));
+    vorher = _m5sTafelText(a.start);
+    if (a.fertig) { nachher = _m5sTafelText(z.zahl); stellen = _m5sStellenText(a.mal); erg = '<b>' + _m5sFmt(z.zahl) + '</b>'; }
+  } else if (a.art === 'plus') {
+    aufgabe = _m5sFmt(a.von) + ' + 10';
+    vorher = _m5sTafelText(a.von);
+    if (a.fertig) { nachher = _m5sTafelText(z.zahl); stellen = _m5sStellenText(0); erg = '<b>' + _m5sFmt(z.zahl) + '</b>'; }
+  }
+  _m5sSetze('_m5s-aufgabe', 'Gerechnet wird: ' + aufgabe);
+  _m5sSetze('_m5s-vorher', 'Vorher in der Tafel: ' + vorher);
+  _m5sSetze('_m5s-nachher', 'Nachher in der Tafel: ' + nachher);
+  _m5sSetze('_m5s-stellen', 'Jede Ziffer ist gerückt um: ' + stellen);
+  _m5sSetze('_m5s-ergebnis', 'Ergebnis der Aufgabe: ' + erg);
+  const v = z.vergleich && !(z.lauf && z.lauf.art === 'plus') ? z.vergleich : null;
+  _m5sZeige('_m5s-vergleich', v ? 'Zum Vergleich: ' + _m5sFmt(v.a) + ' + 10 = ' + _m5sFmt(v.b) : '');
+  _m5sZeige('_m5s-meldung', z.meldung);
+  // Die Sprungmarke der Rechnung, die gerade gezeigt wird, ist hervorgehoben.
+  const aktiv = a.art !== 'mal' ? null
+              : a.start === 7 && a.mal === 1 ? '7x10'
+              : a.start === 34 && a.mal === 1 ? '34x10'
+              : a.start === 34 && a.mal === 2 ? '34x100' : null;
+  _m5sREIHE.forEach((k, i) => {
+    try { document.getElementById('_m5s-b-' + i).classList.toggle('primary', k === aktiv); } catch (e) { /* Mini-DOM */ }
+  });
+  // Fuer die Lehrkraft
+  _m5sSetze('_m5s-pause', z.pause ? 'weiter' : 'Pause');
+  _m5sSetze('_m5s-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _m5sSetze('_m5s-material-an', z.material ? 'an' : 'aus');
+  const hz = _m5sSetze('_m5s-lehrkraft', z.pause
+    ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an. „Material: aus“ zeigt nur die Karten.');
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_m5s-pause', z.pause], ['_m5s-material', !z.material]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5sMarke(k) {
+  if (!_m5s || !_m5sMARKEN[k]) return;
+  const [n, schritte] = _m5sMARKEN[k];
+  _m5sLaden(n, schritte, false);
+  _m5sStatus();
+}
+function _m5sNeu() {
+  if (!_m5s) return;
+  _m5s.vergleich = null;
+  _m5sLaden(_m5sSTART, 0, false);
+  _m5sStatus();
+}
+// Kein Knopf: freie Startzahl fuer den Rechentest (werte.js), z. B. _m5sLegen(305).
+function _m5sLegen(n) {
+  if (!_m5s) return;
+  n = Math.round(Number(n));
+  if (!(n >= 1 && n <= 9999)) return;
+  _m5sLaden(n, 0, false);
+  _m5sStatus();
+}
+function _m5sMal() {
+  if (!_m5s) return;
+  const z = _m5s;
+  if (z.pause) {                                   // in der Pause: vormerken oder entfallen lassen
+    z.blink = 0.6;
+    if (!z.lauf && !z.schlange.length) z.vormerken = 'mal';
+    return;
+  }
+  _m5sAllesLanden();
+  _m5sMalStart();
+  _m5sStatus();
+}
+function _m5sMehr() {
+  if (!_m5s) return;
+  const z = _m5s;
+  if (z.pause) {
+    z.blink = 0.6;
+    if (!z.lauf && !z.schlange.length) z.vormerken = 'plus';
+    return;
+  }
+  _m5sAllesLanden();
+  _m5sPlusStart();
+  _m5sStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _m5sAnhalten() {
+  if (!_m5s) return;
+  const z = _m5s;
+  if (z.pause) {
+    z.pause = false; z.blink = 0;
+    const v = z.vormerken;
+    z.vormerken = null;
+    if (v === 'mal') _m5sMalStart();
+    else if (v === 'plus') _m5sPlusStart();
+  } else z.pause = true;
+  _m5sStatus();
+}
+function _m5sTempo() {
+  if (!_m5s) return;
+  _m5s.langsam = !_m5s.langsam;
+  _m5sStatus();
+}
+function _m5sMaterial() {
+  if (!_m5s) return;
+  _m5s.material = !_m5s.material;
+  _m5sStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _m5sZeitfaktor(z) { return z.pause ? 0 : z.langsam ? 1 / 3 : 1; }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5sUpdate(dt) {
+  if (!_m5s) return;
+  const z = _m5s, K = _m5sK;
+  const roh = _bioFxDt(dt);
+  z.blink = Math.max(0, z.blink - roh);            // Schild und Materialblende in echter Zeit
+  const ziel = z.material ? 1 : 0, sch = roh / 0.35;
+  z.matA = z.matA < ziel ? Math.min(ziel, z.matA + sch) : Math.max(ziel, z.matA - sch);
+  dt = roh * _m5sZeitfaktor(z);                    // ab hier Sim-Zeit
+  z.t += dt;
+  for (let c = 0; c < 4; c++) z.pop[c] += dt;
+  z.nullGlanz = Math.max(0, z.nullGlanz - dt);
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  if (dt > 0) {                                    // ohne Zeit kein Schritt im Ablauf
+    if (!z.lauf && z.schlange.length) _m5sNaechster();
+    const L = z.lauf;
+    if (L) {
+      L.t += dt;
+      if (L.art === 'mal' && L.aha && !L.ahaFertig && L.t >= K.T_GLEIT) { L.ahaFertig = true; _m5sAha(L); }
+      if (L.art === 'plus') _m5sPlusSchritt(L, dt);
+      else if (L.t >= L.dauer) { _m5sLaufLanden(false); _m5sStatus(); }
+    }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+function _m5sPlusSchritt(L, dt) {
+  L.pt += dt;
+  while (L.i < L.phasen.length && L.pt >= L.phasen[L.i].dauer) {
+    L.pt -= L.phasen[L.i].dauer;
+    _m5sPhaseEnde(L, L.phasen[L.i]);
+    L.i++;
+  }
+  if (L.i >= L.phasen.length) { _m5sLaufLanden(false); _m5sStatus(); }
+}
+// Ende einer Teilbewegung von „10 mehr“: Material zaehlen, Karte umspringen lassen.
+// Eine Karte zeigt nie 10: Bei zehn Stangen bleibt sie stehen, bis das Buendel weg ist.
+function _m5sPhaseEnde(L, ph) {
+  const z = _m5s;
+  if (ph.art === 'stange') {
+    L.zw[2] += 1;
+    if (L.zw[2] < 10) { L.karten[2] = L.zw[2]; z.pop[2] = 0; }
+  } else {
+    const c = ph.c;
+    L.zw[c] = 0; L.zw[c - 1] += 1;
+    L.karten[c] = 0; z.pop[c] = 0;
+    if (L.zw[c - 1] < 10) { L.karten[c - 1] = L.zw[c - 1]; z.pop[c - 1] = 0; }
+  }
+}
+// Aha: die drei Stangen sind als drei Platten bei den Hundertern angekommen.
+function _m5sAha(L) {
+  const z = _m5s, n = L.nach[1];
+  if (!n) return;
+  let sx = 0, sy = 0;
+  for (let i = 0; i < n; i++) { const p = _m5sPlatz(1, i); sx += p.x + p.w / 2; sy += p.y + p.h / 2; }
+  z.aha = true; z.ahaX = sx / n; z.ahaY = sy / n; z.ahaGlanz = 2.4;
+  _bioFxWelle(z.fx.teile, z.ahaX, z.ahaY, '#f59e0b', 46);
+}
+
+// ── Zeichnen: Material ──────────────────────────────────────────────────
+function _m5sEiner(ctx, x, y, w, h) {
+  const F = _m5sFARBE[3];
+  ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x, y, w, h, Math.min(2.5, w / 4, h / 4)); ctx.fill(); ctx.stroke();
+  if (w > 8 && h > 8) {
+    ctx.strokeStyle = F.licht; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(x + 2.5, y + h - 3); ctx.lineTo(x + 2.5, y + 2.5); ctx.lineTo(x + w - 3, y + 2.5); ctx.stroke();
+  }
+}
+// Stange aus zehn Wuerfeln, liegend oder stehend (je nach laengerer Seite).
+function _m5sStange(ctx, x, y, w, h) {
+  const F = _m5sFARBE[2], liegt = w >= h;
+  const fuge = (k, dick) => {
+    ctx.beginPath();
+    if (liegt) { ctx.moveTo(x + w * k / 10, y); ctx.lineTo(x + w * k / 10, y + h); }
+    else { ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); }
+    ctx.lineWidth = dick; ctx.stroke();
+  };
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie;
+  for (let k = 1; k < 10; k++) if (k !== 5) fuge(k, 0.8);
+  ctx.strokeStyle = F.rand; fuge(5, 1.8);                         // Fuenfermarke
+  ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+}
+function _m5sPlatte(ctx, x, y, w, h) {
+  const F = _m5sFARBE[1];
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = Math.max(0.4, w / 70);
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    ctx.beginPath(); ctx.moveTo(x + w * k / 10, y); ctx.lineTo(x + w * k / 10, y + h); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = Math.max(0.9, w / 32); // Fuenferlinien
+  ctx.beginPath(); ctx.moveTo(x + w / 2, y); ctx.lineTo(x + w / 2, y + h); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.lineWidth = 1; ctx.strokeRect(x, y, w, h);
+}
+function _m5sWuerfel(ctx, x, y, w, h) {
+  const F = _m5sFARBE[0], g = Math.min(w, h), d = g * 0.26, s = g - d;
+  x += (w - g) / 2; y += (h - g) / 2;
+  ctx.lineWidth = 1; ctx.strokeStyle = F.rand;
+  ctx.fillStyle = F.oben;                                         // Deckel
+  ctx.beginPath(); ctx.moveTo(x, y + d); ctx.lineTo(x + d, y); ctx.lineTo(x + d + s, y); ctx.lineTo(x + s, y + d); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = F.seite;                                        // Seite
+  ctx.beginPath(); ctx.moveTo(x + s, y + d); ctx.lineTo(x + s + d, y); ctx.lineTo(x + s + d, y + s); ctx.lineTo(x + s, y + d + s); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y + d, s, s);          // Vorderseite
+  ctx.strokeRect(x, y + d, s, s);
+  ctx.strokeStyle = 'rgba(109,40,217,0.55)'; ctx.lineWidth = Math.max(0.8, g / 30);   // Fuenferlinien
+  ctx.beginPath(); ctx.moveTo(x + s / 2, y + d); ctx.lineTo(x + s / 2, y + d + s); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + d + s / 2); ctx.lineTo(x + s, y + d + s / 2); ctx.stroke();
+}
+// Ein Stueck der Art c (0 T, 1 H, 2 Z, 3 E) in den Kasten r, Deckkraft a.
+function _m5sStueck(ctx, c, r, a) {
+  if (a <= 0.01 || r.w < 0.5 || r.h < 0.5) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  if (c === 3) _m5sEiner(ctx, r.x, r.y, r.w, r.h);
+  else if (c === 2) _m5sStange(ctx, r.x, r.y, r.w, r.h);
+  else if (c === 1) _m5sPlatte(ctx, r.x, r.y, r.w, r.h);
+  else _m5sWuerfel(ctx, r.x, r.y, r.w, r.h);
+  ctx.restore();
+}
+function _m5sWackelDx(c) {
+  const w = _m5s.wackel;
+  return c === 0 && w > 0 ? Math.sin(w * 48) * 3 * (w / 0.45) : 0;
+}
+// Das ruhende Material: mat[c] Stuecke je Spalte; ohne[c] = so viele Plaetze ab
+// `ab[c]` auslassen (die gerade unterwegs sind).
+function _m5sMaterialStatisch(ctx, mat, ausser) {
+  const z = _m5s;
+  if (z.matA <= 0.01) return;
+  for (let c = 0; c < 4; c++) {
+    if (ausser === c) continue;
+    const dx = _m5sWackelDx(c);
+    for (let i = 0; i < Math.min(10, mat[c]); i++) {
+      const p = _m5sPlatz(c, i);
+      _m5sStueck(ctx, c, { x: p.x + dx, y: p.y, w: p.w, h: p.h }, z.matA);
+    }
+  }
+}
+
+// ── Zeichnen: Karten, Tafel ─────────────────────────────────────────────
+function _m5sMisch(h1, h2, u) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const a = p(h1), b = p(h2);
+  return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * u)).join(',') + ')';
+}
+function _m5sKartenFarbe(c, ziffer) {
+  if (ziffer === 0) return _m5sK.NULL;
+  const F = _m5sFARBE[c];
+  return { grund: F.karte, rand: F.rand, schrift: F.rand };
+}
+function _m5sKartenFarbeMisch(c1, c2, u) {
+  const A = _m5sFARBE[c1], B = _m5sFARBE[c2], r = _m5sMisch(A.rand, B.rand, u);
+  return { grund: _m5sMisch(A.karte, B.karte, u), rand: r, schrift: r };
+}
+function _m5sText(ctx, s, x, y, groesse, farbe, ausr, gew) {
+  ctx.fillStyle = farbe || '#1f2937';
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Ziffernkarte, Mitte (x, y); k = Groesse, a = Deckkraft.
+function _m5sKarte(ctx, x, y, ziffer, f, k, a) {
+  if (a <= 0.01) return;
+  const K = _m5sK, w = K.KW * k, h = K.KH * k;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = f.grund; ctx.strokeStyle = f.rand; ctx.lineWidth = 2;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, 7); ctx.fill(); ctx.stroke();
+  _m5sText(ctx, String(ziffer), x, y + 10 * k, Math.round(28 * k), f.schrift);
+  ctx.restore();
+}
+function _m5sPopK(c) {
+  const p = _m5s.pop[c], T = _m5sK.T_POP;
+  return p < T ? Math.max(0.3, _bioFxEase.federn(p / T)) : 1;
+}
+// Ruhende Karten: ab der ersten Ziffer, die 0 orange.
+function _m5sKartenStatisch(ctx, karten, ausser) {
+  const K = _m5sK, e = _m5sErste(karten);
+  for (let c = e; c < 4; c++) {
+    if (c === ausser) continue;
+    _m5sKarte(ctx, _m5sMitte(c) + _m5sWackelDx(c), K.KY, karten[c], _m5sKartenFarbe(c, karten[c]), _m5sPopK(c), 1);
+  }
+}
+// Spalten links der ersten Ziffer gehoeren nicht zur Zahl: blass getoent.
+function _m5sBlass(ctx, erste) {
+  const K = _m5sK;
+  ctx.fillStyle = '#f1f5f9';
+  for (let c = 0; c < erste; c++) ctx.fillRect(K.LX + c * K.CW + 1, K.YK + 1, K.CW - 2, K.Y1 - K.YK - 2);
+}
+// Leere Materialspalte innerhalb der Zahl: grau gestrichelt umrandet.
+function _m5sStrichel(ctx, c, a) {
+  if (a <= 0.01) return;
+  const K = _m5sK, x0 = K.LX + c * K.CW;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.6;
+  if (ctx.setLineDash) ctx.setLineDash([4, 3]);
+  _bioFxRundRect(ctx, x0 + 7, K.YC + 6, K.CW - 14, K.Y1 - K.YC - 13, 7); ctx.stroke();
+  if (ctx.setLineDash) ctx.setLineDash([]);
+  ctx.restore();
+}
+function _m5sStrichelStatisch(ctx, karten, mat) {
+  const e = _m5sErste(karten);
+  for (let c = e; c < 4; c++) if (karten[c] === 0 && mat[c] === 0) _m5sStrichel(ctx, c, _m5s.matA);
+}
+function _m5sGrund(ctx) {
+  const z = _m5s, K = _m5sK;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.X0, K.Y0, K.X1 - K.X0, K.Y1 - K.Y0, 10); ctx.fill();
+  for (let c = 0; c < 4; c++) {                                  // Kopfzeile
+    const x0 = K.LX + c * K.CW, cx = _m5sMitte(c), F = _m5sFARBE[c];
+    ctx.fillStyle = F.grund;
+    _bioFxRundRect(ctx, x0 + 4, K.Y0 + 4, K.CW - 8, K.YK - K.Y0 - 6, 7); ctx.fill();
+    _m5sText(ctx, _m5sKURZ[c], cx, 25, 17, F.rand);
+    _m5sText(ctx, _m5sWORT[c], cx, 36, 10, '#334155', 'center', '600');
+  }
+  const lab = Math.max(0.35, z.matA);
+  _m5sText(ctx, 'Ziffern', 12, K.KY + 4, 12, '#475569', 'left');
+  ctx.save(); ctx.globalAlpha = lab;
+  _m5sText(ctx, 'Material', 12, (K.YC + K.Y1) / 2 + 4, 12, '#475569', 'left');
+  ctx.restore();
+}
+function _m5sLinien(ctx) {
+  const K = _m5sK;
+  ctx.save();
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  for (let c = 1; c < 4; c++) {
+    const x = K.LX + c * K.CW;
+    ctx.beginPath(); ctx.moveTo(x, K.YK); ctx.lineTo(x, K.Y1); ctx.stroke();
+  }
+  ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(K.LX, K.Y0); ctx.lineTo(K.LX, K.Y1); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(K.X0, K.YK); ctx.lineTo(K.X1, K.YK); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(K.X0, K.YC); ctx.lineTo(K.X1, K.YC); ctx.stroke();
+  ctx.restore();
+}
+
+// ── Zeichnen: die einzelnen Ablaeufe ────────────────────────────────────
+function _m5sRuheZeichnen(ctx, d) {
+  _m5sBlass(ctx, _m5sErste(d));
+  _m5sLinien(ctx);
+  _m5sStrichelStatisch(ctx, d, d);
+  _m5sMaterialStatisch(ctx, d, -1);
+  _m5sNullGlanz(ctx, d);
+  _m5sKartenStatisch(ctx, d, -1);
+}
+// Die Karte 0, die gerade in die Einerspalte gefallen ist, leuchtet kurz nach.
+function _m5sNullGlanz(ctx, d) {
+  const z = _m5s, K = _m5sK;
+  if (z.nullGlanz <= 0 || d[3] !== 0) return;
+  ctx.save();
+  ctx.globalAlpha = 0.5 * z.nullGlanz / K.T_GLANZ;
+  ctx.fillStyle = '#fdba74';
+  _bioFxRundRect(ctx, _m5sMitte(3) - K.KW / 2 - 7, K.YK + 2, K.KW + 14, K.YC - K.YK - 4, 11); ctx.fill();   // bleibt in der Kartenzeile
+  ctx.restore();
+}
+function _m5sLadenZeichnen(ctx, L) {
+  const z = _m5s, K = _m5sK, u = L.t, neu = L.neu;
+  _m5sBlass(ctx, _m5sErste(neu));
+  _m5sLinien(ctx);
+  // das Alte blendet an seinem Platz aus (0,18 s) – erst danach kommt das Neue,
+  // sonst liegen alte und neue Karte uebereinander (am Bild gesehen)
+  const A = 0.18;
+  if (L.alt && u < A) {
+    const a = 1 - u / A;
+    for (let c = 0; c < 4; c++) for (let i = 0; i < L.alt[c]; i++) _m5sStueck(ctx, c, _m5sPlatz(c, i), z.matA * a);
+    const ea = _m5sErste(L.alt);
+    for (let c = ea; c < 4; c++) _m5sKarte(ctx, _m5sMitte(c), K.KY, L.alt[c], _m5sKartenFarbe(c, L.alt[c]), 1, a);
+  }
+  // das Neue faellt gestaffelt in seine Plaetze
+  const e = _m5sErste(neu);
+  for (let c = e; c < 4; c++) if (neu[c] === 0) _m5sStrichel(ctx, c, z.matA * _bioFxKlemme((u - 0.4) / 0.25));
+  const n = neu.reduce((s, v) => s + v, 0), stag = n > 1 ? Math.min(0.025, 0.2 / (n - 1)) : 0;
+  let j = 0;
+  for (let c = 0; c < 4; c++) for (let i = 0; i < neu[c]; i++) {
+    const p = _bioFxKlemme((u - A - stag * j++) / 0.3), ee = _bioFxEase.sanft(p), r = _m5sPlatz(c, i);
+    _m5sStueck(ctx, c, { x: r.x, y: r.y - 6 * (1 - ee), w: r.w, h: r.h }, z.matA * p);
+  }
+  for (let c = e; c < 4; c++) {
+    const p = _bioFxKlemme((u - A - 0.06 * (c - e)) / 0.3);
+    const k = p < 1 ? Math.max(0.3, _bioFxEase.federn(p)) : 1;
+    _m5sKarte(ctx, _m5sMitte(c), K.KY, neu[c], _m5sKartenFarbe(c, neu[c]), k, p);
+  }
+}
+function _m5sMalZeichnen(ctx, L) {
+  const z = _m5s, K = _m5sK, von = L.von, nach = L.nach, e0 = _m5sErste(von), e1 = e0 - 1;
+  _m5sBlass(ctx, e1);
+  _m5sLinien(ctx);
+  if (L.t < K.T_GLEIT) {
+    const u = _bioFxKlemme(L.t / K.T_GLEIT), e = _bioFxEase.sanft(u);
+    // gestrichelte Spalten: die alten blenden aus, die neuen (ausser E) ein
+    for (let c = e0; c < 4; c++) if (von[c] === 0) _m5sStrichel(ctx, c, z.matA * (1 - _bioFxKlemme(u / 0.3)));
+    for (let c = e1; c < 3; c++) if (nach[c] === 0) _m5sStrichel(ctx, c, z.matA * _bioFxKlemme((u - 0.7) / 0.3));
+    // jedes Stueck waechst zur naechsten Form und gleitet eine Spalte weiter
+    // kleiner Bogen und kurzes Aufbluehen – so knapp, dass kein Stueck in die Kartenzeile ragt
+    const puff = 1 + 0.06 * Math.sin(Math.PI * e), hub = 4 * Math.sin(Math.PI * e);
+    const m = _bioFxKlemme((u - 0.2) / 0.6);
+    for (let c = e0; c < 4; c++) for (let i = 0; i < von[c]; i++) {
+      const a = _m5sPlatz(c, i), b = _m5sPlatz(c - 1, i);
+      const w = (a.w + (b.w - a.w) * e) * puff, h = (a.h + (b.h - a.h) * e) * puff;
+      const cx = a.x + a.w / 2 + (b.x + b.w / 2 - a.x - a.w / 2) * e;
+      const cy = a.y + a.h / 2 + (b.y + b.h / 2 - a.y - a.h / 2) * e - hub;
+      const r = { x: cx - w / 2, y: cy - h / 2, w, h };
+      _m5sStueck(ctx, c, r, z.matA * (1 - m));
+      _m5sStueck(ctx, c - 1, r, z.matA * m);
+    }
+    // die Karten gleiten mit (waagerecht, in ihrer Zeile) und nehmen die Farbe der neuen Spalte an
+    for (let c = e0; c < 4; c++) {
+      const x = _m5sMitte(c) + (_m5sMitte(c - 1) - _m5sMitte(c)) * e;
+      _m5sKarte(ctx, x, K.KY, von[c], von[c] === 0 ? K.NULL : _m5sKartenFarbeMisch(c, c - 1, e), 1, 1);
+    }
+  } else {
+    // alles steht in der neuen Spalte; in die Einerspalte faellt die Karte 0
+    const u2 = _bioFxKlemme((L.t - K.T_GLEIT) / K.T_NULL), e2 = _bioFxEase.raus(u2);
+    for (let c = e1; c < 3; c++) if (nach[c] === 0) _m5sStrichel(ctx, c, z.matA);
+    _m5sStrichel(ctx, 3, z.matA * e2);
+    _m5sMaterialStatisch(ctx, nach, -1);
+    _m5sKartenStatisch(ctx, nach, 3);
+    // faellt von knapp oberhalb und waechst dabei auf volle Groesse – bleibt in der Kartenzeile
+    _m5sKarte(ctx, _m5sMitte(3), K.KY - 10 * (1 - e2), 0, K.NULL, 0.6 + 0.4 * e2, Math.min(1, u2 * 2.5));
+  }
+}
+function _m5sPlusZeichnen(ctx, L) {
+  const z = _m5s, K = _m5sK;
+  const ph = L.phasen[Math.min(L.i, L.phasen.length - 1)];
+  const u = _bioFxKlemme(L.pt / ph.dauer);
+  _m5sBlass(ctx, _m5sErste(L.karten));
+  _m5sLinien(ctx);
+  _m5sStrichelStatisch(ctx, L.karten, L.zw);
+  if (ph.art === 'stange') {
+    // eine Stange gleitet von unten in die Zehnerspalte (unter ihrem Platz ist frei)
+    _m5sMaterialStatisch(ctx, L.zw, -1);
+    const e = _bioFxEase.sanft(u), r = _m5sPlatz(2, L.zw[2]);
+    _m5sStueck(ctx, 2, { x: r.x, y: r.y + 40 * (1 - e), w: r.w, h: r.h }, z.matA * _bioFxKlemme(u * 3));
+  } else {
+    // zehn Stuecke gleiten zusammen und wandern als ein Stueck eine Spalte weiter
+    const c = ph.c, cx = _m5sMitte(c);
+    _m5sMaterialStatisch(ctx, L.zw, c);
+    const tS = K.T_SAMMEL;
+    if (L.pt < tS) {
+      const e = _bioFxEase.sanft(_bioFxKlemme(L.pt / tS));
+      for (let k = 0; k < 10; k++) {
+        const a = _m5sPlatz(c, k);
+        const b = c === 2 ? { x: cx - 30, y: K.YC + 10 + k * 6, w: 60, h: 6 }
+                          : { x: cx - 13, y: K.YC + 50 - k * 2.2, w: 26, h: 26 };
+        _m5sStueck(ctx, c, { x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e,
+                             w: a.w + (b.w - a.w) * e, h: a.h + (b.h - a.h) * e }, z.matA);
+      }
+    } else {
+      const u2 = _bioFxKlemme((L.pt - tS) / K.T_BUENDEL), e = _bioFxEase.sanft(u2);
+      const a = c === 2 ? { x: cx - 30, y: K.YC + 10, w: 60, h: 60 } : { x: cx - 15, y: K.YC + 30, w: 30, h: 30 };
+      const b = _m5sPlatz(c - 1, L.zw[c - 1]);
+      const r = { x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e - 14 * Math.sin(Math.PI * e),
+                  w: a.w + (b.w - a.w) * e, h: a.h + (b.h - a.h) * e };
+      const m = _bioFxKlemme(u2 / 0.5);
+      if (c === 2) {                                // zehn Stangen untereinander = ein Quadrat
+        for (let k = 0; k < 10; k++)
+          _m5sStueck(ctx, 2, { x: r.x, y: r.y + k * r.h / 10, w: r.w, h: r.h / 10 }, z.matA * (1 - m));
+      } else _m5sStueck(ctx, 1, r, z.matA * (1 - m));
+      _m5sStueck(ctx, c - 1, r, z.matA * m);
+      if (u2 < 0.25 && z.matA > 0.01) {             // kurzes Aufhellen beim Verschmelzen
+        ctx.save(); ctx.globalAlpha = 0.7 * (1 - u2 / 0.25) * z.matA; ctx.fillStyle = '#ffffff';
+        ctx.fillRect(r.x - 2, r.y - 2, r.w + 4, r.h + 4); ctx.restore();
+      }
+    }
+  }
+  _m5sKartenStatisch(ctx, L.karten, -1);
+}
+function _m5sDraw(ctx, cv) {
+  if (!_m5s) return;
+  const z = _m5s, K = _m5sK, W = cv.width, H = cv.height, L = z.lauf;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5sGrund(ctx);
+  if (L && L.art === 'laden') _m5sLadenZeichnen(ctx, L);
+  else if (L && L.art === 'mal') _m5sMalZeichnen(ctx, L);
+  else if (L && L.art === 'plus') _m5sPlusZeichnen(ctx, L);
+  else _m5sRuheZeichnen(ctx, _m5sZiffern(z.zahl));
+  // Aha: die Platten in der Hunderterspalte leuchten nach (ohne Text)
+  if (z.ahaGlanz > 0 && z.matA > 0.01) {
+    ctx.save(); ctx.globalAlpha = Math.min(1, z.ahaGlanz / 0.8) * z.matA;
+    _bioFxLeuchten(ctx, z.ahaX, z.ahaY, 26, z.t, '245,158,11');
+    ctx.restore();
+  }
+  _bioFxDraw(ctx, z.fx.teile);
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.X0, K.Y0, K.X1 - K.X0, K.Y1 - K.Y0, 10); ctx.stroke();
+  if (z.pause) _m5sPauseSchild(ctx);
+}
+// Schild „Pause“ oben links – gleiche Stelle, Groesse und Farbe wie in
+// m5-plus-schriftlich. Hier liegt es ueber der leeren Kopfzelle der
+// Beschriftungsspalte (endet bei x = 72, die Tafel beginnt bei 74).
+function _m5sPauseSchild(ctx) {
+  const z = _m5s, w = 64, h = 25, x = 8, y = 8;
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _m5sText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mm3 „Wie rechnet man 23 · 4?“
+// (Kennung m5-malkreuz, Praefix _m5t)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL4_PROFIL.md, Abschnitt m5-malkreuz.
+// Ueberschrift = Frage der Einheit: „Was ergibt 23 · 4 wirklich?“
+//
+// Was man sieht – zwei Darstellungen, durch die FARBE verbunden (Zehner blau,
+// Einer orange, in Bild, Malkreuz, Kurzform und Statuszeilen gleich):
+//   PUNKTEFELD (oben), Titel „4 Reihen zu je 23“: vier Reihen. In jeder Reihe
+//     liegen die Zehner auf hellblauen Zehnerstreifen (je 10 Punkte, nach dem
+//     5. Punkt eine kleine Luecke), die Einer als orange Punkte. Zerlegt trennt
+//     ein gestrichelter Schnitt Zehner- und Einerteil, beide ruecken etwas
+//     auseinander. Der Schnitt steht in allen drei Aufgaben an DERSELBEN
+//     Stelle: Die Einer (immer 3 Punkte je Reihe) bleiben rechts liegen, die
+//     Zehnerstreifen wachsen nach links (1, 2, 3 Streifen je Reihe). So sieht
+//     man die Musterserie 13 · 4 / 23 · 4 / 33 · 4 schon am Bild.
+//   MALKREUZ (unten links) mit der Ueberschrift „Malkreuz“: Kopfzeile
+//     „· | 20 | 3“, Zeile „4 | 80 | 12“ – die Zelle des Zehnerteils blau, die
+//     des Einerteils orange. Ein dicker Strich trennt Kopfzeile und erste
+//     Spalte ab (das „Kreuz“).
+//   Darunter nach „zusammenzählen“ die Rechnung „80 + 12 = 92“ – 80 blau genau
+//     unter seiner Zelle, 12 orange unter seiner, „+“ unter dem Strich
+//     dazwischen, „= 92“ rechts daneben. Nach „nebeneinander schreiben“ steht
+//     eine Zeile tiefer „812“ (8 blau, 12 orange) unter dem Strich zwischen den
+//     Zellen, klein daneben „nebeneinander“.
+//   KURZFORM (unten rechts, nur nach „schriftlich zeigen“): ein Stueck
+//     Karopapier mit „23 · 4“ in der Schreibweise des Hefts (build_pilot.py,
+//     _malgeteilt_zeichnen): Spalte 0 frei, die Ziffern von 23, „·“, „4“; ein
+//     Strich darunter; Zeile 1 fuer die kleine gemerkte Ziffer, Zeile 2 das
+//     Ergebnis, rechtsbuendig unter der 4.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5tAufgabe('13') usw.):
+//     „13 · 4“ · „23 · 4“ · „33 · 4“ – bauen das Feld Reihe fuer Reihe auf
+//     (0,12 s Versatz, je 0,3 s), dann faellt der Schnitt (0,25 s), die Teile
+//     ruecken auseinander, und die Zellen des Malkreuzes fuellen sich
+//     nacheinander: Kopfzeile, dann 80 (der Zehnerteil leuchtet blau auf),
+//     dann 12 (der Einerteil leuchtet orange auf). Fertig nach 1,45 s.
+//   „zusammenzählen“ (_m5tZusammen()): Schnitt verblasst, die Teile gleiten
+//     wieder zusammen (0,55 s); aus den Zellen fallen 80 und 12 senkrecht unter
+//     das Malkreuz, „+“ erscheint, dann „= 92“ (federnd); das ganze Feld
+//     leuchtet kurz. Fertig nach 0,85 s. Ein zweites Druecken laesst nur die 92
+//     wackeln.
+//   „schriftlich zeigen“ (_m5tSchriftlich()): neben dem Malkreuz erscheint die
+//     Kurzform „23 · 4“ (0,3 s). EINER: „3“ und „4“ werden gelb hinterlegt,
+//     die 12 fliegt aus der Zelle des Einerteils ins Ergebnis (bis 0,9 s) und
+//     ZERFAELLT sichtbar: Die „1“ steigt klein in die Merkzeile ueber der
+//     Zehnerspalte und wird dabei blau (sie ist jetzt 1 Zehner), die „2“ bleibt
+//     orange im Einerkaestchen (bis 1,25 s). ZEHNER: „2“ und „4“ hinterlegt,
+//     eine blasse „8“ erscheint im Zehnerkaestchen, die gemerkte „1“ gleitet
+//     hinein, daraus wird federnd „9“ (bis 1,72 s). Fertig nach 1,8 s.
+//     Die gemerkte 1 bleibt klein stehen wie im Heft.
+//   „nebeneinander schreiben“ (_m5tNeben()): Gegenprobe zur Rechnung aus dem
+//     Problem des Hefts. Aus der Zelle 80 faellt eine Kopie und SCHRUMPFT im
+//     Fall auf „8“ (die 0 verblasst), aus der Zelle 12 faellt „12“; beide
+//     ruecken unter dem Malkreuz aneinander: „812“. Dann leuchtet das ganze
+//     Feld – dort liegen weiter 92 Punkte. Fertig nach 1,25 s. Steht die
+//     Rechnung „80 + 12 = 92“ schon da, tritt sie waehrend des Fallens kurz
+//     auf 30 % zurueck, damit sich die Zahlen nicht uebereinander lesen.
+//     (Der Bauplan nennt den Knopf „Tareks Weg“. Eine Simulation traegt keine
+//     Figurennamen – MATHE_PROFIL § 10 Regel 11, und der Bauplan selbst sagt
+//     unter „Die sechs Simulationen – Allgemein“: „keine Namen“. Kapitel 2 hat
+//     denselben Knopf in m5-rechenstrich ebenso nach der Handlung benannt:
+//     „nebeneinander schreiben“. Kein Heftschritt von mm3 nennt den Knopf.
+//     Wer den Namen doch will: _m5tKNOPF_NEBEN und _m5tNebenZeile aendern.)
+//   „neu“ (_m5tNeu()): wieder der Start 13 · 4, zerlegt (blendet in 0,35 s ein).
+// Wer waehrend einer Bewegung einen Knopf drueckt, laesst die laufende
+// Bewegung sofort ankommen; dann geschieht das Neue. Eine Sprungmarke bricht
+// alles ab und baut neu auf. Jede Knopffolge endet so in denselben Zahlen.
+//
+// Statuszeilen (woertlich; jede, deren Wert das Heft verlangt, hat mehr als
+// 18 Zeichen, sonst fehlt sie im Faktendump). Sie folgen dem Bild: Eine Zahl
+// steht erst in der Anzeige, wenn sie im Bild angekommen ist.
+//   _m5t-aufgabe     „Malaufgabe: 23 · 4 (4 Reihen zu je 23)“
+//   _m5t-teile       „Teile im Malkreuz: 80 und 12“ (waehrend des Aufbaus
+//                    „Teile im Malkreuz: …“)
+//   _m5t-ergebnis    „Ergebnis der Aufgabe: …“, nach „zusammenzählen“
+//                    „Ergebnis der Aufgabe: 92“
+//   _m5t-punkte      „Punkte im ganzen Feld: …“, nach „zusammenzählen“ oder
+//                    „nebeneinander schreiben“ „Punkte im ganzen Feld: 92“
+//   _m5t-schriftlich (nur nach „schriftlich zeigen“, sonst leer und versteckt)
+//                    erst „Einer: 3 · 4 = …“, dann
+//                    „Einer: 3 · 4 = 12, schreibe 2, merke 1“, am Ende
+//                    „Zehner: 2 · 4 = 8, 8 + 1 = 9, schreibe 9“
+//   _m5t-tarek       (nur nach „nebeneinander schreiben“, sonst leer und
+//                    versteckt) „8 und 12 nebeneinander geschrieben: 812“
+//                    (Bauplan: „Tareks Weg: 8 und 12 nebeneinander: 812“ –
+//                    ohne den Namen, siehe oben; die Kennung bleibt.)
+//   _m5t-lehrkraft   Hinweis fuer die Lehrkraft (siehe unten)
+//
+// Werte (jede Zahl aus _m5tWerte(), nachgerechnet mit simcheck/werte.js):
+//   13 · 4 → Kopf 10 | 3 → Teile 40 und 12 → 52 ·
+//            „Einer: 3 · 4 = 12, schreibe 2, merke 1“ /
+//            „Zehner: 1 · 4 = 4, 4 + 1 = 5, schreibe 5“ · nebeneinander 412
+//   23 · 4 → Kopf 20 | 3 → Teile 80 und 12 → 92 ·
+//            „Einer: 3 · 4 = 12, schreibe 2, merke 1“ /
+//            „Zehner: 2 · 4 = 8, 8 + 1 = 9, schreibe 9“ · nebeneinander 812
+//   33 · 4 → Kopf 30 | 3 → Teile 120 und 12 → 132 ·
+//            „Einer: 3 · 4 = 12, schreibe 2, merke 1“ /
+//            „Zehner: 3 · 4 = 12, 12 + 1 = 13, schreibe 13“ · nebeneinander 1 212
+//   (Tausendertrenner U+00A0. Bei 33 · 4 wird die 13 als Ganzes geschrieben,
+//   wie der Bauplan es sagt – keine zweite Merkziffer.)
+// Start: 13 · 4, zerlegt, Teile sichtbar, noch nicht zusammengezaehlt.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): bei „23 · 4“, wenn der Schnitt
+// gefallen ist – ein blauer Lichtring breitet sich ueber den 8 Zehnerstreifen
+// aus, und ein pulsierender Rahmen liegt 2,6 s um sie (das sind 80, nicht 8).
+// Das widerlegt „812“ und „20“: Die 2 in 23 sind 2 Streifen je Reihe. Bei
+// jedem Druck auf „23 · 4“.
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-plus-schriftlich / m5-minus-schriftlich,
+// in <div class="fpm-lehrkraft">, damit simfakten.js die Zeile ueberspringen
+// kann – Bauplan V3). Eigene Zeile UNTER den Heftknoepfen, davor klein
+// „Für die Lehrkraft:“, Reihenfolge wie im Bauplan:
+//   „Pause“ ↔ „weiter“ (_m5tAnhalten()): friert JEDE Bewegung sofort ein;
+//     „weiter“ macht genau dort weiter. Schild „Pause“ oben links im Bild
+//     (Stelle und Aussehen wie in m5-plus-schriftlich).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_m5tTempo()): ein Drittel so schnell.
+//   „Halt beim Merken: aus“ ↔ „… an“ (_m5tHaltSchalter()): haelt bei
+//     „schriftlich zeigen“ von selbst an, sobald die 12 im Ergebnis liegt und
+//     BEVOR sie zerfaellt. Die 12 ist bernsteinfarben eingerahmt, unten rechts
+//     steht das Schild „12 Einer = 1 Zehner und 2 Einer“ (zweizeilig, nach dem
+//     „=“ umbrochen); dann ist Pause.
+//   Nur das wechselnde Wort steht in einem eigenen <span> (_m5t-tempo-an,
+//   _m5t-halt-an), wie in den Bausaetzen von Kapitel 2.
+// Hinweiszeile _m5t-lehrkraft (in der Pause „lmp-status off“, sonst „on“):
+//   sonst  „Für die Lehrkraft: „Pause“ hält alles an. „Halt beim Merken“ stoppt von selbst.“
+//   Pause  „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“
+//   Halt   „Halt: 12 Einer sind 1 Zehner und 2 Einer. Die 1 wird gemerkt.“
+// So ist es gebaut:
+//   * EIN Zeitfaktor (_m5tZeitfaktor: 0 in der Pause, 1/3 langsam, 1 normal)
+//     an der einen Stelle, an der dt in _m5tUpdate hineingeht. Ohne Zeit kein
+//     Schritt im Ablauf (`dt > 0`). Voreinstellung: Faktor 1, alles wie ohne.
+//   * Der Halt ist ein EREIGNIS im Ablauf (Zeitpunkt K_HALT von
+//     „schriftlich zeigen“ wird ueberschritten), keine Zeitmessung.
+//   * Waehrend der Pause bewegt KEIN Knopf etwas: Steht eine Bewegung, entfaellt
+//     der Druck (er liesse sie sofort ankommen und uebersprange genau das, was
+//     man zeigen will). Steht keine, wird er VORGEMERKT und beginnt mit
+//     „weiter“. Das Schild „Pause“ leuchtet dabei kurz auf (in echter Zeit).
+//     Eine Sprungmarke und „neu“ heben die Pause auf; „Tempo“ und „Halt“
+//     bleiben stehen (die Lehrkraft stellt sie einmal fuer die Stunde ein).
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „Summe“ – und keine
+// Regel als Satz (kein „die Teile werden addiert“). „Malkreuz“ und „merke“
+// sind erlaubt. Keine Namen, keine Punkte als Belohnung, keine Zeit, kein
+// „falsch“. Deterministisch, ohne Zufall: jede Zahl im Bild und in den
+// Statuszeilen kommt aus _m5tWerte().
+// ════════════════════════════════════════════════════════════════════════
+let _m5t = null;
+const _m5tAUFGABEN = { '13': 13, '23': 23, '33': 33 };
+const _m5tREIHE = ['13', '23', '33'];
+const _m5tSTART = '13';
+const _m5tM = 4;                                   // zweiter Faktor = Zahl der Reihen
+const _m5tKNOPF_NEBEN = 'nebeneinander schreiben';
+const _m5tK = {
+  // Punktefeld
+  CUT: 318, NAH: 4, SPREIZ: 9,                     // Schnitt; halber Abstand zusammen / zusaetzlich zerlegt
+  ST_W: 70, ST_H: 12, ST_GAP: 5,                   // Zehnerstreifen
+  P_RAND: 4.2, P_PITCH: 6.2, P_FUENF: 3.2, P_R: 2.3,
+  E_R: 3.6, E_PITCH: 9.2,                          // Einerpunkte
+  RY0: 26, RP: 17, TITEL_Y: 17, CUT_Y0: 21, CUT_Y1: 94,
+  // Malkreuz: Spalten- und Zeilenkanten
+  MX: [14, 46, 110, 160], MY: [120, 152, 184], M_TITEL_Y: 113,
+  GL_Y: 214, NB_Y: 241,                            // Grundlinie Rechnung / nebeneinander
+  // Kurzform (Karo wie im Heft: Spalte 0 frei, dann Ziffern, „·“, Faktor)
+  KX: 248, KY: 112, KB: 26,
+  // Schild beim Halt
+  SX0: 244, SX1: 414, SY0: 206, SY1: 246,
+  // Zeiten in s – Aufbau einer Sprungmarke
+  A_ROW0: 0.05, A_ROW_STEP: 0.12, A_ROW: 0.3, A_CUT0: 0.75, A_CUT: 0.25,
+  A_SP0: 0.9, A_SP: 0.2, A_AHA: 1.0, A_KOPF0: 1.0, A_ZZ0: 1.1, A_ZE0: 1.25,
+  A_ZELLE: 0.18, A_END: 1.45,
+  // zusammenzählen
+  Z_GLEIT: 0.55, Z_FLUG0: 0.1, Z_FLUG1: 0.55, Z_ERG0: 0.55, Z_END: 0.85,
+  // schriftlich zeigen
+  K_SCHREIB: 0.3, K_FLUG0: 0.45, K_HALT: 0.9, K_TEIL1: 1.25, K_Z0: 1.35, K_Z1: 1.5,
+  K_MERK1: 1.72, K_END: 1.8,
+  // nebeneinander schreiben
+  T_FLUG: 0.6, T_RUECK: 0.9, T_END: 1.25,
+  // Farben
+  Z: { streif: '#dbeafe', rand: '#3b82f6', punkt: '#1d4ed8', text: '#1d4ed8', zelle: '#dbeafe' },
+  E: { punkt: '#fb923c', rand: '#c2410c', text: '#c2410c', zelle: '#ffedd5' },
+  F_DUNKEL: '#1f2937', F_GRAU: '#64748b', F_TITEL: '#334155', F_KARO: '#d4e3f1',
+  F_LINIE: '#94a3b8', F_KREUZ: '#334155'
+};
+
+// 1234 -> "1 234" mit geschuetztem Leerzeichen
+function _m5tFmt(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+// ALLE Zahlen einer Aufgabe n · 4 aus EINER Rechnung.
+function _m5tWerte(n) {
+  const m = _m5tM, k = Math.floor(n / 10), e = n % 10;
+  const eP = e * m, merk = Math.floor(eP / 10), eZiffer = eP % 10;
+  const zP = k * m, zF = zP + merk;
+  return {
+    n, k, e, kopfZ: k * 10, teilZ: k * 10 * m, teilE: eP, erg: n * m,
+    eP, merk, eZiffer, zP, zF,
+    neben: Number(String(zP) + String(eP))          // die Zehnerziffer mal 4, daneben der Einer-Teil
+  };
+}
+
+function _m5tInit() {
+  _m5t = { t: 0, fx: [], haltAn: false, langsam: false, stand: '' };   // Lehrkraft-Einstellungen
+  _m5tLaden(_m5tSTART, false);
+  _m5t.einblend = 1;
+}
+// Eine Aufgabe laden. aufbauen = true: das Feld baut sich auf (Sprungmarke);
+// false: sofort der fertige, zerlegte Zustand (Start, „neu“).
+function _m5tLaden(key, aufbauen) {
+  const z = _m5t;
+  z.key = key; z.n = _m5tAUFGABEN[key]; z.w = _m5tWerte(z.n);
+  z.gebaut = !aufbauen; z.zus = false; z.kurz = false; z.neben = false;
+  z.job = aufbauen ? { art: 'aufbau', t: 0, angehalten: false } : null;
+  z.einblend = aufbauen ? 1 : 0;
+  z.aha = false; z.ahaGlanz = 0; z.glanz = 0; z.leuchtZ = 0; z.leuchtE = 0; z.wackel = 0;
+  z.fx.length = 0;
+  z.pause = false; z.halt = false; z.blink = 0; z.vormerken = null;   // neu laden hebt die Pause auf
+}
+function _m5tHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5t-b-${k}" onclick="_m5tAufgabe('${k}')">${k}&nbsp;·&nbsp;${_m5tM}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was ergibt 23&nbsp;·&nbsp;4 wirklich?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jeder blaue Streifen hat 10 Punkte. „zusammenzählen“ legt die Teile wieder zusammen.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5t-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5tREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn primary" id="_m5t-zus" onclick="_m5tZusammen()">zusammenzählen</button>
+          <button class="sim-btn" id="_m5t-kurz" onclick="_m5tSchriftlich()">schriftlich zeigen</button>
+          <button class="sim-btn" id="_m5t-neben" onclick="_m5tNeben()">${_m5tKNOPF_NEBEN}</button>
+          <button class="sim-btn" onclick="_m5tNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_m5t-pause" onclick="_m5tAnhalten()">Pause</button>
+            <button class="sim-btn" id="_m5t-tempo" onclick="_m5tTempo()">Tempo: <span id="_m5t-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_m5t-halt" onclick="_m5tHaltSchalter()">Halt beim Merken: <span id="_m5t-halt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_m5t-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5t-aufgabe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5t-teile" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5t-ergebnis" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5t-punkte" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5t-schriftlich" style="margin-top:6px;display:none"></div>
+        <div class="lmp-status on" id="_m5t-tarek" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 13&nbsp;·&nbsp;4, zerlegt</p>
+  </div>`;
+}
+function _m5tSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Zeile setzen und nur zeigen, wenn sie etwas sagt.
+function _m5tZeige(id, html) {
+  const e = _m5tSetze(id, html);
+  if (e && e.style) e.style.display = html ? '' : 'none';
+}
+// Was die Anzeige gerade sagen darf – sie folgt dem Bild, nicht dem Knopf.
+function _m5tLage(z) {
+  const K = _m5tK, J = z.job, a = J ? J.art : '', t = J ? J.t : 0;
+  let kurz = 0;                                     // 0 nichts · 1 Einer laeuft · 2 Einer fertig · 3 Zehner fertig
+  if (z.kurz) kurz = 3;
+  else if (a === 'kurz') kurz = t >= K.K_MERK1 ? 3 : t >= K.K_TEIL1 ? 2 : 1;
+  return {
+    teile: z.gebaut || (a === 'aufbau' && t >= K.A_ZE0 + K.A_ZELLE),
+    zus: z.zus || (a === 'zus' && t >= K.Z_ERG0 + 0.1),
+    neben: z.neben || (a === 'neben' && t >= K.T_RUECK),
+    kurz
+  };
+}
+function _m5tStand(z) {
+  const L = _m5tLage(z);
+  return [z.key, L.teile, L.zus, L.neben, L.kurz, z.pause, z.halt, z.haltAn, z.langsam,
+          z.job ? z.job.art : ''].join('|');
+}
+function _m5tNebenZeile(w) {
+  return w.zP + ' und ' + w.teilE + ' nebeneinander geschrieben: ' + _m5tFmt(w.neben);
+}
+function _m5tStatus() {
+  if (!_m5t) return;
+  const z = _m5t, K = _m5tK, w = z.w, L = _m5tLage(z);
+  const blau = s => '<b style="color:' + K.Z.text + '">' + s + '</b>';
+  const orange = s => '<b style="color:' + K.E.text + '">' + s + '</b>';
+  _m5tSetze('_m5t-aufgabe', 'Malaufgabe: ' + w.n + ' · ' + _m5tM + ' (' + _m5tM + ' Reihen zu je ' + w.n + ')');
+  _m5tSetze('_m5t-teile', 'Teile im Malkreuz: ' +
+            (L.teile ? blau(_m5tFmt(w.teilZ)) + ' und ' + orange(_m5tFmt(w.teilE)) : '…'));
+  _m5tSetze('_m5t-ergebnis', 'Ergebnis der Aufgabe: ' + (L.zus ? _m5tFmt(w.erg) : '…'));
+  _m5tSetze('_m5t-punkte', 'Punkte im ganzen Feld: ' + (L.zus || L.neben ? _m5tFmt(w.erg) : '…'));
+  const einer = 'Einer: ' + w.e + ' · ' + _m5tM + ' = ';
+  const sz = L.kurz === 0 ? ''
+    : L.kurz === 1 ? einer + '…'
+    : L.kurz === 2 ? einer + w.eP + ', schreibe ' + w.eZiffer + ', merke ' + w.merk
+    : 'Zehner: ' + w.k + ' · ' + _m5tM + ' = ' + w.zP + ', ' + w.zP + ' + ' + w.merk + ' = ' + w.zF +
+      ', schreibe ' + w.zF;
+  _m5tZeige('_m5t-schriftlich', sz);
+  _m5tZeige('_m5t-tarek', L.neben ? _m5tNebenZeile(w) : '');
+  _m5tREIHE.forEach(k => {
+    const b = document.getElementById('_m5t-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.key);
+  });
+  const bz = document.getElementById('_m5t-zus');
+  if (bz) {
+    bz.disabled = L.zus;
+    if (bz.style) bz.style.opacity = L.zus ? '0.45' : '';
+  }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _m5tSetze('_m5t-pause', z.pause ? 'weiter' : 'Pause');
+  _m5tSetze('_m5t-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _m5tSetze('_m5t-halt-an', z.haltAn ? 'an' : 'aus');
+  const hz = _m5tSetze('_m5t-lehrkraft', _m5tHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_m5t-pause', z.pause], ['_m5t-halt', z.haltAn], ['_m5t-tempo', z.langsam]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+  z.stand = _m5tStand(z);
+}
+function _m5tHinweis() {
+  const z = _m5t, w = z.w;
+  if (z.halt) return 'Halt: ' + w.eP + ' Einer sind ' + w.merk + ' Zehner und ' + w.eZiffer +
+                     ' Einer. Die ' + w.merk + ' wird gemerkt.';
+  if (z.pause) return 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.';
+  return 'Für die Lehrkraft: „Pause“ hält alles an. „Halt beim Merken“ stoppt von selbst.';
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5tAufgabe(key) {
+  if (!_m5t || !_m5tAUFGABEN[key]) return;
+  _m5tLaden(key, true);
+  _m5tStatus();
+}
+function _m5tNeu() {
+  if (!_m5t) return;
+  _m5tLaden(_m5tSTART, false);
+  _m5tStatus();
+}
+function _m5tZusammen() { _m5tTat('zus'); }
+function _m5tSchriftlich() { _m5tTat('kurz'); }
+function _m5tNeben() { _m5tTat('neben'); }
+function _m5tTat(art) {
+  if (!_m5t) return;
+  const z = _m5t;
+  if (z.pause) {                                   // in der Pause: vormerken oder entfallen (siehe Kopf)
+    z.blink = 0.6;
+    if (!z.job) z.vormerken = art;
+    _m5tStatus();
+    return;
+  }
+  if (z.job) _m5tAbschluss();                      // laufende Bewegung sofort ankommen lassen
+  _m5tLos(art);
+  _m5tStatus();
+}
+function _m5tLos(art) {
+  const z = _m5t;
+  if (art === 'zus' && z.zus) { z.wackel = 0.45; return; }
+  if (art === 'zus') z.zus = false;
+  if (art === 'kurz') z.kurz = false;
+  if (art === 'neben') z.neben = false;
+  z.job = { art, t: 0, angehalten: false };
+}
+// Die laufende Bewegung ist am Ziel (oder wird sofort dorthin gesetzt).
+function _m5tAbschluss() {
+  const z = _m5t, J = z.job;
+  if (!J) return;
+  if (J.art === 'aufbau') z.gebaut = true;
+  else if (J.art === 'zus') z.zus = true;
+  else if (J.art === 'kurz') z.kurz = true;
+  else if (J.art === 'neben') z.neben = true;
+  z.job = null;
+  _m5tStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _m5tAnhalten() {
+  if (!_m5t) return;
+  const z = _m5t;
+  if (z.pause) {
+    z.pause = false; z.halt = false; z.blink = 0;
+    const v = z.vormerken;
+    z.vormerken = null;
+    if (v && !z.job) _m5tLos(v);
+  } else z.pause = true;
+  _m5tStatus();
+}
+function _m5tTempo() {
+  if (!_m5t) return;
+  _m5t.langsam = !_m5t.langsam;
+  _m5tStatus();
+}
+function _m5tHaltSchalter() {
+  if (!_m5t) return;
+  _m5t.haltAn = !_m5t.haltAn;
+  _m5tStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _m5tZeitfaktor(z) { return z.pause ? 0 : z.langsam ? 1 / 3 : 1; }
+
+// ── Lage im Bild ────────────────────────────────────────────────────────
+// Kanten des Zehner- und Einerteils bei Spreizung s (0 zusammen, 1 zerlegt).
+function _m5tGeo(z, s) {
+  const K = _m5tK, w = z.w;
+  const halb = K.NAH + K.SPREIZ * s;
+  const breitZ = w.k * K.ST_W + (w.k - 1) * K.ST_GAP;
+  const breitE = w.e ? (w.e - 1) * K.E_PITCH + 2 * K.E_R + 1 + (w.e > 5 ? 3 : 0) : 0;
+  const zr = K.CUT - halb, el = K.CUT + halb;
+  return { zl: zr - breitZ, zr, el, er: el + breitE,
+           y0: K.RY0, y1: K.RY0 + (_m5tM - 1) * K.RP + K.ST_H };
+}
+// Mitte einer Zelle im Malkreuz (Spalte c, Zeile r).
+function _m5tMitte(c, r) {
+  const X = _m5tK.MX, Y = _m5tK.MY;
+  return [(X[c] + X[c + 1]) / 2, (Y[r] + Y[r + 1]) / 2];
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5tUpdate(dt) {
+  if (!_m5t) return;
+  const z = _m5t, K = _m5tK;
+  const roh = _bioFxDt(dt);
+  z.blink = Math.max(0, z.blink - roh);            // Schild „Pause“ leuchtet in echter Zeit
+  dt = roh * _m5tZeitfaktor(z);                    // ab hier Sim-Zeit: 0 Pause, 1/3 langsam, 1 normal
+  z.t += dt;
+  z.einblend = Math.min(1, z.einblend + dt / 0.35);
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  z.glanz = Math.max(0, z.glanz - dt);
+  z.leuchtZ = Math.max(0, z.leuchtZ - dt);
+  z.leuchtE = Math.max(0, z.leuchtE - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  const J = z.job;
+  if (J && dt > 0) {                               // ohne Zeit kein Schritt im Ablauf
+    const vor = J.t;
+    J.t += dt;
+    const ueber = s => vor < s && J.t >= s;
+    if (J.art === 'aufbau') {
+      if (ueber(K.A_ZZ0)) z.leuchtZ = 0.7;
+      if (ueber(K.A_ZE0)) z.leuchtE = 0.7;
+      if (ueber(K.A_AHA) && z.key === '23' && !z.aha) {
+        // Aha: der Schnitt ist gefallen – um die 8 Zehnerstreifen laeuft ein Lichtring
+        z.aha = true; z.ahaGlanz = 2.6;
+        const g = _m5tGeo(z, 0.5);
+        _bioFxWelle(z.fx, (g.zl + g.zr) / 2, (g.y0 + g.y1) / 2, '#60a5fa', 75);
+      }
+      if (J.t >= K.A_END) _m5tAbschluss();
+    } else if (J.art === 'zus') {
+      if (ueber(K.Z_ERG0)) z.glanz = 1.4;
+      if (J.t >= K.Z_END) _m5tAbschluss();
+    } else if (J.art === 'kurz') {
+      if (z.haltAn && !J.angehalten && ueber(K.K_HALT)) {
+        // HALT beim Merken: die 12 liegt im Ergebnis, noch nicht zerfallen
+        J.t = K.K_HALT; J.angehalten = true;
+        z.pause = true; z.halt = true;
+      } else if (J.t >= K.K_END) _m5tAbschluss();
+    } else if (J.art === 'neben') {
+      if (ueber(K.T_RUECK)) z.glanz = 1.4;
+      if (J.t >= K.T_END) _m5tAbschluss();
+    }
+  }
+  _bioFxUpdate(z.fx, dt);
+  if (_m5tStand(z) !== z.stand) _m5tStatus();
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5tMisch(h1, h2, u) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const a = p(h1), b = p(h2);
+  return 'rgb(' + a.map((v, i) => Math.round(v + (b[i] - v) * u)).join(',') + ')';
+}
+function _m5tText(ctx, s, x, y, groesse, farbe, ausr, gew) {
+  ctx.fillStyle = farbe || _m5tK.F_DUNKEL;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Zahl um ihre Mitte (x, ym), mit Deckkraft a und Federn (pop: s seit Erscheinen).
+function _m5tZahl(ctx, s, x, ym, groesse, farbe, a, pop) {
+  if (!(a > 0.01)) return;
+  ctx.save();
+  ctx.globalAlpha *= Math.min(1, a);
+  const k = pop !== undefined && pop >= 0 && pop < 0.35 ? Math.max(0.3, _bioFxEase.federn(pop / 0.35)) : 1;
+  ctx.translate(x, ym);
+  ctx.scale(k, k);
+  _m5tText(ctx, s, 0, groesse * 0.36, groesse, farbe);
+  ctx.restore();
+}
+function _m5tBreite(ctx, s, groesse, gew) {
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  return ctx.measureText(s).width;
+}
+// Was gerade wie weit zu sehen ist – alles aus der Zeit des laufenden Ablaufs.
+function _m5tSicht(z) {
+  const K = _m5tK, kl = _bioFxKlemme, E = _bioFxEase.sanft;
+  const J = z.job, art = J ? J.art : '', t = J ? J.t : 0, auf = art === 'aufbau';
+  const S = {};
+  S.reihe = [];
+  for (let r = 0; r < _m5tM; r++)
+    S.reihe.push(auf ? E(kl((t - K.A_ROW0 - r * K.A_ROW_STEP) / K.A_ROW)) : 1);
+  if (auf) {
+    S.schnitt = kl((t - K.A_CUT0) / K.A_CUT); S.schnittA = 1;
+    S.spreiz = E(kl((t - K.A_SP0) / K.A_SP));
+  } else if (art === 'zus') {
+    const u = E(kl(t / K.Z_GLEIT));
+    S.schnitt = 1; S.schnittA = 1 - u; S.spreiz = 1 - u;
+  } else if (z.zus) {
+    S.schnitt = 0; S.schnittA = 0; S.spreiz = 0;
+  } else {
+    S.schnitt = 1; S.schnittA = 1; S.spreiz = 1;
+  }
+  S.kopf = auf ? kl((t - K.A_KOPF0) / 0.15) : 1;
+  S.zz = auf ? kl((t - K.A_ZZ0) / K.A_ZELLE) : 1;
+  S.ze = auf ? kl((t - K.A_ZE0) / K.A_ZELLE) : 1;
+  S.popKopf = auf ? t - K.A_KOPF0 : 9;
+  S.popZZ = auf ? t - K.A_ZZ0 : 9;
+  S.popZE = auf ? t - K.A_ZE0 : 9;
+  S.tZus = z.zus ? 99 : art === 'zus' ? t : null;
+  S.tKurz = z.kurz ? 99 : art === 'kurz' ? t : null;
+  S.tNeben = z.neben ? 99 : art === 'neben' ? t : null;
+  return S;
+}
+function _m5tStreifen(ctx, x, y) {
+  const K = _m5tK, F = K.Z;
+  ctx.fillStyle = F.streif; ctx.strokeStyle = F.rand; ctx.lineWidth = 1.1;
+  _bioFxRundRect(ctx, x, y, K.ST_W, K.ST_H, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = F.punkt;
+  for (let i = 0; i < 10; i++) {
+    const cx = x + K.P_RAND + K.P_R + i * K.P_PITCH + (i >= 5 ? K.P_FUENF : 0);
+    ctx.beginPath(); ctx.arc(cx, y + K.ST_H / 2, K.P_R, 0, Math.PI * 2); ctx.fill();
+  }
+}
+// Ein ruhig leuchtender Rahmen um einen Teil des Feldes.
+function _m5tRahmen(ctx, x0, y0, x1, y1, fuell, rand, a, breite) {
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha *= Math.min(1, a);
+  ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = breite || 2.5;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 7); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _m5tFeld(ctx, z, S) {
+  const K = _m5tK, w = z.w, g = _m5tGeo(z, S.spreiz), g1 = _m5tGeo(z, 1);
+  // Titel ueber dem Feld, buendig mit dem zerlegten Feld (steht still, waehrend es gleitet)
+  ctx.save(); ctx.globalAlpha *= S.reihe[0];
+  _m5tText(ctx, _m5tM + ' Reihen zu je ' + w.n, g1.zl, K.TITEL_Y, 13, K.F_TITEL, 'left');
+  ctx.restore();
+  // Leuchten hinter den Teilen: beim Fuellen der Zellen, beim Aha, am Ende
+  const puls = 0.6 + 0.4 * Math.sin(z.t * 5);
+  _m5tRahmen(ctx, g.zl - 5, g.y0 - 4, g.zr + 5, g.y1 + 4, 'rgba(59,130,246,0.14)', K.Z.rand, z.leuchtZ / 0.7);
+  _m5tRahmen(ctx, g.el - 5, g.y0 - 4, g.er + 5, g.y1 + 4, 'rgba(251,146,60,0.16)', K.E.rand, z.leuchtE / 0.7);
+  if (z.ahaGlanz > 0)
+    _m5tRahmen(ctx, g.zl - 5, g.y0 - 4, g.zr + 5, g.y1 + 4, 'rgba(96,165,250,0.18)', '#60a5fa',
+               Math.min(1, z.ahaGlanz / 0.8) * puls, 3);
+  if (z.glanz > 0)
+    _m5tRahmen(ctx, g.zl - 7, g.y0 - 5, g.er + 7, g.y1 + 5, 'rgba(253,230,138,0.22)', '#f59e0b',
+               Math.min(1, z.glanz / 0.6) * puls, 3);
+  // Reihen
+  for (let r = 0; r < _m5tM; r++) {
+    const a = S.reihe[r];
+    if (a <= 0.01) continue;
+    const dx = -(1 - a) * 26, y = K.RY0 + r * K.RP;
+    ctx.save(); ctx.globalAlpha *= a;
+    for (let j = 0; j < w.k; j++) _m5tStreifen(ctx, g.zl + j * (K.ST_W + K.ST_GAP) + dx, y);
+    ctx.fillStyle = K.E.punkt; ctx.strokeStyle = K.E.rand; ctx.lineWidth = 1;
+    for (let i = 0; i < w.e; i++) {
+      const cx = g.el + K.E_R + 0.5 + i * K.E_PITCH + (i >= 5 ? 3 : 0) + dx;
+      ctx.beginPath(); ctx.arc(cx, y + K.ST_H / 2, K.E_R, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  // Schnitt: faellt von oben nach unten, verblasst beim Zusammenzaehlen
+  if (S.schnittA > 0.01 && S.schnitt > 0) {
+    ctx.save();
+    ctx.globalAlpha *= S.schnittA;
+    ctx.strokeStyle = K.F_GRAU; ctx.lineWidth = 1.8;
+    if (ctx.setLineDash) ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(K.CUT, K.CUT_Y0);
+    ctx.lineTo(K.CUT, K.CUT_Y0 + (K.CUT_Y1 - K.CUT_Y0) * S.schnitt); ctx.stroke();
+    if (ctx.setLineDash) ctx.setLineDash([]);
+    ctx.restore();
+  }
+}
+function _m5tKreuz(ctx, z, S) {
+  const K = _m5tK, X = K.MX, Y = K.MY, w = z.w;
+  _m5tText(ctx, 'Malkreuz', X[0], K.M_TITEL_Y, 13, K.F_TITEL, 'left');
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.07)';
+  _bioFxRundRect(ctx, X[0] + 2, Y[0] + 3, X[3] - X[0], Y[2] - Y[0], 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, X[0], Y[0], X[3] - X[0], Y[2] - Y[0], 6); ctx.fill();
+  ctx.fillStyle = '#f1f5f9'; ctx.fillRect(X[0] + 1, Y[0] + 1, X[3] - X[0] - 2, Y[1] - Y[0] - 1);
+  const ga = ctx.globalAlpha;                        // Einblenden nach „neu“ bleibt erhalten
+  ctx.globalAlpha = ga * S.zz; ctx.fillStyle = K.Z.zelle; ctx.fillRect(X[1], Y[1], X[2] - X[1], Y[2] - Y[1] - 1);
+  ctx.globalAlpha = ga * S.ze; ctx.fillStyle = K.E.zelle; ctx.fillRect(X[2], Y[1], X[3] - X[2] - 1, Y[2] - Y[1] - 1);
+  ctx.globalAlpha = ga;
+  ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, X[0], Y[0], X[3] - X[0], Y[2] - Y[0], 6); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(X[2], Y[0]); ctx.lineTo(X[2], Y[2]); ctx.stroke();
+  ctx.strokeStyle = K.F_KREUZ; ctx.lineWidth = 2.6; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(X[1], Y[0] + 3); ctx.lineTo(X[1], Y[2] - 3); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(X[0] + 3, Y[1]); ctx.lineTo(X[3] - 3, Y[1]); ctx.stroke();
+  ctx.restore();
+  const m = _m5tMitte;
+  _m5tZahl(ctx, '·', m(0, 0)[0], m(0, 0)[1], 19, K.F_DUNKEL, S.kopf);
+  _m5tZahl(ctx, String(_m5tM), m(0, 1)[0], m(0, 1)[1], 19, K.F_DUNKEL, S.kopf);
+  _m5tZahl(ctx, _m5tFmt(w.kopfZ), m(1, 0)[0], m(1, 0)[1], 17, K.Z.text, S.kopf, S.popKopf);
+  _m5tZahl(ctx, String(w.e), m(2, 0)[0], m(2, 0)[1], 17, K.E.text, S.kopf, S.popKopf);
+  _m5tZahl(ctx, _m5tFmt(w.teilZ), m(1, 1)[0], m(1, 1)[1], 19, K.Z.text, S.zz, S.popZZ);
+  _m5tZahl(ctx, _m5tFmt(w.teilE), m(2, 1)[0], m(2, 1)[1], 19, K.E.text, S.ze, S.popZE);
+}
+// „80 + 12 = 92“ unter dem Malkreuz, die Teile genau unter IHRER Zelle: Sie fallen
+// senkrecht aus der Zelle herunter, „+“ steht unter dem Strich zwischen den Zellen.
+function _m5tGleichung(ctx, z, S) {
+  const t = S.tZus;
+  if (t === null) return;
+  const K = _m5tK, w = z.w, kl = _bioFxKlemme, E = _bioFxEase.sanft, gr = 19;
+  const ym = K.GL_Y - gr * 0.36;
+  const u = E(kl((t - K.Z_FLUG0) / (K.Z_FLUG1 - K.Z_FLUG0)));
+  ctx.save();
+  // Fallen gerade 8 und 12 fuer „nebeneinander“ durch diese Zeile, tritt sie kurz zurueck.
+  if (S.tNeben !== null && S.tNeben < K.T_FLUG)
+    ctx.globalAlpha *= 1 - 0.7 * Math.sin(Math.PI * kl(S.tNeben / K.T_FLUG));
+  if (t >= K.Z_FLUG0) {
+    for (const [c, s, f] of [[1, _m5tFmt(w.teilZ), K.Z.text], [2, _m5tFmt(w.teilE), K.E.text]]) {
+      const [x0, y0] = _m5tMitte(c, 1);
+      _m5tZahl(ctx, s, x0, y0 + (ym - y0) * u, gr, f, 1);
+    }
+  }
+  _m5tZahl(ctx, '+', K.MX[2], ym, gr, K.F_DUNKEL, kl((t - 0.4) / 0.15));
+  const bG = _m5tBreite(ctx, '=', gr), xg = K.MX[3] + 6 + bG / 2;
+  const sErg = _m5tFmt(w.erg), bErg = _m5tBreite(ctx, sErg, gr);
+  const wk = z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / 0.45) : 0;
+  _m5tZahl(ctx, '=', xg, ym, gr, K.F_DUNKEL, kl((t - K.Z_ERG0) / 0.1));
+  _m5tZahl(ctx, sErg, xg + bG / 2 + 7 + bErg / 2 + wk, ym, gr, K.F_DUNKEL,
+           kl((t - K.Z_ERG0 - 0.05) / 0.1), t - K.Z_ERG0 - 0.05);
+  ctx.restore();
+}
+// „812“ unter der Rechnung: Aus beiden Zellen faellt eine Kopie senkrecht herunter,
+// die 80 schrumpft dabei auf 8 (die 0 verblasst), dann ruecken 8 und 12 unter dem
+// Strich zwischen den Zellen aneinander. Rechts daneben klein „nebeneinander“.
+function _m5tNebenZeichnen(ctx, z, S) {
+  const t = S.tNeben;
+  if (t === null) return;
+  const K = _m5tK, w = z.w, kl = _bioFxKlemme, E = _bioFxEase.sanft, gr = 19;
+  const ym = K.NB_Y - gr * 0.36, xm = K.MX[2];
+  const sZ = String(w.zP), sE = String(w.teilE), sN = _m5tFmt(w.neben);
+  const bZ = _m5tBreite(ctx, sZ, gr), bE = _m5tBreite(ctx, sE, gr), bN = _m5tBreite(ctx, '0', gr);
+  const bF = _m5tBreite(ctx, sN, gr);
+  // klein daneben, was da gemacht wurde (erscheint, wenn die Zahl steht)
+  ctx.save(); ctx.globalAlpha *= kl((t - K.T_RUECK + 0.1) / 0.25);
+  _m5tText(ctx, 'nebeneinander', xm + Math.max(bF, bZ + bE) / 2 + 12, K.NB_Y - 2, 12, K.F_GRAU, 'left', '600');
+  ctx.restore();
+  if (t >= K.T_RUECK) {
+    // fertig: die Zahl, wie sie nebeneinander steht (Tausendertrenner wie im Heft)
+    let x = xm - bF / 2, ziffer = 0;
+    for (const ch of sN) {
+      const b = _m5tBreite(ctx, ch, gr);
+      if (ch !== ' ') {
+        _m5tText(ctx, ch, x, K.NB_Y, gr, ziffer < sZ.length ? K.Z.text : K.E.text, 'left');
+        ziffer++;
+      }
+      x += b;
+    }
+    return;
+  }
+  const u = E(kl(t / K.T_FLUG)), v = E(kl((t - K.T_FLUG) / (K.T_RUECK - K.T_FLUG)));
+  const links = xm - (bZ + bE) / 2;                  // Ziel: beide Stuecke aneinander
+  // Zehnerteil: faellt aus seiner Zelle, die letzte Ziffer (die 0) verblasst und schrumpft
+  const nullA = 1 - kl((t - 0.1) / 0.3);
+  const [zx0, zy0] = _m5tMitte(1, 1);
+  const gx = zx0 + (links + bZ / 2 - zx0) * v, gy = zy0 + (ym - zy0) * u;
+  const xZ = gx - (bN * nullA) / 2;
+  _m5tZahl(ctx, sZ, xZ, gy, gr, K.Z.text, 1);
+  if (nullA > 0.01)
+    _m5tZahl(ctx, '0', xZ + bZ / 2 + bN * nullA / 2, gy, gr * (0.5 + 0.5 * nullA), K.Z.text, nullA);
+  // Einerteil: faellt aus seiner Zelle und rueckt dann heran
+  const [ex0, ey0] = _m5tMitte(2, 1);
+  _m5tZahl(ctx, sE, ex0 + (links + bZ + bE / 2 - ex0) * v, ey0 + (ym - ey0) * u, gr, K.E.text, 1);
+}
+// Kurzform „23 · 4“ auf Karo, Schreibweise wie im Heft.
+function _m5tKurz(ctx, z, S) {
+  const t = S.tKurz;
+  if (t === null) return;
+  const K = _m5tK, w = z.w, kb = K.KB, X0 = K.KX, Y0 = K.KY, kl = _bioFxKlemme, E = _bioFxEase.sanft;
+  const sa = String(w.n), la = sa.length, R = la + 2;          // Spalten: 0 frei, 1..la, „·“, Faktor
+  const cx = c => X0 + (c + 0.5) * kb, cy = r => Y0 + (r + 0.5) * kb;
+  const GR = 18, GM = 12;
+  // Papier
+  ctx.save();
+  ctx.globalAlpha *= kl(t / 0.15);
+  const px0 = X0 - 8, px1 = X0 + (R + 1) * kb + 8, py0 = Y0 - 8, py1 = Y0 + 3 * kb + 8;
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, px0 + 2, py0 + 3, px1 - px0, py1 - py0, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, px0, py0, px1 - px0, py1 - py0, 6); ctx.fill();
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  for (let i = 0; i <= R + 1; i++) {
+    ctx.beginPath(); ctx.moveTo(X0 + i * kb, py0 + 1); ctx.lineTo(X0 + i * kb, py1 - 1); ctx.stroke();
+  }
+  for (let j = 0; j <= 3; j++) {
+    ctx.beginPath(); ctx.moveTo(px0 + 1, Y0 + j * kb); ctx.lineTo(px1 - 1, Y0 + j * kb); ctx.stroke();
+  }
+  ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, px0, py0, px1 - px0, py1 - py0, 6); ctx.stroke();
+  ctx.restore();
+  // gelb hinterlegt: die Ziffern, die gerade malgenommen werden
+  const hl = (c, a) => {
+    if (a <= 0.01) return;
+    ctx.save(); ctx.globalAlpha *= a;
+    ctx.fillStyle = 'rgba(254,240,138,0.75)'; ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.8;
+    _bioFxRundRect(ctx, X0 + c * kb + 2, Y0 + 2, kb - 4, kb - 4, 5); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  };
+  const aE = kl((t - K.K_SCHREIB) / 0.12) * (1 - kl((t - K.K_TEIL1) / 0.1));
+  const aZ = kl((t - K.K_TEIL1) / 0.12) * (1 - kl((t - K.K_MERK1) / 0.1));
+  hl(la, aE); hl(R, Math.max(aE, aZ)); hl(la - 1, aZ);
+  // Halt: die angekommene Zahl einrahmen (hinter den Ziffern)
+  if (z.halt) {
+    const n = String(w.eP).length;
+    ctx.save();
+    ctx.fillStyle = 'rgba(252,211,77,0.38)'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, X0 + (R - n + 1) * kb + 1, Y0 + 2 * kb + 1, n * kb - 2, kb - 2, 6); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // Aufgabe: Zehnerziffer blau, Einerziffer orange, dann „·“ und der Faktor
+  for (let i = 0; i < la; i++)
+    _m5tZahl(ctx, sa[i], cx(1 + i), cy(0), GR, i === la - 1 ? K.E.text : K.Z.text, kl((t - 0.08 - i * 0.05) / 0.12));
+  _m5tZahl(ctx, '·', cx(la + 1), cy(0), GR, K.F_DUNKEL, kl((t - 0.18) / 0.12));
+  _m5tZahl(ctx, String(_m5tM), cx(R), cy(0), GR, K.F_DUNKEL, kl((t - 0.22) / 0.12));
+  // Strich unter der Aufgabe, zieht sich von rechts nach links
+  const us = kl((t - 0.2) / 0.1);
+  if (us > 0) {
+    const xr = X0 + (R + 1) * kb - 3, xl = X0 + kb + 3;
+    ctx.save(); ctx.strokeStyle = K.F_DUNKEL; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(xr, Y0 + kb); ctx.lineTo(xr - (xr - xl) * us, Y0 + kb); ctx.stroke();
+    ctx.restore();
+  }
+  // EINER: die 12 fliegt aus der Zelle ins Ergebnis und zerfaellt in Merkziffer und Einer
+  if (t >= K.K_FLUG0) {
+    const sE = String(w.eP), nE = sE.length;
+    const u = E(kl((t - K.K_FLUG0) / (K.K_HALT - K.K_FLUG0)));
+    const v = E(kl((t - K.K_HALT) / (K.K_TEIL1 - K.K_HALT)));
+    const [qx, qy] = _m5tMitte(2, 1);
+    for (let j = 0; j < nE; j++) {
+      const col = R - (nE - 1 - j);
+      const x0 = qx + (j - (nE - 1) / 2) * 11, x1 = cx(col), y1 = cy(2);
+      let x = x0 + (x1 - x0) * u, y = qy + (y1 - qy) * u - 28 * Math.sin(Math.PI * u);
+      let gr = 19 + (GR - 19) * u, farbe = K.E.text;
+      if (j < nE - 1) {                              // die Zehnerziffer der 12 wird gemerkt
+        y += (cy(1) - cy(2)) * v; gr += (GM - GR) * v; farbe = _m5tMisch(K.E.text, K.Z.text, v);
+      }
+      _m5tZahl(ctx, sE[j], x, y, gr, farbe, 1);
+    }
+  }
+  // ZEHNER: blasse 8, die gemerkte 1 gleitet hinein, daraus wird 9
+  if (t >= K.K_Z0) {
+    const sP = String(w.zP), sF = String(w.zF);
+    if (t < K.K_MERK1) {
+      const a = 0.55 * kl((t - K.K_Z0) / (K.K_Z1 - K.K_Z0));
+      for (let j = 0; j < sP.length; j++)
+        _m5tZahl(ctx, sP[j], cx(R - 1 - (sP.length - 1 - j)), cy(2), GR, K.Z.text, a);
+      if (t >= K.K_Z1) {
+        const m = E(kl((t - K.K_Z1) / (K.K_MERK1 - K.K_Z1)));
+        _m5tZahl(ctx, String(w.merk), cx(R - 1), cy(1) + (cy(2) - cy(1)) * m, GM + (GR - GM) * m,
+                 K.Z.text, 1 - 0.5 * m);
+      }
+    } else {
+      for (let j = 0; j < sF.length; j++)
+        _m5tZahl(ctx, sF[j], cx(R - 1 - (sF.length - 1 - j)), cy(2), GR, K.Z.text, 1, t - K.K_MERK1);
+    }
+  }
+}
+function _m5tDraw(ctx, cv) {
+  if (!_m5t) return;
+  const z = _m5t, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const S = _m5tSicht(z);
+  ctx.save();
+  ctx.globalAlpha = z.einblend;
+  _m5tFeld(ctx, z, S);
+  _m5tKreuz(ctx, z, S);
+  _m5tGleichung(ctx, z, S);
+  _m5tNebenZeichnen(ctx, z, S);
+  _m5tKurz(ctx, z, S);
+  ctx.restore();
+  _bioFxDraw(ctx, z.fx);
+  if (z.halt) _m5tHaltSchild(ctx, z);
+  if (z.pause) _m5tPauseSchild(ctx);
+}
+// Halt: Schild unten rechts, unter der Kurzform, zweizeilig
+// („12 Einer =“ / „1 Zehner und 2 Einer“) – einzeilig waere es breiter als der Platz.
+function _m5tHaltSchild(ctx, z) {
+  const K = _m5tK, w = z.w;
+  const zeilen = [w.eP + ' Einer =', w.merk + ' Zehner und ' + w.eZiffer + ' Einer'];
+  const x0 = K.SX0, x1 = K.SX1, y0 = K.SY0, y1 = K.SY1;
+  ctx.save();
+  ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 9); ctx.fill(); ctx.stroke();
+  let gr = 15;
+  const br = Math.max(...zeilen.map(s => _m5tBreite(ctx, s, gr))), platz = x1 - x0 - 16;
+  if (br > platz) gr = Math.max(11, Math.floor(gr * platz / br));
+  const ym = (y0 + y1) / 2, ab = gr * 0.62;
+  _m5tText(ctx, zeilen[0], (x0 + x1) / 2, ym - ab + gr * 0.36, gr, '#78350f');
+  _m5tText(ctx, zeilen[1], (x0 + x1) / 2, ym + ab + gr * 0.36, gr, '#78350f');
+  ctx.restore();
+}
+// Schild „Pause“ oben links – Stelle, Groesse und Farbe wie in m5-plus-schriftlich.
+// Leuchtet kurz auf, wenn waehrend der Pause ein Knopf gedrueckt wird.
+function _m5tPauseSchild(ctx) {
+  const z = _m5t, w = 64, h = 25, x = 8, y = 8;      // endet vor dem breitesten Feld (33 · 4 beginnt bei x = 85)
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _m5tText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mm4 „Verteilen oder aufteilen?“ (Kennung m5-verteilen)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL4_PROFIL.md, Abschnitt m5-verteilen.
+// Ueberschrift = Frage der Einheit: „Wie viele Bälle kann die Klasse kaufen?“
+//
+// Was man sieht: links die Kasse (Blechdose mit Deckel und Schlitz). In ihr
+// 24 Ein-Euro-Muenzen (goldener Rand, silberner Kern) in zwei Zehnerreihen und
+// einer Viererreihe, nach fuenf Muenzen eine Luecke. Vorn auf der Dose ein
+// Schild „Kasse: 24 €“, das mitzaehlt. Rechts, je nach Situation:
+//   * an Kinder: N Geldboersen (blau) mit den Nummern 1 bis N darunter und
+//     ihrem Betrag darueber („0 €“, „1 €“, … – zaehlt beim Eintreffen mit);
+//   * Ball fuer … €: ein Ballwagen mit acht leeren Ballplaetzen (gestrichelt;
+//     acht, damit die Zahl der Plaetze keine Antwort vorsagt), darueber ein
+//     Ball-Symbol mit Preisschild „6 €“.
+// Ist die Situation zu Ende, gleitet unten ein Zettel „Rechnung“ herein:
+//   „24 € : 4 = 6 €“ bzw. „24 € : 6 € = 4“ – Teile in den Farben ihres Bildes
+//   (Geld bernstein, Kinder blau, Preis orange, Ergebnis dunkel).
+//
+// Bewegung (spielt nach der Sprungmarke SELBST ab, N1 im Bauplan: ein Schritt
+// im Heft = eine Handlung; anhalten kann die Lehrkraft):
+//   Aufbau 0,6 s: fehlende Muenzen springen zurueck in die Kasse (das Schild
+//     zaehlt sie mit), die Geldboersen schweben von oben ein bzw. Ballwagen
+//     und Preisschild erscheinen – nichts ragt dabei aus der Leinwand.
+//   An Kinder: je Runde gleitet in jede Geldboerse eine Muenze (0,5 s je
+//     Runde, leicht gestaffelt, im Bogen), bis die Kasse leer ist. Die Muenzen
+//     verlassen die Kasse von hinten (zuerst die Viererreihe).
+//   Ball fuer p €: p Muenzen fliegen aus der Kasse zu einem Stapel ueber der
+//     Kasse (0,3 s), der Stapel gleitet auf den naechsten Ballplatz (0,3 s),
+//     schrumpft und verschwindet, dort springt ein Ball auf (0,2 s) –
+//     zusammen 0,8 s je Ball.
+// Alles ist eine Funktion der Ablaufzeit z.at (_m5uAb, _m5uBallZeit, _m5uEnde):
+// keine Zufallszahl, jede Zahl im Bild kommt aus derselben Rechnung wie die
+// Statuszeilen (_m5uStand).
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5uWahl('…'), eine Wahlgruppe):
+//     „24 € an 4 Kinder“ · „24 € an 6 Kinder“ · „24 €, Ball für 6 €“ ·
+//     „24 €, Ball für 4 €“ (frei, nicht im Heft)
+//   „noch einmal“ (_m5uNochmal(): die gewaehlte Situation neu abspielen; blass,
+//     solange keine gewaehlt ist) · „neu“ (_m5uNeu(): Kasse mit 24 €, nichts gewaehlt)
+//   Eine Sprungmarke waehrend des Ablaufs startet die Situation neu.
+//
+// Statuszeilen (woertlich, alle mit Wert mehr als 18 Zeichen – simfakten.js):
+//   _m5u-situation  „Situation: 24 € an 4 Kinder“ (Start: „Situation: noch keine gewählt“)
+//   _m5u-kasse      „Noch in der Kasse: 24 €“ (zaehlt herunter)
+//   _m5u-ergebnis   am Ende „Jedes Kind bekommt: 6 €“ bzw.
+//                   „Gekaufte Bälle: 4, übrig: 0 €“ (vorher „…“)
+//   _m5u-rechnung   am Ende „Rechnung: 24 € : 4 = 6 €“ bzw. „Rechnung: 24 € : 6 € = 4“
+//   _m5u-probe      am Ende „Probe mit der Malaufgabe: 4 · 6 € = 24 €“
+// Rechnungen mit Groessen tragen Einheiten (N3): an Kinder Groesse : Zahl =
+// Groesse, Ball fuer … Groesse : Groesse = Zahl, Probe Anzahl · Groesse.
+//
+// Werte (nachgerechnet, simcheck/werte.js):
+//   24 € an 4 Kinder   → 6 € je Kind,  24 € : 4 = 6 €,  Probe 4 · 6 € = 24 €
+//   24 € an 6 Kinder   → 4 € je Kind,  24 € : 6 = 4 €,  Probe 6 · 4 € = 24 €
+//   24 €, Ball für 6 € → 4 Bälle,      24 € : 6 € = 4,  Probe 4 · 6 € = 24 €
+//   24 €, Ball für 4 € → 6 Bälle,      24 € : 4 € = 6,  Probe 6 · 4 € = 24 €
+// Start: Kasse mit 24 €, nichts gewaehlt (die Muenzen fallen beim Oeffnen hinein).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): „24 €, Ball für 6 €“ – der
+// 4. Ball erscheint, die Kasse zeigt 0 € – Lichtring um die 4 Baelle, die
+// Baelle leuchten 2,6 s nach. Einmal je Ablauf. Das widerlegt „144 Bälle“
+// (mal gerechnet) und „18 Bälle“ (minus gerechnet).
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-plus-schriftlich, Container fpm-lehrkraft
+// fuer simfakten.js, V3 im Bauplan): eigene Knopfzeile UNTER den Heftknoepfen,
+// davor klein „Für die Lehrkraft:“:
+//   „Pause“ ↔ „weiter“ (_m5uAnhalten()): friert jede Bewegung ein; Schild
+//     „Pause“ oben links auf der Leinwand (Stelle wie in m5-plus-schriftlich).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_m5uTempo()): ein Drittel so schnell.
+//   „Zahlen verdecken: aus“ ↔ „… an“ (_m5uVerdecken()): verdeckt Rechnung und
+//     Ergebnis (Statuszeilen, Betraege ueber den Geldboersen, Zettel) bis zum
+//     Aufdecken – zum Vermuten an der Tafel. Die Kasse zaehlt weiter sichtbar.
+//   Eine Sprungmarke, „noch einmal“ oder „neu“ heben die Pause auf; Tempo und
+//   Verdecken bleiben stehen (die Lehrkraft stellt sie einmal ein).
+//   Das wechselnde Wort steht in einem eigenen <span>, damit die Aufschrift
+//   nicht als Statuszeile in den Faktendump geraet.
+// Hinweiszeile _m5u-lehrkraft (in der Pause bernsteinfarben) nennt immer die
+// Einstellung: „Für die Lehrkraft: „Pause“ hält alles an. Tempo: normal,
+// Zahlen: sichtbar.“ – so aendert JEDER Lehrkraft-Knopf eine Zeile, und
+// simfakten.js legt ihn nicht einmal um und laesst ihn dann umgelegt stehen.
+// Voreinstellung (Pause aus, Tempo normal, Zahlen sichtbar): Zeitfaktor 1.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „aufteilen“,
+// „Aufteilen“, „aufgeteilt“, „Quotient“, „Geteiltaufgabe“ – die Rechnung
+// steht als Zeichen da. Keine Namen, keine Punkte, keine Zeitmessung.
+// ════════════════════════════════════════════════════════════════════════
+let _m5u = null;
+const _m5uGELD = 24;
+const _m5uSIT = {
+  k4: { art: 'kinder', n: 4, text: '24 € an 4 Kinder' },
+  k6: { art: 'kinder', n: 6, text: '24 € an 6 Kinder' },
+  b6: { art: 'ball', preis: 6, text: '24 €, Ball für 6 €' },
+  b4: { art: 'ball', preis: 4, text: '24 €, Ball für 4 €' }
+};
+const _m5uREIHE = ['k4', 'k6', 'b6', 'b4'];
+const _m5uK = {
+  // Kasse: Dose, Deckel, Schlitz, Schild
+  DX0: 10, DX1: 168, DY0: 44, DY1: 162,
+  LX0: 6, LX1: 172, LY0: 36, LY1: 48,
+  SX0: 30, SX1: 148, SY0: 122, SY1: 152,
+  // Muenzen in der Kasse: Radius, erste Mitte, Abstand, Fuenferluecke, Reihen
+  MR: 6, MXS: 25.25, MP: 13.5, M5: 6, MRY: [68, 86, 104],
+  // Geldboersen: Mitte des rechten Bereichs, Koerper, Betrag, Nummer, Muenzradius
+  MITTE: 300, BY0: 100, BY1: 156, BBY: 84, BNY: 172, BMR: 5.5,
+  // Ballwagen: Plaetze, Abstand, Mitte, Radius, Ablage
+  PLAETZE: 8, PP: 27, PY: 126, PR: 11, RY0: 140, RY1: 145,
+  // Preisschild (Ball-Symbol und Schild)
+  TBX: 268, TBY: 58,
+  // Stapel ueber der Kasse (unterste Muenze), Hoehe je Muenze
+  STX: 150, STY: 25, STD: 3.4,
+  // Zettel „Rechnung“
+  ZX0: 100, ZX1: 320, ZY0: 186, ZY1: 238,
+  // Zeiten in s
+  T_AUF: 0.6, T_FUELL: 0.4, T_RUNDE: 0.5, STAG: 0.04, T_MFLUG: 0.3,
+  T_BALL: 0.8, GSTAG: 0.02, T_GFLUG: 0.2, T_SAMMEL: 0.3, T_GLEIT: 0.3, T_WEG: 0.2,
+  T_ZETTEL: 0.4,
+  // Farben
+  GELD: '#b45309', KIND: '#1d4ed8', BALL: '#c2410c', TINTE: '#0f172a', GRAU: '#64748b'
+};
+
+// ── Ablauf: alles aus der Ablaufzeit ─────────────────────────────────────
+// Zeitpunkt, zu dem die m-te Muenze (0 … 23) die Kasse verlaesst.
+function _m5uAb(S, m) {
+  const K = _m5uK;
+  if (S.art === 'kinder') return K.T_AUF + Math.floor(m / S.n) * K.T_RUNDE + (m % S.n) * K.STAG;
+  return K.T_AUF + Math.floor(m / S.preis) * K.T_BALL + (m % S.preis) * K.GSTAG;
+}
+// Beginn von Ball b (die Muenzen fliegen los); der Ball erscheint T_SAMMEL + T_GLEIT spaeter.
+function _m5uBallZeit(b) { return _m5uK.T_AUF + b * _m5uK.T_BALL; }
+function _m5uBallDa(b) { return _m5uBallZeit(b) + _m5uK.T_SAMMEL + _m5uK.T_GLEIT; }
+function _m5uEnde(S) {
+  const K = _m5uK;
+  if (S.art === 'kinder')
+    return K.T_AUF + (_m5uGELD / S.n - 1) * K.T_RUNDE + (S.n - 1) * K.STAG + K.T_MFLUG;
+  return K.T_AUF + (_m5uGELD / S.preis) * K.T_BALL;
+}
+// Stand zur Ablaufzeit: wie viele Muenzen weg, was in den Boersen, wie viele Baelle, fertig?
+function _m5uStand(z) {
+  const S = z.key ? _m5uSIT[z.key] : null;
+  const st = { weg: 0, inKasse: _m5uGELD, boerse: [], baelle: 0, fertig: false };
+  if (!S) return st;
+  const K = _m5uK, at = z.at;
+  for (let m = 0; m < _m5uGELD; m++) if (at >= _m5uAb(S, m)) st.weg++;
+  st.inKasse = _m5uGELD - st.weg;
+  if (S.art === 'kinder') {
+    for (let j = 0; j < S.n; j++) st.boerse.push(0);
+    for (let m = 0; m < _m5uGELD; m++) if (at >= _m5uAb(S, m) + K.T_MFLUG) st.boerse[m % S.n]++;
+  } else {
+    for (let b = 0; b < _m5uGELD / S.preis; b++) if (at >= _m5uBallDa(b)) st.baelle++;
+  }
+  st.fertig = at >= _m5uEnde(S);
+  return st;
+}
+
+function _m5uInit() {
+  _m5u = { t: 0, at: 0, key: null, fx: { teile: [] },
+           pause: false, langsam: false, verdeckt: false };   // Lehrkraft-Einstellungen
+  _m5uLaden(null);
+  _m5u.fuell = _m5uGELD;                 // beim Oeffnen fallen alle 24 Muenzen in die Kasse
+}
+// Eine Situation laden (key = null: nichts gewaehlt). Was vorher fehlte, springt zurueck.
+function _m5uLaden(key) {
+  const z = _m5u;
+  z.fuell = _m5uStand(z).weg;
+  z.key = key; z.at = 0;
+  z.stand = _m5uStand(z);
+  z.kassePop = 9; z.boersePop = [9, 9, 9, 9, 9, 9];
+  z.ende = false; z.zettel = 0; z.endGlanz = 0;
+  z.aha = false; z.ahaGlanz = 0;
+  z.fx.teile.length = 0;
+  z.pause = false;                       // neu laden hebt die Pause auf
+}
+function _m5uHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5u-b-${k}" onclick="_m5uWahl('${k}')">${_m5uSIT[k].text.replace(/(\d) /g, '$1&nbsp;')}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viele Bälle kann die Klasse kaufen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Situation. Die Münzen wandern von selbst.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5u-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5uREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5u-nochmal" onclick="_m5uNochmal()">noch einmal</button>
+          <button class="sim-btn" onclick="_m5uNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft"><div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+          <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+          <button class="sim-btn" id="_m5u-pause" onclick="_m5uAnhalten()">Pause</button>
+          <button class="sim-btn" id="_m5u-tempo" onclick="_m5uTempo()">Tempo: <span id="_m5u-tempo-an">normal</span></button>
+          <button class="sim-btn" id="_m5u-verdeckt" onclick="_m5uVerdecken()">Zahlen verdecken: <span id="_m5u-verdeckt-an">aus</span></button>
+        </div></div>
+        <div class="lmp-status on" id="_m5u-lehrkraft" style="margin-top:4px"></div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5u-situation" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5u-kasse" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5u-ergebnis" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5u-rechnung" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5u-probe" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 24&nbsp;€ in der Kasse</p>
+  </div>`;
+}
+function _m5uSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+function _m5uStatus() {
+  if (!_m5u) return;
+  const z = _m5u, K = _m5uK, S = z.key ? _m5uSIT[z.key] : null, st = z.stand;
+  const f = (s, farbe) => '<b style="color:' + farbe + '">' + s + '</b>';
+  const G = _m5uGELD, fertig = !!(S && st.fertig), zu = z.verdeckt;
+  _m5uSetze('_m5u-situation', 'Situation: ' + (S ? S.text : 'noch keine gewählt'));
+  _m5uSetze('_m5u-kasse', 'Noch in der Kasse: ' + f(st.inKasse + ' €', K.GELD));
+  let erg = 'Ergebnis: …', rech = 'Rechnung: …', probe = 'Probe mit der Malaufgabe: …';
+  if (S && S.art === 'kinder') {
+    const je = G / S.n;
+    erg = 'Jedes Kind bekommt: ' + (!fertig ? '…' : zu ? 'verdeckt' : f(je + ' €', K.TINTE));
+    if (fertig) {
+      rech = 'Rechnung: ' + (zu ? 'verdeckt'
+           : f(G + ' €', K.GELD) + ' : ' + f(S.n, K.KIND) + ' = ' + f(je + ' €', K.TINTE));
+      probe = 'Probe mit der Malaufgabe: ' + (zu ? 'verdeckt'
+            : f(S.n, K.KIND) + ' · ' + f(je + ' €', K.TINTE) + ' = ' + f(G + ' €', K.GELD));
+    }
+  } else if (S) {
+    const n = Math.floor(G / S.preis), rest = G - n * S.preis;
+    erg = 'Gekaufte Bälle: ' + (!fertig ? '…' : zu ? 'verdeckt'
+        : f(n, K.TINTE) + ', übrig: ' + f(rest + ' €', K.GELD));
+    if (fertig) {
+      rech = 'Rechnung: ' + (zu ? 'verdeckt'
+           : f(G + ' €', K.GELD) + ' : ' + f(S.preis + ' €', K.BALL) + ' = ' + f(n, K.TINTE));
+      probe = 'Probe mit der Malaufgabe: ' + (zu ? 'verdeckt'
+            : f(n, K.TINTE) + ' · ' + f(S.preis + ' €', K.BALL) + ' = ' + f(G + ' €', K.GELD));
+    }
+  }
+  _m5uSetze('_m5u-ergebnis', erg);
+  _m5uSetze('_m5u-rechnung', rech);
+  _m5uSetze('_m5u-probe', probe);
+  _m5uREIHE.forEach(k => {
+    const b = document.getElementById('_m5u-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.key);
+  });
+  const nm = document.getElementById('_m5u-nochmal');
+  if (nm) { nm.disabled = !S; if (nm.style) nm.style.opacity = S ? '' : '0.45'; }
+  // Fuer die Lehrkraft: Aufschriften und Hinweiszeile (in der Pause bernsteinfarben)
+  _m5uSetze('_m5u-pause', z.pause ? 'weiter' : 'Pause');
+  _m5uSetze('_m5u-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _m5uSetze('_m5u-verdeckt-an', z.verdeckt ? 'an' : 'aus');
+  const hz = _m5uSetze('_m5u-lehrkraft', _m5uHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_m5u-pause', z.pause], ['_m5u-verdeckt', z.verdeckt]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+function _m5uHinweis() {
+  const z = _m5u;
+  return (z.pause ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+                  : 'Für die Lehrkraft: „Pause“ hält alles an.') +
+         ' Tempo: ' + (z.langsam ? 'langsam' : 'normal') +
+         ', Zahlen: ' + (z.verdeckt ? 'verdeckt' : 'sichtbar') + '.';
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5uWahl(key) {
+  if (!_m5u || !_m5uSIT[key]) return;
+  _m5uLaden(key);
+  _m5uStatus();
+}
+function _m5uNochmal() {
+  if (!_m5u || !_m5u.key) return;
+  _m5uLaden(_m5u.key);
+  _m5uStatus();
+}
+function _m5uNeu() {
+  if (!_m5u) return;
+  _m5uLaden(null);
+  _m5uStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _m5uAnhalten() {
+  if (!_m5u) return;
+  _m5u.pause = !_m5u.pause;
+  _m5uStatus();
+}
+function _m5uTempo() {
+  if (!_m5u) return;
+  _m5u.langsam = !_m5u.langsam;
+  _m5uStatus();
+}
+function _m5uVerdecken() {
+  if (!_m5u) return;
+  _m5u.verdeckt = !_m5u.verdeckt;
+  _m5uStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _m5uZeitfaktor(z) { return z.pause ? 0 : z.langsam ? 1 / 3 : 1; }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5uUpdate(dt) {
+  if (!_m5u) return;
+  const z = _m5u, K = _m5uK;
+  dt = _bioFxDt(dt) * _m5uZeitfaktor(z);            // ab hier Sim-Zeit
+  z.t += dt; z.at += dt;
+  z.kassePop += dt;
+  for (let j = 0; j < z.boersePop.length; j++) z.boersePop[j] += dt;
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  z.endGlanz = Math.max(0, z.endGlanz - dt);
+  if (z.ende) z.zettel = Math.min(1, z.zettel + dt / K.T_ZETTEL);
+  if (z.key && dt > 0) {                            // ohne Zeit kein Schritt im Ablauf
+    const st = _m5uStand(z), alt = z.stand;
+    let neu = false;
+    if (st.inKasse !== alt.inKasse) { z.kassePop = 0; neu = true; }
+    st.boerse.forEach((c, j) => { if (c !== (alt.boerse[j] || 0)) z.boersePop[j] = 0; });
+    if (z.key === 'b6' && !z.aha && st.baelle >= 4) {
+      // Aha: der 4. Ball ist da, die Kasse ist leer
+      z.aha = true; z.ahaGlanz = 2.6;
+      _bioFxWelle(z.fx.teile, (_m5uPlatzX(0) + _m5uPlatzX(3)) / 2, K.PY, '#f59e0b', 74);
+    }
+    if (st.fertig && !z.ende) { z.ende = true; z.zettel = 0; z.endGlanz = 1.6; neu = true; }
+    z.stand = st;
+    if (neu) _m5uStatus();
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Orte ────────────────────────────────────────────────────────────────
+// Platz q (0 … 23) in der Kasse: Reihen zu 10, 10, 4, nach fuenf eine Luecke.
+function _m5uKassePlatz(q) {
+  const K = _m5uK, r = q < 10 ? 0 : q < 20 ? 1 : 2, j = q - r * 10;
+  return { x: K.MXS + j * K.MP + (j >= 5 ? K.M5 : 0), y: K.MRY[r] };
+}
+function _m5uBoerseX(S, j) { return _m5uK.MITTE + (j - (S.n - 1) / 2) * (S.n === 4 ? 55 : 37); }
+function _m5uBoerseB(S) { return S.n === 4 ? 44 : 30; }
+// Platz der r-ten Muenze in Geldboerse j: zwei Spalten, von unten nach oben.
+function _m5uBoersePlatz(S, j, r) {
+  return { x: _m5uBoerseX(S, j) + (r % 2 ? 6 : -6), y: _m5uK.BY1 - 11 - Math.floor(r / 2) * 12 };
+}
+function _m5uPlatzX(i) { return _m5uK.MITTE + (i - (_m5uK.PLAETZE - 1) / 2) * _m5uK.PP; }
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5uText(ctx, s, x, y, groesse, farbe, ausr, gew) {
+  ctx.fillStyle = farbe || _m5uK.TINTE;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Ein-Euro-Muenze: goldener Rand, silberner Kern. ry < r: schraeg von der Seite (Stapel).
+function _m5uMuenze(ctx, x, y, r, ry, a) {
+  if (a <= 0.01 || r <= 0.3) return;
+  ry = ry === undefined ? r : ry;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  if (ry < r - 0.5) {                                // Kante
+    ctx.fillStyle = '#d97706';
+    ctx.beginPath(); ctx.ellipse(x, y + 1.8, r, ry, 0, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.fillStyle = '#fbbf24'; ctx.strokeStyle = '#b45309'; ctx.lineWidth = 1.1;
+  ctx.beginPath(); ctx.ellipse(x, y, r, ry, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#e5e7eb'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 0.8;
+  ctx.beginPath(); ctx.ellipse(x, y, r * 0.56, ry * 0.56, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.restore();
+}
+function _m5uBall(ctx, x, y, r, k, a) {
+  if ((a !== undefined && a <= 0.01) || k <= 0.01) return;
+  ctx.save();
+  if (a !== undefined) ctx.globalAlpha = Math.min(1, a);
+  ctx.translate(x, y);
+  if (k !== 1) ctx.scale(k, k);
+  ctx.fillStyle = '#fb923c'; ctx.strokeStyle = '#c2410c'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(0, 0, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1;                   // Naehte
+  ctx.beginPath(); ctx.moveTo(-r, 0); ctx.lineTo(r, 0); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(0, -r); ctx.lineTo(0, r); ctx.stroke();
+  ctx.beginPath(); ctx.arc(-r * 1.25, 0, r * 0.9, -0.85, 0.85); ctx.stroke();
+  ctx.beginPath(); ctx.arc(r * 1.25, 0, r * 0.9, Math.PI - 0.85, Math.PI + 0.85); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.beginPath(); ctx.arc(-r * 0.38, -r * 0.42, r * 0.26, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+function _m5uKasse(ctx) {
+  const z = _m5u, K = _m5uK, E = _bioFxEase;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, K.DX0 + 3, K.DY0 + 4, K.DX1 - K.DX0, K.DY1 - K.DY0, 10); ctx.fill();
+  const g = ctx.createLinearGradient(K.DX0, 0, K.DX1, 0);
+  g.addColorStop(0, '#e2e8f0'); g.addColorStop(0.5, '#f8fafc'); g.addColorStop(1, '#cbd5e1');
+  ctx.fillStyle = g; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.6;
+  _bioFxRundRect(ctx, K.DX0, K.DY0, K.DX1 - K.DX0, K.DY1 - K.DY0, 10); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#cbd5e1';
+  _bioFxRundRect(ctx, K.LX0, K.LY0, K.LX1 - K.LX0, K.LY1 - K.LY0, 4); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#334155';
+  _bioFxRundRect(ctx, (K.LX0 + K.LX1) / 2 - 15, K.LY0 + 4, 30, 4, 2); ctx.fill();   // Schlitz
+  ctx.restore();
+  // Muenzen: weg ist, was nach _m5uAb schon losgeflogen ist (von hinten her)
+  const weg = z.stand.weg, ab = _m5uGELD - z.fuell;
+  let drin = 0;                                      // so viele Muenzen sind zu sehen
+  for (let q = 0; q < _m5uGELD; q++) {
+    if (_m5uGELD - 1 - q < weg) continue;
+    let k = 1;
+    if (q >= ab) {                                   // springt beim Laden zurueck in die Kasse
+      const u = (z.at - (q - ab) * (K.T_FUELL / Math.max(1, z.fuell))) / 0.25;
+      if (u <= 0) continue;
+      k = u < 1 ? Math.max(0.3, E.federn(u)) : 1;
+    }
+    drin++;
+    const p = _m5uKassePlatz(q);
+    _m5uMuenze(ctx, p.x, p.y, K.MR * k, K.MR * k, 1);
+  }
+  // Schild „Kasse: 24 €“ – zaehlt die Muenzen, die zu sehen sind (auch beim
+  // Zurueckspringen), springt kurz bei jeder Aenderung
+  ctx.save();
+  ctx.fillStyle = '#fffbeb'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 1.8;
+  _bioFxRundRect(ctx, K.SX0, K.SY0, K.SX1 - K.SX0, K.SY1 - K.SY0, 8); ctx.fill(); ctx.stroke();
+  const pop = z.kassePop < 0.3 ? 1 + 0.12 * Math.sin(Math.PI * z.kassePop / 0.3) : 1;
+  ctx.translate((K.SX0 + K.SX1) / 2, (K.SY0 + K.SY1) / 2);
+  ctx.scale(pop, pop);
+  _m5uText(ctx, 'Kasse: ' + drin + ' €', 0, 6, 17, K.GELD);
+  ctx.restore();
+}
+function _m5uBoersen(ctx, S) {
+  const z = _m5u, K = _m5uK, E = _bioFxEase, w = _m5uBoerseB(S);
+  for (let j = 0; j < S.n; j++) {
+    const e = E.sanft(_bioFxKlemme((z.at - j * 0.04) / 0.4));
+    if (e <= 0.01) continue;
+    const x = _m5uBoerseX(S, j);                    // schwebt von oben ein, bleibt im Bild
+    ctx.save();
+    ctx.globalAlpha = e;
+    ctx.translate(0, -18 * (1 - e));
+    ctx.fillStyle = 'rgba(15,23,42,0.10)';
+    _bioFxRundRect(ctx, x - w / 2 + 2, K.BY0 + 3, w, K.BY1 - K.BY0, 9); ctx.fill();
+    ctx.fillStyle = '#bfdbfe'; ctx.strokeStyle = K.KIND; ctx.lineWidth = 1.6;
+    _bioFxRundRect(ctx, x - w / 2, K.BY0, w, K.BY1 - K.BY0, 9); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#93c5fd';                       // Buegel
+    _bioFxRundRect(ctx, x - w / 2 + 2, K.BY0 - 3, w - 4, 7, 3); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = K.KIND;                          // Verschluss
+    for (const s of [-3.5, 3.5]) { ctx.beginPath(); ctx.arc(x + s, K.BY0 - 6, 3, 0, Math.PI * 2); ctx.fill(); }
+    const c = z.stand.boerse[j] || 0;
+    for (let r = 0; r < c; r++) {
+      const p = _m5uBoersePlatz(S, j, r);
+      _m5uMuenze(ctx, p.x, p.y, K.BMR, K.BMR, 1);
+    }
+    // Betrag darueber (am Ende kurz hinterlegt; verdeckt: „?“)
+    if (z.endGlanz > 0 && !z.verdeckt) {
+      ctx.save();
+      ctx.globalAlpha = e * Math.min(1, z.endGlanz / 0.6) * (0.55 + 0.45 * Math.sin(z.t * 6));
+      ctx.fillStyle = 'rgba(252,211,77,0.55)'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2;
+      _bioFxRundRect(ctx, x - 17, K.BBY - 16, 34, 21, 7); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    }
+    const bp = z.boersePop[j] < 0.3 ? 1 + 0.18 * Math.sin(Math.PI * z.boersePop[j] / 0.3) : 1;
+    ctx.save();
+    ctx.translate(x, K.BBY - 5); ctx.scale(bp, bp);
+    _m5uText(ctx, z.verdeckt ? '?' : c + ' €', 0, 5, 15, K.TINTE);
+    ctx.restore();
+    // Nummer darunter
+    ctx.fillStyle = K.KIND;
+    ctx.beginPath(); ctx.arc(x, K.BNY, 9, 0, Math.PI * 2); ctx.fill();
+    _m5uText(ctx, String(j + 1), x, K.BNY + 4.5, 12, '#ffffff');
+    ctx.restore();
+  }
+}
+function _m5uBaelle(ctx, S) {
+  const z = _m5u, K = _m5uK, E = _bioFxEase;
+  const e = E.sanft(_bioFxKlemme(z.at / 0.4)), dy = -14 * (1 - e);
+  ctx.save();
+  ctx.globalAlpha = e;
+  // Ballwagen: Ablage und acht leere Plaetze
+  ctx.fillStyle = '#cbd5e1'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, K.MITTE - 110, K.RY0, 220, K.RY1 - K.RY0, 2.5); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3; ctx.setLineDash([3, 3]);
+  for (let i = 0; i < K.PLAETZE; i++) {
+    ctx.beginPath(); ctx.arc(_m5uPlatzX(i), K.PY, K.PR, 0, Math.PI * 2); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  // Preisschild: Ball-Symbol, Faden, Schild „6 €“
+  const bx = K.TBX, by = K.TBY + dy;
+  _m5uBall(ctx, bx, by, 11, 1);
+  ctx.strokeStyle = '#9a3412'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(bx + 10, by - 4); ctx.lineTo(bx + 26, by - 4); ctx.stroke();
+  ctx.fillStyle = '#fff7ed'; ctx.strokeStyle = K.BALL; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(bx + 22, by - 4); ctx.lineTo(bx + 31, by - 16); ctx.lineTo(bx + 80, by - 16);
+  ctx.lineTo(bx + 80, by + 8); ctx.lineTo(bx + 31, by + 8); ctx.closePath();
+  ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(bx + 30, by - 4, 2.4, 0, Math.PI * 2); ctx.stroke();
+  _m5uText(ctx, S.preis + ' €', bx + 56, by + 2, 16, K.BALL);
+  ctx.restore();
+  // Baelle, die schon da sind (springen beim Erscheinen auf)
+  for (let b = 0; b < z.stand.baelle; b++) {
+    const x = _m5uPlatzX(b), alter = z.at - _m5uBallDa(b);
+    const glanz = Math.max(z.ahaGlanz / 2.6, z.endGlanz / 1.6);
+    if (glanz > 0) {
+      ctx.save(); ctx.globalAlpha = Math.min(1, glanz * 1.6);
+      _bioFxLeuchten(ctx, x, K.PY, 13, z.t, '245,158,11');
+      ctx.restore();
+    }
+    _m5uBall(ctx, x, K.PY, K.PR, alter < 0.25 ? Math.max(0.3, E.federn(alter / 0.25)) : 1);
+  }
+}
+// Was gerade fliegt: Muenzen zu den Geldboersen bzw. Muenzen zum Stapel und der Stapel zum Platz.
+function _m5uFlug(ctx, S) {
+  const z = _m5u, K = _m5uK, E = _bioFxEase, kl = _bioFxKlemme, at = z.at;
+  if (S.art === 'kinder') {
+    for (let m = 0; m < _m5uGELD; m++) {
+      const u = (at - _m5uAb(S, m)) / K.T_MFLUG;
+      if (u < 0 || u >= 1) continue;
+      const e = E.sanft(u), a = _m5uKassePlatz(_m5uGELD - 1 - m);
+      const b = _m5uBoersePlatz(S, m % S.n, Math.floor(m / S.n));
+      const x = a.x + (b.x - a.x) * e, y = a.y + (b.y - a.y) * e - 34 * Math.sin(Math.PI * e);
+      const r = K.MR + (K.BMR - K.MR) * e;
+      _m5uMuenze(ctx, x, y, r, r, 1);
+    }
+    return;
+  }
+  const p = S.preis;
+  for (let b = 0; b < _m5uGELD / p; b++) {
+    const lt = at - _m5uBallZeit(b);
+    if (lt < 0 || lt >= K.T_SAMMEL + K.T_GLEIT + K.T_WEG) continue;
+    if (lt < K.T_SAMMEL) {
+      // die Muenzen fliegen einzeln zum Stapel ueber der Kasse und kippen dabei flach
+      for (let i = 0; i < p; i++) {
+        const u = (lt - i * K.GSTAG) / K.T_GFLUG;
+        if (u < 0) continue;
+        const e = E.sanft(kl(u)), a = _m5uKassePlatz(_m5uGELD - 1 - (b * p + i));
+        const zx = K.STX, zy = K.STY - i * K.STD;
+        const x = a.x + (zx - a.x) * e, y = a.y + (zy - a.y) * e - 10 * Math.sin(Math.PI * e);
+        _m5uMuenze(ctx, x, y, K.MR + 2 * e, K.MR - 3.3 * e, 1);
+      }
+    } else {
+      // der Stapel gleitet auf den Ballplatz, dann schrumpft er und verschwindet
+      const e = E.sanft(kl((lt - K.T_SAMMEL) / K.T_GLEIT));
+      const w = kl((lt - K.T_SAMMEL - K.T_GLEIT) / K.T_WEG);
+      const zx = _m5uPlatzX(b), zy = K.PY + 7;
+      const sx = K.STX + (zx - K.STX) * e, sy = K.STY + (zy - K.STY) * e;
+      const k = 1 - 0.7 * w;
+      for (let i = 0; i < p; i++)
+        _m5uMuenze(ctx, sx, sy - i * K.STD * k, (K.MR + 2) * k, (K.MR - 3.3) * k, 1 - w);
+    }
+  }
+}
+// Zettel „Rechnung“ unten – gleitet am Ende herein; Teile in den Farben ihres Bildes.
+function _m5uZettel(ctx, S) {
+  const z = _m5u, K = _m5uK, e = _bioFxEase.sanft(z.zettel);
+  if (e <= 0.01) return;
+  const dy = 10 * (1 - e), x0 = K.ZX0, x1 = K.ZX1, y0 = K.ZY0 + dy, y1 = K.ZY1 + dy;
+  ctx.save();
+  ctx.globalAlpha = e;
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, x0 + 2, y0 + 3, x1 - x0, y1 - y0, 8); ctx.fill();
+  ctx.fillStyle = z.verdeckt ? '#e2e8f0' : '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 8); ctx.fill(); ctx.stroke();
+  _m5uText(ctx, 'Rechnung', x0 + 10, y0 + 15, 11, K.GRAU, 'left', '600');
+  if (z.verdeckt) {
+    _m5uText(ctx, 'verdeckt', (x0 + x1) / 2, y0 + 37, 16, '#94a3b8', 'center', '600');
+    ctx.restore();
+    return;
+  }
+  const G = _m5uGELD;
+  const teile = S.art === 'kinder'
+    ? [[G + ' €', K.GELD], [':', K.TINTE], [String(S.n), K.KIND], ['=', K.TINTE], [G / S.n + ' €', K.TINTE]]
+    : [[G + ' €', K.GELD], [':', K.TINTE], [S.preis + ' €', K.BALL], ['=', K.TINTE], [String(G / S.preis), K.TINTE]];
+  const gr = 22;
+  ctx.font = '700 ' + gr + 'px sans-serif';
+  const br = teile.map(t => ctx.measureText(t[0]).width), luft = gr * 0.36;
+  const ges = br.reduce((s, b) => s + b, 0) + luft * (teile.length - 1);
+  let x = (x0 + x1) / 2 - ges / 2;
+  teile.forEach((t, i) => { _m5uText(ctx, t[0], x, y0 + 40, gr, t[1], 'left'); x += br[i] + luft; });
+  ctx.restore();
+}
+// Schild „Pause“ oben links – Stelle, Groesse und Farbe wie in m5-plus-schriftlich.
+function _m5uPauseSchild(ctx) {
+  const w = 64, h = 25, x = 8, y = 8;
+  ctx.save();
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _m5uText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+function _m5uDraw(ctx, cv) {
+  if (!_m5u) return;
+  const z = _m5u, W = cv.width, H = cv.height;
+  const S = z.key ? _m5uSIT[z.key] : null;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5uKasse(ctx);
+  if (S && S.art === 'kinder') _m5uBoersen(ctx, S);
+  if (S && S.art === 'ball') _m5uBaelle(ctx, S);
+  if (S) _m5uFlug(ctx, S);
+  if (S && z.ende) _m5uZettel(ctx, S);
+  _bioFxDraw(ctx, z.fx.teile);
+  if (z.pause) _m5uPauseSchild(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mm5 „Was bleibt übrig?“ (Kennung m5-rest, Praefix _m5v)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL4_PROFIL.md, Abschnitt m5-rest.
+// Ueberschrift = Frage der Einheit: „Wie viele Karten bleiben übrig?“
+//
+// Was man sieht – Bild und Zeichen, durch die FARBE verbunden (Karten indigo,
+// volle Seiten gruen, Rest orange; in Bild, Zettel und Statuszeilen gleich):
+//   KARTEN (oben, mittig): kleine Rechtecke mit gleichem Rueckenmuster
+//     (weisser Innenrand, helle Raute), in Zehnerreihen mit Fuenferluecke.
+//     Die Karten verlassen das Feld von hinten, so bleibt die Struktur
+//     lesbar: 7 uebrige Karten sind immer „5 und 2“ in der ersten Reihe.
+//   ALBUM (unten, helles Band mit der Aufschrift „Album“): Platz fuer sieben
+//     Seiten nebeneinander, jede mit 4 Faechern (2 × 2). Eine Seite erscheint
+//     erst, wenn sie gefuellt wird – das leere Album verraet also keine
+//     Seitenzahl. Unter jeder vollen Seite ihre Nummer im gruenen Kreis.
+//   ABLAGE „übrig“ (rechts neben dem Album): ein flacher Kasten mit 4 Plaetzen,
+//     darueber eine geschweifte Klammer und das Wort „übrig“.
+//   ZETTEL (unten, am Ende): „Kurz geschrieben: 23 : 4 = 5 Rest 3“ – 23 indigo
+//     (Karten), 5 gruen (volle Seiten), „Rest 3“ orange (Ablage).
+//
+// Bewegung (spielt nach der Sprungmarke SELBST ab, N1 im Bauplan: ein Schritt
+// im Heft = eine Handlung; anhalten kann die Lehrkraft). Alles ist eine
+// Funktion der Ablaufzeit L.at (_m5vAb, _m5vLand, _m5vRStart …): keine
+// Zufallszahl, jede Zahl im Bild kommt aus derselben Rechnung wie die
+// Statuszeilen (_m5vStandAus).
+//   Aufbau 0,45 s: Karten, die nicht auf dem Tisch liegen, springen zurueck ins
+//     Feld (federnd, gestaffelt); ein altes Album blendet aus (0,25 s).
+//   Je Seite 0,6 s: die Seite erscheint, ihre 4 Karten fliegen nacheinander
+//     im Bogen in die Faecher. Ist sie voll, springt ihre Nummer auf.
+//   Restphase (nur wenn weniger als 4 Karten uebrig sind): noch eine Seite
+//     erscheint als gestrichelter Umriss, die uebrigen Karten schweben hinein,
+//     die leeren Faecher leuchten kurz orange, dann gleiten die Karten in die
+//     Ablage „übrig“. Danach bleibt der Umriss blass stehen.
+//   Am Ende gleitet der Zettel herein.
+//   Dauer: 21 : 4 und 23 : 4 je 5,45 s, 22 : 4 ebenso, 24 : 4 4,15 s.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5vAufgabe('21') usw., eine
+//     Wahlgruppe): „21 : 4“ · „22 : 4“ · „23 : 4“ · „24 : 4“.
+//   „+ 1 Karte“ (_m5vPlus()): legt eine Karte in die Ablage – sie springt im
+//     Feld auf und fliegt hinueber. Sind dort dann 4 Karten, wandern sie auf
+//     die neue Seite (der Umriss wird eine volle Seite). Erst nach einer
+//     Aufgabe bedienbar (vorher blass). Grenze 28 Karten = 7 Seiten (mehr
+//     passt nicht ins Album): die Ablage wackelt, _m5v-grenze sagt „Mehr
+//     Karten passen nicht ins Album.“ (bis zur naechsten Handlung).
+//   „noch einmal“ (_m5vNochmal()): spielt die Aufgabe mit der jetzigen
+//     Kartenzahl neu ab (blass, solange noch nichts gespielt wurde).
+//   „neu“ (_m5vNeu()): wieder 23 Karten, das Album ist leer.
+// Wer waehrend einer Bewegung „+ 1 Karte“ drueckt, laesst die laufende
+// Bewegung sofort ankommen; dann geschieht das Neue (Bauart m5-malkreuz).
+// Eine Sprungmarke, „noch einmal“ und „neu“ brechen ab und bauen neu auf.
+//
+// Statuszeilen (woertlich aus dem Bauplan, alle mit Wert mehr als 18 Zeichen
+// – simfakten.js). Sie folgen dem Bild: Eine Zahl steht erst in der Anzeige,
+// wenn sie im Bild angekommen ist.
+//   _m5v-aufgabe  „Aufgabe: 23 Karten, 4 auf jede Seite“
+//   _m5v-karten   „Karten noch nicht im Album: 19“ (zaehlt herunter; Karten in
+//                 der Ablage und auf dem Umriss sind NICHT im Album)
+//   _m5v-seiten   „Volle Albumseiten: 5“ (zaehlt hoch, Start 0)
+//   _m5v-rest     „Übrige Karten (Rest): 3“ (vorher „…“)
+//   _m5v-kurz     am Ende „Kurz geschrieben: 23 : 4 = 5 Rest 3“ bzw.
+//                 „Kurz geschrieben: 24 : 4 = 6“ (vorher „…“)
+//   _m5v-grenze   nur an der Grenze (siehe oben), sonst ausgeblendet
+//   _m5v-lehrkraft Hinweis fuer die Lehrkraft (siehe unten)
+//
+// Werte (nachgerechnet, simcheck/werte.js):
+//   21 : 4 → 5 volle Seiten, Rest 1   „Kurz geschrieben: 21 : 4 = 5 Rest 1“
+//   22 : 4 → 5 volle Seiten, Rest 2   „Kurz geschrieben: 22 : 4 = 5 Rest 2“
+//   23 : 4 → 5 volle Seiten, Rest 3   „Kurz geschrieben: 23 : 4 = 5 Rest 3“
+//   24 : 4 → 6 volle Seiten, Rest 0   „Kurz geschrieben: 24 : 4 = 6“
+//   „+ 1 Karte“ ab 23 : 4 → wie 24 : 4 (Aufgabe: 24 Karten …).
+// Start: 23 Karten, das Album ist leer (die Karten fallen beim Oeffnen ins Feld).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen):
+//   23 : 4 – die 5. Seite fuellt sich (dort hat Tarek aufgehoert): Lichtring
+//     um diese Seite, sie leuchtet 2,6 s nach. Das widerlegt „7 Karten übrig“.
+//   24 : 4 – die 6. Seite (die bei 23 : 4 die Ablage war) wird voll: Lichtring.
+//   „+ 1 Karte“ – aus der Ablage wird eine volle Seite: Lichtring dort.
+//   Gilt fuer die KARTENZAHL (23 bzw. 24), auch nach „noch einmal“.
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-plus-schriftlich / m5-verteilen, im
+// Container <div class="fpm-lehrkraft">, damit simfakten.js die Zeile
+// ueberspringen kann – Bauplan V3). Eigene Zeile UNTER den Heftknoepfen,
+// davor klein „Für die Lehrkraft:“, Reihenfolge wie im Bauplan:
+//   „Pause“ ↔ „weiter“ (_m5vAnhalten()): friert jede Bewegung ein; Schild
+//     „Pause“ oben links im Bild (Stelle wie in m5-plus-schriftlich).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_m5vTempo()): ein Drittel so schnell.
+//   „Halt nach 4 Seiten: aus“ ↔ „… an“ (_m5vHaltSchalter()): Tareks Stelle.
+//     Der Ablauf haelt von selbst an, sobald 4 Seiten voll sind und BEVOR die
+//     5. Seite erscheint: Die uebrigen Karten im Feld sind bernsteinfarben
+//     eingerahmt, oben rechts steht das Schild „Nach 4 Seiten: / noch 7
+//     Karten“, die Hinweiszeile sagt „Halt: Nach 4 Seiten sind noch 7 Karten
+//     übrig.“ (bei 23 : 4; 21 : 4 → 5, 22 : 4 → 6, 24 : 4 → 8). Dann ist Pause;
+//     „weiter“ fuellt die 5. Seite.
+//   Nur das wechselnde Wort steht in einem eigenen <span> (_m5v-tempo-an,
+//   _m5v-halt-an), damit die Aufschrift nicht als Statuszeile in den
+//   Faktendump geraet.
+// Hinweiszeile _m5v-lehrkraft (in der Pause „lmp-status off“, sonst „on“)
+// nennt immer die Einstellung, so aendert JEDER Lehrkraft-Knopf eine Zeile
+// (simfakten.js legt ihn sonst einmal um und laesst ihn umgelegt stehen):
+//   sonst  „Für die Lehrkraft: „Pause“ hält alles an. Tempo: normal, Halt nach 4 Seiten: aus.“
+//   Pause  „Angehalten. Erkläre, was gerade passiert. Dann „weiter“. Tempo: …“
+//   Halt   „Halt: Nach 4 Seiten sind noch 7 Karten übrig.“
+// So ist es gebaut:
+//   * EIN Zeitfaktor (_m5vZeitfaktor: 0 in der Pause, 1/3 langsam, 1 normal)
+//     an der einen Stelle, an der dt in _m5vUpdate hineingeht. Ohne Zeit kein
+//     Schritt im Ablauf (`dt > 0`). Voreinstellung: Faktor 1.
+//   * Der Halt ist ein EREIGNIS im Ablauf (Zeitpunkt _m5vHaltZeit wird
+//     ueberschritten), keine Zeitmessung.
+//   * In der Pause bewegt „+ 1 Karte“ nichts: Steht eine Bewegung, entfaellt
+//     der Druck; steht keine, wird er VORGEMERKT und beginnt mit „weiter“.
+//     Das Schild „Pause“ leuchtet dabei kurz auf (in echter Zeit).
+//     Eine Sprungmarke, „noch einmal“ und „neu“ heben die Pause auf; Tempo
+//     und Halt bleiben stehen (die Lehrkraft stellt sie einmal ein).
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „kleiner“, „Probe“,
+// „Startzahl“, die Regel als Satz. Keine Namen, keine Punkte, keine Zeitmessung.
+// ════════════════════════════════════════════════════════════════════════
+let _m5v = null;
+const _m5vSTART = 23, _m5vJE = 4, _m5vMAX = 28;
+const _m5vREIHE = ['21', '22', '23', '24'];
+const _m5vK = {
+  // Karte: Breite, Hoehe
+  CW: 14, CH: 18,
+  // Kartenfeld (oben, mittig): Mitte der ersten Karte, Abstand, Fuenferluecke, Reihen
+  FX: 130, FP: 17, F5: 7, FY: [50, 73, 96],
+  // Album: Band, Seiten (linke Kante der ersten, Abstand, oben, Breite, Hoehe),
+  // Fach (Rand, Breite, Hoehe, Luecke), Nummernkreis
+  BX0: 5, BX1: 353, BY0: 128, BY1: 207,
+  PX0: 10, PP: 49, PY0: 131, PW: 44, PH: 52,
+  PAD: 4, SW: 16, SH: 20, SG: 4, NY: 195, NR: 8,
+  // Ablage „übrig“ (gleiche Faecher wie eine Seite), Klammer darueber
+  TX0: 360, KLY: 127, KLH: 7, UEY: 116,
+  // Zettel „Kurz geschrieben“, Halt-Schild
+  ZX0: 60, ZX1: 360, ZY0: 212, ZY1: 244,
+  HX0: 309, HX1: 416, HY0: 46, HY1: 96,
+  // Zeiten in s – Aufgabe abspielen
+  T_AUF: 0.45, T_FUELL: 0.3, T_POP: 0.2, T_ALT: 0.25,
+  T_SEITE: 0.6, T_SEIN: 0.15, T_ABFLUG: 0.08, STAG: 0.07, T_FLUG: 0.3,
+  R_EIN: 0.25, R_AB: 0.2, R_STAG: 0.08, R_FLUG: 0.35, R_GLUEH: 0.75, R_GLUEH_D: 0.6,
+  R_TAB: 1.4, R_TSTAG: 0.06, R_TFLUG: 0.45, R_ENDE: 2.0, OHNE_REST: 0.1,
+  // Zeiten in s – „+ 1 Karte“
+  P_AB: 0.2, P_FLUG: 0.45, P_ENDE: 0.7, P_MAB: 0.85, P_MSTAG: 0.07, P_MFLUG: 0.42, P_ENDE4: 1.55,
+  T_ZETTEL: 0.4,
+  // Farben
+  KARTE: '#4338ca', SEITE: '#047857', REST: '#c2410c', TINTE: '#0f172a', GRAU: '#64748b'
+};
+
+// ── Ablauf: alles aus der Ablaufzeit ─────────────────────────────────────
+function _m5vSeiten(n) { return Math.floor(n / _m5vJE); }
+function _m5vRest(n) { return n % _m5vJE; }
+// Aufgabe abspielen: Seite i beginnt, Karte m (0 … 4p−1) fliegt los / landet.
+function _m5vSeitenStart(i) { return _m5vK.T_AUF + i * _m5vK.T_SEITE; }
+function _m5vAb(m) { return _m5vSeitenStart(Math.floor(m / 4)) + _m5vK.T_ABFLUG + (m % 4) * _m5vK.STAG; }
+function _m5vLand(m) { return _m5vAb(m) + _m5vK.T_FLUG; }
+function _m5vVoll(i) { return _m5vLand(4 * i + 3); }
+// Restphase: Umriss erscheint, Restkarte j fliegt hinein, Faecher gluehen, Karte j in die Ablage.
+function _m5vRStart(n) { return _m5vK.T_AUF + _m5vSeiten(n) * _m5vK.T_SEITE; }
+function _m5vRAb(n, j) { return _m5vRStart(n) + _m5vK.R_AB + j * _m5vK.R_STAG; }
+function _m5vRLand(n, j) { return _m5vRAb(n, j) + _m5vK.R_FLUG; }
+function _m5vTAb(n, j) { return _m5vRStart(n) + _m5vK.R_TAB + j * _m5vK.R_TSTAG; }
+function _m5vTLand(n, j) { return _m5vTAb(n, j) + _m5vK.R_TFLUG; }
+function _m5vEnde(n) { return _m5vRStart(n) + (_m5vRest(n) ? _m5vK.R_ENDE : _m5vK.OHNE_REST); }
+// Halt nach 4 Seiten: die 4. Seite ist voll (T_AUF + 2,39 s), die 5. noch nicht da (T_AUF + 2,4 s).
+function _m5vHaltZeit() { return _m5vSeitenStart(4) - 0.005; }
+// „+ 1 Karte“: Karte s (0 … 3) wandert aus der Ablage auf die neue Seite.
+function _m5vPAb(s) { return _m5vK.P_MAB + s * _m5vK.P_MSTAG; }
+function _m5vPLand(s) { return _m5vPAb(s) + _m5vK.P_MFLUG; }
+// Welche Seite bekommt den Lichtring? (-1: keine)
+function _m5vAhaSeite(L) {
+  if (!L) return -1;
+  if (L.art === 'plus') return L.r + 1 === _m5vJE ? L.p : -1;
+  return L.n === 23 ? 4 : L.n === 24 ? 5 : -1;
+}
+
+// Stand: Karten im Album, volle Seiten, Karten in der Ablage, Karten auf dem Tisch, fertig?
+function _m5vStandAus(z) {
+  const L = z.lauf;
+  if (!L) {
+    if (!z.gespielt) return { imAlbum: 0, voll: 0, ablage: 0, feld: z.n, fertig: true };
+    return { imAlbum: 4 * z.voll, voll: z.voll, ablage: z.rest, feld: 0, fertig: true };
+  }
+  const at = L.at;
+  if (L.art === 'spiel') {
+    const n = L.n, p = _m5vSeiten(n), r = _m5vRest(n);
+    let weg = 0, imAlbum = 0, voll = 0, ablage = 0;
+    for (let m = 0; m < 4 * p; m++) { if (at >= _m5vAb(m)) weg++; if (at >= _m5vLand(m)) imAlbum++; }
+    for (let i = 0; i < p; i++) if (at >= _m5vVoll(i)) voll++;
+    for (let j = 0; j < r; j++) { if (at >= _m5vRAb(n, j)) weg++; if (at >= _m5vTLand(n, j)) ablage++; }
+    return { imAlbum, voll, ablage, feld: n - weg, fertig: at >= _m5vEnde(n) };
+  }
+  const vier = L.r + 1 === _m5vJE;
+  let imAlbum = 4 * L.p, voll = L.p, ablage = L.r + (at >= _m5vK.P_AB + _m5vK.P_FLUG ? 1 : 0);
+  if (vier) {
+    for (let s = 0; s < 4; s++) { if (at >= _m5vPAb(s)) ablage--; if (at >= _m5vPLand(s)) imAlbum++; }
+    if (at >= _m5vPLand(3)) voll++;
+  }
+  return { imAlbum, voll, ablage, feld: at < _m5vK.P_AB ? 1 : 0,
+           fertig: at >= (vier ? _m5vK.P_ENDE4 : _m5vK.P_ENDE) };
+}
+
+function _m5vInit() {
+  _m5v = { t: 0, n: _m5vSTART, gespielt: false, voll: 0, rest: 0, lauf: null,
+           ein: { von: 0, bis: _m5vSTART, at: 0 },        // beim Oeffnen fallen 23 Karten ins Feld
+           alt: null, zettel: 0, zettelAn: false,
+           seitePop: [9, 9, 9, 9, 9, 9, 9], ablagePop: 9,
+           ahaSeite: -1, ahaGlanz: 0, wackel: 0, grenze: '', blink: 0, vorgemerkt: false,
+           pause: false, langsam: false, haltAn: false, halt: null,   // Lehrkraft-Einstellungen
+           fx: { teile: [] } };
+  _m5v.stand = _m5vStandAus(_m5v);
+}
+// Was gerade im Album steht, blendet aus; die fehlenden Karten springen zurueck ins Feld.
+function _m5vAufraeumen(n) {
+  const z = _m5v, st = z.stand;
+  z.alt = (st.voll || st.ablage) ? { voll: st.voll, ablage: st.ablage, at: 0 } : null;
+  z.ein = { von: Math.min(st.feld, n), bis: n, at: 0 };
+  z.n = n; z.zettel = 0; z.zettelAn = false;
+  z.ahaGlanz = 0; z.ahaSeite = -1; z.wackel = 0; z.grenze = '';
+  z.seitePop = [9, 9, 9, 9, 9, 9, 9]; z.ablagePop = 9;
+  z.fx.teile.length = 0;
+  z.pause = false; z.halt = null; z.vorgemerkt = false;   // neu laden hebt die Pause auf
+}
+function _m5vSpielen(n) {
+  const z = _m5v;
+  _m5vAufraeumen(n);
+  z.lauf = { art: 'spiel', n, at: 0, angehalten: false };
+  z.stand = _m5vStandAus(z);
+}
+function _m5vHTML() {
+  const marke = k => `<button class="sim-btn" id="_m5v-b-${k}" onclick="_m5vAufgabe('${k}')">${k}&nbsp;:&nbsp;4</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie viele Karten bleiben übrig?</h3>
+    <div class="fpm-note" style="margin-top:2px">Auf jede Seite passen 4 Karten. Wähle eine Aufgabe und sieh zu.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5v-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5vREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5v-plus" onclick="_m5vPlus()">+&nbsp;1&nbsp;Karte</button>
+          <button class="sim-btn" id="_m5v-nochmal" onclick="_m5vNochmal()">noch einmal</button>
+          <button class="sim-btn" onclick="_m5vNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft"><div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+          <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+          <button class="sim-btn" id="_m5v-pause" onclick="_m5vAnhalten()">Pause</button>
+          <button class="sim-btn" id="_m5v-tempo" onclick="_m5vTempo()">Tempo: <span id="_m5v-tempo-an">normal</span></button>
+          <button class="sim-btn" id="_m5v-halt" onclick="_m5vHaltSchalter()">Halt nach 4 Seiten: <span id="_m5v-halt-an">aus</span></button>
+        </div></div>
+        <div class="lmp-status on" id="_m5v-lehrkraft" style="margin-top:4px"></div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5v-aufgabe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5v-karten" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5v-seiten" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5v-rest" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5v-kurz" style="margin-top:6px"></div>
+        <div class="lmp-status off" id="_m5v-grenze" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 23 Karten, das Album ist leer</p>
+  </div>`;
+}
+function _m5vSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+function _m5vStatus() {
+  if (!_m5v) return;
+  const z = _m5v, K = _m5vK, st = z.stand;
+  const f = (s, farbe) => '<b style="color:' + farbe + '">' + s + '</b>';
+  const fertig = z.gespielt && !z.lauf;
+  _m5vSetze('_m5v-aufgabe', 'Aufgabe: ' + f(z.n + ' Karten', K.KARTE) + ', 4 auf jede Seite');
+  _m5vSetze('_m5v-karten', 'Karten noch nicht im Album: ' + f(z.n - st.imAlbum, K.KARTE));
+  _m5vSetze('_m5v-seiten', 'Volle Albumseiten: ' + f(st.voll, K.SEITE));
+  _m5vSetze('_m5v-rest', 'Übrige Karten (Rest): ' + (fertig ? f(z.rest, K.REST) : '…'));
+  _m5vSetze('_m5v-kurz', 'Kurz geschrieben: ' + (!fertig ? '…'
+    : f(z.n, K.KARTE) + ' : 4 = ' + f(z.voll, K.SEITE) + (z.rest ? ' ' + f('Rest ' + z.rest, K.REST) : '')));
+  const g = _m5vSetze('_m5v-grenze', z.grenze);
+  if (g && g.style) g.style.display = z.grenze ? '' : 'none';
+  const aktiv = z.gespielt || !!z.lauf;
+  _m5vREIHE.forEach(k => {
+    const b = document.getElementById('_m5v-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', aktiv && +k === z.n);
+  });
+  for (const id of ['_m5v-plus', '_m5v-nochmal']) {
+    const b = document.getElementById(id);
+    if (b) { b.disabled = !aktiv; if (b.style) b.style.opacity = aktiv ? '' : '0.45'; }
+  }
+  // Fuer die Lehrkraft: Aufschriften und Hinweiszeile (in der Pause bernsteinfarben)
+  _m5vSetze('_m5v-pause', z.pause ? 'weiter' : 'Pause');
+  _m5vSetze('_m5v-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _m5vSetze('_m5v-halt-an', z.haltAn ? 'an' : 'aus');
+  const hz = _m5vSetze('_m5v-lehrkraft', _m5vHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_m5v-pause', z.pause], ['_m5v-halt', z.haltAn]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+function _m5vHinweis() {
+  const z = _m5v;
+  if (z.halt) return 'Halt: Nach 4 Seiten sind noch ' + z.halt.uebrig + ' Karten übrig.';
+  return (z.pause ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+                  : 'Für die Lehrkraft: „Pause“ hält alles an.') +
+         ' Tempo: ' + (z.langsam ? 'langsam' : 'normal') +
+         ', Halt nach 4 Seiten: ' + (z.haltAn ? 'an' : 'aus') + '.';
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5vAufgabe(k) {
+  const n = parseInt(k, 10);
+  if (!_m5v || _m5vREIHE.indexOf(String(k)) < 0) return;
+  _m5vSpielen(n);
+  _m5vStatus();
+}
+function _m5vNochmal() {
+  if (!_m5v || !(_m5v.gespielt || _m5v.lauf)) return;
+  _m5vSpielen(_m5v.n);
+  _m5vStatus();
+}
+function _m5vNeu() {
+  if (!_m5v) return;
+  const z = _m5v;
+  _m5vAufraeumen(_m5vSTART);
+  z.lauf = null; z.gespielt = false; z.voll = 0; z.rest = 0;
+  z.stand = _m5vStandAus(z);
+  _m5vStatus();
+}
+// Die laufende Bewegung sofort ankommen lassen (Endstand setzen, ohne Lichtring).
+function _m5vAnkommen() {
+  const z = _m5v, L = z.lauf;
+  if (!L) return;
+  if (L.art === 'spiel') { z.voll = _m5vSeiten(L.n); z.rest = _m5vRest(L.n); }
+  else { const r = L.r + 1; z.voll = L.p + (r === _m5vJE ? 1 : 0); z.rest = r % _m5vJE; }
+  z.gespielt = true; z.lauf = null; z.halt = null;
+  z.ein = { von: 0, bis: 0, at: 9 };
+  z.stand = _m5vStandAus(z);
+  z.zettel = 0; z.zettelAn = true;                  // der Zettel gleitet herein
+}
+function _m5vPlus() {
+  if (!_m5v) return;
+  const z = _m5v;
+  if (!(z.gespielt || z.lauf)) return;              // erst nach einer Aufgabe
+  if (z.pause) {                                    // in der Pause: vormerken oder entfallen lassen
+    z.blink = 0.6;
+    if (!z.lauf) z.vorgemerkt = true;
+    _m5vStatus();
+    return;
+  }
+  if (z.lauf) _m5vAnkommen();
+  if (z.n >= _m5vMAX) {
+    z.wackel = 0.45; z.grenze = 'Mehr Karten passen nicht ins Album.';
+    _m5vStatus();
+    return;
+  }
+  z.grenze = '';
+  z.lauf = { art: 'plus', p: z.voll, r: z.rest, at: 0 };
+  z.n += 1;
+  z.zettel = 0; z.zettelAn = false;
+  z.ahaGlanz = 0; z.ahaSeite = -1;
+  z.stand = _m5vStandAus(z);
+  _m5vStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _m5vAnhalten() {
+  if (!_m5v) return;
+  const z = _m5v;
+  if (z.pause) {
+    z.pause = false; z.halt = null; z.blink = 0;
+    if (z.vorgemerkt) { z.vorgemerkt = false; _m5vPlus(); return; }
+  } else z.pause = true;
+  _m5vStatus();
+}
+function _m5vTempo() {
+  if (!_m5v) return;
+  _m5v.langsam = !_m5v.langsam;
+  _m5vStatus();
+}
+function _m5vHaltSchalter() {
+  if (!_m5v) return;
+  _m5v.haltAn = !_m5v.haltAn;
+  _m5vStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _m5vZeitfaktor(z) { return z.pause ? 0 : z.langsam ? 1 / 3 : 1; }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5vUpdate(dt) {
+  if (!_m5v) return;
+  const z = _m5v, K = _m5vK;
+  const roh = _bioFxDt(dt);
+  z.blink = Math.max(0, z.blink - roh);             // Schild „Pause“ leuchtet in echter Zeit
+  dt = roh * _m5vZeitfaktor(z);                     // ab hier Sim-Zeit
+  z.t += dt;
+  z.ein.at += dt;
+  if (z.alt) { z.alt.at += dt; if (z.alt.at >= K.T_ALT) z.alt = null; }
+  z.wackel = Math.max(0, z.wackel - dt);
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  z.ablagePop += dt;
+  for (let i = 0; i < z.seitePop.length; i++) z.seitePop[i] += dt;
+  if (z.zettelAn) z.zettel = Math.min(1, z.zettel + dt / K.T_ZETTEL);
+  const L = z.lauf;
+  if (L && dt > 0) {                                // ohne Zeit kein Schritt im Ablauf
+    const vor = L.at;
+    L.at += dt;
+    if (L.art === 'spiel' && z.haltAn && !L.angehalten && _m5vSeiten(L.n) >= 4 && L.n > 16) {
+      const th = _m5vHaltZeit();
+      if (vor < th && L.at >= th) {                 // Halt: 4 Seiten voll, die 5. noch nicht da
+        L.at = th; L.angehalten = true;
+        z.pause = true; z.halt = { uebrig: L.n - 16 };
+      }
+    }
+    const st = _m5vStandAus(z), alt = z.stand;
+    let neu = !!z.halt && !alt.halt;
+    if (st.voll !== alt.voll || st.imAlbum !== alt.imAlbum || st.feld !== alt.feld) neu = true;
+    if (st.ablage !== alt.ablage) { z.ablagePop = 0; neu = true; }
+    for (let i = alt.voll; i < st.voll; i++) {
+      z.seitePop[i] = 0;
+      if (i === _m5vAhaSeite(L)) {                  // Aha: Lichtring um diese Seite
+        z.ahaSeite = i; z.ahaGlanz = 2.6;
+        _bioFxWelle(z.fx.teile, K.PX0 + i * K.PP + K.PW / 2, K.PY0 + K.PH / 2, '#f59e0b', 52);
+      }
+    }
+    // Im Halt steht die Zeit: Die Nummer der 4. Seite stuende sonst eingefroren klein da.
+    if (z.halt) for (let i = 0; i < st.voll; i++) z.seitePop[i] = Math.max(z.seitePop[i], 0.3);
+    st.halt = !!z.halt;
+    z.stand = st;
+    if (st.fertig) { _m5vAnkommen(); neu = true; }
+    if (neu) _m5vStatus();
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Orte ────────────────────────────────────────────────────────────────
+// Platz q (0 … 27) im Kartenfeld: Reihen zu 10, nach fuenf eine Luecke.
+function _m5vFeldPlatz(q) {
+  const K = _m5vK, r = Math.floor(q / 10), j = q % 10;
+  return { x: K.FX + j * K.FP + (j >= 5 ? K.F5 : 0), y: K.FY[r] };
+}
+// Fach s (0 … 3, zeilenweise) der Seite i bzw. der Ablage (i = 'ablage').
+function _m5vFach(i, s) {
+  const K = _m5vK, x0 = i === 'ablage' ? K.TX0 : K.PX0 + i * K.PP;
+  return { x: x0 + K.PAD + K.SW / 2 + (s % 2) * (K.SW + K.SG),
+           y: K.PY0 + K.PAD + K.SH / 2 + Math.floor(s / 2) * (K.SH + K.SG) };
+}
+// Flugbahn von a nach b (u = 0 … 1), im Bogen nach oben.
+function _m5vBahn(a, b, u, bogen) {
+  const e = _bioFxEase.sanft(_bioFxKlemme(u));
+  return { x: a.x + (b.x - a.x) * e, y: a.y + (b.y - a.y) * e - bogen * Math.sin(Math.PI * e), k: 1 };
+}
+
+// Was gerade zu sehen ist: Seiten, Umriss, Ablage, Karten im Feld, fliegende Karten.
+function _m5vSzene() {
+  const z = _m5v, K = _m5vK, L = z.lauf, E = _bioFxEase, kl = _bioFxKlemme;
+  const S = { seiten: [], umriss: null, ablage: [], feld: 0, flug: [] };
+  const voll = i => ({ i, a: 1, voll: true, karten: [0, 1, 2, 3] });
+  if (!L) {
+    if (!z.gespielt) { S.feld = z.n; return S; }
+    for (let i = 0; i < z.voll; i++) S.seiten.push(voll(i));
+    if (z.rest) S.umriss = { i: z.voll, a: 1, karten: [], glut: 0, blass: true };
+    for (let s = 0; s < z.rest; s++) S.ablage.push(s);
+    return S;
+  }
+  const at = L.at;
+  if (L.art === 'spiel') {
+    const n = L.n, p = _m5vSeiten(n), r = _m5vRest(n);
+    let weg = 0;
+    for (let i = 0; i < p; i++) {
+      const t0 = _m5vSeitenStart(i);
+      if (at < t0) break;
+      const seite = { i, a: E.sanft(kl((at - t0) / K.T_SEIN)), voll: at >= _m5vVoll(i), karten: [] };
+      for (let s = 0; s < 4; s++) {
+        const m = 4 * i + s, ab = _m5vAb(m);
+        if (at < ab) continue;
+        weg++;
+        if (at >= _m5vLand(m)) seite.karten.push(s);
+        else S.flug.push(_m5vBahn(_m5vFeldPlatz(n - 1 - m), _m5vFach(i, s), (at - ab) / K.T_FLUG, 16));
+      }
+      S.seiten.push(seite);
+    }
+    if (r && at >= _m5vRStart(n)) {
+      const u = { i: p, a: E.sanft(kl((at - _m5vRStart(n)) / K.R_EIN)), karten: [], glut: 0,
+                  blass: at >= _m5vTLand(n, r - 1) };
+      const g = (at - _m5vRStart(n) - K.R_GLUEH) / K.R_GLUEH_D;
+      if (g > 0 && g < 1) u.glut = Math.sin(Math.PI * g);
+      for (let j = 0; j < r; j++) {
+        const ab = _m5vRAb(n, j), land = _m5vRLand(n, j), tab = _m5vTAb(n, j);
+        if (at < ab) continue;
+        weg++;
+        if (at >= _m5vTLand(n, j)) S.ablage.push(j);
+        else if (at >= tab) S.flug.push(_m5vBahn(_m5vFach(p, j), _m5vFach('ablage', j), (at - tab) / K.R_TFLUG, 10));
+        else if (at >= land) u.karten.push(j);
+        else S.flug.push(_m5vBahn(_m5vFeldPlatz(r - 1 - j), _m5vFach(p, j), (at - ab) / K.R_FLUG, 16));
+      }
+      S.umriss = u;
+    }
+    S.feld = n - weg;
+    return S;
+  }
+  // „+ 1 Karte“: springt im Feld auf (Platz 0), fliegt in die Ablage; bei 4 wandern sie auf die Seite.
+  const p = L.p, r = L.r, vier = r + 1 === _m5vJE, da = at >= K.P_AB + K.P_FLUG;
+  for (let i = 0; i < p; i++) S.seiten.push(voll(i));
+  const quelle = _m5vFeldPlatz(0);
+  if (at < K.P_AB) S.flug.push({ x: quelle.x, y: quelle.y, k: Math.max(0.3, E.federn(kl(at / K.P_AB))) });
+  else if (!da) S.flug.push(_m5vBahn(quelle, _m5vFach('ablage', r), (at - K.P_AB) / K.P_FLUG, 22));
+  if (vier) {
+    const fertig = at >= _m5vPLand(3), karten = [];
+    for (let s = 0; s < 4; s++) {
+      const ab = _m5vPAb(s);
+      if (at >= _m5vPLand(s)) karten.push(s);
+      else if (at >= ab) S.flug.push(_m5vBahn(_m5vFach('ablage', s), _m5vFach(p, s), (at - ab) / K.P_MFLUG, 12));
+      else if (s < r || da) S.ablage.push(s);
+    }
+    if (fertig) S.seiten.push({ i: p, a: 1, voll: true, karten });
+    else S.umriss = { i: p, a: 1, karten, glut: 0, blass: false };
+  } else {
+    for (let s = 0; s < r; s++) S.ablage.push(s);
+    if (da) S.ablage.push(r);
+    S.umriss = { i: p, a: r ? 1 : E.sanft(kl((at - K.P_AB) / K.R_EIN)), karten: [], glut: 0, blass: true };
+  }
+  return S;
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5vText(ctx, s, x, y, groesse, farbe, ausr, gew) {
+  ctx.fillStyle = farbe || _m5vK.TINTE;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Eine Karte (Mitte x, y; k = Massstab; a = Deckkraft): Rueckseite, fuer alle gleich.
+function _m5vKarte(ctx, x, y, k, a) {
+  if (a <= 0.01 || k <= 0.05) return;
+  const K = _m5vK, w = K.CW * k, h = K.CH * k, r = 2.5 * k;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = 'rgba(15,23,42,0.18)';
+  _bioFxRundRect(ctx, x - w / 2 + 1, y - h / 2 + 1.5, w, h, r); ctx.fill();
+  ctx.fillStyle = '#4f46e5'; ctx.strokeStyle = '#312e81'; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x - w / 2, y - h / 2, w, h, r); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = 'rgba(255,255,255,0.8)'; ctx.lineWidth = 0.8;
+  _bioFxRundRect(ctx, x - w / 2 + 2 * k, y - h / 2 + 2 * k, w - 4 * k, h - 4 * k, 1.5 * k); ctx.stroke();
+  ctx.fillStyle = '#c7d2fe';
+  ctx.beginPath();
+  ctx.moveTo(x, y - 4.5 * k); ctx.lineTo(x + 3.2 * k, y); ctx.lineTo(x, y + 4.5 * k); ctx.lineTo(x - 3.2 * k, y);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Das leere Album: helles Band mit der Aufschrift „Album“.
+function _m5vAlbum(ctx, dx) {
+  const K = _m5vK;
+  ctx.save();
+  ctx.translate(dx, 0);
+  ctx.fillStyle = '#e8edf4'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.BX0, K.BY0, K.BX1 - K.BX0, K.BY1 - K.BY0, 10); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  _m5vText(ctx, 'Album', K.BX0 + 5 + dx, K.BY0 - 6, 12, K.GRAU, 'left', '700');
+}
+// Seite i: art 'seite' (weiss, gruener Rand) oder 'umriss' (gestrichelt). glut: leere Faecher orange.
+function _m5vSeite(ctx, i, a, art, karten, glut, blass) {
+  const K = _m5vK, x0 = i === 'ablage' ? K.TX0 : K.PX0 + i * K.PP, y0 = K.PY0;
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a) * (blass ? 0.7 : 1);
+  if (art === 'seite') {
+    ctx.fillStyle = 'rgba(15,23,42,0.10)';
+    _bioFxRundRect(ctx, x0 + 2, y0 + 3, K.PW, K.PH, 5); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.SEITE; ctx.lineWidth = 1.8;
+    _bioFxRundRect(ctx, x0, y0, K.PW, K.PH, 5); ctx.fill(); ctx.stroke();
+  } else if (art === 'umriss') {
+    ctx.fillStyle = 'rgba(255,255,255,0.45)'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.4;
+    ctx.setLineDash([4, 3]);
+    _bioFxRundRect(ctx, x0, y0, K.PW, K.PH, 5); ctx.fill(); ctx.stroke();
+    ctx.setLineDash([]);
+  } else {                                           // Ablage: flacher Kasten
+    ctx.fillStyle = '#fff7ed'; ctx.strokeStyle = '#fb923c'; ctx.lineWidth = 1.6;
+    _bioFxRundRect(ctx, x0, y0, K.PW, K.PH, 7); ctx.fill(); ctx.stroke();
+  }
+  for (let s = 0; s < 4; s++) {
+    const p = _m5vFach(i, s), fx = p.x - K.SW / 2, fy = p.y - K.SH / 2;
+    const drin = karten.indexOf(s) >= 0;
+    if (!drin && glut > 0) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(251,146,60,' + (0.65 * glut).toFixed(3) + ')';
+      ctx.strokeStyle = 'rgba(234,88,12,' + (0.9 * glut).toFixed(3) + ')'; ctx.lineWidth = 1.6;
+      _bioFxRundRect(ctx, fx, fy, K.SW, K.SH, 3); ctx.fill(); ctx.stroke();
+      ctx.restore();
+    } else if (!drin) {
+      ctx.strokeStyle = art === 'ablage' ? '#fdba74' : '#cbd5e1'; ctx.lineWidth = 1;
+      ctx.setLineDash([2, 2]);
+      _bioFxRundRect(ctx, fx, fy, K.SW, K.SH, 3); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+  ctx.restore();
+  for (const s of karten) {
+    const p = _m5vFach(i, s);
+    _m5vKarte(ctx, p.x, p.y, 1, Math.min(1, a) * (blass ? 0.7 : 1));
+  }
+}
+// Nummer unter einer vollen Seite (springt beim Vollwerden auf).
+function _m5vNummer(ctx, i, a) {
+  const z = _m5v, K = _m5vK, x = K.PX0 + i * K.PP + K.PW / 2, y = K.NY;
+  const t = z.seitePop[i], k = t < 0.3 ? Math.max(0.3, _bioFxEase.federn(t / 0.3)) : 1;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.translate(x, y); ctx.scale(k, k);
+  ctx.fillStyle = K.SEITE;
+  ctx.beginPath(); ctx.arc(0, 0, K.NR, 0, Math.PI * 2); ctx.fill();
+  _m5vText(ctx, String(i + 1), 0, 4, 11, '#ffffff');
+  ctx.restore();
+}
+// Geschweifte Klammer ueber der Ablage, Spitze nach oben, darueber „übrig“.
+function _m5vKlammer(ctx, dx) {
+  const K = _m5vK, x0 = K.TX0 + 2 + dx, x1 = K.TX0 + K.PW - 2 + dx, y = K.KLY, h = K.KLH;
+  const m = (x0 + x1) / 2, q = h / 2;
+  ctx.save();
+  ctx.strokeStyle = K.REST; ctx.lineWidth = 1.6;
+  ctx.beginPath();
+  ctx.moveTo(x0, y);
+  ctx.quadraticCurveTo(x0, y - q, x0 + q, y - q);
+  ctx.lineTo(m - q, y - q);
+  ctx.quadraticCurveTo(m, y - q, m, y - h);
+  ctx.quadraticCurveTo(m, y - q, m + q, y - q);
+  ctx.lineTo(x1 - q, y - q);
+  ctx.quadraticCurveTo(x1, y - q, x1, y);
+  ctx.stroke();
+  ctx.restore();
+  const pop = _m5v.ablagePop < 0.3 ? 1 + 0.15 * Math.sin(Math.PI * _m5v.ablagePop / 0.3) : 1;
+  ctx.save();
+  ctx.translate(m, K.UEY - 4); ctx.scale(pop, pop);
+  _m5vText(ctx, 'übrig', 0, 4, 12, K.REST, 'center', '700');
+  ctx.restore();
+}
+// Halt: die uebrigen Karten im Feld einrahmen, oben rechts das Schild.
+function _m5vHaltZeichnen(ctx, feld) {
+  const z = _m5v, K = _m5vK;
+  if (!z.halt) return;
+  if (feld > 0) {
+    let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9;
+    for (let q = 0; q < feld; q++) {
+      const p = _m5vFeldPlatz(q);
+      x0 = Math.min(x0, p.x); x1 = Math.max(x1, p.x); y0 = Math.min(y0, p.y); y1 = Math.max(y1, p.y);
+    }
+    ctx.save();
+    ctx.fillStyle = 'rgba(252,211,77,0.35)'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, x0 - K.CW / 2 - 5, y0 - K.CH / 2 - 5, x1 - x0 + K.CW + 10, y1 - y0 + K.CH + 10, 7);
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.save();
+  ctx.fillStyle = '#fef3c7'; ctx.strokeStyle = '#d97706'; ctx.lineWidth = 2.5;
+  _bioFxRundRect(ctx, K.HX0, K.HY0, K.HX1 - K.HX0, K.HY1 - K.HY0, 9); ctx.fill(); ctx.stroke();
+  const mx = (K.HX0 + K.HX1) / 2, platz = K.HX1 - K.HX0 - 14;
+  // Jede Zeile passt in das Schild: Ist sie zu breit, wird nur sie kleiner (nicht unter 11 px).
+  const zeile = (s, y, gr, gew) => {
+    ctx.font = gew + ' ' + gr + 'px sans-serif';
+    const br = ctx.measureText(s).width;
+    if (br > platz) gr = Math.max(11, Math.floor(gr * platz / br));
+    _m5vText(ctx, s, mx, y, gr, '#78350f', 'center', gew);
+  };
+  zeile('Nach 4 Seiten:', K.HY0 + 21, 13, '600');
+  zeile('noch ' + z.halt.uebrig + ' Karten', K.HY0 + 40, 14, '700');
+  ctx.restore();
+}
+// Zettel „Kurz geschrieben“ unten – gleitet am Ende herein; Teile in den Farben ihres Bildes.
+function _m5vZettel(ctx) {
+  const z = _m5v, K = _m5vK, e = _bioFxEase.sanft(z.zettel);
+  if (e <= 0.01 || !z.gespielt || z.lauf) return;
+  const dy = 6 * (1 - e), x0 = K.ZX0, x1 = K.ZX1, y0 = K.ZY0 + dy, y1 = K.ZY1 + dy;
+  ctx.save();
+  ctx.globalAlpha = e;
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, x0 + 2, y0 + 2, x1 - x0, y1 - y0, 8); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.3;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 8); ctx.fill(); ctx.stroke();
+  _m5vText(ctx, 'Kurz geschrieben:', x0 + 10, y0 + 21, 11, K.GRAU, 'left', '600');
+  const teile = [[String(z.n), K.KARTE], [':', K.TINTE], ['4', K.TINTE], ['=', K.TINTE], [String(z.voll), K.SEITE]];
+  if (z.rest) teile.push(['Rest', K.REST], [String(z.rest), K.REST]);
+  const gr = 19;
+  ctx.font = '700 ' + gr + 'px sans-serif';
+  const br = teile.map(t => ctx.measureText(t[0]).width), luft = gr * 0.3;
+  const ges = br.reduce((s, b) => s + b, 0) + luft * (teile.length - 1);
+  const links = x0 + 118, rechts = x1 - 10;
+  let x = (links + rechts) / 2 - ges / 2;
+  teile.forEach((t, i) => { _m5vText(ctx, t[0], x, y0 + 23, gr, t[1], 'left'); x += br[i] + luft; });
+  ctx.restore();
+}
+// Schild „Pause“ oben links – Stelle, Groesse und Farbe wie in m5-plus-schriftlich.
+function _m5vPauseSchild(ctx) {
+  const z = _m5v, w = 64, h = 25, x = 8, y = 8;
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _m5vText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+function _m5vDraw(ctx, cv) {
+  if (!_m5v) return;
+  const z = _m5v, K = _m5vK, W = cv.width, H = cv.height, E = _bioFxEase;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const dx = z.wackel > 0 ? Math.sin(z.wackel * 40) * 3 * (z.wackel / 0.45) : 0;
+  const S = _m5vSzene();
+  _m5vAlbum(ctx, 0);
+  _m5vKlammer(ctx, dx);
+  // altes Album blendet aus
+  if (z.alt) {
+    const a = 1 - _bioFxKlemme(z.alt.at / K.T_ALT);
+    for (let i = 0; i < z.alt.voll; i++) { _m5vSeite(ctx, i, a, 'seite', [0, 1, 2, 3], 0, false); _m5vNummer(ctx, i, a); }
+  }
+  // Ablage (immer da) mit ihren Karten
+  ctx.save(); ctx.translate(dx, 0);
+  _m5vSeite(ctx, 'ablage', 1, 'ablage', S.ablage, 0, false);   // zeichnet auch die Karten darin
+  if (z.alt) for (let s = 0; s < z.alt.ablage; s++) {
+    const p = _m5vFach('ablage', s);
+    _m5vKarte(ctx, p.x, p.y, 1, 1 - _bioFxKlemme(z.alt.at / K.T_ALT));
+  }
+  ctx.restore();
+  // Seiten, Lichtschein der Aha-Seite, Nummern, Umriss
+  for (const sd of S.seiten) {
+    if (sd.i === z.ahaSeite && z.ahaGlanz > 0) {
+      ctx.save();
+      ctx.globalAlpha = Math.min(1, z.ahaGlanz / 0.8) * (0.55 + 0.45 * Math.sin(z.t * Math.PI * 1.6));
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+      _bioFxRundRect(ctx, K.PX0 + sd.i * K.PP - 4, K.PY0 - 4, K.PW + 8, K.PH + 8, 8); ctx.stroke();
+      ctx.restore();
+    }
+    _m5vSeite(ctx, sd.i, sd.a, 'seite', sd.karten, 0, false);
+    if (sd.voll) _m5vNummer(ctx, sd.i, 1);
+  }
+  if (S.umriss) _m5vSeite(ctx, S.umriss.i, S.umriss.a, 'umriss', S.umriss.karten, S.umriss.glut, S.umriss.blass);
+  // Karten im Feld (beim Laden springen die fehlenden federnd zurueck)
+  _m5vHaltZeichnen(ctx, S.feld);
+  for (let q = 0; q < S.feld; q++) {
+    let k = 1;
+    if (q >= z.ein.von && q < z.ein.bis) {
+      const u = (z.ein.at - (q - z.ein.von) * (K.T_FUELL / Math.max(1, z.ein.bis - z.ein.von))) / K.T_POP;
+      if (u <= 0) continue;
+      k = u < 1 ? Math.max(0.3, E.federn(u)) : 1;
+    }
+    const p = _m5vFeldPlatz(q);
+    _m5vKarte(ctx, p.x, p.y, k, 1);
+  }
+  // fliegende Karten zuletzt (ueber allem)
+  for (const f of S.flug) _m5vKarte(ctx, f.x, f.y, f.k, 1);
+  _m5vZettel(ctx);
+  _bioFxDraw(ctx, z.fx.teile);
+  if (z.pause) _m5vPauseSchild(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 5 FOERDER – mm6 „Wie teilt man schriftlich?“
+// (Kennung m5-teilen-schriftlich, Praefix _m5w)
+// Bauplan: arbeitsheft_mathe_foe5/KAPITEL4_PROFIL.md, Abschnitt m5-teilen-schriftlich.
+// Ueberschrift = Frage der Einheit: „Was ergibt 84 : 3 wirklich?“
+//
+// Was man sieht – drei Teile, durch die FARBE der Stelle verbunden (H rot,
+// Z blau, E gruen wie in m5-buendeln / m5-minus-schriftlich):
+//   RECHENBLATT (oben, Karopapier, Kaestchen 18 px) in der Schreibweise des
+//     Hefts (build_pilot.py, _malgeteilt_zeichnen): Spalte 0 frei fuer das
+//     Minuszeichen, dann die Ziffern der Startzahl, „:“, der Teiler, „=“, das
+//     Ergebnis. Darunter je Stelle „− Produkt“, ein Strich und der Rest mit der
+//     heruntergeholten naechsten Ziffer (84 : 3: − 6 / 24 / − 24 / 0). Ueber den
+//     Ziffern der Startzahl klein H Z E; jede Spalte ist in ihrer Stellenfarbe
+//     getoent. Die Zahl, die gerade geteilt wird, ist gelb hinterlegt; die
+//     heruntergeholte Ziffer gleitet sichtbar nach unten und leuchtet dabei.
+//   MATERIAL DER STARTZAHL (daneben): drei Felder H | Z | E wie die
+//     Stellenwerttafel – Platten (Fuenfersaeule), Stangen (10 Wuerfel mit
+//     Fuenfermarke, 5 + 5 je Reihe), Wuerfel (Zehnerreihen, Fuenferluecke).
+//   TELLER (unten, ueber die ganze Breite): so viele wie der Teiler. Auf jedem
+//     Teller liegen die Stuecke in der Reihenfolge H, Z, E – am Ende liest man
+//     dort die Ziffern des Ergebnisses als Material (129: 1 Platte, 2 Stangen,
+//     9 Wuerfel).
+//
+// Bewegung (eine Sprungmarke spielt die Aufgabe SELBST ab, N1 im Bauplan: ein
+// Schritt im Heft = eine Handlung; anhalten kann die Lehrkraft). Stelle fuer
+// Stelle von der groessten Stelle her:
+//   zeigen     0,3 s  Feld und Zahl im Blatt gelb (die Zeile davor bleibt so lange stehen)
+//   verteilen  Statuszeile „Zehner: 8 : 3 …“; je Runde ein Stueck auf jeden Teller,
+//              0,5 s je Runde (die Stuecke
+//              sinken aus dem Feld nach unten und gleiten auf ihren Teller)
+//   schreiben  die Ergebnisziffer erscheint federnd hinter „=“
+//   abziehen   „− 6“, der Strich und der Rest erscheinen im Blatt; was uebrig
+//              ist, wird orange umrandet
+//   entbuendeln (Rest > 0): jedes uebrige Stueck zerfaellt sichtbar in 10
+//              kleinere (0,5 s), die ins naechste Feld gleiten und sich zu dessen
+//              Stuecken legen (0,6 s); gleichzeitig gleitet im Blatt die naechste
+//              Ziffer herunter (2 -> 24).
+//   herunterholen (Rest 0): nur die Ziffer gleitet herunter (0 -> 09).
+// Alles ist eine Funktion der Ablaufzeit (_m5wPlan baut das Drehbuch EINMAL,
+// _m5wZustand liest es ab): keine Zufallszahl, jede Zahl im Bild und in den
+// Statuszeilen kommt aus _m5wRechne.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Sprungmarken = Zeilen der Heft-Tabelle (_m5wAufgabe('…')):
+//     „69 : 3“ · „84 : 3“ · „516 : 4“ – laden die Aufgabe und spielen sie ab.
+//   „noch einmal“ (_m5wNochmal()): die geladene Aufgabe neu abspielen.
+//   „jede Stelle einzeln“ (_m5wEinzeln()): der Weg aus dem Problem des Hefts
+//     fuer die geladene Aufgabe – jede Stelle wird fuer sich verteilt, die
+//     uebrigen Stuecke bleiben orange blinkend liegen, nichts wird entbuendelt.
+//     (Der Bauplan nennt den Knopf „Tareks Weg“. Eine Simulation traegt keine
+//     Figurennamen – MATHE_PROFIL § 10 Regel 11, und der Bauplan selbst sagt
+//     unter „Die sechs Simulationen – Allgemein“: „keine Namen“. So schon in
+//     m5-rechenstrich („nebeneinander schreiben“) und m5-malkreuz. Kein
+//     Heftschritt von mm6 nennt den Knopf. Wer den Namen doch will:
+//     _m5wKNOPF_EINZELN und _m5wZEILE_EINZELN aendern.)
+//   „neu“ (_m5wNeu()): wieder 84 : 3 geladen, nicht gerechnet.
+//   Jeder dieser Knoepfe beginnt neu: das alte Material faellt weg, das neue
+//   faellt von oben in die Felder.
+//
+// Statuszeilen (woertlich; jede, deren Wert das Heft verlangt, hat mehr als
+// 18 Zeichen, sonst fehlt sie im Faktendump):
+//   _m5w-aufgabe      „Aufgabe: 84 : 3 (schriftlich)“
+//   _m5w-schritt      Start „Noch keine Stelle gerechnet.“, dann waechst die
+//                     Zeile mit dem Bild: „Zehner: 8 : 3 …“ -> „Zehner: 8 : 3 = 2 …“
+//                     -> „Zehner: 8 : 3 = 2, Rest 2“ -> „Entbündeln: 2 Z sind 20 E …“
+//                     -> „Entbündeln: 2 Z sind 20 E, mit 4 E: 24 E“ -> „Einer: 24 : 3 …“
+//                     -> … -> „Einer: 24 : 3 = 8, Rest 0“
+//                     bei „jede Stelle einzeln“: „Zehner einzeln: 8 : 3 = 2, 2 Z
+//                     bleiben liegen“ -> „Einer einzeln: 4 : 3 = 1, 1 E bleibt liegen“
+//   _m5w-entbuendelt  „Entbündelt wurde bei: …“, am Ende „… bei: Z“ /
+//                     „… bei: nirgends“ / „… bei: H und Z“
+//   _m5w-teller       „Auf jedem Teller: …“, am Ende „Auf jedem Teller: 2 Z, 8 E“
+//   _m5w-ergebnis     „Ergebnis der Aufgabe: …“, am Ende „Ergebnis der Aufgabe: 28“
+//   _m5w-probe        „Probe mit der Malaufgabe: …“, am Ende „… 28 · 3 = 84“
+//   _m5w-tarek        nur nach „jede Stelle einzeln“ (sonst leer und versteckt):
+//                     „Jede Stelle einzeln geteilt: 21, Probe 21 · 3 = 63“
+//                     (Bauplan: „Tareks Weg: 21, Probe 21 · 3 = 63“ – ohne den
+//                     Namen, siehe oben; die Kennung bleibt.)
+//   _m5w-lehrkraft    Hinweis fuer die Lehrkraft (siehe unten)
+//
+// Werte (jede Zahl aus _m5wRechne, nachgerechnet mit simcheck/werte.js):
+//   69 : 3  → „Zehner: 6 : 3 = 2, Rest 0“, „Einer: 9 : 3 = 3, Rest 0“ ·
+//             bei: nirgends · Teller 2 Z, 3 E · 23 · Probe 23 · 3 = 69 ·
+//             einzeln: 23, Probe 23 · 3 = 69
+//   84 : 3  → „Zehner: 8 : 3 = 2, Rest 2“, „Entbündeln: 2 Z sind 20 E, mit 4 E:
+//             24 E“, „Einer: 24 : 3 = 8, Rest 0“ · bei: Z · Teller 2 Z, 8 E ·
+//             28 · Probe 28 · 3 = 84 · einzeln: 21, Probe 21 · 3 = 63
+//   516 : 4 → „Hunderter: 5 : 4 = 1, Rest 1“, „Entbündeln: 1 H sind 10 Z, mit
+//             1 Z: 11 Z“, „Zehner: 11 : 4 = 2, Rest 3“, „Entbündeln: 3 Z sind
+//             30 E, mit 6 E: 36 E“, „Einer: 36 : 4 = 9, Rest 0“ · bei: H und Z ·
+//             Teller 1 H, 2 Z, 9 E · 129 · Probe 129 · 4 = 516 ·
+//             einzeln: 5 : 4 = 1, 1 : 4 = 0, 6 : 4 = 1 -> 101, Probe 101 · 4 = 404
+// Start: 84 : 3 geladen, noch nicht gerechnet.
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): in 84 : 3 zerfallen die 2
+// uebrigen Stangen in 20 Wuerfel – Lichtring dort. Das widerlegt „21“ (die 2
+// Stangen bleiben nicht liegen) und „8 : 3 geht nicht“ (es geht, mit Rest).
+// Am Ende leuchten das Ergebnis im Blatt und die Teller kurz nach.
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-minus-schriftlich, Container fpm-lehrkraft
+// fuer simfakten.js, V3 im Bauplan). Eigene Zeile UNTER den Heftknoepfen,
+// davor klein „Für die Lehrkraft:“:
+//   „Pause“ ↔ „weiter“ (_m5wAnhalten()): friert JEDE Bewegung sofort ein;
+//     „weiter“ macht genau dort weiter. Schild „Pause“ im Blatt oben in der
+//     freien Kopfzeile (dort steht bei keiner Aufgabe etwas).
+//   „Halt beim Entbündeln: aus“ ↔ „… an“ (_m5wHaltSchalter()): haelt VON
+//     SELBST an, bevor uebrige Stuecke zerfallen. Sie sind dick orange
+//     umrandet, darunter das Schild „2 Zehner werden zu 20 Einern.“ (bzw.
+//     „1 Hunderter wird zu 10 Zehnern.“, „3 Zehner werden zu 30 Einern.“).
+//     Bei 516 : 4 zweimal. Mit „weiter“ zerfallen sie.
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_m5wTempo()): ein Drittel so schnell.
+//   Eine Sprungmarke, „noch einmal“, „jede Stelle einzeln“ oder „neu“ heben die
+//   Pause auf; „Halt“ und „Tempo“ bleiben stehen (die Lehrkraft stellt sie
+//   einmal fuer die Stunde ein).
+// Bauart: EIN Zeitfaktor (0 angehalten, 1/3 langsam, 1 normal) an der einen
+// Stelle, an der dt in _m5wUpdate hineingeht. Der Halt ist ein EREIGNIS im
+// Drehbuch (P.halts), keine gemessene Zeit: Die Ablaufzeit bleibt genau davor
+// stehen. Voreinstellung: Pause aus, Halt aus, Tempo normal -> Faktor 1.
+// Hinweiszeile _m5w-lehrkraft (in der Pause bernsteinfarben „lmp-status off“)
+// nennt IMMER die Einstellung („… Halt: aus, Tempo: normal.“) – so aendert
+// jeder Lehrkraft-Knopf eine Zeile, und simfakten.js laesst einen Schalter
+// nicht einmal umgelegt stehen (gleiche Loesung wie m5-verteilen).
+// Nur das wechselnde Wort der Aufschrift steht in einem eigenen <span>.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „links“, „rechts“
+// (auch „von links“, „nach rechts“, „rechts daneben“) – und keine Regel als
+// Satz (kein „Merke“, kein Text, wo das Teilen beginnt oder wohin ein Rest
+// wandert). Das zeigt nur das Bild. Keine Namen, keine Punkte, keine Zeit,
+// kein „falsch“.
+// ════════════════════════════════════════════════════════════════════════
+let _m5w = null;
+const _m5wAUFGABEN = { '69-3': ['69', 3], '84-3': ['84', 3], '516-4': ['516', 4] };
+const _m5wREIHE = ['69-3', '84-3', '516-4'];
+const _m5wSTART = '84-3';
+const _m5wSP = ['H', 'Z', 'E'];
+const _m5wWORT = { H: 'Hunderter', Z: 'Zehner', E: 'Einer' };
+const _m5wDATIV = { H: 'Hundertern', Z: 'Zehnern', E: 'Einern' };
+const _m5wKNOPF_EINZELN = 'jede Stelle einzeln';
+const _m5wZEILE_EINZELN = 'Jede Stelle einzeln geteilt: ';
+const _m5wK = {
+  // Rechenblatt: Karo 18 px, Spalte 0 frei fuer das Minuszeichen, Zeile 0 = H Z E
+  PX0: 4, PX1: 191, PY0: 4, PY1: 155, GX: 8, GY: 8, C: 18,
+  // Material der Startzahl: Felder wie die Stellenwerttafel
+  MX0: 196, MX1: 416, MY0: 4, MY1: 112,
+  FELD: { H: [196, 248], Z: [248, 330], E: [330, 416] },
+  // freier Streifen zwischen Material und Tellern (Schild beim Halt)
+  SX0: 200, SX1: 412, SY0: 118, SY1: 152,
+  // Teller ueber die ganze Breite; Bahn der Stuecke knapp ueber den Tellern
+  TX0: 6, TX1: 414, TY: 204, TRY: 41, BAHN: 160,
+  // Zeiten in s
+  // Jede Schrittzeile steht mindestens rund 0,5 s (sonst kann sie niemand lesen,
+  // und simfakten.js liest nur alle 0,4 s ab): „Rest r“ steht T_AB - 0,3 + T_LUECKE,
+  // das fertige „Entbündeln: …“ T_WANDERN + T_ZWISCHEN + T_ZEIGEN.
+  T_LADEN: 0.4, T_FALL: 0.3, T_ZEIGEN: 0.3, T_RUNDE: 0.5, T_FLUG: 0.42, T_STAG: 0.04,
+  T_WACKEL: 0.5, T_SCHREIBEN: 0.25, T_AB: 0.4, T_LUECKE: 0.45, T_ZERFALL: 0.5,
+  T_WANDERN: 0.6, T_HERAB: 0.45, T_ZWISCHEN: 0.05, T_SCHLUSS: 0.2,
+  LANGSAM: 1 / 3                                        // Zeitfaktor bei „Tempo: langsam“
+};
+const _m5wFARBE = {
+  H: { grund: '#fef2f2', fuell: '#fca5a5', linie: 'rgba(185,28,28,0.35)', rand: '#b91c1c' },
+  Z: { grund: '#eff6ff', fuell: '#93c5fd', linie: 'rgba(29,78,216,0.45)', rand: '#1d4ed8' },
+  E: { grund: '#f0fdf4', fuell: '#86efac', licht: '#dcfce7', rand: '#15803d' }
+};
+const _m5wDUNKEL = '#1f2937';
+const _m5wORANGE = '#ea580c';
+const _m5wEINZELN_FARBE = '#c2410c';      // Ergebnisziffern bei „jede Stelle einzeln“
+
+// ── Rechnen ─────────────────────────────────────────────────────────────
+function _m5wFmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+// Der ganze Rechenweg, Stelle fuer Stelle von der groessten Stelle her.
+// modus 'richtig': der Rest wird entbuendelt und zur naechsten Ziffer genommen
+// (Teildividend = Rest · 10 + Ziffer, genau wie build_pilot.rechnung_loesen).
+// modus 'einzeln': jede Ziffer fuer sich, der Rest bleibt liegen.
+function _m5wRechne(key, modus) {
+  const [a, d] = _m5wAUFGABEN[key];
+  const la = a.length, stellen = _m5wSP.slice(3 - la);
+  const schritte = [];
+  let rest = 0;
+  for (let k = 0; k < la; k++) {
+    const ziffer = Number(a[k]);
+    const n = modus === 'einzeln' ? ziffer : rest * 10 + ziffer;
+    const q = Math.floor(n / d), r = n - q * d;
+    schritte.push({ k, art: stellen[k], ziffer, n, q, prod: q * d, r,
+                    ent: modus !== 'einzeln' && r > 0 && k < la - 1 });
+    rest = modus === 'einzeln' ? 0 : r;
+  }
+  const A = Number(a);
+  const quot = Number(schritte.map(s => s.q).join(''));
+  const ent = schritte.filter(s => s.ent).map(s => s.art);
+  const bei = ent.length === 0 ? 'nirgends'
+    : ent.length === 1 ? ent[0]
+    : ent.slice(0, -1).join(', ') + ' und ' + ent[ent.length - 1];
+  return { key, modus, a, A, d, la, lb: String(d).length, stellen, schritte, quot,
+           probe: quot * d, bei };
+}
+
+// ── Plaetze ─────────────────────────────────────────────────────────────
+// im Material: Platten als Fuenfersaeule, Stangen 5 + 5 je Reihe, Wuerfel in
+// Zehnerreihen mit Fuenferluecke
+function _m5wVorrat(art, i) {
+  if (art === 'H') { const s = Math.floor(i / 5), r = i % 5; return { x: 215.5 + s * 16, y: 36 + r * 15, w: 13, h: 13, a: 1 }; }
+  if (art === 'Z') { const r = Math.floor(i / 10), k = i % 10; return { x: 252 + k * 7 + (k >= 5 ? 3 : 0), y: 36 + r * 39, w: 5, h: 34, a: 1 }; }
+  const r = Math.floor(i / 10), k = i % 10;
+  return { x: 333 + k * 7.8 + (k >= 5 ? 2.5 : 0), y: 36 + r * 8.5, w: 6.5, h: 6.5, a: 1 };
+}
+function _m5wTellerMitte(j, n) {
+  const K = _m5wK, s = (K.TX1 - K.TX0) / n;
+  return K.TX0 + s * (j + 0.5);
+}
+// auf Teller j (von n): Platte, Stangen, Wuerfel nebeneinander – wie die Ziffern
+function _m5wTeller(art, j, m, n) {
+  const cx = _m5wTellerMitte(j, n);
+  if (art === 'H') return { x: cx - 37, y: 197 - m * 15, w: 13, h: 13, a: 1 };
+  if (art === 'Z') return { x: cx - 19 + m * 7, y: 187, w: 5, h: 34, a: 1 };
+  return { x: cx + 1 + (m % 5) * 7.6, y: 196 + Math.floor(m / 5) * 8.5, w: 6.5, h: 6.5, a: 1 };
+}
+// Mitte einer Kaestchenzelle im Blatt
+function _m5wZx(col) { return _m5wK.GX + (col + 0.5) * _m5wK.C; }
+function _m5wZy(row) { return _m5wK.GY + row * _m5wK.C; }
+
+// ── Drehbuch ────────────────────────────────────────────────────────────
+// modus 'start': nur laden (das Material faellt ein). 'richtig' / 'einzeln':
+// laden und abspielen. Ergebnis: Stuecke mit Wegabschnitten, Elemente des
+// Blatts mit Zeitpunkten, Statuszeilen als Ereignisse, Halte, Aha, Baender.
+function _m5wPlan(key, modus) {
+  const K = _m5wK, R = _m5wRechne(key, modus === 'einzeln' ? 'einzeln' : 'richtig');
+  const F = _m5wFARBE, d = R.d, la = R.la;
+  const P = { key, modus, R, stuecke: [], blatt: [], st: {}, halts: [], aha: [], baender: [],
+              ende: Infinity, teller: [] };
+  const ev = (id, t, text) => { (P.st[id] = P.st[id] || []).push({ t, text }); };
+  const pos = p => p.segs[p.segs.length - 1].nach;
+  const farbeSpalte = col => (col >= 1 && col <= la) ? F[R.stellen[col - 1]].rand : _m5wDUNKEL;
+  const pool = { H: [], Z: [], E: [] };
+  for (let j = 0; j < d; j++) P.teller.push({ H: 0, Z: 0, E: 0 });
+  // Material der Startzahl faellt ein (gestaffelt, von der groessten Stelle her)
+  const gesamt = R.schritte.reduce((s, x) => s + x.ziffer, 0);
+  const stag = Math.min(0.025, 0.15 / Math.max(1, gesamt));
+  let nr = 0;
+  for (const s of R.schritte) {
+    for (let i = 0; i < s.ziffer; i++) {
+      const ziel = _m5wVorrat(s.art, i), t0 = 0.02 + stag * nr++;
+      const p = { art: s.art, geb: 0, tot: Infinity, mark: null, blink: null, wackel: null,
+                  segs: [{ t0, t1: t0 + K.T_FALL, ease: 'raus', art: s.art,
+                           von: { x: ziel.x, y: ziel.y - 22, w: ziel.w, h: ziel.h, a: 0 }, nach: ziel }] };
+      P.stuecke.push(p); pool[s.art].push(p);
+    }
+  }
+  // Blatt: Spaltenkopf, Startzahl, Teiler, „=“ (stehen ab dem Laden da)
+  const qcol0 = 3 + la + R.lb;
+  R.stellen.forEach((art, k) => P.blatt.push({ art: 'kopf', text: art, col: 1 + k, row: 0, farbe: F[art].rand, t: 0 }));
+  for (let k = 0; k < la; k++) P.blatt.push({ art: 'ziffer', text: R.a[k], col: 1 + k, row: 1, farbe: farbeSpalte(1 + k), t: 0 });
+  P.blatt.push({ art: 'ziffer', text: ':', col: 1 + la, row: 1, farbe: _m5wDUNKEL, t: 0 });
+  String(d).split('').forEach((c, i) => P.blatt.push({ art: 'ziffer', text: c, col: 2 + la + i, row: 1, farbe: _m5wDUNKEL, t: 0 }));
+  P.blatt.push({ art: 'ziffer', text: '=', col: 2 + la + R.lb, row: 1, farbe: _m5wDUNKEL, t: 0 });
+  P.qcol0 = qcol0;
+  if (modus === 'start') { P.ende = K.T_LADEN; return P; }
+
+  const einzeln = modus === 'einzeln';
+  let t = K.T_LADEN + 0.05;
+  for (const s of R.schritte) {
+    const k = s.k, art = s.art, end = 1 + k, nt = String(s.n);
+    const kopf = _m5wWORT[art] + (einzeln ? ' einzeln: ' : ': ') + s.n + ' : ' + d;
+    const t0 = t;
+    // zeigen: Feld und Zahl werden gelb; die Zeile davor (z. B. das fertige
+    // „Entbündeln: …“) bleibt noch stehen, die neue kommt mit dem Verteilen
+    const feldBand = { ort: 'feld', art, farbe: 'gelb', t0, t1: Infinity };
+    const blattBand = { ort: 'blatt', row: (k === 0 || einzeln) ? 1 : 1 + 2 * k,
+                        c0: (k === 0 || einzeln) ? end : end - nt.length + 1, c1: end, t0, t1: Infinity };
+    P.baender.push(feldBand, blattBand);
+    t += K.T_ZEIGEN;
+    // verteilen: je Runde ein Stueck auf jeden Teller
+    const tv = t;
+    ev('schritt', tv, kopf + ' …');
+    if (s.q > 0) {
+      for (let rd = 0; rd < s.q; rd++) {
+        for (let j = 0; j < d; j++) {
+          const p = pool[art].pop();
+          const m = P.teller[j][art]++;
+          const ta = tv + rd * K.T_RUNDE + j * K.T_STAG;
+          p.segs.push({ t0: ta, t1: ta + K.T_FLUG, flug: true, art, von: pos(p), nach: _m5wTeller(art, j, m, d) });
+        }
+      }
+      t = tv + (s.q - 1) * K.T_RUNDE + (d - 1) * K.T_STAG + K.T_FLUG;
+    } else {
+      for (const p of pool[art]) p.wackel = [tv, tv + K.T_WACKEL];   // kein Stueck fuer jeden Teller
+      t = tv + K.T_WACKEL;
+    }
+    // schreiben: die Ergebnisziffer hinter „=“
+    P.blatt.push({ art: 'ziffer', text: String(s.q), col: qcol0 + k, row: 1, t, feder: true,
+                   farbe: einzeln ? _m5wEINZELN_FARBE : F[art].rand });
+    ev('schritt', t, kopf + ' = ' + s.q + ' …');
+    t += K.T_SCHREIBEN;
+    // abziehen: „− Produkt“, Strich, Rest (Schreibweise des Hefts)
+    const tab = t, trest = tab + 0.3;
+    if (!einzeln) {
+      const pt = String(s.prod), rp = 2 + 2 * k, rt = String(s.r);
+      P.blatt.push({ art: 'ziffer', text: '−', col: end - pt.length, row: rp, farbe: _m5wDUNKEL, t: tab });
+      pt.split('').forEach((c, i) => {
+        const col = end - (pt.length - 1 - i);
+        P.blatt.push({ art: 'ziffer', text: c, col, row: rp, farbe: farbeSpalte(col), t: tab });
+      });
+      P.blatt.push({ art: 'linie', row: rp + 1, c0: end - Math.max(pt.length, nt.length) + 1, c1: end, t: tab + 0.15 });
+      rt.split('').forEach((c, i) => {
+        const col = end - (rt.length - 1 - i);
+        P.blatt.push({ art: 'ziffer', text: c, col, row: rp + 1, farbe: farbeSpalte(col), t: trest });
+      });
+      ev('schritt', trest, kopf + ' = ' + s.q + ', Rest ' + s.r);
+      for (const p of pool[art]) p.mark = trest;                   // was uebrig ist: orange umrandet
+    } else {
+      const liegen = s.r === 0 ? 'nichts bleibt liegen'
+        : s.r + ' ' + art + (s.r === 1 ? ' bleibt liegen' : ' bleiben liegen');
+      ev('schritt', trest, kopf + ' = ' + s.q + ', ' + liegen);
+      for (const p of pool[art]) p.blink = trest;                  // bleibt liegen: blinkt orange
+    }
+    t = tab + K.T_AB;
+    feldBand.t1 = t;
+    // weiter zur naechsten Stelle
+    if (!einzeln && k < la - 1) {
+      const next = R.stellen[k + 1], nz = Number(R.a[k + 1]);
+      let w0, w1;
+      if (s.r > 0) {
+        t += K.T_LUECKE;
+        const tz = t, ueber = pool[art].slice();
+        const rects = ueber.map(p => Object.assign({}, pos(p)));
+        P.halts.push({ t: tz - 0.0005, von: art, nach: next, n: s.r, rects });
+        const basis = pool[next].length, gespreizt = [];
+        ueber.forEach((p, pi) => {
+          p.tot = tz;
+          const q = pos(p);
+          for (let c = 0; c < 10; c++) {
+            let s0, s1;
+            // Gespreizt bleibt alles unter dem Feldkopf (ab y = 34) und im Feld (bis 110).
+            if (art === 'Z') {                                      // Stange -> zehn Wuerfelchen
+              const y0 = Math.min(Math.max(34, q.y + q.h / 2 - 30), 110 - 60.4);
+              s0 = { x: q.x, y: q.y + c * q.h / 10, w: q.w, h: q.h / 10, a: 1 };
+              s1 = { x: q.x + 0.2, y: y0 + c * 6.2, w: 4.6, h: 4.6, a: 1 };
+            } else {                                                // Platte -> zehn Streifen
+              s0 = { x: q.x + c * q.w / 10, y: q.y, w: q.w / 10, h: q.h, a: 1 };
+              s1 = { x: q.x + q.w / 2 - 18 + c * 3.7, y: Math.max(34, q.y - 4), w: 2.4, h: q.h + 8, a: 1 };
+            }
+            const s2 = _m5wVorrat(next, basis + pi * 10 + c);
+            const kind = { art: next, geb: tz, tot: Infinity, mark: null, blink: null, wackel: null,
+                           segs: [{ t0: tz, t1: tz + K.T_ZERFALL, art, teil: true, von: s0, nach: s1 },
+                                  { t0: tz + K.T_ZERFALL, t1: tz + K.T_ZERFALL + K.T_WANDERN, art: next,
+                                    blitz: true, von: s1, nach: s2 }] };
+            P.stuecke.push(kind); pool[next].push(kind); gespreizt.push(s1);
+          }
+        });
+        pool[art] = [];
+        if (key === '84-3' && k === 0) {          // Aha: die 2 Stangen zerfallen – Ring um die 20 Wuerfel, im Feld
+          const x0 = Math.min(...gespreizt.map(r => r.x)), x1 = Math.max(...gespreizt.map(r => r.x + r.w));
+          const y0 = Math.min(...gespreizt.map(r => r.y)), y1 = Math.max(...gespreizt.map(r => r.y + r.h));
+          P.aha.push({ t: tz + 0.02, x: (x0 + x1) / 2, y: (y0 + y1) / 2, r: 30 });
+        }
+        P.baender.push({ ort: 'feld', art, farbe: 'orange', t0: tz, t1: tz + K.T_ZERFALL });
+        P.baender.push({ ort: 'feld', art: next, farbe: 'orange', t0: tz + K.T_ZERFALL, t1: tz + K.T_ZERFALL + K.T_WANDERN });
+        const zehn = 10 * s.r;
+        ev('schritt', tz, 'Entbündeln: ' + s.r + ' ' + art + ' sind ' + zehn + ' ' + next + ' …');
+        w0 = tz + K.T_ZERFALL; w1 = w0 + K.T_WANDERN;
+        ev('schritt', w0, 'Entbündeln: ' + s.r + ' ' + art + ' sind ' + zehn + ' ' + next +
+                          ', mit ' + nz + ' ' + next + ': ' + (zehn + nz) + ' ' + next);
+        t = w1;
+      } else {
+        w0 = t; w1 = t + K.T_HERAB; t = w1;
+      }
+      // die naechste Ziffer wird heruntergeholt
+      P.blatt.push({ art: 'ziffer', text: R.a[k + 1], col: k + 2, row: 3 + 2 * k, vonRow: 1, gleit: [w0, w1],
+                     farbe: farbeSpalte(k + 2), t: w0 });
+    }
+    // „jede Stelle einzeln“: kurz innehalten, die liegen gebliebenen Stuecke blinken
+    if (einzeln && k < la - 1) t += 0.35;
+    t += K.T_ZWISCHEN;
+    blattBand.t1 = t;
+  }
+  // Ende
+  P.ende = t + K.T_SCHLUSS;
+  const zahl = (n, art) => '<b style="color:' + F[art].rand + '">' + n + ' ' + art + '</b>';
+  ev('teller', P.ende, 'Auf jedem Teller: ' + R.stellen.map(art => zahl(P.teller[0][art], art)).join(', '));
+  if (einzeln) {
+    ev('tarek', P.ende, _m5wZEILE_EINZELN + _m5wFmt(R.quot) + ', Probe ' + _m5wFmt(R.quot) + ' · ' + d + ' = ' + _m5wFmt(R.probe));
+  } else {
+    ev('entbuendelt', P.ende, 'Entbündelt wurde bei: ' + R.bei);
+    ev('ergebnis', P.ende, 'Ergebnis der Aufgabe: ' + _m5wFmt(R.quot));
+    ev('probe', P.ende, 'Probe mit der Malaufgabe: ' + _m5wFmt(R.quot) + ' · ' + d + ' = ' + _m5wFmt(R.probe));
+  }
+  return P;
+}
+
+// Wo steht ein Stueck zur Ablaufzeit at? (null = nicht zu sehen)
+function _m5wZustand(p, at) {
+  if (at < p.geb || at >= p.tot) return null;
+  let s = p.segs[0];
+  for (const g of p.segs) { if (g.t0 <= at) s = g; else break; }
+  let u = s.t1 > s.t0 ? (at - s.t0) / (s.t1 - s.t0) : 1;
+  u = Math.max(0, Math.min(1, u));
+  const e = s.ease === 'raus' ? _bioFxEase.raus(u) : _bioFxEase.sanft(u);
+  const A = s.von, B = s.nach;
+  let x, y;
+  if (s.flug && u < 1) {
+    // erst nach unten bis knapp ueber die Teller, dann hinueber, dann hinein
+    const Y = _m5wK.BAHN, v = 1 - e;
+    x = A.x * (v * v * v + 3 * v * v * e) + B.x * (3 * v * e * e + e * e * e);
+    y = v * v * v * A.y + 3 * v * v * e * Y + 3 * v * e * e * Y + e * e * e * B.y;
+  } else {
+    x = A.x + (B.x - A.x) * e; y = A.y + (B.y - A.y) * e;
+  }
+  return { x, y, w: A.w + (B.w - A.w) * e, h: A.h + (B.h - A.h) * e,
+           a: A.a + (B.a - A.a) * e, art: s.art, teil: !!s.teil,
+           fliegt: !!s.flug && at < s.t1 && at >= s.t0,
+           blitz: s.blitz && at >= s.t0 && at - s.t0 < 0.3 ? 1 - (at - s.t0) / 0.3 : 0 };
+}
+
+// ── Zustand ─────────────────────────────────────────────────────────────
+function _m5wInit() {
+  _m5w = { t: 0, key: _m5wSTART, lauf: null, weg: [], fx: [], sig: '',
+           // fuer die Lehrkraft: angehalten? warum (Halt)? Schalter Halt / langsam
+           steht: false, haltInfo: null, haltAn: false, langsam: false };
+  _m5wStarte(_m5wSTART, 'start');
+}
+// Einen Lauf beginnen. Was noch zu sehen ist, faellt weg; das neue Material faellt ein.
+function _m5wStarte(key, modus) {
+  const z = _m5w;
+  if (z.lauf) {
+    const at = z.lauf.at;
+    for (const p of z.lauf.plan.stuecke) {
+      const s = _m5wZustand(p, at);
+      if (s && s.a > 0.05) { s.fliegt = false; s.blitz = 0; z.weg.push(s); }
+    }
+  }
+  z.key = key;
+  z.lauf = { plan: _m5wPlan(key, modus), at: 0 };
+  z.steht = false; z.haltInfo = null;                     // ein neuer Lauf hebt die Pause auf
+  z.fx.length = 0;
+}
+
+function _m5wHTML() {
+  const marke = k => {
+    const [a, d] = _m5wAUFGABEN[k];
+    return `<button class="sim-btn" id="_m5w-b-${k}" onclick="_m5wAufgabe('${k}')">${a}&nbsp;:&nbsp;${d}</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Was ergibt 84&nbsp;:&nbsp;3 wirklich?</h3>
+    <div class="fpm-note" style="margin-top:2px">Wähle eine Aufgabe. Erst kommt die größte Stelle dran. Sieh auf die Teller.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_m5w-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_m5wREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_m5w-nochmal" onclick="_m5wNochmal()">noch einmal</button>
+          <button class="sim-btn" id="_m5w-einzeln" onclick="_m5wEinzeln()">${_m5wKNOPF_EINZELN}</button>
+          <button class="sim-btn" id="_m5w-neu" onclick="_m5wNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_m5w-pause" onclick="_m5wAnhalten()">Pause</button>
+            <button class="sim-btn" id="_m5w-halt" onclick="_m5wHaltSchalter()">Halt beim Entbündeln: <span id="_m5w-halt-an">aus</span></button>
+            <button class="sim-btn" id="_m5w-tempo" onclick="_m5wTempo()">Tempo: <span id="_m5w-tempo-an">normal</span></button>
+          </div>
+          <div class="lmp-status on" id="_m5w-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_m5w-aufgabe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5w-schritt" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5w-entbuendelt" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5w-teller" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5w-ergebnis" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5w-probe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_m5w-tarek" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 84&nbsp;:&nbsp;3, noch nicht gerechnet</p>
+  </div>`;
+}
+
+// Was die Anzeige gerade sagt – sie folgt dem Bild (Ereignisse im Drehbuch).
+function _m5wTexte() {
+  const z = _m5w, P = z.lauf.plan, R = P.R, at = z.lauf.at;
+  const wert = (id, def) => {
+    let v = def;
+    for (const e of (P.st[id] || [])) if (e.t <= at) v = e.text;
+    return v;
+  };
+  return {
+    aufgabe: 'Aufgabe: ' + _m5wFmt(R.A) + ' : ' + R.d + ' (schriftlich)',
+    schritt: wert('schritt', 'Noch keine Stelle gerechnet.'),
+    entbuendelt: wert('entbuendelt', 'Entbündelt wurde bei: …'),
+    teller: wert('teller', 'Auf jedem Teller: …'),
+    ergebnis: wert('ergebnis', 'Ergebnis der Aufgabe: …'),
+    probe: wert('probe', 'Probe mit der Malaufgabe: …'),
+    tarek: wert('tarek', '')
+  };
+}
+function _m5wSchildText(h) {
+  return h.n + ' ' + _m5wWORT[h.von] + (h.n === 1 ? ' wird' : ' werden') + ' zu ' + (10 * h.n) + ' ' + _m5wDATIV[h.nach] + '.';
+}
+function _m5wHinweis() {
+  const z = _m5w, h = z.haltInfo;
+  const kopf = h ? 'Halt: ' + _m5wSchildText(h) + ' Das ist das Entbündeln.'
+    : z.steht ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an. „Halt beim Entbündeln“ stoppt von selbst.';
+  return kopf + ' Halt: ' + (z.haltAn ? 'an' : 'aus') + ', Tempo: ' + (z.langsam ? 'langsam' : 'normal') + '.';
+}
+function _m5wSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Schreibt die Anzeige, wenn sich etwas geaendert hat (immer = true: auf jeden Fall).
+function _m5wStatus(immer) {
+  if (!_m5w) return;
+  const z = _m5w, T = _m5wTexte();
+  const sig = JSON.stringify(T) + '|' + z.key + '|' + z.steht + '|' + !!z.haltInfo + '|' + z.haltAn + '|' + z.langsam;
+  if (!immer && sig === z.sig) return;
+  z.sig = sig;
+  for (const id of ['aufgabe', 'schritt', 'entbuendelt', 'teller', 'ergebnis', 'probe']) _m5wSetze('_m5w-' + id, T[id]);
+  const tz = _m5wSetze('_m5w-tarek', T.tarek);
+  if (tz && tz.style) tz.style.display = T.tarek ? '' : 'none';
+  for (const k of _m5wREIHE) {
+    const b = document.getElementById('_m5w-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', k === z.key);
+  }
+  // fuer die Lehrkraft: Aufschriften und Hinweiszeile (in der Pause bernsteinfarben)
+  _m5wSetze('_m5w-pause', z.steht ? 'weiter' : 'Pause');
+  _m5wSetze('_m5w-halt-an', z.haltAn ? 'an' : 'aus');
+  _m5wSetze('_m5w-tempo-an', z.langsam ? 'langsam' : 'normal');
+  const hz = _m5wSetze('_m5w-lehrkraft', _m5wHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.steht ? 'off' : 'on');
+  for (const [id, an] of [['_m5w-pause', z.steht], ['_m5w-halt', z.haltAn], ['_m5w-tempo', z.langsam]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _m5wAufgabe(key) {
+  if (!_m5w || !_m5wAUFGABEN[key]) return;
+  _m5wStarte(key, 'richtig');
+  _m5wStatus(true);
+}
+function _m5wNochmal() {
+  if (!_m5w) return;
+  _m5wStarte(_m5w.key, 'richtig');
+  _m5wStatus(true);
+}
+function _m5wEinzeln() {
+  if (!_m5w) return;
+  _m5wStarte(_m5w.key, 'einzeln');
+  _m5wStatus(true);
+}
+function _m5wNeu() {
+  if (!_m5w) return;
+  _m5wStarte(_m5wSTART, 'start');
+  _m5wStatus(true);
+}
+// ── Für die Lehrkraft ───────────────────────────────────────────────────
+function _m5wAnhalten() {
+  const z = _m5w;
+  if (!z) return;
+  z.steht = !z.steht;
+  z.haltInfo = null;                       // „weiter“ nach einem Halt: die Stuecke zerfallen jetzt
+  _m5wStatus(true);
+}
+function _m5wHaltSchalter() {
+  const z = _m5w;
+  if (!z) return;
+  z.haltAn = !z.haltAn;                    // gilt fuer das NAECHSTE Entbuendeln
+  _m5wStatus(true);
+}
+function _m5wTempo() {
+  const z = _m5w;
+  if (!z) return;
+  z.langsam = !z.langsam;
+  _m5wStatus(true);
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _m5wUpdate(dt) {
+  if (!_m5w) return;
+  const z = _m5w;
+  // EIN Zeitfaktor fuer jede Bewegung. Angehalten: nichts laeuft weiter.
+  if (z.steht) return;
+  dt = _bioFxDt(dt) * (z.langsam ? _m5wK.LANGSAM : 1);
+  if (!(dt > 0)) return;
+  z.t += dt;
+  const L = z.lauf, P = L.plan;
+  let neu = L.at + dt, halt = null;
+  if (z.haltAn) {
+    for (const h of P.halts) if (L.at < h.t && neu >= h.t) { neu = h.t; halt = h; break; }
+  }
+  for (const a of P.aha) if (L.at < a.t && neu >= a.t) _bioFxWelle(z.fx, a.x, a.y, '#f59e0b', a.r);
+  L.at = neu;
+  if (halt) { z.steht = true; z.haltInfo = halt; }
+  for (let i = z.weg.length - 1; i >= 0; i--) {         // altes Material faellt weg
+    const p = z.weg[i];
+    p.a -= dt / 0.25; p.y += 40 * dt;
+    if (p.a <= 0) z.weg.splice(i, 1);
+  }
+  _bioFxUpdate(z.fx, dt);
+  _m5wStatus(!!halt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _m5wText(ctx, s, x, y, groesse, farbe, gew, ausr) {
+  ctx.fillStyle = farbe || _m5wDUNKEL;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _m5wEin(t, d) { return t < 0 ? 0 : Math.min(1, t / (d || 0.25)); }
+function _m5wAktiv(b, at) { return at >= b.t0 && at < b.t1; }
+
+function _m5wBlatt(ctx) {
+  const z = _m5w, K = _m5wK, C = K.C, P = z.lauf.plan, R = P.R, at = z.lauf.at;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 8); ctx.fill();
+  // Spalten der Startzahl in ihrer Stellenfarbe (durch alle Zeilen)
+  R.stellen.forEach((art, k) => {
+    ctx.fillStyle = _m5wFARBE[art].grund;
+    ctx.fillRect(K.GX + (1 + k) * C + 1, K.GY + 1, C - 2, 8 * C - 2);
+  });
+  // Karos
+  ctx.strokeStyle = '#d7e3f1'; ctx.lineWidth = 1;
+  for (let x = K.GX; x <= K.PX1 - 2; x += C) { ctx.beginPath(); ctx.moveTo(x, K.PY0 + 2); ctx.lineTo(x, K.PY1 - 2); ctx.stroke(); }
+  for (let y = K.GY; y <= K.PY1 - 2; y += C) { ctx.beginPath(); ctx.moveTo(K.PX0 + 2, y); ctx.lineTo(K.PX1 - 2, y); ctx.stroke(); }
+  // die Zahl, die gerade geteilt wird: gelb
+  for (const b of P.baender) {
+    if (b.ort !== 'blatt' || !_m5wAktiv(b, at)) continue;
+    ctx.save(); ctx.globalAlpha = 0.85 * _m5wEin(at - b.t0, 0.25);
+    ctx.fillStyle = 'rgba(253,224,71,0.75)'; ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, K.GX + b.c0 * C + 1.5, _m5wZy(b.row) + 1.5, (b.c1 - b.c0 + 1) * C - 3, C - 3, 4);
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // am Ende leuchtet das Ergebnis kurz nach
+  const nach = at - P.ende;
+  if (P.modus === 'richtig' && nach >= 0 && nach < 1.8) {
+    const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+    ctx.save(); ctx.globalAlpha = Math.min(1, (1.8 - nach) / 0.6) * (0.55 + 0.45 * puls);
+    ctx.fillStyle = 'rgba(253,230,138,0.6)'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.2;
+    _bioFxRundRect(ctx, K.GX + P.qcol0 * C + 1, _m5wZy(1) + 1, R.la * C - 2, C - 2, 5); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // Elemente
+  for (const el of P.blatt) {
+    if (at < el.t) continue;
+    const cx = _m5wZx(el.col);
+    if (el.art === 'linie') {
+      const e = _m5wEin(at - el.t, 0.25), x0 = K.GX + el.c0 * C + 2, x1 = K.GX + (el.c1 + 1) * C - 2;
+      ctx.strokeStyle = _m5wDUNKEL; ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(x0, _m5wZy(el.row) + 0.5); ctx.lineTo(x0 + (x1 - x0) * e, _m5wZy(el.row) + 0.5); ctx.stroke();
+      continue;
+    }
+    if (el.art === 'kopf') {
+      ctx.save(); ctx.globalAlpha = _m5wEin(at - el.t, 0.3);
+      _m5wText(ctx, el.text, cx, _m5wZy(0) + 13, 11, el.farbe);
+      ctx.restore();
+      continue;
+    }
+    let y = _m5wZy(el.row), ein = 1;
+    if (el.gleit) {                                         // heruntergeholte Ziffer gleitet
+      // Die Kopie loest sich eine Dreiviertelzeile UNTER der Ziffer oben und blendet
+      // dabei ein – so liegt sie zu keinem Zeitpunkt auf der Ziffer, die oben stehen bleibt.
+      const u = Math.max(0, Math.min(1, (at - el.gleit[0]) / (el.gleit[1] - el.gleit[0])));
+      const y0 = _m5wZy(el.vonRow) + 0.75 * C;
+      y = y0 + (_m5wZy(el.row) - y0) * _bioFxEase.sanft(u);
+      ein = Math.min(1, u / 0.3);
+      // leuchtet beim Herunterholen; durchscheinend
+      const gl = (at < el.gleit[1] + 0.1 ? 1 : Math.max(0, 1 - (at - el.gleit[1] - 0.1) / 0.3)) * ein;
+      if (gl > 0.01) {
+        ctx.save(); ctx.globalAlpha = 0.8 * gl;
+        ctx.fillStyle = 'rgba(253,224,71,0.45)'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+        _bioFxRundRect(ctx, cx - C / 2 + 1.5, y + 1.5, C - 3, C - 3, 4); ctx.fill(); ctx.stroke();
+        ctx.restore();
+      }
+    }
+    const u = _m5wEin(at - el.t, 0.25);
+    ctx.save(); ctx.globalAlpha = el.gleit ? ein : u;
+    if (el.feder && at - el.t < 0.35) {                     // federt nur beim Erscheinen
+      const sc = 0.6 + 0.4 * _bioFxEase.federn(_m5wEin(at - el.t, 0.35));
+      ctx.translate(cx, y + C / 2); ctx.scale(sc, sc);
+      _m5wText(ctx, el.text, 0, 5.5, 15, el.farbe);
+    } else {
+      _m5wText(ctx, el.text, cx, y + 14, 15, el.farbe);
+    }
+    ctx.restore();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 8); ctx.stroke();
+}
+
+function _m5wFelder(ctx) {
+  const z = _m5w, K = _m5wK, P = z.lauf.plan, at = z.lauf.at;
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.MX0, K.MY0, K.MX1 - K.MX0, K.MY1 - K.MY0, 8); ctx.fill();
+  for (const b of P.baender) {                              // Feld, das gerade dran ist
+    if (b.ort !== 'feld' || !_m5wAktiv(b, at)) continue;
+    const [a, e] = K.FELD[b.art];
+    ctx.save(); ctx.globalAlpha = _m5wEin(at - b.t0, 0.25);
+    ctx.fillStyle = b.farbe === 'gelb' ? 'rgba(253,224,71,0.38)' : 'rgba(251,146,60,0.26)';
+    _bioFxRundRect(ctx, a + 2, 33, e - a - 4, K.MY1 - 35, 6); ctx.fill();
+    ctx.restore();
+  }
+  for (const art of _m5wSP) {                               // Koepfe wie die Stellenwerttafel
+    const [a, b] = K.FELD[art], cx = (a + b) / 2, F = _m5wFARBE[art];
+    ctx.fillStyle = F.grund;
+    _bioFxRundRect(ctx, a + 3, K.MY0 + 3, b - a - 6, 25, 6); ctx.fill();
+    _m5wText(ctx, art, cx, 18, 13, F.rand);
+    _m5wText(ctx, _m5wWORT[art], cx, 27, 8.5, '#334155', '600');
+  }
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  for (const art of ['Z', 'E']) {
+    const x = K.FELD[art][0];
+    ctx.beginPath(); ctx.moveTo(x, K.MY0 + 2); ctx.lineTo(x, K.MY1 - 2); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.MX0, K.MY0, K.MX1 - K.MX0, K.MY1 - K.MY0, 8); ctx.stroke();
+}
+
+function _m5wTellerBild(ctx) {
+  const z = _m5w, K = _m5wK, P = z.lauf.plan, n = P.R.d, at = z.lauf.at;
+  const s = (K.TX1 - K.TX0) / n, rx = s / 2 - 5, ry = K.TRY;
+  const nach = at - P.ende;
+  // nur der richtige Weg leuchtet am Ende nach – „jede Stelle einzeln“ nicht
+  const glanz = P.modus === 'richtig' && nach >= 0 && nach < 1.8 ? Math.min(1, (1.8 - nach) / 0.6) : 0;
+  for (let j = 0; j < n; j++) {
+    const cx = _m5wTellerMitte(j, n);
+    ctx.save();
+    ctx.fillStyle = 'rgba(15,23,42,0.07)';
+    ctx.beginPath(); ctx.ellipse(cx, K.TY + 3, rx, ry, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.ellipse(cx, K.TY, rx, ry, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(cx, K.TY, rx - 3.5, ry - 4, 0, 0, Math.PI * 2); ctx.stroke();
+    if (glanz > 0.01) {
+      const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 0.8);
+      ctx.globalAlpha = glanz * (0.5 + 0.5 * puls);
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.ellipse(cx, K.TY, rx + 1.5, ry + 1.5, 0, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+
+// ── Stuecke ─────────────────────────────────────────────────────────────
+function _m5wEiner(ctx, x, y, w, h) {
+  const F = _m5wFARBE.E;
+  ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, x, y, w, h, Math.min(1.8, w / 4, h / 4)); ctx.fill(); ctx.stroke();
+}
+function _m5wStange(ctx, x, y, w, h) {
+  const F = _m5wFARBE.Z;
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = 0.7;
+  for (let k = 1; k < 10; k++) {
+    if (k === 5) continue;
+    ctx.beginPath(); ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = 1.5;                     // Fuenfermarke
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.lineWidth = 0.9; ctx.strokeRect(x, y, w, h);
+}
+function _m5wPlatte(ctx, x, y, w, h) {
+  const F = _m5wFARBE.H;
+  ctx.fillStyle = F.fuell; ctx.fillRect(x, y, w, h);
+  ctx.strokeStyle = F.linie; ctx.lineWidth = 0.5;
+  for (const k of [2.5, 7.5]) {
+    ctx.beginPath(); ctx.moveTo(x + w * k / 10, y); ctx.lineTo(x + w * k / 10, y + h); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(x, y + h * k / 10); ctx.lineTo(x + w, y + h * k / 10); ctx.stroke();
+  }
+  ctx.strokeStyle = F.rand; ctx.lineWidth = 1;                       // Fuenferlinien
+  ctx.beginPath(); ctx.moveTo(x + w / 2, y); ctx.lineTo(x + w / 2, y + h); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x, y + h / 2); ctx.lineTo(x + w, y + h / 2); ctx.stroke();
+  ctx.strokeRect(x, y, w, h);
+}
+function _m5wZeichneStueck(ctx, s, dx) {
+  const al = Math.max(0, Math.min(1, s.a));
+  if (al <= 0.01) return;
+  ctx.save(); ctx.globalAlpha = al;
+  const x = s.x + (dx || 0);
+  if (s.teil) {
+    const F = _m5wFARBE[s.art];
+    ctx.fillStyle = F.fuell; ctx.strokeStyle = F.rand; ctx.lineWidth = 0.8;
+    ctx.fillRect(x, s.y, s.w, s.h); ctx.strokeRect(x, s.y, s.w, s.h);
+  } else if (s.art === 'E') _m5wEiner(ctx, x, s.y, s.w, s.h);
+  else if (s.art === 'Z') _m5wStange(ctx, x, s.y, s.w, s.h);
+  else _m5wPlatte(ctx, x, s.y, s.w, s.h);
+  if (s.blitz > 0) {                                         // kurzes Aufblitzen beim Losgleiten
+    ctx.globalAlpha = 0.7 * s.blitz; ctx.fillStyle = '#ffffff';
+    ctx.fillRect(x - 1, s.y - 1, s.w + 2, s.h + 2);
+  }
+  ctx.restore();
+}
+// Umrandung um eine Gruppe von Stuecken (eine je Feld, damit sich nichts ueberlappt)
+function _m5wGruppe(g, s) {
+  g.x0 = Math.min(g.x0, s.x); g.y0 = Math.min(g.y0, s.y);
+  g.x1 = Math.max(g.x1, s.x + s.w); g.y1 = Math.max(g.y1, s.y + s.h);
+}
+function _m5wStuecke(ctx) {
+  const z = _m5w, at = z.lauf.at, P = z.lauf.plan;
+  const liste = [], oben = [], gruppen = {};
+  const blink = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 1.1);
+  for (const p of P.stuecke) {
+    const s = _m5wZustand(p, at);
+    if (!s) continue;
+    if (s.fliegt) { oben.push(s); continue; }
+    s.dx = 0;
+    if (p.wackel && at >= p.wackel[0] && at < p.wackel[1]) {
+      const u = (at - p.wackel[0]) / (p.wackel[1] - p.wackel[0]);
+      s.dx = Math.sin((at - p.wackel[0]) * 40) * 2.5 * (1 - u);
+    }
+    liste.push(s);
+    const bl = p.blink !== null && at >= p.blink;            // bleibt liegen: blinkt orange
+    const mk = !bl && p.mark !== null && at >= p.mark;        // uebrig: orange umrandet
+    if (bl || mk) {
+      const g = gruppen[p.art] = gruppen[p.art] ||
+        { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity, blink: bl, t: bl ? p.blink : p.mark };
+      _m5wGruppe(g, s);
+    }
+  }
+  const G = Object.values(gruppen);
+  for (const g of G) {
+    if (!g.blink) continue;
+    ctx.save(); ctx.globalAlpha = 0.25 + 0.35 * blink; ctx.fillStyle = '#fdba74';
+    _bioFxRundRect(ctx, g.x0 - 3, g.y0 - 3, g.x1 - g.x0 + 6, g.y1 - g.y0 + 6, 4); ctx.fill(); ctx.restore();
+  }
+  for (const s of liste) _m5wZeichneStueck(ctx, s, s.dx);
+  for (const g of G) {
+    ctx.save();
+    ctx.globalAlpha = g.blink ? 0.45 + 0.55 * blink : _m5wEin(at - g.t, 0.25);
+    ctx.strokeStyle = _m5wORANGE; ctx.lineWidth = g.blink ? 2 : 1.8;
+    _bioFxRundRect(ctx, g.x0 - 3, g.y0 - 3, g.x1 - g.x0 + 6, g.y1 - g.y0 + 6, 4); ctx.stroke();
+    ctx.restore();
+  }
+  for (const s of z.weg) _m5wZeichneStueck(ctx, s);
+  for (const s of oben) _m5wZeichneStueck(ctx, s);           // was fliegt, liegt obenauf
+}
+
+// Fuer die Lehrkraft: beim Halt die Stuecke, die gleich zerfallen, dick orange
+// umrandet und darunter das Schild; waehrend jeder Pause das Schild „Pause“.
+function _m5wLehrkraftBild(ctx) {
+  const z = _m5w, K = _m5wK, h = z.haltInfo;
+  if (h) {
+    const r = h.rects;
+    const x0 = Math.min(...r.map(q => q.x)), x1 = Math.max(...r.map(q => q.x + q.w));
+    const y0 = Math.min(...r.map(q => q.y)), y1 = Math.max(...r.map(q => q.y + q.h));
+    ctx.save();
+    ctx.strokeStyle = _m5wORANGE; ctx.lineWidth = 3; ctx.fillStyle = '#fff7ed';
+    _bioFxRundRect(ctx, x0 - 4, y0 - 4, x1 - x0 + 8, y1 - y0 + 8, 5); ctx.fill(); ctx.stroke();
+    for (const q of r) _m5wZeichneStueck(ctx, Object.assign({ art: h.von, teil: false, blitz: 0 }, q));
+    const text = _m5wSchildText(h);
+    let gr = 14;
+    ctx.font = '700 ' + gr + 'px sans-serif';
+    while (gr > 10 && ctx.measureText(text).width > K.SX1 - K.SX0 - 16) { gr -= 1; ctx.font = '700 ' + gr + 'px sans-serif'; }
+    const bw = Math.min(K.SX1 - K.SX0, ctx.measureText(text).width + 22), bh = K.SY1 - K.SY0;
+    const mx = Math.max(K.SX0 + bw / 2, Math.min(K.SX1 - bw / 2, (x0 + x1) / 2));
+    ctx.strokeStyle = _m5wORANGE; ctx.lineWidth = 2.5; ctx.lineCap = 'round';  // Verbindung Stuecke -> Schild
+    ctx.beginPath(); ctx.moveTo((x0 + x1) / 2, y1 + 4); ctx.lineTo((x0 + x1) / 2, K.SY0); ctx.stroke();
+    ctx.fillStyle = '#fff7ed'; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, mx - bw / 2, K.SY0, bw, bh, 8); ctx.fill(); ctx.stroke();
+    _m5wText(ctx, text, mx, K.SY0 + bh / 2 + gr * 0.36, gr, '#9a3412');
+    ctx.restore();
+  }
+  if (z.steht) {                                             // Schild „Pause“ in der freien Kopfzeile des Blatts
+    ctx.save();
+    ctx.fillStyle = '#1e293b';
+    _bioFxRundRect(ctx, 128, 9, 58, 17, 5); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(133, 12.5, 2.8, 10); ctx.fillRect(138, 12.5, 2.8, 10);
+    _m5wText(ctx, 'Pause', 144, 22, 11, '#ffffff', '700', 'left');
+    ctx.restore();
+  }
+}
+
+function _m5wDraw(ctx, cv) {
+  if (!_m5w) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _m5wBlatt(ctx);
+  _m5wFelder(ctx);
+  _m5wTellerBild(ctx);
+  _m5wStuecke(ctx);
+  _bioFxDraw(ctx, _m5w.fx);
+  if (_m5w.steht || _m5w.haltInfo) _m5wLehrkraftBild(ctx);
 }

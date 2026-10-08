@@ -1,0 +1,1 @@
+  'm5-punktefeld': modal => { _m5rInit(); modal.innerHTML = _m5rHTML(); _m5rStatus(); _pSim = new PhysicsSimEngine('_m5r-cv', '_m5r-cv'); _pSim.start(dt => _m5rUpdate(dt), (ctx, cv) => _m5rDraw(ctx, cv), []); },

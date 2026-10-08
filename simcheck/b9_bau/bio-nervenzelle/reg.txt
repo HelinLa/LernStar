@@ -1,0 +1,2 @@
+  // ── BIO 9 · WIE IST DIE NERVENZELLE GEBAUT?  (Förderheft Bio 9 · br3) ──
+  'bio-nervenzelle': modal => { _n9cInit(); modal.innerHTML = _n9cHTML(); _n9cStatus(); _pSim = new PhysicsSimEngine('_n9c-cv', '_n9c-cv'); _pSim.start(dt => _n9cUpdate(dt), (ctx, cv) => _n9cDraw(ctx, cv), []); },

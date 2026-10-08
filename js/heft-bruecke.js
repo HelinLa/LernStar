@@ -18,7 +18,7 @@ const HEFT_SEITEN = {
     name: "Magnete und magnetische Felder",
     titel: "Der Schlüssel liegt unten",
     frage: "Wie weit reicht die Wirkung eines Magneten?",
-    schritte: ["Schalte Feldlinien ein und stelle „Stelle am Magneten“ auf 0 Grad, also an das Ende. Stelle den Abstand ganz klein.", "Vergrößere den Abstand Schritt für Schritt: erst auf einen mittleren, dann auf einen großen Wert. Merke dir die Zahl, ab der die Nadel kaum noch gedreht wird.", "Gegenprobe am Tisch: Nähere einen Magneten langsam einer Büroklammer. Lege dabei erst ein Blatt Papier dazwischen, dann ein dickes Buch."]
+    schritte: ["Schalte Feldlinien ein und stelle „Stelle am Magneten“ auf 0 Grad, also an das Ende. Stelle den Abstand ganz klein. Notiere in Zeile 1 der Tabelle, ob die Nadel gedreht wird.", "Stelle einen mittleren Abstand ein und notiere in Zeile 2, ob die Nadel gedreht wird. Wiederhole das mit einem großen Abstand für Zeile 3. Merke dir die Zahl, ab der sich die Nadel kaum noch dreht.", "Gegenprobe am Tisch: Nähere einen Magneten langsam einer Büroklammer, erst mit einem Blatt Papier dazwischen, dann mit einem dicken Buch. Notiere in Zeile 4, ob der Magnet die Klammer durch das Papier anzieht."]
   },
   "m2": {
     klasse: 5, schulform: "Realschule NRW",
@@ -27,7 +27,7 @@ const HEFT_SEITEN = {
     name: "Welche Stoffe zieht ein Magnet an?",
     titel: "Nicht alles kommt mit",
     frage: "Welche Stoffe zieht ein Magnet an?",
-    schritte: ["Wähle nacheinander Eisen-Nagel, Büroklammer (Stahl) und Nickel-Münze. Notiere jedes Mal, ob der Gegenstand angezogen wird.", "Prüfe danach Alu-Dose, Kupfer-Draht und Holz-Stab. Trage die Alu-Dose ein und vergleiche, was der Magnet mit den drei Gegenständen macht.", "Wähle zum Schluss Blech 1, Blech 2 und Blech 3. Finde heraus, welche Bleche der Magnet anzieht."]
+    schritte: ["Wähle Eisen-Nagel und notiere in Zeile 1 der Tabelle im Heft, ob er angezogen wird. Wiederhole das mit Nickel-Münze für Zeile 2. Prüfe auch Büroklammer (Stahl).", "Wähle Alu-Dose und notiere in Zeile 3 im Heft, ob sie angezogen wird. Prüfe dann Kupfer-Draht und Holz-Stab und vergleiche.", "Wähle zum Schluss Blech 1 und notiere in Zeile 4 im Heft, ob der Magnet es anzieht. Wiederhole das mit Blech 2 und Blech 3."]
   },
   "m3": {
     klasse: 5, schulform: "Realschule NRW",
@@ -36,7 +36,7 @@ const HEFT_SEITEN = {
     name: "Wie wirken Magnetpole aufeinander?",
     titel: "Zwei Magnete, zweimal anders",
     frage: "Wie wirken zwei Magnetpole aufeinander?",
-    schritte: ["Wähle Magnet an der Tür so herum und stelle Abstand d auf 5 cm. Lies ab, ob sich die Magnete anziehen oder abstoßen.", "Wähle nun Magnet an der Tür umgedreht bei gleichem Abstand d. Lies wieder ab und vergleiche mit Schritt 1.", "Stelle Abstand d auf 2 cm und danach auf 10 cm ein. Übernimm jeden Wert mit Messwert übernehmen."]
+    schritte: ["Wähle Magnet an der Tür so herum und stelle Abstand d auf 5 cm. Notiere in Zeile 1 der Tabelle im Heft, ob sich die Magnete anziehen oder abstoßen.", "Wähle nun Magnet an der Tür umgedreht bei gleichem Abstand d. Notiere in Zeile 2, ob sie sich anziehen oder abstoßen, und vergleiche mit Zeile 1.", "Stelle Abstand d auf 2 cm und übernimm den Wert mit Messwert übernehmen. Notiere in Zeile 3 im Heft, ob sich die Magnete abstoßen und wie stark. Wiederhole das mit 10 cm für Zeile 4."]
   },
   "m4": {
     klasse: 5, schulform: "Realschule NRW",
@@ -45,7 +45,7 @@ const HEFT_SEITEN = {
     name: "Wie sieht ein Magnetfeld aus?",
     titel: "Das unsichtbare Muster",
     frage: "Wo ist ein Magnetfeld stark und wo ist es schwach?",
-    schritte: ["Schalte Feldlinien ein. Stelle „Stelle am Magneten“ auf 0 Grad und schau, wie dicht die Linien dort liegen.", "Stelle nacheinander 40 Grad und 90 Grad ein. Lies jedes Mal ab, ob die Linien dicht oder weit auseinander liegen. Schalte danach Kompass-Raster ein und stelle wieder 0 Grad ein.", "Gegenprobe am Tisch: Hänge eine Büroklammer an das Ende eines Magneten und danach an seine Mitte."]
+    schritte: ["Schalte Feldlinien ein. Stelle „Stelle am Magneten“ auf 0 Grad und notiere in Zeile 1 der Tabelle, ob die Linien dort dicht oder weit liegen.", "Stelle 40 Grad ein und notiere in Zeile 2, ob die Linien dicht oder weit liegen. Wiederhole das mit 90 Grad für Zeile 3. Schalte danach Kompass-Raster ein, stelle wieder 0 Grad ein und notiere deine Beobachtung in Zeile 4.", "Gegenprobe am Tisch: Hänge eine Büroklammer an das Ende eines Magneten und danach an seine Mitte."]
   },
   "m5": {
     klasse: 5, schulform: "Realschule NRW",
@@ -54,7 +54,7 @@ const HEFT_SEITEN = {
     name: "Wie funktioniert ein Kompass?",
     titel: "Im Park zeigt der Kompass plötzlich anders",
     frage: "Warum zeigt eine Kompassnadel nach Norden?",
-    schritte: ["Schalte Erdmagnetfeld ein. Stelle „Magnet – Abstand“ auf den kleinsten Wert und lies ab, wohin die Nadelspitze zeigt.", "Stelle „Magnet – Abstand“ nacheinander auf 6 cm und auf den größten Wert. Lies jedes Mal die Richtung der Nadel ab.", "Stelle wieder 6 cm ein und schalte Erdmagnetfeld aus. Stoße die Nadel mit „Nadel anstoßen“ an und lies ab, wohin sie sich stellt."]
+    schritte: ["Schalte Erdmagnetfeld ein. Stelle „Magnet – Abstand“ auf 6 cm und notiere in Zeile 1 der Tabelle, wohin die Nadelspitze zeigt.", "Stelle „Magnet – Abstand“ auf den kleinsten Wert und notiere die Richtung der Nadel in Zeile 2. Wiederhole das mit dem größten Wert für Zeile 3.", "Stelle wieder 6 cm ein und schalte Erdmagnetfeld aus. Stoße die Nadel mit „Nadel anstoßen“ an und notiere in Zeile 4, wohin sie sich stellt."]
   },
   "l1": {
     klasse: 5, schulform: "Realschule NRW",
@@ -63,7 +63,7 @@ const HEFT_SEITEN = {
     name: "Lichtquellen und Lichtausbreitung",
     titel: "Zwei Löcher, und trotzdem dunkel",
     frage: "Läuft Licht geradeaus oder um die Ecke?",
-    schritte: ["Stelle „Loch der 1. Blende“ auf 0 und „Loch der 2. Blende“ auf 0. Schau nach, ob hinten Licht am Schirm ankommt.", "Lass die 1. Blende auf 0 und schiebe „Loch der 2. Blende“ nach oben bis +18. Lies ab, wann das Licht verschwindet. Stelle zum Schluss „Loch der 2. Blende“ auf +18.", "Stelle „Loch der 1. Blende“ auf +18 und „Loch der 2. Blende“ auf 0. Probiere aus, bei welcher Zahl der 2. Blende wieder Licht ankommt."]
+    schritte: ["Stelle „Loch der 1. Blende“ auf 0 und „Loch der 2. Blende“ auf 0. Notiere in Zeile 1 der Tabelle, ob hinten Licht am Schirm ankommt.", "Lass die 1. Blende auf 0 und schiebe „Loch der 2. Blende“ nach oben bis +18. Lies ab, wann das Licht verschwindet. Notiere in Zeile 2, ob bei +18 Licht ankommt.", "Stelle „Loch der 1. Blende“ auf +18 und „Loch der 2. Blende“ auf 0. Notiere in Zeile 3, ob Licht ankommt. Suche dann die Zahl der 2. Blende, bei der wieder Licht ankommt, und notiere sie in Zeile 4."]
   },
   "l2": {
     klasse: 5, schulform: "Realschule NRW",
@@ -72,7 +72,7 @@ const HEFT_SEITEN = {
     name: "Wie können wir einen Gegenstand sehen?",
     titel: "Es liegt doch direkt da",
     frage: "Warum sehen wir einen Gegenstand im Dunkeln nicht?",
-    schritte: ["Stelle Zimmerlicht auf aus. Wähle nacheinander Tüte Gummibärchen und Katzenauge und notiere, was du siehst.", "Stelle Zimmerlicht auf an. Wähle dieselben zwei Gegenstände noch einmal und lies ab, was sich geändert hat. Stelle danach Zimmerlicht wieder auf aus und wähle Taschenlampe.", "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit der Taschenlampe auf einen Löffel und halte die Lampe dann daneben."]
+    schritte: ["Stelle Zimmerlicht auf aus. Wähle Tüte Gummibärchen und notiere in Zeile 1 der Tabelle, ob du sie siehst. Prüfe auch Katzenauge.", "Stelle Zimmerlicht auf an. Wähle wieder Tüte Gummibärchen und notiere in Zeile 2, ob du sie siehst. Wiederhole das mit Katzenauge für Zeile 3.", "Stelle Zimmerlicht auf aus, wähle Taschenlampe und notiere in Zeile 4, ob du sie siehst. Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit der Taschenlampe auf einen Löffel und halte die Lampe dann daneben."]
   },
   "l3": {
     klasse: 5, schulform: "Realschule NRW",
@@ -81,7 +81,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht ein Schatten?",
     titel: "Der Klotz an der Wand",
     frage: "Wie entsteht ein Schatten?",
-    schritte: ["Stelle Lampe (Höhe) auf oben. Schau nach, wo das Schattenbild an der Wand liegt und wie lang es ist.", "Stelle Lampe (Höhe) erst auf Mitte und dann auf unten. Lies jedes Mal ab, wohin der Schatten wandert und wie lang er ist.", "Stelle Gegenstand auf entfernt. Schau nach, was dann von dem Schatten übrig bleibt."]
+    schritte: ["Stelle Lampe (Höhe) auf oben. Notiere in Zeile 1 der Tabelle, wo der Schatten an der Wand liegt und wie lang er ist.", "Stelle Lampe (Höhe) auf Mitte und notiere in Zeile 2, wohin der Schatten wandert und wie lang er ist. Wiederhole das mit unten für Zeile 3.", "Stelle Gegenstand auf entfernt. Notiere in Zeile 4, was dann von dem Schatten übrig bleibt."]
   },
   "l4": {
     klasse: 5, schulform: "Realschule NRW",
@@ -90,7 +90,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Größe des Schattens ab?",
     titel: "Bis unter die Decke",
     frage: "Wovon hängt die Größe eines Schattens ab?",
-    schritte: ["Schiebe mit Pappwolf verschieben den Wolf dicht an die Bretterwand. Lies die Schattengröße B ab und wähle Messwert übernehmen.", "Schiebe den Pappwolf erst in die Mitte und dann weit von der Bretterwand weg. Wähle jedes Mal Messwert übernehmen und vergleiche die Werte.", "Lass den Pappwolf stehen und schiebe mit Bretterwand verschieben die Wand weiter weg. Lies die neue Schattengröße B ab."]
+    schritte: ["Schiebe mit Pappwolf verschieben den Wolf dicht an die Bretterwand. Wähle Messwert übernehmen und notiere B in Zeile 1 der Tabelle im Heft.", "Schiebe den Pappwolf in die Mitte, wähle Messwert übernehmen und notiere B in Zeile 2. Wiederhole das weit weg von der Wand für Zeile 3.", "Lass den Pappwolf stehen und schiebe mit Bretterwand verschieben die Wand weiter weg. Notiere B in Zeile 4 und vergleiche alle Werte."]
   },
   "l5": {
     klasse: 5, schulform: "Realschule NRW",
@@ -99,7 +99,7 @@ const HEFT_SEITEN = {
     name: "Kern- und Halbschatten",
     titel: "Zwei Kerzen, ein komischer Schatten",
     frage: "Warum hat ein Schatten manchmal einen helleren Rand?",
-    schritte: ["Stelle Quelle auf „punktförmig“. Wähle dann „nur eine Taschenlampe“ und schau dir den Rand des Schattens an der Wand an.", "Wähle „zwei Lampen weit auseinander“. Vergleiche jetzt die Mitte des Schattens mit seinem Rand.", "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit zwei Taschenlampen nebeneinander auf einen Ball vor der Wand."]
+    schritte: ["Stelle Quelle auf „punktförmig“ und wähle „nur eine Taschenlampe“. Notiere in Zeile 1 der Tabelle, ob der Rand des Schattens schwarz oder grau ist.", "Wähle „zwei Lampen weit auseinander“. Notiere in Zeile 2, wie die Mitte des Schattens aussieht, und in Zeile 3, wie sein Rand aussieht.", "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit zwei Taschenlampen nebeneinander auf einen Ball vor der Wand. Notiere deine Beobachtung in Zeile 4."]
   },
   "l6": {
     klasse: 5, schulform: "Realschule NRW",
@@ -108,7 +108,7 @@ const HEFT_SEITEN = {
     name: "Reflexionsgesetz & ebene Spiegel",
     titel: "Licht um die Ecke",
     frage: "Nach welcher Regel wird Licht an einem Spiegel reflektiert (zurückgeworfen)?",
-    schritte: ["Stelle den Einfallswinkel zum Lot auf 20 Grad ein und lies ab, unter welchem Winkel der Strahl reflektiert (zurückgeworfen) wird. Wiederhole das mit 40 und mit 60 Grad.", "Stelle den Einfallswinkel auf 0 Grad, also senkrecht auf den Spiegel, und halte fest, wohin der Strahl geht.", "Stelle wieder 40 Grad ein und drehe dann den Spiegel um 10 Grad. Lies ab, um wie viel der Lichtfleck an der Wand weiterspringt."]
+    schritte: ["Stelle den Einfallswinkel zum Lot auf 20 Grad ein. Notiere in Zeile 1 der Tabelle, unter welchem Winkel der Strahl reflektiert (zurückgeworfen) wird. Wiederhole das mit 40 Grad für Zeile 2 und mit 60 Grad für Zeile 3.", "Stelle den Einfallswinkel auf 0 Grad, also senkrecht auf den Spiegel. Notiere in Zeile 4 den Reflexionswinkel und beobachte, wohin der Strahl geht.", "Stelle wieder 40 Grad ein und drehe dann den Spiegel um 10 Grad. Lies ab, um wie viel der Lichtfleck an der Wand weiterspringt."]
   },
   "s2": {
     klasse: 5, schulform: "Realschule NRW",
@@ -117,7 +117,7 @@ const HEFT_SEITEN = {
     name: "Wann leuchtet eine Lampe?",
     titel: "Alles heil, und trotzdem dunkel",
     frage: "Wann leuchtet eine Lampe und wann bleibt sie dunkel?",
-    schritte: ["Stelle es so ein, dass „Schalter: geschlossen“ und „Kabel: heil“ dasteht. Schau nach, ob das Lämpchen leuchtet.", "Drücke einmal auf „Schalter: geschlossen“. Lies ab, was jetzt dasteht, und beobachte dabei das Lämpchen.", "Stelle den Schalter zurück und drücke stattdessen auf „Kabel: heil“. Beobachte das Lämpchen noch einmal. Stelle zum Schluss als Gegenprobe wieder „Schalter: geschlossen“ und „Kabel: heil“ ein."]
+    schritte: ["Stelle es so ein, dass „Schalter: geschlossen“ und „Kabel: heil“ dasteht. Notiere in Zeile 1 der Tabelle im Heft, ob das Lämpchen leuchtet.", "Drücke einmal auf „Schalter: geschlossen“. Lies ab, was jetzt dasteht. Notiere in Zeile 2 im Heft, ob das Lämpchen leuchtet.", "Stelle den Schalter zurück, drücke auf „Kabel: heil“ und notiere das Ergebnis in Zeile 3 im Heft. Stelle als Gegenprobe wieder „Schalter: geschlossen“ und „Kabel: heil“ ein und notiere das Ergebnis in Zeile 4."]
   },
   "s3": {
     klasse: 5, schulform: "Realschule NRW",
@@ -126,7 +126,7 @@ const HEFT_SEITEN = {
     name: "Welche Stoffe leiten Strom?",
     titel: "Der Riss im Kabel",
     frage: "Welche Stoffe leiten den Strom?",
-    schritte: ["Wähle nacheinander Büroklammer, Nagel und Münze. Notiere jedes Mal, ob das Lämpchen leuchtet.", "Prüfe danach Holz-Stab, Plastik-Lineal und Glas-Stab. Schreibe wieder auf, was du siehst.", "Wähle dann Alufolie und Bleistiftmine. Prüfe zuletzt als Gegenprobe den Radiergummi."]
+    schritte: ["Wähle Büroklammer und notiere in Zeile 1 der Tabelle im Heft, ob das Lämpchen leuchtet. Wiederhole das mit Nagel und Münze.", "Prüfe danach Holz-Stab und notiere in Zeile 2 im Heft, ob das Lämpchen leuchtet. Wiederhole das mit Plastik-Lineal und Glas-Stab.", "Wähle Alufolie und notiere in Zeile 3 im Heft, ob das Lämpchen leuchtet. Wiederhole das mit Bleistiftmine. Prüfe zuletzt als Gegenprobe den Radiergummi und notiere das Ergebnis in Zeile 4."]
   },
   "s6": {
     klasse: 5, schulform: "Realschule NRW",
@@ -135,38 +135,38 @@ const HEFT_SEITEN = {
     name: "Der Schalter",
     titel: "Muss der Schalter an die Batterie?",
     frage: "Wovon hängt es ab, ob dein Schalter den Stromkreis unterbricht?",
-    schritte: ["Baue aus dem Brettchen, den zwei Reißzwecken und der Büroklammer einen Schalter und setze ihn in deinen Stromkreis. Lege die Büroklammer auf beide Reißzwecken.", "Lege die Büroklammer zuerst auf beide Reißzwecken. Lege sie als Gegenprobe nur auf eine Reißzwecke.", "Setze den Schalter zuletzt dicht an die Batterie und danach hinter das Lämpchen. Halte fest, ob sich am Ergebnis etwas ändert."]
+    schritte: ["Baue aus dem Brettchen, den zwei Reißzwecken und der Büroklammer einen Schalter und setze ihn in deinen Stromkreis.", "Lege die Büroklammer auf beide Reißzwecken und notiere in Zeile 1 der Tabelle, ob das Lämpchen leuchtet. Lege sie als Gegenprobe nur auf eine Reißzwecke und notiere das Ergebnis in Zeile 2.", "Setze den Schalter dicht an die Batterie und notiere in Zeile 3, ob das Lämpchen leuchtet. Wiederhole das mit dem Schalter hinter dem Lämpchen für Zeile 4."]
   },
   "s4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "reihenschaltung-rs", seite: 55,
+    sim: "reihenschaltung-rs", seite: 56,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Reihenschaltung",
     titel: "Zwei Lampen, und beide funzeln",
     frage: "Was geschieht, wenn mehrere Lampen hintereinander geschaltet sind?",
-    schritte: ["Stelle Anzahl Lampen in Reihe auf 1 und lass Schalter geschlossen. Schau nach, wie hell die Lampe leuchtet.", "Stelle Anzahl Lampen in Reihe nacheinander auf 2 und auf 3. Vergleiche jedes Mal, wie hell eine einzelne Lampe leuchtet.", "Bleibe bei 3 Lampen und wähle bei Lampe 2 herausgedreht. Beobachte, was mit den anderen Lampen passiert."]
+    schritte: ["Stelle Anzahl Lampen in Reihe auf 1 und lass Schalter geschlossen. Notiere in Zeile 1 der Tabelle, wie hell die Lampe leuchtet.", "Stelle Anzahl Lampen in Reihe auf 2 und notiere in Zeile 2, wie hell eine einzelne Lampe leuchtet. Wiederhole das mit 3 für Zeile 3.", "Bleibe bei 3 Lampen und wähle bei Lampe 2 herausgedreht. Beobachte die anderen Lampen und notiere in Zeile 4, was mit ihnen passiert."]
   },
   "s5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "parallelschaltung-rs", seite: 59,
+    sim: "parallelschaltung-rs", seite: 60,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Parallelschaltung",
     titel: "Vorne aus, hinten an",
     frage: "Warum lässt sich jede Lampe einzeln schalten?",
-    schritte: ["Stelle Bens Schalter (Lampe 1) auf an und Jonas’ Schalter (Lampe 2) auf an. Lies ab, welche Lampen leuchten.", "Stelle Jonas’ Schalter (Lampe 2) auf aus. Beobachte, ob Lampe 1 weiterleuchtet.", "Stelle Bens Schalter (Lampe 1) auf aus und Jonas’ Schalter (Lampe 2) auf an. Lies ab, welche Lampe jetzt leuchtet. Stelle zum Schluss beide Schalter auf aus."]
+    schritte: ["Stelle „Schalter 1 (Lampe 1)“ und „Schalter 2 (Lampe 2)“ auf an. Notiere in Zeile 1 der Tabelle, welche Lampen leuchten.", "Stelle „Schalter 2 (Lampe 2)“ auf aus. Notiere in Zeile 2, welche Lampe jetzt leuchtet.", "Stelle „Schalter 1 (Lampe 1)“ auf aus und „Schalter 2 (Lampe 2)“ auf an. Notiere in Zeile 3, welche Lampe jetzt leuchtet. Stelle zum Schluss beide Schalter auf aus und notiere das Ergebnis in Zeile 4."]
   },
   "s7": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "elektromagnet", seite: 62,
+    sim: "elektromagnet", seite: 63,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Elektromagnet",
     titel: "Der Knopf, der den Magneten anschaltet",
     frage: "Wovon hängt die Stärke eines Elektromagneten ab?",
-    schritte: ["Wähle „Windungszahl ändern“ und stelle 50, 100 und 200 ein. Lies jedes Mal die Tragkraft ab; die Stromstärke bleibt bei 2 A.", "Stelle die Windungszahl erst auf 150, dann auf 300 und vergleiche die beiden Werte.", "Wähle „Stromstärke ändern“ und stelle nacheinander 1 A, 2 A und 4 A ein; die Windungszahl bleibt fest bei 150."]
+    schritte: ["Wähle „Windungszahl ändern“; die Stromstärke bleibt bei 2 A. Stelle 50 ein und notiere die Tragkraft in Zeile 1 der Tabelle im Heft. Wiederhole das mit 100 und mit 200.", "Stelle die Windungszahl auf 150 und notiere die Tragkraft in Zeile 2. Stelle dann 300 ein, notiere die Tragkraft ebenfalls in Zeile 2 und vergleiche.", "Wähle „Stromstärke ändern“; die Windungszahl bleibt fest bei 150. Stelle 1 A ein und notiere die Tragkraft in Zeile 3. Wiederhole das mit 2 A und 4 A."]
   },
   "s1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "schaltplan", seite: 53,
+    sim: "schaltplan", seite: 54,
     kapitel: "Stromkreis & Elektromagnet",
     name: "Stromkreis und Schaltzeichen",
     titel: "Der Zettel aus dem Fahrradladen",
@@ -175,138 +175,138 @@ const HEFT_SEITEN = {
   },
   "w1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "temperatur-waerme", seite: 68,
+    sim: "temperatur-waerme", seite: 69,
     kapitel: "Temperatur & Wärme",
     name: "Sind Temperatur und Wärme das Gleiche?",
     titel: "Der Löffel in der Teetasse",
     frage: "Sind Temperatur und Wärme dasselbe?",
-    schritte: ["Stelle bei Gefäß 1 Menge: 1 L und Temperatur: 80 °C ein, bei Gefäß 2 Menge: 1 L und Temperatur: 20 °C.", "Wähle In Kontakt bringen und lies beide Temperaturen ab. Wähle danach Zurücksetzen und stelle bei Gefäß 2 Menge: 2 L ein. Wähle wieder In Kontakt bringen.", "Gegenprobe am Tisch: Stelle einen Löffel in ein Glas mit warmem Wasser. Fasse den Griff nach zwei Minuten an."]
+    schritte: ["Stelle bei Gefäß 1 Menge: 1 L und Temperatur: 80 °C ein, bei Gefäß 2 Menge: 1 L und Temperatur: 20 °C. Wähle In Kontakt bringen und notiere beide Temperaturen in Zeile 1 der Tabelle.", "Wähle Zurücksetzen und stelle bei Gefäß 2 Menge: 2 L ein. Wähle wieder In Kontakt bringen und notiere beide Temperaturen in Zeile 2.", "Gegenprobe am Tisch: Stelle einen Löffel in ein Glas mit warmem Wasser. Fasse den Griff nach zwei Minuten an und notiere in Zeile 3, was du fühlst."]
   },
   "w2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "thermometer", seite: 71,
+    sim: "thermometer", seite: 72,
     kapitel: "Temperatur & Wärme",
     name: "Wie funktioniert ein Thermometer?",
     titel: "Der Faden, der wandert",
     frage: "Wie zeigt ein Thermometer die Temperatur an?",
-    schritte: ["Stelle die Temperatur auf 20 °C ein. Lies an der Skala ab, bei welcher Temperatur der Faden steht.", "Wähle nacheinander „Eiswasser“, „Bens Faust“ und „kochendes Wasser“. Lies jedes Mal die Temperatur ab.", "Gegenprobe am Tisch: Stelle ein Thermometer in ein Glas kaltes Wasser. Lies nach zwei Minuten ab."]
+    schritte: ["Stelle die Temperatur auf 20 °C ein. Lies an der Skala ab, bei welcher Temperatur der Faden steht, und notiere sie in Zeile 1 der Tabelle.", "Wähle „Eiswasser“ und notiere die Temperatur in Zeile 2. Wiederhole das mit „Deine Faust“ für Zeile 3 und mit „kochendes Wasser“ für Zeile 4.", "Gegenprobe am Tisch: Stelle ein Thermometer in ein Glas kaltes Wasser. Lies nach zwei Minuten ab."]
   },
   "w3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "waermeausdehnung", seite: 74,
+    sim: "waermeausdehnung", seite: 75,
     kapitel: "Temperatur & Wärme",
     name: "Was geschieht beim Erwärmen von Stoffen?",
     titel: "Der bockige Deckel",
     frage: "Dehnen sich alle Stoffe beim Erwärmen gleich stark aus?",
-    schritte: ["Wähle „fest“ und stelle die Temperatur auf 20 °C ein. Erhöhe dann auf 80 °C und beobachte, wie stark sich der Stoff ausdehnt.", "Wähle „flüssig“ und danach „Gas“. Gehe jedes Mal wieder von 20 °C auf 80 °C und vergleiche, wer sich am stärksten ausdehnt. Wähle zum Schluss wieder „fest“ und stelle 20 °C ein.", "Gegenprobe am Tisch: Halte den Blechdeckel eines Glases kurz in heißes Wasser und drehe ihn danach auf."]
+    schritte: ["Wähle „fest“ und stelle die Temperatur auf 20 °C ein. Erhöhe dann auf 80 °C und notiere in Zeile 1 der Tabelle, wie stark sich der Stoff ausdehnt.", "Wähle „flüssig“, gehe wieder von 20 °C auf 80 °C und notiere das Ergebnis in Zeile 2. Wiederhole das mit „Gas“ für Zeile 3. Wähle dann wieder „fest“, stelle 20 °C ein und notiere deine Beobachtung in Zeile 4.", "Gegenprobe am Tisch: Halte den Blechdeckel eines Glases kurz in heißes Wasser und drehe ihn danach auf."]
   },
   "w4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "aggregatzustaende", seite: 77,
+    sim: "aggregatzustaende", seite: 78,
     kapitel: "Temperatur & Wärme",
     name: "Wie verändern sich Aggregatzustände?",
     titel: "Aus Eis wird Wasser",
     frage: "Bei welchen Temperaturen ist Wasser fest, flüssig oder gasförmig?",
-    schritte: ["Stelle die Temperatur auf 20 °C ein. Lies ab, ob das Wasser fest, flüssig oder gasförmig ist.", "Wähle „abkühlen“, bis du bei minus 10 °C bist. Beobachte, bei welcher Temperatur das Wasser fest wird.", "Wähle danach „erwärmen“ bis 50 °C und dann weiter bis 110 °C. Beobachte, bei welcher Temperatur aus dem Wasser Wasserdampf wird."]
+    schritte: ["Stelle die Temperatur auf 20 °C ein. Notiere in Zeile 1 der Tabelle, ob das Wasser fest, flüssig oder gasförmig ist.", "Wähle „abkühlen“, bis du bei minus 10 °C bist. Beobachte, bei welcher Temperatur das Wasser fest wird. Notiere den Zustand in Zeile 2.", "Wähle „erwärmen“ bis 50 °C und notiere den Zustand in Zeile 3. Wähle weiter „erwärmen“ bis 110 °C. Beobachte, bei welcher Temperatur Wasserdampf entsteht, und notiere den Zustand in Zeile 4."]
   },
   "w5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "waermeuebertragung", seite: 80,
+    sim: "waermeuebertragung", seite: 81,
     kapitel: "Temperatur & Wärme",
     name: "Wie wird Wärme übertragen?",
     titel: "Zu heiß zum Anfassen",
     frage: "Auf welchen Wegen wandert Wärme zu einem kalten Körper?",
-    schritte: ["Wähle Leitung. Beobachte, an welcher Stelle es zuerst warm wird und wohin die Wärme von dort aus wandert.", "Wähle danach Strömung und dann Strahlung. Lies jedes Mal ab, ob die Wärme den kalten Körper auch ohne Berührung erreicht.", "Gegenprobe am Tisch: Stelle einen Metalllöffel und einen Holzlöffel in ein Glas mit warmem Wasser und fühle nach fünf Minuten."]
+    schritte: ["Wähle Leitung. Beobachte, an welcher Stelle es zuerst warm wird. Notiere in Zeile 1 der Tabelle, wohin die Wärme von dort aus wandert.", "Wähle Strömung und notiere in Zeile 2, wohin die Wärme wandert und ob sie den kalten Körper ohne Berührung erreicht. Wiederhole das mit Strahlung für Zeile 3.", "Gegenprobe am Tisch: Stelle einen Metalllöffel und einen Holzlöffel in ein Glas mit warmem Wasser. Fühle nach fünf Minuten und notiere in Zeile 4, welcher Griff warm ist."]
   },
   "sc1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "ton-entsteht", seite: 85,
+    sim: "ton-entsteht", seite: 86,
     kapitel: "Schall & Hören",
     name: "Wie entsteht ein Ton?",
     titel: "Das Brummen aus der Keksdose",
     frage: "Wie entsteht ein Ton?",
-    schritte: ["Wähle Gummiband zupfen. Beobachte das Band ganz genau und höre hin, ob dabei ein Ton entsteht.", "Wähle nun Finger auf das Band legen. Lies ab, ob das Band noch schwingt und ob der Ton weitergeht. Wähle dann noch einmal Gummiband zupfen.", "Gegenprobe am Tisch: Spanne ein Gummiband zwischen deine Finger, zupfe es und stoppe es dann mit dem Daumen."]
+    schritte: ["Wähle Gummiband zupfen. Beobachte das Band ganz genau und höre hin. Notiere in Zeile 1 der Tabelle, ob es schwingt und ob ein Ton klingt.", "Wähle Finger auf das Band legen. Notiere in Zeile 2, ob das Band noch schwingt und ob der Ton weitergeht. Wiederhole das mit Gummiband zupfen für Zeile 3.", "Gegenprobe am Tisch: Spanne ein Gummiband zwischen deine Finger, zupfe es und stoppe es mit dem Daumen. Notiere in Zeile 4, was geschieht."]
   },
   "sc2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "lautstaerke", seite: 88,
+    sim: "lautstaerke", seite: 89,
     kapitel: "Schall & Hören",
     name: "Wovon hängt die Lautstärke ab?",
     titel: "Nicht so laut!",
     frage: "Wovon hängt die Lautstärke ab?",
-    schritte: ["Stelle „So fest wird am Gummiband gezupft“ auf sanft. Beobachte, wie weit das Band ausschlägt, und lies die Lautstärke ab.", "Stelle danach mittel und dann fest ein. Lies jedes Mal ab, wie weit das Band ausschlägt und wie laut der Ton wird.", "Vergleiche zum Schluss sanft und fest. Achte darauf, ob der Ton dabei nur lauter wird oder auch höher klingt."]
+    schritte: ["Stelle „So fest wird am Gummiband gezupft“ auf sanft. Notiere in Zeile 1 der Tabelle, wie weit das Band ausschlägt und wie laut der Ton ist.", "Stelle mittel ein und notiere Ausschlag und Lautstärke in Zeile 2. Wiederhole das mit fest für Zeile 3.", "Vergleiche zum Schluss sanft und fest. Notiere in Zeile 4, ob der Ton dabei nur lauter wird oder auch höher klingt."]
   },
   "sc3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "tonhoehe", seite: 91,
+    sim: "tonhoehe", seite: 92,
     kapitel: "Schall & Hören",
     name: "Wovon hängt die Tonhöhe ab?",
     titel: "Zu hoch, zu tief",
     frage: "Wovon hängt die Tonhöhe ab?",
-    schritte: ["Stelle „Schwingungen pro Sekunde (Frequenz)“ auf 200 Hz ein. Höre den Ton an.", "Stelle danach 300 Hz und 800 Hz ein. Lies jedes Mal ab, ob der Ton höher oder tiefer klingt als vorher.", "Gegenprobe am Tisch: Fülle zwei Gläser verschieden hoch mit Wasser und schlage sie mit einem Löffel an."]
+    schritte: ["Stelle „Schwingungen pro Sekunde (Frequenz)“ auf 200 Hz ein. Höre den Ton an und notiere in Zeile 1 der Tabelle, ob er hoch oder tief klingt.", "Stelle 300 Hz ein und notiere in Zeile 2, ob der Ton höher oder tiefer klingt als vorher. Wiederhole das mit 800 Hz für Zeile 3.", "Gegenprobe am Tisch: Fülle zwei Gläser verschieden hoch mit Wasser und schlage sie mit einem Löffel an. Notiere in Zeile 4, wie das Glas mit viel Wasser klingt."]
   },
   "sc4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "schallausbreitung", seite: 94,
+    sim: "schallausbreitung", seite: 95,
     kapitel: "Schall & Hören",
     name: "Wie breitet sich Schall aus?",
     titel: "Der Nachbar hört alles",
     frage: "Braucht Schall einen Stoff, in dem er sich ausbreiten kann?",
-    schritte: ["Wähle „Luft“ und höre, wie laut der Schall ankommt. Wähle dann „Wasser“ und vergleiche beides.", "Wähle „Balken (Holz)“. Lies ab, ob der Schall dort lauter oder leiser ankommt als durch Luft.", "Wähle zum Schluss „Vakuum (Weltall)“. Beobachte, ob überhaupt noch etwas bei dir ankommt."]
+    schritte: ["Wähle „Luft“ und notiere in Zeile 1 der Tabelle, wie laut der Schall ankommt. Wiederhole das mit „Wasser“ für Zeile 2 und vergleiche beides.", "Wähle „Balken (Holz)“. Notiere in Zeile 3, ob der Schall dort lauter oder leiser ankommt als durch Luft.", "Wähle zum Schluss „Vakuum (Weltall)“. Notiere in Zeile 4, ob überhaupt noch etwas bei dir ankommt."]
   },
   "sc5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "ohr", seite: 97,
+    sim: "ohr", seite: 98,
     kapitel: "Schall & Hören",
     name: "Wie funktioniert das Ohr?",
     titel: "Das Pfeifen im Ohr",
     frage: "Was geschieht im Ohr, wenn es laut wird?",
-    schritte: ["Stelle „So laut wird der Topf angeschlagen“ auf leise. Beobachte, wie weit das Trommelfell ausschlägt.", "Stelle danach mittel und laut ein. Lies jedes Mal ab, ob das Trommelfell schwächer oder stärker schwingt.", "Gegenprobe am Tisch: Schlage einen Topf mit dem Löffel erst leise, dann kräftig an und fühle den Rand."]
+    schritte: ["Stelle „So laut wird der Topf angeschlagen“ auf leise. Notiere in Zeile 1 der Tabelle, wie weit das Trommelfell ausschlägt.", "Stelle mittel ein und notiere in Zeile 2, ob das Trommelfell schwächer oder stärker schwingt. Wiederhole das mit laut für Zeile 3.", "Gegenprobe am Tisch: Schlage einen Topf mit dem Löffel erst leise, dann kräftig an und fühle den Rand. Notiere in Zeile 4, was du beim kräftigen Anschlagen fühlst."]
   },
   "h1": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "tag-nacht", seite: 102,
+    sim: "tag-nacht", seite: 103,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entstehen Tag und Nacht?",
     titel: "Tag hier, Nacht dort",
     frage: "Wie entstehen Tag und Nacht?",
-    schritte: ["Halte mit Pause an und stelle Drehung auf 0 Grad ein. Sieh nach, wie viel von der Erde beleuchtet ist und wie viel im Schatten liegt.", "Stelle danach 90, 180 und 270 Grad ein. Lies jedes Mal ab, ob dein Ort im Licht liegt oder im Schatten.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe auf einen Globus. Drehe ihn langsam und suche die Grenze zwischen Tag und Nacht."]
+    schritte: ["Halte mit Pause an und stelle Drehung auf 0 Grad ein. Sieh nach, wie viel von der Erde beleuchtet ist und wie viel im Schatten liegt. Notiere in Zeile 1 der Tabelle, ob dein Ort Tag oder Nacht hat.", "Stelle 90 Grad ein und notiere in Zeile 2, ob dein Ort im Licht oder im Schatten liegt. Wiederhole das mit 180 Grad für Zeile 3 und mit 270 Grad für Zeile 4.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe auf einen Globus. Drehe ihn langsam und suche die Grenze zwischen Tag und Nacht."]
   },
   "h2": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "jahreszeiten", seite: 105,
+    sim: "jahreszeiten", seite: 106,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entstehen die Jahreszeiten?",
     titel: "Vom Schnee zum Sonnenbrand",
     frage: "Warum ist es im Sommer wärmer als im Winter?",
-    schritte: ["Wähle Sommer und sieh nach, welche Erdhalbkugel zur Sonne geneigt ist. Achte darauf, wie steil das Licht bei uns auftrifft.", "Wähle danach Herbst, Winter und Frühling. Vergleiche jedes Mal, wie steil oder wie flach das Licht bei uns ankommt.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe steil und dann flach auf ein Blatt Papier. Vergleiche die Lichtflecke."]
+    schritte: ["Wähle Sommer und sieh nach, welche Erdhalbkugel zur Sonne geneigt ist. Notiere in Zeile 1 der Tabelle, wie steil das Licht bei uns auftrifft.", "Wähle Herbst und notiere in Zeile 2, ob das Licht steil oder flach ankommt. Wiederhole das mit Winter für Zeile 3 und mit Frühling für Zeile 4.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe steil und dann flach auf ein Blatt Papier. Vergleiche die Lichtflecke."]
   },
   "h3": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "mondphasen", seite: 108,
+    sim: "mondphasen", seite: 109,
     kapitel: "Sonne, Erde & Mond",
     name: "Warum verändert der Mond sein Aussehen?",
     titel: "Jeden Abend ein anderer Mond",
     frage: "Warum verändert der Mond sein Aussehen?",
-    schritte: ["Wähle Mond zwischen Sonne und Erde. Sieh nach, wie viel von der beleuchteten Hälfte des Mondes du von der Erde aus siehst.", "Wähle danach Mond seitlich – zunehmend, dann Mond der Sonne gegenüber, dann Mond seitlich – abnehmend. Lies jedes Mal die Mondphase ab.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe auf einen Ball und bewege ihn langsam um deinen Kopf herum."]
+    schritte: ["Wähle Mond zwischen Sonne und Erde. Sieh nach, wie viel von der beleuchteten Hälfte du von der Erde aus siehst. Notiere die Mondphase in Zeile 1 der Tabelle.", "Wähle Mond seitlich – zunehmend und notiere die Mondphase in Zeile 2. Wiederhole das mit Mond der Sonne gegenüber für Zeile 3 und mit Mond seitlich – abnehmend für Zeile 4.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe auf einen Ball und bewege ihn langsam um deinen Kopf herum."]
   },
   "h4": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "sonnenfinsternis", seite: 111,
+    sim: "sonnenfinsternis", seite: 112,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entsteht eine Sonnenfinsternis?",
     titel: "Nacht am Mittag",
     frage: "Wie entsteht eine Sonnenfinsternis?",
-    schritte: ["Stelle Mondstellung auf 40. Schau nach, ob der Schatten des Mondes die Erde trifft.", "Stelle den Regler dann auf 20 und auf 12. Nutze zuletzt den Knopf „Ball genau in die Linie stellen“ und lies jedes Mal ab, welcher Schatten die Erde trifft.", "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit einer Taschenlampe auf einen Globus. Halte einen kleinen Ball genau dazwischen."]
+    schritte: ["Stelle Mondstellung auf 40. Notiere in Zeile 1 der Tabelle, ob der Schatten des Mondes die Erde trifft.", "Stelle den Regler auf 20 und notiere in Zeile 2, welcher Schatten die Erde trifft. Wiederhole das mit 12 für Zeile 3. Drücke zuletzt „Ball genau in die Linie stellen“ und notiere das Ergebnis in Zeile 4.", "Gegenprobe am Tisch: Leuchte im dunklen Zimmer mit einer Taschenlampe auf einen Globus. Halte einen kleinen Ball genau dazwischen."]
   },
   "h5": {
     klasse: 5, schulform: "Realschule NRW",
-    sim: "mondfinsternis", seite: 114,
+    sim: "mondfinsternis", seite: 115,
     kapitel: "Sonne, Erde & Mond",
     name: "Wie entsteht eine Mondfinsternis?",
     titel: "Der Mond wird rot",
     frage: "Wie entsteht eine Mondfinsternis?",
-    schritte: ["Stelle Mondbahn neben der Schattenmitte auf 40. Schau dir an, wie hell der Mond dort ist.", "Stelle den Regler dann auf 20 und auf 12. Lies jedes Mal ab, wie viel vom Mond noch hell ist.", "Nutze zuletzt den Knopf „Ball genau hinter den Globus stellen“. Beobachte in Ruhe, welche Farbe der Mond nun hat."]
+    schritte: ["Stelle Mondbahn neben der Schattenmitte auf 40. Notiere in Zeile 1 der Tabelle, wie hell der Mond dort ist.", "Stelle den Regler auf 20 und notiere in Zeile 2, wie viel vom Mond noch hell ist. Wiederhole das mit 12 für Zeile 3.", "Drücke zuletzt den Knopf „Ball genau hinter den Globus stellen“. Beobachte in Ruhe, welche Farbe der Mond nun hat, und notiere sie in Zeile 4."]
   },
   "o1": {
     klasse: 7, schulform: "Realschule NRW",
@@ -315,7 +315,7 @@ const HEFT_SEITEN = {
     name: "Wie macht ein kleines Loch ein Bild? (Lochkamera)",
     titel: "Ein Stich in den Karton",
     frage: "Wie verändern sich Schärfe und Helligkeit des Bildes, wenn das Loch größer wird?",
-    schritte: ["Stelle die Gegenstandsweite g auf 40 cm, die Bildweite b (Kameralänge) auf 30 cm und die Lochgröße auf klein. Beschreibe, wie das Bild auf dem Schirm steht.", "Stelle die Lochgröße nacheinander auf mittel und auf groß, ohne g und b zu verändern. Achte jedes Mal auf Schärfe und Helligkeit des Bildes.", "Stelle die Lochgröße wieder auf klein und vergrößere die Bildweite b (Kameralänge) von 30 cm auf 55 cm. Vergleiche das Bild mit deiner ersten Einstellung."]
+    schritte: ["Stelle die Gegenstandsweite g auf 40 cm, die Bildweite b (Kameralänge) auf 30 cm und die Lochgröße auf klein. Notiere in Zeile 1 der Tabelle, wie das Bild auf dem Schirm steht und wie scharf und hell es ist.", "Stelle die Lochgröße auf mittel, ohne g und b zu verändern. Notiere Schärfe und Helligkeit des Bildes in Zeile 2 der Tabelle. Wiederhole das mit groß für Zeile 3.", "Stelle die Lochgröße wieder auf klein und vergrößere die Bildweite b (Kameralänge) von 30 cm auf 55 cm. Vergleiche das Bild mit Zeile 1 und notiere seine Größe und Schärfe in Zeile 4."]
   },
   "o2": {
     klasse: 7, schulform: "Realschule NRW",
@@ -324,7 +324,7 @@ const HEFT_SEITEN = {
     name: "Wie bündelt eine Sammellinse das Licht?",
     titel: "Der kleinste helle Fleck",
     frage: "Wovon hängt es ab, wie weit hinter der Linse das Licht gebündelt wird?",
-    schritte: ["Wähle „in der Mitte dicker“ und stelle „Wölbung des Glases – Brennweite f“ auf 90 ein. Lies ab, in welchem Abstand hinter der Linsenmitte sich alle Strahlen im Brennpunkt treffen.", "Stelle f nacheinander auf 60 und auf 150. Achte darauf, wie stark die Linse jeweils gewölbt ist und wie weit der Brennpunkt von der Linse entfernt liegt.", "Gegenprobe: Wähle bei f 90 den Knopf „in der Mitte dünner“ und beobachte, ob sich die Strahlen hinter der Linse noch in einem Punkt treffen."]
+    schritte: ["Wähle „in der Mitte dicker“ und stelle „Wölbung des Glases – Brennweite f“ auf 90 ein. Notiere in Zeile 1 der Tabelle, wie weit hinter der Linsenmitte sich alle Strahlen im Brennpunkt treffen.", "Stelle f auf 60 und notiere den Abstand in Zeile 2. Wiederhole das mit 150 für Zeile 3. Achte auch darauf, wie stark die Linse gewölbt ist.", "Gegenprobe: Wähle bei f 90 den Knopf „in der Mitte dünner“. Notiere in Zeile 4, ob sich die Strahlen hinter der Linse noch in einem Punkt treffen."]
   },
   "o8": {
     klasse: 7, schulform: "Realschule NRW",
@@ -333,7 +333,7 @@ const HEFT_SEITEN = {
     name: "Sammellinse und Zerstreuungslinse im Vergleich",
     titel: "Das Glas, das nichts bündelt",
     frage: "Was macht eine Sammellinse, was ein in der Mitte dünneres Glas mit dem Licht?",
-    schritte: ["Wähle „in der Mitte dicker“ und stelle Wölbung des Glases – Brennweite f auf 90. Verfolge, wo sich die Strahlen hinter der Linse treffen.", "Wähle bei derselben Brennweite f von 90 „in der Mitte dünner“. Suche hinter der Linse wieder einen Brennpunkt.", "Gegenprobe am Tisch: Lege eine Lupe und ein Brillenglas für Kurzsichtige auf eine Zeile Schrift und hebe beide langsam an."]
+    schritte: ["Wähle „in der Mitte dicker“ und stelle Wölbung des Glases – Brennweite f auf 90. Notiere in Zeile 1 der Tabelle, wo sich die Strahlen treffen.", "Wähle bei derselben Brennweite f von 90 „in der Mitte dünner“. Suche hinter der Linse wieder einen Brennpunkt und notiere in Zeile 2, was du findest.", "Gegenprobe am Tisch: Lege eine Lupe und ein Brillenglas für Kurzsichtige auf eine Zeile Schrift und hebe beide langsam an. Notiere die Schriftgröße für die Lupe in Zeile 3, für das Brillenglas in Zeile 4."]
   },
   "o3": {
     klasse: 7, schulform: "Realschule NRW",
@@ -342,7 +342,7 @@ const HEFT_SEITEN = {
     name: "Wann entsteht ein vergrößertes oder verkleinertes Bild?",
     titel: "Mal riesig, mal winzig",
     frage: "Wann entsteht ein vergrößertes, wann ein verkleinertes Bild?",
-    schritte: ["Stelle die Gegenstandsweite g auf 170. Vergleiche die Höhe des Bildes mit der Höhe des Gegenstands und beachte, ob das Bild aufrecht oder umgekehrt ist.", "Stelle g nacheinander auf 124, also auf 2f, und danach auf 91. Beobachte jedes Mal die Bildgröße und die Bildweite (den Abstand des Bildes zur Linse).", "Stelle g auf den kleinsten einstellbaren Wert, der kleiner als f = 62 ist. Prüfe, ob sich die Strahlen hinter der Linse noch treffen."]
+    schritte: ["Stelle die Gegenstandsweite g auf 170. Vergleiche die Höhe des Bildes mit der Höhe des Gegenstands und beachte, ob das Bild aufrecht oder umgekehrt ist. Notiere Bildgröße und Bildweite in Zeile 1 der Tabelle.", "Stelle g auf 124, also auf 2f. Notiere Bildgröße und Bildweite (den Abstand des Bildes zur Linse) in Zeile 2. Wiederhole das mit 91 für Zeile 3.", "Stelle g auf den kleinsten einstellbaren Wert, der kleiner als f = 62 ist. Prüfe, ob sich die Strahlen hinter der Linse noch treffen, und notiere das in Zeile 4 der Tabelle."]
   },
   "o4": {
     klasse: 7, schulform: "Realschule NRW",
@@ -351,7 +351,7 @@ const HEFT_SEITEN = {
     name: "Wie funktioniert eine Lupe?",
     titel: "Wenn das Bild kippt",
     frage: "Warum vergrößert eine Lupe erst, wenn sie nah genug am Gegenstand steht?",
-    schritte: ["Stelle den Regler „Abstand Gegenstand–Lupe g“ auf 10 ein und lies die angegebene Vergrößerung ab. Stelle danach 30 ein und lies erneut ab.", "Stelle g auf 54 und danach auf 58 und 80 ein. Notiere, ab welchem Wert die Simulation kein aufrechtes Lupenbild mehr zeigt.", "Gegenprobe am Tisch: Lege eine Lupe flach auf eine Schrift und hebe sie langsam an, bis das Bild verschwimmt und umgekehrt erscheint."]
+    schritte: ["Stelle den Regler „Abstand Gegenstand–Lupe g“ auf 10 ein. Notiere die angegebene Vergrößerung und die Lage des Bildes in Zeile 1 der Tabelle. Wiederhole das mit 30 für Zeile 2.", "Stelle g auf 54 und notiere Vergrößerung und Lage in Zeile 3. Stelle danach 58 ein und notiere in Zeile 4, ob die Simulation noch ein aufrechtes Lupenbild zeigt. Prüfe das auch bei 80 und notiere es ebenfalls in Zeile 4.", "Gegenprobe am Tisch: Lege eine Lupe flach auf eine Schrift und hebe sie langsam an, bis das Bild verschwimmt und umgekehrt erscheint."]
   },
   "o5": {
     klasse: 7, schulform: "Realschule NRW",
@@ -360,7 +360,7 @@ const HEFT_SEITEN = {
     name: "Wie funktioniert eine Kamera?",
     titel: "Das Papier muss wandern",
     frage: "Was muss man an einer Kamera einstellen, damit das Bild scharf wird?",
-    schritte: ["Stelle „Abstand Linse–Sensor (Bildweite)“ auf 90 und „Blende (Öffnung)“ auf mittel ein und lies die Meldung ab. Verkleinere den Wert in Zweierschritten und notiere, zwischen welchen Werten das Bild scharf ist.", "Stelle die Bildweite auf 66 und „Blende (Öffnung)“ nacheinander auf mittel, klein (dunkel) und groß (hell). Stelle danach die Bildweite auf 110, die Blende bleibt groß (hell).", "Gegenprobe am Tisch: Fange mit einer Lupe das Bild des Fensters auf einem weißen Blatt auf und verschiebe das Blatt, bis das Bild scharf ist."]
+    schritte: ["Stelle „Abstand Linse–Sensor (Bildweite)“ auf 90 und „Blende (Öffnung)“ auf mittel ein. Notiere die Meldung in Zeile 1 der Tabelle. Verkleinere den Wert in Zweierschritten und achte darauf, zwischen welchen Werten das Bild scharf ist.", "Stelle die Bildweite auf 66 und notiere die Meldung in Zeile 2. Stelle „Blende (Öffnung)“ auf klein (dunkel) und notiere die Meldung in Zeile 3. Stelle danach groß (hell) ein und notiere auch diese Meldung in Zeile 3.", "Gegenprobe: Stelle die Bildweite auf 110, die Blende bleibt groß (hell). Notiere die Meldung in Zeile 4. Fange danach am Tisch mit einer Lupe das Bild des Fensters auf einem weißen Blatt auf und verschiebe das Blatt, bis das Bild scharf ist."]
   },
   "o6": {
     klasse: 7, schulform: "Realschule NRW",
@@ -369,7 +369,7 @@ const HEFT_SEITEN = {
     name: "Wie funktioniert das Auge?",
     titel: "Der Turm auf dem Papier",
     frage: "Wie ändert sich das Bild auf der Netzhaut, wenn der Gegenstand näher kommt?",
-    schritte: ["Stelle „Abstand des Gegenstands“ auf weit und „Pupille (Helligkeit)“ auf mittel. Vergleiche, wohin die Spitze des Gegenstands zeigt und wohin die Spitze des Bildes auf der Netzhaut zeigt.", "Stelle „Abstand des Gegenstands“ nacheinander auf mittel und auf nah. Lies jedes Mal ab, wie groß das Bild auf der Netzhaut ist und wohin seine Spitze zeigt.", "Gegenprobe am Tisch: Halte eine Lupe etwa eine Handbreit vor ein weißes Blatt und suche darauf das Bild des Fensters. Prüfe, wohin der Fensterrahmen auf dem Blatt zeigt."]
+    schritte: ["Stelle „Abstand des Gegenstands“ auf weit und „Pupille (Helligkeit)“ auf mittel. Vergleiche, wohin die Spitze des Gegenstands zeigt und wohin die Spitze des Bildes auf der Netzhaut zeigt. Notiere Richtung und Größe des Bildes in Zeile 1 der Tabelle.", "Stelle „Abstand des Gegenstands“ auf mittel. Notiere in Zeile 2, wie groß das Bild auf der Netzhaut ist und wohin seine Spitze zeigt. Wiederhole das mit nah für Zeile 3.", "Gegenprobe am Tisch: Halte eine Lupe etwa eine Handbreit vor ein weißes Blatt und suche darauf das Bild des Fensters. Notiere in Zeile 4 der Tabelle, wohin der Fensterrahmen auf dem Blatt zeigt."]
   },
   "o7": {
     klasse: 7, schulform: "Realschule NRW",
@@ -378,7 +378,7 @@ const HEFT_SEITEN = {
     name: "Wie korrigiert eine Brille Sehfehler?",
     titel: "Das Bild landet daneben",
     frage: "Wohin schiebt eine Brille den Brennpunkt?",
-    schritte: ["Wähle kurzsichtig und beobachte, wo sich die Strahlen treffen: vor der Netzhaut, genau auf ihr oder dahinter. Schalte dann Brille dazu und beobachte den Brennpunkt erneut.", "Wähle weitsichtig und beobachte den Brennpunkt ohne und mit Brille. Notiere jedes Mal, wo die Strahlen zusammenlaufen und wie scharf das Bild ist.", "Gegenprobe am Tisch: Lege zwei Brillengläser auf eine Zeitungsseite. Das Glas, das die Schrift vergrößert, ist in der Mitte dicker, das andere in der Mitte dünner."]
+    schritte: ["Wähle kurzsichtig. Notiere in Zeile 1 der Tabelle, wo sich die Strahlen treffen: vor der Netzhaut, genau auf ihr oder dahinter. Schalte dann Brille dazu und notiere in Zeile 2, wo der Brennpunkt jetzt liegt.", "Schalte Brille wieder aus und wähle weitsichtig. Notiere in Zeile 3, wo die Strahlen zusammenlaufen und wie scharf das Bild ist. Schalte Brille dazu und notiere beides in Zeile 4.", "Gegenprobe am Tisch: Lege zwei Brillengläser auf eine Zeitungsseite. Das Glas, das die Schrift vergrößert, ist in der Mitte dicker, das andere in der Mitte dünner."]
   },
   "f8": {
     klasse: 7, schulform: "Realschule NRW",
@@ -387,7 +387,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn Licht auf eine Oberfläche trifft?",
     titel: "Zwei Bilder in einer Scheibe",
     frage: "Was geschieht mit dem Licht, wenn es auf verschiedene Oberflächen trifft?",
-    schritte: ["Stelle den Winkel zum Lot auf 45° und wähle Spiegel. Lies ab, welche Anteile des Lichts reflektiert, durchgelassen und absorbiert werden.", "Wähle bei genau diesem Winkel nacheinander Fensterglas, schwarzes Papier und weißes Papier. Lies jedes Mal alle drei Anteile ab.", "Gegenprobe am Tisch: Leuchte mit der Taschenlampe schräg auf einen Spiegel und auf schwarzes Papier und fange das reflektierte Licht auf einem weißen Blatt auf."]
+    schritte: ["Stelle den Winkel zum Lot auf 45° und wähle Spiegel. Lies ab, welche Anteile des Lichts reflektiert, durchgelassen und absorbiert werden. Notiere alle drei Anteile in Zeile 1 der Tabelle.", "Wähle bei genau diesem Winkel Fensterglas und notiere die drei Anteile in Zeile 2. Wähle danach schwarzes Papier für Zeile 3 und zuletzt weißes Papier für Zeile 4.", "Gegenprobe am Tisch: Leuchte mit der Taschenlampe schräg auf einen Spiegel und auf schwarzes Papier und fange das reflektierte Licht auf einem weißen Blatt auf."]
   },
   "f9": {
     klasse: 7, schulform: "Realschule NRW",
@@ -396,7 +396,7 @@ const HEFT_SEITEN = {
     name: "Nach welcher Regel wird Licht an einem Spiegel zurückgeworfen?",
     titel: "Der Punkt an der Wand",
     frage: "Nach welcher Regel wird Licht an einem Spiegel reflektiert?",
-    schritte: ["Lass Spiegel drehen auf 0° und stelle den Einfallswinkel zum Lot nacheinander auf 20° und 65° ein. Lies jedes Mal den Reflexionswinkel ab.", "Stelle den Einfallswinkel zum Lot auf 40° und Spiegel drehen auf 10°. Lies den Reflexionswinkel ab und beobachte, wie weit der Strahl im Raum schwenkt.", "Wähle Spiegel zurückstellen und danach Strahl auf das Lot. Halte fest, wohin der reflektierte Strahl läuft."]
+    schritte: ["Lass Spiegel drehen auf 0° und stelle den Einfallswinkel zum Lot auf 20°. Notiere den Reflexionswinkel in Zeile 1 der Tabelle. Wiederhole das mit 65° für Zeile 2.", "Stelle den Einfallswinkel zum Lot auf 40° und Spiegel drehen auf 10°. Notiere den Reflexionswinkel in Zeile 3. Beobachte, wie weit der Strahl im Raum schwenkt.", "Wähle Spiegel zurückstellen und danach Strahl auf das Lot. Notiere in Zeile 4, wohin der reflektierte Strahl läuft."]
   },
   "f1": {
     klasse: 7, schulform: "Realschule NRW",
@@ -405,7 +405,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht ein Spiegelbild?",
     titel: "Hinter dem Glas steht niemand",
     frage: "Wie weit hinter dem Spiegel liegt das Spiegelbild?",
-    schritte: ["Stelle den Regler Abstand Gegenstand–Spiegel g auf 60 ein und lies ab, wie weit das Bild hinter dem Spiegel liegt. Das ist dein Ausgangswert.", "Stelle nacheinander 110 und 160 ein und lies jedes Mal beide Abstände ab. Achte darauf, ob sich das Bild dabei vom Spiegel wegbewegt.", "Gegenprobe am Tisch: Stelle einen Spiegel senkrecht auf und lege eine Münze 5 cm davor. Prüfe, ob ihr Bild ebenso weit hinter dem Spiegel zu liegen scheint."]
+    schritte: ["Stelle den Regler Abstand Gegenstand–Spiegel g auf 60 ein und lies ab, wie weit das Bild hinter dem Spiegel liegt. Notiere diesen Ausgangswert in Zeile 1 der Tabelle.", "Stelle 110 ein und notiere den Abstand des Bildes in Zeile 2. Wiederhole das mit 160 für Zeile 3. Achte darauf, ob sich das Bild dabei vom Spiegel wegbewegt.", "Gegenprobe am Tisch: Stelle einen Spiegel senkrecht auf und lege eine Münze 5 cm davor. Notiere in Zeile 4 der Tabelle, ob ihr Bild ebenso weit hinter dem Spiegel zu liegen scheint."]
   },
   "f10": {
     klasse: 7, schulform: "Realschule NRW",
@@ -414,7 +414,7 @@ const HEFT_SEITEN = {
     name: "Wo ändert das Licht beim Übergang von Luft in Glas seine Richtung?",
     titel: "Der Knick am Rand",
     frage: "An welcher Stelle ändert ein Lichtstrahl beim Übergang von Luft in Glas seine Richtung?",
-    schritte: ["Stelle den Regler Winkel in der Luft (Einfallswinkel) auf 20° ein und lies den Winkel im Glas (Brechungswinkel) ab. Achte darauf, an welcher Stelle der Strahl seine Richtung ändert.", "Stelle nacheinander 40° und 60° ein und lies jedes Mal den Brechungswinkel ab. Vergleiche ihn mit dem eingestellten Einfallswinkel.", "Schalte ungebrochene Richtung ein und vergleiche sie mit dem wirklichen Strahl im Glas. Wähle danach genau auf das Lot und prüfe, ob der Strahl noch seine Richtung ändert."]
+    schritte: ["Stelle den Regler Winkel in der Luft (Einfallswinkel) auf 20° ein. Notiere den Winkel im Glas (Brechungswinkel) in Zeile 1 der Tabelle. Achte darauf, wo der Strahl seine Richtung ändert.", "Stelle 40° ein und notiere den Brechungswinkel in Zeile 2. Wiederhole das mit 60° für Zeile 3. Vergleiche jeden Wert mit dem Einfallswinkel.", "Schalte ungebrochene Richtung ein und vergleiche sie mit dem wirklichen Strahl im Glas. Wähle danach genau auf das Lot und notiere in Zeile 4, ob der Strahl noch seine Richtung ändert."]
   },
   "f2": {
     klasse: 7, schulform: "Realschule NRW",
@@ -423,214 +423,214 @@ const HEFT_SEITEN = {
     name: "Warum erscheint ein Gegenstand im Wasser verschoben?",
     titel: "Die Münze kommt zurück",
     frage: "Warum erscheint ein Gegenstand im Wasser höher, als er wirklich liegt?",
-    schritte: ["Stelle Tiefe des Gegenstands auf 40 ein. Vergleiche, wo der Gegenstand wirklich liegt und in welcher scheinbaren Tiefe dein Auge ihn sieht.", "Stelle nacheinander 60 und 90 ein. Lies jedes Mal die scheinbare Tiefe ab und berechne, wie weit der scheinbare Ort über dem Gegenstand liegt.", "Gegenprobe am Tisch: Lege eine Münze in ein Glas Wasser und schaue schräg von oben hinein. Prüfe, ob sie höher zu liegen scheint als der Glasboden."]
+    schritte: ["Stelle Tiefe des Gegenstands auf 40 cm ein. Vergleiche, wo er wirklich liegt und wo dein Auge ihn sieht. Notiere die scheinbare Tiefe in Zeile 1 der Tabelle.", "Stelle 60 cm ein und notiere die scheinbare Tiefe in Zeile 2. Wiederhole das mit 90 cm für Zeile 3. Berechne in Zeile 1 bis 3 den Unterschied.", "Gegenprobe am Tisch: Lege eine Münze in ein Glas Wasser und schaue schräg von oben hinein. Notiere in Zeile 4, ob sie höher zu liegen scheint als der Glasboden."]
   },
   "f3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechungswinkel", seite: 55,
+    sim: "brechungswinkel", seite: 56,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wovon hängt die Stärke der Brechung ab?",
     titel: "Immer zehn Grad weiter",
     frage: "Wovon hängt es ab, wie stark ein Lichtstrahl gebrochen wird?",
-    schritte: ["Wähle Glas und stelle den Einfallswinkel θ auf 20 Grad ein. Lies den Brechungswinkel ab und vergleiche ihn mit dem Einfallswinkel.", "Stelle den Einfallswinkel θ nacheinander auf 40 Grad und auf 60 Grad ein. Lies jedes Mal den Brechungswinkel ab und prüfe, ob er sich beim Verdoppeln mitverdoppelt.", "Wähle bei 60 Grad Wasser statt Glas und lies den Brechungswinkel noch einmal ab. Vergleiche ihn mit dem Wert, den Glas bei 60 Grad ergeben hat."]
+    schritte: ["Wähle Glas und stelle den Einfallswinkel θ auf 20 Grad ein. Notiere den Brechungswinkel φ in Zeile 1 der Tabelle und vergleiche ihn mit dem Einfallswinkel.", "Stelle θ auf 40 Grad und notiere φ in Zeile 2. Wiederhole das mit 60 Grad für Zeile 3. Prüfe, ob sich φ beim Verdoppeln von θ mitverdoppelt.", "Wähle bei 60 Grad Wasser statt Glas. Notiere den Brechungswinkel φ in Zeile 4 der Tabelle und vergleiche ihn mit dem Wert für Glas in Zeile 3."]
   },
   "f11": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "brechung-austritt", seite: 59,
+    sim: "brechung-austritt", seite: 60,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Was geschieht beim Übergang von Glas in Luft?",
     titel: "Zurück ins Freie",
     frage: "Ab welchem Winkel tritt aus dem Glas kein Licht mehr in die Luft aus?",
-    schritte: ["Stelle den Einfallswinkel am Regler „Winkel im Glas“ auf 10 Grad ein und lies den Brechungswinkel in der Luft ab. Wiederhole das mit 25 Grad und mit 40 Grad.", "Stelle den Winkel im Glas auf 41 Grad ein und beobachte, wie der austretende Strahl jetzt liegt und wie hell er noch ist. Wähle dann „42° – Grenzwinkel“.", "Wähle „55° – Totalreflexion“ und prüfe, ob vorn noch Licht austritt oder ob alles an der geraden Fläche reflektiert wird."]
+    schritte: ["Stelle am Regler „Winkel im Glas“ 10 Grad ein. Notiere den Brechungswinkel in der Luft in Zeile 1 der Tabelle. Wiederhole das mit 25 Grad für Zeile 2 und mit 40 Grad für Zeile 3.", "Stelle den Winkel im Glas auf 41 Grad und beobachte, wie der austretende Strahl liegt und wie hell er noch ist. Wähle dann „42° – Grenzwinkel“.", "Wähle „55° – Totalreflexion“. Notiere in Zeile 4, ob vorn noch Licht austritt oder ob alles an der geraden Fläche reflektiert wird."]
   },
   "f4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "totalreflexion", seite: 62,
+    sim: "totalreflexion", seite: 63,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie funktioniert ein Lichtleiter?",
     titel: "Das Licht macht die Kurve",
     frage: "Warum läuft Licht in einem dünnen Faden um die Kurve, statt seitlich auszutreten?",
-    schritte: ["Stelle den Einfallswinkel an der Wand θ auf 30 Grad ein und beobachte, ob Licht durch die Wand nach außen tritt.", "Vergrößere θ erst auf 40 Grad, dann auf 42 Grad und halte fest, bei welchem Wert zum ersten Mal nichts mehr nach außen dringt.", "Stelle θ auf 60 Grad ein und verfolge, wie der Strahl im Inneren weiterläuft und wie oft er an den Wänden reflektiert wird."]
+    schritte: ["Stelle den Einfallswinkel an der Wand θ auf 30 Grad ein. Notiere in Zeile 1 der Tabelle, ob Licht durch die Wand nach außen tritt.", "Vergrößere θ auf 40 Grad und notiere in Zeile 2, ob noch Licht nach außen tritt. Wiederhole das mit 42 Grad für Zeile 3.", "Stelle θ auf 60 Grad ein und verfolge, wie der Strahl im Inneren weiterläuft. Notiere in Zeile 4 der Tabelle, wie oft er an den Wänden reflektiert wird."]
   },
   "f5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "prisma", seite: 66,
+    sim: "prisma", seite: 67,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Welche Farben stecken im weißen Licht?",
     titel: "Der Streifen auf dem Bauplan",
     frage: "Welche Farben stecken im weißen Licht?",
-    schritte: ["Stelle „weißes Licht“ ein und beobachte, was hinter dem Prisma zu sehen ist. Notiere die Farben in ihrer Reihenfolge.", "Wähle „nur Rot“ und merke dir, wohin dieser Strahl läuft. Wähle danach „nur Blau“ und vergleiche, welcher der beiden Strahlen stärker abgelenkt wird.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe durch ein Prisma aus der Schulsammlung und fange das Licht dahinter auf weißem Papier auf."]
+    schritte: ["Stelle „weißes Licht“ ein und beobachte, was hinter dem Prisma zu sehen ist. Notiere die Farben in ihrer Reihenfolge in Zeile 1 der Tabelle.", "Wähle „nur Rot“ und notiere in Zeile 2, wohin dieser Strahl läuft. Wähle danach „nur Blau“ und notiere in Zeile 3, ob er stärker oder schwächer abgelenkt wird als Rot.", "Gegenprobe am Tisch: Leuchte mit einer Taschenlampe durch ein Prisma aus der Schulsammlung und fange das Licht dahinter auf weißem Papier auf. Notiere deine Beobachtung in Zeile 4 der Tabelle."]
   },
   "f6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "regenbogen", seite: 69,
+    sim: "regenbogen", seite: 71,
     kapitel: "Spiegel, Brechung & Farben",
     name: "Wie entstehen die Farben eines Regenbogens?",
     titel: "Der Bogen über dem Feld",
     frage: "Warum ist ein Regenbogen nur mit der Sonne im Rücken zu sehen?",
-    schritte: ["Wähle „ein Tropfen“ und verfolge den Weg des Lichts: Eintritt vorn, Reflexion an der Rückseite, Austritt. Halte fest, auf welcher Seite das Licht den Tropfen verlässt.", "Bleibe bei „ein Tropfen“ und vergleiche, in welche Richtung Rot und Violett austreten. Notiere, welche Farbe den größeren Winkel zur einfallenden Richtung hat.", "Stelle „der ganze Bogen“ ein und beobachte, aus welchen Tropfen Rot und Violett ins Auge kommen. Achte darauf, wo der Bogen zur Sonne liegt."]
+    schritte: ["Wähle „ein Tropfen“ und verfolge den Weg des Lichts: Eintritt vorn, Reflexion an der Rückseite, Austritt. Notiere den Weg im Tropfen in Zeile 1 der Tabelle. Notiere in Zeile 2, was an der Rückseite geschieht und auf welcher Seite das Licht den Tropfen verlässt.", "Bleibe bei „ein Tropfen“ und vergleiche, in welche Richtung Rot und Violett austreten. Notiere in Zeile 3, welche Farbe den größeren Winkel zur einfallenden Richtung hat.", "Stelle „der ganze Bogen“ ein und beobachte, aus welchen Tropfen Rot und Violett ins Auge kommen. Notiere in Zeile 4, wo Rot und Violett im Bogen liegen und wo der Bogen zur Sonne liegt."]
   },
   "g1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "himmelskoerper", seite: 74,
+    sim: "himmelskoerper", seite: 77,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Sonne, Mond und Sterne – was leuchtet am Himmel?",
     titel: "Einer funkelt, einer nicht",
     frage: "Welche Himmelskörper leuchten selbst, welche werden nur beleuchtet?",
-    schritte: ["Wähle nacheinander Sonne, Stern, Mond und Planet. Halte fest, welcher Punkt ruhig und rund steht und welcher zittert.", "Wähle bei jedem der vier Sonnenlicht abdecken und lies ab, ob er weiter leuchtet oder verschwindet.", "Gegenprobe am Tisch: Richte im dunklen Raum eine Taschenlampe auf eine Styroporkugel und decke die Lampe dann ab."]
+    schritte: ["Wähle nacheinander Sonne, Stern, Mond und Planet. Achte darauf, welcher Punkt ruhig und rund steht und welcher zittert.", "Drücke Sonnenlicht abdecken und wähle Sonne. Notiere in Zeile 1 der Tabelle, ob sie weiter leuchtet oder verschwindet. Wähle danach Stern für Zeile 2, Mond für Zeile 3 und Planet für Zeile 4.", "Gegenprobe am Tisch: Richte im dunklen Raum eine Taschenlampe auf eine Styroporkugel und decke die Lampe dann ab."]
   },
   "g2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "tag-nacht", seite: 78,
+    sim: "tag-nacht", seite: 81,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie entstehen Tag und Nacht?",
     titel: "Dieselbe Minute, vier Uhrzeiten",
     frage: "Warum ist es in Japan Nacht, während bei uns die Sonne scheint?",
-    schritte: ["Halte mit Pause an und stelle Drehung auf 0°. Notiere, wie groß der beleuchtete Teil ist und ob in Deutschland und Japan Tag oder Nacht ist.", "Drehe auf 90°, 180° und 270° weiter und lies jedes Mal beide Orte ab. Achte darauf, ob der beleuchtete Teil je größer wird.", "Gegenprobe am Tisch: Richte eine Taschenlampe waagerecht auf einen Globus und drehe ihn langsam."]
+    schritte: ["Halte mit Pause an und stelle Drehung auf 0°. Achte darauf, wie groß der beleuchtete Teil ist. Notiere in Zeile 1 der Tabelle, ob in Deutschland und Japan Tag oder Nacht ist.", "Drehe auf 90° und notiere beide Orte in Zeile 2. Wiederhole das mit 180° für Zeile 3 und mit 270° für Zeile 4. Achte darauf, ob der beleuchtete Teil je größer wird.", "Gegenprobe am Tisch: Richte eine Taschenlampe waagerecht auf einen Globus und drehe ihn langsam."]
   },
   "g3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gravitation", seite: 82,
+    sim: "gravitation", seite: 85,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Die Gravitation – warum fällt alles nach unten?",
     titel: "Wer ist zuerst unten?",
     frage: "Fällt ein schwerer Körper schneller als ein leichter?",
-    schritte: ["Wähle in der Simulation Erde und starte den Fall mit Noch einmal fallen lassen. Achte im Rohr „ohne Luft“ genau darauf, ob der schwere Körper vor dem leichten ankommt oder beide gleichzeitig.", "Wähle danach Mond und anschließend Jupiter und lass jedes Mal noch einmal fallen. Halte für Erde, Mond und Jupiter fest, wie lange der Fall dauert (Fallzeit t) und ob sich die Reihenfolge dabei ändert.", "Gegenprobe am Tisch: Lass eine Münze und ein flaches Blatt Papier aus gleicher Höhe gleichzeitig los. Zerknülle dann dasselbe Blatt zu einer festen Kugel und wiederhole den Versuch."]
+    schritte: ["Wähle in der Simulation Erde und starte den Fall mit Noch einmal fallen lassen. Achte im Rohr „ohne Luft“ darauf, ob der schwere Körper vor dem leichten ankommt oder beide gleichzeitig. Notiere das und die Fallzeit t in Zeile 1 der Tabelle.", "Wähle Mond und lass noch einmal fallen. Notiere in Zeile 2, wer zuerst unten ist, und die Fallzeit t. Wiederhole das mit Jupiter für Zeile 3.", "Gegenprobe am Tisch: Lass eine Münze und ein flaches Blatt Papier aus gleicher Höhe gleichzeitig los. Notiere in Zeile 4, wer zuerst unten ist. Zerknülle dann dasselbe Blatt zu einer festen Kugel und wiederhole den Versuch."]
   },
   "g9": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gravitation-abstand", seite: 86,
+    sim: "gravitation-abstand", seite: 89,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wovon hängt die Anziehungskraft zweier Körper ab?",
     titel: "Der Kleine zieht, der Große nicht",
     frage: "Wovon hängt die Anziehungskraft zweier Körper ab – von den Massen, vom Abstand?",
-    schritte: ["Setze mit zurücksetzen alle Werte auf 1 und lies die Anziehungskraft ab. Dieser Wert ist dein Ausgangswert, mit dem du alles Weitere vergleichst.", "Verdopple mit ×2 Masse links die Masse der linken Kugel und lies ab. Drücke denselben Knopf noch einmal, sodass die Masse viermal so groß ist wie am Anfang, und lies wieder ab.", "Setze zurück und verdopple stattdessen mit ×2 Abstand den Abstand, danach ein zweites Mal. Vergleiche beide Werte mit deinem Ausgangswert."]
+    schritte: ["Setze mit zurücksetzen alle Werte auf 1 und lies die Anziehungskraft ab. Merke dir diesen Ausgangswert, mit ihm vergleichst du alles Weitere.", "Verdopple mit ×2 Masse links die Masse der linken Kugel. Notiere die Anziehungskraft im Vergleich zum Ausgangswert in Zeile 1 der Tabelle im Heft. Drücke denselben Knopf noch einmal (vierfache Masse) und notiere den Vergleich in Zeile 2.", "Setze zurück und verdopple mit ×2 Abstand den Abstand. Notiere den Vergleich in Zeile 3 der Tabelle im Heft. Verdopple den Abstand ein zweites Mal und notiere den Vergleich in Zeile 4."]
   },
   "g6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "planetenbahn", seite: 90,
+    sim: "planetenbahn", seite: 93,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Warum fallen die Planeten nicht in die Sonne?",
     titel: "Warum stürzt er nicht?",
     frage: "Warum stürzt die Erde nicht in die Sonne, obwohl diese sie anzieht?",
-    schritte: ["Stelle die Startgeschwindigkeit quer zur Sonne auf 10 km/s ein und wähle „neu starten“. Schalte auf Zeitraffer ×4 und verfolge, ob der Planet an der Sonne vorbeikommt oder in sie hineinfällt.", "Schalte Vergleichsspur an und lass den Planeten nacheinander mit 20 km/s, 30 km/s und 45 km/s laufen, dazwischen jeweils neu starten. Die alten Spuren bleiben stehen, so liegen alle vier Bahnen übereinander.", "Gegenprobe am Tisch: Wirf auf dem Schulhof einen Ball erst sanft, dann so fest du kannst. Er fliegt jedes Mal weiter und landet doch wieder, und du siehst, was ihm gegenüber dem Planeten fehlt."]
+    schritte: ["Stelle die Startgeschwindigkeit quer zur Sonne auf 10 km/s ein und wähle „neu starten“. Schalte auf Zeitraffer ×4 und verfolge, ob der Planet an der Sonne vorbeikommt oder in sie hineinfällt. Notiere die Bahn in Zeile 1 der Tabelle.", "Schalte Vergleichsspur an. Stelle 20 km/s ein, wähle „neu starten“ und notiere die Bahn in Zeile 2. Wiederhole das mit 30 km/s für Zeile 3 und mit 45 km/s für Zeile 4. Die alten Spuren bleiben stehen, so liegen alle vier Bahnen übereinander.", "Gegenprobe am Tisch: Wirf auf dem Schulhof einen Ball erst sanft, dann so fest du kannst. Er fliegt jedes Mal weiter und landet doch wieder, und du siehst, was ihm gegenüber dem Planeten fehlt."]
   },
   "g7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sonnensystem", seite: 94,
+    sim: "sonnensystem", seite: 97,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Acht Planeten, zwei Sorten",
     titel: "Die Kleinen und die Riesen",
     frage: "Worin unterscheiden sich die vier inneren Planeten von den vier äußeren?",
-    schritte: ["Wähle Größen. Die acht Planeten stehen dann im gleichen Maßstab nebeneinander. Suche den größten und den kleinsten heraus und merke dir, wo die Grenze zwischen den kleinen und den großen verläuft.", "Öffne den Steckbrief nacheinander für Merkur, Erde, Jupiter und Neptun. Lies jedes Mal den Durchmesser ab und ob der Planet eine feste Oberfläche hat, und trage beides in die Tabelle ein.", "Wähle Abstände und lass die Planeten mit Umlauf bei sehr schnell laufen. Achte darauf, dass die vier kleinen Planeten innen dicht beieinander kreisen und die vier großen weit außen."]
+    schritte: ["Wähle Größen. Die acht Planeten stehen dann im gleichen Maßstab nebeneinander. Suche den größten und den kleinsten heraus und merke dir, wo die Grenze zwischen den kleinen und den großen verläuft.", "Öffne den Steckbrief für Merkur. Notiere in Zeile 1 der Tabelle den Durchmesser und ob Merkur eine feste Oberfläche hat. Wiederhole das mit Erde für Zeile 2, mit Jupiter für Zeile 3 und mit Neptun für Zeile 4.", "Wähle Abstände und lass die Planeten mit Umlauf bei sehr schnell laufen. Achte darauf, dass die vier kleinen Planeten innen dicht beieinander kreisen und die vier großen weit außen."]
   },
   "g8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "ortsfaktor", seite: 98,
+    sim: "ortsfaktor", seite: 101,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wäre ich auf dem Mond wirklich leichter?",
     titel: "Hüpfen wie auf dem Mond",
     frage: "Wäre auf dem Mond meine Masse kleiner – oder nur meine Gewichtskraft?",
-    schritte: ["Stelle in der Simulation Erde ein und lies beide Anzeigen ab: die Masse in Kilogramm und die Gewichtskraft in Newton.", "Wähle nacheinander Mond und Jupiter und lies jedes Mal beide Werte ab. Trage sie in die Tabelle ein.", "Teile bei jedem Himmelskörper die Gewichtskraft durch die Masse und vergleiche die drei Ergebnisse. Wähle danach noch einmal Erde und prüfe, ob dieselben Werte wie am Anfang erscheinen."]
+    schritte: ["Stelle in der Simulation Erde ein und lies beide Anzeigen ab: die Masse m in Kilogramm und die Gewichtskraft F in Newton. Notiere m und F in Zeile 1 der Tabelle.", "Wähle Mond und notiere m und F in Zeile 2 der Tabelle. Wiederhole das mit Jupiter für Zeile 3.", "Teile in Zeile 1 bis 3 die Gewichtskraft durch die Masse. Notiere F : m in der letzten Spalte und vergleiche die drei Ergebnisse. Wähle danach noch einmal Erde, notiere m und F in Zeile 4 und vergleiche mit Zeile 1."]
   },
   "g10": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "gezeiten", seite: 102,
+    sim: "gezeiten", seite: 105,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Warum steigt und fällt das Meer zweimal am Tag?",
     titel: "Zweimal am Tag",
     frage: "Warum steigt und fällt das Meer zweimal am Tag?",
-    schritte: ["Suche die Stellen, an denen das Wasser am höchsten steht. Halte fest, wie viele es sind und wo sie liegen.", "Vergleiche die Anziehungskraft auf das Wasser der Mondseite, auf den Erdmittelpunkt und auf das Wasser der Rückseite.", "Drehe mit Erde von Hand drehen einmal ganz herum und zähle, wie oft dein Ort durch einen Flutberg läuft (am Bildschirm: „Wasserberg“). Stelle danach nacheinander 0 h, 6 h und 12 h ein und zum Schluss als Gegenprobe noch einmal 0 h mit Sonne dazu; trage jedes Mal den Wasserstand ein."]
+    schritte: ["Suche die Stellen, an denen das Wasser am höchsten steht. Zähle, wie viele es sind, und achte darauf, wo sie liegen.", "Vergleiche die Anziehungskraft auf das Wasser der Mondseite, auf den Erdmittelpunkt und auf das Wasser der Rückseite.", "Drehe mit Erde von Hand drehen einmal ganz herum und zähle, wie oft dein Ort durch einen Flutberg läuft (am Bildschirm: „Wasserberg“). Stelle danach 0 h ein und notiere den Wasserstand in Zeile 1 der Tabelle. Wiederhole das mit 6 h für Zeile 2 und mit 12 h für Zeile 3. Stelle als Gegenprobe noch einmal 0 h ein, drücke Sonne dazu und notiere den Wasserstand in Zeile 4."]
   },
   "g4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "weltall-aufbau", seite: 106,
+    sim: "weltall-aufbau", seite: 109,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie groß ist das Sonnensystem wirklich?",
     titel: "Der Fußball und die Stecknadel",
     frage: "Wie groß ist das Sonnensystem im Vergleich zur Milchstraße?",
-    schritte: ["Setze mit Zurücksetzen auf den Anfang und zoome Schritt für Schritt heraus. Halte fest, was neu ins Bild kommt: im Ausgangsbild, nach einem und nach zwei Schritten und zum Schluss so weit herausgezoomt wie möglich.", "Zoome weiter, bis die Sonne nur ein Punkt unter vielen ist, und zähle die Schritte. Suche beim Hineinzoomen ihre Stelle in der Scheibe.", "Gegenprobe am Tisch: Lege auf dem Schulhof einen Fußball als Sonne hin und schreite 24 Meter bis zur Stecknadel ab."]
+    schritte: ["Setze mit Zurücksetzen auf den Anfang und notiere in Zeile 1 der Tabelle, was im Bild ist. Zoome einmal heraus und notiere in Zeile 2, was neu ins Bild kommt. Wiederhole das für Zeile 3.", "Zoome so weit heraus wie möglich und zähle die Schritte. Notiere in Zeile 4, was jetzt im Bild ist. Suche beim Hineinzoomen die Stelle der Sonne in der Scheibe.", "Gegenprobe am Tisch: Lege auf dem Schulhof einen Fußball als Sonne hin und schreite 24 Meter bis zur Stecknadel ab."]
   },
   "g5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "entfernungen", seite: 109,
+    sim: "entfernungen", seite: 112,
     kapitel: "Sonne, Planeten und Schwerkraft",
     name: "Wie weit ist es im Weltall? (Lichtjahr)",
     titel: "Wie alt ist dieses Licht?",
     frage: "Ist ein Lichtjahr eine Zeit oder eine Strecke?",
-    schritte: ["Setze die Simulation mit Zurücksetzen auf den Anfang und sende einen Lichtblitz zum Mond. Lies ab, wie lange er unterwegs ist, und trage die Zeit in die Tabelle ein.", "Gehe mit weiter zum nächsten Ziel und sende dort erneut einen Lichtblitz. Notiere so die Laufzeit für die Sonne und für den nächsten Stern und achte darauf, ab welchem Ziel die Zeit nicht mehr in Minuten, sondern in Jahren angegeben wird.", "Gehe mit näher wieder zurück zum Mond und sende noch einmal einen Lichtblitz. Prüfe, ob dieselbe Strecke wieder dieselbe Laufzeit ergibt."]
+    schritte: ["Setze die Simulation mit Zurücksetzen auf den Anfang und sende einen Lichtblitz zum Mond. Notiere in Zeile 1 der Tabelle, wie lange er unterwegs ist.", "Gehe mit weiter zur Sonne und sende erneut einen Lichtblitz. Notiere die Laufzeit in Zeile 2. Wiederhole das beim nächsten Stern für Zeile 3. Achte darauf, ab wann die Zeit in Jahren statt in Minuten steht.", "Gehe mit näher wieder zurück zum Mond und sende noch einmal einen Lichtblitz. Notiere die Laufzeit in Zeile 4 und vergleiche sie mit Zeile 1."]
   },
   "t1": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "teleskop", seite: 114,
+    sim: "teleskop", seite: 117,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie holt ein Teleskop ferne Objekte näher heran?",
     titel: "Zwei Gläser auf der Leiste",
     frage: "Warum zeigt ein Teleskop mehr Sterne als das bloße Auge?",
-    schritte: ["Stelle in der Simulation zuerst bloßes Auge ein und halte fest, wie viel du von dem Objekt erkennst. Wechsle dann auf mit Teleskop und beschreibe, was sich am Bild ändert.", "Bleibe bei „mit Teleskop“ und wechsle von „kleine Öffnung“ auf „große Öffnung“ und zur Gegenprobe wieder zurück auf „kleine Öffnung“. Zähle jedes Mal, wie viele lichtschwache Punkte noch zu sehen sind, und achte darauf, ob das Bild dabei größer wird oder nur heller.", "Gegenprobe am Tisch: Fange mit einer Lupe das Bild eines fernen Fensters auf einem Blatt Papier auf und decke danach die halbe Linse mit Papier ab. Prüfe, ob das Bild kleiner oder nur dunkler wird."]
+    schritte: ["Stelle in der Simulation zuerst bloßes Auge ein. Notiere in Zeile 1 der Tabelle, wie viel du von dem Objekt erkennst. Wechsle dann auf mit Teleskop und beobachte, was sich am Bild ändert.", "Bleibe bei „mit Teleskop“ und wähle „kleine Öffnung“. Zähle die lichtschwachen Punkte und notiere ihre Anzahl in Zeile 2 der Tabelle. Wiederhole das mit „große Öffnung“ für Zeile 3 und wieder mit „kleine Öffnung“ für Zeile 4. Achte darauf, ob das Bild größer wird oder nur heller.", "Gegenprobe am Tisch: Fange mit einer Lupe das Bild eines fernen Fensters auf einem Blatt Papier auf und decke danach die halbe Linse mit Papier ab. Prüfe, ob das Bild kleiner oder nur dunkler wird."]
   },
   "t2": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "spezialteleskop", seite: 118,
+    sim: "spezialteleskop", seite: 121,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie sieht man mit besonderen Teleskopen unsichtbares Licht?",
     titel: "Die Lampe, die keiner sieht",
     frage: "Was zeigt derselbe Himmelsausschnitt in Licht, das wir nicht sehen können?",
-    schritte: ["Stelle in der Simulation am Boden ein und schalte nacheinander Licht, Infrarot, Radio und Röntgen durch. Halte für jeden Bereich fest, was von der Himmelsstelle zu sehen ist. Trage die Einstellungen am Boden mit Licht, Infrarot und Röntgen in dieser Reihenfolge in die Tabelle ein.", "Wechsle auf im Weltraum und gehe dieselben vier Bereiche noch einmal durch. Vergleiche jeden Bereich mit dem, was du am Boden notiert hast, und halte fest, wo der Unterschied am größten ist. Trage zuletzt die Einstellung im Weltraum mit Röntgen in die Tabelle ein.", "Gegenprobe am Tisch: Halte eine Fernbedienung vor die Kamera eines Handys und drücke eine Taste. Prüfe, ob auf dem Display etwas leuchtet, das dein Auge nicht sieht."]
+    schritte: ["Stelle in der Simulation am Boden ein und wähle Licht. Notiere in Zeile 1 der Tabelle, was von der Himmelsstelle zu sehen ist. Wiederhole das mit Infrarot für Zeile 2. Sieh dir Radio nur an. Wähle zuletzt Röntgen für Zeile 3.", "Wechsle auf im Weltraum und gehe dieselben vier Bereiche noch einmal durch. Vergleiche jeden Bereich mit deinen Zeilen vom Boden und achte darauf, wo der Unterschied am größten ist. Notiere bei Röntgen in Zeile 4, was jetzt zu sehen ist.", "Gegenprobe am Tisch: Halte eine Fernbedienung vor die Kamera eines Handys und drücke eine Taste. Prüfe, ob auf dem Display etwas leuchtet, das dein Auge nicht sieht."]
   },
   "t6": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sternleben", seite: 122,
+    sim: "sternleben", seite: 125,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Warum leuchtet ein Stern – und warum nicht ewig?",
     titel: "Wer zuerst ausgeht",
     frage: "Warum leuchtet ein massereicher Stern heller und trotzdem kürzer?",
-    schritte: ["Wähle zuerst beim Regler „Masse des Sterns“ den Wert „1“ und lass den Lauf ganz durchlaufen. Halte fest, welche Farbe der Stern hat und welche Lebensdauer am Ende steht.", "Stelle den Regler „Masse des Sterns“ nacheinander auf die anderen Werte, indem du „0,5“, „10“ und „Gegenprobe 25“ wählst. Nutze jedes Mal „Lauf neu starten“ und trage Farbe und Lebensdauer in die Tabelle ein – der Masse nach geordnet: zuerst 0,5, dann 1, 10 und 25 Sonnenmassen.", "Vergleiche den masseärmsten mit dem massereichsten Stern. Der massereichste hat fünfzigmal so viel Wasserstoff im Vorrat – prüfe, ob er deshalb auch länger leuchtet."]
+    schritte: ["Wähle zuerst beim Regler „Masse des Sterns“ den Wert „1“ und lass den Lauf ganz durchlaufen. Notiere Farbe und Lebensdauer in Zeile 2 der Tabelle im Heft.", "Wähle „0,5“, nutze „Lauf neu starten“ und notiere Farbe und Lebensdauer in Zeile 1 der Tabelle im Heft. Wiederhole das mit „10“ für Zeile 3 und mit „Gegenprobe 25“ für Zeile 4.", "Vergleiche den masseärmsten mit dem massereichsten Stern. Der massereichste hat fünfzigmal so viel Wasserstoff im Vorrat – prüfe, ob er deshalb auch länger leuchtet."]
   },
   "t7": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "sternspektrum", seite: 126,
+    sim: "sternspektrum", seite: 129,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Woraus bestehen die Sterne?",
     titel: "Streifen, die fehlen",
     frage: "Woran erkennt man, woraus ein Stern besteht, ohne hinzufliegen?",
-    schritte: ["Wähle „Glühlampe“ und sieh dir das Spektrum genau an. Halte fest, ob irgendwo eine Farbe fehlt.", "Wechsle zu „Stern 1 gelb“ und schiebe den Regler „Lupe – Wellenlänge“ langsam durch das Spektrum, bis du auf einer dunklen Linie stehst. Lies die Wellenlänge in Nanometern ab; mit „Suchlauf“ findest du eine Linie, die du nicht triffst.", "Schalte „Vergleichsstreifen einblenden“ ein und prüfe bei „Stern 2 blau-weiß“ und „Stern 3 rot“, ob dort Linien an denselben Wellenlängen sitzen. Trage in die Tabelle zuerst die drei Sterne und zuletzt die Glühlampe ein."]
+    schritte: ["Wähle „Glühlampe“ und sieh dir das Spektrum genau an. Notiere in Zeile 4 der Tabelle, ob irgendwo eine Farbe fehlt.", "Wechsle zu „Stern 1 gelb“ und schiebe den Regler „Lupe – Wellenlänge“ langsam durch das Spektrum, bis du auf einer dunklen Linie stehst. Notiere die Wellenlänge in Nanometern in Zeile 1 der Tabelle; mit „Suchlauf“ findest du eine Linie, die du nicht triffst.", "Schalte „Vergleichsstreifen einblenden“ ein. Wähle „Stern 2 blau-weiß“ und prüfe, ob dort Linien an denselben Wellenlängen sitzen. Notiere die Wellenlängen der Linien in Zeile 2. Wiederhole das mit „Stern 3 rot“ für Zeile 3."]
   },
   "t8": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "milchstrasse", seite: 130,
+    sim: "milchstrasse", seite: 133,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Die Milchstraße – wo stehen wir?",
     titel: "Das Band über dem Feld",
     frage: "Warum sehen wir die Milchstraße als schmales Band und nicht rundherum?",
-    schritte: ["Stelle den Regler „Ansicht drehen“ von „von oben (0°)“ langsam bis „von der Seite (90°)“ und halte fest, welche Form die Milchstraße von oben und welche sie von der Seite zeigt.", "Lass den Regler „Sonne vom Zentrum“ auf 26 000 Lichtjahre stehen und wähle nacheinander „zur Mitte“, „nach außen“ und „quer heraus“. Trage für jede Richtung ein, wie dicht die Sterne im Blickfeld stehen.", "Wähle „Gegenprobe: Sonne in die Mitte“ und sieh dir dieselben drei Richtungen noch einmal an. Geh danach mit „zurück auf 26 000 Lj“ auf die Ausgangslage."]
+    schritte: ["Stelle den Regler „Ansicht drehen“ langsam von „von oben (0°)“ bis „von der Seite (90°)“. Achte auf die Form der Milchstraße von oben und von der Seite.", "Lass den Regler „Sonne vom Zentrum“ auf 26 000 Lichtjahre stehen. Wähle „zur Mitte“ und notiere in Zeile 1 der Tabelle, wie dicht die Sterne stehen. Wiederhole das mit „nach außen“ für Zeile 2 und „quer heraus“ für Zeile 3.", "Wähle „Gegenprobe: Sonne in die Mitte“ und sieh dir dieselben drei Richtungen noch einmal an. Notiere in Zeile 4, was sich ändert. Geh danach mit „zurück auf 26 000 Lj“ auf die Ausgangslage."]
   },
   "t3": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "weltbild", seite: 133,
+    sim: "weltbild", seite: 136,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie hat sich die Vorstellung vom Weltall verändert?",
     titel: "Wer steht in der Mitte?",
     frage: "Welches Weltbild erklärt die Schleifen der Planeten mit weniger Zusatzannahmen?",
-    schritte: ["Wähle „Erde in der Mitte (alt)“ und lass die Bahnen einmal ganz durchlaufen. Halte fest, welchen Weg ein Planet nimmt und was nötig ist, damit dabei eine Schleife entsteht.", "Wähle „Sonne in der Mitte (heute)“ und lass dieselbe Zeit noch einmal laufen. Achte darauf, welche Form die einzelnen Bahnen jetzt haben und wann der äußere Planet von der Erde aus rückwärts zu laufen scheint. Mit „Zurücksetzen“ kannst du beide Weltbilder mehrfach nacheinander vergleichen.", "Gegenprobe am Tisch: Legt eine Münze als Sonne auf ein Blatt Papier, geht mit zwei Fingern auf einem inneren und einem äußeren Kreis darum herum und schaut vom inneren Finger aus, wie der äußere sich beim Überholen kurz rückwärts vor der Wand zu bewegen scheint."]
+    schritte: ["Wähle „Erde in der Mitte (alt)“ und lass die Bahnen einmal ganz durchlaufen. Notiere in Zeile 1 der Tabelle, welchen Weg ein Planet nimmt und was nötig ist, damit dabei eine Schleife entsteht.", "Wähle „Sonne in der Mitte (heute)“ und lass dieselbe Zeit noch einmal laufen. Achte darauf, welche Form die einzelnen Bahnen jetzt haben. Notiere in Zeile 2, wann der äußere Planet von der Erde aus rückwärts zu laufen scheint. Mit „Zurücksetzen“ kannst du beide Weltbilder mehrfach nacheinander vergleichen.", "Gegenprobe am Tisch: Legt eine Münze als Sonne auf ein Blatt Papier, geht mit zwei Fingern auf einem inneren und einem äußeren Kreis darum herum und schaut vom inneren Finger aus, wie der äußere sich beim Überholen kurz rückwärts vor der Wand zu bewegen scheint. Notiert eure Beobachtung in Zeile 3 der Tabelle."]
   },
   "t4": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "schwarzes-loch", seite: 137,
+    sim: "schwarzes-loch", seite: 140,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Was passiert bei einem schwarzen Loch?",
     titel: "Ein Ring um nichts",
     frage: "Was geschieht mit einem Lichtstrahl, der dicht an einem schwarzen Loch vorbeiläuft?",
-    schritte: ["Wähle in der Simulation den Abstand „weit weg“ und nutze „Lichtstrahl senden“. Verfolge den Weg des Strahls und halte fest, ob er die gerade Richtung behält.", "Setze mit „Zurücksetzen“ zurück und wiederhole den Versuch mit „mittel“ und danach mit „sehr nah“. Vergleiche die drei Bahnen miteinander und achte darauf, bei welchem Abstand der Strahl nicht mehr herauskommt.", "Gegenprobe am Tisch: Spanne ein T-Shirt über einen Reifen und lege eine schwere Kugel in die Mitte. Rolle eine Murmel einmal weit außen und einmal dicht an der Kugel vorbei."]
+    schritte: ["Wähle in der Simulation den Abstand „weit weg“ und nutze „Lichtstrahl senden“. Verfolge den Weg des Strahls und notiere in Zeile 1 der Tabelle, ob er die gerade Richtung behält.", "Setze mit „Zurücksetzen“ zurück und wiederhole den Versuch mit „mittel“. Notiere den Weg in Zeile 2. Wiederhole das mit „sehr nah“ für Zeile 3. Achte darauf, bei welchem Abstand der Strahl nicht mehr herauskommt.", "Gegenprobe am Tisch: Spanne ein T-Shirt über einen Reifen und lege eine schwere Kugel in die Mitte. Rolle eine Murmel einmal weit außen und einmal dicht an der Kugel vorbei. Notiere in Zeile 4, wie die Murmel dicht an der Kugel läuft."]
   },
   "t5": {
     klasse: 7, schulform: "Realschule NRW",
-    sim: "urknall", seite: 141,
+    sim: "urknall", seite: 144,
     kapitel: "Sterne, Galaxien und der Anfang",
     name: "Wie ist das Weltall entstanden? (Urknall)",
     titel: "Punkte auf dem Ballon",
     frage: "Entfernen sich alle Galaxien gleich schnell voneinander?",
-    schritte: ["Lass mit „Urknall starten“ die Ausdehnung ablaufen. Sobald die Galaxien erscheinen, suche dir eine nahe und eine weit entfernte Galaxie aus und beobachte beide Galaxien gleichzeitig. Achte danach auf zwei Galaxien, die beide weit von uns weg liegen: Wächst auch der Abstand zwischen ihnen?", "Gehe mit „zum Anfang“ zurück und lass den Vorgang noch einmal laufen. Warte, bis nach „heute“ der Blick zu einer anderen Galaxie wechselt („Blick von Galaxie 2“), und prüfe, ob sich von ihr aus alle übrigen ebenfalls entfernen.", "Gegenprobe am Tisch: Male Punkte auf einen schlaffen Luftballon, miss die Abstände von zwei nahen und zwei weit entfernten Punktepaaren und blase den Ballon weiter auf. Miss dieselben Abstände erneut."]
+    schritte: ["Lass mit „Urknall starten“ die Ausdehnung ablaufen. Sobald die Galaxien erscheinen, beobachte eine nahe und eine weit entfernte Galaxie gleichzeitig. Notiere in Zeile 1 und 2 der Tabelle, wie schnell ihr Abstand zu uns wächst. Notiere in Zeile 3, ob auch der Abstand zweier weit entfernter Galaxien wächst.", "Gehe mit „zum Anfang“ zurück und lass den Vorgang noch einmal laufen. Warte, bis nach „heute“ der Blick zu einer anderen Galaxie wechselt („Blick von Galaxie 2“), und prüfe, ob sich von ihr aus alle übrigen ebenfalls entfernen.", "Gegenprobe am Tisch: Male Punkte auf einen schlaffen Luftballon, miss die Abstände von zwei nahen und zwei weit entfernten Punktepaaren und blase den Ballon weiter auf. Miss dieselben Abstände erneut und notiere in Zeile 4 der Tabelle, welcher Abstand stärker gewachsen ist."]
   },
   "sp1": {
     klasse: 8, schulform: "Realschule NRW",
@@ -639,7 +639,7 @@ const HEFT_SEITEN = {
     name: "Was ist elektrische Ladung?",
     titel: "Der Staub am Kabel",
     frage: "Warum ziehen sich manche Körper an und andere stoßen sich ab?",
-    schritte: ["Gib beiden Kugeln „positiv“ und beobachte, was zwischen ihnen geschieht.", "Stelle die zweite Kugel auf „negativ“ um und halte fest, wie sich das Verhalten ändert.", "Gib zuletzt beiden Kugeln „negativ“ und vergleiche das Ergebnis mit Schritt 1."]
+    schritte: ["Gib beiden Kugeln „positiv“. Notiere in Zeile 1 der Tabelle, ob sie sich anziehen oder abstoßen.", "Stelle die zweite Kugel auf „negativ“ um. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Gib zuletzt beiden Kugeln „negativ“. Notiere deine Beobachtung in Zeile 3 und vergleiche sie mit Zeile 1."]
   },
   "sp2": {
     klasse: 8, schulform: "Realschule NRW",
@@ -648,7 +648,7 @@ const HEFT_SEITEN = {
     name: "Was ist der elektrische Strom (Stromstärke)?",
     titel: "Wie viel fließt da eigentlich?",
     frage: "Was gibt die Stromstärke an?",
-    schritte: ["Wähle „Strom schwach“ und lies die Stromstärke am Amperemeter ab. Achte dabei auch auf die Lampe.", "Wähle nacheinander „mittel“ und „stark“ und trage beide Werte ein.", "Drücke auf „Schalter: geschlossen“, sodass der Kreis offen ist, und lies noch einmal ab."]
+    schritte: ["Wähle „Strom schwach“. Lies die Stromstärke I am Amperemeter ab und notiere sie in Zeile 1 der Tabelle. Achte auch auf die Lampe.", "Wähle „mittel“ und notiere I in Zeile 2 der Tabelle. Wiederhole das mit „stark“ für Zeile 3.", "Drücke auf „Schalter: geschlossen“, sodass der Kreis offen ist. Lies noch einmal ab und notiere I in Zeile 4."]
   },
   "sp3": {
     klasse: 8, schulform: "Realschule NRW",
@@ -657,7 +657,7 @@ const HEFT_SEITEN = {
     name: "Was ist die elektrische Spannung?",
     titel: "Was die Spannung bewirkt",
     frage: "Was bewirkt eine größere Spannung im Stromkreis?",
-    schritte: ["Wähle „1 Energiequelle“ und lies die Spannung ab. Achte darauf, wie hell die Lampe leuchtet.", "Wähle „2 Energiequellen“ und danach „3 Energiequellen“ und trage jedes Mal die Spannung ein.", "Ordne die drei Helligkeiten den drei Spannungen zu."]
+    schritte: ["Wähle „1 Energiequelle“ und lies die Spannung U ab. Notiere U und die Helligkeit der Lampe in Zeile 1 der Tabelle.", "Wähle „2 Energiequellen“ und notiere U und die Helligkeit in Zeile 2. Wiederhole das mit „3 Energiequellen“ für Zeile 3.", "Ordne die drei Helligkeiten den drei Spannungen zu."]
   },
   "sp4": {
     klasse: 8, schulform: "Realschule NRW",
@@ -666,7 +666,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man Stromstärke und Spannung?",
     titel: "Ein Messgerät, zwei Anschlüsse",
     frage: "Wie schließt man Amperemeter und Voltmeter richtig an?",
-    schritte: ["Wähle „Amperemeter“ und „in Reihe“. Lies ab, was die Simulation meldet und welcher Wert angezeigt wird.", "Lass das Amperemeter stehen und stelle auf „parallel“ um. Halte fest, was gemeldet wird.", "Wähle dann „Voltmeter“ und stelle erst auf „parallel“, danach auf „in Reihe“. Halte beide Meldungen fest."]
+    schritte: ["Wähle „Amperemeter“ und „in Reihe“. Lies ab, was die Simulation meldet und welcher Wert angezeigt wird. Notiere die Meldung in Zeile 1 der Tabelle.", "Lass das Amperemeter stehen und stelle auf „parallel“ um. Notiere die Meldung in Zeile 2 der Tabelle.", "Wähle dann „Voltmeter“ und „parallel“ und notiere die Meldung in Zeile 3. Stelle danach auf „in Reihe“ und notiere sie in Zeile 4."]
   },
   "sp5": {
     klasse: 8, schulform: "Realschule NRW",
@@ -675,7 +675,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Stromstärke ab?",
     titel: "Zwei Stellschrauben",
     frage: "Wovon hängt es ab, wie viel Strom durch einen Kreis fließt?",
-    schritte: ["Stelle den Widerstand auf „mittel“ und wähle nacheinander 1,5 V, 3 V und 4,5 V. Lies jedes Mal die Stromstärke ab.", "Lass die Spannung auf 4,5 V stehen und wähle nacheinander „klein“, „mittel“ und „groß“.", "Vergleiche beide Messreihen miteinander: Welche Änderung bringt mehr, welche weniger Strom?"]
+    schritte: ["Stelle den Widerstand auf „mittel“ und wähle 1,5 V. Notiere die Stromstärke I in Zeile 1 der Tabelle. Wiederhole das mit 3 V für Zeile 2 und mit 4,5 V für Zeile 3.", "Lass die Spannung auf 4,5 V stehen. Wähle „klein“ und notiere I in Zeile 4. Wiederhole das mit „groß“, ebenfalls für Zeile 4.", "Vergleiche beide Messreihen miteinander: Welche Änderung bringt mehr, welche weniger Strom?"]
   },
   "wd1": {
     klasse: 8, schulform: "Realschule NRW",
@@ -684,7 +684,7 @@ const HEFT_SEITEN = {
     name: "Was ist ein elektrischer Widerstand?",
     titel: "Warum das Kabel warm wird",
     frage: "Warum fließt durch das eine Bauteil mehr Strom als durch das andere?",
-    schritte: ["Wähle „kleiner Widerstand“ (dicker Kupferdraht) und lies R und die Stromstärke ab; die Spannung bleibt bei 4,5 V.", "Wähle „mittel“ (Glühdraht) und danach „großer Widerstand“ (Widerstandsdraht) und trage beide Wertepaare ein.", "Ordne die drei Stromstärken den drei Widerständen zu."]
+    schritte: ["Wähle „kleiner Widerstand“ (dicker Kupferdraht); die Spannung bleibt bei 4,5 V. Notiere R und I in Zeile 1 der Tabelle.", "Wähle „mittel“ (Glühdraht) und notiere R und I in Zeile 2. Wiederhole das mit „großer Widerstand“ (Widerstandsdraht) für Zeile 3.", "Ordne die drei Stromstärken den drei Widerständen zu."]
   },
   "wd2": {
     klasse: 8, schulform: "Realschule NRW",
@@ -693,7 +693,7 @@ const HEFT_SEITEN = {
     name: "Das Ohmsche Gesetz – die U-I-Kennlinie",
     titel: "Eine Gerade durch den Nullpunkt",
     frage: "Wie hängen Spannung und Stromstärke bei festem Widerstand zusammen?",
-    schritte: ["Wähle 10 Ω. Stelle nacheinander 0 V, 1,5 V, 3 V, 4,5 V und 6 V ein und drücke jedes Mal „Messpunkt“.", "Lies zu jedem Messpunkt die Stromstärke ab und prüfe, ob U/I jedes Mal denselben Wert ergibt.", "Lösche die Messpunkte, wähle 20 Ω und nimm dieselbe Messreihe noch einmal auf. Vergleiche beide Geraden."]
+    schritte: ["Wähle 10 Ω. Stelle nacheinander 0 V, 1,5 V, 3 V, 4,5 V und 6 V ein und drücke jedes Mal „Messpunkt“.", "Notiere die Stromstärke I zu 1,5 V bis 6 V in Zeile 1 bis 4 der Tabelle im Heft, Spalte für 10 Ω. Prüfe, ob U/I jedes Mal denselben Wert ergibt.", "Lösche die Messpunkte, wähle 20 Ω und nimm dieselbe Messreihe noch einmal auf. Notiere I in Zeile 1 bis 4, Spalte für 20 Ω. Vergleiche beide Geraden."]
   },
   "wd3": {
     klasse: 8, schulform: "Realschule NRW",
@@ -702,7 +702,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt der Widerstand eines Drahtes ab?",
     titel: "Lang, dünn, oder woraus?",
     frage: "Wovon hängt der Widerstand eines Drahtes ab?",
-    schritte: ["Stelle Material „Kupfer“, Länge „kurz“ und Dicke „dick“ ein und lies R und I ab. Das ist dein Ausgangswert.", "Wechsle nur auf „lang“ und lies wieder ab. Setze zurück und wechsle stattdessen nur auf „dünn“.", "Setze zurück und wechsle nur das Material, erst auf Eisen, dann auf Konstantan."]
+    schritte: ["Stelle Material „Kupfer“, Länge „kurz“ und Dicke „dick“ ein. Notiere R und I in Zeile 1 der Tabelle. Das ist dein Ausgangswert.", "Wechsle nur auf „lang“ und notiere R und I in Zeile 2. Setze zurück, wechsle nur auf „dünn“ und notiere R und I in Zeile 3.", "Setze zurück und wechsle nur das Material auf Eisen. Notiere R und I in Zeile 4. Wiederhole das mit Konstantan, ebenfalls für Zeile 4."]
   },
   "wd4": {
     klasse: 8, schulform: "Realschule NRW",
@@ -711,7 +711,7 @@ const HEFT_SEITEN = {
     name: "Reihenschaltung von Widerständen",
     titel: "Hintereinander wird es weniger",
     frage: "Was geschieht, wenn zwei Widerstände in Reihe geschaltet sind?",
-    schritte: ["Stelle R₁ = 10 Ω und R₂ = 20 Ω ein. Lies Gesamtwiderstand, Stromstärke und beide Teilspannungen ab.", "Stelle beide auf 10 Ω und danach beide auf 30 Ω. Trage jedes Mal Gesamtwiderstand, Stromstärke und beide Teilspannungen ein.", "Prüfe bei jeder Einstellung, ob die beiden Teilspannungen zusammen 6 V ergeben."]
+    schritte: ["Stelle R₁ = 10 Ω und R₂ = 20 Ω ein. Notiere R gesamt, I, U₁ und U₂ in Zeile 1 der Tabelle.", "Stelle beide auf 10 Ω und notiere dieselben vier Werte in Zeile 2. Wiederhole das mit beiden auf 30 Ω für Zeile 3.", "Prüfe bei jeder Einstellung, ob die beiden Teilspannungen zusammen 6 V ergeben."]
   },
   "wd5": {
     klasse: 8, schulform: "Realschule NRW",
@@ -720,7 +720,7 @@ const HEFT_SEITEN = {
     name: "Parallelschaltung von Widerständen",
     titel: "Nebeneinander wird es mehr",
     frage: "Warum fließt bei zwei parallelen Widerständen mehr Strom?",
-    schritte: ["Stelle R₁ = 10 Ω und R₂ = 20 Ω ein. Lies beide Teilströme, den Gesamtstrom und den Gesamtwiderstand ab.", "Stelle beide auf 10 Ω und danach beide auf 30 Ω und trage jedes Mal denselben Satz Werte ein.", "Vergleiche den Gesamtwiderstand mit dem kleineren der beiden Einzelwiderstände."]
+    schritte: ["Stelle R₁ = 10 Ω und R₂ = 20 Ω ein. Notiere I₁, I₂, I gesamt und R gesamt in Zeile 1 der Tabelle.", "Stelle beide auf 10 Ω und notiere dieselben vier Werte in Zeile 2. Wiederhole das mit beiden auf 30 Ω für Zeile 3.", "Vergleiche den Gesamtwiderstand mit dem kleineren der beiden Einzelwiderstände."]
   },
   "wd6": {
     klasse: 8, schulform: "Realschule NRW",
@@ -729,7 +729,7 @@ const HEFT_SEITEN = {
     name: "Das Potentiometer – ein veränderbarer Widerstand",
     titel: "Der Regler am Motor",
     frage: "Wie lässt sich die Stromstärke stufenlos verändern?",
-    schritte: ["Drücke „weniger Widerstand“, bis der Regler ganz links steht. Lies R, I und die Helligkeit ab.", "Setze zurück, sodass der Regler in der Mitte steht, und lies dieselben drei Angaben ab.", "Drücke „mehr Widerstand“ bis zum rechten Anschlag und trage auch diese Werte ein."]
+    schritte: ["Drücke „weniger Widerstand“, bis der Regler ganz links steht. Notiere R, I und die Helligkeit in Zeile 1 der Tabelle.", "Setze zurück, sodass der Regler in der Mitte steht. Notiere dieselben drei Angaben in Zeile 2.", "Drücke „mehr Widerstand“ bis zum rechten Anschlag. Notiere die drei Angaben in Zeile 3."]
   },
   "lt1": {
     klasse: 8, schulform: "Realschule NRW",
@@ -738,7 +738,7 @@ const HEFT_SEITEN = {
     name: "Elektrische Leistung P = U · I",
     titel: "Wie schnell die Energie verbraucht wird",
     frage: "Was sagt die Leistung eines Gerätes aus?",
-    schritte: ["Stelle „3 V“ und „mittel“ ein und lies Spannung, Stromstärke und Leistung ab.", "Wechsle nur auf „6 V“ und lies wieder ab. Vergleiche die Leistung mit dem ersten Wert.", "Stelle bei 6 V unter „Verbraucher“ erst „viel Strom“, dann „wenig Strom“ ein. Trage jedes Mal alle drei Werte ein."]
+    schritte: ["Stelle „3 V“ und „mittel“ ein. Notiere U, I und P in Zeile 1 der Tabelle.", "Wechsle nur auf „6 V“ und notiere U, I und P in Zeile 2. Vergleiche P mit Zeile 1.", "Stelle bei 6 V unter „Verbraucher“ erst „viel Strom“ ein und notiere U, I und P in Zeile 3. Wiederhole das mit „wenig Strom“ für Zeile 4."]
   },
   "lt2": {
     klasse: 8, schulform: "Realschule NRW",
@@ -747,7 +747,7 @@ const HEFT_SEITEN = {
     name: "Elektrische Energie E = P · t",
     titel: "Watt mal Stunden",
     frage: "Wie hängen Leistung, Zeit und Energie zusammen?",
-    schritte: ["Wähle „LED 10 W“ und „1 h“ und lies die Energie in Wattstunden und in Kilowattstunden ab.", "Lass das Gerät stehen und wechsle auf „3 h“ und danach „10 h“. Trage beide Werte ein.", "Wähle „Wasserkocher 2000 W“ und „1 h“ und vergleiche mit der LED bei 10 h."]
+    schritte: ["Wähle „LED 10 W“ und „1 h“. Lies die Energie E in Wh und in kWh ab und notiere beides in Zeile 1 der Tabelle.", "Lass das Gerät stehen und wechsle auf „3 h“. Notiere beide Werte von E in Zeile 2. Wiederhole das mit „10 h“ für Zeile 3.", "Wähle „Wasserkocher 2000 W“ und „1 h“. Notiere beide Werte von E in Zeile 4 und vergleiche mit der LED bei 10 h."]
   },
   "lt3": {
     klasse: 8, schulform: "Realschule NRW",
@@ -756,7 +756,7 @@ const HEFT_SEITEN = {
     name: "Was kostet elektrische Energie? (kWh)",
     titel: "Was eine Kilowattstunde kostet",
     frage: "Was kostet der Betrieb eines Gerätes im Jahr?",
-    schritte: ["Wähle „TV 100 W“ und „3 h“ und lies Energie je Tag, Kosten je Tag und Kosten im Jahr ab.", "Wähle „Wasserkocher 2000 W“ und „1 h“ und trage dieselben drei Werte ein.", "Wähle „Kühlschrank 150 W“ und „24 h“ und vergleiche die Jahreskosten mit den beiden anderen."]
+    schritte: ["Wähle „TV 100 W“ und „3 h“. Notiere Energie je Tag, Kosten je Tag und Kosten im Jahr in Zeile 1 der Tabelle.", "Wähle „Wasserkocher 2000 W“ und „1 h“ und notiere dieselben drei Werte in Zeile 2.", "Wähle „Kühlschrank 150 W“ und „24 h“ und notiere dieselben drei Werte in Zeile 3. Vergleiche die Jahreskosten mit den beiden anderen."]
   },
   "lt4": {
     klasse: 8, schulform: "Realschule NRW",
@@ -765,7 +765,7 @@ const HEFT_SEITEN = {
     name: "Energie sparen im Haushalt",
     titel: "Wo sich das Sparen lohnt",
     frage: "Welche Maßnahme spart im Jahr am meisten?",
-    schritte: ["Wähle „Glühlampe→LED“ und lies ab, wie viel elektrische Energie in kWh vorher und nachher im Jahr umgewandelt wird.", "Wähle „Standby aus“ und danach „Kühlschrank“ und trage jedes Mal die Ersparnis in kWh und in Euro ein.", "Ordne die drei Maßnahmen nach ihrer Ersparnis."]
+    schritte: ["Wähle „Glühlampe→LED“ und lies ab, wie viel elektrische Energie in kWh vorher und nachher im Jahr umgewandelt wird. Notiere beide Werte und die Ersparnis in kWh und in Euro in Zeile 1 der Tabelle.", "Wähle „Standby aus“ und notiere dieselben Werte in Zeile 2. Wiederhole das mit „Kühlschrank“ für Zeile 3.", "Ordne die drei Maßnahmen nach ihrer Ersparnis."]
   },
   "lt5": {
     klasse: 8, schulform: "Realschule NRW",
@@ -774,7 +774,7 @@ const HEFT_SEITEN = {
     name: "Gefahren des elektrischen Stroms & Schutz",
     titel: "Wenn die Sicherung kommt",
     frage: "Warum schaltet eine Sicherung den Stromkreis ab?",
-    schritte: ["Beginne mit einem Gerät – so startet die Simulation. Lies ab, wie groß die Stromstärke I ist (am Bildschirm: „Strom“) und wo die Grenze der Sicherung liegt.", "Schließe ein zweites Gerät an und lies wieder ab.", "Schließe ein drittes an und halte fest, was die Simulation meldet."]
+    schritte: ["Beginne mit einem Gerät – so startet die Simulation. Lies die Stromstärke I (am Bildschirm: „Strom“) und die Grenze der Sicherung ab. Notiere in Zeile 1 der Tabelle die Stromstärke I und ob die Sicherung auslöst.", "Schließe ein zweites Gerät an. Notiere beide Angaben in Zeile 2.", "Schließe ein drittes an und lies ab, was die Simulation meldet. Notiere beide Angaben in Zeile 3."]
   },
   "bg1": {
     klasse: 8, schulform: "Realschule NRW",
@@ -783,7 +783,7 @@ const HEFT_SEITEN = {
     name: "Was bedeutet Geschwindigkeit?",
     titel: "Wer ist schneller?",
     frage: "Wann ist ein Körper schneller als ein anderer?",
-    schritte: ["Stelle Auto A auf „langsam“ und Auto B auf „schnell“ und drücke „Rennen starten“. Beobachte, welche Strecke jedes Auto zurücklegt.", "Stelle beide auf „mittel“ und starte noch einmal. Halte fest, was sich ändert.", "Stelle A auf „schnell“ und B auf „mittel“ und lies ab, was die Simulation meldet."]
+    schritte: ["Stelle Auto A auf „langsam“ und Auto B auf „schnell“ und drücke „Rennen starten“. Beobachte, welche Strecke jedes Auto zurücklegt. Notiere in Zeile 1 der Tabelle, wer schneller ist und woran du es erkennst.", "Stelle beide auf „mittel“ und starte noch einmal. Notiere deine Beobachtung in Zeile 2.", "Stelle A auf „schnell“ und B auf „mittel“ und lies ab, was die Simulation meldet. Notiere die Meldung in Zeile 3."]
   },
   "bg2": {
     klasse: 8, schulform: "Realschule NRW",
@@ -792,7 +792,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Geschwindigkeit?",
     titel: "Zehn Meter und eine Stoppuhr",
     frage: "Wie bestimmt man eine Geschwindigkeit aus Strecke und Zeit?",
-    schritte: ["Wähle „langsam“ und drücke „Messung starten“. Lies Strecke s, Zeit t und Geschwindigkeit v ab.", "Wiederhole die Messung mit „mittel“ und mit „schnell“ und trage beide Ergebnisse ein.", "Prüfe bei jeder Messung, ob Strecke geteilt durch Zeit den angezeigten Wert ergibt."]
+    schritte: ["Wähle „langsam“ und drücke „Messung starten“. Lies Strecke s, Zeit t und Geschwindigkeit v ab. Notiere t und v in Zeile 1 der Tabelle.", "Wiederhole die Messung mit „mittel“ und notiere t und v in Zeile 2. Wiederhole sie mit „schnell“ für Zeile 3.", "Prüfe bei jeder Messung, ob Strecke geteilt durch Zeit den angezeigten Wert ergibt."]
   },
   "bg3": {
     klasse: 8, schulform: "Realschule NRW",
@@ -801,7 +801,7 @@ const HEFT_SEITEN = {
     name: "Wie berechnet man eine Geschwindigkeit? (v = s/t)",
     titel: "Strecke geteilt durch Zeit",
     frage: "Wann führen verschiedene Messungen zur selben Geschwindigkeit?",
-    schritte: ["Stelle s = 100 m und t = 10 s ein. Lies die Geschwindigkeit in m/s und in km/h ab.", "Stelle s = 50 m und t = 5 s ein, danach s = 200 m und t = 20 s. Vergleiche mit dem ersten Wert.", "Halte t = 10 s fest und wechsle die Strecke zwischen 50 m, 100 m und 200 m."]
+    schritte: ["Stelle s = 100 m und t = 10 s ein. Lies v in m/s und in km/h ab und notiere beides in Zeile 1 der Tabelle.", "Stelle s = 50 m und t = 5 s ein und notiere beide Werte von v in Zeile 2. Wiederhole das mit s = 200 m und t = 20 s für Zeile 3. Vergleiche mit Zeile 1.", "Halte t = 10 s fest. Wähle nacheinander 50 m, 100 m und 200 m und notiere beide Werte von v nach jeder Wahl in Zeile 4."]
   },
   "bg4": {
     klasse: 8, schulform: "Realschule NRW",
@@ -810,7 +810,7 @@ const HEFT_SEITEN = {
     name: "Wie werden m/s und km/h umgerechnet?",
     titel: "Mal 3,6 und zurück",
     frage: "Wie rechnet man zwischen m/s und km/h um?",
-    schritte: ["Stelle mit „schneller“ und „langsamer“ den Wert 10 m/s ein und lies die Umrechnung in km/h ab.", "Wähle nacheinander die Beispiele Fußgänger, Radfahrer, Auto (Stadt) und ICE und trage beide Werte ein.", "Prüfe bei jedem Beispiel nach, ob der Wert in km/h das 3,6-Fache des Wertes in m/s ist."]
+    schritte: ["Stelle mit „schneller“ und „langsamer“ den Wert 10 m/s ein und lies die Umrechnung in km/h ab.", "Wähle Fußgänger und notiere beide Werte von v in Zeile 1 der Tabelle. Wiederhole das mit Radfahrer, Auto (Stadt) und ICE für Zeile 2 bis 4.", "Prüfe bei jedem Beispiel nach, ob der Wert in km/h das 3,6-Fache des Wertes in m/s ist."]
   },
   "bg5": {
     klasse: 8, schulform: "Realschule NRW",
@@ -819,7 +819,7 @@ const HEFT_SEITEN = {
     name: "Was ist eine gleichförmige Bewegung?",
     titel: "Immer gleich weit",
     frage: "Woran erkennt man eine gleichförmige Bewegung?",
-    schritte: ["Wähle „langsam“ und starte die Fahrt. Beobachte, wie die Sekundenmarken gesetzt werden.", "Wiederhole das mit „mittel“ und mit „schnell“ und vergleiche die Abstände miteinander.", "Halte fest, ob sich die Abstände innerhalb einer Fahrt ändern."]
+    schritte: ["Wähle „langsam“ und starte die Fahrt. Beobachte, wie die Sekundenmarken gesetzt werden. Notiere in Zeile 1 der Tabelle den Abstand der Marken und ob er sich während der Fahrt ändert.", "Wiederhole das mit „mittel“ für Zeile 2 und mit „schnell“ für Zeile 3.", "Vergleiche die Abstände der drei Fahrten miteinander."]
   },
   "bg6": {
     klasse: 8, schulform: "Realschule NRW",
@@ -828,7 +828,7 @@ const HEFT_SEITEN = {
     name: "Was ist eine beschleunigte Bewegung?",
     titel: "Immer weiter, immer enger",
     frage: "Woran erkennt man eine beschleunigte Bewegung?",
-    schritte: ["Wähle „Beschleunigen“ und starte. Beobachte, wie sich die Abstände der Sekundenmarken entwickeln.", "Wähle „Bremsen“ und starte erneut. Halte fest, wie sich die Abstände jetzt verhalten.", "Vergleiche beide Fahrten mit der gleichförmigen Bewegung von der vorigen Seite."]
+    schritte: ["Wähle „Beschleunigen“ und starte. Beobachte, wie sich die Abstände der Sekundenmarken entwickeln. Notiere es in Zeile 1 der Tabelle.", "Wähle „Bremsen“ und starte erneut. Notiere in Zeile 2, wie sich die Abstände jetzt verhalten.", "Notiere in Zeile 3, wie sich die Abstände bei der gleichförmigen Bewegung von der vorigen Seite verhalten. Vergleiche beide Fahrten damit."]
   },
   "bg7": {
     klasse: 8, schulform: "Realschule NRW",
@@ -837,7 +837,7 @@ const HEFT_SEITEN = {
     name: "Wie stellt man eine Bewegung im Weg-Zeit-Diagramm dar?",
     titel: "Die Linie, die steigt",
     frage: "Was verrät die Steigung im Weg-Zeit-Diagramm?",
-    schritte: ["Wähle „langsam“ und drücke „Fahren“. Beobachte, wie steil die Linie ansteigt.", "Wähle „schnell“ und starte erneut. Vergleiche die Steigung mit der ersten Fahrt.", "Wähle „mit Pause“ und halte fest, was die Linie während des Stillstands macht."]
+    schritte: ["Wähle „langsam“ und drücke „Fahren“. Beobachte, wie steil die Linie ansteigt, und notiere es in Zeile 1 der Tabelle.", "Wähle „schnell“ und starte erneut. Notiere deine Beobachtung in Zeile 2 und vergleiche die Steigung mit Zeile 1.", "Wähle „mit Pause“. Notiere in Zeile 3, was die Linie während des Stillstands macht."]
   },
   "bg8": {
     klasse: 8, schulform: "Realschule NRW",
@@ -846,7 +846,7 @@ const HEFT_SEITEN = {
     name: "Wie liest man ein Geschwindigkeit-Zeit-Diagramm?",
     titel: "Die Linie, die waagerecht bleibt",
     frage: "Was zeigt das Geschwindigkeit-Zeit-Diagramm an?",
-    schritte: ["Wähle „konstant“ und drücke „Fahren“. Halte fest, wie die Linie verläuft.", "Wähle „beschleunigen“ und danach „bremsen“ und beschreibe jedes Mal den Verlauf.", "Vergleiche die drei Linien mit dem, was du im Weg-Zeit-Diagramm gesehen hast."]
+    schritte: ["Wähle „konstant“ und drücke „Fahren“. Notiere in Zeile 1 der Tabelle, wie die Linie verläuft und was das für die Bewegung bedeutet.", "Wähle „beschleunigen“ und notiere Verlauf und Bedeutung in Zeile 2. Wiederhole das mit „bremsen“ für Zeile 3.", "Vergleiche die drei Linien mit dem, was du im Weg-Zeit-Diagramm gesehen hast."]
   },
   "bg9": {
     klasse: 8, schulform: "Realschule NRW",
@@ -855,7 +855,7 @@ const HEFT_SEITEN = {
     name: "Wie funktioniert eine Geschwindigkeitsmessung im Straßenverkehr?",
     titel: "Der Blitzer an der Straße",
     frage: "Wann löst eine Geschwindigkeitsmessung aus?",
-    schritte: ["Stelle das Auto auf 70 km/h und die erlaubte Geschwindigkeit auf 50 km/h. Lass es vorbeifahren und lies ab, was gemeldet wird.", "Lass die Geschwindigkeit des Autos auf 70 km/h und stelle die erlaubte Geschwindigkeit auf 70 km/h. Fahre erneut vorbei.", "Prüfe zuletzt 30 km/h bei erlaubten 50 km/h und 100 km/h bei erlaubten 30 km/h."]
+    schritte: ["Stelle das Auto auf 70 km/h und die erlaubte Geschwindigkeit auf 50 km/h. Lass es vorbeifahren. Notiere in Zeile 1 der Tabelle, ob geblitzt wird und um wie viel das Auto zu schnell ist.", "Lass das Auto auf 70 km/h und stelle die erlaubte Geschwindigkeit auf 70 km/h. Fahre erneut vorbei und notiere beide Angaben in Zeile 2.", "Prüfe 30 km/h bei erlaubten 50 km/h und notiere das Ergebnis in Zeile 3. Wiederhole das mit 100 km/h bei erlaubten 30 km/h für Zeile 4."]
   },
   "kr1": {
     klasse: 9, schulform: "Realschule NRW",
@@ -864,7 +864,7 @@ const HEFT_SEITEN = {
     name: "Woran erkennt man, dass eine Kraft wirkt?",
     titel: "Knete, Wagen und ein Ball, der abbiegt",
     frage: "Woran erkennt man, dass eine Kraft gewirkt hat?",
-    schritte: ["Wähle in der Simulation „Verformen“ und drücke „Kraft wirken lassen“. Halte in der Tabelle fest, was sich an der weichen Knete ändert.", "Wähle nacheinander „Bewegen“ und „Richtung ändern“ und lasse jedes Mal die Kraft wirken. Nutze „Zurücksetzen“, bevor du die nächste Situation startest.", "Gegenprobe am Tisch: Drücke ein Stück Knete flach und schiebe danach dein Mäppchen über den Tisch. Notiere für beides, was vorher und nachher anders ist."]
+    schritte: ["Wähle in der Simulation „Verformen“ und drücke „Kraft wirken lassen“. Notiere in Zeile 1 der Tabelle, was sich an der weichen Knete ändert.", "Drücke „Zurücksetzen“, wähle „Bewegen“ und lass die Kraft wirken. Notiere in Zeile 2, was sich am Wagen ändert. Wiederhole das mit „Richtung ändern“ für den Ball in Zeile 3.", "Gegenprobe am Tisch: Drücke ein Stück Knete flach und schiebe danach dein Mäppchen über den Tisch. Vergleiche, was sich jeweils ändert, mit Zeile 1 und 2 der Tabelle."]
   },
   "kr2": {
     klasse: 9, schulform: "Realschule NRW",
@@ -873,7 +873,7 @@ const HEFT_SEITEN = {
     name: "Was kann eine Kraft alles bewirken?",
     titel: "Mias Liste auf der Treppe",
     frage: "Was kann eine Kraft alles bewirken?",
-    schritte: ["Wähle in der Simulation „Schwamm ausdrücken“ und ordne die Situation der Gruppe „Verformen“, „Bewegen“ oder „Richtung“ zu. Mit „Zurücksetzen“ beginnst du die Sortierung neu.", "Sortiere danach „Einkaufswagen anschieben“, „Tennisball zurückschlagen“, „Getränkedose eindrücken“, „Fahrrad abbremsen“ und „Ball prallt an der Wand ab“. Trage in die Tabelle ein, zu welcher Gruppe Schwamm, Einkaufswagen, Fahrrad und Ball an der Wand gehören.", "Gegenprobe am Tisch: Drücke einen Schwamm zusammen, schiebe ihn über den Tisch und stoppe ihn mit der Hand. Benenne für jeden der drei Fälle die Wirkung."]
+    schritte: ["Wähle in der Simulation „Schwamm ausdrücken“ und ordne die Situation der Gruppe „Verformen“, „Bewegen“ oder „Richtung“ zu. Notiere die Gruppe in Zeile 1 der Tabelle. Mit „Zurücksetzen“ beginnst du die Sortierung neu.", "Ordne „Einkaufswagen anschieben“ zu und notiere die Gruppe in Zeile 2. Mache das ebenso mit „Fahrrad abbremsen“ für Zeile 3 und mit „Ball prallt an der Wand ab“ für Zeile 4. Ordne zuletzt „Tennisball zurückschlagen“ und „Getränkedose eindrücken“ zu.", "Gegenprobe am Tisch: Drücke einen Schwamm zusammen, schiebe ihn über den Tisch und stoppe ihn mit der Hand. Benenne für jeden der drei Fälle die Wirkung."]
   },
   "kr3": {
     klasse: 9, schulform: "Realschule NRW",
@@ -882,7 +882,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Kraft?",
     titel: "Der Strich, an dem der Zeiger stehen bleibt",
     frage: "Wie lässt sich eine Kraft messen?",
-    schritte: ["Drücke „Feder leeren“. Lies ab, was der Zeiger ohne Last anzeigt. Trage m = 0 g und diesen Wert in die erste Zeile ein.", "Hänge mit „Gewichtsstück anhängen (100 g)“ ein Stück nach dem anderen an, bis insgesamt 100 g, 200 g und 300 g hängen. Lies nach jedem Stück am Zeiger die Kraft F in Newton ab und trage Masse und Kraft ein.", "Nimm die Stücke mit „Gewichtsstück abnehmen“ einzeln wieder ab und prüfe, ob der Zeiger bei jeder Stufe denselben Wert zeigt wie beim Anhängen."]
+    schritte: ["Drücke „Feder leeren“. Lies ab, was der Zeiger ohne Last anzeigt, und notiere F in Zeile 1 der Tabelle.", "Hänge mit „Gewichtsstück anhängen (100 g)“ ein Stück an. Lies am Zeiger die Kraft F ab und notiere sie in Zeile 2. Wiederhole das mit dem zweiten Stück für Zeile 3 und mit dem dritten für Zeile 4.", "Nimm die Stücke mit „Gewichtsstück abnehmen“ einzeln wieder ab und prüfe, ob der Zeiger bei jeder Stufe denselben Wert zeigt wie beim Anhängen."]
   },
   "kr4": {
     klasse: 9, schulform: "Realschule NRW",
@@ -891,7 +891,7 @@ const HEFT_SEITEN = {
     name: "Warum wird eine Feder gleichmäßig länger? (Hooke)",
     titel: "Zwei Federn, die nicht gleich nachgeben",
     frage: "Dehnen sich eine weiche und eine harte Feder bei derselben Kraft gleich weit?",
-    schritte: ["Wähle „weiche Feder“. Hänge mit „+ 100 g“ nacheinander 100 g, 200 g, 300 g und 400 g an und drücke nach jedem Gewichtsstück „Messpunkt eintragen“. Trage die Werte für 100 g, 200 g und 400 g in die Tabelle ein.", "Rechne in jeder Zeile F/s aus. Lies dann in der Statuszeile die Steigung der Ausgleichsgeraden ab. Sie ist die Federkonstante D.", "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „harte Feder“ und wiederhole die vier Gewichtsstücke. Trage die Werte für 400 g in die letzte Zeile ein und rechne F/s aus. Vergleiche die neue Steigung mit der alten."]
+    schritte: ["Wähle „weiche Feder“, hänge mit „+ 100 g“ ein Stück an und drücke „Messpunkt eintragen“. Notiere F und s in Zeile 1 der Tabelle im Heft.", "Hänge weitere Stücke an und drücke jedes Mal „Messpunkt eintragen“. Notiere F und s bei 200 g in Zeile 2 und bei 400 g in Zeile 3. Rechne in jeder Zeile F/s aus und lies in der Statuszeile die Steigung D ab.", "Drücke „alles abnehmen“ und „Tabelle leeren“, wähle „harte Feder“ und wiederhole die vier Gewichtsstücke. Notiere F und s bei 400 g in Zeile 4 der Tabelle im Heft, rechne F/s aus und vergleiche die neue Steigung mit der alten."]
   },
   "kr5": {
     klasse: 9, schulform: "Realschule NRW",
@@ -900,7 +900,7 @@ const HEFT_SEITEN = {
     name: "Ist „schwer“ dasselbe wie „viel Masse“?",
     titel: "Ein Gewicht, zwei Anzeigen",
     frage: "Ist „schwer“ dasselbe wie „viel Masse“?",
-    schritte: ["Stelle in der Simulation nacheinander die Massen 100 g, 200 g und 500 g ein. Lies jedes Mal beide Anzeigen ab und trage Masse und Gewichtskraft in die Tabelle ein.", "Stelle danach 1 kg (letzte Tabellenzeile) und 2 kg ein. Prüfe mit dem Taschenrechner, ob F = m · g mit g = 9,8 N/kg zu den angezeigten Werten passt.", "Gegenprobe am Tisch: Wiege dein Mäppchen auf der Küchenwaage und hänge es dann an den Federkraftmesser. Vergleiche die beiden Anzeigen mit deiner Tabelle."]
+    schritte: ["Stelle in der Simulation die Masse 100 g ein. Lies beide Anzeigen ab und notiere F in Zeile 1 der Tabelle. Wiederhole das mit 200 g für Zeile 2 und mit 500 g für Zeile 3.", "Stelle 1 kg ein und notiere F in Zeile 4. Stelle danach 2 kg ein. Prüfe mit dem Taschenrechner, ob F = m · g mit g = 9,8 N/kg zu den angezeigten Werten passt.", "Gegenprobe am Tisch: Wiege dein Mäppchen auf der Küchenwaage und hänge es dann an den Federkraftmesser. Vergleiche die beiden Anzeigen mit deiner Tabelle."]
   },
   "kr6": {
     klasse: 9, schulform: "Realschule NRW",
@@ -909,7 +909,7 @@ const HEFT_SEITEN = {
     name: "Wäre ich auf dem Mond wirklich leichter?",
     titel: "Die schwerste Kiste und der Mond",
     frage: "Wäre ich auf dem Mond wirklich leichter?",
-    schritte: ["Wähle in der Simulation nacheinander „Mond“, „Erde“ und „Jupiter“. Lies jedes Mal den Ortsfaktor g, die Masse und die Gewichtskraft ab und trage die Werte in die Tabelle ein.", "Rechne für jeden Ort selbst mit F = m · g und vergleiche dein Ergebnis mit der Anzeige. Achte darauf, welche der drei Zahlen sich nie ändert.", "Stelle zum Schluss wieder „Erde“ ein und bestimme, wie oft die Gewichtskraft auf dem Mond in die Gewichtskraft auf der Erde passt."]
+    schritte: ["Wähle in der Simulation „Mond“. Lies g, m und F ab und notiere sie in Zeile 1 der Tabelle. Wiederhole das mit „Erde“ für Zeile 2 und mit „Jupiter“ für Zeile 3.", "Rechne für jeden Ort selbst mit F = m · g und vergleiche dein Ergebnis mit der Anzeige. Achte darauf, welche der drei Zahlen sich nie ändert.", "Stelle zum Schluss wieder „Erde“ ein und bestimme, wie oft die Gewichtskraft auf dem Mond in die Gewichtskraft auf der Erde passt."]
   },
   "kr7": {
     klasse: 9, schulform: "Realschule NRW",
@@ -918,7 +918,7 @@ const HEFT_SEITEN = {
     name: "Hat eine Kraft auch eine Richtung?",
     titel: "Dieselbe Zahl, zwei Wirkungen",
     frage: "Ist eine Kraft schon vollständig beschrieben, wenn man ihren Betrag kennt?",
-    schritte: ["Wähle die Richtung „→“ und stelle nacheinander die Beträge „2 N“, „4 N“ und „6 N“ ein. Achte darauf, wie sich die Länge des Pfeils dabei verändert.", "Bleibe bei 6 N und wähle „←“. Vergleiche Länge und Richtung des Pfeils mit dem Ergebnis bei „→“ und lies mit, wohin der Körper gezogen würde.", "Wähle nacheinander „↑“, „↓“ und „↗“ und beschreibe, wie sich der Pfeil dreht, während der eingestellte Betrag unverändert bleibt."]
+    schritte: ["Wähle die Richtung „→“ und den Betrag „2 N“. Notiere Länge und Richtung des Pfeils in Zeile 1 der Tabelle. Wiederhole das mit „4 N“ für Zeile 2 und mit „6 N“ für Zeile 3.", "Bleibe bei 6 N und wähle „←“. Notiere Länge und Richtung des Pfeils in Zeile 4 und vergleiche mit Zeile 3. Lies mit, wohin der Körper gezogen würde.", "Wähle nacheinander „↑“, „↓“ und „↗“ und beschreibe, wie sich der Pfeil dreht, während der eingestellte Betrag unverändert bleibt."]
   },
   "kr8": {
     klasse: 9, schulform: "Realschule NRW",
@@ -927,7 +927,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn zwei Kräfte gleichzeitig ziehen?",
     titel: "Zu zweit am Sofa",
     frage: "Was passiert, wenn zwei Kräfte gleichzeitig an einem Körper ziehen?",
-    schritte: ["Stelle F1 = 2 N und F2 = 2 N ein, beide nach rechts, und lies die Gesamtkraft ab. Erhöhe dann F1 mit „+ N“ auf 4 N und notiere den neuen Wert.", "Drehe F2 mit „Richtung“ nach links und stelle F1 = 3 N und F2 = 2 N ein. Notiere Betrag und Richtung der Gesamtkraft. Drehe danach F2 wieder nach rechts und F1 nach links.", "Gegenprobe am Tisch: Zieht zu zweit mit zwei Federwaagen am selben Haken eines Holzklotzes, erst beide in dieselbe Richtung, dann in entgegengesetzte Richtungen, und vergleicht die Anzeigen."]
+    schritte: ["Stelle F1 = 2 N und F2 = 2 N ein, beide nach rechts. Notiere Betrag und Richtung der Gesamtkraft in Zeile 1 der Tabelle. Erhöhe dann F1 mit „+ N“ auf 4 N und notiere die Gesamtkraft in Zeile 2.", "Drehe F2 mit „Richtung“ nach links und stelle F1 = 3 N und F2 = 2 N ein. Notiere die Gesamtkraft in Zeile 3. Drehe danach F2 wieder nach rechts und F1 nach links und notiere die Gesamtkraft in Zeile 4.", "Gegenprobe am Tisch: Zieht zu zweit mit zwei Federwaagen am selben Haken eines Holzklotzes, erst beide in dieselbe Richtung, dann in entgegengesetzte Richtungen, und vergleicht die Anzeigen."]
   },
   "kr9": {
     klasse: 9, schulform: "Realschule NRW",
@@ -936,7 +936,7 @@ const HEFT_SEITEN = {
     name: "Warum bewegt sich ein ruhender Körper nicht?",
     titel: "Die Lampe über der Kellertreppe",
     frage: "Warum bewegt sich ein ruhender Körper nicht, obwohl Kräfte an ihm ziehen?",
-    schritte: ["Stelle mit „– N“ und „+ N“ die Haltekraft auf 4 N ein. Lies ab, wie groß die Gesamtkraft ist und in welche Richtung sie zeigt.", "Erhöhe die Haltekraft mit „+ N“ auf 5 N und danach auf 6 N. Trage für jede Einstellung ein, ob die Lampe in Ruhe bleibt, sinkt oder steigt. Mit „zurück in die Mitte“ startest du neu.", "Gegenprobe am Tisch: Hänge ein Massestück an eine Federwaage und halte sie ruhig. Lies die Kraft ab, mit der die Federwaage nach oben zieht, und vergleiche sie mit der Gewichtskraft."]
+    schritte: ["Stelle mit „– N“ und „+ N“ die Haltekraft auf 4 N ein. Notiere in Zeile 1 der Tabelle, wie groß die Gesamtkraft ist, wohin sie zeigt und was die Lampe tut.", "Erhöhe die Haltekraft mit „+ N“ auf 5 N und notiere dasselbe in Zeile 2. Wiederhole das mit 6 N für Zeile 3. Mit „zurück in die Mitte“ startest du neu.", "Gegenprobe am Tisch: Hänge ein Massestück an eine Federwaage und halte sie ruhig. Lies die Kraft ab, mit der die Federwaage nach oben zieht, und vergleiche sie mit der Gewichtskraft."]
   },
   "kr10": {
     klasse: 9, schulform: "Realschule NRW",
@@ -945,7 +945,7 @@ const HEFT_SEITEN = {
     name: "Kraft und Gegenkraft: Warum drücke ich zurück?",
     titel: "Der Stoß auf dem Eis",
     frage: "Warum drückt mich das zurück, was ich selbst wegdrücke?",
-    schritte: ["Wähle „Eisläufer“ und löse mit „Abstoßen“ den Stoß aus. Lies für beide Läufer Masse und Geschwindigkeit ab und trage die Werte ein.", "Wähle nacheinander „Boot“ und „Rakete“ und starte jeweils mit „Abstoßen“. Nutze davor „Zurücksetzen“ und notiere wieder beide Massen und Geschwindigkeiten.", "Gegenprobe am Tisch: Blase einen Luftballon auf und lass ihn los. Beobachte, in welche Richtung die Luft ausströmt und in welche Richtung der Ballon fliegt."]
+    schritte: ["Wähle „Eisläufer“ und löse mit „Abstoßen“ den Stoß aus. Lies für beide Läufer m und v ab und notiere sie in Zeile 1 der Tabelle.", "Drücke „Zurücksetzen“, wähle „Boot“ und drücke „Abstoßen“. Notiere beide Massen und Geschwindigkeiten in Zeile 2. Wiederhole das mit „Rakete“ für Zeile 3.", "Gegenprobe am Tisch: Blase einen Luftballon auf und lass ihn los. Beobachte, in welche Richtung die Luft ausströmt und in welche Richtung der Ballon fliegt."]
   },
   "kr11": {
     klasse: 9, schulform: "Realschule NRW",
@@ -954,7 +954,7 @@ const HEFT_SEITEN = {
     name: "Warum geht ein Stein über eine Rampe leichter hoch?",
     titel: "Zwei Bretter über die Treppe",
     frage: "Warum geht ein Stein über eine Rampe leichter hoch als senkrecht?",
-    schritte: ["Wähle nacheinander „flach“, „mittel“ und „steil“. Lies jedes Mal die Zugkraft F ab und dazu, wie viel länger der Weg im Vergleich zur Höhe ist. Trage beides in die Tabelle ein.", "Vergleiche jede Zugkraft mit den 6 N, die zum senkrechten Heben nötig sind. Rechne für jede Rampe Zugkraft mal Weg-Faktor aus und vergleiche die drei Ergebnisse miteinander.", "Gegenprobe am Tisch: Ziehe ein Holzklötzchen mit der Federwaage einmal senkrecht 20 cm hoch und einmal über ein schräg gelegtes Brett auf dieselbe Höhe. Vergleiche beide Anzeigen."]
+    schritte: ["Wähle „flach“. Notiere die Zugkraft F in Zeile 1 der Tabelle und dazu, wie viel länger der Weg als die Höhe ist. Wiederhole das mit „mittel“ für Zeile 2 und mit „steil“ für Zeile 3.", "Vergleiche jede Zugkraft mit den 6 N, die zum senkrechten Heben nötig sind. Rechne für jede Rampe Zugkraft mal Weg-Faktor aus und vergleiche die drei Ergebnisse miteinander.", "Gegenprobe am Tisch: Ziehe ein Holzklötzchen mit der Federwaage einmal senkrecht 20 cm hoch und einmal über ein schräg gelegtes Brett auf dieselbe Höhe. Vergleiche beide Anzeigen."]
   },
   "kr12": {
     klasse: 9, schulform: "Realschule NRW",
@@ -963,7 +963,7 @@ const HEFT_SEITEN = {
     name: "Warum bremst mich der Boden aus? (Reibung)",
     titel: "Der Wagen bleibt zu früh stehen",
     frage: "Warum bleibt ein angestoßener Wagen von allein stehen?",
-    schritte: ["Wähle „Eis“ und starte den Wagen mit „Anschieben“. Lies die Rollstrecke in cm ab (am Bildschirm: „Auslaufweg“). Wähle dann „Zurücksetzen“ und wiederhole das Ganze für „Holz“ und „Teppich“.", "Vergleiche die drei Strecken. Bestimme, um welchen Faktor die Strecke auf Eis länger ist als auf Teppich, und ordne die drei Böden nach der Größe ihrer Reibungskraft.", "Gegenprobe am Tisch: Schiebe ein Mäppchen mit möglichst gleicher Startgeschwindigkeit einmal über die blanke Tischplatte und einmal über ein aufgelegtes Handtuch. Miss beide Strecken mit dem Lineal."]
+    schritte: ["Wähle „Eis“ und starte den Wagen mit „Anschieben“. Lies die Rollstrecke in cm ab (am Bildschirm: „Auslaufweg“) und notiere sie in Zeile 1 der Tabelle. Drücke „Zurücksetzen“ und wiederhole das mit „Holz“ für Zeile 2 und mit „Teppich“ für Zeile 3.", "Bestimme, um welchen Faktor die Strecke auf Eis länger ist als auf Teppich. Notiere in Zeile 1 bis 3, ob die Reibungskraft klein, mittel oder groß ist.", "Gegenprobe am Tisch: Schiebe ein Mäppchen mit möglichst gleicher Startgeschwindigkeit einmal über die blanke Tischplatte und einmal über ein aufgelegtes Handtuch. Miss beide Strecken mit dem Lineal."]
   },
   "bw1": {
     klasse: 9, schulform: "Realschule NRW",
@@ -972,7 +972,7 @@ const HEFT_SEITEN = {
     name: "Wie beschreibt man eine Bewegung? (Weg & Zeit)",
     titel: "Mias Liste auf dem Beifahrersitz",
     frage: "Welche Angaben braucht man, um eine Bewegung genau zu beschreiben?",
-    schritte: ["Tippe auf „Start“ und nimm während der Fahrt drei Momentaufnahmen auf: kurz nach dem Start, mitten in der Fahrt und deutlich später. Trage jedes Wertepaar aus Zeit und Weg in die Tabelle ein.", "Setze mit „Zurücksetzen“ zurück und lies vor dem Start ab: t = 0,0 s und s = 0 m. Starte erneut und halte eine Momentaufnahme bei etwa t = 3,2 s fest; dort zeigt die Simulation s = 26 m.", "Gegenprobe am Tisch: Lass eine Mitschülerin gleichmäßig durch den Klassenraum gehen. Ruft alle zwei Sekunden „jetzt“ und markiert die Stelle mit einem Klebestreifen am Boden."]
+    schritte: ["Drücke „Start“ und nimm kurz nach dem Start eine Momentaufnahme auf. Notiere t und s in Zeile 1 der Tabelle im Heft. Nimm mitten in der Fahrt die zweite für Zeile 2 und deutlich später die dritte für Zeile 3 auf.", "Setze mit „Zurücksetzen“ zurück und lies vor dem Start ab: t = 0,0 s und s = 0 m. Starte erneut und halte eine Momentaufnahme bei etwa t = 3,2 s fest; dort zeigt die Simulation s = 26 m.", "Gegenprobe am Tisch: Lass eine Mitschülerin gleichmäßig durch den Klassenraum gehen. Ruft alle zwei Sekunden „jetzt“ und markiert die Stelle mit einem Klebestreifen am Boden."]
   },
   "bw2": {
     klasse: 9, schulform: "Realschule NRW",
@@ -981,7 +981,7 @@ const HEFT_SEITEN = {
     name: "Was bedeutet „schnell“? (v = s/t)",
     titel: "Der Lieferwagen, der vorn liegt",
     frage: "Woran erkennt man sicher, welches von zwei Fahrzeugen das schnellere ist?",
-    schritte: ["Starte mit „Rennen starten“ und beobachte, welcher Wagen zuerst am Ziel ist. Notiere dazu die eingestellten Geschwindigkeiten A = 10 m/s und B = 6 m/s.", "Lies während des Rennens ab, wie weit A und B nach 3 s und nach 6 s gekommen sind, und trage die Wege ein. Teile danach jeden Weg durch die zugehörige Zeit.", "Gegenprobe am Tisch: Messt im Flur 20 m ab. Einer geht die Strecke, einer stoppt die Zeit. Rechnet v = s : t aus und vergleicht euer Ergebnis mit 6 m/s."]
+    schritte: ["Starte mit „Rennen starten“ und beobachte, welcher Wagen zuerst am Ziel ist. Lies dazu die eingestellten Geschwindigkeiten ab: A = 10 m/s und B = 6 m/s.", "Lies im Rennen ab, wie weit A und B nach 3 s gekommen sind, und notiere s in Zeile 1 und 2 der Tabelle. Notiere die Wege nach 6 s in Zeile 3 und 4. Teile danach jeden Weg durch seine Zeit und notiere v in der letzten Spalte.", "Gegenprobe am Tisch: Messt im Flur 20 m ab. Einer geht die Strecke, einer stoppt die Zeit. Rechnet v = s : t aus und vergleicht euer Ergebnis mit 6 m/s."]
   },
   "bw3": {
     klasse: 9, schulform: "Realschule NRW",
@@ -990,7 +990,7 @@ const HEFT_SEITEN = {
     name: "Was ist eine gleichförmige Bewegung?",
     titel: "Die Leitpfosten im Takt",
     frage: "Legt ein Körper bei konstanter Geschwindigkeit in gleichen Zeiten gleich lange Wege zurück?",
-    schritte: ["Wähle „langsam“ und starte mit „Start“. Halte mit „Stopp“ an, lies Geschwindigkeit v, Zeit und Weg ab und prüfe, ob v · t den abgelesenen Weg ergibt.", "Setze mit „Zurücksetzen“ zurück und wiederhole das mit „mittel“ und mit „schnell“. Vergleiche die drei Geschwindigkeiten und die Abstände der Marken miteinander.", "Gegenprobe am Tisch: Zieht ein Spielzeugauto an einer Schnur mit konstanter Geschwindigkeit über den Tisch und setzt alle zwei Sekunden einen Kreidepunkt."]
+    schritte: ["Wähle „langsam“ und starte mit „Start“. Halte mit „Stopp“ an und notiere v, t und s in Zeile 1 der Tabelle. Prüfe, ob v · t den abgelesenen Weg ergibt.", "Setze mit „Zurücksetzen“ zurück und wiederhole das mit „mittel“ für Zeile 2 und mit „schnell“ für Zeile 3. Vergleiche die drei Geschwindigkeiten und die Abstände der Marken miteinander.", "Gegenprobe am Tisch: Zieht ein Spielzeugauto an einer Schnur mit konstanter Geschwindigkeit über den Tisch und setzt alle zwei Sekunden einen Kreidepunkt."]
   },
   "bw4": {
     klasse: 9, schulform: "Realschule NRW",
@@ -999,7 +999,7 @@ const HEFT_SEITEN = {
     name: "Wie lese ich aus einem Diagramm, was ein Körper gerade tut?",
     titel: "Mias Zettel im Handschuhfach",
     frage: "Was verrät die Steilheit einer Linie im Weg-Zeit-Diagramm?",
-    schritte: ["Stelle in der Simulation „steil“ ein und starte die Anzeige mit „Bewegung zeigen“. Lies die angegebene Steigung v = Δs/Δt ab und trage sie in die Tabelle ein.", "Setze mit „Zurücksetzen“ zurück und wiederhole das mit „flach“ und mit „waagerecht“. Vergleiche jedes Mal, welchen Weg der Körper in derselben Zeit zurücklegt.", "Gegenprobe am Tisch: Lasst eine Person mit konstanter Geschwindigkeit durch den Raum gehen, stoppt die Zeit alle 2 m und tragt Weg über Zeit auf kariertes Papier auf."]
+    schritte: ["Stelle in der Simulation „steil“ ein und starte die Anzeige mit „Bewegung zeigen“. Lies die angegebene Steigung v = Δs/Δt ab und notiere sie in Zeile 1 der Tabelle.", "Setze mit „Zurücksetzen“ zurück und wiederhole das mit „flach“ für Zeile 2 und mit „waagerecht“ für Zeile 3. Vergleiche jedes Mal, welchen Weg der Körper in derselben Zeit zurücklegt.", "Gegenprobe am Tisch: Lasst eine Person mit konstanter Geschwindigkeit durch den Raum gehen, stoppt die Zeit alle 2 m und tragt Weg über Zeit auf kariertes Papier auf."]
   },
   "bw5": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1008,7 +1008,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn ein Körper immer schneller wird?",
     titel: "Zwischen zwei Leitpfosten",
     frage: "Woran erkennt man, dass ein Körper immer schneller wird?",
-    schritte: ["Wähle „Gas geben (beschleunigt)“ und trage Zeit, Geschwindigkeit und Weg vor dem Start in die Tabelle ein. Starte dann mit „Start“, halte mit „Stopp“ an und trage die Werte beim Anhalten ein.", "Setze mit „Zurücksetzen“ zurück, wähle „gleichförmig“ und lies vor dem Start noch einmal ab. Starte dann und vergleiche, wie die Abstände der Marken in beiden Fällen liegen.", "Notiere für „Gas geben (beschleunigt)“ den angezeigten Wert von a und prüfe, ob a · t ungefähr deine abgelesene Geschwindigkeit ergibt."]
+    schritte: ["Wähle „Gas geben (beschleunigt)“ und notiere t, v und s vor dem Start in Zeile 1 der Tabelle. Starte mit „Start“, halte mit „Stopp“ an und notiere t, v und s in Zeile 2.", "Setze mit „Zurücksetzen“ zurück, wähle „gleichförmig“ und notiere t, v und s vor dem Start in Zeile 3. Starte dann und vergleiche die Abstände der Marken in beiden Fällen.", "Lies für „Gas geben (beschleunigt)“ den angezeigten Wert von a ab und prüfe, ob a · t ungefähr dein v aus Zeile 2 ergibt."]
   },
   "bw6": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1017,7 +1017,7 @@ const HEFT_SEITEN = {
     name: "Warum wird ein Auto gleichmäßig schneller – und was heißt das in Zahlen?",
     titel: "Der Kleinwagen ist längst weg",
     frage: "Wie schnell ist ein Körper nach einer bestimmten Zeit?",
-    schritte: ["Wähle „1 m/s²“ und starte mit „Start“. Halte mit „Stopp“ an, lies Zeit und Geschwindigkeit ab und rechne sie mit v = a · t selbst nach.", "Setze mit „Zurücksetzen“ zurück und wiederhole den Versuch mit „2 m/s²“ und mit „3 m/s²“. Trage für alle drei Einstellungen ein, wie viel Geschwindigkeit in einer Sekunde dazukommt.", "Gegenprobe am Tisch: Lasst einen Wagen eine schräge Schiene hinunterrollen und stoppt die Zeit für den ersten und für den zweiten Meter. Vergleicht die beiden Zeiten."]
+    schritte: ["Wähle „1 m/s²“ und starte mit „Start“. Halte mit „Stopp“ an und notiere t, v und die Zunahme von v je Sekunde in Zeile 1 der Tabelle. Rechne v mit v = a · t selbst nach.", "Setze mit „Zurücksetzen“ zurück und wiederhole den Versuch mit „2 m/s²“ für Zeile 2 und mit „3 m/s²“ für Zeile 3.", "Gegenprobe am Tisch: Lasst einen Wagen eine schräge Schiene hinunterrollen und stoppt die Zeit für den ersten und für den zweiten Meter. Vergleicht die beiden Zeiten."]
   },
   "bw7": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1026,7 +1026,7 @@ const HEFT_SEITEN = {
     name: "Was ist der Unterschied zwischen schneller werden und langsamer werden?",
     titel: "Das Schild mit der 30",
     frage: "Was unterscheidet Schnellerwerden von Langsamerwerden?",
-    schritte: ["Wähle „Gas geben (+a)“, lies v und a vor dem Start ab und drücke dann „Start“. Halte mit „Stopp“ an, lies Zeit und Geschwindigkeit ab und notiere den Wert von a.", "Drücke „Zurücksetzen“, wähle „Bremsen (−a)“ und lies den Startwert von v und das Vorzeichen von a ab.", "Rechne beide Fälle nach: beim Gasgeben mit v = a · t, beim Bremsen für t = 3,2 s mit v = Startwert + a · t. Vergleiche Betrag und Vorzeichen von a."]
+    schritte: ["Wähle „Gas geben (+a)“ und notiere t, a und v vor dem Start in Zeile 1 der Tabelle. Drücke „Start“, halte mit „Stopp“ an und notiere t, a und v in Zeile 2.", "Drücke „Zurücksetzen“, wähle „Bremsen (−a)“ und notiere t, a und v vor dem Start in Zeile 3. Achte auf das Vorzeichen von a.", "Rechne beide Fälle nach: beim Gasgeben mit v = a · t, beim Bremsen für t = 3,2 s mit v = Startwert + a · t. Notiere t, a und dein v für das Bremsen in Zeile 4 und vergleiche Betrag und Vorzeichen von a."]
   },
   "bw8": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1035,7 +1035,7 @@ const HEFT_SEITEN = {
     name: "Warum braucht ein Auto zum Bremsen viel mehr Platz, als man denkt?",
     titel: "Das Reh am Straßenrand",
     frage: "Warum braucht ein Auto zum Bremsen viel mehr Platz, als man denkt?",
-    schritte: ["Wähle nacheinander „30 km/h“ und „50 km/h“ und lies jeweils Reaktionsweg, Bremsweg und Anhalteweg ab. Trage jedes Mal die drei Werte in die Tabelle ein.", "Wähle „100 km/h“, also die doppelte Geschwindigkeit, und vergleiche die drei Werte mit denen bei 50 km/h.", "Drücke „Gefahr! (Start)“ und beobachte, an welcher Stelle die Reaktionsphase endet und die Bremsphase beginnt."]
+    schritte: ["Wähle „30 km/h“. Lies Reaktionsweg, Bremsweg und Anhalteweg ab und notiere sie in Zeile 1 der Tabelle. Wiederhole das mit „50 km/h“ für Zeile 2.", "Wähle „100 km/h“, also die doppelte Geschwindigkeit. Notiere die drei Wege in Zeile 3 und vergleiche sie mit Zeile 2.", "Drücke „Gefahr! (Start)“ und beobachte, an welcher Stelle die Reaktionsphase endet und die Bremsphase beginnt."]
   },
   "bw9": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1044,7 +1044,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt ein schwerer Stein nicht schneller als ein leichter?",
     titel: "Ein Klacken auf der Raststätte",
     frage: "Fällt ein schwerer Stein schneller als ein leichter?",
-    schritte: ["Wähle „1 kg“ und drücke „Loslassen“. Lies ab, nach welcher Zeit die Kugeln unten sind, wie weit sie gefallen sind und welche Geschwindigkeit v sie dann haben.", "Drücke „Zurücksetzen“, wähle nacheinander „5 kg“ und „10 kg“ und vergleiche die Fallzeiten mit deinem ersten Wert. Trage zuletzt die Werte der Vergleichskugel „leicht (0,1 kg)“ ein.", "Gegenprobe am Tisch: Lass ein Schlüsselbund und einen Radiergummi aus gleicher Höhe gleichzeitig los und höre auf den Aufschlag."]
+    schritte: ["Wähle „1 kg“ und drücke „Loslassen“. Lies ab, nach welcher Zeit die Kugeln unten sind, wie weit sie gefallen sind und wie schnell sie dann sind. Notiere t, s und v in Zeile 1 der Tabelle.", "Drücke „Zurücksetzen“, wähle „5 kg“, lass los und notiere t, s und v in Zeile 2. Wiederhole das mit „10 kg“ für Zeile 3 und vergleiche die Fallzeiten mit Zeile 1. Notiere zuletzt die Werte der Vergleichskugel „leicht (0,1 kg)“ in Zeile 4.", "Gegenprobe am Tisch: Lass ein Schlüsselbund und einen Radiergummi aus gleicher Höhe gleichzeitig los und höre auf den Aufschlag."]
   },
   "bw10": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1053,7 +1053,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt eine Feder langsamer als ein Stein – liegt es wirklich am Gewicht?",
     titel: "Der Bon, der trudelt",
     frage: "Fällt eine Feder auch ohne Luft langsamer als ein Stein?",
-    schritte: ["Wähle „mit Luft“ und drücke „Loslassen“. Lies ab, nach welcher Zeit der Stein unten ist und nach welcher die Feder, und trage beide Zeiten ein.", "Drücke „Zurücksetzen“, wähle „Vakuum (keine Luft)“ und lasse noch einmal los. Trage die Fallzeiten von Stein und Feder ein und vergleiche sie mit denen aus Schritt 1.", "Gegenprobe am Tisch: Lasse ein Blatt Papier und ein Buch gleichzeitig los. Lege das Blatt danach flach oben auf das Buch und wiederhole den Versuch."]
+    schritte: ["Wähle „mit Luft“ und drücke „Loslassen“. Lies ab, nach welcher Zeit der Stein unten ist und nach welcher die Feder. Notiere beide Zeiten in Zeile 1 und 2 der Tabelle und ob beide gleichzeitig unten sind.", "Drücke „Zurücksetzen“, wähle „Vakuum (keine Luft)“ und lasse noch einmal los. Notiere die Fallzeiten von Stein und Feder ebenso in Zeile 3 und 4 und vergleiche mit Zeile 1 und 2.", "Gegenprobe am Tisch: Lasse ein Blatt Papier und ein Buch gleichzeitig los. Lege das Blatt danach flach oben auf das Buch und wiederhole den Versuch."]
   },
   "bw11": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1062,7 +1062,7 @@ const HEFT_SEITEN = {
     name: "Warum bewegt sich nichts von allein schneller – wer oder was steckt dahinter?",
     titel: "Bis an die Wand",
     frage: "Warum wird ein angestoßener Körper von allein wieder langsamer?",
-    schritte: ["Wähle „Tisch“ und drücke „Anstoßen“. Lies ab, nach welcher Zeit der Wagen still steht und welchen Weg er zurückgelegt hat, und trage beides ein.", "Drücke „Zurücksetzen“ und wiederhole den Anstoß mit „Eis“ und danach mit „Weltall“. Halte fest, was die Simulation für den Weltall-Fall anzeigt.", "Vergleiche die drei Zeilen: Die Startgeschwindigkeit war jedes Mal gleich (am Bildschirm: „Anstoß mit 8 m/s“). Notiere, was verändert wurde und was daraus für einen Wagen ganz ohne Reibung folgt."]
+    schritte: ["Wähle „Tisch“ und drücke „Anstoßen“. Lies ab, nach welcher Zeit der Wagen still steht und welchen Weg er zurückgelegt hat. Notiere t und s in Zeile 1 der Tabelle.", "Drücke „Zurücksetzen“ und wiederhole den Anstoß mit „Eis“ für Zeile 2. Wiederhole ihn danach mit „Weltall“ und notiere in Zeile 3, was die Simulation anzeigt.", "Vergleiche die drei Zeilen: Die Startgeschwindigkeit war jedes Mal gleich (am Bildschirm: „Anstoß mit 8 m/s“). Beschreibe, was verändert wurde und was daraus für einen Wagen ganz ohne Reibung folgt."]
   },
   "bw12": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1071,7 +1071,7 @@ const HEFT_SEITEN = {
     name: "Warum werde ich beim Anfahren in den Sitz gedrückt und beim Bremsen nach vorn geworfen?",
     titel: "Mia hält sich nicht fest",
     frage: "Warum drückt es mich beim Anfahren in den Sitz und beim Bremsen nach vorn?",
-    schritte: ["Wähle nacheinander „steht“, „Anfahren“, „gleichmäßig fahren“ und „Bremsen“. Lies jeweils a und v ab und notiere, ob dein Körper dabei etwas spürt.", "Wähle „Anfahren“ und „Bremsen“ noch einmal. Vergleiche die beiden Werte für a, achte auf das Vorzeichen und darauf, wohin dein Körper gedrückt wird.", "Gegenprobe am Tisch: Lege einen Radiergummi auf ein Buch und ziehe das Buch ruckartig nach vorn. Beobachte, wohin der Radiergummi kippt."]
+    schritte: ["Wähle „steht“. Notiere a und v in Zeile 1 der Tabelle und dazu, ob dein Körper etwas spürt. Wiederhole das mit „Anfahren“ für Zeile 2.", "Wähle „gleichmäßig fahren“ und notiere dasselbe in Zeile 3. Wiederhole das mit „Bremsen“ für Zeile 4. Vergleiche a in Zeile 2 und 4, achte auf das Vorzeichen und darauf, wohin dein Körper gedrückt wird.", "Gegenprobe am Tisch: Lege einen Radiergummi auf ein Buch und ziehe das Buch ruckartig nach vorn. Beobachte, wohin der Radiergummi kippt."]
   },
   "bw13": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1080,7 +1080,7 @@ const HEFT_SEITEN = {
     name: "Warum fühlt man sich im freien Fall schwerelos, obwohl die Erde weiter zieht?",
     titel: "Die Waage im Aufzug",
     frage: "Warum fühlt man sich im freien Fall schwerelos, obwohl die Gewichtskraft weiter wirkt?",
-    schritte: ["Wähle „steht still“ und lies ab, was die Waage anzeigt und welche Masse darunter steht.", "Wähle nacheinander „beschleunigt nach oben“, „beschleunigt nach unten“ und „Seil reißt: freier Fall“ und trage jede Anzeige in die Tabelle ein.", "Gegenprobe am Tisch: Stelle dich auf eine Personenwaage, gehe langsam in die Hocke und drücke dich wieder hoch. Beobachte, wann der Zeiger über und wann er unter deinem Ruhewert steht."]
+    schritte: ["Wähle „steht still“. Lies ab, was die Waage anzeigt und welche Masse darunter steht. Notiere die Anzeige in Zeile 1 der Tabelle.", "Wähle „beschleunigt nach oben“ und notiere die Anzeige in Zeile 2. Wiederhole das mit „beschleunigt nach unten“ für Zeile 3 und mit „Seil reißt: freier Fall“ für Zeile 4.", "Gegenprobe am Tisch: Stelle dich auf eine Personenwaage, gehe langsam in die Hocke und drücke dich wieder hoch. Beobachte, wann der Zeiger über und wann er unter deinem Ruhewert steht."]
   },
   "bw14": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1089,7 +1089,7 @@ const HEFT_SEITEN = {
     name: "Warum schweben Astronauten in der Raumstation, obwohl sie ständig „fallen“?",
     titel: "Vierhundert Kilometer über dem Wohnzimmer",
     frage: "Warum schweben Astronauten, obwohl sie ständig fallen?",
-    schritte: ["Stelle die Abschussgeschwindigkeit quer nacheinander auf „5 km/s“ und auf „7,7 km/s“ ein und beschreibe, was mit der Bahn geschieht.", "Wähle danach „9 km/s“ und „11 km/s“ und trage für jede Einstellung ein, ob der Körper zurückfällt, umläuft oder entkommt.", "Gegenprobe am Tisch: Rolle eine Kugel unterschiedlich schnell über die Tischkante und miss, wie weit sie fliegt, bevor sie den Boden trifft."]
+    schritte: ["Stelle die Abschussgeschwindigkeit quer auf „5 km/s“ ein. Notiere in Zeile 1 der Tabelle, was mit der Bahn geschieht. Wiederhole das mit „7,7 km/s“ für Zeile 2.", "Wähle danach „9 km/s“ und notiere in Zeile 3, ob der Körper zurückfällt, umläuft oder entkommt. Wiederhole das mit „11 km/s“ für Zeile 4.", "Gegenprobe am Tisch: Rolle eine Kugel unterschiedlich schnell über die Tischkante und miss, wie weit sie fliegt, bevor sie den Boden trifft."]
   },
   "bw15": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1098,7 +1098,7 @@ const HEFT_SEITEN = {
     name: "Wie schafft es eine Rakete, sich im Weltall abzustoßen, wo doch nichts da ist?",
     titel: "Der Stuhl rollt nach hinten",
     frage: "Wie stößt sich eine Rakete im Weltall ab, wo doch nichts da ist?",
-    schritte: ["Stelle Ausgestoßene Gasmasse auf 20 kg und Geschwindigkeit des Gases auf 600 m/s ein, wähle „Gas ausstoßen“ und lies ab, wie schnell die Rakete wird.", "Wähle „Zurücksetzen“, halbiere die Ausgestoßene Gasmasse auf 10 kg und stoße erneut aus; wiederhole das anschließend mit 300 m/s bei 20 kg.", "Gegenprobe am Tisch: Setze dich auf einen Bürostuhl, halte einen schweren Ball und stoße ihn kräftig von dir weg. Beobachte, wohin sich der Stuhl bewegt."]
+    schritte: ["Stelle Ausgestoßene Gasmasse auf 20 kg und Geschwindigkeit des Gases auf 600 m/s ein und wähle „Gas ausstoßen“. Notiere in Zeile 1 der Tabelle, wie schnell die Rakete wird.", "Wähle „Zurücksetzen“, halbiere die Ausgestoßene Gasmasse auf 10 kg und stoße erneut aus. Notiere v der Rakete in Zeile 2. Wiederhole das mit 300 m/s bei 20 kg für Zeile 3.", "Gegenprobe am Tisch: Setze dich auf einen Bürostuhl, halte einen schweren Ball und stoße ihn kräftig von dir weg. Beobachte, wohin sich der Stuhl bewegt."]
   },
   "en1": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1107,7 +1107,7 @@ const HEFT_SEITEN = {
     name: "Was ist Energie – und wie misst man sie?",
     titel: "Sechs Sachen, ein einziges Maß",
     frage: "Was haben so verschiedene Energiespeicher miteinander gemeinsam?",
-    schritte: ["Wähle nacheinander „gespannte Sprungfeder“, „rollender Fußball“ und „Kiste auf dem Regal“. Trage für jeden ein, welche Energieform dort steht und wie viele Joule.", "Wähle danach „volle AA-Batterie“, „Tasse heißer Tee“ und „Butterbrot“ und trage sie ebenso ein.", "Lies in der Simulation bei jedem Speicher an der Skala rechts ab, wie hoch er den 10-kg-Sack heben würde, und ordne am Ende alle sechs nach ihrer Energie."]
+    schritte: ["Wähle „gespannte Sprungfeder“ und lies an der Skala rechts die Hubhöhe h ab. Notiere Energieform, E und h in Zeile 1 der Tabelle. Mache dasselbe mit „rollender Fußball“ (Zeile 1).", "Wähle „Kiste auf dem Regal“ und notiere Energieform, E und h in Zeile 2. Mache dasselbe mit „volle AA-Batterie“ (Zeile 2) und mit „Tasse heißer Tee“ und „Butterbrot“ (Zeile 3).", "Ordne am Ende alle sechs Speicher nach ihrer Energie."]
   },
   "en2": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1116,7 +1116,7 @@ const HEFT_SEITEN = {
     name: "Wann wird Arbeit verrichtet? (W = F · s)",
     titel: "Schieben, tragen, heben",
     frage: "Wann wird physikalisch Arbeit verrichtet – und wann nicht?",
-    schritte: ["Wähle „Schieben“, stelle F = 100 N und s = 4 m ein und drücke „Ausführen“. Achte auf die beiden Pfeile im Bild und trage die Arbeit ein.", "Wähle „Waagerecht tragen“ mit m = 20 kg und s = 4 m. Vergleiche die Richtung des roten Kraftpfeils mit der des blauen Wegpfeils und notiere, was dabei für die Arbeit herauskommt.", "Wähle „Hochheben“ mit m = 20 kg und h = 2 m. Halte fest, wie die Pfeile jetzt zueinander stehen und welche Arbeit angezeigt wird."]
+    schritte: ["Wähle „Schieben“, stelle F = 100 N und s = 4 m ein und drücke „Ausführen“. Notiere die Richtung der beiden Pfeile und W in Zeile 1 der Tabelle.", "Wähle „Waagerecht tragen“ mit m = 20 kg und s = 4 m. Vergleiche die Richtung des roten Kraftpfeils mit der des blauen Wegpfeils. Notiere die Richtungen und W in Zeile 2.", "Wähle „Hochheben“ mit m = 20 kg und h = 2 m. Notiere in Zeile 3, wie die Pfeile jetzt zueinander stehen und welche Arbeit W angezeigt wird."]
   },
   "en3": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1125,7 +1125,7 @@ const HEFT_SEITEN = {
     name: "Hubarbeit: W = m · g · h",
     titel: "Drei Stockwerke, kein Aufzug",
     frage: "Wovon hängt die Arbeit ab, die beim Heben eines Körpers verrichtet wird?",
-    schritte: ["Wähle „Hochheben“ und stelle m = 20 kg bei h = 1,0 m ein. Notiere die Arbeit, verdopple dann die Höhe auf h = 2,0 m und danach auf h = 4,0 m.", "Stelle die Höhe fest auf h = 3,0 m und verändere nur die Masse: 10 kg, 20 kg, 40 kg. Trage jedes Ergebnis ein.", "Gegenprobe am Tisch: Hebe dein Mäppchen einmal auf die Tischplatte und einmal aufs Regal darüber. Beschreibe, woran du merkst, welcher Weg mehr Arbeit kostet."]
+    schritte: ["Wähle „Hochheben“ und stelle m = 20 kg bei h = 1,0 m ein. Notiere W in Zeile 1 der Tabelle. Verdopple die Höhe auf h = 2,0 m und notiere W ebenfalls in Zeile 1. Stelle h = 4,0 m ein und notiere W in Zeile 2.", "Stelle die Höhe fest auf h = 3,0 m und die Masse auf m = 10 kg ein. Notiere W in Zeile 3. Mache dasselbe mit 40 kg und prüfe auch 20 kg.", "Gegenprobe am Tisch: Hebe dein Mäppchen einmal auf die Tischplatte und einmal aufs Regal darüber. Beschreibe, woran du merkst, welcher Weg mehr Arbeit kostet."]
   },
   "en4": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1134,7 +1134,7 @@ const HEFT_SEITEN = {
     name: "Lageenergie: E = m · g · h",
     titel: "Oben auf dem Schrank",
     frage: "Wovon hängt die Energie eines angehobenen Körpers ab?",
-    schritte: ["Stelle m = 5 kg und h = 3 m ein und drücke „Fallen lassen“. Notiere die angezeigte Lageenergie und die Tiefe, die der Pfahl in den Boden getrieben wird.", "Drücke „×2 Masse“ und lasse erneut fallen. Setze danach mit „zurücksetzen“ alles zurück, drücke „×2 Höhe“ und lasse wieder fallen. Trage beide Ergebnisse ein.", "Vergleiche die beiden Verdopplungen miteinander: Zählt die Masse stärker, die Höhe stärker, oder sind beide gleich wichtig?"]
+    schritte: ["Stelle m = 5 kg und h = 3 m ein und drücke „Fallen lassen“. Notiere die Lageenergie E und die Tiefe des Pfahls in Zeile 1 der Tabelle.", "Drücke „×2 Masse“, lasse erneut fallen und notiere E und die Tiefe in Zeile 2. Setze mit „zurücksetzen“ zurück, drücke „×2 Höhe“ und lasse fallen. Notiere E und die Tiefe in Zeile 3.", "Vergleiche die beiden Verdopplungen miteinander: Zählt die Masse stärker, die Höhe stärker, oder sind beide gleich wichtig?"]
   },
   "en5": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1143,7 +1143,7 @@ const HEFT_SEITEN = {
     name: "Bewegungsenergie: E = ½ · m · v²",
     titel: "Der Ball im Flur",
     frage: "Zählen Masse und Geschwindigkeit gleich stark für die Bewegungsenergie?",
-    schritte: ["Stelle m = 4 kg und v = 4 m/s ein und drücke „Rollen lassen“. Notiere die Energie und die Strecke, um die der Klotz geschoben wird.", "Drücke „×2 Masse“ und lasse erneut rollen. Setze danach mit „zurücksetzen“ zurück, drücke „×2 v“ und lasse noch einmal rollen.", "Vergleiche die beiden Schiebestrecken miteinander. Halte fest, um welchen Faktor die Energie jeweils gewachsen ist."]
+    schritte: ["Stelle m = 4 kg und v = 4 m/s ein und drücke „Rollen lassen“. Notiere E und die Strecke s, um die der Klotz geschoben wird, in Zeile 1 der Tabelle im Heft.", "Drücke „×2 Masse“, lasse erneut rollen und notiere E und s in Zeile 2. Setze mit „zurücksetzen“ zurück, drücke „×2 v“ und lasse noch einmal rollen. Notiere E und s in Zeile 3.", "Vergleiche die Schiebestrecken in Zeile 2 und 3 miteinander. Bestimme, um welchen Faktor die Energie jeweils gewachsen ist."]
   },
   "en6": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1152,7 +1152,7 @@ const HEFT_SEITEN = {
     name: "Wohin geht die Energie beim Ausrollen?",
     titel: "Warum der Ball einfach liegen bleibt",
     frage: "Wohin geht die Bewegungsenergie, wenn ein Körper von allein stehen bleibt?",
-    schritte: ["Wähle „Ball rollt aus“, stelle v = 2 m/s ein und drücke „Los“. Notiere die Bewegungsenergie am Anfang und die Erwärmung, die am Ende angezeigt wird.", "Stelle am Regler „Anfangstempo v“ nacheinander 6 m/s und 8 m/s ein und drücke jedes Mal „Los“. Trage die Erwärmung ein und achte darauf, ob sie zu spüren wäre.", "Beobachte während des Rollens den Balken oben: Wie verändert sich das Verhältnis von blauem und rotem Anteil, und wie ändert sich dabei die Gesamtlänge?"]
+    schritte: ["Wähle „Ball rollt aus“, stelle v = 2 m/s ein und drücke „Los“. Notiere E am Anfang und die Erwärmung ΔT am Ende in Zeile 1 der Tabelle.", "Stelle am Regler „Anfangstempo v“ 6 m/s ein, drücke „Los“ und notiere E und ΔT in Zeile 2. Wiederhole das mit 8 m/s für Zeile 3. Achte darauf, ob die Erwärmung zu spüren wäre.", "Beobachte während des Rollens den Balken oben: Wie verändert sich das Verhältnis von blauem und rotem Anteil, und wie ändert sich dabei die Gesamtlänge?"]
   },
   "en7": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1161,7 +1161,7 @@ const HEFT_SEITEN = {
     name: "Der Energieerhaltungssatz",
     titel: "Der Ball springt nicht mehr so hoch",
     frage: "Verschwindet Energie beim Springen, oder wechselt sie nur die Form?",
-    schritte: ["Stelle die Höhe h = 20 m und die Masse m = 2 kg ein. Beobachte im Diagramm, wie sich die Kurven für Epot (Lageenergie) und Ekin (Bewegungsenergie) abwechseln, und halte fest, wann welche am größten ist. Lies beide Werte nacheinander ganz oben, auf halber Höhe und kurz vor dem Aufprall ab und trage sie ein.", "Achte auf den Ball selbst: Notiere die Sprunghöhe nach dem ersten und nach dem zweiten Aufprall.", "Verändere die Masse auf m = 8 kg und schaue, ob sich am Verhältnis von Epot und Ekin etwas ändert oder nur an den Zahlenwerten."]
+    schritte: ["Stelle die Höhe h = 20 m und die Masse m = 2 kg ein. Beobachte im Diagramm, wie sich die Kurven für Epot (Lageenergie) und Ekin (Bewegungsenergie) abwechseln. Lies ganz oben Epot und Ekin ab und notiere sie in Zeile 1 der Tabelle.", "Notiere Epot und Ekin auf halber Höhe in Zeile 2 und kurz vor dem Aufprall in Zeile 3. Achte dann auf den Ball: Wie hoch springt er nach dem ersten und nach dem zweiten Aufprall?", "Verändere die Masse auf m = 8 kg und schaue, ob sich am Verhältnis von Epot und Ekin etwas ändert oder nur an den Zahlenwerten."]
   },
   "en8": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1170,7 +1170,7 @@ const HEFT_SEITEN = {
     name: "Umwandlung an der Achterbahn",
     titel: "Vom Balkon aus sieht man die Kirmes",
     frage: "Warum braucht eine Achterbahn nach dem ersten Berg keinen Motor mehr?",
-    schritte: ["Stelle h₀ = 30 m und h₂ = 20 m ein und drücke „Losfahren“. Halte am Starthügel, im Tal und auf dem zweiten Hügel jeweils Höhe, Geschwindigkeit und die beiden Energien fest.", "Achte dabei auf den Balken oben: Notiere, wie sich der violette und der rote Anteil verschieben und ob sich die Gesamtlänge dabei ändert.", "Stelle nun h₂ = 40 m ein, also höher als den Starthügel, und fahre erneut los. Beschreibe, was passiert und warum das gar nicht anders sein kann."]
+    schritte: ["Stelle h₀ = 30 m und h₂ = 20 m ein. Notiere vor dem Start h, v und die beiden Energien in Zeile 1 der Tabelle. Drücke dann „Losfahren“.", "Notiere h, v und die beiden Energien im Tal in Zeile 2 und auf dem zweiten Hügel in Zeile 3. Achte dabei auf den Balken oben: Wie verschieben sich der violette und der rote Anteil? Ändert sich die Gesamtlänge?", "Stelle nun h₂ = 40 m ein, also höher als den Starthügel, und fahre erneut los. Beschreibe, was passiert und warum das gar nicht anders sein kann."]
   },
   "en9": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1179,7 +1179,7 @@ const HEFT_SEITEN = {
     name: "Warum wird beim Bremsen alles warm?",
     titel: "Heiße Felgen am Berg",
     frage: "Warum wird beim Bremsen alles warm?",
-    schritte: ["Wähle „Fahrrad bremsen“, stelle v = 3 m/s ein und drücke „Los“. Notiere die Bewegungsenergie und die Erwärmung der Bremse.", "Stelle nacheinander v = 8 m/s und v = 12 m/s ein und bremse jedes Mal. Trage beide Ergebnisse in die Tabelle ein.", "Wechsle zurück zu „Ball rollt aus“ mit v = 8 m/s und vergleiche die Erwärmung mit der des Fahrrads bei gleicher Geschwindigkeit."]
+    schritte: ["Wähle „Fahrrad bremsen“, stelle v = 3 m/s ein und drücke „Los“. Notiere die Bewegungsenergie und die Erwärmung der Bremse in Zeile 1 der Tabelle.", "Stelle v = 8 m/s ein, bremse und notiere beide Werte in Zeile 2. Wiederhole das mit v = 12 m/s für Zeile 3.", "Wechsle zurück zu „Ball rollt aus“ mit v = 8 m/s. Notiere beide Werte ebenfalls in Zeile 3 und vergleiche die Erwärmung mit der des Fahrrads in Zeile 2."]
   },
   "en10": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1188,7 +1188,7 @@ const HEFT_SEITEN = {
     name: "Der Wirkungsgrad η",
     titel: "Was die alte Lampe wirklich macht",
     frage: "Welcher Anteil der zugeführten Energie wird als Nutzenergie abgegeben?",
-    schritte: ["Lass die zugeführte Energie (am Bildschirm: „hineingesteckte Energie“) auf 1000 J stehen und wähle „Glühlampe“. Notiere, wie viel davon Licht wird und wie viel Wärme.", "Wähle danach „LED-Lampe“, „Benzinmotor“ und „Elektromotor“ und trage jedes Mal den Wirkungsgrad und die beiden Anteile ein.", "Stelle zuletzt die zugeführte Energie auf 2000 J und prüfe an der Glühlampe, ob sich der Wirkungsgrad dadurch ändert oder nur die Zahlenwerte."]
+    schritte: ["Lass die zugeführte Energie (am Bildschirm: „hineingesteckte Energie“) auf 1000 J stehen und wähle „Glühlampe“. Notiere η, das Licht als Nutzenergie und die Wärme in Zeile 1 der Tabelle.", "Wähle „LED-Lampe“ und notiere η und die beiden Anteile in Zeile 2. Mache dasselbe mit „Benzinmotor“ und mit „Elektromotor“, beide in Zeile 3.", "Stelle zuletzt die zugeführte Energie auf 2000 J und prüfe an der Glühlampe, ob sich der Wirkungsgrad dadurch ändert oder nur die Zahlenwerte."]
   },
   "en11": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1197,7 +1197,7 @@ const HEFT_SEITEN = {
     name: "Wo die Verluste entstehen",
     titel: "Wo der fehlende Rest bleibt",
     frage: "Wohin geht der Anteil, den man Verlust nennt?",
-    schritte: ["Wähle nacheinander „Glühlampe“, „LED-Lampe“, „Benzinmotor“, „Elektromotor“, „Wasserkocher“ und „Handy-Ladegerät“. Lies bei jeder den Text unter der Statuszeile und trage stichwortartig ein, wo der Verlust hingeht.", "Vergleiche „Wasserkocher“ und „Glühlampe“ miteinander: Beide geben viel Wärme ab, haben aber sehr verschiedene Wirkungsgrade. Notiere, woran das liegt.", "Ordne die sechs Maschinen der Simulation nach ihrem Wirkungsgrad und prüfe, ob ein Zusammenhang zwischen der Art des Nutzens und der Höhe von η zu erkennen ist."]
+    schritte: ["Wähle „Glühlampe“ und lies den Text unter der Statuszeile. Notiere η und stichwortartig, wo der Verlust hingeht, in Zeile 1 der Tabelle. Mache dasselbe mit „LED-Lampe“ (Zeile 1).", "Mache dasselbe mit „Benzinmotor“ und „Elektromotor“ für Zeile 2 und mit „Wasserkocher“ und „Handy-Ladegerät“ für Zeile 3. Vergleiche „Wasserkocher“ und „Glühlampe“: Beide geben viel Wärme ab. Woran liegt es, dass ihre Wirkungsgrade so verschieden sind?", "Ordne die sechs Maschinen der Simulation nach ihrem Wirkungsgrad und prüfe, ob ein Zusammenhang zwischen der Art des Nutzens und der Höhe von η zu erkennen ist."]
   },
   "en12": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1206,7 +1206,7 @@ const HEFT_SEITEN = {
     name: "Leistung: P = W / t",
     titel: "Schnell oder langsam die Treppe hoch",
     frage: "Was ändert sich, wenn dieselbe Arbeit in kürzerer Zeit verrichtet wird?",
-    schritte: ["Stelle m = 50 kg, h = 4 m und t = 10 s ein und drücke „Hochziehen“. Notiere die Arbeit und die Leistung.", "Drücke „÷2 Zeit“ (t = 5 s) und ziehe erneut hoch. Trage Arbeit und Leistung wieder ein und achte besonders darauf, welche der beiden Größen sich verändert hat.", "Stelle t = 20 s ein und danach t = 2 s. Halte für beide Fälle fest, mit welchem Vergleich aus dem Alltag die Simulation die Leistung beschreibt."]
+    schritte: ["Stelle m = 50 kg, h = 4 m und t = 10 s ein und drücke „Hochziehen“. Notiere W und P in Zeile 1 der Tabelle.", "Drücke „÷2 Zeit“ (t = 5 s) und ziehe erneut hoch. Notiere W und P in Zeile 2. Achte besonders darauf, welche der beiden Größen sich verändert hat.", "Stelle t = 20 s ein und notiere W und P in Zeile 3. Mache dasselbe mit t = 2 s. Achte jedes Mal auf den Vergleich aus dem Alltag, mit dem die Simulation die Leistung beschreibt."]
   },
   "en13": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1215,7 +1215,7 @@ const HEFT_SEITEN = {
     name: "Watt, Kilowatt und PS",
     titel: "100 PS und 2000 Watt",
     frage: "Welche Leistungen stecken hinter Watt, Kilowatt und PS?",
-    schritte: ["Stelle m = 100 kg, h = 10 m und t = 1 s ein. Notiere die Leistung in Watt, in Kilowatt und in PS sowie den Alltagsvergleich, den die Simulation nennt.", "Stelle nun t so ein, dass die Leistung ungefähr 1000 W beträgt, und danach so, dass sie ungefähr 2000 W beträgt. Trage die jeweilige Zeit und den Vergleich ein.", "Suche die Einstellung mit der kleinsten möglichen Leistung. Vergleiche sie mit den 9 W der LED-Lampe von der Verpackung."]
+    schritte: ["Stelle m = 100 kg, h = 10 m und t = 1 s ein. Notiere P in Watt, in Kilowatt und in PS sowie den Alltagsvergleich der Simulation in Zeile 1 der Tabelle.", "Stelle t so ein, dass P ungefähr 1000 W beträgt, und notiere t und den Vergleich in Zeile 2. Stelle t danach so ein, dass P ungefähr 2000 W beträgt, und notiere beides in Zeile 3.", "Suche die Einstellung mit der kleinsten möglichen Leistung und notiere sie ebenfalls in Zeile 3. Vergleiche sie mit den 9 W der LED-Lampe von der Verpackung."]
   },
   "en14": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1224,7 +1224,7 @@ const HEFT_SEITEN = {
     name: "Energieentwertung: warum sparen?",
     titel: "Die erste Stromrechnung",
     frage: "Wie viel Energie ist am Ende einer Energiekette noch nutzbar?",
-    schritte: ["Wähle „Kohle → Licht“ und drücke viermal „nächster Schritt“. Trage für den Start, nach dem ersten Schritt und am Ende der Kette ein, wie viel Joule noch nutzbar sind und wie viel schon zu Wärme wurde.", "Achte dabei auf die Gesamtlänge der Balken: Notiere, ob sie sich von Schritt zu Schritt verändert.", "Wechsle zu „Benzin → Fahrt“ und gehe auch diese Kette durch. Vergleiche, nach wie vielen Schritten in beiden Fällen nichts Nutzbares mehr übrig ist."]
+    schritte: ["Wähle „Kohle → Licht“. Notiere am Start in Zeile 1 der Tabelle, wie viel Joule nutzbar sind und wie viel schon Wärme ist. Drücke „nächster Schritt“ und notiere beide Werte in Zeile 2.", "Drücke noch dreimal „nächster Schritt“ und notiere beide Werte am Ende der Kette in Zeile 3. Achte dabei auf die Gesamtlänge der Balken: Verändert sie sich von Schritt zu Schritt?", "Wechsle zu „Benzin → Fahrt“ und gehe auch diese Kette durch. Vergleiche, nach wie vielen Schritten in beiden Fällen nichts Nutzbares mehr übrig ist."]
   },
   "kw1": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1233,7 +1233,7 @@ const HEFT_SEITEN = {
     name: "Woher der Strom kommt",
     titel: "Der Schalter und das Kraftwerk",
     frage: "Woher kommt der Strom in Deutschland?",
-    schritte: ["Lies aus dem Datenblatt die beiden größten Anteile ab und trage sie mit Namen und Prozentwert in die Tabelle ein.", "Rechne die Anteile der erneuerbaren Energieträger Windkraft, Photovoltaik, Biomasse und Wasserkraft zusammen und trage die Summe ein. Vergleiche die Summe mit dem Rest.", "Beurteile mit deinem Ergebnis, ob Bens Antwort „aus der Steckdose“ als Erklärung ausreicht."]
+    schritte: ["Lies aus dem Datenblatt die beiden größten Anteile ab. Notiere sie mit Namen und Prozentwert in Zeile 1 und 2 der Tabelle.", "Rechne die Anteile der erneuerbaren Energieträger Windkraft, Photovoltaik, Biomasse und Wasserkraft zusammen und notiere die Summe in Zeile 3. Vergleiche die Summe mit dem Rest.", "Beurteile mit deinem Ergebnis, ob Bens Antwort „aus der Steckdose“ als Erklärung ausreicht."]
   },
   "kw2": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1242,7 +1242,7 @@ const HEFT_SEITEN = {
     name: "Wie Bewegung zu Strom wird",
     titel: "Der Dynamo im Fahrradkeller",
     frage: "Wovon hängt es ab, wie groß die Spannung ist, die ein Generator erzeugt?",
-    schritte: ["Stelle am Regler „Drehfrequenz f“ nacheinander eine niedrige, eine mittlere und eine hohe Drehfrequenz ein. Lies jedes Mal die Spannung ab und trage sie in die Tabelle ein.", "Halte den Magneten ganz an und lies ab, was das Messgerät nun zeigt. Vergleiche diesen Wert mit den drei Werten aus der Tabelle.", "Beurteile mit deinem Ergebnis Bens Behauptung, der Dynamo mache den Strom von selbst."]
+    schritte: ["Stelle am Regler „Drehfrequenz f“ eine niedrige Drehfrequenz ein. Notiere f und die Spannung U in Zeile 1 der Tabelle im Heft. Wiederhole das mit einer mittleren für Zeile 2 und einer hohen für Zeile 3.", "Halte den Magneten ganz an und lies ab, was das Messgerät nun zeigt. Vergleiche diesen Wert mit den drei Werten aus der Tabelle im Heft.", "Beurteile mit deinem Ergebnis Bens Behauptung, der Dynamo mache den Strom von selbst."]
   },
   "kw3": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1251,7 +1251,7 @@ const HEFT_SEITEN = {
     name: "Ein Prinzip, viele Brennstoffe",
     titel: "Der gleiche Dampf hinter jeder Flamme",
     frage: "Bestimmt der Brennstoff den Wirkungsgrad oder der Weg über Dampf und Turbine?",
-    schritte: ["Lies für Braunkohlekraftwerk, Gas- und Dampfkraftwerk und Kernkraftwerk den Wirkungsgrad ab und trage die drei Werte in die Tabelle ein.", "Ordne alle fünf Anlagen nach dem Wirkungsgrad und rechne den Abstand zwischen dem höchsten und dem niedrigsten Wert aus.", "Beurteile mit deinem Ergebnis Bens Behauptung, ein Kernkraftwerk arbeite völlig anders als ein Kraftwerk, das Holz verbrennt."]
+    schritte: ["Lies für Braunkohlekraftwerk, Gas- und Dampfkraftwerk und Kernkraftwerk den Wirkungsgrad ab. Notiere die drei Werte in Zeile 1, 2 und 3 der Tabelle.", "Ordne alle fünf Anlagen nach dem Wirkungsgrad und rechne den Abstand zwischen dem höchsten und dem niedrigsten Wert aus.", "Beurteile mit deinem Ergebnis Bens Behauptung, ein Kernkraftwerk arbeite völlig anders als ein Kraftwerk, das Holz verbrennt."]
   },
   "kw4": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1260,7 +1260,7 @@ const HEFT_SEITEN = {
     name: "Was vom Brennstoff bleibt",
     titel: "Verbrannt ist nicht verschwunden",
     frage: "Wie viel Kohlenstoffdioxid entsteht je Kilowattstunde aus fossilen Energieträgern?",
-    schritte: ["Lies die CO₂-Werte von Braunkohle und Erdgas je Kilowattstunde Strom aus dem Datenblatt ab und trage beide in die Tabelle ein.", "Rechne den Unterschied zwischen Braunkohle und Erdgas in Gramm aus und trage ihn in die Tabelle ein. Vergleiche dazu die Reichweiten der beiden Energieträger.", "Beurteile mit deinem Ergebnis Bens Behauptung, nach dem Verbrennen sei das Gas einfach weg."]
+    schritte: ["Lies die CO₂-Werte von Braunkohle und Erdgas je Kilowattstunde Strom aus dem Datenblatt ab. Notiere sie in Zeile 1 und 2 der Tabelle.", "Rechne den Unterschied zwischen Braunkohle und Erdgas in Gramm aus und notiere ihn in Zeile 3. Vergleiche dazu die Reichweiten der beiden Energieträger.", "Beurteile mit deinem Ergebnis Bens Behauptung, nach dem Verbrennen sei das Gas einfach weg."]
   },
   "kw5": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1269,7 +1269,7 @@ const HEFT_SEITEN = {
     name: "Strom ohne Feuer",
     titel: "Das Solardach der Turnhalle",
     frage: "Woher stammt die Energie der erneuerbaren Energiequellen?",
-    schritte: ["Lies für Photovoltaik, Wasserkraft und Geothermie im Datenblatt ab, ob sie vom Wetter abhängen, und trage die Angaben in die Tabelle ein.", "Zähle im Datenblatt, wie viele der fünf Quellen deutlich vom Wetter abhängen und wie viele kaum oder gar nicht. Vergleiche beide Gruppen.", "Beurteile mit deinem Ergebnis Bens Behauptung, ohne Verbrennung könne kein Kraftwerk Strom liefern."]
+    schritte: ["Lies für Photovoltaik, Wasserkraft und Geothermie im Datenblatt ab, ob sie vom Wetter abhängen. Notiere die Angaben in Zeile 1, 2 und 3 der Tabelle.", "Zähle im Datenblatt, wie viele der fünf Quellen deutlich vom Wetter abhängen und wie viele kaum oder gar nicht. Vergleiche beide Gruppen.", "Beurteile mit deinem Ergebnis Bens Behauptung, ohne Verbrennung könne kein Kraftwerk Strom liefern."]
   },
   "kw6": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1278,7 +1278,7 @@ const HEFT_SEITEN = {
     name: "Sonne, Wind und Wasser",
     titel: "Was am Ende eines Jahres zusammenkommt",
     frage: "Wie viel Energie liefert eine Anlage je Kilowatt Leistung im Jahr?",
-    schritte: ["Lies Leistung und Jahresertrag der Solaranlage auf dem Hausdach, des Windrads an Land und des kleinen Wasserkraftwerks aus dem Datenblatt ab. Trage die drei Anlagen in dieser Reihenfolge in die Tabelle ein.", "Rechne für jede Anlage den Jahresertrag geteilt durch die Leistung aus und trage das Ergebnis in die Tabelle ein.", "Beurteile mit deinen drei Ergebnissen, ob Bens Satz stimmt, das Wasserkraftwerk sei die schwächste der drei Anlagen."]
+    schritte: ["Lies Leistung und Jahresertrag der Solaranlage auf dem Hausdach, des Windrads an Land und des kleinen Wasserkraftwerks aus dem Datenblatt ab.", "Rechne für jede Anlage den Jahresertrag geteilt durch die Leistung aus. Notiere die Ergebnisse in Zeile 1, 2 und 3 der Tabelle.", "Beurteile mit deinen drei Ergebnissen, ob Bens Satz stimmt, das Wasserkraftwerk sei die schwächste der drei Anlagen."]
   },
   "kw7": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1287,7 +1287,7 @@ const HEFT_SEITEN = {
     name: "Zu viel und zu wenig",
     titel: "Der Wind macht keinen Stundenplan",
     frage: "Passen Angebot und Bedarf an jedem Tag der Woche zusammen?",
-    schritte: ["Lies für alle fünf Tage die Prozentwerte ab und trage den höchsten und den niedrigsten Tageswert in die Tabelle ein.", "Addiere die fünf Prozentwerte und teile durch 5. Trage den Durchschnitt ein und vergleiche ihn mit Dienstag und Freitag.", "Beurteile mit deinem Ergebnis, ob Bens Vorschlag „doppelt so viele Windräder“ die Lücke am Freitag schließt."]
+    schritte: ["Lies für alle fünf Tage die Prozentwerte ab. Notiere den höchsten Tageswert in Zeile 1 und den niedrigsten in Zeile 2 der Tabelle.", "Addiere die fünf Prozentwerte und teile durch 5. Notiere den Durchschnitt in Zeile 3 und vergleiche ihn mit Dienstag und Freitag.", "Beurteile mit deinem Ergebnis, ob Bens Vorschlag „doppelt so viele Windräder“ die Lücke am Freitag schließt."]
   },
   "kw8": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1296,7 +1296,7 @@ const HEFT_SEITEN = {
     name: "Speicher für später",
     titel: "Sonne von mittags, Licht am Abend",
     frage: "Wie viel Energie geht beim Speichern verloren?",
-    schritte: ["Lies den höchsten und den niedrigsten Wirkungsgrad aus dem Datenblatt ab und trage beide Werte in die Tabelle ein.", "Rechne die Differenz der beiden Wirkungsgrade aus und trage sie als Unterschied in die Tabelle ein. Bestimme dann, wie viel Prozent der eingespeicherten Energie im Wasserstoffspeicher verloren gehen.", "Beurteile mit deinem Ergebnis, ob Bens Satz „egal womit“ für den Strom vom Mittag bis zum Abend stimmt."]
+    schritte: ["Lies den höchsten und den niedrigsten Wirkungsgrad aus dem Datenblatt ab. Notiere den höchsten in Zeile 1 und den niedrigsten in Zeile 2 der Tabelle.", "Rechne die Differenz der beiden Wirkungsgrade aus und notiere sie in Zeile 3. Bestimme dann, wie viel Prozent der eingespeicherten Energie im Wasserstoffspeicher verloren gehen.", "Beurteile mit deinem Ergebnis, ob Bens Satz „egal womit“ für den Strom vom Mittag bis zum Abend stimmt."]
   },
   "kw9": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1305,7 +1305,7 @@ const HEFT_SEITEN = {
     name: "Kohlenstoff wird zu Kohlendioxid",
     titel: "Die Luft merkt sich jedes Feuer",
     frage: "Wie hat sich der CO₂-Anteil der Luft seit 1750 verändert?",
-    schritte: ["Lies die Werte für 1750, 1900, 1960 und 2025 aus dem Datenblatt ab und trage sie als Anfangs- und Endwert zu den Zeiträumen 1750 bis 1900, 1900 bis 1960 und 1960 bis 2025 in die Tabelle ein.", "Rechne für jeden Zeitraum den Anstieg in ppm aus. Vergleiche den Anstieg von 1960 bis 2025 mit den beiden Zeiträumen davor.", "Beurteile mit deinem Ergebnis Bens Satz, eine einzelne Wohnung ändere am Klima der ganzen Erde nichts."]
+    schritte: ["Lies die Werte für 1750, 1900, 1960 und 2025 aus dem Datenblatt ab. Notiere Anfangs- und Endwert jedes Zeitraums in Zeile 1, 2 und 3 der Tabelle.", "Rechne für jeden Zeitraum den Anstieg in ppm aus und notiere ihn in der letzten Spalte der Tabelle. Vergleiche den Anstieg von 1960 bis 2025 mit den beiden Zeiträumen davor.", "Beurteile mit deinem Ergebnis Bens Satz, eine einzelne Wohnung ändere am Klima der ganzen Erde nichts."]
   },
   "kw10": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1314,7 +1314,7 @@ const HEFT_SEITEN = {
     name: "Der natürliche Treibhauseffekt",
     titel: "Die Decke aus Gas",
     frage: "Wie viel wärmer macht der Treibhauseffekt die Erde?",
-    schritte: ["Lies die mittleren Temperaturen der Erde ohne Treibhauseffekt, der wirklichen Erde und der Venus ab und trage sie in die Tabelle ein.", "Rechne die Differenz der beiden Erdwerte aus: 15 °C − (−18 °C). Vergleiche danach Mars und Venus, beide mit einer Atmosphäre aus CO₂.", "Beurteile mit deinen Ergebnissen, ob Bens Vorschlag, den Treibhauseffekt abzuschalten, für die Erde eine gute Idee wäre."]
+    schritte: ["Lies die mittleren Temperaturen der Erde ohne Treibhauseffekt, der wirklichen Erde und der Venus ab. Notiere sie in Zeile 1, 2 und 3 der Tabelle.", "Rechne die Differenz der beiden Erdwerte aus: 15 °C − (−18 °C). Vergleiche danach Mars und Venus, beide mit einer Atmosphäre aus CO₂.", "Beurteile mit deinen Ergebnissen, ob Bens Vorschlag, den Treibhauseffekt abzuschalten, für die Erde eine gute Idee wäre."]
   },
   "kw11": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1323,7 +1323,7 @@ const HEFT_SEITEN = {
     name: "Ein Jahr macht kein Klima",
     titel: "Der Schneewinter und die lange Kurve",
     frage: "Reicht ein einzelnes Jahr aus, um etwas über das Klima zu sagen?",
-    schritte: ["Lies die Mitteltemperaturen der Zeiträume 1881–1910, 1991–2020 und 2015–2024 aus dem Datenblatt ab und trage sie in die Tabelle ein.", "Rechne die Differenz zwischen 2015–2024 und 1881–1910 aus. Vergleiche danach das Einzeljahr 2010 mit dem Mittelwert von 1881–1910.", "Beurteile mit deinem Ergebnis, ob Bens Schneewinter beweist, dass es in Deutschland nicht wärmer wird."]
+    schritte: ["Lies die Mitteltemperaturen der Zeiträume 1881–1910, 1991–2020 und 2015–2024 aus dem Datenblatt ab. Notiere sie in Zeile 1, 2 und 3 der Tabelle.", "Rechne die Differenz zwischen 2015–2024 und 1881–1910 aus. Vergleiche danach das Einzeljahr 2010 mit dem Mittelwert von 1881–1910.", "Beurteile mit deinem Ergebnis, ob Bens Schneewinter beweist, dass es in Deutschland nicht wärmer wird."]
   },
   "kw12": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1332,7 +1332,7 @@ const HEFT_SEITEN = {
     name: "CO₂ über den ganzen Lebensweg",
     titel: "Der Rucksack des Solarmoduls",
     frage: "Wie weit liegen die Energiequellen beim CO₂ über den ganzen Lebensweg auseinander?",
-    schritte: ["Lies aus dem Datenblatt den höchsten und den niedrigsten Wert ab und trage zuerst den höchsten, dann den niedrigsten Wert mit dem Namen der Energiequelle in die Tabelle ein.", "Rechne den Unterschied der beiden Werte aus, trage ihn in die dritte Zeile ein und bestimme, wie oft der kleine Wert in den großen hineinpasst.", "Beurteile mit deinem Ergebnis, ob Bens Behauptung stimmt, der Strom vom Balkon entstehe ganz ohne CO₂."]
+    schritte: ["Lies aus dem Datenblatt den höchsten und den niedrigsten Wert ab. Notiere den höchsten mit dem Namen der Energiequelle in Zeile 1 der Tabelle, den niedrigsten in Zeile 2.", "Rechne den Unterschied der beiden Werte aus und notiere ihn in Zeile 3. Bestimme, wie oft der kleine Wert in den großen hineinpasst.", "Beurteile mit deinem Ergebnis, ob Bens Behauptung stimmt, der Strom vom Balkon entstehe ganz ohne CO₂."]
   },
   "kw13": {
     klasse: 9, schulform: "Realschule NRW",
@@ -1341,7 +1341,7 @@ const HEFT_SEITEN = {
     name: "Strom aus der eigenen Stadt",
     titel: "Alle Dächer, alle Windräder",
     frage: "Kann eine Stadt ihren Strom auf den eigenen Dächern erzeugen?",
-    schritte: ["Lies Dachfläche, Ertrag je Quadratmeter, Zahl der Windräder und Ertrag je Windrad aus dem Datenblatt ab.", "Rechne den Jahresertrag der Dächer und den der Windräder aus, addiere beides und vergleiche die Summe mit dem Bedarf der Stadt. Trage den Jahresertrag der Photovoltaik auf allen Dächern, den der acht Windräder und den Bedarf der Stadt in die Tabelle ein.", "Beurteile mit deinem Ergebnis, ob Bens Behauptung „mehr braucht die Stadt nicht“ zutrifft."]
+    schritte: ["Lies Dachfläche, Ertrag je Quadratmeter, Zahl der Windräder und Ertrag je Windrad aus dem Datenblatt ab.", "Rechne den Jahresertrag aller Dächer und den der acht Windräder aus. Notiere beide in Zeile 1 und 2 der Tabelle, den Bedarf der Stadt in Zeile 3. Vergleiche die Summe der beiden Erträge mit dem Bedarf.", "Beurteile mit deinem Ergebnis, ob Bens Behauptung „mehr braucht die Stadt nicht“ zutrifft."]
   },
   "mo1": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1350,7 +1350,7 @@ const HEFT_SEITEN = {
     name: "Das Magnetfeld sichtbar machen",
     titel: "Der Motor liegt in Einzelteilen da",
     frage: "An welchen Stellen eines Magneten wirkt er am stärksten?",
-    schritte: ["Ziehe den Prüfkompass dicht an das linke Ende des Magneten und beobachte die Nadel.", "Führe ihn an dieselbe Stelle, aber mit größerem Abstand. Vergleiche den Ausschlag.", "Setze ihn zuletzt in die Mitte zwischen beide Enden und halte fest, was die Nadel tut."]
+    schritte: ["Ziehe den Prüfkompass dicht an das linke Ende des Magneten. Notiere den Ausschlag der Nadel in Zeile 1 der Tabelle.", "Führe ihn an dieselbe Stelle, aber mit größerem Abstand. Notiere den Ausschlag in Zeile 2 und vergleiche.", "Setze ihn zuletzt in die Mitte zwischen beide Enden. Notiere den Ausschlag in Zeile 3 der Tabelle."]
   },
   "mo2": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1359,7 +1359,7 @@ const HEFT_SEITEN = {
     name: "Die Erde als großer Magnet",
     titel: "Warum der Kompass nicht lügt",
     frage: "Wovon hängt es ab, wohin die Kompassnadel zeigt?",
-    schritte: ["Wähle die Einstellung „Erdmagnetfeld“ und stoße die Nadel an. Warte ab, wo sie zur Ruhe kommt.", "Stoße sie mehrmals aus verschiedenen Richtungen an und prüfe, ob sie immer gleich endet.", "Wähle danach die Einstellung mit der Magnetleiste daneben und stoße die Nadel erneut an."]
+    schritte: ["Wähle die Einstellung „Erdmagnetfeld“ und stoße die Nadel an. Warte, bis sie zur Ruhe kommt. Notiere ihre Richtung in Zeile 1 der Tabelle.", "Stoße sie mehrmals aus verschiedenen Richtungen an. Notiere in Zeile 2, wohin sie zeigt und ob sie immer gleich endet.", "Wähle danach die Einstellung mit der Magnetleiste daneben und stoße die Nadel erneut an. Notiere deine Beobachtung in Zeile 3."]
   },
   "mo3": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1368,7 +1368,7 @@ const HEFT_SEITEN = {
     name: "Der Versuch von Ørsted",
     titel: "Ein Draht, der sich benimmt wie ein Magnet",
     frage: "Kann elektrischer Strom eine Kompassnadel bewegen?",
-    schritte: ["Schalte den Strom aus und halte fest, wohin die Nadel zeigt.", "Stelle nacheinander I = 1,0 A und 3,0 A ein, jeweils bei 1,0 cm Abstand, und lies Feld und Ausschlag ab.", "Stelle zuletzt 3,0 A ein und vergrößere nur den Abstand auf 3,0 cm."]
+    schritte: ["Schalte den Strom aus. Notiere in Zeile 1 der Tabelle im Heft, wohin die Nadel zeigt.", "Stelle I = 1,0 A bei 1,0 cm Abstand ein. Notiere B und den Ausschlag in Zeile 2. Wiederhole das mit 3,0 A für Zeile 3.", "Stelle zuletzt 3,0 A ein und vergrößere nur den Abstand auf 3,0 cm. Notiere B und den Ausschlag in Zeile 4."]
   },
   "mo4": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1377,7 +1377,7 @@ const HEFT_SEITEN = {
     name: "Der Elektromagnet",
     titel: "Ein Magnet mit Schalter",
     frage: "Wie baut man einen Magneten, den man an- und ausschalten kann?",
-    schritte: ["Wähle „Windungszahl ändern“ und stelle N = 150 bei I = 2 A ein. Lies die Tragkraft ab.", "Stelle nacheinander N = 50, N = 100, N = 150 und N = 300 ein und übernimm jeden Messwert.", "Sieh dir die entstehende Kurve an und lies ab, welchen Verlauf sie hat."]
+    schritte: ["Wähle „Windungszahl ändern“; I bleibt bei 2 A. Stelle N = 50 ein, übernimm den Messwert und notiere die Tragkraft in Zeile 1 der Tabelle im Heft.", "Wiederhole das mit N = 100 für Zeile 2, mit N = 150 für Zeile 3 und mit N = 300 für Zeile 4.", "Sieh dir die entstehende Kurve an und lies ab, welchen Verlauf sie hat."]
   },
   "mo5": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1386,7 +1386,7 @@ const HEFT_SEITEN = {
     name: "Was einen Elektromagneten stärker macht",
     titel: "Zwei Schrauben, an denen man drehen kann",
     frage: "Wovon hängt die Stärke eines Elektromagneten ab?",
-    schritte: ["Wähle „Stromstärke ändern“. Die Windungszahl steht dabei fest bei N = 150.", "Stelle I = 2 A ein, lies die Tragkraft ab und übernimm den Messwert.", "Stelle danach I = 4 A ein, übernimm auch diesen Wert und trage in die dritte Zeile ein, ob sich die Tragkraft verdoppelt hat (ja oder nein)."]
+    schritte: ["Wähle „Stromstärke ändern“. Die Windungszahl steht dabei fest bei N = 150.", "Stelle I = 2 A ein und übernimm den Messwert. Notiere die Tragkraft in Zeile 1 der Tabelle im Heft.", "Stelle danach I = 4 A ein, übernimm auch diesen Wert und notiere die Tragkraft in Zeile 2. Notiere in Zeile 3, ob sie sich verdoppelt hat (ja oder nein)."]
   },
   "mo6": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1395,7 +1395,7 @@ const HEFT_SEITEN = {
     name: "Wirkungen des elektrischen Stroms",
     titel: "Vier Geräte an derselben Batterie",
     frage: "Welche Wirkungen kann elektrischer Strom haben?",
-    schritte: ["Schließe die Glühlampe an und halte fest, welche Wirkungen angezeigt werden.", "Wechsle nacheinander zu Heizdraht, Spule und Elektromotor.", "Lies bei jedem Gerät ab, in welche Energieform die elektrische Energie umgewandelt wird."]
+    schritte: ["Schließe die Glühlampe an. Notiere die angezeigten Wirkungen und die Energieumwandlung in Zeile 1 der Tabelle.", "Wechsle zum Heizdraht und notiere beides in Zeile 2. Wiederhole das mit der Spule für Zeile 3.", "Wechsle zum Elektromotor und notiere beides in Zeile 4 der Tabelle."]
   },
   "mo7": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1404,7 +1404,7 @@ const HEFT_SEITEN = {
     name: "Kraft auf einen stromdurchflossenen Leiter",
     titel: "Der Stab, der von selbst hochspringt",
     frage: "Warum bewegt sich ein Draht im Magnetfeld, sobald Strom fließt?",
-    schritte: ["Stelle I = 0 A ein und halte fest, was mit dem Stab geschieht.", "Stelle B = 0,20 T und I = 5,0 A ein, lies Kraft und Richtung ab und verdopple danach nur die Stromstärke auf 10,0 A.", "Gehe zurück auf I = 5,0 A und verdopple stattdessen nur das Feld auf B = 0,40 T."]
+    schritte: ["Stelle I = 0 A ein und beobachte den Stab. Notiere F und deine Beobachtung in Zeile 1 der Tabelle.", "Stelle B = 0,20 T und I = 5,0 A ein. Notiere F und die Richtung in Zeile 2. Verdopple danach nur die Stromstärke auf 10,0 A und notiere beides in Zeile 3.", "Gehe zurück auf I = 5,0 A und verdopple stattdessen nur das Feld auf B = 0,40 T. Notiere F und die Richtung in Zeile 4."]
   },
   "mo8": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1413,7 +1413,7 @@ const HEFT_SEITEN = {
     name: "Die Richtung der Kraft vorhersagen",
     titel: "Ben baut den Motor falsch herum ein",
     frage: "Wie sagt man die Richtung der Kraft vorher, ohne sie auszuprobieren?",
-    schritte: ["Stelle B = 0,20 T und I = 5,0 A ein und halte die Kraftrichtung in der Ausgangslage fest.", "Drücke „Strom umpolen“, lies die neue Richtung ab und drücke danach zusätzlich „Magnet umdrehen“.", "Setze zurück und drücke diesmal nur „Magnet umdrehen“."]
+    schritte: ["Stelle B = 0,20 T und I = 5,0 A ein. Notiere die Kraftrichtung in der Ausgangslage in Zeile 1 der Tabelle.", "Drücke „Strom umpolen“. Notiere die neue Richtung in Zeile 2 und ob sie umgekehrt ist. Drücke zusätzlich „Magnet umdrehen“ und notiere dasselbe in Zeile 3.", "Setze zurück und drücke diesmal nur „Magnet umdrehen“. Notiere dasselbe in Zeile 4."]
   },
   "mo9": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1422,7 +1422,7 @@ const HEFT_SEITEN = {
     name: "Aus Kraft wird Drehung",
     titel: "Warum sich die Spule überhaupt dreht",
     frage: "Wie wird aus einer schiebenden Kraft eine Drehbewegung?",
-    schritte: ["Sieh dem laufenden Motor eine halbe Minute lang zu und achte auf die grünen Pfeile.", "Halte fest, in welche Richtung der Strom zuerst auf der linken, dann auf der rechten Spulenseite fließt, und vergleiche die beiden Kraftpfeile.", "Lies das Drehmoment ab, das die Simulation dazu berechnet."]
+    schritte: ["Sieh dem laufenden Motor eine halbe Minute lang zu und achte auf die grünen Pfeile.", "Notiere in Zeile 1 der Tabelle Stromrichtung und Kraftpfeil der linken Spulenseite, in Zeile 2 die der rechten. Vergleiche die beiden Kraftpfeile.", "Lies das Drehmoment ab, das die Simulation dazu berechnet. Notiere es in Zeile 3."]
   },
   "mo10": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1431,7 +1431,7 @@ const HEFT_SEITEN = {
     name: "Der Kommutator",
     titel: "Das kleine Teil, ohne das nichts läuft",
     frage: "Warum bleibt der Motor nicht nach einer halben Umdrehung stehen?",
-    schritte: ["Sieh dem Motor mit eingeschaltetem Kommutator zu und lies die Drehzahl (Umdrehungen je Minute) ab.", "Schalte den Kommutator aus, setze zurück und beobachte die Spule mindestens zwanzig Sekunden lang.", "Schalte den Kommutator wieder ein und vergleiche."]
+    schritte: ["Sieh dem Motor mit eingeschaltetem Kommutator zu. Notiere in Zeile 1 der Tabelle, was die Spule macht und wie viele Umdrehungen je Minute sie schafft.", "Schalte den Kommutator aus, setze zurück und beobachte die Spule mindestens zwanzig Sekunden lang. Notiere deine Beobachtung in Zeile 2.", "Schalte den Kommutator wieder ein. Notiere deine Beobachtung in Zeile 3 und vergleiche."]
   },
   "mo11": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1440,7 +1440,7 @@ const HEFT_SEITEN = {
     name: "Was einen Motor kräftiger macht",
     titel: "Vier Stellschrauben am fertigen Motor",
     frage: "Was macht einen Elektromotor kräftiger und schneller?",
-    schritte: ["Stelle 20 Windungen, I = 2,0 A und B = 0,20 T ein und lies das Drehmoment ab.", "Verdopple nur die Windungszahl auf 40, lies erneut ab und gehe danach wieder auf 20 zurück.", "Verdopple nun nur die Stromstärke auf 4,0 A. Stelle danach wieder 2,0 A ein und verdopple zuletzt nur das Magnetfeld auf 0,40 T."]
+    schritte: ["Stelle 20 Windungen, I = 2,0 A und B = 0,20 T ein. Notiere das Drehmoment M in Zeile 1 der Tabelle.", "Verdopple nur die Windungszahl auf 40 und notiere M in Zeile 2. Gehe danach wieder auf 20 zurück.", "Verdopple nur die Stromstärke auf 4,0 A und notiere M in Zeile 3. Stelle wieder 2,0 A ein, verdopple nur das Magnetfeld auf 0,40 T und notiere M in Zeile 4."]
   },
   "ge1": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1449,7 +1449,7 @@ const HEFT_SEITEN = {
     name: "Induktion – Spannung ohne Batterie",
     titel: "Das Messgerät zeigt etwas an, obwohl nichts angeschlossen ist",
     frage: "Kann ein bewegter Magnet eine Spannung erzeugen, ohne dass eine Batterie da ist?",
-    schritte: ["Beobachte einen ganzen Durchgang: hineinschieben, in der Spule liegen lassen, herausziehen, außerhalb liegen lassen.", "Halte fest, was das Messgerät in jeder der vier Phasen anzeigt.", "Vergleiche besonders das Hineinschieben mit dem Herausziehen und achte auf das Vorzeichen."]
+    schritte: ["Beobachte einen ganzen Durchgang: hineinschieben, in der Spule liegen lassen, herausziehen, außerhalb liegen lassen.", "Lies in jeder der vier Phasen das Messgerät ab. Notiere U und das Vorzeichen in Zeile 1 bis 4 der Tabelle.", "Vergleiche besonders das Hineinschieben mit dem Herausziehen und achte auf das Vorzeichen."]
   },
   "ge2": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1458,7 +1458,7 @@ const HEFT_SEITEN = {
     name: "Wovon die induzierte Spannung abhängt",
     titel: "Drei Schrauben an derselben Spule",
     frage: "Wovon hängt die Höhe der induzierten Spannung ab?",
-    schritte: ["Stelle 600 Windungen, die Geschwindigkeit 50 cm/s und den mittleren Magneten ein und lies die Spannung ab.", "Verdopple nur die Geschwindigkeit auf 100 cm/s. Stelle danach wieder 50 cm/s ein und verdopple nur die Windungszahl auf 1200.", "Stelle zuletzt wieder 600 Windungen und 50 cm/s ein und wähle nur den starken Magneten."]
+    schritte: ["Stelle 600 Windungen, die Geschwindigkeit 50 cm/s und den mittleren Magneten ein. Notiere U in Zeile 1 der Tabelle.", "Verdopple nur die Geschwindigkeit auf 100 cm/s und notiere U in Zeile 2. Stelle wieder 50 cm/s ein, verdopple nur die Windungszahl auf 1200 und notiere U in Zeile 3.", "Stelle zuletzt wieder 600 Windungen und 50 cm/s ein und wähle nur den starken Magneten. Notiere U in Zeile 4."]
   },
   "ge3": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1467,7 +1467,7 @@ const HEFT_SEITEN = {
     name: "Die Lenzsche Regel",
     titel: "Der Ring, der von der Spule wegspringt",
     frage: "Warum wirkt bei der Induktion immer eine bremsende Kraft?",
-    schritte: ["Halte fest, was der Ring in Ruhe tut, solange kein Strom fließt.", "Schalte den Strom ein und lies ab, wie sich der Ring bewegt und wie die Felder zueinander stehen.", "Schalte danach wieder aus und vergleiche die Bewegung mit der beim Einschalten."]
+    schritte: ["Notiere in Zeile 1 der Tabelle im Heft, was der Ring ohne Strom tut.", "Schalte den Strom ein. Notiere in Zeile 2, wie sich der Ring bewegt und wie die Felder zueinander stehen.", "Schalte danach wieder aus. Notiere deine Beobachtung in Zeile 3 und vergleiche mit dem Einschalten."]
   },
   "ge4": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1476,7 +1476,7 @@ const HEFT_SEITEN = {
     name: "Der Generator",
     titel: "Eine Spule, die sich nicht mehr anhalten lässt",
     frage: "Wie erzeugt ein Kraftwerk ohne Unterbrechung eine Spannung?",
-    schritte: ["Lasse die Spule sich drehen und beobachte den Verlauf der Spannung über eine volle Umdrehung.", "Halte die Spule in der Lage an, in der ihre Fläche senkrecht zum Feld steht, und lies die Spannung ab.", "Drehe sie um eine Vierteldrehung weiter und lies die Spannung dort erneut ab, danach noch eine Vierteldrehung weiter."]
+    schritte: ["Lasse die Spule sich drehen und beobachte den Verlauf der Spannung über eine volle Umdrehung.", "Halte die Spule in der Lage an, in der ihre Fläche senkrecht zum Feld steht. Notiere die wirksame Fläche und U in Zeile 1 der Tabelle im Heft.", "Drehe sie eine Vierteldrehung weiter und notiere beides in Zeile 2. Drehe noch eine Vierteldrehung weiter und notiere beides in Zeile 3."]
   },
   "ge5": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1485,7 +1485,7 @@ const HEFT_SEITEN = {
     name: "Wechselspannung",
     titel: "Warum die Steckdose keinen Plus- und Minuspol hat",
     frage: "Warum wechselt der Strom aus der Steckdose ständig seine Richtung?",
-    schritte: ["Lies in der Tabelle der Simulation die Spannung bei 0°, 90°, 180° und 270° ab.", "Achte dabei besonders auf das Vorzeichen der Werte bei 90° und bei 270°.", "Vergleiche den Verlauf mit dem einer Batterie, die immer denselben Pol behält."]
+    schritte: ["Lies in der Tabelle der Simulation die Spannung bei 0°, 90°, 180° und 270° ab. Notiere die Werte in Zeile 1 bis 4 der Tabelle im Heft.", "Achte dabei besonders auf das Vorzeichen der Werte bei 90° und bei 270°. Notiere jedes Vorzeichen in derselben Zeile.", "Vergleiche den Verlauf mit dem einer Batterie, die immer denselben Pol behält."]
   },
   "ge6": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1494,7 +1494,7 @@ const HEFT_SEITEN = {
     name: "Gleichstrom und Wechselstrom",
     titel: "Zwei Sorten Strom in einem einzigen Gerät",
     frage: "Wann braucht man Gleichstrom und wann Wechselstrom?",
-    schritte: ["Lies im Datenblatt zuerst die Quelle jeder Stromart ab, dann, welche Geräte Gleichstrom und welche Wechselstrom brauchen.", "Halte fest, welche Stromart sich mit einem Transformator umspannen lässt.", "Suche für jede der beiden Stromarten den entscheidenden Vorteil heraus."]
+    schritte: ["Lies im Datenblatt die Quelle jeder Stromart ab und notiere sie in Zeile 1 der Tabelle. Notiere in Zeile 2, welche Geräte welche Stromart brauchen.", "Notiere in Zeile 3, welche Stromart sich mit einem Transformator umspannen lässt.", "Suche für jede der beiden Stromarten den entscheidenden Vorteil heraus."]
   },
   "ge7": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1503,7 +1503,7 @@ const HEFT_SEITEN = {
     name: "Der Transformator",
     titel: "Zwei Spulen, die sich nicht berühren",
     frage: "Wie ändert man eine Spannung, ohne dabei viel Energie zu verschwenden?",
-    schritte: ["Wähle den Spulensatz 500 → 1000 und lies das Übersetzungsverhältnis ab.", "Vergleiche die ideal erwartete Sekundärspannung mit der tatsächlich gemessenen.", "Lies in der Leistungsbilanz die zugeführte Leistung (am Bildschirm „hineingesteckt“), die abgegebene Leistung („herausgeholt“) und den Wirkungsgrad η ab."]
+    schritte: ["Wähle den Spulensatz 500 → 1000. Notiere das Übersetzungsverhältnis in Zeile 1 der Tabelle im Heft.", "Lies die ideal erwartete und die tatsächlich gemessene Sekundärspannung ab. Notiere sie in Zeile 2 und 3 und vergleiche.", "Lies in der Leistungsbilanz die zugeführte Leistung (am Bildschirm „hineingesteckt“), die abgegebene Leistung („herausgeholt“) und den Wirkungsgrad η ab. Notiere η in Zeile 4."]
   },
   "ge8": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1512,7 +1512,7 @@ const HEFT_SEITEN = {
     name: "Die Transformatorgleichung",
     titel: "Das Verhältnis, auf das es ankommt",
     frage: "Wie hängen Windungszahl und Spannung an einem Transformator zusammen?",
-    schritte: ["Wähle nacheinander die Spulensätze 1000 → 500, 1000 → 250 und 500 → 1000.", "Notiere für jeden Satz das Übersetzungsverhältnis und die gemessene Spannung.", "Prüfe an der Messwerttabelle, ob das Verhältnis der Spannungen zum Verhältnis der Windungszahlen passt."]
+    schritte: ["Wähle den Spulensatz 1000 → 500. Notiere das Verhältnis NS/NP und US in Zeile 1 der Tabelle im Heft.", "Wiederhole das mit 1000 → 250 für Zeile 2 und mit 500 → 1000 für Zeile 3.", "Prüfe an der Messwerttabelle, ob das Verhältnis der Spannungen zum Verhältnis der Windungszahlen passt."]
   },
   "ge9": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1521,7 +1521,7 @@ const HEFT_SEITEN = {
     name: "Verluste auf der Leitung",
     titel: "Was zwischen Kraftwerk und Lampe verlorengeht",
     frage: "Warum geht auf langen Leitungen Energie verloren?",
-    schritte: ["Wähle die Niederspannungs-Fernleitung und lies ab, wie hell die Lampen leuchten.", "Lies in der Energiebilanz ab, wie viel Energie je Sekunde in der Leitung in thermische Energie umgewandelt wird.", "Wähle danach die Leitung mit kleinem spezifischem Widerstand und zuletzt die Hochspannungs-Fernleitung und vergleiche jeweils den Verlust."]
+    schritte: ["Wähle die Niederspannungs-Fernleitung und lies ab, wie hell die Lampen leuchten.", "Lies in der Energiebilanz ab, wie viel Energie je Sekunde in der Leitung in thermische Energie umgewandelt wird. Notiere den Verlust und das Verhältnis Verlust : Nutzen in Zeile 1 der Tabelle im Heft.", "Wähle die Leitung mit kleinem spezifischem Widerstand und notiere beides in Zeile 2. Wähle zuletzt die Hochspannungs-Fernleitung und notiere beides in Zeile 3."]
   },
   "ge10": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1530,7 +1530,7 @@ const HEFT_SEITEN = {
     name: "Warum Hochspannung",
     titel: "380 000 Volt über dem Acker",
     frage: "Warum transportiert man elektrische Energie mit Hochspannung?",
-    schritte: ["Wähle die Hochspannungs-Fernleitung und lies ab, auf welche Spannung hochtransformiert wird.", "Lies die Stromstärke in der Fernleitung ab und vergleiche sie mit der bei den Lampen.", "Halte den Verlust je Sekunde und das Verhältnis von Verlust zu Nutzen fest und vergleiche beide mit der Niederspannungsleitung."]
+    schritte: ["Wähle die Hochspannungs-Fernleitung und lies ab, auf welche Spannung hochtransformiert wird.", "Lies die Stromstärke in der Fernleitung ab und vergleiche sie mit der bei den Lampen. Notiere sie in Zeile 1 der Tabelle im Heft, Spalte Hochspannung.", "Notiere den Verlust je Sekunde und das Verhältnis von Verlust zu Nutzen in Zeile 2 und 3. Wähle dann die Niederspannungs-Fernleitung und notiere alle drei Werte in der Spalte Niederspannung."]
   },
   "ge11": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1539,7 +1539,7 @@ const HEFT_SEITEN = {
     name: "Vom Kraftwerk in die Steckdose",
     titel: "Vier Spannungen auf demselben Weg",
     frage: "Wie gelangt die elektrische Energie vom Kraftwerk bis zur Steckdose?",
-    schritte: ["Lies im Datenblatt ab, mit welcher Spannung der Generator im Kraftwerk arbeitet.", "Verfolge die Stationen der Reihe nach – Überlandleitung, Ortsnetz, Steckdose – und halte jede Spannung fest.", "Bestimme, an welchen Stellen ein Transformator stehen muss."]
+    schritte: ["Lies im Datenblatt ab, mit welcher Spannung der Generator im Kraftwerk arbeitet. Notiere U in Zeile 1 der Tabelle.", "Verfolge die Stationen der Reihe nach – Überlandleitung, Ortsnetz, Steckdose – und notiere jede Spannung in Zeile 2, 3 und 4.", "Bestimme, an welchen Stellen ein Transformator stehen muss."]
   },
   "ak1": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1548,7 +1548,7 @@ const HEFT_SEITEN = {
     name: "Der Aufbau des Atoms",
     titel: "Was hinter der Bleitür passiert",
     frage: "Woraus besteht ein Atom, und was macht es zu genau diesem Element?",
-    schritte: ["Stelle 6 Protonen und 6 Neutronen ein und lies Name, Massenzahl und Schreibweise ab.", "Verändere die Protonenzahl auf 7 und danach auf 8 und halte jeden Namen fest.", "Lies ab, wie viele Elektronen in der Hülle sind und wie sie sich auf die Schalen verteilen."]
+    schritte: ["Stelle 6 Protonen und 6 Neutronen ein und lies Name, Massenzahl und Schreibweise ab. Notiere Element und A in Zeile 1 der Tabelle.", "Stelle 7 Protonen ein und notiere Element und A in Zeile 2. Wiederhole das mit 8 Protonen für Zeile 3.", "Lies ab, wie viele Elektronen in der Hülle sind und wie sie sich auf die Schalen verteilen."]
   },
   "ak2": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1557,7 +1557,7 @@ const HEFT_SEITEN = {
     name: "Isotope",
     titel: "Warum im Periodensystem 35,45 steht",
     frage: "Warum gibt es von demselben Element verschiedene Sorten?",
-    schritte: ["Stelle 6 Protonen ein und ziehe nur den Neutronenregler auf 6, 7 und 8.", "Halte fest, ob sich dabei der Name des Elements ändert oder nur die Massenzahl. Notiere bei Kohlenstoff-12 und Kohlenstoff-13 den natürlichen Anteil.", "Wähle nacheinander Chlor-35 und Chlor-37 und lies beide natürlichen Anteile ab."]
+    schritte: ["Stelle 6 Protonen und 6 Neutronen ein. Notiere den natürlichen Anteil von Kohlenstoff-12 in Zeile 1 der Tabelle.", "Ziehe den Neutronenregler auf 7 und notiere den Anteil in Zeile 2. Ziehe ihn danach auf 8 und beobachte, ob sich der Name des Elements ändert oder nur die Massenzahl.", "Wähle Chlor-35 und notiere den natürlichen Anteil in Zeile 3. Wiederhole das mit Chlor-37 für Zeile 4."]
   },
   "ak3": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1566,7 +1566,7 @@ const HEFT_SEITEN = {
     name: "Warum Kerne zerfallen",
     titel: "Der Kern, der es nicht aushält",
     frage: "Warum zerfallen manche Atomkerne von selbst und andere nie?",
-    schritte: ["Starte bei Uran-238 und lies ab, wie viele Neutronen auf ein Proton kommen.", "Gehe Schritt für Schritt weiter und beobachte, wohin der Punkt in der Karte wandert. Lies bei Radium-226 wieder ab, wie viele Neutronen auf ein Proton kommen.", "Lies beim letzten Kern, Blei-206, ab, warum die Reihe dort endet, und vergleiche sein Verhältnis mit dem am Anfang."]
+    schritte: ["Starte bei Uran-238 und lies ab, wie viele Neutronen auf ein Proton kommen. Notiere in Zeile 1 der Tabelle den Wert und ob der Kern stabil ist.", "Gehe Schritt für Schritt weiter und beobachte, wohin der Punkt in der Karte wandert. Notiere bei Radium-226 beides in Zeile 2.", "Lies beim letzten Kern, Blei-206, ab, warum die Reihe dort endet. Notiere beides in Zeile 3 und vergleiche mit dem Anfang."]
   },
   "ak4": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1575,7 +1575,7 @@ const HEFT_SEITEN = {
     name: "Woher die Strahlung kommt",
     titel: "Strahlung aus dem Kellerfußboden",
     frage: "Woher kommt eine Strahlung, die niemand sehen kann?",
-    schritte: ["Gehe die Zerfallsreihe von Uran-238 an Schritt für Schritt durch.", "Halte für Uran-238, Thorium-234 und Radium-226 fest, welche Strahlung der Kern aussendet und welcher Kern zurückbleibt.", "Suche in der Reihe das Nuklid, das ein Gas ist, und lies nach, warum es besonders wichtig ist."]
+    schritte: ["Notiere für Uran-238 Strahlung und neuen Kern in Zeile 1 der Tabelle.", "Gehe zum nächsten Schritt und notiere dasselbe in Zeile 2. Gehe weiter bis Radium-226 und notiere dasselbe in Zeile 3.", "Suche in der Reihe das Nuklid, das ein Gas ist, und lies nach, warum es besonders wichtig ist."]
   },
   "ak5": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1584,7 +1584,7 @@ const HEFT_SEITEN = {
     name: "Ionisierende Strahlung",
     titel: "Was die Strahlung im Gewebe anrichtet",
     frage: "Was macht radioaktive Strahlung mit dem Stoff, durch den sie hindurchgeht?",
-    schritte: ["Wähle Alphastrahlung und lies Energie, Reichweite und Ionenpaare je Millimeter ab.", "Wechsle zu Betastrahlung und danach zu Gammastrahlung und notiere dieselben Werte.", "Lies bei jeder Art den Wichtungsfaktor ab, mit dem im Strahlenschutz gerechnet wird."]
+    schritte: ["Wähle Alphastrahlung und lies Energie, Reichweite und Ionenpaare je Millimeter ab. Notiere die Ionenpaare je Millimeter und den Wichtungsfaktor in Zeile 1 der Tabelle.", "Wechsle zu Betastrahlung und notiere dieselben Werte in Zeile 2. Wiederhole das mit Gammastrahlung für Zeile 3.", "Vergleiche die drei Wichtungsfaktoren, mit denen im Strahlenschutz gerechnet wird."]
   },
   "ak6": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1593,7 +1593,7 @@ const HEFT_SEITEN = {
     name: "Das Geiger-Müller-Zählrohr",
     titel: "Das Gerät, das die Strahlung hörbar macht",
     frage: "Wie weist man eine Strahlung nach, die man weder sehen noch fühlen kann?",
-    schritte: ["Wähle „ohne Präparat“ und lies ab, wie viele Impulse je Sekunde gezählt werden.", "Wähle nacheinander Paranussmehl, gebrannten Ziegel und Am-241 und notiere jede Rate.", "Lies ab, bei welcher Spannung das Zählrohr arbeitet und wie breit der Auslösebereich ist."]
+    schritte: ["Wähle „ohne Präparat“. Notiere die Zählrate in Zeile 1 der Tabelle im Heft.", "Wähle Paranussmehl und notiere die Zählrate in Zeile 2. Wiederhole das mit gebranntem Ziegel für Zeile 3 und mit Am-241 für Zeile 4.", "Lies ab, bei welcher Spannung das Zählrohr arbeitet und wie breit der Auslösebereich ist."]
   },
   "ak7": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1602,7 +1602,7 @@ const HEFT_SEITEN = {
     name: "Alphastrahlung",
     titel: "Ein Blatt Papier reicht",
     frage: "Was ist Alphastrahlung, und wie weit kommt sie?",
-    schritte: ["Wähle Alphastrahlung und stelle als Absorber Papier ein.", "Lies in der Faustregel-Tabelle ab, ob Papier, Aluminium und Blei die Alphastrahlung stoppen oder nur schwächen.", "Vergleiche das mit dem, was dieselben Absorber bei Beta- und Gammastrahlung bewirken."]
+    schritte: ["Wähle Alphastrahlung und stelle als Absorber Papier ein.", "Lies in der Faustregel-Tabelle ab, ob Papier, Aluminium und Blei sie stoppen oder schwächen. Notiere es in Zeile 1 der Tabelle im Heft.", "Lies dort auch ab, was die Absorber bei Beta- und Gammastrahlung bewirken. Notiere es in Zeile 2 und 3 und vergleiche."]
   },
   "ak8": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1611,7 +1611,7 @@ const HEFT_SEITEN = {
     name: "Betastrahlung",
     titel: "Wenn Papier nicht mehr genügt",
     frage: "Warum ist Betastrahlung durchdringender als Alphastrahlung?",
-    schritte: ["Stelle als Absorber Papier mit der Dicke d = 0,2 mm ein und wähle zuerst Alphastrahlung, dann Betastrahlung. Lies jeweils ab, wie viel Prozent der Strahlung durchkommen.", "Wechsle zu Aluminium, lies in der Faustregel-Tabelle ab, welche Dicke nötig ist, und stelle d auf diesen Wert.", "Vergleiche den Wert mit dem, was bei Alphastrahlung schon genügt hat."]
+    schritte: ["Stelle als Absorber Papier mit d = 0,2 mm ein und wähle Alphastrahlung. Notiere in Zeile 1 der Tabelle im Heft, ob sie aufgehalten wird.", "Wähle Betastrahlung und notiere dasselbe in Zeile 2. Wechsle zu Aluminium und stelle d auf die Dicke aus der Faustregel-Tabelle.", "Notiere in Zeile 3 der Tabelle im Heft, ob die Betastrahlung jetzt aufgehalten wird. Vergleiche mit der Alphastrahlung."]
   },
   "ak9": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1620,7 +1620,7 @@ const HEFT_SEITEN = {
     name: "Gammastrahlung",
     titel: "Die Bleitür, die nur die Hälfte schafft",
     frage: "Wieso hält selbst eine dicke Bleiwand Gammastrahlung nicht vollständig auf?",
-    schritte: ["Wähle Gammastrahlung und Blei als Absorber. Stelle die Dicke d zuerst auf 0 mm und lies ab, wie viel Prozent der Strahlung durchkommen.", "Lies ab, wie viel Prozent der Strahlung bei 6,0 mm Blei noch durchkommen.", "Lies die Halbwertsdicke ab und überlege, was nach zwei solchen Dicken (12 mm) und nach drei (18 mm) übrig bleibt."]
+    schritte: ["Wähle Gammastrahlung und Blei als Absorber. Stelle die Dicke d auf 0 mm und lies ab, wie viel Prozent der Strahlung durchkommen. Notiere es in Zeile 1 der Tabelle im Heft.", "Stelle d auf 6,0 mm und lies ab, wie viel Prozent noch durchkommen. Notiere es in Zeile 2.", "Lies die Halbwertsdicke ab und überlege, was nach zwei solchen Dicken (12 mm) und nach drei (18 mm) übrig bleibt. Notiere es in Zeile 3 und 4."]
   },
   "ak10": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1629,7 +1629,7 @@ const HEFT_SEITEN = {
     name: "Abschirmung im Vergleich",
     titel: "Drei Absorber, drei Ergebnisse",
     frage: "Womit kann ich welche Strahlung aufhalten?",
-    schritte: ["Stelle nacheinander Alpha-, Beta- und Gammastrahlung ein und wähle jeweils Papier mit der Dicke d = 0,2 mm als Absorber.", "Wiederhole das mit 3 mm Aluminium und danach mit 6 mm Blei.", "Trage die Ergebnisse in deine Tabelle ein und vergleiche die drei Zeilen."]
+    schritte: ["Wähle Alphastrahlung und 0,2 mm Papier. Notiere in Zeile 1 der Tabelle im Heft, ob es sie aufhält. Wiederhole das mit 3 mm Aluminium und 6 mm Blei.", "Wiederhole das mit Betastrahlung für Zeile 2.", "Wiederhole das mit Gammastrahlung für Zeile 3. Vergleiche die drei Zeilen."]
   },
   "ak11": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1638,7 +1638,7 @@ const HEFT_SEITEN = {
     name: "Die drei Strahlungsarten unterscheiden",
     titel: "Ein Präparat ohne Beschriftung",
     frage: "Wie unterscheide ich die drei Strahlungsarten voneinander?",
-    schritte: ["Lies im Datenblatt ab, was Alpha-, Beta- und Gammastrahlung jeweils aufhält.", "Halte fest, welche Ladung die drei Arten tragen und wie sie sich im Magnetfeld verhalten.", "Überlege dir aus diesen Angaben eine Reihenfolge von Prüfungen für das unbekannte Präparat."]
+    schritte: ["Lies im Datenblatt ab, was Alpha-, Beta- und Gammastrahlung jeweils aufhält. Notiere es in Zeile 1, 2 und 3 der Tabelle.", "Lies ab, welche Ladung die drei Arten tragen und wie sie sich im Magnetfeld verhalten. Notiere das Verhalten in Zeile 1 bis 3.", "Überlege dir aus diesen Angaben eine Reihenfolge von Prüfungen für das unbekannte Präparat."]
   },
   "ak12": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1647,7 +1647,7 @@ const HEFT_SEITEN = {
     name: "Zerfallsgleichungen",
     titel: "Aus Uran wird am Ende Blei",
     frage: "Was wird aus einem Kern, nachdem er zerfallen ist?",
-    schritte: ["Starte bei Uran-238, lies die Gleichung des ersten Zerfalls ab und halte fest, wie sich A und Z beim Alphazerfall ändern.", "Gehe zum nächsten Schritt und halte fest, wie sich A und Z beim Betazerfall ändern.", "Gehe bis ans Ende der Reihe und lies ab, wie viele Alpha- und wie viele Betazerfälle es waren."]
+    schritte: ["Starte bei Uran-238 und lies die Gleichung des ersten Zerfalls ab. Notiere die Änderung von A und Z in Zeile 1 der Tabelle.", "Gehe zum nächsten Schritt und notiere die Änderung von A und Z beim Betazerfall in Zeile 2.", "Gehe bis ans Ende der Reihe. Lies ab, wie viele Alpha- und Betazerfälle es waren, und notiere die Änderung von A und Z in Zeile 3."]
   },
   "ak13": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1656,7 +1656,7 @@ const HEFT_SEITEN = {
     name: "Halbwertszeit",
     titel: "Der Kern, dem man nicht ansieht, wann er dran ist",
     frage: "Warum kann man nie sagen, wann ein bestimmter Kern zerfällt?",
-    schritte: ["Wähle Radon-220 und drücke fünfmal „eine Halbwertszeit weiter“. Notiere nach 1, 2, 3 und 5 Halbwertszeiten, wie viele Kerne noch übrig sind.", "Setze zurück und wiederhole den ganzen Durchgang ein zweites Mal.", "Vergleiche beide Reihen miteinander und mit der erwarteten Reihe 100, 50, 25, 12,5 und 6,25."]
+    schritte: ["Wähle Radon-220. Drücke „eine Halbwertszeit weiter“ und notiere die übrigen Kerne in Zeile 1 der Tabelle. Wiederhole das für Zeile 2 und 3. Drücke danach noch zweimal und notiere die Kerne in Zeile 4.", "Setze zurück und wiederhole den Durchgang. Notiere die Werte diesmal in der letzten Spalte, Zeile 1 bis 4.", "Vergleiche beide Reihen miteinander und mit der erwarteten Reihe 100, 50, 25, 12,5 und 6,25."]
   },
   "ak14": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1665,7 +1665,7 @@ const HEFT_SEITEN = {
     name: "Altersbestimmung mit C-14",
     titel: "Wie alt ist der Mann aus dem Eis",
     frage: "Wie bestimmt man das Alter von Holz, Knochen oder Leder?",
-    schritte: ["Wähle Kohlenstoff-14 und lies seine Halbwertszeit ab.", "Drücke dreimal „eine Halbwertszeit weiter“ und notiere nach 1, 2 und 3 Halbwertszeiten jeweils Zeit und übrige Kerne.", "Rechne aus, wie alt eine Probe ist, bei der noch ein Viertel des C-14 vorhanden ist."]
+    schritte: ["Wähle Kohlenstoff-14 und lies seine Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“ und notiere Zeit und übrige Kerne in Zeile 1 der Tabelle. Wiederhole das für Zeile 2 und 3.", "Rechne aus, wie alt eine Probe ist, bei der noch ein Viertel des C-14 vorhanden ist."]
   },
   "ke1": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1674,7 +1674,7 @@ const HEFT_SEITEN = {
     name: "Strahlung in der Medizin",
     titel: "Warum Mia die Spritze in einem Bleibehälter holt",
     frage: "Wie hilft radioaktive Strahlung in der Medizin?",
-    schritte: ["Lies im Datenblatt für Technetium-99m, Fluor-18, Iod-131 und Cobalt-60 ab, welche zum Untersuchen und welche zum Behandeln dienen.", "Vergleiche die Halbwertszeiten und überlege, warum sie so unterschiedlich gewählt sind.", "Halte fest, welche Nuklide im Körper wirken und welche von außen bestrahlen."]
+    schritte: ["Lies im Datenblatt ab, welche Nuklide zum Untersuchen und welche zum Behandeln dienen. Notiere den Zweck in Zeile 1 bis 4 der Tabelle.", "Notiere die Halbwertszeiten in Zeile 1 bis 4. Vergleiche sie und überlege, warum sie so unterschiedlich gewählt sind.", "Lies ab, welche Nuklide im Körper wirken und welche von außen bestrahlen."]
   },
   "ke2": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1683,7 +1683,7 @@ const HEFT_SEITEN = {
     name: "Strahlung in der Technik",
     titel: "Der Sensor über dem Fließband",
     frage: "Wo nutzt die Technik radioaktive Strahlung?",
-    schritte: ["Lies im Datenblatt ab, welche Strahlungsart bei der Dickenmessung und bei der Füllstandsmessung genutzt wird.", "Halte fest, warum bei der Prüfung von Schweißnähten Gammastrahlung nötig ist.", "Ergänze die Sterilisation und vergleiche, welche Anwendungen die Durchdringung nutzen und welche die Schwächung."]
+    schritte: ["Lies im Datenblatt ab, welche Strahlung die Dickenmessung und die Füllstandsmessung nutzen. Notiere Nuklid und Eigenschaft in Zeile 1 und 2 der Tabelle.", "Notiere in Zeile 3 das Nuklid der Schweißnahtprüfung und warum dort Gammastrahlung nötig ist.", "Notiere Nuklid und Eigenschaft der Sterilisation in Zeile 4. Vergleiche, welche Anwendungen die Durchdringung nutzen und welche die Schwächung."]
   },
   "ke3": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1692,7 +1692,7 @@ const HEFT_SEITEN = {
     name: "Strahlung im Alltag",
     titel: "Die Dosis, die jeder mitbringt",
     frage: "Welche Strahlendosis erhält ein Mensch in Deutschland im Jahr?",
-    schritte: ["Lies im Datenblatt die Beiträge von Radon in Wohnräumen, kosmischer Strahlung und Medizin ab. Addiere dann alle natürlichen Anteile.", "Vergleiche die Summe mit dem zivilisatorischen Anteil und bestimme die gesamte Jahresdosis.", "Suche heraus, welcher einzelne Beitrag am größten ist, und ordne ihn ein."]
+    schritte: ["Lies im Datenblatt die Beiträge von Radon, kosmischer Strahlung und Medizin ab. Notiere sie in Zeile 1 bis 3 der Tabelle.", "Addiere alle natürlichen Anteile und vergleiche die Summe mit dem zivilisatorischen. Notiere die gesamte Jahresdosis in Zeile 4.", "Suche heraus, welcher einzelne Beitrag am größten ist, und ordne ihn ein."]
   },
   "ke4": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1701,7 +1701,7 @@ const HEFT_SEITEN = {
     name: "Die drei A des Strahlenschutzes",
     titel: "Zwei Schritte zurück sind mehr wert als eine Bleiweste",
     frage: "Womit schütze ich mich am wirksamsten vor Strahlung?",
-    schritte: ["Stelle 100 cm Abstand, 0 mm Blei und 20 Minuten ein und lies die Dosisleistung ab.", "Verdopple nur den Abstand auf 200 cm und lies die Dosisleistung erneut ab.", "Gehe zurück auf 100 cm und lege stattdessen nur 7 mm Blei dazwischen."]
+    schritte: ["Stelle 100 cm Abstand, 0 mm Blei und 20 Minuten ein. Notiere die Dosisleistung in Zeile 1 der Tabelle.", "Verdopple nur den Abstand auf 200 cm und notiere die Dosisleistung in Zeile 2.", "Gehe zurück auf 100 cm und lege stattdessen nur 7 mm Blei dazwischen. Notiere die Dosisleistung in Zeile 3."]
   },
   "ke5": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1710,7 +1710,7 @@ const HEFT_SEITEN = {
     name: "Kernspaltung",
     titel: "Ein Würfel Uran gegen einen ganzen Güterzug",
     frage: "Wie holt man riesige Energie aus einem winzigen Kern?",
-    schritte: ["Sieh dir die drei Phasen an: anfliegendes Neutron, ²³⁶U, Spaltung.", "Wähle nacheinander „Barium + Krypton“, „Xenon + Strontium“ und „Cäsium + Rubidium“ und prüfe jedes Mal die Summen von A und Z.", "Lies den Massenunterschied und die frei werdende Energie je Spaltung ab."]
+    schritte: ["Sieh dir die drei Phasen an: anfliegendes Neutron, ²³⁶U, Spaltung.", "Wähle „Barium + Krypton“, prüfe die Summen von A und Z und lies die frei werdende Energie ab. Notiere die Summe A rechts und die Energie in Zeile 1 der Tabelle.", "Wiederhole das mit „Xenon + Strontium“ für Zeile 2 und mit „Cäsium + Rubidium“ für Zeile 3. Lies auch den Massenunterschied ab."]
   },
   "ke6": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1719,7 +1719,7 @@ const HEFT_SEITEN = {
     name: "Die Kettenreaktion steuern",
     titel: "Die eine Zahl, auf die alles ankommt",
     frage: "Wie verhindert man, dass eine Kettenreaktion außer Kontrolle gerät?",
-    schritte: ["Fahre die Steuerstäbe auf 80 % ein und drücke fünfmal „nächste Generation“.", "Setze zurück, stelle 50 % ein und wiederhole den Durchgang.", "Setze erneut zurück, stelle 20 % ein und vergleiche alle drei Reihen."]
+    schritte: ["Fahre die Steuerstäbe auf 80 % ein und drücke fünfmal „nächste Generation“. Notiere k und die Spaltungen in Zeile 1 der Tabelle.", "Setze zurück, stelle 50 % ein und wiederhole das für Zeile 2.", "Wiederhole das mit 20 % für Zeile 3 und vergleiche alle drei Reihen."]
   },
   "ke7": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1728,7 +1728,7 @@ const HEFT_SEITEN = {
     name: "Vom Reaktor zur Steckdose",
     titel: "Ein Dampfkraftwerk mit ungewöhnlichem Feuer",
     frage: "Wie wird aus der Kernspaltung Strom in meiner Steckdose?",
-    schritte: ["Lies in der Simulation nach, welche vier Schritte vom Reaktor zur Steckdose führen, und trage sie der Reihe nach in die erste Spalte ein.", "Halte fest, an welcher Stelle die Energie tatsächlich in elektrische Energie umgewandelt wird.", "Lies ab, wie viele Spaltungen je Sekunde ein Kraftwerk für eine Leistung von 300 Megawatt braucht."]
+    schritte: ["Lies in der Simulation nach, welche vier Schritte vom Reaktor zur Steckdose führen. Notiere zu jedem Schritt die Energieform in Zeile 1 bis 4 der Tabelle.", "Lies ab, an welcher Stelle die Energie tatsächlich in elektrische Energie umgewandelt wird.", "Lies ab, wie viele Spaltungen je Sekunde ein Kraftwerk für eine Leistung von 300 Megawatt braucht."]
   },
   "ke8": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1737,7 +1737,7 @@ const HEFT_SEITEN = {
     name: "Wenn ein Reaktor außer Kontrolle gerät",
     titel: "Zwei Daten, die niemand vergisst",
     frage: "Was passiert, wenn ein Reaktor außer Kontrolle gerät?",
-    schritte: ["Lies im Datenblatt die drei Unfälle Three Mile Island, Tschernobyl und Fukushima mit ihren Jahreszahlen und Ursachen ab.", "Vergleiche die INES-Stufen und ordne sie der Skala von 0 bis 7 zu.", "Halte fest, welches Nuklid die Umwelt nach einem Unfall am längsten belastet."]
+    schritte: ["Lies im Datenblatt Jahr und Ursache der drei Unfälle ab. Notiere sie in Zeile 1 bis 3 der Tabelle.", "Notiere die INES-Stufen in Zeile 1 bis 3 und ordne sie der Skala von 0 bis 7 zu.", "Lies ab, welches Nuklid die Umwelt nach einem Unfall am längsten belastet."]
   },
   "ke9": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1746,7 +1746,7 @@ const HEFT_SEITEN = {
     name: "Endlagerung",
     titel: "Ein Behälter für hunderttausend Jahre",
     frage: "Wohin mit dem Müll, der noch Tausende Jahre strahlt?",
-    schritte: ["Wähle Plutonium-239 und lies seine Halbwertszeit ab.", "Drücke fünfmal „eine Halbwertszeit weiter“ und notiere nach 1, 3 und 5 Halbwertszeiten die vergangene Zeit und die übrigen Kerne in Prozent.", "Vergleiche diese Zeiten mit dem Alter der ältesten menschlichen Bauwerke."]
+    schritte: ["Wähle Plutonium-239 und lies seine Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“ und notiere t und übrige Kerne in Zeile 1 der Tabelle. Drücke noch zweimal für Zeile 2 und noch zweimal für Zeile 3.", "Vergleiche diese Zeiten mit dem Alter der ältesten menschlichen Bauwerke."]
   },
   "ke10": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1755,7 +1755,7 @@ const HEFT_SEITEN = {
     name: "Kernfusion",
     titel: "Das Feuer, das seit viereinhalb Milliarden Jahren brennt",
     frage: "Woher nimmt die Sonne ihre Energie?",
-    schritte: ["Stelle die Temperatur auf 5 Millionen °C ein und beobachte eine halbe Minute lang, was geschieht.", "Erhöhe die Temperatur schrittweise, halte fest, ab welcher Temperatur der erste Heliumkern entsteht, und beobachte bei 10 Millionen °C eine halbe Minute lang.", "Stelle die Temperatur auf 15 Millionen °C ein, beobachte wieder eine halbe Minute lang und lies die Massenbilanz und die Energie je Kernbaustein ab."]
+    schritte: ["Stelle 5 Millionen °C ein und beobachte eine halbe Minute lang. Notiere in Zeile 1 der Tabelle, wie viele Heliumkerne entstehen und ob es zündet.", "Erhöhe die Temperatur schrittweise und achte darauf, ab welcher Temperatur der erste Heliumkern entsteht. Beobachte bei 10 Millionen °C eine halbe Minute lang und notiere dasselbe in Zeile 2.", "Stelle 15 Millionen °C ein, beobachte wieder 30 s lang und notiere dasselbe in Zeile 3. Lies die Massenbilanz und die Energie je Kernbaustein ab."]
   },
   "ke11": {
     klasse: 10, schulform: "Realschule NRW",
@@ -1764,7 +1764,7 @@ const HEFT_SEITEN = {
     name: "Kernenergie bewerten",
     titel: "Zwei Listen und eine eigene Entscheidung",
     frage: "Ist Kernenergie eher ein Segen oder eher eine Gefahr?",
-    schritte: ["Lies im Datenblatt beide Spalten vollständig durch.", "Ordne jedes Argument einem der Bereiche Klima, Versorgung, Sicherheit, Abfall oder Kosten zu. Trage Klima, Sicherheit und Abfall in dieser Reihenfolge in die Tabelle ein.", "Suche das Argument heraus, das für dich am schwersten wiegt, und notiere warum."]
+    schritte: ["Lies im Datenblatt beide Spalten vollständig durch.", "Ordne jedes Argument einem der Bereiche Klima, Versorgung, Sicherheit, Abfall oder Kosten zu. Notiere die Argumente zu Klima, Sicherheit und Abfall in Zeile 1, 2 und 3 der Tabelle.", "Markiere in der Tabelle das Argument, das für dich am schwersten wiegt, und begründe deine Wahl."]
   },
   "oi1": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1773,7 +1773,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn Licht auf eine Oberfläche trifft?",
     titel: "Zwei Kisten ohne Beschriftung",
     frage: "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
-    schritte: ["Wähle nacheinander die vier Oberflächen Spiegel, Fensterglas, schwarzes Papier und weißes Papier.", "Lies in der Statuszeile die drei Prozentzahlen für reflektiert, durchgelassen und absorbiert ab.", "Stelle den Einfallswinkel von 0° bis 80° ein und beobachte, ob sich die Anteile ändern."]
+    schritte: ["Wähle Spiegel und lies in der Statuszeile die drei Anteile ab. Notiere sie und ihre Summe in Zeile 1 der Tabelle.", "Wähle Fensterglas und notiere Anteile und Summe in Zeile 2. Wiederhole das für Zeile 3 (schwarzes Papier) und Zeile 4 (weißes Papier).", "Stelle den Einfallswinkel von 0° bis 80° ein und beobachte, ob sich die Anteile ändern."]
   },
   "oi2": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1782,7 +1782,7 @@ const HEFT_SEITEN = {
     name: "Wo steht das Bild hinter dem Spiegel?",
     titel: "Der Handspiegel mit Holzgriff",
     frage: "Wie weit hinter dem Spiegel liegt das Bild des Gegenstands?",
-    schritte: ["Stelle den Abstand g nacheinander auf 40, 80, 110 und 200 ein.", "Lies in der Statuszeile ab, wie weit das Bild hinter dem Spiegel liegt.", "Wähle bei der Frage nach dem Bildort die Antwort „Gleich weit hinter dem Spiegel wie der Gegenstand davor“ und lies die Rückmeldung."]
+    schritte: ["Stelle den Abstand g auf 40. Lies in der Statuszeile ab, wie weit das Bild hinter dem Spiegel liegt und ob es virtuell oder reell ist.", "Notiere beides in Zeile 1 der Tabelle. Wiederhole das mit g = 80, 110 und 200 für Zeile 2, 3 und 4.", "Wähle bei der Frage nach dem Bildort die Antwort „Gleich weit hinter dem Spiegel wie der Gegenstand davor“ und lies die Rückmeldung."]
   },
   "oi3": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1791,7 +1791,7 @@ const HEFT_SEITEN = {
     name: "Nach welcher Regel wird Licht am Spiegel zurückgeworfen?",
     titel: "Der Lichtfleck an der Wand",
     frage: "Nach welcher Regel reflektiert der Spiegel einen Lichtstrahl?",
-    schritte: ["Stelle den Einfallswinkel zum Lot nacheinander auf 0°, 20°, 40° und 80° ein.", "Lies nach jeder Einstellung in der Statuszeile den Reflexionswinkel ab.", "Stelle den Einfallswinkel wieder auf 40°, dann den Regler „Spiegel drehen“ auf 25°, und lies ab, um wie viel Grad der Strahl schwenkt."]
+    schritte: ["Stelle den Einfallswinkel zum Lot auf 0°. Lies in der Statuszeile den Reflexionswinkel ab.", "Notiere ihn in Zeile 1 der Tabelle und rechne die letzte Spalte aus. Wiederhole das mit 20°, 40° und 80° für Zeile 2 bis 4.", "Stelle den Einfallswinkel wieder auf 40°, dann den Regler „Spiegel drehen“ auf 25°, und lies ab, um wie viel Grad der Strahl schwenkt."]
   },
   "oi4": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1800,7 +1800,7 @@ const HEFT_SEITEN = {
     name: "Warum knickt der Lichtstrahl beim Eintritt ins Glas?",
     titel: "Der halbrunde Glasklotz",
     frage: "An welcher Stelle wird der Strahl gebrochen, und zu welcher Seite?",
-    schritte: ["Stelle den Einfallswinkel (am Bildschirm: „Winkel in der Luft“) nacheinander auf 0°, 40° und 75° ein.", "Lies in der Statuszeile den zugehörigen Brechungswinkel ab (am Bildschirm: „im Glas“).", "Drücke „↓ genau auf das Lot“ und beobachte, ob der Strahl dann noch gebrochen wird."]
+    schritte: ["Stelle den Einfallswinkel (am Bildschirm: „Winkel in der Luft“) auf 0°. Lies in der Statuszeile den Brechungswinkel ab (am Bildschirm: „im Glas“).", "Notiere ihn in Zeile 1 der Tabelle und rechne den Unterschied aus. Wiederhole das mit 40° und 75° für Zeile 2 und 3.", "Drücke „↓ genau auf das Lot“ und beobachte, ob der Strahl dann noch gebrochen wird."]
   },
   "oi5": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1809,7 +1809,7 @@ const HEFT_SEITEN = {
     name: "Was passiert beim Austritt aus dem Glas?",
     titel: "Ein Glasklotz wird zum Spiegel",
     frage: "Wann tritt Licht aus dem Glas aus, und wann bleibt es darin gefangen?",
-    schritte: ["Stelle den Einfallswinkel (am Bildschirm: „Winkel im Glas“) auf 0° ein und lies ab, welcher Brechungswinkel („in der Luft“) angezeigt wird.", "Stelle nacheinander 20° und 25° ein und vergleiche die beiden Brechungswinkel in der Luft.", "Stelle 55° ein und beobachte die Statuszeile, während du den Einfallswinkel weiter bis 70° vergrößerst."]
+    schritte: ["Stelle den Einfallswinkel (am Bildschirm: „Winkel im Glas“) auf 0°. Notiere in Zeile 1 der Tabelle den Brechungswinkel („in der Luft“) und ob Licht austritt.", "Stelle 20° ein und notiere beides in Zeile 2. Wiederhole das mit 25° für Zeile 3. Vergleiche die beiden Brechungswinkel in der Luft.", "Stelle 55° ein und notiere deine Beobachtung in Zeile 4. Vergrößere den Einfallswinkel weiter bis 70° und beobachte die Statuszeile."]
   },
   "oi6": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1818,7 +1818,7 @@ const HEFT_SEITEN = {
     name: "Wie kommt Licht durch eine gebogene Faser?",
     titel: "Ein Bündel dünner Glasfäden",
     frage: "Warum bleibt das Licht in einer gebogenen Glasfaser gefangen?",
-    schritte: ["Stelle den Einfallswinkel an der Wand nacheinander auf 20°, 40°, 60° und 85° ein und beobachte den Weg des Lichts im Glasstab.", "Beobachte bei jeder Einstellung, ob im Bild „Licht tritt aus“ steht.", "Vergleiche, wie das Licht bei 60° und bei 20° durch den Stab läuft."]
+    schritte: ["Stelle den Einfallswinkel an der Wand auf 20° und beobachte den Weg des Lichts im Glasstab. Achte darauf, ob im Bild „Licht tritt aus“ steht.", "Notiere in Zeile 1 der Tabelle, ob das Licht im Lichtleiter bleibt und was im Bild steht. Wiederhole das mit 40°, 60° und 85° für Zeile 2, 3 und 4.", "Vergleiche, wie das Licht bei 60° und bei 20° durch den Stab läuft."]
   },
   "oi7": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1827,7 +1827,7 @@ const HEFT_SEITEN = {
     name: "Welches Glas bündelt das Licht, welches nicht?",
     titel: "Zwei geschliffene Gläser ohne Aufschrift",
     frage: "Welches Glas bündelt paralleles Licht, und welches nicht?",
-    schritte: ["Stelle das Glas auf „in der Mitte dicker“ ein und lies ab, wo sich die Strahlen treffen.", "Stelle die Brennweite nacheinander auf 45, 90 und 150 ein und vergleiche, wie weit der Brennpunkt vom Glas entfernt liegt.", "Stelle das Glas auf „in der Mitte dünner“ und die Brennweite wieder auf 90 ein und beobachte, wohin die Strahlen jetzt laufen."]
+    schritte: ["Stelle das Glas auf „in der Mitte dicker“ und die Brennweite f auf 45. Lies ab, wohin die Strahlen laufen und wo sie sich treffen. Notiere beides in Zeile 1 der Tabelle.", "Wiederhole das mit f = 90 und f = 150 für Zeile 2 und 3. Vergleiche, wie weit der Brennpunkt vom Glas entfernt liegt.", "Stelle das Glas auf „in der Mitte dünner“ und f wieder auf 90. Notiere in Zeile 4 der Tabelle, wohin die Strahlen jetzt laufen und wo der Brennpunkt liegt."]
   },
   "oi8": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1836,7 +1836,7 @@ const HEFT_SEITEN = {
     name: "Wo entsteht das Bild einer Linse?",
     titel: "Das zerlegte Fernrohr auf dem Tisch",
     frage: "Wovon hängt es ab, ob das Bild vergrößert oder umgekehrt ist?",
-    schritte: ["Stelle die Gegenstandsweite g auf 190 ein und lies die Statuszeile ab.", "Stelle nacheinander 124 und 100 ein und vergleiche jedes Mal Größe und Lage des Bildes.", "Stelle 25 ein und beobachte, wie das Bild jetzt steht."]
+    schritte: ["Stelle die Gegenstandsweite g auf 190 und lies die Statuszeile ab. Notiere Größe und Lage des Bildes in Zeile 1 der Tabelle.", "Wiederhole das mit g = 124 und g = 100 für Zeile 2 und 3. Vergleiche jedes Mal Größe und Lage des Bildes.", "Stelle g auf 25 und beobachte, wie das Bild jetzt steht. Notiere Größe und Lage in Zeile 4 der Tabelle."]
   },
   "oi9": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1845,7 +1845,7 @@ const HEFT_SEITEN = {
     name: "Warum vergrößert eine Lupe?",
     titel: "Das Glas mit dem Griff",
     frage: "Wann vergrößert die Lupe – und wann ist das Bild umgekehrt?",
-    schritte: ["Stelle den Regler „Abstand Gegenstand–Lupe g“ auf 10 und lies in der Statuszeile die Vergrößerung ab.", "Stelle nacheinander 32 und 48 ein und halte jedes Mal die Zahl vor „-fache Vergrößerung“ fest.", "Schiebe g auf 60 – über die Brennweite f = 58 hinaus – und lies Statuszeile und Bildtext ab."]
+    schritte: ["Stelle den Regler „Abstand Gegenstand–Lupe g“ auf 10. Notiere in Zeile 1 der Tabelle die Vergrößerung aus der Statuszeile und ob das Bild aufrecht ist.", "Wiederhole das mit g = 32 und g = 48 für Zeile 2 und 3. Notiere jedes Mal die Zahl vor „-fache Vergrößerung“.", "Schiebe g auf 60 – über die Brennweite f = 58 hinaus – und lies Statuszeile und Bildtext ab. Notiere deine Beobachtung in Zeile 4 der Tabelle."]
   },
   "oi10": {
     klasse: 7, schulform: "Gesamtschule NRW",
@@ -1854,178 +1854,178 @@ const HEFT_SEITEN = {
     name: "Wie entsteht ein Bild im Auge?",
     titel: "Das aufklappbare Augenmodell",
     frage: "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
-    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts (weit), lass die Pupille auf „mittel“ und lies in der Statuszeile ab, wie die Linse beschrieben wird.", "Schiebe denselben Regler ganz nach links (nah) und vergleiche Statuszeile und Wölbung der Linse im Bild.", "Schiebe den Regler „Abstand des Gegenstands“ wieder ganz nach rechts (weit). Schiebe dann den Regler „Pupille (Helligkeit)“ erst ganz nach links (eng), dann ganz nach rechts (weit), und lies jedes Mal die Statuszeile ab."]
+    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts (weit) und lass die Pupille auf „mittel“. Notiere aus der Statuszeile Linse und Pupille in Zeile 1 der Tabelle.", "Schiebe denselben Regler ganz nach links (nah) und vergleiche Statuszeile und Wölbung der Linse im Bild. Notiere Linse und Pupille in Zeile 2.", "Schiebe den Regler „Abstand des Gegenstands“ wieder ganz nach rechts (weit). Schiebe den Regler „Pupille (Helligkeit)“ ganz nach links (eng) und notiere Linse und Pupille in Zeile 3. Schiebe ihn dann ganz nach rechts (weit) und notiere beides in Zeile 4."]
   },
   "oi11": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "brille", seite: 41,
+    sim: "brille", seite: 42,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie hilft eine Brille beim Scharfsehen?",
     titel: "Zwei Brillen ohne Etikett",
     frage: "Welche Linse gehört zu welchem Sehfehler?",
-    schritte: ["Wähle „kurzsichtig“ und lies in der Statuszeile ab, wo das Bild liegt und welche Linse nötig ist.", "Drücke „Brille“ und vergleiche Statuszeile und Beschriftung am Bild mit dem Zustand vorher.", "Drücke „Brille“ noch einmal, damit die Brille wieder ab ist. Wähle „weitsichtig“ und lies die Meldung ab. Drücke dann wieder „Brille“ und vergleiche beide Meldungen."]
+    schritte: ["Wähle „kurzsichtig“ und lies in der Statuszeile ab, wo das Bild liegt und welche Linse nötig ist. Notiere Bildort und Schärfe in Zeile 1 der Tabelle.", "Drücke „Brille“ und vergleiche Statuszeile und Beschriftung am Bild mit dem Zustand vorher. Notiere Bildort und Schärfe in Zeile 2.", "Drücke „Brille“ noch einmal, damit die Brille ab ist. Wähle „weitsichtig“ und notiere Bildort und Schärfe in Zeile 3. Drücke wieder „Brille“ und notiere beides in Zeile 4."]
   },
   "oi12": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "lochkamera", seite: 44,
+    sim: "lochkamera", seite: 45,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie macht eine Kamera ein Bild ohne Linse?",
     titel: "Die Pappkiste mit dem Nadelloch",
     frage: "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
-    schritte: ["Stelle bei einer Gegenstandsweite von g = 40 cm und der Lochgröße „klein“ die Bildweite b auf 29 cm und lies die Statuszeile ab.", "Stelle b nacheinander auf 39 cm und auf 51 cm und vergleiche jedes Mal die Länge der beiden Pfeile.", "Schiebe den Regler „Lochgröße“ ganz nach rechts (groß) und beobachte, wie sich Statuszeile und Pfeil auf dem Schirm ändern."]
+    schritte: ["Stelle bei einer Gegenstandsweite von g = 40 cm und der Lochgröße „klein“ die Bildweite b auf 29 cm. Notiere aus der Statuszeile Bildgröße und Schärfe in Zeile 1 der Tabelle.", "Wiederhole das mit b = 39 cm und b = 51 cm für Zeile 2 und 3. Vergleiche jedes Mal die Länge der beiden Pfeile.", "Schiebe den Regler „Lochgröße“ ganz nach rechts (groß) und beobachte, wie sich Statuszeile und Pfeil auf dem Schirm ändern. Notiere Bildgröße und Schärfe in Zeile 4."]
   },
   "oi13": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "prisma", seite: 48,
+    sim: "prisma", seite: 49,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Woraus besteht weißes Licht?",
     titel: "Der Glaskeil in der Schublade",
     frage: "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
-    schritte: ["Wähle weißes Licht und lies in der Statuszeile ab, was mit dem Strahl passiert.", "Drücke nur Rot und beobachte, ob das Licht hinter dem Prisma noch zerlegt wird.", "Vergleiche das Ergebnis mit nur Blau und achte dabei auf die Beschriftung im Bild."]
+    schritte: ["Wähle weißes Licht und lies in der Statuszeile ab, was mit dem Strahl passiert. Notiere deine Beobachtung in Zeile 1 der Tabelle.", "Drücke nur Rot und beobachte, ob das Licht hinter dem Prisma noch zerlegt wird. Notiere deine Beobachtung in Zeile 2.", "Drücke nur Blau, achte auf die Beschriftung im Bild und vergleiche mit Rot. Notiere deine Beobachtung in Zeile 3."]
   },
   "oi14": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "farbmischung-additiv", seite: 51,
+    sim: "farbmischung-additiv", seite: 52,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Wie entstehen die Farben auf einem Bildschirm?",
     titel: "Die Lupe auf dem Bildschirm",
     frage: "Wie entsteht Weiß, wenn dort nur rote, grüne und blaue Punkte leuchten?",
-    schritte: ["Lies zuerst im Statusfeld die Ergebnisfarbe des Ausgangszustands mit ihren drei Zahlen ab.", "Drücke danach aus und anschließend Gelb und notiere jedes Mal alle drei Werte.", "Schiebe den Regler Blau von 0 auf 255 und vergleiche das Ergebnis mit dem Knopf Weiß."]
+    schritte: ["Lies im Statusfeld die Ergebnisfarbe des Ausgangszustands und ihre drei Zahlen ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „aus“ und notiere R, G, B und die Ergebnisfarbe in Zeile 2. Wiederhole das mit Gelb für Zeile 3.", "Schiebe den Regler Blau von 0 auf 255 und vergleiche das Ergebnis mit dem Knopf Weiß. Notiere R, G, B und die Ergebnisfarbe in Zeile 4."]
   },
   "oi15": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "spektrum-unsichtbar", seite: 54,
+    sim: "spektrum-unsichtbar", seite: 55,
     kapitel: "Sehen, spiegeln, brechen",
     name: "Welches Licht sehen wir nicht?",
     titel: "Das Thermometer mit der schwarzen Kugel",
     frage: "Kommt hinter dem letzten Rot noch etwas an, das man nicht sehen kann?",
-    schritte: ["Drücke 310 nm – Sonnenbrand und lies den Bereich und die Erwärmung ab.", "Wähle nacheinander 555 nm, 700 nm und 940 nm und notiere jedes Mal beide Angaben.", "Stelle den Regler auf 1100 nm ein und vergleiche die Erwärmung mit den anderen Werten."]
+    schritte: ["Drücke 310 nm – Sonnenbrand und lies Bereich und Erwärmung ab. Notiere in Zeile 1 der Tabelle, ob das Auge etwas sieht, und die Erwärmung.", "Wiederhole das mit 555 nm, 700 nm und 940 nm für Zeile 2, 3 und 4.", "Stelle den Regler auf 1100 nm ein und vergleiche die Erwärmung mit den anderen Werten."]
   },
   "ew1": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "himmelskoerper", seite: 59,
+    sim: "himmelskoerper", seite: 60,
     kapitel: "Der Blick ins Weltall",
     name: "Was leuchtet da eigentlich am Nachthimmel?",
     titel: "Ein Karton voller Sternkarten",
     frage: "Welche Himmelskörper leuchten selbst und welche werden beleuchtet?",
-    schritte: ["Wähle nacheinander Sonne, Stern, Mond und Planet und lies jedes Mal die Statuszeile darunter ab.", "Drücke Sonnenlicht abdecken und wähle danach noch einmal jeden der vier Körper: Wer wird sofort dunkel, wer strahlt weiter?", "Vergleiche mit Zurücksetzen den hellen Zustand noch einmal mit dem abgedeckten."]
+    schritte: ["Wähle Sonne und lies die Statuszeile darunter ab. Notiere in Zeile 1 der Tabelle, ob sie selbst leuchtet. Wiederhole das mit Stern, Mond und Planet für Zeile 2 bis 4.", "Drücke Sonnenlicht abdecken. Wähle wieder Sonne und notiere in Zeile 1, ob sie hell oder dunkel ist. Wiederhole das mit Stern, Mond und Planet für Zeile 2 bis 4.", "Vergleiche mit Zurücksetzen den hellen Zustand noch einmal mit dem abgedeckten."]
   },
   "ew2": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "tag-nacht", seite: 63,
+    sim: "tag-nacht", seite: 64,
     kapitel: "Der Blick ins Weltall",
     name: "Warum ist es nicht überall gleichzeitig hell?",
     titel: "Der staubige Globus neben dem Schrank",
     frage: "Wovon hängt es ab, ob es an einem Ort gerade Tag oder Nacht ist?",
-    schritte: ["Drücke Pause, damit der Globus stehen bleibt und du in Ruhe ablesen kannst.", "Stelle den Regler „Erde von Hand drehen“ nacheinander auf 0°, 90°, 180° und 270° ein.", "Lies bei jeder Stellung die Statuszeile ab und notiere, wer gerade Tag hat: dein Ort oder die Gegenseite."]
+    schritte: ["Drücke Pause, damit der Globus stehen bleibt und du in Ruhe ablesen kannst.", "Stelle den Regler „Erde von Hand drehen“ auf 0°. Notiere in Zeile 1 der Tabelle, wer Tag hat (dein Ort oder die Gegenseite) und was die Statuszeile meldet.", "Wiederhole das mit 90°, 180° und 270° für Zeile 2, 3 und 4."]
   },
   "ew3": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "gravitation", seite: 66,
+    sim: "gravitation", seite: 67,
     kapitel: "Der Blick ins Weltall",
     name: "Warum fällt alles nach unten?",
     titel: "Zwei Glasrohre aus dem Sammlungsschrank",
     frage: "Fallen Stein und Feder gleich schnell, wenn keine Luft im Rohr ist?",
-    schritte: ["Drücke Noch einmal fallen lassen und beobachte beide Rohre gleichzeitig: links ohne Luft, rechts mit Luft.", "Wähle nacheinander Mond, Erde und Jupiter und lies in der Statuszeile die Fallbeschleunigung und die Fallzeit ab.", "Vergleiche im linken Rohr die Abstände zwischen den gestrichelten Linien 1 bis 4."]
+    schritte: ["Drücke Noch einmal fallen lassen und beobachte beide Rohre gleichzeitig: links ohne Luft, rechts mit Luft.", "Wähle Mond und lies in der Statuszeile die Fallbeschleunigung g und die Fallzeit t ab. Notiere g und t in Zeile 1 der Tabelle. Wiederhole das mit Erde und Jupiter für Zeile 2 und 3.", "Vergleiche im linken Rohr die Abstände zwischen den gestrichelten Linien 1 bis 4."]
   },
   "ew4": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "gravitation-abstand", seite: 70,
+    sim: "gravitation-abstand", seite: 71,
     kapitel: "Der Blick ins Weltall",
     name: "Wovon hängt die Stärke der Anziehung ab?",
     titel: "Zwei Messingkugeln in der Schublade",
     frage: "Was wirkt stärker: die doppelte Masse oder der doppelte Abstand?",
-    schritte: ["Lies zuerst den Ausgangswert in der Statuszeile ab: beide Massen stehen auf 1, der Abstand auf 1.", "Drücke ×2 Masse links, danach ×2 Abstand, und lies nach jedem Druck die Anziehungskraft ab.", "Drücke zurücksetzen und stelle dann beide Massenregler nacheinander auf 5."]
+    schritte: ["Lies den Ausgangswert in der Statuszeile ab: beide Massen stehen auf 1, der Abstand auf 1. Notiere die Anziehungskraft F und das Vielfache in Zeile 1 der Tabelle im Heft.", "Drücke ×2 Masse links und notiere F und das Vielfache in Zeile 2 der Tabelle im Heft. Drücke danach ×2 Abstand und notiere beides in Zeile 3.", "Drücke zurücksetzen und stelle beide Massenregler nacheinander auf 5. Notiere F und das Vielfache in Zeile 4 der Tabelle im Heft."]
   },
   "ew5": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "planetenbahn", seite: 74,
+    sim: "planetenbahn", seite: 75,
     kapitel: "Der Blick ins Weltall",
     name: "Warum stürzen die Planeten nicht in die Sonne?",
     titel: "Der Bogen mit den Bahnen",
     frage: "Warum stürzt ein Planet nicht in die Sonne, obwohl sie ihn anzieht?",
-    schritte: ["Drücke ganz klein und beobachte, wohin der Planet läuft.", "Drücke nacheinander mittlerer Wert, etwas darüber und Gegenprobe groß und lies jedes Mal die Bahnform in der Statuszeile ab.", "Vergleiche deine Werte mit der letzten Zeile der Anzeige: Für einen Kreis braucht er 29,8 km/s, ab 42,1 km/s entkommt er."]
+    schritte: ["Drücke ganz klein und notiere die Bahnform in Zeile 1 der Tabelle.", "Wiederhole das für Zeile 2 (mittlerer Wert), Zeile 3 (etwas darüber) und Zeile 4 (Gegenprobe groß). Beobachte jedes Mal, wohin der Planet läuft.", "Vergleiche deine Werte mit der letzten Zeile der Anzeige: Für einen Kreis braucht er 29,8 km/s, ab 42,1 km/s entkommt er."]
   },
   "ew6": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sonnensystem", seite: 77,
+    sim: "sonnensystem", seite: 78,
     kapitel: "Der Blick ins Weltall",
     name: "Was unterscheidet die acht Planeten voneinander?",
     titel: "Acht gleich große Kugeln",
     frage: "Was unterscheidet die inneren Planeten von den äußeren?",
-    schritte: ["Drücke Steckbrief und lies für die Erde Sorte, Durchmesser, Abstand und Umlauf ab.", "Drücke Größen und danach Abstände und beobachte, was im Bild jeweils gestaucht wird; lies dazu den Hinweis unter dem Bild.", "Drücke Umlauf und dazu sehr schnell und vergleiche, wie oft die inneren und wie oft die äußeren Planeten die Sonne umrunden."]
+    schritte: ["Drücke Steckbrief und lies für die Erde Sorte, Durchmesser, Abstand und Umlauf ab. Notiere deine Beobachtung in Zeile 1 der Tabelle.", "Drücke Größen und lies den Hinweis unter dem Bild: Was wird gestaucht? Notiere es in Zeile 2. Wiederhole das mit Abstände für Zeile 3.", "Drücke Umlauf und dazu sehr schnell. Vergleiche, wie oft innere und äußere Planeten die Sonne umrunden. Notiere es in Zeile 4."]
   },
   "ew7": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "entfernungen", seite: 80,
+    sim: "entfernungen", seite: 81,
     kapitel: "Der Blick ins Weltall",
     name: "Wie groß ist das Sonnensystem wirklich?",
     titel: "Ein Wort auf der Rückseite",
     frage: "Wie lange braucht das Licht von immer ferneren Zielen bis zur Erde?",
-    schritte: ["Drücke Lichtblitz senden und beobachte, wie lange der Blitz von der Erde bis zum Mond unterwegs ist.", "Drücke weiter (Erde → Sonne) und lies in der Statuszeile die Entfernung und die Laufzeit des Lichts ab.", "Vergleiche die Laufzeiten, indem du dich mit weiter Schritt für Schritt bis zum nächsten Stern und zur Andromeda-Galaxie vorarbeitest."]
+    schritte: ["Drücke Lichtblitz senden und lies Entfernung und Laufzeit bis zum Mond ab. Notiere beides in Zeile 1 der Tabelle.", "Drücke weiter (Erde → Sonne) und notiere Entfernung und Laufzeit in Zeile 2.", "Drücke weiter bis zum nächsten Stern und notiere beides in Zeile 3. Drücke weiter bis zur Andromeda-Galaxie und notiere beides in Zeile 4. Vergleiche die Laufzeiten."]
   },
   "ew8": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "teleskop", seite: 83,
+    sim: "teleskop", seite: 84,
     kapitel: "Der Blick ins Weltall",
     name: "Wie holt ein Fernrohr Fernes heran?",
     titel: "Zwei Linsen und ein Rohr",
     frage: "Wie verändert ein Fernrohr Größe, Lage und Helligkeit des Bildes?",
-    schritte: ["Drücke bloßes Auge und beobachte, wie groß das Mondbild ist und wie herum die gelbe Marke steht.", "Drücke mit Teleskop und lies in der Statuszeile die Vergrößerung ab; achte dabei wieder auf die gelbe Marke.", "Vergleiche große Öffnung mit kleine Öffnung und beobachte dabei nur die Helligkeit des Bildes."]
+    schritte: ["Drücke bloßes Auge und beobachte, wie groß das Mondbild ist und wie herum die gelbe Marke steht. Notiere deine Beobachtung in Zeile 1 der Tabelle.", "Drücke mit Teleskop und lies in der Statuszeile die Vergrößerung ab; achte wieder auf die gelbe Marke. Notiere deine Beobachtung in Zeile 2.", "Drücke kleine Öffnung und beobachte dabei nur die Helligkeit des Bildes. Notiere deine Beobachtung in Zeile 3 und vergleiche mit Zeile 2."]
   },
   "ew9": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sternparallaxe", seite: 87,
+    sim: "sternparallaxe", seite: 88,
     kapitel: "Der Blick ins Weltall",
     name: "Wie misst man die Entfernung zu einem Stern?",
     titel: "Kein Maßband bis zum Stern",
     frage: "Wie hängt der gemessene Winkel mit der Entfernung eines Sterns zusammen?",
-    schritte: ["Drücke Proxima Centauri und lies in der Statuszeile den Winkel p und die Entfernung in Parsec ab.", "Vergleiche damit 61 Cygni und Wega und notiere jedes Mal beide Zahlen.", "Wähle Polarstern und drücke danach Lupe ×100, damit die winzige Verschiebung im Bild sichtbar wird."]
+    schritte: ["Drücke Proxima Centauri und lies in der Statuszeile den Winkel p und die Entfernung d ab. Notiere p und d in Zeile 1 der Tabelle.", "Wiederhole das mit 61 Cygni und Wega für Zeile 2 und 3. Vergleiche die Zahlen.", "Wähle Polarstern und notiere p und d in Zeile 4. Drücke danach Lupe ×100, damit die winzige Verschiebung im Bild sichtbar wird."]
   },
   "ew10": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "sternleben", seite: 91,
+    sim: "sternleben", seite: 92,
     kapitel: "Der Blick ins Weltall",
     name: "Warum leuchtet ein Stern - und wie lange?",
     titel: "Die Randnotiz auf der Sternkarte",
     frage: "Lebt ein Stern mit großer Masse länger als einer mit kleiner Masse?",
-    schritte: ["Drücke 1 und beobachte im Bild den ganzen Lebenslauf von der Gaswolke bis zum Ende.", "Wähle nacheinander 0,5 und 10 und lies jedes Mal Lebensdauer, Farbe und Ende in der Statuszeile ab.", "Drücke Gegenprobe 25 und vergleiche die Lebensdauer mit den drei Sternen davor. Trage die vier Sterne nach ihrer Masse geordnet in die Tabelle ein: 0,5, 1, 10 und 25 Sonnenmassen."]
+    schritte: ["Drücke 1 und beobachte im Bild den ganzen Lebenslauf von der Gaswolke bis zum Ende. Notiere Lebensdauer, Farbe und Ende aus der Statuszeile in Zeile 2 der Tabelle im Heft.", "Drücke 0,5 und notiere die drei Angaben in Zeile 1 der Tabelle im Heft. Wiederhole das mit 10 für Zeile 3.", "Drücke Gegenprobe 25 und notiere die Angaben in Zeile 4 der Tabelle im Heft. Vergleiche die Lebensdauer mit den drei Sternen davor."]
   },
   "ew11": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "milchstrasse", seite: 95,
+    sim: "milchstrasse", seite: 96,
     kapitel: "Der Blick ins Weltall",
     name: "Wo stehen wir in der Milchstraße?",
     titel: "Das blasse Band auf der Sternkarte",
     frage: "Steht die Sonne in der Mitte der Milchstraße oder irgendwo dazwischen?",
-    schritte: ["Wähle nacheinander zur Mitte, nach außen und quer heraus und lies jedes Mal die Sterne im Blickfeld ab.", "Drehe die Ansicht mit dem Regler auf von der Seite (90°) und beobachte, wie flach die Scheibe wirklich ist.", "Drücke Gegenprobe: Sonne in die Mitte und vergleiche die Anzeige mit dem Wert davor."]
+    schritte: ["Wähle zur Mitte. Notiere die Sterne im Blickfeld und die Helligkeit des Bandes in Zeile 1 der Tabelle. Wiederhole das für Zeile 2 (nach außen) und Zeile 3 (quer heraus).", "Drehe die Ansicht mit dem Regler auf von der Seite (90°) und beobachte, wie flach die Scheibe wirklich ist.", "Drücke Gegenprobe: Sonne in die Mitte und vergleiche die Anzeige mit dem Wert davor. Notiere Sterne und Helligkeit in Zeile 4."]
   },
   "ew12": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "weltbild", seite: 99,
+    sim: "weltbild", seite: 100,
     kapitel: "Der Blick ins Weltall",
     name: "Wer steht in der Mitte? Zwei Weltbilder",
     titel: "Ein vergilbtes Blatt voller Kreise",
     frage: "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
-    schritte: ["Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile ab.", "Drücke „Sonne in der Mitte (heute)“ und vergleiche die neue Statuszeile mit der alten.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus gesehen? Drücke zum Schluss „Zurücksetzen“ und lies die Statuszeile noch einmal ab."]
+    schritte: ["Drücke „Erde in der Mitte (alt)“. Notiere in Zeile 1 der Tabelle, wer in der Mitte steht und ob Epizykel nötig sind.", "Drücke „Sonne in der Mitte (heute)“ und notiere beides in Zeile 2.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus gesehen? Drücke „Zurücksetzen“ und notiere beides in Zeile 3. Vergleiche die Zeilen."]
   },
   "ew13": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "schwarzes-loch", seite: 102,
+    sim: "schwarzes-loch", seite: 103,
     kapitel: "Der Blick ins Weltall",
     name: "Wie findet man etwas, das kein Licht aussendet?",
     titel: "Ein Kreis um ein leeres Feld",
     frage: "Woran erkennt man ein schwarzes Loch, wenn es selbst nicht leuchtet?",
-    schritte: ["Drücke „weit weg“ und danach „Lichtstrahl senden“.", "Wähle nacheinander „mittel“ und „sehr nah“ und sende jedes Mal einen Lichtstrahl.", "Lies zu jedem Abstand die Statuszeile ab und vergleiche die drei Wege im Bild."]
+    schritte: ["Drücke „weit weg“ und danach „Lichtstrahl senden“. Notiere in Zeile 1 der Tabelle den Weg des Lichtstrahls und ob er wieder herauskommt.", "Wiederhole das mit „mittel“ für Zeile 2 und mit „sehr nah“ für Zeile 3.", "Vergleiche die drei Wege im Bild."]
   },
   "ew14": {
     klasse: 7, schulform: "Gesamtschule NRW",
-    sim: "urknall", seite: 105,
+    sim: "urknall", seite: 106,
     kapitel: "Der Blick ins Weltall",
     name: "Woher kommt alles? Der Urknall",
     titel: "Die Frage auf der Rückseite",
     frage: "Wie hat sich das Weltall seit dem Urknall verändert?",
-    schritte: ["Drücke „zum Anfang“ und lies sofort die Zeitanzeige und die Statuszeile ab.", "Drücke „Urknall starten“ und beobachte die Abstände zwischen den Galaxien kurz nach dem Start und in der Mitte des Ablaufs.", "Vergleiche das Bild am Anfang mit dem Bild am Ende des Ablaufs."]
+    schritte: ["Drücke „zum Anfang“ und lies sofort Zeitanzeige und Statuszeile ab. Notiere sie und die Abstände der Galaxien in Zeile 1 der Tabelle.", "Drücke „Urknall starten“. Notiere dasselbe kurz nach dem Start in Zeile 2 und in der Mitte des Ablaufs in Zeile 3.", "Notiere am Ende des Ablaufs dasselbe in Zeile 4. Vergleiche das Bild am Anfang mit dem Bild am Ende."]
   },
   "st1": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2034,7 +2034,7 @@ const HEFT_SEITEN = {
     name: "Warum knistert der Pullover beim Ausziehen?",
     titel: "Knistern in der kalten Werkstatt",
     frage: "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
-    schritte: ["Drücke bei Kugel A „positiv“ und bei Kugel B „negativ“ und lies die Statuszeile ab.", "Drücke nun bei Kugel A „negativ“, sodass beide Kugeln negativ sind, und beobachte das Bild.", "Drücke bei Kugel B „positiv“, danach „Zurücksetzen“, und vergleiche alle vier Statuszeilen."]
+    schritte: ["Drücke bei Kugel A „positiv“ und bei Kugel B „negativ“. Lies die Statuszeile ab und notiere in Zeile 1 der Tabelle, ob sich die Kugeln anziehen oder abstoßen.", "Drücke nun bei Kugel A „negativ“, sodass beide Kugeln negativ sind. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Drücke bei Kugel B „positiv“ und notiere deine Beobachtung in Zeile 3. Drücke danach „Zurücksetzen“ und notiere deine Beobachtung in Zeile 4."]
   },
   "st3": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2043,7 +2043,7 @@ const HEFT_SEITEN = {
     name: "Was sagt die Spannung an der Batterie?",
     titel: "Die Spannung an der Energiequelle",
     frage: "Wie wirkt sich die Spannung der Quelle auf die Helligkeit der Lampe aus?",
-    schritte: ["Drücke „1 Energiequelle (1,5 V)“ und lies die Spannung am Voltmeter ab.", "Drücke nacheinander „2 Energiequellen (3 V)“ und „3 Energiequellen (4,5 V)“ und beobachte die Lampe.", "Vergleiche die drei Spannungen mit der Helligkeit der Lampe."]
+    schritte: ["Drücke „1 Energiequelle (1,5 V)“ und lies die Spannung am Voltmeter ab. Notiere U und die Helligkeit der Lampe in Zeile 1 der Tabelle.", "Drücke „2 Energiequellen (3 V)“ und notiere U und die Helligkeit in Zeile 2. Wiederhole das mit „3 Energiequellen (4,5 V)“ für Zeile 3.", "Vergleiche die drei Spannungen mit der Helligkeit der Lampe."]
   },
   "st4": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2052,7 +2052,7 @@ const HEFT_SEITEN = {
     name: "Wie viel fließt da eigentlich?",
     titel: "Ein Schalter unterbricht den Kreis",
     frage: "Wie groß ist die Stromstärke im Kreis, und wann fließt kein Strom mehr?",
-    schritte: ["Drücke „Strom schwach“ und lies die Stromstärke am Amperemeter ab.", "Drücke nacheinander „mittel“ und „stark“ und beobachte die Lampe.", "Beobachte das Amperemeter, nachdem du mit dem Schalter den Kreis geöffnet hast."]
+    schritte: ["Drücke „Strom schwach“, lies I am Amperemeter ab und notiere I in Zeile 1 der Tabelle.", "Drücke „mittel“ und notiere I in Zeile 2. Wiederhole das mit „stark“ für Zeile 3. Beobachte dabei die Lampe.", "Öffne mit dem Schalter den Kreis und notiere I in Zeile 4."]
   },
   "st5": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2061,7 +2061,7 @@ const HEFT_SEITEN = {
     name: "Wie schließt man ein Messgerät richtig an?",
     titel: "Zwei Messgeräte an der Werkbank",
     frage: "Wie muss ein Amperemeter, wie ein Voltmeter im Stromkreis liegen?",
-    schritte: ["Drücke „Amperemeter“, dann „in Reihe“, und lies die Statuszeile und den Wert am Messgerät ab.", "Wähle „Voltmeter“, drücke „in Reihe“ und beobachte die Lampe.", "Drücke „parallel“ und vergleiche diese Anzeige mit der vorherigen."]
+    schritte: ["Drücke „Amperemeter“, dann „in Reihe“. Lies die Statuszeile und den Wert am Messgerät ab und notiere beides in Zeile 1 der Tabelle.", "Wähle „Voltmeter“, drücke „in Reihe“ und beobachte die Lampe. Notiere die Meldung in Zeile 2 der Tabelle.", "Drücke „parallel“ und notiere die Meldung in Zeile 3 der Tabelle. Vergleiche sie mit Zeile 2."]
   },
   "st6": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2070,7 +2070,7 @@ const HEFT_SEITEN = {
     name: "Was bremst den Strom?",
     titel: "Drei Bauteile an derselben Batterie",
     frage: "Warum fließt bei gleicher Spannung durch jedes Bauteil ein anderer Strom?",
-    schritte: ["Drücke „kleiner Widerstand“ und lies Widerstand und Stromstärke in der Statuszeile ab.", "Wähle danach „mittel“ und „großer Widerstand“ und notiere jedes Mal beide Werte.", "Vergleiche die drei Stromstärken bei der gleichen Spannung von 4,5 V."]
+    schritte: ["Drücke „kleiner Widerstand“ und lies R und I in der Statuszeile ab. Notiere beide Werte in Zeile 1 der Tabelle.", "Drücke „mittel“ und notiere R und I in Zeile 2. Wiederhole das mit „großer Widerstand“ für Zeile 3.", "Vergleiche die drei Stromstärken bei der gleichen Spannung von 4,5 V."]
   },
   "st7": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2079,7 +2079,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt der Widerstand eines Drahtes ab?",
     titel: "Drahtrollen aus der Restekiste",
     frage: "Wovon hängt es ab, wie groß der Widerstand eines Drahtes ist?",
-    schritte: ["Lies Widerstand und Stromstärke bei Kupfer, „kurz“ und „dick“ ab. Drücke dann „lang“ und lies ab, wie sich beide ändern.", "Drücke „dünn“ und lies den neuen Widerstand und die neue Stromstärke ab.", "Vergleiche bei diesem Draht die Materialien Kupfer, Eisen und Konstantan."]
+    schritte: ["Lies R und I bei Kupfer, „kurz“ und „dick“ ab und notiere sie in Zeile 1 der Tabelle. Drücke dann „lang“ und notiere R und I in Zeile 2.", "Drücke „dünn“ und notiere den neuen Widerstand R und die neue Stromstärke I in Zeile 3 der Tabelle.", "Drücke „Konstantan“ und notiere R und I in Zeile 4 der Tabelle. Drücke danach „Eisen“ und vergleiche R mit Zeile 3 und 4."]
   },
   "st8": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2088,7 +2088,7 @@ const HEFT_SEITEN = {
     name: "Wie hängen Spannung, Stromstärke und Widerstand zusammen?",
     titel: "Eine Gerade aus Messpunkten",
     frage: "Wie ändert sich die Stromstärke, wenn die Spannung verdoppelt wird?",
-    schritte: ["Drücke „Draht A“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“.", "Stelle nacheinander 3 V, 4,5 V und 6 V ein und drücke jedes Mal „Messpunkt“. Trage 1,5 V, 3 V und 6 V ins Heft ein.", "Rechne in jeder Zeile U geteilt durch I aus. Drücke danach „Draht B“, miss bei 6 V und rechne auch dort."]
+    schritte: ["Drücke „Draht A“, stelle mit „weniger“ 1,5 V ein und drücke „Messpunkt“. Notiere U und I in Zeile 1 der Tabelle im Heft.", "Stelle 3 V ein, drücke „Messpunkt“ und notiere U und I in Zeile 2. Setze auch bei 4,5 V und 6 V einen Messpunkt und notiere U und I bei 6 V in Zeile 3.", "Drücke „Draht B“, miss bei 6 V und notiere U und I in Zeile 4. Rechne in jeder Zeile U geteilt durch I aus."]
   },
   "st9": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2097,7 +2097,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn alles hintereinander hängt?",
     titel: "Die Lichterkette an der Werkbank",
     frage: "Wie verändert ein zweiter Widerstand in Reihe die Stromstärke im Stromkreis?",
-    schritte: ["Lies ab, welchen Gesamtwiderstand und welche Stromstärke die Statuszeile in der Grundstellung mit 10 Ω und 20 Ω anzeigt.", "Wähle für den ersten Widerstand nacheinander 20 Ω und 30 Ω, stelle danach auch den zweiten auf 30 Ω und notiere jedes Mal Rges und I.", "Vergleiche die beiden Teilspannungen U₁ und U₂ mit den 6 V der Energiequelle."]
+    schritte: ["Lies in der Grundstellung mit 10 Ω und 20 Ω die Statuszeile ab. Notiere Rges und I in Zeile 1 der Tabelle.", "Wähle für den ersten Widerstand 20 Ω und notiere Rges und I in Zeile 2. Wiederhole das mit 30 Ω für Zeile 3.", "Stelle auch den zweiten Widerstand auf 30 Ω und notiere Rges und I in Zeile 4. Vergleiche die Teilspannungen U₁ und U₂ mit den 6 V der Energiequelle."]
   },
   "st10": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2106,7 +2106,7 @@ const HEFT_SEITEN = {
     name: "Warum bleibt das Licht an, wenn eine Lampe ausfällt?",
     titel: "Eine Lampe fällt aus",
     frage: "Wie verteilen sich Spannung und Stromstärke auf zwei parallele Widerstände?",
-    schritte: ["Lies ab, welche Zweigströme und welchen Gesamtstrom die Statuszeile mit R₁ = 10 Ω und R₂ = 20 Ω anzeigt.", "Wähle für R₁ nacheinander 20 Ω und 30 Ω und notiere jedes Mal I₁, I₂ und den Gesamtstrom.", "Vergleiche den angezeigten Gesamtwiderstand Rges mit dem kleineren der beiden Einzelwiderstände."]
+    schritte: ["Lies mit R₁ = 10 Ω und R₂ = 20 Ω die Zweigströme I₁ und I₂ und den Gesamtstrom I in der Statuszeile ab. Notiere sie in Zeile 1 der Tabelle.", "Wähle für R₁ 20 Ω und notiere I₁, I₂ und I in Zeile 2. Wiederhole das mit 30 Ω für Zeile 3.", "Vergleiche den angezeigten Gesamtwiderstand Rges mit dem kleineren der beiden Einzelwiderstände."]
   },
   "st11": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2115,7 +2115,7 @@ const HEFT_SEITEN = {
     name: "Was bewegt sich im Draht wirklich?",
     titel: "Sofort hell trotz drei Metern Kabel",
     frage: "Wie schnell wandern die Elektronen im Draht wirklich?",
-    schritte: ["Lies ab, welche Driftgeschwindigkeit v (am Bildschirm: „Wandern“) die Simulation für die Leselampe mit I = 1,0 A und A = 1,50 mm² anzeigt.", "Drücke „Wasserkocher“ und vergleiche die neue Driftgeschwindigkeit mit dem Wert der Leselampe.", "Wähle mit dem Regler die kleinste Stromstärke 0,1 A und lies ab, wie lange ein Elektron dann für einen Meter Kabel braucht."]
+    schritte: ["Lies für die Leselampe mit I = 1,0 A und A = 1,50 mm² die Driftgeschwindigkeit v ab (am Bildschirm: „Wandern“). Notiere v in Zeile 1 der Tabelle.", "Drücke „Wasserkocher“ und notiere die neue Driftgeschwindigkeit v in Zeile 2 der Tabelle. Vergleiche sie mit Zeile 1.", "Stelle mit dem Regler die kleinste Stromstärke 0,1 A ein und notiere v in Zeile 3. Lies ab, wie lange ein Elektron dann für einen Meter Kabel braucht."]
   },
   "st12": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2124,7 +2124,7 @@ const HEFT_SEITEN = {
     name: "Was passiert bei einem Blitz?",
     titel: "Gewitter über dem Schulhof",
     frage: "Ab wann schlägt ein Blitz durch, und warum kommt der Donner später?",
-    schritte: ["Lies in der Grundstellung bei 120 kV/m ab, wie viel bis zur Schwelle fehlt, und stelle den Regler danach auf 250 kV/m.", "Drücke „knapp darunter“ (290 kV/m) und danach „knapp darüber“ (310 kV/m) und beobachte, wann die Luft leitend wird.", "Lies ab, wie lange der Donner bei 3,0 km Entfernung braucht, und vergleiche das mit der Faustregel drei Sekunden je Kilometer."]
+    schritte: ["Lies in der Grundstellung bei 120 kV/m ab, wie viel bis zur Schwelle fehlt, und notiere die Meldung in Zeile 1 der Tabelle. Stelle den Regler auf 250 kV/m und notiere die Meldung in Zeile 2.", "Drücke „knapp darunter“ (290 kV/m) und notiere die Meldung in Zeile 3. Wiederhole das mit „knapp darüber“ (310 kV/m) für Zeile 4.", "Lies ab, wie lange der Donner bei 3,0 km Entfernung braucht, und vergleiche das mit der Faustregel drei Sekunden je Kilometer."]
   },
   "st13": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2133,7 +2133,7 @@ const HEFT_SEITEN = {
     name: "Wie viel Energie braucht ein Gerät?",
     titel: "Zwei Lampen an einem Netzteil",
     frage: "Wie ändert sich die Leistung, wenn Spannung oder Stromstärke größer werden?",
-    schritte: ["Drücke nacheinander 1,5 V, 3 V und 6 V und lies jedes Mal Stromstärke und Leistung ab.", "Wähle bei 6 V nacheinander die Verbraucher „wenig Strom“, „mittel“ und „viel Strom“.", "Vergleiche die drei Leistungen bei 6 V miteinander."]
+    schritte: ["Drücke „1,5 V“, lies I und P ab und notiere beide Werte in Zeile 1 der Tabelle.", "Drücke „3 V“ und notiere I und P in Zeile 2. Wiederhole das mit „6 V“ für Zeile 3.", "Wähle bei 6 V „viel Strom“ und notiere I und P in Zeile 4. Drücke danach „wenig Strom“ und vergleiche P mit Zeile 3 und 4."]
   },
   "st14": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2142,7 +2142,7 @@ const HEFT_SEITEN = {
     name: "Wo wird Strom im Haushalt gefährlich?",
     titel: "Zu viel an einer Steckdose",
     frage: "Wann unterbricht die Sicherung den Stromkreis?",
-    schritte: ["Lies ab, wie groß die Stromstärke I bei einem Gerät ist und wo die Grenze der Sicherung liegt.", "Drücke „Gerät anschließen“, bis 2 und dann 3 Geräte angeschlossen sind, und beobachte nach jedem Gerät die Stromstärke.", "Vergleiche die Stromstärke mit der Grenze und beobachte, wann die Sicherung eingreift."]
+    schritte: ["Lies die Stromstärke I bei einem Gerät und die Grenze der Sicherung ab. Notiere I und das Verhalten der Sicherung in Zeile 1 der Tabelle.", "Drücke „Gerät anschließen“ und notiere I und das Verhalten der Sicherung für 2 Geräte in Zeile 2 der Tabelle.", "Drücke noch einmal „Gerät anschließen“ und notiere beides für 3 Geräte in Zeile 3. Vergleiche I mit der Grenze der Sicherung."]
   },
   "be1": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2151,7 +2151,7 @@ const HEFT_SEITEN = {
     name: "Wer ist schneller - und woran misst man das?",
     titel: "Das Wettrennen auf dem Schulhof",
     frage: "Woran erkennst du, welches der beiden Autos wirklich schneller ist?",
-    schritte: ["Wähle für Auto A die Geschwindigkeit „langsam“ und für Auto B die Geschwindigkeit „schnell“.", "Drücke „Rennen starten“ und beobachte, welches Auto am Ziel weiter vorne ist.", "Stelle danach Auto A auf „mittel“ und dann auf „schnell“, zum Schluss Auto B auf „langsam“. Vergleiche jedes Mal die Meldung in der Statuszeile."]
+    schritte: ["Wähle für Auto A „langsam“ und für Auto B „schnell“. Drücke „Rennen starten“ und beobachte, welches Auto am Ziel weiter vorne ist. Notiere die Meldung der Statuszeile in Zeile 1 der Tabelle.", "Stelle Auto A auf „mittel“ und notiere die Meldung in Zeile 2. Wiederhole das mit „schnell“ für Zeile 3.", "Stelle zum Schluss Auto B auf „langsam“ und notiere die Meldung in Zeile 4 der Tabelle. Vergleiche die vier Meldungen."]
   },
   "be2": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2160,7 +2160,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Geschwindigkeit?",
     titel: "Zehn Meter und eine Stoppuhr",
     frage: "Welche zwei Größen musst du messen, um eine Geschwindigkeit zu bestimmen?",
-    schritte: ["Wähle die Einstellung „langsam“ und drücke „Messung starten“.", "Beobachte die Stoppuhr, während der Wagen die Messstrecke von 10 m abfährt.", "Vergleiche das Ergebnis, indem du zurücksetzt, nacheinander „mittel“ und „schnell“ wählst und jeweils erneut misst."]
+    schritte: ["Wähle die Einstellung „langsam“ und drücke „Messung starten“. Beobachte die Stoppuhr, während der Wagen die Messstrecke von 10 m abfährt.", "Lies t und v in der Statuszeile ab und notiere beide Werte in Zeile 1 der Tabelle.", "Setze zurück, wähle „mittel“ und miss erneut. Notiere t und v in Zeile 2. Wiederhole das mit „schnell“ für Zeile 3."]
   },
   "be3": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2169,7 +2169,7 @@ const HEFT_SEITEN = {
     name: "Wie rechnet man aus Weg und Zeit die Geschwindigkeit?",
     titel: "Der Rechenzettel an der Werkbank",
     frage: "Wie ändert sich v, wenn du die Strecke verdoppelst oder die Zeit halbierst?",
-    schritte: ["Wähle die Strecke 50 m und die Zeit 10 s und lies die Statuszeile ab. Stelle dann die Strecke auf 100 m und lies erneut ab.", "Stelle die Strecke auf 200 m um und vergleiche den neuen Wert von v.", "Wähle danach die Zeit 5 s und beobachte, was mit der Geschwindigkeit passiert."]
+    schritte: ["Wähle die Strecke 50 m und die Zeit 10 s. Lies v in der Statuszeile ab und notiere v in Zeile 1 der Tabelle.", "Stelle die Strecke auf 100 m und notiere v in Zeile 2. Wiederhole das mit 200 m für Zeile 3.", "Wähle danach die Zeit 5 s und notiere v in Zeile 4 der Tabelle. Vergleiche v mit Zeile 3."]
   },
   "be4": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2178,7 +2178,7 @@ const HEFT_SEITEN = {
     name: "Warum steht auf dem Schild km/h und im Heft m/s?",
     titel: "Tacho und Heft widersprechen sich",
     frage: "Wie rechnest du eine Geschwindigkeit von m/s in km/h um – und wieder zurück?",
-    schritte: ["Lies im Ausgangszustand beide Anzeigen ab: links den Wert in m/s, rechts den in km/h.", "Drücke „langsamer“ und beobachte, wie sich beide Zahlen zugleich ändern.", "Vergleiche die Voreinstellungen Fußgänger, Radfahrer, Auto (Stadt) und ICE miteinander."]
+    schritte: ["Lies im Ausgangszustand beide Anzeigen ab: links den Wert in m/s, rechts den in km/h. Drücke „langsamer“ und beobachte, wie sich beide Zahlen ändern.", "Drücke „Fußgänger“ und notiere v in m/s und in km/h in Zeile 1 der Tabelle. Wiederhole das mit „Radfahrer“ für Zeile 2.", "Wiederhole das mit „Auto (Stadt)“ für Zeile 3 und mit „ICE“ für Zeile 4."]
   },
   "be5": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2187,7 +2187,7 @@ const HEFT_SEITEN = {
     name: "Was heißt gleichförmige Bewegung?",
     titel: "Kreidestriche auf dem Schulhof",
     frage: "Wie liegen die Sekunden-Marken, wenn die Geschwindigkeit gleich bleibt?",
-    schritte: ["Wähle „langsam“ und drücke Fahren.", "Lies ab, welchen Wert v die Statuszeile zeigt, und beobachte die Abstände der Marken.", "Vergleiche das mit den Durchgängen für „mittel“ und „schnell“."]
+    schritte: ["Wähle „langsam“ und drücke Fahren.", "Lies v in der Statuszeile ab und beobachte die Abstände der Marken. Notiere v und die Abstände in Zeile 1 der Tabelle.", "Wähle „mittel“, drücke Fahren und notiere v und die Abstände in Zeile 2. Wiederhole das mit „schnell“ für Zeile 3."]
   },
   "be6": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2196,7 +2196,7 @@ const HEFT_SEITEN = {
     name: "Was verrät ein Zeit-Weg-Diagramm?",
     titel: "Linien an der Werkstattwand",
     frage: "Was verrät die Steilheit der Linie im Weg-Zeit-Diagramm über die Fahrt?",
-    schritte: ["Wähle „langsam“, drücke Fahren und beobachte, wie steil die Linie im s-t-Diagramm steigt.", "Wähle „schnell“, drücke erneut Fahren und vergleiche die Steilheit mit dem ersten Durchgang.", "Wähle „mit Pause“, drücke Fahren und beobachte die Linie, während der Wagen auf der Fahrbahn steht."]
+    schritte: ["Wähle „langsam“, drücke Fahren und beobachte, wie steil die Linie im s-t-Diagramm steigt. Notiere deine Beobachtung in Zeile 1 der Tabelle.", "Wähle „schnell“, drücke erneut Fahren und notiere deine Beobachtung in Zeile 2. Vergleiche die Steilheit mit Zeile 1.", "Wähle „mit Pause“, drücke Fahren und beobachte die Linie, während der Wagen steht. Notiere deine Beobachtung in Zeile 3."]
   },
   "be7": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2205,7 +2205,7 @@ const HEFT_SEITEN = {
     name: "Was passiert beim Anfahren und Bremsen?",
     titel: "Anfahren und Bremsen am Hoftor",
     frage: "Wie ändern sich die Sekunden-Marken beim Beschleunigen und beim Bremsen?",
-    schritte: ["Drücke beschleunigen, starte mit Fahren und beobachte die Abstände der Sekunden-Marken und die Geschwindigkeit im Verlauf.", "Drücke bremsen, fahre erneut und vergleiche die Marken mit dem ersten Durchgang.", "Lies ab, was die Statuszeile zu jeder der beiden Fahrten meldet."]
+    schritte: ["Drücke beschleunigen und starte mit Fahren. Beobachte die Abstände der Sekunden-Marken, die Geschwindigkeit und die Statuszeile.", "Notiere deine Beobachtungen in Zeile 1 bis 3 der Spalte beschleunigen.", "Drücke bremsen und fahre erneut. Notiere deine Beobachtungen in Zeile 1 bis 3 der Spalte bremsen."]
   },
   "be8": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2214,7 +2214,7 @@ const HEFT_SEITEN = {
     name: "Was verrät ein Zeit-Geschwindigkeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
     frage: "Was bedeuten steigende, waagerechte und fallende Linien im v-t-Diagramm?",
-    schritte: ["Wähle konstant und drücke Fahren. Beobachte die Linie und die Anzeige v jetzt.", "Wähle beschleunigen, drücke Fahren und lies ab, wie sich v jetzt dabei verändert.", "Vergleiche damit den Verlauf bei bremsen und lies dazu die Statuszeile ab."]
+    schritte: ["Wähle konstant und drücke Fahren. Beobachte die Linie und die Anzeige v jetzt. Notiere den Verlauf der Linie in Zeile 1 der Tabelle.", "Wähle beschleunigen, drücke Fahren und lies ab, wie sich v jetzt verändert. Notiere den Verlauf der Linie in Zeile 2.", "Wähle bremsen, drücke Fahren und lies die Statuszeile ab. Notiere den Verlauf der Linie in Zeile 3. Vergleiche ihn mit Zeile 1 und 2."]
   },
   "be9": {
     klasse: 8, schulform: "Gesamtschule NRW",
@@ -2223,7 +2223,7 @@ const HEFT_SEITEN = {
     name: "Wie weit fährt ein Auto, bis es steht?",
     titel: "Ein Schild für die Einfahrt",
     frage: "Wie verändert sich der Bremsweg, wenn sich die Geschwindigkeit verdoppelt?",
-    schritte: ["Wähle 30 km/h und drücke Gefahr! (Start). Lies Reaktionsweg, Bremsweg und Anhalteweg in der Statuszeile ab.", "Drücke danach 50 km/h und anschließend 100 km/h und lies die drei Wege jedes Mal neu ab.", "Vergleiche die Bremswege bei 50 km/h und bei 100 km/h miteinander."]
+    schritte: ["Wähle 30 km/h und drücke Gefahr! (Start). Lies Reaktionsweg, Bremsweg und Anhalteweg in der Statuszeile ab. Notiere den Bremsweg in Zeile 1 der Tabelle.", "Drücke 50 km/h und notiere den Bremsweg in Zeile 2. Wiederhole das mit 100 km/h für Zeile 3.", "Vergleiche die Bremswege bei 50 km/h und bei 100 km/h miteinander."]
   },
   "kf1": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2232,7 +2232,7 @@ const HEFT_SEITEN = {
     name: "Woran erkennt man, dass eine Kraft wirkt?",
     titel: "Der unsichtbare Schubs",
     frage: "Woran erkennst du, dass eine Kraft gewirkt hat?",
-    schritte: ["Wähle „Verformen“ und drücke auf „Kraft wirken lassen“. Beobachte die Knete.", "Drücke „Bewegen“, dann „Kraft wirken lassen“, und lies die Statuszeile ab.", "Vergleiche damit „Richtung ändern“: Was meldet die Statuszeile über den rollenden Ball?"]
+    schritte: ["Wähle „Verformen“ und drücke auf „Kraft wirken lassen“. Notiere in Zeile 1 der Tabelle, was sich an der Knete ändert.", "Drücke „Bewegen“, dann „Kraft wirken lassen“, und lies die Statuszeile ab. Notiere deine Beobachtung in Zeile 2.", "Wähle „Richtung ändern“ und lass die Kraft wirken. Notiere in Zeile 3, was die Statuszeile über den rollenden Ball meldet."]
   },
   "kf2": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2241,7 +2241,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Kraft?",
     titel: "Was der Zeiger verrät",
     frage: "Wie kannst du eine Kraft messen, obwohl du sie nicht sehen kannst?",
-    schritte: ["Sieh die Feder ohne Last an und lies den Zeigerwert in der Statuszeile ab.", "Hänge ein Gewichtsstück von 100 g an. Lies ab, wie viel Newton der Zeiger zeigt.", "Hänge nacheinander zwei weitere Stücke an (insgesamt 200 g, dann 300 g) und lies jedes Mal wieder am Zeiger ab."]
+    schritte: ["Sieh die Feder ohne Last an. Lies den Zeigerwert in der Statuszeile ab und notiere F in Zeile 1 der Tabelle.", "Hänge ein Gewichtsstück von 100 g an. Lies ab, wie viel Newton der Zeiger zeigt, und notiere F in Zeile 2.", "Hänge ein zweites Stück an (insgesamt 200 g) und notiere F in Zeile 3. Wiederhole das mit dem dritten Stück (300 g) für Zeile 4."]
   },
   "kf3": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2250,7 +2250,7 @@ const HEFT_SEITEN = {
     name: "Warum geben zwei Federn nicht gleich nach?",
     titel: "Weicher Puffer, harter Puffer",
     frage: "Warum dehnt sich die harte Feder bei gleicher Kraft weniger als die weiche?",
-    schritte: ["Wähle „weiche Feder“, hänge „+ 100 g“ an und drücke „Messpunkt eintragen“.", "Hänge Schritt für Schritt bis 500 g an und drücke nach jedem Gewichtsstück wieder „Messpunkt eintragen“. Trage 100 g, 300 g und 500 g ins Heft ein.", "Rechne in jeder Zeile F geteilt durch s aus. Wähle danach „harte Feder“, miss bei 300 g und rechne auch dort."]
+    schritte: ["Wähle „weiche Feder“, hänge „+ 100 g“ an und drücke „Messpunkt eintragen“. Notiere F und s in Zeile 1 der Tabelle im Heft.", "Hänge Schritt für Schritt bis 500 g an und drücke nach jedem Gewichtsstück wieder „Messpunkt eintragen“. Notiere F und s bei 300 g in Zeile 2 und bei 500 g in Zeile 3.", "Wähle danach „harte Feder“, miss bei 300 g und notiere F und s in Zeile 4. Rechne dann in jeder Zeile F geteilt durch s aus."]
   },
   "kf4": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2259,7 +2259,7 @@ const HEFT_SEITEN = {
     name: "Was ist der Unterschied zwischen Masse und Gewichtskraft?",
     titel: "Kilogramm oder Newton",
     frage: "Worin unterscheidet sich die Masse eines Körpers von seiner Gewichtskraft?",
-    schritte: ["Drücke „500 g“ und lies die Masse und die Gewichtskraft ab.", "Wiederhole das mit „1 kg“ und „2 kg“; notiere die Masse in Kilogramm.", "Rechne in jeder Zeile F geteilt durch m aus. Vergleiche die Zahlen."]
+    schritte: ["Drücke „500 g“ und lies die Masse und die Gewichtskraft ab. Notiere m in Kilogramm und F in Zeile 1 der Tabelle.", "Drücke „1 kg“ und notiere m und F in Zeile 2. Wiederhole das mit „2 kg“ für Zeile 3.", "Rechne in jeder Zeile F geteilt durch m aus. Vergleiche die Zahlen."]
   },
   "kf5": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2268,7 +2268,7 @@ const HEFT_SEITEN = {
     name: "Wäre dasselbe Klavier auf dem Mond leichter?",
     titel: "Das Klavier auf dem Mond",
     frage: "Was ändert sich auf dem Mond: die Masse oder die Gewichtskraft?",
-    schritte: ["Wähle nacheinander Mond, Erde und Jupiter aus.", "Lies bei jedem Himmelskörper den Ortsfaktor g und die Gewichtskraft F in der Statuszeile ab.", "Vergleiche, welcher Wert sich ändert und welcher bei 60 kg gleich bleibt."]
+    schritte: ["Wähle den Mond aus. Lies den Ortsfaktor g und die Gewichtskraft F in der Statuszeile ab. Notiere F in Zeile 1 der Tabelle.", "Wähle die Erde und notiere F in Zeile 2. Wiederhole das mit Jupiter für Zeile 3.", "Vergleiche, welcher Wert sich ändert und welcher bei 60 kg gleich bleibt."]
   },
   "kf6": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2277,7 +2277,7 @@ const HEFT_SEITEN = {
     name: "Wie zeichnet man eine Kraft auf?",
     titel: "Ein Pfeil für jede Kraft",
     frage: "Was zeigt ein Kraftpfeil neben dem Betrag noch an?",
-    schritte: ["Wähle die Richtung → und dann nacheinander 2 N, 4 N und 6 N. Beobachte die Länge des Pfeils.", "Stelle bei 6 N nacheinander die Richtungen →, ↑ und ↗ ein.", "Vergleiche, was sich beim Wechsel des Betrags und was sich beim Wechsel der Richtung ändert."]
+    schritte: ["Wähle die Richtung → und 2 N. Notiere in Zeile 1 der Tabelle, was der Pfeil zeigt. Wähle 4 N und sieh dir den Pfeil an. Wähle 6 N und notiere in Zeile 2, was der Pfeil zeigt.", "Stelle bei 6 N die Richtung ↑ ein und notiere in Zeile 3, was der Pfeil zeigt. Wiederhole das mit ↗ für Zeile 4.", "Vergleiche, was sich beim Wechsel des Betrags und was sich beim Wechsel der Richtung ändert."]
   },
   "kf7": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2286,7 +2286,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn zwei Menschen ziehen?",
     titel: "Zwei ziehen am selben Seil",
     frage: "Wie groß ist die Gesamtkraft, wenn zwei Kräfte an einem Körper ziehen?",
-    schritte: ["F2 bleibt bei 2 N nach rechts. Drücke bei Kraft 1 zweimal „– N“ (F1 = 1 N nach rechts) und lies die Gesamtkraft ab.", "Drücke einmal „+ N“ (F1 = 2 N) und lies ab, dann zweimal „+ N“ und lies erneut ab. F1 steht bei 4 N.", "Drücke bei Kraft 1 „Richtung“ (F1 = 4 N nach links) und lies ab. Rechne dann in jeder Zeile F1 + F2 aus."]
+    schritte: ["F2 bleibt bei 2 N nach rechts. Drücke bei Kraft 1 zweimal „– N“ (F1 = 1 N nach rechts). Notiere die Gesamtkraft in Zeile 1 der Tabelle.", "Drücke einmal „+ N“ (F1 = 2 N) und notiere die Gesamtkraft in Zeile 2. Drücke dann zweimal „+ N“ (F1 = 4 N) und notiere sie in Zeile 3.", "Drücke bei Kraft 1 „Richtung“ (F1 = 4 N nach links) und notiere die Gesamtkraft in Zeile 4. Rechne dann in jeder Zeile F1 + F2 aus."]
   },
   "kf8": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2295,7 +2295,7 @@ const HEFT_SEITEN = {
     name: "Wann bewegt sich trotz Kraft nichts?",
     titel: "Der Scheinwerfer hängt still",
     frage: "Wirken an einem Körper, der in Ruhe bleibt, wirklich keine Kräfte?",
-    schritte: ["Lies im Ausgangszustand ab, wie groß Haltekraft, Gewichtskraft und Gesamtkraft sind.", "Drücke einmal auf „– N“ (Haltekraft 4 N) und beobachte, was mit der Lampe geschieht.", "Drücke auf „zurück in die Mitte“ (Haltekraft wieder 5 N) und vergleiche die beiden Fälle."]
+    schritte: ["Lies im Ausgangszustand Haltekraft, Gewichtskraft und Gesamtkraft ab. Notiere in Zeile 1 der Tabelle, was mit der Lampe geschieht.", "Drücke einmal auf „– N“ (Haltekraft 4 N). Notiere deine Beobachtung in Zeile 2.", "Drücke auf „zurück in die Mitte“ (Haltekraft wieder 5 N). Notiere deine Beobachtung in Zeile 3 und vergleiche sie mit Zeile 2."]
   },
   "kf9": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2304,7 +2304,7 @@ const HEFT_SEITEN = {
     name: "Warum rutscht die Kiste weiter, obwohl niemand schiebt?",
     titel: "Die Kiste rutscht weiter",
     frage: "Warum bleibt ein angestoßener Wagen stehen – und was passiert ohne Reibung?",
-    schritte: ["Wähle den Untergrund „Tisch“ und drücke „Anstoßen“; beobachte, wie die Geschwindigkeit v abnimmt.", "Drücke „Zurücksetzen“, wähle „Eis“ und stoße den Wagen erneut an.", "Wähle „Weltall“, stoße erneut an und vergleiche die Anzeige der Geschwindigkeit v mit den anderen Untergründen."]
+    schritte: ["Wähle den Untergrund „Tisch“ und drücke „Anstoßen“. Beobachte, wie die Geschwindigkeit v abnimmt. Notiere deine Beobachtung in Zeile 1 der Tabelle.", "Drücke „Zurücksetzen“, wähle „Eis“ und stoße den Wagen erneut an. Notiere deine Beobachtung in Zeile 2.", "Wähle „Weltall“ und stoße erneut an. Notiere deine Beobachtung in Zeile 3 und vergleiche die Anzeige der Geschwindigkeit v mit den anderen Untergründen."]
   },
   "kf10": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2313,7 +2313,7 @@ const HEFT_SEITEN = {
     name: "Warum rollt das Rollbrett zurück?",
     titel: "Rückwärts auf dem Rollbrett",
     frage: "Warum rollt man selbst zurück, wenn man einen Körper mit großer Masse wegdrückt?",
-    schritte: ["Wähle „Eisläufer“ und drücke „Abstoßen“; lies beide Geschwindigkeiten in der Statuszeile ab.", "Wähle „Boot“ und vergleiche die Geschwindigkeit der Person mit der des Bootes.", "Vergleiche bei „Rakete“ die Massen von Rakete und Gas mit ihren Geschwindigkeiten."]
+    schritte: ["Wähle „Eisläufer“ und drücke „Abstoßen“. Lies beide Geschwindigkeiten in der Statuszeile ab und notiere sie in Zeile 1 der Tabelle.", "Wähle „Boot“. Notiere die Geschwindigkeit der Person und die des Bootes in Zeile 2 und vergleiche sie.", "Wähle „Rakete“ und notiere beide Geschwindigkeiten in Zeile 3. Vergleiche die Massen von Rakete und Gas mit ihren Geschwindigkeiten."]
   },
   "kf11": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2322,7 +2322,7 @@ const HEFT_SEITEN = {
     name: "Warum sinkt das Podest unter dem schmalen Fuß ein?",
     titel: "Vier Dellen im neuen Podest",
     frage: "Warum sinkt ein schmaler Fuß in das Podest ein und ein breiter nicht?",
-    schritte: ["Stelle 60 kg ein, schiebe die Auflagefläche auf 150 cm² und lies A in m² und p ab.", "Wiederhole das bei 200 cm² und 400 cm²; drücke zuletzt „Skier“ (2800 cm²).", "Rechne in jeder Zeile p mal A aus und vergleiche die vier Zahlen mit der Kraft F."]
+    schritte: ["Stelle 60 kg ein und schiebe die Auflagefläche auf 150 cm². Lies A in m² und p ab und notiere beide in Zeile 1 der Tabelle.", "Wiederhole das bei 200 cm² für Zeile 2 und bei 400 cm² für Zeile 3. Drücke zuletzt „Skier“ (2800 cm²) und notiere A und p in Zeile 4.", "Rechne in jeder Zeile p mal A aus und vergleiche die vier Zahlen mit der Kraft F."]
   },
   "kf12": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2331,7 +2331,7 @@ const HEFT_SEITEN = {
     name: "Warum drückt Wasser in der Tiefe stärker?",
     titel: "Der untere Hahn spritzt weiter",
     frage: "Warum drückt Wasser weiter unten stärker als knapp unter der Oberfläche?",
-    schritte: ["Wähle Öl und stelle die Tiefe mit dem Regler auf 20 m. Die Flüssigkeit bleibt in allen Zeilen dieselbe.", "Lies den Schweredruck p ab, dann ebenso bei 30 m, bei 40 m und bei 50 m.", "Rechne in jeder Zeile p geteilt durch h aus und vergleiche die vier Werte."]
+    schritte: ["Wähle Öl und stelle die Tiefe mit dem Regler auf 20 m. Lies den Schweredruck p ab und notiere ihn in Zeile 1 der Tabelle.", "Stelle 30 m ein und notiere p in Zeile 2. Wiederhole das bei 40 m für Zeile 3 und bei 50 m für Zeile 4. Die Flüssigkeit bleibt dieselbe.", "Rechne in jeder Zeile p geteilt durch h aus und vergleiche die vier Werte."]
   },
   "kf13": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2340,7 +2340,7 @@ const HEFT_SEITEN = {
     name: "Warum haben gleich große Körper ganz verschiedene Massen?",
     titel: "Zwei gleich große Klötze in der Werkstatt",
     frage: "Warum haben gleich große Würfel aus verschiedenen Stoffen verschiedene Massen?",
-    schritte: ["Wähle Styropor und stelle die Kantenlänge a nacheinander auf 3 cm, 5 cm, 10 cm und 20 cm.", "Lies jedes Mal im Feld Nachgerechnet das Volumen V in m³ und die Masse m in kg ab.", "Rechne in jeder Zeile m geteilt durch V aus und vergleiche die vier Zahlen."]
+    schritte: ["Wähle Styropor und stelle die Kantenlänge a auf 3 cm. Lies im Feld Nachgerechnet das Volumen V in m³ und die Masse m in kg ab. Notiere beide in Zeile 1 der Tabelle.", "Stelle a auf 5 cm und notiere V und m in Zeile 2. Wiederhole das mit 10 cm für Zeile 3 und mit 20 cm für Zeile 4.", "Rechne in jeder Zeile m geteilt durch V aus und vergleiche die vier Zahlen."]
   },
   "kf14": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2349,7 +2349,7 @@ const HEFT_SEITEN = {
     name: "Warum schwimmt ein Schiff aus Eisen?",
     titel: "Ein Traversenrohr in der Regentonne",
     frage: "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
-    schritte: ["Drücke „massiv – sinkt“ und lies die Gewichtskraft G und die Auftriebskraft FA ab.", "Stelle den Hohlraum am Regler von 0 % über 87 % auf 88 % und beobachte, wann der Würfel schwimmt.", "Vergleiche bei 90 % Hohlraum, wie tief der Würfel in Süßwasser und in Meerwasser eintaucht."]
+    schritte: ["Drücke „massiv – sinkt“ und lies die Gewichtskraft G und die Auftriebskraft FA ab. Notiere G in Zeile 1 der Tabelle.", "Stelle den Hohlraum am Regler auf 87 % und notiere G in Zeile 2. Wiederhole das bei 88 % für Zeile 3. Beobachte, wann der Würfel schwimmt.", "Stelle 90 % Hohlraum ein und notiere G in Zeile 4. Vergleiche, wie tief der Würfel in Süßwasser und in Meerwasser eintaucht."]
   },
   "el1": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2358,7 +2358,7 @@ const HEFT_SEITEN = {
     name: "Wann wird in der Physik Arbeit verrichtet?",
     titel: "Vier Meter über den Hof",
     frage: "Wann wird beim Bewegen einer Kiste wirklich Arbeit verrichtet?",
-    schritte: ["Wähle „Schieben“, stelle F = 100 N und s = 4 m ein, drücke „Ausführen“ und lies die Arbeit in der Statuszeile ab.", "Wähle „Waagerecht tragen“, stelle m = 20 kg und s = 4 m ein und vergleiche den angezeigten Wert mit dem Wert von vorhin.", "Wähle „Hochheben“, stelle m = 20 kg und h = 2,0 m ein, drücke „Ausführen“ und notiere die Hubarbeit."]
+    schritte: ["Wähle „Schieben“, stelle F = 100 N und s = 4 m ein und drücke „Ausführen“. Lies die Arbeit W in der Statuszeile ab und notiere sie in Zeile 1 der Tabelle.", "Wähle „Waagerecht tragen“ und stelle m = 20 kg und s = 4 m ein. Notiere W in Zeile 2 und vergleiche mit dem Wert von vorhin.", "Wähle „Hochheben“, stelle m = 20 kg und h = 2,0 m ein und drücke „Ausführen“. Notiere die Hubarbeit W in Zeile 3."]
   },
   "el2": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2367,7 +2367,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie, wenn etwas oben liegt?",
     titel: "Der Klotz über dem Pfahl",
     frage: "Wovon hängt die Energie ab, die ein Körper oben gespeichert hat?",
-    schritte: ["Stelle 9 kg und 1 m ein, drücke „Fallen lassen“ und lies die Pfahltiefe ab.", "Wiederhole das bei 2 m und bei 3 m; drücke danach „×2 Masse“ (18 kg, 3 m) und lass noch einmal fallen.", "Rechne in jeder Zeile die Tiefe geteilt durch die Höhe aus und vergleiche."]
+    schritte: ["Stelle 9 kg und 1 m ein, drücke „Fallen lassen“ und lies die Pfahltiefe ab. Notiere sie in Zeile 1 der Tabelle.", "Wiederhole das bei 2 m für Zeile 2 und bei 3 m für Zeile 3. Drücke danach „×2 Masse“ (18 kg, 3 m), lass noch einmal fallen und notiere die Tiefe in Zeile 4.", "Rechne in jeder Zeile die Tiefe geteilt durch die Höhe aus und vergleiche."]
   },
   "el3": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2376,7 +2376,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie, wenn etwas rollt?",
     titel: "Die Kabeltrommel auf der Rampe",
     frage: "Wovon hängt es ab, wie viel Energie in einer rollenden Kugel steckt?",
-    schritte: ["Stelle die Masse 6 kg und die Geschwindigkeit 3 m/s ein und drücke „Messpunkt übernehmen“.", "Wiederhole das bei 6 m/s, bei 9 m/s und bei 12 m/s; die Masse bleibt dabei 6 kg.", "Trage E aus der Tabelle ein, rechne E geteilt durch v² aus und vergleiche die Werte."]
+    schritte: ["Stelle die Masse 6 kg und die Geschwindigkeit 3 m/s ein und drücke „Messpunkt übernehmen“. Notiere E in Zeile 1 der Tabelle im Heft.", "Wiederhole das bei 6 m/s für Zeile 2, bei 9 m/s für Zeile 3 und bei 12 m/s für Zeile 4. Die Masse bleibt dabei 6 kg.", "Rechne in jeder Zeile v² und dann E geteilt durch v² aus. Vergleiche die Werte."]
   },
   "el4": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2385,7 +2385,7 @@ const HEFT_SEITEN = {
     name: "Bleibt die Energie beim Umwandeln erhalten?",
     titel: "Der Ball vom Bühnenrand",
     frage: "Wo bleibt die Lageenergie, während der Ball nach unten fällt?",
-    schritte: ["Stelle die Höhe auf 20 m und die Masse auf 2 kg ein und lies E_pot und E_kin ab.", "Beobachte während des Falls die Balken „Potentielle Energie“ und „Kinetische Energie“ und die Kurven über t [s].", "Stelle die Höhe auf 5 m und vergleiche E_pot und E_kin bei der Anzeige „Höhe = 4,9 m“."]
+    schritte: ["Stelle die Höhe auf 20 m und die Masse auf 2 kg ein. Lies E_pot und E_kin ab und notiere beide in Zeile 1 der Tabelle.", "Beobachte während des Falls die Balken „Potentielle Energie“ und „Kinetische Energie“ und die Kurven über t [s]. Notiere in Zeile 2, wie sich E_pot und E_kin ändern.", "Stelle die Höhe auf 5 m und notiere E_pot und E_kin in Zeile 3. Lies beide bei der Anzeige „Höhe = 4,9 m“ ab, notiere sie in Zeile 4 und vergleiche mit Zeile 3."]
   },
   "el5": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2394,7 +2394,7 @@ const HEFT_SEITEN = {
     name: "Warum wird alles am Ende warm?",
     titel: "Der heiße Scheinwerfer am Abend",
     frage: "Warum wird Energie unbrauchbar, obwohl ihre Menge gleich bleibt?",
-    schritte: ["Wähle „Kohle → Licht“ und drücke einmal „nächster Schritt“.", "Trage nutzbar und Wärme ein, drücke erneut „nächster Schritt“ und fülle so der Reihe nach die Zeilen Kraftwerk, Leitung, Lampe und Wände.", "Rechne in der letzten Spalte nutzbar + Wärme aus und vergleiche die vier Werte."]
+    schritte: ["Wähle „Kohle → Licht“ und drücke einmal „nächster Schritt“. Notiere die nutzbare Energie und die Wärme in Zeile 1 der Tabelle.", "Drücke erneut „nächster Schritt“ und notiere beide Werte in Zeile 2. Wiederhole das für Zeile 3 und für Zeile 4.", "Rechne in der letzten Spalte nutzbar + Wärme aus und vergleiche die vier Werte."]
   },
   "el6": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2403,7 +2403,7 @@ const HEFT_SEITEN = {
     name: "Was unterscheidet Arbeit von Leistung?",
     titel: "Zwei Kisten, zwei Tempos",
     frage: "Was ändert sich, wenn dieselbe Last in der halben Zeit oben ankommt?",
-    schritte: ["Stelle die Masse auf 50 kg und die Höhe auf 4 m ein. Beide bleiben so.", "Stelle die Zeit auf 3 s, drücke „Hochziehen“ und lies die Leistung P ab.", "Wiederhole das mit 6 s, 9 s und 18 s. Rechne in jeder Zeile P mal t aus."]
+    schritte: ["Stelle die Masse auf 50 kg und die Höhe auf 4 m ein. Beide bleiben so.", "Stelle die Zeit auf 3 s, drücke „Hochziehen“ und lies die Leistung P ab. Notiere P in Zeile 1 der Tabelle.", "Wiederhole das mit 6 s für Zeile 2, mit 9 s für Zeile 3 und mit 18 s für Zeile 4. Rechne in jeder Zeile P mal t aus."]
   },
   "el7": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2412,7 +2412,7 @@ const HEFT_SEITEN = {
     name: "Wie viel von der Energie kommt an?",
     titel: "Glühlampe oder LED",
     frage: "Wie viel von der zugeführten Energie gibt eine Maschine als Nutzenergie ab?",
-    schritte: ["Wähle die LED-Lampe und stelle die zugeführte Energie auf 800 J ein (am Bildschirm: „hineingesteckte Energie“). Lies ab, wie viel davon Licht wird.", "Stelle nacheinander 1400 J, 2200 J und 3000 J ein und lies jedes Mal die Lichtenergie ab (am Bildschirm: „davon Licht“).", "Teile in jeder Zeile die Lichtenergie durch die zugeführte Energie und vergleiche."]
+    schritte: ["Wähle die LED-Lampe und stelle die zugeführte Energie auf 800 J ein (am Bildschirm: „hineingesteckte Energie“). Lies ab, wie viel davon Licht wird, und notiere die Lichtenergie in Zeile 1 der Tabelle.", "Stelle 1400 J ein, lies die Lichtenergie ab (am Bildschirm: „davon Licht“) und notiere sie in Zeile 2. Wiederhole das mit 2200 J für Zeile 3 und mit 3000 J für Zeile 4.", "Teile in jeder Zeile die Lichtenergie durch die zugeführte Energie und vergleiche."]
   },
   "el8": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2421,7 +2421,7 @@ const HEFT_SEITEN = {
     name: "Warum ist eine Stange länger als der Weg der Last?",
     titel: "Die Eisenstange unter dem Klavier",
     frage: "Spart eine lange Hebelstange nur Kraft – oder auch Arbeit?",
-    schritte: ["Stelle die Last F₂ auf 200 N und den Kraftarm auf 0,40 m.", "Lies die Kraft F₁ am roten Pfeil im Bild ab und trage sie ein.", "Wiederhole das mit 0,80 m, 1,00 m und 2,00 m und rechne jede Zeile F₁ · l₁ aus."]
+    schritte: ["Stelle die Last F₂ auf 200 N und den Kraftarm auf 0,40 m.", "Lies die Kraft F₁ am roten Pfeil im Bild ab und notiere sie in Zeile 1 der Tabelle.", "Wiederhole das mit 0,80 m für Zeile 2, mit 1,00 m für Zeile 3 und mit 2,00 m für Zeile 4. Rechne in jeder Zeile F₁ · l₁ aus."]
   },
   "el9": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2430,7 +2430,7 @@ const HEFT_SEITEN = {
     name: "Was bringt eine Rolle an der Decke?",
     titel: "Die Rolle unter dem Hallendach",
     frage: "Spart eine feste Rolle an der Decke wirklich Kraft?",
-    schritte: ["Drücke „Feste Rolle“ und stelle die Last mit dem Regler auf 200 N.", "Lies die Zugkraft F und den Weg s ab; wiederhole das bei 500 N und bei 800 N.", "Drücke „Lose Rolle“ und miss bei 800 N. Rechne dann in jeder Zeile F geteilt durch G aus."]
+    schritte: ["Drücke „Feste Rolle“ und stelle die Last mit dem Regler auf 200 N.", "Lies die Zugkraft F und den Weg s ab und notiere beide in Zeile 1 der Tabelle. Wiederhole das bei 500 N für Zeile 2 und bei 800 N für Zeile 3.", "Drücke „Lose Rolle“, miss bei 800 N und notiere F und s in Zeile 4. Rechne dann in jeder Zeile F geteilt durch G aus."]
   },
   "el10": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2439,7 +2439,7 @@ const HEFT_SEITEN = {
     name: "Wie viele Seile tragen die Last?",
     titel: "Vier Seile für das Klavier",
     frage: "Wie hängen Zugkraft und Seilweg von der Zahl der tragenden Seilstücke ab?",
-    schritte: ["Stelle die Last auf 900 N ein und lass sie stehen.", "Stelle nacheinander n = 1, 2, 3 und 4 ein und lies F und s ab.", "Rechne in jeder Zeile F · s aus und vergleiche die Werte."]
+    schritte: ["Stelle die Last auf 900 N ein und lass sie stehen.", "Stelle n = 1 ein, lies F und s ab und notiere beide in Zeile 1 der Tabelle. Wiederhole das mit n = 2 für Zeile 2, mit n = 3 für Zeile 3 und mit n = 4 für Zeile 4.", "Rechne in jeder Zeile F · s aus und vergleiche die Werte."]
   },
   "el11": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2448,7 +2448,7 @@ const HEFT_SEITEN = {
     name: "Warum dreht sich das kleine Rad schneller?",
     titel: "Im Getriebe der Seilwinde",
     frage: "Wovon hängt die Drehzahl des angetriebenen Zahnrads ab?",
-    schritte: ["Stelle Rad 1 auf 30 Zähne und die Antriebsdrehzahl auf 60 U/min.", "Stelle Rad 2 nacheinander auf 12, 20 und 45 Zähne und lies n₂ ab.", "Rechne in jeder Zeile n₂ mal z₂ aus. Stelle dann Rad 1 auf 20 und Rad 2 auf 12 Zähne."]
+    schritte: ["Stelle Rad 1 auf 30 Zähne und die Antriebsdrehzahl auf 60 U/min.", "Stelle Rad 2 auf 12 Zähne und notiere n₂ in Zeile 1 der Tabelle. Wiederhole das mit 20 Zähnen für Zeile 2 und mit 45 Zähnen für Zeile 3.", "Stelle Rad 1 auf 20 und Rad 2 auf 12 Zähne und notiere n₂ in Zeile 4. Rechne dann in jeder Zeile n₂ mal z₂ aus."]
   },
   "el12": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2457,7 +2457,7 @@ const HEFT_SEITEN = {
     name: "Warum ist die Rampe leichter als das Heben?",
     titel: "Zwei Bohlen an der Bühnenkante",
     frage: "Wie verändert die Neigung der Rampe die nötige Zugkraft?",
-    schritte: ["Wähle „steil“ und lies die Zugkraft in der Statuszeile ab.", "Wähle danach „mittel“ und dann „flach“ und lies jedes Mal die Zugkraft ab.", "Vergleiche deine drei Werte mit den 6 N, die senkrechtes Heben verlangt."]
+    schritte: ["Wähle „steil“, lies die Zugkraft F in der Statuszeile ab und notiere sie in Zeile 1 der Tabelle.", "Wähle „mittel“ und notiere F in Zeile 2. Wiederhole das mit „flach“ für Zeile 3.", "Notiere in Zeile 4 die 6 N, die senkrechtes Heben verlangt. Vergleiche deine drei Werte damit."]
   },
   "el13": {
     klasse: 9, schulform: "Gesamtschule NRW",
@@ -2466,7 +2466,7 @@ const HEFT_SEITEN = {
     name: "Was spart man wirklich - Kraft oder Arbeit?",
     titel: "Kraft gespart, Arbeit nicht",
     frage: "Bleibt das Produkt aus Kraft und Weg bei jeder Rampe gleich?",
-    schritte: ["Wähle „flach“ und lies Zugkraft und Weglänge aus der Statuszeile ab.", "Wähle nacheinander „mittel“ und „steil“ und notiere jedes Mal beide Werte.", "Trage zuletzt senkrechtes Heben ein: 6 N, Weg 1,0 mal die Höhe. Vergleiche dann Kraft mal Weg in allen Zeilen."]
+    schritte: ["Wähle „flach“, lies Zugkraft und Weglänge aus der Statuszeile ab und notiere beide in Zeile 1 der Tabelle.", "Wähle „mittel“ und notiere beide Werte in Zeile 2. Wiederhole das mit „steil“ für Zeile 3.", "Notiere in Zeile 4 senkrechtes Heben: 6 N, Weg 1,0 mal die Höhe. Vergleiche dann Kraft mal Weg in allen Zeilen."]
   },
   "ev1": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2475,7 +2475,7 @@ const HEFT_SEITEN = {
     name: "Wie sieht das Feld um einen Magneten aus?",
     titel: "Erster Tag im Umspannwerk",
     frage: "An welchen Stellen um einen Stabmagneten ist das Feld am stärksten?",
-    schritte: ["Stelle den Abstand auf 55 und die Stelle am Magneten nacheinander auf 0°, 45° und 90°.", "Stelle danach bei 0° den Abstand auf 140 und beobachte die Nadel des Prüfkompasses noch einmal.", "Drücke „Feldlinien“ und vergleiche, wo die Linien dicht und wo sie weit auseinander liegen."]
+    schritte: ["Stelle den Abstand auf 55 und die Stelle am Magneten auf 0°. Notiere in Zeile 1 der Tabelle, wie stark sich die Nadel dreht. Wiederhole das mit 45° für Zeile 2 und mit 90° für Zeile 3.", "Stelle danach bei 0° den Abstand auf 140. Notiere in Zeile 4, wie stark sich die Nadel des Prüfkompasses jetzt dreht.", "Drücke „Feldlinien“ und vergleiche, wo die Linien dicht und wo sie weit auseinander liegen."]
   },
   "ev2": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2484,7 +2484,7 @@ const HEFT_SEITEN = {
     name: "Kann Strom eine Kompassnadel bewegen?",
     titel: "Der Draht über der Kompassnadel",
     frage: "Was macht eine Kompassnadel, wenn neben ihr Strom fließt?",
-    schritte: ["Stelle die Stromstärke auf 3,0 A und den Abstand auf 2,0 cm ein und lies den Ausschlag in der Statuszeile ab.", "Drücke „Strom ausschalten“ und beobachte, wohin die Nadel jetzt zeigt.", "Drücke „Strom einschalten“, dann „umpolen“; drücke danach noch einmal „umpolen“, dann „↓ Nadel unter den Draht“, und vergleiche jeweils, zu welcher Seite die Nadel ausschlägt."]
+    schritte: ["Stelle die Stromstärke auf 3,0 A und den Abstand auf 2,0 cm ein. Lies den Ausschlag in der Statuszeile ab und notiere ihn mit seiner Richtung in Zeile 1 der Tabelle.", "Drücke „Strom ausschalten“. Notiere in Zeile 2, wohin die Nadel jetzt zeigt.", "Drücke „Strom einschalten“, dann „umpolen“. Notiere in Zeile 3, zu welcher Seite die Nadel ausschlägt. Drücke noch einmal „umpolen“, dann „↓ Nadel unter den Draht“, und notiere die Seite in Zeile 4."]
   },
   "ev3": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2493,7 +2493,7 @@ const HEFT_SEITEN = {
     name: "Wie baut man einen Magneten zum Anschalten?",
     titel: "Das Klacken im Schaltschrank",
     frage: "Wovon hängt die Tragkraft eines Elektromagneten ab?",
-    schritte: ["Stelle bei „Windungszahl ändern“ nacheinander N = 50, 150 und 300 ein (I = 2 A) und lies die Tragkraft in Büroklammern ab.", "Drücke „Stromstärke ändern“, stelle I = 5 A ein (N = 150) und lies die Tragkraft ab; drücke danach „Beispielmessreihe“.", "Vergleiche in der Tabelle die Tragkraft bei 1 A mit der bei 5 A."]
+    schritte: ["Stelle bei „Windungszahl ändern“ N = 50 ein (I = 2 A). Notiere die Tragkraft in Büroklammern in Zeile 1 der Tabelle im Heft. Wiederhole das mit N = 150 für Zeile 2 und mit N = 300 für Zeile 3.", "Drücke „Stromstärke ändern“ und stelle I = 5 A ein (N = 150). Notiere die Tragkraft in Zeile 4. Drücke danach „Beispielmessreihe“.", "Vergleiche in der Tabelle am Bildschirm die Tragkraft bei 1 A mit der bei 5 A."]
   },
   "ev4": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2502,7 +2502,7 @@ const HEFT_SEITEN = {
     name: "Warum bewegt sich ein Draht im Magnetfeld?",
     titel: "Der aufgeschraubte Motor",
     frage: "Warum wird ein stromdurchflossener Draht im Magnetfeld zur Seite gedrückt?",
-    schritte: ["Stelle das Magnetfeld auf 0,20 T und die Stromstärke nacheinander auf 0 A, 5,0 A und 10,0 A ein und lies jeweils die Kraft in der Statuszeile ab.", "Stelle wieder 5,0 A ein, drücke „Strom umpolen“ und beobachte, wohin der Stab jetzt gedrückt wird.", "Vergleiche in deiner Tabelle die Kraft bei 0 A mit der bei 10,0 A."]
+    schritte: ["Stelle das Magnetfeld auf 0,20 T und die Stromstärke auf 0 A ein. Notiere F und die Richtung aus der Statuszeile in Zeile 1 der Tabelle. Wiederhole das mit 5,0 A für Zeile 2 und mit 10,0 A für Zeile 3.", "Stelle wieder 5,0 A ein und drücke „Strom umpolen“. Notiere F und die Richtung, in die der Stab jetzt gedrückt wird, in Zeile 4.", "Vergleiche in deiner Tabelle die Kraft bei 0 A mit der bei 10,0 A."]
   },
   "ev5": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2511,7 +2511,7 @@ const HEFT_SEITEN = {
     name: "Wie sagt man die Richtung der Kraft vorher?",
     titel: "Zwei Kabel vertauscht",
     frage: "Wie ändert sich die Kraftrichtung, wenn du Strom oder Magnet umpolst?",
-    schritte: ["Lies ab, wohin der Stab im Ausgangszustand gedrückt wird und wo der Nordpol liegt.", "Drücke „Strom umpolen“ und lies die neue Richtung in der Statuszeile ab.", "Drücke „zurücksetzen“ und dann nur „Magnet umdrehen“; drücke danach zusätzlich „Strom umpolen“ und vergleiche die Kraftrichtung jeweils mit der im Ausgangszustand."]
+    schritte: ["Lies ab, wohin der Stab im Ausgangszustand gedrückt wird und wo der Nordpol liegt. Notiere die Richtung der Kraft in Zeile 1 der Tabelle.", "Drücke „Strom umpolen“. Notiere die neue Richtung aus der Statuszeile in Zeile 2.", "Drücke „zurücksetzen“ und dann nur „Magnet umdrehen“. Notiere die Richtung in Zeile 3. Drücke zusätzlich „Strom umpolen“ und notiere die Richtung in Zeile 4. Vergleiche jede Richtung mit Zeile 1."]
   },
   "ev6": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2520,7 +2520,7 @@ const HEFT_SEITEN = {
     name: "Wie wird aus der Kraft eine Drehbewegung?",
     titel: "Der geteilte Ring",
     frage: "Warum dreht sich die Spule nur weiter, wenn der Kommutator eingeschaltet ist?",
-    schritte: ["Beobachte die drehende Spule bei 20 Windungen und eingeschaltetem Kommutator und lies das angezeigte Drehmoment ab.", "Stelle die Windungen der Spule auf 40 und vergleiche das Drehmoment mit dem Wert bei 20 Windungen.", "Drücke „Kommutator ist AN“ und beobachte, wie weit sich die Spule danach noch dreht."]
+    schritte: ["Beobachte die drehende Spule bei 20 Windungen und eingeschaltetem Kommutator. Notiere das angezeigte Drehmoment M und die Bewegung der Spule in Zeile 1 der Tabelle.", "Stelle die Windungen der Spule auf 40. Notiere M und die Bewegung in Zeile 2 und vergleiche mit Zeile 1.", "Drücke „Kommutator ist AN“ und beobachte, wie weit sich die Spule danach noch dreht. Notiere deine Beobachtung in Zeile 3."]
   },
   "ev7": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2529,7 +2529,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht Spannung ohne Batterie?",
     titel: "Ein Aufbau ohne Batterie",
     frage: "Wann zeigt der Spannungsmesser etwas an – und wovon hängt der Wert ab?",
-    schritte: ["Beobachte bei „mittel“ und v = 50 cm/s den Zeiger, während der Magnet hineinfährt, liegen bleibt und wieder herausfährt.", "Drücke „stark“ und lies die Spannung bei v = 50 cm/s ab.", "Stelle die Geschwindigkeit des Magneten auf 100 cm/s und lies die Spannung erneut ab."]
+    schritte: ["Beobachte bei „mittel“ und v = 50 cm/s den Zeiger, während der Magnet hineinfährt, liegen bleibt und wieder herausfährt. Notiere U beim Liegen in Zeile 1 und U beim Hineinfahren in Zeile 2 der Tabelle.", "Drücke „stark“ und notiere U bei v = 50 cm/s in Zeile 3.", "Stelle die Geschwindigkeit des Magneten auf 100 cm/s. Notiere U in Zeile 4."]
   },
   "ev8": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2538,7 +2538,7 @@ const HEFT_SEITEN = {
     name: "Wie macht ein Generator daraus Strom?",
     titel: "Der Schatten und die Kurve",
     frage: "Wann ist die Spannung am größten – und wie groß ist der Schatten dann?",
-    schritte: ["Beobachte nach dem Drücken von „2 · Warum ein Sinus?“, wie Schatten und Spannungskurve zusammenhängen.", "Drücke nacheinander „φ = 0°“, „φ = 90°“, „φ = 180°“ und „φ = 270°“ und lies jedes Mal cos φ und sin φ ab.", "Lies den Scheitelwert Û und den Effektivwert Û/√2 aus der Rechnung ab."]
+    schritte: ["Beobachte nach dem Drücken von „2 · Warum ein Sinus?“, wie Schatten und Spannungskurve zusammenhängen.", "Drücke „φ = 0°“ und notiere cos φ und sin φ in Zeile 1 der Tabelle im Heft. Wiederhole das mit „φ = 90°“ für Zeile 2, mit „φ = 180°“ für Zeile 3 und mit „φ = 270°“ für Zeile 4.", "Lies den Scheitelwert Û und den Effektivwert Û/√2 aus der Rechnung ab."]
   },
   "ev9": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2547,7 +2547,7 @@ const HEFT_SEITEN = {
     name: "Wie ändert ein Transformator die Spannung?",
     titel: "Zwei Spulen auf einem Eisenjoch",
     frage: "Wovon hängt die Spannung an der Sekundärspule eines Transformators ab?",
-    schritte: ["Drücke die Station „2 · Spannungstransformation“ und stelle die Spannung UP auf 5,0 V ein.", "Stelle NP fest auf 500 und wähle für NS nacheinander 250, 500, 1000 und 2000; lies jedes Mal US ab.", "Vergleiche jeden abgelesenen Wert mit der Spannung, die die Simulation als ideal erwartet."]
+    schritte: ["Drücke die Station „2 · Spannungstransformation“ und stelle die Spannung UP auf 5,0 V ein.", "Stelle NP fest auf 500 und NS auf 250. Notiere US in Zeile 1 der Tabelle im Heft. Wiederhole das mit NS = 500 für Zeile 2, mit 1000 für Zeile 3 und mit 2000 für Zeile 4.", "Vergleiche jeden abgelesenen Wert mit der Spannung, die die Simulation als ideal erwartet."]
   },
   "ev10": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2556,7 +2556,7 @@ const HEFT_SEITEN = {
     name: "Warum hängen die Leitungen unter Hochspannung?",
     titel: "Zwei Lampen und ein dünner Draht",
     frage: "Warum wird elektrische Energie über weite Strecken mit Hochspannung übertragen?",
-    schritte: ["Drücke die Station „2 · Warum Hochspannung?“ und stelle die Übertragungsspannung U auf 20 V ein.", "Lies den Leitungsverlust ab, drücke „Messwert übernehmen“ und wiederhole das für 40 V, 80 V und 250 V.", "Drücke „1/U² → PVerlust“ und vergleiche, ob deine Punkte nun auf einer Ursprungsgeraden liegen."]
+    schritte: ["Drücke die Station „2 · Warum Hochspannung?“ und stelle die Übertragungsspannung U auf 20 V ein.", "Lies den Leitungsverlust ab, notiere ihn in Zeile 1 der Tabelle im Heft und drücke „Messwert übernehmen“. Wiederhole das mit 40 V für Zeile 2, mit 80 V für Zeile 3 und mit 250 V für Zeile 4.", "Drücke „1/U² → PVerlust“ und vergleiche, ob deine Punkte nun auf einer Ursprungsgeraden liegen."]
   },
   "ev11": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2565,7 +2565,7 @@ const HEFT_SEITEN = {
     name: "Was passiert zwischen Kraftwerk und Steckdose?",
     titel: "Der Weg bis zur Steckdose",
     frage: "Wie kommt die Energie vom Kraftwerk bis zur Lampe möglichst verlustarm an?",
-    schritte: ["Drücke die Station „1 · Die drei Teilversuche“ und wähle das Konzept „Hochspannung“.", "Beobachte die Helligkeit der beiden Lampen und lies Leitungswiderstand, Stromstärke und Verlust ab.", "Wähle nacheinander „Niederspannung, CrNi“ und „Niederspannung, Kupfer“ und vergleiche jedes Mal dieselben Anzeigen."]
+    schritte: ["Drücke die Station „1 · Die drei Teilversuche“ und wähle das Konzept „Hochspannung“.", "Beobachte die Helligkeit der beiden Lampen und lies Leitungswiderstand, Stromstärke und Verlust ab. Notiere den Verlust in Zeile 1 der Tabelle im Heft.", "Wähle „Niederspannung, CrNi“ und notiere den Verlust in Zeile 2. Wiederhole das mit „Niederspannung, Kupfer“ für Zeile 3. Vergleiche auch die anderen Anzeigen."]
   },
   "ev12": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2574,7 +2574,7 @@ const HEFT_SEITEN = {
     name: "Welche Kraftwerke liefern unseren Strom?",
     titel: "Steckbriefe für Kraftwerke",
     frage: "Welches Kraftwerk passt am besten in eine sichere Stromversorgung?",
-    schritte: ["Lies die Kopfzeile des Datenblatts und kläre für jede Spalte, was dort angegeben wird.", "Vergleiche die Spalte zur Regelbarkeit und markiere die Kraftwerke, die sich schnell hoch- und herunterfahren lassen.", "Vergleiche zum Schluss Brennstoff und Umweltbelastung und ordne die Zeilen nach ihrer Eignung für die Grundlast. Trage dann für Kohlekraftwerk, Kernkraftwerk, Windpark und Pumpspeicherkraftwerk je einen Vorteil und einen Nachteil in die Tabelle ein."]
+    schritte: ["Lies die Kopfzeile des Datenblatts und kläre für jede Spalte, was dort angegeben wird.", "Vergleiche die Spalte zur Regelbarkeit und markiere die Kraftwerke, die sich schnell hoch- und herunterfahren lassen.", "Vergleiche zum Schluss Brennstoff und Umweltbelastung und ordne die Kraftwerke im Datenblatt nach ihrer Eignung für die Grundlast. Notiere dann in Zeile 1 bis 4 der Tabelle zu jedem Kraftwerk einen Vorteil und einen Nachteil."]
   },
   "ev13": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2583,7 +2583,7 @@ const HEFT_SEITEN = {
     name: "Wie viel von der Energie kommt beim Kunden an?",
     titel: "Warme Luft aus dem Schaltschrank",
     frage: "Gibt ein Gerät so viel Nutzenergie ab, wie man ihm an Energie zuführt?",
-    schritte: ["Wähle nacheinander „Glühlampe“ und „LED-Lampe“. Lies für beide ab, wie viel der 1000 J als Licht abgegeben wird und wie viel als Wärme verloren geht.", "Vergleiche danach „Benzinmotor“, „Elektromotor“ und „Wasserkocher“ und trage Nutzenergie und Wirkungsgrad in die Tabelle ein.", "Wähle „Handy-Ladegerät“ und stelle die zugeführte Energie (am Bildschirm: „hineingesteckte Energie“) nacheinander auf 200 J, 600 J und 1200 J ein. Beobachte dabei den Wirkungsgrad."]
+    schritte: ["Wähle „Glühlampe“. Lies ab, wie viel der 1000 J als Licht abgegeben wird und wie viel als Wärme verloren geht. Notiere die Nutzenergie und η in Zeile 1 der Tabelle. Wiederhole das mit „LED-Lampe“ für Zeile 2.", "Wähle „Benzinmotor“ und notiere Nutzenergie und η in Zeile 3. Wähle „Elektromotor“ und notiere beides in Zeile 4. Wähle „Wasserkocher“ und notiere seine Werte ebenfalls in Zeile 4.", "Wähle „Handy-Ladegerät“ und stelle die zugeführte Energie (am Bildschirm: „hineingesteckte Energie“) nacheinander auf 200 J, 600 J und 1200 J ein. Beobachte dabei den Wirkungsgrad."]
   },
   "ev14": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2592,7 +2592,7 @@ const HEFT_SEITEN = {
     name: "Was kostet ein Gerät im Jahr?",
     titel: "Die Jahresrechnung am Tresen",
     frage: "Wovon hängt es ab, was ein Gerät im Jahr an elektrischer Energie kostet?",
-    schritte: ["Stelle mit „3 h“ die Laufzeit ein und wähle nacheinander „LED 10 W“, „TV 100 W“, „Kühlschrank 150 W“ und „Wasserkocher 2000 W“. Lies jedes Mal die Jahreskosten ab.", "Wähle „Wasserkocher 2000 W“ und drücke nacheinander „1 h“, „3 h“, „8 h“ und „24 h“. Trage die Jahreskosten in die Tabelle ein.", "Drücke bei den beiden Prüffragen „In Kilowattstunden (kWh)“ und „Kosten = Energie (kWh) · Preis pro kWh“ und lies die Rückmeldung ab."]
+    schritte: ["Stelle mit „3 h“ die Laufzeit ein und wähle „LED 10 W“. Notiere die Jahreskosten in Zeile 1 der Tabelle. Wiederhole das mit „Kühlschrank 150 W“ für Zeile 2. Lies zum Vergleich auch die Jahreskosten von „TV 100 W“ und „Wasserkocher 2000 W“ ab.", "Wähle „Wasserkocher 2000 W“ und drücke „1 h“. Notiere die Jahreskosten in Zeile 3. Drücke „8 h“ und notiere sie in Zeile 4. Drücke zum Schluss „24 h“ und vergleiche.", "Drücke bei den beiden Prüffragen „In Kilowattstunden (kWh)“ und „Kosten = Energie (kWh) · Preis pro kWh“ und lies die Rückmeldung ab."]
   },
   "ev15": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2601,7 +2601,7 @@ const HEFT_SEITEN = {
     name: "Was haben elektrisches, magnetisches und Gravitationsfeld gemeinsam?",
     titel: "Zwei Schilder am Zaun",
     frage: "Was haben elektrisches, magnetisches und Gravitationsfeld gemeinsam?",
-    schritte: ["Lies im Datenblatt zum elektrischen Feld, zum magnetischen Feld und zum Gravitationsfeld ab, worauf es jeweils wirkt.", "Vergleiche die drei Einträge und halte fest, welche Aussage bei allen drei Feldern gleich lautet.", "Ordne jedem Feld die Quelle zu, von der es ausgeht, und trage sie in die Tabelle ein."]
+    schritte: ["Lies im Datenblatt zum elektrischen Feld, zum magnetischen Feld und zum Gravitationsfeld ab, worauf es jeweils wirkt. Notiere das in Zeile 1 bis 3 der Tabelle.", "Vergleiche die drei Einträge und finde die Aussage, die bei allen drei Feldern gleich lautet.", "Ordne jedem Feld die Quelle zu, von der es ausgeht. Notiere sie in Zeile 1 bis 3 der Tabelle neben der Wirkung."]
   },
   "rk1": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2610,7 +2610,7 @@ const HEFT_SEITEN = {
     name: "Woraus besteht ein Atomkern?",
     titel: "Der Kühlschrank mit den Zahlen",
     frage: "Welche Teilchen im Kern entscheiden, welches Element vor dir liegt?",
-    schritte: ["Drücke nacheinander Wasserstoff-1, Helium-4 und Kohlenstoff-12 und lies im Statusfeld jeweils ab, wie viele Protonen und Neutronen im Kern sitzen.", "Drücke Kohlenstoff-14 und vergleiche Massenzahl und Stabilität mit Kohlenstoff-12.", "Stelle den Regler Protonen im Kern auf 8 ein und beobachte, welcher Elementname jetzt oben steht."]
+    schritte: ["Drücke Wasserstoff-1. Lies im Statusfeld die Zahl der Protonen und Neutronen, die Massenzahl A und die Stabilität ab. Notiere sie in Zeile 1 der Tabelle. Wiederhole das mit Helium-4 für Zeile 2 und mit Kohlenstoff-12 für Zeile 3.", "Drücke Kohlenstoff-14 und notiere dasselbe in Zeile 4. Vergleiche Massenzahl und Stabilität mit Kohlenstoff-12.", "Stelle den Regler Protonen im Kern auf 8 ein und beobachte, welcher Elementname jetzt oben steht."]
   },
   "rk2": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2619,7 +2619,7 @@ const HEFT_SEITEN = {
     name: "Was ist radioaktive Strahlung?",
     titel: "Das Knacken vor der Tür",
     frage: "Warum betreibt man ein Zählrohr ausgerechnet bei etwa 450 Volt?",
-    schritte: ["Wähle die Karte 2 · Die Kennlinie und stelle die Zählrohrspannung U nacheinander auf 10 V, 200 V, 450 V und 650 V ein.", "Lies bei jeder Spannung ab, welcher Bereich mit Nummer, Namen und Spannungsgrenzen im Textfeld steht.", "Drücke nacheinander Proportionalbereich und Auslösebereich und vergleiche die Impulshöhen von α, β und γ."]
+    schritte: ["Wähle die Karte 2 · Die Kennlinie und stelle die Zählrohrspannung U auf 10 V ein.", "Lies im Textfeld ab, welcher Bereich mit Nummer, Namen und Spannungsgrenzen dort steht. Notiere ihn in Zeile 1 der Tabelle im Heft. Wiederhole das mit 200 V für Zeile 2, mit 450 V für Zeile 3 und mit 650 V für Zeile 4.", "Drücke nacheinander Proportionalbereich und Auslösebereich und vergleiche die Impulshöhen von α, β und γ."]
   },
   "rk3": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2628,7 +2628,7 @@ const HEFT_SEITEN = {
     name: "Welche Strahlungsarten gibt es?",
     titel: "Die Schürze aus Blei",
     frage: "Welches Material hält welche Strahlungsart auf?",
-    schritte: ["Wähle die Karte 1 · Drei Strahlungsarten, drücke α-Strahlung und Papier und stelle den Regler Dicke d auf 1 mm ein.", "Drücke β-Strahlung und Aluminium, stelle Dicke d auf 5 mm ein und beobachte, was hinter dem Blech noch ankommt.", "Drücke γ-Strahlung und Blei, stelle Dicke d auf 6,0 mm ein und lies ab, wie viel Prozent durch das Blei hindurchkommen."]
+    schritte: ["Wähle die Karte 1 · Drei Strahlungsarten, drücke α-Strahlung und Papier und stelle den Regler Dicke d auf 1 mm ein. Notiere in Zeile 1 der Tabelle im Heft, welches Material die Strahlung aufhält und was hindurchkommt.", "Drücke β-Strahlung und Aluminium und stelle Dicke d auf 5 mm ein. Notiere in Zeile 2, welches Material die Strahlung aufhält und was hinter dem Blech noch ankommt.", "Drücke γ-Strahlung und Blei und stelle Dicke d auf 6,0 mm ein. Lies ab, wie viel Prozent durch das Blei hindurchkommen. Notiere das mit dem Material in Zeile 3."]
   },
   "rk4": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2637,7 +2637,7 @@ const HEFT_SEITEN = {
     name: "Warum ist die Strahlung gefährlich?",
     titel: "Das Fläschchen, das zubleibt",
     frage: "Warum ist die kurze Alphastrahlung im Körper die gefährlichste?",
-    schritte: ["Drücke α Alpha und lies ab, wie viele Ionenpaare je Millimeter entstehen.", "Drücke danach β Beta und γ Gamma und vergleiche Energie, Reichweite und Ionisationsdichte.", "Lies zu jeder Strahlungsart den Wichtungsfaktor ab, mit dem der Strahlenschutz rechnet."]
+    schritte: ["Drücke α Alpha. Notiere in Zeile 1 der Tabelle die Reichweite und die Zahl der Ionenpaare je Millimeter.", "Drücke danach β Beta und notiere dasselbe in Zeile 2. Wiederhole das mit γ Gamma für Zeile 3. Vergleiche auch die Energie.", "Lies zu jeder Strahlungsart den Wichtungsfaktor ab, mit dem der Strahlenschutz rechnet."]
   },
   "rk5": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2646,7 +2646,7 @@ const HEFT_SEITEN = {
     name: "Wie weist man Strahlung nach?",
     titel: "Das Knacken im Messraum",
     frage: "Wovon hängt die Höhe eines Impulses im Zählrohr ab?",
-    schritte: ["Drücke „3 · Proportional- oder Auslösebereich“ und danach „Proportionalbereich“.", "Lies in der Tabelle die Impulshöhe für α, β und γ ab und trage sie ein.", "Drücke „Auslösebereich“ und vergleiche dieselben drei Zeilen noch einmal."]
+    schritte: ["Drücke „3 · Proportional- oder Auslösebereich“ und danach „Proportionalbereich“.", "Lies in der Tabelle am Bildschirm die Impulshöhe für α, β und γ ab. Notiere sie in Zeile 1 bis 3 der Tabelle im Heft, in der Spalte für 200 V.", "Drücke „Auslösebereich“ und lies die drei Impulshöhen noch einmal ab. Notiere sie in Zeile 1 bis 3, in der Spalte für 450 V."]
   },
   "rk6": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2655,7 +2655,7 @@ const HEFT_SEITEN = {
     name: "Wann ist die Hälfte zerfallen?",
     titel: "Das Fläschchen im Bleibehälter",
     frage: "Zerfällt nach einer Halbwertszeit immer genau die Hälfte der Kerne?",
-    schritte: ["Drücke „Radon-220“ und lies in der Statuszeile die Halbwertszeit und die Zahl der Kerne ab.", "Drücke „eine Halbwertszeit weiter“ und vergleiche die übrige Zahl mit der erwarteten Zahl.", "Wähle nacheinander Iod-131, Cäsium-137 und Plutonium-239 und drücke jedes Mal „eine Halbwertszeit weiter“."]
+    schritte: ["Drücke „Radon-220“ und lies in der Statuszeile die Halbwertszeit und die Zahl der Kerne ab. Notiere T½ in Zeile 1 der Tabelle.", "Drücke „eine Halbwertszeit weiter“. Notiere die übrigen Kerne in Zeile 1 und vergleiche mit der erwarteten Zahl.", "Wähle Iod-131 und notiere T½ in Zeile 2. Drücke „eine Halbwertszeit weiter“ und notiere die übrigen Kerne ebenfalls in Zeile 2. Wiederhole beides mit Cäsium-137 für Zeile 3 und mit Plutonium-239 für Zeile 4."]
   },
   "rk7": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2664,7 +2664,7 @@ const HEFT_SEITEN = {
     name: "Wie alt ist ein Fund?",
     titel: "Ein Holzstück aus dem Moor",
     frage: "Wie kommst du vom Restanteil an Kohlenstoff-14 auf das Alter eines Fundes?",
-    schritte: ["Drücke „Kohlenstoff-14“ und lies in der Statuszeile die Halbwertszeit und die Anzahl der Kerne am Start ab.", "Drücke „eine Halbwertszeit weiter“ und lies ab, wie viele Jahre vergangen und wie viel Prozent übrig sind.", "Drücke die Taste noch zweimal, bis 3 Halbwertszeiten vergangen sind, und vergleiche nach jedem Schritt Jahreszahl und Prozentwert mit dem Schritt davor."]
+    schritte: ["Drücke „Kohlenstoff-14“ und lies in der Statuszeile die Halbwertszeit und die Anzahl der Kerne am Start ab. Notiere die vergangene Zeit und den Prozentwert in Zeile 1 der Tabelle.", "Drücke „eine Halbwertszeit weiter“. Notiere in Zeile 2, wie viele Jahre vergangen und wie viel Prozent übrig sind.", "Drücke die Taste noch einmal und notiere beides in Zeile 3. Drücke ein drittes Mal und notiere beides in Zeile 4. Vergleiche jede Zeile mit der davor."]
   },
   "rk8": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2673,7 +2673,7 @@ const HEFT_SEITEN = {
     name: "Was wird aus einem Kern, der zerfällt?",
     titel: "Vierzehn Schritte bis zum Blei",
     frage: "Was ändert sich an einem Kern bei einem Alpha- und was bei einem Betazerfall?",
-    schritte: ["Lies im Startbild (Schritt 0) ab, wie viele Protonen und Neutronen Uran-238 hat und welche Strahlung es als Erstes aussendet.", "Drücke zweimal „nächster Zerfall“ (Schritt 1 und 2) und vergleiche nach jedem Druck Massenzahl und Kernladungszahl mit den Werten davor.", "Drücke „bis zum Ende“ und lies ab, bei welchem Kern die Reihe aufhört und wie viele Zerfälle es waren."]
+    schritte: ["Lies im Startbild (Schritt 0) ab, wie viele Protonen und Neutronen Uran-238 hat und welche Strahlung es als Erstes aussendet. Notiere A und Z in Zeile 1 der Tabelle.", "Drücke „nächster Zerfall“ und notiere A und Z in Zeile 2. Drücke noch einmal und notiere A und Z in Zeile 3. Vergleiche jedes Mal mit den Werten davor.", "Drücke „bis zum Ende“ und lies ab, bei welchem Kern die Reihe aufhört und wie viele Zerfälle es waren. Notiere A und Z in Zeile 4."]
   },
   "rk9": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2682,7 +2682,7 @@ const HEFT_SEITEN = {
     name: "Was passiert bei einer Kernspaltung?",
     titel: "Ein Würfel gegen einen Güterzug",
     frage: "Woher kommt die Energie, die bei einer Kernspaltung frei wird?",
-    schritte: ["Drücke „Spaltung noch einmal“ und beobachte, wie das langsame Neutron den Urankern trifft. Lies danach ab, wie viele Neutronen bei Barium + Krypton frei werden.", "Vergleiche die Zahl der Kernbausteine und die Zahl der Protonen links und rechts vom Pfeil. Lies ab, um wie viel u die Masse aller Teilchen nach der Spaltung kleiner ist als vorher.", "Wähle nacheinander „Xenon + Strontium“ und „Cäsium + Rubidium“ und trage die fehlende Masse und die frei werdende Energie in die Tabelle ein."]
+    schritte: ["Drücke „Spaltung noch einmal“ und beobachte, wie das langsame Neutron den Urankern trifft. Lies danach ab, wie viele Neutronen bei Barium + Krypton frei werden.", "Vergleiche die Zahl der Kernbausteine und die Zahl der Protonen links und rechts vom Pfeil. Lies ab, um wie viel u die Masse aller Teilchen nach der Spaltung kleiner ist als vorher. Notiere diese fehlende Masse und die frei werdende Energie in Zeile 1 der Tabelle.", "Wähle „Xenon + Strontium“ und notiere die fehlende Masse und die frei werdende Energie in Zeile 2. Wiederhole das mit „Cäsium + Rubidium“ für Zeile 3."]
   },
   "rk10": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2691,7 +2691,7 @@ const HEFT_SEITEN = {
     name: "Wie hält man eine Kettenreaktion unter Kontrolle?",
     titel: "Der Beitrag im Aufenthaltsraum",
     frage: "Was entscheidet darüber, ob eine Kettenreaktion gleichmäßig läuft?",
-    schritte: ["Stelle die Steuerstäbe auf 0 % ein und lies den Vermehrungsfaktor k und die Meldung darunter ab.", "Stelle nacheinander 50 %, 75 % und 100 % ein und trage k mit der Meldung in die Tabelle ein.", "Drücke „Zurücksetzen“, stelle 50 % ein und drücke dann „nächste Generation“. Vergleiche die Zahl der Spaltungen mit der Generation davor."]
+    schritte: ["Stelle die Steuerstäbe auf 0 % ein. Notiere den Vermehrungsfaktor k und die Meldung darunter in Zeile 1 der Tabelle.", "Stelle 50 % ein und notiere k mit der Meldung in Zeile 2. Wiederhole das mit 75 % für Zeile 3 und mit 100 % für Zeile 4.", "Drücke „Zurücksetzen“, stelle 50 % ein und drücke dann „nächste Generation“. Vergleiche die Zahl der Spaltungen mit der Generation davor."]
   },
   "rk11": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2700,7 +2700,7 @@ const HEFT_SEITEN = {
     name: "Wie ist ein Kernkraftwerk aufgebaut?",
     titel: "Der Umweg über den Dampf",
     frage: "Wie wird die Wärme aus dem Reaktor in elektrische Energie umgewandelt?",
-    schritte: ["Stelle die Steuerstäbe auf 50 % ein und lies ab, wie viel Energie eine einzelne Spaltung liefert und wie viel die 500 Spaltungen der Generation 0 zusammen ergeben.", "Drücke „Laufen lassen“ und beobachte über mehrere Generationen, ob die Zahl der Spaltungen gleich bleibt.", "Lies ab, wie viele Spaltungen je Sekunde ein Kraftwerk für 300 Megawatt braucht, und vergleiche diese Zahl mit den 500 Spaltungen im Bild."]
+    schritte: ["Stelle die Steuerstäbe auf 50 % ein. Notiere in Zeile 1 der Tabelle, wie viel Energie eine Spaltung liefert. Notiere in Zeile 2, wie viel die 500 Spaltungen der Generation 0 zusammen ergeben.", "Drücke „Laufen lassen“ und beobachte über mehrere Generationen, ob die Zahl der Spaltungen gleich bleibt.", "Lies ab, wie viele Spaltungen je Sekunde ein Kraftwerk für 300 Megawatt braucht. Notiere die Zahl in Zeile 3 und vergleiche sie mit den 500 Spaltungen im Bild."]
   },
   "rk12": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2709,7 +2709,7 @@ const HEFT_SEITEN = {
     name: "Wohin mit dem, was übrig bleibt?",
     titel: "Der abgeschlossene Raum im Keller",
     frage: "Warum kann man abgebrannte Brennstäbe nicht einfach abklingen lassen?",
-    schritte: ["Lies im Datenblatt zu jedem Stoff die Halbwertszeit ab und trage nacheinander den Stoff mit der kürzesten, einen mit mittlerer und den mit der längsten Halbwertszeit in die Tabelle ein.", "Vergleiche die kürzeste mit der längsten Halbwertszeit und halte fest, um wie viel sie sich unterscheiden.", "Ordne die Stoffe danach, ob nach zehn Halbwertszeiten ein Abklingraum genügt oder ein Lager für viele Generationen nötig ist."]
+    schritte: ["Lies im Datenblatt zu jedem Stoff die Halbwertszeit ab. Notiere den Stoff mit der kürzesten Halbwertszeit und seine Halbwertszeit in Zeile 1 der Tabelle, einen mit mittlerer in Zeile 2 und den mit der längsten in Zeile 3.", "Vergleiche die kürzeste mit der längsten Halbwertszeit und bestimme, um wie viel sie sich unterscheiden.", "Ordne die Stoffe danach, ob nach zehn Halbwertszeiten ein Abklingraum genügt oder ein Lager für viele Generationen nötig ist."]
   },
   "rk13": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2718,7 +2718,7 @@ const HEFT_SEITEN = {
     name: "Wie schützt man sich vor Strahlung?",
     titel: "Dosimeter, Blei und ein Schritt zurück",
     frage: "Was senkt die Dosis stärker: mehr Abstand oder ein paar Millimeter Blei?",
-    schritte: ["Stelle den Abstand nacheinander auf 50 cm, 100 cm und 200 cm ein und lies jedes Mal die Dosisleistung ab.", "Stelle den Abstand zurück auf 50 cm und schiebe den Regler für das Blei auf 7 mm.", "Vergleiche, welche der beiden Änderungen den Wert stärker senkt."]
+    schritte: ["Stelle den Abstand auf 50 cm ein. Notiere die Dosisleistung in Zeile 1 der Tabelle. Wiederhole das mit 100 cm für Zeile 2 und mit 200 cm für Zeile 3.", "Stelle den Abstand zurück auf 50 cm und schiebe den Regler für das Blei auf 7 mm. Notiere die Dosisleistung in Zeile 4.", "Vergleiche, welche der beiden Änderungen den Wert stärker senkt."]
   },
   "rk14": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2727,7 +2727,7 @@ const HEFT_SEITEN = {
     name: "Wie viel Strahlung ist noch vertretbar?",
     titel: "Ein Flug, eine Röntgenaufnahme, ein Grenzwert",
     frage: "Ab welchem Abstand bleibt die Dosis in 20 Minuten unter der eines Fluges?",
-    schritte: ["Stelle die Aufenthaltsdauer auf 20 Minuten und den Abstand auf 55 cm ein.", "Lies ab, wie groß die Dosis in 20 Minuten ist, und lies die Vergleichszeile darunter mit.", "Vergleiche diese Zeile mit der bei 90 cm, 125 cm und 300 cm."]
+    schritte: ["Stelle die Aufenthaltsdauer auf 20 Minuten und den Abstand auf 55 cm ein.", "Lies ab, wie groß die Dosis in 20 Minuten ist, und lies die Vergleichszeile darunter mit. Notiere die Dosis in Zeile 1 der Tabelle.", "Stelle 90 cm ein und notiere die Dosis in Zeile 2. Wiederhole das mit 125 cm für Zeile 3 und mit 300 cm für Zeile 4. Lies jedes Mal die Vergleichszeile mit."]
   },
   "rk15": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2736,7 +2736,7 @@ const HEFT_SEITEN = {
     name: "Wie hilft Strahlung in der Medizin?",
     titel: "Die Liste im Vorbereitungsraum",
     frage: "Warum eignet sich nicht jeder radioaktive Stoff für jede Aufgabe in der Medizin?",
-    schritte: ["Lies ab, welche Strahlungsart und welche Halbwertszeit im Datenblatt zu jedem Stoff gehören.", "Vergleiche die Zeilen, die zur Diagnose gehören, mit den Zeilen für die Therapie, und lies unter dem Datenblatt ab, wo die Strahlung jeweils ihre Energie abgibt.", "Wähle zu jeder der beiden Aufgaben den Stoff aus, der nach der Tabelle am besten passt."]
+    schritte: ["Lies ab, welche Strahlungsart und welche Halbwertszeit im Datenblatt zu jedem Stoff gehören.", "Vergleiche die Stoffe für Diagnose und Therapie. Notiere Strahlungsart und Halbwertszeit in Zeile 1 und 2 der Tabelle. Lies unter dem Datenblatt ab, wo die Strahlung ihre Energie abgibt, und notiere das in Zeile 3.", "Wähle zu jeder der beiden Aufgaben den Stoff aus, der am besten passt. Notiere beide Stoffe in Zeile 4."]
   },
   "rk16": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2745,7 +2745,7 @@ const HEFT_SEITEN = {
     name: "Woher nimmt die Sonne ihre Energie?",
     titel: "Der Ofen im Sonnenkern",
     frage: "Ab welcher Temperatur verschmelzen Wasserstoffkerne zu Heliumkernen?",
-    schritte: ["Stelle die Temperatur auf 4 Millionen °C ein und lies die Statuszeile darunter.", "Stelle die Temperatur nacheinander auf 8, 12 und 16 Millionen °C und achte darauf, ab wann dort „Es zündet“ steht.", "Vergleiche im Text die Energie je Kernbaustein bei Fusion und bei Spaltung."]
+    schritte: ["Stelle die Temperatur auf 4 Millionen °C ein und lies die Statuszeile darunter. Notiere in Zeile 1 der Tabelle, ob es zündet und wie viele Heliumkerne der Zähler zeigt.", "Wiederhole das mit 8 Millionen °C für Zeile 2, mit 12 Millionen °C für Zeile 3 und mit 16 Millionen °C für Zeile 4. Achte darauf, ab wann dort „Es zündet“ steht.", "Vergleiche im Text die Energie je Kernbaustein bei Fusion und bei Spaltung."]
   },
   "rk17": {
     klasse: 10, schulform: "Gesamtschule NRW",
@@ -2754,7 +2754,7 @@ const HEFT_SEITEN = {
     name: "Kernenergie: Wie stehst du dazu?",
     titel: "Die Folie, die noch fehlt",
     frage: "Welche Gründe sprechen für und gegen Kernenergie, und was wiegt schwerer?",
-    schritte: ["Lies ab, welche Angaben im Datenblatt stehen, und unterstreiche darin jede Zahl.", "Vergleiche die Spalten des Datenblatts und markiere, wo die Unterschiede am größten sind.", "Wähle vier Angaben aus, die für dich am schwersten wiegen, und trage sie in die Tabelle ein."]
+    schritte: ["Lies ab, welche Angaben im Datenblatt stehen, und unterstreiche darin jede Zahl.", "Vergleiche die Spalten des Datenblatts und markiere, wo die Unterschiede am größten sind.", "Wähle vier Angaben aus, die für dich am schwersten wiegen. Notiere je eine in Zeile 1 bis 4 der Tabelle und dahinter dein Urteil: dafür oder dagegen."]
   },
   "wm1": {
     klasse: "5/6", schulform: "Gymnasium NRW",
@@ -4041,7 +4041,7 @@ const HEFT_SEITEN = {
     name: "Was macht eine Oberfläche mit Licht?",
     titel: "Zwei Kisten ohne Beschriftung",
     frage: "Was macht eine Oberfläche mit dem Licht, das auf sie trifft?",
-    schritte: ["Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab.", "Wähle danach Fensterglas, schwarzes Papier und weißes Papier.", "Trage die Oberfläche und die drei Zahlen in die Tabelle ein.", "Berechne für jede Zeile die Summe."]
+    schritte: ["Wähle den Spiegel und lies die drei Zahlen in der Statuszeile ab. Berechne ihre Summe. Notiere sie in Zeile 1 der Tabelle.", "Wähle Fensterglas. Notiere die drei Zahlen und ihre Summe in Zeile 2 der Tabelle.", "Wähle schwarzes Papier. Notiere die drei Zahlen und ihre Summe in Zeile 3 der Tabelle.", "Wähle weißes Papier. Notiere die drei Zahlen und ihre Summe in Zeile 4 der Tabelle."]
   },
   "fo2": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4050,7 +4050,7 @@ const HEFT_SEITEN = {
     name: "Wie reflektiert der Spiegel Licht?",
     titel: "Der Spiegel",
     frage: "Wie hängen Einfallswinkel und Reflexionswinkel zusammen?",
-    schritte: ["Stelle den Regler „Spiegel drehen“ auf 0°. Lass ihn dort.", "Stelle den Einfallswinkel zum Lot auf 0°. Lies die Statuszeile.", "Trage beide Winkel in die Tabelle ein.", "Stelle den Einfallswinkel nacheinander auf 20°, 40° und 80° ein und ergänze die Tabelle."]
+    schritte: ["Stelle den Regler „Spiegel drehen“ auf 0°. Lass ihn dort.", "Stelle den Einfallswinkel zum Lot auf 0°. Lies die Statuszeile. Notiere in Zeile 1 der Tabelle, ob beide Winkel gleich sind.", "Stelle den Einfallswinkel auf 20°. Notiere in Zeile 2 der Tabelle den Reflexionswinkel und ob beide Winkel gleich sind.", "Wiederhole das mit 40° für Zeile 3 und mit 80° für Zeile 4."]
   },
   "fo3": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4059,7 +4059,7 @@ const HEFT_SEITEN = {
     name: "Warum wird Licht am Glas gebrochen?",
     titel: "Der halbrunde Glasklotz",
     frage: "Wohin wird der Lichtstrahl gebrochen, wenn er ins Glas eintritt?",
-    schritte: ["Drücke „↓ genau auf das Lot“ (0°) und trage die erste Zeile ein.", "Stelle 40° ein, lies den Winkel im Glas ab und trage beide Winkel ein.", "Stelle 75° ein und ergänze die letzte Zeile der Tabelle.", "Vergleiche: Ist der Winkel im Glas größer oder kleiner als in der Luft?"]
+    schritte: ["Drücke „↓ genau auf das Lot“ (0°). Notiere in Zeile 1 der Tabelle, ob der Strahl gebrochen wird.", "Stelle 40° ein. Notiere in Zeile 2 der Tabelle den Winkel im Glas und ob der Strahl gebrochen wird.", "Wiederhole das mit 75° für Zeile 3.", "Vergleiche: Ist der Winkel im Glas größer oder kleiner als in der Luft?"]
   },
   "fo4": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4068,7 +4068,7 @@ const HEFT_SEITEN = {
     name: "Wann kommt Licht nicht mehr heraus?",
     titel: "Wenn Licht nicht mehr herauskommt",
     frage: "Wann tritt Licht aus dem Glas aus – und wann nicht mehr?",
-    schritte: ["Stelle den Winkel im Glas auf 0°. Lies beide Winkel ab.", "Stelle danach 20° ein, dann 25°. Lies jedes Mal beide Winkel ab.", "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung.", "Trage ein, bei welchen Winkeln Licht austritt."]
+    schritte: ["Stelle den Winkel im Glas auf 0°. Lies beide Winkel ab. Notiere in Zeile 1 der Tabelle, ob Licht austritt.", "Stelle 20° ein. Notiere in Zeile 2 der Tabelle den Winkel in der Luft und ob Licht austritt.", "Wiederhole das mit 25° für Zeile 3.", "Drücke den Knopf „55° – Totalreflexion“ und lies die Meldung. Notiere deine Beobachtung in Zeile 4 der Tabelle."]
   },
   "fo5": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4077,7 +4077,7 @@ const HEFT_SEITEN = {
     name: "Welches Glas bündelt das Licht?",
     titel: "Zwei geschliffene Gläser",
     frage: "Welches Glas bündelt paralleles Licht – und welches nicht?",
-    schritte: ["Wähle „in der Mitte dicker“ und lies die Statuszeile.", "Trage die erste Zeile der Tabelle ein.", "Wähle „in der Mitte dünner“ und lies die Statuszeile.", "Ergänze die zweite Zeile der Tabelle."]
+    schritte: ["Wähle „in der Mitte dicker“ und lies die Statuszeile.", "Notiere in Zeile 1 der Tabelle, ob hinter dem Glas ein heller Fleck entsteht.", "Wähle „in der Mitte dünner“ und lies die Statuszeile.", "Notiere in Zeile 2 der Tabelle, wohin die Strahlen laufen und ob ein heller Fleck entsteht."]
   },
   "fo6": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4086,7 +4086,7 @@ const HEFT_SEITEN = {
     name: "Wo entsteht das Bild der Linse?",
     titel: "Das Bild der Linse und die Lupe",
     frage: "Wovon hängt es ab, wie das Bild der Linse aussieht?",
-    schritte: ["Stelle am Regler die Gegenstandsweite g (Abstand vom Gegenstand zur Linse) auf 190. Lies die Statuszeile.", "Stelle 100 ein und vergleiche Größe und Lage des Bildes.", "Stelle 25 ein – näher als die Brennweite f = 62.", "Trage jedes Mal ein, wie das Bild aussieht."]
+    schritte: ["Stelle am Regler die Gegenstandsweite g (Abstand vom Gegenstand zur Linse) auf 190. Lies die Statuszeile. Notiere in Zeile 1 der Tabelle, wie das Bild steht.", "Stelle 100 ein. Notiere in Zeile 2 der Tabelle, wie groß das Bild ist und wie es steht.", "Stelle 25 ein – näher als die Brennweite f = 62. Notiere Größe und Lage des Bildes in Zeile 3 der Tabelle."]
   },
   "fo7": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4095,7 +4095,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht ein Bild im Auge?",
     titel: "Das aufklappbare Augenmodell",
     frage: "Wo entsteht das Bild im Auge – und wie bleibt es scharf?",
-    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts (Abstand weit) und lies die Statuszeile.", "Schiebe ihn ganz nach links (Abstand nah) und vergleiche die Wölbung der Linse.", "Schiebe ihn wieder ganz nach rechts. Bewege dann den Regler „Pupille“ ganz nach links (Pupille eng) und ganz nach rechts (Pupille weit).", "Trage deine Beobachtungen in die Tabelle ein."]
+    schritte: ["Schiebe den Regler „Abstand des Gegenstands“ ganz nach rechts (Abstand weit) und lies die Statuszeile. Notiere in Zeile 1 der Tabelle, wie weit die Pupille ist.", "Schiebe ihn ganz nach links (Abstand nah). Notiere die Wölbung der Linse und die Pupille in Zeile 2 der Tabelle.", "Schiebe ihn wieder ganz nach rechts. Schiebe dann den Regler „Pupille“ ganz nach links (Pupille eng). Notiere Wölbung und Pupille in Zeile 3 der Tabelle.", "Schiebe den Regler „Pupille“ ganz nach rechts (Pupille weit). Notiere Wölbung und Pupille in Zeile 4 der Tabelle."]
   },
   "fo8": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4104,7 +4104,7 @@ const HEFT_SEITEN = {
     name: "Wie hilft eine Brille?",
     titel: "Zwei Brillen ohne Etikett",
     frage: "Welche Linse hilft dem kurzsichtigen Auge, welche dem weitsichtigen?",
-    schritte: ["Wähle „kurzsichtig“ und lies die Meldung ohne Brille ab.", "Drücke „Brille“ und lies die neue Meldung mit Brille ab.", "Drücke „Brille“ noch einmal, dann ist die Brille wieder ab.", "Wähle „weitsichtig“ und lies die Meldung ohne Brille ab. Drücke dann „Brille“ und lies die Meldung mit Brille ab."]
+    schritte: ["Wähle „kurzsichtig“ und lies die Meldung ohne Brille ab. Notiere in Zeile 1 der Tabelle, welche Linse nötig ist.", "Drücke „Brille“ und lies die neue Meldung mit Brille ab. Notiere in Zeile 2 der Tabelle, wo das Bild liegt und welche Linse nötig ist.", "Drücke „Brille“ noch einmal, dann ist die Brille wieder ab. Wähle „weitsichtig“ und lies die Meldung ab. Notiere beides in Zeile 3 der Tabelle.", "Drücke „Brille“ und lies die Meldung mit Brille ab. Notiere beides in Zeile 4 der Tabelle."]
   },
   "fo9": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4113,7 +4113,7 @@ const HEFT_SEITEN = {
     name: "Wie macht die Lochkamera ein Bild?",
     titel: "Die Pappkiste mit dem Nadelloch",
     frage: "Wie sieht das Bild aus, das ein kleines Loch auf den Schirm wirft?",
-    schritte: ["Stelle „Gegenstandsweite g“ auf 40 cm. Sie bleibt so.", "Stelle die Bildweite b (Kameralänge) auf 29 cm, 39 cm und 51 cm. Die „Lochgröße“ bleibt klein. Lies jedes Mal die Statuszeile.", "Schiebe „Lochgröße“ ganz nach rechts: Loch groß. Die Bildweite b bleibt 51 cm. Lies den Satz unter den Reglern.", "Trage alle vier Zeilen in die Tabelle ein."]
+    schritte: ["Stelle „Gegenstandsweite g“ auf 40 cm. Sie bleibt so. Die „Lochgröße“ bleibt klein.", "Stelle die Bildweite b (Kameralänge) auf 29 cm. Lies die Statuszeile. Notiere in Zeile 1 der Tabelle, wie scharf das Bild ist.", "Stelle b auf 39 cm. Notiere Größe und Schärfe des Bildes in Zeile 2 der Tabelle. Wiederhole das mit 51 cm für Zeile 3.", "Schiebe „Lochgröße“ ganz nach rechts: Loch groß. Die Bildweite b bleibt 51 cm. Lies den Satz unter den Reglern. Notiere Größe und Schärfe in Zeile 4 der Tabelle."]
   },
   "fo10": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4122,7 +4122,7 @@ const HEFT_SEITEN = {
     name: "Woraus besteht weißes Licht?",
     titel: "Der Glaskeil in der Schublade",
     frage: "Macht das Prisma die Farben – oder stecken sie schon im weißen Licht?",
-    schritte: ["Wähle weißes Licht und lies die Meldung in der Statuszeile.", "Trage in die Tabelle ein, was hinter dem Prisma erscheint.", "Wähle nur Rot. Beobachte, ob das Licht noch zerlegt wird.", "Vergleiche mit nur Blau und ergänze die letzte Zeile."]
+    schritte: ["Wähle weißes Licht und lies die Meldung in der Statuszeile.", "Notiere in Zeile 1 der Tabelle, wie viele Farben du siehst.", "Wähle nur Rot. Beobachte, ob das Licht noch zerlegt wird. Notiere in Zeile 2 der Tabelle, was hinter dem Prisma erscheint und wie viele Farben du siehst.", "Wähle nur Blau und vergleiche. Notiere beides in Zeile 3 der Tabelle."]
   },
   "fo11": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4131,7 +4131,7 @@ const HEFT_SEITEN = {
     name: "Wie macht der Bildschirm Farben?",
     titel: "Die Lupe auf dem Bildschirm",
     frage: "Wie entsteht Weiß, wenn dort nur Rot, Grün und Blau leuchten?",
-    schritte: ["Lies gleich nach dem Öffnen (Ausgangszustand) in der Statuszeile die Ergebnisfarbe und die drei Zahlen ab.", "Drücke unter dem Bild den Knopf „aus“. Notiere alle drei Werte.", "Drücke unter dem Bild den Knopf „Gelb“. Notiere die Werte.", "Schiebe den Regler „Blau“ auf 255. Schreibe „Weiß“ in die erste Spalte und fülle die Zeile aus."]
+    schritte: ["Lies gleich nach dem Öffnen (Ausgangszustand) in der Statuszeile die Ergebnisfarbe ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke unter dem Bild den Knopf „aus“. Notiere R, G, B und die Ergebnisfarbe in Zeile 2 der Tabelle.", "Drücke unter dem Bild den Knopf „Gelb“. Notiere R, G, B und die Ergebnisfarbe in Zeile 3 der Tabelle.", "Schiebe den Regler „Blau“ auf 255. Notiere R, G, B und die Ergebnisfarbe in Zeile 4 der Tabelle."]
   },
   "fo12": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4140,7 +4140,7 @@ const HEFT_SEITEN = {
     name: "Welches Licht sehen wir nicht?",
     titel: "Das Thermometer mit der schwarzen Kugel",
     frage: "Kommt hinter dem letzten Rot noch etwas an, das wir nicht sehen?",
-    schritte: ["Drücke „555 nm – Grün“. Lies ab: Sieht das Auge etwas? Wie groß ist die Erwärmung?", "Drücke „700 nm – letztes Rot“. Lies beide Angaben ab.", "Drücke „940 nm – Fernbedienung“. Lies beide Angaben ab.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „555 nm – Grün“. Lies die Erwärmung ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „700 nm – letztes Rot“. Lies ab: Sieht das Auge etwas? Wie groß ist die Erwärmung? Notiere beides in Zeile 2 der Tabelle.", "Drücke „940 nm – Fernbedienung“. Notiere beide Angaben in Zeile 3 der Tabelle."]
   },
   "fw1": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4149,7 +4149,7 @@ const HEFT_SEITEN = {
     name: "Was leuchtet am Nachthimmel?",
     titel: "Ein Karton voller Sternkarten",
     frage: "Welche Himmelskörper leuchten selbst – und welche werden beleuchtet?",
-    schritte: ["Wähle nacheinander Sonne, Stern, Mond und Planet. Lies jede Statuszeile.", "Trage jeden Himmelskörper ein. Leuchtet er selbst?", "Drücke „Sonnenlicht abdecken“ und wähle wieder Sonne, Stern, Mond und Planet.", "Ergänze: Wer ist jetzt dunkel, wer leuchtet weiter?"]
+    schritte: ["Wähle den Stern und lies die Statuszeile. Notiere in Zeile 2 der Tabelle, ob er selbst leuchtet.", "Wiederhole das mit dem Mond für Zeile 3 und mit dem Planeten für Zeile 4.", "Drücke „Sonnenlicht abdecken“ und wähle die Sonne. Notiere in Zeile 1 der Tabelle, ob sie hell oder dunkel ist.", "Wähle den Stern. Das Sonnenlicht bleibt abgedeckt. Notiere in Zeile 2 der Tabelle, ob er hell oder dunkel ist. Wiederhole das mit dem Mond für Zeile 3 und dem Planeten für Zeile 4."]
   },
   "fw2": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4158,7 +4158,7 @@ const HEFT_SEITEN = {
     name: "Warum wird es Tag und Nacht?",
     titel: "Der staubige Globus",
     frage: "Wovon hängt es ab, ob es gerade Tag oder Nacht ist?",
-    schritte: ["Drücke „Pause“, damit der Globus stehen bleibt.", "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Tag?", "Stelle 180° ein und vergleiche.", "Ergänze die letzte Zeile nach einer vollen Drehung."]
+    schritte: ["Drücke „Pause“, damit der Globus stehen bleibt.", "Stelle den Regler „Erde von Hand drehen“ auf 0°. Lies ab: Wer hat Tag? Notiere in Zeile 1 der Tabelle, wer Nacht hat.", "Stelle 180° ein. Notiere in Zeile 2 der Tabelle, wer Tag und wer Nacht hat.", "Schiebe den Regler ganz nach rechts. Das ist eine volle Drehung, die Anzeige zeigt wieder 0°. Notiere in Zeile 3 der Tabelle, wer Tag und wer Nacht hat."]
   },
   "fw3": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4167,7 +4167,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt alles nach unten?",
     titel: "Warum alles nach unten fällt",
     frage: "Fallen Stein und Feder gleich schnell, wenn keine Luft da ist?",
-    schritte: ["Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.", "Wähle den Mond und lies die Fallbeschleunigung g und die Fallzeit ab. g zeigt, wie stark der Mond anzieht.", "Wähle Erde und Jupiter und ergänze die Tabelle.", "Vergleiche: Wo fällt der Stein am schnellsten?"]
+    schritte: ["Drücke „Noch einmal fallen lassen“. Beobachte beide Rohre.", "Wähle den Mond und lies die Fallbeschleunigung g und die Fallzeit ab. g zeigt, wie stark der Mond anzieht. Notiere die Fallzeit in Zeile 1 der Tabelle.", "Wähle die Erde. Notiere g und die Fallzeit in Zeile 2 der Tabelle. Wiederhole das mit Jupiter für Zeile 3.", "Vergleiche: Wo fällt der Stein am schnellsten?"]
   },
   "fw4": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4176,7 +4176,7 @@ const HEFT_SEITEN = {
     name: "Warum stürzen Planeten nicht ab?",
     titel: "Warum Planeten nicht abstürzen",
     frage: "Warum stürzt ein Planet nicht in die Sonne?",
-    schritte: ["Drücke „ganz klein“. Lies die Startgeschwindigkeit ab: So schnell startet der Planet. Lies auch die Bahnform ab.", "Drücke „mittlerer Wert“ und vergleiche.", "Drücke „Gegenprobe groß“ und lies die Meldung.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „ganz klein“. Lies die Startgeschwindigkeit ab: So schnell startet der Planet. Lies auch die Bahnform ab. Notiere in Zeile 1 der Tabelle, ob er zurückkommt.", "Drücke „mittlerer Wert“ und vergleiche. Notiere in Zeile 2 der Tabelle die Bahnform und ob er zurückkommt.", "Drücke „Gegenprobe groß“ und lies die Meldung. Notiere beides in Zeile 3 der Tabelle."]
   },
   "fw5": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4185,7 +4185,7 @@ const HEFT_SEITEN = {
     name: "Wie unterscheiden sich die Planeten?",
     titel: "Acht gleich große Kugeln",
     frage: "Was unterscheidet die inneren Planeten von den äußeren?",
-    schritte: ["Drücke „Steckbrief“ und lies für die Erde Art und Durchmesser ab.", "Drücke „Größen“ und vergleiche die acht Planeten.", "Drücke „Umlauf“ und „sehr schnell“. Wer umrundet die Sonne öfter: innen oder außen?", "Trage deine Beobachtungen in die Tabelle ein."]
+    schritte: ["Drücke „Steckbrief“ und lies für die Erde Art und Durchmesser ab. Notiere in Zeile 1 der Tabelle, was du daran erkennst.", "Drücke „Größen“ und vergleiche die acht Planeten. Notiere in Zeile 2 der Tabelle, was das Bild zeigt und was du erkennst.", "Drücke „Umlauf“ und „sehr schnell“. Wer umrundet die Sonne öfter: innen oder außen? Notiere in Zeile 3 der Tabelle, was das Bild zeigt und was du erkennst."]
   },
   "fw6": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4194,7 +4194,7 @@ const HEFT_SEITEN = {
     name: "Wie groß ist das Sonnensystem?",
     titel: "Ein Wort auf der Rückseite",
     frage: "Wie lange ist das Licht von fernen Himmelskörpern zu uns unterwegs?",
-    schritte: ["Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.", "Lies Entfernung und Zeit in der Statuszeile ab.", "Drücke „weiter ▶“ und lies die Werte für die Sonne ab.", "Gehe mit „weiter ▶“ bis zum nächsten Stern und trage ein."]
+    schritte: ["Drücke „Lichtblitz senden“ und beobachte den Weg zum Mond.", "Lies die Zeit in der Statuszeile ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „weiter ▶“ und lies die Werte für die Sonne ab. Notiere Entfernung und Zeit in Zeile 2 der Tabelle.", "Gehe mit „weiter ▶“ bis zum nächsten Stern. Notiere Entfernung und Zeit in Zeile 3 der Tabelle."]
   },
   "fw7": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4203,7 +4203,7 @@ const HEFT_SEITEN = {
     name: "Was macht das Fernrohr mit dem Bild?",
     titel: "Zwei Linsen und ein Rohr",
     frage: "Wie verändert das Fernrohr Größe, Lage und Helligkeit des Bildes?",
-    schritte: ["Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke.", "Drücke „mit Teleskop“ und lies die Vergrößerung ab.", "Vergleiche „große Öffnung“ und „kleine Öffnung“: Achte nur auf die Helligkeit.", "Trage alle drei Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „bloßes Auge“. Achte auf die Größe und die gelbe Marke. Notiere die Helligkeit in Zeile 1 der Tabelle.", "Drücke „mit Teleskop“ und „große Öffnung“. Lies die Vergrößerung ab. Notiere Größe, Lage und Helligkeit in Zeile 2 der Tabelle.", "Drücke „kleine Öffnung“. Vergleiche die Helligkeit mit Zeile 2. Notiere Größe, Lage und Helligkeit in Zeile 3 der Tabelle."]
   },
   "fw8": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4212,7 +4212,7 @@ const HEFT_SEITEN = {
     name: "Wie weit ist ein Stern entfernt?",
     titel: "Kein Maßband bis zum Stern",
     frage: "Wie hängt der gemessene Winkel mit der Entfernung zusammen?",
-    schritte: ["Drücke „Proxima Centauri“ und lies den Winkel p und die Entfernung in Lichtjahren ab.", "Vergleiche mit „61 Cygni“ und „Wega“. Trage alle Werte ein.", "Wähle „Polarstern“ und drücke „Lupe ×100“, um den winzigen Sprung zu sehen.", "Vergleiche: Wie ändert sich der Winkel mit der Entfernung?"]
+    schritte: ["Drücke „Proxima Centauri“ und lies den Winkel p und die Entfernung in Lichtjahren ab. Notiere die Entfernung in Zeile 1 der Tabelle.", "Drücke „61 Cygni“. Notiere p und die Entfernung in Zeile 2 der Tabelle. Wiederhole das mit „Wega“ für Zeile 3.", "Wähle „Polarstern“ und drücke „Lupe ×100“, um den winzigen Sprung zu sehen. Notiere p und die Entfernung in Zeile 4 der Tabelle.", "Vergleiche: Wie ändert sich der Winkel mit der Entfernung?"]
   },
   "fw9": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4221,7 +4221,7 @@ const HEFT_SEITEN = {
     name: "Wie lange leuchtet ein Stern?",
     titel: "Die Randnotiz auf der Sternkarte",
     frage: "Lebt ein Stern mit großer Masse länger als einer mit kleiner Masse?",
-    schritte: ["Drücke „1“ und sieh den ganzen Lebenslauf durch.", "Lies die Lebensdauer ab und trage sie ein.", "Drücke „10“ und vergleiche.", "Prüfe mit „Gegenprobe 25“: Lebt er noch kürzer?"]
+    schritte: ["Drücke „1“ und sieh den ganzen Lebenslauf durch. Das ist die Sonne. Setze in Zeile 1 der Tabelle einen Strich (—) in die Lücke.", "Drücke „10“ und lies die Lebensdauer ab. Ist sie länger oder kürzer als bei der Sonne? Notiere beides in Zeile 2 der Tabelle.", "Prüfe mit „Gegenprobe 25“: Lebt er noch kürzer? Notiere die Lebensdauer und deine Antwort in Zeile 3 der Tabelle."]
   },
   "fw10": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4230,7 +4230,7 @@ const HEFT_SEITEN = {
     name: "Wo stehen wir in der Milchstraße?",
     titel: "Das blasse Band",
     frage: "Steht die Sonne in der Mitte der Milchstraße?",
-    schritte: ["Drücke nacheinander „zur Mitte“, „nach außen“ und „quer heraus“.", "Lies jedes Mal die Sterne im Blickfeld ab und trage ein.", "Drücke „Gegenprobe: Sonne in die Mitte“ und lies die Meldung.", "Vergleiche: Passt die Gegenprobe zu unserem Himmel?"]
+    schritte: ["Drücke „zur Mitte“. Notiere in Zeile 1 der Tabelle, ob das Band hell oder schwach ist.", "Drücke „nach außen“. Notiere in Zeile 2 der Tabelle die Sterne im Blickfeld und ob das Band hell oder schwach ist. Wiederhole das mit „quer heraus“ für Zeile 3.", "Drücke „Gegenprobe: Sonne in die Mitte“ und lies die Meldung.", "Vergleiche: Passt die Gegenprobe zu unserem Himmel?"]
   },
   "fw11": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4239,7 +4239,7 @@ const HEFT_SEITEN = {
     name: "Wer steht in der Mitte?",
     titel: "Zwei Weltbilder",
     frage: "Welches Weltbild erklärt den Himmel ohne Zusatzkreise?",
-    schritte: ["Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile.", "Drücke „Sonne in der Mitte (heute)“ und vergleiche.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?", "Trage beide Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „Erde in der Mitte (alt)“ und lies die Statuszeile. Notiere in Zeile 1 der Tabelle, ob Zusatzkreise nötig sind.", "Drücke „Sonne in der Mitte (heute)“ und vergleiche. Notiere in Zeile 2 der Tabelle, wer in der Mitte steht und ob Zusatzkreise nötig sind.", "Beobachte unten den Streifen: Wie läuft der Mars von der Erde aus?"]
   },
   "fw12": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4248,7 +4248,7 @@ const HEFT_SEITEN = {
     name: "Wie findet man ein schwarzes Loch?",
     titel: "Ein Kreis um ein leeres Feld",
     frage: "Woran erkennt man ein schwarzes Loch, wenn es nicht leuchtet?",
-    schritte: ["Drücke „weit weg“ und dann „Lichtstrahl senden“.", "Lies die Statuszeile ab und trage ein.", "Wiederhole mit „mittel“ und „sehr nah“.", "Vergleiche die drei Wege im Bild."]
+    schritte: ["Drücke „weit weg“ und dann „Lichtstrahl senden“.", "Lies die Statuszeile ab. Notiere in Zeile 1 der Tabelle, ob der Strahl wieder herauskommt.", "Wiederhole das mit „mittel“. Notiere in Zeile 2 der Tabelle, was der Strahl macht und ob er herauskommt.", "Wiederhole das mit „sehr nah“ für Zeile 3. Vergleiche die drei Wege im Bild."]
   },
   "fw13": {
     klasse: 7, schulform: "Gesamtschule NRW · Förderheft",
@@ -4257,7 +4257,7 @@ const HEFT_SEITEN = {
     name: "Wie hat sich das Weltall seit dem Urknall verändert?",
     titel: "Woher kommt alles?",
     frage: "Wie hat sich das Weltall seit dem Urknall verändert?",
-    schritte: ["Drücke „zum Anfang“ und lies Zeitanzeige und Statuszeile.", "Drücke „▶ Urknall starten“ und beobachte die Galaxien in der Mitte und am Ende des Ablaufs.", "Vergleiche das Bild am Anfang mit dem Bild am Ende.", "Trage alle Zeilen in die Tabelle ein."]
+    schritte: ["Drücke „zum Anfang“ und lies Zeitanzeige und Statuszeile. Notiere in Zeile 1 der Tabelle, was die Statuszeile sagt.", "Drücke „▶ Urknall starten“ und beobachte die Galaxien in der Mitte des Ablaufs. Notiere in Zeile 2 der Tabelle, wie sie liegen und was die Statuszeile sagt.", "Beobachte die Galaxien am Ende des Ablaufs. Notiere beides in Zeile 3 der Tabelle.", "Vergleiche das Bild am Anfang mit dem Bild am Ende."]
   },
   "fs1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4662,7 +4662,7 @@ const HEFT_SEITEN = {
     name: "Welches Magnetfeld hat ein gerader Draht?",
     titel: "Zwölf Nadeln und ein Draht",
     frage: "Wie sieht das Magnetfeld um einen geraden Draht mit Strom aus?",
-    schritte: ["Drücke „neu“, dann „Feldlinien zeigen“. Ergänze Zeile 1.", "Drücke „Schalter an“. Trage Zeile 2 ein.", "Drücke „rechte Hand zeigen“. Halte deine rechte Hand genauso um einen Stift.", "Drücke „Strom umpolen“. Trage Zeile 3 ein."]
+    schritte: ["Drücke „neu“, dann „Feldlinien zeigen“. Notiere in Zeile 1 der Tabelle, wie die Feldlinien laufen.", "Drücke „Schalter an“. Notiere Nadeln und Feldlinien in Zeile 2 der Tabelle.", "Drücke „rechte Hand zeigen“. Halte deine rechte Hand genauso um einen Stift.", "Drücke „Strom umpolen“. Notiere Nadeln und Feldlinien in Zeile 3 der Tabelle."]
   },
   "fz15": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4671,7 +4671,7 @@ const HEFT_SEITEN = {
     name: "Wie sieht das Magnetfeld einer Spule aus?",
     titel: "Ein Magnet aus Draht",
     frage: "Wie sieht das Magnetfeld einer Spule mit Strom aus?",
-    schritte: ["Drücke „neu“, „Schalter an“ und „Feldlinien zeigen“. Lies die Statuszeilen ab. Ergänze Zeile 1.", "Drücke „1200 Windungen“. Trage Zeile 2 ein.", "Drücke „mit Eisenkern“. Trage Zeile 3 ein.", "Drücke „Strom umpolen“. Beobachte die Kompassnadeln. Trage Zeile 4 ein."]
+    schritte: ["Drücke „neu“, „Schalter an“ und „Feldlinien zeigen“. Lies die Statuszeilen ab. Notiere in Zeile 1 der Tabelle, wo der Nordpol ist.", "Drücke „1200 Windungen“. Notiere Nägel und Nordpol in Zeile 2 der Tabelle.", "Drücke „mit Eisenkern“. Notiere Nägel und Nordpol in Zeile 3 der Tabelle.", "Drücke „Strom umpolen“. Beobachte die Kompassnadeln. Notiere Nägel und Nordpol in Zeile 4 der Tabelle."]
   },
   "fz3": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4680,7 +4680,7 @@ const HEFT_SEITEN = {
     name: "Dauermagnet oder Elektromagnet?",
     titel: "Magnet mit und ohne Strom",
     frage: "Worin unterscheidet sich ein Elektromagnet von einem Dauermagneten?",
-    schritte: ["Drücke „neu“, dann „Schalter an“. Lies beide Statuszeilen ab. Ergänze Zeile 1.", "Drücke „3 A“. Trage Zeile 2 ein.", "Drücke „Schalter aus“. Beobachte die Nägel am Elektromagneten. Trage Zeile 3 ein.", "Drücke „Schalter an“, dann „Strom umpolen“. Der Strom fließt jetzt andersherum. Lies ab: Wo liegen die Nordpole?"]
+    schritte: ["Drücke „neu“, dann „Schalter an“. Lies beide Statuszeilen ab. Notiere in Zeile 1 der Tabelle, wie viele Nägel der Elektromagnet hält.", "Drücke „3 A“. Notiere für beide Magnete die Nägel in Zeile 2 der Tabelle.", "Drücke „Schalter aus“. Beobachte die Nägel am Elektromagneten. Notiere für beide Magnete die Nägel in Zeile 3 der Tabelle.", "Drücke „Schalter an“, dann „Strom umpolen“. Der Strom fließt jetzt andersherum. Lies ab: Wo liegen die Nordpole?"]
   },
   "fz1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4689,7 +4689,7 @@ const HEFT_SEITEN = {
     name: "Warum bewegt sich ein Draht im Magnetfeld?",
     titel: "Der Motor im Elektroauto",
     frage: "Was passiert mit dem Stab im Magnetfeld, wenn Strom fließt?",
-    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Trage ein.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum. Trage ein.", "Drücke „zurücksetzen“, dann „Magnet umdrehen“. Trage ein."]
+    schritte: ["Drücke „zurücksetzen“. Lies die Kraft F am Pfeil und den ersten Satz der Statuszeile. Notiere in Zeile 1 der Tabelle, wohin der Stab gedrückt wird.", "Stelle „Stromstärke I“ auf 0,0 A. Lies nur den ersten Satz. Notiere F und deine Beobachtung in Zeile 2 der Tabelle.", "Stelle wieder 5,0 A ein. Drücke „Strom umpolen“: Der Strom fließt andersherum. Notiere F und die Richtung in Zeile 3 der Tabelle.", "Drücke „zurücksetzen“, dann „Magnet umdrehen“. Notiere F und die Richtung in Zeile 4 der Tabelle."]
   },
   "fz2": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4698,7 +4698,7 @@ const HEFT_SEITEN = {
     name: "In welche Richtung wirkt die Kraft?",
     titel: "Drei Finger zeigen die Richtung",
     frage: "Wohin schwingt die Schaukel, wenn du den Strom umpolst und den Magneten umdrehst?",
-    schritte: ["Drücke „neu“, dann „▶ Strom an“. Fülle die Lücke in Zeile 1.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Trage Zeile 2 ein.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Trage Zeile 3 ein.", "Drücke „Hand zeigen“. Welcher Finger zeigt in dieselbe Richtung wie der Pfeil F?"]
+    schritte: ["Drücke „neu“, dann „▶ Strom an“. Notiere in Zeile 1 der Tabelle, wohin die Schaukel schwingt.", "Drücke „Strom umpolen“, dann „▶ Strom an“. Notiere die Richtung von Magnetfeld und Schaukel in Zeile 2 der Tabelle.", "Drücke „Magnet umdrehen“, dann „▶ Strom an“. Notiere die Richtung von Magnetfeld und Schaukel in Zeile 3 der Tabelle.", "Drücke „Hand zeigen“. Welcher Finger zeigt in dieselbe Richtung wie der Pfeil F?"]
   },
   "fz4": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4707,7 +4707,7 @@ const HEFT_SEITEN = {
     name: "Wie dreht sich ein Elektromotor?",
     titel: "Die Nadel im Takt",
     frage: "Was braucht die Nadel, damit sie sich immer weiter dreht?",
-    schritte: ["Drücke „Strom an“. Beobachte Nadel und Zähler. Trage Zeile 1 ein.", "Drücke „neu“. Drücke „Strom an“ und „Strom aus“ im Takt, kurz bevor eine Spitze zur Spule zeigt. Trage Zeile 2 ein.", "Drücke „neu“ und „Kommutator ein“. Drücke „▶ 10 Sekunden laufen lassen“. Trage Zeile 3 ein."]
+    schritte: ["Drücke „Strom an“. Beobachte Nadel und Zähler. Notiere in Zeile 1 der Tabelle, was der Zähler zeigt.", "Drücke „neu“. Drücke „Strom an“ und „Strom aus“ im Takt, kurz bevor eine Spitze zur Spule zeigt. Notiere Nadel und Zählerstand in Zeile 2 der Tabelle.", "Drücke „neu“ und „Kommutator ein“. Drücke „▶ 10 Sekunden laufen lassen“. Notiere Nadel und Zählerstand in Zeile 3 der Tabelle."]
   },
   "fz5": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4716,7 +4716,7 @@ const HEFT_SEITEN = {
     name: "Wie entsteht Spannung ohne Batterie?",
     titel: "Ein Magnet in der Spule",
     frage: "Wann entsteht in der Spule eine Spannung?",
-    schritte: ["Beobachte eine Runde: Der Magnet fährt hinein, bleibt liegen, fährt heraus, bleibt liegen.", "Trage in jede Zeile ein: Was macht der Magnet? Bewegt er sich?", "Lies jedes Mal das Messgerät ab. Trage den Wert ein, auch ein Minus.", "Lies am Bildschirm: „Woher kommt die Energie?“"]
+    schritte: ["Beobachte eine Runde: Der Magnet fährt hinein, bleibt liegen, fährt heraus, bleibt liegen. Lies beim Hineinfahren das Messgerät ab. Notiere den Wert in Zeile 1 der Tabelle.", "Lies ab, während der Magnet mitten in der Spule liegt. Notiere in Zeile 2 der Tabelle: Bewegt er sich? Was zeigt das Messgerät?", "Lies ab, während er herausfährt. Notiere beides in Zeile 3 der Tabelle, auch ein Minus.", "Lies ab, während er außerhalb liegt. Notiere beides in Zeile 4 der Tabelle. Lies dann am Bildschirm: „Woher kommt die Energie?“"]
   },
   "fz6": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4725,7 +4725,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Induktionsspannung ab?",
     titel: "Mehr Spannung aus der Spule",
     frage: "Wovon hängt die Induktionsspannung ab?",
-    schritte: ["Drücke „▶ Magnet herausziehen“. Lies „Größter Ausschlag“ ab: Das ist die Induktionsspannung.", "Drücke „neu“ und wähle nur „schnell“. Miss wie in Schritt a.", "Drücke „neu“ und wähle nur „1200 Windungen“. Miss wie in Schritt a.", "Drücke „neu“ und wähle nur „mit Eisenkern“. Miss wie in Schritt a."]
+    schritte: ["Drücke „▶ Magnet herausziehen“. Lies „Größter Ausschlag“ ab: Das ist die Induktionsspannung. Notiere sie in Zeile 1 der Tabelle.", "Drücke „neu“ und wähle nur „schnell“. Miss wie in Schritt a. Notiere, was anders ist, und die Spannung in Zeile 2 der Tabelle.", "Drücke „neu“ und wähle nur „1200 Windungen“. Miss wie in Schritt a. Notiere, was anders ist, und die Spannung in Zeile 3 der Tabelle.", "Drücke „neu“ und wähle nur „mit Eisenkern“. Miss wie in Schritt a. Notiere, was anders ist, und die Spannung in Zeile 4 der Tabelle."]
   },
   "fz7": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4734,7 +4734,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt der Magnet im Kupferrohr so langsam?",
     titel: "Langsam durchs Kupferrohr",
     frage: "Was bremst den Magneten im Kupferrohr?",
-    schritte: ["Wähle „Kunststoff“ und „Magnet“. Drücke „▶ fallen lassen“. Trage Zeile 1 ein.", "Wähle „Kupfer“. Drücke „▶ fallen lassen“. Die roten Ringe sind Ströme im Kupfer. Sie heißen Wirbelströme. Trage Zeile 2 ein.", "Wähle „Eisenstück“ und drücke „▶ fallen lassen“. Trage Zeile 3 ein.", "Wähle „Kupfer mit Schlitz“ und „Magnet“. Drücke „▶ fallen lassen“. Trage Zeile 4 ein."]
+    schritte: ["Wähle „Kunststoff“ und „Magnet“. Drücke „▶ fallen lassen“. Notiere die Fallzeit in Zeile 1 der Tabelle.", "Wähle „Kupfer“. Drücke „▶ fallen lassen“. Die roten Ringe sind Ströme im Kupfer. Sie heißen Wirbelströme. Notiere die Fallzeit in Zeile 2 der Tabelle.", "Wähle „Eisenstück“ und drücke „▶ fallen lassen“. Notiere die Fallzeit in Zeile 3 der Tabelle.", "Wähle „Kupfer mit Schlitz“ und „Magnet“. Drücke „▶ fallen lassen“. Notiere die Fallzeit in Zeile 4 der Tabelle."]
   },
   "fz8": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4743,7 +4743,7 @@ const HEFT_SEITEN = {
     name: "Wie erzeugt ein Generator Wechselspannung?",
     titel: "Mal links, mal rechts",
     frage: "Was zeigt das Messgerät, wenn sich der Magnet dreht?",
-    schritte: ["Drücke „▶ drehen“. Beobachte den Zeiger. Lies „Höchste Spannung“ ab.", "Wähle „2 Umdrehungen pro Sekunde“, dann „4 Umdrehungen pro Sekunde“. Miss wie in Schritt a.", "Drücke „Batterie zum Vergleich“. Beobachte den Zeiger. Lies die Spannung ab.", "Vergleiche Zeile 1 und Zeile 4."]
+    schritte: ["Drücke „▶ drehen“. Beobachte den Zeiger. Lies „Höchste Spannung“ ab. Notiere sie in Zeile 1 der Tabelle.", "Wähle „2 Umdrehungen pro Sekunde“. Miss wie in Schritt a. Notiere den Ausschlag und die Spannung in Zeile 2. Wiederhole das mit „4 Umdrehungen pro Sekunde“ für Zeile 3.", "Drücke „Batterie zum Vergleich“. Beobachte den Zeiger. Lies die Spannung ab. Notiere beides in Zeile 4 der Tabelle.", "Vergleiche Zeile 1 und Zeile 4."]
   },
   "fz9": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4752,7 +4752,7 @@ const HEFT_SEITEN = {
     name: "Wie ändert ein Transformator die Spannung?",
     titel: "Zwei Spulen, ein Eisenkern",
     frage: "Wovon hängt die Spannung U₂ an Spule 2 ab?",
-    schritte: ["Lies am Start die Statuszeile ab. Trage U₂ ein.", "Wähle bei N₂ „1000“. Trage die Zeile ein.", "Wähle bei N₂ „250“. Trage die Zeile ein.", "Drücke „neu“ und dann „Gleichspannung“. Trage die Zeile ein."]
+    schritte: ["Lies am Start die Statuszeile ab. Notiere U₂ in Zeile 1 der Tabelle.", "Wähle bei N₂ „1000“. Notiere N₁, N₂ und U₂ in Zeile 2 der Tabelle.", "Wähle bei N₂ „250“. Notiere N₁, N₂ und U₂ in Zeile 3 der Tabelle.", "Drücke „neu“ und dann „Gleichspannung“. Notiere N₁, N₂ und U₂ in Zeile 4 der Tabelle."]
   },
   "fz10": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4761,7 +4761,7 @@ const HEFT_SEITEN = {
     name: "Warum transportiert man Energie mit Hochspannung?",
     titel: "Hohe Spannung für lange Leitungen",
     frage: "Warum transportiert man Energie mit Hochspannung?",
-    schritte: ["Wähle „mit Transformatoren“. Drücke „▶ einschalten“.", "Lies die Statuszeilen ab. Fülle die Lücke in Zeile 1 und die Zeilen darunter.", "Wähle „ohne Transformatoren“. Drücke wieder „▶ einschalten“. Fülle die Spalte „ohne Transformatoren“.", "Beobachte die Energiepakete: Wo kommen sie größer bei der Lampe an?"]
+    schritte: ["Wähle „mit Transformatoren“. Drücke „▶ einschalten“.", "Lies die Statuszeilen ab. Notiere die vier Angaben in Zeile 1 bis 4 der Tabelle, Spalte „mit Transformatoren“.", "Wähle „ohne Transformatoren“. Drücke wieder „▶ einschalten“. Notiere die Angaben in Zeile 2 bis 4 der Tabelle, Spalte „ohne Transformatoren“.", "Beobachte die Energiepakete: Wo kommen sie größer bei der Lampe an?"]
   },
   "fz11": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4770,7 +4770,7 @@ const HEFT_SEITEN = {
     name: "Welches Kraftwerk ist das beste?",
     titel: "Vier Kraftwerke im Vergleich",
     frage: "Welches Kraftwerk hat den größten Wirkungsgrad?",
-    schritte: ["Wähle „Kohlekraftwerk“. Drücke „▶ 100 kWh Strom erzeugen“.", "Lies in der Statuszeile CO₂ und Wirkungsgrad ab. Trage sie ein.", "Wiederhole a und b für „Wasserkraftwerk“ und „Windkraftanlage“.", "Lies bei „Windkraftanlage“ die zweite Statuszeile. Wann liefert sie Strom?"]
+    schritte: ["Wähle „Kohlekraftwerk“. Drücke „▶ 100 kWh Strom erzeugen“.", "Lies in der Statuszeile den Wirkungsgrad ab. Notiere ihn in Zeile 1 der Tabelle.", "Wähle „Wasserkraftwerk“ und drücke wieder „▶ 100 kWh Strom erzeugen“. Notiere CO₂ und Wirkungsgrad in Zeile 2 der Tabelle. Wiederhole das mit „Windkraftanlage“ für Zeile 3.", "Lies bei „Windkraftanlage“ die zweite Statuszeile. Wann liefert sie Strom?"]
   },
   "fz12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4779,7 +4779,7 @@ const HEFT_SEITEN = {
     name: "Erneuerbar oder nicht erneuerbar?",
     titel: "Was nach 100 Jahren bleibt",
     frage: "Welche Energieträger sind erneuerbar?",
-    schritte: ["Wähle die Karte „Kohle“. Drücke „▶ 100 Jahre vorspulen“.", "Beobachte den Vorratsbalken. Lies die Statuszeile. Trage ein, was du siehst.", "Wiederhole a und b mit „Uran“, „Wind“ und „Holz“.", "Vergleiche die Spalten „erneuerbar“ und „nicht erneuerbar“ mit deiner Tabelle. Passen sie zum Vorrat oder zum CO₂?"]
+    schritte: ["Wähle die Karte „Kohle“. Drücke „▶ 100 Jahre vorspulen“.", "Beobachte den Vorratsbalken. Lies die Statuszeile. Notiere in Zeile 1 der Tabelle, ob CO₂ entsteht.", "Wähle „Uran“ und drücke wieder „▶ 100 Jahre vorspulen“. Notiere Vorrat und CO₂ in Zeile 2 der Tabelle. Wiederhole das mit „Wind“ für Zeile 3 und mit „Holz“ für Zeile 4.", "Vergleiche die Spalten „erneuerbar“ und „nicht erneuerbar“ mit deiner Tabelle. Passen sie zum Vorrat oder zum CO₂?"]
   },
   "fz13": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4788,7 +4788,7 @@ const HEFT_SEITEN = {
     name: "Was macht CO₂ mit unserem Klima?",
     titel: "Wärme, die zurückkommt",
     frage: "Wie warm wird die Erde mit mehr oder weniger Treibhausgasen?",
-    schritte: ["Drücke „keine“. Drücke dann „▶ 50 Jahre warten“.", "Beobachte: Kehren rote Pfeile zur Erde um?", "Lies die mittlere Temperatur ab.", "Wiederhole Schritt a bis c mit „wie 1850“, „wie heute“ und „doppelt so viel wie 1850“."]
+    schritte: ["Drücke „keine“, dann „▶ 50 Jahre warten“. Lies die mittlere Temperatur ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „wie 1850“, dann „▶ 50 Jahre warten“. Beobachte: Kehren rote Pfeile zur Erde um? Notiere das und die Temperatur in Zeile 2 der Tabelle.", "Drücke „wie heute“, dann „▶ 50 Jahre warten“. Notiere Pfeile und Temperatur in Zeile 3 der Tabelle.", "Drücke „doppelt so viel wie 1850“, dann „▶ 50 Jahre warten“. Notiere Pfeile und Temperatur in Zeile 4 der Tabelle."]
   },
   "fz14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4797,7 +4797,7 @@ const HEFT_SEITEN = {
     name: "Was kostet ein Gerät im Jahr?",
     titel: "Die hohe Stromrechnung",
     frage: "Wovon hängen die Kosten im Jahr ab?",
-    schritte: ["Lies ab, was der Fernseher im Jahr kostet. Trage es in Zeile 1 ein.", "Drücke „LED 10 W“. Trage die Zeile ein wie Zeile 1.", "Drücke „Wasserkocher 2000 W“. Trage die Zeile ein.", "Drücke „1 h“. Trage die Zeile ein."]
+    schritte: ["Lies ab, was der Fernseher im Jahr kostet. Notiere die Kosten in Zeile 1 der Tabelle im Heft.", "Drücke „LED 10 W“. Notiere die kWh am Tag und die Kosten im Jahr in Zeile 2 der Tabelle im Heft.", "Drücke „Wasserkocher 2000 W“. Notiere kWh und Kosten in Zeile 3 der Tabelle im Heft.", "Drücke „1 h“. Notiere kWh und Kosten in Zeile 4 der Tabelle im Heft."]
   },
   "fn1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4806,7 +4806,7 @@ const HEFT_SEITEN = {
     name: "Woraus besteht ein Atomkern?",
     titel: "Der Kühlschrank mit den Zahlen",
     frage: "Welche Teilchen im Kern bestimmen den Namen?",
-    schritte: ["Drücke Wasserstoff-1. Trage die erste Zeile ein.", "Drücke Kohlenstoff-12. Trage die zweite Zeile ein.", "Drücke Kohlenstoff-14. Trage die dritte Zeile ein.", "Stelle den Regler Protonen im Kern auf 8. Lies oben den Namen ab. Trage die vierte Zeile ein."]
+    schritte: ["Drücke Wasserstoff-1. Lies oben den Namen ab. Notiere ihn in Zeile 1 der Tabelle.", "Drücke Kohlenstoff-12. Notiere Protonen, Neutronen und Namen in Zeile 2 der Tabelle.", "Drücke Kohlenstoff-14. Notiere Protonen, Neutronen und Namen in Zeile 3 der Tabelle.", "Stelle den Regler Protonen im Kern auf 8. Lies oben den Namen ab. Notiere Protonen, Neutronen und Namen in Zeile 4 der Tabelle."]
   },
   "fn2": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4815,7 +4815,7 @@ const HEFT_SEITEN = {
     name: "Was ist radioaktive Strahlung?",
     titel: "Das Knacken an der Wand",
     frage: "Warum knackt das Zählrohr bei manchen Spannungen nicht?",
-    schritte: ["Drücke oben den Knopf „2 · Die Kennlinie“.", "Stelle den Regler „Zählrohrspannung U“ nacheinander auf 0 V, 450 V und 650 V.", "Lies die Zahl hinter „Bereich“ ab. Trage sie ein.", "Lies den Text unter der Zahl. Trage ein: „zählt“ heißt zählt, „zerstört“ heißt geht kaputt."]
+    schritte: ["Drücke oben den Knopf „2 · Die Kennlinie“. Stelle den Regler „Zählrohrspannung U“ auf 0 V.", "Lies den Text unter der Zahl hinter „Bereich“: „zählt“ heißt zählt, „zerstört“ heißt geht kaputt. Fehlt beides, zählt es nicht. Notiere in Zeile 1 der Tabelle im Heft, was das Zählrohr macht.", "Stelle 450 V ein. Notiere in Zeile 2 der Tabelle im Heft die Zahl hinter „Bereich“ und was das Zählrohr macht.", "Stelle 650 V ein. Notiere beides in Zeile 3 der Tabelle im Heft."]
   },
   "fn3": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4824,7 +4824,7 @@ const HEFT_SEITEN = {
     name: "Welche Strahlung kommt wie weit?",
     titel: "Die Schürze aus Blei",
     frage: "Welches Material hält welche Strahlung auf?",
-    schritte: ["Drücke oben den Knopf „1 · Drei Strahlungsarten“. Die Materialknöpfe stehen in der Zeile „Absorber“.", "Drücke „γ-Strahlung“ und „Blei“. Lies oben rechts im Bild ab. Trage die erste Zeile ein.", "Drücke „α-Strahlung“ und „Papier“. Lies oben rechts im Bild ab, wie viel durchkommt. Trage die Zeile ein.", "Drücke zuerst „Aluminium“, dann „β-Strahlung“. Lies ab. Trage die letzte Zeile ein."]
+    schritte: ["Drücke oben den Knopf „1 · Drei Strahlungsarten“. Die Materialknöpfe stehen in der Zeile „Absorber“.", "Drücke „γ-Strahlung“ und „Blei“. Lies oben rechts im Bild ab. Notiere in Zeile 1 der Tabelle im Heft, was das heißt.", "Drücke „α-Strahlung“ und „Papier“. Lies oben rechts im Bild ab, wie viel durchkommt. Notiere in Zeile 2 der Tabelle im Heft den Wert und was das heißt.", "Drücke zuerst „Aluminium“, dann „β-Strahlung“. Lies ab. Notiere beides in Zeile 3 der Tabelle im Heft."]
   },
   "fn4": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4833,7 +4833,7 @@ const HEFT_SEITEN = {
     name: "Warum ist die Strahlung gefährlich?",
     titel: "Das Fläschchen, das zubleibt",
     frage: "Warum ist Alphastrahlung im Körper am gefährlichsten?",
-    schritte: ["Drücke α Alpha. Lies beide Werte ab und trage die erste Zeile ein.", "Drücke β Beta und trage beide Werte in die Tabelle ein.", "Drücke γ Gamma. Trage zwei Wortangaben ein, keine Zahlen. Eine steht im letzten Satz.", "Drücke wieder α Alpha. Lies den letzten Abschnitt: Er erklärt die Gefahr im Körper."]
+    schritte: ["Drücke α Alpha. Lies ab, wie weit die Strahlung in Luft kommt. Notiere es in Zeile 1 der Tabelle.", "Drücke β Beta. Notiere beide Werte in Zeile 2 der Tabelle.", "Drücke γ Gamma. Notiere zwei Wortangaben in Zeile 3 der Tabelle, keine Zahlen. Eine steht im letzten Satz.", "Drücke wieder α Alpha. Lies den letzten Abschnitt: Er erklärt die Gefahr im Körper."]
   },
   "fn5": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4842,7 +4842,7 @@ const HEFT_SEITEN = {
     name: "Wie weist man Strahlung nach?",
     titel: "Das Knacken im Messraum",
     frage: "Wie hoch sind die Impulse bei etwa 200 V und bei etwa 450 V?",
-    schritte: ["Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.", "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Ergänze die mittlere Spalte.", "Drücke „Auslösebereich“. Lies dieselbe Spalte unter „Auslösebereich (~450 V)“. Ergänze die rechte Spalte.", "Drücke „4 · Totzeit & wahre Zählrate“."]
+    schritte: ["Drücke „3 · Proportional- oder Auslösebereich“, dann „Proportionalbereich“.", "Lies unter „Proportionalbereich (~200 V)“ die Spalte „Impulshöhe“. Notiere die Impulshöhe für β und γ in Zeile 2 und 3 der Tabelle im Heft, mittlere Spalte.", "Drücke „Auslösebereich“. Lies dieselbe Spalte unter „Auslösebereich (~450 V)“. Notiere die Impulshöhe für α, β und γ in Zeile 1 bis 3 der Tabelle im Heft, rechte Spalte.", "Drücke „4 · Totzeit & wahre Zählrate“."]
   },
   "fn6": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4851,7 +4851,7 @@ const HEFT_SEITEN = {
     name: "Wann ist die Hälfte zerfallen?",
     titel: "Das Fläschchen wird schwächer",
     frage: "Am Bildschirm liegen 200 Kerne. Sind nach einer Halbwertszeit immer genau 100 übrig?",
-    schritte: ["Drücke „Radon-220“. Lies in Zeile 1 der Statuszeile die Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“. Lies in Zeile 2 die übrigen Kerne ab.", "Vergleiche deine Zahl mit Zeile 3.", "Wähle Iod-131 und danach Cäsium-137. Trage alle drei Nuklide mit ihren Werten ein."]
+    schritte: ["Drücke „Radon-220“. Lies im zweiten Teil der Statuszeile die übrigen Kerne ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die übrigen Kerne ab.", "Vergleiche deine Zahl mit dem dritten Teil.", "Wähle Iod-131. Notiere T½ aus dem ersten Teil und die übrigen Kerne in Zeile 2 der Tabelle. Wiederhole das mit Cäsium-137 für Zeile 3."]
   },
   "fn7": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4860,7 +4860,7 @@ const HEFT_SEITEN = {
     name: "Wie alt ist der Fund?",
     titel: "Ein Holzstück aus dem Moor",
     frage: "Von 200 Kernen sind noch 50 übrig. Wie viele Halbwertszeiten sind vergangen?",
-    schritte: ["Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab.", "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab.", "Lies im dritten Teil die Zahl hinter „Erwartet hätte man“ ab.", "Drücke „eine Halbwertszeit weiter“ noch zweimal. Lies Teil 2 und 3 ab. Trage für 0, 1, 2, 3 Halbwertszeiten alle Zahlen ohne Punkt ein."]
+    schritte: ["Drücke „Kohlenstoff-14“. Lies im ersten Teil der Statuszeile die Halbwertszeit ab. Notiere in Zeile 1 der Tabelle die Zahl hinter „Erwartet hätte man“.", "Drücke „eine Halbwertszeit weiter“. Lies im zweiten Teil die Jahre ab, im dritten die Zahl hinter „Erwartet hätte man“. Notiere beide ohne Punkt in Zeile 2 der Tabelle.", "Drücke wieder „eine Halbwertszeit weiter“. Notiere Jahre und erwartete Kerne in Zeile 3 der Tabelle.", "Drücke wieder „eine Halbwertszeit weiter“. Notiere Jahre und erwartete Kerne in Zeile 4 der Tabelle."]
   },
   "fn8": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4869,7 +4869,7 @@ const HEFT_SEITEN = {
     name: "Was passiert bei einer Kernspaltung?",
     titel: "Der Güterzug und der Würfel",
     frage: "Woher kommt die Energie bei einer Kernspaltung?",
-    schritte: ["Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.", "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.", "Lies in der Statuszeile die Energie ab. Sie steht vor „je Spaltung“. Trage „Barium + Krypton“ und beide Werte ein.", "Wähle „Xenon + Strontium“. Trage beide Werte ein. Wiederhole das mit „Cäsium + Rubidium“."]
+    schritte: ["Drücke „Spaltung noch einmal“. Beobachte das langsame Neutron.", "Lies in der Statuszeile die fehlende Masse ab. Sie steht vor „weniger als vorher“.", "Lies in der Statuszeile die Energie E ab. Sie steht vor „je Spaltung“. Notiere sie in Zeile 1 der Tabelle.", "Wähle „Xenon + Strontium“. Notiere die fehlende Masse m und die Energie E in Zeile 2 der Tabelle. Wiederhole das mit „Cäsium + Rubidium“ für Zeile 3."]
   },
   "fn9": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4878,7 +4878,7 @@ const HEFT_SEITEN = {
     name: "Wie hält man eine Kettenreaktion in Schach?",
     titel: "Der Beitrag im Aufenthaltsraum",
     frage: "Wie ändert sich k, wenn die Steuerstäbe weiter drin sind?",
-    schritte: ["Schiebe den Regler auf 0 %. Lies k und die Zahl darunter.", "Stelle 50 % ein. Lies den Satz zum Kernkraftwerk.", "Stelle 75 % und 100 % ein. Trage alles ein."]
+    schritte: ["Schiebe den Regler auf 0 %. Lies k und die Zahl darunter. Notiere die Zahl der Spaltungen in Zeile 1 der Tabelle.", "Stelle 50 % ein. Lies den Satz zum Kernkraftwerk. Notiere k und die Zahl der Spaltungen in Zeile 2 der Tabelle.", "Stelle 75 % ein. Notiere k und die Zahl der Spaltungen in Zeile 3 der Tabelle.", "Stelle 100 % ein. Notiere k und die Zahl der Spaltungen in Zeile 4 der Tabelle."]
   },
   "fn10": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4887,7 +4887,7 @@ const HEFT_SEITEN = {
     name: "Wie ist ein Kernkraftwerk aufgebaut?",
     titel: "Der Pfeil auf Nours Folie",
     frage: "Wo im Kernkraftwerk entsteht der Strom?",
-    schritte: ["Lies den Text „Vom Reaktor zur Steckdose“ unter der Anzeige „Wie geht es weiter?“.", "Prüfe im Text: Wo steht Strom?", "Trage der Reihe nach ein: Brennstab, Wasser, Turbine, Generator."]
+    schritte: ["Lies den Text „Vom Reaktor zur Steckdose“ unter der Anzeige „Wie geht es weiter?“.", "Prüfe im Text: Wo steht Strom? Notiere in Zeile 1 der Tabelle, ob beim Brennstab schon Strom ist.", "Notiere für Wasser, Turbine und Generator in Zeile 2 bis 4 der Tabelle: Was passiert dort? Ist dort schon Strom?"]
   },
   "fn12": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4896,7 +4896,7 @@ const HEFT_SEITEN = {
     name: "Wie schützt man sich vor Strahlung?",
     titel: "Nours Schritt zurück",
     frage: "Was hilft mehr: ein Schritt zurück oder Blei?",
-    schritte: ["Stelle den Abstand auf 50 cm und lies beide Zahlen ab.", "Stelle 100 cm ein, dann 200 cm. Trage die Zahlen ein.", "Stelle wieder 50 cm ein und schiebe „Blei dazwischen“ auf 7 mm.", "Trage die Zahlen ein. „Aufenthaltsdauer“ bleibt auf 20 Minuten."]
+    schritte: ["Stelle den Abstand auf 50 cm. Lies die Dosis H ab. Notiere sie in Zeile 1 der Tabelle.", "Stelle 100 cm ein. Notiere H′ und H in Zeile 2 der Tabelle. Wiederhole das mit 200 cm für Zeile 3.", "Stelle wieder 50 cm ein und schiebe „Blei dazwischen“ auf 7 mm.", "Notiere H′ und H in Zeile 4 der Tabelle. „Aufenthaltsdauer“ bleibt auf 20 Minuten."]
   },
   "fn14": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -4905,7 +4905,7 @@ const HEFT_SEITEN = {
     name: "Woher nimmt die Sonne ihre Energie?",
     titel: "Die Heizung ohne Holz",
     frage: "Ab welcher Temperatur verschmelzen Wasserstoffkerne zu einem Heliumkern?",
-    schritte: ["Schiebe den Regler nach links auf 4 Millionen °C.", "Lies die Statuszeile rechts neben dem Bild ab.", "Stelle nacheinander 8, 10 und 16 Millionen °C ein.", "Trage alles in die Tabelle ein."]
+    schritte: ["Schiebe den Regler nach links auf 4 Millionen °C.", "Lies die Statuszeile rechts neben dem Bild ab. Notiere in Zeile 1 der Tabelle, wie schnell die Kerne sind.", "Stelle 8 Millionen °C ein. Notiere die Meldung und das Tempo der Kerne in Zeile 2 der Tabelle.", "Wiederhole das mit 10 Millionen °C für Zeile 3 und mit 16 Millionen °C für Zeile 4."]
   },
   "fv1": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",
@@ -5960,6 +5960,168 @@ const HEFT_SEITEN = {
     frage: "Kommen Nikotin und Alkohol durch die Plazenta zum Kind?",
     schritte: ["Stelle „Die Mutter …“ auf „trinkt Wasser“. Drücke „▶ 1 Stunde abspielen“.", "Beobachte, welche Punkte beim Kind ankommen. Lies den Sauerstoff beim Kind ab.", "Wiederhole das mit „raucht“ und mit „trinkt Alkohol“.", "Vergleiche bei „trinkt Alkohol“ die Zähler bei Mutter und Kind."]
   },
+  "br1": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-nervensystem", seite: 6,
+    kapitel: "Nerven und Gehirn",
+    name: "Was gehört zum Nervensystem?",
+    titel: "Ein Netz durch den ganzen Körper",
+    frage: "Welchen Weg nimmt das Signal vom Fuß, bis Lina „Au!“ ruft?",
+    schritte: ["Stelle „Reiz an“ auf „Fuß“. Drücke „▶ Reiz auslösen“. Notiere den Weg des Signals in Zeile 1 der Tabelle.", "Stelle „Hand“ ein. Drücke „▶ Reiz auslösen“. Notiere „ja“ oder „nein“ und den Weg in Zeile 2 der Tabelle.", "Stelle „Fuß, betäubt“ ein. Drücke „▶ Reiz auslösen“. Notiere „ja“ oder „nein“ und den Weg in Zeile 3 der Tabelle.", "Vergleiche Zeile 1 und Zeile 3. Wann ruft Lina „Au!“?"]
+  },
+  "br2": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-reizweg", seite: 9,
+    kapitel: "Nerven und Gehirn",
+    name: "Wie kommt ein Reiz ins Gehirn?",
+    titel: "Kino im Kopf",
+    frage: "Kommt jede Erregung an derselben Stelle im Gehirn an?",
+    schritte: ["Stelle „Reiz“ auf „Licht“. Drücke „▶ Reiz senden“. Notiere in Zeile 1 der Tabelle, wo das Gehirn leuchtet.", "Stelle „Ton“ ein. Drücke „▶ Reiz senden“. Notiere Sinnesorgan und Stelle im Gehirn in Zeile 2 der Tabelle.", "Stelle „Berührung“ ein. Drücke „▶ Reiz senden“. Notiere Sinnesorgan und Stelle im Gehirn in Zeile 3 der Tabelle.", "Vergleiche die Zeilen. Liegt die Stelle im Gehirn immer nah am Sinnesorgan?"]
+  },
+  "br3": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-nervenzelle", seite: 12,
+    kapitel: "Nerven und Gehirn",
+    name: "Wie ist eine Nervenzelle gebaut?",
+    titel: "Eine Zelle, einen Meter lang",
+    frage: "Wie viele Nervenzellen braucht der Befehl vom Rückenmark bis zum Fuß?",
+    schritte: ["Stelle „Maßband an“ auf „Zellkörper“. Notiere die Länge in Zeile 1 der Tabelle.", "Stelle „Dendriten“ ein. Zähle die Dendriten. Notiere Anzahl und Länge in Zeile 2 der Tabelle.", "Stelle „Nervenfaser“ ein. Notiere Anzahl und Länge in Zeile 3 der Tabelle.", "Drücke „▶ Erregung senden“. Beobachte, wo die Erregung hineinläuft und wo sie hinausläuft."]
+  },
+  "br4": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-synapse", seite: 15,
+    kapitel: "Nerven und Gehirn",
+    name: "Wie kommt die Erregung zur nächsten Zelle?",
+    titel: "Die Lücke zwischen zwei Zellen",
+    frage: "Wie kommt die Erregung über den Spalt zur nächsten Zelle?",
+    schritte: ["Stelle „Versuch“ auf „normal“. Drücke „▶ Erregung senden“. Notiere in Zeile 1 der Tabelle, ob die Erregung über den Spalt kommt.", "Stelle „Bläschen leer“ ein. Drücke „▶ Erregung senden“. Notiere für beide Fragen „ja“ oder „nein“ in Zeile 2 der Tabelle.", "Stelle „Erregung von rechts“ ein. Drücke „▶ Erregung senden“. Notiere für beide Fragen „ja“ oder „nein“ in Zeile 3 der Tabelle.", "Vergleiche Zeile 1 und Zeile 2. Was braucht die Erregung am Spalt?"]
+  },
+  "br5": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-reaktionszeit", seite: 18,
+    kapitel: "Nerven und Gehirn",
+    name: "Wie schnell reagierst du?",
+    titel: "Schneller als gedacht",
+    frage: "Woher bekommt der Armmuskel den Befehl, wenn die Hand zurückzuckt?",
+    schritte: ["Stelle „Reiz“ auf „Lampe“. Drücke „▶ Start“. Notiere die Reaktionszeit in Zeile 1 der Tabelle.", "Stelle „heißer Topf“ ein. Drücke „▶ Start“. Notiere in Zeile 2 der Tabelle, woher der Befehl kommt. Notiere auch die Reaktionszeit.", "Stelle „Hammer am Knie“ ein. Drücke „▶ Start“. Notiere in Zeile 3 der Tabelle, woher der Befehl kommt. Notiere auch die Reaktionszeit.", "Vergleiche die Zeiten. Welcher Weg ist schneller?"]
+  },
+  "br6": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-lernen", seite: 21,
+    kapitel: "Nerven und Gehirn",
+    name: "Wie lernt das Gehirn?",
+    titel: "Üben verändert das Gehirn",
+    frage: "Was verändert sich im Gehirn, wenn Deniz jeden Tag übt?",
+    schritte: ["Drücke „neu“. Zähle die Verbindungen. Notiere die Zahl in Zeile 1 der Tabelle.", "Drücke „▶ 1 Woche üben“. Notiere Bälle und Verbindungen in Zeile 2 der Tabelle.", "Drücke noch einmal „▶ 1 Woche üben“. Notiere Bälle und Verbindungen in Zeile 3 der Tabelle.", "Drücke „▶ 1 Woche Pause“. Notiere Bälle und Verbindungen in Zeile 4 der Tabelle."]
+  },
+  "br7": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-merken", seite: 24,
+    kapitel: "Nerven und Gehirn",
+    name: "Wie merkt sich das Gehirn etwas?",
+    titel: "Kurz gemerkt oder lange gewusst?",
+    frage: "Wie kommen die Wörter ins Langzeitgedächtnis?",
+    schritte: ["Stelle „Lernen“ auf „5 Wörter, einmal lesen“. Drücke „▶ Lernen“, dann „▶ 1 Woche später“. Notiere den Zähler nach 1 Woche in Zeile 1 der Tabelle.", "Stelle „10 Wörter, einmal lesen“ ein. Drücke „▶ Lernen“, dann „▶ 1 Woche später“. Notiere beide Zähler in Zeile 2 der Tabelle.", "Stelle „10 Wörter, an 3 Tagen lesen“ ein. Drücke „▶ Lernen“, dann „▶ 1 Woche später“. Notiere beide Zähler in Zeile 3 der Tabelle.", "Vergleiche Zeile 2 und Zeile 3. Was hilft nach einer Woche?"]
+  },
+  "bd1": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-niere", seite: 30,
+    kapitel: "Niere und Gesundheit",
+    name: "Was macht die Niere mit dem Blut?",
+    titel: "Der Weg vom Glas zur Blase",
+    frage: "Was holt die Niere aus dem Blut heraus?",
+    schritte: ["Stelle „Teilchen im Blut“ auf „Blutzellen“. Drücke „▶ 10 Teilchen losschicken“. Notiere den Zähler „im Harn“ in Zeile 1 der Tabelle.", "Stelle auf „Zucker“. Drücke wieder „▶ 10 Teilchen losschicken“. Notiere beide Zähler in Zeile 2 der Tabelle.", "Stelle auf „Abfallstoffe“. Drücke wieder „▶ 10 Teilchen losschicken“. Notiere beide Zähler in Zeile 3 der Tabelle.", "Stelle auf „Wasser“. Drücke wieder „▶ 10 Teilchen losschicken“. Notiere beide Zähler in Zeile 4 der Tabelle."]
+  },
+  "bd2": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-wasserhaushalt", seite: 33,
+    kapitel: "Niere und Gesundheit",
+    name: "Wie hängen Trinken und Harn zusammen?",
+    titel: "Ein Liter oder drei Liter",
+    frage: "Wie viel Harn bildet der Körper, wenn man mehr trinkt?",
+    schritte: ["Stelle „Getränke am Tag“ auf „1 l“. Drücke „▶ 1 Tag abspielen“. Notiere die Farbe des Harns in Zeile 1 der Tabelle.", "Stelle auf „2 l“. Drücke wieder „▶ 1 Tag abspielen“. Notiere Harn und Farbe in Zeile 2 der Tabelle.", "Stelle auf „3 l“. Drücke wieder „▶ 1 Tag abspielen“. Notiere Harn und Farbe in Zeile 3 der Tabelle.", "Vergleiche die Anzeige „Wasser im Körper“ bei 1 l, 2 l und 3 l."]
+  },
+  "bd3": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-dialyse", seite: 36,
+    kapitel: "Niere und Gesundheit",
+    name: "Wie hilft die Dialyse, wenn die Niere nicht mehr arbeitet?",
+    titel: "Blutwäsche für Linas Opa",
+    frage: "Wie oft in der Woche braucht Linas Opa die Dialyse?",
+    schritte: ["Stelle „Dialyse in der Woche“ auf „keine“. Drücke „▶ 1 Woche abspielen“. Zähle die roten Tage. Notiere die Zahl in Zeile 1 der Tabelle.", "Stelle auf „1-mal“. Drücke wieder „▶ 1 Woche abspielen“. Notiere Harnstoff-Punkte und rote Tage in Zeile 2 der Tabelle.", "Stelle auf „3-mal“. Drücke wieder „▶ 1 Woche abspielen“. Notiere Harnstoff-Punkte und rote Tage in Zeile 3 der Tabelle.", "Vergleiche die Kurve bei „1-mal“ und „3-mal“: Was passiert nach jeder Dialyse?"]
+  },
+  "bd5": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-organspende", seite: 42,
+    kapitel: "Niere und Gesundheit",
+    name: "Wann passt ein Spenderorgan?",
+    titel: "Eine neue Niere für Linas Opa",
+    frage: "Welche Spenderniere arbeitet im Körper von Opa?",
+    schritte: ["Stelle „Blutgruppe der neuen Niere“ auf „A“. Drücke „▶ Niere einsetzen“. Notiere in Zeile 1 der Tabelle, wie viel Harn sie bildet.", "Stelle auf „B“. Drücke wieder „▶ Niere einsetzen“. Notiere Abwehr und Harn in Zeile 2 der Tabelle.", "Stelle auf „AB“. Drücke wieder „▶ Niere einsetzen“. Notiere Abwehr und Harn in Zeile 3 der Tabelle.", "Stelle auf „0“. Drücke wieder „▶ Niere einsetzen“. Notiere Abwehr und Harn in Zeile 4 der Tabelle."]
+  },
+  "bz1": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-mitose", seite: 48,
+    kapitel: "Aus einer Zelle wird ein Mensch",
+    name: "Wie teilt sich eine Zelle?",
+    titel: "Neue Haut für das Knie",
+    frage: "Wie viele Chromosomen hat jede Zelle nach der Teilung?",
+    schritte: ["Sieh dir die Zelle am Start an. Zähle ihre Chromosomen. Notiere die Zahl in Zeile 1 der Tabelle.", "Drücke „▶ Zelle teilen“. Beobachte: Was passiert zuerst mit jedem Chromosom?", "Notiere die Zahl der Zellen und der Chromosomen je Zelle in Zeile 2 der Tabelle.", "Drücke noch einmal „▶ Zelle teilen“. Notiere Zellen und Chromosomen in Zeile 3 der Tabelle."]
+  },
+  "bz2": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-embryo", seite: 51,
+    kapitel: "Aus einer Zelle wird ein Mensch",
+    name: "Wie entwickelt sich ein Embryo?",
+    titel: "Eine Woche unterwegs",
+    frage: "Wo ist der Embryo in seiner ersten Woche?",
+    schritte: ["Stelle „Tag“ auf „1“. Notiere in Zeile 1 der Tabelle, wo der Embryo ist.", "Stelle „Tag“ auf „3“. Lies die Zellen am Zähler ab. Notiere Zellen und Ort in Zeile 2 der Tabelle.", "Stelle „Tag“ auf „5“. Notiere Zellen und Ort in Zeile 3 der Tabelle.", "Stelle „Tag“ auf „7“. Beobachte den Embryo genau. Notiere Zellen und Ort in Zeile 4 der Tabelle."]
+  },
+  "bt1": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-chromosomen", seite: 63,
+    kapitel: "Was Eltern vererben",
+    name: "Wo sitzen die Erbanlagen?",
+    titel: "Fäden im Zellkern",
+    frage: "Wie viele Chromosomen bekommt ein Kind von seiner Mutter?",
+    schritte: ["Stelle „Zelle“ auf „Hautzelle der Mutter“. Drücke „▶ ordnen“. Notiere in Zeile 1 der Tabelle, ob es Paare gibt.", "Stelle „Eizelle“ ein. Drücke „▶ ordnen“. Notiere die Zahl und „ja“ oder „nein“ in Zeile 2 der Tabelle.", "Stelle „Spermium“ ein. Drücke „▶ ordnen“. Notiere die Zahl und „ja“ oder „nein“ in Zeile 3 der Tabelle.", "Stelle „befruchtete Eizelle“ ein. Drücke „▶ ordnen“. Notiere die Zahl und „ja“ oder „nein“ in Zeile 4 der Tabelle."]
+  },
+  "bt2": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-mendel", seite: 66,
+    kapitel: "Was Eltern vererben",
+    name: "Welche Farbe haben Mendels Erbsen?",
+    titel: "Gelbe und grüne Erbsen",
+    frage: "Mendel kreuzt gelbe und grüne Erbsen. Welche Farbe haben die neuen Samen?",
+    schritte: ["Stelle „Eltern“ auf „gelb × gelb“. Drücke „▶ kreuzen und ernten“. Zähle die grünen Samen. Notiere die Zahl in Zeile 1 der Tabelle.", "Stelle „grün × grün“ ein. Drücke „▶ kreuzen und ernten“. Zähle gelbe und grüne Samen. Notiere beide Zahlen in Zeile 2 der Tabelle.", "Stelle „gelb × grün“ ein. Drücke „▶ kreuzen und ernten“. Zähle wieder. Notiere beide Zahlen in Zeile 3 der Tabelle.", "Vergleiche Zeile 3 mit deiner Vermutung."]
+  },
+  "bt3": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-kreuzung", seite: 69,
+    kapitel: "Was Eltern vererben",
+    name: "Warum taucht ein Merkmal wieder auf?",
+    titel: "Die Enkel von Mendels Erbsen",
+    frage: "Wie viele Samen von Tochter × Tochter sind grün?",
+    schritte: ["Stelle „Kreuzung“ auf „gelb × grün“. Drücke „▶ 4 Samen bilden“. Zähle die grünen Samen. Notiere die Zahl in Zeile 1 der Tabelle.", "Stelle „gelb × gelb“ ein. Drücke „▶ 4 Samen bilden“. Notiere die Allele der Eltern und die grünen Samen in Zeile 2 der Tabelle.", "Stelle „Tochter × Tochter“ ein. Drücke „▶ 4 Samen bilden“. Notiere die Allele der Eltern und die grünen Samen in Zeile 3 der Tabelle.", "Vergleiche Zeile 2 und 3: Alle Eltern sind gelb. Was ist anders?"]
+  },
+  "bt4": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-dna", seite: 72,
+    kapitel: "Was Eltern vererben",
+    name: "Was steht in der DNA?",
+    titel: "Vier Buchstaben in der Leiter",
+    frage: "Welche Basen liegen in der DNA einander gegenüber?",
+    schritte: ["Stelle „Lebewesen“ auf „Mensch“. Drücke „▶ aufdrehen“. Lies auf Strang 2 die ersten 3 Basen ab. Notiere sie in Zeile 1 der Tabelle.", "Stelle „Erbse“ ein. Drücke „▶ aufdrehen“. Notiere die ersten 3 Basen von Strang 1 und Strang 2 in Zeile 2 der Tabelle.", "Stelle „Hund“ ein. Drücke „▶ aufdrehen“. Notiere wieder die ersten 3 Basen beider Stränge in Zeile 3 der Tabelle.", "Vergleiche Spalte 2 und Spalte 3: Welche Base liegt immer gegenüber von A?"]
+  },
+  "bt5": {
+    klasse: "9", schulform: "Gesamtschule NRW · Förderheft Biologie",
+    sim: "bio-genmerkmal", seite: 75,
+    kapitel: "Was Eltern vererben",
+    name: "Wie wird aus einem Gen ein Merkmal?",
+    titel: "Vom Gen zur gelben Erbse",
+    frage: "Wie macht das Gen den Erbsensamen gelb?",
+    schritte: ["Stelle „Allele“ auf „G und G“. Drücke „▶ Samen reifen lassen“. Beobachte die vier Stationen. Notiere die Farbe am Ende in Zeile 1 der Tabelle.", "Stelle „G und g“ ein. Drücke „▶ Samen reifen lassen“. Notiere die arbeitenden Proteine und die Farbe in Zeile 2 der Tabelle.", "Stelle „g und g“ ein. Drücke „▶ Samen reifen lassen“. Notiere die arbeitenden Proteine und die Farbe in Zeile 3 der Tabelle.", "Vergleiche Zeile 1 und 2: Wie viele Proteine braucht ein gelber Samen?"]
+  },
   "cs1": {
     klasse: "8", schulform: "Gesamtschule NRW · Förderheft Chemie",
     sim: "chem-stoffe", seite: 6,
@@ -6138,7 +6300,7 @@ const HEFT_SEITEN = {
     name: "Wie schnell läuft sie wirklich?",
     titel: "Fünf Stopps, eine Steigung",
     frage: "Wie findet man die Geschwindigkeit aus Zeit und Weg?",
-    schritte: ["Stelle „Geschwindigkeit v“ auf 4,0 m/s. Drücke fünfmal „Zeit stoppen“, wann du willst.", "Wähle „t → s“. Trage die Form des Graphen und den Wert darunter ein.", "Wähle danach „t → v“ und „t → a“. Trage beide Zeilen ein."]
+    schritte: ["Stelle „Geschwindigkeit v“ auf 4,0 m/s. Drücke fünfmal „Zeit stoppen“, wann du willst.", "Wähle „t → s“. Lies den Wert unter dem Graphen ab. Notiere v in Zeile 1 der Tabelle im Heft.", "Wähle „t → v“. Notiere die Form des Graphen und den Wert darunter in Zeile 2 der Tabelle im Heft.", "Wähle „t → a“. Notiere beides in Zeile 3 der Tabelle im Heft."]
   },
   "fm2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6147,7 +6309,7 @@ const HEFT_SEITEN = {
     name: "Wie schnell wird der Läufer schneller?",
     titel: "Drei Diagramme, eine Beschleunigung",
     frage: "Welches Diagramm zeigt die Beschleunigung als Steigung?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während des Laufs fünfmal „Zeit stoppen“.", "Wähle „t → v“. Trage die Form des Graphen und a ein.", "Wähle danach „t → s“ und „t → a“. Trage beide Zeilen ein."]
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke während des Laufs fünfmal „Zeit stoppen“.", "Wähle „t → v“. Lies a in der Auswertung ab. Notiere a in Zeile 1 der Tabelle im Heft.", "Wähle „t → s“. Notiere die Form des Graphen und a laut Auswertung in Zeile 2 der Tabelle im Heft.", "Wähle „t → a“. Notiere beides in Zeile 3 der Tabelle im Heft."]
   },
   "fm3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6156,7 +6318,7 @@ const HEFT_SEITEN = {
     name: "Warum trägt man t² auf?",
     titel: "Aus der Parabel eine Gerade machen",
     frage: "Wie wird aus der Parabel eine Gerade, aus der man a ablesen kann?",
-    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke fünfmal „Zeit stoppen“, erst ab 1 m Weg.", "Wähle „t → s“. Trage die Form des Graphen und die Steigung ein.", "Wähle „t² → s“ und danach „t → v“. Lies die Steigung nach „y =“ ab."]
+    schritte: ["Stelle „Beschleunigung a“ auf 2,0 m/s². Drücke fünfmal „Zeit stoppen“, erst ab 1 m Weg.", "Wähle „t → s“. Suche die Steigung nach „y =“. Notiere sie in Zeile 1 der Tabelle im Heft. Fehlt sie, notiere: keine.", "Wähle „t² → s“. Notiere die Form des Graphen und die Steigung in Zeile 2 der Tabelle im Heft.", "Wähle „t → v“. Notiere beides in Zeile 3 der Tabelle im Heft."]
   },
   "fm4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6165,7 +6327,7 @@ const HEFT_SEITEN = {
     name: "Zwei Rechenwege zur Fallbeschleunigung – warum kommt nicht dasselbe heraus?",
     titel: "Zwei Rechenwege, zwei Werte",
     frage: "Warum liefern zwei Rechenwege zu g nicht denselben Wert?",
-    schritte: ["Stelle die „Fallhöhe“ auf 50 m. Drücke „Tabelle leeren“ und dann „Messreihe automatisch aufnehmen“.", "Lies in der Tabelle die Zeilen mit t = 0,32 s, 1,28 s und 2,56 s ab.", "Trage für jede Zeile die beiden letzten Spalten ein. Vergleiche sie."]
+    schritte: ["Stelle die „Fallhöhe“ auf 50 m. Drücke „Tabelle leeren“ und dann „Messreihe automatisch aufnehmen“.", "Lies am Bildschirm die Zeile mit t = 0,32 s. Notiere den Wert bei g = 2s/t² in Zeile 1 der Tabelle im Heft.", "Lies die Zeile mit t = 1,28 s. Notiere beide g-Werte in Zeile 2 der Tabelle im Heft.", "Wiederhole das mit t = 2,56 s für Zeile 3. Vergleiche die beiden g-Werte."]
   },
   "fm5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6174,7 +6336,7 @@ const HEFT_SEITEN = {
     name: "Warum trifft die geworfene Kugel gleichzeitig auf?",
     titel: "Ein Schlag, nicht zwei",
     frage: "Kommt eine schneller geworfene Kugel später unten an?",
-    schritte: ["Stelle „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 4 m/s. Drücke „Aufprall“.", "Lies die Wurfweite und den Satz „Beide sind unten …“ ab.", "Wiederhole das mit v₀ = 8 m/s und v₀ = 16 m/s.", "Stelle h auf 45 m und v₀ auf 8 m/s. Drücke „Aufprall“."]
+    schritte: ["Stelle „Abwurfhöhe h“ auf 20 m, „Abwurfgeschwindigkeit v₀“ auf 4 m/s. Drücke „Aufprall“.", "Lies die Wurfweite und den Satz „Beide sind unten …“ ab. Notiere die Zeit t in Zeile 1 der Tabelle im Heft.", "Stelle v₀ auf 8 m/s. Drücke „Aufprall“. Notiere xW und t in Zeile 2 der Tabelle im Heft. Wiederhole das mit 16 m/s für Zeile 3.", "Stelle h auf 45 m und v₀ auf 8 m/s. Drücke „Aufprall“. Notiere xW und t in Zeile 4 der Tabelle im Heft."]
   },
   "fm7": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6183,7 +6345,7 @@ const HEFT_SEITEN = {
     name: "Was macht ein Körper, wenn keine Kraft mehr zieht?",
     titel: "Niemand schiebt, nichts ändert sich",
     frage: "Was macht die Geschwindigkeit, wenn die Gesamtkraft null ist?",
-    schritte: ["Stelle „Externe Kraft F“ auf 0 N und „Anfangsgeschwindigkeit v₀“ auf 5 m/s.", "Lies v im Kästchen sofort ab. Lies nach einer Weile noch einmal ab.", "Wiederhole das mit v₀ = 20 m/s und v₀ = 40 m/s.", "Stelle v₀ auf 20 m/s, dann F auf 10 N. Beobachte v."]
+    schritte: ["Stelle „Externe Kraft F“ auf 0 N und „Anfangsgeschwindigkeit v₀“ auf 5 m/s.", "Lies v im Kästchen sofort ab. Lies nach einer Weile noch einmal ab. Notiere in Zeile 1 der Tabelle, was v macht.", "Stelle v₀ auf 20 m/s. Lies v wieder zweimal ab. Notiere beides in Zeile 2 der Tabelle. Wiederhole das mit 40 m/s für Zeile 3.", "Stelle v₀ auf 20 m/s, dann F auf 10 N. Beobachte v. Notiere deine Beobachtung in Zeile 4 der Tabelle."]
   },
   "fm8": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6192,7 +6354,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt die Beschleunigung ab?",
     titel: "Ein Regler nach dem anderen",
     frage: "Wie hängt a von der Kraft F und der Masse m ab?",
-    schritte: ["Stelle „Kraft F“ auf 50 N, „Masse m“ auf 5 kg. Lies a und „Probe m · a“ ab.", "Stelle nur die Kraft auf 100 N. Die Masse bleibt 5 kg.", "Stelle die Kraft zurück auf 50 N und nur die Masse auf 10 kg."]
+    schritte: ["Stelle „Kraft F“ auf 50 N, „Masse m“ auf 5 kg. Lies a und „Probe m · a“ ab. Notiere die Probe in Zeile 1 der Tabelle im Heft.", "Stelle nur die Kraft auf 100 N. Die Masse bleibt 5 kg. Notiere a und die Probe in Zeile 2 der Tabelle im Heft.", "Stelle die Kraft zurück auf 50 N und nur die Masse auf 10 kg. Notiere a und die Probe in Zeile 3 der Tabelle im Heft."]
   },
   "fm9": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6201,7 +6363,7 @@ const HEFT_SEITEN = {
     name: "Warum hängt die Lampe still, obwohl an ihr gezogen wird?",
     titel: "Die Lampe über dem Schreibtisch",
     frage: "Wirkt auf die still hängende Lampe wirklich keine Kraft?",
-    schritte: ["Lies im Ausgangszustand die Statuszeile. Trage Zeile 1 ein.", "Drücke einmal „– N“. Trage Zeile 2 ein.", "Drücke „zurück in die Mitte“ und danach einmal „+ N“. Trage Zeile 3 ein.", "Vergleiche: Wann bleibt die Lampe in Ruhe?"]
+    schritte: ["Lies im Ausgangszustand die Statuszeile. Notiere die Gesamtkraft in Zeile 1 der Tabelle.", "Drücke einmal „– N“. Notiere Haltekraft, Gewichtskraft und Gesamtkraft in Zeile 2 der Tabelle.", "Drücke „zurück in die Mitte“ und danach einmal „+ N“. Notiere die drei Kräfte in Zeile 3 der Tabelle.", "Vergleiche: Wann bleibt die Lampe in Ruhe?"]
   },
   "fm10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6210,7 +6372,7 @@ const HEFT_SEITEN = {
     name: "Warum drückt die Wand zurück?",
     titel: "Zwei Wagen, eine Feder",
     frage: "Wirkt auf den Wagen mit kleinerer Masse eine größere Kraft?",
-    schritte: ["Stelle den Regler „Masse m1 (linker Wagen)“ auf 1 kg.", "Drücke „Feder lösen“. Beobachte: Welcher Wagen fährt schneller weg?", "Lies in der Zeile „Beim Lösen“ F1, F2, a1 und a2 ab. Trage Zeile 1 ein.", "Stelle m1 auf 5 kg und danach auf 10 kg. Trage beide Zeilen ein."]
+    schritte: ["Stelle den Regler „Masse m1 (linker Wagen)“ auf 1 kg.", "Drücke „Feder lösen“. Beobachte: Welcher Wagen fährt schneller weg?", "Lies bei „Beim Lösen“ F1, F2, a1 und a2 ab. Notiere a1 und a2 in Zeile 1 der Tabelle.", "Stelle m1 auf 5 kg. Notiere F1, F2, a1 und a2 in Zeile 2 der Tabelle. Wiederhole das mit 10 kg für Zeile 3."]
   },
   "fm11": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6219,7 +6381,7 @@ const HEFT_SEITEN = {
     name: "Wie viel Kraft bleibt zum Beschleunigen übrig?",
     titel: "Was von 80 Newton übrig bleibt",
     frage: "Wie viel von 80 N bleibt zum Beschleunigen übrig?",
-    schritte: ["Stelle den Regler „Reibungskoeffizient μ“ so, dass im Bild μ = 0,20 steht.", "Lies im Bild die Reibungskraft F_R ab. Trage Zeile 1 ein.", "Wiederhole das für μ = 0,40 und μ = 0,60.", "Berechne in Spalte 3: 80 N minus F_R."]
+    schritte: ["Stelle den Regler „Reibungskoeffizient μ“ so, dass im Bild μ = 0,20 steht.", "Lies im Bild die Reibungskraft F_R ab. Sie steht schon in Zeile 1 der Tabelle.", "Stelle den Regler so, dass im Bild μ = 0,40 steht. Notiere F_R in Zeile 2 der Tabelle. Wiederhole das mit μ = 0,60 für Zeile 3.", "Berechne in Zeile 1 bis 3: 80 N minus F_R. Notiere das Ergebnis in der letzten Spalte der Tabelle."]
   },
   "fm12": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6228,7 +6390,7 @@ const HEFT_SEITEN = {
     name: "Wann wird wirklich Arbeit verrichtet?",
     titel: "Vier Meter getragen, null Joule",
     frage: "Wann verrichtet Tobias wirklich Arbeit?",
-    schritte: ["Drücke „Schieben“. Lies in der Statuszeile die Arbeit W ab. Trage Zeile 1 ein.", "Drücke „Waagerecht tragen“. Trage Zeile 2 ein.", "Drücke „Hochheben“ und danach „Ausführen“. Trage Zeile 3 ein.", "Lies die Richtung von Kraft und Weg jeweils unten im Bild ab."]
+    schritte: ["Drücke „Schieben“. Lies in der Statuszeile die Arbeit W ab. Notiere W in Zeile 1 der Tabelle.", "Drücke „Waagerecht tragen“. Lies unten im Bild ab, wohin Kraft und Weg zeigen. Notiere beides und W in Zeile 2 der Tabelle.", "Drücke „Hochheben“ und danach „Ausführen“. Notiere die Richtungen und W in Zeile 3 der Tabelle."]
   },
   "fm13": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6237,7 +6399,7 @@ const HEFT_SEITEN = {
     name: "Warum zählt die Geschwindigkeit doppelt?",
     titel: "Zweimal verdoppelt, zweimal anders",
     frage: "Was zählt mehr: doppelte Masse oder doppelte Geschwindigkeit?",
-    schritte: ["Drücke „Rollen lassen“. Lies ab, wie weit der Klotz rutscht. Trage Zeile 1 ein.", "Drücke „×2 Masse“ und „Rollen lassen“. Trage Zeile 2 ein.", "Stelle „Masse m“ auf 4 kg. Drücke „×2 v“ und „Rollen lassen“. Trage Zeile 3 ein.", "Vergleiche: Wo ist E doppelt, wo vierfach?"]
+    schritte: ["Drücke „Rollen lassen“. Lies ab, wie weit der Klotz rutscht und wie groß E ist. Notiere E in Zeile 1 der Tabelle im Heft.", "Drücke „×2 Masse“ und „Rollen lassen“. Notiere den Weg und E in Zeile 2 der Tabelle im Heft.", "Stelle „Masse m“ auf 4 kg. Drücke „×2 v“ und „Rollen lassen“. Notiere den Weg und E in Zeile 3 der Tabelle im Heft.", "Vergleiche: Wo ist E doppelt, wo vierfach?"]
   },
   "fm14": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6246,7 +6408,7 @@ const HEFT_SEITEN = {
     name: "Die gespannte Feder – wo steckt die Energie?",
     titel: "Das Dreieck unter dem Graphen",
     frage: "Wie ändert sich die Spannenergie, wenn du s verdoppelst?",
-    schritte: ["Lies bei 10 cm in der Statuszeile die Kraft F und die Spannenergie E ab. Trage Zeile 1 ein.", "Stelle den Regler „Auslenkung s“ auf 20 cm. Trage Zeile 2 ein.", "Stelle ihn auf 30 cm. Trage Zeile 3 ein.", "Drücke „Loslassen“ und beobachte den Wagen."]
+    schritte: ["Lies bei 10 cm in der Statuszeile die Kraft F und die Spannenergie E ab. Notiere E in Zeile 1 der Tabelle im Heft.", "Stelle „Auslenkung s“ auf 20 cm. Notiere F und E in Zeile 2.", "Stelle „Auslenkung s“ auf 30 cm. Notiere F und E in Zeile 3.", "Drücke „Loslassen“ und beobachte den Wagen."]
   },
   "fm15": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6255,7 +6417,7 @@ const HEFT_SEITEN = {
     name: "Bleibt die Summe gleich, wenn zwei zusammenstoßen?",
     titel: "Die Summe mit Vorzeichen",
     frage: "Bleibt der Gesamtimpuls beim Zusammenstoß gleich?",
-    schritte: ["Drücke „Stoß auslösen“. Lies oben rechts p_ges ab, bevor die Kugeln sich treffen.", "Lies nach dem Stoß p₁, p₂ und p_ges ab. Trage Zeile 1 ein.", "Stelle „Masse 1 (kg)“ auf 1 kg. Wiederhole a und b für Zeile 2.", "Wiederhole das mit 5 kg für Zeile 3."]
+    schritte: ["Drücke „Stoß auslösen“. Lies sofort oben rechts p_ges ab.", "Lies nach dem Stoß p_ges ab. Notiere beide p_ges in Zeile 1.", "Stelle „Masse 1 (kg)“ auf 1 kg. Wiederhole a. Notiere nach dem Stoß p₁, p₂ und beide p_ges in Zeile 2.", "Wiederhole Schritt c mit 5 kg für Zeile 3."]
   },
   "fg1": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6264,7 +6426,7 @@ const HEFT_SEITEN = {
     name: "Wie schnell ist ein Punkt auf der Kreisbahn?",
     titel: "Außen sitzen, schneller fahren",
     frage: "Ist der Sitz außen schneller als der Sitz innen?",
-    schritte: ["Stelle „ω (Winkelgeschwindigkeit)“ auf 3 rad/s. Der Regler bleibt dort.", "Stelle „Radius r“ auf 40 px. Lies im weißen Feld die Zeile v≈ ab.", "Wiederhole das mit 70 px und 100 px.", "Trage die Messwerte mit Komma ein."]
+    schritte: ["Stelle „ω (Winkelgeschwindigkeit)“ auf 3 rad/s. Lass ω so.", "Stelle „Radius r“ auf 40 px. Lies im weißen Feld v≈ ab. Notiere v mit Komma in Zeile 1 der Tabelle.", "Stelle 70 px ein. Notiere ω und v in Zeile 2. Wiederhole das mit 100 px für Zeile 3."]
   },
   "fg2": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6273,7 +6435,7 @@ const HEFT_SEITEN = {
     name: "Was hält den Körper auf der Kreisbahn?",
     titel: "Wer hält den Sitz auf der Bahn?",
     frage: "Wohin zeigt die Kraft, die den Körper auf der Kreisbahn hält?",
-    schritte: ["Sieh dir im Bild den Pfeil „F_z zum Mittelpunkt“ an. Wohin zeigt er?", "Lies bei 0,5 kg im Feld „Alle Größen der Kreisbewegung“ a_z und F_z ab.", "Stelle nur den Regler „Masse m“ auf 1,0 kg, dann auf 2,0 kg.", "Lies jedes Mal ab und trage ein."]
+    schritte: ["Sieh dir im Bild den Pfeil „F_z zum Mittelpunkt“ an. Wohin zeigt er?", "Lies bei 0,5 kg im Feld „Alle Größen der Kreisbewegung“ a_z und F_z ab. Notiere F_z in Zeile 1 der Tabelle im Heft.", "Stelle nur den Regler „Masse m“ auf 1,0 kg. Notiere a_z und F_z in Zeile 2 der Tabelle im Heft.", "Wiederhole das mit 2,0 kg für Zeile 3."]
   },
   "fg3": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6282,7 +6444,7 @@ const HEFT_SEITEN = {
     name: "Was sagt eine Messreihe über die Zentripetalkraft?",
     titel: "Sieben Messpunkte, eine Gerade",
     frage: "Trifft die Ausgleichsgerade die eingestellte Masse?",
-    schritte: ["Drücke „F über r auftragen“ und dann „Messreihe automatisch aufnehmen“.", "Lies ab: „Masse m aus der Steigung k“ und die Abweichung.", "Drücke „Tabelle leeren“. Stelle „Masse m“ auf 1,0 kg. Wiederhole Schritt a und b.", "Wiederhole alles mit 1,5 kg."]
+    schritte: ["Drücke „F über r auftragen“ und dann „Messreihe automatisch aufnehmen“.", "Lies ab: „Masse m aus der Steigung k“ und die Abweichung. Notiere die Abweichung in Zeile 1 der Tabelle im Heft.", "Drücke „Tabelle leeren“. Stelle „Masse m“ auf 1,0 kg. Wiederhole Schritt a. Notiere m aus der Steigung und die Abweichung in Zeile 2 der Tabelle im Heft.", "Wiederhole Schritt c mit 1,5 kg für Zeile 3."]
   },
   "fg4": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6291,7 +6453,7 @@ const HEFT_SEITEN = {
     name: "Mehr Masse oder weniger Abstand – was wirkt stärker?",
     titel: "Masse gegen Abstand",
     frage: "Was ändert die Gravitationskraft stärker: doppelte Masse oder doppelter Abstand?",
-    schritte: ["Drücke „zurücksetzen“. Lies die Anziehungskraft in der Statuszeile ab.", "Drücke einmal „×2 Masse links“. Lies wieder ab.", "Drücke „zurücksetzen“, dann einmal „×2 Abstand“. Lies ab.", "Drücke jetzt noch „×2 Masse links“. Nun ist beides verdoppelt. Lies ab."]
+    schritte: ["Drücke „zurücksetzen“. Lies die Anziehungskraft in der Statuszeile ab. Notiere in Zeile 1 der Tabelle im Heft, wie viel das von 8,0 ist.", "Drücke einmal „×2 Masse links“. Notiere die Kraft und den Vergleich mit 8,0 in Zeile 2 der Tabelle im Heft.", "Drücke „zurücksetzen“, dann einmal „×2 Abstand“. Notiere Kraft und Vergleich in Zeile 3 der Tabelle im Heft.", "Drücke jetzt noch „×2 Masse links“. Nun ist beides verdoppelt. Notiere Kraft und Vergleich in Zeile 4 der Tabelle im Heft."]
   },
   "fg5": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6300,7 +6462,7 @@ const HEFT_SEITEN = {
     name: "Warum wiegt derselbe Mensch auf dem Mond weniger?",
     titel: "Gleiche Person, anderer Ort",
     frage: "Was ändert sich auf dem Mond: die Masse oder die Gewichtskraft?",
-    schritte: ["Drücke „Mond“. Lies in der Statuszeile m, g und F ab.", "Drücke „Erde“ und danach „Jupiter“. Lies jedes Mal ab.", "Trage alles in die Tabelle ein."]
+    schritte: ["Drücke „Mond“. Lies F in der Statuszeile ab. Notiere F in Zeile 1.", "Drücke „Erde“. Notiere m, g und F in Zeile 2 der Tabelle.", "Drücke „Jupiter“. Notiere m, g und F in Zeile 3 der Tabelle."]
   },
   "fg8": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6309,7 +6471,7 @@ const HEFT_SEITEN = {
     name: "Warum fällt die Erde nicht in die Sonne?",
     titel: "Das ewige Vorbeifallen",
     frage: "Warum stürzt ein Planet nicht in die Sonne, obwohl sie ihn anzieht?",
-    schritte: ["Drücke „ganz klein“. Lies in der Statuszeile die Bahnform ab.", "Drücke danach „mittlerer Wert“ und „etwas darüber“.", "Drücke zuletzt „Gegenprobe groß“.", "Trage für jeden Knopf die Startgeschwindigkeit v und die Bahnform ein."]
+    schritte: ["Drücke „ganz klein“. Lies in der Statuszeile die Bahnform ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „mittlerer Wert“. Notiere die Startgeschwindigkeit v und die Bahnform in Zeile 2 der Tabelle.", "Drücke „etwas darüber“. Notiere v und die Bahnform in Zeile 3 der Tabelle.", "Drücke zuletzt „Gegenprobe groß“. Notiere v und die Bahnform in Zeile 4 der Tabelle."]
   },
   "fg10": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6318,7 +6480,7 @@ const HEFT_SEITEN = {
     name: "Warum läuft der Mars manchmal rückwärts?",
     titel: "Zwei Modelle, ein Himmel",
     frage: "Welches Modell erklärt, dass der Mars rückwärts läuft?",
-    schritte: ["Drücke „Erde in der Mitte (alt)“. Lies die Statuszeile.", "Beobachte den Streifen unten: Läuft der Mars zeitweise rückwärts?", "Drücke „Sonne in der Mitte (heute)“. Vergleiche Statuszeile und Streifen.", "Trage ein. Zeile 2 heißt „Zusatzkreise?“, Zeile 3 „Mars rückwärts?“."]
+    schritte: ["Drücke „Erde in der Mitte (alt)“. Lies die Statuszeile: Gibt es Zusatzkreise? Notiere ja oder nein in Zeile 2 der Tabelle, Spalte alt.", "Beobachte den Streifen unten: Läuft der Mars zeitweise rückwärts? Notiere ja oder nein in Zeile 3, Spalte alt.", "Drücke „Sonne in der Mitte (heute)“. Vergleiche Statuszeile und Streifen. Notiere die drei Antworten in Zeile 1 bis 3, Spalte heute."]
   },
   "fg12": {
     klasse: 11, schulform: "Gymnasiale Oberstufe NRW · Förderheft Physik",
@@ -6327,11 +6489,11 @@ const HEFT_SEITEN = {
     name: "Warum geht die bewegte Uhr langsamer?",
     titel: "Die Uhr, die langsamer tickt",
     frage: "Wie oft tickt eine bewegte Uhr, während die ruhende 200-mal tickt?",
-    schritte: ["Drücke „6 · Zeitdehnung messen“.", "Stelle „Geschwindigkeit v/c“ auf 0,10. Das heißt: 10 % von c.", "Lies ab: „bewegte Ticks je 200 ruhende“. Trage Zeile 1 ein.", "Stelle nacheinander 0,60, 0,80 und 0,95 ein. Trage die Zeilen ein."]
+    schritte: ["Drücke „6 · Zeitdehnung messen“.", "Stelle „Geschwindigkeit v/c“ auf 0,10. Das heißt: 10 % von c.", "Lies ab: „bewegte Ticks je 200 ruhende“. Notiere die Ticks der bewegten Uhr in Zeile 1 der Tabelle im Heft.", "Stelle 0,60 ein. Notiere die Ticks beider Uhren in Zeile 2 der Tabelle im Heft. Wiederhole das mit 0,80 für Zeile 3 und mit 0,95 für Zeile 4."]
   },
   "mz1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-buendeln", seite: 9,
+    sim: "m5-buendeln", seite: 8,
     kapitel: "Große Zahlen",
     name: "Zehn Einer sind ein Zehner",
     titel: "Tarek schreibt 1 910",
@@ -6340,7 +6502,7 @@ const HEFT_SEITEN = {
   },
   "mz2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-stellenwert", seite: 12,
+    sim: "m5-stellenwert", seite: 11,
     kapitel: "Große Zahlen",
     name: "Welchen Wert hat die 4?",
     titel: "Die wandernde Vier",
@@ -6349,7 +6511,7 @@ const HEFT_SEITEN = {
   },
   "mz3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-null", seite: 15,
+    sim: "m5-null", seite: 14,
     kapitel: "Große Zahlen",
     name: "Wo bleibt die Null?",
     titel: "Tarek schreibt 350",
@@ -6358,7 +6520,7 @@ const HEFT_SEITEN = {
   },
   "mz4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-grosse-zahlen", seite: 18,
+    sim: "m5-grosse-zahlen", seite: 17,
     kapitel: "Große Zahlen",
     name: "Wie liest man große Zahlen?",
     titel: "4 000 000 im Radio",
@@ -6367,7 +6529,7 @@ const HEFT_SEITEN = {
   },
   "mz5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenstrahl", seite: 21,
+    sim: "m5-zahlenstrahl", seite: 20,
     kapitel: "Große Zahlen",
     name: "Welche Zahl ist größer?",
     titel: "9 870 oder 12 300?",
@@ -6376,7 +6538,7 @@ const HEFT_SEITEN = {
   },
   "mz6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-runden", seite: 24,
+    sim: "m5-runden", seite: 23,
     kapitel: "Große Zahlen",
     name: "Auf welche Zahl rundet man?",
     titel: "2 449 – runter oder rauf?",
@@ -6385,7 +6547,7 @@ const HEFT_SEITEN = {
   },
   "mp1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-rechenstrich", seite: 35,
+    sim: "m5-rechenstrich", seite: 34,
     kapitel: "Plus und Minus",
     name: "Wie rechnest du 46 + 37 im Kopf?",
     titel: "Tarek kommt auf 713",
@@ -6394,7 +6556,7 @@ const HEFT_SEITEN = {
   },
   "mp2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-umkehr", seite: 38,
+    sim: "m5-umkehr", seite: 37,
     kapitel: "Plus und Minus",
     name: "Plus und Minus gehören zusammen",
     titel: "Stimmt 83 − 37 = 54?",
@@ -6403,7 +6565,7 @@ const HEFT_SEITEN = {
   },
   "mp3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-plus-schriftlich", seite: 41,
+    sim: "m5-plus-schriftlich", seite: 40,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich plus?",
     titel: "Leni schreibt 715",
@@ -6412,7 +6574,7 @@ const HEFT_SEITEN = {
   },
   "mp4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-minus-schriftlich", seite: 44,
+    sim: "m5-minus-schriftlich", seite: 43,
     kapitel: "Plus und Minus",
     name: "Wie rechnet man schriftlich minus?",
     titel: "Tarek kommt auf 326",
@@ -6421,7 +6583,7 @@ const HEFT_SEITEN = {
   },
   "mp5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-ueberschlag", seite: 47,
+    sim: "m5-ueberschlag", seite: 46,
     kapitel: "Plus und Minus",
     name: "Stimmt das Ergebnis ungefähr?",
     titel: "4 105 auf dem Taschenrechner",
@@ -6430,7 +6592,7 @@ const HEFT_SEITEN = {
   },
   "mp6": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-zahlenmauer", seite: 50,
+    sim: "m5-zahlenmauer", seite: 49,
     kapitel: "Plus und Minus",
     name: "Was fällt an der Zahlenmauer auf?",
     titel: "Leni ändert einen Stein",
@@ -6439,7 +6601,7 @@ const HEFT_SEITEN = {
   },
   "mf1": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-linien", seite: 58,
+    sim: "m5-linien", seite: 57,
     kapitel: "Linien und Figuren",
     name: "Strecke oder Gerade?",
     titel: "Tareks Gerade ist 10 cm lang",
@@ -6448,7 +6610,7 @@ const HEFT_SEITEN = {
   },
   "mf2": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-geodreieck", seite: 61,
+    sim: "m5-geodreieck", seite: 60,
     kapitel: "Linien und Figuren",
     name: "Senkrecht oder parallel?",
     titel: "Ein schräges Kreuz",
@@ -6457,7 +6619,7 @@ const HEFT_SEITEN = {
   },
   "mf3": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-koordinaten", seite: 64,
+    sim: "m5-koordinaten", seite: 63,
     kapitel: "Linien und Figuren",
     name: "Wo liegt der Punkt?",
     titel: "Die Schatzkarte",
@@ -6466,7 +6628,7 @@ const HEFT_SEITEN = {
   },
   "mf4": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-vierecke", seite: 67,
+    sim: "m5-vierecke", seite: 66,
     kapitel: "Linien und Figuren",
     name: "Welches Viereck ist das?",
     titel: "Ist ein Quadrat ein Rechteck?",
@@ -6475,7 +6637,7 @@ const HEFT_SEITEN = {
   },
   "mf5": {
     klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
-    sim: "m5-spiegel", seite: 70,
+    sim: "m5-spiegel", seite: 69,
     kapitel: "Linien und Figuren",
     name: "Wo ist die Symmetrieachse?",
     titel: "Leni faltet von Ecke zu Ecke",

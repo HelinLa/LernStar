@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WIE WIRD AUS EINEM GEN EIN MERKMAL?  (Förderheft Bio 9 · bt5) ──
+  'bio-genmerkmal': modal => { _n9rInit(); modal.innerHTML = _n9rHTML(); _n9rStatus(); _pSim = new PhysicsSimEngine('_n9r-cv', '_n9r-cv'); _pSim.start(dt => _n9rUpdate(dt), (ctx, cv) => _n9rDraw(ctx, cv), []); },

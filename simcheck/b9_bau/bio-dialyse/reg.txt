@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · BLUTWÄSCHE: WIE OFT IN DER WOCHE?  (Förderheft Bio 9 · bd3) ──
+  'bio-dialyse': modal => { _n9jInit(); modal.innerHTML = _n9jHTML(); _n9jStatus(); _pSim = new PhysicsSimEngine('_n9j-cv', '_n9j-cv'); _pSim.start(dt => _n9jUpdate(dt), (ctx, cv) => _n9jDraw(ctx, cv), []); },

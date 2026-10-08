@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · EIN NETZ DURCH DEN GANZEN KÖRPER  (Förderheft Bio 9 · br1) ──
+  'bio-nervensystem': modal => { _n9aInit(); modal.innerHTML = _n9aHTML(); _n9aStatus(); _pSim = new PhysicsSimEngine('_n9a-cv', '_n9a-cv'); _pSim.start(dt => _n9aUpdate(dt), (ctx, cv) => _n9aDraw(ctx, cv), []); },

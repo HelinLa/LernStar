@@ -1,0 +1,1 @@
+  'm5-rest': modal => { _m5vInit(); modal.innerHTML = _m5vHTML(); _m5vStatus(); _pSim = new PhysicsSimEngine('_m5v-cv', '_m5v-cv'); _pSim.start(dt => _m5vUpdate(dt), (ctx, cv) => _m5vDraw(ctx, cv), []); },

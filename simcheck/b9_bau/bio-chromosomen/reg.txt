@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WIE VIELE CHROMOSOMEN HAT EINE ZELLE?  (Förderheft Bio 9 · bt1) ──
+  'bio-chromosomen': modal => { _n9nInit(); modal.innerHTML = _n9nHTML(); _n9nStatus(); _pSim = new PhysicsSimEngine('_n9n-cv', '_n9n-cv'); _pSim.start(dt => _n9nUpdate(dt), (ctx, cv) => _n9nDraw(ctx, cv), []); },

@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · EINE NEUE NIERE FÜR LINAS OPA  (Förderheft Bio 9 · bd5) ──
+  'bio-organspende': modal => { _n9kInit(); modal.innerHTML = _n9kHTML(); _n9kStatus(); _pSim = new PhysicsSimEngine('_n9k-cv', '_n9k-cv'); _pSim.start(dt => _n9kUpdate(dt), (ctx, cv) => _n9kDraw(ctx, cv), []); },

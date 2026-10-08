@@ -1,0 +1,1 @@
+  'm5-teilen-schriftlich': modal => { _m5wInit(); modal.innerHTML = _m5wHTML(); _m5wStatus(true); _pSim = new PhysicsSimEngine('_m5w-cv', '_m5w-cv'); _pSim.start(dt => _m5wUpdate(dt), (ctx, cv) => _m5wDraw(ctx, cv), []); },

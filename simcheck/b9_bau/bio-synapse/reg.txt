@@ -1,0 +1,2 @@
+  // ── BIO 9 · DIE LÜCKE ZWISCHEN ZWEI ZELLEN  (Förderheft Bio 9 · br4) ──
+  'bio-synapse': modal => { _n9dInit(); modal.innerHTML = _n9dHTML(); _n9dStatus(); _pSim = new PhysicsSimEngine('_n9d-cv', '_n9d-cv'); _pSim.start(dt => _n9dUpdate(dt), (ctx, cv) => _n9dDraw(ctx, cv), []); },

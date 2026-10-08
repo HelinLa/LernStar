@@ -1,0 +1,1 @@
+  'm5-mal-zehn': modal => { _m5sInit(); modal.innerHTML = _m5sHTML(); _m5sStatus(); _pSim = new PhysicsSimEngine('_m5s-cv', '_m5s-cv'); _pSim.start(dt => _m5sUpdate(dt), (ctx, cv) => _m5sDraw(ctx, cv), []); },

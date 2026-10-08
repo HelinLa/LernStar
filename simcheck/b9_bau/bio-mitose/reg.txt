@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WIE TEILT SICH EINE ZELLE?  (Förderheft Bio 9 · bz1) ──
+  'bio-mitose': modal => { _n9lInit(); modal.innerHTML = _n9lHTML(); _n9lStatus(); _pSim = new PhysicsSimEngine('_n9l-cv', '_n9l-cv'); _pSim.start(dt => _n9lUpdate(dt), (ctx, cv) => _n9lDraw(ctx, cv), []); },

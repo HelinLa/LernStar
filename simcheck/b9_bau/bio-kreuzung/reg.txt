@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WARUM TAUCHT EIN MERKMAL WIEDER AUF?  (Förderheft Bio 9 · bt3) ──
+  'bio-kreuzung': modal => { _n9pInit(); modal.innerHTML = _n9pHTML(); _n9pStatus(); _pSim = new PhysicsSimEngine('_n9p-cv', '_n9p-cv'); _pSim.start(dt => _n9pUpdate(dt), (ctx, cv) => _n9pDraw(ctx, cv), []); },

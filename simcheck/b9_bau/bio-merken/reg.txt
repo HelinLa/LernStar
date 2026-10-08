@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · KURZ GEMERKT ODER LANGE GEWUSST?  (Förderheft Bio 9 · br7) ──
+  'bio-merken': modal => { _n9gInit(); modal.innerHTML = _n9gHTML(); _n9gStatus(); _pSim = new PhysicsSimEngine('_n9g-cv', '_n9g-cv'); _pSim.start(dt => _n9gUpdate(dt), (ctx, cv) => _n9gDraw(ctx, cv), []); },

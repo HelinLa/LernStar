@@ -1,0 +1,2 @@
+  // ── BIO 9 · WAS MACHT DIE NIERE MIT DEM BLUT?  (Förderheft Bio 9 · bd1) ──
+  'bio-niere': modal => { _n9hInit(); modal.innerHTML = _n9hHTML(); _n9hStatus(); _pSim = new PhysicsSimEngine('_n9h-cv', '_n9h-cv'); _pSim.start(dt => _n9hUpdate(dt), (ctx, cv) => _n9hDraw(ctx, cv), []); },

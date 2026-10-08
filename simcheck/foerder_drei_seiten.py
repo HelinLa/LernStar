@@ -19,7 +19,7 @@ import json, os, sys, subprocess
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BAENDE = ["arbeitsheft_foe7", "arbeitsheft_foe8", "arbeitsheft_foe9", "arbeitsheft_foe10",
           "arbeitsheft_foe_ef", "arbeitsheft_bio_foe56", "arbeitsheft_bio_foe7",
-          "arbeitsheft_bio_foe8", "arbeitsheft_chem_foe8", "arbeitsheft_mathe_foe5"]
+          "arbeitsheft_bio_foe8", "arbeitsheft_bio_foe9", "arbeitsheft_chem_foe8", "arbeitsheft_mathe_foe5"]
 
 
 def _laden(band):

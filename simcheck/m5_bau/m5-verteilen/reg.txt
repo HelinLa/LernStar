@@ -1,0 +1,1 @@
+  'm5-verteilen': modal => { _m5uInit(); modal.innerHTML = _m5uHTML(); _m5uStatus(); _pSim = new PhysicsSimEngine('_m5u-cv', '_m5u-cv'); _pSim.start(dt => _m5uUpdate(dt), (ctx, cv) => _m5uDraw(ctx, cv), []); },

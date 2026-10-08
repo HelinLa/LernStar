@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WIE LERNT DAS GEHIRN?  (Förderheft Bio 9 · br6) ──
+  'bio-lernen': modal => { _n9fInit(); modal.innerHTML = _n9fHTML(); _n9fStatus(); _pSim = new PhysicsSimEngine('_n9f-cv', '_n9f-cv'); _pSim.start(dt => _n9fUpdate(dt), (ctx, cv) => _n9fDraw(ctx, cv), []); },

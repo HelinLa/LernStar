@@ -1,0 +1,1 @@
+  'm5-malkreuz': modal => { _m5tInit(); modal.innerHTML = _m5tHTML(); _m5tStatus(); _pSim = new PhysicsSimEngine('_m5t-cv', '_m5t-cv'); _pSim.start(dt => _m5tUpdate(dt), (ctx, cv) => _m5tDraw(ctx, cv), []); },

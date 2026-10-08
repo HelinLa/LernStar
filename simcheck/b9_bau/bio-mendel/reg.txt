@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WELCHE FARBE HABEN MENDELS ERBSEN?  (Förderheft Bio 9 · bt2) ──
+  'bio-mendel': modal => { _n9oInit(); modal.innerHTML = _n9oHTML(); _n9oStatus(); _pSim = new PhysicsSimEngine('_n9o-cv', '_n9o-cv'); _pSim.start(dt => _n9oUpdate(dt), (ctx, cv) => _n9oDraw(ctx, cv), []); },

@@ -1,0 +1,2 @@
+  // ── BIO 9 · EIN LITER ODER DREI LITER: TRINKEN UND HARN  (Förderheft Bio 9 · bd2) ──
+  'bio-wasserhaushalt': modal => { _n9iInit(); modal.innerHTML = _n9iHTML(); _n9iStatus(); _pSim = new PhysicsSimEngine('_n9i-cv', '_n9i-cv'); _pSim.start(dt => _n9iUpdate(dt), (ctx, cv) => _n9iDraw(ctx, cv), []); },

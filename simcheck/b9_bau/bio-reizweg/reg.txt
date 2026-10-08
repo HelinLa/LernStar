@@ -1,0 +1,3 @@
+
+  // ── BIO 9 FOERDER · WIE KOMMT EIN REIZ INS GEHIRN?  (Förderheft Bio 9 · br2) ──
+  'bio-reizweg': modal => { _n9bInit(); modal.innerHTML = _n9bHTML(); _n9bStatus(); _pSim = new PhysicsSimEngine('_n9b-cv', '_n9b-cv'); _pSim.start(dt => _n9bUpdate(dt), (ctx, cv) => _n9bDraw(ctx, cv), []); },

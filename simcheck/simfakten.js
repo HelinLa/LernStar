@@ -119,7 +119,16 @@ function fakten(datei, simId) {
       }
 
       // Knoepfe: jeder mit onclick, ausser Schliessen und Protokoll-Freischaltung
+      // V3 (Kapitel 4): Lehrkraft-Zeile ueberspringen – Bereich <div class="fpm-lehrkraft"> … passendes </div>
+      const _lk = [];
+      for (const mm of teil.matchAll(/<div class="fpm-lehrkraft"[^>]*>/g)) {
+        let i = mm.index + mm[0].length, t = 1;
+        const re = /<div\b|<\/div>/g; re.lastIndex = i; let x;
+        while (t > 0 && (x = re.exec(teil))) { t += x[0] === '</div>' ? -1 : 1; i = re.lastIndex; }
+        _lk.push([mm.index, i]);
+      }
       for (const m of teil.matchAll(/<button[^>]*onclick="([^"]*)"[^>]*>([\s\S]*?)<\/button>/g)) {
+        if (_lk.some(([a, b]) => m.index >= a && m.index < b)) continue;
         const auf = entkerne(m[2]);
         if (!auf || auf === '✕' || /Öffnen/.test(auf)) continue;
         if (/closePhysicsSim|_abUnlock/.test(m[1])) continue;

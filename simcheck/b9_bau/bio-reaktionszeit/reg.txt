@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WIE SCHNELL REAGIERST DU?  (Förderheft Bio 9 · br5) ──
+  'bio-reaktionszeit': modal => { _n9eInit(); modal.innerHTML = _n9eHTML(); _n9eStatus(); _pSim = new PhysicsSimEngine('_n9e-cv', '_n9e-cv'); _pSim.start(dt => _n9eUpdate(dt), (ctx, cv) => _n9eDraw(ctx, cv), []); },

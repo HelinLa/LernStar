@@ -1,0 +1,2 @@
+  // ── BIO 9 FOERDER · WAS STEHT IN DER DNA?  (Förderheft Bio 9 · bt4) ──
+  'bio-dna': modal => { _n9qInit(); modal.innerHTML = _n9qHTML(); _n9qStatus(); _pSim = new PhysicsSimEngine('_n9q-cv', '_n9q-cv'); _pSim.start(dt => _n9qUpdate(dt), (ctx, cv) => _n9qDraw(ctx, cv), []); },
