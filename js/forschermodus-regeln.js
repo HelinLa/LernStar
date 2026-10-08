@@ -48,7 +48,7 @@ const FELABS_FORSCHEN_REGELN = {
   "bewegungsenergie": {
     weg: [".fpm-grid .fpm-note", ".fpm-tabs", ".fpm-grid2", ".fpm-sim > .sim-hint"],
     maske: [
-      { sel: "#bgeStatus", re: /<br>E = ½ · [\d.,]+ · [\d.,]+² = <b>[\d.,]+ J<\/b>/, mit: "" },
+      { sel: "#bgeStatus", re: /<br>E = ½ · [\d.,]+ kg · \([\d.,]+ m\/s\)² = <b>[\d.,]+ J<\/b>/, mit: "" },
       { sel: ".fpm-label", re: /Auswertung – in welcher Auftragung liegen die Punkte auf einer Ursprungsgeraden\?/, mit: "Auswertung – erst nach deiner eigenen Rechnung" },
     ],
     hinweis: "Miss selbst: bei fester Masse drei Tempi aufnehmen, dann in deiner Tabelle E : v² ausrechnen.",

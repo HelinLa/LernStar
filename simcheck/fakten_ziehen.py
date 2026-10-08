@@ -139,7 +139,7 @@ def ziehen(sims, nach, neu=False):
 def main():
     args = sys.argv[1:]
     neu = "--neu" in args
-    nach = next((a[6:] for a in args if a.startswith("--nach=")), os.path.join(HIER, "fakten"))
+    nach = next((a[7:] for a in args if a.startswith("--nach=")), os.path.join(HIER, "fakten"))
     ziele = [a for a in args if not a.startswith("--")]
     if "--alle" in args:
         ziele = BAENDER

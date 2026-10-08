@@ -4266,7 +4266,7 @@ const HEFT_SEITEN = {
     name: "Wie wirken Ladungen aufeinander?",
     titel: "Das Knistern im Pullover",
     frage: "Wann ziehen sich zwei geladene Kugeln an und wann stoßen sie sich ab?",
-    schritte: ["Lies am Anfang die Statuszeile.", "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.", "Lies die Statuszeile noch einmal und trage die zweite Zeile ein.", "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"]
+    schritte: ["Lies am Anfang die Statuszeile. Notiere in Zeile 1 der Tabelle, was die Kugeln machen.", "Drücke bei Kugel A und bei Kugel B den Knopf „− negativ“.", "Lies die Statuszeile noch einmal. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Vergleiche die zwei Zeilen: Wann ziehen sich die Kugeln an?"]
   },
   "fs3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4275,7 +4275,7 @@ const HEFT_SEITEN = {
     name: "Was sagt die Spannung der Energiequelle?",
     titel: "Die Spannung an der Energiequelle",
     frage: "Was ändert sich am Voltmeter und an der Lampe, wenn du mehr Energiequellen einsetzt?",
-    schritte: ["Drücke „1 Energiequelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.", "Lies in der Statuszeile, wie hell die Lampe leuchtet.", "Drücke „2 Energiequellen (3 V)“ und trage die zweite Zeile ein.", "Drücke „3 Energiequellen (4,5 V)“ und trage die dritte Zeile ein."]
+    schritte: ["Drücke „1 Energiequelle (1,5 V)“ und lies die Spannung U am Voltmeter ab.", "Lies in der Statuszeile, wie hell die Lampe leuchtet. Notiere es in Zeile 1 der Tabelle.", "Drücke „2 Energiequellen (3 V)“. Notiere in Zeile 2 der Tabelle die Spannung U und wie hell die Lampe leuchtet.", "Drücke „3 Energiequellen (4,5 V)“. Notiere beides in Zeile 3 der Tabelle."]
   },
   "fs4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4284,7 +4284,7 @@ const HEFT_SEITEN = {
     name: "Wie viel Strom fließt?",
     titel: "Wie viel fließt da?",
     frage: "Wie groß ist die Stromstärke – und wann fließt gar nichts mehr?",
-    schritte: ["Drücke „Strom schwach“ und dann „mittel“. Trage jedes Mal die Stromstärke I in die Tabelle ein.", "Drücke „stark“ und trage die Stromstärke I ein.", "Drücke den Knopf „Schalter: geschlossen“. Damit öffnest du den Stromkreis.", "Lies die Stromstärke ab und fülle die letzte Zeile aus."]
+    schritte: ["Drücke „Strom schwach“ und dann „mittel“. Notiere jedes Mal I und „offen“ oder „geschlossen“ in Zeile 1 und 2 der Tabelle.", "Drücke „stark“. Notiere beides in Zeile 3 der Tabelle.", "Drücke den Knopf „Schalter: geschlossen“. Damit öffnest du den Stromkreis.", "Lies die Stromstärke ab. Notiere beides in Zeile 4 der Tabelle."]
   },
   "fs5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4293,7 +4293,7 @@ const HEFT_SEITEN = {
     name: "Wohin kommt das Messgerät?",
     titel: "Zwei Messgeräte auf der Werkbank",
     frage: "Wohin gehört das Amperemeter, wohin das Voltmeter?",
-    schritte: ["Drücke den Knopf „Amperemeter“ und lies die Statuszeile.", "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe.", "Wähle danach für das Voltmeter „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“.", "Trage in die Tabelle ein: das Gerät, wie es eingebaut ist und was die Statuszeile meldet."]
+    schritte: ["Drücke den Knopf „Amperemeter“ und lies die Statuszeile. Notiere die Meldung kurz in Zeile 1 der Tabelle.", "Drücke „Voltmeter“ und dann „in Reihe“. Beobachte die Lampe. Notiere Einbau und Meldung in Zeile 2 der Tabelle.", "Wähle danach für das Voltmeter „parallel“, nicht die Quiz-Antwort „Parallel zum Bauteil“. Notiere Einbau und Meldung in Zeile 3 der Tabelle.", "Vergleiche Zeile 2 und Zeile 3: Wie muss das Voltmeter eingebaut sein?"]
   },
   "fs6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4302,7 +4302,7 @@ const HEFT_SEITEN = {
     name: "Großer Widerstand, kleiner Strom",
     titel: "Was bremst den Strom?",
     frage: "Warum fließt bei 4,5 Volt durch jedes Bauteil ein anderer Strom?",
-    schritte: ["Drücke „mittel“, dann „kleiner Widerstand“. Lies jedes Mal die Statuszeile.", "Trage jeweils den Knopf, den Widerstand R und die Stromstärke I in die Tabelle ein.", "Drücke „großer Widerstand“ und trage den Knopf und die beiden Werte ein.", "Vergleiche die drei Zeilen: Wo fließt der meiste Strom?"]
+    schritte: ["Drücke „mittel“. Lies die Statuszeile. Notiere die Stromstärke I in Zeile 1 der Tabelle.", "Drücke „kleiner Widerstand“. Notiere R und I in Zeile 2 der Tabelle.", "Drücke „großer Widerstand“. Notiere R und I in Zeile 3 der Tabelle.", "Vergleiche die drei Zeilen: Wo fließt der meiste Strom?"]
   },
   "fs7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4311,7 +4311,7 @@ const HEFT_SEITEN = {
     name: "Wovon hängt der Widerstand ab?",
     titel: "Der lange dünne Draht",
     frage: "Wovon hängt es ab, wie groß der Widerstand eines Drahtes ist?",
-    schritte: ["Lies die Statuszeile beim Start: „Kupfer, kurz, dick“. Trage den Draht, den Widerstand R und die Stromstärke I ein.", "Drücke „lang“, dann „dünn“. Trage nach jedem Knopf den Draht, R und I in die nächste Zeile ein.", "Drücke „Eisen“. Trage den Draht und beide Werte in die letzte Zeile ein.", "Vergleiche die vier Zeilen: Wo ist der Widerstand am größten?"]
+    schritte: ["Lies die Statuszeile beim Start: „Kupfer, kurz, dick“. Notiere die Stromstärke I in Zeile 1 der Tabelle.", "Drücke „lang“, dann „dünn“. Notiere nach jedem Knopf R und I in Zeile 2 und Zeile 3 der Tabelle.", "Drücke „Eisen“. Notiere R und I in Zeile 4 der Tabelle.", "Vergleiche die vier Zeilen: Wo ist der Widerstand am größten?"]
   },
   "fs8": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4320,7 +4320,7 @@ const HEFT_SEITEN = {
     name: "Doppelte Spannung, doppelter Strom",
     titel: "Was macht doppelte Spannung?",
     frage: "Fließt bei doppelter Spannung auch doppelt so viel Strom?",
-    schritte: ["Drücke „20 Ω“ und dann einmal „◀ weniger“. Trage 20 Ω, Spannung U und Stromstärke I in Zeile 1 ein.", "Drücke einmal „mehr ▶“. Trage 20 Ω, Spannung U und Stromstärke I in Zeile 2 ein.", "Drücke „10 Ω“. Trage 10 Ω und die beiden neuen Werte in Zeile 3 ein.", "Vergleiche Zeile 1 und Zeile 2: Wie ändert sich die Stromstärke?"]
+    schritte: ["Drücke „20 Ω“ und dann einmal „◀ weniger“. Notiere die Stromstärke I in Zeile 1 der Tabelle im Heft.", "Drücke einmal „mehr ▶“. Notiere U und I in Zeile 2 der Tabelle im Heft.", "Drücke „10 Ω“. Notiere U und I in Zeile 3 der Tabelle im Heft.", "Vergleiche Zeile 1 und Zeile 2: Wie ändert sich die Stromstärke?"]
   },
   "fs9": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4329,7 +4329,7 @@ const HEFT_SEITEN = {
     name: "Zwei Widerstände in einer Reihe",
     titel: "Was passiert hintereinander?",
     frage: "Was macht ein zweiter Widerstand in der Reihe mit dem Strom?",
-    schritte: ["Drücke in der oberen Reihe „10 Ω“ und in der unteren „20 Ω“. Jetzt steht R₁ auf 10 Ω und R₂ auf 20 Ω. Trage alles in Zeile 1 ein. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Drücke bei R₁ auf 20 Ω. R₂ bleibt auf 20 Ω. Lies R_ges und die Stromstärke I ab und trage Zeile 2 ein.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Trage Zeile 3 ein.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
+    schritte: ["Drücke in der Knopfreihe „R₁:“ auf „10 Ω“ und in der Reihe „R₂:“ auf „20 Ω“. Lies die Stromstärke I ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke bei R₁ auf 20 Ω. R₂ bleibt auf 20 Ω. Notiere R_ges und I in Zeile 2 der Tabelle.", "Drücke bei R₁ auf 30 Ω und bei R₂ auf 30 Ω. Notiere R_ges und I in Zeile 3 der Tabelle.", "Vergleiche die drei Zeilen. Wird der Strom größer oder kleiner?"]
   },
   "fs10": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4338,7 +4338,7 @@ const HEFT_SEITEN = {
     name: "Zwei Wege für den Strom",
     titel: "Was passiert nebeneinander?",
     frage: "Wie groß ist der Strom insgesamt, wenn er zwei Wege hat?",
-    schritte: ["Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Lies I₁, I₂ und den Gesamtstrom I in der Statuszeile ab. Trage alles in die erste Tabellenzeile ein.", "Drücke bei R₁ auf 30 Ω. R₂ bleibt auf 20 Ω. Trage die zweite Tabellenzeile ein.", "Drücke danach bei R₂ auf 10 Ω. R₁ bleibt auf 30 Ω. Trage die letzte Tabellenzeile ein."]
+    schritte: ["Drücke bei R₁ auf 10 Ω und bei R₂ auf 20 Ω. Vor der oberen Knopfreihe steht „R₁:“, vor der unteren „R₂:“.", "Lies den Gesamtstrom I in der Statuszeile ab. Notiere ihn in Zeile 1 der Tabelle.", "Drücke bei R₁ auf 30 Ω. R₂ bleibt auf 20 Ω. Notiere I₁, I₂ und I in Zeile 2 der Tabelle.", "Drücke danach bei R₂ auf 10 Ω. R₁ bleibt auf 30 Ω. Notiere I₁, I₂ und I in Zeile 3 der Tabelle."]
   },
   "fs11": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4347,7 +4347,7 @@ const HEFT_SEITEN = {
     name: "Langsames Wandern, schnelles Signal",
     titel: "Warum geht das Licht sofort an?",
     frage: "Müssen die Elektronen schnell durch das Kabel fahren, damit die Lampe sofort leuchtet?",
-    schritte: ["Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.", "Lies im Bild die Werte für Wandern, ungeordnete Bewegung und Signal ab.", "Trage die drei Wörter und ihre Werte in dieser Reihenfolge in die Tabelle ein.", "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."]
+    schritte: ["Drücke „Leselampe“ und sieh dir das Bild vom Kupferdraht an.", "Lies im Bild die Werte für Wandern, ungeordnete Bewegung und Signal ab.", "Notiere in Zeile 1 bis 3 der Tabelle die Werte und ob sie schnell oder langsam sind.", "Lies in der Statuszeile, wie lange ein Elektron für einen Meter Kabel braucht."]
   },
   "fs12": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4356,7 +4356,7 @@ const HEFT_SEITEN = {
     name: "Warum kommt der Donner später?",
     titel: "Blitz und Donner",
     frage: "Warum hören wir den Donner erst nach dem Blitz?",
-    schritte: ["Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.", "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange der Donner braucht.", "Stelle den Regler danach auf 2,0 km und zuletzt auf 3,0 km.", "Trage jede Entfernung, die Zeit für den Donner und die Zeit für das Licht in die Tabelle ein."]
+    schritte: ["Stelle den Regler „Entfernung des Gewitters“ auf 1,0 km.", "Lies unter „4 · Der Donner kommt hinterher“ ab, wie lange das Licht braucht. Notiere es in Zeile 1 der Tabelle.", "Stelle den Regler auf 2,0 km. Notiere die Zeiten für Donner und Licht in Zeile 2 der Tabelle.", "Stelle den Regler auf 3,0 km. Notiere beide Zeiten in Zeile 3 der Tabelle."]
   },
   "fs13": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4365,7 +4365,7 @@ const HEFT_SEITEN = {
     name: "Wann schaltet die Sicherung ab?",
     titel: "Zu viel an einer Steckdose",
     frage: "Wann unterbricht die Sicherung den Stromkreis?",
-    schritte: ["Beginne mit 1 Gerät. Die Sicherung erlaubt 16 A. Lies die Stromstärke ab (am Bildschirm: „Strom“) und trage Zeile 1 ein.", "Drücke „Gerät anschließen“: Jetzt sind es 2 Geräte. Lies die Stromstärke ab und trage Zeile 2 ein.", "Drücke „Gerät anschließen“ noch einmal: Jetzt sind es 3 Geräte. Lies die Meldung und trage Zeile 3 ein.", "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"]
+    schritte: ["Beginne mit 1 Gerät. Die Sicherung erlaubt 16 A. Notiere in Zeile 1 der Tabelle, was die Sicherung macht.", "Drücke „Gerät anschließen“: Jetzt sind es 2 Geräte. Lies die Stromstärke ab (am Bildschirm: „Strom“). Notiere in Zeile 2 der Tabelle die Stromstärke und was die Sicherung macht.", "Drücke „Gerät anschließen“ noch einmal: Jetzt sind es 3 Geräte. Lies die Meldung. Notiere in Zeile 3 der Tabelle die Stromstärke und was die Sicherung macht.", "Achte auf den Warnhinweis: Nie mit der Netzspannung (230 V) experimentieren – nur mit ungefährlicher Kleinspannung!"]
   },
   "fb1": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4374,7 +4374,7 @@ const HEFT_SEITEN = {
     name: "Wer ist schneller?",
     titel: "Das Wettrennen am Bildschirm",
     frage: "Woran erkennst du, welches der zwei Autos schneller ist?",
-    schritte: ["Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.", "Lies die Statuszeile unter „Wer ist schneller?“. Auto A steht auf mittel, Auto B auf schnell. Trage Zeile 1 ein.", "Drücke bei Auto A den Knopf „schnell“ und dann „Rennen starten“. Auto B bleibt auf schnell. Trage Zeile 2 ein.", "Drücke bei Auto B den Knopf „langsam“ und dann „Rennen starten“. Auto A bleibt auf schnell. Trage Zeile 3 ein."]
+    schritte: ["Drücke den Knopf „Rennen starten“ und beobachte die zwei Autos.", "Lies die Statuszeile unter „Wer ist schneller?“. Auto A steht auf mittel, Auto B auf schnell. Notiere in Zeile 1 der Tabelle, wer schneller ist.", "Drücke bei Auto A den Knopf „schnell“ und dann „Rennen starten“. Auto B bleibt auf schnell. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Drücke bei Auto B den Knopf „langsam“ und dann „Rennen starten“. Auto A bleibt auf schnell. Notiere deine Beobachtung in Zeile 3 der Tabelle."]
   },
   "fb2": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4383,7 +4383,7 @@ const HEFT_SEITEN = {
     name: "Wie misst und rechnet man die Geschwindigkeit?",
     titel: "Messen und ausrechnen",
     frage: "Wie rechnest du aus Strecke und Zeit die Geschwindigkeit aus?",
-    schritte: ["Drücke „langsam“ und danach „Messung starten“.", "Lies die Zeit t im Bild ab. Trage die erste Zeile ein.", "Drücke „mittel“ und dann „Messung starten“. Trage die zweite Zeile ein.", "Drücke „schnell“ und dann „Messung starten“. Ergänze die letzte Zeile."]
+    schritte: ["Drücke „langsam“ und danach „Messung starten“.", "Lies die Geschwindigkeit v im Bild ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „mittel“ und dann „Messung starten“. Notiere t und v in Zeile 2 der Tabelle.", "Drücke „schnell“ und dann „Messung starten“. Notiere t und v in Zeile 3 der Tabelle."]
   },
   "fb3": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4392,7 +4392,7 @@ const HEFT_SEITEN = {
     name: "Von m/s zu km/h – mal 3,6",
     titel: "km/h oder m/s?",
     frage: "Wie rechnest du einen Wert von m/s in km/h um?",
-    schritte: ["Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.", "Drücke „Fußgänger“. Trage beide Zahlen in Zeile 1 ein.", "Drücke „Radfahrer“. Trage beide Zahlen in Zeile 2 ein.", "Drücke „Auto (Stadt)“. Trage beide Zahlen in Zeile 3 ein."]
+    schritte: ["Lies zuerst die Statuszeile ab. Dort steht die Rechnung mit 3,6.", "Drücke „Fußgänger“. Notiere den Wert in km/h in Zeile 1 der Tabelle.", "Drücke „Radfahrer“. Notiere beide Werte in Zeile 2 der Tabelle.", "Drücke „Auto (Stadt)“. Notiere beide Werte in Zeile 3 der Tabelle."]
   },
   "fb4": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4401,7 +4401,7 @@ const HEFT_SEITEN = {
     name: "Was sagen die Abstände?",
     titel: "Kreidestriche auf dem Schulhof",
     frage: "Was sagen dir die Abstände zwischen den Sekunden-Marken?",
-    schritte: ["Die Simulation startet auf „mittel“. Drücke „▶ Fahren“ und fülle Zeile 1 aus.", "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.", "Lies ab, welche Zahl bei v steht. Sieh dir die Abstände an. Fülle Zeile 2 aus.", "Wiederhole das mit „schnell“ und fülle die letzte Zeile aus."]
+    schritte: ["Die Simulation startet auf „mittel“. Drücke „▶ Fahren“. Notiere in Zeile 1 der Tabelle, wie die Abstände sind.", "Wähle den Knopf „langsam“ und drücke danach „▶ Fahren“.", "Lies die Geschwindigkeit v in der Statuszeile ab. Sieh dir die Abstände an. Notiere v und die Abstände in Zeile 2 der Tabelle.", "Wiederhole das mit „schnell“. Notiere v und die Abstände in Zeile 3 der Tabelle."]
   },
   "fb5": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4410,7 +4410,7 @@ const HEFT_SEITEN = {
     name: "Was verrät die Linie im Weg-Zeit-Diagramm?",
     titel: "Linien an der Werkstattwand",
     frage: "Was sagt dir die Linie im Weg-Zeit-Diagramm über die Fahrt?",
-    schritte: ["Drücke „schnell“ und dann „▶ Fahren“. Trage Zeile 1 in die Tabelle ein.", "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.", "Lies die Statuszeile und trage Zeile 2 in die Tabelle ein.", "Drücke „mit Pause“ und dann „▶ Fahren“. Trage danach Zeile 3 ein."]
+    schritte: ["Drücke „schnell“ und dann „▶ Fahren“. Notiere in Zeile 1 der Tabelle, was der Wagen macht.", "Drücke „langsam“ und dann „▶ Fahren“. Beobachte, wie stark die Linie steigt.", "Lies die Statuszeile. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Drücke „mit Pause“ und dann „▶ Fahren“. Notiere deine Beobachtung in Zeile 3 der Tabelle."]
   },
   "fb6": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4419,7 +4419,7 @@ const HEFT_SEITEN = {
     name: "Was verrät die Linie im Geschwindigkeit-Zeit-Diagramm?",
     titel: "Die Linie steigt und fällt",
     frage: "Was bedeutet eine waagerechte, eine ansteigende und eine fallende Linie?",
-    schritte: ["Das Bild oben in der Simulation heißt „v-t-Diagramm“ – gemeint ist das Geschwindigkeit-Zeit-Diagramm.", "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 1 aus.", "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 2 aus.", "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile und fülle Zeile 3 aus."]
+    schritte: ["Das Bild oben in der Simulation heißt „v-t-Diagramm“ – gemeint ist das Geschwindigkeit-Zeit-Diagramm.", "Drücke den Knopf „konstant“ und dann „▶ Fahren“. Lies die Statuszeile. Notiere in Zeile 1 der Tabelle, wie sich die Geschwindigkeit ändert.", "Drücke den Knopf „beschleunigen“ und dann „▶ Fahren“. Lies die Statuszeile. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Drücke den Knopf „bremsen“ und dann „▶ Fahren“. Lies die Statuszeile. Notiere deine Beobachtung in Zeile 3 der Tabelle."]
   },
   "fb7": {
     klasse: 8, schulform: "Gesamtschule NRW · Förderheft",
@@ -4428,7 +4428,7 @@ const HEFT_SEITEN = {
     name: "Wie weit fährt ein Auto bis zum Halt?",
     titel: "Bis das Auto steht",
     frage: "Woraus besteht der Weg, bis das Auto wirklich steht?",
-    schritte: ["Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.", "Lies in der Statuszeile Reaktionsweg und Bremsweg ab. Trage die Geschwindigkeit 50 km/h und beide Wege in Zeile 1 ein. Am Bildschirm steht „Geschwindigkeit v = 50 km/h“.", "Drücke „100 km/h“ für Zeile 2, danach „30 km/h“ für Zeile 3.", "Vergleiche den Bremsweg bei 50 km/h mit dem Bremsweg bei 100 km/h."]
+    schritte: ["Drücke „▶ Gefahr! (Start)“ und beobachte, wie weit das Auto noch fährt.", "Lies in der Statuszeile den Bremsweg ab. Notiere ihn in Zeile 1 der Tabelle. Am Bildschirm steht „Geschwindigkeit v = 50 km/h“.", "Drücke „100 km/h“. Notiere Reaktionsweg und Bremsweg in Zeile 2 der Tabelle.", "Drücke „30 km/h“. Notiere beide Wege in Zeile 3 der Tabelle. Vergleiche dann die Bremswege."]
   },
   "fk1": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4437,7 +4437,7 @@ const HEFT_SEITEN = {
     name: "Woran erkennt man eine Kraft?",
     titel: "Der unsichtbare Schubs",
     frage: "Woran erkennst du, dass eine Kraft gewirkt hat?",
-    schritte: ["Wähle „Bewegen“, drücke „Kraft wirken lassen“ und lies die Statuszeile ab.", "Wähle „Verformen“, drücke „Kraft wirken lassen“ und lies ab.", "Wähle „Richtung ändern“, drücke „Kraft wirken lassen“ und lies ab.", "Trage in die Tabelle ein, was sich jedes Mal ändert."]
+    schritte: ["Wähle „Bewegen“, drücke „Kraft wirken lassen“ und lies die Statuszeile ab. Notiere in Zeile 1 der Tabelle, was sich ändert.", "Wähle „Verformen“, drücke „Kraft wirken lassen“ und lies ab. Notiere deine Beobachtung in Zeile 2 der Tabelle.", "Wähle „Richtung ändern“, drücke „Kraft wirken lassen“ und lies ab. Notiere deine Beobachtung in Zeile 3 der Tabelle.", "Vergleiche die drei Zeilen: Was ändert sich jedes Mal?"]
   },
   "fk2": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4446,7 +4446,7 @@ const HEFT_SEITEN = {
     name: "Wie misst man eine Kraft?",
     titel: "Was der Zeiger verrät",
     frage: "Wie kannst du eine Kraft messen, die du nicht siehst?",
-    schritte: ["Drücke auf „Feder leeren“. Jetzt hängen 0 g dran. Lies die Statuszeile.", "Drücke einmal auf „Gewichtsstück anhängen (100 g)“. Lies ab: Wie viel Newton zeigt der Zeiger?", "Drücke noch einmal darauf. Jetzt hängen 200 g dran. Lies wieder ab und füll die letzte Zeile."]
+    schritte: ["Drücke auf „Feder leeren“. Jetzt hängen 0 g dran. Lies die Statuszeile. Notiere in Zeile 1 der Tabelle, wie die Feder ist.", "Drücke einmal auf „Gewichtsstück anhängen (100 g)“. Lies ab: Wie viel Newton zeigt der Zeiger? Wie ist die Feder? Notiere beides in Zeile 2 der Tabelle.", "Drücke noch einmal darauf. Jetzt hängen 200 g dran. Lies wieder ab. Notiere beides in Zeile 3 der Tabelle."]
   },
   "fk3": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4455,7 +4455,7 @@ const HEFT_SEITEN = {
     name: "Warum gibt eine Feder nach?",
     titel: "Weicher Puffer, harter Puffer",
     frage: "Wovon hängt es ab, wie weit sich eine Feder dehnt?",
-    schritte: ["Wähle „weiche Feder“. Drücke „+ 100 g“.", "Lies ab: Wie viel Gramm? Wie weit dehnt sich die Feder? Trage es ein.", "Drücke „+ 100 g“ noch einmal (weiche Feder, 200 g). Trage wieder ein.", "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Füll die letzte Zeile."]
+    schritte: ["Wähle „weiche Feder“. Drücke „+ 100 g“.", "Lies ab: Wie weit dehnt sich die Feder? Notiere die Dehnung s in Zeile 1 der Tabelle im Heft.", "Drücke „+ 100 g“ noch einmal (weiche Feder, 200 g). Notiere 200 g und s in Zeile 2 der Tabelle im Heft.", "Drücke „alles abnehmen“, dann „harte Feder“, dann „+ 100 g“. Notiere 100 g und s in Zeile 3 der Tabelle im Heft."]
   },
   "fk4": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4464,7 +4464,7 @@ const HEFT_SEITEN = {
     name: "Masse oder Gewichtskraft?",
     titel: "Zwei Zahlen für ein Klavier",
     frage: "Sind Masse und Gewichtskraft dasselbe?",
-    schritte: ["Drücke zuerst „100 g“. Sonst steht noch 1 kg da.", "Lies in der Statuszeile Masse und Gewichtskraft ab. Trage alles ein.", "Drücke danach „1 kg“ und „2 kg“. Trage sie ein und vergleiche."]
+    schritte: ["Drücke zuerst „100 g“. Sonst steht noch 1 kg da.", "Lies in der Statuszeile die Gewichtskraft ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „1 kg“. Notiere Masse und Gewichtskraft in Zeile 2 der Tabelle.", "Drücke „2 kg“. Notiere Masse und Gewichtskraft in Zeile 3 der Tabelle. Vergleiche die Zeilen."]
   },
   "fk5": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4473,7 +4473,7 @@ const HEFT_SEITEN = {
     name: "Wäre das Klavier auf dem Mond leichter?",
     titel: "Das Klavier auf dem Mond",
     frage: "Wird auf dem Mond die Masse kleiner oder die Gewichtskraft?",
-    schritte: ["Wähle Erde und lies g und F in der Statuszeile ab.", "Trage Erde und beide Werte in Zeile 1 ein.", "Wiederhole das mit Mond und mit Jupiter.", "Vergleiche: Welche Zahl bleibt überall gleich?"]
+    schritte: ["Wähle Erde. Notiere F für den Menschen (60 kg) in Zeile 1.", "Wähle Mond. Notiere g und F in Zeile 2 der Tabelle.", "Wähle Jupiter. Notiere g und F in Zeile 3 der Tabelle.", "Vergleiche: Welche Zahl bleibt überall gleich?"]
   },
   "fk6": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4482,7 +4482,7 @@ const HEFT_SEITEN = {
     name: "Wie zeichnet man eine Kraft auf?",
     titel: "Pfeile auf dem Bühnenplan",
     frage: "Was zeigt der Kraftpfeil außer der Stärke noch?",
-    schritte: ["Drücke immer zuerst eine Zahl, dann einen Pfeil-Knopf.", "Drücke 2 N und →, danach 6 N und →. Lies jedes Mal den letzten Satz in der Statuszeile.", "Wiederhole das bei 6 N mit ↑ (nach oben) und ↗ (schräg nach rechts oben).", "Trage alles in die Tabelle ein."]
+    schritte: ["Drücke 2 N und →. Lies den letzten Satz in der Statuszeile. Notiere in Zeile 1 der Tabelle, wie lang der Pfeil ist.", "Drücke 6 N und →. Notiere Richtung und Länge in Zeile 2 der Tabelle.", "Drücke 6 N und ↑ (nach oben). Notiere beides in Zeile 3 der Tabelle.", "Drücke 6 N und ↗ (schräg nach rechts oben). Notiere beides in Zeile 4 der Tabelle."]
   },
   "fk7": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4491,7 +4491,7 @@ const HEFT_SEITEN = {
     name: "Was passiert, wenn zwei ziehen?",
     titel: "Zwei ziehen am selben Seil",
     frage: "Wann wird die Gesamtkraft größer, wann kleiner?",
-    schritte: ["Drücke noch nichts. Lies die Statuszeile ab. Trage Zeile 1 ein.", "Drücke bei F1 auf „Richtung“. Prüfe: F1 zieht jetzt nach links. Trage Zeile 2 ein.", "Drücke bei F2 auf „– N“. Trage Zeile 3 ein."]
+    schritte: ["Drücke noch nichts. Lies die Statuszeile ab. Notiere die Gesamtkraft in Zeile 1 der Tabelle.", "Drücke bei F1 auf „Richtung“. Prüfe: F1 zieht jetzt nach links. Notiere beide Kräfte und die Gesamtkraft in Zeile 2 der Tabelle.", "Drücke bei F2 auf „– N“. Notiere beide Kräfte und die Gesamtkraft in Zeile 3 der Tabelle."]
   },
   "fk8": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4500,7 +4500,7 @@ const HEFT_SEITEN = {
     name: "Warum bewegt sich die Lampe nicht?",
     titel: "Die Lampe hängt still",
     frage: "Wirken an der stillen Lampe wirklich keine Kräfte?",
-    schritte: ["Lies am Anfang die Haltekraft und die Gewichtskraft ab (am Bildschirm: „Halte 5 N“, „Gewicht 5 N“).", "Drücke einmal auf – N. Die Haltekraft ist jetzt 4 N. Beobachte die Lampe.", "Lies im Bild unter der Lampe die Gesamtkraft ab.", "Drücke auf den Knopf zurück in die Mitte. Die Haltekraft ist wieder 5 N. Vergleiche."]
+    schritte: ["Lies am Anfang die Haltekraft und die Gewichtskraft ab (am Bildschirm: „Halte 5 N“, „Gewicht 5 N“). Notiere in Zeile 1 der Tabelle, was die Lampe macht.", "Drücke einmal auf – N. Die Haltekraft ist jetzt 4 N. Beobachte die Lampe.", "Lies im Bild unter der Lampe die Gesamtkraft ab. Notiere in Zeile 2 der Tabelle die Gesamtkraft und was die Lampe macht.", "Drücke auf den Knopf zurück in die Mitte. Die Haltekraft ist wieder 5 N. Notiere beides in Zeile 3 der Tabelle. Vergleiche mit Zeile 1."]
   },
   "fk9": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4509,7 +4509,7 @@ const HEFT_SEITEN = {
     name: "Warum rollt der Wagen weiter?",
     titel: "Niemand schiebt mehr",
     frage: "Warum bleibt der Wagen stehen – und was passiert ohne Reibung?",
-    schritte: ["Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht.", "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an.", "Wähle „Weltall“, stoße an und lies die Statuszeile.", "Trage alles in die Tabelle ein."]
+    schritte: ["Wähle „Tisch“, drücke „Anstoßen“ und warte, bis er steht. Notiere die Zeit in Zeile 1 der Tabelle.", "Drücke „Zurücksetzen“, wähle „Eis“ und stoße wieder an. Notiere Reibung und Zeit in Zeile 2 der Tabelle.", "Wähle „Weltall“, stoße an und lies die Statuszeile. Notiere beides in Zeile 3 der Tabelle.", "Vergleiche die drei Zeilen."]
   },
   "fk10": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4518,7 +4518,7 @@ const HEFT_SEITEN = {
     name: "Warum rollt das Rollbrett zurück?",
     titel: "Rückwärts auf dem Rollbrett",
     frage: "Warum rollt Jannis zurück, wenn er das Klavier wegdrückt?",
-    schritte: ["Drücke Eisläufer. Trage Läufer A und Läufer B mit ihrer Masse m und Geschwindigkeit v ein.", "Drücke Boot. Trage Boot und Person mit ihrer Masse m und Geschwindigkeit v ein.", "Drücke Rakete. Lies die Statuszeile.", "Vergleiche: Wer ist leichter? Wer wird schneller?"]
+    schritte: ["Drücke Eisläufer. Notiere v von Läufer A in Zeile 1 der Tabelle. Notiere m und v von Läufer B in Zeile 2.", "Drücke Boot. Notiere m und v vom Boot in Zeile 3. Notiere m und v der Person in Zeile 4.", "Drücke Rakete. Lies die Statuszeile.", "Vergleiche: Wer ist leichter? Wer wird schneller?"]
   },
   "fk11": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4527,7 +4527,7 @@ const HEFT_SEITEN = {
     name: "Warum machen schmale Rollen Dellen?",
     titel: "Vier Dellen im neuen Podest",
     frage: "Warum hinterlassen schmale Rollen Dellen und breite Bretter nicht?",
-    schritte: ["Drücke Turnschuhe. Lies bei p die Zahl vor „kPa“. Fülle die erste Zeile aus.", "Drücke Stöckelabsatz und fülle die zweite Zeile aus.", "Drücke Skier und fülle die letzte Zeile aus."]
+    schritte: ["Drücke Turnschuhe. Lies bei p die Zahl vor „kPa“. Notiere p in Zeile 1 der Tabelle.", "Drücke Stöckelabsatz. Notiere A und p in Zeile 2 der Tabelle.", "Drücke Skier. Notiere A und p in Zeile 3 der Tabelle."]
   },
   "fk12": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4536,7 +4536,7 @@ const HEFT_SEITEN = {
     name: "Warum drückt Wasser in der Tiefe mehr?",
     titel: "Der untere Hahn spritzt weiter",
     frage: "Warum drückt das Wasser unten stärker als oben?",
-    schritte: ["Drücke zuerst „Wasser“. Die Tiefe bleibt 10 m. Lies unter der Überschrift „Der Schweredruck“ die Zahl vor „kPa“.", "Drücke Öl und trage den Wert bei 10 m ein.", "Drücke Quecksilber und fülle die dritte Zeile aus.", "Drücke zuletzt 40 m – Tauchgrenze. Quecksilber bleibt gewählt. Ergänze die letzte Zeile."]
+    schritte: ["Drücke zuerst „Wasser“. Die Tiefe bleibt 10 m. Lies unter der Überschrift „Der Schweredruck“ die Zahl vor „kPa“. Notiere p in Zeile 1 der Tabelle.", "Drücke Öl. Notiere die Tiefe und p in Zeile 2 der Tabelle.", "Drücke Quecksilber. Notiere die Tiefe und p in Zeile 3 der Tabelle.", "Drücke zuletzt 40 m – Tauchgrenze. Quecksilber bleibt gewählt. Notiere die Tiefe und p in Zeile 4 der Tabelle."]
   },
   "fk13": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4545,7 +4545,7 @@ const HEFT_SEITEN = {
     name: "Warum haben gleich große Würfel verschiedene Massen?",
     titel: "Zwei Klötze auf der Werkbank",
     frage: "Warum hat der eine Würfel mehr Masse als der andere?",
-    schritte: ["Drücke Blei und suche die Zeile 2 · Die Masse. Fülle die erste Tabellenzeile aus.", "Drücke Eisen und fülle die zweite Tabellenzeile aus.", "Drücke Styropor und fülle die letzte Zeile aus.", "Lies in Zeile 4: schwimmt oder sinkt der Würfel?"]
+    schritte: ["Drücke Blei. Lies unter „4 · Der Vergleich mit Wasser“: Schwimmt oder sinkt der Würfel? Notiere es in Zeile 1 der Tabelle.", "Lies die Masse unter „2 · Die Masse“ ab.", "Drücke Eisen. Notiere in Zeile 2 der Tabelle die Masse m und ob der Würfel schwimmt oder sinkt.", "Drücke Styropor. Notiere beides in Zeile 3 der Tabelle."]
   },
   "fk14": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4554,7 +4554,7 @@ const HEFT_SEITEN = {
     name: "Warum schwimmt ein Schiff aus Eisen?",
     titel: "Ein Stahlrohr in der Regentonne",
     frage: "Warum sinkt massives Eisen, ein hohler Eisenwürfel aber nicht?",
-    schritte: ["Drücke „massiv – sinkt“ und lies die mittlere Dichte ab.", "Drücke „87 % – sinkt noch“ und dann „88 % – schwimmt gerade“.", "Drücke „90 % – Schiff“ und vergleiche jede Zahl mit 1000 kg/m³.", "Trage alles in die Tabelle ein."]
+    schritte: ["Drücke „massiv – sinkt“ und lies die mittlere Dichte ab. Notiere in Zeile 1 der Tabelle, ob der Würfel schwimmt oder sinkt.", "Drücke „87 % – sinkt noch“. Notiere beides in Zeile 2 der Tabelle.", "Drücke „88 % – schwimmt gerade“. Notiere beides in Zeile 3 der Tabelle.", "Drücke „90 % – Schiff“. Notiere beides in Zeile 4 der Tabelle. Vergleiche jede Dichte mit 1000 kg/m³."]
   },
   "fe1": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4563,7 +4563,7 @@ const HEFT_SEITEN = {
     name: "Wann wird Arbeit verrichtet?",
     titel: "Vier Meter über den Hof",
     frage: "Wann verrichtet Jannis wirklich Arbeit?",
-    schritte: ["Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab.", "Drücke „Waagerecht tragen“. Vergleiche mit 400 J.", "Drücke „Hochheben“. Lies die Arbeit im Bild ab.", "Trage alles in die Tabelle ein."]
+    schritte: ["Drücke „Schieben“ und „Ausführen“. Lies die Arbeit ab. Notiere sie in Zeile 1 der Tabelle.", "Drücke „Waagerecht tragen“. Notiere ja oder nein und die Arbeit in Zeile 2 der Tabelle.", "Drücke „Hochheben“. Lies die Arbeit im Bild ab. Notiere beides in Zeile 3 der Tabelle.", "Vergleiche die Arbeit in den drei Zeilen."]
   },
   "fe2": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4572,7 +4572,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie oben?",
     titel: "Der Sack liegt oben still",
     frage: "Wovon hängt es ab, wie viel Lageenergie ein Körper oben hat?",
-    schritte: ["Drücke zuerst keinen Knopf (Start). Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat.", "Drücke „×2 Masse“ und trage die Werte in die Tabelle ein.", "Drücke danach „×2 Höhe“ und trage ein. Setze vorher nicht zurück.", "Vergleiche die drei Werte."]
+    schritte: ["Drücke zuerst keinen Knopf (Start). Lies in der Statuszeile ab, wie viel Lageenergie der Klotz oben hat. Notiere sie in Zeile 1 der Tabelle.", "Drücke „×2 Masse“. Notiere Masse, Höhe und Lageenergie in Zeile 2 der Tabelle.", "Drücke danach „×2 Höhe“. Setze vorher nicht zurück. Notiere Masse, Höhe und Lageenergie in Zeile 3 der Tabelle.", "Vergleiche die drei Werte."]
   },
   "fe3": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4581,7 +4581,7 @@ const HEFT_SEITEN = {
     name: "Wo steckt die Energie beim Rollen?",
     titel: "Der Ball wirft den Eimer um",
     frage: "Was bringt mehr Bewegungsenergie: doppelte Masse oder doppelte Geschwindigkeit v?",
-    schritte: ["Drücke „zurücksetzen“ für den Start. Am Bildschirm stehen 4 kg und 4 m/s. Fülle Zeile 1 aus.", "Drücke „×2 Masse“ und fülle Zeile 2 aus.", "Drücke danach „×2 v“ (doppelte Geschwindigkeit v) und fülle Zeile 3 aus.", "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."]
+    schritte: ["Drücke „zurücksetzen“ für den Start. Am Bildschirm stehen 4 kg und 4 m/s. Notiere E in Zeile 1 der Tabelle im Heft.", "Drücke „×2 Masse“. Notiere Masse, v und E in Zeile 2 der Tabelle im Heft.", "Drücke danach „×2 v“ (doppelte Geschwindigkeit v). Notiere Masse, v und E in Zeile 3 der Tabelle im Heft.", "Vergleiche die drei Werte. Drücke „Rollen lassen“ und beobachte den Klotz."]
   },
   "fe4": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4590,7 +4590,7 @@ const HEFT_SEITEN = {
     name: "Was passiert beim Fallen?",
     titel: "Der Ball vom Bühnenrand",
     frage: "Wo bleibt die Lageenergie, während der Ball fällt?",
-    schritte: ["Fasse die beiden Regler nicht an. Am Anfang ruht der Ball in 20,0 m Höhe.", "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.", "Beobachte die Höhe und die zwei Balken „E_pot“ und „E_kin“, solange der Ball nach unten fällt.", "Trage Höhe, E_pot und E_kin ein: Wird der Balken kürzer oder länger?"]
+    schritte: ["Lies am Regler „Höhe h“ ab: Der Ball startet in 20 m Höhe. Fasse die beiden Regler nicht an.", "Sieh dir den Ball an. Er fällt, springt hoch und fällt wieder.", "Sieh dir die Balken „E_pot“ und „E_kin“ ganz am Anfang an: Ist der Balken lang oder fehlt er? Notiere es in Zeile 2 und 3 der Tabelle.", "Beobachte die Höhe und die Balken, solange der Ball fällt. Notiere in Zeile 1 bis 3 der Tabelle, was beim Fallen passiert."]
   },
   "fe5": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4599,7 +4599,7 @@ const HEFT_SEITEN = {
     name: "Warum wird alles am Ende warm?",
     titel: "Am Ende ist alles warm",
     frage: "Warum soll man Energie sparen, wenn keine Energie verloren geht?",
-    schritte: ["Drücke zuerst „Benzin → Fahrt“. Sonst misst du die falsche Kette. Das ist der Anfang: Fülle Zeile 1 aus.", "Drücke „nächster Schritt“. Lies ab, wie viel man noch gebrauchen kann.", "Lies auch die letzte Zeile: Wie viel ist zusammen da?", "Trage beides in Zeile 2 ein: nach Schritt 1 (Motor)."]
+    schritte: ["Drücke zuerst „Benzin → Fahrt“. Sonst misst du die falsche Kette. Das ist der Anfang. Notiere in Zeile 1 der Tabelle, wie viel zusammen da ist.", "Drücke „nächster Schritt“. Lies ab, wie viel man noch gebrauchen kann.", "Lies auch die letzte Zeile am Bildschirm: Wie viel ist zusammen da?", "Notiere beides in Zeile 2 der Tabelle: nach Schritt 1 (Motor)."]
   },
   "fe6": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4608,7 +4608,7 @@ const HEFT_SEITEN = {
     name: "Was ist Leistung?",
     titel: "Nour zieht schneller",
     frage: "Was ändert sich, wenn Nour die halbe Zeit braucht?",
-    schritte: ["Drücke „zurücksetzen“ und dann „Hochziehen“. Die Zahlen stehen schon vorher da. Fülle Zeile 1 aus: 50 kg in 10 s.", "Drücke „÷2 Zeit“ und fülle Zeile 2 aus.", "Drücke „zurücksetzen“. Stelle 20 kg ein und fülle Zeile 3 aus."]
+    schritte: ["Drücke „zurücksetzen“ und dann „Hochziehen“. Die Zahlen stehen schon vorher da. Notiere P in Zeile 1 der Tabelle.", "Drücke „÷2 Zeit“. Notiere W und P in Zeile 2 der Tabelle.", "Drücke „zurücksetzen“. Stelle 20 kg ein. Notiere beide in Zeile 3."]
   },
   "fe7": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4617,7 +4617,7 @@ const HEFT_SEITEN = {
     name: "Wie viel Energie kommt an?",
     titel: "Die alte Glühlampe im Scheinwerfer",
     frage: "Wie viel von 1000 J wird bei einer Maschine wirklich zu Licht oder Bewegungsenergie?",
-    schritte: ["Lies die Statuszeile. Fasse den Regler nicht an. Die Glühlampe ist schon gewählt. Fülle Zeile 1 aus.", "Drücke „LED-Lampe“ und fülle Zeile 2 aus.", "Drücke „Benzinmotor“ und fülle Zeile 3 aus. Drücke „Elektromotor“ und fülle Zeile 4 aus.", "Vergleiche: Wo kommt am meisten heraus?"]
+    schritte: ["Lies die Statuszeile. Fasse den Regler nicht an. Die Glühlampe ist schon gewählt. Notiere η in Zeile 1 der Tabelle.", "Drücke „LED-Lampe“. Notiere beide Werte in Zeile 2 der Tabelle.", "Drücke „Benzinmotor“. Notiere beide Werte in Zeile 3 der Tabelle.", "Drücke „Elektromotor“. Notiere beide Werte in Zeile 4 der Tabelle. Vergleiche: Wo kommt am meisten heraus?"]
   },
   "fe8": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4626,7 +4626,7 @@ const HEFT_SEITEN = {
     name: "Warum hilft eine lange Stange?",
     titel: "Die Eisenstange unter dem Klavier",
     frage: "Was passiert mit Kraft und Weg, wenn der Kraftarm länger wird?",
-    schritte: ["Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N. Fülle Zeile 1 aus.", "Drücke „gleich lang – nichts gespart“ (0,25 m). Fülle Zeile 2 aus.", "Drücke „achtfach – ein Achtel der Kraft“ (2,00 m). Fülle Zeile 3 aus.", "Vergleiche die drei Zeilen. Lies im Bild die Arbeit ab."]
+    schritte: ["Stelle den Kraftarm l₁ auf 1,00 m. Die Last F₂ bleibt 200 N. Notiere den Kraftweg in Zeile 1 der Tabelle.", "Drücke „gleich lang – nichts gespart“ (0,25 m). Notiere F₁ und den Kraftweg in Zeile 2 der Tabelle.", "Drücke „achtfach – ein Achtel der Kraft“ (2,00 m). Notiere F₁ und den Kraftweg in Zeile 3 der Tabelle.", "Vergleiche die drei Zeilen. Lies im Bild die Arbeit ab."]
   },
   "fe9": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4635,7 +4635,7 @@ const HEFT_SEITEN = {
     name: "Was bringen Rollen und Seile?",
     titel: "Vier Seile für das Klavier",
     frage: "Was ändert sich, wenn mehr Seilstücke die Last tragen?",
-    schritte: ["Drücke „n = 1 · volle Kraft“ (1 Seilstück) und fülle Zeile 1.", "Drücke „n = 2 · halbe Kraft“ (2 Seilstücke) und fülle Zeile 2.", "Drücke „n = 4 · ein Viertel“ (4 Seilstücke) und fülle Zeile 3.", "Vergleiche die Zeile „Zugarbeit“ bei den drei Knöpfen."]
+    schritte: ["Wähle „n = 1 · volle Kraft“. Notiere den Weg in Tabellenzeile 1.", "Wähle „n = 2 · halbe Kraft“. Notiere F und Weg in Tabellenzeile 2.", "Wähle „n = 4 · ein Viertel“. Notiere F und Weg in Tabellenzeile 3.", "Vergleiche die Zeile „Zugarbeit“ bei den drei Knöpfen."]
   },
   "fe10": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4644,7 +4644,7 @@ const HEFT_SEITEN = {
     name: "Warum dreht sich das kleine Rad schneller?",
     titel: "Dreimal kurbeln, einmal herum",
     frage: "Wovon hängt die Drehzahl von Rad 2 ab?",
-    schritte: ["Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min. Trage alles ein.", "Drücke „groß treibt klein – schneller“ (Rad 1: 30 Zähne, Rad 2: 10 Zähne). Trage alles ein.", "Drücke „klein treibt groß – langsamer, kräftiger“ (Rad 1: 12 Zähne, Rad 2: 36 Zähne). Trage alles ein.", "Vergleiche die drei Zeilen."]
+    schritte: ["Drücke „gleich groß (24 : 24)“. Jeder Knopf stellt Rad 1 auf 60 U/min. Notiere n₂ in Zeile 1 der Tabelle.", "Drücke „groß treibt klein – schneller“ (Rad 1: 30 Zähne, Rad 2: 10 Zähne). Notiere die Zähne und n₂ in Zeile 2 der Tabelle.", "Drücke „klein treibt groß – langsamer, kräftiger“ (Rad 1: 12 Zähne, Rad 2: 36 Zähne). Notiere die Zähne und n₂ in Zeile 3 der Tabelle.", "Vergleiche die drei Zeilen."]
   },
   "fe11": {
     klasse: 9, schulform: "Gesamtschule NRW · Förderheft",
@@ -4653,7 +4653,7 @@ const HEFT_SEITEN = {
     name: "Was spart die Rampe?",
     titel: "Zwei Bretter an der Bühnenkante",
     frage: "Was ändert sich an Kraft und Weg, wenn die Rampe flacher liegt?",
-    schritte: ["Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.", "Lies die Kraft F in der Statuszeile ab. Die Zahl steht vor N.", "Trage „flach“, „mittel“ und „steil“ mit Kraft und Weg in die Tabelle ein."]
+    schritte: ["Drücke nur „flach“, „mittel“ oder „steil“. Die anderen Knöpfe brauchst du hier nicht.", "Drücke „flach“. Lies den Weg in der Statuszeile ab. Notiere ihn in Zeile 1 der Tabelle.", "Drücke „mittel“. Lies die Kraft F ab, die Zahl steht vor N. Notiere F und den Weg in Zeile 2 der Tabelle.", "Drücke „steil“. Notiere F und den Weg in Zeile 3 der Tabelle."]
   },
   "fz16": {
     klasse: 10, schulform: "Gesamtschule NRW · Förderheft",

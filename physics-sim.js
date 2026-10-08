@@ -42334,7 +42334,9 @@ function _mlabRenderSteigung(st, P) {
   const dx = b - a, dy = fit.k * b - fit.k * a;
   const sx = _mlabSym(P.xl), sy = _mlabSym(P.yl);
   const ex = _mlabEinheit(P.xl), ey = _mlabEinheit(P.yl);
-  const einheit = ey && ex ? ey + '/' + ex : '';
+  // Zusammengesetzte Nenner-Einheit klammern: aus "J" und "m²/s²" wurde sonst
+  // "J/m²/s²" (= J/(m²·s²), falsch), richtig ist "J/(m²/s²)" (08.10.2026).
+  const einheit = ey && ex ? ey + '/' + (/[\/·\s]/.test(ex) ? '(' + ex + ')' : ex) : '';
   el.innerHTML = '<div class="fpm-theo"><b>Steigungsdreieck</b><br>' +
     'Δ' + sx + ' = ' + _fpmNum(dx, 2) + ' ' + ex + ' &nbsp;·&nbsp; ' +
     'Δ' + sy + ' = ' + _fpmNum(dy, 2) + ' ' + ey + '<br>' +
@@ -42353,7 +42355,11 @@ function _mlabRenderFit(st, groups, P) {
     const name = g.key === null ? 'alle Messwerte' : P.gl(g.key);
     const eq = 'y = ' + _fpmNum(g.fit.k, Math.abs(g.fit.k) < 1 ? 4 : 3) + '·x' +
       (st.origin ? '' : (g.fit.b >= 0 ? ' + ' : ' − ') + _fpmNum(Math.abs(g.fit.b), 4));
-    const erw = P.slope ? ' · erwartet: ' + _fpmNum(P.slope(g.key), Math.abs(P.slope(g.key)) < 1 ? 4 : 3) : '';
+    // P.einheitK: Einheit der erwarteten Steigung. Gesetzt nur dort, wo sie
+    // eindeutig ist (bewegungsenergie, 08.10.2026); die uebrigen Messlabore
+    // bleiben unveraendert, weil Hefte und Forschermodus-Masken ihren Wortlaut
+    // " · erwartet: 2,000" zitieren.
+    const erw = P.slope ? ' · erwartet: ' + _fpmNum(P.slope(g.key), Math.abs(P.slope(g.key)) < 1 ? 4 : 3) + (P.einheitK ? ' ' + P.einheitK : '') : '';
     html += `<div class="fpm-fitline">
        <span class="fpm-fitmeta"><span class="fpm-dot" style="background:${g.col}"></span>${name} · ${g.n} Messwerte</span>
        <span class="fpm-fiteq">${eq}</span>
@@ -62764,7 +62770,7 @@ function _drtHTML() {
       <div>
         <div class="fpm-label">Widerstand des Drahtes</div>
         <div class="lmp-status" id="drtStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Der Widerstand eines Drahtes ist <b>größer</b>, wenn der Draht <b>länger</b> oder <b>dünner</b> ist. Er hängt außerdem vom <b>Material</b> ab: Kupfer leitet sehr gut (kleiner Widerstand), Konstantan schlecht (großer Widerstand).<br><b>Modellgrenze:</b> Die Simulation rechnet mit runden Werten (5 · 15 · 45 Ω). In Wirklichkeit ist der Unterschied noch größer – Konstantan hat etwa den <b>28-fachen</b> spezifischen Widerstand von Kupfer, Eisen etwa den sechsfachen.</div>
+        <div class="fpm-note" style="margin-top:10px">Der Widerstand eines Drahtes ist <b>größer</b>, wenn der Draht <b>länger</b> oder <b>dünner</b> ist. Er hängt außerdem vom <b>Material</b> ab: Kupfer leitet sehr gut (kleiner Widerstand), Konstantan schlecht (großer Widerstand).<br><b>Modellgrenze:</b> Die Simulation rechnet mit runden Werten (Kupfer 5 Ω, Eisen 15 Ω, Konstantan 45 Ω). In Wirklichkeit ist der Unterschied noch größer – Konstantan hat etwa den <b>28-fachen</b> spezifischen Widerstand von Kupfer, Eisen etwa den sechsfachen.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -63040,7 +63046,7 @@ function _rwdDraw(ctx, cv) {
     ctx.fillStyle = '#60a5fa'; ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 2 * Math.PI); ctx.fill();
   }
   ctx.fillStyle = '#e2e8f0'; ctx.font = '700 12px sans-serif'; ctx.textAlign = 'center';
-  ctx.fillText('R_ges = ' + _rwd.r1 + ' + ' + _rwd.r2 + ' = ' + _rwdRges() + ' Ω', (L + R) / 2, 22);
+  ctx.fillText('R_ges = ' + _rwd.r1 + ' Ω + ' + _rwd.r2 + ' Ω = ' + _rwdRges() + ' Ω', (L + R) / 2, 22);   // Einheiten in jeder Rechnung (Abdullah, 08.10.2026)
 }
 
 // ═══════════════════════════════════════════════════════
@@ -64927,7 +64933,7 @@ function _vmsDraw(ctx, cv) {
   // Stoppuhr-Anzeige
   const tShow = _vms.fertig ? _vmsTMess() : (_vms.laufen ? _vms.prog * _vmsTMess() : 0);
   ctx.fillStyle = '#0f172a'; ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(W / 2, 60, 26, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = '#fde047'; ctx.font = '700 14px monospace'; ctx.textAlign = 'center'; ctx.fillText(tShow.toFixed(1).replace('.', ',') + 's', W / 2, 65);
+  ctx.fillStyle = '#fde047'; ctx.font = '700 14px monospace'; ctx.textAlign = 'center'; ctx.fillText(tShow.toFixed(1).replace('.', ',') + ' s', W / 2, 65);
   ctx.fillStyle = '#94a3b8'; ctx.font = '9px sans-serif'; ctx.fillText('⏱ Stoppuhr', W / 2, 96);
   // Ergebnis
   if (_vms.fertig) {
@@ -65416,7 +65422,7 @@ const _UMR_MINI = [
   { q: '3. Wie viel km/h sind 10 m/s?',
     opts: ['3,6 km/h', '36 km/h', '360 km/h'], correct: 1,
     fb: ['Das ist nur 1 m/s.',
-         'Richtig! 10 · 3,6 = 36 km/h.',
+         'Richtig! 10 m/s · 3,6 = 36 km/h.',
          'Um den Faktor 10 zu groß.'] }
 ];
 function _umrMiniHTML() {
@@ -65444,7 +65450,10 @@ function _umrSelf(n) {
 // Strecken zurückgelegt (gleichmäßige Markierungen).
 // ═══════════════════════════════════════════════════════
 let _glm = null;
-const _GLM_SPEED = { langsam: { name: 'langsam', v: 40 }, mittel: { name: 'mittel', v: 70 }, schnell: { name: 'schnell', v: 110 } };
+const _GLM_SPEED = { langsam: { name: 'langsam', v: 40, anzeige: '2,0 m/s' }, mittel: { name: 'mittel', v: 70, anzeige: '3,5 m/s' }, schnell: { name: 'schnell', v: 110, anzeige: '5,5 m/s' } };
+// v ist die Bildgeschwindigkeit in Pixel/s. Angezeigt wird sie MIT Einheit (Abdullah, 08.10.2026:
+// „in Physik ist es sehr wichtig, dass die Einheiten immer mit drin sind“) – Massstab 1 Pixel = 5 cm,
+// passend zum Fahrrad ueber den Schulhof im Foerderheft 8 (fb4).
 function _glmInit() { _glm = { speed: 'mittel', t: 0, pos: 0, laufen: false, marks: [], lastMark: 0 }; }
 function _glmV() { return _GLM_SPEED[_glm.speed].v; }
 
@@ -65485,7 +65494,7 @@ function _glmStart() { _glm.pos = 0; _glm.marks = []; _glm.lastMark = 0; _glm.t 
 function _glmReset() { _glmInit(); _glmSet('mittel'); _glmReset2(); }
 function _glmStatus() {
   const el = document.getElementById('glmStatus'); if (!el) return;
-  el.textContent = `Gleichförmige Bewegung mit v = ${_glmV()} (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.`;
+  el.textContent = `Gleichförmige Bewegung mit v = ${_GLM_SPEED[_glm.speed].anzeige} (konstant). In jeder Sekunde die gleiche Strecke → die Marken haben gleiche Abstände.`;
   el.className = 'lmp-status on';
 }
 
@@ -65507,7 +65516,7 @@ function _glmDraw(ctx, cv) {
   _glm.marks.forEach((m, i) => {
     const x = x0 + Math.min(m, 360);
     ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, cy - 20); ctx.lineTo(x, cy + 20); ctx.stroke();
-    ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText((i + 1) + 's', x, cy - 26);
+    ctx.fillStyle = '#93c5fd'; ctx.font = '9px sans-serif'; ctx.textAlign = 'center'; ctx.fillText((i + 1) + ' s', x, cy - 26);
   });
   // Wagen
   const cx = x0 + Math.min(_glm.pos, 360);
@@ -66109,7 +66118,7 @@ function _vtdDraw(ctx, cv) {
   ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H);
   const ox = 44, oy = 30, ow = 200, oh = 130, dauer = _vtdDauer(), vMax = 100;
   ctx.strokeStyle = '#64748b'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox, oy + oh); ctx.lineTo(ox + ow, oy + oh); ctx.stroke();
-  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.fillText('v', ox - 2, oy - 10); ctx.textAlign = 'left'; ctx.fillText('t (Zeit)', ox + ow - 34, oy + oh + 14);
+  ctx.fillStyle = '#94a3b8'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center'; ctx.textAlign = 'left'; ctx.fillText('v in km/h', ox - 6, oy - 10); ctx.fillText('t in s', ox + ow - 34, oy + oh + 14);
   const px = tt => ox + (tt / dauer) * ow;
   const py = vv => oy + oh - Math.min(1, vv / vMax) * oh;
   // ganze Linie blass
@@ -66130,7 +66139,7 @@ function _vtdDraw(ctx, cv) {
   ctx.fillRect(cx - 15, carY - 6, 30, 15);
   ctx.fillStyle = '#0f172a'; ctx.beginPath(); ctx.arc(cx - 8, carY + 11, 4, 0, 2 * Math.PI); ctx.arc(cx + 8, carY + 11, 4, 0, 2 * Math.PI); ctx.fill();
   // aktuelle v-Anzeige
-  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('v jetzt: ' + Math.round(_vtdVAt(_vtd.t)), 280, 40);
+  ctx.fillStyle = '#e2e8f0'; ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillText('v jetzt: ' + Math.round(_vtdVAt(_vtd.t)) + ' km/h', 280, 40);
   ctx.textAlign = 'right'; ctx.fillText(_VTD_SZEN[_vtd.szen].name, W - 20, 22);
 }
 
@@ -66218,7 +66227,7 @@ const _VTD_MINI = [
     opts: ['Der Körper wird schneller (beschleunigt)', 'Er wird langsamer', 'Er steht still'], correct: 0,
     fb: ['Richtig! Die Geschwindigkeit nimmt zu.',
          'Langsamer wäre eine fallende Linie.',
-         'Stillstand wäre die Linie ganz unten (v = 0).'] },
+         'Stillstand wäre die Linie ganz unten (v = 0 km/h).'] },
   { q: '3. Was bedeutet eine fallende Linie im v-t-Diagramm?',
     opts: ['Beschleunigen', 'Bremsen (langsamer werden)', 'Gleich schnell'], correct: 1,
     fb: ['Beschleunigen wäre ansteigend.',
@@ -67466,8 +67475,8 @@ function _fedArbeitsblattHTML() {
         <div class="ab-t"><b>Erwartete Beobachtungen.</b> Weiche Feder: 100 g sind 0,98 N und dehnen 1,96 cm; 200 g sind 1,96 N und 3,92 cm. Die Ausgleichsgerade hat die Steigung <b>D = 0,50 N/cm</b>. Harte Feder: dieselben Massen, halbe Dehnung, <b>D = 1,00 N/cm</b>. Die Messpunkte liegen auf einer Geraden durch den Ursprung.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Im elastischen Bereich ist die Dehnung s proportional zur Kraft F: s ~ F. Das Verhältnis D = F/s (Federkonstante/Federhärte) ist für eine Feder konstant. Hooke'sches Gesetz: F = D · s. Eine harte Feder hat eine größere Federkonstante (steilere F/s), aber flachere s-über-F-Gerade.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Die Feder dehnt sich immer weiter proportional, egal wie stark.“ – nur im elastischen Bereich; danach bleibt sie überdehnt. (2) „D ändert sich mit der Kraft.“ (3) „Steile Gerade = harte Feder.“ (im s-über-F-Diagramm ist es umgekehrt).</div>
-        <div class="ab-t"><b>Hilfestellungen.</b> D = F/s für jede Zeile gemeinsam ausrechnen und vergleichen; Proportionalität als „doppelt → doppelt“ verbalisieren; Ursprung (0,0) betonen.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle (weich): s = 2/4/6 cm; D = 0,5 N/cm konstant. 6.1 eine Gerade durch den Ursprung. 6.2 s verdoppelt sich. 6.3 ja. Merksatz: proportional · Gerade · Federkonstante · Hooke'sche. Transfer: Bei Überdehnung verformt sich die Feder bleibend, die Proportionalität (Gerade) gilt dann nicht mehr. Minidiagnose: 1→Gerade durch den Ursprung · 2→doppelte Dehnung · 3→Hooke'sches Gesetz.</div>
+        <div class="ab-t"><b>Hilfestellungen.</b> D = F/s für jede Zeile gemeinsam ausrechnen und vergleichen; Proportionalität als „doppelt → doppelt“ verbalisieren; Ursprung betonen (bei 0 N auch 0 cm Dehnung).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle (weich): s ≈ 2 cm, 4 cm, 6 cm; D = 0,5 N/cm konstant. 6.1 eine Gerade durch den Ursprung. 6.2 s verdoppelt sich. 6.3 ja. Merksatz: proportional · Gerade · Federkonstante · Hooke'sche. Transfer: Bei Überdehnung verformt sich die Feder bleibend, die Proportionalität (Gerade) gilt dann nicht mehr. Minidiagnose: 1→Gerade durch den Ursprung · 2→doppelte Dehnung · 3→Hooke'sches Gesetz.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -67479,7 +67488,7 @@ function _fedArbeitsblattHTML() {
 const _FED_MINI = [
   { q: '1. Welche Form hat die Kurve (Dehnung über Kraft)?',
     opts: ['Eine Gerade durch den Ursprung', 'Eine gebogene Kurve', 'Eine waagerechte Linie'], correct: 0,
-    fb: ['Richtig! Dehnung und Kraft sind proportional – Gerade durch (0,0).',
+    fb: ['Richtig! Dehnung und Kraft sind proportional – Gerade durch den Ursprung (bei 0 N auch 0 cm).',
          'Im elastischen Bereich ist es eine Gerade, keine Kurve.',
          'Dann würde sich die Feder gar nicht dehnen.'] },
   { q: '2. Du verdoppelst die Kraft. Was passiert mit der Dehnung?',
@@ -67621,7 +67630,7 @@ function _mgwArbeitsblattHTML() {
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
-        <div class="ab-t">Trage Masse und Gewichtskraft ein (g = 9,8 N/kg, also F = m · 9,8).</div>
+        <div class="ab-t">Trage Masse und Gewichtskraft ein (g = 9,8 N/kg, also F = m · 9,8 N/kg).</div>
         <table class="ab-table"><tbody>
           <tr><td>Masse = 0,5 kg</td><td>F = ${inp('f1', 'N')}</td></tr>
           <tr><td>Masse = 1 kg</td><td>F = ${inp('f2', 'N')}</td></tr>
@@ -67663,11 +67672,11 @@ function _mgwArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die Waage zeigt die Masse (g/kg), der Kraftmesser die Gewichtskraft (N). Mit g = 9,8 N/kg: 0,5 kg → 4,9 N · 1 kg → 9,8 N · 2 kg → 19,6 N. Größere Masse → größere Gewichtskraft (auf der Erde).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Die Waage zeigt die Masse (g/kg), der Kraftmesser die Gewichtskraft (N). Mit g = 9,8 N/kg: 0,5 kg → 4,9 N, 1 kg → 9,8 N, 2 kg → 19,6 N. Größere Masse → größere Gewichtskraft (auf der Erde).</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Masse (Formelzeichen m, Einheit kg) ist die orts­unabhängige Materiemenge und wird mit einer Waage bestimmt. Gewichtskraft (F, Einheit N) ist die Anziehungskraft der Erde und wird mit einem Kraftmesser bestimmt: F = m · g. Umgangssprachlich „schwer“ = große Gewichtskraft. (Dass die Gewichtskraft vom Ort abhängt, folgt in 9.1.6.)</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Masse und Gewicht sind dasselbe.“ (2) „Die Waage misst Newton.“ (3) „Kilogramm ist eine Krafteinheit.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Zwei Geräte, zwei Größen, zwei Einheiten klar gegenüberstellen; F = m · g gemeinsam ausrechnen; 100 g ≈ 1 N als Brücke zu 9.1.3.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 4,9 / 9,8 / 19,6 N. 6.1 Masse: Waage · Gewichtskraft: Kraftmesser. 6.2 Masse: kg · Kraft: N. 6.3 F = m · g. Merksatz: Masse · kg · Gewichtskraft · N · m · g. Transfer: „1 kg“ ist eine Masse; „schwer“ meint eine große Gewichtskraft. Minidiagnose: 1→Waage (kg) · 2→Anziehungskraft der Erde (N) · 3→F = m · g.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 4,9 N, 9,8 N, 19,6 N. 6.1 Masse: Waage · Gewichtskraft: Kraftmesser. 6.2 Masse: kg · Kraft: N. 6.3 F = m · g. Merksatz: Masse · kg · Gewichtskraft · N · m · g. Transfer: „1 kg“ ist eine Masse; „schwer“ meint eine große Gewichtskraft. Minidiagnose: 1→Waage (kg) · 2→Anziehungskraft der Erde (N) · 3→F = m · g.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -67868,11 +67877,11 @@ function _ortArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> g: Mond 1,6 · Erde 9,8 · Jupiter 24,8 N/kg. Gewichtskraft (m = 60 kg): Mond 96 N · Erde 588 N · Jupiter 1488 N. Die Masse bleibt überall 60 kg, nur die Gewichtskraft ändert sich.</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> g: Mond 1,6 N/kg, Erde 9,8 N/kg, Jupiter 24,8 N/kg. Gewichtskraft (m = 60 kg): Mond 96 N, Erde 588 N, Jupiter 1488 N. Die Masse bleibt überall 60 kg, nur die Gewichtskraft ändert sich.</div>
         <div class="ab-t"><b>Fachlich richtig.</b> Die Masse ist ortsunabhängig (Materiemenge). Die Gewichtskraft F = m · g hängt vom Ortsfaktor g ab; auf dem Mond ist g ≈ 1/6 der Erde, daher ist die Gewichtskraft dort nur etwa ein Sechstel. „Leichter“ bezieht sich auf die Gewichtskraft, nicht auf die Masse.</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Auf dem Mond hat man weniger Masse.“ (2) „Im Weltall/auf dem Mond gibt es keine Schwerkraft.“ (3) „Masse und Gewicht sind dasselbe.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Masse (bleibt) und Gewichtskraft (ändert sich) strikt trennen; F = m · g je Ort ausrechnen; Balkenwaage (vergleicht Masse, überall gleich) vs. Federwaage (misst Kraft, ortsabhängig) thematisieren.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: g 1,6/9,8/24,8; F 96/588/1488 N. 6.1 die Masse (60 kg). 6.2 die Gewichtskraft, weil g verschieden ist. 6.3 auf dem Mond. Merksatz: Masse · Gewichtskraft · Ortsfaktor · 1/6. Transfer: gleiche Masse, aber kleinere Gewichtskraft → man wird leichter angezogen und kann höher springen. Minidiagnose: 1→die Masse · 2→weil die Gewichtskraft kleiner ist · 3→von Masse und Ortsfaktor g.</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: g = 1,6 N/kg, 9,8 N/kg, 24,8 N/kg; F = 96 N, 588 N, 1488 N. 6.1 die Masse (60 kg). 6.2 die Gewichtskraft, weil g verschieden ist. 6.3 auf dem Mond. Merksatz: Masse · Gewichtskraft · Ortsfaktor · 1/6. Transfer: gleiche Masse, aber kleinere Gewichtskraft → man wird leichter angezogen und kann höher springen. Minidiagnose: 1→die Masse · 2→weil die Gewichtskraft kleiner ist · 3→von Masse und Ortsfaktor g.</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -68158,7 +68167,7 @@ function _kadHTML() {
       <div>
         <div class="fpm-label">Gesamtkraft (Resultierende)</div>
         <div class="lmp-status" id="kadStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Wirken Kräfte längs einer Linie, so rechnet man sie zusammen: <b>gleiche Richtung → addieren</b>, <b>entgegengesetzt → subtrahieren</b>. Das Ergebnis ist die <b>Gesamtkraft</b> (Resultierende). Sind zwei gleich große Kräfte entgegengesetzt, ist die Gesamtkraft <b>0</b>.</div>
+        <div class="fpm-note" style="margin-top:10px">Wirken Kräfte längs einer Linie, so rechnet man sie zusammen: <b>gleiche Richtung → addieren</b>, <b>entgegengesetzt → subtrahieren</b>. Das Ergebnis ist die <b>Gesamtkraft</b> (Resultierende). Sind zwei gleich große Kräfte entgegengesetzt, ist die Gesamtkraft <b>0 N</b>.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -68367,7 +68376,7 @@ function _kggHTML() {
       <div>
         <div class="fpm-label">Kräfte an der Lampe</div>
         <div class="lmp-status" id="kggStatus" style="margin-top:6px"></div>
-        <div class="fpm-note" style="margin-top:10px">Sind die Kräfte <b>gleich groß und entgegengesetzt</b>, ist die <b>Gesamtkraft 0</b> – die Lampe bleibt in Ruhe. Das heißt <b>Kräftegleichgewicht</b>. Ist eine Kraft größer, ist die Gesamtkraft nicht null und die Bewegung ändert sich.</div>
+        <div class="fpm-note" style="margin-top:10px">Sind die Kräfte <b>gleich groß und entgegengesetzt</b>, ist die <b>Gesamtkraft 0 N</b> – die Lampe bleibt in Ruhe. Das heißt <b>Kräftegleichgewicht</b>. Ist eine Kraft größer, ist die Gesamtkraft nicht null und die Bewegung ändert sich.</div>
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
@@ -68507,8 +68516,8 @@ function _kggArbeitsblattHTML() {
 
 const _KGG_MINI = [
   { q: '1. Warum bleibt eine hängende Lampe in Ruhe?',
-    opts: ['Weil Haltekraft und Gewichtskraft gleich groß sind (Gesamtkraft 0)', 'Weil keine Kräfte wirken', 'Weil die Gewichtskraft verschwindet'], correct: 0,
-    fb: ['Richtig! Die Kräfte sind im Gleichgewicht, die Gesamtkraft ist 0.',
+    opts: ['Weil Haltekraft und Gewichtskraft gleich groß sind (Gesamtkraft 0 N)', 'Weil keine Kräfte wirken', 'Weil die Gewichtskraft verschwindet'], correct: 0,
+    fb: ['Richtig! Die Kräfte sind im Gleichgewicht, die Gesamtkraft ist 0 N.',
          'Doch, es wirken Kräfte – sie gleichen sich nur aus.',
          'Die Gewichtskraft ist weiter da, sie wird vom Seil ausgeglichen.'] },
   { q: '2. Wie groß ist die Gesamtkraft im Gleichgewicht?',
@@ -68805,6 +68814,20 @@ const _SIE_RAMPS = {
 function _sieInit() { _sie = { ramp: 'mittel', t: 0 }; }
 function _sieF() { return _SIE_G * _SIE_RAMPS[_sie.ramp].sin; }        // Zugkraft
 function _sieWeg() { return 1 / _SIE_RAMPS[_sie.ramp].sin; }           // Weg in Vielfachen der Höhe
+// Nur fuer die ANZEIGE: Die Simulation rechnet den Weg als Vielfaches der Hoehe
+// ("4,0 × so lang wie die Höhe"). Kraft × Weg stand deshalb als einheitenlose "6"
+// da. Mit einer Hoehe von 1 m wird daraus ohne Umrechnung "4,0 m" und "6 J" -
+// dieselbe Zahl wie bisher, jetzt mit Einheit (Abdullah, 08.10.2026). 1 m passt
+// zur Buehnenkante im Foerderheft 9 (fe11). Der Weg der steilen Rampe (1,333 m)
+// steht mit zwei Stellen da, und das Produkt wird aus den GEDRUCKTEN Zahlen
+// gebildet: 4,5 N · 1,3 m = 5,985 J, also "≈ 6 J" statt eines glatten "= 6".
+const _SIE_H_ANZEIGE = 1;                          // Hoehe in m, nur Anzeige
+function _sieWegM() {
+  const s = _sieWeg() * _SIE_H_ANZEIGE;
+  // Eine Stelle wie im Bild („1,3 × Höhe“): der Rechenweg muss aus den angezeigten
+  // Zahlen aufgehen (4,5 N · 1,3 m = 5,85 J, deshalb „≈ 6 J“).
+  return s.toFixed(1);
+}
 
 function _sieHTML() {
   return `<div class="sim-box sim-box-wide fpm-sim sie-sim">
@@ -68844,7 +68867,10 @@ function _sieSet(r) {
 function _sieStatus() {
   const el = document.getElementById('sieStatus'); if (!el) return;
   const F = _sieF(), w = _sieWeg();
-  el.innerHTML = `${_SIE_RAMPS[_sie.ramp].name}: Zugkraft <b>F = ${F.toFixed(1).replace('.', ',')} N</b> (statt 6 N senkrecht), Weg <b>${w.toFixed(1).replace('.', ',')} × so lang</b> wie die Höhe. Kraft × Weg = <b>${(F * w).toFixed(0)}</b> – genauso viel wie beim direkten Heben.`;
+  // Produkt aus den angezeigten Zahlen: geht es glatt auf, steht "=", sonst "≈".
+  const sM = _sieWegM(), prod = +F.toFixed(1) * parseFloat(sM);
+  const glatt = Math.abs(prod - Math.round(F * w * _SIE_H_ANZEIGE)) < 1e-9;
+  el.innerHTML = `${_SIE_RAMPS[_sie.ramp].name}: Zugkraft <b>F = ${F.toFixed(1).replace('.', ',')} N</b> (statt 6 N senkrecht), Weg <b>${w.toFixed(1).replace('.', ',')} × so lang</b> wie die Höhe. Bei ${_SIE_H_ANZEIGE} m Höhe: Kraft × Weg = ${F.toFixed(1).replace('.', ',')} N · ${sM.replace('.', ',')} m ${glatt ? '=' : '≈'} <b>${(F * w * _SIE_H_ANZEIGE).toFixed(0)} J</b> – genauso viel wie beim direkten Heben (${_SIE_G} N · ${_SIE_H_ANZEIGE} m = ${_SIE_G * _SIE_H_ANZEIGE} J).`;
   el.className = 'lmp-status on';
 }
 
@@ -68906,11 +68932,11 @@ function _sieArbeitsblattHTML() {
         </ol></div>
 
       <div class="ab-sec"><div class="ab-h">4 · Beobachtungstabelle</div>
-        <div class="ab-t">Last = 6 N. Trage Zugkraft, Weg (× Höhe) und Kraft × Weg ein.</div>
+        <div class="ab-t">Last = 6 N, Höhe = 1 m. Trage Zugkraft, Weg (× Höhe) und Kraft × Weg ein.</div>
         <table class="ab-table"><tbody>
-          <tr><td>flache Rampe</td><td>F = ${inp('f1', 'N')}</td><td>Weg = ${inp('w1', '× Höhe')}</td><td>F·Weg = ${inp('p1', '')}</td></tr>
-          <tr><td>mittlere Rampe</td><td>F = ${inp('f2', 'N')}</td><td>Weg = ${inp('w2', '× Höhe')}</td><td>F·Weg = ${inp('p2', '')}</td></tr>
-          <tr><td>steile Rampe</td><td>F = ${inp('f3', 'N')}</td><td>Weg = ${inp('w3', '× Höhe')}</td><td>F·Weg = ${inp('p3', '')}</td></tr>
+          <tr><td>flache Rampe</td><td>F = ${inp('f1', 'N')}</td><td>Weg = ${inp('w1', '× Höhe')}</td><td>F·Weg = ${inp('p1', 'J')}</td></tr>
+          <tr><td>mittlere Rampe</td><td>F = ${inp('f2', 'N')}</td><td>Weg = ${inp('w2', '× Höhe')}</td><td>F·Weg = ${inp('p2', 'J')}</td></tr>
+          <tr><td>steile Rampe</td><td>F = ${inp('f3', 'N')}</td><td>Weg = ${inp('w3', '× Höhe')}</td><td>F·Weg = ${inp('p3', 'J')}</td></tr>
         </tbody></table></div>
 
       <div class="ab-sec"><div class="ab-h">5 · Skizze</div>
@@ -68948,11 +68974,11 @@ function _sieArbeitsblattHTML() {
 
       <details class="sha-lehrer">
         <summary>🔒 Nur für die Lehrkraft – Erwartungen &amp; Lösungen</summary>
-        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Last 6 N. Flach: F ≈ 1,5 N, Weg 4× Höhe. Mittel: F = 3 N, Weg 2× Höhe. Steil: F ≈ 4,5 N, Weg ≈ 1,3× Höhe. Kraft × Weg ≈ 6 in allen Fällen – so viel wie beim senkrechten Heben (6 N · 1 Höhe).</div>
+        <div class="ab-t"><b>Erwartete Beobachtungen.</b> Last 6 N. Flach: F ≈ 1,5 N, Weg 4× Höhe. Mittel: F = 3 N, Weg 2× Höhe. Steil: F ≈ 4,5 N, Weg ≈ 1,3× Höhe. Bei 1 m Höhe ist Kraft × Weg in allen Fällen 6 J (steil: 4,5 N · 1,3 m ≈ 6 J) – so viel wie beim senkrechten Heben (6 N · 1 m = 6 J).</div>
         <div class="ab-t"><b>Fachlich richtig.</b> An der reibungsfreien schiefen Ebene ist die Hangabtriebs-/Zugkraft F = G · sin α = G · (h/l). Flachere Rampe (kleineres h/l) → kleinere Kraft, aber größere Weglänge l. Das Produkt F · l = G · h ist die Hubarbeit und bleibt konstant („Goldene Regel der Mechanik": Was man an Kraft spart, muss man an Weg zusetzen). Vorbereitung auf 9.3 (Arbeit W = F · s).</div>
         <div class="ab-t"><b>Mögliche Fehlvorstellungen.</b> (1) „Mit der Rampe spart man Arbeit/Energie.“ – Nein, nur Kraft. (2) „Flacher = anstrengender.“ (3) „Der Weg spielt keine Rolle.“</div>
         <div class="ab-t"><b>Hilfestellungen.</b> Kraft und Weg getrennt betrachten; Kraft × Weg jeweils ausrechnen; Rampenlänge mit der Steilheit verbinden.</div>
-        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,5/3/4,5 N · 4/2/1,3 × Höhe · je ≈ 6. 6.1 bei der flachen Rampe. 6.2 der Weg wird länger. 6.3 Kraft × Weg (die Arbeit). Merksatz: Kraft · weniger · Weg · gleich. Transfer: weniger Kraft/Steigung, dafür längerer Weg. Minidiagnose: 1→Kraft · 2→weniger Kraft, längerer Weg · 3→Kraft × Weg (die Arbeit).</div>
+        <div class="ab-t"><b>Musterlösung.</b> Tabelle: 1,5 N, 3 N, 4,5 N; Weg 4-, 2-, 1,3-mal die Höhe; Kraft × Weg je ≈ 6 J (bei 1 m Höhe). 6.1 bei der flachen Rampe. 6.2 der Weg wird länger. 6.3 Kraft × Weg (die Arbeit). Merksatz: Kraft · weniger · Weg · gleich. Transfer: weniger Kraft/Steigung, dafür längerer Weg. Minidiagnose: 1→Kraft · 2→weniger Kraft, längerer Weg · 3→Kraft × Weg (die Arbeit).</div>
       </details>
 
       <div class="sim-btn-row" style="margin-top:8px">
@@ -70887,7 +70913,7 @@ function _brwHTML() {
       </div>
     </div>
     <p class="sim-hint" style="text-align:center;margin:6px 0 0">
-      Faustformeln: Reaktionsweg = (v/10)·3 · Bremsweg = (v/10)² · Anhalteweg = beide zusammen.
+      Faustformeln (v in km/h, Wege in m): Reaktionsweg = (v/10)·3 · Bremsweg = (v/10)² · Anhalteweg = beide zusammen.
     </p>
     ${_brwArbeitsblattHTML()}
   </div>`;
@@ -73226,18 +73252,21 @@ function _arbHTML() {
 }
 function _arbRegler() {
   const el = document.getElementById('arbRegler'); if (!el || !_arb) return;
-  const r = (id, txt, min, max, val, step, farbe) =>
+  // Einheit hinter jedem Reglerwert (Abdullah, 08.10.2026: „in Physik ist es sehr
+  // wichtig, dass die Einheiten immer mit drin sind“). Sie steht AUSSERHALB des
+  // <b>, weil _arbVal() nur die Zahl darin neu schreibt.
+  const r = (id, txt, min, max, val, step, farbe, einheit) =>
     `<div class="phys-ctrl" style="margin-top:6px">
-       <span class="phys-ctrl-label">${txt}: <b id="arb${id}Lbl">${_fpmNum(val, step < 1 ? 1 : 0)}</b></span>
+       <span class="phys-ctrl-label">${txt}: <b id="arb${id}Lbl">${_fpmNum(val, step < 1 ? 1 : 0)}</b> ${einheit}</span>
        <input type="range" id="arb${id}" min="${min}" max="${max}" step="${step}" value="${val}"
          oninput="_arbVal('${id}',this.value)" style="width:100%;accent-color:${farbe}">
      </div>`;
   if (_arb.modus === 'schieben')
-    el.innerHTML = r('F', 'Schiebekraft F', 20, 200, _arb.F, 10, '#f59e0b') + r('S', 'Weg s', 1, 10, _arb.s, 1, '#38bdf8');
+    el.innerHTML = r('F', 'Schiebekraft F', 20, 200, _arb.F, 10, '#f59e0b', 'N') + r('S', 'Weg s', 1, 10, _arb.s, 1, '#38bdf8', 'm');
   else if (_arb.modus === 'tragen')
-    el.innerHTML = r('M', 'Masse der Kiste m', 5, 50, _arb.m, 5, '#f59e0b') + r('S', 'getragener Weg s', 1, 10, _arb.s, 1, '#38bdf8');
+    el.innerHTML = r('M', 'Masse der Kiste m', 5, 50, _arb.m, 5, '#f59e0b', 'kg') + r('S', 'getragener Weg s', 1, 10, _arb.s, 1, '#38bdf8', 'm');
   else
-    el.innerHTML = r('M', 'Masse der Kiste m', 5, 50, _arb.m, 5, '#f59e0b') + r('H', 'Höhe h', 0.5, 5, _arb.h, 0.5, '#38bdf8');
+    el.innerHTML = r('M', 'Masse der Kiste m', 5, 50, _arb.m, 5, '#f59e0b', 'kg') + r('H', 'Höhe h', 0.5, 5, _arb.h, 0.5, '#38bdf8', 'm');
 }
 function _arbVal(id, v) {
   const z = parseFloat(v);
@@ -73318,7 +73347,7 @@ function _arbDraw(ctx, cv) {
   ctx.fillText('verrichtete Arbeit: ' + _fpmNum(w.W, 0) + ' J', bx + 6, byy + 12);
   ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = w.richtig ? '#166534' : '#b91c1c';
   ctx.fillText(w.richtig ? 'Kraft und Weg zeigen in dieselbe Richtung → es wird Arbeit verrichtet'
-                         : 'Kraft ↑ und Weg → stehen senkrecht zueinander → W = 0', W / 2, H - 10);
+                         : 'Kraft ↑ und Weg → stehen senkrecht zueinander → W = 0 J', W / 2, H - 10);
 }
 
 // ═══════════════════════════════════════════════════════
@@ -73505,6 +73534,7 @@ const _BGE_PRESETS = [
     x: r => r.v2, y: r => r.E, grp: r => r.m,
     gl: k => 'm = ' + _fpmNum(k, 0) + ' kg',
     slope: k => k / 2,
+    einheitK: 'kg',                    // Einheit der Steigung: J/(m²/s²) = kg
     curveFn: (xv, k) => k / 2 * xv,
     note: 'Dieselben Messwerte, nur über v² aufgetragen: Jetzt liegen sie auf einer Ursprungsgeraden ⇒ E ~ v². Doppelte Geschwindigkeit, vierfache Energie. Die Steigung ist m/2 und hat die Einheit J/(m²/s²) = kg; aus ihr folgt die Masse zurück: m = 2·k. Punkte, die aus der Reihe fallen, stammen aus einer Einstellung, bei der die Masse mitverändert wurde – jede Masse bekommt eine eigene Farbe und eine eigene Gerade.',
     typ: 'proportionale Funktion (Ursprungsgerade nach dem Quadrieren)', form: 'E(v²) = (m/2) · v²',
@@ -73518,6 +73548,7 @@ const _BGE_PRESETS = [
     x: r => r.m, y: r => r.E, grp: r => r.v,
     gl: k => 'v = ' + _fpmNum(k, 0) + ' m/s',
     slope: k => k * k / 2,
+    einheitK: 'm²/s²',                 // Einheit der Steigung: J/kg = m²/s²
     curveFn: (xv, k) => k * k / 2 * xv,
     note: 'Ursprungsgerade ⇒ E ~ m bei festgehaltener Geschwindigkeit. Doppelte Masse, doppelte Energie – hier ist nichts krumm, es muss also auch nichts quadriert werden. Die Steigung ist v²/2 in J/kg = m²/s²; aus ihr folgt die Geschwindigkeit zurück: v = √(2·k). Der Vergleich mit dem vorigen Reiter ist der Kern der Stunde: Die Masse steht in der ersten Potenz, die Geschwindigkeit im Quadrat.',
     typ: 'proportionale Funktion (Ursprungsgerade)', form: 'E(m) = (v²/2) · m',
@@ -73619,7 +73650,10 @@ function _bgeStatus() {
   // Grundeinstellung 4 kg / 4 m/s = 32 J) bleibt die Anzeige unveraendert.
   const k = _bgeK(_bge.m, _bge.v);
   const nkE = _bgeNkE(k), nkS = _bgeNkWeg(k);
-  let s = `${_fpmNum(_bge.m, 0)} kg mit ${_fpmNum(_bge.v, 0)} m/s<br>E = ½ · ${_fpmNum(_bge.m, 0)} · ${_fpmNum(_bge.v, 0)}² = <b>${_fpmNum(E, nkE)} J</b>`;
+  // Einheiten in der Rechnung (Abdullah, 08.10.2026): „½ · 4 · 4²“ hiess fuer die
+  // Klasse nichts; jetzt steht „½ · 4 kg · (4 m/s)²“. Die Klammer gehoert dazu,
+  // quadriert wird die ganze Geschwindigkeit samt Einheit.
+  let s = `${_fpmNum(_bge.m, 0)} kg mit ${_fpmNum(_bge.v, 0)} m/s<br>E = ½ · ${_fpmNum(_bge.m, 0)} kg · (${_fpmNum(_bge.v, 0)} m/s)² = <b>${_fpmNum(E, nkE)} J</b>`;
   if (_bge.rollt) s += `<br>rollt …`;
   else if (_bge.fertig) s += `<br>Klotz <b>${_fpmNum(_bgeWeg(), nkS)} m</b> weit geschoben.`;
   else s += `<br>Drücke „Rollen lassen“.`;
@@ -73674,7 +73708,7 @@ function _bgeDraw(ctx, cv) {
   const bx = 14, byy = 34, bw = W - 28, bh = 15, maxE = 0.5 * 16 * 12 * 12;
   ctx.fillStyle = 'rgba(15,23,42,0.10)'; ctx.fillRect(bx, byy, bw, bh);
   ctx.fillStyle = '#dc2626'; ctx.fillRect(bx, byy, Math.max(3, bw * (_bgeE() / maxE)), bh);
-  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.fillText(_fpmNum(_bgeE(), 0) + ' J', bx + 6, byy + 11);
+  ctx.fillStyle = '#0f172a'; ctx.font = '700 11px sans-serif'; ctx.fillText(_fpmNum(_bgeE(), _bgeE() % 1 ? 1 : 0) + ' J', bx + 6, byy + 11);   // wie die Statuszeile: 7,5 J, nicht gerundet 8 J
   ctx.font = '11px sans-serif'; ctx.fillStyle = '#475569';
   ctx.fillText('v = ' + _fpmNum(_bge.v, 0) + ' m/s', 14, 66);
   ctx.textAlign = 'center'; ctx.font = '700 11px sans-serif'; ctx.fillStyle = '#0f172a';
@@ -75124,7 +75158,7 @@ function _drfStatus() {
   t += `v = I / (n · A · e)<br>`;
   // Die angezeigte Elementarladung muss die sein, mit der gerechnet wird: mit
   // 1,6·10⁻¹⁹ kaeme eine Schuelerin auf 0,0491 mm/s, hier stuenden 0,0490.
-  t += `v = ${_fpmNum(_drf.i, 1)} A / (8,49·10²⁸ · ${_fpmNum(_drf.a, 2)} mm² · 1,602·10⁻¹⁹ C)<br>`;
+  t += `v = ${_fpmNum(_drf.i, 1)} A / (8,49·10²⁸ 1/m³ · ${_fpmNum(_drf.a, 2)}·10⁻⁶ m² · 1,602·10⁻¹⁹ C)<br>`;   // Einheiten in jeder Rechnung (08.10.2026)
   t += `v = <b>${_fpmNum(vmm, 4)} mm/s</b><br><br>`;
   t += `Für <b>einen Meter</b> Kabel braucht ein Elektron damit ${_fpmNum(sek1m, 0).replace(',0', '')} Sekunden – das sind <b>${_fpmNum(std, 1)} Stunden</b>.<br><br>`;
 
@@ -76455,7 +76489,7 @@ function _dchStatus() {
   if (s.id === 'wasser') {
     t += 'Wasser ist der Bezugsstoff: ρ = 1000 kg/m³.<br>';
   } else {
-    t += `ρ : ρ<sub>Wasser</sub> = ${_dchRho(s.rho)} : 1000 = <b>${_fpmNum(s.rho / _DCH_RHO_W, 2)}</b><br>`;
+    t += `ρ : ρ<sub>Wasser</sub> = ${_dchRho(s.rho)} kg/m³ : 1000 kg/m³ = <b>${_fpmNum(s.rho / _DCH_RHO_W, 2)}</b><br>`;
     t += s.rho > _DCH_RHO_W
       ? `Die Dichte ist größer als die von Wasser – ${s.name} sinkt.<br>`
       : `Die Dichte ist kleiner als die von Wasser – ${s.name} schwimmt.<br>`;
@@ -76468,10 +76502,10 @@ function _dchStatus() {
     const fk = s.rho / 20;
     const df = (fk % 1 === 0) ? 0 : 1;
     t += '<br><b>5 · Der Aha-Moment</b><br>';
-    t += `Gleich groß, aber <b>${_fpmNum(fk, df)}-mal</b> so schwer wie Styropor (${_dchRho(s.rho)} : 20).`;
+    t += `Gleich groß, aber <b>${_fpmNum(fk, df)}-mal</b> so schwer wie Styropor (${_dchRho(s.rho)} kg/m³ : 20 kg/m³).`;
   } else {
     t += '<br><b>5 · Der Aha-Moment</b><br>';
-    t += `Der gleich große Bleiwürfel hat die <b>567-fache</b> Masse (11340 : 20).`;
+    t += `Der gleich große Bleiwürfel hat die <b>567-fache</b> Masse (11340 kg/m³ : 20 kg/m³).`;
   }
   el.innerHTML = t;
 }
@@ -77988,20 +78022,22 @@ function _znrStatus() {
   let t = `<b>Am Berührpunkt</b><br>`;
   t += `Dort muss jeder Zahn in eine Lücke passen. Beide Räder schieben deshalb gleich viele Zähne durch.<br>`;
   t += `Rad 1: ${_fpmNum(n1, 0)} U/min · ${_fpmNum(z1, 0)} Zähne = <b>${_fpmNum(fluss, 0)} Zähne je Minute</b><br>`;
-  t += `${_fpmNum(fluss, 0)} : 60 s = ${_fpmNum(flussS, 1)} Zähne je Sekunde<br><br>`;
+  // Einheiten in jeder Rechnung (Abdullah, 08.10.2026): "1800 : 60 s" hatte keine
+  // Einheit vorn, und "60 s : 60 U/min" ergab rechnerisch s·min statt s.
+  t += `${_fpmNum(fluss, 0)} Zähne : 60 s = ${_fpmNum(flussS, 1)} Zähne je Sekunde<br><br>`;
 
   t += `<b>Die Drehzahl des Abtriebs</b><br>`;
   t += `n₂ = ${_fpmNum(fluss, 0)} Zähne je Minute : ${_fpmNum(z2, 0)} Zähne<br>`;
   t += `n₂ = <b>${_fpmNum(n2, 1)} U/min</b><br>`;
-  t += `Eine Umdrehung dauert bei Rad 1: 60 s : ${_fpmNum(n1, 0)} U/min = ${_fpmNum(t1, 2)} s, bei Rad 2: 60 s : ${_fpmNum(n2r, 1)} U/min = ${_fpmNum(t2, 2)} s.<br><br>`;
+  t += `Eine Umdrehung dauert bei Rad 1: 60 s : ${_fpmNum(n1, 0)} Umdrehungen = ${_fpmNum(t1, 2)} s, bei Rad 2: 60 s : ${_fpmNum(n2r, 1)} Umdrehungen = ${_fpmNum(t2, 2)} s.<br><br>`;
 
   t += `<b>Die Übersetzung</b><br>`;
-  t += `i = z₁ : z₂ = ${_fpmNum(z1, 0)} : ${_fpmNum(z2, 0)} = <b>${_fpmNum(i, 2)}</b><br>`;
+  t += `i = z₁ : z₂ = ${_fpmNum(z1, 0)} Zähne : ${_fpmNum(z2, 0)} Zähne = <b>${_fpmNum(i, 2)}</b><br>`;
   t += `Rad 2 dreht sich ${_fpmNum(i, 2)}-mal so oft wie Rad 1.<br><br>`;
 
   t += `<b>Was du dafür bezahlst</b><br>`;
   t += `Das Drehmoment sagt, wie stark ein Rad an seiner Achse drehen kann. Es ist Kraft mal Hebelarm.<br>`;
-  t += `M₂ = M₁ · z₂ : z₁ = M₁ · ${_fpmNum(z2, 0)} : ${_fpmNum(z1, 0)} = <b>M₁ · ${_fpmNum(mf, 2)}</b><br>`;
+  t += `M₂ = M₁ · z₂ : z₁ = M₁ · ${_fpmNum(z2, 0)} Zähne : ${_fpmNum(z1, 0)} Zähne = <b>M₁ · ${_fpmNum(mf, 2)}</b><br>`;
   if (z1 > z2) {
     t += `<i>Rad 2 hat weniger Zähne: Es dreht schneller, sein Drehmoment ist aber kleiner.</i>`;
   } else if (z1 < z2) {
@@ -78321,7 +78357,7 @@ function _aufStatus() {
     t += `F<sub>A</sub> = ${f.rho} kg/m³ · 9,81 N/kg · ${_fpmNum(_AUF_V * _aufAnteil(), 6)} m³ = <b>${_fpmNum(FA, 2)} N</b><br><br>`;
     t += `<b>4 · Er schwimmt</b><br>`;
     t += `F<sub>A</sub> = ${_fpmNum(FA, 2)} N = G — Gleichgewicht.<br>`;
-    t += `Unter Wasser liegen <b>${_fpmNum(_aufAnteil() * 100, 1)} %</b> des Würfels. Das ist genau ρ : ρ<sub>Wasser</sub> = ${_fpmNum(rho, 1)} : ${f.rho}.<br><br>`;
+    t += `Unter Wasser liegen <b>${_fpmNum(_aufAnteil() * 100, 1)} %</b> des Würfels. Das ist genau ρ : ρ<sub>Wasser</sub> = ${_fpmNum(rho, 1)} kg/m³ : ${f.rho} kg/m³.<br><br>`;
   } else {
     t += `Ganz eingetaucht verdrängt er sein volles Volumen:<br>`;
     t += `F<sub>A</sub> = ${f.rho} kg/m³ · 9,81 N/kg · 0,001 m³ = <b>${_fpmNum(FA, 2)} N</b><br><br>`;
