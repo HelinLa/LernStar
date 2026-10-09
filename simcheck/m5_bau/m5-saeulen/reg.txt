@@ -1,0 +1,1 @@
+  'm5-saeulen': modal => { _m6sInit(); modal.innerHTML = _m6sHTML(); _m6sStatus(); _pSim = new PhysicsSimEngine('_m6s-cv', '_m6s-cv'); _pSim.start(dt => _m6sUpdate(dt), (ctx, cv) => _m6sDraw(ctx, cv), []); },

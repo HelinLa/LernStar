@@ -1,0 +1,1 @@
+  'm5-strichliste': modal => { _m6rInit(); modal.innerHTML = _m6rHTML(); _m6rStatus(); _pSim = new PhysicsSimEngine('_m6r-cv', '_m6r-cv'); _pSim.start(dt => _m6rUpdate(dt), (ctx, cv) => _m6rDraw(ctx, cv), []); },

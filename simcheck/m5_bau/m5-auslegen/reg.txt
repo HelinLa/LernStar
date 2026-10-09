@@ -1,0 +1,1 @@
+  'm5-auslegen': modal => { _m6mInit(); modal.innerHTML = _m6mHTML(); _m6mStatus(); _pSim = new PhysicsSimEngine('_m6m-cv', '_m6m-cv'); _pSim.start(dt => _m6mUpdate(dt), (ctx, cv) => _m6mDraw(ctx, cv), []); },

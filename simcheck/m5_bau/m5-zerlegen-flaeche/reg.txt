@@ -1,0 +1,1 @@
+  'm5-zerlegen-flaeche': modal => { _m6qInit(); modal.innerHTML = _m6qHTML(); _m6qStatus(); _pSim = new PhysicsSimEngine('_m6q-cv', '_m6q-cv'); _pSim.start(dt => _m6qUpdate(dt), (ctx, cv) => _m6qDraw(ctx, cv), []); },

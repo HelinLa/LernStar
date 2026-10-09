@@ -1,0 +1,1 @@
+  'm5-rechteck': modal => { _m6oInit(); modal.innerHTML = _m6oHTML(); _m6oStatus(); _pSim = new PhysicsSimEngine('_m6o-cv', '_m6o-cv'); _pSim.start(dt => _m6oUpdate(dt), (ctx, cv) => _m6oDraw(ctx, cv), []); },

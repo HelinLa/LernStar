@@ -1,0 +1,1 @@
+  'm5-laengen': modal => { _m6hInit(); modal.innerHTML = _m6hHTML(); _m6hStatus(); _pSim = new PhysicsSimEngine('_m6h-cv', '_m6h-cv'); _pSim.start(dt => _m6hUpdate(dt), (ctx, cv) => _m6hDraw(ctx, cv), []); },

@@ -1,0 +1,1 @@
+  'm5-zeit': modal => { _m6jInit(); modal.innerHTML = _m6jHTML(); _m6jStatus(); _pSim = new PhysicsSimEngine('_m6j-cv', '_m6j-cv'); _pSim.start(dt => _m6jUpdate(dt), (ctx, cv) => _m6jDraw(ctx, cv), []); },

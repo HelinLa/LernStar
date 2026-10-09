@@ -1,0 +1,1 @@
+  'm5-folgen': modal => { _m6fInit(); modal.innerHTML = _m6fHTML(); _m6fStatus(); _pSim = new PhysicsSimEngine('_m6f-cv', '_m6f-cv'); _pSim.start(dt => _m6fUpdate(dt), (ctx, cv) => _m6fDraw(ctx, cv), []); },

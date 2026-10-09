@@ -6644,6 +6644,258 @@ const HEFT_SEITEN = {
     frage: "Liegen beide Hälften wirklich genau aufeinander?",
     schritte: ["Drücke „Rechteck, senkrecht“. Trage Figur und Achse ein.", "Drücke „falten“. Trage ein: Wie viele Ecken stehen über?", "Mache das auch mit „Rechteck, Ecke zu Ecke“ und „Quadrat, Ecke zu Ecke“."]
   },
+  "mm1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-punktefeld", seite: 77,
+    kapitel: "Mal und Geteilt",
+    name: "Was bedeutet 4 · 6?",
+    titel: "Leni sagt 29",
+    frage: "Wie viel ist 4 · 6?",
+    schritte: ["Drücke „5 · 6“. Notiere den Unterschied in Zeile 1.", "Drücke „− 1 Reihe“. Notiere Produkt und Unterschied in Zeile 2.", "Drücke „6 · 6“. Notiere Produkt und Unterschied in Zeile 3."]
+  },
+  "mm2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-mal-zehn", seite: 80,
+    kapitel: "Mal und Geteilt",
+    name: "Was passiert bei mal 10?",
+    titel: "Tarek sagt 44",
+    frage: "Wie viel ist 34 · 10?",
+    schritte: ["Drücke „7 · 10“. Notiere das Ergebnis in Zeile 1.", "Drücke „34 · 10“. Notiere Stellen und Ergebnis in Zeile 2.", "Drücke „mal 10“. Notiere Stellen und Ergebnis in Zeile 3."]
+  },
+  "mm3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-malkreuz", seite: 83,
+    kapitel: "Mal und Geteilt",
+    name: "Wie rechnet man 23 · 4?",
+    titel: "Tarek schreibt 812",
+    frage: "Was ergibt 23 · 4 wirklich?",
+    schritte: ["Drücke „zusammenzählen“. Notiere das Ergebnis in Zeile 1.", "Drücke „23 · 4“. Notiere die Teile in Zeile 2.", "Drücke „zusammenzählen“. Notiere das Ergebnis in Zeile 2.", "Mache das auch mit „33 · 4“ in Zeile 3."]
+  },
+  "mm4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-verteilen", seite: 86,
+    kapitel: "Mal und Geteilt",
+    name: "Verteilen oder aufteilen?",
+    titel: "144 Bälle für 24 €?",
+    frage: "Wie viele Bälle kann die Klasse kaufen?",
+    schritte: ["Drücke „24 € an 4 Kinder“. Notiere das Ergebnis in Zeile 1.", "Drücke „24 € an 6 Kinder“. Notiere Rechnung und Ergebnis in Zeile 2.", "Drücke „24 €, Ball für 6 €“. Notiere Rechnung und Ergebnis in Zeile 3."]
+  },
+  "mm5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-rest", seite: 89,
+    kapitel: "Mal und Geteilt",
+    name: "Was bleibt übrig?",
+    titel: "23 : 4 = 4 Rest 7?",
+    frage: "Wie viele Karten bleiben übrig?",
+    schritte: ["Drücke „21 : 4“. Notiere den Rest in Zeile 1.", "Drücke „22 : 4“. Notiere volle Seiten und Rest in Zeile 2.", "Mache das auch mit „23 : 4“ in Zeile 3.", "Mache das auch mit „24 : 4“ in Zeile 4."]
+  },
+  "mm6": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-teilen-schriftlich", seite: 92,
+    kapitel: "Mal und Geteilt",
+    name: "Wie teilt man schriftlich?",
+    titel: "Tarek kommt auf 21",
+    frage: "Was ergibt 84 : 3 wirklich?",
+    schritte: ["Drücke „69 : 3“. Notiere das Ergebnis in Zeile 1.", "Drücke „84 : 3“. Notiere in Zeile 2: Wo wird entbündelt?", "Lies das Ergebnis ab. Notiere es in Zeile 2.", "Mache das auch mit „516 : 4“ in Zeile 3."]
+  },
+  "mr1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-tauschen", seite: 100,
+    kapitel: "Rechengesetze und Terme",
+    name: "Darf man die Zahlen tauschen?",
+    titel: "Mehr Reihen, mehr Stühle?",
+    frage: "Wer braucht mehr Stühle?",
+    schritte: ["Drücke „tauschen“. Notiere das Ergebnis in Zeile 1.", "Drücke „3 · 8“. Notiere beides in Zeile 2.", "Mache das auch mit „9 · 2“ in Zeile 3.", "Mache das auch mit „9 − 4“ in Zeile 4."]
+  },
+  "mr2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-klammern", seite: 103,
+    kapitel: "Rechengesetze und Terme",
+    name: "Wohin gehört die Klammer?",
+    titel: "Leni hat noch 14 €?",
+    frage: "Wie viel Geld hat Leni noch?",
+    schritte: ["Drücke „(27 € + 18 €) + 2 €“. Notiere das Ergebnis in Zeile 1.", "Drücke „Klammer verschieben“. Notiere beides in Zeile 2.", "Drücke „(20 € − 8 €) + 2 €“. Notiere beides in Zeile 3.", "Drücke „Klammer verschieben“. Notiere beides in Zeile 4."]
+  },
+  "mr3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-reihenfolge", seite: 106,
+    kapitel: "Rechengesetze und Terme",
+    name: "Punkt vor Strich – warum?",
+    titel: "35 € für Heft und Stifte?",
+    frage: "Wie viel muss Leni bezahlen?",
+    schritte: ["Drücke „2 + 3 · 4“. Notiere das Ergebnis in Zeile 1.", "Drücke „3 + 4 · 5“. Notiere beides in Zeile 2.", "Mache das auch mit „4 · 5 + 3“ in Zeile 3.", "Mache das auch mit „(3 + 4) · 5“ in Zeile 4."]
+  },
+  "mr4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-zerlegen", seite: 109,
+    kapitel: "Rechengesetze und Terme",
+    name: "Wie zerlegt man geschickt?",
+    titel: "Tarek zählt 64 Plätze",
+    frage: "Wie viele Plätze sind es?",
+    schritte: ["Drücke „6 · (10 + 2)“. Notiere das Ergebnis in Zeile 1.", "Drücke „6 · (10 + 4)“. Notiere beides in Zeile 2.", "Mache das auch mit „6 · (7 + 7)“ in Zeile 3.", "Mache das auch mit „6 · (5 + 9)“ in Zeile 4."]
+  },
+  "mr5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-terme", seite: 112,
+    kapitel: "Rechengesetze und Terme",
+    name: "Was steht für das x?",
+    titel: "x Kinder im Schwimmbad",
+    frage: "Wie viel zahlen 4 Kinder?",
+    schritte: ["Drücke „x = 1“. Notiere den Wert in Zeile 1.", "Drücke „x + 1“. Notiere beides in Zeile 2.", "Mache das auch für Zeile 3 und 4."]
+  },
+  "mr6": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-folgen", seite: 115,
+    kapitel: "Rechengesetze und Terme",
+    name: "Wie geht das Muster weiter?",
+    titel: "Doppelt so viele Stäbchen?",
+    frage: "Wie viele Stäbchen braucht Leni für 4 Quadrate?",
+    schritte: ["Drücke „Figur 1“. Notiere alle Stäbchen in Zeile 1.", "Drücke „nächste Figur“. Notiere beides in Zeile 2.", "Mache das auch für Zeile 3 und 4."]
+  },
+  "mg1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-messen", seite: 123,
+    kapitel: "Größen und Messen",
+    name: "Was heißt messen?",
+    titel: "Tarek sagt 9 cm",
+    frage: "Wie lang ist der Stift?",
+    schritte: ["Drücke „Stift ab 0“. Notiere die Länge in Zeile 1.", "Drücke „Stift ab 1“. Notiere Ende und Länge in Zeile 2.", "Mache das auch mit „Stift ab 3“ in Zeile 3.", "Mache das auch mit „Stift ab 5“ in Zeile 4."]
+  },
+  "mg2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-laengen", seite: 126,
+    kapitel: "Größen und Messen",
+    name: "Meter, Zentimeter, Millimeter",
+    titel: "3 m sind 30 cm?",
+    frage: "Wie viele Zentimeter sind 3 m?",
+    schritte: ["Drücke „1 m“. Notiere das Ergebnis in Zeile 1.", "Drücke „3 m“. Notiere Rechnung und Ergebnis in Zeile 2.", "Mache das auch mit „3 m 40 cm“ in Zeile 3.", "Mache das auch mit „4 cm“ in Zeile 4."]
+  },
+  "mg3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-waage", seite: 129,
+    kapitel: "Größen und Messen",
+    name: "Gramm, Kilogramm, Tonne",
+    titel: "1 kg sind 100 g?",
+    frage: "Wie viele Gramm sind 1 kg?",
+    schritte: ["Drücke „500 g Nudeln“. Notiere die Gramm in Zeile 1.", "Drücke „1 kg Mehl“. Notiere Stücke und Gramm in Zeile 2.", "Mache das auch mit „2 kg Kartoffeln“ in Zeile 3.", "Drücke „1 t Sand“. Notiere Säcke und Kilogramm in Zeile 4."]
+  },
+  "mg4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-zeit", seite: 132,
+    kapitel: "Größen und Messen",
+    name: "Wie lange dauert es?",
+    titel: "65 Minuten Busfahrt?",
+    frage: "Wie lange dauert die Fahrt?",
+    schritte: ["Drücke „7:50 bis 8:00“. Notiere die Minuten in Zeile 1.", "Drücke „7:50 bis 8:15“. Notiere Sprünge und Minuten in Zeile 2.", "Mache das auch mit „7:35 bis 8:20“ in Zeile 3.", "Mache das auch mit „7:45 bis 8:40“ in Zeile 4."]
+  },
+  "mg5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-geld", seite: 135,
+    kapitel: "Größen und Messen",
+    name: "Wie rechnet man mit Geld?",
+    titel: "2 € 40 ct zurück?",
+    frage: "Wie viel Rückgeld gibt es?",
+    schritte: ["Drücke „Preis 4 €“. Notiere das Rückgeld in Zeile 1.", "Drücke „Preis 3,40 €“. Notiere Sprünge und Rückgeld in Zeile 2.", "Mache das auch mit „Preis 2,70 €“ in Zeile 3.", "Mache das auch mit „Preis 1,90 €“ in Zeile 4."]
+  },
+  "mu1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-umfang", seite: 146,
+    kapitel: "Umfang und Fläche",
+    name: "Wie lang ist der Rand?",
+    titel: "Tarek kauft 6 m Zaun",
+    frage: "Wie viel Zaun braucht das Gehege?",
+    schritte: ["Drücke „4 m lang, 1 m breit“. Notiere den Umfang in Zeile 1.", "Drücke „4 m lang, 2 m breit“. Notiere Rechnung und Umfang in Zeile 2.", "Mache das auch mit „5 m lang, 2 m breit“ in Zeile 3."]
+  },
+  "mu2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-auslegen", seite: 149,
+    kapitel: "Umfang und Fläche",
+    name: "Welche Fläche ist größer?",
+    titel: "A ist doch viel länger",
+    frage: "Welcher Teppich hat den größeren Flächeninhalt?",
+    schritte: ["Drücke „Teppich A, große Plättchen“. Fülle die Lücke in Zeile 1.", "Drücke „Teppich B, große Plättchen“. Notiere die Werte in Zeile 2.", "Mache das auch mit „Teppich A, kleine Plättchen“ in Zeile 3."]
+  },
+  "mu3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-flaecheneinheiten", seite: 152,
+    kapitel: "Umfang und Fläche",
+    name: "Was ist ein Quadratzentimeter?",
+    titel: "Tarek zählt 24 Kästchen",
+    frage: "Wie viele cm² hat Tareks Rechteck?",
+    schritte: ["Drücke „1 cm lang, 1 cm breit“. Notiere die fehlende Zahl in Zeile 1.", "Drücke „3 cm lang, 2 cm breit“. Notiere Kästchen und Flächeninhalt in Zeile 2.", "Mache das auch mit „4 cm lang, 3 cm breit“ in Zeile 3."]
+  },
+  "mu4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-rechteck", seite: 155,
+    kapitel: "Umfang und Fläche",
+    name: "Wie groß ist das Rechteck?",
+    titel: "Leni rechnet 5 cm + 3 cm",
+    frage: "Wie viele cm² hat das Foto?",
+    schritte: ["Drücke „4 cm lang, 2 cm breit“. Notiere den Flächeninhalt in Zeile 1.", "Drücke „5 cm lang, 3 cm breit“. Notiere Reihen und Flächeninhalt in Zeile 2.", "Mache das auch mit „6 cm lang, 3 cm breit“ in Zeile 3."]
+  },
+  "mu5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-umfang-flaeche", seite: 158,
+    kapitel: "Umfang und Fläche",
+    name: "Gleicher Umfang, gleiche Fläche?",
+    titel: "12 m Zaun – immer gleich viel Platz?",
+    frage: "Haben alle Gehege mit 12 m Zaun gleich viel Platz?",
+    schritte: ["Drücke „5 m lang, 1 m breit“. Notiere den Flächeninhalt in Zeile 1.", "Drücke „4 m lang, 2 m breit“. Notiere Umfang und Flächeninhalt in Zeile 2.", "Mache das auch mit „3 m lang, 3 m breit“ in Zeile 3."]
+  },
+  "mu6": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-zerlegen-flaeche", seite: 161,
+    kapitel: "Umfang und Fläche",
+    name: "Zerlegen und ergänzen",
+    titel: "24 m² Teppich für das L?",
+    frage: "Wie viele m² Teppichboden braucht Lenis Zimmer?",
+    schritte: ["Drücke „kleines L“. Notiere den Flächeninhalt in Zeile 1.", "Drücke „großes L“. Notiere Teile und Flächeninhalt in Zeile 2.", "Mache das auch mit „Rechteck mit Diagonale“ in Zeile 3."]
+  },
+  "md1": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-strichliste", seite: 169,
+    kapitel: "Daten",
+    name: "Wie sammelt man Daten?",
+    titel: "Tarek zählt 11",
+    frage: "Wie viele Kinder kommen mit dem Bus?",
+    schritte: ["Drücke „zu Fuß“. Notiere die Anzahl in Zeile 1.", "Drücke „Rad“. Notiere Bündel, Striche und Anzahl in Zeile 2.", "Mache das auch mit „Bus“ in Zeile 3.", "Mache das auch mit „Auto“ in Zeile 4."]
+  },
+  "md2": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-saeulen", seite: 172,
+    kapitel: "Daten",
+    name: "Was zeigt das Säulendiagramm?",
+    titel: "Tarek liest 6 ab",
+    frage: "Wie viele Kinder gehen zu Fuß?",
+    schritte: ["Drücke „1 Kästchen = 1 Kind“. Notiere die Kinder in Zeile 1.", "Drücke „1 Kästchen = 2 Kinder“. Notiere Kästchen und Kinder in Zeile 2.", "Mache das auch mit „1 Kästchen = 4 Kinder“ in Zeile 3."]
+  },
+  "md3": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-spannweite", seite: 175,
+    kapitel: "Daten",
+    name: "Wie weit liegen die Werte auseinander?",
+    titel: "Tarek rechnet 7 m − 4 m",
+    frage: "Wie weit liegen die Flüge auseinander?",
+    schritte: ["Drücke „Gruppe A“. Notiere den Unterschied in Zeile 1.", "Drücke „Gruppe B“. Notiere kürzesten und weitesten Flug in Zeile 2.", "Lies den Unterschied ab. Notiere ihn in Zeile 2.", "Mache das auch mit „Gruppe C“ in Zeile 3."]
+  },
+  "md4": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-mittelwert", seite: 178,
+    kapitel: "Daten",
+    name: "Was ist der Durchschnitt?",
+    titel: "Im Durchschnitt 25 Körbe?",
+    frage: "Wie viele Körbe sind es im Durchschnitt?",
+    schritte: ["Drücke „2, 4, 6“. Notiere die Turmhöhe in Zeile 1.", "Drücke „3, 6, 4, 8, 4“. Notiere Summe und Turmhöhe in Zeile 2.", "Mache das auch mit „5, 9, 7, 3“ in Zeile 3."]
+  },
+  "md5": {
+    klasse: "5", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m5-median", seite: 181,
+    kapitel: "Daten",
+    name: "Welcher Wert liegt in der Mitte?",
+    titel: "Tarek nimmt die 20",
+    frage: "Welche Zeit liegt wirklich in der Mitte?",
+    schritte: ["Drücke „3 Kinder“. Notiere den Wert in Zeile 1.", "Drücke „5 Kinder“. Notiere Platz und Wert in Zeile 2.", "Mache das auch mit „7 Kinder“ in Zeile 3."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

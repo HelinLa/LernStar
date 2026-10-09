@@ -1,0 +1,1 @@
+  'm5-spannweite': modal => { _m6tInit(); modal.innerHTML = _m6tHTML(); _m6tStatus(); _pSim = new PhysicsSimEngine('_m6t-cv', '_m6t-cv'); _pSim.start(dt => _m6tUpdate(dt), (ctx, cv) => _m6tDraw(ctx, cv), []); },

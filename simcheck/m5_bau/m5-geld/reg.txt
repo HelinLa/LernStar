@@ -1,0 +1,1 @@
+  'm5-geld': modal => { _m6kInit(); modal.innerHTML = _m6kHTML(); _m6kStatus(); _pSim = new PhysicsSimEngine('_m6k-cv', '_m6k-cv'); _pSim.start(dt => _m6kUpdate(dt), (ctx, cv) => _m6kDraw(ctx, cv), []); },

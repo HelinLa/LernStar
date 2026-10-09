@@ -1,0 +1,1 @@
+  'm5-waage': modal => { _m6iInit(); modal.innerHTML = _m6iHTML(); _m6iStatus(); _pSim = new PhysicsSimEngine('_m6i-cv', '_m6i-cv'); _pSim.start(dt => _m6iUpdate(dt), (ctx, cv) => _m6iDraw(ctx, cv), []); },

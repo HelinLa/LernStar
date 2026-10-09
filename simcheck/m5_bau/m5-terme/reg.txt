@@ -1,0 +1,1 @@
+  'm5-terme': modal => { _m6eInit(); modal.innerHTML = _m6eHTML(); _m6eStatus(); _pSim = new PhysicsSimEngine('_m6e-cv', '_m6e-cv'); _pSim.start(dt => _m6eUpdate(dt), (ctx, cv) => _m6eDraw(ctx, cv), []); },

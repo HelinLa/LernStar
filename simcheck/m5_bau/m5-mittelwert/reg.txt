@@ -1,0 +1,1 @@
+  'm5-mittelwert': modal => { _m6uInit(); modal.innerHTML = _m6uHTML(); _m6uStatus(); _pSim = new PhysicsSimEngine('_m6u-cv', '_m6u-cv'); _pSim.start(dt => _m6uUpdate(dt), (ctx, cv) => _m6uDraw(ctx, cv), []); },

@@ -1,0 +1,1 @@
+  'm5-klammern': modal => { _m6bInit(); modal.innerHTML = _m6bHTML(); _m6bStatus(); _pSim = new PhysicsSimEngine('_m6b-cv', '_m6b-cv'); _pSim.start(dt => _m6bUpdate(dt), (ctx, cv) => _m6bDraw(ctx, cv), []); },

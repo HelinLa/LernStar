@@ -1,0 +1,1 @@
+  'm5-flaecheneinheiten': modal => { _m6nInit(); modal.innerHTML = _m6nHTML(); _m6nStatus(); _pSim = new PhysicsSimEngine('_m6n-cv', '_m6n-cv'); _pSim.start(dt => _m6nUpdate(dt), (ctx, cv) => _m6nDraw(ctx, cv), []); },

@@ -1,0 +1,1 @@
+  'm5-median': modal => { _m6vInit(); modal.innerHTML = _m6vHTML(); _m6vStatus(); _pSim = new PhysicsSimEngine('_m6v-cv', '_m6v-cv'); _pSim.start(dt => _m6vUpdate(dt), (ctx, cv) => _m6vDraw(ctx, cv), []); },

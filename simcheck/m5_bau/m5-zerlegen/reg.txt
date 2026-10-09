@@ -1,0 +1,1 @@
+  'm5-zerlegen': modal => { _m6dInit(); modal.innerHTML = _m6dHTML(); _m6dStatus(); _pSim = new PhysicsSimEngine('_m6d-cv', '_m6d-cv'); _pSim.start(dt => _m6dUpdate(dt), (ctx, cv) => _m6dDraw(ctx, cv), []); },

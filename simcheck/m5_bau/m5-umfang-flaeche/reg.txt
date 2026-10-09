@@ -1,0 +1,1 @@
+  'm5-umfang-flaeche': modal => { _m6pInit(); modal.innerHTML = _m6pHTML(); _m6pStatus(); _pSim = new PhysicsSimEngine('_m6p-cv', '_m6p-cv'); _pSim.start(dt => _m6pUpdate(dt), (ctx, cv) => _m6pDraw(ctx, cv), []); },

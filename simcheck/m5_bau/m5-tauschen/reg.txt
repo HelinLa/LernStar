@@ -1,0 +1,1 @@
+  'm5-tauschen': modal => { _m6aInit(); modal.innerHTML = _m6aHTML(); _m6aStatus(); _pSim = new PhysicsSimEngine('_m6a-cv', '_m6a-cv'); _pSim.start(dt => _m6aUpdate(dt), (ctx, cv) => _m6aDraw(ctx, cv), []); },

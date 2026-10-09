@@ -1,0 +1,1 @@
+  'm5-messen': modal => { _m6gInit(); modal.innerHTML = _m6gHTML(); _m6gStatus(); _pSim = new PhysicsSimEngine('_m6g-cv', '_m6g-cv'); _pSim.start(dt => _m6gUpdate(dt), (ctx, cv) => _m6gDraw(ctx, cv), []); },
