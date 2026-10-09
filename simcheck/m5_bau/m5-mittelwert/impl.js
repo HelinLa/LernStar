@@ -13,7 +13,9 @@
 //     erscheint, wenn alle Tuerme stehen, und bleibt beim Ausgleichen stehen.
 //     (Der Bauplan sagt „ueber der Leinwand“; sie steht IM Bild ganz oben, damit
 //     Summand und Turm im selben Bild aufleuchten koennen – MATHE_PROFIL § 10.2.)
-//   KARO mit HOEHENSKALA links (0 bis 10, Zahl an jeder Linie, Kaestchen 16 px).
+//   KARO mit HOEHENSKALA links (0 bis 10, Zahl an jeder Linie, Kaestchen 16 px),
+//     oben mit Pfeil, rechts neben der Pfeilspitze der Achsentitel „Körbe“
+//     (Abdullah, 09.10.2026: Achsen richtig beschriften).
 //     Je Runde ein Turm aus orangen Steckwuerfeln, 1 Wuerfel = 1 Kaestchen;
 //     nach 5 Wuerfeln eine feine Fuenfermarke quer ueber den Turm. Unter jedem
 //     Turm „Runde 1“ … und die Zahl der Wuerfel, die gerade im Turm stehen.
@@ -130,7 +132,7 @@ const _m6uK = {
   // Karo: Kaestchen (= 1 Wuerfel), Achse der Hoehenskala, Spalten rechts davon,
   // Turmabstand (Kaestchen), Boden (Hoehe 0), oberste Skalenzahl
   KA: 16, XA: 38, SP: 23, ABST: 4, YB: 206, HMAX: 10,
-  PX0: 4, PX1: 416, PY0: 40, PY1: 246,        // Papier
+  PX0: 4, PX1: 416, PY0: 28, PY1: 246,        // Papier (oben 28: Platz fuer Pfeil und Achsentitel)
   ZY0: 6, ZY1: 36, ZG: 27, ZGR: 18,           // Zettel mit der Plusaufgabe, Grundlinie, Schriftgrad
   YRUNDE: 222, YZAHL: 241,                    // Beschriftung unter den Tuermen
   YREIHE: 54, RK: 0.8, R5: 6,                 // Reihe beim Zusammenlegen: Mitte, Wuerfelgroesse, Fuenferluecke
@@ -547,7 +549,8 @@ function _m6uText(ctx, s, x, y, groesse, farbe, ausr, gew) {
   ctx.textBaseline = 'alphabetic';
   ctx.fillText(s, x, y);
 }
-// Papier mit Karo, Hoehenskala links (0 bis 10, Zahl an jeder Linie) und Boden.
+// Papier mit Karo, Hoehenskala links (0 bis 10, Zahl an jeder Linie, oben Pfeil
+// und Achsentitel „Körbe“) und Boden.
 function _m6uPapier(ctx) {
   const K = _m6uK, x1 = K.XA + K.SP * K.KA, yo = K.YB - K.HMAX * K.KA;
   ctx.save();
@@ -567,7 +570,13 @@ function _m6uPapier(ctx) {
   }
   // Skala: Achse, Striche, Zahlen
   ctx.strokeStyle = K.ACHSE; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(K.XA, K.YB); ctx.lineTo(K.XA, yo - 2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(K.XA, K.YB); ctx.lineTo(K.XA, yo - 6); ctx.stroke();
+  ctx.fillStyle = K.ACHSE;                           // Pfeilspitze (unter dem Schild „Pause“, das bei y = 33 endet)
+  ctx.beginPath(); ctx.moveTo(K.XA, yo - 12); ctx.lineTo(K.XA - 4.5, yo - 4); ctx.lineTo(K.XA + 4.5, yo - 4);
+  ctx.closePath(); ctx.fill();
+  // Achsentitel rechts neben der Pfeilspitze, ueber dem Karo; auch er bleibt
+  // unter dem Schild „Pause“ frei.
+  _m6uText(ctx, 'Körbe', K.XA + 9, yo - 3, 11, K.TINTE, 'left', '700');
   for (let k = 0; k <= K.HMAX; k++) {
     const y = K.YB - k * K.KA;
     ctx.beginPath(); ctx.moveTo(K.XA - 4, y); ctx.lineTo(K.XA, y); ctx.stroke();

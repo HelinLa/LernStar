@@ -8,7 +8,12 @@
 // Was man sieht: ein Blatt Karopapier (Kaestchen 12 px), darauf ein
 // Saeulendiagramm. Links die Achse mit Pfeil nach oben, Zahlen an jeder
 // zweiten Kaestchenlinie; unten vier Saeulenplaetze „zu Fuß“, „Rad“, „Bus“,
-// „Auto“ (Symbol + Wort). Daten (fest, 44 Kinder): zu Fuß 12 · Rad 8 · Bus 16 ·
+// „Auto“ (Symbol + Wort). Beschriftet wie ein Diagramm im Heft (Abdullah,
+// 09.10.2026: „Säulendiagramme richtig beschriften“): links neben der
+// Pfeilspitze der Achsentitel „Anzahl der Kinder“ (er wandert mit der Spitze,
+// wenn die Einteilung wechselt), am Ende der waagerechten Achse „Schulweg“,
+// rechts oben die Ueberschrift „Umfrage zum Schulweg“ (ueber der Legende).
+// Daten (fest, 44 Kinder): zu Fuß 12 · Rad 8 · Bus 16 ·
 // Auto 8. Jede Saeule ist 1 Kaestchen breit; die Kaestchenlinien laufen durch
 // die Saeule, so ist jedes Kaestchen zaehlbar. Die gewaehlte Saeule ist blau
 // (hellblau = noch nicht gezaehlt, kraeftig blau = gezaehlt), die anderen
@@ -96,7 +101,7 @@
 // FUER DIE LEHRKRAFT (Container <div class="fpm-lehrkraft">, V3; eigene Zeile
 // unter den Heftknoepfen, davor klein „Für die Lehrkraft:“):
 //   „Pause“ ↔ „weiter“ (_m6sAnhalten()): friert jede Bewegung ein; Schild
-//     „Pause“ oben links (Stelle wie in m5-plus-schriftlich).
+//     „Pause“ unten links (oben links steht der Achsentitel „Anzahl der Kinder“).
 //   „Tempo: normal“ ↔ „Tempo: langsam“ (_m6sTempo()): ein Drittel so schnell.
 //   „Zahlen verdecken: aus“ ↔ „… an“ (_m6sVerdecken()): die Zahlen an der
 //     Achse werden graue Karten mit „?“ – fuer das Gespraech „Was fehlt
@@ -136,7 +141,8 @@ const _m6sDATEN = [12, 8, 16, 8];                 // Kinder je Saeule, zusammen 
 const _m6sREIHE = [1, 2, 4];                      // Sprungmarken: Kinder je Kaestchen
 const _m6sK = {
   KA: 12,                          // Kaestchen (px)
-  AX: 96, Y0: 222,                 // Achsenkreuz: Hochachse x, Grundlinie y
+  AX: 112, Y0: 222,                // Achsenkreuz: Hochachse x, Grundlinie y (x 112 statt 96:
+                                   // links neben der Pfeilspitze steht der Achsentitel)
   SP: [2, 6, 10, 14],              // linke Kante jeder Saeule, Kaestchen ab der Achse
   RA: 17, MAXW: 16,                // Laenge der waagerechten Achse (Kaestchen), groesster Wert
   PX0: 4, PX1: 416, PY0: 4, PY1: 246,   // Papier
@@ -627,6 +633,18 @@ function _m6sAchsen(ctx, B, ab) {
     ctx.fillStyle = hell > 0.5 ? K.F_BLAU_D : K.F_ACHSE;
     ctx.fillText(String(v), K.AX - 7, y + 4);
   }
+  // Achsentitel: „Anzahl der Kinder“ links neben der Pfeilspitze (wandert mit
+  // ihr; wird kleiner, falls eine breite Schrift ihn sonst ueber den Papierrand
+  // schoebe), „Schulweg“ am Ende der waagerechten Achse.
+  const titel = 'Anzahl der Kinder', platz = K.AX - 9 - K.PX0 - 3;
+  ctx.globalAlpha = 1; ctx.fillStyle = K.F_TEXT;
+  ctx.font = '700 11px sans-serif';
+  const tb = ctx.measureText(titel).width;
+  if (tb > platz) ctx.font = '700 ' + (11 * platz / tb).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(titel, K.AX - 9, oben + 1);
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schulweg', K.AX + K.RA * K.KA + 6, K.Y0 + 4);
   ctx.restore();
 }
 function _m6sAbleseLinie(ctx, B, ab) {
@@ -722,6 +740,11 @@ function _m6sLegende(ctx, B) {
     _bioFxRundRect(ctx, x - 5, y - 5, S + 10, S + 10, 6); ctx.stroke();
     ctx.globalAlpha = 1;
   }
+  // Ueberschrift des Diagramms rechts oben ueber der Legende, in einer Zeile
+  // mit dem Achsentitel (wie die Diagramme im Heft)
+  ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '700 13px sans-serif'; ctx.fillStyle = K.F_TEXT;
+  ctx.fillText('Umfrage zum Schulweg', K.PX1 - 6, 16);
   ctx.fillStyle = K.F_BLAU; ctx.strokeStyle = K.F_BLAU_D; ctx.lineWidth = 1.5;
   ctx.fillRect(x, y, S, S); ctx.strokeRect(x, y, S, S);
   if (wechsel) {
@@ -791,10 +814,11 @@ function _m6sDraw(ctx, cv) {
   _m6sZahlenZeichnen(ctx);
   if (z.pause) _m6sPauseSchild(ctx);
 }
-// Schild „Pause“ oben links – gleiche Stelle, Groesse und Farbe wie in
-// m5-plus-schriftlich. Endet vor den Achsenzahlen (ab x = 78).
+// Schild „Pause“ unten links – Groesse und Farbe wie in m5-plus-schriftlich,
+// aber unten: oben links steht der Achsentitel „Anzahl der Kinder“. Endet vor
+// den Achsenzahlen (ab x = 92).
 function _m6sPauseSchild(ctx) {
-  const z = _m6s, w = 64, h = 25, x = 8, y = 8;
+  const z = _m6s, w = 64, h = 25, x = 8, y = _m6sK.PY1 - 33;
   ctx.save();
   if (z.blink > 0) {
     ctx.globalAlpha = Math.min(1, z.blink / 0.3);

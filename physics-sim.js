@@ -153779,7 +153779,10 @@ function _m5nDraw(ctx, cv) {
 //
 // Was man sieht: links eine Schatzkarte aus Karopapier als Koordinaten-
 // system, waagerechte Achse 0 bis 8, senkrechte Achse 0 bis 6, beide mit
-// Pfeil und mit Zahlen an jedem Kaestchen. Vier gezeichnete Dinge stehen mit
+// Pfeil und mit Zahlen an jedem Kaestchen, die 0 im Ursprung. Beschriftet wie
+// das Koordinatengitter im Heft (Abdullah, 09.10.2026: „Koordinatensystem mit
+// x und y beschriften“): „x“ hinter der Pfeilspitze der waagerechten Achse,
+// „y“ neben der Pfeilspitze der senkrechten. Vier gezeichnete Dinge stehen mit
 // dem Fuss auf ihrem Gitterpunkt, der einen dunklen Ortspunkt traegt, das
 // Wort steht daneben: Baum bei (3|5), Haus bei (5|3), Brunnen bei (0|4),
 // Boot bei (6|0). Eine violette Spielfigur steht beim Start (0|0).
@@ -153878,7 +153881,8 @@ const _m5oDINGE = [
   { x: 6, y: 0, art: 'boot', wort: 'Boot' }
 ];
 const _m5oK = {
-  OX: 52, OY: 214, KA: 30,      // Ursprung (px) und Kaestchenbreite (px)
+  OX: 30, OY: 214, KA: 30,      // Ursprung (px) und Kaestchenbreite (px); OX 30 (vorher 52):
+                                // so hat „x“ hinter der Pfeilspitze noch Platz auf der Karte
   NX: 8, NY: 6,                 // waagerecht 0 bis 8, senkrecht 0 bis 6
   TX: 316, TW: 96,              // Tafel rechts: linke Kante, Breite
   T_ZURUECK: 0.25,              // s: Figur verschwindet und taucht beim Start auf
@@ -154188,8 +154192,10 @@ function _m5oKarte(ctx) {
   ctx.beginPath(); ctx.moveTo(o.x, e.y - 20); ctx.lineTo(o.x - 5.5, e.y - 10); ctx.lineTo(o.x + 5.5, e.y - 10); ctx.closePath(); ctx.fill();
   ctx.restore();
 }
-// Zahlen an den Achsen – zuletzt gezeichnet, mit hellem Rand, damit kein
-// Leuchten und kein Kreis sie verdeckt.
+// Zahlen an den Achsen und die Buchstaben x und y – zuletzt gezeichnet, mit
+// hellem Rand, damit kein Leuchten und kein Kreis sie verdeckt. „x“ steht
+// hinter der Pfeilspitze der waagerechten Achse, „y“ neben der Pfeilspitze
+// der senkrechten (wie build_pilot.b_koordinatengitter im Heft).
 function _m5oAchsenZahlen(ctx) {
   const K = _m5oK, o = _m5oPx(0, 0);
   ctx.save();
@@ -154199,6 +154205,10 @@ function _m5oAchsenZahlen(ctx) {
   const z = (s, x, y, a) => { ctx.textAlign = a; ctx.strokeText(s, x, y); ctx.fillText(s, x, y); };
   for (let i = 0; i <= K.NX; i++) z(String(i), o.x + i * K.KA, o.y + 18, 'center');
   for (let j = 1; j <= K.NY; j++) z(String(j), o.x - 10, o.y - j * K.KA + 4.5, 'right');
+  const e = _m5oPx(K.NX, K.NY);                 // Pfeilspitzen bei (e.x + 20 | o.y) und (o.x | e.y - 20)
+  ctx.font = '700 14px sans-serif'; ctx.fillStyle = K.F_ACHSE;
+  z('x', e.x + 23, o.y + 4, 'left');
+  z('y', o.x + 10, e.y - 16, 'left');
   ctx.restore();
 }
 // Wo das Bild eines Dings sitzt: mit dem Fuss genau auf seinem Gitterpunkt,
@@ -187958,7 +187968,12 @@ function _m6rPauseSchild(ctx) {
 // Was man sieht: ein Blatt Karopapier (Kaestchen 12 px), darauf ein
 // Saeulendiagramm. Links die Achse mit Pfeil nach oben, Zahlen an jeder
 // zweiten Kaestchenlinie; unten vier Saeulenplaetze „zu Fuß“, „Rad“, „Bus“,
-// „Auto“ (Symbol + Wort). Daten (fest, 44 Kinder): zu Fuß 12 · Rad 8 · Bus 16 ·
+// „Auto“ (Symbol + Wort). Beschriftet wie ein Diagramm im Heft (Abdullah,
+// 09.10.2026: „Säulendiagramme richtig beschriften“): links neben der
+// Pfeilspitze der Achsentitel „Anzahl der Kinder“ (er wandert mit der Spitze,
+// wenn die Einteilung wechselt), am Ende der waagerechten Achse „Schulweg“,
+// rechts oben die Ueberschrift „Umfrage zum Schulweg“ (ueber der Legende).
+// Daten (fest, 44 Kinder): zu Fuß 12 · Rad 8 · Bus 16 ·
 // Auto 8. Jede Saeule ist 1 Kaestchen breit; die Kaestchenlinien laufen durch
 // die Saeule, so ist jedes Kaestchen zaehlbar. Die gewaehlte Saeule ist blau
 // (hellblau = noch nicht gezaehlt, kraeftig blau = gezaehlt), die anderen
@@ -188046,7 +188061,7 @@ function _m6rPauseSchild(ctx) {
 // FUER DIE LEHRKRAFT (Container <div class="fpm-lehrkraft">, V3; eigene Zeile
 // unter den Heftknoepfen, davor klein „Für die Lehrkraft:“):
 //   „Pause“ ↔ „weiter“ (_m6sAnhalten()): friert jede Bewegung ein; Schild
-//     „Pause“ oben links (Stelle wie in m5-plus-schriftlich).
+//     „Pause“ unten links (oben links steht der Achsentitel „Anzahl der Kinder“).
 //   „Tempo: normal“ ↔ „Tempo: langsam“ (_m6sTempo()): ein Drittel so schnell.
 //   „Zahlen verdecken: aus“ ↔ „… an“ (_m6sVerdecken()): die Zahlen an der
 //     Achse werden graue Karten mit „?“ – fuer das Gespraech „Was fehlt
@@ -188086,7 +188101,8 @@ const _m6sDATEN = [12, 8, 16, 8];                 // Kinder je Saeule, zusammen 
 const _m6sREIHE = [1, 2, 4];                      // Sprungmarken: Kinder je Kaestchen
 const _m6sK = {
   KA: 12,                          // Kaestchen (px)
-  AX: 96, Y0: 222,                 // Achsenkreuz: Hochachse x, Grundlinie y
+  AX: 112, Y0: 222,                // Achsenkreuz: Hochachse x, Grundlinie y (x 112 statt 96:
+                                   // links neben der Pfeilspitze steht der Achsentitel)
   SP: [2, 6, 10, 14],              // linke Kante jeder Saeule, Kaestchen ab der Achse
   RA: 17, MAXW: 16,                // Laenge der waagerechten Achse (Kaestchen), groesster Wert
   PX0: 4, PX1: 416, PY0: 4, PY1: 246,   // Papier
@@ -188577,6 +188593,18 @@ function _m6sAchsen(ctx, B, ab) {
     ctx.fillStyle = hell > 0.5 ? K.F_BLAU_D : K.F_ACHSE;
     ctx.fillText(String(v), K.AX - 7, y + 4);
   }
+  // Achsentitel: „Anzahl der Kinder“ links neben der Pfeilspitze (wandert mit
+  // ihr; wird kleiner, falls eine breite Schrift ihn sonst ueber den Papierrand
+  // schoebe), „Schulweg“ am Ende der waagerechten Achse.
+  const titel = 'Anzahl der Kinder', platz = K.AX - 9 - K.PX0 - 3;
+  ctx.globalAlpha = 1; ctx.fillStyle = K.F_TEXT;
+  ctx.font = '700 11px sans-serif';
+  const tb = ctx.measureText(titel).width;
+  if (tb > platz) ctx.font = '700 ' + (11 * platz / tb).toFixed(1) + 'px sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText(titel, K.AX - 9, oben + 1);
+  ctx.font = '700 11px sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText('Schulweg', K.AX + K.RA * K.KA + 6, K.Y0 + 4);
   ctx.restore();
 }
 function _m6sAbleseLinie(ctx, B, ab) {
@@ -188672,6 +188700,11 @@ function _m6sLegende(ctx, B) {
     _bioFxRundRect(ctx, x - 5, y - 5, S + 10, S + 10, 6); ctx.stroke();
     ctx.globalAlpha = 1;
   }
+  // Ueberschrift des Diagramms rechts oben ueber der Legende, in einer Zeile
+  // mit dem Achsentitel (wie die Diagramme im Heft)
+  ctx.textAlign = 'right'; ctx.textBaseline = 'alphabetic';
+  ctx.font = '700 13px sans-serif'; ctx.fillStyle = K.F_TEXT;
+  ctx.fillText('Umfrage zum Schulweg', K.PX1 - 6, 16);
   ctx.fillStyle = K.F_BLAU; ctx.strokeStyle = K.F_BLAU_D; ctx.lineWidth = 1.5;
   ctx.fillRect(x, y, S, S); ctx.strokeRect(x, y, S, S);
   if (wechsel) {
@@ -188741,10 +188774,11 @@ function _m6sDraw(ctx, cv) {
   _m6sZahlenZeichnen(ctx);
   if (z.pause) _m6sPauseSchild(ctx);
 }
-// Schild „Pause“ oben links – gleiche Stelle, Groesse und Farbe wie in
-// m5-plus-schriftlich. Endet vor den Achsenzahlen (ab x = 78).
+// Schild „Pause“ unten links – Groesse und Farbe wie in m5-plus-schriftlich,
+// aber unten: oben links steht der Achsentitel „Anzahl der Kinder“. Endet vor
+// den Achsenzahlen (ab x = 92).
 function _m6sPauseSchild(ctx) {
-  const z = _m6s, w = 64, h = 25, x = 8, y = 8;
+  const z = _m6s, w = 64, h = 25, x = 8, y = _m6sK.PY1 - 33;
   ctx.save();
   if (z.blink > 0) {
     ctx.globalAlpha = Math.min(1, z.blink / 0.3);
@@ -189509,7 +189543,9 @@ function _m6tDraw(ctx, cv) {
 //     erscheint, wenn alle Tuerme stehen, und bleibt beim Ausgleichen stehen.
 //     (Der Bauplan sagt „ueber der Leinwand“; sie steht IM Bild ganz oben, damit
 //     Summand und Turm im selben Bild aufleuchten koennen – MATHE_PROFIL § 10.2.)
-//   KARO mit HOEHENSKALA links (0 bis 10, Zahl an jeder Linie, Kaestchen 16 px).
+//   KARO mit HOEHENSKALA links (0 bis 10, Zahl an jeder Linie, Kaestchen 16 px),
+//     oben mit Pfeil, rechts neben der Pfeilspitze der Achsentitel „Körbe“
+//     (Abdullah, 09.10.2026: Achsen richtig beschriften).
 //     Je Runde ein Turm aus orangen Steckwuerfeln, 1 Wuerfel = 1 Kaestchen;
 //     nach 5 Wuerfeln eine feine Fuenfermarke quer ueber den Turm. Unter jedem
 //     Turm „Runde 1“ … und die Zahl der Wuerfel, die gerade im Turm stehen.
@@ -189626,7 +189662,7 @@ const _m6uK = {
   // Karo: Kaestchen (= 1 Wuerfel), Achse der Hoehenskala, Spalten rechts davon,
   // Turmabstand (Kaestchen), Boden (Hoehe 0), oberste Skalenzahl
   KA: 16, XA: 38, SP: 23, ABST: 4, YB: 206, HMAX: 10,
-  PX0: 4, PX1: 416, PY0: 40, PY1: 246,        // Papier
+  PX0: 4, PX1: 416, PY0: 28, PY1: 246,        // Papier (oben 28: Platz fuer Pfeil und Achsentitel)
   ZY0: 6, ZY1: 36, ZG: 27, ZGR: 18,           // Zettel mit der Plusaufgabe, Grundlinie, Schriftgrad
   YRUNDE: 222, YZAHL: 241,                    // Beschriftung unter den Tuermen
   YREIHE: 54, RK: 0.8, R5: 6,                 // Reihe beim Zusammenlegen: Mitte, Wuerfelgroesse, Fuenferluecke
@@ -190043,7 +190079,8 @@ function _m6uText(ctx, s, x, y, groesse, farbe, ausr, gew) {
   ctx.textBaseline = 'alphabetic';
   ctx.fillText(s, x, y);
 }
-// Papier mit Karo, Hoehenskala links (0 bis 10, Zahl an jeder Linie) und Boden.
+// Papier mit Karo, Hoehenskala links (0 bis 10, Zahl an jeder Linie, oben Pfeil
+// und Achsentitel „Körbe“) und Boden.
 function _m6uPapier(ctx) {
   const K = _m6uK, x1 = K.XA + K.SP * K.KA, yo = K.YB - K.HMAX * K.KA;
   ctx.save();
@@ -190063,7 +190100,13 @@ function _m6uPapier(ctx) {
   }
   // Skala: Achse, Striche, Zahlen
   ctx.strokeStyle = K.ACHSE; ctx.lineWidth = 1.5;
-  ctx.beginPath(); ctx.moveTo(K.XA, K.YB); ctx.lineTo(K.XA, yo - 2); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(K.XA, K.YB); ctx.lineTo(K.XA, yo - 6); ctx.stroke();
+  ctx.fillStyle = K.ACHSE;                           // Pfeilspitze (unter dem Schild „Pause“, das bei y = 33 endet)
+  ctx.beginPath(); ctx.moveTo(K.XA, yo - 12); ctx.lineTo(K.XA - 4.5, yo - 4); ctx.lineTo(K.XA + 4.5, yo - 4);
+  ctx.closePath(); ctx.fill();
+  // Achsentitel rechts neben der Pfeilspitze, ueber dem Karo; auch er bleibt
+  // unter dem Schild „Pause“ frei.
+  _m6uText(ctx, 'Körbe', K.XA + 9, yo - 3, 11, K.TINTE, 'left', '700');
   for (let k = 0; k <= K.HMAX; k++) {
     const y = K.YB - k * K.KA;
     ctx.beginPath(); ctx.moveTo(K.XA - 4, y); ctx.lineTo(K.XA, y); ctx.stroke();

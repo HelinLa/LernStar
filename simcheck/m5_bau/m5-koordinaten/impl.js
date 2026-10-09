@@ -8,7 +8,10 @@
 //
 // Was man sieht: links eine Schatzkarte aus Karopapier als Koordinaten-
 // system, waagerechte Achse 0 bis 8, senkrechte Achse 0 bis 6, beide mit
-// Pfeil und mit Zahlen an jedem Kaestchen. Vier gezeichnete Dinge stehen mit
+// Pfeil und mit Zahlen an jedem Kaestchen, die 0 im Ursprung. Beschriftet wie
+// das Koordinatengitter im Heft (Abdullah, 09.10.2026: „Koordinatensystem mit
+// x und y beschriften“): „x“ hinter der Pfeilspitze der waagerechten Achse,
+// „y“ neben der Pfeilspitze der senkrechten. Vier gezeichnete Dinge stehen mit
 // dem Fuss auf ihrem Gitterpunkt, der einen dunklen Ortspunkt traegt, das
 // Wort steht daneben: Baum bei (3|5), Haus bei (5|3), Brunnen bei (0|4),
 // Boot bei (6|0). Eine violette Spielfigur steht beim Start (0|0).
@@ -107,7 +110,8 @@ const _m5oDINGE = [
   { x: 6, y: 0, art: 'boot', wort: 'Boot' }
 ];
 const _m5oK = {
-  OX: 52, OY: 214, KA: 30,      // Ursprung (px) und Kaestchenbreite (px)
+  OX: 30, OY: 214, KA: 30,      // Ursprung (px) und Kaestchenbreite (px); OX 30 (vorher 52):
+                                // so hat „x“ hinter der Pfeilspitze noch Platz auf der Karte
   NX: 8, NY: 6,                 // waagerecht 0 bis 8, senkrecht 0 bis 6
   TX: 316, TW: 96,              // Tafel rechts: linke Kante, Breite
   T_ZURUECK: 0.25,              // s: Figur verschwindet und taucht beim Start auf
@@ -417,8 +421,10 @@ function _m5oKarte(ctx) {
   ctx.beginPath(); ctx.moveTo(o.x, e.y - 20); ctx.lineTo(o.x - 5.5, e.y - 10); ctx.lineTo(o.x + 5.5, e.y - 10); ctx.closePath(); ctx.fill();
   ctx.restore();
 }
-// Zahlen an den Achsen – zuletzt gezeichnet, mit hellem Rand, damit kein
-// Leuchten und kein Kreis sie verdeckt.
+// Zahlen an den Achsen und die Buchstaben x und y – zuletzt gezeichnet, mit
+// hellem Rand, damit kein Leuchten und kein Kreis sie verdeckt. „x“ steht
+// hinter der Pfeilspitze der waagerechten Achse, „y“ neben der Pfeilspitze
+// der senkrechten (wie build_pilot.b_koordinatengitter im Heft).
 function _m5oAchsenZahlen(ctx) {
   const K = _m5oK, o = _m5oPx(0, 0);
   ctx.save();
@@ -428,6 +434,10 @@ function _m5oAchsenZahlen(ctx) {
   const z = (s, x, y, a) => { ctx.textAlign = a; ctx.strokeText(s, x, y); ctx.fillText(s, x, y); };
   for (let i = 0; i <= K.NX; i++) z(String(i), o.x + i * K.KA, o.y + 18, 'center');
   for (let j = 1; j <= K.NY; j++) z(String(j), o.x - 10, o.y - j * K.KA + 4.5, 'right');
+  const e = _m5oPx(K.NX, K.NY);                 // Pfeilspitzen bei (e.x + 20 | o.y) und (o.x | e.y - 20)
+  ctx.font = '700 14px sans-serif'; ctx.fillStyle = K.F_ACHSE;
+  z('x', e.x + 23, o.y + 4, 'left');
+  z('y', o.x + 10, e.y - 16, 'left');
   ctx.restore();
 }
 // Wo das Bild eines Dings sitzt: mit dem Fuss genau auf seinem Gitterpunkt,
