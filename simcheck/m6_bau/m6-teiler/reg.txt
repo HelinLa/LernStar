@@ -1,0 +1,1 @@
+  'm6-teiler': modal => { _k6aInit(); modal.innerHTML = _k6aHTML(); _k6aStatus(); _pSim = new PhysicsSimEngine('_k6a-cv', '_k6a-cv'); _pSim.start(dt => _k6aUpdate(dt), (ctx, cv) => _k6aDraw(ctx, cv), []); },

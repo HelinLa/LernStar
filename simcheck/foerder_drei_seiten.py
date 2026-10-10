@@ -19,7 +19,10 @@ import json, os, sys, subprocess
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BAENDE = ["arbeitsheft_foe7", "arbeitsheft_foe8", "arbeitsheft_foe9", "arbeitsheft_foe10",
           "arbeitsheft_foe_ef", "arbeitsheft_bio_foe56", "arbeitsheft_bio_foe7",
-          "arbeitsheft_bio_foe8", "arbeitsheft_bio_foe9", "arbeitsheft_chem_foe8", "arbeitsheft_mathe_foe5"]
+          "arbeitsheft_bio_foe8", "arbeitsheft_bio_foe9", "arbeitsheft_chem_foe8", "arbeitsheft_mathe_foe5",
+          # Mathematik 6 seit 10.10.2026 im Bau: misst, was in einheiten/ liegt, und sagt
+          # dazu, wie viele der geplanten Einheiten noch fehlen (nie "alle" bei null).
+          "arbeitsheft_mathe_foe6"]
 
 
 def _laden(band):
@@ -41,10 +44,11 @@ def _einheit(bp, eid):
     return e["seite"]
 
 
-def band_messen(band):
+def band_messen(band, mit_plan=False):
     bp, ids = _laden(band)
-    return {eid: len(bp.seite_ab(_einheit(bp, eid), 1)) for eid in ids
-            if os.path.exists(os.path.join("einheiten", eid + ".json"))}
+    m = {eid: len(bp.seite_ab(_einheit(bp, eid), 1)) for eid in ids
+         if os.path.exists(os.path.join("einheiten", eid + ".json"))}
+    return (m, ids) if mit_plan else m
 
 
 def einheit_zeigen(band, eid):
@@ -81,11 +85,20 @@ def einheit_zeigen(band, eid):
 
 if __name__ == "__main__":
     if len(sys.argv) == 3 and sys.argv[1] == "--band":
-        m = band_messen(sys.argv[2])
+        if not os.path.isdir(os.path.join(ROOT, sys.argv[2])):
+            print("%-24s fehlt (Ordner nicht da)" % sys.argv[2]); sys.exit(0)
+        m, geplant = band_messen(sys.argv[2], mit_plan=True)
         lang = {k: v for k, v in m.items() if v != 3}
-        print("%-24s %3d Einheiten, %s" % (sys.argv[2], len(m),
+        # Ein Band im Bau (10.10.2026): "0 Einheiten, alle auf 3 Seiten" waere ein
+        # Pruefer, der schweigt. Fehlende Einheiten werden genannt, nie mitgezaehlt.
+        offen = [e for e in geplant if e not in m]
+        zusatz = (" (noch offen: %d von %d geplanten - %s)" % (len(offen), len(geplant), ", ".join(offen))
+                  if offen else "")
+        if not m:
+            print("%-24s noch keine Einheit geschrieben%s" % (sys.argv[2], zusatz)); sys.exit(0)
+        print("%-24s %3d Einheiten, %s%s" % (sys.argv[2], len(m),
               ("alle auf 3 Seiten" if not lang else
-               "nicht auf 3: " + ", ".join("%s %d Seiten" % kv for kv in lang.items()))))
+               "nicht auf 3: " + ", ".join("%s %d Seiten" % kv for kv in lang.items())), zusatz))
         sys.exit(0)
     if len(sys.argv) == 3:
         einheit_zeigen(sys.argv[1], sys.argv[2]); sys.exit(0)

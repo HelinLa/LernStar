@@ -6896,6 +6896,60 @@ const HEFT_SEITEN = {
     frage: "Welche Zeit liegt wirklich in der Mitte?",
     schritte: ["Drücke „3 Kinder“. Notiere den Wert in Zeile 1.", "Drücke „5 Kinder“. Notiere Platz und Wert in Zeile 2.", "Mache das auch mit „7 Kinder“ in Zeile 3."]
   },
+  "mt1": {
+    klasse: "6", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m6-teiler", seite: 8,
+    kapitel: "Teiler und Vielfache",
+    name: "Wie kann man 24 Plättchen in Reihen legen?",
+    titel: "Nur vier Möglichkeiten?",
+    frage: "Bei welchen Reihen bleibt kein Plättchen übrig?",
+    schritte: ["Drücke „6 je Reihe“. Notiere den Rest in Zeile 1.", "Drücke „8 je Reihe“. Notiere volle Reihen und Rest in Zeile 2.", "Mache das auch mit „10 je Reihe“ in Zeile 3.", "Mache das auch mit „12 je Reihe“ in Zeile 4."]
+  },
+  "mt2": {
+    klasse: "6", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m6-hundertertafel", seite: 11,
+    kapitel: "Teiler und Vielfache",
+    name: "Welche Zahlen sind in der 5er-Reihe?",
+    titel: "Ist bei 50 Schluss?",
+    frage: "Ist 85 in der 5er-Reihe?",
+    schritte: ["Drücke „10er-Reihe“. Notiere die letzten Ziffern in Zeile 1.", "Drücke „5er-Reihe“. Notiere Spalten und Ziffern in Zeile 2.", "Mache das auch mit „2er-Reihe“ in Zeile 3.", "Mache das auch mit „4er-Reihe“ in Zeile 4."]
+  },
+  "mt3": {
+    klasse: "6", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m6-durch-drei", seite: 14,
+    kapitel: "Teiler und Vielfache",
+    name: "Ist 123 durch 3 teilbar?",
+    titel: "Reicht die 3 am Ende?",
+    frage: "Ist 123 durch 3 teilbar?",
+    schritte: ["Drücke „21“. Notiere den Rest am Ende in Zeile 1.", "Drücke „123“. Notiere übrige Würfel und Rest in Zeile 2.", "Mache das auch mit „124“ in Zeile 3.", "Mache das auch mit „126 mit Neunern“ in Zeile 4."]
+  },
+  "mt4": {
+    klasse: "6", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m6-vielfache", seite: 17,
+    kapitel: "Teiler und Vielfache",
+    name: "Wann treffen sich die zwei Reihen wieder?",
+    titel: "Tarek sagt 24 min",
+    frage: "Nach wie vielen Minuten halten beide wieder zusammen?",
+    schritte: ["Drücke „2 min und 3 min“. Notiere das zweite Treffen in Zeile 1.", "Drücke „4 min und 6 min“. Notiere beide Treffen in Zeile 2.", "Mache das auch mit „3 min und 5 min“ in Zeile 3.", "Mache das auch mit „4 min und 8 min“ in Zeile 4."]
+  },
+  "mt5": {
+    klasse: "6", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m6-gemeinsame-teiler", seite: 20,
+    kapitel: "Teiler und Vielfache",
+    name: "Wie lang können die Stücke höchstens sein?",
+    titel: "Leni sagt 3 m",
+    frage: "Wie lang können die Stücke höchstens sein?",
+    schritte: ["Drücke „3 m“. Notiere den Rest beim 18-m-Band in Zeile 1.", "Drücke „4 m“. Notiere beide Reste in Zeile 2.", "Mache das auch mit „6 m“ in Zeile 3.", "Mache das auch mit „12 m“ in Zeile 4."]
+  },
+  "mt6": {
+    klasse: "6", schulform: "Gesamtschule NRW · Förderheft Mathematik",
+    sim: "m6-sieb", seite: 23,
+    kapitel: "Teiler und Vielfache",
+    name: "Welche Zahlen haben nur zwei Teiler?",
+    titel: "Alle ungeraden Zahlen?",
+    frage: "Welche Zahlen bis 50 haben nur zwei Teiler?",
+    schritte: ["Drücke „2er-Reihe“. Notiere die freien Felder in Zeile 1.", "Drücke „3er-Reihe“. Notiere beide Zahlen in Zeile 2.", "Mache das auch mit „5er-Reihe“ in Zeile 3.", "Mache das auch mit „7er-Reihe“ in Zeile 4."]
+  },
 };
 
 // simId -> alle Heftseiten, die darauf zeigen

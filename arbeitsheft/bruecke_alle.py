@@ -27,7 +27,8 @@ ORDNER = ["arbeitsheft", "arbeitsheft7", "arbeitsheft8", "arbeitsheft9", "arbeit
           # Förderheft BIOLOGIE 5/6 (seit 27.09.2026) - nur Seiten mit gebauter Simulation
           "arbeitsheft_bio_foe56", "arbeitsheft_bio_foe7", "arbeitsheft_bio_foe8", "arbeitsheft_bio_foe9", "arbeitsheft_chem_foe8", "arbeitsheft_foe_ef",
           # Förderheft MATHEMATIK 5 (seit 03.10.2026) - Simulationen als Arbeitsmaterial
-          "arbeitsheft_mathe_foe5"]
+          "arbeitsheft_mathe_foe5",
+          "arbeitsheft_mathe_foe6"]
 
 # Welche Inhaltsdateien ein Band braucht, damit er gebaut werden kann.
 # Die Foerderbaende haben einen anderen Satz: keine Uebungsseiten, kein

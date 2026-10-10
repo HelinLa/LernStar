@@ -1,0 +1,1 @@
+  'm6-hundertertafel': modal => { _k6bInit(); modal.innerHTML = _k6bHTML(); _k6bStatus(); _pSim = new PhysicsSimEngine('_k6b-cv', '_k6b-cv'); _pSim.start(dt => _k6bUpdate(dt), (ctx, cv) => _k6bDraw(ctx, cv), []); },

@@ -7667,6 +7667,12 @@ const _physSimDefs = {
   'm5-spannweite': modal => { _m6tInit(); modal.innerHTML = _m6tHTML(); _m6tStatus(); _pSim = new PhysicsSimEngine('_m6t-cv', '_m6t-cv'); _pSim.start(dt => _m6tUpdate(dt), (ctx, cv) => _m6tDraw(ctx, cv), []); },
   'm5-mittelwert': modal => { _m6uInit(); modal.innerHTML = _m6uHTML(); _m6uStatus(); _pSim = new PhysicsSimEngine('_m6u-cv', '_m6u-cv'); _pSim.start(dt => _m6uUpdate(dt), (ctx, cv) => _m6uDraw(ctx, cv), []); },
   'm5-median': modal => { _m6vInit(); modal.innerHTML = _m6vHTML(); _m6vStatus(); _pSim = new PhysicsSimEngine('_m6v-cv', '_m6v-cv'); _pSim.start(dt => _m6vUpdate(dt), (ctx, cv) => _m6vDraw(ctx, cv), []); },
+  'm6-teiler': modal => { _k6aInit(); modal.innerHTML = _k6aHTML(); _k6aStatus(); _pSim = new PhysicsSimEngine('_k6a-cv', '_k6a-cv'); _pSim.start(dt => _k6aUpdate(dt), (ctx, cv) => _k6aDraw(ctx, cv), []); },
+  'm6-hundertertafel': modal => { _k6bInit(); modal.innerHTML = _k6bHTML(); _k6bStatus(); _pSim = new PhysicsSimEngine('_k6b-cv', '_k6b-cv'); _pSim.start(dt => _k6bUpdate(dt), (ctx, cv) => _k6bDraw(ctx, cv), []); },
+  'm6-durch-drei': modal => { _k6cInit(); modal.innerHTML = _k6cHTML(); _k6cStatus(true); _pSim = new PhysicsSimEngine('_k6c-cv', '_k6c-cv'); _pSim.start(dt => _k6cUpdate(dt), (ctx, cv) => _k6cDraw(ctx, cv), []); },
+  'm6-vielfache': modal => { _k6dInit(); modal.innerHTML = _k6dHTML(); _k6dStatus(true); _pSim = new PhysicsSimEngine('_k6d-cv', '_k6d-cv'); _pSim.start(dt => _k6dUpdate(dt), (ctx, cv) => _k6dDraw(ctx, cv), []); },
+  'm6-gemeinsame-teiler': modal => { _k6eInit(); modal.innerHTML = _k6eHTML(); _k6eStatus(true); _pSim = new PhysicsSimEngine('_k6e-cv', '_k6e-cv'); _pSim.start(dt => _k6eUpdate(dt), (ctx, cv) => _k6eDraw(ctx, cv), []); },
+  'm6-sieb': modal => { _k6fInit(); modal.innerHTML = _k6fHTML(); _k6fStatus(true); _pSim = new PhysicsSimEngine('_k6f-cv', '_k6f-cv'); _pSim.start(dt => _k6fUpdate(dt), (ctx, cv) => _k6fDraw(ctx, cv), []); },
 };
 
 // ═══════════════════════════════════════════════════════
@@ -191118,4 +191124,4515 @@ function _m6vDraw(ctx, cv) {
   _m6vSzene(ctx, z.szene, 1);
   _bioFxDraw(ctx, z.fx.teile);
   if (z.pause) _m6vPauseSchild(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 6 FOERDER – mt1 „Nur vier Möglichkeiten?“ (Kennung m6-teiler,
+// Praefix _k6a). Bauplan: arbeitsheft_mathe_foe6/KAPITEL1_PROFIL.md,
+// Abschnitt „m6-teiler (mt1)“ (Regeln N1–N3, Lehrkraft-Zeile).
+// Ueberschrift = Frage der Einheit: „Bei welchen Reihen bleibt kein Plättchen übrig?“
+//
+// Was man sieht – ein heller Tisch mit Karo (Kaestchen 15 px). Bild und
+// Zeichen sind durch die FARBE verbunden, in Bild, Zettel und Statuszeilen
+// gleich: Plaettchen je Reihe BLAU, volle Reihen GRUEN, Rest ORANGE.
+//   VORRAT (links oben, Schale mit der Aufschrift „Vorrat“): die Plaettchen
+//     (blau) in Zehnerreihen mit Fuenferluecke. Sie verlassen die Schale von
+//     hinten, so bleibt die Struktur lesbar.
+//   LEGEFELD (rechts, Aufschrift „Legefeld“): Reihen untereinander, nach je
+//     5 Plaettchen eine Luecke (ein Kaestchen), nach je 5 Reihen eine Luecke.
+//     Ueber der ersten Reihe eine blaue Klammer mit „8 je Reihe“. Eine
+//     unvollstaendige letzte Reihe liegt ORANGE, ihre leeren Plaetze sind
+//     orange gestrichelt umrandet. Bis 14 je Reihe und 11 Reihen liegt jedes
+//     Plaettchen in einem Kaestchen; groessere Felder werden kleiner gezeichnet.
+//   ZETTEL (links unten, erst wenn alles liegt): „Kurz geschrieben“, darunter
+//     „24 : 8 = 3“ und – nur ohne Rest – „3 · 8 = 24“; mit Rest
+//     „24 : 10 = 2 Rest 4“ (8 blau, 3 gruen, Rest orange).
+//
+// Bewegung (jede Handlung bewegt sich; Zahlen wechseln erst, wenn das Bild
+// angekommen ist – nur „Volle Reihen“ zaehlt beim Abspielen mit):
+//   Sprungmarke  Das Legefeld leert sich: die Plaettchen gleiten in die Schale
+//                zurueck (0,35 s; liegt nichts, nur 0,12 s). Dann fliegen sie
+//                einzeln im Bogen aus dem Vorrat (eins alle 0,08 s, Flug 0,3 s)
+//                und legen Reihe fuer Reihe von oben. Jede volle Reihe leuchtet
+//                gruen auf (0,7 s), wenn ihr letztes Plaettchen landet. Liegt
+//                alles, wird eine unvollstaendige Reihe orange, ihre Plaettchen
+//                leuchten (1,4 s), der Zettel gleitet herein.
+//                Gemessen (Frames zu 16 ms): 24 Plaettchen vom Start aus nach
+//                2,26 s (142 Frames), nach einer anderen Sprungmarke 2,49 s
+//                (156 Frames). simfakten.js mit --frames=25 --verlauf=4 liest
+//                im ersten Durchgang bis 125 Frames (da zaehlen die vollen
+//                Reihen noch); die Endwerte stehen im Durchgang „… 2.“ (der
+//                zweite Druck laesst auslaufen).
+//   „± 1 je Reihe“  alle Plaettchen ruecken gleichzeitig (gestaffelt) an ihre
+//                neuen Plaetze (0,73 s bei 24), dann leuchten die vollen Reihen.
+//                Liegt noch nichts, legt „+ 1 je Reihe“ wie eine Sprungmarke,
+//                mit 1 je Reihe und allen Plaettchen der Schale.
+//   „+ 1 Plaettchen“ ein Plaettchen springt in der Schale auf und fliegt an
+//                den naechsten Platz (0,65 s); liegt noch nichts, kommt es nur
+//                in die Schale. „− 1 Plaettchen“: das zuletzt gelegte fliegt in
+//                die Schale zurueck und verschwindet (0,45 s).
+//   „drehen“     (nur ohne Rest) das Rechteck dreht sich um eine Vierteldrehung
+//                im Uhrzeigersinn (0,8 s): aus 3 Reihen zu je 8 werden 8 Reihen
+//                zu je 3. Mit Rest wackelt das Bild und bleibt liegen,
+//                _k6a-grenze sagt „Drehen geht nur ohne übrige Plättchen.“
+//   „neu“        sofort der Start, die Plaettchen blenden in der Schale ein.
+// Wer waehrend einer Bewegung einen Knopf drueckt, laesst sie sofort ankommen
+// (ohne Lichtring); dann geschieht das Neue. Jede Knopffolge ergibt so
+// dieselben Zahlen. Jede Sprungmarke stellt ihren Zustand selbst her
+// (24 Plaettchen, ihre Zahl je Reihe), gleich, was vorher gedrueckt wurde.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_k6aMarke(6) …):
+//     „6 je Reihe“ · „8 je Reihe“ · „10 je Reihe“ · „12 je Reihe“
+//   Reihe 2: „− 1 je Reihe“ · „+ 1 je Reihe“ (_k6aJe(-1|1), 1 bis Zahl der
+//     Plaettchen) · „− 1 Plättchen“ · „+ 1 Plättchen“ (_k6aZahl(-1|1), 1–36) ·
+//     „drehen“ (_k6aDrehen()) · „neu“ (_k6aNeu())
+//   „− 1 je Reihe“ und „drehen“ sind blass, solange nichts gelegt ist.
+//   „+ 1 je Reihe“ legt dann den ganzen Vorrat mit 1 je Reihe (wie eine
+//   Sprungmarke, aber mit der Zahl der Plaettchen, die gerade da ist): So
+//   kann ein Kind von 1 an hochzaehlen – und 36 Plaettchen legen, die es
+//   vorher mit „+ 1 Plättchen“ in die Schale getan hat (der Zusatz der
+//   Lehrkraft). Ohne das liessen sich Plaettchen, die vor dem Legen
+//   dazukommen, nie legen: jede Sprungmarke stellt 24 her.
+//   Hervorgehoben ist die Sprungmarke, deren Feld gerade daliegt (24 Plaettchen).
+//
+// Statuszeilen (woertlich, jede mit mehr als 18 Zeichen):
+//   _k6a-zahl    „Plättchen zusammen: 24“
+//   _k6a-reihe   „Plättchen je Reihe: 8“ (Start „Plättchen je Reihe: noch nicht gewählt“)
+//   _k6a-voll    „Volle Reihen auf dem Tisch: 3“ (zaehlt beim Abspielen mit, Start 0)
+//   _k6a-rest    „Übrige Plättchen (Rest): 0“ (vorher und waehrend jeder Bewegung „…“)
+//   _k6a-kurz    „Kurz geschrieben: 24 : 8 = 3“ bzw. „Kurz geschrieben: 24 : 10 = 2 Rest 4“
+//                (vorher „…“)
+//   _k6a-mal     nur ohne Rest „Als Malaufgabe: 3 · 8 = 24“, sonst ausgeblendet und leer
+//   _k6a-grenze  nur an der Grenze, bis zur naechsten Handlung:
+//                „Mehr Plättchen passen nicht auf den Tisch.“ (über 36)
+//                „Weniger als 1 je Reihe geht nicht.“
+//                „Drehen geht nur ohne übrige Plättchen.“
+//                ZUSAETZLICH zum Bauplan (er nennt nur den Bereich):
+//                „Mehr als 24 je Reihe geht nicht.“ (die Zahl ist die der
+//                Plaettchen) und „Weniger als 1 Plättchen geht nicht.“ – gleich
+//                gebaut wie die beiden Zeilen des Bauplans, damit jede Grenze
+//                etwas sagt und nicht nur wackelt.
+// Rechnungen stehen in <span style="white-space:nowrap">, damit
+// „24 : 10 = 2 Rest 4“ in der schmalen Anzeige nicht umbricht.
+//
+// Werte (jede Sprungmarke nachgerechnet mit simcheck/werte.js, ausgelaufen):
+//   6 je Reihe  → 4 volle Reihen, Rest 0, „24 : 6 = 4“,  „4 · 6 = 24“
+//   8 je Reihe  → 3, Rest 0, „24 : 8 = 3“,  „3 · 8 = 24“
+//   10 je Reihe → 2, Rest 4, „24 : 10 = 2 Rest 4“ (keine Malaufgabe)
+//   12 je Reihe → 2, Rest 0, „24 : 12 = 2“, „2 · 12 = 24“
+//   frei: 5 je Reihe → 4, Rest 4 · 7 → 3, Rest 3 · 24 → 1, Rest 0 · 1 → 24, Rest 0
+//   „drehen“ nach 8 je Reihe → Plättchen je Reihe 3, volle Reihen 8,
+//     „24 : 3 = 8“, „8 · 3 = 24“.
+//   Grenzen der Zahl je Reihe: 1 bis Zahl der Plaettchen. „− 1 Plättchen“ bei
+//   gleich vielen je Reihe wie Plaettchen nimmt die Zahl je Reihe mit (aus
+//   1 Reihe zu 24 wird 1 Reihe zu 23) – sonst laege eine Reihe auf dem Tisch,
+//   die laenger ist als alle Plaettchen zusammen.
+// Start: 24 Plaettchen in der Schale, nichts gelegt („Start: 24 Plättchen,
+// noch nicht gelegt“).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen):
+//   „8 je Reihe“ – die 3. Reihe schliesst genau mit dem letzten Plaettchen:
+//     goldener Lichtring um das Rechteck und ein goldener Rahmen darum
+//     (1,8 s; Gold, nicht Orange – Orange heisst hier immer Rest). Die 8
+//     fehlt in Tareks Liste. Gilt fuer jedes Legen von 24 Plaettchen zu je 8,
+//     das von selbst zu Ende laeuft (auch ueber „± 1 je Reihe“).
+//   „10 je Reihe“ – die 4 uebrigen Plaettchen leuchten orange (1,4 s). Das
+//     Leuchten gehoert zu JEDEM Rest, damit Orange immer dasselbe heisst.
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-punktefeld, Container
+// <div class="fpm-lehrkraft">; simfakten.js ueberspringt die Knoepfe dort).
+// Eigene Zeile unter den Heftknoepfen, davor klein „Für die Lehrkraft:“:
+//   „Pause“ ↔ „weiter“ (_k6aAnhalten()): friert jede Bewegung ein; Schild
+//     „Pause“ oben links im Bild (Stelle und Aussehen wie in m5-punktefeld).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_k6aTempo()): ein Drittel so schnell.
+//   „Zahlen verdecken: aus“ ↔ „… an“ (_k6aVerdecken()): verdeckt „Volle Reihen“,
+//     „Übrige Plättchen“, „Kurz geschrieben“ und „Als Malaufgabe“ (dort steht
+//     dann „verdeckt“ – „Als Malaufgabe“ auch mit Rest, sonst verriete das
+//     Fehlen der Zeile den Rest), im Bild eine graue Karte mit „?“ statt der
+//     Rechnung. Plaettchen, Klammer und „Plättchen je Reihe“ bleiben: zum
+//     Vermuten an der Tafel.
+//   Hinweiszeile _k6a-lehrkraft (im Container; in der Pause „lmp-status off“):
+//     sonst    „Für die Lehrkraft: „Pause“ hält alles an. „Zahlen verdecken“ lässt erst vermuten.“
+//     verdeckt „Zahlen verdeckt. Erst vermuten lassen, dann wieder aufdecken.“
+//     Pause    „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“
+//   EIN Zeitfaktor (_k6aZeitfaktor: 0 Pause, 1/3 langsam, 1 normal) an der
+//   einen Stelle, an der dt in _k6aUpdate geht. In der Pause bewegt kein Knopf
+//   etwas: „± 1 …“ und „drehen“ werden VORGEMERKT, wenn nichts unterwegs ist
+//   (es beginnt mit „weiter“), und ENTFALLEN, wenn eine Bewegung steht; das
+//   Schild leuchtet dabei kurz auf (in echter Zeit). Sprungmarke und „neu“
+//   heben die Pause auf; Tempo und Verdecken bleiben stehen.
+//   Voreinstellung: Pause aus, Tempo normal, Verdecken aus.
+//
+// Abweichungen vom Bauplan (mit Grund):
+//   * Zettel und Klammer im Bild sind dazugekommen. Der Bauplan beschreibt nur
+//     Vorrat und Legefeld; ohne Zeichen im Bild staenden Bild und Rechnung auf
+//     dem Handy weit auseinander (die Anzeige rutscht unter die Leinwand).
+//     MATHE_PROFIL § 10.2 verlangt zwei Darstellungen, verbunden.
+//   * Die zwei zusaetzlichen Grenzzeilen (siehe oben).
+//   * „− 1 Plättchen“ nimmt die Zahl je Reihe mit, wenn sie sonst groesser
+//     als die Zahl der Plaettchen waere (siehe Werte).
+//   * „+ 1 je Reihe“ legt, solange nichts liegt, den Vorrat mit 1 je Reihe
+//     (siehe Knoepfe); der Bauplan sagt nicht, was der Knopf vor dem ersten
+//     Legen tut.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „Teiler“, „teilbar“,
+// „Teilerpaar“, die Regel als Satz (kein „8 ist ein Teiler von 24“), eine
+// Liste der Reihenlaengen ohne Rest. Keine Namen, keine Punkte, keine
+// Zeitmessung, kein „falsch“. Deterministisch, ohne Zufall: jede Zahl im Bild
+// und in der Anzeige kommt aus z.n (Plaettchen) und z.je (je Reihe).
+// ════════════════════════════════════════════════════════════════════════
+let _k6a = null;
+const _k6aMARKEN = [6, 8, 10, 12];                 // Sprungmarken = Zeilen der Heft-Tabelle
+const _k6aSTART = 24, _k6aMAX = 36;
+const _k6aK = {
+  KA: 15, KX0: 6, KY0: 6,                          // Karo: Kaestchen, Ursprung des Rasters
+  PX0: 4, PX1: 416, PY0: 4, PY1: 246,              // Tisch (Papier)
+  TX0: 12, TY0: 36, TF: 11, TPAD: 4, TR: 4.2,      // Schale: Ecke, Fach, Rand, Radius
+  LX0: 156, LX1: 408, LY0: 51, LY1: 240,           // Legefeld (LX0, LY0 auf dem Karo)
+  RP: 0.36,                                        // Radius eines Plaettchens = RP · Kaestchen
+  KOPF: 27,                                        // Grundlinie der Aufschriften
+  ZX0: 12, ZX1: 141, ZY0: 176, ZY1: 238,           // Zettel
+  T_LEER: 0.35, T_LEER0: 0.12, T_JE: 0.08, T_FLUG: 0.3,
+  T_UM: 0.45, T_UMSTAG: 0.012, T_DREH: 0.8, T_POP: 0.25, T_PFLUG: 0.4,
+  T_WEG: 0.45, T_VORRAT: 0.3, T_NEU: 0.35, T_GLANZ: 0.7, T_REST: 1.4,
+  T_AHA: 1.8, T_ZETTEL: 0.35, T_KLAMMER: 0.3, LANGSAM: 1 / 3,
+  F_PUNKT: '#3b82f6', F_PRAND: '#1d4ed8', F_BLAU: '#1d4ed8',
+  F_REST: '#f97316', F_RRAND: '#c2410c', F_ORANGE: '#c2410c',
+  F_GRUEN: '#047857', F_TEXT: '#111827', F_GRAU: '#475569', F_KARO: '#d4e3f1'
+};
+
+// ── Orte ────────────────────────────────────────────────────────────────
+// Fach m (0 … 35) der Schale: Zehnerreihen, nach dem 5. ein Fach frei.
+function _k6aFach(m) {
+  const K = _k6aK, c = m % 10, r = Math.floor(m / 10);
+  return [K.TX0 + K.TPAD + (c + (c >= 5 ? 1 : 0)) * K.TF + K.TF / 2,
+          K.TY0 + K.TPAD + r * K.TF + K.TF / 2];
+}
+// Lage von n Plaettchen zu je „je“: Kaestchengroesse s, Ecke, Masse.
+function _k6aLage(n, je) {
+  const K = _k6aK, R = Math.ceil(n / je);
+  const wU = je + Math.floor((je - 1) / 5), hU = R + Math.floor((R - 1) / 5);
+  const s = Math.min(K.KA, (K.LX1 - K.LX0) / wU, (K.LY1 - K.LY0) / hU);
+  let x0 = K.LX0 + (K.LX1 - K.LX0 - wU * s) / 2;   // waagerecht mittig …
+  if (s === K.KA) x0 = K.LX0 + Math.floor((K.LX1 - K.LX0 - wU * s) / 2 / K.KA) * K.KA;   // … auf dem Karo
+  return { n, je, R, F: Math.floor(n / je), r: n % je, s, x0, y0: K.LY0, w: wU * s, h: hU * s };
+}
+// Mitte des Platzes k (Lesereihenfolge) – auch fuer die leeren Plaetze der letzten Reihe.
+function _k6aOrt(L, k) {
+  const i = Math.floor(k / L.je), j = k % L.je;
+  return [L.x0 + (j + Math.floor(j / 5)) * L.s + L.s / 2,
+          L.y0 + (i + Math.floor(i / 5)) * L.s + L.s / 2];
+}
+function _k6aRadius(s) { return s * _k6aK.RP; }
+// Klammer ueber der ersten Reihe: linke und rechte Kante
+function _k6aKante(L) {
+  const a = _k6aOrt(L, 0), b = _k6aOrt(L, L.je - 1);
+  return [a[0] - L.s / 2 + 1, b[0] + L.s / 2 - 1];
+}
+// Sprungmarke: Plaettchen k fliegt los / landet
+function _k6aAb(L, k) { return L.leer + k * _k6aK.T_JE; }
+function _k6aAn(L, k) { return _k6aAb(L, k) + _k6aK.T_FLUG; }
+
+function _k6aInit() {
+  _k6a = { t: 0, n: _k6aSTART, je: null, gelegt: false, lauf: null,
+           glanz: new Array(_k6aMAX).fill(0), restGlanz: 0, ahaGlanz: 0,
+           wackel: 0, grenze: '', ein: _k6aK.T_NEU, klammerEin: 1, zettel: 0, zettelAn: false,
+           pause: false, langsam: false, verdeckt: false, blink: 0, vormerk: null,   // Lehrkraft
+           fx: { teile: [] }, schluessel: '' };
+}
+function _k6aHTML() {
+  const marke = je => `<button class="sim-btn" id="_k6a-b-${je}" onclick="_k6aMarke(${je})">${je} je Reihe</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Bei welchen Reihen bleibt kein Plättchen übrig?</h3>
+    <div class="fpm-note" style="margin-top:2px">Alle Reihen sollen gleich lang sein. Wähle die Zahl je Reihe.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_k6a-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6aMARKEN.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_k6a-je-ab" onclick="_k6aJe(-1)">−&nbsp;1 je Reihe</button>
+          <button class="sim-btn" id="_k6a-je-auf" onclick="_k6aJe(1)">+&nbsp;1 je Reihe</button>
+          <button class="sim-btn" onclick="_k6aZahl(-1)">−&nbsp;1 Plättchen</button>
+          <button class="sim-btn" onclick="_k6aZahl(1)">+&nbsp;1 Plättchen</button>
+          <button class="sim-btn" id="_k6a-drehen" onclick="_k6aDrehen()">drehen</button>
+          <button class="sim-btn" onclick="_k6aNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_k6a-pause" onclick="_k6aAnhalten()">Pause</button>
+            <button class="sim-btn" id="_k6a-tempo" onclick="_k6aTempo()">Tempo: <span id="_k6a-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_k6a-verdeckt" onclick="_k6aVerdecken()">Zahlen verdecken: <span id="_k6a-verdeckt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_k6a-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_k6a-zahl" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6a-reihe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6a-voll" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6a-rest" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6a-kurz" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6a-mal" style="margin-top:6px;display:none"></div>
+        <div class="lmp-status off" id="_k6a-grenze" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 24 Plättchen, noch nicht gelegt</p>
+  </div>`;
+}
+function _k6aSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Was die Anzeige gerade sagt: Plaettchen, je Reihe, volle Reihen, Rest, liegt alles?
+function _k6aStand() {
+  const z = _k6a, L = z.lauf;
+  if (L && L.art === 'bau') return { n: L.n, je: L.je, voll: Math.floor(L.liegt / L.je), r: 0, fertig: false };
+  if (!z.gelegt) return { n: z.n, je: null, voll: 0, r: 0, fertig: false };
+  return { n: z.n, je: z.je, voll: Math.floor(z.n / z.je), r: z.n % z.je, fertig: !L };
+}
+function _k6aStatus() {
+  if (!_k6a) return;
+  const z = _k6a, K = _k6aK, st = _k6aStand();
+  const f = (s, farbe) => '<b style="color:' + farbe + '">' + s + '</b>';
+  const nb = s => '<span style="white-space:nowrap">' + s + '</span>';
+  _k6aSetze('_k6a-zahl', 'Plättchen zusammen: ' + st.n);
+  _k6aSetze('_k6a-reihe', 'Plättchen je Reihe: ' + (st.je ? f(st.je, K.F_BLAU) : 'noch nicht gewählt'));
+  _k6aSetze('_k6a-voll', 'Volle Reihen auf dem Tisch: ' + (z.verdeckt ? 'verdeckt' : f(st.voll, K.F_GRUEN)));
+  _k6aSetze('_k6a-rest', 'Übrige Plättchen (Rest): ' +
+            (z.verdeckt ? 'verdeckt' : st.fertig ? f(st.r, K.F_ORANGE) : '…'));
+  _k6aSetze('_k6a-kurz', 'Kurz geschrieben: ' + (z.verdeckt ? 'verdeckt' : !st.fertig ? '…'
+    : nb(st.n + ' : ' + f(st.je, K.F_BLAU) + ' = ' + f(st.voll, K.F_GRUEN) +
+         (st.r ? ' ' + f('Rest ' + st.r, K.F_ORANGE) : ''))));
+  // Als Malaufgabe nur ohne Rest; verdeckt auch mit Rest (das Fehlen verriete ihn)
+  const mal = !st.fertig ? '' : z.verdeckt ? 'Als Malaufgabe: verdeckt'
+    : st.r ? '' : 'Als Malaufgabe: ' + nb(f(st.voll, K.F_GRUEN) + ' · ' + f(st.je, K.F_BLAU) + ' = ' + st.n);
+  const m = _k6aSetze('_k6a-mal', mal);
+  if (m && m.style) m.style.display = mal ? '' : 'none';
+  const g = _k6aSetze('_k6a-grenze', z.grenze);
+  if (g && g.style) g.style.display = z.grenze ? '' : 'none';
+  // Sprungmarke hervorheben, deren Feld gerade daliegt oder gelegt wird
+  const L = z.lauf, ziel = L && L.art === 'bau' ? L.je : z.gelegt && z.n === _k6aSTART ? z.je : null;
+  for (const je of _k6aMARKEN) {
+    const b = document.getElementById('_k6a-b-' + je);
+    if (b && b.classList) b.classList.toggle('primary', je === ziel);
+  }
+  // „− 1 je Reihe“ und „drehen“ erst, wenn etwas gelegt ist
+  for (const id of ['_k6a-je-ab', '_k6a-drehen']) {
+    const b = document.getElementById(id);
+    if (b) { b.disabled = !z.gelegt; if (b.style) b.style.opacity = z.gelegt ? '' : '0.45'; }
+  }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _k6aSetze('_k6a-pause', z.pause ? 'weiter' : 'Pause');
+  _k6aSetze('_k6a-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _k6aSetze('_k6a-verdeckt-an', z.verdeckt ? 'an' : 'aus');
+  const hz = _k6aSetze('_k6a-lehrkraft',
+    z.pause ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : z.verdeckt ? 'Zahlen verdeckt. Erst vermuten lassen, dann wieder aufdecken.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an. „Zahlen verdecken“ lässt erst vermuten.');
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_k6a-pause', z.pause], ['_k6a-verdeckt', z.verdeckt]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Vor jeder neuen Handlung: Leuchten, Grenze und Zettel weg.
+function _k6aAufraeumen() {
+  const z = _k6a;
+  z.grenze = ''; z.wackel = 0; z.zettelAn = false; z.zettel = 0;
+  z.restGlanz = 0; z.ahaGlanz = 0; z.glanz.fill(0); z.fx.teile.length = 0;
+}
+// Sprungmarke: 24 Plaettchen zu je „je“ neu legen. Hebt die Pause auf.
+function _k6aMarke(je) {
+  if (!_k6a || _k6aMARKEN.indexOf(je) < 0) return;
+  const z = _k6a;
+  _k6aFertig();
+  z.pause = false; z.vormerk = null; z.blink = 0;
+  _k6aLegen(_k6aSTART, je);
+}
+// n Plaettchen zu je „je“ neu legen: erst leert sich das Legefeld, dann fliegen sie einzeln.
+function _k6aLegen(n, je) {
+  const z = _k6a;
+  _k6aAufraeumen();
+  const alt = { n: z.n, je: z.je, gelegt: z.gelegt };
+  z.n = n; z.je = je; z.gelegt = true;
+  z.lauf = { art: 'bau', at: 0, n, je, liegt: 0, alt,
+             leer: alt.gelegt || alt.n !== n ? _k6aK.T_LEER : _k6aK.T_LEER0,
+             B: _k6aLage(n, je), A: alt.gelegt ? _k6aLage(alt.n, alt.je) : null };
+  _k6aStatus();
+}
+// „neu“: sofort der Start. Hebt die Pause auf.
+function _k6aNeu() {
+  if (!_k6a) return;
+  const z = _k6a;
+  z.lauf = null; z.pause = false; z.vormerk = null; z.blink = 0;
+  _k6aAufraeumen();
+  z.n = _k6aSTART; z.je = null; z.gelegt = false; z.ein = _k6aK.T_NEU; z.klammerEin = 1;
+  _k6aStatus();
+}
+// Waehrend der Pause: vormerken, wenn nichts unterwegs ist; sonst entfaellt der Druck.
+function _k6aInDerPause(tat) {
+  const z = _k6a;
+  z.blink = 0.6;
+  if (!z.lauf) z.vormerk = tat;
+}
+function _k6aGrenze(text) {
+  const z = _k6a;
+  z.wackel = 0.45; z.grenze = text;
+  _k6aStatus();
+}
+// „− 1 je Reihe“ / „+ 1 je Reihe“: alle Plaettchen ruecken um.
+function _k6aJe(d) {
+  if (!_k6a || (d !== 1 && d !== -1)) return;
+  const z = _k6a, K = _k6aK;
+  if (!z.gelegt && d < 0) return;                   // „− 1 je Reihe“ ist blass, solange nichts gelegt ist
+  if (z.pause) { _k6aInDerPause(() => _k6aJe(d)); return; }
+  _k6aFertig();
+  z.grenze = '';
+  if (!z.gelegt) { _k6aLegen(z.n, 1); return; }     // noch nichts gelegt: mit 1 je Reihe anfangen
+  if (d < 0 && z.je <= 1) { _k6aGrenze('Weniger als 1 je Reihe geht nicht.'); return; }
+  if (d > 0 && z.je >= z.n) { _k6aGrenze('Mehr als ' + z.n + ' je Reihe geht nicht.'); return; }
+  _k6aAufraeumen();
+  z.lauf = { art: 'um', at: 0, A: _k6aLage(z.n, z.je), B: _k6aLage(z.n, z.je + d), neu: z.je + d,
+             dauer: (z.n - 1) * K.T_UMSTAG + K.T_UM };
+  _k6aStatus();
+}
+// „− 1 Plättchen“ / „+ 1 Plättchen“
+function _k6aZahl(d) {
+  if (!_k6a || (d !== 1 && d !== -1)) return;
+  const z = _k6a, K = _k6aK;
+  if (z.pause) { _k6aInDerPause(() => _k6aZahl(d)); return; }
+  _k6aFertig();
+  z.grenze = '';
+  if (d > 0 && z.n >= _k6aMAX) { _k6aGrenze('Mehr Plättchen passen nicht auf den Tisch.'); return; }
+  if (d < 0 && z.n <= 1) { _k6aGrenze('Weniger als 1 Plättchen geht nicht.'); return; }
+  _k6aAufraeumen();
+  const art = d > 0 ? 'plus' : 'minus';
+  if (z.gelegt) {
+    const nNeu = z.n + d;
+    z.lauf = { art, at: 0, A: _k6aLage(z.n, z.je), B: _k6aLage(nNeu, Math.min(z.je, nNeu)),
+               dauer: d > 0 ? K.T_POP + K.T_PFLUG : K.T_WEG };
+  } else z.lauf = { art, at: 0, vorrat: true, dauer: K.T_VORRAT };
+  _k6aStatus();
+}
+// „drehen“: nur ohne Rest – das Rechteck dreht sich um eine Vierteldrehung.
+function _k6aDrehen() {
+  if (!_k6a) return;
+  const z = _k6a, K = _k6aK;
+  if (!z.gelegt) return;                            // blass, solange nichts gelegt ist
+  if (z.pause) { _k6aInDerPause(() => _k6aDrehen()); return; }
+  _k6aFertig();
+  z.grenze = '';
+  if (z.n % z.je) { _k6aGrenze('Drehen geht nur ohne übrige Plättchen.'); return; }
+  _k6aAufraeumen();
+  const R = z.n / z.je;
+  z.lauf = { art: 'dreh', at: 0, A: _k6aLage(z.n, z.je), B: _k6aLage(z.n, R), neu: R, dauer: K.T_DREH };
+  _k6aStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _k6aAnhalten() {
+  if (!_k6a) return;
+  const z = _k6a;
+  if (z.pause) {
+    z.pause = false; z.blink = 0;
+    const v = z.vormerk;
+    z.vormerk = null;
+    if (v && !z.lauf) { v(); return; }
+  } else z.pause = true;
+  _k6aStatus();
+}
+function _k6aTempo() {
+  if (!_k6a) return;
+  _k6a.langsam = !_k6a.langsam;
+  _k6aStatus();
+}
+function _k6aVerdecken() {
+  if (!_k6a) return;
+  _k6a.verdeckt = !_k6a.verdeckt;
+  _k6aStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _k6aZeitfaktor(z) { return z.pause ? 0 : z.langsam ? _k6aK.LANGSAM : 1; }
+
+// Die laufende Bewegung ankommen lassen: erst jetzt aendern sich die Zahlen.
+// von selbst (natuerlich): mit Leuchten und Lichtring; abgebrochen: ohne.
+function _k6aAnkommen(natuerlich) {
+  const z = _k6a, K = _k6aK, L = z.lauf;
+  if (!L) return;
+  z.lauf = null;
+  if (L.art === 'um' || L.art === 'dreh') z.je = L.neu;
+  else if (L.art === 'plus') z.n += 1;
+  else if (L.art === 'minus') { z.n -= 1; if (z.gelegt) z.je = Math.min(z.je, z.n); }
+  if (L.art === 'dreh') z.klammerEin = 0;          // die Klammer kommt nach der Drehung
+  if (z.gelegt) {
+    z.zettelAn = true; z.zettel = 0;
+    const lage = _k6aLage(z.n, z.je);
+    if (natuerlich) {
+      if (L.art === 'um' || L.art === 'dreh') for (let i = 0; i < lage.F; i++) z.glanz[i] = K.T_GLANZ;
+      if (L.art === 'plus' && lage.r === 0) z.glanz[lage.F - 1] = K.T_GLANZ;   // eine Reihe ist voll geworden
+      if (lage.r) z.restGlanz = K.T_REST;
+      if ((L.art === 'bau' || L.art === 'um') && z.n === 24 && z.je === 8) {
+        // Aha: die 3. Reihe schliesst genau mit dem letzten Plaettchen
+        z.ahaGlanz = K.T_AHA;
+        const a = _k6aOrt(lage, 0), b = _k6aOrt(lage, lage.n - 1);
+        // Ring bis knapp ueber die Ecken, aber nie ueber die Oberkante der Leinwand
+        const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2;
+        _bioFxWelle(z.fx.teile, cx, cy, '#eab308',
+                    Math.min(Math.hypot(b[0] - a[0], b[1] - a[1]) / 2 + 12, cy - 4));
+      }
+    }
+  }
+  _k6aStatus();
+}
+function _k6aFertig() { if (_k6a && _k6a.lauf) _k6aAnkommen(false); }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _k6aUpdate(dt) {
+  if (!_k6a) return;
+  const z = _k6a, K = _k6aK;
+  const roh = _bioFxDt(dt);
+  z.blink = Math.max(0, z.blink - roh);             // Schild „Pause“ leuchtet in echter Zeit
+  dt = roh * _k6aZeitfaktor(z);                     // ab hier Sim-Zeit: 0 Pause, 1/3 langsam, 1 normal
+  z.t += dt;
+  for (let i = 0; i < z.glanz.length; i++) z.glanz[i] = Math.max(0, z.glanz[i] - dt);
+  z.restGlanz = Math.max(0, z.restGlanz - dt);
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  z.wackel = Math.max(0, z.wackel - dt);
+  z.ein = Math.max(0, z.ein - dt);
+  z.klammerEin = Math.min(1, z.klammerEin + dt / K.T_KLAMMER);
+  if (z.zettelAn) z.zettel = Math.min(1, z.zettel + dt / K.T_ZETTEL);
+  const L = z.lauf;
+  if (L && dt > 0) {                                // ohne Zeit kein Schritt im Ablauf
+    L.at += dt;
+    if (L.art === 'bau') {
+      let liegt = L.liegt;
+      while (liegt < L.n && L.at >= _k6aAn(L, liegt)) {
+        liegt++;
+        if (liegt % L.je === 0) z.glanz[liegt / L.je - 1] = K.T_GLANZ;   // eine Reihe ist voll
+      }
+      if (liegt !== L.liegt) {
+        L.liegt = liegt;
+        if (liegt >= L.n) _k6aAnkommen(true); else _k6aStatus();
+      }
+    } else if (L.at >= L.dauer) _k6aAnkommen(true);
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Was gerade zu sehen ist ─────────────────────────────────────────────
+// steine: {x, y, r, o (Anteil Orange), a (Deckkraft), s (Massstab), flieg}
+// leer:   gestrichelte leere Plaetze {x, y, r, a}
+// lage:   das ruhende Feld (fuer Leuchtbaender, Rahmen, Restleuchten)
+// klammer: {l, r, je, a}
+function _k6aSzene() {
+  const z = _k6a, K = _k6aK, L = z.lauf, E = _bioFxEase, kl = _bioFxKlemme;
+  const S = { steine: [], leer: [], lage: null, klammer: null };
+  const lerp = (a, b, u) => a + (b - a) * u;
+  const stein = (x, y, r, o, a, s, flieg) =>
+    S.steine.push({ x, y, r, o: o || 0, a: a === undefined ? 1 : a, s: s === undefined ? 1 : s, flieg: !!flieg });
+  const leere = (A, a, B, u) => {
+    for (let k = A.n; k < A.R * A.je; k++) {
+      const p = _k6aOrt(A, k), q = B ? _k6aOrt(B, k) : p, uu = B ? u : 0;
+      S.leer.push({ x: lerp(p[0], q[0], uu), y: lerp(p[1], q[1], uu),
+                    r: _k6aRadius(B ? lerp(A.s, B.s, uu) : A.s), a });
+    }
+  };
+  const klammer = (A, B, u, je, a) => {
+    const ka = _k6aKante(A), kb = B ? _k6aKante(B) : ka, uu = B ? u : 0;
+    S.klammer = { l: lerp(ka[0], kb[0], uu), r: lerp(ka[1], kb[1], uu), je, a };
+  };
+  const istRest = (A, k) => k >= A.F * A.je;
+  const vorrat = (n, a) => { for (let m = 0; m < n; m++) { const p = _k6aFach(m); stein(p[0], p[1], K.TR, 0, a); } };
+
+  if (!L) {
+    if (!z.gelegt) { vorrat(z.n, z.ein > 0 ? 1 - z.ein / K.T_NEU : 1); return S; }
+    const A = _k6aLage(z.n, z.je);
+    for (let k = 0; k < A.n; k++) { const p = _k6aOrt(A, k); stein(p[0], p[1], _k6aRadius(A.s), istRest(A, k) ? 1 : 0); }
+    leere(A, 1);
+    S.lage = A;
+    klammer(A, null, 0, z.je, E.sanft(z.klammerEin));
+    return S;
+  }
+  const at = L.at;
+  if (L.art === 'bau') {
+    const B = L.B, n = L.n;
+    if (at < L.leer) {
+      // Das Legefeld leert sich: alles gleitet in die Schale (Fach von hinten).
+      const u = E.sanft(kl(at / L.leer)), alt = L.alt;
+      if (alt.gelegt) {
+        const A = L.A;
+        for (let k = 0; k < A.n; k++) {
+          const m = A.n - 1 - k, p = _k6aOrt(A, k), q = _k6aFach(m);
+          stein(lerp(p[0], q[0], u), lerp(p[1], q[1], u) - 14 * Math.sin(Math.PI * u),
+                lerp(_k6aRadius(A.s), K.TR, u), istRest(A, k) ? 1 - u : 0, m >= n ? 1 - u : 1, 1, true);
+        }
+        leere(A, 1 - u);
+        klammer(A, null, 0, alt.je, 1 - u);
+      } else for (let m = 0; m < alt.n; m++) { const p = _k6aFach(m); stein(p[0], p[1], K.TR, 0, m >= n ? 1 - u : 1); }
+      for (let m = alt.n; m < n; m++) { const p = _k6aFach(m); stein(p[0], p[1], K.TR, 0, 1, u); }   // fehlende springen auf
+      return S;
+    }
+    S.lage = B;
+    klammer(B, null, 0, L.je, E.sanft(kl((at - L.leer) / 0.25)));
+    for (let k = 0; k < n; k++) {
+      const ab = _k6aAb(L, k), an = _k6aAn(L, k), m = n - 1 - k;
+      if (at < ab) { const p = _k6aFach(m); stein(p[0], p[1], K.TR, 0, 1); }
+      else if (at < an) {
+        const u = E.sanft(kl((at - ab) / K.T_FLUG)), p = _k6aFach(m), q = _k6aOrt(B, k);
+        const hub = 12 + Math.abs(q[0] - p[0]) * 0.06;  // flacher Bogen: bleibt unter den Aufschriften
+        stein(lerp(p[0], q[0], u), lerp(p[1], q[1], u) - hub * Math.sin(Math.PI * u),
+              lerp(K.TR, _k6aRadius(B.s), u), 0, 1, 1, true);
+      } else {
+        const p = _k6aOrt(B, k), d = at - an;       // kleiner Hopser beim Landen
+        stein(p[0], p[1], _k6aRadius(B.s), 0, 1, d < 0.18 ? 1 + 0.22 * Math.sin(Math.PI * d / 0.18) : 1);
+      }
+    }
+    return S;
+  }
+  if (L.vorrat) {                                   // nichts gelegt: nur die Schale aendert sich
+    const u = kl(at / L.dauer);
+    if (L.art === 'plus') {
+      vorrat(z.n, 1);
+      const p = _k6aFach(z.n);
+      stein(p[0], p[1], K.TR, 0, 1, Math.max(0, E.federn(u)));
+    } else {
+      vorrat(z.n - 1, 1);
+      const p = _k6aFach(z.n - 1);
+      stein(p[0], p[1], K.TR, 0, 1 - u, 1 - E.sanft(u));
+    }
+    return S;
+  }
+  const A = L.A, B = L.B;
+  if (L.art === 'um') {
+    // alle ruecken an ihre neuen Plaetze, gestaffelt
+    for (let k = 0; k < A.n; k++) {
+      const u = E.sanft(kl((at - k * K.T_UMSTAG) / K.T_UM)), p = _k6aOrt(A, k), q = _k6aOrt(B, k);
+      stein(lerp(p[0], q[0], u), lerp(p[1], q[1], u), _k6aRadius(lerp(A.s, B.s, u)), istRest(A, k) ? 1 - u : 0);
+    }
+    leere(A, 1 - kl(at / 0.2));
+    klammer(A, B, E.sanft(kl(at / L.dauer)), A.je, 1);
+    return S;
+  }
+  if (L.art === 'plus') {
+    // springt in der Schale auf, fliegt an den naechsten Platz; die anderen ruecken mit
+    const u = E.sanft(kl((at - K.T_POP) / K.T_PFLUG));
+    for (let k = 0; k < A.n; k++) {
+      const p = _k6aOrt(A, k), q = _k6aOrt(B, k);
+      stein(lerp(p[0], q[0], u), lerp(p[1], q[1], u), _k6aRadius(lerp(A.s, B.s, u)), istRest(A, k) ? 1 : 0);
+    }
+    for (let k = A.n; k < A.R * A.je; k++) {         // auch der Platz, auf dem es landet
+      const p = _k6aOrt(A, k), q = _k6aOrt(B, k);
+      S.leer.push({ x: lerp(p[0], q[0], u), y: lerp(p[1], q[1], u), r: _k6aRadius(lerp(A.s, B.s, u)), a: 1 });
+    }
+    const f = _k6aFach(0), q = _k6aOrt(B, A.n);
+    if (at < K.T_POP) stein(f[0], f[1], K.TR, 0, 1, Math.max(0, E.federn(kl(at / K.T_POP))), true);
+    else stein(lerp(f[0], q[0], u), lerp(f[1], q[1], u) - (12 + Math.abs(q[0] - f[0]) * 0.06) * Math.sin(Math.PI * u),
+               lerp(K.TR, _k6aRadius(B.s), u), 0, 1, 1, true);
+    klammer(A, B, u, A.je, 1);
+    return S;
+  }
+  if (L.art === 'minus') {
+    // das zuletzt gelegte fliegt in die Schale und verschwindet; die anderen ruecken mit
+    const u = E.sanft(kl(at / K.T_WEG));
+    for (let k = 0; k < A.n - 1; k++) {
+      const p = _k6aOrt(A, k), q = _k6aOrt(B, k);
+      stein(lerp(p[0], q[0], u), lerp(p[1], q[1], u), _k6aRadius(lerp(A.s, B.s, u)), istRest(A, k) ? 1 : 0);
+    }
+    leere(A, 1 - kl(at / 0.15));
+    const p = _k6aOrt(A, A.n - 1), f = _k6aFach(0), weg = kl((at / K.T_WEG - 0.6) / 0.4);
+    stein(lerp(p[0], f[0], u), lerp(p[1], f[1], u) - (12 + Math.abs(p[0] - f[0]) * 0.06) * Math.sin(Math.PI * u),
+          lerp(_k6aRadius(A.s), K.TR, u), istRest(A, A.n - 1) ? 1 - u : 0, 1, 1 - weg, true);
+    klammer(A, B, u, A.je, 1);
+    return S;
+  }
+  // „drehen“: Vierteldrehung im Uhrzeigersinn um die Mitte, die dabei an ihren neuen Ort wandert
+  const u = kl(at / K.T_DREH), e = E.sanft(u), th = Math.PI / 2 * e, R = A.R, C = A.je;
+  const cA = [A.x0 + A.w / 2, A.y0 + A.h / 2], cB = [B.x0 + B.w / 2, B.y0 + B.h / 2];
+  const cx = lerp(cA[0], cB[0], e), cy = lerp(cA[1], cB[1], e), sk = lerp(1, B.s / A.s, e);
+  const w = E.sanft(kl((u - 0.55) / 0.45)), cos = Math.cos(th), sin = Math.sin(th);
+  for (let k = 0; k < A.n; k++) {
+    const i = Math.floor(k / C), j = k % C, p = _k6aOrt(A, k), q = _k6aOrt(B, j * R + (R - 1 - i));
+    const dx = (p[0] - cA[0]) * sk, dy = (p[1] - cA[1]) * sk;
+    stein(lerp(cx + dx * cos - dy * sin, q[0], w), lerp(cy + dx * sin + dy * cos, q[1], w),
+          _k6aRadius(lerp(A.s, B.s, e)), 0);
+  }
+  klammer(A, null, 0, A.je, 1 - kl(u / 0.2));
+  return S;
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _k6aPapier(ctx) {
+  const K = _k6aK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, K.PX0 + 2, K.PY0 + 3, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  for (let x = K.KX0; x < K.PX1 - 1; x += K.KA) {
+    ctx.beginPath(); ctx.moveTo(x, K.PY0 + 1); ctx.lineTo(x, K.PY1 - 1); ctx.stroke();
+  }
+  for (let y = K.KY0; y < K.PY1 - 1; y += K.KA) {
+    ctx.beginPath(); ctx.moveTo(K.PX0 + 1, y); ctx.lineTo(K.PX1 - 1, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.stroke();
+  ctx.restore();
+}
+// Aufschrift mit weissem Grund (liegt sonst auf den Karolinien)
+function _k6aAufschrift(ctx, s, x, y, gr, farbe, ausr) {
+  ctx.save();
+  ctx.font = '700 ' + gr + 'px sans-serif';
+  const w = ctx.measureText(s).width, x0 = ausr === 'center' ? x - w / 2 : x;
+  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.fillRect(x0 - 3, y - gr * 0.85, w + 6, gr * 1.1);
+  ctx.fillStyle = farbe; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x0, y);
+  ctx.restore();
+}
+// Die Schale „Vorrat“ (leere Faecher ganz blass) und die Aufschrift „Legefeld“
+function _k6aSchale(ctx, wk) {
+  const K = _k6aK, z = _k6a;
+  const x1 = K.TX0 + 2 * K.TPAD + 11 * K.TF, y1 = K.TY0 + 2 * K.TPAD + 4 * K.TF;
+  ctx.save();
+  ctx.translate(z.gelegt ? 0 : wk, 0);
+  ctx.fillStyle = 'rgba(15,23,42,0.07)';
+  _bioFxRundRect(ctx, K.TX0 + 1.5, K.TY0 + 2.5, x1 - K.TX0, y1 - K.TY0, 7); ctx.fill();
+  ctx.fillStyle = '#eef2f7'; ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.TX0, K.TY0, x1 - K.TX0, y1 - K.TY0, 7); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#dbe3ed';                        // blasse Faecher: wo die Plaettchen herkommen
+  const L = z.lauf, n = L && L.art === 'bau' ? Math.max(L.n, L.alt.n) : L && L.art === 'plus' ? z.n + 1 : z.n;
+  for (let m = 0; m < n; m++) {
+    const p = _k6aFach(m);
+    ctx.beginPath(); ctx.arc(p[0], p[1], 1.6, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+  _k6aAufschrift(ctx, 'Vorrat', K.TX0 + 2, K.KOPF, 12, K.F_GRAU, 'left');
+  _k6aAufschrift(ctx, 'Legefeld', K.LX0, K.KOPF, 12, K.F_GRAU, 'left');
+}
+// Ein Plaettchen: r = Radius, o = Anteil Orange (Rest), a = Deckkraft
+function _k6aStein(ctx, x, y, r, o, a) {
+  const K = _k6aK;
+  if (a <= 0.01 || r <= 0.3) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.lineWidth = r > 3 ? 1.2 : 0.8;
+  ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = K.F_PRAND;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  if (o > 0.01) {
+    ctx.globalAlpha = Math.min(1, a) * Math.min(1, o);
+    ctx.fillStyle = K.F_REST; ctx.strokeStyle = K.F_RRAND;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.globalAlpha = Math.min(1, a);
+  }
+  if (r > 3) {                                      // Lichtpunkt: sieht aus wie ein Plaettchen
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+// Leuchtbaender (volle Reihen), Rahmen (Aha), leere Plaetze, Restleuchten
+function _k6aFeldUnten(ctx, S, wk) {
+  const z = _k6a, K = _k6aK, A = S.lage;
+  ctx.save();
+  ctx.translate(wk, 0);
+  if (A) {
+    const s = A.s;
+    for (let i = 0; i < A.F; i++) {
+      if (!(z.glanz[i] > 0)) continue;
+      const p = _k6aOrt(A, i * A.je), q = _k6aOrt(A, i * A.je + A.je - 1);
+      ctx.globalAlpha = Math.min(1, z.glanz[i] / K.T_GLANZ);
+      ctx.fillStyle = 'rgba(16,185,129,0.28)'; ctx.strokeStyle = 'rgba(4,120,87,0.85)'; ctx.lineWidth = 1.5;
+      _bioFxRundRect(ctx, p[0] - s / 2 + 0.5, p[1] - s / 2 + 0.5, q[0] - p[0] + s - 1, s - 1, Math.min(6, s / 2));
+      ctx.fill(); ctx.stroke();
+    }
+    if (z.ahaGlanz > 0 && A.F > 0) {                // Aha: goldener Rahmen um das ganze Rechteck
+      const p = _k6aOrt(A, 0), q = _k6aOrt(A, A.F * A.je - 1), r = _k6aRadius(s) + 3;
+      ctx.globalAlpha = Math.min(1, z.ahaGlanz / 0.6);
+      ctx.fillStyle = 'rgba(250,204,21,0.16)'; ctx.strokeStyle = '#ca8a04'; ctx.lineWidth = 2.5;
+      _bioFxRundRect(ctx, p[0] - r, p[1] - r, q[0] - p[0] + 2 * r, q[1] - p[1] + 2 * r, 6);
+      ctx.fill(); ctx.stroke();
+    }
+    if (z.restGlanz > 0 && A.r) {                   // die uebrigen Plaettchen leuchten orange
+      const puls = 0.55 + 0.45 * Math.sin(z.t * 9);
+      ctx.globalAlpha = Math.min(1, z.restGlanz / 0.5) * puls;
+      ctx.fillStyle = 'rgba(251,146,60,0.5)';
+      for (let k = A.F * A.je; k < A.n; k++) {
+        const p = _k6aOrt(A, k);
+        ctx.beginPath(); ctx.arc(p[0], p[1], _k6aRadius(s) * 1.9, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+  }
+  ctx.globalAlpha = 1;
+  ctx.strokeStyle = K.F_RRAND; ctx.lineWidth = 1.2;
+  ctx.setLineDash([2.5, 2]);
+  for (const e of S.leer) {
+    if (e.a <= 0.01) continue;
+    ctx.globalAlpha = Math.min(1, e.a);
+    ctx.beginPath(); ctx.arc(e.x, e.y, Math.max(1, e.r), 0, Math.PI * 2); ctx.stroke();
+  }
+  ctx.setLineDash([]);
+  ctx.restore();
+}
+// Klammer ueber der ersten Reihe mit „8 je Reihe“ (blau wie die Zahl je Reihe)
+function _k6aKlammer(ctx, S, wk) {
+  const K = _k6aK, k = S.klammer;
+  if (!k || !(k.a > 0.01)) return;
+  const y = K.LY0 - 3, l = k.l + wk, r = k.r + wk, m = (l + r) / 2;
+  const h = 5;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, k.a);
+  ctx.strokeStyle = K.F_BLAU; ctx.lineWidth = 1.6; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  ctx.beginPath();
+  if (r - l >= 4 * h) {                             // geschweifte Klammer
+    ctx.moveTo(l, y);
+    ctx.quadraticCurveTo(l, y - h, l + h, y - h);
+    ctx.lineTo(m - h, y - h);
+    ctx.quadraticCurveTo(m, y - h, m, y - 2 * h);
+    ctx.quadraticCurveTo(m, y - h, m + h, y - h);
+    ctx.lineTo(r - h, y - h);
+    ctx.quadraticCurveTo(r, y - h, r, y);
+  } else {                                          // ganz schmale Reihe: eckige Klammer mit Strich
+    ctx.moveTo(l, y); ctx.lineTo(l, y - h); ctx.lineTo(r, y - h); ctx.lineTo(r, y);
+    ctx.moveTo(m, y - h); ctx.lineTo(m, y - 2 * h);
+  }
+  ctx.stroke();
+  ctx.restore();
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, k.a);
+  _k6aAufschrift(ctx, k.je + ' je Reihe', m, y - 2 * h - 4, 12, K.F_BLAU, 'center');
+  ctx.restore();
+}
+// Teile einer Rechnung mittig setzen; zu breit -> kleiner (nie unter 11 px)
+function _k6aZeile(ctx, teile, xm, y, gr0, platz) {
+  let gr = gr0, br = [], luft = 0, ges = 0;
+  const messen = () => {
+    ctx.font = '700 ' + gr + 'px sans-serif';
+    br = teile.map(t => ctx.measureText(t.s).width);
+    luft = gr * 0.3;
+    ges = br.reduce((a, b) => a + b, 0) + luft * (teile.length - 1);
+  };
+  messen();
+  if (ges > platz) { gr = Math.max(11, Math.floor(gr * platz / ges)); messen(); }
+  let x = xm - ges / 2;
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  teile.forEach((t, i) => { ctx.fillStyle = t.f; ctx.fillText(t.s, x, y); x += br[i] + luft; });
+}
+// Zettel „Kurz geschrieben“ (links unten), gleitet herein, wenn alles liegt
+function _k6aZettel(ctx) {
+  const z = _k6a, K = _k6aK;
+  if (!z.gelegt || z.lauf || !(z.zettel > 0)) return;
+  const e = _bioFxEase.raus(z.zettel), dy = (1 - e) * 6;   // gleitet von unten herein, bleibt auf dem Tisch
+  const n = z.n, je = z.je, F = Math.floor(n / je), r = n % je;
+  const x0 = K.ZX0, x1 = K.ZX1, y0 = K.ZY0 + dy, y1 = K.ZY1 + dy, xm = (x0 + x1) / 2;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, z.zettel * 1.5);
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, x0 + 1.5, y0 + 2.5, x1 - x0, y1 - y0, 6); ctx.fill();
+  ctx.fillStyle = '#fffdf5'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 6); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = K.F_GRAU; ctx.font = '700 11px sans-serif';
+  ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Kurz geschrieben', xm, y0 + 15);
+  if (z.verdeckt) {                                 // graue Karte mit „?“, gleich gross mit und ohne Rest
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#64748b'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, x0 + 14, y0 + 21, x1 - x0 - 28, y1 - y0 - 27, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = '#475569'; ctx.font = '700 22px sans-serif';
+    ctx.fillText('?', xm, y0 + 21 + (y1 - y0 - 27) / 2 + 8);
+  } else {
+    const T = K.F_TEXT, B = K.F_BLAU, G = K.F_GRUEN, O = K.F_ORANGE;
+    const geteilt = [{ s: String(n), f: T }, { s: ':', f: T }, { s: String(je), f: B }, { s: '=', f: T },
+                     { s: String(F), f: G }];
+    if (r) geteilt.push({ s: 'Rest ' + r, f: O });
+    _k6aZeile(ctx, geteilt, xm, y0 + (r ? 44 : 36), 16, x1 - x0 - 12);
+    if (!r) _k6aZeile(ctx, [{ s: String(F), f: G }, { s: '·', f: T }, { s: String(je), f: B },
+                            { s: '=', f: T }, { s: String(n), f: T }], xm, y0 + 56, 16, x1 - x0 - 12);
+  }
+  ctx.restore();
+}
+function _k6aDraw(ctx, cv) {
+  if (!_k6a) return;
+  const z = _k6a, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _k6aPapier(ctx);
+  const wk = z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / 0.45) : 0;
+  _k6aSchale(ctx, wk);
+  const S = _k6aSzene();
+  _bioFxDraw(ctx, z.fx.teile);                      // Lichtring hinter den Plaettchen
+  _k6aFeldUnten(ctx, S, z.gelegt ? wk : 0);
+  const fw = z.gelegt ? wk : 0, vw = z.gelegt ? 0 : wk;
+  // erst die liegenden, dann die Klammer, zuletzt die fliegenden (die liegen oben)
+  const zeichne = f => {
+    for (const p of S.steine) {
+      if (p.flieg !== f) continue;
+      const imFeld = p.x > _k6aK.LX0 - 8;
+      _k6aStein(ctx, p.x + (imFeld ? fw : vw), p.y, p.r * p.s, p.o, p.a);
+    }
+  };
+  zeichne(false);
+  _k6aKlammer(ctx, S, fw);
+  zeichne(true);
+  _k6aZettel(ctx);
+  if (z.pause) _k6aPauseSchild(ctx);
+}
+// Schild „Pause“ oben links – gleiche Stelle, Groesse und Farbe wie in
+// m5-punktefeld, damit die Lehrkraft es ueberall am selben Ort findet.
+// Leuchtet kurz auf, wenn waehrend der Pause ein Knopf gedrueckt wird.
+function _k6aPauseSchild(ctx) {
+  const z = _k6a, w = 64, h = 25, x = 8, y = 8;     // endet ueber der Schale (y = 36)
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText('Pause', x + 20, y + 17.5);
+  ctx.restore();
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 6 FOERDER – mt2 „Ist bei 50 Schluss?“ (Kennung m6-hundertertafel,
+// Praefix _k6b). Bauplan: arbeitsheft_mathe_foe6/KAPITEL1_PROFIL.md, Abschnitte
+// mt2 und m6-hundertertafel (N1–N3, Lehrkraft-Zeile wie Heft 5).
+// Ueberschrift = frage der Einheit: „Ist 85 in der 5er-Reihe?“
+//
+// Was man sieht (Leinwand 420 x 250), zwei Darstellungen, durch FARBE und
+// gleichzeitige Bewegung verbunden:
+//   HUNDERTERTAFEL rechts oben: 10 x 10 Felder zu 30 x 19 px, Zahlen 1 bis 100
+//     in 12 px fett (ABWEICHUNG vom Bauplan, dort 11 px: bei 1 x ist „85“ mit
+//     11 px lesbar, am Handy wird die Leinwand aber auf etwa 0,8 x verkleinert,
+//     dann waeren es unter 9 px; „100“ passt mit 12 px noch mit Luft zwischen
+//     die Rahmen), die Zehnerzeilen durch eine feine Linie getrennt. Darueber
+//     die Kopfzeile „letzte Ziffer:  1 2 3 4 5 6 7 8 9 0“ – je Spalte die
+//     letzte Ziffer ihrer Zahlen. Links neben der 1 ein gestricheltes
+//     Startfeld „0“ mit der Aufschrift „Start“: dort beginnt jede Reihe.
+//   ZAHLENSTRAHL unten ueber die volle Breite: 0 bis 100, Strich je 1 (laenger
+//     je 5 und je 10), Zahl je 10, Pfeil nach rechts.
+//   Links ein Schild in der Farbe der gewaehlten Reihe („5er-Reihe“), darunter
+//     ein Bogen mit „+ 5“: so weit springt jeder Bogen auf dem Zahlenstrahl.
+//   Jede Reihe hat EINE Farbe (10er blau, 5er gruen, 2er violett, 4er rosa,
+//     3er tuerkis, 6er orange): Felder, Marken und Boegen am Strahl, das
+//     Kaertchen der Kopfzeile, Schild und die Werte in der Anzeige.
+//
+// Bewegung (jede Sprungmarke spielt ihre Tabellenzeile SELBST ab, N1; alles
+// ist eine Funktion der Ablaufzeit z.at, Konstanten in _k6bK – keine Zufallszahl):
+//   0 – 0,3 s  die Tafel leert sich: Felder, Rahmen, Marken und Boegen der
+//              alten Reihe blenden aus; der Punkt steht am Strahl bei 0, auf
+//              der Tafel ist das Startfeld „0“ dunkel umrandet.
+//   dann       der Punkt springt um n, gleichzeitig auf der Tafel und am
+//              Strahl (im Bogen, mit Schatten). Ein Sprung dauert 0,06 s · n
+//              (10er 0,6 s … 2er 0,12 s, ein Durchlauf rund 6 s), davon 80 %
+//              Flug. Beim Landen waechst das Feld in der Reihenfarbe auf und
+//              blitzt hell, am Strahl springt eine Marke auf, der Bogen bleibt
+//              stehen. Zwischen zwei Spruengen sitzt der Punkt im Feld: es ist
+//              dunkel umrandet (so steht im Halt keine Zahl unter dem Punkt).
+//              Das Kaertchen der Kopfzeile ueber einer Spalte wird bunt, sobald
+//              in ihr eine Zahl bunt ist.
+//   Ende       ist eine Spalte ganz bunt (das entscheidet sich immer in der
+//              letzten Zeile), bekommt sie einen dicken Rahmen in der dunklen
+//              Reihenfarbe, ihr Kaertchen in der Kopfzeile einen Rand. Der
+//              Rahmen des letzten Feldes blendet aus (0,6 s), der Punkt bleibt
+//              am Strahl auf der letzten bunten Zahl.
+//   GEMESSEN (Frames zu 16 ms, Tempo normal) bis zur Ruhe: 10er 6,78 s (424
+//   Frames), 5er 6,85 s (428), 2er 6,88 s (430), 4er 6,86 s (429), 3er 6,82 s
+//   (426), 6er 6,59 s (412). simfakten.js mit --frames=25 --verlauf=4 liest die
+//   Endwerte im zweiten Knopfdurchgang ab (er laeuft bis zu 625 Frames aus).
+//   „neu“      sofort der Start: die alte Reihe blendet aus (0,3 s).
+// Wer waehrend einer Bewegung einen Knopf drueckt, laesst sie sofort ankommen
+// (die alte Reihe steht dann ganz da und blendet aus, ohne Lichtring); dann
+// geschieht das Neue. Jede Knopffolge endet so in denselben Zahlen.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_k6bMarke(10|5|2|4)):
+//     „10er-Reihe“ · „5er-Reihe“ · „2er-Reihe“ · „4er-Reihe“
+//   Reihe 2: „3er-Reihe“ · „6er-Reihe“ (frei, _k6bMarke(3|6)) · „neu“ (_k6bNeu())
+//   Der Knopf der Reihe, die gerade dasteht oder springt, ist hervorgehoben.
+//
+// Statuszeilen (woertlich, jede mit mindestens 19 Zeichen). Sie folgen dem
+// Bild: jede Zahl aendert sich in dem Augenblick, in dem der Punkt landet bzw.
+// ein Rahmen erscheint.
+//   _k6b-reihe     „Gewählte Reihe: 5er-Reihe“ (Start „Gewählte Reihe: noch keine“)
+//   _k6b-spruenge  „Sprünge von 0 bis 100: 20“ (zaehlt mit, Start 0)
+//   _k6b-spalten   „Ganz bunte Spalten: 2“ (zaehlt die Rahmen, Start 0)
+//   _k6b-ziffern   „Letzte Ziffern der bunten Zahlen: 0, 5“ (waechst mit,
+//                  der Groesse nach; Start „…: keine“)
+//   _k6b-letzte    „Letzte bunte Zahl: 100“ (Start „Letzte bunte Zahl: keine“)
+//
+// Werte (jede Zeile nachgerechnet mit simcheck/werte.js, Endwerte):
+//   10er-Reihe → 10 Spruenge, 1 Spalte, „0“, 100
+//   5er-Reihe  → 20, 2, „0, 5“, 100
+//   2er-Reihe  → 50, 5, „0, 2, 4, 6, 8“, 100
+//   4er-Reihe  → 25, 0, „0, 2, 4, 6, 8“, 100
+//   frei: 3er-Reihe → 33, 0, „0, 1, 2, 3, 4, 5, 6, 7, 8, 9“, 99
+//         6er-Reihe → 16, 0, „0, 2, 4, 6, 8“, 96
+// Start: leere Hundertertafel („Start: Hundertertafel, noch keine Reihe“).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen), nur wenn die Reihe von selbst
+// dorthin springt:
+//   „5er-Reihe“: der Punkt landet auf 85 – Lichtring um das Feld 85 und ein
+//     bernsteinfarbener Rahmen, der 2,2 s pulsiert (Tareks Grenze 50 ist
+//     ueberschritten). Widerlegt „Die 5er-Reihe hört bei 50 auf.“
+//   „4er-Reihe“: der Punkt landet auf 24 – Lichtring und Rahmen um das WEISSE
+//     Feld 14 (es bleibt weiss, nur der Rand leuchtet). Die letzte Ziffer 4
+//     reicht hier nicht.
+//
+// FUER DIE LEHRKRAFT (Container <div class="fpm-lehrkraft">, eigene Zeile unter
+// den Heftknoepfen, davor klein „Für die Lehrkraft:“):
+//   „Pause“ ↔ „weiter“ (_k6bAnhalten()): friert jede Bewegung ein; Schild
+//     „Pause“ links (unter dem Schild der Reihe; oben links stehen „Start“ und
+//     das Startfeld).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_k6bTempo()): ein Drittel so schnell.
+//   „Halt nach jedem Sprung: aus“ ↔ „… an“ (_k6bHalt()): haelt nach JEDER
+//     Landung an (Pause); das Feld ist dann schon bunt, die Anzeige gilt.
+//     Hinweiszeile: „Halt: Der Punkt ist auf 35. Wohin springt er als
+//     Nächstes? Dann „weiter“.“ Der Schalter auf „aus“ laesst weiterspringen.
+//   Eine Sprungmarke und „neu“ heben die Pause auf; Tempo und Halt bleiben
+//   stehen. EIN Zeitfaktor (_k6bZeitfaktor: 0 Pause, 1/3 langsam, 1 normal) an
+//   der einen Stelle, an der dt in _k6bUpdate hineingeht. Das wechselnde Wort
+//   steht in einem eigenen <span>. Hinweiszeile _k6b-lehrkraft (in der Pause
+//   bernsteinfarben, „lmp-status off“) nennt immer die Einstellungen:
+//     sonst „Für die Lehrkraft: „Pause“ hält alles an. Tempo: normal, Halt nach jedem Sprung: aus.“
+//     Pause „Angehalten. Erkläre, was gerade passiert. Dann „weiter“. Tempo: …“
+//   Voreinstellung Pause aus, Tempo normal, Halt aus.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „Vielfaches“,
+// „Vielfache“, „Endziffer“, „teilbar“, die Regel als Satz. „letzte Ziffer“
+// steht nur als Beschriftung der Kopfzeile und der Anzeige. Keine Namen,
+// keine Punkte, keine Zeit, kein Urteil.
+// ════════════════════════════════════════════════════════════════════════
+let _k6b = null;
+const _k6bREIHEN = {
+  10: { name: '10er-Reihe', fuell: '#60a5fa', dunkel: '#1d4ed8' },
+  5:  { name: '5er-Reihe',  fuell: '#4ade80', dunkel: '#15803d' },
+  2:  { name: '2er-Reihe',  fuell: '#c084fc', dunkel: '#7e22ce' },
+  4:  { name: '4er-Reihe',  fuell: '#fb7185', dunkel: '#be123c' },
+  3:  { name: '3er-Reihe',  fuell: '#2dd4bf', dunkel: '#0f766e' },
+  6:  { name: '6er-Reihe',  fuell: '#fb923c', dunkel: '#c2410c' }
+};
+const _k6bMARKEN = [10, 5, 2, 4];       // Reihe 1: die vier Tabellenzeilen
+const _k6bFREI = [3, 6];                // Reihe 2: frei
+// Aha: Landet der Punkt auf „bei“, leuchtet das Feld „zelle“.
+const _k6bAHA = { 5: { bei: 85, zelle: 85 }, 4: { bei: 24, zelle: 14 } };
+const _k6bK = {
+  BX: 110, BY: 22, CW: 30, CH: 19,       // Hundertertafel: linke obere Ecke, Feldgroesse
+  KOPF: 15.5,                             // Grundlinie der Kopfzeile
+  SX: 96,                                 // Mitte des Startfelds „0“ (links neben der 1)
+  LX0: 16, LX1: 404, LY: 229,             // Zahlenstrahl: 0 bei LX0, 100 bei LX1
+  ZAHL: 11, ZAHL_TAFEL: 12,               // Schriftgrad: Beschriftungen und Strahl, Zahlen der Tafel
+  RP: 4.5,                                // Radius des Punkts
+  SCHILD_Y: 64, BOGEN_Y: 120,             // Schild der Reihe, Bogen „+ n“
+  T_LEER: 0.3, T_JE: 0.06, FLUG: 0.8,     // s: Tafel leert sich; Sprung = T_JE · n, davon FLUG fliegen
+  T_POP: 0.25, T_MARKE: 0.18, T_RAHMEN: 0.4, T_AUS: 0.6, T_AHA: 2.2, LANGSAM: 1 / 3,
+  F_TEXT: '#1e293b', F_GITTER: '#cbd5e1', F_ZEILE: '#94a3b8', F_RAND: '#64748b',
+  F_PUNKT: '#1e293b', F_AHA: '#f59e0b', F_GRAU: '#475569', F_STRAHL: '#334155'
+};
+
+// ── Rechnungen (eine Quelle fuer Bild und Anzeige) ──────────────────────
+// Ablauf einer Reihe n: N Spruenge, Landung j (1 … N) zur Ablaufzeit landung(j).
+// Spalte p (0 … 9; ihre Zahlen 10·r + p + 1, letzte Ziffer (p + 1) % 10) ist
+// ganz bunt, wenn alle zehn Zahlen in der Reihe liegen – fertig mit der Zahl
+// der letzten Zeile, also mit Sprung j = (91 + p) / n.
+function _k6bPlan(n) {
+  const K = _k6bK, N = Math.floor(100 / n), TS = K.T_JE * n;
+  const landung = j => K.T_LEER + (j - 1) * TS + K.FLUG * TS;
+  const spalten = [];
+  for (let p = 0; p < 10; p++) {
+    let ganz = true;
+    for (let r = 0; r < 10; r++) if ((10 * r + p + 1) % n) { ganz = false; break; }
+    if (ganz) spalten.push({ p, j: (91 + p) / n });
+  }
+  return { n, N, TS, landung, spalten, ende: landung(N) + K.T_AUS };
+}
+// Stand zur Ablaufzeit: wie viele Spruenge gelandet, wie viele Rahmen da?
+function _k6bStand(z) {
+  const st = { gelandet: 0, spalten: 0 };
+  if (!z.n) return st;
+  const K = _k6bK, P = _k6bPlan(z.n), at = z.at + 1e-9;
+  st.gelandet = Math.max(0, Math.min(P.N, Math.floor((at - K.T_LEER - K.FLUG * P.TS) / P.TS) + 1));
+  st.spalten = P.spalten.filter(s => s.j <= st.gelandet).length;
+  return st;
+}
+// Letzte Ziffern der bunten Zahlen, der Groesse nach
+function _k6bZiffern(n, gelandet) {
+  const da = new Set();
+  for (let j = 1; j <= gelandet; j++) da.add((j * n) % 10);
+  return [...da].sort((a, b) => a - b);
+}
+// Fliegt der Punkt gerade? Dann Sprung j und Flugfortschritt u (0 … 1).
+function _k6bFlug(z) {
+  if (!z.n) return null;
+  const K = _k6bK, P = _k6bPlan(z.n), s = z.at - K.T_LEER;
+  if (s < 0) return null;
+  const j = Math.floor(s / P.TS + 1e-9) + 1;
+  if (j > P.N) return null;
+  const u = (s - (j - 1) * P.TS) / (K.FLUG * P.TS);
+  return u < 1 - 1e-9 ? { j, u } : null;
+}
+// Feld der Zahl k (1 … 100); k = 0 ist das Startfeld links neben der 1.
+function _k6bFeld(k) {
+  const K = _k6bK;
+  if (k <= 0) return { x: K.SX - 10, y: K.BY + 1, w: 20, h: K.CH - 2, cx: K.SX, cy: K.BY + K.CH / 2 };
+  const r = Math.floor((k - 1) / 10), p = (k - 1) % 10, x = K.BX + p * K.CW, y = K.BY + r * K.CH;
+  return { x, y, w: K.CW, h: K.CH, cx: x + K.CW / 2, cy: y + K.CH / 2 };
+}
+// x-Wert der Zahl k am Zahlenstrahl
+function _k6bLX(k) { const K = _k6bK; return K.LX0 + (K.LX1 - K.LX0) * k / 100; }
+// Hoehe der Boegen am Strahl (je weiter der Sprung, desto hoeher, hoechstens 13 px)
+function _k6bBogenH(n) { return Math.min(13, 2 + 0.28 * (_k6bLX(n) - _k6bLX(0))); }
+
+function _k6bInit() {
+  _k6b = { t: 0, at: 0, n: null, alt: null, sofort: false, fx: { teile: [] },
+           stand: { gelandet: 0, spalten: 0 }, ahaGlanz: 0, ahaZelle: 0,
+           pause: false, langsam: false, halt: false, haltJetzt: false };   // Lehrkraft
+}
+function _k6bHTML() {
+  const knopf = n => `<button class="sim-btn" id="_k6b-b-${n}" onclick="_k6bMarke(${n})">${_k6bREIHEN[n].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Ist 85 in der 5er-Reihe?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Reihe springt von 0 aus. Wo sie landet, wird das Feld bunt.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_k6b-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6bMARKEN.map(knopf).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6bFREI.map(knopf).join('\n          ')}
+          <button class="sim-btn" onclick="_k6bNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_k6b-pause" onclick="_k6bAnhalten()">Pause</button>
+            <button class="sim-btn" id="_k6b-tempo" onclick="_k6bTempo()">Tempo: <span id="_k6b-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_k6b-halt" onclick="_k6bHalt()">Halt nach jedem Sprung: <span id="_k6b-halt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_k6b-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_k6b-reihe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6b-spruenge" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6b-spalten" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6b-ziffern" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6b-letzte" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Hundertertafel, noch keine Reihe</p>
+  </div>`;
+}
+function _k6bSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+function _k6bStatus() {
+  if (!_k6b) return;
+  const z = _k6b, R = z.n ? _k6bREIHEN[z.n] : null, st = z.stand;
+  const f = s => R ? '<b style="color:' + R.dunkel + '">' + s + '</b>' : String(s);
+  _k6bSetze('_k6b-reihe', 'Gewählte Reihe: ' + (R ? f(R.name) : 'noch keine'));
+  _k6bSetze('_k6b-spruenge', 'Sprünge von 0 bis 100: ' + f(st.gelandet));
+  _k6bSetze('_k6b-spalten', 'Ganz bunte Spalten: ' + f(st.spalten));
+  const zf = R ? _k6bZiffern(z.n, st.gelandet) : [];
+  _k6bSetze('_k6b-ziffern', 'Letzte Ziffern der bunten Zahlen: ' + (zf.length ? f(zf.join(', ')) : 'keine'));
+  _k6bSetze('_k6b-letzte', 'Letzte bunte Zahl: ' + (st.gelandet ? f(st.gelandet * z.n) : 'keine'));
+  for (const n of _k6bMARKEN.concat(_k6bFREI)) {
+    const b = document.getElementById('_k6b-b-' + n);
+    if (b && b.classList) b.classList.toggle('primary', n === z.n);
+  }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _k6bSetze('_k6b-pause', z.pause ? 'weiter' : 'Pause');
+  _k6bSetze('_k6b-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _k6bSetze('_k6b-halt-an', z.halt ? 'an' : 'aus');
+  const hz = _k6bSetze('_k6b-lehrkraft', _k6bHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_k6b-pause', z.pause], ['_k6b-halt', z.halt]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+function _k6bHinweis() {
+  const z = _k6b;
+  let a;
+  if (z.pause && z.haltJetzt && z.n)
+    a = 'Halt: Der Punkt ist auf ' + z.stand.gelandet * z.n + '. Wohin springt er als Nächstes? Dann „weiter“.';
+  else if (z.pause) a = 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.';
+  else a = 'Für die Lehrkraft: „Pause“ hält alles an.';
+  return a + ' Tempo: ' + (z.langsam ? 'langsam' : 'normal') +
+         ', Halt nach jedem Sprung: ' + (z.halt ? 'an' : 'aus') + '.';
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Sprungmarke: die alte Reihe kommt sofort ganz an und blendet aus, dann
+// springt die neue von 0 aus. Hebt die Pause auf.
+function _k6bMarke(n) {
+  if (!_k6b || !_k6bREIHEN[n]) return;
+  const z = _k6b;
+  z.alt = z.n ? { n: z.n } : null;
+  z.n = n; z.at = 0; z.sofort = false;
+  z.pause = false; z.haltJetzt = false;
+  z.ahaGlanz = 0; z.ahaZelle = 0; z.fx.teile.length = 0;
+  z.stand = _k6bStand(z);
+  _k6bStatus();
+}
+// „neu“: sofort der Start; die alte Reihe blendet aus. Hebt die Pause auf.
+function _k6bNeu() {
+  if (!_k6b) return;
+  const z = _k6b;
+  z.alt = z.n ? { n: z.n } : null;
+  z.n = null; z.at = 0; z.sofort = false;
+  z.pause = false; z.haltJetzt = false;
+  z.ahaGlanz = 0; z.ahaZelle = 0; z.fx.teile.length = 0;
+  z.stand = _k6bStand(z);
+  _k6bStatus();
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _k6bAnhalten() {
+  if (!_k6b) return;
+  const z = _k6b;
+  z.pause = !z.pause;
+  if (!z.pause) z.haltJetzt = false;
+  _k6bStatus();
+}
+function _k6bTempo() {
+  if (!_k6b) return;
+  _k6b.langsam = !_k6b.langsam;
+  _k6bStatus();
+}
+function _k6bHalt() {
+  if (!_k6b) return;
+  const z = _k6b;
+  z.halt = !z.halt;
+  if (!z.halt && z.haltJetzt) { z.pause = false; z.haltJetzt = false; }   // aus: weiterspringen
+  _k6bStatus();
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _k6bZeitfaktor(z) { return z.pause ? 0 : z.langsam ? _k6bK.LANGSAM : 1; }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _k6bUpdate(dt) {
+  if (!_k6b) return;
+  const z = _k6b, K = _k6bK;
+  dt = _bioFxDt(dt) * _k6bZeitfaktor(z);              // ab hier Sim-Zeit
+  z.t += dt;
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  if (dt > 0 && (z.n || z.alt)) {                     // ohne Zeit kein Schritt im Ablauf
+    const P = z.n ? _k6bPlan(z.n) : null, ende = P ? P.ende : K.T_LEER;
+    let neuAt = Math.min(z.at + dt, ende), neu = false;
+    // Halt nach jedem Sprung: genau auf der naechsten Landung anhalten
+    const j = z.stand.gelandet + 1;
+    if (P && z.halt && j <= P.N) {
+      const L = P.landung(j);
+      if (z.at < L - 1e-9 && neuAt >= L - 1e-9) { neuAt = L; z.pause = true; z.haltJetzt = true; neu = true; }
+    }
+    z.at = neuAt;
+    if (z.at >= K.T_LEER) z.alt = null;               // die alte Reihe ist ausgeblendet
+    const st = _k6bStand(z), alt = z.stand;
+    if (st.gelandet !== alt.gelandet || st.spalten !== alt.spalten) neu = true;
+    const A = z.n ? _k6bAHA[z.n] : null;
+    if (A && !z.sofort && alt.gelandet * z.n < A.bei && st.gelandet * z.n >= A.bei) {
+      const F = _k6bFeld(A.zelle);
+      z.ahaZelle = A.zelle; z.ahaGlanz = K.T_AHA;
+      _bioFxWelle(z.fx.teile, F.cx, F.cy, K.F_AHA, 26);
+    }
+    z.stand = st;
+    if (neu) _k6bStatus();
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _k6bText(ctx, s, x, y, gr, farbe, ausr, gew, grund) {
+  ctx.fillStyle = farbe || _k6bK.F_TEXT;
+  ctx.font = (gew || '700') + ' ' + gr + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = grund || 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Was ist gerade bunt? Felder, Rahmen, Kopfzeile, Marken und Boegen – fuer die
+// alte Reihe (blendet aus, ganz angekommen) und die laufende.
+function _k6bBild(z) {
+  const K = _k6bK, B = { felder: [], kopf: [], rahmen: [], marken: [], boegen: [] };
+  const ruhig = z.pause && z.haltJetzt;                // im Halt ist jede Landung fertig gezeichnet
+  const reihe = (n, bis, a, alter) => {
+    const R = _k6bREIHEN[n], P = _k6bPlan(n);
+    for (let j = 1; j <= bis; j++) {
+      const k = j * n, al = alter(j), p = (k - 1) % 10;
+      B.felder.push({ k, R, a, al });
+      B.marken.push({ k, R, a, al, n });
+      B.boegen.push({ von: k - n, bis: k, R, a });
+      B.kopf[p] = { R, a, ganz: 0 };
+    }
+    for (const s of P.spalten) if (s.j <= bis) {
+      const al = alter(s.j);
+      B.rahmen.push({ p: s.p, R, a, al });
+      B.kopf[s.p].ganz = _bioFxKlemme(al / K.T_RAHMEN);
+    }
+  };
+  if (z.alt && z.at < K.T_LEER) {
+    const a = 1 - _bioFxEase.sanft(_bioFxKlemme(z.at / K.T_LEER));
+    reihe(z.alt.n, Math.floor(100 / z.alt.n), a, () => 99);
+  }
+  if (z.n) {
+    const P = _k6bPlan(z.n);
+    reihe(z.n, z.stand.gelandet, 1, j => ruhig ? 99 : z.at - P.landung(j));
+  }
+  return B;
+}
+// Kopfzeile: „letzte Ziffer:“ und die Ziffern 1 … 9, 0 ueber den Spalten.
+function _k6bKopf(ctx, B) {
+  const K = _k6bK;
+  _k6bText(ctx, 'letzte Ziffer:', K.BX - 6, K.KOPF, K.ZAHL, K.F_GRAU, 'right', '700');
+  for (let p = 0; p < 10; p++) {
+    const cx = K.BX + p * K.CW + K.CW / 2, c = B.kopf[p];
+    if (c) {                                           // in dieser Spalte ist eine Zahl bunt
+      ctx.save();
+      ctx.globalAlpha = c.a;
+      ctx.fillStyle = c.R.fuell;
+      _bioFxRundRect(ctx, cx - 9, 3, 18, 16, 4); ctx.fill();
+      if (c.ganz > 0) {                                // die Spalte ist ganz bunt
+        ctx.globalAlpha = c.a * c.ganz;
+        ctx.strokeStyle = c.R.dunkel; ctx.lineWidth = 2;
+        _bioFxRundRect(ctx, cx - 9, 3, 18, 16, 4); ctx.stroke();
+      }
+      ctx.restore();
+    }
+    _k6bText(ctx, String((p + 1) % 10), cx, K.KOPF, 12, K.F_TEXT, 'center', '700');
+  }
+}
+// Die Hundertertafel mit bunten Feldern, Gitter, Zahlen und Rahmen.
+function _k6bTafel(ctx, B) {
+  const z = _k6b, K = _k6bK, E = _bioFxEase, kl = _bioFxKlemme;
+  const breit = 10 * K.CW, hoch = 10 * K.CH;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  ctx.fillRect(K.BX + 2, K.BY + 3, breit, hoch);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(K.BX, K.BY, breit, hoch);
+  // bunte Felder: wachsen beim Landen aus der Mitte und blitzen hell
+  for (const f of B.felder) {
+    const F = _k6bFeld(f.k), e = kl(f.al / K.T_POP), s = 0.35 + 0.65 * E.raus(e);
+    ctx.globalAlpha = f.a;
+    ctx.fillStyle = f.R.fuell;
+    ctx.fillRect(F.cx - F.w * s / 2, F.cy - F.h * s / 2, F.w * s, F.h * s);
+    if (e < 1) {
+      ctx.globalAlpha = f.a * 0.6 * (1 - e);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(F.x, F.y, F.w, F.h);
+    }
+  }
+  ctx.globalAlpha = 1;
+  // Gitter: Spalten fein, Zehnerzeilen etwas kraeftiger, aussen ein Rand
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = K.F_GITTER;
+  ctx.beginPath();
+  for (let p = 1; p < 10; p++) { const x = K.BX + p * K.CW + 0.5; ctx.moveTo(x, K.BY); ctx.lineTo(x, K.BY + hoch); }
+  ctx.stroke();
+  ctx.strokeStyle = K.F_ZEILE;
+  ctx.beginPath();
+  for (let r = 1; r < 10; r++) { const y = K.BY + r * K.CH + 0.5; ctx.moveTo(K.BX, y); ctx.lineTo(K.BX + breit, y); }
+  ctx.stroke();
+  ctx.strokeStyle = K.F_RAND; ctx.lineWidth = 1.5;
+  ctx.strokeRect(K.BX, K.BY, breit, hoch);
+  ctx.restore();
+  // Zahlen 1 … 100
+  for (let k = 1; k <= 100; k++) {
+    const F = _k6bFeld(k);
+    _k6bText(ctx, String(k), F.cx, F.cy + 0.5, K.ZAHL_TAFEL, K.F_TEXT, 'center', '700', 'middle');
+  }
+  // dicke Rahmen um ganz bunte Spalten (ziehen sich beim Erscheinen zusammen)
+  for (const r of B.rahmen) {
+    const e = kl(r.al / K.T_RAHMEN), d = 5 * (1 - E.raus(e)), x = K.BX + r.p * K.CW;
+    ctx.save();
+    ctx.globalAlpha = r.a * (0.25 + 0.75 * e);
+    ctx.strokeStyle = r.R.dunkel; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x + 1.5 - d, K.BY + 1.5 - d, K.CW - 3 + 2 * d, hoch - 3 + 2 * d, 4); ctx.stroke();
+    ctx.restore();
+  }
+}
+// Wo sitzt der Punkt zwischen zwei Spruengen? Dieses Feld ist dunkel umrandet.
+function _k6bAktuell(z) {
+  const K = _k6bK, kl = _bioFxKlemme;
+  if (!z.n) return { k: 0, a: z.alt ? kl(z.at / K.T_LEER) : 1 };
+  if (_k6bFlug(z)) return null;
+  const P = _k6bPlan(z.n), g = z.stand.gelandet;
+  if (g < P.N || (z.pause && z.haltJetzt)) return { k: g * z.n, a: 1 };
+  return { k: g * z.n, a: 1 - kl((z.at - P.landung(P.N)) / K.T_AUS) };
+}
+// Startfeld „0“ links neben der 1, davor „Start“; Rahmen des aktuellen Feldes; Aha.
+function _k6bMarkierung(ctx) {
+  const z = _k6b, K = _k6bK, S = _k6bFeld(0);
+  _k6bText(ctx, 'Start', S.x - 5, S.cy + 0.5, K.ZAHL, K.F_GRAU, 'right', '700', 'middle');
+  ctx.save();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = K.F_RAND; ctx.lineWidth = 1.2;
+  ctx.setLineDash([3, 2]);
+  _bioFxRundRect(ctx, S.x, S.y, S.w, S.h, 3); ctx.fill(); ctx.stroke();
+  ctx.restore();
+  _k6bText(ctx, '0', S.cx, S.cy + 0.5, K.ZAHL, K.F_TEXT, 'center', '700', 'middle');
+  const akt = _k6bAktuell(z);
+  if (akt && akt.a > 0.01) {
+    const F = _k6bFeld(akt.k);
+    ctx.save();
+    ctx.globalAlpha = akt.a;
+    ctx.strokeStyle = K.F_PUNKT; ctx.lineWidth = 2.2;
+    _bioFxRundRect(ctx, F.x + 1.2, F.y + 1.2, F.w - 2.4, F.h - 2.4, 3); ctx.stroke();
+    ctx.restore();
+  }
+  if (z.ahaGlanz > 0 && z.ahaZelle) {                  // ruhiger Rahmen, ohne Fuellung
+    const F = _k6bFeld(z.ahaZelle);
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, z.ahaGlanz / 0.6) * (0.65 + 0.35 * Math.sin(z.t * 6));
+    ctx.strokeStyle = K.F_AHA; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, F.x - 2, F.y - 2, F.w + 4, F.h + 4, 5); ctx.stroke();
+    ctx.restore();
+  }
+}
+// Links: Schild der gewaehlten Reihe und ein Bogen „+ n“ wie am Zahlenstrahl.
+function _k6bSchild(ctx) {
+  const z = _k6b, K = _k6bK;
+  if (!z.n) return;
+  const R = _k6bREIHEN[z.n], k = Math.max(0.3, _bioFxEase.federn(_bioFxKlemme(z.at / 0.3)));
+  ctx.save();
+  ctx.translate(53, K.SCHILD_Y); ctx.scale(k, k);
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, -42, -10, 88, 24, 7); ctx.fill();
+  ctx.fillStyle = R.fuell; ctx.strokeStyle = R.dunkel; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, -44, -12, 88, 24, 7); ctx.fill(); ctx.stroke();
+  _k6bText(ctx, R.name, 0, 0.5, 13, K.F_TEXT, 'center', '700', 'middle');
+  ctx.restore();
+  // Bogen mit „+ n“: so weit springt jeder Bogen am Strahl
+  const x0 = 24, x1 = 82, y = K.BOGEN_Y, h = 16;
+  ctx.save();
+  ctx.globalAlpha = _bioFxKlemme(z.at / 0.3);
+  ctx.strokeStyle = R.dunkel; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let i = 0; i <= 20; i++) {
+    const e = i / 20, x = x0 + (x1 - x0) * e, yy = y - 4 * h * e * (1 - e);
+    if (i) ctx.lineTo(x, yy); else ctx.moveTo(x, yy);
+  }
+  ctx.stroke();
+  ctx.fillStyle = R.dunkel;
+  for (const x of [x0, x1]) { ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2); ctx.fill(); }
+  ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(x0 - 8, y); ctx.lineTo(x1 + 8, y); ctx.stroke();
+  _k6bText(ctx, '+ ' + z.n, (x0 + x1) / 2, y - h - 5, 13, R.dunkel, 'center', '700');
+  ctx.restore();
+}
+// Ein Bogen am Strahl von a nach b, gezeichnet bis zum Anteil bis (0 … 1).
+function _k6bBogen(ctx, a, b, h, bis) {
+  const K = _k6bK, xa = _k6bLX(a), xb = _k6bLX(b), m = 16;
+  ctx.beginPath();
+  for (let i = 0; i <= m; i++) {
+    const e = bis * i / m, x = xa + (xb - xa) * e, y = K.LY - 4 * h * e * (1 - e);
+    if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+  }
+  ctx.stroke();
+}
+function _k6bPunkt(ctx, x, y, r, a) {
+  const K = _k6bK;
+  if (a <= 0.01 || r <= 0.3) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  if (r > 3) {
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath(); ctx.arc(x - r * 0.35, y - r * 0.35, r * 0.3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+// Zahlenstrahl 0 – 100 mit Boegen, Marken und dem Punkt.
+function _k6bStrahl(ctx, B) {
+  const z = _k6b, K = _k6bK, kl = _bioFxKlemme, E = _bioFxEase;
+  ctx.save();
+  ctx.strokeStyle = K.F_STRAHL; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(K.LX0 - 5, K.LY); ctx.lineTo(K.LX1 + 9, K.LY); ctx.stroke();
+  ctx.fillStyle = K.F_STRAHL;                          // Pfeil
+  ctx.beginPath(); ctx.moveTo(K.LX1 + 15, K.LY); ctx.lineTo(K.LX1 + 7, K.LY - 4.5);
+  ctx.lineTo(K.LX1 + 7, K.LY + 4.5); ctx.closePath(); ctx.fill();
+  for (let k = 0; k <= 100; k++) {                     // Strich je 1, laenger je 5 und je 10
+    const x = _k6bLX(k), l = k % 10 === 0 ? 6 : k % 5 === 0 ? 4 : 2.5;
+    ctx.strokeStyle = k % 10 === 0 ? K.F_STRAHL : '#64748b';
+    ctx.lineWidth = k % 10 === 0 ? 1.4 : 0.9;
+    ctx.beginPath(); ctx.moveTo(x, K.LY - l); ctx.lineTo(x, K.LY + l); ctx.stroke();
+  }
+  ctx.restore();
+  for (let k = 0; k <= 100; k += 10)
+    _k6bText(ctx, String(k), _k6bLX(k), K.LY + 17, K.ZAHL, K.F_STRAHL, 'center', '700');
+  // Boegen der gelandeten Spruenge und der Bogen, der gerade waechst
+  ctx.save();
+  ctx.lineWidth = 1.5;
+  for (const b of B.boegen) {
+    ctx.globalAlpha = 0.8 * b.a; ctx.strokeStyle = b.R.dunkel;
+    _k6bBogen(ctx, b.von, b.bis, _k6bBogenH(b.bis - b.von), 1);
+  }
+  const fl = _k6bFlug(z);
+  if (fl) {
+    const R = _k6bREIHEN[z.n];
+    ctx.globalAlpha = 0.8; ctx.strokeStyle = R.dunkel;
+    _k6bBogen(ctx, (fl.j - 1) * z.n, fl.j * z.n, _k6bBogenH(z.n), E.sanft(fl.u));
+  }
+  ctx.restore();
+  // Marken an den Landestellen (springen auf); bei kurzen Spruengen kleiner,
+  // damit zwischen zwei Marken der Strahl sichtbar bleibt (2er: 2,5 px)
+  for (const m of B.marken) {
+    const rm = Math.min(3.2, 0.32 * (_k6bLX(m.n) - _k6bLX(0)));
+    const s = Math.max(0, Math.min(1.25, E.federn(kl(m.al / K.T_MARKE))));
+    if (s <= 0.05) continue;
+    ctx.save();
+    ctx.globalAlpha = m.a;
+    ctx.fillStyle = m.R.fuell; ctx.strokeStyle = m.R.dunkel; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(_k6bLX(m.k), K.LY, rm * s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // der Punkt am Strahl: fliegt im Bogen mit, sonst sitzt er auf der letzten Zahl
+  if (z.alt && z.at < K.T_LEER) {
+    const u = kl(z.at / K.T_LEER);
+    _k6bPunkt(ctx, _k6bLX(Math.floor(100 / z.alt.n) * z.alt.n), K.LY, K.RP, 1 - u);
+    _k6bPunkt(ctx, _k6bLX(0), K.LY, K.RP, u);
+    return;
+  }
+  if (fl) {
+    const e = E.sanft(fl.u), xa = _k6bLX((fl.j - 1) * z.n), xb = _k6bLX(fl.j * z.n), h = _k6bBogenH(z.n);
+    _k6bPunkt(ctx, xa + (xb - xa) * e, K.LY - 4 * h * e * (1 - e), K.RP, 1);
+  } else _k6bPunkt(ctx, _k6bLX(z.n ? z.stand.gelandet * z.n : 0), K.LY, K.RP, 1);
+}
+// Der Punkt auf der Tafel – nur waehrend des Flugs; landet er, wird das Feld bunt.
+function _k6bTafelPunkt(ctx) {
+  const z = _k6b, fl = _k6bFlug(z);
+  if (!fl) return;
+  const K = _k6bK, A = _k6bFeld((fl.j - 1) * z.n), B = _k6bFeld(fl.j * z.n), e = _bioFxEase.sanft(fl.u);
+  const h = Math.min(10, 3 + 0.05 * Math.hypot(B.cx - A.cx, B.cy - A.cy));
+  const gx = A.cx + (B.cx - A.cx) * e, gy = A.cy + (B.cy - A.cy) * e, hub = 4 * h * e * (1 - e);
+  const s = e < 0.15 ? 0.5 + 0.5 * e / 0.15 : e > 0.85 ? 0.5 + 0.5 * (1 - e) / 0.15 : 1;
+  ctx.save();                                          // Schatten auf der Tafel
+  ctx.globalAlpha = 0.18; ctx.fillStyle = '#0f172a';
+  ctx.beginPath(); ctx.ellipse(gx, gy + 2, K.RP * s, K.RP * s * 0.5, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+  _k6bPunkt(ctx, gx, gy - hub, K.RP * s, 1);
+}
+// Schild „Pause“ links (unter dem Schild der Reihe) – Groesse und Farbe wie in
+// den Heft-5-Simulationen.
+function _k6bPauseSchild(ctx) {
+  const w = 64, h = 25, x = 21, y = 150;
+  ctx.save();
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _k6bText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+function _k6bDraw(ctx, cv) {
+  if (!_k6b) return;
+  const z = _k6b, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const B = _k6bBild(z);
+  _k6bKopf(ctx, B);
+  _k6bTafel(ctx, B);
+  _k6bMarkierung(ctx);
+  _k6bSchild(ctx);
+  _k6bStrahl(ctx, B);
+  _bioFxDraw(ctx, z.fx.teile);                        // Lichtring
+  _k6bTafelPunkt(ctx);
+  if (z.pause) _k6bPauseSchild(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 6 FOERDER – mt3 „Ist 123 durch 3 teilbar?“
+// (Kennung m6-durch-drei, Praefix _k6c)
+// Bauplan: arbeitsheft_mathe_foe6/KAPITEL1_PROFIL.md, Abschnitt m6-durch-drei
+// (Einheit mt3, Titel „Reicht die 3 am Ende?“); allgemeine Regeln dort unter
+// „Die sechs Simulationen – Allgemein“ und MATHE_PROFIL § 10.
+// Ueberschrift = Frage der Einheit: „Ist 123 durch 3 teilbar?“
+//
+// Was man sieht (Leinwand 420 x 250). Ein Wuerfel ist in der Tafel 6 px gross
+// (Platte, Stange und Einer gleich – von der Platte bleibt derselbe Wuerfel
+// uebrig wie ein Einer), in Fach und Kasten 8 px (dort wird gezaehlt), in der
+// Ablage 4,4 px. Farbe der Stelle wie m5-buendeln und
+// m5-teilen-schriftlich: H rot, Z blau, E gruen – jeder Wuerfel behaelt sie
+// bis zum Schluss, man sieht also immer, woher er kommt.
+//   STELLENWERTTAFEL (links oben): Spalten H | Z | E, oben der Buchstabe mit
+//     dem Wort darunter („Hunderter“, „Zehner“, „Einer“), darunter die
+//     Ziffernkarte, darunter das Material – die Platte aus 10 x 10 Wuerfeln
+//     (Fuenferlinien), Stangen aus 10 Wuerfeln (Fuenfermarke), einzelne
+//     Wuerfel in Fuenferreihen. Eine leere vordere Stelle (21) hat eine
+//     leere, gestrichelte Karte.
+//   DREI FAECHER (unten) genau unter H, Z und E, unten beschriftet „aus H“,
+//     „aus Z“, „aus E“: dorthin kommen die einzelnen Wuerfel, die uebrig
+//     bleiben (Fuenferreihen). Die Beschriftung steht UNTEN, damit kein
+//     Wuerfel, der hinein- oder hinausfliegt, ueber die Schrift zieht.
+//   ABLAGE (rechts oben), Ueberschrift „Dreier“ bzw. „Neuner“ mit einem
+//     kleinen grauen Musterblock: die gebildeten Gruppen in Zehnerreihen mit
+//     Fuenferluecke – ein Dreier als Streifen aus 3 Wuerfeln, ein Neuner als
+//     Quadrat 3 x 3.
+//   KASTEN „Rest am Ende“ (rechts unten, in der Reihe der Faecher, ebenfalls
+//     unten beschriftet).
+//
+// Bewegung (jede Sprungmarke spielt ihre Zeile SELBST ab; das ganze Drehbuch
+// entsteht in _k6cPlan EINMAL, _k6cOrt liest es zur Ablaufzeit ab – keine
+// Zufallszahl, jede Zahl im Bild und in der Anzeige kommt aus _k6cRechne):
+//   0  Das Material faellt gestaffelt von oben in die Tafel (0,4 s).
+//   1  PLATTE: sie zerfaellt in 100 Wuerfel (rueckt in 0,25 s auseinander,
+//      nach jedem dritten Wuerfel eine kleine Luecke: man sieht Bloecke 3 x 3,
+//      die rechte Spalte, die untere Zeile und die Ecke fuer sich). Dann wird
+//      je eine Gruppe umrahmt (0,22 s vorher) und fliegt in die Ablage,
+//      schneller werdend: 33 Dreier in 1,35 s (zeilenweise von oben, zuletzt
+//      die drei senkrechten Dreier der rechten Spalte), mit Neunern 11 in
+//      1,05 s (neun Quadrate 3 x 3, die rechte Spalte, die untere Zeile).
+//      Genau 1 Wuerfel bleibt – immer die Ecke unten rechts –, er leuchtet
+//      gelb und gleitet ins Fach „aus H“. Die Rahmen kommen einzeln, nicht alle
+//      auf einmal: 33 Rahmen gleichzeitig verschwammen am Bild zu einem Gitter.
+//      Flugbahn: erst hinauf unter die Ziffernkarten (y = 76), waagerecht
+//      hinueber, erst hinter der Tafel hinauf in die Ablage – kein Wuerfel
+//      zieht ueber eine Ziffernkarte.
+//   2  STANGEN, eine nach der anderen (0,6 s Takt): 3 Dreier fliegen (oder
+//      1 Neuner), der unterste Wuerfel leuchtet und gleitet ins Fach „aus Z“.
+//   3  EINER: sie gleiten gestaffelt ins Fach „aus E“ (je 0,4 s).
+//      Waehrend 1–3 ist die Spalte, die gerade dran ist, gelb hinterlegt.
+//   4  LETZTER SCHRITT: die einzelnen Wuerfel ruecken aus den drei Faechern in
+//      den Kasten „Rest am Ende“ (in den Faechern bleibt ein gestrichelter
+//      Umriss – woher sie kamen), legen sich zu Dreiern (Neunern) zusammen,
+//      jede volle Gruppe wird umrahmt und fliegt in die Ablage. Was uebrig
+//      bleibt, rueckt in die Mitte des Kastens und leuchtet orange. Bleibt
+//      nichts, laeuft ein Lichtring durch den leeren Kasten.
+//   Gemessen (Frames zu 16 ms): „21“ ist nach 3,9 s fertig, „123“ nach 6,5 s,
+//   „124“ nach 6,7 s, „126 mit Neunern“ nach 6,25 s, der laengste Lauf
+//   („129“, 12 einzelne Wuerfel) nach 7,55 s. Der Halt vor dem letzten
+//   Schritt liegt bei 2,35 / 4,76 / 4,84 / 4,54 s.
+//   Faktendump (simfakten.js --voll --frames=25 --verlauf=4): Der erste
+//   Durchgang liest nur bis 125 Frames (2,0 s) und sieht die Endwerte nicht;
+//   der zweite Durchgang (jeder Knopf ein zweites Mal gedrueckt, „… · 2. …“)
+//   laesst jeden Lauf auslaufen – dort stehen die Endwerte aller vier
+//   Sprungmarken. Nachgerechnet mit simcheck/werte.js
+//   (Update in einer Schleife bis zum Ende).
+//
+// Knoepfe (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_k6cMarke('…')):
+//     „21“ · „123“ · „124“ · „126 mit Neunern“ – jede setzt ihre Gruppengroesse
+//     mit (die ersten drei Dreier, die letzte Neuner) und spielt ab.
+//   Reihe 2: „+ 1 Würfel“ (_k6cPlus()): Einer + 1 bis 9, dann spielt die neue
+//              Zahl ab; der neue Wuerfel faellt zuletzt und leuchtet kurz.
+//              Bei 9 Einern wackelt die Ziffernkarte E, Statuszeile
+//              „Die Einerstelle ist voll.“ (bis zur naechsten Handlung).
+//            „Gruppen: Dreier“ ↔ „Gruppen: Neuner“ (_k6cGruppen()): wechselt
+//              die Gruppengroesse und spielt die Zahl in der Tafel neu ab.
+//            „noch einmal“ (_k6cNochmal()) · „neu“ (_k6cNeu(): Start 123,
+//              Dreier, nichts gebildet).
+//   Jeder dieser Knoepfe beginnt neu: was noch zu sehen ist, faellt weg, das
+//   neue Material faellt ein. Wer waehrend einer Bewegung einen Knopf drueckt,
+//   bricht sie damit sofort ab, und das Neue beginnt.
+//   Der Knopf der Sprungmarke, deren Zahl UND Gruppengroesse gerade gelten,
+//   ist hervorgehoben.
+//
+// Statuszeilen (woertlich, jede mit mehr als 18 Zeichen):
+//   _k6c-zahl      „Zahl in der Tafel: 123“
+//   _k6c-material  „Material: 1 Platte, 2 Stangen, 3 Würfel“ (Einzahl/Mehrzahl:
+//                  „0 Platten“, „1 Stange“; je Stelle in ihrer Farbe)
+//   _k6c-gruppe    „Gebildet werden: Dreier“ / „Gebildet werden: Neuner“
+//   _k6c-faecher   „Einzeln aus H: 1, aus Z: 2, aus E: 3“ – zaehlt mit, wenn
+//                  ein Wuerfel im Fach landet; „…“, solange die Stelle noch
+//                  nicht dran war (Start: „Einzeln aus H: …, aus Z: …, aus E: …“)
+//   _k6c-einzeln   „Übrige einzelne Würfel: 6“ – „…“, bis der letzte einzelne
+//                  Wuerfel in seinem Fach liegt
+//   _k6c-rest      „Rest am Ende: 0 Würfel“ (auch „1 Würfel“) – Start und
+//                  waehrend des Laufs „Rest am Ende: noch offen“
+//   _k6c-gruppen   „Gebildete Dreier zusammen: 41“ / „Gebildete Neuner
+//                  zusammen: 14“ – zaehlt jede Gruppe, die in der Ablage landet
+//   _k6c-grenze    nur bei Bedarf: „Die Einerstelle ist voll.“
+//   _k6c-lehrkraft Hinweis fuer die Lehrkraft (siehe unten)
+//
+// Werte (nachgerechnet mit simcheck/werte.js; jede Zeile geht auf:
+// Gruppen · Gruppengroesse + Rest = Zahl):
+//   21              → 0 Platten, 2 Stangen, 1 Würfel · aus H 0, Z 2, E 1 · 3 ·
+//                     Rest 0 · 7 Dreier (7 · 3 = 21)
+//   123             → 1/2/3 · 1, 2, 3 · 6 · Rest 0 · 41 Dreier (41 · 3 = 123)
+//   124             → 1/2/4 · 1, 2, 4 · 7 · Rest 1 · 41 Dreier (41 · 3 + 1 = 124)
+//   126 mit Neunern → 1/2/6 · 1, 2, 6 · 9 · Rest 0 · 14 Neuner (14 · 9 = 126)
+//   frei: 123 mit Neunern → 6 · Rest 6 · 13 Neuner (13 · 9 + 6 = 123)
+//         „+ 1 Würfel“ ab 124 → 125: 8 · Rest 2 · 41 Dreier (41 · 3 + 2 = 125)
+// Start: „Start: 123 in der Tafel, noch nichts gebildet“ (Dreier).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): bei „123“ der eine Wuerfel, der
+// von der Platte uebrig bleibt – Lichtring um die Ecke (von 100 bleibt genau 1),
+// und am Ende Rest 0, obwohl 123 „wie 13“ aussieht – Lichtring um den leeren
+// Kasten „Rest am Ende“. Beide Ringe kommen bei JEDEM Lauf an derselben Stelle:
+// Die Beobachtung „von der Platte bleibt genau 1“ traegt auch Zeile 4 (mit
+// Neunern genauso), und „Rest 0“ ist bei 21 und 126 dieselbe Beobachtung.
+//
+// FUER DIE LEHRKRAFT (Container <div class="fpm-lehrkraft">, Bauart wie
+// m5-teilen-schriftlich), eigene Zeile unter den Heftknoepfen:
+//   „Pause“ ↔ „weiter“ (_k6cAnhalten()): friert jede Bewegung ein; im Bild
+//     oben rechts in der Ablage das Schild „Pause“.
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_k6cTempo()): ein Drittel so schnell.
+//   „Halt vor dem letzten Schritt: aus“ ↔ „… an“ (_k6cHaltSchalter()): haelt
+//     VON SELBST an, wenn alle einzelnen Wuerfel in den Faechern liegen (vor
+//     Schritt 4); die drei Faecher sind dann dick orange umrandet. Mit „weiter“
+//     ruecken sie zusammen.
+//   Eine Sprungmarke und jeder Knopf, der neu abspielt, heben die Pause auf;
+//   Halt und Tempo bleiben stehen. EIN Zeitfaktor an der Stelle, an der dt in
+//   _k6cUpdate hineingeht; der Halt ist ein Ereignis im Drehbuch (P.halt).
+//   Hinweiszeile _k6c-lehrkraft (in der Pause bernsteinfarben „lmp-status off“)
+//   nennt IMMER die Einstellung („… Halt: aus, Tempo: normal.“):
+//     sonst  „Für die Lehrkraft: „Pause“ hält alles an. „Halt vor dem letzten
+//            Schritt“ stoppt von selbst.“
+//     Halt   „Halt: Die einzelnen Würfel liegen in den Fächern. Frage: Wie
+//            viele? Woher? Dann „weiter“.“
+//     Pause  „Angehalten. Erkläre, was gerade passiert. Dann „weiter“.“
+//
+// Nicht am Bildschirm (Bauplan): „Quersumme“, „Summe der Ziffern“,
+// „Gegenbeispiel“, die Regel als Satz, ein Urteil in einer Statuszeile
+// („teilbar“, „geht auf“). „teilbar“ steht nur in der Ueberschrift (Frage).
+// Keine Namen, keine Punkte, keine Zeitmessung, kein „falsch“.
+//
+// Abweichungen vom Bauplan, jede begruendet:
+//   * Hinweis: der Bauplan sagt „… zerfallen in Dreier. …“. Mit Neunern
+//     stuende dann „Dreier“ ueber einem Bild, in dem Neuner fliegen. Nur das
+//     eine Wort wechselt mit der Gruppengroesse („… zerfallen in Neuner.“);
+//     mit Dreiern steht der Satz woertlich wie im Bauplan.
+//   * Wohin die Wuerfel in Schritt 4 „zusammenruecken“, sagt der Bauplan
+//     nicht: in den Kasten „Rest am Ende“ neben den Faechern. So bleibt die
+//     Ablage nur fuer fertige Gruppen, und der Rest liegt dort, wo die
+//     Statuszeile „Rest am Ende“ ihn nennt.
+//   * Die Faecher tragen „aus H“, „aus Z“, „aus E“ – dieselben Woerter wie die
+//     Statuszeile _k6c-faecher, damit Bild und Zahl verbunden sind.
+// Platz in der Tafel: hoechstens eine Platte (alle erreichbaren Zahlen liegen
+// zwischen 21 und 129), bis 9 Stangen und 9 Einer.
+// ════════════════════════════════════════════════════════════════════════
+let _k6c = null;
+const _k6cMARKEN = { '21': [21, 3], '123': [123, 3], '124': [124, 3], '126n': [126, 9] };   // [Zahl, Gruppengroesse]
+const _k6cREIHE = ['21', '123', '124', '126n'];
+const _k6cAUFSCHRIFT = { '21': '21', '123': '123', '124': '124', '126n': '126 mit Neunern' };
+const _k6cSTART = [123, 3];
+const _k6cSP = ['H', 'Z', 'E'];
+const _k6cWORT = { H: 'Hunderter', Z: 'Zehner', E: 'Einer' };
+const _k6cGNAME = { 3: 'Dreier', 9: 'Neuner' };
+const _k6cFARBE = {
+  H: { grund: '#fef2f2', fuell: '#fca5a5', linie: 'rgba(185,28,28,0.38)', rand: '#b91c1c' },
+  Z: { grund: '#eff6ff', fuell: '#93c5fd', linie: 'rgba(29,78,216,0.42)', rand: '#1d4ed8' },
+  E: { grund: '#f0fdf4', fuell: '#86efac', linie: 'rgba(21,128,61,0.42)', rand: '#15803d' }
+};
+const _k6cDUNKEL = '#1f2937';
+const _k6cORANGE = '#ea580c';
+const _k6cK = {
+  // Stellenwerttafel: Rahmen, Spalten, Kopf, Ziffernkarten, Materialfeld (Mitte y = 119)
+  TX0: 4, TX1: 246, TY0: 4, TY1: 170,
+  SP: { H: [4, 92], Z: [92, 168], E: [168, 246] },
+  KY0: 8, KY1: 36, ZY0: 41, ZY1: 67, MY0: 71, MY1: 166, MITTE: 119,
+  // Faecher unter H, Z, E (Mitte der Wuerfel y = 203, Beschriftung unten)
+  FY0: 176, FY1: 246, FACH: { H: [8, 88], Z: [96, 164], E: [172, 242] }, FMY: 203,
+  // Ablage (oben) und Kasten „Rest am Ende“ (unten)
+  AX0: 252, AX1: 416, AY0: 4, AY1: 170, RX0: 252, RX1: 416, RY0: 176, RY1: 246,
+  AX: 258, AY: 36, AW: 4.4, AXP: 14.8, ALUECKE: 4, AYP3: 12, AYP9: 19,
+  RMX: 334, RMY: 203,
+  // Wuerfel: Kante, Abstand in Reihen (Tafel); gespreizt (Platte und Stange
+  // zerfallen; nach jedem dritten Wuerfel eine Luecke); in Fach und Kasten groesser
+  W: 6, P: 8, SPREIZ: 6.6, WS: 5.4, LUECKE: 2.4, FW: 8, FP: 10,
+  // Flughoehen: ueber dem Material, ueber den Faechern, in der Ablage; ab XG steigt
+  // ein Wuerfel aus der Tafel in die Ablage (vorher bleibt er unter den Ziffernkarten)
+  BAHN_OBEN: 76, BAHN_FACH: 140, BAHN_ABLAGE: 100, XG: 250,
+  // Zeiten in s
+  T_FALL: 0.3, T_RUHE: 0.12,
+  T_SPREIZ: 0.25, T_VOR: 0.22, T_STARTS: { 3: 0.95, 9: 0.65 }, T_FLUG: 0.4,
+  T_LEUCHT: 0.25, T_GLEIT: 0.35,
+  S_TAKT: 0.6, S_SPREIZ: 0.08, S_FLUG: 0.26, S_GLEIT: 0.28,
+  E_TAKT: 0.05, E_GLEIT: 0.4,
+  T_SAMMEL: 0.45, SAMMEL_TAKT: 0.03, T_ORDNEN: 0.22, T_GFLUG: 0.36, G_TAKT: 0.12,
+  T_SCHLUSS: 0.12, T_WEG: 0.25, LANGSAM: 1 / 3
+};
+
+// ── Rechnen ─────────────────────────────────────────────────────────────
+// Von jeder Platte bleibt 100 - 33 · 3 = 1 (bzw. 100 - 11 · 9 = 1), von jeder
+// Stange 10 - 3 · 3 = 1 (bzw. 10 - 9 = 1) – so steht es auch im Drehbuch.
+function _k6cRechne(zahl, g) {
+  const H = Math.floor(zahl / 100), Z = Math.floor(zahl / 10) % 10, E = zahl % 10;
+  const jePlatte = Math.floor(100 / g), jeStange = Math.floor(10 / g);
+  const restPlatte = 100 - jePlatte * g, restStange = 10 - jeStange * g;
+  const einzeln = H * restPlatte + Z * restStange + E;
+  const amEnde = Math.floor(einzeln / g), rest = einzeln - amEnde * g;
+  return { zahl, g, H, Z, E, jePlatte, jeStange, einzeln, amEnde, rest,
+           gruppen: H * jePlatte + Z * jeStange + amEnde };
+}
+function _k6cAnz(n, ein, mehr) { return n + ' ' + (n === 1 ? ein : mehr); }
+
+// ── Plaetze ─────────────────────────────────────────────────────────────
+// n Wuerfel um die Mitte (cx, cy): bis 5 eine Reihe, sonst Fuenferreihen.
+// w = Kante, p = Abstand (Tafel 6/8, Fach und Kasten 8/10).
+function _k6cReihe(m, n, cx, cy, w, p) {
+  const K = _k6cK;
+  w = w || K.W; p = p || K.P;
+  const reihen = Math.max(1, Math.ceil(n / 5)), breit = Math.min(Math.max(n, 1), 5) * p - (p - w);
+  const x0 = cx - breit / 2, y0 = cy - (reihen * p - (p - w)) / 2;
+  return { x: x0 + (m % 5) * p, y: y0 + Math.floor(m / 5) * p, s: w, a: 1 };
+}
+function _k6cFach(art, m, n) {
+  const K = _k6cK;
+  return _k6cReihe(m, n, (K.FACH[art][0] + K.FACH[art][1]) / 2, K.FMY, K.FW, K.FP);
+}
+// zerfallen: Abstand 6,6 und nach jedem dritten Wuerfel eine Luecke – man sieht
+// die Dreier (und die Bloecke 3 x 3), die Ecke [9, 9] steht fuer sich
+function _k6cSpreiz(i) {
+  const K = _k6cK, halb = (9 * K.SPREIZ + K.WS + 3 * K.LUECKE) / 2;
+  return -halb + K.SPREIZ * i + K.LUECKE * Math.floor(i / 3);
+}
+// Platte: Zelle (r, c), ganz (Abstand 6) oder zerfallen
+function _k6cPlatte(r, c, gespreizt) {
+  const K = _k6cK, cx = (K.SP.H[0] + K.SP.H[1]) / 2;
+  if (!gespreizt) return { x: cx - 30 + K.W * c, y: K.MITTE - 30 + K.W * r, s: K.W, a: 1 };
+  return { x: cx + _k6cSpreiz(c), y: K.MITTE + _k6cSpreiz(r), s: K.WS, a: 1 };
+}
+function _k6cStange(cx, i, gespreizt) {
+  const K = _k6cK;
+  if (!gespreizt) return { x: cx - K.W / 2, y: K.MITTE - 30 + K.W * i, s: K.W, a: 1 };
+  return { x: cx - K.WS / 2, y: K.MITTE + _k6cSpreiz(i), s: K.WS, a: 1 };
+}
+// Ablage: Gruppe Nr. q, i-ter Wuerfel (Dreier als Streifen, Neuner als Quadrat)
+function _k6cAblage(q, i, g) {
+  const K = _k6cK, reihe = Math.floor(q / 10), sp = q % 10;
+  const x = K.AX + sp * K.AXP + (sp >= 5 ? K.ALUECKE : 0);
+  if (g === 3) return { x: x + i * K.AW, y: K.AY + reihe * K.AYP3, s: K.AW, a: 1 };
+  return { x: x + (i % 3) * K.AW, y: K.AY + reihe * K.AYP9 + Math.floor(i / 3) * K.AW, s: K.AW, a: 1 };
+}
+function _k6cAblageBlock(q, g) {
+  const o = _k6cAblage(q, 0, g), K = _k6cK;
+  return { x: o.x, y: o.y, b: 3 * K.AW, h: (g === 3 ? 1 : 3) * K.AW };
+}
+// Kasten „Rest am Ende“: erst eine Reihe, dann in Gruppen zu g mit Luecke
+function _k6cKastenReihe(m, n) {
+  const K = _k6cK;
+  return { x: K.RMX - (n * K.FP - (K.FP - K.FW)) / 2 + m * K.FP, y: K.RMY - K.FW / 2, s: K.FW, a: 1 };
+}
+function _k6cKastenGruppe(m, n, g) {
+  const K = _k6cK, haufen = Math.ceil(n / g), breit = n * K.FP - (K.FP - K.FW) + (haufen - 1) * 7;
+  return { x: K.RMX - breit / 2 + m * K.FP + Math.floor(m / g) * 7, y: K.RMY - K.FW / 2, s: K.FW, a: 1 };
+}
+// Welche Zellen der Platte bilden zusammen eine Gruppe? Uebrig bleibt [9, 9].
+function _k6cPlattenGruppen(g) {
+  const G = [];
+  if (g === 3) {
+    for (let r = 0; r < 10; r++) for (let q = 0; q < 3; q++) G.push([0, 1, 2].map(i => [r, 3 * q + i]));
+    for (let q = 0; q < 3; q++) G.push([0, 1, 2].map(i => [3 * q + i, 9]));
+  } else {
+    for (let br = 0; br < 3; br++) for (let bc = 0; bc < 3; bc++) {
+      const t = [];
+      for (let i = 0; i < 9; i++) t.push([3 * br + Math.floor(i / 3), 3 * bc + i % 3]);
+      G.push(t);
+    }
+    G.push([0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => [i, 9]));
+    G.push([0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => [9, i]));
+  }
+  return G;
+}
+
+// ── Drehbuch ────────────────────────────────────────────────────────────
+// modus 'start': nur das Material faellt ein. 'lauf': einfallen und abspielen.
+// neuEiner: Nummer des Einers, der mit „+ 1 Würfel“ dazugekommen ist (sonst -1).
+function _k6cEnde(w) { return w.segs[w.segs.length - 1].nach; }
+function _k6cPlan(zahl, g, modus, neuEiner) {
+  const K = _k6cK, R = _k6cRechne(zahl, g);
+  const P = { zahl, g, modus, R, wuerfel: [], gruppen: [], teile: [], baender: [], ringe: [], einzelne: [],
+              fach: { H: [], Z: [], E: [] }, fachFertig: { H: Infinity, Z: Infinity, E: Infinity },
+              tEinzeln: Infinity, halt: Infinity, tEnde: Infinity, ende: 0 };
+  const neu = (art, ort, t0) => {
+    const w = { art, teil: null, halo: null, rest: false, fachOrt: null, tSammel: Infinity,
+                segs: [{ t0, t1: t0 + K.T_FALL, ease: 'raus',
+                         von: { x: ort.x, y: ort.y - 22, s: ort.s, a: 0 }, nach: ort }] };
+    P.wuerfel.push(w);
+    return w;
+  };
+  // bahn: null (gerade), { art: 'tafel', L } (aus der Tafel in die Ablage),
+  // { art: 'bogen', L } (hinauf auf die Flughoehe L, hinueber, hinein)
+  const weiter = (w, t0, t1, nach, bahn) => {
+    w.segs.push({ t0, t1, von: _k6cEnde(w), nach, bahn: bahn || null });
+  };
+  // Material faellt ein: Platte, Stangen, Einer (der neue zuletzt)
+  const platte = [];
+  if (R.H > 0) {
+    const teil = { art: 'H', w: [], tSpreiz: Infinity, dSpreiz: K.T_SPREIZ, b: 60, h: 60 };
+    for (let r = 0; r < 10; r++) for (let c = 0; c < 10; c++) {
+      const w = neu('H', _k6cPlatte(r, c, false), 0.02);
+      w.teil = teil; w.rc = [r, c]; teil.w.push(w); platte.push(w);
+    }
+    P.teile.push(teil);
+  }
+  const stangen = [];
+  for (let j = 0; j < R.Z; j++) {
+    const cx = (K.SP.Z[0] + K.SP.Z[1]) / 2 + (j - (R.Z - 1) / 2) * Math.min(16, 64 / R.Z);
+    const teil = { art: 'Z', cx, w: [], tSpreiz: Infinity, dSpreiz: K.S_SPREIZ, b: K.W, h: 60 };
+    for (let i = 0; i < 10; i++) {
+      const w = neu('Z', _k6cStange(cx, i, false), 0.08 + 0.05 * j);
+      w.teil = teil; teil.w.push(w);
+    }
+    P.teile.push(teil); stangen.push(teil);
+  }
+  const einer = [];
+  for (let m = 0; m < R.E; m++) {
+    const t0 = 0.18 + 0.03 * m + (m === neuEiner ? 0.15 : 0);
+    const w = neu('E', _k6cReihe(m, R.E, (K.SP.E[0] + K.SP.E[1]) / 2, K.MITTE), t0);
+    if (m === neuEiner) w.halo = [t0 + K.T_FALL, t0 + K.T_FALL + 0.8];
+    einer.push(w);
+  }
+  let t = Math.max(...P.wuerfel.map(w => w.segs[0].t1));
+  if (modus === 'start') { P.ende = t; return P; }
+  t += K.T_RUHE;
+
+  let slot = 0;
+  const flug = (gr, tR, tS, dauer, bahn) => {
+    const G = { w: gr, tRahmen: tR, tStart: tS, tLand: tS + dauer, slot: slot++ };
+    gr.forEach((w, i) => weiter(w, tS, tS + dauer, _k6cAblage(G.slot, i, g), bahn));
+    P.gruppen.push(G);
+    return G;
+  };
+  // (1) Platte: zerfallen, je Gruppe umrahmen und fliegen, schneller werdend; die Ecke bleibt
+  const tH0 = t, ausTafel = { art: 'tafel', L: K.BAHN_OBEN };
+  if (platte.length) {
+    const teil = P.teile[0];
+    teil.tSpreiz = t;
+    for (const w of platte) weiter(w, t, t + K.T_SPREIZ, _k6cPlatte(w.rc[0], w.rc[1], true));
+    const ts = t + K.T_SPREIZ + K.T_VOR, G = _k6cPlattenGruppen(g), N = G.length, D = K.T_STARTS[g];
+    let letzter = ts;
+    G.forEach((zellen, k) => {
+      const tS = ts + D * Math.sqrt(k / N);
+      flug(zellen.map(([r, c]) => platte[r * 10 + c]), tS - K.T_VOR, tS, K.T_FLUG, ausTafel);
+      letzter = tS;
+    });
+    const ecke = platte[99], tL = letzter + K.T_FLUG * 0.6, pos = _k6cEnde(ecke);
+    ecke.halo = [tL, tL + K.T_LEUCHT + K.T_GLEIT];
+    P.ringe.push({ t: tL, x: pos.x + pos.s / 2, y: pos.y + pos.s / 2, r: 24 });   // Aha: von 100 bleibt 1
+    const ziel = _k6cFach('H', 0, R.H);
+    weiter(ecke, tL + K.T_LEUCHT, tL + K.T_LEUCHT + K.T_GLEIT, ziel);
+    ecke.fachOrt = ziel;
+    P.fach.H.push(tL + K.T_LEUCHT + K.T_GLEIT);
+    P.einzelne.push(ecke);
+    t = tL + K.T_LEUCHT + K.T_GLEIT;
+    P.baender.push({ art: 'H', t0: tH0, t1: t });
+  }
+  P.fachFertig.H = t;
+  // (2) Stangen, eine nach der anderen
+  const tZ0 = t;
+  stangen.forEach((teil, j) => {
+    const S = tZ0 + j * K.S_TAKT;
+    teil.tSpreiz = S;
+    teil.w.forEach((w, i) => weiter(w, S, S + K.S_SPREIZ, _k6cStange(teil.cx, i, true)));
+    const gruppen = g === 3 ? [[0, 1, 2], [3, 4, 5], [6, 7, 8]] : [[0, 1, 2, 3, 4, 5, 6, 7, 8]];
+    let letzter = S;
+    gruppen.forEach((ii, q) => {
+      const tS = S + K.S_SPREIZ + 0.12 + 0.07 * q;
+      flug(ii.map(i => teil.w[i]), tS - 0.12, tS, K.S_FLUG, ausTafel);
+      letzter = tS;
+    });
+    const unten = teil.w[9], tL = letzter + 0.1;
+    unten.halo = [tL, tL + 0.1 + K.S_GLEIT];
+    const ziel = _k6cFach('Z', j, R.Z);
+    weiter(unten, tL + 0.1, tL + 0.1 + K.S_GLEIT, ziel);
+    unten.fachOrt = ziel;
+    P.fach.Z.push(tL + 0.1 + K.S_GLEIT);
+    P.einzelne.push(unten);
+    t = tL + 0.1 + K.S_GLEIT;
+  });
+  if (stangen.length) P.baender.push({ art: 'Z', t0: tZ0, t1: t });
+  P.fachFertig.Z = t;
+  // (3) Einer gleiten ins Fach (beginnen, waehrend der letzte Stangenwuerfel noch gleitet)
+  const tE0 = stangen.length ? t - 0.15 : t;
+  einer.forEach((w, m) => {
+    const t0 = tE0 + K.E_TAKT * m, ziel = _k6cFach('E', m, R.E);
+    weiter(w, t0, t0 + K.E_GLEIT, ziel);
+    w.fachOrt = ziel;
+    P.fach.E.push(t0 + K.E_GLEIT);
+    P.einzelne.push(w);
+  });
+  if (einer.length) {
+    t = Math.max(t, tE0 + K.E_TAKT * (einer.length - 1) + K.E_GLEIT);
+    P.baender.push({ art: 'E', t0: tE0, t1: t });
+  }
+  P.fachFertig.E = t;
+  P.tEinzeln = Math.max(...P.fach.H, ...P.fach.Z, ...P.fach.E, tE0);
+  P.halt = P.tEinzeln + 0.08;                               // Halt vor dem letzten Schritt
+  // (4) Letzter Schritt: zusammenruecken, Gruppen bilden, was uebrig ist, leuchtet orange
+  const n = P.einzelne.length, G0 = P.halt + 0.02;
+  P.einzelne.forEach((w, m) => {
+    const t0 = G0 + K.SAMMEL_TAKT * m;
+    w.tSammel = t0;
+    weiter(w, t0, t0 + K.T_SAMMEL, _k6cKastenReihe(m, n), { art: 'bogen', L: K.BAHN_FACH });
+  });
+  const tG = G0 + K.SAMMEL_TAKT * (n - 1) + K.T_SAMMEL + 0.05;
+  P.einzelne.forEach((w, m) => weiter(w, tG, tG + K.T_ORDNEN, _k6cKastenGruppe(m, n, g)));
+  const tO = tG + K.T_ORDNEN;
+  let letzte = tO + 0.25, abflug = tO;
+  for (let j = 0; j < R.amEnde; j++) {
+    const G = flug(P.einzelne.slice(j * g, (j + 1) * g), tO + 0.03 + 0.06 * j, tO + 0.25 + K.G_TAKT * j,
+                   K.T_GFLUG, { art: 'bogen', L: K.BAHN_ABLAGE });
+    letzte = Math.max(letzte, G.tLand);
+    abflug = G.tStart;
+  }
+  // was uebrig bleibt, rueckt in die Mitte des Kastens
+  const reste = P.einzelne.slice(R.amEnde * g);
+  const tR0 = R.amEnde ? abflug + 0.15 : tO;
+  reste.forEach((w, m) => {
+    w.rest = true;
+    weiter(w, tR0, tR0 + 0.3, _k6cReihe(m, reste.length, K.RMX, K.RMY, K.FW, K.FP));
+  });
+  if (reste.length) letzte = Math.max(letzte, tR0 + 0.3);
+  P.tEnde = letzte + K.T_SCHLUSS;
+  P.baender.push({ art: 'R', t0: G0, t1: P.tEnde });
+  if (R.rest === 0) P.ringe.push({ t: P.tEnde, x: K.RMX, y: K.RMY, r: 26 });
+  P.ende = P.tEnde;
+  return P;
+}
+
+// Wo steht ein Wuerfel zur Ablaufzeit at? (null = noch nicht eingefallen)
+function _k6cOrt(w, at) {
+  let s = w.segs[0];
+  if (at < s.t0) return null;
+  for (const g of w.segs) { if (g.t0 <= at) s = g; else break; }
+  const u = _bioFxKlemme(s.t1 > s.t0 ? (at - s.t0) / (s.t1 - s.t0) : 1);
+  const e = s.ease === 'raus' ? _bioFxEase.raus(u) : _bioFxEase.sanft(u);
+  const A = s.von, B = s.nach, b = s.bahn;
+  let x, y;
+  if (b && b.art === 'tafel' && u < 1) {
+    // aus der Tafel: auf den ersten 36 px hinauf auf die Flughoehe (unter den
+    // Ziffernkarten), waagerecht hinueber, erst hinter der Tafel (XG) hinauf in die Ablage
+    const K = _k6cK, glatt = v => v * v * (3 - 2 * v);
+    x = A.x + (B.x - A.x) * e;
+    const hoch = _bioFxKlemme((x - A.x) / Math.max(1, Math.min(36, K.XG - A.x)));
+    const rein = _bioFxKlemme((x - K.XG) / Math.max(1, B.x - K.XG));
+    y = A.y + (b.L - A.y) * glatt(hoch) + (B.y - b.L) * glatt(rein);
+  } else if (b && u < 1) {
+    // erst hinauf auf die Flughoehe, hinueber, dann hinein (kubische Bahn)
+    const L = b.L, v = 1 - e;
+    x = A.x * (v * v * v + 3 * v * v * e) + B.x * (3 * v * e * e + e * e * e);
+    y = v * v * v * A.y + 3 * v * v * e * L + 3 * v * e * e * L + e * e * e * B.y;
+  } else {
+    x = A.x + (B.x - A.x) * e; y = A.y + (B.y - A.y) * e;
+  }
+  return { x, y, s: A.s + (B.s - A.s) * e, a: A.a + (B.a - A.a) * e, fliegt: !!b && u > 0 && u < 1 };
+}
+
+// ── Zustand ─────────────────────────────────────────────────────────────
+function _k6cInit() {
+  _k6c = { t: 0, zahl: _k6cSTART[0], g: _k6cSTART[1], lauf: null, weg: [], fx: [], sig: '',
+           wackel: 0, grenze: '',
+           // fuer die Lehrkraft: angehalten? Halt erreicht? Schalter Halt / langsam
+           steht: false, haltInfo: false, haltAn: false, langsam: false };
+  _k6cStarte(_k6cSTART[0], _k6cSTART[1], 'start', -1);
+}
+// Einen Lauf beginnen. Was noch zu sehen ist, faellt weg; das neue Material faellt ein.
+function _k6cStarte(zahl, g, modus, neuEiner) {
+  const z = _k6c;
+  if (z.lauf) {
+    const at = z.lauf.at;
+    for (const w of z.lauf.plan.wuerfel) {
+      const o = _k6cOrt(w, at);
+      if (o && o.a > 0.05) z.weg.push({ x: o.x, y: o.y, s: o.s, a: o.a, art: w.art });
+    }
+  }
+  z.zahl = zahl; z.g = g;
+  z.lauf = { plan: _k6cPlan(zahl, g, modus, neuEiner), at: 0 };
+  z.steht = false; z.haltInfo = false; z.grenze = '';      // neu abspielen hebt die Pause auf
+  z.fx.length = 0;
+}
+
+function _k6cHTML() {
+  const marke = k => `<button class="sim-btn" id="_k6c-b-${k}" onclick="_k6cMarke('${k}')">${_k6cAUFSCHRIFT[k]}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Ist 123 durch 3 teilbar?</h3>
+    <div class="fpm-note" style="margin-top:2px">Platten und Stangen zerfallen in <span id="_k6c-note-g">Dreier</span>. Einzelne Würfel kommen nach unten.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_k6c-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6cREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" id="_k6c-plus" onclick="_k6cPlus()">+&nbsp;1 Würfel</button>
+          <button class="sim-btn" id="_k6c-wechsel" onclick="_k6cGruppen()">Gruppen: <span id="_k6c-wechsel-an">Dreier</span></button>
+          <button class="sim-btn" id="_k6c-nochmal" onclick="_k6cNochmal()">noch einmal</button>
+          <button class="sim-btn" id="_k6c-neu" onclick="_k6cNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_k6c-pause" onclick="_k6cAnhalten()">Pause</button>
+            <button class="sim-btn" id="_k6c-tempo" onclick="_k6cTempo()">Tempo: <span id="_k6c-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_k6c-halt" onclick="_k6cHaltSchalter()">Halt vor dem letzten Schritt: <span id="_k6c-halt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_k6c-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_k6c-zahl" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6c-material" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6c-gruppe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6c-faecher" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6c-einzeln" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6c-rest" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6c-gruppen" style="margin-top:6px"></div>
+        <div class="lmp-status off" id="_k6c-grenze" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: 123 in der Tafel, noch nichts gebildet</p>
+  </div>`;
+}
+
+// Was die Anzeige gerade sagt – sie folgt dem Bild (Zeitpunkte im Drehbuch).
+function _k6cTexte() {
+  const z = _k6c, P = z.lauf.plan, R = P.R, at = z.lauf.at, F = _k6cFARBE;
+  const farbig = (art, s) => '<b style="color:' + F[art].rand + '">' + s + '</b>';
+  const fach = art => {
+    const n = P.fach[art].filter(t => t <= at).length;
+    return (n === 0 && at < P.fachFertig[art]) ? '…' : String(n);
+  };
+  const lauf = P.modus === 'lauf';
+  return {
+    zahl: 'Zahl in der Tafel: ' + P.zahl,
+    material: 'Material: ' + farbig('H', _k6cAnz(R.H, 'Platte', 'Platten')) + ', ' +
+              farbig('Z', _k6cAnz(R.Z, 'Stange', 'Stangen')) + ', ' + farbig('E', R.E + ' Würfel'),
+    gruppe: 'Gebildet werden: ' + _k6cGNAME[P.g],
+    faecher: 'Einzeln aus ' + farbig('H', 'H: ' + fach('H')) + ', aus ' + farbig('Z', 'Z: ' + fach('Z')) +
+             ', aus ' + farbig('E', 'E: ' + fach('E')),
+    einzeln: 'Übrige einzelne Würfel: ' + (lauf && at >= P.tEinzeln ? R.einzeln : '…'),
+    rest: 'Rest am Ende: ' + (lauf && at >= P.tEnde ? R.rest + ' Würfel' : 'noch offen'),
+    gruppen: 'Gebildete ' + _k6cGNAME[P.g] + ' zusammen: ' + P.gruppen.filter(G => G.tLand <= at).length
+  };
+}
+function _k6cHinweis() {
+  const z = _k6c;
+  const kopf = z.haltInfo ? 'Halt: Die einzelnen Würfel liegen in den Fächern. Frage: Wie viele? Woher? Dann „weiter“.'
+    : z.steht ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an. „Halt vor dem letzten Schritt“ stoppt von selbst.';
+  return kopf + ' Halt: ' + (z.haltAn ? 'an' : 'aus') + ', Tempo: ' + (z.langsam ? 'langsam' : 'normal') + '.';
+}
+function _k6cSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Schreibt die Anzeige, wenn sich etwas geaendert hat (immer = true: auf jeden Fall).
+function _k6cStatus(immer) {
+  if (!_k6c) return;
+  const z = _k6c, T = _k6cTexte();
+  const sig = JSON.stringify(T) + '|' + z.steht + '|' + z.haltInfo + '|' + z.haltAn + '|' + z.langsam + '|' + z.grenze;
+  if (!immer && sig === z.sig) return;
+  z.sig = sig;
+  _k6cSetze('_k6c-zahl', T.zahl);
+  _k6cSetze('_k6c-material', T.material);
+  _k6cSetze('_k6c-gruppe', T.gruppe);
+  _k6cSetze('_k6c-faecher', T.faecher);
+  _k6cSetze('_k6c-einzeln', T.einzeln);
+  _k6cSetze('_k6c-rest', T.rest);
+  _k6cSetze('_k6c-gruppen', T.gruppen);
+  const gz = _k6cSetze('_k6c-grenze', z.grenze);
+  if (gz && gz.style) gz.style.display = z.grenze ? '' : 'none';
+  _k6cSetze('_k6c-wechsel-an', _k6cGNAME[z.g]);
+  _k6cSetze('_k6c-note-g', _k6cGNAME[z.g]);
+  for (const k of _k6cREIHE) {
+    const b = document.getElementById('_k6c-b-' + k);
+    if (b && b.classList) b.classList.toggle('primary', _k6cMARKEN[k][0] === z.zahl && _k6cMARKEN[k][1] === z.g);
+  }
+  // fuer die Lehrkraft: Aufschriften und Hinweiszeile (in der Pause bernsteinfarben)
+  _k6cSetze('_k6c-pause', z.steht ? 'weiter' : 'Pause');
+  _k6cSetze('_k6c-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _k6cSetze('_k6c-halt-an', z.haltAn ? 'an' : 'aus');
+  const hz = _k6cSetze('_k6c-lehrkraft', _k6cHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.steht ? 'off' : 'on');
+  for (const [id, an] of [['_k6c-pause', z.steht], ['_k6c-tempo', z.langsam], ['_k6c-halt', z.haltAn]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _k6cMarke(k) {
+  if (!_k6c || !_k6cMARKEN[k]) return;
+  _k6cStarte(_k6cMARKEN[k][0], _k6cMARKEN[k][1], 'lauf', -1);
+  _k6cStatus(true);
+}
+function _k6cPlus() {
+  if (!_k6c) return;
+  const z = _k6c, e = z.zahl % 10;
+  if (e >= 9) {                                            // Grenze: die Karte E wackelt
+    z.grenze = 'Die Einerstelle ist voll.'; z.wackel = 0.45;
+    _k6cStatus(true);
+    return;
+  }
+  _k6cStarte(z.zahl + 1, z.g, 'lauf', e);
+  _k6cStatus(true);
+}
+function _k6cGruppen() {
+  if (!_k6c) return;
+  _k6cStarte(_k6c.zahl, _k6c.g === 3 ? 9 : 3, 'lauf', -1);
+  _k6cStatus(true);
+}
+function _k6cNochmal() {
+  if (!_k6c) return;
+  _k6cStarte(_k6c.zahl, _k6c.g, 'lauf', -1);
+  _k6cStatus(true);
+}
+function _k6cNeu() {
+  if (!_k6c) return;
+  _k6cStarte(_k6cSTART[0], _k6cSTART[1], 'start', -1);
+  _k6cStatus(true);
+}
+// ── Für die Lehrkraft ───────────────────────────────────────────────────
+function _k6cAnhalten() {
+  const z = _k6c;
+  if (!z) return;
+  z.steht = !z.steht;
+  z.haltInfo = false;                      // „weiter“ nach dem Halt: die Wuerfel ruecken zusammen
+  _k6cStatus(true);
+}
+function _k6cHaltSchalter() {
+  const z = _k6c;
+  if (!z) return;
+  z.haltAn = !z.haltAn;                    // gilt fuer den naechsten letzten Schritt
+  _k6cStatus(true);
+}
+function _k6cTempo() {
+  const z = _k6c;
+  if (!z) return;
+  z.langsam = !z.langsam;
+  _k6cStatus(true);
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _k6cUpdate(dt) {
+  if (!_k6c) return;
+  const z = _k6c, K = _k6cK;
+  const roh = _bioFxDt(dt);
+  z.wackel = Math.max(0, z.wackel - roh);                // Wackeln an der Grenze: echte Zeit
+  for (let i = z.weg.length - 1; i >= 0; i--) {          // altes Material faellt weg
+    const p = z.weg[i];
+    p.a -= roh / K.T_WEG; p.y += 30 * roh;
+    if (p.a <= 0) z.weg.splice(i, 1);
+  }
+  // EIN Zeitfaktor fuer jede Bewegung. Angehalten: nichts laeuft weiter.
+  if (z.steht) return;
+  dt = roh * (z.langsam ? K.LANGSAM : 1);
+  if (!(dt > 0)) return;
+  z.t += dt;
+  const L = z.lauf, P = L.plan;
+  let neu = L.at + dt, halt = false;
+  if (z.haltAn && L.at < P.halt && neu >= P.halt) { neu = P.halt; halt = true; }
+  for (const r of P.ringe) if (L.at < r.t && neu >= r.t) _bioFxWelle(z.fx, r.x, r.y, '#f59e0b', r.r);
+  L.at = neu;
+  if (halt) { z.steht = true; z.haltInfo = true; }
+  _bioFxUpdate(z.fx, dt);
+  _k6cStatus(halt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _k6cText(ctx, s, x, y, groesse, farbe, gew, ausr) {
+  ctx.fillStyle = farbe || _k6cDUNKEL;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _k6cAktiv(b, at) { return at >= b.t0 && at < b.t1; }
+function _k6cPanel(ctx, x0, y0, x1, y1, fuell) {
+  ctx.fillStyle = 'rgba(15,23,42,0.07)';
+  _bioFxRundRect(ctx, x0 + 1.5, y0 + 2, x1 - x0, y1 - y0, 8); ctx.fill();
+  ctx.fillStyle = fuell || '#ffffff';
+  _bioFxRundRect(ctx, x0, y0, x1 - x0, y1 - y0, 8); ctx.fill();
+}
+
+function _k6cTafel(ctx) {
+  const z = _k6c, K = _k6cK, P = z.lauf.plan, R = P.R, at = z.lauf.at;
+  _k6cPanel(ctx, K.TX0, K.TY0, K.TX1, K.TY1);
+  // die Spalte, die gerade dran ist: gelb
+  for (const b of P.baender) {
+    if (b.art === 'R' || !_k6cAktiv(b, at)) continue;
+    const [a, e] = K.SP[b.art];
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, (at - b.t0) / 0.2, (b.t1 - at) / 0.2);
+    ctx.fillStyle = 'rgba(253,224,71,0.30)';
+    _bioFxRundRect(ctx, a + 3, K.MY0, e - a - 6, K.MY1 - K.MY0, 6); ctx.fill();
+    ctx.restore();
+  }
+  for (const art of _k6cSP) {
+    const [a, b] = K.SP[art], cx = (a + b) / 2, F = _k6cFARBE[art];
+    // Kopf wie die Stellenwerttafel: Buchstabe, darunter das Wort
+    ctx.fillStyle = F.grund;
+    _bioFxRundRect(ctx, a + 4, K.KY0, b - a - 8, K.KY1 - K.KY0, 6); ctx.fill();
+    _k6cText(ctx, art, cx, K.KY0 + 14, 15, F.rand);
+    _k6cText(ctx, _k6cWORT[art], cx, K.KY1 - 3, 11, '#334155', '600');
+    // Ziffernkarte (eine leere vordere Stelle: leere, gestrichelte Karte)
+    const dx = art === 'E' && z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / 0.45) : 0;
+    const leer = art === 'H' && R.H === 0;
+    ctx.save();
+    ctx.fillStyle = leer ? '#f8fafc' : '#ffffff';
+    ctx.strokeStyle = leer ? '#94a3b8' : F.rand; ctx.lineWidth = leer ? 1.2 : 1.6;
+    if (leer) ctx.setLineDash([3, 3]);
+    _bioFxRundRect(ctx, cx - 17 + dx, K.ZY0, 34, K.ZY1 - K.ZY0, 5); ctx.fill(); ctx.stroke();
+    ctx.restore();
+    if (!leer) _k6cText(ctx, String(R[art]), cx + dx, K.ZY1 - 6, 20, F.rand);
+  }
+  ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1.2;
+  for (const art of ['Z', 'E']) {
+    const x = K.SP[art][0];
+    ctx.beginPath(); ctx.moveTo(x, K.TY0 + 3); ctx.lineTo(x, K.TY1 - 3); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.TX0, K.TY0, K.TX1 - K.TX0, K.TY1 - K.TY0, 8); ctx.stroke();
+}
+
+function _k6cFaecher(ctx) {
+  const K = _k6cK;
+  for (const art of _k6cSP) {
+    const [a, b] = K.FACH[art], F = _k6cFARBE[art];
+    ctx.fillStyle = 'rgba(15,23,42,0.06)';
+    _bioFxRundRect(ctx, a + 1.5, K.FY0 + 2, b - a, K.FY1 - K.FY0, 7); ctx.fill();
+    ctx.fillStyle = F.grund;
+    _bioFxRundRect(ctx, a, K.FY0, b - a, K.FY1 - K.FY0, 7); ctx.fill();
+    ctx.save(); ctx.globalAlpha = 0.6; ctx.strokeStyle = F.rand; ctx.lineWidth = 1.2;
+    _bioFxRundRect(ctx, a, K.FY0, b - a, K.FY1 - K.FY0, 7); ctx.stroke(); ctx.restore();
+    _k6cText(ctx, 'aus ' + art, a + 7, K.FY1 - 7, 11, F.rand, '700', 'left');
+  }
+}
+
+function _k6cAblageBild(ctx) {
+  const z = _k6c, K = _k6cK, P = z.lauf.plan, at = z.lauf.at;
+  _k6cPanel(ctx, K.AX0, K.AY0, K.AX1, K.AY1);
+  // Ueberschrift mit einem kleinen grauen Musterblock
+  const titel = _k6cGNAME[P.g];
+  _k6cText(ctx, titel, K.AX + 1, K.AY0 + 19, 14, _k6cDUNKEL, '700', 'left');
+  ctx.font = '700 14px sans-serif';
+  const mx = K.AX + 1 + ctx.measureText(titel).width + 9, ms = 4.6;
+  ctx.save();
+  ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 0.8;
+  for (let i = 0; i < P.g; i++) {
+    const x = mx + (P.g === 3 ? i : i % 3) * ms, y = (P.g === 3 ? K.AY0 + 12 : K.AY0 + 8) + (P.g === 3 ? 0 : Math.floor(i / 3) * ms);
+    ctx.fillRect(x, y, ms, ms); ctx.strokeRect(x, y, ms, ms);
+  }
+  ctx.restore();
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.AX0, K.AY0, K.AX1 - K.AX0, K.AY1 - K.AY0, 8); ctx.stroke();
+  // Kasten „Rest am Ende“ (waehrend des letzten Schritts gelb hinterlegt)
+  _k6cPanel(ctx, K.RX0, K.RY0, K.RX1, K.RY1);
+  for (const b of P.baender) {
+    if (b.art !== 'R' || !_k6cAktiv(b, at)) continue;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, (at - b.t0) / 0.2, (b.t1 - at) / 0.2);
+    ctx.fillStyle = 'rgba(253,224,71,0.26)';
+    _bioFxRundRect(ctx, K.RX0 + 3, K.RY0 + 3, K.RX1 - K.RX0 - 6, K.RY1 - K.RY0 - 6, 6); ctx.fill();
+    ctx.restore();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.RX0, K.RY0, K.RX1 - K.RX0, K.RY1 - K.RY0, 8); ctx.stroke();
+  _k6cText(ctx, 'Rest am Ende', K.RX0 + 8, K.RY1 - 7, 11, '#9a3412', '700', 'left');
+}
+
+// Ein Wuerfel. heil = Teil einer ganzen Platte/Stange (feine Linien statt Rand).
+function _k6cWuerfel(ctx, x, y, s, art, a, heil) {
+  if (a <= 0.01 || s <= 0.3) return;
+  const F = _k6cFARBE[art];
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.fillStyle = F.fuell; ctx.strokeStyle = heil ? F.linie : F.rand;
+  ctx.lineWidth = s < 5 ? 0.55 : heil ? 0.6 : 0.8;
+  if (heil) { ctx.fillRect(x, y, s, s); ctx.strokeRect(x, y, s, s); }
+  else { _bioFxRundRect(ctx, x, y, s, s, Math.min(1.2, s / 4)); ctx.fill(); ctx.stroke(); }
+  ctx.restore();
+}
+// Rahmen um eine Menge von Orten
+function _k6cHuelle(orte, rand) {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const o of orte) { x0 = Math.min(x0, o.x); y0 = Math.min(y0, o.y); x1 = Math.max(x1, o.x + o.s); y1 = Math.max(y1, o.y + o.s); }
+  return { x: x0 - rand, y: y0 - rand, b: x1 - x0 + 2 * rand, h: y1 - y0 + 2 * rand };
+}
+
+function _k6cWuerfelBild(ctx) {
+  const z = _k6c, K = _k6cK, P = z.lauf.plan, at = z.lauf.at;
+  const orte = new Map(), liegt = [], fliegt = [];
+  for (const w of P.wuerfel) {
+    const o = _k6cOrt(w, at);
+    if (!o) continue;
+    o.w = w; orte.set(w, o);
+    (o.fliegt ? fliegt : liegt).push(o);
+  }
+  const puls = 0.5 + 0.5 * Math.sin(z.t * Math.PI * 2 * 1.1);
+  // in den Faechern bleibt ein gestrichelter Umriss: woher die Wuerfel kamen
+  for (const w of P.wuerfel) {
+    if (!w.fachOrt || at < w.tSammel + 0.12) continue;
+    const o = w.fachOrt, F = _k6cFARBE[w.art];
+    ctx.save();
+    ctx.globalAlpha = 0.75 * Math.min(1, (at - w.tSammel - 0.12) / 0.3);
+    ctx.strokeStyle = F.rand; ctx.lineWidth = 0.9; ctx.setLineDash([1.6, 1.4]);
+    ctx.strokeRect(o.x + 0.5, o.y + 0.5, o.s - 1, o.s - 1);
+    ctx.restore();
+  }
+  // gelbes Leuchten hinter dem Wuerfel, der uebrig bleibt (und dem neuen Einer)
+  for (const o of liegt.concat(fliegt)) {
+    const h = o.w.halo;
+    if (!h || at < h[0] || at >= h[1]) continue;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, (at - h[0]) / 0.12, (h[1] - at) / 0.2) * (0.65 + 0.35 * puls);
+    ctx.fillStyle = 'rgba(253,224,71,0.9)'; ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, o.x - 3.5, o.y - 3.5, o.s + 7, o.s + 7, 3.5); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // Rest am Ende: was uebrig bleibt, leuchtet orange
+  const restOrte = at >= P.tEnde ? P.wuerfel.filter(w => w.rest).map(w => orte.get(w)).filter(Boolean) : [];
+  if (restOrte.length) {
+    const h = _k6cHuelle(restOrte, 3.5);
+    ctx.save();
+    ctx.globalAlpha = 0.35 + 0.35 * puls; ctx.fillStyle = '#fdba74';
+    _bioFxRundRect(ctx, h.x, h.y, h.b, h.h, 4); ctx.fill();
+    ctx.restore();
+  }
+  // was liegt
+  for (const o of liegt) {
+    const teil = o.w.teil;
+    _k6cWuerfel(ctx, o.x, o.y, o.s, o.w.art, o.a, !!teil && at < teil.tSpreiz);
+  }
+  // ganze Platte / Stange: Rand und Fuenferlinien, solange sie heil ist
+  for (const teil of P.teile) {
+    const u = at < teil.tSpreiz ? 0 : (at - teil.tSpreiz) / teil.dSpreiz;
+    if (u >= 1) continue;
+    const o = orte.get(teil.w[0]);
+    if (!o) continue;
+    const F = _k6cFARBE[teil.art];
+    ctx.save();
+    ctx.globalAlpha = o.a * (1 - u);
+    ctx.strokeStyle = F.rand;
+    if (teil.art === 'H') {
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(o.x + 30, o.y); ctx.lineTo(o.x + 30, o.y + 60); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(o.x, o.y + 30); ctx.lineTo(o.x + 60, o.y + 30); ctx.stroke();
+      ctx.lineWidth = 1.2; ctx.strokeRect(o.x, o.y, 60, 60);
+    } else {
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(o.x, o.y + 30); ctx.lineTo(o.x + K.W, o.y + 30); ctx.stroke();
+      ctx.lineWidth = 0.9; ctx.strokeRect(o.x, o.y, K.W, 60);
+    }
+    ctx.restore();
+  }
+  // fertige Gruppen in der Ablage: duenner dunkler Umriss je Block
+  ctx.save();
+  ctx.strokeStyle = '#334155'; ctx.lineWidth = 0.8;
+  for (const G of P.gruppen) {
+    if (at < G.tLand) continue;
+    const B = _k6cAblageBlock(G.slot, P.g);
+    ctx.globalAlpha = Math.min(1, (at - G.tLand) / 0.15);
+    _bioFxRundRect(ctx, B.x - 0.4, B.y - 0.4, B.b + 0.8, B.h + 0.8, 1.2); ctx.stroke();
+  }
+  ctx.restore();
+  // Rest am Ende: oranger Rand (pulsiert)
+  if (restOrte.length) {
+    const h = _k6cHuelle(restOrte, 3.5);
+    ctx.save();
+    ctx.globalAlpha = 0.55 + 0.45 * puls; ctx.strokeStyle = _k6cORANGE; ctx.lineWidth = 2;
+    _bioFxRundRect(ctx, h.x, h.y, h.b, h.h, 4); ctx.stroke();
+    ctx.restore();
+  }
+  // was fliegt, liegt obenauf
+  for (const o of fliegt) _k6cWuerfel(ctx, o.x, o.y, o.s, o.w.art, o.a, false);
+  // Rahmen um jede Gruppe: vom Umrahmen bis kurz nach der Landung
+  for (const G of P.gruppen) {
+    if (at < G.tRahmen || at > G.tLand + 0.15) continue;
+    const os = G.w.map(w => orte.get(w)).filter(Boolean);
+    if (!os.length) continue;
+    const h = _k6cHuelle(os, 0.8);
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, (at - G.tRahmen) / 0.12, at > G.tLand ? 1 - (at - G.tLand) / 0.15 : 1);
+    ctx.strokeStyle = '#c2410c'; ctx.lineWidth = 1.2;
+    _bioFxRundRect(ctx, h.x, h.y, h.b, h.h, 2); ctx.stroke();
+    ctx.restore();
+  }
+  // altes Material faellt weg
+  for (const p of z.weg) _k6cWuerfel(ctx, p.x, p.y, p.s, p.art, p.a, false);
+}
+
+// Fuer die Lehrkraft: beim Halt die drei Faecher dick orange umrandet; waehrend
+// jeder Pause das Schild „Pause“ oben rechts in der Ablage (dort steht nie etwas).
+function _k6cLehrkraftBild(ctx) {
+  const z = _k6c, K = _k6cK;
+  if (z.haltInfo) {
+    ctx.save();
+    ctx.strokeStyle = _k6cORANGE; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, K.FACH.H[0] - 3, K.FY0 - 2, K.FACH.E[1] - K.FACH.H[0] + 6, K.FY1 - K.FY0 + 3, 9); ctx.stroke();
+    ctx.restore();
+  }
+  if (z.steht) {
+    const x = 354, y = 8, w = 56, h = 18;
+    ctx.save();
+    ctx.fillStyle = '#1e293b';
+    _bioFxRundRect(ctx, x, y, w, h, 5); ctx.fill();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(x + 5, y + 4, 2.8, 10); ctx.fillRect(x + 10, y + 4, 2.8, 10);   // Pausezeichen
+    _k6cText(ctx, 'Pause', x + 17, y + 13.5, 11, '#ffffff', '700', 'left');
+    ctx.restore();
+  }
+}
+
+function _k6cDraw(ctx, cv) {
+  if (!_k6c) return;
+  const W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _k6cTafel(ctx);
+  _k6cFaecher(ctx);
+  _k6cAblageBild(ctx);
+  _k6cWuerfelBild(ctx);
+  _bioFxDraw(ctx, _k6c.fx);
+  _k6cLehrkraftBild(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 6 FOERDER – mt4 „Wann treffen sich die zwei Reihen wieder?“
+// (Kennung m6-vielfache, Praefix _k6d)
+// Bauplan: arbeitsheft_mathe_foe6/KAPITEL1_PROFIL.md, Abschnitte mt4 und
+// „m6-vielfache (mt4) · _k6d“ (Regeln N1–N3, Lehrkraft-Zeile, nur onclick).
+// Ueberschrift = Frage der Einheit: „Nach wie vielen Minuten halten beide
+// wieder zusammen?“
+//
+// WAS MAN SIEHT (Leinwand 420 x 250):
+//   - Unten ein Zeitstrahl 0–36 min mit Pfeil: Strich je Minute, Zahl je
+//     6 min (0, 6, 12 … 36), rechts unter der Pfeilspitze der Achsentitel
+//     „Zeit in min“.
+//   - Darueber zwei Spuren, jede ein getoenter Streifen mit einer Strasse:
+//     oben „Bus A“ (blau), darunter „Bus B“ (orange), je ein kleiner Bus von
+//     der Seite, OHNE Nummer. Das Dreieck zwischen den Raedern zeigt auf die
+//     Minute, an der der Bus steht.
+//   - Ein gestrichelter Zeitzeiger (mit Dreieck auf dem Strahl) laeuft von
+//     links nach rechts. Jeder Halt hinterlaesst auf der Strasse seiner Spur
+//     eine Marke (Punkt in der Busfarbe) mit der Minutenzahl darunter.
+//     Bei einem Takt von 1 min stehen die Zahlen abwechselnd in zwei Zeilen
+//     (sonst ueberlappen sie: 9,2 px je Minute, „36“ ist 12,5 px breit).
+//
+// BEWEGUNG (jede Sprungmarke spielt die Fahrt bis 36 min SELBST ab, N1;
+// anhalten kann die Lehrkraft):
+//   Vorlauf 0,35 s   beide Busse stehen bei 0 min (nach einer frueheren
+//                    Fahrt huepfen sie im Bogen dorthin zurueck, die alten
+//                    Marken blenden aus).
+//   Fahrt            der Zeitzeiger laeuft 0 -> 36 min, 0,15 s je Minute
+//                    (5,4 s). Jeder Bus springt im Bogen von Halt zu Halt:
+//                    er steht kurz (0,12 s, hoechstens 30 % seines Takts) und
+//                    landet GENAU dann auf dem naechsten Halt, wenn der Zeiger
+//                    diese Minute erreicht. Dann erscheint die Marke (federt)
+//                    und die Zahl in der Statusliste.
+//   gleiche Minute   halten beide in derselben Minute, steht ALLES 0,5 s
+//                    still (Zeiger und Busse), und um beide Marken breitet
+//                    sich ein Lichtring aus – ohne Text, ohne eigene Liste.
+//                    (Bei sehr vielen gleichen Minuten im freien Probieren
+//                    hoechstens 3 s zusammen: 1 min und 1 min haette sonst
+//                    36 x 0,5 s = 18 s Stillstand. Fuer alle vier Sprungmarken
+//                    sind es genau 0,5 s – Abweichung nur im freien Probieren.)
+//   Ende             der Zeiger steht auf 36 min. Ein Bus, dessen letzter Halt
+//                    vor 36 liegt (3 und 5: Bus B bei 35), bleibt dort stehen.
+// Alles ist eine Funktion der Ablaufzeit z.at (_k6dPlan baut das Drehbuch
+// EINMAL, _k6dMin und _k6dBus lesen es ab): keine Zufallszahl; jede Zahl im
+// Bild und in den Zeilen kommt aus den Halten k, 2k, 3k … bis 36.
+//
+// Abspieldauer ab Knopfdruck (Tempo normal, Frames zu 16 ms, fuer simfakten.js):
+//   2 und 3: 8,75 s (547) · 4 und 6: 7,25 s (454) · 3 und 5: 6,75 s (422) ·
+//   4 und 8: 7,75 s (485). Mit --frames=25 --verlauf=4 (bis Frame 125) stehen
+//   die Endwerte im Durchgang, der jeden Knopf ein zweites Mal drueckt (er laesst ihn
+//   auslaufen, bis sich die Anzeige nicht mehr aendert).
+//
+// KNOEPFE (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_k6dMarke('2-3') …):
+//     „2 min und 3 min“ · „4 min und 6 min“ · „3 min und 5 min“ · „4 min und 8 min“
+//     Der Knopf, dessen Takte gerade eingestellt sind, ist hervorgehoben.
+//   Reihe 2: „A: − 1 min“ · „A: + 1 min“ (_k6dA(-1|1)) · „B: − 1 min“ ·
+//     „B: + 1 min“ (_k6dB(-1|1)): Takt 1 bis 10 min, spielt neu ab. Am Rand
+//     (1 bzw. 10 min) wackelt nur die Spur, nichts spielt neu ab, kein Text
+//     (der Bauplan sieht keine Grenz-Zeile vor). · „neu“ (_k6dNeu()): Start.
+//   Jeder dieser Knoepfe hebt eine Pause auf; Tempo und Halt bleiben stehen.
+//
+// STATUSZEILEN (woertlich aus dem Bauplan; jede hat mehr als 18 Zeichen,
+// zwischen Zahl und „min“ ein geschuetztes Leerzeichen U+00A0):
+//   _k6d-takte  „Bus A alle 4 min, Bus B alle 6 min“
+//   _k6d-zeit   „Zeit seit dem Start: 12 min“ (laeuft mit dem Zeiger in
+//               ganzen Minuten bis 36 min)
+//   _k6d-a      „Bus A hält bei (min): 4, 8, 12, 16, 20, 24, 28, 32, 36“
+//   _k6d-b      „Bus B hält bei (min): 6, 12, 18, 24, 30, 36“
+//               (beide Listen wachsen mit den Marken; vor dem ersten Halt
+//               „Bus A hält bei (min): …“ – der Bauplan nennt keinen
+//               Starttext, „…“ wie in m5-zeit und m5-teilen-schriftlich)
+//   Eine Zeile mit gemeinsamen Halten gibt es NICHT.
+//   _k6d-lehrkraft  Hinweis fuer die Lehrkraft (siehe unten)
+//
+// WERTE (Ende der Fahrt, nachgerechnet mit simcheck/werte.js; die gleichen
+// Minuten nur zum Nachpruefen – angezeigt werden sie nicht):
+//   2 und 3 → A 2, 4, … 36 (18 Halte) · B 3, 6, … 36 (12) · gleich 6, 12, 18, 24, 30, 36
+//   4 und 6 → A 4 … 36 (9) · B 6 … 36 (6) · gleich 12, 24, 36
+//   3 und 5 → A 3 … 36 (12) · B 5 … 35 (7) · gleich 15, 30
+//   4 und 8 → A 4 … 36 (9) · B 8 … 32 (4) · gleich 8, 16, 24, 32
+//   In Minute 10 haelt bei „4 min und 6 min“ kein Bus (keine Marke, keine Zahl).
+// START (auch nach „neu“): Takte 4 min und 6 min – die Busse aus ① des Hefts
+//   („Bus A kommt alle 4 min, Bus B alle 6 min. Gerade halten beide
+//   zusammen.“) –, beide Busse bei 0 min, noch keine Fahrt. Der Bauplan nennt
+//   keinen Starttakt; „A/B: ± 1 min“ braucht aber einen Ausgangswert.
+//   Unter der Leinwand: „Start: Beide Busse stehen bei 0 min.“
+//
+// AHA (_bioFxWelle, ruhig, OHNE Textstreifen): bei „4 min und 6 min“ in
+// Minute 12 – der Lichtring um beide Marken ist groesser (34 statt 22 px),
+// und beide Marken leuchten 2,6 s nach (Tarek erwartet erst 24 min). Gilt fuer
+// die Takte 4 und 6, gleich ueber welchen Knopf sie eingestellt sind.
+//
+// FUER DIE LEHRKRAFT (Bauart wie m5-zeit / m5-teilen-schriftlich, Container
+// <div class="fpm-lehrkraft">, den simfakten.js ueberspringt). Eigene Zeile
+// UNTER den Heftknoepfen, davor klein „Für die Lehrkraft:“:
+//   „Pause“ ↔ „weiter“ (_k6dAnhalten()): friert jede Bewegung sofort ein;
+//     Schild „Pause“ oben links (Stelle und Aussehen wie in m5-zeit).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_k6dTempo()): ein Drittel so schnell.
+//   „Halt bei gleicher Zeit: aus“ ↔ „… an“ (_k6dHaltSchalter()): haelt VON
+//     SELBST an jeder Minute an, in der beide Busse halten (ein Ereignis im
+//     Drehbuch: die Ablaufzeit steht im Stillstand dieser Minute, sobald die
+//     Marken ganz da sind). Beide Marken dick orange umringt, oben das Schild
+//     „Beide Busse halten bei 12 min.“; Hinweiszeile „Halt: Beide Busse
+//     halten bei 12 min. Erkläre, was gerade passiert. Dann „weiter“. …“.
+//   Hinweiszeile _k6d-lehrkraft (in der Pause bernsteinfarben, „lmp-status
+//     off“) nennt IMMER die Einstellung („… Tempo: normal, Halt: aus.“):
+//     sonst    „Für die Lehrkraft: „Pause“ hält alles an. Tempo: …, Halt: ….“
+//     Pause    „Angehalten. Erkläre, was gerade passiert. Dann „weiter“. …“
+//   EIN Zeitfaktor (0 Pause, 1/3 langsam, 1 normal) an der einen Stelle, an der
+//   dt in _k6dUpdate hineingeht. Voreinstellung: Pause aus, Tempo normal,
+//   Halt aus. Nur das wechselnde Wort der Aufschrift steht in einem <span>.
+//
+// NICHT AM BILDSCHIRM (Bauplan): „Vielfaches“, „gemeinsam“, „kgV“,
+// „kleinste“, „Treffen“, eine Liste der gemeinsamen Halte, „4 · 6“, die
+// Regel als Satz. Keine Namen, keine Punkte, keine Zeitmessung (die Uhr ist
+// Material), kein Urteil. „Bus A“/„Bus B“ sind Spurnamen, keine Liniennummern.
+// ════════════════════════════════════════════════════════════════════════
+let _k6d = null;
+const _k6dMARKEN = { '2-3': [2, 3], '4-6': [4, 6], '3-5': [3, 5], '4-8': [4, 8] };   // [Takt A, Takt B] in min
+const _k6dREIHE = ['2-3', '4-6', '3-5', '4-8'];
+const _k6dSTART = [4, 6];
+const _k6dNB = ' ';                 // geschuetztes Leerzeichen zwischen Zahl und „min“
+const _k6dK = {
+  M1: 36,                                // der Strahl reicht bis 36 min
+  X0: 66, X1: 396, LY: 208,              // 0 min bei X0, 36 min bei X1; Strahl bei LY
+  YA: 80, YB: 160,                       // Strassen der Spuren (die Raeder stehen darauf)
+  SA: [38, 114], SB: [118, 194],         // getoente Streifen der Spuren (y von, bis)
+  ZY0: 40,                               // oberes Ende des Zeitzeigers
+  TAKT_MIN: 1, TAKT_MAX: 10,
+  // Zeiten in s
+  T_VOR: 0.35, S_MIN: 0.15, T_STEH: 0.5, T_STEH_SUMME: 3.0, T_RAST: 0.12,
+  T_POP: 0.3, T_AHA: 2.6, T_WACKEL: 0.45, LANGSAM: 1 / 3,
+  // Farben: Bus A blau, Bus B orange (Text dunkler, Kontrast auf Weiss > 4,5:1)
+  A: { k: '#3b82f6', r: '#1e40af', f: '#dbeafe', s: '#1d4ed8', t: '#1d4ed8', grund: '#eff6ff', rand: '#bfdbfe' },
+  B: { k: '#fb923c', r: '#c2410c', f: '#ffedd5', s: '#ea580c', t: '#c2410c', grund: '#fff7ed', rand: '#fed7aa' },
+  TINTE: '#0f172a', ZEIGER: '#334155', STRASSE: '#cbd5e1', ORANGE: '#ea580c'
+};
+
+// ── Drehbuch ────────────────────────────────────────────────────────────
+// Halte k, 2k, … bis 36; die Minuten, in denen beide halten; die Abschnitte
+// des Zeitzeigers (laufen / stehen) mit Zeitpunkten. start = nur hinstellen.
+function _k6dPlan(a, b, start) {
+  const K = _k6dK, halteA = [], halteB = [];
+  for (let m = a; m <= K.M1; m += a) halteA.push(m);
+  for (let m = b; m <= K.M1; m += b) halteB.push(m);
+  const P = { a, b, start: !!start, halteA, halteB, gleich: [], steh: 0, ab: [], an: {},
+              ende: K.T_VOR, aha: null };
+  if (start) return P;
+  P.gleich = halteA.filter(m => m % b === 0);
+  P.steh = P.gleich.length ? Math.min(K.T_STEH, K.T_STEH_SUMME / P.gleich.length) : 0;
+  let t = K.T_VOR, m = 0;
+  const lauf = bis => {
+    if (bis <= m) return;
+    P.ab.push({ t0: t, t1: t + (bis - m) * K.S_MIN, m0: m, m1: bis });
+    t += (bis - m) * K.S_MIN; m = bis;
+  };
+  for (const g of P.gleich) {
+    lauf(g);
+    P.an[g] = t;                                        // hier kommt der Zeiger an
+    P.ab.push({ t0: t, t1: t + P.steh, m0: g, m1: g }); // alles steht still
+    t += P.steh;
+  }
+  lauf(K.M1);
+  P.ende = t;
+  if ((a === 4 && b === 6) || (a === 6 && b === 4)) P.aha = P.gleich[0];   // Minute 12
+  return P;
+}
+// Wo steht der Zeitzeiger (Minuten, nicht gerundet) zur Ablaufzeit at?
+function _k6dMin(P, at) {
+  if (P.start || at <= _k6dK.T_VOR) return 0;
+  for (const s of P.ab) if (at < s.t1) return s.m0 + (s.m1 - s.m0) * (at - s.t0) / (s.t1 - s.t0);
+  return _k6dK.M1;
+}
+// Wann erreicht der Zeiger die Minute s? (fuer das Federn der Marke)
+function _k6dZeitBei(P, s) {
+  for (const sec of P.ab)
+    if (sec.m1 > sec.m0 && s >= sec.m0 && s <= sec.m1) return sec.t0 + (s - sec.m0) * _k6dK.S_MIN;
+  return P.ende;
+}
+// Ein Bus mit Takt k bei Zeigerstand m: auf welcher Minute steht er, wie hoch
+// ist er gerade im Sprung? Er steht kurz auf seinem Halt, springt dann im
+// Bogen und landet, wenn der Zeiger den naechsten Halt erreicht.
+function _k6dSprungHoehe(k) {
+  const K = _k6dK, px = k * (K.X1 - K.X0) / K.M1;
+  return Math.max(5, Math.min(12, px * 0.3));
+}
+function _k6dBus(k, m) {
+  const K = _k6dK, letzte = Math.floor(K.M1 / k) * k;
+  if (m >= letzte) return { min: letzte, hoch: 0 };
+  const vor = Math.floor(m / k + 1e-9) * k, frac = (m - vor) / k;
+  const rast = Math.min(0.3, K.T_RAST / (K.S_MIN * k));
+  if (frac <= rast) return { min: vor, hoch: 0 };
+  const u = (frac - rast) / (1 - rast);
+  return { min: vor + k * _bioFxEase.sanft(u), hoch: _k6dSprungHoehe(k) * Math.sin(Math.PI * u) };
+}
+function _k6dX(min) { const K = _k6dK; return K.X0 + min * (K.X1 - K.X0) / K.M1; }
+
+// ── Zustand ─────────────────────────────────────────────────────────────
+function _k6dInit() {
+  const K = _k6dK;
+  _k6d = { t: 0, at: K.T_VOR, P: _k6dPlan(_k6dSTART[0], _k6dSTART[1], true),
+           vonA: 0, vonB: 0, alt: null, fx: { teile: [] }, sig: '',
+           wackel: { A: 0, B: 0 },
+           pause: false, langsam: false, haltAn: false, haltInfo: null };   // Lehrkraft
+}
+// Neu laden (Sprungmarke, ± 1 min, „neu“): die Busse huepfen von da, wo sie
+// gerade sind, zurueck auf 0 min; die alten Marken blenden waehrend des
+// Vorlaufs aus. Hebt die Pause auf, Tempo und Halt bleiben.
+function _k6dLaden(a, b, start) {
+  const z = _k6d, alt = z.P, m = _k6dMin(alt, z.at);
+  z.vonA = _k6dLage(z, 'A').min; z.vonB = _k6dLage(z, 'B').min;
+  if (m > 0) z.alt = { P: alt, m };
+  else if (!(z.alt && z.at < _k6dK.T_VOR)) z.alt = null;   // mitten im Ausblenden: weiter ausblenden
+  z.P = _k6dPlan(a, b, start);
+  z.at = 0;
+  z.fx.teile.length = 0;
+  z.pause = false; z.haltInfo = null;
+}
+// Wo ein Bus gerade steht (im Vorlauf: Rueckweg auf 0 min).
+function _k6dLage(z, wer) {
+  const K = _k6dK, P = z.P, k = wer === 'A' ? P.a : P.b;
+  if (z.at < K.T_VOR) {
+    const von = wer === 'A' ? z.vonA : z.vonB, u = _bioFxKlemme(z.at / K.T_VOR);
+    const h = von > 0 ? Math.max(6, Math.min(16, von * 0.6)) : 0;
+    return { min: von * (1 - _bioFxEase.sanft(u)), hoch: h * Math.sin(Math.PI * u) };
+  }
+  return _k6dBus(k, _k6dMin(P, z.at));
+}
+
+function _k6dHTML() {
+  const marke = key => {
+    const [a, b] = _k6dMARKEN[key];
+    return `<button class="sim-btn" id="_k6d-b-${key}" onclick="_k6dMarke('${key}')">${a}&nbsp;min und ${b}&nbsp;min</button>`;
+  };
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Nach wie vielen Minuten halten beide wieder zusammen?</h3>
+    <div class="fpm-note" style="margin-top:2px">Beide Busse fahren bei 0&nbsp;min los. Jeder springt immer gleich weit.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_k6d-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6dREIHE.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_k6dA(-1)">A:&nbsp;−&nbsp;1&nbsp;min</button>
+          <button class="sim-btn" onclick="_k6dA(1)">A:&nbsp;+&nbsp;1&nbsp;min</button>
+          <button class="sim-btn" onclick="_k6dB(-1)">B:&nbsp;−&nbsp;1&nbsp;min</button>
+          <button class="sim-btn" onclick="_k6dB(1)">B:&nbsp;+&nbsp;1&nbsp;min</button>
+          <button class="sim-btn" onclick="_k6dNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_k6d-pause" onclick="_k6dAnhalten()">Pause</button>
+            <button class="sim-btn" id="_k6d-tempo" onclick="_k6dTempo()">Tempo: <span id="_k6d-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_k6d-halt" onclick="_k6dHaltSchalter()">Halt bei gleicher Zeit: <span id="_k6d-halt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_k6d-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_k6d-takte" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6d-zeit" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6d-a" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6d-b" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Beide Busse stehen bei 0&nbsp;min.</p>
+  </div>`;
+}
+
+// Was die Anzeige gerade sagt – sie folgt dem Zeiger (die Zahl kommt mit der Marke).
+function _k6dTexte() {
+  const z = _k6d, K = _k6dK, P = z.P, m = _k6dMin(P, z.at), NB = _k6dNB;
+  const f = (s, farbe) => '<b style="color:' + farbe + '">' + s + '</b>';
+  const liste = (h, farbe) => {
+    const l = h.filter(s => s <= m + 1e-6);
+    return l.length ? f(l.join(', '), farbe) : '…';
+  };
+  return {
+    takte: f('Bus A', K.A.t) + ' alle ' + f(P.a + NB + 'min', K.A.t) + ', ' +
+           f('Bus B', K.B.t) + ' alle ' + f(P.b + NB + 'min', K.B.t),
+    zeit: 'Zeit seit dem Start: ' + Math.floor(m + 1e-6) + NB + 'min',
+    a: f('Bus A', K.A.t) + ' hält bei (min): ' + liste(P.halteA, K.A.t),
+    b: f('Bus B', K.B.t) + ' hält bei (min): ' + liste(P.halteB, K.B.t)
+  };
+}
+function _k6dHinweis() {
+  const z = _k6d, h = z.haltInfo;
+  const kopf = h ? 'Halt: Beide Busse halten bei ' + h.g + _k6dNB + 'min. Erkläre, was gerade passiert. Dann „weiter“.'
+    : z.pause ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an.';
+  return kopf + ' Tempo: ' + (z.langsam ? 'langsam' : 'normal') + ', Halt: ' + (z.haltAn ? 'an' : 'aus') + '.';
+}
+function _k6dSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Schreibt die Anzeige, wenn sich etwas geaendert hat (immer = true: auf jeden Fall).
+function _k6dStatus(immer) {
+  if (!_k6d) return;
+  const z = _k6d, T = _k6dTexte(), H = _k6dHinweis();
+  const sig = JSON.stringify(T) + '|' + H + '|' + z.pause;
+  if (!immer && sig === z.sig) return;
+  z.sig = sig;
+  for (const id of ['takte', 'zeit', 'a', 'b']) _k6dSetze('_k6d-' + id, T[id]);
+  for (const key of _k6dREIHE) {
+    const b = document.getElementById('_k6d-b-' + key), [ma, mb] = _k6dMARKEN[key];
+    if (b && b.classList) b.classList.toggle('primary', ma === z.P.a && mb === z.P.b);
+  }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _k6dSetze('_k6d-pause', z.pause ? 'weiter' : 'Pause');
+  _k6dSetze('_k6d-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _k6dSetze('_k6d-halt-an', z.haltAn ? 'an' : 'aus');
+  const hz = _k6dSetze('_k6d-lehrkraft', H);
+  if (hz) hz.className = 'lmp-status ' + (z.pause ? 'off' : 'on');
+  for (const [id, an] of [['_k6d-pause', z.pause], ['_k6d-halt', z.haltAn], ['_k6d-tempo', z.langsam]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Sprungmarke: Takte setzen und die Fahrt bis 36 min abspielen.
+function _k6dMarke(key) {
+  if (!_k6d || !_k6dMARKEN[key]) return;
+  const [a, b] = _k6dMARKEN[key];
+  _k6dLaden(a, b, false);
+  _k6dStatus(true);
+}
+// „A: ± 1 min“ / „B: ± 1 min“: Takt 1 bis 10 min, spielt neu ab; am Rand wackelt die Spur.
+function _k6dTakt(wer, d) {
+  if (!_k6d || (d !== 1 && d !== -1)) return;
+  const z = _k6d, K = _k6dK, P = z.P;
+  const a = wer === 'A' ? P.a + d : P.a, b = wer === 'B' ? P.b + d : P.b, neu = wer === 'A' ? a : b;
+  if (neu < K.TAKT_MIN || neu > K.TAKT_MAX) { z.wackel[wer] = K.T_WACKEL; return; }
+  _k6dLaden(a, b, false);
+  _k6dStatus(true);
+}
+function _k6dA(d) { _k6dTakt('A', d); }
+function _k6dB(d) { _k6dTakt('B', d); }
+// „neu“: der Start – Takte 4 min und 6 min, beide Busse bei 0 min, keine Fahrt.
+function _k6dNeu() {
+  if (!_k6d) return;
+  _k6dLaden(_k6dSTART[0], _k6dSTART[1], true);
+  _k6dStatus(true);
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _k6dAnhalten() {
+  if (!_k6d) return;
+  _k6d.pause = !_k6d.pause;
+  _k6d.haltInfo = null;                  // „weiter“ nach einem Halt: die Fahrt geht weiter
+  _k6dStatus(true);
+}
+function _k6dTempo() {
+  if (!_k6d) return;
+  _k6d.langsam = !_k6d.langsam;
+  _k6dStatus(true);
+}
+function _k6dHaltSchalter() {
+  if (!_k6d) return;
+  _k6d.haltAn = !_k6d.haltAn;            // gilt ab der naechsten gleichen Minute
+  _k6dStatus(true);
+}
+// DER Zeitfaktor: 0 in der Pause, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _k6dZeitfaktor(z) { return z.pause ? 0 : z.langsam ? _k6dK.LANGSAM : 1; }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _k6dUpdate(dt) {
+  if (!_k6d) return;
+  const z = _k6d, K = _k6dK, P = z.P;
+  const roh = _bioFxDt(dt);
+  for (const w of ['A', 'B']) z.wackel[w] = Math.max(0, z.wackel[w] - roh);   // Wackeln in echter Zeit
+  dt = roh * _k6dZeitfaktor(z);                        // ab hier Sim-Zeit
+  if (dt > 0) {
+    z.t += dt;
+    let neu = z.at + dt, halt = null;
+    // Halt bei gleicher Zeit (Lehrkraft): ein Ereignis im Drehbuch – die
+    // Ablaufzeit bleibt genau auf der Minute stehen, bis „weiter“.
+    // Gehalten wird, wenn die Marken ganz da sind (nach dem Federn, noch im
+    // Stillstand dieser Minute) – sonst stuende der Halt auf einem winzigen Punkt.
+    if (z.haltAn && !P.start) {
+      for (const g of P.gleich) {
+        const th = P.an[g] + Math.min(K.T_POP, P.steh);
+        if (z.at < th && neu >= th) { neu = th; halt = g; break; }
+      }
+    }
+    // Lichtring um beide Marken, sobald der Zeiger eine gleiche Minute erreicht
+    for (const g of P.gleich) {
+      const tg = P.an[g];
+      if (!(z.at < tg && neu >= tg)) continue;
+      const r = g === P.aha ? 34 : 22;
+      _bioFxWelle(z.fx.teile, _k6dX(g), K.YA, '#f59e0b', r);
+      _bioFxWelle(z.fx.teile, _k6dX(g), K.YB, '#f59e0b', r);
+    }
+    z.at = neu;
+    if (halt !== null) { z.pause = true; z.haltInfo = { g: halt }; }
+  }
+  _bioFxUpdate(z.fx.teile, dt);
+  _k6dStatus(false);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _k6dText(ctx, s, x, y, groesse, farbe, ausr, gew) {
+  ctx.fillStyle = farbe || _k6dK.TINTE;
+  ctx.font = (gew || '700') + ' ' + groesse + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _k6dWackel(z, wer) {
+  const w = z.wackel[wer];
+  return w > 0 ? Math.sin(w * 50) * 3 * (w / _k6dK.T_WACKEL) : 0;
+}
+// Getoenter Streifen einer Spur mit Namen und Strasse.
+function _k6dSpur(ctx, wer) {
+  const z = _k6d, K = _k6dK, F = K[wer], [y0, y1] = wer === 'A' ? K.SA : K.SB, Y = wer === 'A' ? K.YA : K.YB;
+  ctx.save();
+  ctx.fillStyle = F.grund; ctx.strokeStyle = F.rand; ctx.lineWidth = 1;
+  _bioFxRundRect(ctx, 4, y0, 412, y1 - y0, 8); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = K.STRASSE; ctx.lineWidth = 2.2; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.X0 - 6, Y); ctx.lineTo(K.X1 + 8, Y); ctx.stroke();
+  _k6dText(ctx, 'Bus ' + wer, 10 + _k6dWackel(z, wer), Y - 6, 13, F.t, 'left', '800');
+  ctx.restore();
+}
+// Marken einer Spur: Punkt auf der Strasse, Minutenzahl darunter (bei 1 min
+// abwechselnd in zwei Zeilen). a = Deckkraft (alte Marken blenden aus).
+function _k6dMarken(ctx, P, wer, m, a, mitFedern) {
+  if (a <= 0.01) return;
+  const z = _k6d, K = _k6dK, F = K[wer], Y = wer === 'A' ? K.YA : K.YB;
+  const h = wer === 'A' ? P.halteA : P.halteB, k = wer === 'A' ? P.a : P.b;
+  const zweiZeilen = k * (K.X1 - K.X0) / K.M1 < 15;
+  ctx.save();
+  h.forEach((s, i) => {
+    if (s > m + 1e-6) return;
+    const x = _k6dX(s);
+    let sc = 1;
+    if (mitFedern && !(z.haltInfo && z.haltInfo.g === s)) {
+      const seit = z.at - _k6dZeitBei(P, s);
+      if (seit < K.T_POP) sc = Math.max(0.2, _bioFxEase.federn(_bioFxKlemme(seit / K.T_POP)));
+    }
+    ctx.globalAlpha = a;
+    ctx.fillStyle = F.k; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(x, Y, 4.6 * sc, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.globalAlpha = a * Math.min(1, sc);
+    // weisser Rand: der Zeitzeiger laeuft hinter der Zahl durch, nicht durch sie
+    const y = Y + (zweiZeilen && i % 2 ? 28 : 16);
+    ctx.font = '700 11px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    ctx.lineJoin = 'round'; ctx.lineWidth = 3; ctx.strokeStyle = F.grund;
+    ctx.strokeText(String(s), x, y);
+    _k6dText(ctx, String(s), x, y, 11, F.t, 'center', '700');
+  });
+  ctx.restore();
+}
+// Leuchten um beide Marken einer gleichen Minute (kurz beim Stillstand, beim Aha 2,6 s).
+function _k6dGlanz(ctx) {
+  const z = _k6d, K = _k6dK, P = z.P;
+  if (P.start) return;
+  for (const g of P.gleich) {
+    const seit = z.at - P.an[g], dauer = g === P.aha ? K.T_AHA : P.steh + 0.35;
+    if (seit < 0 || seit >= dauer) continue;
+    const a = Math.min(1, (dauer - seit) / 0.35);
+    ctx.save(); ctx.globalAlpha = a;
+    _bioFxLeuchten(ctx, _k6dX(g), K.YA, g === P.aha ? 10 : 8, z.t, '245,158,11');
+    _bioFxLeuchten(ctx, _k6dX(g), K.YB, g === P.aha ? 10 : 8, z.t, '245,158,11');
+    ctx.restore();
+  }
+}
+// Kleiner Bus von der Seite, Front rechts; y = Strasse (die Raeder stehen darauf).
+// Das Dreieck zwischen den Raedern zeigt auf die Minute.
+function _k6dBusBild(ctx, x, y, hoch, F) {
+  ctx.save();
+  // Schatten auf der Strasse (kleiner, je hoeher der Bus springt)
+  ctx.fillStyle = 'rgba(15,23,42,' + (0.16 * (1 - Math.min(1, hoch / 16))).toFixed(3) + ')';
+  ctx.beginPath(); ctx.ellipse(x, y + 1, 14 - hoch * 0.3, 2.2, 0, 0, Math.PI * 2); ctx.fill();
+  const yb = y - hoch;
+  ctx.fillStyle = F.k; ctx.strokeStyle = F.r; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x - 15, yb - 19, 30, 14, 3.5); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = F.f;
+  for (const dx of [-12.5, -7, -1.5]) ctx.fillRect(x + dx, yb - 17, 4.3, 4.6);
+  _bioFxRundRect(ctx, x + 4.5, yb - 17, 8.5, 6, 1.5); ctx.fill();          // Frontscheibe
+  ctx.fillStyle = F.s; ctx.fillRect(x - 15, yb - 10.6, 30, 1.6);           // Zierstreifen
+  ctx.fillStyle = '#fef9c3';
+  ctx.beginPath(); ctx.arc(x + 13.2, yb - 7.6, 1.3, 0, Math.PI * 2); ctx.fill();   // Scheinwerfer
+  for (const dx of [-8.5, 8.5]) {
+    ctx.fillStyle = '#1f2937';
+    ctx.beginPath(); ctx.arc(x + dx, yb - 3.6, 3.6, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#e5e7eb';
+    ctx.beginPath(); ctx.arc(x + dx, yb - 3.6, 1.3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.fillStyle = F.r;
+  ctx.beginPath(); ctx.moveTo(x - 3, yb - 5); ctx.lineTo(x + 3, yb - 5); ctx.lineTo(x, yb - 0.8);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Zeitstrahl 0–36 min: Pfeil, Strich je Minute, Zahl je 6 min, Achsentitel.
+function _k6dStrahl(ctx) {
+  const K = _k6dK, Y = K.LY;
+  ctx.save();
+  ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(K.X0 - 8, Y); ctx.lineTo(K.X1 + 9, Y); ctx.stroke();
+  ctx.fillStyle = '#1e293b';
+  ctx.beginPath(); ctx.moveTo(K.X1 + 18, Y); ctx.lineTo(K.X1 + 8, Y - 5.5); ctx.lineTo(K.X1 + 8, Y + 5.5);
+  ctx.closePath(); ctx.fill();
+  ctx.lineCap = 'butt';
+  for (let m = 0; m <= K.M1; m++) {
+    const x = _k6dX(m), sechs = m % 6 === 0;
+    ctx.strokeStyle = sechs ? '#0f172a' : '#64748b'; ctx.lineWidth = sechs ? 2 : 1;
+    ctx.beginPath(); ctx.moveTo(x, Y + 1); ctx.lineTo(x, Y + (sechs ? 9 : 5)); ctx.stroke();
+    if (sechs) _k6dText(ctx, String(m), x, Y + 21, 12, '#0f172a', 'center', '700');
+  }
+  _k6dText(ctx, 'Zeit in min', K.X1 + 18, Y + 37, 12, '#334155', 'right', '700');
+  ctx.restore();
+}
+// Gestrichelter Zeitzeiger mit Dreieck auf dem Strahl.
+function _k6dZeiger(ctx, m) {
+  const K = _k6dK, x = _k6dX(m);
+  ctx.save();
+  ctx.strokeStyle = K.ZEIGER; ctx.lineWidth = 1.6; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(x, K.ZY0); ctx.lineTo(x, K.LY - 9); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = K.ZEIGER;
+  ctx.beginPath(); ctx.moveTo(x - 5, K.LY - 10); ctx.lineTo(x + 5, K.LY - 10); ctx.lineTo(x, K.LY - 1.5);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+// Fuer die Lehrkraft beim Halt: beide Marken dick orange umringt (der Ring
+// endet ueber der Minutenzahl; die Verbindung zeigt schon der Zeitzeiger),
+// oben das Schild „Beide Busse halten bei 12 min.“
+function _k6dHaltBild(ctx) {
+  const z = _k6d, K = _k6dK, h = z.haltInfo;
+  if (!h) return;
+  const x = _k6dX(h.g), text = 'Beide Busse halten bei ' + h.g + ' min.';
+  ctx.save();
+  ctx.strokeStyle = K.ORANGE; ctx.lineWidth = 2.6;
+  for (const Y of [K.YA, K.YB]) { ctx.beginPath(); ctx.arc(x, Y, 7, 0, Math.PI * 2); ctx.stroke(); }
+  ctx.font = '700 13px sans-serif';
+  const w = ctx.measureText(text).width + 20, hh = 25, bx = 80, by = 8;
+  ctx.fillStyle = '#fff7ed'; ctx.strokeStyle = K.ORANGE; ctx.lineWidth = 2.2;
+  _bioFxRundRect(ctx, bx, by, w, hh, 8); ctx.fill(); ctx.stroke();
+  _k6dText(ctx, text, bx + w / 2, by + hh / 2 + 4.6, 13, '#9a3412');
+  ctx.restore();
+}
+// Schild „Pause“ oben links – Stelle, Groesse und Farbe wie in m5-zeit.
+function _k6dPauseSchild(ctx) {
+  const w = 64, h = 25, x = 8, y = 8;
+  ctx.save();
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _k6dText(ctx, 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+function _k6dDraw(ctx, cv) {
+  if (!_k6d) return;
+  const z = _k6d, K = _k6dK, P = z.P, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  const m = _k6dMin(P, z.at);
+  _k6dSpur(ctx, 'A');
+  _k6dSpur(ctx, 'B');
+  _k6dZeiger(ctx, m);
+  // alte Marken (vorige Fahrt) blenden im Vorlauf aus
+  if (z.alt && z.at < K.T_VOR) {
+    const a = 1 - _bioFxKlemme(z.at / K.T_VOR);
+    _k6dMarken(ctx, z.alt.P, 'A', z.alt.m, a, false);
+    _k6dMarken(ctx, z.alt.P, 'B', z.alt.m, a, false);
+  }
+  // Leuchten und Lichtringe HINTER Marken und Bussen: der Ring waechst unter
+  // dem stehenden Bus hervor, Bus und Minutenzahl bleiben lesbar.
+  _k6dGlanz(ctx);
+  _bioFxDraw(ctx, z.fx.teile);
+  _k6dMarken(ctx, P, 'A', m, 1, true);
+  _k6dMarken(ctx, P, 'B', m, 1, true);
+  for (const wer of ['A', 'B']) {
+    const L = _k6dLage(z, wer);
+    _k6dBusBild(ctx, _k6dX(L.min) + _k6dWackel(z, wer), wer === 'A' ? K.YA : K.YB, L.hoch, K[wer]);
+  }
+  _k6dStrahl(ctx);
+  _k6dHaltBild(ctx);
+  if (z.pause) _k6dPauseSchild(ctx);
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 6 FOERDER – mt5 „Wie lang können die Stücke höchstens sein?“
+// (Kennung m6-gemeinsame-teiler, Praefix _k6e)
+// Bauplan: arbeitsheft_mathe_foe6/KAPITEL1_PROFIL.md, Abschnitt
+// m6-gemeinsame-teiler (Einheit mt5; Regeln N1–N3, Lehrkraft-Zeile, nur
+// onclick-Knoepfe). Ueberschrift = Frage der Einheit:
+// „Wie lang können die Stücke höchstens sein?“
+//
+// Was man sieht – ein Blatt Karopapier wie eine Schneidematte (1 Kaestchen =
+// 16 px = 1 m, die senkrechten Karolinien stehen genau auf den Metern):
+//   ZWEI BAENDER, links an einer dunklen Startlinie (0 m): oben das
+//     12-m-Band (rot), darunter das 18-m-Band (blau). Ueber jedem Band sein
+//     Name in seiner Farbe („12-m-Band“, „18-m-Band“ – woertlich wie die
+//     Spalten der Heft-Tabelle). Geschnittene Stuecke wechseln leicht im
+//     Farbton (dunkel/hell), zwischen zwei Stuecken klafft eine kleine
+//     Luecke; auf jedem Stueck steht seine Laenge („4 m“, weiss), wenn sie
+//     hineinpasst (bei 1-m-Stuecken nicht).
+//   REST (wenn am Ende ein Stueck kuerzer als die Stuecklaenge bleibt): das
+//     Stueck wird orange, darauf seine Laenge („2 m“, dunkel); rechts daran
+//     ein gestrichelter oranger Umriss bis zur vollen Stuecklaenge – das, was
+//     fehlt. Er darf ueber das Bandende und ueber 18 m hinausgehen (bei 12 m
+//     und dem 18-m-Band bis 24 m); weiter als bis zum Papierrand wird er nicht
+//     gezeichnet (nur freie Laengen 13–17 m beim 18-m-Band: dort laeuft er
+//     offen aus dem Bild).
+//   SCHERE (klein): beim Schneiden steht sie unter dem Band, Griffe nach
+//     unten, die Klingen kreuzen das Band. Ist ein Band fertig, legt sie sich
+//     darunter hin (Klingen nach rechts, geschlossen) – so verdeckt sie nie
+//     ein Stueck, eine Laenge oder den Umriss. Am Start liegt sie unter dem
+//     Anfang des 12-m-Bands.
+//   MASSBAND (gelb) 0–18 m unter den Baendern, Strich und Zahl je Meter,
+//     bei 0, 5, 10, 15 laengere Striche und fette Zahlen (Fuenferstruktur),
+//     rechts hinter dem Ende auf Bandhoehe der Achsentitel „Länge in m“
+//     (Nachtrag 09.10.: Achsen immer beschriftet).
+//   ZETTEL „Kurz“ unten: je Band eine Zeile in Bandfarbe, z. B.
+//     „12 m : 4 m = 3“ und „18 m : 4 m = 4 Rest 2 m“ (Rest orange wie das
+//     Reststueck). Die Zeile erscheint, wenn das Band zu schneiden beginnt
+//     („18 m : 4 m = …“), das Ergebnis federt herein, wenn das Band fertig ist.
+//   Farbe verbindet Bild und Zeichen: rot = 12-m-Band, blau = 18-m-Band,
+//   orange = Rest – im Bild, auf dem Zettel und in den Statuszeilen gleich.
+//
+// Bewegung (jede Sprungmarke spielt ihre Tabellenzeile SELBST ab, N1). Alles
+// ist eine Funktion der Ablaufzeit L.at: _k6ePlan baut das Drehbuch EINMAL
+// (Wege der Schere, Schnitte, Statuszeilen als Ereignisse, Halt, Aha),
+// _k6eDraw liest es ab. Keine Zufallszahl; jede Zahl kommt aus _k6eRechne.
+//   Zusammenlegen 0,35 s: die Luecken des alten Laufs schliessen sich, Rest
+//     und Umriss blassen aus, die Baender liegen wieder ganz da; die Schere
+//     gleitet zum Anfang des 12-m-Bands.
+//   Schneiden: die Schere richtet sich auf und faehrt zum ersten Schnitt
+//     (0,4 s), dann zum naechsten Vielfachen der Stuecklaenge (0,25 s) und
+//     schneidet (0,15 s, die Klingen schliessen sich) – 0,4 s je Schnitt. Im Schnitt blitzt eine weisse Linie, die Luecke oeffnet sich,
+//     das abgeschnittene Stueck hebt sich kurz (rueckt ab) und bekommt seine
+//     Laenge aufgedruckt. Endet ein Stueck genau am Bandende, schneidet die
+//     Schere dort ein letztes Mal.
+//   Rest: die Schere faehrt ans Bandende (0,25 s) und legt sich hin (0,3 s);
+//     gleichzeitig hebt sich das Reststueck, Orange schiebt sich von links
+//     darueber (0,3 s), dann waechst der gestrichelte Umriss bis zur vollen
+//     Stuecklaenge (0,4 s). Ohne Rest legt sie sich nach dem letzten Schnitt hin.
+//   Dann erscheint die Zeile auf dem Zettel (0,35 s); die Schere wechselt
+//     zum 18-m-Band, richtet sich dabei auf und faehrt gleich zum ersten
+//     Schnitt (0,5 s), dann schneidet sie es genauso.
+//   Dauer (gemessen, je mit Zusammenlegen): „3 m“ 5,7 s · „4 m“ 5,45 s ·
+//   „6 m“ 3,7 s · „12 m“ 3,45 s; „1 m“ als laengster Fall 13,7 s (857 Frames).
+//   „neu“: Zusammenlegen, dann der Start.
+// Wer waehrend einer Bewegung einen Knopf drueckt, laesst sie sofort
+// ankommen: Zusammengelegt wird vom ENDstand des laufenden Schnitts aus,
+// dann beginnt das Neue. Jede Knopffolge ergibt so dieselben Zahlen.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_k6eMarke(3|4|6|12)):
+//     „3 m“ · „4 m“ · „6 m“ · „12 m“. Der Knopf der Stuecklaenge, die gerade
+//     geschnitten wird oder liegt, ist hervorgehoben.
+//   Reihe 2: „− 1 m“ · „+ 1 m“ (_k6eSchritt(-1|1), Stuecklaenge 1–18 m,
+//     schneidet neu) · „neu“ (_k6eNeu()).
+//   Grenzen: unter 1 m bzw. ueber 18 m wackelt die Schere, und _k6e-grenze
+//     sagt „Kürzer als 1 m schneidet die Schere nicht.“ bzw. „Mehr als 18 m
+//     hat keines der Bänder.“ Am Start (noch keine Laenge) nimmt „+ 1 m“ die
+//     Laenge 1 m; „− 1 m“ wackelt: „Noch keine Stücklänge gewählt.“ Die
+//     Zeile bleibt bis zur naechsten Handlung, sonst ist sie ausgeblendet.
+//
+// Statuszeilen (woertlich aus dem Bauplan; jede Zeile mit einem Wert, den
+// das Heft verlangt, hat mindestens 19 Zeichen). Sie folgen dem Bild:
+//   _k6e-laenge  „Gewählte Stücklänge: 4 m“ (Start „Gewählte Stücklänge:
+//                noch keine“); wechselt beim Druecken.
+//   _k6e-band1   „12-m-Band: 3 Stücke, Rest 0 m“ (Einzahl „1 Stück“). Vorher
+//                „12-m-Band: noch nicht geschnitten“, beim Schneiden zaehlt
+//                sie mit („12-m-Band: 1 Stück …“, „… 2 Stücke …“).
+//   _k6e-band2   „18-m-Band: 4 Stücke, Rest 2 m“ (ebenso)
+//   _k6e-kurz1   „Kurz: 12 m : 4 m = 3“ (vorher „Kurz: …“, beim Schneiden
+//                „Kurz: 12 m : 4 m = …“)
+//   _k6e-kurz2   „Kurz: 18 m : 4 m = 4 Rest 2 m“ (N3: Groesse durch Groesse
+//                ist eine Anzahl, der Rest ist eine Laenge)
+//   _k6e-grenze  nur an der Grenze (siehe oben)
+//   _k6e-lehrkraft  Hinweis fuer die Lehrkraft (siehe unten, im Container)
+// Zahl und Einheit stehen in einem <span> mit white-space:nowrap – so bricht
+// „2 m“ in der schmalen Anzeige nicht um, und der Text bleibt ein normales
+// Leerzeichen (werte.js und simfakten.js lesen „Rest 2 m“).
+//
+// Werte (alle aus _k6eRechne: k = Stuecke, r = Rest; nachgerechnet mit
+// simcheck/werte.js – Endwerte nach dem Ablauf):
+//   3 m  → 12-m-Band 4 Stücke, Rest 0 m · 18-m-Band 6 Stücke, Rest 0 m
+//          Kurz: 12 m : 3 m = 4 · Kurz: 18 m : 3 m = 6
+//   4 m  → 3, Rest 0 m · 4, Rest 2 m
+//          Kurz: 12 m : 4 m = 3 · Kurz: 18 m : 4 m = 4 Rest 2 m
+//   6 m  → 2, Rest 0 m · 3, Rest 0 m
+//          Kurz: 12 m : 6 m = 2 · Kurz: 18 m : 6 m = 3
+//   12 m → 1 Stück, Rest 0 m · 1 Stück, Rest 6 m
+//          Kurz: 12 m : 12 m = 1 · Kurz: 18 m : 12 m = 1 Rest 6 m
+//   frei: 2 m → 6, 0 m · 9, 0 m · 5 m → 2, 2 m · 3, 3 m ·
+//         9 m → 1, 3 m · 2, 0 m · 1 m → 12 · 18, je 0 m ·
+//         13 m → 0 Stücke, Rest 12 m · 1 Stück, Rest 5 m
+// Start: zwei Baender, nicht geschnitten, keine Laenge gewaehlt
+// („Start: Zwei Bänder, noch nicht geschnitten“).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen; gilt fuer die Stuecklaenge,
+// gleich ob ueber die Sprungmarke oder ueber „± 1 m“ erreicht):
+//   6 m  – im Augenblick des letzten Schnitts am 18-m-Band: je ein Lichtring
+//          um die beiden letzten Schnitte (bei 12 m und bei 18 m, also an
+//          beiden Bandenden), beide leuchten 1,4 s bernsteinfarben nach.
+//          Beide Baender enden ohne Reststueck – laenger als Lenis 3 m.
+//   12 m – das 6-m-Reststueck des 18-m-Bands wird orange: Lichtring darum
+//          (Radius 50 px, bleibt ueber dem Massband), es leuchtet 1,4 s nach.
+//          Das widerlegt „12 m“.
+//
+// FUER DIE LEHRKRAFT (Container <div class="fpm-lehrkraft">, davor klein
+// „Für die Lehrkraft:“, Reihenfolge wie im Bauplan; Bauart wie
+// m5-teilen-schriftlich):
+//   „Pause“ ↔ „weiter“ (_k6eAnhalten()): friert jede Bewegung sofort ein;
+//     Schild „Pause“ oben RECHTS im Bild (oben links steht der Bandname).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_k6eTempo()): ein Drittel so schnell.
+//   „Halt nach dem ersten Band: aus“ ↔ „… an“ (_k6eHaltSchalter()): haelt VON
+//     SELBST an, wenn das 12-m-Band fertig geschnitten ist und seine Zeile auf
+//     dem Zettel steht – bevor die Schere zum 18-m-Band wechselt. Schild
+//     „Halt“ an der Stelle des Pause-Schilds. Mit „weiter“ geht es weiter.
+//   Hinweiszeile _k6e-lehrkraft (in der Pause bernsteinfarben, „lmp-status
+//   off“) nennt IMMER die Einstellung („… Halt: aus, Tempo: normal.“), so
+//   aendert jeder Lehrkraft-Knopf eine Zeile:
+//     sonst  „Für die Lehrkraft: „Pause“ hält alles an. „Halt nach dem ersten
+//            Band“ stoppt vor dem 18-m-Band. Halt: aus, Tempo: normal.“
+//     Pause  „Angehalten. Erkläre, was gerade passiert. Dann „weiter“. …“
+//     Halt   „Halt: Das 12-m-Band ist geschnitten, das 18-m-Band noch nicht.
+//            Erst vermuten lassen, dann „weiter“. …“
+//   EIN Zeitfaktor (0 angehalten, 1/3 langsam, 1 normal) an der einen Stelle,
+//   an der dt in _k6eUpdate hineingeht. Der Halt ist ein EREIGNIS im Drehbuch
+//   (P.halts): die Ablaufzeit bleibt genau dort stehen. Eine Sprungmarke,
+//   „± 1 m“ und „neu“ heben Pause und Halt auf; „Tempo“ und „Halt“ bleiben
+//   stehen (die Lehrkraft stellt sie einmal fuer die Stunde ein).
+//   ABWEICHUNG: Der Bauplan nennt als Pausen-Aufheber nur Sprungmarke und
+//   „neu“. „± 1 m“ hebt hier ebenfalls auf, weil es wie eine Sprungmarke
+//   NEU schneidet (Bauplan: „schneidet neu“) – vormerken (wie „± 1 Reihe“ in
+//   m5-punktefeld, das nur eine Reihe dazulegt) hiesse: Die Lehrkraft drueckt
+//   „+ 1 m“ und es passiert nichts.
+//   Voreinstellung: Pause aus, Halt aus, Tempo normal.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „Teiler“, „gemeinsamer
+// Teiler“, „ggT“, „größte“, ein Urteil („passt“, „geht“), die Regel als Satz.
+// „höchstens“ steht nur in der Ueberschrift (Frage). Keine Namen, keine
+// Punkte, keine Zeit, kein „falsch“, keine Liste der Laengen ohne Rest.
+//
+// Was ueber den Bauplan hinaus dazukam (alles Bild, keine neue Aussage):
+// Laengen auf den Stuecken, der Zettel „Kurz“ im Bild (wie in m5-rest), die
+// Bandnamen ueber den Baendern, die Startlinie, die Karolinien als Meter-
+// Hilfslinien bis zum Massband.
+// ════════════════════════════════════════════════════════════════════════
+let _k6e = null;
+const _k6eMARKEN = [3, 4, 6, 12];                  // Sprungmarken: Stuecklaenge in m
+const _k6eBAND = [12, 18];                         // Laenge der Baender in m
+const _k6eNAME = ['12-m-Band', '18-m-Band'];
+const _k6eK = {
+  S: 16, X0: 24, KY: 12,                           // 1 m = 16 px = 1 Kaestchen; Startlinie; erste Karozeile
+  BY: [28, 92], BH: 16, LY: [23, 87], LX: 30,      // Baender: Oberkante, Hoehe; Bandnamen (Grundlinie, x)
+  SY: 4, KL: 22, LG: 13,                           // Schere: Drehpunkt 4 px unter dem Band (stehend) bzw.
+                                                   // 13 px darunter (liegend); Klingen 22 px
+  MY: 140, MH: 20,                                 // Massband
+  ZX0: 24, ZX1: 312, ZY0: 168, ZY1: 241,           // Zettel „Kurz“
+  PX0: 4, PX1: 416, PY0: 4, PY1: 246,              // Papier
+  RAND: 411,                                       // weiter rechts wird nichts gezeichnet
+  NMIN: 1, NMAX: 18, LUECKE: 2,                    // Grenzen der Stuecklaenge; halbe Luecke im Schnitt (px)
+  // Zeiten in s
+  T_ZU: 0.35, T_LOS: 0.05, T_AUF: 0.15, T_FAHRT: 0.25, T_SCHNITT: 0.15, T_OFFEN: 0.12, T_HUPF: 0.3,
+  T_HIN: 0.3,
+  T_REST: 0.3, T_UMRISS: 0.4, T_KURZ: 0.35, T_WECHSEL: 0.5, T_SCHLUSS: 0.2,
+  T_AHA: 1.4, T_GLANZ: 0.9, T_POP: 0.35, T_WACKEL: 0.45, LANGSAM: 1 / 3,
+  // Farben: s1/s2 = Stuecke im Wechsel (s2 auch das ungeschnittene Band)
+  F: [{ s1: '#b91c1c', s2: '#dc2626', rand: '#7f1d1d', text: '#b91c1c' },
+      { s1: '#1d4ed8', s2: '#2563eb', rand: '#1e3a8a', text: '#1d4ed8' }],
+  F_REST: '#fb923c', F_REST_RAND: '#c2410c', F_REST_DUNKEL: '#431407',
+  F_TEXT: '#1f2937', F_GRAU: '#64748b', F_KARO: '#d4e3f1', F_BERN: '#f59e0b',
+  F_LINIE: '#334155', F_GELB: '#fde047', F_GELB_RAND: '#a16207'
+};
+
+// ── Rechnen (eine Quelle fuer Bild, Zettel und Anzeige) ─────────────────
+function _k6eRechne(n) {
+  return _k6eBAND.map((L, b) => { const k = Math.floor(L / n); return { b, L, n, k, r: L - k * n }; });
+}
+function _k6eX(m) { return _k6eK.X0 + m * _k6eK.S; }
+function _k6eMitte(b) { return _k6eK.BY[b] + _k6eK.BH / 2; }
+// Lage der Schere: Drehpunkt (x, y) und Drehung w (0 = steht, Klingen nach oben;
+// pi/2 = liegt unter dem Band, Klingen nach rechts, geschlossen)
+function _k6eSteht(m, b) { return { x: _k6eX(m), y: _k6eK.BY[b] + _k6eK.BH + _k6eK.SY, w: 0 }; }
+function _k6eLiegt(x, b) { return { x, y: _k6eK.BY[b] + _k6eK.BH + _k6eK.LG, w: Math.PI / 2 }; }
+function _k6eStuecke(k) { return k === 1 ? '1 Stück' : k + ' Stücke'; }
+// Zahl mit Einheit (oder ein Name) am Stueck, auf Wunsch farbig und fett
+function _k6eG(s, farbe) {
+  return '<span style="white-space:nowrap' + (farbe ? ';color:' + farbe + ';font-weight:700' : '') + '">' + s + '</span>';
+}
+function _k6eMisch(a, b, u) {
+  const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const A = p(a), B = p(b);
+  return 'rgb(' + A.map((v, i) => Math.round(v + (B[i] - v) * u)).join(',') + ')';
+}
+
+// ── Drehbuch ────────────────────────────────────────────────────────────
+// n = Stuecklaenge (null: nur zusammenlegen = Start). alt = Endstand des
+// vorigen Laufs (wird in T_ZU zusammengelegt) oder null (Oeffnen).
+function _k6ePlan(n, alt) {
+  const K = _k6eK, F = K.F;
+  const P = { n, alt, st: {}, baender: [null, null], wege: [], schnitte: [], halts: [], aha: [],
+              glanz: [], tZu: alt ? K.T_ZU : 0, ende: 0 };
+  const ev = (id, t, text) => { (P.st[id] = P.st[id] || []).push({ t, text }); };
+  const name = b => _k6eG(_k6eNAME[b], F[b].text);
+  ev('laenge', 0, 'Gewählte Stücklänge: ' + (n ? _k6eG(n + ' m') : 'noch keine'));
+  for (let b = 0; b < 2; b++) {
+    ev('band' + (b + 1), 0, name(b) + ': noch nicht geschnitten');
+    ev('kurz' + (b + 1), 0, 'Kurz: …');
+  }
+  const start = _k6eLiegt(K.X0 + 28, 0);                      // liegt unter dem Anfang des 12-m-Bands
+  P.schere0 = alt ? alt.schere : start;
+  if (alt) P.wege.push({ t0: 0, t1: K.T_ZU, von: P.schere0, nach: start });
+  let pos = start, t = P.tZu + K.T_LOS;
+  const fahre = (ziel, dauer) => { P.wege.push({ t0: t, t1: t + dauer, von: pos, nach: ziel }); pos = ziel; t += dauer; };
+  if (!n) { P.ende = t; P.schere = pos; return P; }
+
+  for (const R of _k6eRechne(n)) {
+    const b = R.b, B = Object.assign({ t0: t, schnitte: [], restT: null, fertig: 0 }, R);
+    P.baender[b] = B;
+    const kopf = 'Kurz: ' + _k6eG(R.L + ' m', F[b].text) + ' : ' + _k6eG(n + ' m') + ' = ';
+    ev('kurz' + (b + 1), t, kopf + '…');
+    // die erste Fahrt: aufnehmen (12-m-Band) bzw. hinueber zum 18-m-Band
+    let dauer = b === 0 ? K.T_FAHRT + K.T_AUF : K.T_WECHSEL;
+    const liegend = _k6eLiegt(_k6eX(R.L) - 10, b);             // danach liegt sie unter dem Bandende
+    for (let i = 1; i <= R.k; i++) {
+      fahre(_k6eSteht(i * n, b), dauer); dauer = K.T_FAHRT;
+      const ts = t, tc = ts + K.T_SCHNITT / 2;                 // Klingen ganz zu: der Schnitt sitzt
+      P.schnitte.push({ t: ts, b });
+      B.schnitte.push({ m: i * n, t: tc });
+      ev('band' + (b + 1), tc, name(b) + ': ' + _k6eStuecke(i) + ' …');
+      t = ts + K.T_SCHNITT;
+    }
+    if (R.r > 0) {                                            // es bleibt ein kuerzeres Stueck
+      fahre(_k6eSteht(R.L, b), dauer);
+      B.restT = t;
+      P.wege.push({ t0: t, t1: t + K.T_HIN, von: pos, nach: liegend }); pos = liegend;   // legt sich hin
+      t += K.T_REST + K.T_UMRISS;
+    } else {
+      P.wege.push({ t0: t, t1: t + K.T_HIN, von: pos, nach: liegend }); pos = liegend;
+    }
+    B.fertig = t;
+    const rest = R.r > 0 ? _k6eG(R.r + ' m', K.F_REST_RAND) : _k6eG('0 m');
+    ev('band' + (b + 1), t, name(b) + ': ' + _k6eStuecke(R.k) + ', Rest ' + rest);
+    ev('kurz' + (b + 1), t, kopf + R.k + (R.r > 0 ? ' ' + _k6eG('Rest ' + R.r + ' m', K.F_REST_RAND) : ''));
+    t += K.T_KURZ;
+    if (b === 0) P.halts.push({ t, b });                      // Halt nach dem ersten Band
+  }
+  // Aha – an der Stuecklaenge festgemacht
+  const B1 = P.baender[0], B2 = P.baender[1];
+  if (n === 6) {
+    const ta = B2.schnitte[B2.schnitte.length - 1].t;          // letzter Schnitt am 18-m-Band
+    for (const B of [B1, B2]) {
+      const m = B.schnitte[B.schnitte.length - 1].m;
+      P.aha.push({ t: ta, x: _k6eX(m), y: _k6eMitte(B.b), r: 26 });
+      P.glanz.push({ art: 'schnitt', b: B.b, m, t0: ta, t1: ta + K.T_AHA });
+    }
+  }
+  if (n === 12) {
+    const x0 = _k6eX(B2.k * n), x1 = _k6eX(B2.L);
+    P.aha.push({ t: B2.restT, x: (x0 + x1) / 2, y: _k6eMitte(1), r: 50 });
+    P.glanz.push({ art: 'rest', b: 1, t0: B2.restT, t1: B2.restT + K.T_AHA });
+  }
+  P.ende = t + K.T_SCHLUSS;
+  P.schere = pos;
+  return P;
+}
+
+// Wo ist die Schere zur Ablaufzeit at? (Drehpunkt x, y; Drehung w; offen 0..1)
+function _k6eSchereOrt(P, at) {
+  let ort = Object.assign({}, P.schere0);
+  for (const g of P.wege) {
+    if (at < g.t0) break;
+    if (at >= g.t1) { ort = Object.assign({}, g.nach); continue; }
+    const u = _bioFxEase.sanft((at - g.t0) / (g.t1 - g.t0)), A = g.von, B = g.nach;
+    ort = { x: A.x + (B.x - A.x) * u, y: A.y + (B.y - A.y) * u, w: A.w + (B.w - A.w) * u };
+    break;
+  }
+  ort.offen = 1 - ort.w / (Math.PI / 2);                      // liegend: geschlossen
+  for (const s of P.schnitte) {
+    const u = (at - s.t) / _k6eK.T_SCHNITT;
+    if (u >= 0 && u <= 1) { ort.offen = Math.min(ort.offen, 1 - Math.sin(Math.PI * u)); break; }
+  }
+  return ort;
+}
+
+// ── Zustand ─────────────────────────────────────────────────────────────
+function _k6eInit() {
+  _k6e = { n: null, lauf: { plan: _k6ePlan(null, null), at: 0 }, fx: [], t: 0, sig: '',
+           grenze: '', wackel: 0,
+           // fuer die Lehrkraft: angehalten? warum (Halt)? Schalter Halt / langsam
+           steht: false, haltInfo: null, haltAn: false, langsam: false };
+}
+// Einen Lauf beginnen: der laufende kommt sofort an (sein Endstand wird
+// zusammengelegt), dann das Neue. Hebt Pause und Halt auf.
+function _k6eStarte(n) {
+  const z = _k6e, alt = z.lauf.plan;
+  z.n = n;
+  z.lauf = { plan: _k6ePlan(n, { baender: alt.baender, schere: alt.schere }), at: 0 };
+  z.steht = false; z.haltInfo = null; z.grenze = '';
+  z.fx.length = 0;
+}
+
+function _k6eHTML() {
+  const marke = n => `<button class="sim-btn" id="_k6e-b-${n}" onclick="_k6eMarke(${n})">${n}&nbsp;m</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Wie lang können die Stücke höchstens sein?</h3>
+    <div class="fpm-note" style="margin-top:2px">Die Schere schneidet beide Bänder in gleich lange Stücke. Wähle die Länge.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_k6e-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6eMARKEN.map(marke).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          <button class="sim-btn" onclick="_k6eSchritt(-1)">−&nbsp;1&nbsp;m</button>
+          <button class="sim-btn" onclick="_k6eSchritt(1)">+&nbsp;1&nbsp;m</button>
+          <button class="sim-btn" onclick="_k6eNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_k6e-pause" onclick="_k6eAnhalten()">Pause</button>
+            <button class="sim-btn" id="_k6e-tempo" onclick="_k6eTempo()">Tempo: <span id="_k6e-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_k6e-halt" onclick="_k6eHaltSchalter()">Halt nach dem ersten Band: <span id="_k6e-halt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_k6e-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_k6e-laenge" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6e-band1" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6e-band2" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6e-kurz1" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6e-kurz2" style="margin-top:6px"></div>
+        <div class="lmp-status off" id="_k6e-grenze" style="margin-top:6px;display:none"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Zwei Bänder, noch nicht geschnitten</p>
+  </div>`;
+}
+
+// Was die Anzeige gerade sagt – sie folgt dem Bild (Ereignisse im Drehbuch).
+function _k6eTexte() {
+  const P = _k6e.lauf.plan, at = _k6e.lauf.at;
+  const wert = id => { let v = ''; for (const e of (P.st[id] || [])) if (e.t <= at) v = e.text; return v; };
+  return { laenge: wert('laenge'), band1: wert('band1'), band2: wert('band2'),
+           kurz1: wert('kurz1'), kurz2: wert('kurz2') };
+}
+function _k6eHinweis() {
+  const z = _k6e;
+  const kopf = z.haltInfo ? 'Halt: Das 12-m-Band ist geschnitten, das 18-m-Band noch nicht. Erst vermuten lassen, dann „weiter“.'
+    : z.steht ? 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.'
+    : 'Für die Lehrkraft: „Pause“ hält alles an. „Halt nach dem ersten Band“ stoppt vor dem 18-m-Band.';
+  return kopf + ' Halt: ' + (z.haltAn ? 'an' : 'aus') + ', Tempo: ' + (z.langsam ? 'langsam' : 'normal') + '.';
+}
+function _k6eSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Schreibt die Anzeige, wenn sich etwas geaendert hat (immer = true: auf jeden Fall).
+function _k6eStatus(immer) {
+  if (!_k6e) return;
+  const z = _k6e, T = _k6eTexte();
+  const sig = JSON.stringify(T) + '|' + z.n + '|' + z.steht + '|' + !!z.haltInfo + '|' + z.haltAn + '|' +
+              z.langsam + '|' + z.grenze;
+  if (!immer && sig === z.sig) return;
+  z.sig = sig;
+  for (const id of ['laenge', 'band1', 'band2', 'kurz1', 'kurz2']) _k6eSetze('_k6e-' + id, T[id]);
+  const g = _k6eSetze('_k6e-grenze', z.grenze);
+  if (g && g.style) g.style.display = z.grenze ? '' : 'none';
+  for (const n of _k6eMARKEN) {
+    const b = document.getElementById('_k6e-b-' + n);
+    if (b && b.classList) b.classList.toggle('primary', n === z.n);
+  }
+  // fuer die Lehrkraft: Aufschriften und Hinweiszeile (in der Pause bernsteinfarben)
+  _k6eSetze('_k6e-pause', z.steht ? 'weiter' : 'Pause');
+  _k6eSetze('_k6e-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _k6eSetze('_k6e-halt-an', z.haltAn ? 'an' : 'aus');
+  const hz = _k6eSetze('_k6e-lehrkraft', _k6eHinweis());
+  if (hz) hz.className = 'lmp-status ' + (z.steht ? 'off' : 'on');
+  for (const [id, an] of [['_k6e-pause', z.steht], ['_k6e-tempo', z.langsam], ['_k6e-halt', z.haltAn]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+function _k6eMarke(n) {
+  if (!_k6e || _k6eMARKEN.indexOf(n) < 0) return;
+  _k6eStarte(n);
+  _k6eStatus(true);
+}
+// „− 1 m“ / „+ 1 m“: neue Stuecklaenge, schneidet neu
+function _k6eSchritt(d) {
+  if (!_k6e || (d !== 1 && d !== -1)) return;
+  const z = _k6e, K = _k6eK;
+  z.grenze = '';
+  const wackeln = text => { z.wackel = K.T_WACKEL; z.grenze = text; _k6eStatus(true); };
+  if (z.n === null) {
+    if (d < 0) return wackeln('Noch keine Stücklänge gewählt.');
+    _k6eStarte(K.NMIN);
+  } else if (z.n + d < K.NMIN) {
+    return wackeln('Kürzer als 1 m schneidet die Schere nicht.');
+  } else if (z.n + d > K.NMAX) {
+    return wackeln('Mehr als 18 m hat keines der Bänder.');
+  } else {
+    _k6eStarte(z.n + d);
+  }
+  _k6eStatus(true);
+}
+function _k6eNeu() {
+  if (!_k6e) return;
+  _k6eStarte(null);
+  _k6eStatus(true);
+}
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+function _k6eAnhalten() {
+  const z = _k6e;
+  if (!z) return;
+  z.steht = !z.steht;
+  z.haltInfo = null;                       // „weiter“ nach einem Halt: die Schere wechselt jetzt
+  _k6eStatus(true);
+}
+function _k6eTempo() {
+  const z = _k6e;
+  if (!z) return;
+  z.langsam = !z.langsam;
+  _k6eStatus(true);
+}
+function _k6eHaltSchalter() {
+  const z = _k6e;
+  if (!z) return;
+  z.haltAn = !z.haltAn;                    // gilt fuer den naechsten Wechsel zum 18-m-Band
+  _k6eStatus(true);
+}
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _k6eUpdate(dt) {
+  if (!_k6e) return;
+  const z = _k6e, K = _k6eK;
+  const roh = _bioFxDt(dt);
+  z.wackel = Math.max(0, z.wackel - roh);            // Wackeln an der Grenze: in echter Zeit
+  if (z.steht) return;                               // angehalten: nichts laeuft weiter
+  dt = roh * (z.langsam ? K.LANGSAM : 1);            // EIN Zeitfaktor: 1/3 langsam, sonst 1
+  if (!(dt > 0)) return;
+  z.t += dt;
+  const L = z.lauf, P = L.plan;
+  let neu = L.at + dt, halt = null;
+  if (z.haltAn) {
+    for (const h of P.halts) if (L.at < h.t && neu >= h.t) { neu = h.t; halt = h; break; }
+  }
+  for (const a of P.aha) if (L.at < a.t && neu >= a.t) _bioFxWelle(z.fx, a.x, a.y, K.F_BERN, a.r);
+  L.at = neu;
+  if (halt) { z.steht = true; z.haltInfo = halt; }
+  _bioFxUpdate(z.fx, dt);
+  _k6eStatus(!!halt);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _k6eText(ctx, s, x, y, gr, farbe, gew, ausr) {
+  ctx.fillStyle = farbe || _k6eK.F_TEXT;
+  ctx.font = (gew || '700') + ' ' + gr + 'px sans-serif';
+  ctx.textAlign = ausr || 'center'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+function _k6ePapier(ctx) {
+  const K = _k6eK;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, K.PX0 + 2, K.PY0 + 3, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.fill();
+  ctx.strokeStyle = K.F_KARO; ctx.lineWidth = 1;
+  for (let x = K.X0 - K.S; x < K.PX1 - 1; x += K.S) {        // senkrechte Linien genau auf den Metern
+    ctx.beginPath(); ctx.moveTo(x, K.PY0 + 1); ctx.lineTo(x, K.PY1 - 1); ctx.stroke();
+  }
+  for (let y = K.KY; y < K.PY1 - 1; y += K.S) {
+    ctx.beginPath(); ctx.moveTo(K.PX0 + 1, y); ctx.lineTo(K.PX1 - 1, y); ctx.stroke();
+  }
+  ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.PX0, K.PY0, K.PX1 - K.PX0, K.PY1 - K.PY0, 6); ctx.stroke();
+  ctx.restore();
+}
+// Massband 0–18 m, Strich und Zahl je Meter, Achsentitel rechts hinter dem Ende
+function _k6eMassband(ctx) {
+  const K = _k6eK, y = K.MY, h = K.MH, x0 = K.X0 - 6, x1 = _k6eX(18) + 6;
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, x0 + 1, y + 2, x1 - x0, h, 3); ctx.fill();
+  ctx.fillStyle = K.F_GELB; ctx.strokeStyle = K.F_GELB_RAND; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, x0, y, x1 - x0, h, 3); ctx.fill(); ctx.stroke();
+  ctx.strokeStyle = K.F_TEXT; ctx.lineCap = 'butt';
+  for (let m = 0; m <= 18; m++) {
+    const x = _k6eX(m), fuenf = m % 5 === 0;
+    ctx.lineWidth = fuenf ? 1.6 : 1;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + (fuenf ? 8 : 5)); ctx.stroke();
+    _k6eText(ctx, String(m), x, y + h - 3, 11, K.F_TEXT, fuenf ? '700' : '400');
+  }
+  _k6eText(ctx, 'Länge in m', x1 + 7, y + 14, 12, K.F_LINIE, '700', 'left');
+  ctx.restore();
+}
+// Startlinie bei 0 m (durch beide Baender bis zum Massband) und die Bandnamen
+function _k6eRahmen(ctx) {
+  const K = _k6eK;
+  ctx.save();
+  ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 2; ctx.lineCap = 'butt';
+  ctx.beginPath(); ctx.moveTo(K.X0, K.BY[0] - 3); ctx.lineTo(K.X0, K.MY); ctx.stroke();
+  for (let b = 0; b < 2; b++) _k6eText(ctx, _k6eNAME[b], K.LX, K.LY[b], 12, K.F[b].text, '700', 'left');
+  ctx.restore();
+}
+// Ein Band zur Ablaufzeit at. B = Band aus dem Plan (null: ganz),
+// aus = 0..1: wie weit ein alter Lauf schon zusammengelegt ist.
+function _k6eBandZeichnen(ctx, b, B, at, aus) {
+  const K = _k6eK, F = K.F[b], L = _k6eBAND[b], y0 = K.BY[b], h = K.BH;
+  const kl = _bioFxKlemme, E = _bioFxEase, bleibt = 1 - aus;
+  const cuts = B ? B.schnitte.filter(s => s.t <= at) : [];
+  const luecke = s => K.LUECKE * E.sanft(kl((at - s.t) / K.T_OFFEN)) * bleibt;
+  const st = [];
+  let a = 0, ga = 0;
+  cuts.forEach((s, i) => {
+    const g = luecke(s);
+    st.push({ a, e: s.m, ga, ge: g, fertig: true, i, t: s.t });
+    a = s.m; ga = g;
+  });
+  if (a < L) st.push({ a, e: L, ga, ge: 0, fertig: false, rest: !!(B && B.restT !== null && at >= B.restT) });
+  ctx.save();
+  // gestrichelter Umriss: was bis zur vollen Stuecklaenge fehlt
+  if (B && B.restT !== null && at >= B.restT + K.T_REST) {
+    const anteil = E.sanft(kl((at - B.restT - K.T_REST) / K.T_UMRISS));
+    const xs = _k6eX(L) + 1, xz = _k6eX(B.k * B.n + B.n) - 1;
+    const xe = Math.min(K.RAND, xs + (xz - xs) * anteil);
+    if (xe > xs + 1 && bleibt > 0.01) {
+      ctx.globalAlpha = bleibt;
+      ctx.fillStyle = 'rgba(251,146,60,0.13)';
+      ctx.fillRect(xs, y0, xe - xs, h);
+      ctx.strokeStyle = K.F_REST_RAND; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+      ctx.beginPath();
+      ctx.moveTo(xs, y0 + 0.75); ctx.lineTo(xe, y0 + 0.75);
+      if (xz <= K.RAND && anteil >= 1) ctx.lineTo(xe, y0 + h - 0.75);
+      else ctx.moveTo(xe, y0 + h - 0.75);
+      ctx.lineTo(xs, y0 + h - 0.75);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 1;
+    }
+  }
+  for (const s of st) {
+    const x0 = _k6eX(s.a) + s.ga, x1 = _k6eX(s.e) - s.ge;
+    if (x1 - x0 < 1) continue;
+    let dy = 0, fuell = F.s2, rand = F.rand, schrift = null, sa = 0, sf = '#ffffff', orange = 0;
+    if (s.fertig) {
+      fuell = _k6eMisch(s.i % 2 === 0 ? F.s1 : F.s2, F.s2, aus);
+      if (aus === 0) dy = -3 * Math.sin(Math.PI * kl((at - s.t) / K.T_HUPF));   // rueckt ab
+      schrift = B.n + ' m'; sa = E.raus(kl((at - s.t - 0.05) / 0.25)) * bleibt;
+    } else if (s.rest) {
+      orange = E.sanft(kl((at - B.restT) / K.T_REST)) * bleibt;   // Orange schiebt sich darueber
+      if (aus === 0) dy = -3 * Math.sin(Math.PI * kl((at - B.restT) / K.T_HUPF));
+      schrift = B.r + ' m'; sa = kl((at - B.restT - 0.1) / 0.25) * bleibt; sf = K.F_REST_DUNKEL;
+    }
+    const y = y0 + dy;
+    ctx.fillStyle = fuell; ctx.strokeStyle = rand; ctx.lineWidth = 1;
+    ctx.fillRect(x0, y, x1 - x0, h);
+    ctx.strokeRect(x0 + 0.5, y + 0.5, x1 - x0 - 1, h - 1);
+    if (orange > 0.01) {                                     // Rest: Orange von links nach rechts (zurueck: umgekehrt)
+      const xo = x0 + (x1 - x0) * orange;
+      ctx.fillStyle = K.F_REST; ctx.strokeStyle = K.F_REST_RAND;
+      ctx.fillRect(x0, y, xo - x0, h);
+      ctx.strokeRect(x0 + 0.5, y + 0.5, xo - x0 - 1, h - 1);
+    }
+    ctx.fillStyle = 'rgba(255,255,255,0.22)';                // Glanzstreifen: Stoffband
+    ctx.fillRect(x0 + 1, y + 3, x1 - x0 - 2, 2);
+    if (schrift && sa > 0.01) {
+      ctx.font = '700 11px sans-serif';
+      if (ctx.measureText(schrift).width + 6 <= x1 - x0) {
+        ctx.globalAlpha = sa;
+        _k6eText(ctx, schrift, (x0 + x1) / 2, y + h / 2 + 4, 11, sf, '700');
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+  // Blitz im Schnitt
+  if (aus === 0) {
+    for (const s of cuts) {
+      const u = (at - s.t) / 0.25;
+      if (u < 0 || u >= 1) continue;
+      ctx.globalAlpha = 1 - u;
+      ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(_k6eX(s.m), y0 - 3); ctx.lineTo(_k6eX(s.m), y0 + h + 3); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+  }
+  ctx.restore();
+}
+function _k6eBaender(ctx, P, at) {
+  if (P.alt && at < P.tZu) {
+    const aus = _bioFxEase.sanft(_bioFxKlemme(at / P.tZu));
+    for (let b = 0; b < 2; b++) _k6eBandZeichnen(ctx, b, P.alt.baender[b], Infinity, aus);
+  } else {
+    for (let b = 0; b < 2; b++) _k6eBandZeichnen(ctx, b, P.baender[b], at, 0);
+  }
+}
+// Aha: bernsteinfarbenes Nachleuchten (ruhig pulsierend)
+function _k6eGlanz(ctx, P, at) {
+  const K = _k6eK;
+  for (const g of P.glanz) {
+    if (at < g.t0 || at >= g.t1) continue;
+    const B = P.baender[g.b], y0 = K.BY[g.b], h = K.BH;
+    const rest = at - g.t0, puls = 0.6 + 0.4 * Math.sin(rest * Math.PI * 2 * 1.2);
+    const a = Math.min(1, rest / 0.15, (g.t1 - at) / 0.4) * puls;
+    let x0, x1;
+    if (g.art === 'schnitt') { x0 = _k6eX(g.m) - 8; x1 = _k6eX(g.m) + 8; }
+    else { x0 = _k6eX(B.k * B.n) - 1; x1 = _k6eX(B.L) + 2; }
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, a);
+    ctx.fillStyle = 'rgba(252,211,77,0.30)'; ctx.strokeStyle = K.F_BERN; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, x0, y0 - 6, x1 - x0, h + 10, 5); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+}
+// Teile einer Zeile auf dem Zettel
+function _k6eKurzTeile(B, fertig) {
+  const K = _k6eK, F = K.F[B.b];
+  const t = [{ s: B.L + ' m', f: F.text }, { s: ':', f: K.F_TEXT }, { s: B.n + ' m', f: K.F_TEXT },
+             { s: '=', f: K.F_TEXT }];
+  if (!fertig) t.push({ s: '…', f: K.F_GRAU });
+  else {
+    t.push({ s: String(B.k), f: K.F_TEXT, pop: true });
+    if (B.r > 0) t.push({ s: 'Rest ' + B.r + ' m', f: K.F_REST_RAND, pop: true });
+  }
+  return t;
+}
+function _k6eZeile(ctx, B, fertig, x, y, a, nachFertig) {
+  const K = _k6eK, teile = _k6eKurzTeile(B, fertig), gr = 15, luft = 5;
+  if (a <= 0.01) return;
+  ctx.save();
+  ctx.font = '700 ' + gr + 'px sans-serif';
+  const br = teile.map(t => ctx.measureText(t.s).width);
+  const ges = br.reduce((s, w) => s + w, 0) + luft * (teile.length - 1);
+  // die Zeile leuchtet kurz, wenn ihr Ergebnis dazukommt
+  if (fertig && nachFertig >= 0 && nachFertig < K.T_GLANZ) {
+    ctx.globalAlpha = a * (1 - nachFertig / K.T_GLANZ);
+    ctx.fillStyle = 'rgba(253,230,138,0.7)'; ctx.strokeStyle = K.F_BERN; ctx.lineWidth = 1.5;
+    _bioFxRundRect(ctx, x - 26, y - gr + 1, ges + 32, gr + 6, 5); ctx.fill(); ctx.stroke();
+  }
+  ctx.globalAlpha = a;
+  // Farbmarke: ein kleines Stueck des Bands
+  ctx.fillStyle = K.F[B.b].s2; ctx.strokeStyle = K.F[B.b].rand; ctx.lineWidth = 1;
+  ctx.fillRect(x - 22, y - 10, 16, 9); ctx.strokeRect(x - 21.5, y - 9.5, 15, 8);
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  teile.forEach((t, i) => {
+    ctx.fillStyle = t.f;
+    const pop = t.pop && nachFertig >= 0 && nachFertig < K.T_POP ? nachFertig / K.T_POP : 1;
+    if (pop < 1) {
+      const k = Math.max(0.6, _bioFxEase.federn(pop));
+      ctx.save(); ctx.translate(x + br[i] / 2, y - gr * 0.36); ctx.scale(k, k);
+      ctx.textAlign = 'center'; ctx.fillText(t.s, 0, gr * 0.36);
+      ctx.restore();
+    } else ctx.fillText(t.s, x, y);
+    x += br[i] + luft;
+  });
+  ctx.restore();
+}
+function _k6eZettel(ctx, P, at) {
+  const K = _k6eK, x = K.ZX0 + 34, ys = [K.ZY0 + 38, K.ZY0 + 64];
+  ctx.save();
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  _bioFxRundRect(ctx, K.ZX0 + 2, K.ZY0 + 3, K.ZX1 - K.ZX0, K.ZY1 - K.ZY0, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#cbd5e1'; ctx.lineWidth = 1.2;
+  _bioFxRundRect(ctx, K.ZX0, K.ZY0, K.ZX1 - K.ZX0, K.ZY1 - K.ZY0, 6); ctx.fill(); ctx.stroke();
+  _k6eText(ctx, 'Kurz', K.ZX0 + 10, K.ZY0 + 15, 11, K.F_GRAU, '700', 'left');
+  ctx.restore();
+  if (P.alt && at < P.tZu) {                                  // alte Zeilen blassen aus
+    const a = 1 - _bioFxKlemme(at / P.tZu);
+    for (const B of P.alt.baender) if (B) _k6eZeile(ctx, B, true, x, ys[B.b], a, Infinity);
+    return;
+  }
+  for (const B of P.baender) {
+    if (!B || at < B.t0) continue;
+    const fertig = at >= B.fertig;
+    _k6eZeile(ctx, B, fertig, x, ys[B.b], _bioFxKlemme((at - B.t0) / 0.2), fertig ? at - B.fertig : -1);
+  }
+}
+// Die Schere: Drehpunkt (x, y), Griffe nach unten, Klingen nach oben, um dreh gedreht; offen 0..1
+function _k6eSchere(ctx, x, y, dreh, offen) {
+  const K = _k6eK, w = 0.3 * offen;
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(dreh);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  for (const s of [-1, 1]) {                                  // Griffe
+    ctx.save();
+    ctx.rotate(s * w * 0.5);
+    ctx.strokeStyle = K.F_LINIE; ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(0, 1); ctx.lineTo(s * 4, 8); ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(s * 6, 13.5, 4.2, 5.2, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
+  for (const s of [-1, 1]) {                                  // Klingen
+    ctx.save();
+    ctx.rotate(s * w);
+    ctx.fillStyle = '#e2e8f0'; ctx.strokeStyle = '#475569'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(-2.2, 0); ctx.lineTo(0, -K.KL); ctx.lineTo(2.2, 0); ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  ctx.fillStyle = K.F_LINIE;
+  ctx.beginPath(); ctx.arc(0, 0, 2, 0, Math.PI * 2); ctx.fill();
+  ctx.restore();
+}
+// Schild „Pause“ bzw. „Halt“ oben rechts (oben links steht der Bandname)
+function _k6ePauseSchild(ctx, text) {
+  const w = 64, h = 25, x = 344, y = 7;
+  ctx.save();
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 7, y + 6.5, 3.5, 12); ctx.fillRect(x + 13.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  ctx.font = '700 13px sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+  ctx.fillText(text, x + 22, y + 17.5);
+  ctx.restore();
+}
+function _k6eDraw(ctx, cv) {
+  if (!_k6e) return;
+  const z = _k6e, W = cv.width, H = cv.height, P = z.lauf.plan, at = z.lauf.at;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _k6ePapier(ctx);
+  _k6eMassband(ctx);
+  _k6eRahmen(ctx);
+  _k6eGlanz(ctx, P, at);
+  _k6eBaender(ctx, P, at);
+  _bioFxDraw(ctx, z.fx);                                      // Lichtring
+  _k6eZettel(ctx, P, at);
+  const o = _k6eSchereOrt(P, at);
+  const wk = z.wackel > 0 ? Math.sin(z.wackel * 50) * 3 * (z.wackel / _k6eK.T_WACKEL) : 0;
+  _k6eSchere(ctx, o.x + wk, o.y, o.w, o.offen);
+  if (z.steht) _k6ePauseSchild(ctx, z.haltInfo ? 'Halt' : 'Pause');
+}
+
+// ════════════════════════════════════════════════════════════════════════
+// MATHEMATIK 6 FOERDER – mt6 „Alle ungeraden Zahlen?“ (Kennung m6-sieb,
+// Praefix _k6f). Bauplan: arbeitsheft_mathe_foe6/KAPITEL1_PROFIL.md,
+// Abschnitte mt6 und m6-sieb (N1–N3, Lehrkraft-Zeile wie Heft 5).
+// Ueberschrift = frage der Einheit: „Welche Zahlen bis 50 haben nur zwei Teiler?“
+//
+// Was man sieht (Leinwand 420 x 250) – im Aussehen der Hundertertafel aus
+// m6-hundertertafel (_k6b), gleicher Bausatz, eigenes Praefix:
+//   ZAHLENTAFEL rechts: 1 bis 50 in 5 Zeilen zu 10 Feldern, Felder 31 x 40 px
+//     (groesser als in mt2, dort 30 x 19), Zahlen 15 px fett. Spalten fein
+//     getrennt, die Zehnerzeilen etwas kraeftiger, aussen ein Rand. Darueber
+//     die Kopfzeile „letzte Ziffer:  1 2 3 4 5 6 7 8 9 0“ wie in mt2.
+//     Ein gestrichenes Feld wird GRAU, seine Zahl grau, darueber ein schraeger
+//     Strich (von links unten nach rechts oben) in der Farbe der Reihe, die es
+//     gestrichen hat. Die Startzahl einer Reihe bekommt einen Ring in der
+//     Reihenfarbe und bleibt frei. Es steht immer nur EIN Ring da – der der
+//     Reihe, die gerade gesiebt wird oder zuletzt gesiebt wurde; beginnt eine
+//     neue Reihe, blendet der alte Ring aus (0,4 s), waehrend der neue entsteht.
+//     Grund: Blieben die Ringe stehen, waeren am Ende genau 2, 3, 5 und 7
+//     umkreist – eine Markierung freier Zahlen („Nicht am Bildschirm“), die
+//     ausgerechnet die Vermutung „Nur die Zahlen 2, 3, 5 und 7“ stuetzt.
+//   LINKS das Schild der Reihe in ihrer Farbe („3er-Reihe“), darunter „Start:“
+//     mit der umkreisten Startzahl und ein Bogen „+ 3“: so weit springt der
+//     Punkt. Vor der ersten Reihe steht dort ein graues, gestricheltes Schild
+//     „keine Reihe“.
+//   Farben: 2er violett, 5er gruen, 4er rosa wie in m6-hundertertafel; die
+//     7er-Reihe (gibt es in mt2 nicht) blau. ABWEICHUNG von mt2: 3er orange und
+//     6er tuerkis (in mt2 umgekehrt) – im Sieb stehen 3er- und 5er-Striche
+//     nebeneinander, und Tuerkis (#0f766e) war neben Gruen (#15803d) im Bild
+//     nicht zu unterscheiden (25 und 35 sahen aus wie 21 und 27). In mt2 steht
+//     immer nur EINE Reihe da, dort faellt der Tausch nicht auf. Schild, Ring,
+//     Striche und die Werte in der Anzeige tragen dieselbe Farbe.
+//
+// Bewegung (jede Sprungmarke spielt ihre Tabellenzeile SELBST ab, N1; alles ist
+// eine Funktion der Ablaufzeit L.at, Konstanten in _k6fK – keine Zufallszahl):
+//   0 – 0,4 s  der Ring zieht sich um die Startzahl, der Punkt springt auf.
+//   dann       der Punkt springt im Bogen um n, von Feld zu Feld (ueber das
+//              Zeilenende hinweg in die naechste Zeile). Ein Sprung dauert
+//              2er 0,14 s · 3er 0,24 s · 4er 0,30 s · 6er 0,34 s · 5er 0,40 s ·
+//              7er 0,55 s. Landet er auf einem FREIEN Feld, zieht sich der
+//              Strich (0,2 s) und das Feld wird grau; der Punkt wartet so lange
+//              (bei der 2er-Reihe 0,12 s, der Strich laeuft im Sprung zu Ende).
+//              Landet er auf einem SCHON GESTRICHENEN Feld, leuchtet es kurz
+//              bernsteinfarben auf (0,35 s), kein neuer Strich; der Punkt
+//              wartet 0,1 s. Der Punkt sitzt ueber der Zahl (verdeckt keine).
+//              Der Bogen ist hoechstens 26 px hoch und bleibt unter der
+//              Kopfzeile; waehrend des Flugs ist er fein gepunktet zu sehen.
+//   Ende       der Punkt blendet aus (0,4 s).
+//   GEMESSEN (Frames zu 16 ms, Tempo normal) bis zur Ruhe: 2er 7,04 s (440
+//   Frames), 3er 6,60 s (413), 5er 5,50 s (344), 7er 4,80 s (300); frei auf
+//   der leeren Tafel 4er 6,30 s (394), 6er 4,58 s (287). simfakten.js mit --frames=25
+//   --verlauf=4 liest die Endwerte im zweiten Knopfdurchgang ab (er laeuft
+//   bis zu 625 Frames aus).
+//   Sprungmarke  stellt OHNE Bewegung den Stand nach den Zeilen davor her
+//              („5er-Reihe“ setzt die Striche der 2er- und der 3er-Reihe)
+//              und siebt dann ihre Reihe – die Werte stimmen in
+//              jeder Reihenfolge der Knoepfe.
+//   „4er-Reihe“, „6er-Reihe“ (frei) sieben auf dem Stand, der gerade dasteht.
+//   „neu“      sofort der Start; Striche und Ring blenden aus (0,35 s).
+// Wer waehrend einer Bewegung einen Knopf drueckt, laesst sie sofort ankommen
+// (alle Striche der Reihe stehen dann da); dann geschieht das Neue.
+//
+// Knoepfe (Bauplan, woertlich):
+//   Reihe 1, Sprungmarken = Zeilen der Heft-Tabelle (_k6fMarke(2|3|5|7)):
+//     „2er-Reihe“ · „3er-Reihe“ · „5er-Reihe“ · „7er-Reihe“
+//   Reihe 2: „4er-Reihe“ · „6er-Reihe“ (frei, _k6fReihe(4|6)) · „neu“ (_k6fNeu())
+//   Der Knopf der Reihe, die gerade gesiebt wird oder zuletzt gesiebt wurde,
+//   ist hervorgehoben.
+//
+// Statuszeilen (woertlich, jede mit mindestens 19 Zeichen). Sie folgen dem
+// Bild: jede Zahl aendert sich in dem Augenblick, in dem der Punkt auf einem
+// freien Feld landet.
+//   _k6f-reihe   „Gewählte Reihe: 3er-Reihe“ (Start „Gewählte Reihe: noch keine“) – wie in
+//                m6-hundertertafel. Pruefung 10.10.2026: vorher „Gerade gesiebt: …“; „gerade“
+//                ist in dieser Einheit das Wort fuer die 2er-Reihe (Tareks „ungerade“) und
+//                „gesiebt“ klingt wie die Zahl sieben – fuer DaZ-Kinder doppelt missverstaendlich.
+//   _k6f-neu     „Neu gestrichen: 7 Felder“ (Einzahl „1 Feld“; zaehlt mit, ab
+//                „… 0 Felder“; Start „Neu gestrichen: noch kein Feld“)
+//   _k6f-welche  „Neu gestrichen sind: 9, 15, 21, 27, 33, 39, 45“ (waechst mit;
+//                mehr als 8 Zahlen in gleichem Abstand kurz: „4, 6, 8 … 50“;
+//                vor dem ersten Strich „… noch keine“, ohne Strich am Ende
+//                „… keine“)
+//   _k6f-frei    „Noch frei auf der Tafel: 19 Felder“ (Einzahl „1 Feld“, Start 50)
+//
+// Werte (jede Zeile nachgerechnet mit simcheck/werte.js, Endwerte):
+//   2er-Reihe → 24 neu (4, 6, 8 … 50), frei 26
+//   3er-Reihe →  7 neu (9, 15, 21, 27, 33, 39, 45), frei 19
+//   5er-Reihe →  2 neu (25, 35), frei 17
+//   7er-Reihe →  1 neu (49), frei 16
+//   frei: 4er- und 6er-Reihe nach der 7er-Reihe → 0 neu („keine“), frei 16;
+//         auf der leeren Tafel 4er → 11 neu (8, 12, 16 … 48), frei 39,
+//         6er → 7 neu (12, 18, 24, 30, 36, 42, 48), frei 43.
+//   Frei bleiben 1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 –
+//   nur im Bild (weisse Felder), nirgends als Liste.
+// Start: Tafel 1 bis 50, nichts gestrichen („Start: Zahlen von 1 bis 50, noch
+// nichts gestrichen“).
+//
+// Aha (_bioFxWelle, ruhig, OHNE Textstreifen): „7er-Reihe“ – der Punkt springt
+// ueber 14, 21, 28, 35, 42 (nur Aufleuchten) und streicht als einziges Feld die
+// 49: Lichtring um 49 und ein bernsteinfarbener Rahmen 1,4 s. Die 3er-Reihe
+// streicht 9, 15, 21 (widerlegt „alle ungeraden“), 11 und 13 bleiben bis zum
+// Schluss weiss (widerlegt „nur 2, 3, 5 und 7“) – das zeigt das Bild ohne Text.
+//
+// FUER DIE LEHRKRAFT (Container <div class="fpm-lehrkraft">, eigene Zeile unter
+// den Heftknoepfen, davor klein „Für die Lehrkraft:“):
+//   „Pause“ ↔ „weiter“ (_k6fAnhalten()): friert jede Bewegung ein; Schild
+//     „Pause“ links unten (unter dem Bogen, dort steht sonst nichts).
+//   „Tempo: normal“ ↔ „Tempo: langsam“ (_k6fTempo()): ein Drittel so schnell.
+//   „Halt bei jedem Strich: aus“ ↔ „… an“ (_k6fHaltSchalter()): haelt an,
+//     sobald der Punkt auf einem FREIEN Feld gelandet ist – VOR dem Strich.
+//     Das Feld bekommt einen pulsierenden bernsteinfarbenen Rahmen, das
+//     Schild links unten sagt „Halt“, die Anzeige zaehlt das Feld noch nicht.
+//     Hinweiszeile: „Halt: Der Punkt steht auf 9. Gleich kommt der Strich.
+//     Dann „weiter“.“ – der Moment fuer „Warum wird 9 gestrichen?“.
+//     „weiter“ zieht den Strich und laesst weiterspringen. Auf schon
+//     gestrichenen Feldern haelt nichts an.
+//   In der Pause (und im Halt) bewegen „4er-Reihe“ und „6er-Reihe“ nichts:
+//   Steht eine Bewegung, entfaellt der Druck; steht keine, wird er VORGEMERKT
+//   und beginnt mit „weiter“ (das Schild leuchtet kurz auf). Eine Sprungmarke
+//   und „neu“ heben die Pause auf; Tempo und Halt bleiben stehen.
+//   EIN Zeitfaktor (_k6fZeitfaktor: 0 Pause, 1/3 langsam, 1 normal) an der
+//   einen Stelle, an der dt in _k6fUpdate hineingeht. Das wechselnde Wort steht
+//   in einem eigenen <span>. Hinweiszeile _k6f-lehrkraft (in der Pause
+//   bernsteinfarben, „lmp-status off“) nennt immer die Einstellungen:
+//     sonst „Für die Lehrkraft: „Pause“ hält alles an. „Halt bei jedem Strich“ stoppt von selbst. Tempo: normal, Halt: aus.“
+//     Pause „Angehalten. Erkläre, was gerade passiert. Dann „weiter“. Tempo: …, Halt: …“
+//   Voreinstellung Pause aus, Tempo normal, Halt aus.
+//
+// Nicht am Bildschirm (sim_plan.nicht_am_bildschirm): „Primzahl“, „Sieb des
+// Eratosthenes“, eine Liste oder Markierung der freien Zahlen (frei heisst nur:
+// weiss, ohne Strich; am Ende leuchtet nichts Freies auf), „genau zwei Teiler“,
+// die Regel als Satz. „Teiler“ steht nur in der Ueberschrift (Frage) und im
+// Hinweis (Bruecke „gestrichen = hat noch einen Teiler“ an der 10, die in
+// keiner Vermutung vorkommt). Keine Namen, keine Punkte, keine Zeit, kein Urteil.
+// ════════════════════════════════════════════════════════════════════════
+let _k6f = null;
+const _k6fMARKEN = [2, 3, 5, 7];          // Reihe 1: die vier Tabellenzeilen, in dieser Reihenfolge gesiebt
+const _k6fFREI = [4, 6];                  // Reihe 2: frei, auf dem Stand, der gerade dasteht
+const _k6fREIHEN = {
+  2: { name: '2er-Reihe', fuell: '#c084fc', dunkel: '#7e22ce' },
+  3: { name: '3er-Reihe', fuell: '#fb923c', dunkel: '#c2410c' },
+  5: { name: '5er-Reihe', fuell: '#4ade80', dunkel: '#15803d' },
+  7: { name: '7er-Reihe', fuell: '#60a5fa', dunkel: '#1d4ed8' },
+  4: { name: '4er-Reihe', fuell: '#fb7185', dunkel: '#be123c' },
+  6: { name: '6er-Reihe', fuell: '#2dd4bf', dunkel: '#0f766e' }
+};
+const _k6fK = {
+  X0: 100, Y0: 30, FW: 31, FH: 40,        // Zahlentafel: linke obere Ecke, Feldgroesse (10 x 5 Felder)
+  KOPF: 17,                               // Grundlinie der Kopfzeile
+  GZ: 15, GK: 12, GB: 11,                 // Schriftgrade: Zahlen der Tafel, Kopfzeile, Beschriftungen
+  HOCH: 14.5,                             // der Punkt sitzt so weit ueber der Feldmitte (ueber der Zahl)
+  RP: 5, RR: 12,                          // Radius: Punkt, Ring um die Startzahl
+  BOGEN_MAX: 26, BOGEN_OBEN: 22,          // Sprungbogen: hoechstens 26 px hoch, nie ueber y = 22 (Kopfzeile)
+  SCHILD_X: 52, SCHILD_Y: 50,             // Mitte des Schilds der Reihe (links)
+  START_Y: 90, BOGEN_Y: 142,              // Zeile „Start:“, Grundlinie des Bogens „+ n“
+  PX: 18, PY: 204,                        // Schild „Pause“ / „Halt“ (links unten)
+  T_RING: 0.4, T_STRICH: 0.2, T_STEH: 0.2, T_STEH2: 0.12, T_STEH_ALT: 0.1, T_BLITZ: 0.35,
+  T_AUS: 0.4, T_NEU: 0.35, T_POP: 0.3, T_AHA: 1.4, LANGSAM: 1 / 3,
+  SPRUNG: { 2: 0.14, 3: 0.24, 4: 0.3, 5: 0.4, 6: 0.34, 7: 0.55 },
+  F_TEXT: '#1e293b', F_GITTER: '#cbd5e1', F_ZEILE: '#94a3b8', F_RAND: '#64748b', F_GRAU: '#475569',
+  F_GESTR: '#e2e8f0', F_GESTR_TEXT: '#64748b', F_PUNKT: '#1e293b', F_AHA: '#f59e0b'
+};
+
+// ── Rechnungen (eine Quelle fuer Bild und Anzeige) ──────────────────────
+// Feld k (1 … 50): Spalte (k − 1) % 10, Zeile ⌊(k − 1) / 10⌋.
+function _k6fFeld(k) {
+  const K = _k6fK, p = (k - 1) % 10, r = Math.floor((k - 1) / 10);
+  const x = K.X0 + p * K.FW, y = K.Y0 + r * K.FH;
+  return { x, y, cx: x + K.FW / 2, cy: y + K.FH / 2 };
+}
+// Landeplatz des Punkts auf Feld k: ueber der Zahl.
+function _k6fPlatz(k) { const F = _k6fFeld(k); return { x: F.cx, y: F.cy - _k6fK.HOCH }; }
+function _k6fLeer() { return new Array(51).fill(0); }
+// Siebt Reihe n auf dem Stand b OHNE Bewegung: jedes noch freie Landefeld 2n, 3n …
+// bekommt n (die Reihe, die es gestrichen hat). Die Startzahl n bleibt frei.
+function _k6fSieben(b, n) {
+  const neu = [];
+  for (let k = 2 * n; k <= 50; k += n) if (!b[k]) { b[k] = n; neu.push(k); }
+  return neu;
+}
+// Stand VOR einer Sprungmarke: die Reihen davor, in der Reihenfolge der Tabelle.
+function _k6fStandVor(n) {
+  const b = _k6fLeer();
+  for (const m of _k6fMARKEN) {
+    if (m === n) break;
+    _k6fSieben(b, m);
+  }
+  return b;
+}
+// Drehbuch einer Reihe n auf dem Stand b: Sprung j fliegt von t0 bis t1 und
+// landet auf „nach“; frei = das Feld war vor der Reihe noch nicht gestrichen.
+// alt = Startzahl der Reihe davor: ihr Ring blendet aus, waehrend der neue entsteht.
+function _k6fPlan(n, b, alt) {
+  const K = _k6fK, J = K.SPRUNG[n], steh = n === 2 ? K.T_STEH2 : K.T_STEH, ev = [], bei = {};
+  let t = K.T_RING, von = n;
+  for (let k = 2 * n; k <= 50; k += n) {
+    const e = { von, nach: k, t0: t, t1: t + J, frei: !b[k], gehalten: false };
+    ev.push(e); bei[k] = e;
+    t += J + (e.frei ? steh : K.T_STEH_ALT);
+    von = k;
+  }
+  return { n, ev, bei, at: 0, ende: t + K.T_AUS, aha: false, alt: alt && alt !== n ? alt : null };
+}
+// Was gerade dasteht: Reihe, neu gestrichene Felder (in der Reihenfolge des
+// Streichens), Zahl der freien Felder.
+function _k6fStand() {
+  const z = _k6f, L = z.lauf;
+  let n = null, neu = [];
+  if (L) { n = L.n; neu = L.ev.filter(e => e.frei && e.t1 <= L.at).map(e => e.nach); }
+  else if (z.zuletzt) { n = z.zuletzt.n; neu = z.zuletzt.neu; }
+  let gestr = L ? neu.length : 0;
+  for (let k = 1; k <= 50; k++) if (z.b[k]) gestr++;
+  return { n, neu, frei: 50 - gestr };
+}
+// Liste fuer die Anzeige: mehr als 8 Zahlen in gleichem Abstand kurz („4, 6, 8 … 50“).
+function _k6fListe(l) {
+  if (l.length > 8) {
+    const d = l[1] - l[0];
+    if (l.every((v, i) => i === 0 || v - l[i - 1] === d))
+      return l[0] + ', ' + l[1] + ', ' + l[2] + ' … ' + l[l.length - 1];
+  }
+  return l.join(', ');
+}
+function _k6fFelder(m) { return m === 1 ? '1 Feld' : m + ' Felder'; }
+
+function _k6fInit() {
+  _k6f = { b: _k6fLeer(), lauf: null, zuletzt: null, weg: null,
+           fx: [], ein: _k6fK.T_NEU, ahaGlanz: 0, echt: 0, sig: '',
+           steht: false, haltInfo: null, haltAn: false, langsam: false, blink: 0, vormerk: null };   // Lehrkraft
+}
+function _k6fHTML() {
+  const knopf = n => `<button class="sim-btn" id="_k6f-b-${n}" style="white-space:nowrap" onclick="${_k6fMARKEN.includes(n) ? '_k6fMarke' : '_k6fReihe'}(${n})">${_k6fREIHEN[n].name}</button>`;
+  return `<div class="sim-box sim-box-wide fpm-sim">
+    <button class="sim-x" onclick="closePhysicsSim()">✕</button>
+    <h3 class="sim-h3">Welche Zahlen bis 50 haben nur zwei Teiler?</h3>
+    <div class="fpm-note" style="margin-top:2px">Jede Reihe streicht ihre Landefelder. Die 2er-Reihe trifft 10: Also hat 10 den Teiler 2.</div>
+    <div class="fpm-grid">
+      <div>
+        <canvas id="_k6f-cv" width="420" height="250" class="phys-anim-cv"></canvas>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6fMARKEN.map(knopf).join('\n          ')}
+        </div>
+        <div class="sim-btn-row" style="margin-top:6px">
+          ${_k6fFREI.map(knopf).join('\n          ')}
+          <button class="sim-btn" id="_k6f-b-neu" onclick="_k6fNeu()">neu</button>
+        </div>
+        <div class="fpm-lehrkraft">
+          <div class="sim-btn-row" style="margin-top:8px;align-items:center;border-top:1px dashed #cbd5e1;padding-top:8px">
+            <span style="font-size:.72rem;font-weight:700;color:#64748b">Für die Lehrkraft:</span>
+            <button class="sim-btn" id="_k6f-pause" onclick="_k6fAnhalten()">Pause</button>
+            <button class="sim-btn" id="_k6f-tempo" onclick="_k6fTempo()">Tempo: <span id="_k6f-tempo-an">normal</span></button>
+            <button class="sim-btn" id="_k6f-halt" onclick="_k6fHaltSchalter()">Halt bei jedem Strich: <span id="_k6f-halt-an">aus</span></button>
+          </div>
+          <div class="lmp-status on" id="_k6f-lehrkraft" style="margin-top:4px"></div>
+        </div>
+      </div>
+      <div>
+        <div class="fpm-label">Anzeige</div>
+        <div class="lmp-status on" id="_k6f-reihe" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6f-neu" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6f-welche" style="margin-top:6px"></div>
+        <div class="lmp-status on" id="_k6f-frei" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <p class="sim-hint" style="text-align:center;margin:6px 0 0">Start: Zahlen von 1 bis 50, noch nichts gestrichen</p>
+  </div>`;
+}
+function _k6fSetze(id, html) {
+  const e = document.getElementById(id);
+  if (e) e.innerHTML = html;
+  return e;
+}
+// Die vier Statuszeilen – sie folgen dem Bild.
+function _k6fTexte() {
+  const S = _k6fStand(), R = S.n ? _k6fREIHEN[S.n] : null;
+  const f = s => R ? '<b style="color:' + R.dunkel + '">' + s + '</b>' : String(s);
+  return {
+    reihe: 'Gewählte Reihe: ' + (R ? f(R.name) : 'noch keine'),
+    neu: 'Neu gestrichen: ' + (R ? f(_k6fFelder(S.neu.length)) : 'noch kein Feld'),
+    welche: 'Neu gestrichen sind: ' + (S.neu.length ? f(_k6fListe(S.neu)) : R && !_k6f.lauf ? 'keine' : 'noch keine'),
+    frei: 'Noch frei auf der Tafel: ' + _k6fFelder(S.frei)
+  };
+}
+function _k6fHinweis() {
+  const z = _k6f;
+  let a;
+  if (z.steht && z.haltInfo)
+    a = 'Halt: Der Punkt steht auf ' + z.haltInfo.nach + '. Gleich kommt der Strich. Dann „weiter“.';
+  else if (z.steht) a = 'Angehalten. Erkläre, was gerade passiert. Dann „weiter“.';
+  else a = 'Für die Lehrkraft: „Pause“ hält alles an. „Halt bei jedem Strich“ stoppt von selbst.';
+  return a + ' Tempo: ' + (z.langsam ? 'langsam' : 'normal') + ', Halt: ' + (z.haltAn ? 'an' : 'aus') + '.';
+}
+// Schreibt die Anzeige, wenn sich etwas geaendert hat (immer = true: auf jeden Fall).
+function _k6fStatus(immer) {
+  if (!_k6f) return;
+  const z = _k6f, T = _k6fTexte(), H = _k6fHinweis();
+  const n = z.lauf ? z.lauf.n : z.zuletzt ? z.zuletzt.n : null;
+  const sig = JSON.stringify(T) + '|' + H + '|' + n + '|' + z.steht;
+  if (!immer && sig === z.sig) return;
+  z.sig = sig;
+  for (const id of ['reihe', 'neu', 'welche', 'frei']) _k6fSetze('_k6f-' + id, T[id]);
+  for (const m of _k6fMARKEN.concat(_k6fFREI)) {
+    const b = document.getElementById('_k6f-b-' + m);
+    if (b && b.classList) b.classList.toggle('primary', m === n);
+  }
+  // Fuer die Lehrkraft: Aufschriften, Hinweiszeile (in der Pause bernsteinfarben)
+  _k6fSetze('_k6f-pause', z.steht ? 'weiter' : 'Pause');
+  _k6fSetze('_k6f-tempo-an', z.langsam ? 'langsam' : 'normal');
+  _k6fSetze('_k6f-halt-an', z.haltAn ? 'an' : 'aus');
+  const hz = _k6fSetze('_k6f-lehrkraft', H);
+  if (hz) hz.className = 'lmp-status ' + (z.steht ? 'off' : 'on');
+  for (const [id, an] of [['_k6f-pause', z.steht], ['_k6f-tempo', z.langsam], ['_k6f-halt', z.haltAn]]) {
+    try { document.getElementById(id).classList.toggle('primary', an); } catch (e) { /* Mini-DOM */ }
+  }
+}
+
+// ── Bedienung ───────────────────────────────────────────────────────────
+// Sprungmarke: ohne Bewegung der Stand nach den Zeilen davor, dann siebt die
+// Reihe. Hebt die Pause auf.
+function _k6fMarke(n) {
+  if (!_k6f || !_k6fMARKEN.includes(n)) return;
+  const z = _k6f, alt = _k6fStart();
+  z.steht = false; z.haltInfo = null; z.vormerk = null; z.blink = 0;
+  z.lauf = null; z.b = _k6fStandVor(n); z.zuletzt = null; z.weg = null; z.ein = 0;
+  z.ahaGlanz = 0; z.fx.length = 0;
+  z.lauf = _k6fPlan(n, z.b, alt);
+  _k6fStatus(true);
+}
+// Freie Reihe (4er, 6er) auf dem Stand, der gerade dasteht.
+function _k6fReihe(n) {
+  if (!_k6f || !_k6fFREI.includes(n)) return;
+  const z = _k6f;
+  if (z.steht) {                         // Pause/Halt: vormerken oder entfallen lassen
+    z.blink = 0.6;
+    if (!z.lauf) z.vormerk = n;
+    _k6fStatus(true);
+    return;
+  }
+  _k6fFertig();
+  z.weg = null; z.ein = 0;
+  z.lauf = _k6fPlan(n, z.b, _k6fStart());
+  _k6fStatus(true);
+}
+// „neu“: sofort der Start; Striche und Ringe blenden aus. Hebt die Pause auf.
+function _k6fNeu() {
+  if (!_k6f) return;
+  const z = _k6f;
+  _k6fFertig();
+  z.weg = { b: z.b, ring: _k6fStart(), t: _k6fK.T_NEU };
+  z.b = _k6fLeer(); z.zuletzt = null; z.lauf = null;
+  z.steht = false; z.haltInfo = null; z.vormerk = null; z.blink = 0;
+  z.ahaGlanz = 0; z.fx.length = 0;
+  _k6fStatus(true);
+}
+// Die laufende Reihe ankommen lassen: alle ihre Striche stehen da.
+function _k6fLanden() {
+  const z = _k6f, L = z.lauf;
+  if (!L) return;
+  z.lauf = null; z.haltInfo = null;
+  const neu = [];
+  for (const e of L.ev) if (e.frei) { z.b[e.nach] = L.n; neu.push(e.nach); }
+  z.zuletzt = { n: L.n, neu };
+  _k6fStatus(true);
+}
+function _k6fFertig() { if (_k6f && _k6f.lauf) _k6fLanden(); }
+// Startzahl der Reihe, die gerade dasteht (laeuft oder zuletzt gesiebt), sonst null.
+function _k6fStart() { const z = _k6f; return z.lauf ? z.lauf.n : z.zuletzt ? z.zuletzt.n : null; }
+
+// ── Fuer die Lehrkraft ──────────────────────────────────────────────────
+// „Pause“ ↔ „weiter“. Nach einem Halt zieht „weiter“ den Strich; ein
+// vorgemerkter Knopf wirkt jetzt.
+function _k6fAnhalten() {
+  if (!_k6f) return;
+  const z = _k6f;
+  if (z.steht) {
+    z.steht = false; z.haltInfo = null; z.blink = 0;
+    const v = z.vormerk;
+    z.vormerk = null;
+    if (v && !z.lauf) { z.weg = null; z.lauf = _k6fPlan(v, z.b, _k6fStart()); }
+  } else z.steht = true;
+  _k6fStatus(true);
+}
+function _k6fTempo() {
+  if (!_k6f) return;
+  _k6f.langsam = !_k6f.langsam;
+  _k6fStatus(true);
+}
+function _k6fHaltSchalter() {
+  if (!_k6f) return;
+  _k6f.haltAn = !_k6f.haltAn;            // gilt ab dem naechsten freien Feld
+  _k6fStatus(true);
+}
+// DER Zeitfaktor: 0 in Pause und Halt, ein Drittel bei „Tempo: langsam“, sonst 1.
+function _k6fZeitfaktor(z) { return z.steht ? 0 : z.langsam ? _k6fK.LANGSAM : 1; }
+
+// ── Bewegung ────────────────────────────────────────────────────────────
+function _k6fUpdate(dt) {
+  if (!_k6f) return;
+  const z = _k6f, K = _k6fK;
+  const roh = _bioFxDt(dt);
+  z.echt += roh;                                      // Halt-Rahmen pulsiert in echter Zeit
+  z.blink = Math.max(0, z.blink - roh);               // Schild leuchtet in echter Zeit
+  dt = roh * _k6fZeitfaktor(z);                       // ab hier Sim-Zeit
+  z.ein = Math.max(0, z.ein - dt);
+  z.ahaGlanz = Math.max(0, z.ahaGlanz - dt);
+  if (z.weg) { z.weg.t -= dt; if (z.weg.t <= 0) z.weg = null; }
+  const L = z.lauf;
+  if (L && dt > 0) {
+    let neu = L.at + dt, halt = null;
+    if (z.haltAn) {                                   // Halt VOR dem Strich auf einem freien Feld
+      for (const e of L.ev) {
+        if (e.frei && !e.gehalten && L.at < e.t1 && neu >= e.t1) { neu = e.t1 - 1e-6; halt = e; break; }
+      }
+    }
+    const e49 = L.bei[49];                            // Aha: die 7er-Reihe streicht nur die 49
+    if (L.n === 7 && e49 && e49.frei && !L.aha && L.at < e49.t1 && neu >= e49.t1) {
+      L.aha = true; z.ahaGlanz = K.T_AHA;
+      const F = _k6fFeld(49);
+      _bioFxWelle(z.fx, F.cx, F.cy, K.F_AHA, 40);
+    }
+    L.at = neu;
+    if (halt) { halt.gehalten = true; z.steht = true; z.haltInfo = halt; }
+    if (L.at >= L.ende) _k6fLanden();
+  }
+  _bioFxUpdate(z.fx, dt);
+  _k6fStatus(false);
+}
+
+// ── Zeichnen ────────────────────────────────────────────────────────────
+function _k6fText(ctx, s, x, y, gr, farbe, ausr, gew, grund) {
+  ctx.fillStyle = farbe || _k6fK.F_TEXT;
+  ctx.font = (gew || '700') + ' ' + gr + 'px sans-serif';
+  ctx.textAlign = ausr || 'center';
+  ctx.textBaseline = grund || 'alphabetic';
+  ctx.fillText(s, x, y);
+}
+// Kopfzeile: „letzte Ziffer:“ und die Ziffern 1 … 9, 0 ueber den Spalten (wie mt2).
+function _k6fKopf(ctx) {
+  const K = _k6fK;
+  _k6fText(ctx, 'letzte Ziffer:', K.X0 - 6, K.KOPF, K.GB, K.F_GRAU, 'right', '700');
+  for (let p = 0; p < 10; p++)
+    _k6fText(ctx, String((p + 1) % 10), K.X0 + p * K.FW + K.FW / 2, K.KOPF, K.GK, K.F_TEXT, 'center', '700');
+}
+// Wie weit ist Feld k gestrichen (0 … 1), in welcher Farbe, mit welcher Deckkraft?
+function _k6fStrichStand(k) {
+  const z = _k6f, K = _k6fK, L = z.lauf;
+  if (z.b[k]) return { s: 1, R: _k6fREIHEN[z.b[k]], a: 1 };
+  if (L) {
+    const e = L.bei[k];
+    if (e && e.frei && L.at >= e.t1) return { s: _bioFxKlemme((L.at - e.t1) / K.T_STRICH), R: _k6fREIHEN[L.n], a: 1 };
+  }
+  if (z.weg && z.weg.b[k]) return { s: 1, R: _k6fREIHEN[z.weg.b[k]], a: z.weg.t / K.T_NEU };
+  return null;
+}
+// Ring um Feld k in der Farbe R, gezogen bis zum Anteil bis (0 … 1).
+function _k6fRing(ctx, k, R, bis, a) {
+  const K = _k6fK, F = _k6fFeld(k);
+  if (bis <= 0 || a <= 0.01) return;
+  ctx.save();
+  ctx.globalAlpha = Math.min(1, a);
+  ctx.strokeStyle = R.dunkel; ctx.lineWidth = 2.5; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.arc(F.cx, F.cy, K.RR, -Math.PI / 2, -Math.PI / 2 + 2 * Math.PI * Math.min(1, bis)); ctx.stroke();
+  ctx.restore();
+}
+function _k6fTafel(ctx) {
+  const z = _k6f, K = _k6fK, L = z.lauf, kl = _bioFxKlemme;
+  const breit = 10 * K.FW, hoch = 5 * K.FH;
+  const ein = z.ein > 0 ? 1 - z.ein / K.T_NEU : 1;    // beim Oeffnen blendet die Tafel ein
+  ctx.save();
+  ctx.globalAlpha = 0.25 + 0.75 * ein;
+  ctx.fillStyle = 'rgba(15,23,42,0.08)';
+  ctx.fillRect(K.X0 + 2, K.Y0 + 3, breit, hoch);
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(K.X0, K.Y0, breit, hoch);
+  // graue Felder (beim Streichen blendet das Grau mit dem Strich ein)
+  const stand = [];
+  for (let k = 1; k <= 50; k++) {
+    const S = _k6fStrichStand(k);
+    stand[k] = S;
+    if (!S) continue;
+    const F = _k6fFeld(k);
+    ctx.globalAlpha = (0.25 + 0.75 * ein) * S.a * _bioFxEase.sanft(S.s);
+    ctx.fillStyle = K.F_GESTR;
+    ctx.fillRect(F.x, F.y, K.FW, K.FH);
+  }
+  ctx.globalAlpha = 0.25 + 0.75 * ein;
+  // Gitter: Spalten fein, Zehnerzeilen etwas kraeftiger, aussen ein Rand (wie mt2)
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = K.F_GITTER;
+  ctx.beginPath();
+  for (let p = 1; p < 10; p++) { const x = K.X0 + p * K.FW + 0.5; ctx.moveTo(x, K.Y0); ctx.lineTo(x, K.Y0 + hoch); }
+  ctx.stroke();
+  ctx.strokeStyle = K.F_ZEILE;
+  ctx.beginPath();
+  for (let r = 1; r < 5; r++) { const y = K.Y0 + r * K.FH + 0.5; ctx.moveTo(K.X0, y); ctx.lineTo(K.X0 + breit, y); }
+  ctx.stroke();
+  ctx.strokeStyle = K.F_RAND; ctx.lineWidth = 1.5;
+  ctx.strokeRect(K.X0, K.Y0, breit, hoch);
+  // Zahlen 1 … 50 (gestrichen grau)
+  for (let k = 1; k <= 50; k++) {
+    const F = _k6fFeld(k), S = stand[k], grau = S && S.s * S.a >= 0.5;
+    _k6fText(ctx, String(k), F.cx, F.cy + 0.5, K.GZ, grau ? K.F_GESTR_TEXT : K.F_TEXT, 'center', '700', 'middle');
+  }
+  // schraege Striche in der Farbe der Reihe, von links unten nach rechts oben
+  ctx.lineCap = 'round';
+  for (let k = 1; k <= 50; k++) {
+    const S = stand[k];
+    if (!S || S.s <= 0) continue;
+    const F = _k6fFeld(k), x0 = F.x + 6, y0 = F.y + K.FH - 7, x1 = F.x + K.FW - 6, y1 = F.y + 7;
+    ctx.globalAlpha = (0.25 + 0.75 * ein) * S.a;
+    ctx.strokeStyle = S.R.dunkel; ctx.lineWidth = 2.8;
+    ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + (x1 - x0) * S.s, y0 + (y1 - y0) * S.s); ctx.stroke();
+  }
+  ctx.restore();
+  // Ring nur um die Startzahl der Reihe, die gerade dasteht (sonst waeren am
+  // Ende genau 2, 3, 5 und 7 umkreist – eine Markierung freier Zahlen, die die
+  // Vermutung „nur 2, 3, 5 und 7“ stuetzen wuerde). Der Ring der Reihe davor
+  // blendet aus, waehrend der neue entsteht.
+  if (L) {
+    if (L.alt) _k6fRing(ctx, L.alt, _k6fREIHEN[L.alt], 1, 1 - kl(L.at / K.T_RING));
+    _k6fRing(ctx, L.n, _k6fREIHEN[L.n], _bioFxEase.sanft(kl(L.at / K.T_RING)), 1);
+  } else if (z.zuletzt) _k6fRing(ctx, z.zuletzt.n, _k6fREIHEN[z.zuletzt.n], 1, 1);
+  if (z.weg && z.weg.ring) _k6fRing(ctx, z.weg.ring, _k6fREIHEN[z.weg.ring], 1, z.weg.t / K.T_NEU);
+  // schon gestrichen: kurzes Aufleuchten, kein neuer Strich
+  if (L) for (const e of L.ev) {
+    if (e.frei || L.at < e.t1 || L.at - e.t1 >= K.T_BLITZ) continue;
+    const F = _k6fFeld(e.nach), u = (L.at - e.t1) / K.T_BLITZ;
+    ctx.save();
+    ctx.globalAlpha = 1 - _bioFxEase.rein(u);
+    ctx.fillStyle = 'rgba(252,211,77,0.45)'; ctx.strokeStyle = K.F_AHA; ctx.lineWidth = 2.5;
+    _bioFxRundRect(ctx, F.x + 2, F.y + 2, K.FW - 4, K.FH - 4, 4); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+  // Aha: bernsteinfarbener Rahmen um 49
+  if (z.ahaGlanz > 0) {
+    const F = _k6fFeld(49);
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, z.ahaGlanz / 0.5);
+    ctx.strokeStyle = K.F_AHA; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, F.x - 1, F.y - 1, K.FW + 2, K.FH + 2, 5); ctx.stroke();
+    ctx.restore();
+  }
+  // Halt (Lehrkraft): pulsierender Rahmen um das Feld, auf dem der Punkt steht
+  if (z.steht && z.haltInfo) {
+    const F = _k6fFeld(z.haltInfo.nach);
+    ctx.save();
+    ctx.globalAlpha = 0.8 + 0.2 * Math.sin(z.echt * Math.PI * 2 * 0.8);
+    ctx.strokeStyle = K.F_AHA; ctx.lineWidth = 3.5;
+    _bioFxRundRect(ctx, F.x + 1, F.y + 1, K.FW - 2, K.FH - 2, 4); ctx.stroke();
+    ctx.restore();
+  }
+}
+// Wo ist der Punkt? Sitzt er (auf „k“) oder fliegt er (Sprung e, Anteil u)?
+function _k6fPunktLage() {
+  const z = _k6f, K = _k6fK, L = z.lauf, kl = _bioFxKlemme;
+  if (!L) return null;
+  for (const e of L.ev) {
+    if (L.at < e.t0) {
+      const auf = e === L.ev[0] ? Math.max(0, _bioFxEase.federn(kl(L.at / K.T_POP))) : 1;
+      return { k: e.von, s: auf, a: 1 };
+    }
+    // im Halt (Lehrkraft) steht die Uhr 1e-6 s vor der Landung: dann SITZT der Punkt
+    if (L.at < e.t1 - 1e-5) return { e, u: (L.at - e.t0) / (e.t1 - e.t0), s: 1, a: 1 };
+    if (L.at < e.t1) return { k: e.nach, s: 1, a: 1 };
+  }
+  const letzt = L.ev[L.ev.length - 1], tAus = L.ende - K.T_AUS;
+  return { k: letzt ? letzt.nach : L.n, s: 1, a: 1 - kl((L.at - tAus) / K.T_AUS) };
+}
+// Bogen eines Sprungs: Hoehe waechst mit der Weite, hoechstens 26 px, und der
+// Scheitel bleibt unter der Kopfzeile (in der obersten Zeile flacher).
+function _k6fBogenPunkte(e) {
+  const K = _k6fK, A = _k6fPlatz(e.von), B = _k6fPlatz(e.nach);
+  const w = Math.hypot(B.x - A.x, B.y - A.y);
+  const h = Math.min(K.BOGEN_MAX, 8 + 0.12 * w, (A.y + B.y) / 2 - K.BOGEN_OBEN);
+  return { A, B, C: { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 - 2 * h } };
+}
+function _k6fAufBogen(P, u) {
+  const v = 1 - u;
+  return { x: v * v * P.A.x + 2 * v * u * P.C.x + u * u * P.B.x,
+           y: v * v * P.A.y + 2 * v * u * P.C.y + u * u * P.B.y };
+}
+function _k6fPunkt(ctx) {
+  const K = _k6fK, Q = _k6fPunktLage();
+  if (!Q || Q.a <= 0.01 || Q.s <= 0.05) return;
+  let p, hub = 0;
+  ctx.save();
+  if (Q.e) {
+    const P = _k6fBogenPunkte(Q.e), u = _bioFxEase.sanft(_bioFxKlemme(Q.u));
+    // der Bogen dieses Sprungs, fein gepunktet
+    ctx.globalAlpha = 0.45;
+    ctx.strokeStyle = _k6fREIHEN[_k6f.lauf.n].dunkel; ctx.lineWidth = 1.5;
+    ctx.setLineDash([2, 4]);
+    ctx.beginPath(); ctx.moveTo(P.A.x, P.A.y); ctx.quadraticCurveTo(P.C.x, P.C.y, P.B.x, P.B.y); ctx.stroke();
+    ctx.setLineDash([]);
+    p = _k6fAufBogen(P, u);
+    hub = 4 * u * (1 - u);                              // Schatten bleibt auf der Linie zwischen den Feldern
+    const sx = P.A.x + (P.B.x - P.A.x) * u, sy = P.A.y + (P.B.y - P.A.y) * u;
+    ctx.globalAlpha = 0.16 * (1 - 0.5 * hub);
+    ctx.fillStyle = '#0f172a';
+    ctx.beginPath(); ctx.ellipse(sx + 1, sy + 4, K.RP, K.RP * 0.45, 0, 0, Math.PI * 2); ctx.fill();
+  } else p = _k6fPlatz(Q.k);
+  ctx.globalAlpha = Math.min(1, Q.a);
+  const r = K.RP * Q.s;
+  ctx.fillStyle = K.F_PUNKT; ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  if (r > 3) {
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.beginPath(); ctx.arc(p.x - r * 0.35, p.y - r * 0.35, r * 0.3, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+// Links: Schild der Reihe, „Start:“ mit der umkreisten Startzahl, Bogen „+ n“.
+function _k6fLinks(ctx) {
+  const z = _k6f, K = _k6fK, kl = _bioFxKlemme;
+  const n = z.lauf ? z.lauf.n : z.zuletzt ? z.zuletzt.n : null;
+  if (!n) {                                            // noch keine Reihe: graues, gestricheltes Schild
+    ctx.save();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 3]);
+    _bioFxRundRect(ctx, K.SCHILD_X - 40, K.SCHILD_Y - 12, 80, 24, 7); ctx.stroke();
+    ctx.setLineDash([]);
+    _k6fText(ctx, 'keine Reihe', K.SCHILD_X, K.SCHILD_Y + 0.5, K.GB, K.F_RAND, 'center', '700', 'middle');
+    ctx.restore();
+    return;
+  }
+  const R = _k6fREIHEN[n], t = z.lauf ? z.lauf.at : 99;
+  const k = Math.max(0.3, _bioFxEase.federn(kl(t / K.T_POP)));
+  ctx.save();
+  ctx.translate(K.SCHILD_X, K.SCHILD_Y); ctx.scale(k, k);
+  ctx.fillStyle = 'rgba(15,23,42,0.10)';
+  _bioFxRundRect(ctx, -38, -10, 80, 24, 7); ctx.fill();
+  ctx.fillStyle = R.fuell; ctx.strokeStyle = R.dunkel; ctx.lineWidth = 1.5;
+  _bioFxRundRect(ctx, -40, -12, 80, 24, 7); ctx.fill(); ctx.stroke();
+  _k6fText(ctx, R.name, 0, 0.5, 13, K.F_TEXT, 'center', '700', 'middle');
+  ctx.restore();
+  // „Start:“ und die Startzahl im Ring – derselbe Ring wie auf der Tafel
+  ctx.save();
+  ctx.globalAlpha = kl(t / K.T_POP);
+  _k6fText(ctx, 'Start:', K.SCHILD_X - 4, K.START_Y + 4, K.GB, K.F_GRAU, 'right', '700');
+  _k6fText(ctx, String(n), K.SCHILD_X + 16, K.START_Y + 0.5, K.GZ, K.F_TEXT, 'center', '700', 'middle');
+  ctx.strokeStyle = R.dunkel; ctx.lineWidth = 2.5;
+  ctx.beginPath(); ctx.arc(K.SCHILD_X + 16, K.START_Y, K.RR, 0, Math.PI * 2); ctx.stroke();
+  // Bogen mit „+ n“: so weit springt der Punkt
+  const x0 = 24, x1 = 80, y = K.BOGEN_Y, h = 16;
+  ctx.strokeStyle = R.dunkel; ctx.lineWidth = 2;
+  ctx.beginPath();
+  for (let i = 0; i <= 20; i++) {
+    const e = i / 20, x = x0 + (x1 - x0) * e, yy = y - 4 * h * e * (1 - e);
+    if (i) ctx.lineTo(x, yy); else ctx.moveTo(x, yy);
+  }
+  ctx.stroke();
+  ctx.fillStyle = R.dunkel;
+  ctx.beginPath(); ctx.moveTo(x1 + 1, y + 1); ctx.lineTo(x1 - 7, y - 4); ctx.lineTo(x1 - 2, y - 9); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.arc(x0, y, 2.6, 0, Math.PI * 2); ctx.fill();
+  _k6fText(ctx, '+ ' + n, (x0 + x1) / 2, y - h - 6, 13, R.dunkel, 'center', '700');
+  ctx.restore();
+}
+// Schild „Pause“ bzw. „Halt“ links unten. Leuchtet kurz auf, wenn waehrend der
+// Pause ein Knopf gedrueckt wird.
+function _k6fPauseSchild(ctx) {
+  const z = _k6f, K = _k6fK, w = 64, h = 25, x = K.PX, y = K.PY;
+  ctx.save();
+  if (z.blink > 0) {
+    ctx.globalAlpha = Math.min(1, z.blink / 0.3);
+    ctx.strokeStyle = K.F_AHA; ctx.lineWidth = 3;
+    _bioFxRundRect(ctx, x - 3, y - 3, w + 6, h + 6, 9); ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+  ctx.fillStyle = '#1e293b';
+  _bioFxRundRect(ctx, x, y, w, h, 6); ctx.fill();
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(x + 6, y + 6.5, 3.5, 12); ctx.fillRect(x + 12.5, y + 6.5, 3.5, 12);   // Pausezeichen
+  _k6fText(ctx, z.haltInfo ? 'Halt' : 'Pause', x + 20, y + 17.5, 13, '#ffffff', 'left', '700');
+  ctx.restore();
+}
+function _k6fDraw(ctx, cv) {
+  if (!_k6f) return;
+  const z = _k6f, W = cv.width, H = cv.height;
+  ctx.clearRect(0, 0, W, H);
+  const bg = ctx.createLinearGradient(0, 0, 0, H);
+  bg.addColorStop(0, '#f8fafc'); bg.addColorStop(1, '#eef2f7');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+  _k6fKopf(ctx);
+  _k6fTafel(ctx);
+  _k6fLinks(ctx);
+  _bioFxDraw(ctx, z.fx);                              // Lichtring um 49
+  _k6fPunkt(ctx);
+  if (z.steht) _k6fPauseSchild(ctx);
 }

@@ -1,0 +1,1 @@
+  'm6-sieb': modal => { _k6fInit(); modal.innerHTML = _k6fHTML(); _k6fStatus(true); _pSim = new PhysicsSimEngine('_k6f-cv', '_k6f-cv'); _pSim.start(dt => _k6fUpdate(dt), (ctx, cv) => _k6fDraw(ctx, cv), []); },

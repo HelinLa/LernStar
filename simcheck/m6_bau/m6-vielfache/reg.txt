@@ -1,0 +1,1 @@
+  'm6-vielfache': modal => { _k6dInit(); modal.innerHTML = _k6dHTML(); _k6dStatus(true); _pSim = new PhysicsSimEngine('_k6d-cv', '_k6d-cv'); _pSim.start(dt => _k6dUpdate(dt), (ctx, cv) => _k6dDraw(ctx, cv), []); },

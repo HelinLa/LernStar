@@ -1,0 +1,1 @@
+  'm6-durch-drei': modal => { _k6cInit(); modal.innerHTML = _k6cHTML(); _k6cStatus(true); _pSim = new PhysicsSimEngine('_k6c-cv', '_k6c-cv'); _pSim.start(dt => _k6cUpdate(dt), (ctx, cv) => _k6cDraw(ctx, cv), []); },

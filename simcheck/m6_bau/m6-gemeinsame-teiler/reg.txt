@@ -1,0 +1,1 @@
+  'm6-gemeinsame-teiler': modal => { _k6eInit(); modal.innerHTML = _k6eHTML(); _k6eStatus(true); _pSim = new PhysicsSimEngine('_k6e-cv', '_k6e-cv'); _pSim.start(dt => _k6eUpdate(dt), (ctx, cv) => _k6eDraw(ctx, cv), []); },
